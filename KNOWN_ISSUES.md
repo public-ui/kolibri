@@ -115,4 +115,4 @@ References: <https://github.com/public-ui/kolibri/issues/6898>, <https://stackov
 ## Table — Sticky headers
 
 Sticky headers in tables are not supported at the moment, because `position: sticky` doesn't work together with `overflow: auto` on the table container, without introducing other drawbacks.
-References: <https://github.com/public-ui/kolibri/issues/7490>, <https://github.com/w3c/csswg-drafts/issues/865>
+References: <https://github.com/public-ui/kolibri/issues/7490>, <https://github.com/w3c/csswg-drafts/issues/865>, [Code-Sample (StackBlitz)](https://stackblitz.com/edit/stackblitz-starters-umfg2y7m)
