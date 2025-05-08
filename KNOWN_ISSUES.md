@@ -111,3 +111,8 @@ This is a limitation in Firefox’s ARIA implementation. Until it is resolved, a
 
 It has been observed that on a system with German locale, NVDA spells out certain English words such as "selection", instead of reading them properly.  
 References: <https://github.com/public-ui/kolibri/issues/6898>, <https://stackoverflow.com/questions/69091167/nvda-spells-words-where-it-shouldnt>
+
+## Table — Sticky headers
+
+Sticky headers in tables are not supported at the moment, because `position: sticky` doesn't work together with `overflow: auto` on the table container, without introducing other drawbacks.
+References: <https://github.com/public-ui/kolibri/issues/7490>, <https://github.com/w3c/csswg-drafts/issues/865>
