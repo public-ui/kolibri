@@ -46,6 +46,7 @@ Das Default-Theme ist ein _Token-Based_ Theme, das mit minimalen Anpassungen sof
 | `--kolibri-border-width`          | `1px`                                            | Allgemeine Rahmen-Breite                           |
 | `--kolibri-color-primary`         | `#004b76`                                        | Primärfarbe                                        |
 | `--kolibri-color-primary-variant` | `#0077b6`                                        | Alternative Variante der Primärfarbe               |
+| `--kolibri-color-secondary`       | `#99c9e2`                                        | Sekundärfarbe                                      |
 | `--kolibri-color-danger`          | `#c0003c`                                        | Farbe für Fehlermeldungen und gefährliche Aktionen |
 | `--kolibri-color-warning`         | `#c44931`                                        | Farbe für Warnungen                                |
 | `--kolibri-color-success`         | `#005c45`                                        | Farbe für Erfolgsmeldungen                         |
