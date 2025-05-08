@@ -33,7 +33,7 @@
 	.secondary :is(a, button) > .kol-span-wc,
 	.secondary :is(a, button):disabled:hover > .kol-span-wc {
 		background-color: var(--color-secondary);
-		border-color: var(--color-secondary);
+		border-color: var(--color-primary);
 		color: var(--color-primary);
 	}
 
