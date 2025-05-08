@@ -15,6 +15,7 @@ export * from './badge-text';
 export * from './button-callbacks';
 export * from './button-type';
 export * from './button-variant';
+export * from './character-limit';
 export * from './checked';
 export * from './collapsible';
 export * from './color';

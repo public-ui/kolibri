@@ -1,9 +1,20 @@
-import type { CSSResize, HasCounterPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
-import { cssResizeOptions, validateHasCounter, validateRows, validateSpellCheck, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type { CharacterLimitPropType, CSSResize, HasCounterPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
+import {
+	cssResizeOptions,
+	validateCharacterLimit,
+	validateHasCounter,
+	validateRows,
+	validateSpellCheck,
+	watchBoolean,
+	watchNumber,
+	watchString,
+	watchValidator,
+} from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class TextareaController extends InputIconController implements TextareaWatches {
 	protected readonly component: Generic.Element.Component & TextareaProps;
 
@@ -17,6 +28,10 @@ export class TextareaController extends InputIconController implements TextareaW
 			this.component.state._currentLength = this.component._value.length;
 		}
 	};
+
+	public validateCharacterLimit(value?: CharacterLimitPropType): void {
+		validateCharacterLimit(this.component, value);
+	}
 
 	public validateHasCounter(value?: HasCounterPropType): void {
 		validateHasCounter(this.component, value, {
@@ -79,12 +94,13 @@ export class TextareaController extends InputIconController implements TextareaW
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
+		this.validateCharacterLimit(this.component._characterLimit);
 		this.validateHasCounter(this.component._hasCounter);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
-		this.validateResize(this.component._resize);
 		this.validateRequired(this.component._required);
+		this.validateResize(this.component._resize);
 		this.validateRows(this.component._rows);
 		this.validateSpellCheck(this.component._spellCheck);
 		this.validateValue(this.component._value);

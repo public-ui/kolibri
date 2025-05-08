@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	AdjustHeightPropType,
+	CharacterLimitPropType,
 	CSSResize,
 	FocusableElement,
 	HasCounterPropType,
@@ -131,6 +132,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
 	@Prop() public _adjustHeight?: boolean = false;
+
+	/**
+	 * When defined, a remaining characters counter is shown. The field is marked as invalid when the character limit has been exceeded.
+	 */
+	@Prop() public _characterLimit?: CharacterLimitPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -285,6 +291,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Watch('_adjustHeight')
 	public validateAdjustHeight(value?: AdjustHeightPropType): void {
 		this.controller.validateAdjustHeight(value);
+	}
+
+	@Watch('_characterLimit')
+	public validateCharacterLimit(value?: CharacterLimitPropType): void {
+		this.controller.validateCharacterLimit(value);
 	}
 
 	@Watch('_disabled')
