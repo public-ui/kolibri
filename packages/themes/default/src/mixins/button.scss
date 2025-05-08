@@ -31,9 +31,14 @@
 	}
 
 	.secondary :is(a, button) > .kol-span-wc,
-	.secondary :is(a, button):disabled:hover > .kol-span-wc,
-	.normal :is(a, button) > .kol-span-wc,
-	.normal :is(a, button):disabled:hover > .kol-span-wc {
+	.secondary :is(a, button):disabled:hover > .kol-span-wc {
+		background-color: var(--color-secondary);
+		border-color: var(--color-secondary);
+		color: var(--color-primary);
+	}
+
+	.tertiary :is(a, button) > .kol-span-wc,
+	.tertiary :is(a, button):disabled:hover > .kol-span-wc {
 		background-color: var(--color-light);
 		border-color: var(--color-primary);
 		color: var(--color-primary);
@@ -59,8 +64,8 @@
 	.primary :is(a, button):hover > .kol-span-wc,
 	.secondary :is(a, button):active > .kol-span-wc,
 	.secondary :is(a, button):hover > .kol-span-wc,
-	.normal :is(a, button):active > .kol-span-wc,
-	.normal :is(a, button):hover > .kol-span-wc,
+	.tertiary :is(a, button):active > .kol-span-wc,
+	.tertiary :is(a, button):hover > .kol-span-wc,
 	.danger :is(a, button):active > .kol-span-wc,
 	.danger :is(a, button):hover > .kol-span-wc,
 	.ghost :is(a, button):active > .kol-span-wc,
@@ -84,7 +89,7 @@
 
 	.primary :is(a, button):active > .kol-span-wc,
 	.secondary :is(a, button):active > .kol-span-wc,
-	.normal :is(a, button):active > .kol-span-wc,
+	.tertiary :is(a, button):active > .kol-span-wc,
 	.danger :is(a, button):active > .kol-span-wc,
 	.ghost :is(a, button):active > .kol-span-wc {
 		border-color: var(--color-light);
