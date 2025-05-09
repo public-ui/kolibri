@@ -1,9 +1,6 @@
 dod:
-  - Maturation completed and documented
   - Meaningful pull request title for the release notes
-  - Pull request is linked to an issue
-  - All changes relate to the issue
-  - No commented out code in the final commit
+  - Pull request is linked to an issue and all changes relate to the issue
   - Tests to protect this code implemented (if applicable)
   - Manual test performed successfully (if applicable)
   - Documentation or migration has been updated (if applicable)

@@ -1,15 +1,18 @@
 name: Definition of Done
+
 on:
   pull_request:
-    types: [opened, edited, synchronize]
+    types: [opened, edited, synchronize, ready_for_review]
 
 concurrency:
-  group: pr-{{ github.event.pull_request.number }}
+  group: 'pr-${{ github.event.pull_request.number }}'
   cancel-in-progress: true
 
 jobs:
   check-dod:
-    runs-on: ubuntu-latest
+    # Skip this job for draft pull requests as they are considered works in progress
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-24.04
     steps:
       - name: Print Pull Request ID
         run: |
