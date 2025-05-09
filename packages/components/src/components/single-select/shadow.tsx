@@ -403,14 +403,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 			}
 			case 'NumpadEnter':
 			case 'Enter': {
-				if (this._isOpen && this._focusedOptionIndex >= 0) {
-					this._filteredOptions && this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
-					this._isOpen = false;
-					this._hasOpened = false;
-				} else {
-					this.toggleListbox(event);
-				}
-
+				this.toggleListbox(event);
+				this._hasOpened = false;
+				this._isOpen = false;
 				break;
 			}
 			case 'Home': {
