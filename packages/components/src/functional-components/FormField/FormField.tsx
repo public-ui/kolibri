@@ -39,7 +39,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
-	counter?: { currentLength?: number; maxLength?: number };
+	counter?: { currentLength: number; maxLength: number };
 	readOnly?: boolean;
 	touched?: boolean;
 	required?: boolean;

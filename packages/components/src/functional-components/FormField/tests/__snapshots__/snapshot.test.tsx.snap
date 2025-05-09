@@ -39,29 +39,6 @@ exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
 </fieldset>
 `;
 
-exports[`KolFormFieldFc should render with counter 1`] = `
-<div class="kol-form-field">
-  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
-      </span>
-    </span>
-  </label>
-  <div class="kol-form-field__input"></div>
-  <span aria-atomic="true" aria-live="polite" class="kol-form-field__counter" data-testid="input-counter">
-    5
-    <span aria-label="kol-of" role="img">
-      /
-    </span>
-    10
-    <span>
-      kol-characters
-    </span>
-  </span>
-</div>
-`;
-
 exports[`KolFormFieldFc should render with custom children 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">

@@ -6,8 +6,6 @@ export default {
 	message: 'Message',
 	close: 'Close',
 	'form-description': 'Form fields marked with an asterisk (*) are mandatory.',
-	of: 'of',
-	characters: 'characters',
 	new: 'New',
 	'no-entries': 'No entries available.',
 	'change-order': 'Change order of {{colLabel}}',
@@ -60,4 +58,6 @@ export default {
 	'data-browse-text': 'Browse',
 	'pagination-position-top': 'top',
 	'pagination-position-bottom': 'bottom',
+	'character-limit-remaining': 'You have {{remaining}} characters remaining.',
+	'character-limit-over': 'You have {{over}} characters too many.',
 };

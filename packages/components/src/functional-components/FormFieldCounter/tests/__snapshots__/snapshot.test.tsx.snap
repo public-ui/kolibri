@@ -2,13 +2,6 @@
 
 exports[`KolFormFieldCounterFc should render correctly 1`] = `
 <span aria-atomic="true" aria-live="polite" class="custom-class kol-form-field__counter" data-testid="input-counter">
-  5
-  <span aria-label="kol-of" role="img">
-    /
-  </span>
-  10
-  <span>
-    kol-characters
-  </span>
+  kol-character-limit-remaining
 </span>
 `;

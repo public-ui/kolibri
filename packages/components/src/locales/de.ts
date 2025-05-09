@@ -6,8 +6,6 @@ export default {
 	message: 'Nachricht',
 	close: 'Schließen',
 	'form-description': 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.',
-	of: 'von',
-	characters: 'Zeichen',
 	new: 'Neu',
 	'no-entries': 'Es sind keine Einträge vorhanden.',
 	'change-order': 'Sortierung von {{colLabel}} ändern',
@@ -60,4 +58,6 @@ export default {
 	'data-browse-text': 'Datei auswählen',
 	'pagination-position-top': 'oben',
 	'pagination-position-bottom': 'unten',
+	'character-limit-remaining': 'Es sind noch {{remaining}} Zeichen verfügbar.',
+	'character-limit-over': 'Es sind {{over}} Zeichen zu viel.',
 };
