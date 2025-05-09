@@ -19,4 +19,20 @@
 	}
 
 	@include kol-button;
+
+	.main-button > .button > .kol-span-wc {
+		border-right: none;
+		border-top-left-radius: calc(var(--border-radius) - var(--border-width));
+		border-bottom-left-radius: calc(var(--border-radius) - var(--border-width));
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.secondary-button > .button > .kol-span-wc {
+		border-left: none;
+		border-top-right-radius: calc(var(--border-radius) - var(--border-width));
+		border-bottom-right-radius: calc(var(--border-radius) - var(--border-width));
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
 }

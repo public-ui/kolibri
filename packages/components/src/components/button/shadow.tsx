@@ -62,8 +62,6 @@ export class KolButton implements ButtonProps, FocusableElement {
 					ref={this.catchRef}
 					class={{
 						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}

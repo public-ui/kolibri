@@ -120,10 +120,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_value={this._value}
 					_variant={this._variant}
 					data-testid="popover-button"
-					class={clsx('kol-popover-button__button', {
-						/* In V2, the `_variant` classnames for button are specified on the shadow. This has been fixed in V3. */
-						[this._variant as string]: this._variant !== 'custom',
-					})}
+					class={clsx('kol-popover-button__button')}
 					ref={(element) => (this.refButton = element)}
 				>
 					<slot name="expert" slot="expert"></slot>
