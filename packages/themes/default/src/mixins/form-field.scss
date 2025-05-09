@@ -8,10 +8,6 @@
 
 		gap: rem(4);
 
-		&__hint {
-			@include kol-typography-hint;
-		}
-
 		&--error:not(&--hide-msg) {
 			border-left: 3px solid var(--color-danger);
 			padding-left: rem(16);
@@ -34,6 +30,16 @@
 				.span-label::after {
 					padding-left: 0.125em;
 				}
+			}
+		}
+
+		&__hint {
+			@include kol-typography-hint;
+		}
+
+		&__counter {
+			&--exceeded {
+				color: var(--color-danger);
 			}
 		}
 	}
