@@ -59,5 +59,5 @@ export default {
 	'pagination-position-top': 'top',
 	'pagination-position-bottom': 'bottom',
 	'character-limit-remaining': 'You have {{remaining}} characters remaining.',
-	'character-limit-over': 'You have {{over}} characters too many.',
+	'character-limit-exceeded': 'You have {{over}} characters too many.',
 };
