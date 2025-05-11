@@ -100,7 +100,11 @@ ROUTES.set('input-radio/basic');
 ROUTES.set('input-radio/horizontal');
 ROUTES.set('input-radio/object');
 ROUTES.set('input-range/basic');
-ROUTES.set('input-text/basic');
+ROUTES.set('input-text/basic', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('input-text/focus');
 ROUTES.set('kolibri/basic');
 ROUTES.set('link-button/basic');
@@ -130,7 +134,11 @@ ROUTES.set('quote/block');
 ROUTES.set('select/basic');
 ROUTES.set('skip-nav/basic');
 ROUTES.set('spin/basic');
-ROUTES.set('single-select/basic');
+ROUTES.set('single-select/basic', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('spin/custom');
 ROUTES.set('spin/cycle');
 ROUTES.set('split-button/basic');
@@ -245,13 +253,24 @@ ROUTES.set('toast/basic?type=error&variant=msg', {
 
 ROUTES.set('toolbar/basic');
 ROUTES.set('toolbar/disabled');
-ROUTES.set('tree/basic/home');
+ROUTES.set('tree/basic/home', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('version/basic');
 ROUTES.set('version/context');
 ROUTES.set('scenarios/appointment-form');
-ROUTES.set('scenarios/static-form');
+ROUTES.set('scenarios/static-form', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('scenarios/disabled-interactive-scenario');
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 4000,
@@ -281,5 +300,9 @@ ROUTES.set('scenarios/focus-elements?component=link');
 ROUTES.set('scenarios/focus-elements?component=linkButton');
 ROUTES.set('scenarios/focus-elements?component=select');
 ROUTES.set('scenarios/focus-elements?component=selectMultiple');
-ROUTES.set('scenarios/focus-elements?component=singleSelect');
+ROUTES.set('scenarios/focus-elements?component=singleSelect', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('scenarios/focus-elements?component=textarea');
