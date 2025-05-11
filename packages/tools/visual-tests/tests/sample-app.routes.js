@@ -3,521 +3,260 @@ export const ROUTES = new Map();
 /**
  * Actually we support the following options:
  *
- * Details: https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-screenshot-1
- * - fullPage: boolean (Default: true)
- * - maxDiffPixelRatio: number (Default: undefined)
- * - maxDiffPixels: number (Default: undefined)
- * - threshold: number (Default: undefined)
- * - timeout: number (Default: 0)
+ * Axe options:
+ * - axe:
+ *   - skip: boolean (Default: false)
+ *   - skipFailures: boolean (Default: false)
  *
- * To set the viewport size, use the following options:
- * - viewportSize: { width, height } (Default: 800x600)
- *
+ * Snapshot options:
+ * - snapshot:
+ *   - options:
+ *     - maxDiffPixelRatio: number (Default: 0)
+ *   - skip: boolean (Default: false)
+ *   - viewportSize:
+ *     - width (Default: 800)
+ *     - height (Default: 600)
+ *   - waitForTimeout: number (Default: 15000)
+ *   - zoom:
+ *     - options:
+ *       - maxDiffPixelRatio: number (Default: 0)
+ *     - skip: boolean (Default: false)
  */
 
-ROUTES.set('abbr/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('accordion/basic', null);
-ROUTES.set('accordion/headlines', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('alert/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('alert/card-msg', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('alert/html', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('avatar/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('badge/basic', null);
-ROUTES.set('badge/button', null);
-ROUTES.set('breadcrumb/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button-link/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button-link/icons', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button-link/image', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/icons', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/width', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/access-key', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/baselined', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/short-key', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('card/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('combobox/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('details/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
+ROUTES.set('abbr/basic');
+ROUTES.set('accordion/basic');
+ROUTES.set('accordion/headlines');
+ROUTES.set('alert/basic');
+ROUTES.set('alert/card-msg');
+ROUTES.set('alert/html');
+ROUTES.set('avatar/basic');
+ROUTES.set('badge/basic');
+ROUTES.set('badge/button');
+ROUTES.set('breadcrumb/basic');
+ROUTES.set('button-group/basic');
+ROUTES.set('button-link/basic');
+ROUTES.set('button-link/icons');
+ROUTES.set('button-link/image');
+ROUTES.set('button/basic');
+ROUTES.set('button/icons');
+ROUTES.set('button/width');
+ROUTES.set('button/access-key');
+ROUTES.set('button/baselined');
+ROUTES.set('button/short-key');
+ROUTES.set('card/basic');
+ROUTES.set('combobox/basic');
+ROUTES.set('details/basic');
 ROUTES.set('drawer/basic?align=left', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('drawer/basic?align=top', {
-	viewportSize: {
-		width: 800,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('drawer/basic?align=right', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('drawer/basic?align=bottom', {
-	viewportSize: {
-		width: 800,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 600,
+		},
 	},
 });
-ROUTES.set('form/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('form/error-list', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('heading/badge', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('heading/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('heading/paragraph', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('icon/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('image/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('indented-text/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('input-checkbox/basic', null);
-ROUTES.set('input-checkbox/button', null);
-ROUTES.set('input-checkbox/switch', null);
-ROUTES.set('input-color/basic', null);
-ROUTES.set('input-date/basic', null);
-ROUTES.set('input-email/basic', null);
-ROUTES.set('input-file/basic', null);
-ROUTES.set('input-number/basic', null);
-ROUTES.set('input-password/basic', null);
-ROUTES.set('input-password/show-password', null);
-ROUTES.set('input-radio/basic', null);
-ROUTES.set('input-radio/horizontal', null);
-ROUTES.set('input-radio/object', null);
-ROUTES.set('input-range/basic', null);
-ROUTES.set('input-text/basic', null);
-ROUTES.set('input-text/focus', null);
-ROUTES.set('kolibri/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/horizontal', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link/icons', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link/image', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link/target', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('modal/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
+ROUTES.set('form/basic');
+ROUTES.set('form/error-list');
+ROUTES.set('heading/badge');
+ROUTES.set('heading/basic');
+ROUTES.set('heading/paragraph');
+ROUTES.set('icon/basic');
+ROUTES.set('image/basic');
+ROUTES.set('indented-text/basic');
+ROUTES.set('input-checkbox/basic');
+ROUTES.set('input-checkbox/button');
+ROUTES.set('input-checkbox/switch');
+ROUTES.set('input-color/basic');
+ROUTES.set('input-date/basic');
+ROUTES.set('input-email/basic');
+ROUTES.set('input-file/basic');
+ROUTES.set('input-number/basic');
+ROUTES.set('input-password/basic');
+ROUTES.set('input-password/show-password');
+ROUTES.set('input-radio/basic');
+ROUTES.set('input-radio/horizontal');
+ROUTES.set('input-radio/object');
+ROUTES.set('input-range/basic');
+ROUTES.set('input-text/basic');
+ROUTES.set('input-text/focus');
+ROUTES.set('kolibri/basic');
+ROUTES.set('link-button/basic');
+ROUTES.set('link-group/basic');
+ROUTES.set('link-group/horizontal');
+ROUTES.set('link/basic');
+ROUTES.set('link/icons');
+ROUTES.set('link/image');
+ROUTES.set('link/target');
+ROUTES.set('modal/basic');
 ROUTES.set('modal/basic?show-modal=true', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 
-ROUTES.set('nav/aria-current', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('nav/basic', null);
-ROUTES.set('nav/horizontal', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('pagination/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('progress/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('quote/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('quote/block', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('select/basic', null);
-ROUTES.set('skip-nav/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('spin/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('single-select/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('spin/custom', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('spin/cycle', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('split-button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/column-alignment', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/sort-data', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/with-footer', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/with-pagination', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/pagination-position', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/complex-headers', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/stateful-with-selection', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/stateful-with-single-selection', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/stateless-with-single-selection', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/stateless-with-selection', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/stateless', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('tabs/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('tabs/icons-only', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/adjust-height', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/basic', null);
-ROUTES.set('textarea/resize', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/rows', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/with-counter', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('toast/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
+ROUTES.set('nav/aria-current');
+ROUTES.set('nav/basic');
+ROUTES.set('nav/horizontal');
+ROUTES.set('pagination/basic');
+ROUTES.set('progress/basic');
+ROUTES.set('quote/basic');
+ROUTES.set('quote/block');
+ROUTES.set('select/basic');
+ROUTES.set('skip-nav/basic');
+ROUTES.set('spin/basic');
+ROUTES.set('single-select/basic');
+ROUTES.set('spin/custom');
+ROUTES.set('spin/cycle');
+ROUTES.set('split-button/basic');
+ROUTES.set('table/column-alignment');
+ROUTES.set('table/sort-data');
+ROUTES.set('table/with-footer');
+ROUTES.set('table/with-pagination');
+ROUTES.set('table/pagination-position');
+ROUTES.set('table/complex-headers');
+ROUTES.set('table/stateful-with-selection');
+ROUTES.set('table/stateful-with-single-selection');
+ROUTES.set('table/stateless-with-single-selection');
+ROUTES.set('table/stateless-with-selection');
+ROUTES.set('table/stateless');
+ROUTES.set('tabs/basic');
+ROUTES.set('tabs/icons-only');
+ROUTES.set('textarea/adjust-height');
+ROUTES.set('textarea/basic');
+ROUTES.set('textarea/resize');
+ROUTES.set('textarea/rows');
+ROUTES.set('textarea/with-counter');
+ROUTES.set('toast/basic');
 ROUTES.set('toast/basic?type=info', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=success', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=warning', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=error', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?variant=msg', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?variant=card', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 
 ROUTES.set('toast/basic?type=default&variant=msg', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=info&variant=msg', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=success&variant=msg', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=warning&variant=msg', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 ROUTES.set('toast/basic?type=error&variant=msg', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 	},
 });
 
-ROUTES.set('toolbar/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('toolbar/disabled', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('tree/basic/home', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('version/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('version/context', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('scenarios/appointment-form', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('scenarios/static-form', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('scenarios/disabled-interactive-scenario', {
-	axe: {
-		skipFailures: false,
-	},
-});
+ROUTES.set('toolbar/basic');
+ROUTES.set('toolbar/disabled');
+ROUTES.set('tree/basic/home');
+ROUTES.set('version/basic');
+ROUTES.set('version/context');
+ROUTES.set('scenarios/appointment-form');
+ROUTES.set('scenarios/static-form');
+ROUTES.set('scenarios/disabled-interactive-scenario');
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
-	axe: {
-		skipFailures: false,
-	},
-	viewportSize: {
-		width: 4000,
-		height: 0,
+	snapshot: {
+		viewportSize: {
+			width: 4000,
+			height: 0,
+		},
 	},
 });
 
