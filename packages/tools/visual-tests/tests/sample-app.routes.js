@@ -99,6 +99,7 @@ ROUTES.set('input-radio/horizontal?noColumns');
 ROUTES.set('input-radio/object?noColumns');
 ROUTES.set('input-range/basic?noColumns');
 ROUTES.set('input-text/basic?noColumns');
+ROUTES.set('input-text/focus?noColumns');
 ROUTES.set('kolibri/basic');
 ROUTES.set('link-button/basic');
 ROUTES.set('link/basic');
@@ -250,6 +251,7 @@ ROUTES.set('toolbar/disabled');
 ROUTES.set('tree/basic/home');
 ROUTES.set('version/basic');
 ROUTES.set('version/context');
+ROUTES.set('scenarios/appointment-form');
 ROUTES.set('scenarios/static-form');
 ROUTES.set('scenarios/disabled-interactive-scenario');
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
