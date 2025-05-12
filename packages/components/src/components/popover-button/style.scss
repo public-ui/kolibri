@@ -1,19 +1,7 @@
-@use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 @use '../@shared/kol-button-mixin' as *;
+@use '../@shared/kol-popover-button-mixin' as *;
+@use '../tooltip/style' as *;
 
 @include kol-button-styles('kol-button');
-
-@layer kol-component {
-	.kol-popover-button {
-		&__button {
-			display: inline-block; // critical for floating UI to work correctly
-		}
-
-		&__popover {
-			border: 1px solid #000;
-			margin: 0;
-			padding: 0;
-		}
-	}
-}
+@include kol-popover-button-styles;

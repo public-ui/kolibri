@@ -1,0 +1,93 @@
+{
+	"name": "@public-ui/themes",
+	"version": "3.0.0-rc.8",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"description": "Contains the style guides and themes of various corporate designs for KoliBri - The accessible HTML-Standard.",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag"
+	],
+	"scripts": {
+		"build": "rollup -c",
+		"build:deps": "pnpm --filter @public-ui/themes^... build",
+		"dev": "rollup -c --watch",
+		"format": "prettier --check src",
+		"lint": "pnpm lint:eslint && pnpm lint:tsc",
+		"lint:eslint": "eslint src",
+		"lint:tsc": "tsc --noemit",
+		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"test-all": "pnpm -r --workspace-concurrency=1 test",
+		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"@rollup/plugin-commonjs": "28.0.3",
+		"@rollup/plugin-node-resolve": "15.3.1",
+		"@rollup/plugin-typescript": "12.1.2",
+		"@typescript-eslint/eslint-plugin": "7.18.0",
+		"@typescript-eslint/parser": "7.18.0",
+		"cpy-cli": "5.0.0",
+		"eslint": "8.57.1",
+		"nodemon": "3.1.9",
+		"postcss": "8.5.3",
+		"rollup": "4.36.0",
+		"rollup-plugin-postcss": "4.0.2",
+		"sass": "1.86.0",
+		"typescript": "5.8.2"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "workspace:*"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/src/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/src/index.d.ts",
+	"files": [
+		"assets",
+		"dist"
+	]
+}

@@ -48,6 +48,7 @@ const TAGS = [
 	'kol-skip-nav',
 	'kol-spin',
 	'kol-split-button',
+	'kol-table-settings-wc',
 	'kol-table-stateful',
 	'kol-table-stateless',
 	'kol-tabs',
@@ -71,6 +72,7 @@ const EXCLUDE_TAGS = [
 	'kol-link-wc',
 	'kol-popover-wc',
 	'kol-span-wc',
+	'kol-table-settings-wc',
 	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
 ];

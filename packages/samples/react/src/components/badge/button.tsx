@@ -23,7 +23,7 @@ export const BadgeButton: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="flex gap-2">
+		<div className="flex flex-wrap gap-2">
 			<KolBadge {...createBadgeProps('black')}></KolBadge>
 			<KolBadge _color="#86ffc6" {...createBadgeProps('teal')}></KolBadge>
 			<KolBadge _color="#06539e" {...createBadgeProps('blue')}></KolBadge>

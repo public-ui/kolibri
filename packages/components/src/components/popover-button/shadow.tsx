@@ -1,8 +1,7 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
-import { alignFloatingElements } from '../../utils/align-floating-elements';
-import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
+import { Component, h, Method, Prop } from '@stencil/core';
+import { KolPopoverButtonWcTag } from '../../core/component-names';
+import type { PopoverButtonProps } from '../../schema/components/popover-button';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -20,7 +19,6 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validatePopoverAlign } from '../../schema';
 
 /**
  * @slot - The popover content.
@@ -32,98 +30,48 @@ import { validatePopoverAlign } from '../../schema';
 	},
 	shadow: true,
 })
-// class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
 export class KolPopoverButton implements PopoverButtonProps {
-	private refButton?: HTMLKolButtonWcElement;
-	private refPopover?: HTMLDivElement;
+	private ref?: HTMLKolPopoverButtonWcElement;
 
-	@State() public state: PopoverButtonStates = {
-		_label: '',
-		_popoverAlign: 'bottom',
-	};
-	@State() private justClosed = false;
-
-	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
-	private handleBeforeToggle(event: Event) {
-		if ((event as ToggleEvent).newState === 'closed') {
-			this.justClosed = true;
-
-			setTimeout(() => {
-				// Reset the flag after the event loop tick.
-				this.justClosed = false;
-			}, 10); // timeout of 0 should be sufficient but doesn't work in Safari Mobile (needs further investigation).
-		} else if (this.refPopover) {
-			/**
-			 * Avoid "flicker" by hiding the element until the position is set in the `toggle` event handler. `alignFloatingElements` is responsible for setting the visibility back to 'visible'.
-			 */
-			this.refPopover.style.visibility = 'hidden';
-		}
-	}
-
-	private handleToggle(event: Event) {
-		if ((event as ToggleEvent).newState === 'open' && this.refPopover && this.refButton) {
-			void alignFloatingElements({
-				align: this.state._popoverAlign,
-				floatingElement: this.refPopover,
-				referenceElement: this.refButton,
-			});
-		}
-	}
-
-	private handleButtonClick() {
-		// If the popover was just closed by native behavior, do nothing (and let it stay closed).
-		if (!this.justClosed) {
-			this.refPopover?.togglePopover();
-		}
-	}
-
-	public componentDidRender() {
-		this.refPopover?.addEventListener('toggle', this.handleToggle.bind(this));
-		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
-	}
-
-	public disconnectedCallback() {
-		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
-		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+	/**
+	 * Hides the popover programmatically by forwarding the call to the web component.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hidePopover() {
+		void this.ref?.hidePopover();
 	}
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-popover-button">
-				<KolButtonWcTag
-					_accessKey={this._accessKey}
-					_ariaControls={this._ariaControls}
-					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaSelected={this._ariaSelected}
-					_customClass={this._customClass}
-					_disabled={this._disabled}
-					_hideLabel={this._hideLabel}
-					_icons={this._icons}
-					_id={this._id}
-					_label={this._label}
-					_name={this._name}
-					_on={this._on}
-					_role={this._role}
-					_shortKey={this._shortKey}
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					_variant={this._variant}
-					data-testid="popover-button"
-					class="kol-popover-button__button"
-					ref={(element) => (this.refButton = element)}
-					onClick={this.handleButtonClick.bind(this)}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</KolButtonWcTag>
-
-				<div ref={(element) => (this.refPopover = element)} data-testid="popover-content" popover="auto" id="popover" class="kol-popover-button__popover">
-					<slot />
-				</div>
-			</div>
+			<KolPopoverButtonWcTag
+				ref={(element) => (this.ref = element)}
+				_accessKey={this._accessKey}
+				_ariaControls={this._ariaControls}
+				_ariaDescription={this._ariaDescription}
+				_ariaExpanded={this._ariaExpanded}
+				_ariaSelected={this._ariaSelected}
+				_customClass={this._customClass}
+				_disabled={this._disabled}
+				_hideLabel={this._hideLabel}
+				_icons={this._icons}
+				_id={this._id}
+				_label={this._label}
+				_name={this._name}
+				_on={this._on}
+				_popoverAlign={this._popoverAlign}
+				_role={this._role}
+				_shortKey={this._shortKey}
+				_syncValueBySelector={this._syncValueBySelector}
+				_tabIndex={this._tabIndex}
+				_tooltipAlign={this._tooltipAlign}
+				_type={this._type}
+				_value={this._value}
+				_variant={this._variant}
+			>
+				<slot name="expert" slot="expert"></slot>
+				<slot />
+			</KolPopoverButtonWcTag>
 		);
 	}
 
@@ -239,13 +187,4 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
-
-	@Watch('_popoverAlign')
-	public validatePopoverAlign(value?: PopoverAlignPropType): void {
-		validatePopoverAlign(this, value);
-	}
-
-	public componentWillLoad() {
-		this.validatePopoverAlign(this._popoverAlign);
-	}
 }

@@ -41,6 +41,8 @@ import {
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import { validateTableSettings } from '../../schema/props/table-settings';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -120,6 +122,11 @@ export class KolTableStateful implements TableAPI {
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableStatefulCallbacksPropType;
+
+	/**
+	 * Defines the table settings including column visibility, order and width.
+	 */
+	@Prop() public _tableSettings?: TableSettingsPropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -295,6 +302,11 @@ export class KolTableStateful implements TableAPI {
 		validateTableStatefulCallbacks(this, value);
 	}
 
+	@Watch('_tableSettings')
+	public validateTableSettings(value?: TableSettingsPropType): void {
+		validateTableSettings(this, value);
+	}
+
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
 		onClick: (event: Event, page: number) => {
 			if (typeof this.state._pagination._on?.onClick === 'function') {
@@ -373,10 +385,11 @@ export class KolTableStateful implements TableAPI {
 		this.validateHeaders(this._headers);
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
+		this.validateOn(this._on);
 		this.validatePagination(this._pagination);
 		this.validatePaginationPosition(this._paginationPosition);
 		this.validateSelection(this._selection);
-		this.validateOn(this._on);
+		this.validateTableSettings(this._tableSettings);
 	}
 
 	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {
@@ -419,7 +432,12 @@ export class KolTableStateful implements TableAPI {
 	 *
 	 * @returns {JSX.Element} The rendered pagination controls including page range and navigation.
 	 */
-	private renderPagination(): JSX.Element {
+	private renderPagination(position: 'top' | 'bottom'): JSX.Element {
+		const label = translate('kol-table-pagination-label', {
+			placeholders: {
+				label: `${this.state._label} (${translate(`kol-pagination-position-${position}`)})`,
+			},
+		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
 				<span>
@@ -448,7 +466,7 @@ export class KolTableStateful implements TableAPI {
 						_siblingCount={this.state._pagination._siblingCount}
 						_tooltipAlign="bottom"
 						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
+						_label={label}
 					></KolPaginationTag>
 				</div>
 			</div>
@@ -520,8 +538,8 @@ export class KolTableStateful implements TableAPI {
 			this.showPagination ? (this.state._pagination?._pageSize ?? 10) : this.state._sortedData.length,
 			this.state._pagination._page || 1,
 		);
-		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
-		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
 		const headerCells: TableHeaderCells = {
 			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))),
@@ -546,6 +564,7 @@ export class KolTableStateful implements TableAPI {
 						},
 					}}
 					_selection={this.state._selection}
+					_tableSettings={this.state._tableSettings}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>

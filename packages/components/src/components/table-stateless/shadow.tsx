@@ -10,6 +10,7 @@ import type {
 	TableStatelessProps,
 } from '../../schema';
 import type { MinWidthPropType } from '../../schema/props/min-width';
+import type { TableSettingsPropType } from '../../schema/props/table-settings';
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -54,6 +55,11 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _selection?: TableSelectionPropType;
 
+	/**
+	 * Defines the table settings including column visibility, order and width.
+	 */
+	@Prop() public _tableSettings?: TableSettingsPropType;
+
 	public render(): JSX.Element {
 		return (
 			<KolTableStatelessWcTag
@@ -64,6 +70,7 @@ export class KolTableStateless implements TableStatelessProps {
 				_minWidth={this._minWidth}
 				_on={this._on}
 				_selection={this._selection}
+				_tableSettings={this._tableSettings}
 			/>
 		);
 	}

@@ -7,7 +7,7 @@ import type {
 	HideMsgPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
+	IconsHorizontalPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -144,7 +144,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -180,7 +180,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Options the user can choose from, also supporting Optgroup.
 	 */
-	@Prop() public _options?: OptionsWithOptgroupPropType;
+	@Prop() public _options!: OptionsWithOptgroupPropType;
 
 	/**
 	 * Makes the input element required.
@@ -271,7 +271,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

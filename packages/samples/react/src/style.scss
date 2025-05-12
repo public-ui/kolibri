@@ -23,11 +23,18 @@ hr {
 
 .indented-text {
 	p {
-		font-family: var(--font-family);
-		border-left: -2px solid var(--color-primary-variant);
-		padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
-		margin-left: rem(-2);
+		margin: 0;
 	}
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }
 
 .black-background {
@@ -39,6 +46,10 @@ hr {
 
 .w-image {
 	width: 500px;
+}
+
+.drawer-content-vertical {
+	width: rem(400);
 }
 
 @media (min-width: 1024px) {

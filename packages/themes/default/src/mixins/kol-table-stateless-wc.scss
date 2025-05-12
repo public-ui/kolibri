@@ -1,6 +1,11 @@
 @use './rem' as *;
+@use './kol-table-settings-wc' as *;
+@use './alert-wc' as *;
 
-@mixin kol-table-stateless-wc {
+@mixin kol-table-stateless-theme {
+	@include kol-table-settings-theme;
+	@include kol-alert-theme;
+
 	.kol-table {
 		$root: &;
 
@@ -26,7 +31,8 @@
 		}
 
 		&__caption {
-			padding: rem(8);
+			padding: rem(8) var(--a11y-min-size) rem(8) rem(8);
+			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
 		}
 
 		&__focus-element {

@@ -1,8 +1,8 @@
 import {
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -79,7 +79,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				this._hasOpened = true;
 				this.refInput?.focus();
 				const selectedIndex = Array.isArray(this._filteredOptions) ? this._filteredOptions.findIndex((option) => option.label === this._inputValue) : -1;
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : -1;
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
@@ -255,6 +255,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 						{this._inputValue && !this.state._hideClearButton && (
 							<KolIconTag
 								_icons="codicon codicon-close"
+								data-testid="single-select-delete"
 								_label={translate('kol-delete-selection')}
 								onClick={() => {
 									this.clearSelection();
@@ -470,7 +471,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -594,7 +595,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

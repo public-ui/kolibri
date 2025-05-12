@@ -1,7 +1,7 @@
 @use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
-	@include kol-table-stateless-wc;
+	@include kol-table-stateless-theme;
 
 	.kol-table-stateful {
 		&__pagination {

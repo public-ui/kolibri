@@ -14,23 +14,25 @@ import { TableStatelessWithSingleSelection } from './stateless-with-single-selec
 import { TableWithPagination } from './with-pagination';
 import { InteractiveChildElements } from './interactive-child-elements';
 import { MultiSortTable } from './multi-sort';
+import { PredefinedSettings } from './predefined-settings';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
 		'horizontal-scrollbar': TableHorizontalScrollbar,
+		'interactive-child-elements': InteractiveChildElements,
+		'multi-sort': MultiSortTable,
 		'pagination-position': PaginationPosition,
+		'predefined-settings': PredefinedSettings,
 		'render-cell': TableRenderCell,
 		'sort-data': TableSortData,
-		'with-footer': TableWithFooter,
 		'stateful-with-selection': TableStatefulWithSelection,
 		'stateful-with-single-selection': TableStatefulWithSingleSelection,
+		stateless: TableStateless,
 		'stateless-with-selection': TableStatelessWithSelection,
 		'stateless-with-single-selection': TableStatelessWithSingleSelection,
+		'with-footer': TableWithFooter,
 		'with-pagination': TableWithPagination,
-		'interactive-child-elements': InteractiveChildElements,
-		stateless: TableStateless,
-		'multi-sort': MultiSortTable,
 	},
 };
