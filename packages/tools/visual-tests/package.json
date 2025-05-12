@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "2.2.10",
+	"version": "2.2.11-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -23,7 +23,8 @@
 	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
 		"format": "prettier --check src",
-		"lint": "eslint src",
+		"lint": "pnpm lint:eslint",
+		"lint:eslint": "eslint src",
 		"unused": "knip",
 		"postinstall": "pnpm exec playwright install"
 	},

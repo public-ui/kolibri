@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "2.2.10",
+	"version": "2.2.11-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -60,7 +60,10 @@
 		"clear": "rimraf -g dist doc loader www ../adapters/angular/v15/src ../adapters/angular/v16/src ../adapters/angular/v17/src ../adapters/angular/v18/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
-		"lint": "tsc --noemit && eslint src",
+		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
+		"lint:eslint": "eslint src",
+		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
+		"lint:tsc": "tsc --noemit",
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"test": "pnpm test:unit",
 		"test:unit": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
@@ -121,6 +124,10 @@
 		"pug": "3.0.3",
 		"rimraf": "6.0.1",
 		"stencil-awesome-test": "1.0.6",
+		"stylelint": "16.17.0",
+		"stylelint-config-recommended-scss": "14.1.0",
+		"stylelint-config-standard": "37.0.0",
+		"stylelint-scss": "6.11.1",
 		"terser": "5.39.0",
 		"twig": "1.17.1",
 		"typescript": "5.8.2"

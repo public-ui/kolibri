@@ -31,4 +31,14 @@
 	.entry-item {
 		flex-grow: 1;
 	}
+
+	.entry {
+		.kol-span-wc {
+			place-items: start;
+		}
+
+		.button {
+			text-align: left;
+		}
+	}
 }
