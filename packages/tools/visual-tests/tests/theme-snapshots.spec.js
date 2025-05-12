@@ -22,6 +22,10 @@ const DEFAULT_SNAPSHOT_OPTIONS = {
 };
 
 ROUTES.forEach((options, route) => {
+	// Skip unnecessary snapshot tests
+	if (options?.snapshot?.skip === true && options?.snapshot?.zoom?.skip === true) {
+		return;
+	}
 	test(`snapshot for ${route}`, async ({ page }) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`);
@@ -34,11 +38,11 @@ ROUTES.forEach((options, route) => {
 				}
 			`,
 		});
-		if (options?.viewportSize) {
-			await page.setViewportSize(options.viewportSize);
+		if (options?.snapshot?.viewportSize) {
+			await page.setViewportSize(options?.snapshot?.viewportSize);
 		}
-		if (options?.waitForTimeout) {
-			await page.waitForTimeout(options.waitForTimeout);
+		if (options?.snapshot?.waitForTimeout) {
+			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
 
 		/**
@@ -46,20 +50,29 @@ ROUTES.forEach((options, route) => {
 		 */
 		const snapshotName = `snapshot-for-${route.replace(/(\/|\?|&|=)/g, '-')}`;
 
-		await expect(page).toHaveScreenshot(`${snapshotName}.png`, {
+		const SNAPSHOT_OPTIONS = {
 			...DEFAULT_SNAPSHOT_OPTIONS,
-			...options,
-		});
-		await page.evaluate(() => {
-			// eslint-disable-next-line no-undef
-			document.body.style.zoom = '400%';
-			// document.body.style.transform = 'scale(4)';
-			// document.body.style.transformOrigin = 'top left';
-			// document.body.style.width = '25vw';
-		});
-		await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
-			...DEFAULT_SNAPSHOT_OPTIONS,
-			...options,
-		});
+			...options?.snapshot?.options,
+		};
+
+		// Skip unnecessary normal tests
+		if (options?.snapshot?.skip !== true) {
+			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+		}
+
+		// Skip unnecessary zoom tests
+		if (options?.snapshot?.zoom?.skip !== true) {
+			await page.evaluate(() => {
+				// eslint-disable-next-line no-undef
+				document.body.style.zoom = '400%';
+				// document.body.style.transform = 'scale(4)';
+				// document.body.style.transformOrigin = 'top left';
+				// document.body.style.width = '25vw';
+			});
+			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
+				...SNAPSHOT_OPTIONS,
+				...options?.snapshot?.zoom?.options,
+			});
+		}
 	});
 });
