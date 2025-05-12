@@ -38,7 +38,7 @@ $visible-options: var(--visible-options, 5);
 		}
 
 		.kol-custom-suggestions-options-group {
-			max-height: calc($option-height * $visible-options + rem(2));
+			max-height: calc($option-height * $visible-options + rem(2)) !important;
 		}
 	}
 }
