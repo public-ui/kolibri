@@ -1,19 +1,10 @@
+@use '../mixins/button' as *;
 @use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
 	:host {
-		--kolibri-spacing: #{rem(4)};
+		font-family: var(--font-family);
 	}
 
-	a,
-	button {
-		appearance: none;
-		color: var(--color-blue);
-		text-decoration: underline;
-	}
-
-	a:hover,
-	button:hover {
-		color: var(--color-blue-130);
-	}
+	@include kol-button;
 }

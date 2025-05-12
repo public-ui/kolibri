@@ -6,6 +6,8 @@ import type {
 	PropAriaDescription,
 	PropAriaExpanded,
 	PropAriaOwns,
+	PropButtonVariant,
+	PropCustomClass,
 	PropDisabled,
 	PropDownload,
 	PropHideLabel,
@@ -46,3 +48,15 @@ type OptionalStates = { ariaCurrent: string } & PropAriaExpanded & PropAriaOwns 
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type LinkStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type LinkAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+
+export type OptionalWcProps = OptionalProps 
+	& PropButtonVariant
+	& PropCustomClass;
+
+export type OptionalWcStates = OptionalStates
+	& PropButtonVariant
+	& PropCustomClass;
+
+export type LinkWcProps = Generic.Element.Members<RequiredProps, OptionalWcProps>;
+export type LinkWcStates = Generic.Element.Members<RequiredStates, OptionalWcStates>;
+export type LinkWcAPI = Generic.Element.ComponentApi<RequiredProps, OptionalWcProps, RequiredStates, OptionalWcStates>;
