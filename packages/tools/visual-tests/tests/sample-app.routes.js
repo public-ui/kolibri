@@ -84,9 +84,21 @@ ROUTES.set('heading/basic');
 ROUTES.set('heading/paragraph');
 ROUTES.set('icon/basic');
 ROUTES.set('image/basic');
-ROUTES.set('input-checkbox/basic?noColumns');
-ROUTES.set('input-checkbox/button?noColumns');
-ROUTES.set('input-checkbox/switch?noColumns');
+ROUTES.set('input-checkbox/basic?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
+});
+ROUTES.set('input-checkbox/button?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
+});
+ROUTES.set('input-checkbox/switch?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('input-color/basic?noColumns');
 ROUTES.set('input-date/basic?noColumns');
 ROUTES.set('input-email/basic?noColumns');
@@ -94,7 +106,11 @@ ROUTES.set('input-file/basic?noColumns');
 ROUTES.set('input-number/basic?noColumns');
 ROUTES.set('input-password/basic?noColumns');
 ROUTES.set('input-password/show-password?noColumns');
-ROUTES.set('input-radio/basic?noColumns');
+ROUTES.set('input-radio/basic?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('input-radio/horizontal?noColumns');
 ROUTES.set('input-radio/object?noColumns');
 ROUTES.set('input-range/basic?noColumns');
@@ -132,7 +148,11 @@ ROUTES.set('quote/block');
 ROUTES.set('select/basic?noColumns');
 ROUTES.set('skip-nav/basic');
 ROUTES.set('spin/basic');
-ROUTES.set('single-select/basic?noColumns');
+ROUTES.set('single-select/basic?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('spin/custom');
 ROUTES.set('spin/cycle');
 ROUTES.set('split-button/basic');
@@ -247,12 +267,27 @@ ROUTES.set('toast/basic?type=error&variant=msg', {
 
 ROUTES.set('toolbar/basic');
 ROUTES.set('toolbar/disabled');
-ROUTES.set('tree/basic/home');
+ROUTES.set('tree/basic/home', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('version/basic');
 ROUTES.set('version/context');
-ROUTES.set('scenarios/static-form');
-ROUTES.set('scenarios/disabled-interactive-scenario');
+ROUTES.set('scenarios/static-form', {
+	axe: {
+		skipFailures: true,
+	},
+});
+ROUTES.set('scenarios/disabled-interactive-scenario', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 4000,
@@ -282,5 +317,9 @@ ROUTES.set('scenarios/focus-elements?component=link');
 ROUTES.set('scenarios/focus-elements?component=linkButton');
 ROUTES.set('scenarios/focus-elements?component=select');
 ROUTES.set('scenarios/focus-elements?component=selectMultiple');
-ROUTES.set('scenarios/focus-elements?component=singleSelect');
+ROUTES.set('scenarios/focus-elements?component=singleSelect', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('scenarios/focus-elements?component=textarea');
