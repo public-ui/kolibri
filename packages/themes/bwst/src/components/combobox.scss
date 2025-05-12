@@ -72,6 +72,7 @@ $visible-options: 5;
 			line-height: 1;
 			padding: rem(10) rem(12);
 
+			&[aria-selected],
 			&:focus {
 				background-color: var(--color-primary-variant);
 				color: var(--color-light);

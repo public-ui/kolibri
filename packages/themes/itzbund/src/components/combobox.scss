@@ -83,6 +83,7 @@ $visible-options: 5;
 			height: $option-height;
 			padding: rem(10) rem(12);
 
+			&[aria-selected],
 			&:focus {
 				background-color: var(--color-petrol);
 				color: var(--color-weiss);

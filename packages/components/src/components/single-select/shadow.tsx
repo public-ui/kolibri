@@ -291,6 +291,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 													this.selectOption(option as Option<string>);
 													this.refInput?.focus();
 													this.toggleListbox(event);
+													this._isOpen = false;
+													this._hasOpened = false;
 												}}
 												onMouseOver={() => {
 													if (!this.blockSuggestionMouseOver) {
@@ -407,7 +409,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'NumpadEnter':
 			case 'Enter': {
 				this.toggleListbox(event);
-
+				this._hasOpened = false;
+				this._isOpen = false;
 				break;
 			}
 			case 'Home': {

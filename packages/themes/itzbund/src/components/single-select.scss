@@ -85,6 +85,7 @@ $visible-options: 5;
 				padding-left: 1em;
 			}
 
+			&[aria-selected],
 			&:focus,
 			&.highlighted {
 				background-color: var(--color-petrol);
