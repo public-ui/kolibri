@@ -14,9 +14,5 @@
 		border-style: solid;
 	}
 
-	.kol-link-wc > a {
-		text-decoration: none;
-	}
-
 	@include kol-button;
 }

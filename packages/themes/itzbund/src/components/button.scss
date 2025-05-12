@@ -2,25 +2,5 @@
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
-	a,
-	button {
-		border-radius: 32px;
-		font-family: var(--font-family-sans);
-		/* text-transform: uppercase; */
-	}
-
-	a > .kol-span-wc,
-	button > .kol-span-wc {
-		border-radius: 32px;
-		border-style: solid;
-		min-width: var(--a11y-min-size);
-		min-height: var(--a11y-min-size);
-		border-width: var(--spacing);
-		font-size: inherit;
-		/*line-height: 1.25em;*/
-		/*padding: calc(4 * var(--spacing));*/
-		padding: 0 rem(16);
-	}
-
 	@include kol-button;
 }

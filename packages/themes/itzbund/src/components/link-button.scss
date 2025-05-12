@@ -1,1 +1,6 @@
-@use '../@shared/link-core' as *;
+@use '../mixins/button' as *;
+@use '../mixins/rem' as *;
+
+@layer kol-theme-component {
+	@include kol-button;
+}

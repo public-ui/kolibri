@@ -62,8 +62,6 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						class={{
 							'main-button': true,
 							button: true,
-							[this._variant as string]: this._variant !== 'custom',
-							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 						}}
 						_ariaControls={this._ariaControls}
 						_ariaExpanded={this._ariaExpanded}

@@ -14,18 +14,5 @@
 		background-color: var(--color-grey-5);
 	}
 
-	a .kol-span-wc,
-	button .kol-span-wc {
-		border-radius: 0;
-		border-style: solid;
-		border-width: 2px;
-		font-weight: var(--font-weight-bold);
-		margin: 0;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: 0.25em 0.75em;
-		line-height: 1.2;
-	}
-
 	@include kol-button;
 }
