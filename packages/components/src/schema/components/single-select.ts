@@ -16,6 +16,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropRows
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 
@@ -34,6 +35,7 @@ type OptionalProps = {
 	PropHorizontalIcons &
 	PropName &
 	PropRequired &
+	PropRows &
 	PropSyncValueBySelector &
 	PropShortKey &
 	PropTouched;
@@ -55,6 +57,7 @@ type OptionalStates = {
 	PropId &
 	PropName &
 	PropRequired &
+	PropRows &
 	PropMsg &
 	PropShortKey &
 	PropTouched;

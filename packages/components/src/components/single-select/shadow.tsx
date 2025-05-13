@@ -1,4 +1,4 @@
-import type {
+import {
 	HideMsgPropType,
 	IconsHorizontalPropType,
 	IdPropType,
@@ -8,6 +8,7 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
+	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectAPI,
 	SingleSelectStates,
@@ -269,7 +270,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
 					</div>
 					{this._isOpen && !(this.state._disabled === true) && (
-						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+						<CustomSuggestionsOptionsGroupFc
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+							style={{ '--visible-options': `${this._rows ?? 5}` }}
+						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
 									<CustomSuggestionsOptionFc
@@ -536,6 +541,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop() public _hideClearButton?: boolean = false;
 
+	/**
+	 * Maximum number of visible rows in the options dropdown before scrolling.
+	 */
+	@Prop() public _rows?: RowsPropType;
+
 	@State() public state: SingleSelectStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -651,6 +661,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_hideClearButton ')
 	public validateHideClearButton(value?: boolean): void {
 		this.controller.validateHideClearButton(value);
+	}
+
+	@Watch('_rows')
+	public validateRows(value?: number): void {
+		this.controller.validateRows(value);
 	}
 
 	@Listen('mousemove')
