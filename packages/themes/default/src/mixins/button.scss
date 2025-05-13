@@ -36,6 +36,12 @@
 			--text-color: var(--color-primary);
 		}
 
+		&--normal {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-text);
+			--text-color: var(--color-text);
+		}
+
 		&--danger {
 			--text-background-color: var(--color-danger);
 			--text-border-color: var(--color-danger);
