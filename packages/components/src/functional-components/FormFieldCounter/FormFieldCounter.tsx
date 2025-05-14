@@ -35,7 +35,9 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ id, currentLength, c
 					: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingDebounced) } })}
 			</span>
 
-			<span id={`${id}-character-limit-hint`}>{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}</span>
+			<span id={`${id}-character-limit-hint`} class="visually-hidden">
+				{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}
+			</span>
 		</>
 	);
 };
