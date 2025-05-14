@@ -1,5 +1,5 @@
-@use '../rem' as *;
 @use '../mixins/button' as *;
+@use '../mixins/rem' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -8,13 +8,10 @@
 		border-style: solid;
 		border-width: var(--border-width);
 		border-color: var(--color-primary);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
 	}
 
 	.popover {
-		background: var(--color-light);
-		top: calc(100% + rem(4));
+		background-color: #fff;
 	}
 
 	.secondary-button button {
@@ -27,28 +24,30 @@
 		width: rem(1);
 	}
 
-	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-radius: var(--border-radius);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: rem(8) rem(14);
-		text-align: center;
-		transition-duration: 0.2s;
-		transition-property: background-color, color, border-color;
+	@include kol-button;
+
+	:is(a, button) {
+		height: 100%;
 	}
 
-	.main-button :is(a, button) > .kol-span-wc {
+	:is(a, button) > .kol-span-wc {
+		border-style: none;
+		height: 100%;
+	}
+
+	.main-button > .button > .kol-span-wc {
 		border-right: none;
+		border-top-left-radius: calc(var(--border-radius) - var(--border-width));
+		border-bottom-left-radius: calc(var(--border-radius) - var(--border-width));
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
 
-	.secondary-button :is(a, button) > .kol-span-wc {
+	.secondary-button > .button > .kol-span-wc {
 		border-left: none;
+		border-top-right-radius: calc(var(--border-radius) - var(--border-width));
+		border-bottom-right-radius: calc(var(--border-radius) - var(--border-width));
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}
-
-	@include kol-button;
 }

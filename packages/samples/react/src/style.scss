@@ -48,6 +48,10 @@ hr {
 	width: 500px;
 }
 
+.drawer-content-vertical {
+	width: rem(400);
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
