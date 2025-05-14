@@ -81,7 +81,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-form-field-textarea', {
 				'kol-form-field--has-value': this.state._hasValue,
-				'kol-form-field--has-counter': this.hasCharacterLimit(),
+				'kol-form-field--has-counter': this.controller.hasCharacterLimit(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.textareaRef?.focus(),
@@ -89,12 +89,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		};
 	}
 
-	private hasCharacterLimit() {
-		return typeof this.state._characterLimit === 'number';
-	}
-
 	private getTextAreaProps(): TextAreaStateWrapperProps {
-		const ariaDescribedBy = this.hasCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = this.controller.hasCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
 			ref: this.catchRef,

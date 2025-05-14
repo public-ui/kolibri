@@ -277,4 +277,8 @@ export class InputController extends ControlledInputController implements Watche
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
 		setState(this.component, '_currentLengthDebounced', length);
 	}, 500);
+
+	public hasCharacterLimit() {
+		return typeof this.component.state._characterLimit === 'number';
+	}
 }
