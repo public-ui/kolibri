@@ -68,9 +68,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
-
-		// Cursor-Stil basierend auf disabled Zustand
-		const cursorStyle = this.state._disabled ? 'not-allowed' : 'pointer';
+		const cursorClass = this.state._disabled ? 'cursor-not-allowed' : 'cursor-pointer';
 
 		return (
 			<Host class="kol-input-file">
@@ -111,45 +109,13 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							<span>{this.state._label}</span>
 						)}
 					</span>
-					<label
-						slot="input"
-						style={{
-							position: 'relative',
-							display: 'flex',
-							alignItems: 'center',
-							cursor: cursorStyle,
-							width: '100%',
-						}}
-						htmlFor={this.state._id}
-					>
-						<div
-							style={{
-								padding: '0.15em 0.4em',
-								border: '1px solid black',
-								borderRadius: '2px',
-								backgroundColor: '#f0f0f0',
-								whiteSpace: 'nowrap',
-								margin: '6px',
-								fontSize: '15px',
-								textAlign: 'left',
-								cursor: cursorStyle,
-							}}
-							aria-hidden="true"
-						>
+
+					<label slot="input" class={`kol-input-file-label ${cursorClass}`} htmlFor={this.state._id}>
+						<div class={`kol-input-file-button ${cursorClass}`} aria-hidden="true">
 							{this.state._multiple ? 'Dateien auswählen' : 'Datei auswählen'}
 						</div>
 
-						{/* Ersatz für den Text-Teil rechts */}
-						<div
-							style={{
-								color: '#333',
-								whiteSpace: 'nowrap',
-								overflow: 'hidden',
-								textOverflow: 'ellipsis',
-								cursor: cursorStyle,
-							}}
-							aria-hidden="true"
-						>
+						<div class={`kol-input-file-text ${cursorClass}`} aria-hidden="true">
 							{this.state._value ? this.state._value : 'Keine Datei ausgewählt'}
 						</div>
 
@@ -169,6 +135,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							required={this.state._required}
 							type="file"
 							value={this.state._value as string}
+							class={`kol-input-file-input ${cursorClass}`}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
 							onInput={this.onInput}
@@ -183,14 +150,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							onBlur={(event) => {
 								this.controller.onFacade.onBlur(event);
 								this.inputHasFocus = false;
-							}}
-							style={{
-								position: 'absolute',
-								inset: '0',
-								width: '100%',
-								height: '100%',
-								opacity: '0',
-								cursor: cursorStyle,
 							}}
 						/>
 					</label>

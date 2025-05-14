@@ -10,14 +10,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           V
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input accesskey="V" autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input accesskey="V" autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -33,14 +33,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -56,14 +56,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: not-allowed; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: not-allowed;">
+      <label class="cursor-not-allowed kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-not-allowed kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: not-allowed;">
+        <div aria-hidden="true" class="cursor-not-allowed kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" disabled="" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: not-allowed;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-not-allowed kol-input-file-input" disabled="" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -79,14 +79,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -102,14 +102,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -125,14 +125,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -148,14 +148,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -171,14 +171,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -194,14 +194,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -217,14 +217,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -241,14 +241,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           S
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -264,14 +264,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -287,14 +287,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
@@ -310,14 +310,14 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <label htmlfor="id-nonce" slot="input" style="position: relative; display: flex; align-items: center; cursor: pointer; width: 100%;">
-        <div aria-hidden="true" style="padding: 0.15em 0.4em; border: 1px solid black; border-radius: 2px; background-color: #f0f0f0; white-space: nowrap; margin: 6px; font-size: 15px; text-align: left; cursor: pointer;">
+      <label class="cursor-pointer kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-button">
           Datei auswählen
         </div>
-        <div aria-hidden="true" style="color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
+        <div aria-hidden="true" class="cursor-pointer kol-input-file-text">
           File
         </div>
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+        <input autocapitalize="off" autocorrect="off" class="cursor-pointer kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
       </label>
     </kol-input>
   </template>
