@@ -8,8 +8,9 @@ export type TextAreaStateWrapperProps = Partial<TextAreaProps> & {
 	state: TextareaStates;
 };
 
-function getTextAreaProps(state: TextareaStates): TextAreaProps {
-	const { ariaDescribedBy } = getRenderStates(state);
+function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>): TextAreaProps {
+	const renderStates = getRenderStates(state);
+	const ariaDescribedBy = [...renderStates.ariaDescribedBy, ...(other.ariaDescribedBy ?? [])];
 
 	const props: TextAreaProps = {
 		id: state._id,
@@ -19,7 +20,6 @@ function getTextAreaProps(state: TextareaStates): TextAreaProps {
 		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
-		ariaDescribedBy: ariaDescribedBy,
 		rows: state._rows,
 		readonly: state._readOnly,
 		required: state._required,
@@ -27,13 +27,15 @@ function getTextAreaProps(state: TextareaStates): TextAreaProps {
 		maxLength: state._maxLength,
 		touched: state._touched,
 		msg: convertMsgToInternMsg(state._msg),
+		...other,
+		ariaDescribedBy,
 	};
 
 	return props;
 }
 
 const TextAreaStateWrapper: FC<TextAreaStateWrapperProps> = ({ state, ...other }) => {
-	return <KolTextAreaFc {...getTextAreaProps(state)} {...other} />;
+	return <KolTextAreaFc {...getTextAreaProps(state, other)} />;
 };
 
 export default TextAreaStateWrapper;

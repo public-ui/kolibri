@@ -52,7 +52,6 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
 	formFieldTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
 	formFieldMsgProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
-	formFieldCounterProps?: JSXBase.HTMLAttributes<HTMLSpanElement>;
 	formFieldInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 } & {
 	[key: `data-${string}`]: unknown;
@@ -93,7 +92,6 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		formFieldHintProps,
 		formFieldTooltipProps,
 		formFieldMsgProps,
-		formFieldCounterProps,
 		formFieldInputProps,
 		...other
 	} = props;
@@ -142,7 +140,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} hideLabel={hideLabel} align={tooltipAlign} badgeText={badgeText} />
 				)}
 			</InputContainer>
-			{counter ? <KolFormFieldCounterFc {...(formFieldCounterProps || {})} {...counter} /> : null}
+			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
 			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideMsg={hideMsg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}

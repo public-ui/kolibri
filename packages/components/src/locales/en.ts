@@ -58,6 +58,7 @@ export default {
 	'data-browse-text': 'Browse',
 	'pagination-position-top': 'top',
 	'pagination-position-bottom': 'bottom',
+	'character-limit-hint': 'You can enter up to {{limit}} characters',
 	'character-limit-remaining': 'You have {{remaining}} characters remaining.',
 	'character-limit-exceeded': 'You have {{over}} characters too many.',
 };

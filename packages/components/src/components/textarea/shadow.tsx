@@ -91,12 +91,15 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	private getTextAreaProps(): TextAreaStateWrapperProps {
+		const ariaDescribedBy = typeof this.state._characterLimit === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+
 		return {
 			ref: this.catchRef,
 			state: this.state,
 			style: {
 				resize: this.state._resize,
 			},
+			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onFocus: (event: Event) => {

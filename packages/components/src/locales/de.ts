@@ -58,6 +58,7 @@ export default {
 	'data-browse-text': 'Datei auswählen',
 	'pagination-position-top': 'oben',
 	'pagination-position-bottom': 'unten',
+	'character-limit-hint': 'Es können bis zu {{limit}} Zeichen eingegeben werden.',
 	'character-limit-remaining': 'Es sind noch {{remaining}} Zeichen verfügbar.',
 	'character-limit-exceeded': 'Es sind {{over}} Zeichen zu viel.',
 };

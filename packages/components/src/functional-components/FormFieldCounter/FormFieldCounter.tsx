@@ -4,12 +4,13 @@ import clsx from 'clsx';
 import { translate } from '../../i18n';
 
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
+	id: string;
 	currentLength: number;
 	currentLengthDebounced: number;
 	maxLength: number;
 };
 
-const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, class: classNames, ...other }) => {
+const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ id, currentLength, currentLengthDebounced, maxLength }) => {
 	const remainingLive = maxLength - currentLength;
 	const exceededLive = remainingLive < 0;
 	const remainingDebounced = maxLength - currentLengthDebounced;
@@ -18,14 +19,9 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 	return (
 		<>
 			<span
-				class={clsx(
-					'kol-form-field__counter',
-					{
-						'kol-form-field__counter--exceeded': exceededLive,
-					},
-					classNames,
-				)}
-				{...other}
+				class={clsx('kol-form-field__counter', {
+					'kol-form-field__counter--exceeded': exceededLive,
+				})}
 				aria-hidden="true"
 				data-testid="input-counter"
 			>
@@ -38,6 +34,8 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 					? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingDebounced)) } })
 					: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingDebounced) } })}
 			</span>
+
+			<span id={`${id}-character-limit-hint`}>{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}</span>
 		</>
 	);
 };
