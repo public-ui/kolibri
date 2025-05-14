@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	ButtonProps,
+	CharacterLimitPropType,
 	FocusableElement,
 	HideMsgPropType,
 	IconsHorizontalPropType,
@@ -75,6 +76,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	private readonly onInput = (event: InputEvent) => {
 		const value = (event.target as HTMLInputElement).value;
 		setState(this, '_currentLength', value.length);
+		this.controller.updateCurrentLengthDebounced(value.length);
 		this._value = value;
 		this.controller.onFacade.onInput(event);
 	};
@@ -92,10 +94,13 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
+		const ariaDescribedBy = this.controller.hasCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+
 		return {
 			ref: this.catchRef,
 			state: this.state,
 			type: 'email',
+			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
@@ -133,16 +138,15 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
+	 * When defined, a remaining characters counter is shown. The field is marked as invalid when the character limit has been exceeded.
+	 */
+	@Prop() public _characterLimit?: CharacterLimitPropType;
+
+	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Shows the character count on the lower border of the input.
-	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -264,6 +268,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@State() public state: InputEmailStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -291,14 +296,14 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		this.controller.validateAutoComplete(value);
 	}
 
+	@Watch('_characterLimit')
+	public validateCharacterLimit(value?: CharacterLimitPropType): void {
+		this.controller.validateCharacterLimit(value);
+	}
+
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
-		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideMsg')

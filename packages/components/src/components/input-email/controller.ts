@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { InputEmailProps, InputEmailWatches, MultiplePropType } from '../../schema';
-import { validateMultiple } from '../../schema';
+import type { CharacterLimitPropType, InputEmailProps, InputEmailWatches, MultiplePropType } from '../../schema';
+import { validateCharacterLimit, validateMultiple } from '../../schema';
 
 import { InputTextEmailController } from '../input-text/controller';
 
@@ -17,8 +17,13 @@ export class InputEmailController extends InputTextEmailController implements In
 		validateMultiple(this.component, value);
 	}
 
+	public validateCharacterLimit(value?: CharacterLimitPropType): void {
+		validateCharacterLimit(this.component, value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
+		this.validateCharacterLimit(this.component._characterLimit);
 		this.validateMultiple(this.component._multiple);
 	}
 }

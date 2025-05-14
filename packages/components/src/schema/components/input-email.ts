@@ -3,8 +3,8 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropCharacterLimit,
 	PropDisabled,
-	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
 	PropHorizontalIcons,
@@ -35,8 +35,8 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	value: string;
 } & PropAccessKey &
+	PropCharacterLimit &
 	PropDisabled &
-	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
 	PropHorizontalIcons &
@@ -53,12 +53,13 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
+	currentLength: number;
+	currentLengthDebounced: number;
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	currentLength: number;
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
@@ -67,8 +68,8 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropCharacterLimit &
 	PropDisabled &
-	PropHasCounter &
 	PropHideLabel &
 	KoliBriHIcons &
 	PropMsg &
