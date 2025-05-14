@@ -26,7 +26,6 @@ export * from './download';
 export * from './error-list';
 export * from './has-closer';
 export * from './has-compact-button';
-export * from './has-counter';
 export * from './has-icons-when-expanded';
 export * from './heading-variant';
 export * from './hide-label';
