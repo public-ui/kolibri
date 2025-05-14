@@ -1,5 +1,5 @@
-import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
-import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type { CharacterLimitPropType, InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
+import { validateCharacterLimit, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
 
@@ -31,12 +31,8 @@ export class InputPasswordController extends InputIconController implements Inpu
 		);
 	}
 
-	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this.component, value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
-		});
+	public validateCharacterLimit(value?: CharacterLimitPropType): void {
+		validateCharacterLimit(this.component, value);
 	}
 
 	public validateVariant(value?: PasswordVariantPropType): void {
@@ -81,7 +77,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
-		this.validateHasCounter(this.component._hasCounter);
+		this.validateCharacterLimit(this.component._characterLimit);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePattern(this.component._pattern);
 		this.validatePlaceholder(this.component._placeholder);
