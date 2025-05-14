@@ -7,7 +7,6 @@ import type {
 	CharacterLimitPropType,
 	CSSResize,
 	FocusableElement,
-	HasCounterPropType,
 	HideMsgPropType,
 	IconsHorizontalPropType,
 	IdPropType,
@@ -82,7 +81,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-form-field-textarea', {
 				'kol-form-field--has-value': this.state._hasValue,
-				'kol-form-field--has-counter': !!this.state._hasCounter,
+				'kol-form-field--has-counter': this.hasCharacterLimit(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.textareaRef?.focus(),
@@ -90,8 +89,12 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		};
 	}
 
+	private hasCharacterLimit() {
+		return typeof this.state._characterLimit === 'number';
+	}
+
 	private getTextAreaProps(): TextAreaStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._characterLimit === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = this.hasCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
 			ref: this.catchRef,
@@ -146,12 +149,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Shows the character count on the lower border of the input.
-	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -305,11 +302,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_hasCounter')
-	public validateHasCounter(value?: HasCounterPropType): void {
-		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideMsg')
