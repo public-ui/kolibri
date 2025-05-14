@@ -35,10 +35,12 @@ export type InputStateWrapperProps = Partial<InputProps> & {
 
 /**
  * @param state
+ * @param other
  * @param customSuggestions - Set to true when a custom implementation for _suggestions is provided. Omits the native datalist.
  */
-function getInputProps(state: InputState, customSuggestions?: boolean): InputProps {
-	const { ariaDescribedBy } = getRenderStates(state);
+function getInputProps(state: InputState, other: Partial<InputProps>, customSuggestions?: boolean): InputProps {
+	const renderStates = getRenderStates(state);
+	const ariaDescribedBy = [...renderStates.ariaDescribedBy, ...(other.ariaDescribedBy ?? [])];
 
 	const props: InputProps = {
 		id: state._id,
@@ -47,8 +49,6 @@ function getInputProps(state: InputState, customSuggestions?: boolean): InputPro
 		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
-
-		ariaDescribedBy: ariaDescribedBy,
 	};
 
 	if ('_type' in state) props.type = state._type;
@@ -76,11 +76,15 @@ function getInputProps(state: InputState, customSuggestions?: boolean): InputPro
 		}
 	}
 
-	return props;
+	return {
+		...props,
+		...other,
+		ariaDescribedBy,
+	};
 }
 
 const InputStateWrapper: FC<InputStateWrapperProps> = ({ state, customSuggestions, ...other }) => {
-	return <KolInputFc {...getInputProps(state, customSuggestions)} {...other} />;
+	return <KolInputFc {...getInputProps(state, other, customSuggestions)} />;
 };
 
 export default InputStateWrapper;
