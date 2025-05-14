@@ -8,13 +8,12 @@ export const TextareaWithCounter: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				This sample demonstrates the <code>_hasCounter</code>-property of KolTextarea. It shows how many characters have been entered.
+				This sample demonstrates the <code>_characterLimit</code>-property of KolTextarea. It shows how many characters you have left.
 			</p>
 		</SampleDescription>
 
 		<section className="w-full">
-			<KolTextarea _label="Textara with counter" _hasCounter={true} />
-			<KolTextarea _label="Textara with counter and initial value" _hasCounter={true} _value={'Lorem Ipsum'} className="mt" />
+			<KolTextarea _label="Textara with charachter limit" _value={'Lorem Ipsum'} className="mt" _characterLimit={20} />
 		</section>
 	</>
 );

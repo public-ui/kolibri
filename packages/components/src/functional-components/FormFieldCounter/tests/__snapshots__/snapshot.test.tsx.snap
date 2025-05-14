@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolFormFieldCounterFc should render correctly 1`] = `
-<span aria-atomic="true" aria-live="polite" class="custom-class kol-form-field__counter" data-testid="input-counter">
+<span aria-hidden="true" class="custom-class kol-form-field__counter" data-testid="input-counter">
   kol-character-limit-remaining
 </span>
 `;

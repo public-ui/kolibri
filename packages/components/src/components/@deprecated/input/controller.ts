@@ -39,6 +39,7 @@ import { ControlledInputController } from '../../input-adapter-leanup/controller
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
+import { debounce } from 'lodash-es';
 
 type ValueChangeListener = (value: StencilUnknown) => void;
 
@@ -272,4 +273,8 @@ export class InputController extends ControlledInputController implements Watche
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
 	};
+
+	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
+		setState(this.component, '_currentLengthDebounced', length);
+	}, 500);
 }

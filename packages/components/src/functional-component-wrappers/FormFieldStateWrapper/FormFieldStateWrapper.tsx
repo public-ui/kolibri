@@ -54,8 +54,15 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		props.readOnly = state._readOnly;
 	}
 
-	if ('_currentLength' in state && typeof state._currentLength === 'number' && '_characterLimit' in state && typeof state._characterLimit === 'number') {
-		props.counter = { currentLength: state._currentLength, maxLength: state._characterLimit };
+	if (
+		'_currentLength' in state &&
+		typeof state._currentLength === 'number' &&
+		'_currentLengthDebounced' in state &&
+		typeof state._currentLengthDebounced === 'number' &&
+		'_characterLimit' in state &&
+		typeof state._characterLimit === 'number'
+	) {
+		props.counter = { currentLength: state._currentLength, maxLength: state._characterLimit, currentLengthDebounced: state._currentLengthDebounced };
 	}
 
 	return props;

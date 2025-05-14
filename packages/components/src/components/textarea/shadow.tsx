@@ -266,6 +266,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -430,6 +431,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		if (this.textareaRef instanceof HTMLTextAreaElement) {
 			const value = this.textareaRef.value;
 			setState(this, '_currentLength', value.length);
+			this.controller.updateCurrentLengthDebounced(value.length);
 			this._value = value;
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.textareaRef);
