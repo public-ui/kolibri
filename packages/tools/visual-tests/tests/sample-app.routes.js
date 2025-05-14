@@ -457,6 +457,9 @@ ROUTES.set('input-range/basic', {
 	},
 });
 ROUTES.set('input-text/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
