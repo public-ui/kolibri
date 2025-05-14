@@ -62,7 +62,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile
 
       - name: Build
-        run: pnpm -r build
+        run: pnpm --filter @public-ui/theme-* --filter @public-ui/sample-react^... build
 
       - name: Purge existing snapshots (optional)
         if: inputs.delete_snapshots == true
