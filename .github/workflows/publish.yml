@@ -9,11 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       increment:
-        type: choice
-        description: Should the version be incremented?
-        options:
-          - true
-          - false
+        type: boolean
+        description: 'Would you like to set the version before publishing? (Default: The current version from the code repository will be used.)'
+        default: true
       tag:
         type: choice
         description: Which NPM tag should be assigned?
