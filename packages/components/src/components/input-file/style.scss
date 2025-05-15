@@ -13,4 +13,37 @@
 	label input[multiple]:before {
 		content: 'Dateien auswählen';
 	}
+
+	.kol-input-file-label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	.kol-input-file-button {
+		padding: 0.15em 0.4em;
+		border: 1px solid #767676;
+		border-radius: 2px;
+		background-color: #f0f0f0;
+		white-space: nowrap;
+		margin: 6px 5px 6px 8px;
+		font-size: 15px;
+		text-align: left;
+	}
+
+	.kol-input-file-text {
+		color: #333;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.kol-input-file-input {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
 }

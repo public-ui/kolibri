@@ -108,7 +108,16 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							<span>{this.state._label}</span>
 						)}
 					</span>
-					<div slot="input">
+
+					<label slot="input" class="kol-input-file-label" htmlFor={this.state._id}>
+						<div class="kol-input-file-button" aria-hidden="true">
+							{this.state._multiple ? 'Dateien auswählen' : 'Datei auswählen'}
+						</div>
+
+						<div class="kol-input-file-text" aria-hidden="true">
+							{this.state._value ? this.state._value : 'Keine Datei ausgewählt'}
+						</div>
+
 						<input
 							ref={this.catchRef}
 							title=""
@@ -125,10 +134,15 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							required={this.state._required}
 							type="file"
 							value={this.state._value as string}
+							class="kol-input-file-input"
 							{...this.controller.onFacade}
 							onChange={this.onChange}
 							onInput={this.onInput}
 							onFocus={(event) => {
+								if (this.state._disabled) {
+									event.preventDefault();
+									return false;
+								}
 								this.controller.onFacade.onFocus(event);
 								this.inputHasFocus = true;
 							}}
@@ -137,7 +151,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 								this.inputHasFocus = false;
 							}}
 						/>
-					</div>
+					</label>
 				</KolInputTag>
 			</Host>
 		);
@@ -406,12 +420,26 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private onChange = (event: Event): void => {
 		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
-			const value = this.inputRef.files;
+			const files = this.inputRef.files;
 
-			this.controller.onFacade.onChange(event, value);
+			if (files && files.length > 0) {
+				if (this.state._multiple && files.length > 1) {
+					// Bei multiple Auswahl und mehr als einer Datei: Anzahl der Dateien anzeigen
+					this._value = `${files.length} Dateien`;
+				} else {
+					// Bei einer einzelnen Datei: Dateiname anzeigen
+					this._value = files[0].name;
+				}
+			} else {
+				// Keine Datei ausgewählt
+				this._value = undefined;
+			}
+
+			this.state._value = this._value; // Update the state with the new value
+			this.controller.onFacade.onChange(event, files);
 
 			// Static form handling
-			this.controller.setFormAssociatedValue(value);
+			this.controller.setFormAssociatedValue(files);
 		}
 	};
 

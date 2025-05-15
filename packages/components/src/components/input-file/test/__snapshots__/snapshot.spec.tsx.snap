@@ -10,9 +10,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           V
         </span>
       </span>
-      <div slot="input">
-        <input accesskey="V" autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -27,9 +33,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -44,9 +56,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" disabled="" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" disabled="" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -61,9 +79,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -78,9 +102,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -95,9 +125,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -112,9 +148,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -129,9 +171,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -146,9 +194,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -163,9 +217,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -181,9 +241,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           S
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -198,9 +264,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -215,9 +287,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
@@ -232,9 +310,15 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           Label
         </span>
       </span>
-      <div slot="input">
-        <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
-      </div>
+      <label class="kol-input-file-label" htmlfor="id-nonce" slot="input">
+        <div aria-hidden="true" class="kol-input-file-button">
+          Datei auswählen
+        </div>
+        <div aria-hidden="true" class="kol-input-file-text">
+          File
+        </div>
+        <input autocapitalize="off" autocorrect="off" class="kol-input-file-input" id="id-nonce" name="field" type="file" value="File">
+      </label>
     </kol-input>
   </template>
 </kol-input-file>
