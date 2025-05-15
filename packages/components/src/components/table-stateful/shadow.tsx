@@ -410,9 +410,9 @@ export class KolTableStateful implements TableAPI {
 			return;
 		}
 
-		let sortedData: KoliBriTableDataType[] = this.state._data;
+		const sortedData: KoliBriTableDataType[] = [...this.state._data];
 		if (this.sortData.length > 0) {
-			sortedData = this.state._data.sort((a: KoliBriTableDataType, b: KoliBriTableDataType) => {
+			sortedData.sort((a: KoliBriTableDataType, b: KoliBriTableDataType) => {
 				for (let index = 0; index < this.sortData.length; index++) {
 					const data = this.sortData[index];
 					const result = data.compareFn(a, b);
