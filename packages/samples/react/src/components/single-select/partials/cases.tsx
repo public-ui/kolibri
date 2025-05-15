@@ -14,6 +14,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 				{...props}
 				_hint={HINT_MSG}
 				_label="Label"
+				_rows={4}
 				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
 				_value={'de'}
 				_on={{
