@@ -21,7 +21,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { devHint, setState } from '../../schema';
+import { devHint } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -75,10 +75,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		const value = (event.target as HTMLInputElement).value;
-		setState(this, '_currentLength', value.length);
-		this.controller.updateCurrentLengthDebounced(value.length);
-		this._value = value;
+		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
 	};
 

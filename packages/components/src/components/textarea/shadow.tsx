@@ -23,7 +23,6 @@ import type {
 	TextareaStates,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setState } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
@@ -420,10 +419,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		if (this.textareaRef instanceof HTMLTextAreaElement) {
-			const value = this.textareaRef.value;
-			setState(this, '_currentLength', value.length);
-			this.controller.updateCurrentLengthDebounced(value.length);
-			this._value = value;
+			this._value = this.textareaRef.value;
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.textareaRef);
 			}

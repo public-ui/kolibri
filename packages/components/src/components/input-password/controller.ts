@@ -18,6 +18,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 	protected afterSyncCharCounter = () => {
 		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
 			this.component.state._currentLength = this.component._value.length;
+			this.updateCurrentLengthDebounced(this.component._value.length);
 		}
 	};
 
@@ -41,9 +42,6 @@ export class InputPasswordController extends InputIconController implements Inpu
 
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
 			min: 0,
 		});
 	}

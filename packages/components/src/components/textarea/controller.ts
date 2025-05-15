@@ -25,6 +25,7 @@ export class TextareaController extends InputIconController implements TextareaW
 	private afterSyncCharCounter = () => {
 		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
 			this.component.state._currentLength = this.component._value.length;
+			this.updateCurrentLengthDebounced(this.component._value.length);
 		}
 	};
 
@@ -34,9 +35,6 @@ export class TextareaController extends InputIconController implements TextareaW
 
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
 			min: 0,
 		});
 	}
