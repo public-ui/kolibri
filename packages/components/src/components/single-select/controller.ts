@@ -1,5 +1,5 @@
-import { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue, watchNumber } from '../../schema';
-import { watchValidator } from '../../schema';
+import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue } from '../../schema';
+import { watchValidator, watchNumber } from '../../schema';
 import { validateOptions, watchBoolean, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
