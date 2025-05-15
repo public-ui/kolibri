@@ -1,14 +1,5 @@
-import type {
-	Option,
-	OptionsPropType,
-	SelectOption,
-	SingleSelectProps,
-	SingleSelectWatches,
-	StencilUnknown,
-	validateOptions,
-	W3CInputValue,
-} from '../../schema';
-import { watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue } from '../../schema';
+import { validateOptions, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
