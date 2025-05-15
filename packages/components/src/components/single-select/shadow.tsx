@@ -1,4 +1,6 @@
-import {
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import type {
 	HideMsgPropType,
 	IconsHorizontalPropType,
 	IdPropType,
@@ -17,23 +19,21 @@ import {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { nonce } from '../../utils/dev.utils';
-import { SingleSelectController } from './controller';
+import clsx from 'clsx';
 import { KolIconTag } from '../../core/component-names';
-import { getRenderStates } from '../input/controller';
-import { translate } from '../../i18n';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
-import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
-import clsx from 'clsx';
+import { nonce } from '../../utils/dev.utils';
+import { getRenderStates } from '../input/controller';
+import { SingleSelectController } from './controller';
 
 /**
  * @slot - The input field label.
