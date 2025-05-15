@@ -9,11 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       increment:
-        type: choice
-        description: Should the version be incremented?
-        options:
-          - true
-          - false
+        type: boolean
+        description: 'Would you like to set the version before publishing? (Else: The current version from the code repository will be used.)'
+        default: true
       tag:
         type: choice
         description: Which NPM tag should be assigned?
@@ -100,11 +98,11 @@ jobs:
           git config --local user.email "${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
           git config --local user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
 
-      - name: Bump Versions non-dev
+      - name: Bump versions without dev-tag and with git push
         if: github.event.inputs.increment == 'true' && github.event.inputs.tag != 'dev'
         run: 'HUSKY=0 npx lerna version ${{github.event.inputs.version}} --preid=${{github.event.inputs.label}} --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish'
 
-      - name: Bump Versions dev and do not push
+      - name: Bump versions with dev-tag and without git push
         if: github.event.inputs.increment == 'true' && github.event.inputs.tag == 'dev'
         run: 'HUSKY=0 npx lerna version prerelease --preid=$GITHUB_SHA --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish --no-push'
 
