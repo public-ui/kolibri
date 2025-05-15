@@ -29,7 +29,7 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ id, currentLength, c
 					? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingLive)) } })
 					: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingLive) } })}
 			</span>
-			<span aria-live="polite" class="visually-hidden">
+			<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
 				{exceededDebounced
 					? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingDebounced)) } })
 					: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingDebounced) } })}
