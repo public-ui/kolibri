@@ -10,6 +10,7 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
+	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectAPI,
 	SingleSelectStates,
@@ -274,6 +275,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<ul
 									role="listbox"
 									class={clsx('single-select__listbox', this.blockSuggestionMouseOver && 'single-select__listbox--cursor-hidden')}
+									style={{ '--visible-options': `${this._rows ?? 5}` }}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
 									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
@@ -574,6 +576,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop() public _hideClearButton?: boolean = false;
 
+	/**
+	 * Maximum number of visible rows in the options dropdown before scrolling.
+	 */
+	@Prop() public _rows?: RowsPropType;
+
 	@State() public state: SingleSelectStates = {
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -702,6 +709,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_hideClearButton ')
 	public validateHideClearButton(value?: boolean): void {
 		this.controller.validateHideClearButton(value);
+	}
+
+	@Watch('_rows')
+	public validateRows(value?: number): void {
+		this.controller.validateRows(value);
 	}
 
 	@Listen('mousemove')
