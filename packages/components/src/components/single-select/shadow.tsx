@@ -275,7 +275,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<ul
 									role="listbox"
 									class={clsx('single-select__listbox', this.blockSuggestionMouseOver && 'single-select__listbox--cursor-hidden')}
-									style={{ '--visible-options': `${this._rows ?? 5}` }}
+									style={{ '--visible-options': `${typeof this._rows === 'number' && this._rows > 0 ? this._rows : 5}` }}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
 									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
