@@ -11,8 +11,11 @@ concurrency:
 jobs:
   check-dod:
     # Skip this job for draft pull requests as they are considered works in progress
-    if: github.event.pull_request.draft == false
-    runs-on: ubuntu-24.04
+    # or the base clone URL may be different than the head clone URL.
+    if: |
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url
+    runs-on: ubuntu-latest
     steps:
       - name: Print Pull Request ID
         run: |
