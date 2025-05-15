@@ -1,0 +1,41 @@
+@font-face {
+	font-family: 'Kreon';
+	font-style: normal;
+	font-weight: bold;
+	src: url(static/Kreon-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Kreon';
+	font-style: italic;
+	font-weight: bolder;
+	src: url(static/Kreon-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Kreon';
+	font-style: italic;
+	font-weight: normal;
+	src: url(static/Kreon-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Kreon';
+	font-style: normal;
+	font-weight: normal;
+	src: url(static/Kreon-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Kreon';
+	font-style: normal;
+	font-weight: lighter;
+	src: url(static/Kreon-Light.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Kreon';
+	font-style: italic;
+	font-weight: lighter;
+	src: url(static/Kreon-Light.ttf) format('truetype');
+}
