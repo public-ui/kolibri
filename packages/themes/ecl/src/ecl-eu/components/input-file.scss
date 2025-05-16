@@ -7,7 +7,7 @@
 
 	.kol-button {
 		&__text {
-			border-radius: 0 !important;
+			border-radius: 0;
 			white-space: nowrap;
 		}
 	}
@@ -16,7 +16,7 @@
 		padding: 0 0 0 rem(8);
 
 		&--is-dragover {
-			border-color: var(--color-blue) !important;
+			border-color: var(--color-blue);
 		}
 	}
 }
