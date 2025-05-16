@@ -1,5 +1,5 @@
 import type { Stringified } from '../../common';
-import type { KoliBriHorizontalIcons } from '../../icons';
+import type { PropHorizontalIcons } from '../../../props';
 import type { ButtonProps } from '../../../components';
 import type { InputTypeOnDefault, InputTypeOnOff } from '../types';
 
@@ -12,7 +12,6 @@ export type OptionalInputProps<T> = {
 	disabled: boolean;
 	hideLabel: boolean;
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	max: T;
 	min: T;
 	name: string;
@@ -23,4 +22,4 @@ export type OptionalInputProps<T> = {
 	step: number;
 	touched: boolean;
 	value: T | null;
-};
+} & PropHorizontalIcons;

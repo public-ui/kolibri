@@ -1,6 +1,5 @@
 import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue } from '../../schema';
-import { watchValidator } from '../../schema';
-import { validateOptions, watchBoolean, watchString } from '../../schema';
+import { validateOptions, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -55,6 +54,10 @@ export class SingleSelectController extends InputIconController implements Singl
 		watchBoolean(this.component, '_hideClearButton', value);
 	}
 
+	public validateRows(value?: number): void {
+		watchNumber(this.component, '_rows', value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateOptions(this.component._options);
@@ -62,5 +65,6 @@ export class SingleSelectController extends InputIconController implements Singl
 		this.validateValue(this.component._value);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateHideClearButton(this.component._hideClearButton);
+		this.validateRows(this.component._rows);
 	}
 }

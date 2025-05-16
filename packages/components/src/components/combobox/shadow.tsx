@@ -1,10 +1,12 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	ComboboxAPI,
 	ComboboxStates,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -15,14 +17,11 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-
+import clsx from 'clsx';
 import { nonce } from '../../utils/dev.utils';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import { ComboboxController } from './controller';
 import { getRenderStates } from '../input/controller';
-import clsx from 'clsx';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
@@ -389,7 +388,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -505,7 +504,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

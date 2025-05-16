@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "3.0.0-rc.7",
+	"version": "3.0.0-rc.11",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -8,15 +8,18 @@
 		"url": "https://github.com/public-ui/kolibri"
 	},
 	"scripts": {
-		"prebuild": "pnpm -r --filter=@public-ui/theme-* --filter @public-ui-/theme-* build",
+		"prebuild": "pnpm -r --filter=@public-ui/themes build",
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
-		"lint": "tsc --noemit && eslint \"{src,tests,e2e}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
+		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
+		"lint:eslint": "eslint src",
+		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
+		"lint:tsc": "tsc --noemit",
 		"postinstall": "pnpm exec playwright install",
 		"prepare": "npm-run-all prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"prepare:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" public/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map",
 		"start": "npm run serve -- --open",
 		"test": "pnpm test:e2e",
@@ -30,7 +33,7 @@
 		"@playwright/test": "1.49.1",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
-		"@public-ui/theme-default": "workspace:*",
+		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.22.3",
 		"@types/node": "22.14.1",
 		"@types/react": "18.3.4",
@@ -68,6 +71,10 @@
 		"rimraf": "6.0.1",
 		"sass-loader": "16.0.5",
 		"string-replace-loader": "3.1.0",
+		"stylelint": "16.17.0",
+		"stylelint-config-recommended-scss": "14.1.0",
+		"stylelint-config-standard": "37.0.0",
+		"stylelint-scss": "6.11.1",
 		"tslib": "2.8.1",
 		"typescript": "5.8.2",
 		"webpack": "5.98.0",
@@ -75,9 +82,6 @@
 		"webpack-dev-server": "5.2.0",
 		"world_countries_lists": "2.9.0",
 		"yup": "1.6.1"
-	},
-	"optionalDependencies": {
-		"@public-ui-/theme-ecl": "workspace:*"
 	},
 	"files": [
 		".eslintignore",

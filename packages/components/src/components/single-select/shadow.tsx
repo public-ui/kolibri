@@ -1,13 +1,16 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
 	Option,
 	OptionsPropType,
+	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectAPI,
 	SingleSelectStates,
@@ -16,23 +19,21 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { nonce } from '../../utils/dev.utils';
-import { SingleSelectController } from './controller';
+import clsx from 'clsx';
 import { KolIconTag } from '../../core/component-names';
-import { getRenderStates } from '../input/controller';
-import { translate } from '../../i18n';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
-import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
-import clsx from 'clsx';
+import { nonce } from '../../utils/dev.utils';
+import { getRenderStates } from '../input/controller';
+import { SingleSelectController } from './controller';
 
 /**
  * @slot - The input field label.
@@ -269,7 +270,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
 					</div>
 					{this._isOpen && !(this.state._disabled === true) && (
-						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+						<CustomSuggestionsOptionsGroupFc
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+							style={{ '--visible-options': `${this._rows ?? 5}` }}
+						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
 									<CustomSuggestionsOptionFc
@@ -466,7 +471,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -536,6 +541,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop() public _hideClearButton?: boolean = false;
 
+	/**
+	 * Maximum number of visible rows in the options dropdown before scrolling.
+	 */
+	@Prop() public _rows?: RowsPropType;
+
 	@State() public state: SingleSelectStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -585,7 +595,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 
@@ -651,6 +661,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_hideClearButton ')
 	public validateHideClearButton(value?: boolean): void {
 		this.controller.validateHideClearButton(value);
+	}
+
+	@Watch('_rows')
+	public validateRows(value?: number): void {
+		this.controller.validateRows(value);
 	}
 
 	@Listen('mousemove')
