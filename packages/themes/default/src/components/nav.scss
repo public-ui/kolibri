@@ -50,7 +50,8 @@
 
 				#{$root}__list--vertical & {
 					border-left: 2px solid transparent;
-					padding-left: rem(8);
+					padding-left: rem(16);
+					padding-right: rem(16);
 				}
 
 				#{$root}--horizontal & {
@@ -68,8 +69,6 @@
 		}
 
 		&__expand-button {
-			margin-left: rem(8);
-
 			.kol-button {
 				&:hover {
 					background-color: var(--color-primary);
