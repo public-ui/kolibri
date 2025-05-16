@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
+import { isEqual } from 'lodash-es';
 import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
@@ -73,6 +74,12 @@ export class KolTableStateless implements TableStatelessAPI {
 	private tableDivElementHasScrollbar = false;
 
 	/**
+	 * Store previous value to allow change detection by value-comparison
+	 */
+	@State()
+	private previousHeaderCells?: TableHeaderCellsPropType;
+
+	/**
 	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: TableDataPropType;
@@ -129,7 +136,13 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_headerCells')
 	public validateHeaderCells(value?: TableHeaderCellsPropType) {
 		validateTableHeaderCells(this, value);
-		this.initializeTableSettings();
+
+		/* The reference changes on every render. Only reinitialize settings when headers actually changed */
+		if (!isEqual(this.previousHeaderCells, this.state._headerCells)) {
+			this.initializeTableSettings();
+		}
+
+		this.previousHeaderCells = this.state._headerCells;
 	}
 
 	@Watch('_label')
