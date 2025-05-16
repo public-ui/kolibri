@@ -188,6 +188,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme bwst
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/bwst
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme ecl
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes/ecl
