@@ -6,7 +6,6 @@ export default {
 	message: 'Nachricht',
 	close: 'Schließen',
 	'form-description': 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.',
-	of: 'von',
 	characters: 'Zeichen',
 	new: 'Neu',
 	'no-entries': 'Es sind keine Einträge vorhanden.',

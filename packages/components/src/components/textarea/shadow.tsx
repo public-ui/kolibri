@@ -93,6 +93,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 					_accessKey={this.state._accessKey}
 					_alert={this.showAsAlert()}
 					_currentLength={this.state._currentLength}
+					_currentLengthDebounced={this.state._currentLengthDebounced}
 					_disabled={this.state._disabled}
 					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
@@ -322,6 +323,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -503,6 +505,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	private readonly onInput = (event: InputEvent) => {
 		if (this.textareaRef instanceof HTMLTextAreaElement) {
 			setState(this, '_currentLength', this.textareaRef.value.length);
+			this.controller.updateCurrentLengthDebounced(this.textareaRef.value.length);
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.textareaRef);
 			}

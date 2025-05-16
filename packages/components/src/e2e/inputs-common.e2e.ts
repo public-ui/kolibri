@@ -66,12 +66,50 @@ test.describe('inputs-common', () => {
 				test('should show the counter for an initial value', async ({ page }) => {
 					await page.setContent(`<${component} _label="Input" _value="Lorem Ipsum" _has-counter></${component}>`);
 					await expect(page.getByTestId('input-counter')).toHaveText('11 Zeichen');
+					await expect(page.getByTestId('input-counter-aria')).toHaveText('11 Zeichen');
 				});
 
 				test('should update the counter when the value changes', async ({ page }) => {
 					await page.setContent(`<${component} _label="Input" _value="Lorem Ipsum" _has-counter></${component}>`);
 					await page.getByLabel('Input').fill('Lorem');
 					await expect(page.getByTestId('input-counter')).toHaveText('5 Zeichen');
+					await expect(page.getByTestId('input-counter-aria')).toHaveText('5 Zeichen');
+				});
+
+				test('should show the counter with _max-length', async ({ page }) => {
+					await page.setContent(`<${component} _label="Input" _value="Lorem Ipsum" _has-counter _max-length="20"></${component}>`);
+					await expect(page.getByTestId('input-counter')).toHaveText('11/20 Zeichen');
+					await expect(page.getByTestId('input-counter-aria')).toHaveText('11/20 Zeichen');
+				});
+
+				test(`should update the remaining characters in the aria-live region with a delay`, async ({ page }) => {
+					await page.setContent(`<${component} _label="Input" _value="Lorem" _has-counter></${component}>`);
+					await page.locator('input,textarea').fill('Lorem Ipsum');
+
+					const ariaCounter = page.getByTestId('input-counter-aria');
+
+					let phase = 0;
+
+					await expect
+						.poll(
+							async () => {
+								const text = await ariaCounter.textContent();
+								if (phase === 0) {
+									if (text === '5 Zeichen') {
+										phase = 1; // advance to next phase
+										return false; // still “not done” so we keep polling
+									}
+									return false; // haven’t seen first value yet
+								} else {
+									return text === '11 Zeichen'; // succeed when we see the second
+								}
+							},
+							{
+								timeout: 1000, // total time to wait
+								intervals: [250], // poll interval
+							},
+						)
+						.toBe(true);
 				});
 			});
 		});

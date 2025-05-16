@@ -15,6 +15,7 @@ export const TextareaCounter: FC = () => (
 		<section className="w-full">
 			<KolTextarea _label="Textara with counter" _hasCounter={true} />
 			<KolTextarea _label="Textara with counter and initial value" _hasCounter={true} _value={'Lorem Ipsum'} className="mt" />
+			<KolTextarea _label="Textara with counter and max length" _hasCounter={true} _maxLength={20} _value={'Lorem Ipsum'} className="mt" />
 		</section>
 	</>
 );

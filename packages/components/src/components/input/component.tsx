@@ -1,13 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Prop } from '@stencil/core';
 import clsx from 'clsx';
-import { handleSlotContent, showExpertSlot, type MsgPropType, type ShortKeyPropType } from '../../schema';
-
-import { translate } from '../../i18n';
-
-import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
-import { KolFormFieldMsgFc } from '../../functional-components';
 import type {
 	AccessKeyPropType,
 	AnyIconFontClass,
@@ -21,6 +15,12 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
+import { handleSlotContent, type MsgPropType, type ShortKeyPropType, showExpertSlot } from '../../schema';
+
+import { translate } from '../../i18n';
+
+import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolFormFieldMsgFc } from '../../functional-components';
 import type { Props } from './types';
 
 /**
@@ -143,18 +143,16 @@ export class KolInputWc implements Props {
 					</datalist>
 				)}
 				{this._hasCounter && (
-					<span class="counter" aria-atomic="true" aria-live="polite" data-testid="input-counter">
-						{this._currentLength}
-						{this._maxLength && (
-							<>
-								<span aria-label={translate('kol-of')} role="img">
-									/
-								</span>
-								{this._maxLength}
-							</>
-						)}{' '}
-						<span>{translate('kol-characters')}</span>
-					</span>
+					<>
+						<span class="counter" aria-hidden="true" data-testid="input-counter">
+							{this._currentLength}
+							{this._maxLength && `/${this._maxLength}`} {translate('kol-characters')}
+						</span>
+						<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
+							{this._currentLengthDebounced}
+							{this._maxLength && `/${this._maxLength}`} {translate('kol-characters')}
+						</span>
+					</>
 				)}
 			</Host>
 		);
@@ -175,6 +173,11 @@ export class KolInputWc implements Props {
 	 * @internal
 	 */
 	@Prop() public _currentLength?: number;
+
+	/**
+	 * @internal
+	 */
+	@Prop() public _currentLengthDebounced?: number;
 
 	/**
 	 * Makes the element not focusable and ignore all events.

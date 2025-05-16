@@ -1,9 +1,21 @@
 import type { CSSResize, HasCounterPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
-import { cssResizeOptions, validateHasCounter, validateRows, validateSpellCheck, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import {
+	cssResizeOptions,
+	setState,
+	validateHasCounter,
+	validateRows,
+	validateSpellCheck,
+	watchBoolean,
+	watchNumber,
+	watchString,
+	watchValidator,
+} from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+import { debounce } from 'lodash-es';
+
 export class TextareaController extends InputIconController implements TextareaWatches {
 	protected readonly component: Generic.Element.Component & TextareaProps;
 
@@ -15,6 +27,7 @@ export class TextareaController extends InputIconController implements TextareaW
 	private afterSyncCharCounter = () => {
 		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
 			this.component.state._currentLength = this.component._value.length;
+			this.component.state._currentLengthDebounced = this.component._value.length;
 		}
 	};
 
@@ -86,4 +99,8 @@ export class TextareaController extends InputIconController implements TextareaW
 		this.validateSpellCheck(this.component._spellCheck);
 		this.validateValue(this.component._value);
 	}
+
+	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
+		setState(this.component, '_currentLengthDebounced', length);
+	}, 500);
 }

@@ -1,7 +1,7 @@
 import { Routes } from '../../shares/types';
 import { TextareaAdjustHeight } from './adjust-height';
 import { TextareaBasic } from './basic';
-import { TextareaCounter } from './counter';
+import { TextareaCounter } from './with-counter';
 import { TextareaResize } from './resize';
 import { TextareaRows } from './rows';
 
