@@ -1,13 +1,15 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	ButtonProps,
 	FocusableElement,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputColorAPI,
 	InputColorStates,
 	InputTypeOnDefault,
 	InputTypeOnOff,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -17,8 +19,6 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
@@ -194,7 +194,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -307,7 +307,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

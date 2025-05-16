@@ -4,8 +4,9 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -15,13 +16,12 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	max: number;
 	min: number;
 	msg: Stringified<MsgPropType>;
@@ -32,6 +32,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropName &
 	PropSuggestions &
 	PropSyncValueBySelector &
@@ -46,7 +47,6 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;
@@ -55,6 +55,7 @@ type OptionalStates = {
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropName &
 	PropShortKey &

@@ -24,11 +24,22 @@
 			--text-color: var(--color-light);
 		}
 
-		&--secondary,
-		&--normal {
+		&--secondary {
+			--text-background-color: var(--color-secondary);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-primary);
+		}
+
+		&--tertiary {
 			--text-background-color: var(--color-light);
 			--text-border-color: var(--color-primary);
 			--text-color: var(--color-primary);
+		}
+
+		&--normal {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-text);
+			--text-color: var(--color-text);
 		}
 
 		&--danger {
@@ -46,6 +57,7 @@
 
 		&--primary,
 		&--secondary,
+		&--tertiary,
 		&--normal,
 		&--danger,
 		&--ghost {

@@ -6,7 +6,6 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +47,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --filter=@public-ui/sample-react
+          args: deploy --no-build --filter=@public-ui/sample-react -d packages/samples/react/dist
 
       - name: Find comment
         uses: peter-evans/find-comment@v3

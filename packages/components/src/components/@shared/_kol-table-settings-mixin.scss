@@ -1,0 +1,32 @@
+@use './mixins' as *;
+
+@mixin kol-table-settings-styles {
+	@layer kol-component {
+		.kol-table-settings {
+			background: #fff;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 1;
+
+			&__columns-container {
+				margin-top: rem(16);
+				max-height: rem(200);
+				overflow: auto;
+			}
+
+			&__columns {
+				align-items: center;
+				display: grid;
+				gap: rem(8);
+				grid-auto-rows: min-content;
+				grid-template-columns: min-content 1fr rem(100) auto auto;
+				overflow: hidden;
+			}
+
+			&__column {
+				display: contents;
+			}
+		}
+	}
+}

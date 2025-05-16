@@ -12,3 +12,4 @@ export * from './progress';
 export * from './unknown';
 export * from './w3c';
 export * from './table';
+export * from './table-settings';
