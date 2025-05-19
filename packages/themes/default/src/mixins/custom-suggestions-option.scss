@@ -8,7 +8,10 @@
 		line-height: 1;
 		padding: rem(10) rem(12);
 
-		&[aria-selected],
+		&[aria-selected] {
+			color: var(--color-primary-variant);
+		}
+
 		&:focus {
 			background-color: var(--color-primary-variant);
 			color: var(--color-light);

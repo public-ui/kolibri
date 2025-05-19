@@ -3,7 +3,7 @@
 @use '../mixins/custom-suggestions-option' as *;
 @use '../mixins/custom-suggestions-options-group' as *;
 @use '../mixins/custom-suggestions-toggle' as *;
-@use '../@shared/input-core' as *;
+@use '../@shared/input-text' as *;
 
 $option-height: rem(40);
 $visible-options: 5;
@@ -18,27 +18,7 @@ $visible-options: 5;
 		font-family: var(--font-family);
 	}
 
-	// .kol-input {
-	// 	color: var(--color-grey);
-	// 	gap: var(--spacing-xs);
-	// }
-
-	// .kol-input .error {
-	// 	order: 1;
-	// }
-
-	// label {
-	// 	font-weight: var(--font-weight-bold);
-	// 	order: 2;
-	// }
-
-	// .kol-input .input {
-	// 	order: 3;
-	// }
-
-	.combobox {
-		position: relative;
-
+	.kol-combobox {
 		&__group {
 			display: inline-flex;
 			align-items: center;
@@ -62,13 +42,17 @@ $visible-options: 5;
 				color: var(--color-grey-50);
 			}
 
-			// &:first-child {
-			// 	padding-left: var(--spacing);
-			// }
+			&:first-child {
+				padding-left: var(--spacing);
+			}
 
-			// &:last-child {
-			// 	padding-right: var(--spacing);
-			// }
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:focus {
+				border: none;
+			}
 		}
 	}
 }
