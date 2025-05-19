@@ -235,6 +235,8 @@ export class KolCombobox implements ComboboxAPI {
 										onClick={() => {
 											this.selectOption(option as string);
 											this.toggleListbox();
+											this._isOpen = false;
+											this._hasOpened = false;
 										}}
 										onMouseOver={() => {
 											if (!this.blockSuggestionMouseOver) {
@@ -287,7 +289,7 @@ export class KolCombobox implements ComboboxAPI {
 			}
 			case 'Tab':
 				if (this._isOpen) {
-					this._isOpen = !this._isOpen;
+					this._isOpen = false;
 					this.refInput?.focus();
 				}
 				break;
@@ -296,12 +298,20 @@ export class KolCombobox implements ComboboxAPI {
 				this._hasOpened = false;
 				this._isOpen = false;
 				handleEvent(false);
+				event.preventDefault();
 				this.refInput?.focus();
 				break;
 			}
 			case 'NumpadEnter':
 			case 'Enter': {
-				this.toggleListbox();
+				if (this._isOpen && this._focusedOptionIndex >= 0) {
+					this._filteredSuggestions && this.selectOption(this._filteredSuggestions[this._focusedOptionIndex] as string);
+					this._isOpen = false;
+					this._hasOpened = false;
+				} else {
+					this.toggleListbox();
+				}
+				event.preventDefault();
 				break;
 			}
 			case 'Home': {
