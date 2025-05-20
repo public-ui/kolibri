@@ -81,7 +81,7 @@ jobs:
         run: pnpm --filter @public-ui/components exec playwright install --with-deps
 
       - name: Build
-        run: pnpm --filter @public-ui/theme-* --filter @public-ui/sample-react^... build
+        run: pnpm --filter=@public-ui/visual-tests... build
 
       - name: Visual Tests
         run: pnpm --filter=${{ matrix.package }} test:visual
