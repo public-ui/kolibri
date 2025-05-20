@@ -297,7 +297,7 @@ export class KolCombobox implements ComboboxAPI {
 			case 'Escape': {
 				this._hasOpened = false;
 				this._isOpen = false;
-				handleEvent(false);
+				event.preventDefault();
 				this.refInput?.focus();
 				break;
 			}
