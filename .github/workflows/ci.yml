@@ -78,7 +78,7 @@ jobs:
       - uses: ./.github/actions/pnpm-setup
 
       - name: Install Playwright Browsers
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
 
       - name: Build
         run: pnpm --filter=@public-ui/visual-tests... build
