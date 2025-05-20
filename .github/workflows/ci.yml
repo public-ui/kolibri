@@ -78,13 +78,13 @@ jobs:
       - uses: ./.github/actions/pnpm-setup
 
       - name: Install Playwright Browsers
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps
 
       - name: Build
         run: pnpm --filter=@public-ui/visual-tests... build
 
       - name: Visual Tests
-        run: pnpm --filter=${{ matrix.package }} test:visual
+        run: pnpm --filter=${{ matrix.package }} test
 
       - uses: actions/upload-artifact@v4
         if: failure()
