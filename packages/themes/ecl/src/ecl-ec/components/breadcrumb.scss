@@ -1,6 +1,9 @@
 @use '../../mixins/rem' as *;
+@use '../mixins/link' as *;
 
 @layer kol-theme-component {
+	@include kol-link('kol-link');
+
 	.kol-breadcrumb {
 		font:
 			normal normal 400 rem(14) / rem(16) arial,
