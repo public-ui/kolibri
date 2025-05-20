@@ -281,7 +281,7 @@ ROUTES.set('image/basic', {
 		zoom: {
 			skip: true,
 		},
-	},	
+	},
 });
 ROUTES.set('indented-text/basic', {
 	snapshot: {
@@ -489,7 +489,7 @@ ROUTES.set('link-button/basic', {
 ROUTES.set('link-group/basic', {
 	snapshot: {
 		skip: true,
-	},	
+	},
 });
 ROUTES.set('link-group/horizontal', {
 	snapshot: {
@@ -759,7 +759,7 @@ ROUTES.set('tabs/basic', {
 ROUTES.set('tabs/icons-only', {
 	snapshot: {
 		viewportSize: {
-			width: 200,
+			width: 500,
 			height: 100,
 		},
 		zoom: {
