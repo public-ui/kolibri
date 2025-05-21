@@ -1,24 +1,16 @@
 name: pnpm Setup
 runs:
   using: 'composite'
-  steps:
-    - name: Install Node.js
+  steps: # https://pnpm.io/continuous-integration#github-actions
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 22
-
-    - name: Cache PNPM store + node_modules
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.pnpm-store
-          **/node_modules
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-
-
-    - name: Install PNPM
-      uses: pnpm/action-setup@v2
-      with:
-        version: 10
-        run_install: true
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
