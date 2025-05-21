@@ -4,8 +4,17 @@ on:
   workflow_dispatch:
   pull_request:
 
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   deploy:
+    # Skip this job for draft pull requests as they are considered works in progress
+    # or the base clone URL may be different than the head clone URL.
+    if: |
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
