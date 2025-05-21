@@ -14,7 +14,7 @@ jobs:
     # or the base clone URL may be different than the head clone URL.
     if: |
       github.event.pull_request.draft == false &&
-      github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url
+      github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
