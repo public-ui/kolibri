@@ -44,6 +44,13 @@
 		color: var(--color-primary);
 	}
 
+	.normal:is(a, button) > .kol-span-wc,
+	.normal:is(a, button):disabled:hover > .kol-span-wc {
+		background-color: var(--color-light);
+		border-color: var(--color-text);
+		color: var(--color-text);
+	}
+
 	.danger:is(a, button) > .kol-span-wc,
 	.danger:is(a, button):disabled:hover > .kol-span-wc {
 		background-color: var(--color-danger);
@@ -65,13 +72,15 @@
 	.secondary:is(a, button):hover > .kol-span-wc,
 	.tertiary:is(a, button):active > .kol-span-wc,
 	.tertiary:is(a, button):hover > .kol-span-wc,
+	.normal:is(a, button):active > .kol-span-wc,
+	.normal:is(a, button):hover > .kol-span-wc,
 	.danger:is(a, button):active > .kol-span-wc,
 	.danger:is(a, button):hover > .kol-span-wc,
 	.ghost:is(a, button):active > .kol-span-wc,
 	.ghost:is(a, button):hover > .kol-span-wc {
 		background-color: var(--color-primary-variant);
 		border-color: var(--color-primary-variant);
-		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 		color: var(--color-light);
 	}
 
@@ -130,7 +139,7 @@
 	.ghost:is(a, button).small.transparent:hover > .kol-span-wc > span {
 		background-color: var(--color-primary-variant);
 		border-color: var(--color-primary-variant);
-		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 		color: var(--color-light);
 	}
 
