@@ -6,7 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolIconTag, KolLinkTag } from '../../core/component-names';
+import { KolIconTag, KolLinkWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -34,7 +34,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 						)}
 					</span>
 				) : (
-					<KolLinkTag class="kol-breadcrumb__link" {...link}></KolLinkTag>
+					<KolLinkWcTag class="kol-breadcrumb__link" {...link}></KolLinkWcTag>
 				)}
 			</li>
 		);
