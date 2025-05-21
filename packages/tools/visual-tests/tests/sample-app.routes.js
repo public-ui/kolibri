@@ -929,7 +929,7 @@ ROUTES.set('toast/basic?type=error&variant=msg', {
 ROUTES.set('toolbar/basic', {
 	snapshot: {
 		viewportSize: {
-			width: 300,
+			width: 600,
 			height: 100,
 		},
 		zoom: {
@@ -965,7 +965,7 @@ ROUTES.set('tree/basic/home', {
 ROUTES.set('version/basic', {
 	snapshot: {
 		viewportSize: {
-			width: 100,
+			width: 150,
 			height: 100,
 		},
 		zoom: {
