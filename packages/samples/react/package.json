@@ -16,7 +16,6 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
-		"postinstall": "pnpm exec playwright install",
 		"prepare": "npm-run-all prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
