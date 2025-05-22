@@ -43,6 +43,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 		_popoverAlign: 'bottom',
 	};
 	@State() private justClosed = false;
+	@State() private popoverOpen = false;
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
 	private handleBeforeToggle(event: Event) {
@@ -62,7 +63,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	private handleToggle(event: Event) {
-		if ((event as ToggleEvent).newState === 'open' && this.refPopover && this.refButton) {
+		this.popoverOpen = (event as ToggleEvent).newState === 'open';
+
+		if (this.popoverOpen && this.refPopover && this.refButton) {
 			void alignFloatingElements({
 				align: this.state._popoverAlign,
 				floatingElement: this.refPopover,
@@ -93,9 +96,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 			<div class="kol-popover-button">
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
+					_aria-controls="popover"
 					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this._ariaExpanded}
+					_ariaExpanded={this.popoverOpen}
+					_ariaHasPopup={'dialog'}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
