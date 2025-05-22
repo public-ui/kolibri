@@ -109,7 +109,7 @@ export class SelectController extends InputIconController implements SelectWatch
 	}
 
 	public validateValue(value?: Stringified<W3CInputValue[]> | Stringified<W3CInputValue>): void {
-		watchJsonArrayString(this.component, '_value', () => true, Array.isArray(value) ? value : [value], undefined, {
+		watchJsonArrayString(this.component, '_value', () => true, value === undefined ? [] : Array.isArray(value) ? value : [value], undefined, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,

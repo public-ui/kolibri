@@ -16,7 +16,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropRows
+	PropRows,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 

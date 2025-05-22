@@ -28,3 +28,14 @@ executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
 	_options: options,
 	_multiple: true,
 });
+
+executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
+	_options: options,
+	_value: 'Herr',
+});
+
+executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
+	_options: options,
+	_multiple: true,
+	_value: ['Divers', 'Frau'],
+});

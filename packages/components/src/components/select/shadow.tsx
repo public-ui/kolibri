@@ -343,8 +343,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 	@Watch('_value')
 	public validateValue(value?: Stringified<W3CInputValue> | Stringified<W3CInputValue[]>): void {
-		const normalized = this.normalizeValue(value);
-		this.controller.validateValue(normalized);
+		this.controller.validateValue(value);
 	}
 
 	public componentWillLoad(): void {
@@ -353,16 +352,6 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-	}
-
-	private normalizeValue(value?: Stringified<W3CInputValue> | Stringified<W3CInputValue[]>): Stringified<W3CInputValue[]> {
-		if (value === undefined) {
-			return [];
-		}
-		if (Array.isArray(value)) {
-			return value;
-		}
-		return [value];
 	}
 
 	private onInput(event: Event): void {
