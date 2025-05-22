@@ -27,7 +27,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
-	value: Stringified<W3CInputValue[]>;
+	value: Stringified<W3CInputValue[]> | Stringified<W3CInputValue>;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &

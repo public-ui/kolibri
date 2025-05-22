@@ -49,6 +49,10 @@ export class SelectController extends InputIconController implements SelectWatch
 	};
 
 	private readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
+		const raw = nextState.get('_value');
+		if (raw !== undefined && !Array.isArray(raw)) {
+			nextState.set('_value', [raw]);
+		}
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
@@ -104,8 +108,8 @@ export class SelectController extends InputIconController implements SelectWatch
 		validateRows(this.component, value);
 	}
 
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
-		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
+	public validateValue(value?: Stringified<W3CInputValue[]> | Stringified<W3CInputValue>): void {
+		watchJsonArrayString(this.component, '_value', () => true, Array.isArray(value) ? value : [value], undefined, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
