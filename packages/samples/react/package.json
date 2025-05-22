@@ -18,7 +18,6 @@
 		"prepare": "npm-run-all prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
-		"postinstall": "pnpm exec playwright install",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map",
 		"start": "npm run serve -- --open",
 		"test:e2e": "playwright test",

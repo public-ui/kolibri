@@ -1,2 +1,2 @@
-import { DEFAULT } from '@public-ui/theme-default';
+import { DEFAULT } from '@public-ui/themes';
 export default DEFAULT;
