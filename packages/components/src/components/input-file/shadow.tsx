@@ -95,7 +95,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
-					<span class="kol-input-container__filename">{this.filename}</span>
+					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 					<KolButtonWcTag class="kol-input-container__button" _label={translate('kol-data-browse-text')} _variant="primary" _disabled={this._disabled} />
 				</KolInputContainerFc>
@@ -209,6 +209,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	@State() private filename: string = translate('kol-filename-text');
+	@State() private hasFileSelected: boolean = false;
+
 	@State() public state: InputFileStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -350,6 +352,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	private onChange = (event: Event): void => {
 		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
 			const value = this.inputRef.files;
+			this.hasFileSelected = !!value?.length;
 			this.filename = value?.length
 				? Array.from(value)
 						.map((file) => file.name)
