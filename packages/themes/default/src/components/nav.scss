@@ -5,6 +5,7 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		background-color: var(--color-mute);
 	}
 
 	ul {
