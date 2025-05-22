@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "3.0.0-rc.11",
+	"version": "3.0.0-rc.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -69,7 +69,6 @@
 		"test:unit": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"test:e2e": "cross-env E2E=1 playwright test",
-		"postinstall": "pnpm exec playwright install",
 		"postpack": "mv package.bak.json package.json",
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"xunused": "knip"
