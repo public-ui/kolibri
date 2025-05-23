@@ -52,6 +52,7 @@ import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/c
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 
 /**
  * @internal
@@ -116,6 +117,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
+					aria-haspopup={this._ariaHasPopup}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
@@ -186,6 +188,12 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
+
+	/**
+	 * Defines the aria-haspopup attribute. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup)
+	 * @internal
+	 */
+	@Prop() public _ariaHasPopup?: AriaHasPopupPropType;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
