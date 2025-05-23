@@ -22,6 +22,7 @@ import type {
 } from '../../schema';
 import { validatePopoverAlign } from '../../schema';
 import clsx from 'clsx';
+import { autoUpdate } from '@floating-ui/dom';
 
 /**
  * @slot - The popover content.
@@ -37,6 +38,7 @@ import clsx from 'clsx';
 export class KolPopoverButton implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
+	private cleanupAutoPositioning?: () => void;
 
 	@State() public state: PopoverButtonStates = {
 		_label: '',
@@ -62,15 +64,28 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
-	private handleToggle(event: Event) {
-		this.popoverOpen = (event as ToggleEvent).newState === 'open';
-
-		if (this.popoverOpen && this.refPopover && this.refButton) {
+	private alignPopover() {
+		if (this.refPopover && this.refButton) {
 			void alignFloatingElements({
 				align: this.state._popoverAlign,
 				floatingElement: this.refPopover,
 				referenceElement: this.refButton,
 			});
+		}
+	}
+
+	private handleToggle(event: Event) {
+		this.popoverOpen = (event as ToggleEvent).newState === 'open';
+
+		if (this.popoverOpen) {
+			if (this.refPopover && this.refButton) {
+				this.cleanupAutoPositioning = autoUpdate(this.refButton, this.refPopover, () => {
+					this.alignPopover();
+				});
+			}
+		} else if (this.cleanupAutoPositioning) {
+			this.cleanupAutoPositioning();
+			this.cleanupAutoPositioning = undefined;
 		}
 	}
 
@@ -89,6 +104,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	public disconnectedCallback() {
 		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
 		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		this.cleanupAutoPositioning?.();
 	}
 
 	public render(): JSX.Element {
