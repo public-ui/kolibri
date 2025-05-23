@@ -39,6 +39,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 		_popoverAlign: 'bottom',
 	};
 	@State() private justClosed = false;
+	@State() private popoverOpen = false;
 
 	/**
 	 * Hides the popover programmatically by calling the native hidePopover method.
@@ -67,7 +68,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	private handleToggle(event: Event) {
-		if ((event as ToggleEvent).newState === 'open' && this.refPopover && this.refButton) {
+		this.popoverOpen = (event as ToggleEvent).newState === 'open';
+
+		if (this.popoverOpen && this.refPopover && this.refButton) {
 			void alignFloatingElements({
 				align: this.state._popoverAlign,
 				floatingElement: this.refPopover,
@@ -98,9 +101,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 			<div class="kol-popover-button">
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
+					_aria-controls="popover"
 					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this._ariaExpanded}
+					_ariaExpanded={this.popoverOpen}
+					_ariaHasPopup={'dialog'}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
@@ -147,11 +152,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 */
-	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
