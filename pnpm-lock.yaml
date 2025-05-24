@@ -397,6 +397,9 @@ importers:
       rgba-convert:
         specifier: 0.3.0
         version: 0.3.0
+      typed-bem:
+        specifier: 1.0.0-rc.4
+        version: 1.0.0-rc.4
       wcag-contrast:
         specifier: 3.0.0
         version: 3.0.0
@@ -6352,6 +6355,9 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
+  easy-bem@1.1.1:
+    resolution: {integrity: sha512-GJRqdiy2h+EXy6a8E6R+ubmqUM08BK0FWNq41k24fup6045biQ8NXxoXimiwegMQvFFV3t1emADdGNL1TlS61A==}
+
   easy-table@1.2.0:
     resolution: {integrity: sha512-OFzVOv03YpvtcWGe5AayU5G2hgybsg3iqA6drU8UaoZyB9jLGMTrz9+asnLp/E+6qPh88yEI1gvyZFZ41dmgww==}
 
@@ -11978,6 +11984,10 @@ packages:
 
   typed-assert@1.0.9:
     resolution: {integrity: sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==}
+
+  typed-bem@1.0.0-rc.4:
+    resolution: {integrity: sha512-BgwFWLeDtbvt1tfEE57eof3TGHRfu0MIyFFmYaGeiwM3IQhmCOsFavsKL5MjvDALvM93pArX8gqa9SOCKBgssw==}
+    engines: {node: ^22, npm: ^10, pnpm: ^10}
 
   typed-query-selector@2.12.0:
     resolution: {integrity: sha512-SbklCd1F0EiZOyPiW192rrHZzZ5sBijB6xM+cpmrwDqObvdtunOHHIk9fCGsoK5JVIYXoyEp4iEdE3upFH3PAg==}
@@ -18612,6 +18622,8 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
+  easy-bem@1.1.1: {}
+
   easy-table@1.2.0:
     dependencies:
       ansi-regex: 5.0.1
@@ -20747,7 +20759,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3
+      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.5.28)(@types/node@22.14.1)(typescript@5.8.2))
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -20836,7 +20848,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-jasmine2@26.6.3:
+  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.5.28)(@types/node@22.14.1)(typescript@5.8.2)):
     dependencies:
       '@babel/traverse': 7.27.0
       '@jest/environment': 26.6.2
@@ -20857,7 +20869,11 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
+      - bufferutil
+      - canvas
       - supports-color
+      - ts-node
+      - utf-8-validate
 
   jest-leak-detector@26.6.2:
     dependencies:
@@ -25611,6 +25627,10 @@ snapshots:
       reflect.getprototypeof: 1.0.10
 
   typed-assert@1.0.9: {}
+
+  typed-bem@1.0.0-rc.4:
+    dependencies:
+      easy-bem: 1.1.1
 
   typed-query-selector@2.12.0: {}
 
