@@ -18,7 +18,7 @@ import type {
 } from '../../schema';
 import { buildBadgeTextString, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Fragment, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
@@ -95,7 +95,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 								{hasExpertSlot ? (
 									<slot name="expert"></slot>
 								) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this._label} />
+									<>
+										<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this._label} />{' '}
+										<span class="badge-text-hint" aria-hidden="true">
+											{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
+										</span>
+									</>
 								) : (
 									this._label
 								)}

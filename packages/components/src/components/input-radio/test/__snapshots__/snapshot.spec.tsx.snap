@@ -8,6 +8,9 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <span>
           <span slot="label">
             Label
+            <span aria-hidden="true" class="badge-text-hint">
+              V
+            </span>
           </span>
         </span>
       </legend>
@@ -479,6 +482,9 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <span>
           <span slot="label">
             Label
+            <span aria-hidden="true" class="badge-text-hint">
+              V
+            </span>
           </span>
         </span>
       </legend>
@@ -1002,6 +1008,9 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <span>
           <span slot="label">
             Label
+            <span aria-hidden="true" class="badge-text-hint">
+              S
+            </span>
           </span>
         </span>
       </legend>
@@ -1210,6 +1219,9 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <span>
           <span slot="label">
             Label
+            <span aria-hidden="true" class="badge-text-hint">
+              S
+            </span>
           </span>
         </span>
       </legend>
