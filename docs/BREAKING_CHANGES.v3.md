@@ -61,6 +61,7 @@ The public `focus`-methods have been removed from all components. Use `kolFocus`
 
 ## All Input Components
 
+- Input value reflection ("associated form fields") is now toggled using the 'reflectInputValues' option set in the bootstrap function, no longer using the experimental mode.
 - The property `_alert` has been removed. It's now being handled automatically based on `_msg` and the touched state. See #6138.
 - The property `_error` has been removed. Use `_msg` instead.
 - The property `_hideError` has bee renamed to `_hideMsg`.
