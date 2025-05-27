@@ -2,6 +2,7 @@ import type { NamePropType, PropSyncValueBySelector, StencilUnknown, SyncValueBy
 import { devHint, devWarning, getExperimentalMode, validateName } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
+import { getOptions } from '../../core/bootstrap';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -46,7 +47,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name) {
+		if (getOptions()?.reflectInputValues && isAssociatedTagName(this.host?.tagName) && component._name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
