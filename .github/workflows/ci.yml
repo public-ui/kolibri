@@ -52,6 +52,7 @@ jobs:
       - name: E2E Test
         run: pnpm --filter @public-ui/components test:e2e
       - uses: ./.github/actions/upload-reports
+        if: failure()
         with:
           name: report-e2e
 
@@ -75,6 +76,7 @@ jobs:
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
       - uses: ./.github/actions/upload-reports
+        if: failure()
         with:
           name: report-${{ matrix.package }}
 
