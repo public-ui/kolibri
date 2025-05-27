@@ -1,13 +1,13 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
-import type { JSXBase } from '@stencil/core/internal';
+import { type JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 
-import { type InternalAlertProps } from '../../schema';
-import { translate } from '../../i18n';
 import { KolButtonWcTag } from '../../core/component-names';
-
+import { translate } from '../../i18n';
+import { type InternalAlertProps } from '../../schema';
 import AlertIcon from '../AlertIcon';
 import KolHeadingFc from '../Heading';
+import { bemAlert as bem, BEM_ALERT__CLOSER, BEM_ALERT__CONTENT } from './bem';
 
 export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	Partial<Omit<InternalAlertProps, 'on'>> & {
@@ -16,7 +16,18 @@ export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	};
 
 const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
-	const { class: classNames = {}, type = 'default', variant = 'msg', label, hasCloser, alert, onAlertTimeout, onCloserClick, level, ...other } = props;
+	const {
+		class: classNames = {},
+		alert = false,
+		hasCloser = false,
+		label,
+		level = 0,
+		type = 'default',
+		variant = 'msg',
+		onAlertTimeout,
+		onCloserClick,
+		...other
+	} = props;
 
 	if (alert) {
 		/**
@@ -34,9 +45,21 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		}, 10000);
 	}
 
+	/**
+	 * Define the dynamic BEM class names for the alert component.
+	 */
+	const BEM_ROOT = bem('kol-alert', {
+		hasCloser: !!hasCloser,
+		[`type-${type}`]: true,
+		[`variant-${variant}`]: true,
+	});
+	const BEM__HEADING = bem('kol-alert', 'heading', {
+		[`h${level}`]: true,
+	});
+
 	const rootProps: Partial<JSXBase.HTMLAttributes<HTMLDivElement>> = {
-		class: clsx('kol-alert', `kol-alert--${type}`, `kol-alert--${variant}`, { 'kol-alert--hasCloser': !!hasCloser }, classNames),
-		role: alert ? 'alert' : undefined,
+		class: clsx(classNames, BEM_ROOT),
+		role: alert ? (type === 'error' ? 'alert' : 'status') : undefined,
 		...other,
 	};
 
@@ -45,16 +68,20 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 			<div class="kol-alert__container">
 				<AlertIcon label={label} type={type} />
 				<div class="kol-alert__container-content">
-					{label ? (
-						<KolHeadingFc class="kol-alert__heading" level={level}>
+					{label && (
+						<KolHeadingFc class={BEM__HEADING} level={level} id="heading">
 							{label}
 						</KolHeadingFc>
-					) : null}
-					{variant === 'msg' && <div class="kol-alert__content">{children}</div>}
+					)}
+					{variant === 'msg' && (
+						<span class={BEM_ALERT__CONTENT} aria-describedby={label ? 'heading' : undefined}>
+							{children}
+						</span>
+					)}
 				</div>
 				{hasCloser && (
 					<KolButtonWcTag
-						class="kol-alert__close-button close"
+						class={BEM_ALERT__CLOSER}
 						data-testid="alert-close-button"
 						_ariaDescription={label?.trim() || ''}
 						_hideLabel
@@ -66,10 +93,14 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 						_label={translate('kol-close-alert')}
 						_on={{ onClick: onCloserClick }}
 						_tooltipAlign="left"
-					></KolButtonWcTag>
+					/>
 				)}
 			</div>
-			{variant === 'card' && <div class="kol-alert__content">{children}</div>}
+			{variant === 'card' && (
+				<div class={BEM_ALERT__CONTENT} aria-describedby={label ? 'heading' : undefined}>
+					{children}
+				</div>
+			)}
 		</div>
 	);
 };

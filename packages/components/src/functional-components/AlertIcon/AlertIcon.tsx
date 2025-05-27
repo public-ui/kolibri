@@ -2,6 +2,7 @@ import { Fragment, type FunctionalComponent as FC, h } from '@stencil/core';
 import { KolIconTag } from '../../core/component-names';
 import type { AlertType } from '../../schema';
 import { translate } from '../../i18n';
+import { BEM_ALERT__ICON } from '../Alert/bem';
 
 /**
  * The icon uses a visually-hidden span instead of an aria-label because the Alert might be referenced as content for aria-describedby.
@@ -12,7 +13,7 @@ const Icon: FC<{ ariaLabel: string; icon: string; label?: string }> = ({ ariaLab
 	return (
 		<>
 			<span class="visually-hidden">{ariaLabel}</span>
-			<KolIconTag class="kol-alert__heading-icon" _label="" _icons={icon} />
+			<KolIconTag class={BEM_ALERT__ICON} _label="" _icons={icon} />
 		</>
 	);
 };

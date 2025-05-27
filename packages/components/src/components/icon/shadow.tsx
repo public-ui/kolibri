@@ -1,9 +1,10 @@
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { IconAPI, IconStates, LabelPropType } from '../../schema';
 import { validateLabel, watchString } from '../../schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 import clsx from 'clsx';
+import { BEM_ICON, BEM_ICON__ICON } from './bem';
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
  */
@@ -18,7 +19,7 @@ export class KolIcon implements IconAPI {
 	public render(): JSX.Element {
 		const ariaShow = this.state._label.length > 0;
 		return (
-			<Host exportparts="icon" class="kol-icon">
+			<Host exportparts="icon" class={BEM_ICON}>
 				<i
 					aria-hidden={ariaShow ? undefined : 'true'}
 					/**
@@ -28,7 +29,7 @@ export class KolIcon implements IconAPI {
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
 					aria-label={ariaShow ? this.state._label : undefined}
-					class={clsx('kol-icon__icon', this.state._icons)}
+					class={clsx(BEM_ICON__ICON, this.state._icons)}
 					part="icon"
 					role="img"
 				></i>

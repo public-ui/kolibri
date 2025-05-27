@@ -20,34 +20,34 @@
 		overflow: unset;
 		background-color: var(--color-light);
 
-		&--msg {
+		&--variant-msg {
 			align-items: start;
 		}
 
-		&--card {
+		&--variant-card {
 			border-radius: var(--border-radius);
 			border: var(--border-width) solid var(--alert-accent-color);
 			filter: drop-shadow(0 rem(2) rem(4) rgba(8, 35, 48, 0.24));
 			flex-direction: column;
 		}
 
-		&--default {
+		&--type-default {
 			--alert-accent-color: var(--color-subtle);
 		}
 
-		&--error {
+		&--type-error {
 			--alert-accent-color: var(--color-danger);
 		}
 
-		&--info {
+		&--type-info {
 			--alert-accent-color: var(--color-primary);
 		}
 
-		&--success {
+		&--type-success {
 			--alert-accent-color: var(--color-success);
 		}
 
-		&--warning {
+		&--type-warning {
 			--alert-accent-color: var(--color-warning);
 		}
 
@@ -56,7 +56,7 @@
 			gap: 0.5em;
 			place-items: center;
 
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				padding: rem(8) rem(16);
 				background-color: var(--alert-accent-color);
 			}
@@ -66,13 +66,13 @@
 			display: grid;
 			gap: rem(4);
 
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				width: 100%;
 				min-height: rem(20);
 			}
 		}
 
-		&__close-button {
+		&__closer {
 			place-self: center;
 
 			.kol-button {
@@ -81,11 +81,11 @@
 				height: var(--a11y-min-size);
 				width: var(--a11y-min-size);
 
-				@at-root #{$root}--msg & {
+				@at-root #{$root}--variant-msg & {
 					color: var(--alert-accent-color);
 				}
 
-				@at-root #{$root}--card & {
+				@at-root #{$root}--variant-card & {
 					color: var(--color-light);
 				}
 			}
@@ -96,12 +96,12 @@
 		}
 
 		&__heading {
-			@at-root #{$root}--msg & {
+			@at-root #{$root}--variant-msg & {
 				color: var(--alert-accent-color);
 				padding-top: calc(--var-spacing / 2);
 			}
 
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				width: 100%;
 				color: var(--color-light);
 				display: flex;
@@ -110,27 +110,27 @@
 			}
 		}
 
-		&__heading-icon {
+		&__icon {
 			color: var(--color-light);
 			padding: 0;
 
-			@at-root #{$root}:not(#{$root}--default) & {
+			@at-root #{$root}:not(#{$root}--type-default) & {
 				font-size: rem(20);
 			}
 
-			@at-root #{$root}--msg & {
+			@at-root #{$root}--variant-msg & {
 				color: var(--alert-accent-color);
 				place-items: baseline;
 			}
 
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				justify-self: right;
 				margin-top: rem(-4);
 			}
 		}
 
 		&__content {
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				padding: rem(16);
 			}
 		}

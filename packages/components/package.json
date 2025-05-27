@@ -84,6 +84,7 @@
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
+		"typed-bem": "1.0.0-rc.7",
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {

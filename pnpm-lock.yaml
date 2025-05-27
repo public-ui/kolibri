@@ -397,6 +397,9 @@ importers:
       rgba-convert:
         specifier: 0.3.0
         version: 0.3.0
+      typed-bem:
+        specifier: 1.0.0-rc.7
+        version: 1.0.0-rc.7
       wcag-contrast:
         specifier: 3.0.0
         version: 3.0.0
@@ -6352,6 +6355,9 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
+  easy-bem@1.1.1:
+    resolution: {integrity: sha512-GJRqdiy2h+EXy6a8E6R+ubmqUM08BK0FWNq41k24fup6045biQ8NXxoXimiwegMQvFFV3t1emADdGNL1TlS61A==}
+
   easy-table@1.2.0:
     resolution: {integrity: sha512-OFzVOv03YpvtcWGe5AayU5G2hgybsg3iqA6drU8UaoZyB9jLGMTrz9+asnLp/E+6qPh88yEI1gvyZFZ41dmgww==}
 
@@ -11978,6 +11984,10 @@ packages:
 
   typed-assert@1.0.9:
     resolution: {integrity: sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==}
+
+  typed-bem@1.0.0-rc.7:
+    resolution: {integrity: sha512-NuptFkEO0CAdcSNupYE16D8P/XphIU+rPpXLHbFCjqJTaBLTNA6/XUwRS+mtW/icPoIOo/jq3NeS2LM9Sb5X1Q==}
+    engines: {node: ^22, npm: ^10, pnpm: ^10}
 
   typed-query-selector@2.12.0:
     resolution: {integrity: sha512-SbklCd1F0EiZOyPiW192rrHZzZ5sBijB6xM+cpmrwDqObvdtunOHHIk9fCGsoK5JVIYXoyEp4iEdE3upFH3PAg==}
@@ -18611,6 +18621,8 @@ snapshots:
   duplexer@0.1.2: {}
 
   eastasianwidth@0.2.0: {}
+
+  easy-bem@1.1.1: {}
 
   easy-table@1.2.0:
     dependencies:
@@ -25611,6 +25623,10 @@ snapshots:
       reflect.getprototypeof: 1.0.10
 
   typed-assert@1.0.9: {}
+
+  typed-bem@1.0.0-rc.7:
+    dependencies:
+      easy-bem: 1.1.1
 
   typed-query-selector@2.12.0: {}
 
