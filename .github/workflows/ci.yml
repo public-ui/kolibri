@@ -75,6 +75,7 @@ jobs:
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
       - uses: ./.github/actions/upload-reports
+        if: failure()
         with:
           name: report-${{ matrix.package }}
 
