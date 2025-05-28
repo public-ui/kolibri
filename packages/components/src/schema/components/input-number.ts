@@ -17,14 +17,14 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
+import type { NumberString, InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	placeholder: string;
-} & OptionalInputProps<number> &
+} & OptionalInputProps<number | NumberString> &
 	PropHideMsg &
 	PropSuggestions;
 
@@ -38,13 +38,13 @@ type RequiredStates = {
 
 type OptionalStates = {
 	hint: string;
-	max: string;
-	min: string;
+	max: number | NumberString;
+	min: number | NumberString;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	smartButton: ButtonProps;
-	step: number;
-	value: string;
+	step: number | NumberString;
+	value: number | NumberString;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &

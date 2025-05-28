@@ -15,6 +15,7 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	NumberString,
 	ShortKeyPropType,
 	Stringified,
 	SuggestionsPropType,
@@ -51,8 +52,11 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.inputRef?.value;
+	public async getValue(): Promise<number | NumberString | null> {
+		if (typeof this._value === 'undefined') {
+			return null;
+		}
+		return this._value;
 	}
 
 	@Method()
@@ -63,7 +67,11 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		this._value = Number(this.inputRef?.value);
-		this.controller.onFacade.onInput(event);
+		this.controller.onFacade.onInput(event, true, this._value);
+	};
+
+	private readonly onChange = (event: Event) => {
+		this.controller.onFacade.onChange(event, this._value); // Ensure the value is emitted with the correct type. Default is always string.
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -94,6 +102,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 			type: 'number',
 			...this.controller.onFacade,
 			onInput: this.onInput,
+			onChange: this.onChange,
 			onKeyDown: this.onKeyDown,
 			onFocus: (event: Event) => {
 				this.controller.onFacade.onFocus(event);
@@ -170,12 +179,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the largest possible input value.
 	 */
-	@Prop() public _max?: number;
+	@Prop() public _max?: number | NumberString;
 
 	/**
 	 * Defines the smallest possible input value.
 	 */
-	@Prop() public _min?: number;
+	@Prop() public _min?: number | NumberString;
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
@@ -227,7 +236,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the step size for value changes.
 	 */
-	@Prop() public _step?: number;
+	@Prop() public _step?: number | NumberString;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -249,7 +258,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null = null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',
@@ -316,12 +325,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_max')
-	public validateMax(value?: number): void {
+	public validateMax(value?: number | NumberString): void {
 		this.controller.validateMax(value);
 	}
 
 	@Watch('_min')
-	public validateMin(value?: number): void {
+	public validateMin(value?: number | NumberString): void {
 		this.controller.validateMin(value);
 	}
 
@@ -371,7 +380,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_step')
-	public validateStep(value?: number): void {
+	public validateStep(value?: number | NumberString): void {
 		this.controller.validateStep(value);
 	}
 
@@ -386,8 +395,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: number | null): void {
-		this.controller.validateValueEx(value);
+	public validateValue(value?: number | NumberString | null): void {
+		this.controller.validateValue(value);
 	}
 
 	public componentWillLoad(): void {
