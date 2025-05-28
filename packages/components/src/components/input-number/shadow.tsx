@@ -53,10 +53,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | NumberString | null> {
-		if (typeof this._value === 'undefined') {
-			return null;
-		}
-		return this._value;
+		return this.remapValue(this.state._value);
 	}
 
 	@Method()
@@ -65,13 +62,38 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	private setInitialValueType(value?: number | NumberString | null) {
+		if (this.controller.isNumberString(value)) {
+			this._initialValueType = 'NumberString';
+		} else if (typeof value === 'number' && !isNaN(value)) {
+			this._initialValueType = 'number';
+		} else {
+			this._initialValueType = 'null';
+		}
+	}
+
+	/**
+	 * Map the value to the initial format. E.g., if the user provided a string initially, return a string.
+	 * @param value
+	 * @private
+	 */
+	private remapValue(value?: number | null): number | NumberString | null {
+		if (value === undefined || value === null) {
+			return null;
+		} else if (this._initialValueType === 'NumberString') {
+			return String(value) as NumberString;
+		}
+		return value;
+	}
+
 	private readonly onInput = (event: InputEvent) => {
-		this._value = Number(this.inputRef?.value);
+		const newValue = this.inputRef?.value;
+		this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 		this.controller.onFacade.onInput(event, true, this._value);
 	};
 
 	private readonly onChange = (event: Event) => {
-		this.controller.onFacade.onChange(event, this._value); // Ensure the value is emitted with the correct type. Default is always string.
+		this.controller.onFacade.onChange(event, this.remapValue(Number(this._value))); // Ensure the value is emitted with the correct type. Default is always string.
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -268,7 +290,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};
-
+	@State() private _initialValueType: 'number' | 'NumberString' | 'null' = 'null';
 	@State() private inputHasFocus = false;
 
 	public constructor() {
@@ -397,9 +419,15 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: number | NumberString | null): void {
 		this.controller.validateValue(value);
+		if (value !== undefined) {
+			this.setInitialValueType(value);
+		}
 	}
 
 	public componentWillLoad(): void {
+		if (this._value !== undefined) {
+			this.setInitialValueType(this._value);
+		}
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 

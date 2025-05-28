@@ -17,7 +17,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { NumberString, InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, NumberString, OptionalInputProps, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -44,7 +44,7 @@ type OptionalStates = {
 	placeholder: string;
 	smartButton: ButtonProps;
 	step: number | NumberString;
-	value: number | NumberString;
+	value: number;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &

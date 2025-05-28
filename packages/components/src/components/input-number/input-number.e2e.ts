@@ -10,5 +10,5 @@ const fillAction: FillAction = async (page) => {
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputNumberElement>(COMPONENT_NAME, Number(TEST_VALUE), fillAction); // need to use a custom fillAction because the standard one only works with strings;
-	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE);
+	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, undefined, undefined, undefined, undefined, undefined, Number(TEST_VALUE));
 });

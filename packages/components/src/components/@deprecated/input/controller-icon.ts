@@ -21,7 +21,7 @@ export class InputIconController extends InputController implements Watches {
 		validateIcons(this.component, value);
 	}
 
-	private isNumberString(value: unknown): value is NumberString {
+	public isNumberString(value: unknown): value is NumberString {
 		return typeof value === 'string' && this.numberStringRegex.test(value);
 	}
 
