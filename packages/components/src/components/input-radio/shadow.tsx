@@ -112,9 +112,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			state: this.state,
 			id: id,
 			ref: this.state._value === option.value ? this.catchRef : undefined,
-			class: clsx('kol-input-radio', {
-				['kol-input-radio--disabled']: Boolean(this.state._disabled || option.disabled),
-			}),
+			class: 'kol-input-radio kol-input-radio__input',
 			'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
 			type: 'radio',
 			name: this.state._name || this.state._id,
@@ -149,7 +147,15 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 		return (
 			<KolFieldControlStateWrapperFc key={customId} {...this.getOptionProps(option, customId)}>
-				<KolInputStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
+				<label
+					htmlFor={customId}
+					class={clsx({
+						'kol-input-radio': true,
+						'kol-input-radio--disabled': !!(this.state._disabled || option.disabled),
+					})}
+				>
+					<KolInputStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
+				</label>
 			</KolFieldControlStateWrapperFc>
 		);
 	}

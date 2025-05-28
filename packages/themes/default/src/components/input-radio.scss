@@ -45,36 +45,37 @@
 	}
 
 	.kol-input-radio {
-		width: 100%;
-		border-color: var(--color-subtle);
-		border-width: 2px;
-		border-style: solid;
-		border-radius: 50%;
-		line-height: 1.5;
+		&__input {
+			border-color: var(--color-subtle);
+			border-width: 2px;
+			border-style: solid;
+			border-radius: 50%;
+			line-height: 1.5;
 
-		&:not(:disabled):hover {
-			border-color: var(--color-primary);
-			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
-		}
-
-		&:focus {
-			outline-offset: 2px;
-			outline: var(--color-primary-variant) solid rem(3);
-			transition: 200ms outline-offset linear;
-
-			&:hover {
-				box-shadow: none;
+			&:not(:disabled):hover {
+				border-color: var(--color-primary);
+				box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 			}
-		}
 
-		&:checked {
-			&:before {
-				background-color: var(--color-primary);
+			&:focus {
+				outline-offset: 2px;
+				outline: var(--color-primary-variant) solid rem(3);
+				transition: 200ms outline-offset linear;
+
+				&:hover {
+					box-shadow: none;
+				}
 			}
-		}
 
-		&:disabled {
-			background-color: var(--color-mute-variant);
+			&:checked {
+				&:before {
+					background-color: var(--color-primary);
+				}
+			}
+
+			&:disabled {
+				background-color: var(--color-mute-variant);
+			}
 		}
 	}
 
