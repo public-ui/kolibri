@@ -58,7 +58,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | Date | undefined> {
+	public async getValue(): Promise<string | Date | undefined | null> {
 		return this.inputRef && this.remapValue(this.inputRef?.value);
 	}
 
@@ -93,7 +93,10 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			this._initialValueType = null;
 		}
 	}
-	private remapValue(newValue: string): Date | Iso8601 {
+	private remapValue(newValue: string): Date | Iso8601 | null {
+		if (newValue === '') {
+			return null;
+		}
 		return this._initialValueType === 'Date' ? new Date(newValue) : (newValue as Iso8601);
 	}
 
@@ -297,7 +300,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null = null;
 
 	@State() public state: InputDateStates = {
 		_autoComplete: 'off',
@@ -440,7 +443,10 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
 		}
 		this.controller.validateValueEx(value);
-		if (value !== undefined) this.setInitialValueType(value);
+		if (value !== undefined && value !== null) {
+			// Don't switch type when value was reset to null
+			this.setInitialValueType(value);
+		}
 	}
 
 	public componentWillLoad(): void {
