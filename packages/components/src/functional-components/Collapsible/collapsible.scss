@@ -9,6 +9,8 @@
 			grid-template-rows: 0fr;
 			overflow: hidden;
 			transition: grid-template-rows 0.3s;
+			/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
+			transform: translateZ(0);
 		}
 
 		&__wrapper-animation {

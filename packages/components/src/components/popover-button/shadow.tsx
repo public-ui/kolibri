@@ -49,7 +49,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
-				_ariaExpanded={this._ariaExpanded}
 				_ariaSelected={this._ariaSelected}
 				_customClass={this._customClass}
 				_disabled={this._disabled}
@@ -89,11 +88,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 */
-	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)

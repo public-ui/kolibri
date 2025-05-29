@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { autoUpdate } from '@floating-ui/dom';
 import { KolButtonWcTag } from '../../core/component-names';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
@@ -33,12 +34,14 @@ import { validatePopoverAlign } from '../../schema';
 export class KolPopoverButton implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
+	private cleanupAutoPositioning?: () => void;
 
 	@State() public state: PopoverButtonStates = {
 		_label: '',
 		_popoverAlign: 'bottom',
 	};
 	@State() private justClosed = false;
+	@State() private popoverOpen = false;
 
 	/**
 	 * Hides the popover programmatically by calling the native hidePopover method.
@@ -66,13 +69,28 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
-	private handleToggle(event: Event) {
-		if ((event as ToggleEvent).newState === 'open' && this.refPopover && this.refButton) {
+	private alignPopover() {
+		if (this.refPopover && this.refButton) {
 			void alignFloatingElements({
 				align: this.state._popoverAlign,
 				floatingElement: this.refPopover,
 				referenceElement: this.refButton,
 			});
+		}
+	}
+
+	private handleToggle(event: Event) {
+		this.popoverOpen = (event as ToggleEvent).newState === 'open';
+
+		if (this.popoverOpen) {
+			if (this.refPopover && this.refButton) {
+				this.cleanupAutoPositioning = autoUpdate(this.refButton, this.refPopover, () => {
+					this.alignPopover();
+				});
+			}
+		} else if (this.cleanupAutoPositioning) {
+			this.cleanupAutoPositioning();
+			this.cleanupAutoPositioning = undefined;
 		}
 	}
 
@@ -91,6 +109,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	public disconnectedCallback() {
 		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
 		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		this.cleanupAutoPositioning?.();
 	}
 
 	public render(): JSX.Element {
@@ -98,9 +117,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 			<div class="kol-popover-button">
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
+					_aria-controls="popover"
 					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this._ariaExpanded}
+					_ariaExpanded={this.popoverOpen}
+					_ariaHasPopup={'dialog'}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
@@ -147,11 +168,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 */
-	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)

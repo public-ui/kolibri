@@ -60,6 +60,12 @@ avoiding Toasts in Modals and giving feedback within the modal directly.
 The `search` of this component is highly browser-dependent. For example, the close button is either shown or hidden depending on the browser. Accessibility is therefore not achieved.
 [🐞 GitHub issue #6307](https://github.com/public-ui/kolibri/issues/6307)
 
+## All text inputs
+
+In Chrome on Windows, clicking outside an HTML input but inside a WebComponent does not give focus to the input when it is empty. This issue sometimes does not occur if the input already contains a value. We suspect a focus propagation problem related to WebComponent behavior.
+
+[🐞 GitHub issue #7713](https://github.com/public-ui/kolibri/issues/7713)
+
 ## Screen reader only reads last selected in Select
 
 KolSelect is using native HTML `<select>`.

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "3.0.0-rc.11",
+	"version": "3.0.0-rc.13",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -53,8 +53,7 @@
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "npm-run-all --parallel dev serve",
 		"serve": "sh serve.sh DEFAULT",
-		"test": "pnpm test:visual",
-		"test:visual": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
+		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test-update": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"

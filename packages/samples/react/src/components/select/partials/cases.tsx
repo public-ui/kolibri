@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 
 import { KolSelect } from '@public-ui/react';
 
-import { ERROR_MSG } from '../../../shares/constants';
+import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
 import type { Components, Optgroup, SelectOption, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
@@ -72,6 +72,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				_multiple
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
+				_hint={HINT_MSG}
 				_touched
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With access key" _accessKey="c" />

@@ -1,5 +1,5 @@
-name: Report a bug
-description: All relevant bugs, e.g. faulty components or examples
+name: Fehler melden
+description: Alle relevanten Fehler, z. B. fehlerhafte Komponenten oder Beispiele
 title: '🐞 Bug: '
 labels: ['v2', 'v3']
 type: Bug
@@ -7,52 +7,52 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description
-      description: A clear and concise description of what the bug is, and what you expected to happen.
-      placeholder: I expected A to happen, but I observed B instead
+      label: Beschreibung
+      description: Eine klare und präzise Beschreibung des Fehlers und was du stattdessen erwartet hast.
+      placeholder: Ich habe erwartet, dass A passiert, aber stattdessen habe ich B beobachtet.
     validations:
       required: true
   - type: input
     id: reprod-url
     attributes:
-      label: 'Reproduction URL'
+      label: 'URL zur Reproduktion'
       description: |
-        Please enter your URL to provide a reproduction of the issue.
+        Bitte gib die URL an, mit der sich das Problem reproduzieren lässt.
 
-        StackBlitz starter templates:
+        StackBlitz-Starter-Templates:
         - **KoliBri (v2)** <https://stackblitz.com/edit/vitejs-vite-kkfhk5>
-      placeholder: ex. https://stackblitz.com/edit/XXXXXX
+      placeholder: z. B. https://stackblitz.com/edit/XXXXXX
     validations:
       required: true
   - type: textarea
     id: reproduction_steps
     attributes:
-      label: Reproduction steps
+      label: Schritte zur Reproduktion
       description: |
-        **List the precise reproductions steps**: The easier it is for us to run your reproduction, the faster we can fix the issue.
+        **Liste die exakten Schritte zur Reproduktion auf**: Je einfacher wir den Fehler nachstellen können, desto schneller können wir ihn beheben.
       placeholder: |
-        1. Go to '...'
-        2. Click on '....'
-        3. Scroll down to '....'
-        4. See error
+        1. Gehe zu '...'
+        2. Klicke auf '...'
+        3. Scrolle zu '...'
+        4. Fehler erscheint
     validations:
       required: true
   - type: textarea
     id: screenshot
     attributes:
       label: 'Screenshots'
-      description: If applicable, add screenshots to help explain your problem.
-      placeholder: Paste your screenshots here
+      description: Falls zutreffend, füge Screenshots hinzu, um das Problem zu veranschaulichen.
+      placeholder: Füge deine Screenshots hier ein
     validations:
       required: false
   - type: markdown
     attributes:
-      value: '## Additional information'
+      value: '## Weitere Informationen'
   - type: dropdown
     id: affected_components
     attributes:
-      label: Components
-      description: Select all components that are affected by the problem.
+      label: Komponenten
+      description: Wähle alle Komponenten aus, die vom Problem betroffen sind.
       multiple: true
       options:
         - 'Abbr'
@@ -102,8 +102,8 @@ body:
   - type: dropdown
     id: browsers
     attributes:
-      label: Browsers
-      description: What browsers are you seeing the problem on?
+      label: Browser
+      description: In welchen Browsern tritt das Problem auf?
       multiple: true
       options:
         - Chrome

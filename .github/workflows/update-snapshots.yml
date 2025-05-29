@@ -9,6 +9,10 @@ on:
         default: false
         type: boolean
 
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   update-snapshots:
     runs-on: ubuntu-latest
@@ -61,8 +65,11 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile
 
+      - name: Install Playwright and Firefox
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
+
       - name: Build
-        run: pnpm -r build
+        run: pnpm --filter @public-ui/sample-react^... build
 
       - name: Purge existing snapshots (optional)
         if: inputs.delete_snapshots == true
