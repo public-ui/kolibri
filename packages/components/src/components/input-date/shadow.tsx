@@ -17,6 +17,7 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	NumberString,
 	ReadOnlyPropType,
 	ShortKeyPropType,
 	Stringified,
@@ -275,7 +276,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the step size for value changes.
 	 */
-	@Prop() public _step?: number;
+	@Prop() public _step?: number | NumberString;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
@@ -414,7 +415,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_step')
-	public validateStep(value?: number): void {
+	public validateStep(value?: number | NumberString): void {
 		this.controller.validateStep(value);
 	}
 
