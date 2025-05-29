@@ -38,12 +38,12 @@ type RequiredStates = {
 
 type OptionalStates = {
 	hint: string;
-	max: number | NumberString;
-	min: number | NumberString;
+	max: number;
+	min: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	smartButton: ButtonProps;
-	step: number | NumberString;
+	step: number;
 	value: number;
 } & PropAccessKey &
 	PropDisabled &
