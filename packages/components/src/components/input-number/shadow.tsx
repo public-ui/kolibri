@@ -93,7 +93,9 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	};
 
 	private readonly onChange = (event: Event) => {
-		this.controller.onFacade.onChange(event, this.remapValue(Number(this._value))); // Ensure the value is emitted with the correct type. Default is always string.
+		const newValue = this.inputRef?.value;
+		const mappedValue = this.remapValue(newValue === '' ? null : Number(newValue));
+		this.controller.onFacade.onChange(event, mappedValue);
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -419,7 +421,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: number | NumberString | null): void {
 		this.controller.validateValue(value);
-		if (value !== undefined) {
+		if (value !== undefined && value !== null) {
+			// Don't switch type when value was reset to null
 			this.setInitialValueType(value);
 		}
 	}
