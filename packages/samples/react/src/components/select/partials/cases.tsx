@@ -50,7 +50,6 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				{...props}
 				ref={ref}
 				_accessKey="a"
-				_value={'Mrs.'}
 				_options={SALUTATION_OPTIONS}
 				_label="Salutation"
 				_icons={{
