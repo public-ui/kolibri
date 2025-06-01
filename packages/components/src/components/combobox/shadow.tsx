@@ -28,7 +28,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
-import { EventDetail } from '../../schema/interfaces/EventDetail';
+import type { EventDetail } from '../../schema/interfaces/EventDetail';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.

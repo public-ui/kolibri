@@ -3,30 +3,30 @@ import { SampleDescription } from '../SampleDescription';
 import { ToasterService } from '@public-ui/components';
 import { KolInputText } from '@public-ui/react';
 
+const smartButtonProps = {
+	_icons: 'codicon codicon-info',
+	_hideLabel: true,
+};
+
+const icons = {
+	left: {
+		icon: 'codicon codicon-arrow-left',
+	},
+	right: {
+		icon: 'codicon codicon-arrow-right',
+	},
+};
+
 export const InputTextSmartButton = () => {
 	const toaster = ToasterService.getInstance(document);
 
-	const smartButton = {
-		_icons: 'codicon codicon-info',
-		_hideLabel: true,
-		_label: 'Alert',
-		_on: {
-			onClick: () => {
-				void toaster.enqueue({
-					description: 'Smart-Button clicked',
-					label: `Toaster`,
-					type: 'default',
-				});
-			},
-		},
-	};
-
-	const icons = {
-		left: {
-			icon: 'codicon codicon-arrow-left',
-		},
-		right: {
-			icon: 'codicon codicon-arrow-right',
+	const handleClick = {
+		onClick: () => {
+			void toaster.enqueue({
+				description: 'Smart-Button clicked',
+				label: `Toaster`,
+				type: 'default',
+			});
 		},
 	};
 
@@ -37,9 +37,25 @@ export const InputTextSmartButton = () => {
 			</SampleDescription>
 
 			<div className="grid gap-4">
-				<KolInputText _label="With Smart Button" _type="text" _smartButton={smartButton}></KolInputText>
-				<KolInputText _label="With Smart Button (disabled)" _disabled _type="text" _smartButton={smartButton}></KolInputText>
-				<KolInputText _label="With Smart Button and Icons" _type="text" _smartButton={smartButton} _icons={icons}></KolInputText>
+				<KolInputText
+					_label="Input with button and icons"
+					_type="text"
+					_smartButton={{
+						...smartButtonProps,
+						_label: 'Open Toast',
+						_on: handleClick,
+					}}
+					_icons={icons}
+				></KolInputText>
+				<KolInputText
+					_label="Disabled input with button and without icons"
+					_disabled
+					_type="text"
+					_smartButton={{
+						...smartButtonProps,
+						_label: 'Disabled Button',
+					}}
+				></KolInputText>
 			</div>
 		</>
 	);
