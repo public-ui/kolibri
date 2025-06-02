@@ -16,4 +16,5 @@ export type {
 	SelectOption,
 	Toast,
 	ToasterOptions,
+	W3CInputValue,
 } from './schema';
