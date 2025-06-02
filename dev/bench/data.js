@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1748847870064,
+  "lastUpdate": 1748848112104,
   "repoUrl": "https://github.com/public-ui/kolibri",
   "entries": {
     "KoliBri Components Benchmark": [
@@ -957,6 +957,246 @@ window.BENCHMARK_DATA = {
           {
             "name": "kol-version",
             "value": 52,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "public-ui",
+            "username": "public-ui"
+          },
+          "committer": {
+            "name": "public-ui",
+            "username": "public-ui"
+          },
+          "id": "936135b00d0974aa42a914e07a07b9bfdaa473b6",
+          "message": "feat: add a benchmark workflow and update angular and react samples",
+          "timestamp": "2025-05-30T04:20:52Z",
+          "url": "https://github.com/public-ui/kolibri/pull/7798/commits/936135b00d0974aa42a914e07a07b9bfdaa473b6"
+        },
+        "date": 1748848111785,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "kol-abbr",
+            "value": 8,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-accordion",
+            "value": 81,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-alert",
+            "value": 28,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-avatar",
+            "value": 18,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-badge",
+            "value": 30,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-breadcrumb",
+            "value": 20,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-button",
+            "value": 53,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-button-link",
+            "value": 55,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-card",
+            "value": 13,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-details",
+            "value": 62,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-drawer",
+            "value": 18,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-form",
+            "value": 11,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-heading",
+            "value": 15,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-icon",
+            "value": 11,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-image",
+            "value": 7,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-checkbox",
+            "value": 39,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-color",
+            "value": 35,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-date",
+            "value": 47,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-email",
+            "value": 45,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-file",
+            "value": 79,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-number",
+            "value": 40,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-password",
+            "value": 41,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-radio",
+            "value": 34,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-text",
+            "value": 51,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-link",
+            "value": 59,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-link-button",
+            "value": 48,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-modal",
+            "value": 7,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-nav",
+            "value": 13,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-pagination",
+            "value": 93,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-popover-button",
+            "value": 54,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-progress",
+            "value": 7,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-quote",
+            "value": 8,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-select",
+            "value": 35,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-skip-nav",
+            "value": 13,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-spin",
+            "value": 10,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-split-button",
+            "value": 61,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-table-stateful",
+            "value": 88,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-table-stateless",
+            "value": 86,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-tabs",
+            "value": 10,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-textarea",
+            "value": 31,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-toolbar",
+            "value": 9,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-tree",
+            "value": 22,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-tree-item",
+            "value": 55,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-version",
+            "value": 55,
             "unit": "ms"
           }
         ]
