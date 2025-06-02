@@ -1,0 +1,46 @@
+name: Benchmark-PR-Check
+
+on:
+  pull_request:
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install and execute benchmark
+        uses: ./.github/actions/benchmark
+
+      - name: Load benchmark from target branch
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          git show origin/${{ github.base_ref }}:packages/tools/benchmark-tests/benchmark-baseline.json > packages/tools/benchmark-tests/benchmark-baseline.json || echo "[]" > packages/tools/benchmark-tests/benchmark-baseline.json
+
+      - name: Compare benchmark with baseline
+        run: node scripts/compare-benchmark.mjs
+        working-directory: packages/tools/benchmark-tests
+
+      - name: Find comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          body-includes: Hydration Benchmark Report
+          comment-author: 'github-actions[bot]'
+          issue-number: ${{ github.event.pull_request.number }}
+
+      - name: Post PR Comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          body-path: packages/tools/benchmark-tests/benchmark-report.md
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          issue-number: ${{ github.event.pull_request.number }}

@@ -41,7 +41,7 @@
 		"@typescript-eslint/parser": "8.27.0",
 		"@unocss/preset-uno": "0.58.9",
 		"@unocss/webpack": "0.58.9",
-		"adopted-style-sheets": "1.1.8",
+		"adopted-style-sheets": "1.1.9-rc.17",
 		"ajv": "8.17.1",
 		"chromedriver": "130.0.4",
 		"cpy-cli": "5.0.0",
