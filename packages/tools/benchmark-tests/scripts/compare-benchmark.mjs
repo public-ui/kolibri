@@ -1,20 +1,27 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
-const current = JSON.parse(readFileSync('benchmark-result.json', 'utf-8'));
-const baseline = existsSync('benchmark-baseline.json') ? JSON.parse(readFileSync('benchmark-baseline.json', 'utf-8')) : [];
+const loadJson = (path) => {
+	return existsSync(path) ? JSON.parse(readFileSync(path, 'utf-8')) : [];
+};
 
+const current = loadJson('benchmark-result.json');
+const baseline = loadJson('benchmark-baseline.json');
+
+const rows = [];
 let hasRegression = false;
-
-let markdown = `## Hydration Benchmark Report (vs Baseline)\n\n`;
-markdown += `| Component | Current | Baseline | Δ% | Result |\n`;
-markdown += `|-----------|---------|----------|-----|--------|\n`;
 
 for (const entry of current) {
 	const prev = baseline.find((b) => b.name === entry.name);
 	const now = entry.value;
 
 	if (!prev) {
-		markdown += `| \`${entry.name}\` | ${now}ms | – | – | 🆕 |\n`;
+		rows.push({
+			name: entry.name,
+			current: now,
+			baseline: null,
+			percent: null,
+			markdown: `| \`${entry.name}\` | ${now}ms | – | – | 🆕 |`,
+		});
 		continue;
 	}
 
@@ -25,8 +32,34 @@ for (const entry of current) {
 
 	if (percent > 5) hasRegression = true;
 
-	markdown += `| \`${entry.name}\` | ${now}ms | ${old}ms | ${diffStr} | ${emoji} |\n`;
+	rows.push({
+		name: entry.name,
+		current: now,
+		baseline: old,
+		percent,
+		markdown: `| \`${entry.name}\` | ${now}ms | ${old}ms | ${diffStr} | ${emoji} |`,
+	});
 }
+
+const top5 = rows
+	.filter((r) => r.percent !== null)
+	.sort((a, b) => Math.abs(b.percent) - Math.abs(a.percent))
+	.slice(0, 5);
+
+const rest = rows.filter((r) => !top5.includes(r)).sort((a, b) => a.name.localeCompare(b.name));
+
+let markdown = `## Hydration Benchmark Report (vs Baseline)\n\n`;
+
+markdown += `### 📊 Top 5 Änderungen\n\n`;
+markdown += `| Component | Current | Baseline | Δ% | Result |\n`;
+markdown += `|-----------|---------|----------|-----|--------|\n`;
+markdown += top5.map((r) => r.markdown).join('\n') + '\n\n';
+
+markdown += `<details>\n<summary>📋 Alle Ergebnisse anzeigen</summary>\n\n`;
+markdown += `| Component | Current | Baseline | Δ% | Result |\n`;
+markdown += `|-----------|---------|----------|-----|--------|\n`;
+markdown += rest.map((r) => r.markdown).join('\n') + '\n';
+markdown += `</details>\n`;
 
 writeFileSync('benchmark-report.md', markdown);
 
