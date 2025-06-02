@@ -65,28 +65,35 @@ const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '5000', 10);
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('http://localhost:3000/test-page.html');
+	await page.waitForLoadState('networkidle');
 });
 
 for (const tag of TAGS) {
 	for (let idx = 0; idx < TEST_ITERATIONS; idx++) {
-		test(`${tag} hydration iteration ${idx + 1}`, async ({ page }) => {
-			await page.evaluate(() => window.gc?.());
-
-			const duration = await page.evaluate(
-				async ({ tag, timeout, idx }) => {
+		test(`${tag} hydration (${idx + 1})`, async ({ page }) => {
+			const { hydratedTime } = await page.evaluate(
+				async ({ tag, timeout }) => {
+					window.gc?.();
 					await customElements.whenDefined(tag);
-
 					const el = document.createElement(tag);
-					el.setAttribute('data-test', `hydration-${idx}`);
-					const start = performance.now();
 					document.body.appendChild(el);
+					const start = performance.now();
+					let hydratedTime: number | null = null;
+					let themedTime: number | null = null;
 
 					await new Promise<void>((resolve) => {
 						let cleaned = false;
 
 						const timeoutId = setTimeout(cleanup, timeout);
+
 						const observer = new MutationObserver(() => {
-							if (el.classList.contains('hydrated')) cleanup();
+							if (!hydratedTime && el.classList.contains('hydrated')) {
+								hydratedTime = performance.now() - start;
+							}
+							if (hydratedTime && el.hasAttribute('data-themed')) {
+								themedTime = performance.now() - hydratedTime;
+								cleanup();
+							}
 						});
 
 						function cleanup() {
@@ -100,24 +107,28 @@ for (const tag of TAGS) {
 
 						observer.observe(el, {
 							attributes: true,
-							attributeFilter: ['class'],
+							attributeFilter: ['class', 'data-themed'],
 						});
 					});
 
-					const end = performance.now();
-					return end - start;
+					return {
+						hydratedTime,
+						themedTime,
+					};
 				},
-				{ tag, timeout: TEST_TIMEOUT, idx },
+				{ tag, timeout: TEST_TIMEOUT },
 			);
 
-			if (!results.has(tag)) {
-				results.set(tag, {
-					name: tag,
-					values: [],
-					unit: 'ms',
-				});
+			if (hydratedTime !== null) {
+				if (!results.has(tag)) {
+					results.set(tag, {
+						name: tag,
+						values: [],
+						unit: 'ms',
+					});
+				}
+				results.get(tag)!.values.push(Math.round(hydratedTime));
 			}
-			results.get(tag)!.values.push(Math.round(duration));
 		});
 	}
 }

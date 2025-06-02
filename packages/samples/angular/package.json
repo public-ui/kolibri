@@ -30,7 +30,7 @@
 		"@angular/compiler-cli": "17.3.12",
 		"@types/jasmine": "5.1.8",
 		"@tailwindcss/postcss": "4.1.8",
-		"adopted-style-sheets": "1.1.9-rc.17",
+		"adopted-style-sheets": "1.1.9-rc.18",
 		"cpy-cli": "5.0.0",
 		"karma-jasmine": "5.1.0",
 		"karma-chrome-launcher": "3.2.0",

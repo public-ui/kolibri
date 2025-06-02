@@ -371,8 +371,8 @@ importers:
         specifier: 1.6.13
         version: 1.6.13
       adopted-style-sheets:
-        specifier: 1.1.9-rc.17
-        version: 1.1.9-rc.17
+        specifier: 1.1.9-rc.18
+        version: 1.1.9-rc.18
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -598,8 +598,8 @@ importers:
         specifier: 5.1.8
         version: 5.1.8
       adopted-style-sheets:
-        specifier: 1.1.9-rc.17
-        version: 1.1.9-rc.17
+        specifier: 1.1.9-rc.18
+        version: 1.1.9-rc.18
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
@@ -682,8 +682,8 @@ importers:
         specifier: 0.58.9
         version: 0.58.9(rollup@4.36.0)(webpack@5.98.0)
       adopted-style-sheets:
-        specifier: 1.1.9-rc.17
-        version: 1.1.9-rc.17
+        specifier: 1.1.9-rc.18
+        version: 1.1.9-rc.18
       ajv:
         specifier: 8.17.1
         version: 8.17.1
@@ -994,8 +994,8 @@ importers:
         specifier: workspace:*
         version: link:../../themes/default
       adopted-style-sheets:
-        specifier: 1.1.9-rc.17
-        version: 1.1.9-rc.17
+        specifier: 1.1.9-rc.18
+        version: 1.1.9-rc.18
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
@@ -4689,8 +4689,8 @@ packages:
     resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
     engines: {node: '>=8.9'}
 
-  adopted-style-sheets@1.1.9-rc.17:
-    resolution: {integrity: sha512-1tZf+93AP6x3DrUIc2vIHSH0aFdnmEVWQol/2Z/FvIHyyybhL61qMhae7hKWf46e6cKppxVV89wZga+97oEdTw==}
+  adopted-style-sheets@1.1.9-rc.18:
+    resolution: {integrity: sha512-x6ZSo3s6tw9LLmYKsMjdqO+EERPwsaKmLN8ahJ1dwGRI+oxyt+kBlY+yuTr7381Nm7/E10wcEtN6ZE2g1kDS2A==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -16784,7 +16784,7 @@ snapshots:
       loader-utils: 2.0.4
       regex-parser: 2.3.1
 
-  adopted-style-sheets@1.1.9-rc.17:
+  adopted-style-sheets@1.1.9-rc.18:
     dependencies:
       loglevel: 1.9.2
 
