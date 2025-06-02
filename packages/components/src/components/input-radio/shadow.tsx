@@ -28,7 +28,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../functional-component-wrappers/RadioStateWrapper';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -107,38 +107,35 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return obj;
 	}
 
-	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): InputStateWrapperProps {
-		const obj: InputStateWrapperProps = {
+	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): RadioStateWrapperProps {
+		return {
 			state: this.state,
-			id: id,
-			ref: this.state._value === option.value ? this.catchRef : undefined,
-			class: 'kol-input-radio kol-input-radio__input',
-			'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
-			type: 'radio',
-			name: this.state._name || this.state._id,
-			value: `-${index}`,
-			checked: selected,
+			inputProps: {
+				id: id,
+				ref: this.state._value === option.value ? this.catchRef : undefined,
+				class: 'kol-input-radio kol-input-radio__input',
+				'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
+				type: 'radio',
+				name: this.state._name || this.state._id,
+				value: `-${index}`,
+				checked: selected,
+				disabled: option.disabled,
 
-			...this.controller.onFacade,
-			onChange: this.onChange,
-			onClick: undefined, // onClick is not needed since onChange already triggers the correct event
-			onInput: this.onInput,
-			onKeyDown: this.onKeyDown.bind(this),
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
+				...this.controller.onFacade,
+				onChange: this.onChange,
+				onClick: undefined, // onClick is not needed since onChange already triggers the correct event
+				onInput: this.onInput,
+				onKeyDown: this.onKeyDown.bind(this),
+				onFocus: (event: Event) => {
+					this.controller.onFacade.onFocus(event);
+					this.inputHasFocus = true;
+				},
+				onBlur: (event: Event) => {
+					this.controller.onFacade.onBlur(event);
+					this.inputHasFocus = false;
+				},
 			},
 		};
-
-		if (option.disabled) {
-			obj.disabled = true;
-		}
-
-		return obj;
 	}
 
 	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
@@ -147,15 +144,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 		return (
 			<KolFieldControlStateWrapperFc key={customId} {...this.getOptionProps(option, customId)}>
-				<label
-					htmlFor={customId}
-					class={clsx({
-						'kol-input-radio': true,
-						'kol-input-radio--disabled': !!(this.state._disabled || option.disabled),
-					})}
-				>
-					<KolInputStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
-				</label>
+				<KolRadioStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
 			</KolFieldControlStateWrapperFc>
 		);
 	}
