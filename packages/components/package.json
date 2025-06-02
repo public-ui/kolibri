@@ -66,16 +66,16 @@
 		"lint:tsc": "tsc --noemit",
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"test": "pnpm test:unit",
+		"test:e2e": "playwright test",
 		"test:unit": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"test:e2e": "playwright test",
 		"postpack": "mv package.bak.json package.json",
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"xunused": "knip"
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.13",
-		"adopted-style-sheets": "1.1.8",
+		"adopted-style-sheets": "1.1.9-rc.17",
 		"clsx": "2.1.1",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
@@ -134,7 +134,7 @@
 		"typescript": "5.8.2"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.8"
+		"adopted-style-sheets": "1.1.9-rc.17"
 	},
 	"files": [
 		"assets",

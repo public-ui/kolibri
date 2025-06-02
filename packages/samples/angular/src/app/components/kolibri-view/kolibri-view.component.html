@@ -1,0 +1,6 @@
+<h1>KoliBri elements</h1>
+<div class="mt-10 flex flex-col w-1/3 gap-5">
+	<kol-input-text *ngFor="let input of numberOfInputs" [_on]="onValueChange" [_label]="'TextInput #' + input" />
+	<kol-input-number *ngFor="let input of numberOfInputs" [_on]="onValueChange" [_label]="'NumberInput #' + input" />
+	<kol-input-checkbox *ngFor="let check of numberOfInputs" [_label]="'Checkbox #' + check" [_on]="onValueChange" />
+</div>
