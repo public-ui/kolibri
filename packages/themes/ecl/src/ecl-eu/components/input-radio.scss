@@ -68,7 +68,7 @@
 		&__msg {
 			@include kol-alert-wc;
 
-			&.kol-alert--error {
+			&.kol-alert--type-error {
 				@include kol-alert-wc(--color-red);
 			}
 		}

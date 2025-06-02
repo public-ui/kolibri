@@ -2,6 +2,10 @@
 @use './rem' as *;
 
 @mixin kol-button($block-classname) {
+	:host {
+		--theme-visibility-delay: 0.5s;
+	}
+
 	.#{$block-classname} {
 		$root: &;
 
