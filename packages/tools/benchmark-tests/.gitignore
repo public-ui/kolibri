@@ -1,0 +1,6 @@
+/public/assets/
+/public/components/
+/public/theme/
+/test-results/
+benchmark-report.md
+benchmark-result.json

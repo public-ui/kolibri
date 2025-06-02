@@ -1,0 +1,21 @@
+name: Benchmark Execution
+runs:
+  using: 'composite'
+  steps:
+    - name: Install dependencies
+      uses: ./.github/actions/pnpm-setup
+
+    - name: Install playwright dependencies and browsers
+      run: pnpm exec playwright install --with-deps chromium
+      shell: bash
+      working-directory: packages/tools/benchmark-tests
+
+    - name: Build required packages
+      run: pnpm build:deps
+      shell: bash
+      working-directory: packages/tools/benchmark-tests
+
+    - name: Run benchmark tests
+      run: pnpm test-benchmark
+      shell: bash
+      working-directory: packages/tools/benchmark-tests
