@@ -6,6 +6,10 @@
 @use '../mixins/field-control' as *;
 
 @layer kol-theme-component {
+	:host {
+		--theme-visibility-delay: 0.5s;
+	}
+
 	.kol-form-field {
 		$root: &;
 

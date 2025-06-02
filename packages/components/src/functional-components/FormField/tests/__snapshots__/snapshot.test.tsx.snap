@@ -87,16 +87,16 @@ exports[`KolFormFieldFc should render with error message 1`] = `
     </span>
   </label>
   <div class="kol-form-field__input"></div>
-  <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" description="Error message" id="test-id-msg">
+  <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" description="Error message" id="test-id-msg">
     <div class="kol-alert__container">
       <span class="visually-hidden">
         kol-error
       </span>
-      <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__heading-icon"></kol-icon>
+      <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
       <div class="kol-alert__container-content">
-        <div class="kol-alert__content">
+        <span class="kol-alert__content">
           Error message
-        </div>
+        </span>
       </div>
     </div>
   </div>
