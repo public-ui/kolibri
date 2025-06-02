@@ -38,7 +38,7 @@
 		"@types/react-dom": "18.3.7",
 		"@unocss/preset-uno": "0.58.9",
 		"@unocss/webpack": "0.58.9",
-		"adopted-style-sheets": "1.1.8",
+		"adopted-style-sheets": "1.1.9-rc.18",
 		"ajv": "8.17.1",
 		"cpy-cli": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",

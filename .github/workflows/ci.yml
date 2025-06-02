@@ -60,7 +60,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-default', '@public-ui/theme-bwst']
+        package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
