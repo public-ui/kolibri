@@ -1,8 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
-const loadJson = (path) => {
-	return existsSync(path) ? JSON.parse(readFileSync(path, 'utf-8')) : [];
-};
+const loadJson = (path) => (existsSync(path) ? JSON.parse(readFileSync(path, 'utf-8')) : []);
 
 const current = loadJson('benchmark-result.json');
 const baseline = loadJson('benchmark-baseline.json');
@@ -41,21 +39,21 @@ for (const entry of current) {
 	});
 }
 
-const top5 = rows
-	.filter((r) => r.percent !== null)
-	.sort((a, b) => Math.abs(b.percent) - Math.abs(a.percent))
+const flop5 = rows
+	.filter((r) => typeof r.percent === 'number' && r.percent > 0)
+	.sort((a, b) => b.percent - a.percent)
 	.slice(0, 5);
 
-const rest = rows.filter((r) => !top5.includes(r)).sort((a, b) => a.name.localeCompare(b.name));
+const rest = rows.filter((r) => !flop5.includes(r)).sort((a, b) => a.name.localeCompare(b.name));
 
 let markdown = `## Hydration Benchmark Report (vs Baseline)\n\n`;
 
-markdown += `### 📊 Top 5 Änderungen\n\n`;
+markdown += `### 📊 Flop 5 Regressions\n\n`;
 markdown += `| Component | Current | Baseline | Δ% | Result |\n`;
 markdown += `|-----------|---------|----------|-----|--------|\n`;
-markdown += top5.map((r) => r.markdown).join('\n') + '\n\n';
+markdown += flop5.map((r) => r.markdown).join('\n') + '\n\n';
 
-markdown += `<details>\n<summary>📋 Alle Ergebnisse anzeigen</summary>\n\n`;
+markdown += `<details>\n<summary>📋 Show all results</summary>\n\n`;
 markdown += `| Component | Current | Baseline | Δ% | Result |\n`;
 markdown += `|-----------|---------|----------|-----|--------|\n`;
 markdown += rest.map((r) => r.markdown).join('\n') + '\n';

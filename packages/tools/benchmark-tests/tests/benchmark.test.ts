@@ -52,13 +52,15 @@ const TAGS = [
 
 type TagType = (typeof TAGS)[number];
 
-const results: {
+type ResultEntry = {
 	name: TagType;
-	value: number;
+	values: number[];
 	unit: 'ms';
-}[] = [];
+};
 
-const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || '1', 10);
+const results: Map<TagType, ResultEntry> = new Map();
+
+const TEST_ITERATIONS = Math.max(parseInt(process.env.TEST_ITERATIONS || '1', 10), !!process.env.CI ? 5 : 1);
 const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '5000', 10);
 
 test.beforeEach(async ({ page }) => {
@@ -66,10 +68,8 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const tag of TAGS) {
-	test(`${tag} hydrates`, async ({ page }) => {
-		const durations: number[] = [];
-
-		for (let idx = 0; idx < TEST_ITERATIONS; idx++) {
+	for (let idx = 0; idx < TEST_ITERATIONS; idx++) {
+		test(`${tag} hydration iteration ${idx + 1}`, async ({ page }) => {
 			await page.evaluate(() => window.gc?.());
 
 			const duration = await page.evaluate(
@@ -92,7 +92,6 @@ for (const tag of TAGS) {
 						function cleanup() {
 							if (cleaned) return;
 							cleaned = true;
-
 							clearTimeout(timeoutId);
 							observer.disconnect();
 							if (el.parentNode) el.remove();
@@ -111,20 +110,30 @@ for (const tag of TAGS) {
 				{ tag, timeout: TEST_TIMEOUT, idx },
 			);
 
-			durations.push(duration);
-		}
-
-		durations.sort((a, b) => a - b);
-		const median = durations[Math.floor(durations.length / 2)];
-
-		results.push({
-			name: tag,
-			value: Math.round(median),
-			unit: 'ms',
+			if (!results.has(tag)) {
+				results.set(tag, {
+					name: tag,
+					values: [],
+					unit: 'ms',
+				});
+			}
+			results.get(tag)!.values.push(Math.round(duration));
 		});
-	});
+	}
 }
 
 test.afterAll(() => {
-	writeFileSync('benchmark-result.json', JSON.stringify(results, null, 2));
+	const finalResults = Array.from(results.values()).map(({ name, values, unit }) => {
+		values.sort((a, b) => a - b);
+		const mid = Math.floor(values.length / 2);
+		const median = values.length % 2 === 0 ? Math.round((values[mid - 1] + values[mid]) / 2) : values[mid];
+
+		return {
+			name,
+			value: median,
+			unit,
+		};
+	});
+
+	writeFileSync('benchmark-result.json', JSON.stringify(finalResults, null, 2));
 });
