@@ -12,5 +12,6 @@ packages:
   - packages/themes/default
   - packages/themes/ecl
   - packages/themes
+  - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
