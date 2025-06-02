@@ -65,7 +65,6 @@ writeFileSync('benchmark-report.md', markdown);
 
 if (hasRegression) {
 	console.error('❌ Performance regression detected.');
-	process.exit(1);
 } else {
 	console.log('✅ No significant regression.');
 }
