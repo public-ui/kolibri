@@ -36,6 +36,10 @@ jobs:
       - name: Install and execute benchmark
         uses: ./.github/actions/benchmark
 
+      - name: Git checkout readme's
+        run: git checkout -- packages/components/src
+        shell: bash
+
       - name: Remove husky
         run: rm -rf .husky
         shell: bash
