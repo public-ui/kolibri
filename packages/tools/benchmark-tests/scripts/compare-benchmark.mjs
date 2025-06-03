@@ -2,8 +2,8 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 const loadJson = (path) => (existsSync(path) ? JSON.parse(readFileSync(path, 'utf-8')) : []);
 
-const current = loadJson('benchmark-result.json');
-const baseline = loadJson('benchmark-baseline.json');
+const current = loadJson(`benchmark-result.json`);
+const baseline = loadJson(`benchmark-baseline.json`);
 
 const rows = [];
 let hasRegression = false;
@@ -59,10 +59,10 @@ markdown += `|-----------|---------|----------|-----|--------|\n`;
 markdown += rest.map((r) => r.markdown).join('\n') + '\n';
 markdown += `</details>\n`;
 
-writeFileSync('benchmark-report.md', markdown);
+writeFileSync(`benchmark-report.md`, markdown);
 
 if (hasRegression) {
-	console.error('❌ Performance regression detected.');
+	console.warn(`❌ Performance regression detected.`);
 } else {
-	console.log('✅ No significant regression.');
+	console.log(`✅ No significant regression.`);
 }

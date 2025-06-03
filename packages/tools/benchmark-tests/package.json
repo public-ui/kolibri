@@ -35,7 +35,7 @@
 		"@playwright/test": "1.49.1",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
-		"adopted-style-sheets": "1.1.9-rc.17",
+		"adopted-style-sheets": "1.1.9-rc.18",
 		"cpy-cli": "5.0.0",
 		"knip": "5.46.0",
 		"npm-run-all2": "8.0.4",
