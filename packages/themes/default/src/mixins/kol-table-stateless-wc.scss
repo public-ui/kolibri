@@ -17,16 +17,12 @@
 		overflow-y: hidden;
 		padding: rem(8);
 
-		&__table,
-		&__caption {
-			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
-			border-color: var(--color-primary-variant);
-			border-style: solid;
-		}
-
 		&__table {
 			width: 100%;
+			border-width: 0;
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
@@ -45,13 +41,25 @@
 			}
 		}
 
+		&__head-row,
+		&__body,
+		&__row--footer {
+			border-width: calc(var(--border-width) * 2);
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+		}
+
 		&__cell {
 			padding: rem(8);
+			border-width: 0 calc(var(--border-width) * 2);
+			border-color: var(--color-primary-variant);
+			border-style: solid;
 
 			&--header {
 				font-weight: normal;
 				color: var(--color-primary);
 				background-color: var(--color-light);
+				border-width: calc(var(--border-width) * 2);
 			}
 
 			&--ascending,
@@ -74,20 +82,6 @@
 		&__spacer {
 			display: table-row;
 			height: rem(24);
-		}
-
-		&__spacer-line {
-			border-width: 0;
-			border-color: var(--color-primary-variant);
-			border-style: solid;
-
-			&--foot {
-				border-bottom-width: calc(var(--border-width) * 2);
-			}
-
-			&--head {
-				border-top-width: calc(var(--border-width) * 2);
-			}
 		}
 
 		&__row {
