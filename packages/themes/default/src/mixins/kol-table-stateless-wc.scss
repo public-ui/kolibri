@@ -19,11 +19,6 @@
 			padding: rem(8);
 		}
 
-		th {
-			font-weight: normal;
-			color: var(--color-primary);
-		}
-
 		tr.foot-spacer,
 		tr.head-spacer {
 			display: table-row;
@@ -31,20 +26,6 @@
 
 			td {
 				border-width: 0;
-				border-color: var(--color-primary-variant);
-				border-style: solid;
-			}
-		}
-
-		tr.foot-spacer {
-			td {
-				border-bottom-width: calc(var(--border-width) * 2);
-			}
-		}
-
-		tr.head-spacer {
-			td {
-				border-top-width: calc(var(--border-width) * 2);
 			}
 		}
 
@@ -60,21 +41,37 @@
 			}
 		}
 
-		table,
-		table caption {
+		table {
+			width: 100%;
 			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		thead > tr:not(.head-spacer),
+		tbody,
+		tfoot > tr:not(.foot-spacer) {
+			border-width: calc(var(--border-width) * 2);
 			border-color: var(--color-primary-variant);
 			border-style: solid;
 		}
 
-		table {
-			width: 100%;
-			border-spacing: 0;
+		th {
+			font-weight: normal;
+			color: var(--color-primary);
+			background-color: var(--color-light);
+
+			border-width: calc(var(--border-width) * 2);
+			border-color: var(--color-primary-variant);
+			border-style: solid;
 		}
 
-		th {
-			background-color: var(--color-light);
+		td {
+			border-width: 0 calc(var(--border-width) * 2);
+			border-color: var(--color-primary-variant);
+			border-style: solid;
 		}
 
 		th[aria-sort='ascending'] .button,
