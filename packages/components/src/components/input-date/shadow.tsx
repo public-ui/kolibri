@@ -300,7 +300,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null = null;
+	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: InputDateStates = {
 		_autoComplete: 'off',

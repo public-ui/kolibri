@@ -282,7 +282,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null = null;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',

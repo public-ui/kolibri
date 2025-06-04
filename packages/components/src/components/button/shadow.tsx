@@ -172,7 +172,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	/**
 	 * Defines the value that the button emits on click.
 	 */
-	@Prop() public _value?: StencilUnknown = null;
+	@Prop() public _value?: StencilUnknown;
 
 	/**
 	 * Defines which variant should be used for presentation.
