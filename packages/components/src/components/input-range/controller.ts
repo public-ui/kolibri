@@ -1,9 +1,10 @@
-import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, SuggestionsPropType } from '../../schema';
-import { validateSuggestions, watchNumber, watchValidator } from '../../schema';
+import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, NumberString, SuggestionsPropType } from '../../schema';
+import { validateSuggestions, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class InputRangeController extends InputIconController implements InputRangeWatches {
 	protected readonly component: Generic.Element.Component & InputRangeProps;
 
@@ -22,24 +23,24 @@ export class InputRangeController extends InputIconController implements InputRa
 		);
 	}
 
-	public validateMax(value?: number): void {
-		watchNumber(this.component, '_max', value);
+	public validateMax(value?: number | NumberString): void {
+		this.validateNumber('_max', value);
 	}
 
-	public validateMin(value?: number): void {
-		watchNumber(this.component, '_min', value);
+	public validateMin(value?: number | NumberString): void {
+		this.validateNumber('_min', value);
 	}
 
-	public validateStep(value?: number): void {
-		watchNumber(this.component, '_step', value);
+	public validateStep(value?: number | NumberString): void {
+		this.validateNumber('_step', value);
 	}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
 	}
 
-	public validateValue(value?: number): void {
-		watchNumber(this.component, '_value', value);
+	public validateValue(value?: number | NumberString): void {
+		this.validateNumber('_value', value);
 		this.component._value = value;
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}

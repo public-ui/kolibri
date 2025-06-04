@@ -12,7 +12,6 @@ import type {
 	NamePropType,
 	ShortKeyPropType,
 	StencilUnknown,
-	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -38,7 +37,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
+	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
@@ -169,5 +168,5 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	/**
 	 * Defines the value that the button emits on click.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown>;
+	@Prop() public _value?: StencilUnknown;
 }

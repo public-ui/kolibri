@@ -10,8 +10,6 @@ import type {
 	RadioOption,
 	SelectOption,
 	StencilUnknown,
-	Stringified,
-	W3CInputValue,
 } from '../../schema';
 import { orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
 
@@ -57,14 +55,14 @@ export class InputCheckboxRadioController extends InputController implements Inp
 
 export class InputRadioController extends InputCheckboxRadioController implements InputRadioWatches {
 	protected readonly component: Generic.Element.Component & InputRadioProps;
-	private readonly keyOptionMap = new Map<string, RadioOption<W3CInputValue>>();
+	private readonly keyOptionMap = new Map<string, RadioOption<StencilUnknown>>();
 
 	public constructor(component: Generic.Element.Component & InputRadioProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): RadioOption<W3CInputValue> | undefined => this.keyOptionMap.get(key);
+	public readonly getOptionByKey = (key: string): RadioOption<StencilUnknown> | undefined => this.keyOptionMap.get(key);
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
 		if (key === '_value') {
@@ -89,7 +87,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<StencilUnknown>[]);
 		}
 	};
 
@@ -102,7 +100,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		});
 	}
 
-	public validateValue(value?: Stringified<StencilUnknown>): void {
+	public validateValue(value?: StencilUnknown): void {
 		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
 			afterPatch: this.afterPatchOptions,

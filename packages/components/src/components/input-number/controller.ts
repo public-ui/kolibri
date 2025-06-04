@@ -1,17 +1,10 @@
-import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, Iso8601, SuggestionsPropType } from '../../schema';
-import { validateSuggestions, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, NumberString, SuggestionsPropType } from '../../schema';
+import { validateSuggestions, watchBoolean, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
 export class InputNumberController extends InputIconController implements InputNumberWatches {
-	/**
-	 * Regex to check whether a string is a number or a date in ISO-8601 format.
-	 * Test the regex here: https://regex101.com/r/ddGR4V/1
-	 */
-	private readonly numberOrIsoDateRegex =
-		/^\d+$|(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$)|(^[0-2]\d:[0-5]\d(:[0-5]\d)?$)/;
-
 	protected readonly component: Generic.Element.Component & InputNumberProps;
 
 	public constructor(component: Generic.Element.Component & InputNumberProps, name: string, host?: HTMLElement) {
@@ -33,55 +26,12 @@ export class InputNumberController extends InputIconController implements InputN
 		validateSuggestions(this.component, value);
 	}
 
-	private readonly parseToString = (value?: number | Date | string | null) => {
-		if (typeof value === 'string') {
-			return value;
-		}
-		if (typeof value === 'number') {
-			return `${value}`;
-		}
-		if (typeof value === 'object' && value instanceof Date) {
-			return value.toISOString();
-		}
-		return '';
-	};
-
-	private readonly validateIso8601 = (propName: string, value?: number | Iso8601 | null, afterPatch?: (v: string) => void) => {
-		const parsedValue = parseFloat(value as string);
-		const valueMatched = parsedValue == value;
-		return watchValidator(
-			this.component,
-			propName,
-			(value): boolean => value === undefined || value === '' || (valueMatched && typeof parsedValue === 'number') || this.numberOrIsoDateRegex.test(value),
-			new Set(['number', 'Date', 'string{ISO-8601}']),
-			this.parseToString(value),
-			{
-				hooks: {
-					afterPatch: (value) => {
-						if (typeof value === 'string' && afterPatch) {
-							afterPatch(value);
-						}
-					},
-				},
-			},
-		);
-	};
-
-	protected onChange(event: Event): void {
-		super.onChange(event);
-
-		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
-		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {
-			this.component._value = parseFloat((event.target as HTMLInputElement).value);
-		}
+	public validateMax(value?: number | NumberString): void {
+		this.validateNumber('_max', value);
 	}
 
-	public validateMax(value?: number | Iso8601): void {
-		this.validateIso8601('_max', value);
-	}
-
-	public validateMin(value?: number | Iso8601): void {
-		this.validateIso8601('_min', value);
+	public validateMin(value?: number | NumberString): void {
+		this.validateNumber('_min', value);
 	}
 
 	public validatePlaceholder(value?: string): void {
@@ -96,19 +46,12 @@ export class InputNumberController extends InputIconController implements InputN
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateStep(value?: number): void {
-		watchNumber(this.component, '_step', value);
+	public validateStep(value?: number | NumberString): void {
+		this.validateNumber('_step', value);
 	}
 
-	public validateValue(value?: number | Iso8601 | null): void {
-		this.validateValueEx(value);
-	}
-
-	/**
-	 * Overload of validate value. Extends by an after patch callback function.
-	 */
-	public validateValueEx(value?: number | Iso8601 | null, afterPatch?: (v: string) => void): void {
-		this.validateIso8601('_value', value, afterPatch);
+	public validateValue(value?: number | NumberString | null): void {
+		this.validateNumber('_value', value);
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 

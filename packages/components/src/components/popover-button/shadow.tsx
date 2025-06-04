@@ -15,7 +15,6 @@ import type {
 	PopoverAlignPropType,
 	ShortKeyPropType,
 	StencilUnknown,
-	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -175,7 +174,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	/**
 	 * Defines the value that the button emits on click.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown>;
+	@Prop() public _value?: StencilUnknown;
 
 	/**
 	 * Defines which variant should be used for presentation.

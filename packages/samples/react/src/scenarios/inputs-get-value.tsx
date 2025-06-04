@@ -38,13 +38,15 @@ type Props = {
 };
 const Scenario = (props: Props) => {
 	const ref = useRef<HTMLStencilElement & { getValue: () => Promise<any> }>();
-	const [value, setValue] = useState<unknown>(undefined);
+	const [displayValue, setDisplayValue] = useState<unknown>(undefined);
+	const [modelValue, setModelValue] = useState<unknown>(props.inputProps._value);
 	const formatter = props.formatter || JSON.stringify;
 	const eventTarget = useContext(EventTargetContext);
 	const eventLoggerActive = useContext(EventLoggerActiveContext);
 
 	const handleButtonClick = async () => {
-		setValue(await ref.current?.getValue());
+		const value = await ref.current?.getValue();
+		setDisplayValue(value);
 	};
 
 	useEffect(() => {
@@ -65,6 +67,9 @@ const Scenario = (props: Props) => {
 				if (eventLoggerActive) {
 					console.log(props.inputProps._label, eventName, value, event);
 				}
+				if (eventName === 'onInput') {
+					setModelValue(value);
+				}
 			},
 		]),
 	);
@@ -72,7 +77,7 @@ const Scenario = (props: Props) => {
 	return (
 		<>
 			<div className="grid grid-cols-3 items-end gap-4" data-testid={props.testId}>
-				<props.InputComponent ref={ref} _on={eventListeners} {...props.inputProps} />
+				<props.InputComponent ref={ref} _on={eventListeners} {...props.inputProps} _value={modelValue} />
 				<KolButton
 					_label="getValue()"
 					_on={{
@@ -81,7 +86,7 @@ const Scenario = (props: Props) => {
 						},
 					}}
 				></KolButton>
-				<pre className="text-base">{formatter(value)}</pre>
+				<pre className="text-base">{formatter(displayValue)}</pre>
 			</div>
 		</>
 	);
