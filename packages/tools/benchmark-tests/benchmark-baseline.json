@@ -1,17 +1,17 @@
 [
   {
     "name": "kol-abbr",
-    "value": 18,
+    "value": 19,
     "unit": "ms"
   },
   {
     "name": "kol-accordion",
-    "value": 67,
+    "value": 62,
     "unit": "ms"
   },
   {
     "name": "kol-alert",
-    "value": 22,
+    "value": 21,
     "unit": "ms"
   },
   {
@@ -21,37 +21,37 @@
   },
   {
     "name": "kol-badge",
-    "value": 32,
+    "value": 31,
     "unit": "ms"
   },
   {
     "name": "kol-breadcrumb",
-    "value": 15,
+    "value": 14,
     "unit": "ms"
   },
   {
     "name": "kol-button",
-    "value": 47,
+    "value": 44,
     "unit": "ms"
   },
   {
     "name": "kol-button-group",
-    "value": 7,
+    "value": 6,
     "unit": "ms"
   },
   {
     "name": "kol-button-link",
-    "value": 46,
+    "value": 45,
     "unit": "ms"
   },
   {
     "name": "kol-card",
-    "value": 13,
+    "value": 11,
     "unit": "ms"
   },
   {
     "name": "kol-details",
-    "value": 62,
+    "value": 57,
     "unit": "ms"
   },
   {
@@ -61,92 +61,92 @@
   },
   {
     "name": "kol-form",
-    "value": 9,
+    "value": 8,
     "unit": "ms"
   },
   {
     "name": "kol-heading",
-    "value": 11,
+    "value": 9,
     "unit": "ms"
   },
   {
     "name": "kol-icon",
-    "value": 9,
+    "value": 8,
     "unit": "ms"
   },
   {
     "name": "kol-image",
-    "value": 6,
+    "value": 5,
     "unit": "ms"
   },
   {
     "name": "kol-indented-text",
-    "value": 7,
+    "value": 6,
     "unit": "ms"
   },
   {
     "name": "kol-input-checkbox",
-    "value": 32,
-    "unit": "ms"
-  },
-  {
-    "name": "kol-input-color",
-    "value": 29,
-    "unit": "ms"
-  },
-  {
-    "name": "kol-input-date",
-    "value": 35,
-    "unit": "ms"
-  },
-  {
-    "name": "kol-input-email",
-    "value": 34,
-    "unit": "ms"
-  },
-  {
-    "name": "kol-input-file",
-    "value": 28,
-    "unit": "ms"
-  },
-  {
-    "name": "kol-input-number",
     "value": 31,
     "unit": "ms"
   },
   {
+    "name": "kol-input-color",
+    "value": 28,
+    "unit": "ms"
+  },
+  {
+    "name": "kol-input-date",
+    "value": 34,
+    "unit": "ms"
+  },
+  {
+    "name": "kol-input-email",
+    "value": 33,
+    "unit": "ms"
+  },
+  {
+    "name": "kol-input-file",
+    "value": 27,
+    "unit": "ms"
+  },
+  {
+    "name": "kol-input-number",
+    "value": 30,
+    "unit": "ms"
+  },
+  {
     "name": "kol-input-password",
-    "value": 32,
+    "value": 30,
     "unit": "ms"
   },
   {
     "name": "kol-input-radio",
-    "value": 24,
+    "value": 23,
     "unit": "ms"
   },
   {
     "name": "kol-input-text",
-    "value": 36,
+    "value": 33,
     "unit": "ms"
   },
   {
     "name": "kol-link",
-    "value": 44,
+    "value": 42,
     "unit": "ms"
   },
   {
     "name": "kol-link-button",
-    "value": 43,
+    "value": 41,
     "unit": "ms"
   },
   {
     "name": "kol-link-group",
-    "value": 9,
+    "value": 8,
     "unit": "ms"
   },
   {
     "name": "kol-logo",
-    "value": 5,
+    "value": 4,
     "unit": "ms"
   },
   {
@@ -161,7 +161,7 @@
   },
   {
     "name": "kol-pagination",
-    "value": 65,
+    "value": 63,
     "unit": "ms"
   },
   {
@@ -171,7 +171,7 @@
   },
   {
     "name": "kol-progress",
-    "value": 6,
+    "value": 7,
     "unit": "ms"
   },
   {
@@ -186,22 +186,22 @@
   },
   {
     "name": "kol-skip-nav",
-    "value": 8,
+    "value": 7,
     "unit": "ms"
   },
   {
     "name": "kol-spin",
-    "value": 6,
+    "value": 5,
     "unit": "ms"
   },
   {
     "name": "kol-split-button",
-    "value": 54,
+    "value": 51,
     "unit": "ms"
   },
   {
     "name": "kol-table-stateful",
-    "value": 17,
+    "value": 16,
     "unit": "ms"
   },
   {
@@ -211,12 +211,12 @@
   },
   {
     "name": "kol-tabs",
-    "value": 9,
+    "value": 8,
     "unit": "ms"
   },
   {
     "name": "kol-textarea",
-    "value": 32,
+    "value": 30,
     "unit": "ms"
   },
   {
@@ -226,17 +226,17 @@
   },
   {
     "name": "kol-tree",
-    "value": 10,
+    "value": 9,
     "unit": "ms"
   },
   {
     "name": "kol-tree-item",
-    "value": 46,
+    "value": 44,
     "unit": "ms"
   },
   {
     "name": "kol-version",
-    "value": 42,
+    "value": 40,
     "unit": "ms"
   }
 ]
