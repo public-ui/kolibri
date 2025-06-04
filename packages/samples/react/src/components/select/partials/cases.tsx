@@ -77,7 +77,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With access key" _accessKey="c" />
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With short key" _shortKey="s" />
 			<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter" _value="Albanien" />
-			<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter (multiple)" _multiple _value="Albanien" />
+			<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter (multiple)" _multiple _value={['Albanien']} />
 		</div>
 	);
 });
