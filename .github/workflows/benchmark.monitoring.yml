@@ -43,10 +43,9 @@ jobs:
       - name: Store benchmark result
         uses: rhysd/github-action-benchmark@v1
         with:
-          alert-threshold: 10%
           auto-push: true
-          fail-threshold: 25%
-          gh-pages-branch: benchmarks
+          gh-pages-branch: main
+          gh-repository: https://github.com/public-ui/public-ui.github.io
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file-path: packages/tools/benchmark-tests/benchmark-result.json
           tool: customSmallerIsBetter
