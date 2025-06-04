@@ -5,6 +5,7 @@ export * from './icons';
 export * from './input/control/number';
 export * from './input/control/text';
 export * from './input/iso8601';
+export * from './input/numberString';
 export * from './input/types';
 export * from './modal';
 export * from './orientation';

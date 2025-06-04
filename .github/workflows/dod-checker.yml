@@ -5,7 +5,7 @@ on:
     types: [opened, edited, synchronize, ready_for_review]
 
 concurrency:
-  group: 'pr-${{ github.event.pull_request.number }}'
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
   cancel-in-progress: true
 
 jobs:
@@ -14,16 +14,11 @@ jobs:
     # or the base clone URL may be different than the head clone URL.
     if: |
       github.event.pull_request.draft == false &&
-      github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url
+      github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
-      - name: Print Pull Request ID
-        run: |
-          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-      - name: Clone Repo
-        uses: actions/checkout@v3
-      - name: Check DoD
-        uses: platisd/definition-of-done@master
+      - uses: actions/checkout@v3
+      - uses: platisd/definition-of-done@master
         with:
           dod_yaml: '.github/dod.yml'
           message_header: 'The A11y and PO reviews will only take place after all other DoD steps have been completed by the Developer:'

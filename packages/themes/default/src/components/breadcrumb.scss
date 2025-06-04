@@ -1,6 +1,9 @@
 @use '../mixins/rem' as *;
+@use '../mixins/link' as *;
 
 @layer kol-theme-component {
+	@include kol-link('kol-link');
+
 	.kol-breadcrumb {
 		font-family: var(--font-family);
 
@@ -18,5 +21,9 @@
 			font-size: rem(12);
 			color: var(--color-subtle);
 		}
+	}
+
+	.kol-link {
+		line-height: 1;
 	}
 }

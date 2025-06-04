@@ -1,0 +1,7 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": ["tests/*.spec.ts"],
+	"ignoreBinaries": ["build"],
+	"ignoreDependencies": ["@public-ui/components", "@public-ui/theme-default", "adopted-style-sheets", "serve"],
+	"project": ["tests/**/*.ts"]
+}

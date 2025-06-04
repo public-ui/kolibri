@@ -48,7 +48,6 @@ const TAGS = [
 	'kol-skip-nav',
 	'kol-spin',
 	'kol-split-button',
-	'kol-table-settings-wc',
 	'kol-table-stateful',
 	'kol-table-stateless',
 	'kol-tabs',
@@ -152,9 +151,6 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
-
-		/* Prevent E2E tests from overriding the existing components build. This avoids conflicts when running the Sample App at the same time. */
-		dir: process.env.E2E === '1' ? 'dist-e2e' : undefined,
 		copy: [
 			{
 				src: 'assets',

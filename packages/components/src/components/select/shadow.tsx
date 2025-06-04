@@ -5,9 +5,9 @@ import clsx from 'clsx';
 import type {
 	FocusableElement,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	IconsHorizontalPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -16,10 +16,10 @@ import type {
 	SelectAPI,
 	SelectStates,
 	ShortKeyPropType,
+	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
@@ -49,8 +49,12 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
-		return this.state._value;
+	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
+		if (this._multiple) {
+			return this.state._value;
+		} else {
+			return Array.isArray(this.state._value) && this.state._value.length > 0 ? this.state._value[0] : undefined;
+		}
 	}
 
 	@Method()
@@ -223,8 +227,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true })
-	public _value?: Stringified<W3CInputValue> | Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 
 	@State() public state: SelectStates = {
 		_hasValue: false,
@@ -342,7 +345,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<W3CInputValue> | Stringified<W3CInputValue[]>): void {
+	public validateValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
 		this.controller.validateValue(value);
 	}
 
@@ -355,14 +358,25 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	private onInput(event: Event): void {
-		this._value = Array.from(this.selectRef?.options || [])
-			.filter((option) => option.selected === true)
+		const selectedValues = Array.from(this.selectRef?.options || [])
+			.filter((option) => option.selected)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 
-		this.controller.onFacade.onInput(event, true, this._value);
+		if (this._multiple) {
+			this._value = selectedValues;
+			this.controller.onFacade.onInput(event, true, selectedValues);
+		} else {
+			const singleValue: StencilUnknown | undefined = selectedValues.length > 0 ? selectedValues[0] : undefined;
+			this._value = singleValue;
+			this.controller.onFacade.onInput(event, true, singleValue);
+		}
 	}
 
 	private onChange(event: Event): void {
-		this.controller.onFacade.onChange(event, this._value);
+		if (this._multiple) {
+			this.controller.onFacade.onChange(event, this._value as StencilUnknown[]);
+		} else {
+			this.controller.onFacade.onChange(event, this._value as StencilUnknown);
+		}
 	}
 }

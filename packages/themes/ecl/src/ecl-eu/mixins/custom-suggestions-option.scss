@@ -1,0 +1,21 @@
+@use '../../mixins/rem' as *;
+
+@mixin kol-custom-suggestions-option-theme($option-height) {
+	.kol-custom-suggestions-option {
+		display: flex;
+		align-items: center;
+		min-height: $option-height;
+		line-height: 1.2;
+		padding: rem(10) rem(12);
+
+		&[aria-selected] {
+			color: var(--color-blue);
+		}
+
+		&:focus {
+			background-color: var(--color-blue);
+			color: white;
+			outline: 0;
+		}
+	}
+}

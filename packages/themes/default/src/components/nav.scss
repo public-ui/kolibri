@@ -2,14 +2,14 @@
 @use '../mixins/focus-outline' as *;
 
 @layer kol-theme-component {
+	:host {
+		background-color: var(--color-mute);
+	}
+
 	.kol-nav {
 		$root: &;
 
 		font-family: var(--font-family);
-
-		&__navigation {
-			background-color: var(--color-mute);
-		}
 
 		&__list {
 			list-style: none;

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "3.0.0-rc.11",
+	"version": "3.0.0",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -8,7 +8,6 @@
 		"url": "https://github.com/public-ui/kolibri"
 	},
 	"scripts": {
-		"prebuild": "pnpm -r --filter=@public-ui/themes build",
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
@@ -16,7 +15,6 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
-		"postinstall": "pnpm exec playwright install",
 		"prepare": "npm-run-all prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
@@ -42,16 +40,16 @@
 		"@typescript-eslint/parser": "8.27.0",
 		"@unocss/preset-uno": "0.58.9",
 		"@unocss/webpack": "0.58.9",
-		"adopted-style-sheets": "1.1.8",
+		"adopted-style-sheets": "1.1.9-rc.18",
 		"ajv": "8.17.1",
 		"chromedriver": "130.0.4",
 		"cpy-cli": "5.0.0",
 		"cross-env": "7.0.3",
 		"css-loader": "7.1.2",
 		"esbuild-loader": "4.3.0",
-		"eslint": "^8",
+		"eslint": "8.57.1",
 		"eslint-plugin-html": "8.1.2",
-		"eslint-plugin-json": "^3",
+		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.4",
 		"file-loader": "6.2.0",

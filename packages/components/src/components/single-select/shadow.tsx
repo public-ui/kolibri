@@ -55,7 +55,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown | undefined> {
+	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
@@ -98,10 +98,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (this.state._disabled) {
 			return;
 		} else {
-			const emptyValue = '';
+			const emptyValue = null;
 			this._focusedOptionIndex = -1;
 			this._value = emptyValue;
-			this._inputValue = emptyValue;
+			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
 
 			this.controller.onFacade.onInput(
@@ -288,6 +288,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 											this.selectOption(option as Option<string>);
 											this.refInput?.focus();
 											this.toggleListbox(event);
+											this._isOpen = false;
+											this._hasOpened = false;
 										}}
 										onMouseOver={() => {
 											if (!this.blockSuggestionMouseOver) {
@@ -387,7 +389,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'NumpadEnter':
 			case 'Enter': {
 				this.toggleListbox(event);
-
+				this._hasOpened = false;
+				this._isOpen = false;
 				break;
 			}
 			case 'Home': {
@@ -534,7 +537,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
+	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	/**
 	 * Defines the whether the clear button should be hidden.
@@ -652,7 +655,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: StencilUnknown): void {
+	public validateValue(value: StencilUnknown): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
 		this.updateInputValue(value);

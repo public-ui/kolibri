@@ -77,6 +77,7 @@ void (async () => {
 					: undefined,
 				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+				reflectInputValues: true,
 			},
 		);
 

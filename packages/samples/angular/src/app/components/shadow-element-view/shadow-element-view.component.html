@@ -1,0 +1,6 @@
+<h1>Shadow elements</h1>
+<div class="mt-10 flex flex-col w-1/3 gap-5">
+	<shadow-input-text *ngFor="let input of numberOfInputs" [label]="'TextInput #' + input"></shadow-input-text>
+	<shadow-input-number [shadow]="true" *ngFor="let input of numberOfInputs" [label]="'NumberInput #' + input"></shadow-input-number>
+	<shadow-checkbox *ngFor="let check of numberOfInputs" [label]="'Checkbox #' + check"></shadow-checkbox>
+</div>

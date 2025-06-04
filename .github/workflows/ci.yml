@@ -9,90 +9,87 @@ on:
       - 'release/*'
   workflow_dispatch:
 
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   build-and-check:
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-
       - name: Build
         run: pnpm -r build
-
+      - name: Format
+        run: pnpm -r --parallel format
+      - name: Lint
+        run: pnpm -r --parallel lint
+      - name: Unit Tests
+        run: pnpm -r --parallel test:unit
       - name: Unused
         run: pnpm -r --parallel unused
 
-      - name: Lint
-        run: pnpm -r --parallel lint
-
-      - name: Format
-        run: pnpm -r --parallel format
-
-  test:
+  e2e-tests:
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps
-
-      - name: Build
-        run: pnpm --filter @public-ui/sample-react^... build
-
-      - name: Unit Tests
-        run: pnpm -r test:unit
-
-        # Tests in sample app are currently failing and hence disabled.
-        # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
+      - name: Install Playwright and Browsers
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps chromium firefox webkit
+      # Tests in sample app are currently failing and hence disabled.
+      # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
       - name: E2E Test
         run: pnpm --filter @public-ui/components test:e2e
-
-      - uses: actions/upload-artifact@v4
+      - uses: ./.github/actions/upload-reports
         if: failure()
-        name: Upload test reports
         with:
-          name: reports
-          path: |
-            packages/themes/**/test-results/**/*.png
-            packages/test-tag-name-transformer/test-results/**/*.png
-            packages/components/playwright-report/
-            !**/node_modules
+          name: report-e2e
 
-  test-visual:
-    runs-on: ubuntu-latest
+  visual-tests:
+    continue-on-error: true
     strategy:
       matrix:
-        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-default']
+        package: ['test-tag-name-transformer', 'theme-default']
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-
-      - name: Install Playwright Browsers
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps
-
+      - name: Install Playwright and Firefox
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
       - name: Build
-        run: pnpm -r build
-
+        run: pnpm --filter @public-ui/sample-react^... build
       - name: Visual Tests
-        run: pnpm --filter=${{ matrix.package }} test:visual
-
-      - uses: actions/upload-artifact@v4
+        run: pnpm --filter=@public-ui/${{ matrix.package }} test
+      - uses: ./.github/actions/upload-reports
         if: failure()
-        name: Upload test reports
         with:
-          name: reports
-          path: |
-            packages/themes/**/test-results/**/*.png
-            packages/test-tag-name-transformer/test-results/**/*.png
-            packages/components/playwright-report/
-            !**/node_modules
+          name: report-${{ matrix.package }}
+
+  check-results:
+    runs-on: ubuntu-latest
+    needs: [build-and-check, e2e-tests, visual-tests]
+    if: always()
+    steps:
+      - name: Fail if any job failed
+        run: |
+          if [[ "${{ needs.build-and-check.result }}" == "failure" || \
+                "${{ needs.e2e-tests.result }}" == "failure" || \
+                "${{ needs.visual-tests.result }}" == "failure" ]]; then
+            echo "At least one job failed"
+            exit 1
+          fi
