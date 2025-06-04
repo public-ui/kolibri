@@ -45,7 +45,7 @@ jobs:
         with:
           auto-push: true
           gh-pages-branch: main
-          gh-repository: https://github.com/public-ui/public-ui.github.io
+          gh-repository: github.com/public-ui/public-ui.github.io
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file-path: packages/tools/benchmark-tests/benchmark-result.json
           tool: customSmallerIsBetter
