@@ -133,7 +133,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-range', 'range'),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInputRange?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -181,6 +180,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			name: this.state._name ? `${this.state._name}-number` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			type: 'number',
+			id: undefined,
 			ref: this.catchInputNumberRef,
 			onKeyDown: this.onKeyDown,
 		};
