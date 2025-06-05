@@ -1,2 +1,2 @@
-export { default } from './RdioStateWrapper';
-export * from './RdioStateWrapper';
+export { default } from './RadioStateWrapper';
+export * from './RadioStateWrapper';
