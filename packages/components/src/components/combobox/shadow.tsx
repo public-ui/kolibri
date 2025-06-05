@@ -50,7 +50,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
+	public async getValue(): Promise<string> {
 		return this.state._value;
 	}
 

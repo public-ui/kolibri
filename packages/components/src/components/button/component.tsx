@@ -14,7 +14,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
-	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -285,7 +284,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	/**
 	 * Defines the value that the button emits on click.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown>;
+	@Prop() public _value?: StencilUnknown;
 
 	/**
 	 * Defines which variant should be used for presentation.
@@ -404,7 +403,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown>): void {
+	public validateValue(value?: StencilUnknown): void {
 		setState(this, '_value', value);
 		this.controller.setFormAssociatedValue(this.state._value);
 	}

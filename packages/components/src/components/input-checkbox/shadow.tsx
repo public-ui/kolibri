@@ -245,7 +245,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown> = true;
+	@Prop() public _value: StencilUnknown = true;
 
 	/**
 	 * Defines which variant should be used for presentation.
@@ -369,7 +369,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown>): void {
+	public validateValue(value: StencilUnknown): void {
 		this.controller.validateValue(value);
 	}
 
