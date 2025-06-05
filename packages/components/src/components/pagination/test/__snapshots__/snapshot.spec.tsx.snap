@@ -1,54 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 _hasButtons=false _siblingCount=0 1`] = `
-<kol-pagination class="kol-pagination">
+<kol-pagination>
   <template shadowrootmode="open">
-    <nav aria-label="Label">
-      <ul class="kol-pagination__navigation-list"></ul>
-    </nav>
+    <div class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list"></ul>
+      </nav>
+    </div>
   </template>
 </kol-pagination>
 `;
 
 exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 1`] = `
-<kol-pagination class="kol-pagination">
+<kol-pagination>
   <template shadowrootmode="open">
-    <nav aria-label="Label">
-      <ul class="kol-pagination__navigation-list">
-        <li>
-          <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first" exportparts="icon"></kol-button-wc>
-        </li>
-        <li>
-          <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous" exportparts="icon"></kol-button-wc>
-        </li>
-        <li>
-          <kol-button-wc _disabled="" _label="" class="kol-pagination__button kol-pagination__button--selected">
-            <span slot="expert">
-              <span class="visually-hidden">
-                kol-page
+    <div class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _disabled="" _label="" class="kol-pagination__button kol-pagination__button--selected">
+              <span slot="expert">
+                <span class="visually-hidden">
+                  kol-page
+                </span>
+                1
               </span>
-              1
-            </span>
-          </kol-button-wc>
-        </li>
-        <li>
-          <kol-button-wc _label="" exportparts="icon">
-            <span slot="expert">
-              <span class="visually-hidden">
-                kol-page
+            </kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _label="" exportparts="icon">
+              <span slot="expert">
+                <span class="visually-hidden">
+                  kol-page
+                </span>
+                2
               </span>
-              2
-            </span>
-          </kol-button-wc>
-        </li>
-        <li>
-          <kol-button-wc _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next" exportparts="icon"></kol-button-wc>
-        </li>
-        <li>
-          <kol-button-wc _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last" exportparts="icon"></kol-button-wc>
-        </li>
-      </ul>
-    </nav>
+            </kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last" exportparts="icon"></kol-button-wc>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </template>
 </kol-pagination>
 `;
