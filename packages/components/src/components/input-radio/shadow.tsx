@@ -52,7 +52,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown | undefined> {
+	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
@@ -247,7 +247,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Defines the value of the input.
 	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
+	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	@State() public state: InputRadioStates = {
 		_hideMsg: false,
@@ -353,7 +353,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown>): void {
+	public validateValue(value: StencilUnknown): void {
 		this.controller.validateValue(value);
 	}
 

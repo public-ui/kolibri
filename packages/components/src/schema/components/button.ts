@@ -21,12 +21,12 @@ import type {
 	PropSyncValueBySelector,
 	PropTooltipAlign,
 } from '../props';
-import type { KoliBriAllIcons, StencilUnknown, Stringified } from '../types';
+import type { KoliBriAllIcons, StencilUnknown } from '../types';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
 	tabIndex: number;
-	value: Stringified<StencilUnknown>;
+	value: StencilUnknown;
 	ariaExpanded: AriaExpandedPropType;
 } & PropAccessKey &
 	PropAlternativeButtonLinkRole &

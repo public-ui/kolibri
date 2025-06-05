@@ -5,9 +5,9 @@ import clsx from 'clsx';
 import type {
 	FocusableElement,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	IconsHorizontalPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -16,10 +16,10 @@ import type {
 	SelectAPI,
 	SelectStates,
 	ShortKeyPropType,
+	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
@@ -49,7 +49,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+	public async getValue(): Promise<StencilUnknown[]> {
 		return this.state._value;
 	}
 
@@ -223,7 +223,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]>;
 
 	@State() public state: SelectStates = {
 		_hasValue: false,
@@ -341,7 +341,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
+	public validateValue(value?: Stringified<StencilUnknown[]>): void {
 		this.controller.validateValue(value);
 	}
 

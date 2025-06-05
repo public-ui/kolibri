@@ -17,7 +17,7 @@
 			padding-left: rem(16);
 
 			.kol-form-field__msg {
-				&.kol-alert--error {
+				&.kol-alert--type-error {
 					@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 				}
 			}

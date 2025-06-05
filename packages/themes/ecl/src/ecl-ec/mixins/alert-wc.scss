@@ -12,11 +12,11 @@
 
 		font-family: var(--font-family);
 
-		&--msg {
+		&--variant-msg {
 			border: none;
 		}
 
-		&--card {
+		&--variant-card {
 			padding-bottom: rem(24);
 			padding-inline-end: rem(8);
 			padding-inline-start: rem(24);
@@ -25,67 +25,67 @@
 			border-width: 2px;
 		}
 
-		&--default {
+		&--type-default {
 			--alert-accent-color: var(--color-grey);
 		}
 
-		&--error {
+		&--type-error {
 			--alert-accent-color: var(--color-red);
 		}
 
-		&--info {
+		&--type-info {
 			--alert-accent-color: var(--color-blue);
 		}
 
-		&--success {
+		&--type-success {
 			--alert-accent-color: var(--color-green);
 		}
 
-		&--warning {
+		&--type-warning {
 			--alert-accent-color: var(--color-orange);
 		}
 
 		&__container {
 			background-color: var(--color-white);
 
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				gap: rem(8);
 			}
 		}
 
 		&__container-content {
-			@at-root #{$root}--msg & {
+			@at-root #{$root}--variant-msg & {
 				padding: var(--spacing-2xs);
 			}
 		}
 
-		&__close-button {
+		&__closer {
 			.kol-button {
 				color: var(--alert-accent-color);
 			}
 
 			.kol-icon {
-				@at-root #{$root}--card & {
+				@at-root #{$root}--variant-card & {
 					font-size: rem(32);
 				}
 			}
 		}
 
-		&__heading-icon {
+		&__icon {
 			color: var(--alert-accent-color);
 
-			@at-root #{$root}--msg & {
+			@at-root #{$root}--variant-msg & {
 				font-size: 1.5em;
 				margin: var(--spacing-2xs);
 			}
 
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				font-size: rem(32);
 			}
 		}
 
 		&__content {
-			@at-root #{$root}--card & {
+			@at-root #{$root}--variant-card & {
 				margin-left: rem(40);
 			}
 		}

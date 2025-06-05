@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "3.0.0-rc.13",
+	"version": "3.0.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -24,7 +24,7 @@
 	"unpkg": "dist/stencil/stencil.js",
 	"collection:main": "dist/collection/index.js",
 	"collection": "dist/collection/collection-manifest.json",
-	"sideEffects": false,
+	"sideEffects": true,
 	"description": "Contains all web components that belong to KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
@@ -65,6 +65,7 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
+		"prod": "stencil build --prod",
 		"test": "pnpm test:unit",
 		"test:e2e": "playwright test",
 		"test:unit": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
@@ -75,7 +76,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.13",
-		"adopted-style-sheets": "1.1.9-rc.17",
+		"adopted-style-sheets": "1.1.9-rc.18",
 		"clsx": "2.1.1",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
@@ -84,6 +85,7 @@
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
+		"typed-bem": "1.0.0-rc.7",
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
@@ -134,7 +136,7 @@
 		"typescript": "5.8.2"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.9-rc.17"
+		"adopted-style-sheets": "1.1.9-rc.18"
 	},
 	"files": [
 		"assets",
