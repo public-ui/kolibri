@@ -1,71 +1,77 @@
-publiccodeYmlVersion: '0.2'
-name: KoliBri - The accessible HTML-Standard
-applicationSuite: Informationstechnikzentrum Bund
-url: https://github.com/public-ui/kolibri.git
+publiccodeYmlVersion: '0.4.0'
+name: KoliBri – Die barrierefreie WebComponent-Bibliothek
+genericName: Accessible WebComponent Library
+url: https://github.com/public-ui/kolibri
 landingURL: https://github.com/public-ui
 releaseDate: '2025-06-04'
-softwareVersion: 3.0.0
-logo: https://avatars.githubusercontent.com/u/109126739
-platforms:
-  - android
-  - ios
-  - linux
-  - mac
-  - web
-  - windows
-categories:
-  - agile-project-management
-  - application-development
-  - collaboration
-  - content-management
-  - it-development
-  - online-community
-  - project-collaboration
-  - seo
-  - web-collaboration
-  - website-builder
+softwareVersion: '3.0.0'
+logo: kolibri-logo.png
 developmentStatus: stable
 softwareType: library
+platforms:
+  - web
+categories:
+  - application-development
+  - accessibility
+  - design-system
+  - web-collaboration
+intendedAudience:
+  countries:
+    - DE
+  scope:
+    - public-administrations
+    - developers
+usedBy:
+  - Informationstechnikzentrum Bund
+features:
+  - Barrierefreie WebComponents nach WCAG und BITV
+  - Multi-Theming mit CSS Custom Properties
+  - Semantisches und valides HTML
+  - Framework-unabhängige Nutzung
+  - Für statische und dynamische Webanwendungen geeignet
 description:
   de:
-    shortDescription: KoliBri - Der barrierefreie HTML-Standard
+    shortDescription: KoliBri – Die barrierefreie WebComponent-Bibliothek
     longDescription: >
-      Der HTML-Webstandard ist an sich sehr "offen" spezifiziert, um möglichst
-      langlebig und robust zu sein. Es kommt daher häufig vor, das
-      HTML-Kompositionen nicht ohne Weiteres barrierefrei, semantisch und valide
-      sind. KoliBri baut direkt auf den Webstandards des W3C auf (Framework-
-      agnostisch), ist dabei eine generische Referenzimplementierung des
-      WCAG-Standards und der BITV für die Barrierefreiheit und als eine
-      Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei
-      fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist
-      KoliBri für die Realisierung statischer Webseiten als auch dynamischer
-      Webanwendungen unterschiedlicher Corporate Designs und Styleguides
-      gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
+      HTML ist bewusst offen spezifiziert, um langlebig und robust zu sein. Dadurch entstehen jedoch häufig nicht barrierefreie, semantisch inkorrekte oder ungültige HTML-Kompositionen. KoliBri baut direkt auf den W3C-Webstandards auf, ist framework-agnostisch und bietet eine generische Referenzimplementierung der WCAG und BITV. Die Bibliothek ist als multi-theming-fähige Präsentationsschicht umgesetzt – ohne eigene Fachlogik oder Datenverarbeitung. Damit eignet sie sich für statische Webseiten ebenso wie für dynamische Webanwendungen in unterschiedlichen Corporate Designs.
+    documentation: https://public-ui.github.io/docs
+    apiDocumentation: https://public-ui.github.io/docs/api/
   en:
-    shortDescription: KoliBri - The accessible HTML-Standard
+    shortDescription: KoliBri – The accessible WebComponent library
     longDescription: >
-      The HTML web standard is in itself very "open" specified to be as durable
-      and robust as possible. Therefore, it often happens that HTML compositions
-      are not easily accessible, semantic and valid. KoliBri builds directly on
-      the web standards of the W3C (framework- agnostic), is thereby a generic
-      reference implementation of the WCAG standard and the BITV for
-      accessibility and implemented as a multi-theme capable presentation layer.
-      There no technical reference and no data transfer functionalities. Thus
-      KoliBri is for the realization of static websites as well as dynamic web
-      applications of different corporate designs and style guides and therefore
-      very interesting for open source. interesting.
+      HTML is intentionally specified in an open way to ensure durability and robustness. However, this often leads to HTML compositions that are not accessible, semantic, or valid. KoliBri builds directly on W3C web standards, is framework-agnostic, and provides a generic reference implementation of the WCAG and BITV accessibility standards. It is implemented as a multi-theme-capable presentation layer, without business logic or data handling. This makes it suitable for both static websites and dynamic web applications in various corporate designs.
+    documentation: https://public-ui.github.io/docs
+    apiDocumentation: https://public-ui.github.io/docs/api/
 legal:
   license: EUPL-1.2
   mainCopyrightOwner: Informationstechnikzentrum Bund
-  repoOwner: Informationstechnikzentrum Bund
 maintenance:
-  type: community
+  type: community with internal coordination
   contacts:
-    - name: KoliBri
+    - name: KoliBri-Team
       email: kolibri@itzbund.de
+      phone: +49 228 99 680-0
+      website: https://www.itzbund.de
       affiliation: Informationstechnikzentrum Bund
 localisation:
   localisationReady: true
   availableLanguages:
     - de
     - en
+dependsOn:
+  open:
+    - name: W3C HTML
+      version: '*'
+    - name: WCAG 2.1
+      version: '2.1'
+  legal:
+    - name: BITV 2.0
+      version: '2011'
+      country: DE
+    - name: Barrierefreiheitsstärkungsgesetz (BFSG)
+      version: '2021'
+      country: DE
+    - name: EU-Richtlinie 2016/2102
+      version: '2016'
+      country: EU
+
