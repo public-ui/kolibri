@@ -3,13 +3,16 @@
 @use '../tooltip/style.scss' as *;
 
 @layer kol-component {
-	.kol-pagination {
+	/* TODO. Once #7126 is completed, move :host block into .kol-pagination  */
+	:host {
 		align-items: center;
 		display: grid;
 		font-size: rem(16);
 		gap: rem(16);
 		grid-template-columns: 1fr auto;
+	}
 
+	.kol-pagination {
 		&__navigation-list {
 			align-items: center;
 			display: inline-flex;
@@ -25,4 +28,3 @@
 		}
 	}
 }
-//trigger CI change
