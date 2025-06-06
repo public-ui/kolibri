@@ -15,7 +15,6 @@ import type {
 	Orientation,
 	RadioOption,
 	RadioOptionsPropType,
-	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -157,11 +156,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	private readonly controller: InputRadioController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
@@ -227,11 +221,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
@@ -270,11 +259,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	private showAsAlert(): boolean {
 		return Boolean(this.state._touched) && !this.inputHasFocus;
-	}
-
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		this.controller.validateAccessKey(value);
 	}
 
 	@Watch('_tooltipAlign')
@@ -340,11 +324,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
-	}
-
-	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		this.controller.validateShortKey(value);
 	}
 
 	@Watch('_syncValueBySelector')
