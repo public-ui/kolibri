@@ -12,7 +12,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	Orientation,
 	RadioOption,
 	RadioOptionsPropType,
 	ShortKeyPropType,
@@ -29,6 +28,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import type { OrientationPropType } from '../../schema/props/orientation';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -218,7 +218,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: Orientation = 'vertical';
+	@Prop() public _orientation?: OrientationPropType = 'vertical';
 
 	/**
 	 * Makes the input element required.
@@ -333,7 +333,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	@Watch('_orientation')
-	public validateOrientation(value?: Orientation): void {
+	public validateOrientation(value?: OrientationPropType): void {
 		this.controller.validateOrientation(value);
 	}
 

@@ -5,15 +5,16 @@ import type {
 	InputRadioWatches,
 	Optgroup,
 	OptionsPropType,
-	Orientation,
 	PropLabelWithExpertSlot,
 	RadioOption,
 	SelectOption,
 	StencilUnknown,
 } from '../../schema';
-import { orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
+import { setState, validateOptions, validateRequired } from '../../schema';
 
 import { InputController } from '../@deprecated/input/controller';
+import type { OrientationPropType } from '../../schema/props/orientation';
+import { validateOrientation } from '../../schema/props/orientation';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, RadioOption<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {
@@ -70,17 +71,8 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		}
 	};
 
-	public validateOrientation(value?: Orientation): void {
-		watchValidator(
-			this.component,
-			'_orientation',
-			(value): boolean => typeof value === 'string' && orientationOptions.includes(value),
-			new Set([`Orientation {${orientationOptions.join(', ')}`]),
-			value,
-			{
-				defaultValue: 'vertical',
-			},
-		);
+	public validateOrientation(value?: OrientationPropType): void {
+		validateOrientation(this.component, value, 'vertical');
 	}
 
 	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
