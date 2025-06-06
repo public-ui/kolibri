@@ -6,6 +6,7 @@ import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolLinkWcTag, KolButtonWcTag } from '../../core/component-names';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
+import { KeyboardKey } from '../../schema/enums';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -100,7 +101,8 @@ export class KolToolbar implements ToolbarAPI {
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
-		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
+		const pressedKey = event.code as KeyboardKey;
+		const isArrowKey = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, KeyboardKey.ArrowRight, KeyboardKey.ArrowLeft].includes(pressedKey);
 		if (!isArrowKey) return;
 		event.preventDefault();
 
@@ -108,11 +110,13 @@ export class KolToolbar implements ToolbarAPI {
 		const currentIndex = this.currentIndex;
 		let nextIndex = 0;
 
-		switch (event.code) {
-			case 'ArrowLeft':
+		switch (pressedKey) {
+			case KeyboardKey.ArrowUp:
+			case KeyboardKey.ArrowLeft:
 				nextIndex = currentIndex !== nextIndex ? currentIndex - 1 : lastItemIndex;
 				break;
-			case 'ArrowRight':
+			case KeyboardKey.ArrowDown:
+			case KeyboardKey.ArrowRight:
 				if (lastItemIndex !== currentIndex) nextIndex = currentIndex + 1;
 				break;
 		}
