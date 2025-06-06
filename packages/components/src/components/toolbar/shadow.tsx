@@ -4,6 +4,8 @@ import { Component, Element, h, Listen, Prop, State, Watch } from '@stencil/core
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolLinkWcTag, KolButtonWcTag } from '../../core/component-names';
+import type { OrientationPropType } from '../../schema/props/orientation';
+import { validateOrientation } from '../../schema/props/orientation';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -60,6 +62,11 @@ export class KolToolbar implements ToolbarAPI {
 	 */
 	@Prop() public _items!: ToolbarItemsPropType;
 
+	/**
+	 * Defines whether the orientation of the component is horizontal or vertical.
+	 */
+	@Prop() public _orientation?: OrientationPropType;
+
 	@Watch('_label') validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
@@ -67,6 +74,11 @@ export class KolToolbar implements ToolbarAPI {
 	@Watch('_items')
 	public validateItems(value?: ToolbarItemsPropType): void {
 		validateToolbarItems(this, value);
+	}
+
+	@Watch('_orientation')
+	public validateOrientation(value?: OrientationPropType): void {
+		validateOrientation(this, value);
 	}
 
 	/**
@@ -121,6 +133,7 @@ export class KolToolbar implements ToolbarAPI {
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateItems(this._items);
+		this.validateOrientation(this._orientation);
 		this.setFirstEnabledItemIndex();
 	}
 }
