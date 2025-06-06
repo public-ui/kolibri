@@ -1,9 +1,9 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HeadingLevel, PropHeadingVariant, PropLabelWithExpertSlot } from '../props';
+import type { HeadingLevel, PropLabelWithExpertSlot } from '../props';
 
 type RequiredProps = PropLabelWithExpertSlot;
-type OptionalProps = PropHeadingVariant & {
+type OptionalProps = {
 	secondaryHeadline: string;
 	level: HeadingLevel;
 };
@@ -11,7 +11,7 @@ type OptionalProps = PropHeadingVariant & {
 type RequiredStates = RequiredProps & {
 	level: HeadingLevel;
 };
-type OptionalStates = PropHeadingVariant & {
+type OptionalStates = {
 	secondaryHeadline: string;
 };
 export type HeadingProps = Generic.Element.Members<RequiredProps, OptionalProps>;
