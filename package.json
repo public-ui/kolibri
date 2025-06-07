@@ -1,19 +1,19 @@
 {
 	"devDependencies": {
-		"@commitlint/cli": "19.8.0",
-		"@commitlint/config-conventional": "19.8.0",
+		"@commitlint/cli": "19.8.1",
+		"@commitlint/config-conventional": "19.8.1",
 		"cross-env": "7.0.3",
 		"husky": "9.1.7",
 		"js-yaml": "4.1.0",
-		"lerna": "8.2.1",
+		"lerna": "8.2.2",
 		"license-report": "6.7.2",
-		"lint-staged": "15.5.0",
-		"npm-check-updates": "17.1.15",
+		"lint-staged": "15.5.2",
+		"npm-check-updates": "17.1.18",
 		"npm-run-all2": "7.0.2",
 		"prettier": "3.5.3",
 		"rimraf": "6.0.1",
 		"ts-node": "10.9.2",
-		"typescript": "5.8.2"
+		"typescript": "5.8.3"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -32,8 +32,8 @@
 		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react,@stencil/core,@unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/*,@types/react*,@unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @stencil/*,@types/react*",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
