@@ -38,11 +38,11 @@
 		"serve": "14.2.4"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.27.1",
+		"@babel/eslint-parser": "7.27.5",
 		"@babel/plugin-syntax-import-attributes": "7.27.1",
 		"@babel/preset-env": "7.27.2",
 		"eslint": "8.57.1",
-		"knip": "5.56.0",
+		"knip": "5.60.2",
 		"prettier": "3.5.3"
 	},
 	"files": [

@@ -48,7 +48,7 @@
 		"build": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.27.1",
+		"@babel/types": "7.27.6",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
