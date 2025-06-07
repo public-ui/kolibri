@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1749269362240,
+  "lastUpdate": 1749269576162,
   "repoUrl": "https://github.com/public-ui/kolibri",
   "entries": {
     "KoliBri Components Benchmark": [
@@ -4671,6 +4671,250 @@ window.BENCHMARK_DATA = {
           {
             "name": "kol-version",
             "value": 5,
+            "unit": "ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "6279703+deleonio@users.noreply.github.com",
+            "name": "Martin",
+            "username": "deleonio"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "51d438ae23fdf873ea42f8f970fd24474cce585d",
+          "message": "Add missing classnames to pagination component (#7832)",
+          "timestamp": "2025-06-07T06:10:47+02:00",
+          "tree_id": "ac0a4950e1d1ba85fcdeea35f5f9249376839ce3",
+          "url": "https://github.com/public-ui/kolibri/commit/51d438ae23fdf873ea42f8f970fd24474cce585d"
+        },
+        "date": 1749269575258,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "kol-abbr",
+            "value": 0.7999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-accordion",
+            "value": 4.900000000023283,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-alert",
+            "value": 3.7999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-avatar",
+            "value": 1.3000000000465661,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-badge",
+            "value": 1.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-breadcrumb",
+            "value": 2.699999999953434,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-button",
+            "value": 2.7000000000116415,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-button-link",
+            "value": 2.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-card",
+            "value": 0.8999999999650754,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-details",
+            "value": 5.100000000034925,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-drawer",
+            "value": 0.8999999999650754,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-form",
+            "value": 1,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-heading",
+            "value": 0.8999999999650754,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-icon",
+            "value": 1.2999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-image",
+            "value": 0.7000000000116415,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-checkbox",
+            "value": 3.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-color",
+            "value": 1.599999999976717,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-date",
+            "value": 1.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-email",
+            "value": 1.3000000000465661,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-file",
+            "value": 2.900000000023283,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-number",
+            "value": 1.3999999999650754,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-password",
+            "value": 1.3000000000465661,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-radio",
+            "value": 1.2999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-input-text",
+            "value": 1.2999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-link",
+            "value": 2.2999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-link-button",
+            "value": 2.3999999999650754,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-modal",
+            "value": 0.8000000000465661,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-nav",
+            "value": 1,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-pagination",
+            "value": 15.700000000011642,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-popover-button",
+            "value": 3.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-progress",
+            "value": 1,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-quote",
+            "value": 0.8999999999650754,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-select",
+            "value": 1.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-skip-nav",
+            "value": 0.7999999999883585,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-spin",
+            "value": 0.8000000000465661,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-split-button",
+            "value": 7.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-table-stateful",
+            "value": 18.79999999998836,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-table-stateless",
+            "value": 16.900000000023283,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-tabs",
+            "value": 1,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-textarea",
+            "value": 1.400000000023283,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-toolbar",
+            "value": 1.099999999976717,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-tree",
+            "value": 1.7000000000116415,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-tree-item",
+            "value": 3.5,
+            "unit": "ms"
+          },
+          {
+            "name": "kol-version",
+            "value": 5.400000000023283,
             "unit": "ms"
           }
         ]
