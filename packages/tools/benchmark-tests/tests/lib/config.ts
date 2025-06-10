@@ -1,4 +1,4 @@
-export const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || '25', 10);
+export const TEST_ITERATIONS = parseInt(process.env.TEST_ITERATIONS || '100', 10);
 export const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '5000', 10);
 export const TEST_BATCH_SIZE = parseInt(process.env.TEST_BATCH_SIZE || '10', 10);
 export const TEST_URL = 'http://localhost:3000/test-page.html';
