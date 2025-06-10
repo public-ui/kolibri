@@ -12,7 +12,7 @@ let hasRegression = false;
 
 for (const entry of current) {
 	const prev = baseline.find((b) => b.name === entry.name);
-	const now = entry.value;
+	const now = entry.p95;
 
 	if (!prev) {
 		rows.push({
@@ -25,7 +25,7 @@ for (const entry of current) {
 		continue;
 	}
 
-	const old = prev.value;
+	const old = prev.p95;
 	const percent = ((now - old) / old) * 100;
 	const diffStr = `${percent > 0 ? '+' : ''}${rounded(percent)}%`;
 	const emoji = percent > 10 ? '🔻' : percent < -10 ? '✅' : '➖';
