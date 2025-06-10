@@ -4,6 +4,7 @@ const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '5000', 10);
 
 export default defineConfig({
 	testDir: 'tests',
+	testMatch: '*.playwright.ts',
 	timeout: TEST_TIMEOUT,
 	use: {
 		headless: true,

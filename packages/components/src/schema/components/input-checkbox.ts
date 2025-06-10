@@ -51,7 +51,7 @@ type OptionalProps = {
 	icons: Stringified<InputCheckboxIconsProp>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	value: Stringified<StencilUnknown>;
+	value: StencilUnknown;
 	variant: InputCheckboxVariant;
 } & PropAccessKey &
 	PropChecked &

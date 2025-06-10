@@ -3,7 +3,7 @@
 exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 _hasButtons=false _siblingCount=0 1`] = `
 <kol-pagination class="kol-pagination">
   <template shadowrootmode="open">
-    <nav aria-label="Label">
+    <nav aria-label="Label" class="kol-pagination__navigation">
       <ul class="kol-pagination__navigation-list"></ul>
     </nav>
   </template>
@@ -13,7 +13,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 
 exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 1`] = `
 <kol-pagination class="kol-pagination">
   <template shadowrootmode="open">
-    <nav aria-label="Label">
+    <nav aria-label="Label" class="kol-pagination__navigation">
       <ul class="kol-pagination__navigation-list">
         <li>
           <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first" exportparts="icon"></kol-button-wc>

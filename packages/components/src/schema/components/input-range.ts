@@ -16,18 +16,18 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	hint: string;
-	max: number;
-	min: number;
+	max: number | NumberString;
+	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	step: number;
-	value: number;
+	step: number | NumberString;
+	value: number | NumberString;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
