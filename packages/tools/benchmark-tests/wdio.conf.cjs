@@ -35,7 +35,7 @@ function waitForPort(port, host = 'localhost', timeout = 10000) {
 
 exports.config = {
 	runner: 'local',
-	specs: ['./tests/**/*.cjs'],
+	specs: ['./tests/**/*.webdriver.ts'],
 	maxInstances: 1,
 	capabilities: [
 		{
