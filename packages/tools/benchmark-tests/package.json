@@ -16,8 +16,7 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"private": true,
-	"type": "module",
-	"sideEffects": false,
+	"type": "commonjs",
 	"description": "Provides benchmark tests for components and themes.",
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/components --filter @public-ui/theme-default build",
@@ -28,7 +27,7 @@
 		"pretest:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" public/assets --dot",
 		"pretest:themes-dist": "cpy \"node_modules/@public-ui/theme-default/dist/**/*\" public/theme --dot",
 		"pretest-benchmark": "pnpm pretest",
-		"test-benchmark": "pnpm test-with-wdio",
+		"test-benchmark": "pnpm test-with-playwright",
 		"test-with-playwright": "playwright test",
 		"test-with-wdio": "wdio",
 		"unused": "knip"
@@ -37,11 +36,13 @@
 		"@playwright/test": "1.49.1",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
+		"@types/mocha": "10.0.10",
+		"@types/node": "22.15.30",
 		"@wdio/cli": "9.15.0",
+		"@wdio/globals": "9.15.0",
 		"@wdio/local-runner": "9.15.0",
 		"@wdio/mocha-framework": "9.15.0",
 		"@wdio/spec-reporter": "9.15.0",
-		"adopted-style-sheets": "1.1.9-rc.18",
 		"chromedriver": "137.0.1",
 		"cpy-cli": "5.0.0",
 		"knip": "5.46.0",
