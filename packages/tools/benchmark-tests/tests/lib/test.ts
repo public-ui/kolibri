@@ -1,25 +1,35 @@
 import { writeFileSync } from 'fs';
-import { TEST_ITERATIONS, TEST_TIMEOUT } from './config';
+import { TEST_BATCH_SIZE, TEST_ITERATIONS, TEST_TIMEOUT } from './config';
 import type { Measure, Params, TagType } from './types';
 
 async function testRun({ iterations, tag, timeout }: Params): Promise<number[]> {
 	return new Promise(async (resolve) => {
 		const testResults = new Map<HTMLElement, Measure>();
-		const webComponents = new Set<HTMLElement>();
-		const batches = [];
+		const batches: Set<HTMLElement>[] = [];
+		let batchIndex = 0;
+		let webComponents: Set<HTMLElement>;
 
 		window.gc?.();
 		await customElements.whenDefined(tag);
 
 		function startNextHydration() {
 			if (webComponents.size > 0) {
-				const el: HTMLElement = webComponents.values()?.next()?.value!;
+				const el: HTMLElement = webComponents.values().next().value!;
 				performance.mark(`mark-append-${el.getAttribute('data-iteration')}`);
 				testResults.set(el, {
 					hydrated: null,
 					themed: null,
 				});
 				document.body.appendChild(el);
+			} else if (++batchIndex < batches.length) {
+				webComponents = batches[batchIndex];
+				for (const el of webComponents) {
+					observer.observe(el, {
+						attributes: true,
+						attributeFilter: ['class', 'data-themed'],
+					});
+				}
+				startNextHydration();
 			} else {
 				returnDurations();
 			}
@@ -69,9 +79,15 @@ async function testRun({ iterations, tag, timeout }: Params): Promise<number[]> 
 		});
 
 		for (let i = 0; i <= iterations; i++) {
+			const batch = Math.floor(i / TEST_BATCH_SIZE);
+			if (!batches[batch]) batches[batch] = new Set();
 			const el = document.createElement(tag);
 			el.setAttribute('data-iteration', i.toString());
-			webComponents.add(el);
+			batches[batch].add(el);
+		}
+
+		webComponents = batches[0] ?? new Set();
+		for (const el of webComponents) {
 			observer.observe(el, {
 				attributes: true,
 				attributeFilter: ['class', 'data-themed'],
