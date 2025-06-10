@@ -22,11 +22,6 @@
 		tr.foot-spacer,
 		tr.head-spacer {
 			display: none;
-			height: rem(24);
-
-			td {
-				border-width: 0;
-			}
 		}
 
 		.table {
@@ -50,12 +45,24 @@
 			border-spacing: 0;
 		}
 
+		thead {
+			border-width: 0 0 calc(var(--border-width) * 4) 0;
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+		}
+
 		thead > tr:not(.head-spacer),
 		tbody,
 		tfoot > tr:not(.foot-spacer) {
 			border-width: calc(var(--border-width) * 2);
 			border-color: var(--color-primary-variant);
 			border-style: solid;
+		}
+
+		/* Conflicting top border, when a header is present */
+		thead:has(> tr:not(.head-spacer)) + tbody,
+		thead:has(> th) + tbody {
+			border-top-width: 0;
 		}
 
 		th {
@@ -77,6 +84,12 @@
 		th[aria-sort='ascending'] .button,
 		th[aria-sort='descending'] .button {
 			font-weight: 700;
+		}
+
+		/* Vertical headers */
+		tbody > tr > th {
+			border-right-width: calc(var(--border-width) * 4);
+			border-top-width: 0;
 		}
 
 		th div {
