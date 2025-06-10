@@ -41,12 +41,24 @@
 			}
 		}
 
+		&__head {
+			border-width: 0 0 calc(var(--border-width) * 4) 0;
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+		}
+
 		&__head-row,
 		&__body,
 		&__row--footer {
 			border-width: calc(var(--border-width) * 2);
 			border-color: var(--color-primary-variant);
 			border-style: solid;
+		}
+
+		/* Conflicting top border, when a header is present */
+		&__head:has(> &__cell--header) + &__body,
+		&__head:has(> &__head-row) + &__body {
+			border-top-width: 0;
 		}
 
 		&__cell {
@@ -72,6 +84,12 @@
 			}
 		}
 
+		/* Vertical headers */
+		&__row--body > &__cell--header {
+			border-right-width: calc(var(--border-width) * 4);
+			border-top-width: 0;
+		}
+
 		&__selection {
 			display: flex;
 			gap: rem(8);
@@ -81,7 +99,6 @@
 
 		&__spacer {
 			display: none;
-			height: rem(24);
 		}
 
 		&__row {
