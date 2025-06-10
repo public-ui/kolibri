@@ -1,9 +1,7 @@
-name: Benchmark-Monitoring
+name: Benchmark-Baseline
 
 on:
-  push:
-    branches:
-      - release/2
+  workflow_dispatch:
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
@@ -35,21 +33,17 @@ jobs:
       - name: Install and execute benchmark
         uses: ./.github/actions/benchmark
 
-      - name: Git checkout readme's
-        run: git checkout -- packages/components/src
-        shell: bash
-
       - name: Remove husky
         run: rm -rf .husky
         shell: bash
 
-      - name: Store benchmark result
-        uses: rhysd/github-action-benchmark@v1
+      - name: Copy result as new baseline
+        run: cp packages/tools/benchmark-tests/benchmark-result.json packages/tools/benchmark-tests/benchmark-baseline.json
+
+      - name: Commit and push updated baseline
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          alert-threshold: 10%
-          auto-push: true
-          fail-threshold: 25%
-          gh-pages-branch: benchmarks
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-file-path: packages/tools/benchmark-tests/benchmark-result.json
-          tool: customSmallerIsBetter
+          commit_message: 'chore: update benchmark-baseline.json [ci skip]'
+          file_pattern: 'packages/tools/benchmark-tests/benchmark-baseline.json'
+          commit_user_name: '${{ steps.app-token.outputs.app-slug }}[bot]'
+          commit_user_email: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
