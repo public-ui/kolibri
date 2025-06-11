@@ -27,7 +27,6 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 			<KolInputRadio
 				{...props}
 				ref={ref}
-				_accessKey="A"
 				_orientation="horizontal"
 				_required
 				_value="Company"
@@ -67,18 +66,6 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				]}
 				_label="Salutation (horizontal with error hint and description)"
 				_hint={HINT_MSG}
-			/>
-			<KolInputRadio
-				{...props}
-				_options="[{'disabled':true,'label':'Mrs. (disabled)','value':'Mrs.'},{'label':'Mr.'},{'label':'Company','value':'Company'}]"
-				_label="With access key"
-				_accessKey="c"
-			/>
-			<KolInputRadio
-				{...props}
-				_options="[{'disabled':true,'label':'Mrs. (disabled)','value':'Mrs.'},{'label':'Mr.'},{'label':'Company','value':'Company'}]"
-				_label="With short key"
-				_shortKey="s"
 			/>
 		</div>
 	);
