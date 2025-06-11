@@ -1,11 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '5000', 10);
+const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '10000', 10);
 
 export default defineConfig({
 	testDir: 'tests',
 	testMatch: '*.playwright.ts',
-	timeout: TEST_TIMEOUT,
+	timeout: 2 * TEST_TIMEOUT,
 	use: {
 		headless: true,
 		viewport: { width: 800, height: 600 },

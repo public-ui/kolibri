@@ -1,7 +1,10 @@
 import { test } from '@playwright/test';
-import { TAGS, TEST_URL } from './lib/config';
-import { runBenchmark, writeResultFile } from './lib/test';
+import { createResultsMap, TAGS, TEST_URL } from './lib/config';
 import type { Params } from './lib/types';
+import { runBenchmark } from './lib/browser';
+import { writeResultFile } from './lib/after';
+
+const RESULTS = createResultsMap();
 
 test.describe('Hydration Benchmark', () => {
 	test.beforeEach(async ({ page }) => {
@@ -10,8 +13,10 @@ test.describe('Hydration Benchmark', () => {
 	});
 
 	for (const tag of TAGS) {
-		test(`${tag}`, async ({ page }) => await runBenchmark(tag, (fn: any, params: Params) => page.evaluate(fn, params)));
+		test(`${tag}`, async ({ page }) => await runBenchmark(tag, (fn: any, params: Params) => page.evaluate(fn, params), RESULTS));
 	}
 
-	test.afterAll(writeResultFile);
+	test.afterAll(() => {
+		writeResultFile(RESULTS);
+	});
 });

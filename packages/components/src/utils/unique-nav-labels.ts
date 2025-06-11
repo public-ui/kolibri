@@ -9,7 +9,7 @@ const UNIQUE_LABELS: Set<string> = new Set();
 
 export function addNavLabel(ariaLabel: string): void {
 	if (UNIQUE_LABELS.has(ariaLabel)) {
-		Log.error(`There already is a nav element with the label "${ariaLabel}"`, { forceLog: true });
+		Log.warn(`There already is a nav element with the label "${ariaLabel}"`);
 	} else {
 		UNIQUE_LABELS.add(ariaLabel);
 	}

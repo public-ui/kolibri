@@ -8,6 +8,7 @@ export type Measure = {
 };
 
 export type Params = {
+	batchSize: number;
 	iterations: number;
 	tag: TagType;
 	timeout: number;

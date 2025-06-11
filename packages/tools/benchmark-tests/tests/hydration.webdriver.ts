@@ -1,6 +1,9 @@
-import { TAGS, TEST_URL } from './lib/config';
-import { runBenchmark, writeResultFile } from './lib/test';
+import { writeResultFile } from './lib/after';
+import { runBenchmark } from './lib/browser';
+import { createResultsMap, TAGS, TEST_URL } from './lib/config';
 import type { Params } from './lib/types';
+
+const RESULTS = createResultsMap();
 
 describe('Hydration Benchmark', () => {
 	before(async () => {
@@ -8,8 +11,10 @@ describe('Hydration Benchmark', () => {
 	});
 
 	for (const tag of TAGS) {
-		it(`${tag}`, async () => await runBenchmark(tag, (fn: any, params: Params) => browser.execute(fn, params)));
+		it(`${tag}`, async () => await runBenchmark(tag, (fn: any, params: Params) => browser.execute(fn, params), RESULTS));
 	}
 
-	after(writeResultFile);
+	after(() => {
+		writeResultFile(RESULTS);
+	});
 });
