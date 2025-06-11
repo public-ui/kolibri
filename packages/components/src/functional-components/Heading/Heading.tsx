@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import clsx from 'clsx';
 import type { JSXBase } from '@stencil/core/internal';
-import type { HeadingLevel, HeadingVariantPropType } from '../../schema';
+import type { HeadingLevel } from '../../schema';
 
 type HGroupProps = JSXBase.HTMLAttributes<HTMLElement>;
 
@@ -11,9 +11,7 @@ type BaseProps = JSXBase.HTMLAttributes<HTMLHeadingElement | HTMLElement> & {
 };
 
 // Define a type for the main headline props
-type HeadlineProps = BaseProps & {
-	variant?: HeadingVariantPropType;
-};
+type HeadlineProps = BaseProps;
 
 // Define a type for the secondary headline props
 type SecondaryHeadlineProps = BaseProps;
@@ -67,12 +65,11 @@ export function getSubHeadlineTag(level: HeadingLevel | number): SubHeadlineTag 
  * @param children - The children to render inside the headline.
  * @returns A VNode representing the headline.
  */
-const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADING_LEVEL, variant, ...other }, children) => {
+const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADING_LEVEL, ...other }, children) => {
 	const HeadlineTag = getHeadlineTag(level);
-	const finalVariant = variant || HeadlineTag;
 
 	return (
-		<HeadlineTag class={clsx('kol-headline', `kol-headline--${finalVariant}`, classNames)} {...other}>
+		<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, classNames)} {...other}>
 			{children}
 		</HeadlineTag>
 	);
