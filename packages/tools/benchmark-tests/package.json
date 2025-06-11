@@ -44,7 +44,6 @@
 		"@wdio/local-runner": "9.15.0",
 		"@wdio/mocha-framework": "9.15.0",
 		"@wdio/spec-reporter": "9.15.0",
-		"adopted-style-sheets": "1.1.9-rc.19",
 		"chromedriver": "137.0.1",
 		"cpy-cli": "5.0.0",
 		"knip": "5.60.2",
