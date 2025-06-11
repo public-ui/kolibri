@@ -53,7 +53,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		if (this._multiple) {
 			return this.state._value;
 		} else {
-			return Array.isArray(this.state._value) && this.state._value.length > 0 ? this.state._value[0] : undefined;
+			return Array.isArray(this.state._value) && this.state._value.length > 0 ? this.state._value[0] : this.state._value;
 		}
 	}
 
@@ -366,7 +366,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 			this._value = selectedValues;
 			this.controller.onFacade.onInput(event, true, selectedValues);
 		} else {
-			const singleValue: StencilUnknown | undefined = selectedValues.length > 0 ? selectedValues[0] : undefined;
+			const singleValue: StencilUnknown = selectedValues.length > 0 ? selectedValues[0] : undefined;
 			this._value = singleValue;
 			this.controller.onFacade.onInput(event, true, singleValue);
 		}
