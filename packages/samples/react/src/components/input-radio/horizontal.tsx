@@ -5,10 +5,10 @@ import { KolButton, KolForm, KolInputCheckbox, KolInputRadio } from '@public-ui/
 
 import { SampleDescription } from '../SampleDescription';
 
-import type { Orientation } from '@public-ui/components';
+import type { OrientationPropType } from '@public-ui/components';
 export const InputRadioHorizontal: FC = () => {
 	const [show, setShow] = useState(true);
-	const [orientation, setOrientation] = useState<Orientation>('horizontal');
+	const [orientation, setOrientation] = useState<OrientationPropType>('horizontal');
 
 	const options = [
 		{ label: 'Field 1', value: 1 },
