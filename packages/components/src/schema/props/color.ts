@@ -108,7 +108,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			break;
 		}
 		case null:
-			Log.warn(`_color was empty or invalid (${JSON.stringify(value)})`, { forceLog: true });
+			Log.warn(`_color was empty or invalid (${JSON.stringify(value)})`);
 			colorContrast = createContrastColorPair({
 				background: '#000',
 				foreground: '#000',
