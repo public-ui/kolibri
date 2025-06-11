@@ -1,7 +1,7 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
-import type { HeadingAPI, HeadingLevel, HeadingStates, HeadingVariantPropType, LabelWithExpertSlotPropType } from '../../schema';
-import { validateHeadingVariant, validateLabelWithExpertSlot, watchString } from '../../schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
+import type { HeadingAPI, HeadingLevel, HeadingStates, LabelWithExpertSlotPropType } from '../../schema';
+import { validateLabelWithExpertSlot, watchString } from '../../schema';
 import { KolHeadingFc } from '../../functional-components';
 import { watchHeadingLevel } from './validation';
 
@@ -32,11 +32,6 @@ export class KolHeading implements HeadingAPI {
 	 */
 	@Prop() public _secondaryHeadline?: string;
 
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: HeadingVariantPropType;
-
 	@State() public state: HeadingStates = {
 		_label: '', // ⚠ required
 		_level: 0,
@@ -57,23 +52,17 @@ export class KolHeading implements HeadingAPI {
 		watchString(this, '_secondaryHeadline', value);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: HeadingVariantPropType): void {
-		validateHeadingVariant(this, value);
-	}
-
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateSecondaryHeadline(this._secondaryHeadline);
-		this.validateVariant(this._variant);
 	}
 
 	public render(): JSX.Element {
-		const { _secondaryHeadline, _label, _level, _variant } = this.state;
+		const { _secondaryHeadline, _label, _level } = this.state;
 
 		return (
-			<KolHeadingFc secondaryHeadline={_secondaryHeadline} level={_level} variant={_variant}>
+			<KolHeadingFc secondaryHeadline={_secondaryHeadline} level={_level}>
 				{_label}
 				<slot name="expert" slot="expert" />
 			</KolHeadingFc>
