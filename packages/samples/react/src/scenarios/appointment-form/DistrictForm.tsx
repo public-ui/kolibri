@@ -62,7 +62,7 @@ export function DistrictForm() {
 							id="field-district"
 							_label="District"
 							_options={[{ label: 'Please select…', value: '' }, ...LOCATION_OPTIONS]}
-							_value={[field.value]}
+							_value={field.value}
 							_msg={{
 								_type: 'error',
 								_description: form.errors.district || '',

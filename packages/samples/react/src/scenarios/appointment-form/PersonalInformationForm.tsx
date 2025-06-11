@@ -57,7 +57,7 @@ export function PersonalInformationForm() {
 							}}
 							id="field-salutation"
 							_label="Salutation"
-							_value={[field.value]}
+							_value={field.value}
 							_msg={{
 								_type: 'error',
 								_description: form.errors.salutation || '',

@@ -176,7 +176,7 @@ export class KolPagination implements PaginationAPI {
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
-						_value={[this.state._pageSize]}
+						_value={this.state._pageSize}
 					></KolSelectTag>
 				)}
 			</Host>
