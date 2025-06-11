@@ -405,8 +405,8 @@ importers:
         version: 3.0.0
     devDependencies:
       '@playwright/test':
-        specifier: 1.52.0
-        version: 1.52.0
+        specifier: 1.53.0
+        version: 1.53.0
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.20.0)
@@ -430,7 +430,7 @@ importers:
         version: 4.20.0
       '@stencil/playwright':
         specifier: 0.2.1
-        version: 0.2.1(@playwright/test@1.52.0)(@stencil/core@4.20.0)
+        version: 0.2.1(@playwright/test@1.53.0)(@stencil/core@4.20.0)
       '@stencil/sass':
         specifier: 3.0.12
         version: 3.0.12(@stencil/core@4.20.0)
@@ -1125,7 +1125,7 @@ importers:
         version: link:../../samples/react
       axe-playwright:
         specifier: 2.1.0
-        version: 2.1.0(playwright@1.52.0)
+        version: 2.1.0(playwright@1.53.0)
       portfinder:
         specifier: 1.0.37
         version: 1.0.37
@@ -4090,6 +4090,11 @@ packages:
 
   '@playwright/test@1.52.0':
     resolution: {integrity: sha512-uh6W7sb55hl7D6vsAeA+V2p5JnlAqzhqFyF0VcJkKZXkgnFcVG9PziERRHQfPLfNGx1C292a4JqbWzhR8L4R1g==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  '@playwright/test@1.53.0':
+    resolution: {integrity: sha512-15hjKreZDcp7t6TL/7jkAo6Df5STZN09jGiv5dbP9A6vMVncXRqE7/B2SncsyOwrkZRBH2i6/TPOL8BVmm3c7w==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -10688,8 +10693,18 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  playwright-core@1.53.0:
+    resolution: {integrity: sha512-mGLg8m0pm4+mmtB7M89Xw/GSqoNC+twivl8ITteqvAndachozYe2ZA7srU6uleV1vEdAHYqjq+SV8SNxRRFYBw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   playwright@1.52.0:
     resolution: {integrity: sha512-JAwMNMBlxJ2oD1kce4KPtMkDeKGHQstdpFPcPH3maElAXon/QZeTvtsfXmTMRyO9TslfoYOXkSsvao2nE1ilTw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.53.0:
+    resolution: {integrity: sha512-ghGNnIEYZC4E+YtclRn4/p6oYbdPiASELBIYkBXfaTVKreQUYbMUYQDwS12a8F0/HtIjr/CkGjtwABeFPGcS4Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -17273,6 +17288,10 @@ snapshots:
     dependencies:
       playwright: 1.52.0
 
+  '@playwright/test@1.53.0':
+    dependencies:
+      playwright: 1.53.0
+
   '@promptbook/utils@0.69.5':
     dependencies:
       spacetrim: 0.11.59
@@ -17601,9 +17620,9 @@ snapshots:
 
   '@stencil/core@4.22.3': {}
 
-  '@stencil/playwright@0.2.1(@playwright/test@1.52.0)(@stencil/core@4.20.0)':
+  '@stencil/playwright@0.2.1(@playwright/test@1.53.0)(@stencil/core@4.20.0)':
     dependencies:
-      '@playwright/test': 1.52.0
+      '@playwright/test': 1.53.0
       '@stencil/core': 4.20.0
       deepmerge: 4.3.1
       find-up: 7.0.0
@@ -19062,14 +19081,14 @@ snapshots:
       axe-core: 4.10.3
       mustache: 4.2.0
 
-  axe-playwright@2.1.0(playwright@1.52.0):
+  axe-playwright@2.1.0(playwright@1.53.0):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.3
       axe-html-reporter: 2.2.11(axe-core@4.10.3)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.52.0
+      playwright: 1.53.0
 
   axios@1.8.4:
     dependencies:
@@ -25459,9 +25478,17 @@ snapshots:
 
   playwright-core@1.52.0: {}
 
+  playwright-core@1.53.0: {}
+
   playwright@1.52.0:
     dependencies:
       playwright-core: 1.52.0
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  playwright@1.53.0:
+    dependencies:
+      playwright-core: 1.53.0
     optionalDependencies:
       fsevents: 2.3.2
 
