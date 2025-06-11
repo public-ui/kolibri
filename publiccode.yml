@@ -1,10 +1,10 @@
-publiccodeYmlVersion: '0.4.0'
+publiccodeYmlVersion: 0.4.0
 name: KoliBri – Die barrierefreie WebComponent-Bibliothek
 genericName: Accessible WebComponent Library
 url: https://github.com/public-ui/kolibri
 landingURL: https://github.com/public-ui
-releaseDate: '2025-06-04'
-softwareVersion: 3.0.0
+releaseDate: '2025-06-11'
+softwareVersion: 3.0.1-rc.0
 logo: kolibri-logo.png
 developmentStatus: stable
 softwareType: library
