@@ -7,12 +7,19 @@
 
 @layer kol-component {
 	.kol-toolbar {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
 		font-size: rem(16);
 
-		display: flex;
-		align-items: center;
-		gap: rem(16);
-		flex-wrap: wrap;
+		&--orientation-horizontal {
+			gap: rem(16);
+		}
+
+		&--orientation-vertical {
+			align-items: stretch;
+			flex-direction: column;
+		}
 
 		&:focus-within {
 			outline: 1px solid;

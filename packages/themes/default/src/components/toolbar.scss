@@ -25,4 +25,21 @@
 			--text-color: var(--color-light);
 		}
 	}
+
+	.kol-link__text,
+	.kol-button__text {
+		.kol-toolbar--orientation-vertical & {
+			border-radius: 0;
+			border-bottom: 0;
+		}
+
+		.kol-toolbar--orientation-vertical .kol-toolbar__item:first-child & {
+			border-radius: var(--border-radius) var(--border-radius) 0 0;
+		}
+
+		.kol-toolbar--orientation-vertical .kol-toolbar__item:last-child & {
+			border-radius: 0 0 var(--border-radius) var(--border-radius);
+			border-bottom: var(--border-width) solid var(--text-border-color);
+		}
+	}
 }

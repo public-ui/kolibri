@@ -20,6 +20,7 @@
 			@at-root #{$root}:focus & {
 				border-radius: var(--border-radius);
 				outline: var(--border-width) solid;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
 			.kol-span__label {

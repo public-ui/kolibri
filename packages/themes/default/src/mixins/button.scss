@@ -109,6 +109,7 @@
 
 			@at-root #{$root}:focus {
 				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
 			@at-root #{$root}:disabled:hover & {

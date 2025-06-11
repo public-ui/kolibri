@@ -47,7 +47,7 @@ export class KolToolbar implements ToolbarAPI {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-toolbar" role="toolbar" aria-label={this.state._label}>
+			<div class={`kol-toolbar kol-toolbar--orientation-${this.state._orientation}`} role="toolbar" aria-label={this.state._label}>
 				{this.state._items.map(this.renderItem)}
 			</div>
 		);
