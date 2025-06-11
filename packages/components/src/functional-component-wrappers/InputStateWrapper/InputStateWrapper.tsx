@@ -44,13 +44,13 @@ function getInputProps(state: InputState, customSuggestions?: boolean): InputPro
 		id: state._id,
 		hideLabel: state._hideLabel,
 		label: state._label,
-		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
 
 		ariaDescribedBy: ariaDescribedBy,
 	};
 
+	if ('_accessKey' in state) props.accessKey = state._accessKey;
 	if ('_type' in state) props.type = state._type;
 	if ('_value' in state) props.value = state._value as string | number | string[];
 	if ('_required' in state) props.required = state._required;

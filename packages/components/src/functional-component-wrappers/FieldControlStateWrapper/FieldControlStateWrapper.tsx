@@ -32,8 +32,6 @@ export type FieldControlStateWrapperProps = Partial<FieldControlProps> & {
 
 function getFieldControlProps(state: InputState): FieldControlProps {
 	const props: FieldControlProps = {
-		accessKey: state._accessKey,
-		shortKey: state._shortKey,
 		id: state._id,
 		disabled: state._disabled,
 		msg: convertMsgToInternMsg(state._msg),
@@ -53,6 +51,14 @@ function getFieldControlProps(state: InputState): FieldControlProps {
 
 	if ('_labelAlign' in state) {
 		props.labelAlign = state._labelAlign;
+	}
+
+	if ('_accessKey' in state) {
+		props.accessKey = state._accessKey;
+	}
+
+	if ('_shortKey' in state) {
+		props.shortKey = state._shortKey;
 	}
 
 	return props;

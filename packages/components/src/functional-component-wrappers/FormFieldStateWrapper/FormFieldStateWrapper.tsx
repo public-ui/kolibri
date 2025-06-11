@@ -40,8 +40,6 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		hideLabel: state._hideLabel,
 		hideMsg: state._hideMsg,
 		touched: state._touched,
-		accessKey: state._accessKey,
-		shortKey: state._shortKey,
 	};
 
 	if ('_required' in state) {
@@ -50,6 +48,14 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 
 	if ('_readOnly' in state) {
 		props.readOnly = state._readOnly;
+	}
+
+	if ('_accessKey' in state) {
+		props.accessKey = state._accessKey;
+	}
+
+	if ('_shortKey' in state) {
+		props.shortKey = state._shortKey;
 	}
 
 	if ('_hasCounter' in state && '_currentLength' in state) {
