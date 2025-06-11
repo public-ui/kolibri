@@ -1014,9 +1014,6 @@ importers:
       '@wdio/spec-reporter':
         specifier: 9.15.0
         version: 9.15.0
-      adopted-style-sheets:
-        specifier: 1.1.9-rc.19
-        version: 1.1.9-rc.19
       chromedriver:
         specifier: 137.0.1
         version: 137.0.1
