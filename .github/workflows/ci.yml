@@ -70,7 +70,7 @@ jobs:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
       - name: Install Playwright and Firefox
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
+        run: pnpm exec playwright install --with-deps firefox
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
       - name: Visual Tests
