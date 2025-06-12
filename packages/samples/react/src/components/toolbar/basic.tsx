@@ -47,11 +47,13 @@ export const ToolbarBasic: FC = () => {
 			</SampleDescription>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
-			<KolHeading _label="Orientation horizontal" _level={2} />
-			<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} />
+			<div className="flex flex-col gap-4">
+				<KolHeading _label="Orientation horizontal" _level={2} />
+				<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} />
 
-			<KolHeading _label="Orientation vertical" _level={2} className="mt" />
-			<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
+				<KolHeading _label="Orientation vertical" _level={2} />
+				<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
+			</div>
 		</>
 	);
 };
