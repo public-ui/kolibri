@@ -2,8 +2,8 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -14,19 +14,20 @@ import type {
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, RadioOption, Orientation, StencilUnknown, Stringified } from '../types';
+import type { InputTypeOnDefault, RadioOption, StencilUnknown, Stringified } from '../types';
+import type { PropOrientation } from '../props/orientation';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	orientation: Orientation;
 	value: StencilUnknown;
 } & PropDisabled &
-	PropHideMsg &
 	PropHideLabel &
+	PropHideMsg &
 	PropName &
+	PropOrientation &
 	PropRadioOptions & // PropRadioOptions becomes required with 2.0
 	PropRequired &
 	PropSyncValueBySelector &
@@ -35,10 +36,10 @@ type OptionalProps = {
 
 type RequiredStates = {
 	options: RadioOption<StencilUnknown>[];
-	orientation: Orientation;
 } & PropId &
 	PropHideMsg &
-	PropLabelWithExpertSlot;
+	PropLabelWithExpertSlot &
+	PropOrientation;
 type OptionalStates = {
 	hint: string;
 	on: InputTypeOnDefault;
