@@ -8,31 +8,16 @@
 	.kol-toolbar {
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
-
-		&--orientation-horizontal {
-			padding: rem(8) rem(14);
-			border-width: var(--border-width);
-			border-style: solid;
-		}
-	}
-
-	.kol-link {
-		text-decoration: none;
-		--text-background-color: var(--color-light);
-		--text-border-color: var(--color-primary);
-		--text-color: var(--color-primary);
-
-		&:not([disabled]):hover {
-			--text-background-color: var(--color-primary-variant);
-			--text-border-color: var(--color-primary-variant);
-			--text-color: var(--color-light);
-		}
 	}
 
 	.kol-link__text,
 	.kol-button__text {
+		border-radius: 0;
+
+		.kol-toolbar--orientation-horizontal & {
+			border-right: 0;
+		}
 		.kol-toolbar--orientation-vertical & {
-			border-radius: 0;
 			border-bottom: 0;
 		}
 
@@ -40,9 +25,18 @@
 			border-radius: var(--border-radius) var(--border-radius) 0 0;
 		}
 
+		.kol-toolbar--orientation-horizontal .kol-toolbar__item:first-child & {
+			border-radius: var(--border-radius) 0 0 var(--border-radius);
+		}
+
 		.kol-toolbar--orientation-vertical .kol-toolbar__item:last-child & {
 			border-radius: 0 0 var(--border-radius) var(--border-radius);
 			border-bottom: var(--border-width) solid var(--text-border-color);
+		}
+
+		.kol-toolbar--orientation-horizontal .kol-toolbar__item:last-child & {
+			border-radius: 0 var(--border-radius) var(--border-radius) 0;
+			border-right: var(--border-width) solid var(--text-border-color);
 		}
 	}
 }
