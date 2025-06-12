@@ -6,11 +6,14 @@
 	@include kol-button('kol-link');
 
 	.kol-toolbar {
-		padding: rem(8) rem(14);
-		border-radius: var(--border-radius);
 		background-color: var(--color-light);
-		border-width: var(--border-width);
-		border-style: solid;
+		border-radius: var(--border-radius);
+
+		&--orientation-horizontal {
+			padding: rem(8) rem(14);
+			border-width: var(--border-width);
+			border-style: solid;
+		}
 	}
 
 	.kol-link {
