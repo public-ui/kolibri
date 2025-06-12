@@ -18,7 +18,6 @@ function getRadioProps(state: InputRadioStates, inputProps: Partial<InputProps> 
 		hideLabel: state._hideLabel,
 		label: state._label,
 		value: state._value as string | number | string[] | undefined,
-		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
 		ariaDescribedBy,

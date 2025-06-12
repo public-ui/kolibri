@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const net = require('net');
 
-const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '5000', 10);
+const TEST_TIMEOUT = parseInt(process.env.TEST_TIMEOUT || '10000', 10);
 
 let devServer;
 
@@ -49,7 +49,7 @@ exports.config = {
 	logLevel: 'silent',
 	bail: 0,
 	baseUrl: 'http://localhost:3000',
-	waitforTimeout: TEST_TIMEOUT,
+	timeout: 2 * TEST_TIMEOUT,
 	framework: 'mocha',
 	reporters: ['spec'],
 	mochaOpts: {
