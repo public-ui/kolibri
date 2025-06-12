@@ -65,7 +65,7 @@
 		&--normal,
 		&--danger,
 		&--ghost {
-			&:not([disabled]):hover {
+			&:not([disabled]):not([aria-disabled='true']):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -73,7 +73,7 @@
 		}
 
 		&--danger {
-			&:not([disabled]):hover {
+			&:not([disabled]):not([aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 			}
@@ -112,7 +112,7 @@
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}:disabled:hover & {
+			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
 				background-color: var(--text-background-color);
 				border-color: var(--text-border-color);
 				color: var(--text-color);
