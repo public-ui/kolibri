@@ -6,6 +6,7 @@
 	"sideEffects": false,
 	"scripts": {
 		"build": "rollup -c",
+		"build:deps": "pnpm --filter @public-ui/theme-itzbund^... build",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
@@ -31,6 +32,7 @@
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.10",
+		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.5",
 		"rollup": "4.43.0",
 		"rollup-plugin-postcss": "4.0.2",

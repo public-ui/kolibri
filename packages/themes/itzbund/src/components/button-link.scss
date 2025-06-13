@@ -4,7 +4,6 @@
 	a,
 	button {
 		border-radius: 32px;
-		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
 
@@ -15,7 +14,6 @@
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
 		border-width: var(--spacing);
-		font-size: inherit;
 		/*line-height: 1.25em;*/
 		/*padding: calc(4 * var(--spacing));*/
 		padding: 0 rem(16);

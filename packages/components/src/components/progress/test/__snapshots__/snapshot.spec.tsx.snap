@@ -19,7 +19,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
         kg
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="0"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0 von 42 kg
     </span>
@@ -46,7 +46,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
         %
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="0"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -73,7 +73,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
         %
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="17"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -100,7 +100,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
         kg
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="21"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="21"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0 von 42 kg
     </span>
@@ -127,7 +127,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
         %
       </div>
     </div>
-    <progress aria-busy="false" max="42" value="100"></progress>
+    <progress aria-busy="false" class="visually-hidden" max="42" value="100"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -154,7 +154,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
         %
       </div>
     </div>
-    <progress aria-busy="true" max="100" value="0"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="100" value="0"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -181,7 +181,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
         %
       </div>
     </div>
-    <progress aria-busy="true" max="100" value="42"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="100" value="42"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -208,7 +208,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
         %
       </div>
     </div>
-    <progress aria-busy="false" max="100" value="100"></progress>
+    <progress aria-busy="false" class="visually-hidden" max="100" value="100"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -237,7 +237,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
         </div>
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="0"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0 von 42 kg
     </span>
@@ -266,7 +266,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
         </div>
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="0"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -295,7 +295,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
         </div>
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="17"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -324,7 +324,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
         </div>
       </div>
     </div>
-    <progress aria-busy="true" max="42" value="21"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="42" value="21"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0 von 42 kg
     </span>
@@ -353,7 +353,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
         </div>
       </div>
     </div>
-    <progress aria-busy="false" max="42" value="42"></progress>
+    <progress aria-busy="false" class="visually-hidden" max="42" value="42"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -382,7 +382,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
         </div>
       </div>
     </div>
-    <progress aria-busy="true" max="100" value="0"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="100" value="0"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -411,7 +411,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
         </div>
       </div>
     </div>
-    <progress aria-busy="true" max="100" value="42"></progress>
+    <progress aria-busy="true" class="visually-hidden" max="100" value="42"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>
@@ -440,7 +440,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
         </div>
       </div>
     </div>
-    <progress aria-busy="false" max="100" value="100"></progress>
+    <progress aria-busy="false" class="visually-hidden" max="100" value="100"></progress>
     <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
       0% %
     </span>

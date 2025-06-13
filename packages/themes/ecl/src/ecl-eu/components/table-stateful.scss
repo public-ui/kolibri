@@ -2,10 +2,6 @@
 @use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	:host > div {
 		overflow-x: auto;
 		overflow-y: hidden;

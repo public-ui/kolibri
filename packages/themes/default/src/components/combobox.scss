@@ -7,10 +7,7 @@ $option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
 
 	.combobox {
 		display: block;
@@ -60,7 +57,6 @@ $visible-options: 5;
 			border-color: var(--color-subtle);
 			overflow-y: auto;
 			overflow-x: hidden;
-			box-sizing: border-box;
 			width: 100%;
 			max-height: calc($option-height * $visible-options + rem(2));
 		}

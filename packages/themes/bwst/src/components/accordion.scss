@@ -2,10 +2,6 @@
 @use '../mixins/focus-outline' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.accordion__content {
 		padding-left: rem(36);
 		padding-bottom: rem(12);
