@@ -16,6 +16,7 @@ import type {
 	PropLabelWithExpertSlot,
 	PropLinkOnCallbacks,
 	PropLinkTarget,
+	PropLinkVariant,
 	PropShortKey,
 	PropTooltipAlign,
 } from '../props';
@@ -39,6 +40,7 @@ export type OptionalProps = {
 	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
+	PropLinkVariant &
 	PropShortKey &
 	PropTooltipAlign;
 
@@ -53,3 +55,4 @@ type OptionalStates = { ariaCurrent: string } & PropAriaExpanded &
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type LinkStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type LinkAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type InternalLinkAPI = Omit<LinkAPI, 'validateVariant'>;

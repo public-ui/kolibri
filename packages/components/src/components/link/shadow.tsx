@@ -11,6 +11,7 @@ import type {
 	LinkOnCallbacksPropType,
 	LinkProps,
 	LinkTargetPropType,
+	LinkVariantPropType,
 	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
@@ -114,6 +115,11 @@ export class KolLink implements LinkProps, FocusableElement {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: LinkVariantPropType;
 
 	/**
 	 * Defines the callback functions for links.

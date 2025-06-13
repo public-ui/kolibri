@@ -11,9 +11,9 @@ import type {
 	DownloadPropType,
 	FocusableElement,
 	HrefPropType,
+	InternalLinkAPI,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
-	LinkAPI,
 	LinkOnCallbacksPropType,
 	LinkStates,
 	LinkTargetPropType,
@@ -65,7 +65,7 @@ import clsx from 'clsx';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements LinkAPI, FocusableElement {
+export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	private anchorRef?: HTMLAnchorElement;
