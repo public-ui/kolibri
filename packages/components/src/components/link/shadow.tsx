@@ -54,6 +54,7 @@ export class KolLink implements LinkProps, FocusableElement {
 				_href={this._href}
 				_icons={this._icons}
 				_label={this._label}
+				_linkVariant={this._variant}
 				_on={this._on}
 				_role={this._role}
 				_shortKey={this._shortKey}
@@ -119,7 +120,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: LinkVariantPropType;
+	@Prop() public _variant?: LinkVariantPropType = 'inline';
 
 	/**
 	 * Defines the callback functions for links.

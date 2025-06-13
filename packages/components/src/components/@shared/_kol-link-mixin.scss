@@ -18,6 +18,11 @@
 			text-align: left;
 			text-decoration-line: none;
 
+			&--standalone {
+				min-height: var(--a11y-min-size);
+				min-width: var(--a11y-min-size);
+			}
+
 			&__text {
 				.kol-span__label {
 					text-decoration-line: underline;

@@ -2,7 +2,7 @@
 import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../utils';
 
-const linkVariantPropTypeOptions = ['inline', 'standalne'] as const;
+const linkVariantPropTypeOptions = ['inline', 'standalone'] as const;
 export type LinkVariantPropType = (typeof linkVariantPropTypeOptions)[number];
 
 /**
@@ -16,12 +16,9 @@ export type PropLinkVariant = {
 export const validateLinkVariant = (component: Generic.Element.Component, value?: LinkVariantPropType): void => {
 	watchValidator(
 		component,
-		`_variant`,
+		`_linkVariant`,
 		(value) => typeof value === 'string' && linkVariantPropTypeOptions.includes(value),
 		new Set([`KoliBriLinkVariant {${linkVariantPropTypeOptions.join(', ')}`]),
 		value,
-		{
-			defaultValue: 'inline',
-		},
 	);
 };
