@@ -35,7 +35,7 @@ export class KolBadge implements BadgeAPI {
 				_label={props._label}
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
-				_variant={props._variant}
+				_buttonVariant={props._variant}
 			></KolButtonWcTag>
 		);
 	}

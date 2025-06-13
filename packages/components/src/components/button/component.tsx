@@ -2,7 +2,6 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
-	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
@@ -11,6 +10,7 @@ import type {
 	DisabledPropType,
 	FocusableElement,
 	IconsPropType,
+	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -62,7 +62,7 @@ import clsx from 'clsx';
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI, FocusableElement {
+export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 
@@ -130,10 +130,10 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
 						'kol-button--disabled': this.state._disabled === true,
-						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
+						[`kol-button--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
 						'kol-button--hide-label': this.state._hideLabel === true,
 						[this.state._customClass as string]:
-							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
 					disabled={this.state._disabled}
 					id={this.state._id}
@@ -209,7 +209,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Defines the custom class attribute if _variant="custom" is set.
+	 * Defines the custom class attribute if _buttonVariant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
 
@@ -288,15 +288,16 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _buttonVariant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
 		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_variant: 'normal',
+		_buttonVariant: 'normal',
 	};
 
 	public constructor() {
@@ -408,8 +409,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: ButtonVariantPropType): void {
+	@Watch('_buttonVariant')
+	public validateButtonVariant(value?: ButtonVariantPropType): void {
 		validateButtonVariant(this, value);
 	}
 
@@ -434,7 +435,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateVariant(this._variant);
+		this.validateButtonVariant(this._buttonVariant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }

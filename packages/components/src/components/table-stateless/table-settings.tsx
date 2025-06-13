@@ -133,7 +133,7 @@ export class KolTableSettings {
 											_icons="codicon codicon-arrow-up"
 											_label={translate('kol-table-settings-move-up', { placeholders: { column: column.label } })}
 											_hideLabel
-											_variant="ghost"
+											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key, 'up') }}
 											_disabled={index === 0}
 											data-testid="table-settings-move-up"
@@ -142,7 +142,7 @@ export class KolTableSettings {
 											_icons="codicon codicon-arrow-down"
 											_label={translate('kol-table-settings-move-down', { placeholders: { column: column.label } })}
 											_hideLabel
-											_variant="ghost"
+											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key, 'down') }}
 											_disabled={index === sortedColumns.length - 1}
 											data-testid="table-settings-move-down"
@@ -155,11 +155,11 @@ export class KolTableSettings {
 						<div class="kol-table-settings__actions">
 							<KolButtonWcTag
 								_label={translate('kol-table-settings-cancel')}
-								_variant="secondary"
+								_buttonVariant="secondary"
 								_on={{ onClick: () => this.handleCancel() }}
 								data-testid="table-settings-cancel"
 							/>
-							<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" _type="submit" data-testid="table-settings-apply" />
+							<KolButtonWcTag _label={translate('kol-table-settings-apply')} _buttonVariant="primary" _type="submit" data-testid="table-settings-apply" />
 						</div>
 					</form>
 				</div>
