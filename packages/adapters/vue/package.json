@@ -48,12 +48,12 @@
 		"build": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.26.10",
+		"@babel/types": "7.27.6",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"typescript": "5.8.2",
+		"typescript": "5.8.3",
 		"unbuild": "1.2.1",
 		"vue": "3.4.21"
 	},

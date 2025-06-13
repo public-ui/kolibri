@@ -65,9 +65,6 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile
 
-      - name: Install Playwright and Firefox
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
-
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
 
