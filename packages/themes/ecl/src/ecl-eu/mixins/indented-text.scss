@@ -1,7 +1,6 @@
 @use '../../mixins/rem' as *;
 
 @mixin indented-text {
-	font-family: var(--font-family);
 	-webkit-border-start: rem(8) solid #0e47cb;
 	-webkit-padding-start: rem(24);
 	border-end-start-radius: rem(4);

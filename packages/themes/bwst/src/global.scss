@@ -37,8 +37,12 @@
 		--button-font-weight: 400;
 	}
 
-	* {
-		box-sizing: border-box;
+	:host {
+		font-size: var(--font-size);
+
+		* {
+			font-family: var(--font-family);
+		}
 	}
 
 	h1,

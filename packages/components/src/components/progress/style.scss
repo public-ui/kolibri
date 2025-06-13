@@ -1,13 +1,6 @@
 @use '../style' as *;
 
 @layer kol-component {
-	progress {
-		display: block;
-		height: 0;
-		overflow: hidden;
-		width: 0;
-	}
-
 	.bar {
 		display: grid;
 		grid-template-columns: 1fr auto;

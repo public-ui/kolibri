@@ -20,7 +20,7 @@
 		"clean:locks": "rimraf package-lock.json pnpm-lock.yaml && npm run clean",
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"format": "prettier --check src/** --no-error-on-unmatched-pattern",
-		"prepare": "npm-run-all prepare:*",
+		"prepare": "npm-run-all2 prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",

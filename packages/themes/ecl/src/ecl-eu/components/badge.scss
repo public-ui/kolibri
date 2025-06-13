@@ -1,10 +1,6 @@
 @use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	:host > span {
 		font: normal normal var(--font-weight) rem(14) / 1em var(--font-family);
 		padding: calc(rem(8) - rem(1)) calc(rem(12) - rem(1));

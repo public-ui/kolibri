@@ -3,15 +3,9 @@
 @use '../mixins/link' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
 
-	.kol-link-wc {
-		@include kol-link;
-		display: inline-block;
-	}
+	@include kol-link;
 
 	.mandatory-fields-hint {
 		@include indented-text;

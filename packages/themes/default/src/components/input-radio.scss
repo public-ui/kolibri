@@ -4,10 +4,7 @@
 @use '../mixins/typography' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
 
 	label {
 		cursor: pointer;

@@ -1,10 +1,6 @@
 @use '../rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	:host .kol-button-group-wc {
 		display: inline-flex;
 		gap: rem(8);
@@ -12,13 +8,11 @@
 	}
 
 	button {
-		box-sizing: border-box;
 		background-color: transparent;
 		border: 0;
 		border-radius: var(--border-radius);
 		font-style: normal;
 		font-weight: 400;
-		font-size: rem(16);
 		line-height: rem(calc(1.2 * 16));
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
@@ -92,10 +86,6 @@
 
 	button .kol-span-wc > span {
 		gap: rem(8);
-	}
-
-	.kol-icon {
-		font-size: rem(16);
 	}
 
 	.tabs-content {

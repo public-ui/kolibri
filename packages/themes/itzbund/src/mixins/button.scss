@@ -5,16 +5,11 @@
 		background-color: transparent;
 	}
 
-	:is(a, button) {
-		font-family: var(--font-family-sans);
-	}
-
 	:is(a, button) > .kol-span-wc {
 		border-radius: var(--border-radius);
 		border-style: solid;
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
-		font-size: inherit;
 		padding: 0 rem(16);
 	}
 

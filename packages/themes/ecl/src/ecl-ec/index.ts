@@ -2,7 +2,6 @@ import { KoliBri } from '@public-ui/components';
 import globalCss from './global.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
-import avatarCss from './components/avatar.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
 import buttonCss from './components/button.scss';
@@ -14,7 +13,6 @@ import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
-import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -25,7 +23,6 @@ import inputPasswordCss from './components/input-password.scss';
 import inputRadioCss from './components/input-radio.scss';
 import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
-import kolibriCss from './components/kolibri.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
@@ -51,7 +48,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	GLOBAL: globalCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
-	'KOL-AVATAR': avatarCss,
 	'KOL-BADGE': badgeCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-BUTTON': buttonCss,
@@ -63,7 +59,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
-	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-DATE': inputDateCss,
@@ -74,7 +69,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-INPUT-RANGE': inputRangeCss,
 	'KOL-INPUT-TEXT': inputTextCss,
-	'KOL-KOLIBRI': kolibriCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-NAV': navCss,

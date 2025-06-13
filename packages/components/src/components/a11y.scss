@@ -16,10 +16,6 @@
 		 */
 		background-color: white;
 		color: black;
-		/*
-		 * Verdana is an accessible font that can be used without requiring additional loading time.
-		 */
-		font-family: Verdana;
 	}
 
 	* {
@@ -27,6 +23,10 @@
 		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 		 */
 		hyphens: auto;
+		/*
+		 * Verdana is an accessible font that can be used without requiring additional loading time.
+		 */
+		font-family: Verdana;
 		/*
 		 * Letter spacing is required for all texts.
 		 */
@@ -90,9 +90,9 @@
 .visually-hidden {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
-	height: rem(1);
+	height: 1px;
 	overflow: hidden;
 	position: absolute;
 	white-space: nowrap;
-	width: rem(1);
+	width: 1px;
 }

@@ -31,8 +31,12 @@
 		--kolibri-spacing: calc(2 * var(--spacing));
 	}
 
-	* {
-		box-sizing: border-box;
+	:host {
+		font-size: var(--font-size);
+
+		* {
+			font-family: var(--font-family-sans);
+		}
 	}
 
 	h1,
@@ -41,8 +45,6 @@
 	h4,
 	h5,
 	h6 {
-		font-family: var(--font-family);
-		font-size: var(--font-size);
 		margin: 0;
 		padding: 0;
 	}

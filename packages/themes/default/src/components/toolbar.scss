@@ -2,10 +2,6 @@
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.toolbar {
 		padding: rem(8) rem(14);
 		border-radius: var(--border-radius);

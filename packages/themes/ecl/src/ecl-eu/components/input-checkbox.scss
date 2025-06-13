@@ -3,7 +3,6 @@
 
 @layer kol-theme-component {
 	:host {
-		font-family: var(--font-family);
 		@include kol-alert-theme;
 	}
 
@@ -21,7 +20,6 @@
 		border-style: solid;
 		color: var(--color-grey);
 		line-height: 1.5;
-		font-size: rem(16);
 	}
 
 	input[type='checkbox']:focus {

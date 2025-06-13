@@ -25,13 +25,14 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
+		"prepare": "npx playwright install --with-deps firefox",
 		"unused": "knip"
 	},
 	"bin": {
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.52.0",
+		"@playwright/test": "1.53.0",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.1.0",
 		"portfinder": "1.0.37",

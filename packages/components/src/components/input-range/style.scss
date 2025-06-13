@@ -34,7 +34,6 @@
 	}
 
 	input[type='range']::-webkit-slider-thumb {
-		box-sizing: border-box;
 		background-color: #000;
 		height: rem(20);
 		width: rem(20);
@@ -44,7 +43,6 @@
 	}
 
 	input[type='range']::-moz-range-thumb {
-		box-sizing: border-box;
 		background-color: #000;
 		height: rem(20);
 		width: rem(20);

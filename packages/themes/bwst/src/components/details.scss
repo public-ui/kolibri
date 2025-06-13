@@ -4,8 +4,6 @@
 
 @layer kol-theme-component {
 	.details {
-		font-family: var(--font-family);
-
 		&__heading {
 			border-radius: calc(var(--border-radius) / 2);
 		}
