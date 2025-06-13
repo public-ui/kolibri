@@ -45,8 +45,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      - name: Install Playwright and Browsers
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps chromium firefox webkit
       # Tests in sample app are currently failing and hence disabled.
       # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
       - name: E2E Test
@@ -69,8 +67,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      - name: Install Playwright and Firefox
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
       - name: Visual Tests
