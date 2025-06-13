@@ -6,7 +6,6 @@ $visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
-		font-family: var(--font-family);
 		@include kol-alert-theme;
 	}
 
@@ -66,7 +65,6 @@ $visible-options: 5;
 			max-height: calc($option-height * $visible-options + rem(1));
 			overflow-y: auto;
 			overflow-x: hidden;
-			box-sizing: border-box;
 			width: 100%;
 		}
 

@@ -3,9 +3,16 @@ name: Netlify Draft Deploy
 on:
   workflow_dispatch:
   pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
 
 jobs:
   deploy:
+    # Skip this job when the base clone URL may be different from the head clone URL.
+    if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

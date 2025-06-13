@@ -1,10 +1,6 @@
 @use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-link-wc > a > .kol-span-wc {
 		border-radius: 0;
 		border-style: solid;

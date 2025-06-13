@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<title>Benchmark-Tests | KoliBri – Public UI</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<script type="module">
+			import { defineCustomElements } from '/components/loader/index.js';
+			import { register } from '/components/index.js';
+			import { DEFAULT } from '/theme/index.mjs';
+			register(DEFAULT, defineCustomElements).catch(console.warn);
+		</script>
+	</head>
+	<body>
+		KoliBri Benchmark Test
+		<kol-kolibri style="display: block; height: 1rem"></kol-kolibri>
+	</body>
+</html>

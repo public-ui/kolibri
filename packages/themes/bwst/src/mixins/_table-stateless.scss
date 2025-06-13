@@ -3,7 +3,6 @@
 @mixin kol-alert-table-stateless {
 	:host * {
 		hyphens: var(--hyphens);
-		font-family: var(--font-family);
 		line-height: var(--line-height);
 		word-break: break-word;
 	}

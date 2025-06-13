@@ -6,6 +6,10 @@ on:
   pull_request_target:
     types: [opened, closed, synchronize]
 
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   cla:
     if: github.repository == 'public-ui/kolibri'
@@ -17,7 +21,7 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
-          repositories: "kolibri,.github-private"
+          repositories: 'kolibri,.github-private'
 
       - name: 'CLA Assistant'
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'

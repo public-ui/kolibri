@@ -38,7 +38,7 @@ export class ToasterService {
 			this.toastContainerElement = undefined;
 			element.remove();
 		} else {
-			Log.warn('Toaster service is already disposed.', { forceLog: true });
+			Log.warn('Toaster service is already disposed.');
 		}
 	}
 

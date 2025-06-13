@@ -104,7 +104,12 @@ export class KolProgress implements ProgressAPI {
 				</div>
 
 				{/* https://css-tricks.com/html5-progress-element/ */}
-				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
+				<progress
+					aria-busy={this.state._value < this.state._max ? 'true' : 'false'}
+					class="visually-hidden"
+					max={this.state._max}
+					value={this.state._value}
+				></progress>
 				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 					{isPercentage ? `${liveProgressValue} %` : `${liveProgressValue} von ${this.state._max} ${this.state._unit}`}
 				</span>

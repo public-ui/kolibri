@@ -89,11 +89,6 @@ ROUTES.set('breadcrumb/basic', {
 		skip: true,
 	},
 });
-ROUTES.set('button-group/basic', {
-	snapshot: {
-		skip: true,
-	},
-});
 ROUTES.set('button-link/basic', {
 	snapshot: {
 		skip: true,
@@ -281,7 +276,7 @@ ROUTES.set('image/basic', {
 		zoom: {
 			skip: true,
 		},
-	},	
+	},
 });
 ROUTES.set('indented-text/basic', {
 	snapshot: {
@@ -471,7 +466,12 @@ ROUTES.set('input-text/basic', {
 	},
 });
 ROUTES.set('input-text/focus', {
-
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
 });
 ROUTES.set('kolibri/basic', {
 	snapshot: {
@@ -482,16 +482,6 @@ ROUTES.set('kolibri/basic', {
 	},
 });
 ROUTES.set('link-button/basic', {
-	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('link-group/basic', {
-	snapshot: {
-		skip: true,
-	},	
-});
-ROUTES.set('link-group/horizontal', {
 	snapshot: {
 		skip: true,
 	},
@@ -946,7 +936,7 @@ ROUTES.set('toast/basic?type=error&variant=msg', {
 ROUTES.set('toolbar/basic', {
 	snapshot: {
 		viewportSize: {
-			width: 300,
+			width: 600,
 			height: 100,
 		},
 		zoom: {
@@ -982,7 +972,7 @@ ROUTES.set('tree/basic/home', {
 ROUTES.set('version/basic', {
 	snapshot: {
 		viewportSize: {
-			width: 100,
+			width: 150,
 			height: 100,
 		},
 		zoom: {

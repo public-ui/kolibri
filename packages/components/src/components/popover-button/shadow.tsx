@@ -22,6 +22,7 @@ import type {
 } from '../../schema';
 import { validatePopoverAlign } from '../../schema';
 import clsx from 'clsx';
+import { autoUpdate } from '@floating-ui/dom';
 
 /**
  * @slot - The popover content.
@@ -37,12 +38,14 @@ import clsx from 'clsx';
 export class KolPopoverButton implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
+	private cleanupAutoPositioning?: () => void;
 
 	@State() public state: PopoverButtonStates = {
 		_label: '',
 		_popoverAlign: 'bottom',
 	};
 	@State() private justClosed = false;
+	@State() private popoverOpen = false;
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
 	private handleBeforeToggle(event: Event) {
@@ -61,13 +64,28 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
-	private handleToggle(event: Event) {
-		if ((event as ToggleEvent).newState === 'open' && this.refPopover && this.refButton) {
+	private alignPopover() {
+		if (this.refPopover && this.refButton) {
 			void alignFloatingElements({
 				align: this.state._popoverAlign,
 				floatingElement: this.refPopover,
 				referenceElement: this.refButton,
 			});
+		}
+	}
+
+	private handleToggle(event: Event) {
+		this.popoverOpen = (event as ToggleEvent).newState === 'open';
+
+		if (this.popoverOpen) {
+			if (this.refPopover && this.refButton) {
+				this.cleanupAutoPositioning = autoUpdate(this.refButton, this.refPopover, () => {
+					this.alignPopover();
+				});
+			}
+		} else if (this.cleanupAutoPositioning) {
+			this.cleanupAutoPositioning();
+			this.cleanupAutoPositioning = undefined;
 		}
 	}
 
@@ -86,6 +104,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	public disconnectedCallback() {
 		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
 		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		this.cleanupAutoPositioning?.();
 	}
 
 	public render(): JSX.Element {
@@ -93,9 +112,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 			<div class="kol-popover-button">
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
+					_aria-controls="popover"
 					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this._ariaExpanded}
+					_ariaExpanded={this.popoverOpen}
+					_ariaHasPopup={'dialog'}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
@@ -147,11 +168,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 */
-	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
