@@ -18,6 +18,7 @@ const DEFAULT_SNAPSHOT_OPTIONS = {
 	fullPage: true,
 	maxDiffPixelRatio: 0,
 	scale: 'css', // 'css' or 'device'
+	timeout: 10000,
 };
 
 ROUTES.forEach((options, route) => {

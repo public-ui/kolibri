@@ -48,8 +48,12 @@ Add the following npm scripts to the theme's `package.json`:
 }
 ```
 
-- `THEME_MODULE` defines the relative path to the TypeScript module containing the the theme definitions. Without file extension.
-- `THEME_EXPERT` defines the name of the export within the the module. (e.g., `export const THEME_NAME = {/**/};`) Defaults to `default`.
+### Environment variables
+
+- `THEME_MODULE`: Define the relative path to the TypeScript module containing the theme definitions. Without file extension.
+- `THEME_EXPERT`: Define the name of the export within the module. (e.g., `export const THEME_NAME = {/**/};`) Defaults to `default`.
+- `KOLIBRI_VISUAL_TESTS_TIMEOUT`: Define the Playwright [test timeout](https://playwright.dev/docs/test-timeouts).
+- `KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT`: Define the Playwright [expect timeout](https://playwright.dev/docs/test-timeouts).
 
 Run the tests with `npm test`. The first time, this will create a new folder `snapshots` which is supposed to be committed to the repository.
 In the following runs, new screenshots will be compared to this reference.
