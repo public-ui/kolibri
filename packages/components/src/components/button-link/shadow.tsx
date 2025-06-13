@@ -9,6 +9,7 @@ import type {
 	IconsPropType,
 	IdPropType,
 	LabelWithExpertSlotPropType,
+	LinkVariantPropType,
 	NamePropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -56,10 +57,11 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_ariaExpanded={this._ariaExpanded}
 				_ariaSelected={this._ariaSelected}
 				_disabled={this._disabled}
-				_icons={this._icons}
 				_hideLabel={this._hideLabel}
+				_icons={this._icons}
 				_id={this._id}
 				_label={this._label}
+				_linkVariant={this._variant}
 				_name={this._name}
 				_on={this._on}
 				_role="link"
@@ -128,6 +130,11 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: LinkVariantPropType = 'inline';
 
 	/**
 	 * Defines the technical name of an input field.

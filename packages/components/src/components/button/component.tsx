@@ -12,11 +12,13 @@ import type {
 	IconsPropType,
 	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
+	LinkVariantPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { validateLinkVariant } from '../../schema';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
@@ -131,6 +133,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					class={clsx('kol-button', {
 						'kol-button--disabled': this.state._disabled === true,
 						[`kol-button--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
+						[`kol-button--${this.state._linkVariant as string}`]: this.state._linkVariant,
 						'kol-button--hide-label': this.state._hideLabel === true,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
@@ -239,6 +242,11 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _linkVariant?: LinkVariantPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -362,6 +370,11 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		});
 	}
 
+	@Watch('_linkVariant')
+	public validateLinkVariant(value?: LinkVariantPropType): void {
+		validateLinkVariant(this, value);
+	}
+
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
@@ -426,6 +439,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateIcons(this._icons);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
+		this.validateLinkVariant(this._linkVariant);
 		this.validateName(this._name);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
