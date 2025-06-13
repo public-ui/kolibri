@@ -2,6 +2,10 @@
 @use './rem' as *;
 
 @mixin kol-button($block-classname) {
+	:host {
+		--theme-visibility-delay: 0.5s;
+	}
+
 	.#{$block-classname} {
 		$root: &;
 
@@ -61,7 +65,7 @@
 		&--normal,
 		&--danger,
 		&--ghost {
-			&:not([disabled]):hover {
+			&:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -69,7 +73,7 @@
 		}
 
 		&--danger {
-			&:not([disabled]):hover {
+			&:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 			}
@@ -95,7 +99,7 @@
 			}
 
 			@at-root #{$root}--hide-label & {
-				padding: rem(12.8);
+				padding: rem(12);
 				width: unset;
 
 				.kol-span__label {
@@ -105,9 +109,10 @@
 
 			@at-root #{$root}:focus {
 				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}:disabled:hover & {
+			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
 				background-color: var(--text-background-color);
 				border-color: var(--text-border-color);
 				color: var(--text-color);

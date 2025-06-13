@@ -38,6 +38,6 @@ export default createConfig({
 		url: TEST_URL,
 		reuseExistingServer: false,
 		/* The builtin Stencil server sometimes fails to serve some assets which leads to intermittent test failures. Use a more stable server (without watcher) for CI: */
-		...(process.env.CI ? { command: `stencil build --dev && mv dist-e2e/kolibri dist-e2e/build && npx serve dist-e2e -p ${TEST_PORT} -L` } : {}),
+		...(process.env.CI ? { command: `stencil build --dev && mv dist/kolibri dist/build && npx serve dist -p ${TEST_PORT} -L` } : {}),
 	},
 });

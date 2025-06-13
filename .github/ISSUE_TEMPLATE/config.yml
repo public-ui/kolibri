@@ -1,3 +1,4 @@
+blank_issues_enabled: true
 contact_links:
   - name: Report a feature request
     url: https://github.com/public-ui/kolibri/discussions/new?category=ideas

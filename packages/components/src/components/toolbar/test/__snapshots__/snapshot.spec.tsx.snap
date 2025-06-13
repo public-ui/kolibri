@@ -1,9 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-toolbar should render with _label="Text" _items=[{"_label":"Button"},{"_href":"#","_label":"Link"}] 1`] = `
+exports[`kol-toolbar should render with _label="Label horizontal" _items=[{"_label":"Button"},{"_href":"#","_label":"Link"}] 1`] = `
 <kol-toolbar>
   <template shadowrootmode="open">
-    <div aria-label="Text" class="kol-toolbar" role="toolbar">
+    <div aria-label="Label horizontal" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
+      <kol-button-wc _label="Button" _tabindex="0" class="button kol-toolbar__item normal"></kol-button-wc>
+      <kol-link-wc _href="#" _label="Link" _role="button" _tabindex="-1" class="button kol-toolbar__item normal"></kol-link-wc>
+    </div>
+  </template>
+</kol-toolbar>
+`;
+
+exports[`kol-toolbar should render with _label="Label vertical" _items=[{"_label":"Button"},{"_href":"#","_label":"Link"}] _orientation="vertical" 1`] = `
+<kol-toolbar>
+  <template shadowrootmode="open">
+    <div aria-label="Label vertical" class="kol-toolbar kol-toolbar--orientation-vertical" role="toolbar">
       <kol-button-wc _label="Button" _tabindex="0" class="button kol-toolbar__item normal"></kol-button-wc>
       <kol-link-wc _href="#" _label="Link" _role="button" _tabindex="-1" class="button kol-toolbar__item normal"></kol-link-wc>
     </div>

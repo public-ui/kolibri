@@ -2,6 +2,7 @@ import type { Stringified } from '../../common';
 import type { PropHorizontalIcons } from '../../../props';
 import type { ButtonProps } from '../../../components';
 import type { InputTypeOnDefault, InputTypeOnOff } from '../types';
+import type { NumberString } from '../numberString';
 
 export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
 export type InputDateType = (typeof inputDateTypeOptions)[number];
@@ -19,7 +20,7 @@ export type OptionalInputProps<T> = {
 	readOnly: boolean;
 	required: boolean;
 	smartButton: Stringified<ButtonProps>;
-	step: number;
+	step: number | NumberString;
 	touched: boolean;
 	value: T | null;
 } & PropHorizontalIcons;

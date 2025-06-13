@@ -5,11 +5,6 @@
 	"projects": {
 		"angular": {
 			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				}
-			},
 			"root": "",
 			"sourceRoot": "src",
 			"prefix": "app",
@@ -22,9 +17,8 @@
 						"browser": "src/main.ts",
 						"polyfills": ["zone.js"],
 						"tsConfig": "tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.scss"],
+						"styles": ["src/styles.css"],
 						"scripts": []
 					},
 					"configurations": {
@@ -74,16 +68,15 @@
 					"options": {
 						"polyfills": ["zone.js", "zone.js/testing"],
 						"tsConfig": "tsconfig.spec.json",
-						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.scss"],
+						"styles": ["src/styles.css"],
 						"scripts": []
 					}
 				}
 			}
 		}
-  },
-  "cli": {
-    "analytics": false
-  }
+	},
+	"cli": {
+		"analytics": false
+	}
 }

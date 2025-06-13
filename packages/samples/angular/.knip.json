@@ -1,0 +1,7 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": ["src/main.ts"],
+	"ignore": [],
+	"ignoreDependencies": ["@public-ui/angular-v17", "@public-ui/components", "@public-ui/themes", "@tailwindcss/postcss", "adopted-style-sheets"],
+	"project": ["src/**/*.{js,ts}"]
+}

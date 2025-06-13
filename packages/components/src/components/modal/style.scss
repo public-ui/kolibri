@@ -8,6 +8,7 @@
 		padding: 0;
 		font-size: rem(16);
 		position: relative;
+		min-height: var(--a11y-min-size);
 
 		&::backdrop {
 			background-color: rgba(0, 0, 0, 0.33);

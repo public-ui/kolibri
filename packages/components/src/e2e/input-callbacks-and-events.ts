@@ -7,6 +7,7 @@ import { INPUTS_SELECTOR } from './utils/inputsSelector';
 import { Callback } from '../schema/enums';
 import { KolEvent } from '../utils/events';
 
+/* @todo needs refactoring (https://github.com/public-ui/kolibri/issues/7791) */
 const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefault } & (HTMLElement | SVGElement)>(
 	componentName: string,
 	testValue: unknown = 'Test Input',
@@ -15,17 +16,18 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 	additionalProperties: string = '',
 	selectInput?: (page: Page & E2EPage) => Locator,
 	equalityCheck: 'toBe' | 'toEqual' = 'toBe',
+	expectedValue?: unknown,
 ) => {
 	test.describe('Callbacks and DOM events', () => {
-		const EVENTS: [string, Callback, KolEvent, unknown?][] = [
+		const EVENTS: [string, Callback, KolEvent, unknown?, unknown?][] = [
 			['click', Callback.onClick, KolEvent.click],
 			['focus', Callback.onFocus, KolEvent.focus],
 			['blur', Callback.onBlur, KolEvent.blur],
-			['input', Callback.onInput, KolEvent.input, testValue],
-			['change', Callback.onChange, KolEvent.change, testValue],
+			['input', Callback.onInput, KolEvent.input, testValue, expectedValue ?? testValue],
+			['change', Callback.onChange, KolEvent.change, testValue, expectedValue ?? testValue],
 		];
 
-		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEventName, callbackName, kolEventName, testValue]) => {
+		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEventName, callbackName, kolEventName, testValue, expectedValue]) => {
 			test(`should call ${callbackName} callback when internal input emits ${nativeEventName}`, async ({ page, browserName }) => {
 				/* See https://github.com/microsoft/playwright/issues/33864 */
 				test.skip(
@@ -65,8 +67,8 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 				await page.waitForChanges();
 				await input.dispatchEvent(nativeEventName);
 
-				await expect(callbackPromise).resolves[equalityCheck](testValue);
-				await expect(eventPromise).resolves[equalityCheck](testValue ?? null); // For no value, callbacks use `undefined`, the event detail is `null`.
+				await expect(callbackPromise).resolves[equalityCheck](expectedValue);
+				await expect(eventPromise).resolves[equalityCheck](expectedValue ?? null); // For no value, callbacks use `undefined`, the event detail is `null`.
 			});
 		});
 	});

@@ -42,7 +42,7 @@ export class SingleSelectController extends InputIconController implements Singl
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateValue(value?: StencilUnknown): void {
+	public validateValue(value: StencilUnknown): void {
 		watchValidator(this.component, '_value', (v) => v !== undefined, new Set([`StencilUnknown`]), value);
 	}
 

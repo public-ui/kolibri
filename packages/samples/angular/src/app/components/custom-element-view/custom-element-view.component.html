@@ -1,0 +1,6 @@
+<h1>Custom elements</h1>
+<div class="mt-10 flex flex-col w-1/3 gap-5">
+	<custom-input-text *ngFor="let input of numberOfInputs" [label]="'TextInput #' + input"></custom-input-text>
+	<custom-input-number [shadow]="true" *ngFor="let input of numberOfInputs" [label]="'NumberInput #' + input"></custom-input-number>
+	<custom-checkbox *ngFor="let check of numberOfInputs" [label]="'Checkbox #' + check"></custom-checkbox>
+</div>

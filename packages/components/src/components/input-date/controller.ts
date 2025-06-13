@@ -5,10 +5,11 @@ import type {
 	InputTypeOnDefault,
 	InputTypeOnOff,
 	Iso8601,
+	NumberString,
 	ReadOnlyPropType,
 	SuggestionsPropType,
 } from '../../schema';
-import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchNumber, watchValidator } from '../../schema';
+import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -193,8 +194,8 @@ export class InputDateController extends InputIconController implements InputDat
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateStep(value?: number): void {
-		watchNumber(this.component, '_step', value);
+	public validateStep(value?: number | NumberString): void {
+		this.validateNumber('_step', value);
 	}
 
 	public validateType(value?: InputDateType): void {

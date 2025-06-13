@@ -2,20 +2,20 @@
 
 exports[`ToastItemFc should render with basic props and status 1`] = `
 <div class="kol-toast-item kol-toast-item--settled">
-  <div class="kol-alert kol-alert--card kol-alert--hasCloser kol-alert--info kol-toast-item__alert" role="alert">
+  <div class="kol-alert kol-alert--hasCloser kol-alert--type-info kol-alert--variant-card kol-toast-item__alert" role="status">
     <div class="kol-alert__container">
       <span class="visually-hidden">
         kol-info
       </span>
-      <kol-icon _icons="codicon codicon-info" _label="" class="kol-alert__heading-icon"></kol-icon>
+      <kol-icon _icons="codicon codicon-info" _label="" class="kol-alert__icon"></kol-icon>
       <div class="kol-alert__container-content">
-        <strong class="kol-alert__heading kol-headline kol-headline--single kol-headline--strong">
+        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
           Test Toast
         </strong>
       </div>
-      <kol-button-wc _ariadescription="Test Toast" _hidelabel="" _label="kol-close-alert" _tooltipalign="left" class="close kol-alert__close-button" data-testid="alert-close-button"></kol-button-wc>
+      <kol-button-wc _ariadescription="Test Toast" _hidelabel="" _label="kol-close-alert" _tooltipalign="left" class="kol-alert__closer" data-testid="alert-close-button"></kol-button-wc>
     </div>
-    <div class="kol-alert__content">
+    <div aria-describedby="heading" class="kol-alert__content">
       <div>
         Test Description
       </div>

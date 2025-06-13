@@ -15,7 +15,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
@@ -142,7 +142,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -167,7 +167,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
@@ -193,7 +193,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -239,7 +239,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number">
           </div>
         </div>
       </div>
@@ -263,7 +263,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -287,7 +287,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
@@ -314,7 +314,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -342,7 +342,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -370,7 +370,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -398,7 +398,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -432,7 +432,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -466,7 +466,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -496,7 +496,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -527,7 +527,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -555,7 +555,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -583,7 +583,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -612,7 +612,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -641,7 +641,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -672,7 +672,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -700,7 +700,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
               <option value="1"></option>
               <option value="2"></option>
@@ -728,7 +728,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>
@@ -751,7 +751,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="" min="" name="field" placeholder="Hier steht ein Platzhaltertext" type="number" value="">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
         </div>
       </div>

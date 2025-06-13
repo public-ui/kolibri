@@ -2,7 +2,7 @@
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": ["src/index.ts"],
 	"ignoreBinaries": [],
-	"ignoreDependencies": ["@public-ui/sample-react", "serve", "axe-playwright"],
+	"ignoreDependencies": ["@playwright/test", "@public-ui/sample-react", "serve", "axe-playwright"],
 	"project": ["src/**/*.ts"],
 	"rules": {
 		"classMembers": "warn"

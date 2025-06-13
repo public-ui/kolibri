@@ -3,7 +3,7 @@ name: Sync to OpenCoDE
 on:
   workflow_dispatch:
   schedule:
-    - cron: '* 4-20/4 * * *' # von 6 bis 22 Uhr
+    - cron: '0 4-20 * * *' # von 6 bis 22 Uhr
 
 jobs:
   sync:

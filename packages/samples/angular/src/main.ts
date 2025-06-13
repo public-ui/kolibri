@@ -1,9 +1,7 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT } from '@public-ui/theme-default';
-import { AppComponent } from './app/app.component';
+import '@public-ui/components';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-register(DEFAULT, defineCustomElements)
-	.then(() => bootstrapApplication(AppComponent))
-	.catch(console.warn);
+platformBrowserDynamic()
+	.bootstrapModule(AppModule)
+	.catch((err) => console.error(err));

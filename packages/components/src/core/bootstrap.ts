@@ -15,9 +15,15 @@ type KoliBriOptions = RegisterOptions & {
 	 * This option allows you to transform the component tag names.
 	 */
 	transformTagName?: (tagName: string) => string;
+
+	/**
+	 * When enabled, all input fields will reflect their current value to the host element, making it accessible outside the shadow DOM.
+	 */
+	reflectInputValues?: boolean;
 };
 
 let initialized = false;
+let options: KoliBriOptions | undefined;
 
 export const bootstrap = async (
 	themes:
@@ -25,19 +31,21 @@ export const bootstrap = async (
 		| Generic.Theming.RegisterPatch<string, string, string>[]
 		| Set<Generic.Theming.RegisterPatch<string, string, string>>,
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
-	options?: KoliBriOptions,
+	koliBriOptions?: KoliBriOptions,
 ): Promise<void[]> => {
-	setDevMode(options?.environment === 'development');
+	setDevMode(koliBriOptions?.environment === 'development');
 
-	initializeI18n(options?.translation?.name ?? 'de', options?.translations);
-	if (options?.transformTagName) {
-		setCustomTagNames(options?.transformTagName);
+	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);
+	if (koliBriOptions?.transformTagName) {
+		setCustomTagNames(koliBriOptions?.transformTagName);
 	}
-	const coreRegisterReturnValue = await coreRegister(themes, loaders, options);
+	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
+	options = koliBriOptions;
 
 	return coreRegisterReturnValue;
 };
 
 export const register = bootstrap;
 export const isInitialized = () => initialized;
+export const getOptions = () => options;

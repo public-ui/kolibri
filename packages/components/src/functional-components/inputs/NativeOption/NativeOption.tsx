@@ -1,11 +1,11 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { W3CInputValue } from '../../../schema';
+import type { StencilUnknown, W3CInputValue } from '../../../schema';
 import clsx from 'clsx';
 
 export type NativeOptionProps = Omit<JSXBase.OptionHTMLAttributes<HTMLOptionElement>, 'value' | 'label'> & {
-	selectedValue?: W3CInputValue | W3CInputValue[];
-	value: W3CInputValue;
+	selectedValue?: StencilUnknown | StencilUnknown[];
+	value: StencilUnknown;
 	label: W3CInputValue;
 	index?: string | number;
 	baseClassName?: 'kol-select' | 'kol-datalist';
@@ -22,13 +22,13 @@ const NativeOptionFc: FC<NativeOptionProps> = ({
 	disabled,
 	...other
 }) => {
-	if (!selectedValue) {
+	if (selectedValue === undefined) {
 		selectedValue = [];
 	} else if (!Array.isArray(selectedValue)) {
 		selectedValue = [selectedValue];
 	}
 
-	const isSelected = selected || selectedValue.includes(value);
+	const isSelected = selected || (selectedValue as StencilUnknown[]).includes(value);
 
 	return (
 		<option
@@ -43,7 +43,7 @@ const NativeOptionFc: FC<NativeOptionProps> = ({
 			selected={isSelected}
 			disabled={disabled}
 			aria-hidden={disabled ? 'true' : undefined} //See Known Issue: https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md
-			value={index || value}
+			value={index}
 			{...other}
 		>
 			{label}

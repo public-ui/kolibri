@@ -190,7 +190,21 @@
       "kol-input-text-refactor-property-error-to-msg": true,
       "kol-select-refactor-property-error-to-msg": true,
       "kol-single-select-refactor-property-error-to-msg": true,
-      "kol-textarea-refactor-property-error-to-msg": true
+      "kol-textarea-refactor-property-error-to-msg": true,
+      "kol-combobox-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-checkbox-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-color-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-date-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-email-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-file-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-number-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-password-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-radio-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-range-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-input-text-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-select-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-single-select-rename-property-_hide-error-to-_hide-msg": true,
+      "kol-textarea-rename-property-_hide-error-to-_hide-msg": true
     }
   }
 }

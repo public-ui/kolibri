@@ -102,7 +102,7 @@ export class KolPagination implements PaginationAPI {
 
 		return (
 			<Host class="kol-pagination">
-				<nav aria-label={this.state._label}>
+				<nav class="kol-pagination__navigation" aria-label={this.state._label}>
 					<ul class="kol-pagination__navigation-list">
 						{this.state._hasButtons.first && (
 							<li>
@@ -169,6 +169,7 @@ export class KolPagination implements PaginationAPI {
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<KolSelectTag
+						class="kol-pagination__page-size-select"
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
 						_label={translate('kol-entries-per-site')}

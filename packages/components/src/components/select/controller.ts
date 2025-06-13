@@ -6,6 +6,7 @@ import type {
 	SelectOption,
 	SelectProps,
 	SelectWatches,
+	StencilUnknown,
 	Stringified,
 	W3CInputValue,
 } from '../../schema';
@@ -104,7 +105,7 @@ export class SelectController extends InputIconController implements SelectWatch
 		validateRows(this.component, value);
 	}
 
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
+	public validateValue(value?: Stringified<StencilUnknown[]>): void {
 		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,

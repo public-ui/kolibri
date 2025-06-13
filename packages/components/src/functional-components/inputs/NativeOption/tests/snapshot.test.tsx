@@ -8,25 +8,13 @@ describe('NativeOptionFc', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
-	it('should render an option tag with the correct value and label', async () => {
-		const page = await renderFunctionalComponentToSpecPage(() => <NativeOptionFc value="testValue" label="testLabel" />);
+	it('should render an option tag with the correct index and label', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <NativeOptionFc value="testValue" index={1} label="testLabel" />);
 
 		expect(page.root).toMatchSnapshot();
 
 		const option = page.root;
 		expect(option?.tagName).toBe('OPTION');
-		expect(option?.getAttribute('value')).toBe('testValue');
-		expect(option?.textContent).toBe('testLabel');
-	});
-
-	it('should render an option tag with the correct index as value and label', async () => {
-		const page = await renderFunctionalComponentToSpecPage(() => <NativeOptionFc index={-1} value="testValue" label="testLabel" />);
-
-		expect(page.root).toMatchSnapshot();
-
-		const option = page.root;
-		expect(option?.tagName).toBe('OPTION');
-		expect(option?.getAttribute('value')).toBe('-1');
 		expect(option?.textContent).toBe('testLabel');
 	});
 

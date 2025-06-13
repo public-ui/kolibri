@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolAlertFc should render 1`] = `
-<div class="kol-alert kol-alert--default kol-alert--msg">
+<div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
   <div class="kol-alert__container">
     <span class="visually-hidden">
       kol-message
     </span>
-    <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__heading-icon"></kol-icon>
+    <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
     <div class="kol-alert__container-content">
-      <div class="kol-alert__content"></div>
+      <span class="kol-alert__content"></span>
     </div>
   </div>
 </div>

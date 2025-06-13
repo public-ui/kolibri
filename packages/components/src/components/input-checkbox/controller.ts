@@ -66,7 +66,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		validateLabelAlign(this.component, value);
 	}
 
-	public validateValue(value?: Stringified<StencilUnknown>): void {
+	public validateValue(value: StencilUnknown): void {
 		setState(this.component, '_value', value);
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}

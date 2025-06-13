@@ -1,4 +1,6 @@
+import type { StencilUnknown } from '../types';
+
 export interface EventDetail {
 	name: string;
-	value: string;
+	value: StencilUnknown;
 }

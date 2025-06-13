@@ -9,7 +9,7 @@
 		outline-color: var(--color-danger);
 	}
 
-	.kol-alert--error {
+	.kol-alert--type-error {
 		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}
 }

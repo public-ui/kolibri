@@ -12,10 +12,8 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	Orientation,
 	RadioOption,
 	RadioOptionsPropType,
-	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -28,7 +26,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../functional-component-wrappers/RadioStateWrapper';
+import type { OrientationPropType } from '../../schema/props/orientation';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -52,7 +51,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown | undefined> {
+	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
@@ -107,40 +106,34 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return obj;
 	}
 
-	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): InputStateWrapperProps {
-		const obj: InputStateWrapperProps = {
+	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): RadioStateWrapperProps {
+		return {
 			state: this.state,
-			id: id,
-			ref: this.state._value === option.value ? this.catchRef : undefined,
-			class: clsx('kol-input-radio', {
-				['kol-input-radio--disabled']: Boolean(this.state._disabled || option.disabled),
-			}),
-			'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
-			type: 'radio',
-			name: this.state._name || this.state._id,
-			value: `-${index}`,
-			checked: selected,
+			inputProps: {
+				id: id,
+				ref: this.state._value === option.value ? this.catchRef : undefined,
+				'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
+				type: 'radio',
+				name: this.state._name || this.state._id,
+				value: `-${index}`,
+				checked: selected,
+				disabled: option.disabled,
 
-			...this.controller.onFacade,
-			onChange: this.onChange,
-			onClick: undefined, // onClick is not needed since onChange already triggers the correct event
-			onInput: this.onInput,
-			onKeyDown: this.onKeyDown.bind(this),
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
+				...this.controller.onFacade,
+				onChange: this.onChange,
+				onClick: undefined, // onClick is not needed since onChange already triggers the correct event
+				onInput: this.onInput,
+				onKeyDown: this.onKeyDown.bind(this),
+				onFocus: (event: Event) => {
+					this.controller.onFacade.onFocus(event);
+					this.inputHasFocus = true;
+				},
+				onBlur: (event: Event) => {
+					this.controller.onFacade.onBlur(event);
+					this.inputHasFocus = false;
+				},
 			},
 		};
-
-		if (option.disabled) {
-			obj.disabled = true;
-		}
-
-		return obj;
 	}
 
 	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
@@ -149,17 +142,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 		return (
 			<KolFieldControlStateWrapperFc key={customId} {...this.getOptionProps(option, customId)}>
-				<KolInputStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
+				<KolRadioStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
 			</KolFieldControlStateWrapperFc>
 		);
 	}
 
 	private readonly controller: InputRadioController;
-
-	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
-	 */
-	@Prop() public _accessKey?: string;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -218,18 +206,13 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: Orientation = 'vertical';
+	@Prop() public _orientation?: OrientationPropType = 'vertical';
 
 	/**
 	 * Makes the input element required.
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Adds a visual short key hint to the component.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -252,7 +235,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Defines the value of the input.
 	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
+	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	@State() public state: InputRadioStates = {
 		_hideMsg: false,
@@ -270,11 +253,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	private showAsAlert(): boolean {
 		return Boolean(this.state._touched) && !this.inputHasFocus;
-	}
-
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		this.controller.validateAccessKey(value);
 	}
 
 	@Watch('_tooltipAlign')
@@ -333,18 +311,13 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	@Watch('_orientation')
-	public validateOrientation(value?: Orientation): void {
+	public validateOrientation(value?: OrientationPropType): void {
 		this.controller.validateOrientation(value);
 	}
 
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
-	}
-
-	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		this.controller.validateShortKey(value);
 	}
 
 	@Watch('_syncValueBySelector')
@@ -358,7 +331,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown>): void {
+	public validateValue(value: StencilUnknown): void {
 		this.controller.validateValue(value);
 	}
 

@@ -28,7 +28,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
-import { EventDetail } from '../../schema/interfaces/EventDetail';
+import type { EventDetail } from '../../schema/interfaces/EventDetail';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -50,7 +50,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
+	public async getValue(): Promise<string> {
 		return this.state._value;
 	}
 
@@ -235,6 +235,8 @@ export class KolCombobox implements ComboboxAPI {
 										onClick={() => {
 											this.selectOption(option as string);
 											this.toggleListbox();
+											this._isOpen = false;
+											this._hasOpened = false;
 										}}
 										onMouseOver={() => {
 											if (!this.blockSuggestionMouseOver) {
@@ -287,7 +289,7 @@ export class KolCombobox implements ComboboxAPI {
 			}
 			case 'Tab':
 				if (this._isOpen) {
-					this._isOpen = !this._isOpen;
+					this._isOpen = false;
 					this.refInput?.focus();
 				}
 				break;
@@ -295,13 +297,20 @@ export class KolCombobox implements ComboboxAPI {
 			case 'Escape': {
 				this._hasOpened = false;
 				this._isOpen = false;
-				handleEvent(false);
+				event.preventDefault();
 				this.refInput?.focus();
 				break;
 			}
 			case 'NumpadEnter':
 			case 'Enter': {
-				this.toggleListbox();
+				if (this._isOpen && this._focusedOptionIndex >= 0) {
+					this._filteredSuggestions && this.selectOption(this._filteredSuggestions[this._focusedOptionIndex] as string);
+					this._isOpen = false;
+					this._hasOpened = false;
+				} else {
+					this.toggleListbox();
+				}
+				event.preventDefault();
 				break;
 			}
 			case 'Home': {
