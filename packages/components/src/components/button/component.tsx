@@ -245,6 +245,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 * @internal
 	 */
 	@Prop() public _linkVariant?: LinkVariantPropType;
 
