@@ -1,7 +1,7 @@
+import { setTagNameTransformer } from '@public-ui/react';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
-import { setTagNameTransformer } from '@public-ui/react';
 
 import { bootstrap, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
@@ -129,7 +129,7 @@ void (async () => {
 		const root = createRoot(htmlDivElement);
 		root.render(
 			<StrictMode>
-				<Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+				<Router>
 					<App />
 				</Router>
 			</StrictMode>,

@@ -27,7 +27,7 @@
 		&--variant-card {
 			border-radius: var(--border-radius);
 			border: var(--border-width) solid var(--alert-accent-color);
-			filter: drop-shadow(0 rem(2) rem(4) rgba(8, 35, 48, 0.24));
+			filter: drop-shadow(0 rem(2) rem(4) rgb(8, 35, 48, 0.24));
 			flex-direction: column;
 		}
 
