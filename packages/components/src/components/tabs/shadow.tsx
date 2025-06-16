@@ -33,6 +33,8 @@ import { KolButtonWcTag } from '../../core/component-names';
 import { KeyboardKey } from '../../schema/enums';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import clsx from 'clsx';
+import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
+import { validateHasCreateButton } from '../../schema/props/has-create-button';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -223,6 +225,11 @@ export class KolTabs implements TabsAPI {
 	@Prop() public _behavior?: TabBehaviorPropType;
 
 	/**
+	 * Defines whether the element has a create button.
+	 */
+	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
@@ -304,6 +311,11 @@ export class KolTabs implements TabsAPI {
 	@Watch('_behavior')
 	public validateBehavior(value?: TabBehaviorPropType) {
 		validateTabBehavior(this, value);
+	}
+
+	@Watch('_hasCreateButton')
+	public validateHasCreateButton(value?: HasCreateButtonPropType) {
+		validateHasCreateButton(this, value);
 	}
 
 	@Watch('_label')
@@ -390,6 +402,7 @@ export class KolTabs implements TabsAPI {
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
 		this.validateBehavior(this._behavior);
+		this.validateHasCreateButton(this._hasCreateButton);
 	}
 
 	private refreshTabPanels = () => {

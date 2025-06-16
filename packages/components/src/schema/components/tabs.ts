@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { Callback } from '../enums';
 import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropTabBehavior, PropTooltipAlign } from '../props';
 import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
+import type { PropHasCreateButton } from '../props/has-create-button';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:
@@ -34,6 +35,7 @@ type OptionalProps = {
 	on: KoliBriTabsCallbacks;
 	selected: number;
 } & PropAlign &
+	PropHasCreateButton &
 	PropTabBehavior;
 
 type RequiredStates = {
@@ -43,7 +45,8 @@ type RequiredStates = {
 	PropAlign;
 type OptionalStates = {
 	on: KoliBriTabsCallbacks;
-} & PropTabBehavior;
+} & PropTabBehavior &
+	PropHasCreateButton;
 
 export type TabsProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TabsStates = Generic.Element.Members<RequiredStates, OptionalStates>;
