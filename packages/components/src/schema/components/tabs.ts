@@ -6,12 +6,7 @@ import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, String
 import type { PropHasCreateButton } from '../props/has-create-button';
 
 export type KoliBriTabsCallbacks = {
-	onCreate?:
-		| EventCallback<Event>
-		| {
-				label: string;
-				callback: EventCallback<Event>;
-		  };
+	onCreate?: EventCallback<Event>;
 } & {
 	[Callback.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
