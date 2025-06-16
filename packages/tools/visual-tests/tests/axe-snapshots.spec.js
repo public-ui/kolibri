@@ -82,7 +82,7 @@ ROUTES.forEach((options, route) => {
 			{
 				outputDirPath: outputPath.replace(/\/[^/]+$/, ''),
 				outputDir: `axe-${themeName}`,
-				reportFileName: `${route.replace('/', '-')}.html`,
+				reportFileName: `${route.replace(/[/?]/g, '-')}.html`,
 			},
 		);
 	});
