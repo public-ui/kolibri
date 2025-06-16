@@ -739,6 +739,13 @@ ROUTES.set('tabs/basic', {
 		},
 	},
 });
+ROUTES.set('tabs/create-button', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('tabs/icons-only', {
 	snapshot: {
 		viewportSize: {
