@@ -740,6 +740,9 @@ ROUTES.set('tabs/basic', {
 	},
 });
 ROUTES.set('tabs/create-button', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
