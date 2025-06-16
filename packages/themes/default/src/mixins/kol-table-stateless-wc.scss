@@ -35,14 +35,18 @@
 			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
 		}
 
-		&__focus-element {
-			&:focus {
+		&__scroll-container {
+			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
 				outline-color: var(--color-primary-variant);
 				outline-offset: 2px;
 				outline-style: solid;
 				outline-width: 3px;
 				transition: outline-offset 0.2s linear;
 			}
+		}
+
+		&__focus-element {
+			outline: none; // override global styles
 		}
 
 		&__cell {
