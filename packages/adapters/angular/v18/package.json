@@ -80,7 +80,7 @@
 		"zone.js": "0.14.10"
 	},
 	"peerDependencies": {
-		"@angular/core": "18.2.13",
+		"@angular/core": "^18.2.13",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [
