@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { checkA11y, injectAxe } from 'axe-playwright';
 import { ROUTES } from './sample-app.routes.js';
+import process from 'process';
 
 const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
 const rename = (snapshotName) => {
@@ -38,7 +39,7 @@ test.use({
 
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary axe tests
-	if (options?.axe?.skip === true) {
+	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots')) {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
