@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolButtonLink } from '@public-ui/react';
+import { KolButtonLink, KolHeading } from '@public-ui/react';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -21,6 +21,8 @@ export const ButtonLinkBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<section className="text-base">
+				<KolHeading _level={2} _label="Button-Link with variant 'inline'" />
+
 				<p>
 					In this paragraph, a link is inserted that contains no additional attributes. <KolButtonLink _label="Simple Link" /> It is rendered by default as an{' '}
 					<strong>inline element</strong>.
@@ -35,14 +37,17 @@ export const ButtonLinkBasic: FC = () => {
 					<KolButtonLink style={{ display: 'block' }} _label="Simple Link" />
 					Therefore, I go over the entire width of the parent element to create a line break.
 				</p>
+
+				<KolHeading _level={2} _label="Button-Link with variant 'standalone'" />
+
 				<p>
-					<KolButtonLink _label="Disabled ButtonLink" _disabled />
+					<KolButtonLink _label="Disabled ButtonLink" _disabled _variant="standalone" />
 				</p>
 				<p>
-					<KolButtonLink _label="With access key" _accessKey="c" _on={dummyEventHandler} />
+					<KolButtonLink _label="With access key" _accessKey="c" _on={dummyEventHandler} _variant="standalone" />
 				</p>
 				<p>
-					<KolButtonLink _label="Disabled ButtonLink" _shortKey="s" />
+					<KolButtonLink _label="Disabled ButtonLink" _shortKey="s" _variant="standalone" />
 				</p>
 			</section>
 		</>

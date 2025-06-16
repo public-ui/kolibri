@@ -2,6 +2,8 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	AriaExpandedPropType,
+	ButtonVariantPropType,
+	LinkVariantPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaControls,
@@ -47,14 +49,17 @@ export type OptionalButtonProps = {
 	PropTooltipAlign;
 
 export type RequiredButtonStates = RequiredButtonProps &
-	PropButtonType &
-	PropButtonVariant & {
+	PropButtonType & {
 		icons: KoliBriAllIcons;
 	};
-export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates>;
+export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates> & {
+	buttonVariant: ButtonVariantPropType;
+	linkVariant: LinkVariantPropType;
+};
 
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 export type ButtonAPI = Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates>;
 
 export type InternalButtonProps = RequiredButtonProps & OptionalButtonProps;
+export type InternalButtonAPI = Omit<ButtonAPI, 'validateVariant'>;
