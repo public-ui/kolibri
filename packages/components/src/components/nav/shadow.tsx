@@ -253,7 +253,7 @@ export class KolNav implements NavAPI {
 								},
 							}}
 							_tooltipAlign="right"
-							_variant="ghost"
+							_buttonVariant="ghost"
 						></KolButtonWcTag>
 					</div>
 				)}

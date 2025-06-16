@@ -41,7 +41,7 @@ jobs:
         run: cp packages/tools/benchmark-tests/benchmark-result.json packages/tools/benchmark-tests/benchmark-baseline.json
 
       - name: Commit and push updated baseline
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: 'chore: update benchmark-baseline.json [ci skip]'
           file_pattern: 'packages/tools/benchmark-tests/benchmark-baseline.json'

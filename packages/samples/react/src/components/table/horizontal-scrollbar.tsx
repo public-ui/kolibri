@@ -36,7 +36,7 @@ export const TableHorizontalScrollbar: FC = () => {
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar."
-					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
+					_minWidth={hasWidthRestriction ? '600px' : '300px'}
 					_headers={HEADERS}
 					_data={DATA}
 					className="block"
@@ -47,7 +47,7 @@ export const TableHorizontalScrollbar: FC = () => {
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
-					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
+					_minWidth={hasWidthRestriction ? '600px' : '300px'}
 					_headers={HEADERS}
 					_data={[]}
 					className="block"

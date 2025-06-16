@@ -86,7 +86,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_tooltipAlign={this._tooltipAlign}
 						_type={this._type}
 						_value={this._value}
-						_variant={this._variant}
+						_buttonVariant={this._variant}
 					></KolButtonWcTag>
 					<div class="kol-split-button__horizontal-line"></div>
 					<KolButtonWcTag
