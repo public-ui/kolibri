@@ -72,10 +72,10 @@
 			order: 4;
 			@include kol-typography-hint;
 		}
-	}
 
-	:not(.disabled) .input:hover {
-		border-color: var(--color-primary);
+		&:not(.disabled) .input:hover {
+			border-color: var(--color-primary);
+		}
 	}
 
 	.required label > span::after {
