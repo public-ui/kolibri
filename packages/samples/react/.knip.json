@@ -1,8 +1,16 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["src/main.ts"],
-	"ignore": ["src/assets/**", "unocss.config.ts"],
-	"ignoreBinaries": ["cross-env", "webpack", "prettier", "eslint"],
+	"ignore": [
+		"src/assets/**",
+		"src/scenarios/appointment-form/AppointmentForm.tsx",
+		"src/scenarios/appointment-form/appointmentService.ts",
+		"src/scenarios/appointment-form/AvailableAppointmentsForm.tsx",
+		"src/scenarios/appointment-form/DistrictForm.tsx",
+		"src/scenarios/appointment-form/formUtils.ts",
+		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
+		"src/scenarios/appointment-form/Summary.tsx"
+	],
+	"ignoreBinaries": ["cross-env", "eslint", "prettier", "webpack"],
 	"ignoreDependencies": [
 		"@leanup/stack",
 		"@leanup/stack-react",
