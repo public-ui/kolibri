@@ -1,6 +1,5 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["src/main.ts"],
 	"ignore": [
 		"src/assets/**",
 		"src/scenarios/appointment-form/AppointmentForm.tsx",
@@ -9,9 +8,9 @@
 		"src/scenarios/appointment-form/DistrictForm.tsx",
 		"src/scenarios/appointment-form/formUtils.ts",
 		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
-		"src/scenarios/appointment-form/Summary.tsx",
-		"unocss.config.ts"
+		"src/scenarios/appointment-form/Summary.tsx"
 	],
+
 	"ignoreDependencies": [
 		"@leanup/stack-webpack",
 		"@public-ui/components",
