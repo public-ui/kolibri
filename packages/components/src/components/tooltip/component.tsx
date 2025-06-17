@@ -2,11 +2,15 @@ import { autoUpdate } from '@floating-ui/dom';
 import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
 import { getDocument, validateBadgeText, validateAlign, validateId, validateLabel } from '../../schema';
 import type { JSX } from '@stencil/core';
+import { Method } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { KolSpanFc } from '../../functional-components';
+
+// Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
+const TOOLTIP_DELAY = 300;
 
 /**
  * @internal
@@ -21,8 +25,6 @@ export class KolTooltipWc implements TooltipAPI {
 	private arrowElement?: HTMLDivElement;
 	private previousSibling?: Element | null;
 	private tooltipElement?: HTMLDivElement;
-	private hasFocusIn = false;
-	private hasMouseIn = false;
 
 	private cleanupAutoPositioning?: () => void;
 
@@ -51,7 +53,26 @@ export class KolTooltipWc implements TooltipAPI {
 		}
 	};
 
-	private hideTooltip = (): void => {
+	private showTooltipTimeout?: ReturnType<typeof setTimeout>;
+	private showTooltipWithDelay = (): void => {
+		clearTimeout(this.showTooltipTimeout);
+		this.showTooltipTimeout = setTimeout(() => {
+			this.showTooltip();
+		}, TOOLTIP_DELAY);
+	};
+
+	private hideTooltipTimeout?: ReturnType<typeof setTimeout>;
+	private hideTooltipWithDelay = (): void => {
+		clearTimeout(this.hideTooltipTimeout);
+		this.hideTooltipTimeout = setTimeout(() => {
+			void this.hideTooltip();
+		}, TOOLTIP_DELAY);
+	};
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hideTooltip() {
+		clearTimeout(this.showTooltipTimeout); // Cancel scheduled tooltips
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
 			this.tooltipElement.style.setProperty('display', 'none');
@@ -62,29 +83,25 @@ export class KolTooltipWc implements TooltipAPI {
 			}
 		}
 		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
-	};
+	}
 
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
-			this.hideTooltip();
+			void this.hideTooltip();
 		}
 	};
 
 	private handleMouseEnter() {
-		this.hasMouseIn = true;
-		this.showOrHideTooltip();
+		this.showTooltipWithDelay();
 	}
 	private handleMouseleave() {
-		this.hasMouseIn = false;
-		this.showOrHideTooltip();
+		this.hideTooltipWithDelay();
 	}
 	private handleFocusIn() {
-		this.hasFocusIn = true;
-		this.showOrHideTooltip();
+		this.showTooltipWithDelay();
 	}
 	private handleFocusout() {
-		this.hasFocusIn = false;
-		this.showOrHideTooltip();
+		this.hideTooltipWithDelay();
 	}
 
 	private addListeners = (el: Element): void => {
@@ -182,20 +199,6 @@ export class KolTooltipWc implements TooltipAPI {
 			required: true,
 		});
 	}
-
-	private overFocusTimeout?: ReturnType<typeof setTimeout>;
-
-	private showOrHideTooltip = (): void => {
-		clearTimeout(this.overFocusTimeout);
-		this.overFocusTimeout = setTimeout(() => {
-			if (this.hasMouseIn || this.hasFocusIn) {
-				this.showTooltip();
-			} else {
-				this.hideTooltip();
-			}
-			// Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
-		}, 300);
-	};
 
 	public componentWillLoad(): void {
 		this.validateBadgeText(this._badgeText);
