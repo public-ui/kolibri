@@ -3,10 +3,10 @@
 exports[`kol-abbr should render with _label="Text" 1`] = `
 <kol-abbr class="kol-abbr">
   <template shadowrootmode="open">
-    <abbr>
+    <abbr tabindex="0">
       <slot></slot>
     </abbr>
-    (Text)
+    <kol-tooltip-wc aria-hidden="true" _label="Text"></kol-tooltip-wc>
   </template>
 </kol-abbr>
 `;

@@ -21,7 +21,6 @@ The following components have been removed:
 
 ### kol-abbr
 
-- Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
 ### kol-alert
