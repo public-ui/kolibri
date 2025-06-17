@@ -137,25 +137,25 @@ export default defineConfig({
 
 		[
 			/^mt$/,
-			([, d]) => ({
+			() => ({
 				'margin-top': pxValueToRem(16),
 			}),
 		],
 		[
 			/^ml$/,
-			([, d]) => ({
+			() => ({
 				'margin-left': pxValueToRem(16),
 			}),
 		],
 		[
 			/^mr$/,
-			([, d]) => ({
+			() => ({
 				'margin-right': pxValueToRem(16),
 			}),
 		],
 		[
 			/^mb$/,
-			([, d]) => ({
+			() => ({
 				'margin-bottom': pxValueToRem(16),
 			}),
 		],
@@ -212,7 +212,7 @@ export default defineConfig({
 
 		[
 			/^mb-sm$/,
-			([, d]) => ({
+			() => ({
 				'margin-bottom': pxValueToRem(14),
 			}),
 		],
