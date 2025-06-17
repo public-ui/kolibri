@@ -18,12 +18,11 @@ export class KolAbbr implements AbbrAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-abbr">
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
 				<abbr tabIndex={this.state._label ? 0 : undefined}>
 					<slot />
 				</abbr>
-                               {this.state._label ? (
-                                       <KolTooltipWcTag aria-hidden="true" _label={this.state._label}></KolTooltipWcTag>
-                               ) : null}
+				{this.state._label ? <KolTooltipWcTag aria-hidden="true" _label={this.state._label}></KolTooltipWcTag> : null}
 			</Host>
 		);
 	}
