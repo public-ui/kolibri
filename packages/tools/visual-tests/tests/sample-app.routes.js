@@ -251,6 +251,7 @@ ROUTES.set('heading/basic', {
 		},
 	},
 });
+ROUTES.set('heading/secondary');
 ROUTES.set('heading/paragraph', {
 	snapshot: {
 		skip: true,
