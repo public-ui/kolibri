@@ -1,4 +1,16 @@
-module.exports = {
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const compat = new FlatCompat({
+	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
+});
+
+export default compat.config({
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: 'tsconfig.json',
@@ -10,4 +22,4 @@ module.exports = {
 	rules: {
 		'@typescript-eslint/no-namespace': 'off',
 	},
-};
+});

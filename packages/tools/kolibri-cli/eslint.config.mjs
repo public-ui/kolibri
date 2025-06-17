@@ -1,4 +1,16 @@
-module.exports = {
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const compat = new FlatCompat({
+	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
+});
+
+export default compat.config({
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
@@ -17,16 +29,10 @@ module.exports = {
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
-	plugins: [
-		'html',
-		// 'jsdoc',
-		// 'json',
-		// 'jsx-a11y',
-		'react',
-	],
+	plugins: ['html', 'react'],
 	settings: {
 		react: {
 			version: 'detect',
 		},
 	},
-};
+});

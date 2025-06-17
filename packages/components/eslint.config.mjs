@@ -1,6 +1,15 @@
-/* eslint-disable */
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
-const config = {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const compat = new FlatCompat({
+	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
+});
+
+export default compat.config({
 	root: true,
 	parserOptions: {
 		project: ['./tsconfig.json', './tsconfig.node.json'],
@@ -8,37 +17,17 @@ const config = {
 	},
 	extends: [
 		'eslint:recommended',
-		// 'plugin:@stencil/recommended',
 		'plugin:@stencil-community/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 	],
 	rules: {
-		/**
-		 * Import types with `import type` instead of `import`.
-		 */
 		'@typescript-eslint/consistent-type-imports': 'warn',
-		/**
-		 * This rule is disabled because it is not possible to use the
-		 * `no-unsafe-assignment` rule without breaking the build.
-		 */
 		'@typescript-eslint/no-unsafe-assignment': 'warn',
-
-		/**
-		 * This setting is necessary because required and optional properties
-		 * and states build on each other in API design. If duplicate or redundant
-		 * types were not used, changes to base types would not be propagated
-		 * and would lead to errors.
-		 */
 		'@typescript-eslint/no-duplicate-type-constituents': 'off',
 		'@typescript-eslint/no-redundant-type-constituents': 'off',
-
-		/**
-		 * The HTML templates in TSX are recognized as any.
-		 */
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
-
 		'@stencil-community/async-methods': 'error',
 		'@stencil-community/ban-prefix': ['off', ['stencil', 'stnl', 'st']],
 		'@stencil-community/decorators-context': 'off',
@@ -71,9 +60,7 @@ const config = {
 		'@stencil-community/ban-exported-const-enums': 'off',
 		'@stencil-community/strict-boolean-conditions': 'off',
 		'@stencil-community/ban-default-true': 'off',
-
 		'react/jsx-no-bind': 'off',
-
 		'no-console': 'error',
 	},
 	settings: {
@@ -81,50 +68,29 @@ const config = {
 			version: 'detect',
 		},
 	},
-};
-
-config.overrides = config.overrides || [];
-config.overrides.push({
-	extends: [
-		// 'plugin:react/recommended',
-		'plugin:jsx-a11y/recommended',
-	],
-	files: ['**/*.tsx'],
-	parserOptions: {
-		ecmaFeatures: {
-			jsx: true,
-		},
-	},
-	rules: {
-		'jsx-a11y/no-access-key': 'off',
-		// 'react/no-unused-state': 'error',
-
-		'jsx-a11y/label-has-associated-control': [
-			2,
-			{
-				depth: 3, // allow labels deeply nested into spans
+	overrides: [
+		{
+			extends: ['plugin:jsx-a11y/recommended'],
+			files: ['**/*.tsx'],
+			parserOptions: {
+				ecmaFeatures: { jsx: true },
 			},
-		],
-	},
+			rules: {
+				'jsx-a11y/no-access-key': 'off',
+				'jsx-a11y/label-has-associated-control': [
+					2,
+					{
+						depth: 3,
+					},
+				],
+			},
+		},
+		{
+			files: ['**/*.ts', '**/*.tsx'],
+			rules: {
+				'no-mixed-spaces-and-tabs': 'off',
+			},
+		},
+	],
+	plugins: ['jsx-a11y'],
 });
-config.overrides.push({
-	files: ['**/*.ts', '**/*.tsx'],
-	rules: {
-		/**
-		 * The typescript formatter used spaces and tabs in some cases.
-		 */
-		'no-mixed-spaces-and-tabs': 'off',
-	},
-});
-
-config.plugins = config.plugins || [];
-// config.plugins.push('react');
-config.plugins.push('jsx-a11y');
-
-config.settings = {
-	react: {
-		version: 'detect',
-	},
-};
-
-module.exports = config;
