@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
-import { validateShow, validateSpinVariant } from '../../schema';
+import { validateLabel, validateShow, validateSpinVariant } from '../../schema';
 import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
-import type { ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
+import type { LabelPropType, ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
 import clsx from 'clsx';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
@@ -36,17 +36,24 @@ export class KolSpin implements SpinAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-spin">
+			<Host class="kol-spin" aria-live={this.state._label ? 'polite' : undefined}>
 				{this.state._show ? (
-					<span
-						aria-busy="true"
-						aria-label={translate('kol-action-running')}
-						aria-live="polite"
-						class={clsx('kol-spin__spinner', `kol-spin__spinner--${this.state._variant}`)}
-						role="alert"
-					>
-						{renderSpin(this.state._variant)}
-					</span>
+					<>
+						{this.state._label && (
+							<span aria-hidden="true" class="kol-spin__label">
+								{this.state._label}
+							</span>
+						)}
+						<span
+							aria-busy="true"
+							aria-label={this.state._label ?? translate('kol-action-running')}
+							aria-live="polite"
+							class={clsx('kol-spin__spinner', `kol-spin__spinner--${this.state._variant}`)}
+							role="alert"
+						>
+							{renderSpin(this.state._variant)}
+						</span>
+					</>
 				) : (
 					this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
 				)}
@@ -65,6 +72,11 @@ export class KolSpin implements SpinAPI {
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label?: LabelPropType;
+
 	@State() public state: SpinStates = {
 		_variant: 'dot',
 	};
@@ -80,8 +92,14 @@ export class KolSpin implements SpinAPI {
 		validateSpinVariant(this, value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateShow(this._show);
 		this.validateVariant(this._variant);
+		this.validateLabel(this._label);
 	}
 }

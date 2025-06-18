@@ -1,12 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropShow, PropSpinVariant } from '../props';
+import type { PropLabel, PropShow, PropSpinVariant } from '../props';
 
 type RequiredProps = NonNullable<unknown>;
-type OptionalProps = PropSpinVariant & PropShow;
+type OptionalProps = PropSpinVariant & PropShow & PropLabel;
 
 type RequiredStates = PropSpinVariant;
-type OptionalStates = PropShow;
+type OptionalStates = PropShow & PropLabel;
 
 export type SpinProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type SpinStates = Generic.Element.Members<RequiredStates, OptionalStates>;

@@ -44,6 +44,7 @@ import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
 import treeItemCss from './components/tree-item.scss';
 import treeCss from './components/tree.scss';
+import spinCss from './components/spin.scss';
 
 export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: globalCss,
@@ -82,6 +83,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
 	'KOL-SKIP-NAV': skipNavCss,
+	'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
 	'KOL-TABLE-STATELESS': tableStatelessCss,
