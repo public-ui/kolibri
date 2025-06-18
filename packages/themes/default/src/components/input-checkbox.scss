@@ -43,7 +43,7 @@
 	.kol-input > div.input {
 		display: inherit;
 		min-height: var(--a11y-min-size);
-		order: 2;
+		order: 4;
 	}
 
 	.kol-input > div.input input {
@@ -51,7 +51,7 @@
 	}
 
 	kol-input > label {
-		order: 3;
+		order: 1;
 	}
 
 	.disabled .input-label,
@@ -59,8 +59,12 @@
 		cursor: not-allowed;
 	}
 
+	.kol-input > .hint {
+		order: 2;
+	}
+
 	.kol-input > .kol-alert-wc.error {
-		order: 1;
+		order: 5;
 		padding-top: calc(var(--spacing) / 2);
 		grid-column: span 2 / auto;
 	}
@@ -77,7 +81,7 @@
 
 	input {
 		cursor: pointer;
-		order: 1;
+		order: 4;
 		width: 100%;
 		border-color: var(--color-subtle);
 		border-width: 2px;

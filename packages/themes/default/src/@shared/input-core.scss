@@ -20,15 +20,15 @@
 		}
 
 		.kol-alert-wc {
-			order: 1;
+			order: 5;
 		}
 
 		label {
-			order: 2;
+			order: 1;
 		}
 
 		.input {
-			order: 3;
+			order: 4;
 
 			background-color: var(--color-light);
 			border-color: var(--color-subtle);
@@ -69,8 +69,12 @@
 		}
 
 		.hint {
-			order: 4;
+			order: 2;
 			@include kol-typography-hint;
+		}
+
+		.counter {
+			order: 3;
 		}
 
 		&:not(.disabled) .input:hover {

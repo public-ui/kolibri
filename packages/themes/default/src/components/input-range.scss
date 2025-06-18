@@ -15,19 +15,19 @@
 	}
 
 	.kol-input .error:not(.hidden-error) {
-		order: 1;
+		order: 5;
 	}
 
 	.kol-input label {
-		order: 2;
+		order: 1;
 	}
 
 	.kol-input .input {
-		order: 3;
+		order: 4;
 	}
 
 	.kol-input .hint {
-		order: 4;
+		order: 2;
 		@include kol-typography-hint;
 	}
 

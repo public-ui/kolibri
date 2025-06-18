@@ -92,6 +92,20 @@ export class KolInputWc implements Props {
 						{this._hint}
 					</span>
 				)}
+				{this._hasCounter && (
+					<span class="counter" aria-atomic="true" aria-live="polite" data-testid="input-counter">
+						{this._currentLength}
+						{this._maxLength && (
+							<>
+								<span aria-label={translate('kol-of')} role="img">
+									/
+								</span>
+								{this._maxLength}
+							</>
+						)}{' '}
+						<span>{translate('kol-characters')}</span>
+					</span>
+				)}
 				<div
 					class={{
 						input: true,
@@ -141,20 +155,6 @@ export class KolInputWc implements Props {
 							<option value={option} />
 						))}
 					</datalist>
-				)}
-				{this._hasCounter && (
-					<span class="counter" aria-atomic="true" aria-live="polite" data-testid="input-counter">
-						{this._currentLength}
-						{this._maxLength && (
-							<>
-								<span aria-label={translate('kol-of')} role="img">
-									/
-								</span>
-								{this._maxLength}
-							</>
-						)}{' '}
-						<span>{translate('kol-characters')}</span>
-					</span>
 				)}
 			</Host>
 		);
