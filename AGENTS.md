@@ -46,7 +46,12 @@ The sampels are located in `packages/samples/react` and demonstrate how to use t
 - `.editorconfig` sets `indent_style = tab` and `max_line_length = 160` for code files. Markdown and YAML files use spaces.
 - ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files.
 - Lists and enumerations in code should be kept in alphabetical order (see `docs/tutorials/NEW_COMPONENT.md`).
-- Commit messages follow the **Conventional Commits** specification. The `prepare-commit-msg` hook appends the ticket ID from the branch name (`<ticketID>-description`).
+- Commit messages follow the **Conventional Commits** specification.
+
+## Linting and Formatting
+
+- Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks. You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
+- Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
 
 ## Testing
 
