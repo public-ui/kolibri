@@ -1,6 +1,26 @@
 # Agent Instructions
 
-This repository is a monorepo managed with **pnpm** and **Nx**. It contains multiple packages under `packages/` such as web components, themes, adapters and tooling.
+This repository is a monorepo managed with **pnpm** and **Nx**. It contains multiple packages under `packages/` such as web components, themes, adapters, samples and tooling.
+
+## Handling hints
+
+We have a monorepo structure with multiple packages, each with its own `package.json`. The root `package.json` contains shared dependencies and scripts. Use `pnpm` commands to manage dependencies and run scripts across packages.
+
+- To install dependencies, use `pnpm i` at the root level. This will install all dependencies for all packages.
+- If you change a dependency in a package:
+  - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
+  - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
+- Avoid that branch name may contain hidden characters.
+
+## Semantic Versioning
+
+This repository follows **Semantic Versioning** (SemVer) for all packages. Each package version is defined in its own `package.json` file. The versioning scheme is as follows:
+
+- **Major version**: Incremented for incompatible API changes.
+- **Minor version**: Incremented for adding functionality in a backwards-compatible manner.
+- **Patch version**: Incremented for backwards-compatible bug fixes.
+
+If we deprecate a feature, we will mark it as deprecated in the code and documentation, but we will not remove it immediately. Instead, we will provide a migration guide (migration\*.md) for users to transition to the new feature. Also we provide a migration tool in the `packages/tools/kolibri-cli` package to help with the migration process. You have to add a migration task from the previous version to the new version in the `packages/tools/kolibri-cli/src/migrations` folder. In the migration package, are a lot of migration tasks already implemented, so you can use them as a reference.
 
 ## Project Structure
 
@@ -27,7 +47,12 @@ The sampels are located in `packages/samples/react` and demonstrate how to use t
 - `.editorconfig` sets `indent_style = tab` and `max_line_length = 160` for code files. Markdown and YAML files use spaces.
 - ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files.
 - Lists and enumerations in code should be kept in alphabetical order (see `docs/tutorials/NEW_COMPONENT.md`).
-- Commit messages follow the **Conventional Commits** specification. The `prepare-commit-msg` hook appends the ticket ID from the branch name (`<ticketID>-description`).
+- Commit messages follow the **Conventional Commits** specification.
+
+## Linting and Formatting
+
+- Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks. You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
+- Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
 
 ## Testing
 
