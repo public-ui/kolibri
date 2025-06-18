@@ -64,8 +64,3 @@ Let's make KoliBri **better** and **more colorful** together!
 - [Contributing](./CONTRIBUTING.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
 - [Security](./docs/SECURITY.md)
-
-## Angular adapters
-
-KoliBri provides official Angular integration packages for versions 17, 18, 19 and 20.
-You can find them in `packages/adapters/angular`.
