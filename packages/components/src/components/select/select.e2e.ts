@@ -20,6 +20,19 @@ const fillAction: FillAction = async (page) => {
 const selectInput = (page: Page & E2EPage) => page.locator('select');
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE, 'toEqual');
-	testInputCallbacksAndEvents<HTMLKolSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, undefined, OPTIONS_ATTRIBUTE, selectInput, 'toEqual');
+	testInputValueReflection<HTMLKolSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		equalityCheck: 'toEqual',
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		selectInput,
+		testValue: TEST_VALUE,
+		equalityCheck: 'toEqual',
+	});
 });
