@@ -108,6 +108,7 @@
 
 	.hint {
 		order: 2;
+		width: 100%;
 		@include kol-typography-hint;
 	}
 
@@ -118,7 +119,7 @@
 
 	fieldset .kol-input {
 		display: grid;
-		order: 1;
+		order: 4;
 	}
 
 	.kol-input .hint {
