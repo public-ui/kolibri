@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { AlignPropType, DrawerAPI, DrawerStates, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
-import { setState, validateAlign, validateLabel, validateOpen } from '../../schema';
+import type { AlignPropType, DrawerAPI, DrawerStates, HasCloserPropType, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import clsx from 'clsx';
+import { KolCardTag } from '../../core/component-names';
 
 /**
  * @slot - The Content of drawer.
@@ -19,7 +20,7 @@ import clsx from 'clsx';
 export class KolDrawer implements DrawerAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private dialogElement?: HTMLDialogElement;
-	private dialogWrapperElement?: HTMLDivElement;
+	private dialogWrapperElement?: HTMLKolCardElement;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -46,22 +47,28 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private getWrapperRef = (el: HTMLDivElement | undefined) => (this.dialogWrapperElement = el as HTMLDivElement);
+	private getWrapperRef = (el: HTMLKolCardElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardElement);
 	private renderDialogContent() {
 		const align = this.state._align as string;
 		return (
-			<div
+			<KolCardTag
 				ref={this.getWrapperRef}
 				class={clsx(`kol-drawer__wrapper`, `kol-drawer__wrapper--${align}`, {
 					'kol-drawer__wrapper--open': this.state._open,
 					'kol-drawer__wrapper--is-closing': this.state._open === false,
 				})}
-				aria-label={this.state._label}
+				_label={this.state._label}
+				_hasCloser={this.state._hasCloser}
+				_on={{
+					onClose: () => {
+						void this.close();
+					},
+				}}
 			>
 				<div class="kol-drawer__content">
 					<slot />
 				</div>
-			</div>
+			</KolCardTag>
 		);
 	}
 
@@ -74,7 +81,7 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-drawer">
-				<dialog class="kol-drawer__dialog" ref={this.getRef}>
+				<dialog aria-label={this.state._label} class="kol-drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
@@ -90,6 +97,12 @@ export class KolDrawer implements DrawerAPI {
 	 * Defines the visual orientation of the component.
 	 */
 	@Prop() public _align?: AlignPropType;
+
+	/**
+	 * Defines whether the element can be closed.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -117,6 +130,11 @@ export class KolDrawer implements DrawerAPI {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
+	}
+
+	@Watch('_hasCloser')
+	public validateHasCloser(value?: HasCloserPropType): void {
+		validateHasCloser(this, value);
 	}
 
 	@Watch('_open')
@@ -186,6 +204,7 @@ export class KolDrawer implements DrawerAPI {
 		this.validateLabel(this._label);
 		this.validateOpen(this._open);
 		this.validateAlign(this._align);
+		this.validateHasCloser(this._hasCloser);
 		this.validateOn(this._on);
 	}
 }
