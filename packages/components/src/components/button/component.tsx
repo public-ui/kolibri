@@ -67,17 +67,20 @@ import clsx from 'clsx';
 export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
+	private tooltipRef?: HTMLKolTooltipWcElement;
 
 	private readonly internalDescriptionById = nonce();
-
-	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.buttonRef = ref;
-	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.buttonRef?.focus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hideTooltip() {
+		void this.tooltipRef?.hideTooltip();
 	}
 
 	private readonly onClick = (event: MouseEvent) => {
@@ -122,7 +125,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		return (
 			<Host>
 				<button
-					ref={this.catchRef}
+					ref={(ref) => (this.buttonRef = ref)}
 					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
@@ -158,6 +161,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					</KolSpanFc>
 				</button>
 				<KolTooltipWcTag
+					ref={(ref) => (this.tooltipRef = ref)}
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
