@@ -22,7 +22,7 @@ export const SplitButtonWithContext: FC = () => {
 
 			<div className="flex gap-4">
 				<KolSplitButton ref={splitButtonRef as any} _label="Only the arrow opens">
-					<div style={{ width: 300, padding: 16, border: '1px solid #ccc' }} onClick={(e) => e.stopPropagation()}>
+					<div style={{ minWidth: 300, padding: 16, border: '1px solid #ccc' }} onClick={(e) => e.stopPropagation()}>
 						<p>SplitButton renders a button with an additional context-menu, that can be opened by clicking the arrow icon.</p>
 						<div style={{ gap: 16, display: 'flex', flexDirection: 'column' }}>
 							<KolInputText _label="User" />

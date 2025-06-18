@@ -35,8 +35,6 @@ import {
 } from '../../schema';
 import type { ColumnSettings } from '../../schema/types';
 import { Callback } from '../../schema/enums';
-import type { MinWidthPropType } from '../../schema/props/min-width';
-import { validateMinWidth } from '../../schema/props/min-width';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
@@ -59,7 +57,6 @@ export class KolTableStateless implements TableStatelessAPI {
 			vertical: [],
 		},
 		_label: '',
-		_minWidth: 'auto',
 	};
 
 	private tableDivElement?: HTMLDivElement;
@@ -98,11 +95,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: string;
-
-	/**
-	 * Defines the table min-width (CSS width values).
-	 */
-	@Prop() public _minWidth!: MinWidthPropType;
 
 	/**
 	 * Defines the callback functions for table events.
@@ -150,11 +142,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		validateLabel(this, value, {
 			required: true,
 		});
-	}
-
-	@Watch('_minWidth')
-	public validateMinWidth(value?: MinWidthPropType): void {
-		validateMinWidth(this, value);
 	}
 
 	@Watch('_on')
@@ -491,7 +478,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
-		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateTableSettings(this._tableSettings);
@@ -634,7 +620,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
-			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
+			return this.renderHeadingCell(cell as KoliBriTableHeaderCell, rowIndex, colIndex, isVertical);
 		} else {
 			return (
 				<td
@@ -646,7 +632,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowSpan={cell.rowSpan}
 					style={{
 						textAlign: cell.textAlign,
-						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
+						width: columnSetting?.width ? `${columnSetting.width}ch` : undefined,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -691,15 +677,51 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	/**
-	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
+	 * Gets the minWidth value from a table cell, with fallback to 5em if not defined.
 	 *
-	 * @return {string} The minimum width of the table as a string. If `_minWidth` is set to 'auto', the width is
-	 * calculated based on the total visible column widths in characters. Otherwise, it returns the greater value
-	 * between `_minWidth` and the calculated total visible column widths.
+	 * @param cell - The table header cell
+	 * @returns The minWidth as a CSS value string
+	 */
+	private getMinWidthFromCell(cell: KoliBriTableHeaderCell): string {
+		const minWidth = cell.minWidth;
+		if (typeof minWidth === 'number') {
+			return `${minWidth}px`;
+		} else if (typeof minWidth === 'string') {
+			return minWidth;
+		}
+		// Fallback to 5em if minWidth is not defined (should not happen in V3 but added for safety)
+		return '5em';
+	}
+
+	/**
+	 * Calculates and returns the minimum width for a table based on the horizontal headers' minWidth values.
+	 *
+	 * For V3: Automatically calculates the table width by summing up all column minWidth values.
+	 * If a column has no minWidth, defaults to 5em.
+	 *
+	 * @return {string} The minimum width of the table as a string based on column minWidth values.
 	 */
 	private getTableMinWidth(): string {
-		const totalColumnWidth = this.state._tableSettings?.columns.filter((col) => col.visible).reduce((total, col) => total + (col.width ?? 0), 0) ?? 0;
-		return this.state._minWidth === 'auto' ? `${totalColumnWidth}ch` : `max(${this.state._minWidth}, ${totalColumnWidth}ch)`;
+		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
+		const visibleHeaders = primaryHeaders.filter((header) => {
+			const columnSettings = this.getColumnSettings(header);
+			return !columnSettings || columnSettings.visible;
+		});
+
+		const totalWidth = visibleHeaders.reduce((total, header) => {
+			const minWidth = header.minWidth;
+			if (typeof minWidth === 'number') {
+				return total + minWidth;
+			} else if (typeof minWidth === 'string') {
+				// Extract numeric value from CSS string (e.g., "100px" -> 100)
+				const numericValue = parseFloat(minWidth);
+				return total + (isNaN(numericValue) ? 80 : numericValue); // Default 80px if parsing fails
+			}
+			// If minWidth is undefined/null (fallback for migration), use 5em ≈ 80px
+			return total + 80;
+		}, 0);
+
+		return `${totalWidth}px`;
 	}
 
 	/**
@@ -826,7 +848,8 @@ export class KolTableStateless implements TableStatelessAPI {
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
 				style={{
-					width: columnSettings?.width ? `${columnSettings.width}ch` : cell.width,
+					minWidth: this.getMinWidthFromCell(cell),
+					width: columnSettings?.width ? `${columnSettings.width}ch` : undefined,
 				}}
 				aria-sort={ariaSort}
 				data-sort={`sort-${cell.sortDirection}`}

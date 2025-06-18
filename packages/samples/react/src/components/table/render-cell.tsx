@@ -50,7 +50,7 @@ const HEADERS: KoliBriTableHeaders = {
 				label: '#',
 				key: 'order',
 				textAlign: 'center',
-				width: '10em',
+				minWidth: '10em',
 
 				/* Example 1: Use render return value to format data */
 				render: (_el, cell) => `Index: ${cell.label}`,
@@ -59,7 +59,7 @@ const HEADERS: KoliBriTableHeaders = {
 				label: 'Status',
 				key: 'shipped',
 				textAlign: 'center',
-				width: '10em',
+				minWidth: '10em',
 
 				/* Example 2: Simple render function using textContent */
 				render: (el, cell) => {
@@ -73,7 +73,7 @@ const HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Date (string)',
 				key: 'date',
-				width: '20em',
+				minWidth: '20em',
 				textAlign: 'center',
 
 				/* Example 3: Render function using innerHTML. ⚠️Make sure to sanitize data to avoid XSS. */
@@ -85,7 +85,7 @@ const HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Action (react)',
 				key: 'action',
-				width: '20em',
+				minWidth: '20em',
 
 				/* Example 4: Render function using React */
 				render: (el) => {
@@ -115,6 +115,6 @@ export const TableRenderCell: FC = () => (
 			<p>This sample shows KolTableStateful using React render functions for the cell contents.</p>
 		</SampleDescription>
 
-		<KolTableStateful _label="Sort by date column" _minWidth="auto" _data={DATA} _headers={HEADERS} className="w-full" />
+		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
 	</>
 );

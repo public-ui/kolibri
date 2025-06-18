@@ -31,7 +31,6 @@ export const PaginationPosition: FC = () => (
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at the bottom"
-					_minWidth="auto"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
@@ -42,7 +41,6 @@ export const PaginationPosition: FC = () => (
 				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at the top"
-					_minWidth="auto"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
@@ -53,7 +51,6 @@ export const PaginationPosition: FC = () => (
 				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at both top and bottom"
-					_minWidth="auto"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}

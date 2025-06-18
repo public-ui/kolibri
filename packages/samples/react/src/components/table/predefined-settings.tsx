@@ -14,7 +14,6 @@ export const PredefinedSettings: FC = () => {
 
 			<KolTableStateful
 				_label="Table for demonstration purposes with predefined settings"
-				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
@@ -27,8 +26,8 @@ export const PredefinedSettings: FC = () => {
 				_tableSettings={{
 					columns: [
 						{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-						{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
-						{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
+						{ key: 'columnB', visible: true, label: 'Column B', position: 1, minWidth: 20 },
+						{ key: 'columnC', visible: true, label: 'Column C', position: 0, minWidth: 45 },
 					],
 				}}
 				_data={DATA}

@@ -72,7 +72,6 @@ export const TableStatefulWithSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateful
 					_label="Table with selection checkboxes"
-					_minWidth="auto"
 					_headers={{
 						horizontal: [
 							[

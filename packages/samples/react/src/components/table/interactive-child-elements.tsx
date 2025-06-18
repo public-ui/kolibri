@@ -22,6 +22,7 @@ const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeader
 		label: capitalizedVariant,
 		key: variant,
 		textAlign: 'left',
+		minWidth: '120px',
 		render: (element: HTMLElement, cell: KoliBriTableCell) => {
 			const commonProps = {
 				_label: capitalizedVariant,
@@ -46,7 +47,6 @@ export const InteractiveChildElements: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateless
 				_label="Button styles"
-				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[
@@ -57,7 +57,12 @@ export const InteractiveChildElements: FC = () => (
 							getButtonHeaderCell('ghost'),
 						],
 					],
-					vertical: [[{ label: 'Button' }, { label: 'Link-Button' }]],
+					vertical: [
+						[
+							{ label: 'Button', minWidth: '100px' },
+							{ label: 'Link-Button', minWidth: '100px' },
+						],
+					],
 				}}
 				_data={[
 					{
@@ -80,7 +85,6 @@ export const InteractiveChildElements: FC = () => (
 
 			<KolTableStateless
 				_label="Link styles"
-				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[
@@ -88,6 +92,7 @@ export const InteractiveChildElements: FC = () => (
 								key: 'regular',
 								label: 'Regular',
 								textAlign: 'left',
+								minWidth: '120px',
 								render: (element: HTMLElement, cell: KoliBriTableCell) => {
 									const commonProps = {
 										_label: cell.label,
@@ -100,7 +105,12 @@ export const InteractiveChildElements: FC = () => (
 							},
 						],
 					],
-					vertical: [[{ label: 'Link' }, { label: 'Button-Link' }]],
+					vertical: [
+						[
+							{ label: 'Link', minWidth: '100px' },
+							{ label: 'Button-Link', minWidth: '100px' },
+						],
+					],
 				}}
 				_data={[
 					{

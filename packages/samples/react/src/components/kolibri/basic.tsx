@@ -12,10 +12,10 @@ export const KolibriBasic: FC = () => (
 		</SampleDescription>
 
 		<KolHeading class="block" _level={3} _label="Regular" />
-		<KolKolibri class="block" style={{ width: 300 }} />
+		<KolKolibri class="block" style={{ minWidth: 300 }} />
 		<KolHeading class="block" _level={3} _label="Without Label" />
-		<KolKolibri class="block" style={{ width: 300 }} _labeled={false} />
+		<KolKolibri class="block" style={{ minWidth: 300 }} _labeled={false} />
 		<KolHeading class="block" _level={3} _label="Customized color" />
-		<KolKolibri class="block" style={{ width: 300 }} _color="#cc006e" />
+		<KolKolibri class="block" style={{ minWidth: 300 }} _color="#cc006e" />
 	</>
 );

@@ -12,7 +12,6 @@ export const TableComplexHeaders: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateful
 				_label="Business hours"
-				_minWidth="auto"
 				_data={[
 					{
 						asp: 'Center',
@@ -45,9 +44,11 @@ export const TableComplexHeaders: FC = () => (
 							{
 								label: 'Berlin',
 								rowSpan: 2,
+								minWidth: '100px',
 							},
 							{
 								label: 'München',
+								minWidth: '100px',
 							},
 						],
 					],
@@ -57,44 +58,54 @@ export const TableComplexHeaders: FC = () => (
 								label: 'District',
 								rowSpan: 2,
 								key: 'asp',
+								minWidth: '120px',
 							},
 							{
 								label: 'Workdays',
 								colSpan: 5,
+								minWidth: '80px',
 							},
 							{
 								label: 'Weekend',
 								colSpan: 2,
+								minWidth: '80px',
 							},
 						],
 						[
 							{
 								label: 'Monday',
 								key: 'monday',
+								minWidth: '80px',
 							},
 							{
 								label: 'Tuesday',
 								key: 'tuesday',
+								minWidth: '80px',
 							},
 							{
 								label: 'Wednesday',
 								key: 'wednesday',
+								minWidth: '80px',
 							},
 							{
 								label: 'Thursday',
 								key: 'thursday',
+								minWidth: '80px',
 							},
 							{
 								label: 'Friday',
 								key: 'friday',
+								minWidth: '80px',
 							},
 							{
 								label: 'Saturday',
 								key: 'saturday',
+								minWidth: '80px',
 							},
 							{
 								label: 'Sunday',
 								key: 'sunday',
+								minWidth: '80px',
 							},
 						],
 					],

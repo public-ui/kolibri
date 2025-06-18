@@ -11,13 +11,19 @@ export type KoliBriTableCell = {
 	render?: KoliBriTableRender;
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
-	width?: string;
 	data?: KoliBriTableDataType;
 };
 
-export type KoliBriTableHeaderCell = KoliBriTableCell & {
+export type KoliBriTableHeaderCell = {
+	colSpan?: number;
+	label: string;
 	key?: string;
+	minWidth: string | number; // Required in V3
+	render?: KoliBriTableRender;
+	rowSpan?: number;
 	sortDirection?: KoliBriSortDirection;
+	textAlign?: KoliBriTableCellTextAlign;
+	data?: KoliBriTableDataType;
 };
 
 export type KoliBriTableSelection = {

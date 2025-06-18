@@ -10,20 +10,19 @@ executeSnapshotTests<TableStatelessProps>(
 	[
 		{
 			_label: 'Table with horizontal and vertical headers',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
-						{ key: 'header1', label: 'Header1', textAlign: 'left' },
-						{ key: 'header2', label: 'Header2', textAlign: 'center' },
-						{ key: 'header3', label: 'Header3', textAlign: 'right' },
+						{ key: 'header1', label: 'Header1', textAlign: 'left', minWidth: '100px' },
+						{ key: 'header2', label: 'Header2', textAlign: 'center', minWidth: '100px' },
+						{ key: 'header3', label: 'Header3', textAlign: 'right', minWidth: '100px' },
 					],
 				],
 				vertical: [
 					[
-						{ key: 'row1', label: 'Row 1', textAlign: 'left' },
-						{ key: 'row2', label: 'Row 2', textAlign: 'center' },
-						{ key: 'row3', label: 'Row 3', textAlign: 'right' },
+						{ key: 'row1', label: 'Row 1', textAlign: 'left', minWidth: '100px' },
+						{ key: 'row2', label: 'Row 2', textAlign: 'center', minWidth: '100px' },
+						{ key: 'row3', label: 'Row 3', textAlign: 'right', minWidth: '100px' },
 					],
 				],
 			},
@@ -35,12 +34,11 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with only horizontal headers',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
-						{ key: 'header1', label: 'Header 1', textAlign: 'left' },
-						{ key: 'header2', label: 'Header 2', textAlign: 'center' },
+						{ key: 'header1', label: 'Header 1', textAlign: 'left', minWidth: '100px' },
+						{ key: 'header2', label: 'Header 2', textAlign: 'center', minWidth: '100px' },
 					],
 				],
 				vertical: [],
@@ -52,22 +50,21 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two horizontal header rows',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
-						{ label: 'Header 1', textAlign: 'left' },
-						{ label: 'Header 2', textAlign: 'center' },
+						{ label: 'Header 1', textAlign: 'left', minWidth: '100px' },
+						{ label: 'Header 2', textAlign: 'center', minWidth: '100px' },
 					],
 					[
-						{ key: 'header1', label: 'Sub Header 1', textAlign: 'left' },
-						{ key: 'header2', label: 'Sub Header 2', textAlign: 'center' },
+						{ key: 'header1', label: 'Sub Header 1', textAlign: 'left', minWidth: '100px' },
+						{ key: 'header2', label: 'Sub Header 2', textAlign: 'center', minWidth: '100px' },
 					],
 				],
 				vertical: [
 					[
-						{ key: 'row-1', label: 'Row 1', textAlign: 'left' },
-						{ key: 'row-2', label: 'Row 2', textAlign: 'center' },
+						{ key: 'row-1', label: 'Row 1', textAlign: 'left', minWidth: '100px' },
+						{ key: 'row-2', label: 'Row 2', textAlign: 'center', minWidth: '100px' },
 					],
 				],
 			},
@@ -78,16 +75,15 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two spanned horizontal and vertical headers',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
-					[{ label: 'H-Header', colSpan: 2 }],
+					[{ label: 'H-Header', colSpan: 2, minWidth: '100px' }],
 					[
-						{ key: 'header1', label: 'Sub H-Header 1' },
-						{ key: 'header2', label: 'Sub H-Header 2' },
+						{ key: 'header1', label: 'Sub H-Header 1', minWidth: '100px' },
+						{ key: 'header2', label: 'Sub H-Header 2', minWidth: '100px' },
 					],
 				],
-				vertical: [[{ label: 'V-Header', rowSpan: 2 }], [{ label: 'Sub V-Header 1' }, { label: 'Sub V-Header 2' }]],
+				vertical: [[{ label: 'V-Header', rowSpan: 2, minWidth: '100px' }], [{ label: 'Sub V-Header', minWidth: '100px' }]],
 			},
 			_data: [
 				{ header1: 'Cell 1.1', header2: 'Cell 1.2' },

@@ -129,12 +129,7 @@ export const ButtonShortKey: FC = () => {
 
 			<KolHeading _level={2} _label="Interactive sample" className="mt" />
 
-			<KolTableStateful
-				_label={`Move focus within one of the "Actions" cells and press "e" or "d" to trigger an action.`}
-				_data={DATA}
-				_headers={HEADERS}
-				_minWidth="400px"
-			/>
+			<KolTableStateful _label={`Move focus within one of the "Actions" cells and press "e" or "d" to trigger an action.`} _data={DATA} _headers={HEADERS} />
 		</>
 	);
 };

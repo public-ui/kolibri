@@ -11,10 +11,10 @@ const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
-			{ label: 'Small Column', key: 'small', textAlign: 'left', width: '200px' },
-			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
-			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
+			{ label: 'Large Column', key: 'large', textAlign: 'left', minWidth: '300px' },
+			{ label: 'Small Column', key: 'small', textAlign: 'left', minWidth: '200px' },
+			{ label: 'Larger Column', key: 'large', textAlign: 'left', minWidth: '400px' },
+			{ label: 'Larger Column', key: 'large', textAlign: 'left', minWidth: '400px' },
 		],
 	],
 };
@@ -36,22 +36,20 @@ export const TableHorizontalScrollbar: FC = () => {
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar."
-					_minWidth={hasWidthRestriction ? '600px' : '300px'}
 					_headers={HEADERS}
 					_data={DATA}
 					className="block"
-					style={{ width: '400px' }}
+					style={{ minWidth: '400px' }}
 				/>
 
 				<KolHeading _label="Empty Table with scrollbar" _level={3} />
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
-					_minWidth={hasWidthRestriction ? '600px' : '300px'}
 					_headers={HEADERS}
 					_data={[]}
 					className="block"
-					style={{ width: '400px' }}
+					style={{ minWidth: '400px' }}
 				/>
 
 				<KolInputCheckbox
@@ -70,13 +68,7 @@ export const TableHorizontalScrollbar: FC = () => {
 					<i>Scrollbar appears on very small viewport sizes</i>
 				</p>
 
-				<KolTableStateful
-					_label="Table for demonstration purposes without horizontal scrollbar"
-					_minWidth="600px"
-					_headers={HEADERS}
-					_data={DATA}
-					className="block"
-				/>
+				<KolTableStateful _label="Table for demonstration purposes without horizontal scrollbar" _headers={HEADERS} _data={DATA} className="block" />
 			</section>
 		</>
 	);

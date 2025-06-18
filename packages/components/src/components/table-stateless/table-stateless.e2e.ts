@@ -5,7 +5,7 @@ import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
 const HEADERS: TableHeaderCellsPropType = {
-	horizontal: [[{ key: 'id', label: 'ID', sortDirection: 'ASC' }]],
+	horizontal: [[{ key: 'id', label: 'ID', sortDirection: 'ASC', minWidth: '80px' }]],
 };
 
 type Data = (typeof DATA)[0];

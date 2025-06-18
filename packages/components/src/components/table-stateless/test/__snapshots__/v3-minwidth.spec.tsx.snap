@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-table-stateless-wc should render with _label="V3 Table with minWidth auto calculation" _headerCells={"horizontal":[[{"key":"name","label":"Name","minWidth":"150px"},{"key":"age","label":"Age","minWidth":"80px"},{"key":"email","label":"Email","minWidth":"200px"}]]} _data=[{"name":"John Doe","age":30,"email":"john@example.com"},{"name":"Jane Smith","age":25,"email":"jane@example.com"}] 1`] = `
+<kol-table-stateless-wc>
+  <div class="kol-table">
+    <kol-table-settings-wc></kol-table-settings-wc>
+    <div class="kol-table__scroll-container">
+      <table class="kol-table__table" style="min-width: 430px;">
+        <div aria-describedby="caption" class="kol-table__focus-element"></div>
+        <caption class="kol-table__caption" id="caption">
+          V3 Table with minWidth auto calculation
+        </caption>
+        <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="col" style="min-width: 150px;">
+              Name
+            </th>
+            <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="col" style="min-width: 80px;">
+              Age
+            </th>
+            <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="col" style="min-width: 200px;">
+              Email
+            </th>
+          </tr>
+          <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+          </tr>
+        </thead>
+        <tbody class="kol-table__body">
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--body">
+              John Doe
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              30
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              john@example.com
+            </td>
+          </tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--body">
+              Jane Smith
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              25
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              jane@example.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</kol-table-stateless-wc>
+`;
