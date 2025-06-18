@@ -10,6 +10,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
 - If you change a dependency in a package:
   - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
+- Avoid that branch name may contain hidden characters.
 
 ## Semantic Versioning
 
