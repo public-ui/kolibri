@@ -136,15 +136,15 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					shortKey={shortKey}
 				/>
 			)}
+			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
+			{counter ? <KolFormFieldCounterFc {...(formFieldCounterProps || {})} {...counter} /> : null}
 			<InputContainer {...formFieldInputProps}>
 				{children}
 				{useTooltipInsteadOfLabel && (
 					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} hideLabel={hideLabel} align={tooltipAlign} badgeText={badgeText} />
 				)}
 			</InputContainer>
-			{counter ? <KolFormFieldCounterFc {...(formFieldCounterProps || {})} {...counter} /> : null}
 			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideMsg={hideMsg} />}
-			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
 		</Component>
 	);

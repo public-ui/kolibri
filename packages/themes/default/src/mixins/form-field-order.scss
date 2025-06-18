@@ -2,20 +2,24 @@
 	.kol-form-field {
 		$root: &;
 
-		@at-root #{$root}__msg {
+		@at-root #{$root}__label {
 			order: 1;
 		}
 
-		@at-root #{$root}__label {
+		@at-root #{$root}__hint {
 			order: 2;
 		}
 
-		@at-root #{$root}__input {
+		@at-root #{$root}__counter {
 			order: 3;
 		}
 
-		@at-root #{$root}__hint {
+		@at-root #{$root}__input {
 			order: 4;
+		}
+
+		@at-root #{$root}__msg {
+			order: 5;
 		}
 	}
 }
