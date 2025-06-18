@@ -11,6 +11,16 @@ We have a monorepo structure with multiple packages, each with its own `package.
   - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 
+## Semantic Versioning
+
+This repository follows **Semantic Versioning** (SemVer) for all packages. Each package version is defined in its own `package.json` file. The versioning scheme is as follows:
+
+- **Major version**: Incremented for incompatible API changes.
+- **Minor version**: Incremented for adding functionality in a backwards-compatible manner.
+- **Patch version**: Incremented for backwards-compatible bug fixes.
+
+If we deprecate a feature, we will mark it as deprecated in the code and documentation, but we will not remove it immediately. Instead, we will provide a migration guide (migration\*.md) for users to transition to the new feature. Also we provide a migration tool in the `packages/tools/kolibri-cli` package to help with the migration process. You have to add a migration task from the previous version to the new version in the `packages/tools/kolibri-cli/src/migrations` folder. In the migration package, are a lot of migration tasks already implemented, so you can use them as a reference.
+
 ## Project Structure
 
 - `packages/components` – Stencil based web components
