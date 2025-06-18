@@ -14,6 +14,8 @@ Showcase of all KoliBri components in a React application.
 
 Live example: <https://public-ui.github.io/v2/sample-react>
 
+This sample now uses **Vite** for development and production builds.
+
 ## Installation and usage
 
 ```bash
