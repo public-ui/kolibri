@@ -1,6 +1,15 @@
 # Agent Instructions
 
-This repository is a monorepo managed with **pnpm** and **Nx**. It contains multiple packages under `packages/` such as web components, themes, adapters and tooling.
+This repository is a monorepo managed with **pnpm** and **Nx**. It contains multiple packages under `packages/` such as web components, themes, adapters, samples and tooling.
+
+## Handling hints
+
+We have a monorepo structure with multiple packages, each with its own `package.json`. The root `package.json` contains shared dependencies and scripts. Use `pnpm` commands to manage dependencies and run scripts across packages.
+
+- To install dependencies, use `pnpm i` at the root level. This will install all dependencies for all packages.
+- If you change a dependency in a package:
+  - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
+  - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 
 ## Project Structure
 
