@@ -16,7 +16,12 @@ const fillAction: FillAction = async (page) => {
 };
 
 test.describe(COMPONENT_NAME, () => {
-	testInputCallbacksAndEvents<HTMLKolInputFileElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['input', 'change']);
+	testInputCallbacksAndEvents<HTMLKolInputFileElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		omittedEvents: ['input', 'change'],
+		testValue: TEST_VALUE,
+	});
 
 	test.describe('Callbacks', () => {
 		[Callback.onInput, Callback.onChange].forEach((callbackName) => {

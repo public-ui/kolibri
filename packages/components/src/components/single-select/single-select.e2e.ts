@@ -19,8 +19,18 @@ const fillAction: FillAction = async (page) => {
 };
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolSingleSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE);
-	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, undefined, OPTIONS_ATTRIBUTE);
+	testInputValueReflection<HTMLKolSingleSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: TEST_VALUE,
+	});
 
 	test.describe('kol-single-select additional interactions', () => {
 		test('should open listbox on button click and close on ESC', async ({ page }) => {

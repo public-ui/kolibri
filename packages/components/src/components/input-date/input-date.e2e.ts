@@ -48,7 +48,14 @@ test.describe('kol-input-date', () => {
 				element._value = value;
 			}, TEST_VALUE_DATE);
 		};
-		testInputCallbacksAndEvents('kol-input-date', TEST_VALUE_DATE, fillAction, ['click', 'focus', 'blur'], undefined, undefined, 'toEqual'); // emitted events are tested independently of type
+		testInputCallbacksAndEvents<HTMLKolInputDateElement>({
+			componentName: 'kol-input-date',
+			expectedValue: TEST_VALUE_DATE,
+			fillAction,
+			omittedEvents: ['click', 'focus', 'blur'],
+			testValue: TEST_VALUE_DATE,
+			equalityCheck: 'toEqual',
+		}); // emitted events are tested independently of type
 	});
 
 	test.describe('when value is String', () => {
@@ -72,7 +79,11 @@ test.describe('kol-input-date', () => {
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
 
-		testInputCallbacksAndEvents('kol-input-date', TEST_VALUE_STRING, undefined, ['click', 'focus', 'blur']); // emitted events are tested independently of type
+		testInputCallbacksAndEvents<HTMLKolInputDateElement>({
+			componentName: 'kol-input-date',
+			omittedEvents: ['click', 'focus', 'blur'],
+			testValue: TEST_VALUE_STRING,
+		}); // emitted events are tested independently of type
 	});
 
 	test.describe('Value reflection', () => {
@@ -295,5 +306,9 @@ test.describe('kol-input-date', () => {
 		});
 	});
 
-	testInputCallbacksAndEvents('kol-input-date', TEST_VALUE_STRING, undefined, ['input', 'change']); // emitted events are tested specifically for value type
+	testInputCallbacksAndEvents<HTMLKolInputDateElement>({
+		componentName: 'kol-input-date',
+		omittedEvents: ['input', 'change'],
+		testValue: TEST_VALUE_STRING,
+	}); // emitted events are tested specifically for value type
 });

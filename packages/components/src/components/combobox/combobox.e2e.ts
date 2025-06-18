@@ -7,8 +7,14 @@ const TEST_VALUE = 'Hello World';
 const OPTIONS = ['North', 'South', 'West', 'East'];
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolComboboxElement>(COMPONENT_NAME, TEST_VALUE);
-	testInputCallbacksAndEvents<HTMLKolComboboxElement>(COMPONENT_NAME, TEST_VALUE);
+	testInputValueReflection<HTMLKolComboboxElement>({
+		componentName: COMPONENT_NAME,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolComboboxElement>({
+		componentName: COMPONENT_NAME,
+		testValue: TEST_VALUE,
+	});
 
 	test('should fire input and change events', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
