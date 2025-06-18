@@ -130,7 +130,7 @@ function genArtifactHashes(dir) {
 					.replace(
 						/\\n/g,
 						`
-  `
+  `,
 					);
 				sha = genShaAsHashAndApostrophe(css);
 				console.log(css, sha);
