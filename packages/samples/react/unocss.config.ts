@@ -1,5 +1,5 @@
-import { defineConfig } from '@unocss/webpack';
-import { presetUno } from '@unocss/preset-uno';
+import { defineConfig } from '@unocss/vite';
+import { presetMini } from '@unocss/preset-mini';
 
 function pxValueToRem(size: number): string {
 	return `calc(${size}rem / var(--kolibri-root-font-size, 16))`;
@@ -137,25 +137,25 @@ export default defineConfig({
 
 		[
 			/^mt$/,
-			([, d]) => ({
+			() => ({
 				'margin-top': pxValueToRem(16),
 			}),
 		],
 		[
 			/^ml$/,
-			([, d]) => ({
+			() => ({
 				'margin-left': pxValueToRem(16),
 			}),
 		],
 		[
 			/^mr$/,
-			([, d]) => ({
+			() => ({
 				'margin-right': pxValueToRem(16),
 			}),
 		],
 		[
 			/^mb$/,
-			([, d]) => ({
+			() => ({
 				'margin-bottom': pxValueToRem(16),
 			}),
 		],
@@ -212,7 +212,7 @@ export default defineConfig({
 
 		[
 			/^mb-sm$/,
-			([, d]) => ({
+			() => ({
 				'margin-bottom': pxValueToRem(14),
 			}),
 		],
@@ -314,5 +314,5 @@ export default defineConfig({
 			},
 		};
 	},
-	presets: [presetUno()],
+	presets: [presetMini()],
 });
