@@ -22,7 +22,7 @@
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
 		"rxjs": "7.8.2",
-		"zone.js": "0.14.10"
+		"zone.js": "0.15.1"
 	},
 	"devDependencies": {
                "@angular-devkit/build-angular": "20.0.2",
@@ -35,6 +35,6 @@
 		"karma-coverage": "2.2.1",
 		"karma-jasmine": "5.1.0",
 		"karma-jasmine-html-reporter": "2.1.0",
-		"typescript": "5.5.4"
+		"typescript": "5.8.3"
 	}
 }
