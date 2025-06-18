@@ -1,5 +1,6 @@
 import { KoliBri } from '@public-ui/components';
 import globalCss from './global.scss';
+import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
 import avatarCss from './components/avatar.scss';
@@ -46,6 +47,7 @@ import treeCss from './components/tree.scss';
 
 export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: globalCss,
+	'KOL-ABBR': abbrCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
 	'KOL-AVATAR': avatarCss,
