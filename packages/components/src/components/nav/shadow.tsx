@@ -73,7 +73,7 @@ export class KolNav implements NavAPI {
 	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
-			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren !== children),
 		};
 	}
 

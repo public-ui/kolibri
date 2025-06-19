@@ -24,6 +24,9 @@ module.exports = {
 		// 'jsx-a11y',
 		'react',
 	],
+	rules: {
+		eqeqeq: 'error',
+	},
 	settings: {
 		react: {
 			version: 'detect',

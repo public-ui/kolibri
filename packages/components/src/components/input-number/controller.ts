@@ -48,7 +48,7 @@ export class InputNumberController extends InputIconController implements InputN
 
 	private readonly validateIso8601 = (propName: string, value?: number | Iso8601 | null, afterPatch?: (v: string) => void) => {
 		const parsedValue = parseFloat(value as string);
-		const valueMatched = parsedValue == value;
+		const valueMatched = parsedValue === value;
 		return watchValidator(
 			this.component,
 			propName,
