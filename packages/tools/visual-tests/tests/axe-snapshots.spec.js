@@ -38,7 +38,7 @@ test.use({
 
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary axe tests
-	if (options?.axe?.skip === true) {
+	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots')) {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
@@ -82,7 +82,7 @@ ROUTES.forEach((options, route) => {
 			{
 				outputDirPath: outputPath.replace(/\/[^/]+$/, ''),
 				outputDir: `axe-${themeName}`,
-				reportFileName: `${route.replace('/', '-')}.html`,
+				reportFileName: `${route.replace(/[/?]/g, '-')}.html`,
 			},
 		);
 	});
