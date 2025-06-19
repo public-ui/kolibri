@@ -131,7 +131,7 @@ export class InputDateController extends InputIconController implements InputDat
 		return watchValidator(
 			this.component,
 			propName,
-			(value): boolean => value === undefined || value == null || value === '' || this.validateDateString(value),
+			(value): boolean => value === undefined || value === null || value === '' || this.validateDateString(value),
 			new Set(['Date', 'string{ISO-8601}']),
 			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 			{
