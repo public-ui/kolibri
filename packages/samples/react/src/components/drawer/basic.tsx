@@ -11,11 +11,12 @@ import { DrawerRadioAlign } from './partials/align';
 export const DrawerBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultAlign = searchParams.get('align') as AlignPropType;
+	const defaultCloser = searchParams.get('closer') === 'true';
 	const hideMenus = useContext(HideMenusContext);
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 
 	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
-	const [hasCloser, setHasCloser] = useState<boolean>(true);
+	const [hasCloser, setHasCloser] = useState<boolean>(defaultCloser);
 
 	useEffect(() => {
 		if (defaultAlign) {
