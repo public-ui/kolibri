@@ -6,13 +6,16 @@ module.exports = {
 	root: true,
 	extends: ['eslint:recommended'],
 	parser: '@babel/eslint-parser',
-	parserOptions: {
-		babelOptions: {
-			babelrc: false,
-			configFile: false,
-			plugins: ['@babel/plugin-syntax-import-attributes'],
-			presets: ['@babel/preset-env'],
-		},
-		requireConfigFile: false,
-	},
+        parserOptions: {
+                babelOptions: {
+                        babelrc: false,
+                        configFile: false,
+                        plugins: ['@babel/plugin-syntax-import-attributes'],
+                        presets: ['@babel/preset-env'],
+                },
+                requireConfigFile: false,
+        },
+        rules: {
+                'eqeqeq': 'error',
+        },
 };

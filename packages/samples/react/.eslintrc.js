@@ -13,11 +13,12 @@ config.overrides.push({
 			jsx: true,
 		},
 	},
-	rules: {
-		'@typescript-eslint/consistent-type-imports': 'error',
-		'@typescript-eslint/no-unsafe-member-access': 'error',
-		'react/no-unused-state': 'error',
-	},
+        rules: {
+                '@typescript-eslint/consistent-type-imports': 'error',
+                '@typescript-eslint/no-unsafe-member-access': 'error',
+                'react/no-unused-state': 'error',
+                'eqeqeq': 'error',
+        },
 });
 
 config.plugins = config.plugins || [];
