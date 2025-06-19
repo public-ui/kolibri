@@ -7,7 +7,6 @@
 		border-color: var(--color-blue);
 		overflow-y: auto;
 		overflow-x: hidden;
-		box-sizing: border-box;
 		width: 100%;
 		max-height: calc($option-height * $visible-options + rem(2));
 	}

@@ -5,8 +5,6 @@
 	@include kol-button('kol-button');
 
 	.kol-button {
-		font-family: var(--font-family);
-
 		&__text {
 			font-weight: 700;
 			border-style: solid;

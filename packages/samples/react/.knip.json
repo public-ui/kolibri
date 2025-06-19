@@ -11,16 +11,6 @@
 		"src/scenarios/appointment-form/Summary.tsx"
 	],
 
-	"ignoreDependencies": [
-		"@leanup/stack-webpack",
-		"@public-ui/components",
-		"@public-ui/react",
-		"@public-ui/themes",
-		"@unocss/preset-uno",
-		"ajv",
-		"nightwatch-axe-verbose",
-		"uno.css",
-		"yup"
-	],
+	"ignoreDependencies": ["@public-ui/components", "@public-ui/react", "@public-ui/themes", "@unocss/preset-mini", "uno.css", "yup"],
 	"project": ["src/**/*.ts", "src/**/*.tsx"]
 }

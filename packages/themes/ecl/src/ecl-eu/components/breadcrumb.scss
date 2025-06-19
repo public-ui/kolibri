@@ -2,12 +2,4 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-
-	.kol-breadcrumb {
-		font-family: var(--font-family);
-
-		&__link {
-			font-family: var(--font-family);
-		}
-	}
 }

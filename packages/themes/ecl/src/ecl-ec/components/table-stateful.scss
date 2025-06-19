@@ -7,8 +7,6 @@
 	.kol-table-stateful {
 		$root: &;
 
-		font-family: var(--font-family);
-
 		&__pagination-wrapper {
 			@media (min-width: 1024px) {
 				grid-auto-flow: column;

@@ -1,10 +1,6 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-tooltip {
 		display: contents;
 
@@ -13,7 +9,6 @@
 			animation-iteration-count: 1;
 			animation-name: fadeInOpacity;
 			animation-timing-function: ease-in;
-			box-sizing: border-box;
 			display: none;
 			position: fixed;
 			visibility: hidden;

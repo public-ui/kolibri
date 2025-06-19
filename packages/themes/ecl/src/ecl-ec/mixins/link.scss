@@ -1,7 +1,5 @@
 @mixin kol-link($block-classname) {
 	.#{$block-classname} {
-		font-family: var(--font-family);
-
 		appearance: none;
 		color: var(--color-blue);
 		line-height: 1.2;

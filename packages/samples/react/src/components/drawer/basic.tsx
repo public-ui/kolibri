@@ -50,7 +50,7 @@ export const DrawerBasic: FC = () => {
 					_hasCloser={hasCloser}
 					_on={{ onClose: () => console.log('Drawer onClose triggered!') }}
 				>
-					<div className={align === 'left' || align == 'right' ? 'drawer-content-vertical' : ''}>
+					<div className={align === 'left' || align === 'right' ? 'drawer-content-vertical' : ''}>
 						<p className="mt-0">
 							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 							voluptua.

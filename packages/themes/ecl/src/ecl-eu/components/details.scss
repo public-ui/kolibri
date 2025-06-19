@@ -3,9 +3,6 @@
 
 @layer kol-theme-component {
 	.kol-details {
-		font-family: var(--font-family);
-		font-size: rem(16);
-
 		&__heading-button {
 			&:focus-within {
 				cursor: pointer;

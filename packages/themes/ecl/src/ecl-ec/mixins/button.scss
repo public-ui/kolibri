@@ -4,8 +4,6 @@
 	.#{$block-classname} {
 		$root: &;
 
-		font-family: var(--font-family);
-
 		appearance: none;
 		outline: none;
 		text-decoration: none;

@@ -3,8 +3,6 @@
 @mixin kol-card {
 	@layer kol-component {
 		.kol-card {
-			font-size: rem(16);
-
 			height: 100%;
 			position: relative;
 			/* Visible with forced colors  */

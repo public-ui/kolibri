@@ -12,9 +12,7 @@ import type {
 } from '../../schema';
 import {
 	devHint,
-	featureHint,
 	koliBriQuerySelector,
-	Log,
 	setState,
 	uiUxHintMillerscheZahl,
 	validateAlign,
@@ -23,16 +21,17 @@ import {
 	watchJsonArrayString,
 	watchNumber,
 } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-
-import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 import { KolButtonWcTag } from '../../core/component-names';
 import { KeyboardKey } from '../../schema/enums';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import clsx from 'clsx';
+import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
+import { validateHasCreateButton } from '../../schema/props/has-create-button';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -46,7 +45,6 @@ export class KolTabs implements TabsAPI {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
-	private showCreateTab = false;
 	private currentFocusIndex: number | undefined;
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
@@ -177,13 +175,15 @@ export class KolTabs implements TabsAPI {
 						_value={index}
 					></KolButtonWcTag>
 				))}
-				{this.showCreateTab && (
+				{this.state._hasCreateButton && (
 					<KolButtonWcTag
-						class="kol-tabs_button-create"
+						class="kol-tabs__button-create"
 						_label={this.onCreateLabel}
 						_on={{
 							onClick: this.onCreate,
 						}}
+						_icons="codicon codicon-plus"
+						data-testid="tabs-create-button"
 					></KolButtonWcTag>
 				)}
 			</div>
@@ -221,6 +221,11 @@ export class KolTabs implements TabsAPI {
 	 * Defines which behavior is active.
 	 */
 	@Prop() public _behavior?: TabBehaviorPropType;
+
+	/**
+	 * Defines whether the element has a create button.
+	 */
+	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -306,6 +311,11 @@ export class KolTabs implements TabsAPI {
 		validateTabBehavior(this, value);
 	}
 
+	@Watch('_hasCreateButton')
+	public validateHasCreateButton(value?: HasCreateButtonPropType) {
+		validateHasCreateButton(this, value);
+	}
+
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
@@ -316,38 +326,9 @@ export class KolTabs implements TabsAPI {
 	@Watch('_on')
 	public validateOn(value?: KoliBriTabsCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolTabs] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
 			const callbacks: KoliBriTabsCallbacks = {};
-			if (typeof value.onCreate === 'function' || typeof value.onCreate === 'object') {
-				if (typeof value.onCreate === 'object') {
-					if (typeof value.onCreate.label === 'string' && value.onCreate.label.length > 0) {
-						this.onCreateLabel = value.onCreate.label;
-					} else {
-						Log.debug(
-							`[KolTabs] The label text for New in {
-  onCreate: {
-    label: string (!),
-    callback: Function
-  }
-} is not set correctly.`,
-						);
-					}
-					if (typeof value.onCreate.callback === 'function') {
-						callbacks.onCreate = value.onCreate.callback;
-					} else {
-						Log.debug(
-							`[KolTabs] The onCreate callback function for New in {
-  onCreate: {
-    label: string,
-    callback: Function (!)
-  }
-} is not set correctly.`,
-						);
-					}
-				} else {
-					callbacks.onCreate = value.onCreate;
-				}
-				this.showCreateTab = typeof callbacks.onCreate === 'function';
+			if (typeof value.onCreate === 'function') {
+				callbacks.onCreate = value.onCreate;
 			}
 			if (typeof value.onSelect === 'function') {
 				callbacks.onSelect = value.onSelect;
@@ -390,6 +371,7 @@ export class KolTabs implements TabsAPI {
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
 		this.validateBehavior(this._behavior);
+		this.validateHasCreateButton(this._hasCreateButton);
 	}
 
 	private refreshTabPanels = () => {
@@ -449,8 +431,9 @@ export class KolTabs implements TabsAPI {
 
 	private onCreate = (event: Event) => {
 		event.preventDefault();
-		if (typeof this.state._on?.onCreate === 'function') {
-			this.state._on?.onCreate(event);
+		this.state._on?.onCreate?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.create);
 		}
 	};
 

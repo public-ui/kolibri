@@ -67,9 +67,16 @@
 		--spacing-2xs: #{rem(4)};
 	}
 
+	:host {
+		font-size: var(--font-size);
+
+		* {
+			font-family: var(--font-family);
+		}
+	}
+
 	a,
 	button {
-		font-size: var(--font-size);
 		outline: none;
 	}
 

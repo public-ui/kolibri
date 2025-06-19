@@ -4,7 +4,7 @@
 
 ## select
 
-- Disabled options in KolSelect affect the total count in screen readers When an option in `KolSelect` is set to `disabled: true`, it is still counted by screen readers. This leads to incorrect numbering, for example, NVDA announces "2 of 4" instead of "2 of 3". To ensure the correct order, the `aria-hidden="true"` attribute should be set for `disabled` options. This will hide the disabled option from screen readers and keep the total number of items consistent.
+- Disabled options in KolSelect affect the total count in some screen readers. When an option is set to `disabled: true`, it may still be included in the overall option count announced by assistive technology. Using `aria-hidden="true"` on `<option>` is not conforming with WAI‑ARIA and causes browser warnings, therefore it has been removed. As a result, screen readers might announce a higher number of available options than can actually be selected.
 
 [🐞 GitHub issue #7453](https://github.com/public-ui/kolibri/pull/7453)
 
