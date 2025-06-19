@@ -7,7 +7,6 @@
 	.kol-tree-item {
 		$root: &;
 		--indentation: var(--tree-item-indentation, #{rem(10)}); // Set `--tree-item-indentation` in themes to control padding
-		font-size: rem(16);
 
 		&__link {
 			.kol-link {

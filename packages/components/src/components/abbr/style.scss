@@ -1,9 +1,2 @@
-@use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 @use '../tooltip/style.scss' as *;
-
-@layer kol-component {
-	.kol-abbr {
-		font-size: rem(16);
-	}
-}

@@ -13,7 +13,6 @@
 @mixin kol-alert-theme {
 	.kol-alert {
 		$root: &;
-		font-family: var(--font-family);
 
 		display: flex;
 		width: 100%;

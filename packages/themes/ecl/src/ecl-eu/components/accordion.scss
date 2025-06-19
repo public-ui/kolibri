@@ -1,11 +1,6 @@
 @use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		font-size: rem(16);
-	}
-
 	.kol-accordion {
 		border-radius: 8px;
 		box-shadow:

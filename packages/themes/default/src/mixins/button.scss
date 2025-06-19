@@ -9,8 +9,6 @@
 	.#{$block-classname} {
 		$root: &;
 
-		font-family: var(--font-family);
-
 		&__text {
 			font-weight: 700;
 			border-style: solid;
