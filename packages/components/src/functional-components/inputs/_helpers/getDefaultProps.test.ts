@@ -13,12 +13,17 @@ describe('getDefaultProps', () => {
 	});
 
 	it('should set aria-describedby when ariaDescribedBy is provided', () => {
-		const result = getDefaultProps({ ariaDescribedBy: ['id1', 'id2'] });
+		const result = getDefaultProps({ ariaDescribedBy: 'id1 id2' });
 		expect(result['aria-describedby']).toBe('id1 id2');
 	});
 
-	it('should not set aria-describedby when ariaDescribedBy is an empty array', () => {
-		const result = getDefaultProps({ ariaDescribedBy: [] });
+	it('should not set aria-describedby when ariaDescribedBy is empty', () => {
+		const result = getDefaultProps({ ariaDescribedBy: '' });
+		expect(result['aria-describedby']).toBe('');
+	});
+
+	it('should not set aria-describedby when ariaDescribedBy is undefined', () => {
+		const result = getDefaultProps({});
 		expect(result['aria-describedby']).toBeUndefined();
 	});
 

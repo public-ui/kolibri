@@ -1,4 +1,4 @@
-export function getDefaultProps({ ariaDescribedBy, hideLabel, label }: { ariaDescribedBy?: string[]; hideLabel?: boolean; label?: string }): {
+export function getDefaultProps({ ariaDescribedBy, hideLabel, label }: { ariaDescribedBy?: string; hideLabel?: boolean; label?: string }): {
 	title: string;
 	autoCapitalize: string;
 	autoCorrect: string;
@@ -9,7 +9,7 @@ export function getDefaultProps({ ariaDescribedBy, hideLabel, label }: { ariaDes
 		title: '',
 		autoCapitalize: 'off',
 		autoCorrect: 'off',
-		'aria-describedby': ariaDescribedBy?.length ? ariaDescribedBy.join(' ') : undefined,
+		'aria-describedby': ariaDescribedBy,
 		'aria-label': hideLabel && label ? label : undefined,
 	};
 }

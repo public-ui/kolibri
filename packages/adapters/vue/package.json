@@ -55,11 +55,13 @@
 		"@types/normalize-package-data": "2.4.4",
 		"typescript": "5.8.3",
 		"unbuild": "3.5.0",
-		"vue": "3.5.16"
+		"vue": "3.5.16",
+		"vue-router": "4.2.3"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"vue": ">=3"
+		"vue": ">=3",
+		"vue-router": ">=4"
 	},
 	"sideEffects": false,
 	"type": "module",

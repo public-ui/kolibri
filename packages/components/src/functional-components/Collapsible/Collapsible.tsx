@@ -18,6 +18,7 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> &
 	disabled?: boolean;
 	level?: HeadingLevel;
 	label: string;
+	onClick?: (event: MouseEvent) => void;
 
 	HeadingProps?: {
 		ref?: ((elm?: HTMLElement | undefined) => void) | undefined;

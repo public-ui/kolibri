@@ -5,7 +5,8 @@
 		"flatModuleOutFile": "core.js",
 		"flatModuleId": "@public-ui/angular-v20",
 		"skipTemplateCodegen": true,
-		"fullTemplateTypeCheck": false,
+		"strictTemplates": true,
+		"fullTemplateTypeCheck": true,
 		"enableIvy": true
 	},
 	"compilerOptions": {

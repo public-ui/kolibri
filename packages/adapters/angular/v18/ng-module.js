@@ -10,8 +10,8 @@ fs.writeFileSync(
 /* AutoGen NgModule */
 
 export { ${componentListStr} } from './components';
-export { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
-export { setTagNameTransformer } from './angular-component-lib/tagNameTransformer';
+// export { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
+// export { setTagNameTransformer } from './angular-component-lib/tagNameTransformer';
 `,
 	'utf-8',
 );

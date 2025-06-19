@@ -14,5 +14,8 @@ export default defineBuildConfig({
 	rollup: {
 		emitCJS: true,
 		inlineDependencies: true,
+		output: {
+			banner: "'use client';",
+		},
 	},
 });

@@ -3,6 +3,9 @@ import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 import { Log } from '../schema';
 import { setMode } from '@stencil/core';
 
+/**
+ * Breaking Change: https://github.com/stenciljs/core/issues/6276
+ */
 setMode((elm) => {
 	try {
 		if (elm.shadowRoot instanceof ShadowRoot) {

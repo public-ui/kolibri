@@ -15,7 +15,7 @@ export const getRenderStates = (state: {
 }): {
 	hasError: boolean;
 	hasHint: boolean;
-	ariaDescribedBy: string[];
+	ariaDescribedBy: string | undefined;
 } => {
 	const hasMessage = Boolean(state?._msg?._description && state._msg._description?.length > 0);
 	const isMessageValidError = state._msg?._type === 'error' && hasMessage;
@@ -29,5 +29,5 @@ export const getRenderStates = (state: {
 	if (hasHint) {
 		ariaDescribedBy.push(`${state._id}-hint`);
 	}
-	return { hasError, hasHint, ariaDescribedBy };
+	return { hasError, hasHint, ariaDescribedBy: ariaDescribedBy.length ? ariaDescribedBy.join(' ') : undefined };
 };

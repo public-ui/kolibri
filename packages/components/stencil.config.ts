@@ -1,13 +1,13 @@
 import { promises as fsPromises } from 'fs';
 
-import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil-community/postcss';
 import { sass } from '@stencil/sass';
-import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
-import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
 
 const TAGS = [
@@ -195,10 +195,9 @@ if (process.env.NODE_ENV === 'production') {
 			directivesProxyFile: '../adapters/angular/v20/src/components.ts',
 		}),
 		reactOutputTarget({
-			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/react/src/index.ts',
-			includeDefineCustomElements: false,
+			outDir: '../adapters/react/src',
+			stencilPackageName: '@public-ui/components',
 		}),
 		solidOutputTarget({
 			componentCorePackage: '@public-ui/components',
@@ -215,6 +214,7 @@ if (process.env.NODE_ENV === 'production') {
 		{
 			minify: true,
 			type: 'dist-custom-elements',
+			externalRuntime: false,
 		},
 		// {
 		// 	type: 'dist-custom-elements-bundle',

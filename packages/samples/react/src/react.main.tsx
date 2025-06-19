@@ -1,4 +1,4 @@
-import { setTagNameTransformer } from '@public-ui/react';
+// import { setTagNameTransformer } from '@public-ui/react';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
@@ -19,13 +19,13 @@ const ENABLE_I18N_OVERWRITING =
 const ENABLE_THEME_PATCHING =
 	process.env.ENABLE_THEME_PATCHING === 'true' || new URL('https://x' + location.hash.substring(1)).searchParams.has('enableThemePatching');
 
-const ENABLE_TAG_NAME_TRANSFORMER =
-	process.env.ENABLE_TAG_NAME_TRANSFORMER === 'true' || new URL('https://x' + location.hash.substring(1)).searchParams.has('enableTagNameTransformer');
+// const ENABLE_TAG_NAME_TRANSFORMER =
+// 	process.env.ENABLE_TAG_NAME_TRANSFORMER === 'true' || new URL('https://x' + location.hash.substring(1)).searchParams.has('enableTagNameTransformer');
 
-const tagNameTransformer = (tagName: string) => `${tagName}-sample`;
-if (ENABLE_TAG_NAME_TRANSFORMER) {
-	setTagNameTransformer(tagNameTransformer);
-}
+// const tagNameTransformer = (tagName: string) => `${tagName}-sample`;
+// if (ENABLE_TAG_NAME_TRANSFORMER) {
+// 	setTagNameTransformer(tagNameTransformer);
+// }
 
 const getThemes = async () => {
 	if (process.env.THEME_MODULE) {
@@ -46,7 +46,7 @@ void (async () => {
 				// @see https://github.com/ionic-team/stencil/issues/2847
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				defineCustomElements(window, {
-					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
+					// transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				} as any);
 			},
 			{
@@ -75,7 +75,7 @@ void (async () => {
 								}),
 						])
 					: undefined,
-				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
+				// transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
 			},

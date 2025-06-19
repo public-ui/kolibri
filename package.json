@@ -29,7 +29,7 @@
 		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react*,@stencil/*,@unocss/*",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react*,@stencil/*",
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react*,@stencil/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",

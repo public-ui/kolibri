@@ -24,6 +24,7 @@
 		"strict": true,
 		"skipLibCheck": true
 	},
+	"include": ["src/**/*", "default/src/**/*", "ecl/src/**/*"],
 	"compileOnSave": false,
 	"buildOnSave": false,
 	"exclude": ["node_modules/**", "dist/"]
