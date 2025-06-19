@@ -219,7 +219,7 @@ In the theme component layer, you can set what ever you need to realize your own
 
 ## Samples
 
-The sampels are located in `packages/samples/react` and demonstrate how to use the components in react. Each component has its own folder and the basic sample are in `basic.tsx`. Other stories can be added in the same folder. All samples of a component are registered in the `routes.ts` file.
+The samples are located in `packages/samples/react` and demonstrate how to use the components in react. Each component has its own folder and the basic sample are in `basic.tsx`. Other stories can be added in the same folder. All samples of a component are registered in the `routes.ts` file.
 
 ## Coding Conventions
 
