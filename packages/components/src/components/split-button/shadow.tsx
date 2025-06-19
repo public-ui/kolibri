@@ -41,8 +41,6 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 			if (typeof this._on?.onClick === 'function') {
 				// TODO: this._on is not validated
 				this._on?.onClick(event, this._value);
-			} else {
-				this.toggleDropdown();
 			}
 		},
 	};
