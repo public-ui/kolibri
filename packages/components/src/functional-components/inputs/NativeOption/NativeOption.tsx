@@ -41,6 +41,10 @@ const NativeOptionFc: FC<NativeOptionProps> = ({
 				classNames,
 			)}
 			selected={isSelected}
+			// removed the aria-hidden attribute because the browser caused errors and ignores it
+			// see also:
+			// - https://github.com/public-ui/kolibri/issues/7755
+			// - https://github.com/public-ui/public-ui.github.io/issues/336
 			disabled={disabled}
 			value={index}
 			{...other}
