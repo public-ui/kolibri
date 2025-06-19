@@ -2,10 +2,6 @@
 @use '../mixins/form-field-order.textarea' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	@include kol-form-field-order-textarea-theme;
 
 	.kol-textarea {

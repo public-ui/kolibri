@@ -11,10 +11,6 @@
 @include kol-table-stateless-styles;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-table-stateful {
 		&__pagination,
 		&__pagination-wrapper {

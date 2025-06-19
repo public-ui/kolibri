@@ -20,8 +20,12 @@
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
 	}
 
-	* {
-		box-sizing: border-box;
+	:host {
+		font-size: var(--font-size);
+
+		* {
+			font-family: var(--font-family);
+		}
 	}
 
 	h1,

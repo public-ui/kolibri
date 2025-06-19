@@ -4,7 +4,6 @@
 @layer kol-component {
 	.kol-drawer {
 		$root: &;
-		font-size: rem(16);
 
 		&__dialog {
 			padding: 0;

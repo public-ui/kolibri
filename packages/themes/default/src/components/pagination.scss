@@ -2,10 +2,6 @@
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-button {
 		.kol-pagination__button--selected & {
 			opacity: 1;
