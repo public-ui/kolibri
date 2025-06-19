@@ -5,7 +5,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import clsx from 'clsx';
-import { KolCardTag } from '../../core/component-names';
+import { KolCardWcTag } from '../../core/component-names';
 
 /**
  * @slot - The Content of drawer.
@@ -20,7 +20,7 @@ import { KolCardTag } from '../../core/component-names';
 export class KolDrawer implements DrawerAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private dialogElement?: HTMLDialogElement;
-	private dialogWrapperElement?: HTMLKolCardElement;
+	private dialogWrapperElement?: HTMLKolCardWcElement;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -47,11 +47,11 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private getWrapperRef = (el: HTMLKolCardElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardElement);
+	private getWrapperRef = (el: HTMLKolCardWcElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardWcElement);
 	private renderDialogContent() {
 		const align = this.state._align as string;
 		return (
-			<KolCardTag
+			<KolCardWcTag
 				ref={this.getWrapperRef}
 				class={clsx(`kol-drawer__wrapper`, `kol-drawer__wrapper--${align}`, {
 					'kol-drawer__wrapper--open': this.state._open,
@@ -68,7 +68,7 @@ export class KolDrawer implements DrawerAPI {
 				<div class="kol-drawer__content">
 					<slot />
 				</div>
-			</KolCardTag>
+			</KolCardWcTag>
 		);
 	}
 
