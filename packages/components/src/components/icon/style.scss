@@ -9,4 +9,10 @@
 		font-size: inherit;
 		line-height: inherit;
 	}
+
+	/* this rules overwrites the fixed font size from codicon */
+	:host > i,
+	:host > i::before {
+		font-size: inherit !important;
+	}
 }
