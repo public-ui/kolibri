@@ -10,17 +10,13 @@
 		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
 		"src/scenarios/appointment-form/Summary.tsx"
 	],
-	"ignoreBinaries": ["cross-env", "eslint", "prettier", "webpack"],
+	"ignoreBinaries": ["eslint", "prettier"],
 	"ignoreDependencies": [
 		"@leanup/stack",
-		"@leanup/stack-react",
-		"@leanup/stack-webpack",
 		"@public-ui/components",
 		"@public-ui/react",
 		"@public-ui/themes",
 		"@unocss/preset-uno",
-		"@unocss/webpack",
-		"ajv",
 		"eslint-plugin-jsx-a11y",
 		"eslint-plugin-react",
 		"uno.css"
