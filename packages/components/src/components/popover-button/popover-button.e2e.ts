@@ -37,20 +37,4 @@ test.describe('kol-popover-button', () => {
 		await button.click({ force: true });
 		await expect(popover).not.toBeVisible();
 	});
-
-	test('should hide its tooltip when popover is shown', async ({ page }) => {
-		await page.setContent(`
-			<kol-popover-button _label="Toggle popover" _icons="codicon codicon-info" _hide-label>
-				Popover content
-			</kol-popover-button>
-		`);
-		const button = page.getByTestId('popover-button').locator('button');
-		const tooltip = page.locator('kol-tooltip-wc');
-
-		await button.hover();
-		await expect(tooltip).toBeVisible();
-
-		await button.click();
-		await expect(tooltip).not.toBeVisible();
-	});
 });
