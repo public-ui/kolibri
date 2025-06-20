@@ -35,7 +35,7 @@ const packageJson = JSON.parse(packageJsonContent);
 console.log(`
 Building React Sample App (v${packageJson?.version ?? '#.#.#'}) …`);
 
-child_process.spawnSync('pnpm', ['run', 'build', '--', `--outDir="${buildPath}"`], {
+child_process.spawnSync('pnpm', ['run', 'build', `--outDir="${buildPath}"`], {
 	cwd: workingDir,
 	encoding: 'utf-8',
 	shell: true,
