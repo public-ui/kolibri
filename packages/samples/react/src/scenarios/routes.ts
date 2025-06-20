@@ -1,5 +1,6 @@
 import { Routes } from '../shares/types';
 import { ChangeTabindex } from './change-tabindex';
+import { CustomTooltipDuration } from './custom-tooltip-duration';
 import { CustomTooltipWidth } from './custom-tooltip-width';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { FocusElements } from './focus-elements';
@@ -13,6 +14,7 @@ import { StaticForm } from './static-form';
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'custom-tooltip-width': CustomTooltipWidth,
+		'custom-tooltip-duration': CustomTooltipDuration,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,

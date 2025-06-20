@@ -42,7 +42,9 @@ export class KolTooltipWc implements TooltipAPI {
 	private showTooltip = (): void => {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
+			this.tooltipElement.style.setProperty('animation-direction', 'normal');
 			this.tooltipElement.style.setProperty('display', 'block');
+			this.tooltipElement.style.setProperty('visibility', 'visible');
 			getDocument().addEventListener('keyup', this.hideTooltipByEscape);
 
 			const target = this.previousSibling;
@@ -74,9 +76,16 @@ export class KolTooltipWc implements TooltipAPI {
 	public async hideTooltip() {
 		clearTimeout(this.showTooltipTimeout); // Cancel scheduled tooltips
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			hideOverlay(this.tooltipElement);
-			this.tooltipElement.style.setProperty('display', 'none');
-			this.tooltipElement.style.setProperty('visibility', 'hidden');
+			this.tooltipElement.style.setProperty('animation-direction', 'reverse');
+			const tooltipEl = this.tooltipElement;
+			const onAnimationEnd = (): void => {
+				hideOverlay(tooltipEl as HTMLElement);
+				tooltipEl.style.setProperty('display', 'none');
+				tooltipEl.style.setProperty('visibility', 'hidden');
+				tooltipEl.style.removeProperty('animation-direction');
+				tooltipEl.removeEventListener('animationend', onAnimationEnd);
+			};
+			tooltipEl.addEventListener('animationend', onAnimationEnd);
 			if (this.cleanupAutoPositioning) {
 				this.cleanupAutoPositioning();
 				this.cleanupAutoPositioning = undefined;

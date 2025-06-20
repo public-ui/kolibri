@@ -4,11 +4,14 @@
 	.kol-tooltip {
 		display: contents;
 
+		$tooltip-transition-duration: var(--kolibri-tooltip-transition-duration, 250ms);
+
 		&__floating {
-			animation-duration: 0.25s;
+			animation-duration: $tooltip-transition-duration;
 			animation-iteration-count: 1;
-			animation-name: fadeInOpacity;
-			animation-timing-function: ease-in;
+			animation-name: fadeOpacity;
+			animation-timing-function: ease-out;
+			animation-fill-mode: forwards;
 			display: none;
 			position: fixed;
 			visibility: hidden;
@@ -39,7 +42,7 @@
 		}
 	}
 
-	@keyframes fadeInOpacity {
+	@keyframes fadeOpacity {
 		0% {
 			opacity: 0;
 		}
