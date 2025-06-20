@@ -11,11 +11,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
   - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 - Avoid that branch name may contain hidden characters.
-- Before you commit your changes, execute the following quality checks:
-  - `pnpm format:all` - format all files
-  - `pnpm lint`, required `pnpm build` before
-  - `pnpm test`
-  - `pnpm unused`
+- If something does not work, check in the event of an error whether all dependent submodules have been built.
 
 ## Semantic Versioning
 
