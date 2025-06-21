@@ -1,5 +1,5 @@
 import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '../../schema';
-import { validateImageSource, validateLoading, watchString } from '../../schema';
+import { validateAlt, validateImageSizes, validateImageSrcset, validateImageSource, validateLoading } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
@@ -44,9 +44,7 @@ export class KolImage implements ImageAPI {
 
 	@Watch('_alt')
 	public validateAlt(value?: string): void {
-		watchString(this, '_alt', value, {
-			required: true,
-		});
+		validateAlt(this, value, { required: true });
 	}
 
 	@Watch('_loading')
@@ -56,7 +54,7 @@ export class KolImage implements ImageAPI {
 
 	@Watch('_sizes')
 	public validateSizes(value?: string): void {
-		watchString(this, '_sizes', value);
+		validateImageSizes(this, value);
 	}
 
 	@Watch('_src')
@@ -68,7 +66,7 @@ export class KolImage implements ImageAPI {
 
 	@Watch('_srcset')
 	public validateSrcset(value?: string): void {
-		watchString(this, '_srcset', value);
+		validateImageSrcset(this, value);
 	}
 
 	public componentWillLoad(): void {
