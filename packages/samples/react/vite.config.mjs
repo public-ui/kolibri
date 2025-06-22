@@ -23,7 +23,6 @@ export default defineConfig({
 		'process.env.COMMIT_HASH': JSON.stringify(getGitCommitHash()),
 	},
 	build: {
-		outDir: 'dist',
 		sourcemap: true,
 	},
 	server: {
