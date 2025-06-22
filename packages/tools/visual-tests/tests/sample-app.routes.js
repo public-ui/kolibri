@@ -213,6 +213,17 @@ ROUTES.set('drawer/basic?align=bottom', {
 		},
 	},
 });
+ROUTES.set('drawer/basic?align=left&closer=true', {
+	snapshot: {
+		viewportSize: {
+			width: 600,
+			height: 400,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('form/basic', {
 	snapshot: {
 		skip: true,
