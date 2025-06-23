@@ -8,15 +8,65 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/components)](https://bundlephobia.com/result?p=@public-ui/components)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-Das **Components**-Modul beinhaltet **alle** zur Komponenten-Bibliothek gehörenden **Web Components**.
+This package contains the Stencil-based web components that power KoliBri.
+Each component ships in the `@public-ui/components` npm package.
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
+Learn more about the architecture in the
+[architecture concept](https://public-ui.github.io/docs/concepts/architecture)
+and find additional guides on the
+[documentation site](https://public-ui.github.io/docs).
 
-Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
+## Installation
 
-## Weiterentwicklung
+Add the library to your project with [pnpm](https://pnpm.io):
 
-- in src/index.html main > ol > li mit anderen Elementen entfernen
-  - Suche nach Komponentenname mit Anfangsbuchstaben groß
-  - Inputs sind unter "Form" zu finden
-- nach Fertigstellung src/index.html zurücksetzen, oder die entfernten Elementen wieder einfügen (src/index.bak.html)
+```bash
+pnpm add @public-ui/components
+```
+
+## Usage
+
+Register the components with a theme before using them:
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { DEFAULT } from '@public-ui/theme-default';
+
+register(DEFAULT, defineCustomElements).catch(console.error);
+```
+
+After registration you can use the elements in your markup:
+
+```html
+<kol-button _label="Hello World"></kol-button>
+```
+
+Framework-specific adapters are available for improved developer experience.
+See the [framework guides](https://public-ui.github.io/en/docs/get-started/frameworks).
+
+## Development notes
+
+- Temporarily remove elements in `src/index.html` while working on components.
+  - Search for the component name with an uppercase letter.
+  - Input components are located under "Form".
+- Restore `src/index.html` or `src/index.bak.html` once your work is done.
+
+Run `pnpm --filter @public-ui/components build` to build the library.
+During development you can start the live preview with `pnpm start`.
+
+### Development commands
+
+- `pnpm start` – run the local dev server with live reload
+- `pnpm test` – execute unit and snapshot tests
+- `pnpm lint` – check the code base with ESLint and Stylelint
+
+The [component source README](./src/components/README.md) describes additional styling rules.
+
+## Repository structure
+
+- `src/components` – each web component lives in its own folder.
+- `src/schema` – TypeScript schema describing the API of every component.
+- `src/assets`, `src/locales` and `src/utils` – shared assets, translations and utilities.
+
+You can customize KoliBri by creating your own theme. See the [default theme guide](../themes/default/README.md) for details.

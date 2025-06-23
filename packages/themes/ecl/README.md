@@ -17,9 +17,9 @@ The ECL themes provide styling according to the Styleguides of the European Comm
 You can install the KoliBri themes with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/theme-ecl
-pnpm i -g @public-ui/theme-ecl
-yarn add -g @public-ui/theme-ecl
+npm i @public-ui/theme-ecl
+pnpm i @public-ui/theme-ecl
+yarn add @public-ui/theme-ecl
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ Register the theme like this:
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import {
-	ECL_EC, // or ECL_EU
+        ECL_EC, // or ECL_EU
 } from '@public-ui/theme-ecl';
 
 register(
@@ -40,7 +40,9 @@ register(
 	.then(() => {
 		/* KoliBri ready */
 	})
-	.catch((error) => {
-		/* Handle errors */
-	});
+        .catch((error) => {
+                /* Handle errors */
+        });
 ```
+
+The tokens used here follow the ECL guidelines. You can override them similarly to the [default theme](../default/README.md).

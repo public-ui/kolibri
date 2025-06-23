@@ -30,35 +30,34 @@ register(DEFAULT, defineCustomElements).then(() => {
 
 👉 [https://public-ui.github.io](https://public-ui.github.io)
 
-## Usage (DE)
+## Usage
 
-Das Default-Theme ist ein _Token-Based_ Theme, das mit minimalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
-über Design Tokens, in Form von _CSS Custom Properties_ an das eigene Design angepasst werden.
+The default theme is token based and works out of the box. Customize it through design tokens defined as _CSS custom properties_.
 
-### Variablen
+### Tokens
 
-| Variable                          | Standard-Wert                                    | Bedeutung                                          |
-| --------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
-| `--kolibri-border-radius`         | `5px`                                            | Border-Radius für abgerundete Elemente             |
-| `--kolibri-font-family`           | `Verdana, Arial, Calibri, Helvetica, sans-serif` | Allgemeine Schriftart                              |
-| `--kolibri-font-size`             | `16px`                                           | Allgemeine Schriftgröße                            |
-| `--kolibri-spacing`               | `0.25rem`                                        | Allgemeiner Abstand zwischen Elementen             |
-| `--kolibri-border-width`          | `1px`                                            | Allgemeine Rahmen-Breite                           |
-| `--kolibri-color-primary`         | `#004b76`                                        | Primärfarbe                                        |
-| `--kolibri-color-primary-variant` | `#0077b6`                                        | Alternative Variante der Primärfarbe               |
-| `--kolibri-color-secondary`       | `#ccebf7`                                        | Sekundärfarbe                                      |
-| `--kolibri-color-danger`          | `#c0003c`                                        | Farbe für Fehlermeldungen und gefährliche Aktionen |
-| `--kolibri-color-warning`         | `#c44931`                                        | Farbe für Warnungen                                |
-| `--kolibri-color-success`         | `#005c45`                                        | Farbe für Erfolgsmeldungen                         |
-| `--kolibri-color-subtle`          | `#576164`                                        | Farbe für feine Akzente wie z.B. Rahmen            |
-| `--kolibri-color-light`           | `#ffffff`                                        | Helle Farbe für z.B. Hintergründe                  |
-| `--kolibri-color-text`            | `#202020`                                        | Textfarbe                                          |
-| `--kolibri-color-mute`            | `#f2f3f4`                                        | Farbe für deaktivierte Elemente                    |
-| `--kolibri-color-mute-variant`    | `#bec5c9`                                        | Alternative Farbe für deaktivierte Elemente        |
+| Variable                          | Default value                                    | Description                            |
+| --------------------------------- | ------------------------------------------------ | -------------------------------------- |
+| `--kolibri-border-radius`         | `5px`                                            | Border radius for rounded elements     |
+| `--kolibri-font-family`           | `Verdana, Arial, Calibri, Helvetica, sans-serif` | Default font family                    |
+| `--kolibri-font-size`             | `16px`                                           | Base font size                         |
+| `--kolibri-spacing`               | `0.25rem`                                        | Spacing between elements               |
+| `--kolibri-border-width`          | `1px`                                            | Default border width                   |
+| `--kolibri-color-primary`         | `#004b76`                                        | Primary color                          |
+| `--kolibri-color-primary-variant` | `#0077b6`                                        | Variant of the primary color           |
+| `--kolibri-color-secondary`       | `#ccebf7`                                        | Secondary color                        |
+| `--kolibri-color-danger`          | `#c0003c`                                        | Color for errors and dangerous actions |
+| `--kolibri-color-warning`         | `#c44931`                                        | Color for warnings                     |
+| `--kolibri-color-success`         | `#005c45`                                        | Color for success messages             |
+| `--kolibri-color-subtle`          | `#576164`                                        | Subtle accent color                    |
+| `--kolibri-color-light`           | `#ffffff`                                        | Light color for backgrounds            |
+| `--kolibri-color-text`            | `#202020`                                        | Text color                             |
+| `--kolibri-color-mute`            | `#f2f3f4`                                        | Color for disabled elements            |
+| `--kolibri-color-mute-variant`    | `#bec5c9`                                        | Alternate disabled color               |
 
-### Verwendung
+### Example
 
-Theme importieren und registrieren:
+Import and register the theme:
 
 ```js
 import { register } from '@public-ui/components';
@@ -68,9 +67,10 @@ import { DEFAULT } from '@public-ui/theme-default';
 register(DEFAULT, defineCustomElements);
 ```
 
-Für mehr Details und weitere Optionen siehe [Erste Schritte](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).
+For more details and a complete token list see the [documentation](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).
 
-Um die _Design Tokens_ anzupassen, reicht ein einfaches Stylesheet, das die gewünschten Custom Properties überschreibt. Es ist dabei nicht notwendig, alle Properties zu setzen, sondern nur solche, die auch überschrieben werden sollen. Beispiel:
+Override the tokens in a simple stylesheet. Only specify the properties you want
+to change. Example:
 
 ```css
 :root {

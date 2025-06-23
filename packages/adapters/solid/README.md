@@ -17,9 +17,9 @@ Provide an adapter for [SolidJS](https://www.solidjs.com/) to use the KoliBri co
 You can install the adapter with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/solid
-pnpm i -g @public-ui/solid
-yarn add -g @public-ui/solid
+npm i @public-ui/solid
+pnpm i @public-ui/solid
+yarn add @public-ui/solid
 ```
 
 ## Usage
@@ -49,3 +49,5 @@ import { KolButton } from '@public-ui/solid';
 
 export const AppComponent: Component = () => <KolButton _label="Hello World" />;
 ```
+
+For customization options read the [default theme README](../../themes/default/README.md).
