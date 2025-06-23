@@ -1,6 +1,7 @@
 import { Routes } from '../shares/types';
+import { AppointmentForm } from './appointment-form/AppointmentForm';
 import { ChangeTabindex } from './change-tabindex';
-import { CustomTooltipWidth } from './custom-tooltip-width';
+import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { FocusElements } from './focus-elements';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
@@ -12,7 +13,8 @@ import { StaticForm } from './static-form';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
-		'custom-tooltip-width': CustomTooltipWidth,
+		'appointment-form': AppointmentForm,
+		'custom-tooltip-css-properties': CustomTooltipCssProperties,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,

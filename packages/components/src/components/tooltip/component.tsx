@@ -40,6 +40,8 @@ export class KolTooltipWc implements TooltipAPI {
 	private showTooltip = (): void => {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
+			this.tooltipElement.style.removeProperty('animation-direction');
+			this.tooltipElement.style.setProperty('opacity', '0');
 			this.tooltipElement.style.setProperty('display', 'block');
 			getDocument().addEventListener('keyup', this.hideTooltipByEscape);
 
@@ -54,8 +56,12 @@ export class KolTooltipWc implements TooltipAPI {
 	private hideTooltip = (): void => {
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
-			this.tooltipElement.style.setProperty('display', 'none');
-			this.tooltipElement.style.setProperty('visibility', 'hidden');
+			this.tooltipElement.style.setProperty('opacity', '1');
+			this.tooltipElement.style.setProperty('animation-direction', 'reverse');
+			this.tooltipElement.addEventListener('animationend', this.handleHideAnimationEnd, {
+				once: true,
+			});
+
 			if (this.cleanupAutoPositioning) {
 				this.cleanupAutoPositioning();
 				this.cleanupAutoPositioning = undefined;
@@ -64,41 +70,52 @@ export class KolTooltipWc implements TooltipAPI {
 		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
 	};
 
+	private handleHideAnimationEnd = (): void => {
+		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+			this.tooltipElement.style.setProperty('display', 'none');
+			this.tooltipElement.style.setProperty('opacity', '0');
+			this.tooltipElement.style.removeProperty('animation-direction');
+		}
+	};
+
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
 			this.hideTooltip();
 		}
 	};
 
-	private handleMouseEnter() {
+	private handleMouseEnter = (): void => {
 		this.hasMouseIn = true;
 		this.showOrHideTooltip();
-	}
-	private handleMouseleave() {
+	};
+
+	private handleMouseleave = (): void => {
 		this.hasMouseIn = false;
 		this.showOrHideTooltip();
-	}
-	private handleFocusIn() {
+	};
+
+	private handleFocusIn = (): void => {
 		this.hasFocusIn = true;
 		this.showOrHideTooltip();
-	}
-	private handleFocusout() {
+	};
+
+	private handleFocusout = (): void => {
 		this.hasFocusIn = false;
 		this.showOrHideTooltip();
-	}
+	};
 
 	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
-		el.addEventListener('mouseleave', this.handleMouseleave.bind(this));
-		el.addEventListener('focusin', this.handleFocusIn.bind(this));
-		el.addEventListener('focusout', this.handleFocusout.bind(this));
+		el.addEventListener('mouseenter', this.handleMouseEnter);
+		el.addEventListener('mouseleave', this.handleMouseleave);
+		el.addEventListener('focusin', this.handleFocusIn);
+		el.addEventListener('focusout', this.handleFocusout);
 	};
 
 	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
-		el.removeEventListener('mouseleave', this.handleMouseleave.bind(this));
-		el.removeEventListener('focusin', this.handleFocusIn.bind(this));
-		el.removeEventListener('focusout', this.handleFocusout.bind(this));
+		el.removeEventListener('mouseenter', this.handleMouseEnter);
+		el.removeEventListener('mouseleave', this.handleMouseleave);
+		el.removeEventListener('focusin', this.handleFocusIn);
+		el.removeEventListener('focusout', this.handleFocusout);
 	};
 
 	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
