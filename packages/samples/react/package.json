@@ -34,7 +34,7 @@
 		"@types/node": "24.0.1",
 		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.7",
-		"@unocss/preset-uno": "0.58.9",
+		"@unocss/preset-mini": "66.2.3",
 		"@unocss/vite": "66.2.3",
 		"@vitejs/plugin-react-swc": "3.10.2",
 		"adopted-style-sheets": "1.1.9-rc.19",
@@ -60,18 +60,11 @@
 		"yup": "1.6.1"
 	},
 	"files": [
-		".eslintignore",
-		".eslintrc.js",
-		".gitignore",
-		".prettierignore",
-		"dist/**",
-		"index.html",
-		"prettier.config.js",
-		"public/**",
-		"src/**",
-		"test-build.sh",
+		"dist",
+		"public",
+		"src",
 		"tsconfig.json",
 		"unocss.config.ts",
-		"vite.config.mjs"
+		"vite.config.ts"
 	]
 }
