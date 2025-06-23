@@ -7,5 +7,6 @@
 		"esModuleInterop": true,
 		"types": ["@wdio/globals/types", "mocha", "node"]
 	},
-	"include": ["./tests/**/*.ts"]
+	"include": ["./tests/**/*.ts"],
+	"exclude": ["node_modules", "dist"]
 }
