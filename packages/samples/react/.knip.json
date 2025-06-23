@@ -16,7 +16,7 @@
 		"@public-ui/components",
 		"@public-ui/react",
 		"@public-ui/themes",
-		"@unocss/preset-uno",
+		"@unocss/preset-mini",
 		"eslint-plugin-jsx-a11y",
 		"eslint-plugin-react",
 		"uno.css"
