@@ -65,13 +65,13 @@
 		".gitignore",
 		".prettierignore",
 		"dist/**",
+		"index.html",
 		"prettier.config.js",
 		"public/**",
 		"src/**",
 		"test-build.sh",
 		"tsconfig.json",
 		"unocss.config.ts",
-		"vite.config.mjs",
-		"build.mjs"
+		"vite.config.mjs"
 	]
 }
