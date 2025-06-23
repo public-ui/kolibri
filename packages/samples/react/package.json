@@ -72,6 +72,7 @@
 		".gitignore",
 		".prettierignore",
 		"dist/**",
+		"index.html",
 		"prettier.config.js",
 		"public/**",
 		"src/**",
