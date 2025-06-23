@@ -8,7 +8,7 @@
 		"url": "https://github.com/public-ui/kolibri"
 	},
 	"scripts": {
-		"build": "node build.mjs",
+		"build": "vite build",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
@@ -67,18 +67,11 @@
 		"yup": "1.6.1"
 	},
 	"files": [
-		".eslintignore",
-		".eslintrc.js",
-		".gitignore",
-		".prettierignore",
-		"dist/**",
-		"prettier.config.js",
-		"public/**",
-		"src/**",
-		"test-build.sh",
+		"dist",
+		"public",
+		"src",
 		"tsconfig.json",
 		"unocss.config.ts",
-		"build.mjs",
-		"vite.config.js"
+		"vite.config.ts"
 	]
 }

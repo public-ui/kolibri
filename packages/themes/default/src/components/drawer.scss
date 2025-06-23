@@ -1,8 +1,11 @@
 @use '../mixins/rem' as *;
+@use '../mixins/kol-card' as *;
 
 $duration: 0.4s;
 
 @layer kol-theme-component {
+	@include kol-card;
+
 	.kol-drawer {
 		&__wrapper {
 			box-shadow: 0 0 4px var(--color-subtle);
@@ -39,6 +42,10 @@ $duration: 0.4s;
 				}
 			}
 		}
+	}
+
+	.kol-card {
+		border-radius: 0;
 	}
 }
 

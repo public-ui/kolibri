@@ -32,30 +32,31 @@ register(DEFAULT, defineCustomElements).then(() => {
 
 ## Usage
 
-The default theme is token based and works out of the box. Customize it through design tokens defined as _CSS custom properties_.
+The default theme is token based and works with minimal adjustments. It already contains all necessary styling and can
+be customized with design tokens using _CSS Custom Properties_.
 
-### Tokens
+### Variables
 
-| Variable                          | Default value                                    | Description                            |
+| Variable                          | Default value                                    | Meaning                                |
 | --------------------------------- | ------------------------------------------------ | -------------------------------------- |
 | `--kolibri-border-radius`         | `5px`                                            | Border radius for rounded elements     |
 | `--kolibri-font-family`           | `Verdana, Arial, Calibri, Helvetica, sans-serif` | Default font family                    |
 | `--kolibri-font-size`             | `16px`                                           | Base font size                         |
-| `--kolibri-spacing`               | `0.25rem`                                        | Spacing between elements               |
-| `--kolibri-border-width`          | `1px`                                            | Default border width                   |
+| `--kolibri-spacing`               | `0.25rem`                                        | Base spacing between elements          |
+| `--kolibri-border-width`          | `1px`                                            | Border width                           |
 | `--kolibri-color-primary`         | `#004b76`                                        | Primary color                          |
-| `--kolibri-color-primary-variant` | `#0077b6`                                        | Variant of the primary color           |
+| `--kolibri-color-primary-variant` | `#0077b6`                                        | Alternative primary color              |
 | `--kolibri-color-secondary`       | `#ccebf7`                                        | Secondary color                        |
 | `--kolibri-color-danger`          | `#c0003c`                                        | Color for errors and dangerous actions |
-| `--kolibri-color-warning`         | `#c44931`                                        | Color for warnings                     |
-| `--kolibri-color-success`         | `#005c45`                                        | Color for success messages             |
-| `--kolibri-color-subtle`          | `#576164`                                        | Subtle accent color                    |
-| `--kolibri-color-light`           | `#ffffff`                                        | Light color for backgrounds            |
+| `--kolibri-color-warning`         | `#c44931`                                        | Warning color                          |
+| `--kolibri-color-success`         | `#005c45`                                        | Success color                          |
+| `--kolibri-color-subtle`          | `#576164`                                        | Subtle accent color for borders        |
+| `--kolibri-color-light`           | `#ffffff`                                        | Light background color                 |
 | `--kolibri-color-text`            | `#202020`                                        | Text color                             |
 | `--kolibri-color-mute`            | `#f2f3f4`                                        | Color for disabled elements            |
 | `--kolibri-color-mute-variant`    | `#bec5c9`                                        | Alternate disabled color               |
 
-### Example
+### Usage
 
 Import and register the theme:
 
@@ -67,10 +68,9 @@ import { DEFAULT } from '@public-ui/theme-default';
 register(DEFAULT, defineCustomElements);
 ```
 
-For more details and a complete token list see the [documentation](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).
+For more details and options see [Getting started](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).
 
-Override the tokens in a simple stylesheet. Only specify the properties you want
-to change. Example:
+To adjust the design tokens, create a simple stylesheet that overrides the desired custom properties. You do not need to set every property—only those you want to change. Example:
 
 ```css
 :root {
@@ -81,3 +81,26 @@ to change. Example:
 	--kolibri-color-primary-variant: #ff64b9;
 }
 ```
+
+## Design Tokens
+
+The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components.
+
+| Token                     | Default value                                                                | Meaning                      |
+| ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
+| `--border-radius`         | `var(--kolibri-border-radius, 5px)`                                          | Default border radius        |
+| `--font-family`           | `var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif)` | Default font                 |
+| `--font-size`             | `var(--kolibri-font-size, #{rem(16)})`                                       | Base font size               |
+| `--spacing`               | `var(--kolibri-spacing, #{rem(4)})`                                          | Standard spacing             |
+| `--border-width`          | `var(--kolibri-border-width, 1px)`                                           | Border width                 |
+| `--color-primary`         | `var(--kolibri-color-primary, #004b76)`                                      | Primary accent color         |
+| `--color-primary-variant` | `var(--kolibri-color-primary-variant, #0077b6)`                              | Variant of the primary color |
+| `--color-secondary`       | `var(--kolibri-color-secondary, #ccebf7)`                                    | Secondary color              |
+| `--color-danger`          | `var(--kolibri-color-danger, #b4003c)`                                       | Error color                  |
+| `--color-warning`         | `var(--kolibri-color-warning, #c44931)`                                      | Warning color                |
+| `--color-success`         | `var(--kolibri-color-success, #005c45)`                                      | Success color                |
+| `--color-subtle`          | `var(--kolibri-color-subtle, #576164)`                                       | Subtle lines and borders     |
+| `--color-light`           | `var(--kolibri-color-light, #ffffff)`                                        | Light surface color          |
+| `--color-text`            | `var(--kolibri-color-text, #202020)`                                         | Standard text color          |
+| `--color-mute`            | `var(--kolibri-color-mute, #f2f3f4)`                                         | Muted color                  |
+| `--color-mute-variant`    | `var(--kolibri-color-mute-variant, #bec5c9)`                                 | Alternate muted color        |
