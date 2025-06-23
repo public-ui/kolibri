@@ -4,17 +4,20 @@ import { useSearchParams } from 'react-router-dom';
 
 import { HideMenusContext } from '../../shares/HideMenusContext';
 import type { AlignPropType } from '@public-ui/components';
-import { KolDrawer, KolButton, KolBadge } from '@public-ui/react';
+import { KolDrawer, KolButton, KolBadge, KolInputCheckbox } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 import { DrawerRadioAlign } from './partials/align';
-
 export const DrawerBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultAlign = searchParams.get('align') as AlignPropType;
+	const defaultCloser = searchParams.get('closer') === 'true';
 	const hideMenus = useContext(HideMenusContext);
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
+
 	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
+	const [hasCloser, setHasCloser] = useState<boolean>(defaultCloser);
+
 	useEffect(() => {
 		if (defaultAlign) {
 			drawerElement.current?.open();
@@ -28,10 +31,28 @@ export const DrawerBasic: FC = () => {
 			</SampleDescription>
 
 			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
+
+			<KolInputCheckbox
+				_label="Drawer has closer"
+				className="mb-4"
+				_checked={hasCloser}
+				_on={{
+					onInput: (_, value) => {
+						setHasCloser((value as null | boolean) === true);
+					},
+				}}
+			/>
+
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="I am a drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
+				<KolDrawer
+					ref={drawerElement}
+					_label="I am a drawer"
+					_align={align}
+					_hasCloser={hasCloser}
+					_on={{ onClose: () => console.log('Drawer onClose triggered!') }}
+				>
 					<div className={align === 'left' || align === 'right' ? 'drawer-content-vertical' : ''}>
-						<p>
+						<p className="mt-0">
 							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 							voluptua.
 						</p>
