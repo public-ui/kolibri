@@ -25,7 +25,20 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 
 ```css
 .container {
-  --kol-tooltip-width': '40rem';
+  --kolibri-tooltip-width': '40rem';
+}
+```
+
+## Animation
+
+Die Verzögerung und die Dauer der Ein- und Ausblend-Animation kann \u00fcber CSS-Custom-Properties angepasst werden.
+Die Verzögerung der Einblendanimation wird über `--kolibri-tooltip-animation-delay` gesteuert. Diese Verzögerung ist nützlich, um zu verhindern, dass der Tooltip sofort erscheint, wenn der Mauszeiger über das Referenzelement bewegt wird.
+Die Dauer der Ein- und Ausblendanimation wird über `--kolibri-tooltip-animation-duration` gesteuert. Diese Dauer ist nützlich, um die Animation flüssiger zu gestalten.
+
+```css
+body {
+	--kolibri-tooltip-animation-delay: 100ms;
+	--kolibri-tooltip-animation-duration: 300ms;
 }
 ```
 

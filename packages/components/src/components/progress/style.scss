@@ -96,8 +96,8 @@
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
 	@media (prefers-reduced-motion) {
 		.progress {
-			transition-duration: 0s;
 			transition-delay: 0s;
+			transition-duration: 0s;
 		}
 	}
 }

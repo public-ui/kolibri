@@ -1,19 +1,19 @@
 import { Routes } from '../shares/types';
 import { AppointmentForm } from './appointment-form/AppointmentForm';
-import { CustomTooltipWidth } from './custom-tooltip-width';
+import { ChangeTabindex } from './change-tabindex';
+import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
-import { InputsGetValue } from './inputs-get-value';
-import { StaticForm } from './static-form';
 import { FocusElements } from './focus-elements';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { InputGroupWithError } from './input-group-with-error';
-import { ChangeTabindex } from './change-tabindex';
+import { InputsGetValue } from './inputs-get-value';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
+import { StaticForm } from './static-form';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'appointment-form': AppointmentForm,
-		'custom-tooltip-width': CustomTooltipWidth,
+		'custom-tooltip-css-properties': CustomTooltipCssProperties,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,
