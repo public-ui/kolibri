@@ -15,6 +15,31 @@ export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 		onAlertTimeout?: () => void;
 	};
 
+/**
+ * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
+ * - https://googlechrome.github.io/samples/vibration/
+ * - Ongoing discussion: https://github.com/public-ui/kolibri/issues/7191
+ * @todo Move side-effect out of render-function to avoid multiple incarnations.
+ */
+const vibrateOnError = (): void => {
+	if (typeof navigator === 'undefined' || typeof navigator.vibrate !== 'function') {
+		return;
+	}
+	const ua = navigator.userActivation;
+	const hasGesture = ua?.isActive || ua?.hasBeenActive;
+	if (!hasGesture) {
+		return;
+	}
+	if (!matchMedia('(any-pointer: coarse)').matches) {
+		return;
+	}
+	try {
+		navigator.vibrate([100, 75, 100, 75, 100]);
+	} catch {
+		/* no-op */
+	}
+};
+
 const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	const {
 		class: classNames = {},
@@ -30,15 +55,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	} = props;
 
 	if (alert) {
-		/**
-		 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
-		 * - https://googlechrome.github.io/samples/vibration/
-		 * - Ongoing discussion: https://github.com/public-ui/kolibri/issues/7191
-		 * @todo Move side-effect out of render-function to avoid multiple incarnations.
-		 */
-		if (navigator.userActivation?.hasBeenActive) {
-			navigator?.vibrate?.([100, 75, 100, 75, 100]);
-		}
+		vibrateOnError();
 
 		setTimeout(() => {
 			onAlertTimeout?.();
