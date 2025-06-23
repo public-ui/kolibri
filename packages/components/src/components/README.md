@@ -5,9 +5,9 @@
 You can install the KoliBri components with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/components
-pnpm i -g @public-ui/components
-yarn add -g @public-ui/components
+npm i @public-ui/components
+pnpm i @public-ui/components
+yarn add @public-ui/components
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ Then, you can use the components in your HTML:
 
 Consider using one of the [framework integrations](https://public-ui.github.io/en/docs/get-started/frameworks) for a better developer experience.
 
-## Development hints
+## Development notes
 
 ### Styling
 

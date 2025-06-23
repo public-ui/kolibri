@@ -17,9 +17,9 @@ The ECL themes provide styling according to the Styleguides of the European Comm
 You can install the KoliBri themes with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/theme-ecl
-pnpm i -g @public-ui/theme-ecl
-yarn add -g @public-ui/theme-ecl
+npm i @public-ui/theme-ecl
+pnpm i @public-ui/theme-ecl
+yarn add @public-ui/theme-ecl
 ```
 
 ## Usage

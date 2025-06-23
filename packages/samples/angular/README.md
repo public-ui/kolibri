@@ -1,4 +1,4 @@
-# Angular
+# KoliBri - Angular Sample App
 
 [![npm](https://img.shields.io/npm/v/@public-ui/sample-angular)](https://www.npmjs.com/package/@public-ui/components)
 [![license](https://img.shields.io/npm/l/@public-ui/sample-angular)](https://github.com/public-ui/kolibri/blob/main/LICENSE)

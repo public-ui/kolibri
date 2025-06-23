@@ -1,5 +1,7 @@
 # Vaadin-Adapter for KoliBri
 
+Experimental adapter to generate Vaadin components from the KoliBri library.
+
 [![npm](https://img.shields.io/npm/v/@public-ui/vaadin)](https://www.npmjs.com/package/@public-ui/components)
 [![license](https://img.shields.io/npm/l/@public-ui/vaadin)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@public-ui/vaadin)](https://www.npmjs.com/package/@public-ui/vaadin)
@@ -21,3 +23,5 @@
 | Default values |        |
 | Complex types  |        |
 | Required       |        |
+
+See the [default theme README](../../themes/default/README.md) for available design tokens.
