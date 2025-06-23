@@ -13,3 +13,4 @@ runs:
         path: |
           packages/**/playwright-report/
           packages/**/test-results/**/*.png
+          packages/**/test-results/axe-default/**

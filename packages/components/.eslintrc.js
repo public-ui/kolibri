@@ -70,9 +70,11 @@ const config = {
 		'@stencil-community/strict-mutable': 'off',
 		'@stencil-community/ban-exported-const-enums': 'off',
 		'@stencil-community/strict-boolean-conditions': 'off',
-		'@stencil-community/ban-default-true': 'off',
+               '@stencil-community/ban-default-true': 'off',
 
-		'react/jsx-no-bind': 'off',
+'eqeqeq': 'error',
+
+               'react/jsx-no-bind': 'off',
 
 		'no-console': 'error',
 	},

@@ -7,8 +7,4 @@
 @layer kol-component {
 	@include kol-link-styles('kol-link');
 	@include kol-alert;
-
-	.kol-form {
-		font-size: rem(16);
-	}
 }

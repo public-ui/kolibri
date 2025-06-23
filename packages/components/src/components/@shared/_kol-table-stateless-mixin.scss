@@ -8,14 +8,22 @@
 
 	@layer kol-component {
 		.kol-table {
+			$root: &;
+
 			display: block;
-			font-size: rem(16);
 			max-width: 100%;
 			position: relative;
 
 			&__scroll-container {
 				overflow-x: auto;
 				overflow-y: hidden;
+
+				@at-root #{$root}:has(#{$root}__focus-element:focus) & {
+					/* @see https://remysharp.com/til/css/focus-ring-default-styles */
+					outline: 5px auto Highlight;
+					outline: 5px auto -webkit-focus-ring-color;
+					outline-offset: 2px;
+				}
 			}
 
 			&__table {
@@ -30,14 +38,6 @@
 
 			&__focus-element {
 				font-size: 0;
-
-				&:focus {
-					outline: 0 !important;
-					/* @see https://remysharp.com/til/css/focus-ring-default-styles */
-					outline: 5px auto Highlight;
-					outline: 5px auto -webkit-focus-ring-color;
-					outline-offset: 2px;
-				}
 			}
 
 			&__sort-button {

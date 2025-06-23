@@ -4,30 +4,30 @@
 	"private": true,
 	"scripts": {
 		"build": "ng build",
+		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
 		"format": "prettier --check src",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
 		"start": "ng serve",
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@angular/animations": "17.3.12",
-		"@angular/common": "17.3.12",
-		"@angular/compiler": "17.3.12",
-		"@angular/core": "17.3.12",
-		"@angular/platform-browser": "17.3.12",
-		"@angular/platform-browser-dynamic": "17.3.12",
-		"@angular/router": "17.3.12",
-		"@public-ui/angular-v17": "workspace:*",
+		"@angular/animations": "20.0.3",
+		"@angular/common": "20.0.3",
+		"@angular/compiler": "20.0.3",
+		"@angular/core": "20.0.3",
+		"@angular/platform-browser": "20.0.3",
+		"@angular/router": "20.0.3",
+		"@public-ui/angular-v20": "workspace:*",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"rxjs": "7.8.2",
 		"tslib": "2.8.1",
-		"zone.js": "0.14.10"
+		"zone.js": "0.15.1"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "17.3.17",
-		"@angular/cli": "17.3.17",
-		"@angular/compiler-cli": "17.3.12",
+		"@angular-devkit/build-angular": "20.0.2",
+		"@angular/cli": "20.0.2",
+		"@angular/compiler-cli": "20.0.3",
 		"@types/jasmine": "5.1.8",
 		"@tailwindcss/postcss": "4.1.10",
 		"adopted-style-sheets": "1.1.9-rc.19",
@@ -37,10 +37,10 @@
 		"karma-jasmine-html-reporter": "2.1.0",
 		"karma-coverage": "2.2.1",
 		"jasmine-core": "5.8.0",
-		"knip": "5.60.2",
+		"knip": "5.61.0",
 		"postcss": "8.5.5",
 		"prettier": "3.5.3",
 		"tailwindcss": "3.4.17",
-		"typescript": "5.4.5"
+		"typescript": "5.8.3"
 	}
 }

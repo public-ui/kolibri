@@ -315,5 +315,3 @@ version:
 kol-heading:
 
 - slot `default` renamed to `expert`
-
-

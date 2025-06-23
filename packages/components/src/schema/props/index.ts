@@ -38,6 +38,7 @@ export * from './label';
 export * from './label-align';
 export * from './link-on-callbacks';
 export * from './link-target';
+export * from './link-variant';
 export * from './loading';
 export * from './max';
 export * from './modal';

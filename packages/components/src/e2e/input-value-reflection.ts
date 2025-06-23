@@ -3,13 +3,21 @@ import { expect } from '@playwright/test';
 import type { FillAction } from './utils/FillAction';
 import { INPUTS_SELECTOR } from './utils/inputsSelector';
 
-const testInputValueReflection = <ElementType extends { _value?: unknown } & (HTMLElement | SVGElement)>(
-	componentName: string,
-	testValue?: unknown,
-	fillAction?: FillAction,
-	additionalProperties: string = '',
-	equalityCheck: 'toBe' | 'toEqual' = 'toBe',
-) => {
+type TestInputValueReflectionOptions = {
+	additionalProperties?: string;
+	componentName: string;
+	equalityCheck?: 'toBe' | 'toEqual';
+	fillAction?: FillAction;
+	testValue?: unknown;
+};
+
+const testInputValueReflection = <ElementType extends { _value?: unknown } & (HTMLElement | SVGElement)>({
+	additionalProperties = '',
+	componentName,
+	equalityCheck = 'toBe',
+	fillAction,
+	testValue,
+}: TestInputValueReflectionOptions) => {
 	test(`should reflect the _value property on the web component`, async ({ page }) => {
 		await page.setContent(`<${componentName} _label="Input" ${additionalProperties}></${componentName}>`);
 		if (fillAction) {

@@ -3,10 +3,6 @@
 @use '../mixins/required' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	@include kol-alert-theme;
 
 	.kol-form-field {
@@ -53,7 +49,6 @@
 			border-color: var(--color-grey-75);
 			color: var(--color-grey);
 			line-height: 1.5;
-			font-size: rem(16);
 
 			&:focus {
 				outline-color: var(--color-blue);

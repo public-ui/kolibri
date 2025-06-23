@@ -2,18 +2,13 @@
 	"devDependencies": {
 		"@commitlint/cli": "19.8.1",
 		"@commitlint/config-conventional": "19.8.1",
-		"cross-env": "7.0.3",
 		"husky": "9.1.7",
-		"js-yaml": "4.1.0",
 		"lerna": "8.2.2",
 		"license-report": "6.8.0",
-		"lint-staged": "15.5.2",
-		"npm-check-updates": "17.1.18",
-		"npm-run-all2": "7.0.2",
-		"prettier": "3.5.3",
-		"rimraf": "6.0.1",
-		"ts-node": "10.9.2",
-		"typescript": "5.8.3"
+		"lint-staged": "16.1.2",
+		"npm-check-updates": "18.0.1",
+		"npm-run-all2": "8.0.4",
+		"prettier": "3.5.3"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -25,6 +20,8 @@
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
+		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
+		"format:all": "prettier --write '**/*.{js,ts,json,yml,yaml,md}' '*.{js,ts,json,yml,yaml,md}' && pnpm format:config && pnpm -r format",
 		"lint": "pnpm -r lint",
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
@@ -32,15 +29,16 @@
 		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/*,@types/react*,@unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @stencil/*,@types/react*",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react*,@stencil/*,@unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react*,@stencil/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
+		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
+		"update": "pnpm ncu:minor && pnpm ncu:major",
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
 }

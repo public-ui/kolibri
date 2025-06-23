@@ -3,7 +3,6 @@
 @layer kol-theme-component {
 	.kol-nav {
 		$root: &;
-		font-family: var(--font-family);
 
 		&__navigation {
 			background-color: var(--color-blue);

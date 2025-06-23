@@ -74,7 +74,7 @@ export class KolNav implements NavAPI {
 	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
-			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren !== children),
 		};
 	}
 
@@ -253,7 +253,7 @@ export class KolNav implements NavAPI {
 								},
 							}}
 							_tooltipAlign="right"
-							_variant="ghost"
+							_buttonVariant="ghost"
 						></KolButtonWcTag>
 					</div>
 				)}

@@ -1,12 +1,13 @@
 import type { Generic } from 'adopted-style-sheets';
 import type {
+	ButtonVariantPropType,
+	LinkVariantPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaCurrentValue,
 	PropAriaDescription,
 	PropAriaExpanded,
 	PropAriaOwns,
-	PropButtonVariant,
 	PropCustomClass,
 	PropDisabled,
 	PropDownload,
@@ -16,6 +17,7 @@ import type {
 	PropLabelWithExpertSlot,
 	PropLinkOnCallbacks,
 	PropLinkTarget,
+	PropLinkVariant,
 	PropShortKey,
 	PropTooltipAlign,
 } from '../props';
@@ -39,16 +41,20 @@ export type OptionalProps = {
 	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
+	PropLinkVariant &
 	PropShortKey &
 	PropTooltipAlign;
 
 type RequiredStates = PropAriaCurrentValue & PropIcons & PropHref;
 type OptionalStates = { ariaCurrent: string } & PropAriaExpanded &
 	PropAriaOwns &
-	PropButtonVariant &
 	PropCustomClass &
-	Omit<RequiredProps & OptionalProps, keyof RequiredStates>;
+	Omit<RequiredProps & OptionalProps, keyof RequiredStates> & {
+		buttonVariant: ButtonVariantPropType;
+		linkVariant: LinkVariantPropType;
+	};
 
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type LinkStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type LinkAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type InternalLinkAPI = Omit<LinkAPI, 'validateVariant'>;

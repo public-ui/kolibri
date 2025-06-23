@@ -4,8 +4,6 @@
 	.kol-nav {
 		$root: &;
 
-		font-family: var(--font-family);
-
 		&__navigation {
 			background-color: var(--color-blue);
 		}
@@ -62,7 +60,6 @@
 				--kolibri-spacing: #{rem(4)};
 				--text-focus-outline-color: var(--color-white);
 
-				font-family: var(--font-family);
 				appearance: none;
 				border-radius: 4px;
 				text-decoration: none;

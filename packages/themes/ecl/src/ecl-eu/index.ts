@@ -2,7 +2,6 @@ import { KoliBri } from '@public-ui/components';
 import globalCss from './global.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
-import avatarCss from './components/avatar.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
 import buttonCss from './components/button.scss';
@@ -23,14 +22,12 @@ import inputPasswordCss from './components/input-password.scss';
 import inputRadioCss from './components/input-radio.scss';
 import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
-import kolibriCss from './components/kolibri.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
-import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import singleSelectCss from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
@@ -50,7 +47,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	GLOBAL: globalCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
-	'KOL-AVATAR': avatarCss,
 	'KOL-BADGE': badgeCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-BUTTON': buttonCss,
@@ -71,14 +67,12 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-INPUT-RANGE': inputRangeCss,
 	'KOL-INPUT-TEXT': inputTextCss,
-	'KOL-KOLIBRI': kolibriCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-MODAL': modalCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-POPOVER-BUTTON': popoverButtonCss,
-	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-SKIP-NAV': skipNavCss,

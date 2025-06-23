@@ -1,8 +1,8 @@
 import type { RGB } from 'color-convert/conversions';
 import { hex } from 'wcag-contrast';
 
-import { colorRgba } from './color-rgba';
-import { rgbaConvert } from './rgba-convert';
+import rgba from 'color-rgba';
+import rgbaConvert from 'rgba-convert';
 
 type RGBA = [number, number, number, number];
 
@@ -79,12 +79,12 @@ export const createContrastColorPair = (color: string | ColorPair<string>, contr
 	let baseColor: RGBA = [0, 0, 0, 1];
 	let contrastColor: RGBA = [255, 255, 255, 1];
 	if (typeof color === 'string') {
-		baseColor = colorRgba(color);
+		baseColor = rgba(color);
 		contrastColor = baseColor;
 	} else if (typeof color === 'object' && color !== null && typeof color.background === 'string' && typeof color.foreground === 'string') {
-		baseColor = colorRgba(color.background);
+		baseColor = rgba(color.background);
 		if (typeof color.foreground === 'string') {
-			contrastColor = colorRgba(color.foreground);
+			contrastColor = rgba(color.foreground);
 		} else {
 			contrastColor = baseColor;
 		}

@@ -213,6 +213,17 @@ ROUTES.set('drawer/basic?align=bottom', {
 		},
 	},
 });
+ROUTES.set('drawer/basic?align=left&closer=true', {
+	snapshot: {
+		viewportSize: {
+			width: 600,
+			height: 400,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('form/basic', {
 	snapshot: {
 		skip: true,
@@ -251,6 +262,7 @@ ROUTES.set('heading/basic', {
 		},
 	},
 });
+ROUTES.set('heading/secondary');
 ROUTES.set('heading/paragraph', {
 	snapshot: {
 		skip: true,
@@ -733,6 +745,16 @@ ROUTES.set('table/stateless', {
 	},
 });
 ROUTES.set('tabs/basic', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('tabs/create-button', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
