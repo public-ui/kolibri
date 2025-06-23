@@ -20,6 +20,9 @@ config.overrides.push({
 config.plugins = config.plugins || [];
 config.plugins.push('jsx-a11y');
 
+config.rules = config.rules || {};
+config.rules.eqeqeq = 'error';
+
 config.overrides[0].rules['@typescript-eslint/no-unsafe-member-access'] = ['warn'];
 
 config.settings = {

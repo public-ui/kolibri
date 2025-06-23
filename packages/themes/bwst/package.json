@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-bwst",
-	"version": "2.2.11",
+	"version": "2.2.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -68,6 +68,7 @@
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
+		"cross-env": "7.0.3",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.10",
 		"npm-run-all2": "8.0.4",
@@ -80,7 +81,7 @@
 		"stylelint-config-standard": "38.0.0",
 		"stylelint-scss": "6.12.1",
 		"typescript": "5.8.3",
-		"unbuild": "1.2.1"
+		"unbuild": "3.5.0"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"

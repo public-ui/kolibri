@@ -190,8 +190,11 @@ export class KolSelect implements SelectAPI, FocusableElement {
 									} else {
 										return (
 											<option
+												// removed the aria-hidden attribute because the browser caused errors and ignores it
+												// see also:
+												// - https://github.com/public-ui/kolibri/issues/7755
+												// - https://github.com/public-ui/public-ui.github.io/issues/336
 												disabled={option.disabled}
-												aria-hidden={option.disabled ? 'true' : undefined}
 												key={key}
 												// label={option.label}
 												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}

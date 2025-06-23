@@ -24,6 +24,9 @@ config.plugins = config.plugins || [];
 config.plugins.push('react');
 config.plugins.push('jsx-a11y');
 
+config.rules = config.rules || {};
+config.rules.eqeqeq = 'error';
+
 config.settings = {
 	react: {
 		version: 'detect',

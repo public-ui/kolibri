@@ -75,6 +75,7 @@ const config = {
 		'react/jsx-no-bind': 'off',
 
 		'no-console': 'error',
+		eqeqeq: 'error',
 	},
 	settings: {
 		react: {
