@@ -1,0 +1,33 @@
+@use './rem' as *;
+
+@mixin kol-link($block-classname) {
+	.#{$block-classname} {
+		$root: &;
+
+		color: var(--color-primary);
+		font-style: normal;
+		font-weight: 400;
+
+		&:focus {
+			outline: none;
+		}
+
+		&:visited {
+			color: var(--visited);
+		}
+
+		&__text {
+			@at-root #{$root}:focus & {
+				border-radius: var(--border-radius);
+				outline: var(--border-width) solid;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
+
+			.kol-span__label {
+				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+					text-decoration-thickness: 0.25em;
+				}
+			}
+		}
+	}
+}

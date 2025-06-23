@@ -1,0 +1,121 @@
+@use './focus-outline' as *;
+@use './rem' as *;
+
+@mixin kol-button($block-classname) {
+	:host {
+		--theme-visibility-delay: 0.5s;
+	}
+
+	.#{$block-classname} {
+		$root: &;
+
+		&__text {
+			font-weight: 700;
+			border-style: solid;
+			border-width: var(--border-width);
+			border-radius: var(--border-radius);
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&--primary {
+			--text-background-color: var(--color-primary);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-light);
+		}
+
+		&--secondary {
+			--text-background-color: var(--color-secondary);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-primary);
+		}
+
+		&--tertiary {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-primary);
+		}
+
+		&--normal {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-text);
+			--text-color: var(--color-text);
+		}
+
+		&--danger {
+			--text-background-color: var(--color-danger);
+			--text-border-color: var(--color-danger);
+			--text-color: var(--color-light);
+		}
+
+		&--ghost {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-light);
+			--text-color: var(--color-primary);
+			--text-box-shadow: none;
+		}
+
+		&--primary,
+		&--secondary,
+		&--tertiary,
+		&--normal,
+		&--danger,
+		&--ghost {
+			&:not([disabled], [aria-disabled='true']):hover {
+				--text-background-color: var(--color-primary-variant);
+				--text-border-color: var(--color-primary-variant);
+				--text-color: var(--color-light);
+			}
+		}
+
+		&--danger {
+			&:not([disabled], [aria-disabled='true']):hover {
+				--text-background-color: var(--color-danger);
+				--text-border-color: var(--color-danger);
+			}
+		}
+
+		&__text {
+			background-color: var(--text-background-color);
+			border-color: var(--text-border-color);
+			color: var(--text-color);
+
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: rem(8) rem(14);
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+
+			&:hover {
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				background-color: var(--text-background-color);
+				border-color: var(--text-border-color);
+				color: var(--text-color);
+			}
+
+			@at-root #{$root}--hide-label & {
+				padding: rem(12);
+				width: unset;
+
+				.kol-span__label {
+					display: none;
+				}
+			}
+
+			@at-root #{$root}:focus {
+				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
+
+			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
+				background-color: var(--text-background-color);
+				border-color: var(--text-border-color);
+				color: var(--text-color);
+				box-shadow: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+@use '../mixins/kol-table-stateless-wc' as *;
+
+@layer kol-theme-component {
+	@include kol-table-stateless-theme;
+
+	.kol-table-stateful {
+		&__pagination {
+			line-height: var(--line-height);
+			word-break: break-word;
+		}
+
+		.kol-pagination {
+			@media (min-width: 1024px) {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+}

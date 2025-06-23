@@ -1,0 +1,40 @@
+@use './rem' as *;
+@use './alert-wc' as *;
+@use './typography' as *;
+
+@mixin kol-form-field-theme {
+	.kol-form-field {
+		$root: &;
+
+		gap: rem(4);
+
+		&__hint {
+			@include kol-typography-hint;
+		}
+
+		&--error:not(&--hide-msg) {
+			border-left: 3px solid var(--color-danger);
+			padding-left: rem(16);
+
+			.kol-form-field__msg {
+				&.kol-alert--type-error {
+					@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+				}
+			}
+		}
+
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+	}
+}

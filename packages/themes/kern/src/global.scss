@@ -1,0 +1,97 @@
+@use 'mixins/rem' as *;
+
+@layer kol-theme-global {
+	:host {
+		--border-radius: var(--kolibri-border-radius, 5px);
+		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
+		--font-size: var(--kolibri-font-size, #{rem(16)});
+		--spacing: var(--kolibri-spacing, #{rem(4)});
+		--border-width: var(--kolibri-border-width, 1px);
+		--color-primary: var(--kolibri-color-primary, #006f2d);
+		--color-primary-variant: var(--kolibri-color-primary-variant, #00994a);
+		--color-secondary: var(--kolibri-color-secondary, #ccebf7);
+		--color-danger: var(--kolibri-color-danger, #b4003c);
+		--color-warning: var(--kolibri-color-warning, #c44931);
+		--color-success: var(--kolibri-color-success, #005c45);
+		--color-subtle: var(--kolibri-color-subtle, #576164);
+		--color-light: var(--kolibri-color-light, #ffffff);
+		--color-text: var(--kolibri-color-text, #202020);
+		--color-mute: var(--kolibri-color-mute, #f2f3f4);
+		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+	}
+
+	:host {
+		font-size: var(--font-size);
+
+		* {
+			font-family: var(--font-family);
+		}
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		padding: 0;
+	}
+
+	*[tabindex]:focus,
+	.kol-input:not(.checkbox, .radio) .input:focus-within,
+	.kol-input:is(.checkbox, .radio) input:focus,
+	summary:focus {
+		cursor: pointer;
+		outline-color: var(--color-primary-variant);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
+
+	.kol-headline {
+		font-weight: 700;
+	}
+
+	.kol-tooltip {
+		&__floating {
+			border: var(--border-width) solid var(--color-subtle);
+			border-radius: var(--border-radius);
+		}
+
+		&__arrow {
+			background-color: var(--color-light);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__content {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			line-height: 1.5;
+			padding: rem(8) rem(12);
+		}
+	}
+
+	.kol-span,
+	.kol-span__container {
+		gap: rem(8);
+	}
+
+	.badge-text-hint {
+		background-color: var(--color-mute-variant);
+		border-radius: 3px;
+		color: var(--color-text);
+		padding: 0 0.3em;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

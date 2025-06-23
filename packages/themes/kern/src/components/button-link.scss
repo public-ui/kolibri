@@ -1,0 +1,38 @@
+@use '../mixins/link' as *;
+@use '../mixins/rem' as *;
+
+@layer kol-theme-component {
+	@include kol-link('kol-button');
+
+	.kol-button {
+		$root: &;
+
+		color: var(--color-primary);
+		font-style: normal;
+		font-weight: 400;
+
+		&:focus {
+			outline: none;
+
+			--text-border-radius: var(--border-radius);
+			--text-outline: calc(var(--border-width) * 2) solid;
+		}
+
+		&:visited {
+			color: var(--visited);
+		}
+
+		&__text {
+			@at-root #{$root}:focus & {
+				border-radius: var(--text-border-radius);
+				outline: var(--text-outline);
+			}
+
+			.kol-span__label {
+				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+					text-decoration-thickness: 0.25em;
+				}
+			}
+		}
+	}
+}

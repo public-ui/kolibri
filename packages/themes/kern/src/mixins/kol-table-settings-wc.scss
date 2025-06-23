@@ -1,0 +1,37 @@
+@use './rem' as *;
+@use './button' as *;
+@use './focus-outline' as *;
+
+@mixin kol-table-settings-theme {
+	.kol-table-settings {
+		right: rem(8);
+		top: rem(8);
+
+		&__content {
+			padding: rem(24);
+			@include kol-button('kol-button'); // use buttons styles only in the content, not for the popover button
+		}
+
+		&__error-message {
+			display: block;
+			margin-top: rem(16);
+		}
+
+		&__columns {
+			padding: rem(8); // some space for hover and focus styles
+		}
+
+		&__actions {
+			border-top: var(--border-width) solid var(--color-mute-variant);
+			display: flex;
+			gap: rem(8);
+			justify-content: flex-end;
+			margin-top: rem(16);
+			padding-top: rem(16);
+		}
+	}
+
+	.kol-button:focus {
+		@include focus-outline;
+	}
+}

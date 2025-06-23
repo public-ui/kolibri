@@ -1,0 +1,19 @@
+@use './rem' as *;
+
+@mixin kol-field-control-theme {
+	.kol-field-control {
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+	}
+}

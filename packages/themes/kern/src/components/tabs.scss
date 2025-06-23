@@ -1,0 +1,100 @@
+@use '../mixins/rem' as *;
+
+@layer kol-theme-component {
+	.kol-tabs {
+		display: grid;
+		grid-template-rows: var(--grid-template-rows);
+		grid-template-columns: var(--grid-template-columns);
+
+		&--align-right {
+			--display: grid;
+			--grid-template-columns: 1fr auto;
+
+			--button-group-display: grid;
+			--button-group-order: 1;
+		}
+
+		&--align-left {
+			--display: grid;
+			--grid-template-columns: auto 1fr;
+
+			--button-group-order: 0;
+		}
+
+		&--align-bottom {
+			--display: flex;
+			--grid-template-rows: 1fr auto;
+
+			--button-group-gap: #{rem(32)};
+			--button-group-order: 1;
+		}
+
+		&--align-top {
+			--display: flex;
+			--grid-template-rows: auto 1fr;
+
+			--button-group-gap: #{rem(32)};
+			--button-group-order: 0;
+		}
+
+		&__button-group {
+			display: var(--display);
+			flex-wrap: wrap;
+
+			gap: var(--button-group-gap);
+			order: var(--button-group-order);
+		}
+
+		.kol-button {
+			background-color: transparent;
+			border: 0;
+			border-radius: var(--border-radius);
+			border: none;
+			font-style: normal;
+			font-weight: 700;
+			font-size: rem(18);
+			line-height: 1.2;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			color: var(--color-subtle);
+			padding: 0;
+
+			&:hover {
+				color: var(--color-primary);
+			}
+
+			&.primary,
+			&.selected {
+				color: var(--color-primary);
+			}
+
+			&:not(&.selected) {
+				.kol-span__container {
+					padding-bottom: 0.25em;
+				}
+			}
+
+			&.selected {
+				.kol-span__container {
+					border-bottom: 0.25em solid;
+				}
+			}
+
+			.kol-span__container {
+				gap: rem(8);
+			}
+		}
+
+		&__content {
+			padding: 0.25em 0;
+		}
+
+		&__panel {
+			height: 100%;
+		}
+
+		.kol-button-wc {
+			width: 100%;
+		}
+	}
+}

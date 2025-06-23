@@ -1,0 +1,137 @@
+@use './rem' as *;
+
+@mixin kol-alert {
+	display: block;
+	width: 100%;
+}
+
+@mixin kol-input-error-with-kol-alert-wc-error($color: null) {
+	color: var($color);
+	font-weight: 700;
+}
+
+@mixin kol-alert-theme {
+	.kol-alert {
+		$root: &;
+
+		display: flex;
+		width: 100%;
+		overflow: unset;
+		background-color: var(--color-light);
+
+		&--variant-msg {
+			align-items: start;
+		}
+
+		&--variant-card {
+			border-radius: var(--border-radius);
+			border: var(--border-width) solid var(--alert-accent-color);
+			filter: drop-shadow(0 rem(2) rem(4) rgb(8, 35, 48, 0.24));
+			flex-direction: column;
+		}
+
+		&--type-default {
+			--alert-accent-color: var(--color-subtle);
+		}
+
+		&--type-error {
+			--alert-accent-color: var(--color-danger);
+		}
+
+		&--type-info {
+			--alert-accent-color: var(--color-primary);
+		}
+
+		&--type-success {
+			--alert-accent-color: var(--color-success);
+		}
+
+		&--type-warning {
+			--alert-accent-color: var(--color-warning);
+		}
+
+		&__container {
+			display: flex;
+			gap: 0.5em;
+			place-items: center;
+
+			@at-root #{$root}--variant-card & {
+				padding: rem(8) rem(16);
+				background-color: var(--alert-accent-color);
+			}
+		}
+
+		&__container-content {
+			display: grid;
+			gap: rem(4);
+
+			@at-root #{$root}--variant-card & {
+				width: 100%;
+				min-height: rem(20);
+			}
+		}
+
+		&__closer {
+			place-self: center;
+
+			.kol-button {
+				border-radius: 50%; // visible on focus
+				cursor: pointer;
+				height: var(--a11y-min-size);
+				width: var(--a11y-min-size);
+
+				@at-root #{$root}--variant-msg & {
+					color: var(--alert-accent-color);
+				}
+
+				@at-root #{$root}--variant-card & {
+					color: var(--color-light);
+				}
+			}
+
+			.kol-icon {
+				font-size: rem(19.2);
+			}
+		}
+
+		&__heading {
+			@at-root #{$root}--variant-msg & {
+				color: var(--alert-accent-color);
+				padding-top: calc(--var-spacing / 2);
+			}
+
+			@at-root #{$root}--variant-card & {
+				width: 100%;
+				color: var(--color-light);
+				display: flex;
+				font-size: rem(20);
+				line-height: 1;
+			}
+		}
+
+		&__icon {
+			color: var(--color-light);
+			padding: 0;
+
+			@at-root #{$root}:not(#{$root}--type-default) & {
+				font-size: rem(20);
+			}
+
+			@at-root #{$root}--variant-msg & {
+				color: var(--alert-accent-color);
+				place-items: baseline;
+			}
+
+			@at-root #{$root}--variant-card & {
+				justify-self: right;
+				margin-top: rem(-4);
+			}
+		}
+
+		&__content {
+			@at-root #{$root}--variant-card & {
+				padding: rem(16);
+			}
+		}
+	}
+}

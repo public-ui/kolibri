@@ -1,0 +1,154 @@
+@use '../mixins/rem' as *;
+@use '../mixins/focus-outline' as *;
+
+@layer kol-theme-component {
+	:host {
+		background-color: var(--color-mute);
+	}
+
+	.kol-nav {
+		$root: &;
+
+		&__list {
+			list-style: none;
+
+			// nested lists
+			&--nested {
+				padding-left: rem(16);
+
+				.kol-link,
+				.kol-button {
+					font-weight: normal !important;
+					border-left-color: transparent !important;
+				}
+			}
+		}
+
+		&__entry {
+			&--link {
+				display: flex;
+			}
+
+			.kol-link:hover {
+				text-decoration: underline;
+			}
+
+			.kol-link,
+			.kol-button {
+				align-items: center;
+				color: var(--color-primary);
+				display: flex;
+				gap: rem(8);
+				min-height: var(--a11y-min-size);
+				text-decoration: none;
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				#{$root}__list--vertical & {
+					border-left: 2px solid transparent;
+					padding-left: rem(16);
+					padding-right: rem(16);
+				}
+
+				#{$root}--horizontal & {
+					padding: 0 rem(16);
+				}
+
+				#{$root}--vertical #{$root}__list-item--active & {
+					border-left-color: var(--color-primary);
+				}
+
+				#{$root}__list-item--active & {
+					font-weight: bold;
+				}
+			}
+		}
+
+		&__expand-button {
+			.kol-button {
+				&:hover {
+					background-color: var(--color-primary);
+					color: var(--color-light);
+				}
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				&__text {
+					justify-content: center;
+				}
+			}
+		}
+
+		&__toggle-button {
+			.kol-button {
+				$root: &;
+
+				&:focus {
+					outline: none;
+				}
+
+				&--ghost {
+					&:not([disabled]):hover {
+						--text-background-color: var(--color-primary-variant);
+						--text-border-color: var(--color-primary-variant);
+						--text-color: var(--color-light);
+					}
+				}
+
+				&--ghost {
+					--text-background-color: var(--color-light);
+					--text-border-color: var(--color-light);
+					--text-color: var(--color-primary);
+					--text-box-shadow: none;
+				}
+
+				&__text {
+					font-weight: 700;
+					border-style: solid;
+					border-width: var(--border-width);
+					border-radius: var(--border-radius);
+					background-color: var(--text-background-color);
+					border-color: var(--text-border-color);
+					color: var(--text-color);
+					min-height: var(--a11y-min-size);
+					min-width: var(--a11y-min-size);
+					padding: rem(8) rem(14);
+					text-align: center;
+					transition-duration: 0.5s;
+					transition-property: background-color, color, border-color;
+
+					&:hover {
+						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+						background-color: var(--text-background-color);
+						border-color: var(--text-border-color);
+						color: var(--text-color);
+					}
+
+					@at-root #{$root}--hide-label & {
+						padding: rem(12.8);
+						width: unset;
+
+						.kol-span__label {
+							display: none;
+						}
+					}
+
+					@at-root #{$root}:focus {
+						@include focus-outline;
+					}
+
+					@at-root #{$root}:disabled:hover & {
+						background-color: var(--text-background-color);
+						border-color: var(--text-border-color);
+						color: var(--text-color);
+						box-shadow: none;
+					}
+				}
+			}
+		}
+	}
+}
