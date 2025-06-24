@@ -4,7 +4,6 @@ import clsx from 'clsx';
 
 import type {
 	ButtonProps,
-	CharacterLimitPropType,
 	FocusableElement,
 	HideMsgPropType,
 	IconsHorizontalPropType,
@@ -14,6 +13,7 @@ import type {
 	InputTypeOnDefault,
 	InputTypeOnOff,
 	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
 	ShortKeyPropType,
@@ -92,7 +92,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = this.controller.hasCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = this.controller.hasSoftCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
 			ref: this.catchRef,
@@ -158,9 +158,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * When defined, a remaining characters counter is shown. The field is marked as invalid when the character limit has been exceeded.
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
 	 */
-	@Prop() public _characterLimit?: CharacterLimitPropType;
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -314,9 +314,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		}
 	}
 
-	@Watch('_characterLimit')
-	public validateCharacterLimit(value?: CharacterLimitPropType): void {
-		this.controller.validateCharacterLimit(value);
+	@Watch('_maxLengthBehavior')
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.controller.validateMaxLengthBehavior(value);
 	}
 
 	@Watch('_disabled')

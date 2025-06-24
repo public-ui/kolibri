@@ -3,13 +3,13 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
-	PropCharacterLimit,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
 	PropReadOnly,
@@ -35,11 +35,11 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 } & PropAccessKey &
 	PropPasswordVariant &
-	PropCharacterLimit &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
 	PropHorizontalIcons &
+	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -65,10 +65,10 @@ type OptionalStates = {
 	value: string | null;
 } & PropAccessKey &
 	PropPasswordVariant &
-	PropCharacterLimit &
 	PropDisabled &
 	PropHideLabel &
 	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
 	PropReadOnly &

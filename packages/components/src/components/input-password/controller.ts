@@ -1,5 +1,6 @@
-import type { CharacterLimitPropType, InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
-import { validateCharacterLimit, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff, MaxLengthBehaviorPropType } from '../../schema';
+import { watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
 
@@ -32,8 +33,8 @@ export class InputPasswordController extends InputIconController implements Inpu
 		);
 	}
 
-	public validateCharacterLimit(value?: CharacterLimitPropType): void {
-		validateCharacterLimit(this.component, value);
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		validateMaxLengthBehavior(this.component, value);
 	}
 
 	public validateVariant(value?: PasswordVariantPropType): void {
@@ -75,7 +76,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
-		this.validateCharacterLimit(this.component._characterLimit);
+		this.validateMaxLengthBehavior(this.component._maxLengthBehavior);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePattern(this.component._pattern);
 		this.validatePlaceholder(this.component._placeholder);

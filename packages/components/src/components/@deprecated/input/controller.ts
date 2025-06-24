@@ -278,7 +278,7 @@ export class InputController extends ControlledInputController implements Watche
 		setState(this.component, '_currentLengthDebounced', length);
 	}, 500);
 
-	public hasCharacterLimit() {
-		return typeof this.component.state._characterLimit === 'number';
+	public hasSoftCharacterLimit() {
+		return typeof this.component.state._maxLength === 'number' && this.component.state._maxLengthBehavior === 'soft';
 	}
 }

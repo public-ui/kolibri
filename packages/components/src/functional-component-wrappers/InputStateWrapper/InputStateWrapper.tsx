@@ -54,7 +54,7 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 	if ('_type' in state) props.type = state._type;
 	if ('_value' in state) props.value = state._value as string | number | string[];
 	if ('_required' in state) props.required = state._required;
-	if ('_maxLength' in state) props.maxlength = state._maxLength;
+	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') props.maxlength = state._maxLength;
 	if ('_placeholder' in state) props.placeholder = state._placeholder;
 	if ('_autoComplete' in state) props.autoComplete = state._autoComplete;
 	if ('_spellCheck' in state) props.spellcheck = state._spellCheck;

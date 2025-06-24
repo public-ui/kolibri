@@ -3,13 +3,13 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
-	PropCharacterLimit,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropMultiple,
 	PropName,
@@ -35,11 +35,11 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	value: string;
 } & PropAccessKey &
-	PropCharacterLimit &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
 	PropHorizontalIcons &
+	PropMaxLengthBehavior &
 	PropMultiple &
 	PropName &
 	PropReadOnly &
@@ -68,10 +68,10 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
-	PropCharacterLimit &
 	PropDisabled &
 	PropHideLabel &
 	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropMultiple &
 	PropName &

@@ -1,7 +1,7 @@
-import type { CharacterLimitPropType, CSSResize, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
+import type { CSSResize, MaxLengthBehaviorPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
 import {
 	cssResizeOptions,
-	validateCharacterLimit,
+	validateMaxLengthBehavior,
 	validateRows,
 	validateSpellCheck,
 	watchBoolean,
@@ -29,8 +29,8 @@ export class TextareaController extends InputIconController implements TextareaW
 		}
 	};
 
-	public validateCharacterLimit(value?: CharacterLimitPropType): void {
-		validateCharacterLimit(this.component, value);
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		validateMaxLengthBehavior(this.component, value);
 	}
 
 	public validateMaxLength(value?: number): void {
@@ -83,7 +83,7 @@ export class TextareaController extends InputIconController implements TextareaW
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
-		this.validateCharacterLimit(this.component._characterLimit);
+		this.validateMaxLengthBehavior(this.component._maxLengthBehavior);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);

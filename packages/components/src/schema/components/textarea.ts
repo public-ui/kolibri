@@ -4,13 +4,13 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropAdjustHeight,
-	PropCharacterLimit,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
 	PropReadOnly,
@@ -37,12 +37,12 @@ type OptionalProps = {
 	value: string;
 } & PropAccessKey &
 	PropAdjustHeight &
-	PropCharacterLimit &
 	PropDisabled &
 	PropHideLabel &
 	PropHideMsg &
 	PropHorizontalIcons &
 	PropId &
+	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -71,9 +71,9 @@ type OptionalStates = {
 	value: string;
 } & PropAccessKey &
 	KoliBriHIcons &
-	PropCharacterLimit &
 	PropDisabled &
 	PropHideLabel &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
 	PropReadOnly &

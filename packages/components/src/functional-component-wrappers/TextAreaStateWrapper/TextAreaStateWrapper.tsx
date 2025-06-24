@@ -24,12 +24,15 @@ function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>):
 		readonly: state._readOnly,
 		required: state._required,
 		placeholder: state._placeholder,
-		maxLength: state._maxLength,
 		touched: state._touched,
 		msg: convertMsgToInternMsg(state._msg),
 		...other,
 		ariaDescribedBy,
 	};
+
+	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') {
+		props.maxLength = state._maxLength;
+	}
 
 	return props;
 }

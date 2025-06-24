@@ -4,7 +4,6 @@ import clsx from 'clsx';
 
 import type {
 	AdjustHeightPropType,
-	CharacterLimitPropType,
 	CSSResize,
 	FocusableElement,
 	HideMsgPropType,
@@ -12,6 +11,7 @@ import type {
 	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
 	RowsPropType,
@@ -80,7 +80,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-form-field-textarea', {
 				'kol-form-field--has-value': this.state._hasValue,
-				'kol-form-field--has-counter': this.controller.hasCharacterLimit(),
+				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.textareaRef?.focus(),
@@ -89,7 +89,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	private getTextAreaProps(): TextAreaStateWrapperProps {
-		const ariaDescribedBy = this.controller.hasCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = this.controller.hasSoftCharacterLimit() ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
 			ref: this.catchRef,
@@ -135,11 +135,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop() public _adjustHeight?: boolean = false;
 
 	/**
-	 * When defined, a remaining characters counter is shown. The field is marked as invalid when the character limit has been exceeded.
-	 */
-	@Prop() public _characterLimit?: CharacterLimitPropType;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
@@ -182,6 +177,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType;
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
@@ -289,11 +289,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this.controller.validateAdjustHeight(value);
 	}
 
-	@Watch('_characterLimit')
-	public validateCharacterLimit(value?: CharacterLimitPropType): void {
-		this.controller.validateCharacterLimit(value);
-	}
-
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
@@ -332,6 +327,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+	}
+
+	@Watch('_maxLengthBehavior')
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.controller.validateMaxLengthBehavior(value);
 	}
 
 	@Watch('_msg')

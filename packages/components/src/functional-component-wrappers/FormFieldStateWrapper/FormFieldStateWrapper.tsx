@@ -65,10 +65,12 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		typeof state._currentLength === 'number' &&
 		'_currentLengthDebounced' in state &&
 		typeof state._currentLengthDebounced === 'number' &&
-		'_characterLimit' in state &&
-		typeof state._characterLimit === 'number'
+		'_maxLength' in state &&
+		typeof state._maxLength === 'number' &&
+		'_maxLengthBehavior' in state &&
+		state._maxLengthBehavior === 'soft'
 	) {
-		props.counter = { currentLength: state._currentLength, maxLength: state._characterLimit, currentLengthDebounced: state._currentLengthDebounced };
+		props.counter = { currentLength: state._currentLength, maxLength: state._maxLength, currentLengthDebounced: state._currentLengthDebounced };
 	}
 
 	return props;
