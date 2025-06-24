@@ -6,6 +6,7 @@ export default {
 	message: 'Message',
 	close: 'Close',
 	'form-description': 'Form fields marked with an asterisk (*) are mandatory.',
+	of: 'of',
 	characters: 'characters',
 	new: 'New',
 	'no-entries': 'No entries available.',
