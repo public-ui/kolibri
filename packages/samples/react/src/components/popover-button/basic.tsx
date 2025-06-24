@@ -50,7 +50,7 @@ export const PopoverButtonBasic: FC = () => {
 
 				<KolHeading _label="Info icon with help text" _level={2}></KolHeading>
 
-				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" tooltipAlign="bottom" _hideLabel>
+				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
 					<div className="w-sm p-2 border border-solid border-gray">
 						<KolHeading _label="Help Information" _level={3}></KolHeading>
 						<p>
