@@ -228,6 +228,7 @@ export class KolCombobox implements ComboboxAPI {
 									<CustomSuggestionsOptionFc
 										index={index}
 										option={option}
+										searchTerm={this.state._value}
 										ref={(el) => {
 											if (el) this.refSuggestions[index] = el;
 										}}
