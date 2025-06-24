@@ -709,9 +709,9 @@ importers:
       '@types/react-dom':
         specifier: 18.3.7
         version: 18.3.7(@types/react@18.3.4)
-      '@unocss/preset-uno':
-        specifier: 0.58.9
-        version: 0.58.9
+      '@unocss/preset-mini':
+        specifier: 66.2.3
+        version: 66.2.3
       '@unocss/vite':
         specifier: 66.2.3
         version: 66.2.3(vite@6.3.5(@types/node@24.0.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.88.0)(terser@5.42.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.16(typescript@5.8.3))
@@ -5302,17 +5302,17 @@ packages:
   '@unocss/extractor-arbitrary-variants@0.58.9':
     resolution: {integrity: sha512-M/BvPdbEEMdhcFQh/z2Bf9gylO1Ky/ZnpIvKWS1YJPLt4KA7UWXSUf+ZNTFxX+X58Is5qAb5hNh/XBQmL3gbXg==}
 
+  '@unocss/extractor-arbitrary-variants@66.2.3':
+    resolution: {integrity: sha512-QQig1VnIfFJPVnp3lSM0za/7zZS91A+qOmEfOvbabiJ+dyI48wUU6MgP6/xZ5qZK6bvkuyQC9Ta73g9vXXuSZw==}
+
   '@unocss/inspector@66.2.3':
     resolution: {integrity: sha512-dNJzfrUo0z87Lu+NdaG/EEPQw+b3QjH0c6Wj1mGyw9kGDkTtGVLMyNVVwLbzMCOCY/W2vPgvyVi+A3scTjGYFQ==}
 
   '@unocss/preset-mini@0.58.9':
     resolution: {integrity: sha512-m4aDGYtueP8QGsU3FsyML63T/w5Mtr4htme2jXy6m50+tzC1PPHaIBstMTMQfLc6h8UOregPJyGHB5iYQZGEvQ==}
 
-  '@unocss/preset-uno@0.58.9':
-    resolution: {integrity: sha512-Fze+X2Z/EegCkRdDRgwwvFBmXBenNR1AG8KxAyz8iPeWbhOBaRra2sn2ScryrfH6SbJHpw26ZyJXycAdS0Fq3A==}
-
-  '@unocss/preset-wind@0.58.9':
-    resolution: {integrity: sha512-7l+7Vx5UoN80BmJKiqDXaJJ6EUqrnUQYv8NxCThFi5lYuHzxsYWZPLU3k3XlWRUQt8XL+6rYx7mMBmD7EUSHyw==}
+  '@unocss/preset-mini@66.2.3':
+    resolution: {integrity: sha512-qGdpp5ZiekR0QREFzc5eOTjMaYT3FWs9wQJqYKZNY3OJ8wMFpgDVoDTpqdfgvCiL7hheYITuxLDHw0gp/vDGBw==}
 
   '@unocss/rule-utils@0.58.9':
     resolution: {integrity: sha512-45bDa+elmlFLthhJmKr2ltKMAB0yoXnDMQ6Zp5j3OiRB7dDMBkwYRPvHLvIe+34Ey7tDt/kvvDPtWMpPl2quUQ==}
@@ -19599,6 +19599,10 @@ snapshots:
     dependencies:
       '@unocss/core': 0.58.9
 
+  '@unocss/extractor-arbitrary-variants@66.2.3':
+    dependencies:
+      '@unocss/core': 66.2.3
+
   '@unocss/inspector@66.2.3(vue@3.5.16(typescript@5.8.3))':
     dependencies:
       '@unocss/core': 66.2.3
@@ -19616,18 +19620,11 @@ snapshots:
       '@unocss/extractor-arbitrary-variants': 0.58.9
       '@unocss/rule-utils': 0.58.9
 
-  '@unocss/preset-uno@0.58.9':
+  '@unocss/preset-mini@66.2.3':
     dependencies:
-      '@unocss/core': 0.58.9
-      '@unocss/preset-mini': 0.58.9
-      '@unocss/preset-wind': 0.58.9
-      '@unocss/rule-utils': 0.58.9
-
-  '@unocss/preset-wind@0.58.9':
-    dependencies:
-      '@unocss/core': 0.58.9
-      '@unocss/preset-mini': 0.58.9
-      '@unocss/rule-utils': 0.58.9
+      '@unocss/core': 66.2.3
+      '@unocss/extractor-arbitrary-variants': 66.2.3
+      '@unocss/rule-utils': 66.2.3
 
   '@unocss/rule-utils@0.58.9':
     dependencies:
