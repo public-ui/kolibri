@@ -18,6 +18,7 @@ export type Toast = {
 	 */
 	alertVariant?: AlertVariant;
 	variant?: AlertVariant;
+	onClose?: () => void;
 };
 
 export type ToastState = {
