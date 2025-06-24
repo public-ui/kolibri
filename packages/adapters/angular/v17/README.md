@@ -8,11 +8,13 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/angular-v17)](https://bundlephobia.com/result?p=@public-ui/angular-v17)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-Das [**Angular**](https://angular.io)-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.
+The [**Angular**](https://angular.io) module is the framework adapter for the component library.
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
+Learn more about modularization in the [architecture concept](https://public-ui.github.io/docs/concepts/architecture).
 
-Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
+Further project documentation can be found in the [documentation site](https://public-ui.github.io/docs).
+
+Tokens can be customized via a theme. See the [default theme README](../../../themes/default/README.md).
 
 ## Referenzen
 

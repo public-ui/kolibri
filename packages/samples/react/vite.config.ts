@@ -3,7 +3,7 @@ import { execSync } from 'node:child_process';
 import react from '@vitejs/plugin-react-swc';
 import UnoCSS from '@unocss/vite';
 
-function getGitCommitHash() {
+function getGitCommitHash(): string | null {
 	try {
 		return execSync('git rev-parse --short HEAD 2>/dev/null').toString().trim();
 	} catch {

@@ -14,6 +14,7 @@ This package provides an Angular adapter for KoliBri components, making them eas
 
 ```bash
 npm install @public-ui/angular-v18
+pnpm add @public-ui/angular-v18
 ```
 
 ## Usage
@@ -92,6 +93,8 @@ export class AppComponent {}
 ## Browser Support
 
 This package supports all modern browsers that are supported by Angular 18.
+
+Customize tokens with your own theme as described in the [default theme README](../../../themes/default/README.md).
 
 ## License
 

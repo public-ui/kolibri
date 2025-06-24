@@ -26,6 +26,13 @@ Load the necessary scripts in your HTML file, either from a CDN or from your loc
 <script crossorigin src="https://unpkg.com/@public-ui/react-standalone@2.0.3/dist/index.mjs" type="module"></script>
 ```
 
+Alternatively install the package locally:
+
+```bash
+npm install @public-ui/react-standalone
+pnpm add @public-ui/react-standalone
+```
+
 ## Usage
 
 First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/themes):
@@ -43,3 +50,5 @@ const node = document.querySelector('#app');
 const root = ReactDOM.createRoot(node);
 root.render(React.createElement(KolButton, { _label: 'Hello World' }));
 ```
+
+See the [default theme README](../../themes/default/README.md) for available design tokens.

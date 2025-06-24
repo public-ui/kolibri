@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "3.0.1",
+	"version": "3.0.2-rc.0",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -67,17 +67,11 @@
 		"yup": "1.6.1"
 	},
 	"files": [
-		".eslintignore",
-		".eslintrc.js",
-		".gitignore",
-		".prettierignore",
-		"dist/**",
-		"prettier.config.js",
-		"public/**",
-		"src/**",
-		"test-build.sh",
+		"dist",
+		"public",
+		"src",
 		"tsconfig.json",
 		"unocss.config.ts",
-		"vite.config.mjs"
+		"vite.config.ts"
 	]
 }

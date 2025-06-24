@@ -1,5 +1,7 @@
 # KoliBri - Visual Tests
 
+Utilities for screenshot based regression testing of KoliBri themes.
+
 [![npm](https://img.shields.io/npm/v/@public-ui/visual-tests)](https://www.npmjs.com/package/@public-ui/components)
 [![license](https://img.shields.io/npm/l/@public-ui/visual-tests)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@public-ui/visual-tests)](https://www.npmjs.com/package/@public-ui/visual-tests)
@@ -59,3 +61,5 @@ Run the tests with `npm test`. The first time, this will create a new folder `sn
 In the following runs, new screenshots will be compared to this reference.
 
 To update the reference screenshots call `npm run test-update`.
+
+For details on theming see the [default theme README](../../themes/default/README.md).

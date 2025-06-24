@@ -14,12 +14,12 @@ Provide an adapter for [React](https://reactjs.org) to use the KoliBri component
 
 ## Installation
 
-You can install the adapter with `npm`, `pnpm` or `yarn`:
+Install the adapter with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/react
-pnpm i -g @public-ui/react
-yarn add -g @public-ui/react
+npm i @public-ui/react
+pnpm i @public-ui/react
+yarn add @public-ui/react
 ```
 
 ## Usage
@@ -53,3 +53,5 @@ import { KolButton } from '@public-ui/react';
 
 export default (): FC => <KolButton _label="Hello World" />;
 ```
+
+For available design tokens see the [default theme README](../../themes/default/README.md).
