@@ -280,6 +280,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									<CustomSuggestionsOptionFc
 										index={index}
 										option={option.label}
+										searchTerm={this._inputValue}
 										ref={(el) => {
 											if (el) this.refOptions[index] = el;
 										}}
