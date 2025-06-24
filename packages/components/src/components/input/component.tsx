@@ -148,7 +148,7 @@ export class KolInputWc implements Props {
 							{this._currentLength}
 							{this._maxLength && `/${this._maxLength}`} {translate('kol-characters')}
 						</span>
-						<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
+						<span aria-live="polite" aria-atomic="true" class="visually-hidden" data-testid="input-counter-aria">
 							{this._currentLengthDebounced}
 							{this._maxLength && `/${this._maxLength}`} {translate('kol-characters')}
 						</span>
