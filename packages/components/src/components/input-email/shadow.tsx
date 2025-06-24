@@ -136,7 +136,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	/**
 	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
 	 */
-	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType;
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	/**
 	 * Makes the element not focusable and ignore all events.

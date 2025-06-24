@@ -18,7 +18,7 @@ export const TextareaWithCounter: FC = () => (
 			<KolTextarea _label="Textarea with soft max length" _value={'Lorem Ipsum'} className="mt" _maxLength={20} _maxLengthBehavior="soft" />
 
 			<KolHeading _label="_maxLengthBehavior set to 'hard'" _level={2} className="block mt-2"></KolHeading>
-			<KolTextarea _label="Textarea with hard max length" _value={'Lorem Ipsum'} className="mt" _maxLength={20} _maxLengthBehavior="hard" />
+			<KolTextarea _label="Textarea with hard max length" _value={'Lorem Ipsum'} className="mt" _maxLength={20} />
 		</section>
 	</>
 );
