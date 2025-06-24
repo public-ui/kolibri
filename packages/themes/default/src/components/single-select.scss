@@ -16,10 +16,6 @@ $visible-options: 5;
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;
 
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-single-select {
 		&__group {
 			display: inline-flex;

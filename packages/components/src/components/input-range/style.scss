@@ -40,7 +40,6 @@
 				width: 0;
 
 				&::-webkit-slider-thumb {
-					box-sizing: border-box;
 					background-color: #000;
 					height: rem(20);
 					width: rem(20);
@@ -57,7 +56,6 @@
 				}
 
 				&::-moz-range-thumb {
-					box-sizing: border-box;
 					background-color: #000;
 					height: rem(20);
 					width: rem(20);

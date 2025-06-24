@@ -15,8 +15,18 @@ const fillAction: FillAction = async (page) => {
 const selectTextInput = (page: Page & E2EPage) => page.locator('input[type="text"]');
 const selectColorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolInputColorElement>(COMPONENT_NAME, TEST_VALUE, fillAction);
-	testInputCallbacksAndEvents<HTMLKolInputColorElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['input'], undefined, selectTextInput);
+	testInputValueReflection<HTMLKolInputColorElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolInputColorElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		omittedEvents: ['input'],
+		selectInput: selectTextInput,
+		testValue: TEST_VALUE,
+	});
 	test('should sync value between color input and text input', async ({ page }) => {
 		await page.setContent(`<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 		const colorInput = selectColorInput(page);

@@ -19,9 +19,9 @@ More about the **project** can be found in the [documentation](https://public-ui
 You can install the KoliBri themes with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/themes
-pnpm i -g @public-ui/themes
-yarn add -g @public-ui/themes
+npm i @public-ui/themes
+pnpm i @public-ui/themes
+yarn add @public-ui/themes
 ```
 
 ## Usage
@@ -34,18 +34,20 @@ import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
 
 register(
-	DEFAULT,
-	// or provide an array to register multiple themes:
-	// [DEFAULT, ECL_EC, ECL_EU]
-	defineCustomElements,
+        DEFAULT,
+        // or provide an array to register multiple themes:
+        // [DEFAULT, ECL_EC, ECL_EU]
+        defineCustomElements,
 )
-	.then(() => {
-		/* KoliBri ready */
-	})
-	.catch((error) => {
-		/* Handle errors */
-	});
+        .then(() => {
+                /* KoliBri ready */
+        })
+        .catch((error) => {
+                /* Handle errors */
+        });
 ```
+
+Override theme tokens in your own stylesheet as needed. The [default theme README](./default/README.md) lists all available variables.
 
 ## Important settings
 
@@ -53,7 +55,7 @@ register(
 
 We use **pnpm** as package manager and there is a tiny typing issue with the default typescript setup.
 
-**What does we know?**
+**What do we know?**
 
 This seems to be a general issue:
 

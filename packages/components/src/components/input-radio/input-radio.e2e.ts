@@ -18,8 +18,20 @@ const fillAction: FillAction = async (page) => {
 const selectInput = (page: Page & E2EPage) => page.locator('input').first();
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE);
-	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS, OPTIONS_ATTRIBUTE, selectInput);
+	testInputValueReflection<HTMLKolInputNumberElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolInputNumberElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		omittedEvents: OMITTED_EVENTS,
+		selectInput,
+		testValue: TEST_VALUE,
+	});
 
 	test.describe('value to option matching', () => {
 		const OBJECT_FIRST = { id: 1, text: 'first' };

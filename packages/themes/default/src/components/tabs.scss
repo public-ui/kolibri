@@ -2,8 +2,6 @@
 
 @layer kol-theme-component {
 	.kol-tabs {
-		font-family: var(--font-family);
-
 		display: grid;
 		grid-template-rows: var(--grid-template-rows);
 		grid-template-columns: var(--grid-template-columns);
@@ -48,7 +46,6 @@
 		}
 
 		.kol-button {
-			box-sizing: border-box;
 			background-color: transparent;
 			border: 0;
 			border-radius: var(--border-radius);
@@ -86,10 +83,6 @@
 			.kol-span__container {
 				gap: rem(8);
 			}
-		}
-
-		.kol-icon {
-			font-size: rem(16);
 		}
 
 		&__content {

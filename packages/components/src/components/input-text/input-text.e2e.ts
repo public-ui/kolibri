@@ -21,6 +21,11 @@ test.describe('kol-input-text', () => {
 		});
 	});
 
-	testInputValueReflection<HTMLKolInputTextElement>(COMPONENT_NAME, TEST_VALUE);
-	testInputCallbacksAndEvents<HTMLKolInputTextElement>(COMPONENT_NAME);
+	testInputValueReflection<HTMLKolInputTextElement>({
+		componentName: COMPONENT_NAME,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolInputTextElement>({
+		componentName: COMPONENT_NAME,
+	});
 });

@@ -10,8 +10,6 @@
 	.kol-alert {
 		$root: &;
 
-		font-family: var(--font-family);
-
 		&--variant-msg {
 			border: none;
 		}

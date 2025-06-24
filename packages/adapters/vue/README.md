@@ -17,9 +17,9 @@ Provide an adapter for [Vue](https://vuejs.org/) to use the KoliBri components.
 You can install the adapter with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/vue
-pnpm i -g @public-ui/vue
-yarn add -g @public-ui/vue
+npm i @public-ui/vue
+pnpm i @public-ui/vue
+yarn add @public-ui/vue
 ```
 
 ## Usage
@@ -48,6 +48,8 @@ Then, you can import any component from `@public-ui/vue` and render it within yo
 import { KolButton } from '@public-ui/vue';
 </script>
 <template>
-	<KolButton _label="Hello World" />
+        <KolButton _label="Hello World" />
 </template>
 ```
+
+Find available design tokens in the [default theme README](../../themes/default/README.md).

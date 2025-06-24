@@ -8,11 +8,12 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/components)](https://bundlephobia.com/result?p=@public-ui/components)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-> „The accessible HTML-Standard“
+> "The accessible HTML standard"
 
-**KoliBri** stands for „Component library for the accessibility“ and was from the
-[Informationstechnikzentrum Bund (ITZBund)](https://itzbund.de)
-open source released for reuse and further development.
+**KoliBri** stands for "component library for accessibility" and was released as
+open source by the
+[Informationstechnikzentrum Bund (ITZBund)](https://itzbund.de) for reuse and
+continued development.
 
 ## Vision
 
@@ -30,11 +31,11 @@ KoliBri is always actively working on improvements, new features and future-orie
 
 | Version | Release type | Release  | Period | End-of-Support |
 | ------: | :----------: | :------: | :----: | :------------: |
-|     1.x |     LTS      | Dez 2021 |   3y   |    Dez 2024    |
-|     2.x |     LTS      | Dez 2023 |   3y   |    Dez 2026    |
-|     3.x |     STS      | Dez 2024 |   1y   |    Dez 2025    |
-|     4.x |     LTS      | Dez 2025 |   3y   |    Dez 2028    |
-|     5.x |     STS      | Dez 2026 |   1y   |    Dez 2027    |
+|     1.x |     LTS      | Dec 2021 |   3y   |    Dec 2024    |
+|     2.x |     LTS      | Dec 2023 |   3y   |    Dec 2026    |
+|     3.x |     STS      | Dec 2024 |   1y   |    Dec 2025    |
+|     4.x |     LTS      | Dec 2025 |   3y   |    Dec 2028    |
+|     5.x |     STS      | Dec 2026 |   1y   |    Dec 2027    |
 
 ```mermaid
 gantt
@@ -49,6 +50,34 @@ gantt
 
 ```
 
+## Installation
+
+Install the packages with [pnpm](https://pnpm.io):
+
+```bash
+pnpm install
+```
+
+Run the build once to generate the components:
+
+```bash
+pnpm -r build
+```
+
+### Quick start
+
+Install the default theme and register the components:
+
+```ts
+pnpm add @public-ui/components @public-ui/theme-default
+
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { DEFAULT } from '@public-ui/theme-default';
+
+register(DEFAULT, defineCustomElements);
+```
+
 ## Collaboration and cooperation
 
 The **focus** of KoliBri is on **small** (atomic), very **flexible** and highly **reusable** HTML compositions (e.g. buttons). We offer an accessible, semantic and valid standard implementation of such components that can be reused for any higher-level HTML structure or component (molecule, organism or template).
@@ -58,7 +87,11 @@ Let's make KoliBri **better** and **more colorful** together!
 
 > Continue [to **Documentation**](https://public-ui.github.io/en/)…
 
-## Let's go
+## Contributing
+
+Bug reports and pull requests are welcome. Please read our [contribution guide](./CONTRIBUTING.md) before getting started.
+
+## Resources
 
 - [Get Started](https://public-ui.github.io/en/docs/get-started/first-steps)
 - [Contributing](./CONTRIBUTING.md)

@@ -3,8 +3,4 @@
 
 @layer kol-theme-component {
 	@include kol-button('kol-link');
-
-	:host {
-		font-family: var(--font-family);
-	}
 }

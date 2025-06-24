@@ -5,8 +5,6 @@
 	@include kol-link('kol-link');
 
 	.kol-breadcrumb {
-		font-family: var(--font-family);
-
 		&__list-element-span {
 			color: var(--color-subtle);
 		}

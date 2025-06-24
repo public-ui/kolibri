@@ -1,11 +1,4 @@
 @use '../../styles/global' as *;
 @use '../../styles/kol-alert-mixin' as *;
-@use '../@shared/mixins' as *;
 
 @include kol-alert;
-
-@layer kol-component {
-	.kol-alert {
-		font-size: rem(16);
-	}
-}

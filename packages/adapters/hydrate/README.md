@@ -19,9 +19,9 @@ Provide an adapter for Server Side Rendering of KoliBri components.
 You can install the adapter with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/hydrate
-pnpm i -g @public-ui/hydrate
-yarn add -g @public-ui/hydrate
+npm i @public-ui/hydrate
+pnpm i @public-ui/hydrate
+yarn add @public-ui/hydrate
 ```
 
 ## Usage
@@ -35,3 +35,5 @@ import { renderToString } from '@public-ui/hydrate';
 const inputHtml = `<kol-button _label="Hello World"_></kol-button>`;
 const { html } = await renderToString(inputHtml);
 ```
+
+Refer to the [default theme README](../../themes/default/README.md) for information on customizing the output.
