@@ -63,6 +63,7 @@
 		"dist",
 		"public",
 		"src",
+		"index.html",
 		"tsconfig.json",
 		"unocss.config.ts",
 		"vite.config.ts"
