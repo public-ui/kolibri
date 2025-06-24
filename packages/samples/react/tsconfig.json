@@ -26,5 +26,6 @@
 		"jsxFactory": "React.createElement",
 		"jsxFragmentFactory": "React.Fragment"
 	},
-	"include": ["**/*.ts", "**/*.tsx"]
+	"include": ["**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules", "dist"]
 }

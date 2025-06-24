@@ -2,12 +2,14 @@
 	"compilerOptions": {
 		"allowUnreachableCode": false,
 		"allowSyntheticDefaultImports": true,
+		"allowArbitraryExtensions": true,
 		"declaration": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
 		"lib": ["dom", "es2015"],
 		"module": "ESNext",
+		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
@@ -20,8 +22,8 @@
 		"target": "es2015",
 		"forceConsistentCasingInFileNames": false,
 		"importHelpers": false,
-		"strict": false
+		"strict": true,
+		"skipLibCheck": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx"],
 	"exclude": ["node_modules", "dist"]
 }
