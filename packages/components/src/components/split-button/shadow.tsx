@@ -1,16 +1,17 @@
 import type {
+	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
 	IconsPropType,
-	LabelPropType,
-	NamePropType,
+	LabelWithExpertSlotPropType,
+	ShortKeyPropType,
 	SplitButtonProps,
 	SplitButtonStates,
 	StencilUnknown,
-	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -34,6 +35,23 @@ import clsx from 'clsx';
 	},
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
+	private primaryButtonWcRef?: HTMLKolButtonWcElement;
+
+	private readonly catchPrimaryRef = (ref?: HTMLKolButtonWcElement) => {
+		this.primaryButtonWcRef = ref;
+	};
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async getValue(): Promise<StencilUnknown> {
+		return this._value;
+	}
+
+	@Method()
+	public async kolFocus() {
+		await this.primaryButtonWcRef?.kolFocus();
+	}
+
 	private readonly clickButtonHandler = {
 		onClick: (event: MouseEvent) => {
 			event.stopPropagation(); // stop propagation to avoid triggering the event that closes the popover
@@ -69,17 +87,22 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 							[this._variant as string]: this._variant !== 'custom',
 							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 						})}
+						ref={this.catchPrimaryRef}
+						_accessKey={this._accessKey}
 						_ariaControls={this._ariaControls}
+						_ariaDescription={this._ariaDescription}
 						_ariaExpanded={this._ariaExpanded}
 						_ariaSelected={this._ariaSelected}
 						_customClass={this._customClass}
 						_disabled={this._disabled}
 						_icons={this._icons}
+						_id={this._id}
 						_hideLabel={this._hideLabel}
 						_label={this._label}
 						_name={this._name}
 						_on={this.clickButtonHandler}
 						_role={this._role}
+						_shortKey={this._shortKey}
 						_syncValueBySelector={this._syncValueBySelector}
 						_tooltipAlign={this._tooltipAlign}
 						_type={this._type}
@@ -111,9 +134,19 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	}
 
 	/**
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
+
+	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -155,12 +188,12 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: string;
 
 	/**
 	 * Defines the callback functions for button events.
@@ -171,6 +204,11 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 * Defines the role of the components primary element.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -191,7 +229,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	/**
 	 * Defines the value that the button emits on click.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown>;
+	@Prop() public _value?: StencilUnknown;
 
 	/**
 	 * Defines which variant should be used for presentation.
