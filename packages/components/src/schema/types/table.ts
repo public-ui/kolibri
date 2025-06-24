@@ -20,7 +20,7 @@ export type KoliBriTableCell = {
 };
 
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
-	key?: string;
+	key: string;
 	sortDirection?: KoliBriSortDirection;
 };
 
