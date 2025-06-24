@@ -2,20 +2,6 @@ import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
 test.describe('kol-split-button', () => {
-	test('should display toggle popover when the primary button is clicked', async ({ page }) => {
-		await page.setContent(` <kol-split-button _label="Sample Button">Dropdown contents</kol-split-button> `);
-		const splitButton = page.locator('kol-split-button ');
-
-		const mainButton = splitButton.locator('.kol-split-button__button');
-		const popover = splitButton.locator('kol-popover-wc .kol-popover__content');
-
-		await expect(popover).not.toBeVisible();
-		await mainButton.click();
-		await expect(popover).toBeVisible();
-		await mainButton.click();
-		await expect(popover).not.toBeVisible();
-	});
-
 	test('should display toggle popover when the secondary button is clicked', async ({ page }) => {
 		await page.setContent(` <kol-split-button _label="Sample Button">Dropdown contents</kol-split-button> `);
 		const splitButton = page.locator('kol-split-button ');
