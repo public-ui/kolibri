@@ -55,6 +55,7 @@ export class KolTooltipWc implements TooltipAPI {
 
 	private showTooltipTimeout?: ReturnType<typeof setTimeout>;
 	private showTooltipWithDelay = (): void => {
+		clearTimeout(this.hideTooltipTimeout); // Cancel scheduled closings on re-enter
 		clearTimeout(this.showTooltipTimeout);
 		this.showTooltipTimeout = setTimeout(() => {
 			this.showTooltip();
