@@ -40,7 +40,6 @@
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
-		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml",
-		"postinstall": "node ./scripts/postinstall.js"
+		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
 }
