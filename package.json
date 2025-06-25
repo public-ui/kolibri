@@ -2,10 +2,13 @@
 	"devDependencies": {
 		"@commitlint/cli": "19.8.1",
 		"@commitlint/config-conventional": "19.8.1",
+		"boxen": "8.0.1",
+		"chalk": "5.4.1",
+		"figlet": "1.8.1",
 		"husky": "9.1.7",
 		"lerna": "8.2.2",
 		"license-report": "6.8.0",
-               "lint-staged": "16.1.2",
+		"lint-staged": "16.1.2",
 		"npm-check-updates": "18.0.1",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.5.3"
@@ -37,6 +40,7 @@
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
-		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
+		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml",
+		"postinstall": "node ./scripts/postinstall.js"
 	}
 }
