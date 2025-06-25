@@ -56,10 +56,12 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Workdays',
 				colSpan: 5,
+				key: 'workdays',
 			},
 			{
 				label: 'Weekend',
 				colSpan: 2,
+				key: 'weekend',
 			},
 		],
 		[
@@ -171,15 +173,19 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 		[
 			{
 				label: 'Early',
+				key: 'early',
 			},
 			{
 				label: 'Noon',
+				key: 'noon',
 			},
 			{
 				label: 'Evening',
+				key: 'evening',
 			},
 			{
 				label: 'Night',
+				key: 'night',
 			},
 		],
 	],

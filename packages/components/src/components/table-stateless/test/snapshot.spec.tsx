@@ -53,8 +53,8 @@ executeSnapshotTests<TableStatelessProps>(
 			_headerCells: {
 				horizontal: [
 					[
-						{ label: 'Header 1', textAlign: 'left' },
-						{ label: 'Header 2', textAlign: 'center' },
+						{ label: 'Header 1', textAlign: 'left', key: 'header1-top' },
+						{ label: 'Header 2', textAlign: 'center', key: 'header2-top' },
 					],
 					[
 						{ key: 'header1', label: 'Sub Header 1', textAlign: 'left' },
@@ -77,13 +77,19 @@ executeSnapshotTests<TableStatelessProps>(
 			_label: 'Table with two spanned horizontal and vertical headers',
 			_headerCells: {
 				horizontal: [
-					[{ label: 'H-Header', colSpan: 2 }],
+					[{ label: 'H-Header', colSpan: 2, key: 'h-header' }],
 					[
 						{ key: 'header1', label: 'Sub H-Header 1' },
 						{ key: 'header2', label: 'Sub H-Header 2' },
 					],
 				],
-				vertical: [[{ label: 'V-Header', rowSpan: 2 }], [{ label: 'Sub V-Header 1' }, { label: 'Sub V-Header 2' }]],
+				vertical: [
+					[{ label: 'V-Header', rowSpan: 2, key: 'v-header' }],
+					[
+						{ label: 'Sub V-Header 1', key: 'sub-v-header-1' },
+						{ label: 'Sub V-Header 2', key: 'sub-v-header-2' },
+					],
+				],
 			},
 			_data: [
 				{ header1: 'Cell 1.1', header2: 'Cell 1.2' },

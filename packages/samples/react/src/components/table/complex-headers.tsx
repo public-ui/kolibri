@@ -44,9 +44,11 @@ export const TableComplexHeaders: FC = () => (
 							{
 								label: 'Berlin',
 								rowSpan: 2,
+								key: 'berlin',
 							},
 							{
 								label: 'München',
+								key: 'muenchen',
 							},
 						],
 					],
@@ -60,10 +62,12 @@ export const TableComplexHeaders: FC = () => (
 							{
 								label: 'Workdays',
 								colSpan: 5,
+								key: 'workdays',
 							},
 							{
 								label: 'Weekend',
 								colSpan: 2,
+								key: 'weekend',
 							},
 						],
 						[

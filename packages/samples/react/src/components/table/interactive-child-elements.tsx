@@ -56,7 +56,7 @@ export const InteractiveChildElements: FC = () => (
 							getButtonHeaderCell('ghost'),
 						],
 					],
-					vertical: [[{ label: 'Button' }, { label: 'Link-Button' }]],
+					vertical: [[{ label: 'Button', key: 'button' }, { label: 'Link-Button', key: 'link-button' }]],
 				}}
 				_data={[
 					{
@@ -98,7 +98,7 @@ export const InteractiveChildElements: FC = () => (
 							},
 						],
 					],
-					vertical: [[{ label: 'Link' }, { label: 'Button-Link' }]],
+					vertical: [[{ label: 'Link', key: 'link' }, { label: 'Button-Link', key: 'button-link' }]],
 				}}
 				_data={[
 					{

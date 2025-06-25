@@ -1424,8 +1424,8 @@ export const components: Record<string, Component> = {
 				_headers={{
 					horizontal: [
 						[
-							{ label: '', asTd: true },
-							{ label: 'Tag', colSpan: 5 },
+							{ label: '', asTd: true, key: 'empty' },
+							{ label: 'Tag', colSpan: 5, key: 'tag' },
 						],
 						[
 							{
@@ -1490,10 +1490,16 @@ export const components: Record<string, Component> = {
 					},
 				]}
 				_headers={{
-					vertical: [[{ label: 'Berlin' }, { label: 'Hamburg' }, { label: 'München' }]],
+					vertical: [
+						[
+							{ label: 'Berlin', key: 'berlin' },
+							{ label: 'Hamburg', key: 'hamburg' },
+							{ label: 'München', key: 'muenchen' },
+						],
+					],
 					horizontal: [
 						[
-							{ label: '' },
+							{ label: '', key: 'empty' },
 							{
 								label: 'Stadtteil',
 								key: 'asp',

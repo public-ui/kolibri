@@ -77,7 +77,7 @@ export const TableColumnAlignment: FC = () => (
 							{ label: 'right', key: 'right', textAlign: 'right' },
 						],
 					],
-					vertical: [[{ label: 'Vertical' }]],
+					vertical: [[{ label: 'Vertical', key: 'vertical' }]],
 				}}
 				_data={DATA}
 				className="block"
