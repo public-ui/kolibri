@@ -625,16 +625,16 @@ export class KolTableStateless implements TableStatelessAPI {
 	 *  Renders a table header cell (`<th>`), with optional sorting functionality.
 	 *  If the cell has a `sortDirection` property, a sort button is rendered within the header.
 	 *
-	 * @param {KoliBriTableHeaderCell} cell  The header cell data, containing label, colSpan, rowSpan, and possible sort direction.
+	 * @param {KoliBriTableCell | KoliBriTableHeaderCell} cell  The cell data, containing label, colSpan, rowSpan, and possible sort direction and key for header cells.
 	 * @param {number} rowIndex  The index of the current row in the table.
 	 * @param {number} colIndex  The index of the current column in the row.
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
-	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
+	private renderHeadingCell(cell: KoliBriTableCell | KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		let ariaSort = undefined;
 		let sortButtonIcon = 'codicon codicon-fold';
 
-		if (cell.sortDirection) {
+		if ('sortDirection' in cell) {
 			switch (cell.sortDirection) {
 				case 'ASC':
 					sortButtonIcon = 'codicon codicon-chevron-up';
@@ -660,9 +660,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					width: cell.width,
 				}}
 				aria-sort={ariaSort}
-				data-sort={`sort-${cell.sortDirection}`}
+				data-sort={'sortDirection' in cell ? `sort-${cell.sortDirection}` : undefined}
 			>
-				{cell.sortDirection ? (
+				{'sortDirection' in cell ? (
 					<KolButtonWcTag
 						class="table-sort-button"
 						exportparts="icon"
