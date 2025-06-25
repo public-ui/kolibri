@@ -193,6 +193,12 @@ export class KolNav implements NavAPI {
 	};
 
 	private initializeExpandedChildren() {
+		//Reset expandedChildren before recalculation
+		this.state = {
+			...this.state,
+			_expandedChildren: [],
+		};
+
 		/**
 		 * Recursively process branches and expand branches which are active or have active children somewhere in the tree.
 		 * @param {ButtonOrLinkOrTextWithChildrenProps} branch
@@ -346,6 +352,8 @@ export class KolNav implements NavAPI {
 	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
 		devHint(`[KolNav] The navigation structure is not yet validated recursively.`);
+		//Re-initialize expansion on links change
+		this.initializeExpandedChildren();
 	}
 
 	@Watch('_orientation')
