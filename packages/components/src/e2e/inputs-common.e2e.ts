@@ -79,7 +79,7 @@ test.describe('inputs-common', () => {
 				test('should show the counter with _max-length', async ({ page }) => {
 					await page.setContent(`<${component} _label="Input" _value="Lorem Ipsum" _has-counter _max-length="20"></${component}>`);
 					await expect(page.getByTestId('input-counter')).toHaveText('11/20 Zeichen');
-					await expect(page.getByTestId('input-counter-aria')).toHaveText('11/20 Zeichen');
+					await expect(page.getByTestId('input-counter-aria')).toHaveText('11 von 20 Zeichen');
 				});
 
 				test(`should update the remaining characters in the aria-live region with a delay`, async ({ page }) => {
