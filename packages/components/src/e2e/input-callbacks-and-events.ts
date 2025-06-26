@@ -18,7 +18,6 @@ type TestInputCallbacksAndEventsOptions = {
 	testValue?: unknown;
 };
 
-/* @todo needs refactoring (https://github.com/public-ui/kolibri/issues/7791) */
 const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefault } & (HTMLElement | SVGElement)>({
 	additionalProperties = '',
 	componentName,

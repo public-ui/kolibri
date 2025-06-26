@@ -81,7 +81,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	};
 
 	return (
-		<div {...rootProps}>
+		<div {...rootProps} data-testid="alert">
 			<div class="kol-alert__container">
 				<AlertIcon label={label} type={type} />
 				<div class="kol-alert__container-content">

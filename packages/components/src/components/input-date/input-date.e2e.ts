@@ -3,6 +3,7 @@ import { test } from '@stencil/playwright';
 import type { Iso8601 } from '../../schema';
 import { testInputCallbacksAndEvents } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const TEST_VALUE_STRING = '2023-05-06';
 const TEST_VALUE_DATE = new Date(TEST_VALUE_STRING);
@@ -287,28 +288,10 @@ test.describe('kol-input-date', () => {
 		});
 	});
 
-	test.describe('when _msg is set', () => {
-		test('should display and hide message based on _msg value', async ({ page }) => {
-			await page.setContent(`<kol-input-date
-				_label="Date input"
-				_msg="{'_description': 'An error message', '_type': 'error'}"
-				_touched
-			> </kol-input-date>`);
-
-			await expect(page.locator('.kol-alert')).toBeVisible();
-
-			const input = page.locator('kol-input-date');
-			await input.evaluate((element: HTMLKolInputDateElement) => {
-				element._msg = undefined;
-			});
-
-			await expect(page.locator('.kol-alert')).not.toBeVisible();
-		});
-	});
-
 	testInputCallbacksAndEvents<HTMLKolInputDateElement>({
 		componentName: 'kol-input-date',
 		omittedEvents: ['input', 'change'],
 		testValue: TEST_VALUE_STRING,
 	}); // emitted events are tested specifically for value type
+	testInputMessage<HTMLKolInputDateElement>('kol-input-date');
 });
