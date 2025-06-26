@@ -71,14 +71,18 @@
 		"postpack": "mv package.bak.json package.json",
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"prepare": "npx playwright install --with-deps chromium firefox webkit",
+		"postinstall": "node ./postinstall.js",
 		"xunused": "knip"
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.1",
 		"adopted-style-sheets": "1.1.9-rc.19",
+		"boxen": "8.0.1",
+		"chalk": "5.4.1",
 		"clsx": "2.1.1",
 		"color-convert": "3.1.0",
 		"color-rgba": "2.4.0",
+		"figlet": "1.8.1",
 		"markdown-it": "14.1.0",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
@@ -141,6 +145,7 @@
 		"dist",
 		"doc",
 		"custom-elements.json",
+		"postinstall.js",
 		"vscode-custom-data.json"
 	]
 }
