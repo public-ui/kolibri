@@ -1,11 +1,12 @@
 import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
-import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import { setState, validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+import { debounce } from 'lodash-es';
 
 export class InputPasswordController extends InputIconController implements InputPasswordWatches {
 	protected readonly component: Generic.Element.Component & InputPasswordProps;
@@ -18,6 +19,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 	protected afterSyncCharCounter = () => {
 		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
 			this.component.state._currentLength = this.component._value.length;
+			this.component.state._currentLengthDebounced = this.component._value.length;
 		}
 	};
 
@@ -90,4 +92,8 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.validateValue(this.component._value);
 		this.validateVariant(this.component._variant);
 	}
+
+	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
+		setState(this.component, '_currentLengthDebounced', length);
+	}, 500);
 }

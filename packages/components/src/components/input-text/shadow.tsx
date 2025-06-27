@@ -62,6 +62,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		this.controller.updateCurrentLengthDebounced((event.target as HTMLInputElement).value.length);
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -114,6 +115,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 					_accessKey={this.state._accessKey}
 					_alert={this.showAsAlert()}
 					_currentLength={this.state._currentLength}
+					_currentLengthDebounced={this.state._currentLengthDebounced}
 					_disabled={this.state._disabled}
 					_hasCounter={this.state._hasCounter}
 					_hideError={this.state._hideError}
@@ -355,6 +357,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@State() public state: InputTextStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,

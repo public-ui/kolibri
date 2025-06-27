@@ -55,13 +55,14 @@ type OptionalProps = {
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
+	currentLength: number;
+	currentLengthDebounced: number;
 	hasValue: boolean;
 } & PropId &
 	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	alert: boolean;
-	currentLength: number;
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;

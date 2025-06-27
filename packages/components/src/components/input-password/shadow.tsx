@@ -80,6 +80,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		this.controller.updateCurrentLengthDebounced((event.target as HTMLInputElement).value.length);
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -102,6 +103,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					_accessKey={this.state._accessKey}
 					_alert={this.showAsAlert()}
 					_currentLength={this.state._currentLength}
+					_currentLengthDebounced={this.state._currentLengthDebounced}
 					_disabled={this.state._disabled}
 					_msg={this.state._msg}
 					_hasCounter={this.state._hasCounter}
@@ -344,6 +346,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@State() public state: InputPasswordStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,
