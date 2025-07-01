@@ -177,7 +177,7 @@ export class KolPagination implements PaginationAPI {
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
-						_value={[this.state._pageSize]}
+						_value={this.state._pageSize}
 					></KolSelectTag>
 				)}
 			</Host>
@@ -281,7 +281,7 @@ export class KolPagination implements PaginationAPI {
 	};
 
 	private onChangePageSize = (event: Event, value: unknown) => {
-		value = parseInt((value as string[])[0]);
+		value = parseInt(value as string);
 		if (typeof value === 'number' && value > 0 && this._pageSize !== value) {
 			this._pageSize = value;
 			const timeout = setTimeout(() => {
