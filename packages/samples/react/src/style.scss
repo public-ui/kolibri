@@ -63,6 +63,7 @@ hr {
 	.app-sidebar {
 		border-right: 1px solid gray;
 		position: relative;
+		z-index: 1;
 
 		& .scrollable-container-wrapper {
 			position: fixed;
