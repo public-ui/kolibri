@@ -1,8 +1,10 @@
 @use '../../mixins/rem' as *;
 @use './alert-wc' as *;
+@use './pagination-mixin' as *;
 
 @mixin kol-table-stateless-wc {
 	@include kol-alert-theme;
+	@include kol-pagination-styles;
 
 	.kol-table {
 		$root: &;

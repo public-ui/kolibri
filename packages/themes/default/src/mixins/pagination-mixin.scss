@@ -1,0 +1,57 @@
+@use './rem' as *;
+@use './focus-outline' as *;
+
+@mixin kol-pagination-styles {
+	@layer kol-component {
+		.kol-table-stateful {
+			&__pagination,
+			&__pagination-wrapper {
+				@media (min-width: 1024px) {
+					gap: rem(16);
+				}
+			}
+		}
+
+		.kol-button {
+			.kol-pagination__button--selected & {
+				opacity: 1;
+			}
+		}
+
+		.kol-button__text {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			border: 1px solid var(--color-primary);
+			color: var(--color-primary);
+			font-weight: 700;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: rem(8);
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+
+			.kol-pagination__button--selected & {
+				background-color: var(--color-primary);
+				color: var(--color-light);
+				border: 0;
+			}
+
+			.kol-button:focus & {
+				@include focus-outline;
+			}
+
+			.kol-button:is(:active, :hover):not(:disabled) & {
+				background-color: var(--color-primary-variant);
+				border-color: var(--color-primary-variant);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				color: var(--color-light);
+			}
+
+			.kol-button:active & {
+				color: var(--color-light);
+				outline: none;
+			}
+		}
+	}
+}
