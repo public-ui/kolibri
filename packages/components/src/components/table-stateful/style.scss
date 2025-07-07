@@ -3,12 +3,14 @@
 @use '../@shared/kol-button-mixin' as *;
 @use '../@shared/kol-popover-button-mixin' as *;
 @use '../@shared/kol-table-stateless-mixin' as *;
+@use '../@shared/kol-pagination-mixin' as *;
 @use '../@shared/mixins' as *;
 
 @include kol-alert;
 @include kol-button-styles('kol-button');
 @include kol-popover-button-styles;
 @include kol-table-stateless-styles;
+@include kol-pagination-styles;
 
 @layer kol-component {
 	.kol-table-stateful {
@@ -23,7 +25,7 @@
 		}
 	}
 
-	.kol-pagination {
+	.kol-pagination-wc {
 		display: flex;
 		flex-wrap: wrap;
 
