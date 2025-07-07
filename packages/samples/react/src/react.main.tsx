@@ -10,6 +10,7 @@ import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
 import { App } from './App';
 
 import type { Generic } from 'adopted-style-sheets';
+import { transformUncPathIfNecessary } from './shares/transformUncPathIfNecessary';
 
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
 
@@ -30,7 +31,9 @@ if (ENABLE_TAG_NAME_TRANSFORMER) {
 const getThemes = async () => {
 	if (process.env.THEME_MODULE) {
 		/* Visual regression testing mode: Themes are overridden with a certain theme module, that should be used instead. */
-		const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(/* @vite-ignore */ process.env.THEME_MODULE)) as Record<string, Theme>;
+		const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(
+			/* @vite-ignore */ transformUncPathIfNecessary(process.env.THEME_MODULE)
+		)) as Record<string, Theme>;
 		return [theme];
 	}
 
