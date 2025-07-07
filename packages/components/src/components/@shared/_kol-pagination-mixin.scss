@@ -1,0 +1,26 @@
+@use 'mixins' as *;
+
+@mixin kol-pagination-styles {
+	@layer kol-component {
+		.kol-pagination {
+			align-items: center;
+			display: grid;
+			gap: rem(16);
+			grid-template-columns: 1fr auto;
+
+			&__navigation-list {
+				align-items: center;
+				display: inline-flex;
+				flex-wrap: wrap;
+				gap: 0.5em;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			&__separator:before {
+				content: '•••';
+			}
+		}
+	}
+}
