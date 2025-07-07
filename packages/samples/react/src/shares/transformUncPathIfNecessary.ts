@@ -1,5 +1,3 @@
-import process from 'process';
-
 /**
  * Transforms a UNC-style path to a proper file URL format for browser usage on Windows systems.
  *
@@ -22,7 +20,7 @@ import process from 'process';
  * // Returns: "//c/users/documents/file.txt" (unchanged)
  */
 export function transformUncPathIfNecessary(uncPath: string): string {
-	if (process.platform !== 'win32') {
+	if (process.env.PLATFORM !== 'win32') {
 		return uncPath;
 	}
 
