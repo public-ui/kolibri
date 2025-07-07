@@ -56,13 +56,10 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 });
 
 @Component({
-	tag: 'kol-pagination',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-pagination-wc',
+	shadow: false,
 })
-export class KolPagination implements PaginationAPI {
+export class KolPaginationWc implements PaginationAPI {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 
 	private readonly nonce = nonce();
