@@ -59,7 +59,7 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	tag: 'kol-pagination-wc',
 	shadow: false,
 })
-export class KolPagination implements PaginationAPI {
+export class KolPaginationWc implements PaginationAPI {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 
 	private readonly nonce = nonce();
