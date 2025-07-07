@@ -1,16 +1,16 @@
 @use '../../mixins/rem' as *;
 
 @mixin kol-pagination-styles {
-	@layer kol-component {
-		.kol-table-stateful {
-			&__pagination,
-			&__pagination-wrapper {
-				@media (min-width: 1024px) {
-					gap: rem(16);
-				}
+	.kol-table-stateful {
+		&__pagination,
+		&__pagination-wrapper {
+			@media (min-width: 1024px) {
+				gap: rem(16);
 			}
 		}
+	}
 
+	.kol-pagination {
 		.kol-button {
 			--kolibri-spacing: #{rem(4)};
 			border-radius: 4px;
@@ -18,26 +18,14 @@
 			&:focus {
 				outline: none;
 			}
-		}
 
-		.kol-button__text {
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			border-radius: 4px;
-			font:
-				normal normal 400 rem(16) / rem(20) Arial,
-				sans-serif;
-			padding: rem(12);
-			background-color: #fc0;
-			color: #171a22;
-
-			.kol-button:focus-visible & {
+			&:focus-visible .kol-button__text {
 				outline-offset: -4px;
 				outline: 2px solid var(--color-black);
 			}
 
-			.kol-button:not(:disabled):active &,
-			.kol-button:not(:disabled):hover & {
+			&:not(:disabled):active .kol-button__text,
+			&:not(:disabled):hover .kol-button__text {
 				background-color: #fc0;
 				border-color: #fc0;
 				box-shadow:
@@ -47,18 +35,32 @@
 					0 rem(-4) rem(4) rgb(9 49 142 / 4%);
 			}
 
-			.kol-pagination__button--selected & {
+			&:disabled .kol-button__text {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+
+			&__text {
+				min-height: var(--a11y-min-size);
+				min-width: var(--a11y-min-size);
+				border-radius: 4px;
+				font:
+					normal normal 400 rem(16) / rem(20) Arial,
+					sans-serif;
+				padding: rem(12);
+				background-color: #fc0;
+				color: #171a22;
+			}
+		}
+
+		&__button--selected .kol-button {
+			&__text {
 				background-color: var(--color-blue);
 				border-color: var(--color-blue);
 				color: var(--color-white);
 				font-weight: bold;
 				text-decoration: underline;
 				opacity: 1;
-			}
-
-			.kol-button:disabled & {
-				opacity: 0.5;
-				cursor: not-allowed;
 			}
 		}
 	}
