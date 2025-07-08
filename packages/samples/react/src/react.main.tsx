@@ -8,7 +8,6 @@ import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BWSt, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
 import { App } from './App';
-import { transformThemeModulePathIfNecessary } from './shares/transformThemeModulePathIfNecessary';
 
 import type { Generic } from 'adopted-style-sheets';
 
