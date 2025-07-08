@@ -31,7 +31,11 @@ if (ENABLE_TAG_NAME_TRANSFORMER) {
 const getThemes = async () => {
 	if (process.env.THEME_MODULE) {
 		/* Visual regression testing mode: Themes are overridden with a certain theme module, that should be used instead. */
-		process.env.THEME_MODULE = transformThemeModulePathIfNecessary(process.env.THEME_MODULE); // process.env.THEME_MODULE must be used literally in the import(). Moving it to a constant breaks the import.
+		if (process.env.PLATFORM === 'win32') {
+			/* Add leading slash, required for ESBuild on Windows.
+			   Note: process.env.THEME_MODULE must be used literally in the import(). Moving it to a constant breaks the import. */
+			process.env.THEME_MODULE = `/${process.env.THEME_MODULE}`;
+		}
 		const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(/* @vite-ignore */ process.env.THEME_MODULE)) as Record<string, Theme>;
 		return [theme];
 	}
