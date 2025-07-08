@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { execSync } from 'node:child_process';
 import react from '@vitejs/plugin-react-swc';
 import UnoCSS from '@unocss/vite';
+import process from 'process';
 
 function getGitCommitHash(): string | null {
 	try {
@@ -21,6 +22,7 @@ export default defineConfig({
 		'process.env.ENABLE_THEME_PATCHING': JSON.stringify(process.env.ENABLE_THEME_PATCHING || ''),
 		'process.env.BUILD_DATE': JSON.stringify(new Date().toISOString()),
 		'process.env.COMMIT_HASH': JSON.stringify(getGitCommitHash()),
+		'process.env.PLATFORM': JSON.stringify(process.platform),
 	},
 	build: {
 		sourcemap: true,
