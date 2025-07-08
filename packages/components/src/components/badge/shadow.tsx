@@ -18,8 +18,6 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	shadow: true,
 })
 export class KolBadge implements BadgeAPI {
-	private bgColorStr = '#000';
-	private colorStr = '#fff';
 	private readonly id = nonce();
 
 	private renderSmartButton(props: ButtonProps): JSX.Element {
@@ -46,12 +44,10 @@ export class KolBadge implements BadgeAPI {
 		return (
 			<span
 				class={clsx('kol-badge', {
-					'kol-badge--has-smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
+					'kol-badge--has-smart-button': hasSmartButton,
 				})}
-				style={{
-					backgroundColor: this.bgColorStr,
-					color: this.colorStr,
-				}}
+				// Style nur gesetzt, wenn _color übergeben wurde (ansonsten übernimmt style.scss)
+				style={this.styleVars}
 			>
 				<KolSpanFc class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
 				{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
@@ -62,7 +58,7 @@ export class KolBadge implements BadgeAPI {
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
-	@Prop() public _color?: Stringified<PropColor> = '#000';
+	@Prop() public _color?: Stringified<PropColor>;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
@@ -81,16 +77,21 @@ export class KolBadge implements BadgeAPI {
 
 	@State() public state: BadgeStates = {
 		_color: {
-			backgroundColor: '#000',
-			foregroundColor: '#fff',
+			backgroundColor: '',
+			foregroundColor: '',
 		},
 		_icons: {},
 	};
 
+	@State() private styleVars: Record<string, string> = {};
+
 	private handleColorChange = (value: unknown) => {
 		const colorPair = handleColorChange(value);
-		this.bgColorStr = colorPair.backgroundColor;
-		this.colorStr = colorPair.foregroundColor as string;
+
+		this.styleVars = {
+			'--kol-badge-bg-color': colorPair.backgroundColor,
+			'--kol-badge-text-color': colorPair.foregroundColor as string,
+		};
 	};
 
 	@Watch('_icons')
@@ -100,8 +101,12 @@ export class KolBadge implements BadgeAPI {
 
 	@Watch('_color')
 	public validateColor(value?: Stringified<PropColor>): void {
+		// Fallback auf SCSS-Styles, wenn _color nicht gesetzt ist
+		if (!value) {
+			this.styleVars = {};
+			return;
+		}
 		validateColor(this, value, {
-			defaultValue: '#000',
 			hooks: {
 				beforePatch: this.handleColorChange,
 			},

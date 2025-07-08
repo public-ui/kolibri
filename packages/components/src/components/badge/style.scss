@@ -4,6 +4,8 @@
 
 @layer kol-component {
 	.kol-badge {
+		background-color: var(--kol-badge-bg-color, #000);
+		color: var(--kol-badge-text-color, #959595);
 		display: inline-flex;
 		place-items: center;
 		/* Visible with forced colors  */
