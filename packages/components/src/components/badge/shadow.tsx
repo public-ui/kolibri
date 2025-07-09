@@ -46,7 +46,7 @@ export class KolBadge implements BadgeAPI {
 				class={clsx('kol-badge', {
 					'kol-badge--has-smart-button': hasSmartButton,
 				})}
-				// Style nur gesetzt, wenn _color übergeben wurde (ansonsten übernimmt style.scss)
+				// Sets inline CSS variables only when _color is passed; otherwise, default values from style.scss apply
 				style={this.styleVars}
 			>
 				<KolSpanFc class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
@@ -101,12 +101,8 @@ export class KolBadge implements BadgeAPI {
 
 	@Watch('_color')
 	public validateColor(value?: Stringified<PropColor>): void {
-		// Fallback auf SCSS-Styles, wenn _color nicht gesetzt ist
-		if (!value) {
-			this.styleVars = {};
-			return;
-		}
 		validateColor(this, value, {
+			defaultValue: '#000', // fallback used when no _color prop is set, matching the value in style.scss
 			hooks: {
 				beforePatch: this.handleColorChange,
 			},
