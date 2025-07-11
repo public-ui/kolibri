@@ -1,5 +1,6 @@
 import './custom.css';
 import { SampleDescription } from '../SampleDescription';
+import { SampleColumns } from '../SampleColumns';
 
 import React from 'react';
 
@@ -16,8 +17,19 @@ export const SpinCustom: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolSpin _show _variant="none">
-			<span slot="expert" className="loader"></span>
-		</KolSpin>
+		<SampleColumns>
+			<fieldset>
+				<legend>KolSpin &quot;Custom&quot; (show Label)</legend>
+				<KolSpin _show _variant="none" _label="In Progress...">
+					<span slot="expert" className="loader"></span>
+				</KolSpin>
+			</fieldset>
+			<fieldset>
+				<legend>KolSpin &quot;Custom&quot; (hide Lable)</legend>
+				<KolSpin _show _variant="none">
+					<span slot="expert" className="loader"></span>
+				</KolSpin>
+			</fieldset>
+		</SampleColumns>
 	</>
 );

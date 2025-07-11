@@ -8,6 +8,15 @@
 	position: relative;
 	animation: pulse 1s linear infinite;
 }
+
+.kol-spin {
+	font-size: 0.2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .loader:after {
 	content: '';
 	position: absolute;
@@ -27,17 +36,20 @@
 	0% {
 		transform: translate(-50%, -50%) scale(0);
 	}
+
 	60%,
 	100% {
 		transform: translate(-50%, -50%) scale(1);
 	}
 }
+
 @keyframes pulse {
 	0%,
 	60%,
 	100% {
 		transform: scale(1);
 	}
+
 	80% {
 		transform: scale(1.2);
 	}
