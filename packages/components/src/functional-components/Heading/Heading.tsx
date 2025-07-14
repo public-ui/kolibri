@@ -81,13 +81,11 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
  * @param children - The children to render inside the secondary headline.
  * @returns A VNode representing the secondary headline.
  */
-const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames, level = MIN_HEADING_LEVEL, ...other }, children) => {
-	const HeadlineTag = getSubHeadlineTag(level + 1);
-
+const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames, ...other }, children) => {
 	return (
-		<HeadlineTag class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
+		<p class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
 			{children}
-		</HeadlineTag>
+		</p>
 	);
 };
 
@@ -125,9 +123,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 			<KolHeadlineFc class={clsx(classNames, 'kol-headline--group', 'kol-headline--primary')} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
-			<KolSecondaryHeadlineFc level={level} {...SecondaryHeadlineProps}>
-				{secondaryHeadline}
-			</KolSecondaryHeadlineFc>
+			<KolSecondaryHeadlineFc {...SecondaryHeadlineProps}>{secondaryHeadline}</KolSecondaryHeadlineFc>
 		</hgroup>
 	);
 };

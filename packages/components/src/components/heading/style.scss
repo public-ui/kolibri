@@ -1,1 +1,7 @@
 @use '../../styles/global' as *;
+
+.kol-headline {
+	&--secondary {
+		margin: 0;
+	}
+}
