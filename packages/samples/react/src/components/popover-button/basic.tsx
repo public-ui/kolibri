@@ -1,12 +1,10 @@
 import type { FC } from 'react';
-import React, { useContext } from 'react';
+import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolBadge, KolPopoverButton, KolToolbar, KolHeading } from '@public-ui/react';
+import { KolPopoverButton, KolToolbar, KolHeading } from '@public-ui/react';
 import { useToasterService } from '../../hooks/useToasterService';
-import { HideMenusContext } from '../../shares/HideMenusContext';
 
 export const PopoverButtonBasic: FC = () => {
-	const hideMenus = useContext(HideMenusContext);
 	const { dummyClickEventHandler } = useToasterService();
 
 	const dummyEventHandler = {
@@ -39,7 +37,6 @@ export const PopoverButtonBasic: FC = () => {
 					right, bottom, left) using the <code>_popoverAlign</code> prop.
 				</p>
 			</SampleDescription>
-			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
 			<div className="flex flex-col gap-4">
 				<KolHeading _label="Vertical toolbar with action buttons" _level={2}></KolHeading>
