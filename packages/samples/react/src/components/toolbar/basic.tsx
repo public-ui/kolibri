@@ -1,7 +1,6 @@
 import type { FC } from 'react';
-import React, { useContext } from 'react';
-import { KolBadge, KolHeading, KolToolbar } from '@public-ui/react';
-import { HideMenusContext } from '../../shares/HideMenusContext';
+import React from 'react';
+import { KolHeading, KolToolbar } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const ToolbarBasic: FC = () => {
@@ -36,7 +35,6 @@ export const ToolbarBasic: FC = () => {
 			_label: 'Bold',
 		},
 	];
-	const hideMenus = useContext(HideMenusContext);
 	return (
 		<>
 			<SampleDescription>
@@ -45,7 +43,6 @@ export const ToolbarBasic: FC = () => {
 					features button and link elements.
 				</p>
 			</SampleDescription>
-			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
 			<div className="flex flex-col gap-4">
 				<KolHeading _label="Orientation horizontal" _level={2} />
