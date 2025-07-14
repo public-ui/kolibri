@@ -270,11 +270,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
 					</div>
 					{this._isOpen && !(this.state._disabled === true) && (
-						<CustomSuggestionsOptionsGroupFc
-							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
-							onKeyDown={this.handleKeyDownDropdown.bind(this)}
-							style={{ '--visible-options': `${this._rows ?? 5}` }}
-						>
+						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
 									<CustomSuggestionsOptionFc
@@ -670,6 +666,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_rows')
 	public validateRows(value?: number): void {
 		this.controller.validateRows(value);
+		const rows = value ?? 5;
+		this.host?.style.setProperty('--visible-options', `${rows}`);
 	}
 
 	@Listen('mousemove')
@@ -691,6 +689,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.oldValue = this._value;
 		this._filteredOptions = this.state._options;
 		this.updateInputValue(this._value);
+		this.validateRows(this._rows);
 	}
 
 	private onChange(event: Event): void {
