@@ -14,6 +14,7 @@ export type Toast = {
 	label: LabelPropType;
 	type: AlertType;
 	variant?: AlertVariant;
+	onClose?: () => void;
 };
 
 export type ToastState = {
