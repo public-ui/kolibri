@@ -1,3 +1,4 @@
+export * from './aria';
 export * from './button-link-text';
 export * from './callbacks';
 export * from './common';
@@ -9,6 +10,6 @@ export * from './input/types';
 export * from './modal';
 export * from './orientation';
 export * from './progress';
+export * from './table';
 export * from './unknown';
 export * from './w3c';
-export * from './table';

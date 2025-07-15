@@ -5,6 +5,7 @@ import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/componen
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import type {
+	AriaSort,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -631,7 +632,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
-		let ariaSort = undefined;
+		let ariaSort: AriaSort = 'none';
 		let sortButtonIcon = 'codicon codicon-fold';
 
 		if (cell.sortDirection) {
@@ -644,6 +645,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					sortButtonIcon = 'codicon codicon-chevron-down';
 					ariaSort = 'descending';
 					break;
+				default:
+					ariaSort = 'none';
 			}
 		}
 
