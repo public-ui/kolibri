@@ -11,6 +11,6 @@ export const InputColorBasic: FC = () => (
 			<p>KolInputColor renders a color input. The sample shows KolInputColor in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputColorVariants} />
+		<FormWrap RefComponent={InputColorVariants} showButtons={false} />
 	</>
 );

@@ -11,6 +11,6 @@ export const InputPasswordBasic: FC = () => (
 			<p>KolInputPassword renders a password input field. The sample shows KolInputPassword in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputPasswordVariants} />
+		<FormWrap RefComponent={InputPasswordVariants} showButtons={false} />
 	</>
 );
