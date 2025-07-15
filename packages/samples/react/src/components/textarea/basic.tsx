@@ -11,6 +11,6 @@ export const TextareaBasic: FC = () => (
 			<p>KolTextarea renders a text field. The sample shows KolTextarea in a form context with different variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={TextareaVariants} />
+		<FormWrap RefComponent={TextareaVariants} showButtons={false} />
 	</>
 );

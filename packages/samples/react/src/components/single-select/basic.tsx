@@ -11,7 +11,7 @@ export const SingleSelectBasic: FC = () => {
 				<p>SingleSelect provides a select field for a single value, supported by a search field.</p>
 			</SampleDescription>
 
-			<FormWrap RefComponent={SingleSelectVariants} />
+			<FormWrap RefComponent={SingleSelectVariants} showButtons={false} />
 		</>
 	);
 };

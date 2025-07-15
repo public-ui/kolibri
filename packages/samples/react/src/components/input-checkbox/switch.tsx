@@ -10,6 +10,6 @@ export const InputCheckboxSwitch: FC = () => (
 			<p>This sample shows KolInputCheckbox in the variant &quot;switch&quot;.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputCheckboxVariants} _variant="switch" />
+		<FormWrap RefComponent={InputCheckboxVariants} _variant="switch" showButtons={false} />
 	</>
 );
