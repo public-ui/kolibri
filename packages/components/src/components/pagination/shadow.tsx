@@ -105,7 +105,6 @@ export class KolPagination implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="first"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
 									_icons={leftDoubleArrowIcon}
@@ -120,7 +119,6 @@ export class KolPagination implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="previous"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
 									_icons={leftSingleArrow}
@@ -136,7 +134,6 @@ export class KolPagination implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="next"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
 									_icons={rightSingleArrowIcon}
@@ -151,7 +148,6 @@ export class KolPagination implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="last"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
 									_icons={rightDoubleArrowIcon}
@@ -308,19 +304,15 @@ export class KolPagination implements PaginationAPI {
 		return (
 			<li key={nonce()}>
 				<KolButtonWcTag
-					exportparts="icon"
+					_ariaDescription={translate('kol-page')}
 					_customClass={this.state._customClass}
-					_label=""
+					_label={NUMBER_FORMATTER.format(page)}
 					_on={{
 						onClick: (event: Event) => {
 							this.onClick(event, page);
 						},
 					}}
-				>
-					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
-					</span>
-				</KolButtonWcTag>
+				></KolButtonWcTag>
 			</li>
 		);
 	}
@@ -328,11 +320,14 @@ export class KolPagination implements PaginationAPI {
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
 			<li key={nonce()}>
-				<KolButtonWcTag class="selected" _customClass={this.state._customClass} _disabled={true} _label="">
-					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
-					</span>
-				</KolButtonWcTag>
+				<KolButtonWcTag
+					class="selected"
+					aria-current="page"
+					_ariaDescription={translate('kol-page')}
+					_customClass={this.state._customClass}
+					_disabled={true}
+					_label={NUMBER_FORMATTER.format(page)}
+				></KolButtonWcTag>
 			</li>
 		);
 	}
