@@ -2,6 +2,7 @@ import type { Events } from '../enums';
 import type { EventCallback, EventValueOrEventCallback } from '../types/callbacks';
 import type { StencilUnknown } from '../types/unknown';
 import { watchValidator } from '../utils';
+import { isObject } from '../validators';
 
 import type { Generic } from 'adopted-style-sheets';
 /* types */
@@ -19,11 +20,5 @@ export type PropButtonCallbacks<T> = {
 
 /* validator */
 export const validateButtonCallbacks = (component: Generic.Element.Component, value?: ButtonCallbacksPropType<StencilUnknown>): void => {
-	watchValidator(
-		component,
-		`_on`,
-		(value) => typeof value === 'object' && value !== null,
-		new Set(['ButtonCallbacksPropType {Events.onClick, Events.onMouseDown}']),
-		value,
-	);
+	watchValidator(component, `_on`, (value) => isObject(value), new Set(['ButtonCallbacksPropType {Events.onClick, Events.onMouseDown}']), value);
 };

@@ -4,7 +4,7 @@ import type { RadioOption, Optgroup, Option, StencilUnknown } from '../types';
 import type { Stringified } from '../types/common';
 import type { WatchOptions } from '../utils';
 import { watchJsonArrayString } from '../utils';
-import { validateInputSelectOptions } from '../validators';
+import { isObject, validateInputSelectOptions } from '../validators';
 
 /* types */
 
@@ -36,7 +36,7 @@ export const validateOptions = (component: Generic.Element.Component, value: Opt
 	watchJsonArrayString(
 		component,
 		'_options',
-		(item: Option<StencilUnknown>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
+		(item: Option<StencilUnknown>) => isObject(item) && typeof item.label === 'string' && item.label.length > 0,
 		value,
 		undefined,
 		options,
