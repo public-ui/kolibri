@@ -4,6 +4,7 @@ import type { FillAction } from '../../e2e/utils/FillAction';
 import { expect } from '@playwright/test';
 import { Callback } from '../../schema/enums';
 import { KolEvent } from '../../utils/events';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-file';
 const TEST_VALUE: [] = [];
@@ -22,6 +23,7 @@ test.describe(COMPONENT_NAME, () => {
 		omittedEvents: ['input', 'change'],
 		testValue: TEST_VALUE,
 	});
+	testInputMessage<HTMLKolInputFileElement>(COMPONENT_NAME);
 
 	test.describe('Callbacks', () => {
 		[Callback.onInput, Callback.onChange].forEach((callbackName) => {

@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-password';
 const TEST_VALUE = 'Hunter2';
@@ -13,6 +14,7 @@ test.describe('kol-input-password', () => {
 	testInputCallbacksAndEvents<HTMLKolInputPasswordElement>({
 		componentName: COMPONENT_NAME,
 	});
+	testInputMessage<HTMLKolInputPasswordElement>(COMPONENT_NAME);
 
 	test.describe('Password Visibility Toggle', () => {
 		test('should toggle the password visibility when button is clicked', async ({ page }) => {

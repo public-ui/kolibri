@@ -3,6 +3,7 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-select';
 const TEST_VALUE = ['E'];
@@ -35,4 +36,5 @@ test.describe(COMPONENT_NAME, () => {
 		testValue: TEST_VALUE,
 		equalityCheck: 'toEqual',
 	});
+	testInputMessage<HTMLKolSelectElement>(COMPONENT_NAME);
 });

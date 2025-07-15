@@ -6,9 +6,11 @@ import { isObject, isString } from '../validators';
 import { transformObjectProperties } from '../../utils/transformObjectProperties';
 
 /* types */
-export type MsgPropType = AlertProps & {
-	_description: string;
-};
+export type MsgPropType =
+	| (AlertProps & {
+			_description: string;
+	  })
+	| string;
 
 export type InternMsgPropType = Partial<
 	InternalAlertProps & {
@@ -35,8 +37,24 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 		watchValidator<MsgPropType>(
 			component,
 			`_msg`,
-			(value) => (isObject(value) && isString(value?._description, 1)) || value?._type === undefined,
-			new Set(['MsgPropType']),
+			(value) => {
+				// Allow undefined values (for resetting the message)
+				if (value === undefined) {
+					return true;
+				}
+				// Allow string values (shorthand for error messages)
+				if (typeof value === 'string' && value.length > 0) {
+					return true;
+				}
+				// Allow object values with proper structure
+				if (isObject(value) && value !== null) {
+					const objValue = value as AlertProps & { _description: string };
+					return isString(objValue._description, 1);
+				}
+
+				return false;
+			},
+			new Set(['MsgPropType', 'string']),
 			value as MsgPropType,
 		);
 	});
@@ -45,6 +63,14 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
 	if (!msg) {
 		return undefined;
+	}
+
+	// If msg is a string, convert it to an error message object
+	if (typeof msg === 'string') {
+		return {
+			description: msg,
+			type: 'error',
+		};
 	}
 
 	return transformObjectProperties(msg);

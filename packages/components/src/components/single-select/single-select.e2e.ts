@@ -2,6 +2,7 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { expect } from '@playwright/test';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-single-select';
 const TEST_VALUE = 'E';
@@ -31,6 +32,7 @@ test.describe(COMPONENT_NAME, () => {
 		fillAction,
 		testValue: TEST_VALUE,
 	});
+	testInputMessage<HTMLKolSingleSelectElement>(COMPONENT_NAME);
 
 	test.describe('kol-single-select additional interactions', () => {
 		test('should open listbox on button click and close on ESC', async ({ page }) => {

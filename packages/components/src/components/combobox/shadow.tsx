@@ -21,7 +21,7 @@ import clsx from 'clsx';
 import { nonce } from '../../utils/dev.utils';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import { ComboboxController } from './controller';
-import { getRenderStates } from '../input/controller';
+import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
