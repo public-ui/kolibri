@@ -6,10 +6,20 @@ export type CustomSuggestionsProps = JSXBase.HTMLAttributes<HTMLLIElement> & {
 	index: number;
 	option: W3CInputValue;
 	selected: boolean;
+	searchTerm?: string;
 	ref?: ((elm?: HTMLLIElement | undefined) => void) | undefined;
 };
 
-const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({ index, ref, selected, onClick, onMouseOver, onFocus, onKeyDown, option }) => {
+const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({ index, ref, selected, onClick, onMouseOver, onFocus, onKeyDown, option, searchTerm }) => {
+	const highlightSearchTerm = (text: string, searchTerm: string) => {
+		if (!searchTerm?.trim()) return text;
+
+		const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+		const parts = text.split(regex);
+
+		return parts.map((part, partIndex) => (regex.test(part) ? <mark key={partIndex}>{part}</mark> : part));
+	};
+
 	return (
 		<li
 			id={`option-${index}`}
@@ -25,7 +35,7 @@ const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({ index, ref, sel
 			class="kol-custom-suggestions-option"
 			onKeyDown={onKeyDown}
 		>
-			{option}
+			{highlightSearchTerm(String(option), searchTerm || '')}
 		</li>
 	);
 };

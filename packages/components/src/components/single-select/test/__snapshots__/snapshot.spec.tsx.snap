@@ -229,7 +229,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
@@ -257,7 +257,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>

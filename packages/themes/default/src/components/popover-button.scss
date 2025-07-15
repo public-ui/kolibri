@@ -12,11 +12,4 @@
 			border-radius: var(--border-radius);
 		}
 	}
-
-	.kol-popover-button {
-		&__popover {
-			border: var(--border-width) solid var(--color-primary);
-			padding: var(--spacing);
-		}
-	}
 }

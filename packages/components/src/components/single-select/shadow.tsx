@@ -32,7 +32,7 @@ import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggest
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
-import { getRenderStates } from '../input/controller';
+import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import { SingleSelectController } from './controller';
 
 /**
@@ -280,6 +280,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									<CustomSuggestionsOptionFc
 										index={index}
 										option={option.label}
+										searchTerm={this._inputValue}
 										ref={(el) => {
 											if (el) this.refOptions[index] = el;
 										}}

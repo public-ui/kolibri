@@ -31,12 +31,12 @@ describe('KolHeadingFc', () => {
 
 		expect(page.root?.tagName).toBe('HGROUP');
 		expect(page.root?.querySelector('h1')).not.toBeNull();
-		expect(page.root?.querySelector('h2')).not.toBeNull();
+		expect(page.root?.querySelector('p')).not.toBeNull();
 		expect(page.root?.textContent).toContain('Main Heading');
 		expect(page.root?.textContent).toContain('Secondary Headline');
 		expect(page.root?.classList.contains('kol-heading-group')).toBe(true);
 		expect(page.root?.querySelector('h1')?.classList.contains('kol-headline--single')).toBe(false);
-		expect(page.root?.querySelector('h2')?.classList.contains('kol-headline--single')).toBe(false);
+		expect(page.root?.querySelector('p')?.classList.contains('kol-headline--single')).toBe(false);
 	});
 
 	it('should apply custom class names', async () => {

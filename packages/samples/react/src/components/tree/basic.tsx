@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React, { useContext, useState } from 'react';
-import { KolBadge, KolButton, KolTree, KolTreeItem } from '@public-ui/react';
+import { KolButton, KolTree, KolTreeItem } from '@public-ui/react';
 import { getRandomEmoji } from '../../shares/randomEmoji';
 import { useParams } from 'react-router';
 import { HideMenusContext } from '../../shares/HideMenusContext';
@@ -29,7 +29,6 @@ export const TreeBasic: FC = () => {
 			<SampleDescription>
 				<p>KolTree renders a keyboard accessible nested navigation. Branches of the tree can be collapsed or expanded.</p>
 			</SampleDescription>
-			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
 			<KolTree _label="Sitemap" class="block w-fit">
 				<KolTreeItem _label={homeLabel} {...getItemProps('home')}></KolTreeItem>

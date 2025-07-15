@@ -1,10 +1,12 @@
 @use './rem' as *;
 @use './kol-table-settings-wc' as *;
 @use './alert-wc' as *;
+@use './pagination-mixin' as *;
 
 @mixin kol-table-stateless-theme {
 	@include kol-table-settings-theme;
 	@include kol-alert-theme;
+	@include kol-pagination-styles;
 
 	.kol-table {
 		$root: &;

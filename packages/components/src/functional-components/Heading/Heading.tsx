@@ -1,4 +1,4 @@
-import { h, type FunctionalComponent as FC } from '@stencil/core';
+import { type FunctionalComponent as FC, h } from '@stencil/core';
 import clsx from 'clsx';
 import type { JSXBase } from '@stencil/core/internal';
 import type { HeadingLevel } from '../../schema';
@@ -28,7 +28,6 @@ const MAX_HEADING_LEVEL = 6;
 
 // Define a union type for valid headline tags
 type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong';
-type SubHeadlineTag = 'span' | HeadlineTag;
 
 /**
  * Checks if the given level is a valid heading level.
@@ -47,16 +46,6 @@ function isValidHeadingLevel(level: number): boolean {
  */
 export function getHeadlineTag(level: HeadingLevel | number): HeadlineTag {
 	return isValidHeadingLevel(level) ? (`h${level}` as HeadlineTag) : 'strong';
-}
-
-/**
- * Returns the appropriate sub-headline tag based on the level.
- * If the level is 1, returns 'span', otherwise returns the headline tag.
- * @param level - The heading level.
- * @returns The corresponding sub-headline tag.
- */
-export function getSubHeadlineTag(level: HeadingLevel | number): SubHeadlineTag {
-	return level === 1 ? 'span' : getHeadlineTag(level);
 }
 
 /**
@@ -81,13 +70,11 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
  * @param children - The children to render inside the secondary headline.
  * @returns A VNode representing the secondary headline.
  */
-const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames, level = MIN_HEADING_LEVEL, ...other }, children) => {
-	const HeadlineTag = getSubHeadlineTag(level + 1);
-
+const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames, ...other }, children) => {
 	return (
-		<HeadlineTag class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
+		<p class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
 			{children}
-		</HeadlineTag>
+		</p>
 	);
 };
 
@@ -125,9 +112,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 			<KolHeadlineFc class={clsx(classNames, 'kol-headline--group', 'kol-headline--primary')} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
-			<KolSecondaryHeadlineFc level={level} {...SecondaryHeadlineProps}>
-				{secondaryHeadline}
-			</KolSecondaryHeadlineFc>
+			<KolSecondaryHeadlineFc {...SecondaryHeadlineProps}>{secondaryHeadline}</KolSecondaryHeadlineFc>
 		</hgroup>
 	);
 };

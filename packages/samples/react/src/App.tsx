@@ -4,7 +4,6 @@ import { useLocation } from 'react-router';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
 import PackageJson from '@public-ui/components/package.json';
-import { KolBadge } from '@public-ui/react';
 
 import { BackPage } from './components/BackPage';
 import { Sidebar } from './components/Sidebar';
@@ -12,7 +11,7 @@ import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { THEMES, THEME_OPTIONS, isDraftTheme } from './shares/theme';
+import { THEMES, THEME_OPTIONS } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
@@ -137,7 +136,6 @@ export const App: FC = () => {
 				)}
 
 				<main className="flex flex-col items-stretch p-4" id="route-container">
-					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="In progress" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<Navigate to={ROUTE_LIST[0]} replace />} />

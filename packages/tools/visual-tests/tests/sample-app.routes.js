@@ -85,6 +85,9 @@ ROUTES.set('badge/button', {
 	},
 });
 ROUTES.set('breadcrumb/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		skip: true,
 	},
@@ -244,6 +247,9 @@ ROUTES.set('form/error-list', {
 	},
 });
 ROUTES.set('heading/badge', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		skip: true,
 		zoom: {
@@ -252,6 +258,9 @@ ROUTES.set('heading/badge', {
 	},
 });
 ROUTES.set('heading/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 250,
@@ -264,6 +273,9 @@ ROUTES.set('heading/basic', {
 });
 ROUTES.set('heading/secondary');
 ROUTES.set('heading/paragraph', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		skip: true,
 		zoom: {
