@@ -7,6 +7,7 @@ import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { isEqual } from 'lodash-es';
 import type {
+	AriaSort,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -797,7 +798,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			return '';
 		}
 
-		let ariaSort = undefined;
+		let ariaSort: AriaSort = 'none';
 		let sortButtonIcon = 'codicon codicon-fold';
 
 		if (cell.sortDirection) {
@@ -810,6 +811,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					sortButtonIcon = 'codicon codicon-chevron-down';
 					ariaSort = 'descending';
 					break;
+				default:
+					ariaSort = 'none';
 			}
 		}
 
