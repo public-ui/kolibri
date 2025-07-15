@@ -28,6 +28,7 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { SingleSelectController } from './controller';
+import { EventDetail } from '../../schema/interfaces/EventDetail';
 
 /**
  * @slot - The input field label.
@@ -93,13 +94,21 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (this.state._disabled) {
 			return;
 		} else {
-			const emptyValue = '';
+			const emptyValue = null;
 			this._focusedOptionIndex = -1;
 			this._value = emptyValue;
-			this._inputValue = emptyValue;
+			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
-			this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: emptyValue } }), true, emptyValue);
-			this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: emptyValue } }), emptyValue);
+
+			this.controller.onFacade.onInput(
+				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
+				true,
+				{ value: emptyValue },
+			);
+			this.controller.onFacade.onChange(
+				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
+				{ value: emptyValue },
+			);
 		}
 	}
 
