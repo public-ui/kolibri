@@ -71,7 +71,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();
-		if (this.state._disabled) {
+		const isDisabled = this.state._disabled === true;
+		if (isDisabled) {
 			return;
 		} else {
 			if (!this._hasOpened) {
@@ -95,7 +96,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private clearSelection() {
-		if (this.state._disabled) {
+		const isDisabled = this.state._disabled === true;
+		if (isDisabled) {
 			return;
 		} else {
 			const emptyValue = null;
@@ -211,6 +213,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private getInputProps(): InputStateWrapperProps {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const isDisabled = this.state._disabled === true;
 
 		return {
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
@@ -222,7 +225,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			autocapitalize: 'off',
 			autocorrect: 'off',
 			class: 'kol-single-select__input',
-			disabled: this.state._disabled,
+			disabled: isDisabled,
 			name: this.state._name,
 			placeholder: this.state._placeholder,
 			ref: this.catchRef,
@@ -246,6 +249,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	public render(): JSX.Element {
+		const isDisabled = this.state._disabled === true;
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
@@ -262,14 +266,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 									this.refInput?.focus();
 								}}
 								class={clsx('kol-single-select__delete', {
-									'kol-single-select__delete--disabled': this.state._disabled,
+									'kol-single-select__delete--disabled': isDisabled,
 								})}
 							/>
 						)}
 
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
+						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} />
 					</div>
-					{this._isOpen && !(this.state._disabled === true) && (
+					{this._isOpen && !isDisabled && (
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
