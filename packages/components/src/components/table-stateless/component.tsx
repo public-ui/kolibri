@@ -295,35 +295,35 @@ export class KolTableStateless implements TableStatelessAPI {
 		return max;
 	}
 
-	private getThePrimaryHeadersWithKeysIfExists(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
-		const primaryHeadersWithKeys: KoliBriTableHeaderCell[] = [];
+	private getThePrimaryHeadersWithKeyOrRenderFunction(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
+		const primaryHeaders: KoliBriTableHeaderCell[] = [];
 
 		headers.forEach((cells) => {
 			cells.forEach((cell) => {
-				if (typeof cell.key === 'string') {
-					primaryHeadersWithKeys.push(cell);
+				if (typeof cell.key === 'string' || typeof cell.render === 'function') {
+					primaryHeaders.push(cell);
 				}
 			});
 		});
 
-		return primaryHeadersWithKeys;
+		return primaryHeaders;
 	}
 
 	private getPrimaryHeaders(headers: KoliBriTableHeaders): KoliBriTableHeaderCell[] {
-		let primaryHeadersWithKeys: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeysIfExists(headers.horizontal ?? []);
+		let primaryHeaders: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.horizontal ?? []);
 
 		/**
 		 * It is important to note that the rendering direction of the data is implicitly set,
 		 * if either the horizontal or vertical header cells have keys.
 		 */
 		this.horizontal = true;
-		if (primaryHeadersWithKeys.length === 0) {
-			primaryHeadersWithKeys = this.getThePrimaryHeadersWithKeysIfExists(headers.vertical ?? []);
-			if (primaryHeadersWithKeys.length > 0) {
+		if (primaryHeaders.length === 0) {
+			primaryHeaders = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.vertical ?? []);
+			if (primaryHeaders.length > 0) {
 				this.horizontal = false;
 			}
 		}
-		return primaryHeadersWithKeys;
+		return primaryHeaders;
 	}
 
 	private getColumnPositionMap(): Map<string, number> {
@@ -398,9 +398,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (
 						typeof sortedPrimaryHeader[j] === 'object' &&
 						sortedPrimaryHeader[j] !== null &&
-						typeof sortedPrimaryHeader[j].key === 'string' &&
 						typeof row === 'object' &&
-						row !== null
+						row !== null &&
+						(typeof sortedPrimaryHeader[j].key === 'string' || typeof sortedPrimaryHeader[j].render === 'function')
 					) {
 						dataRow.push({
 							...sortedPrimaryHeader[j],
@@ -414,9 +414,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (
 						typeof sortedPrimaryHeader[i] === 'object' &&
 						sortedPrimaryHeader[i] !== null &&
-						typeof sortedPrimaryHeader[i].key === 'string' &&
 						typeof data[j] === 'object' &&
-						data[j] !== null
+						data[j] !== null &&
+						(typeof sortedPrimaryHeader[i].key === 'string' || typeof sortedPrimaryHeader[i].render === 'function')
 					) {
 						dataRow.push({
 							...sortedPrimaryHeader[i],
