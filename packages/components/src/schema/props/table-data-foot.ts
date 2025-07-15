@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { SetStateHooks } from '../utils';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
+import { isObject } from '../validators';
 import type { KoliBriTableDataType, Stringified } from '../types';
 
 /* types */
@@ -27,7 +28,7 @@ export const validateTableDataFoot = (component: Generic.Element.Component, valu
 			} catch (e) {
 				// value keeps the original data
 			}
-			if (Array.isArray(value) && value.every((data: KoliBriTableDataType) => typeof data === 'object' && data !== null)) {
+			if (Array.isArray(value) && value.every((data: KoliBriTableDataType) => isObject(data))) {
 				setState(component, '_dataFoot', value, setStateHooks);
 			}
 		});

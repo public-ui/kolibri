@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIconsProp, KoliBriIconsProp, KoliBriIconsState } from '../types';
+import type { AnyIconFontClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriHorizontalIconsProp, KoliBriIconsProp, KoliBriIconsState } from '../types';
 import type { Stringified } from '../types/common';
 import type { WatchOptions } from '../utils';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
@@ -26,7 +26,7 @@ export type PropHorizontalIcons = {
 
 const mapCustomIcon = (state: KoliBriIconsState, alignment: AlignPropType, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
-		state[alignment] = icon as KoliBriCustomIcon;
+		state[alignment] = icon;
 	} else if (isString(icon, 1)) {
 		state[alignment] = {
 			icon: icon as AnyIconFontClass,
@@ -42,11 +42,12 @@ export const mapIconProp2State = (icon: KoliBriIconsProp): KoliBriIconsState => 
 				icon: icon as AnyIconFontClass,
 			},
 		};
-	} else if (typeof icon === 'object' && icon !== null) {
-		mapCustomIcon(state, 'top', icon.top);
-		mapCustomIcon(state, 'right', icon.right);
-		mapCustomIcon(state, 'bottom', icon.bottom);
-		mapCustomIcon(state, 'left', icon.left);
+	} else if (isObject(icon)) {
+		const icons: KoliBriAllIcons = icon;
+		mapCustomIcon(state, 'top', icons.top);
+		mapCustomIcon(state, 'right', icons.right);
+		mapCustomIcon(state, 'bottom', icons.bottom);
+		mapCustomIcon(state, 'left', icons.left);
 	}
 	return state;
 };
@@ -59,8 +60,7 @@ const beforePatchIcon = (component: Generic.Element.Component): void => {
 };
 
 export const isIcon = (value?: unknown): boolean =>
-	typeof value === 'object' &&
-	value !== null &&
+	isObject(value) &&
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
 	(typeof (value as KoliBriCustomIcon).label === 'undefined' || isString((value as KoliBriCustomIcon).label)) &&
 	isString((value as KoliBriCustomIcon).icon, 1);
@@ -76,13 +76,12 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 			component,
 			'_icons',
 			(value): boolean => {
-				const valueIsEmptyObject = typeof value === 'object' && value !== null && Object.keys(value).length === 0;
+				const valueIsEmptyObject = isObject(value) && Object.keys(value).length === 0;
 				return (
 					value === null ||
 					valueIsEmptyObject ||
 					isString(value, 1) ||
-					(typeof value === 'object' &&
-						value !== null &&
+					(isObject(value) &&
 						(isString(value.left, 1) ||
 							isIcon(value.left) ||
 							isString(value.right, 1) ||
