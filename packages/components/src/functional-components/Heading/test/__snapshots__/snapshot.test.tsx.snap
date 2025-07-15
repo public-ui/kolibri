@@ -11,9 +11,9 @@ exports[`KolHeadingFc should render with a secondary headline 1`] = `
   <h1 class="kol-headline kol-headline--group kol-headline--h1 kol-headline--primary">
     Main Heading
   </h1>
-  <h2 class="kol-headline kol-headline--group kol-headline--secondary">
+  <p class="kol-headline kol-headline--group kol-headline--secondary">
     Secondary Headline
-  </h2>
+  </p>
 </hgroup>
 `;
 
