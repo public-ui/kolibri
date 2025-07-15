@@ -47,7 +47,7 @@ function TableHorizontalScrollbarAdvanced() {
 		let width = 0;
 
 		for (const def of columnDefinitions as { width: string }[]) {
-			width += Number(def.width?.replace('px', '') || 0);
+			width += parseFloat(def.width?.replace('px', '') || '0');
 		}
 		return `${width}px`;
 	});
