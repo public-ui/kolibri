@@ -5,7 +5,7 @@ import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 
 const COMPONENT_NAME = 'kol-select';
-const TEST_VALUE = ['E'];
+const TEST_VALUE = 'E';
 const TEST_LABEL = 'East';
 const OPTIONS = [
 	{ label: 'North', value: 'N' },
