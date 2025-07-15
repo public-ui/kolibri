@@ -115,7 +115,7 @@ export function InputTextFormatterDemo() {
 														return <KolInputText _label="Currency" _type={type} _value={value} _on={{ onBlur, onChange, onFocus }} />;
 													}}
 													displayType="input"
-													value={typeof field.value === 'number' ? Number(field.value).toFixed(2) : undefined}
+													value={typeof field.value === 'number' ? field.value.toFixed(2) : undefined}
 													onBlur={() => {
 														void form.setFieldTouched('currency', true);
 													}}
