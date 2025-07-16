@@ -109,11 +109,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this.controller.onFacade.onInput(
 				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
 				true,
-				emptyValue,
+				{ value: emptyValue },
 			);
 			this.controller.onFacade.onChange(
 				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				emptyValue,
+				{ value: emptyValue },
 			);
 		}
 	}
