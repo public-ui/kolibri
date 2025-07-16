@@ -87,10 +87,15 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 * Closes the dropdown and resets the opened state.
 	 */
 	private onBlur() {
-		if (Array.isArray(this.state._options) && this.state._options.length > 0 && !this.state._options.some((option) => option.label === this._inputValue)) {
-			this._inputValue = this.state._options.find((option) => (option as Option<string>).value === this._value)?.label as string;
+		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
+
+		if (matchingOption) {
+			this.selectOption(matchingOption as Option<string>);
+		} else {
+			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
+
 		this._isOpen = false;
 		this._hasOpened = false;
 	}
