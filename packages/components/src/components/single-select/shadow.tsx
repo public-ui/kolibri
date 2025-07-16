@@ -237,6 +237,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 									aria-activedescendant={this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined}
 									autoCapitalize="off"
+									autoComplete="off" /* disable browser's not accessible autocomplete popup */
 									autoCorrect="off"
 									disabled={this.state._disabled}
 									name={this.state._name}
