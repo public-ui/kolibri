@@ -1,9 +1,9 @@
+import { setTagNameTransformer } from '@public-ui/react';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
-import { setTagNameTransformer } from '@public-ui/react';
 
-import { bootstrap, isInitialized, KoliBriDevHelper } from '@public-ui/components';
+import { bootstrap, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BWSt, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
@@ -30,7 +30,12 @@ if (ENABLE_TAG_NAME_TRANSFORMER) {
 const getThemes = async () => {
 	if (process.env.THEME_MODULE) {
 		/* Visual regression testing mode: Themes are overridden with a certain theme module, that should be used instead. */
-		const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(process.env.THEME_MODULE)) as Record<string, Theme>;
+		if (process.env.PLATFORM === 'win32') {
+			/* Add leading slash, required for ESBuild on Windows.
+			   Note: process.env.THEME_MODULE must be used literally in the import(). Moving it to a constant breaks the import. */
+			process.env.THEME_MODULE = `/${process.env.THEME_MODULE}`;
+		}
+		const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(/* @vite-ignore */ process.env.THEME_MODULE)) as Record<string, Theme>;
 		return [theme];
 	}
 
@@ -40,9 +45,6 @@ const getThemes = async () => {
 
 void (async () => {
 	try {
-		console.info('bootstap is initialized: ', isInitialized());
-		console.info('start kolibri bootstrap');
-
 		await bootstrap(
 			await getThemes(),
 			() => {
@@ -107,8 +109,6 @@ void (async () => {
 				},
 			);
 		}
-
-		console.info('bootstap is initialized: ', isInitialized());
 	} catch (error) {
 		console.warn('Theme registration failed:', error);
 	}

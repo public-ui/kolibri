@@ -9,7 +9,7 @@ import { getVersionOfPublicUiKoliBriCli } from './migrate/shares/reuse';
 
 const versionOfPublicUiKoliBriCli = getVersionOfPublicUiKoliBriCli();
 
-const banner = gradient.atlas.multiline(
+const banner = gradient(['red', 'green'], { interpolation: 'hsv', hsvSpin: 'long' }).multiline(
 	`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
@@ -18,9 +18,6 @@ const banner = gradient.atlas.multiline(
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${versionOfPublicUiKoliBriCli}
 `,
-	{
-		interpolation: 'hsv',
-	},
 );
 console.log(banner);
 

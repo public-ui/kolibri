@@ -38,7 +38,7 @@ export class KolToolbar implements ToolbarAPI {
 		};
 
 		return '_href' in element ? (
-			<KolLinkWcTag {...element} {...props} ref={catchRef}></KolLinkWcTag>
+			<KolLinkWcTag {...element} {...props} ref={catchRef} _role="button"></KolLinkWcTag>
 		) : (
 			<KolButtonWcTag {...element} {...props} ref={catchRef}></KolButtonWcTag>
 		);

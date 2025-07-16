@@ -3,7 +3,6 @@
 @layer kol-theme-component {
 	:host {
 		display: inline-block;
-		font-family: inherit;
 	}
 
 	:host > span {
@@ -12,7 +11,7 @@
 	}
 
 	:host > span .kol-button-wc {
-		border-left: 1px solid rgba(0, 0, 0, 0.25);
+		border-left: 1px solid rgb(0, 0, 0, 0.25);
 	}
 
 	:host > span .kol-span-wc {

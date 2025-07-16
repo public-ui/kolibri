@@ -1,0 +1,17 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": ["**/*.ts"],
+	"ignore": ["public/{assets,components,theme}/**"],
+	"ignoreDependencies": [
+		"@public-ui/components",
+		"@public-ui/theme-default",
+		"@types/mocha",
+		"@wdio/globals",
+		"@wdio/local-runner",
+		"@wdio/mocha-framework",
+		"@wdio/spec-reporter",
+		"chromedriver",
+		"serve"
+	],
+	"project": ["tests/**/*.ts"]
+}

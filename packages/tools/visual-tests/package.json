@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "2.2.10",
+	"version": "2.2.13-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -23,26 +23,27 @@
 	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
 		"format": "prettier --check src",
-		"lint": "eslint src",
-		"unused": "knip",
-		"postinstall": "pnpm exec playwright install"
+		"lint": "pnpm lint:eslint",
+		"lint:eslint": "eslint src",
+		"prepare": "npx playwright install --with-deps firefox",
+		"unused": "knip"
 	},
 	"bin": {
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.49.1",
+		"@playwright/test": "1.53.0",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.1.0",
-		"portfinder": "1.0.35",
+		"portfinder": "1.0.37",
 		"serve": "14.2.4"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.26.10",
-		"@babel/plugin-syntax-import-attributes": "7.26.0",
-		"@babel/preset-env": "7.26.9",
+		"@babel/eslint-parser": "7.27.5",
+		"@babel/plugin-syntax-import-attributes": "7.27.1",
+		"@babel/preset-env": "7.27.2",
 		"eslint": "8.57.1",
-		"knip": "5.46.0",
+		"knip": "5.61.0",
 		"prettier": "3.5.3"
 	},
 	"files": [

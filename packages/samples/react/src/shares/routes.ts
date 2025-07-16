@@ -53,6 +53,7 @@ import { TREE_ROUTES } from '../components/tree/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
 
 export const ROUTES: Routes = {
+	...HANDOUT_ROUTES,
 	...ABBR_ROUTES,
 	...ACCORDION_ROUTES,
 	...ALERT_ROUTES,
@@ -67,7 +68,6 @@ export const ROUTES: Routes = {
 	...DETAILS_ROUTES,
 	...DRAWER_ROUTES,
 	...FORM_ROUTES,
-	...HANDOUT_ROUTES,
 	...HEADING_ROUTES,
 	...ICON_ROUTES,
 	...IMAGE_ROUTES,
@@ -92,7 +92,6 @@ export const ROUTES: Routes = {
 	...POPOVER_BUTTON_ROUTES,
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
-	...SCENARIO_ROUTES,
 	...SELECT_ROUTES,
 	...SELECT_ROUTES,
 	...SINGLE_SELECT_ROUTES,
@@ -106,4 +105,5 @@ export const ROUTES: Routes = {
 	...TOOLBAR_ROUTES,
 	...TREE_ROUTES,
 	...VERSION_ROUTES,
+	...SCENARIO_ROUTES,
 };

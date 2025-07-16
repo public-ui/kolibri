@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { KoliBriModule } from '@public-ui/angular-v18';
+import { KolButton } from '@public-ui/angular-v20';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
-	imports: [RouterOutlet, KoliBriModule],
+	imports: [RouterOutlet, KolButton],
 })
 export class AppComponent {
 	title = 'angular';

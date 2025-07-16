@@ -9,3 +9,5 @@ dist/
 node_modules/
 *.log
 *.tgz
+
+node-compile-cache/

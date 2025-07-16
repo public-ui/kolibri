@@ -1,0 +1,55 @@
+name: Benchmark-Monitoring
+
+on:
+  push:
+    branches:
+      - release/2
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub App Token
+        uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Install and execute benchmark
+        uses: ./.github/actions/benchmark
+
+      - name: Git checkout readme's
+        run: git checkout -- packages/components/src
+        shell: bash
+
+      - name: Remove husky
+        run: rm -rf .husky
+        shell: bash
+
+      - name: Store benchmark result
+        uses: rhysd/github-action-benchmark@v1
+        with:
+          alert-threshold: 10%
+          auto-push: true
+          fail-threshold: 25%
+          gh-pages-branch: benchmarks
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          output-file-path: packages/tools/benchmark-tests/benchmark-result.json
+          tool: customSmallerIsBetter

@@ -56,12 +56,11 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 					ref={this.catchRef}
 					class={{
 						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
 					_accessKey={this._accessKey}
 					_ariaCurrentValue={this._ariaCurrentValue}
 					_ariaDescription={this._ariaDescription}
+					_customClass={this._customClass}
 					_disabled={this._disabled}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
@@ -74,6 +73,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 					_tabIndex={this._tabIndex}
 					_target={this._target}
 					_tooltipAlign={this._tooltipAlign}
+					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolLinkWcTag>

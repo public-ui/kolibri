@@ -1,20 +1,14 @@
 {
 	"devDependencies": {
-		"@commitlint/cli": "19.8.0",
-		"@commitlint/config-conventional": "19.8.0",
-		"cross-env": "7.0.3",
+		"@commitlint/cli": "19.8.1",
+		"@commitlint/config-conventional": "19.8.1",
 		"husky": "9.1.7",
-		"js-yaml": "4.1.0",
-		"lerna": "8.2.1",
-		"license-report": "6.7.2",
-		"lint-staged": "15.5.0",
-		"npm-check-updates": "17.1.15",
-		"npm-run-all2": "7.0.2",
-		"prettier": "3.5.3",
-		"rimraf": "6.0.1",
-		"ts-node": "10.9.2",
-		"ts-prune": "0.10.3",
-		"typescript": "5.8.2"
+		"lerna": "8.2.2",
+		"license-report": "6.8.0",
+		"lint-staged": "16.1.2",
+		"npm-check-updates": "18.0.1",
+		"npm-run-all2": "8.0.4",
+		"prettier": "3.5.3"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -27,19 +21,22 @@
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
+		"lint:eslint": "pnpm -r --no-bail lint:eslint",
+		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
+		"lint:tsc": "pnpm -r --no-bail lint:tsc",
 		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
-		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react,@stencil/core,@unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react*,@stencil/*,@unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react*,@stencil/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
+		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
+		"update": "pnpm ncu:minor && pnpm ncu:major",
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
 }

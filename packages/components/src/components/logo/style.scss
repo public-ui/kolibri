@@ -4,11 +4,9 @@
 @layer kol-component {
 	:host {
 		display: inline-block;
-		font-size: rem(16);
 	}
 
 	text {
-		font-size: rem(16);
 		letter-spacing: normal;
 		word-spacing: normal;
 	}

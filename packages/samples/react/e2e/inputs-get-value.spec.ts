@@ -2,29 +2,29 @@ import { expect, test } from '@playwright/test';
 
 test.describe('inputs-get-value', () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto('/#/scenarios/inputs-get-value');
+		await page.goto('#/scenarios/inputs-get-value?hideMenus');
 	});
 
 	test('InputText', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputText');
 		await scenario.getByLabel('InputText').fill('Hello Playwright!');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"Hello Playwright!"');
 	});
 
 	test('KolInputCheckbox (value)', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputCheckboxString');
-		await scenario.locator('kol-input-checkbox kol-icon').click();
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-input-checkbox').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"Checkbox True Value"');
 	});
 
 	test('KolInputCheckbox (boolean)', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputCheckboxBoolean');
-		await scenario.locator('kol-input-checkbox kol-icon').click();
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-input-checkbox').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('true');
 	});
@@ -32,7 +32,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputColor', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputColor');
 		await scenario.getByLabel('KolInputColor').fill('#cc006e');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"#cc006e"');
 	});
@@ -40,7 +40,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputDate', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputDate');
 		await scenario.getByLabel('KolInputDate').fill('2024-05-24');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"2024-05-24"');
 	});
@@ -48,7 +48,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputEmail', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputEmail');
 		await scenario.getByLabel('KolInputEmail').fill('test@example.com');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"test@example.com"');
 	});
@@ -60,7 +60,7 @@ test.describe('inputs-get-value', () => {
 			mimeType: 'text/plain',
 			buffer: Buffer.from('This is test bird.'),
 		});
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('FileList{KoliBri.txt}');
 	});
@@ -68,7 +68,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputNumber', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputNumber');
 		await scenario.getByLabel('KolInputNumber').fill('42');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"42"');
 	});
@@ -76,7 +76,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputPassword', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputPassword');
 		await scenario.getByLabel('KolInputPassword').fill('hunter2');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"hunter2"');
 	});
@@ -84,7 +84,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputRange', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputRange');
 		await scenario.getByLabel('KolInputRange').fill('42');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('42');
 	});
@@ -92,7 +92,7 @@ test.describe('inputs-get-value', () => {
 	test('KolInputRadio', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputRadio');
 		await scenario.getByLabel('Rio de Janeiro').check();
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"Rio de Janeiro"');
 	});
@@ -100,7 +100,7 @@ test.describe('inputs-get-value', () => {
 	test('KolSelect', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-select');
 		await scenario.getByLabel('KolSelect').selectOption('Rio de Janeiro');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('["Rio de Janeiro"]');
 	});
@@ -125,7 +125,7 @@ test.describe('inputs-get-value', () => {
 	test('KolTextarea', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-textarea');
 		await scenario.getByLabel('KolTextarea').fill('Hello Playwright!');
-		await scenario.getByRole('button').click();
+		await scenario.locator('kol-button').click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"Hello Playwright!"');
 	});

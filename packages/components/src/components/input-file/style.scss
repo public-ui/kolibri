@@ -2,15 +2,24 @@
 @use '../input-line' as *;
 
 @layer kol-component {
-	label input[type='file']::-webkit-file-upload-button {
-		display: none;
+	.disabled {
+		.input-label,
+		.input {
+			cursor: not-allowed;
+		}
 	}
 
-	label input[type='file']:before {
-		content: 'Datei auswählen';
-	}
+	input {
+		&::-webkit-file-upload-button,
+		&::file-selector-button {
+			cursor: pointer;
+		}
 
-	label input[multiple]:before {
-		content: 'Dateien auswählen';
+		&:disabled,
+		&:disabled::-webkit-file-upload-button,
+		&:disabled::file-selector-button {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
 	}
 }

@@ -48,6 +48,10 @@ hr {
 	width: 500px;
 }
 
+.drawer-content-vertical {
+	width: rem(400);
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
@@ -59,6 +63,7 @@ hr {
 	.app-sidebar {
 		border-right: 1px solid gray;
 		position: relative;
+		z-index: 1;
 
 		& .scrollable-container-wrapper {
 			position: fixed;

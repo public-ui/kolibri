@@ -20,6 +20,9 @@ export const ToastBasic: FC = () => {
 			description: 'Toasty',
 			label: `Initial Toast`,
 			type: 'warning',
+			onClose: () => {
+				console.log('Simple toast has been closed.');
+			},
 		});
 	};
 

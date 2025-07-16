@@ -10,6 +10,7 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
+	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectAPI,
 	SingleSelectStates,
@@ -51,7 +52,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
-		return this.state._value;
+		return this._value;
 	}
 
 	@Method()
@@ -81,9 +82,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	};
 
+	/**
+	 * If there are options and the current input value doesn't match any option's label,
+	 * resets the input value to match the label of the currently selected option.
+	 * Closes the dropdown and resets the opened state.
+	 */
 	private onBlur() {
 		if (Array.isArray(this.state._options) && this.state._options.length > 0 && !this.state._options.some((option) => option.label === this._inputValue)) {
-			this._inputValue = this.state._options.find((option) => (option as Option<string>).value === this.state._value)?.label as string;
+			this._inputValue = this.state._options.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
 		this._isOpen = false;
@@ -119,7 +125,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: option.value } }), option.value);
 		this._filteredOptions = [...this.state._options];
 
-		this.controller.setFormAssociatedValue(this.state._value);
+		this.controller.setFormAssociatedValue(this._value);
 	}
 
 	private onInput(event: Event) {
@@ -278,6 +284,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<ul
 									role="listbox"
 									class={clsx('single-select__listbox', this.blockSuggestionMouseOver && 'single-select__listbox--cursor-hidden')}
+									style={{ '--visible-options': `${this._rows ?? 5}` }}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
 									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
@@ -290,11 +297,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 												}}
 												tabIndex={-1}
 												role="option"
-												aria-selected={this.state._value === (option as Option<string>).value ? 'true' : undefined}
+												aria-selected={this._value === (option as Option<string>).value ? 'true' : undefined}
 												onClick={(event: Event) => {
 													this.selectOption(option as Option<string>);
 													this.refInput?.focus();
 													this.toggleListbox(event);
+													this._isOpen = false;
+													this._hasOpened = false;
 												}}
 												onMouseOver={() => {
 													if (!this.blockSuggestionMouseOver) {
@@ -322,7 +331,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 													name="options"
 													id={`option-radio-${index}`}
 													value={(option as Option<string>).value}
-													checked={this.state._value === (option as Option<string>).value || index === this._focusedOptionIndex}
+													checked={this._value === (option as Option<string>).value || index === this._focusedOptionIndex}
 												/>
 
 												<label htmlFor={`option-radio-${index}`} class="radio-label">
@@ -411,7 +420,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'NumpadEnter':
 			case 'Enter': {
 				this.toggleListbox(event);
-
+				this._hasOpened = false;
+				this._isOpen = false;
 				break;
 			}
 			case 'Home': {
@@ -575,12 +585,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop() public _hideClearButton?: boolean = false;
 
+	/**
+	 * Maximum number of visible rows in the options dropdown before scrolling.
+	 */
+	@Prop() public _rows?: RowsPropType;
+
 	@State() public state: SingleSelectStates = {
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
-		_value: '',
 		_hideClearButton: false,
 	};
 
@@ -704,6 +718,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_hideClearButton ')
 	public validateHideClearButton(value?: boolean): void {
 		this.controller.validateHideClearButton(value);
+	}
+
+	@Watch('_rows')
+	public validateRows(value?: number): void {
+		this.controller.validateRows(value);
 	}
 
 	@Listen('mousemove')

@@ -39,6 +39,7 @@ export class KolHeading implements HeadingProps {
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 * @deprecated Removed in v3. Use CSS custom properties instead.
 	 */
 	@Prop() public _variant?: HeadingVariantPropType;
 }

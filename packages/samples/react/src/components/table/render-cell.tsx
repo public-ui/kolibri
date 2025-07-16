@@ -84,7 +84,6 @@ const HEADERS: KoliBriTableHeaders = {
 			},
 			{
 				label: 'Action (react)',
-				key: 'order',
 				width: '20em',
 
 				/* Example 4: Render function using React */

@@ -57,6 +57,8 @@ type OptionalProps = {
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
+	currentLength: number;
+	currentLengthDebounced: number;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 } & PropId &
@@ -65,7 +67,6 @@ type RequiredStates = {
 
 type OptionalStates = {
 	alert: boolean;
-	currentLength: number;
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;

@@ -29,6 +29,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 				{...props}
 				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
+				_rows={3}
 				_touched
 				_label="Label"
 				_placeholder="Placeholder"

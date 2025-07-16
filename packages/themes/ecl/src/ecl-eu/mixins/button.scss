@@ -45,84 +45,84 @@
 			0 rem(-4) rem(4) rgb(9 49 142 / 4%);
 	}
 
-	.primary a > .kol-span-wc,
-	.primary button > .kol-span-wc {
+	a.primary > .kol-span-wc,
+	button.primary > .kol-span-wc {
 		background-color: #0e47cb;
 		color: #fff;
 	}
 
-	.primary a:focus-visible > .kol-span-wc,
-	.primary button:focus-visible > .kol-span-wc {
+	a.primary:focus-visible > .kol-span-wc,
+	button.primary:focus-visible > .kol-span-wc {
 		outline-color: #fff;
 	}
 
-	.primary a:hover > .kol-span-wc,
-	.primary button:hover > .kol-span-wc {
+	a.primary:hover > .kol-span-wc,
+	button.primary:hover > .kol-span-wc {
 		background-color: #3e6cd5;
 	}
 
-	.secondary a > .kol-span-wc,
-	.secondary button > .kol-span-wc {
+	a.secondary > .kol-span-wc,
+	button.secondary > .kol-span-wc {
 		background-color: #fff;
 		border: 2px solid #0e47cb;
 		color: #0e47cb;
 		padding: calc(rem(12) - rem(2)) calc(rem(16) - rem(2));
 	}
 
-	.secondary a:focus-visible > .kol-span-wc,
-	.secondary button:focus-visible > .kol-span-wc {
+	a.secondary:focus-visible > .kol-span-wc,
+	button.secondary:focus-visible > .kol-span-wc {
 		box-shadow: inset 0 0 0 4px #0e47cb;
 		outline-color: #fff;
 	}
 
-	.secondary a:hover > .kol-span-wc,
-	.secondary button:hover > .kol-span-wc {
+	a.secondary:hover > .kol-span-wc,
+	button.secondary:hover > .kol-span-wc {
 		border-color: #0e47cb;
 		color: #0e47cb;
 	}
 
-	.normal a > .kol-span-wc,
-	.normal button > .kol-span-wc {
+	a.normal > .kol-span-wc,
+	button.normal > .kol-span-wc {
 		background-color: #fc0;
 		color: #171a22;
 	}
 
-	.normal a:focus-visible > .kol-span-wc,
-	.normal button:focus-visible > .kol-span-wc {
+	a.normal:focus-visible > .kol-span-wc,
+	button.normal:focus-visible > .kol-span-wc {
 		outline-color: #000;
 	}
 
-	.normal a:hover > .kol-span-wc,
-	.normal button:hover > .kol-span-wc {
+	a.normal:hover > .kol-span-wc,
+	button.normal:hover > .kol-span-wc {
 		background-color: #fc0;
 		border-color: #fc0;
 	}
 
-	.danger a .kol-span-wc,
-	.danger button .kol-span-wc {
+	a.danger .kol-span-wc,
+	button.danger .kol-span-wc {
 		background-color: var(--color-red);
 		border-color: var(--color-red);
 		color: var(--color-white);
 	}
 
-	.danger a:hover .kol-span-wc,
-	.danger button:hover .kol-span-wc {
+	a.danger:hover .kol-span-wc,
+	button.danger:hover .kol-span-wc {
 		background-color: var(--color-red);
 		border-color: var(--color-red);
 	}
 
-	.ghost a > .kol-span-wc,
-	.ghost button > .kol-span-wc {
+	a.ghost > .kol-span-wc,
+	button.ghost > .kol-span-wc {
 		color: #0e47cb;
 	}
 
-	.ghost a:focus-visible > .kol-span-wc,
-	.ghost button:focus-visible > .kol-span-wc {
+	a.ghost:focus-visible > .kol-span-wc,
+	button.ghost:focus-visible > .kol-span-wc {
 		outline-color: #0e47cb;
 	}
 
-	.ghost a:hover > .kol-span-wc,
-	.ghost button:hover > .kol-span-wc {
+	a.ghost:hover > .kol-span-wc,
+	button.ghost:hover > .kol-span-wc {
 		color: #0e47cb;
 	}
 }

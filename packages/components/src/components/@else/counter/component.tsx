@@ -10,7 +10,6 @@ import { h, Host, State } from '@stencil/core';
 // 	},
 // 	shadow: true,
 // })
-// ts-prune-ignore-next
 export class KolCounter {
 	@State() public state = {
 		_count: 0,

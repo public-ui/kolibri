@@ -1,6 +1,0 @@
-dod:
-  - Meaningful pull request title for the release notes
-  - Pull request is linked to an issue and all changes relate to the issue
-  - Tests to protect this code implemented (if applicable)
-  - Manual test performed successfully (if applicable)
-  - Documentation or migration has been updated (if applicable)

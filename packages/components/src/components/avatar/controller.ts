@@ -8,8 +8,8 @@ const formatNameAsInitial = (name: string): string => {
 
 export const formatLabelAsInitials = (label: string): string => {
 	const names = label.split(/\s+/); // split by any whitespace characters
-	const first = names.at(0);
-	const last = names.at(-1);
+	const first = names[0];
+	const last = names[names.length - 1];
 
 	// names might consist of only one word
 	if (names.length >= 2 && first && last) {

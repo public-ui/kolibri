@@ -7,10 +7,7 @@ $option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
 
 	.single-select {
 		&__group {
@@ -72,6 +69,7 @@ $visible-options: 5;
 				padding-left: rem(1);
 			}
 
+			&[aria-selected],
 			&:focus,
 			&.highlighted {
 				background-color: var(--color-primary-variant);

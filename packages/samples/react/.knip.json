@@ -1,0 +1,25 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"ignore": [
+		"src/assets/**",
+		"src/scenarios/appointment-form/AppointmentForm.tsx",
+		"src/scenarios/appointment-form/appointmentService.ts",
+		"src/scenarios/appointment-form/AvailableAppointmentsForm.tsx",
+		"src/scenarios/appointment-form/DistrictForm.tsx",
+		"src/scenarios/appointment-form/formUtils.ts",
+		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
+		"src/scenarios/appointment-form/Summary.tsx"
+	],
+	"ignoreBinaries": ["eslint", "prettier"],
+	"ignoreDependencies": [
+		"@leanup/stack",
+		"@public-ui/components",
+		"@public-ui/react",
+		"@public-ui/themes",
+		"@unocss/preset-mini",
+		"eslint-plugin-jsx-a11y",
+		"eslint-plugin-react",
+		"uno.css"
+	],
+	"project": ["src/**/*.ts", "src/**/*.tsx"]
+}

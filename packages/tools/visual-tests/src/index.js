@@ -35,11 +35,18 @@ const packageJson = JSON.parse(packageJsonContent);
 console.log(`
 Building React Sample App (v${packageJson?.version ?? '#.#.#'}) …`);
 
-child_process.spawnSync('pnpm', ['run', 'build', '--', `--output-path="${buildPath}"`], {
+const buildResult = child_process.spawnSync('pnpm', ['run', 'build', `--outDir="${buildPath}"`], {
 	cwd: workingDir,
 	encoding: 'utf-8',
 	shell: true,
 });
+
+if (buildResult.status !== 0) {
+	console.log('Build status:', buildResult.status);
+	console.log('Build stdout:', buildResult.stdout);
+	console.log('Build stderr:', buildResult.stderr);
+	console.log('Build error:', buildResult.error);
+}
 
 console.log(`React Sample App build finished. Directory:`, buildPath);
 

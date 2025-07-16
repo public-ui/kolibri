@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { Events } from '../enums';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
+import { isObject } from '../validators';
 
 /* types */
 export type AccordionCallbacksPropType<T> = {
@@ -17,5 +18,5 @@ export type PropAccordionCallbacks<T> = {
 
 /* validator */
 export const validateAccordionCallbacks = (component: Generic.Element.Component, value?: AccordionCallbacksPropType<boolean>): void => {
-	watchValidator(component, `_on`, (value) => typeof value === 'object' && value !== null, new Set(['AccordionCallbacksPropType {Events.onClick}']), value);
+	watchValidator(component, `_on`, (value) => isObject(value), new Set(['AccordionCallbacksPropType {Events.onClick}']), value);
 };

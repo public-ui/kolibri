@@ -14,16 +14,14 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	ShortKeyPropType,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { KolInputTag } from '../../core/component-names';
@@ -91,15 +89,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							<span slot="label">
-								{hasExpertSlot ? (
-									<slot name="expert"></slot>
-								) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this._label} />
-								) : (
-									this._label
-								)}
-							</span>
+							<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this._label}</span>
 						</span>
 					</legend>
 					{this.state._options.map((option, index) => {
@@ -119,7 +109,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 									disabled: Boolean(this.state._disabled || option.disabled),
 								}}
 								key={customId}
-								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
 								_hint={option.hint}
@@ -127,7 +116,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 								_label={option.label as string}
 								_renderNoLabel={true}
 								_required={this.state._required}
-								_shortKey={this.state._shortKey}
 								_slotName={slotName}
 								_tooltipAlign={this._tooltipAlign}
 								_touched={this.state._touched}
@@ -136,7 +124,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										title=""
-										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
 										type="radio"
@@ -187,11 +174,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	private readonly controller: InputRadioController;
-
-	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
-	 */
-	@Prop() public _accessKey?: string;
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
@@ -271,11 +253,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
@@ -324,10 +301,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return this.state._alert;
 	}
 
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		this.controller.validateAccessKey(value);
-	}
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		this.controller.validateTooltipAlign(value);
@@ -400,11 +373,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
-	}
-
-	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		this.controller.validateShortKey(value);
 	}
 
 	@Watch('_syncValueBySelector')

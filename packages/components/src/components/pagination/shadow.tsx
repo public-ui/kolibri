@@ -305,34 +305,35 @@ export class KolPagination implements PaginationAPI {
 	};
 
 	private getUnselectedPageButton(page: number): JSX.Element {
+		const pageText = NUMBER_FORMATTER.format(page);
 		return (
 			<li key={nonce()}>
 				<KolButtonWcTag
-					exportparts="icon"
+					_ariaDescription={`${translate('kol-page')} ${pageText}`}
 					_customClass={this.state._customClass}
-					_label=""
+					_label={pageText}
 					_on={{
 						onClick: (event: Event) => {
 							this.onClick(event, page);
 						},
 					}}
-				>
-					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
-					</span>
-				</KolButtonWcTag>
+				></KolButtonWcTag>
 			</li>
 		);
 	}
 
 	private getSelectedPageButton(page: number): JSX.Element {
+		const pageText = NUMBER_FORMATTER.format(page);
 		return (
 			<li key={nonce()}>
-				<KolButtonWcTag class="selected" _customClass={this.state._customClass} _disabled={true} _label="">
-					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
-					</span>
-				</KolButtonWcTag>
+				<KolButtonWcTag
+					aria-current="page"
+					class="selected"
+					_ariaDescription={`${translate('kol-page')} ${pageText}`}
+					_customClass={this.state._customClass}
+					_disabled={true}
+					_label={pageText}
+				></KolButtonWcTag>
 			</li>
 		);
 	}

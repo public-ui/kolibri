@@ -2,6 +2,9 @@
 @use '../style' as *;
 @use '../input-line' as *;
 
+$option-height: rem(40);
+$visible-options: var(--visible-options, 5);
+
 @layer kol-component {
 	.single-select {
 		position: relative;
@@ -35,7 +38,7 @@
 			overflow-x: hidden;
 			z-index: 2;
 			background-color: white;
-			max-height: rem(250);
+			max-height: calc($option-height * $visible-options + rem(2)) !important;
 		}
 
 		&__item {

@@ -1,13 +1,12 @@
-import { devHint, validateColor, watchBoolean } from '../../schema';
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
-
-import { colorRgba } from './color-rgba';
+import { devHint, validateColor, watchBoolean } from '../../schema';
 
 import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 
+import rgba from 'color-rgba';
 import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '../../schema';
 
 @Component({
@@ -60,11 +59,11 @@ export class KolKolibri implements KolibriAPI {
 
 	private handleColorChange: Generic.Element.NextStateHooksCallback = (nextValue: unknown, nextState: Map<string, unknown>): void => {
 		if (typeof nextValue === 'string') {
-			const rgba = colorRgba(nextValue);
+			const rgb = rgba(nextValue);
 			nextState.set('_color', {
-				red: rgba[0],
-				green: rgba[1],
-				blue: rgba[2],
+				red: rgb[0],
+				green: rgb[1],
+				blue: rgb[2],
 			});
 		} else {
 			devHint(`[KolKolibri] You used the complex color schema. For the KoliBri we use need the color as hex string.`);

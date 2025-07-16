@@ -1,10 +1,6 @@
 @use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.list {
 		display: flex;
 		list-style: none;

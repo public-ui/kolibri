@@ -72,7 +72,6 @@ $visible-options: 5;
 			background-color: #e8edf2;
 			overflow-y: auto;
 			overflow-x: hidden;
-			box-sizing: border-box;
 			width: 100%;
 		}
 
@@ -85,6 +84,7 @@ $visible-options: 5;
 				padding-left: 1em;
 			}
 
+			&[aria-selected],
 			&:focus,
 			&.highlighted {
 				background-color: var(--color-petrol);

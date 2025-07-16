@@ -11,13 +11,13 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
       <thead>
         <tr>
           <td aria-hidden="true" colspan="1" rowspan="1"></td>
-          <th class="align-left" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-left" data-sort="sort-undefined" scope="col">
             Header1
           </th>
-          <th class="align-center" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-center" data-sort="sort-undefined" scope="col">
             Header2
           </th>
-          <th class="align-right" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-right" data-sort="sort-undefined" scope="col">
             Header3
           </th>
         </tr>
@@ -27,7 +27,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
       </thead>
       <tbody>
         <tr>
-          <th class="align-left" data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" class="align-left" data-sort="sort-undefined" scope="row">
             Row 1
           </th>
           <td class="left" style="text-align: left;">
@@ -41,7 +41,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
           </td>
         </tr>
         <tr>
-          <th class="align-center" data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" class="align-center" data-sort="sort-undefined" scope="row">
             Row 2
           </th>
           <td class="left" style="text-align: left;">
@@ -55,7 +55,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
           </td>
         </tr>
         <tr>
-          <th class="align-right" data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" class="align-right" data-sort="sort-undefined" scope="row">
             Row 3
           </th>
           <td class="left" style="text-align: left;">
@@ -84,10 +84,10 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
       </caption>
       <thead>
         <tr>
-          <th class="align-left" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-left" data-sort="sort-undefined" scope="col">
             Header 1
           </th>
-          <th class="align-center" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-center" data-sort="sort-undefined" scope="col">
             Header 2
           </th>
         </tr>
@@ -129,18 +129,18 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
       <thead>
         <tr>
           <td aria-hidden="true" colspan="1" rowspan="2"></td>
-          <th class="align-left" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-left" data-sort="sort-undefined" scope="col">
             Header 1
           </th>
-          <th class="align-center" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-center" data-sort="sort-undefined" scope="col">
             Header 2
           </th>
         </tr>
         <tr>
-          <th class="align-left" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-left" data-sort="sort-undefined" scope="col">
             Sub Header 1
           </th>
-          <th class="align-center" data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" class="align-center" data-sort="sort-undefined" scope="col">
             Sub Header 2
           </th>
         </tr>
@@ -150,7 +150,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
       </thead>
       <tbody>
         <tr>
-          <th class="align-left" data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" class="align-left" data-sort="sort-undefined" scope="row">
             Row 1
           </th>
           <td class="left" style="text-align: left;">
@@ -161,7 +161,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
           </td>
         </tr>
         <tr>
-          <th class="align-center" data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" class="align-center" data-sort="sort-undefined" scope="row">
             Row 2
           </th>
           <td class="left" style="text-align: left;">
@@ -188,15 +188,15 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
       <thead>
         <tr>
           <td aria-hidden="true" colspan="2" rowspan="2"></td>
-          <th colspan="2" data-sort="sort-undefined" scope="colgroup">
+          <th aria-sort="none" colspan="2" data-sort="sort-undefined" scope="colgroup">
             H-Header
           </th>
         </tr>
         <tr>
-          <th data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" data-sort="sort-undefined" scope="col">
             Sub H-Header 1
           </th>
-          <th data-sort="sort-undefined" scope="col">
+          <th aria-sort="none" data-sort="sort-undefined" scope="col">
             Sub H-Header 2
           </th>
         </tr>
@@ -206,10 +206,10 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
       </thead>
       <tbody>
         <tr>
-          <th data-sort="sort-undefined" rowspan="2" scope="row">
+          <th aria-sort="none" data-sort="sort-undefined" rowspan="2" scope="row">
             V-Header
           </th>
-          <th data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" data-sort="sort-undefined" scope="row">
             Sub V-Header 1
           </th>
           <td>
@@ -220,7 +220,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
           </td>
         </tr>
         <tr>
-          <th data-sort="sort-undefined" scope="row">
+          <th aria-sort="none" data-sort="sort-undefined" scope="row">
             Sub V-Header 2
           </th>
           <td>

@@ -89,22 +89,27 @@ export class KolProgress implements ProgressAPI {
 				>
 					{this.state._variant === 'bar' && this.state._label && <div class="label">{this.state._label}</div>}
 					{createProgressSVG(this.state)}
-					{this.state._variant == 'cycle' && (
+					{this.state._variant === 'cycle' && (
 						<div class="text">
 							{this.state._label && <div class="label">{this.state._label}</div>}
 							<div class="value">{`${displayValue} ${this.state._unit}`}</div>
 						</div>
 					)}
-					{this.state._variant == 'bar' && (
+					{this.state._variant === 'bar' && (
 						<div class="value" style={{ width: `${`${(isPercentage ? 100 : this.state._max) + 1}`.length}ch` }}>
 							{displayValue}
 						</div>
 					)}
-					{this.state._variant == 'bar' && <div class="unit">{this.state._unit}</div>}
+					{this.state._variant === 'bar' && <div class="unit">{this.state._unit}</div>}
 				</div>
 
 				{/* https://css-tricks.com/html5-progress-element/ */}
-				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
+				<progress
+					aria-busy={this.state._value < this.state._max ? 'true' : 'false'}
+					class="visually-hidden"
+					max={this.state._max}
+					value={this.state._value}
+				></progress>
 				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 					{isPercentage ? `${liveProgressValue} %` : `${liveProgressValue} von ${this.state._max} ${this.state._unit}`}
 				</span>

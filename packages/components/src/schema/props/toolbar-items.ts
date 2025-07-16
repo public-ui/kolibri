@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
+import { isObject } from '../validators';
 import type { ButtonProps, LinkProps } from '../../schema';
 
 /* types */
@@ -27,7 +28,7 @@ export const validateToolbarItems = (component: Generic.Element.Component, value
 			} catch (e) {
 				// value keeps the original items
 			}
-			if (Array.isArray(value) && value.every((items: ToolbarItemPropType) => typeof items === 'object' && items !== null)) {
+			if (Array.isArray(value) && value.every((items: ToolbarItemPropType) => isObject(items))) {
 				setState(component, '_items', value);
 			}
 		});

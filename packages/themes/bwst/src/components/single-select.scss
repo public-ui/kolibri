@@ -8,7 +8,6 @@ $visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
-		font-family: var(--font-family);
 		@include kol-alert-theme;
 	}
 
@@ -72,6 +71,7 @@ $visible-options: 5;
 				padding-left: rem(1);
 			}
 
+			&[aria-selected],
 			&:focus,
 			&.highlighted {
 				background-color: var(--color-primary-variant);

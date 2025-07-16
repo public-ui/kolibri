@@ -1,6 +1,7 @@
 @use '../@shared/mixins' as *;
 @use '../style' as *;
 @use '../tooltip/style.scss' as *;
+@use '../button' as *;
 
 @layer kol-component {
 	.toolbar {

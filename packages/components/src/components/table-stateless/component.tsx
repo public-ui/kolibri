@@ -5,6 +5,7 @@ import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/componen
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import type {
+	AriaSort,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -262,35 +263,35 @@ export class KolTableStateless implements TableStatelessAPI {
 		return max;
 	}
 
-	private getThePrimaryHeadersWithKeysIfExists(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
-		const primaryHeadersWithKeys: KoliBriTableHeaderCell[] = [];
+	private getThePrimaryHeadersWithKeyOrRenderFunction(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
+		const primaryHeaders: KoliBriTableHeaderCell[] = [];
 
 		headers.forEach((cells) => {
 			cells.forEach((cell) => {
-				if (typeof cell.key === 'string') {
-					primaryHeadersWithKeys.push(cell);
+				if (typeof cell.key === 'string' || typeof cell.render === 'function') {
+					primaryHeaders.push(cell);
 				}
 			});
 		});
 
-		return primaryHeadersWithKeys;
+		return primaryHeaders;
 	}
 
 	private getPrimaryHeaders(headers: KoliBriTableHeaders): KoliBriTableHeaderCell[] {
-		let primaryHeadersWithKeys: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeysIfExists(headers.horizontal ?? []);
+		let primaryHeaders: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.horizontal ?? []);
 
 		/**
 		 * It is important to note that the rendering direction of the data is implicitly set,
 		 * if either the horizontal or vertical header cells have keys.
 		 */
 		this.horizontal = true;
-		if (primaryHeadersWithKeys.length === 0) {
-			primaryHeadersWithKeys = this.getThePrimaryHeadersWithKeysIfExists(headers.vertical ?? []);
-			if (primaryHeadersWithKeys.length > 0) {
+		if (primaryHeaders.length === 0) {
+			primaryHeaders = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.vertical ?? []);
+			if (primaryHeaders.length > 0) {
 				this.horizontal = false;
 			}
 		}
-		return primaryHeadersWithKeys;
+		return primaryHeaders;
 	}
 
 	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
@@ -346,9 +347,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (
 						typeof primaryHeader[j] === 'object' &&
 						primaryHeader[j] !== null &&
-						typeof primaryHeader[j].key === 'string' &&
 						typeof row === 'object' &&
-						row !== null
+						row !== null &&
+						(typeof primaryHeader[j].key === 'string' || typeof primaryHeader[j].render === 'function')
 					) {
 						dataRow.push({
 							...primaryHeader[j],
@@ -362,9 +363,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (
 						typeof primaryHeader[i] === 'object' &&
 						primaryHeader[i] !== null &&
-						typeof primaryHeader[i].key === 'string' &&
 						typeof data[j] === 'object' &&
-						data[j] !== null
+						data[j] !== null &&
+						(typeof primaryHeader[i].key === 'string' || typeof primaryHeader[i].render === 'function')
 					) {
 						dataRow.push({
 							...primaryHeader[i],
@@ -631,7 +632,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
-		let ariaSort = undefined;
+		let ariaSort: AriaSort = 'none';
 		let sortButtonIcon = 'codicon codicon-fold';
 
 		if (cell.sortDirection) {
@@ -644,6 +645,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					sortButtonIcon = 'codicon codicon-chevron-down';
 					ariaSort = 'descending';
 					break;
+				default:
+					ariaSort = 'none';
 			}
 		}
 
