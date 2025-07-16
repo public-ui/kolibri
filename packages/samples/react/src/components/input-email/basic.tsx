@@ -11,6 +11,6 @@ export const InputEmailBasic: FC = () => (
 			<p>KolInputEmail renders an email input field. The sample shows KolInputEmail in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputEmailVariants} />
+		<FormWrap RefComponent={InputEmailVariants} showButtons={false} />
 	</>
 );

@@ -11,6 +11,6 @@ export const SelectBasic: FC = () => (
 			<p>KolSelect renders a select field. The sample shows KolSelect in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={SelectVariants} />
+		<FormWrap RefComponent={SelectVariants} showButtons={false} />
 	</>
 );

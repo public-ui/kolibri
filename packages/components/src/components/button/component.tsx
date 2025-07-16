@@ -67,17 +67,20 @@ import clsx from 'clsx';
 export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
+	private tooltipRef?: HTMLKolTooltipWcElement;
 
 	private readonly internalDescriptionById = nonce();
-
-	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.buttonRef = ref;
-	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.buttonRef?.focus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hideTooltip() {
+		void this.tooltipRef?.hideTooltip();
 	}
 
 	private readonly onClick = (event: MouseEvent) => {
@@ -118,27 +121,29 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 		const badgeText = this.state._accessKey || this.state._shortKey;
+		const isDisabled = this.state._disabled === true;
+		const hideLabel = this.state._hideLabel === true;
 
 		return (
 			<Host>
 				<button
-					ref={this.catchRef}
+					ref={(ref) => (this.buttonRef = ref)}
 					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
-					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-label={hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
-						'kol-button--disabled': this.state._disabled === true,
+						'kol-button--disabled': isDisabled,
 						[`kol-button--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
 						[`kol-button--${this.state._linkVariant as string}`]: this.state._linkVariant,
-						'kol-button--hide-label': this.state._hideLabel === true,
+						'kol-button--hide-label': hideLabel,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
-					disabled={this.state._disabled}
+					disabled={isDisabled}
 					id={this.state._id}
 					name={this.state._name}
 					onClick={this.onClick}
@@ -151,19 +156,20 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 						class="kol-button__text"
 						badgeText={badgeText}
 						icons={this.state._icons}
-						hideLabel={this.state._hideLabel}
+						hideLabel={hideLabel}
 						label={hasExpertSlot ? '' : this.state._label}
 					>
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 				</button>
 				<KolTooltipWcTag
+					ref={(ref) => (this.tooltipRef = ref)}
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
-					hidden={hasExpertSlot || !this.state._hideLabel}
+					hidden={hasExpertSlot || !hideLabel}
 					class="kol-button__tooltip"
 					_badgeText={badgeText}
 					_align={this.state._tooltipAlign}

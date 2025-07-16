@@ -11,6 +11,6 @@ export const InputCheckboxBasic: FC = () => (
 			<p>KolInputCheckbox renders a checkbox. The sample shows KolInputCheckbox in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputCheckboxVariants} />
+		<FormWrap RefComponent={InputCheckboxVariants} showButtons={false} />
 	</>
 );
