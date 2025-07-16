@@ -75,7 +75,7 @@ export const StaticForm: FC = () => {
 							{ label: 'Option B', value: 'B' },
 						]}
 					/>
-					<KolInputRange _name="range" _label="Range" />
+					<KolInputRange _name="range" _label="Range" _min={0} _max={100} />
 					<KolInputText _name="text" _label="Text" />
 					<KolSelect
 						_name="select"

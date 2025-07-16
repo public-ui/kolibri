@@ -52,7 +52,7 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('inputRange', (_, ref) => <KolInputRange className="w-full" _name="range" _label="Range" ref={ref} />);
+	focusElements.set('inputRange', (_, ref) => <KolInputRange className="w-full" _name="range" _label="Range" ref={ref} _min={0} _max={100} />);
 	focusElements.set('inputText', (_, ref) => <KolInputText className="w-full" _name="text" _label="Text" ref={ref} />);
 	focusElements.set('select', (_, ref) => (
 		<KolSelect

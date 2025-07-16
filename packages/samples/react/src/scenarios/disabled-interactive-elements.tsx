@@ -119,26 +119,32 @@ export const DisabledInteractiveElements: FC = () => {
 						</KolDetails>
 					</div>
 				</KolCard>
-				{[KolInputCheckbox, KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputNumber, KolInputPassword, KolInputRange, KolInputText].map(
-					(Input) => {
-						const render = (
-							Input as typeof KolInputCheckbox & {
-								render: { displayName: string };
-							}
-						).render;
-						const name = render.displayName;
-						return (
-							<KolCard key={name} _label={name} _level={0}>
-								<div className="grid gap-4">
-									<Input _label="Label" />
-									<Input _disabled _label="Label" />
-									<Input _hideLabel _label="Label" />
-									<Input _disabled _hideLabel _label="Label" />
-								</div>
-							</KolCard>
-						);
-					},
-				)}
+				{[KolInputCheckbox, KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputNumber, KolInputPassword, KolInputText].map((Input) => {
+					const render = (
+						Input as typeof KolInputCheckbox & {
+							render: { displayName: string };
+						}
+					).render;
+					const name = render.displayName;
+					return (
+						<KolCard key={name} _label={name} _level={0}>
+							<div className="grid gap-4">
+								<Input _label="Label" />
+								<Input _disabled _label="Label" />
+								<Input _hideLabel _label="Label" />
+								<Input _disabled _hideLabel _label="Label" />
+							</div>
+						</KolCard>
+					);
+				})}
+				<KolCard _label="KolInputRange" _level={0}>
+					<div className="grid gap-4">
+						<KolInputRange _label="Label" _min={0} _max={100} />
+						<KolInputRange _disabled _label="Label" _min={0} _max={100} />
+						<KolInputRange _hideLabel _label="Label" _min={0} _max={100} />
+						<KolInputRange _disabled _hideLabel _label="Label" _min={0} _max={100} />
+					</div>
+				</KolCard>
 				{[KolInputRadio, KolSelect].map((Input) => {
 					const render = (
 						Input as typeof KolInputRadio & {
