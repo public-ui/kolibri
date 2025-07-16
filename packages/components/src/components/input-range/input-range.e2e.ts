@@ -18,6 +18,7 @@ test.describe(COMPONENT_NAME, () => {
 		componentName: COMPONENT_NAME,
 		fillAction,
 		testValue: Number(TEST_VALUE),
+		additionalProperties: '_min="0" _max="100"',
 	});
 	testInputCallbacksAndEvents<HTMLKolInputRangeElement>({
 		componentName: COMPONENT_NAME,
@@ -26,6 +27,7 @@ test.describe(COMPONENT_NAME, () => {
 		selectInput,
 		expectedValue: Number(TEST_VALUE),
 		testValue: TEST_VALUE,
+		additionalProperties: '_min="0" _max="100"',
 	});
 	testInputMessage<HTMLKolInputRangeElement>(COMPONENT_NAME);
 });

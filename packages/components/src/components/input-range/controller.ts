@@ -1,5 +1,5 @@
 import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, NumberString, SuggestionsPropType } from '../../schema';
-import { validateSuggestions, watchValidator } from '../../schema';
+import { validateSuggestions, watchNumber, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -24,11 +24,23 @@ export class InputRangeController extends InputIconController implements InputRa
 	}
 
 	public validateMax(value?: number | NumberString): void {
-		this.validateNumber('_max', value);
+		if (typeof value !== 'number') {
+			value = 100;
+		}
+
+		watchNumber(this.component, '_max', value, {
+			required: true,
+		});
 	}
 
 	public validateMin(value?: number | NumberString): void {
-		this.validateNumber('_min', value);
+		if (typeof value !== 'number') {
+			value = 0;
+		}
+
+		watchNumber(this.component, '_min', value, {
+			required: true,
+		});
 	}
 
 	public validateStep(value?: number | NumberString): void {

@@ -39,7 +39,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-number _label=""></kol-input-number>
 				<kol-input-password _label=""></kol-input-password>
 				<kol-input-radio _label="" _options={[]}></kol-input-radio>
-				<kol-input-range _label=""></kol-input-range>
+				<kol-input-range _label="" _max={100} _min={0}></kol-input-range>
 				<kol-input-text _label=""></kol-input-text>
 				<kol-link _href="" _label="Label"></kol-link>
 				<kol-modal _label=""></kol-modal>

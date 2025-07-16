@@ -18,12 +18,13 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = PropLabelWithExpertSlot & {
+	max: number | NumberString;
+	min: number | NumberString;
+};
 type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	hint: string;
-	max: number | NumberString;
-	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	step: number | NumberString;
@@ -42,13 +43,14 @@ type OptionalProps = {
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	suggestions: W3CInputValue[];
+	max: number;
+	min: number;
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
+
 type OptionalStates = {
 	hint: string;
-	max: number;
-	min: number;
 	on: InputTypeOnDefault;
 	step: number;
 	value: number;
