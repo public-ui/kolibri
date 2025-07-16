@@ -29,7 +29,8 @@
 		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
-		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test"
+		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
+		"test": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
 	},
 	"type": "commonjs",
 	"dependencies": {
