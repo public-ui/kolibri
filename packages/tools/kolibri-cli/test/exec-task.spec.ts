@@ -3,10 +3,10 @@ import { ExecTask } from '../src/migrate/runner/tasks/common/ExecTask';
 
 describe('ExecTask', () => {
     it('executes given command', () => {
-        import * as cp from 'child_process';
+        const cp = require('child_process');
         const original = cp.execSync;
         let called = '';
-        cp.execSync = (cmd: string) => {
+        (cp as any).execSync = (cmd: string) => {
             called = cmd;
             return Buffer.from('');
         };
@@ -14,7 +14,7 @@ describe('ExecTask', () => {
         const task = ExecTask.getInstance('echo "works"', '^1');
         task.run();
 
-        cp.execSync = original;
+        (cp as any).execSync = original;
         assert.strictEqual(called, 'echo "works"');
     });
 });
