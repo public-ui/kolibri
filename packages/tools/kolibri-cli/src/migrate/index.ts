@@ -92,6 +92,9 @@ Target version of @public-ui/*: ${options.overwriteTargetVersion}
 Source folder to migrate: ${baseDir}
 `);
 
+				if (!fs.existsSync(baseDir)) {
+					throw logAndCreateError(`The specified source folder "${baseDir}" does not exist or is inaccessible. Please check the path and try again.`);
+				}
 				if (!hasKolibriTags(baseDir)) {
 					console.log(chalk.yellow(`No KoliBri components (web or React) found under "${baseDir}". Check the path or your task configuration.`));
 				}
