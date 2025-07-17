@@ -31,7 +31,7 @@
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
-		"@stencil/core": "4.20.0",
+		"@stencil/core": "4.35.3",
 		"@types/node": "24.0.1",
 		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.7",
