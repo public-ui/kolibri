@@ -6,7 +6,7 @@ export const CUSTOM_ELEMENT_FILE_EXTENSIONS: FileExtension[] = ['html', 'xhtml',
 export const MARKUP_EXTENSIONS: FileExtension[] = COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS);
 
 export const WEB_TAG_REGEX = /\b<kol-[a-z-]+/i;
-export const REACT_TAG_REGEX = /\b<Kol[A-Z][A-Za-z-]*/;
+export const REACT_TAG_REGEX = /\b<Kol[A-Z][A-Za-z]*/;
 
 export type PackageJson = {
 	name: string;
