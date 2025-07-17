@@ -69,8 +69,16 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 export function hasKolibriTags(dir: string): boolean {
 	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
 	return filterFilesByExt(dir, MARKUP_EXTENSIONS).some((file) => {
-		const content = fs.readFileSync(file, 'utf8');
-		return regexes.some((regex) => regex.test(content));
+		const stream = fs.createReadStream(file, { encoding: 'utf8', highWaterMark: 1024 });
+		let content = '';
+		for await (const chunk of stream) {
+			content += chunk;
+			if (regexes.some((regex) => regex.test(content))) {
+				stream.destroy(); // Stop reading further
+				return true;
+			}
+		}
+		return false;
 	});
 }
 
