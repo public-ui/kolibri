@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useRef } from 'react';
 
-import { KolSplitButton, KolToolbar } from '@public-ui/react';
+import { KolButton, KolInputCheckbox, KolInputPassword, KolInputText, KolSplitButton, KolToolbar } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
 
@@ -9,31 +11,25 @@ import type { FC } from 'react';
 export const SplitButtonBasic: FC = () => {
 	const { buttonWithTextClickEventHandler } = useToasterService();
 
-	const splitButtonRef = useRef<HTMLKolSplitButtonElement>(null);
 	const toolbarRef = useRef<HTMLKolToolbarElement>(null);
+	const verticalRef = useRef<HTMLKolSplitButtonElement>(null);
+	const horizontalRef = useRef<HTMLKolSplitButtonElement>(null);
+	const loginRef = useRef<(HTMLKolSplitButtonElement & { closePopup: () => void }) | null>(null);
+	const settingsRef = useRef<HTMLKolSplitButtonElement>(null);
 
 	useEffect(() => {
-		const arrowButton = splitButtonRef.current?.shadowRoot?.querySelector('.kol-split-button__secondary-button');
+		const popover = horizontalRef.current?.shadowRoot?.querySelector('kol-popover-wc') as { _align?: string } | null;
+		if (popover) popover._align = 'top';
+	}, []);
 
-		const focusFirstToolbarItem = () => {
-			setTimeout(() => {
-				const firstItem = toolbarRef.current?.shadowRoot?.querySelector('.kol-toolbar__item') as (HTMLElement & { kolFocus?: () => void }) | null;
-				firstItem?.kolFocus?.();
-			});
-		};
+	useEffect(() => {
+		const popover = loginRef.current?.shadowRoot?.querySelector('kol-popover-wc') as { _align?: string } | null;
+		if (popover) popover._align = 'right';
+	}, []);
 
-		const keyHandler = (event: KeyboardEvent) => {
-			if (['Enter', 'Space', ' '].includes(event.code) || ['Enter', ' '].includes(event.key)) {
-				focusFirstToolbarItem();
-			}
-		};
-
-		arrowButton?.addEventListener('click', focusFirstToolbarItem);
-		arrowButton?.addEventListener('keydown', keyHandler as EventListener);
-		return () => {
-			arrowButton?.removeEventListener('click', focusFirstToolbarItem);
-			arrowButton?.removeEventListener('keydown', keyHandler as EventListener);
-		};
+	useEffect(() => {
+		const popover = settingsRef.current?.shadowRoot?.querySelector('kol-popover-wc') as { _align?: string } | null;
+		if (popover) popover._align = 'left';
 	}, []);
 
 	const TOOLBAR_ITEMS = [
@@ -52,10 +48,42 @@ export const SplitButtonBasic: FC = () => {
 				<p>SplitButton renders a button with an additional context-menu that opens a list of actions.</p>
 			</SampleDescription>
 
-			<div className="flex gap-4">
-				<KolSplitButton ref={splitButtonRef} _label="Bearbeiten" _on={handlePrimaryClick}>
-					<KolToolbar class="block w-fit" ref={toolbarRef} _label="Aktionen" _items={TOOLBAR_ITEMS} _orientation="vertical" />
-				</KolSplitButton>
+			<div className="grid gap-8">
+				<section className="flex gap-4">
+					<KolSplitButton ref={verticalRef} _label="Bearbeiten" _on={handlePrimaryClick}>
+						<KolToolbar class="block w-fit" ref={toolbarRef} _label="Aktionen" _items={TOOLBAR_ITEMS} _orientation="vertical" />
+					</KolSplitButton>
+				</section>
+
+				<section className="flex gap-4">
+					<KolSplitButton ref={horizontalRef} _label="Aktionen">
+						<KolToolbar class="block w-fit" _label="Aktionen" _items={TOOLBAR_ITEMS} _orientation="horizontal" />
+					</KolSplitButton>
+				</section>
+
+				<section className="flex gap-4">
+					<KolSplitButton ref={loginRef} _label="Login">
+						<div className="p-4 border" style={{ width: 300 }} onClick={(e) => e.stopPropagation()}>
+							<div className="grid gap-4">
+								<KolInputText _label="Username" />
+								<KolInputPassword _label="Password" />
+								<KolButton _label="Close" _on={{ onClick: () => loginRef.current?.closePopup() }} />
+							</div>
+						</div>
+					</KolSplitButton>
+				</section>
+
+				<section className="flex gap-4">
+					<KolSplitButton ref={settingsRef} _label="Einstellungen">
+						<div className="p-4" style={{ width: 200 }} onClick={(e) => e.stopPropagation()}>
+							<div className="grid gap-4">
+								<KolInputCheckbox _variant="switch" _label="Benachrichtigungen" _checked />
+								<KolInputCheckbox _variant="switch" _label="Newsletter" />
+								<KolInputCheckbox _variant="switch" _label="Statistiken" />
+							</div>
+						</div>
+					</KolSplitButton>
+				</section>
 			</div>
 		</>
 	);
