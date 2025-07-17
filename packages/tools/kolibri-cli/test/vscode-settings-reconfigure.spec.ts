@@ -10,11 +10,14 @@ describe('VsCodeSettingsReconfigureTask', () => {
                 const cwd = process.cwd();
                 process.chdir(tmpDir);
 
-                const task = VsCodeSettingsReconfigureTask.getInstance('editor.tabSize', 2, '^1');
-                task.run();
+                try {
+                    const task = VsCodeSettingsReconfigureTask.getInstance('editor.tabSize', 2, '^1');
+                    task.run();
 
-                process.chdir(cwd);
-                const content = JSON.parse(fs.readFileSync(path.join(tmpDir, '.vscode', 'settings.json'), 'utf8'));
-                assert.equal(content['editor.tabSize'], 2);
+                    const content = JSON.parse(fs.readFileSync(path.join(tmpDir, '.vscode', 'settings.json'), 'utf8'));
+                    assert.equal(content['editor.tabSize'], 2);
+                } finally {
+                    process.chdir(cwd);
+                }
         });
 });

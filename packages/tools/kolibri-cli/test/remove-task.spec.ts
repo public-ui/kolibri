@@ -9,7 +9,6 @@ describe('RemoveTask', () => {
                 const filePath = path.join(tmpDir, 'to-remove.txt');
                 fs.writeFileSync(filePath, 'data');
 
-                const childProc = require('child_process');
                 const original = childProc.execSync;
                 let executed = '';
                 childProc.execSync = (cmd: string) => {
@@ -18,7 +17,6 @@ describe('RemoveTask', () => {
                         return Buffer.from('');
                 };
 
-                const { RemoveTask } = require('../src/migrate/runner/tasks/common/RemoveTask');
                 const task = RemoveTask.getInstance(filePath, '^1');
                 task.run();
                 childProc.execSync = original;

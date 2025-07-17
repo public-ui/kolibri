@@ -51,7 +51,7 @@ describe('CLI interface', () => {
                 const cwd = process.cwd();
                 process.chdir(tmpDir);
 
-                const childProc = require('child_process');
+                
                 const execOrig = childProc.exec;
                 childProc.exec = (_: string, cb: (err: null, out: string) => void) => cb(null, '');
 

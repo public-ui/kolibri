@@ -40,7 +40,7 @@ describe('end-to-end migration', () => {
 		fs.writeFileSync(path.join(tmpDir, 'index.html'), '<kol-table _old="foo" _remove="bar"></kol-table>');
 		createStubModules(tmpDir);
 		const tsconfigPath = path.join(tmpDir, 'tsconfig.json');
-		fs.writeFileSync(tsconfigPath, '');
+		fs.writeFileSync(tsconfigPath, '{}');
 
 		const runner = new TaskRunner(tmpDir, '3.0.0', '1.0.0', { migrate: { tasks: {} } });
 		setRemoveMode('delete');
