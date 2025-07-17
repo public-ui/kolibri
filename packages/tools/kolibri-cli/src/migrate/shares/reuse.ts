@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 
-import { FileExtension, PackageJson, MARKUP_EXTENSIONS } from '../../types';
+import { FileExtension, PackageJson, MARKUP_EXTENSIONS, WEB_TAG_REGEX, REACT_TAG_REGEX } from '../../types';
 import { RemoveMode } from '../types';
 
 /**
@@ -67,7 +67,7 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
  * @returns {boolean} True if at least one file contains a "kol-" tag
  */
 export function hasKolibriTags(dir: string): boolean {
-	const regexes = [/\b<kol-[a-z-]+/i, /\b<Kol[A-Z][A-Za-z-]*/];
+	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
 	return filterFilesByExt(dir, MARKUP_EXTENSIONS).some((file) => {
 		const content = fs.readFileSync(file, 'utf8');
 		return regexes.some((regex) => regex.test(content));
