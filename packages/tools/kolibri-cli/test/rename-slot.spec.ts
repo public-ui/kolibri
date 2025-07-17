@@ -18,6 +18,6 @@ describe('RenameSlotNameTask', () => {
                 const tsxContent = fs.readFileSync(tsxPath, 'utf8');
                 const htmlContent = fs.readFileSync(htmlPath, 'utf8');
                 assert.ok(tsxContent.includes('slot="header-right"'));
-                assert.ok(htmlContent.includes('slot="header"'));
+                assert.ok(htmlContent.includes('slot="header-right"'));
         });
 });

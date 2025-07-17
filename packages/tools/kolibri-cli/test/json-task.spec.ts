@@ -16,6 +16,6 @@ describe('JsonTask', () => {
 
                 process.chdir(cwd);
                 const pkg = JSON.parse(fs.readFileSync(path.join(tmpDir, 'package.json'), 'utf8'));
-                assert.equal(pkg.test, 'mocha');
+                assert.equal(pkg.scripts.test, 'mocha');
         });
 });

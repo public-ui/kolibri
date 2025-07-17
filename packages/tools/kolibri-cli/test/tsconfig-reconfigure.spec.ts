@@ -16,6 +16,6 @@ describe('TsConfigReconfigureTask', () => {
 
                 process.chdir(cwd);
                 const config = JSON.parse(fs.readFileSync(path.join(tmpDir, 'tsconfig.json'), 'utf8'));
-                assert.equal(config.target, 'ESNext');
+                assert.equal(config.compilerOptions.target, 'ESNext');
         });
 });

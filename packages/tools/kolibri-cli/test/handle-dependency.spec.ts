@@ -4,7 +4,7 @@ import { HandleDependencyTask } from '../src/migrate/runner/tasks/common/HandleD
 
 describe('HandleDependencyTask', () => {
         it('calls package manager with dependencies', async () => {
-                const childProc = require('child_process');
+                import * as childProc from 'child_process';
                 const original = childProc.execSync;
                 let commands: string[] = [];
                 childProc.execSync = (cmd: string) => { commands.push(cmd); return Buffer.from(''); };

@@ -15,7 +15,7 @@ describe('CLI interface', () => {
                 const cwd = process.cwd();
                 process.chdir(tmpDir);
 
-                const typedBem = require('typed-bem/scss');
+                import * as typedBem from 'typed-bem/scss';
                 const original = typedBem.generateBemScssFile;
                 const calls: string[] = [];
                 typedBem.generateBemScssFile = (_: unknown, name: string) => { calls.push(name); };

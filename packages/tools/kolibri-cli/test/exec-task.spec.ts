@@ -3,7 +3,7 @@ import { ExecTask } from '../src/migrate/runner/tasks/common/ExecTask';
 
 describe('ExecTask', () => {
     it('executes given command', () => {
-        const cp = require('child_process');
+        import * as cp from 'child_process';
         const original = cp.execSync;
         let called = '';
         cp.execSync = (cmd: string) => {
