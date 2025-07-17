@@ -64,7 +64,7 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 /**
  * Checks if the specified directory contains any files with KoliBri tags.
  * @param {string} dir The directory to search in
- * @returns {boolean} True if at least one file contains a "kol-" tag
+ * @returns {boolean} True if at least one file contains KoliBri component tags (web or React)
  */
 export function hasKolibriTags(dir: string): boolean {
 	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
