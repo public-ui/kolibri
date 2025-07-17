@@ -66,34 +66,22 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
  * @param {string} dir The directory to search in
  * @returns {boolean} True if at least one file contains KoliBri component tags (web or React)
  */
-export async function hasKolibriTags(dir: string): Promise<boolean> {
+export function hasKolibriTags(dir: string): boolean {
 	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
 	const files = filterFilesByExt(dir, MARKUP_EXTENSIONS);
-	
+
 	for (const file of files) {
-		const stream = fs.createReadStream(file, { encoding: 'utf8', highWaterMark: 1024 });
-		let content = '';
-		
-		let found = false;
-		stream.on('data', (chunk) => {
-			content += chunk;
+		try {
+			const content = fs.readFileSync(file, 'utf8');
 			if (regexes.some((regex) => regex.test(content))) {
-				found = true;
-				stream.destroy(); // Stop reading further
+				return true;
 			}
-		});
-		stream.on('end', () => {
-			if (!found) {
-				return false;
-			}
-		});
-		stream.on('error', (err) => {
+		} catch (err) {
 			console.error(`Error reading file ${file}:`, err);
-			return false;
-		});
-		return found;
-		return false;
-	});
+		}
+	}
+
+	return false;
 }
 
 /**
