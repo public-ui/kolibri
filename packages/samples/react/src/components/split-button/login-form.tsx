@@ -9,6 +9,13 @@ import type { FC } from 'react';
 export const SplitButtonLoginForm: FC = () => {
 	const splitButtonRef = React.useRef<HTMLKolSplitButtonElement & { closePopup: () => void }>(null);
 
+	React.useEffect(() => {
+		const popover = splitButtonRef.current?.shadowRoot?.querySelector('kol-popover-wc') as { _align?: string } | null;
+		if (popover) {
+			popover._align = 'right';
+		}
+	}, []);
+
 	const handleCloseClick = () => {
 		splitButtonRef.current?.closePopup();
 	};
@@ -19,15 +26,17 @@ export const SplitButtonLoginForm: FC = () => {
 				<p>This sample shows a login form inside the popover.</p>
 			</SampleDescription>
 
-			<KolSplitButton ref={splitButtonRef} _label="Login">
-				<div style={{ width: 300, padding: 16, border: '1px solid #ccc' }} onClick={(e) => e.stopPropagation()}>
-					<div className="grid gap-4">
-						<KolInputText _label="Username" />
-						<KolInputPassword _label="Password" />
-						<KolButton _label="Close" _on={{ onClick: handleCloseClick }} />
+			<div className="flex gap-4">
+				<KolSplitButton ref={splitButtonRef} _label="Login">
+					<div style={{ width: 300, padding: 16, border: '1px solid #ccc' }} onClick={(e) => e.stopPropagation()}>
+						<div className="grid gap-4">
+							<KolInputText _label="Username" />
+							<KolInputPassword _label="Password" />
+							<KolButton _label="Close" _on={{ onClick: handleCloseClick }} />
+						</div>
 					</div>
-				</div>
-			</KolSplitButton>
+				</KolSplitButton>
+			</div>
 		</>
 	);
 };

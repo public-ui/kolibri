@@ -11,15 +11,29 @@ export const SplitButtonToolbarHorizontal: FC = () => {
 	const toolbarRef = useRef<HTMLKolToolbarElement>(null);
 
 	useEffect(() => {
+		const popover = splitButtonRef.current?.shadowRoot?.querySelector('kol-popover-wc') as { _align?: string } | null;
+		if (popover) popover._align = 'top';
+	}, []);
+
+	useEffect(() => {
 		const arrowButton = splitButtonRef.current?.shadowRoot?.querySelector('.kol-split-button__secondary-button');
 		const focusFirst = () => {
-			requestAnimationFrame(() => {
+			setTimeout(() => {
 				const firstItem = toolbarRef.current?.shadowRoot?.querySelector('.kol-toolbar__item') as (HTMLElement & { kolFocus?: () => void }) | null;
 				firstItem?.kolFocus?.();
 			});
 		};
+		const keyHandler = (event: KeyboardEvent) => {
+			if (['Enter', 'Space', ' '].includes(event.code) || ['Enter', ' '].includes(event.key)) {
+				focusFirst();
+			}
+		};
 		arrowButton?.addEventListener('click', focusFirst);
-		return () => arrowButton?.removeEventListener('click', focusFirst);
+		arrowButton?.addEventListener('keydown', keyHandler as EventListener);
+		return () => {
+			arrowButton?.removeEventListener('click', focusFirst);
+			arrowButton?.removeEventListener('keydown', keyHandler as EventListener);
+		};
 	}, []);
 
 	const TOOLBAR_ITEMS = [
@@ -34,9 +48,11 @@ export const SplitButtonToolbarHorizontal: FC = () => {
 				<p>The popover contains a horizontal toolbar.</p>
 			</SampleDescription>
 
-			<KolSplitButton ref={splitButtonRef} _label="Aktionen">
-				<KolToolbar ref={toolbarRef} _label="Aktionen" _items={TOOLBAR_ITEMS} _orientation="horizontal" />
-			</KolSplitButton>
+			<div className="flex gap-4">
+				<KolSplitButton ref={splitButtonRef} _label="Aktionen">
+					<KolToolbar class="block w-fit" ref={toolbarRef} _label="Aktionen" _items={TOOLBAR_ITEMS} _orientation="horizontal" />
+				</KolSplitButton>
+			</div>
 		</>
 	);
 };
