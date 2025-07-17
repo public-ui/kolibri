@@ -403,31 +403,31 @@ importers:
         version: 1.53.0
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.35.3)
+        version: 0.9.0(@stencil/core@4.36.0)
       '@public-ui/stencil-react-output-target':
         specifier: 0.6.0
-        version: 0.6.0(@stencil/core@4.35.3)
+        version: 0.6.0(@stencil/core@4.36.0)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
-        version: 0.2.0(@stencil/core@4.35.3)
+        version: 0.2.0(@stencil/core@4.36.0)
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.35.3)
+        version: 0.9.0(@stencil/core@4.36.0)
       '@stencil-community/eslint-plugin':
         specifier: 0.10.0
         version: 0.10.0(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)(typescript@5.8.3))(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.8.3))(eslint-plugin-react@7.37.5(eslint@8.57.1))(eslint@8.57.1)(typescript@5.8.3)
       '@stencil-community/postcss':
         specifier: 2.2.0
-        version: 2.2.0(@stencil/core@4.35.3)
+        version: 2.2.0(@stencil/core@4.36.0)
       '@stencil/core':
-        specifier: 4.35.3
-        version: 4.35.3
+        specifier: 4.36.0
+        version: 4.36.0
       '@stencil/playwright':
         specifier: 0.2.1
-        version: 0.2.1(@playwright/test@1.53.0)(@stencil/core@4.35.3)
+        version: 0.2.1(@playwright/test@1.53.0)(@stencil/core@4.36.0)
       '@stencil/sass':
         specifier: 3.2.1
-        version: 3.2.1(@stencil/core@4.35.3)
+        version: 3.2.1(@stencil/core@4.36.0)
       '@types/color-convert':
         specifier: 2.0.4
         version: 2.0.4
@@ -511,7 +511,7 @@ importers:
         version: 6.0.1
       stencil-awesome-test:
         specifier: 1.0.6
-        version: 1.0.6(@stencil/core@4.35.3)
+        version: 1.0.6(@stencil/core@4.36.0)
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
@@ -643,8 +643,8 @@ importers:
         specifier: workspace:*
         version: link:../../themes
       '@stencil/core':
-        specifier: 4.35.3
-        version: 4.35.3
+        specifier: 4.36.0
+        version: 4.36.0
       '@types/node':
         specifier: 24.0.1
         version: 24.0.1
@@ -3786,8 +3786,8 @@ packages:
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
 
-  '@stencil/core@4.35.3':
-    resolution: {integrity: sha512-RH5/I+amV31QI8TMXhXkAkjzs2eod6Y07jkUYTl9kMB+X7c5wUpv95Y/2LtcAx0Rqdhh4SHbJiwpr0ApBZmv0g==}
+  '@stencil/core@4.36.0':
+    resolution: {integrity: sha512-eAiwyTA2y9PBSHV3bM9c8tWlZISQveR37fl9mL5qGH3QGpy1EXtf53ZDQYs0svXha3GfNUN3eaHxY7A2Jksi4w==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
@@ -16312,21 +16312,21 @@ snapshots:
     dependencies:
       spacetrim: 0.11.59
 
-  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.35.3)':
+  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.36.0)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
 
-  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.35.3)':
+  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.36.0)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
 
-  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.35.3)':
+  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.36.0)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
 
-  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.35.3)':
+  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.36.0)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
 
   '@puppeteer/browsers@2.10.5':
     dependencies:
@@ -16707,12 +16707,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@stencil-community/postcss@2.2.0(@stencil/core@4.35.3)':
+  '@stencil-community/postcss@2.2.0(@stencil/core@4.36.0)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
       postcss: 8.4.49
 
-  '@stencil/core@4.35.3':
+  '@stencil/core@4.36.0':
     optionalDependencies:
       '@rollup/rollup-darwin-arm64': 4.34.9
       '@rollup/rollup-darwin-x64': 4.34.9
@@ -16723,16 +16723,16 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.2.1(@playwright/test@1.53.0)(@stencil/core@4.35.3)':
+  '@stencil/playwright@0.2.1(@playwright/test@1.53.0)(@stencil/core@4.36.0)':
     dependencies:
       '@playwright/test': 1.53.0
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
       deepmerge: 4.3.1
       find-up: 7.0.0
 
-  '@stencil/sass@3.2.1(@stencil/core@4.35.3)':
+  '@stencil/sass@3.2.1(@stencil/core@4.36.0)':
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
       sass-embedded: 1.89.2
 
   '@swc/core-darwin-arm64@1.12.9':
@@ -26164,9 +26164,9 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
-  stencil-awesome-test@1.0.6(@stencil/core@4.35.3):
+  stencil-awesome-test@1.0.6(@stencil/core@4.36.0):
     dependencies:
-      '@stencil/core': 4.35.3
+      '@stencil/core': 4.36.0
 
   stop-iteration-iterator@1.1.0:
     dependencies:
