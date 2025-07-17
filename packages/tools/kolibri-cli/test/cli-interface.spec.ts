@@ -15,8 +15,8 @@ describe('CLI interface', () => {
                 const cwd = process.cwd();
                 process.chdir(tmpDir);
 
-                import * as typedBem from 'typed-bem/scss';
-                const original = typedBem.generateBemScssFile;
+               const typedBem = require('typed-bem/scss');
+               const original = typedBem.generateBemScssFile;
                 const calls: string[] = [];
                 typedBem.generateBemScssFile = (_: unknown, name: string) => { calls.push(name); };
 
@@ -52,8 +52,9 @@ describe('CLI interface', () => {
                 process.chdir(tmpDir);
 
                 
-                const execOrig = childProc.exec;
-                childProc.exec = (_: string, cb: (err: null, out: string) => void) => cb(null, '');
+               const childProc = require('child_process');
+               const execOrig = childProc.exec;
+               (childProc as any).exec = (_: string, cb: (err: null, out: string) => void) => cb(null, '');
 
                 let runCalled = false;
                 const runOrig = TaskRunner.prototype.run;
@@ -82,7 +83,7 @@ describe('CLI interface', () => {
                         '--test-tasks',
                 ]);
 
-                childProc.exec = execOrig;
+               (childProc as any).exec = execOrig;
                 TaskRunner.prototype.run = runOrig;
                 TaskRunner.prototype.getStatus = getStatusOrig;
                 TaskRunner.prototype.getPendingMinVersion = getPendingOrig;

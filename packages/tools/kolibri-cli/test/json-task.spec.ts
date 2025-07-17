@@ -11,7 +11,7 @@ describe('JsonTask', () => {
                 process.chdir(tmpDir);
                 fs.writeFileSync('package.json', '{"name":"test"}');
 
-                const task = JsonTask.getInstance('scripts', { test: 'mocha' }, '^1');
+               const task = JsonTask.getInstance('scripts', { scripts: { test: 'mocha' } }, '^1');
                 task.run();
 
                 process.chdir(cwd);

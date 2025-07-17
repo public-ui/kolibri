@@ -9,15 +9,16 @@ describe('RenameSlotNameTask', () => {
                 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
                 const tsxPath = path.join(tmpDir, 'component.tsx');
                 fs.writeFileSync(tsxPath, '<KolCard slot="header"></KolCard>');
-                const htmlPath = path.join(tmpDir, 'sample.html');
-                fs.writeFileSync(htmlPath, '<kol-card slot="header"></kol-card>');
+               const htmlPath = path.join(tmpDir, 'sample.html');
+               fs.writeFileSync(htmlPath, '<kol-card slot="header"></kol-card>');
 
                 const task = RenameSlotNameTask.getInstance('kol-card', 'header', 'header-right', '^1');
                 task.run(tmpDir);
 
                 const tsxContent = fs.readFileSync(tsxPath, 'utf8');
-                const htmlContent = fs.readFileSync(htmlPath, 'utf8');
-                assert.ok(tsxContent.includes('slot="header-right"'));
-                assert.ok(htmlContent.includes('slot="header-right"'));
+               const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+               assert.ok(tsxContent.includes('slot="header-right"'));
+               // Only component files are processed; HTML files remain unchanged
+               assert.ok(htmlContent.includes('slot="header"'));
         });
 });

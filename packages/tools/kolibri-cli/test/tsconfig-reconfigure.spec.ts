@@ -11,7 +11,7 @@ describe('TsConfigReconfigureTask', () => {
                 process.chdir(tmpDir);
                 fs.writeFileSync('tsconfig.json', '{}');
 
-                const task = TsConfigReconfigureTask.getInstance('compilerOptions', { target: 'ESNext' }, '^1');
+               const task = TsConfigReconfigureTask.getInstance('compilerOptions', { compilerOptions: { target: 'ESNext' } }, '^1');
                 task.run();
 
                 process.chdir(cwd);
