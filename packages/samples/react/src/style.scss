@@ -52,6 +52,58 @@ hr {
 	width: rem(400);
 }
 
+.media-container {
+	padding: rem(16);
+	width: 100%;
+	height: rem(240);
+	align-content: center;
+}
+
+.media-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: rem(16);
+}
+
+@media (max-width: 600px) {
+	.media-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.container-container-bottom,
+.container-container {
+	width: 80%;
+	height: rem(240);
+	padding: rem(16);
+	align-content: center;
+	container: test / size;
+}
+
+.container-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: rem(16);
+}
+
+
+@container test (max-width: 600px) {
+	.container-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.container-example-bottom {
+	display: flex;
+	width: 100%;
+}
+
+.front-block {
+	height: rem(272);
+	width: rem(240);
+}
+
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
