@@ -1,5 +1,7 @@
 import type { Command } from 'commander';
-import { BEM_ALERT, BEM_ICON } from '@public-ui/components';
+// @ts-expect-error typed exports not available
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
+const { BEM_ALERT, BEM_ICON } = require('@public-ui/components');
 import { generateBemScssFile } from 'typed-bem/scss';
 
 /**

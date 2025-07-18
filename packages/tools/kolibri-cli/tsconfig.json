@@ -1,17 +1,23 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"module": "NodeNext",
-		"moduleResolution": "nodenext",
-		"outDir": "./dist",
-		"resolveJsonModule": true,
-		"target": "ESNext",
-		"types": ["node"],
-		"skipLibCheck": true,
-		"strict": true
-	},
-	"include": ["src"],
+        "compilerOptions": {
+                "allowSyntheticDefaultImports": true,
+                "esModuleInterop": true,
+                "forceConsistentCasingInFileNames": true,
+               "module": "ESNext",
+               "moduleResolution": "bundler",
+                "outDir": "./dist",
+                "resolveJsonModule": true,
+                "target": "ESNext",
+                "baseUrl": "./src",
+                "paths": {
+                        "@public-ui/components": ["../../components/dist/types"],
+                        "@public-ui/components/*": ["../../components/dist/types/*"]
+                },
+                "types": ["node"],
+                "skipLibCheck": true,
+                "strict": true
+        },
+       "include": ["src"],
+       "files": ["src/types.d.ts"],
 	"exclude": ["node_modules", "dist"]
 }
