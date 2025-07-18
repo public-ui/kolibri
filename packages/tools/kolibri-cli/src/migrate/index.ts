@@ -23,7 +23,7 @@ import {
 	MODIFIED_FILES,
 	POST_MESSAGES,
 	setRemoveMode,
-	hasKolibriTags,
+	hasKoliBriTags,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
 
@@ -95,7 +95,7 @@ Source folder to migrate: ${baseDir}
 				if (!fs.existsSync(baseDir)) {
 					throw logAndCreateError(`The specified source folder "${baseDir}" does not exist or is inaccessible. Please check the path and try again.`);
 				}
-				if (!hasKolibriTags(baseDir)) {
+				if (!hasKoliBriTags(baseDir)) {
 					console.log(chalk.yellow(`No KoliBri components (web or React) found under "${baseDir}". Check the path or your task configuration.`));
 				}
 
