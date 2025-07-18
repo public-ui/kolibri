@@ -25,7 +25,7 @@
 		border: 1px solid #000;
 		display: inline-block;
 		flex-grow: 1;
-		height: rem(8);
+		height: to-rem(8);
 		line-height: 1.5;
 		padding: 0;
 		margin: 0;
@@ -35,8 +35,8 @@
 
 	input[type='range']::-webkit-slider-thumb {
 		background-color: #000;
-		height: rem(20);
-		width: rem(20);
+		height: to-rem(20);
+		width: to-rem(20);
 		border-radius: 20px;
 		cursor: pointer;
 		-webkit-appearance: none;
@@ -44,8 +44,8 @@
 
 	input[type='range']::-moz-range-thumb {
 		background-color: #000;
-		height: rem(20);
-		width: rem(20);
+		height: to-rem(20);
+		width: to-rem(20);
 		border-radius: 20px;
 		cursor: pointer;
 		-moz-appearance: none;

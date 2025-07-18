@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	.accordion {
@@ -19,7 +19,7 @@
 				span {
 					color: var(--color-grey);
 					font-weight: var(--font-weight-bold);
-					padding: rem(12) 0;
+					padding: to-rem(12) 0;
 					width: 100%;
 					border: none;
 				}
@@ -36,10 +36,10 @@
 			}
 
 			.kol-icon {
-				margin-bottom: rem(12);
-				margin-inline-end: rem(16);
+				margin-bottom: to-rem(12);
+				margin-inline-end: to-rem(16);
 				margin-inline-start: 0;
-				margin-top: rem(12);
+				margin-top: to-rem(12);
 			}
 		}
 

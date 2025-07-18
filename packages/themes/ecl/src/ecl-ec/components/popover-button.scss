@@ -1,5 +1,5 @@
 @use '../mixins/button' as *;
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	@include kol-button;
@@ -7,7 +7,7 @@
 	button .kol-span-wc {
 		border-radius: 0;
 		border-style: solid;
-		border-width: rem(2);
+		border-width: to-rem(2);
 		font-weight: var(--font-weight-bold);
 		margin: 0;
 		min-height: var(--a11y-min-size);

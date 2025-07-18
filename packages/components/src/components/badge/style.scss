@@ -7,7 +7,7 @@
 		display: inline-flex;
 		place-items: center;
 		/* Visible with forced colors  */
-		outline: transparent solid rem(1);
+		outline: transparent solid to-rem(1);
 	}
 
 	:host > span > .kol-button-wc button {

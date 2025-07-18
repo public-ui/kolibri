@@ -1,5 +1,5 @@
 @use '../mixins/button' as *;
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -20,7 +20,7 @@
 	.horizontal-line {
 		background-color: var(--color-primary);
 		border-radius: 2px;
-		width: rem(1);
+		width: to-rem(1);
 	}
 
 	@include kol-button;

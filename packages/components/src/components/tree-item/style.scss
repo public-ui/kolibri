@@ -2,10 +2,10 @@
 @use '../style' as *;
 
 @layer kol-component {
-	$base-horizontal-padding: rem(8);
+	$base-horizontal-padding: to-rem(8);
 
 	.tree-item {
-		--indentation: var(--tree-item-indentation, #{rem(10)}); // Set `--tree-item-indentation` in themes to control padding
+		--indentation: var(--tree-item-indentation, #{to-rem(10)}); // Set `--tree-item-indentation` in themes to control padding
 	}
 
 	ul {
@@ -16,7 +16,7 @@
 
 	.tree-link {
 		&.first-level > a {
-			padding-left: rem(6);
+			padding-left: to-rem(6);
 		}
 
 		& > a {
@@ -24,7 +24,7 @@
 			display: inline-flex;
 			min-height: var(--a11y-min-size);
 			padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
-			padding-right: rem(6);
+			padding-right: to-rem(6);
 		}
 	}
 

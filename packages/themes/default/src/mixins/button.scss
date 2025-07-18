@@ -1,5 +1,5 @@
 @use './focus-outline' as *;
-@use './rem' as *;
+@use '../functions/to-rem' as *;
 
 @mixin kol-button {
 	:is(a, button) > .kol-span-wc {
@@ -9,7 +9,7 @@
 		border-width: var(--border-width);
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: rem(8) rem(14);
+		padding: to-rem(8) to-rem(14);
 		text-align: center;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -106,7 +106,7 @@
 	}
 
 	:is(a, button).hide-label > .kol-span-wc {
-		padding: rem(12.8);
+		padding: to-rem(12.8);
 		width: unset;
 	}
 

@@ -1,5 +1,5 @@
 @use '../@shared/input-core' as *;
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	select {
@@ -10,7 +10,7 @@
 		}
 
 		option {
-			margin: rem(1) 0;
+			margin: to-rem(1) 0;
 			border-radius: var(--border-radius);
 			cursor: pointer;
 

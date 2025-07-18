@@ -14,8 +14,8 @@
 	}
 
 	:is(ol, ul).horizontal li {
-		margin-left: rem(20);
-		margin-right: rem(4);
+		margin-left: to-rem(20);
+		margin-right: to-rem(4);
 	}
 
 	:is(ol, ul).horizontal li:first-child {
@@ -27,8 +27,8 @@
 	}
 
 	:is(ol, ul).vertical li {
-		margin-left: rem(28);
-		margin-right: rem(8);
+		margin-left: to-rem(28);
+		margin-right: to-rem(8);
 	}
 
 	li.list-none {

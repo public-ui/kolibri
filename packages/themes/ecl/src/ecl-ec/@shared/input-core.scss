@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 
 @layer kol-theme-component {
@@ -15,7 +15,7 @@
 	select,
 	textarea {
 		border: none;
-		margin: rem(1);
+		margin: to-rem(1);
 		outline: none;
 	}
 
@@ -37,7 +37,7 @@
 	}
 
 	.hint {
-		font-size: rem(14);
+		font-size: to-rem(14);
 		order: 2;
 	}
 
@@ -52,7 +52,7 @@
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
-		padding: rem(1) 0.5em;
+		padding: to-rem(1) 0.5em;
 	}
 
 	input::placeholder,
@@ -62,8 +62,8 @@
 
 	.input:focus-within {
 		box-shadow:
-			inset rem(1) rem(1) var(--color-blue),
-			inset rem(-1) rem(-1) var(--color-blue);
+			inset to-rem(1) to-rem(1) var(--color-blue),
+			inset to-rem(-1) to-rem(-1) var(--color-blue);
 		outline: none;
 	}
 

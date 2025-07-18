@@ -16,8 +16,8 @@
 	.switch input[type='checkbox']::before {
 		background-color: #000;
 		height: 1.2em;
-		left: calc(0.25em - rem(2));
-		top: calc(0.25em - rem(2));
+		left: calc(0.25em - to-rem(2));
+		top: calc(0.25em - to-rem(2));
 		position: absolute;
 		transition: 0.5s;
 		width: 1.2em;
@@ -41,7 +41,7 @@
 		position: absolute;
 		z-index: 1;
 		top: 50%;
-		left: rem(4);
+		left: to-rem(4);
 		transform: translate(0, -50%);
 		transition: 0.5s;
 		color: #000;

@@ -1,17 +1,17 @@
 @use '../mixins/alert-wc' as *;
 @use '../mixins/input-error' as *;
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 @use '../mixins/typography' as *;
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
 
 	.inputs-wrapper {
-		gap: rem(16);
+		gap: to-rem(16);
 	}
 
 	.kol-input {
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 
 	.kol-input .error:not(.hidden-error) {
@@ -41,20 +41,20 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 rem(8);
+		padding: 0 to-rem(8);
 	}
 
 	.input.icon-left > .kol-icon:first-child {
-		margin-right: rem(8);
+		margin-right: to-rem(8);
 	}
 
 	.input.icon-right > .kol-icon:last-child {
-		margin-left: rem(8);
+		margin-left: to-rem(8);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
-		padding-right: rem(16);
+		padding-left: to-rem(16);
+		padding-right: to-rem(16);
 	}
 
 	:not(.disabled) .input:hover {

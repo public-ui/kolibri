@@ -26,7 +26,7 @@
 	}
 
 	.skip {
-		left: rem(-99999);
+		left: to-rem(-99999);
 		overflow: hidden;
 		position: absolute;
 		z-index: 9999999;
@@ -42,6 +42,6 @@
 
 	.kol-icon.external-link-icon {
 		display: inline-flex;
-		margin-left: rem(8);
+		margin-left: to-rem(8);
 	}
 }

@@ -1,7 +1,7 @@
 @use '../mixins/alert-wc' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/input-error' as *;
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 @use '../mixins/typography' as *;
 
 @layer kol-theme-component {
@@ -13,27 +13,27 @@
 		justify-items: left;
 		width: 100%;
 		min-height: var(--a11y-min-size);
-		gap: rem(6.4);
+		gap: to-rem(6.4);
 	}
 
 	.kol-input.default {
-		grid-template-columns: rem(24) auto;
+		grid-template-columns: to-rem(24) auto;
 	}
 
 	.kol-input.default[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto rem(24);
+		grid-template-columns: auto to-rem(24);
 	}
 
 	.kol-input.switch {
-		grid-template-columns: rem(56) auto;
+		grid-template-columns: to-rem(56) auto;
 	}
 
 	.kol-input.switch[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto rem(56);
+		grid-template-columns: auto to-rem(56);
 	}
 
 	.kol-input.button {
-		gap: rem(6.4) rem(1);
+		gap: to-rem(6.4) to-rem(1);
 	}
 
 	.checkbox-container {
@@ -105,7 +105,7 @@
 
 	/* CHECKBOX */
 	.kol-input label span {
-		margin-top: rem(2);
+		margin-top: to-rem(2);
 	}
 
 	.required label > span::after {
@@ -127,9 +127,9 @@
 
 	.kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * rem(4));
-		min-width: calc(6 * rem(4));
-		width: calc(6 * rem(4));
+		height: calc(6 * to-rem(4));
+		min-width: calc(6 * to-rem(4));
+		width: calc(6 * to-rem(4));
 	}
 
 	.kol-input.default input[type='checkbox']:indeterminate {
@@ -138,7 +138,7 @@
 
 	.kol-input.default .icon {
 		color: var(--color-light);
-		margin-left: rem(4);
+		margin-left: to-rem(4);
 	}
 
 	.kol-input.switch input[type='checkbox'] {
@@ -151,14 +151,14 @@
 		position: relative;
 		width: 3.5em;
 		/* Visible with forced colors  */
-		outline: transparent solid rem(1);
+		outline: transparent solid to-rem(1);
 	}
 
 	.kol-input.switch input[type='checkbox']:before {
 		width: 1.25em;
 		height: 1.25em;
-		left: calc(0.25em - rem(2));
-		top: calc(0.25em - rem(2));
+		left: calc(0.25em - to-rem(2));
+		top: calc(0.25em - to-rem(2));
 		border-radius: 1.25em;
 		background-color: white;
 		position: absolute;
@@ -184,7 +184,7 @@
 		& .icon {
 			width: 1.25em;
 			height: 1.25em;
-			left: rem(2);
+			left: to-rem(2);
 		}
 
 		&.checked .icon {
@@ -225,7 +225,7 @@
 			align-self: stretch;
 			display: flex;
 
-			padding-right: rem(16);
+			padding-right: to-rem(16);
 
 			.input-label-span {
 				margin: auto auto;

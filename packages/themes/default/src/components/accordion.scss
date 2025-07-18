@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/typography' as *;
 
@@ -11,8 +11,8 @@
 		&__content {
 			margin: 0;
 			padding-left: 2.25em;
-			padding-bottom: rem(12);
-			padding-right: rem(8);
+			padding-bottom: to-rem(12);
+			padding-right: to-rem(8);
 		}
 
 		&__heading {
@@ -40,10 +40,10 @@
 			}
 
 			border-radius: var(--border-radius);
-			min-height: rem(35.2);
+			min-height: to-rem(35.2);
 
 			button {
-				padding: rem(12) rem(8);
+				padding: to-rem(12) to-rem(8);
 
 				:focus {
 					outline: none;

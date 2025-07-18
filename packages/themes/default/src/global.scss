@@ -1,12 +1,12 @@
-@use 'mixins/rem' as *;
+@use 'functions/to-rem' as *;
 
 @layer kol-theme-global {
 	:host {
-		--border-radius: var(--kolibri-border-radius, #{rem(5)});
+		--border-radius: var(--kolibri-border-radius, #{to-rem(5)});
 		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
-		--font-size: var(--kolibri-font-size, #{rem(16)});
-		--spacing: var(--kolibri-spacing, #{rem(4)});
-		--border-width: var(--kolibri-border-width, #{rem(1)});
+		--font-size: var(--kolibri-font-size, #{to-rem(16)});
+		--spacing: var(--kolibri-spacing, #{to-rem(4)});
+		--border-width: var(--kolibri-border-width, #{to-rem(1)});
 		--color-primary: var(--kolibri-color-primary, #004b76);
 		--color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);
 		--color-secondary: var(--kolibri-color-secondary, #ccebf7);
@@ -70,12 +70,12 @@
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5;
-		padding: rem(8) rem(12);
+		padding: to-rem(8) to-rem(12);
 	}
 
 	.kol-span-wc,
 	.kol-span-wc > span {
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	.badge-text-hint {

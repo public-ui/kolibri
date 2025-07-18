@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../functions/to-rem' as *;
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
@@ -15,7 +15,7 @@
 		}
 
 		caption {
-			padding: rem(8);
+			padding: to-rem(8);
 		}
 
 		th {
@@ -26,7 +26,7 @@
 		tr.foot-spacer,
 		tr.head-spacer {
 			display: table-row;
-			height: rem(24);
+			height: to-rem(24);
 
 			td {
 				border-width: 0;
@@ -48,7 +48,7 @@
 		}
 
 		.table {
-			padding: rem(8);
+			padding: to-rem(8);
 
 			&:has(.focus-element:focus) {
 				outline-color: var(--color-primary-variant);
@@ -83,7 +83,7 @@
 
 		th div {
 			display: flex;
-			gap: rem(8);
+			gap: to-rem(8);
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
@@ -94,7 +94,7 @@
 
 		th,
 		td {
-			padding: rem(8);
+			padding: to-rem(8);
 		}
 
 		th[aria-sort='ascending'],

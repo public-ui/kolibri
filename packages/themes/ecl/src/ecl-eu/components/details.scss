@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 @use '../mixins/indented-text' as *;
 
 @layer kol-theme-component {
@@ -13,7 +13,7 @@
 			}
 
 			.kol-icon {
-				font-size: rem(19.2);
+				font-size: to-rem(19.2);
 			}
 
 			.kol-span-wc > span {

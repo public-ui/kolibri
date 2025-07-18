@@ -1,9 +1,9 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	:host {
 		font:
-			normal normal 400 rem(14) / rem(16) arial,
+			normal normal 400 to-rem(14) / to-rem(16) arial,
 			sans-serif;
 		font-weight: var(--font-weight-bold);
 	}
@@ -17,8 +17,8 @@
 	}
 
 	.kol-icon[exportparts*='separator'] {
-		margin-inline-end: rem(8);
-		margin-inline-start: rem(8);
+		margin-inline-end: to-rem(8);
+		margin-inline-start: to-rem(8);
 		padding: 0;
 	}
 }

@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 
 @mixin kol-alert-wc($color: null) {
 	color: var($color);
@@ -30,22 +30,22 @@
 	}
 
 	.card {
-		padding-bottom: rem(24);
-		padding-inline-end: rem(8);
-		padding-inline-start: rem(24);
-		padding-top: rem(24);
+		padding-bottom: to-rem(24);
+		padding-inline-end: to-rem(8);
+		padding-inline-start: to-rem(24);
+		padding-top: to-rem(24);
 	}
 
 	.card .heading {
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	.card .content {
-		margin-left: rem(40);
+		margin-left: to-rem(40);
 	}
 
 	.card .heading .kol-icon {
-		font-size: rem(32);
+		font-size: to-rem(32);
 	}
 
 	.default {
