@@ -10,7 +10,7 @@
 			animation-name: fadeInOpacity;
 			animation-timing-function: ease-in;
 			display: none;
-			position: fixed;
+			position: absolute;
 			visibility: hidden;
 			/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
 			top: 0;
