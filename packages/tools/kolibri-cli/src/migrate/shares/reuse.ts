@@ -63,6 +63,7 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 
 /**
  * Checks if the specified directory contains any files with KoliBri tags.
+ * Files are streamed in chunks to avoid loading entire files into memory.
  * @param {string} dir The directory to search in
  * @returns {boolean} True if at least one file contains KoliBri component tags (web or React)
  */
