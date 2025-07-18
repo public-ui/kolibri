@@ -6,6 +6,11 @@
 @layer kol-component {
 	.kol-input {
 		display: grid;
+		position: relative;
+	}
+
+	.kol-tooltip-wc .tooltip-floating {
+		position: absolute;
 	}
 
 	.kol-input .input-slot {
