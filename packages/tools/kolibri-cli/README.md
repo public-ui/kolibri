@@ -25,6 +25,8 @@ pnpm i -g @public-ui/kolibri-cli
 yarn add -g @public-ui/kolibri-cli
 ```
 
+> **Important:** Install exactly the CLI version you want to upgrade to. The migration tool compares your locally installed `@public-ui/components` version with the CLI version to decide which migration tasks must run and in which order.
+
 ## Usage
 
 The `KoliBri` CLI is intended to be executed in your project root directory. Use the `kolibri` command to start the CLI.
