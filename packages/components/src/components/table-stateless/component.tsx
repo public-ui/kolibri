@@ -61,6 +61,8 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private checkboxRefs: HTMLInputElement[] = [];
 
+	private translateSort = translate('kol-sort');
+
 	@State()
 	private tableDivElementHasScrollbar = false;
 
@@ -671,6 +673,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						exportparts="icon"
 						_icons={{ right: sortButtonIcon }}
 						_label={cell.label}
+						_ariaDescription={this.translateSort}
 						_on={{
 							onClick: (event: MouseEvent) => {
 								if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {

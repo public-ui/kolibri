@@ -48,6 +48,7 @@ export default {
 	'hide-password': 'ausblenden',
 	'no-results-message': 'Keine Ergebnisse gefunden.',
 	'delete-selection': 'Auswahl entfernen',
+	sort: 'sortieren',
 	'pagination-position-top': 'oben',
 	'pagination-position-bottom': 'unten',
 };

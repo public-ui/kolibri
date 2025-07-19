@@ -35,3 +35,15 @@ Use the `condition && <Element />` pattern to render JSX elements only when a co
 ```
 
 Avoid using `hidden={condition}` unless the element should always be present in the DOM but visually hidden.
+
+### Language texts
+
+All UI texts must be stored in `src/locales/en.ts` and `src/locales/de.ts`.
+New translations get the prefix `kol-` and are referenced in the code using the
+`translate()` helper, e.g. `translate('kol-example')`.
+Call `translate()` once when the component instance is created (e.g. in a field
+initializer) and reuse the result. This prevents unnecessary work while still
+updating texts when the component is rerendered. Cache the value in a class
+property whose name starts with `translate` followed by the translation
+identifier, for example `translateSort` for `kol-sort` or `translateOrderBy`
+for `kol-order-by`.
