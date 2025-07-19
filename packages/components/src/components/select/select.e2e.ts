@@ -6,7 +6,7 @@ import type { Page } from '@playwright/test';
 import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-select';
-const TEST_VALUE = ['E'];
+const TEST_VALUE = 'E';
 const TEST_LABEL = 'East';
 const OPTIONS = [
 	{ label: 'North', value: 'N' },

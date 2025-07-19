@@ -76,7 +76,7 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 					<KolVersion _label={version}></KolVersion>
 				</div>
 				<BuildInformation buildDate={buildDate} commitHash={commitHash} />
-				<KolSelect _label="Theme" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
+				<KolSelect _label="Theme" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
 				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
 				<div className="flex flex-justify-between flex-items-center mt">
 					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />

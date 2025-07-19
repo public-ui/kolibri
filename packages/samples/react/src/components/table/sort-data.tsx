@@ -19,7 +19,6 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 			{ label: 'order', key: 'order', textAlign: 'center' },
 			{
 				label: 'date',
-				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0, data1) => {
@@ -38,7 +37,6 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 			{ label: 'order', key: 'order', textAlign: 'center' },
 			{
 				label: 'date',
-				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0, data1) => {

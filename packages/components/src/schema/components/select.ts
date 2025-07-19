@@ -27,7 +27,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
-	value: Stringified<StencilUnknown[]>;
+	value: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
@@ -44,7 +44,7 @@ type OptionalProps = {
 type RequiredStates = {
 	hasValue: boolean;
 	options: SelectOption<W3CInputValue>[];
-	value: StencilUnknown[];
+	value: StencilUnknown[] | StencilUnknown;
 } & PropId &
 	PropHideMsg &
 	PropMultiple &
