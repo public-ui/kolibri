@@ -2,7 +2,7 @@
 
 exports[`kol-button should render with _label="Label" _ariaDescription="Aria Description" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button aria-describedby="nonce" class="kol-button kol-button--normal" type="button">
@@ -28,7 +28,7 @@ exports[`kol-button should render with _label="Label" _ariaDescription="Aria Des
 
 exports[`kol-button should render with _label="Label" _disabled=false 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal" type="button">
@@ -51,7 +51,7 @@ exports[`kol-button should render with _label="Label" _disabled=false 1`] = `
 
 exports[`kol-button should render with _label="Label" _disabled=true 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--disabled kol-button--normal" disabled="" type="button">
@@ -74,7 +74,7 @@ exports[`kol-button should render with _label="Label" _disabled=true 1`] = `
 
 exports[`kol-button should render with _label="Label" _value="Hello" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal" type="button">
@@ -97,7 +97,7 @@ exports[`kol-button should render with _label="Label" _value="Hello" 1`] = `
 
 exports[`kol-button should render with _label="Label" _variant="danger" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--danger" type="button">
@@ -120,7 +120,7 @@ exports[`kol-button should render with _label="Label" _variant="danger" 1`] = `
 
 exports[`kol-button should render with _label="Label" _variant="ghost" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--ghost" type="button">
@@ -143,7 +143,7 @@ exports[`kol-button should render with _label="Label" _variant="ghost" 1`] = `
 
 exports[`kol-button should render with _label="Label" _variant="normal" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal" type="button">
@@ -166,7 +166,7 @@ exports[`kol-button should render with _label="Label" _variant="normal" 1`] = `
 
 exports[`kol-button should render with _label="Label" _variant="primary" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--primary" type="button">
@@ -189,7 +189,7 @@ exports[`kol-button should render with _label="Label" _variant="primary" 1`] = `
 
 exports[`kol-button should render with _label="Label" _variant="secondary" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--secondary" type="button">
@@ -212,7 +212,7 @@ exports[`kol-button should render with _label="Label" _variant="secondary" 1`] =
 
 exports[`kol-button should render with _label="Label" 1`] = `
 <kol-button>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal" type="button">
