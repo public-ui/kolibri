@@ -2,7 +2,7 @@
 
 exports[`kol-button-link should render with _label="Beschreibung" 1`] = `
 <kol-button-link>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-button-wc _label="Beschreibung" _linkvariant="inline" _role="link" _tooltipalign="top" _type="button">
       <slot name="expert" slot="expert"></slot>
     </kol-button-wc>
