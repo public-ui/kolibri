@@ -50,6 +50,10 @@ export class SelectController extends InputIconController implements SelectWatch
 	};
 
 	private readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
+		const raw = nextState.get('_value');
+		if (raw !== undefined && !Array.isArray(raw)) {
+			nextState.set('_value', [raw]);
+		}
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
@@ -83,6 +87,7 @@ export class SelectController extends InputIconController implements SelectWatch
 	}
 
 	public validateMultiple(value?: boolean): void {
+		this.assertComponentValueMatchesMultiplicity(value === true);
 		watchBoolean(this.component, '_multiple', value, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
@@ -105,8 +110,9 @@ export class SelectController extends InputIconController implements SelectWatch
 		validateRows(this.component, value);
 	}
 
-	public validateValue(value?: Stringified<StencilUnknown[]>): void {
-		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
+	public validateValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
+		this.assertValueMatchesMultiplicity(value);
+		watchJsonArrayString(this.component, '_value', () => true, value === undefined ? [] : Array.isArray(value) ? value : [value], undefined, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
@@ -121,5 +127,42 @@ export class SelectController extends InputIconController implements SelectWatch
 		this.validateRequired(this.component._required);
 		this.validateRows(this.component._rows);
 		this.validateValue(this.component._value);
+	}
+
+	private assertValueMatchesMultiplicity(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
+		const isArray = Array.isArray(value);
+		const isMultiple = this.component._multiple === true;
+
+		if (isMultiple) {
+			if (value !== undefined && !isArray) {
+				throw new Error(
+					`↑ The schema for the property (_value) is not valid for multiple mode. Expected an array. The value will not be changed. (received = ${JSON.stringify(value)})`,
+				);
+			}
+		} else {
+			if (isArray) {
+				throw new Error(
+					`↑ The schema for the property (_value) is not valid for single mode. Expected a single value. The value will not be changed. (received = ${JSON.stringify(value)})`,
+				);
+			}
+		}
+	}
+
+	private assertComponentValueMatchesMultiplicity(isMultiple: boolean): void {
+		const rawValue = this.component._value;
+
+		if (isMultiple) {
+			if (rawValue !== undefined && !Array.isArray(rawValue)) {
+				throw new Error(
+					`↑ The schema for the property (_value) is not valid for multiple mode. Expected an array. The value will not be changed. (current = ${JSON.stringify(rawValue)})`,
+				);
+			}
+		} else {
+			if (Array.isArray(rawValue)) {
+				throw new Error(
+					`↑ The schema for the property (_value) is not valid for single mode. Expected a single value. The value will not be changed. (current = ${JSON.stringify(rawValue)})`,
+				);
+			}
+		}
 	}
 }

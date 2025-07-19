@@ -1,37 +1,51 @@
 import React from 'react';
 
-import { ToasterService } from '@public-ui/components';
-import { KolSplitButton } from '@public-ui/react';
+import { KolSplitButton, KolToolbar, KolHeading } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
+import { useToasterService } from '../../hooks/useToasterService';
 
 import type { FC } from 'react';
 
 export const SplitButtonBasic: FC = () => {
-	const toaster = ToasterService.getInstance(document);
-	const handleButtonClick = () => {
-		void toaster.enqueue({
-			description: 'The Button has been clicked.',
-			label: `Button Clicked`,
-			type: 'info',
-		});
+	const { buttonWithTextClickEventHandler } = useToasterService();
+	const dummyEventHandler = {
+		onClick: buttonWithTextClickEventHandler,
 	};
+	const TOOLBAR_ITEMS = [
+		{
+			_label: 'Save',
+			_icons: 'codicon codicon-save',
+			_on: dummyEventHandler,
+		},
+		{
+			_label: 'Move',
+			_icons: 'codicon codicon-move',
+			_on: dummyEventHandler,
+		},
+		{
+			_label: 'Delete',
+			_icons: 'codicon codicon-trash',
+			_on: dummyEventHandler,
+		},
+	];
 
 	return (
 		<>
 			<SampleDescription>
 				<p>
-					SplitButton renders a button with an additional context-menu, that can be opened by clicking the arrow icon. The first sample shows the button with an
-					assigned action. In the second sample no action is assigned and clicking the button opens the context menu instead.
+					The <code>SplitButton</code> component combines a primary action button with a context menu. Clicking the main button triggers the
+					<strong> Edit</strong> action. The context menu opens a vertical list of additional actions:
+					<strong> Save</strong>, <strong>Move</strong>, and <strong>Delete</strong>.
 				</p>
 			</SampleDescription>
 
-			<div className="flex gap-4">
-				<KolSplitButton _label="Only the arrow opens" _on={{ onClick: handleButtonClick }}>
-					Dropdown contents
-				</KolSplitButton>
-				<KolSplitButton _label="Button without visible label" _hideLabel _icons="codicon codicon-git-pull-request">
-					Dropdown contents
-				</KolSplitButton>
+			<div className="flex flex-col gap-4">
+				<KolHeading _label="SplitButton with vertical action list" _level={2} />
+				<div className="flex gap-4">
+					<KolSplitButton _label="Edit" _on={dummyEventHandler}>
+						<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
+					</KolSplitButton>
+				</div>
 			</div>
 		</>
 	);

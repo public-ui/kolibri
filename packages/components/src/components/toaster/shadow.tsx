@@ -74,6 +74,7 @@ export class KolToastContainer implements ToasterAPI {
 				...this.state,
 				_toastStates: this.state._toastStates.filter((localToastState) => localToastState.id !== toastState.id),
 			};
+			toastState.toast.onClose?.();
 		}, TRANSITION_TIMEOUT);
 	}
 
@@ -101,6 +102,9 @@ export class KolToastContainer implements ToasterAPI {
 					...this.state,
 					_toastStates: this.state._toastStates.filter((toastState) => toastsToClose.every((toastToClose) => toastToClose.id !== toastState.id)),
 				};
+				toastsToClose.forEach((toastState) => {
+					toastState.toast.onClose?.();
+				});
 			}, TRANSITION_TIMEOUT);
 		}
 	}

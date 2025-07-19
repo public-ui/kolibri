@@ -230,6 +230,8 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Lists and enumerations in code should be kept in alphanumeric order. This also applies to import specifiers and union type literals.
 - Commit messages follow the **Conventional Commits** specification.
 - See also the [Contributing Guide](CONTRIBUTING.md) for more details on coding conventions and best practices.
+- Spell "KoliBri" with this casing in all documentation and code. The only exception is the component named KolKolibri.
+- Use ESM import syntax in browser code and scripts whenever supported, instead of `require` imports.
 
 ## Linting and Formatting
 
