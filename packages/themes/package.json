@@ -64,6 +64,8 @@
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
+		"eslint-import-resolver-typescript": "3.6.1",
+		"eslint-plugin-import": "2.32.0",
 		"nodemon": "3.1.10",
 		"postcss": "8.5.5",
 		"rollup": "4.43.0",

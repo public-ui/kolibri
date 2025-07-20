@@ -76,14 +76,23 @@ const config = {
 
 		'react/jsx-no-bind': 'off',
 
-		'no-console': 'error',
-	},
-	settings: {
-		react: {
-			version: 'detect',
-		},
-	},
-};
+               'no-console': 'error',
+               'import/no-internal-modules': [
+                       'error',
+                       {
+                               forbid: ['@public-ui/*/*'],
+                       },
+               ],
+       },
+       settings: {
+               react: {
+                       version: 'detect',
+               },
+               'import/resolver': {
+                       typescript: {},
+               },
+       },
+}; 
 
 config.overrides = config.overrides || [];
 config.overrides.push({
@@ -122,6 +131,7 @@ config.overrides.push({
 config.plugins = config.plugins || [];
 // config.plugins.push('react');
 config.plugins.push('jsx-a11y');
+config.plugins.push('import');
 
 config.settings = {
 	react: {
