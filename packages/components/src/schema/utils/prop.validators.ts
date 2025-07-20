@@ -5,7 +5,7 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { getDocument, getExperimentalMode, Log } from './dev.utils';
+import { getDevMode, getDocument, getExperimentalMode, Log } from './dev.utils';
 
 import type { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
@@ -159,6 +159,10 @@ export function watchValidator<T>(
 	value?: T,
 	options: WatchOptions = {},
 ): void {
+	if (!getDevMode()) {
+		setState(component, propName, value ?? (options.defaultValue as T), options.hooks);
+		return;
+	}
 	if (validationFunction(value)) {
 		/**
 		 * Triff zu, wenn der Wert VALIDE ist.

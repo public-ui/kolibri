@@ -15,14 +15,13 @@ export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
 
-let DEV_MODE: boolean = false;
+import { processEnv } from './reuse';
+
+const DEV_MODE: boolean = processEnv !== 'production';
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
 export const getDevMode = (): boolean => DEV_MODE === true;
-export const setDevMode = (mode: boolean): void => {
-	DEV_MODE = mode === true;
-};
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const setExperimentalMode = (mode: boolean): void => {

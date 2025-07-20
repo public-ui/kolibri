@@ -1,4 +1,4 @@
-import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '../schema';
+import { Log, getDocument, processEnv, setColorContrastAnalysis, setExperimentalMode } from '../schema';
 
 import { getWindow } from '../schema';
 import { Env } from '@stencil/core';
@@ -8,7 +8,6 @@ const initMeta = (): void => {
 	if (meta && meta.hasAttribute('content')) {
 		const content = meta.getAttribute('content');
 		if (typeof content === 'string') {
-			setDevMode(content.includes('dev-mode=true'));
 			setExperimentalMode(content.includes('experimental-mode=true'));
 			setColorContrastAnalysis(content.includes('color-contrast-analysis=true'));
 		}
