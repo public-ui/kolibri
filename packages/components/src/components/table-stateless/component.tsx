@@ -53,6 +53,8 @@ import { validateTableSettings } from '../../schema/props/table-settings';
 export class KolTableStateless implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
+	private readonly translateNoEntries = translate('kol-no-entries');
+
 	@State() public state: TableStatelessStates = {
 		_data: [],
 		_headerCells: {
@@ -447,7 +449,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			}
 			const emptyCell = {
 				colSpan: colspan,
-				label: translate('kol-no-entries'),
+				label: this.translateNoEntries,
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};

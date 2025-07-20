@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+const translateCloseAlert = translate('kol-close-alert');
 import { type InternalAlertProps } from '../../schema';
 import AlertIcon from '../AlertIcon';
 import KolHeadingFc from '../Heading';
@@ -107,7 +108,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 								icon: 'codicon codicon-close',
 							},
 						}}
-						_label={translate('kol-close-alert')}
+						_label={translateCloseAlert}
 						_on={{ onClick: onCloserClick }}
 						_tooltipAlign="left"
 					/>

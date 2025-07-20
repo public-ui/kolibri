@@ -1,6 +1,7 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import { KolIconTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+const translateDropdown = translate('kol-dropdown');
 import type { JSXBase } from '@stencil/core/internal';
 
 export type CustomSuggestionsToggleProps = JSXBase.HTMLAttributes<HTMLButtonElement> & { disabled?: boolean };
@@ -8,7 +9,7 @@ export type CustomSuggestionsToggleProps = JSXBase.HTMLAttributes<HTMLButtonElem
 const CustomSuggestionsToggleFc: FC<CustomSuggestionsToggleProps> = ({ onClick, disabled }) => {
 	return (
 		<button tabindex="-1" class="kol-custom-suggestions-toggle" onClick={onClick} disabled={disabled}>
-			<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
+			<KolIconTag _icons="codicon codicon-triangle-down" _label={translateDropdown} />
 		</button>
 	);
 };
