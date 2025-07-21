@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 @use './focus-outline' as *;
 
 @mixin kol-input-theme {
@@ -10,21 +10,21 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 rem(8);
-		gap: rem(6);
+		padding: 0 to-rem(8);
+		gap: to-rem(6);
 
 		@at-root #{$root}__adornment {
-			min-width: rem(8);
+			min-width: to-rem(8);
 
 			&--start {
 				> .kol-icon {
-					margin-left: rem(8);
+					margin-left: to-rem(8);
 				}
 			}
 
 			&--end {
 				> .kol-icon {
-					margin-right: rem(8);
+					margin-right: to-rem(8);
 				}
 			}
 		}

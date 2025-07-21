@@ -5,7 +5,7 @@
 		.kol-pagination {
 			align-items: center;
 			display: grid;
-			gap: rem(16);
+			gap: to-rem(16);
 			grid-template-columns: 1fr auto;
 
 			&__navigation-list {

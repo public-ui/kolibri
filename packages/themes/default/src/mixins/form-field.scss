@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 @use './alert-wc' as *;
 @use './typography' as *;
 
@@ -6,7 +6,7 @@
 	.kol-form-field {
 		$root: &;
 
-		gap: rem(4);
+		gap: to-rem(4);
 
 		&__hint {
 			@include kol-typography-hint;
@@ -14,7 +14,7 @@
 
 		&--error:not(&--hide-msg) {
 			border-left: 3px solid var(--color-danger);
-			padding-left: rem(16);
+			padding-left: to-rem(16);
 
 			.kol-form-field__msg {
 				&.kol-alert--type-error {

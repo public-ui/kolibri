@@ -12,6 +12,6 @@
 
 @layer kol-component {
 	.kol-input-password {
-		--kol-tooltip-width: #{rem(160)};
+		--kol-tooltip-width: #{to-rem(160)};
 	}
 }

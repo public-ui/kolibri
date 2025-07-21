@@ -8,7 +8,7 @@
 		/*
 		 * Minimum size of interactive elements.
 		 */
-		--a11y-min-size: #{rem(44)};
+		--a11y-min-size: #{to-rem(44)};
 		/*
 		 * No element should be used without a background and font color whose contrast ratio has
 		 * not been checked. By initially setting the background color to white and the font color
@@ -42,7 +42,7 @@
 	}
 
 	/*
-	 * All interactive elements should have a minimum size of rem(44).
+	 * All interactive elements should have a minimum size of to-rem(44).
 	 */
 	/* input:not([type='checkbox'], [type='radio'], [type='range']), */
 	/* option, */

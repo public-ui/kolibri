@@ -1,5 +1,5 @@
 @use './required' as *;
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 
 @mixin kol-form-field-theme {
@@ -16,7 +16,7 @@
 		}
 
 		&__hint {
-			font-size: rem(14);
+			font-size: to-rem(14);
 		}
 
 		&__msg {

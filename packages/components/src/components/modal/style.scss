@@ -15,8 +15,8 @@
 
 		&__close-button {
 			position: absolute;
-			top: rem(1);
-			right: rem(1);
+			top: to-rem(1);
+			right: to-rem(1);
 			z-index: 1;
 		}
 	}

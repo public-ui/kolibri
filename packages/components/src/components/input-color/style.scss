@@ -17,7 +17,7 @@
 		}
 
 		&--text {
-			width: rem(112);
+			width: to-rem(112);
 		}
 	}
 
@@ -25,7 +25,7 @@
 		align-items: center;
 		display: flex;
 		flex-direction: row;
-		gap: rem(6) !important;
+		gap: to-rem(6) !important;
 	}
 }
 

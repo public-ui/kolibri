@@ -6,7 +6,7 @@
 			height: 100%;
 			position: relative;
 			/* Visible with forced colors  */
-			outline: transparent solid rem(1);
+			outline: transparent solid to-rem(1);
 
 			&__close-button {
 				position: absolute;
