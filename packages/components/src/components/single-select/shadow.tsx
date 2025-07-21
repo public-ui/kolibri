@@ -51,6 +51,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
+	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
 
 	@Method()
@@ -265,7 +267,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 							<KolIconTag
 								_icons="codicon codicon-close"
 								data-testid="single-select-delete"
-								_label={translate('kol-delete-selection')}
+								_label={this.translateDeleteSelection}
 								onClick={() => {
 									this.clearSelection();
 									this.refInput?.focus();
@@ -322,7 +324,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									/>
 								))
 							) : (
-								<li class="kol-single-select__no-results-message">{translate('kol-no-results-message')} </li>
+								<li class="kol-single-select__no-results-message">{this.translateNoResultsMessage} </li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
 					)}

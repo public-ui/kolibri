@@ -2,6 +2,8 @@ import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { translate } from '../../i18n';
+const translateOf = translate('kol-of');
+const translateCharacters = translate('kol-characters');
 
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	currentLength?: number;
@@ -14,13 +16,13 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, maxLe
 			{currentLength}
 			{maxLength && (
 				<>
-					<span aria-label={translate('kol-of')} role="img">
+					<span aria-label={translateOf} role="img">
 						/
 					</span>
 					{maxLength}
 				</>
 			)}
-			&nbsp;<span>{translate('kol-characters')}</span>
+			&nbsp;<span>{translateCharacters}</span>
 		</span>
 	);
 };

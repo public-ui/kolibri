@@ -53,6 +53,8 @@ import { validateTableSettings } from '../../schema/props/table-settings';
 export class KolTableStateless implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
+	private readonly translateNoEntries = translate('kol-no-entries');
+
 	@State() public state: TableStatelessStates = {
 		_data: [],
 		_headerCells: {
@@ -70,6 +72,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
 	private checkboxRefs: HTMLInputElement[] = [];
+
+	private translateSort = translate('kol-sort');
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -447,7 +451,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			}
 			const emptyCell = {
 				colSpan: colspan,
-				label: translate('kol-no-entries'),
+				label: this.translateNoEntries,
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
@@ -840,6 +844,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						exportparts="icon"
 						_icons={{ right: sortButtonIcon }}
 						_label={cell.label}
+						_ariaDescription={this.translateSort}
 						_on={{
 							onClick: (event: MouseEvent) => {
 								if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
