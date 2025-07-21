@@ -63,6 +63,13 @@ export class KolPaginationWc implements PaginationAPI {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 
 	private readonly nonce = nonce();
+	private readonly translatePageFirst = translate('kol-page-first');
+	private readonly translatePageBack = translate('kol-page-back');
+	private readonly translatePageNext = translate('kol-page-next');
+	private readonly translatePageLast = translate('kol-page-last');
+	private readonly translateEntriesPerSite = translate('kol-entries-per-site');
+	private readonly translatePage = translate('kol-page');
+	private readonly translatePagination = translate('kol-pagination');
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
 
@@ -110,7 +117,7 @@ export class KolPaginationWc implements PaginationAPI {
 									_disabled={this.state._page <= 1}
 									_icons={leftDoubleArrowIcon}
 									_hideLabel
-									_label={translate('kol-page-first')}
+									_label={this.translatePageFirst}
 									_on={this.onGoToFirst}
 									_tooltipAlign={this.state._tooltipAlign}
 								></KolButtonWcTag>
@@ -125,7 +132,7 @@ export class KolPaginationWc implements PaginationAPI {
 									_disabled={this.state._page <= 1}
 									_icons={leftSingleArrow}
 									_hideLabel
-									_label={translate('kol-page-back')}
+									_label={this.translatePageBack}
 									_on={this.onGoBackward}
 									_tooltipAlign={this.state._tooltipAlign}
 								></KolButtonWcTag>
@@ -141,7 +148,7 @@ export class KolPaginationWc implements PaginationAPI {
 									_disabled={count <= this.state._page}
 									_icons={rightSingleArrowIcon}
 									_hideLabel
-									_label={translate('kol-page-next')}
+									_label={this.translatePageNext}
 									_on={this.onGoForward}
 									_tooltipAlign={this.state._tooltipAlign}
 								></KolButtonWcTag>
@@ -156,7 +163,7 @@ export class KolPaginationWc implements PaginationAPI {
 									_disabled={count <= this.state._page}
 									_icons={rightDoubleArrowIcon}
 									_hideLabel
-									_label={translate('kol-page-last')}
+									_label={this.translatePageLast}
 									_on={this.onGoToEnd}
 									_tooltipAlign={this.state._tooltipAlign}
 								></KolButtonWcTag>
@@ -169,7 +176,7 @@ export class KolPaginationWc implements PaginationAPI {
 						class="kol-pagination__page-size-select"
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
-						_label={translate('kol-entries-per-site')}
+						_label={this.translateEntriesPerSite}
 						_options={this.state._pageSizeOptions}
 						_on={{
 							onChange: this.onChangePageSize,
@@ -238,7 +245,7 @@ export class KolPaginationWc implements PaginationAPI {
 
 	@State() public state: PaginationStates = {
 		_boundaryCount: 1,
-		_label: translate('kol-pagination'),
+		_label: this.translatePagination,
 		_hasButtons: {
 			first: true,
 			last: true,
@@ -328,7 +335,7 @@ export class KolPaginationWc implements PaginationAPI {
 					}}
 				>
 					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
+						<span class="visually-hidden">{this.translatePage}</span> {NUMBER_FORMATTER.format(page)}
 					</span>
 				</KolButtonWcTag>
 			</li>
@@ -340,7 +347,7 @@ export class KolPaginationWc implements PaginationAPI {
 			<li key={nonce()}>
 				<KolButtonWcTag class="kol-pagination__button kol-pagination__button--selected" _customClass={this.state._customClass} _disabled={true} _label="">
 					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
+						<span class="visually-hidden">{this.translatePage}</span> {NUMBER_FORMATTER.format(page)}
 					</span>
 				</KolButtonWcTag>
 			</li>

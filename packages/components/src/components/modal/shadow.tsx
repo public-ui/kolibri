@@ -24,6 +24,7 @@ import clsx from 'clsx';
 export class KolModal implements ModalAPI {
 	@Element() private readonly host?: HTMLKolModalElement;
 	private refDialog?: HTMLDialogElement;
+	private readonly translateClose = translate('kol-close');
 
 	public disconnectedCallback(): void {
 		void this.closeModal();
@@ -82,7 +83,7 @@ export class KolModal implements ModalAPI {
 								icon: 'codicon codicon-close',
 							},
 						}}
-						_label={translate('kol-close')}
+						_label={this.translateClose}
 						_on={this.on}
 						_tooltipAlign="left"
 					></KolButtonWcTag>
