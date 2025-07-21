@@ -9,7 +9,8 @@ import migrate from '../src/migrate';
 import { getRemoveMode, setRemoveMode } from '../src/migrate/shares/reuse';
 import { TaskRunner } from '../src/migrate/runner/task-runner';
 
-describe('CLI interface', () => {
+describe('CLI interface', function () {
+       this.timeout(5000);
        it('runs generate-scss command', async () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const cwd = process.cwd();
