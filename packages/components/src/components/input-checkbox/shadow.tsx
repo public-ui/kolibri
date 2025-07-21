@@ -28,9 +28,11 @@ import type {
 import { nonce } from '../../utils/dev.utils';
 import { InputCheckboxController } from './controller';
 
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
-import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolFieldControlStateWrapperFc, {
+	type FieldControlStateWrapperProps,
+} from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
+import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
 
 /**
  * @slot expert - Checkbox description.

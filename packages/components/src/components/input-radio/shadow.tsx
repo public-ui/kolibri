@@ -24,9 +24,11 @@ import { nonce } from '../../utils/dev.utils';
 import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
 
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
-import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../functional-component-wrappers/RadioStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolFieldControlStateWrapperFc, {
+	type FieldControlStateWrapperProps,
+} from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
+import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../functional-component-wrappers/RadioStateWrapper/RadioStateWrapper';
 import type { OrientationPropType } from '../../schema/props/orientation';
 
 /**
