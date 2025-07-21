@@ -233,6 +233,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Spell "KoliBri" with this casing in all documentation and code. The only exception is the component named KolKolibri.
 - Use ESM import syntax in browser code and scripts whenever supported, instead of `require` imports.
 - Do not create barrel files (e.g. `index.ts` that re-export modules). Import modules directly instead.
+- Do not place constant declarations before import statements; imports must always be at the very top of the file.
 
 ## Linting and Formatting
 

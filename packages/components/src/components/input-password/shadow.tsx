@@ -48,6 +48,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputPasswordElement;
 	private inputRef?: HTMLInputElement;
 
+	private readonly translateHidePassword = translate('kol-hide-password');
+	private readonly translateShowPassword = translate('kol-show-password');
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
@@ -121,7 +124,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 				componentName="button"
 				class="kol-input-password__password-toggle-button"
 				data-testid="kol-input-password-toggle-button"
-				label={this._passwordVisible ? translate('kol-hide-password') : translate('kol-show-password')}
+				label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
 				buttonVariant="ghost"
 				onClick={(): void => {
 					this._passwordVisible = !this._passwordVisible;

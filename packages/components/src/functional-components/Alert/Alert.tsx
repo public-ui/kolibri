@@ -9,6 +9,8 @@ import AlertIcon from '../AlertIcon';
 import KolHeadingFc from '../Heading';
 import { genBemAlert as bem, BEM_CLASS_ALERT__CLOSER, BEM_CLASS_ALERT__CONTENT } from './bem';
 
+const translateCloseAlert = translate('kol-close-alert');
+
 export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	Partial<Omit<InternalAlertProps, 'on'>> & {
 		onCloserClick?: () => void;
@@ -107,7 +109,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 								icon: 'codicon codicon-close',
 							},
 						}}
-						_label={translate('kol-close-alert')}
+						_label={translateCloseAlert}
 						_on={{ onClick: onCloserClick }}
 						_tooltipAlign="left"
 					/>
