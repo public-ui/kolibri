@@ -8,6 +8,19 @@ import { PackageJson } from '../types';
 // Function to get the binary version
 const getBinaryVersion = (command: string): string => {
 	try {
+		// For yarn, use a temporary directory to prevent package.json modification
+		// Yarn with Corepack automatically adds packageManager field when executed
+		if (command === 'yarn') {
+			const originalCwd = process.cwd();
+			const tmpDir = os.tmpdir();
+			process.chdir(tmpDir);
+			try {
+				return execSync(`${command} --version`, { encoding: 'utf8' }).trim();
+			} finally {
+				process.chdir(originalCwd);
+			}
+		}
+
 		return execSync(`${command} --version`, { encoding: 'utf8' }).trim();
 	} catch {
 		return 'N/A';
