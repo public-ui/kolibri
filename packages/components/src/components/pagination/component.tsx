@@ -69,6 +69,7 @@ export class KolPaginationWc implements PaginationAPI {
 	private readonly translatePageLast = translate('kol-page-last');
 	private readonly translateEntriesPerSite = translate('kol-entries-per-site');
 	private readonly translatePage = translate('kol-page');
+	private readonly translatePagination = translate('kol-pagination');
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
 
@@ -244,7 +245,7 @@ export class KolPaginationWc implements PaginationAPI {
 
 	@State() public state: PaginationStates = {
 		_boundaryCount: 1,
-		_label: translate('kol-pagination'),
+		_label: this.translatePagination,
 		_hasButtons: {
 			first: true,
 			last: true,
