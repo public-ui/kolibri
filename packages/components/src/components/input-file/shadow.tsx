@@ -211,7 +211,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
-	@State() private filename: string = this.translateFilenameText;
+	@State() private filename: string;
 	@State() private hasFileSelected: boolean = false;
 
 	@State() public state: InputFileStates = {
