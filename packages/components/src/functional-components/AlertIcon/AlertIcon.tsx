@@ -2,12 +2,13 @@ import { Fragment, type FunctionalComponent as FC, h } from '@stencil/core';
 import { KolIconTag } from '../../core/component-names';
 import type { AlertType } from '../../schema';
 import { translate } from '../../i18n';
+import { BEM_CLASS_ALERT__ICON } from '../Alert/bem';
+
 const translateError = translate('kol-error');
 const translateInfo = translate('kol-info');
 const translateWarning = translate('kol-warning');
 const translateSuccess = translate('kol-success');
 const translateMessage = translate('kol-message');
-import { BEM_CLASS_ALERT__ICON } from '../Alert/bem';
 
 /**
  * The icon uses a visually-hidden span instead of an aria-label because the Alert might be referenced as content for aria-describedby.

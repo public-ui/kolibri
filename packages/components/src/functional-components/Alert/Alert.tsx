@@ -4,11 +4,12 @@ import clsx from 'clsx';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
-const translateCloseAlert = translate('kol-close-alert');
 import { type InternalAlertProps } from '../../schema';
 import AlertIcon from '../AlertIcon';
 import KolHeadingFc from '../Heading';
 import { genBemAlert as bem, BEM_CLASS_ALERT__CLOSER, BEM_CLASS_ALERT__CONTENT } from './bem';
+
+const translateCloseAlert = translate('kol-close-alert');
 
 export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	Partial<Omit<InternalAlertProps, 'on'>> & {
