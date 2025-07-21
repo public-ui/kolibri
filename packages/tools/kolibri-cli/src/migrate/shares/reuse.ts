@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 
-import { FileExtension, PackageJson } from '../../types';
+import { FileExtension, PackageJson, MARKUP_EXTENSIONS, WEB_TAG_REGEX, REACT_TAG_REGEX } from '../../types';
 import { RemoveMode } from '../types';
 
 /**
@@ -59,6 +59,45 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 		}
 	});
 	return files;
+}
+
+/**
+ * Checks if the specified directory contains any files with KoliBri tags.
+ * Files are streamed in chunks to avoid loading entire files into memory.
+ * @param {string} dir The directory to search in
+ * @returns {boolean} True if at least one file contains KoliBri component tags (web or React)
+ */
+export function hasKoliBriTags(dir: string): boolean {
+	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
+	const files = filterFilesByExt(dir, MARKUP_EXTENSIONS);
+
+	for (const file of files) {
+		let fd: number | undefined;
+		try {
+			fd = fs.openSync(file, 'r');
+			const buffer = Buffer.alloc(65536);
+			let bytesRead: number;
+			let content = '';
+			while ((bytesRead = fs.readSync(fd, buffer, 0, buffer.length, null)) > 0) {
+				content += buffer.toString('utf8', 0, bytesRead);
+				if (regexes.some((regex) => regex.test(content))) {
+					fs.closeSync(fd);
+					return true;
+				}
+				if (content.length > 1024) {
+					content = content.slice(-1024);
+				}
+			}
+		} catch (err) {
+			console.error(`Error reading file ${file}, skipping file due to read error:`, err);
+		} finally {
+			if (fd !== undefined) {
+				fs.closeSync(fd);
+			}
+		}
+	}
+
+	return false;
 }
 
 /**
