@@ -31,4 +31,4 @@ generateScss(program);
 info(program);
 migrate(program);
 
-program.parse();
+void program.parseAsync();
