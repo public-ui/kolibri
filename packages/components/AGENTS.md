@@ -47,3 +47,12 @@ updating texts when the component is rerendered. Cache the value in a class
 property whose name starts with `translate` followed by the translation
 identifier, for example `translateSort` for `kol-sort` or `translateOrderBy`
 for `kol-order-by`.
+
+### Properties
+
+To make the components easier to learn, property names and their descriptions should be consistent across components. Therefore you should:
+
+- Use the same property name for attributes that serve the same purpose.
+- Whenever possible, use identical descriptions for identical property names.
+- Whenever possible, keep the types of identical property names the same.
+- Minimize the number of different properties, descriptions and types.
