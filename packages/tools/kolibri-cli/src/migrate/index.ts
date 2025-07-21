@@ -23,6 +23,7 @@ import {
 	MODIFIED_FILES,
 	POST_MESSAGES,
 	setRemoveMode,
+	hasKoliBriTags,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
 
@@ -90,6 +91,13 @@ Current version of @public-ui/*: ${options.overwriteCurrentVersion}
 Target version of @public-ui/*: ${options.overwriteTargetVersion}
 Source folder to migrate: ${baseDir}
 `);
+
+				if (!fs.existsSync(baseDir)) {
+					throw logAndCreateError(`The specified source folder "${baseDir}" does not exist or is inaccessible. Please check the path and try again.`);
+				}
+				if (!hasKoliBriTags(baseDir)) {
+					console.log(chalk.yellow(`No KoliBri components (web or React) found under "${baseDir}". Check the path or your task configuration.`));
+				}
 
 				if (!options.ignoreGreaterVersion && semver.lt(options.overwriteTargetVersion, options.overwriteCurrentVersion)) {
 					throw logAndCreateError(
@@ -202,6 +210,10 @@ Modified files: ${MODIFIED_FILES.size}`);
 					MODIFIED_FILES.forEach((file) => {
 						console.log(`- ${file}`);
 					});
+
+					if (MODIFIED_FILES.size === 0) {
+						console.log(chalk.yellow(`No files were modified. Verify the folder "${baseDir}" or check your .kolibri.config.json tasks.`));
+					}
 
 					if (MODIFIED_FILES.size > 0 && options.format) {
 						console.log(`

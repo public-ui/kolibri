@@ -30,8 +30,8 @@
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
-               "test": "pnpm test:unit",
-               "test:unit": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
+		"test": "pnpm test:unit",
+		"test:unit": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
 	},
 	"type": "commonjs",
 	"dependencies": {
