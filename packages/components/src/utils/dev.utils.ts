@@ -65,7 +65,7 @@ Email: kolibri@itzbund.de
 
 let nonce = (): string => Math.floor(Math.random() * 16777215).toString(16);
 
-if (processEnv === 'test') {
+if (runtimeMode === 'test') {
 	nonce = (): string => 'nonce';
 }
 
