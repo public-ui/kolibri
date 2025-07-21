@@ -24,9 +24,9 @@ import { devHint, setState } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import { InputPasswordController } from './controller';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
@@ -47,6 +47,9 @@ import KolIconButtonFc from '../../functional-components/IconButton';
 export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputPasswordElement;
 	private inputRef?: HTMLInputElement;
+
+	private readonly translateHidePassword = translate('kol-hide-password');
+	private readonly translateShowPassword = translate('kol-show-password');
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
@@ -121,7 +124,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 				componentName="button"
 				class="kol-input-password__password-toggle-button"
 				data-testid="kol-input-password-toggle-button"
-				label={this._passwordVisible ? translate('kol-hide-password') : translate('kol-show-password')}
+				label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
 				buttonVariant="ghost"
 				onClick={(): void => {
 					this._passwordVisible = !this._passwordVisible;

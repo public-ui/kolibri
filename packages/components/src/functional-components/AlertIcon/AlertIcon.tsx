@@ -4,6 +4,12 @@ import type { AlertType } from '../../schema';
 import { translate } from '../../i18n';
 import { BEM_CLASS_ALERT__ICON } from '../Alert/bem';
 
+const translateError = translate('kol-error');
+const translateInfo = translate('kol-info');
+const translateWarning = translate('kol-warning');
+const translateSuccess = translate('kol-success');
+const translateMessage = translate('kol-message');
+
 /**
  * The icon uses a visually-hidden span instead of an aria-label because the Alert might be referenced as content for aria-describedby.
  * In this scenario, Firefox with NVDA does not properly read the aria-label, so the visually-hidden span ensures correct screen reader behavior.
@@ -21,15 +27,15 @@ const Icon: FC<{ ariaLabel: string; icon: string; label?: string }> = ({ ariaLab
 const AlertIcon: FC<{ label?: string; type?: AlertType }> = ({ type, label }) => {
 	switch (type) {
 		case 'error':
-			return <Icon ariaLabel={translate('kol-error')} icon="codicon codicon-error" label={label} />;
+			return <Icon ariaLabel={translateError} icon="codicon codicon-error" label={label} />;
 		case 'info':
-			return <Icon ariaLabel={translate('kol-info')} icon="codicon codicon-info" label={label} />;
+			return <Icon ariaLabel={translateInfo} icon="codicon codicon-info" label={label} />;
 		case 'warning':
-			return <Icon ariaLabel={translate('kol-warning')} icon="codicon codicon-warning" label={label} />;
+			return <Icon ariaLabel={translateWarning} icon="codicon codicon-warning" label={label} />;
 		case 'success':
-			return <Icon ariaLabel={translate('kol-success')} icon="codicon codicon-pass" label={label} />;
+			return <Icon ariaLabel={translateSuccess} icon="codicon codicon-pass" label={label} />;
 		default:
-			return <Icon ariaLabel={translate('kol-message')} icon="codicon codicon-comment" label={label} />;
+			return <Icon ariaLabel={translateMessage} icon="codicon codicon-comment" label={label} />;
 	}
 };
 

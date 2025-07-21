@@ -22,6 +22,8 @@ export class KolToastContainer implements ToasterAPI {
 		_toastStates: [],
 	};
 
+	private readonly translateToastCloseAll = translate('kol-toast-close-all');
+
 	/* Keep track of render functions, so we call each only once. */
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
 
@@ -121,7 +123,7 @@ export class KolToastContainer implements ToasterAPI {
 			<Host class="kol-toast-container">
 				{this.state._toastStates.length > 1 && (
 					<KolButtonTag
-						_label={translate('kol-toast-close-all')}
+						_label={this.translateToastCloseAll}
 						class="kol-toast-container__button-close-all"
 						_on={{
 							onClick: () => {

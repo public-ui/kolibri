@@ -58,6 +58,7 @@ export default {
 	'delete-selection': 'Delete selection',
 	'filename-text': 'Choose a file or drop it here...',
 	'data-browse-text': 'Browse',
+	sort: 'sort',
 	'pagination-position-top': 'top',
 	'pagination-position-bottom': 'bottom',
 };
