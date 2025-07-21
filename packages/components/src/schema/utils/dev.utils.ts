@@ -15,9 +15,9 @@ export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
 
-import { runtimeMode } from './reuse';
+import { processEnv } from './reuse';
 
-const DEV_MODE: boolean = runtimeMode !== 'production';
+const DEV_MODE: boolean = processEnv !== 'production';
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;
 

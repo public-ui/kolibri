@@ -1,5 +1,6 @@
 @use '../components/a11y' as *;
 @use '../components/preset' as *;
+@use '../components/@shared/mixins' as *;
 
 @layer kol-global {
 	:host {

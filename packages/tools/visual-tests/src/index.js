@@ -6,8 +6,9 @@ import { readFile } from 'fs/promises';
 import * as fs from 'fs';
 import portfinder from 'portfinder';
 import * as process from 'process';
+import os from 'node:os';
 
-const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR; // TODO: Check on Windows
+const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR || os.tmpdir(); // TODO: Check on Windows
 
 if (!process.env.THEME_MODULE) {
 	throw new Error('Environment variable THEME_MODULE not specified.');

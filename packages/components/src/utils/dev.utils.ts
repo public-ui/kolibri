@@ -1,4 +1,4 @@
-import { Log, getDocument, runtimeMode, setColorContrastAnalysis, setExperimentalMode } from '../schema';
+import { Log, getDocument, processEnv, setColorContrastAnalysis, setExperimentalMode } from '../schema';
 
 import { getWindow } from '../schema';
 import { Env } from '@stencil/core';
