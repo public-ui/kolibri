@@ -1,9 +1,9 @@
-import { h } from '@stencil/core';
 import type { FunctionalComponent as FC } from '@stencil/core';
+import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
-import type { HeadingLevel, IconsPropType } from '../../schema';
+import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
 import KolHeadingFc from '../Heading';
 
 type ClassType =
@@ -12,12 +12,13 @@ type ClassType =
 			[className: string]: boolean;
 	  };
 
-export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
+export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 'onClick'> & {
 	id: string;
 	open?: boolean;
 	disabled?: boolean;
 	level?: HeadingLevel;
 	label: string;
+	onClick?: EventValueOrEventCallback<MouseEvent, StencilUnknown>;
 
 	HeadingProps?: {
 		ref?: ((elm?: HTMLElement | undefined) => void) | undefined;
