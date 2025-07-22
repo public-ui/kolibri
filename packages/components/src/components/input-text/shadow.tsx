@@ -151,6 +151,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	/**
 	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
 	 */
 	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
@@ -333,6 +338,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
+	}
+
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: boolean): void {
+		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hint')

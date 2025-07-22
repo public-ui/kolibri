@@ -1,6 +1,7 @@
 import type { CSSResize, MaxLengthBehaviorPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
 import {
 	cssResizeOptions,
+	validateHasCounter,
 	validateMaxLengthBehavior,
 	validateRows,
 	validateSpellCheck,
@@ -28,6 +29,10 @@ export class TextareaController extends InputIconController implements TextareaW
 			this.updateCurrentLengthDebounced(this.component._value.length);
 		}
 	};
+
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this.component, value);
+	}
 
 	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		validateMaxLengthBehavior(this.component, value);
@@ -83,6 +88,7 @@ export class TextareaController extends InputIconController implements TextareaW
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
+		this.validateHasCounter(this.component._hasCounter);
 		this.validateMaxLengthBehavior(this.component._maxLengthBehavior);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePlaceholder(this.component._placeholder);

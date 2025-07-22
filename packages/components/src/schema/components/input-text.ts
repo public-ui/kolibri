@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
 	PropHorizontalIcons,
@@ -37,6 +38,7 @@ type OptionalProps = {
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
+	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
 	PropHorizontalIcons &
@@ -71,6 +73,7 @@ type OptionalStates = {
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
+	PropHasCounter &
 	PropHideLabel &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
