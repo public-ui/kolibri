@@ -18,7 +18,7 @@ This folder collects all official KoliBri themes. Each theme package under this 
 
 - Organise SCSS using `@layer kol-theme-global` and `@layer kol-theme-component`.
 - Follow BEM style class naming (`block__element--modifier`).
-- Reuse mixins from the `mixins/` folder and use the `rem()` helper for sizing.
+- Reuse mixins from the `mixins/` folder and use the `to-rem()` helper for sizing.
 - Place theme tokens (colors, fonts, spacing, etc.) in the global layer and reference them in component styles.
 - Avoid `!important` and only override properties that the theme actually customises.
 
