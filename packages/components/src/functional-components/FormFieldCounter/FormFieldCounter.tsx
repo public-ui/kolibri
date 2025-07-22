@@ -1,4 +1,4 @@
-import { type FunctionalComponent as FC, h, Fragment } from '@stencil/core';
+import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { translate } from '../../i18n';

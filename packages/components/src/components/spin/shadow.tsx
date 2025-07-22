@@ -33,6 +33,8 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 })
 export class KolSpin implements SpinAPI {
 	private showToggled = false;
+	private readonly translateActionRunning = translate('kol-action-running');
+	private readonly translateActionDone = translate('kol-action-done');
 
 	public render(): JSX.Element {
 		return (
@@ -40,7 +42,7 @@ export class KolSpin implements SpinAPI {
 				{this.state._show ? (
 					<span
 						aria-busy="true"
-						aria-label={translate('kol-action-running')}
+						aria-label={this.translateActionRunning}
 						aria-live="polite"
 						class={clsx('kol-spin__spinner', `kol-spin__spinner--${this.state._variant}`)}
 						role="alert"
@@ -48,7 +50,7 @@ export class KolSpin implements SpinAPI {
 						{renderSpin(this.state._variant)}
 					</span>
 				) : (
-					this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
+					this.showToggled && <span aria-label={this.translateActionDone} aria-busy="false" aria-live="polite" role="alert"></span>
 				)}
 			</Host>
 		);

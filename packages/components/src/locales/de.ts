@@ -56,6 +56,7 @@ export default {
 	'delete-selection': 'Auswahl entfernen',
 	'filename-text': 'Datei auswählen oder hier ablegen...',
 	'data-browse-text': 'Datei auswählen',
+	sort: 'sortieren',
 	'pagination-position-top': 'oben',
 	'pagination-position-bottom': 'unten',
 	'character-limit-hint': 'Es können bis zu {{limit}} Zeichen eingegeben werden.',

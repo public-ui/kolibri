@@ -21,9 +21,9 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import { InputFileController } from './controller';
 import { translate } from '../../i18n';
 import { KolButtonWcTag } from '../../core/component-names';
@@ -43,6 +43,9 @@ import { KolButtonWcTag } from '../../core/component-names';
 export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputFileElement;
 	private inputRef?: HTMLInputElement;
+
+	private readonly translateDataBrowseText = translate('kol-data-browse-text');
+	private readonly translateFilenameText = translate('kol-filename-text');
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
@@ -97,7 +100,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				<KolInputContainerFc state={this.state}>
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
-					<KolButtonWcTag class="kol-input-container__button" _label={translate('kol-data-browse-text')} _buttonVariant="primary" _disabled={this._disabled} />
+					<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _buttonVariant="primary" _disabled={this._disabled} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -208,7 +211,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
-	@State() private filename: string = translate('kol-filename-text');
+	@State() private filename: string = this.translateFilenameText;
 	@State() private hasFileSelected: boolean = false;
 
 	@State() public state: InputFileStates = {
@@ -357,7 +360,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				? Array.from(value)
 						.map((file) => file.name)
 						.join(', ')
-				: translate('kol-filename-text');
+				: this.translateFilenameText;
 
 			this.controller.onFacade.onChange(event, value);
 			this.controller.setFormAssociatedValue(value);

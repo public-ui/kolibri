@@ -53,7 +53,7 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 	const formatSampleAsLabel = () => sample.replace(/\//g, ' ');
 
 	const handleThemeSelectChange = (_event: Event, value: unknown) => {
-		onThemeChange((value as [string])[0]);
+		onThemeChange(value as string);
 	};
 
 	const handlePreviousClick = () => {
