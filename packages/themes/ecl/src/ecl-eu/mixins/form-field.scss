@@ -26,5 +26,11 @@
 				@include kol-alert-wc(--color-red);
 			}
 		}
+
+		&__counter {
+			&--exceeded {
+				color: var(--color-red);
+			}
+		}
 	}
 }

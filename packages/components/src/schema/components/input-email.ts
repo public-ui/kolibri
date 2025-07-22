@@ -4,12 +4,12 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropMultiple,
 	PropName,
@@ -36,10 +36,10 @@ type OptionalProps = {
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
-	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
 	PropHorizontalIcons &
+	PropMaxLengthBehavior &
 	PropMultiple &
 	PropName &
 	PropReadOnly &
@@ -53,12 +53,13 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
+	currentLength: number;
+	currentLengthDebounced: number;
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	currentLength: number;
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
@@ -68,9 +69,9 @@ type OptionalStates = {
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
-	PropHasCounter &
 	PropHideLabel &
 	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropMultiple &
 	PropName &

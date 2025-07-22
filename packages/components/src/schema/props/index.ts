@@ -44,6 +44,7 @@ export * from './link-target';
 export * from './link-variant';
 export * from './loading';
 export * from './max';
+export * from './max-length-behavior';
 export * from './modal';
 export * from './msg';
 export * from './multiple';
