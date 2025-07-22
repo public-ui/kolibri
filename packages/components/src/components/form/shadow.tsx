@@ -74,7 +74,13 @@ export class KolForm implements FormAPI {
 
 	private renderFormElement(): JSX.Element {
 		return (
-			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+			<form
+				autoComplete="off" /* disable browser's not accessible autocomplete popup */
+				method="post"
+				onSubmit={this.onSubmit}
+				onReset={this.onReset}
+				noValidate
+			>
 				{this.state._requiredText === true ? (
 					<p>
 						<div class="mandatory-fields-hint">{translate('kol-form-description')}</div>

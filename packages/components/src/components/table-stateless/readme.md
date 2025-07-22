@@ -71,6 +71,9 @@ const selection: KoliBriTableSelection = {
 />
 ```
 
+Der Sortierschalter verwendet das Attribut `_aria-description` und zeigt immer den
+Sprachtext `kol-sort` an, unabhängig vom aktuellen Sortierzustand.
+
 <!-- Auto Generated Below -->
 
 ## Properties
