@@ -54,6 +54,22 @@ const testInputCharacterLimit = (componentName: string) => {
 				)
 				.toBe(true);
 		});
+
+		test.describe('With _hasCounter', () => {
+			test('Should show current value length when no limits are applied', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _value="abc" _hasCounter></${componentName}>`);
+
+				await expect(page.getByTestId('input-counter')).toHaveText('3 Zeichen');
+				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 Zeichen');
+			});
+
+			test('Should show current value and max length when theres a max length and _max-length-behavior hard', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _value="abc" _maxLength="10" _hasCounter></${componentName}>`);
+
+				await expect(page.getByTestId('input-counter')).toHaveText('7/10 Zeichen');
+				await expect(page.getByTestId('input-counter-aria')).toHaveText('7 von 10 Zeichen');
+			});
+		});
 	});
 };
 
