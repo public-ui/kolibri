@@ -310,12 +310,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines the largest possible input value.
 	 */
-	@Prop() public _max?: number;
+	@Prop() public _max?: number = 100;
 
 	/**
 	 * Defines the smallest possible input value.
 	 */
-	@Prop() public _min?: number;
+	@Prop() public _min?: number = 0;
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
