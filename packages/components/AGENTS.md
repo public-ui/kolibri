@@ -56,3 +56,11 @@ To make the components easier to learn, property names and their descriptions sh
 - Whenever possible, use identical descriptions for identical property names.
 - Whenever possible, keep the types of identical property names the same.
 - Minimize the number of different properties, descriptions and types.
+
+#### Open vs Show
+
+Use `_open` when the component renders an element on demand, for example a drawer or popover that appears from nothing. Use `_show` when the element already exists in the DOM and you only toggle its visibility.
+
+#### Alignment properties
+
+The `align` prop controls the orientation of the component itself. When aligning an inner element, such as a tooltip or popover inside a component, specialized props like `tooltipAlign` or `popoverAlign` may be used instead of `align`.
