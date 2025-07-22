@@ -1,8 +1,8 @@
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	.tree-item {
-		--tree-item-indentation: #{rem(20)};
+		--tree-item-indentation: #{to-rem(20)};
 	}
 
 	.tree-link {

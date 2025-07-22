@@ -1,11 +1,11 @@
 @use '../../@shared/mixins' as *;
 
 .mainlayout {
-	min-height: calc(100vh - rem(32));
+	min-height: calc(100vh - to-rem(32));
 	width: 100%;
 	display: grid;
-	column-gap: rem(16);
-	grid-template-columns: rem(400) calc(100% - rem(460));
+	column-gap: to-rem(16);
+	grid-template-columns: to-rem(400) calc(100% - to-rem(460));
 	grid-template-rows: 1fr;
 	grid-template-areas: 'nav content';
 

@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	.list {
@@ -44,9 +44,9 @@
 		border-style: solid;
 		border-width: 2px;
 		color: var(--color-white);
-		font-size: rem(18);
+		font-size: to-rem(18);
 		justify-items: start;
-		padding: rem(16);
+		padding: to-rem(16);
 		height: 100%;
 	}
 

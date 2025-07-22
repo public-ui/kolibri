@@ -7,10 +7,10 @@
 		border-radius: 50%;
 		overflow: hidden;
 		/* Visible with forced colors  */
-		outline: transparent solid rem(1);
+		outline: transparent solid to-rem(1);
 		/*theme?*/
-		width: rem(100);
-		height: rem(100);
+		width: to-rem(100);
+		height: to-rem(100);
 	}
 
 	.image {
@@ -26,6 +26,6 @@
 		justify-content: center;
 		/*theme?*/
 		background-color: #d3d3d3;
-		font-size: rem(40);
+		font-size: to-rem(40);
 	}
 }

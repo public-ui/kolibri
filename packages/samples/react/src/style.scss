@@ -8,7 +8,7 @@
 body {
 	margin: 0;
 	font-family: Verdana;
-	font-size: rem(16);
+	font-size: to-rem(16);
 	line-height: normal;
 }
 
@@ -41,7 +41,7 @@ hr {
 	background-color: black;
 	display: flex;
 	flex-direction: column;
-	padding: rem(8);
+	padding: to-rem(8);
 }
 
 .w-image {
@@ -49,13 +49,13 @@ hr {
 }
 
 .drawer-content-vertical {
-	width: rem(400);
+	width: to-rem(400);
 }
 
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
-		grid-template-columns: rem(360) calc(100% - rem(360));
+		grid-template-columns: to-rem(360) calc(100% - to-rem(360));
 		min-height: 100vh;
 		height: 100%;
 	}
@@ -70,8 +70,8 @@ hr {
 			top: 0;
 			bottom: 0;
 			left: 0;
-			width: rem(330);
-			margin: rem(16);
+			width: to-rem(330);
+			margin: to-rem(16);
 			flex-direction: column;
 			display: flex;
 

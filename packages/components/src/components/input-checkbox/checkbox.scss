@@ -23,8 +23,8 @@
 		}
 
 		& .checkbox-input-element {
-			width: rem(22);
-			height: rem(22);
+			width: to-rem(22);
+			height: to-rem(22);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	:host > div {
@@ -16,15 +16,15 @@
 	}
 
 	:host div.header {
-		padding: rem(16) rem(16) rem(8) rem(16);
+		padding: to-rem(16) to-rem(16) to-rem(8) to-rem(16);
 	}
 
 	:host div.content {
-		padding: rem(8) rem(16) rem(16);
+		padding: to-rem(8) to-rem(16) to-rem(16);
 		overflow: hidden;
 	}
 
 	:host div.footer {
-		padding: rem(8) rem(16);
+		padding: to-rem(8) to-rem(16);
 	}
 }

@@ -29,10 +29,10 @@
 	}
 
 	.kol-tooltip-wc .tooltip-arrow {
-		height: rem(10);
+		height: to-rem(10);
 		position: absolute;
 		transform: rotate(45deg);
-		width: rem(10);
+		width: to-rem(10);
 		z-index: 999;
 	}
 

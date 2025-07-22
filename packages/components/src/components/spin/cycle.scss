@@ -2,8 +2,8 @@
 
 @layer kol-component {
 	.spin.cycle {
-		width: rem(48);
-		height: rem(48);
+		width: to-rem(48);
+		height: to-rem(48);
 	}
 
 	.spin.cycle > .loader {

@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -24,21 +24,21 @@
 		color: inherit;
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
-		padding: rem(3.2);
+		padding: to-rem(3.2);
 	}
 
 	:host > span .kol-span-wc {
-		padding: rem(4) rem(12);
+		padding: to-rem(4) to-rem(12);
 	}
 
 	:host > span > .kol-span-wc {
 		align-items: center;
 		font-style: normal;
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	:host > span > .kol-span-wc > span {
 		display: flex;
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 }

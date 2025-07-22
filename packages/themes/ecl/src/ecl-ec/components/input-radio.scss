@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/typography' as *;
 
@@ -9,13 +9,13 @@
 
 	fieldset {
 		border: 0;
-		gap: rem(8);
+		gap: to-rem(8);
 		flex-wrap: wrap;
 		align-items: flex-start;
 	}
 
 	.input-slot {
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 
 	fieldset .kol-alert-wc {
@@ -52,7 +52,7 @@
 	}
 
 	.radio-label {
-		padding-left: rem(8);
+		padding-left: to-rem(8);
 	}
 
 	input[type='radio'] {
@@ -110,7 +110,7 @@
 	}
 
 	.hint {
-		font-size: rem(14.4);
+		font-size: to-rem(14.4);
 		order: 4;
 	}
 }

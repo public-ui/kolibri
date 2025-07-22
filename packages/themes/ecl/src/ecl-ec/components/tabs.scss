@@ -1,22 +1,22 @@
-@use '../../mixins/rem' as *;
+@use '../../functions/to-rem' as *;
 
 @layer kol-theme-component {
 	:host {
-		--kolibri-spacing: #{rem(4)};
+		--kolibri-spacing: #{to-rem(4)};
 	}
 
 	.tabs-button-group {
 		border-bottom: 1px solid var(--color-grey-25);
-		margin-bottom: rem(-1);
+		margin-bottom: to-rem(-1);
 	}
 
 	.tabs-button-group button {
 		border: none;
-		margin-bottom: rem(-1);
+		margin-bottom: to-rem(-1);
 	}
 
 	.tabs-button-group button .kol-span-wc {
-		padding: rem(8);
+		padding: to-rem(8);
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
 	}

@@ -2,46 +2,46 @@
 
 @layer kol-component {
 	.spin.dot {
-		height: rem(16);
-		width: rem(48);
+		height: to-rem(16);
+		width: to-rem(48);
 	}
 
 	.spin.dot > span {
 		animation-timing-function: cubic-bezier(0, 1, 1, 0);
 		border-radius: 50%;
 		border: 0.16px solid #fff;
-		height: rem(12.8);
+		height: to-rem(12.8);
 		position: absolute;
-		top: rem(0.16);
-		width: rem(12.8);
+		top: to-rem(0.16);
+		width: to-rem(12.8);
 	}
 
 	.spin.dot > span:first-child {
 		background-color: #000;
 		z-index: 0;
 		animation: 1s infinite spin1;
-		left: rem(0.16);
+		left: to-rem(0.16);
 	}
 
 	.spin.dot > span:nth-child(2) {
 		background-color: #000;
 		z-index: 1;
 		animation: 1s infinite spin2;
-		left: rem(0.16);
+		left: to-rem(0.16);
 	}
 
 	.spin.dot > span:nth-child(3) {
 		background-color: #000;
 		z-index: 1;
 		animation: 1s infinite spin2;
-		left: rem(17.6);
+		left: to-rem(17.6);
 	}
 
 	.spin.dot > span:nth-child(4) {
 		background-color: #666;
 		z-index: 0;
 		animation: 1s infinite spin3;
-		left: rem(33.6);
+		left: to-rem(33.6);
 	}
 
 	@keyframes spin1 {
@@ -60,7 +60,7 @@
 		}
 
 		100% {
-			transform: translate(rem(16), 0);
+			transform: translate(to-rem(16), 0);
 		}
 	}
 
