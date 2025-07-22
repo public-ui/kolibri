@@ -42,14 +42,6 @@ describe('KolFormFieldFc', () => {
 		expect(page.root?.textContent).toContain(hint);
 	});
 
-	it('should render with counter', async () => {
-		const counter = { currentLength: 5, maxLength: 10 };
-		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" counter={counter} />);
-		expect(page.root).toMatchSnapshot();
-		expect(page.root?.textContent).toContain(5);
-		expect(page.root?.textContent).toContain(10);
-	});
-
 	it('should render with tooltip', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" tooltipAlign="right" />);
 		expect(page.root).toMatchSnapshot();

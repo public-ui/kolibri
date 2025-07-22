@@ -10,17 +10,17 @@
 			z-index: 1;
 
 			&__columns-container {
-				margin-top: rem(16);
-				max-height: rem(200);
+				margin-top: to-rem(16);
+				max-height: to-rem(200);
 				overflow: auto;
 			}
 
 			&__columns {
 				align-items: center;
 				display: grid;
-				gap: rem(8);
+				gap: to-rem(8);
 				grid-auto-rows: min-content;
-				grid-template-columns: min-content 1fr rem(100) auto auto;
+				grid-template-columns: min-content 1fr to-rem(100) auto auto;
 				overflow: hidden;
 			}
 

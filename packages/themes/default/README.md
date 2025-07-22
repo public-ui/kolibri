@@ -90,8 +90,8 @@ The following tokens are defined in `src/global.scss` and serve as the base for 
 | ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
 | `--border-radius`         | `var(--kolibri-border-radius, 5px)`                                          | Default border radius        |
 | `--font-family`           | `var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif)` | Default font                 |
-| `--font-size`             | `var(--kolibri-font-size, #{rem(16)})`                                       | Base font size               |
-| `--spacing`               | `var(--kolibri-spacing, #{rem(4)})`                                          | Standard spacing             |
+| `--font-size`             | `var(--kolibri-font-size, #{to-rem(16)})`                                    | Base font size               |
+| `--spacing`               | `var(--kolibri-spacing, #{to-rem(4)})`                                       | Standard spacing             |
 | `--border-width`          | `var(--kolibri-border-width, 1px)`                                           | Border width                 |
 | `--color-primary`         | `var(--kolibri-color-primary, #004b76)`                                      | Primary accent color         |
 | `--color-primary-variant` | `var(--kolibri-color-primary-variant, #0077b6)`                              | Variant of the primary color |

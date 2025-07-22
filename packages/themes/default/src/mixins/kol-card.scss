@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-card {
 	.kol-card {
@@ -11,11 +11,11 @@
 		border-radius: var(--border-radius);
 
 		&__header {
-			padding: rem(16) rem(16) rem(8) rem(16);
+			padding: to-rem(16) to-rem(16) to-rem(8) to-rem(16);
 		}
 
 		&__content {
-			padding: rem(8) rem(16) rem(16);
+			padding: to-rem(8) to-rem(16) to-rem(16);
 			overflow: hidden;
 		}
 

@@ -1,13 +1,13 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @mixin indented-text {
-	-webkit-border-start: rem(8) solid #0e47cb;
-	-webkit-padding-start: rem(24);
-	border-end-start-radius: rem(4);
-	border-inline-start: rem(8) solid #0e47cb;
-	border-start-start-radius: rem(4);
+	-webkit-border-start: to-rem(8) solid #0e47cb;
+	-webkit-padding-start: to-rem(24);
+	border-end-start-radius: to-rem(4);
+	border-inline-start: to-rem(8) solid #0e47cb;
+	border-start-start-radius: to-rem(4);
 	display: inline-block;
-	padding-bottom: rem(16);
-	padding-inline-start: rem(24);
-	padding-top: rem(16);
+	padding-bottom: to-rem(16);
+	padding-inline-start: to-rem(24);
+	padding-top: to-rem(16);
 }

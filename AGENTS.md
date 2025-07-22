@@ -240,6 +240,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks. You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
 - Ensure all packages are built by running `pnpm build` before executing `pnpm lint` or `pnpm test`. Some packages rely on generated artifacts that linting and testing depend on.
 - Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
+- If your pull request only modifies Markdown files, skip `pnpm build`, `pnpm lint` and `pnpm test`. Just format the Markdown using `pnpm format` or Prettier.
 
 ## Testing
 

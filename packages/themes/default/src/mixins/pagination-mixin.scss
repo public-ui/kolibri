@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 @use './focus-outline' as *;
 
 @mixin kol-pagination-styles {
@@ -7,7 +7,7 @@
 			&__pagination,
 			&__pagination-wrapper {
 				@media (min-width: 1024px) {
-					gap: rem(16);
+					gap: to-rem(16);
 				}
 			}
 		}
@@ -38,7 +38,7 @@
 					font-weight: 700;
 					min-height: var(--a11y-min-size);
 					min-width: var(--a11y-min-size);
-					padding: rem(8);
+					padding: to-rem(8);
 					text-align: center;
 					transition-duration: 0.5s;
 					transition-property: background-color, color, border-color;

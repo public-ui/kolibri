@@ -1,9 +1,9 @@
 @use '../@shared/input-text' as *;
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 .kol-input-color {
 	&__inputs-wrapper {
-		gap: rem(16);
+		gap: to-rem(16);
 	}
 
 	&__input {
@@ -11,7 +11,7 @@
 		&--color {
 			background-color: var(--color-white);
 			border: 1px solid var(--color-blue);
-			min-height: calc(var(--a11y-min-size) - rem(8));
+			min-height: calc(var(--a11y-min-size) - to-rem(8));
 		}
 	}
 }

@@ -11,6 +11,7 @@ import type {
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
 	PropReadOnly,
@@ -39,10 +40,11 @@ type OptionalProps = {
 	PropAdjustHeight &
 	PropDisabled &
 	PropHasCounter &
-	PropHideMsg &
 	PropHideLabel &
+	PropHideMsg &
 	PropHorizontalIcons &
 	PropId &
+	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -55,6 +57,7 @@ type OptionalProps = {
 type RequiredStates = {
 	adjustHeight: boolean;
 	currentLength: number;
+	currentLengthDebounced: number;
 	hasValue: boolean;
 	resize: CSSResize;
 } & PropAdjustHeight &
@@ -69,10 +72,11 @@ type OptionalStates = {
 	placeholder: string;
 	value: string;
 } & PropAccessKey &
+	KoliBriHIcons &
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
-	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
 	PropReadOnly &

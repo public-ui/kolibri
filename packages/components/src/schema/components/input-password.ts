@@ -10,6 +10,7 @@ import type {
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
 	PropReadOnly,
@@ -40,6 +41,7 @@ type OptionalProps = {
 	PropHideMsg &
 	PropHideLabel &
 	PropHorizontalIcons &
+	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -49,12 +51,13 @@ type OptionalProps = {
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
+	currentLength: number;
+	currentLengthDebounced: number;
 	hasValue: boolean;
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	currentLength: number;
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
@@ -68,6 +71,7 @@ type OptionalStates = {
 	PropHasCounter &
 	PropHideLabel &
 	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
 	PropReadOnly &

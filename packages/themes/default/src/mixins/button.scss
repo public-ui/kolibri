@@ -1,5 +1,5 @@
 @use './focus-outline' as *;
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-button($block-classname) {
 	:host {
@@ -84,7 +84,7 @@
 
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
-			padding: rem(8) rem(14);
+			padding: to-rem(8) to-rem(14);
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
@@ -97,7 +97,7 @@
 			}
 
 			@at-root #{$root}--hide-label & {
-				padding: rem(12);
+				padding: to-rem(12);
 				width: unset;
 
 				.kol-span__label {

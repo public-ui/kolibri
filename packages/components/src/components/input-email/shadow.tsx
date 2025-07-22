@@ -14,6 +14,7 @@ import type {
 	InputTypeOnOff,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MaxLengthBehaviorPropType,
 	MultiplePropType,
 	NamePropType,
 	ShortKeyPropType,
@@ -22,7 +23,6 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setState } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -73,9 +73,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		const value = (event.target as HTMLInputElement).value;
-		setState(this, '_currentLength', value.length);
-		this._value = value;
+		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -84,6 +82,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-email', 'email', {
 				'has-value': this.state._hasValue,
+				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.inputRef?.focus(),
@@ -92,10 +91,13 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+
 		return {
 			ref: this.catchRef,
 			state: this.state,
 			type: 'email',
+			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
@@ -133,16 +135,20 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Shows the character count on the lower border of the input.
-	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -264,6 +270,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@State() public state: InputEmailStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -296,11 +303,6 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		this.controller.validateDisabled(value);
 	}
 
-	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
-		this.controller.validateHasCounter(value);
-	}
-
 	@Watch('_hideMsg')
 	public validateHideMsg(value?: HideMsgPropType): void {
 		this.controller.validateHideMsg(value);
@@ -309,6 +311,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
+	}
+
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: boolean): void {
+		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hint')
@@ -404,6 +411,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_maxLengthBehavior')
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.controller.validateMaxLengthBehavior(value);
 	}
 
 	public componentWillLoad(): void {
