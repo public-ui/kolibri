@@ -2,7 +2,7 @@ name: Handle PR-Labels
 
 on:
   pull_request_target:
-    types: [opened, labeled]
+    types: [labeled]
 
 concurrency:
   group: workflow-${{ github.workflow }}-${{ github.ref }}
@@ -12,10 +12,8 @@ jobs:
   handle-labels:
     if: >-
       github.repository == 'public-ui/kolibri' &&
-      (
-        (github.event.action == 'labeled' && github.event.label.name == 'codex') ||
-        (github.event.action == 'opened' && contains(github.event.pull_request.labels.*.name, 'codex'))
-      )
+      github.event.action == 'labeled' &&
+      github.event.label.name == 'codex'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
