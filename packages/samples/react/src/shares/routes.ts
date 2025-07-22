@@ -49,7 +49,6 @@ import { TABS_ROUTES } from '../components/tabs/routes';
 import { TEXTAREA_ROUTES } from '../components/textarea/routes';
 import { TOAST_ROUTES } from '../components/toast/routes';
 import { TOOLBAR_ROUTES } from '../components/toolbar/routes';
-import { TOOLTIP_ROUTES } from '../components/tooltip/routes';
 import { TREE_ROUTES } from '../components/tree/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
 
@@ -104,7 +103,6 @@ export const ROUTES: Routes = {
 	...TEXTAREA_ROUTES,
 	...TOAST_ROUTES,
 	...TOOLBAR_ROUTES,
-	...TOOLTIP_ROUTES,
 	...TREE_ROUTES,
 	...VERSION_ROUTES,
 	...SCENARIO_ROUTES,
