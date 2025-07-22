@@ -1,11 +1,11 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @mixin kol-pagination-styles {
 	.kol-table-stateful {
 		&__pagination,
 		&__pagination-wrapper {
 			@media (min-width: 1024px) {
-				gap: rem(16);
+				gap: to-rem(16);
 			}
 		}
 	}

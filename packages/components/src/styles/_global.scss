@@ -4,7 +4,7 @@
 
 @layer kol-global {
 	:host {
-		font-size: rem(16);
+		font-size: to-rem(16);
 		/*
 		 * The max-width is needed to prevent the table from overflowing the
 		 * parent node, if the table is wider than the parent node.

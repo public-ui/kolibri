@@ -87,20 +87,20 @@ The token values are read from `src/ecl-ec/global.scss` and `src/ecl-eu/global.s
 | `--color-black`         | `#000`                | Black                   |
 | `--color-white`         | `#fff`                | White                   |
 | `--font-family`         | `Arial, sans-serif`   | Default font            |
-| `--font-size`           | `#{rem(16)}`          | Base font size          |
+| `--font-size`           | `#{to-rem(16)}`       | Base font size          |
 | `--font-weight`         | `400`                 | Regular font weight     |
 | `--font-weight-bold`    | `600`                 | Bold font               |
 | `--line-height`         | `1.5`                 | Line height text        |
 | `--line-height-heading` | `1.2`                 | Line height headings    |
-| `--spacing-4xl`         | `#{rem(64)}`          | Largest spacing         |
-| `--spacing-3xl`         | `#{rem(48)}`          | Very large spacing      |
-| `--spacing-2xl`         | `#{rem(40)}`          | Very large spacing      |
-| `--spacing-xl`          | `#{rem(32)}`          | Large spacing           |
-| `--spacing-l`           | `#{rem(24)}`          | Large spacing           |
-| `--spacing-m`           | `#{rem(16)}`          | Standard spacing        |
-| `--spacing-s`           | `#{rem(12)}`          | Small spacing           |
-| `--spacing-xs`          | `#{rem(8)}`           | Very small spacing      |
-| `--spacing-2xs`         | `#{rem(4)}`           | Tiny spacing            |
+| `--spacing-4xl`         | `#{to-rem(64)}`       | Largest spacing         |
+| `--spacing-3xl`         | `#{to-rem(48)}`       | Very large spacing      |
+| `--spacing-2xl`         | `#{to-rem(40)}`       | Very large spacing      |
+| `--spacing-xl`          | `#{to-rem(32)}`       | Large spacing           |
+| `--spacing-l`           | `#{to-rem(24)}`       | Large spacing           |
+| `--spacing-m`           | `#{to-rem(16)}`       | Standard spacing        |
+| `--spacing-s`           | `#{to-rem(12)}`       | Small spacing           |
+| `--spacing-xs`          | `#{to-rem(8)}`        | Very small spacing      |
+| `--spacing-2xs`         | `#{to-rem(4)}`        | Tiny spacing            |
 
 ### ECL EU Theme
 
@@ -197,17 +197,17 @@ The token values are read from `src/ecl-ec/global.scss` and `src/ecl-eu/global.s
 | `--color-white`           | `#fff`              | White                   |
 | `--color-black`           | `#000`              | Black                   |
 | `--font-family`           | `Arial, sans-serif` | Default font            |
-| `--font-size`             | `#{rem(16)}`        | Base font size          |
+| `--font-size`             | `#{to-rem(16)}`     | Base font size          |
 | `--font-weight-regular`   | `400`               | Regular font weight     |
 | `--font-weight-bold`      | `700`               | Bold font               |
 | `--line-height-regular`   | `1.5`               | Line height text        |
 | `--line-height-heading`   | `1.2`               | Line height headings    |
-| `--spacing-4xl`           | `#{rem(64)}`        | Largest spacing         |
-| `--spacing-3xl`           | `#{rem(48)}`        | Very large spacing      |
-| `--spacing-2xl`           | `#{rem(40)}`        | Very large spacing      |
-| `--spacing-xl`            | `#{rem(32)}`        | Large spacing           |
-| `--spacing-l`             | `#{rem(24)}`        | Large spacing           |
-| `--spacing-m`             | `#{rem(16)}`        | Standard spacing        |
-| `--spacing-s`             | `#{rem(12)}`        | Small spacing           |
-| `--spacing-xs`            | `#{rem(8)}`         | Very small spacing      |
-| `--spacing-2xs`           | `#{rem(4)}`         | Tiny spacing            |
+| `--spacing-4xl`           | `#{to-rem(64)}`     | Largest spacing         |
+| `--spacing-3xl`           | `#{to-rem(48)}`     | Very large spacing      |
+| `--spacing-2xl`           | `#{to-rem(40)}`     | Very large spacing      |
+| `--spacing-xl`            | `#{to-rem(32)}`     | Large spacing           |
+| `--spacing-l`             | `#{to-rem(24)}`     | Large spacing           |
+| `--spacing-m`             | `#{to-rem(16)}`     | Standard spacing        |
+| `--spacing-s`             | `#{to-rem(12)}`     | Small spacing           |
+| `--spacing-xs`            | `#{to-rem(8)}`      | Very small spacing      |
+| `--spacing-2xs`           | `#{to-rem(4)}`      | Tiny spacing            |

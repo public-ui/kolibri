@@ -1,11 +1,11 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @mixin kol-input-text-theme {
 	.kol-input,
 	.kol-select,
 	.kol-textarea {
 		border: none;
-		margin: rem(1);
+		margin: to-rem(1);
 		outline: none;
 	}
 

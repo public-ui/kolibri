@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/form-field' as *;
@@ -27,7 +27,7 @@
 		}
 
 		&__input {
-			gap: rem(4);
+			gap: to-rem(4);
 
 			&--orientation-horizontal {
 				margin-top: calc(var(--spacing) / 2);
@@ -57,7 +57,7 @@
 
 			&:focus {
 				outline-offset: 2px;
-				outline: var(--color-primary-variant) solid rem(3);
+				outline: var(--color-primary-variant) solid to-rem(3);
 				transition: 200ms outline-offset linear;
 
 				&:hover {

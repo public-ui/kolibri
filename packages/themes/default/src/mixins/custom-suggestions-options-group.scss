@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
 	.kol-custom-suggestions-options-group {
@@ -8,8 +8,8 @@
 		border-color: var(--color-subtle);
 		overflow-y: auto;
 		overflow-x: hidden;
-		max-height: calc($option-height * $visible-options + rem(2));
-		left: rem(-8);
-		right: rem(-8);
+		max-height: calc($option-height * $visible-options + to-rem(2));
+		left: to-rem(-8);
+		right: to-rem(-8);
 	}
 }

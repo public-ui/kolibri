@@ -16,7 +16,7 @@
 @include kol-input-container;
 @include kol-input;
 
-$option-height: rem(40);
+$option-height: to-rem(40);
 $visible-options: var(--visible-options, 5);
 
 @layer kol-component {
@@ -34,11 +34,11 @@ $visible-options: var(--visible-options, 5);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			min-height: rem(50);
+			min-height: to-rem(50);
 		}
 
 		.kol-custom-suggestions-options-group {
-			max-height: calc($option-height * $visible-options + rem(2)) !important;
+			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
 		}
 	}
 }

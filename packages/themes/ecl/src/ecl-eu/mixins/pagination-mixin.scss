@@ -1,18 +1,18 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @mixin kol-pagination-styles {
 	.kol-table-stateful {
 		&__pagination,
 		&__pagination-wrapper {
 			@media (min-width: 1024px) {
-				gap: rem(16);
+				gap: to-rem(16);
 			}
 		}
 	}
 
 	.kol-pagination {
 		.kol-button {
-			--kolibri-spacing: #{rem(4)};
+			--kolibri-spacing: #{to-rem(4)};
 			border-radius: 4px;
 
 			&:focus {
@@ -29,10 +29,10 @@
 				background-color: #fc0;
 				border-color: #fc0;
 				box-shadow:
-					0 rem(2) rem(4) rgb(9 49 142 / 8%),
-					0 0 rem(10) rgb(9 49 142 / 4%),
-					0 rem(4) rem(5) rgb(9 49 142 / 4%),
-					0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
+					0 0 to-rem(10) rgb(9 49 142 / 4%),
+					0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
+					0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 			}
 
 			&:disabled .kol-button__text {
@@ -45,9 +45,9 @@
 				min-width: var(--a11y-min-size);
 				border-radius: 4px;
 				font:
-					normal normal 400 rem(16) / rem(20) Arial,
+					normal normal 400 to-rem(16) / to-rem(20) Arial,
 					sans-serif;
-				padding: rem(12);
+				padding: to-rem(12);
 				background-color: #fc0;
 				color: #171a22;
 			}

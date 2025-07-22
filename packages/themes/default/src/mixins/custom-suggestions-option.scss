@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-custom-suggestions-option-theme($option-height) {
 	.kol-custom-suggestions-option {
@@ -6,7 +6,7 @@
 		align-items: center;
 		min-height: $option-height;
 		line-height: 1;
-		padding: rem(10) rem(12);
+		padding: to-rem(10) to-rem(12);
 
 		&[aria-selected] {
 			color: var(--color-primary-variant);

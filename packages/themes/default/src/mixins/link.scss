@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-link($block-classname) {
 	.#{$block-classname} {

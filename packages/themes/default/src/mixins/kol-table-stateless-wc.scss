@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 @use './kol-table-settings-wc' as *;
 @use './alert-wc' as *;
 @use './pagination-mixin' as *;
@@ -16,7 +16,7 @@
 
 		overflow-x: auto;
 		overflow-y: hidden;
-		padding: rem(8);
+		padding: to-rem(8);
 
 		&__table,
 		&__caption {
@@ -32,7 +32,7 @@
 		}
 
 		&__caption {
-			padding: rem(8) var(--a11y-min-size) rem(8) rem(8);
+			padding: to-rem(8) var(--a11y-min-size) to-rem(8) to-rem(8);
 			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
 		}
 
@@ -51,7 +51,7 @@
 		}
 
 		&__cell {
-			padding: rem(8);
+			padding: to-rem(8);
 
 			&--header {
 				font-weight: normal;
@@ -71,14 +71,14 @@
 
 		&__selection {
 			display: flex;
-			gap: rem(8);
+			gap: to-rem(8);
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
 
 		&__spacer {
 			display: table-row;
-			height: rem(24);
+			height: to-rem(24);
 		}
 
 		&__spacer-line {

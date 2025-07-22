@@ -7,7 +7,7 @@
 	.kol-spin {
 		&__spinner {
 			display: block;
-			padding: rem(2);
+			padding: to-rem(2);
 			position: relative;
 		}
 	}
