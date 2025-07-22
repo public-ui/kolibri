@@ -4,6 +4,7 @@ import KolFormFieldMsgFc from '../FormFieldMsg';
 import KolFormFieldLabelFc from '../FormFieldLabel';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldCounterFc from '../FormFieldCounter';
+import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
 import KolFormFieldTooltipFc from '../FormFieldTooltip';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
@@ -39,7 +40,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
-	counter?: { currentLength: number; currentLengthDebounced: number; maxLength: number };
+	counter?: { currentLength: number; currentLengthDebounced: number; maxLength?: number; hasCounter?: boolean };
 	readOnly?: boolean;
 	touched?: boolean;
 	required?: boolean;
@@ -47,6 +48,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	renderNoTooltip?: boolean;
 	renderNoHint?: boolean;
 	anotherChildren?: JSX.Element | JSX.Element[];
+	maxLength?: number;
 
 	formFieldLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
@@ -88,6 +90,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		counter,
 		readOnly,
 		touched,
+		maxLength,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -140,7 +143,8 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} hideLabel={hideLabel} align={tooltipAlign} badgeText={badgeText} />
 				)}
 			</InputContainer>
-			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
+			{counter ? <KolFormFieldCounterFc {...counter} /> : null}
+			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
 			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideMsg={hideMsg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}

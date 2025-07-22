@@ -62,4 +62,7 @@ export default {
 	'character-limit-hint': 'Es können bis zu {{limit}} Zeichen eingegeben werden.',
 	'character-limit-remaining': 'Es sind noch {{remaining}} Zeichen verfügbar.',
 	'character-limit-exceeded': 'Es sind {{over}} Zeichen zu viel.',
+	'character-counter-current': '{{current}} Zeichen',
+	'character-counter-current-of-max': '{{current}}/{{max}} Zeichen',
+	'character-counter-current-of-max-aria': '{{current}} von {{max}} Zeichen',
 };

@@ -281,4 +281,8 @@ export class InputController extends ControlledInputController implements Watche
 	public hasSoftCharacterLimit() {
 		return typeof this.component.state._maxLength === 'number' && this.component.state._maxLengthBehavior === 'soft';
 	}
+
+	public hasCounter() {
+		return this.component.state._hasCounter === true;
+	}
 }

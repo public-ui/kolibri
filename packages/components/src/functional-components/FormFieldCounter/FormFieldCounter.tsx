@@ -4,39 +4,55 @@ import clsx from 'clsx';
 import { translate } from '../../i18n';
 
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
-	id: string;
 	currentLength: number;
 	currentLengthDebounced: number;
-	maxLength: number;
+	maxLength?: number;
+	hasCounter?: boolean;
 };
 
-const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ id, currentLength, currentLengthDebounced, maxLength }) => {
-	const remainingLive = maxLength - currentLength;
-	const exceededLive = remainingLive < 0;
-	const remainingDebounced = maxLength - currentLengthDebounced;
-	const exceededDebounced = remainingDebounced < 0;
+const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, hasCounter }) => {
+	let visualText: string | undefined;
+	let ariaText: string | undefined;
+	const counterClasses = ['kol-form-field__counter'];
+
+	if (hasCounter === true) {
+		visualText =
+			typeof maxLength === 'number'
+				? translate('kol-character-counter-current-of-max', { placeholders: { current: String(currentLength), max: String(maxLength) } })
+				: translate('kol-character-counter-current', { placeholders: { current: String(currentLength) } });
+
+		ariaText =
+			typeof maxLength === 'number'
+				? translate('kol-character-counter-current-of-max-aria', { placeholders: { current: String(currentLengthDebounced), max: String(maxLength) } })
+				: translate('kol-character-counter-current', { placeholders: { current: String(currentLengthDebounced) } });
+	} else if (typeof maxLength === 'number') {
+		const remainingLive = maxLength - currentLength;
+		const exceededLive = remainingLive < 0;
+		const remainingDebounced = maxLength - currentLengthDebounced;
+		const exceededDebounced = remainingDebounced < 0;
+
+		visualText = exceededLive
+			? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingLive)) } })
+			: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingLive) } });
+
+		ariaText = exceededDebounced
+			? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingDebounced)) } })
+			: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingDebounced) } });
+
+		if (exceededLive) {
+			counterClasses.push('kol-form-field__counter--exceeded');
+		}
+	} else {
+		return null;
+	}
 
 	return (
 		<>
-			<span
-				class={clsx('kol-form-field__counter', {
-					'kol-form-field__counter--exceeded': exceededLive,
-				})}
-				aria-hidden="true"
-				data-testid="input-counter"
-			>
-				{exceededLive
-					? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingLive)) } })
-					: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingLive) } })}
+			<span class={clsx(counterClasses)} aria-hidden="true" data-testid="input-counter">
+				{visualText}
 			</span>
 			<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
-				{exceededDebounced
-					? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingDebounced)) } })
-					: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingDebounced) } })}
-			</span>
-
-			<span id={`${id}-character-limit-hint`} class="visually-hidden">
-				{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}
+				{ariaText}
 			</span>
 		</>
 	);

@@ -62,4 +62,7 @@ export default {
 	'character-limit-hint': 'You can enter up to {{limit}} characters',
 	'character-limit-remaining': 'You have {{remaining}} characters remaining.',
 	'character-limit-exceeded': 'You have {{over}} characters too many.',
+	'character-counter-current': '{{current}} characters',
+	'character-counter-current-of-max': '{{current}}/{{max}} characters',
+	'character-counter-current-of-max-aria': '{{current}} of {{max}} characters',
 };

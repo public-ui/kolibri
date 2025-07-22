@@ -60,17 +60,28 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		props.shortKey = state._shortKey;
 	}
 
+	if ('_maxLength' in state) {
+		props.maxLength = state._maxLength;
+	}
+
 	if (
 		'_currentLength' in state &&
 		typeof state._currentLength === 'number' &&
 		'_currentLengthDebounced' in state &&
-		typeof state._currentLengthDebounced === 'number' &&
-		'_maxLength' in state &&
-		typeof state._maxLength === 'number' &&
-		'_maxLengthBehavior' in state &&
-		state._maxLengthBehavior === 'soft'
+		typeof state._currentLengthDebounced === 'number'
 	) {
-		props.counter = { currentLength: state._currentLength, maxLength: state._maxLength, currentLengthDebounced: state._currentLengthDebounced };
+		const hasCounter = '_hasCounter' in state && state._hasCounter === true;
+		const hasSoftCharacterLimit =
+			'_maxLength' in state && typeof state._maxLength === 'number' && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'soft';
+
+		if (hasCounter || hasSoftCharacterLimit) {
+			props.counter = {
+				currentLength: state._currentLength,
+				currentLengthDebounced: state._currentLengthDebounced,
+				maxLength: state._maxLength,
+				hasCounter: hasCounter,
+			};
+		}
 	}
 
 	return props;
