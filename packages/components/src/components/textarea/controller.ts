@@ -25,7 +25,7 @@ export class TextareaController extends InputIconController implements TextareaW
 	}
 
 	private afterSyncCharCounter = () => {
-		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
+		if (typeof this.component._value === 'string') {
 			this.component.state._currentLength = this.component._value.length;
 			this.component.state._currentLengthDebounced = this.component._value.length;
 		}
