@@ -31,6 +31,7 @@ export * from './has-counter';
 export * from './has-icons-when-expanded';
 export * from './hide-label';
 export * from './hide-msg';
+export * from './hint';
 export * from './href';
 export * from './icons';
 export * from './id';

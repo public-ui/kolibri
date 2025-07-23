@@ -7,6 +7,7 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -27,7 +28,6 @@ export type InputDateType = (typeof inputDateTypeOptions)[number];
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	max: Iso8601 | Date;
 	min: Iso8601 | Date;
 	msg: Stringified<MsgPropType>;
@@ -41,6 +41,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideLabel &
 	PropHideMsg &
+	PropHint &
 	PropHorizontalIcons &
 	PropName &
 	PropReadOnly &
@@ -57,7 +58,6 @@ type RequiredStates = {
 	PropId;
 
 type OptionalStates = {
-	hint: string;
 	max: Iso8601;
 	min: Iso8601;
 	on: InputTypeOnDefault;
@@ -67,6 +67,7 @@ type OptionalStates = {
 	value: Iso8601 | null;
 } & PropAccessKey &
 	PropAutoComplete &
+	PropHint &
 	PropSyncValueBySelector &
 	PropDisabled &
 	PropHideLabel &

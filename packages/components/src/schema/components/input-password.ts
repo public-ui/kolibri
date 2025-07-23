@@ -8,6 +8,7 @@ import type {
 	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -26,7 +27,6 @@ import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -41,6 +41,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropMaxLengthBehavior &
 	PropName &
@@ -58,7 +59,6 @@ type RequiredStates = {
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -71,6 +71,7 @@ type OptionalStates = {
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
 	PropMsg &
@@ -78,6 +79,7 @@ type OptionalStates = {
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
+	PropSyncValueBySelector &
 	PropTouched;
 
 export type InputPasswordProps = Generic.Element.Members<RequiredProps, OptionalProps>;
