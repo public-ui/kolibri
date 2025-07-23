@@ -9,6 +9,7 @@ import { watchHeadingLevel } from '../heading/validation';
 import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { BEM_CLASS_CARD, BEM_CLASS_CARD__CLOSE_BUTTON, BEM_CLASS_CARD__CONTENT, BEM_CLASS_CARD__HEADER, BEM_CLASS_CARD__HEADLINE } from './bem';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -36,18 +37,18 @@ export class KolCard implements CardAPI {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-card">
-				<div class="kol-card__header">
-					<KolHeadingFc class="kol-card__headline" level={this.state._level}>
+			<div class={BEM_CLASS_CARD}>
+				<div class={BEM_CLASS_CARD__HEADER}>
+					<KolHeadingFc class={BEM_CLASS_CARD__HEADLINE} level={this.state._level}>
 						{this.state._label}
 					</KolHeadingFc>
 				</div>
-				<div class="kol-card__content">
+				<div class={BEM_CLASS_CARD__CONTENT}>
 					<slot />
 				</div>
 				{this.state._hasCloser && (
 					<KolButtonWcTag
-						class="kol-card__close-button"
+						class={BEM_CLASS_CARD__CLOSE_BUTTON}
 						data-testid="card-close-button"
 						_hideLabel
 						_icons={{

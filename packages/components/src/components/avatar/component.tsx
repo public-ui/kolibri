@@ -4,6 +4,7 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { formatLabelAsInitials } from './controller';
+import { BEM_CLASS_AVATAR, BEM_CLASS_AVATAR__IMAGE, BEM_CLASS_AVATAR__INITIALS } from './bem';
 
 import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from '../../schema';
 
@@ -17,11 +18,11 @@ import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from
 export class KolAvatarWc implements AvatarAPI {
 	public render(): JSX.Element {
 		return (
-			<div aria-label={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })} class="kol-avatar" role="img">
+			<div aria-label={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })} class={BEM_CLASS_AVATAR} role="img">
 				{this.state._src ? (
-					<img alt="" aria-hidden="true" class="kol-avatar__image" src={this.state._src} />
+					<img alt="" aria-hidden="true" class={BEM_CLASS_AVATAR__IMAGE} src={this.state._src} />
 				) : (
-					<span aria-hidden="true" class="kol-avatar__initials">
+					<span aria-hidden="true" class={BEM_CLASS_AVATAR__INITIALS}>
 						{formatLabelAsInitials(this.state._label.trim())}
 					</span>
 				)}

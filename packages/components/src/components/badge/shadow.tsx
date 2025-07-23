@@ -7,7 +7,7 @@ import { nonce } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
-import clsx from 'clsx';
+import { BEM_CLASS_BADGE__LABEL, BEM_CLASS_BADGE__SMART_BUTTON, genBemBadge } from './bem';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({
@@ -25,7 +25,7 @@ export class KolBadge implements BadgeAPI {
 	private renderSmartButton(props: ButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
-				class="kol-badge__smart-button"
+				class={BEM_CLASS_BADGE__SMART_BUTTON}
 				_ariaControls={this.id}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
@@ -45,15 +45,15 @@ export class KolBadge implements BadgeAPI {
 
 		return (
 			<span
-				class={clsx('kol-badge', {
-					'kol-badge--has-smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
+				class={genBemBadge('kol-badge', {
+					'has-smart-button': hasSmartButton,
 				})}
 				style={{
 					backgroundColor: this.bgColorStr,
 					color: this.colorStr,
 				}}
 			>
-				<KolSpanFc class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
+				<KolSpanFc class={BEM_CLASS_BADGE__LABEL} id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
 				{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
 			</span>
 		);

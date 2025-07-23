@@ -1,10 +1,19 @@
 import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import {
+	BEM_CLASS_DETAILS,
+	BEM_CLASS_DETAILS__CONTENT,
+	BEM_CLASS_DETAILS__HEADING,
+	BEM_CLASS_DETAILS__HEADING_BUTTON,
+	BEM_CLASS_DETAILS__WRAPPER,
+	BEM_CLASS_DETAILS__WRAPPER_ANIMATION,
+} from './bem';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -57,8 +66,6 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	public render(): JSX.Element {
 		const { _open, _label, _disabled, _level } = this.state;
 
-		const rootClass = 'kol-details';
-
 		const props: CollapsibleProps = {
 			id: this.nonce,
 			label: _label,
@@ -66,17 +73,17 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			disabled: _disabled,
 			level: _level,
 			onClick: this.handleOnClick,
-			class: rootClass,
-			HeadingProps: { class: `${rootClass}__heading` },
+			class: BEM_CLASS_DETAILS,
+			HeadingProps: { class: BEM_CLASS_DETAILS__HEADING },
 			HeadingButtonProps: {
 				ref: this.catchRef,
-				class: `${rootClass}__heading-button`,
+				class: BEM_CLASS_DETAILS__HEADING_BUTTON,
 				_icons: 'codicon codicon-chevron-right',
 			},
 			ContentProps: {
-				class: `${rootClass}__content indented-text`,
-				wrapperClass: `${rootClass}__wrapper`,
-				animationClass: `${rootClass}__wrapper-animation`,
+				class: clsx(BEM_CLASS_DETAILS__CONTENT, 'indented-text'),
+				wrapperClass: BEM_CLASS_DETAILS__WRAPPER,
+				animationClass: BEM_CLASS_DETAILS__WRAPPER_ANIMATION,
 			},
 		};
 

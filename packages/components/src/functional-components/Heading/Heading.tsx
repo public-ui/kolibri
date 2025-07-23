@@ -2,6 +2,7 @@ import { type FunctionalComponent as FC, h } from '@stencil/core';
 import clsx from 'clsx';
 import type { JSXBase } from '@stencil/core/internal';
 import type { HeadingLevel } from '../../schema';
+import { BEM_CLASS_HEADING_GROUP, genBemHeading } from './bem';
 
 type HGroupProps = JSXBase.HTMLAttributes<HTMLElement>;
 
@@ -56,9 +57,10 @@ export function getHeadlineTag(level: HeadingLevel | number): HeadlineTag {
  */
 const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADING_LEVEL, ...other }, children) => {
 	const HeadlineTag = getHeadlineTag(level);
+	const headlineClass = genBemHeading('kol-headline', { [HeadlineTag]: true });
 
 	return (
-		<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, classNames)} {...other}>
+		<HeadlineTag class={clsx(headlineClass, classNames)} {...other}>
 			{children}
 		</HeadlineTag>
 	);
@@ -71,8 +73,9 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
  * @returns A VNode representing the secondary headline.
  */
 const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames, ...other }, children) => {
+	const secondaryClass = genBemHeading('kol-headline', { group: true, secondary: true });
 	return (
-		<p class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
+		<p class={clsx(secondaryClass, classNames)} {...other}>
 			{children}
 		</p>
 	);
@@ -95,7 +98,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	if (!secondaryHeadline) {
 		return (
-			<KolHeadlineFc class={clsx(classNames, 'kol-headline--single')} {...headlineProps}>
+			<KolHeadlineFc class={clsx(classNames, genBemHeading('kol-headline', { single: true }))} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 		);
@@ -103,13 +106,13 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	const { class: groupClassNames, ...groupOthers } = HeadingGroupProps;
 	const headlineGroupProps: HGroupProps = {
-		class: clsx('kol-heading-group', groupClassNames),
+		class: clsx(BEM_CLASS_HEADING_GROUP, groupClassNames),
 		...groupOthers,
 	};
 
 	return (
 		<hgroup {...headlineGroupProps}>
-			<KolHeadlineFc class={clsx(classNames, 'kol-headline--group', 'kol-headline--primary')} {...headlineProps}>
+			<KolHeadlineFc class={clsx(classNames, genBemHeading('kol-headline', { group: true, primary: true }))} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 			<KolSecondaryHeadlineFc {...SecondaryHeadlineProps}>{secondaryHeadline}</KolSecondaryHeadlineFc>

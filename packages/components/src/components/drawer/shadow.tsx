@@ -4,8 +4,8 @@ import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import clsx from 'clsx';
 import { KolCardWcTag } from '../../core/component-names';
+import { BEM_CLASS_DRAWER, BEM_CLASS_DRAWER__CONTENT, BEM_CLASS_DRAWER__DIALOG, genBemDrawer } from './bem';
 
 /**
  * @slot - The Content of drawer.
@@ -50,13 +50,16 @@ export class KolDrawer implements DrawerAPI {
 	private getWrapperRef = (el: HTMLKolCardWcElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardWcElement);
 	private renderDialogContent() {
 		const align = this.state._align as string;
+		const wrapperClass = genBemDrawer('kol-drawer', 'wrapper', {
+			[align]: true,
+			open: this.state._open,
+			'is-closing': this.state._open === false,
+		});
+
 		return (
 			<KolCardWcTag
 				ref={this.getWrapperRef}
-				class={clsx(`kol-drawer__wrapper`, `kol-drawer__wrapper--${align}`, {
-					'kol-drawer__wrapper--open': this.state._open,
-					'kol-drawer__wrapper--is-closing': this.state._open === false,
-				})}
+				class={wrapperClass}
 				_label={this.state._label}
 				_hasCloser={this.state._hasCloser}
 				_on={{
@@ -65,7 +68,7 @@ export class KolDrawer implements DrawerAPI {
 					},
 				}}
 			>
-				<div class="kol-drawer__content">
+				<div class={BEM_CLASS_DRAWER__CONTENT}>
 					<slot />
 				</div>
 			</KolCardWcTag>
@@ -80,8 +83,8 @@ export class KolDrawer implements DrawerAPI {
 	};
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-drawer">
-				<dialog aria-label={this.state._label} class="kol-drawer__dialog" ref={this.getRef}>
+			<Host class={BEM_CLASS_DRAWER}>
+				<dialog aria-label={this.state._label} class={BEM_CLASS_DRAWER__DIALOG} ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>

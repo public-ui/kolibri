@@ -16,6 +16,14 @@ import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import {
+	BEM_CLASS_ACCORDION,
+	BEM_CLASS_ACCORDION__CONTENT,
+	BEM_CLASS_ACCORDION__HEADING,
+	BEM_CLASS_ACCORDION__HEADING_BUTTON,
+	BEM_CLASS_ACCORDION__WRAPPER,
+	BEM_CLASS_ACCORDION__WRAPPER_ANIMATION,
+} from './bem';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -69,7 +77,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const { _open, _label, _disabled, _level } = this.state;
-		const rootClass = 'kol-accordion';
+		const rootClass = BEM_CLASS_ACCORDION;
 
 		const props: CollapsibleProps = {
 			id: this.nonce,
@@ -79,15 +87,15 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 			level: _level,
 			onClick: this.handleOnClick,
 			class: rootClass,
-			HeadingProps: { class: `${rootClass}__heading` },
+			HeadingProps: { class: BEM_CLASS_ACCORDION__HEADING },
 			HeadingButtonProps: {
 				ref: this.catchRef,
-				class: `${rootClass}__heading-button`,
+				class: BEM_CLASS_ACCORDION__HEADING_BUTTON,
 			},
 			ContentProps: {
-				class: `${rootClass}__content`,
-				wrapperClass: `${rootClass}__wrapper`,
-				animationClass: `${rootClass}__wrapper-animation`,
+				class: BEM_CLASS_ACCORDION__CONTENT,
+				wrapperClass: BEM_CLASS_ACCORDION__WRAPPER,
+				animationClass: BEM_CLASS_ACCORDION__WRAPPER_ANIMATION,
 			},
 		};
 

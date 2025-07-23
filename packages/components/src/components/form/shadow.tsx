@@ -6,6 +6,7 @@ import { translate } from '../../i18n';
 
 import { KolLinkWcTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
+import { BEM_CLASS_FORM, BEM_CLASS_FORM__ALERT, BEM_CLASS_FORM__LINK, BEM_CLASS_FORM__MANDATORY_FIELDS_HINT } from './bem';
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -63,13 +64,13 @@ export class KolForm implements FormAPI {
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
+			<KolAlertFc class={BEM_CLASS_FORM__ALERT} ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
 				<nav aria-label={this.translateErrorList}>
 					<ul>
 						{errorList?.map((error, index) => (
 							<li key={index}>
 								<KolLinkWcTag
-									class="kol-form__link"
+									class={BEM_CLASS_FORM__LINK}
 									_href=""
 									_label={error.message}
 									_on={{ onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector)) : error.selector }}
@@ -85,14 +86,14 @@ export class KolForm implements FormAPI {
 
 	private renderFormElement(): JSX.Element {
 		return (
-			<form class="kol-form" method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+			<form class={BEM_CLASS_FORM} method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 				{this.state._requiredText === true ? (
 					<p>
-						<div class="kol-form__mandatory-fields-hint">{this.translateFormDescription}</div>
+						<div class={BEM_CLASS_FORM__MANDATORY_FIELDS_HINT}>{this.translateFormDescription}</div>
 					</p>
 				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 					<p>
-						<div class="kol-form__mandatory-fields-hint">{this.state._requiredText}</div>
+						<div class={BEM_CLASS_FORM__MANDATORY_FIELDS_HINT}>{this.state._requiredText}</div>
 					</p>
 				) : null}
 				<slot />
