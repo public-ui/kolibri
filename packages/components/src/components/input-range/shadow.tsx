@@ -10,7 +10,7 @@ import type {
 	InputRangeAPI,
 	InputRangeStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -223,7 +223,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -327,7 +327,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString;
 
 	@State() public state: InputRangeStates = {
-		_autoComplete: 'off',
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -350,7 +349,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 

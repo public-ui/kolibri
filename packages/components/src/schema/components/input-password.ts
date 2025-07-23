@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
 	PropHideLabel,
@@ -20,12 +21,11 @@ import type {
 	PropTouched,
 } from '../props';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
@@ -35,6 +35,7 @@ type OptionalProps = {
 	value: string;
 	msg: Stringified<MsgPropType>;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropPasswordVariant &
 	PropDisabled &
 	PropHasCounter &
@@ -50,7 +51,6 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	currentLength: number;
 	currentLengthDebounced: number;
 	hasValue: boolean;
@@ -66,6 +66,7 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	value: string | null;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropPasswordVariant &
 	PropDisabled &
 	PropHasCounter &

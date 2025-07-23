@@ -13,7 +13,7 @@ import type {
 	InputTextStates,
 	InputTextType,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -149,7 +149,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Shows a character counter for the input element.
@@ -290,7 +290,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
-		_autoComplete: 'off',
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
@@ -317,7 +316,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 

@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AutoCompletePropType,
 	ButtonProps,
 	FocusableElement,
 	HideMsgPropType,
@@ -12,7 +13,6 @@ import type {
 	InputDateStates,
 	InputDateType,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	Iso8601,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -27,11 +27,11 @@ import type {
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import { InputDateController } from './controller';
 
 /**
@@ -177,7 +177,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -303,7 +303,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: InputDateStates = {
-		_autoComplete: 'off',
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -328,7 +327,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 

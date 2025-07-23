@@ -12,6 +12,7 @@ export * from './aria-description';
 export * from './aria-expanded';
 export * from './aria-owns';
 export * from './aria-selected';
+export * from './auto-complete';
 export * from './badge-text';
 export * from './button-callbacks';
 export * from './button-type';
