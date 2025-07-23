@@ -83,6 +83,18 @@ export const initialize = (): void => {
 		metaModeLog('Experimental mode', getExperimentalMode());
 		metaModeLog('Color contrast analysis', getColorContrastAnalysis());
 
+		if (getDocument().body.textContent?.toLowerCase().includes('pig')) {
+			const frames = ['🐖     ', ' 🐖    ', '  🐖   ', '   🐖  ', '    🐖 ', '     🐖'];
+			let step = 0;
+			const interval = setInterval(() => {
+				Log.debug(frames[step % frames.length]);
+				step++;
+				if (step === frames.length * 3) {
+					clearInterval(interval);
+				}
+			}, 200);
+		}
+
 		if (getColorContrastAnalysis()) {
 			const timeout = setTimeout(() => {
 				clearTimeout(timeout);
