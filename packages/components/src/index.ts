@@ -27,3 +27,7 @@ export { BEM_AVATAR } from './components/avatar/bem';
 export { BEM_BADGE } from './components/badge/bem';
 export { BEM_BREADCRUMB } from './components/breadcrumb/bem';
 export { BEM_CARD } from './components/card/bem';
+export { BEM_DRAWER } from './components/drawer/bem';
+export { BEM_FORM } from './components/form/bem';
+export { BEM_HEADING } from './functional-components/Heading/bem';
+export { BEM_IMAGE } from './components/image/bem';

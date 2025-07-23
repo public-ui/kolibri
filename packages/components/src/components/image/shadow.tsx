@@ -3,6 +3,7 @@ import { validateAlt, validateImageSizes, validateImageSrcset, validateImageSour
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import { BEM_CLASS_IMAGE } from './bem';
 @Component({
 	tag: 'kol-image',
 	styleUrls: {
@@ -80,7 +81,7 @@ export class KolImage implements ImageAPI {
 	public render(): JSX.Element {
 		return (
 			<img
-				class="kol-image"
+				class={BEM_CLASS_IMAGE}
 				alt={this.state._alt}
 				loading={this.state._loading}
 				sizes={this.state._sizes}

@@ -1,5 +1,6 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import clsx from 'clsx';
+import { genBemHeading as bem, BEM_CLASS_HEADLINE, BEM_CLASS_HEADING_GROUP } from './bem';
 import type { JSXBase } from '@stencil/core/internal';
 import type { HeadingLevel } from '../../schema';
 
@@ -58,7 +59,7 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
 	const HeadlineTag = getHeadlineTag(level);
 
 	return (
-		<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, classNames)} {...other}>
+		<HeadlineTag class={clsx(BEM_CLASS_HEADLINE, bem('kol-headline', { [HeadlineTag]: true }), classNames)} {...other}>
 			{children}
 		</HeadlineTag>
 	);
@@ -72,7 +73,7 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
  */
 const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames, ...other }, children) => {
 	return (
-		<p class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
+		<p class={clsx(BEM_CLASS_HEADLINE, bem('kol-headline', { group: true, secondary: true }), classNames)} {...other}>
 			{children}
 		</p>
 	);
@@ -95,7 +96,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	if (!secondaryHeadline) {
 		return (
-			<KolHeadlineFc class={clsx(classNames, 'kol-headline--single')} {...headlineProps}>
+			<KolHeadlineFc class={clsx(classNames, bem('kol-headline', { single: true }))} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 		);
@@ -103,13 +104,13 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	const { class: groupClassNames, ...groupOthers } = HeadingGroupProps;
 	const headlineGroupProps: HGroupProps = {
-		class: clsx('kol-heading-group', groupClassNames),
+		class: clsx(BEM_CLASS_HEADING_GROUP, groupClassNames),
 		...groupOthers,
 	};
 
 	return (
 		<hgroup {...headlineGroupProps}>
-			<KolHeadlineFc class={clsx(classNames, 'kol-headline--group', 'kol-headline--primary')} {...headlineProps}>
+			<KolHeadlineFc class={clsx(classNames, bem('kol-headline', { group: true, primary: true }))} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 			<KolSecondaryHeadlineFc {...SecondaryHeadlineProps}>{secondaryHeadline}</KolSecondaryHeadlineFc>
