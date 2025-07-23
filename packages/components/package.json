@@ -148,6 +148,7 @@
 		"dist",
 		"doc",
 		"custom-elements.json",
+		"index.scss",
 		"postinstall.js",
 		"vscode-custom-data.json"
 	]
