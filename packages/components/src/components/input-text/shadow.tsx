@@ -11,7 +11,7 @@ import type {
 	IdPropType,
 	InputTextAPI,
 	InputTextStates,
-	InputTextType,
+	InputTextTypePropType,
 	InputTypeOnDefault,
 	InputTypeOnOff,
 	LabelWithExpertSlotPropType,
@@ -282,7 +282,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: InputTextType = 'text';
+	@Prop() public _type?: InputTextTypePropType = 'text';
 
 	/**
 	 * Defines the value of the input.
@@ -437,7 +437,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_type')
-	public validateType(value?: InputTextType): void {
+	public validateType(value?: InputTextTypePropType): void {
 		this.controller.validateType(value);
 	}
 

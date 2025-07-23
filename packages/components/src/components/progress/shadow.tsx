@@ -1,9 +1,8 @@
-import type { KoliBriProgressVariantType, LabelPropType, ProgressAPI, ProgressStates } from '../../schema';
-import { KoliBriProgressVariantEnum, validateLabel, watchNumber, watchString, watchValidator } from '../../schema';
+import type { LabelPropType, ProgressAPI, ProgressStates, ProgressVariantPropType } from '../../schema';
+import { validateLabel, validateVariantProgress, watchNumber, watchString } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
 const CycleSvg = ({ state }: { state: ProgressStates }) => {
 	const fullCircle = 342;
@@ -140,7 +139,7 @@ export class KolProgress implements ProgressAPI {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriProgressVariantType;
+	@Prop() public _variant?: ProgressVariantPropType;
 
 	@State() public state: ProgressStates = {
 		_max: 100,
@@ -182,8 +181,8 @@ export class KolProgress implements ProgressAPI {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriProgressVariantType): void {
-		watchValidator(this, '_variant', (value) => typeof value === 'string' && VALID_VARIANTS.includes(value), new Set(VALID_VARIANTS), value);
+	public validateVariant(value?: ProgressVariantPropType): void {
+		validateVariantProgress(this, value);
 	}
 
 	public componentWillLoad(): void {

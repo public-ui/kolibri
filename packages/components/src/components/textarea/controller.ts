@@ -1,16 +1,15 @@
-import type { CSSResize, MaxLengthBehaviorPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
 import {
-	cssResizeOptions,
-	validateHasCounter,
-	validateMaxLengthBehavior,
-	validateRows,
-	validateSpellCheck,
+	type MaxLengthBehaviorPropType,
+	type RowsPropType,
+	type SpellCheckPropType,
+	type TextareaProps,
+	type TextareaResizePropType,
+	type TextareaWatches,
+	validateMaxLength,
+	validateResizeTextarea,
 	watchBoolean,
-	watchNumber,
 	watchString,
-	watchValidator,
 } from '../../schema';
-
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
@@ -31,38 +30,31 @@ export class TextareaController extends InputIconController implements TextareaW
 	};
 
 	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this.component, value);
+		this.validateHasCounter(this.component, value);
 	}
 
 	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		validateMaxLengthBehavior(this.component, value);
+		this.validateMaxLengthBehavior(this.component, value);
 	}
 
 	public validateMaxLength(value?: number): void {
-		watchNumber(this.component, '_maxLength', value, {
-			min: 0,
+		validateMaxLength(this.component, value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
 		});
 	}
 
 	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+		this.validatePlaceholder(this.component, value);
 	}
 
 	public validateReadOnly(value?: boolean): void {
 		watchBoolean(this.component, '_readOnly', value);
 	}
 
-	public validateResize(value?: CSSResize): void {
-		watchValidator(
-			this.component,
-			'_resize',
-			(value) => typeof value === 'string' && cssResizeOptions.includes(value),
-			new Set(`String {${cssResizeOptions.join(', ')}`),
-			value,
-			{
-				defaultValue: 'vertical',
-			},
-		);
+	public validateResize(value?: TextareaResizePropType): void {
+		validateResizeTextarea(this.component, value);
 	}
 
 	public validateRequired(value?: boolean): void {
@@ -70,11 +62,11 @@ export class TextareaController extends InputIconController implements TextareaW
 	}
 
 	public validateRows(value?: RowsPropType): void {
-		validateRows(this.component, value);
+		this.validateRows(this.component, value);
 	}
 
 	public validateSpellCheck(value?: SpellCheckPropType): void {
-		validateSpellCheck(this.component, value);
+		this.validateSpellCheck(this.component, value);
 	}
 
 	public validateValue(value?: string): void {

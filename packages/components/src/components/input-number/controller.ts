@@ -1,5 +1,5 @@
 import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, NumberString, SuggestionsPropType } from '../../schema';
-import { validateSuggestions, watchBoolean, watchString, watchValidator } from '../../schema';
+import { validatePlaceholder, validateSuggestions, watchBoolean, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -35,7 +35,7 @@ export class InputNumberController extends InputIconController implements InputN
 	}
 
 	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+		validatePlaceholder(this.component, value);
 	}
 
 	public validateReadOnly(value?: boolean): void {

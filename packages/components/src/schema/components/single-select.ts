@@ -1,29 +1,28 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
-	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
 	PropOptions,
+	PropPlaceholder,
 	PropRequired,
+	PropRows,
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropRows,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
-	hint: string;
-	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	value: StencilUnknown;
@@ -38,7 +37,10 @@ type OptionalProps = {
 	PropRows &
 	PropSyncValueBySelector &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropHint &
+	PropMsg &
+	PropPlaceholder;
 
 type RequiredStates = {
 	options: Option<StencilUnknown>[];
@@ -46,19 +48,19 @@ type RequiredStates = {
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
-	placeholder: string;
 	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropId &
 	PropName &
 	PropRequired &
 	PropRows &
 	PropMsg &
+	PropPlaceholder &
 	PropShortKey &
 	PropTouched;
 

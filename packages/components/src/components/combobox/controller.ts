@@ -1,5 +1,5 @@
 import type { ComboboxWatches, ComboboxProps, SuggestionsPropType } from '../../schema';
-import { watchBoolean, validateSuggestions, watchString } from '../../schema';
+import { validatePlaceholder, watchBoolean, validateSuggestions, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -14,7 +14,7 @@ export class ComboboxController extends InputIconController implements ComboboxW
 	}
 
 	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+		validatePlaceholder(this.component, value);
 	}
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);

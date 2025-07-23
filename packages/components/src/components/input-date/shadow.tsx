@@ -10,7 +10,7 @@ import type {
 	IdPropType,
 	InputDateAPI,
 	InputDateStates,
-	InputDateType,
+	InputDateTypePropType,
 	InputTypeOnDefault,
 	InputTypeOnOff,
 	Iso8601,
@@ -295,7 +295,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type: InputDateType = 'date';
+	@Prop() public _type: InputDateTypePropType = 'date';
 
 	/**
 	 * Defines the value of the input.
@@ -433,7 +433,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_type')
-	public validateType(value?: InputDateType): void {
+	public validateType(value?: InputDateTypePropType): void {
 		this.controller.validateType(value);
 	}
 

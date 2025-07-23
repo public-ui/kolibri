@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	AdjustHeightPropType,
-	CSSResize,
+	TextareaResizePropType,
 	FocusableElement,
 	HideMsgPropType,
 	IconsHorizontalPropType,
@@ -218,7 +218,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
 	 */
-	@Prop() public _resize?: CSSResize = 'vertical';
+	@Prop() public _resize?: TextareaResizePropType = 'vertical';
 
 	/**
 	 * Makes the input element required.
@@ -370,7 +370,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_resize')
-	public validateResize(value?: CSSResize): void {
+	public validateResize(value?: TextareaResizePropType): void {
 		this.controller.validateResize(value);
 	}
 

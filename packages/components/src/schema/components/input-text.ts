@@ -1,18 +1,22 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
-	MsgPropType,
 	PropAccessKey,
+	PropCurrentLength,
 	PropDisabled,
 	PropHasCounter,
+	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMaxLengthBehavior,
+	PropMaxLength,
 	PropMsg,
 	PropName,
+	PropPlaceholder,
 	PropReadOnly,
 	PropRequired,
 	PropShortKey,
@@ -20,21 +24,17 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropTypeInputText,
 } from '../props';
-import type { InputTextType, InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	autoComplete: InputTypeOnOff;
-	hint: string;
-	maxLength: number;
-	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	pattern: string;
-	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
-	type: InputTextType;
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
@@ -51,7 +51,12 @@ type OptionalProps = {
 	PropSpellCheck &
 	PropSuggestions &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropTypeInputText &
+	PropHint &
+	PropMaxLength &
+	PropMsg &
+	PropPlaceholder;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
@@ -59,26 +64,30 @@ type RequiredStates = {
 	currentLengthDebounced: number;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputTextType;
 } & PropHideMsg &
+	PropHasValue &
 	PropId &
-	PropLabelWithExpertSlot;
+	PropLabelWithExpertSlot &
+	PropTypeInputText;
 type OptionalStates = {
 	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
-	placeholder: string;
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropCurrentLength &
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
+	PropMaxLength &
 	PropMsg &
 	PropName &
+	PropPlaceholder &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &

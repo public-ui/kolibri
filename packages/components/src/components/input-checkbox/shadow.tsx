@@ -12,7 +12,7 @@ import type {
 	InputCheckboxAPI,
 	InputCheckboxIconsProp,
 	InputCheckboxStates,
-	InputCheckboxVariant,
+	InputCheckboxVariantPropType,
 	InputTypeOnDefault,
 	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
@@ -252,7 +252,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: InputCheckboxVariant = 'default';
+	@Prop() public _variant?: InputCheckboxVariantPropType = 'default';
 
 	@State() public state: InputCheckboxStates = {
 		_checked: false,
@@ -376,7 +376,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: InputCheckboxVariant): void {
+	public validateVariant(value?: InputCheckboxVariantPropType): void {
 		this.controller.validateVariant(value);
 	}
 

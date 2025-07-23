@@ -26,6 +26,7 @@ import {
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
+	validateHint,
 	validateShortKey,
 	validateTabIndex,
 	validateTooltipAlign,
@@ -97,7 +98,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateHint(value?: string): void {
-		watchString(this.component, '_hint', value);
+		validateHint(this.component, value);
 	}
 
 	public validateId(value?: string): void {

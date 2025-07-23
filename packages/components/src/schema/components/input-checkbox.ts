@@ -1,86 +1,63 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
-	MsgPropType,
+	PropAccessKey,
 	PropChecked,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
+	PropHint,
+	PropIconsInputCheckbox,
 	PropIndeterminate,
 	PropLabelAlign,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
 	PropRequired,
+	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropShortKey,
-	PropAccessKey,
+	PropVariantInputCheckbox,
+	InputCheckboxIconsState,
 } from '../props';
-import type { AnyIconFontClass, InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
-
-export const inputCheckboxVariantOptions = ['button', 'default', 'switch'] as const;
-export type InputCheckboxVariant = (typeof inputCheckboxVariantOptions)[number];
-
-export type InputCheckboxIconsProp =
-	| {
-			checked: AnyIconFontClass;
-			indeterminate?: AnyIconFontClass;
-			unchecked?: AnyIconFontClass;
-	  }
-	| {
-			checked?: AnyIconFontClass;
-			indeterminate: AnyIconFontClass;
-			unchecked?: AnyIconFontClass;
-	  }
-	| {
-			checked?: AnyIconFontClass;
-			indeterminate?: AnyIconFontClass;
-			unchecked: AnyIconFontClass;
-	  };
-
-export type InputCheckboxIconsState = {
-	checked: AnyIconFontClass;
-	indeterminate: AnyIconFontClass;
-	unchecked: AnyIconFontClass;
-};
+import type { InputTypeOnDefault, StencilUnknown } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
-	icons: Stringified<InputCheckboxIconsProp>;
-	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
-	variant: InputCheckboxVariant;
 } & PropAccessKey &
 	PropChecked &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropIconsInputCheckbox &
 	PropIndeterminate &
 	PropName &
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
 	PropTouched &
-	PropLabelAlign;
+	PropLabelAlign &
+	PropVariantInputCheckbox &
+	PropHint &
+	PropMsg;
 
 type RequiredStates = {
 	icons: InputCheckboxIconsState;
 	id: string;
 	value: StencilUnknown;
-	variant: InputCheckboxVariant;
 } & PropChecked &
 	PropHideMsg &
 	PropIndeterminate &
-	PropLabelWithExpertSlot;
+	PropLabelWithExpertSlot &
+	PropVariantInputCheckbox;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	PropMsg &
 	PropName &
 	PropRequired &

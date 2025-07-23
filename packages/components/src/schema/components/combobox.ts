@@ -1,28 +1,28 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
-	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
+	PropPlaceholder,
 	PropRequired,
 	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
-	hint: string;
-	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	value: string;
@@ -35,27 +35,30 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropHint &
+	PropMsg &
+	PropPlaceholder;
 
 type RequiredStates = {
-	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	value: string;
 } & PropId &
+	PropHasValue &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
-	placeholder: string;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropId &
 	PropName &
 	PropRequired &
 	PropMsg &
+	PropPlaceholder &
 	PropShortKey &
 	PropTouched;
 

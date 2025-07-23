@@ -4,45 +4,47 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
+	PropPlaceholder,
 	PropReadOnly,
 	PropRequired,
 	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropTypeInputDate,
 } from '../props';
-import type { InputDateType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriHIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriHIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	msg: Stringified<MsgPropType>;
-	type: InputDateType;
 } & OptionalInputProps<Iso8601 | Date> &
 	PropHideMsg &
-	PropSuggestions;
+	PropSuggestions &
+	PropTypeInputDate;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
-	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputDateType;
 } & PropLabelWithExpertSlot &
+	PropHasValue &
 	PropHideMsg &
-	PropId;
+	PropId &
+	PropTypeInputDate;
 
 type OptionalStates = {
-	hint: string;
 	max: Iso8601;
 	min: Iso8601;
 	on: InputTypeOnDefault;
-	placeholder: string;
 	smartButton: ButtonProps;
 	step: number;
 	value: Iso8601 | null;
@@ -50,9 +52,11 @@ type OptionalStates = {
 	PropSyncValueBySelector &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMsg &
 	PropName &
+	PropPlaceholder &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &

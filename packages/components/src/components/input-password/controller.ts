@@ -1,5 +1,5 @@
 import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff, MaxLengthBehaviorPropType } from '../../schema';
-import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import { validateHasCounter, validateMaxLength, validatePlaceholder, watchBoolean, watchString, watchValidator } from '../../schema';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
@@ -46,7 +46,10 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	public validateMaxLength(value?: number): void {
-		watchNumber(this.component, '_maxLength', value, {
+		validateMaxLength(this.component, value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
 			min: 0,
 		});
 	}
@@ -56,7 +59,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+		validatePlaceholder(this.component, value);
 	}
 
 	public validateReadOnly(value?: boolean): void {

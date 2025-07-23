@@ -1,6 +1,6 @@
 import type {
 	InputDateProps,
-	InputDateType,
+	InputDateTypePropType,
 	InputDateWatches,
 	InputTypeOnDefault,
 	InputTypeOnOff,
@@ -9,7 +9,7 @@ import type {
 	ReadOnlyPropType,
 	SuggestionsPropType,
 } from '../../schema';
-import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchValidator } from '../../schema';
+import { setState, validateReadOnly, validateSuggestions, validateTypeInputDate, watchBoolean, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -36,7 +36,7 @@ export class InputDateController extends InputIconController implements InputDat
 		watchValidator(
 			this.component,
 			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
+			(value: unknown): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
 			new Set(['on | off']),
 			value,
 		);
@@ -46,7 +46,7 @@ export class InputDateController extends InputIconController implements InputDat
 		validateSuggestions(this.component, value);
 	}
 
-	public static tryParseToString(value: Iso8601 | Date | null | undefined, type?: InputDateType, step?: string | number): string | null | undefined {
+	public static tryParseToString(value: Iso8601 | Date | null | undefined, type?: InputDateTypePropType, step?: string | number): string | null | undefined {
 		if (typeof value === 'string' || value === null) {
 			return value;
 		}
@@ -137,7 +137,8 @@ export class InputDateController extends InputIconController implements InputDat
 			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 			{
 				hooks: {
-					afterPatch: (value) => {
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					afterPatch: (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, _key: string): void => {
 						if (typeof value === 'string' && afterPatch) {
 							afterPatch(value);
 						}
@@ -198,14 +199,8 @@ export class InputDateController extends InputIconController implements InputDat
 		this.validateNumber('_step', value);
 	}
 
-	public validateType(value?: InputDateType): void {
-		watchValidator(
-			this.component,
-			'_type',
-			(value): boolean => typeof value === 'string' && inputDateTypeOptions.includes(value),
-			new Set([`String {${inputDateTypeOptions.join(', ')}`]),
-			value,
-		);
+	public validateType(value?: InputDateTypePropType): void {
+		validateTypeInputDate(this.component, value);
 	}
 
 	public validateValue(value?: Iso8601 | Date | null): void {
