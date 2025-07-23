@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -16,11 +17,10 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
 	hint: string;
 	max: number | NumberString;
 	min: number | NumberString;
@@ -29,6 +29,7 @@ type OptionalProps = {
 	step: number | NumberString;
 	value: number | NumberString;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -40,7 +41,6 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	suggestions: W3CInputValue[];
 } & PropId &
 	PropHideMsg &
@@ -53,6 +53,7 @@ type OptionalStates = {
 	step: number;
 	value: number;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
 	KoliBriHIcons &

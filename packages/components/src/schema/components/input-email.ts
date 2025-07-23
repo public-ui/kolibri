@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -20,12 +21,11 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
 	hint: string;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
@@ -35,6 +35,7 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -50,7 +51,6 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	currentLength: number;
@@ -68,6 +68,7 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
 	KoliBriHIcons &

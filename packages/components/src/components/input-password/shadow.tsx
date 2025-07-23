@@ -11,7 +11,7 @@ import type {
 	InputPasswordAPI,
 	InputPasswordStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -159,7 +159,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Shows a character counter for the input element.
@@ -290,7 +290,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Prop() public _variant?: PasswordVariantPropType = 'default';
 
 	@State() public state: InputPasswordStates = {
-		_autoComplete: 'off',
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
@@ -316,7 +315,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 		if (value === 'on') {
 			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
