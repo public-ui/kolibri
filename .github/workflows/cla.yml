@@ -6,10 +6,6 @@ on:
   pull_request_target:
     types: [opened, closed, synchronize]
 
-concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
-  cancel-in-progress: true
-
 jobs:
   cla:
     if: github.repository == 'public-ui/kolibri'
