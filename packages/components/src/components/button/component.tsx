@@ -2,12 +2,15 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	HideLabelPropType,
 	FocusableElement,
 	IconsPropType,
 	InternalButtonAPI,
@@ -336,12 +339,12 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: boolean): void {
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
 		validateAriaExpanded(this, value);
 	}
 
 	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: boolean): void {
+	public validateAriaSelected(value?: AriaSelectedPropType): void {
 		validateAriaSelected(this, value);
 	}
 
@@ -356,7 +359,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
 	}
 

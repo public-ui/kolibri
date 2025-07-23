@@ -1,5 +1,6 @@
-import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff, MaxLengthBehaviorPropType } from '../../schema';
-import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type { AutoCompletePropType, HasCounterPropType, InputPasswordProps, InputPasswordWatches, MaxLengthBehaviorPropType } from '../../schema';
+import { validateHasCounter, watchBoolean, watchNumber, watchString } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
@@ -17,23 +18,17 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	protected afterSyncCharCounter = () => {
-		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
+		if (typeof this.component._value === 'string') {
 			this.component.state._currentLength = this.component._value.length;
 			this.updateCurrentLengthDebounced(this.component._value.length);
 		}
 	};
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		validateHasCounter(this.component, value);
 	}
 

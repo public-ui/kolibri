@@ -11,7 +11,7 @@ import type {
 	InputNumberAPI,
 	InputNumberStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -21,6 +21,9 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
@@ -159,7 +162,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -285,7 +288,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
 
 	@State() public state: InputNumberStates = {
-		_autoComplete: 'off',
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -309,12 +311,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -324,12 +326,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 

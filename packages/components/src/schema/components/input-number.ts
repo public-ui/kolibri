@@ -3,9 +3,12 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -17,19 +20,33 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, NumberString, OptionalInputProps, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
+	max: number | NumberString;
+	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
+	on: InputTypeOnDefault;
 	placeholder: string;
-} & OptionalInputProps<number | NumberString> &
+	smartButton: Stringified<ButtonProps>;
+	step: number | NumberString;
+	value: number | NumberString | null;
+} & PropAccessKey &
+	PropAutoComplete &
+	PropDisabled &
+	PropHideLabel &
 	PropHideMsg &
-	PropSuggestions;
+	PropHint &
+	PropHorizontalIcons &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropSuggestions &
+	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 } & PropId &
@@ -37,7 +54,6 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	hint: string;
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;
@@ -46,8 +62,10 @@ type OptionalStates = {
 	step: number;
 	value: number;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMsg &
 	PropName &

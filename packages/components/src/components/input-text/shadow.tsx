@@ -13,12 +13,16 @@ import type {
 	InputTextStates,
 	InputTextType,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
 	ShortKeyPropType,
+	DisabledPropType,
+	HasCounterPropType,
+	HideLabelPropType,
+	HintPropType,
 	SpellCheckPropType,
 	Stringified,
 	SuggestionsPropType,
@@ -149,7 +153,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Shows a character counter for the input element.
@@ -290,7 +294,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
-		_autoComplete: 'off',
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
@@ -317,7 +320,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
@@ -327,7 +330,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -337,17 +340,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
