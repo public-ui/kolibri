@@ -7,6 +7,14 @@ import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
 import { KolIconTag, KolLinkWcTag } from '../../core/component-names';
+import {
+	BEM_CLASS_BREADCRUMB,
+	BEM_CLASS_BREADCRUMB__ICON,
+	BEM_CLASS_BREADCRUMB__LINK,
+	BEM_CLASS_BREADCRUMB__LIST,
+	BEM_CLASS_BREADCRUMB__LIST_ELEMENT,
+	BEM_CLASS_BREADCRUMB__LIST_ELEMENT_SPAN,
+} from './bem';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -19,13 +27,13 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
 		return (
-			<li class="kol-breadcrumb__list-element" key={index}>
-				{index !== 0 && <KolIconTag class="kol-breadcrumb__icon" _label="" _icons="codicon codicon-chevron-right" />}
+			<li class={BEM_CLASS_BREADCRUMB__LIST_ELEMENT} key={index}>
+				{index !== 0 && <KolIconTag class={BEM_CLASS_BREADCRUMB__ICON} _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
-					<span class="kol-breadcrumb__list-element-span">
+					<span class={BEM_CLASS_BREADCRUMB__LIST_ELEMENT_SPAN}>
 						{link._hideLabel ? (
 							<KolIconTag
-								class="kol-breadcrumb__icon"
+								class={BEM_CLASS_BREADCRUMB__ICON}
 								_label={link._label}
 								_icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'}
 							/>
@@ -34,7 +42,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 						)}
 					</span>
 				) : (
-					<KolLinkWcTag class="kol-breadcrumb__link" _linkVariant="standalone" {...link}></KolLinkWcTag>
+					<KolLinkWcTag class={BEM_CLASS_BREADCRUMB__LINK} _linkVariant="standalone" {...link}></KolLinkWcTag>
 				)}
 			</li>
 		);
@@ -42,8 +50,8 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 
 	public render(): JSX.Element {
 		return (
-			<nav class="kol-breadcrumb" aria-label={this.state._label}>
-				<ul class="kol-breadcrumb__list">
+			<nav class={BEM_CLASS_BREADCRUMB} aria-label={this.state._label}>
+				<ul class={BEM_CLASS_BREADCRUMB__LIST}>
 					{this.state._links.length === 0 && (
 						<li>
 							<KolIconTag class="kol-breadcrumb_icon" _label="" _icons="codicon codicon-home" />…

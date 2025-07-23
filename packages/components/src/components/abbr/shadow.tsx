@@ -3,6 +3,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { AbbrAPI, AbbrStates, LabelPropType } from '../../schema';
 import { validateLabel } from '../../schema';
 import { KolTooltipWcTag } from '../../core/component-names';
+import { BEM_CLASS_ABBR, BEM_CLASS_ABBR__ABBR } from './bem';
 
 /**
  * @slot - The abbreviation (short form).
@@ -17,9 +18,9 @@ import { KolTooltipWcTag } from '../../core/component-names';
 export class KolAbbr implements AbbrAPI {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-abbr">
+			<Host class={BEM_CLASS_ABBR}>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-				<abbr tabIndex={this.state._label ? 0 : undefined}>
+				<abbr class={BEM_CLASS_ABBR__ABBR} tabIndex={this.state._label ? 0 : undefined}>
 					<slot />
 				</abbr>
 				{this.state._label ? <KolTooltipWcTag aria-hidden="true" _label={this.state._label}></KolTooltipWcTag> : null}

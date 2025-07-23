@@ -20,3 +20,10 @@ export type {
 } from './schema';
 export { BEM_ALERT } from './functional-components/Alert/bem';
 export { BEM_ICON } from './components/icon/bem';
+export { BEM_DETAILS } from './components/details/bem';
+export { BEM_ABBR } from './components/abbr/bem';
+export { BEM_ACCORDION } from './components/accordion/bem';
+export { BEM_AVATAR } from './components/avatar/bem';
+export { BEM_BADGE } from './components/badge/bem';
+export { BEM_BREADCRUMB } from './components/breadcrumb/bem';
+export { BEM_CARD } from './components/card/bem';
