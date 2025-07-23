@@ -10,6 +10,7 @@ import {
 	watchString,
 	watchValidator,
 } from '../../schema';
+import type { HasCounterPropType } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -30,7 +31,7 @@ export class TextareaController extends InputIconController implements TextareaW
 		}
 	};
 
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		validateHasCounter(this.component, value);
 	}
 

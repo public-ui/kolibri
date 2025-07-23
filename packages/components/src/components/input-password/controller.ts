@@ -1,4 +1,4 @@
-import type { AutoCompletePropType, InputPasswordProps, InputPasswordWatches, MaxLengthBehaviorPropType } from '../../schema';
+import type { AutoCompletePropType, HasCounterPropType, InputPasswordProps, InputPasswordWatches, MaxLengthBehaviorPropType } from '../../schema';
 import { validateHasCounter, watchBoolean, watchNumber, watchString } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
@@ -28,7 +28,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 		validateAutoComplete(this.component, value);
 	}
 
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		validateHasCounter(this.component, value);
 	}
 

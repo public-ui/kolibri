@@ -7,6 +7,7 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -21,7 +22,6 @@ import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CI
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	max: number | NumberString;
 	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
@@ -33,6 +33,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropName &
 	PropSuggestions &
@@ -46,7 +47,6 @@ type RequiredStates = {
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;
@@ -56,6 +56,7 @@ type OptionalStates = {
 	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMsg &
 	PropName &

@@ -21,6 +21,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropHint,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
@@ -30,7 +31,6 @@ export type InputTextType = (typeof inputTextTypeOptions)[number];
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -45,6 +45,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropId &
 	PropMaxLengthBehavior &
@@ -67,7 +68,6 @@ type RequiredStates = {
 	PropId &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -79,6 +79,7 @@ type OptionalStates = {
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
 	PropMsg &
