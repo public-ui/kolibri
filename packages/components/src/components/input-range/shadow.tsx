@@ -200,7 +200,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	public render(): JSX.Element {
 		const inputsWrapperStyle = {
 			// use number of digits in max value plus some space for the number input arrow buttons
-			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max ?? 1000).length}ch + 2em)`,
+			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max).length}ch + 2em)`,
 		};
 
 		return (
@@ -334,6 +334,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
+		_min: 0,
+		_max: 100,
 	};
 	@State() private _initialValueType: 'number' | 'NumberString' = 'number';
 	@State() private inputHasFocus = false;
