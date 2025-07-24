@@ -33,8 +33,7 @@ export class ScssUpdateTokenTask extends AbstractTask {
 			throw logAndCreateError(`Token "${newToken}" must start with "$".`);
 		}
 
-		// eslint-disable-next-line no-useless-escape
-		this.regExp = new RegExp(`(?<![\w-])${escapeRegExp(token)}(?![\w-])`, 'g');
+		this.regExp = new RegExp(String.raw`(?<![\w-])${escapeRegExp(token)}(?![\w-])`, 'g');
 	}
 
 	public static getInstance(
