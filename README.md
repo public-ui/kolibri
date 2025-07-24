@@ -93,8 +93,10 @@ Bug reports and pull requests are welcome. Please read our [contribution guide](
 
 ## Resources
 
-- [Get Started](https://public-ui.github.io/en/docs/get-started/first-steps)
-- [Contributing](./CONTRIBUTING.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Contributing](./CONTRIBUTING.md)
+- [Get Started](https://public-ui.github.io/en/docs/get-started/first-steps)
 - [Known Issues](http://public-ui.github.io/en/docs/known-issues)
+- [Migration Guide](./MIGRATION.md)
+- [Open Source Process](./docs/OPEN_SOURCE.md)
 - [Security](./docs/SECURITY.md)
