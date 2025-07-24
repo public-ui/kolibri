@@ -4,7 +4,10 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
+	DisabledPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -62,7 +65,7 @@ export class InputController extends ControlledInputController implements Watche
 		validateAdjustHeight(this.component, value);
 	}
 
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		watchBoolean(this.component, '_disabled', value);
 		if (value === true) {
 			a11yHintDisabled();
@@ -84,7 +87,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: () => {
@@ -96,7 +99,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		watchString(this.component, '_hint', value);
 	}
 

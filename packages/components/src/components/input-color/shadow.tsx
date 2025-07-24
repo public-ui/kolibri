@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AutoCompletePropType,
 	ButtonProps,
 	FocusableElement,
 	HideMsgPropType,
@@ -9,7 +10,6 @@ import type {
 	InputColorAPI,
 	InputColorStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -18,12 +18,15 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { nonce } from '../../utils/dev.utils';
 import { InputColorController } from './controller';
 
 /**
@@ -165,7 +168,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -259,7 +262,6 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Prop({ reflect: true }) public _value?: string;
 
 	@State() public state: InputColorStates = {
-		_autoComplete: 'off',
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -282,12 +284,12 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -297,12 +299,12 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 

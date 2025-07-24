@@ -2,6 +2,7 @@
 
 @layer kol-component {
 	.kol-tooltip {
+		contain: layout;
 		display: contents;
 
 		&__floating {

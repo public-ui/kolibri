@@ -10,7 +10,7 @@ import type {
 	InputRangeAPI,
 	InputRangeStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -20,6 +20,9 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
@@ -197,7 +200,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	public render(): JSX.Element {
 		const inputsWrapperStyle = {
 			// use number of digits in max value plus some space for the number input arrow buttons
-			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max ?? 1000).length}ch + 1.5em)`,
+			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max).length}ch + 2em)`,
 		};
 
 		return (
@@ -223,7 +226,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -327,11 +330,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString;
 
 	@State() public state: InputRangeStates = {
-		_autoComplete: 'off',
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
+		_min: 0,
+		_max: 100,
 	};
 	@State() private _initialValueType: 'number' | 'NumberString' = 'number';
 	@State() private inputHasFocus = false;
@@ -350,12 +354,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -365,12 +369,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 

@@ -11,7 +11,7 @@ import type {
 	InputPasswordAPI,
 	InputPasswordStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
+	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -20,6 +20,10 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HasCounterPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
 import { devHint } from '../../schema';
 
@@ -159,7 +163,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Shows a character counter for the input element.
@@ -290,7 +294,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Prop() public _variant?: PasswordVariantPropType = 'default';
 
 	@State() public state: InputPasswordStates = {
-		_autoComplete: 'off',
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
@@ -316,7 +319,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 		if (value === 'on') {
 			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
@@ -329,7 +332,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 	@Watch('_variant')
@@ -343,17 +346,17 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 

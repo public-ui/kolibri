@@ -3,9 +3,11 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -16,12 +18,10 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
-	hint: string;
 	max: number | NumberString;
 	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
@@ -29,9 +29,11 @@ type OptionalProps = {
 	step: number | NumberString;
 	value: number | NumberString;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropName &
 	PropSuggestions &
@@ -40,21 +42,21 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	suggestions: W3CInputValue[];
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;
 	step: number;
 	value: number;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMsg &
 	PropName &

@@ -3,7 +3,7 @@
 exports[`kol-form should render with _requiredText="Pflichtfeld" 1`] = `
 <kol-form>
   <template shadowrootmode="open">
-    <form autocomplete="off" class="kol-form" method="post" novalidate="">
+    <form class="kol-form" method="post" novalidate="">
       <p>
         <div class="kol-form__mandatory-fields-hint">
           Pflichtfeld

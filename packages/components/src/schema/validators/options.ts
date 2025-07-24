@@ -8,7 +8,7 @@ export const validateInputSelectOptions = <T>(option: SelectOption<T>): boolean 
 			option.disabled = option.disabled === true;
 			option.label = `${option.label}`.trim();
 			if (hasEnoughReadableChars(option.label, 3) === false && containsOnlyNumbers(option.label) === false) {
-				a11yHint(`A differing Aria-Label (${option.label}) is not accessible. A differing Aria-Label should consist of at least three readable characters.`);
+				a11yHint(`A differing Aria-Label (${option.label}) is inaccessible. A differing Aria-Label should consist of at least three readable characters.`);
 			}
 			if (Array.isArray((option as Optgroup<T>).options)) {
 				return (

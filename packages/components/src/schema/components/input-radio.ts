@@ -4,6 +4,7 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -19,13 +20,13 @@ import type { PropOrientation } from '../props/orientation';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
 } & PropDisabled &
 	PropHideLabel &
 	PropHideMsg &
+	PropHint &
 	PropName &
 	PropOrientation &
 	PropRadioOptions & // PropRadioOptions becomes required with 2.0
@@ -41,11 +42,11 @@ type RequiredStates = {
 	PropLabelWithExpertSlot &
 	PropOrientation;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
 } & PropDisabled &
 	PropHideLabel &
+	PropHint &
 	PropMsg &
 	PropName &
 	PropRequired &

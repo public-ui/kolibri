@@ -6,6 +6,7 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -23,7 +24,6 @@ import type { ButtonProps } from './button';
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accept: string;
-	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
@@ -31,6 +31,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropMultiple &
 	PropName &
@@ -42,12 +43,12 @@ type OptionalProps = {
 type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
 type OptionalStates = {
 	accept: string;
-	hint: string;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropMsg &
 	PropMultiple &

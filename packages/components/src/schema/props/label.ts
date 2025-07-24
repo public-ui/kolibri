@@ -94,7 +94,7 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 					options.hooks?.afterPatch(value, state, component, key);
 				}
 				if (typeof value === 'string' && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
-					a11yHint(`The heading or label ("${value}") is not accessible. A label should consist of at least three readable characters.`);
+					a11yHint(`The heading or label ("${value}") is inaccessible. A label should consist of at least three readable characters.`);
 				}
 				if (typeof value === 'string' && value.length > 80) {
 					uiUxHint(`A heading or label should not be longer than 80 characters.`);

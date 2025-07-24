@@ -6,6 +6,7 @@ import type {
 	PropDisabled,
 	PropHideMsg,
 	PropHideLabel,
+	PropHint,
 	PropIndeterminate,
 	PropLabelAlign,
 	PropLabelWithExpertSlot,
@@ -47,7 +48,6 @@ export type InputCheckboxIconsState = {
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	icons: Stringified<InputCheckboxIconsProp>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -58,6 +58,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropIndeterminate &
 	PropName &
 	PropRequired &
@@ -76,11 +77,11 @@ type RequiredStates = {
 	PropIndeterminate &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	PropMsg &
 	PropName &
 	PropRequired &

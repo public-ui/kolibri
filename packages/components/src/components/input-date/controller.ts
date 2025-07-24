@@ -1,15 +1,16 @@
 import type {
+	AutoCompletePropType,
 	InputDateProps,
 	InputDateType,
 	InputDateWatches,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	Iso8601,
 	NumberString,
 	ReadOnlyPropType,
 	SuggestionsPropType,
 } from '../../schema';
 import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchValidator } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -32,14 +33,8 @@ export class InputDateController extends InputIconController implements InputDat
 		this.component = component;
 	}
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
