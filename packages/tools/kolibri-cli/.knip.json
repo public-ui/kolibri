@@ -3,7 +3,7 @@
 	"entry": ["src/index.ts"],
 	"ignore": ["src/migrate/runner/tasks/common/Scss*.ts"],
 	"ignoreDependencies": ["@public-ui/components", "loglevel", "mocha"],
-	"project": ["src/**/*.ts"],
+	"project": ["src/**/*.ts", "test/**/*.ts"],
 	"rules": {
 		"classMembers": "warn"
 	}
