@@ -40,12 +40,9 @@ export const SplitButtonBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="flex flex-col gap-4">
-				<KolHeading _label="SplitButton with vertical action list" _level={2} />
-				<div className="flex gap-4">
-					<KolSplitButton _label="Edit" _on={dummyEventHandler}>
-						<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
-					</KolSplitButton>
-				</div>
+				<KolSplitButton _label="Edit" _on={dummyEventHandler}>
+					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
+				</KolSplitButton>
 			</div>
 		</>
 	);
