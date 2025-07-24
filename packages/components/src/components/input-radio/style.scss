@@ -19,6 +19,10 @@
 		cursor: pointer;
 	}
 
+	label.radio-label.is-disabled {
+		cursor: not-allowed;
+	}
+
 	input {
 		appearance: none;
 		border-width: var(--border-width);
@@ -46,6 +50,13 @@
 		background-color: #000;
 	}
 
+	input.is-disabled {
+		pointer-events: none;
+		opacity: 0.5;
+		cursor: not-allowed !important;
+		background-color: var(--color-mute-variant);
+	}
+
 	@media (forced-colors: active) {
 		input:checked:before {
 			/* Give it a visible background in forced colors mode */
@@ -64,6 +75,18 @@
 	fieldset .input-slot {
 		align-items: center;
 		display: flex;
+	}
+
+	.radio-label.hide-label {
+		height: 0;
+		margin: 0;
+		padding: 0;
+		visibility: hidden;
+	}
+
+	.radio-label.is-disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	/* required star is on fieldset legend */

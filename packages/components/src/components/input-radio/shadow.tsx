@@ -49,6 +49,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	private preventLegendLabelFocus = (e: MouseEvent) => {
+		e.preventDefault();
+	};
+
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
@@ -75,6 +79,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		return (
 			<Host class="kol-input-radio">
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
 				<fieldset
 					class={{
 						fieldset: true,
@@ -84,8 +89,25 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						'hidden-error': this._hideError === true,
 						[this.state._orientation]: true,
 					}}
+					onMouseDown={(e) => {
+						const target = e.target as HTMLElement;
+
+						// Prevent clicking on disabled radio/label
+						if (target.closest('label.is-disabled, input.is-disabled') || target.closest('.radio-input-wrapper')?.querySelector('input.is-disabled')) {
+							e.preventDefault();
+							e.stopPropagation();
+							return;
+						}
+
+						// Prevent clicking on non-interactive Elements
+						if (target.closest('.hint, .content, .input-slot')) {
+							e.preventDefault();
+							e.stopPropagation();
+						}
+					}}
 				>
-					<legend class="block w-full mb-1 leading-normal">
+					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+					<legend class="block w-full mb-1 leading-normal" onMouseDown={this.preventLegendLabelFocus}>
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
@@ -130,9 +152,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 										id={customId}
 										checked={selected}
 										name={this.state._name || this.state._id}
-										disabled={this.state._disabled || option.disabled}
+										class={{
+											'is-disabled': this.state._disabled || !!option.disabled,
+										}}
 										required={this.state._required}
-										tabIndex={this.state._tabIndex}
+										tabIndex={this.state._disabled || option.disabled ? -1 : this.state._tabIndex}
 										value={`-${index}`}
 										{...this.controller.onFacade}
 										onChange={this.onChange}
@@ -140,6 +164,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 										onInput={this.onInput}
 										onKeyDown={this.onKeyDown.bind(this)}
 										onFocus={(event) => {
+											if (this.state._disabled || option.disabled) {
+												event.preventDefault();
+												(event.target as HTMLElement).blur(); // Remove focus from disabled elements
+												return;
+											}
 											this.controller.onFacade.onFocus(event);
 											this.inputHasFocus = true;
 										}}
@@ -148,14 +177,19 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 											this.inputHasFocus = false;
 										}}
 									/>
+									{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */}
 									<label
-										class="radio-label"
+										class={{
+											'radio-label': true,
+											'is-disabled': this.state._disabled || !!option.disabled,
+											'hide-label': !!this.state._hideLabel,
+										}}
 										htmlFor={`${customId}`}
-										style={{
-											height: this.state._hideLabel ? '0' : undefined,
-											margin: this.state._hideLabel ? '0' : undefined,
-											padding: this.state._hideLabel ? '0' : undefined,
-											visibility: this.state._hideLabel ? 'hidden' : undefined,
+										onClick={(e) => {
+											if (this.state._disabled || option.disabled) {
+												e.preventDefault();
+												e.stopPropagation();
+											}
 										}}
 									>
 										<span>
