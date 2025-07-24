@@ -8,8 +8,8 @@ export const TextareaWithCounter: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				The sample demonstrates various <code>KolTextarea</code> configurations—contrasting soft vs. hard <code>_maxLength</code> settings and the optional
-				<code>_hasCounter</code>—including one instance without length limits.
+				The sample demonstrates various <code>KolTextarea</code> configurations — contrasting soft vs. hard <code>_maxLength</code> settings and the optional
+				<code>_hasCounter</code> — including one instance without length limits.
 			</p>
 		</SampleDescription>
 
