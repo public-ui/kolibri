@@ -5,18 +5,16 @@ import { KolInputRange } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import { ERROR_MSG, HINT_MSG } from '../../shares/constants';
 
-export const InputRangeBasic: FC = () => (
+export const InputRangeHideLabel: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				KolInputRange renders a pair of range- and number fields wich are synchronized with each other. The sample shows KolInputRange in a form context with
-				all variations and states.
-			</p>
+			<p>This sample demonstrates KolInputRange with hidden labels.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">
 			<div className="black-background">
 				<KolInputRange
+					_hideLabel
 					_min={0}
 					_max={50}
 					_msg={{ _type: 'error', _description: ERROR_MSG }}
@@ -26,6 +24,7 @@ export const InputRangeBasic: FC = () => (
 				/>
 			</div>
 			<KolInputRange
+				_hideLabel
 				_accessKey="F"
 				_min={0}
 				_max={50}
@@ -35,12 +34,12 @@ export const InputRangeBasic: FC = () => (
 				_label="Slider with error"
 				_touched
 			/>
-			<KolInputRange _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Slider" />
-			<KolInputRange _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Slider" />
-			<KolInputRange _msg={{ _type: 'success', _description: 'Success message' }} _label="Slider" />
-			<KolInputRange _disabled _min={0} _max={50} _label="Slider (disabled)" />
-			<KolInputRange _min={0} _max={50} _label="With access key" _accessKey="c" />
-			<KolInputRange _min={0} _max={50} _label="With short key" _shortKey="s" />
+			<KolInputRange _hideLabel _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Slider" />
+			<KolInputRange _hideLabel _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Slider" />
+			<KolInputRange _hideLabel _msg={{ _type: 'success', _description: 'Success message' }} _label="Slider" />
+			<KolInputRange _hideLabel _disabled _min={0} _max={50} _label="Slider (disabled)" />
+			<KolInputRange _hideLabel _min={0} _max={50} _label="With access key" _accessKey="c" />
+			<KolInputRange _hideLabel _min={0} _max={50} _label="With short key" _shortKey="s" />
 		</div>
 	</>
 );

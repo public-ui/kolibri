@@ -166,7 +166,7 @@ ROUTES.set('card/basic', {
 		},
 	},
 });
-ROUTES.set('combobox/basic?noColumns', {
+ROUTES.set('combobox/basic', {
 	snapshot: {
 		skip: true,
 	},
@@ -302,7 +302,7 @@ ROUTES.set('image/basic', {
 		},
 	},
 });
-ROUTES.set('input-checkbox/basic?noColumns', {
+ROUTES.set('input-checkbox/basic', {
 	axe: {
 		skipFailures: true,
 	},
@@ -316,7 +316,7 @@ ROUTES.set('input-checkbox/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-checkbox/button?noColumns', {
+ROUTES.set('input-checkbox/button', {
 	axe: {
 		skipFailures: true,
 	},
@@ -330,7 +330,7 @@ ROUTES.set('input-checkbox/button?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-checkbox/switch?noColumns', {
+ROUTES.set('input-checkbox/switch', {
 	axe: {
 		skipFailures: true,
 	},
@@ -344,7 +344,7 @@ ROUTES.set('input-checkbox/switch?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-color/basic?noColumns', {
+ROUTES.set('input-color/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -355,7 +355,7 @@ ROUTES.set('input-color/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-date/basic?noColumns', {
+ROUTES.set('input-date/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -366,7 +366,7 @@ ROUTES.set('input-date/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-email/basic?noColumns', {
+ROUTES.set('input-email/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -377,7 +377,7 @@ ROUTES.set('input-email/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-file/basic?noColumns', {
+ROUTES.set('input-file/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -388,7 +388,7 @@ ROUTES.set('input-file/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-number/basic?noColumns', {
+ROUTES.set('input-number/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -399,7 +399,7 @@ ROUTES.set('input-number/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-password/basic?noColumns', {
+ROUTES.set('input-password/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -410,7 +410,7 @@ ROUTES.set('input-password/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-password/show-password?noColumns', {
+ROUTES.set('input-password/show-password', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -421,7 +421,7 @@ ROUTES.set('input-password/show-password?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-radio/basic?noColumns', {
+ROUTES.set('input-radio/basic', {
 	axe: {
 		skipFailures: true,
 	},
@@ -435,7 +435,7 @@ ROUTES.set('input-radio/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-radio/horizontal?noColumns', {
+ROUTES.set('input-radio/horizontal', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -446,7 +446,7 @@ ROUTES.set('input-radio/horizontal?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-radio/object?noColumns', {
+ROUTES.set('input-radio/object', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -457,7 +457,7 @@ ROUTES.set('input-radio/object?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-range/basic?noColumns', {
+ROUTES.set('input-range/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -468,7 +468,7 @@ ROUTES.set('input-range/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-text/basic?noColumns', {
+ROUTES.set('input-text/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -599,7 +599,7 @@ ROUTES.set('quote/block', {
 		},
 	},
 });
-ROUTES.set('select/basic?noColumns', {
+ROUTES.set('select/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -629,7 +629,7 @@ ROUTES.set('spin/basic', {
 		},
 	},
 });
-ROUTES.set('single-select/basic?noColumns', {
+ROUTES.set('single-select/basic', {
 	axe: {
 		skipFailures: true,
 	},
@@ -791,7 +791,7 @@ ROUTES.set('textarea/adjust-height', {
 		},
 	},
 });
-ROUTES.set('textarea/basic?noColumns', {
+ROUTES.set('textarea/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 500,

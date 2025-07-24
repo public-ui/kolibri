@@ -1,0 +1,36 @@
+import type { FC } from 'react';
+import React from 'react';
+
+import { KolInputFile } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
+import { ERROR_MSG, HINT_MSG } from '../../shares/constants';
+
+export const InputFileHideLabel: FC = () => (
+	<>
+		<SampleDescription>
+			<p>This sample demonstrates KolInputFile with hidden labels.</p>
+		</SampleDescription>
+
+		<div className="grid gap-4">
+			<div className="black-background">
+				<KolInputFile _hideLabel _label="Upload file (Black background test)" _icons={{ left: { icon: 'codicon codicon-save' } }} _touched />
+			</div>
+			<KolInputFile
+				_hideLabel
+				_required
+				_hint={HINT_MSG}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
+				_label="Upload file (Black background test)"
+				_icons={{ left: { icon: 'codicon codicon-save' } }}
+				_touched
+			/>
+			<KolInputFile _hideLabel _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Upload file" />
+			<KolInputFile _hideLabel _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Upload file" />
+			<KolInputFile _hideLabel _msg={{ _type: 'success', _description: 'Success message' }} _label="Upload file" />
+			<KolInputFile _hideLabel _accessKey="h" _multiple _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Upload file (Multiple)" />
+			<KolInputFile _hideLabel _disabled _label="Upload file (Disabled)" />
+			<KolInputFile _hideLabel _label="With access key" _accessKey="c" />
+			<KolInputFile _hideLabel _label="With short key" _shortKey="s" />
+		</div>
+	</>
+);

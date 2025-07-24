@@ -1,22 +1,26 @@
-import React, { forwardRef } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 import { KolInputRadio } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
+import { ERROR_MSG, HINT_MSG } from '../../shares/constants';
 
-import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
+export const InputRadioHideLabel: FC = () => (
+	<>
+		<SampleDescription>
+			<p>This sample demonstrates KolInputRadio with hidden labels.</p>
+		</SampleDescription>
 
-import type { Components } from '@public-ui/components';
-export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.KolInputRadio>(function InputRadioCases(props, ref) {
-	return (
 		<div className="grid gap-4">
 			<div className="black-background">
 				<KolInputRadio
-					{...props}
+					_hideLabel
 					_options="[{'disabled':true,'label':'Mrs. (disabled)','value':'Mrs.'},{'label':'Mr.'},{'label':'Company','value':'Company'}]"
 					_label="Salutation (Black background test)"
 				/>
 			</div>
 			<KolInputRadio
-				{...props}
+				_hideLabel
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
@@ -25,8 +29,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_label="Salutation (with error)"
 			/>
 			<KolInputRadio
-				{...props}
-				ref={ref}
+				_hideLabel
 				_orientation="horizontal"
 				_required
 				_value="Company"
@@ -34,7 +37,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_label="Salutation (horizontal)"
 			/>
 			<KolInputRadio
-				{...props}
+				_hideLabel
 				_disabled
 				_orientation="horizontal"
 				_required
@@ -45,7 +48,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_label="Salutation (horizontal with error)"
 			/>
 			<KolInputRadio
-				{...props}
+				_hideLabel
 				_disabled
 				_value="Company"
 				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
@@ -53,7 +56,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_touched
 			/>
 			<KolInputRadio
-				{...props}
+				_hideLabel
 				_orientation="horizontal"
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
@@ -68,5 +71,5 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_hint={HINT_MSG}
 			/>
 		</div>
-	);
-});
+	</>
+);
