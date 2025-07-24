@@ -159,6 +159,13 @@ ROUTES.set('button/short-key', {
 		},
 	},
 });
+ROUTES.set('button/expert-slot', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('card/basic', {
 	snapshot: {
 		zoom: {
@@ -167,6 +174,11 @@ ROUTES.set('card/basic', {
 	},
 });
 ROUTES.set('combobox/basic', {
+	snapshot: {
+		skip: true,
+	},
+});
+ROUTES.set('combobox/hide-label', {
 	snapshot: {
 		skip: true,
 	},
@@ -316,6 +328,34 @@ ROUTES.set('input-checkbox/basic', {
 		},
 	},
 });
+ROUTES.set('input-checkbox/align-left', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-checkbox/hide-label', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-checkbox/button', {
 	axe: {
 		skipFailures: true,
@@ -355,7 +395,40 @@ ROUTES.set('input-color/basic', {
 		},
 	},
 });
+ROUTES.set('input-color/hide-label', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-date/basic', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-date/hide-label', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-date/min-max', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -377,7 +450,29 @@ ROUTES.set('input-email/basic', {
 		},
 	},
 });
+ROUTES.set('input-email/hide-label', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-file/basic', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-file/hide-label', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -399,7 +494,29 @@ ROUTES.set('input-number/basic', {
 		},
 	},
 });
+ROUTES.set('input-number/hide-label', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-password/basic', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-password/hide-label', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -422,6 +539,20 @@ ROUTES.set('input-password/show-password', {
 	},
 });
 ROUTES.set('input-radio/basic', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-radio/hide-label', {
 	axe: {
 		skipFailures: true,
 	},
@@ -468,7 +599,29 @@ ROUTES.set('input-range/basic', {
 		},
 	},
 });
+ROUTES.set('input-range/hide-label', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-text/basic', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/hide-label', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -610,6 +763,17 @@ ROUTES.set('select/basic', {
 		},
 	},
 });
+ROUTES.set('select/hide-label', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
 		skip: true,
@@ -630,6 +794,20 @@ ROUTES.set('spin/basic', {
 	},
 });
 ROUTES.set('single-select/basic', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('single-select/hide-label', {
 	axe: {
 		skipFailures: true,
 	},
@@ -792,6 +970,17 @@ ROUTES.set('textarea/adjust-height', {
 	},
 });
 ROUTES.set('textarea/basic', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('textarea/hide-label', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
