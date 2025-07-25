@@ -22,7 +22,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 			<li class="kol-breadcrumb__list-element" key={index}>
 				{index !== 0 && <KolIconTag class="kol-breadcrumb__icon" _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
-					<span class="kol-breadcrumb__list-element-span">
+					<span class="kol-breadcrumb__list-element-span" aria-current="page">
 						{link._hideLabel ? (
 							<KolIconTag
 								class="kol-breadcrumb__icon"
