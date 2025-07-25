@@ -88,3 +88,4 @@ export * from './variant-input-checkbox';
 export * from './variant-progress';
 export * from './variant-quote';
 export * from './variant/spin';
+export * from './width';
