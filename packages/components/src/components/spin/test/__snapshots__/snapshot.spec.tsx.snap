@@ -9,7 +9,7 @@ exports[`kol-spin should render with _show=false 1`] = `
 exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
 <kol-spin _show="" aria-live="polite" class="kol-spin">
   <template shadowrootmode="open">
-    <span class="kol-spin__label">
+    <span class="visually-hidden">
       Loading
     </span>
     <span aria-busy="true" aria-label="Loading" class="kol-spin__spinner kol-spin__spinner--dot" role="alert">
