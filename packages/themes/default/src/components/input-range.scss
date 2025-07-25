@@ -6,5 +6,9 @@
 		&__inputs-wrapper {
 			gap: to-rem(16);
 		}
+
+		&__input--number {
+			text-align: right;
+		}
 	}
 }
