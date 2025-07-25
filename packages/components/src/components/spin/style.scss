@@ -5,6 +5,13 @@
 
 @layer kol-component {
 	.kol-spin {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+
+		&__label {
+			margin-bottom: to-rem(4);
+		}
 		&__spinner {
 			display: block;
 			padding: to-rem(2);

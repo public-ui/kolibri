@@ -39,7 +39,7 @@ register(DEFAULT, defineCustomElements).catch(console.error);
 After registration you can use the elements in your markup:
 
 ```html
-<kol-button _label="Hello World"></kol-button>
+<kol-button _label="Hello World"></kol-button> <kol-spin _show _label="Loading..."></kol-spin>
 ```
 
 Framework-specific adapters are available for improved developer experience.
