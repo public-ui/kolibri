@@ -50,13 +50,17 @@
 		@include kol-button('kol-button');
 
 		&__button {
+			width: auto;
+
 			.kol-button__text {
+				width: auto;
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 			}
 		}
 
 		&__secondary-button {
+			width: var(--a11y-min-size);
 			.kol-button__text {
 				border-top-left-radius: 0;
 				border-bottom-left-radius: 0;
