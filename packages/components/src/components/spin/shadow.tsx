@@ -39,9 +39,7 @@ export class KolSpin implements SpinAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-spin" aria-live="polite">
-				{(this.state._show || this.showToggled) && (
-					<span class="kol-spin__label">{this.state._label ?? (this.state._show ? this.translateActionRunning : this.translateActionDone)}</span>
-				)}
+				{this.state._label && (this.state._show || this.showToggled) && <span class="kol-spin__label">{this.state._label}</span>}
 				{this.state._show ? (
 					<span
 						aria-busy="true"
