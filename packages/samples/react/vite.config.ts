@@ -3,6 +3,7 @@ import { execSync } from 'node:child_process';
 import react from '@vitejs/plugin-react-swc';
 import UnoCSS from '@unocss/vite';
 import process from 'process';
+import path from 'path';
 
 function getGitCommitHash(): string | null {
 	try {
@@ -29,5 +30,8 @@ export default defineConfig({
 	},
 	server: {
 		port: 9191,
+		fs: {
+			allow: [path.resolve(__dirname), ...(process.env.THEME_MODULE ? [path.resolve(process.env.THEME_MODULE)] : [])],
+		},
 	},
 });
