@@ -70,6 +70,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return {
 			state: this.state,
 			component: 'fieldset',
+			disabled: Boolean(this.state._disabled),
 			class: clsx('kol-form-field--radio'),
 			formFieldLabelProps: {
 				component: 'legend',
@@ -92,8 +93,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		);
 	}
 
+	private calculateDisabled(option: RadioOption<StencilUnknown>): boolean {
+		return Boolean(this.state._disabled) || Boolean(option.disabled);
+	}
+
 	private getOptionProps(option: RadioOption<StencilUnknown>, id: string): FieldControlStateWrapperProps {
-		const obj: FieldControlStateWrapperProps = {
+		return {
 			state: this.state,
 			id: id,
 			hint: option.hint,
@@ -102,13 +107,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			fieldControlLabelProps: {
 				showBadge: false,
 			},
+			disabled: this.calculateDisabled(option),
 		};
-
-		if (option.disabled) {
-			obj.disabled = true;
-		}
-
-		return obj;
 	}
 
 	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): RadioStateWrapperProps {
@@ -122,7 +122,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				name: this.state._name || this.state._id,
 				value: `-${index}`,
 				checked: selected,
-				disabled: option.disabled,
+				disabled: this.calculateDisabled(option),
 
 				...this.controller.onFacade,
 				onChange: this.onChange,
