@@ -1,11 +1,13 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { LabelPropType, IconProps } from '../../schema';
+import type { LabelPropType, IconProps, IconWatches } from '../../schema';
 import { validateLabel, watchString } from '../../schema';
 
-export class IconController {
-	protected readonly component: Generic.Element.Component & IconProps;
+type Component = Generic.Element.Component & IconProps;
 
-	public constructor(component: Generic.Element.Component & IconProps) {
+export class IconController implements IconWatches {
+	protected readonly component: Component;
+
+	public constructor(component: Component) {
 		this.component = component;
 	}
 
@@ -14,7 +16,7 @@ export class IconController {
 	}
 
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this.component, value, { required: true });
+		validateLabel(this.component, value, { required: true, defaultValue: '' });
 	}
 
 	public componentWillLoad(): void {
