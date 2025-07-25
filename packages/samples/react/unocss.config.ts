@@ -15,6 +15,7 @@ function convertDynamicClassValueToRem(value: string) {
 
 export default defineConfig({
 	rules: [
+		['list-none', { 'list-style-type': 'none' }],
 		[
 			/^p-(\d+)$/,
 			([, d]) => ({
