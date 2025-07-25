@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
-import { validateShow, validateSpinVariant } from '../../schema';
+import { validateLabel, validateShow, validateSpinVariant } from '../../schema';
 import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
-import type { ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
+import type { LabelPropType, ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
 import clsx from 'clsx';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
@@ -38,19 +38,19 @@ export class KolSpin implements SpinAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-spin">
+			<Host class="kol-spin" aria-live="polite">
+				{this.state._label && (this.state._show || this.showToggled) && <span class="visually-hidden">{this.state._label}</span>}
 				{this.state._show ? (
 					<span
 						aria-busy="true"
-						aria-label={this.translateActionRunning}
-						aria-live="polite"
+						aria-label={this.state._label ?? this.translateActionRunning}
 						class={clsx('kol-spin__spinner', `kol-spin__spinner--${this.state._variant}`)}
 						role="alert"
 					>
 						{renderSpin(this.state._variant)}
 					</span>
 				) : (
-					this.showToggled && <span aria-label={this.translateActionDone} aria-busy="false" aria-live="polite" role="alert"></span>
+					this.showToggled && <span aria-label={this.state._label ?? this.translateActionDone} aria-busy="false" role="alert"></span>
 				)}
 			</Host>
 		);
@@ -63,18 +63,29 @@ export class KolSpin implements SpinAPI {
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label?: LabelPropType;
+
+	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
 	@State() public state: SpinStates = {
 		_variant: 'dot',
+		_label: undefined,
 	};
 
 	@Watch('_show')
 	public validateShow(value?: ShowPropType): void {
 		this.showToggled = this.state._show === true && this._show === false;
 		validateShow(this, value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_variant')
@@ -85,5 +96,6 @@ export class KolSpin implements SpinAPI {
 	public componentWillLoad(): void {
 		this.validateShow(this._show);
 		this.validateVariant(this._variant);
+		this.validateLabel(this._label);
 	}
 }
