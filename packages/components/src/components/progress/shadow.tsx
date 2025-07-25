@@ -1,5 +1,5 @@
 import type { LabelPropType, ProgressAPI, ProgressStates, ProgressVariantPropType } from '../../schema';
-import { validateLabel, validateVariantProgress, watchNumber, watchString } from '../../schema';
+import { validateLabel, validateUnit, validateVariantProgress, watchNumber } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
@@ -166,7 +166,7 @@ export class KolProgress implements ProgressAPI {
 
 	@Watch('_unit')
 	public validateUnit(value?: string): void {
-		watchString(this, '_unit', value);
+		validateUnit(this, value);
 	}
 
 	@Watch('_value')

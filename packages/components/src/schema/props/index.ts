@@ -83,6 +83,7 @@ export * from './tooltip-align';
 export * from './touched';
 export * from './type-input-date';
 export * from './type-input-text';
+export * from './unit';
 export * from './variant-alert';
 export * from './variant-input-checkbox';
 export * from './variant-progress';
