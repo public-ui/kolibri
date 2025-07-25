@@ -66,6 +66,18 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async reset() {
+		this.controller.setFormAssociatedValue('');
+		this.filename = this.translateFilenameText;
+		this.hasFileSelected = false;
+
+		if (this.inputRef) {
+			this.inputRef.value = '';
+		}
+	}
+
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
