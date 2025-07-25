@@ -29,25 +29,26 @@ import { COUNTRY_SUGGESTIONS } from '../shares/country';
 import { useToasterService } from '../hooks/useToasterService';
 
 const formSchema = z.object({
-	date: z.string({ required_error: 'Date is required' }).min(1, 'Date is required'),
-	text: z.string({ required_error: 'Text is required' }).min(10, 'Minimum 10 characters'),
-	email: z.string({ required_error: 'Email is required' }).email('Invalid email address'),
+	date: z.string({ required_error: 'Please enter a date.' }).min(1, 'Please enter a date.'),
+	text: z.string({ required_error: 'Please enter text.' }).min(10, 'Text must be at least 10 characters long.'),
+	email: z.string({ required_error: 'Please enter your email.' }).email('Invalid email address.'),
 	password: z
-		.string({ required_error: 'Password is required' })
-		.min(8, 'Min 8 characters')
-		.regex(/[A-Z]/, 'At least one uppercase letter')
-		.regex(/[0-9]/, 'At least one number'),
-	range: z.number({ required_error: 'Email is required' }).min(30, 'Minimum value is 30'),
-	number: z.number({ required_error: 'Email is required' }).min(1, 'Minimum 1').max(10, 'Maximum 10'),
-	checkbox: z.literal(true, {
-		errorMap: () => ({ message: 'You must accept the terms' }),
-	}),
-	radio: z.string({ required_error: 'Please choose your Gender' }),
-	color: z.string({ required_error: 'Favorite Color is required' }),
-	select: z.string({ required_error: 'Select is required' }),
-	singleSelect: z.string({ required_error: 'Single select is required' }),
-	combobox: z.string({ required_error: 'Country is required' }),
-	textarea: z.string({ required_error: 'Message is required' }),
+		.string({ required_error: 'Please enter a password.' })
+		.min(8, 'Password must be at least 8 characters.')
+		.regex(/[A-Z]/, 'Password must include at least one uppercase letter.')
+		.regex(/[0-9]/, 'Password must include at least one number.'),
+	range: z.number({ required_error: 'Please select a range.' }).min(30, 'Minimum value is 30.'),
+	number: z.number({ required_error: 'Please enter a number.' }).min(1, 'Minimum is 1.').max(10, 'Maximum is 10.'),
+	checkbox: z
+		.boolean({ required_error: 'You must accept the terms and conditions.' })
+		.nullable()
+		.refine((val: unknown) => val === true, { message: 'You must accept the terms and conditions.' }),
+	radio: z.string({ required_error: 'Please select a gender.' }),
+	color: z.string({ required_error: 'Please select a color.' }),
+	select: z.string({ required_error: 'Please select a value.' }),
+	singleSelect: z.string({ required_error: 'Please select a single option.' }),
+	combobox: z.string({ required_error: 'Please select a country.' }),
+	textarea: z.string({ required_error: 'Please enter a message.' }),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -76,11 +77,15 @@ export const SampleFormWithValidation: React.FC = () => {
 	const isTouched = <K extends keyof FormData>(key: K) => !!touchedFields[key];
 
 	const bind = <K extends keyof FormData>(key: K) => ({
+		id: `field-${key as string}`,
 		_name: key,
 		_value: watch(key),
 		_touched: isTouched(key),
 		_msg: err(key),
-		_on: { onInput: (e: any, v: unknown) => setValue(key, v, { shouldTouch: true, shouldValidate: true }), onBlur: () => trigger(key) },
+		_on: {
+			onInput: (_e: any, v: unknown) => setValue(key, v, { shouldTouch: true, shouldValidate: true }),
+			onBlur: () => trigger(key),
+		},
 	});
 
 	const onReset = () => {
@@ -115,8 +120,8 @@ export const SampleFormWithValidation: React.FC = () => {
 									_on={{
 										onClick: (e) => {
 											e.preventDefault();
-											const el = document.getElementById(`field-${key}`);
-											if (el) el.focus();
+											const input = document.getElementById(`field-${key}`);
+											input?.focus();
 										},
 									}}
 								/>
@@ -127,7 +132,7 @@ export const SampleFormWithValidation: React.FC = () => {
 			)}
 
 			<form onSubmit={handleSubmit(dummyClickEventHandler)} noValidate className="grid gap-4 mt-6">
-				<KolInputDate _label="Date" {...bind('date')} _id="field-date" />
+				<KolInputDate _label="Date" {...bind('date')} />
 				<KolInputText _label="Text (≥ 10 chars)" {...bind('text')} />
 				<KolInputEmail _label="Email" {...bind('email')} />
 				<KolInputPassword _label="Password" {...bind('password')} />
