@@ -1,4 +1,5 @@
 export * from './access-key';
+export * from './accept';
 export * from './accordion-callbacks';
 export * from './active';
 export * from './adjust-height';

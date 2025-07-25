@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { InputFileProps, InputFileWatches, RequiredPropType } from '../../schema';
-import { validateRequired, watchBoolean, watchString } from '../../schema';
+import type { AcceptPropType, InputFileProps, InputFileWatches, RequiredPropType } from '../../schema';
+import { validateAccept, validateRequired, watchBoolean } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -13,8 +13,8 @@ export class InputFileController extends InputIconController implements InputFil
 		this.component = component;
 	}
 
-	public validateAccept(value?: string): void {
-		watchString(this.component, '_accept', value);
+	public validateAccept(value?: AcceptPropType): void {
+		validateAccept(this.component, value);
 	}
 
 	public validateMultiple(value?: boolean): void {

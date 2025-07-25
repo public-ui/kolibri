@@ -22,6 +22,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	AcceptPropType,
 } from '../../schema';
 
 import { KolButtonWcTag } from '../../core/component-names';
@@ -247,7 +248,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_accept')
-	public validateAccept(value?: string): void {
+	public validateAccept(value?: AcceptPropType): void {
 		this.controller.validateAccept(value);
 	}
 
