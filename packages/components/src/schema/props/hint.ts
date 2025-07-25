@@ -1,16 +1,18 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { WatchStringOptions } from '../utils';
+
 import { watchString } from '../utils';
 
+/* types */
 export type HintPropType = string;
 
 /**
- * Provides additional hint text for an input element.
+ * Provides additional guidance below the form field.
  */
 export type PropHint = {
 	hint: HintPropType;
 };
 
-export const validateHint = (component: Generic.Element.Component, value?: HintPropType, options: WatchStringOptions = {}): void => {
-	watchString(component, '_hint', value, options);
+/* validator */
+export const validateHint = (component: Generic.Element.Component, value?: HintPropType): void => {
+	watchString(component, '_hint', value);
 };

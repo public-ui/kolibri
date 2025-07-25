@@ -8,6 +8,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	HideLabelPropType,
 	DownloadPropType,
 	FocusableElement,
 	HrefPropType,
@@ -365,7 +366,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
 	}
 

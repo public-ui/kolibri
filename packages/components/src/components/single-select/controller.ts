@@ -1,5 +1,15 @@
-import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue } from '../../schema';
-import { validateOptions, validatePlaceholder, watchBoolean, watchNumber, watchValidator } from '../../schema';
+import type {
+	Option,
+	OptionsPropType,
+	PlaceholderPropType,
+	RequiredPropType,
+	SelectOption,
+	SingleSelectProps,
+	SingleSelectWatches,
+	StencilUnknown,
+	W3CInputValue,
+} from '../../schema';
+import { validateOptions, validatePlaceholder, validateRequired, watchBoolean, watchNumber, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -38,15 +48,15 @@ export class SingleSelectController extends InputIconController implements Singl
 		});
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateValue(value: StencilUnknown): void {
 		watchValidator(this.component, '_value', (v) => v !== undefined, new Set([`StencilUnknown`]), value);
 	}
 
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		validatePlaceholder(this.component, value);
 	}
 

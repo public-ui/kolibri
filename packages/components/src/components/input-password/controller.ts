@@ -1,5 +1,15 @@
-import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff, MaxLengthBehaviorPropType } from '../../schema';
-import { validateHasCounter, validateMaxLength, validatePlaceholder, watchBoolean, watchString, watchValidator } from '../../schema';
+import type {
+	AutoCompletePropType,
+	HasCounterPropType,
+	InputPasswordProps,
+	InputPasswordWatches,
+	MaxLengthBehaviorPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+} from '../../schema';
+import { validateHasCounter, validateMaxLength, validatePlaceholder, validateReadOnly, validateRequired, watchString } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
@@ -17,23 +27,17 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	protected afterSyncCharCounter = () => {
-		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
+		if (typeof this.component._value === 'string') {
 			this.component.state._currentLength = this.component._value.length;
 			this.updateCurrentLengthDebounced(this.component._value.length);
 		}
 	};
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		validateHasCounter(this.component, value);
 	}
 
@@ -47,10 +51,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 
 	public validateMaxLength(value?: number): void {
 		validateMaxLength(this.component, value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
-			min: 0,
+			hooks: { afterPatch: this.afterSyncCharCounter },
 		});
 	}
 
@@ -58,16 +59,16 @@ export class InputPasswordController extends InputIconController implements Inpu
 		watchString(this.component, '_pattern', value);
 	}
 
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		validatePlaceholder(this.component, value);
 	}
 
-	public validateReadOnly(value?: boolean): void {
-		watchBoolean(this.component, '_readOnly', value);
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		validateReadOnly(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateValue(value?: string): void {

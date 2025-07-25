@@ -3,7 +3,6 @@ export * from './button-link-text';
 export * from './callbacks';
 export * from './common';
 export * from './icons';
-export * from './input/control/number';
 export * from './input/iso8601';
 export * from './input/numberString';
 export * from './input/types';

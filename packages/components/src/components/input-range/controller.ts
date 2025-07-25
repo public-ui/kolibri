@@ -1,5 +1,6 @@
-import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, NumberString, SuggestionsPropType } from '../../schema';
-import { validateSuggestions, watchValidator } from '../../schema';
+import type { AutoCompletePropType, InputRangeProps, InputRangeWatches, NumberString, SuggestionsPropType } from '../../schema';
+import { validateSuggestions } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -13,14 +14,8 @@ export class InputRangeController extends InputIconController implements InputRa
 		this.component = component;
 	}
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
 	public validateMax(value?: number | NumberString): void {

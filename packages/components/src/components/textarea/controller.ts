@@ -1,15 +1,28 @@
+import type {
+	HasCounterPropType,
+	MaxLengthBehaviorPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+	RowsPropType,
+	SpellCheckPropType,
+	TextareaProps,
+	TextareaResizePropType,
+	TextareaWatches,
+} from '../../schema';
 import {
-	type MaxLengthBehaviorPropType,
-	type RowsPropType,
-	type SpellCheckPropType,
-	type TextareaProps,
-	type TextareaResizePropType,
-	type TextareaWatches,
+	validateHasCounter,
 	validateMaxLength,
+	validateMaxLengthBehavior,
+	validatePlaceholder,
+	validateReadOnly,
+	validateRequired,
 	validateResizeTextarea,
-	watchBoolean,
+	validateRows,
+	validateSpellCheck,
 	watchString,
 } from '../../schema';
+
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
@@ -29,44 +42,42 @@ export class TextareaController extends InputIconController implements TextareaW
 		}
 	};
 
-	public validateHasCounter(value?: boolean): void {
-		this.validateHasCounter(this.component, value);
+	public validateHasCounter(value?: HasCounterPropType): void {
+		validateHasCounter(this.component, value);
 	}
 
 	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		this.validateMaxLengthBehavior(this.component, value);
+		validateMaxLengthBehavior(this.component, value);
 	}
 
 	public validateMaxLength(value?: number): void {
 		validateMaxLength(this.component, value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
+			hooks: { afterPatch: this.afterSyncCharCounter },
 		});
 	}
 
-	public validatePlaceholder(value?: string): void {
-		this.validatePlaceholder(this.component, value);
+	public validatePlaceholder(value?: PlaceholderPropType): void {
+		validatePlaceholder(this.component, value);
 	}
 
-	public validateReadOnly(value?: boolean): void {
-		watchBoolean(this.component, '_readOnly', value);
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		validateReadOnly(this.component, value);
 	}
 
 	public validateResize(value?: TextareaResizePropType): void {
 		validateResizeTextarea(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateRows(value?: RowsPropType): void {
-		this.validateRows(this.component, value);
+		validateRows(this.component, value);
 	}
 
 	public validateSpellCheck(value?: SpellCheckPropType): void {
-		this.validateSpellCheck(this.component, value);
+		validateSpellCheck(this.component, value);
 	}
 
 	public validateValue(value?: string): void {

@@ -1,37 +1,40 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropAccessKey,
 	PropAdjustHeight,
-	PropCurrentLength,
 	PropDisabled,
 	PropHasCounter,
-	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
-	PropMaxLength,
 	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
-	PropPlaceholder,
 	PropReadOnly,
 	PropRequired,
-	PropResizeTextarea,
 	PropRows,
 	PropShortKey,
 	PropSpellCheck,
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
+
+export const cssResizeOptions = ['vertical', 'none'] as const;
+export type CSSResize = (typeof cssResizeOptions)[number];
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
+	maxLength: number;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
+	placeholder: string;
+	resize: CSSResize;
 	value: string;
 } & PropAccessKey &
 	PropAdjustHeight &
@@ -39,6 +42,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideLabel &
 	PropHideMsg &
+	PropHint &
 	PropHorizontalIcons &
 	PropId &
 	PropMaxLengthBehavior &
@@ -49,26 +53,23 @@ type OptionalProps = {
 	PropShortKey &
 	PropSpellCheck &
 	PropSyncValueBySelector &
-	PropTouched &
-	PropHint &
-	PropMaxLength &
-	PropMsg &
-	PropPlaceholder &
-	PropResizeTextarea;
+	PropTouched;
 
 type RequiredStates = {
 	adjustHeight: boolean;
+	currentLength: number;
 	currentLengthDebounced: number;
+	hasValue: boolean;
+	resize: CSSResize;
 } & PropAdjustHeight &
-	PropCurrentLength &
-	PropHasValue &
 	PropHideMsg &
 	PropId &
-	PropLabelWithExpertSlot &
-	PropResizeTextarea;
+	PropLabelWithExpertSlot;
 
 type OptionalStates = {
+	maxLength: number;
 	on: InputTypeOnDefault;
+	placeholder: string;
 	value: string;
 } & PropAccessKey &
 	KoliBriHIcons &
@@ -76,11 +77,9 @@ type OptionalStates = {
 	PropHasCounter &
 	PropHideLabel &
 	PropHint &
-	PropMaxLength &
 	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
-	PropPlaceholder &
 	PropReadOnly &
 	PropRequired &
 	PropRows &

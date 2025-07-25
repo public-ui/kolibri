@@ -1,11 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropAccessKey,
-	PropCurrentLength,
+	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
-	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -13,10 +13,8 @@ import type {
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMaxLengthBehavior,
-	PropMaxLength,
 	PropMsg,
 	PropName,
-	PropPlaceholder,
 	PropReadOnly,
 	PropRequired,
 	PropShortKey,
@@ -24,22 +22,26 @@ import type {
 	PropTouched,
 } from '../props';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
+	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
+	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
 	value: string;
+	msg: Stringified<MsgPropType>;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropPasswordVariant &
 	PropDisabled &
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropMaxLengthBehavior &
 	PropName &
@@ -47,30 +49,24 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched &
-	PropHint &
-	PropMaxLength &
-	PropMsg &
-	PropPlaceholder;
+	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	currentLength: number;
 	currentLengthDebounced: number;
 	hasValue: boolean;
 } & PropId &
-	PropHasValue &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
+	placeholder: string;
 	smartButton: ButtonProps;
 	value: string | null;
 } & PropAccessKey &
-	PropCurrentLength &
+	PropAutoComplete &
 	PropPasswordVariant &
 	PropDisabled &
 	PropHasCounter &
@@ -78,13 +74,12 @@ type OptionalStates = {
 	PropHint &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
-	PropMaxLength &
 	PropMsg &
 	PropName &
-	PropPlaceholder &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
+	PropSyncValueBySelector &
 	PropTouched;
 
 export type InputPasswordProps = Generic.Element.Members<RequiredProps, OptionalProps>;

@@ -1,15 +1,18 @@
 import type {
+	AutoCompletePropType,
 	InputDateProps,
 	InputDateTypePropType,
 	InputDateWatches,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	Iso8601,
 	NumberString,
 	ReadOnlyPropType,
+	RequiredPropType,
 	SuggestionsPropType,
 } from '../../schema';
-import { setState, validateReadOnly, validateSuggestions, validateTypeInputDate, watchBoolean, watchValidator } from '../../schema';
+import { setState, validateReadOnly, validateRequired, validateSuggestions, watchValidator } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
+import { validateTypeInputDate } from '../../schema/props/type-input-date';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -32,14 +35,8 @@ export class InputDateController extends InputIconController implements InputDat
 		this.component = component;
 	}
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value: unknown): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
@@ -137,8 +134,7 @@ export class InputDateController extends InputIconController implements InputDat
 			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 			{
 				hooks: {
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
-					afterPatch: (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, _key: string): void => {
+					afterPatch: (value) => {
 						if (typeof value === 'string' && afterPatch) {
 							afterPatch(value);
 						}
@@ -191,8 +187,8 @@ export class InputDateController extends InputIconController implements InputDat
 		validateReadOnly(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateStep(value?: number | NumberString): void {

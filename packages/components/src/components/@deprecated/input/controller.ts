@@ -4,7 +4,10 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
+	DisabledPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -15,13 +18,13 @@ import type {
 } from '../../../schema';
 import {
 	a11yHint,
-	a11yHintDisabled,
 	devHint,
 	objectObjectHandler,
 	parseJson,
 	setState,
 	validateAccessKey,
 	validateAdjustHeight,
+	validateDisabled,
 	validateHideMsg,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
@@ -30,7 +33,6 @@ import {
 	validateShortKey,
 	validateTabIndex,
 	validateTooltipAlign,
-	watchBoolean,
 	watchString,
 } from '../../../schema';
 
@@ -63,11 +65,8 @@ export class InputController extends ControlledInputController implements Watche
 		validateAdjustHeight(this.component, value);
 	}
 
-	public validateDisabled(value?: boolean): void {
-		watchBoolean(this.component, '_disabled', value);
-		if (value === true) {
-			a11yHintDisabled();
-		}
+	public validateDisabled(value?: DisabledPropType): void {
+		validateDisabled(this.component, value);
 	}
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this.component, value);
@@ -85,7 +84,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: () => {
@@ -97,7 +96,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		validateHint(this.component, value);
 	}
 

@@ -1,9 +1,9 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -12,17 +12,17 @@ import type {
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
-	PropPlaceholder,
 	PropRequired,
 	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	value: string;
@@ -30,25 +30,24 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropName &
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched &
-	PropHint &
-	PropMsg &
-	PropPlaceholder;
+	PropTouched;
 
 type RequiredStates = {
+	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	value: string;
 } & PropId &
-	PropHasValue &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	on: InputTypeOnDefault;
+	placeholder: string;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
@@ -58,7 +57,6 @@ type OptionalStates = {
 	PropName &
 	PropRequired &
 	PropMsg &
-	PropPlaceholder &
 	PropShortKey &
 	PropTouched;
 

@@ -1,22 +1,20 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropAccessKey,
-	PropCurrentLength,
+	PropAutoComplete,
 	PropDisabled,
-	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
-	PropMaxLength,
 	PropMaxLengthBehavior,
 	PropMsg,
 	PropMultiple,
 	PropName,
-	PropPlaceholder,
 	PropReadOnly,
 	PropRequired,
 	PropShortKey,
@@ -24,20 +22,24 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
+	maxLength: number;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	pattern: string;
+	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropMaxLengthBehavior &
 	PropMultiple &
@@ -47,41 +49,34 @@ type OptionalProps = {
 	PropShortKey &
 	PropSuggestions &
 	PropSyncValueBySelector &
-	PropTouched &
-	PropHint &
-	PropMaxLength &
-	PropMsg &
-	PropPlaceholder;
+	PropTouched;
 
 type RequiredStates = {
+	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	currentLength: number;
 	currentLengthDebounced: number;
 } & PropId &
-	PropHasValue &
-	PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
+	placeholder: string;
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
-	PropCurrentLength &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
 	PropHint &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
-	PropMaxLength &
 	PropMsg &
 	PropMultiple &
 	PropName &
-	PropPlaceholder &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &

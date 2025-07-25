@@ -1,11 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputTextTypePropType,
+	MsgPropType,
 	PropAccessKey,
-	PropCurrentLength,
+	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
-	PropHasValue,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -13,10 +14,8 @@ import type {
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMaxLengthBehavior,
-	PropMaxLength,
 	PropMsg,
 	PropName,
-	PropPlaceholder,
 	PropReadOnly,
 	PropRequired,
 	PropShortKey,
@@ -24,23 +23,27 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropTypeInputText,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
+	maxLength: number;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	pattern: string;
+	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
+	type: InputTextTypePropType;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropId &
 	PropMaxLengthBehavior &
@@ -51,43 +54,34 @@ type OptionalProps = {
 	PropSpellCheck &
 	PropSuggestions &
 	PropSyncValueBySelector &
-	PropTouched &
-	PropTypeInputText &
-	PropHint &
-	PropMaxLength &
-	PropMsg &
-	PropPlaceholder;
+	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	currentLength: number;
 	currentLengthDebounced: number;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
+	type: InputTextTypePropType;
 } & PropHideMsg &
-	PropHasValue &
 	PropId &
-	PropLabelWithExpertSlot &
-	PropTypeInputText;
+	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
+	placeholder: string;
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
-	PropCurrentLength &
+	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
 	PropHint &
 	KoliBriHIcons &
 	PropMaxLengthBehavior &
-	PropMaxLength &
 	PropMsg &
 	PropName &
-	PropPlaceholder &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &

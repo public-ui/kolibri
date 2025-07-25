@@ -1,13 +1,16 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputCheckboxIconsProp,
+	InputCheckboxIconsState,
+	InputCheckboxVariantPropType,
+	MsgPropType,
 	PropAccessKey,
 	PropChecked,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
-	PropIconsInputCheckbox,
 	PropIndeterminate,
 	PropLabelAlign,
 	PropLabelWithExpertSlot,
@@ -17,41 +20,39 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropVariantInputCheckbox,
-	InputCheckboxIconsState,
 } from '../props';
-import type { InputTypeOnDefault, StencilUnknown } from '../types';
+import type { InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
+	icons: Stringified<InputCheckboxIconsProp>;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
+	variant: InputCheckboxVariantPropType;
 } & PropAccessKey &
 	PropChecked &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
-	PropIconsInputCheckbox &
+	PropHint &
 	PropIndeterminate &
 	PropName &
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
 	PropTouched &
-	PropLabelAlign &
-	PropVariantInputCheckbox &
-	PropHint &
-	PropMsg;
+	PropLabelAlign;
 
 type RequiredStates = {
 	icons: InputCheckboxIconsState;
 	id: string;
 	value: StencilUnknown;
+	variant: InputCheckboxVariantPropType;
 } & PropChecked &
 	PropHideMsg &
 	PropIndeterminate &
-	PropLabelWithExpertSlot &
-	PropVariantInputCheckbox;
+	PropLabelWithExpertSlot;
 type OptionalStates = {
 	on: InputTypeOnDefault;
 } & PropAccessKey &
