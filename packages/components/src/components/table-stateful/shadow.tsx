@@ -29,6 +29,7 @@ import {
 	objectObjectHandler,
 	parseJson,
 	setState,
+	validateAllowMultiSort,
 	validateLabel,
 	validatePaginationPosition,
 	validateTableData,
@@ -149,9 +150,7 @@ export class KolTableStateful implements TableAPI {
 
 	@Watch('_allowMultiSort')
 	public validateAllowMultiSort(value?: boolean): void {
-		watchValidator(this, '_allowMultiSort', () => true, new Set(['boolean']), value, {
-			defaultValue: false,
-		});
+		validateAllowMultiSort(this, value, { defaultValue: false });
 	}
 
 	@Watch('_data')
