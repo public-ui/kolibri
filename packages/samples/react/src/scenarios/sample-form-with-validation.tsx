@@ -83,7 +83,7 @@ export const SampleFormWithValidation: React.FC = () => {
 		_touched: isTouched(key),
 		_msg: err(key),
 		_on: {
-			onInput: (_e: any, v: unknown) => setValue(key, v, { shouldTouch: true, shouldValidate: true }),
+			onInput: (_e: any, v: any) => setValue(key, v, { shouldTouch: true, shouldValidate: true }),
 			onBlur: () => trigger(key),
 		},
 	});
@@ -118,7 +118,7 @@ export const SampleFormWithValidation: React.FC = () => {
 									_label={msg}
 									_href={`#field-${key}`}
 									_on={{
-										onClick: (e) => {
+										onClick: (e: Event) => {
 											e.preventDefault();
 											const input = document.getElementById(`field-${key}`);
 											input?.focus();
