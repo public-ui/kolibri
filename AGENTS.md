@@ -226,7 +226,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 
 - Formatting is enforced via **Prettier** with settings defined in `prettier.config.js` (print width 160, single quotes, tabs).
 - `.editorconfig` sets `indent_style = tab` and `max_line_length = 160` for code files. Markdown and YAML files use spaces.
-- ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files.
+- ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files. Lint rules should **not** be disabled via inline comments. Instead, describe the problem and work towards a clean solution.
 - Lists and enumerations in code should be kept in alphanumeric order. This also applies to import specifiers and union type literals.
 - Commit messages follow the **Conventional Commits** specification.
 - See also the [Contributing Guide](CONTRIBUTING.md) for more details on coding conventions and best practices.

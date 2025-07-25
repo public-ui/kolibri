@@ -1,5 +1,14 @@
-import type { AutoCompletePropType, HasCounterPropType, InputPasswordProps, InputPasswordWatches, MaxLengthBehaviorPropType } from '../../schema';
-import { validateHasCounter, watchBoolean, watchNumber, watchString } from '../../schema';
+import type {
+	AutoCompletePropType,
+	HasCounterPropType,
+	InputPasswordProps,
+	InputPasswordWatches,
+	MaxLengthBehaviorPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+} from '../../schema';
+import { validateHasCounter, validateMaxLength, validatePlaceholder, validateReadOnly, validateRequired, watchString } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
@@ -41,8 +50,8 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	public validateMaxLength(value?: number): void {
-		watchNumber(this.component, '_maxLength', value, {
-			min: 0,
+		validateMaxLength(this.component, value, {
+			hooks: { afterPatch: this.afterSyncCharCounter },
 		});
 	}
 
@@ -50,16 +59,16 @@ export class InputPasswordController extends InputIconController implements Inpu
 		watchString(this.component, '_pattern', value);
 	}
 
-	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+	public validatePlaceholder(value?: PlaceholderPropType): void {
+		validatePlaceholder(this.component, value);
 	}
 
-	public validateReadOnly(value?: boolean): void {
-		watchBoolean(this.component, '_readOnly', value);
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		validateReadOnly(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateValue(value?: string): void {

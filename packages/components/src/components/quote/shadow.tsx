@@ -1,5 +1,5 @@
-import type { HrefPropType, KoliBriQuoteVariant, LabelPropType, QuoteAPI, QuoteStates } from '../../schema';
-import { koliBriQuoteVariantOptions, showExpertSlot, validateLabel, watchString, watchValidator } from '../../schema';
+import type { HrefPropType, LabelPropType, QuoteAPI, QuoteStates, QuoteVariantPropType } from '../../schema';
+import { showExpertSlot, validateLabel, validateVariantQuote, watchString } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
@@ -31,7 +31,7 @@ export class KolQuote implements QuoteAPI {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
+	@Prop() public _variant?: QuoteVariantPropType = 'inline';
 
 	@State() public state: QuoteStates = {
 		_href: '', // ⚠ required
@@ -59,14 +59,8 @@ export class KolQuote implements QuoteAPI {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriQuoteVariant): void {
-		watchValidator(
-			this,
-			'_variant',
-			(value) => typeof value === 'string' && koliBriQuoteVariantOptions.includes(value),
-			new Set(koliBriQuoteVariantOptions),
-			value,
-		);
+	public validateVariant(value?: QuoteVariantPropType): void {
+		validateVariantQuote(this, value);
 	}
 
 	public componentWillLoad(): void {
