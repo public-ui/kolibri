@@ -6,6 +6,7 @@ export * from './alert';
 export * from './alert-type';
 export * from './alt';
 export * from './align';
+export * from './allow-multi-sort';
 export * from './alternative-button-link-role';
 export * from './aria-controls';
 export * from './aria-current-value';
