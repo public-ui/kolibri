@@ -1,5 +1,5 @@
-import type { HrefPropType, LabelPropType, QuoteAPI, QuoteStates, QuoteVariantPropType } from '../../schema';
-import { showExpertSlot, validateLabel, validateVariantQuote, watchString } from '../../schema';
+import type { HrefPropType, LabelPropType, QuoteAPI, QuotePropType, QuoteStates, QuoteVariantPropType } from '../../schema';
+import { showExpertSlot, validateLabel, validateQuote, validateVariantQuote, watchString } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
@@ -52,10 +52,8 @@ export class KolQuote implements QuoteAPI {
 	}
 
 	@Watch('_quote')
-	public validateQuote(value?: string): void {
-		watchString(this, '_quote', value, {
-			required: true,
-		});
+	public validateQuote(value?: QuotePropType): void {
+		validateQuote(this, value);
 	}
 
 	@Watch('_variant')
