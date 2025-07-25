@@ -14,8 +14,11 @@
 		}
 
 		&__button {
-			flex-grow: 1;
 			text-align: left;
+		}
+
+		&__secondary-button {
+			width: var(--a11y-min-size);
 		}
 
 		.kol-popover {
