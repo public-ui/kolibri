@@ -5,6 +5,7 @@ import { expect } from '@playwright/test';
 import { Callback } from '../../schema/enums';
 import { KolEvent } from '../../utils/events';
 import { testInputMessage } from '../../e2e/input-msg';
+import { translate } from '../../i18n';
 
 const COMPONENT_NAME = 'kol-input-file';
 const TEST_VALUE: [] = [];
@@ -81,13 +82,16 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			const component = page.locator(COMPONENT_NAME);
+			const filledFileList = await component.evaluate((element: HTMLKolInputFileElement) => element.getValue());
+			expect(filledFileList).not.toEqual({});
+
 			await component.evaluate((element: HTMLKolInputFileElement) => element.reset());
 			await page.waitForChanges();
 
 			const fileList = await component.evaluate((element: HTMLKolInputFileElement) => element.getValue());
-			expect(fileList).toBeNull();
+			expect(fileList).toEqual({});
 			await expect(page.locator('input')).toHaveValue('');
-			await expect(page.locator('.kol-input-container__filename')).toHaveText('kol-filename-text');
+			await expect(page.locator('.kol-input-container__filename')).toHaveText(translate('kol-filename-text'));
 		});
 	});
 });
