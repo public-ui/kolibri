@@ -76,6 +76,7 @@ export * from './spell-check';
 export * from './suggestions';
 export * from './sync-value-by-selector';
 export * from './tab-behavior';
+export * from './tab-index';
 export * from './table-callbacks';
 export * from './table-data';
 export * from './table-data-foot';
