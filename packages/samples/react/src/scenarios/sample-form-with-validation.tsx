@@ -1,5 +1,6 @@
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import type { FieldError } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
@@ -8,7 +9,6 @@ import {
 	KolInputColor,
 	KolInputDate,
 	KolInputEmail,
-	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,
 	KolInputRadio,
@@ -21,34 +21,40 @@ import {
 	KolButton,
 	KolHeading,
 	KolAlert,
+	KolLink,
 } from '@public-ui/react';
 
 import { SampleDescription } from '../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../shares/country';
+import { useToasterService } from '../hooks/useToasterService';
 
 const formSchema = z.object({
-	date: z.string().min(1, 'Date is required'),
-	text: z.string().min(10, 'Minimum 10 characters'),
-	email: z.string().email('Invalid email address'),
-	password: z.string().min(8, 'Min 8 characters').regex(/[A-Z]/, 'At least one uppercase letter').regex(/[0-9]/, 'At least one number'),
-	range: z.number().min(30, 'Minimum value is 30'),
-	number: z.number().min(1, 'Minimum 1').max(10, 'Maximum 10'),
+	date: z.string({ required_error: 'Date is required' }).min(1, 'Date is required'),
+	text: z.string({ required_error: 'Text is required' }).min(10, 'Minimum 10 characters'),
+	email: z.string({ required_error: 'Email is required' }).email('Invalid email address'),
+	password: z
+		.string({ required_error: 'Password is required' })
+		.min(8, 'Min 8 characters')
+		.regex(/[A-Z]/, 'At least one uppercase letter')
+		.regex(/[0-9]/, 'At least one number'),
+	range: z.number({ required_error: 'Email is required' }).min(30, 'Minimum value is 30'),
+	number: z.number({ required_error: 'Email is required' }).min(1, 'Minimum 1').max(10, 'Maximum 10'),
 	checkbox: z.literal(true, {
 		errorMap: () => ({ message: 'You must accept the terms' }),
 	}),
-	radio: z.string().min(1, 'Please choose an option'),
-	color: z.string().min(1, 'Color is required'),
-	select: z.string().min(1, 'Select is required'),
-	singleSelect: z.string().min(1, 'Single select is required'),
-	combobox: z.string().min(1, 'Country is required'),
-	textarea: z.string().min(1, 'Message is required'),
+	radio: z.string({ required_error: 'Please choose your Gender' }),
+	color: z.string({ required_error: 'Favorite Color is required' }),
+	select: z.string({ required_error: 'Select is required' }),
+	singleSelect: z.string({ required_error: 'Single select is required' }),
+	combobox: z.string({ required_error: 'Country is required' }),
+	textarea: z.string({ required_error: 'Message is required' }),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 export const SampleFormWithValidation: React.FC = () => {
+	const { dummyClickEventHandler } = useToasterService();
 	const {
-		register,
 		handleSubmit,
 		formState: { errors, touchedFields },
 		reset,
@@ -70,17 +76,12 @@ export const SampleFormWithValidation: React.FC = () => {
 	const isTouched = <K extends keyof FormData>(key: K) => !!touchedFields[key];
 
 	const bind = <K extends keyof FormData>(key: K) => ({
+		_name: key,
 		_value: watch(key),
 		_touched: isTouched(key),
 		_msg: err(key),
-		onInput: (e: any) => setValue(key, e.target?.value, { shouldTouch: true, shouldValidate: true }),
-		onBlur: () => trigger(key),
+		_on: { onInput: (e: any, v: unknown) => setValue(key, v, { shouldTouch: true, shouldValidate: true }), onBlur: () => trigger(key) },
 	});
-
-	const onSubmit: SubmitHandler<FormData> = (data) => {
-		console.log('Submitted:', data);
-		alert('Form submitted successfully!');
-	};
 
 	const onReset = () => {
 		reset(undefined, {
@@ -90,9 +91,9 @@ export const SampleFormWithValidation: React.FC = () => {
 		});
 	};
 
-	const allErrors = Object.values(errors)
-		.map((e) => e?.message)
-		.filter(Boolean);
+	const allErrors = Object.entries(errors)
+		.map(([key, value]) => [key, (value as FieldError).message] as const)
+		.filter(([, msg]) => Boolean(msg));
 
 	return (
 		<section className="w-full max-w-3xl mx-auto p-6">
@@ -104,17 +105,29 @@ export const SampleFormWithValidation: React.FC = () => {
 			</SampleDescription>
 
 			{allErrors.length > 0 && (
-				<KolAlert _type="error" _label="Please fix the following:" _alert>
+				<KolAlert _type="error" _label="Please fix the following:" _alert _variant="card">
 					<ul className="list-disc pl-5">
-						{allErrors.map((msg, i) => (
-							<li key={i}>{msg}</li>
+						{allErrors.map(([key, msg], i) => (
+							<li key={i}>
+								<KolLink
+									_label={msg}
+									_href={`#field-${key}`}
+									_on={{
+										onClick: (e) => {
+											e.preventDefault();
+											const el = document.getElementById(`field-${key}`);
+											if (el) el.focus();
+										},
+									}}
+								/>
+							</li>
 						))}
 					</ul>
 				</KolAlert>
 			)}
 
-			<form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-4 mt-6">
-				{/* <KolInputDate _label="Date" {...bind('date')} /> */}
+			<form onSubmit={handleSubmit(dummyClickEventHandler)} noValidate className="grid gap-4 mt-6">
+				<KolInputDate _label="Date" {...bind('date')} _id="field-date" />
 				<KolInputText _label="Text (≥ 10 chars)" {...bind('text')} />
 				<KolInputEmail _label="Email" {...bind('email')} />
 				<KolInputPassword _label="Password" {...bind('password')} />

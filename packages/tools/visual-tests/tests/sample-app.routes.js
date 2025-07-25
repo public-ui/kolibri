@@ -1026,6 +1026,17 @@ ROUTES.set('scenarios/static-form', {
 		},
 	},
 });
+ROUTES.set('scenarios/sample-form-with-validation', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/disabled-interactive-scenario', {
 	axe: {
 		skipFailures: true,
