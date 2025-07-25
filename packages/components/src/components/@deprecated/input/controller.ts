@@ -31,10 +31,10 @@ import {
 	validateMsg,
 	validateHint,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
 	watchString,
 } from '../../../schema';
+import { validateTabIndex } from '../../../schema/props/tab-index';
 
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
