@@ -72,4 +72,22 @@ test.describe(COMPONENT_NAME, () => {
 			});
 		});
 	});
+
+	test.describe('reset()', () => {
+		test('should clear the selected files and filename text', async ({ page }) => {
+			await page.setContent(`<kol-input-file _label="Input"></kol-input-file>`);
+
+			await fillAction(page);
+			await page.waitForChanges();
+
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolInputFileElement) => element.reset());
+			await page.waitForChanges();
+
+			const fileList = await component.evaluate((element: HTMLKolInputFileElement) => element.getValue());
+			expect(fileList).toBeNull();
+			await expect(page.locator('input')).toHaveValue('');
+			await expect(page.locator('.kol-input-container__filename')).toHaveText('kol-filename-text');
+		});
+	});
 });
