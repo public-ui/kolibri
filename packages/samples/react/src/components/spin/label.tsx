@@ -17,7 +17,7 @@ export const SpinLabel: FC = () => {
 				<p>This sample shows KolSpin with a label.</p>
 			</SampleDescription>
 
-			<KolSpin _show={show} _label="Loading data..." />
+			<KolSpin _show={show} _label={show ? 'Loading data...' : 'Data loaded.'} />
 		</>
 	);
 };
