@@ -11,7 +11,6 @@
 
 @layer kol-component {
 	.kol-select {
-		font-size: rem(16);
 		width: 100%;
 
 		&:not(:disabled) {
@@ -32,7 +31,7 @@
 
 		/* needed hack for vertical alignment */
 		&[multiple] option {
-			padding: calc((var(--a11y-min-size) - rem(16)) / 2) 0.5em;
+			padding: calc((var(--a11y-min-size) - to-rem(16)) / 2) 0.5em;
 		}
 	}
 }

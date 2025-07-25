@@ -3,8 +3,6 @@
 
 @layer kol-component {
 	.kol-progress {
-		font-size: rem(16);
-
 		&__bar {
 			display: grid;
 			grid-template-columns: 1fr auto;

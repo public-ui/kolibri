@@ -1,10 +1,8 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @mixin kol-button($block-classname) {
 	.#{$block-classname} {
 		$root: &;
-
-		font-family: var(--font-family);
 
 		appearance: none;
 		outline: none;
@@ -12,7 +10,7 @@
 
 		&:focus {
 			outline-offset: -4px;
-			outline: var(--text-focus-outline-color) solid rem(2);
+			outline: var(--text-focus-outline-color) solid to-rem(2);
 		}
 
 		--text-focus-outline-color: var(--color-black);

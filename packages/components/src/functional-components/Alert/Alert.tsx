@@ -9,11 +9,38 @@ import AlertIcon from '../AlertIcon';
 import KolHeadingFc from '../Heading';
 import { genBemAlert as bem, BEM_CLASS_ALERT__CLOSER, BEM_CLASS_ALERT__CONTENT } from './bem';
 
+const translateCloseAlert = translate('kol-close-alert');
+
 export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	Partial<Omit<InternalAlertProps, 'on'>> & {
 		onCloserClick?: () => void;
 		onAlertTimeout?: () => void;
 	};
+
+/**
+ * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
+ * - https://googlechrome.github.io/samples/vibration/
+ * - Ongoing discussion: https://github.com/public-ui/kolibri/issues/7191
+ * @todo Move side-effect out of render-function to avoid multiple incarnations.
+ */
+const vibrateOnError = (): void => {
+	if (typeof navigator === 'undefined' || typeof navigator.vibrate !== 'function') {
+		return;
+	}
+	const ua = navigator.userActivation;
+	const hasGesture = ua?.isActive || ua?.hasBeenActive;
+	if (!hasGesture) {
+		return;
+	}
+	if (!matchMedia('(any-pointer: coarse)').matches) {
+		return;
+	}
+	try {
+		navigator.vibrate([100, 75, 100, 75, 100]);
+	} catch {
+		/* no-op */
+	}
+};
 
 const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	const {
@@ -30,15 +57,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	} = props;
 
 	if (alert) {
-		/**
-		 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
-		 * - https://googlechrome.github.io/samples/vibration/
-		 * - Ongoing discussion: https://github.com/public-ui/kolibri/issues/7191
-		 * @todo Move side-effect out of render-function to avoid multiple incarnations.
-		 */
-		if (navigator.userActivation?.hasBeenActive) {
-			navigator?.vibrate?.([100, 75, 100, 75, 100]);
-		}
+		vibrateOnError();
 
 		setTimeout(() => {
 			onAlertTimeout?.();
@@ -64,7 +83,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	};
 
 	return (
-		<div {...rootProps}>
+		<div {...rootProps} data-testid="alert">
 			<div class="kol-alert__container">
 				<AlertIcon label={label} type={type} />
 				<div class="kol-alert__container-content">
@@ -90,7 +109,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 								icon: 'codicon codicon-close',
 							},
 						}}
-						_label={translate('kol-close-alert')}
+						_label={translateCloseAlert}
 						_on={{ onClick: onCloserClick }}
 						_tooltipAlign="left"
 					/>

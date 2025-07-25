@@ -1,8 +1,7 @@
-@use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 
-@layer kol-component {
-	.kol-headline {
-		font-size: rem(16);
+.kol-headline {
+	&--secondary {
+		margin: 0;
 	}
 }

@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-alert {
 	display: block;
@@ -13,7 +13,6 @@
 @mixin kol-alert-theme {
 	.kol-alert {
 		$root: &;
-		font-family: var(--font-family);
 
 		display: flex;
 		width: 100%;
@@ -27,7 +26,7 @@
 		&--variant-card {
 			border-radius: var(--border-radius);
 			border: var(--border-width) solid var(--alert-accent-color);
-			filter: drop-shadow(0 rem(2) rem(4) rgba(8, 35, 48, 0.24));
+			filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
 			flex-direction: column;
 		}
 
@@ -57,18 +56,18 @@
 			place-items: center;
 
 			@at-root #{$root}--variant-card & {
-				padding: rem(8) rem(16);
+				padding: to-rem(8) to-rem(16);
 				background-color: var(--alert-accent-color);
 			}
 		}
 
 		&__container-content {
 			display: grid;
-			gap: rem(4);
+			gap: to-rem(4);
 
 			@at-root #{$root}--variant-card & {
 				width: 100%;
-				min-height: rem(20);
+				min-height: to-rem(20);
 			}
 		}
 
@@ -91,7 +90,7 @@
 			}
 
 			.kol-icon {
-				font-size: rem(19.2);
+				font-size: to-rem(19.2);
 			}
 		}
 
@@ -105,7 +104,7 @@
 				width: 100%;
 				color: var(--color-light);
 				display: flex;
-				font-size: rem(20);
+				font-size: to-rem(20);
 				line-height: 1;
 			}
 		}
@@ -115,7 +114,7 @@
 			padding: 0;
 
 			@at-root #{$root}:not(#{$root}--type-default) & {
-				font-size: rem(20);
+				font-size: to-rem(20);
 			}
 
 			@at-root #{$root}--variant-msg & {
@@ -125,13 +124,13 @@
 
 			@at-root #{$root}--variant-card & {
 				justify-self: right;
-				margin-top: rem(-4);
+				margin-top: to-rem(-4);
 			}
 		}
 
 		&__content {
 			@at-root #{$root}--variant-card & {
-				padding: rem(16);
+				padding: to-rem(16);
 			}
 		}
 	}

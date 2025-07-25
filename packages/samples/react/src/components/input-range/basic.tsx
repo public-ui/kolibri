@@ -14,6 +14,6 @@ export const InputRangeBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputRangeVariants} />
+		<FormWrap RefComponent={InputRangeVariants} showButtons={false} />
 	</>
 );

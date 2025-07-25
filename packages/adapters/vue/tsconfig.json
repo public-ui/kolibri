@@ -23,6 +23,5 @@
 		"strict": false
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx"],
-	"compileOnSave": false,
-	"buildOnSave": false
+	"exclude": ["node_modules", "dist"]
 }

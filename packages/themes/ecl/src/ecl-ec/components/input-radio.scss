@@ -1,13 +1,9 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/required' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	@include kol-alert-theme;
 
 	/**
@@ -43,10 +39,10 @@
 
 	.kol-form-field {
 		border: 0;
-		gap: rem(8);
+		gap: to-rem(8);
 		flex-wrap: wrap;
 		align-items: flex-start;
-		padding: 0 rem(14) rem(10) rem(14);
+		padding: 0 to-rem(14) to-rem(10) to-rem(14);
 
 		&__label {
 			color: var(--color-grey);
@@ -62,7 +58,7 @@
 		}
 
 		&__input {
-			gap: rem(8);
+			gap: to-rem(8);
 		}
 
 		&__msg {
@@ -75,7 +71,7 @@
 	}
 
 	.kol-field-control {
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	.kol-input {

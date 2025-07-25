@@ -3,8 +3,6 @@
 
 @layer kol-component {
 	.kol-skip-nav {
-		font-size: rem(16);
-
 		&__list {
 			display: grid;
 			list-style: none;
@@ -16,7 +14,7 @@
 		}
 
 		.kol-link {
-			left: rem(-99999);
+			left: to-rem(-99999);
 			overflow: hidden;
 			position: absolute;
 			z-index: 9999999;

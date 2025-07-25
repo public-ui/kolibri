@@ -5,16 +5,17 @@ enum KolEvent {
 	changePageSize = 'kolChangePageSize',
 	click = 'kolClick',
 	close = 'kolClose',
+	create = 'kolCreate',
 	focus = 'kolFocus',
 	input = 'kolInput',
 	mousedown = 'kolMousedown',
 	reset = 'kolReset',
 	select = 'kolSelect',
 	selectionChange = 'kolSelectionChange',
+	settingsChange = 'settingsChange',
 	sort = 'kolSort',
 	submit = 'kolSubmit',
 	toggle = 'kolToggle',
-	settingsChange = 'settingsChange',
 }
 
 function createKoliBriEvent<T>(event: KolEvent, detail?: T): CustomEvent {

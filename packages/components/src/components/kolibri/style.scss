@@ -4,11 +4,10 @@
 @layer kol-component {
 	.kol-kolibri {
 		display: inline-block;
-		font-size: rem(16);
 		max-height: 100%;
 
 		&__text {
-			font-size: rem(90);
+			font-size: to-rem(90);
 			letter-spacing: normal;
 			word-spacing: normal;
 		}

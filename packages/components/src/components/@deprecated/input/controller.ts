@@ -4,7 +4,10 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
+	DisabledPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -39,6 +42,7 @@ import { ControlledInputController } from '../../input-adapter-leanup/controller
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
+import { debounce } from 'lodash-es';
 
 type ValueChangeListener = (value: StencilUnknown) => void;
 
@@ -61,7 +65,7 @@ export class InputController extends ControlledInputController implements Watche
 		validateAdjustHeight(this.component, value);
 	}
 
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		watchBoolean(this.component, '_disabled', value);
 		if (value === true) {
 			a11yHintDisabled();
@@ -83,7 +87,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: () => {
@@ -95,7 +99,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		watchString(this.component, '_hint', value);
 	}
 
@@ -272,4 +276,16 @@ export class InputController extends ControlledInputController implements Watche
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
 	};
+
+	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
+		setState(this.component, '_currentLengthDebounced', length);
+	}, 500);
+
+	public hasSoftCharacterLimit() {
+		return typeof this.component.state._maxLength === 'number' && this.component.state._maxLengthBehavior === 'soft';
+	}
+
+	public hasCounter() {
+		return this.component.state._hasCounter === true;
+	}
 }

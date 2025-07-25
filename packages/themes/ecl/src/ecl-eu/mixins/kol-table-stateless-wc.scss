@@ -1,14 +1,15 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use './alert-wc' as *;
+@use './pagination-mixin' as *;
 
 @mixin kol-table-stateless-wc {
 	@include kol-alert-theme;
+	@include kol-pagination-styles;
 
 	.kol-table {
 		$root: &;
 
 		display: block;
-		font-family: var(--font-family);
 
 		overflow-x: auto;
 		overflow-y: hidden;
@@ -31,7 +32,7 @@
 			width: 100%;
 			border-spacing: 0;
 			border-width: 0;
-			border-bottom-width: rem(2);
+			border-bottom-width: to-rem(2);
 			border-style: solid;
 			border-color: var(--color-ice);
 		}
@@ -43,14 +44,14 @@
 			&--header {
 				@at-root #{$root}__head-row:first-child & {
 					border-width: 0;
-					border-top-width: rem(2);
+					border-top-width: to-rem(2);
 					border-style: solid;
 					border-color: var(--color-ice);
 				}
 
 				@at-root #{$root}__head-row:last-child & {
 					border-width: 0;
-					border-bottom-width: rem(2);
+					border-bottom-width: to-rem(2);
 					border-style: solid;
 					border-color: var(--color-ice);
 				}

@@ -23,6 +23,9 @@ export class KolForm implements FormAPI {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	errorListBlock?: HTMLElement;
 	errorListFirstLink?: HTMLElement;
+	private readonly translateErrorListMessage = translate('kol-error-list-message');
+	private readonly translateErrorList = translate('kol-error-list');
+	private readonly translateFormDescription = translate('kol-form-description');
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
@@ -60,8 +63,8 @@ export class KolForm implements FormAPI {
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={translate('kol-error-list-message')}>
-				<nav aria-label={translate('kol-error-list')}>
+			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
+				<nav aria-label={this.translateErrorList}>
 					<ul>
 						{errorList?.map((error, index) => (
 							<li key={index}>
@@ -82,10 +85,10 @@ export class KolForm implements FormAPI {
 
 	private renderFormElement(): JSX.Element {
 		return (
-			<form class="kol-form" method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+			<form class="kol-form" method="post" onSubmit={this.onSubmit} onReset={this.onReset} noValidate>
 				{this.state._requiredText === true ? (
 					<p>
-						<div class="kol-form__mandatory-fields-hint">{translate('kol-form-description')}</div>
+						<div class="kol-form__mandatory-fields-hint">{this.translateFormDescription}</div>
 					</p>
 				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 					<p>

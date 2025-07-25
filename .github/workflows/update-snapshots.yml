@@ -65,9 +65,6 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile
 
-      - name: Install Playwright and Firefox
-        run: pnpm --filter @public-ui/components exec playwright install --with-deps firefox
-
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
 
@@ -85,7 +82,7 @@ jobs:
         run: git status
 
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: Update all snapshots
           file_pattern: 'packages/themes/**/snapshots/* packages/test-tag-name-transformer/snapshots/*'

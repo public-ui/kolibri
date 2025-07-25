@@ -1,59 +1,55 @@
 import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
-	PropAccessKey,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
+	PropHint,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
 	PropRadioOptions,
 	PropRequired,
-	PropShortKey,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, RadioOption, Orientation, StencilUnknown, Stringified } from '../types';
+import type { InputTypeOnDefault, RadioOption, StencilUnknown, Stringified } from '../types';
+import type { PropOrientation } from '../props/orientation';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	orientation: Orientation;
 	value: StencilUnknown;
-} & PropAccessKey &
-	PropDisabled &
-	PropHideMsg &
+} & PropDisabled &
 	PropHideLabel &
+	PropHideMsg &
+	PropHint &
 	PropName &
+	PropOrientation &
 	PropRadioOptions & // PropRadioOptions becomes required with 2.0
 	PropRequired &
-	PropShortKey &
 	PropSyncValueBySelector &
 	PropTouched &
 	PropTooltipAlign;
 
 type RequiredStates = {
 	options: RadioOption<StencilUnknown>[];
-	orientation: Orientation;
 } & PropId &
 	PropHideMsg &
-	PropLabelWithExpertSlot;
+	PropLabelWithExpertSlot &
+	PropOrientation;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
-} & PropAccessKey &
-	PropDisabled &
+} & PropDisabled &
 	PropHideLabel &
+	PropHint &
 	PropMsg &
 	PropName &
 	PropRequired &
-	PropShortKey &
 	PropTouched;
 
 export type InputRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;

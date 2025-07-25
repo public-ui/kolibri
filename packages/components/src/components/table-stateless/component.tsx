@@ -7,6 +7,7 @@ import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { isEqual } from 'lodash-es';
 import type {
+	AriaSort,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -52,6 +53,8 @@ import { validateTableSettings } from '../../schema/props/table-settings';
 export class KolTableStateless implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
+	private readonly translateNoEntries = translate('kol-no-entries');
+
 	@State() public state: TableStatelessStates = {
 		_data: [],
 		_headerCells: {
@@ -69,6 +72,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
 	private checkboxRefs: HTMLInputElement[] = [];
+
+	private translateSort = translate('kol-sort');
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -294,35 +299,35 @@ export class KolTableStateless implements TableStatelessAPI {
 		return max;
 	}
 
-	private getThePrimaryHeadersWithKeysIfExists(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
-		const primaryHeadersWithKeys: KoliBriTableHeaderCell[] = [];
+	private getThePrimaryHeadersWithKeyOrRenderFunction(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
+		const primaryHeaders: KoliBriTableHeaderCell[] = [];
 
 		headers.forEach((cells) => {
 			cells.forEach((cell) => {
-				if (typeof cell.key === 'string') {
-					primaryHeadersWithKeys.push(cell);
+				if (typeof cell.key === 'string' || typeof cell.render === 'function') {
+					primaryHeaders.push(cell);
 				}
 			});
 		});
 
-		return primaryHeadersWithKeys;
+		return primaryHeaders;
 	}
 
 	private getPrimaryHeaders(headers: KoliBriTableHeaders): KoliBriTableHeaderCell[] {
-		let primaryHeadersWithKeys: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeysIfExists(headers.horizontal ?? []);
+		let primaryHeaders: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.horizontal ?? []);
 
 		/**
 		 * It is important to note that the rendering direction of the data is implicitly set,
 		 * if either the horizontal or vertical header cells have keys.
 		 */
 		this.horizontal = true;
-		if (primaryHeadersWithKeys.length === 0) {
-			primaryHeadersWithKeys = this.getThePrimaryHeadersWithKeysIfExists(headers.vertical ?? []);
-			if (primaryHeadersWithKeys.length > 0) {
+		if (primaryHeaders.length === 0) {
+			primaryHeaders = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.vertical ?? []);
+			if (primaryHeaders.length > 0) {
 				this.horizontal = false;
 			}
 		}
-		return primaryHeadersWithKeys;
+		return primaryHeaders;
 	}
 
 	private getColumnPositionMap(): Map<string, number> {
@@ -397,9 +402,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (
 						typeof sortedPrimaryHeader[j] === 'object' &&
 						sortedPrimaryHeader[j] !== null &&
-						typeof sortedPrimaryHeader[j].key === 'string' &&
 						typeof row === 'object' &&
-						row !== null
+						row !== null &&
+						(typeof sortedPrimaryHeader[j].key === 'string' || typeof sortedPrimaryHeader[j].render === 'function')
 					) {
 						dataRow.push({
 							...sortedPrimaryHeader[j],
@@ -413,9 +418,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (
 						typeof sortedPrimaryHeader[i] === 'object' &&
 						sortedPrimaryHeader[i] !== null &&
-						typeof sortedPrimaryHeader[i].key === 'string' &&
 						typeof data[j] === 'object' &&
-						data[j] !== null
+						data[j] !== null &&
+						(typeof sortedPrimaryHeader[i].key === 'string' || typeof sortedPrimaryHeader[i].render === 'function')
 					) {
 						dataRow.push({
 							...sortedPrimaryHeader[i],
@@ -446,7 +451,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			}
 			const emptyCell = {
 				colSpan: colspan,
-				label: translate('kol-no-entries'),
+				label: this.translateNoEntries,
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
@@ -797,7 +802,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			return '';
 		}
 
-		let ariaSort = undefined;
+		let ariaSort: AriaSort = 'none';
 		let sortButtonIcon = 'codicon codicon-fold';
 
 		if (cell.sortDirection) {
@@ -810,6 +815,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					sortButtonIcon = 'codicon codicon-chevron-down';
 					ariaSort = 'descending';
 					break;
+				default:
+					ariaSort = 'none';
 			}
 		}
 
@@ -837,6 +844,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						exportparts="icon"
 						_icons={{ right: sortButtonIcon }}
 						_label={cell.label}
+						_ariaDescription={this.translateSort}
 						_on={{
 							onClick: (event: MouseEvent) => {
 								if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {

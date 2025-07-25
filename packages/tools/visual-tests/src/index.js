@@ -6,8 +6,9 @@ import { readFile } from 'fs/promises';
 import * as fs from 'fs';
 import portfinder from 'portfinder';
 import * as process from 'process';
+import os from 'node:os';
 
-const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR; // TODO: Check on Windows
+const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR || os.tmpdir(); // TODO: Check on Windows
 
 if (!process.env.THEME_MODULE) {
 	throw new Error('Environment variable THEME_MODULE not specified.');
@@ -35,11 +36,18 @@ const packageJson = JSON.parse(packageJsonContent);
 console.log(`
 Building React Sample App (v${packageJson?.version ?? '#.#.#'}) …`);
 
-child_process.spawnSync('pnpm', ['run', 'build', '--', `--output-path="${buildPath}"`], {
+const buildResult = child_process.spawnSync('pnpm', ['run', 'build', `--outDir="${buildPath}"`], {
 	cwd: workingDir,
 	encoding: 'utf-8',
 	shell: true,
 });
+
+if (buildResult.status !== 0) {
+	console.log('Build status:', buildResult.status);
+	console.log('Build stdout:', buildResult.stdout);
+	console.log('Build stderr:', buildResult.stderr);
+	console.log('Build error:', buildResult.error);
+}
 
 console.log(`React Sample App build finished. Directory:`, buildPath);
 

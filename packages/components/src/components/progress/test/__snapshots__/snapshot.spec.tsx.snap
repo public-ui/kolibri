@@ -9,8 +9,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 2ch;">
@@ -38,8 +38,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">
@@ -67,8 +67,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(40.476190476190474% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">
@@ -96,8 +96,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(50% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 2ch;">
@@ -125,8 +125,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(238.0952380952381% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">
@@ -154,8 +154,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">
@@ -183,8 +183,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(42% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">
@@ -212,8 +212,8 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
           Label
         </div>
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: 100%;"></rect>
-          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(100% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">

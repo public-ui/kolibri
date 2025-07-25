@@ -6,12 +6,12 @@ import type {
 	AdjustHeightPropType,
 	CSSResize,
 	FocusableElement,
-	HasCounterPropType,
 	HideMsgPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
 	RowsPropType,
@@ -22,13 +22,16 @@ import type {
 	TextareaAPI,
 	TextareaStates,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HasCounterPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
-import { setState } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper';
-import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
+import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import { TextareaController } from './controller';
 
 /**
@@ -81,7 +84,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-form-field-textarea', {
 				'kol-form-field--has-value': this.state._hasValue,
-				'kol-form-field--has-counter': !!this.state._hasCounter,
+				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.textareaRef?.focus(),
@@ -90,12 +93,15 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	private getTextAreaProps(): TextAreaStateWrapperProps {
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+
 		return {
 			ref: this.catchRef,
 			state: this.state,
 			style: {
 				resize: this.state._resize,
 			},
+			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onFocus: (event: Event) => {
@@ -139,12 +145,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Shows the character count on the lower border of the input.
-	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
-
-	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
@@ -181,6 +181,16 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
@@ -260,6 +270,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -288,13 +299,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_hasCounter')
-	public validateHasCounter(value?: HasCounterPropType): void {
-		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideMsg')
@@ -303,12 +309,17 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: HasCounterPropType): void {
+		this.controller.validateHasCounter(value);
+	}
+
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
@@ -330,6 +341,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+	}
+
+	@Watch('_maxLengthBehavior')
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.controller.validateMaxLengthBehavior(value);
 	}
 
 	@Watch('_msg')
@@ -417,9 +433,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		if (this.textareaRef instanceof HTMLTextAreaElement) {
-			const value = this.textareaRef.value;
-			setState(this, '_currentLength', value.length);
-			this._value = value;
+			this._value = this.textareaRef.value;
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.textareaRef);
 			}

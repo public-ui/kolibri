@@ -1,6 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolButtonFc, { type ButtonProps } from '../Button';
 import KolIconFc, { type IconProps } from '../Icon';
+import type { ButtonVariantPropType } from '../../schema';
 
 type IconType = Partial<Omit<IconProps, 'icons'>> & {
 	componentName: 'icon';
@@ -15,6 +16,7 @@ type ButtonType = Partial<Omit<ButtonProps, 'icons'>> & {
 	icon?: string;
 	label?: string;
 	class?: string;
+	buttonVariant?: ButtonVariantPropType;
 
 	onClick?: (event: MouseEvent) => void;
 };
@@ -34,6 +36,7 @@ export type IconButtonProps = IconType | ButtonType;
  * - `label`: An optional label, which is only shown for Buttons.
  * - `icon`: The name of the icon (e.g., "home", "edit") or the Codicon class used for the icon display.
  * - `class`: Optional CSS class for additional styling customization.
+ * - `buttonVariant`: Variant for the button component.
  * - `onClick`: Optional click handler for user interactions.
  *
  * Example usage:

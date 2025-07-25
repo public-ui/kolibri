@@ -3,6 +3,7 @@ import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-radio';
 const TEST_VALUE = 'test-value';
@@ -18,8 +19,21 @@ const fillAction: FillAction = async (page) => {
 const selectInput = (page: Page & E2EPage) => page.locator('input').first();
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE);
-	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS, OPTIONS_ATTRIBUTE, selectInput);
+	testInputValueReflection<HTMLKolInputRadioElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolInputRadioElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		omittedEvents: OMITTED_EVENTS,
+		selectInput,
+		testValue: TEST_VALUE,
+	});
+	testInputMessage<HTMLKolInputRadioElement>(COMPONENT_NAME);
 
 	test.describe('value to option matching', () => {
 		const OBJECT_FIRST = { id: 1, text: 'first' };

@@ -1,5 +1,5 @@
 @use './focus-outline' as *;
-@use './rem' as *;
+@use '../mixins/to-rem' as *;
 
 @mixin kol-button($block-classname) {
 	:host {
@@ -8,8 +8,6 @@
 
 	.#{$block-classname} {
 		$root: &;
-
-		font-family: var(--font-family);
 
 		&__text {
 			font-weight: 700;
@@ -65,7 +63,7 @@
 		&--normal,
 		&--danger,
 		&--ghost {
-			&:not([disabled]):hover {
+			&:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -73,7 +71,7 @@
 		}
 
 		&--danger {
-			&:not([disabled]):hover {
+			&:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 			}
@@ -86,20 +84,20 @@
 
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
-			padding: rem(8) rem(14);
+			padding: to-rem(8) to-rem(14);
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 
 			&:hover {
-				box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 				background-color: var(--text-background-color);
 				border-color: var(--text-border-color);
 				color: var(--text-color);
 			}
 
 			@at-root #{$root}--hide-label & {
-				padding: rem(12.8);
+				padding: to-rem(12);
 				width: unset;
 
 				.kol-span__label {
@@ -109,9 +107,10 @@
 
 			@at-root #{$root}:focus {
 				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}:disabled:hover & {
+			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
 				background-color: var(--text-background-color);
 				border-color: var(--text-border-color);
 				color: var(--text-color);

@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AutoCompletePropType,
 	ButtonProps,
 	FocusableElement,
 	HideMsgPropType,
@@ -11,9 +12,9 @@ import type {
 	InputEmailAPI,
 	InputEmailStates,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MaxLengthBehaviorPropType,
 	MultiplePropType,
 	NamePropType,
 	ShortKeyPropType,
@@ -21,14 +22,17 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HasCounterPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
-import { setState } from '../../schema';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputEmailController } from './controller';
 
 /**
@@ -73,9 +77,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		const value = (event.target as HTMLInputElement).value;
-		setState(this, '_currentLength', value.length);
-		this._value = value;
+		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -84,6 +86,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-email', 'email', {
 				'has-value': this.state._hasValue,
+				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.inputRef?.focus(),
@@ -92,10 +95,13 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+
 		return {
 			ref: this.catchRef,
 			state: this.state,
 			type: 'email',
+			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
@@ -130,19 +136,23 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Shows the character count on the lower border of the input.
-	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -262,8 +272,8 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputEmailStates = {
-		_autoComplete: 'off',
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -287,18 +297,13 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
-		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideMsg')
@@ -307,12 +312,17 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: HasCounterPropType): void {
+		this.controller.validateHasCounter(value);
+	}
+
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
@@ -404,6 +414,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_maxLengthBehavior')
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.controller.validateMaxLengthBehavior(value);
 	}
 
 	public componentWillLoad(): void {

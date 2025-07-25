@@ -8,7 +8,6 @@ import type {
 	LinkWithChildrenProps,
 	NavAPI,
 	NavStates,
-	Orientation,
 	Stringified,
 } from '../../schema';
 import {
@@ -31,6 +30,7 @@ import { watchNavLinks } from './validation';
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import type { StencilUnknown } from '../../schema';
 import clsx from 'clsx';
+import type { OrientationPropType } from '../../schema/props/orientation';
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -74,7 +74,7 @@ export class KolNav implements NavAPI {
 	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
-			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren !== children),
 		};
 	}
 
@@ -149,7 +149,7 @@ export class KolNav implements NavAPI {
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		orientation: Orientation,
+		orientation: OrientationPropType,
 	): JSX.Element {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
@@ -174,7 +174,7 @@ export class KolNav implements NavAPI {
 		hideLabel: HideLabelPropType;
 		deep: number;
 		links: ButtonOrLinkOrTextWithChildrenProps[];
-		orientation: Orientation;
+		orientation: OrientationPropType;
 	}): JSX.Element => {
 		return (
 			<ul
@@ -193,6 +193,11 @@ export class KolNav implements NavAPI {
 	};
 
 	private initializeExpandedChildren() {
+		//Reset expandedChildren before recalculation
+		this.state = {
+			...this.state,
+			_expandedChildren: [],
+		};
 		/**
 		 * Recursively process branches and expand branches which are active or have active children somewhere in the tree.
 		 * @param {ButtonOrLinkOrTextWithChildrenProps} branch
@@ -253,7 +258,7 @@ export class KolNav implements NavAPI {
 								},
 							}}
 							_tooltipAlign="right"
-							_variant="ghost"
+							_buttonVariant="ghost"
 						></KolButtonWcTag>
 					</div>
 				)}
@@ -297,7 +302,7 @@ export class KolNav implements NavAPI {
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: Orientation = 'vertical';
+	@Prop() public _orientation?: OrientationPropType = 'vertical';
 
 	@State() public state: NavStates = {
 		_collapsible: true,
@@ -346,10 +351,12 @@ export class KolNav implements NavAPI {
 	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
 		devHint(`[KolNav] The navigation structure is not yet validated recursively.`);
+		//Re-initialize expansion on links change
+		this.initializeExpandedChildren();
 	}
 
 	@Watch('_orientation')
-	public validateOrientation(value?: Orientation): void {
+	public validateOrientation(value?: OrientationPropType): void {
 		watchValidator(
 			this,
 			'_orientation',

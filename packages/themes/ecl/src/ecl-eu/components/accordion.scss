@@ -1,18 +1,13 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		font-size: rem(16);
-	}
-
 	.kol-accordion {
 		border-radius: 8px;
 		box-shadow:
-			0 rem(2) rem(4) rgb(9 49 142 / 8%),
-			0 0 rem(10) rgb(9 49 142 / 4%),
-			0 rem(4) rem(5) rgb(9 49 142 / 4%),
-			0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+			0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
+			0 0 to-rem(10) rgb(9 49 142 / 4%),
+			0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
+			0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 		margin: 0;
 		overflow: hidden;
 
@@ -27,14 +22,14 @@
 				border: 0;
 				border-bottom-color: #cfdaf5;
 				border-bottom-style: solid;
-				border-bottom-width: rem(2);
+				border-bottom-width: to-rem(2);
 				color: #171a22;
 				position: relative;
 				display: block;
 				font:
-					normal normal 400 rem(18) / rem(28) arial,
+					normal normal 400 to-rem(18) / to-rem(28) arial,
 					sans-serif;
-				padding: rem(24);
+				padding: to-rem(24);
 				text-align: start;
 				width: 100%;
 				line-height: 1.2;
@@ -45,19 +40,19 @@
 
 				&::before {
 					background-color: #fc0;
-					border-end-end-radius: rem(2);
-					border-end-start-radius: rem(2);
+					border-end-end-radius: to-rem(2);
+					border-end-start-radius: to-rem(2);
 					content: '';
-					height: rem(4);
+					height: to-rem(4);
 					position: absolute;
-					left: rem(24);
+					left: to-rem(24);
 					top: 0;
 					width: 3rem (2);
 				}
 			}
 
 			.kol-icon {
-				margin-right: rem(12);
+				margin-right: to-rem(12);
 
 				&::part(icon)::before {
 					color: #0e47cb;
@@ -68,22 +63,22 @@
 		}
 
 		&__content {
-			-webkit-border-start: rem(4) solid #0e47cb;
+			-webkit-border-start: to-rem(4) solid #0e47cb;
 			-webkit-margin-start: 0;
 			border-bottom: 2px solid #cfdaf5;
-			border-inline-start: rem(4) solid #0e47cb;
+			border-inline-start: to-rem(4) solid #0e47cb;
 			color: #515560;
 			font:
-				normal normal 400 rem(16) / rem(24) arial,
+				normal normal 400 to-rem(16) / to-rem(24) arial,
 				sans-serif;
 			margin-inline-start: 0;
-			padding: rem(24);
+			padding: to-rem(24);
 		}
 
 		.collapsible--open &__heading-button {
 			.kol-button {
-				border-start-end-radius: rem(8);
-				border-start-start-radius: rem(8);
+				border-start-end-radius: to-rem(8);
+				border-start-start-radius: to-rem(8);
 			}
 
 			.kol-icon::part(icon)::before {

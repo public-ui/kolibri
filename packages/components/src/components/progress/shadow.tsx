@@ -35,28 +35,8 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" overflow="visible">
-			<rect
-				class="kol-progress__bar-background"
-				x="1"
-				y="1"
-				height="11"
-				rx="5"
-				fill="currentColor"
-				stroke="currentColor"
-				stroke-width="3"
-				style={{ width: `100%` }}
-			></rect>
-			<rect
-				class="kol-progress__bar-border"
-				x="1"
-				y="1"
-				height="11"
-				rx="5"
-				fill="currentColor"
-				stroke="currentColor"
-				stroke-width="1"
-				style={{ width: `100%` }}
-			></rect>
+			<rect class="kol-progress__bar-background" x="1" y="1" height="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100%"></rect>
+			<rect class="kol-progress__bar-border" x="1" y="1" height="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="1" width="100%"></rect>
 			<rect
 				class="kol-progress__bar-progress"
 				x="3"
@@ -109,18 +89,18 @@ export class KolProgress implements ProgressAPI {
 				>
 					{this.state._variant === 'bar' && this.state._label && <div class="kol-progress__bar-label">{this.state._label}</div>}
 					{createProgressSVG(this.state)}
-					{this.state._variant == 'cycle' && (
+					{this.state._variant === 'cycle' && (
 						<div class="kol-progress__cycle-text">
 							{this.state._label && <div class="kol-progress__cycle-label">{this.state._label}</div>}
 							<div class="kol-progress__cycle-value">{`${displayValue} ${this.state._unit}`}</div>
 						</div>
 					)}
-					{this.state._variant == 'bar' && (
+					{this.state._variant === 'bar' && (
 						<div class="kol-progress__bar-value" style={{ width: `${`${(isPercentage ? 100 : this.state._max) + 1}`.length}ch` }}>
 							{displayValue}
 						</div>
 					)}
-					{this.state._variant == 'bar' && <div class="kol-progress__bar-unit">{this.state._unit}</div>}
+					{this.state._variant === 'bar' && <div class="kol-progress__bar-unit">{this.state._unit}</div>}
 				</div>
 
 				{/* https://css-tricks.com/html5-progress-element/ */}

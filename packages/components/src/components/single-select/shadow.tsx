@@ -18,13 +18,16 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HideLabelPropType,
+	HintPropType,
 } from '../../schema';
 
 import clsx from 'clsx';
 import { KolIconTag } from '../../core/component-names';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
-import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
@@ -32,7 +35,7 @@ import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggest
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
-import { getRenderStates } from '../input/controller';
+import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import { SingleSelectController } from './controller';
 
 /**
@@ -51,6 +54,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
+	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
 
 	@Method()
@@ -71,7 +76,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();
-		if (this.state._disabled) {
+		const isDisabled = this.state._disabled === true;
+		if (isDisabled) {
 			return;
 		} else {
 			if (!this._hasOpened) {
@@ -86,16 +92,22 @@ export class KolSingleSelect implements SingleSelectAPI {
 	};
 
 	private onBlur() {
-		if (Array.isArray(this.state._options) && this.state._options.length > 0 && !this.state._options.some((option) => option.label === this._inputValue)) {
-			this._inputValue = this.state._options.find((option) => (option as Option<string>).value === this._value)?.label as string;
+		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
+
+		if (matchingOption) {
+			this.selectOption(matchingOption as Option<string>);
+		} else {
+			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
+
 		this._isOpen = false;
 		this._hasOpened = false;
 	}
 
 	private clearSelection() {
-		if (this.state._disabled) {
+		const isDisabled = this.state._disabled === true;
+		if (isDisabled) {
 			return;
 		} else {
 			const emptyValue = null;
@@ -107,11 +119,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this.controller.onFacade.onInput(
 				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
 				true,
-				emptyValue,
+				{ value: emptyValue },
 			);
 			this.controller.onFacade.onChange(
 				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				emptyValue,
+				{ value: emptyValue },
 			);
 		}
 	}
@@ -211,6 +223,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private getInputProps(): InputStateWrapperProps {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const isDisabled = this.state._disabled === true;
 
 		return {
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
@@ -222,7 +235,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			autocapitalize: 'off',
 			autocorrect: 'off',
 			class: 'kol-single-select__input',
-			disabled: this.state._disabled,
+			disabled: isDisabled,
 			name: this.state._name,
 			placeholder: this.state._placeholder,
 			ref: this.catchRef,
@@ -246,6 +259,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	public render(): JSX.Element {
+		const isDisabled = this.state._disabled === true;
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
@@ -256,20 +270,20 @@ export class KolSingleSelect implements SingleSelectAPI {
 							<KolIconTag
 								_icons="codicon codicon-close"
 								data-testid="single-select-delete"
-								_label={translate('kol-delete-selection')}
+								_label={this.translateDeleteSelection}
 								onClick={() => {
 									this.clearSelection();
 									this.refInput?.focus();
 								}}
 								class={clsx('kol-single-select__delete', {
-									'kol-single-select__delete--disabled': this.state._disabled,
+									'kol-single-select__delete--disabled': isDisabled,
 								})}
 							/>
 						)}
 
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
+						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} />
 					</div>
-					{this._isOpen && !(this.state._disabled === true) && (
+					{this._isOpen && !isDisabled && (
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
@@ -280,6 +294,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									<CustomSuggestionsOptionFc
 										index={index}
 										option={option.label}
+										searchTerm={this._inputValue}
 										ref={(el) => {
 											if (el) this.refOptions[index] = el;
 										}}
@@ -312,7 +327,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									/>
 								))
 							) : (
-								<li class="kol-single-select__no-results-message">{translate('kol-no-results-message')} </li>
+								<li class="kol-single-select__no-results-message">{this.translateNoResultsMessage} </li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
 					)}
@@ -578,7 +593,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -588,12 +603,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 

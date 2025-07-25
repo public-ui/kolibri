@@ -4,6 +4,9 @@ import { Component, Element, h, Listen, Prop, State, Watch } from '@stencil/core
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolLinkWcTag, KolButtonWcTag } from '../../core/component-names';
+import type { OrientationPropType } from '../../schema/props/orientation';
+import { validateOrientation } from '../../schema/props/orientation';
+import { KeyboardKey } from '../../schema/enums';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -44,7 +47,7 @@ export class KolToolbar implements ToolbarAPI {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-toolbar" role="toolbar" aria-label={this.state._label}>
+			<div class={`kol-toolbar kol-toolbar--orientation-${this.state._orientation}`} role="toolbar" aria-label={this.state._label}>
 				{this.state._items.map(this.renderItem)}
 			</div>
 		);
@@ -60,6 +63,11 @@ export class KolToolbar implements ToolbarAPI {
 	 */
 	@Prop() public _items!: ToolbarItemsPropType;
 
+	/**
+	 * Defines whether the orientation of the component is horizontal or vertical.
+	 */
+	@Prop() public _orientation?: OrientationPropType;
+
 	@Watch('_label') validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
@@ -67,6 +75,11 @@ export class KolToolbar implements ToolbarAPI {
 	@Watch('_items')
 	public validateItems(value?: ToolbarItemsPropType): void {
 		validateToolbarItems(this, value);
+	}
+
+	@Watch('_orientation')
+	public validateOrientation(value?: OrientationPropType): void {
+		validateOrientation(this, value);
 	}
 
 	/**
@@ -88,7 +101,8 @@ export class KolToolbar implements ToolbarAPI {
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
-		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
+		const pressedKey = event.code as KeyboardKey;
+		const isArrowKey = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, KeyboardKey.ArrowRight, KeyboardKey.ArrowLeft].includes(pressedKey);
 		if (!isArrowKey) return;
 		event.preventDefault();
 
@@ -96,11 +110,13 @@ export class KolToolbar implements ToolbarAPI {
 		const currentIndex = this.currentIndex;
 		let nextIndex = 0;
 
-		switch (event.code) {
-			case 'ArrowLeft':
+		switch (pressedKey) {
+			case KeyboardKey.ArrowUp:
+			case KeyboardKey.ArrowLeft:
 				nextIndex = currentIndex !== nextIndex ? currentIndex - 1 : lastItemIndex;
 				break;
-			case 'ArrowRight':
+			case KeyboardKey.ArrowDown:
+			case KeyboardKey.ArrowRight:
 				if (lastItemIndex !== currentIndex) nextIndex = currentIndex + 1;
 				break;
 		}
@@ -121,6 +137,7 @@ export class KolToolbar implements ToolbarAPI {
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateItems(this._items);
+		this.validateOrientation(this._orientation);
 		this.setFirstEnabledItemIndex();
 	}
 }

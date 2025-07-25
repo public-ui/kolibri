@@ -72,6 +72,8 @@ const config = {
 		'@stencil-community/strict-boolean-conditions': 'off',
 		'@stencil-community/ban-default-true': 'off',
 
+		eqeqeq: 'error',
+
 		'react/jsx-no-bind': 'off',
 
 		'no-console': 'error',

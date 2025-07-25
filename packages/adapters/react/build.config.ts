@@ -1,7 +1,13 @@
 import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
-	entries: ['kolibri-src/index'],
+	entries: [
+		{
+			input: 'kolibri-src/index',
+			outDir: '.',
+			name: 'index',
+		},
+	],
 	clean: true,
 	declaration: true,
 	externals: [],

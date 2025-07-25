@@ -1,8 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["**/*.ts"],
-	"ignore": ["public/{assets,components,theme}/**"],
-	"ignoreBinaries": ["build"],
+	"ignore": ["public/{assets,components,theme}/**", "tests/hydration.webdriver.ts"],
 	"ignoreDependencies": [
 		"@public-ui/components",
 		"@public-ui/theme-default",

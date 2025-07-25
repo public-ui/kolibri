@@ -2,21 +2,26 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
-	ButtonAPI,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	HideLabelPropType,
 	FocusableElement,
 	IconsPropType,
+	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
+	LinkVariantPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { validateLinkVariant } from '../../schema';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
@@ -62,20 +67,23 @@ import clsx from 'clsx';
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI, FocusableElement {
+export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
+	private tooltipRef?: HTMLKolTooltipWcElement;
 
 	private readonly internalDescriptionById = nonce();
-
-	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.buttonRef = ref;
-	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.buttonRef?.focus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hideTooltip() {
+		void this.tooltipRef?.hideTooltip();
 	}
 
 	private readonly onClick = (event: MouseEvent) => {
@@ -116,26 +124,29 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 		const badgeText = this.state._accessKey || this.state._shortKey;
+		const isDisabled = this.state._disabled === true;
+		const hideLabel = this.state._hideLabel === true;
 
 		return (
 			<Host>
 				<button
-					ref={this.catchRef}
+					ref={(ref) => (this.buttonRef = ref)}
 					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
-					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-label={hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
-						'kol-button--disabled': this.state._disabled === true,
-						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
-						'kol-button--hide-label': this.state._hideLabel === true,
+						'kol-button--disabled': isDisabled,
+						[`kol-button--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
+						[`kol-button--${this.state._linkVariant as string}`]: this.state._linkVariant,
+						'kol-button--hide-label': hideLabel,
 						[this.state._customClass as string]:
-							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
-					disabled={this.state._disabled}
+					disabled={isDisabled}
 					id={this.state._id}
 					name={this.state._name}
 					onClick={this.onClick}
@@ -148,19 +159,20 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 						class="kol-button__text"
 						badgeText={badgeText}
 						icons={this.state._icons}
-						hideLabel={this.state._hideLabel}
+						hideLabel={hideLabel}
 						label={hasExpertSlot ? '' : this.state._label}
 					>
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 				</button>
 				<KolTooltipWcTag
+					ref={(ref) => (this.tooltipRef = ref)}
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
-					hidden={hasExpertSlot || !this.state._hideLabel}
+					hidden={hasExpertSlot || !hideLabel}
 					class="kol-button__tooltip"
 					_badgeText={badgeText}
 					_align={this.state._tooltipAlign}
@@ -209,7 +221,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Defines the custom class attribute if _variant="custom" is set.
+	 * Defines the custom class attribute if _buttonVariant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
 
@@ -239,6 +251,12 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 * @internal
+	 */
+	@Prop() public _linkVariant?: LinkVariantPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -288,15 +306,16 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _buttonVariant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
 		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_variant: 'normal',
+		_buttonVariant: 'normal',
 	};
 
 	public constructor() {
@@ -320,12 +339,12 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	}
 
 	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: boolean): void {
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
 		validateAriaExpanded(this, value);
 	}
 
 	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: boolean): void {
+	public validateAriaSelected(value?: AriaSelectedPropType): void {
 		validateAriaSelected(this, value);
 	}
 
@@ -340,7 +359,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
 	}
 
@@ -359,6 +378,11 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		validateLabelWithExpertSlot(this, value, {
 			required: true,
 		});
+	}
+
+	@Watch('_linkVariant')
+	public validateLinkVariant(value?: LinkVariantPropType): void {
+		validateLinkVariant(this, value);
 	}
 
 	@Watch('_name')
@@ -408,8 +432,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: ButtonVariantPropType): void {
+	@Watch('_buttonVariant')
+	public validateButtonVariant(value?: ButtonVariantPropType): void {
 		validateButtonVariant(this, value);
 	}
 
@@ -425,6 +449,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.validateIcons(this._icons);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
+		this.validateLinkVariant(this._linkVariant);
 		this.validateName(this._name);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
@@ -434,7 +459,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateVariant(this._variant);
+		this.validateButtonVariant(this._buttonVariant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }

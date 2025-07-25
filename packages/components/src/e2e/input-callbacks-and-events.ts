@@ -7,17 +7,27 @@ import { INPUTS_SELECTOR } from './utils/inputsSelector';
 import { Callback } from '../schema/enums';
 import { KolEvent } from '../utils/events';
 
-/* @todo needs refactoring (https://github.com/public-ui/kolibri/issues/7791) */
-const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefault } & (HTMLElement | SVGElement)>(
-	componentName: string,
-	testValue: unknown = 'Test Input',
-	fillAction?: FillAction,
-	omittedEvents: string[] = [],
-	additionalProperties: string = '',
-	selectInput?: (page: Page & E2EPage) => Locator,
-	equalityCheck: 'toBe' | 'toEqual' = 'toBe',
-	expectedValue?: unknown,
-) => {
+type TestInputCallbacksAndEventsOptions = {
+	additionalProperties?: string;
+	componentName: string;
+	equalityCheck?: 'toBe' | 'toEqual';
+	expectedValue?: unknown;
+	fillAction?: FillAction;
+	omittedEvents?: string[];
+	selectInput?: (page: Page & E2EPage) => Locator;
+	testValue?: unknown;
+};
+
+const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefault } & (HTMLElement | SVGElement)>({
+	additionalProperties = '',
+	componentName,
+	equalityCheck = 'toBe',
+	expectedValue,
+	fillAction,
+	omittedEvents = [],
+	selectInput,
+	testValue = 'Test Input',
+}: TestInputCallbacksAndEventsOptions) => {
 	test.describe('Callbacks and DOM events', () => {
 		const EVENTS: [string, Callback, KolEvent, unknown?, unknown?][] = [
 			['click', Callback.onClick, KolEvent.click],

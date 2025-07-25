@@ -8,9 +8,11 @@ import type {
 	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
 	PropReadOnly,
@@ -28,7 +30,6 @@ export type CSSResize = (typeof cssResizeOptions)[number];
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	hint: string;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -39,10 +40,12 @@ type OptionalProps = {
 	PropAdjustHeight &
 	PropDisabled &
 	PropHasCounter &
-	PropHideMsg &
 	PropHideLabel &
+	PropHideMsg &
+	PropHint &
 	PropHorizontalIcons &
 	PropId &
+	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -55,6 +58,7 @@ type OptionalProps = {
 type RequiredStates = {
 	adjustHeight: boolean;
 	currentLength: number;
+	currentLengthDebounced: number;
 	hasValue: boolean;
 	resize: CSSResize;
 } & PropAdjustHeight &
@@ -63,16 +67,17 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	value: string;
 } & PropAccessKey &
+	KoliBriHIcons &
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
-	KoliBriHIcons &
+	PropHint &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
 	PropReadOnly &

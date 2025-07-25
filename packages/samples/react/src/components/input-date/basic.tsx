@@ -11,6 +11,6 @@ export const InputDateBasic: FC = () => (
 			<p>KolInputDate renders all types of fields for date and time input. The sample shows KolInputDate in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputDateVariants} />
+		<FormWrap RefComponent={InputDateVariants} showButtons={false} />
 	</>
 );

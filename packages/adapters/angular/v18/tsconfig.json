@@ -3,7 +3,7 @@
 		"annotateForClosureCompiler": false,
 		"strictMetadataEmit": true,
 		"flatModuleOutFile": "core.js",
-		"flatModuleId": "@public-ui/angular",
+		"flatModuleId": "@public-ui/angular-v18",
 		"skipTemplateCodegen": true,
 		"fullTemplateTypeCheck": false,
 		"enableIvy": true
@@ -34,5 +34,5 @@
 		"skipLibCheck": true
 	},
 	"files": ["src/index.ts"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "dist"]
 }

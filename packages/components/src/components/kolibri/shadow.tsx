@@ -1,13 +1,12 @@
-import { devHint, validateColor, watchBoolean } from '../../schema';
 import { Component, Prop, State, Watch, h } from '@stencil/core';
-
-import { colorRgba } from './color-rgba';
+import { devHint, validateColor, watchBoolean } from '../../schema';
 
 import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 
+import rgba from 'color-rgba';
 import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '../../schema';
 
 @Component({
@@ -18,10 +17,11 @@ import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '../../sc
 	shadow: true,
 })
 export class KolKolibri implements KolibriAPI {
+	private readonly translateKolibriLogo = translate('kol-kolibri-logo');
 	public render(): JSX.Element {
 		const fillColor = `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
 		return (
-			<svg class="kol-kolibri" role="img" aria-label={translate('kol-kolibri-logo')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
+			<svg class="kol-kolibri" role="img" aria-label={this.translateKolibriLogo} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
 				<path d="M353 322L213 304V434L353 322Z" />
 				<path d="M209 564V304L149 434L209 564Z" />
 				<path d="M357 316L417 250L361 210L275 244L357 316Z" />
@@ -58,11 +58,11 @@ export class KolKolibri implements KolibriAPI {
 
 	private handleColorChange: Generic.Element.NextStateHooksCallback = (nextValue: unknown, nextState: Map<string, unknown>): void => {
 		if (typeof nextValue === 'string') {
-			const rgba = colorRgba(nextValue);
+			const rgb = rgba(nextValue);
 			nextState.set('_color', {
-				red: rgba[0],
-				green: rgba[1],
-				blue: rgba[2],
+				red: rgb[0],
+				green: rgb[1],
+				blue: rgb[2],
 			});
 		} else {
 			devHint(`[KolKolibri] You used the complex color schema. For the KoliBri we use need the color as hex string.`);

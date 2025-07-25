@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/typography' as *;
@@ -26,10 +26,11 @@
 		$root: &;
 
 		&--label-align-left:not(.kol-input-checkbox__field-control--variant-button) &__label {
-			padding-right: rem(6.4);
+			padding-right: to-rem(6.4);
 		}
+
 		&--label-align-right:not(.kol-input-checkbox__field-control--variant-button) &__label {
-			padding-left: rem(6.4);
+			padding-left: to-rem(6.4);
 		}
 	}
 
@@ -67,7 +68,7 @@
 
 			&:not(:disabled):hover {
 				border-color: var(--color-primary);
-				box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 			}
 		}
 
@@ -82,9 +83,9 @@
 
 		.kol-input {
 			border-radius: var(--border-radius);
-			height: calc(6 * rem(4));
-			min-width: calc(6 * rem(4));
-			width: calc(6 * rem(4));
+			height: calc(6 * to-rem(4));
+			min-width: calc(6 * to-rem(4));
+			width: calc(6 * to-rem(4));
 		}
 
 		.kol-icon {
@@ -96,7 +97,7 @@
 		.kol-icon {
 			width: 1.25em;
 			height: 1.25em;
-			left: rem(2);
+			left: to-rem(2);
 		}
 
 		.kol-input {
@@ -109,7 +110,7 @@
 			position: relative;
 			width: 3.5em;
 			/* Visible with forced colors  */
-			outline: transparent solid rem(1);
+			outline: transparent solid to-rem(1);
 
 			&:focus {
 				@include switch-outline;
@@ -118,8 +119,8 @@
 			&:before {
 				width: 1.25em;
 				height: 1.25em;
-				left: calc(0.25em - rem(2));
-				top: calc(0.25em - rem(2));
+				left: calc(0.25em - to-rem(2));
+				top: calc(0.25em - to-rem(2));
 				border-radius: 1.25em;
 				background-color: white;
 				position: absolute;
@@ -175,7 +176,7 @@
 					align-self: stretch;
 					display: flex;
 
-					padding-right: rem(16);
+					padding-right: to-rem(16);
 
 					&-text {
 						margin: auto auto;
@@ -215,18 +216,18 @@
 						background-color: var(--color-primary-variant);
 						border-color: var(--color-primary-variant);
 						color: var(--color-light);
-						box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 					}
 				}
 
 				&:not(.kol-field-control--hide-label) {
 					.kol-field-control {
 						&__label {
-							clip-path: inset(rem(-10) rem(-10) rem(-10) 0);
+							clip-path: inset(to-rem(-10) to-rem(-10) to-rem(-10) 0);
 						}
 
 						&__input {
-							clip-path: inset(rem(-10) 0 rem(-10) rem(-10));
+							clip-path: inset(to-rem(-10) 0 to-rem(-10) to-rem(-10));
 						}
 					}
 				}
@@ -256,11 +257,11 @@
 						&:not(.kol-field-control--hide-label) {
 							.kol-field-control {
 								&__label {
-									clip-path: inset(rem(-10) 0 rem(-10) rem(-10));
+									clip-path: inset(to-rem(-10) 0 to-rem(-10) to-rem(-10));
 								}
 
 								&__input {
-									clip-path: inset(rem(-10) rem(-10) rem(-10) 0);
+									clip-path: inset(to-rem(-10) to-rem(-10) to-rem(-10) 0);
 								}
 							}
 						}

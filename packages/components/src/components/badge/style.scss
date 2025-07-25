@@ -7,8 +7,7 @@
 		display: inline-flex;
 		place-items: center;
 		/* Visible with forced colors  */
-		outline: transparent solid rem(1);
-		font-size: rem(16);
+		outline: transparent solid to-rem(1);
 
 		.kol-badge__smart-button {
 			.button {

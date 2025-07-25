@@ -1,23 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Loading, PropImageSource } from '../props';
+import type { PropAlt, PropImageSizes, PropImageSource, PropImageSrcset, PropLoading } from '../props';
 
-type RequiredProps = {
-	alt: string; // TODO: PropAlt ??? LABEL?!
-} & PropImageSource;
-type OptionalProps = {
-	loading: Loading; // TODO: PropLoading
-	sizes: string; // TODO: PropSizes
-	srcset: string; // TODO: PropSrcSet
-};
+type RequiredProps = PropAlt & PropImageSource;
+type OptionalProps = PropLoading & PropImageSizes & PropImageSrcset;
 
-type RequiredStates = RequiredProps & {
-	loading: Loading;
-};
-type OptionalStates = {
-	sizes: string;
-	srcset: string;
-};
+type RequiredStates = RequiredProps & PropLoading;
+type OptionalStates = PropImageSizes & PropImageSrcset;
 
 export type ImageProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type ImageStates = Generic.Element.Members<RequiredStates, OptionalStates>;

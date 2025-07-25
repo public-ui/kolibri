@@ -4,8 +4,8 @@
 	.kol-spin {
 		&__spinner {
 			&--cycle {
-				width: rem(48);
-				height: rem(48);
+				width: to-rem(48);
+				height: to-rem(48);
 			}
 		}
 
@@ -19,7 +19,6 @@
 
 			&::before {
 				content: '';
-				box-sizing: border-box;
 				position: absolute;
 				inset: 0;
 				border-radius: 50%;

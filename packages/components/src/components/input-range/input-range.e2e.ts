@@ -2,6 +2,7 @@ import { type E2EPage, test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-range';
 const TEST_VALUE = '10';
@@ -13,15 +14,18 @@ const fillAction: FillAction = async (page) => {
 const selectInput = (page: Page & E2EPage) => page.locator('input[type=number]');
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolInputRangeElement>(COMPONENT_NAME, Number(TEST_VALUE), fillAction);
-	testInputCallbacksAndEvents<HTMLKolInputRangeElement>(
-		COMPONENT_NAME,
-		TEST_VALUE,
+	testInputValueReflection<HTMLKolInputRangeElement>({
+		componentName: COMPONENT_NAME,
 		fillAction,
-		['change'],
-		undefined,
+		testValue: Number(TEST_VALUE),
+	});
+	testInputCallbacksAndEvents<HTMLKolInputRangeElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		omittedEvents: ['change'],
 		selectInput,
-		undefined,
-		Number(TEST_VALUE),
-	);
+		expectedValue: Number(TEST_VALUE),
+		testValue: TEST_VALUE,
+	});
+	testInputMessage<HTMLKolInputRangeElement>(COMPONENT_NAME);
 });

@@ -11,3 +11,19 @@
 The [Preact](https://github.com/preactjs/preact) adapter is a wrapper around the React adapter. Please refer to the [React adapter documentation](../react/README.md) for more information.
 
 ⚠️ Preact support is currently considered experimental.
+
+## Installation
+
+```bash
+npm install @public-ui/preact
+pnpm add @public-ui/preact
+```
+
+## Usage
+
+```tsx
+import { h } from 'preact';
+import { KolButton } from '@public-ui/preact';
+
+export const App = () => <KolButton _label="Hello World" />;
+```

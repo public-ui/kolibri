@@ -2,12 +2,11 @@
 @use '../../styles/global' as *;
 
 @layer kol-component {
-	$base-horizontal-padding: rem(8);
+	$base-horizontal-padding: to-rem(8);
 
 	.kol-tree-item {
 		$root: &;
-		--indentation: var(--tree-item-indentation, #{rem(10)}); // Set `--tree-item-indentation` in themes to control padding
-		font-size: rem(16);
+		--indentation: var(--tree-item-indentation, #{to-rem(10)}); // Set `--tree-item-indentation` in themes to control padding
 
 		&__link {
 			.kol-link {
@@ -15,12 +14,12 @@
 				display: inline-flex;
 				min-height: var(--a11y-min-size);
 				padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
-				padding-right: rem(6);
+				padding-right: to-rem(6);
 				text-decoration: none;
 			}
 
 			&--first-level .kol-link {
-				padding-left: rem(6);
+				padding-left: to-rem(6);
 			}
 		}
 

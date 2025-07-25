@@ -1,11 +1,8 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-tooltip {
+		contain: layout;
 		display: contents;
 
 		&__floating {
@@ -13,7 +10,6 @@
 			animation-iteration-count: 1;
 			animation-name: fadeInOpacity;
 			animation-timing-function: ease-in;
-			box-sizing: border-box;
 			display: none;
 			position: fixed;
 			visibility: hidden;
@@ -29,10 +25,10 @@
 		&__arrow {
 			background-color: #fff;
 			color: #000;
-			height: rem(10);
+			height: to-rem(10);
 			position: absolute;
 			transform: rotate(45deg);
-			width: rem(10);
+			width: to-rem(10);
 			z-index: 999;
 		}
 

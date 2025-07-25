@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
+import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
 	KoliBriDataCompareFn,
@@ -185,7 +185,7 @@ export class KolTableStateful implements TableAPI {
 	 */
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
 		if (typeof headerCell.compareFn === 'function') {
-			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
+			if (!this.state._allowMultiSort && headerCell.key !== this.sortData[0]?.key) {
 				// clear when another column is sorted and multi sort is not allowed
 				this.sortData = [];
 			}
@@ -455,7 +455,7 @@ export class KolTableStateful implements TableAPI {
 					})}
 				</span>
 				<div class="kol-table-stateful__pagination-wrapper">
-					<KolPaginationTag
+					<KolPaginationWcTag
 						class="test"
 						_boundaryCount={this.state._pagination._boundaryCount}
 						_customClass={this.state._pagination._customClass}
@@ -467,7 +467,7 @@ export class KolTableStateful implements TableAPI {
 						_tooltipAlign="bottom"
 						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
 						_label={label}
-					></KolPaginationTag>
+					></KolPaginationWcTag>
 				</div>
 			</div>
 		);

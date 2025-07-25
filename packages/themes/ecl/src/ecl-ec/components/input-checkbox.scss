@@ -1,19 +1,15 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/required' as *;
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	@include kol-alert-theme;
 
 	.kol-form-field {
 		color: var(--color-grey);
 
 		&__hint {
-			font-size: rem(14);
+			font-size: to-rem(14);
 		}
 
 		&__msg {
@@ -30,11 +26,11 @@
 
 		&__label {
 			@at-root #{$root}--label-align-left & {
-				padding-right: rem(8);
+				padding-right: to-rem(8);
 			}
 
 			@at-root #{$root}--label-align-right & {
-				padding-left: rem(8);
+				padding-left: to-rem(8);
 			}
 		}
 
@@ -53,7 +49,6 @@
 			border-color: var(--color-grey-75);
 			color: var(--color-grey);
 			line-height: 1.5;
-			font-size: rem(16);
 
 			&:focus {
 				outline-color: var(--color-blue);

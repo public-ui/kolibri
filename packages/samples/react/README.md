@@ -10,9 +10,18 @@
 
 ## Motivation
 
-Showcase of all KoliBri components in a React application.
+This app demonstrates all KoliBri components in a small React project.
 
 Live example: <https://public-ui.github.io/v2/sample-react>
+
+The sample is built with **Vite** for fast development and production builds.
+
+## Folder structure
+
+- `src/react.main.tsx` – bootstraps the app and sets up theming
+- `src/components` – component demos organized by folder
+- `src/scenarios` – cross component scenarios
+- `src/shares` – shared utilities
 
 ## Installation and usage
 
@@ -24,3 +33,5 @@ pnpm -r build
 cd packages/samples/react
 pnpm start
 ```
+
+Run `pnpm start` from this directory to launch the development server.

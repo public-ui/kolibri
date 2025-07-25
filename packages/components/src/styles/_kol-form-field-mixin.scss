@@ -6,7 +6,6 @@
 			$root: &;
 
 			display: grid;
-			font-size: rem(16);
 
 			&__label {
 				#{$root}:not(#{$root}--disabled) & {

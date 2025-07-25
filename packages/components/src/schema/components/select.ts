@@ -6,6 +6,7 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -23,15 +24,15 @@ import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, StencilUnknown, S
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
 type OptionalProps = {
-	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
-	value: Stringified<StencilUnknown[]>;
+	value: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropMultiple &
 	PropName &
@@ -44,18 +45,18 @@ type OptionalProps = {
 type RequiredStates = {
 	hasValue: boolean;
 	options: SelectOption<W3CInputValue>[];
-	value: StencilUnknown[];
+	value: StencilUnknown[] | StencilUnknown;
 } & PropId &
 	PropHideMsg &
 	PropMultiple &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
 	PropId &
 	PropName &

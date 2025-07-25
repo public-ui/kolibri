@@ -17,16 +17,19 @@ module.exports = {
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
-	plugins: [
-		'html',
-		// 'jsdoc',
-		// 'json',
-		// 'jsx-a11y',
-		'react',
-	],
-	settings: {
-		react: {
-			version: 'detect',
-		},
-	},
+        plugins: [
+                'html',
+                // 'jsdoc',
+                // 'json',
+                // 'jsx-a11y',
+                'react',
+        ],
+        rules: {
+                'eqeqeq': 'error',
+        },
+        settings: {
+                react: {
+                        version: 'detect',
+                },
+        },
 };

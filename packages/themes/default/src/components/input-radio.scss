@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/form-field' as *;
@@ -13,7 +13,6 @@
 	.kol-form-field {
 		border: 0;
 		display: grid;
-		font-family: var(--font-family);
 		margin: 0;
 		padding: 0;
 
@@ -28,7 +27,7 @@
 		}
 
 		&__input {
-			gap: rem(4);
+			gap: to-rem(4);
 
 			&--orientation-horizontal {
 				margin-top: calc(var(--spacing) / 2);
@@ -40,41 +39,41 @@
 	.kol-field-control {
 		&__label {
 			padding-top: 0.1em;
-			padding-left: rem(8);
 		}
 	}
 
 	.kol-input-radio {
-		width: 100%;
-		border-color: var(--color-subtle);
-		border-width: 2px;
-		border-style: solid;
-		border-radius: 50%;
-		line-height: 1.5;
+		&__input {
+			border-color: var(--color-subtle);
+			border-width: 2px;
+			border-style: solid;
+			border-radius: 50%;
+			line-height: 1.5;
 
-		&:not(:disabled):hover {
-			border-color: var(--color-primary);
-			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
-		}
-
-		&:focus {
-			outline-offset: 2px;
-			outline: var(--color-primary-variant) solid rem(3);
-			transition: 200ms outline-offset linear;
-
-			&:hover {
-				box-shadow: none;
+			&:not(:disabled):hover {
+				border-color: var(--color-primary);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 			}
-		}
 
-		&:checked {
-			&:before {
-				background-color: var(--color-primary);
+			&:focus {
+				outline-offset: 2px;
+				outline: var(--color-primary-variant) solid to-rem(3);
+				transition: 200ms outline-offset linear;
+
+				&:hover {
+					box-shadow: none;
+				}
 			}
-		}
 
-		&:disabled {
-			background-color: var(--color-mute-variant);
+			&:checked {
+				&:before {
+					background-color: var(--color-primary);
+				}
+			}
+
+			&:disabled {
+				background-color: var(--color-mute-variant);
+			}
 		}
 	}
 

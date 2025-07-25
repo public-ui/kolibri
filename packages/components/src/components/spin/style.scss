@@ -5,11 +5,9 @@
 
 @layer kol-component {
 	.kol-spin {
-		font-size: rem(16);
-
 		&__spinner {
 			display: block;
-			padding: rem(2);
+			padding: to-rem(2);
 			position: relative;
 		}
 	}

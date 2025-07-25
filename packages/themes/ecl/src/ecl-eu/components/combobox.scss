@@ -1,11 +1,11 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/custom-suggestions-option' as *;
 @use '../mixins/custom-suggestions-options-group' as *;
 @use '../mixins/custom-suggestions-toggle' as *;
 @use '../@shared/input-text' as *;
 
-$option-height: rem(40);
+$option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -13,10 +13,6 @@ $visible-options: 5;
 	@include kol-custom-suggestions-option-theme($option-height);
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;
-
-	:host {
-		font-family: var(--font-family);
-	}
 
 	.kol-combobox {
 		&__group {
@@ -29,13 +25,13 @@ $visible-options: 5;
 			color: var(--color-grey);
 			order: 4;
 			align-items: center;
-			padding: rem(1) 0.5em;
+			padding: to-rem(1) 0.5em;
 		}
 
 		&__input {
 			border: none;
 			flex-grow: 1;
-			width: calc(100% - rem(24));
+			width: calc(100% - to-rem(24));
 			position: relative;
 
 			&::placeholder {

@@ -9,7 +9,7 @@
 		}
 
 		.#{$block-classname} {
-			font-style: rem(16);
+			font-style: to-rem(16);
 			display: inline-flex;
 			place-items: center;
 			text-align: center;

@@ -4,6 +4,7 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { NumberString } from '../../schema';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-number';
 const TEST_VALUE = '10.23';
@@ -65,8 +66,17 @@ const fillAndTest = async (page: E2EPage, input: string, expectedValue: unknown)
 };
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolInputNumberElement>(COMPONENT_NAME, Number(TEST_VALUE), fillAction);
-	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, undefined, undefined, undefined, undefined, undefined, Number(TEST_VALUE));
+	testInputValueReflection<HTMLKolInputNumberElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: Number(TEST_VALUE),
+	});
+	testInputCallbacksAndEvents<HTMLKolInputNumberElement>({
+		componentName: COMPONENT_NAME,
+		expectedValue: Number(TEST_VALUE),
+		testValue: TEST_VALUE,
+	});
+	testInputMessage<HTMLKolInputNumberElement>(COMPONENT_NAME);
 
 	test.describe('type handling', () => {
 		// Test cases for different initial values

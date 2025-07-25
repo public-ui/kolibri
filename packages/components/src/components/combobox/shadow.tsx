@@ -15,16 +15,19 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	DisabledPropType,
+	HideLabelPropType,
+	HintPropType,
 	W3CInputValue,
 } from '../../schema';
 import clsx from 'clsx';
 import { nonce } from '../../utils/dev.utils';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import { ComboboxController } from './controller';
-import { getRenderStates } from '../input/controller';
-import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
+import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
@@ -61,7 +64,8 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private toggleListbox = () => {
-		if (this.state._disabled === true) {
+		const isDisabled = this.state._disabled === true;
+		if (isDisabled) {
 			this._isOpen = false;
 		} else {
 			this.refInput?.focus();
@@ -173,6 +177,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	private getInputProps(): InputStateWrapperProps {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const isDisabled = this.state._disabled === true;
 
 		return {
 			ref: this.catchRef,
@@ -191,7 +196,7 @@ export class KolCombobox implements ComboboxAPI {
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
 			autocorrect: 'off',
-			disabled: this.state._disabled,
+			disabled: isDisabled,
 			customSuggestions: true,
 			id: this.state._id,
 			name: this.state._name,
@@ -212,15 +217,16 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	public render(): JSX.Element {
+		const isDisabled = this.state._disabled === true;
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
+						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} />
 					</div>
 
-					{this._isOpen && !(this.state._disabled === true) && (
+					{this._isOpen && !isDisabled && (
 						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
@@ -228,6 +234,7 @@ export class KolCombobox implements ComboboxAPI {
 									<CustomSuggestionsOptionFc
 										index={index}
 										option={option}
+										searchTerm={this.state._value}
 										ref={(el) => {
 											if (el) this.refSuggestions[index] = el;
 										}}
@@ -356,7 +363,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
-		if (this.host != undefined && !this.host.contains(event.target as Node)) {
+		if (this.host !== undefined && !this.host.contains(event.target as Node)) {
 			this._isOpen = false;
 		}
 	}
@@ -493,7 +500,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -503,12 +510,12 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 

@@ -17,6 +17,10 @@ export class KolTableSettings {
 	@Element() private readonly host?: HTMLKolTableSettingsWcElement;
 	@State() tableSettings: TableSettingsPropType = { columns: [] };
 	@State() errorMessage: string | null = null;
+	private readonly translateTableSettings = translate('kol-table-settings');
+	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
+	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
+	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
 	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
 	@Watch('_tableSettings')
@@ -83,7 +87,7 @@ export class KolTableSettings {
 		const hasVisibleColumn = this.tableSettings.columns.some((column) => column.visible);
 
 		if (!hasVisibleColumn) {
-			this.errorMessage = translate('kol-table-settings-error-all-invisible');
+			this.errorMessage = this.translateErrorAllInvisible;
 			return;
 		} else if (this.host) {
 			this.errorMessage = null;
@@ -100,12 +104,12 @@ export class KolTableSettings {
 				ref={(el) => (this.popoverRef = el)}
 				class="kol-table-settings"
 				_icons="codicon codicon-settings-gear"
-				_label={translate('kol-table-settings')}
+				_label={this.translateTableSettings}
 				_popoverAlign="top"
 				_hideLabel
 			>
 				<div class="kol-table-settings__content">
-					<KolHeadingTag _label={translate('kol-table-settings')} _level={0} />
+					<KolHeadingTag _label={this.translateTableSettings} _level={0} />
 
 					{this.errorMessage && <KolAlertWcTag _type="error" _label={this.errorMessage} _variant="msg" class="kol-table-settings__error-message" />}
 
@@ -133,7 +137,7 @@ export class KolTableSettings {
 											_icons="codicon codicon-arrow-up"
 											_label={translate('kol-table-settings-move-up', { placeholders: { column: column.label } })}
 											_hideLabel
-											_variant="ghost"
+											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key, 'up') }}
 											_disabled={index === 0}
 											data-testid="table-settings-move-up"
@@ -142,7 +146,7 @@ export class KolTableSettings {
 											_icons="codicon codicon-arrow-down"
 											_label={translate('kol-table-settings-move-down', { placeholders: { column: column.label } })}
 											_hideLabel
-											_variant="ghost"
+											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key, 'down') }}
 											_disabled={index === sortedColumns.length - 1}
 											data-testid="table-settings-move-down"
@@ -154,12 +158,12 @@ export class KolTableSettings {
 
 						<div class="kol-table-settings__actions">
 							<KolButtonWcTag
-								_label={translate('kol-table-settings-cancel')}
-								_variant="secondary"
+								_label={this.translateTableSettingsCancel}
+								_buttonVariant="secondary"
 								_on={{ onClick: () => this.handleCancel() }}
 								data-testid="table-settings-cancel"
 							/>
-							<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" _type="submit" data-testid="table-settings-apply" />
+							<KolButtonWcTag _label={this.translateTableSettingsApply} _buttonVariant="primary" _type="submit" data-testid="table-settings-apply" />
 						</div>
 					</form>
 				</div>

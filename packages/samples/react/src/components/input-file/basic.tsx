@@ -11,6 +11,6 @@ export const InputFileBasic: FC = () => (
 			<p>KolInputFile renders a file input field. The sample shows KolInputFile in a form context with all variations and states.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputFileVariants} />
+		<FormWrap RefComponent={InputFileVariants} showButtons={false} />
 	</>
 );

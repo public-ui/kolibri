@@ -35,26 +35,26 @@ export type InputStateWrapperProps = Partial<InputProps> & {
 
 /**
  * @param state
+ * @param other
  * @param customSuggestions - Set to true when a custom implementation for _suggestions is provided. Omits the native datalist.
  */
-function getInputProps(state: InputState, customSuggestions?: boolean): InputProps {
-	const { ariaDescribedBy } = getRenderStates(state);
+function getInputProps(state: InputState, other: Partial<InputProps>, customSuggestions?: boolean): InputProps {
+	const renderStates = getRenderStates(state);
+	const ariaDescribedBy = [...renderStates.ariaDescribedBy, ...(other.ariaDescribedBy ?? [])];
 
 	const props: InputProps = {
 		id: state._id,
 		hideLabel: state._hideLabel,
 		label: state._label,
-		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
-
-		ariaDescribedBy: ariaDescribedBy,
 	};
 
+	if ('_accessKey' in state) props.accessKey = state._accessKey;
 	if ('_type' in state) props.type = state._type;
 	if ('_value' in state) props.value = state._value as string | number | string[];
 	if ('_required' in state) props.required = state._required;
-	if ('_maxLength' in state) props.maxlength = state._maxLength;
+	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') props.maxlength = state._maxLength;
 	if ('_placeholder' in state) props.placeholder = state._placeholder;
 	if ('_autoComplete' in state) props.autoComplete = state._autoComplete;
 	if ('_spellCheck' in state) props.spellcheck = state._spellCheck;
@@ -76,11 +76,15 @@ function getInputProps(state: InputState, customSuggestions?: boolean): InputPro
 		}
 	}
 
-	return props;
+	return {
+		...props,
+		...other,
+		ariaDescribedBy,
+	};
 }
 
 const InputStateWrapper: FC<InputStateWrapperProps> = ({ state, customSuggestions, ...other }) => {
-	return <KolInputFc {...getInputProps(state, customSuggestions)} {...other} />;
+	return <KolInputFc {...getInputProps(state, other, customSuggestions)} />;
 };
 
 export default InputStateWrapper;

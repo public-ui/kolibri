@@ -1,4 +1,5 @@
 import type { MsgPropType, TouchedPropType } from '../../schema';
+import { convertMsgToInternMsg } from '../../schema/props/msg';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -17,8 +18,9 @@ export const getRenderStates = (state: {
 	hasHint: boolean;
 	ariaDescribedBy: string[];
 } => {
-	const hasMessage = Boolean(state?._msg?._description && state._msg._description?.length > 0);
-	const isMessageValidError = state._msg?._type === 'error' && hasMessage;
+	const internMsg = convertMsgToInternMsg(state._msg);
+	const hasMessage = Boolean(internMsg?.description && internMsg.description.length > 0);
+	const isMessageValidError = internMsg?.type === 'error' && hasMessage;
 	const hasError = isMessageValidError && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 

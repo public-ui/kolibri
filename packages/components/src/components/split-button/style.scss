@@ -6,7 +6,6 @@
 @layer kol-component {
 	.kol-split-button {
 		display: flex;
-		font-size: rem(16);
 		position: relative;
 
 		&__root {
@@ -21,7 +20,7 @@
 
 		.kol-popover {
 			&__content {
-				margin-top: rem(2);
+				margin-top: to-rem(2);
 			}
 
 			&__arrow {

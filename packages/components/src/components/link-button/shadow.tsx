@@ -60,7 +60,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 				_shortKey={this._shortKey}
 				_target={this._target}
 				_tooltipAlign={this._tooltipAlign}
-				_variant={this._variant}
+				_buttonVariant={this._variant}
 			>
 				<slot name="expert" slot="expert"></slot>
 			</KolLinkWcTag>

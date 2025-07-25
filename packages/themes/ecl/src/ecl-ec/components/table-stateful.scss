@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
@@ -6,8 +6,6 @@
 
 	.kol-table-stateful {
 		$root: &;
-
-		font-family: var(--font-family);
 
 		&__pagination-wrapper {
 			@media (min-width: 1024px) {
@@ -25,7 +23,7 @@
 			@at-root #{$root}__pagination & {
 				@media (min-width: 1024px) {
 					display: flex;
-					gap: rem(16);
+					gap: to-rem(16);
 				}
 			}
 		}

@@ -3,9 +3,10 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
+import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-select';
-const TEST_VALUE = ['E'];
+const TEST_VALUE = 'E';
 const TEST_LABEL = 'East';
 const OPTIONS = [
 	{ label: 'North', value: 'N' },
@@ -20,6 +21,20 @@ const fillAction: FillAction = async (page) => {
 const selectInput = (page: Page & E2EPage) => page.locator('select');
 
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE, 'toEqual');
-	testInputCallbacksAndEvents<HTMLKolSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, undefined, OPTIONS_ATTRIBUTE, selectInput, 'toEqual');
+	testInputValueReflection<HTMLKolSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		equalityCheck: 'toEqual',
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction,
+		selectInput,
+		testValue: TEST_VALUE,
+		equalityCheck: 'toEqual',
+	});
+	testInputMessage<HTMLKolSelectElement>(COMPONENT_NAME);
 });

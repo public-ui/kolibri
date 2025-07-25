@@ -4,6 +4,7 @@ import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { KolEvent } from '../../utils/events';
+import { testInputMessage } from '../../e2e/input-msg';
 const COMPONENT_NAME = 'kol-input-color';
 const TEST_VALUE = '#cc006e';
 const NEW_VALUE = '#00ccff';
@@ -15,8 +16,20 @@ const fillAction: FillAction = async (page) => {
 const selectTextInput = (page: Page & E2EPage) => page.locator('input[type="text"]');
 const selectColorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
 test.describe(COMPONENT_NAME, () => {
-	testInputValueReflection<HTMLKolInputColorElement>(COMPONENT_NAME, TEST_VALUE, fillAction);
-	testInputCallbacksAndEvents<HTMLKolInputColorElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['input'], undefined, selectTextInput);
+	testInputValueReflection<HTMLKolInputColorElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		testValue: TEST_VALUE,
+	});
+	testInputCallbacksAndEvents<HTMLKolInputColorElement>({
+		componentName: COMPONENT_NAME,
+		fillAction,
+		omittedEvents: ['input'],
+		selectInput: selectTextInput,
+		testValue: TEST_VALUE,
+	});
+	testInputMessage<HTMLKolInputColorElement>(COMPONENT_NAME);
+
 	test('should sync value between color input and text input', async ({ page }) => {
 		await page.setContent(`<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 		const colorInput = selectColorInput(page);
