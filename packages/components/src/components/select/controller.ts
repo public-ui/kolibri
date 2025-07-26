@@ -12,7 +12,7 @@ import type {
 	MultiplePropType,
 	W3CInputValue,
 } from '../../schema';
-import { validateMultiple, validateOptionsWithOptgroup, validateRequired, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
+import { validateMultiple, validateOptionsWithOptgroup, validateRequired, validateRows, watchJsonArrayString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
