@@ -1,18 +1,3 @@
-@use '../@shared/mixins' as *;
-@use '../../assets/codicons/codicon' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
-@layer kol-component {
-	/* :host implicitly inherits font-size, see below */
-	:host {
-		color: inherit;
-		display: contents;
-		font-size: inherit;
-		line-height: inherit;
-	}
-
-	/* this rules overwrites the fixed font size from codicon */
-	:host > i,
-	:host > i::before {
-		font-size: inherit !important;
-	}
-}
+@include kol-icon-base;

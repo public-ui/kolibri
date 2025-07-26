@@ -1,8 +1,10 @@
 @use '../../styles/global' as *;
 @use '../@shared/kol-link-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
 @include kol-link-styles('kol-link');
+@include kol-icon-base;
 
 @layer kol-component {
 	.kol-breadcrumb {

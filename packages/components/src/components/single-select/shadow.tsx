@@ -24,7 +24,7 @@ import type {
 } from '../../schema';
 
 import clsx from 'clsx';
-import { KolIconTag } from '../../core/component-names';
+import KolIconFc from '../../functional-components/Icon';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
@@ -267,10 +267,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
 						{this._inputValue && !this.state._hideClearButton && (
-							<KolIconTag
-								_icons="codicon codicon-close"
+							<KolIconFc
+								icons="codicon codicon-close"
 								data-testid="single-select-delete"
-								_label={this.translateDeleteSelection}
+								label={this.translateDeleteSelection}
 								onClick={() => {
 									this.clearSelection();
 									this.refInput?.focus();

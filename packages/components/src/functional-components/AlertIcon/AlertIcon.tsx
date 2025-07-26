@@ -1,5 +1,5 @@
 import { Fragment, type FunctionalComponent as FC, h } from '@stencil/core';
-import { KolIconTag } from '../../core/component-names';
+import KolIconFc from '../Icon';
 import type { AlertType } from '../../schema';
 import { translate } from '../../i18n';
 import { BEM_CLASS_ALERT__ICON } from '../Alert/bem';
@@ -19,7 +19,7 @@ const Icon: FC<{ ariaLabel: string; icon: string; label?: string }> = ({ ariaLab
 	return (
 		<>
 			<span class="visually-hidden">{ariaLabel}</span>
-			<KolIconTag class={BEM_CLASS_ALERT__ICON} _label="" _icons={icon} />
+			<KolIconFc class={BEM_CLASS_ALERT__ICON} label="" icons={icon} />
 		</>
 	);
 };

@@ -54,7 +54,8 @@ import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
-import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolTooltipWcTag } from '../../core/component-names';
+import KolIconFc from '../../functional-components/Icon';
 
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
@@ -184,10 +185,10 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 					{isExternal && (
-						<KolIconTag
+						<KolIconFc
 							class="kol-link__icon"
-							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							_icons={'codicon codicon-link-external'}
+							label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
+							icons="codicon codicon-link-external"
 							aria-hidden={this.state._hideLabel}
 						/>
 					)}

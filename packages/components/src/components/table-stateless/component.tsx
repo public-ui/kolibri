@@ -2,7 +2,8 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import clsx from 'clsx';
-import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
+import KolIconFc from '../../functional-components/Icon';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { isEqual } from 'lodash-es';
@@ -539,7 +540,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								'kol-table__selection-label--disabled': disabled,
 							})}
 						>
-							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
+							<KolIconFc class="kol-table__selection-icon" icons={`codicon ${selected ? 'codicon-check' : ''}`} label="" />
 							<input
 								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 								ref={(el) => el && this.checkboxRefs.push(el)}
@@ -740,7 +741,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					})}
 				>
 					<label class="kol-table__selection-label">
-						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
+						<KolIconFc class="kol-table__selection-icon" icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} label="" />
 						<input
 							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 							data-testid="selection-checkbox-all"

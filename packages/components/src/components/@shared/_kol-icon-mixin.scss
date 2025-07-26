@@ -1,0 +1,18 @@
+@use 'mixins' as *;
+@use '../../assets/codicons/codicon' as *;
+
+@mixin kol-icon-base {
+	@layer kol-component {
+		.kol-icon {
+			color: inherit;
+			display: contents;
+			font-size: inherit;
+			line-height: inherit;
+
+			&,
+			&::before {
+				font-size: inherit !important;
+			}
+		}
+	}
+}

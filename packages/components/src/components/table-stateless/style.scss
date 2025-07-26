@@ -6,8 +6,10 @@
 @use '../@shared/mixins' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
 @include kol-alert;
 @include kol-button-styles('kol-button');
 @include kol-popover-button-styles;
 @include kol-table-stateless-styles;
+@include kol-icon-base;

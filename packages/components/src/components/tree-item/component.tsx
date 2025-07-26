@@ -2,7 +2,8 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
-import { KolLinkWcTag, KolIconTag, KolTreeTag } from '../../core/component-names';
+import { KolLinkWcTag, KolTreeTag } from '../../core/component-names';
+import KolIconFc from '../../functional-components/Icon';
 import { nonce } from '../../utils/dev.utils';
 import clsx from 'clsx';
 
@@ -47,10 +48,10 @@ export class KolTreeItemWc implements TreeItemAPI {
 									class="kol-tree-item__toggle-button"
 									onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}
 								>
-									<KolIconTag
+									<KolIconFc
 										class="kol-tree-item__toggle-button-icon"
-										_icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
-										_label={'' /* Label deliberately left empty */}
+										icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
+										label={'' /* Label deliberately left empty */}
 									/>
 								</span>
 							) : (
