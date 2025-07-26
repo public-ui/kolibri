@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { InputFileProps, InputFileWatches } from '../../schema';
-import { watchBoolean, watchString } from '../../schema';
+import type { InputFileProps, InputFileWatches, MultiplePropType } from '../../schema';
+import { validateMultiple, watchBoolean, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -17,8 +17,8 @@ export class InputFileController extends InputIconController implements InputFil
 		watchString(this.component, '_accept', value);
 	}
 
-	public validateMultiple(value?: boolean): void {
-		watchBoolean(this.component, '_multiple', value);
+	public validateMultiple(value?: MultiplePropType): void {
+		validateMultiple(this.component, value);
 	}
 
 	public validateRequired(value?: boolean): void {

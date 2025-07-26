@@ -10,6 +10,7 @@ import type {
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MultiplePropType,
 	NamePropType,
 	OptionsWithOptgroupPropType,
 	RowsPropType,
@@ -298,7 +299,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.controller.validateMultiple(value);
 	}
 

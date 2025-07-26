@@ -8,9 +8,10 @@ import type {
 	SelectWatches,
 	StencilUnknown,
 	Stringified,
+	MultiplePropType,
 	W3CInputValue,
 } from '../../schema';
-import { validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
+import { validateMultiple, validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -86,9 +87,9 @@ export class SelectController extends InputIconController implements SelectWatch
 		});
 	}
 
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.assertComponentValueMatchesMultiplicity(value === true);
-		watchBoolean(this.component, '_multiple', value, {
+		validateMultiple(this.component, value, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,

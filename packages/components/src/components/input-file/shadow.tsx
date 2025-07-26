@@ -13,6 +13,7 @@ import type {
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MultiplePropType,
 	NamePropType,
 	ShortKeyPropType,
 	Stringified,
@@ -296,7 +297,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.controller.validateMultiple(value);
 	}
 
