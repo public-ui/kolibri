@@ -1,16 +1,17 @@
 import type {
 	AutoCompletePropType,
 	InputDateProps,
-	InputDateType,
 	InputDateWatches,
 	InputTypeOnDefault,
 	Iso8601,
 	NumberString,
 	ReadOnlyPropType,
+	RequiredPropType,
 	SuggestionsPropType,
 } from '../../schema';
-import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchValidator } from '../../schema';
+import { setState, validateReadOnly, validateRequired, validateSuggestions, watchValidator } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
+import { type InputDateTypePropType, validateTypeInputDate } from '../../schema/props/type-input-date';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -41,7 +42,7 @@ export class InputDateController extends InputIconController implements InputDat
 		validateSuggestions(this.component, value);
 	}
 
-	public static tryParseToString(value: Iso8601 | Date | null | undefined, type?: InputDateType, step?: string | number): string | null | undefined {
+	public static tryParseToString(value: Iso8601 | Date | null | undefined, type?: InputDateTypePropType, step?: string | number): string | null | undefined {
 		if (typeof value === 'string' || value === null) {
 			return value;
 		}
@@ -185,22 +186,16 @@ export class InputDateController extends InputIconController implements InputDat
 		validateReadOnly(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateStep(value?: number | NumberString): void {
 		this.validateNumber('_step', value);
 	}
 
-	public validateType(value?: InputDateType): void {
-		watchValidator(
-			this.component,
-			'_type',
-			(value): boolean => typeof value === 'string' && inputDateTypeOptions.includes(value),
-			new Set([`String {${inputDateTypeOptions.join(', ')}`]),
-			value,
-		);
+	public validateType(value?: InputDateTypePropType): void {
+		validateTypeInputDate(this.component, value);
 	}
 
 	public validateValue(value?: Iso8601 | Date | null): void {

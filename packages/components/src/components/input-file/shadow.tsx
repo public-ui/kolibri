@@ -4,8 +4,11 @@ import clsx from 'clsx';
 
 import type {
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputFileAPI,
@@ -15,22 +18,21 @@ import type {
 	MsgPropType,
 	MultiplePropType,
 	NamePropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
+	AcceptPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import { InputFileController } from './controller';
-import { translate } from '../../i18n';
 import { KolButtonWcTag } from '../../core/component-names';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { translate } from '../../i18n';
+import { nonce } from '../../utils/dev.utils';
+import { InputFileController } from './controller';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -247,7 +249,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_accept')
-	public validateAccept(value?: string): void {
+	public validateAccept(value?: AcceptPropType): void {
 		this.controller.validateAccept(value);
 	}
 
@@ -312,7 +314,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

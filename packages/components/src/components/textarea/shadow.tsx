@@ -4,9 +4,12 @@ import clsx from 'clsx';
 
 import type {
 	AdjustHeightPropType,
-	CSSResize,
+	DisabledPropType,
 	FocusableElement,
+	HasCounterPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
@@ -14,24 +17,24 @@ import type {
 	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
 	SpellCheckPropType,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TextareaAPI,
+	TextareaResizePropType,
 	TextareaStates,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HasCounterPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
+import { nonce } from '../../utils/dev.utils';
 import { TextareaController } from './controller';
 
 /**
@@ -222,7 +225,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
 	 */
-	@Prop() public _resize?: CSSResize = 'vertical';
+	@Prop() public _resize?: TextareaResizePropType = 'vertical';
 
 	/**
 	 * Makes the input element required.
@@ -364,22 +367,22 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
 	@Watch('_resize')
-	public validateResize(value?: CSSResize): void {
+	public validateResize(value?: TextareaResizePropType): void {
 		this.controller.validateResize(value);
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

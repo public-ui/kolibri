@@ -2,6 +2,7 @@ import type {
 	Optgroup,
 	Option,
 	OptionsWithOptgroupPropType,
+	RequiredPropType,
 	RowsPropType,
 	SelectOption,
 	SelectProps,
@@ -11,7 +12,7 @@ import type {
 	MultiplePropType,
 	W3CInputValue,
 } from '../../schema';
-import { validateMultiple, validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
+import { validateMultiple, validateOptionsWithOptgroup, validateRequired, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -103,8 +104,8 @@ export class SelectController extends InputIconController implements SelectWatch
 		// }
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateRows(value?: RowsPropType) {

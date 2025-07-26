@@ -4,25 +4,28 @@ import clsx from 'clsx';
 
 import type {
 	AccessKeyPropType,
+	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HasCounterPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTextAPI,
 	InputTextStates,
-	InputTextType,
+	InputTextTypePropType,
 	InputTypeOnDefault,
-	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
-	DisabledPropType,
-	HasCounterPropType,
-	HideLabelPropType,
-	HintPropType,
 	SpellCheckPropType,
 	Stringified,
 	SuggestionsPropType,
@@ -30,11 +33,11 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import { InputTextController } from './controller';
 
 /**
@@ -286,7 +289,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: InputTextType = 'text';
+	@Prop() public _type?: InputTextTypePropType = 'text';
 
 	/**
 	 * Defines the value of the input.
@@ -395,17 +398,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
@@ -440,7 +443,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_type')
-	public validateType(value?: InputTextType): void {
+	public validateType(value?: InputTextTypePropType): void {
 		this.controller.validateType(value);
 	}
 

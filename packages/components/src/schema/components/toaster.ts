@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { LabelPropType } from '../props';
-import type { AlertType, AlertVariant } from './alert';
+import type { AlertTypePropType, AlertVariantPropType } from '../props';
 
 const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
 type ToastStatus = (typeof toastStatusOptions)[number];
@@ -12,8 +12,8 @@ export type Toast = {
 	description?: string;
 	render?: ToastRenderFunction;
 	label: LabelPropType;
-	type: AlertType;
-	variant?: AlertVariant;
+	type: AlertTypePropType;
+	variant?: AlertVariantPropType;
 	onClose?: () => void;
 };
 
@@ -24,7 +24,7 @@ export type ToastState = {
 };
 
 export type ToasterOptions = {
-	defaultVariant: AlertVariant;
+	defaultVariant: AlertVariantPropType;
 };
 
 type RequiredProps = NonNullable<unknown>;
