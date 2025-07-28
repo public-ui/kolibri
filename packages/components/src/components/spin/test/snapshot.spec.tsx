@@ -4,4 +4,4 @@ import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolSpin } from '../shadow';
 
-executeSnapshotTests<SpinProps>(KolSpinTag, [KolSpin], [{ _show: false }, { _show: true }]);
+executeSnapshotTests<SpinProps>(KolSpinTag, [KolSpin], [{ _show: false }, { _show: true }, { _show: true, _label: 'Loading' }]);

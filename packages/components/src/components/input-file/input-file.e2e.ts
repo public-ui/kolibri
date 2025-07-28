@@ -5,6 +5,7 @@ import { expect } from '@playwright/test';
 import { Callback } from '../../schema/enums';
 import { KolEvent } from '../../utils/events';
 import { testInputMessage } from '../../e2e/input-msg';
+import { translate } from '../../i18n';
 
 const COMPONENT_NAME = 'kol-input-file';
 const TEST_VALUE: [] = [];
@@ -70,6 +71,27 @@ test.describe(COMPONENT_NAME, () => {
 
 				expect(Object.keys(await fileList)).toHaveLength(1); // no great way to test this, because Playwright has no FileList implementation.
 			});
+		});
+	});
+
+	test.describe('reset()', () => {
+		test('should clear the selected files and filename text', async ({ page }) => {
+			await page.setContent(`<kol-input-file _label="Input"></kol-input-file>`);
+
+			await fillAction(page);
+			await page.waitForChanges();
+
+			const component = page.locator(COMPONENT_NAME);
+			const filledFileList = await component.evaluate((element: HTMLKolInputFileElement) => element.getValue());
+			expect(filledFileList).not.toEqual({});
+
+			await component.evaluate((element: HTMLKolInputFileElement) => element.reset());
+			await page.waitForChanges();
+
+			const fileList = await component.evaluate((element: HTMLKolInputFileElement) => element.getValue());
+			expect(fileList).toEqual({});
+			await expect(page.locator('input')).toHaveValue('');
+			await expect(page.locator('.kol-input-container__filename')).toHaveText(translate('kol-filename-text'));
 		});
 	});
 });
