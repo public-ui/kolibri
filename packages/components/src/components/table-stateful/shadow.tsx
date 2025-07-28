@@ -525,6 +525,9 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	/**
+	 * Returns the currently selected table rows.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {

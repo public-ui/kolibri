@@ -74,12 +74,18 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	private readonly internalDescriptionById = nonce();
 
+	/**
+	 * Focuses the component's internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.buttonRef?.focus();
 	}
 
+	/**
+	 * Hides the tooltip.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {

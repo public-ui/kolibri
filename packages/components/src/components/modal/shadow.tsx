@@ -37,12 +37,18 @@ export class KolModal implements ModalAPI {
 		}
 	}
 
+	/**
+	 * Opens the component.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async openModal() {
 		this.refDialog?.showModal();
 	}
 
+	/**
+	 * Closes the component.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {

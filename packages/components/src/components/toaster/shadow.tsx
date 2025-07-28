@@ -28,6 +28,9 @@ export class KolToastContainer implements ToasterAPI {
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
 
 	// Stencil requires async function:
+	/**
+	 * Adds a toast to the container.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async enqueue(toast: Toast) {
@@ -80,6 +83,9 @@ export class KolToastContainer implements ToasterAPI {
 		}, TRANSITION_TIMEOUT);
 	}
 
+	/**
+	 * Closes all toasts.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeAll(immediate: boolean = false) {
