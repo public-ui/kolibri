@@ -271,6 +271,37 @@ importers:
         specifier: 3.5.0
         version: 3.5.0(sass@1.88.0)(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))
 
+  packages/adapters/react-hook-form-adapter:
+    dependencies:
+      react-hook-form:
+        specifier: '>=7.0.0'
+        version: 7.61.1(react@18.3.1)
+    devDependencies:
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../../components
+      '@public-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@types/react':
+        specifier: 18.3.4
+        version: 18.3.4
+      '@types/react-dom':
+        specifier: 18.3.7
+        version: 18.3.7(@types/react@18.3.4)
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      typescript:
+        specifier: 5.8.3
+        version: 5.8.3
+      unbuild:
+        specifier: 3.5.0
+        version: 3.5.0(sass@1.88.0)(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))
+
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
@@ -10645,6 +10676,12 @@ packages:
 
   react-fast-compare@2.0.4:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
+
+  react-hook-form@7.61.1:
+    resolution: {integrity: sha512-2vbXUFDYgqEgM2RcXcAT2PwDW/80QARi+PKmHy5q2KhuKvOlG8iIYgf7eIlIANR5trW9fJbP4r5aub3a4egsew==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -21748,7 +21785,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.12.9)(@types/node@24.0.1)(typescript@5.8.3))
+      jest-jasmine2: 26.6.3
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -21844,7 +21881,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.12.9)(@types/node@24.0.1)(typescript@5.8.3)):
+  jest-jasmine2@26.6.3:
     dependencies:
       '@babel/traverse': 7.28.0
       '@jest/environment': 26.6.2
@@ -21865,11 +21902,7 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
-      - bufferutil
-      - canvas
       - supports-color
-      - ts-node
-      - utf-8-validate
 
   jest-leak-detector@26.6.2:
     dependencies:
@@ -25097,6 +25130,10 @@ snapshots:
       scheduler: 0.23.2
 
   react-fast-compare@2.0.4: {}
+
+  react-hook-form@7.61.1(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react-is@16.13.1: {}
 

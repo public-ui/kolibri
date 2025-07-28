@@ -1,4 +1,4 @@
-declare module 'react-hook-form' {
+declare module 'src/react-hook-form' {
         export const Controller: any;
         export function useFormContext<T = any>(): { control: any };
         export interface UseControllerProps<T> {
