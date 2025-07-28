@@ -6,6 +6,7 @@ import { FocusElements } from './focus-elements';
 import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
 import { PerformanceTest } from './performance-test';
+import { IconBenchmark } from './icon-benchmark';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
 import { StaticForm } from './static-form';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
@@ -20,6 +21,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
 		'performance-test': PerformanceTest,
+		'icon-benchmark': IconBenchmark,
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'static-form': StaticForm,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
