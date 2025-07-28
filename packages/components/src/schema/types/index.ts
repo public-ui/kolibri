@@ -7,7 +7,6 @@ export * from './input/iso8601';
 export * from './input/numberString';
 export * from './input/types';
 export * from './modal';
-export * from './progress';
 export * from './table';
 export * from './table-settings';
 export * from './unknown';

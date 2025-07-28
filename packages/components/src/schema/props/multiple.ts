@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import { watchBoolean } from '../utils';
+import type { WatchBooleanOptions } from '../utils';
 
 /* types */
 export type MultiplePropType = boolean;
@@ -13,6 +14,6 @@ export type PropMultiple = {
 };
 
 /* validator */
-export const validateMultiple = (component: Generic.Element.Component, value?: MultiplePropType): void => {
-	watchBoolean(component, '_multiple', value);
+export const validateMultiple = (component: Generic.Element.Component, value?: MultiplePropType, options?: WatchBooleanOptions): void => {
+	watchBoolean(component, '_multiple', value, options);
 };

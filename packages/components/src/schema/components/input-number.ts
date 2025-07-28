@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	MsgPropType,
+	PlaceholderPropType,
 	PropAccessKey,
 	PropAutoComplete,
 	PropDisabled,
@@ -29,7 +30,7 @@ type OptionalProps = {
 	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	placeholder: string;
+	placeholder: PlaceholderPropType;
 	smartButton: Stringified<ButtonProps>;
 	step: number | NumberString;
 	value: number | NumberString | null;
@@ -57,7 +58,7 @@ type OptionalStates = {
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;
-	placeholder: string;
+	placeholder: PlaceholderPropType;
 	smartButton: ButtonProps;
 	step: number;
 	value: number;

@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react';
-import type { AlertType, AlertVariant } from '@public-ui/components';
+import type { AlertTypePropType, AlertVariantPropType } from '@public-ui/components';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
@@ -12,8 +12,8 @@ import type { FC } from 'react';
 
 export const ToastBasic: FC = () => {
 	const [searchParams] = useSearchParams();
-	const defaultType = searchParams.get('type') as AlertType;
-	const defaultVariant = searchParams.get('variant') as AlertVariant;
+	const defaultType = searchParams.get('type') as AlertTypePropType;
+	const defaultVariant = searchParams.get('variant') as AlertVariantPropType;
 	const toaster = ToasterService.getInstance(document);
 	const handleButtonClickSimple = () => {
 		void toaster.enqueue({

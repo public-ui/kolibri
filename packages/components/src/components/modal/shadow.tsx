@@ -1,5 +1,5 @@
 import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
-import { setState, validateLabel, watchString } from '../../schema';
+import { setState, validateLabel, validateWidth } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -137,9 +137,7 @@ export class KolModal implements ModalAPI {
 
 	@Watch('_width')
 	public validateWidth(value?: string): void {
-		watchString(this, '_width', value, {
-			defaultValue: '100%',
-		});
+		validateWidth(this, value);
 	}
 
 	@Watch('_variant')
