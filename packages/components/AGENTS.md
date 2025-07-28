@@ -94,3 +94,27 @@ When refactoring or adding a component:
 1. Create a `bem.ts` describing the full BEM schema.
 2. Replace class strings with calls to the generated `bem` helper.
 3. Export the schema constant via `src/index.ts` to enable SCSS generation.
+
+### Internal components
+
+Some components are only used for benchmarks or tests. Place these under the
+`test/` subfolder of the related component. They are still valid Stencil
+components but are added to the `EXCLUDE_TAGS` list in `stencil.config.ts` so
+that framework adapters and documentation are not generated for them. Currently
+the only internal component is `kol-icon-benchmark` used for performance
+testing of the icon.
+
+### Public components
+
+The following components are packaged and published as part of `@public-ui/components`:
+
+`kol-abbr`, `kol-accordion`, `kol-alert`, `kol-avatar`, `kol-badge`, `kol-breadcrumb`,
+`kol-button`, `kol-button-link`, `kol-card`, `kol-details`, `kol-drawer`,
+`kol-form`, `kol-heading`, `kol-icon`, `kol-image`, `kol-input-checkbox`,
+`kol-input-color`, `kol-input-date`, `kol-input-email`, `kol-input-file`,
+`kol-input-number`, `kol-input-password`, `kol-input-radio`, `kol-input-text`,
+`kol-kolibri`, `kol-link`, `kol-link-button`, `kol-modal`, `kol-nav`,
+`kol-pagination`, `kol-popover-button`, `kol-progress`, `kol-quote`, `kol-select`,
+`kol-skip-nav`, `kol-spin`, `kol-split-button`, `kol-table-stateful`,
+`kol-table-stateless`, `kol-tabs`, `kol-textarea`, `kol-toast-container`,
+`kol-toolbar`, `kol-tree`, `kol-tree-item`, `kol-version`.

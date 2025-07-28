@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
-import KolIconFc from '../../functional-components/Icon';
-import { KolIconTag } from '../../core/component-names';
+import KolIconFc from '../../../../functional-components/Icon';
+import { KolIconTag } from '../../../../core/component-names';
 
 @Component({
 	tag: 'kol-icon-benchmark',
