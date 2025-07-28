@@ -29,7 +29,11 @@ import { COUNTRY_SUGGESTIONS } from '../shares/country';
 import { useToasterService } from '../hooks/useToasterService';
 
 const formSchema = z.object({
-	date: z.string({ required_error: 'Please enter a date.' }).min(1, 'Please enter a date.'),
+	date: z.preprocess(
+		(val) => (typeof val === 'string' || val instanceof Date ? new Date(val) : undefined),
+		z.date({ required_error: 'Date is required' }).refine((d) => !isNaN(d.getTime()), { message: 'Invalid date' }),
+	),
+
 	text: z.string({ required_error: 'Please enter text.' }).min(10, 'Text must be at least 10 characters long.'),
 	email: z.string({ required_error: 'Please enter your email.' }).email('Invalid email address.'),
 	password: z
@@ -39,10 +43,10 @@ const formSchema = z.object({
 		.regex(/[0-9]/, 'Password must include at least one number.'),
 	range: z.number({ required_error: 'Please select a range.' }).min(30, 'Minimum value is 30.'),
 	number: z.number({ required_error: 'Please enter a number.' }).min(1, 'Minimum is 1.').max(10, 'Maximum is 10.'),
-	checkbox: z
-		.boolean({ required_error: 'You must accept the terms and conditions.' })
-		.nullable()
-		.refine((val: unknown) => val === true, { message: 'You must accept the terms and conditions.' }),
+	checkbox: z.boolean().refine((val: any) => val === true, {
+		message: 'You must accept the terms and conditions.',
+	}),
+
 	radio: z.string({ required_error: 'Please select a gender.' }),
 	color: z.string({ required_error: 'Please select a color.' }),
 	select: z.string({ required_error: 'Please select a value.' }),
@@ -50,8 +54,6 @@ const formSchema = z.object({
 	combobox: z.string({ required_error: 'Please select a country.' }),
 	textarea: z.string({ required_error: 'Please enter a message.' }),
 });
-
-type FormData = z.infer<typeof formSchema>;
 
 export const SampleFormWithValidation: React.FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
@@ -62,7 +64,7 @@ export const SampleFormWithValidation: React.FC = () => {
 		setValue,
 		trigger,
 		watch,
-	} = useForm<FormData>({
+	} = useForm({
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
 		resolver: zodResolver(formSchema),
@@ -72,14 +74,27 @@ export const SampleFormWithValidation: React.FC = () => {
 		},
 	});
 
-	const err = <K extends keyof FormData>(key: K): any => (errors[key] ? { _description: errors[key]?.message as string, _type: 'error' } : undefined);
+	const err = (key: keyof z.infer<typeof formSchema>) => {
+		const fieldError = errors[key];
 
-	const isTouched = <K extends keyof FormData>(key: K) => !!touchedFields[key];
+		if (!fieldError || typeof fieldError !== 'object' || !('message' in fieldError)) {
+			return undefined;
+		}
 
-	const bind = <K extends keyof FormData>(key: K) => ({
+		return {
+			_description: fieldError.message as string,
+			_type: 'error' as const,
+		};
+	};
+
+	const isTouched = (key: keyof z.infer<typeof formSchema>) => {
+		return !!touchedFields[key];
+	};
+
+	const bind = <K extends keyof z.infer<typeof formSchema>>(key: K) => ({
 		id: `field-${key as string}`,
 		_name: key,
-		_value: watch(key),
+		_value: watch(key) as z.infer<typeof formSchema>[K],
 		_touched: isTouched(key),
 		_msg: err(key),
 		_on: {
@@ -138,7 +153,7 @@ export const SampleFormWithValidation: React.FC = () => {
 				<KolInputPassword _label="Password" {...bind('password')} />
 				<KolInputRange _label="Range (≥ 30)" _min={0} _max={100} {...bind('range')} />
 				<KolInputNumber _label="Number (1 – 10)" {...bind('number')} />
-				<KolInputCheckbox _label="Accept terms" {...bind('checkbox')} />
+				<KolInputCheckbox _label="Accept terms" {...bind('checkbox')} _value={false} />
 				<KolInputRadio
 					_label="Gender"
 					_options={[
