@@ -102,7 +102,7 @@ The following guidelines define how we structure component state and properties:
 - Create a state variable only when a property has a direct and atomic effect on rendering.
 - When several properties form one logical state, combine them into a single state variable, either as a primitive value or an object.
 - Each property may implement `normalizeProperty` and `validateProperty`; call these from the property's `Watch` method.
-- Stateless internal functional components receive props that mirror the web component's state.
+- Stateless internal functional components receive props that mirror the web component's state. They are invoked from the web component's private `render()` method and never inherit from the web component.
 - Complex interactions can be handled inside a component controller. The controller follows the composition pattern and is created by the component.
 
 The following class diagram shows how a Stencil component exposes public
@@ -115,6 +115,7 @@ classDiagram
         +propA
         +propB
         -state
+        -render()
     }
     class ComponentController {
     }
@@ -124,5 +125,5 @@ classDiagram
         <<stateless>>
     }
     StencilComponent *-- ComponentController : composes
-    ComponentController --> FunctionalComponent : renders with state
+    StencilComponent --> FunctionalComponent : calls in render
 ```
