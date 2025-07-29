@@ -104,6 +104,26 @@ The following guidelines define how we structure component state and properties:
 - Each property may implement `normalizeProperty` and `validateProperty`; call these from the property's `Watch` method.
 - Stateless internal functional components receive props that mirror the web component's state. They are invoked from the web component's private `render()` method and never inherit from the web component.
 - Complex interactions can be handled inside a component controller. The controller follows the composition pattern and is created by the component.
+- All controllers inherit from a common `BaseController` that exposes a `setState()` helper mirroring Stencil's state mechanism. After normalizing and validating incoming props, a controller updates the web component by calling this method, which triggers a rerender.
+- A minimal implementation looks like this:
+
+```ts
+import type { Generic } from 'adopted-style-sheets';
+import { setState } from './schema';
+
+export abstract class BaseController<State> {
+	protected readonly component: Generic.Element.Component & State;
+
+	protected constructor(component: Generic.Element.Component & State) {
+		this.component = component;
+	}
+
+	protected setState<K extends keyof State>(prop: K, value: State[K]) {
+		setState(this.component, prop as string, value);
+	}
+}
+```
+
 - A web component may compose multiple functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
 - Each functional component receives an immutable instance of its state controller. If the controller exposes several independent values, you may also pass those states individually to the functional component instead of the whole controller.
 
@@ -119,10 +139,15 @@ classDiagram
         -state
         -render()
     }
+    class BaseController {
+        +setState()
+    }
     class ComponentControllerA {
     }
     class ComponentControllerB {
     }
+    BaseController <|-- ComponentControllerA
+    BaseController <|-- ComponentControllerB
     class FunctionalComponentA {
         +propA
         +propB
