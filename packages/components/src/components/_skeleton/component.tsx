@@ -1,33 +1,40 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
-import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
-import { SkeletonController } from './internal/functional-components/skeleton/controller';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { SkeletonFC } from './internal/functional-components/skeleton/component';
 import type { SkeletonState } from './internal/functional-components/skeleton/controller';
-import { SkeletonFunctionalComponent } from './internal/functional-components/skeleton/component';
+import { SkeletonController } from './internal/functional-components/skeleton/controller';
+import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
+import type { ShowProp, ShowPropType } from './internal/functional-components/skeleton/schema/props/show';
+
+type SkeletonProps = NameProp & ShowProp;
 
 @Component({
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements NameProp, SkeletonState {
-	private controller!: SkeletonController<KolSkeleton>;
+export class Skeleton implements SkeletonProps, SkeletonState {
+	private controller = new SkeletonController<Skeleton>(this);
 
 	@Prop() public name?: NamePropType;
-
-	@State() public nameState?: NamePropType;
-
+	@State() public nameState: NamePropType = '';
 	@Watch('name')
-	protected watchName(value?: NamePropType): void {
+	private watchName(value?: NamePropType): void {
 		this.controller.watchName(value);
 	}
 
+	@Prop() public show?: ShowPropType;
+	@State() public showState: ShowPropType = false;
+	@Watch('show')
+	private watchShow(value?: ShowPropType): void {
+		this.controller.watchShow(value);
+	}
+
 	public componentWillLoad(): void {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		this.controller = new SkeletonController<KolSkeleton>(this as KolSkeleton);
 		this.watchName(this.name);
+		this.watchShow(this.show);
 	}
 
 	public render(): JSX.Element {
-		return <SkeletonFunctionalComponent nameState={this.nameState} />;
+		return <SkeletonFC nameState={this.nameState} />;
 	}
 }

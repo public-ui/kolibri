@@ -1,11 +1,7 @@
+import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
-import type { JSX } from '@stencil/core';
-import type { NamePropType } from './schema/props/name';
+import type { SkeletonState } from './controller';
 
-export type SkeletonFunctionalProps = {
-	nameState?: NamePropType;
-};
-
-export const SkeletonFunctionalComponent = ({ nameState }: SkeletonFunctionalProps): JSX.Element => {
-	return <div>{nameState}</div>;
+export const SkeletonFC: FC<SkeletonState> = ({ nameState, showState }) => {
+	return showState && <span>{nameState}</span>;
 };
