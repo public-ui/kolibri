@@ -32,6 +32,7 @@
 
 		.table {
 			padding: 0.5em;
+			margin-bottom: to-rem(8);
 		}
 
 		.table:has(.focus-element:focus) {

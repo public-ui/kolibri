@@ -49,6 +49,7 @@
 
 		.table {
 			padding: to-rem(8);
+			margin-bottom: to-rem(8);
 
 			&:has(.focus-element:focus) {
 				outline-color: var(--color-primary-variant);

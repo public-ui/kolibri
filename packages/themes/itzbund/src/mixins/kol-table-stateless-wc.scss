@@ -4,6 +4,7 @@
 	@layer kol-theme-component {
 		.table {
 			padding: 0.5em;
+			margin-bottom: rem(8);
 		}
 
 		.table:has(.focus-element:focus) {
