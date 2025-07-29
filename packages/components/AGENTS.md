@@ -105,6 +105,7 @@ The following guidelines define how we structure component state and properties:
 - Stateless internal functional components receive props that mirror the web component's state. They are invoked from the web component's private `render()` method and never inherit from the web component.
 - Complex interactions can be handled inside a component controller. The controller follows the composition pattern and is created by the component.
 - A web component may compose multiple functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
+- Each functional component receives an immutable instance of its state controller. If the controller exposes several independent values, you may also pass those states individually to the functional component instead of the whole controller.
 
 The following class diagram shows how a Stencil component exposes public
 properties while maintaining its state in private variables. It passes this
