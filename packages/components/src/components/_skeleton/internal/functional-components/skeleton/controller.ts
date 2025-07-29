@@ -1,19 +1,23 @@
-import type { NamePropType } from '../../../../../schema';
+import type { NamePropType } from './schema/props/name';
 import { normalizeName, validateName } from './schema/props/name';
 
-class BaseController<S> {
-	constructor(private component: unknown) {}
+export abstract class BaseController<State> {
+	protected constructor(protected readonly component: { [K in keyof State]: State[K] }) {}
 
-	protected setStateName(name: keyof S, value: unknown): void {
-		this.component[name] = value;
+	protected setState<K extends keyof State>(prop: K, value: State[K]): void {
+		this.component[prop] = value;
 	}
 }
 
-export class SkeletonController<S> extends BaseController<S> {
+export interface SkeletonState {
+	nameState?: NamePropType;
+}
+
+export class SkeletonController<State extends SkeletonState> extends BaseController<State> {
 	public watchName(name?: NamePropType): void {
-		name = normalizeName(name);
-		if (validateName(name)) {
-			this.component.nameState = name;
+		const normalized = normalizeName(name);
+		if (validateName(normalized)) {
+			this.setState('nameState', normalized);
 		}
 	}
 }
