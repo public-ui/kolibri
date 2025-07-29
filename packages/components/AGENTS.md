@@ -94,3 +94,31 @@ When refactoring or adding a component:
 1. Create a `bem.ts` describing the full BEM schema.
 2. Replace class strings with calls to the generated `bem` helper.
 3. Export the schema constant via `src/index.ts` to enable SCSS generation.
+
+### Component architecture
+
+The following guidelines define how we structure component state and properties:
+
+- Create a state variable only when a property has a direct and atomic effect on rendering.
+- When several properties form one logical state, combine them into a single state variable, either as a primitive value or an object.
+- Each property may implement `normalizeProperty` and `validateProperty`; call these from the property's `Watch` method.
+- Stateless internal functional components receive props that mirror the web component's state.
+
+The following class diagram shows how a Stencil component exposes public
+properties while maintaining its state in private variables. It passes this
+state to a stateless functional component for rendering.
+
+```mermaid
+classDiagram
+    class StencilComponent {
+        +propA
+        +propB
+        -state
+    }
+    class FunctionalComponent {
+        +propA
+        +propB
+        <<stateless>>
+    }
+    StencilComponent --> FunctionalComponent : renders with state
+```
