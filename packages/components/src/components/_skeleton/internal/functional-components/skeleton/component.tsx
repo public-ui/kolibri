@@ -1,5 +1,5 @@
-import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
+import type { JSX } from '@stencil/core';
 import type { NamePropType } from './schema/props/name';
 
 export type SkeletonFunctionalProps = {

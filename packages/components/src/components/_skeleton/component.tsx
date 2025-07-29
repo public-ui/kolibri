@@ -1,6 +1,6 @@
-import { Component, Prop, State, Watch, h } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
-import type { NamePropType } from './internal/functional-components/skeleton/schema/props/name';
+import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
 import { SkeletonController } from './internal/functional-components/skeleton/controller';
 import type { SkeletonState } from './internal/functional-components/skeleton/controller';
 import { SkeletonFunctionalComponent } from './internal/functional-components/skeleton/component';
@@ -9,7 +9,7 @@ import { SkeletonFunctionalComponent } from './internal/functional-components/sk
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements SkeletonState {
+export class KolSkeleton implements NameProp, SkeletonState {
 	private controller!: SkeletonController<KolSkeleton>;
 
 	@Prop() public name?: NamePropType;

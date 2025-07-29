@@ -14,6 +14,9 @@ export interface SkeletonState {
 }
 
 export class SkeletonController<State extends SkeletonState> extends BaseController<State> {
+	public constructor(component: { [K in keyof State]: State[K] }) {
+		super(component);
+	}
 	public watchName(name?: NamePropType): void {
 		const normalized = normalizeName(name);
 		if (validateName(normalized)) {
