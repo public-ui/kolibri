@@ -68,3 +68,21 @@ classDiagram
     WebComponent --> FunctionalComponentA : calls in render
     WebComponent --> FunctionalComponentB : calls in render
 ```
+
+### File layout
+
+- `component.tsx` – Stencil web component managing state and watchers.
+- `internal/functional-components` – stateless React-like component and its controller.
+  - `component.tsx` – functional component rendering the template.
+- `controller.ts` – logic for normalizing, validating and updating state via `BaseController`.
+- `schema/props` – property types with `normalize*` and `validate*` helpers.
+
+### Implementation pattern
+
+1. Declare public properties with `@Prop` and mirror them to private state using `@State` variables named `<prop>State`.
+2. Implement a `@Watch` method for each property that forwards the new value to the controller.
+3. The controller normalizes and validates the value, then calls `setState()` to update the component.
+4. `render()` only delegates to the functional component, passing the current state as props.
+5. All rendering happens in the functional component which must remain stateless.
+
+All watcher methods in controllers share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
