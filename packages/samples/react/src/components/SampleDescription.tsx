@@ -31,7 +31,7 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 			{hideMenus ? null : (
 				<div className="grid sm:flex gap-4 justify-between pb-sm border-b-1 border-b-solid border-gray mb-2">
 					<div className="indented-text">{props.children}</div>
-					<ul className="flex flex-wrap gap-2 list-none m-0 p-0">
+					<ul className="flex flex-wrap gap-2 m-0 p-0 list-none">
 						{codeLink && (
 							<li>
 								<KolLink _href={codeLink} _label="Code" _target="_blank" />
