@@ -102,7 +102,7 @@ The following guidelines define how we structure component state and properties:
 - Create a state variable only when a property has a direct and atomic effect on rendering.
 - When several properties form one logical state, combine them into a single state variable, either as a primitive value or an object.
 - Each property may implement `normalizeProperty` and `validateProperty`; call these from the property's `Watch` method.
-- Stateless internal functional components receive props that mirror the web component's state. They are invoked from the web component's private `render()` method and never inherit from the web component.
+- Stateless internal functional components receive props that mirror the web component's state. These props use the same names as the state variables (e.g., `stateA`). They are invoked from the web component's private `render()` method and never inherit from the web component.
 - Complex interactions can be handled inside a component controller. The controller follows the composition pattern and is created by the component.
 - All controllers inherit from a common `BaseController` that exposes a `setState()` helper mirroring Stencil's state mechanism. After normalizing and validating incoming props, a controller updates the web component by calling this method, which triggers a rerender.
 - A minimal implementation looks like this:
@@ -135,9 +135,10 @@ state to a stateless functional component for rendering.
 ```mermaid
 classDiagram
     class WebComponent {
-        +propA
-        +propB
-        -state
+        +stateA
+        +stateB
+        -stateA
+        -stateB
         -render()
     }
     class BaseController {
@@ -150,13 +151,13 @@ classDiagram
     BaseController <|-- ComponentControllerA
     BaseController <|-- ComponentControllerB
     class FunctionalComponentA {
-        +propA
-        +propB
+        +stateA
+        +stateB
         <<stateless>>
     }
     class FunctionalComponentB {
-        +propA
-        +propB
+        +stateA
+        +stateB
         <<stateless>>
     }
     WebComponent *-- ComponentControllerA : composes
