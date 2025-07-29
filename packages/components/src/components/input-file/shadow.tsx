@@ -45,6 +45,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current list of selected files.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<FileList | null | undefined> {
@@ -59,6 +62,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets focus on the component's interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

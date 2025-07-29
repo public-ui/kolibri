@@ -53,6 +53,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets focus on the component's interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -85,6 +88,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return floatValue;
 	}
 
+	/**
+	 * Returns the current numeric value of the input element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | undefined> {
