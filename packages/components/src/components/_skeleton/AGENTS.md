@@ -17,18 +17,11 @@ The following guidelines define how we structure component state and properties:
 - A minimal implementation looks like this:
 
 ```ts
-import type { Generic } from 'adopted-style-sheets';
-import { setState } from './schema';
-
 export abstract class BaseController<State> {
-	protected readonly component: Generic.Element.Component & State;
+	protected constructor(protected readonly component: { [K in keyof State]: State[K] }) {}
 
-	protected constructor(component: Generic.Element.Component & State) {
-		this.component = component;
-	}
-
-	protected setState<K extends keyof State>(prop: K, value: State[K]) {
-		setState(this.component, prop as string, value);
+	public setState<K extends keyof State>(prop: K, value: State[K]): void {
+		this.component[prop] = value;
 	}
 }
 ```
@@ -87,10 +80,11 @@ classDiagram
 
 1. Declare public properties with `@Prop` and mirror them to private state using `@State` variables named `<prop>State`.
 2. Implement a `@Watch` method for each property. Normalize and validate the value inside the watcher and, if valid, call `controller.setState()`.
-3. The controller only updates state via `setState()` and exposes no watcher methods.
-4. `render()` only delegates to the functional component, passing the current state as props.
-5. All rendering happens in the functional component which must remain stateless.
-6. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
+3. Call each watcher from `componentWillLoad` to initialise the state before the first render.
+4. The controller only updates state via `setState()` and exposes no watcher methods.
+5. `render()` only delegates to the functional component, passing the current state as props.
+6. All rendering happens in the functional component which must remain stateless.
+7. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
 
 All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
 Components can implement a `ComponentWatchers<Props>` interface to type their watcher methods based on the public properties.
