@@ -75,6 +75,7 @@ classDiagram
 - `internal/functional-components` – stateless React-like component and its controller.
   - `component.tsx` – functional component rendering the template.
 - `controller.ts` – logic for normalizing, validating and updating state via `BaseController`.
+- `state.ts` – shared interface defining all state variables. Import this both in the web component and its controller.
 - `schema/props` – property types with `normalize*` and `validate*` helpers.
 
 ### Implementation pattern
@@ -84,6 +85,7 @@ classDiagram
 3. The controller normalizes and validates the value, then calls `setState()` to update the component.
 4. `render()` only delegates to the functional component, passing the current state as props.
 5. All rendering happens in the functional component which must remain stateless.
+6. Define the component's state interface in `state.ts` and implement it in the web component class so Stencil knows which `@State` variables exist.
 
 All watcher methods in controllers share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
 Controllers can implement the `ControllerWatchers<Props>` interface to type their watcher methods based on the component props.

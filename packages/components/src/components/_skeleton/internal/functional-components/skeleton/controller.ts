@@ -2,6 +2,7 @@ import type { NamePropType } from './schema/props/name';
 import { normalizeName, validateName } from './schema/props/name';
 import type { ShowPropType } from './schema/props/show';
 import { normalizeShow, validateShow } from './schema/props/show';
+import type { SkeletonState } from './state';
 
 export type WatchCallback<T> = (value?: T) => void;
 
@@ -15,11 +16,6 @@ export abstract class BaseController<State> {
 	protected setState<K extends keyof State>(prop: K, value: State[K]): void {
 		this.component[prop] = value;
 	}
-}
-
-export interface SkeletonState {
-	nameState?: NamePropType;
-	showState?: ShowPropType;
 }
 
 export type SkeletonControllerWatchers = ControllerWatchers<{
