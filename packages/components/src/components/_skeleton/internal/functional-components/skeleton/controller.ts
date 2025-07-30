@@ -13,7 +13,7 @@ export type ControllerWatchers<Props> = {
 export abstract class BaseController<State> {
 	protected constructor(protected readonly component: { [K in keyof State]: State[K] }) {}
 
-	protected setState<K extends keyof State>(prop: K, value: State[K]): void {
+	public setState<K extends keyof State>(prop: K, value: State[K]): void {
 		this.component[prop] = value;
 	}
 }
