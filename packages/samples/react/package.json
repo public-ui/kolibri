@@ -30,6 +30,7 @@
 		"@playwright/test": "1.53.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
+		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.36.0",
 		"@types/node": "24.0.1",
