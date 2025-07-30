@@ -1,5 +1,5 @@
 import React from 'react';
-import { Controller, useFormContext } from 'src/react-hook-form';
+import { useFormContext, Controller } from 'react-hook-form';
 import type { FieldValues, UseControllerProps } from 'src/react-hook-form';
 import {
 	KolInputCheckbox,
