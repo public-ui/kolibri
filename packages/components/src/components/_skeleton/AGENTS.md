@@ -1,3 +1,9 @@
+### Overview
+
+This folder provides a minimal but fully functional example component. It shows
+how a Stencil web component in KoliBri is organised and can be used as a
+blueprint when implementing new components.
+
 ### Component architecture
 
 The following guidelines define how we structure component state and properties:
@@ -11,24 +17,60 @@ The following guidelines define how we structure component state and properties:
 - A minimal implementation looks like this:
 
 ```ts
-import type { Generic } from 'adopted-style-sheets';
-import { setState } from './schema';
-
 export abstract class BaseController<State> {
-	protected readonly component: Generic.Element.Component & State;
+	protected constructor(protected readonly component: { [K in keyof State]: State[K] }) {}
 
-	protected constructor(component: Generic.Element.Component & State) {
-		this.component = component;
-	}
-
-	protected setState<K extends keyof State>(prop: K, value: State[K]) {
-		setState(this.component, prop as string, value);
+	public setState<K extends keyof State>(prop: K, value: State[K]): void {
+		this.component[prop] = value;
 	}
 }
 ```
 
 - A web component may compose multiple functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
 - Each functional component receives an immutable instance of its state controller. If the controller exposes several independent values, you may also pass those states individually to the functional component instead of the whole controller.
+- Functional component props combine the component state with callback refs. The controller exposes ref setter functions that connect DOM elements back to the controller.
+
+```ts
+export type SkeletonRefs = {
+       setSpanRef: (el?: HTMLSpanElement) => void;
+};
+
+export type SkeletonEmitter = {
+       onLoadedEmitter: EventEmitter<void>;
+};
+
+export type SkeletonCallbacks = {
+       onClick: () => void;
+};
+
+export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter & SkeletonCallbacks> = ({
+       nameState,
+       showState,
+       setSpanRef,
+       onLoadedEmitter,
+       onClick,
+}) => {
+       if (showState) {
+               setTimeout(() => onLoadedEmitter.emit(), 2000);
+               return (
+                       <span
+                               ref={setSpanRef}
+                               role="button"
+                               tabIndex={0}
+                               onClick={onClick}
+                               onKeyDown={(event): void => {
+                                       if (event.key === 'Enter' || event.key === ' ') {
+                                               onClick();
+                                       }
+                               }}
+                       >
+                               {nameState}
+                       </span>
+               );
+       }
+       return null;
+};
+```
 
 The following class diagram shows how a web component exposes public
 properties while maintaining its state in private variables. Every web
@@ -79,12 +121,22 @@ classDiagram
 
 ### Implementation pattern
 
-1. Declare public properties with `@Prop` and mirror them to private state using `@State` variables named `<prop>State`.
+1. Declare public properties with `@Prop({ reflect: true })` and mirror them to private state using `@State` variables named `<prop>State`.
 2. Implement a `@Watch` method for each property. Normalize and validate the value inside the watcher and, if valid, call `controller.setState()`.
-3. The controller only updates state via `setState()` and exposes no watcher methods.
-4. `render()` only delegates to the functional component, passing the current state as props.
-5. All rendering happens in the functional component which must remain stateless.
-6. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
+3. Call each watcher from `componentWillLoad` to initialise the state before the first render.
+4. The controller only updates state via `setState()` and exposes no watcher methods.
+5. `render()` only delegates to the functional component, passing the current state as props.
+6. Refs are forwarded via callback functions. Define a method like `setSpanRef` on the controller and pass it directly from `render()` so the controller can access DOM elements.
+7. Events are emitted from the functional component. Forward the `EventEmitter` via a prop like `onLoadedEmitter` and call `.emit()` inside the functional component logic.
+8. Callback props trigger controller methods. Forward a function like `onClick` that toggles state via the controller.
+9. All rendering happens in the functional component which must remain stateless.
+10. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
 
 All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
 Components can implement a `ComponentWatchers<Props>` interface to type their watcher methods based on the public properties.
+
+### Example usage
+
+```html
+<kol-skeleton onSkeletonLoaded="{()" =""> console.log('Skeleton geladen!')}></kol-skeleton>
+```
