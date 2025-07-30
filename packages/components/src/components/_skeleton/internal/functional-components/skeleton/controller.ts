@@ -2,7 +2,7 @@ import type { NamePropType } from './schema/props/name';
 import { normalizeName, validateName } from './schema/props/name';
 import type { ShowPropType } from './schema/props/show';
 import { normalizeShow, validateShow } from './schema/props/show';
-import type { SkeletonState } from './state';
+import type { SkeletonState } from './component';
 
 export type WatchCallback<T> = (value?: T) => void;
 
