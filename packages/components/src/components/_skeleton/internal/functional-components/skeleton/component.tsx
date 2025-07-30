@@ -8,6 +8,10 @@ export type SkeletonState = {
 	showState?: ShowPropType;
 };
 
-export const SkeletonFC: FC<SkeletonState> = ({ nameState, showState }) => {
-	return showState && <span>{nameState}</span>;
+export type SkeletonRefs = {
+	setSpanRef: (element?: HTMLSpanElement) => void;
+};
+
+export const SkeletonFC: FC<SkeletonState & SkeletonRefs> = ({ nameState, showState, setSpanRef }) => {
+	return showState && <span ref={setSpanRef}>{nameState}</span>;
 };

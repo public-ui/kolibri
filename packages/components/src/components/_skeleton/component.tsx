@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
-import { SkeletonFC, type SkeletonState } from './internal/functional-components/skeleton/component';
+import { SkeletonFC, type SkeletonState, type SkeletonRefs } from './internal/functional-components/skeleton/component';
 import { SkeletonController, type WatchCallback } from './internal/functional-components/skeleton/controller';
 import { normalizeName, validateName } from './internal/functional-components/skeleton/schema/props/name';
 import { normalizeShow, validateShow } from './internal/functional-components/skeleton/schema/props/show';
@@ -17,7 +17,7 @@ export type ComponentWatchers<Props> = {
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class Skeleton implements SkeletonProps, SkeletonState, ComponentWatchers<SkeletonProps> {
+export class Skeleton implements SkeletonProps, SkeletonState, SkeletonRefs, ComponentWatchers<SkeletonProps> {
 	private controller: SkeletonController<Skeleton> = new SkeletonController<Skeleton>(this);
 
 	@Prop() public name?: NamePropType;
@@ -40,12 +40,16 @@ export class Skeleton implements SkeletonProps, SkeletonState, ComponentWatchers
 		}
 	}
 
+	public setSpanRef = (element?: HTMLSpanElement): void => {
+		this.controller.setSpanRef(element);
+	};
+
 	public componentWillLoad(): void {
 		this.watchName(this.name);
 		this.watchShow(this.show);
 	}
 
 	public render(): JSX.Element {
-		return <SkeletonFC nameState={this.nameState} showState={this.showState} />;
+		return <SkeletonFC nameState={this.nameState} showState={this.showState} setSpanRef={this.setSpanRef} />;
 	}
 }

@@ -11,7 +11,14 @@ export abstract class BaseController<State> {
 }
 
 export class SkeletonController<State extends SkeletonState> extends BaseController<State> {
+	public spanElement?: HTMLSpanElement;
+
 	public constructor(component: { [K in keyof State]: State[K] }) {
 		super(component);
+		this.setSpanRef = this.setSpanRef.bind(this);
+	}
+
+	public setSpanRef(element?: HTMLSpanElement): void {
+		this.spanElement = element;
 	}
 }

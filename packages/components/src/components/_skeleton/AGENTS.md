@@ -28,6 +28,17 @@ export abstract class BaseController<State> {
 
 - A web component may compose multiple functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
 - Each functional component receives an immutable instance of its state controller. If the controller exposes several independent values, you may also pass those states individually to the functional component instead of the whole controller.
+- Functional component props combine the component state with callback refs. The controller exposes ref setter functions that connect DOM elements back to the controller.
+
+```ts
+export type SkeletonRefs = {
+        setSpanRef: (el?: HTMLSpanElement) => void;
+};
+
+export const SkeletonFC: FC<SkeletonState & SkeletonRefs> = ({ nameState, showState, setSpanRef }) => {
+        return showState && <span ref={setSpanRef}>{nameState}</span>;
+};
+```
 
 The following class diagram shows how a web component exposes public
 properties while maintaining its state in private variables. Every web
@@ -83,8 +94,9 @@ classDiagram
 3. Call each watcher from `componentWillLoad` to initialise the state before the first render.
 4. The controller only updates state via `setState()` and exposes no watcher methods.
 5. `render()` only delegates to the functional component, passing the current state as props.
-6. All rendering happens in the functional component which must remain stateless.
-7. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
+6. Refs are forwarded via callback functions. Define a method like `setSpanRef` on the controller and pass it to the functional component so the controller can access DOM elements.
+7. All rendering happens in the functional component which must remain stateless.
+8. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
 
 All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
 Components can implement a `ComponentWatchers<Props>` interface to type their watcher methods based on the public properties.
