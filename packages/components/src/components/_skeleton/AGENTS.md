@@ -1,3 +1,9 @@
+### Overview
+
+This folder provides a minimal but fully functional example component. It shows
+how a Stencil web component in KoliBri is organised and can be used as a
+blueprint when implementing new components.
+
 ### Component architecture
 
 The following guidelines define how we structure component state and properties:
