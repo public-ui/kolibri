@@ -80,11 +80,11 @@ classDiagram
 ### Implementation pattern
 
 1. Declare public properties with `@Prop` and mirror them to private state using `@State` variables named `<prop>State`.
-2. Implement a `@Watch` method for each property that forwards the new value to the controller.
-3. The controller normalizes and validates the value, then calls `setState()` to update the component.
+2. Implement a `@Watch` method for each property. Normalize and validate the value inside the watcher and, if valid, call `controller.setState()`.
+3. The controller only updates state via `setState()` and exposes no watcher methods.
 4. `render()` only delegates to the functional component, passing the current state as props.
 5. All rendering happens in the functional component which must remain stateless.
 6. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
 
-All watcher methods in controllers share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
-Controllers can implement the `ControllerWatchers<Props>` interface to type their watcher methods based on the component props.
+All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
+Components can implement a `ComponentWatchers<Props>` interface to type their watcher methods based on the public properties.
