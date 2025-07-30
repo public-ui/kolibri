@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { SkeletonFC } from './internal/functional-components/skeleton/component';
 import type { SkeletonState } from './internal/functional-components/skeleton/controller';
-import { SkeletonController } from './internal/functional-components/skeleton/controller';
+import { SkeletonController, type SkeletonControllerWatchers } from './internal/functional-components/skeleton/controller';
 import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
 import type { ShowProp, ShowPropType } from './internal/functional-components/skeleton/schema/props/show';
 
@@ -13,7 +13,7 @@ type SkeletonProps = NameProp & ShowProp;
 	shadow: true,
 })
 export class Skeleton implements SkeletonProps, SkeletonState {
-	private controller = new SkeletonController<Skeleton>(this);
+	private controller: SkeletonControllerWatchers & SkeletonController<Skeleton> = new SkeletonController<Skeleton>(this);
 
 	@Prop() public name?: NamePropType;
 	@State() public nameState: NamePropType = '';

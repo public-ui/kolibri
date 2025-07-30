@@ -5,6 +5,10 @@ import { normalizeShow, validateShow } from './schema/props/show';
 
 export type WatchCallback<T> = (value?: T) => void;
 
+export type ControllerWatchers<Props> = {
+	[K in keyof Props as `watch${Capitalize<string & K>}`]: WatchCallback<Props[K]>;
+};
+
 export abstract class BaseController<State> {
 	protected constructor(protected readonly component: { [K in keyof State]: State[K] }) {}
 
@@ -18,7 +22,12 @@ export interface SkeletonState {
 	showState?: ShowPropType;
 }
 
-export class SkeletonController<State extends SkeletonState> extends BaseController<State> {
+export type SkeletonControllerWatchers = ControllerWatchers<{
+	name: NamePropType;
+	show: ShowPropType;
+}>;
+
+export class SkeletonController<State extends SkeletonState> extends BaseController<State> implements SkeletonControllerWatchers {
 	public constructor(component: { [K in keyof State]: State[K] }) {
 		super(component);
 	}

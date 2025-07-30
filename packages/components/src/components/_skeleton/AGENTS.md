@@ -86,3 +86,4 @@ classDiagram
 5. All rendering happens in the functional component which must remain stateless.
 
 All watcher methods in controllers share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
+Controllers can implement the `ControllerWatchers<Props>` interface to type their watcher methods based on the component props.
