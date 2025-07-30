@@ -21,7 +21,7 @@ export type ComponentWatchers<Props> = {
 export class Skeleton implements SkeletonProps, SkeletonState, ComponentWatchers<SkeletonProps> {
 	private controller: SkeletonController<Skeleton> = new SkeletonController<Skeleton>(this);
 
-	@Prop() public name?: NamePropType;
+	@Prop({ reflect: true }) public name?: NamePropType;
 	@State() public nameState: NamePropType = '';
 	@Watch('name')
 	public watchName(value?: NamePropType): void {
@@ -31,7 +31,7 @@ export class Skeleton implements SkeletonProps, SkeletonState, ComponentWatchers
 		}
 	}
 
-	@Prop() public show?: ShowPropType;
+	@Prop({ reflect: true }) public show?: ShowPropType;
 	@State() public showState: ShowPropType = false;
 	@Watch('show')
 	public watchShow(value?: ShowPropType): void {
@@ -53,8 +53,9 @@ export class Skeleton implements SkeletonProps, SkeletonState, ComponentWatchers
 			<SkeletonFC
 				nameState={this.nameState}
 				showState={this.showState}
-				setSpanRef={(el): void => this.controller.setSpanRef(el)}
+				setSpanRef={this.controller.setSpanRef}
 				onLoadedEmitter={this.skeletonLoaded}
+				onClick={this.controller.toggleShowState}
 			/>
 		);
 	}

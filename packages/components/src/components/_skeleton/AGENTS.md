@@ -39,10 +39,34 @@ export type SkeletonEmitter = {
        onLoadedEmitter: EventEmitter<void>;
 };
 
-export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter> = ({ nameState, showState, setSpanRef, onLoadedEmitter }) => {
+export type SkeletonCallbacks = {
+       onClick: () => void;
+};
+
+export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter & SkeletonCallbacks> = ({
+       nameState,
+       showState,
+       setSpanRef,
+       onLoadedEmitter,
+       onClick,
+}) => {
        if (showState) {
                setTimeout(() => onLoadedEmitter.emit(), 2000);
-               return <span ref={setSpanRef}>{nameState}</span>;
+               return (
+                       <span
+                               ref={setSpanRef}
+                               role="button"
+                               tabIndex={0}
+                               onClick={onClick}
+                               onKeyDown={(event): void => {
+                                       if (event.key === 'Enter' || event.key === ' ') {
+                                               onClick();
+                                       }
+                               }}
+                       >
+                               {nameState}
+                       </span>
+               );
        }
        return null;
 };
@@ -97,15 +121,16 @@ classDiagram
 
 ### Implementation pattern
 
-1. Declare public properties with `@Prop` and mirror them to private state using `@State` variables named `<prop>State`.
+1. Declare public properties with `@Prop({ reflect: true })` and mirror them to private state using `@State` variables named `<prop>State`.
 2. Implement a `@Watch` method for each property. Normalize and validate the value inside the watcher and, if valid, call `controller.setState()`.
 3. Call each watcher from `componentWillLoad` to initialise the state before the first render.
 4. The controller only updates state via `setState()` and exposes no watcher methods.
 5. `render()` only delegates to the functional component, passing the current state as props.
 6. Refs are forwarded via callback functions. Define a method like `setSpanRef` on the controller and pass it directly from `render()` so the controller can access DOM elements.
 7. Events are emitted from the functional component. Forward the `EventEmitter` via a prop like `onLoadedEmitter` and call `.emit()` inside the functional component logic.
-8. All rendering happens in the functional component which must remain stateless.
-9. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
+8. Callback props trigger controller methods. Forward a function like `onClick` that toggles state via the controller.
+9. All rendering happens in the functional component which must remain stateless.
+10. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
 
 All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
 Components can implement a `ComponentWatchers<Props>` interface to type their watcher methods based on the public properties.

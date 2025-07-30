@@ -16,10 +16,34 @@ export type SkeletonEmitter = {
 	onLoadedEmitter: EventEmitter<void>;
 };
 
-export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter> = ({ nameState, showState, setSpanRef, onLoadedEmitter }) => {
+export type SkeletonCallbacks = {
+	onClick: () => void;
+};
+
+export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter & SkeletonCallbacks> = ({
+	nameState,
+	showState,
+	setSpanRef,
+	onLoadedEmitter,
+	onClick,
+}) => {
 	if (showState) {
 		setTimeout(() => onLoadedEmitter.emit(), 2000);
-		return <span ref={setSpanRef}>{nameState}</span>;
+		return (
+			<span
+				ref={setSpanRef}
+				role="button"
+				tabIndex={0}
+				onClick={onClick}
+				onKeyDown={(event): void => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						onClick();
+					}
+				}}
+			>
+				{nameState}
+			</span>
+		);
 	}
 	return null;
 };

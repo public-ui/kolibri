@@ -15,10 +15,13 @@ export class SkeletonController<State extends SkeletonState> extends BaseControl
 
 	public constructor(component: { [K in keyof State]: State[K] }) {
 		super(component);
-		this.setSpanRef = this.setSpanRef.bind(this);
 	}
 
-	public setSpanRef(element?: HTMLSpanElement): void {
+	public setSpanRef = (element?: HTMLSpanElement): void => {
 		this.spanElement = element;
-	}
+	};
+
+	public toggleShowState = (): void => {
+		this.setState('showState', !this.component.showState);
+	};
 }
