@@ -4,6 +4,7 @@ import type { WebComponentInterface } from './internal/functional-components/gen
 import type { SkeletonEmitters, SkeletonState } from './internal/functional-components/skeleton/component';
 import { SkeletonFC } from './internal/functional-components/skeleton/component';
 import { SkeletonController } from './internal/functional-components/skeleton/controller';
+import { ClickButtonFC } from './internal/functional-components/click-button/component';
 import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
 import { normalizeName, validateName } from './internal/functional-components/skeleton/schema/props/name';
 import type { ShowProp, ShowPropType } from './internal/functional-components/skeleton/schema/props/show';
@@ -55,13 +56,10 @@ export class KolSkeleton implements Interface {
 
 	public render(): JSX.Element {
 		return (
-			<SkeletonFC
-				name={this.name}
-				show={this.show}
-				refButton={this.controller.setButtonRef}
-				onLoaded={this.onLoaded}
-				handleClick={this.controller.handleClick}
-			/>
+			<div>
+				<ClickButtonFC refButton={this.controller.clickController.setButtonRef} handleClick={this.controller.clickController.handleClick} />
+				<SkeletonFC name={this.name} show={this.show} refSpan={this.controller.setSpanRef} onLoaded={this.onLoaded} />
+			</div>
 		);
 	}
 }

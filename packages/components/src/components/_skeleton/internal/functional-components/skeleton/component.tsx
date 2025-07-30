@@ -4,16 +4,14 @@ import type { NamePropType } from './schema/props/name';
 import type { ShowPropType } from './schema/props/show';
 import type { FunctionalComponentProps } from '../generic-types';
 
-export type SkeletonCallbacks = {
-	click: () => void;
-};
+export type SkeletonCallbacks = Record<never, never>;
 
 export type SkeletonEmitters = {
 	loaded: number;
 };
 
 export type SkeletonRefs = {
-	button: HTMLButtonElement;
+	span: HTMLSpanElement;
 };
 
 export type SkeletonState = {
@@ -23,22 +21,10 @@ export type SkeletonState = {
 
 type Props = FunctionalComponentProps<SkeletonState, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
-export const SkeletonFC: FC<Props> = ({ name, show, handleClick, onLoaded, refButton }) => {
+export const SkeletonFC: FC<Props> = ({ name, show, onLoaded, refSpan }) => {
 	if (show) {
 		setTimeout(() => onLoaded.emit(1), 2000);
-		return (
-			<button
-				ref={refButton}
-				onClick={handleClick}
-				onKeyDown={(event): void => {
-					if (event.key === 'Enter' || event.key === ' ') {
-						handleClick();
-					}
-				}}
-			>
-				{name}
-			</button>
-		);
+		return <span ref={refSpan}>{name}</span>;
 	}
 	return null;
 };

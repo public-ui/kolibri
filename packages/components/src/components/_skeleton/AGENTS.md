@@ -39,37 +39,42 @@ export type SkeletonEmitter = {
        onLoadedEmitter: EventEmitter<void>;
 };
 
-export type SkeletonCallbacks = {
-       onClick: () => void;
-};
-
-export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter & SkeletonCallbacks> = ({
+export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter> = ({
        nameState,
        showState,
        setSpanRef,
        onLoadedEmitter,
-       onClick,
 }) => {
        if (showState) {
                setTimeout(() => onLoadedEmitter.emit(), 2000);
-               return (
-                       <span
-                               ref={setSpanRef}
-                               role="button"
-                               tabIndex={0}
-                               onClick={onClick}
-                               onKeyDown={(event): void => {
-                                       if (event.key === 'Enter' || event.key === ' ') {
-                                               onClick();
-                                       }
-                               }}
-                       >
-                               {nameState}
-                       </span>
-               );
+               return <span ref={setSpanRef}>{nameState}</span>;
        }
        return null;
 };
+```
+
+```ts
+export type ClickButtonRefs = {
+       setButtonRef: (el?: HTMLButtonElement) => void;
+};
+
+export type ClickButtonCallbacks = {
+       onClick: () => void;
+};
+
+export const ClickButtonFC: FC<ClickButtonRefs & ClickButtonCallbacks> = ({ setButtonRef, onClick }) => (
+       <button
+               ref={setButtonRef}
+               onClick={onClick}
+               onKeyDown={(event): void => {
+                       if (event.key === 'Enter' || event.key === ' ') {
+                               onClick();
+                       }
+               }}
+       >
+               Toggle
+       </button>
+);
 ```
 
 The following class diagram shows how a web component exposes public
@@ -118,6 +123,7 @@ classDiagram
   - `component.tsx` – functional component rendering the template and declaring the shared `SkeletonState` interface.
   - `controller.ts` – logic for normalizing, validating and updating state via `BaseController`.
   - `schema/props` – property types with `normalize*` and `validate*` helpers.
+  - `click-button/` – standalone button component handling the click interaction.
 
 ### Implementation pattern
 
@@ -128,8 +134,8 @@ classDiagram
 5. `render()` only delegates to the functional component, passing the current state as props.
 6. Refs are forwarded via callback functions. Define a method like `setSpanRef` on the controller and pass it directly from `render()` so the controller can access DOM elements.
 7. Events are emitted from the functional component. Forward the `EventEmitter` via a prop like `onLoadedEmitter` and call `.emit()` inside the functional component logic.
-8. Callback props trigger controller methods. Forward a function like `onClick` that toggles state via the controller.
-9. All rendering happens in the functional component which must remain stateless.
+8. `SkeletonController` instantiates a `ClickButtonController` for the `ClickButton` subcomponent which toggles the `show` state.
+9. All rendering happens in the functional components which must remain stateless.
 10. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
 
 All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.

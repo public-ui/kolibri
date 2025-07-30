@@ -94,3 +94,15 @@ When refactoring or adding a component:
 1. Create a `bem.ts` describing the full BEM schema.
 2. Replace class strings with calls to the generated `bem` helper.
 3. Export the schema constant via `src/index.ts` to enable SCSS generation.
+
+## Component and Controller Architecture (Skeleton Blueprint)
+
+The `_skeleton` component demonstrates the recommended pattern for combining a Stencil web component with a stateless functional component and a controller. Key aspects are:
+
+1. Public `@Prop` values mirror to private `@State` variables named `<prop>`.
+2. Each property has a `@Watch` method that normalizes and validates the value using helpers from `internal/functional-components/.../schema/props`. Valid values update state via `controller.setState()`.
+3. `componentWillLoad` calls every watcher once to initialise state.
+4. Business logic lives in a controller extending `BaseController` which only exposes methods to update state or manage refs.
+5. The `render()` method delegates to a stateless functional component, forwarding the current state, `EventEmitter`s and controller callbacks.
+
+Use this blueprint when adding new components.
