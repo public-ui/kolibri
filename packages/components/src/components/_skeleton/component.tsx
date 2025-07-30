@@ -1,61 +1,66 @@
-import type { JSX } from '@stencil/core';
-import { Component, h, Prop, State, Watch, Event } from '@stencil/core';
-import type { EventEmitter } from '@stencil/core';
-import { SkeletonFC, type SkeletonState } from './internal/functional-components/skeleton/component';
-import { SkeletonController, type WatchCallback } from './internal/functional-components/skeleton/controller';
-import { normalizeName, validateName } from './internal/functional-components/skeleton/schema/props/name';
-import { normalizeShow, validateShow } from './internal/functional-components/skeleton/schema/props/show';
+import type { EventEmitter, JSX } from '@stencil/core';
+import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import type { WebComponentInterface } from './internal/functional-components/generic-types';
+import type { SkeletonEmitters, SkeletonState } from './internal/functional-components/skeleton/component';
+import { SkeletonFC } from './internal/functional-components/skeleton/component';
+import { SkeletonController } from './internal/functional-components/skeleton/controller';
 import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
+import { normalizeName, validateName } from './internal/functional-components/skeleton/schema/props/name';
 import type { ShowProp, ShowPropType } from './internal/functional-components/skeleton/schema/props/show';
+import { normalizeShow, validateShow } from './internal/functional-components/skeleton/schema/props/show';
 
-type SkeletonProps = NameProp & ShowProp;
+type Props = NameProp & ShowProp;
 
-export type ComponentWatchers<Props> = {
-	[K in keyof Props as `watch${Capitalize<string & K>}`]: WatchCallback<Props[K]>;
-};
+type Interface = WebComponentInterface<Props, SkeletonState, SkeletonEmitters>;
 
 @Component({
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class Skeleton implements SkeletonProps, SkeletonState, ComponentWatchers<SkeletonProps> {
-	private controller: SkeletonController<Skeleton> = new SkeletonController<Skeleton>(this);
+export class KolSkeleton implements Interface {
+	private controller = new SkeletonController<KolSkeleton>(this);
 
-	@Prop({ reflect: true }) public name?: NamePropType;
-	@State() public nameState: NamePropType = '';
+	@Prop()
+	public _name!: NamePropType;
+
+	@State()
+	public name: NamePropType = '';
+
 	@Watch('name')
 	public watchName(value?: NamePropType): void {
 		const normalized = normalizeName(value);
 		if (validateName(normalized)) {
-			this.controller.setState('nameState', normalized);
+			this.controller.setState('name', normalized);
 		}
 	}
 
-	@Prop({ reflect: true }) public show?: ShowPropType;
-	@State() public showState: ShowPropType = false;
+	@Prop() public _show?: ShowPropType;
+
+	@State() public show: ShowPropType = false;
+
 	@Watch('show')
 	public watchShow(value?: ShowPropType): void {
 		const normalized = normalizeShow(value);
 		if (validateShow(normalized)) {
-			this.controller.setState('showState', normalized);
+			this.controller.setState('show', normalized);
 		}
 	}
 
-	@Event() public skeletonLoaded!: EventEmitter<void>;
+	@Event() public onLoaded!: EventEmitter<number>;
 
 	public componentWillLoad(): void {
-		this.watchName(this.name);
-		this.watchShow(this.show);
+		this.watchName(this._name);
+		this.watchShow(this._show);
 	}
 
 	public render(): JSX.Element {
 		return (
 			<SkeletonFC
-				nameState={this.nameState}
-				showState={this.showState}
-				setSpanRef={this.controller.setSpanRef}
-				onLoadedEmitter={this.skeletonLoaded}
-				onClick={this.controller.toggleShowState}
+				name={this.name}
+				show={this.show}
+				refButton={this.controller.setButtonRef}
+				onLoaded={this.onLoaded}
+				handleClick={this.controller.handleClick}
 			/>
 		);
 	}

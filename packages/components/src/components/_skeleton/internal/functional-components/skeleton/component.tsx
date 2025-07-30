@@ -1,48 +1,43 @@
-import type { FunctionalComponent as FC, EventEmitter } from '@stencil/core';
+import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { NamePropType } from './schema/props/name';
 import type { ShowPropType } from './schema/props/show';
+import type { FunctionalComponentProps } from '../generic-types';
 
-export type SkeletonState = {
-	nameState?: NamePropType;
-	showState?: ShowPropType;
+export type SkeletonCallbacks = {
+	click: () => void;
+};
+
+export type SkeletonEmitters = {
+	loaded: number;
 };
 
 export type SkeletonRefs = {
-	setSpanRef: (element?: HTMLSpanElement) => void;
+	button: HTMLButtonElement;
 };
 
-export type SkeletonEmitter = {
-	onLoadedEmitter: EventEmitter<void>;
+export type SkeletonState = {
+	name: NamePropType;
+	show: ShowPropType;
 };
 
-export type SkeletonCallbacks = {
-	onClick: () => void;
-};
+type Props = FunctionalComponentProps<SkeletonState, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
-export const SkeletonFC: FC<SkeletonState & SkeletonRefs & SkeletonEmitter & SkeletonCallbacks> = ({
-	nameState,
-	showState,
-	setSpanRef,
-	onLoadedEmitter,
-	onClick,
-}) => {
-	if (showState) {
-		setTimeout(() => onLoadedEmitter.emit(), 2000);
+export const SkeletonFC: FC<Props> = ({ name, show, handleClick, onLoaded, refButton }) => {
+	if (show) {
+		setTimeout(() => onLoaded.emit(1), 2000);
 		return (
-			<span
-				ref={setSpanRef}
-				role="button"
-				tabIndex={0}
-				onClick={onClick}
+			<button
+				ref={refButton}
+				onClick={handleClick}
 				onKeyDown={(event): void => {
 					if (event.key === 'Enter' || event.key === ' ') {
-						onClick();
+						handleClick();
 					}
 				}}
 			>
-				{nameState}
-			</span>
+				{name}
+			</button>
 		);
 	}
 	return null;

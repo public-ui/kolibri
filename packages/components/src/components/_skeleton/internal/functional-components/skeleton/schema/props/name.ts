@@ -1,7 +1,7 @@
 export type NamePropType = string;
 
 export type NameProp = {
-	name?: NamePropType;
+	name: NamePropType;
 };
 
 export const normalizeName = (value?: NamePropType): NamePropType => {
