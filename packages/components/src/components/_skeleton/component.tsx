@@ -1,13 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { SkeletonFC, type SkeletonState } from './internal/functional-components/skeleton/component';
-import { SkeletonController, type ComponentWatchers } from './internal/functional-components/skeleton/controller';
+import { SkeletonController, type WatchCallback } from './internal/functional-components/skeleton/controller';
 import { normalizeName, validateName } from './internal/functional-components/skeleton/schema/props/name';
 import { normalizeShow, validateShow } from './internal/functional-components/skeleton/schema/props/show';
 import type { NameProp, NamePropType } from './internal/functional-components/skeleton/schema/props/name';
 import type { ShowProp, ShowPropType } from './internal/functional-components/skeleton/schema/props/show';
 
 type SkeletonProps = NameProp & ShowProp;
+
+export type ComponentWatchers<Props> = {
+	[K in keyof Props as `watch${Capitalize<string & K>}`]: WatchCallback<Props[K]>;
+};
 
 @Component({
 	tag: 'kol-skeleton',
