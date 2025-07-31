@@ -1,5 +1,6 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
+import type { LabelProp } from '../../schema/props/label';
 import type { FunctionalComponentProps } from '../generic-types';
 
 export type ClickButtonCallbacks = {
@@ -10,13 +11,13 @@ export type ClickButtonRefs = {
 	button: HTMLButtonElement;
 };
 
-export type ClickButtonState = Record<never, never>;
-
 export type ClickButtonEmitters = Record<never, never>;
+
+export type ClickButtonState = LabelProp;
 
 type Props = FunctionalComponentProps<ClickButtonState, ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs>;
 
-export const ClickButtonFC: FC<Props> = ({ handleClick, refButton }) => (
+export const ClickButtonFC: FC<Props> = ({ label, handleClick, refButton }) => (
 	<button
 		ref={refButton}
 		onClick={handleClick}
@@ -26,6 +27,6 @@ export const ClickButtonFC: FC<Props> = ({ handleClick, refButton }) => (
 			}
 		}}
 	>
-		Toggle
+		{label}
 	</button>
 );

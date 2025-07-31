@@ -26,7 +26,7 @@ export abstract class BaseController<State> {
 }
 ```
 
-- A web component may compose multiple functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
+- A web component (e.g. `kol-skeleton`) may compose only one functional components (e.g. `SkeletonFC`). A functional component can compose multiple internal functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
 - Each functional component receives an immutable instance of its state controller. If the controller exposes several independent values, you may also pass those states individually to the functional component instead of the whole controller.
 - Functional component props combine the component state with callback refs. The controller exposes ref setter functions that connect DOM elements back to the controller.
 

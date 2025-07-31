@@ -4,14 +4,14 @@ import { ClickButtonController } from '../click-button/controller';
 import type { SkeletonCallbacks, SkeletonRefs, SkeletonState } from './component';
 
 export class SkeletonController<State extends SkeletonState> extends BaseController<State> implements ControllerInterface<SkeletonCallbacks, SkeletonRefs> {
-	public readonly clickController: ClickButtonController<State>;
+	private readonly clickButtonController = new ClickButtonController<State>(this.component);
 
-	public constructor(component: { [K in keyof State]: State[K] }) {
-		super(component);
-		this.clickController = new ClickButtonController(component);
-	}
+	public handleClick = (): void => {
+		// eslint-disable-next-line no-console
+		console.log(this, 'button clicked');
+	};
 
-	public setSpanRef = (_element?: HTMLSpanElement): void => {
-		void _element;
+	public setButtonRef = (element?: HTMLButtonElement): void => {
+		this.clickButtonController.setButtonRef(element);
 	};
 }
