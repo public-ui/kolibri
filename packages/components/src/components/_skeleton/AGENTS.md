@@ -1,10 +1,23 @@
-### Overview
+# Overview
 
 This folder provides a minimal but fully functional example component. It shows
 how a Stencil web component in KoliBri is organised and can be used as a
 blueprint when implementing new components.
 
-### Component architecture
+## Todos
+
+- [x] `@Component` - the web component's main class
+- [x] `@Element` - the web component's host element
+- [x] `@Prop` - a property of the web component
+- [x] `@State` - a state variable of the web component and part of the props of the functional component
+- [x] `@Event` - an event emitted by the web component
+- [ ] `@Listen` - a decorator to listen to events
+- [ ] `@Method` - a method exposed by the web component
+- [x] `@Watch` - a watch for changes of properties of the web component
+- [x] `FunctionalComponent` - a stateless functional component that receives props and renders the template
+- [x] `Callbacks` - a set of callback functions to handle actions in the functional component
+
+## Component architecture
 
 The following guidelines define how we structure component state and properties:
 
