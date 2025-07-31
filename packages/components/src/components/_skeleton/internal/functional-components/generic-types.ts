@@ -6,7 +6,11 @@ type ComponentCallbacks<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
 };
 
-type ComponentEmitters<Emitters> = {
+type WebComponentEmitters<Emitters> = {
+	[K in keyof Emitters as `${Lowercase<string & K>}`]: EventEmitter<Emitters[K]>;
+};
+
+type FunctionalComponentEmitters<Emitters> = {
 	[K in keyof Emitters as `on${Capitalize<string & K>}`]: EventEmitter<Emitters[K]>;
 };
 
@@ -22,11 +26,11 @@ type ComponentWatchers<Props> = {
 	[K in keyof Props as `watch${Capitalize<string & K>}`]: Callback<Props[K]>;
 };
 
-export type WebComponentInterface<Props, State, Emitters> = ComponentProps<Props> & State & ComponentEmitters<Emitters> & ComponentWatchers<Props>;
+export type WebComponentInterface<Props, State, Emitters> = ComponentProps<Props> & State & WebComponentEmitters<Emitters> & ComponentWatchers<Props>;
 
 export type FunctionalComponentProps<State, Callbacks, Emitters, Refs> = State &
 	ComponentCallbacks<Callbacks> &
-	ComponentEmitters<Emitters> &
+	FunctionalComponentEmitters<Emitters> &
 	ComponentRefs<Refs>;
 
 type ControllerCallbackHandlers<Callbacks> = {
