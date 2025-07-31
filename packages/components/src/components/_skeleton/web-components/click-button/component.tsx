@@ -23,6 +23,9 @@ export class KolClickButton implements Interface {
 	@State()
 	public label: LabelPropType = '';
 
+	/**
+	 * Das muss wohl doch in den den Controller.
+	 */
 	@Watch('label')
 	public watchLabel(value?: LabelPropType): void {
 		const normalized = normalizeLabel(value);
@@ -31,7 +34,12 @@ export class KolClickButton implements Interface {
 		}
 	}
 
-	public componentWillLoad(): void {}
+	/**
+	 * Das muss wohl doch in den den Controller.
+	 */
+	public componentWillLoad(): void {
+		this.watchLabel(this._label);
+	}
 
 	public render(): JSX.Element {
 		return (
