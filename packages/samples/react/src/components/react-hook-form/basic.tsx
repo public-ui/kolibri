@@ -53,7 +53,7 @@ const defaultValues: FormData = {
 	cv: null,
 	bio: '',
 	country: '',
-	language: '',
+	language: 'de',
 	framework: '',
 	gender: '',
 	termsAccepted: false,
