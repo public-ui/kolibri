@@ -11,6 +11,6 @@
 		"src/scenarios/appointment-form/Summary.tsx"
 	],
 
-	"ignoreDependencies": ["@public-ui/components", "@public-ui/react", "@public-ui/themes", "@unocss/preset-mini", "uno.css", "yup"],
+	"ignoreDependencies": ["@public-ui/components", "@public-ui/react", "@public-ui/themes", "@public-ui/react-hook-form-adapter", "@unocss/preset-mini", "uno.css", "yup"],
 	"project": ["src/**/*.ts", "src/**/*.tsx"]
 }
