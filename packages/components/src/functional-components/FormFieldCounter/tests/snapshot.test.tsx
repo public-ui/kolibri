@@ -9,7 +9,13 @@ const maxLength = 10;
 describe('KolFormFieldCounterFc', () => {
 	it('should render correctly', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<KolFormFieldCounterFc id="test-id" currentLength={currentLength} currentLengthDebounced={currentLengthDebounced} maxLength={maxLength} />
+			<KolFormFieldCounterFc
+				id="test-id"
+				currentLength={currentLength}
+				currentLengthDebounced={currentLengthDebounced}
+				maxLength={maxLength}
+				maxLengthBehavior={'hard'}
+			/>
 		));
 
 		expect(page.root).toMatchSnapshot();
