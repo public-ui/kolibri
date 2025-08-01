@@ -1,4 +1,3 @@
-import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import type { ShowPropType } from '../../schema/props/show';
@@ -6,25 +5,22 @@ import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonRefs, SkeletonRenderProps } from './component';
+import type { SkeletonCallbacks, SkeletonRefs, SkeletonRenderDelegatedProps, SkeletonRenderOwnProps } from './component';
 
-export class SkeletonController<Props extends SkeletonRenderProps>
+export class SkeletonController<Props extends SkeletonRenderDelegatedProps & SkeletonRenderOwnProps>
 	extends BaseController<Props>
-	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs>
+	implements ControllerInterface<SkeletonRenderDelegatedProps, SkeletonRenderOwnProps, SkeletonCallbacks, SkeletonRefs>
 {
 	private readonly clickButtonController = new ClickButtonController<Props>(this.component);
 
 	public componentWillLoad(): void {
-		this.watchLabel(this.component.label);
+		this.delegateWatchLabel(this.component.label);
 		this.watchName(this.component.name);
 		this.watchShow(this.component.show);
 	}
 
-	public watchLabel(value?: NamePropType): void {
-		const normalized = normalizeLabel(value);
-		if (validateLabel(normalized)) {
-			this.setRenderPropsOrStates('label', normalized);
-		}
+	public delegateWatchLabel(value?: NamePropType): void {
+		this.clickButtonController.watchLabel(value);
 	}
 
 	public watchName(value?: NamePropType): void {

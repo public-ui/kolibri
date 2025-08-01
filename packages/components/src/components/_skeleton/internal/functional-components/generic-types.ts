@@ -26,13 +26,18 @@ type ComponentRefs<Refs> = {
 	[K in keyof Refs as `ref${Capitalize<string & K>}`]: (element?: Refs[K]) => void;
 };
 
-type ComponentWatchers<Props> = {
+type ComponentOwnWatchers<Props> = {
 	[K in keyof Props as `watch${Capitalize<string & K>}`]: Callback<Props[K]>;
 };
 
-export type WebComponentInterface<Props, State, Emitters> = ComponentProps<Props> & State & WebComponentEmitters<Emitters> & ComponentWatchers<Props>;
+type ComponentDelegateWatchers<Props> = {
+	[K in keyof Props as `delegateWatch${Capitalize<string & K>}`]: Callback<Props[K]>;
+};
 
-export type FunctionalComponentProps<State, Callbacks, Emitters, Refs> = State &
+export type WebComponentInterface<Props, State, Emitters> = ComponentProps<Props> & State & WebComponentEmitters<Emitters> & ComponentDelegateWatchers<Props>;
+
+export type FunctionalComponentProps<DelegatedProps, OwnProps, Callbacks, Emitters, Refs> = DelegatedProps &
+	OwnProps &
 	ComponentCallbacks<Callbacks> &
 	FunctionalComponentEmitters<Emitters> &
 	ComponentRefs<Refs>;
@@ -45,6 +50,7 @@ type ControllerRefSetters<Refs> = {
 	[K in keyof Refs as `set${Capitalize<string & K>}Ref`]: (element?: Refs[K]) => void;
 };
 
-export type ControllerInterface<RenderProps, Callbacks, Refs> = ControllerCallbackHandlers<Callbacks> &
+export type ControllerInterface<DelegatedProps, OwnProps, Callbacks, Refs> = ControllerCallbackHandlers<Callbacks> &
 	ControllerRefSetters<Refs> &
-	ComponentWatchers<RenderProps>;
+	ComponentDelegateWatchers<DelegatedProps> &
+	ComponentOwnWatchers<OwnProps>;

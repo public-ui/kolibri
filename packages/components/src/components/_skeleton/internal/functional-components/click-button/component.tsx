@@ -13,9 +13,10 @@ export type ClickButtonRefs = {
 
 export type ClickButtonEmitters = Record<never, never>;
 
-export type ClickButtonRenderProps = LabelProp;
+export type ClickButtonRenderDelegatedProps = Record<never, never>;
+export type ClickButtonRenderOwnProps = LabelProp;
 
-type Props = FunctionalComponentProps<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs>;
+type Props = FunctionalComponentProps<ClickButtonRenderDelegatedProps, ClickButtonRenderOwnProps, ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs>;
 
 export const ClickButtonFC: FC<Props> = ({ label, handleClick, refButton }) => (
 	<button

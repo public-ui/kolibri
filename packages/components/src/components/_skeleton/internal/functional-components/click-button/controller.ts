@@ -2,11 +2,11 @@ import type { LabelPropType } from '../../schema/props/label';
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface } from '../generic-types';
-import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderProps } from './component';
+import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderDelegatedProps, ClickButtonRenderOwnProps } from './component';
 
-export class ClickButtonController<Props extends ClickButtonRenderProps>
+export class ClickButtonController<Props extends ClickButtonRenderDelegatedProps & ClickButtonRenderOwnProps>
 	extends BaseController<Props>
-	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs>
+	implements ControllerInterface<ClickButtonRenderDelegatedProps, ClickButtonRenderOwnProps, ClickButtonCallbacks, ClickButtonRefs>
 {
 	private buttonRef?: HTMLButtonElement;
 

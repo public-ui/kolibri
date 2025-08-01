@@ -1,7 +1,7 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Prop, Watch } from '@stencil/core';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SkeletonEmitters, SkeletonRenderProps } from '../../internal/functional-components/skeleton/component';
+import type { SkeletonEmitters, SkeletonRenderOwnProps } from '../../internal/functional-components/skeleton/component';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
 import type { LabelProp, LabelPropType } from '../../internal/schema/props/label';
@@ -10,7 +10,7 @@ import type { ShowProp, ShowPropType } from '../../internal/schema/props/show';
 
 type Props = LabelProp & NameProp & ShowProp;
 
-type Interface = WebComponentInterface<Props, SkeletonRenderProps, SkeletonEmitters>;
+type Interface = WebComponentInterface<Props, SkeletonRenderOwnProps, SkeletonEmitters>;
 
 @Component({
 	tag: 'kol-skeleton',
@@ -25,8 +25,8 @@ export class KolSkeleton implements Interface {
 	public label: LabelPropType = '';
 
 	@Watch('label')
-	public watchLabel(value?: NamePropType): void {
-		this.controller.watchLabel(value);
+	public delegateWatchLabel(value?: NamePropType): void {
+		this.controller.delegateWatchLabel(value);
 	}
 
 	@Prop()
@@ -35,7 +35,7 @@ export class KolSkeleton implements Interface {
 	public name: NamePropType = '';
 
 	@Watch('name')
-	public watchName(value?: NamePropType): void {
+	public delegateWatchName(value?: NamePropType): void {
 		this.controller.watchName(value);
 	}
 
@@ -45,7 +45,7 @@ export class KolSkeleton implements Interface {
 	public show: ShowPropType = false;
 
 	@Watch('show')
-	public watchShow(value?: ShowPropType): void {
+	public delegateWatchShow(value?: ShowPropType): void {
 		this.controller.watchShow(value);
 	}
 
