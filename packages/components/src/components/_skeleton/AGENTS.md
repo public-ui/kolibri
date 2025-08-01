@@ -17,6 +17,29 @@ blueprint when implementing new components.
 - [x] `FunctionalComponent` - a stateless functional component that receives props and renders the template
 - [x] `Callbacks` - a set of callback functions to handle actions in the functional component
 
+## Architecture overview
+
+The example is split into three layers:
+
+1. **web-components/** – public Stencil classes (`kol-skeleton`, `kol-click-button`) declaring the component API.
+2. **internal/functional-components/** – stateless React-like components and their controllers. Each controller extends `BaseController` and updates the web component via `setRenderPropsOrStates()`.
+3. **internal/schema/** – prop definitions with `normalize*` and `validate*` helpers used by the watchers.
+
+The file `internal/functional-components/generic-types.ts` defines helper types which generate the names for props, events, refs and watchers. Web components implement `WebComponentInterface`, controllers implement `ControllerInterface`, and functional components use `FunctionalComponentProps`.
+
+To keep the API concise, these helpers provide default type parameters. Only the delegated props must be specified – all other generic parameters default to an empty object. For example:
+
+```ts
+type Interface = WebComponentInterface<MyProps>;
+class MyController implements ControllerInterface<MyDelegatedProps> {}
+```
+
+If your controller exposes callbacks or refs, pass them as additional parameters. This optionality keeps the types lightweight and easier to read.
+
+## Public properties and render props
+
+Web components expose their API through `@Prop` decorated properties prefixed with `_`. These values are immutable from within the component. The controller normalises them and copies the result into so‑called render props without the underscore. Render props are regular class properties that Stencil watches through the controller's `setRenderPropsOrStates()` method. Functional components receive these render props together with callbacks and event emitters.
+
 ## Component architecture
 
 The following guidelines define how we structure component state and properties:
@@ -30,14 +53,18 @@ The following guidelines define how we structure component state and properties:
 - A minimal implementation looks like this:
 
 ```ts
-export abstract class BaseController<State> {
-	protected constructor(protected readonly component: { [K in keyof State]: State[K] }) {}
+export abstract class BaseController<State, Host extends ComponentInterface<State> = ComponentInterface<State>> {
+	protected constructor(protected readonly component: Host) {}
 
 	public setState<K extends keyof State>(prop: K, value: State[K]): void {
 		this.component[prop] = value;
 	}
 }
 ```
+
+When instantiating a controller, type the `Host` parameter with
+`WebComponentInterface<...>` so `componentWillLoad` can read underscored props
+without redeclaring them. Simply pass the web component class as the generic.
 
 - A web component (e.g. `kol-skeleton`) may compose only one functional components (e.g. `SkeletonFC`). A functional component can compose multiple internal functional components, each with its own controller for handling logic. The controllers and functional components share an interface describing the state they operate on. All rendering happens inside the functional components which receive the state via props.
 - Each functional component receives an immutable instance of its state controller. If the controller exposes several independent values, you may also pass those states individually to the functional component instead of the whole controller.
@@ -140,22 +167,23 @@ classDiagram
 
 ### Implementation pattern
 
-1. Declare public properties with `@Prop({ reflect: true })` and mirror them to private state using `@State` variables named `<prop>State`.
-2. Implement a `@Watch` method for each property. Normalize and validate the value inside the watcher and, if valid, call `controller.setState()`.
-3. Call each watcher from `componentWillLoad` to initialise the state before the first render.
-4. The controller only updates state via `setState()` and exposes no watcher methods.
-5. `render()` only delegates to the functional component, passing the current state as props.
-6. Refs are forwarded via callback functions. Define a method like `setSpanRef` on the controller and pass it directly from `render()` so the controller can access DOM elements.
-7. Events are emitted from the functional component. Forward the `EventEmitter` via a prop like `onLoadedEmitter` and call `.emit()` inside the functional component logic.
-8. `SkeletonController` instantiates a `ClickButtonController` for the `ClickButton` subcomponent which toggles the `show` state.
-9. All rendering happens in the functional components which must remain stateless.
-10. Define the component's state interface next to the functional component and implement it in the web component class so Stencil knows which `@State` variables exist.
+1. Declare public properties with `@Prop()` and prefix their names with an underscore, for example `_label`. For each property create a matching render prop without the underscore. These render props are updated by the controller via `setRenderPropsOrStates()`.
+2. Implement a `@Watch` method on the web component for every render prop. The watcher simply forwards the value to the controller where it is normalised and validated.
+3. Implement `componentWillLoad` in the controller. Inside this method call the watchers with the underscored property values so the render props are initialised before the first render.
+4. A web component's own `componentWillLoad` simply delegates to `controller.componentWillLoad()`.
+5. The controller updates render props only through `setRenderPropsOrStates()` and exposes methods like `watchName()` or `handleClick()` that the web component delegates to.
+6. `render()` only delegates to the functional component, passing the current render props, event emitters and ref callbacks.
+7. Refs are forwarded via callback functions. Define a method like `setSpanRef` on the controller and pass it directly from `render()` so the controller can access DOM elements.
+8. Events are emitted from the functional component. Forward the `EventEmitter` via a prop like `onLoadedEmitter` and call `.emit()` inside the functional component logic.
+9. `SkeletonController` instantiates a `ClickButtonController` for the `ClickButton` subcomponent which toggles the `show` state.
+10. All rendering happens in the functional components which must remain stateless.
+11. Define the functional component's render prop interface next to the component and implement it in the web component class so TypeScript knows which properties are available.
 
 All watcher methods share a generic `WatchCallback<T>` type defined as `(value?: T) => void`.
-Components can implement a `ComponentWatchers<Props>` interface to type their watcher methods based on the public properties.
+Use the helper types `ComponentDelegateWatchers<Props>` and `ComponentOwnWatchers<Props>` from `generic-types.ts` to type the watcher methods of the web component and its controller.
 
 ### Example usage
 
 ```html
-<kol-skeleton onSkeletonLoaded="{()" =""> console.log('Skeleton geladen!')}></kol-skeleton>
+<kol-skeleton onLoaded="{(event) => console.log('Skeleton loaded', event.detail)}"></kol-skeleton>
 ```

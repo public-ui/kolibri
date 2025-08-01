@@ -1,25 +1,29 @@
-import type { NamePropType } from '../../schema/props/name';
+import type { LabelProp, LabelPropType } from '../../schema/props/label';
+import type { NameProp, NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
-import type { ShowPropType } from '../../schema/props/show';
+import type { ShowProp, ShowPropType } from '../../schema/props/show';
 import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonRefs, SkeletonRenderDelegatedProps, SkeletonRenderOwnProps } from './component';
+import type { ControllerInterface, WebComponentInterface } from '../generic-types';
+import type { SkeletonCallbacks, SkeletonEmitters, SkeletonRefs, SkeletonRenderDelegatedProps, SkeletonRenderOwnProps } from './component';
 
-export class SkeletonController<Props extends SkeletonRenderDelegatedProps & SkeletonRenderOwnProps>
-	extends BaseController<Props>
+export class SkeletonController<
+		Host extends WebComponentInterface<LabelProp & NameProp & ShowProp, SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, SkeletonEmitters>,
+	>
+	extends BaseController<SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, Host>
 	implements ControllerInterface<SkeletonRenderDelegatedProps, SkeletonRenderOwnProps, SkeletonCallbacks, SkeletonRefs>
 {
-	private readonly clickButtonController = new ClickButtonController<Props>(this.component);
+	private readonly clickButtonController = new ClickButtonController<Host>(this.component);
 
 	public componentWillLoad(): void {
-		this.delegateWatchLabel(this.component.label);
-		this.watchName(this.component.name);
-		this.watchShow(this.component.show);
+		const { _label, _name, _show } = this.component;
+		this.delegateWatchLabel(_label);
+		this.watchName(_name);
+		this.watchShow(_show);
 	}
 
-	public delegateWatchLabel(value?: NamePropType): void {
+	public delegateWatchLabel(value?: LabelPropType): void {
 		this.clickButtonController.watchLabel(value);
 	}
 

@@ -17,7 +17,7 @@ type Interface = WebComponentInterface<Props, SkeletonRenderOwnProps, SkeletonEm
 	shadow: true,
 })
 export class KolSkeleton implements Interface {
-	private controller = new SkeletonController<KolSkeleton>(this);
+	private controller: SkeletonController<KolSkeleton> = new SkeletonController<KolSkeleton>(this);
 
 	@Prop()
 	public _label!: LabelPropType;
@@ -25,7 +25,7 @@ export class KolSkeleton implements Interface {
 	public label: LabelPropType = '';
 
 	@Watch('label')
-	public delegateWatchLabel(value?: NamePropType): void {
+	public delegateWatchLabel(value?: LabelPropType): void {
 		this.controller.delegateWatchLabel(value);
 	}
 

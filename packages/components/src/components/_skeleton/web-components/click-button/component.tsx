@@ -15,24 +15,18 @@ type Interface = WebComponentInterface<Props, ClickButtonRenderOwnProps, ClickBu
 	shadow: true,
 })
 export class KolClickButton implements Interface {
-	private controller = new ClickButtonController<KolClickButton>(this);
+	private controller: ClickButtonController<KolClickButton> = new ClickButtonController<KolClickButton>(this);
 
 	@Prop()
 	public _label!: LabelPropType;
 
 	public label: LabelPropType = '';
 
-	/**
-	 * Das muss wohl doch in den den Controller.
-	 */
 	@Watch('label')
-	public watchLabel(value?: LabelPropType): void {
+	public delegateWatchLabel(value?: LabelPropType): void {
 		this.controller.watchLabel(value);
 	}
 
-	/**
-	 * Das muss wohl doch in den den Controller.
-	 */
 	public componentWillLoad(): void {
 		this.controller.componentWillLoad();
 	}
