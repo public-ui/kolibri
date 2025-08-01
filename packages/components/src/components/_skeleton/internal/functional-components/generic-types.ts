@@ -6,6 +6,10 @@ type ComponentCallbacks<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
 };
 
+export type ComponentInterface<RenderProps> = {
+	[K in keyof RenderProps]: RenderProps[K];
+};
+
 type WebComponentEmitters<Emitters> = {
 	[K in keyof Emitters as `${Lowercase<string & K>}`]: EventEmitter<Emitters[K]>;
 };
@@ -41,4 +45,6 @@ type ControllerRefSetters<Refs> = {
 	[K in keyof Refs as `set${Capitalize<string & K>}Ref`]: (element?: Refs[K]) => void;
 };
 
-export type ControllerInterface<Callbacks, Refs> = ControllerCallbackHandlers<Callbacks> & ControllerRefSetters<Refs>;
+export type ControllerInterface<RenderProps, Callbacks, Refs> = ControllerCallbackHandlers<Callbacks> &
+	ControllerRefSetters<Refs> &
+	ComponentWatchers<RenderProps>;

@@ -1,12 +1,25 @@
+import type { LabelPropType } from '../../schema/props/label';
+import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface } from '../generic-types';
-import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonState } from './component';
+import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderProps } from './component';
 
-export class ClickButtonController<State extends ClickButtonState>
-	extends BaseController<State>
-	implements ControllerInterface<ClickButtonCallbacks, ClickButtonRefs>
+export class ClickButtonController<Props extends ClickButtonRenderProps>
+	extends BaseController<Props>
+	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs>
 {
 	private buttonRef?: HTMLButtonElement;
+
+	public componentWillLoad() {
+		this.watchLabel(this.component.label);
+	}
+
+	public watchLabel(value?: LabelPropType): void {
+		const normalized = normalizeLabel(value);
+		if (validateLabel(normalized)) {
+			this.setRenderPropsOrStates('label', normalized);
+		}
+	}
 
 	public handleClick = (): void => {
 		// eslint-disable-next-line no-console

@@ -1,8 +1,8 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
-import type { LabelPropType } from '../../schema/props/label';
-import type { NamePropType } from '../../schema/props/name';
-import type { ShowPropType } from '../../schema/props/show';
+import type { LabelProp } from '../../schema/props/label';
+import type { NameProp } from '../../schema/props/name';
+import type { ShowProp } from '../../schema/props/show';
 import { ClickButtonFC } from '../click-button/component';
 import type { FunctionalComponentProps } from '../generic-types';
 
@@ -29,13 +29,9 @@ export type SkeletonRefs = {
 	button: HTMLButtonElement;
 };
 
-export type SkeletonState = {
-	label: LabelPropType;
-	name: NamePropType;
-	show: ShowPropType;
-};
+export type SkeletonRenderProps = LabelProp & NameProp & ShowProp;
 
-type Props = FunctionalComponentProps<SkeletonState, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
+type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
 export const SkeletonFC: FC<Props> = ({ label, name, show, onLoaded, handleClick, refButton }) => {
 	setTimeout(() => {
