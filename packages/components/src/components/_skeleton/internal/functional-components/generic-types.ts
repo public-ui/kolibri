@@ -5,9 +5,9 @@ import type { EventEmitter } from '@stencil/core';
  */
 
 /**
- * Generic callback type used by property watchers.
+ * Generic callback signature.
  *
- * @template T - Type of the watched value.
+ * @template T - Argument type accepted by the callback.
  */
 type Callback<T> = (value?: T) => void;
 
