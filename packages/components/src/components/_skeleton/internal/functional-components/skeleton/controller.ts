@@ -1,4 +1,4 @@
-import type { LabelProp, LabelPropType } from '../../schema/props/label';
+import type { LabelPropType } from '../../schema/props/label';
 import type { NameProp, NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import type { ShowProp, ShowPropType } from '../../schema/props/show';
@@ -9,7 +9,7 @@ import type { ControllerInterface, WebComponentInterface } from '../generic-type
 import type { SkeletonCallbacks, SkeletonEmitters, SkeletonRefs, SkeletonRenderDelegatedProps, SkeletonRenderOwnProps } from './component';
 
 export class SkeletonController<
-		Host extends WebComponentInterface<LabelProp & NameProp & ShowProp, SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, SkeletonEmitters>,
+		Host extends WebComponentInterface<NameProp & ShowProp, SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, SkeletonEmitters>,
 	>
 	extends BaseController<SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, Host>
 	implements ControllerInterface<SkeletonRenderDelegatedProps, SkeletonRenderOwnProps, SkeletonCallbacks, SkeletonRefs>
@@ -17,8 +17,8 @@ export class SkeletonController<
 	private readonly clickButtonController = new ClickButtonController<Host>(this.component);
 
 	public componentWillLoad(): void {
-		const { _label, _name, _show } = this.component;
-		this.delegateWatchLabel(_label);
+		const { _name, _show } = this.component;
+		this.clickButtonController.watchLabel('Label');
 		this.watchName(_name);
 		this.watchShow(_show);
 	}

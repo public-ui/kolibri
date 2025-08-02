@@ -4,11 +4,11 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { SkeletonEmitters, SkeletonRenderOwnProps } from '../../internal/functional-components/skeleton/component';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
-import type { LabelProp, LabelPropType } from '../../internal/schema/props/label';
+import type { LabelPropType } from '../../internal/schema/props/label';
 import type { NameProp, NamePropType } from '../../internal/schema/props/name';
 import type { ShowProp, ShowPropType } from '../../internal/schema/props/show';
 
-type Props = LabelProp & NameProp & ShowProp;
+type Props = NameProp & ShowProp;
 
 type Interface = WebComponentInterface<Props, SkeletonRenderOwnProps, SkeletonEmitters>;
 
@@ -19,15 +19,7 @@ type Interface = WebComponentInterface<Props, SkeletonRenderOwnProps, SkeletonEm
 export class KolSkeleton implements Interface {
 	private controller: SkeletonController<KolSkeleton> = new SkeletonController<KolSkeleton>(this);
 
-	@Prop()
-	public _label!: LabelPropType;
-
-	public label: LabelPropType = '';
-
-	@Watch('label')
-	public delegateWatchLabel(value?: LabelPropType): void {
-		this.controller.delegateWatchLabel(value);
-	}
+	public label: LabelPropType = 'Label';
 
 	@Prop()
 	public _name!: NamePropType;

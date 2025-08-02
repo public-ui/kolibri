@@ -167,7 +167,7 @@ classDiagram
 
 ### Implementation pattern
 
-1. Declare public properties with `@Prop()` and prefix their names with an underscore, for example `_label`. For each property create a matching render prop without the underscore. These render props are updated by the controller via `setRenderPropsOrStates()`.
+1. Declare public properties with `@Prop()` and prefix their names with an underscore, for example `_name`. For each property create a matching render prop without the underscore. These render props are updated by the controller via `setRenderPropsOrStates()`.
 2. Implement a `@Watch` method on the web component for every render prop. The watcher simply forwards the value to the controller where it is normalised and validated.
 3. Implement `componentWillLoad` in the controller. Inside this method call the watchers with the underscored property values so the render props are initialised before the first render.
 4. A web component's own `componentWillLoad` simply delegates to `controller.componentWillLoad()`.
