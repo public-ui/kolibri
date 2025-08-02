@@ -4,6 +4,8 @@
 
 Diese Übersicht erklärt alle generischen Helfertypen, die im Skeleton-Verzeichnis verwendet werden, um Props, Events und Controller typisiert zu verbinden.
 
+Die Typdefinitionen sind in [`internal/functional-components/generic-types.ts`](internal/functional-components/generic-types.ts) mit JSDoc kommentiert.
+
 ## Wann verwenden
 
 Wenn neue Komponenten nach dem Skeleton-Muster entstehen, liefern die folgenden Typen wiederverwendbare Bausteine für ein konsistentes API.
@@ -17,18 +19,18 @@ Wenn neue Komponenten nach dem Skeleton-Muster entstehen, liefern die folgenden 
 
 | Name                                                                                | Parameter (Constraint)                   | Zweck                                          | Einsatzstellen                                                |
 | ----------------------------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------- |
-| `Callback<T>`                                                                       | `T`                                      | Rückruffunktion für Watcher                    | `internal/functional-components/generic-types.ts:3`           |
-| `ComponentCallbacks<Callbacks>`                                                     | `Callbacks`                              | leitet Methodenpräfix `handle` ab              | `internal/functional-components/generic-types.ts:5`           |
-| `WebComponentEmitters<Emitters>`                                                    | `Emitters`                               | erstellt EventEmitter-Eigenschaften            | `internal/functional-components/generic-types.ts:9`           |
-| `FunctionalComponentEmitters<Emitters>`                                             | `Emitters`                               | erzeugt `on*`-Emitter für Funktionskomponenten | `internal/functional-components/generic-types.ts:13`          |
-| `ComponentProps<Props>`                                                             | `Props`                                  | wandelt öffentliche Props in `_`-Varianten um  | `internal/functional-components/generic-types.ts:17`          |
-| `ComponentRefs<Refs>`                                                               | `Refs`                                   | erzeugt `ref*`-Setter                          | `internal/functional-components/generic-types.ts:21`          |
-| `ComponentWatchers<Props>`                                                          | `Props`                                  | generiert `watch*`-Methoden                    | `internal/functional-components/generic-types.ts:25`          |
-| `WebComponentInterface<State, Props, Emitters>`                                     | `State`, `Props`, `Emitters`             | Basisinterface für Web Components              | `internal/functional-components/generic-types.ts:29`          |
-| `FunctionalComponentProps<Props, Callbacks, Emitters, Refs>`                        | `Props`, `Callbacks`, `Emitters`, `Refs` | kombiniert Props, Callbacks, Refs und Emitter  | `internal/functional-components/generic-types.ts:36`          |
-| `ControllerCallbackHandlers<Callbacks>`                                             | `Callbacks`                              | leitet `handle*`-Funktionen ab                 | `internal/functional-components/generic-types.ts:41`          |
-| `ControllerRefSetters<Refs>`                                                        | `Refs`                                   | erzeugt `set*Ref`-Funktionen                   | `internal/functional-components/generic-types.ts:45`          |
-| `ControllerInterface<RenderProps, Callbacks, Refs>`                                 | `RenderProps`, `Callbacks`, `Refs`       | Vertrag für Controller                         | `internal/functional-components/generic-types.ts:49`          |
+| `Callback<T>`                                                                       | `T`                                      | Rückruffunktion für Watcher                    | `internal/functional-components/generic-types.ts:12`          |
+| `ComponentCallbacks<Callbacks>`                                                     | `Callbacks`                              | leitet Methodenpräfix `handle` ab              | `internal/functional-components/generic-types.ts:19`          |
+| `WebComponentEmitters<Emitters>`                                                    | `Emitters`                               | erstellt EventEmitter-Eigenschaften            | `internal/functional-components/generic-types.ts:28`          |
+| `FunctionalComponentEmitters<Emitters>`                                             | `Emitters`                               | erzeugt `on*`-Emitter für Funktionskomponenten | `internal/functional-components/generic-types.ts:37`          |
+| `ComponentProps<Props>`                                                             | `Props`                                  | wandelt öffentliche Props in `_`-Varianten um  | `internal/functional-components/generic-types.ts:46`          |
+| `ComponentRefs<Refs>`                                                               | `Refs`                                   | erzeugt `ref*`-Setter                          | `internal/functional-components/generic-types.ts:55`          |
+| `ComponentWatchers<Props>`                                                          | `Props`                                  | generiert `watch*`-Methoden                    | `internal/functional-components/generic-types.ts:64`          |
+| `WebComponentInterface<State, Props, Emitters>`                                     | `State`, `Props`, `Emitters`             | Basisinterface für Web Components              | `internal/functional-components/generic-types.ts:75`          |
+| `FunctionalComponentProps<Props, Callbacks, Emitters, Refs>`                        | `Props`, `Callbacks`, `Emitters`, `Refs` | kombiniert Props, Callbacks, Refs und Emitter  | `internal/functional-components/generic-types.ts:92`          |
+| `ControllerCallbackHandlers<Callbacks>`                                             | `Callbacks`                              | leitet `handle*`-Funktionen ab                 | `internal/functional-components/generic-types.ts:102`         |
+| `ControllerRefSetters<Refs>`                                                        | `Refs`                                   | erzeugt `set*Ref`-Funktionen                   | `internal/functional-components/generic-types.ts:111`         |
+| `ControllerInterface<RenderProps, Callbacks, Refs>`                                 | `RenderProps`, `Callbacks`, `Refs`       | Vertrag für Controller                         | `internal/functional-components/generic-types.ts:122`         |
 | `BaseController<Host>`                                                              | `Host`                                   | liefert `setRenderPropsOrStates`               | `internal/functional-components/base-controller.ts:1`         |
 | `ClickButtonController<Host extends WebComponentInterface<ClickButtonRenderProps>>` | `Host`                                   | Controller der Unterkomponente                 | `internal/functional-components/click-button/controller.ts:7` |
 | `SkeletonController<Host extends WebComponentInterface<SkeletonRenderProps>>`       | `Host`                                   | Controller der Hauptkomponente                 | `internal/functional-components/skeleton/controller.ts:11`    |
