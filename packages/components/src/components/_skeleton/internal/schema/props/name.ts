@@ -1,14 +1,26 @@
+import { StringValidator } from '../base-validator';
+
 export type NamePropType = string;
 
 export type NameProp = {
 	name: NamePropType;
 };
 
-export const normalizeName = (value?: NamePropType): NamePropType => {
-	if (typeof value === 'string') {
-		return value.trim();
+/**
+ * Validator for name properties.
+ * Names are required strings with a minimum length of 1 character.
+ */
+class NameValidator extends StringValidator {
+	constructor() {
+		super('', true, 1); // defaultValue: '', required: true, minLength: 1
 	}
-	return '';
-};
+}
 
-export const validateName = (value?: NamePropType): boolean => typeof value === 'string';
+const nameValidator = new NameValidator();
+
+// Legacy API - backward compatibility
+export const normalizeName = (value?: NamePropType): NamePropType => nameValidator.normalize(value);
+export const validateName = (value?: NamePropType): boolean => nameValidator.validate(nameValidator.normalize(value));
+
+// New API - recommended for new implementations
+export { nameValidator };
