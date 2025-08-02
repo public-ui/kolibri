@@ -1,9 +1,7 @@
-import type { ComponentInterface } from './generic-types';
+export abstract class BaseController<Host> {
+	public constructor(protected readonly component: Host) {}
 
-export abstract class BaseController<RenderProps> {
-	public constructor(protected readonly component: ComponentInterface<RenderProps>) {}
-
-	public setRenderPropsOrStates<K extends keyof RenderProps>(prop: K, value: RenderProps[K]): void {
+	public setRenderPropsOrStates<K extends keyof Host>(prop: K, value: Host[K]): void {
 		this.component[prop] = value;
 	}
 }
