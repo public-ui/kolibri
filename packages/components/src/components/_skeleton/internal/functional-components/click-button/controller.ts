@@ -27,6 +27,10 @@ export class ClickButtonController<Host extends WebComponentInterface<ClickButto
 		console.log(this, this.buttonRef, 'button clicked');
 	};
 
+	public focusButton = (): void => {
+		this.buttonRef?.focus();
+	};
+
 	public setButtonRef = (element?: HTMLButtonElement): void => {
 		this.buttonRef = element;
 	};
