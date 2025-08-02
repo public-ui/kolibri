@@ -1,5 +1,5 @@
 import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Event, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Event, Listen, Method, h, Host, Prop, Watch } from '@stencil/core';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SkeletonEmitters, SkeletonRenderProps } from '../../internal/functional-components/skeleton/component';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
@@ -37,6 +37,19 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 	@Watch('show')
 	public watchShow(value?: ShowPropType): void {
 		this.controller.watchShow(value);
+	}
+
+	@Method()
+	public focusButton(): Promise<void> {
+		this.controller.focusButton();
+		return Promise.resolve();
+	}
+
+	@Listen('keydown')
+	public handleKeyDown(event: KeyboardEvent): void {
+		if (event.key === 'Enter' || event.key === ' ') {
+			this.controller.handleClick();
+		}
 	}
 
 	@Event() public loaded!: EventEmitter<number>;
