@@ -1,29 +1,27 @@
 import type { LabelPropType } from '../../schema/props/label';
-import type { NameProp, NamePropType } from '../../schema/props/name';
+import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
-import type { ShowProp, ShowPropType } from '../../schema/props/show';
+import type { ShowPropType } from '../../schema/props/show';
 import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, WebComponentInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonEmitters, SkeletonRefs, SkeletonRenderDelegatedProps, SkeletonRenderOwnProps } from './component';
+import type { SkeletonCallbacks, SkeletonRefs, SkeletonRenderProps } from './component';
 
-export class SkeletonController<
-		Host extends WebComponentInterface<NameProp & ShowProp, SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, SkeletonEmitters>,
-	>
-	extends BaseController<SkeletonRenderDelegatedProps & SkeletonRenderOwnProps, Host>
-	implements ControllerInterface<SkeletonRenderDelegatedProps, SkeletonRenderOwnProps, SkeletonCallbacks, SkeletonRefs>
+export class SkeletonController<Host extends WebComponentInterface<SkeletonRenderProps>>
+	extends BaseController<Host>
+	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs>
 {
 	private readonly clickButtonController = new ClickButtonController<Host>(this.component);
 
-	public componentWillLoad(): void {
-		const { _name, _show } = this.component;
-		this.clickButtonController.watchLabel('Label');
-		this.watchName(_name);
-		this.watchShow(_show);
+	public componentWillLoad(props: SkeletonRenderProps): void {
+		const { label, name, show } = props;
+		this.watchLabel(label);
+		this.watchName(name);
+		this.watchShow(show);
 	}
 
-	public delegateWatchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelPropType): void {
 		this.clickButtonController.watchLabel(value);
 	}
 

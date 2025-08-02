@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
-import type { ClickButtonEmitters, ClickButtonRenderOwnProps } from '../../internal/functional-components/click-button/component';
+import type { ClickButtonEmitters, ClickButtonRenderProps } from '../../internal/functional-components/click-button/component';
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -8,14 +8,12 @@ import { type LabelProp, type LabelPropType } from '../../internal/schema/props/
 
 type Props = LabelProp;
 
-type Interface = WebComponentInterface<Props, ClickButtonRenderOwnProps, ClickButtonEmitters>;
-
 @Component({
 	tag: 'kol-click-button',
 	shadow: true,
 })
-export class KolClickButton implements Interface {
-	private controller: ClickButtonController<KolClickButton> = new ClickButtonController<KolClickButton>(this);
+export class KolClickButton implements WebComponentInterface<ClickButtonRenderProps, Props, ClickButtonEmitters> {
+	private controller = new ClickButtonController<KolClickButton>(this);
 
 	@Prop()
 	public _label!: LabelPropType;
@@ -23,12 +21,14 @@ export class KolClickButton implements Interface {
 	public label: LabelPropType = '';
 
 	@Watch('label')
-	public delegateWatchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelPropType): void {
 		this.controller.watchLabel(value);
 	}
 
 	public componentWillLoad(): void {
-		this.controller.componentWillLoad();
+		this.controller.componentWillLoad({
+			label: this.label,
+		});
 	}
 
 	public render(): JSX.Element {

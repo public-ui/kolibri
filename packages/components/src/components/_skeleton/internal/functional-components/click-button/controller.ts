@@ -2,17 +2,17 @@ import type { LabelPropType } from '../../schema/props/label';
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, WebComponentInterface } from '../generic-types';
-import type { ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs, ClickButtonRenderDelegatedProps, ClickButtonRenderOwnProps } from './component';
+import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderProps } from './component';
 
-export class ClickButtonController<Host extends WebComponentInterface<unknown, ClickButtonRenderOwnProps, ClickButtonEmitters>>
-	extends BaseController<ClickButtonRenderDelegatedProps & ClickButtonRenderOwnProps, Host>
-	implements ControllerInterface<ClickButtonRenderDelegatedProps, ClickButtonRenderOwnProps, ClickButtonCallbacks, ClickButtonRefs>
+export class ClickButtonController<Host extends WebComponentInterface<ClickButtonRenderProps>>
+	extends BaseController<Host>
+	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs>
 {
 	private buttonRef?: HTMLButtonElement;
 
-	public componentWillLoad(): void {
-		const { _label } = this.component as { _label?: LabelPropType };
-		this.watchLabel(_label);
+	public componentWillLoad(props: ClickButtonRenderProps): void {
+		const { label } = props;
+		this.watchLabel(label);
 	}
 
 	public watchLabel(value?: LabelPropType): void {

@@ -29,10 +29,9 @@ export type SkeletonRefs = {
 	button: HTMLButtonElement;
 };
 
-export type SkeletonRenderDelegatedProps = LabelProp;
-export type SkeletonRenderOwnProps = NameProp & ShowProp;
+export type SkeletonRenderProps = LabelProp & NameProp & ShowProp;
 
-type Props = FunctionalComponentProps<SkeletonRenderDelegatedProps, SkeletonRenderOwnProps, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
+type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
 export const SkeletonFC: FC<Props> = ({ label, name, show, onLoaded, handleClick, refButton }) => {
 	setTimeout(() => {
