@@ -15,4 +15,12 @@
 | -------- | ----------- | --------------------- |
 | `loaded` |             | `CustomEvent<number>` |
 
+## Methods
+
+### `toggle() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ---

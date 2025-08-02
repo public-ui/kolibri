@@ -11,8 +11,8 @@ blueprint when implementing new components.
 - [x] `@Prop` - a property of the web component
 - [x] `@State` - a state variable of the web component and part of the props of the functional component
 - [x] `@Event` - an event emitted by the web component
-- [ ] `@Listen` - a decorator to listen to events
-- [ ] `@Method` - a method exposed by the web component
+- [x] `@Listen` - a decorator to listen to events
+- [x] `@Method` - a method exposed by the web component
 - [x] `@Watch` - a watch for changes of properties of the web component
 - [x] `FunctionalComponent` - a stateless functional component that receives props and renders the template
 - [x] `Callbacks` - a set of callback functions to handle actions in the functional component

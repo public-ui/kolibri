@@ -1,7 +1,7 @@
 import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Event, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Event, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SkeletonEmitters, SkeletonRenderProps } from '../../internal/functional-components/skeleton/component';
+import type { SkeletonEmitters, SkeletonListeners, SkeletonMethods, SkeletonRenderProps } from '../../internal/functional-components/skeleton/component';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
 import type { LabelPropType } from '../../internal/schema/props/label';
@@ -14,7 +14,7 @@ type Props = NameProp & ShowProp;
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, Props, SkeletonEmitters> {
+export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, Props, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
 	private controller = new SkeletonController<KolSkeleton>(this);
 
 	public label: LabelPropType = 'Label';
@@ -40,6 +40,17 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 	}
 
 	@Event() public loaded!: EventEmitter<number>;
+
+	@Method()
+	public toggle(): Promise<void> {
+		this.controller.toggle();
+		return Promise.resolve();
+	}
+
+	@Listen('keydown', { target: 'window' })
+	public onKeydown(event: KeyboardEvent): void {
+		this.controller.onKeydown(event);
+	}
 
 	public componentWillLoad(): void {
 		this.controller.componentWillLoad({
