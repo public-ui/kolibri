@@ -28,7 +28,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 		this.controller.watchCount(value);
 	}
 
-	public label: LabelPropType = 'Label';
+	public readonly label: LabelPropType = 'Label';
 
 	@Prop()
 	public _name!: NamePropType;
