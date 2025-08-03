@@ -38,8 +38,8 @@ export class SkeletonController<
 		const normalized = normalizeLabel(value);
 		if (validateLabel(normalized)) {
 			this.setRenderPropsOrStates('label', normalized);
-			this.clickButtonController.watchLabel(normalized);
 		}
+		this.clickButtonController.watchLabel(value);
 	}
 
 	public watchName(value?: NamePropType): void {
