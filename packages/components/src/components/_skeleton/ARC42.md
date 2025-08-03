@@ -4,6 +4,13 @@
 
 The `kol` skeleton component blueprint demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It is designed as a minimal, yet complete, reference implementation for new components.
 
+Representative code artifacts for each layer:
+
+- [Web component](./web-components/skeleton/component.tsx) – public API and watchers
+- [Controller](./internal/functional-components/skeleton/controller.ts) – business logic
+- [Renderer](./internal/functional-components/skeleton/component.tsx) – stateless view
+- [Schema helpers](./internal/schema/props) – prop types and validation
+
 Primary goals:
 
 - illustrate separation of concerns for long-term maintainability
@@ -41,6 +48,19 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Schema helpers define canonical prop types and validation rules close to the data model.
 
 This strategy yields strong decoupling so that each layer can evolve independently.
+
+### Watcher Example
+
+Incoming props are normalised in dedicated watchers before reaching the controller:
+
+```ts
+@Watch('_count')
+public watchCount(value?: CountPropType): void {
+  this.controller.watchCount(value);
+}
+```
+
+See the [controller](./internal/functional-components/skeleton/controller.ts) for the corresponding validation logic.
 
 ## 5. Building Block View
 
@@ -99,15 +119,24 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 9. Design Decisions
 
-1. Use underscored public props to clearly separate external inputs from internal state.
-2. Delegate all normalization and validation to the controller to keep renderers pure.
-3. Use functional components for rendering to avoid side effects.
+1. **Underscored public props**
+   - _Alternative_: mirror external props directly without underscores.
+   - _Reason_: underscores make the separation between public API and internal state explicit.
+2. **Centralised validation in the controller**
+   - _Alternative_: perform validation inside prop watchers.
+   - _Reason_: keeping validation in the controller makes testing and reuse easier.
+3. **Functional component rendering**
+   - _Alternative_: render JSX directly inside the web component class.
+   - _Reason_: a pure renderer improves testability and eliminates side effects.
 
 ## 10. Quality Requirements
 
 - Maintainability: isolated layers and type-safety reduce the cost of change.
 - Reliability: schema helpers validate every external value before it mutates state.
 - Testability: controllers and functional components can be unit tested in isolation.
+- Performance: stateless rendering and minimal watchers reduce unnecessary work.
+- Accessibility: follow repository-wide a11y presets and avoid title attributes in favour of `KolTooltip`.
+- Security: avoid direct DOM injection; rely on typed props and controller validation to prevent XSS.
 
 ## 11. Risks and Technical Debt
 
@@ -120,3 +149,5 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 - **Functional Component** – pure renderer without side effects.
 - **Schema Helper** – utility providing normalization and validation functions.
 - **Watch Decorator** – Stencil decorator that observes prop changes.
+- **Stencil** – compiler for building framework-agnostic web components.
+- **BEM** – Block Element Modifier naming convention for CSS class names.
