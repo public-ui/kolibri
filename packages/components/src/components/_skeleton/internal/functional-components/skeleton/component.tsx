@@ -29,6 +29,14 @@ export type SkeletonRefs = {
 	button: HTMLButtonElement;
 };
 
+export type SkeletonMethods = {
+	toggle: () => void;
+};
+
+export type SkeletonListeners = {
+	keydown: KeyboardEvent;
+};
+
 export type SkeletonRenderProps = LabelProp & NameProp & ShowProp;
 
 type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
