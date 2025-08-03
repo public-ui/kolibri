@@ -1,5 +1,3 @@
-import { BooleanValidator } from '../base-validator';
-
 export type ShowPropType = boolean;
 
 export type ShowProp = {
@@ -7,20 +5,18 @@ export type ShowProp = {
 };
 
 /**
- * Validator for show properties.
- * Show is an optional boolean that defaults to false.
+ * Validates if a value is a boolean.
  */
-class ShowValidator extends BooleanValidator {
-	constructor() {
-		super(false); // defaultValue: false
-	}
+export function validateShow(value: unknown): value is boolean {
+	return typeof value === 'boolean';
 }
 
-const showValidator = new ShowValidator();
-
-// Legacy API - backward compatibility
-export const normalizeShow = (value?: ShowPropType): ShowPropType => showValidator.normalize(value);
-export const validateShow = (value?: ShowPropType): boolean => showValidator.validate(showValidator.normalize(value));
-
-// New API - recommended for new implementations
-export { showValidator };
+/**
+ * Processes a show value - converts truthy/falsy values to boolean, defaults to false.
+ */
+export function normalizeShow(value?: unknown): boolean {
+	if (value === undefined || value === null) {
+		return false; // Default value
+	}
+	return !!value; // Convert to boolean
+}

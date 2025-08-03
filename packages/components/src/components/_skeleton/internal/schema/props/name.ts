@@ -1,5 +1,3 @@
-import { StringValidator } from '../base-validator';
-
 export type NamePropType = string;
 
 export type NameProp = {
@@ -7,20 +5,27 @@ export type NameProp = {
 };
 
 /**
- * Validator for name properties.
- * Names are required strings with a minimum length of 1 character.
+ * Validates if a value is a valid name (non-empty string).
  */
-class NameValidator extends StringValidator {
-	constructor() {
-		super('', true, 1); // defaultValue: '', required: true, minLength: 1
-	}
+export function validateName(value: unknown): value is string {
+	return typeof value === 'string' && value.trim().length > 0;
 }
 
-const nameValidator = new NameValidator();
-
-// Legacy API - backward compatibility
-export const normalizeName = (value?: NamePropType): NamePropType => nameValidator.normalize(value);
-export const validateName = (value?: NamePropType): boolean => nameValidator.validate(nameValidator.normalize(value));
-
-// New API - recommended for new implementations
-export { nameValidator };
+/**
+ * Processes a name value - returns the trimmed string if valid, otherwise empty string.
+ */
+export function normalizeName(value?: unknown): string {
+	if (typeof value === 'string') {
+		const trimmed = value.trim();
+		if (trimmed.length > 0) {
+			return trimmed;
+		}
+	}
+	if (typeof value === 'number') {
+		const stringValue = String(value).trim();
+		if (stringValue.length > 0) {
+			return stringValue;
+		}
+	}
+	return ''; // Default value for required field
+}

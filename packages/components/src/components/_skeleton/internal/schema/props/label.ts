@@ -1,5 +1,3 @@
-import { StringValidator } from '../base-validator';
-
 export type LabelPropType = string;
 
 export type LabelProp = {
@@ -7,20 +5,21 @@ export type LabelProp = {
 };
 
 /**
- * Validator for label properties.
- * Labels are optional strings that default to an empty string.
+ * Validates if a value is a string.
  */
-class LabelValidator extends StringValidator {
-	constructor() {
-		super('', false); // defaultValue: '', required: false
-	}
+export function validateLabel(value: unknown): value is string {
+	return typeof value === 'string';
 }
 
-const labelValidator = new LabelValidator();
-
-// Legacy API - backward compatibility
-export const normalizeLabel = (value?: LabelPropType): LabelPropType => labelValidator.normalize(value);
-export const validateLabel = (value?: LabelPropType): boolean => labelValidator.validate(labelValidator.normalize(value));
-
-// New API - recommended for new implementations
-export { labelValidator };
+/**
+ * Processes a label value - returns trimmed string or converts numbers, defaults to empty string.
+ */
+export function normalizeLabel(value?: unknown): string {
+	if (typeof value === 'string') {
+		return value.trim();
+	}
+	if (typeof value === 'number') {
+		return String(value).trim();
+	}
+	return ''; // Default value
+}
