@@ -20,7 +20,7 @@ export class KolClickButton implements WebComponentInterface<ClickButtonRenderPr
 
 	public label: LabelPropType = '';
 
-	@Watch('label')
+	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
 		this.controller.watchLabel(value);
 	}
