@@ -1,3 +1,5 @@
+import type { CountPropType } from '../../schema/props/count';
+import { normalizeCount, validateCount } from '../../schema/props/count';
 import type { LabelPropType } from '../../schema/props/label';
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
@@ -18,10 +20,22 @@ export class SkeletonController<
 	private readonly clickButtonController = new ClickButtonController<Host>(this.component);
 
 	public componentWillLoad(props: SkeletonRenderProps): void {
-		const { label, name, show } = props;
+		const { count, label, name, show } = props;
+		this.watchCount(count);
 		this.watchLabel(label);
 		this.watchName(name);
 		this.watchShow(show);
+	}
+
+	public watchCount(value?: CountPropType): void {
+		if (validateCount(value)) {
+			this.setRenderPropsOrStates('count', value);
+		} else {
+			const normalized = normalizeCount(value);
+			if (validateCount(normalized)) {
+				this.setRenderPropsOrStates('count', normalized);
+			}
+		}
 	}
 
 	public watchLabel(value?: LabelPropType): void {

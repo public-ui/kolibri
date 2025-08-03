@@ -196,5 +196,5 @@ Use the helper types `ComponentDelegateWatchers<Props>` and `ComponentOwnWatcher
 ### Example usage
 
 ```html
-<kol-skeleton onLoaded="{(event) => console.log('Skeleton loaded', event.detail)}"></kol-skeleton>
+<kol-skeleton _count="42" _name="Example Skeleton" _show="true" onLoaded="{(event) => console.log('Skeleton loaded', event.detail)}"> </kol-skeleton>
 ```

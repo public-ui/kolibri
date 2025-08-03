@@ -38,10 +38,10 @@ export function normalizePropName(value?: unknown): unknown {
 
 ## Available Props
 
+- **count.ts** - Number values (string→number conversion)
 - **label.ts** - String labels for components
 - **name.ts** - Name identifiers (string validation + number→string conversion)
 - **show.ts** - Boolean visibility flags (strict boolean handling)
-- **count.ts** - Number values (string→number conversion)
 
 ## Usage
 
@@ -60,6 +60,24 @@ public watchLabel(value?: LabelPropType): void {
       this.setRenderPropsOrStates('label', normalized);
     }
     // If normalization fails, value is ignored (not set)
+  }
+}
+```
+
+:
+
+```typescript
+import { normalizeLabel, validateLabel } from '../../schema/props/label';
+
+// In controller
+public watchLabel(value?: LabelPropType): void {
+  if (validateLabel(value)) {
+    // Already correct type
+    this.setRenderPropsOrStates('label', value);
+  } else {
+    // Minimal normalization
+    const normalized = normalizeLabel(value);
+    this.setRenderPropsOrStates('label', normalized);
   }
 }
 ```
