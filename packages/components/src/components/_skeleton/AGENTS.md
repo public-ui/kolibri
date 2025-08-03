@@ -4,6 +4,22 @@
 
 This skeleton demonstrates **Separation of Concerns** through layered architecture, where each layer has a single responsibility and clear boundaries.
 
+## Layer Responsibilities
+
+- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`) and mirrored to internal state fields without the underscore. `@Watch` methods normalise and validate values before delegating to the controller.
+- **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props via `setRenderPropsOrStates` and can compose other controllers for additional behaviour.
+- **Functional component** – pure, stateless renderer that receives the current state snapshot together with callbacks, emitters and refs. It never mutates data and communicates through events.
+- **Schema utilities** – prop type declarations plus `normalize*/validate*` helpers that keep domain rules close to the data model.
+
+## Data Flow
+
+1. External consumers set public props (`_count`, `_name`, `_show`, ...).
+2. Watchers invoke schema helpers to normalise and validate values.
+3. The controller updates internal state or render props.
+4. The functional component renders based on that state and emits events back to the outside.
+
+This unidirectional flow keeps state predictable and makes cross‑layer responsibilities explicit.
+
 ## Architectural Patterns
 
 ### 1. Layered Architecture
@@ -18,11 +34,11 @@ Controllers compose behavior rather than inheriting it. Each controller focuses 
 
 ### 3. Immutable Data Flow
 
-Data flows unidirectionally: Props → Normalization → Validation → State → Rendering. No backwards mutations.
+Data flows only from the public API towards the renderer. There are no backwards mutations; controllers toggle state by replacing values.
 
 ### 4. Type Safety Boundaries
 
-Generic types enforce compile-time guarantees about render props, eliminating defensive programming in functional components.
+Generic types enforce compile‑time guarantees about render props, eliminating defensive programming in functional components.
 
 ## Implementation Concepts
 
