@@ -4,6 +4,16 @@ export type ShowProp = {
 	show?: ShowPropType;
 };
 
-export const normalizeShow = (value?: ShowPropType): ShowPropType => !!value;
+export function validateShow(value: unknown): value is boolean {
+	return typeof value === 'boolean';
+}
 
-export const validateShow = (value?: ShowPropType): boolean => typeof value === 'boolean';
+export function normalizeShow(value?: unknown): unknown {
+	if (value === true) {
+		return true;
+	}
+	if (value === false) {
+		return false;
+	}
+	return value; // Return unchanged
+}

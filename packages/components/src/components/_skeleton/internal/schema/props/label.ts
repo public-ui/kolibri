@@ -4,11 +4,16 @@ export type LabelProp = {
 	label: LabelPropType;
 };
 
-export const normalizeLabel = (value?: LabelPropType): LabelPropType => {
+export function normalizeLabel(value?: unknown): unknown {
 	if (typeof value === 'string') {
-		return value.trim();
+		return value;
 	}
-	return '';
-};
+	if (typeof value === 'number') {
+		return String(value);
+	}
+	return value;
+}
 
-export const validateLabel = (value?: LabelPropType): boolean => typeof value === 'string';
+export function validateLabel(value: unknown): value is string {
+	return typeof value === 'string';
+}

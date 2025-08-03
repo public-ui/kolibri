@@ -1,5 +1,6 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
+import type { CountProp } from '../../schema/props/count';
 import type { LabelProp } from '../../schema/props/label';
 import type { NameProp } from '../../schema/props/name';
 import type { ShowProp } from '../../schema/props/show';
@@ -37,17 +38,18 @@ export type SkeletonListeners = {
 	keydown: KeyboardEvent;
 };
 
-export type SkeletonRenderProps = LabelProp & NameProp & ShowProp;
+export type SkeletonRenderProps = CountProp & LabelProp & NameProp & ShowProp;
 
 type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
-export const SkeletonFC: FC<Props> = ({ label, name, show, onLoaded, handleClick, refButton }) => {
+export const SkeletonFC: FC<Props> = ({ count, label, name, show, onLoaded, handleClick, refButton }) => {
 	setTimeout(() => {
 		onLoaded.emit(100);
 	}, 1000);
 	return (
 		<div>
 			{show && <span>{name}</span>}
+			<div>Count: {count}</div>
 			<ClickButtonFC label={label} handleClick={handleClick} refButton={refButton} />
 		</div>
 	);

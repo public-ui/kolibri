@@ -4,11 +4,12 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { SkeletonEmitters, SkeletonListeners, SkeletonMethods, SkeletonRenderProps } from '../../internal/functional-components/skeleton/component';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
+import type { CountProp, CountPropType } from '../../internal/schema/props/count';
 import type { LabelPropType } from '../../internal/schema/props/label';
 import type { NameProp, NamePropType } from '../../internal/schema/props/name';
 import type { ShowProp, ShowPropType } from '../../internal/schema/props/show';
 
-type Props = NameProp & ShowProp;
+type Props = CountProp & NameProp & ShowProp;
 
 @Component({
 	tag: 'kol-skeleton',
@@ -17,7 +18,17 @@ type Props = NameProp & ShowProp;
 export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, Props, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
 	private controller = new SkeletonController<KolSkeleton>(this);
 
-	public label: LabelPropType = 'Label';
+	@Prop()
+	public _count!: CountPropType;
+
+	public count: CountPropType = 0;
+
+	@Watch('count')
+	public watchCount(value?: CountPropType): void {
+		this.controller.watchCount(value);
+	}
+
+	public readonly label: LabelPropType = 'Label';
 
 	@Prop()
 	public _name!: NamePropType;
@@ -67,9 +78,10 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 
 	public componentWillLoad(): void {
 		this.controller.componentWillLoad({
+			count: this._count,
 			label: this.label,
-			name: this.name,
-			show: this.show,
+			name: this._name,
+			show: this._show,
 		});
 	}
 
@@ -77,6 +89,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 		return (
 			<Host>
 				<SkeletonFC
+					count={this.count}
 					label={this.label}
 					name={this.name}
 					handleClick={this.controller.handleClick}

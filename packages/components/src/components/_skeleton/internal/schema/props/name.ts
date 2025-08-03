@@ -4,11 +4,16 @@ export type NameProp = {
 	name: NamePropType;
 };
 
-export const normalizeName = (value?: NamePropType): NamePropType => {
+export function normalizeName(value?: unknown): unknown {
 	if (typeof value === 'string') {
-		return value.trim();
+		return value;
 	}
-	return '';
-};
+	if (typeof value === 'number') {
+		return String(value);
+	}
+	return value;
+}
 
-export const validateName = (value?: NamePropType): boolean => typeof value === 'string';
+export function validateName(value: unknown): value is string {
+	return typeof value === 'string';
+}
