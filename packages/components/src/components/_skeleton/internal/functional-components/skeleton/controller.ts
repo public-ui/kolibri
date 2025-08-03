@@ -1,7 +1,6 @@
 import type { CountPropType } from '../../schema/props/count';
 import { normalizeCount, validateCount } from '../../schema/props/count';
 import type { LabelPropType } from '../../schema/props/label';
-import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import type { ShowPropType } from '../../schema/props/show';
@@ -35,10 +34,6 @@ export class SkeletonController<
 	}
 
 	public watchLabel(value?: LabelPropType): void {
-		const normalized = normalizeLabel(value);
-		if (validateLabel(normalized)) {
-			this.setRenderPropsOrStates('label', normalized);
-		}
 		this.clickButtonController.watchLabel(value);
 	}
 
