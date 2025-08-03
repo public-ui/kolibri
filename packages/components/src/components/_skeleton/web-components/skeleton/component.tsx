@@ -1,11 +1,10 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SkeletonEmitters, SkeletonListeners, SkeletonMethods, SkeletonRenderProps } from '../../internal/functional-components/skeleton/component';
+import type { SkeletonEmitters, SkeletonListeners, SkeletonMethods } from '../../internal/functional-components/skeleton/component';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
 import type { CountProp, CountPropType } from '../../internal/schema/props/count';
-import type { LabelPropType } from '../../internal/schema/props/label';
 import type { NameProp, NamePropType } from '../../internal/schema/props/name';
 import type { ShowProp, ShowPropType } from '../../internal/schema/props/show';
 
@@ -15,25 +14,19 @@ type Props = CountProp & NameProp & ShowProp;
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, Props, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
-	private controller = new SkeletonController<KolSkeleton>(this);
+export class KolSkeleton implements WebComponentInterface<Props, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
+	private readonly controller = new SkeletonController();
 
 	@Prop()
 	public _count!: CountPropType;
-
-	public count: CountPropType = 0;
 
 	@Watch('_count')
 	public watchCount(value?: CountPropType): void {
 		this.controller.watchCount(value);
 	}
 
-	public readonly label: LabelPropType = 'Label';
-
 	@Prop()
 	public _name!: NamePropType;
-
-	public name: NamePropType = '';
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -42,8 +35,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 
 	@Prop()
 	public _show?: ShowPropType;
-
-	public show: ShowPropType = false;
 
 	@Watch('_show')
 	public watchShow(value?: ShowPropType): void {
@@ -79,22 +70,23 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 	public componentWillLoad(): void {
 		this.controller.componentWillLoad({
 			count: this._count,
-			label: this.label,
+			label: 'Label',
 			name: this._name,
 			show: this._show,
 		});
 	}
 
 	public render(): JSX.Element {
+		const { count, label, name, show } = this.controller.getProps();
 		return (
 			<Host>
 				<SkeletonFC
-					count={this.count}
-					label={this.label}
-					name={this.name}
+					count={count}
+					label={label}
+					name={name}
 					handleClick={this.controller.handleClick}
 					onLoaded={this.loaded}
-					show={this.show}
+					show={show}
 					refButton={this.controller.setButtonRef}
 				/>
 			</Host>

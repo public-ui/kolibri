@@ -1,14 +1,20 @@
 import type { LabelPropType } from '../../schema/props/label';
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, WebComponentInterface } from '../generic-types';
+import type { ControllerInterface } from '../generic-types';
 import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderProps } from './component';
 
-export class ClickButtonController<Host extends WebComponentInterface<ClickButtonRenderProps>>
-	extends BaseController<Host>
+export class ClickButtonController
+	extends BaseController<ClickButtonRenderProps>
 	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs>
 {
 	private buttonRef?: HTMLButtonElement;
+
+	public constructor() {
+		super({
+			label: '',
+		});
+	}
 
 	public componentWillLoad(props: ClickButtonRenderProps): void {
 		const { label } = props;
@@ -18,7 +24,7 @@ export class ClickButtonController<Host extends WebComponentInterface<ClickButto
 	public watchLabel(value?: LabelPropType): void {
 		const normalized = normalizeLabel(value);
 		if (validateLabel(normalized)) {
-			this.setRenderPropsOrStates('label', normalized);
+			this.setProp('label', normalized);
 		}
 	}
 

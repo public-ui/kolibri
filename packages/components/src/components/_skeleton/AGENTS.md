@@ -6,8 +6,8 @@ This skeleton demonstrates **Separation of Concerns** through layered architectu
 
 ## Layer Responsibilities
 
-- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`) and mirrored to internal state fields without the underscore. `@Watch` decorators must observe the underscored props (for example `@Watch('_count')`) to normalise and validate external values before delegating to the controller.
-- **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props via `setRenderPropsOrStates` and can compose other controllers for additional behaviour.
+- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`). `@Watch` decorators must observe the underscored props (for example `@Watch('_count')`) to normalise and validate external values before delegating to the controller. Render props are accessed via `controller.getRenderProps()` instead of mirroring them locally.
+- **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props directly and can compose other controllers for additional behaviour.
 - **Functional component** – pure, stateless renderer that receives the current state snapshot together with callbacks, emitters and refs. It never mutates data and communicates through events.
 - **Schema utilities** – prop type declarations plus `normalize*/validate*` helpers that keep domain rules close to the data model.
 
@@ -65,10 +65,10 @@ Web components must initialize controllers by passing current render props to en
 ```typescript
 public componentWillLoad(): void {
   this.controller.componentWillLoad({
-    count: this.count,
-    label: this.label,
-    name: this.name,
-    show: this.show,
+    count: this._count,
+    label: 'Label',
+    name: this._name,
+    show: this._show,
   });
 }
 ```

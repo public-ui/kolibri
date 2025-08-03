@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolAbbr } from '@public-ui/react';
+import { KolAbbr, KolSkeleton } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -16,6 +16,10 @@ export const AbbrBasic: FC = () => (
 
 		<p>
 			I am <KolAbbr>e.g.</KolAbbr> an abbreviation without label.
+		</p>
+
+		<p>
+			<KolSkeleton _count={3} _name="Example" _show={true} />
 		</p>
 	</>
 );

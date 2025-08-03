@@ -7,16 +7,23 @@ import type { ShowPropType } from '../../schema/props/show';
 import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface, WebComponentInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonEmitters, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps } from './component';
+import type { ControllerInterface } from '../generic-types';
+import type { SkeletonCallbacks, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps } from './component';
 
-export class SkeletonController<
-		Host extends WebComponentInterface<SkeletonRenderProps, Record<never, never>, SkeletonEmitters, SkeletonMethods, SkeletonListeners>,
-	>
-	extends BaseController<Host>
+export class SkeletonController
+	extends BaseController<SkeletonRenderProps>
 	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
 {
-	private readonly clickButtonController = new ClickButtonController<Host>(this.component);
+	private readonly clickButtonController: ClickButtonController = new ClickButtonController();
+
+	public constructor() {
+		super({
+			count: 0,
+			label: '',
+			name: '',
+			show: false,
+		});
+	}
 
 	public componentWillLoad(props: SkeletonRenderProps): void {
 		const { count, label, name, show } = props;
@@ -29,35 +36,38 @@ export class SkeletonController<
 	public watchCount(value?: CountPropType): void {
 		const normalized = normalizeCount(value);
 		if (validateCount(normalized)) {
-			this.setRenderPropsOrStates('count', normalized);
+			this.setProp('count', normalized);
 		}
 	}
 
 	public watchLabel(value?: LabelPropType): void {
 		this.clickButtonController.watchLabel(value);
+		this.setProp('label', this.clickButtonController.getProps().label);
 	}
 
 	public watchName(value?: NamePropType): void {
 		const normalized = normalizeName(value);
 		if (validateName(normalized)) {
-			this.setRenderPropsOrStates('name', normalized);
+			this.setProp('name', normalized);
 		}
 	}
 
 	public watchShow(value?: ShowPropType): void {
 		const normalized = normalizeShow(value);
 		if (validateShow(normalized)) {
-			this.setRenderPropsOrStates('show', normalized);
+			this.setProp('show', normalized);
 		}
 	}
 
 	public toggle(): void {
-		this.setRenderPropsOrStates('show', !this.component.show);
+		this.setProp('show', !this.getProps().show);
 	}
 
 	public onKeydown = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
-			this.setRenderPropsOrStates('show', false);
+			// eslint-disable-next-line no-console
+			console.log('Show should be toggled');
+			this.setProp('show', false);
 		}
 	};
 
