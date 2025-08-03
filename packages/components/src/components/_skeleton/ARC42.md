@@ -80,22 +80,24 @@ classDiagram
     class WebComponent {
         +_count : number
         +watchCount()
+        +render()
     }
     class Controller {
         +watchCount(value)
         +handleClick()
+        +getRenderProps()
     }
     class FunctionalComponent {
-        +render()
+        <<stateless>>
+        +render(props)
     }
     class SchemaHelpers {
         +normalizeCount()
         +validateCount()
     }
-    WebComponent --> Controller
-    Controller --> FunctionalComponent
-    WebComponent ..> SchemaHelpers
-    Controller ..> SchemaHelpers
+    WebComponent *-- Controller : uses
+    WebComponent *-- FunctionalComponent : uses
+    Controller ..> SchemaHelpers : uses
 ```
 
 ## 6. Runtime View
@@ -128,6 +130,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 ## 8. Cross-cutting Concepts
 
 - **Decoupling**: Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.
+- **Template Method Pattern**: The WebComponent defines the overall component lifecycle and structure (template), while the Controller implements the specific business logic steps. The WebComponent provides itself as a reference to the Controller, allowing the Controller to modify the component's state during the execution of the template.
 - **Event-driven communication**: User interaction is emitted as DOM events rather than calling functions across layers.
 - **Type safety**: Generics enforce compile-time contracts between components and controllers.
 - **RenderProps Pattern**: Functional components exclusively receive RenderProps that contain either normalized/validated external data or internal component state. RenderProps must always be initialized to prevent rendering with undefined values. This guarantees that rendering logic never operates on raw, unvalidated inputs and maintains data integrity throughout the component lifecycle.
