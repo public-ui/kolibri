@@ -56,6 +56,10 @@ export class SkeletonController<
 		console.log(this, 'button clicked');
 	};
 
+	public focusButton = (): void => {
+		this.clickButtonController.focusButton();
+	};
+
 	public setButtonRef = (element?: HTMLButtonElement): void => {
 		this.clickButtonController.setButtonRef(element);
 	};

@@ -39,6 +39,19 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 		this.controller.watchShow(value);
 	}
 
+	@Method()
+	public focusButton(): Promise<void> {
+		this.controller.focusButton();
+		return Promise.resolve();
+	}
+
+	@Listen('keydown')
+	public handleKeyDown(event: KeyboardEvent): void {
+		if (event.key === 'Enter' || event.key === ' ') {
+			this.controller.handleClick();
+		}
+	}
+
 	@Event() public loaded!: EventEmitter<number>;
 
 	@Method()
