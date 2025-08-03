@@ -1,9 +1,9 @@
 import type { LabelPropType } from '../../schema/props/label';
-import { normalizeLabel } from '../../schema/props/label';
+import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
-import { normalizeName } from '../../schema/props/name';
+import { normalizeName, validateName } from '../../schema/props/name';
 import type { ShowPropType } from '../../schema/props/show';
-import { normalizeShow } from '../../schema/props/show';
+import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, WebComponentInterface } from '../generic-types';
@@ -25,22 +25,38 @@ export class SkeletonController<
 	}
 
 	public watchLabel(value?: LabelPropType): void {
-		// Use normalize function for label
-		const processedValue = normalizeLabel(value);
-		this.setRenderPropsOrStates('label', processedValue);
-		this.clickButtonController.watchLabel(processedValue);
+		if (validateLabel(value)) {
+			this.setRenderPropsOrStates('label', value);
+			this.clickButtonController.watchLabel(value);
+		} else {
+			const normalized = normalizeLabel(value);
+			if (validateLabel(normalized)) {
+				this.setRenderPropsOrStates('label', normalized);
+				this.clickButtonController.watchLabel(normalized);
+			}
+		}
 	}
 
 	public watchName(value?: NamePropType): void {
-		// Use normalize function for name
-		const processedValue = normalizeName(value);
-		this.setRenderPropsOrStates('name', processedValue);
+		if (validateName(value)) {
+			this.setRenderPropsOrStates('name', value);
+		} else {
+			const normalized = normalizeName(value);
+			if (validateName(normalized)) {
+				this.setRenderPropsOrStates('name', normalized);
+			}
+		}
 	}
 
 	public watchShow(value?: ShowPropType): void {
-		// Use normalize function for show
-		const processedValue = normalizeShow(value);
-		this.setRenderPropsOrStates('show', processedValue);
+		if (validateShow(value)) {
+			this.setRenderPropsOrStates('show', value);
+		} else {
+			const normalized = normalizeShow(value);
+			if (validateShow(normalized)) {
+				this.setRenderPropsOrStates('show', normalized);
+			}
+		}
 	}
 
 	public toggle(): void {

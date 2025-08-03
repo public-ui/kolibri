@@ -4,7 +4,7 @@ This directory contains the property definitions for skeleton components. Each p
 
 1. **Type definitions** - TypeScript types for the property
 2. **Validation functions** - Functions to validate if a value matches the expected type
-3. **Normalization functions** - Functions to process and normalize input values
+3. **Normalization functions** - Functions for minimal type conversion
 
 ## Structure
 
@@ -22,30 +22,44 @@ export function validatePropName(value: unknown): value is PropNameType {
 	// Validation logic
 }
 
-// Normalization function
-export function normalizePropName(value?: unknown): PropNameType {
-	// Normalization and default value logic
+// Minimal normalization function
+export function normalizePropName(value?: unknown): unknown {
+	// Minimal conversion logic - returns value unchanged if not convertible
 }
 ```
+
+## Normalization Rules
+
+- **String**: Numbers convert to strings, strings remain unchanged, others unchanged
+- **Number**: String numbers convert to numbers, numbers remain unchanged, others unchanged
+- **Boolean**: true/false remain unchanged, others unchanged
+
+**Important**: Normalization returns the original value unchanged if no conversion is possible, instead of default values.
 
 ## Available Props
 
 - **label.ts** - String labels for components
-- **name.ts** - Name identifiers (required non-empty strings)
-- **show.ts** - Boolean visibility flags
+- **name.ts** - Name identifiers (string validation + number→string conversion)
+- **show.ts** - Boolean visibility flags (strict boolean handling)
+- **count.ts** - Number values (string→number conversion)
 
 ## Usage
 
-Controllers import and use these functions to validate and process props:
+Controllers validate first, then normalize if needed, then validate again:
 
 ```typescript
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 
 // In controller
 public watchLabel(value?: LabelPropType): void {
-  const normalized = normalizeLabel(value);
-  if (validateLabel(normalized)) {
-    this.setRenderPropsOrStates('label', normalized);
+  if (validateLabel(value)) {
+    this.setRenderPropsOrStates('label', value);
+  } else {
+    const normalized = normalizeLabel(value);
+    if (validateLabel(normalized)) {
+      this.setRenderPropsOrStates('label', normalized);
+    }
+    // If normalization fails, value is ignored (not set)
   }
 }
 ```

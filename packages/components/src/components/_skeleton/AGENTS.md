@@ -48,6 +48,17 @@ The following guidelines define how we structure component state and properties:
 - When several properties form one logical state, combine them into a single state variable, either as a primitive value or an object.
 - Each property may implement `normalizeProperty` and `validateProperty`; call these from the property's `Watch` method.
 - Stateless internal functional components receive props that mirror the web component's state. These props use the same names as the state variables (e.g., `stateA`). They are invoked from the web component's private `render()` method and never inherit from the web component.
+
+## Code organization guidelines
+
+- **No enhanced or demo files**: Do not create `*-enhanced.ts`, `*-demo.ts`, or similar variant files. Keep the codebase minimal and focused on production code only.
+- **Minimal commenting**: Add code comments only when something is non-trivial or not immediately apparent. Comments should explain erklärungswürdige (explanation-worthy) code sections, not obvious operations.
+  - ✅ Complex business logic or algorithms
+  - ✅ Non-obvious workarounds or browser-specific code
+  - ✅ Important architectural decisions
+  - ❌ Simple assignments, function calls, or type declarations
+  - ❌ Obvious operations like `return value` or `this.setState(...)`
+- **Self-documenting code**: Prefer clear variable names, function names, and code structure over excessive commenting.
 - Complex interactions can be handled inside a component controller. The controller follows the composition pattern and is created by the component.
 - All controllers inherit from a common `BaseController` that exposes a `setState()` helper mirroring Stencil's state mechanism. After normalizing and validating incoming props, a controller updates the web component by calling this method, which triggers a rerender.
 - A minimal implementation looks like this:
