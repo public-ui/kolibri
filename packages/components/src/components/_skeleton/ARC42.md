@@ -47,6 +47,17 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Functional components render pure JSX based on provided props.
 - Schema helpers define canonical prop types and validation rules close to the data model.
 
+### RenderProps Pattern
+
+A critical design principle is that **functional components always render using RenderProps**, which are either:
+
+1. **Normalized and validated external props** - incoming props that have been processed through schema helpers
+2. **Internal component state** - derived or computed values managed by the controller
+
+This ensures that the renderer never works with raw, unvalidated data. All values passed to the functional component have been through the controller's validation pipeline, maintaining type safety and data integrity throughout the rendering process.
+
+**RenderProps must always be initialized** before being passed to the functional component. This prevents rendering with undefined or uninitialized values and ensures that the component can safely render at any point in its lifecycle without encountering unexpected undefined states.
+
 This strategy yields strong decoupling so that each layer can evolve independently.
 
 ### Watcher Example
@@ -103,9 +114,10 @@ sequenceDiagram
     CTRL->>S: normalizeCount(5)
     S-->>CTRL: 5
     CTRL->>S: validateCount(5)
-    S-->>CTRL: ok
+    S-->>CTRL: true
     CTRL->>WC: update count
-    WC->>FC: render(count)
+    WC->>FC: render(renderProps)
+    Note over FC: renderProps contain normalized/validated data or internal state
     FC-->>U: updated markup
 ```
 
@@ -118,6 +130,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 - **Decoupling**: Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.
 - **Event-driven communication**: User interaction is emitted as DOM events rather than calling functions across layers.
 - **Type safety**: Generics enforce compile-time contracts between components and controllers.
+- **RenderProps Pattern**: Functional components exclusively receive RenderProps that contain either normalized/validated external data or internal component state. RenderProps must always be initialized to prevent rendering with undefined values. This guarantees that rendering logic never operates on raw, unvalidated inputs and maintains data integrity throughout the component lifecycle.
 
 ## 9. Design Decisions
 
@@ -148,7 +161,8 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 ## 12. Glossary
 
 - **Controller** – orchestrates state transitions and validation.
-- **Functional Component** – pure renderer without side effects.
+- **Functional Component** – pure renderer without side effects that exclusively works with RenderProps.
+- **RenderProps** – normalized and validated props or internal state passed to functional components for rendering. Must always be initialized before use.
 - **Schema Helper** – utility providing normalization and validation functions.
 - **Watch Decorator** – Stencil decorator that observes prop changes.
 - **Stencil** – compiler for building framework-agnostic web components.
