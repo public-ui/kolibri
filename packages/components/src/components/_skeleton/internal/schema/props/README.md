@@ -45,22 +45,18 @@ export function normalizePropName(value?: unknown): unknown {
 
 ## Usage
 
-Controllers validate first, then normalize if needed, then validate again:
+Controllers normalize first, then validate:
 
 ```typescript
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 
 // In controller
 public watchLabel(value?: LabelPropType): void {
-  if (validateLabel(value)) {
-    this.setRenderPropsOrStates('label', value);
-  } else {
-    const normalized = normalizeLabel(value);
-    if (validateLabel(normalized)) {
-      this.setRenderPropsOrStates('label', normalized);
-    }
-    // If normalization fails, value is ignored (not set)
+  const normalized = normalizeLabel(value);
+  if (validateLabel(normalized)) {
+    this.setRenderPropsOrStates('label', normalized);
   }
+  // If validation fails, value is ignored (not set)
 }
 ```
 

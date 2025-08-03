@@ -28,48 +28,31 @@ export class SkeletonController<
 	}
 
 	public watchCount(value?: CountPropType): void {
-		if (validateCount(value)) {
-			this.setRenderPropsOrStates('count', value);
-		} else {
-			const normalized = normalizeCount(value);
-			if (validateCount(normalized)) {
-				this.setRenderPropsOrStates('count', normalized);
-			}
+		const normalized = normalizeCount(value);
+		if (validateCount(normalized)) {
+			this.setRenderPropsOrStates('count', normalized);
 		}
 	}
 
 	public watchLabel(value?: LabelPropType): void {
-		if (validateLabel(value)) {
-			this.setRenderPropsOrStates('label', value);
-			this.clickButtonController.watchLabel(value);
-		} else {
-			const normalized = normalizeLabel(value);
-			if (validateLabel(normalized)) {
-				this.setRenderPropsOrStates('label', normalized);
-				this.clickButtonController.watchLabel(normalized);
-			}
+		const normalized = normalizeLabel(value);
+		if (validateLabel(normalized)) {
+			this.setRenderPropsOrStates('label', normalized);
+			this.clickButtonController.watchLabel(normalized);
 		}
 	}
 
 	public watchName(value?: NamePropType): void {
-		if (validateName(value)) {
-			this.setRenderPropsOrStates('name', value);
-		} else {
-			const normalized = normalizeName(value);
-			if (validateName(normalized)) {
-				this.setRenderPropsOrStates('name', normalized);
-			}
+		const normalized = normalizeName(value);
+		if (validateName(normalized)) {
+			this.setRenderPropsOrStates('name', normalized);
 		}
 	}
 
 	public watchShow(value?: ShowPropType): void {
-		if (validateShow(value)) {
-			this.setRenderPropsOrStates('show', value);
-		} else {
-			const normalized = normalizeShow(value);
-			if (validateShow(normalized)) {
-				this.setRenderPropsOrStates('show', normalized);
-			}
+		const normalized = normalizeShow(value);
+		if (validateShow(normalized)) {
+			this.setRenderPropsOrStates('show', normalized);
 		}
 	}
 

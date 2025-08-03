@@ -16,13 +16,9 @@ export class ClickButtonController<Host extends WebComponentInterface<ClickButto
 	}
 
 	public watchLabel(value?: LabelPropType): void {
-		if (validateLabel(value)) {
-			this.setRenderPropsOrStates('label', value);
-		} else {
-			const normalized = normalizeLabel(value);
-			if (validateLabel(normalized)) {
-				this.setRenderPropsOrStates('label', normalized);
-			}
+		const normalized = normalizeLabel(value);
+		if (validateLabel(normalized)) {
+			this.setRenderPropsOrStates('label', normalized);
 		}
 	}
 
