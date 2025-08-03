@@ -6,7 +6,7 @@ This skeleton demonstrates **Separation of Concerns** through layered architectu
 
 ## Layer Responsibilities
 
-- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`) and mirrored to internal state fields without the underscore. `@Watch` methods normalise and validate values before delegating to the controller.
+- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`) and mirrored to internal state fields without the underscore. `@Watch` decorators must observe the underscored props (for example `@Watch('_count')`) to normalise and validate external values before delegating to the controller.
 - **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props via `setRenderPropsOrStates` and can compose other controllers for additional behaviour.
 - **Functional component** – pure, stateless renderer that receives the current state snapshot together with callbacks, emitters and refs. It never mutates data and communicates through events.
 - **Schema utilities** – prop type declarations plus `normalize*/validate*` helpers that keep domain rules close to the data model.
@@ -14,7 +14,7 @@ This skeleton demonstrates **Separation of Concerns** through layered architectu
 ## Data Flow
 
 1. External consumers set public props (`_count`, `_name`, `_show`, ...).
-2. Watchers invoke schema helpers to normalise and validate values.
+2. Prop watchers on the underscored fields invoke schema helpers to normalise and validate values.
 3. The controller updates internal state or render props.
 4. The functional component renders based on that state and emits events back to the outside.
 
@@ -53,6 +53,10 @@ Components communicate through events rather than direct coupling, maintaining l
 ### Declarative Rendering
 
 Functional components receive complete state snapshots and render declaratively, eliminating imperative DOM manipulation.
+
+### Watcher Placement
+
+Attach `@Watch` only to the underscored public props (`_count`, `_name`, `_show`, ...). Internal state fields like `count`, `name`, `show` or `label` stay undecorated because watchers do not trigger on plain class properties.
 
 ### Controller Initialization Pattern
 
