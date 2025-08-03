@@ -1,79 +1,30 @@
-# Property Definitions
+# Type Safety through Progressive Enhancement
 
-This directory contains the property definitions for skeleton components. Each prop file contains:
+## Architectural Principle
 
-1. **Type definitions** - TypeScript types for the property
-2. **Validation functions** - Functions to validate if a value matches the expected type
-3. **Normalization functions** - Functions for minimal type conversion
+Web components receive dynamic values from HTML attributes, but internal rendering requires statically typed data. This schema bridges that gap through **graceful degradation**: attempt minimal type conversion, then validate, but never force invalid data into types.
 
-## Structure
+## Design Philosophy
 
-Each prop file follows this pattern:
+- **Fail gracefully**: Invalid data is ignored rather than causing errors
+- **Minimal conversion**: Only obvious transformations (string numbers → numbers)
+- **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
+- **No magic defaults**: Components provide their own meaningful defaults, not the schema
 
-```typescript
-// Type definitions
-export type PropNameType = SomeType;
-export type PropNameProp = {
-	propName: PropNameType;
-};
+## Available Properties
 
-// Validation function
-export function validatePropName(value: unknown): value is PropNameType {
-	// Validation logic
-}
+- **count** - Numeric values
+- **label** - Text content
+- **name** - Identifiers
+- **show** - Boolean states
 
-// Minimal normalization function
-export function normalizePropName(value?: unknown): unknown {
-	// Minimal conversion logic - returns value unchanged if not convertible
-}
-```
+## Usage Pattern
 
-## Normalization Rules
-
-- **String**: Numbers convert to strings, strings remain unchanged, others unchanged
-- **Number**: String numbers convert to numbers, numbers remain unchanged, others unchanged
-- **Boolean**: true/false remain unchanged, others unchanged
-
-**Important**: Normalization returns the original value unchanged if no conversion is possible, instead of default values.
-
-## Available Props
-
-- **count.ts** - Number values (string→number conversion)
-- **label.ts** - String labels for components
-- **name.ts** - Name identifiers (string validation + number→string conversion)
-- **show.ts** - Boolean visibility flags (strict boolean handling)
-
-## Usage
-
-Controllers normalize first, then validate:
+The two-phase approach separates concerns: normalization handles web platform quirks, validation enforces business rules.
 
 ```typescript
-import { normalizeLabel, validateLabel } from '../../schema/props/label';
-
-// In controller
-public watchLabel(value?: LabelPropType): void {
-  const normalized = normalizeLabel(value);
-  if (validateLabel(normalized)) {
-    this.setRenderPropsOrStates('label', normalized);
-  }
-  // If validation fails, value is ignored (not set)
-}
-```
-
-:
-
-```typescript
-import { normalizeLabel, validateLabel } from '../../schema/props/label';
-
-// In controller
-public watchLabel(value?: LabelPropType): void {
-  if (validateLabel(value)) {
-    // Already correct type
-    this.setRenderPropsOrStates('label', value);
-  } else {
-    // Minimal normalization
-    const normalized = normalizeLabel(value);
-    this.setRenderPropsOrStates('label', normalized);
-  }
+const normalized = normalizeValue(input);
+if (validateValue(normalized)) {
+	// Type-safe usage guaranteed
 }
 ```
