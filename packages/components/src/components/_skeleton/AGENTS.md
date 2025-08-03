@@ -38,6 +38,23 @@ Components communicate through events rather than direct coupling, maintaining l
 
 Functional components receive complete state snapshots and render declaratively, eliminating imperative DOM manipulation.
 
+### Controller Initialization Pattern
+
+Web components must initialize controllers by passing current render props to ensure proper state setup:
+
+```typescript
+public componentWillLoad(): void {
+  this.controller.componentWillLoad({
+    count: this.count,
+    label: this.label,
+    name: this.name,
+    show: this.show,
+  });
+}
+```
+
+This ensures controllers receive the complete current state before any external prop changes occur.
+
 ## Design Patterns
 
 ### Generic Type System

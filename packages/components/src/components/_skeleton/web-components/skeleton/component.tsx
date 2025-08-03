@@ -77,9 +77,12 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 	}
 
 	public componentWillLoad(): void {
-		this.watchCount(this._count);
-		this.watchName(this._name);
-		this.watchShow(this._show);
+		this.controller.componentWillLoad({
+			count: this._count,
+			label: this.label,
+			name: this._name,
+			show: this._show,
+		});
 	}
 
 	public render(): JSX.Element {

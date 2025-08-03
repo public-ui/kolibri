@@ -27,7 +27,7 @@ export class KolClickButton implements WebComponentInterface<ClickButtonRenderPr
 
 	public componentWillLoad(): void {
 		this.controller.componentWillLoad({
-			label: this.label,
+			label: this._label,
 		});
 	}
 

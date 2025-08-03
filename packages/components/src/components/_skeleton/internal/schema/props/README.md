@@ -28,3 +28,16 @@ if (validateValue(normalized)) {
 	// Type-safe usage guaranteed
 }
 ```
+
+## Initialization Contract
+
+Controllers expect complete render props during initialization to establish consistent state:
+
+```typescript
+this.controller.componentWillLoad({
+	count: this.count, // Current render prop values
+	label: this.label, // with guaranteed defaults
+	name: this.name, // from component initialization
+	show: this.show,
+});
+```
