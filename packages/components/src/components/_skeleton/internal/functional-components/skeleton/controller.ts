@@ -6,11 +6,13 @@ import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, WebComponentInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonRefs, SkeletonRenderProps } from './component';
+import type { SkeletonCallbacks, SkeletonEmitters, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps } from './component';
 
-export class SkeletonController<Host extends WebComponentInterface<SkeletonRenderProps>>
+export class SkeletonController<
+		Host extends WebComponentInterface<SkeletonRenderProps, Record<never, never>, SkeletonEmitters, SkeletonMethods, SkeletonListeners>,
+	>
 	extends BaseController<Host>
-	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs>
+	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
 {
 	private readonly clickButtonController = new ClickButtonController<Host>(this.component);
 
@@ -39,9 +41,23 @@ export class SkeletonController<Host extends WebComponentInterface<SkeletonRende
 		}
 	}
 
+	public toggle(): void {
+		this.setRenderPropsOrStates('show', !this.component.show);
+	}
+
+	public onKeydown = (event: KeyboardEvent): void => {
+		if (event.key === 'Escape') {
+			this.setRenderPropsOrStates('show', false);
+		}
+	};
+
 	public handleClick = (): void => {
 		// eslint-disable-next-line no-console
 		console.log(this, 'button clicked');
+	};
+
+	public focusButton = (): void => {
+		this.clickButtonController.focusButton();
 	};
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {
