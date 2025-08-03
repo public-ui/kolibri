@@ -23,7 +23,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 
 	public count: CountPropType = 0;
 
-	@Watch('count')
+	@Watch('_count')
 	public watchCount(value?: CountPropType): void {
 		this.controller.watchCount(value);
 	}
@@ -35,7 +35,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 
 	public name: NamePropType = '';
 
-	@Watch('name')
+	@Watch('_name')
 	public watchName(value?: NamePropType): void {
 		this.controller.watchName(value);
 	}
@@ -45,7 +45,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, P
 
 	public show: ShowPropType = false;
 
-	@Watch('show')
+	@Watch('_show')
 	public watchShow(value?: ShowPropType): void {
 		this.controller.watchShow(value);
 	}
