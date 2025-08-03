@@ -32,10 +32,9 @@ The skeleton lives inside `packages/components` and does not depend on runtime f
 flowchart LR
     Consumer[External Consumer] --> WC[Web Component]
     WC --> Controller
-    Controller --> Renderer[Functional Component]
+    WC --> Renderer[Functional Component]
     Renderer --> Consumer
-    WC -.-> Schema[Schema Helpers]
-    Controller -.-> Schema
+    Controller -.-> Schema[Schema Helpers]
 ```
 
 ## 4. Solution Strategy
@@ -152,7 +151,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 - Maintainability: isolated layers and type-safety reduce the cost of change.
 - Reliability: schema helpers validate every external value before it mutates state.
 - Testability: controllers and functional components can be unit tested in isolation.
-- Performance: stateless rendering and minimal watchers reduce unnecessary work.
+- Performance: **Optimized re-rendering strategy** - public props (with underscore) are normalized and validated, then assigned to internal fields (without underscore). This ensures only one re-render is triggered per prop change. State changes also trigger explicit re-rendering only when necessary, minimizing unnecessary render cycles. **Stencil's batching mechanism** automatically batches multiple prop or state changes that occur "simultaneously" into a single re-render, further optimizing performance even when multiple values change at once.
 - Accessibility: follow repository-wide a11y presets and avoid title attributes in favour of `KolTooltip`.
 - Security: avoid direct DOM injection; rely on typed props and controller validation to prevent XSS.
 
