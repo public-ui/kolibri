@@ -4,10 +4,6 @@ export type LabelProp = {
 	label: LabelPropType;
 };
 
-export function validateLabel(value: unknown): value is string {
-	return typeof value === 'string';
-}
-
 export function normalizeLabel(value?: unknown): unknown {
 	if (typeof value === 'string') {
 		return value;
@@ -15,5 +11,9 @@ export function normalizeLabel(value?: unknown): unknown {
 	if (typeof value === 'number') {
 		return String(value);
 	}
-	return value; // Return unchanged
+	return value;
+}
+
+export function validateLabel(value: unknown): value is string {
+	return typeof value === 'string';
 }

@@ -4,10 +4,6 @@ export type CountProp = {
 	count: CountPropType;
 };
 
-export function validateCount(value: unknown): value is number {
-	return typeof value === 'number';
-}
-
 export function normalizeCount(value?: unknown): unknown {
 	if (typeof value === 'number') {
 		return value;
@@ -16,5 +12,9 @@ export function normalizeCount(value?: unknown): unknown {
 		const parsed = Number(value);
 		return isNaN(parsed) ? value : parsed; // Return original if parsing fails
 	}
-	return value; // Return unchanged
+	return value;
+}
+
+export function validateCount(value: unknown): value is number {
+	return typeof value === 'number';
 }
