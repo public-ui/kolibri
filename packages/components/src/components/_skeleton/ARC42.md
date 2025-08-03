@@ -89,7 +89,7 @@ classDiagram
 
 ## 6. Runtime View
 
-The following sequence demonstrates how an external update propagates through the layers.
+The following sequence demonstrates how an external update is normalised and validated before it propagates through the layers.
 
 ```mermaid
 sequenceDiagram
@@ -102,6 +102,8 @@ sequenceDiagram
     WC->>CTRL: watchCount(5)
     CTRL->>S: normalizeCount(5)
     S-->>CTRL: 5
+    CTRL->>S: validateCount(5)
+    S-->>CTRL: ok
     CTRL->>WC: update count
     WC->>FC: render(count)
     FC-->>U: updated markup
