@@ -2,6 +2,6 @@
 
 exports[`KolFormFieldCounterFc should render correctly 1`] = `
 <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
-  kol-character-limit-remaining
+  kol-character-counter-current-of-max
 </span>
 `;
