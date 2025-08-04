@@ -6,29 +6,31 @@ import { normalizeName, validateName } from '../../schema/props/name';
 import type { ShowPropType } from '../../schema/props/show';
 import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
+import type { ClickButtonRenderProps } from '../click-button/component';
 import { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps } from './component';
+import type { ControllerInterface, WebComponentInterface } from '../generic-types';
+import type { SkeletonCallbacks, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps, SkeletonRenderStates } from './component';
 
 export class SkeletonController
-	extends BaseController<SkeletonRenderProps>
-	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
+	extends BaseController<SkeletonRenderProps, SkeletonRenderStates>
+	implements ControllerInterface<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
 {
-	private readonly clickButtonController: ClickButtonController = new ClickButtonController();
+	private readonly clickButtonController: ClickButtonController;
 
-	public constructor() {
-		super({
+	public label: LabelPropType = 'Label';
+
+	public constructor(component: WebComponentInterface<SkeletonRenderProps & ClickButtonRenderProps, SkeletonRenderStates>) {
+		super(component, {
 			count: 0,
-			label: '',
 			name: '',
 			show: false,
 		});
+		this.clickButtonController = new ClickButtonController(component);
 	}
 
 	public componentWillLoad(props: SkeletonRenderProps): void {
-		const { count, label, name, show } = props;
+		const { count, name, show } = props;
 		this.watchCount(count);
-		this.watchLabel(label);
 		this.watchName(name);
 		this.watchShow(show);
 	}
@@ -38,11 +40,6 @@ export class SkeletonController
 		if (validateCount(normalized)) {
 			this.setProp('count', normalized);
 		}
-	}
-
-	public watchLabel(value?: LabelPropType): void {
-		this.clickButtonController.watchLabel(value);
-		this.setProp('label', this.clickButtonController.getProps().label);
 	}
 
 	public watchName(value?: NamePropType): void {

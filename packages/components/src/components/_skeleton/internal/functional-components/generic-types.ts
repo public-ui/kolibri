@@ -34,24 +34,32 @@ type ComponentWatchers<Props> = {
 	[K in keyof Props as `watch${Capitalize<string & K>}`]: Callback<Props[K]>;
 };
 
-export type RequiredRenderProps<Props> = {
+export type NotNullableFields<Props> = {
 	[K in keyof Props]-?: NonNullable<Props[K]>;
 };
 
-export type WebComponentInterface<Props, Emitters = Record<never, never>, Methods = Record<never, never>, Listeners = Record<never, never>> = {
+export type WebComponentInterface<
+	Props = Record<never, never>,
+	States = Record<never, never>,
+	Emitters = Record<never, never>,
+	Methods = Record<never, never>,
+	Listeners = Record<never, never>,
+> = {
 	componentWillLoad(): void;
 } & ComponentProps<Props> &
+	NotNullableFields<States> &
 	ComponentWatchers<Props> &
 	WebComponentEmitters<Emitters> &
 	ComponentMethods<Methods> &
 	ComponentListeners<Listeners>;
 
 export type FunctionalComponentProps<
-	Props,
+	Props = Record<never, never>,
+	States = Record<never, never>,
 	Callbacks = Record<never, never>,
 	Emitters = Record<never, never>,
 	Refs = Record<never, never>,
-> = RequiredRenderProps<Props> & ComponentCallbacks<Callbacks> & ComponentRefs<Refs> & FunctionalComponentEmitters<Emitters>;
+> = NotNullableFields<Props> & NotNullableFields<States> & ComponentCallbacks<Callbacks> & ComponentRefs<Refs> & FunctionalComponentEmitters<Emitters>;
 
 type ControllerCallbackHandlers<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: (element?: Callbacks[K]) => void;
@@ -70,15 +78,17 @@ type ControllerMethods<Methods> = {
 };
 
 export type ControllerInterface<
-	Props,
+	Props = Record<never, never>,
+	States = Record<never, never>,
 	Callbacks = Record<never, never>,
 	Refs = Record<never, never>,
 	Methods = Record<never, never>,
 	Listeners = Record<never, never>,
 > = {
-	componentWillLoad(props: RequiredRenderProps<Props>): void;
-	getProps(): RequiredRenderProps<Props>;
-} & ComponentWatchers<Props> &
+	componentWillLoad(props: NotNullableFields<Props>): void;
+	getProps(): NotNullableFields<Props>;
+} & NotNullableFields<States> &
+	ComponentWatchers<Props> &
 	ControllerCallbackHandlers<Callbacks> &
 	ControllerRefSetters<Refs> &
 	ControllerMethods<Methods> &

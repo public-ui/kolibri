@@ -38,9 +38,10 @@ export type SkeletonListeners = {
 	keydown: KeyboardEvent;
 };
 
-export type SkeletonRenderProps = CountProp & LabelProp & NameProp & ShowProp;
+export type SkeletonRenderProps = CountProp & NameProp & ShowProp;
+export type SkeletonRenderStates = LabelProp;
 
-type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
+type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
 export const SkeletonFC: FC<Props> = ({ count, label, name, show, onLoaded, handleClick, refButton }) => {
 	setTimeout(() => {
