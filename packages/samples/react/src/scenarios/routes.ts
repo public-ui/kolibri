@@ -10,6 +10,7 @@ import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interac
 import { StaticForm } from './static-form';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { TooltipPositioning } from './tooltip-positioning';
+import { Skeleton } from './skeleton';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
@@ -24,5 +25,6 @@ export const SCENARIO_ROUTES: Routes = {
 		'static-form': StaticForm,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'tooltip-positioning': TooltipPositioning,
+		skeleton: Skeleton,
 	},
 };
