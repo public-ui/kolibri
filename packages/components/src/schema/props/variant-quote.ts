@@ -12,6 +12,10 @@ export type PropVariantQuote = {
 	variant: QuoteVariantPropType;
 };
 
+const isQuoteVariantPropType = (value: unknown): value is QuoteVariantPropType => {
+    return typeof value === 'string' && quoteVariantOptions.includes(value as QuoteVariantPropType);
+};
+
 export const validateVariantQuote = (component: Generic.Element.Component, value?: QuoteVariantPropType): void => {
-	watchValidator(component, '_variant', (value) => typeof value === 'string' && quoteVariantOptions.includes(value), new Set(quoteVariantOptions), value);
+    watchValidator(component, '_variant', isQuoteVariantPropType, new Set(quoteVariantOptions), value);
 };

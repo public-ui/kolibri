@@ -12,11 +12,15 @@ export type PropVariantInputCheckbox = {
 	variant: InputCheckboxVariantPropType;
 };
 
+const isInputCheckboxVariantPropType = (value: unknown): value is InputCheckboxVariantPropType => {
+	return typeof value === 'string' && inputCheckboxVariantOptions.includes(value as InputCheckboxVariantPropType);
+};
+
 export const validateVariantInputCheckbox = (component: Generic.Element.Component, value?: InputCheckboxVariantPropType): void => {
 	watchValidator(
 		component,
 		'_variant',
-		(value) => typeof value === 'string' && inputCheckboxVariantOptions.includes(value),
+		isInputCheckboxVariantPropType,
 		new Set(inputCheckboxVariantOptions),
 		value,
 	);
