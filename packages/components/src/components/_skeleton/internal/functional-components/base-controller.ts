@@ -14,7 +14,7 @@ export abstract class BaseController<Props, States> {
 		return this.props;
 	}
 
-	protected setState<K extends keyof States>(key: K, value: NotNullableFields<States>[K]): void {
+	protected setState<K extends keyof States>(key: K, value: WebComponentInterface<Props, States>[K]): void {
 		this.component[key] = value;
 	}
 }
