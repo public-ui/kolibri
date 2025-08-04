@@ -28,6 +28,7 @@ If we deprecate a feature, we will mark it as deprecated in the code and documen
 - `packages/components` – Stencil based web components
   - `packages/components/src/component` – components
   - `packages/components/src/schema` – schema definitions for all components
+  - `packages/components/src/components/_skeleton` – example component serving as blueprint for new implementations
 - `packages/samples` – sample applications demonstrating usage
   - `packages/samples/angular` – Angular sample app; do not edit
   - `packages/samples/react` – React sample app; all samples; write component samples here

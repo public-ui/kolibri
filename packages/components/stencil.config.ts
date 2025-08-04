@@ -45,6 +45,7 @@ const TAGS = [
 	'kol-progress',
 	'kol-quote',
 	'kol-select',
+	'kol-skeleton',
 	'kol-skip-nav',
 	'kol-spin',
 	'kol-split-button',

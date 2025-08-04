@@ -94,3 +94,6 @@ When refactoring or adding a component:
 1. Create a `bem.ts` describing the full BEM schema.
 2. Replace class strings with calls to the generated `bem` helper.
 3. Export the schema constant via `src/index.ts` to enable SCSS generation.
+
+For architectural guidance when creating new components, consult
+[`src/components/_skeleton/ARC42.md`](src/components/_skeleton/ARC42.md).
