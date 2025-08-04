@@ -19,15 +19,7 @@ export type ClickButtonRenderStates = Record<never, never>;
 type Props = FunctionalComponentProps<ClickButtonRenderProps, ClickButtonRenderStates, ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs>;
 
 export const ClickButtonFC: FC<Props> = ({ label, handleClick, refButton }) => (
-	<button
-		ref={refButton}
-		onClick={handleClick}
-		onKeyDown={(event): void => {
-			if (event.key === 'Enter' || event.key === ' ') {
-				handleClick();
-			}
-		}}
-	>
+	<button ref={refButton} onClick={handleClick}>
 		{label}
 	</button>
 );
