@@ -3,39 +3,42 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HasCounterPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputPasswordAPI,
 	InputPasswordStates,
 	InputTypeOnDefault,
-	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HasCounterPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 import { devHint } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
-import { propagateSubmitEventToForm } from '../form/controller';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import { InputPasswordController } from './controller';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
-import KolIconButtonFc from '../../functional-components/IconButton';
+import { nonce } from '../../utils/dev.utils';
+import { propagateSubmitEventToForm } from '../form/controller';
+import { InputPasswordController } from './controller';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -401,17 +404,17 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

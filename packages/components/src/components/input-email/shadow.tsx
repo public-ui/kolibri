@@ -5,27 +5,30 @@ import clsx from 'clsx';
 import type {
 	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HasCounterPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputEmailAPI,
 	InputEmailStates,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
-	MsgPropType,
 	MaxLengthBehaviorPropType,
+	MsgPropType,
 	MultiplePropType,
 	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HasCounterPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -372,17 +375,17 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

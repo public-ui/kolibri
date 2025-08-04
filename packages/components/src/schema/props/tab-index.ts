@@ -3,11 +3,18 @@ import type { Generic } from 'adopted-style-sheets';
 import type { WatchNumberOptions } from '../utils';
 import { a11yHint, watchNumber } from '../utils';
 
-/**
- * Accessibility hints
- * - https://adrianroselli.com/2014/11/dont-use-tabindex-greater-than-0.html
- */
+/* types */
+export type TabIndexPropType = number;
 
+/**
+ * Defines which tab-index the primary element of the component has.
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+ */
+export type PropTabIndex = {
+	tabIndex: TabIndexPropType;
+};
+
+/* constants */
 const options: WatchNumberOptions = {
 	hooks: {
 		afterPatch: (value) => {
@@ -18,9 +25,7 @@ const options: WatchNumberOptions = {
 	},
 };
 
-/**
- * Diese Methode validiert das Property und setzt den State, wenn es valide ist.
- */
-export const validateTabIndex = (component: Generic.Element.Component, value?: number): void => {
+/* validator */
+export const validateTabIndex = (component: Generic.Element.Component, value?: TabIndexPropType): void => {
 	watchNumber(component, '_tabIndex', value, options);
 };
