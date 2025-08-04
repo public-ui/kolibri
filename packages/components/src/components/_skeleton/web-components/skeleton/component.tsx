@@ -11,6 +11,7 @@ import type {
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
 import type { CountPropType } from '../../internal/schema/props/count';
+import type { LabelPropType } from '../../internal/schema/props/label';
 import type { NamePropType } from '../../internal/schema/props/name';
 import type { ShowPropType } from '../../internal/schema/props/show';
 
@@ -37,16 +38,11 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 		this.controller.watchName(value);
 	}
 
-	@Prop()
-	public _show?: ShowPropType;
-
-	@Watch('_show')
-	public watchShow(value?: ShowPropType): void {
-		this.controller.watchShow(value);
-	}
+	@State()
+	public label: LabelPropType = 'Label';
 
 	@State()
-	public label: string = 'Label';
+	public show: ShowPropType = true;
 
 	@Method()
 	public focusButton(): Promise<void> {
@@ -78,12 +74,11 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 		this.controller.componentWillLoad({
 			count: this._count,
 			name: this._name,
-			show: this._show,
 		});
 	}
 
 	public render(): JSX.Element {
-		const { count, name, show } = this.controller.getProps();
+		const { count, name } = this.controller.getProps();
 		return (
 			<Host>
 				<SkeletonFC
@@ -92,7 +87,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 					name={name}
 					handleClick={this.controller.handleClick}
 					onLoaded={this.loaded}
-					show={show}
+					show={this.show}
 					refButton={this.controller.setButtonRef}
 				/>
 			</Host>

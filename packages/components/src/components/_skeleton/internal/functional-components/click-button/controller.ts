@@ -6,11 +6,11 @@ import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderProps, Cli
 
 export class ClickButtonController
 	extends BaseController<ClickButtonRenderProps, ClickButtonRenderStates>
-	implements ControllerInterface<ClickButtonRenderProps, ClickButtonRenderStates, ClickButtonCallbacks, ClickButtonRefs>
+	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs>
 {
 	private buttonRef?: HTMLButtonElement;
 
-	public constructor(controller: WebComponentInterface<ClickButtonRenderProps, ClickButtonRenderStates>) {
+	public constructor(controller: WebComponentInterface<Record<never, never>, ClickButtonRenderStates>) {
 		super(controller, {
 			label: '',
 		});

@@ -2,7 +2,7 @@ import type { NotNullableFields, WebComponentInterface } from './generic-types';
 
 export abstract class BaseController<Props, States> {
 	public constructor(
-		private readonly component: WebComponentInterface<Props, States>,
+		protected readonly component: States,
 		private readonly props: NotNullableFields<Props>,
 	) {}
 
@@ -14,7 +14,7 @@ export abstract class BaseController<Props, States> {
 		return this.props;
 	}
 
-	protected setState<K extends keyof States>(key: K, value: WebComponentInterface<Props, States>[K]): void {
+	protected setState<K extends keyof States>(key: K, value: WebComponentInterface<Record<never, never>, States>[K]): void {
 		this.component[key] = value;
 	}
 }

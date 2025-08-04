@@ -3,36 +3,34 @@ import { normalizeCount, validateCount } from '../../schema/props/count';
 import type { LabelPropType } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
-import type { ShowPropType } from '../../schema/props/show';
-import { normalizeShow, validateShow } from '../../schema/props/show';
 import { BaseController } from '../base-controller';
-import type { ClickButtonRenderProps } from '../click-button/component';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, WebComponentInterface } from '../generic-types';
 import type { SkeletonCallbacks, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps, SkeletonRenderStates } from './component';
 
 export class SkeletonController
 	extends BaseController<SkeletonRenderProps, SkeletonRenderStates>
-	implements ControllerInterface<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
+	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
 {
 	private readonly clickButtonController: ClickButtonController;
 
 	public label: LabelPropType = 'Label';
 
-	public constructor(component: WebComponentInterface<SkeletonRenderProps & ClickButtonRenderProps, SkeletonRenderStates>) {
+	public constructor(component: WebComponentInterface<Record<never, never>, SkeletonRenderStates>) {
 		super(component, {
 			count: 0,
 			name: '',
-			show: false,
 		});
 		this.clickButtonController = new ClickButtonController(component);
 	}
 
 	public componentWillLoad(props: SkeletonRenderProps): void {
-		const { count, name, show } = props;
+		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);
-		this.watchShow(show);
+		this.clickButtonController.componentWillLoad({
+			label: this.label,
+		});
 	}
 
 	public watchCount(value?: CountPropType): void {
@@ -49,22 +47,15 @@ export class SkeletonController
 		}
 	}
 
-	public watchShow(value?: ShowPropType): void {
-		const normalized = normalizeShow(value);
-		if (validateShow(normalized)) {
-			this.setProp('show', normalized);
-		}
-	}
-
 	public toggle(): void {
-		this.setProp('show', !this.getProps().show);
+		this.setState('show', !this.component.show);
 	}
 
 	public onKeydown = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
 			// eslint-disable-next-line no-console
 			console.log('Show should be toggled');
-			this.setProp('show', false);
+			this.toggle();
 		}
 	};
 

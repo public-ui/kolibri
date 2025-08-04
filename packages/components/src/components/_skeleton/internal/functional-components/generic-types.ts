@@ -79,7 +79,6 @@ type ControllerMethods<Methods> = {
 
 export type ControllerInterface<
 	Props = Record<never, never>,
-	States = Record<never, never>,
 	Callbacks = Record<never, never>,
 	Refs = Record<never, never>,
 	Methods = Record<never, never>,
@@ -87,8 +86,7 @@ export type ControllerInterface<
 > = {
 	componentWillLoad(props: NotNullableFields<Props>): void;
 	getProps(): NotNullableFields<Props>;
-} & NotNullableFields<States> &
-	ComponentWatchers<Props> &
+} & ComponentWatchers<Props> &
 	ControllerCallbackHandlers<Callbacks> &
 	ControllerRefSetters<Refs> &
 	ControllerMethods<Methods> &

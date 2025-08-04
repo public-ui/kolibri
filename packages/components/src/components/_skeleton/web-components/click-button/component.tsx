@@ -12,7 +12,7 @@ type Props = LabelProp;
 	shadow: true,
 })
 export class KolClickButton implements WebComponentInterface<Props> {
-	private readonly controller = new ClickButtonController();
+	private readonly controller = new ClickButtonController(this);
 
 	@Prop()
 	public _label!: LabelPropType;

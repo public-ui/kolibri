@@ -38,8 +38,8 @@ export type SkeletonListeners = {
 	keydown: KeyboardEvent;
 };
 
-export type SkeletonRenderProps = CountProp & NameProp & ShowProp;
-export type SkeletonRenderStates = LabelProp;
+export type SkeletonRenderProps = CountProp & NameProp;
+export type SkeletonRenderStates = LabelProp & ShowProp;
 
 type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
