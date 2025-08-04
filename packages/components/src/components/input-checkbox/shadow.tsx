@@ -27,6 +27,7 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { InputCheckboxController } from './controller';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import type { FocusableElement } from '../../schema/interfaces/FocusableElement';
 
@@ -144,6 +145,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 							{...this.controller.onFacade}
 							onInput={this.onInput}
 							onChange={this.onChange}
+							onKeyDown={this.onKeyDown.bind(this)}
 							onFocus={(event) => {
 								this.controller.onFacade.onFocus(event);
 								this.inputHasFocus = true;
@@ -471,6 +473,15 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		// Callback
 		if (typeof this._on?.onChange === 'function') {
 			this._on.onChange(event, value);
+		}
+	};
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.inputRef,
+			});
 		}
 	};
 }

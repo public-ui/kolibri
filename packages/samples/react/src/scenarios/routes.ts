@@ -4,6 +4,7 @@ import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipWidth } from './custom-tooltip-width';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { FocusElements } from './focus-elements';
+import { FormSubmit } from './form-submit';
 import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
@@ -18,6 +19,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'custom-tooltip-width': CustomTooltipWidth,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
+		'form-submit': FormSubmit,
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
