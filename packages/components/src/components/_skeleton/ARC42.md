@@ -38,10 +38,17 @@ The skeleton lives inside `packages/components` and does not depend on runtime f
 flowchart LR
     Consumer[External Consumer] --> WC[Web Component]
     WC --> Controller
-    WC --> Renderer[Functional Component]
-    Renderer --> Consumer
     Controller -.-> Schema[Schema Helpers]
+    WC --> Renderer[Functional Component]
+    Renderer --> WC
+    WC --> Consumer
 ```
+
+The external consumer interacts solely with the custom element. The web component
+delegates normalization and state transitions to the controller, which in turn
+consults the schema helpers. Rendering is handed off to the stateless functional
+component, and the resulting DOM is patched back into the web component before it
+is presented to the consumer.
 
 ## 4. Solution Strategy
 
@@ -99,10 +106,12 @@ This ensures controllers receive the complete current state before any external 
 classDiagram
     class WebComponent {
         +_count : number
+        +componentWillLoad()
         +watchCount()
         +render()
     }
     class Controller {
+        +componentWillLoad(props)
         +watchCount(value)
         +handleClick()
         +getRenderProps()
@@ -115,10 +124,16 @@ classDiagram
         +normalizeCount()
         +validateCount()
     }
-    WebComponent *-- Controller : uses
-    WebComponent *-- FunctionalComponent : uses
+    WebComponent --> Controller : delegates
+    WebComponent --> FunctionalComponent : renders via
     Controller ..> SchemaHelpers : uses
 ```
+
+The web component owns public props and lifecycle hooks, delegating all
+normalization and state changes to the controller. The controller exposes only
+render-ready props via `getRenderProps()` and never touches the DOM directly.
+The functional component consumes these props and returns markup, keeping the
+view free of side effects, while schema helpers centralize validation logic.
 
 ## 6. Runtime View
 
@@ -139,9 +154,15 @@ sequenceDiagram
     S-->>CTRL: true
     CTRL->>WC: update count
     WC->>FC: render(renderProps)
-    Note over FC: renderProps contain normalized/validated data or internal state
-    FC-->>U: updated markup
+    FC-->>WC: markup
+    WC-->>U: updated DOM
+    Note over FC,WC: renderProps contain normalized/validated data or internal state
 ```
+
+This runtime view highlights how watchers pass external values to the controller
+for normalization and validation before any rendering occurs. Only after the
+controller updates internal state does the web component invoke the functional
+component, patch the returned markup and expose the updated DOM to the user.
 
 ## 7. Deployment View
 
