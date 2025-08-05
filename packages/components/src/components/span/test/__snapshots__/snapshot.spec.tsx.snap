@@ -8,9 +8,9 @@ exports[`kol-span-wc should render with _label="Text" _badgeText="v" 1`] = `
       Text
     </span>
     <span aria-hidden="true" class="span-label" hidden=""></span>
-    <span aria-hidden="true" class="badge-text-hint">
+    <kbd aria-hidden="true" class="badge-text-hint">
       v
-    </span>
+    </kbd>
   </span>
 </kol-span-wc>
 `;

@@ -228,9 +228,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 							) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
 								<>
 									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey || this.state._shortKey)} label={this.state._label} />{' '}
-									<span class="badge-text-hint" aria-hidden="true">
+									<kbd class="badge-text-hint" aria-hidden="true">
 										{buildBadgeTextString(this.state._accessKey || this.state._shortKey)}
-									</span>
+									</kbd>
 								</>
 							) : (
 								<span>{this.state._label}</span>

@@ -6,9 +6,9 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
     <kol-input _accesskey="V" _currentlength="17" _currentlengthdebounced="17" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="email" role="presentation">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
@@ -177,9 +177,9 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
     <kol-input _currentlength="17" _currentlengthdebounced="17" _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="email" role="presentation">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
@@ -212,9 +212,9 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
     <kol-input _accesskey="V" _currentlength="17" _currentlengthdebounced="17" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="email" role="presentation">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
@@ -383,9 +383,9 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
     <kol-input _currentlength="17" _currentlengthdebounced="17" _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="email" role="presentation">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">

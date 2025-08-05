@@ -6,9 +6,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-close" _label="" class="icon"></kol-icon>
@@ -187,9 +187,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-close" _label="" class="icon"></kol-icon>
@@ -242,9 +242,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-close" _label="" class="icon"></kol-icon>
@@ -423,9 +423,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-close" _label="" class="icon"></kol-icon>
@@ -478,9 +478,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-close" _label="" class="icon"></kol-icon>
@@ -659,9 +659,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-close" _label="" class="icon"></kol-icon>
@@ -714,9 +714,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -895,9 +895,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -950,9 +950,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -1131,9 +1131,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -1186,9 +1186,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -1367,9 +1367,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -1422,9 +1422,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -1603,9 +1603,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-check" _label="" class="icon"></kol-icon>
@@ -1658,9 +1658,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-remove" _label="" class="icon"></kol-icon>
@@ -1839,9 +1839,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <label class="checkbox-container" slot="input">
         <kol-icon _icons="codicon codicon-remove" _label="" class="icon"></kol-icon>

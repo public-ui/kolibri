@@ -56,9 +56,9 @@ export class KolSpanWc implements SpanAPI {
 						<slot name="expert" />
 					</span>
 					{this.state._badgeText && (
-						<span class="badge-text-hint" aria-hidden="true">
+						<kbd class="badge-text-hint" aria-hidden="true">
 							{this.state._badgeText}
-						</span>
+						</kbd>
 					)}
 					{this.state._icons.right && (
 						<KolIconTag
