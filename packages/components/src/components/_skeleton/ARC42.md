@@ -57,7 +57,9 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props and can compose other controllers for additional behaviour.
 - **Functional component** – pure, stateless renderer that receives the current state snapshot together with callbacks, emitters and refs. It never mutates data and communicates through events.
 - **Schema helpers** – prop type declarations plus `normalize*/validate*` helpers that keep domain rules close to the data model.
-- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`). `@Watch` decorators must observe the underscored props to normalise and validate external values before delegating to the controller. Render props are accessed via `controller.getRenderProps()` instead of mirroring them locally.
+- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`). `@Watch` decorators must observe the underscored props to normalise and validate external values before delegating to the controller. Render props are accessed via `controller.getProps()` instead of mirroring them locally.
+
+The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](./internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
 
 ### Props Pattern
 
@@ -104,36 +106,70 @@ This ensures controllers receive the complete current state before any external 
 
 ```mermaid
 classDiagram
-    class WebComponent {
-        +_count : number
-        +componentWillLoad()
-        +watchCount()
-        +render()
-    }
-    class Controller {
+    direction LR
+    class WebComponentInterface {
+        <<interface>>
         +componentWillLoad(props)
         +watchCount(value)
+        +watchName(value)
+        +focusButton()
+        +toggle()
+    }
+    class KolSkeleton {
+        +_count : number
+        +_name : string
+        +label : string
+        +show : boolean
+    }
+    KolSkeleton ..|> WebComponentInterface
+    class ControllerInterface {
+        <<interface>>
+        +componentWillLoad(props)
+        +watchCount(value)
+        +watchName(value)
         +handleClick()
-        +getRenderProps()
+        +getProps()
+        +setButtonRef(element)
     }
-    class FunctionalComponent {
+    class SkeletonController {
+        +toggle()
+        +focusButton()
+        +handleClick()
+    }
+    SkeletonController ..|> ControllerInterface
+    KolSkeleton --> SkeletonController : delegates
+    class FunctionalComponentProps {
+        <<interface>>
+        +count
+        +name
+        +label
+        +show
+        +handleClick()
+        +onLoaded(number)
+        +refButton(element)
+    }
+    class SkeletonFC {
         <<stateless>>
-        +render(props)
     }
+    SkeletonFC ..|> FunctionalComponentProps
+    KolSkeleton --> SkeletonFC : renders via
     class SchemaHelpers {
         +normalizeCount()
         +validateCount()
+        +normalizeName()
+        +validateName()
     }
-    WebComponent --> Controller : delegates
-    WebComponent --> FunctionalComponent : renders via
-    Controller ..> SchemaHelpers : uses
+    SkeletonController ..> SchemaHelpers : uses
+    SkeletonController o--> ClickButtonController : composes
 ```
 
-The web component owns public props and lifecycle hooks, delegating all
-normalization and state changes to the controller. The controller exposes only
-render-ready props via `getRenderProps()` and never touches the DOM directly.
-The functional component consumes these props and returns markup, keeping the
-view free of side effects, while schema helpers centralize validation logic.
+The web component implements `WebComponentInterface` and owns public props and
+lifecycle hooks. All normalization and state changes are delegated to a
+`SkeletonController` implementing `ControllerInterface`. The controller exposes
+validated props via `getProps()` and composes a `ClickButtonController` for
+reusable button behaviour. Rendering is performed by `SkeletonFC`, a stateless
+functional component implementing `FunctionalComponentProps`. Schema helpers
+provide the normalization and validation utilities consumed by the controller.
 
 ## 6. Runtime View
 
@@ -177,7 +213,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 - **Props Pattern**: Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized to prevent rendering with undefined values. This guarantees that rendering logic never operates on raw, unvalidated inputs and maintains data integrity throughout the component lifecycle.
 - **State ownership**: Web components own state, controllers manage transitions and functional components consume state.
 - **Template Method Pattern**: The WebComponent defines the overall component lifecycle and structure (template), while the Controller implements the specific business logic steps. The WebComponent provides itself as a reference to the Controller, allowing the Controller to modify the component's state during the execution of the template.
-- **Type safety**: Generics enforce compile-time contracts between components and controllers.
+- **Type safety and interface contracts**: `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers, enforcing consistent APIs and preventing accidental drift.
 - **Watcher placement**: Attach `@Watch` only to underscored public props; internal state fields remain undecorated.
 
 ## 9. Design Decisions
@@ -191,6 +227,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 3. **Functional component rendering**
    - _Alternative_: render JSX directly inside the web component class.
    - _Reason_: a pure renderer improves testability and eliminates side effects.
+4. **Generic interface contracts**
+   - _Alternative_: rely on ad-hoc typing per component.
+   - _Reason_: shared interfaces keep props, callbacks, emitters and refs uniform across components, making controllers and renderers interchangeable.
 
 ## 10. Quality Requirements
 
