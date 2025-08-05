@@ -57,7 +57,7 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props and can compose other controllers for additional behaviour.
 - **Functional component** – pure, stateless renderer that receives the current state snapshot together with callbacks, emitters and refs. It never mutates data and communicates through events.
 - **Schema helpers** – prop type declarations plus `normalize*/validate*` helpers that keep domain rules close to the data model.
-- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`). `@Watch` decorators must observe the underscored props to normalise and validate external values before delegating to the controller. Render props are accessed via `controller.getProps()` instead of mirroring them locally.
+- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`). `@Watch` decorators must observe the underscored props to normalise and validate external values before delegating to the controller. Normalised values are written directly to simple internal fields instead of `@State` to avoid two Stencil-triggered re-renderings. Render props are accessed via `controller.getProps()` instead of mirroring them locally.
 
 The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](./internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
 
@@ -233,6 +233,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 5. **Stateful controllers over stateless proxies**
    - _Alternative_: instantiate a single stateless controller and provide proxy functions in the web component layer for each business function so the web component instance can be passed into the controller rather than the other way round.
    - _Reason_: every business function would need such a proxy, creating significant boilerplate and reducing readability when implementing multiple components. The marginal benefit of reusing a single controller instance does not justify this complexity, so controllers remain stateful.
+6. **Direct assignment instead of prop-to-state mapping**
+   - _Alternative_: map validated props to `@State` fields and read from there.
+   - _Reason_: mapping to `@State` triggers two re-renderings in Stencil. Assigning props to plain fields after validation and handing them to the functional component results in at most one batched re-render per change.
 
 ## 10. Quality Requirements
 
