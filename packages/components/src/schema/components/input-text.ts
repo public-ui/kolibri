@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputTextTypePropType,
 	MsgPropType,
 	PropAccessKey,
 	PropAutoComplete,
@@ -8,6 +9,7 @@ import type {
 	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -21,13 +23,9 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropHint,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
-
-export const inputTextTypeOptions = ['text', 'search', 'url', 'tel'] as const;
-export type InputTextType = (typeof inputTextTypeOptions)[number];
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -37,7 +35,7 @@ type OptionalProps = {
 	pattern: string;
 	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
-	type: InputTextType;
+	type: InputTextTypePropType;
 	value: string;
 } & PropAccessKey &
 	PropAutoComplete &
@@ -63,7 +61,7 @@ type RequiredStates = {
 	currentLengthDebounced: number;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputTextType;
+	type: InputTextTypePropType;
 } & PropHideMsg &
 	PropId &
 	PropLabelWithExpertSlot;

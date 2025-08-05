@@ -1,8 +1,17 @@
 import type { JSX } from '@stencil/core';
-import { alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '../../schema';
+import { setState, validateAlertType, validateAlertVariant, validateHasCloser, validateLabel, watchBoolean } from '../../schema';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { watchHeadingLevel } from '../heading/validation';
-import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
+import type {
+	AlertAPI,
+	AlertStates,
+	AlertTypePropType,
+	AlertVariantPropType,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriAlertEventCallbacks,
+	LabelPropType,
+} from '../../schema';
 import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Alert';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -78,12 +87,12 @@ export class KolAlertWc implements AlertAPI {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: AlertType = 'default';
+	@Prop() public _type?: AlertTypePropType = 'default';
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: AlertVariant = 'msg';
+	@Prop() public _variant?: AlertVariantPropType = 'msg';
 
 	@State() public state: AlertStates = {
 		_level: 0,
@@ -137,25 +146,13 @@ export class KolAlertWc implements AlertAPI {
 	}
 
 	@Watch('_type')
-	public validateType(value?: AlertType): void {
-		watchValidator(
-			this,
-			'_type',
-			(value?) => typeof value === 'string' && alertTypeOptions.includes(value),
-			new Set(`String {${alertTypeOptions.join(', ')}`),
-			value,
-		);
+	public validateType(value?: AlertTypePropType): void {
+		validateAlertType(this, value);
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: AlertVariant): void {
-		watchValidator(
-			this,
-			'_variant',
-			(value?) => typeof value === 'string' && alertVariantOptions.includes(value),
-			new Set(`AlertVariant {${alertVariantOptions.join(', ')}`),
-			value,
-		);
+	public validateVariant(value?: AlertVariantPropType): void {
+		validateAlertVariant(this, value);
 	}
 
 	public componentWillLoad(): void {

@@ -7,6 +7,7 @@ import type {
 	OptionsPropType,
 	PropLabelWithExpertSlot,
 	RadioOption,
+	RequiredPropType,
 	SelectOption,
 	StencilUnknown,
 } from '../../schema';
@@ -44,7 +45,7 @@ export class InputCheckboxRadioController extends InputController implements Inp
 		this.component = component;
 	}
 
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		validateRequired(this.component, value);
 	}
 

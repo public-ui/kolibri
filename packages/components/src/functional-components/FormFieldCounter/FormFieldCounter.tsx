@@ -2,20 +2,21 @@ import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { translate } from '../../i18n';
+import type { MaxLengthBehaviorPropType } from '../../schema';
 
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	currentLength: number;
 	currentLengthDebounced: number;
 	maxLength?: number;
-	hasCounter?: boolean;
+	maxLengthBehavior: MaxLengthBehaviorPropType;
 };
 
-const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, hasCounter }) => {
+const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, maxLengthBehavior }) => {
 	let visualText: string | undefined;
 	let ariaText: string | undefined;
 	const counterClasses = ['kol-form-field__counter'];
 
-	if (hasCounter === true) {
+	if (maxLengthBehavior === 'hard') {
 		visualText =
 			typeof maxLength === 'number'
 				? translate('kol-character-counter-current-of-max', { placeholders: { current: String(currentLength), max: String(maxLength) } })

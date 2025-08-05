@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputDateTypePropType,
 	MsgPropType,
 	PropAccessKey,
 	PropAutoComplete,
@@ -23,9 +24,6 @@ import type {
 import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
-export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
-export type InputDateType = (typeof inputDateTypeOptions)[number];
-
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	max: Iso8601 | Date;
@@ -34,7 +32,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
 	step: number | NumberString;
-	type: InputDateType;
+	type: InputDateTypePropType;
 	value: Iso8601 | Date | null;
 } & PropAccessKey &
 	PropAutoComplete &
@@ -52,7 +50,7 @@ type OptionalProps = {
 type RequiredStates = {
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputDateType;
+	type: InputDateTypePropType;
 } & PropLabelWithExpertSlot &
 	PropHideMsg &
 	PropId;
