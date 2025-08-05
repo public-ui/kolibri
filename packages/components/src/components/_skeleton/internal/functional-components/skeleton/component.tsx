@@ -1,5 +1,5 @@
-import type { FunctionalComponent as FC } from '@stencil/core';
-import { h } from '@stencil/core';
+import type { JSX } from 'solid-js';
+import h from 'solid-js/h';
 import type { CountProp } from '../../schema/props/count';
 import type { LabelProp } from '../../schema/props/label';
 import type { NameProp } from '../../schema/props/name';
@@ -43,7 +43,7 @@ export type SkeletonRenderStates = LabelProp & ShowProp;
 
 type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
-export const SkeletonFC: FC<Props> = ({ count, label, name, show, onLoaded, handleClick, refButton }) => {
+export const SkeletonFC = ({ count, label, name, show, onLoaded, handleClick, refButton }: Props): JSX.Element => {
 	setTimeout(() => {
 		onLoaded.emit(100);
 	}, 1000);

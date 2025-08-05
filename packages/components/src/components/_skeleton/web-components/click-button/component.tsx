@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Host, Prop, Watch } from '@stencil/core';
+import h from 'solid-js/h';
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';

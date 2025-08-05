@@ -1,5 +1,5 @@
-import type { FunctionalComponent as FC } from '@stencil/core';
-import { h } from '@stencil/core';
+import type { JSX } from 'solid-js';
+import h from 'solid-js/h';
 import type { LabelProp } from '../../schema/props/label';
 import type { FunctionalComponentProps } from '../generic-types';
 
@@ -18,7 +18,7 @@ export type ClickButtonRenderStates = Record<never, never>;
 
 type Props = FunctionalComponentProps<ClickButtonRenderProps, ClickButtonRenderStates, ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs>;
 
-export const ClickButtonFC: FC<Props> = ({ label, handleClick, refButton }) => (
+export const ClickButtonFC = ({ label, handleClick, refButton }: Props): JSX.Element => (
 	<button ref={refButton} onClick={handleClick}>
 		{label}
 	</button>
