@@ -230,6 +230,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 4. **Generic interface contracts**
    - _Alternative_: rely on ad-hoc typing per component.
    - _Reason_: shared interfaces keep props, callbacks, emitters and refs uniform across components, making controllers and renderers interchangeable.
+5. **Stateful controllers over stateless proxies**
+   - _Alternative_: instantiate a single stateless controller and provide proxy functions in the web component layer for each business function so the web component instance can be passed into the controller rather than the other way round.
+   - _Reason_: every business function would need such a proxy, creating significant boilerplate and reducing readability when implementing multiple components. The marginal benefit of reusing a single controller instance does not justify this complexity, so controllers remain stateful.
 
 ## 10. Quality Requirements
 
