@@ -16,7 +16,8 @@ export class SkeletonController
 
 	public constructor(
 		component: WebComponentInterface<Record<never, never>, SkeletonRenderStates>,
-		private readonly clickButtonController: ClickButtonController,
+		private readonly primaryClickButtonController: ClickButtonController,
+		private readonly secondaryClickButtonController: ClickButtonController,
 	) {
 		super(component, {
 			count: 0,
@@ -28,7 +29,10 @@ export class SkeletonController
 		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);
-		this.clickButtonController.componentWillLoad({
+		this.primaryClickButtonController.componentWillLoad({
+			label: this.label,
+		});
+		this.secondaryClickButtonController.componentWillLoad({
 			label: this.label,
 		});
 	}
@@ -57,18 +61,33 @@ export class SkeletonController
 			console.log('Show should be toggled');
 			this.toggle();
 		}
+		this.primaryClickButtonController.onKeydown(event);
+		this.secondaryClickButtonController.onKeydown(event);
 	};
 
-	public handleClick = (): void => {
+	public handlePrimaryClick = (): void => {
 		// eslint-disable-next-line no-console
-		console.log(this, 'button clicked');
+		console.log(this, 'primary button clicked');
 	};
 
-	public focusButton = (): void => {
-		this.clickButtonController.focusButton();
+	public handleSecondaryClick = (): void => {
+		// eslint-disable-next-line no-console
+		console.log(this, 'secondary button clicked');
 	};
 
-	public setButtonRef = (element?: HTMLButtonElement): void => {
-		this.clickButtonController.setButtonRef(element);
+	public focusPrimaryButton = (): void => {
+		this.primaryClickButtonController.focusButton();
+	};
+
+	public focusSecondaryButton = (): void => {
+		this.secondaryClickButtonController.focusButton();
+	};
+
+	public setPrimaryButtonRef = (element?: HTMLButtonElement): void => {
+		this.primaryClickButtonController.setButtonRef(element);
+	};
+
+	public setSecondaryButtonRef = (element?: HTMLButtonElement): void => {
+		this.secondaryClickButtonController.setButtonRef(element);
 	};
 }

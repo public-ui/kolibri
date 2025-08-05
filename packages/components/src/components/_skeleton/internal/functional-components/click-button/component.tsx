@@ -14,12 +14,14 @@ export type ClickButtonRefs = {
 export type ClickButtonEmitters = Record<never, never>;
 
 export type ClickButtonRenderProps = LabelProp;
-export type ClickButtonRenderStates = Record<never, never>;
+export type ClickButtonRenderStates = {
+	eCount: number;
+};
 
 type Props = FunctionalComponentProps<ClickButtonRenderProps, ClickButtonRenderStates, ClickButtonCallbacks, ClickButtonEmitters, ClickButtonRefs>;
 
-export const ClickButtonFC: FC<Props> = ({ label, handleClick, refButton }) => (
+export const ClickButtonFC: FC<Props> = ({ eCount, label, handleClick, refButton }) => (
 	<button ref={refButton} onClick={handleClick}>
-		{label}
+		{label} {eCount}
 	</button>
 );

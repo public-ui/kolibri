@@ -5,17 +5,24 @@ import type { ClickButtonController } from '../click-button/controller';
 import { SkeletonController } from './controller';
 
 describe('SkeletonController', () => {
-	it('delegates focusButton to injected ClickButtonController', () => {
-		const component = { show: true } as WebComponentInterface<Record<never, never>, SkeletonRenderStates>;
-		const clickButtonController = {
+	it('delegates focusPrimaryButton to injected ClickButtonController', () => {
+		const component = { eCount: 0, show: true } as WebComponentInterface<Record<never, never>, SkeletonRenderStates>;
+		const primaryClickButtonController = {
 			focusButton: jest.fn(),
 			setButtonRef: jest.fn(),
 			componentWillLoad: jest.fn(),
+			onKeydown: jest.fn(),
 		} as unknown as ClickButtonController;
-		const controller = new SkeletonController(component, clickButtonController);
+		const secondaryClickButtonController = {
+			focusButton: jest.fn(),
+			setButtonRef: jest.fn(),
+			componentWillLoad: jest.fn(),
+			onKeydown: jest.fn(),
+		} as unknown as ClickButtonController;
+		const controller = new SkeletonController(component, primaryClickButtonController, secondaryClickButtonController);
 
-		controller.focusButton();
+		controller.focusPrimaryButton();
 
-		expect(clickButtonController.focusButton).toHaveBeenCalled();
+		expect(primaryClickButtonController.focusButton).toHaveBeenCalled();
 	});
 });

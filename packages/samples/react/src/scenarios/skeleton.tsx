@@ -11,6 +11,9 @@ export const Skeleton: FC = () => {
 		<>
 			<SampleDescription>
 				<p>KolSkeleton can be toggled to display loading placeholders.</p>
+				<p>
+					Press the <kbd>e</kbd> key to increase the counter shown on both buttons.
+				</p>
 			</SampleDescription>
 
 			<KolButton _label="Toggle" onClick={() => skeletonRef.current?.toggle()} />

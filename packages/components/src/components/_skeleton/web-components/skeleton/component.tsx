@@ -21,7 +21,7 @@ import type { ShowPropType } from '../../internal/schema/props/show';
 	shadow: true,
 })
 export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, SkeletonRenderStates, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
-	private readonly controller = new SkeletonController(this, new ClickButtonController(this));
+	private readonly controller = new SkeletonController(this, new ClickButtonController(this), new ClickButtonController(this));
 
 	@Prop()
 	public _count!: CountPropType;
@@ -45,16 +45,19 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 	@State()
 	public show: ShowPropType = true;
 
+	@State()
+	public eCount = 0;
+
 	@Method()
 	public focusButton(): Promise<void> {
-		this.controller.focusButton();
+		this.controller.focusPrimaryButton();
 		return Promise.resolve();
 	}
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Enter' || event.key === ' ') {
-			this.controller.handleClick();
+			this.controller.handlePrimaryClick();
 		}
 	}
 
@@ -84,12 +87,15 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 			<Host>
 				<SkeletonFC
 					count={count}
+					eCount={this.eCount}
+					handlePrimaryClick={this.controller.handlePrimaryClick}
+					handleSecondaryClick={this.controller.handleSecondaryClick}
 					label={this.label}
 					name={name}
-					handleClick={this.controller.handleClick}
 					onLoaded={this.loaded}
+					refPrimaryButton={this.controller.setPrimaryButtonRef}
+					refSecondaryButton={this.controller.setSecondaryButtonRef}
 					show={this.show}
-					refButton={this.controller.setButtonRef}
 				/>
 			</Host>
 		);

@@ -19,7 +19,8 @@ import type { FunctionalComponentProps } from '../generic-types';
  */
 
 export type SkeletonCallbacks = {
-	click: () => void;
+	primaryClick: () => void;
+	secondaryClick: () => void;
 };
 
 export type SkeletonEmitters = {
@@ -27,7 +28,8 @@ export type SkeletonEmitters = {
 };
 
 export type SkeletonRefs = {
-	button: HTMLButtonElement;
+	primaryButton: HTMLButtonElement;
+	secondaryButton: HTMLButtonElement;
 };
 
 export type SkeletonMethods = {
@@ -39,11 +41,25 @@ export type SkeletonListeners = {
 };
 
 export type SkeletonRenderProps = CountProp & NameProp;
-export type SkeletonRenderStates = LabelProp & ShowProp;
+export type SkeletonRenderStates = LabelProp &
+	ShowProp & {
+		eCount: number;
+	};
 
 type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
 
-export const SkeletonFC: FC<Props> = ({ count, label, name, show, onLoaded, handleClick, refButton }) => {
+export const SkeletonFC: FC<Props> = ({
+	count,
+	eCount,
+	label,
+	name,
+	show,
+	onLoaded,
+	handlePrimaryClick,
+	handleSecondaryClick,
+	refPrimaryButton,
+	refSecondaryButton,
+}) => {
 	setTimeout(() => {
 		onLoaded.emit(100);
 	}, 1000);
@@ -51,7 +67,8 @@ export const SkeletonFC: FC<Props> = ({ count, label, name, show, onLoaded, hand
 		<div>
 			{show && <span>{name}</span>}
 			<div>Count: {count}</div>
-			<ClickButtonFC label={label} handleClick={handleClick} refButton={refButton} />
+			<ClickButtonFC eCount={eCount} handleClick={handlePrimaryClick} label={label} refButton={refPrimaryButton} />
+			<ClickButtonFC eCount={eCount} handleClick={handleSecondaryClick} label={label} refButton={refSecondaryButton} />
 		</div>
 	);
 };

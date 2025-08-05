@@ -6,7 +6,7 @@ import type { ClickButtonCallbacks, ClickButtonRefs, ClickButtonRenderProps, Cli
 
 export class ClickButtonController
 	extends BaseController<ClickButtonRenderProps, ClickButtonRenderStates>
-	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs>
+	implements ControllerInterface<ClickButtonRenderProps, ClickButtonCallbacks, ClickButtonRefs, Record<never, never>, { keydown: KeyboardEvent }>
 {
 	private buttonRef?: HTMLButtonElement;
 
@@ -39,5 +39,12 @@ export class ClickButtonController
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {
 		this.buttonRef = element;
+	};
+
+	public onKeydown = (event: KeyboardEvent): void => {
+		if (event.key === 'e' && !event.defaultPrevented) {
+			this.setState('eCount', this.component.eCount + 1);
+			event.preventDefault();
+		}
 	};
 }

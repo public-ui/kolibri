@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -13,6 +13,9 @@ type Props = LabelProp;
 })
 export class KolClickButton implements WebComponentInterface<Props> {
 	private readonly controller = new ClickButtonController(this);
+
+	@State()
+	public eCount = 0;
 
 	@Prop()
 	public _label!: LabelPropType;
@@ -28,11 +31,16 @@ export class KolClickButton implements WebComponentInterface<Props> {
 		});
 	}
 
+	@Listen('keydown', { target: 'window' })
+	public onKeydown(event: KeyboardEvent): void {
+		this.controller.onKeydown(event);
+	}
+
 	public render(): JSX.Element {
 		const { label } = this.controller.getProps();
 		return (
 			<Host>
-				<ClickButtonFC label={label} refButton={this.controller.setButtonRef} handleClick={this.controller.handleClick} />
+				<ClickButtonFC eCount={this.eCount} handleClick={this.controller.handleClick} label={label} refButton={this.controller.setButtonRef} />
 			</Host>
 		);
 	}
