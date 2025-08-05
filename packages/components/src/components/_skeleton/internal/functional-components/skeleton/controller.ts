@@ -4,7 +4,7 @@ import type { LabelPropType } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
-import { ClickButtonController } from '../click-button/controller';
+import type { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, WebComponentInterface } from '../generic-types';
 import type { SkeletonCallbacks, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps, SkeletonRenderStates } from './component';
 
@@ -12,16 +12,16 @@ export class SkeletonController
 	extends BaseController<SkeletonRenderProps, SkeletonRenderStates>
 	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
 {
-	private readonly clickButtonController: ClickButtonController;
-
 	public label: LabelPropType = 'Label';
 
-	public constructor(component: WebComponentInterface<Record<never, never>, SkeletonRenderStates>) {
+	public constructor(
+		component: WebComponentInterface<Record<never, never>, SkeletonRenderStates>,
+		private readonly clickButtonController: ClickButtonController,
+	) {
 		super(component, {
 			count: 0,
 			name: '',
 		});
-		this.clickButtonController = new ClickButtonController(component);
 	}
 
 	public componentWillLoad(props: SkeletonRenderProps): void {

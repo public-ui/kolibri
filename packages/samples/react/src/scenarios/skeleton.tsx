@@ -14,6 +14,7 @@ export const Skeleton: FC = () => {
 			</SampleDescription>
 
 			<KolButton _label="Toggle" onClick={() => skeletonRef.current?.toggle()} />
+			<KolButton _label="Focus Button" onClick={() => skeletonRef.current?.focusButton()} />
 			<KolSkeleton _count={3} _name="Example" ref={skeletonRef} />
 		</>
 	);
