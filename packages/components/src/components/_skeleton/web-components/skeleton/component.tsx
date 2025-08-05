@@ -1,5 +1,6 @@
 import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import h from 'solid-js/h';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type {
