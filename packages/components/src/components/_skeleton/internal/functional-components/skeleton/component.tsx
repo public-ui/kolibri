@@ -1,5 +1,6 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
-import { h } from '@stencil/core';
+/** @jsxImportSource solid-js */
+import h from 'solid-js/h';
 import type { CountProp } from '../../schema/props/count';
 import type { LabelProp } from '../../schema/props/label';
 import type { NameProp } from '../../schema/props/name';
