@@ -1,6 +1,5 @@
 import type { CountPropType } from '../../schema/props/count';
 import { normalizeCount, validateCount } from '../../schema/props/count';
-import type { LabelPropType } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
@@ -12,8 +11,6 @@ export class SkeletonController
 	extends BaseController<SkeletonRenderProps, SkeletonRenderStates>
 	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
 {
-	public label: LabelPropType = 'Label';
-
 	public constructor(
 		component: WebComponentInterface<Record<never, never>, SkeletonRenderStates>,
 		private readonly clickButtonController: ClickButtonController,
@@ -29,7 +26,7 @@ export class SkeletonController
 		this.watchCount(count);
 		this.watchName(name);
 		this.clickButtonController.componentWillLoad({
-			label: this.label,
+			label: this.component.label,
 		});
 	}
 

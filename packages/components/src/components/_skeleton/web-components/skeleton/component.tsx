@@ -80,15 +80,16 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 
 	public render(): JSX.Element {
 		const { count, name } = this.controller.getProps();
+		const { label, show } = this;
 		return (
 			<Host>
 				<SkeletonFC
 					count={count}
-					label={this.label}
+					label={label}
 					name={name}
 					handleClick={this.controller.handleClick}
 					onLoaded={this.loaded}
-					show={this.show}
+					show={show}
 					refButton={this.controller.setButtonRef}
 				/>
 			</Host>
