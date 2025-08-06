@@ -2,12 +2,6 @@
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
-		:host,
-		.kol-table-stateless-wc * {
-			line-height: var(--line-height);
-			word-break: break-word;
-		}
-
 		:host > div,
 		kol-table-stateless-wc > div {
 			overflow-x: auto;
