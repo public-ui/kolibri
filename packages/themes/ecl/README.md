@@ -90,7 +90,7 @@ The token values are read from `src/ecl-ec/global.scss` and `src/ecl-eu/global.s
 | `--font-size`           | `#{to-rem(16)}`       | Base font size          |
 | `--font-weight`         | `400`                 | Regular font weight     |
 | `--font-weight-bold`    | `600`                 | Bold font               |
-| `--line-height`         | `1.5`                 | Line height text        |
+| `--line-height-regular` | `1.5`                 | Line height text        |
 | `--line-height-heading` | `1.2`                 | Line height headings    |
 | `--spacing-4xl`         | `#{to-rem(64)}`       | Largest spacing         |
 | `--spacing-3xl`         | `#{to-rem(48)}`       | Very large spacing      |
