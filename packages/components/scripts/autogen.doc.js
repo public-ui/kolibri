@@ -44,7 +44,7 @@ const modifyReadmeContent = (contents) =>
 /**
  * Readme content modifications only for the docs folder
  */
-const modifyReadmeContentForDocsFolder = (contents) => contents.replace('style="color:red"', 'class="text-red-500"').replace(/ \\\| /g, '` \\| `');
+const modifyReadmeContentForDocsFolder = (contents) => contents.replace('style="color:red"', 'class="text-red-500"');
 
 rimraf('doc/*.md', { glob: true }).then(() => {
 	README_PATHS.forEach((readmePath) => {
