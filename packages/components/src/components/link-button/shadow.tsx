@@ -44,6 +44,9 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the link element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.linkWcRef?.kolFocus();

@@ -75,6 +75,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		}
 	};
 
+	/**
+	 * Returns the current text value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -89,6 +92,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the text input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

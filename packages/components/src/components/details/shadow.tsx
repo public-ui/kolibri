@@ -34,6 +34,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Programmatically focuses the collapsible button.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

@@ -49,6 +49,9 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current numeric value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -63,6 +66,9 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the number input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

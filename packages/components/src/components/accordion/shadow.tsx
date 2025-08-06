@@ -50,6 +50,9 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the accordion trigger button.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();

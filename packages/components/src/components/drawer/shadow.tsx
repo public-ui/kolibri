@@ -20,6 +20,9 @@ export class KolDrawer implements DrawerAPI {
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLDivElement;
 
+	/**
+	 * Opens the drawer.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async open() {
@@ -30,6 +33,9 @@ export class KolDrawer implements DrawerAPI {
 		this.dialogElement?.showModal();
 	}
 
+	/**
+	 * Closes the drawer.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async close() {

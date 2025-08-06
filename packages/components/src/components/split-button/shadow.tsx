@@ -99,6 +99,9 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 		);
 	}
 
+	/**
+	 * Closes the dropdown menu.
+	 */
 	@Method()
 	public async closePopup() {
 		this.handleOnClose();

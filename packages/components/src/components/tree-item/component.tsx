@@ -139,6 +139,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		};
 	}
 
+	/**
+	 * Focuses the internal link element.
+	 */
 	@Method() async focusLink() {
 		await this.linkElement.kolFocus();
 	}
@@ -149,6 +152,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.expand();
 	}
 
+	/**
+	 * Expands the tree item if it has children.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async expand() {
@@ -166,6 +172,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.collapse();
 	}
 
+	/**
+	 * Collapses the tree item if it has children.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async collapse() {
@@ -177,6 +186,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		}
 	}
 
+	/**
+	 * Returns whether the tree item is expanded.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async isOpen() {

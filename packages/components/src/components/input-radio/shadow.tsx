@@ -49,6 +49,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the selected value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
@@ -63,6 +66,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the radio input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

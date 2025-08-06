@@ -49,6 +49,9 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current email value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -63,6 +66,9 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the email input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
