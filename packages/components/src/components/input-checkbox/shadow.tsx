@@ -5,37 +5,38 @@ import clsx from 'clsx';
 
 import type {
 	CheckedPropType,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IdPropType,
 	IndeterminatePropType,
 	InputCheckboxAPI,
 	InputCheckboxIconsProp,
 	InputCheckboxStates,
-	InputCheckboxVariant,
 	InputTypeOnDefault,
 	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { InputCheckboxController } from './controller';
 
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
-import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
@@ -62,12 +63,18 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return this._checked ? this.state._value : null;
 	}
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this.getModelValue();
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -257,7 +264,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: InputCheckboxVariant = 'default';
+	@Prop() public _variant?: InputCheckboxVariantPropType = 'default';
 
 	@State() public state: InputCheckboxStates = {
 		_checked: false,
@@ -356,7 +363,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
@@ -381,7 +388,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: InputCheckboxVariant): void {
+	public validateVariant(value?: InputCheckboxVariantPropType): void {
 		this.controller.validateVariant(value);
 	}
 

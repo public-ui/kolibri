@@ -1,11 +1,15 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputCheckboxIconsProp,
+	InputCheckboxIconsState,
+	InputCheckboxVariantPropType,
 	MsgPropType,
+	PropAccessKey,
 	PropChecked,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
 	PropHint,
 	PropIndeterminate,
 	PropLabelAlign,
@@ -13,38 +17,11 @@ import type {
 	PropMsg,
 	PropName,
 	PropRequired,
+	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropShortKey,
-	PropAccessKey,
 } from '../props';
-import type { AnyIconFontClass, InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
-
-export const inputCheckboxVariantOptions = ['button', 'default', 'switch'] as const;
-export type InputCheckboxVariant = (typeof inputCheckboxVariantOptions)[number];
-
-export type InputCheckboxIconsProp =
-	| {
-			checked: AnyIconFontClass;
-			indeterminate?: AnyIconFontClass;
-			unchecked?: AnyIconFontClass;
-	  }
-	| {
-			checked?: AnyIconFontClass;
-			indeterminate: AnyIconFontClass;
-			unchecked?: AnyIconFontClass;
-	  }
-	| {
-			checked?: AnyIconFontClass;
-			indeterminate?: AnyIconFontClass;
-			unchecked: AnyIconFontClass;
-	  };
-
-export type InputCheckboxIconsState = {
-	checked: AnyIconFontClass;
-	indeterminate: AnyIconFontClass;
-	unchecked: AnyIconFontClass;
-};
+import type { InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -52,7 +29,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
-	variant: InputCheckboxVariant;
+	variant: InputCheckboxVariantPropType;
 } & PropAccessKey &
 	PropChecked &
 	PropDisabled &
@@ -71,7 +48,7 @@ type RequiredStates = {
 	icons: InputCheckboxIconsState;
 	id: string;
 	value: StencilUnknown;
-	variant: InputCheckboxVariant;
+	variant: InputCheckboxVariantPropType;
 } & PropChecked &
 	PropHideMsg &
 	PropIndeterminate &

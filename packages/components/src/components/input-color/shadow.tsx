@@ -83,12 +83,18 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		}
 		this.controller.onFacade.onInput(event);
 	};
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.refInputText?.value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

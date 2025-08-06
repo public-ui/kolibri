@@ -1,4 +1,4 @@
-import type { AlertProps, AlertStates, AlertType, AlertVariant, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
+import type { AlertProps, AlertStates, AlertTypePropType, AlertVariantPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
 import { KolAlertWcTag } from '../../core/component-names';
@@ -59,12 +59,12 @@ export class KolAlert implements AlertProps {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: AlertType = 'default';
+	@Prop() public _type?: AlertTypePropType = 'default';
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: AlertVariant = 'msg';
+	@Prop() public _variant?: AlertVariantPropType = 'msg';
 
 	@State() public state: AlertStates = {
 		_level: 0,
