@@ -47,6 +47,9 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the selected color value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -61,6 +64,9 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the color input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

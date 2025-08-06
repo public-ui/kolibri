@@ -53,6 +53,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the selected date.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | Date | undefined> {
@@ -67,12 +70,18 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the date input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Clears the value and resets the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {

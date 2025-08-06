@@ -33,12 +33,18 @@ export class KolModal implements ModalAPI {
 		this.state._on?.onClose?.();
 	}
 
+	/**
+	 * Opens the modal dialog.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async openModal() {
 		this.refDialog?.showModal();
 	}
 
+	/**
+	 * Closes the modal dialog and resets the active element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {

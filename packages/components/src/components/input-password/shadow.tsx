@@ -49,6 +49,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current password value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -63,6 +66,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the password input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
