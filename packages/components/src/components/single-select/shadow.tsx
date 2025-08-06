@@ -60,12 +60,18 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

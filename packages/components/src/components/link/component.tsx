@@ -81,6 +81,9 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		this.anchorRef = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

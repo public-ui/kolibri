@@ -70,6 +70,9 @@ export class KolTooltipWc implements TooltipAPI {
 		}, TOOLTIP_DELAY);
 	};
 
+	/**
+	 * Hides the tooltip.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {

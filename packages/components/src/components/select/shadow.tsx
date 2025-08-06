@@ -52,6 +52,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.selectRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
@@ -62,6 +65,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		}
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
