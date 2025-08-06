@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { IconAPI, IconStates, LabelPropType } from '../../schema';
-import { validateLabel, watchString } from '../../schema';
+import { IconController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import clsx from 'clsx';
@@ -17,6 +17,7 @@ import { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON } from './bem';
 	shadow: true,
 })
 export class KolIcon implements IconAPI {
+	private readonly controller: IconController;
 	public render(): JSX.Element {
 		const ariaShow = this.state._label.length > 0;
 		return (
@@ -53,22 +54,21 @@ export class KolIcon implements IconAPI {
 		_label: '', // ⚠ required
 	};
 
+	public constructor() {
+		this.controller = new IconController(this);
+	}
+
 	@Watch('_icons')
 	public validateIcons(value?: string): void {
-		watchString(this, '_icons', value, {
-			required: true,
-		});
+		this.controller.validateIcons(value);
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			required: true,
-		});
+		this.controller.validateLabel(value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateIcons(this._icons);
-		this.validateLabel(this._label);
+		this.controller.componentWillLoad();
 	}
 }
