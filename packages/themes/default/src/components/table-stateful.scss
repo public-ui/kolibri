@@ -1,11 +1,6 @@
 @use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
-	:host * {
-		line-height: var(--line-height);
-		word-break: break-word;
-	}
-
 	@media (min-width: 1024px) {
 		div.pagination .kol-pagination {
 			display: flex;
