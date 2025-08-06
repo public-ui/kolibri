@@ -60,18 +60,27 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | Date | undefined | null> {
 		return this.inputRef && this.remapValue(this.inputRef?.value);
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Resets the component's value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {

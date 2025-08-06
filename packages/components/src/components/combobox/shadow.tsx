@@ -53,12 +53,18 @@ export class KolCombobox implements ComboboxAPI {
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string> {
 		return this.state._value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

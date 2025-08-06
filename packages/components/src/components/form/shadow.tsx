@@ -121,6 +121,9 @@ export class KolForm implements FormAPI {
 		}, 250);
 	}
 
+	/**
+	 * Scrolls to the error list and focuses the first link.
+	 */
 	@Method()
 	async focusErrorList(): Promise<void> {
 		this.scrollToErrorList();

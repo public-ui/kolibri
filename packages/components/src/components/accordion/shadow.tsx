@@ -45,6 +45,9 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		this.buttonWcRef = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();
