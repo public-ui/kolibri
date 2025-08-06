@@ -31,9 +31,9 @@ exports[`KolSpanFc should render with badge text 1`] = `
       </u>
     </span>
     <span aria-hidden="true" class="kol-span__label" hidden=""></span>
-    <span aria-hidden="true" class="badge-text-hint">
+    <kbd aria-hidden="true" class="badge-text-hint">
       Badge
-    </span>
+    </kbd>
   </span>
 </span>
 `;
