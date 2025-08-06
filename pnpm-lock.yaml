@@ -356,8 +356,8 @@ importers:
         specifier: 1.7.1
         version: 1.7.1
       adopted-style-sheets:
-        specifier: 1.1.9-rc.19
-        version: 1.1.9-rc.19
+        specifier: 1.1.9-rc.20
+        version: 1.1.9-rc.20
       boxen:
         specifier: 8.0.1
         version: 8.0.1
@@ -589,8 +589,8 @@ importers:
         specifier: 5.1.8
         version: 5.1.8
       adopted-style-sheets:
-        specifier: 1.1.9-rc.19
-        version: 1.1.9-rc.19
+        specifier: 1.1.9-rc.20
+        version: 1.1.9-rc.20
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
@@ -673,8 +673,8 @@ importers:
         specifier: 3.10.2
         version: 3.10.2(vite@6.3.5(@types/node@24.0.1)(jiti@2.5.1)(less@4.3.0)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.88.0)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
       adopted-style-sheets:
-        specifier: 1.1.9-rc.19
-        version: 1.1.9-rc.19
+        specifier: 1.1.9-rc.20
+        version: 1.1.9-rc.20
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
@@ -4926,8 +4926,8 @@ packages:
     resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
     engines: {node: '>=8.9'}
 
-  adopted-style-sheets@1.1.9-rc.19:
-    resolution: {integrity: sha512-E2mFjkdm6f/5pZfwm/yFpoA2jI2y182G4Zzmr7EWD55HuUV+RKCoVyEr5Cv2yfOtjIwugySW0Tjm5P/IIhJmkQ==}
+  adopted-style-sheets@1.1.9-rc.20:
+    resolution: {integrity: sha512-F7RuAF2ZtPHhG51C5wrFQsBjytsNVSCgBZ/bbCrU7gZ6uLXJlzEbaWnvICOP5K/ESXL5ix+XUibPErX9JscCVw==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -18209,7 +18209,7 @@ snapshots:
       loader-utils: 2.0.4
       regex-parser: 2.3.1
 
-  adopted-style-sheets@1.1.9-rc.19:
+  adopted-style-sheets@1.1.9-rc.20:
     dependencies:
       loglevel: 1.9.2
 
@@ -22120,7 +22120,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3
+      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.13.2)(@types/node@24.0.1)(typescript@5.8.3))
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -22216,7 +22216,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-jasmine2@26.6.3:
+  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.13.2)(@types/node@24.0.1)(typescript@5.8.3)):
     dependencies:
       '@babel/traverse': 7.28.0
       '@jest/environment': 26.6.2
@@ -22237,7 +22237,11 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
+      - bufferutil
+      - canvas
       - supports-color
+      - ts-node
+      - utf-8-validate
 
   jest-leak-detector@26.6.2:
     dependencies:

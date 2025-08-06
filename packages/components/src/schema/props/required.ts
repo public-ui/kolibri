@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import { watchBoolean } from '../utils';
 
 /* types */
-type RequiredPropType = boolean;
+export type RequiredPropType = boolean;
 
 /**
  * Makes the input element required.

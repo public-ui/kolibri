@@ -41,7 +41,7 @@
 		"@unocss/preset-mini": "66.2.3",
 		"@unocss/vite": "66.2.3",
 		"@vitejs/plugin-react-swc": "3.10.2",
-		"adopted-style-sheets": "1.1.9-rc.19",
+		"adopted-style-sheets": "1.1.9-rc.20",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
 		"eslint-plugin-html": "8.1.3",

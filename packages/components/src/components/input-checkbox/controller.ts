@@ -2,15 +2,15 @@ import type {
 	CheckedPropType,
 	IndeterminatePropType,
 	InputCheckboxIconsProp,
+	InputCheckboxIconsPropType,
 	InputCheckboxIconsState,
 	InputCheckboxProps,
-	InputCheckboxVariant,
+	InputCheckboxVariantPropType,
 	InputCheckboxWatches,
 	LabelAlignPropType,
 	StencilUnknown,
-	Stringified,
 } from '../../schema';
-import { inputCheckboxVariantOptions, isString, setState, validateChecked, validateIndeterminate, validateLabelAlign, watchValidator } from '../../schema';
+import { isString, setState, validateChecked, validateIndeterminate, validateLabelAlign, validateVariantInputCheckbox, watchValidator } from '../../schema';
 
 import { InputCheckboxRadioController } from '../input-radio/controller';
 
@@ -36,12 +36,13 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}
 
-	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
+	public validateIcons(value?: InputCheckboxIconsPropType): void {
 		watchValidator(
 			this.component,
 			'_icons',
 			(value): boolean => {
-				return typeof value === 'object' && value !== null && (isString(value.checked, 1) || isString(value.indeterminate, 1) || isString(value.unchecked, 1));
+				const v = value as Record<string, unknown>;
+				return typeof v === 'object' && v !== null && (isString(v.checked, 1) || isString(v.indeterminate, 1) || isString(v.unchecked, 1));
 			},
 			new Set(['InputCheckboxIcons']),
 			value,
@@ -71,14 +72,8 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}
 
-	public validateVariant(value?: InputCheckboxVariant): void {
-		watchValidator(
-			this.component,
-			'_variant',
-			(value): boolean => typeof value === 'string' && inputCheckboxVariantOptions.includes(value),
-			new Set([`String {${inputCheckboxVariantOptions.join(', ')}`]),
-			value,
-		);
+	public validateVariant(value?: InputCheckboxVariantPropType): void {
+		validateVariantInputCheckbox(this.component, value);
 	}
 
 	public componentWillLoad(): void {

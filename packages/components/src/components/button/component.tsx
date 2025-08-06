@@ -43,10 +43,10 @@ import {
 	validateIcons,
 	validateLabelWithExpertSlot,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
 	watchString,
 } from '../../schema';
+import { validateTabIndex } from '../../schema/props/tab-index';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
@@ -74,12 +74,18 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	private readonly internalDescriptionById = nonce();
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.buttonRef?.focus();
 	}
 
+	/**
+	 * Hides the tooltip.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {
