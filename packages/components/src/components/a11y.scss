@@ -16,13 +16,6 @@
 		 */
 		background-color: white;
 		color: black;
-	}
-
-	* {
-		/*
-		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-		 */
-		hyphens: auto;
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.
 		 */
@@ -32,13 +25,20 @@
 		 */
 		letter-spacing: inherit;
 		/*
-		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-		 */
-		word-break: break-word;
-		/*
 		 * Word spacing is required for all texts.
 		 */
 		word-spacing: inherit;
+	}
+
+	* {
+		/*
+		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
+		 */
+		hyphens: auto;
+		/*
+		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
+		 */
+		word-break: break-word;
 	}
 
 	/*
@@ -78,6 +78,14 @@
 		 * All elements should inherit the font size from his parent element.
 		 */
 		font-size: inherit;
+		/*
+		 * Letter spacing is required for all texts.
+		 */
+		letter-spacing: inherit;
+		/*
+		 * Word spacing is required for all texts.
+		 */
+		word-spacing: inherit;
 	}
 
 	/**
