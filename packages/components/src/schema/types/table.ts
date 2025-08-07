@@ -7,12 +7,16 @@ export type KoliBriTableDataType = Record<string, unknown>;
 
 export type KoliBriTableCell = {
 	colSpan?: number;
+	data?: KoliBriTableDataType;
 	label: string;
+	minWidth?: string;
 	render?: KoliBriTableRender;
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
+	/**
+	 * @deprecated Use `minWidth` instead.
+	 */
 	width?: string;
-	data?: KoliBriTableDataType;
 };
 
 export type KoliBriTableHeaderCell = KoliBriTableCell & {

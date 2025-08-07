@@ -2,25 +2,32 @@ import type { Generic } from 'adopted-style-sheets';
 import type { WatchStringOptions } from '../utils';
 import { watchValidator } from '../utils';
 
-/* types */
+/**
+ * MinWidthPropType is a type alias for a string that represents the minimum width of a whole table.
+ */
+
+/**
+ * @deprecated Will be calculated by minWidth of each header column definition.
+ */
 export type MinWidthPropType = string;
 
 /**
- * Defines the technical name of an input field.
+ * @deprecated Will be calculated by minWidth of each header column definition.
  */
 export type PropMinWidth = {
+	/**
+	 * @deprecated Will be calculated by minWidth of each header column definition.
+	 */
 	minWidth: MinWidthPropType;
 };
 
-/* constants */
-/**
- * Regular expression to validate the width of a header cell.
- */
 const HEADER_CELL_WIDTH_VALIDATOR = /^\d+(\.\d+)?([a-z]+|%)?$/;
 
-/* validator */
+/**
+ * @deprecated Will be calculated by minWidth of each header column definition.
+ */
 export const validateMinWidth = (component: Generic.Element.Component, value?: MinWidthPropType, options?: WatchStringOptions): void => {
-	watchValidator<MinWidthPropType>(
+	watchValidator(
 		component,
 		'_minWidth',
 		(v) => typeof v === 'string' && HEADER_CELL_WIDTH_VALIDATOR.test(v),

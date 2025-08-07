@@ -2,10 +2,11 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import clsx from 'clsx';
+import { isEqual } from 'lodash-es';
+import type { MinWidthPropType } from '../../components';
 import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
-import { isEqual } from 'lodash-es';
 import type {
 	AriaSort,
 	KoliBriTableCell,
@@ -25,8 +26,8 @@ import type {
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '../../schema';
-import { setState } from '../../schema';
 import {
+	setState,
 	validateLabel,
 	validateTableCallbacks,
 	validateTableData,
@@ -34,14 +35,13 @@ import {
 	validateTableHeaderCells,
 	validateTableSelection,
 } from '../../schema';
-import type { ColumnSettings } from '../../schema/types';
 import { Callback } from '../../schema/enums';
-import type { MinWidthPropType } from '../../schema/props/min-width';
 import { validateMinWidth } from '../../schema/props/min-width';
-import { nonce } from '../../utils/dev.utils';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import { validateTableSettings } from '../../schema/props/table-settings';
+import type { ColumnSettings } from '../../schema/types';
+import { nonce } from '../../utils/dev.utils';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -62,7 +62,6 @@ export class KolTableStateless implements TableStatelessAPI {
 			vertical: [],
 		},
 		_label: '',
-		_minWidth: 'auto',
 	};
 
 	private tableDivElement?: HTMLDivElement;
@@ -106,8 +105,10 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	/**
 	 * Defines the table min-width (CSS width values).
+	 *
+	 * @deprecated Will be calculated by minWidth of each header column definition since the next major release (fallback in v3).
 	 */
-	@Prop() public _minWidth!: MinWidthPropType;
+	@Prop() public _minWidth?: MinWidthPropType;
 
 	/**
 	 * Defines the callback functions for table events.
@@ -120,7 +121,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _selection?: TableSelectionPropType;
 
 	/**
-	 * Defines the table settings including column visibility, order and width.
+	 * Defines the table settings including column order, visibility and width.
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
 
@@ -157,6 +158,9 @@ export class KolTableStateless implements TableStatelessAPI {
 		});
 	}
 
+	/**
+	 * @deprecated Will be calculated by minWidth of each header column definition.
+	 */
 	@Watch('_minWidth')
 	public validateMinWidth(value?: MinWidthPropType): void {
 		validateMinWidth(this, value);
@@ -452,6 +456,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			const emptyCell = {
 				colSpan: colspan,
 				label: this.translateNoEntries,
+				minWidth: 'auto',
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
@@ -486,6 +491,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			.map((header, index) => ({
 				key: header.key ?? nonce(),
 				label: header.label,
+				minWidth: header.minWidth ?? header.width ?? 'auto',
 				position: index,
 				visible: true,
 			}));
@@ -650,8 +656,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					colSpan={cell.colSpan}
 					rowSpan={cell.rowSpan}
 					style={{
+						minWidth: columnSetting?.minWidth !== undefined ? columnSetting.minWidth : cell.minWidth || cell.width,
 						textAlign: cell.textAlign,
-						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -697,14 +703,25 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	/**
 	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
-	 *
-	 * @return {string} The minimum width of the table as a string. If `_minWidth` is set to 'auto', the width is
-	 * calculated based on the total visible column widths in characters. Otherwise, it returns the greater value
-	 * between `_minWidth` and the calculated total visible column widths.
 	 */
 	private getTableMinWidth(): string {
-		const totalColumnWidth = this.state._tableSettings?.columns.filter((col) => col.visible).reduce((total, col) => total + (col.width ?? 0), 0) ?? 0;
-		return this.state._minWidth === 'auto' ? `${totalColumnWidth}ch` : `max(${this.state._minWidth}, ${totalColumnWidth}ch)`;
+		const visibleColumns = this.state._tableSettings?.columns.filter((col) => col.visible) ?? [];
+
+		if (visibleColumns.length === 0) {
+			return this._minWidth || 'auto';
+		}
+
+		const nonAutoWidths = visibleColumns.map((col) => col.minWidth).filter((width) => width !== 'auto');
+
+		if (nonAutoWidths.length === 0) {
+			return this._minWidth || 'auto';
+		}
+
+		if (nonAutoWidths.length === 1) {
+			return nonAutoWidths[0];
+		}
+
+		return `calc(${nonAutoWidths.join(' + ')})`;
 	}
 
 	/**
@@ -833,7 +850,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
 				style={{
-					width: columnSettings?.width ? `${columnSettings.width}ch` : cell.width,
+					minWidth: columnSettings?.minWidth !== undefined ? columnSettings.minWidth : cell.minWidth || cell.width,
 				}}
 				aria-sort={ariaSort}
 				data-sort={`sort-${cell.sortDirection}`}

@@ -1,9 +1,9 @@
 export interface ColumnSettings {
 	key: string;
 	label: string;
-	visible: boolean;
+	minWidth: string;
 	position: number;
-	width?: number;
+	visible: boolean;
 }
 
 export interface TableSettings {

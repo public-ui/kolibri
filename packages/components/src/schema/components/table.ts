@@ -3,9 +3,9 @@ import type { Generic } from 'adopted-style-sheets';
 import type { PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
 import type { PropMinWidth } from '../props/min-width';
 import type { PropPaginationPosition } from '../props/pagination-position';
+import type { PropTableSettings } from '../props/table-settings';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
-import type { PropTableSettings } from '../props/table-settings';
 
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
@@ -37,12 +37,12 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 type RequiredProps = {
 	headers: Stringified<KoliBriTableHeaders>;
 } & PropLabel &
-	PropMinWidth &
 	PropTableData;
 type OptionalProps = {
 	allowMultiSort: boolean;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 } & PropTableDataFoot &
+	PropMinWidth &
 	PropPaginationPosition &
 	PropTableSelection &
 	StatefulPropTableCallbacks &
@@ -56,7 +56,6 @@ type RequiredStates = {
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];
 } & PropLabel &
-	PropMinWidth &
 	PropPaginationPosition;
 type OptionalStates = {
 	sortDirection: KoliBriSortDirection;

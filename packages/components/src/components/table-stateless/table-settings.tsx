@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputTextTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
-import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import type { ColumnSettings } from '../../schema';
+import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -70,10 +70,10 @@ export class KolTableSettings {
 		};
 	}
 
-	private handleWidthChange(key: string, width: unknown): void {
+	private handleMinWidthChange(key: string, value: unknown): void {
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, width: Number(width) } : col)),
+			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, minWidth: String(value) } : col)),
 		};
 	}
 
@@ -126,12 +126,11 @@ export class KolTableSettings {
 											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
 										/>
 										<span>{column.label}</span>
-										<KolInputNumberTag
+										<KolInputTextTag
 											_hideLabel
-											_value={column.width}
+											_value={column.minWidth}
 											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
-											_min={1}
-											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
+											_on={{ onInput: (_, value: unknown) => this.handleMinWidthChange(column.key, value) }}
 										/>
 										<KolButtonWcTag
 											_icons="codicon codicon-arrow-up"

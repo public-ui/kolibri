@@ -42,8 +42,10 @@ export class KolTableStateless implements TableStatelessProps {
 
 	/**
 	 * Defines the table min-width (CSS width values).
+	 *
+	 * @deprecated Will be calculated by minWidth of each header column definition since the next major release (fallback in v3).
 	 */
-	@Prop() public _minWidth!: MinWidthPropType;
+	@Prop() public _minWidth?: MinWidthPropType;
 
 	/**
 	 * Defines the callback functions for table events.
@@ -56,7 +58,7 @@ export class KolTableStateless implements TableStatelessProps {
 	@Prop() public _selection?: TableSelectionPropType;
 
 	/**
-	 * Defines the table settings including column visibility, order and width.
+	 * Defines the table settings including column order, visibility and width.
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
 
