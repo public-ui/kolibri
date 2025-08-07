@@ -27,6 +27,7 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { InputCheckboxController } from './controller';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import type { FocusableElement } from '../../schema/interfaces/FocusableElement';
 
@@ -54,6 +55,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return this._checked ? this.state._value : null;
 	}
 
+	/**
+	 * Returns the checked value or null.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
@@ -68,6 +72,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the checkbox.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -110,9 +117,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
 							<>
 								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="badge-text-hint" aria-hidden="true">
+								<kbd class="badge-text-hint" aria-hidden="true">
 									{buildBadgeTextString(this.state._accessKey || this.state._shortKey)}
-								</span>
+								</kbd>
 							</>
 						) : (
 							<span>{this.state._label}</span>
@@ -144,6 +151,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 							{...this.controller.onFacade}
 							onInput={this.onInput}
 							onChange={this.onChange}
+							onKeyDown={this.onKeyDown.bind(this)}
 							onFocus={(event) => {
 								this.controller.onFacade.onFocus(event);
 								this.inputHasFocus = true;
@@ -471,6 +479,15 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		// Callback
 		if (typeof this._on?.onChange === 'function') {
 			this._on.onChange(event, value);
+		}
+	};
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.inputRef,
+			});
 		}
 	};
 }

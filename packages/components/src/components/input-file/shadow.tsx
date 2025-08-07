@@ -45,6 +45,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the selected file list.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<FileList | null | undefined> {
@@ -59,6 +62,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the file input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -100,9 +106,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
 							<>
 								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="badge-text-hint" aria-hidden="true">
+								<kbd class="badge-text-hint" aria-hidden="true">
 									{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-								</span>
+								</kbd>
 							</>
 						) : (
 							<span>{this.state._label}</span>

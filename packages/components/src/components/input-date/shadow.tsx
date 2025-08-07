@@ -53,6 +53,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the selected date.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | Date | undefined> {
@@ -67,12 +70,18 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the date input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Clears the value and resets the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {
@@ -159,9 +168,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
 							<>
 								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="badge-text-hint" aria-hidden="true">
+								<kbd class="badge-text-hint" aria-hidden="true">
 									{buildBadgeTextString(this.state._accessKey || this.state._shortKey)}
-								</span>
+								</kbd>
 							</>
 						) : (
 							<span>{this.state._label}</span>

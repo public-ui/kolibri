@@ -46,12 +46,18 @@ export class KolCombobox implements ComboboxAPI {
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.state._value;
 	}
 
+	/**
+	 * Focuses the combobox input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -182,9 +188,9 @@ export class KolCombobox implements ComboboxAPI {
 							) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
 								<>
 									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-									<span class="badge-text-hint" aria-hidden="true">
+									<kbd class="badge-text-hint" aria-hidden="true">
 										{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-									</span>
+									</kbd>
 								</>
 							) : (
 								<span>{this.state._label}</span>

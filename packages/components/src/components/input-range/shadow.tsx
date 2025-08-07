@@ -53,6 +53,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Focuses the numeric input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -85,6 +88,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return floatValue;
 	}
 
+	/**
+	 * Returns the current numeric value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | undefined> {
@@ -150,9 +156,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
 							<>
 								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="badge-text-hint" aria-hidden="true">
+								<kbd class="badge-text-hint" aria-hidden="true">
 									{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-								</span>
+								</kbd>
 							</>
 						) : (
 							<span>{this.state._label}</span>

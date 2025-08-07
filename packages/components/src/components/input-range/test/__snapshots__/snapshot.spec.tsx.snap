@@ -6,9 +6,9 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="range">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <div class="inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
@@ -207,9 +207,9 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="range">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <div class="inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
@@ -228,9 +228,9 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="range">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           V
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <div class="inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
@@ -549,9 +549,9 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="range">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="badge-text-hint">
+        <kbd aria-hidden="true" class="badge-text-hint">
           S
-        </span>
+        </kbd>
       </span>
       <div slot="input">
         <div class="inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">

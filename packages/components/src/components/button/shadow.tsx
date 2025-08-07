@@ -36,6 +36,9 @@ export class KolButton implements ButtonProps, FocusableElement {
 		this.buttonWcRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
@@ -50,6 +53,9 @@ export class KolButton implements ButtonProps, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Programmatically focuses the button.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();

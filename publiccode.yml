@@ -3,8 +3,8 @@ name: KoliBri - The accessible HTML-Standard
 applicationSuite: Informationstechnikzentrum Bund
 url: https://github.com/public-ui/kolibri.git
 landingURL: https://github.com/public-ui
-releaseDate: '2025-07-25'
-softwareVersion: 2.2.13
+releaseDate: '2025-08-06'
+softwareVersion: 2.2.14-rc.1
 logo: https://avatars.githubusercontent.com/u/109126739
 platforms:
   - android

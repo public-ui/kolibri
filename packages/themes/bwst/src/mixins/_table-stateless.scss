@@ -1,12 +1,6 @@
 @use '../rem' as *;
 
 @mixin kol-alert-table-stateless {
-	:host * {
-		hyphens: var(--hyphens);
-		line-height: var(--line-height);
-		word-break: break-word;
-	}
-
 	:host > div {
 		overflow-x: auto;
 		overflow-y: hidden;
