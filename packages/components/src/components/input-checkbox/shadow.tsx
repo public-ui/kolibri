@@ -37,6 +37,7 @@ import KolFieldControlStateWrapperFc, {
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
+import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
  * @slot expert - Checkbox description.
@@ -119,6 +120,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				...this.controller.onFacade,
 				onInput: this.onInput,
 				onChange: this.onChange,
+				onKeyDown: this.onKeyDown.bind(this),
 				onFocus: (event: Event) => {
 					this.controller.onFacade.onFocus(event);
 					this.inputHasFocus = true;
@@ -406,5 +408,14 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	private onChange = (event: Event): void => {
 		this.controller.onFacade.onChange(event, this.getModelValue());
+	};
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.inputRef,
+			});
+		}
 	};
 }
