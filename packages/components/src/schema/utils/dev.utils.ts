@@ -15,14 +15,14 @@ export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
 
-let DEV_MODE: boolean = false;
+import { runtimeMode } from './reuse';
+
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
-export const getDevMode = (): boolean => DEV_MODE === true;
-export const setDevMode = (mode: boolean): void => {
-	DEV_MODE = mode === true;
-};
+export const isDevMode = (): boolean => runtimeMode === 'development';
+export const isTestMode = (): boolean => runtimeMode === 'test';
+export const isProdMode = (): boolean => runtimeMode === 'production';
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const setExperimentalMode = (mode: boolean): void => {
@@ -68,7 +68,16 @@ export class Logger {
 	public constructor(
 		private readonly label: string,
 		private readonly devMode: GetModeFn,
-	) {}
+	) {
+		/**
+		 * Should remove within the pull request would be finished.
+		 */
+		console.log('🔍 Environment Debug - NODE_ENV (Lib):', runtimeMode);
+
+		if (this.devMode()) {
+			this.info('Development mode active - Enhanced debugging features available');
+		}
+	}
 
 	public debug(msg: unknown | unknown[], options?: LogShieldOptions): void {
 		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
@@ -105,4 +114,4 @@ export class Logger {
 	}
 }
 
-export const Log = new Logger('KoliBri', getDevMode);
+export const Log = new Logger('KoliBri', isDevMode);

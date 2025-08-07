@@ -1,5 +1,5 @@
 import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { processEnv } from '../schema';
+import { runtimeMode } from '../schema';
 
 import type { AlignPropType } from '../schema';
 type Arguments = {
@@ -9,7 +9,7 @@ type Arguments = {
 	align?: AlignPropType;
 };
 export const alignFloatingElements = async ({ floatingElement, referenceElement, arrowElement, align = 'top' }: Arguments) => {
-	if (processEnv !== 'test') {
+	if (runtimeMode !== 'test') {
 		const middleware = [offset(arrowElement?.offsetHeight ?? 10), flip(), shift()];
 		if (arrowElement) {
 			middleware.push(arrow({ element: arrowElement }));

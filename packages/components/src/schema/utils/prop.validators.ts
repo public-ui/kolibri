@@ -5,7 +5,7 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { getDocument, getExperimentalMode, Log } from './dev.utils';
+import { isDevMode, getDocument, getExperimentalMode, Log } from './dev.utils';
 
 import type { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
@@ -110,7 +110,7 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 	 * Muss erstmal in sync bleiben, da sonst der
 	 * Tooltip nicht korrekt ausgerichtet wird.
 	 */
-	// if (component.hydrated === true || processEnv !== 'test') {
+	// if (component.hydrated === true || runtimeMode !== 'test') {
 	// clearTimeout(component.timeout as NodeJS.Timeout);
 	// component.timeout = setTimeout(() => {
 	// 	clearTimeout(component.timeout as NodeJS.Timeout);
@@ -159,6 +159,10 @@ export function watchValidator<T>(
 	value?: T,
 	options: WatchOptions = {},
 ): void {
+	if (!isDevMode()) {
+		setState(component, propName, value ?? (options.defaultValue as T), options.hooks);
+		return;
+	}
 	if (validationFunction(value)) {
 		/**
 		 * Triff zu, wenn der Wert VALIDE ist.

@@ -44,6 +44,11 @@ const getThemes = async () => {
 };
 
 void (async () => {
+	/**
+	 * Should remove within the pull request would be finished.
+	 */
+	console.log('🔍 Environment Debug - NODE_ENV (App):', process.env.NODE_ENV);
+
 	try {
 		await bootstrap(
 			await getThemes(),
@@ -81,7 +86,6 @@ void (async () => {
 						])
 					: undefined,
 				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
-				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
 			},
 		);
