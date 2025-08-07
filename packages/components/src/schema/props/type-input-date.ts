@@ -13,9 +13,9 @@ export type PropTypeInputDate = {
 };
 
 const isInputDateTypePropType = (value: unknown): value is InputDateTypePropType => {
-    return typeof value === 'string' && inputDateTypeOptions.includes(value as InputDateTypePropType);
+	return typeof value === 'string' && inputDateTypeOptions.includes(value as InputDateTypePropType);
 };
 
 export const validateTypeInputDate = (component: Generic.Element.Component, value?: InputDateTypePropType): void => {
-    watchValidator(component, '_type', isInputDateTypePropType, new Set(inputDateTypeOptions), value);
+	watchValidator(component, '_type', isInputDateTypePropType, new Set(inputDateTypeOptions), value);
 };

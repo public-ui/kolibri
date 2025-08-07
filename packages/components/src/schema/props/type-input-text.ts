@@ -13,9 +13,9 @@ export type PropTypeInputText = {
 };
 
 const isInputTextTypePropType = (value: unknown): value is InputTextTypePropType => {
-    return typeof value === 'string' && inputTextTypeOptions.includes(value as InputTextTypePropType);
+	return typeof value === 'string' && inputTextTypeOptions.includes(value as InputTextTypePropType);
 };
 
 export const validateTypeInputText = (component: Generic.Element.Component, value?: InputTextTypePropType): void => {
-    watchValidator(component, '_type', isInputTextTypePropType, new Set(inputTextTypeOptions), value);
+	watchValidator(component, '_type', isInputTextTypePropType, new Set(inputTextTypeOptions), value);
 };
