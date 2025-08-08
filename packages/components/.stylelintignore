@@ -1,1 +1,8 @@
 src/assets/
+src/components/**/test/**
+src/components/@deprecated/**
+src/components/@else/**
+
+**/*.ts
+**/*.tsx
+**/*.md

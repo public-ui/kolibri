@@ -34,11 +34,11 @@
 		/*
 		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 		 */
-		hyphens: auto;
+		word-break: break-word;
 		/*
 		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 		 */
-		word-break: break-word;
+		hyphens: auto;
 	}
 
 	/*
@@ -51,8 +51,8 @@
 	[role='button'],
 	button:not([role='link']),
 	.kol-input .input {
-		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 	}
 
 	/*
@@ -95,12 +95,12 @@
 	* - https://www.a11yproject.com/posts/how-to-hide-content/
 	*/
 	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		white-space: nowrap;
+		overflow: hidden;
 		clip: rect(0 0 0 0);
 		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
 	}
 }

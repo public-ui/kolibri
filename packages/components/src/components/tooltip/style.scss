@@ -1,45 +1,6 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	.kol-tooltip {
-		contain: layout;
-		display: contents;
-
-		&__floating {
-			animation-duration: 0.25s;
-			animation-iteration-count: 1;
-			animation-name: fadeInOpacity;
-			animation-timing-function: ease-in;
-			display: none;
-			position: fixed;
-			visibility: hidden;
-			/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
-			top: 0;
-			left: 0;
-			max-width: 90vw;
-			max-height: 90vh;
-			/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
-			width: var(--kol-tooltip-width);
-		}
-
-		&__arrow {
-			background-color: #fff;
-			color: #000;
-			height: to-rem(10);
-			position: absolute;
-			transform: rotate(45deg);
-			width: to-rem(10);
-			z-index: 999;
-		}
-
-		&__content {
-			background-color: #fff;
-			color: #000;
-			position: relative;
-			z-index: 1000;
-		}
-	}
-
 	@keyframes fadeInOpacity {
 		0% {
 			opacity: 0;
@@ -47,6 +8,44 @@
 
 		100% {
 			opacity: 1;
+		}
+	}
+	.kol-tooltip {
+		display: contents;
+		contain: layout;
+
+		&__floating {
+			position: fixed;
+			/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+			top: 0;
+			left: 0;
+			display: none;
+			/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+			width: var(--kol-tooltip-width);
+			max-width: 90vw;
+			max-height: 90vh;
+			visibility: hidden;
+			animation-name: fadeInOpacity;
+			animation-duration: 0.25s;
+			animation-timing-function: ease-in;
+			animation-iteration-count: 1;
+		}
+
+		&__arrow {
+			position: absolute;
+			z-index: 999;
+			width: to-rem(10);
+			height: to-rem(10);
+			background-color: #fff;
+			color: #000;
+			transform: rotate(45deg);
+		}
+
+		&__content {
+			position: relative;
+			z-index: 1000;
+			background-color: #fff;
+			color: #000;
 		}
 	}
 }

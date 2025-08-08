@@ -14,16 +14,16 @@
 		}
 
 		.kol-link {
-			left: to-rem(-99999);
-			overflow: hidden;
 			position: absolute;
+			left: to-rem(-99999);
 			z-index: 9999999;
 			line-height: 1;
+			overflow: hidden;
 
 			&:focus {
-				background-color: #fff;
-				left: unset;
 				position: unset;
+				left: unset;
+				background-color: #fff;
 			}
 		}
 	}

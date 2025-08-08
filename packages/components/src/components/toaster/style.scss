@@ -6,10 +6,10 @@
 
 @layer kol-component {
 	:host {
-		display: flex;
-		flex-direction: column;
 		position: fixed;
 		z-index: 200;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.kol-toast-container {

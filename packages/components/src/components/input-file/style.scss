@@ -12,13 +12,13 @@
 
 @layer kol-component {
 	.kol-input {
-		padding: calc((var(--a11y-min-size) - to-rem(16)) / 10) 0.5em;
 		position: absolute;
-		inset: 0;
 		width: 100%;
 		height: 100%;
+		padding: calc((var(--a11y-min-size) - to-rem(16)) / 10) 0.5em;
 		opacity: 0;
 		cursor: pointer;
+		inset: 0;
 
 		&::-webkit-file-upload-button,
 		&::file-selector-button {
@@ -39,16 +39,16 @@
 		&__container {
 			display: flex;
 			align-items: center;
-			overflow: hidden;
 			height: var(--a11y-min-size);
+			overflow: hidden;
 		}
 
 		&__filename {
 			flex-grow: 1;
+			margin-left: to-rem(4);
+			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			white-space: nowrap;
-			margin-left: to-rem(4);
 		}
 
 		&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {

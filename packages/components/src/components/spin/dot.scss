@@ -1,53 +1,6 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	.kol-spin {
-		&__spinner {
-			&--dot {
-				height: to-rem(16);
-				width: to-rem(48);
-			}
-		}
-
-		&__spinner-element {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border-radius: 50%;
-			border: to-rem(0.16) solid #fff;
-			height: to-rem(12.8);
-			position: absolute;
-			top: to-rem(0.16);
-			width: to-rem(12.8);
-
-			&--1 {
-				background-color: #000;
-				z-index: 0;
-				animation: 1s infinite spin1;
-				left: to-rem(0.16);
-			}
-
-			&--2 {
-				background-color: #000;
-				z-index: 1;
-				animation: 1s infinite spin2;
-				left: to-rem(0.16);
-			}
-
-			&--3 {
-				background-color: #000;
-				z-index: 1;
-				animation: 1s infinite spin2;
-				left: to-rem(17.6);
-			}
-
-			&--neutral {
-				background-color: #666;
-				z-index: 0;
-				animation: 1s infinite spin3;
-				left: to-rem(33.6);
-			}
-		}
-	}
-
 	@keyframes spin1 {
 		0% {
 			transform: scale(0);
@@ -82,6 +35,52 @@
 	@media (prefers-reduced-motion) {
 		.kol-spin__spinner-element {
 			animation-duration: 2s;
+		}
+	}
+	.kol-spin {
+		&__spinner {
+			&--dot {
+				width: to-rem(48);
+				height: to-rem(16);
+			}
+		}
+
+		&__spinner-element {
+			position: absolute;
+			top: to-rem(0.16);
+			width: to-rem(12.8);
+			height: to-rem(12.8);
+			border: to-rem(0.16) solid #fff;
+			border-radius: 50%;
+			animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+			&--1 {
+				left: to-rem(0.16);
+				z-index: 0;
+				background-color: #000;
+				animation: 1s infinite spin1;
+			}
+
+			&--2 {
+				left: to-rem(0.16);
+				z-index: 1;
+				background-color: #000;
+				animation: 1s infinite spin2;
+			}
+
+			&--3 {
+				left: to-rem(17.6);
+				z-index: 1;
+				background-color: #000;
+				animation: 1s infinite spin2;
+			}
+
+			&--neutral {
+				left: to-rem(33.6);
+				z-index: 0;
+				background-color: #666;
+				animation: 1s infinite spin3;
+			}
 		}
 	}
 }

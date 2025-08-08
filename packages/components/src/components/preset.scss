@@ -4,11 +4,11 @@
 	 * von A und Button resettet werden.
 	 */
 	:is(a, button) {
-		background-color: transparent;
-		border: none;
+		width: 100%;
 		margin: 0;
 		padding: 0;
-		width: 100%;
+		border: none;
+		background-color: transparent;
 		/* 100% needed for custom width from outside */
 	}
 

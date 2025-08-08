@@ -37,34 +37,34 @@
 	}
 
 	.kol-input-radio {
-		display: flex;
 		position: relative;
-		cursor: pointer;
+		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
+		cursor: pointer;
 
 		&__input {
-			appearance: none;
+			display: flex;
+			width: var(--input-size);
+			min-width: var(--input-size);
+			height: var(--input-size);
+			min-height: var(--input-size);
+			margin: 0;
+			padding: 0;
 			border-width: var(--border-width);
 			border-style: solid;
 			border-radius: 100%;
 			cursor: pointer;
-			display: flex;
-			height: var(--input-size);
-			margin: 0;
-			min-height: var(--input-size);
-			min-width: var(--input-size);
-			padding: 0;
-			width: var(--input-size);
+			appearance: none;
 
 			&:before {
+				width: calc(var(--input-size) / 2);
+				height: calc(var(--input-size) / 2);
+				margin: auto;
 				border-radius: 100%;
 				content: '';
-				margin: auto;
-				height: calc(var(--input-size) / 2);
-				width: calc(var(--input-size) / 2);
 			}
 
 			&:checked {

@@ -1,33 +1,6 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	.kol-spin {
-		&__spinner {
-			&--cycle {
-				width: to-rem(48);
-				height: to-rem(48);
-			}
-		}
-
-		&__loader {
-			display: block;
-			width: 100%;
-			height: 100%;
-			border-radius: 50%;
-			position: relative;
-			animation: 2s linear infinite rotate;
-
-			&::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				border-radius: 50%;
-				border: 5px solid #333;
-				animation: 3s linear infinite prixClipFix;
-			}
-		}
-	}
-
 	@keyframes rotate {
 		100% {
 			transform: rotate(360deg);
@@ -68,6 +41,32 @@
 
 			&::before {
 				animation-duration: 6s;
+			}
+		}
+	}
+	.kol-spin {
+		&__spinner {
+			&--cycle {
+				width: to-rem(48);
+				height: to-rem(48);
+			}
+		}
+
+		&__loader {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			animation: 2s linear infinite rotate;
+
+			&::before {
+				position: absolute;
+				border: 5px solid #333;
+				border-radius: 50%;
+				animation: 3s linear infinite prixClipFix;
+				content: '';
+				inset: 0;
 			}
 		}
 	}

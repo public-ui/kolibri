@@ -30,11 +30,11 @@ $visible-options: var(--visible-options, 5);
 		}
 
 		&__no-results-message {
-			cursor: default;
 			display: flex;
-			align-items: center;
 			justify-content: center;
+			align-items: center;
 			min-height: to-rem(50);
+			cursor: default;
 		}
 
 		.kol-custom-suggestions-options-group {

@@ -7,13 +7,13 @@
 
 @layer kol-component {
 	.kol-toolbar {
-		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 
 		&--orientation-vertical {
-			align-items: stretch;
 			flex-direction: column;
+			align-items: stretch;
 		}
 
 		&:focus-within {

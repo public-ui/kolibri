@@ -5,12 +5,12 @@
 
 @layer kol-component {
 	.kol-split-button {
-		display: flex;
 		position: relative;
+		display: flex;
 
 		&__root {
-			display: flex;
 			position: relative;
+			display: flex;
 		}
 
 		&__button {
