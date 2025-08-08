@@ -18,17 +18,17 @@ export const PredefinedSettings: FC = () => {
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'column A', key: 'columnA' },
-							{ label: 'column B', key: 'columnB' },
-							{ label: 'column C', key: 'columnC' },
+							{ label: 'column A', key: 'columnA', minWidth: 'auto' },
+							{ label: 'column B', key: 'columnB', minWidth: 'auto' },
+							{ label: 'column C', key: 'columnC', minWidth: 'auto' },
 						],
 					],
 				}}
 				_tableSettings={{
 					columns: [
-						{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-						{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
-						{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
+						{ key: 'columnA', visible: false, label: 'Column A', position: 2, minWidth: 'auto' },
+						{ key: 'columnB', visible: true, label: 'Column B', position: 1, minWidth: 'auto' },
+						{ key: 'columnC', visible: true, label: 'Column C', position: 0, minWidth: 'auto' },
 					],
 				}}
 				_data={DATA}

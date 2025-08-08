@@ -16,7 +16,7 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center' },
+			{ label: 'order', key: 'order', textAlign: 'center', minWidth: 'auto' },
 			{
 				label: 'date',
 				textAlign: 'center',
@@ -26,6 +26,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 					else if ((data1 as Data).date < (data0 as Data).date) return 1;
 					else return 0;
 				},
+				minWidth: 'auto',
 			},
 		],
 	],
@@ -34,7 +35,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 const HEADERS_VERTICAL: KoliBriTableHeaders = {
 	vertical: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center' },
+			{ label: 'order', key: 'order', textAlign: 'center', minWidth: 'auto' },
 			{
 				label: 'date',
 				textAlign: 'center',
@@ -44,6 +45,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 					else if ((data1 as Data).date < (data0 as Data).date) return 1;
 					else return 0;
 				},
+				minWidth: 'auto',
 			},
 		],
 	],

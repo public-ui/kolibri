@@ -83,11 +83,13 @@ export const ButtonShortKey: FC = () => {
 					label: 'Label',
 					key: 'label',
 					textAlign: 'left',
+					minWidth: 'auto',
 				},
 				{
 					label: 'Actions',
 					key: 'actions',
 					textAlign: 'left',
+					minWidth: 'auto',
 
 					render: (el, cell) => {
 						getRoot(createReactRenderElement(el)).render(<RowActions label={(cell.data as Data).label} />);

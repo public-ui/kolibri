@@ -19,26 +19,32 @@ export const TableWithFooter: FC = () => (
 						{
 							label: 'District',
 							key: 'asp',
+							minWidth: 'auto',
 						},
 						{
 							label: 'Monday',
 							key: 'monday',
+							minWidth: 'auto',
 						},
 						{
 							label: 'Tuesday',
 							key: 'tuesday',
+							minWidth: 'auto',
 						},
 						{
 							label: 'Wednesday',
 							key: 'wednesday',
+							minWidth: 'auto',
 						},
 						{
 							label: 'Thursday',
 							key: 'thursday',
+							minWidth: 'auto',
 						},
 						{
 							label: 'Friday',
 							key: 'friday',
+							minWidth: 'auto',
 						},
 					],
 				],

@@ -22,6 +22,7 @@ const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeader
 		label: capitalizedVariant,
 		key: variant,
 		textAlign: 'left',
+		minWidth: 'auto',
 		render: (element: HTMLElement, cell: KoliBriTableCell) => {
 			const commonProps = {
 				_label: capitalizedVariant,
@@ -57,7 +58,12 @@ export const InteractiveChildElements: FC = () => (
 							getButtonHeaderCell('ghost'),
 						],
 					],
-					vertical: [[{ label: 'Button' }, { label: 'Link-Button' }]],
+					vertical: [
+						[
+							{ label: 'Button', minWidth: 'auto' },
+							{ label: 'Link-Button', minWidth: 'auto' },
+						],
+					],
 				}}
 				_data={[
 					{
@@ -88,6 +94,7 @@ export const InteractiveChildElements: FC = () => (
 								key: 'regular',
 								label: 'Regular',
 								textAlign: 'left',
+								minWidth: 'auto',
 								render: (element: HTMLElement, cell: KoliBriTableCell) => {
 									const commonProps = {
 										_label: cell.label,
@@ -100,7 +107,12 @@ export const InteractiveChildElements: FC = () => (
 							},
 						],
 					],
-					vertical: [[{ label: 'Link' }, { label: 'Button-Link' }]],
+					vertical: [
+						[
+							{ label: 'Link', minWidth: 'auto' },
+							{ label: 'Button-Link', minWidth: 'auto' },
+						],
+					],
 				}}
 				_data={[
 					{

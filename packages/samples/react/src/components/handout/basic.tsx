@@ -56,16 +56,19 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Workdays',
 				colSpan: 5,
+				minWidth: 'auto',
 			},
 			{
 				label: 'Weekend',
 				colSpan: 2,
+				minWidth: 'auto',
 			},
 		],
 		[
 			{
 				key: 'monday',
 				label: 'Monday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -88,6 +91,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'tuesday',
 				label: 'Tuesday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -109,6 +113,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'wednesday',
 				label: 'Wednesday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -120,6 +125,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'thursday',
 				label: 'Thursday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -131,6 +137,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'friday',
 				label: 'Friday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -142,6 +149,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'saturday',
 				label: 'Saturday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -153,6 +161,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'sunday',
 				label: 'Sunday',
+				minWidth: 'auto',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -167,15 +176,19 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 		[
 			{
 				label: 'Early',
+				minWidth: 'auto',
 			},
 			{
 				label: 'Noon',
+				minWidth: 'auto',
 			},
 			{
 				label: 'Evening',
+				minWidth: 'auto',
 			},
 			{
 				label: 'Night',
+				minWidth: 'auto',
 			},
 		],
 	],

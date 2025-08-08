@@ -77,11 +77,11 @@ export function InputTextFormatterDemo() {
 													_touched={form.touched.iban}
 													_required
 													_on={{
-														onInput: (event, value: unknown) => {
-															if (event.target) {
-																const parsed_value = formatter.parse((value as string) ?? '');
-
-																void form.setFieldValue('iban', parsed_value, true);
+														onInput: (event: Event, value: unknown) => {
+															const target = event.target as HTMLInputElement | null;
+															if (target) {
+																const parsedValue = formatter.parse((value as string) ?? '');
+																void form.setFieldValue('iban', parsedValue, true);
 															}
 														},
 													}}

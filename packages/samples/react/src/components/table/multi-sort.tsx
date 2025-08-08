@@ -20,6 +20,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 				label: 'order',
 				key: 'order',
 				textAlign: 'center',
+				minWidth: 'auto',
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 					if ((data0 as Data).order < (data1 as Data).order) return -1;
 					else if ((data1 as Data).order < (data0 as Data).order) return 1;
@@ -30,6 +31,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 				label: 'date',
 				key: 'date',
 				textAlign: 'center',
+				minWidth: 'auto',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 					if ((data0 as Data).date < (data1 as Data).date) return -1;
@@ -48,6 +50,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 				label: 'order',
 				key: 'order',
 				textAlign: 'center',
+				minWidth: 'auto',
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 					if ((data0 as Data).order < (data1 as Data).order) return -1;
 					else if ((data1 as Data).order < (data0 as Data).order) return 1;
@@ -58,6 +61,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 				label: 'date',
 				key: 'date',
 				textAlign: 'center',
+				minWidth: 'auto',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 					if ((data0 as Data).date < (data1 as Data).date) return -1;
