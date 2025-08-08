@@ -10,6 +10,8 @@ export const ModalBasic: FC = () => {
 	const modalState = searchParams.get('show-modal') as string;
 	const modalElement = useRef<HTMLKolModalElement>(null);
 	const stackedModalElement = useRef<HTMLKolModalElement>(null);
+	const simpleModalElement = useRef<HTMLKolModalElement>(null);
+	const closerCardModalElement = useRef<HTMLKolModalElement>(null);
 
 	useEffect(() => {
 		if (modalState === 'true') {
@@ -26,7 +28,7 @@ export const ModalBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex">
+			<div className="flex flex-col gap-4">
 				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }}>
 					<KolCard _label="I am a modal.">
 						<KolButton
@@ -63,14 +65,52 @@ export const ModalBasic: FC = () => {
 					</KolCard>
 				</KolModal>
 
-				<KolButton
-					_label="Open modal"
-					_on={{
-						onClick: () => {
-							modalElement.current?.openModal();
-						},
-					}}
-				/>
+				<KolModal _label="Simple modal" _width="80%" ref={simpleModalElement}>
+					<div className="p-4">
+						<p>This modal does not contain a KolCard.</p>
+						<KolButton
+							_label="Close modal"
+							_on={{
+								onClick: () => {
+									simpleModalElement.current?.closeModal();
+								},
+							}}
+						/>
+					</div>
+				</KolModal>
+
+				<KolModal _label="Modal with KolCard" _width="80%" ref={closerCardModalElement}>
+					<KolCard _label="Closable modal" _hasCloser _on={{ onClose: () => closerCardModalElement.current?.closeModal() }}>
+						<p>This KolCard has a closer button.</p>
+					</KolCard>
+				</KolModal>
+
+				<div className="flex flex-wrap gap-4">
+					<KolButton
+						_label="Open modal"
+						_on={{
+							onClick: () => {
+								modalElement.current?.openModal();
+							},
+						}}
+					/>
+					<KolButton
+						_label="Open simple modal"
+						_on={{
+							onClick: () => {
+								simpleModalElement.current?.openModal();
+							},
+						}}
+					/>
+					<KolButton
+						_label="Open closer modal"
+						_on={{
+							onClick: () => {
+								closerCardModalElement.current?.openModal();
+							},
+						}}
+					/>
+				</div>
 			</div>
 		</>
 	);
