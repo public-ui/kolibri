@@ -22,6 +22,7 @@ import type { ShowPropType } from '../../internal/schema/props/show';
 })
 export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, SkeletonRenderStates, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
 	private readonly controller = new SkeletonController(this, new ClickButtonController(this), new ClickButtonController(this));
+	private loadedInterval?: number;
 
 	@Prop()
 	public _count!: CountPropType;
@@ -79,6 +80,13 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 			count: this._count,
 			name: this._name,
 		});
+		this.loadedInterval = window.setInterval(() => {
+			this.loaded.emit(100);
+		}, 2000);
+	}
+
+	public disconnectedCallback(): void {
+		clearInterval(this.loadedInterval);
 	}
 
 	public render(): JSX.Element {
@@ -92,7 +100,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 					handleSecondaryClick={this.controller.handleSecondaryClick}
 					label={this.label}
 					name={name}
-					onLoaded={this.loaded}
 					refPrimaryButton={this.controller.setPrimaryButtonRef}
 					refSecondaryButton={this.controller.setSecondaryButtonRef}
 					show={this.show}

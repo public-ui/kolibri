@@ -29,8 +29,7 @@ export class ClickButtonController
 	}
 
 	public handleClick = (): void => {
-		// eslint-disable-next-line no-console
-		console.log(this, this.buttonRef, 'button clicked');
+		this.setState('eCount', this.component.eCount + 1);
 	};
 
 	public focusButton = (): void => {
