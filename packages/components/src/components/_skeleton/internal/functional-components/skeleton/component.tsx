@@ -46,23 +46,9 @@ export type SkeletonRenderStates = LabelProp &
 		eCount: number;
 	};
 
-type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, SkeletonEmitters, SkeletonRefs>;
+type Props = FunctionalComponentProps<SkeletonRenderProps, SkeletonRenderStates, SkeletonCallbacks, Record<never, never>, SkeletonRefs>;
 
-export const SkeletonFC: FC<Props> = ({
-	count,
-	eCount,
-	label,
-	name,
-	show,
-	onLoaded,
-	handlePrimaryClick,
-	handleSecondaryClick,
-	refPrimaryButton,
-	refSecondaryButton,
-}) => {
-	setTimeout(() => {
-		onLoaded.emit(100);
-	}, 1000);
+export const SkeletonFC: FC<Props> = ({ count, eCount, label, name, show, handlePrimaryClick, handleSecondaryClick, refPrimaryButton, refSecondaryButton }) => {
 	return (
 		<div>
 			{show && <span>{name}</span>}

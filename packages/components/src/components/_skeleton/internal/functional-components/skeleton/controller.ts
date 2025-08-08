@@ -66,13 +66,11 @@ export class SkeletonController
 	};
 
 	public handlePrimaryClick = (): void => {
-		// eslint-disable-next-line no-console
-		console.log(this, 'primary button clicked');
+		this.setState('eCount', this.component.eCount + 1);
 	};
 
 	public handleSecondaryClick = (): void => {
-		// eslint-disable-next-line no-console
-		console.log(this, 'secondary button clicked');
+		this.setState('eCount', this.component.eCount + 1);
 	};
 
 	public focusPrimaryButton = (): void => {
