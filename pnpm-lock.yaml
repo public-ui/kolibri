@@ -521,6 +521,9 @@ importers:
       stylelint-config-standard:
         specifier: 38.0.0
         version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
+      stylelint-order:
+        specifier: 7.0.0
+        version: 7.0.0(stylelint@16.20.0(typescript@5.8.3))
       stylelint-scss:
         specifier: 6.12.1
         version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
@@ -8856,6 +8859,7 @@ packages:
 
   lodash.clone@3.0.3:
     resolution: {integrity: sha512-yVYPpFTdZDCLG2p07gVRTvcwN5X04oj2hu4gG6r0fer58JA08wAVxXzWM+CmmxO2bzOH8u8BkZTZqgX6juVF7A==}
+    deprecated: This package is deprecated. Use structuredClone instead.
 
   lodash.clonedeep@4.5.0:
     resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
@@ -8909,6 +8913,7 @@ packages:
 
   lodash.pick@4.4.0:
     resolution: {integrity: sha512-hXt6Ul/5yWjfklSGvLQl8vM//l3FtyHZeuelpzK6mm99pNvN9yTDruNZPEJZD1oWrqo+izBmB7oUfWgcCX7s4Q==}
+    deprecated: This package is deprecated. Use destructuring assignment syntax instead.
 
   lodash.pickby@4.6.0:
     resolution: {integrity: sha512-AZV+GsS/6ckvPOVQPXSiFFacKvKB4kOQu6ynt9wz0F3LO4R9Ij4K1ddYsIytDpSgLz88JHd9P+oaLeej5/Sl7Q==}
@@ -11916,6 +11921,12 @@ packages:
   stylelint-config-standard@38.0.0:
     resolution: {integrity: sha512-uj3JIX+dpFseqd/DJx8Gy3PcRAJhlEZ2IrlFOc4LUxBX/PNMEQ198x7LCOE2Q5oT9Vw8nyc4CIL78xSqPr6iag==}
     engines: {node: '>=18.12.0'}
+    peerDependencies:
+      stylelint: ^16.18.0
+
+  stylelint-order@7.0.0:
+    resolution: {integrity: sha512-rSWxx0KscYfxU02wEskKXES9lkRzuuONMMNkZ7SUc6uiF3tDKm7e+sE0Ax/SBlG4TUf1sp1R6f3/SlsPGmzthg==}
+    engines: {node: '>=20.19.0'}
     peerDependencies:
       stylelint: ^16.18.0
 
@@ -26694,6 +26705,12 @@ snapshots:
     dependencies:
       stylelint: 16.20.0(typescript@5.8.3)
       stylelint-config-recommended: 16.0.0(stylelint@16.20.0(typescript@5.8.3))
+
+  stylelint-order@7.0.0(stylelint@16.20.0(typescript@5.8.3)):
+    dependencies:
+      postcss: 8.5.5
+      postcss-sorting: 9.1.0(postcss@8.5.5)
+      stylelint: 16.20.0(typescript@5.8.3)
 
   stylelint-scss@6.12.1(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:
