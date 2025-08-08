@@ -52,6 +52,13 @@ hr {
 	width: rem(400);
 }
 
+/* Remove bullet points from horizontal link lists */
+.list-none {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;

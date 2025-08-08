@@ -17,9 +17,9 @@ const KolSpanCoreHelperFc: FC<{ label: string; hideLabel?: boolean; badgeText?: 
 				{children}
 			</span>
 			{isString(badgeText) && badgeText.length > 0 && (
-				<span class="badge-text-hint" aria-hidden="true">
+				<kbd class="badge-text-hint" aria-hidden="true">
 					{badgeText}
-				</span>
+				</kbd>
 			)}
 		</>
 	);

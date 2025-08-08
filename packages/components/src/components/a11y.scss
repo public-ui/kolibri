@@ -3,7 +3,7 @@
 /*
  * This file contains all rules for accessibility.
  */
-@layer kol-global {
+@layer kol-a11y {
 	:host {
 		/*
 		 * Minimum size of interactive elements.
@@ -16,13 +16,6 @@
 		 */
 		background-color: white;
 		color: black;
-	}
-
-	* {
-		/*
-		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-		 */
-		hyphens: auto;
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.
 		 */
@@ -32,13 +25,20 @@
 		 */
 		letter-spacing: inherit;
 		/*
-		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-		 */
-		word-break: break-word;
-		/*
 		 * Word spacing is required for all texts.
 		 */
 		word-spacing: inherit;
+	}
+
+	* {
+		/*
+		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
+		 */
+		hyphens: auto;
+		/*
+		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
+		 */
+		word-break: break-word;
 	}
 
 	/*
@@ -78,21 +78,29 @@
 		 * All elements should inherit the font size from his parent element.
 		 */
 		font-size: inherit;
+		/*
+		 * Letter spacing is required for all texts.
+		 */
+		letter-spacing: inherit;
+		/*
+		 * Word spacing is required for all texts.
+		 */
+		word-spacing: inherit;
 	}
-}
 
-/**
- * Sometimes we need the semantic element for accessibility reasons,
- * but we don't want to show it.
- *
- * - https://www.a11yproject.com/posts/how-to-hide-content/
- */
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+	/**
+	* Sometimes we need the semantic element for accessibility reasons,
+	* but we don't want to show it.
+	*
+	* - https://www.a11yproject.com/posts/how-to-hide-content/
+	*/
+	.visually-hidden {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
 }

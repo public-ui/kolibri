@@ -45,9 +45,9 @@ import {
 	validateLinkCallbacks,
 	validateLinkTarget,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
 } from '../../schema';
+import { validateTabIndex } from '../../schema/props/tab-index';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -81,6 +81,9 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		this.anchorRef = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

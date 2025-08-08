@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "3.0.2-rc.3",
+	"version": "3.0.3-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -78,7 +78,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.1",
-		"adopted-style-sheets": "1.1.9-rc.19",
+		"adopted-style-sheets": "1.1.9-rc.20",
 		"boxen": "8.0.1",
 		"chalk": "5.4.1",
 		"clsx": "2.1.1",

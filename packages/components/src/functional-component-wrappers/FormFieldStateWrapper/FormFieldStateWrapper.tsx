@@ -70,16 +70,12 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		'_currentLengthDebounced' in state &&
 		typeof state._currentLengthDebounced === 'number'
 	) {
-		const hasCounter = '_hasCounter' in state && state._hasCounter === true;
-		const hasSoftCharacterLimit =
-			'_maxLength' in state && typeof state._maxLength === 'number' && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'soft';
-
-		if (hasCounter || hasSoftCharacterLimit) {
+		if ('_hasCounter' in state && state._hasCounter === true) {
 			props.counter = {
 				currentLength: state._currentLength,
 				currentLengthDebounced: state._currentLengthDebounced,
 				maxLength: state._maxLength,
-				hasCounter: hasCounter,
+				maxLengthBehavior: state._maxLengthBehavior || 'hard',
 			};
 		}
 	}

@@ -3,8 +3,11 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IdPropType,
 	InputRadioAPI,
 	InputRadioStates,
@@ -14,23 +17,21 @@ import type {
 	NamePropType,
 	RadioOption,
 	RadioOptionsPropType,
+	RequiredPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
+import { InputRadioController } from './controller';
 
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../functional-component-wrappers/RadioStateWrapper/RadioStateWrapper';
 import type { OrientationPropType } from '../../schema/props/orientation';
 
@@ -54,12 +55,18 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -70,6 +77,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return {
 			state: this.state,
 			component: 'fieldset',
+			disabled: Boolean(this.state._disabled),
 			class: clsx('kol-form-field--radio'),
 			formFieldLabelProps: {
 				component: 'legend',
@@ -92,8 +100,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		);
 	}
 
+	private calculateDisabled(option: RadioOption<StencilUnknown>): boolean {
+		return Boolean(this.state._disabled) || Boolean(option.disabled);
+	}
+
 	private getOptionProps(option: RadioOption<StencilUnknown>, id: string): FieldControlStateWrapperProps {
-		const obj: FieldControlStateWrapperProps = {
+		return {
 			state: this.state,
 			id: id,
 			hint: option.hint,
@@ -102,13 +114,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			fieldControlLabelProps: {
 				showBadge: false,
 			},
+			disabled: this.calculateDisabled(option),
 		};
-
-		if (option.disabled) {
-			obj.disabled = true;
-		}
-
-		return obj;
 	}
 
 	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): RadioStateWrapperProps {
@@ -122,7 +129,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				name: this.state._name || this.state._id,
 				value: `-${index}`,
 				checked: selected,
-				disabled: option.disabled,
+				disabled: this.calculateDisabled(option),
 
 				...this.controller.onFacade,
 				onChange: this.onChange,
@@ -321,7 +328,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

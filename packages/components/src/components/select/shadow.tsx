@@ -3,34 +3,36 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MultiplePropType,
 	NamePropType,
 	OptionsWithOptgroupPropType,
+	RequiredPropType,
 	RowsPropType,
 	SelectAPI,
 	SelectStates,
 	ShortKeyPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
-import { SelectController } from './controller';
-import { propagateSubmitEventToForm } from '../form/controller';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
+import { nonce } from '../../utils/dev.utils';
+import { propagateSubmitEventToForm } from '../form/controller';
+import { SelectController } from './controller';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -50,6 +52,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.selectRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
@@ -60,6 +65,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		}
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -298,7 +306,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.controller.validateMultiple(value);
 	}
 
@@ -318,7 +326,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
