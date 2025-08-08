@@ -11,12 +11,10 @@
 	.kol-table {
 		$root: &;
 
-		line-height: var(--line-height);
-		word-break: break-word;
-
 		overflow-x: auto;
 		overflow-y: hidden;
 		padding: to-rem(8);
+		margin-bottom: to-rem(8);
 
 		&__table,
 		&__caption {

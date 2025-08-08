@@ -10,6 +10,7 @@
 		$root: &;
 
 		display: block;
+		margin-bottom: to-rem(8);
 
 		&__scroll-container {
 			overflow-x: auto;
