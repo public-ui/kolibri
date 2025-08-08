@@ -2,14 +2,14 @@
 	@layer kol-component {
 		.kol-input-container {
 			$root: &;
+			display: grid;
 
 			align-items: center;
-			background-color: white;
-			display: grid;
-			grid-template-columns: 1fr;
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
 			width: 100%;
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
+			background-color: white;
+			grid-template-columns: 1fr;
 
 			&:has(> #{$root}__adornment--start) {
 				grid-template-columns: auto 1fr;
