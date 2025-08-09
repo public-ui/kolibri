@@ -135,6 +135,8 @@ test.describe('kol-modal', () => {
 			await kolModal.evaluate((element: HTMLKolModalElement) => element.openModal());
 			await expect(dialog).toBeVisible();
 			await expect(page.getByTestId('card-close-button')).toHaveCount(0);
+			await kolModal.evaluate((element: HTMLKolModalElement) => element.closeModal());
+			await expect(dialog).toBeHidden();
 		});
 	});
 });
