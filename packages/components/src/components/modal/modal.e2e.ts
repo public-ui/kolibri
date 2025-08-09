@@ -123,7 +123,7 @@ test.describe('kol-modal', () => {
 			await expect(dialog).toBeHidden();
 			await kolModal.evaluate((element: HTMLKolModalElement) => element.openModal());
 			await expect(dialog).toBeVisible();
-			const closeButton = page.locator('[data-testid="card-close-button"] button');
+			const closeButton = page.getByTestId('card-close-button').locator('button');
 			await expect(closeButton).toBeVisible();
 			await closeButton.evaluate((button) => (button as HTMLButtonElement).click());
 			await expect(dialog).toBeHidden();
@@ -134,7 +134,7 @@ test.describe('kol-modal', () => {
 			const dialog = page.locator('dialog');
 			await kolModal.evaluate((element: HTMLKolModalElement) => element.openModal());
 			await expect(dialog).toBeVisible();
-			await expect(page.locator('[data-testid="card-close-button"]')).toHaveCount(0);
+			await expect(page.getByTestId('card-close-button')).toHaveCount(0);
 		});
 	});
 });
