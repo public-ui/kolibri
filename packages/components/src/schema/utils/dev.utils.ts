@@ -15,14 +15,14 @@ export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
 
-let DEV_MODE: boolean = false;
+import { getRuntimeMode } from './reuse';
+
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
-export const getDevMode = (): boolean => DEV_MODE === true;
-export const setDevMode = (mode: boolean): void => {
-	DEV_MODE = mode === true;
-};
+export const isDevMode = (): boolean => getRuntimeMode() === 'development';
+export const isTestMode = (): boolean => getRuntimeMode() === 'test';
+export const isProdMode = (): boolean => getRuntimeMode() === 'production';
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const setExperimentalMode = (mode: boolean): void => {
@@ -105,4 +105,4 @@ export class Logger {
 	}
 }
 
-export const Log = new Logger('KoliBri', getDevMode);
+export const Log = new Logger('KoliBri', isDevMode);

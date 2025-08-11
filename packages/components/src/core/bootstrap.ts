@@ -1,16 +1,9 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
-import { setDevMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
-type Environment = 'development' | 'production';
-
 type KoliBriOptions = RegisterOptions & {
-	/**
-	 * The environment in which the application is running.
-	 */
-	environment?: Environment;
 	/**
 	 * This option allows you to transform the component tag names.
 	 */
@@ -33,8 +26,6 @@ export const bootstrap = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	koliBriOptions?: KoliBriOptions,
 ): Promise<void[]> => {
-	setDevMode(koliBriOptions?.environment === 'development');
-
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);
 	if (koliBriOptions?.transformTagName) {
 		setCustomTagNames(koliBriOptions?.transformTagName);

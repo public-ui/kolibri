@@ -1,11 +1,14 @@
-const PROCESS_ENVS = ['development', 'production', 'test'] as const;
-type ProcessEnv = (typeof PROCESS_ENVS)[number];
-export let processEnv: ProcessEnv = 'development';
+const MODES = ['development', 'production', 'test'] as const;
+export type Mode = (typeof MODES)[number];
+
+let runtimeMode: Mode = 'development';
 try {
-	processEnv = process.env.NODE_ENV as ProcessEnv;
+	runtimeMode = process.env.NODE_ENV as Mode;
 } catch (e) {
-	processEnv = 'production';
+	runtimeMode = 'production';
 }
+
+export const getRuntimeMode = (): Mode => runtimeMode;
 
 /**
  * This function is used to handle the slot content by
