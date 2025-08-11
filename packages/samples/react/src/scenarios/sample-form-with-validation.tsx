@@ -43,7 +43,7 @@ const formSchema = z.object({
 		.regex(/[0-9]/, 'Password must include at least one number.'),
 	range: z.number({ required_error: 'Please select a range.' }).min(30, 'Minimum value is 30.'),
 	number: z.number({ required_error: 'Please enter a number.' }).min(1, 'Minimum is 1.').max(10, 'Maximum is 10.'),
-	checkbox: z.boolean().refine((val: any) => val === true, {
+	checkbox: z.boolean().refine((val: boolean) => val === true, {
 		message: 'You must accept the terms and conditions.',
 	}),
 
@@ -98,7 +98,7 @@ export const SampleFormWithValidation: React.FC = () => {
 		_touched: isTouched(key),
 		_msg: err(key),
 		_on: {
-			onInput: (_e: any, v: any) => setValue(key, v, { shouldTouch: true, shouldValidate: true }),
+			onInput: (_: Event, v: unknown) => setValue(key, v as any, { shouldTouch: true, shouldValidate: true }),
 			onBlur: () => trigger(key),
 		},
 	});
@@ -153,7 +153,7 @@ export const SampleFormWithValidation: React.FC = () => {
 				<KolInputPassword _label="Password" {...bind('password')} />
 				<KolInputRange _label="Range (≥ 30)" _min={0} _max={100} {...bind('range')} />
 				<KolInputNumber _label="Number (1 – 10)" {...bind('number')} />
-				<KolInputCheckbox _label="Accept terms" {...bind('checkbox')} _value={false} />
+				<KolInputCheckbox _label="Accept terms" {...bind('checkbox')} />
 				<KolInputRadio
 					_label="Gender"
 					_options={[
