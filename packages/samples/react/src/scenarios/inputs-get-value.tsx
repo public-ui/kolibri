@@ -37,7 +37,7 @@ type Props = {
 	testId?: string;
 };
 const Scenario = (props: Props) => {
-	const ref = useRef<HTMLStencilElement & { getValue: () => Promise<any> }>();
+	const ref = useRef<HTMLStencilElement & { getValue: () => Promise<any> }>(null);
 	const [displayValue, setDisplayValue] = useState<unknown>(undefined);
 	const [modelValue, setModelValue] = useState<unknown>(props.inputProps._value);
 	const formatter = props.formatter || JSON.stringify;

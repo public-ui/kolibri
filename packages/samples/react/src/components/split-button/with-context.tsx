@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 import type { FC } from 'react';
 
 export const SplitButtonWithContext: FC = () => {
-	const splitButtonRef = React.useRef<HTMLKolSplitButtonElement & { closePopup: any }>();
+	const splitButtonRef = React.useRef<HTMLKolSplitButtonElement & { closePopup: any }>(null);
 
 	const handleCloseClick = () => {
 		splitButtonRef.current?.closePopup();
