@@ -76,8 +76,10 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
-register(DEFAULT, defineCustomElements);
+register(DEFAULT, defineCustomElements, { mode: 'development' });
 ```
+
+Provide the `mode` option to explicitly set the runtime environment (`development`, `test` or `production`).
 
 ## Collaboration and cooperation
 

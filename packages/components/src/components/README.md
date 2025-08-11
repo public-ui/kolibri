@@ -19,7 +19,7 @@ import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/components';
 import { DEFAULT } from '@public-ui/theme-default';
 
-register(DEFAULT, defineCustomElements)
+register(DEFAULT, defineCustomElements, { mode: 'development' })
 	.then(() => {
 		/* KoliBri ready */
 	})
@@ -27,6 +27,8 @@ register(DEFAULT, defineCustomElements)
 		/* Handle errors */
 	});
 ```
+
+Pass the optional `mode` to select the runtime environment (`development`, `test` or `production`).
 
 Then, you can use the components in your HTML:
 

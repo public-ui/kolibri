@@ -33,8 +33,10 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
-register(DEFAULT, defineCustomElements).catch(console.error);
+register(DEFAULT, defineCustomElements, { mode: 'development' }).catch(console.error);
 ```
+
+The optional third argument accepts a `mode` property to set the runtime environment (`development`, `test` or `production`).
 
 After registration you can use the elements in your markup:
 

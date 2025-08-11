@@ -8,6 +8,10 @@ try {
 	runtimeMode = 'production';
 }
 
+export const setRuntimeMode = (mode: Mode): void => {
+	runtimeMode = mode;
+};
+
 /**
  * This function is used to handle the slot content by
  * moving a DOM element to a defined slot element.
