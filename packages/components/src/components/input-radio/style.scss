@@ -37,15 +37,17 @@
 	}
 
 	.kol-input-radio {
-		position: relative;
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		position: relative;
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
+		align-items: center;
+		justify-content: center;
 		cursor: pointer;
 
 		&__input {
+			border-style: solid;
+			border-radius: 100%;
 			display: flex;
 			width: var(--input-size);
 			min-width: var(--input-size);
@@ -54,16 +56,15 @@
 			margin: 0;
 			padding: 0;
 			border-width: var(--border-width);
-			border-style: solid;
-			border-radius: 100%;
-			cursor: pointer;
 			appearance: none;
+			cursor: pointer;
 
 			&:before {
+				border-radius: 100%;
 				width: calc(var(--input-size) / 2);
 				height: calc(var(--input-size) / 2);
 				margin: auto;
-				border-radius: 100%;
+
 				content: '';
 			}
 

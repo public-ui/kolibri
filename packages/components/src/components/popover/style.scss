@@ -15,11 +15,11 @@
 		height: 0;
 
 		&__content {
+			opacity: 0;
+			background-color: #fff;
 			position: absolute;
 			min-width: max-content;
 			min-height: max-content;
-			background-color: #fff;
-			opacity: 0;
 
 			&--visible {
 				animation: 0.3s ease-in forwards fadeInOpacity;
@@ -31,12 +31,12 @@
 		}
 
 		&__arrow {
+			rotate: 0.125turn;
+			background-color: inherit;
 			position: absolute;
 			z-index: -1;
 			width: var(--font-size);
 			height: var(--font-size);
-			background-color: inherit;
-			rotate: 0.125turn;
 		}
 	}
 }

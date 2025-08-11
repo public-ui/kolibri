@@ -9,6 +9,7 @@
 		 * parent node, if the table is wider than the parent node.
 		 */
 		max-width: 100%;
+
 		font-size: to-rem(16);
 	}
 
@@ -58,8 +59,8 @@
 	[disabled],
 	[disabled]:focus {
 		opacity: 0.5;
-		cursor: not-allowed;
 		outline: none;
+		cursor: not-allowed;
 	}
 
 	[aria-disabled='true']:focus .kol-span,

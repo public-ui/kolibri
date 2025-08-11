@@ -3,13 +3,13 @@
 @mixin kol-custom-suggestions-options-group {
 	@layer kol-component {
 		.kol-custom-suggestions-options-group {
+			background-color: white;
+			display: block;
 			position: absolute;
 			z-index: 2;
-			display: block;
 			max-height: to-rem(250);
 			margin: 0;
 			padding: 0;
-			background-color: white;
 			overflow-x: hidden;
 			overflow-y: auto;
 			list-style-type: none;

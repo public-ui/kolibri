@@ -45,14 +45,14 @@
 
 		&__button-group {
 			display: flex;
+			order: var(--button-group-order);
 
 			flex-direction: var(--button-group-flex-direction);
 			flex-wrap: wrap;
-			order: var(--button-group-order);
 
 			.kol-button {
-				display: block;
 				border-bottom-color: transparent;
+				display: block;
 				border-bottom-style: solid;
 			}
 		}

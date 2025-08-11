@@ -1,6 +1,6 @@
 {
-	"src/components/**/*.{css,scss}": [
-		"stylelint"
+	"src/**/*.{css,scss}": [
+		"stylelint --fix"
 	],
 	"src/**/*.{ts,tsx,js,jsx}": [
 		"prettier --list-different",

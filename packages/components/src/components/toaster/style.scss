@@ -6,9 +6,9 @@
 
 @layer kol-component {
 	:host {
+		display: flex;
 		position: fixed;
 		z-index: 200;
-		display: flex;
 		flex-direction: column;
 	}
 

@@ -4,9 +4,9 @@
 
 @layer kol-component {
 	.kol-badge {
-		display: inline-flex;
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
+		display: inline-flex;
 		place-items: center;
 
 		.kol-badge__smart-button {

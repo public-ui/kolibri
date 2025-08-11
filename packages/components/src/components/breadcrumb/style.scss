@@ -9,12 +9,12 @@
 		&__list,
 		&__list-element {
 			display: flex;
-			flex-wrap: wrap;
 			margin: 0;
 			padding: 0;
 			gap: 0.5em;
-			list-style: none;
+			flex-wrap: wrap;
 			place-items: center;
+			list-style: none;
 		}
 
 		&__icon {
@@ -24,8 +24,8 @@
 			}
 
 			&::part(separator):before {
-				font-family: 'Font Awesome 6 Free';
 				content: '\f054';
+				font-family: 'Font Awesome 6 Free';
 			}
 		}
 	}

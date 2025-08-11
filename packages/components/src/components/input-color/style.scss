@@ -23,9 +23,9 @@
 
 	&__inputs-wrapper {
 		display: flex;
+		gap: to-rem(6) !important;
 		flex-direction: row;
 		align-items: center;
-		gap: to-rem(6) !important;
 	}
 }
 

@@ -1,8 +1,10 @@
 src/assets/
-src/components/**/test/**
-src/components/@deprecated/**
-src/components/@else/**
 
+**/*.md
+**/*.mustache
+**/*.pug
+**/*.sass
+**/*.snap
 **/*.ts
 **/*.tsx
-**/*.md
+**/*.twig

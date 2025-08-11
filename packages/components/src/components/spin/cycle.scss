@@ -53,20 +53,21 @@
 		}
 
 		&__loader {
-			position: relative;
+			border-radius: 50%;
 			display: block;
+			position: relative;
 			width: 100%;
 			height: 100%;
-			border-radius: 50%;
 			animation: 2s linear infinite rotate;
 
 			&::before {
-				position: absolute;
-				border: 5px solid #333;
 				border-radius: 50%;
-				animation: 3s linear infinite prixClipFix;
-				content: '';
+				position: absolute;
 				inset: 0;
+
+				content: '';
+				animation: 3s linear infinite prixClipFix;
+				border: 5px solid #333;
 			}
 		}
 	}

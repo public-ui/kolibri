@@ -15,37 +15,38 @@
 		contain: layout;
 
 		&__floating {
+			display: none;
 			position: fixed;
 			/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
 			top: 0;
 			left: 0;
-			display: none;
 			/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
 			width: var(--kol-tooltip-width);
 			max-width: 90vw;
 			max-height: 90vh;
+
 			visibility: hidden;
-			animation-name: fadeInOpacity;
 			animation-duration: 0.25s;
-			animation-timing-function: ease-in;
 			animation-iteration-count: 1;
+			animation-name: fadeInOpacity;
+			animation-timing-function: ease-in;
 		}
 
 		&__arrow {
+			transform: rotate(45deg);
+			color: #000;
+			background-color: #fff;
 			position: absolute;
 			z-index: 999;
 			width: to-rem(10);
 			height: to-rem(10);
-			background-color: #fff;
-			color: #000;
-			transform: rotate(45deg);
 		}
 
 		&__content {
+			color: #000;
+			background-color: #fff;
 			position: relative;
 			z-index: 1000;
-			background-color: #fff;
-			color: #000;
 		}
 	}
 }

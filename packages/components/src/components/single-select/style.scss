@@ -31,9 +31,9 @@ $visible-options: var(--visible-options, 5);
 
 		&__no-results-message {
 			display: flex;
-			justify-content: center;
-			align-items: center;
 			min-height: to-rem(50);
+			align-items: center;
+			justify-content: center;
 			cursor: default;
 		}
 

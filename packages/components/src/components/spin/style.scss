@@ -6,8 +6,8 @@
 @layer kol-component {
 	.kol-spin {
 		&__spinner {
-			position: relative;
 			display: block;
+			position: relative;
 			padding: to-rem(2);
 		}
 	}

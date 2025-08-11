@@ -16,8 +16,8 @@
 	}
 
 	#{$root} {
-		position: relative;
 		display: flex;
+		position: relative;
 		align-items: center;
 		cursor: pointer;
 
@@ -26,13 +26,13 @@
 		}
 
 		.kol-input {
+			background-color: #fff;
+			border-style: solid;
 			margin: 0;
 			border-width: 2px;
-			border-style: solid;
-			background-color: #fff;
-			transition: 0.5s;
-			cursor: inherit;
 			appearance: none;
+			cursor: inherit;
+			transition: 0.5s;
 
 			&:before {
 				content: '';
@@ -45,16 +45,16 @@
 	 */
 	#{$root}--variant-default {
 		position: relative;
-		justify-content: center;
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
+		justify-content: center;
 
 		.kol-icon {
-			position: absolute;
-			z-index: 1;
 			display: flex;
-			pointer-events: none;
+			position: absolute;
 			inset: auto;
+			z-index: 1;
+			pointer-events: none;
 
 			&::part(icon) {
 				display: none;
@@ -81,19 +81,19 @@
 		position: relative;
 
 		.kol-input {
-			position: relative;
 			display: inline-block;
+			position: relative;
 			width: 3.2em;
 			min-width: 3.2em;
 			height: 1.7em;
 
 			&::before {
+				background-color: #000;
 				position: absolute;
 				top: calc(0.25em - to-rem(2));
 				left: calc(0.25em - to-rem(2));
 				width: 1.2em;
 				height: 1.2em;
-				background-color: #000;
 				transition: 0.5s;
 			}
 
@@ -107,18 +107,18 @@
 		}
 
 		.kol-icon {
+			transform: translate(0, -50%);
+			color: #000;
+			display: flex;
 			position: absolute;
 			top: 50%;
 			left: to-rem(4);
 			z-index: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			width: 1.2em;
 			height: 1.2em;
-			color: #000;
+			align-items: center;
+			justify-content: center;
 			transition: 0.5s;
-			transform: translate(0, -50%);
 		}
 
 		&#{$root}--checked .kol-icon {
@@ -138,10 +138,10 @@
 
 		.kol-icon {
 			display: flex;
-			justify-content: center;
-			align-items: center;
 			width: var(--a11y-min-size);
 			height: var(--a11y-min-size);
+			align-items: center;
+			justify-content: center;
 		}
 	}
 }

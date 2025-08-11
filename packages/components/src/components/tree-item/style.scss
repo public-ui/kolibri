@@ -11,10 +11,11 @@
 		&__link {
 			.kol-link {
 				display: inline-flex;
-				align-items: center;
 				min-height: var(--a11y-min-size);
 				padding-right: to-rem(6);
 				padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
+				align-items: center;
+
 				text-decoration: none;
 			}
 
@@ -41,10 +42,10 @@
 		&__toggle-button,
 		&__toggle-button-placeholder {
 			display: inline-flex;
-			justify-content: center;
-			align-items: center;
 			width: var(--a11y-min-size);
 			height: var(--a11y-min-size);
+			align-items: center;
+			justify-content: center;
 		}
 
 		&__text {

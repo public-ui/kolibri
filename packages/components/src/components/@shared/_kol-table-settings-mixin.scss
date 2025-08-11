@@ -3,11 +3,11 @@
 @mixin kol-table-settings-styles {
 	@layer kol-component {
 		.kol-table-settings {
+			background: #fff;
 			position: absolute;
 			top: 0;
 			right: 0;
 			z-index: 1;
-			background: #fff;
 
 			&__columns-container {
 				max-height: to-rem(200);
@@ -17,9 +17,9 @@
 
 			&__columns {
 				display: grid;
-				align-items: center;
 				overflow: hidden;
 				gap: to-rem(8);
+				align-items: center;
 				grid-auto-rows: min-content;
 				grid-template-columns: min-content 1fr to-rem(100) auto auto;
 			}

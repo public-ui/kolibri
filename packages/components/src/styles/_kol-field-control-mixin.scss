@@ -3,11 +3,11 @@
 		.kol-field-control {
 			$base: &;
 			display: grid;
-			justify-content: left;
-
-			align-items: center;
 
 			min-height: var(--a11y-min-size);
+
+			align-items: center;
+			justify-content: left;
 			grid-template-areas: 'input label';
 			grid-template-columns: auto 1fr;
 			grid-template-rows: auto;
@@ -32,16 +32,16 @@
 
 			&__input {
 				display: flex;
-				align-items: center;
 				min-height: var(--a11y-min-size);
+				align-items: center;
 				grid-area: input;
 			}
 
 			&__label {
 				display: flex;
+				min-height: var(--a11y-min-size);
 				flex-grow: 1;
 				align-items: center;
-				min-height: var(--a11y-min-size);
 				cursor: pointer;
 				grid-area: label;
 
@@ -49,6 +49,7 @@
 					height: 0;
 					margin: 0;
 					padding: 0;
+
 					visibility: hidden;
 				}
 

@@ -5,16 +5,16 @@
 	.kol-progress {
 		&__bar {
 			display: grid;
-			align-items: center;
 			column-gap: 0.05rem;
+			align-items: center;
 			grid-template-areas:
 				'LABEL LABEL LABEL'
 				'BAR VALUE UNIT';
 			grid-template-columns: 1fr auto;
 
 			&-label {
-				grid-area: LABEL;
 				grid-column-end: 2;
+				grid-area: LABEL;
 			}
 
 			svg {
@@ -22,8 +22,8 @@
 			}
 
 			&-value {
-				text-align: right;
 				grid-area: VALUE;
+				text-align: right;
 			}
 
 			&-unit {
@@ -53,9 +53,9 @@
 		&__cycle {
 			display: grid;
 			align-content: center;
+			justify-items: center;
 			grid-template-areas: 'ALL';
 			grid-template-columns: auto;
-			justify-items: center;
 
 			> * {
 				grid-area: ALL;
@@ -90,10 +90,10 @@
 			}
 
 			&-progress {
-				fill: transparent;
-				stroke: #0075ff;
 				transform: rotate(-90deg);
 				transform-origin: 50% 50%;
+				fill: transparent;
+				stroke: #0075ff;
 
 				@media (prefers-reduced-motion: no-preference) {
 					transition: 250ms ease-in-out 50ms;

@@ -46,39 +46,39 @@
 		}
 
 		&__spinner-element {
+			border-radius: 50%;
 			position: absolute;
 			top: to-rem(0.16);
 			width: to-rem(12.8);
 			height: to-rem(12.8);
-			border: to-rem(0.16) solid #fff;
-			border-radius: 50%;
 			animation-timing-function: cubic-bezier(0, 1, 1, 0);
+			border: to-rem(0.16) solid #fff;
 
 			&--1 {
+				background-color: #000;
 				left: to-rem(0.16);
 				z-index: 0;
-				background-color: #000;
 				animation: 1s infinite spin1;
 			}
 
 			&--2 {
+				background-color: #000;
 				left: to-rem(0.16);
 				z-index: 1;
-				background-color: #000;
 				animation: 1s infinite spin2;
 			}
 
 			&--3 {
+				background-color: #000;
 				left: to-rem(17.6);
 				z-index: 1;
-				background-color: #000;
 				animation: 1s infinite spin2;
 			}
 
 			&--neutral {
+				background-color: #666;
 				left: to-rem(33.6);
 				z-index: 0;
-				background-color: #666;
 				animation: 1s infinite spin3;
 			}
 		}

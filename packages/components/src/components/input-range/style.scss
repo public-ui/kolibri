@@ -27,26 +27,27 @@
 			}
 
 			&--range {
+				background-color: #d3d3d3;
 				display: inline-block;
-				flex-grow: 1;
 				/* Design-Hack - related with flex-grow */
 				width: 0;
 				height: to-rem(8);
 				margin: 0;
 				padding: 0;
-				border: 1px solid #000;
-				background-color: #d3d3d3;
+				flex-grow: 1;
+
 				line-height: 1.5;
 				appearance: none;
+				border: 1px solid #000;
 
 				&::-webkit-slider-thumb {
 					@at-root #{$input}:not(:disabled)#{&} {
 						cursor: pointer;
 					}
+					background-color: #000;
+					border-radius: 20px;
 					width: to-rem(20);
 					height: to-rem(20);
-					border-radius: 20px;
-					background-color: #000;
 					-webkit-appearance: none;
 
 					@media (prefers-contrast: more) or (forced-colors: active) {
@@ -58,10 +59,10 @@
 					@at-root #{$input}:not(:disabled)#{&} {
 						cursor: pointer;
 					}
+					background-color: #000;
+					border-radius: 20px;
 					width: to-rem(20);
 					height: to-rem(20);
-					border-radius: 20px;
-					background-color: #000;
 					-moz-appearance: none;
 				}
 			}
