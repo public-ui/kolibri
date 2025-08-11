@@ -1,15 +1,19 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputTextTypePropType,
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropName,
 	PropReadOnly,
@@ -20,28 +24,29 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTextType, InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
-	hint: string;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
-	type: InputTextType;
+	type: InputTextTypePropType;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropId &
+	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -52,16 +57,15 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
+	currentLength: number;
+	currentLengthDebounced: number;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputTextType;
+	type: InputTextTypePropType;
 } & PropHideMsg &
 	PropId &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	currentLength: number;
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -69,10 +73,13 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropName &
 	PropReadOnly &

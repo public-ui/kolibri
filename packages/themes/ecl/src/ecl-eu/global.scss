@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 
 @layer kol-theme-global {
 	.kol-tooltip {
@@ -9,8 +9,8 @@
 		&__content {
 			background-color: #f2f2f2;
 
-			padding: rem(4) rem(8);
-			font-size: rem(14);
+			padding: to-rem(4) to-rem(8);
+			font-size: to-rem(14);
 			line-height: 1.2;
 			border-radius: 2px;
 			border: 1px solid #626262;
@@ -109,20 +109,20 @@
 		--color-white: #fff;
 		--color-black: #000;
 		--font-family: Arial, sans-serif;
-		--font-size: #{rem(16)};
+		--font-size: #{to-rem(16)};
 		--font-weight-regular: 400;
 		--font-weight-bold: 700;
 		--line-height-regular: 1.5;
 		--line-height-heading: 1.2;
-		--spacing-4xl: #{rem(64)};
-		--spacing-3xl: #{rem(48)};
-		--spacing-2xl: #{rem(40)};
-		--spacing-xl: #{rem(32)};
-		--spacing-l: #{rem(24)};
-		--spacing-m: #{rem(16)};
-		--spacing-s: #{rem(12)};
-		--spacing-xs: #{rem(8)};
-		--spacing-2xs: #{rem(4)};
+		--spacing-4xl: #{to-rem(64)};
+		--spacing-3xl: #{to-rem(48)};
+		--spacing-2xl: #{to-rem(40)};
+		--spacing-xl: #{to-rem(32)};
+		--spacing-l: #{to-rem(24)};
+		--spacing-m: #{to-rem(16)};
+		--spacing-s: #{to-rem(12)};
+		--spacing-xs: #{to-rem(8)};
+		--spacing-2xs: #{to-rem(4)};
 	}
 
 	:host {
@@ -167,26 +167,26 @@
 
 	p.l,
 	p.lead {
-		font-size: rem(20);
-		line-height: rem(28);
+		font-size: to-rem(20);
+		line-height: to-rem(28);
 	}
 
 	p,
 	p.m,
 	p.medium {
-		line-height: rem(24);
+		line-height: to-rem(24);
 	}
 
 	p.s,
 	p.small {
-		font-size: rem(14);
-		line-height: rem(20);
+		font-size: to-rem(14);
+		line-height: to-rem(20);
 	}
 
 	p.xs,
 	p.extra-small {
-		font-size: rem(12);
-		line-height: rem(20);
+		font-size: to-rem(12);
+		line-height: to-rem(20);
 	}
 
 	.badge-text-hint {

@@ -2,12 +2,15 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	HideLabelPropType,
 	FocusableElement,
 	IconsPropType,
 	InternalButtonAPI,
@@ -40,10 +43,10 @@ import {
 	validateIcons,
 	validateLabelWithExpertSlot,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
 	watchString,
 } from '../../schema';
+import { validateTabIndex } from '../../schema/props/tab-index';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
@@ -71,12 +74,18 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	private readonly internalDescriptionById = nonce();
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.buttonRef?.focus();
 	}
 
+	/**
+	 * Hides the tooltip.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {
@@ -336,12 +345,12 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: boolean): void {
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
 		validateAriaExpanded(this, value);
 	}
 
 	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: boolean): void {
+	public validateAriaSelected(value?: AriaSelectedPropType): void {
 		validateAriaSelected(this, value);
 	}
 
@@ -356,7 +365,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
 	}
 

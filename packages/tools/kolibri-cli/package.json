@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.2-rc.2",
+	"version": "3.0.3-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -30,8 +30,8 @@
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
-               "test": "pnpm test:unit",
-               "test:unit": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
+		"test": "pnpm test:unit",
+		"test:unit": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
 	},
 	"type": "commonjs",
 	"dependencies": {

@@ -5,7 +5,7 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { isProdMode, getDocument, getExperimentalMode, Log } from './dev.utils';
+import { isDevMode, getDocument, getExperimentalMode, Log } from './dev.utils';
 
 import type { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
@@ -159,7 +159,7 @@ export function watchValidator<T>(
 	value?: T,
 	options: WatchOptions = {},
 ): void {
-	if (isProdMode()) {
+	if (!isDevMode()) {
 		setState(component, propName, value ?? (options.defaultValue as T), options.hooks);
 		return;
 	}

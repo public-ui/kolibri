@@ -1,17 +1,18 @@
-import { h, type FunctionalComponent as FC } from '@stencil/core';
+import { type FunctionalComponent as FC, h } from '@stencil/core';
 import KolFormFieldFc, { type FormFieldProps } from '../../functional-components/FormField';
+import type { TextareaStates } from '../../schema';
 import {
+	convertMsgToInternMsg,
+	type InputCheckboxStates,
 	type InputColorStates,
 	type InputEmailStates,
 	type InputFileStates,
 	type InputNumberStates,
 	type InputPasswordStates,
+	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
-	type InputCheckboxStates,
-	type InputRadioStates,
 	type SelectStates,
-	convertMsgToInternMsg,
 } from '../../schema';
 
 type InputState =
@@ -24,7 +25,8 @@ type InputState =
 	| InputRangeStates
 	| InputCheckboxStates
 	| InputRadioStates
-	| SelectStates;
+	| SelectStates
+	| TextareaStates;
 
 export type FormFieldStateWrapperProps = Partial<FormFieldProps> & {
 	state: InputState;
@@ -58,10 +60,23 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		props.shortKey = state._shortKey;
 	}
 
-	if ('_hasCounter' in state && '_currentLength' in state) {
-		props.counter = state._hasCounter ? { currentLength: state._currentLength } : undefined;
-		if (props.counter && '_maxLength' in state) {
-			props.counter.maxLength = state._maxLength;
+	if ('_maxLength' in state) {
+		props.maxLength = state._maxLength;
+	}
+
+	if (
+		'_currentLength' in state &&
+		typeof state._currentLength === 'number' &&
+		'_currentLengthDebounced' in state &&
+		typeof state._currentLengthDebounced === 'number'
+	) {
+		if ('_hasCounter' in state && state._hasCounter === true) {
+			props.counter = {
+				currentLength: state._currentLength,
+				currentLengthDebounced: state._currentLengthDebounced,
+				maxLength: state._maxLength,
+				maxLengthBehavior: state._maxLengthBehavior || 'hard',
+			};
 		}
 	}
 

@@ -2,7 +2,7 @@
 
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="bottom" 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
@@ -27,7 +27,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="left" 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
@@ -52,7 +52,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="right" 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
@@ -77,7 +77,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" _hideLabel=true 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label kol-link--inline" href="https://example.com" rel="noopener" target="self">
@@ -99,7 +99,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
@@ -124,7 +124,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
@@ -149,7 +149,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 
 exports[`kol-link should render with _label="Label" _href="" _download="download-file.zip" _target="blank" 1`] = `
 <kol-link>
-  <template shadowrootmode="open">
+  <template shadowrootmode="open" shadowrootdelegatesfocus>
     <kol-link-wc>
       <!---->
       <a class="kol-link kol-link--external-link kol-link--inline" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">

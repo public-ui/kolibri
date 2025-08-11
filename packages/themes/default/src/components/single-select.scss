@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/input-error' as *;
 @use '../mixins/typography' as *;
@@ -7,7 +7,7 @@
 @use '../mixins/custom-suggestions-toggle' as *;
 @use '../@shared/input-core' as *;
 
-$option-height: rem(40);
+$option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -26,7 +26,7 @@ $visible-options: 5;
 		&__input {
 			flex-grow: 1;
 			border: none;
-			width: calc(100% - rem(40));
+			width: calc(100% - to-rem(40));
 			position: relative;
 
 			&::placeholder {

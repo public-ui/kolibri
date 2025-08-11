@@ -4,7 +4,10 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
+	DisabledPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -15,23 +18,23 @@ import type {
 } from '../../../schema';
 import {
 	a11yHint,
-	a11yHintDisabled,
 	devHint,
 	objectObjectHandler,
 	parseJson,
 	setState,
 	validateAccessKey,
 	validateAdjustHeight,
+	validateDisabled,
 	validateHideMsg,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
+	validateHint,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
-	watchBoolean,
 	watchString,
 } from '../../../schema';
+import { validateTabIndex } from '../../../schema/props/tab-index';
 
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
@@ -39,6 +42,7 @@ import { ControlledInputController } from '../../input-adapter-leanup/controller
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
+import { debounce } from 'lodash-es';
 
 type ValueChangeListener = (value: StencilUnknown) => void;
 
@@ -61,11 +65,8 @@ export class InputController extends ControlledInputController implements Watche
 		validateAdjustHeight(this.component, value);
 	}
 
-	public validateDisabled(value?: boolean): void {
-		watchBoolean(this.component, '_disabled', value);
-		if (value === true) {
-			a11yHintDisabled();
-		}
+	public validateDisabled(value?: DisabledPropType): void {
+		validateDisabled(this.component, value);
 	}
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this.component, value);
@@ -83,7 +84,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: () => {
@@ -95,8 +96,8 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateHint(value?: string): void {
-		watchString(this.component, '_hint', value);
+	public validateHint(value?: HintPropType): void {
+		validateHint(this.component, value);
 	}
 
 	public validateId(value?: string): void {
@@ -272,4 +273,16 @@ export class InputController extends ControlledInputController implements Watche
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
 	};
+
+	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
+		setState(this.component, '_currentLengthDebounced', length);
+	}, 500);
+
+	public hasSoftCharacterLimit() {
+		return typeof this.component.state._maxLength === 'number' && this.component.state._maxLengthBehavior === 'soft';
+	}
+
+	public hasCounter() {
+		return this.component.state._hasCounter === true;
+	}
 }

@@ -1,6 +1,6 @@
 @use './required' as *;
 @use '../mixins/alert-wc' as *;
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 
 @mixin kol-form-field-theme {
 	.kol-form-field {
@@ -16,7 +16,7 @@
 		}
 
 		&__hint {
-			font-size: rem(14);
+			font-size: to-rem(14);
 		}
 
 		&__msg {
@@ -24,6 +24,12 @@
 
 			&.kol-alert--type-error {
 				@include kol-alert-wc(--color-red);
+			}
+		}
+
+		&__counter {
+			&--exceeded {
+				color: var(--color-red);
 			}
 		}
 	}

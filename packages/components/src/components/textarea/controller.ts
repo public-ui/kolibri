@@ -1,9 +1,32 @@
-import type { CSSResize, HasCounterPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
-import { cssResizeOptions, validateHasCounter, validateRows, validateSpellCheck, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import type {
+	HasCounterPropType,
+	MaxLengthBehaviorPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+	RowsPropType,
+	SpellCheckPropType,
+	TextareaProps,
+	TextareaResizePropType,
+	TextareaWatches,
+} from '../../schema';
+import {
+	validateHasCounter,
+	validateMaxLength,
+	validateMaxLengthBehavior,
+	validatePlaceholder,
+	validateReadOnly,
+	validateRequired,
+	validateResizeTextarea,
+	validateRows,
+	validateSpellCheck,
+	watchString,
+} from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class TextareaController extends InputIconController implements TextareaWatches {
 	protected readonly component: Generic.Element.Component & TextareaProps;
 
@@ -13,51 +36,40 @@ export class TextareaController extends InputIconController implements TextareaW
 	}
 
 	private afterSyncCharCounter = () => {
-		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
+		if (typeof this.component._value === 'string') {
 			this.component.state._currentLength = this.component._value.length;
+			this.updateCurrentLengthDebounced(this.component._value.length);
 		}
 	};
 
 	public validateHasCounter(value?: HasCounterPropType): void {
-		validateHasCounter(this.component, value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
-		});
+		validateHasCounter(this.component, value);
+	}
+
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		validateMaxLengthBehavior(this.component, value);
 	}
 
 	public validateMaxLength(value?: number): void {
-		watchNumber(this.component, '_maxLength', value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
-			min: 0,
+		validateMaxLength(this.component, value, {
+			hooks: { afterPatch: this.afterSyncCharCounter },
 		});
 	}
 
-	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+	public validatePlaceholder(value?: PlaceholderPropType): void {
+		validatePlaceholder(this.component, value);
 	}
 
-	public validateReadOnly(value?: boolean): void {
-		watchBoolean(this.component, '_readOnly', value);
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		validateReadOnly(this.component, value);
 	}
 
-	public validateResize(value?: CSSResize): void {
-		watchValidator(
-			this.component,
-			'_resize',
-			(value) => typeof value === 'string' && cssResizeOptions.includes(value),
-			new Set(`String {${cssResizeOptions.join(', ')}`),
-			value,
-			{
-				defaultValue: 'vertical',
-			},
-		);
+	public validateResize(value?: TextareaResizePropType): void {
+		validateResizeTextarea(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateRows(value?: RowsPropType): void {
@@ -80,11 +92,12 @@ export class TextareaController extends InputIconController implements TextareaW
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateHasCounter(this.component._hasCounter);
+		this.validateMaxLengthBehavior(this.component._maxLengthBehavior);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
-		this.validateResize(this.component._resize);
 		this.validateRequired(this.component._required);
+		this.validateResize(this.component._resize);
 		this.validateRows(this.component._rows);
 		this.validateSpellCheck(this.component._spellCheck);
 		this.validateValue(this.component._value);

@@ -19,6 +19,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 })
 export class KolCard implements CardAPI {
 	@Element() private readonly host?: HTMLKolCardElement;
+	private readonly translateClose = translate('kol-close');
 
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
@@ -54,7 +55,7 @@ export class KolCard implements CardAPI {
 								icon: 'codicon codicon-close',
 							},
 						}}
-						_label={translate('kol-close')}
+						_label={this.translateClose}
 						_on={this.on}
 						_tooltipAlign="left"
 					></KolButtonWcTag>

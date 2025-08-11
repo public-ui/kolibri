@@ -1,11 +1,15 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	InputDateTypePropType,
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -17,28 +21,41 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputDateType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriHIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
+	max: Iso8601 | Date;
+	min: Iso8601 | Date;
 	msg: Stringified<MsgPropType>;
-	type: InputDateType;
-} & OptionalInputProps<Iso8601 | Date> &
+	on: InputTypeOnDefault;
+	smartButton: Stringified<ButtonProps>;
+	step: number | NumberString;
+	type: InputDateTypePropType;
+	value: Iso8601 | Date | null;
+} & PropAccessKey &
+	PropAutoComplete &
+	PropDisabled &
+	PropHideLabel &
 	PropHideMsg &
-	PropSuggestions;
+	PropHint &
+	PropHorizontalIcons &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropSuggestions &
+	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputDateType;
+	type: InputDateTypePropType;
 } & PropLabelWithExpertSlot &
 	PropHideMsg &
 	PropId;
 
 type OptionalStates = {
-	hint: string;
 	max: Iso8601;
 	min: Iso8601;
 	on: InputTypeOnDefault;
@@ -47,6 +64,8 @@ type OptionalStates = {
 	step: number;
 	value: Iso8601 | null;
 } & PropAccessKey &
+	PropAutoComplete &
+	PropHint &
 	PropSyncValueBySelector &
 	PropDisabled &
 	PropHideLabel &

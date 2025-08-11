@@ -6,7 +6,7 @@ exports[`kol-breadcrumb should render with _label="Aria-Label" _links=[{"_href":
     <nav aria-label="Aria-Label" class="kol-breadcrumb">
       <ul class="kol-breadcrumb__list">
         <li class="kol-breadcrumb__list-element">
-          <span class="kol-breadcrumb__list-element-span">
+          <span aria-current="page" class="kol-breadcrumb__list-element-span">
             Label
           </span>
         </li>

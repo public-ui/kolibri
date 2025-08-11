@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/indented-text' as *;
 @use '../mixins/focus-outline' as *;
 
@@ -11,7 +11,7 @@
 		&__content {
 			&.indented-text {
 				@include indented-text;
-				margin: rem(4) 0 0 rem(10.4);
+				margin: to-rem(4) 0 0 to-rem(10.4);
 			}
 		}
 
@@ -21,7 +21,7 @@
 
 		&__heading-button {
 			.kol-icon {
-				font-size: rem(19.2);
+				font-size: to-rem(19.2);
 			}
 
 			.kol-span {

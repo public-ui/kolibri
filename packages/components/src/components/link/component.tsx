@@ -8,6 +8,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	HideLabelPropType,
 	DownloadPropType,
 	FocusableElement,
 	HrefPropType,
@@ -44,9 +45,9 @@ import {
 	validateLinkCallbacks,
 	validateLinkTarget,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
 } from '../../schema';
+import { validateTabIndex } from '../../schema/props/tab-index';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -74,11 +75,15 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly internalDescriptionById = nonce();
+	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.anchorRef = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -153,7 +158,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					aria-owns={this.state._ariaOwns}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
-							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
+							? `${this.state._label}${isExternal ? ` (${this.translateOpenLinkInTab})` : ''}`
 							: undefined
 					}
 					class={clsx('kol-link', {
@@ -184,7 +189,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					{isExternal && (
 						<KolIconTag
 							class="kol-link__icon"
-							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
+							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
@@ -364,7 +369,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
 	}
 

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "3.0.2-rc.2",
+	"version": "3.0.3-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -78,7 +78,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.1",
-		"adopted-style-sheets": "1.1.9-rc.19",
+		"adopted-style-sheets": "1.1.9-rc.20",
 		"boxen": "8.0.1",
 		"chalk": "5.4.1",
 		"clsx": "2.1.1",
@@ -101,7 +101,7 @@
 		"@public-ui/stencil-vue-output-target": "0.9.0",
 		"@stencil-community/eslint-plugin": "0.10.0",
 		"@stencil-community/postcss": "2.2.0",
-		"@stencil/core": "4.20.0",
+		"@stencil/core": "4.36.0",
 		"@stencil/playwright": "0.2.1",
 		"@stencil/sass": "3.0.12",
 		"@types/color-convert": "2.0.4",
@@ -148,6 +148,7 @@
 		"dist",
 		"doc",
 		"custom-elements.json",
+		"index.scss",
 		"postinstall.js",
 		"vscode-custom-data.json"
 	]

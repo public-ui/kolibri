@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 
 @layer kol-theme-component {
@@ -14,7 +14,7 @@
 
 			// nested lists
 			&--nested {
-				padding-left: rem(16);
+				padding-left: to-rem(16);
 
 				.kol-link,
 				.kol-button {
@@ -38,7 +38,7 @@
 				align-items: center;
 				color: var(--color-primary);
 				display: flex;
-				gap: rem(8);
+				gap: to-rem(8);
 				min-height: var(--a11y-min-size);
 				text-decoration: none;
 
@@ -48,12 +48,12 @@
 
 				#{$root}__list--vertical & {
 					border-left: 2px solid transparent;
-					padding-left: rem(16);
-					padding-right: rem(16);
+					padding-left: to-rem(16);
+					padding-right: to-rem(16);
 				}
 
 				#{$root}--horizontal & {
-					padding: 0 rem(16);
+					padding: 0 to-rem(16);
 				}
 
 				#{$root}--vertical #{$root}__list-item--active & {
@@ -116,7 +116,7 @@
 					color: var(--text-color);
 					min-height: var(--a11y-min-size);
 					min-width: var(--a11y-min-size);
-					padding: rem(8) rem(14);
+					padding: to-rem(8) to-rem(14);
 					text-align: center;
 					transition-duration: 0.5s;
 					transition-property: background-color, color, border-color;
@@ -129,7 +129,7 @@
 					}
 
 					@at-root #{$root}--hide-label & {
-						padding: rem(12.8);
+						padding: to-rem(12.8);
 						width: unset;
 
 						.kol-span__label {

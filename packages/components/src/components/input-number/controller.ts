@@ -1,5 +1,15 @@
-import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, NumberString, SuggestionsPropType } from '../../schema';
-import { validateSuggestions, watchBoolean, watchString, watchValidator } from '../../schema';
+import type {
+	AutoCompletePropType,
+	InputNumberProps,
+	InputNumberWatches,
+	NumberString,
+	ReadOnlyPropType,
+	RequiredPropType,
+	SuggestionsPropType,
+} from '../../schema';
+import { validateReadOnly, validateRequired, validateSuggestions } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
+import { type PlaceholderPropType, validatePlaceholder } from '../../schema/props/placeholder';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -12,14 +22,8 @@ export class InputNumberController extends InputIconController implements InputN
 		this.component = component;
 	}
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
@@ -34,16 +38,16 @@ export class InputNumberController extends InputIconController implements InputN
 		this.validateNumber('_min', value);
 	}
 
-	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+	public validatePlaceholder(value?: PlaceholderPropType): void {
+		validatePlaceholder(this.component, value);
 	}
 
-	public validateReadOnly(value?: boolean): void {
-		watchBoolean(this.component, '_readOnly', value);
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		validateReadOnly(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateStep(value?: number | NumberString): void {

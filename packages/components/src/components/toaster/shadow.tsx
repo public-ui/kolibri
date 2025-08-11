@@ -22,10 +22,15 @@ export class KolToastContainer implements ToasterAPI {
 		_toastStates: [],
 	};
 
+	private readonly translateToastCloseAll = translate('kol-toast-close-all');
+
 	/* Keep track of render functions, so we call each only once. */
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
 
 	// Stencil requires async function:
+	/**
+	 * Adds a toast to the queue.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async enqueue(toast: Toast) {
@@ -78,6 +83,9 @@ export class KolToastContainer implements ToasterAPI {
 		}, TRANSITION_TIMEOUT);
 	}
 
+	/**
+	 * Closes all toasts.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeAll(immediate: boolean = false) {
@@ -121,7 +129,7 @@ export class KolToastContainer implements ToasterAPI {
 			<Host class="kol-toast-container">
 				{this.state._toastStates.length > 1 && (
 					<KolButtonTag
-						_label={translate('kol-toast-close-all')}
+						_label={this.translateToastCloseAll}
 						class="kol-toast-container__button-close-all"
 						_on={{
 							onClick: () => {

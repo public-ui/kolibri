@@ -1,6 +1,6 @@
 @use '../@shared/input-text' as *;
 @use '../mixins/input-file' as *;
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/button' as *;
 
 @layer kol-theme-component {
@@ -8,7 +8,7 @@
 
 	.kol-input-container {
 		gap: initial;
-		padding: 0 0 0 rem(8);
+		padding: 0 0 0 to-rem(8);
 
 		&__filename {
 			color: var(--color-subtle);
@@ -30,7 +30,7 @@
 	}
 
 	.kol-input {
-		padding-top: calc(0.5em + rem(2));
+		padding-top: calc(0.5em + to-rem(2));
 		background-color: transparent;
 	}
 }

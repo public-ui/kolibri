@@ -1,5 +1,6 @@
-import type { InputColorProps, InputColorWatches, InputTypeOnOff, SuggestionsPropType } from '../../schema';
-import { inputTypeOnOffOptions, validateSuggestions, watchString, watchValidator } from '../../schema';
+import type { AutoCompletePropType, InputColorProps, InputColorWatches, SuggestionsPropType } from '../../schema';
+import { validateSuggestions, watchString } from '../../schema';
+import { validateAutoComplete } from '../../schema/props/auto-complete';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -12,14 +13,8 @@ export class InputColorController extends InputIconController implements InputCo
 		this.component = component;
 	}
 
-	public validateAutoComplete(value?: InputTypeOnOff): void {
-		watchValidator(
-			this.component,
-			'_autoComplete',
-			(value): boolean => typeof value === 'string' && inputTypeOnOffOptions.includes(value),
-			new Set(inputTypeOnOffOptions),
-			value,
-		);
+	public validateAutoComplete(value?: AutoCompletePropType): void {
+		validateAutoComplete(this.component, value);
 	}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "3.0.2-rc.2",
+	"version": "3.0.3-rc.1",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -31,7 +31,7 @@
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
-		"@stencil/core": "4.20.0",
+		"@stencil/core": "4.36.0",
 		"@types/node": "24.0.1",
 		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.7",
@@ -40,7 +40,7 @@
 		"@unocss/preset-mini": "66.2.3",
 		"@unocss/vite": "66.2.3",
 		"@vitejs/plugin-react-swc": "3.10.2",
-		"adopted-style-sheets": "1.1.9-rc.19",
+		"adopted-style-sheets": "1.1.9-rc.20",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
 		"eslint-plugin-html": "8.1.3",

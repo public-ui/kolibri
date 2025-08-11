@@ -68,7 +68,16 @@ export class Logger {
 	public constructor(
 		private readonly label: string,
 		private readonly devMode: GetModeFn,
-	) {}
+	) {
+		/**
+		 * Should remove within the pull request would be finished.
+		 */
+		console.log('🔍 Environment Debug - NODE_ENV (Lib):', runtimeMode);
+
+		if (this.devMode()) {
+			this.info('Development mode active - Enhanced debugging features available');
+		}
+	}
 
 	public debug(msg: unknown | unknown[], options?: LogShieldOptions): void {
 		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {

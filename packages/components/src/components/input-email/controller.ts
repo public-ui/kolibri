@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { InputEmailProps, InputEmailWatches, MultiplePropType } from '../../schema';
-import { validateMultiple } from '../../schema';
+import type { InputEmailProps, InputEmailWatches, MaxLengthBehaviorPropType, MultiplePropType } from '../../schema';
+import { validateMultiple, validateMaxLengthBehavior } from '../../schema';
 
 import { InputTextEmailController } from '../input-text/controller';
 
@@ -17,8 +17,13 @@ export class InputEmailController extends InputTextEmailController implements In
 		validateMultiple(this.component, value);
 	}
 
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		validateMaxLengthBehavior(this.component, value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
+		this.validateMaxLengthBehavior(this.component._maxLengthBehavior);
 		this.validateMultiple(this.component._multiple);
 	}
 }

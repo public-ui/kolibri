@@ -4,8 +4,11 @@ import clsx from 'clsx';
 
 import type {
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputFileAPI,
@@ -13,20 +16,23 @@ import type {
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MultiplePropType,
 	NamePropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	AcceptPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
-import { InputFileController } from './controller';
-import { translate } from '../../i18n';
 import { KolButtonWcTag } from '../../core/component-names';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { translate } from '../../i18n';
+import { nonce } from '../../utils/dev.utils';
+import { InputFileController } from './controller';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -44,20 +50,44 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputFileElement;
 	private inputRef?: HTMLInputElement;
 
+	private readonly translateDataBrowseText = translate('kol-data-browse-text');
+	private readonly translateFilenameText = translate('kol-filename-text');
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<FileList | null | undefined> {
 		return this.inputRef?.files;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
+	}
+
+	/**
+	 * Resets the component's value.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async reset() {
+		this.controller.setFormAssociatedValue('');
+		this.filename = this.translateFilenameText;
+		this.hasFileSelected = false;
+
+		if (this.inputRef) {
+			this.inputRef.value = '';
+		}
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -97,7 +127,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				<KolInputContainerFc state={this.state}>
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
-					<KolButtonWcTag class="kol-input-container__button" _label={translate('kol-data-browse-text')} _buttonVariant="primary" _disabled={this._disabled} />
+					<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _buttonVariant="primary" _disabled={this._disabled} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -208,7 +238,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
-	@State() private filename: string = translate('kol-filename-text');
+	@State() private filename: string = this.translateFilenameText;
 	@State() private hasFileSelected: boolean = false;
 
 	@State() public state: InputFileStates = {
@@ -228,7 +258,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_accept')
-	public validateAccept(value?: string): void {
+	public validateAccept(value?: AcceptPropType): void {
 		this.controller.validateAccept(value);
 	}
 
@@ -238,7 +268,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -248,12 +278,12 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
@@ -278,7 +308,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.controller.validateMultiple(value);
 	}
 
@@ -293,7 +323,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
@@ -357,7 +387,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				? Array.from(value)
 						.map((file) => file.name)
 						.join(', ')
-				: translate('kol-filename-text');
+				: this.translateFilenameText;
 
 			this.controller.onFacade.onChange(event, value);
 			this.controller.setFormAssociatedValue(value);

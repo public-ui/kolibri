@@ -1,5 +1,5 @@
 import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
-import { setState, validateLabel, watchString } from '../../schema';
+import { setState, validateLabel, validateWidth } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -24,6 +24,7 @@ import clsx from 'clsx';
 export class KolModal implements ModalAPI {
 	@Element() private readonly host?: HTMLKolModalElement;
 	private refDialog?: HTMLDialogElement;
+	private readonly translateClose = translate('kol-close');
 
 	public disconnectedCallback(): void {
 		void this.closeModal();
@@ -36,12 +37,18 @@ export class KolModal implements ModalAPI {
 		}
 	}
 
+	/**
+	 * Opens the modal dialog.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async openModal() {
 		this.refDialog?.showModal();
 	}
 
+	/**
+	 * Closes the modal dialog.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {
@@ -82,7 +89,7 @@ export class KolModal implements ModalAPI {
 								icon: 'codicon codicon-close',
 							},
 						}}
-						_label={translate('kol-close')}
+						_label={this.translateClose}
 						_on={this.on}
 						_tooltipAlign="left"
 					></KolButtonWcTag>
@@ -136,9 +143,7 @@ export class KolModal implements ModalAPI {
 
 	@Watch('_width')
 	public validateWidth(value?: string): void {
-		watchString(this, '_width', value, {
-			defaultValue: '100%',
-		});
+		validateWidth(this, value);
 	}
 
 	@Watch('_variant')

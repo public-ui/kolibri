@@ -3,22 +3,26 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputDateAPI,
 	InputDateStates,
-	InputDateType,
+	InputDateTypePropType,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	Iso8601,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
 	NumberString,
 	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
 	SuggestionsPropType,
@@ -27,11 +31,11 @@ import type {
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputDateController } from './controller';
 
 /**
@@ -56,18 +60,27 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | Date | undefined | null> {
 		return this.inputRef && this.remapValue(this.inputRef?.value);
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Resets the component's value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {
@@ -177,7 +190,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -295,7 +308,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type: InputDateType = 'date';
+	@Prop() public _type: InputDateTypePropType = 'date';
 
 	/**
 	 * Defines the value of the input.
@@ -303,7 +316,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: InputDateStates = {
-		_autoComplete: 'off',
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -328,12 +340,12 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -343,12 +355,12 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
@@ -398,7 +410,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
@@ -433,7 +445,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_type')
-	public validateType(value?: InputDateType): void {
+	public validateType(value?: InputDateTypePropType): void {
 		this.controller.validateType(value);
 	}
 

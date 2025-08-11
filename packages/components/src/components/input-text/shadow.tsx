@@ -4,19 +4,27 @@ import clsx from 'clsx';
 
 import type {
 	AccessKeyPropType,
+	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HasCounterPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTextAPI,
 	InputTextStates,
-	InputTextType,
+	InputTextTypePropType,
 	InputTypeOnDefault,
-	InputTypeOnOff,
 	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	SpellCheckPropType,
 	Stringified,
@@ -24,13 +32,12 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setState } from '../../schema';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputTextController } from './controller';
 
 /**
@@ -75,11 +82,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		const value = this.inputRef?.value ?? '';
-		setState(this, '_currentLength', value.length);
-
-		this._value = value;
-
+		this._value = this.inputRef?.value ?? '';
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -92,12 +95,18 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		}
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.inputRef?.value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -109,6 +118,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-text', this.state._type as string, {
 				'has-value': this.state._hasValue,
+				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.inputRef?.focus(),
@@ -117,9 +127,12 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+
 		return {
 			ref: this.catchRef,
 			state: this.state,
+			ariaDescribedBy,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onChange: this.onChange,
@@ -149,19 +162,23 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: InputTypeOnOff;
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Shows the character count on the lower border of the input.
-	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -278,7 +295,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: InputTextType = 'text';
+	@Prop() public _type?: InputTextTypePropType = 'text';
 
 	/**
 	 * Defines the value of the input.
@@ -286,8 +303,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
-		_autoComplete: 'off',
 		_currentLength: 0,
+		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -312,18 +329,18 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_autoComplete')
-	public validateAutoComplete(value?: InputTypeOnOff): void {
+	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
 	}
 
-	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
-		this.controller.validateDisabled(value);
+	@Watch('_maxLengthBehavior')
+	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.controller.validateMaxLengthBehavior(value);
 	}
 
-	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
-		this.controller.validateHasCounter(value);
+	@Watch('_disabled')
+	public validateDisabled(value?: DisabledPropType): void {
+		this.controller.validateDisabled(value);
 	}
 
 	@Watch('_hideMsg')
@@ -332,12 +349,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: HasCounterPropType): void {
+		this.controller.validateHasCounter(value);
+	}
+
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
@@ -382,17 +404,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
@@ -427,7 +449,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_type')
-	public validateType(value?: InputTextType): void {
+	public validateType(value?: InputTextTypePropType): void {
 		this.controller.validateType(value);
 	}
 

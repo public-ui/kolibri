@@ -1,7 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	DisabledPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
@@ -10,6 +13,8 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
+	PlaceholderPropType,
+	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectAPI,
@@ -22,9 +27,10 @@ import type {
 
 import clsx from 'clsx';
 import { KolIconTag } from '../../core/component-names';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
-import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
@@ -32,7 +38,6 @@ import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggest
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
-import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import { SingleSelectController } from './controller';
 
 /**
@@ -51,14 +56,22 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
+	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -265,7 +278,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 							<KolIconTag
 								_icons="codicon codicon-close"
 								data-testid="single-select-delete"
-								_label={translate('kol-delete-selection')}
+								_label={this.translateDeleteSelection}
 								onClick={() => {
 									this.clearSelection();
 									this.refInput?.focus();
@@ -322,7 +335,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									/>
 								))
 							) : (
-								<li class="kol-single-select__no-results-message">{translate('kol-no-results-message')} </li>
+								<li class="kol-single-select__no-results-message">{this.translateNoResultsMessage} </li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
 					)}
@@ -578,7 +591,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
@@ -588,7 +601,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
 
@@ -598,12 +611,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
-	public validateHint(value?: string): void {
+	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
 	}
 
@@ -645,7 +658,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

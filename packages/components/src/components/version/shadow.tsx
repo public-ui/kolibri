@@ -15,13 +15,14 @@ import { KolBadgeTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolVersion implements VersionAPI {
+	private readonly translateVersion = translate('kol-version');
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-version">
 				<KolBadgeTag
 					_color="#bec5c9"
 					_icons={{
-						left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
+						left: { icon: 'codicon codicon-versions', label: this.translateVersion },
 					}}
 					_label={this.state._label}
 				/>

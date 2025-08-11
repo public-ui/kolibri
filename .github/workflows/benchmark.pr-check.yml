@@ -1,7 +1,11 @@
 name: Benchmark-PR-Check
 
 on:
-  pull_request:
+  workflow_dispatch:
+    inputs:
+      pr-number:
+        description: Pull request number to comment on
+        required: true
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
@@ -9,8 +13,6 @@ concurrency:
 
 jobs:
   benchmark:
-    # Skip this job when the base clone URL may be different from the head clone URL.
-    if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +33,7 @@ jobs:
         with:
           body-includes: Hydration Benchmark Report
           comment-author: 'github-actions[bot]'
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.inputs.pr-number }}
 
       - name: Post PR Comment
         uses: peter-evans/create-or-update-comment@v4
@@ -39,4 +41,4 @@ jobs:
           body-path: packages/tools/benchmark-tests/benchmark-report.md
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.inputs.pr-number }}

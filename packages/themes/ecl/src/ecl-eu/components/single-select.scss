@@ -1,11 +1,11 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/custom-suggestions-option' as *;
 @use '../mixins/custom-suggestions-options-group' as *;
 @use '../mixins/custom-suggestions-toggle' as *;
 @use '../@shared/input-text' as *;
 
-$option-height: rem(40);
+$option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -22,7 +22,7 @@ $visible-options: 5;
 			min-height: var(--a11y-min-size);
 			color: var(--color-grey);
 			order: 4;
-			padding: rem(1) 0.5em;
+			padding: to-rem(1) 0.5em;
 		}
 
 		&__input {

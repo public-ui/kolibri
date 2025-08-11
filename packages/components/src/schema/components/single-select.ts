@@ -6,6 +6,7 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -22,7 +23,6 @@ import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringi
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
-	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -32,6 +32,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
 	PropName &
 	PropRequired &
@@ -46,7 +47,6 @@ type RequiredStates = {
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	hint: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	hideClearButton: boolean;
@@ -54,6 +54,7 @@ type OptionalStates = {
 	PropDisabled &
 	PropHideLabel &
 	KoliBriHIcons &
+	PropHint &
 	PropId &
 	PropName &
 	PropRequired &

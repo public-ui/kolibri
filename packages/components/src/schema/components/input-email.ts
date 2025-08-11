@@ -3,13 +3,15 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAutoComplete,
 	PropDisabled,
-	PropHasCounter,
 	PropHideLabel,
 	PropHideMsg,
+	PropHint,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxLengthBehavior,
 	PropMsg,
 	PropMultiple,
 	PropName,
@@ -20,13 +22,11 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	autoComplete: InputTypeOnOff;
-	hint: string;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -35,11 +35,13 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
-	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHint &
 	PropHorizontalIcons &
+	PropMaxLengthBehavior &
 	PropMultiple &
 	PropName &
 	PropReadOnly &
@@ -50,16 +52,15 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
+	currentLength: number;
+	currentLengthDebounced: number;
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	currentLength: number;
-	hint: string;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -67,10 +68,12 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
-	PropHasCounter &
 	PropHideLabel &
+	PropHint &
 	KoliBriHIcons &
+	PropMaxLengthBehavior &
 	PropMsg &
 	PropMultiple &
 	PropName &

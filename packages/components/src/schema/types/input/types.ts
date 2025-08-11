@@ -1,9 +1,6 @@
 import type { EventCallback, EventValueOrEventCallback } from '../callbacks';
 import type { Callback } from '../../enums';
 
-export const inputTypeOnOffOptions = ['on', 'off'] as const;
-export type InputTypeOnOff = (typeof inputTypeOnOffOptions)[number];
-
 type InputTypeOnBlur = {
 	[Callback.onBlur]?: EventCallback<Event>;
 };

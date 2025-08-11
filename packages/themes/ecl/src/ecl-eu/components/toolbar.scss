@@ -1,4 +1,4 @@
-@use '../../mixins/rem' as *;
+@use '../../mixins/to-rem' as *;
 @use '../mixins/button' as *;
 
 @layer kol-theme-component {
@@ -9,10 +9,10 @@
 		padding: var(--spacing-s);
 		border-radius: 8px;
 		box-shadow:
-			0 rem(2) rem(4) rgb(9 49 142 / 8%),
-			0 0 rem(10) rgb(9 49 142 / 4%),
-			0 rem(4) rem(5) rgb(9 49 142 / 4%),
-			0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+			0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
+			0 0 to-rem(10) rgb(9 49 142 / 4%),
+			0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
+			0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 		background-color: var(--color-white);
 	}
 

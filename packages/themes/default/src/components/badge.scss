@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 
 @layer kol-theme-component {
 	.kol-badge {
@@ -15,7 +15,7 @@
 				color: inherit;
 				border-top-right-radius: var(--border-radius);
 				border-bottom-right-radius: var(--border-radius);
-				padding: rem(3.2);
+				padding: to-rem(3.2);
 
 				&:hover {
 					background-color: var(--color-primary-variant);
@@ -25,20 +25,20 @@
 				&__text {
 					align-items: center;
 					font-style: normal;
-					padding: rem(4) rem(12);
+					padding: to-rem(4) to-rem(12);
 				}
 			}
 		}
 
 		&__label {
-			padding: rem(4) rem(12);
+			padding: to-rem(4) to-rem(12);
 			align-items: center;
 			font-style: normal;
-			gap: rem(8);
+			gap: to-rem(8);
 
 			.kol-span__container {
 				display: flex;
-				gap: rem(4);
+				gap: to-rem(4);
 			}
 		}
 	}

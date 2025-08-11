@@ -1,5 +1,5 @@
 @use '../mixins/button' as *;
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 
 @layer kol-theme-component {
 	.kol-split-button {
@@ -21,7 +21,7 @@
 		&__horizontal-line {
 			background-color: var(--color-primary);
 			border-radius: 2px;
-			width: rem(1);
+			width: to-rem(1);
 		}
 
 		&__secondary-button {
@@ -37,7 +37,7 @@
 			font-weight: 700;
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
-			padding: rem(8) rem(14);
+			padding: to-rem(8) to-rem(14);
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;

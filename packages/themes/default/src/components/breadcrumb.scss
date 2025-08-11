@@ -1,4 +1,4 @@
-@use '../mixins/rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/link' as *;
 
 @layer kol-theme-component {
@@ -11,12 +11,12 @@
 
 		&__link {
 			&::part(icon) {
-				font-size: rem(20);
+				font-size: to-rem(20);
 			}
 		}
 
 		&__icon {
-			font-size: rem(12);
+			font-size: to-rem(12);
 			color: var(--color-subtle);
 		}
 	}
