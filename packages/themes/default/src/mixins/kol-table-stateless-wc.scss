@@ -12,33 +12,9 @@
 			padding: to-rem(8);
 		}
 
-		th {
-			font-weight: normal;
-			color: var(--color-primary);
-		}
-
 		tr.foot-spacer,
 		tr.head-spacer {
-			display: table-row;
-			height: to-rem(24);
-
-			td {
-				border-width: 0;
-				border-color: var(--color-primary-variant);
-				border-style: solid;
-			}
-		}
-
-		tr.foot-spacer {
-			td {
-				border-bottom-width: calc(var(--border-width) * 2);
-			}
-		}
-
-		tr.head-spacer {
-			td {
-				border-top-width: calc(var(--border-width) * 2);
-			}
+			display: none;
 		}
 
 		.table {
@@ -53,21 +29,23 @@
 			}
 		}
 
-		table,
-		table caption {
-			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
-			border-color: var(--color-primary-variant);
-			border-style: solid;
-		}
-
 		table {
 			width: 100%;
-			border-spacing: 0;
+			border-width: 0;
+
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+			border-spacing: 0.1rem 0;
 		}
 
 		th {
-			background-color: var(--color-light);
+			font-weight: normal;
+			color: var(--color-light);
+			background-color: var(--color-primary);
+			border-style: solid;
+			border-width: 0;
+			border-bottom-width: calc(var(--border-width) * 2);
+			border-color: var(--color-light);
 		}
 
 		th[aria-sort='ascending'] .button,
@@ -94,6 +72,13 @@
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {
 			font-weight: 700;
+		}
+
+		tbody td {
+			border-style: solid;
+			border-width: 0;
+			border-bottom-width: calc(var(--border-width) * 2);
+			border-color: var(--color-primary);
 		}
 
 		.input {
