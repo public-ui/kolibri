@@ -13,7 +13,7 @@ function ComponentNavContainer({ children }: { children?: React.ReactNode }): Re
 
 	return isMobile ? (
 		<KolAccordion _label="All components" class="mt">
-			<>{children}</>
+			{children}
 		</KolAccordion>
 	) : (
 		<div className="mt scrollable-container">{children}</div>
