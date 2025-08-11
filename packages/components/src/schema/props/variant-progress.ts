@@ -13,9 +13,9 @@ export type PropVariantProgress = {
 };
 
 const isProgressVariantPropType = (value: unknown): value is ProgressVariantPropType => {
-    return typeof value === 'string' && progressVariantOptions.includes(value as ProgressVariantPropType);
+	return typeof value === 'string' && progressVariantOptions.includes(value as ProgressVariantPropType);
 };
 
 export const validateVariantProgress = (component: Generic.Element.Component, value?: ProgressVariantPropType): void => {
-    watchValidator(component, '_variant', isProgressVariantPropType, new Set(progressVariantOptions), value);
+	watchValidator(component, '_variant', isProgressVariantPropType, new Set(progressVariantOptions), value);
 };
