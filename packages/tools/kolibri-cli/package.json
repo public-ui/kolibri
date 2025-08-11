@@ -31,7 +31,7 @@
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"test": "pnpm test:unit",
-		"test:unit": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
+		"test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
 	},
 	"type": "commonjs",
 	"dependencies": {
@@ -50,6 +50,7 @@
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
+		"cross-env": "7.0.3",
 		"eslint": "8.57.1",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "8.1.3",
