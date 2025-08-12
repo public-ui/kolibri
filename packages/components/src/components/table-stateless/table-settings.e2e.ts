@@ -89,18 +89,21 @@ test.describe('kol-table-settings', () => {
 						label: 'ID',
 						position: 0,
 						visible: true,
+						hideable: true,
 					},
 					{
 						key: 'name',
 						label: 'Name',
 						position: 1,
 						visible: true,
+						hideable: true,
 					},
 					{
 						key: 'age',
 						label: 'Age',
 						position: 2,
 						visible: true,
+						hideable: true,
 					},
 				],
 			});
@@ -114,6 +117,35 @@ test.describe('kol-table-settings', () => {
 
 			const columnLabels = page.locator('.kol-table-settings__column > span');
 			await expect(columnLabels).toHaveText(['ID', 'Name', 'Age']);
+		});
+
+		test('it disables visibility toggle for columns marked as not hideable', async ({ page }) => {
+			const HEADERS_WITH_FIXED: TableHeaderCellsPropType = {
+				horizontal: [
+					[
+						{ key: 'id', label: 'ID', hideable: false },
+						{ key: 'name', label: 'Name' },
+					],
+				],
+			};
+			await page.setContent(`<kol-table-stateless
+      _label="Table with Settings"
+      _header-cells='${JSON.stringify(HEADERS_WITH_FIXED)}'
+      _data='${JSON.stringify(DATA)}'
+    />`);
+			await page.waitForChanges();
+
+			const settingsButton = page.getByTestId('popover-button').locator('button');
+			await settingsButton.click();
+
+			const idCheckbox = page.getByRole('checkbox', { name: 'ID' });
+			await idCheckbox.click();
+			await page.waitForChanges();
+			await expect(idCheckbox).toBeChecked();
+
+			const columnLabels = page.locator('.kol-table-settings__column > span');
+			await expect(columnLabels.first()).toHaveText('ID');
+			await expect(idCheckbox).toHaveAccessibleName(/nicht ausblendbar/);
 		});
 
 		test('it toggles visibility of individual columns', async ({ page }) => {

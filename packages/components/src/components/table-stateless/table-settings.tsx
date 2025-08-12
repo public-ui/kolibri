@@ -21,13 +21,19 @@ export class KolTableSettings {
 	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
+	private readonly translateColumnNotHideable = translate('kol-table-settings-column-not-hideable');
 	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
 	@Watch('_tableSettings')
 	handleTableSettingsChange(newValue: TableSettingsPropType) {
 		this.tableSettings = {
 			...newValue,
-			columns: this.sortColumnsByPosition(newValue.columns),
+			columns: this.sortColumnsByPosition(
+				newValue.columns.map((col) => ({
+					...col,
+					visible: col.hideable === false ? true : col.visible,
+				})),
+			),
 		};
 	}
 
@@ -66,7 +72,7 @@ export class KolTableSettings {
 	private handleVisibilityChange(key: string, visible: unknown): void {
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, visible: Boolean(visible) } : col)),
+			columns: this.tableSettings.columns.map((col) => (col.key === key && col.hideable !== false ? { ...col, visible: Boolean(visible) } : col)),
 		};
 	}
 
@@ -120,9 +126,13 @@ export class KolTableSettings {
 									<div key={column.key} class="kol-table-settings__column">
 										<KolInputCheckboxTag
 											_checked={column.visible}
-											_label={translate('kol-table-settings-show-column', { placeholders: { column: column.label } })}
+											_label={((): string => {
+												const baseLabel = translate('kol-table-settings-show-column', { placeholders: { column: column.label } });
+												return column.hideable === false ? `${baseLabel} (${this.translateColumnNotHideable})` : baseLabel;
+											})()}
 											_value={true}
 											_hideLabel
+											_disabled={column.hideable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
 										/>
 										<span>{column.label}</span>

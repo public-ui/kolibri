@@ -488,6 +488,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				label: header.label,
 				position: index,
 				visible: true,
+				hideable: header.hideable !== false,
 			}));
 	}
 

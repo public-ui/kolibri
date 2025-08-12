@@ -46,6 +46,7 @@ export default {
 	'table-settings-move-up': 'Move {{column}} column up',
 	'table-settings-move-down': 'Move {{column}} column down',
 	'table-settings-error-all-invisible': 'At least one column must be visible.',
+	'table-settings-column-not-hideable': 'cannot be hidden',
 	dropdown: 'Dropdown',
 	'nav-label-open': 'Submenu for {{label}} open',
 	'nav-label-close': 'Submenu for {{label}} close',
