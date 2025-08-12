@@ -31,7 +31,7 @@
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"test": "pnpm test:unit",
-		"test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts"
+    "test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts --no-experimental-strip-types"
 	},
 	"type": "commonjs",
 	"dependencies": {
