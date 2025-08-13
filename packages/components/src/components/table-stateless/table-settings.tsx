@@ -21,13 +21,19 @@ export class KolTableSettings {
 	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
+	private readonly translateColumnNotHideable = translate('kol-table-settings-column-not-hideable');
 	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
 	@Watch('_tableSettings')
 	handleTableSettingsChange(newValue: TableSettingsPropType) {
 		this.tableSettings = {
 			...newValue,
-			columns: this.sortColumnsByPosition(newValue.columns),
+			columns: this.sortColumnsByPosition(
+				newValue.columns.map((col) => ({
+					...col, // Preserve all properties including hideable
+					visible: col.hideable === false ? true : col.visible,
+				})),
+			),
 		};
 	}
 
@@ -66,7 +72,17 @@ export class KolTableSettings {
 	private handleVisibilityChange(key: string, visible: unknown): void {
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, visible: Boolean(visible) } : col)),
+			columns: this.tableSettings.columns.map((col) => {
+				// Only allow visibility changes for hideable columns
+				if (col.key === key && col.hideable !== false) {
+					return { ...col, visible: Boolean(visible) };
+				}
+				// For non-hideable columns, ensure they stay visible
+				if (col.key === key && col.hideable === false) {
+					return { ...col, visible: true };
+				}
+				return col;
+			}),
 		};
 	}
 
@@ -84,14 +100,20 @@ export class KolTableSettings {
 	private handleSubmit(event: Event): void {
 		event.preventDefault();
 
-		const hasVisibleColumn = this.tableSettings.columns.some((column) => column.visible);
+		// Enforce: non-hideable columns must always be visible
+		const enforcedSettings = {
+			...this.tableSettings,
+			columns: this.tableSettings.columns.map((col) => (col.hideable === false ? { ...col, visible: true } : col)),
+		};
+
+		const hasVisibleColumn = enforcedSettings.columns.some((column) => column.visible);
 
 		if (!hasVisibleColumn) {
 			this.errorMessage = this.translateErrorAllInvisible;
 			return;
 		} else if (this.host) {
 			this.errorMessage = null;
-			dispatchDomEvent(this.host, KolEvent.settingsChange, this.tableSettings);
+			dispatchDomEvent(this.host, KolEvent.settingsChange, enforcedSettings);
 			void this.popoverRef?.hidePopover();
 		}
 	}
@@ -120,10 +142,19 @@ export class KolTableSettings {
 									<div key={column.key} class="kol-table-settings__column">
 										<KolInputCheckboxTag
 											_checked={column.visible}
-											_label={translate('kol-table-settings-show-column', { placeholders: { column: column.label } })}
+											_label={((): string => {
+												const baseLabel = translate('kol-table-settings-show-column', { placeholders: { column: column.label } });
+												return column.hideable === false ? `${baseLabel} (${this.translateColumnNotHideable})` : baseLabel;
+											})()}
 											_value={true}
 											_hideLabel
-											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
+											_disabled={column.hideable === false}
+											_on={{
+												onInput: (_, value: unknown) => {
+													// Always use central method - it handles hideable validation internally
+													this.handleVisibilityChange(column.key, value);
+												},
+											}}
 										/>
 										<span>{column.label}</span>
 										<KolInputNumberTag

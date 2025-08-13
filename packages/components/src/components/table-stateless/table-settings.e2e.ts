@@ -42,6 +42,7 @@ test.describe('kol-table-settings', () => {
 			await settingsButton.click();
 			const cancelButton = page.getByTestId('table-settings-cancel');
 			await cancelButton.click();
+			await page.waitForChanges();
 			const popover = page.getByTestId('popover-content');
 			await expect(popover).not.toBeVisible();
 		});
@@ -89,18 +90,21 @@ test.describe('kol-table-settings', () => {
 						label: 'ID',
 						position: 0,
 						visible: true,
+						hideable: true,
 					},
 					{
 						key: 'name',
 						label: 'Name',
 						position: 1,
 						visible: true,
+						hideable: true,
 					},
 					{
 						key: 'age',
 						label: 'Age',
 						position: 2,
 						visible: true,
+						hideable: true,
 					},
 				],
 			});
@@ -114,6 +118,64 @@ test.describe('kol-table-settings', () => {
 
 			const columnLabels = page.locator('.kol-table-settings__column > span');
 			await expect(columnLabels).toHaveText(['ID', 'Name', 'Age']);
+		});
+
+		test('it disables visibility toggle for columns marked as not hideable', async ({ page }) => {
+			const HEADERS_WITH_FIXED: TableHeaderCellsPropType = {
+				horizontal: [
+					[
+						{ key: 'id', label: 'ID', hideable: false },
+						{ key: 'name', label: 'Name' },
+					],
+				],
+			};
+
+			await page.setContent(`<kol-table-stateless
+      _label="Table with Settings"
+      _header-cells='${JSON.stringify(HEADERS_WITH_FIXED)}'
+      _data='${JSON.stringify(DATA)}'
+    />`);
+			await page.waitForChanges();
+
+			const settingsButton = page.getByTestId('popover-button').locator('button');
+			await settingsButton.click();
+			await page.waitForChanges();
+
+			const idCheckbox = page.getByRole('checkbox', { name: /ID/ });
+			const nameCheckbox = page.getByRole('checkbox', { name: /Name/ });
+
+			// Check if ID checkbox is disabled (WebKit behavior)
+			const isDisabled = await idCheckbox.isDisabled();
+
+			if (isDisabled) {
+				// WebKit: checkbox is disabled, just verify it has correct aria-label
+				await expect(idCheckbox).toBeDisabled();
+				await expect(idCheckbox).toHaveAccessibleName(/nicht ausblendbar|cannot be hidden/);
+			} else {
+				// Chromium/Firefox: try to click and verify central method prevents change
+				await idCheckbox.click();
+			}
+
+			const applyButton = page.getByTestId('table-settings-apply');
+			await applyButton.click();
+
+			// The key test: ID column should still be visible because of central validation
+			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
+			await expect(idColumn).toBeVisible();
+
+			// Test that hideable columns still work normally
+			await settingsButton.click();
+			await page.waitForChanges();
+
+			await nameCheckbox.click();
+			await applyButton.click();
+
+			// Name column should be hidden now
+			const nameColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'Name' });
+			await expect(nameColumn).not.toBeVisible();
+
+			// But ID should still be visible
+			await expect(idColumn).toBeVisible();
 		});
 
 		test('it toggles visibility of individual columns', async ({ page }) => {
@@ -193,6 +255,7 @@ test.describe('kol-table-settings', () => {
 		test('it disables up button for first column', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
+			await page.waitForChanges();
 
 			const firstUpButton = page.getByTestId('table-settings-move-up').first().locator('button');
 			await expect(firstUpButton).toBeDisabled();
@@ -201,6 +264,7 @@ test.describe('kol-table-settings', () => {
 		test('it disables down button for last column', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
+			await page.waitForChanges();
 
 			const lastDownButton = page.getByTestId('table-settings-move-down').last().locator('button');
 			await expect(lastDownButton).toBeDisabled();
@@ -226,6 +290,7 @@ test.describe('kol-table-settings', () => {
 		test('it moves a column down', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
+			await page.waitForChanges();
 
 			// Move ID column down
 			const idDownButton = page.getByTestId('table-settings-move-down').filter({ hasText: 'ID' });

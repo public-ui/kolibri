@@ -16,6 +16,7 @@ export type KoliBriTableCell = {
 };
 
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
+	hideable?: boolean;
 	key?: string;
 	sortDirection?: KoliBriSortDirection;
 };

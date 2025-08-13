@@ -1,8 +1,9 @@
 export interface ColumnSettings {
+	hideable?: boolean;
 	key: string;
 	label: string;
-	visible: boolean;
 	position: number;
+	visible: boolean;
 	width?: number;
 }
 

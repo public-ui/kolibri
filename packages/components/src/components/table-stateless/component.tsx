@@ -175,6 +175,12 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_tableSettings')
 	public validateTableSettings(value?: TableSettingsPropType) {
 		validateTableSettings(this, value);
+		if (value) {
+			this.state = {
+				...this.state,
+				_tableSettings: value,
+			};
+		}
 	}
 
 	@Listen('keydown')
@@ -478,28 +484,31 @@ export class KolTableStateless implements TableStatelessAPI {
 			return; // when tableSettings are defined via props, don't override them.
 		}
 		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
-		if (!this.state._tableSettings) {
-			this.state._tableSettings = { columns: [] };
-		}
-		this.state._tableSettings.columns = primaryHeaders
+		const columns = primaryHeaders
 			.filter((header) => header.key) // only headers with a key are supported
 			.map((header, index) => ({
 				key: header.key ?? nonce(),
 				label: header.label,
 				position: index,
 				visible: true,
+				hideable: header.hideable !== false,
 			}));
+
+		this.state = {
+			...this.state,
+			_tableSettings: { columns },
+		};
 	}
 
 	public componentWillLoad(): void {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
-		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
-		this.validateTableSettings(this._tableSettings);
+		this.validateTableSettings(this._tableSettings); // Validate table settings first
+		this.validateHeaderCells(this._headerCells); // This calls initializeTableSettings but won't override if settings are provided
 	}
 
 	/**
@@ -626,9 +635,9 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @returns {JSX.Element}  The rendered table cell (either `<td>` or `<th>`).
 	 */
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
-		// Skip rendering if the column is not visible
+		// Skip rendering if the column is not visible, but always show non-hideable columns
 		const columnSetting = this.getColumnSettings(cell);
-		if (columnSetting && !columnSetting.visible) {
+		if (columnSetting && !columnSetting.visible && columnSetting.hideable !== false) {
 			return '';
 		}
 
@@ -796,9 +805,9 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
-		// Skip rendering if the column is not visible
+		// Skip rendering if the column is not visible, but always show non-hideable columns
 		const columnSettings = this.getColumnSettings(cell);
-		if (columnSettings && !columnSettings.visible) {
+		if (columnSettings && !columnSettings.visible && columnSettings.hideable !== false) {
 			return '';
 		}
 
