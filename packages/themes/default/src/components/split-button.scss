@@ -3,18 +3,18 @@
 
 @layer kol-theme-component {
 	.kol-split-button {
-		border-radius: var(--border-radius);
-		border-style: solid;
-		border-width: var(--border-width);
 		border-color: var(--color-primary);
-		min-height: var(--a11y-min-size);
+		border-style: solid;
+		border-radius: var(--border-radius);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		border-width: var(--border-width);
 
 		&__button .kol-button {
 			// Temp-Fix Hover-effect on Button clipping border
 			.kol-span {
-				border-top-left-radius: var(--border-radius);
 				border-bottom-left-radius: var(--border-radius);
+				border-top-left-radius: var(--border-radius);
 			}
 		}
 
@@ -28,16 +28,17 @@
 			height: 100%;
 
 			.kol-span {
-				border-top-right-radius: var(--border-radius);
 				border-bottom-right-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
 			}
 		}
 
 		.kol-span {
-			font-weight: 700;
-			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
 			padding: to-rem(8) to-rem(14);
+
+			font-weight: 700;
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
@@ -51,15 +52,15 @@
 
 		&__button {
 			.kol-button__text {
-				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
+				border-top-right-radius: 0;
 			}
 		}
 
 		&__secondary-button {
 			.kol-button__text {
-				border-top-left-radius: 0;
 				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
 			}
 		}
 

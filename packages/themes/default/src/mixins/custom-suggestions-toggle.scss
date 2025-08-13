@@ -3,9 +3,9 @@
 @mixin kol-custom-suggestions-toggle-theme {
 	.kol-custom-suggestions-toggle {
 		display: grid;
-		place-items: center;
-		padding-left: to-rem(8);
 		padding-right: to-rem(8);
+		padding-left: to-rem(8);
+		place-items: center;
 
 		&:focus {
 			outline: 0;

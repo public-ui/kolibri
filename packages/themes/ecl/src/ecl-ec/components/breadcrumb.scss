@@ -16,9 +16,9 @@
 			}
 
 			&[exportparts*='separator'] {
+				padding: 0;
 				margin-inline-end: to-rem(8);
 				margin-inline-start: to-rem(8);
-				padding: 0;
 			}
 		}
 

@@ -4,9 +4,9 @@
 
 @layer kol-theme-component {
 	.kol-details {
+		display: grid;
 		width: 100%;
 		height: 100%;
-		display: grid;
 
 		&__content {
 			&.indented-text {
@@ -27,8 +27,8 @@
 			.kol-span {
 				&__container {
 					display: flex;
-					text-align: left;
 					gap: 0;
+					text-align: left;
 				}
 
 				&__label {

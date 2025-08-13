@@ -5,9 +5,9 @@
 	@include kol-form-field-order-textarea-theme;
 
 	.kol-textarea {
-		border: none;
 		display: block;
 		overflow: auto;
+		border: none;
 
 		&::placeholder {
 			color: var(--color-subtle);

@@ -16,20 +16,20 @@ $visible-options: 5;
 
 	.kol-single-select {
 		&__group {
+			color: var(--color-grey);
 			display: inline-flex;
-			align-items: center;
 			width: 100%;
 			min-height: var(--a11y-min-size);
-			color: var(--color-grey);
-			order: 4;
 			padding: to-rem(1) 0.5em;
+			order: 4;
+			align-items: center;
 		}
 
 		&__input {
-			border: none;
-			flex-grow: 1;
-			width: calc(100% - 2.5rem);
 			position: relative;
+			width: calc(100% - 2.5rem);
+			flex-grow: 1;
+			border: none;
 
 			&::placeholder {
 				color: var(--color-grey-50);

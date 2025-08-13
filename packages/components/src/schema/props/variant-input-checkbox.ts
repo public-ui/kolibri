@@ -17,11 +17,5 @@ const isInputCheckboxVariantPropType = (value: unknown): value is InputCheckboxV
 };
 
 export const validateVariantInputCheckbox = (component: Generic.Element.Component, value?: InputCheckboxVariantPropType): void => {
-	watchValidator(
-		component,
-		'_variant',
-		isInputCheckboxVariantPropType,
-		new Set(inputCheckboxVariantOptions),
-		value,
-	);
+	watchValidator(component, '_variant', isInputCheckboxVariantPropType, new Set(inputCheckboxVariantOptions), value);
 };

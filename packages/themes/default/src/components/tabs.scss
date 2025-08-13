@@ -3,8 +3,8 @@
 @layer kol-theme-component {
 	.kol-tabs {
 		display: grid;
-		grid-template-rows: var(--grid-template-rows);
 		grid-template-columns: var(--grid-template-columns);
+		grid-template-rows: var(--grid-template-rows);
 
 		&--align-right {
 			--display: grid;
@@ -39,25 +39,26 @@
 
 		&__button-group {
 			display: var(--display);
-			flex-wrap: wrap;
 
 			gap: var(--button-group-gap);
 			order: var(--button-group-order);
+			flex-wrap: wrap;
 		}
 
 		.kol-button {
+			color: var(--color-subtle);
 			background-color: transparent;
-			border: 0;
 			border-radius: var(--border-radius);
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
+			padding: 0;
+
+			font-size: to-rem(18);
+			font-weight: 700;
+			line-height: 1.2;
+			border: 0;
 			border: none;
 			font-style: normal;
-			font-weight: 700;
-			font-size: to-rem(18);
-			line-height: 1.2;
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			color: var(--color-subtle);
-			padding: 0;
 
 			&:hover {
 				color: var(--color-primary);

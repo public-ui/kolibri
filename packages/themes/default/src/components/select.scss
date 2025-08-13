@@ -10,15 +10,15 @@
 		}
 
 		&__option {
-			margin: to-rem(1) 0;
 			border-radius: var(--border-radius);
+			margin: to-rem(1) 0;
 
 			&:active:not(:disabled),
 			&:checked:not(:disabled),
 			&:focus:not(:disabled),
 			&:hover:not(:disabled) {
-				background-color: var(--color-primary-variant);
 				color: var(--color-light);
+				background-color: var(--color-primary-variant);
 			}
 		}
 

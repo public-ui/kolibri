@@ -37,16 +37,16 @@
 	.kol-checkbox {
 		.kol-input {
 			@include kol-typography-body;
-			order: 1;
-			width: 100%;
+			background-color: white;
 			border-color: var(--color-subtle);
-			border-width: 2px;
 			border-style: solid;
 			border-radius: var(--border-radius);
-			appearance: none;
-			background-color: white;
-			transition: 0.5s;
+			width: 100%;
 			margin: 0;
+			border-width: 2px;
+			order: 1;
+			appearance: none;
+			transition: 0.5s;
 
 			&:checked,
 			&:indeterminate {
@@ -67,8 +67,8 @@
 			}
 
 			&:not(:disabled):hover {
-				border-color: var(--color-primary);
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-color: var(--color-primary);
 			}
 		}
 
@@ -83,9 +83,9 @@
 
 		.kol-input {
 			border-radius: var(--border-radius);
-			height: calc(6 * to-rem(4));
-			min-width: calc(6 * to-rem(4));
 			width: calc(6 * to-rem(4));
+			min-width: calc(6 * to-rem(4));
+			height: calc(6 * to-rem(4));
 		}
 
 		.kol-icon {
@@ -95,35 +95,35 @@
 
 	.kol-checkbox--variant-switch {
 		.kol-icon {
+			left: to-rem(2);
 			width: 1.25em;
 			height: 1.25em;
-			left: to-rem(2);
 		}
 
 		.kol-input {
 			background-color: var(--color-subtle);
-			border-radius: 1.25em;
-			border-width: 0;
-			display: block;
-			height: 1.5em;
-			min-width: 3.5em;
-			position: relative;
-			width: 3.5em;
 			/* Visible with forced colors  */
 			outline: transparent solid to-rem(1);
+			border-radius: 1.25em;
+			display: block;
+			position: relative;
+			width: 3.5em;
+			min-width: 3.5em;
+			height: 1.5em;
+			border-width: 0;
 
 			&:focus {
 				@include switch-outline;
 			}
 
 			&:before {
+				background-color: white;
+				border-radius: 1.25em;
+				position: absolute;
+				top: calc(0.25em - to-rem(2));
+				left: calc(0.25em - to-rem(2));
 				width: 1.25em;
 				height: 1.25em;
-				left: calc(0.25em - to-rem(2));
-				top: calc(0.25em - to-rem(2));
-				border-radius: 1.25em;
-				background-color: white;
-				position: absolute;
 			}
 
 			&:checked {
@@ -155,31 +155,32 @@
 			.kol-field-control {
 				&__input,
 				&__label {
-					border-color: var(--color-primary);
-					background-color: var(--color-light);
 					color: var(--color-primary);
+					background-color: var(--color-light);
+					border-color: var(--color-primary);
 				}
 
 				&__input {
-					height: 100%;
-					border-width: 1px 0 1px 1px;
 					border-style: solid none solid solid;
 					border-radius: var(--border-radius) 0 0 var(--border-radius);
+					height: 100%;
+					border-width: 1px 0 1px 1px;
 				}
 
 				&__label {
-					border-width: 1px 1px 1px 0;
 					border-style: solid solid solid none;
 					border-radius: 0 var(--border-radius) var(--border-radius) 0;
-
-					justify-self: stretch;
-					align-self: stretch;
 					display: flex;
 
 					padding-right: to-rem(16);
+					border-width: 1px 1px 1px 0;
+					align-self: stretch;
+
+					justify-self: stretch;
 
 					&-text {
 						margin: auto auto;
+
 						font-weight: 700;
 					}
 				}
@@ -190,9 +191,9 @@
 					& .kol-field-control {
 						&__input,
 						&__label {
-							border-color: var(--color-primary);
-							background-color: var(--color-mute);
 							color: var(--color-primary);
+							background-color: var(--color-mute);
+							border-color: var(--color-primary);
 						}
 					}
 				}
@@ -201,9 +202,9 @@
 					& .kol-field-control {
 						&__input,
 						&__label {
-							border-color: var(--color-primary);
-							background-color: var(--color-primary);
 							color: var(--color-light);
+							background-color: var(--color-primary);
+							border-color: var(--color-primary);
 						}
 					}
 				}
@@ -213,10 +214,10 @@
 				.kol-field-control {
 					&__input,
 					&__label {
-						background-color: var(--color-primary-variant);
-						border-color: var(--color-primary-variant);
 						color: var(--color-light);
+						background-color: var(--color-primary-variant);
 						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+						border-color: var(--color-primary-variant);
 					}
 				}
 
@@ -241,15 +242,15 @@
 				&--label-align-left {
 					.kol-field-control {
 						&__input {
-							border-width: 1px 1px 1px 0;
 							border-style: solid solid solid none;
 							border-radius: 0 var(--border-radius) var(--border-radius) 0;
+							border-width: 1px 1px 1px 0;
 						}
 
 						&__label {
-							border-width: 1px 0 1px 1px;
 							border-style: solid none solid solid;
 							border-radius: var(--border-radius) 0 0 var(--border-radius);
+							border-width: 1px 0 1px 1px;
 						}
 					}
 
@@ -271,9 +272,9 @@
 				&--hide-label {
 					.kol-field-control {
 						&__input {
-							border-width: 1px;
 							border-style: solid;
 							border-radius: var(--border-radius);
+							border-width: 1px;
 						}
 					}
 				}

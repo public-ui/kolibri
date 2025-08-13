@@ -10,17 +10,17 @@
 
 	.kol-table {
 		$root: &;
+		padding: to-rem(8);
 
 		overflow-x: auto;
 		overflow-y: hidden;
-		padding: to-rem(8);
 
 		&__table,
 		&__caption {
-			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
 			border-color: var(--color-primary-variant);
 			border-style: solid;
+			border-width: 0;
+			border-bottom-width: calc(var(--border-width) * 2);
 		}
 
 		&__table {
@@ -29,16 +29,16 @@
 		}
 
 		&__caption {
-			padding: to-rem(8) var(--a11y-min-size) to-rem(8) to-rem(8);
 			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
+			padding: to-rem(8) var(--a11y-min-size) to-rem(8) to-rem(8);
 		}
 
 		&__scroll-container {
 			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
 				outline-color: var(--color-primary-variant);
-				outline-offset: 2px;
 				outline-style: solid;
 				outline-width: 3px;
+				outline-offset: 2px;
 				transition: outline-offset 0.2s linear;
 			}
 		}
@@ -51,9 +51,10 @@
 			padding: to-rem(8);
 
 			&--header {
-				font-weight: normal;
 				color: var(--color-primary);
 				background-color: var(--color-light);
+
+				font-weight: normal;
 			}
 
 			&--ascending,
@@ -69,8 +70,8 @@
 		&__selection {
 			display: flex;
 			gap: to-rem(8);
-			grid-template-columns: 1fr auto;
 			align-items: center;
+			grid-template-columns: 1fr auto;
 		}
 
 		&__spacer {
@@ -79,9 +80,9 @@
 		}
 
 		&__spacer-line {
-			border-width: 0;
 			border-color: var(--color-primary-variant);
 			border-style: solid;
+			border-width: 0;
 
 			&--foot {
 				border-bottom-width: calc(var(--border-width) * 2);
@@ -102,16 +103,16 @@
 
 		&__selection-input {
 			&:not(:disabled):hover {
-				border-color: var(--color-primary);
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-color: var(--color-primary);
 			}
 
 			&:focus {
-				border-color: var(--color-primary);
 				outline-color: var(--color-primary-variant);
 				outline-style: solid;
-				outline-offset: 2px;
 				outline-width: 3px;
+				border-color: var(--color-primary);
+				outline-offset: 2px;
 			}
 
 			&:focus:hover {
@@ -131,8 +132,8 @@
 
 			// RADIO
 			&--radio {
-				display: flex;
 				border-color: var(--color-subtle);
+				display: flex;
 
 				&:checked {
 					border-color: var(--color-primary);
