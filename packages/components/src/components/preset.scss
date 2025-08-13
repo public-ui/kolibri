@@ -5,10 +5,10 @@
 	 */
 	:is(a, button) {
 		background-color: transparent;
-		border: none;
+		width: 100%;
 		margin: 0;
 		padding: 0;
-		width: 100%;
+		border: none;
 		/* 100% needed for custom width from outside */
 	}
 
@@ -21,7 +21,7 @@
 	}
 
 	.badge-text-hint {
-		background-color: lightgray;
 		color: black;
+		background-color: lightgray;
 	}
 }
