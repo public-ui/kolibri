@@ -142,5 +142,54 @@
 				}
 			}
 		}
+
+		th .input {
+			input {
+				&:hover {
+					border-color: var(--color-light);
+					box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				}
+
+				&:focus {
+					border-color: var(--color-light);
+					outline-color: var(--color-mute-variant);
+					outline-style: solid;
+					outline-offset: 2px;
+					outline-width: 3px;
+				}
+
+				&:focus:hover {
+					box-shadow: none;
+				}
+			}
+
+			// CHECKBOX
+			input[type='checkbox'] {
+				background-color: var(--color-primary);
+				border-color: var(--color-mute);
+				border-radius: 5px;
+
+				&:checked {
+					background-color: var(--color-light);
+					border-color: var(--color-light);
+				}
+			}
+
+			.icon {
+				color: var(--color-primary);
+			}
+
+			&.indeterminate {
+				input {
+					background-color: var(--color-light);
+					border-color: var(--color-light);
+				}
+			}
+
+			kol-icon:hover ~ input[type='checkbox'],
+			input[type='checkbox']:hover {
+				border-color: var(--color-light);
+			}
+		}
 	}
 }
