@@ -33,9 +33,9 @@ KoliBri is always actively working on improvements, new features and future-orie
 | ------: | :----------: | :------: | :----: | :------------: |
 |     1.x |     LTS      | Dec 2021 |   3y   |    Dec 2024    |
 |     2.x |     LTS      | Dec 2023 |   3y   |    Dec 2026    |
-|     3.x |     STS      | Dec 2024 |   1y   |    Dec 2025    |
+|     3.x |     STS      | Dec 2024 |   15m   |    Dec 2025    |
 |     4.x |     LTS      | Dec 2025 |   3y   |    Dec 2028    |
-|     5.x |     STS      | Dec 2026 |   1y   |    Dec 2027    |
+|     5.x |     STS      | Dec 2026 |   15m   |    Dec 2027    |
 
 ```mermaid
 gantt
