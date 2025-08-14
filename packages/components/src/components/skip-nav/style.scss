@@ -5,8 +5,8 @@
 	.kol-skip-nav {
 		&__list {
 			display: grid;
-			list-style: none;
 			place-items: center;
+			list-style: none;
 		}
 
 		&__list-item {
@@ -14,16 +14,17 @@
 		}
 
 		.kol-link {
-			left: to-rem(-99999);
-			overflow: hidden;
 			position: absolute;
+			left: to-rem(-99999);
 			z-index: 9999999;
+			overflow: hidden;
+
 			line-height: 1;
 
 			&:focus {
 				background-color: #fff;
-				left: unset;
 				position: unset;
+				left: unset;
 			}
 		}
 	}

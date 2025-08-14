@@ -16,22 +16,22 @@
 	}
 
 	#{$root} {
-		align-items: center;
-		cursor: pointer;
 		display: flex;
 		position: relative;
+		align-items: center;
+		cursor: pointer;
 
 		&--disabled {
 			cursor: not-allowed;
 		}
 
 		.kol-input {
-			appearance: none;
 			background-color: #fff;
 			border-style: solid;
-			border-width: 2px;
-			cursor: inherit;
 			margin: 0;
+			border-width: 2px;
+			appearance: none;
+			cursor: inherit;
 			transition: 0.5s;
 
 			&:before {
@@ -44,15 +44,15 @@
 	 * Variant: Checkbox
 	 */
 	#{$root}--variant-default {
-		height: var(--a11y-min-size);
-		justify-content: center;
 		position: relative;
 		width: var(--a11y-min-size);
+		height: var(--a11y-min-size);
+		justify-content: center;
 
 		.kol-icon {
 			display: flex;
-			inset: auto;
 			position: absolute;
+			inset: auto;
 			z-index: 1;
 			pointer-events: none;
 
@@ -82,19 +82,19 @@
 
 		.kol-input {
 			display: inline-block;
-			height: 1.7em;
-			min-width: 3.2em;
 			position: relative;
 			width: 3.2em;
+			min-width: 3.2em;
+			height: 1.7em;
 
 			&::before {
 				background-color: #000;
-				height: 1.2em;
-				left: calc(0.25em - to-rem(2));
-				top: calc(0.25em - to-rem(2));
 				position: absolute;
-				transition: 0.5s;
+				top: calc(0.25em - to-rem(2));
+				left: calc(0.25em - to-rem(2));
 				width: 1.2em;
+				height: 1.2em;
+				transition: 0.5s;
 			}
 
 			&:checked::before {
@@ -107,18 +107,18 @@
 		}
 
 		.kol-icon {
+			transform: translate(0, -50%);
+			color: #000;
 			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 1.2em;
-			height: 1.2em;
 			position: absolute;
-			z-index: 1;
 			top: 50%;
 			left: to-rem(4);
-			transform: translate(0, -50%);
+			z-index: 1;
+			width: 1.2em;
+			height: 1.2em;
+			align-items: center;
+			justify-content: center;
 			transition: 0.5s;
-			color: #000;
 		}
 
 		&#{$root}--checked .kol-icon {
@@ -138,10 +138,10 @@
 
 		.kol-icon {
 			display: flex;
-			align-items: center;
-			justify-content: center;
 			width: var(--a11y-min-size);
 			height: var(--a11y-min-size);
+			align-items: center;
+			justify-content: center;
 		}
 	}
 }

@@ -7,9 +7,9 @@
 @layer kol-component {
 	:host {
 		display: flex;
-		flex-direction: column;
 		position: fixed;
 		z-index: 200;
+		flex-direction: column;
 	}
 
 	.kol-toast-container {

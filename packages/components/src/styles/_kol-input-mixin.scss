@@ -3,9 +3,9 @@
 @mixin kol-input {
 	@layer kol-component {
 		.kol-input {
+			width: 100%;
 			// height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
-			width: 100%;
 
 			&:focus {
 				outline: none;
