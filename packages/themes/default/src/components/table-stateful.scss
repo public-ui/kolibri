@@ -1,9 +1,23 @@
+@use '../mixins/to-rem' as *;
 @use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
 	@include kol-table-stateless-theme;
 
 	.kol-table-stateful {
+		.kol-table {
+			margin-bottom: 0;
+		}
+
+		&__pagination {
+			margin-top: to-rem(8);
+
+			&:first-child {
+				margin-top: 0;
+				margin-bottom: to-rem(8);
+			}
+		}
+
 		.kol-pagination {
 			@media (min-width: 1024px) {
 				display: flex;

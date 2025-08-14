@@ -7,6 +7,10 @@
 	.kol-table-stateful {
 		$root: &;
 
+		.kol-table {
+			margin-bottom: 0;
+		}
+
 		&__pagination-wrapper {
 			@media (min-width: 1024px) {
 				grid-auto-flow: column;
@@ -18,6 +22,12 @@
 			overflow-y: hidden;
 			gap: to-rem(16);
 			grid-auto-flow: column;
+			margin-top: to-rem(8);
+
+			&:first-child {
+				margin-top: 0;
+				margin-bottom: to-rem(8);
+			}
 		}
 
 		.kol-pagination {
