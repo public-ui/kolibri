@@ -1,6 +1,12 @@
 @use '../functions/to-rem' as *;
 
 @mixin kol-table-stateless-wc {
+	:host {
+		display: flex;
+		flex-direction: column;
+		gap: to-rem(8);
+	}
+
 	@layer kol-theme-component {
 		:host > div,
 		kol-table-stateless-wc > div {
@@ -43,7 +49,6 @@
 
 		.table {
 			padding: to-rem(8);
-			margin-bottom: to-rem(8);
 
 			&:has(.focus-element:focus) {
 				outline-color: var(--color-primary-variant);

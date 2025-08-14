@@ -101,7 +101,14 @@ export const TableHorizontalScrollbar: FC = () => {
 					<i>Scrollbar appears on very small viewport sizes</i>
 				</p>
 
-				<KolTable _label="Table for demonstration purposes without horizontal scrollbar" _minWidth="600px" _headers={HEADERS} _data={DATA} className="block" />
+				<KolTable
+					_label="Table for demonstration purposes without horizontal scrollbar"
+					_minWidth="600px"
+					_headers={HEADERS}
+					_data={DATA}
+					className="block"
+					_pagination
+				/>
 			</section>
 		</>
 	);

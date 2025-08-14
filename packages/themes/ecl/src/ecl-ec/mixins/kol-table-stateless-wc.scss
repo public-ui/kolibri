@@ -2,7 +2,12 @@
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
-		:host,
+		:host {
+			display: flex;
+			flex-direction: column;
+			gap: to-rem(8);
+		}
+
 		.kol-table-stateless-wc {
 			display: block;
 		}
@@ -32,7 +37,6 @@
 
 		.table {
 			padding: 0.5em;
-			margin-bottom: to-rem(8);
 		}
 
 		.table:has(.focus-element:focus) {
