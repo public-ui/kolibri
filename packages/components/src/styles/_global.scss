@@ -4,12 +4,13 @@
 
 @layer kol-global {
 	:host {
-		font-size: to-rem(16);
 		/*
 		 * The max-width is needed to prevent the table from overflowing the
 		 * parent node, if the table is wider than the parent node.
 		 */
 		max-width: 100%;
+
+		font-size: to-rem(16);
 	}
 
 	* {
@@ -57,9 +58,9 @@
 	[aria-disabled='true']:focus,
 	[disabled],
 	[disabled]:focus {
-		cursor: not-allowed;
 		opacity: 0.5;
 		outline: none;
+		cursor: not-allowed;
 	}
 
 	[aria-disabled='true']:focus .kol-span,
