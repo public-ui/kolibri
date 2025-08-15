@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '@public-ui/components/to-rem' as *;
 
 @mixin kol-typography-body {
 	font-size: to-rem(16);

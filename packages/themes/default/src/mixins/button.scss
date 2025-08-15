@@ -1,5 +1,5 @@
 @use './focus-outline' as *;
-@use '../functions/to-rem' as *;
+@use '@public-ui/components/to-rem' as *;
 
 @mixin kol-button {
 	:is(a, button) > .kol-span-wc {

@@ -2,7 +2,7 @@
 @use '../@shared/kol-alert-wc' as *;
 @use '../@shared/kol-required' as *;
 
-@use '../mixins/rem' as *;
+@use '@public-ui/components/to-rem' as *;
 @use '../mixins/alert-wc' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/input-base' as *;

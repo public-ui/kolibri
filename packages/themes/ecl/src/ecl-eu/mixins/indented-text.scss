@@ -1,4 +1,4 @@
-@use '../../functions/to-rem' as *;
+@use '@public-ui/components/to-rem' as *;
 
 @mixin indented-text {
 	-webkit-border-start: to-rem(8) solid #0e47cb;

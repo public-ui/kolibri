@@ -1,4 +1,4 @@
-@use '../functions/to-rem' as *;
+@use '@public-ui/components/to-rem' as *;
 
 @mixin kol-table-stateless-wc {
 	:host {

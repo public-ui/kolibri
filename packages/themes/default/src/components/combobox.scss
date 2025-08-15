@@ -1,6 +1,6 @@
 @use '../mixins/alert-wc' as *;
 @use '../mixins/input-error' as *;
-@use '../functions/to-rem' as *;
+@use '@public-ui/components/to-rem' as *;
 @use '../mixins/typography' as *;
 
 $option-height: to-rem(40);

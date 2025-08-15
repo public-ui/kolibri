@@ -1,4 +1,4 @@
-@use './rem' as *;
+@use '@public-ui/components/to-rem' as *;
 
 @mixin indented-text {
 	border-left: 4px solid var(--color-petrol);

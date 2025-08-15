@@ -1,5 +1,5 @@
 @use '../mixins/button' as *;
-@use '../functions/to-rem' as *;
+@use '@public-ui/components/to-rem' as *;
 
 @layer kol-theme-component {
 	:host {

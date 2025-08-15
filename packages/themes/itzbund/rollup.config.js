@@ -26,6 +26,7 @@ export default {
 			inject: false,
 			use: {
 				sass: {
+					includePaths: ['node_modules'],
 					silenceDeprecations: ['legacy-js-api'], // may be removed when the following issue has been resolved: https://github.com/egoist/rollup-plugin-postcss/issues/463
 				},
 			},

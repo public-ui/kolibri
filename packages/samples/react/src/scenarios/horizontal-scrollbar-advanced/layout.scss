@@ -1,4 +1,4 @@
-@use '../../@shared/mixins' as *;
+@use '@public-ui/components/to-rem' as *;
 
 .mainlayout {
 	min-height: calc(100vh - to-rem(32));
