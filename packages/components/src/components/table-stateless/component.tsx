@@ -85,6 +85,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	private previousHeaderCells?: TableHeaderCellsPropType;
 
 	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public ariaLabelledby?: string;
+
+	/**
 	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: TableDataPropType;
@@ -928,13 +933,20 @@ export class KolTableStateless implements TableStatelessAPI {
 						 * prevent screen readers from just reading "blank".
 						 */}
 						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+						<div
+							aria-describedby={this.ariaLabelledby ?? 'caption'}
+							class="kol-table__focus-element"
+							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+							tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}
+						>
 							&nbsp;
 						</div>
 
-						<caption class="kol-table__caption" id="caption">
-							{this.state._label}
-						</caption>
+						{this.ariaLabelledby ? null : (
+							<caption class="kol-table__caption" id="caption">
+								{this.state._label}
+							</caption>
+						)}
 
 						{Array.isArray(sortedHorizontalHeaders) && (
 							<thead class="kol-table__head">

@@ -247,3 +247,34 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
   </div>
 </kol-table-stateless-wc>
 `;
+
+exports[`kol-table-stateless-wc should render with ariaLabelledBy="external-caption" _label="" _data=[{"header1":"Cell 1.1"}] _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left"}]],"vertical":[]} _minWidth="400px" 1`] = `
+<kol-table-stateless-wc arialabelledby="external-caption">
+  <div class="kol-table">
+    <kol-table-settings-wc></kol-table-settings-wc>
+    <div class="kol-table__scroll-container">
+      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+        <div aria-describedby="caption" class="kol-table__focus-element"></div>
+        <caption class="kol-table__caption" id="caption"></caption>
+        <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" data-sort="sort-undefined" scope="col">
+              Header 1
+            </th>
+          </tr>
+          <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="1"></td>
+          </tr>
+        </thead>
+        <tbody class="kol-table__body">
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
+              Cell 1.1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</kol-table-stateless-wc>
+`;

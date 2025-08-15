@@ -26,6 +26,7 @@ import type {
 import {
 	devHint,
 	emptyStringByArrayHandler,
+	Log,
 	objectObjectHandler,
 	parseJson,
 	setState,
@@ -49,6 +50,10 @@ const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const paginationValidator = (value: unknown) => value === true || value === '' /* true */ || (typeof value === 'object' && value !== null);
 
+type HostInternals = {
+	ariaLabelledByElements: HTMLElement[];
+};
+
 type SortData = {
 	label: string;
 	key: string;
@@ -64,7 +69,37 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	@Element() private readonly host?: HTMLKolTableStatefulElement;
+
+	private internals?: HostInternals;
+
+	private resolveTargets(value?: string): HTMLElement[] {
+		const ids = (value ?? '').trim().split(/\s+/).filter(Boolean);
+		if (!ids.length) return [];
+		const root = this.host?.getRootNode({ composed: true }) as Document | ShadowRoot | undefined;
+		const getById = (id: string): HTMLElement | null => {
+			return (root as Document)?.getElementById?.(id) || document.getElementById(id);
+		};
+		return ids.map(getById).filter((el): el is HTMLElement => !!el);
+	}
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public ariaLabelledby?: string;
+
+	@Watch('ariaLabelledBy')
+	protected handleAriaLabelledBy(value?: string): void {
+		if (this.internals && 'ariaLabelledByElements' in this.internals) {
+			this.internals.ariaLabelledByElements = this.resolveTargets(value);
+			if (this.internals.ariaLabelledByElements.length) {
+				Log.info(['Experimental feature for linking aria-labelledby to an external caption.', this.host, this.internals.ariaLabelledByElements], {
+					forceLog: true,
+				});
+			}
+		}
+	}
+
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
@@ -378,6 +413,11 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	public componentWillLoad(): void {
+		if ((this.host as unknown as { attachInternals?: () => HostInternals }).attachInternals) {
+			this.internals = (this.host as unknown as { attachInternals: () => HostInternals }).attachInternals();
+			this.handleAriaLabelledBy(this.ariaLabelledby);
+		}
+
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -543,6 +583,8 @@ export class KolTableStateful implements TableAPI {
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
+		const showCaption = this.internals?.ariaLabelledByElements?.length;
+
 		const headerCells: TableHeaderCells = {
 			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
 			vertical: this.state._headers.vertical?.map((column) => column.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
@@ -551,6 +593,7 @@ export class KolTableStateful implements TableAPI {
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
+					aria-labelledby={showCaption ? this.ariaLabelledby : undefined}
 					ref={this.catchRef}
 					_data={displayedData}
 					_headerCells={headerCells}

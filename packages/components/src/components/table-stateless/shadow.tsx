@@ -1,16 +1,21 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Element, h, Prop, Watch } from '@stencil/core';
 import { KolTableStatelessWcTag } from '../../core/component-names';
-import type {
-	TableCallbacksPropType,
-	TableDataFootPropType,
-	TableDataPropType,
-	TableHeaderCellsPropType,
-	TableSelectionPropType,
-	TableStatelessProps,
+import {
+	Log,
+	type TableCallbacksPropType,
+	type TableDataFootPropType,
+	type TableDataPropType,
+	type TableHeaderCellsPropType,
+	type TableSelectionPropType,
+	type TableStatelessProps,
 } from '../../schema';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
+
+type HostInternals = {
+	ariaLabelledByElements: HTMLElement[];
+};
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -20,6 +25,37 @@ import type { TableSettingsPropType } from '../../schema/props/table-settings';
 	shadow: true,
 })
 export class KolTableStateless implements TableStatelessProps {
+	@Element() private readonly host?: HTMLKolTableStatelessElement;
+
+	private internals?: HostInternals;
+
+	private resolveTargets(value?: string): HTMLElement[] {
+		const ids = (value ?? '').trim().split(/\s+/).filter(Boolean);
+		if (!ids.length) return [];
+		const root = this.host?.getRootNode({ composed: true }) as Document | ShadowRoot | undefined;
+		const getById = (id: string): HTMLElement | null => {
+			return (root as Document)?.getElementById?.(id) || document.getElementById(id);
+		};
+		return ids.map(getById).filter((el): el is HTMLElement => !!el);
+	}
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public ariaLabelledby?: string;
+
+	@Watch('ariaLabelledBy')
+	protected handleAriaLabelledBy(value?: string): void {
+		if (this.internals && 'ariaLabelledByElements' in this.internals) {
+			this.internals.ariaLabelledByElements = this.resolveTargets(value);
+			if (this.internals.ariaLabelledByElements.length) {
+				Log.info(['Experimental feature for linking aria-labelledby to an external caption.', this.host, this.internals.ariaLabelledByElements], {
+					forceLog: true,
+				});
+			}
+		}
+	}
+
 	/**
 	 * Defines the primary table data.
 	 */
@@ -60,9 +96,18 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
 
+	public componentWillLoad(): void {
+		if ((this.host as unknown as { attachInternals?: () => HostInternals }).attachInternals) {
+			this.internals = (this.host as unknown as { attachInternals: () => HostInternals }).attachInternals();
+			this.handleAriaLabelledBy(this.ariaLabelledby);
+		}
+	}
+
 	public render(): JSX.Element {
+		const showCaption = this.internals?.ariaLabelledByElements?.length;
 		return (
 			<KolTableStatelessWcTag
+				aria-labelledby={showCaption ? this.ariaLabelledby : undefined}
 				_data={this._data}
 				_dataFoot={this._dataFoot}
 				_headerCells={this._headerCells}

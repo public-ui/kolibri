@@ -94,5 +94,15 @@ executeSnapshotTests<TableStatelessProps>(
 				{ header1: 'Cell 2.1', header2: 'Cell 2.2' },
 			],
 		},
+		{
+			ariaLabelledBy: 'external-caption',
+			_label: '',
+			_data: [{ header1: 'Cell 1.1' }],
+			_headerCells: {
+				horizontal: [[{ key: 'header1', label: 'Header 1', textAlign: 'left' }]],
+				vertical: [],
+			},
+			_minWidth: '400px',
+		} as unknown as TableStatelessProps,
 	],
 );
