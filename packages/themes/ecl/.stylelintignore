@@ -3,6 +3,7 @@ src/assets/
 **/*.md
 **/*.mustache
 **/*.pug
+**/*.sass
 **/*.snap
 **/*.ts
 **/*.tsx
