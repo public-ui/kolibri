@@ -2,12 +2,6 @@
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
-		:host > div,
-		kol-table-stateless-wc > div {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-
 		caption {
 			padding: to-rem(8);
 		}
