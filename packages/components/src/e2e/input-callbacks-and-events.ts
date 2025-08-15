@@ -44,6 +44,7 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 					componentName === 'kol-input-color' && nativeEventName === 'click' && browserName === 'firefox',
 					'Clicking on an input[type=color] in Firefox currently makes the page close itself.',
 				);
+				test.skip(nativeEventName === 'input' && browserName !== 'webkit', 'Input event only reliable in WebKit');
 
 				await page.setContent(`<${componentName} _label="Input" ${additionalProperties}></${componentName}>`);
 				const component = page.locator(componentName);
