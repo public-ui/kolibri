@@ -1,6 +1,12 @@
 @use '../functions/to-rem' as *;
 
 @mixin kol-table-stateless-wc {
+	:host {
+		display: flex;
+		flex-direction: column;
+		gap: to-rem(8);
+	}
+
 	@layer kol-theme-component {
 		caption {
 			padding: to-rem(8);
