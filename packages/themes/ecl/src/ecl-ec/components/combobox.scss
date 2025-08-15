@@ -16,23 +16,23 @@ $visible-options: 5;
 
 	.kol-combobox {
 		&__group {
+			color: var(--color-grey);
 			display: inline-flex;
-			align-items: center;
-			min-height: var(--a11y-min-size);
-			text-align: left;
 			width: 100%;
 			min-height: var(--a11y-min-size);
-			color: var(--color-grey);
+			min-height: var(--a11y-min-size);
+			padding: to-rem(1) 0.5em;
 			order: 4;
 			align-items: center;
-			padding: to-rem(1) 0.5em;
+			align-items: center;
+			text-align: left;
 		}
 
 		&__input {
-			border: none;
-			flex-grow: 1;
-			width: calc(100% - to-rem(24));
 			position: relative;
+			width: calc(100% - to-rem(24));
+			flex-grow: 1;
+			border: none;
 
 			&::placeholder {
 				color: var(--color-grey-50);

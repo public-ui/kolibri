@@ -7,10 +7,10 @@
 
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: 2px;
+		border-radius: var(--border-radius);
 		padding: 0 to-rem(8);
+		border-width: 2px;
 		gap: to-rem(6);
 
 		@at-root #{$root}__adornment {
@@ -30,9 +30,9 @@
 		}
 
 		@at-root #{$root}--disabled {
+			color: var(--color-text);
 			background-color: var(--color-mute);
 			border-color: var(--color-mute-variant);
-			color: var(--color-text);
 			cursor: not-allowed;
 		}
 

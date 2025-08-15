@@ -10,9 +10,9 @@
 		}
 
 		&__link {
+			border-radius: 4px;
 			display: block;
 			border: 2px solid transparent;
-			border-radius: 4px;
 
 			&:hover,
 			&:focus-within {
@@ -28,8 +28,8 @@
 				background-color: var(--color-yellow);
 
 				.kol-link {
-					background-color: var(--color-yellow);
 					color: var(--color-black);
+					background-color: var(--color-yellow);
 				}
 			}
 

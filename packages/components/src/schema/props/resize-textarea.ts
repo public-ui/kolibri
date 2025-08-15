@@ -13,11 +13,11 @@ export type PropResizeTextarea = {
 };
 
 const isTextareaResizePropType = (value: unknown): value is TextareaResizePropType => {
-    return typeof value === 'string' && textareaResizeOptions.includes(value as TextareaResizePropType);
+	return typeof value === 'string' && textareaResizeOptions.includes(value as TextareaResizePropType);
 };
 
 export const validateResizeTextarea = (component: Generic.Element.Component, value?: TextareaResizePropType): void => {
-    watchValidator(component, '_resize', isTextareaResizePropType, new Set(textareaResizeOptions), value, {
-        defaultValue: 'vertical',
-    });
+	watchValidator(component, '_resize', isTextareaResizePropType, new Set(textareaResizeOptions), value, {
+		defaultValue: 'vertical',
+	});
 };

@@ -1,26 +1,27 @@
 .loader {
-	width: 48px;
-	height: 48px;
-	border: 5px solid #333;
 	border-radius: 50%;
 	display: inline-block;
-	box-sizing: border-box;
 	position: relative;
+	box-sizing: border-box;
+	width: 48px;
+	height: 48px;
 	animation: pulse 1s linear infinite;
+	border: 5px solid #333;
 }
 .loader:after {
-	content: '';
-	position: absolute;
-	width: 48px;
-	height: 48px;
-	border: 5px solid #f00;
+	transform: translate(-50%, -50%);
 	border-radius: 50%;
 	display: inline-block;
-	box-sizing: border-box;
-	left: 50%;
+	position: absolute;
 	top: 50%;
-	transform: translate(-50%, -50%);
+	left: 50%;
+	box-sizing: border-box;
+	width: 48px;
+	height: 48px;
+
+	content: '';
 	animation: scaleUp 1s linear infinite;
+	border: 5px solid #f00;
 }
 
 @keyframes scaleUp {

@@ -2,12 +2,12 @@
 
 @layer kol-theme-component {
 	.kol-accordion {
-		border-radius: 8px;
 		box-shadow:
 			0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 			0 0 to-rem(10) rgb(9 49 142 / 4%),
 			0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
 			0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
+		border-radius: 8px;
 		margin: 0;
 		overflow: hidden;
 
@@ -17,22 +17,23 @@
 
 		&__heading-button {
 			.kol-button {
-				border-radius: 8px;
-				outline-offset: -1px;
-				border: 0;
-				border-bottom-color: #cfdaf5;
-				border-bottom-style: solid;
-				border-bottom-width: to-rem(2);
 				color: #171a22;
-				position: relative;
+				border-radius: 8px;
+				border-bottom-color: #cfdaf5;
 				display: block;
+				position: relative;
+				width: 100%;
+				padding: to-rem(24);
+				border-bottom-width: to-rem(2);
+
 				font:
 					normal normal 400 to-rem(18) / to-rem(28) arial,
 					sans-serif;
-				padding: to-rem(24);
-				text-align: start;
-				width: 100%;
 				line-height: 1.2;
+				border: 0;
+				border-bottom-style: solid;
+				outline-offset: -1px;
+				text-align: start;
 
 				&__text {
 					align-items: baseline;
@@ -40,14 +41,15 @@
 
 				&::before {
 					background-color: #fc0;
+					position: absolute;
+					top: 0;
+					left: to-rem(24);
+					width: to-rem(6);
+					height: to-rem(4);
+
+					content: '';
 					border-end-end-radius: to-rem(2);
 					border-end-start-radius: to-rem(2);
-					content: '';
-					height: to-rem(4);
-					position: absolute;
-					left: to-rem(24);
-					top: 0;
-					width: 3rem (2);
 				}
 			}
 
@@ -56,23 +58,25 @@
 
 				&::part(icon)::before {
 					color: #0e47cb;
-					font-weight: 900;
+
 					font-family: 'Font Awesome 6 Free';
+					font-weight: 900;
 				}
 			}
 		}
 
 		&__content {
-			-webkit-border-start: to-rem(4) solid #0e47cb;
-			-webkit-margin-start: 0;
-			border-bottom: 2px solid #cfdaf5;
-			border-inline-start: to-rem(4) solid #0e47cb;
 			color: #515560;
+			padding: to-rem(24);
+
 			font:
 				normal normal 400 to-rem(16) / to-rem(24) arial,
 				sans-serif;
+			border-inline-start: to-rem(4) solid #0e47cb;
+			border-bottom: 2px solid #cfdaf5;
+			-webkit-border-start: to-rem(4) solid #0e47cb;
 			margin-inline-start: 0;
-			padding: to-rem(24);
+			-webkit-margin-start: 0;
 		}
 
 		.collapsible--open &__heading-button {

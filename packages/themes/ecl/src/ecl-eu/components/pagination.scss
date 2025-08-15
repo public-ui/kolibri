@@ -14,39 +14,41 @@
 	}
 
 	.kol-button__text {
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
+		color: #171a22;
+		background-color: #fc0;
 		border-radius: 4px;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		padding: to-rem(12);
+
 		font:
 			normal normal 400 to-rem(16) / to-rem(20) Arial,
 			sans-serif;
-		padding: to-rem(12);
-		background-color: #fc0;
-		color: #171a22;
 
 		.kol-button:focus-visible & {
-			outline-offset: -4px;
 			outline: 2px solid var(--color-black);
+			outline-offset: -4px;
 		}
 
 		.kol-button:not(:disabled):active &,
 		.kol-button:not(:disabled):hover & {
 			background-color: #fc0;
-			border-color: #fc0;
 			box-shadow:
 				0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 				0 0 to-rem(10) rgb(9 49 142 / 4%),
 				0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
 				0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
+			border-color: #fc0;
 		}
 
 		.kol-pagination__button--selected & {
+			opacity: 1;
+			color: var(--color-white);
 			background-color: var(--color-blue);
 			border-color: var(--color-blue);
-			color: var(--color-white);
+
 			font-weight: bold;
 			text-decoration: underline;
-			opacity: 1;
 		}
 
 		.kol-button:disabled & {

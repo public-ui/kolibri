@@ -19,15 +19,15 @@ $visible-options: 5;
 	.kol-single-select {
 		&__group {
 			display: inline-flex;
-			align-items: center;
 			width: 100%;
+			align-items: center;
 		}
 
 		&__input {
+			position: relative;
+			width: calc(100% - to-rem(40));
 			flex-grow: 1;
 			border: none;
-			width: calc(100% - to-rem(40));
-			position: relative;
 
 			&::placeholder {
 				color: var(--color-subtle);
