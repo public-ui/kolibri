@@ -14,14 +14,14 @@
 		gap: 0.25em;
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: 0 rem(16);
+		padding: 0 to-rem(16);
 		transition-duration: 0.5s;
 		transition-property: background, color, border-color;
 		transition-timing-function: ease-in-out;
 	}
 
 	.hide-label .button-inner {
-		padding: 0 rem(8);
+		padding: 0 to-rem(8);
 	}
 
 	.button:not(:disabled):hover .button-inner,

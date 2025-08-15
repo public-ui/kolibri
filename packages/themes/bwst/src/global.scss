@@ -9,15 +9,15 @@
 
 	:host {
 		--label-weight: 700;
-		--label-size: #{rem(calc(0.9 * 16))};
+		--label-size: #{to-rem(calc(0.9 * 16))};
 		--label-color: #000000;
-		--box-shadow-inputs: #{rem(0)} #{rem(2)} #{rem(8)} #{rem(2)} rgb(8, 35, 48, 0.24);
+		--box-shadow-inputs: #{to-rem(0)} #{to-rem(2)} #{to-rem(8)} #{to-rem(2)} rgb(8, 35, 48, 0.24);
 		--page-bg: #ffffff;
 		--element-bg: #eee;
 		--border-radius: 4px;
 		--font-family: 'Noto Sans Regular', Arial, helvetica, sans-serif;
-		--font-size: #{rem(16)};
-		--spacing: #{rem(4)};
+		--font-size: #{to-rem(16)};
+		--spacing: #{to-rem(4)};
 		--border-width: 1px;
 		--color-primary: #156570;
 		--color-primary-light: #1a7a87;
@@ -33,7 +33,7 @@
 		--color-mute-variant: #bec5c9;
 		--visited: var(--color-primary-light);
 		--border-color: #ededed;
-		--a11y-min-size: #{rem(44)};
+		--a11y-min-size: #{to-rem(44)};
 		--button-font-weight: 400;
 	}
 
@@ -88,17 +88,17 @@
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5;
-		padding: rem(8) rem(12);
+		padding: to-rem(8) to-rem(12);
 	}
 
 	.kol-span-wc,
 	.kol-span-wc > span {
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	a:is(:focus, :hover):not([aria-disabled]),
 	button:is(:focus, :hover):not([disabled]) {
-		text-decoration-thickness: calc(rem(16) / 8);
+		text-decoration-thickness: calc(to-rem(16) / 8);
 	}
 
 	.badge-text-hint {

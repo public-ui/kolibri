@@ -9,11 +9,11 @@
 	}
 
 	.inputs-wrapper {
-		gap: rem(16);
+		gap: to-rem(16);
 	}
 
 	.kol-input {
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 
 	.kol-input .error {
@@ -22,7 +22,7 @@
 
 	.kol-input label {
 		order: 2;
-		font-size: rem(calc(0.9 * 16));
+		font-size: to-rem(calc(0.9 * 16));
 		font-weight: 700;
 	}
 
@@ -49,20 +49,20 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: var(--border-width);
-		padding: 0 rem(8);
+		padding: 0 to-rem(8);
 	}
 
 	.input.icon-left > .kol-icon:first-child {
-		margin-right: rem(8);
+		margin-right: to-rem(8);
 	}
 
 	.input.icon-right > .kol-icon:last-child {
-		margin-left: rem(8);
+		margin-left: to-rem(8);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
-		padding-right: rem(16);
+		padding-left: to-rem(16);
+		padding-right: to-rem(16);
 	}
 
 	:not(.disabled) .input:hover {
@@ -92,14 +92,14 @@
 		appearance: none;
 		background-color: var(--color-mute-variant);
 		border: 1px solid var(--border-color);
-		height: calc(rem(16) / 2);
-		line-height: rem(24);
+		height: calc(to-rem(16) / 2);
+		line-height: to-rem(24);
 	}
 
 	.kol-input input[type='range']::-webkit-slider-thumb {
 		appearance: none;
-		height: rem(20);
-		width: rem(20);
+		height: to-rem(20);
+		width: to-rem(20);
 		border-radius: 50%;
 		background: var(--color-primary);
 		cursor: ew-resize;
@@ -108,8 +108,8 @@
 
 	.kol-input input[type='range']::-moz-range-thumb {
 		appearance: none;
-		height: rem(20);
-		width: rem(20);
+		height: to-rem(20);
+		width: to-rem(20);
 		border-radius: 50%;
 		background: var(--color-primary);
 		cursor: ew-resize;

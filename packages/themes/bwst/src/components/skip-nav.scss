@@ -6,8 +6,8 @@
 		border-style: solid;
 		border-width: var(--border-width);
 		gap: calc(var(--spacing) * 2);
-		line-height: rem(16);
-		padding: rem(8) rem(14);
+		line-height: to-rem(16);
+		padding: to-rem(8) to-rem(14);
 		background-color: var(--color-primary-variant);
 		border-color: var(--color-primary-variant);
 		color: var(--color-light);

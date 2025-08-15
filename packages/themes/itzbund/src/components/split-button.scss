@@ -15,7 +15,7 @@
 	.horizontal-line {
 		background-color: var(--border-color);
 		border-radius: 2px;
-		width: rem(1);
+		width: to-rem(1);
 	}
 
 	.secondary-button button {
@@ -27,6 +27,7 @@
 	:is(a, button) {
 		height: 100%;
 	}
+
 	:is(a, button) > .kol-span-wc {
 		border-style: none;
 		height: 100%;

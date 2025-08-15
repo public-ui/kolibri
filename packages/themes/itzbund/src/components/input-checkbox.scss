@@ -53,7 +53,7 @@
 	}
 
 	.button {
-		gap: rem(8) 0;
+		gap: to-rem(8) 0;
 		grid-template-areas:
 			'input label'
 			'hint hint'
@@ -107,7 +107,7 @@
 	}
 
 	.default .icon {
-		margin-left: rem(4);
+		margin-left: to-rem(4);
 	}
 
 	.default.checked .icon {
@@ -130,8 +130,8 @@
 		transition: 0.5;
 		width: 1.2em;
 		height: 1.2em;
-		left: calc(0.25em - rem(2));
-		top: calc(0.25em - rem(2));
+		left: calc(0.25em - to-rem(2));
+		top: calc(0.25em - to-rem(2));
 		background-color: black;
 		position: absolute;
 	}

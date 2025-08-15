@@ -2,7 +2,7 @@
 
 @layer kol-theme-component {
 	.cycle {
-		padding: rem(2);
+		padding: to-rem(2);
 
 		& span {
 			background-color: #fc0;

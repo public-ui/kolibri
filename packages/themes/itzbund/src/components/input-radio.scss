@@ -28,7 +28,7 @@
 		border-width: 2px;
 		border-style: solid;
 		border-radius: 5px;
-		/* padding: rem(10) rem(14); */
+		/* padding: to-rem(10) to-rem(14); */
 	}
 
 	input:hover {
@@ -72,7 +72,7 @@
 	}
 
 	fieldset.horizontal {
-		gap: rem(16);
+		gap: to-rem(16);
 		align-items: flex-start;
 	}
 

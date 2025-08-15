@@ -15,7 +15,7 @@
 	:is(a, button):focus .kol-span-wc {
 		border-radius: calc(var(--border-radius) / 2);
 		outline: var(--border-width) solid;
-		outline-offset: calc(rem(16) / 8);
+		outline-offset: calc(to-rem(16) / 8);
 	}
 
 	:is(a, button):visited {
@@ -28,7 +28,7 @@
 	}
 
 	.skip {
-		left: rem(-99999);
+		left: to-rem(-99999);
 		overflow: hidden;
 		position: absolute;
 		z-index: 9999999;

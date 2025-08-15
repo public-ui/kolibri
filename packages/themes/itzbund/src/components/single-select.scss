@@ -7,7 +7,7 @@
 @use '../mixins/typography' as *;
 @use '../mixins/input-base' as *;
 
-$option-height: rem(40);
+$option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -28,7 +28,7 @@ $visible-options: 5;
 			min-height: var(--a11y-min-size);
 			text-align: left;
 			width: 100%;
-			padding: rem(4);
+			padding: to-rem(4);
 
 			.single-select:not(.disabled) &:hover {
 				border-color: var(--default-border-hover);
@@ -43,7 +43,7 @@ $visible-options: 5;
 			flex-grow: 1;
 			background-color: transparent;
 			border: none;
-			width: calc(100% - rem(40));
+			width: calc(100% - to-rem(40));
 			position: relative;
 
 			&:focus {
@@ -68,7 +68,7 @@ $visible-options: 5;
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--kolibri-color-normal);
-			max-height: calc($option-height * $visible-options + rem(2));
+			max-height: calc($option-height * $visible-options + to-rem(2));
 			background-color: #e8edf2;
 			overflow-y: auto;
 			overflow-x: hidden;
@@ -77,7 +77,7 @@ $visible-options: 5;
 
 		&__item {
 			min-height: $option-height;
-			padding: rem(10) rem(12);
+			padding: to-rem(10) to-rem(12);
 
 			.radio-label {
 				align-self: center;

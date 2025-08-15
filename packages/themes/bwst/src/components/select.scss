@@ -7,8 +7,9 @@
 	:host {
 		@include kol-alert-theme;
 	}
+
 	.kol-input {
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 
 	.kol-input .error {
@@ -17,7 +18,7 @@
 
 	.kol-input label {
 		order: 2;
-		font-size: rem(calc(0.9 * 16));
+		font-size: to-rem(calc(0.9 * 16));
 		font-weight: 700;
 	}
 
@@ -44,7 +45,7 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: var(--border-width);
-		padding: 0 rem(8);
+		padding: 0 to-rem(8);
 
 		select {
 			background-color: var(--color-light);
@@ -52,17 +53,17 @@
 	}
 
 	.input > .kol-icon {
-		width: rem(32);
+		width: to-rem(32);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
-		padding-right: rem(16);
+		padding-left: to-rem(16);
+		padding-right: to-rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) input {
-		padding-left: rem(8);
-		padding-right: rem(8);
+		padding-left: to-rem(8);
+		padding-right: to-rem(8);
 	}
 
 	.input > input:first-child {
@@ -100,7 +101,7 @@
 	}
 
 	select option {
-		margin: rem(1) 0;
+		margin: to-rem(1) 0;
 		border-radius: var(--border-radius);
 		cursor: pointer;
 	}

@@ -8,7 +8,7 @@
 @mixin kol-input-error-with-kol-alert-wc-error($color: null) {
 	color: var($color);
 	font-weight: 700;
-	font-size: rem(calc(0.9 * 16));
+	font-size: to-rem(calc(0.9 * 16));
 }
 
 @mixin kol-alert-theme {
@@ -35,7 +35,7 @@
 
 	.kol-alert-wc > .heading > div {
 		display: grid;
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 
 	.msg > .heading > .kol-icon {
@@ -150,12 +150,12 @@
 	.card {
 		border-width: var(--border-width);
 		border-style: solid;
-		filter: drop-shadow(rem(0) rem(2) rem(4) rgb(8, 35, 48, 0.24));
+		filter: drop-shadow(to-rem(0) to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
 		flex-direction: column;
 	}
 
 	.card > .heading {
-		padding: rem(8) rem(16);
+		padding: to-rem(8) to-rem(16);
 	}
 
 	.card[_has-closer] > .heading {
@@ -166,20 +166,20 @@
 
 	.card > .heading > div {
 		width: 100%;
-		min-height: rem(20);
+		min-height: to-rem(20);
 	}
 
 	.card > .heading .heading-icon {
 		justify-self: right;
-		margin-top: rem(-4);
+		margin-top: to-rem(-4);
 	}
 
 	.card > .heading .kol-heading-wc {
 		width: 100%;
 		color: var(--color-light);
 		display: flex;
-		font-size: rem(20);
-		line-height: rem(20);
+		font-size: to-rem(20);
+		line-height: to-rem(20);
 	}
 
 	.card > .heading .kol-heading-wc > * {
@@ -187,7 +187,7 @@
 	}
 
 	.card > .content {
-		padding: rem(16);
+		padding: to-rem(16);
 	}
 
 	.card.default > .heading {
@@ -211,7 +211,7 @@
 	}
 
 	:is(.error, .info, .success, .warning) .heading-icon {
-		font-size: rem(20);
+		font-size: to-rem(20);
 	}
 
 	.card > div > .content {
@@ -248,7 +248,7 @@
 
 	.close > button.hide-label .kol-icon {
 		display: flex;
-		font-size: rem(19.2);
+		font-size: to-rem(19.2);
 	}
 
 	.close > button:active {

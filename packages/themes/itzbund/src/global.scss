@@ -26,7 +26,7 @@
 		--gradient-gelb-citrin: linear-gradient(67deg, var(--color-gelb), var(--color-citrin));
 		--font-family-sans: Verdana;
 		--font-family-serif: 'Times New Roman';
-		--font-size: #{rem(16)};
+		--font-size: #{to-rem(16)};
 		--spacing: 0.125em;
 		--kolibri-spacing: calc(2 * var(--spacing));
 	}
@@ -79,7 +79,7 @@
 
 	.kol-tooltip-wc .tooltip-content {
 		@include kol-typography-label;
-		padding: rem(4) rem(8);
+		padding: to-rem(4) to-rem(8);
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}

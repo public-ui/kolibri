@@ -2,6 +2,6 @@
 
 @layer kol-theme-component {
 	:host .overlay .modal {
-		max-height: calc(100% - rem(32));
+		max-height: calc(100% - to-rem(32));
 	}
 }

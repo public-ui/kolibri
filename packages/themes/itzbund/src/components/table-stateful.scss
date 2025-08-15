@@ -21,7 +21,7 @@
 
 		:host > div.pagination .kol-pagination {
 			display: flex;
-			gap: rem(16);
+			gap: to-rem(16);
 		}
 	}
 }

@@ -18,17 +18,17 @@
 	}
 
 	.headline-h1 {
-		font-size: rem(24);
-		line-height: rem(28);
+		font-size: to-rem(24);
+		line-height: to-rem(28);
 	}
 
 	.headline-h2 {
-		font-size: rem(20);
-		line-height: rem(28);
+		font-size: to-rem(20);
+		line-height: to-rem(28);
 	}
 
 	.headline-h3 {
-		font-size: rem(calc(1.125 * 16));
-		line-height: rem(24);
+		font-size: to-rem(calc(1.125 * 16));
+		line-height: to-rem(24);
 	}
 }

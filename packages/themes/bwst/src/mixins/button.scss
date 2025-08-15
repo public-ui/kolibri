@@ -9,7 +9,7 @@
 		border-width: var(--border-width);
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: rem(8) rem(14);
+		padding: to-rem(8) to-rem(14);
 		text-align: center;
 		transition-duration: 0.2s;
 		transition-property: background-color, color, border-color;
@@ -93,7 +93,7 @@
 	}
 
 	:is(a, button).hide-label > .kol-span-wc {
-		padding: rem(calc(0.8 * 16));
+		padding: to-rem(calc(0.8 * 16));
 		width: unset;
 	}
 

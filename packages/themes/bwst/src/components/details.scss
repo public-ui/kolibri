@@ -32,11 +32,11 @@
 		&__content {
 			@include indented-text;
 			width: unset;
-			margin: rem(8) rem(4) rem(4) rem(14.4);
+			margin: to-rem(8) to-rem(4) to-rem(4) to-rem(14.4);
 		}
 	}
 
 	.kol-icon {
-		font-size: rem(calc(1.2 * 16));
+		font-size: to-rem(calc(1.2 * 16));
 	}
 }

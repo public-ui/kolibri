@@ -3,7 +3,7 @@
 @layer kol-theme-component {
 	:host .kol-button-group-wc {
 		display: inline-flex;
-		gap: rem(8);
+		gap: to-rem(8);
 		flex-wrap: wrap;
 	}
 
@@ -13,7 +13,7 @@
 		border-radius: var(--border-radius);
 		font-style: normal;
 		font-weight: 400;
-		line-height: rem(calc(1.2 * 16));
+		line-height: to-rem(calc(1.2 * 16));
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
 		color: var(--color-subtle);
@@ -41,7 +41,7 @@
 
 	*[tabindex]:is(.kol-button-group-wc button) {
 		width: 100%;
-		padding: 0 rem(4);
+		padding: 0 to-rem(4);
 		border: var(--border-width) solid transparent;
 		border-radius: var(--border-radius);
 		border-bottom-width: var(--border-width);
@@ -64,11 +64,11 @@
 			position: absolute;
 			top: 0;
 			content: '';
-			height: calc(rem(16) / 4);
+			height: calc(to-rem(16) / 4);
 
 			background-color: var(--color-primary);
-			border-top-right-radius: calc(rem(16) / 8);
-			border-top-left-radius: calc(rem(16) / 8);
+			border-top-right-radius: calc(to-rem(16) / 8);
+			border-top-left-radius: calc(to-rem(16) / 8);
 			left: 0;
 			right: 0;
 		}
@@ -76,16 +76,16 @@
 		&:after {
 			content: ' ';
 			background-color: var(--page-bg);
-			height: rem(6);
+			height: to-rem(6);
 			position: absolute;
-			width: calc(100% + rem(10));
-			bottom: rem(-7);
-			left: rem(-5);
+			width: calc(100% + to-rem(10));
+			bottom: to-rem(-7);
+			left: to-rem(-5);
 		}
 	}
 
 	button .kol-span-wc > span {
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	.tabs-content {
@@ -134,11 +134,11 @@
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
-		margin: 0 rem(16) 0 0;
+		margin: 0 to-rem(16) 0 0;
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
-		margin: 0 rem(16);
+		margin: 0 to-rem(16);
 	}
 
 	:host > .tabs-align-top {
@@ -155,11 +155,11 @@
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
-		margin: 0 rem(16) 0 0;
+		margin: 0 to-rem(16) 0 0;
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div {
-		margin: 0 rem(16);
+		margin: 0 to-rem(16);
 	}
 
 	:host > div {

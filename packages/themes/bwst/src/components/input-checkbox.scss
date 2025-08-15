@@ -11,7 +11,7 @@
 	:host fieldset legend {
 		order: 2;
 		display: contents;
-		font-size: rem(calc(0.9 * 16));
+		font-size: to-rem(calc(0.9 * 16));
 		font-weight: 700;
 	}
 
@@ -21,7 +21,7 @@
 		justify-items: left;
 		width: 100%;
 		min-height: var(--a11y-min-size);
-		gap: rem(calc(0.4 * 16));
+		gap: to-rem(calc(0.4 * 16));
 
 		.hint {
 			@include kol-typography-hint;
@@ -29,7 +29,7 @@
 	}
 
 	:host .kol-input:is(.default, .switch) {
-		grid-template-columns: rem(24) auto;
+		grid-template-columns: to-rem(24) auto;
 		grid-template-areas: unset;
 
 		.input,
@@ -39,11 +39,11 @@
 	}
 
 	:host .kol-input.switch {
-		grid-template-columns: rem(calc(3.5 * 16)) auto;
+		grid-template-columns: to-rem(calc(3.5 * 16)) auto;
 	}
 
 	:host .kol-input.button {
-		gap: rem(calc(0.4 * 16)) rem(1);
+		gap: to-rem(calc(0.4 * 16)) to-rem(1);
 	}
 
 	.checkbox-container {
@@ -57,7 +57,7 @@
 	}
 
 	:host .kol-input > div.input input {
-		margin: rem(0);
+		margin: to-rem(0);
 	}
 
 	:host .kol-input > label {
@@ -77,7 +77,7 @@
 
 	:host .kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: rem(16);
+		padding-left: to-rem(16);
 	}
 
 	:host .kol-input.error input:focus,
@@ -97,8 +97,8 @@
 		border-width: 2px;
 		border-style: solid;
 		border-radius: var(--border-radius);
-		line-height: rem(24);
-		font-size: rem(16);
+		line-height: to-rem(24);
+		font-size: to-rem(16);
 	}
 
 	:host input:hover {
@@ -120,12 +120,12 @@
 
 	/* CHECKBOX */
 	:host .kol-input label span {
-		margin-top: rem(calc(0.125 * 16));
+		margin-top: to-rem(calc(0.125 * 16));
 	}
 
 	:host .required label > span::after {
 		content: '*';
-		padding-left: rem(calc(0.125 * 16));
+		padding-left: to-rem(calc(0.125 * 16));
 	}
 
 	:host .kol-input input[type='checkbox'] {
@@ -142,9 +142,9 @@
 
 	:host .kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * rem(4));
-		min-width: calc(6 * rem(4));
-		width: calc(6 * rem(4));
+		height: calc(6 * to-rem(4));
+		min-width: calc(6 * to-rem(4));
+		width: calc(6 * to-rem(4));
 	}
 
 	:host .kol-input.default input[type='checkbox']:indeterminate {
@@ -153,30 +153,30 @@
 
 	:host .kol-input.default .icon {
 		color: var(--color-light);
-		height: rem(16);
-		margin-left: rem(4);
-		width: rem(16);
+		height: to-rem(16);
+		margin-left: to-rem(4);
+		width: to-rem(16);
 	}
 
 	:host .kol-input.switch input[type='checkbox'] {
 		background-color: var(--color-subtle);
-		border-radius: rem(20);
+		border-radius: to-rem(20);
 		border-width: 0;
 		display: block;
-		height: rem(24);
-		min-width: rem(calc(3.5 * 16));
+		height: to-rem(24);
+		min-width: to-rem(calc(3.5 * 16));
 		position: relative;
-		width: rem(calc(3.5 * 16));
+		width: to-rem(calc(3.5 * 16));
 		/* Visible with forced colors  */
-		outline: transparent solid rem(1);
+		outline: transparent solid to-rem(1);
 	}
 
 	:host .kol-input.switch input[type='checkbox']:before {
-		width: rem(20);
-		height: rem(20);
-		left: calc(rem(4) - rem(2));
-		top: calc(rem(4) - rem(2));
-		border-radius: rem(20);
+		width: to-rem(20);
+		height: to-rem(20);
+		left: calc(to-rem(4) - to-rem(2));
+		top: calc(to-rem(4) - to-rem(2));
+		border-radius: to-rem(20);
 		background-color: white;
 		position: absolute;
 	}
@@ -186,26 +186,26 @@
 	}
 
 	:host .kol-input.switch input[type='checkbox']:checked:before {
-		transform: translateX(rem(32));
+		transform: translateX(to-rem(32));
 	}
 
 	:host .kol-input.switch input[type='checkbox']:indeterminate:before {
-		transform: translateX(rem(16));
+		transform: translateX(to-rem(16));
 	}
 
 	.switch {
 		& .icon {
-			width: rem(20);
-			height: rem(20);
-			left: rem(2);
+			width: to-rem(20);
+			height: to-rem(20);
+			left: to-rem(2);
 		}
 
 		&.checked .icon {
-			transform: translate(rem(32), -50%);
+			transform: translate(to-rem(32), -50%);
 		}
 
 		&.indeterminate .icon {
-			transform: translate(rem(16), -50%);
+			transform: translate(to-rem(16), -50%);
 		}
 	}
 
@@ -238,7 +238,7 @@
 			align-self: stretch;
 			display: flex;
 
-			padding-right: rem(16);
+			padding-right: to-rem(16);
 
 			.input-label-span {
 				margin: auto 0;

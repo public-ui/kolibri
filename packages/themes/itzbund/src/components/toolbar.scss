@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	.toolbar {
-		padding: rem(8);
+		padding: to-rem(8);
 		border-width: 1px;
 		border-style: solid;
 		border-radius: 4px;
@@ -27,7 +27,7 @@
 		border-width: var(--spacing);
 		/*line-height: 1.25em;*/
 		/*padding: calc(4 * var(--spacing));*/
-		padding: 0 rem(16);
+		padding: 0 to-rem(16);
 	}
 
 	.kol-link-wc > a {

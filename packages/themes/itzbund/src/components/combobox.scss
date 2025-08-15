@@ -7,7 +7,7 @@
 @use '../mixins/typography' as *;
 @use '../mixins/input-base' as *;
 
-$option-height: rem(40);
+$option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -28,7 +28,7 @@ $visible-options: 5;
 			min-height: var(--a11y-min-size);
 			text-align: left;
 			width: 100%;
-			padding: rem(4);
+			padding: to-rem(4);
 
 			.combobox:not(.combobox--disabled) &:hover {
 				border-color: var(--default-border-hover);
@@ -44,7 +44,7 @@ $visible-options: 5;
 			border: none;
 			background-color: transparent;
 			border: none;
-			width: calc(100% - rem(24));
+			width: calc(100% - to-rem(24));
 			position: relative;
 
 			&:focus {
@@ -73,14 +73,14 @@ $visible-options: 5;
 			overflow-y: auto;
 			overflow-x: hidden;
 			width: 100%;
-			max-height: calc($option-height * $visible-options + rem(2));
+			max-height: calc($option-height * $visible-options + to-rem(2));
 		}
 
 		&__item {
 			display: flex;
 			align-items: center;
 			height: $option-height;
-			padding: rem(10) rem(12);
+			padding: to-rem(10) to-rem(12);
 
 			&[aria-selected],
 			&:focus {

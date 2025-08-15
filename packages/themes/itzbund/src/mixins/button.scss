@@ -10,12 +10,12 @@
 		border-style: solid;
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
-		padding: 0 rem(16);
+		padding: 0 to-rem(16);
 	}
 
 	.button a.hide-label > .kol-span-wc,
 	.button button.hide-label > .kol-span-wc {
-		padding: 0 rem(8);
+		padding: 0 to-rem(8);
 	}
 
 	:is(a, button) > .kol-span-wc {

@@ -2,7 +2,7 @@
 
 @layer kol-theme-component {
 	:host {
-		--kolibri-text-label-padding: #{rem(60)};
+		--kolibri-text-label-padding: #{to-rem(60)};
 	}
 
 	:host progress,

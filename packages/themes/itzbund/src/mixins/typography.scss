@@ -1,54 +1,54 @@
 @use './rem' as *;
 
 @mixin kol-typography-body {
-	font-size: rem(16);
+	font-size: to-rem(16);
 	line-height: 1.5;
 }
 
 @mixin kol-typography-h1 {
 	font-family: var(--font-family-serif);
-	font-size: rem(54);
+	font-size: to-rem(54);
 	font-weight: bold;
 	line-height: 1;
 }
 
 @mixin kol-typography-h2 {
 	font-family: var(--font-family-serif);
-	font-size: rem(32);
+	font-size: to-rem(32);
 	font-weight: bold;
 	line-height: 1;
 }
 
 @mixin kol-typography-h3 {
 	font-family: var(--font-family-serif);
-	font-size: rem(26);
+	font-size: to-rem(26);
 	font-weight: bold;
 	line-height: 1;
 }
 
 @mixin kol-typography-h4 {
 	font-family: var(--font-family-serif);
-	font-size: rem(20);
+	font-size: to-rem(20);
 	font-weight: normal;
 	line-height: 1;
 }
 
 @mixin kol-typography-h5 {
 	font-family: var(--font-family-serif);
-	font-size: rem(17);
+	font-size: to-rem(17);
 	font-weight: bold;
 	line-height: 1;
 }
 
 @mixin kol-typography-h6 {
 	font-family: var(--font-family-sans);
-	font-size: rem(17);
+	font-size: to-rem(17);
 	font-weight: normal;
 	line-height: 1;
 }
 
 @mixin kol-typography-accordion {
-	font-size: rem(20);
+	font-size: to-rem(20);
 	line-height: 1.75;
 	font-weight: 700;
 
@@ -58,11 +58,11 @@
 }
 
 @mixin kol-typography-label {
-	font-size: rem(14);
+	font-size: to-rem(14);
 	line-height: 1.25;
 }
 
 @mixin kol-typography-hint {
-	font-size: rem(14.4);
+	font-size: to-rem(14.4);
 	font-style: italic;
 }

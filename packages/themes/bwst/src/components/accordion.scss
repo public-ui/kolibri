@@ -3,9 +3,9 @@
 
 @layer kol-theme-component {
 	.accordion__content {
-		padding-left: rem(36);
-		padding-bottom: rem(12);
-		padding-right: rem(8);
+		padding-left: to-rem(36);
+		padding-bottom: to-rem(12);
+		padding-right: to-rem(8);
 	}
 
 	.kol-span-wc > span {
@@ -15,15 +15,15 @@
 
 	:host > div > .kol-heading-wc button {
 		border-radius: var(--border-radius);
-		min-height: rem(calc(2.2 * 16));
-		padding: rem(12) rem(8);
+		min-height: to-rem(calc(2.2 * 16));
+		padding: to-rem(12) to-rem(8);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
 		font-weight: 700;
-		font-size: rem(calc(1.125 * 16));
-		line-height: rem(16);
-		gap: rem(8);
+		font-size: to-rem(calc(1.125 * 16));
+		line-height: to-rem(16);
+		gap: to-rem(8);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc > span {

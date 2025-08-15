@@ -16,12 +16,12 @@
 		border-width: var(--spacing);
 		/*line-height: 1.25em;*/
 		/*padding: calc(4 * var(--spacing));*/
-		padding: 0 rem(16);
+		padding: 0 to-rem(16);
 	}
 
 	.button a.hide-label > .kol-span-wc,
 	.button button.hide-label > .kol-span-wc {
-		padding: 0 rem(8);
+		padding: 0 to-rem(8);
 	}
 
 	a > .kol-span-wc,

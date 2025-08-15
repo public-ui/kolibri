@@ -4,7 +4,7 @@
 	:host {
 		display: flex;
 		flex-direction: column;
-		gap: rem(8);
+		gap: to-rem(8);
 	}
 
 	:host > div {
@@ -13,7 +13,7 @@
 	}
 
 	caption {
-		padding: rem(8);
+		padding: to-rem(8);
 		font-weight: bold;
 	}
 
@@ -50,7 +50,7 @@
 	}
 
 	.table {
-		padding: rem(8);
+		padding: to-rem(8);
 
 		&:has(.focus-element:focus) {
 			outline-color: var(--color-primary-variant);
@@ -76,7 +76,7 @@
 
 	th,
 	td {
-		padding: rem(8);
+		padding: to-rem(8);
 	}
 
 	th[aria-sort='ascending'],
@@ -117,8 +117,8 @@
 
 		.icon {
 			color: var(--color-light);
-			width: rem(16);
-			height: rem(16);
+			width: to-rem(16);
+			height: to-rem(16);
 		}
 
 		&.indeterminate {

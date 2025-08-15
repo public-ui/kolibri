@@ -4,6 +4,6 @@
 	:host > .kol-button-group-wc {
 		display: inline-flex;
 		flex-wrap: wrap;
-		gap: rem(4);
+		gap: to-rem(4);
 	}
 }
