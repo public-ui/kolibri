@@ -2,6 +2,7 @@ import { Routes } from '../../shares/types';
 import { PaginationPosition } from './pagination-position';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
+import { TableExternalCaption } from './external-caption';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
@@ -20,6 +21,7 @@ export const TABLE_ROUTES: Routes = {
 	table: {
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
+		'external-caption': TableExternalCaption,
 		'horizontal-scrollbar': TableHorizontalScrollbar,
 		'interactive-child-elements': InteractiveChildElements,
 		'multi-sort': MultiSortTable,

@@ -1,16 +1,17 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Element, h, Prop, Watch } from '@stencil/core';
 import { KolTableStatelessWcTag } from '../../core/component-names';
-import type {
-	TableCallbacksPropType,
-	TableDataFootPropType,
-	TableDataPropType,
-	TableHeaderCellsPropType,
-	TableSelectionPropType,
-	TableStatelessProps,
+import {
+	type TableCallbacksPropType,
+	type TableDataFootPropType,
+	type TableDataPropType,
+	type TableHeaderCellsPropType,
+	type TableSelectionPropType,
+	type TableStatelessProps,
 } from '../../schema';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -20,6 +21,20 @@ import type { TableSettingsPropType } from '../../schema/props/table-settings';
 	shadow: true,
 })
 export class KolTableStateless implements TableStatelessProps {
+	@Element() private readonly host?: HTMLKolTableStatelessElement;
+
+	private internals?: HostInternals;
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public ariaLabelledby?: string;
+
+	@Watch('ariaLabelledBy')
+	protected handleAriaLabelledBy(value?: string): void {
+		handleAriaLabelledBy(this.host, this.internals, value);
+	}
+
 	/**
 	 * Defines the primary table data.
 	 */
@@ -60,9 +75,15 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
 
+	public componentWillLoad(): void {
+		this.internals = attachInternalsWithAria(this.host, this.ariaLabelledby);
+	}
+
 	public render(): JSX.Element {
+		const showCaption = this.internals?.ariaLabelledByElements?.length;
 		return (
 			<KolTableStatelessWcTag
+				_ariaLabelledBy={showCaption ? this.ariaLabelledby : undefined}
 				_data={this._data}
 				_dataFoot={this._dataFoot}
 				_headerCells={this._headerCells}

@@ -44,6 +44,7 @@ import type { MinWidthPropType } from '../../schema/props/min-width';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import { validateTableSettings } from '../../schema/props/table-settings';
+import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -64,7 +65,20 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	@Element() private readonly host?: HTMLKolTableStatefulElement;
+
+	private internals?: HostInternals;
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public ariaLabelledby?: string;
+
+	@Watch('ariaLabelledBy')
+	protected handleAriaLabelledBy(value?: string): void {
+		handleAriaLabelledBy(this.host, this.internals, value);
+	}
+
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
@@ -378,6 +392,8 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.internals = attachInternalsWithAria(this.host, this.ariaLabelledby);
+
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -543,6 +559,8 @@ export class KolTableStateful implements TableAPI {
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
+		const showCaption = this.internals?.ariaLabelledByElements?.length;
+
 		const headerCells: TableHeaderCells = {
 			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
 			vertical: this.state._headers.vertical?.map((column) => column.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
@@ -551,6 +569,7 @@ export class KolTableStateful implements TableAPI {
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
+					_ariaLabelledBy={showCaption ? this.ariaLabelledby : undefined}
 					ref={this.catchRef}
 					_data={displayedData}
 					_headerCells={headerCells}

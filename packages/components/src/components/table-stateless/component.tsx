@@ -42,6 +42,7 @@ import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import { validateTableSettings } from '../../schema/props/table-settings';
+import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
 
 /**
  * @internal
@@ -52,6 +53,8 @@ import { validateTableSettings } from '../../schema/props/table-settings';
 })
 export class KolTableStateless implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
+	private internals?: HostInternals;
 
 	private readonly translateNoEntries = translate('kol-no-entries');
 
@@ -83,6 +86,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	@State()
 	private previousHeaderCells?: TableHeaderCellsPropType;
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public _ariaLabelledBy?: string;
 
 	/**
 	 * Defines the primary table data.
@@ -123,6 +131,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the table settings including column visibility, order and width.
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
+
+	@Watch('_ariaLabelledBy')
+	protected handleAriaLabelledBy(value?: string): void {
+		handleAriaLabelledBy(this.host, this.internals, value);
+	}
 
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
@@ -492,6 +505,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.internals = attachInternalsWithAria(this.host, this._ariaLabelledBy);
+
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
@@ -903,6 +918,8 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const sortedHorizontalHeaders = this.state._headerCells.horizontal?.map((row) => this.sortByColumnPosition(row));
 
+		const showCaption = this.internals?.ariaLabelledByElements?.length === 0;
+
 		return (
 			<div class="kol-table">
 				<KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />
@@ -927,14 +944,20 @@ export class KolTableStateless implements TableStatelessAPI {
 						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
 						 * prevent screen readers from just reading "blank".
 						 */}
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+						<div
+							aria-labelledby={showCaption ? 'caption' : this._ariaLabelledBy}
+							class="kol-table__focus-element"
+							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+							tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}
+						>
 							&nbsp;
 						</div>
 
-						<caption class="kol-table__caption" id="caption">
-							{this.state._label}
-						</caption>
+						{showCaption && (
+							<caption class="kol-table__caption" id="caption">
+								{this.state._label}
+							</caption>
+						)}
 
 						{Array.isArray(sortedHorizontalHeaders) && (
 							<thead class="kol-table__head">
