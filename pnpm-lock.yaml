@@ -530,18 +530,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-order:
-        specifier: 7.0.0
-        version: 7.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       terser:
         specifier: 5.42.0
         version: 5.42.0
@@ -738,18 +726,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-order:
-        specifier: 7.0.0
-        version: 7.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -873,18 +849,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-order:
-        specifier: 7.0.0
-        version: 7.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -945,18 +909,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-order:
-        specifier: 7.0.0
-        version: 7.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -22126,7 +22078,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3
+      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.13.3)(@types/node@24.0.1)(typescript@5.8.3))
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -22222,7 +22174,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-jasmine2@26.6.3:
+  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.13.3)(@types/node@24.0.1)(typescript@5.8.3)):
     dependencies:
       '@babel/traverse': 7.28.0
       '@jest/environment': 26.6.2
@@ -22243,7 +22195,11 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
+      - bufferutil
+      - canvas
       - supports-color
+      - ts-node
+      - utf-8-validate
 
   jest-leak-detector@26.6.2:
     dependencies:

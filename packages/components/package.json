@@ -134,10 +134,6 @@
 		"rimraf": "6.0.1",
 		"stencil-awesome-test": "1.0.6",
 		"stylelint": "16.20.0",
-		"stylelint-config-recommended-scss": "15.0.1",
-		"stylelint-config-standard": "38.0.0",
-		"stylelint-order": "7.0.0",
-		"stylelint-scss": "6.12.1",
 		"terser": "5.42.0",
 		"twig": "1.17.1",
 		"typescript": "5.8.3"
