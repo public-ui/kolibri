@@ -7,6 +7,11 @@
 		border-style: solid;
 		border-width: 1px;
 
+		&:focus-within {
+			outline: 2px solid var(--color-blue);
+			outline-offset: -2px;
+		}
+
 		&__heading-button {
 			button {
 				text-align: left;
@@ -30,8 +35,7 @@
 				}
 
 				&:focus {
-					outline: 2px solid var(--color-blue);
-					outline-offset: -2px;
+					outline: none;
 				}
 			}
 

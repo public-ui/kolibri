@@ -8,6 +8,10 @@
 		height: 100%;
 		display: grid;
 
+		&:focus-within {
+			@include focus-outline;
+		}
+
 		&__content {
 			margin: 0;
 			padding-left: 2.25em;
@@ -22,15 +26,6 @@
 		&__heading-button {
 			display: flex;
 
-			&:focus-within {
-				@include focus-outline;
-				cursor: pointer;
-
-				button {
-					outline: 0;
-				}
-			}
-
 			.kol-span-wc > span {
 				display: flex;
 				place-items: baseline center;
@@ -44,7 +39,6 @@
 
 			button {
 				padding: to-rem(12) to-rem(8);
-
 				:focus {
 					outline: none;
 				}

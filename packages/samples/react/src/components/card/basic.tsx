@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolCard } from '@public-ui/react';
+import { KolCard, KolPopoverButton } from '@public-ui/react';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -18,6 +18,12 @@ export const CardBasic: FC = () => (
 
 			<KolCard _label="Card with closer" _hasCloser>
 				<p>This card has a close button.</p>
+			</KolCard>
+
+			<KolCard _label="Card with popover">
+				<KolPopoverButton _label="Open popover">
+					<p>Popover content extending beyond the accordion boundaries.</p>
+				</KolPopoverButton>
 			</KolCard>
 		</div>
 	</>
