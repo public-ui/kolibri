@@ -13,12 +13,15 @@
 	.range {
 		flex: 0 0 auto;
 		order: var(--kol-pagination-range-order, 0);
+		text-align: left;
 	}
 
 	.controls {
 		flex: 1 1 auto;
 		min-width: 0;
 		order: var(--kol-pagination-controls-order, 1);
+		display: flex;
+		justify-content: center;
 	}
 
 	.page-size {
@@ -28,9 +31,10 @@
 
 	.navigation-list {
 		align-items: center;
-		display: inline-flex;
+		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5em;
+		justify-content: center;
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -38,5 +42,13 @@
 
 	.separator:before {
 		content: '•••';
+	}
+
+	@media (max-width: 600px) {
+		.range,
+		.page-size {
+			flex: 0 0 100%;
+			text-align: center;
+		}
 	}
 }
