@@ -28,13 +28,14 @@ hr {
 }
 
 .visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: clip;
+
+	white-space: nowrap;
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
 }
 
 .black-background {
@@ -84,7 +85,6 @@ hr {
 }
 
 @media print {
-
 	.no-print,
 	.no-print * {
 		display: none !important;

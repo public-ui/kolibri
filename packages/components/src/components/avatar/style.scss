@@ -3,28 +3,29 @@
 @use '../host-display-block' as *;
 
 @layer kol-component {
-	.container {
+	.container,
+	.image,
+	.initials {
 		border-radius: 50%;
-		overflow: hidden;
+	}
+
+	.image,
+	.initials {
+		width: 100%;
+		height: 100%;
+	}
+
+	.container {
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
-		/*theme?*/
 		width: to-rem(100);
 		height: to-rem(100);
 	}
 
-	.image {
-		width: 100%;
-		height: 100%;
-	}
-
 	.initials {
-		width: 100%;
-		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/*theme?*/
 		background-color: #d3d3d3;
 		font-size: to-rem(40);
 	}
