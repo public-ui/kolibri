@@ -7,36 +7,51 @@
 			gap: to-rem(16);
 			flex-wrap: wrap;
 			align-items: center;
+			justify-content: center;
 		}
 
 		.kol-pagination__range-text {
+			margin-right: auto;
 			order: var(--kol-pagination-range-order, 0);
 			flex: 0 0 auto;
 		}
 
 		.kol-pagination__navigation {
+			display: flex;
 			min-width: 0;
 			order: var(--kol-pagination-controls-order, 1);
 			flex: 1 1 auto;
+			justify-content: center;
 		}
 
 		.kol-pagination__page-size {
+			margin-left: auto;
 			order: var(--kol-pagination-page-size-order, 2);
 			flex: 0 0 auto;
 		}
 
 		.kol-pagination__navigation-list {
-			display: inline-flex;
+			display: flex;
 			margin: 0;
 			padding: 0;
 			gap: 0.5em;
 			flex-wrap: wrap;
 			align-items: center;
+			justify-content: center;
 			list-style: none;
 		}
 
 		.kol-pagination__separator:before {
 			content: '•••';
+		}
+
+		@media (max-width: to-rem(640)) {
+			.kol-pagination__range-text,
+			.kol-pagination__page-size {
+				margin-right: auto;
+				margin-left: auto;
+				text-align: center;
+			}
 		}
 	}
 }
