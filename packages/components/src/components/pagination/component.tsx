@@ -1,3 +1,5 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import type {
 	CustomClassPropType,
 	KoliBriPaginationButtonCallbacks,
@@ -21,14 +23,12 @@ import {
 	watchNumber,
 	watchValidator,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -104,8 +104,22 @@ export class KolPaginationWc implements PaginationAPI {
 				}
 			});
 
+		const total = this.state._max > 0 ? this.state._max : 0;
+		const pageSize = this.state._pageSize > 0 ? this.state._pageSize : 10;
+		const start = total > 0 && pageSize ? (this.state._page - 1) * pageSize + 1 : 0;
+		const end = total > 0 && pageSize ? Math.min(this.state._page * pageSize, total) : 0;
+		const rangeLabel = pageSize
+			? translate('kol-table-visible-range', {
+					placeholders: {
+						start: start.toString(),
+						end: end.toString(),
+						total: total.toString(),
+					},
+				})
+			: '';
 		return (
 			<Host class="kol-pagination">
+				<span class="kol-pagination__range-text">{rangeLabel}</span>
 				<nav class="kol-pagination__navigation" aria-label={this.state._label}>
 					<ul class="kol-pagination__navigation-list">
 						{this.state._hasButtons.first && (
@@ -173,7 +187,7 @@ export class KolPaginationWc implements PaginationAPI {
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<KolSelectTag
-						class="kol-pagination__page-size-select"
+						class="kol-pagination__page-size"
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
 						_label={this.translateEntriesPerSite}
