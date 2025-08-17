@@ -217,7 +217,8 @@ In the theme component layer, you can set what ever you need to realize your own
 - Do not `inherit` styles over the `:host` element, as this will override the styles of the basis global and component layers. This makes your component less robust from outside environment styles. Only the `kol-icon` inherits some specific styles, like `color`, `font-size`, `font-family` and `line-height`, as these are needed for the icon to be displayed correctly inline to this neighbored elements.
 - Do not set the default `font-family`, `font-size` or `box-sizing` in the basis or theme component layer (redundant), as these are already set in the basis global layers. If you need to set a different font-family or font-size, you can do this in the theme global layer.
 - Do not set `margin` or `padding` in the basis global and component layers. If you need to set a different margin or padding, you can do this in the theme global or component layers.
-- Do not use `overflow: hidden` in styling or theming, as it often causes issues for reuse and should be avoided.
+- Do not use `overflow: hidden` or `overflow: clip` in styling or theming, and avoid applying any `overflow` on elements such as slots, as it often causes issues for reuse and should be avoided.
+- Do not abbreviate or truncate text with `...` in HTML or via CSS (e.g. `text-overflow: ellipsis`).
 
 ## Samples
 
