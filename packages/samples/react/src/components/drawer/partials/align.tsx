@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolInputRadio } from '@public-ui/react';
+import { KolInputRadio } from '@public-ui/react-v19';
 
 import type { AlignPropType } from '@public-ui/components';
 

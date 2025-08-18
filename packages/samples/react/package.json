@@ -29,7 +29,7 @@
 		"@leanup/stack": "1.3.54",
 		"@playwright/test": "1.53.0",
 		"@public-ui/components": "workspace:*",
-		"@public-ui/react": "workspace:*",
+		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.36.0",
 		"@types/node": "24.0.1",
