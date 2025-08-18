@@ -89,7 +89,9 @@ ROUTES.set('breadcrumb/basic', {
 		skipFailures: true,
 	},
 	snapshot: {
-		skip: true,
+		zoom: {
+			skip: true,
+		},
 	},
 });
 ROUTES.set('button-link/basic', {
