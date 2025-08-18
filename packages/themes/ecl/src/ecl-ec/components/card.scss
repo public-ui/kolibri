@@ -10,27 +10,24 @@
 		box-shadow: 0 0 calc(var(--spacing-2xs) / 2) var(--color-black);
 	}
 
-	:host .kol-heading-wc {
+	:host .header {
 		display: inline-flex;
 		font-style: normal;
 		font-weight: 700;
 		font-size: 1.25em;
 		line-height: 1.75em;
-	}
-
-	:host div.header {
 		padding: var(--spacing-m) var(--spacing-m) var(--spacing-xs) var(--spacing-m);
 	}
 
-	:host div.content {
+	:host .content {
 		padding: var(--spacing-xs) var(--spacing-m) var(--spacing-m);
 	}
 
-	:host div.footer {
+	:host .footer {
 		padding: var(--spacing-xs) var(--spacing-m);
 	}
 
-	:host > div > div.content + div.footer {
+	:host > div > .content + .footer {
 		border-top: 2px solid var(--color-blue);
 	}
 }
