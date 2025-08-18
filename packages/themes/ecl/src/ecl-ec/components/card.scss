@@ -9,17 +9,14 @@
 		height: 100%;
 		grid-template-rows: min-content 2fr min-content;
 
-		&__headline {
+		&__header {
 			display: inline-flex;
+			padding: var(--spacing-m) var(--spacing-m) var(--spacing-xs) var(--spacing-m);
 
 			font-size: 1.25em;
 			font-weight: 700;
 			line-height: 1.75em;
 			font-style: normal;
-		}
-
-		&__header {
-			padding: var(--spacing-m) var(--spacing-m) var(--spacing-xs) var(--spacing-m);
 		}
 
 		&__content {
