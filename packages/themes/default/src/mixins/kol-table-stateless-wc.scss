@@ -38,7 +38,8 @@
 			border-spacing: 0.1rem 0;
 		}
 
-		th {
+		th,
+		thead td {
 			font-weight: normal;
 			color: var(--color-light);
 			background-color: var(--color-primary);
