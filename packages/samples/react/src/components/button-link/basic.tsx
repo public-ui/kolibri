@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolButtonLink, KolHeading } from '@public-ui/react';
+import { KolButtonLink, KolHeading } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';

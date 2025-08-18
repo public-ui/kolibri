@@ -1,5 +1,5 @@
 import { SampleDescription } from '../SampleDescription';
-import { KolTableStateful } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 

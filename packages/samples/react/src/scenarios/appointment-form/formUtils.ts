@@ -7,6 +7,6 @@ export function createErrorList(formikErrors: Record<string, string>): ErrorList
 	}));
 }
 
-export function focusErrorList(formikRef: React.RefObject<HTMLKolFormElement>) {
+export function focusErrorList(formikRef: React.RefObject<HTMLKolFormElement | null>) {
 	formikRef.current?.focusErrorList().catch(console.warn);
 }
