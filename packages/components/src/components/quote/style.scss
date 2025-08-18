@@ -10,8 +10,6 @@
 
 		&__cite {
 			&::before {
-				content: '—';
-
 				@at-root #{$root}--block & {
 					padding-right: 0.5em;
 				}
@@ -19,6 +17,7 @@
 				@at-root #{$root}--inline & {
 					padding: 0.5em;
 				}
+				content: '—';
 			}
 		}
 

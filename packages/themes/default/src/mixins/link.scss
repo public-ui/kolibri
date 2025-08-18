@@ -5,8 +5,9 @@
 		$root: &;
 
 		color: var(--color-primary);
-		font-style: normal;
+
 		font-weight: 400;
+		font-style: normal;
 
 		&:focus {
 			outline: none;
@@ -18,8 +19,8 @@
 
 		&__text {
 			@at-root #{$root}:focus & {
-				border-radius: var(--border-radius);
 				outline: var(--border-width) solid;
+				border-radius: var(--border-radius);
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 

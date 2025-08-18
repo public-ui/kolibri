@@ -3,19 +3,19 @@
 @mixin kol-pagination-styles {
 	@layer kol-component {
 		.kol-pagination {
-			align-items: center;
 			display: grid;
 			gap: to-rem(16);
+			align-items: center;
 			grid-template-columns: 1fr auto;
 
 			&__navigation-list {
-				align-items: center;
 				display: inline-flex;
-				flex-wrap: wrap;
-				gap: 0.5em;
-				list-style: none;
 				margin: 0;
 				padding: 0;
+				gap: 0.5em;
+				flex-wrap: wrap;
+				align-items: center;
+				list-style: none;
 			}
 
 			&__separator:before {

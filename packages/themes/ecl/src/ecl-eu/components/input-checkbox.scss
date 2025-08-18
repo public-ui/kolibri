@@ -43,18 +43,19 @@
 
 	.kol-checkbox {
 		.kol-input {
-			background-color: var(--color-white);
-			border-width: 2px;
-			border-style: solid;
-			border-color: var(--color-grey-75);
 			color: var(--color-grey);
+			background-color: var(--color-white);
+			border-color: var(--color-grey-75);
+			border-style: solid;
+			border-width: 2px;
+
 			line-height: 1.5;
 
 			&:focus {
 				outline-color: var(--color-blue);
-				outline-offset: 2px;
 				outline-style: solid;
 				outline-width: 2px;
+				outline-offset: 2px;
 			}
 
 			&:checked {
@@ -96,8 +97,8 @@
 	}
 
 	.kol-checkbox--variant-default {
-		min-width: unset;
 		width: unset;
+		min-width: unset;
 
 		&.kol-checkbox--checked .kol-icon {
 			color: var(--color-white);
@@ -125,8 +126,8 @@
 
 		&.kol-checkbox--error {
 			.kol-icon {
-				background-color: var(--color-red);
 				color: var(--color-white);
+				background-color: var(--color-red);
 			}
 
 			.kol-input::before {
@@ -134,8 +135,8 @@
 			}
 
 			&.kol-checkbox--checked .kol-icon {
-				background-color: var(--color-white);
 				color: #000;
+				background-color: var(--color-white);
 			}
 
 			&:hover {

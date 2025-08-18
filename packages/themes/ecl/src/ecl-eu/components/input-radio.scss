@@ -10,10 +10,10 @@
 	 * normalizes the layout of form elements.
 	*/
 	.kol-form-field {
-		border: 0;
 		margin: 0;
 		padding: 0;
 		flex-wrap: wrap;
+		border: 0;
 	}
 
 	/**
@@ -38,14 +38,15 @@
 	}
 
 	.kol-form-field {
-		border: 0;
+		padding: 0 to-rem(14) to-rem(10) to-rem(14);
 		gap: to-rem(8);
 		flex-wrap: wrap;
 		align-items: flex-start;
-		padding: 0 to-rem(14) to-rem(10) to-rem(14);
+		border: 0;
 
 		&__label {
 			color: var(--color-grey);
+
 			font-weight: var(--font-weight-bold);
 
 			&-text::after {

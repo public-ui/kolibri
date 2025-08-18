@@ -3,9 +3,10 @@
 @layer kol-theme-component {
 	.kol-link {
 		--kolibri-spacing: #{to-rem(4)};
-		appearance: none;
 		color: var(--color-blue);
+
 		text-decoration: underline;
+		appearance: none;
 
 		&:hover {
 			color: var(--color-blue-130);

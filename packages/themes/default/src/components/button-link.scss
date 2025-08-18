@@ -8,8 +8,9 @@
 		$root: &;
 
 		color: var(--color-primary);
-		font-style: normal;
+
 		font-weight: 400;
+		font-style: normal;
 
 		&:focus {
 			outline: none;
@@ -24,8 +25,8 @@
 
 		&__text {
 			@at-root #{$root}:focus & {
-				border-radius: var(--text-border-radius);
 				outline: var(--text-outline);
+				border-radius: var(--text-border-radius);
 			}
 
 			.kol-span__label {

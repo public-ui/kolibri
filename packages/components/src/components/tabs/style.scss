@@ -6,8 +6,8 @@
 @layer kol-component {
 	.kol-tabs {
 		display: var(--display);
-		grid-template-rows: var(--grid-template-rows);
 		grid-template-columns: var(--grid-template-columns);
+		grid-template-rows: var(--grid-template-rows);
 
 		&--align-right {
 			--display: grid;
@@ -45,15 +45,15 @@
 
 		&__button-group {
 			display: flex;
-			flex-wrap: wrap;
+			order: var(--button-group-order);
 
 			flex-direction: var(--button-group-flex-direction);
-			order: var(--button-group-order);
+			flex-wrap: wrap;
 
 			.kol-button {
 				border-bottom-color: transparent;
-				border-bottom-style: solid;
 				display: block;
+				border-bottom-style: solid;
 			}
 		}
 

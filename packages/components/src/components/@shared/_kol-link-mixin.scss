@@ -10,25 +10,24 @@
 
 		.#{$block-classname} {
 			$root: &;
+			display: inline-flex;
 
 			align-items: baseline;
-			display: inline-flex;
 			place-items: center;
 			text-align: left;
 			text-decoration-line: none;
 
 			&--standalone {
-				min-height: var(--a11y-min-size);
 				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
 			}
 
 			&__text {
 				.kol-span__label {
-					text-decoration-line: underline;
-
 					@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
 						text-decoration-thickness: 0.2em;
 					}
+					text-decoration-line: underline;
 				}
 			}
 

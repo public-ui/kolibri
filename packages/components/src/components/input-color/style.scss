@@ -22,10 +22,10 @@
 	}
 
 	&__inputs-wrapper {
-		align-items: center;
 		display: flex;
-		flex-direction: row;
 		gap: to-rem(6) !important;
+		flex-direction: row;
+		align-items: center;
 	}
 }
 

@@ -10,10 +10,10 @@
 		$root: &;
 
 		display: block;
+		padding: 0.5em;
 
 		overflow-x: auto;
 		overflow-y: hidden;
-		padding: 0.5em;
 
 		&__caption {
 			padding: 0.5em;
@@ -22,19 +22,19 @@
 		&__focus-element {
 			&:focus {
 				outline-color: var(--color-blue);
-				outline-offset: 2px;
 				outline-style: solid;
 				outline-width: 2px;
+				outline-offset: 2px;
 			}
 		}
 
 		&__table {
+			border-color: var(--color-ice);
+			border-style: solid;
 			width: 100%;
-			border-spacing: 0;
 			border-width: 0;
 			border-bottom-width: to-rem(2);
-			border-style: solid;
-			border-color: var(--color-ice);
+			border-spacing: 0;
 		}
 
 		&__cell {
@@ -43,24 +43,25 @@
 			&--selection,
 			&--header {
 				@at-root #{$root}__head-row:first-child & {
+					border-color: var(--color-ice);
+					border-style: solid;
 					border-width: 0;
 					border-top-width: to-rem(2);
-					border-style: solid;
-					border-color: var(--color-ice);
 				}
 
 				@at-root #{$root}__head-row:last-child & {
+					border-color: var(--color-ice);
+					border-style: solid;
 					border-width: 0;
 					border-bottom-width: to-rem(2);
-					border-style: solid;
-					border-color: var(--color-ice);
 				}
 			}
 
 			&--header {
-				font-weight: normal;
 				color: var(--color-midnight);
 				background-color: var(--color-white);
+
+				font-weight: normal;
 
 				&--ascending,
 				&--descending {
@@ -84,17 +85,17 @@
 		&__selection {
 			display: flex;
 			gap: 0.5em;
-			grid-template-columns: 1fr auto;
 			align-items: center;
+			grid-template-columns: 1fr auto;
 		}
 
 		&__selection-input {
 			&:focus {
-				border-color: var(--color-blue);
 				outline-color: var(--color-blue);
 				outline-style: solid;
-				outline-offset: 2px;
 				outline-width: 2px;
+				border-color: var(--color-blue);
+				outline-offset: 2px;
 			}
 
 			// CHECKBOX
@@ -109,8 +110,8 @@
 
 			// RADIO
 			&--radio {
-				display: block;
 				border-color: var(--color-grey-75);
+				display: block;
 				outline-offset: 2px;
 
 				&:not(:disabled):hover {

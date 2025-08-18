@@ -35,6 +35,21 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      stylelint:
+        specifier: 16.20.0
+        version: 16.20.0(typescript@5.8.3)
+      stylelint-config-recommended-scss:
+        specifier: 15.0.1
+        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
+      stylelint-config-standard:
+        specifier: 38.0.0
+        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
+      stylelint-order:
+        specifier: 7.0.0
+        version: 7.0.0(stylelint@16.20.0(typescript@5.8.3))
+      stylelint-scss:
+        specifier: 6.12.1
+        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
 
   packages/adapters/angular/v17:
     devDependencies:
@@ -515,15 +530,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       terser:
         specifier: 5.42.0
         version: 5.42.0
@@ -720,15 +726,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -852,15 +849,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -921,15 +909,6 @@ importers:
       stylelint:
         specifier: 16.20.0
         version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -1033,6 +1012,9 @@ importers:
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
+      cross-env:
+        specifier: 7.0.3
+        version: 7.0.3
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -11927,6 +11909,12 @@ packages:
   stylelint-config-standard@38.0.0:
     resolution: {integrity: sha512-uj3JIX+dpFseqd/DJx8Gy3PcRAJhlEZ2IrlFOc4LUxBX/PNMEQ198x7LCOE2Q5oT9Vw8nyc4CIL78xSqPr6iag==}
     engines: {node: '>=18.12.0'}
+    peerDependencies:
+      stylelint: ^16.18.0
+
+  stylelint-order@7.0.0:
+    resolution: {integrity: sha512-rSWxx0KscYfxU02wEskKXES9lkRzuuONMMNkZ7SUc6uiF3tDKm7e+sE0Ax/SBlG4TUf1sp1R6f3/SlsPGmzthg==}
+    engines: {node: '>=20.19.0'}
     peerDependencies:
       stylelint: ^16.18.0
 
@@ -26711,6 +26699,12 @@ snapshots:
     dependencies:
       stylelint: 16.20.0(typescript@5.8.3)
       stylelint-config-recommended: 16.0.0(stylelint@16.20.0(typescript@5.8.3))
+
+  stylelint-order@7.0.0(stylelint@16.20.0(typescript@5.8.3)):
+    dependencies:
+      postcss: 8.5.5
+      postcss-sorting: 9.1.0(postcss@8.5.5)
+      stylelint: 16.20.0(typescript@5.8.3)
 
   stylelint-scss@6.12.1(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:

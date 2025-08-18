@@ -3,14 +3,15 @@
 @mixin kol-button($block-classname) {
 	.#{$block-classname} {
 		$root: &;
-
-		appearance: none;
 		outline: none;
+
 		text-decoration: none;
 
+		appearance: none;
+
 		&:focus {
-			outline-offset: -4px;
 			outline: var(--text-focus-outline-color) solid to-rem(2);
+			outline-offset: -4px;
 		}
 
 		--text-focus-outline-color: var(--color-black);
@@ -88,18 +89,19 @@
 		}
 
 		&__text {
+			color: var(--text-color);
 			background-color: var(--text-background-color);
 			border-color: var(--text-border-color);
-			color: var(--text-color);
+			border-style: solid;
 
 			border-radius: 0;
-			border-style: solid;
-			border-width: 2px;
-			font-weight: var(--font-weight-bold);
-			margin: 0;
-			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
+			margin: 0;
 			padding: 0.25em 0.75em;
+			border-width: 2px;
+
+			font-weight: var(--font-weight-bold);
 			line-height: 1.2;
 
 			@at-root #{$root}--hide-label & {

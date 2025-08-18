@@ -11,8 +11,8 @@
 
 	.kol-toast-item {
 		@include kol-alert-theme;
-		display: block;
 		background-color: #fff;
+		display: block;
 		margin-top: to-rem(16);
 
 		&__alert {
