@@ -6,7 +6,7 @@
 	:host {
 		align-items: center;
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: row;
 		gap: to-rem(16);
 	}
 
@@ -45,9 +45,12 @@
 	}
 
 	@media (max-width: 600px) {
+		:host {
+			flex-direction: column;
+		}
+
 		.range,
 		.page-size {
-			flex: 0 0 100%;
 			text-align: center;
 		}
 	}
