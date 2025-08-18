@@ -12,19 +12,16 @@
 		border: 1px solid var(--color-subtle);
 	}
 
-	:host .kol-heading-wc {
+	:host .header {
+		padding: rem(16) rem(16) rem(8) rem(16);
 		line-height: rem(28);
 	}
 
-	:host div.header {
-		padding: rem(16) rem(16) rem(8) rem(16);
-	}
-
-	:host div.content {
+	:host .content {
 		padding: rem(8) rem(16) rem(16);
 	}
 
-	:host div.footer {
+	:host .footer {
 		padding: rem(8) rem(16);
 	}
 }

@@ -1,8 +1,9 @@
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { CardAPI, CardStates, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateHasCloser, validateLabel } from '../../schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
+import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 
 import type { JSX } from '@stencil/core';
@@ -18,6 +19,7 @@ import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolCard implements CardAPI {
+	private readonly nonce = nonce();
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -31,10 +33,13 @@ export class KolCard implements CardAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-card">
-				<div class="card">
-					<div class="header">
-						<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
-					</div>
+				{/*
+					Using a <div> with role="group" instead of <section> prevents assistive technologies
+					from turning each card with a heading into a landmark region. This avoids cluttering
+					page navigation when many cards are present.
+				*/}
+				<div aria-labelledby={this.nonce} class="card" role="group">
+					<KolHeadingWcTag class="header" id={this.nonce} _label={this.state._label} _level={this.state._level} />
 					<div class="content">
 						<slot />
 					</div>
@@ -50,7 +55,7 @@ export class KolCard implements CardAPI {
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
-						></KolButtonWcTag>
+						/>
 					)}
 				</div>
 			</Host>

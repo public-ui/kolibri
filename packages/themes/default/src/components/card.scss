@@ -11,19 +11,16 @@
 		border-radius: var(--border-radius);
 	}
 
-	:host .kol-heading-wc {
+	:host .header {
 		line-height: 1.75;
-	}
-
-	:host div.header {
 		padding: to-rem(16) to-rem(16) to-rem(8) to-rem(16);
 	}
 
-	:host div.content {
+	:host .content {
 		padding: to-rem(8) to-rem(16) to-rem(16);
 	}
 
-	:host div.footer {
+	:host .footer {
 		padding: to-rem(8) to-rem(16);
 	}
 }
