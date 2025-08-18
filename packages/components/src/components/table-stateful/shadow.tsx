@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import type {
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
@@ -36,7 +35,7 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
@@ -496,36 +495,19 @@ export class KolTableStateful implements TableAPI {
 		});
 
 		return (
-			<div class="pagination">
-				<span>
-					{translate('kol-table-visible-range', {
-						placeholders: {
-							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
-							end: this.pageEndSlice.toString(),
-							total:
-								this.state._pagination && this.state._pagination._max > 0
-									? this.state._pagination._max.toString()
-									: Array.isArray(this.state._data)
-										? this.state._data.length.toString()
-										: '0',
-						},
-					})}
-				</span>
-				<div>
-					<KolPaginationTag
-						_boundaryCount={this.state._pagination._boundaryCount}
-						_customClass={this.state._pagination._customClass}
-						_on={this.handlePagination}
-						_page={this.state._pagination._page}
-						_pageSize={this.state._pagination._pageSize}
-						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-						_siblingCount={this.state._pagination._siblingCount}
-						_tooltipAlign="bottom"
-						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-						_label={label}
-					></KolPaginationTag>
-				</div>
-			</div>
+			<KolPaginationTag
+				class="pagination"
+				_boundaryCount={this.state._pagination._boundaryCount}
+				_customClass={this.state._pagination._customClass}
+				_on={this.handlePagination}
+				_page={this.state._pagination._page}
+				_pageSize={this.state._pagination._pageSize}
+				_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+				_siblingCount={this.state._pagination._siblingCount}
+				_tooltipAlign="bottom"
+				_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+				_label={label}
+			/>
 		);
 	}
 

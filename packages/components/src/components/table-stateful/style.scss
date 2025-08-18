@@ -10,11 +10,6 @@
 			display: flex;
 			flex-wrap: wrap;
 		}
-
-		> div:last-child {
-			display: grid;
-			place-items: center;
-		}
 	}
 
 	@media (max-width: 1024px) {
@@ -24,8 +19,7 @@
 	}
 
 	@media (min-width: 1024px) {
-		div.pagination,
-		div.pagination > div:last-child {
+		div.pagination {
 			grid-auto-flow: column;
 		}
 	}
