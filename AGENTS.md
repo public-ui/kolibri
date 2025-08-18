@@ -228,16 +228,21 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 
 - Formatting is enforced via **Prettier** with settings defined in `prettier.config.js` (print width 160, single quotes, tabs).
 - `.editorconfig` sets `indent_style = tab` and `max_line_length = 160` for code files. Markdown and YAML files use spaces.
-- ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files.
+- ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files. Lint rules should **not** be disabled via inline comments. Instead, describe the problem and work towards a clean solution.
 - Lists and enumerations in code should be kept in alphanumeric order. This also applies to import specifiers and union type literals.
 - Commit messages follow the **Conventional Commits** specification.
 - See also the [Contributing Guide](CONTRIBUTING.md) for more details on coding conventions and best practices.
+- Spell "KoliBri" with this casing in all documentation and code. The only exception is the component named KolKolibri.
+- Use ESM import syntax in browser code and scripts whenever supported, instead of `require` imports.
+- Do not create barrel files (e.g. `index.ts` that re-export modules). Import modules directly instead.
+- Do not place constant declarations before import statements; imports must always be at the very top of the file.
 
 ## Linting and Formatting
 
 - Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks. You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
 - Ensure all packages are built by running `pnpm build` before executing `pnpm lint` or `pnpm test`. Some packages rely on generated artifacts that linting and testing depend on.
 - Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
+- If your pull request only modifies Markdown files, skip `pnpm build`, `pnpm lint` and `pnpm test`. Just format the Markdown using `pnpm format` or Prettier.
 
 ## Testing
 
