@@ -92,6 +92,10 @@ ROUTES.set('breadcrumb/basic', {
 		zoom: {
 			skip: true,
 		},
+		viewportSize: {
+			width: 600,
+			height: 400,
+		},
 	},
 });
 ROUTES.set('button-link/basic', {
