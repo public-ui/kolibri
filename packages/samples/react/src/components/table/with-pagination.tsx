@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTable } from '@public-ui/react';
+import { KolTable } from '@public-ui/react-v19';
 
 import { DATE_FORMATTER } from './formatter';
 import { SampleDescription } from '../SampleDescription';

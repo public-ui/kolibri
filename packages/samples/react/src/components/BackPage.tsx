@@ -1,4 +1,4 @@
-import { KolAlert, KolButton } from '@public-ui/react';
+import { KolAlert, KolButton } from '@public-ui/react-v19';
 import React from 'react';
 
 import type { FC } from 'react';

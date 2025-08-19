@@ -14,7 +14,7 @@
 	"ignoreDependencies": [
 		"@leanup/stack",
 		"@public-ui/components",
-		"@public-ui/react",
+		"@public-ui/react-v19",
 		"@public-ui/themes",
 		"@unocss/preset-mini",
 		"eslint-plugin-jsx-a11y",

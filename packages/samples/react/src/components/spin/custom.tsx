@@ -3,7 +3,7 @@ import { SampleDescription } from '../SampleDescription';
 
 import React from 'react';
 
-import { KolSpin } from '@public-ui/react';
+import { KolSpin } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 

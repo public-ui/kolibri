@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react';
+import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react-v19';
 
 import { THEME_OPTIONS } from '../shares/theme';
 

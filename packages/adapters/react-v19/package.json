@@ -1,0 +1,82 @@
+{
+	"name": "@public-ui/react-v19",
+	"version": "2.2.14",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"description": "React 19 framework adapter for KoliBri - The accessible HTML-Standard.",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag",
+		"react"
+	],
+	"scripts": {
+		"build": "unbuild"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"@types/minimatch": "5.1.2",
+		"@types/minimist": "1.2.5",
+		"@types/normalize-package-data": "2.4.4",
+		"@types/react": "19.1.10",
+		"@types/react-dom": "19.1.7",
+		"react": "19.1.1",
+		"react-dom": "19.1.1",
+		"typescript": "5.8.3",
+		"unbuild": "3.5.0"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "workspace:*",
+		"react": ">=19.0.0",
+		"react-dom": ">=19.0.0"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	]
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KolTable, KolTabs, KolNav } from '@public-ui/react';
+import { KolTable, KolTabs, KolNav } from '@public-ui/react-v19';
 import type { KoliBriTableHeaders, TabButtonProps } from '@public-ui/components';
 import { SampleDescription } from '../../components/SampleDescription';
 import { LINKS } from '../../components/nav/links';

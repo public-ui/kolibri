@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTextarea } from '@public-ui/react';
+import { KolTextarea } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const TextareaCounter: FC = () => (

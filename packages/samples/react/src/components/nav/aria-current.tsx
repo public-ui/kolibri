@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolNav } from '@public-ui/react';
+import { KolNav } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../SampleDescription';
 

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolHeading, KolTable } from '@public-ui/react';
+import { KolHeading, KolTable } from '@public-ui/react-v19';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import type { Data } from './test-data';
 import { DATA } from './test-data';

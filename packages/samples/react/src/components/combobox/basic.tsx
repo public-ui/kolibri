@@ -4,7 +4,7 @@ import React from 'react';
 import { FormWrap } from '../FormWrap';
 import { ComboboxVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';
-import { KolBadge } from '@public-ui/react';
+import { KolBadge } from '@public-ui/react-v19';
 import { HideMenusContext } from '../../shares/HideMenusContext';
 export const ComboboxBasic: FC = () => {
 	const hideMenus = useContext(HideMenusContext);

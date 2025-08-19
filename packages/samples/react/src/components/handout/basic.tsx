@@ -33,7 +33,7 @@ import {
 	KolTabs,
 	KolTextarea,
 	KolVersion,
-} from '@public-ui/react';
+} from '@public-ui/react-v19';
 
 import { getTheme, getThemeName } from '../../shares/store';
 import { getRoot } from '../../shares/react-roots';
