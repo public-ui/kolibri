@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolButton, KolForm } from '@public-ui/react';
+import { KolButton, KolForm } from '@public-ui/react-v19';
 
 export const FormWrap = <P,>({ RefComponent: Component, showButtons = true, ...props }: { RefComponent: any; showButtons?: boolean } & Partial<P>) => {
 	return (

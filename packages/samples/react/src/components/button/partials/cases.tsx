@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { KolButton } from '@public-ui/react';
+import { KolButton } from '@public-ui/react-v19';
 import { useToasterService } from '../../../hooks/useToasterService';
 import type { ButtonSampleProps } from './type';
 

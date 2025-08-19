@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KolAccordion, KolTree, KolTreeItem } from '@public-ui/react';
+import { KolAccordion, KolTree, KolTreeItem } from '@public-ui/react-v19';
 import { useMobile } from '../hooks/useMobile';
 import type { Routes, Route } from '../shares/types';
 import { useHref, useMatch, useResolvedPath } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
+import { KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';

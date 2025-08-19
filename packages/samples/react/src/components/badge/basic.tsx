@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolBadge } from '@public-ui/react';
+import { KolBadge } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';

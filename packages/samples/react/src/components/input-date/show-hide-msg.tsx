@@ -1,4 +1,4 @@
-import { KolInputCheckbox, KolInputDate } from '@public-ui/react';
+import { KolInputCheckbox, KolInputDate } from '@public-ui/react-v19';
 import React, { useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 

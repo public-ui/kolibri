@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolPagination } from '@public-ui/react';
+import { KolPagination } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
