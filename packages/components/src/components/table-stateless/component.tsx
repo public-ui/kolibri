@@ -923,7 +923,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						}}
 					>
 						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<caption class="kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
+						<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
 							{this.state._label}
 						</caption>
 

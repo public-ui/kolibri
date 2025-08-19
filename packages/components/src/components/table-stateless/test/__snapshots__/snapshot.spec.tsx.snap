@@ -6,7 +6,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
       <table class="kol-table__table" style="min-width: max(400px, 0ch);">
-        <caption class="kol-table__caption" id="caption">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with horizontal and vertical headers
         </caption>
         <thead class="kol-table__head">
@@ -82,7 +82,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
       <table class="kol-table__table" style="min-width: max(400px, 0ch);">
-        <caption class="kol-table__caption" id="caption">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with only horizontal headers
         </caption>
         <thead class="kol-table__head">
@@ -128,7 +128,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
       <table class="kol-table__table" style="min-width: max(400px, 0ch);">
-        <caption class="kol-table__caption" id="caption">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two horizontal header rows
         </caption>
         <thead class="kol-table__head">
@@ -189,7 +189,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
       <table class="kol-table__table" style="min-width: max(400px, 0ch);">
-        <caption class="kol-table__caption" id="caption">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two spanned horizontal and vertical headers
         </caption>
         <thead class="kol-table__head">
