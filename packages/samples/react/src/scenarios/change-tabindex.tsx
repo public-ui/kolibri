@@ -21,7 +21,7 @@ import {
 	KolSingleSelect,
 	KolSplitButton,
 	KolTextarea,
-} from '@public-ui/react';
+} from '@public-ui/react-v19';
 import React from 'react';
 import type { FC } from 'react';
 import { ERROR_MSG, HINT_MSG } from '../shares/constants';

@@ -206,6 +206,12 @@ if (process.env.NODE_ENV === 'production') {
 			proxiesFile: '../adapters/react/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
+		reactOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			proxiesFile: '../adapters/react-v19/src/index.ts',
+			includeDefineCustomElements: false,
+		}),
 		solidOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,

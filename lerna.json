@@ -13,6 +13,7 @@
 		"packages/components",
 		"packages/designer",
 		"packages/samples/react",
+		"packages/adapters/react-v19",
 		"packages/schema",
 		"packages/themes",
 		"packages/themes/default",

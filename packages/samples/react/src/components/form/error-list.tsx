@@ -1,4 +1,4 @@
-import { KolButton, KolForm, KolInputText } from '@public-ui/react';
+import { KolButton, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { SampleDescription } from '../SampleDescription';

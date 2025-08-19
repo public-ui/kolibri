@@ -5,7 +5,7 @@ import { HideMenusContext } from '../../shares/HideMenusContext';
 import { SampleDescription } from '../SampleDescription';
 import { SingleSelectVariants } from './partials/variants';
 import { useContext } from 'react';
-import { KolBadge } from '@public-ui/react';
+import { KolBadge } from '@public-ui/react-v19';
 
 export const SingleSelectBasic: FC = () => {
 	const hideMenus = useContext(HideMenusContext);

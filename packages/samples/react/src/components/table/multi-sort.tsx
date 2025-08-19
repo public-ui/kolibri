@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
+import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react-v19';
 import type { KoliBriTableHeaders, KoliBriTableDataType } from '@public-ui/components';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
