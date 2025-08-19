@@ -1,5 +1,5 @@
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { CardAPI, CardStates, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateHasCloser, validateLabel } from '../../schema';
 
@@ -8,6 +8,7 @@ import { watchHeadingLevel } from '../heading/validation';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
+import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -17,8 +18,9 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	tag: 'kol-card-wc',
 	shadow: false,
 })
-export class KolCard implements CardAPI {
+export class KolCardWc implements CardAPI {
 	@Element() private readonly host?: HTMLKolCardElement;
+	private readonly nonce = nonce();
 	private readonly translateClose = translate('kol-close');
 
 	private readonly close = () => {
@@ -36,31 +38,36 @@ export class KolCard implements CardAPI {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-card">
-				<div class="kol-card__header">
-					<KolHeadingFc class="kol-card__headline" level={this.state._level}>
+			<Host>
+				{/*
+					Using a <div> with role="group" instead of <section> prevents assistive technologies
+					from turning each card with a heading into a landmark region. This avoids cluttering
+					page navigation when many cards are present.
+				*/}
+				<div aria-labelledby={this.nonce} class="kol-card" role="group">
+					<KolHeadingFc class="kol-card__header" id={this.nonce} level={this.state._level}>
 						{this.state._label}
 					</KolHeadingFc>
+					<div class="kol-card__content">
+						<slot />
+					</div>
+					{this.state._hasCloser && (
+						<KolButtonWcTag
+							class="kol-card__close-button"
+							data-testid="card-close-button"
+							_hideLabel
+							_icons={{
+								left: {
+									icon: 'codicon codicon-close',
+								},
+							}}
+							_label={this.translateClose}
+							_on={this.on}
+							_tooltipAlign="left"
+						/>
+					)}
 				</div>
-				<div class="kol-card__content">
-					<slot />
-				</div>
-				{this.state._hasCloser && (
-					<KolButtonWcTag
-						class="kol-card__close-button"
-						data-testid="card-close-button"
-						_hideLabel
-						_icons={{
-							left: {
-								icon: 'codicon codicon-close',
-							},
-						}}
-						_label={this.translateClose}
-						_on={this.on}
-						_tooltipAlign="left"
-					></KolButtonWcTag>
-				)}
-			</div>
+			</Host>
 		);
 	}
 

@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import type { AlignPropType } from '@public-ui/components';
-import { KolDrawer, KolButton, KolInputCheckbox } from '@public-ui/react';
+import { KolDrawer, KolButton, KolInputCheckbox } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import { DrawerRadioAlign } from './partials/align';

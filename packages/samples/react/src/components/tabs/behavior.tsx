@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolHeading, KolTabs } from '@public-ui/react';
+import { KolHeading, KolTabs } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 const tabs = [

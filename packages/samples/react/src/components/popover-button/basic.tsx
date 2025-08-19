@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolPopoverButton, KolToolbar, KolHeading } from '@public-ui/react';
+import { KolPopoverButton, KolToolbar, KolHeading } from '@public-ui/react-v19';
 import { useToasterService } from '../../hooks/useToasterService';
 
 export const PopoverButtonBasic: FC = () => {
