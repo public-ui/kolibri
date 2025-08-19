@@ -1253,9 +1253,6 @@ importers:
 
   packages/tools/visual-tests:
     dependencies:
-      '@playwright/test':
-        specifier: 1.53.0
-        version: 1.53.0
       '@public-ui/sample-react':
         specifier: workspace:*
         version: link:../../samples/react
@@ -1278,6 +1275,9 @@ importers:
       '@babel/preset-env':
         specifier: 7.27.2
         version: 7.27.2(@babel/core@7.27.4)
+      '@playwright/test':
+        specifier: 1.53.0
+        version: 1.53.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
