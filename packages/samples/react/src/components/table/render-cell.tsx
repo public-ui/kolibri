@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { createReactRenderElement, KolButton, KolInputText, KolTableStateful } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';

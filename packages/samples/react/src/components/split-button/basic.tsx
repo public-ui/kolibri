@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolSplitButton, KolToolbar } from '@public-ui/react';
+import { KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
 
