@@ -1,0 +1,6 @@
+@use '../iconfont/variables' as *;
+@use 'codepoints' as *;
+
+$material-icons-css-prefix: 'mi' !default;
+$material-icons-css-search: '_' !default;
+$material-icons-css-replace: '-' !default;
