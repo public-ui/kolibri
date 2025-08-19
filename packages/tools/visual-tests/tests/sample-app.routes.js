@@ -676,6 +676,13 @@ ROUTES.set('split-button/basic', {
 		},
 	},
 });
+ROUTES.set('table/horizontal-scrollbar', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('table/column-alignment', {
 	snapshot: {
 		zoom: {
