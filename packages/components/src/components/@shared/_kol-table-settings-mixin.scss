@@ -9,19 +9,15 @@
 			right: 0;
 			z-index: 1;
 
-			.kol-popover-button__popover {
-				overflow: unset !important; // reset browser default
-			}
-
 			&__columns-container {
 				max-height: to-rem(200);
 				margin-top: to-rem(16);
-				overflow-x: hidden;
-				overflow-y: auto;
+				overflow: auto;
 			}
 
 			&__columns {
 				display: grid;
+				overflow: hidden;
 				gap: to-rem(8);
 				align-items: center;
 				grid-auto-rows: min-content;
