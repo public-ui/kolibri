@@ -1,12 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-modal should render with _label="Label" _width="80%" 1`] = `
+exports[`kol-modal should render with _label="Blank Modal" _variant="blank" _width="80%" 1`] = `
 <kol-modal>
   <template shadowrootmode="open">
-    <dialog aria-label="Label" class="kol-modal" style="width: 80%;">
-      <div tabindex="-1">
+    <dialog aria-label="Blank Modal" class="kol-modal kol-modal__blank" style="width: 80%;">
+      <slot></slot>
+    </dialog>
+  </template>
+</kol-modal>
+`;
+
+exports[`kol-modal should render with _label="Modal as Card" _variant="card" _width="80%" 1`] = `
+<kol-modal>
+  <template shadowrootmode="open">
+    <dialog aria-label="Modal as Card" class="kol-modal kol-modal__card" style="width: 80%;">
+      <kol-card-wc _hascloser="" _label="Modal as Card">
         <slot></slot>
-      </div>
+      </kol-card-wc>
     </dialog>
   </template>
 </kol-modal>

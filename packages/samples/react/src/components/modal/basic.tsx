@@ -1,91 +1,61 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 
-import { KolButton, KolCard, KolModal } from '@public-ui/react-v19';
+import { KolButton, KolModal } from '@public-ui/react-v19';
+import { useSearchParams } from 'react-router';
 import { SampleDescription } from '../SampleDescription';
 
 export const ModalBasic: FC = () => {
 	const [searchParams] = useSearchParams();
-	const modalState = searchParams.get('show-modal') as string;
-	const defaultVariant = searchParams.get('variant') as string;
-	const modalElement = useRef<HTMLKolModalElement>(null);
-	const stackedModalElement = useRef<HTMLKolModalElement>(null);
-	const [variant, setVariant] = useState<'card' | 'blank'>('blank');
+
+	const showModal = searchParams.get('show-modal') as string;
+
+	const blankRef = useRef<HTMLKolModalElement>(null);
+	const cardRef = useRef<HTMLKolModalElement>(null);
+
+	const onOpenBlankModal = {
+		onClick: () => blankRef.current?.openModal(),
+	};
+	const onOpenCardModal = {
+		onClick: () => cardRef.current?.openModal(),
+	};
+	const onCloseBlankModal = {
+		onClick: () => blankRef.current?.closeModal(),
+	};
+
 	useEffect(() => {
-		if (modalState === 'true') {
-			modalElement.current?.openModal();
+		if (showModal === 'true') {
+			blankRef.current?.openModal();
+			cardRef.current?.openModal();
 		}
-		if (defaultVariant === 'card') {
-			setVariant(defaultVariant);
-		}
-	}, [modalState, defaultVariant]);
+	}, []);
 
 	return (
 		<>
 			<SampleDescription>
 				<p>
-					KolModal renders content in a popover, disabling interactivity with elements behind it. In the sample, the modal can be opened and closed using the
-					buttons &quot;Open modal&quot; and &quot;Close modal&quot;.
+					KolModal supports the variants <code>blank</code> and <code>card</code>. The card variant includes a <code>KolCard</code> container and a closer
+					button.
 				</p>
 			</SampleDescription>
 
-			<div className="flex">
-				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }} _variant={variant}>
-					<KolCard _label="I am a modal.">
-						<KolButton
-							_label="Open stacked modal"
-							className="mr"
-							_on={{
-								onClick: () => {
-									stackedModalElement.current?.openModal();
-								},
-							}}
-						/>
+			<div className="grid gap-8">
+				<div>
+					<KolButton _label="Open blank modal" _on={onOpenBlankModal} />
+					<KolModal ref={blankRef} _label="Blank modal" _variant="blank" _width="40%">
+						<div className="bg-white p-4 rounded shadow">
+							<p className="mt-0">You must add styling and a close button yourself.</p>
+							<KolButton _label="Open card modal" className="mr" _on={onOpenCardModal} />
+							<KolButton _label="Close" _on={onCloseBlankModal} />
+						</div>
+					</KolModal>
+				</div>
 
-						<KolButton
-							_label="Close modal"
-							_on={{
-								onClick: () => {
-									modalElement.current?.closeModal();
-								},
-							}}
-						/>
-					</KolCard>
-				</KolModal>
-
-				<KolModal _label="Stacked modal" _width="80%" ref={stackedModalElement}>
-					<KolCard _label="Stacked modal element">
-						<KolButton
-							_label="Close stacked modal"
-							_on={{
-								onClick: () => {
-									stackedModalElement.current?.closeModal();
-								},
-							}}
-						/>
-					</KolCard>
-				</KolModal>
-				<div className="grid gap-4">
-					<KolButton
-						_label="Open modal"
-						_on={{
-							onClick: () => {
-								setVariant('blank');
-								modalElement.current?.openModal();
-							},
-						}}
-					/>
-
-					<KolButton
-						_label="Open card modal"
-						_on={{
-							onClick: () => {
-								setVariant('card');
-								modalElement.current?.openModal();
-							},
-						}}
-					/>
+				<div>
+					<KolButton _label="Open card modal" _on={onOpenCardModal} />
+					<KolModal ref={cardRef} _label="Card modal" _variant="card" _width="30%">
+						<p className="mt-0">This variant wraps content inside a KolCard.</p>
+					</KolModal>
 				</div>
 			</div>
 		</>

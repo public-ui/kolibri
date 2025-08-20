@@ -542,17 +542,6 @@ ROUTES.set('modal/basic?show-modal=true', {
 		},
 	},
 });
-ROUTES.set('modal/basic?show-modal=true&variant=card', {
-	snapshot: {
-		viewportSize: {
-			width: 1920,
-			height: 600,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('nav/aria-current', {
 	snapshot: {
 		skip: true,
