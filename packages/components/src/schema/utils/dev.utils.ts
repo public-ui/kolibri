@@ -1,12 +1,24 @@
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
 
-export const getWindow = (): Window => (WINDOW || typeof window === 'undefined' ? (null as unknown as Window) : window);
+export const getWindow = (): Window => {
+	if (WINDOW) return WINDOW;
+	if (typeof window !== 'undefined') return window;
+	// For SSR/test environments, return a minimal mock instead of unsafe null casting
+	return {} as Window;
+};
+
 export const setWindow = (value: Window): void => {
 	WINDOW = value;
 };
 
-export const getDocument = (): Document => (DOCUMENT || typeof getWindow().document === 'undefined' ? (null as unknown as Document) : getWindow().document);
+export const getDocument = (): Document => {
+	if (DOCUMENT) return DOCUMENT;
+	const win = getWindow();
+	if (win && typeof win.document !== 'undefined') return win.document;
+	// For SSR/test environments, return a minimal mock instead of unsafe null casting
+	return {} as Document;
+};
 export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
@@ -24,11 +36,26 @@ export const setRuntimeMode = (mode: Mode): void => {
 			throw new Error(`Invalid NODE_ENV value: ${mode}. Expected one of ${MODES.join(', ')}.`);
 		}
 	} catch (e) {
-		void 0;
+		// Fallback to production mode if mode detection fails
+		runtimeMode = 'production';
 	}
 };
 
-setRuntimeMode(process.env['NODE_ENV'] as Mode);
+// Safer mode detection that handles browser environments better
+const getInitialMode = (): Mode => {
+	try {
+		// Try to get NODE_ENV, but handle cases where process is not available
+		const nodeEnv = typeof process !== 'undefined' && process.env ? process.env['NODE_ENV'] : undefined;
+		if (nodeEnv && MODES.includes(nodeEnv as Mode)) {
+			return nodeEnv as Mode;
+		}
+	} catch (e) {
+		// Ignore errors in browser environments where process might not be available
+	}
+	return 'production';
+};
+
+setRuntimeMode(getInitialMode());
 
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;

@@ -42,7 +42,10 @@ export const bootstrap = async (
 	initialized = true;
 	options = koliBriOptions;
 
-	Log.info('Development mode active - Enhanced debugging features available');
+	// Only log development message when actually in development mode
+	if (koliBriOptions?.environment === 'development') {
+		Log.info('Development mode active - Enhanced debugging features available');
+	}
 
 	return coreRegisterReturnValue;
 };
