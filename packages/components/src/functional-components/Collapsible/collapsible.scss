@@ -7,6 +7,11 @@
 		&__wrapper {
 			display: grid;
 			grid-template-rows: 0fr;
+			/**
+			 * The `overflow: hidden` ensures that the content is not visible during the animated
+			 * opening and closing. This should also cut off overlays containing content, but it
+			 *does not.
+			 */
 			overflow: hidden;
 			transition: grid-template-rows 0.3s;
 			/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
