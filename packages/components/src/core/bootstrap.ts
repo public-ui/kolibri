@@ -32,7 +32,7 @@ export const bootstrap = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	koliBriOptions?: KoliBriOptions,
 ): Promise<void[]> => {
-	setRuntimeMode(koliBriOptions?.environment ?? 'production');
+	setRuntimeMode(koliBriOptions?.environment || (process?.env?.NODE_ENV as Mode) || 'production');
 
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);
 	if (koliBriOptions?.transformTagName) {
@@ -43,9 +43,7 @@ export const bootstrap = async (
 	options = koliBriOptions;
 
 	// Only log development message when actually in development mode
-	if (koliBriOptions?.environment === 'development') {
-		Log.info('Development mode active - Enhanced debugging features available');
-	}
+	Log.info('Development mode active - Enhanced debugging features available');
 
 	return coreRegisterReturnValue;
 };

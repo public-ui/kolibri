@@ -36,7 +36,6 @@ export const setRuntimeMode = (mode: Mode): void => {
 			throw new Error(`Invalid NODE_ENV value: ${mode}. Expected one of ${MODES.join(', ')}.`);
 		}
 	} catch (e) {
-		// Fallback to production mode if mode detection fails
 		runtimeMode = 'production';
 	}
 };
