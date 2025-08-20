@@ -616,3 +616,5 @@ cd packages/samples/react && pnpm start
 ```
 
 Always prioritize these validated workflows over attempting alternative approaches.
+
+For more information about the project follow the [AGENTS.md](../AGENTS.md) files.
