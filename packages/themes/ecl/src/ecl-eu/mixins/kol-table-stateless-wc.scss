@@ -6,6 +6,12 @@
 	@include kol-alert-theme;
 	@include kol-pagination-styles;
 
+	:host {
+		display: flex;
+		gap: to-rem(8);
+		flex-direction: column;
+	}
+
 	.kol-table {
 		$root: &;
 
