@@ -1,6 +1,9 @@
-@use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
+@use '../../styles/kol-card-mixin' as *;
+@use '../@shared/mixins' as *;
 @use '../tooltip/style.scss' as *;
+
+@include kol-card;
 
 @layer kol-component {
 	.kol-modal {
@@ -9,7 +12,7 @@
 		border: 0;
 
 		&::backdrop {
-			background-color: rgb(0, 0, 0, 0.33);
+			background-color: rgb(0, 0, 0, 0.1);
 		}
 
 		&__close-button {
