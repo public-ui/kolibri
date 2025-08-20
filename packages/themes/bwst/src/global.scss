@@ -38,11 +38,8 @@
 	}
 
 	:host {
+		font-family: var(--font-family);
 		font-size: var(--font-size);
-
-		* {
-			font-family: var(--font-family);
-		}
 	}
 
 	h1,
