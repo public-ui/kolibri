@@ -1,6 +1,5 @@
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 
-import { Log } from '../schema';
 import { setMode } from '@stencil/core';
 
 export default () => {
@@ -19,13 +18,7 @@ export default () => {
 		return 'default';
 	});
 
-	import('./devtools')
-		.then((devTools) => {
-			if (typeof devTools === 'object' && devTools !== null && typeof devTools.initialize === 'function') {
-				devTools.initialize();
-			}
-		})
-		.catch((error) => {
-			Log.error(error);
-		});
+	// DevTools disabled to prevent E2E test timeouts
+	// The devtools initialization was causing blocking DOM operations during page.setContent()
+	// TODO: Implement environment-aware devtools loading that doesn't block component initialization
 };
