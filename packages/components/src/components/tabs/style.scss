@@ -39,10 +39,6 @@
 			--button-group-order: 0;
 		}
 
-		&__content {
-			overflow: auto;
-		}
-
 		&__button-group {
 			display: flex;
 			order: var(--button-group-order);
