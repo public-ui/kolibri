@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.3",
+	"version": "3.0.4-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -31,7 +31,7 @@
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"test": "pnpm test:unit",
-    "test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts --no-experimental-strip-types"
+		"test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts --no-experimental-strip-types"
 	},
 	"type": "commonjs",
 	"dependencies": {
