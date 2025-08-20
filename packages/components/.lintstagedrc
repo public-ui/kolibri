@@ -1,4 +1,6 @@
 {
-    "**/*.{ts,tsx,js,jsx}": ["prettier --list-different", "eslint"],
-    "**/*.{md,css,scss}": "prettier --list-different"
+	"!(assets)/**/*.{md,css,scss}": "prettier --list-different",
+	"**/*.{ts,tsx,js,jsx}": ["prettier --list-different", "eslint --cache --cache-location node_modules/.cache/.eslintcache"],
+	"*.{md,css,scss}": "prettier --list-different",
+	"src/**/*.{css,scss}": ["stylelint"]
 }
