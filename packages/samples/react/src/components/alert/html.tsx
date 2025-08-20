@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolAlert, KolHeading, KolPopoverButton } from '@public-ui/react-v19';
+import { KolAlert, KolHeading } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import type { FC } from 'react';
 
@@ -30,9 +30,6 @@ export const AlertHtml: FC = () => (
 							Possimus, molestiae deleniti! Exercitationem blanditiis ducimus similique tempora ratione consequuntur eaque!
 						</p>
 					</div>
-					<KolPopoverButton _label="Open popover">
-						<p>Popover content extending beyond the alert boundaries.</p>
-					</KolPopoverButton>
 				</div>
 			</KolAlert>
 		</div>
