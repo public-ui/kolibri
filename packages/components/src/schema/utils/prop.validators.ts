@@ -110,7 +110,7 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 	 * Muss erstmal in sync bleiben, da sonst der
 	 * Tooltip nicht korrekt ausgerichtet wird.
 	 */
-	// if (component.hydrated === true || processEnv !== 'test') {
+	// if (component.hydrated === true || !isTestMode()) {
 	// clearTimeout(component.timeout as NodeJS.Timeout);
 	// component.timeout = setTimeout(() => {
 	// 	clearTimeout(component.timeout as NodeJS.Timeout);

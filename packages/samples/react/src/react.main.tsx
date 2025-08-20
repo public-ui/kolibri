@@ -55,6 +55,8 @@ void (async () => {
 				} as any);
 			},
 			{
+				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+				reflectInputValues: true,
 				theme: process.env.THEME_MODULE
 					? undefined
 					: {
@@ -81,8 +83,6 @@ void (async () => {
 						])
 					: undefined,
 				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
-				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-				reflectInputValues: true,
 			},
 		);
 

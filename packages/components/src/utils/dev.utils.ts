@@ -1,4 +1,4 @@
-import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '../schema';
+import { Log, getDocument, isTestMode, setColorContrastAnalysis, setExperimentalMode } from '../schema';
 
 import { getWindow } from '../schema';
 import { Env } from '@stencil/core';
@@ -8,7 +8,6 @@ const initMeta = (): void => {
 	if (meta && meta.hasAttribute('content')) {
 		const content = meta.getAttribute('content');
 		if (typeof content === 'string') {
-			setDevMode(content.includes('dev-mode=true'));
 			setExperimentalMode(content.includes('experimental-mode=true'));
 			setColorContrastAnalysis(content.includes('color-contrast-analysis=true'));
 		}
@@ -66,7 +65,7 @@ Email: kolibri@itzbund.de
 
 let nonce = (): string => Math.floor(Math.random() * 16777215).toString(16);
 
-if (processEnv === 'test') {
+if (isTestMode()) {
 	nonce = (): string => 'nonce';
 }
 

@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-
-type GetModeFn = () => boolean;
-
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
 
@@ -15,14 +11,31 @@ export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
 
-let DEV_MODE: boolean = false;
+const MODES = ['development', 'production', 'test'] as const;
+export type Mode = (typeof MODES)[number];
+
+let runtimeMode: Mode = 'production';
+
+export const setRuntimeMode = (mode: Mode): void => {
+	try {
+		if (MODES.includes(mode)) {
+			runtimeMode = mode;
+		} else {
+			throw new Error(`Invalid NODE_ENV value: ${mode}. Expected one of ${MODES.join(', ')}.`);
+		}
+	} catch (e) {
+		void 0;
+	}
+};
+
+setRuntimeMode(process.env['NODE_ENV'] as Mode);
+
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
-export const getDevMode = (): boolean => DEV_MODE === true;
-export const setDevMode = (mode: boolean): void => {
-	DEV_MODE = mode === true;
-};
+export const isDevMode = (): boolean => runtimeMode === 'development';
+export const isTestMode = (): boolean => runtimeMode === 'test';
+export const isProdMode = (): boolean => runtimeMode === 'production';
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const setExperimentalMode = (mode: boolean): void => {
@@ -62,47 +75,49 @@ const getShield = (label: string, options?: LogShieldOptions): string[] => {
 	return [handleClassifier(label, options?.classifier), `${LOG_STYLE};${options?.overwriteStyle || ''}`];
 };
 
-const isDevModeOrForceLog = (devMode: GetModeFn, forceLog?: boolean): boolean => devMode() || forceLog === true;
+const isDevModeOrForceLog = (forceLog?: boolean): boolean => isDevMode() || forceLog === true;
 
 export class Logger {
-	public constructor(
-		private readonly label: string,
-		private readonly devMode: GetModeFn,
-	) {}
+	public constructor(private readonly label: string) {}
 
 	public debug(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
+		if (isDevModeOrForceLog(options?.forceLog)) {
+			// eslint-disable-next-line no-console
 			console.debug(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public info(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
+		if (isDevModeOrForceLog(options?.forceLog)) {
+			// eslint-disable-next-line no-console
 			console.info(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public trace(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
+		if (isDevModeOrForceLog(options?.forceLog)) {
+			// eslint-disable-next-line no-console
 			console.trace(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public warn(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
+		if (isDevModeOrForceLog(options?.forceLog)) {
+			// eslint-disable-next-line no-console
 			console.warn(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public error(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		// eslint-disable-next-line no-console
 		console.error(...getShield(this.label, options), ...mapToArray(msg));
 	}
 
 	public throw(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
+		if (isDevModeOrForceLog(options?.forceLog)) {
 			throw new Error(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 }
 
-export const Log = new Logger('KoliBri', getDevMode);
+export const Log = new Logger('KoliBri');

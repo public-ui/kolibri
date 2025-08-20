@@ -1,6 +1,6 @@
 import {
 	getColorContrastAnalysis,
-	getDevMode,
+	isDevMode,
 	getDocument,
 	getExperimentalMode,
 	getWindow,
@@ -43,7 +43,7 @@ const metaModeLog = (name: string, active: boolean) => Log.debug(`${name} ${acti
 
 export const initialize = (): void => {
 	initKoliBri();
-	if (getDevMode()) {
+	if (isDevMode()) {
 		renderDevAdvice();
 
 		prototypeKoliBri('a11yColorContrast', koliBriA11yColorContrast);
@@ -79,7 +79,7 @@ export const initialize = (): void => {
 
 		getDocument().body.appendChild(div);
 
-		metaModeLog('Development mode', getDevMode());
+		metaModeLog('Development mode', isDevMode());
 		metaModeLog('Experimental mode', getExperimentalMode());
 		metaModeLog('Color contrast analysis', getColorContrastAnalysis());
 
