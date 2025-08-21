@@ -22,7 +22,7 @@ import {
 	KolHeading,
 	KolAlert,
 	KolLink,
-} from '@public-ui/react';
+} from '@public-ui/react-v19';
 
 import { SampleDescription } from '../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../shares/country';
