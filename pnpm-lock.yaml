@@ -557,18 +557,6 @@ importers:
       stencil-awesome-test:
         specifier: 1.0.6
         version: 1.0.6(@stencil/core@4.20.0)
-      stylelint:
-        specifier: 16.20.0
-        version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       terser:
         specifier: 5.42.0
         version: 5.42.0
@@ -811,18 +799,6 @@ importers:
       react-router-dom:
         specifier: 7.8.0
         version: 7.8.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      stylelint:
-        specifier: 16.20.0
-        version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -943,18 +919,6 @@ importers:
       sass-embedded:
         specifier: 1.89.2
         version: 1.89.2
-      stylelint:
-        specifier: 16.20.0
-        version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -1012,18 +976,6 @@ importers:
       sass-embedded:
         specifier: 1.89.2
         version: 1.89.2
-      stylelint:
-        specifier: 16.20.0
-        version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -1081,18 +1033,6 @@ importers:
       sass-embedded:
         specifier: 1.89.2
         version: 1.89.2
-      stylelint:
-        specifier: 16.20.0
-        version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -1150,18 +1090,6 @@ importers:
       sass-embedded:
         specifier: 1.89.2
         version: 1.89.2
-      stylelint:
-        specifier: 16.20.0
-        version: 16.20.0(typescript@5.8.3)
-      stylelint-config-recommended-scss:
-        specifier: 15.0.1
-        version: 15.0.1(postcss@8.5.5)(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-config-standard:
-        specifier: 38.0.0
-        version: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
-      stylelint-scss:
-        specifier: 6.12.1
-        version: 6.12.1(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3

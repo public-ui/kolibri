@@ -10,7 +10,7 @@
 		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
 		"src/scenarios/appointment-form/Summary.tsx"
 	],
-	"ignoreBinaries": ["eslint", "prettier"],
+	"ignoreBinaries": ["eslint", "prettier", "stylelint"],
 	"ignoreDependencies": [
 		"@leanup/stack",
 		"@public-ui/components",
