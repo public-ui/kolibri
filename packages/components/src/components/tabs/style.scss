@@ -13,8 +13,8 @@
 
 		button {
 			border-bottom-color: transparent;
-			border-bottom-style: solid;
 			display: block;
+			border-bottom-style: solid;
 		}
 	}
 
@@ -28,8 +28,8 @@
 		grid-template-columns: 1fr auto;
 
 		.tabs-button-group {
-			flex-direction: column;
 			order: 2;
+			flex-direction: column;
 
 			.kol-button-wc {
 				width: 100%;
@@ -42,8 +42,8 @@
 		grid-template-columns: auto 1fr;
 
 		.tabs-button-group {
-			flex-direction: column;
 			order: 0;
+			flex-direction: column;
 
 			.kol-button-wc {
 				width: 100%;

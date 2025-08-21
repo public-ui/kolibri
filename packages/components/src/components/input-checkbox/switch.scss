@@ -7,20 +7,20 @@
 
 	.switch input[type='checkbox'] {
 		display: inline-block;
-		height: 1.7em;
-		min-width: 3.2em;
 		position: relative;
 		width: 3.2em;
+		min-width: 3.2em;
+		height: 1.7em;
 	}
 
 	.switch input[type='checkbox']::before {
 		background-color: #000;
-		height: 1.2em;
-		left: calc(0.25em - to-rem(2));
-		top: calc(0.25em - to-rem(2));
 		position: absolute;
-		transition: 0.5s;
+		top: calc(0.25em - to-rem(2));
+		left: calc(0.25em - to-rem(2));
 		width: 1.2em;
+		height: 1.2em;
+		transition: 0.5s;
 	}
 
 	.switch input[type='checkbox']:checked::before {
@@ -32,19 +32,19 @@
 	}
 
 	.switch .icon {
-		cursor: pointer;
+		transform: translate(0, -50%);
+		color: #000;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 1.2em;
-		height: 1.2em;
 		position: absolute;
-		z-index: 1;
 		top: 50%;
 		left: to-rem(4);
-		transform: translate(0, -50%);
+		z-index: 1;
+		width: 1.2em;
+		height: 1.2em;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
 		transition: 0.5s;
-		color: #000;
 	}
 
 	.switch.checked .icon {

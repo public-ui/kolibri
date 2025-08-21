@@ -8,25 +8,25 @@
 
 	a,
 	button {
+		color: var(--color-petrol);
 		background-image: repeating-linear-gradient(to right, #66ddec, #66ddec);
-		background-repeat: no-repeat;
 		background-position: left 0 bottom 0;
 		background-size: 25% 0.25ex;
+		background-repeat: no-repeat;
 		border-radius: var(--spacing);
-		color: var(--color-petrol);
 		/* text-transform: uppercase; */
 		transition-delay: 0;
-		transition-timing-function: ease-in-out;
 		transition-duration: 0.5s;
 		transition-property: background, color, border-color;
+		transition-timing-function: ease-in-out;
 	}
 
 	a:focus,
 	a:hover,
 	button:focus,
 	button:hover {
-		background-size: 100% 0.25ex;
 		color: var(--color-achat);
+		background-size: 100% 0.25ex;
 	}
 
 	a > .kol-span-wc,
@@ -35,15 +35,15 @@
 	}
 
 	a.skip {
-		left: rem(-99999);
 		position: absolute;
+		left: rem(-99999);
 		z-index: 9999999;
 	}
 
 	a.skip:focus {
 		background-color: white;
 		box-shadow: 0 0 8px 8px white;
-		left: unset;
 		position: unset;
+		left: unset;
 	}
 }

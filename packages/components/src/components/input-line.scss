@@ -20,10 +20,10 @@
 	}
 
 	.input {
-		align-items: center;
 		background-color: white;
-		cursor: pointer;
 		display: flex;
+		align-items: center;
+		cursor: pointer;
 	}
 
 	button:not([role='link']) {

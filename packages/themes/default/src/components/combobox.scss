@@ -15,16 +15,16 @@ $visible-options: 5;
 
 		&__group {
 			display: inline-flex;
-			align-items: center;
 			width: 100%;
 			padding: 0 to-rem(8);
+			align-items: center;
 		}
 
 		&__input {
+			position: relative;
+			width: calc(100% - to-rem(40));
 			flex-grow: 1;
 			border: none;
-			width: calc(100% - to-rem(40));
-			position: relative;
 
 			&::placeholder {
 				color: var(--color-subtle);
@@ -41,9 +41,9 @@ $visible-options: 5;
 
 		&__icon {
 			display: grid;
-			place-items: center;
-			padding-left: to-rem(8);
 			padding-right: to-rem(8);
+			padding-left: to-rem(8);
+			place-items: center;
 
 			&:focus {
 				outline: 0;
@@ -51,27 +51,28 @@ $visible-options: 5;
 		}
 
 		&__listbox {
-			border-style: solid;
-			border-width: 1px;
-			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
-			overflow-y: auto;
-			overflow-x: hidden;
+			border-style: solid;
+			border-radius: var(--border-radius);
 			width: 100%;
 			max-height: calc($option-height * $visible-options + to-rem(2));
+			border-width: 1px;
+			overflow-x: hidden;
+			overflow-y: auto;
 		}
 
 		&__item {
 			display: flex;
-			align-items: center;
 			min-height: $option-height;
-			line-height: 1;
 			padding: to-rem(10) to-rem(12);
+			align-items: center;
+
+			line-height: 1;
 
 			&[aria-selected],
 			&:focus {
-				background-color: var(--color-primary-variant);
 				color: var(--color-light);
+				background-color: var(--color-primary-variant);
 				outline: 0;
 			}
 		}
@@ -90,8 +91,8 @@ $visible-options: 5;
 	}
 
 	.kol-input .input {
-		order: 3;
 		padding: 0;
+		order: 3;
 	}
 
 	.kol-input .counter {
@@ -110,20 +111,20 @@ $visible-options: 5;
 	.input {
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: 2px;
+		border-radius: var(--border-radius);
 		padding: 0 to-rem(8);
+		border-width: 2px;
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: to-rem(16);
 		padding-right: to-rem(16);
+		padding-left: to-rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) input {
-		padding-left: to-rem(8);
 		padding-right: to-rem(8);
+		padding-left: to-rem(8);
 	}
 
 	.input > input:first-child {
@@ -139,8 +140,9 @@ $visible-options: 5;
 	}
 
 	.required label > span::after {
-		content: '*';
 		padding-left: 0.125em;
+
+		content: '*';
 	}
 
 	.kol-input.error:not(.hidden-error) {
@@ -152,8 +154,8 @@ $visible-options: 5;
 	}
 
 	.kol-input.disabled .input {
+		color: var(--color-text);
 		background-color: var(--color-mute);
 		border-color: var(--color-mute-variant);
-		color: var(--color-text);
 	}
 }

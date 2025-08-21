@@ -8,9 +8,9 @@
 	}
 
 	:host > div:last-child {
+		border-color: var(--border-color);
 		border-style: solid;
 		border-width: 1px;
-		border-color: var(--border-color);
 	}
 
 	@media (min-width: 1024px) {

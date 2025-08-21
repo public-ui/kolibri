@@ -23,10 +23,11 @@
 	}
 
 	.initials {
+		background-color: #d3d3d3;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #d3d3d3;
+
 		font-size: to-rem(40);
 	}
 }

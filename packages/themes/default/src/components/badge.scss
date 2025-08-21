@@ -16,15 +16,15 @@
 	}
 
 	:host > span .kol-button-wc:hover > button {
-		background-color: var(--color-primary-variant);
 		color: var(--color-light);
+		background-color: var(--color-primary-variant);
 	}
 
 	:host > span .kol-button-wc > button {
 		color: inherit;
-		border-top-right-radius: var(--border-radius);
-		border-bottom-right-radius: var(--border-radius);
 		padding: to-rem(3.2);
+		border-bottom-right-radius: var(--border-radius);
+		border-top-right-radius: var(--border-radius);
 	}
 
 	:host > span .kol-span-wc {
@@ -32,9 +32,9 @@
 	}
 
 	:host > span > .kol-span-wc {
+		gap: to-rem(8);
 		align-items: center;
 		font-style: normal;
-		gap: to-rem(8);
 	}
 
 	:host > span > .kol-span-wc > span {

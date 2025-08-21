@@ -6,9 +6,9 @@
 @layer kol-component {
 	.toolbar {
 		display: flex;
-		align-items: center;
 		gap: to-rem(16);
 		flex-wrap: wrap;
+		align-items: center;
 
 		&:focus-within {
 			outline: 1px solid;

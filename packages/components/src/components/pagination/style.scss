@@ -4,20 +4,20 @@
 
 @layer kol-component {
 	:host {
-		align-items: center;
 		display: grid;
 		gap: to-rem(16);
+		align-items: center;
 		grid-template-columns: 1fr auto;
 	}
 
 	.navigation-list {
-		align-items: center;
 		display: inline-flex;
-		flex-wrap: wrap;
-		gap: 0.5em;
-		list-style: none;
 		margin: 0;
 		padding: 0;
+		gap: 0.5em;
+		flex-wrap: wrap;
+		align-items: center;
+		list-style: none;
 	}
 
 	.separator:before {

@@ -27,23 +27,23 @@
 		}
 
 		&__icon {
-			align-items: center;
-			cursor: pointer;
 			display: flex;
 			width: var(--a11y-min-size);
+			align-items: center;
+			cursor: pointer;
 		}
 
 		&__listbox {
+			background-color: white;
 			display: block;
 			position: absolute;
-			list-style-type: none;
+			z-index: 2;
+			max-height: to-rem(250);
 			margin: 0;
 			padding: 0;
-			overflow-y: auto;
 			overflow-x: hidden;
-			z-index: 2;
-			background-color: white;
-			max-height: to-rem(250);
+			overflow-y: auto;
+			list-style-type: none;
 		}
 
 		&__item {

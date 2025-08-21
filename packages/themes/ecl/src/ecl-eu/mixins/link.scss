@@ -1,9 +1,10 @@
 @mixin kol-link {
 	a,
 	button {
-		appearance: none;
 		color: var(--color-blue);
+
 		line-height: 1.2;
+		appearance: none;
 	}
 	a:hover,
 	button:hover {

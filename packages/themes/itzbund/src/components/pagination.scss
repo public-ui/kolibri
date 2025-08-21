@@ -3,18 +3,19 @@
 @layer kol-theme-component {
 	.button {
 		border-radius: 32px;
+
 		font-family: var(--font-family-sans);
 	}
 
 	.button-inner {
+		color: var(--color-anthrazit);
 		background-color: var(--color-weiss);
 		border-radius: 32px;
-		border: var(--spacing) solid var(--color-anthrazit);
-		color: var(--color-anthrazit);
-		gap: 0.25em;
-		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		padding: 0 rem(16);
+		gap: 0.25em;
+		border: var(--spacing) solid var(--color-anthrazit);
 		transition-duration: 0.5s;
 		transition-property: background, color, border-color;
 		transition-timing-function: ease-in-out;
@@ -26,22 +27,23 @@
 
 	.button:not(:disabled):hover .button-inner,
 	.button:focus .button-inner {
+		color: var(--color-weiss);
 		background-color: var(--color-anthrazit);
 		border-color: var(--color-anthrazit);
-		color: var(--color-weiss);
 	}
 
 	.button:disabled .button-inner {
-		cursor: not-allowed;
 		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	.selected .button-inner {
+		opacity: 1;
+		color: var(--color-weiss);
 		background-color: var(--color-achat);
 		border-color: var(--color-achat);
-		color: var(--color-weiss);
+
 		font-weight: bold;
-		opacity: 1;
 		text-decoration: underline;
 	}
 }

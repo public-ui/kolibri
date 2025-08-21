@@ -2,11 +2,11 @@
 
 @layer kol-theme-component {
 	:host > div > nav ul {
-		list-style: none;
+		background-color: var(--color-petrol);
+		border-radius: var(--border-radius);
 		margin: 0;
 		padding: 0;
-		border-radius: var(--border-radius);
-		background-color: var(--color-petrol);
+		list-style: none;
 	}
 
 	:host > div > nav ul > li {
@@ -37,29 +37,31 @@
 	}
 
 	:host > div > nav .kol-link-wc {
-		width: 100%;
 		/*height: 100%;font-weight: 600;*/
 		display: block;
+		width: 100%;
 	}
 
 	:host > div > nav .kol-link-wc a {
-		border-radius: var(--border-radius);
-		background-color: var(--color-petrol);
-		border: 1px solid transparent;
-		grid: flex;
-		line-height: 2;
-		padding: 0.5em;
 		color: white;
-		height: 100%;
-		-webkit-box-align: center;
-		align-items: center;
+		background-color: var(--color-petrol);
+		border-radius: var(--border-radius);
 		display: flex;
-		cursor: pointer;
+		height: 100%;
+		padding: 0.5em;
+		align-items: center;
+		grid: flex;
+
+		line-height: 2;
 		text-decoration: inherit;
+		border: 1px solid transparent;
+		-webkit-box-align: center;
+		cursor: pointer;
 	}
 
 	:host > div > nav .kol-link-wc[exportparts*='selected'] a {
 		background-color: var(--color-achat);
+
 		font-weight: 700;
 	}
 
@@ -73,9 +75,9 @@
 
 	:host > div > nav .kol-link-wc a:focus,
 	:host > div > nav .kol-link-wc a:hover {
-		border: 1px solid white;
-		background-color: var(--color-fluorit);
 		color: var(--color-anthrazit);
+		background-color: var(--color-fluorit);
+		border: 1px solid white;
 	}
 
 	/* compact button */
@@ -105,23 +107,23 @@
 
 	.toggle-button :is(a, button) > .kol-span-wc,
 	.toggle-button :is(a, button):disabled:hover > .kol-span-wc {
-		background-color: var(--color-ghost);
 		color: var(--color-anthrazit);
-		display: grid;
-		place-items: center;
-		border-radius: 32px;
+		background-color: var(--color-ghost);
+		border-color: transparent;
 		border-style: solid;
+		border-radius: 32px;
+		display: grid;
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
-		border-width: var(--spacing);
 		padding: 0 rem(8);
-		border-color: transparent;
+		border-width: var(--spacing);
+		place-items: center;
 	}
 
 	.toggle-button :is(a, button):hover > .kol-span-wc,
 	.toggle-button :is(a, button):focus > .kol-span-wc {
+		color: var(--color-anthrazit);
 		background-color: var(--color-ghost);
 		border-color: var(--color-ghost);
-		color: var(--color-anthrazit);
 	}
 }

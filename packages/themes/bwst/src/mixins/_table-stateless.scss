@@ -3,8 +3,8 @@
 @mixin kol-alert-table-stateless {
 	:host {
 		display: flex;
-		flex-direction: column;
 		gap: rem(8);
+		flex-direction: column;
 	}
 
 	:host > div {
@@ -14,38 +14,40 @@
 
 	caption {
 		padding: rem(8);
+
 		font-weight: bold;
 	}
 
 	th {
-		font-weight: normal;
 		color: var(--color-primary);
+
+		font-weight: normal;
 	}
 
 	:host table thead tr:first-child th,
 	:host table thead tr:first-child td {
+		border-color: var(--color-primary-variant);
+		border-style: solid;
 		border-width: 0;
 		border-top-width: calc(var(--border-width) * 2);
-		border-style: solid;
-		border-color: var(--color-primary-variant);
 	}
 
 	table {
+		border-color: var(--color-primary-variant);
+		border-style: solid;
 		border-width: 0;
 		border-bottom-width: calc(var(--border-width) * 2);
-		border-style: solid;
-		border-color: var(--color-primary-variant);
 	}
 
 	.head-spacer {
 		display: table-row;
 
 		td {
+			border-color: var(--color-primary-variant);
+			border-style: solid;
 			padding: 0;
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
-			border-style: solid;
-			border-color: var(--color-primary-variant);
 		}
 	}
 
@@ -54,9 +56,9 @@
 
 		&:has(.focus-element:focus) {
 			outline-color: var(--color-primary-variant);
-			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 3px;
+			outline-offset: 2px;
 			transition: outline-offset 0.2s linear;
 		}
 	}
@@ -87,16 +89,16 @@
 	.input {
 		input {
 			&:hover {
-				border-color: var(--color-primary);
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-color: var(--color-primary);
 			}
 
 			&:focus {
-				border-color: var(--color-primary);
 				outline-color: var(--color-primary-variant);
 				outline-style: solid;
-				outline-offset: 2px;
 				outline-width: 3px;
+				border-color: var(--color-primary);
+				outline-offset: 2px;
 			}
 
 			&:focus:hover {
@@ -135,8 +137,8 @@
 
 		// RADIO
 		input[type='radio'] {
-			display: flex;
 			border-color: var(--color-subtle);
+			display: flex;
 
 			&:checked {
 				border-color: var(--color-primary);

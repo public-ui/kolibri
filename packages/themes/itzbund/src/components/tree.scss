@@ -3,10 +3,10 @@
 @layer kol-theme-component {
 	.tree {
 		ul {
+			border-radius: 4px;
 			display: flex;
 			flex-direction: column;
 			border: 2px solid transparent;
-			border-radius: 4px;
 		}
 
 		&:focus-within {

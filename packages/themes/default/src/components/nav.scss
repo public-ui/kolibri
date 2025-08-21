@@ -17,17 +17,18 @@
 
 	.entry-item a,
 	.entry-item .button {
-		align-items: center;
 		color: var(--color-primary);
 		display: flex;
-		gap: to-rem(8);
 		min-height: var(--a11y-min-size);
+		gap: to-rem(8);
+		align-items: center;
+
 		text-decoration: none;
 
 		.vertical & {
-			border-left: 2px solid transparent;
-			padding-left: to-rem(16);
 			padding-right: to-rem(16);
+			padding-left: to-rem(16);
+			border-left: 2px solid transparent;
 		}
 
 		.horizontal & {
@@ -59,15 +60,16 @@
 
 	.active .list .entry-item a,
 	.active .list .entry-item .button {
-		font-weight: normal;
 		border-left-color: transparent;
+
+		font-weight: normal;
 	}
 
 	.expand-button {
 		.button {
 			&:hover {
-				background-color: var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary);
 			}
 
 			&:focus-visible {
@@ -83,21 +85,22 @@
 	.toggle-button :is(a, button) > .kol-span-wc,
 	.toggle-button :is(a, button):disabled:hover > .kol-span-wc {
 		color: var(--color-primary);
-		font-weight: 700;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		border-color: var(--color-light);
 		background-color: var(--color-light);
-		border-radius: var(--border-radius);
-		border-style: solid;
 		box-shadow: none;
+		border-color: var(--color-light);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+
+		font-weight: 700;
 	}
 
 	.toggle-button :is(a, button):active > .kol-span-wc,
 	.toggle-button :is(a, button):hover > .kol-span-wc {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 		color: var(--color-light);
+		background-color: var(--color-primary-variant);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary-variant);
 	}
 }

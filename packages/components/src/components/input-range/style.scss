@@ -4,51 +4,52 @@
 
 @layer kol-component {
 	.inputs-wrapper {
-		align-items: center;
 		display: flex;
 		flex-direction: row;
+		align-items: center;
 	}
 
 	input[type='number'] {
-		border: none;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
 		width: var(--kolibri-input-range--input-number--width);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		border: none;
 	}
 
 	/*
    * For Chrome and Firefox is it needed to use redundant style definitions with separate selectors. The reason is unknown.
    */
 	input[type='range'] {
-		appearance: none;
 		background-color: #d3d3d3;
-		border: 1px solid #000;
 		display: inline-block;
-		flex-grow: 1;
-		height: to-rem(8);
-		line-height: 1.5;
-		padding: 0;
-		margin: 0;
 		/* Design-Hack - related with flex-grow */
 		width: 0;
+		height: to-rem(8);
+		margin: 0;
+		padding: 0;
+		flex-grow: 1;
+
+		line-height: 1.5;
+		appearance: none;
+		border: 1px solid #000;
 	}
 
 	input[type='range']::-webkit-slider-thumb {
 		background-color: #000;
-		height: to-rem(20);
-		width: to-rem(20);
 		border-radius: 20px;
-		cursor: pointer;
+		width: to-rem(20);
+		height: to-rem(20);
 		-webkit-appearance: none;
+		cursor: pointer;
 	}
 
 	input[type='range']::-moz-range-thumb {
 		background-color: #000;
-		height: to-rem(20);
-		width: to-rem(20);
 		border-radius: 20px;
-		cursor: pointer;
+		width: to-rem(20);
+		height: to-rem(20);
 		-moz-appearance: none;
+		cursor: pointer;
 	}
 }
 

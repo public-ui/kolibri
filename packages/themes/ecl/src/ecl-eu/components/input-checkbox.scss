@@ -15,18 +15,19 @@
 	}
 
 	input[type='checkbox'] {
-		background-color: var(--color-white);
-		border-width: 2px;
-		border-style: solid;
 		color: var(--color-grey);
+		background-color: var(--color-white);
+		border-style: solid;
+		border-width: 2px;
+
 		line-height: 1.5;
 	}
 
 	input[type='checkbox']:focus {
 		outline-color: var(--color-blue);
-		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 2px;
+		outline-offset: 2px;
 	}
 
 	input[type='checkbox'] {

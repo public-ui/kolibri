@@ -3,22 +3,22 @@
 @layer kol-component {
 	.default {
 		& .checkbox-container {
-			align-items: center;
 			display: flex;
-			height: var(--a11y-min-size);
-			justify-content: center;
 			position: relative;
 			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
+			align-items: center;
+			justify-content: center;
 		}
 
 		& .icon {
 			display: block;
-			inset: auto;
 			position: absolute;
+			inset: auto;
 			z-index: 1;
 		}
 
-		&:not(.checked):not(.indeterminate) .icon::part(icon) {
+		&:not(.checked, .indeterminate) .icon::part(icon) {
 			display: none;
 		}
 

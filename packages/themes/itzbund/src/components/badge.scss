@@ -19,9 +19,9 @@
 	}
 
 	:host > span > .kol-span-wc {
+		gap: rem(8);
 		align-items: center;
 		font-style: normal;
-		gap: rem(8);
 	}
 
 	:host > span > .kol-span-wc > span {

@@ -4,8 +4,8 @@
 @layer kol-component {
 	ul {
 		display: grid;
-		list-style: none;
 		place-items: center;
+		list-style: none;
 	}
 
 	ul li {
@@ -13,15 +13,16 @@
 	}
 
 	.kol-link-wc a {
-		left: to-rem(-99999);
 		position: absolute;
+		left: to-rem(-99999);
 		z-index: 9999999;
+
 		line-height: 1;
 	}
 
 	.kol-link-wc a:focus {
 		background-color: #fff;
-		left: unset;
 		position: unset;
+		left: unset;
 	}
 }

@@ -3,9 +3,9 @@
 @layer kol-theme-component {
 	.list {
 		display: flex;
-		list-style: none;
 		margin: 0;
 		padding: 0;
+		list-style: none;
 	}
 
 	.list.vertical {
@@ -28,26 +28,27 @@
 	}
 
 	ul {
-		list-style: none;
 		margin: 0;
 		padding: 0;
+		list-style: none;
 	}
 
 	.expand-button button {
 		background-color: var(--color-blue-130);
-		margin: auto;
 		height: 100%;
+		margin: auto;
 	}
 
 	.kol-span-wc {
+		color: var(--color-white);
 		border-color: transparent;
 		border-style: solid;
-		border-width: 2px;
-		color: var(--color-white);
-		font-size: to-rem(18);
-		justify-items: start;
-		padding: to-rem(16);
 		height: 100%;
+		padding: to-rem(16);
+		border-width: 2px;
+		justify-items: start;
+
+		font-size: to-rem(18);
 	}
 
 	li > ul,
@@ -85,9 +86,9 @@
 
 	.toggle-button a .kol-span-wc,
 	.toggle-button button .kol-span-wc {
+		color: var(--color-blue);
 		background-color: transparent;
 		border-color: transparent;
-		color: var(--color-blue);
 	}
 
 	.toggle-button a:focus .kol-span-wc,

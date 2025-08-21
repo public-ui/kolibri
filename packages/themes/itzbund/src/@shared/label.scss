@@ -3,8 +3,9 @@
 @layer kol-theme-component {
 	label {
 		@include kol-typography-label;
-		font-weight: 700;
 		color: var(--color-anthrazit);
 		width: 100%;
+
+		font-weight: 700;
 	}
 }

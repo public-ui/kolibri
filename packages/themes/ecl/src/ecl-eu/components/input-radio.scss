@@ -8,10 +8,10 @@
 	}
 
 	fieldset {
-		border: 0;
 		gap: to-rem(8);
 		flex-wrap: wrap;
 		align-items: flex-start;
+		border: 0;
 	}
 
 	fieldset .kol-alert-wc {
@@ -39,12 +39,12 @@
 
 	.radio-input-wrapper {
 		display: flex;
-		align-items: center;
 		display: flex;
-		flex-direction: row;
-		margin: 0;
-		min-height: var(--a11y-min-size);
 		position: relative;
+		min-height: var(--a11y-min-size);
+		margin: 0;
+		flex-direction: row;
+		align-items: center;
 	}
 
 	.radio-label {
@@ -101,13 +101,14 @@
 
 	.kol-alert-wc {
 		@include kol-alert-wc(--color-red);
+		width: 100%;
 
 		order: 1;
-		width: 100%;
 	}
 
 	.hint {
-		font-size: to-rem(14.4);
 		order: 4;
+
+		font-size: to-rem(14.4);
 	}
 }

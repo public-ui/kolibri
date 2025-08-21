@@ -3,18 +3,18 @@
 @layer kol-component {
 	li,
 	ul {
+		display: flex;
 		margin: 0;
 		padding: 0;
-		list-style: none;
-		display: flex;
 		gap: 0.5em;
 		flex-wrap: wrap;
 		place-items: center;
+		list-style: none;
 	}
 
 	.kol-icon::part(separator) {
-		font-weight: 900;
 		font-size: 0.7em;
+		font-weight: 900;
 	}
 
 	.kol-icon::part(separator):before {

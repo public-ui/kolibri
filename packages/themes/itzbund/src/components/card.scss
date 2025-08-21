@@ -5,18 +5,18 @@
 		background-color: white;
 		border-color: var(--border-color);
 		border-style: solid;
-		border-width: 1px;
 		border-radius: calc(2 * var(--border-radius));
 		width: 100%;
 		height: 100%;
+		border-width: 1px;
 	}
 
 	.kol-heading {
-		padding: rem(8);
-		display: block;
-		border-bottom-style: solid;
 		border-bottom-color: var(--border-color);
+		display: block;
+		padding: rem(8);
 		border-bottom-width: 1px;
+		border-bottom-style: solid;
 	}
 
 	:host > div > div {
@@ -25,10 +25,10 @@
 	}
 
 	:host > div > div:last-child {
+		border-top-color: var(--color-achat);
 		display: block;
 		padding: rem(8);
-		border-top-style: solid;
-		border-top-color: var(--color-achat);
 		border-top-width: 1px;
+		border-top-style: solid;
 	}
 }
