@@ -31,10 +31,10 @@ export class KolToolbar implements ToolbarAPI {
 		const props = {
 			key: index,
 			_tabIndex: tabIndex,
-			class: `button normal ${TOOLBAR_ITEM_TAG_NAME} `,
+			class: `button normal ${TOOLBAR_ITEM_TAG_NAME}`,
 		};
 		const catchRef = (element?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
-			element && this.indexToElement.set(index, element);
+			if (element) this.indexToElement.set(index, element);
 		};
 
 		return '_href' in element ? (
@@ -71,29 +71,31 @@ export class KolToolbar implements ToolbarAPI {
 	@Watch('_items')
 	public validateItems(value?: ToolbarItemsPropType): void {
 		validateToolbarItems(this, value);
+		this.state._items = value ?? [];
+		this.setFirstEnabledItemIndex();
 	}
 
-	/**
-	 * Retrieves the toolbar item by index if defined.
-	 * If not it use the current index of state.
-	 *
-	 * @returns An array of HTMLElements representing the toolbar items.
-	 */
-	private getCurrentToolbarItem(index?: number): ChildNode | undefined {
+	private getCurrentToolbarItem(index?: number) {
 		return typeof index === 'number' ? this.indexToElement.get(index) : undefined;
 	}
 
-	/**
-	 * Sets the index of the first enabled toolbar item.
-	 */
 	private setFirstEnabledItemIndex() {
-		this.currentIndex = this.state._items?.findIndex((item) => !item._disabled);
+		const items = this.state._items || [];
+		const firstEnabledIndex = items.findIndex((item) => !item._disabled);
+		this.currentIndex = firstEnabledIndex >= 0 ? firstEnabledIndex : 0;
+
+		// update all TabIndexes
+		items.forEach((item, index) => {
+			const element = this.indexToElement.get(index);
+			if (element) {
+				element._tabIndex = index === this.currentIndex && !item._disabled ? 0 : -1;
+			}
+		});
 	}
 
 	@Listen('keydown')
-	public handleKeyDown(event: KeyboardEvent) {
-		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
-		if (!isArrowKey) return;
+	handleKeyDown(event: KeyboardEvent) {
+		if (event.code !== 'ArrowLeft' && event.code !== 'ArrowRight') return;
 		event.preventDefault();
 
 		const lastItemIndex = this._items?.length - 1;
@@ -111,7 +113,8 @@ export class KolToolbar implements ToolbarAPI {
 		if (currentIndex === nextIndex) return;
 
 		this.currentIndex = nextIndex;
-		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.kolFocus();
+		const el = this.getCurrentToolbarItem(nextIndex);
+		if (el) void el.kolFocus();
 	}
 
 	/**
