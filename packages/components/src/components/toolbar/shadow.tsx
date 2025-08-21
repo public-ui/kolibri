@@ -4,6 +4,8 @@ import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stenci
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import type { KolLinkWc } from '../link/component';
+import type { KolButtonWc } from '../button/component';
 
 const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 
@@ -37,10 +39,12 @@ export class KolToolbar implements ToolbarAPI {
 			if (element) this.indexToElement.set(index, element);
 		};
 
+		const { _icons, _disabled, ...rest } = element;
+
 		return '_href' in element ? (
-			<KolLinkWcTag {...element} {...props} ref={catchRef} _role="button"></KolLinkWcTag>
+			<KolLinkWcTag {...(rest as KolLinkWc)} {...props} ref={catchRef} _icons={_icons} _disabled={_disabled} _role="button"></KolLinkWcTag>
 		) : (
-			<KolButtonWcTag {...element} {...props} ref={catchRef}></KolButtonWcTag>
+			<KolButtonWcTag {...(rest as KolButtonWc)} {...props} ref={catchRef} _icons={_icons} _disabled={_disabled}></KolButtonWcTag>
 		);
 	};
 
