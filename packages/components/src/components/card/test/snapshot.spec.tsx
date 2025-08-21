@@ -1,12 +1,12 @@
 import { KolCardTag } from '../../../core/component-names';
 import type { CardProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
-
+import { KolCardWc } from '../component';
 import { KolCard } from '../shadow';
 
 executeSnapshotTests<CardProps>(
 	KolCardTag,
-	[KolCard],
+	[KolCard, KolCardWc],
 	[
 		{ _label: 'Überschrift' },
 

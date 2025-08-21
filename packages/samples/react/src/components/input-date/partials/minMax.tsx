@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolInputDate } from '@public-ui/react';
+import { KolInputDate } from '@public-ui/react-v19';
 import type { Components } from '@public-ui/components';
 
 export const InputDateMinMaxCases = (props: Components.KolInputDate) => {

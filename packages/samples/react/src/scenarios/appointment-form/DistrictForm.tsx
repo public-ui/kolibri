@@ -1,7 +1,7 @@
 import { Field, useFormikContext } from 'formik';
 import React, { useState, useRef } from 'react';
 
-import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
+import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react-v19';
 
 import type { FieldProps } from 'formik';
 import type { FormValues } from './AppointmentForm';

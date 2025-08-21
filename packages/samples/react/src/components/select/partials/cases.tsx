@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { KolSelect } from '@public-ui/react';
+import { KolSelect } from '@public-ui/react-v19';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 

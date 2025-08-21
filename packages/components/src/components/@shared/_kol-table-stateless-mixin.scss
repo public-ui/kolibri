@@ -35,10 +35,6 @@
 				text-align: start;
 			}
 
-			&__focus-element {
-				font-size: 0;
-			}
-
 			&__sort-button {
 				.kol-button {
 					color: inherit;
@@ -139,7 +135,6 @@
 					justify-content: center;
 
 					line-height: 1.5;
-					transition: all 0.5s ease 0s;
 				}
 
 				&--radio {

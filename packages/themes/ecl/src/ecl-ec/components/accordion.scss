@@ -7,20 +7,27 @@
 		border-style: solid;
 		border-width: 1px;
 
+		&:focus-within {
+			outline: 2px solid var(--color-blue);
+			outline-offset: -2px;
+		}
+
 		&__heading-button {
 			.kol-button {
-				text-align: left;
+				display: flex;
 				width: 100%;
 				padding: 0 var(--spacing-m);
-				display: flex;
 				place-items: center;
+
 				line-height: 1.2;
+				text-align: left;
 
 				&__text {
 					color: var(--color-grey);
-					font-weight: var(--font-weight-bold);
-					padding: to-rem(12) 0;
 					width: 100%;
+					padding: to-rem(12) 0;
+
+					font-weight: var(--font-weight-bold);
 					border: none;
 				}
 
@@ -30,16 +37,15 @@
 				}
 
 				&:focus {
-					outline: 2px solid var(--color-blue);
-					outline-offset: -2px;
+					outline: none;
 				}
 			}
 
 			.kol-icon {
+				margin-top: to-rem(12);
 				margin-bottom: to-rem(12);
 				margin-inline-end: to-rem(16);
 				margin-inline-start: 0;
-				margin-top: to-rem(12);
 			}
 		}
 

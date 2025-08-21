@@ -18,8 +18,9 @@
 
 				.kol-link,
 				.kol-button {
-					font-weight: normal !important;
 					border-left-color: transparent !important;
+
+					font-weight: normal !important;
 				}
 			}
 		}
@@ -35,11 +36,12 @@
 
 			.kol-link,
 			.kol-button {
-				align-items: center;
 				color: var(--color-primary);
 				display: flex;
-				gap: to-rem(8);
 				min-height: var(--a11y-min-size);
+				gap: to-rem(8);
+				align-items: center;
+
 				text-decoration: none;
 
 				&:focus-visible {
@@ -47,9 +49,9 @@
 				}
 
 				#{$root}__list--vertical & {
-					border-left: 2px solid transparent;
-					padding-left: to-rem(16);
 					padding-right: to-rem(16);
+					padding-left: to-rem(16);
+					border-left: 2px solid transparent;
 				}
 
 				#{$root}--horizontal & {
@@ -69,8 +71,8 @@
 		&__expand-button {
 			.kol-button {
 				&:hover {
-					background-color: var(--color-primary);
 					color: var(--color-light);
+					background-color: var(--color-primary);
 				}
 
 				&:focus-visible {
@@ -107,30 +109,31 @@
 				}
 
 				&__text {
-					font-weight: 700;
-					border-style: solid;
-					border-width: var(--border-width);
-					border-radius: var(--border-radius);
+					color: var(--text-color);
 					background-color: var(--text-background-color);
 					border-color: var(--text-border-color);
-					color: var(--text-color);
-					min-height: var(--a11y-min-size);
+					border-style: solid;
+					border-radius: var(--border-radius);
 					min-width: var(--a11y-min-size);
+					min-height: var(--a11y-min-size);
 					padding: to-rem(8) to-rem(14);
+					border-width: var(--border-width);
+
+					font-weight: 700;
 					text-align: center;
 					transition-duration: 0.5s;
 					transition-property: background-color, color, border-color;
 
 					&:hover {
-						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
-						background-color: var(--text-background-color);
-						border-color: var(--text-border-color);
 						color: var(--text-color);
+						background-color: var(--text-background-color);
+						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+						border-color: var(--text-border-color);
 					}
 
 					@at-root #{$root}--hide-label & {
-						padding: to-rem(12.8);
 						width: unset;
+						padding: to-rem(12.8);
 
 						.kol-span__label {
 							display: none;
@@ -142,10 +145,10 @@
 					}
 
 					@at-root #{$root}:disabled:hover & {
-						background-color: var(--text-background-color);
-						border-color: var(--text-border-color);
 						color: var(--text-color);
+						background-color: var(--text-background-color);
 						box-shadow: none;
+						border-color: var(--text-border-color);
 					}
 				}
 			}

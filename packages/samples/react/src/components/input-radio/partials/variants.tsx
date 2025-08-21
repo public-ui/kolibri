@@ -4,7 +4,7 @@ import { InputRadioCases } from './cases';
 
 import type { Components } from '@public-ui/components';
 import { SampleColumns } from '../../SampleColumns';
-import { KolHeading } from '@public-ui/react';
+import { KolHeading } from '@public-ui/react-v19';
 
 export const InputRadioVariants = forwardRef<HTMLKolInputRadioElement, Components.KolInputRadio>(function InputRadioVariant(props, ref) {
 	return (

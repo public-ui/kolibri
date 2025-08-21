@@ -5,10 +5,11 @@
 		$root: &;
 		--kolibri-spacing: #{to-rem(4)};
 		--text-focus-outline-color: var(--color-white);
+		border-radius: 4px;
+
+		text-decoration: none;
 
 		appearance: none;
-		border-radius: 4px;
-		text-decoration: none;
 
 		&--primary {
 			--text-background-color: #0e47cb;
@@ -67,20 +68,21 @@
 		}
 
 		&__text {
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
+			color: var(--text-color);
+
+			background-color: var(--text-background-color);
+			border-color: var(--text-border-color);
 			border-radius: 4px;
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
+			margin: 0;
+			padding: to-rem(12);
+
 			font:
 				normal normal 400 to-rem(16) / to-rem(20) arial,
 				sans-serif;
 			font-weight: 400;
-			margin: 0;
-			padding: to-rem(12);
 			line-height: 1.2;
-
-			background-color: var(--text-background-color);
-			border-color: var(--text-border-color);
-			color: var(--text-color);
 
 			&:active,
 			&:not(:disabled):hover {
@@ -101,8 +103,8 @@
 			}
 
 			@at-root #{$root}:focus-visible & {
-				outline-offset: -4px;
 				outline: var(--text-focus-outline-color) solid to-rem(2);
+				outline-offset: -4px;
 			}
 
 			@at-root #{$root}--hide-label & {

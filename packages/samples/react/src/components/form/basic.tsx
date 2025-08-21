@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolForm, KolInputText } from '@public-ui/react';
+import { KolForm, KolInputText } from '@public-ui/react-v19';
 
 export const FormBasic: FC = () => (
 	<>

@@ -2,12 +2,10 @@
 
 @mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
 	.kol-custom-suggestions-options-group {
-		border-style: solid;
-		border-width: 1px;
 		border-color: var(--color-blue);
-		overflow-y: auto;
-		overflow-x: hidden;
+		border-style: solid;
 		width: 100%;
 		max-height: calc($option-height * $visible-options + to-rem(2));
+		border-width: 1px;
 	}
 }

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableCell, KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
 import { KolEvent } from '@public-ui/components';

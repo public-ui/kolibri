@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolCombobox } from '@public-ui/react';
+import { KolCombobox } from '@public-ui/react-v19';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import { COUNTRY_SUGGESTIONS } from '../../../shares/country';

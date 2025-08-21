@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "3.0.3",
+	"version": "3.0.4-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -76,9 +76,6 @@
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.89.2",
 		"stylelint": "16.20.0",
-		"stylelint-config-recommended-scss": "15.0.1",
-		"stylelint-config-standard": "38.0.0",
-		"stylelint-scss": "6.12.1",
 		"typescript": "5.8.3",
 		"unbuild": "3.5.0"
 	},

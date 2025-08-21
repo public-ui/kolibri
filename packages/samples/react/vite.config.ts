@@ -18,6 +18,7 @@ export default defineConfig({
 	define: {
 		'process.env.THEME_MODULE': JSON.stringify(process.env.THEME_MODULE || ''),
 		'process.env.THEME_EXPORT': JSON.stringify(process.env.THEME_EXPORT || ''),
+		'process.env.THEME_CSS': JSON.stringify(process.env.THEME_CSS || ''),
 		'process.env.ENABLE_I18N_OVERWRITING': JSON.stringify(process.env.ENABLE_I18N_OVERWRITING || ''),
 		'process.env.ENABLE_TAG_NAME_TRANSFORMER': JSON.stringify(process.env.ENABLE_TAG_NAME_TRANSFORMER || ''),
 		'process.env.ENABLE_THEME_PATCHING': JSON.stringify(process.env.ENABLE_THEME_PATCHING || ''),
@@ -31,7 +32,11 @@ export default defineConfig({
 	server: {
 		port: 9191,
 		fs: {
-			allow: [path.resolve(__dirname), ...(process.env.THEME_MODULE ? [path.resolve(process.env.THEME_MODULE)] : [])],
+			allow: [
+				path.resolve(__dirname),
+				...(process.env.THEME_MODULE ? [path.resolve(process.env.THEME_MODULE)] : []),
+				...(process.env.THEME_CSS ? [path.resolve(process.env.THEME_CSS, '..')] : []),
+			],
 		},
 	},
 });

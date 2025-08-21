@@ -10,9 +10,9 @@
 
 		&__list {
 			display: flex;
-			list-style: none;
 			margin: 0;
 			padding: 0;
+			list-style: none;
 
 			&--vertical {
 				flex-direction: column;
@@ -41,8 +41,8 @@
 		&__expand-button {
 			.kol-button {
 				background-color: var(--color-blue-130);
-				margin: auto;
 				height: 100%;
+				margin: auto;
 			}
 
 			&--expanded .kol-icon::part(icon)::before {
@@ -59,10 +59,11 @@
 				$root: &;
 				--kolibri-spacing: #{to-rem(4)};
 				--text-focus-outline-color: var(--color-white);
+				border-radius: 4px;
+
+				text-decoration: none;
 
 				appearance: none;
-				border-radius: 4px;
-				text-decoration: none;
 
 				&--ghost {
 					--text-color: #0e47cb;
@@ -78,20 +79,21 @@
 				}
 
 				&__text {
-					text-decoration: none !important;
-					min-height: to-rem(44);
-					min-width: to-rem(44);
+					color: var(--text-color);
+
+					background-color: var(--text-background-color);
 					border-radius: 4px;
+					min-width: to-rem(44);
+					min-height: to-rem(44);
+					margin: 0;
+					padding: to-rem(12);
+
 					font:
 						normal normal 400 to-rem(16) / to-rem(20) arial,
 						sans-serif;
 					font-weight: 400;
-					margin: 0;
-					padding: to-rem(12);
 					line-height: 1.2;
-
-					background-color: var(--text-background-color);
-					color: var(--text-color);
+					text-decoration: none !important;
 
 					&:active,
 					&:hover {
@@ -103,8 +105,8 @@
 					}
 
 					@at-root #{$root}:focus-visible & {
-						outline-offset: -4px;
 						outline: var(--text-focus-outline-color) solid to-rem(2);
+						outline-offset: -4px;
 					}
 
 					@at-root #{$root}--hide-label & {
@@ -122,14 +124,15 @@
 	}
 
 	.kol-span {
+		color: var(--color-white);
 		border-color: transparent;
 		border-style: solid;
-		border-width: 2px;
-		color: var(--color-white);
-		font-size: to-rem(18);
-		justify-items: start;
-		padding: to-rem(16);
 		height: 100%;
+		padding: to-rem(16);
+		border-width: 2px;
+		justify-items: start;
+
+		font-size: to-rem(18);
 
 		:is(.kol-button, .kol-link):focus-within & {
 			border-color: var(--color-white);

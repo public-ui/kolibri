@@ -13,9 +13,9 @@ export type PropAlertVariant = {
 };
 
 const isAlertVariantPropType = (value: unknown): value is AlertVariantPropType => {
-    return typeof value === 'string' && alertVariantOptions.includes(value as AlertVariantPropType);
+	return typeof value === 'string' && alertVariantOptions.includes(value as AlertVariantPropType);
 };
 
 export const validateAlertVariant = (component: Generic.Element.Component, value?: AlertVariantPropType): void => {
-    watchValidator(component, '_variant', isAlertVariantPropType, new Set(alertVariantOptions), value);
+	watchValidator(component, '_variant', isAlertVariantPropType, new Set(alertVariantOptions), value);
 };

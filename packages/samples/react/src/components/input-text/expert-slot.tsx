@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolInputText } from '@public-ui/react';
+import { KolInputText } from '@public-ui/react-v19';
 
 export const InputTextExpertSlot = () => {
 	return (

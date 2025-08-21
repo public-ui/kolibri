@@ -20,19 +20,19 @@
 			}
 
 			&:focus-visible .kol-button__text {
-				outline-offset: -4px;
 				outline: 2px solid var(--color-black);
+				outline-offset: -4px;
 			}
 
 			&:not(:disabled):active .kol-button__text,
 			&:not(:disabled):hover .kol-button__text {
 				background-color: #fc0;
-				border-color: #fc0;
 				box-shadow:
 					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 					0 0 to-rem(10) rgb(9 49 142 / 4%),
 					0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
 					0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
+				border-color: #fc0;
 			}
 
 			&:disabled .kol-button__text {
@@ -41,26 +41,28 @@
 			}
 
 			&__text {
-				min-height: var(--a11y-min-size);
-				min-width: var(--a11y-min-size);
+				color: #171a22;
+				background-color: #fc0;
 				border-radius: 4px;
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
+				padding: to-rem(12);
+
 				font:
 					normal normal 400 to-rem(16) / to-rem(20) Arial,
 					sans-serif;
-				padding: to-rem(12);
-				background-color: #fc0;
-				color: #171a22;
 			}
 		}
 
 		&__button--selected .kol-button {
 			&__text {
+				opacity: 1;
+				color: var(--color-white);
 				background-color: var(--color-blue);
 				border-color: var(--color-blue);
-				color: var(--color-white);
+
 				font-weight: bold;
 				text-decoration: underline;
-				opacity: 1;
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 import {
 	getColorContrastAnalysis,
-	getDevMode,
+	isDevMode,
 	getDocument,
 	getExperimentalMode,
 	getWindow,
@@ -43,7 +43,7 @@ const metaModeLog = (name: string, active: boolean) => Log.debug(`${name} ${acti
 
 export const initialize = (): void => {
 	initKoliBri();
-	if (getDevMode()) {
+	if (isDevMode()) {
 		renderDevAdvice();
 
 		prototypeKoliBri('a11yColorContrast', koliBriA11yColorContrast);
@@ -56,14 +56,24 @@ export const initialize = (): void => {
 		prototypeKoliBri('parseJson', parseJson);
 		prototypeKoliBri('stringifyJson', stringifyJson);
 
-		const body = getDocument().body;
+		metaModeLog('Development mode', isDevMode());
+		metaModeLog('Experimental mode', getExperimentalMode());
+		metaModeLog('Color contrast analysis', getColorContrastAnalysis());
 
-		const div = getDocument().createElement('svg');
-		div.setAttribute('aria-label', 'KoliBri-DevTools');
-		div.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-		div.setAttribute('role', 'toolbar');
-		div.setAttribute('style', 'position: fixed;color: black;font-size: 200%;bottom: 0.25rem;right: 0.25rem;');
-		div.innerHTML = `<svg
+		// Delay DOM manipulation to ensure document is ready
+		setTimeout(() => {
+			try {
+				const document = getDocument();
+				const body = document?.body;
+
+				// Only proceed if we have a valid document and body
+				if (document && body && typeof document.createElement === 'function') {
+					const div = document.createElement('svg');
+					div.setAttribute('aria-label', 'KoliBri-DevTools');
+					div.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+					div.setAttribute('role', 'toolbar');
+					div.setAttribute('style', 'position: fixed;color: black;font-size: 200%;bottom: 0.25rem;right: 0.25rem;');
+					div.innerHTML = `<svg
   xmlns="http://www.w3.org/2000/svg"
   width="50"
   height="50"
@@ -77,18 +87,27 @@ export const initialize = (): void => {
   <path d="M391 286L565 272L421 252L391 286Z" fill="#047" />
 </svg>`;
 
-		getDocument().body.appendChild(div);
-
-		metaModeLog('Development mode', getDevMode());
-		metaModeLog('Experimental mode', getExperimentalMode());
-		metaModeLog('Color contrast analysis', getColorContrastAnalysis());
+					body.appendChild(div);
+				}
+			} catch (error) {
+				Log.debug(['Could not initialize DevTools UI (likely in SSR/test environment):', error]);
+			}
+		}, 100);
 
 		if (getColorContrastAnalysis()) {
 			const timeout = setTimeout(() => {
 				clearTimeout(timeout);
-				setInterval(() => {
-					KoliBriUtils.queryHtmlElementColors(getDocument().createElement('div'), koliBriA11yColorContrast(body), false, false);
-				}, 10000);
+				try {
+					const document = getDocument();
+					const body = document?.body;
+					if (document && body && typeof document.createElement === 'function') {
+						setInterval(() => {
+							KoliBriUtils.queryHtmlElementColors(document.createElement('div'), koliBriA11yColorContrast(body), false, false);
+						}, 10000);
+					}
+				} catch (error) {
+					Log.debug(['Could not initialize color contrast analysis:', error]);
+				}
 			}, 2500);
 		}
 
