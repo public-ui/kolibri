@@ -7,14 +7,15 @@
 	}
 
 	.button-inner {
+		color: var(--color-primary);
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
-		border: 1px solid var(--color-primary);
-		color: var(--color-primary);
-		font-weight: 700;
-		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		padding: to-rem(8);
+
+		font-weight: 700;
+		border: 1px solid var(--color-primary);
 		text-align: center;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -25,10 +26,10 @@
 	}
 
 	.button:is(:active, :hover):not(:disabled) .button-inner {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 		color: var(--color-light);
+		background-color: var(--color-primary-variant);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary-variant);
 	}
 
 	.button:active .button-inner {
@@ -42,8 +43,8 @@
 		}
 
 		.button-inner {
-			background-color: var(--color-primary);
 			color: var(--color-light);
+			background-color: var(--color-primary);
 			border: 0;
 		}
 	}

@@ -3,8 +3,9 @@
 @layer kol-theme-component {
 	:is(a, button) {
 		color: var(--color-primary);
-		font-style: normal;
+
 		font-weight: 400;
+		font-style: normal;
 		text-decoration-line: underline;
 	}
 
@@ -13,8 +14,8 @@
 	}
 
 	:is(a, button):focus .kol-span-wc {
-		border-radius: calc(var(--border-radius) / 2);
 		outline: var(--border-width) solid;
+		border-radius: calc(var(--border-radius) / 2);
 		outline-offset: calc(rem(16) / 8);
 	}
 
@@ -24,18 +25,19 @@
 
 	.hidden {
 		display: none;
+
 		visibility: hidden;
 	}
 
 	.skip {
-		left: rem(-99999);
 		position: absolute;
+		left: rem(-99999);
 		z-index: 9999999;
 	}
 
 	.skip:focus {
 		background: white;
-		left: unset;
 		position: unset;
+		left: unset;
 	}
 }

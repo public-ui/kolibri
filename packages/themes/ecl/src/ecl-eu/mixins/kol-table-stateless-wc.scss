@@ -4,8 +4,8 @@
 	@layer kol-theme-component {
 		:host {
 			display: flex;
-			flex-direction: column;
 			gap: to-rem(8);
+			flex-direction: column;
 		}
 
 		.kol-table-stateless-wc {
@@ -17,16 +17,17 @@
 		}
 
 		th {
-			font-weight: normal;
 			color: var(--color-midnight);
+
+			font-weight: normal;
 		}
 
 		table thead tr:first-child th,
 		table thead tr:first-child td {
+			border-color: var(--color-ice);
+			border-style: solid;
 			border-width: 0;
 			border-top-width: 2px;
-			border-style: solid;
-			border-color: var(--color-ice);
 		}
 
 		.table {
@@ -35,9 +36,9 @@
 
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-blue);
-			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 2px;
+			outline-offset: 2px;
 		}
 
 		table {
@@ -48,10 +49,10 @@
 		table,
 		table thead tr:last-child th,
 		table thead tr:last-child td {
+			border-color: var(--color-ice);
+			border-style: solid;
 			border-width: 0;
 			border-bottom-width: 2px;
-			border-style: solid;
-			border-color: var(--color-ice);
 		}
 
 		th {
@@ -66,8 +67,8 @@
 		th div {
 			display: flex;
 			gap: 0.5em;
-			grid-template-columns: 1fr auto;
 			align-items: center;
+			grid-template-columns: 1fr auto;
 		}
 
 		tbody tr:nth-child(odd) {
@@ -86,11 +87,11 @@
 
 		.input {
 			input:focus {
-				border-color: var(--color-blue);
 				outline-color: var(--color-blue);
 				outline-style: solid;
-				outline-offset: 2px;
 				outline-width: 2px;
+				border-color: var(--color-blue);
+				outline-offset: 2px;
 			}
 
 			// CHECKBOX
@@ -124,8 +125,8 @@
 
 			// RADIO
 			input[type='radio'] {
-				display: block;
 				outline: 2px solid var(--color-grey-75);
+				display: block;
 				outline-offset: 2px;
 
 				&:hover {

@@ -6,30 +6,31 @@
 	}
 
 	.tabs-button-group {
-		border-bottom: 1px solid var(--color-grey-25);
 		margin-bottom: to-rem(-1);
+		border-bottom: 1px solid var(--color-grey-25);
 	}
 
 	.tabs-button-group button {
-		border: none;
 		margin-bottom: to-rem(-1);
+		border: none;
 	}
 
 	.tabs-button-group button .kol-span-wc {
-		padding: to-rem(4);
-		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		padding: to-rem(4);
 	}
 
 	.tabs-button-group button.selected .kol-span-wc {
+		color: var(--color-blue);
+		box-shadow: 0 -3 px var(--color-blue);
 		border-color: var(--color-grey-25);
 		border-style: solid;
-		border-width: 1px;
-		border-bottom-color: white;
 		border-top-color: var(--color-blue);
-		box-shadow: 0 -3 px var(--color-blue);
+		border-bottom-color: white;
+		border-width: 1px;
+
 		font-weight: var(--font-weight-bold);
-		color: var(--color-blue);
 	}
 
 	.tabs-button-group button:hover:not(:disabled) .kol-span-wc {

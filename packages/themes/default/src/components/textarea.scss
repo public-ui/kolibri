@@ -42,20 +42,20 @@
 	.input {
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: 2px;
+		border-radius: var(--border-radius);
 		padding: 0 to-rem(8);
+		border-width: 2px;
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: to-rem(16);
 		padding-right: to-rem(16);
+		padding-left: to-rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) input {
-		padding-left: to-rem(8);
 		padding-right: to-rem(8);
+		padding-left: to-rem(8);
 	}
 
 	.input > input:first-child {
@@ -75,8 +75,9 @@
 	}
 
 	.required label > span::after {
-		content: '*';
 		padding-left: 0.125em;
+
+		content: '*';
 	}
 
 	.kol-input.error:not(.hidden-error) {
@@ -97,8 +98,8 @@
 	}
 
 	.kol-input.disabled .input {
+		color: var(--color-text);
 		background-color: var(--color-mute);
 		border-color: var(--color-mute-variant);
-		color: var(--color-text);
 	}
 }

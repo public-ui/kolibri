@@ -3,10 +3,10 @@
 
 @layer kol-theme-component {
 	:host {
-		border-radius: var(--border-radius);
-		border-style: solid;
-		border-width: var(--border-width);
 		border-color: var(--color-primary);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		border-width: var(--border-width);
 	}
 
 	.popover {
@@ -35,18 +35,18 @@
 	}
 
 	.main-button > .button > .kol-span-wc {
+		border-bottom-left-radius: calc(var(--border-radius) - var(--border-width));
+		border-bottom-right-radius: 0;
 		border-right: none;
 		border-top-left-radius: calc(var(--border-radius) - var(--border-width));
-		border-bottom-left-radius: calc(var(--border-radius) - var(--border-width));
 		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
 	}
 
 	.secondary-button > .button > .kol-span-wc {
-		border-left: none;
-		border-top-right-radius: calc(var(--border-radius) - var(--border-width));
-		border-bottom-right-radius: calc(var(--border-radius) - var(--border-width));
-		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
+		border-bottom-right-radius: calc(var(--border-radius) - var(--border-width));
+		border-left: none;
+		border-top-left-radius: 0;
+		border-top-right-radius: calc(var(--border-radius) - var(--border-width));
 	}
 }

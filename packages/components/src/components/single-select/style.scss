@@ -24,21 +24,21 @@ $visible-options: var(--visible-options, 5);
 		}
 
 		&__button {
-			height: auto;
 			width: var(--a11y-min-size);
+			height: auto;
 		}
 
 		&__listbox {
+			background-color: white;
 			display: block;
 			position: absolute;
-			list-style-type: none;
+			z-index: 2;
+			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
 			margin: 0;
 			padding: 0;
-			overflow-y: auto;
 			overflow-x: hidden;
-			z-index: 2;
-			background-color: white;
-			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
+			overflow-y: auto;
+			list-style-type: none;
 		}
 
 		&__item {
@@ -52,11 +52,11 @@ $visible-options: var(--visible-options, 5);
 		}
 
 		&__no-results-message {
-			cursor: default;
 			display: flex;
+			min-height: to-rem(50);
 			align-items: center;
 			justify-content: center;
-			min-height: to-rem(50);
+			cursor: default;
 		}
 	}
 }

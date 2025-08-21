@@ -3,11 +3,11 @@
 
 @layer kol-theme-component {
 	.toolbar {
-		padding: var(--spacing-s);
+		background-color: var(--color-grey-5);
 		border-color: var(--color-grey-25);
 		border-style: solid;
+		padding: var(--spacing-s);
 		border-width: 1px;
-		background-color: var(--color-grey-5);
 	}
 
 	@include kol-button;

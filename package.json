@@ -8,7 +8,12 @@
 		"lint-staged": "16.1.2",
 		"npm-check-updates": "18.0.1",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.5.3"
+		"prettier": "3.5.3",
+		"stylelint": "16.20.0",
+		"stylelint-config-recommended-scss": "15.0.1",
+		"stylelint-config-standard": "38.0.0",
+		"stylelint-order": "7.0.0",
+		"stylelint-scss": "6.12.1"
 	},
 	"engines": {
 		"pnpm": "^10"

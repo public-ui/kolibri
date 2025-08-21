@@ -2,8 +2,8 @@
 
 @mixin indented-text {
 	background-color: var(--color-light);
-	border-left: none;
 	box-shadow: -2px 0 0 var(--color-primary-variant);
-	padding: 0 rem(8);
 	width: 100%;
+	padding: 0 rem(8);
+	border-left: none;
 }

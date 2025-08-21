@@ -7,8 +7,8 @@
 	}
 
 	:is(a, button) {
-		align-items: baseline;
 		display: inline-flex;
+		align-items: baseline;
 		place-items: center;
 		text-align: left;
 		text-decoration-line: none;
@@ -26,17 +26,18 @@
 	}
 
 	.skip {
-		left: to-rem(-99999);
 		position: absolute;
+		left: to-rem(-99999);
 		z-index: 9999999;
+
 		line-height: 1;
 	}
 
 	.skip:focus {
 		background-color: #fff;
+		position: unset;
 		left: unset;
 		padding: 1em;
-		position: unset;
 	}
 
 	.kol-icon.external-link-icon {

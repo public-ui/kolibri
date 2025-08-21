@@ -7,21 +7,22 @@
 	}
 
 	.spin.cycle > .loader {
+		border-radius: 50%;
 		display: block;
+		position: relative;
 		width: 100%;
 		height: 100%;
-		border-radius: 50%;
-		position: relative;
 		animation: 2s linear infinite rotate;
 	}
 
 	.spin.cycle > .loader::before {
-		content: '';
+		border-radius: 50%;
 		position: absolute;
 		inset: 0;
-		border-radius: 50%;
-		border: 5px solid #333;
+
+		content: '';
 		animation: 3s linear infinite prixClipFix;
+		border: 5px solid #333;
 	}
 
 	@keyframes rotate {

@@ -75,32 +75,33 @@
 		.selection-cell {
 			width: var(--a11y-min-size);
 			height: var(--a11y-min-size);
+
 			white-space: nowrap;
 		}
 
 		.input {
 			label {
-				align-items: center;
-				cursor: pointer;
 				display: flex;
-				height: var(--a11y-min-size);
-				justify-content: center;
 				position: relative;
 				width: var(--a11y-min-size);
+				height: var(--a11y-min-size);
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
 			}
 
 			.icon {
 				display: block;
-				inset: auto;
 				position: absolute;
+				inset: auto;
 				z-index: 1;
 			}
 
 			input {
-				appearance: none;
 				border-style: solid;
-				cursor: pointer;
 				margin: 0;
+				appearance: none;
+				cursor: pointer;
 			}
 
 			input:before {
@@ -108,34 +109,35 @@
 			}
 
 			input[type='checkbox'] {
-				position: relative;
+				background-color: rgb(255, 255, 255);
 				display: flex;
-				height: calc(var(--a11y-min-size) / 2);
+				position: relative;
 				width: calc(var(--a11y-min-size) / 2);
+				height: calc(var(--a11y-min-size) / 2);
+				border-width: 2px;
 				align-items: center;
 				justify-content: center;
-				background-color: rgb(255, 255, 255);
-				border-width: 2px;
+
 				line-height: 1.5;
 				transition: all 0.5s ease 0s;
 			}
 
 			input[type='radio'] {
-				display: flex;
-				border-width: 2px;
 				border-radius: 100%;
+				display: flex;
+				width: 1.5em;
+				min-width: 1.5em;
 				height: 1.5em;
 				min-height: 1.5em;
-				min-width: 1.5em;
 				padding: 0;
-				width: 1.5em;
+				border-width: 2px;
 			}
 
 			input[type='radio']:before {
 				border-radius: 100%;
-				margin: auto;
-				height: calc(1.5em / 2);
 				width: calc(1.5em / 2);
+				height: calc(1.5em / 2);
+				margin: auto;
 			}
 
 			input[type='radio']:checked:before {

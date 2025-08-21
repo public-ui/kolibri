@@ -53,11 +53,11 @@
 	select:focus,
 	summary:focus,
 	textarea:focus {
-		cursor: pointer;
 		outline-color: var(--color-petrol);
-		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 3px;
+		cursor: pointer;
+		outline-offset: 2px;
 		transition: outline-offset 0.2s linear;
 	}
 
@@ -76,8 +76,8 @@
 
 	.kol-tooltip-wc .tooltip-content {
 		@include kol-typography-label;
-		padding: rem(4) rem(8);
 		border-radius: 2px;
+		padding: rem(4) rem(8);
 		border: 1px solid #626262;
 	}
 

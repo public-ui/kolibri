@@ -22,6 +22,7 @@
 
 	.kol-input label {
 		order: 2;
+
 		font-size: rem(calc(0.9 * 16));
 		font-weight: 700;
 	}
@@ -46,10 +47,10 @@
 	.input {
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: var(--border-width);
+		border-radius: var(--border-radius);
 		padding: 0 rem(8);
+		border-width: var(--border-width);
 	}
 
 	.input.icon-left > .kol-icon:first-child {
@@ -61,8 +62,8 @@
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
 		padding-right: rem(16);
+		padding-left: rem(16);
 	}
 
 	:not(.disabled) .input:hover {
@@ -74,8 +75,9 @@
 	}
 
 	.required label > span::after {
-		content: '*';
 		padding-left: 0.125em;
+
+		content: '*';
 	}
 
 	.kol-input.error:not(.hidden-error) {
@@ -83,35 +85,36 @@
 	}
 
 	.kol-input.disabled .input {
+		color: var(--color-text);
 		background-color: var(--color-mute);
 		border-color: var(--color-mute-variant);
-		color: var(--color-text);
 	}
 
 	.kol-input input[type='range'] {
-		appearance: none;
 		background-color: var(--color-mute-variant);
-		border: 1px solid var(--border-color);
 		height: calc(rem(16) / 2);
+
 		line-height: rem(24);
+		appearance: none;
+		border: 1px solid var(--border-color);
 	}
 
 	.kol-input input[type='range']::-webkit-slider-thumb {
-		appearance: none;
-		height: rem(20);
-		width: rem(20);
-		border-radius: 50%;
 		background: var(--color-primary);
+		border-radius: 50%;
+		width: rem(20);
+		height: rem(20);
+		appearance: none;
 		cursor: ew-resize;
 		transition: background 0.3s ease-in-out;
 	}
 
 	.kol-input input[type='range']::-moz-range-thumb {
-		appearance: none;
-		height: rem(20);
-		width: rem(20);
-		border-radius: 50%;
 		background: var(--color-primary);
+		border-radius: 50%;
+		width: rem(20);
+		height: rem(20);
+		appearance: none;
 		cursor: ew-resize;
 		transition: background 0.3s ease-in-out;
 	}

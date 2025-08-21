@@ -10,8 +10,8 @@
 	}
 
 	.toast {
-		display: block;
 		background-color: #fff;
+		display: block;
 		margin-top: to-rem(16);
 
 		@include kol-alert-theme;

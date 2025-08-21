@@ -3,9 +3,9 @@
 
 @layer kol-theme-component {
 	.accordion__content {
-		padding-left: rem(36);
-		padding-bottom: rem(12);
 		padding-right: rem(8);
+		padding-bottom: rem(12);
+		padding-left: rem(36);
 	}
 
 	.kol-span-wc > span {
@@ -20,10 +20,11 @@
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
-		font-weight: 700;
-		font-size: rem(calc(1.125 * 16));
-		line-height: rem(16);
 		gap: rem(8);
+
+		font-size: rem(calc(1.125 * 16));
+		font-weight: 700;
+		line-height: rem(16);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc > span {

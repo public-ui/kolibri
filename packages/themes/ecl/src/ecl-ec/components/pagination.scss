@@ -6,20 +6,22 @@
 	}
 
 	.button {
-		appearance: none;
 		background-color: none;
 		outline: none;
+
 		text-decoration: none;
+		appearance: none;
 	}
 
 	.button-inner {
-		background-color: var(--color-yellow);
-		border: 2px solid var(--color-yellow);
 		color: var(--color-black);
-		font-weight: var(--font-weight-bold);
-		min-height: var(--a11y-min-size);
+		background-color: var(--color-yellow);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		padding: 0.25em 0.75em;
+
+		font-weight: var(--font-weight-bold);
+		border: 2px solid var(--color-yellow);
 	}
 
 	.button:not(:disabled):hover .button-inner {
@@ -28,20 +30,21 @@
 	}
 
 	.button:focus .button-inner {
-		outline-offset: -4px;
 		outline: 2px solid var(--color-black);
+		outline-offset: -4px;
 	}
 
 	.button:disabled .button-inner {
-		cursor: not-allowed;
 		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	.selected .button-inner {
+		opacity: 1;
+		color: var(--color-white);
 		background-color: var(--color-blue);
 		border-color: var(--color-blue);
-		color: var(--color-white);
-		opacity: 1;
+
 		text-decoration: underline;
 	}
 }

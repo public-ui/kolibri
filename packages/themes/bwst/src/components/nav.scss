@@ -12,16 +12,17 @@
 
 	.entry-item a,
 	.entry-item .button {
-		align-items: center;
 		color: var(--color-primary);
 		display: flex;
-		gap: rem(8);
 		min-height: var(--a11y-min-size);
+		gap: rem(8);
+		align-items: center;
+
 		text-decoration: none;
 
 		.vertical & {
-			border-left: 2px solid transparent;
 			padding-left: rem(8);
+			border-left: 2px solid transparent;
 		}
 
 		.horizontal & {
@@ -53,8 +54,9 @@
 
 	.active .list .entry-item a,
 	.active .list .entry-item .button {
-		font-weight: normal;
 		border-left-color: transparent;
+
+		font-weight: normal;
 	}
 
 	.expand-button {
@@ -62,8 +64,8 @@
 
 		.button {
 			&:hover {
-				background-color: var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary);
 			}
 
 			&:focus-visible {
@@ -78,17 +80,18 @@
 
 	.toggle-button :is(a, button) > .kol-span-wc,
 	.toggle-button :is(a, button):disabled:hover > .kol-span-wc {
-		border-color: var(--color-light);
+		color: var(--color-primary);
 		background-color: var(--color-light);
 		box-shadow: none;
-		color: var(--color-primary);
-		font-weight: 400;
-		border-radius: var(--border-radius);
+		border-color: var(--color-light);
 		border-style: solid;
-		border-width: var(--border-width);
-		min-height: var(--a11y-min-size);
+		border-radius: var(--border-radius);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		padding: rem(8) rem(14);
+		border-width: var(--border-width);
+
+		font-weight: 400;
 		text-align: center;
 		transition-duration: 0.2s;
 		transition-property: background-color, color, border-color;
@@ -96,15 +99,15 @@
 
 	.toggle-button :is(a, button):active > .kol-span-wc,
 	.toggle-button :is(a, button):hover > .kol-span-wc {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 		color: var(--color-light);
+		background-color: var(--color-primary-variant);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary-variant);
 	}
 
 	.toggle-button :is(a, button):active > .kol-span-wc {
-		border-color: var(--color-light);
 		box-shadow: none;
 		outline: none;
+		border-color: var(--color-light);
 	}
 }

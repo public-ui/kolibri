@@ -7,8 +7,8 @@
 	}
 
 	:host .tabs-button-group {
-		display: flex;
 		background-color: var(--color-petrol);
+		display: flex;
 	}
 
 	:host .tabs-button-group > div {
@@ -25,17 +25,18 @@
 	}
 
 	button {
-		line-height: 1.25;
-		cursor: pointer;
-		border-width: 2px;
 		box-shadow: 0 0 0.25em gray;
-		width: inherit;
 		border-style: solid;
-		padding: calc(4 * var(--spacing));
 		display: grid;
+		width: inherit;
+		padding: calc(4 * var(--spacing));
+		border-width: 2px;
 		gap: 0.25em;
 		align-items: center;
 		justify-content: center;
+
+		line-height: 1.25;
+		cursor: pointer;
 		text-align: center;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -44,9 +45,9 @@
 	.kol-button-wc button.selected,
 	.kol-button-wc[aria-selected='true'] button {
 		background-color: white;
+		border-bottom-color: var(--color-citrin);
 		border-bottom-width: 0.25em;
 		border-bottom-style: solid;
-		border-bottom-color: var(--color-citrin);
 	}
 
 	button > .kol-span-wc span {
@@ -57,15 +58,15 @@
 	}
 
 	button:disabled {
-		cursor: not-allowed;
 		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	button.primary,
 	button.primary:disabled:hover {
+		color: white;
 		background-color: var(--kolibri-color-primary);
 		border-color: var(--kolibri-color-primary);
-		color: white;
 	}
 
 	button.primary:hover,
@@ -75,9 +76,9 @@
 
 	button.secondary,
 	button.secondary:disabled:hover {
+		color: white;
 		background-color: var(--kolibri-color-secondary);
 		border-color: var(--kolibri-color-secondary);
-		color: white;
 	}
 
 	button.secondary:hover,
@@ -87,9 +88,9 @@
 
 	button.normal,
 	button.normal:disabled:hover {
+		color: white;
 		background-color: var(--color-petrol);
 		border-color: var(--color-petrol);
-		color: white;
 	}
 
 	button.normal:hover,
@@ -99,9 +100,9 @@
 
 	button.danger,
 	button.danger:disabled:hover {
+		color: white;
 		background-color: var(--kolibri-color-danger);
 		border-color: var(--kolibri-color-danger);
-		color: white;
 	}
 
 	button.danger:hover,
@@ -111,15 +112,15 @@
 
 	button.ghost,
 	button.ghost:disabled:hover {
+		color: var(--kolibri-color-ghost);
 		background-color: white;
 		border-color: var(--kolibri-color-ghost);
-		color: var(--kolibri-color-ghost);
 	}
 
 	button.ghost:hover,
 	button.ghost:focus {
-		background-color: var(--kolibri-color-ghost);
 		color: white;
+		background-color: var(--kolibri-color-ghost);
 	}
 
 	button:hover,
@@ -129,22 +130,23 @@
 	}
 
 	button:active {
-		outline: 0;
 		box-shadow: none;
+		outline: 0;
 	}
 
 	.close-button {
-		font-size: 25%;
-		height: fit-content;
 		width: 0;
+		height: fit-content;
+
+		font-size: 25%;
 	}
 
 	.close-button button {
-		width: rem(16);
 		position: relative;
-		height: rem(16);
-		left: -4.25em;
 		top: 0.25em;
+		left: -4.25em;
+		width: rem(16);
+		height: rem(16);
 	}
 
 	:host > div {

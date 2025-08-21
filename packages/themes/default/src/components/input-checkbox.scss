@@ -9,11 +9,11 @@
 
 	.kol-input {
 		display: grid;
-		align-items: center;
-		justify-items: left;
 		width: 100%;
 		min-height: var(--a11y-min-size);
 		gap: to-rem(6.4);
+		align-items: center;
+		justify-items: left;
 	}
 
 	.kol-input.default {
@@ -60,8 +60,8 @@
 	}
 
 	.kol-input > .kol-alert-wc.error {
-		order: 1;
 		padding-top: calc(var(--spacing) / 2);
+		order: 1;
 		grid-column: span 2 / auto;
 	}
 
@@ -76,19 +76,19 @@
 	}
 
 	input {
-		cursor: pointer;
-		order: 1;
-		width: 100%;
 		border-color: var(--color-subtle);
-		border-width: 2px;
 		border-style: solid;
 		border-radius: var(--border-radius);
+		width: 100%;
+		border-width: 2px;
+		order: 1;
+		cursor: pointer;
 		@include kol-typography-body;
 	}
 
 	input:hover {
-		border-color: var(--color-primary);
 		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary);
 	}
 
 	input:focus:hover {
@@ -109,13 +109,14 @@
 	}
 
 	.required label > span::after {
-		content: '*';
 		padding-left: 0.125em;
+
+		content: '*';
 	}
 
 	.kol-input input[type='checkbox'] {
-		appearance: none;
 		background-color: white;
+		appearance: none;
 		cursor: pointer;
 		transition: 0.5s;
 	}
@@ -127,9 +128,9 @@
 
 	.kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * to-rem(4));
-		min-width: calc(6 * to-rem(4));
 		width: calc(6 * to-rem(4));
+		min-width: calc(6 * to-rem(4));
+		height: calc(6 * to-rem(4));
 	}
 
 	.kol-input.default input[type='checkbox']:indeterminate {
@@ -143,25 +144,25 @@
 
 	.kol-input.switch input[type='checkbox'] {
 		background-color: var(--color-subtle);
-		border-radius: 1.25em;
-		border-width: 0;
-		display: block;
-		height: 1.5em;
-		min-width: 3.5em;
-		position: relative;
-		width: 3.5em;
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
+		border-radius: 1.25em;
+		display: block;
+		position: relative;
+		width: 3.5em;
+		min-width: 3.5em;
+		height: 1.5em;
+		border-width: 0;
 	}
 
 	.kol-input.switch input[type='checkbox']:before {
+		background-color: white;
+		border-radius: 1.25em;
+		position: absolute;
+		top: calc(0.25em - to-rem(2));
+		left: calc(0.25em - to-rem(2));
 		width: 1.25em;
 		height: 1.25em;
-		left: calc(0.25em - to-rem(2));
-		top: calc(0.25em - to-rem(2));
-		border-radius: 1.25em;
-		background-color: white;
-		position: absolute;
 	}
 
 	.kol-input.switch input[type='checkbox']:checked {
@@ -182,9 +183,9 @@
 
 	.switch {
 		& .icon {
+			left: to-rem(2);
 			width: 1.25em;
 			height: 1.25em;
-			left: to-rem(2);
 		}
 
 		&.checked .icon {
@@ -199,12 +200,12 @@
 	.button {
 		.input {
 			border-top-width: 1px;
-			border-left-width: 1px;
 			border-bottom-width: 1px;
+			border-left-width: 1px;
+			border-bottom-style: solid;
+			border-left-style: solid;
 
 			border-top-style: solid;
-			border-left-style: solid;
-			border-bottom-style: solid;
 		}
 
 		&.hide-label .input {
@@ -213,22 +214,23 @@
 		}
 
 		.input-label {
-			border-top-width: 1px;
-			border-right-width: 1px;
-			border-bottom-width: 1px;
-
-			border-top-style: solid;
-			border-right-style: solid;
-			border-bottom-style: solid;
-
-			justify-self: stretch;
-			align-self: stretch;
 			display: flex;
 
 			padding-right: to-rem(16);
+			border-top-width: 1px;
+			border-right-width: 1px;
+			border-bottom-width: 1px;
+			align-self: stretch;
+
+			justify-self: stretch;
+			border-bottom-style: solid;
+			border-right-style: solid;
+
+			border-top-style: solid;
 
 			.input-label-span {
 				margin: auto auto;
+
 				font-weight: 700;
 			}
 		}
@@ -239,35 +241,35 @@
 
 		.input,
 		.input-label {
-			border-color: var(--color-primary);
-			background-color: var(--color-light);
 			color: var(--color-primary);
+			background-color: var(--color-light);
+			border-color: var(--color-primary);
 		}
 
 		&.indeterminate {
 			.input,
 			.input-label {
-				border-color: var(--color-primary);
-				background-color: var(--color-mute);
 				color: var(--color-primary);
+				background-color: var(--color-mute);
+				border-color: var(--color-primary);
 			}
 		}
 
 		&.checked {
 			.input,
 			.input-label {
-				border-color: var(--color-primary);
-				background-color: var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary);
+				border-color: var(--color-primary);
 			}
 		}
 
 		&:is(:active, :hover):not(.disabled) {
 			.input,
 			.input-label {
+				color: var(--color-light);
 				background-color: var(--color-primary-variant);
 				border-color: var(--color-primary-variant);
-				color: var(--color-light);
 			}
 		}
 

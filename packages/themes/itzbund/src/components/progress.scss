@@ -8,8 +8,8 @@
 	:host progress,
 	:host span {
 		display: block;
-		height: 0;
 		width: 0;
+		height: 0;
 	}
 
 	svg line:first-child,
@@ -20,8 +20,8 @@
 
 	svg line:last-child,
 	svg circle:last-child {
-		stroke: var(--color-achat);
 		fill: transparent;
+		stroke: var(--color-achat);
 	}
 
 	progress {

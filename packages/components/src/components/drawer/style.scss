@@ -9,10 +9,10 @@
 		}
 
 		&__wrapper {
+			background-color: white;
 			position: fixed;
 			width: auto;
 			overflow: auto;
-			background-color: white;
 
 			&--left {
 				top: 0;
@@ -37,8 +37,8 @@
 			}
 
 			&--top {
-				left: 0;
 				top: 0;
+				left: 0;
 				width: 100vw;
 				max-width: 100%;
 
@@ -48,8 +48,8 @@
 			}
 
 			&--bottom {
-				left: 0;
 				bottom: 0;
+				left: 0;
 				width: 100vw;
 				max-width: 100%;
 

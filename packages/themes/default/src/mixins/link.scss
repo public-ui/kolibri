@@ -3,9 +3,10 @@
 @mixin kol-link {
 	:is(a, button) {
 		color: var(--color-primary);
-		font-style: normal;
+
 		font-weight: 400;
 		line-height: 1;
+		font-style: normal;
 	}
 
 	:is(a, button):focus {
@@ -13,8 +14,8 @@
 	}
 
 	:is(a, button):focus kol-span-wc {
-		border-radius: var(--border-radius);
 		outline: var(--border-width) solid;
+		border-radius: var(--border-radius);
 	}
 
 	a:is(:focus, :hover):not([aria-disabled]),
@@ -29,15 +30,16 @@
 	}
 
 	.skip {
-		left: to-rem(-99999);
 		position: absolute;
+		left: to-rem(-99999);
 		z-index: 9999999;
+
 		line-height: 1;
 	}
 
 	.skip:focus {
 		background-color: white;
-		left: unset;
 		position: unset;
+		left: unset;
 	}
 }

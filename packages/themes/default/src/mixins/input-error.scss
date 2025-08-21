@@ -2,8 +2,8 @@
 @use '../mixins/alert-wc' as *;
 
 @mixin input-error {
-	border-left: 3px solid var(--color-danger);
 	padding-left: to-rem(16);
+	border-left: 3px solid var(--color-danger);
 
 	.input:focus-within {
 		outline-color: var(--color-danger);

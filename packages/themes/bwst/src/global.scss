@@ -57,11 +57,11 @@
 	.kol-input:not(.checkbox, .radio) .input:focus-within,
 	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
-		cursor: pointer;
 		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 2px;
+		cursor: pointer;
+		outline-offset: 2px;
 		transition: outline-offset 0.2s linear;
 	}
 
@@ -70,8 +70,8 @@
 	}
 
 	.kol-tooltip-wc .tooltip-floating {
-		border: var(--border-width) solid var(--color-subtle);
 		border-radius: var(--border-radius);
+		border: var(--border-width) solid var(--color-subtle);
 	}
 
 	.kol-tooltip-wc .tooltip-arrow {
@@ -84,8 +84,9 @@
 
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
-		line-height: 1.5;
 		padding: rem(8) rem(12);
+
+		line-height: 1.5;
 	}
 
 	.kol-span-wc,
@@ -99,9 +100,9 @@
 	}
 
 	.badge-text-hint {
+		color: var(--color-text);
 		background: var(--color-mute-variant);
 		border-radius: 3px;
-		color: var(--color-text);
 		padding: 0 0.3em;
 	}
 

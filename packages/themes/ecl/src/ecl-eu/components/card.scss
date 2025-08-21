@@ -2,21 +2,22 @@
 
 @layer kol-theme-component {
 	:host > div {
+		background-color: white;
+		box-shadow: 0 0 calc(var(--spacing-2xs) / 2) var(--color-black);
 		display: grid;
 		width: 100%;
 		height: 100%;
-		background-color: white;
 		grid-template-rows: min-content 2fr min-content;
-		box-shadow: 0 0 calc(var(--spacing-2xs) / 2) var(--color-black);
 	}
 
 	:host .header {
 		display: inline-flex;
-		font-style: normal;
-		font-weight: 700;
-		font-size: 1.25em;
-		line-height: 1.75;
 		padding: var(--spacing-m) var(--spacing-m) var(--spacing-xs) var(--spacing-m);
+
+		font-size: 1.25em;
+		font-weight: 700;
+		line-height: 1.75;
+		font-style: normal;
 	}
 
 	:host .content {

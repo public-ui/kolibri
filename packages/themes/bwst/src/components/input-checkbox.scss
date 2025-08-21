@@ -9,19 +9,20 @@
 	}
 
 	:host fieldset legend {
-		order: 2;
 		display: contents;
+		order: 2;
+
 		font-size: rem(calc(0.9 * 16));
 		font-weight: 700;
 	}
 
 	:host .kol-input {
 		display: grid;
-		align-items: center;
-		justify-items: left;
 		width: 100%;
 		min-height: var(--a11y-min-size);
 		gap: rem(calc(0.4 * 16));
+		align-items: center;
+		justify-items: left;
 
 		.hint {
 			@include kol-typography-hint;
@@ -29,8 +30,8 @@
 	}
 
 	:host .kol-input:is(.default, .switch) {
-		grid-template-columns: rem(24) auto;
 		grid-template-areas: unset;
+		grid-template-columns: rem(24) auto;
 
 		.input,
 		.input-label {
@@ -70,14 +71,14 @@
 	}
 
 	:host .kol-input > .kol-alert-wc.error {
-		order: 1;
 		padding-top: calc(var(--spacing) / 2);
+		order: 1;
 		grid-column: span 2;
 	}
 
 	:host .kol-input.error {
-		border-left: 3px solid var(--color-danger);
 		padding-left: rem(16);
+		border-left: 3px solid var(--color-danger);
 	}
 
 	:host .kol-input.error input:focus,
@@ -91,19 +92,20 @@
 	}
 
 	:host input {
-		cursor: pointer;
-		width: 100%;
 		border-color: var(--color-subtle);
-		border-width: 2px;
 		border-style: solid;
 		border-radius: var(--border-radius);
-		line-height: rem(24);
+		width: 100%;
+		border-width: 2px;
+
 		font-size: rem(16);
+		line-height: rem(24);
+		cursor: pointer;
 	}
 
 	:host input:hover {
-		border-color: var(--color-primary);
 		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary);
 	}
 
 	:host input:focus:hover {
@@ -124,13 +126,14 @@
 	}
 
 	:host .required label > span::after {
-		content: '*';
 		padding-left: rem(calc(0.125 * 16));
+
+		content: '*';
 	}
 
 	:host .kol-input input[type='checkbox'] {
-		appearance: none;
 		background-color: white;
+		appearance: none;
 		cursor: pointer;
 		transition: 0.5s;
 	}
@@ -142,9 +145,9 @@
 
 	:host .kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * rem(4));
-		min-width: calc(6 * rem(4));
 		width: calc(6 * rem(4));
+		min-width: calc(6 * rem(4));
+		height: calc(6 * rem(4));
 	}
 
 	:host .kol-input.default input[type='checkbox']:indeterminate {
@@ -153,32 +156,32 @@
 
 	:host .kol-input.default .icon {
 		color: var(--color-light);
+		width: rem(16);
 		height: rem(16);
 		margin-left: rem(4);
-		width: rem(16);
 	}
 
 	:host .kol-input.switch input[type='checkbox'] {
 		background-color: var(--color-subtle);
-		border-radius: rem(20);
-		border-width: 0;
-		display: block;
-		height: rem(24);
-		min-width: rem(calc(3.5 * 16));
-		position: relative;
-		width: rem(calc(3.5 * 16));
 		/* Visible with forced colors  */
 		outline: transparent solid rem(1);
+		border-radius: rem(20);
+		display: block;
+		position: relative;
+		width: rem(calc(3.5 * 16));
+		min-width: rem(calc(3.5 * 16));
+		height: rem(24);
+		border-width: 0;
 	}
 
 	:host .kol-input.switch input[type='checkbox']:before {
+		background-color: white;
+		border-radius: rem(20);
+		position: absolute;
+		top: calc(rem(4) - rem(2));
+		left: calc(rem(4) - rem(2));
 		width: rem(20);
 		height: rem(20);
-		left: calc(rem(4) - rem(2));
-		top: calc(rem(4) - rem(2));
-		border-radius: rem(20);
-		background-color: white;
-		position: absolute;
 	}
 
 	:host .kol-input.switch input[type='checkbox']:checked {
@@ -195,9 +198,9 @@
 
 	.switch {
 		& .icon {
+			left: rem(2);
 			width: rem(20);
 			height: rem(20);
-			left: rem(2);
 		}
 
 		&.checked .icon {
@@ -212,12 +215,12 @@
 	.button {
 		.input {
 			border-top-width: 1px;
-			border-left-width: 1px;
 			border-bottom-width: 1px;
+			border-left-width: 1px;
+			border-bottom-style: solid;
+			border-left-style: solid;
 
 			border-top-style: solid;
-			border-left-style: solid;
-			border-bottom-style: solid;
 		}
 
 		&.hide-label .input {
@@ -226,19 +229,19 @@
 		}
 
 		.input-label {
-			border-top-width: 1px;
-			border-right-width: 1px;
-			border-bottom-width: 1px;
-
-			border-top-style: solid;
-			border-right-style: solid;
-			border-bottom-style: solid;
-
-			justify-self: stretch;
-			align-self: stretch;
 			display: flex;
 
 			padding-right: rem(16);
+			border-top-width: 1px;
+			border-right-width: 1px;
+			border-bottom-width: 1px;
+			align-self: stretch;
+
+			justify-self: stretch;
+			border-bottom-style: solid;
+			border-right-style: solid;
+
+			border-top-style: solid;
 
 			.input-label-span {
 				margin: auto 0;
@@ -251,35 +254,35 @@
 
 		.input,
 		.input-label {
-			border-color: var(--color-primary);
-			background-color: var(--color-light);
 			color: var(--color-primary);
+			background-color: var(--color-light);
+			border-color: var(--color-primary);
 		}
 
 		&.indeterminate {
 			.input,
 			.input-label {
-				border-color: var(--color-primary);
-				background-color: var(--color-mute);
 				color: var(--color-primary);
+				background-color: var(--color-mute);
+				border-color: var(--color-primary);
 			}
 		}
 
 		&.checked {
 			.input,
 			.input-label {
-				border-color: var(--color-primary);
-				background-color: var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary);
+				border-color: var(--color-primary);
 			}
 		}
 
 		&:is(:active, :hover):not(.disabled) {
 			.input,
 			.input-label {
+				color: var(--color-light);
 				background-color: var(--color-primary-variant);
 				border-color: var(--color-primary-variant);
-				color: var(--color-light);
 			}
 		}
 
@@ -293,11 +296,11 @@
 	.kol-input:not(.checkbox) .input:focus,
 	.kol-input:is(.checkbox.switch, .radio) input:focus,
 	.kol-input:is(.checkbox) input:focus {
-		cursor: pointer;
 		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 2px;
+		cursor: pointer;
+		outline-offset: 2px;
 		transition: outline-offset 0.2s linear;
 	}
 }

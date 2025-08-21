@@ -3,12 +3,12 @@
 @layer kol-component {
 	.bar {
 		display: grid;
-		grid-template-columns: 1fr auto;
+		column-gap: 0.05rem;
+		align-items: center;
 		grid-template-areas:
 			'LABEL LABEL LABEL'
 			'BAR VALUE UNIT';
-		align-items: center;
-		column-gap: 0.05rem;
+		grid-template-columns: 1fr auto;
 
 		.label {
 			grid-column-end: 2;
@@ -47,22 +47,22 @@
 
 	.cycle {
 		display: grid;
-		grid-template-columns: auto;
-		grid-template-areas: 'ALL';
-		justify-items: center;
 		align-content: center;
+		justify-items: center;
+		grid-template-areas: 'ALL';
+		grid-template-columns: auto;
 
 		> * {
 			grid-area: ALL;
 		}
 
 		.text {
-			text-align: center;
 			display: flex;
-			justify-content: center;
 			flex-direction: column;
+			justify-content: center;
 
 			font-size: x-small;
+			text-align: center;
 
 			* {
 				background-color: white;
@@ -86,18 +86,18 @@
 	}
 
 	.cycle .progress {
+		transform: rotate(-90deg);
+		transform-origin: 50% 50%;
 		fill: transparent;
 		stroke: #0075ff;
-		transform-origin: 50% 50%;
-		transform: rotate(-90deg);
 		transition: 250ms ease-in-out 50ms;
 	}
 
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
 	@media (prefers-reduced-motion) {
 		.progress {
-			transition-duration: 0s;
 			transition-delay: 0s;
+			transition-duration: 0s;
 		}
 	}
 }

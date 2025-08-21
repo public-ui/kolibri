@@ -2,14 +2,15 @@
 
 @layer kol-theme-component {
 	.kol-link-wc > a > .kol-span-wc {
-		border-radius: 32px;
-		border-style: solid;
-		gap: rem(8);
-		line-height: 1;
-		padding: 0 rem(16);
+		color: var(--color-weiss);
 		background-color: var(--color-petrol);
 		border-color: var(--color-petrol);
-		color: var(--color-weiss);
+		border-style: solid;
+		border-radius: 32px;
+		padding: 0 rem(16);
+		gap: rem(8);
+
+		line-height: 1;
 		cursor: pointer;
 	}
 }

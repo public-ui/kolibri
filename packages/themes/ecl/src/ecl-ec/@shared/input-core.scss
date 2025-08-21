@@ -14,9 +14,9 @@
 	input,
 	select,
 	textarea {
-		border: none;
-		margin: to-rem(1);
 		outline: none;
+		margin: to-rem(1);
+		border: none;
 	}
 
 	input,
@@ -27,18 +27,20 @@
 	input:not([type='range']):focus,
 	select:focus,
 	textarea:focus {
-		border-top: 1px solid var(--color-blue);
 		border-bottom: 1px solid var(--color-blue);
+		border-top: 1px solid var(--color-blue);
 	}
 
 	label {
-		font-weight: var(--font-weight-bold);
 		order: 1;
+
+		font-weight: var(--font-weight-bold);
 	}
 
 	.hint {
-		font-size: to-rem(14);
 		order: 2;
+
+		font-size: to-rem(14);
 	}
 
 	.kol-alert-wc {
@@ -47,12 +49,12 @@
 	}
 
 	.input {
-		min-height: var(--a11y-min-size);
-		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
+		min-height: var(--a11y-min-size);
+		padding: to-rem(1) 0.5em;
 		order: 4;
 		align-items: center;
-		padding: to-rem(1) 0.5em;
+		border: 1px solid var(--color-grey-75);
 	}
 
 	input::placeholder,

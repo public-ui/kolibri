@@ -7,6 +7,7 @@
 
 @mixin kol-input-error-with-kol-alert-wc-error($color: null) {
 	color: var($color);
+
 	font-weight: 700;
 }
 
@@ -16,14 +17,14 @@
 	}
 
 	.kol-alert-wc {
-		border-width: var(--border-width);
+		background-color: var(--color-light);
+		border-color: transparent;
 		border-style: solid;
 		border-radius: var(--border-radius);
 		display: flex;
 		width: 100%;
+		border-width: var(--border-width);
 		overflow: unset;
-		border-color: transparent;
-		background-color: var(--color-light);
 
 		&.msg {
 			border-width: 0;
@@ -151,9 +152,9 @@
 	}
 
 	.card {
-		border-width: var(--border-width);
-		border-style: solid;
 		filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
+		border-style: solid;
+		border-width: var(--border-width);
 		flex-direction: column;
 	}
 
@@ -163,8 +164,8 @@
 
 	.card[_has-closer] > .heading {
 		padding-top: 0;
-		padding-bottom: 0;
 		padding-right: 0;
+		padding-bottom: 0;
 	}
 
 	.card > .heading > div {
@@ -173,14 +174,15 @@
 	}
 
 	.card > .heading .heading-icon {
-		justify-self: right;
 		margin-top: to-rem(-4);
+		justify-self: right;
 	}
 
 	.card > .heading .kol-heading-wc {
-		width: 100%;
 		color: var(--color-light);
 		display: flex;
+		width: 100%;
+
 		font-size: to-rem(20);
 		line-height: 1;
 	}
@@ -218,8 +220,8 @@
 	}
 
 	.card > div > .content {
-		grid-row: 2;
 		grid-column: 1 / span 2;
+		grid-row: 2;
 	}
 
 	.card.default .close {
@@ -243,14 +245,15 @@
 	}
 
 	.close > button {
-		border-radius: 50%;
 		/* visible on focus */
 		color: var(--color-light);
+		border-radius: 50%;
 		cursor: pointer;
 	}
 
 	.close > button.hide-label .kol-icon {
 		display: flex;
+
 		font-size: to-rem(19.2);
 	}
 
