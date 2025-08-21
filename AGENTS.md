@@ -218,6 +218,7 @@ In the theme component layer, you can set what ever you need to realize your own
 - Do not set the default `font-family`, `font-size` or `box-sizing` in the basis or theme component layer (redundant), as these are already set in the basis global layers. If you need to set a different font-family or font-size, you can do this in the theme global layer.
 - Do not set `margin` or `padding` in the basis global and component layers. If you need to set a different margin or padding, you can do this in the theme global or component layers.
 - Do not use `overflow: hidden` in styling or theming, as it often causes issues for reuse and should be avoided.
+- **Do not use `@layer` declarations in utility files**: Helper files, mixin files, and partial files (starting with `_`) should not contain `@layer` declarations. These files are utilities and should be layer-agnostic. This is enforced by the custom Stylelint rule `kolibri/no-layer-in-utility-files`.
 
 ## Samples
 
@@ -235,6 +236,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Use ESM import syntax in browser code and scripts whenever supported, instead of `require` imports.
 - Do not create barrel files (e.g. `index.ts` that re-export modules). Import modules directly instead.
 - Do not place constant declarations before import statements; imports must always be at the very top of the file.
+- **Scripts must be platform-independent**: All scripts in the `scripts/` folder must work on Windows, macOS, and Linux without requiring external tools or platform-specific dependencies. Use Node.js built-in modules instead of external command-line tools like `rg`, `grep`, `find`, etc.
 
 ## Linting and Formatting
 

@@ -1,18 +1,16 @@
 @use '../components/@shared/mixins' as *;
 
 @mixin kol-custom-suggestions-options-group {
-	@layer kol-component {
-		.kol-custom-suggestions-options-group {
-			background-color: white;
-			display: block;
-			position: absolute;
-			z-index: 2;
-			max-height: to-rem(250);
-			margin: 0;
-			padding: 0;
-			overflow-x: hidden;
-			overflow-y: auto;
-			list-style-type: none;
-		}
+	.kol-custom-suggestions-options-group {
+		background-color: white;
+		display: block;
+		position: absolute;
+		z-index: 2;
+		max-height: to-rem(250);
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		list-style-type: none;
 	}
 }

@@ -1,26 +1,24 @@
 @use 'mixins' as *;
 
 @mixin kol-pagination-styles {
-	@layer kol-component {
-		.kol-pagination {
-			display: grid;
-			gap: to-rem(16);
+	.kol-pagination {
+		display: grid;
+		gap: to-rem(16);
+		align-items: center;
+		grid-template-columns: 1fr auto;
+
+		&__navigation-list {
+			display: inline-flex;
+			margin: 0;
+			padding: 0;
+			gap: 0.5em;
+			flex-wrap: wrap;
 			align-items: center;
-			grid-template-columns: 1fr auto;
+			list-style: none;
+		}
 
-			&__navigation-list {
-				display: inline-flex;
-				margin: 0;
-				padding: 0;
-				gap: 0.5em;
-				flex-wrap: wrap;
-				align-items: center;
-				list-style: none;
-			}
-
-			&__separator:before {
-				content: '•••';
-			}
+		&__separator:before {
+			content: '•••';
 		}
 	}
 }

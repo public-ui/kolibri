@@ -3,4 +3,6 @@
 @use '../tooltip/style.scss' as *;
 @use '../@shared/kol-pagination-mixin' as *;
 
-@include kol-pagination-styles;
+@layer kol-component {
+	@include kol-pagination-styles;
+}
