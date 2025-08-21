@@ -3,9 +3,9 @@
 @use '../@shared/mixins' as *;
 @use '../tooltip/style.scss' as *;
 
-@include kol-card;
-
 @layer kol-component {
+	@include kol-card;
+
 	.kol-drawer {
 		$root: &;
 

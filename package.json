@@ -31,7 +31,6 @@
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
-		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
 		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react*,@stencil/*,@unocss/*",

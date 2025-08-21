@@ -1,7 +1,10 @@
 {
 	"extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
-	"plugins": ["stylelint-scss", "stylelint-order"],
+	"plugins": ["stylelint-scss", "stylelint-order", "./stylelint-rules"],
 	"rules": {
+		"kolibri/no-layer-in-utility-files": true,
+		"kolibri/layer-restrictions-components": true,
+		"kolibri/layer-restrictions-themes": true,
 		"block-no-empty": true,
 		"color-no-invalid-hex": true,
 		"custom-property-pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:--[a-z0-9]+(?:-[a-z0-9]+)*)*$",
