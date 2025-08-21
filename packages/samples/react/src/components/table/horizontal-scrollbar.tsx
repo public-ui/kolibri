@@ -35,42 +35,36 @@ export const TableHorizontalScrollbar: FC = () => {
 			</SampleDescription>
 
 			<section className="w-full flex flex-col gap-4">
-				<KolHeading _label="Table with scrollbar" _level={2} />
-
-				<KolTableStateful
-					_label="Table for demonstration purposes with horizontal scrollbar."
-					_minWidth={hasWidthRestriction ? '600px' : '300px'}
-					_headers={HEADERS}
-					_data={DATA}
-					className="block"
-					style={{ width: '400px' }}
-				/>
-				<KolHeading _label="Table with scrollbar and pagination" _level={3} />
-				<KolTableStateful
-					_label="Table for demonstration horizontal scrolling with pagination."
-					_minWidth={hasWidthRestriction ? '600px' : '300px'}
-					_headers={{
-						horizontal: [
-							[
-								{ label: 'Order', key: 'order' },
-								{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+				<div className="w-[400px] flex flex-col gap-4">
+					<KolTableStateful
+						_label="Table for demonstration purposes with horizontal scrollbar."
+						_minWidth={hasWidthRestriction ? '600px' : '300px'}
+						_headers={HEADERS}
+						_data={DATA}
+						className="block"
+					/>
+					<KolTableStateful
+						_label="Table for demonstration horizontal scrolling with pagination."
+						_minWidth={hasWidthRestriction ? '600px' : '300px'}
+						_headers={{
+							horizontal: [
+								[
+									{ label: 'Order', key: 'order' },
+									{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+								],
 							],
-						],
-					}}
-					_data={tableData}
-					style={{ width: '400px' }}
-					_pagination
-				/>
-				<KolHeading _label="Empty Table with scrollbar" _level={3} />
-
-				<KolTableStateful
-					_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
-					_minWidth={hasWidthRestriction ? '600px' : '300px'}
-					_headers={HEADERS}
-					_data={[]}
-					className="block"
-					style={{ width: '400px' }}
-				/>
+						}}
+						_data={tableData}
+						_pagination
+					/>
+					<KolTableStateful
+						_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
+						_minWidth={hasWidthRestriction ? '600px' : '300px'}
+						_headers={HEADERS}
+						_data={[]}
+						className="block"
+					/>
+				</div>
 
 				<KolInputCheckbox
 					_checked={hasWidthRestriction}
