@@ -1,15 +1,13 @@
 @mixin kol-custom-suggestions-option {
-	@layer kol-component {
-		.kol-custom-suggestions-option {
-			line-height: 1.5;
-			white-space: normal;
-			cursor: pointer;
-			overflow-wrap: break-word;
-			word-wrap: break-word;
+	.kol-custom-suggestions-option {
+		line-height: 1.5;
+		white-space: normal;
+		cursor: pointer;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
 
-			.kol-custom-suggestions-options-group--cursor-hidden & {
-				cursor: none !important;
-			}
+		.kol-custom-suggestions-options-group--cursor-hidden & {
+			cursor: none !important;
 		}
 	}
 }

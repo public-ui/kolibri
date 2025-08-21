@@ -7,7 +7,9 @@
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
-@include kol-alert;
-@include kol-button-styles('kol-button');
-@include kol-popover-button-styles;
-@include kol-table-stateless-styles;
+@layer kol-component {
+	@include kol-alert;
+	@include kol-button-styles('kol-button');
+	@include kol-popover-button-styles;
+	@include kol-table-stateless-styles;
+}

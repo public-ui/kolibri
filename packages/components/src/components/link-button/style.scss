@@ -2,4 +2,6 @@
 @use '../../styles/global' as *;
 @use '../@shared/kol-button-mixin' as *;
 
-@include kol-button-styles('kol-link');
+@layer kol-component {
+	@include kol-button-styles('kol-link');
+}

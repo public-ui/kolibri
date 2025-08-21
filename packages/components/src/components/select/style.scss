@@ -5,11 +5,11 @@
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-alert;
-@include kol-form-field;
-@include kol-input-container;
-
 @layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+
 	.kol-select {
 		width: 100%;
 

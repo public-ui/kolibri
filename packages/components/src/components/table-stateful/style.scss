@@ -6,13 +6,13 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/kol-pagination-mixin' as *;
 
-@include kol-alert;
-@include kol-button-styles('kol-button');
-@include kol-popover-button-styles;
-@include kol-table-stateless-styles;
-@include kol-pagination-styles;
-
 @layer kol-component {
+	@include kol-alert;
+	@include kol-button-styles('kol-button');
+	@include kol-popover-button-styles;
+	@include kol-table-stateless-styles;
+	@include kol-pagination-styles;
+
 	.kol-table-stateful {
 		&__pagination,
 		&__pagination-wrapper {

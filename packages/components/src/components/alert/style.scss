@@ -1,4 +1,6 @@
 @use '../../styles/global' as *;
 @use '../../styles/kol-alert-mixin' as *;
 
-@include kol-alert;
+@layer kol-component {
+	@include kol-alert;
+}
