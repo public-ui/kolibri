@@ -1,6 +1,5 @@
 import type {
 	AccessKeyPropType,
-	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonLinkProps,
@@ -70,7 +69,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_linkVariant={this._variant}
 				_name={this._name}
 				_on={this._on}
-				_role="link"
 				_shortKey={this._shortKey}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tooltipAlign={this._tooltipAlign}
@@ -154,8 +152,8 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 * @deprecated Will be removed in release 2.
 	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Adds a visual short key hint to the component.

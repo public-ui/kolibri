@@ -12,7 +12,7 @@ const ARGS = {
 export const LinkButtonBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolLinkButton renders a link that looks like a button. The sample shows the different styling variants.</p>
+			<p>KolLinkButton renders a link that looks like a button. Screen readers announce a navigation. The sample shows the different styling variants.</p>
 		</SampleDescription>
 
 		<div className="flex flex-wrap gap-2">

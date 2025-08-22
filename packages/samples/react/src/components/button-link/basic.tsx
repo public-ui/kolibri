@@ -16,8 +16,9 @@ export const ButtonLinkBasic: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					KolButtonLink shows an element, that behaves like a button but looks like a link. The sample illustrates KolButtonLink with different
-					display-properties such as <code>block</code>, <code>inline-block</code> and <code>inline</code>. It also demonstrates the disabled-state.
+					KolButtonLink shows an element, that behaves like a button but looks like a link. Screen readers announce it as a button. The sample illustrates
+					KolButtonLink with different display-properties such as <code>block</code>, <code>inline-block</code> and <code>inline</code>. It also demonstrates
+					the disabled-state.
 				</p>
 			</SampleDescription>
 			<section className="text-base">

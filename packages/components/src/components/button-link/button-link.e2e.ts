@@ -9,6 +9,12 @@ test.describe('kol-button-link', () => {
 		await expect(kolButton).toContainText('Test ButtonLink Element');
 	});
 
+	test('has button role', async ({ page }) => {
+		await page.setContent('<kol-button-link _label="Label"></kol-button-link>');
+		const role = await page.locator('kol-button-link').evaluate((el) => el.shadowRoot?.querySelector('kol-button-wc')?.getAttribute('role'));
+		expect(role).toBe('button');
+	});
+
 	test.describe('Callbacks', () => {
 		['onClick', 'onMouseDown'].forEach((callbackName) => {
 			test(`should call ${callbackName} callback when internal button emits`, async ({ page }) => {

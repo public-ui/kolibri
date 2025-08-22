@@ -3,6 +3,12 @@ import { test } from '@stencil/playwright';
 import { KolEvent } from '../../utils/events';
 
 test.describe('kol-link-button', () => {
+	test('has link role', async ({ page }) => {
+		await page.setContent('<kol-link-button _label="Link"></kol-link-button>');
+		const role = await page.locator('kol-link-button').evaluate((el) => el.shadowRoot?.querySelector('kol-link-wc')?.getAttribute('role'));
+		expect(role).toBe('link');
+	});
+
 	test.describe('Callbacks', () => {
 		test(`should call onClick callback when internal anchor emits click`, async ({ page }) => {
 			await page.setContent('<kol-link-button _label="Link"></kol-link-button>');
