@@ -71,26 +71,25 @@ export class KolToolbar implements ToolbarAPI {
 	@Watch('_items')
 	public validateItems(value?: ToolbarItemsPropType): void {
 		validateToolbarItems(this, value);
-		this.state._items = value ?? [];
-		this.setFirstEnabledItemIndex();
 	}
 
-	private getCurrentToolbarItem(index?: number) {
+	/**
+	 * Retrieves the toolbar item by index if defined.
+	 * If not it use the current index of state.
+	 *
+	 * @returns An array of HTMLElements representing the toolbar items.
+	 */
+	private getCurrentToolbarItem(index?: number): ChildNode | undefined {
 		return typeof index === 'number' ? this.indexToElement.get(index) : undefined;
 	}
 
+	/**
+	 * Sets the index of the first enabled toolbar item.
+	 */
 	private setFirstEnabledItemIndex() {
 		const items = this.state._items || [];
 		const firstEnabledIndex = items.findIndex((item) => !item._disabled);
 		this.currentIndex = firstEnabledIndex >= 0 ? firstEnabledIndex : 0;
-
-		// update all TabIndexes
-		items.forEach((item, index) => {
-			const element = this.indexToElement.get(index);
-			if (element) {
-				element._tabIndex = index === this.currentIndex && !item._disabled ? 0 : -1;
-			}
-		});
 	}
 
 	@Listen('keydown')
@@ -113,8 +112,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (currentIndex === nextIndex) return;
 
 		this.currentIndex = nextIndex;
-		const el = this.getCurrentToolbarItem(nextIndex);
-		if (el) void el.kolFocus();
+		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.kolFocus();
 	}
 
 	/**
