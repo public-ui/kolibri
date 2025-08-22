@@ -41,6 +41,8 @@
 				left: 0;
 				width: 100vw;
 				max-width: 100%;
+				max-height: 100vh;
+				overflow: auto;
 
 				.drawer__content {
 					width: 100%;
@@ -52,6 +54,8 @@
 				left: 0;
 				width: 100vw;
 				max-width: 100%;
+				max-height: 100vh;
+				overflow: auto;
 
 				.drawer__content {
 					width: 100%;
