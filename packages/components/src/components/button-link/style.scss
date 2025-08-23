@@ -1,2 +1,8 @@
 @use '../style' as *;
 @use '../link' as *;
+
+@layer kol-component {
+	button {
+		min-height: unset; // Inline links may have the height of the flowing text and do not necessarily have to be 44px high.
+	}
+}
