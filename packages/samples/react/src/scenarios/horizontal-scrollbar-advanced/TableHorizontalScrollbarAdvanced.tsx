@@ -54,7 +54,13 @@ function TableHorizontalScrollbarAdvanced() {
 
 	return (
 		<>
-			<SampleDescription></SampleDescription>
+			<SampleDescription>
+				<p>
+					This advanced scenario demonstrates a complex layout with KolTable featuring horizontal scrollbar within a tab-based navigation system. The table
+					automatically calculates its minimum width based on column definitions and provides smooth horizontal scrolling when content exceeds the container
+					width. This example showcases real-world usage in a dashboard-like interface with sidebar navigation and tabbed content areas.
+				</p>
+			</SampleDescription>
 			<div className="mainlayout">
 				<aside className="nav-area">
 					<KolNav _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded />
