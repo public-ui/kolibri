@@ -55,7 +55,7 @@
 		"start": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh BWSt",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=BWSt kolibri-visual-test",
-		"test-update": "cross-env THEME_MODULE=dist THEME_EXPORT=BWSt kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"test-update": "cross-env THEME_MODULE=dist THEME_EXPORT=BWSt kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},

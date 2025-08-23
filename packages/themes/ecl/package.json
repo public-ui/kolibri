@@ -22,8 +22,8 @@
 		"test:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",
 		"xtest-update": "npm-run-all2 test-update:*",
-		"test-update:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
-		"test-update:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"test-update:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
+		"test-update:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},
