@@ -141,11 +141,15 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 
 ### `close() => Promise<void>`
 
+Closes the drawer.
+
 #### Returns
 
 Type: `Promise<void>`
 
 ### `open() => Promise<void>`
+
+Opens the drawer.
 
 #### Returns
 

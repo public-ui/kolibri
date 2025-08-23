@@ -61,6 +61,8 @@ Type: `Promise<void>`
 
 ### `kolFocus() => Promise<void>`
 
+Focuses the link element.
+
 #### Returns
 
 Type: `Promise<void>`

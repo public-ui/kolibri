@@ -155,11 +155,15 @@ Type: `Promise<void>`
 
 ### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
 
+Returns the current value.
+
 #### Returns
 
 Type: `Promise<Stringified<StencilUnknown>>`
 
 ### `kolFocus() => Promise<void>`
+
+Programmatically focuses the button.
 
 #### Returns
 
