@@ -41,10 +41,14 @@ export class KolPopoverButton implements PopoverButtonProps {
 		void this.ref?.hidePopover();
 	}
 
+	private catchRef = (ref?: HTMLKolPopoverButtonWcElement) => {
+		this.ref = ref;
+	};
+
 	public render(): JSX.Element {
 		return (
 			<KolPopoverButtonWcTag
-				ref={(element) => (this.ref = element)}
+				ref={this.catchRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
@@ -58,7 +62,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_name={this._name}
 				_on={this._on}
 				_popoverAlign={this._popoverAlign}
-				_role={this._role}
 				_shortKey={this._shortKey}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tabIndex={this._tabIndex}
@@ -142,6 +145,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 

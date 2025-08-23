@@ -107,7 +107,6 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_label={this._label}
 						_name={this._name}
 						_on={this.clickButtonHandler}
-						_role={this._role}
 						_shortKey={this._shortKey}
 						_syncValueBySelector={this._syncValueBySelector}
 						_tooltipAlign={this._tooltipAlign}
@@ -211,6 +210,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
