@@ -131,6 +131,8 @@ Type: `Promise<void>`
 
 ### `kolFocus() => Promise<void>`
 
+Focuses the accordion trigger button.
+
 #### Returns
 
 Type: `Promise<void>`

@@ -46,6 +46,7 @@
 		color: white;
 		background-color: var(--color-petrol);
 		border-radius: var(--border-radius);
+
 		display: flex;
 		height: 100%;
 		padding: 0.5em;
@@ -55,7 +56,7 @@
 		line-height: 2;
 		text-decoration: inherit;
 		border: 1px solid transparent;
-		-webkit-box-align: center;
+
 		cursor: pointer;
 	}
 

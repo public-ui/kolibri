@@ -127,6 +127,7 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
@@ -137,19 +138,29 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 | `_on`                 | --        | Specifies the EventCallback function to be called when the drawer is closing.                                      | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
 | `_open`               | `_open`   | Opens/expands the element when truthy, closes/collapses when falsy.                                                | `boolean \| undefined`                                    | `undefined` |
 
+
 ## Methods
 
 ### `close() => Promise<void>`
 
+Closes the drawer.
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `open() => Promise<void>`
 
+Opens the drawer.
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Slots
 
@@ -157,4 +168,7 @@ Type: `Promise<void>`
 | ---- | ---------------------- |
 |      | The Content of drawer. |
 
----
+
+----------------------------------------------
+
+

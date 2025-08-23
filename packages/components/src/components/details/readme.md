@@ -90,6 +90,7 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute   | Description                                                                                                        | Type                                                                                       | Default     |
@@ -99,6 +100,7 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 | `_level`              | `_level`    | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                             | `0`         |
 | `_on`                 | --          | Defines the callback functions for details.                                                                        | `undefined \| { onToggle?: EventValueOrEventCallback<MouseEvent, boolean> \| undefined; }` | `undefined` |
 | `_open`               | `_open`     | Opens/expands the element when truthy, closes/collapses when falsy.                                                | `boolean \| undefined`                                                                     | `false`     |
+
 
 ## Methods
 
@@ -110,11 +112,18 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 Type: `Promise<void>`
 
+
+
 ### `kolFocus() => Promise<void>`
+
+Programmatically focuses the collapsible button.
 
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Slots
 
@@ -122,4 +131,7 @@ Type: `Promise<void>`
 | ---- | --------------------------------------------------------- |
 |      | Der Inhalt, der in der Detailbeschreibung angezeigt wird. |
 
----
+
+----------------------------------------------
+
+

@@ -52,7 +52,8 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 
 <!-- Auto Generated Below -->
 
-> **[DEPRECATED]**
+
+> **[DEPRECATED]** 
 
 ## Properties
 
@@ -60,4 +61,7 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 | ------------------- | --------- | ------------------------------------------------------------------------------ | ------------------------------------------------- | ----------- |
 | `_org` _(required)_ | `_org`    | Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an. | `Bundesamt \| Bundesanstalt \| Bundesministerium` | `undefined` |
 
----
+
+----------------------------------------------
+
+

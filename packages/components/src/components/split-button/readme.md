@@ -51,6 +51,8 @@ dem sich weitere Aktionen verbergen.
 
 ### `closePopup() => Promise<void>`
 
+Closes the dropdown menu.
+
 #### Returns
 
 Type: `Promise<void>`
