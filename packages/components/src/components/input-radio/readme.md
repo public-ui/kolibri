@@ -98,6 +98,7 @@ kolibriElement._on = {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                                           | Type                                                                                                                                                                                                                                                                                                                                                                                        | Default      |
@@ -110,7 +111,7 @@ kolibriElement._on = {
 | `_hint`               | `_hint`          | Defines the hint text.                                                                                                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `''`         |
 | `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                                             | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined`  |
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.                          | `string`                                                                                                                                                                                                                                                                                                                                                                                    | `undefined`  |
-| `_msg`                | `_msg`           | Defines the properties for a message rendered as Alert component.                                                                                                                     | `string \| undefined \| {} & { _level?: 0 \| 1 \| 2 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "warning" \| "info" \| "success" \| "default" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined`  |
+| `_msg`                | `_msg`           | Defines the properties for a message rendered as Alert component.                                                                                                                     | `string \| undefined \| {} & { _level?: 0 \| 2 \| 1 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "default" \| "info" \| "success" \| "warning" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined`  |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                                         | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined`  |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                                             | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput \| undefined`                                                                                                                                                                                                                                                                                 | `undefined`  |
 | `_options`            | `_options`       | Options the user can choose from.                                                                                                                                                     | `RadioOption<StencilUnknown>[] \| string \| undefined`                                                                                                                                                                                                                                                                                                                                      | `undefined`  |
@@ -120,6 +121,7 @@ kolibriElement._on = {
 | `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                             | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                       | `'top'`      |
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                      | `false`      |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                                                       | `boolean \| null \| number \| object \| string \| undefined`                                                                                                                                                                                                                                                                                                                                | `undefined`  |
+
 
 ## Methods
 
@@ -131,6 +133,8 @@ kolibriElement._on = {
 
 Type: `Promise<void>`
 
+
+
 ### `getValue() => Promise<StencilUnknown | undefined>`
 
 Returns the selected value.
@@ -138,6 +142,8 @@ Returns the selected value.
 #### Returns
 
 Type: `Promise<StencilUnknown>`
+
+
 
 ### `kolFocus() => Promise<void>`
 
@@ -147,10 +153,16 @@ Focuses the radio input.
 
 Type: `Promise<void>`
 
+
+
+
 ## Slots
 
 | Slot | Description                               |
 | ---- | ----------------------------------------- |
 |      | Die Legende/Überschrift der Radiobuttons. |
 
----
+
+----------------------------------------------
+
+

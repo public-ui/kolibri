@@ -96,7 +96,7 @@ Adds a toast to the queue and returns a close function.
 
 | Name    | Type                                                                                                                                                                                                                                                                                         | Description |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "warning" \| "info" \| "success" \| "default"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; onClose?: (() => void) \| undefined; }` |             |
+| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "default" \| "info" \| "success" \| "warning"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; onClose?: (() => void) \| undefined; }` |             |
 
 #### Returns
 

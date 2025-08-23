@@ -76,6 +76,7 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                                           | Type                                                                                                                                                                                                                                                                                                                                                                                        | Default     |
@@ -93,7 +94,7 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.                          | `string`                                                                                                                                                                                                                                                                                                                                                                                    | `undefined` |
 | `_max`                | `_max`           | Defines the largest possible input value.                                                                                                                                             | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `100`       |
 | `_min`                | `_min`           | Defines the smallest possible input value.                                                                                                                                            | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `0`         |
-| `_msg`                | `_msg`           | Defines the properties for a message rendered as Alert component.                                                                                                                     | `string \| undefined \| {} & { _level?: 0 \| 1 \| 2 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "warning" \| "info" \| "success" \| "default" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
+| `_msg`                | `_msg`           | Defines the properties for a message rendered as Alert component.                                                                                                                     | `string \| undefined \| {} & { _level?: 0 \| 2 \| 1 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "default" \| "info" \| "success" \| "warning" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                                         | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                                             | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput \| undefined`                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_shortKey`           | `_short-key`     | Adds a visual short key hint to the component.                                                                                                                                        | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
@@ -103,6 +104,7 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 | `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                             | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                       | `'top'`     |
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                      | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                                                       | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
+
 
 ## Methods
 
@@ -114,6 +116,8 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 
 Type: `Promise<void>`
 
+
+
 ### `getValue() => Promise<number | undefined>`
 
 Returns the current numeric value.
@@ -121,6 +125,8 @@ Returns the current numeric value.
 #### Returns
 
 Type: `Promise<number | undefined>`
+
+
 
 ### `kolFocus() => Promise<void>`
 
@@ -130,10 +136,16 @@ Focuses the numeric input.
 
 Type: `Promise<void>`
 
+
+
+
 ## Slots
 
 | Slot | Description                           |
 | ---- | ------------------------------------- |
 |      | Die Beschriftung des Eingabeelements. |
 
----
+
+----------------------------------------------
+
+

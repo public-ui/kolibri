@@ -27,6 +27,7 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property             | Attribute             | Description                                                                                                                                                  | Type                                                                                                 | Default     |
@@ -34,7 +35,7 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 | `_accessKey`         | `_access-key`         | Defines which key combination can be used to trigger or focus the interactive element of the component.                                                      | `string \| undefined`                                                                                | `undefined` |
 | `_ariaCurrentValue`  | `_aria-current-value` | Defines the value for the aria-current attribute.                                                                                                            | `"date" \| "false" \| "location" \| "page" \| "step" \| "time" \| "true" \| undefined`               | `undefined` |
 | `_ariaDescription`   | `_aria-description`   | Defines the value for the aria-description attribute.                                                                                                        | `string \| undefined`                                                                                | `undefined` |
-| `_customClass`       | `_custom-class`       | Defines the custom class attribute if \_variant="custom" is set.                                                                                             | `string \| undefined`                                                                                | `undefined` |
+| `_customClass`       | `_custom-class`       | Defines the custom class attribute if _variant="custom" is set.                                                                                              | `string \| undefined`                                                                                | `undefined` |
 | `_disabled`          | `_disabled`           | Makes the element not focusable and ignore all events.                                                                                                       | `boolean \| undefined`                                                                               | `false`     |
 | `_download`          | `_download`           | Tells the browser that the link contains a file. Optionally sets the filename.                                                                               | `string \| undefined`                                                                                | `undefined` |
 | `_hideLabel`         | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                   | `boolean \| undefined`                                                                               | `false`     |
@@ -49,6 +50,7 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 | `_tooltipAlign`      | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                | `'right'`   |
 | `_variant`           | `_variant`            | Defines which variant should be used for presentation.                                                                                                       | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined` | `'normal'`  |
 
+
 ## Methods
 
 ### `focus() => Promise<void>`
@@ -59,6 +61,8 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 
 Type: `Promise<void>`
 
+
+
 ### `kolFocus() => Promise<void>`
 
 Focuses the link element.
@@ -67,4 +71,9 @@ Focuses the link element.
 
 Type: `Promise<void>`
 
----
+
+
+
+----------------------------------------------
+
+

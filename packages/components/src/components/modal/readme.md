@@ -92,6 +92,7 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 <!-- Auto Generated Below -->
 
+
 ## Overview
 
 https://en.wikipedia.org/wiki/Modal_window
@@ -105,6 +106,7 @@ https://en.wikipedia.org/wiki/Modal_window
 | `_on`                 | --        | Defines the modal callback functions.                                                                                                                                        | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
 | `_width`              | `_width`  | Defines the width of the modal. (max-width: 100%)                                                                                                                            | `string \| undefined`                                     | `'100%'`    |
 
+
 ## Methods
 
 ### `closeModal() => Promise<void>`
@@ -115,6 +117,8 @@ Closes the modal dialog and resets the active element.
 
 Type: `Promise<void>`
 
+
+
 ### `openModal() => Promise<void>`
 
 Opens the modal dialog.
@@ -123,10 +127,16 @@ Opens the modal dialog.
 
 Type: `Promise<void>`
 
+
+
+
 ## Slots
 
 | Slot | Description           |
 | ---- | --------------------- |
 |      | The modal's contents. |
 
----
+
+----------------------------------------------
+
+
