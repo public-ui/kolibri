@@ -65,22 +65,22 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "20.0.3",
-		"@angular/compiler": "20.0.3",
-		"@angular/compiler-cli": "20.0.3",
-		"@angular/core": "20.0.3",
+		"@angular/common": "20.2.1",
+		"@angular/compiler": "20.2.1",
+		"@angular/compiler-cli": "20.2.1",
+		"@angular/core": "20.2.1",
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "5.1.2",
+		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"prettier": "3.5.3",
+		"prettier": "3.6.2",
 		"rimraf": "6.0.1",
 		"rxjs": "7.8.2",
-		"typescript": "5.8.3",
+		"typescript": "5.9.2",
 		"zone.js": "0.15.1"
 	},
 	"peerDependencies": {
-		"@angular/core": "^20.0.3",
+		"@angular/core": "^20.2.1",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [

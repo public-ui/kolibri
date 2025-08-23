@@ -51,12 +51,12 @@
 		"@public-ui/components": "workspace:*",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
-		"typescript": "5.8.3",
-		"unbuild": "3.5.0"
+		"typescript": "5.9.2",
+		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/react": "workspace:*",
-		"preact": ">=10.26.9"
+		"preact": ">=10.27.1"
 	},
 	"sideEffects": false,
 	"type": "module",

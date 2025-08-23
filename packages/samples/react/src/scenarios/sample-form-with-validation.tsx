@@ -31,28 +31,28 @@ import { useToasterService } from '../hooks/useToasterService';
 const formSchema = z.object({
 	date: z.preprocess(
 		(val) => (typeof val === 'string' || val instanceof Date ? new Date(val) : undefined),
-		z.date({ required_error: 'Date is required' }).refine((d) => !isNaN(d.getTime()), { message: 'Invalid date' }),
+		z.date({ message: 'Date is required' }).refine((d) => !isNaN(d.getTime()), { message: 'Invalid date' }),
 	),
 
-	text: z.string({ required_error: 'Please enter text.' }).min(10, 'Text must be at least 10 characters long.'),
-	email: z.string({ required_error: 'Please enter your email.' }).email('Invalid email address.'),
+	text: z.string({ message: 'Please enter text.' }).min(10, 'Text must be at least 10 characters long.'),
+	email: z.string({ message: 'Please enter your email.' }).min(1, 'Please enter your email.').email('Invalid email address.'),
 	password: z
-		.string({ required_error: 'Please enter a password.' })
+		.string({ message: 'Please enter a password.' })
 		.min(8, 'Password must be at least 8 characters.')
 		.regex(/[A-Z]/, 'Password must include at least one uppercase letter.')
 		.regex(/[0-9]/, 'Password must include at least one number.'),
-	range: z.number({ required_error: 'Please select a range.' }).min(30, 'Minimum value is 30.'),
-	number: z.number({ required_error: 'Please enter a number.' }).min(1, 'Minimum is 1.').max(10, 'Maximum is 10.'),
+	range: z.number({ message: 'Please select a range.' }).min(30, 'Minimum value is 30.'),
+	number: z.number({ message: 'Please enter a number.' }).min(1, 'Minimum is 1.').max(10, 'Maximum is 10.'),
 	checkbox: z.boolean().refine((val: boolean) => val === true, {
 		message: 'You must accept the terms and conditions.',
 	}),
 
-	radio: z.string({ required_error: 'Please select a gender.' }),
-	color: z.string({ required_error: 'Please select a color.' }),
-	select: z.string({ required_error: 'Please select a value.' }),
-	singleSelect: z.string({ required_error: 'Please select a single option.' }),
-	combobox: z.string({ required_error: 'Please select a country.' }),
-	textarea: z.string({ required_error: 'Please enter a message.' }),
+	radio: z.string({ message: 'Please select a gender.' }).min(1, 'Please select a gender.'),
+	color: z.string({ message: 'Please select a color.' }).min(1, 'Please select a color.'),
+	select: z.string({ message: 'Please select a value.' }).min(1, 'Please select a value.'),
+	singleSelect: z.string({ message: 'Please select a single option.' }).min(1, 'Please select a single option.'),
+	combobox: z.string({ message: 'Please select a country.' }).min(1, 'Please select a country.'),
+	textarea: z.string({ message: 'Please enter a message.' }).min(1, 'Please enter a message.'),
 });
 
 export const SampleFormWithValidation: React.FC = () => {
