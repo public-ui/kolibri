@@ -9,6 +9,7 @@
 		"selector-class-pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))?$",
 
 		"scss/load-no-partial-leading-underscore": true,
+		"nesting-selector-no-missing-scoping-root": null,
 
 		"comment-empty-line-before": null,
 		"declaration-empty-line-before": null,
