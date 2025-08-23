@@ -165,7 +165,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._buttonVariant as string}`]: this.state._role === 'button' && this.state._buttonVariant !== 'custom',
+						[`kol-link--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
 						[`kol-link--${this.state._linkVariant as string}`]: this.state._linkVariant,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
