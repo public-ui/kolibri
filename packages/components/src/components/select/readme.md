@@ -154,11 +154,15 @@ Type: `Promise<void>`
 
 ### `getValue() => Promise<Stringified<W3CInputValue[]> | undefined>`
 
+Returns the selected values.
+
 #### Returns
 
 Type: `Promise<Stringified<W3CInputValue[]> | undefined>`
 
 ### `kolFocus() => Promise<void>`
+
+Focuses the select element.
 
 #### Returns
 

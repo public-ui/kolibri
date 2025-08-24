@@ -42,6 +42,7 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute  | Description                                                                                                        | Type                            | Default     |
@@ -52,4 +53,7 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 | `_value` _(required)_ | `_value`   | Defines the progress.                                                                                              | `number`                        | `undefined` |
 | `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                             | `"bar" \| "cycle" \| undefined` | `undefined` |
 
----
+
+----------------------------------------------
+
+

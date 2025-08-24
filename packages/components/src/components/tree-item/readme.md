@@ -17,11 +17,15 @@ Weitere Informationen zum Tree finden Sie auf der <kol-link _href="/docs/compone
 
 ### `collapse() => Promise<void>`
 
+Collapses the tree item if it has children.
+
 #### Returns
 
 Type: `Promise<void>`
 
 ### `expand() => Promise<void>`
+
+Expands the tree item if it has children.
 
 #### Returns
 
@@ -29,11 +33,15 @@ Type: `Promise<void>`
 
 ### `focusLink() => Promise<void>`
 
+Focuses the internal link element.
+
 #### Returns
 
 Type: `Promise<void>`
 
 ### `isOpen() => Promise<boolean>`
+
+Returns whether the tree item is expanded.
 
 #### Returns
 

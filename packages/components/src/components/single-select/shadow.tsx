@@ -24,12 +24,12 @@ import { buildBadgeTextString, showExpertSlot } from '../../schema';
 import clsx from 'clsx';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { SingleSelectController } from './controller';
-import { EventDetail } from '../../schema/interfaces/EventDetail';
 
 /**
  * @slot - The input field label.

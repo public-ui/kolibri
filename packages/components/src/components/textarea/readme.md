@@ -118,11 +118,15 @@ Type: `Promise<void>`
 
 ### `getValue() => Promise<string | undefined>`
 
+Returns the current text value.
+
 #### Returns
 
 Type: `Promise<string | undefined>`
 
 ### `kolFocus() => Promise<void>`
+
+Focuses the textarea.
 
 #### Returns
 

@@ -38,7 +38,7 @@ test.use({
 
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary axe tests
-	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots')) {
+	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots=changed')) {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }, testInfo) => {

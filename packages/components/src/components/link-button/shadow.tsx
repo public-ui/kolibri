@@ -71,7 +71,6 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 					_icons={this._icons}
 					_label={this._label}
 					_on={this._on}
-					_role="button"
 					_shortKey={this._shortKey}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
@@ -143,6 +142,8 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 

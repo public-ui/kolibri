@@ -61,11 +61,15 @@ Beispiel für die Konstruktion des JSON-Objektes:
 
 ### `getValue() => Promise<StencilUnknown | undefined>`
 
+Returns the selected value.
+
 #### Returns
 
 Type: `Promise<StencilUnknown>`
 
 ### `kolFocus() => Promise<void>`
+
+Focuses the input element.
 
 #### Returns
 

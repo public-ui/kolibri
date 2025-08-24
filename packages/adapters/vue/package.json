@@ -48,13 +48,13 @@
 		"build": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.27.6",
+		"@babel/types": "7.28.2",
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "5.1.2",
+		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"typescript": "5.8.3",
-		"unbuild": "3.5.0",
+		"typescript": "5.9.2",
+		"unbuild": "3.6.1",
 		"vue": "3.5.16"
 	},
 	"peerDependencies": {
