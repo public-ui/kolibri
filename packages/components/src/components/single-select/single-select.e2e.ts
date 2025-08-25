@@ -127,5 +127,69 @@ test.describe(COMPONENT_NAME, () => {
 			const noResult = page.getByText('Keine Ergebnisse gefunden.');
 			await expect(noResult).toBeVisible();
 		});
+
+		test('should only trigger onChange when the value actually changes', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+
+			const input = page.getByTestId('single-select-input');
+			const singleSelect = page.locator('kol-single-select');
+
+			// Type definition for testing purposes
+			type TestElement = {
+				_onChangeCounter: number;
+				controller: {
+					onFacade: {
+						onChange: (event: CustomEvent, value: unknown) => void;
+					};
+				};
+			};
+
+			// Simulate counter: set _onChangeCounter on the component for testing purposes
+			await singleSelect.evaluate((el) => {
+				const testEl = el as unknown as TestElement;
+				testEl._onChangeCounter = 0;
+				const originalOnChange = testEl.controller.onFacade.onChange.bind(testEl.controller.onFacade);
+				testEl.controller.onFacade.onChange = (event: CustomEvent, value: unknown) => {
+					testEl._onChangeCounter++;
+					originalOnChange(event, value);
+				};
+			});
+
+			// Helper function to get counter
+			const getCounter = async () => {
+				return await singleSelect.evaluate((el) => {
+					const testEl = el as unknown as TestElement;
+					return testEl._onChangeCounter;
+				});
+			};
+
+			// 1) Select value -> onChange fires
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+			let counter = await getCounter();
+			expect(counter).toBe(1);
+
+			// 2) Click on free space -> onChange must not fire
+			await page.click('body', { position: { x: 0, y: 0 } });
+			counter = await getCounter();
+			expect(counter).toBe(1);
+
+			// 3) Add dummy button without destroying the component
+			await page.evaluate(() => {
+				const button = document.createElement('button');
+				button.id = 'dummyButton';
+				button.textContent = 'Dummy';
+				document.body.appendChild(button);
+			});
+			await page.locator('#dummyButton').click();
+			counter = await getCounter();
+			expect(counter).toBe(1);
+
+			// 4) Change selection again -> onChange fires again
+			await input.click();
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+			counter = await getCounter();
+			expect(counter).toBe(2);
+		});
 	});
 });
