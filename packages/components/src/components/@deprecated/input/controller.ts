@@ -143,11 +143,8 @@ export class InputController extends ControlledInputController implements Watche
 
 	public validateSmartButton(value?: ButtonProps | string): void {
 		objectObjectHandler(value, () => {
-			try {
-				value = parseJson<ButtonProps>(value as string);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value behält den ursprünglichen Wert
+			if (typeof value === 'string') {
+				value = parseJson<ButtonProps>(value);
 			}
 			setState(this.component, '_smartButton', value);
 		});

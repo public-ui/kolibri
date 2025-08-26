@@ -21,12 +21,8 @@ export const validateToolbarItems = (component: Generic.Element.Component, value
 		objectObjectHandler(value, () => {
 			if (typeof value === 'undefined') {
 				value = [];
-			}
-			try {
+			} else if (typeof value === 'string') {
 				value = parseJson<ToolbarItemPropType[]>(value);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value keeps the original items
 			}
 			if (Array.isArray(value) && value.every((items: ToolbarItemPropType) => isObject(items))) {
 				setState(component, '_items', value);

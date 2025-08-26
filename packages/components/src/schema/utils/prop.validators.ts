@@ -271,22 +271,20 @@ export const stringifyJson = (value: unknown): string => {
 	}
 };
 
-const JSON_CHARS = /^[{[]/; // string starts with { or [
-export const parseJson = <T>(value: unknown): T => {
+const JSON_CHARS = /^([{[]|true|false|null|\d+)/; // string starts with { or [, "null", "true", "false", "0" works too
+export const parseJson = <T>(value: unknown, defaultValue?: T): T => {
 	if (typeof value === 'string') {
-		try {
-			// "null", "true", "false", "0" works too
-			return JSON.parse(value);
-		} catch (error) {
-			if (JSON_CHARS.test(value)) {
-				try {
-					return JSON.parse(value.replace(/'/g, '"'));
-				} catch (error) {
-					Log.warn(['parseJson', value]);
-					Log.error(`↑ The JSON string could not be parsed. Make sure that single quotes in the text are escaped (&#8216;).`);
-				}
+		if (JSON_CHARS.test(value)) {
+			try {
+				return JSON.parse(value.replace(/'/g, '"'));
+			} catch (error) {
+				Log.warn(['tryParseJson', value]);
+				Log.error(`↑ The JSON string could not be parsed. Make sure that single quotes in the text are escaped (&#8216;).`);
 			}
 		}
+	}
+	if (defaultValue !== undefined) {
+		return defaultValue;
 	}
 	throw new Error();
 };

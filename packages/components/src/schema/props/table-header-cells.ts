@@ -21,10 +21,8 @@ export type PropTableHeaderCells = {
 export const validateTableHeaderCells = (component: Generic.Element.Component, value?: TableHeaderCellsPropType): void => {
 	emptyStringByArrayHandler(value, () => {
 		objectObjectHandler(value, () => {
-			try {
+			if (typeof value === 'string') {
 				value = parseJson<TableHeaderCells>(value);
-			} catch (e) {
-				void e;
 			}
 			watchValidator(
 				component,

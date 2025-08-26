@@ -19,11 +19,8 @@ export type PropMsg = {
 /* validator */
 export const validateMsg = (component: Generic.Element.Component, value?: Stringified<MsgPropType>): void => {
 	objectObjectHandler(value, () => {
-		try {
+		if (typeof value === 'string') {
 			value = parseJson<MsgPropType>(value);
-			// eslint-disable-next-line no-empty
-		} catch (e) {
-			// value keeps original value
 		}
 		watchValidator<MsgPropType>(
 			component,

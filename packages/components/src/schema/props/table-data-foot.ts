@@ -21,12 +21,8 @@ export const validateTableDataFoot = (component: Generic.Element.Component, valu
 		objectObjectHandler(value, () => {
 			if (typeof value === 'undefined') {
 				value = [];
-			}
-			try {
+			} else if (typeof value === 'string') {
 				value = parseJson<KoliBriTableDataType[]>(value);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value keeps the original data
 			}
 			if (Array.isArray(value) && value.every((data: KoliBriTableDataType) => isObject(data))) {
 				setState(component, '_dataFoot', value, setStateHooks);

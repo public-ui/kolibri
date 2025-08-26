@@ -15,13 +15,7 @@ export type PropTableSelection = {
 
 /* validator */
 export const validateTableSelection = (component: Generic.Element.Component, value?: TableSelectionPropType): void => {
-	const parseSerializedValue = () => {
-		try {
-			return parseJson<KoliBriTableSelection>(value);
-		} catch (e) {
-			return undefined;
-		}
-	};
+	const parseSerializedValue = () => (typeof value === 'string' ? parseJson<KoliBriTableSelection>(value) : undefined);
 
 	const validateObject = (value?: KoliBriTableSelection) => {
 		return value && isObject(value) && typeof value.label === 'function' && (!value.selectedKeys || Array.isArray(value.selectedKeys));

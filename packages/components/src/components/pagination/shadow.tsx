@@ -377,11 +377,7 @@ export class KolPagination implements PaginationAPI {
 							});
 						} else {
 							if (typeof nextValue === 'string') {
-								try {
-									nextValue = parseJson<PaginationHasButton>(nextValue);
-								} catch (e) {
-									nextState.delete('_hasButtons');
-								}
+								nextValue = parseJson<PaginationHasButton>(nextValue);
 							}
 
 							if (typeof nextValue === 'object' && nextValue !== null) {

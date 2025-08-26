@@ -1,7 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { SetStateHooks } from '../utils';
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
+import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, SetStateHooks } from '../utils';
 import { isObject } from '../validators';
 import type { KoliBriTableDataType, Stringified } from '../types';
 
@@ -21,12 +20,8 @@ export const validateTableData = (component: Generic.Element.Component, value?: 
 		objectObjectHandler(value, () => {
 			if (typeof value === 'undefined') {
 				value = [];
-			}
-			try {
+			} else if (typeof value === 'string') {
 				value = parseJson<KoliBriTableDataType[]>(value);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value keeps the original data
 			}
 			if (Array.isArray(value) && value.every((data: KoliBriTableDataType) => isObject(data))) {
 				setState(component, '_data', value, setStateHooks);

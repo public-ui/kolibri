@@ -104,11 +104,8 @@ export class KolBadge implements BadgeAPI {
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		objectObjectHandler(value, () => {
-			try {
-				value = parseJson<ButtonProps>(value as string);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value behält den ursprünglichen Wert
+			if (typeof value === 'string') {
+				value = parseJson<ButtonProps>(value);
 			}
 			setState(this, '_smartButton', value);
 		});

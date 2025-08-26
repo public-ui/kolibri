@@ -67,10 +67,8 @@ export const isIcon = (value?: unknown): boolean =>
 
 export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType, options: WatchOptions = {}): void => {
 	objectObjectHandler(value, () => {
-		try {
-			value = parseJson<KoliBriIconsProp>(value as string);
-		} catch (e) {
-			// value behält den ursprünglichen Wert
+		if (typeof value === 'string') {
+			value = parseJson<KoliBriIconsProp>(value, value);
 		}
 		watchValidator(
 			component,

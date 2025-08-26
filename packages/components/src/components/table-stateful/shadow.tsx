@@ -270,11 +270,8 @@ export class KolTableStateful implements TableAPI {
 		 */
 		emptyStringByArrayHandler(value, () => {
 			objectObjectHandler(value, () => {
-				try {
+				if (typeof value === 'string') {
 					value = parseJson<KoliBriTableHeaders>(value);
-					// eslint-disable-next-line no-empty
-				} catch (e) {
-					// value behält den ursprünglichen Wert
 				}
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
@@ -380,11 +377,8 @@ export class KolTableStateful implements TableAPI {
 
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
-		try {
+		if (typeof value === 'string') {
 			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
-			// eslint-disable-next-line no-empty
-		} catch (e) {
-			// value behält den ursprünglichen Wert
 		}
 
 		this.showPagination = paginationValidator(value);
