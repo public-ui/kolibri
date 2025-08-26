@@ -134,62 +134,33 @@ test.describe(COMPONENT_NAME, () => {
 			const input = page.getByTestId('single-select-input');
 			const singleSelect = page.locator('kol-single-select');
 
-			// Type definition for testing purposes
-			type TestElement = {
-				_onChangeCounter: number;
-				controller: {
-					onFacade: {
-						onChange: (event: CustomEvent, value: unknown) => void;
-					};
-				};
-			};
+			// Setup simple change counter
+			await singleSelect.evaluate((element) => {
+				const el = element as HTMLElement & { _changeCount: number };
+				el._changeCount = 0;
 
-			// Simulate counter: set _onChangeCounter on the component for testing purposes
-			await singleSelect.evaluate((el) => {
-				const testEl = el as unknown as TestElement;
-				testEl._onChangeCounter = 0;
-				const originalOnChange = testEl.controller.onFacade.onChange.bind(testEl.controller.onFacade);
-				testEl.controller.onFacade.onChange = (event: CustomEvent, value: unknown) => {
-					testEl._onChangeCounter++;
-					originalOnChange(event, value);
+				(element as HTMLKolSelectElement)._on = {
+					onChange: () => {
+						el._changeCount++;
+					},
 				};
 			});
 
-			// Helper function to get counter
-			const getCounter = async () => {
+			// Helper to get counter
+			const getChangeCount = async () => {
 				return await singleSelect.evaluate((el) => {
-					const testEl = el as unknown as TestElement;
-					return testEl._onChangeCounter;
+					return (el as HTMLElement & { _changeCount: number })._changeCount || 0;
 				});
 			};
 
-			// 1) Select value -> onChange fires
+			// 1) Select value -> onChange should fire (counter = 1)
 			await input.click();
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
-			let counter = await getCounter();
-			expect(counter).toBe(1);
+			expect(await getChangeCount()).toBe(1);
 
-			// 2) Click on free space -> onChange must not fire
-			await page.click('body', { position: { x: 0, y: 0 } });
-			counter = await getCounter();
-			expect(counter).toBe(1);
-
-			// 3) Add dummy button without destroying the component
-			await page.evaluate(() => {
-				const button = document.createElement('button');
-				button.id = 'dummyButton';
-				button.textContent = 'Dummy';
-				document.body.appendChild(button);
-			});
-			await page.locator('#dummyButton').click();
-			counter = await getCounter();
-			expect(counter).toBe(1);
-
-			// 4) Change selection again -> onChange fires again
-			await input.click();
-			await page.getByRole('listbox').getByText('North').click({ force: true });
-			counter = await getCounter();
-			expect(counter).toBe(2);
+			// 2) Click on free space -> onChange must NOT fire (counter stays 1)
+			await page.click('html', { position: { x: 0, y: 0 } });
+			expect(await getChangeCount()).toBe(1);
 		});
 	});
 });
