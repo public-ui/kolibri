@@ -10,7 +10,7 @@ import { DrawerRadioAlign } from './partials/align';
 export const DrawerScrolled: FC = () => {
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 	const [align, setAlign] = useState<AlignPropType>('bottom');
-	const [useOverflowHandling, setUseOverflowHandling] = useState(false);
+	const [useOverflowHandling, setUseOverflowHandling] = useState(true);
 
 	return (
 		<>
