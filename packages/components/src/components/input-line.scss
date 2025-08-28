@@ -10,7 +10,6 @@
 
 	.kol-input .input-slot {
 		flex-grow: 1;
-		overflow: hidden;
 	}
 
 	input:focus,
@@ -21,10 +20,10 @@
 	}
 
 	.input {
-		align-items: center;
 		background-color: white;
-		cursor: pointer;
 		display: flex;
+		align-items: center;
+		cursor: pointer;
 	}
 
 	button:not([role='link']) {

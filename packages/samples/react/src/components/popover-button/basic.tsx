@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useContext } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolButton, KolPopoverButton, KolBadge } from '@public-ui/react';
+import { KolButton, KolPopoverButton, KolBadge } from '@public-ui/react-v19';
 import { useToasterService } from '../../hooks/useToasterService';
 import { HideMenusContext } from '../../shares/HideMenusContext';
 

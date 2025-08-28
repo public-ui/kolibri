@@ -10,8 +10,8 @@
 		}
 
 		option {
-			margin: to-rem(1) 0;
 			border-radius: var(--border-radius);
+			margin: to-rem(1) 0;
 			cursor: pointer;
 
 			&:disabled {
@@ -22,8 +22,8 @@
 			&:checked:not(:disabled),
 			&:focus:not(:disabled),
 			&:hover:not(:disabled) {
-				background-color: var(--color-primary-variant);
 				color: var(--color-light);
+				background-color: var(--color-primary-variant);
 			}
 		}
 

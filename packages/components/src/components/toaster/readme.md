@@ -76,6 +76,8 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ### `closeAll(immediate?: boolean) => Promise<void>`
 
+Closes all open toasts.
+
 #### Parameters
 
 | Name        | Type      | Description |
@@ -88,11 +90,13 @@ Type: `Promise<void>`
 
 ### `enqueue(toast: Toast) => Promise<() => void>`
 
+Adds a toast to the queue and returns a close function.
+
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                                                                                    | Description |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "default" \| "info" \| "success" \| "warning"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; }` |             |
+| Name    | Type                                                                                                                                                                                                                                                                                         | Description |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "default" \| "info" \| "success" \| "warning"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; onClose?: (() => void) \| undefined; }` |             |
 
 #### Returns
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ToasterService } from '@public-ui/components';
-import { KolSplitButton } from '@public-ui/react';
+import { KolSplitButton } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';

@@ -3,12 +3,17 @@
 		"@commitlint/cli": "19.8.1",
 		"@commitlint/config-conventional": "19.8.1",
 		"husky": "9.1.7",
-		"lerna": "8.2.2",
+		"lerna": "8.2.4",
 		"license-report": "6.8.0",
-		"lint-staged": "16.1.2",
-		"npm-check-updates": "18.0.1",
+		"lint-staged": "16.1.5",
+		"npm-check-updates": "18.0.2",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.5.3"
+		"prettier": "3.6.2",
+		"stylelint": "16.23.1",
+		"stylelint-config-recommended-scss": "16.0.0",
+		"stylelint-config-standard": "39.0.0",
+		"stylelint-order": "7.0.0",
+		"stylelint-scss": "6.12.1"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -27,8 +32,8 @@
 		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react*,@stencil/*,@unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react*,@stencil/*",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @stencil/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",

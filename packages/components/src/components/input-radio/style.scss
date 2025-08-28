@@ -20,26 +20,27 @@
 	}
 
 	input {
-		appearance: none;
-		border-width: var(--border-width);
 		border-style: solid;
 		border-radius: 100%;
-		cursor: pointer;
 		display: flex;
-		height: var(--input-size);
-		margin: 0;
-		min-height: var(--input-size);
-		min-width: var(--input-size);
-		padding: 0;
 		width: var(--input-size);
+		min-width: var(--input-size);
+		height: var(--input-size);
+		min-height: var(--input-size);
+		margin: 0;
+		padding: 0;
+		border-width: var(--border-width);
+		appearance: none;
+		cursor: pointer;
 	}
 
 	input:before {
 		border-radius: 100%;
-		content: '';
-		margin: auto;
-		height: calc(var(--input-size) / 2);
 		width: calc(var(--input-size) / 2);
+		height: calc(var(--input-size) / 2);
+		margin: auto;
+
+		content: '';
 	}
 
 	input:checked:before {
@@ -62,8 +63,8 @@
 	}
 
 	fieldset .input-slot {
-		align-items: center;
 		display: flex;
+		align-items: center;
 	}
 
 	/* required star is on fieldset legend */

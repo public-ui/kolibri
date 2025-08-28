@@ -18,6 +18,7 @@
 
 	.kol-input label {
 		order: 2;
+
 		font-size: rem(calc(0.9 * 16));
 		font-weight: 700;
 	}
@@ -42,20 +43,20 @@
 	.input {
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: var(--border-width);
+		border-radius: var(--border-radius);
 		padding: 0 rem(8);
+		border-width: var(--border-width);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
 		padding-right: rem(16);
+		padding-left: rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) input {
-		padding-left: rem(8);
 		padding-right: rem(8);
+		padding-left: rem(8);
 	}
 
 	.input > input:first-child {
@@ -75,8 +76,9 @@
 	}
 
 	.required label > span::after {
-		content: '*';
 		padding-left: 0.125em;
+
+		content: '*';
 	}
 
 	.kol-input.error:not(.hidden-error) {
@@ -84,8 +86,8 @@
 	}
 
 	.kol-input.disabled .input {
+		color: var(--color-text);
 		background-color: var(--color-mute);
 		border-color: var(--color-mute-variant);
-		color: var(--color-text);
 	}
 }

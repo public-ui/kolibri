@@ -6,6 +6,7 @@ npx license-report --output=html --package=packages/adapters/angular/v20/package
 npx license-report --output=html --package=packages/adapters/hydrate/package.json >> license-reports/adapter-hydrate.html
 npx license-report --output=html --package=packages/adapters/preact/package.json >> license-reports/adapter-preact.html
 npx license-report --output=html --package=packages/adapters/react/package.json >> license-reports/adapter-react.html
+npx license-report --output=html --package=packages/adapters/react-v19/package.json >> license-reports/adapter-react-v19.html
 npx license-report --output=html --package=packages/adapters/react-standalone/package.json >> license-reports/adapter-react-standalone.html
 npx license-report --output=html --package=packages/adapters/solid/package.json >> license-reports/adapter-solid.html
 npx license-report --output=html --package=packages/adapters/vue/package.json >> license-reports/adapter-vue.html

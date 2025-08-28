@@ -1,11 +1,11 @@
 @use '../../functions/to-rem' as *;
 
 @mixin indented-text {
+	margin: 0;
+	padding-top: to-rem(16);
+	padding-bottom: to-rem(16);
 	border-end-start-radius: 0;
 	border-inline-start: to-rem(10) solid var(--color-yellow);
 	border-start-start-radius: 0;
-	padding-bottom: to-rem(16);
 	padding-inline-start: to-rem(24);
-	padding-top: to-rem(16);
-	margin: 0;
 }

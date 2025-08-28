@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { KolButton, KolCard, KolModal } from '@public-ui/react';
+import { KolButton, KolCard, KolModal } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const ModalBasic: FC = () => {

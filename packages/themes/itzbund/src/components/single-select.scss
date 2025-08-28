@@ -24,39 +24,39 @@ $visible-options: 5;
 			@include kol-input-container-base;
 
 			display: inline-flex;
-			align-items: center;
-			min-height: var(--a11y-min-size);
-			text-align: left;
 			width: 100%;
+			min-height: var(--a11y-min-size);
 			padding: rem(4);
+			align-items: center;
+			text-align: left;
 
 			.single-select:not(.disabled) &:hover {
-				border-color: var(--default-border-hover);
 				outline-color: var(--primary);
-				outline-offset: 0;
 				outline-style: solid;
 				outline-width: 1px;
+				border-color: var(--default-border-hover);
+				outline-offset: 0;
 			}
 		}
 
 		&__input {
-			flex-grow: 1;
 			background-color: transparent;
-			border: none;
-			width: calc(100% - rem(40));
 			position: relative;
+			width: calc(100% - rem(40));
+			flex-grow: 1;
+			border: none;
 
 			&:focus {
-				outline-offset: 0;
 				outline-width: 0;
+				outline-offset: 0;
 			}
 		}
 
 		&__button {
 			display: grid;
+			padding-left: 1em;
 			place-items: center;
 			cursor: pointer;
-			padding-left: 1em;
 
 			&:focus {
 				outline: 0;
@@ -64,15 +64,15 @@ $visible-options: 5;
 		}
 
 		&__listbox {
-			border-style: solid;
-			border-width: 1px;
-			border-radius: var(--border-radius);
-			border-color: var(--kolibri-color-normal);
-			max-height: calc($option-height * $visible-options + rem(2));
 			background-color: #e8edf2;
-			overflow-y: auto;
-			overflow-x: hidden;
+			border-color: var(--kolibri-color-normal);
+			border-style: solid;
+			border-radius: var(--border-radius);
 			width: 100%;
+			max-height: calc($option-height * $visible-options + rem(2));
+			border-width: 1px;
+			overflow-x: hidden;
+			overflow-y: auto;
 		}
 
 		&__item {
@@ -80,8 +80,8 @@ $visible-options: 5;
 			padding: rem(10) rem(12);
 
 			.radio-label {
-				align-self: center;
 				padding-left: 1em;
+				align-self: center;
 			}
 
 			&[aria-selected],

@@ -34,6 +34,8 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ### `focusErrorList() => Promise<void>`
 
+Scrolls to the error list and focuses its first link.
+
 #### Returns
 
 Type: `Promise<void>`

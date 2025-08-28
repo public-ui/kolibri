@@ -9,13 +9,13 @@
 		 * Minimum size of interactive elements.
 		 */
 		--a11y-min-size: #{to-rem(44)};
+		color: black;
 		/*
 		 * No element should be used without a background and font color whose contrast ratio has
 		 * not been checked. By initially setting the background color to white and the font color
 		 * to black, the contrast ratio is ensured and explicit adjustment is forced.
 		 */
 		background-color: white;
-		color: black;
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.
 		 */
@@ -48,11 +48,10 @@
 	/* option, */
 	/* select, */
 	/* textarea, */
-	[role='button'],
-	button:not([role='link']),
+	button,
 	.kol-input .input {
-		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 	}
 
 	/*
@@ -95,12 +94,12 @@
 	* - https://www.a11yproject.com/posts/how-to-hide-content/
 	*/
 	.visually-hidden {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
+		position: absolute;
+		width: 1px;
 		height: 1px;
 		overflow: hidden;
-		position: absolute;
+
 		white-space: nowrap;
-		width: 1px;
+		clip-path: inset(50%);
 	}
 }

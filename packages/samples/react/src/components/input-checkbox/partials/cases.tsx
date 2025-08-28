@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { KolInputCheckbox } from '@public-ui/react';
+import { KolInputCheckbox } from '@public-ui/react-v19';
 
 import { ERROR_MSG } from '../../../shares/constants';
 

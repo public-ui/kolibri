@@ -3,7 +3,7 @@
 @layer kol-theme-component {
 	:host > .kol-button-group-wc {
 		display: inline-flex;
-		flex-wrap: wrap;
 		gap: rem(4);
+		flex-wrap: wrap;
 	}
 }

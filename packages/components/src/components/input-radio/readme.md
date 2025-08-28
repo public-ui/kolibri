@@ -133,11 +133,15 @@ Type: `Promise<void>`
 
 ### `getValue() => Promise<StencilUnknown | undefined>`
 
+Returns the selected value.
+
 #### Returns
 
 Type: `Promise<StencilUnknown>`
 
 ### `kolFocus() => Promise<void>`
+
+Focuses the radio input.
 
 #### Returns
 

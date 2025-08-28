@@ -76,11 +76,15 @@ Beispiel für die Konstruktion des JSON-Array:
 
 ### `getValue() => Promise<string | undefined>`
 
+Returns the current value.
+
 #### Returns
 
 Type: `Promise<string | undefined>`
 
 ### `kolFocus() => Promise<void>`
+
+Focuses the combobox input.
 
 #### Returns
 

@@ -7,26 +7,28 @@
 	@include kol-alert-theme;
 
 	label {
-		cursor: pointer;
 		display: grid;
-		line-height: 1.25;
-		gap: calc(var(--spacing) * 2);
 		width: 100%;
+		gap: calc(var(--spacing) * 2);
+
+		line-height: 1.25;
+		cursor: pointer;
 	}
 
 	input {
-		cursor: pointer;
-		width: 100%;
 		border-color: var(--color-subtle);
-		border-width: 2px;
 		border-style: solid;
 		border-radius: 5px;
+		width: 100%;
+		border-width: 2px;
+
 		line-height: 1.5;
+		cursor: pointer;
 	}
 
 	input:hover {
-		border-color: var(--color-primary);
 		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary);
 	}
 
 	input:focus:hover {
@@ -42,35 +44,36 @@
 	}
 
 	.required legend > span::after {
-		content: '*';
 		padding-left: 0.125em;
+
+		content: '*';
 	}
 
 	/* RADIO */
 	fieldset {
-		border: 0;
+		display: grid;
 		margin: 0;
 		padding: 0;
-		display: grid;
 		gap: 0.25em;
+		border: 0;
 	}
 
 	.radio-input-wrapper {
+		display: flex;
+		position: relative;
+		min-height: var(--a11y-min-size);
+		margin: 0;
+		gap: to-rem(8);
+		flex-direction: row;
 		align-items: center;
 		cursor: pointer;
-		display: flex;
-		flex-direction: row;
-		gap: to-rem(8);
-		margin: 0;
-		min-height: var(--a11y-min-size);
-		position: relative;
 	}
 
 	.radio-input-wrapper label {
-		cursor: pointer;
 		display: flex;
-		padding-left: calc(var(--spacing) / 2);
 		width: 100%;
+		padding-left: calc(var(--spacing) / 2);
+		cursor: pointer;
 	}
 
 	.radio-input-wrapper label span {
@@ -78,19 +81,20 @@
 	}
 
 	.radio-input-wrapper input[type='radio'] {
+		border-radius: 100%;
+		width: calc(6 * to-rem(4));
+		min-width: calc(6 * to-rem(4));
+		height: calc(6 * to-rem(4));
 		appearance: none;
 		transition: 0.5s;
-		border-radius: 100%;
-		height: calc(6 * to-rem(4));
-		min-width: calc(6 * to-rem(4));
-		width: calc(6 * to-rem(4));
 	}
 
 	.radio-input-wrapper input[type='radio']:before {
-		content: '';
-		cursor: pointer;
 		border-radius: 100%;
 		display: block;
+
+		content: '';
+		cursor: pointer;
 	}
 
 	.radio-input-wrapper input[type='radio']:checked:before {
@@ -98,8 +102,8 @@
 	}
 
 	.radio-input-wrapper input[type='radio']:disabled {
-		cursor: not-allowed;
 		background-color: var(--color-mute-variant);
+		cursor: not-allowed;
 	}
 
 	.kol-alert-wc.error {
@@ -112,8 +116,8 @@
 	}
 
 	fieldset legend {
-		order: 2;
 		display: contents;
+		order: 2;
 	}
 
 	fieldset .kol-input {
@@ -130,6 +134,7 @@
 		@include input-error;
 
 		color: var(--color-danger);
+
 		font-weight: 700;
 
 		input:focus,
@@ -145,8 +150,8 @@
 
 	fieldset.horizontal {
 		display: flex;
-		flex-wrap: wrap;
 		gap: var(--spacing) calc(var(--spacing) * 2);
+		flex-wrap: wrap;
 		align-items: flex-start;
 	}
 

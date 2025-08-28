@@ -1,11 +1,15 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolAlert, KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
+import { KolAlert, KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../SampleDescription';
 
 import type { KoliBriTableHeaders } from '@public-ui/components';
+import { DATA as tableData } from './test-data';
+import type { Data } from './test-data';
+
+import { DATE_FORMATTER } from './formatter';
 
 const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
@@ -52,6 +56,23 @@ export const TableHorizontalScrollbar: FC = () => {
 					style={{ width: '400px' }}
 				/>
 
+				<KolHeading _label="Table with scrollbar and pagination" _level={3} />
+				<KolTable
+					_label="Table for demonstration horizontal scrolling with pagination."
+					_minWidth={hasWidthRestriction ? '600px' : undefined}
+					_headers={{
+						horizontal: [
+							[
+								{ label: 'Order', key: 'order' },
+								{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+							],
+						],
+					}}
+					_data={tableData}
+					style={{ width: '400px' }}
+					_pagination
+				/>
+
 				<KolHeading _label="Empty Table with scrollbar" _level={3} />
 
 				<KolTable
@@ -80,7 +101,14 @@ export const TableHorizontalScrollbar: FC = () => {
 					<i>Scrollbar appears on very small viewport sizes</i>
 				</p>
 
-				<KolTable _label="Table for demonstration purposes without horizontal scrollbar" _minWidth="600px" _headers={HEADERS} _data={DATA} className="block" />
+				<KolTable
+					_label="Table for demonstration purposes without horizontal scrollbar"
+					_minWidth="600px"
+					_headers={HEADERS}
+					_data={DATA}
+					className="block"
+					_pagination
+				/>
 			</section>
 		</>
 	);

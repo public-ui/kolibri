@@ -8,17 +8,18 @@
 	}
 
 	button {
-		background-color: transparent;
-		border: 0;
-		border-radius: var(--border-radius);
-		font-style: normal;
-		font-weight: 700;
-		font-size: to-rem(18);
-		line-height: 1.2;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
 		color: var(--color-subtle);
+		background-color: transparent;
+		border-radius: var(--border-radius);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		padding: 0;
+
+		font-size: to-rem(18);
+		font-weight: 700;
+		line-height: 1.2;
+		border: 0;
+		font-style: normal;
 	}
 
 	button:hover {

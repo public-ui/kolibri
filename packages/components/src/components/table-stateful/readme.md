@@ -208,6 +208,8 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 ### `getSelection() => Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>`
 
+Returns the data for the currently selected rows.
+
 #### Returns
 
 Type: `Promise<KoliBriTableDataType | KoliBriTableDataType[] | null>`

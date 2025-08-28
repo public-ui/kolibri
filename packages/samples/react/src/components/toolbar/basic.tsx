@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React, { useContext } from 'react';
-import { KolBadge, KolToolbar } from '@public-ui/react';
+import { KolBadge, KolToolbar } from '@public-ui/react-v19';
 import { HideMenusContext } from '../../shares/HideMenusContext';
 import { SampleDescription } from '../SampleDescription';
 

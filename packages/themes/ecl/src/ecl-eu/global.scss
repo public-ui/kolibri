@@ -11,9 +11,9 @@
 
 	.kol-tooltip-wc .tooltip-content {
 		padding: to-rem(4) to-rem(8);
+
 		font-size: to-rem(14);
 		line-height: 1.2;
-		bborder: 1px2px;
 		border: 1px solid #626262;
 	}
 
@@ -126,11 +126,8 @@
 	}
 
 	:host {
+		font-family: var(--font-family);
 		font-size: var(--font-size);
-
-		* {
-			font-family: var(--font-family);
-		}
 	}
 
 	a,
@@ -144,10 +141,11 @@
 	h4,
 	h5,
 	h6 {
-		font-weight: var(--font-weight-bold);
-		line-height: var(--line-height-heading);
 		margin: 0;
 		padding: 0;
+
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
 	}
 
 	p {

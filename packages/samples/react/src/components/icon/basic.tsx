@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolIcon } from '@public-ui/react';
+import { KolIcon } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';

@@ -21,7 +21,7 @@ import {
 	KolSelect,
 	KolSingleSelect,
 	KolTextarea,
-} from '@public-ui/react';
+} from '@public-ui/react-v19';
 import type { FC, ForwardRefRenderFunction } from 'react';
 import { useMemo } from 'react';
 import React, { forwardRef, useLayoutEffect, useRef } from 'react';

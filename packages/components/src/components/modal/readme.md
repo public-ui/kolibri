@@ -109,11 +109,15 @@ https://en.wikipedia.org/wiki/Modal_window
 
 ### `closeModal() => Promise<void>`
 
+Closes the modal dialog and resets the active element.
+
 #### Returns
 
 Type: `Promise<void>`
 
 ### `openModal() => Promise<void>`
+
+Opens the modal dialog.
 
 #### Returns
 

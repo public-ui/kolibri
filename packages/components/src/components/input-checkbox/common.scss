@@ -4,8 +4,8 @@
 	}
 
 	.kol-input {
-		align-items: center;
 		display: grid;
+		align-items: center;
 		justify-items: left;
 	}
 
@@ -22,9 +22,9 @@
 	}
 
 	.kol-input .input {
-		grid-area: input;
-		align-items: center;
 		display: grid;
+		align-items: center;
+		grid-area: input;
 	}
 
 	.kol-input .input div {
@@ -55,12 +55,13 @@
 	input {
 		border-style: solid;
 		border-width: 2px;
+
 		line-height: 1.5;
 	}
 
 	input[type='checkbox'] {
-		appearance: none;
 		background-color: #fff;
+		appearance: none;
 		cursor: pointer;
 		transition: 0.5s;
 	}

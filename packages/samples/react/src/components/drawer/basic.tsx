@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { HideMenusContext } from '../../shares/HideMenusContext';
 import type { AlignPropType } from '@public-ui/components';
-import { KolDrawer, KolButton, KolBadge } from '@public-ui/react';
+import { KolDrawer, KolButton, KolBadge } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import { DrawerRadioAlign } from './partials/align';

@@ -4,7 +4,6 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
 <kol-table-stateless-wc class="kol-table-stateless-wc">
   <div class="table">
     <table>
-      <div aria-describedby="caption" class="focus-element"></div>
       <caption id="caption">
         Table with horizontal and vertical headers
       </caption>
@@ -78,7 +77,6 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
 <kol-table-stateless-wc class="kol-table-stateless-wc">
   <div class="table">
     <table>
-      <div aria-describedby="caption" class="focus-element"></div>
       <caption id="caption">
         Table with only horizontal headers
       </caption>
@@ -122,7 +120,6 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
 <kol-table-stateless-wc class="kol-table-stateless-wc">
   <div class="table">
     <table>
-      <div aria-describedby="caption" class="focus-element"></div>
       <caption id="caption">
         Table with two horizontal header rows
       </caption>
@@ -181,7 +178,6 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
 <kol-table-stateless-wc class="kol-table-stateless-wc">
   <div class="table">
     <table>
-      <div aria-describedby="caption" class="focus-element"></div>
       <caption id="caption">
         Table with two spanned horizontal and vertical headers
       </caption>

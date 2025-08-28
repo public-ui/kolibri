@@ -119,11 +119,15 @@ Type: `Promise<void>`
 
 ### `getValue() => Promise<StencilUnknown>`
 
+Returns the checked value or null.
+
 #### Returns
 
 Type: `Promise<StencilUnknown>`
 
 ### `kolFocus() => Promise<void>`
+
+Focuses the checkbox.
 
 #### Returns
 

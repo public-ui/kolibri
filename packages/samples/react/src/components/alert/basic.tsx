@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolAlert } from '@public-ui/react';
+import { KolAlert } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import type { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';
 import { SampleDescription } from '../SampleDescription';

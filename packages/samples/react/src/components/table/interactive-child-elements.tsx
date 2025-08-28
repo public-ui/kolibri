@@ -1,5 +1,5 @@
 import type { ButtonProps, ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
-import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { getRoot } from '../../shares/react-roots';

@@ -8,16 +8,17 @@
 	}
 
 	button {
+		color: var(--color-subtle);
 		background-color: transparent;
-		border: 0;
 		border-radius: var(--border-radius);
-		font-style: normal;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		padding: 0;
+
 		font-weight: 400;
 		line-height: rem(calc(1.2 * 16));
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		color: var(--color-subtle);
-		padding: 0;
+		border: 0;
+		font-style: normal;
 		transition: all 0.2s linear;
 
 		&.selected,
@@ -34,22 +35,22 @@
 		&:hover {
 			color: var(--color-light);
 			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
 			box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+			border-color: var(--color-primary-variant);
 		}
 	}
 
 	*[tabindex]:is(.kol-button-group-wc button) {
-		width: 100%;
-		padding: 0 rem(4);
-		border: var(--border-width) solid transparent;
+		box-shadow: none;
 		border-radius: var(--border-radius);
-		border-bottom-width: var(--border-width);
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
 		position: relative;
 		top: var(--border-width);
-		box-shadow: none;
+		width: 100%;
+		padding: 0 rem(4);
+		border-bottom-width: var(--border-width);
+		border: var(--border-width) solid transparent;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 
 	*[tabindex]:is(.kol-button-group-wc button.selected) {
@@ -61,26 +62,27 @@
 		}
 
 		&:before {
+			background-color: var(--color-primary);
 			position: absolute;
 			top: 0;
-			content: '';
+			right: 0;
+			left: 0;
 			height: calc(rem(16) / 4);
 
-			background-color: var(--color-primary);
-			border-top-right-radius: calc(rem(16) / 8);
+			content: '';
 			border-top-left-radius: calc(rem(16) / 8);
-			left: 0;
-			right: 0;
+			border-top-right-radius: calc(rem(16) / 8);
 		}
 
 		&:after {
-			content: ' ';
 			background-color: var(--page-bg);
-			height: rem(6);
 			position: absolute;
-			width: calc(100% + rem(10));
 			bottom: rem(-7);
 			left: rem(-5);
+			width: calc(100% + rem(10));
+			height: rem(6);
+
+			content: ' ';
 		}
 	}
 

@@ -20,11 +20,11 @@
 		}
 
 		& > a {
-			align-items: center;
 			display: inline-flex;
 			min-height: var(--a11y-min-size);
-			padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
 			padding-right: to-rem(6);
+			padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
+			align-items: center;
 		}
 	}
 
@@ -43,11 +43,11 @@
 
 	.toggle-button,
 	.toggle-button-placeholder {
+		display: inline-flex;
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
-		display: inline-flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 	}
 
 	.text {

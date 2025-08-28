@@ -3,11 +3,11 @@
 
 @layer kol-theme-component {
 	:host {
+		transform: translateX(-50%);
 		top: rem(16);
+		left: 50%;
 		width: rem(750);
 		max-width: 100%;
-		left: 50%;
-		transform: translateX(-50%);
 	}
 
 	.toast {

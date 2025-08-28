@@ -9,14 +9,14 @@
 
 	a > .kol-span-wc,
 	button > .kol-span-wc {
-		border-radius: 32px;
 		border-style: solid;
+		border-radius: 32px;
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
-		border-width: var(--spacing);
 		/*line-height: 1.25em;*/
 		/*padding: calc(4 * var(--spacing));*/
 		padding: 0 rem(16);
+		border-width: var(--spacing);
 	}
 
 	.button a.hide-label > .kol-span-wc,
@@ -28,18 +28,18 @@
 	button > .kol-span-wc {
 		gap: 0.25em;
 		transition-delay: 0;
-		transition-timing-function: ease-in-out;
 		transition-duration: 0.5s;
 		transition-property: background, color, border-color;
+		transition-timing-function: ease-in-out;
 	}
 
 	.kol-link-wc.primary > a > .kol-span-wc,
 	.kol-link-wc.primary > a:disabled:hover > .kol-span-wc,
 	button.primary > .kol-span-wc,
 	button.primary:disabled:hover > .kol-span-wc {
+		color: var(--color-weiss);
 		background-color: var(--color-petrol);
 		border-color: var(--color-petrol);
-		color: var(--color-weiss);
 	}
 
 	.kol-link-wc.primary > a:hover > .kol-span-wc,
@@ -54,71 +54,71 @@
 	.kol-link-wc.secondary > a:disabled:hover > .kol-span-wc,
 	button.secondary > .kol-span-wc,
 	button.secondary:disabled:hover > .kol-span-wc {
+		color: var(--color-petrol);
 		background-color: var(--color-weiss);
 		border-color: var(--color-petrol);
-		color: var(--color-petrol);
 	}
 
 	.kol-link-wc.secondary > a:hover > .kol-span-wc,
 	.kol-link-wc.secondary > a:focus > .kol-span-wc,
 	button.secondary:hover > .kol-span-wc,
 	button.secondary:focus > .kol-span-wc {
+		color: var(--color-weiss);
 		background-color: var(--color-petrol);
 		border-color: var(--color-petrol);
-		color: var(--color-weiss);
 	}
 
 	.kol-link-wc.normal > a > .kol-span-wc,
 	.kol-link-wc.normal > a:disabled:hover > .kol-span-wc,
 	button.normal > .kol-span-wc,
 	button.normal:disabled:hover > .kol-span-wc {
+		color: var(--color-anthrazit);
 		background-color: var(--color-weiss);
 		border-color: var(--color-anthrazit);
-		color: var(--color-anthrazit);
 	}
 
 	.kol-link-wc.normal > a:hover > .kol-span-wc,
 	.kol-link-wc.normal > a:focus > .kol-span-wc,
 	button.normal:hover > .kol-span-wc,
 	button.normal:focus > .kol-span-wc {
+		color: var(--color-weiss);
 		background-color: var(--color-anthrazit);
 		border-color: var(--color-anthrazit);
-		color: var(--color-weiss);
 	}
 
 	.kol-link-wc.danger > a > .kol-span-wc,
 	.kol-link-wc.danger > a:disabled:hover > .kol-span-wc,
 	button.danger > .kol-span-wc,
 	button.danger:disabled:hover > .kol-span-wc {
+		color: var(--color-blut);
 		background-color: var(--color-weiss);
 		border-color: var(--color-blut);
-		color: var(--color-blut);
 	}
 
 	.kol-link-wc.danger > a:hover > .kol-span-wc,
 	.kol-link-wc.danger > a:focus > .kol-span-wc,
 	button.danger:hover > .kol-span-wc,
 	button.danger:focus > .kol-span-wc {
+		color: var(--color-weiss);
 		background-color: var(--color-blut);
 		border-color: var(--color-blut);
-		color: var(--color-weiss);
 	}
 
 	.kol-link-wc.ghost > a > .kol-span-wc,
 	.kol-link-wc.ghost > a:disabled:hover > .kol-span-wc,
 	button.ghost > .kol-span-wc,
 	button.ghost:disabled:hover > .kol-span-wc {
+		color: var(--color-anthrazit);
 		background-color: var(--color-ghost);
 		border-color: transparent;
-		color: var(--color-anthrazit);
 	}
 
 	.kol-link-wc.ghost > a:hover > .kol-span-wc,
 	.kol-link-wc.ghost > a:focus > .kol-span-wc,
 	button.ghost:hover > .kol-span-wc,
 	button.ghost:focus > .kol-span-wc {
+		color: var(--color-anthrazit);
 		background-color: var(--color-ghost);
 		border-color: var(--color-ghost);
-		color: var(--color-anthrazit);
 	}
 }

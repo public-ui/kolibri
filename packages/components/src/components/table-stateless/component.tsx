@@ -736,17 +736,10 @@ export class KolTableStateless implements TableStatelessAPI {
 							minWidth: this.state._deprecatedMinWidth || this.state._minWidth,
 						}}
 					>
-						{/*
-						 * The following element allows the table to receive focus without providing redundant content to screen readers.
-						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
-						 * prevent screen readers from just reading "blank".
-						 */}
 						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
-							&nbsp;
-						</div>
-
-						<caption id="caption">{this.state._label}</caption>
+						<caption id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
+							{this.state._label}
+						</caption>
 
 						{Array.isArray(this.state._headerCells.horizontal) && (
 							<thead>

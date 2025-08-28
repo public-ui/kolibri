@@ -78,7 +78,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 					_label={this._label}
 					_name={this._name}
 					_on={this._on}
-					_role="link"
 					_shortKey={this._shortKey}
 					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
@@ -159,6 +158,8 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 

@@ -10,11 +10,11 @@
 		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
 		"src/scenarios/appointment-form/Summary.tsx"
 	],
-	"ignoreBinaries": ["eslint", "prettier"],
+	"ignoreBinaries": ["eslint", "prettier", "stylelint"],
 	"ignoreDependencies": [
 		"@leanup/stack",
 		"@public-ui/components",
-		"@public-ui/react",
+		"@public-ui/react-v19",
 		"@public-ui/themes",
 		"@unocss/preset-mini",
 		"eslint-plugin-jsx-a11y",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolHeading, KolNav } from '@public-ui/react';
+import { KolHeading, KolNav } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';
 

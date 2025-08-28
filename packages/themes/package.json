@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "2.2.14",
+	"version": "2.2.15-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -57,19 +57,19 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@rollup/plugin-commonjs": "28.0.3",
+		"@rollup/plugin-commonjs": "28.0.6",
 		"@rollup/plugin-node-resolve": "16.0.1",
-		"@rollup/plugin-typescript": "12.1.2",
+		"@rollup/plugin-typescript": "12.1.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"cpy-cli": "5.0.0",
+		"cpy-cli": "6.0.0",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.10",
-		"postcss": "8.5.5",
-		"rollup": "4.43.0",
+		"postcss": "8.5.6",
+		"rollup": "4.47.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.89.2",
-		"typescript": "5.8.3"
+		"sass-embedded": "1.90.0",
+		"typescript": "5.9.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"

@@ -1,13 +1,13 @@
 @use '../functions/to-rem' as *;
 
 @mixin kol-table-stateless-wc {
-	@layer kol-theme-component {
-		:host > div,
-		kol-table-stateless-wc > div {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
+	:host {
+		display: flex;
+		gap: to-rem(8);
+		flex-direction: column;
+	}
 
+	@layer kol-theme-component {
 		caption {
 			padding: to-rem(8);
 		}
@@ -22,9 +22,9 @@
 
 			&:has(.focus-element:focus) {
 				outline-color: var(--color-primary-variant);
-				outline-offset: 2px;
 				outline-style: solid;
 				outline-width: 3px;
+				outline-offset: 2px;
 				transition: outline-offset 0.2s linear;
 			}
 		}
@@ -57,8 +57,8 @@
 		th div {
 			display: flex;
 			gap: to-rem(8);
-			grid-template-columns: 1fr auto;
 			align-items: center;
+			grid-template-columns: 1fr auto;
 		}
 
 		table tbody tr:nth-child(even) {
@@ -85,16 +85,16 @@
 		.input {
 			input {
 				&:hover {
-					border-color: var(--color-primary);
 					box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+					border-color: var(--color-primary);
 				}
 
 				&:focus {
-					border-color: var(--color-primary);
 					outline-color: var(--color-primary-variant);
 					outline-style: solid;
-					outline-offset: 2px;
 					outline-width: 3px;
+					border-color: var(--color-primary);
+					outline-offset: 2px;
 				}
 
 				&:focus:hover {
@@ -131,8 +131,8 @@
 
 			// RADIO
 			input[type='radio'] {
-				display: flex;
 				border-color: var(--color-subtle);
+				display: flex;
 
 				&:checked {
 					border-color: var(--color-primary);

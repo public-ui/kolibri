@@ -4,9 +4,8 @@
 	:host progress,
 	:host span {
 		display: block;
-		height: rem(0);
-		overflow: hidden;
 		width: rem(0);
+		height: rem(0);
 	}
 
 	:host svg line:first-child,

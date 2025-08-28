@@ -14,10 +14,9 @@
 	input {
 		@include kol-typography-body;
 		@include kol-input-base;
+		width: 100%;
 
 		cursor: pointer;
-		width: 100%;
-		overflow: hidden;
 	}
 
 	.error input {

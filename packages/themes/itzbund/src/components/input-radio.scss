@@ -15,19 +15,19 @@
 
 	:host input:focus {
 		outline-color: var(--color-achat);
-		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 3px;
+		outline-offset: 2px;
 	}
 
 	input {
 		@include kol-typography-body;
-		width: 100%;
 		color: var(--color-anthrazit);
 		border-color: var(--default-border);
-		border-width: 2px;
 		border-style: solid;
 		border-radius: 5px;
+		width: 100%;
+		border-width: 2px;
 		/* padding: rem(10) rem(14); */
 	}
 
@@ -47,10 +47,10 @@
 
 	/* RADIO */
 	fieldset {
-		border: 0;
 		margin: 0;
 		padding: 0;
 		flex-wrap: wrap;
+		border: 0;
 	}
 
 	fieldset .hint,
@@ -79,25 +79,26 @@
 	fieldset legend {
 		display: block;
 		width: 100%;
+
 		line-height: 1.5;
 	}
 
 	.radio-input-wrapper,
 	.input {
-		cursor: pointer;
 		display: flex;
-		flex-direction: row;
-		gap: 0.5em;
+		position: relative;
 		margin-top: 0.25em;
 		margin-bottom: 0.25em;
+		gap: 0.5em;
+		flex-direction: row;
 		align-items: center;
-		position: relative;
+		cursor: pointer;
 	}
 
 	.radio-label {
-		cursor: pointer;
 		display: flex;
 		width: 100%;
+		cursor: pointer;
 	}
 
 	.radio-label span {
@@ -105,17 +106,17 @@
 	}
 
 	.radio-input-wrapper input[type='radio'] {
+		border-radius: 100%;
+		width: calc(6 * 2 * var(--spacing));
+		min-width: calc(6 * 2 * var(--spacing));
+		height: calc(6 * 2 * var(--spacing));
 		appearance: none;
 		transition: 0.5s;
-		border-radius: 100%;
-		height: calc(6 * 2 * var(--spacing));
-		min-width: calc(6 * 2 * var(--spacing));
-		width: calc(6 * 2 * var(--spacing));
 	}
 
 	.radio-input-wrapper input[type='radio']:checked:before {
-		box-shadow: 0 0 1.6px black;
 		background-color: var(--color-petrol);
+		box-shadow: 0 0 1.6px black;
 	}
 
 	.radio-input-wrapper input[type='radio']:disabled {

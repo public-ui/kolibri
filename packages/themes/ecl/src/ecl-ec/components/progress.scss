@@ -4,9 +4,8 @@
 	:host progress,
 	:host span {
 		display: block;
-		height: 0;
-		overflow: hidden;
 		width: 0;
+		height: 0;
 	}
 
 	svg line:first-child,
@@ -17,8 +16,8 @@
 
 	svg line:last-child,
 	svg circle:last-child {
-		stroke: var(--color-blue-130);
 		fill: transparent;
+		stroke: var(--color-blue-130);
 	}
 
 	progress {

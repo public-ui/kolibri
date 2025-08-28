@@ -2,11 +2,11 @@
 
 @mixin kol-input-border {
 	color: var(--default-letter);
-	border-width: 1px;
+	background-color: #e8edf2;
+	border-color: var(--kolibri-color-normal);
 	border-style: solid;
 	border-radius: 0;
-	border-color: var(--kolibri-color-normal);
-	background-color: #e8edf2;
+	border-width: 1px;
 }
 
 @mixin kol-input-base {
@@ -25,11 +25,11 @@
 
 	&:not(.disabled, &:disabled):hover,
 	&:focus {
-		border-color: var(--default-border-hover);
 		outline-color: var(--primary);
-		outline-offset: 0;
 		outline-style: solid;
 		outline-width: 1px;
+		border-color: var(--default-border-hover);
+		outline-offset: 0;
 	}
 }
 
@@ -43,10 +43,10 @@
 
 	&:not(.disabled) &:hover,
 	&:focus-within {
-		border-color: var(--default-border-hover);
 		outline-color: var(--primary);
-		outline-offset: 0;
 		outline-style: solid;
 		outline-width: 1px;
+		border-color: var(--default-border-hover);
+		outline-offset: 0;
 	}
 }

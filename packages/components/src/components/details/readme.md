@@ -112,6 +112,8 @@ Type: `Promise<void>`
 
 ### `kolFocus() => Promise<void>`
 
+Programmatically focuses the collapsible button.
+
 #### Returns
 
 Type: `Promise<void>`

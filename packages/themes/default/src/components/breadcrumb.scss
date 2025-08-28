@@ -2,8 +2,9 @@
 
 @layer kol-theme-component {
 	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
-		font-size: to-rem(12);
 		color: var(--color-subtle);
+
+		font-size: to-rem(12);
 	}
 
 	.kol-link::part(icon) {

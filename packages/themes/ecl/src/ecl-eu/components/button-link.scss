@@ -1,9 +1,10 @@
 @layer kol-theme-component {
 	a,
 	button {
-		appearance: none;
 		color: var(--color-blue);
+
 		text-decoration: underline;
+		appearance: none;
 	}
 	a:hover,
 	button:hover {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolCard } from '@public-ui/react';
+import { KolCard } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -15,7 +15,6 @@ export const CardBasic: FC = () => (
 			<KolCard _label="Card with title and content">
 				<div>Card contents.</div>
 			</KolCard>
-
 			<KolCard _label="Card with closer" _hasCloser>
 				<p>This card has a close button.</p>
 			</KolCard>

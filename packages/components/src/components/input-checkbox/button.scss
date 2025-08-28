@@ -1,20 +1,20 @@
 @layer kol-component {
 	.button {
 		display: grid;
-		grid-template-columns: var(--a11y-min-size) auto;
 		grid-template-areas: 'error error' 'input label' 'hint hint';
+		grid-template-columns: var(--a11y-min-size) auto;
 	}
 
 	.button[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto var(--a11y-min-size);
 		grid-template-areas: 'error error' 'label input' 'hint hint';
+		grid-template-columns: auto var(--a11y-min-size);
 	}
 
 	.button:focus-within {
-		/* override global `[tabindex]:focus` style */
-		cursor: inherit;
 		outline-color: black;
 		outline-style: solid;
+		/* override global `[tabindex]:focus` style */
+		cursor: inherit;
 	}
 
 	.button > .error {
@@ -35,9 +35,9 @@
 
 	.button .icon {
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
+		align-items: center;
+		justify-content: center;
 	}
 }

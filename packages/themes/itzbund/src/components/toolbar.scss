@@ -3,31 +3,32 @@
 
 @layer kol-theme-component {
 	.toolbar {
-		padding: rem(8);
-		border-width: 1px;
+		background-color: var(--color-white);
+		border-color: var(--kolibri-border-color);
 		border-style: solid;
 		border-radius: 4px;
-		border-color: var(--kolibri-border-color);
-		background-color: var(--color-white);
+		padding: rem(8);
+		border-width: 1px;
 	}
 
 	a,
 	button {
 		border-radius: 32px;
+
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
 
 	a > .kol-span-wc,
 	button > .kol-span-wc {
-		border-radius: 32px;
 		border-style: solid;
+		border-radius: 32px;
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
-		border-width: var(--spacing);
 		/*line-height: 1.25em;*/
 		/*padding: calc(4 * var(--spacing));*/
 		padding: 0 rem(16);
+		border-width: var(--spacing);
 	}
 
 	.kol-link-wc > a {

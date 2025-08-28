@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
 import PackageJson from '@public-ui/components/package.json';
-import { KolBadge } from '@public-ui/react';
+import { KolBadge } from '@public-ui/react-v19';
 
 import { BackPage } from './components/BackPage';
 import { Sidebar } from './components/Sidebar';

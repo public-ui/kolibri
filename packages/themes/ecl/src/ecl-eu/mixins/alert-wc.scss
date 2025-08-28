@@ -2,8 +2,9 @@
 
 @mixin kol-alert-wc($color: null) {
 	color: var($color);
-	font-size: 0.875em;
 	margin-left: calc(-1 * var(--spacing-2xs));
+
+	font-size: 0.875em;
 }
 
 @mixin kol-alert-theme {
@@ -21,8 +22,9 @@
 	}
 
 	.msg .heading .kol-icon {
-		font-size: 1.5em;
 		margin: var(--spacing-2xs);
+
+		font-size: 1.5em;
 	}
 
 	.msg .heading > div {
@@ -30,10 +32,10 @@
 	}
 
 	.card {
+		padding-top: to-rem(24);
 		padding-bottom: to-rem(24);
 		padding-inline-end: to-rem(8);
 		padding-inline-start: to-rem(24);
-		padding-top: to-rem(24);
 	}
 
 	.card .heading {

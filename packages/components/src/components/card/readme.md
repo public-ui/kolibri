@@ -4,6 +4,8 @@ Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die **Car
 
 Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_**.
 
+Aus Gründen der Barrierefreiheit wird die Card als ARIA-Gruppe mit ihrem Titel ausgezeichnet (`role="group"` und `aria-labelledby`).
+
 Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
 
 ## Konstruktion
