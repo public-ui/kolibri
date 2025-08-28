@@ -62,6 +62,7 @@ export class KolCardWc implements CardAPI {
 								},
 							}}
 							_label={this.translateClose}
+							_buttonVariant="ghost"
 							_on={this.on}
 							_tooltipAlign="left"
 						/>
