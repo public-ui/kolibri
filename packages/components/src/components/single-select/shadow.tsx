@@ -102,8 +102,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private onBlur() {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
-		if (matchingOption && matchingOption?.value !== this._value) {
-			this.selectOption(matchingOption as Option<string>);
+		if (matchingOption) {
+			if (matchingOption?.value !== this._value) {
+				this.selectOption(matchingOption as Option<string>);
+			}
 		} else {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
