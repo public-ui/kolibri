@@ -8,6 +8,7 @@
 		display: var(--display);
 		grid-template-columns: var(--grid-template-columns);
 		grid-template-rows: var(--grid-template-rows);
+		container-type: inline-size;
 
 		&--align-right {
 			--display: grid;
@@ -55,6 +56,18 @@
 
 		&__panel {
 			height: 100%;
+		}
+
+		@container (max-width: to-rem(480)) {
+			&,
+			&--align-right,
+			&--align-left,
+			&--align-bottom,
+			&__tabs-align-top {
+				--button-group-flex-direction: row;
+				--grid-template-columns: 1fr;
+				--grid-template-rows: auto 1fr;
+			}
 		}
 	}
 }

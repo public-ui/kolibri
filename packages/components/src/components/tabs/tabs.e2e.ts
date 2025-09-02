@@ -57,9 +57,9 @@ test.describe('kol-tabs', () => {
 	test.describe('Dynamic Tabs', () => {
 		test('should update tabs when _tabs prop changes', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
-				<div slot="tab-0">Contents of Tab 1</div>
-				<div slot="tab-1">Contents of Tab 2</div>
-			</kol-tabs>`);
+                                <div slot="tab-0">Contents of Tab 1</div>
+                                <div slot="tab-1">Contents of Tab 2</div>
+                        </kol-tabs>`);
 			const initialTabs = [{ _label: 'First tab' }, { _label: 'Second Tab' }];
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(initialTabs)}' _label="Tabs"> <div>Content 1</div> <div>Content 2</div> </kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
@@ -72,6 +72,26 @@ test.describe('kol-tabs', () => {
 			await expect(kolTabs.getByRole('tab', { name: 'Updated Tab B' })).toBeVisible();
 			await expect(kolTabs.getByRole('tab', { name: 'Updated Tab C' })).toBeVisible();
 			await expect(kolTabs.getByRole('tab', { name: 'First tab' })).toHaveCount(0);
+		});
+	});
+
+	test.describe('Responsive layout', () => {
+		test('uses column layout when wide', async ({ page }) => {
+			await page.setContent(`<kol-tabs style="display:block;width:800px" _align="right" _tabs='${JSON.stringify(TABS)}' _label="Tabs"></kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const flexDirection = await kolTabs.locator('.kol-tabs__button-group').evaluate((el) => getComputedStyle(el).flexDirection);
+			expect(flexDirection).toBe('column');
+			const gridTemplateColumns = await kolTabs.locator('.kol-tabs').evaluate((el) => getComputedStyle(el).gridTemplateColumns);
+			expect(gridTemplateColumns.trim()).not.toBe('1fr');
+		});
+
+		test('switches to row layout when narrow', async ({ page }) => {
+			await page.setContent(`<kol-tabs style="display:block;width:400px" _align="right" _tabs='${JSON.stringify(TABS)}' _label="Tabs"></kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const flexDirection = await kolTabs.locator('.kol-tabs__button-group').evaluate((el) => getComputedStyle(el).flexDirection);
+			expect(flexDirection).toBe('row');
+			const gridTemplateColumns = await kolTabs.locator('.kol-tabs').evaluate((el) => getComputedStyle(el).gridTemplateColumns);
+			expect(gridTemplateColumns.trim()).toBe('1fr');
 		});
 	});
 
