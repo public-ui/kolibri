@@ -10,8 +10,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		container-type: inline-size;
 
-		&--orientation-vertical {
+		@container (max-width: to-rem(480)) {
 			flex-direction: column;
 			align-items: stretch;
 		}
