@@ -6,15 +6,29 @@
 	@include kol-link-styles('kol-link');
 
 	.kol-breadcrumb {
-		&__list,
-		&__list-element {
+		&__list {
 			display: flex;
 			margin: 0;
 			padding: 0;
 			gap: 0.5em;
 			flex-wrap: wrap;
 			place-items: center;
+			container-type: size;
 			list-style: none;
+		}
+
+		&__list-element {
+			display: flex;
+			gap: 0.5em;
+			place-items: center;
+		}
+
+		@container (min-height: calc(2lh + 0.5em)) {
+			&__list {
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: flex-start;
+			}
 		}
 
 		&__icon {

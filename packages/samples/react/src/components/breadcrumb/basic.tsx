@@ -42,20 +42,22 @@ export const BreadcrumbBasic: FC = () => (
 					},
 				]}
 			></KolBreadcrumb>
-			<KolBreadcrumb
-				_label="Breadcrumb from icons and text links"
-				_links={[
-					{ _label: 'Homepage', _icons: 'codicon codicon-home', _href: '#/back-page' },
-					{
-						_label: 'Subpage of the main page and I_am_a_really_long_compound_word_trying_to_break_the_layout',
-						_href: '#/back-page',
-					},
-					{
-						_label: 'Underside of the underside',
-						_href: '#/back-page',
-					},
-				]}
-			></KolBreadcrumb>
+			<div style={{ width: '10rem' }}>
+				<KolBreadcrumb
+					_label="Breadcrumb from icons and text links"
+					_links={[
+						{ _label: 'Homepage', _icons: 'codicon codicon-home', _href: '#/back-page' },
+						{
+							_label: 'Subpage of the main page and I_am_a_really_long_compound_word_trying_to_break_the_layout',
+							_href: '#/back-page',
+						},
+						{
+							_label: 'Underside of the underside',
+							_href: '#/back-page',
+						},
+					]}
+				></KolBreadcrumb>
+			</div>
 		</div>
 	</>
 );
