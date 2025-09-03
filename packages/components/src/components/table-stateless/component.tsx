@@ -8,6 +8,7 @@ import { translate } from '../../i18n';
 import { isEqual } from 'lodash-es';
 import type {
 	AriaSort,
+	HasSettingsMenuPropType,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -33,6 +34,7 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
+	validateHasSettingsMenu,
 } from '../../schema';
 import type { ColumnSettings } from '../../schema/types';
 import { Callback } from '../../schema/enums';
@@ -63,6 +65,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		},
 		_label: '',
 		_minWidth: 'auto',
+		_hasSettingsMenu: false,
 	};
 
 	private tableDivElement?: HTMLDivElement;
@@ -123,6 +126,16 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the table settings including column visibility, order and width.
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
+
+	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType; // + ajoute
+
+	@Watch('_hasSettingsMenu')
+	public validateHasSettingsMenuProp(value?: HasSettingsMenuPropType): void {
+		validateHasSettingsMenu(this, value);
+	}
 
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
@@ -501,6 +514,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateTableSettings(this._tableSettings);
+		this.validateHasSettingsMenuProp(this._hasSettingsMenu);
 	}
 
 	/**
@@ -906,7 +920,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return (
 			<div class="kol-table">
-				<KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />
+				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
