@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { createHash } from 'crypto';
 
 import { SCSS_FILE_EXTENSIONS } from '../../../../types';
 import { filterFilesByExt, logAndCreateError, MODIFIED_FILES } from '../../../shares/reuse';
@@ -206,7 +207,9 @@ export class ScssAddSelectorTask extends AbstractTask {
 		options: TaskOptions = {},
 	): ScssAddSelectorTask {
 		// Include rules in identifier to ensure unique instances for different rule sets
-		const identifier = `add-selector-${selector}-${rules.replace(/[^a-zA-Z0-9]/g, '_')}`;
+		// Use hash to create shorter, more predictable identifiers
+		const rulesHash = createHash('md5').update(rules).digest('hex').substring(0, 8);
+		const identifier = `add-selector-${selector}-${rulesHash}`;
 		if (!this.instances.has(identifier)) {
 			this.instances.set(identifier, new ScssAddSelectorTask(identifier, selector, rules, versionRange, dependentTasks, options));
 		}
