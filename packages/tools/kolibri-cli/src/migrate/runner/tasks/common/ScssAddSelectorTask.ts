@@ -1,9 +1,22 @@
 import fs from 'fs';
-import { createHash } from 'crypto';
 
 import { SCSS_FILE_EXTENSIONS } from '../../../../types';
 import { filterFilesByExt, logAndCreateError, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
+
+/**
+ * Simple, fast hash function for string identifier generation.
+ * Based on djb2 algorithm - much faster than cryptographic hashes for non-security purposes.
+ * @param {string} str String to hash
+ * @returns {string} Hexadecimal hash string
+ */
+function simpleHash(str: string): string {
+	let hash = 5381;
+	for (let i = 0; i < str.length; i++) {
+		hash = (hash << 5) + hash + str.charCodeAt(i);
+	}
+	return (hash >>> 0).toString(16).substring(0, 8);
+}
 
 /**
  * Escapes special characters for use in a regular expression.
@@ -207,8 +220,8 @@ export class ScssAddSelectorTask extends AbstractTask {
 		options: TaskOptions = {},
 	): ScssAddSelectorTask {
 		// Include rules in identifier to ensure unique instances for different rule sets
-		// Use hash to create shorter, more predictable identifiers
-		const rulesHash = createHash('md5').update(rules).digest('hex').substring(0, 8);
+		// Use simple hash to create shorter, more predictable identifiers
+		const rulesHash = simpleHash(rules);
 		const identifier = `add-selector-${selector}-${rulesHash}`;
 		if (!this.instances.has(identifier)) {
 			this.instances.set(identifier, new ScssAddSelectorTask(identifier, selector, rules, versionRange, dependentTasks, options));
