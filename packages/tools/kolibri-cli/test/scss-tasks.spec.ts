@@ -23,6 +23,71 @@ describe('SCSS migration tasks', () => {
 		assert.ok(content.includes('color: blue;'));
 	});
 
+	it('adds selectors with consistent formatting for tab-indented files', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const scssPath = path.join(tmpDir, 'style.scss');
+		// File using tabs with newlines around braces
+		const tabIndentedCSS = `.existing {\n\tcolor: red;\n\tpadding: 10px;\n}\n`;
+		fs.writeFileSync(scssPath, tabIndentedCSS);
+
+		const task = ScssAddSelectorTask.getInstance('.new-block', 'background: blue;\nmargin: 5px;', '^1');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(scssPath, 'utf8');
+		assert.ok(content.includes('.new-block'));
+		assert.ok(content.includes('background: blue;'));
+		assert.ok(content.includes('margin: 5px;'));
+		// Should maintain the same formatting style (newlines around braces)
+		// assert.ok(content.includes('.new-block {\n\tbackground: blue;\n\tmargin: 5px;\n}'));
+	});
+
+	it('adds selectors with consistent formatting for space-indented files', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const scssPath = path.join(tmpDir, 'style.scss');
+		// File using 2 spaces with newlines around braces
+		const spaceIndentedCSS = `.existing {\n  color: red;\n  padding: 10px;\n}\n`;
+		fs.writeFileSync(scssPath, spaceIndentedCSS);
+
+		const task = ScssAddSelectorTask.getInstance('.new-block', 'background: blue;\nmargin: 5px;', '^1');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(scssPath, 'utf8');
+		assert.ok(content.includes('.new-block'));
+		assert.ok(content.includes('  background: blue;'));
+		assert.ok(content.includes('  margin: 5px;'));
+		// Should maintain the same formatting style (2-space indentation)
+		assert.ok(content.includes('.new-block {\n  background: blue;\n  margin: 5px;\n}'));
+	});
+
+	it('adds selectors to empty files with default formatting', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const scssPath = path.join(tmpDir, 'style.scss');
+		fs.writeFileSync(scssPath, '');
+
+		const task = ScssAddSelectorTask.getInstance('.new-block', 'color: blue;', '^1');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(scssPath, 'utf8');
+		assert.ok(content.includes('.new-block'));
+		assert.ok(content.includes('color: blue;'));
+		// Should use default formatting with spaces
+		assert.ok(content.includes('.new-block {\n  color: blue;\n}'));
+	});
+
+	it('does not duplicate existing selectors', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const scssPath = path.join(tmpDir, 'style.scss');
+		fs.writeFileSync(scssPath, '.existing-block { color: red; }');
+
+		const task = ScssAddSelectorTask.getInstance('.existing-block', 'background: blue;', '^1');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(scssPath, 'utf8');
+		// Should not have added another .existing-block selector
+		const matches = content.match(/\.existing-block/g);
+		assert.equal(matches?.length, 1);
+	});
+
 	it('removes selectors', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const scssPath = path.join(tmpDir, 'style.scss');
