@@ -1,0 +1,83 @@
+{
+        "name": "@public-ui/react-hook-form-adapter",
+        "version": "3.0.2-rc.0",
+        "license": "EUPL-1.2",
+        "homepage": "https://public-ui.github.io",
+        "repository": {
+                "type": "git",
+                "url": "https://github.com/public-ui/kolibri"
+        },
+        "bugs": {
+                "url": "https://github.com/public-ui/kolibri/issues",
+                "email": "kolibri@itzbund.de"
+        },
+        "author": {
+                "name": "Informationstechnikzentrum Bund",
+                "email": "kolibri@itzbund.de"
+        },
+        "description": "React Hook Form adapter for KoliBri - The accessible HTML-Standard.",
+        "keywords": [
+                "accessibility",
+                "accessible",
+                "bitv",
+                "framework",
+                "library",
+                "designsystem",
+                "design",
+                "system",
+                "web components",
+                "webcomponents",
+                "aria",
+                "wai",
+                "axe",
+                "custom elements",
+                "styleguide",
+                "style",
+                "guide",
+                "ui",
+                "html",
+                "css",
+                "web",
+                "a11y",
+                "w3c",
+                "webstandard",
+                "wcag",
+                "react",
+                "react-hook-form"
+        ],
+        "scripts": {
+                "build": "unbuild"
+        },
+        "devDependencies": {
+                "@public-ui/components": "workspace:*",
+                "@public-ui/react": "workspace:*",
+                "@types/react": "18.3.4",
+                "@types/react-dom": "18.3.7",
+                "react": "18.3.1",
+                "react-dom": "18.3.1",
+                "typescript": "5.8.3",
+                "unbuild": "3.5.0"
+        },
+        "peerDependencies": {
+                "@public-ui/components": "workspace:*",
+                "@public-ui/react": "workspace:*",
+                "react": ">=16.14.0",
+                "react-dom": ">=16.14.0",
+                "react-hook-form": ">=7.0.0"
+        },
+        "sideEffects": false,
+        "type": "module",
+        "exports": {
+                ".": {
+                        "types": "./dist/index.d.ts",
+                        "import": "./dist/index.mjs",
+                        "require": "./dist/index.cjs"
+                }
+        },
+        "main": "./dist/index.cjs",
+        "module": "./dist/index.mjs",
+        "types": "./dist/index.d.ts",
+        "files": [
+                "dist"
+        ]
+}

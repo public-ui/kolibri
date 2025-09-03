@@ -286,6 +286,37 @@ importers:
         specifier: 3.6.1
         version: 3.6.1(sass@1.90.0)(typescript@5.9.2)(vue@3.5.16(typescript@5.9.2))
 
+  packages/adapters/react-hook-form-adapter:
+    dependencies:
+      react-hook-form:
+        specifier: '>=7.0.0'
+        version: 7.61.1(react@18.3.1)
+    devDependencies:
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../../components
+      '@public-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@types/react':
+        specifier: 18.3.4
+        version: 18.3.4
+      '@types/react-dom':
+        specifier: 18.3.7
+        version: 18.3.7(@types/react@18.3.4)
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      typescript:
+        specifier: 5.8.3
+        version: 5.8.3
+      unbuild:
+        specifier: 3.5.0
+        version: 3.5.0(sass@1.88.0)(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))
+
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
@@ -681,6 +712,9 @@ importers:
       '@public-ui/react-v19':
         specifier: workspace:*
         version: link:../../adapters/react-v19
+      '@public-ui/react-hook-form-adapter':
+        specifier: workspace:*
+        version: link:../../adapters/react-hook-form-adapter
       '@public-ui/themes':
         specifier: workspace:*
         version: link:../../themes
