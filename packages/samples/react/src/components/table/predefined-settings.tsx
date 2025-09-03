@@ -18,17 +18,11 @@ export const PredefinedSettings: FC = () => {
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'column A', key: 'columnA' },
-							{ label: 'column B', key: 'columnB' },
-							{ label: 'column C', key: 'columnC' },
+							// Columns arranged in the desired order with visibility and width settings
+							{ label: 'column C', key: 'columnC', visible: true, width: '45ch' },
+							{ label: 'column B', key: 'columnB', visible: true, width: '20ch' },
+							{ label: 'column A', key: 'columnA', visible: false },
 						],
-					],
-				}}
-				_tableSettings={{
-					columns: [
-						{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-						{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
-						{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
 					],
 				}}
 				_data={DATA}

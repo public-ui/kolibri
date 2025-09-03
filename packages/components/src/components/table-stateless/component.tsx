@@ -312,7 +312,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
 		primaryHeaders.forEach((header, index) => {
 			if (header.key) {
-				keyToPosition.set(header.key, header.position ?? index);
+				keyToPosition.set(header.key, index);
 			}
 		});
 		return keyToPosition;

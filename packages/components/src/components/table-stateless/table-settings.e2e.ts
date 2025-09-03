@@ -82,31 +82,28 @@ test.describe('kol-table-settings', () => {
 			const applyButton = page.getByTestId('table-settings-apply');
 			await applyButton.click();
 
-			await expect(eventPromise).resolves.toEqual({
-				columns: [
+			await expect(eventPromise).resolves.toEqual([
+				[
 					{
 						key: 'id',
 						label: 'ID',
-						position: 0,
 						visible: true,
 						hidable: true,
 					},
 					{
 						key: 'name',
 						label: 'Name',
-						position: 1,
 						visible: true,
 						hidable: true,
 					},
 					{
 						key: 'age',
 						label: 'Age',
-						position: 2,
 						visible: true,
 						hidable: true,
 					},
 				],
-			});
+			]);
 		});
 	});
 

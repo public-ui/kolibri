@@ -39,31 +39,23 @@ export class KolTableSettings {
 		return this.headerCells.flat().filter((header) => header.key);
 	}
 
-	private sortColumnsByPosition(columns: KoliBriTableHeaderCell[]): KoliBriTableHeaderCell[] {
-		return [...columns].sort((colA, colB) => (colA.position ?? 0) - (colB.position ?? 0));
-	}
-
 	private moveColumn(columnId: string, direction: 'up' | 'down'): void {
-		const allColumns = this.getColumnsFromHeaderCells();
-		const sourceIndex = allColumns.findIndex((col) => col.key === columnId);
+		// Find the header cell in the first horizontal row and move it within the array
+		const firstRow = this.headerCells[0];
+		if (!firstRow) return;
+
+		const sourceIndex = firstRow.findIndex((col) => col.key === columnId);
 		const targetIndex = direction === 'up' ? sourceIndex - 1 : sourceIndex + 1;
 
-		if (targetIndex >= 0 && targetIndex < allColumns.length) {
-			// Swap positions
-			const sourceColumn = allColumns[sourceIndex];
-			const targetColumn = allColumns[targetIndex];
+		if (targetIndex >= 0 && targetIndex < firstRow.length && sourceIndex >= 0) {
+			// Create new array and swap elements
+			const newRow = [...firstRow];
+			[newRow[sourceIndex], newRow[targetIndex]] = [newRow[targetIndex], newRow[sourceIndex]];
 
-			const sourcePosition = sourceColumn.position ?? sourceIndex;
-			const targetPosition = targetColumn.position ?? targetIndex;
-
-			sourceColumn.position = targetPosition;
-			targetColumn.position = sourcePosition;
-
-			// Update headerCells with new positions
-			this.headerCells = [...this.headerCells];
+			// Update headerCells with new order
+			this.headerCells = [newRow, ...this.headerCells.slice(1)];
 		}
 	}
-
 	private handleVisibilityChange(key: string, visible: unknown): void {
 		this.headerCells = this.headerCells.map((row) =>
 			row.map((header) => (header.key === key && header.hidable !== false ? { ...header, visible: Boolean(visible) } : header)),
@@ -96,7 +88,7 @@ export class KolTableSettings {
 
 	public render(): JSX.Element {
 		const allColumns = this.getColumnsFromHeaderCells();
-		const sortedColumns = this.sortColumnsByPosition(allColumns);
+		// Columns are already in the correct order from the array
 
 		return (
 			<KolPopoverButtonWcTag
@@ -115,7 +107,7 @@ export class KolTableSettings {
 					<form onSubmit={this.handleSubmit.bind(this)}>
 						<div class="kol-table-settings__columns-container">
 							<div class="kol-table-settings__columns">
-								{sortedColumns.map((column, index) => (
+								{allColumns.map((column, index) => (
 									<div key={column.key} class="kol-table-settings__column">
 										<KolInputCheckboxTag
 											_checked={column.visible !== false}
@@ -148,7 +140,7 @@ export class KolTableSettings {
 											_hideLabel
 											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key!, 'down') }}
-											_disabled={index === sortedColumns.length - 1}
+											_disabled={index === allColumns.length - 1}
 											data-testid="table-settings-move-down"
 										/>
 									</div>

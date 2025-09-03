@@ -5,7 +5,6 @@ import type { PropMinWidth } from '../props/min-width';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
-import type { PropTableSettings } from '../props/table-settings';
 
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
@@ -45,8 +44,7 @@ type OptionalProps = {
 } & PropTableDataFoot &
 	PropPaginationPosition &
 	PropTableSelection &
-	StatefulPropTableCallbacks &
-	PropTableSettings;
+	StatefulPropTableCallbacks;
 
 type RequiredStates = {
 	allowMultiSort: boolean;
@@ -61,8 +59,7 @@ type RequiredStates = {
 type OptionalStates = {
 	sortDirection: KoliBriSortDirection;
 	selection: KoliBriTableSelection;
-} & StatefulPropTableCallbacks &
-	PropTableSettings;
+} & StatefulPropTableCallbacks;
 
 export type TableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type TableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
