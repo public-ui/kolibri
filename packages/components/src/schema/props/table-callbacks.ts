@@ -3,7 +3,7 @@ import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
 import type { Generic } from 'adopted-style-sheets';
-import type { KoliBriSortDirection, KoliBriTableDataType } from '../types';
+import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell } from '../types';
 
 /* types */
 export type SortEventPayload = {
@@ -13,10 +13,12 @@ export type SortEventPayload = {
 
 export type SelectionChangeEventPayload = string[] | string;
 export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | KoliBriTableDataType | null;
+export type HeaderCellsChangeEventPayload = KoliBriTableHeaderCell[][];
 
 export type TableCallbacksPropType = {
 	[Callback.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
 	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
+	[Callback.onHeaderCellsChange]?: EventValueOrEventCallback<Event, HeaderCellsChangeEventPayload>;
 };
 export type TableStatefulCallbacksPropType = {
 	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, StatefulSelectionChangeEventPayload>;

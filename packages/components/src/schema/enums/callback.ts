@@ -6,6 +6,7 @@ export enum Callback {
 	onClose = 'onClose',
 	onDblClick = 'onDblClick',
 	onFocus = 'onFocus',
+	onHeaderCellsChange = 'onHeaderCellsChange',
 	onInput = 'onInput',
 	onKeyDown = 'onKeyDown',
 	onKeyPress = 'onKeyPress',

@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
-import { isEqual } from 'lodash-es';
 import type {
 	AriaSort,
 	KoliBriTableCell,
@@ -21,7 +20,6 @@ import type {
 	TableDataPropType,
 	TableHeaderCellsPropType,
 	TableSelectionPropType,
-	TableSettings,
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '../../schema';
@@ -34,14 +32,11 @@ import {
 	validateTableHeaderCells,
 	validateTableSelection,
 } from '../../schema';
-import type { ColumnSettings } from '../../schema/types';
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import { validateMinWidth } from '../../schema/props/min-width';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
-import { validateTableSettings } from '../../schema/props/table-settings';
 
 /**
  * @internal
@@ -79,12 +74,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	private tableDivElementHasScrollbar = false;
 
 	/**
-	 * Store previous value to allow change detection by value-comparison
-	 */
-	@State()
-	private previousHeaderCells?: TableHeaderCellsPropType;
-
-	/**
 	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: TableDataPropType;
@@ -119,11 +108,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	@Prop() public _selection?: TableSelectionPropType;
 
-	/**
-	 * Defines the table settings including column visibility, order and width.
-	 */
-	@Prop() public _tableSettings?: TableSettingsPropType;
-
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
 		validateTableData(this, value, {
@@ -141,13 +125,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_headerCells')
 	public validateHeaderCells(value?: TableHeaderCellsPropType) {
 		validateTableHeaderCells(this, value);
-
-		/* The reference changes on every render. Only reinitialize settings when headers actually changed */
-		if (!isEqual(this.previousHeaderCells, this.state._headerCells)) {
-			this.initializeTableSettings();
-		}
-
-		this.previousHeaderCells = this.state._headerCells;
 	}
 
 	@Watch('_label')
@@ -170,11 +147,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
-	}
-
-	@Watch('_tableSettings')
-	public validateTableSettings(value?: TableSettingsPropType) {
-		validateTableSettings(this, value);
 	}
 
 	@Listen('keydown')
@@ -209,9 +181,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	@Listen('settingsChange')
-	public handleSettingsChange(event: CustomEvent<TableSettings>) {
-		setState(this, '_tableSettings', event.detail);
+	@Listen('headerCellsChange')
+	public handleHeaderCellsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
+		// Update horizontal header cells with new settings
+		const updatedHeaderCells = { ...this.state._headerCells };
+		if (updatedHeaderCells.horizontal) {
+			updatedHeaderCells.horizontal = event.detail;
+		}
+		setState(this, '_headerCells', updatedHeaderCells);
 	}
 
 	public disconnectedCallback() {
@@ -332,8 +309,11 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private getColumnPositionMap(): Map<string, number> {
 		const keyToPosition = new Map<string, number>();
-		this.state._tableSettings?.columns.forEach((setting) => {
-			keyToPosition.set(setting.key, setting.position);
+		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
+		primaryHeaders.forEach((header, index) => {
+			if (header.key) {
+				keyToPosition.set(header.key, header.position ?? index);
+			}
 		});
 		return keyToPosition;
 	}
@@ -473,25 +453,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	private initializeTableSettings() {
-		if (this._tableSettings) {
-			return; // when tableSettings are defined via props, don't override them.
-		}
-		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
-		if (!this.state._tableSettings) {
-			this.state._tableSettings = { columns: [] };
-		}
-		this.state._tableSettings.columns = primaryHeaders
-			.filter((header) => header.key) // only headers with a key are supported
-			.map((header, index) => ({
-				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
-				key: header.key ?? nonce(),
-				label: header.label,
-				position: index,
-				visible: true,
-			}));
-	}
-
 	public componentWillLoad(): void {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -500,7 +461,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
-		this.validateTableSettings(this._tableSettings);
 	}
 
 	/**
@@ -613,8 +573,12 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	};
 
-	private getColumnSettings(cell: KoliBriTableCell | KoliBriTableHeaderCell): ColumnSettings | undefined {
-		return this.state._tableSettings?.columns.find((setting) => setting.key === (cell as KoliBriTableHeaderCellWithLogic).key);
+	private getColumnSettings(cell: KoliBriTableCell | KoliBriTableHeaderCell): KoliBriTableHeaderCell | undefined {
+		const cellKey = (cell as KoliBriTableHeaderCellWithLogic).key;
+		if (!cellKey) return undefined;
+
+		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
+		return primaryHeaders.find((header) => header.key === cellKey);
 	}
 
 	/**
@@ -629,7 +593,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
 		// Skip rendering if the column is not visible
 		const columnSetting = this.getColumnSettings(cell);
-		if (columnSetting && !columnSetting.visible) {
+		if (columnSetting && columnSetting.visible === false) {
 			return '';
 		}
 
@@ -652,7 +616,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowSpan={cell.rowSpan}
 					style={{
 						textAlign: cell.textAlign,
-						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
+						width: columnSetting?.width || cell.width,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -697,14 +661,17 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	/**
-	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
+	 * Calculates and returns the minimum width for a table based on its header cells' visibility and widths.
 	 *
 	 * @return {string} The minimum width of the table as a string. If `_minWidth` is set to 'auto', the width is
 	 * calculated based on the total visible column widths in characters. Otherwise, it returns the greater value
 	 * between `_minWidth` and the calculated total visible column widths.
 	 */
 	private getTableMinWidth(): string {
-		const totalColumnWidth = this.state._tableSettings?.columns.filter((col) => col.visible).reduce((total, col) => total + (col.width ?? 0), 0) ?? 0;
+		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
+		const totalColumnWidth = primaryHeaders
+			.filter((header) => header.visible !== false)
+			.reduce((total, header) => total + (header.width ? parseInt(header.width, 10) : 0), 0);
 		return this.state._minWidth === 'auto' ? `${totalColumnWidth}ch` : `max(${this.state._minWidth}, ${totalColumnWidth}ch)`;
 	}
 
@@ -799,7 +766,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		// Skip rendering if the column is not visible
 		const columnSettings = this.getColumnSettings(cell);
-		if (columnSettings && !columnSettings.visible) {
+		if (columnSettings && columnSettings.visible === false) {
 			return '';
 		}
 
@@ -834,7 +801,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
 				style={{
-					width: columnSettings?.width ? `${columnSettings.width}ch` : cell.width,
+					width: columnSettings?.width || cell.width,
 				}}
 				aria-sort={ariaSort}
 				data-sort={`sort-${cell.sortDirection}`}
@@ -906,7 +873,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return (
 			<div class="kol-table">
-				<KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />
+				<KolTableSettingsWcTag _headerCells={this.state._headerCells.horizontal || []} />
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`

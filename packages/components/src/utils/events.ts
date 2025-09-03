@@ -7,6 +7,7 @@ enum KolEvent {
 	close = 'kolClose',
 	create = 'kolCreate',
 	focus = 'kolFocus',
+	headerCellsChange = 'kolHeaderCellsChange',
 	input = 'kolInput',
 	mousedown = 'kolMousedown',
 	reset = 'kolReset',
