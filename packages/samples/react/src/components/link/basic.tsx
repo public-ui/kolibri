@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolLink, KolHeading } from '@public-ui/react';
+import { KolLink, KolHeading } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkBasic: FC = () => (

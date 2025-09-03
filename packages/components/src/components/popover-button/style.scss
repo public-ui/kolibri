@@ -3,5 +3,7 @@
 @use '../@shared/kol-popover-button-mixin' as *;
 @use '../tooltip/style' as *;
 
-@include kol-button-styles('kol-button');
-@include kol-popover-button-styles;
+@layer kol-component {
+	@include kol-button-styles('kol-button');
+	@include kol-popover-button-styles;
+}

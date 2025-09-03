@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useRef } from 'react';
 
-import { KolForm, KolInputPassword } from '@public-ui/react';
+import { KolForm, KolInputPassword } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputPasswordShowPassword: FC = () => {

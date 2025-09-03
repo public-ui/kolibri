@@ -1,7 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	DisabledPropType,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
@@ -10,6 +13,8 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
+	PlaceholderPropType,
+	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectAPI,
@@ -18,13 +23,11 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
 import clsx from 'clsx';
 import { KolIconTag } from '../../core/component-names';
+import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
@@ -35,7 +38,6 @@ import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggest
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
-import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import { SingleSelectController } from './controller';
 
 /**
@@ -58,12 +60,18 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -105,6 +113,24 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._hasOpened = false;
 	}
 
+	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
+		const event = new CustomEvent<EventDetail>(type, {
+			bubbles: true,
+			detail,
+		});
+
+		if (this.refInput) {
+			Object.defineProperty(event, 'target', {
+				value: this.refInput,
+			});
+
+			Object.defineProperty(event, 'currentTarget', {
+				value: this.refInput,
+			});
+		}
+		return event;
+	}
+
 	private clearSelection() {
 		const isDisabled = this.state._disabled === true;
 		if (isDisabled) {
@@ -116,30 +142,35 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
 
-			this.controller.onFacade.onInput(
-				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				true,
-				{ value: emptyValue },
-			);
-			this.controller.onFacade.onChange(
-				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				{ value: emptyValue },
-			);
+			const inputEvent = this.createEventWithTarget('input', {
+				name: this.state._name as string,
+				value: emptyValue,
+			});
+			const changeEvent = this.createEventWithTarget('change', {
+				name: this.state._name as string,
+				value: emptyValue,
+			});
+
+			this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
+			this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 		}
 	}
 
 	private selectOption(option: Option<string>) {
 		this._value = option.value;
 		this._inputValue = option.label as string;
-		this.controller.onFacade.onInput(
-			new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: option.value } }),
-			false,
-			option.value,
-		);
-		this.controller.onFacade.onChange(
-			new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: option.value } }),
-			option.value,
-		);
+
+		const inputEvent = this.createEventWithTarget('input', {
+			name: this.state._name ?? '',
+			value: option.value,
+		});
+		const changeEvent = this.createEventWithTarget('change', {
+			name: this.state._name ?? '',
+			value: option.value,
+		});
+
+		this.controller.onFacade.onInput(inputEvent, false, option.value);
+		this.controller.onFacade.onChange(changeEvent, option.value);
 
 		this._filteredOptions = [...this.state._options];
 
@@ -583,7 +614,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
+	public validatePlaceholder(value?: PlaceholderPropType): void {
 		this.controller.validatePlaceholder(value);
 	}
 
@@ -650,7 +681,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 

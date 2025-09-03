@@ -2,14 +2,14 @@
 @use '../../styles/kol-alert-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-alert;
-
 @layer kol-component {
+	@include kol-alert;
+
 	:host {
 		display: flex;
-		flex-direction: column;
 		position: fixed;
 		z-index: 200;
+		flex-direction: column;
 	}
 
 	.kol-toast-container {

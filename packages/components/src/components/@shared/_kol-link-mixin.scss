@@ -2,40 +2,37 @@
 @use '../tooltip/style' as *;
 
 @mixin kol-link-styles($block-classname) {
-	@layer kol-component {
-		:host {
-			// Causing linebreak, when removed
-			display: inline-block;
+	:host {
+		// Causing linebreak, when removed
+		display: inline-block;
+	}
+
+	.#{$block-classname} {
+		$root: &;
+		display: inline-flex;
+
+		align-items: baseline;
+		place-items: center;
+		text-align: left;
+		text-decoration-line: none;
+
+		&--standalone {
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
 		}
 
-		.#{$block-classname} {
-			$root: &;
-
-			align-items: baseline;
-			display: inline-flex;
-			place-items: center;
-			text-align: left;
-			text-decoration-line: none;
-
-			&--standalone {
-				min-height: var(--a11y-min-size);
-				min-width: var(--a11y-min-size);
-			}
-
-			&__text {
-				.kol-span__label {
-					text-decoration-line: underline;
-
-					@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
-						text-decoration-thickness: 0.2em;
-					}
+		&__text {
+			.kol-span__label {
+				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+					text-decoration-thickness: 0.2em;
 				}
+				text-decoration-line: underline;
 			}
+		}
 
-			&__icon {
-				display: inline-flex;
-				margin-left: to-rem(8);
-			}
+		&__icon {
+			display: inline-flex;
+			margin-left: to-rem(8);
 		}
 	}
 }

@@ -10,10 +10,11 @@
 		$root: &;
 
 		&__text {
-			font-weight: 700;
 			border-style: solid;
-			border-width: var(--border-width);
 			border-radius: var(--border-radius);
+			border-width: var(--border-width);
+
+			font-weight: 700;
 		}
 
 		&:focus {
@@ -78,27 +79,27 @@
 		}
 
 		&__text {
+			color: var(--text-color);
 			background-color: var(--text-background-color);
 			border-color: var(--text-border-color);
-			color: var(--text-color);
+			min-width: var(--a11y-min-size);
 
 			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
 			padding: to-rem(8) to-rem(14);
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 
 			&:hover {
-				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
-				background-color: var(--text-background-color);
-				border-color: var(--text-border-color);
 				color: var(--text-color);
+				background-color: var(--text-background-color);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-color: var(--text-border-color);
 			}
 
 			@at-root #{$root}--hide-label & {
-				padding: to-rem(12);
 				width: unset;
+				padding: to-rem(12);
 
 				.kol-span__label {
 					display: none;
@@ -111,10 +112,10 @@
 			}
 
 			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
-				background-color: var(--text-background-color);
-				border-color: var(--text-border-color);
 				color: var(--text-color);
+				background-color: var(--text-background-color);
 				box-shadow: none;
+				border-color: var(--text-border-color);
 			}
 		}
 	}

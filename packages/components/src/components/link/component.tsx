@@ -45,9 +45,9 @@ import {
 	validateLinkCallbacks,
 	validateLinkTarget,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
 } from '../../schema';
+import { validateTabIndex } from '../../schema/props/tab-index';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -81,6 +81,9 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		this.anchorRef = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -162,7 +165,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._buttonVariant as string}`]: this.state._role === 'button' && this.state._buttonVariant !== 'custom',
+						[`kol-link--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
 						[`kol-link--${this.state._linkVariant as string}`]: this.state._linkVariant,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,

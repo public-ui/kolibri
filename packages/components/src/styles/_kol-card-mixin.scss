@@ -1,18 +1,16 @@
 @use '../components/@shared/mixins' as *;
 
 @mixin kol-card {
-	@layer kol-component {
-		.kol-card {
-			height: 100%;
-			position: relative;
-			/* Visible with forced colors  */
-			outline: transparent solid to-rem(1);
+	.kol-card {
+		/* Visible with forced colors  */
+		outline: transparent solid to-rem(1);
+		position: relative;
+		height: 100%;
 
-			&__close-button {
-				position: absolute;
-				top: 0;
-				right: 0;
-			}
+		&__close-button {
+			position: absolute;
+			top: 0;
+			right: 0;
 		}
 	}
 }

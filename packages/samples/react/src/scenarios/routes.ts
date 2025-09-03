@@ -8,6 +8,7 @@ import { InputsGetValue } from './inputs-get-value';
 import { PerformanceTest } from './performance-test';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
 import { StaticForm } from './static-form';
+import { SampleFormWithValidation } from './sample-form-with-validation';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { TooltipPositioning } from './tooltip-positioning';
 
@@ -22,6 +23,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'performance-test': PerformanceTest,
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'static-form': StaticForm,
+		'sample-form-with-validation': SampleFormWithValidation,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'tooltip-positioning': TooltipPositioning,
 	},

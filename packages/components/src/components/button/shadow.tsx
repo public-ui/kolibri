@@ -35,12 +35,18 @@ export class KolButton implements ButtonProps, FocusableElement {
 		this.buttonWcRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();
@@ -63,7 +69,6 @@ export class KolButton implements ButtonProps, FocusableElement {
 				_label={this._label}
 				_name={this._name}
 				_on={this._on}
-				_role={this._role}
 				_shortKey={this._shortKey}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tooltipAlign={this._tooltipAlign}
@@ -145,6 +150,8 @@ export class KolButton implements ButtonProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 

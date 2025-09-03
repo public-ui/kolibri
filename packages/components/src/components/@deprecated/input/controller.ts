@@ -18,23 +18,23 @@ import type {
 } from '../../../schema';
 import {
 	a11yHint,
-	a11yHintDisabled,
 	devHint,
 	objectObjectHandler,
 	parseJson,
 	setState,
 	validateAccessKey,
 	validateAdjustHeight,
+	validateDisabled,
 	validateHideMsg,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
+	validateHint,
 	validateShortKey,
-	validateTabIndex,
 	validateTooltipAlign,
-	watchBoolean,
 	watchString,
 } from '../../../schema';
+import { validateTabIndex } from '../../../schema/props/tab-index';
 
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
@@ -66,10 +66,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateDisabled(value?: DisabledPropType): void {
-		watchBoolean(this.component, '_disabled', value);
-		if (value === true) {
-			a11yHintDisabled();
-		}
+		validateDisabled(this.component, value);
 	}
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this.component, value);
@@ -100,7 +97,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateHint(value?: HintPropType): void {
-		watchString(this.component, '_hint', value);
+		validateHint(this.component, value);
 	}
 
 	public validateId(value?: string): void {

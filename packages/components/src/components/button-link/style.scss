@@ -2,4 +2,10 @@
 @use '../../styles/global' as *;
 @use '../@shared/kol-link-mixin' as *;
 
-@include kol-link-styles('kol-button');
+@layer kol-component {
+	@include kol-link-styles('kol-button');
+
+	.kol-button--inline {
+		min-height: unset; // Inline links may have the height of the flowing text and do not necessarily have to be 44px high.
+	}
+}

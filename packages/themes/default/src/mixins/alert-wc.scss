@@ -7,27 +7,28 @@
 
 @mixin kol-input-error-with-kol-alert-wc-error($color: null) {
 	color: var($color);
+
 	font-weight: 700;
 }
 
 @mixin kol-alert-theme {
 	.kol-alert {
 		$root: &;
+		background-color: var(--color-light);
 
 		display: flex;
 		width: 100%;
 		overflow: unset;
-		background-color: var(--color-light);
 
 		&--variant-msg {
 			align-items: start;
 		}
 
 		&--variant-card {
-			border-radius: var(--border-radius);
-			border: var(--border-width) solid var(--alert-accent-color);
 			filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
+			border-radius: var(--border-radius);
 			flex-direction: column;
+			border: var(--border-width) solid var(--alert-accent-color);
 		}
 
 		&--type-default {
@@ -56,8 +57,8 @@
 			place-items: center;
 
 			@at-root #{$root}--variant-card & {
-				padding: to-rem(8) to-rem(16);
 				background-color: var(--alert-accent-color);
+				padding: to-rem(8) to-rem(16);
 			}
 		}
 
@@ -76,9 +77,9 @@
 
 			.kol-button {
 				border-radius: 50%; // visible on focus
-				cursor: pointer;
-				height: var(--a11y-min-size);
 				width: var(--a11y-min-size);
+				height: var(--a11y-min-size);
+				cursor: pointer;
 
 				@at-root #{$root}--variant-msg & {
 					color: var(--alert-accent-color);
@@ -101,9 +102,10 @@
 			}
 
 			@at-root #{$root}--variant-card & {
-				width: 100%;
 				color: var(--color-light);
 				display: flex;
+				width: 100%;
+
 				font-size: to-rem(20);
 				line-height: 1;
 			}
@@ -123,8 +125,8 @@
 			}
 
 			@at-root #{$root}--variant-card & {
-				justify-self: right;
 				margin-top: to-rem(-4);
+				justify-self: right;
 			}
 		}
 

@@ -9,8 +9,8 @@
 		gap: to-rem(4);
 
 		&--error:not(&--hide-msg) {
-			border-left: 3px solid var(--color-danger);
 			padding-left: to-rem(16);
+			border-left: 3px solid var(--color-danger);
 
 			.kol-form-field__msg {
 				&.kol-alert--type-error {

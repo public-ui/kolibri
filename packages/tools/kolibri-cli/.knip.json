@@ -1,6 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"ignoreDependencies": ["@public-ui/components", "loglevel", "mocha"],
+	"ignoreDependencies": ["@public-ui/components", "loglevel"],
 	"project": ["src/**/*.ts"],
 	"rules": {
 		"classMembers": "warn"

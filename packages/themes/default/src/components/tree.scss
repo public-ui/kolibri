@@ -3,8 +3,8 @@
 @layer kol-theme-component {
 	.kol-tree {
 		&__treeview-navigation {
-			border: 2px solid transparent;
 			border-radius: var(--border-radius);
+			border: 2px solid transparent;
 		}
 
 		&:focus-within {

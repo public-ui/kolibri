@@ -5,11 +5,11 @@
 @use '../@shared/mixins' as *;
 @use '../host-display-block' as *;
 
-@include kol-alert;
-@include kol-form-field;
-@include kol-input-container;
-
 @layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+
 	.kol-textarea {
 		width: 100%;
 

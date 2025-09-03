@@ -1,0 +1,12 @@
+/*
+ * This file defines the layer order for all CSS layers used in KoliBri.
+ * The order is important as it determines the cascade priority.
+ *
+ * Layer order (lowest to highest priority):
+ * 1. kol-a11y - Accessibility defaults and requirements
+ * 2. kol-global - Global component styles and resets
+ * 3. kol-component - Component-specific styles
+ * 4. kol-theme-global - Theme-specific global styles
+ * 5. kol-theme-component - Theme-specific component styles
+ */
+@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component;

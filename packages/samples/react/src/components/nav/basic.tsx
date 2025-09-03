@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react';
+import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';
 

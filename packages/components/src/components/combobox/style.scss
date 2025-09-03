@@ -8,10 +8,12 @@
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-alert;
-@include kol-custom-suggestions-option;
-@include kol-custom-suggestions-options-group;
-@include kol-custom-suggestions-toggle;
-@include kol-form-field;
-@include kol-input-container;
-@include kol-input;
+@layer kol-component {
+	@include kol-alert;
+	@include kol-custom-suggestions-option;
+	@include kol-custom-suggestions-options-group;
+	@include kol-custom-suggestions-toggle;
+	@include kol-form-field;
+	@include kol-input-container;
+	@include kol-input;
+}

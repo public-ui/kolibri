@@ -1,16 +1,25 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
+	@keyframes fadeInOpacity {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
 	.kol-popover {
-		height: 0;
 		position: absolute;
+		height: 0;
 
 		&__content {
-			background-color: #fff;
-			min-height: max-content;
-			min-width: max-content;
 			opacity: 0;
+			background-color: #fff;
 			position: absolute;
+			min-width: max-content;
+			min-height: max-content;
 
 			&--visible {
 				animation: 0.3s ease-in forwards fadeInOpacity;
@@ -22,22 +31,12 @@
 		}
 
 		&__arrow {
-			background-color: inherit;
-			height: var(--font-size);
-			position: absolute;
 			rotate: 0.125turn;
-			width: var(--font-size);
+			background-color: inherit;
+			position: absolute;
 			z-index: -1;
-		}
-	}
-
-	@keyframes fadeInOpacity {
-		0% {
-			opacity: 0;
-		}
-
-		100% {
-			opacity: 1;
+			width: var(--font-size);
+			height: var(--font-size);
 		}
 	}
 }

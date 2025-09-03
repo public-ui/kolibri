@@ -3,9 +3,9 @@
 @use '../@shared/mixins' as *;
 @use '../tooltip/style.scss' as *;
 
-@include kol-card;
-
 @layer kol-component {
+	@include kol-card;
+
 	.kol-drawer {
 		$root: &;
 
@@ -42,8 +42,8 @@
 			}
 
 			&--top {
-				left: 0;
 				top: 0;
+				left: 0;
 				width: 100vw;
 				max-width: 100%;
 
@@ -53,8 +53,8 @@
 			}
 
 			&--bottom {
-				left: 0;
 				bottom: 0;
+				left: 0;
 				width: 100vw;
 				max-width: 100%;
 

@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 
-import { KolHeading } from '@public-ui/react';
+import { KolHeading } from '@public-ui/react-v19';
 
 import type { FormValues } from './AppointmentForm';
 

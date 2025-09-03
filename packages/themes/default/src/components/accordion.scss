@@ -4,15 +4,19 @@
 
 @layer kol-theme-component {
 	.kol-accordion {
+		display: grid;
 		width: 100%;
 		height: 100%;
-		display: grid;
+
+		&:focus-within {
+			@include focus-outline;
+		}
 
 		&__content {
 			margin: 0;
-			padding-left: 2.25em;
-			padding-bottom: to-rem(12);
 			padding-right: to-rem(8);
+			padding-bottom: to-rem(12);
+			padding-left: 2.25em;
 		}
 
 		&__heading {
@@ -20,12 +24,12 @@
 		}
 
 		&__heading-button {
+			border-radius: var(--border-radius);
 			display: flex;
+			min-height: to-rem(35.2);
+			cursor: pointer;
 
 			&:focus-within {
-				@include focus-outline;
-				cursor: pointer;
-
 				.kol-button {
 					outline: 0;
 				}
@@ -34,15 +38,12 @@
 			.kol-span {
 				&__container {
 					display: flex;
+					gap: 0.5em;
 					place-items: baseline center;
 					text-align: left;
-					gap: 0.5em;
 					@include kol-typography-accordion;
 				}
 			}
-
-			border-radius: var(--border-radius);
-			min-height: to-rem(35.2);
 
 			.kol-button {
 				padding: to-rem(12) to-rem(8);

@@ -1,16 +1,16 @@
 import React from 'react';
-import { KolAlert } from '@public-ui/react';
+import { KolAlert } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import type { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';
+import type { AlertTypePropType, AlertVariantPropType, HeadingLevel } from '@public-ui/components';
 import { SampleDescription } from '../SampleDescription';
 
 type PropsByType = {
 	level: HeadingLevel;
-	type: AlertType;
-	variant: AlertVariant;
+	type: AlertTypePropType;
+	variant: AlertVariantPropType;
 };
 type PropsBasic = {
-	variant?: AlertVariant;
+	variant?: AlertVariantPropType;
 };
 
 const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (

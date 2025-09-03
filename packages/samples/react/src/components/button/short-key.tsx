@@ -1,4 +1,4 @@
-import { createReactRenderElement, KolButton, KolHeading, KolTableStateful } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import { useRef } from 'react';
 import React from 'react';

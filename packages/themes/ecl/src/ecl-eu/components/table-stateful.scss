@@ -14,8 +14,6 @@
 		}
 
 		&__pagination {
-			overflow-x: auto;
-			overflow-y: hidden;
 			gap: to-rem(16);
 			grid-auto-flow: column;
 		}

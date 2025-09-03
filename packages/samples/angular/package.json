@@ -11,12 +11,12 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@angular/animations": "20.0.3",
-		"@angular/common": "20.0.3",
-		"@angular/compiler": "20.0.3",
-		"@angular/core": "20.0.3",
-		"@angular/platform-browser": "20.0.3",
-		"@angular/router": "20.0.3",
+		"@angular/animations": "20.2.1",
+		"@angular/common": "20.2.1",
+		"@angular/compiler": "20.2.1",
+		"@angular/core": "20.2.1",
+		"@angular/platform-browser": "20.2.1",
+		"@angular/router": "20.2.1",
 		"@public-ui/angular-v20": "workspace:*",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/themes": "workspace:*",
@@ -25,22 +25,22 @@
 		"zone.js": "0.15.1"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "20.0.2",
-		"@angular/cli": "20.0.2",
-		"@angular/compiler-cli": "20.0.3",
-		"@types/jasmine": "5.1.8",
-		"@tailwindcss/postcss": "4.1.10",
-		"adopted-style-sheets": "1.1.9-rc.19",
-		"cpy-cli": "5.0.0",
+		"@angular-devkit/build-angular": "20.2.0",
+		"@angular/cli": "20.2.0",
+		"@angular/compiler-cli": "20.2.1",
+		"@types/jasmine": "5.1.9",
+		"@tailwindcss/postcss": "4.1.12",
+		"adopted-style-sheets": "1.1.9-rc.20",
+		"cpy-cli": "6.0.0",
 		"karma-jasmine": "5.1.0",
 		"karma-chrome-launcher": "3.2.0",
 		"karma-jasmine-html-reporter": "2.1.0",
 		"karma-coverage": "2.2.1",
-		"jasmine-core": "5.8.0",
-		"knip": "5.61.0",
-		"postcss": "8.5.5",
-		"prettier": "3.5.3",
+		"jasmine-core": "5.9.0",
+		"knip": "5.63.0",
+		"postcss": "8.5.6",
+		"prettier": "3.6.2",
 		"tailwindcss": "3.4.17",
-		"typescript": "5.8.3"
+		"typescript": "5.9.2"
 	}
 }

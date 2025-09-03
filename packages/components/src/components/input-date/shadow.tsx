@@ -5,13 +5,16 @@ import clsx from 'clsx';
 import type {
 	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputDateAPI,
 	InputDateStates,
-	InputDateType,
+	InputDateTypePropType,
 	InputTypeOnDefault,
 	Iso8601,
 	LabelWithExpertSlotPropType,
@@ -19,14 +22,12 @@ import type {
 	NamePropType,
 	NumberString,
 	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
 
@@ -59,18 +60,27 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Returns the current value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | Date | undefined | null> {
 		return this.inputRef && this.remapValue(this.inputRef?.value);
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Resets the component's value.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {
@@ -298,7 +308,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type: InputDateType = 'date';
+	@Prop() public _type: InputDateTypePropType = 'date';
 
 	/**
 	 * Defines the value of the input.
@@ -400,7 +410,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_required')
-	public validateRequired(value?: boolean): void {
+	public validateRequired(value?: RequiredPropType): void {
 		this.controller.validateRequired(value);
 	}
 
@@ -435,7 +445,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_type')
-	public validateType(value?: InputDateType): void {
+	public validateType(value?: InputDateTypePropType): void {
 		this.controller.validateType(value);
 	}
 

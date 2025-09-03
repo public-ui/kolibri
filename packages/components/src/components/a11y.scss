@@ -1,28 +1,22 @@
+@use './layer-order' as *;
 @use './@shared/mixins' as *;
 
 /*
  * This file contains all rules for accessibility.
  */
-@layer kol-global {
+@layer kol-a11y {
 	:host {
 		/*
 		 * Minimum size of interactive elements.
 		 */
 		--a11y-min-size: #{to-rem(44)};
+		color: black;
 		/*
 		 * No element should be used without a background and font color whose contrast ratio has
 		 * not been checked. By initially setting the background color to white and the font color
 		 * to black, the contrast ratio is ensured and explicit adjustment is forced.
 		 */
 		background-color: white;
-		color: black;
-	}
-
-	* {
-		/*
-		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-		 */
-		hyphens: auto;
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.
 		 */
@@ -32,13 +26,20 @@
 		 */
 		letter-spacing: inherit;
 		/*
-		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-		 */
-		word-break: break-word;
-		/*
 		 * Word spacing is required for all texts.
 		 */
 		word-spacing: inherit;
+	}
+
+	* {
+		/*
+		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
+		 */
+		hyphens: auto;
+		/*
+		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
+		 */
+		word-break: break-word;
 	}
 
 	/*
@@ -48,11 +49,10 @@
 	/* option, */
 	/* select, */
 	/* textarea, */
-	[role='button'],
-	button:not([role='link']),
+	button,
 	.kol-input .input {
-		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 	}
 
 	/*
@@ -78,21 +78,29 @@
 		 * All elements should inherit the font size from his parent element.
 		 */
 		font-size: inherit;
+		/*
+		 * Letter spacing is required for all texts.
+		 */
+		letter-spacing: inherit;
+		/*
+		 * Word spacing is required for all texts.
+		 */
+		word-spacing: inherit;
 	}
-}
 
-/**
- * Sometimes we need the semantic element for accessibility reasons,
- * but we don't want to show it.
- *
- * - https://www.a11yproject.com/posts/how-to-hide-content/
- */
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+	/**
+	* Sometimes we need the semantic element for accessibility reasons,
+	* but we don't want to show it.
+	*
+	* - https://www.a11yproject.com/posts/how-to-hide-content/
+	*/
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+
+		white-space: nowrap;
+		clip-path: inset(50%);
+	}
 }

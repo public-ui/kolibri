@@ -1,13 +1,12 @@
-import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
-import { setState, validateLabel, watchString } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import clsx from 'clsx';
+import { KolCardWcTag } from '../../core/component-names';
+import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
+import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
-import { KolButtonWcTag } from '../../core/component-names';
-import { translate } from '../../i18n';
-import clsx from 'clsx';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -24,7 +23,6 @@ import clsx from 'clsx';
 export class KolModal implements ModalAPI {
 	@Element() private readonly host?: HTMLKolModalElement;
 	private refDialog?: HTMLDialogElement;
-	private readonly translateClose = translate('kol-close');
 
 	public disconnectedCallback(): void {
 		void this.closeModal();
@@ -37,12 +35,18 @@ export class KolModal implements ModalAPI {
 		}
 	}
 
+	/**
+	 * Opens the modal dialog.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async openModal() {
 		this.refDialog?.showModal();
 	}
 
+	/**
+	 * Closes the modal dialog.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {
@@ -51,7 +55,7 @@ export class KolModal implements ModalAPI {
 	}
 
 	private readonly on = {
-		onClick: async () => {
+		onClose: async () => {
 			await this.closeModal();
 		},
 	};
@@ -59,34 +63,24 @@ export class KolModal implements ModalAPI {
 	public render(): JSX.Element {
 		return (
 			<dialog
-				class={clsx('kol-modal', { 'kol-modal__card': this.state._variant === 'card' })}
+				aria-label={this.state._label}
+				class={clsx('kol-modal', {
+					'kol-modal__blank': this.state._variant === 'blank',
+					'kol-modal__card': this.state._variant === 'card',
+				})}
+				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;
 				}}
 				style={{
 					width: this.state._width,
 				}}
-				aria-label={this.state._label}
-				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
-				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
-				<div tabindex="-1">
-					<slot />
-				</div>
+				{this.state._variant === 'blank' && <slot />}
 				{this.state._variant === 'card' && (
-					<KolButtonWcTag
-						class="kol-modal__close-button"
-						data-testid="modal-close-button"
-						_hideLabel
-						_icons={{
-							left: {
-								icon: 'codicon codicon-close',
-							},
-						}}
-						_label={this.translateClose}
-						_on={this.on}
-						_tooltipAlign="left"
-					></KolButtonWcTag>
+					<KolCardWcTag _label={this.state._label} _hasCloser _on={this.on}>
+						<slot />
+					</KolCardWcTag>
 				)}
 			</dialog>
 		);
@@ -137,9 +131,7 @@ export class KolModal implements ModalAPI {
 
 	@Watch('_width')
 	public validateWidth(value?: string): void {
-		watchString(this, '_width', value, {
-			defaultValue: '100%',
-		});
+		validateWidth(this, value);
 	}
 
 	@Watch('_variant')

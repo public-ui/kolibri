@@ -3,23 +3,21 @@
 @use '../components/tooltip/style' as *;
 
 @mixin kol-alert {
-	@layer kol-component {
-		.kol-alert {
-			display: grid;
+	.kol-alert {
+		display: grid;
 
-			&__container {
-				place-items: center;
-				display: flex;
-			}
+		&__container {
+			display: flex;
+			place-items: center;
+		}
 
-			&__container-content {
-				flex-grow: 1;
-			}
+		&__container-content {
+			flex-grow: 1;
+		}
 
-			&__closer {
-				/* Visible with forced colors */
-				outline: transparent solid to-rem(1);
-			}
+		&__closer {
+			/* Visible with forced colors */
+			outline: transparent solid to-rem(1);
 		}
 	}
 }

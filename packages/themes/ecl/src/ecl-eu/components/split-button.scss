@@ -2,10 +2,10 @@
 
 @layer kol-theme-component {
 	.kol-split-button {
-		border-style: solid;
-		border-width: 2px;
 		border-color: var(--color-blue);
+		border-style: solid;
 		border-radius: 4px;
+		border-width: 2px;
 
 		&__horizontal-line {
 			border: 0;

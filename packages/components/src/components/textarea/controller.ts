@@ -1,16 +1,27 @@
-import type { CSSResize, MaxLengthBehaviorPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
+import type {
+	HasCounterPropType,
+	MaxLengthBehaviorPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+	RowsPropType,
+	SpellCheckPropType,
+	TextareaProps,
+	TextareaResizePropType,
+	TextareaWatches,
+} from '../../schema';
 import {
-	cssResizeOptions,
 	validateHasCounter,
+	validateMaxLength,
 	validateMaxLengthBehavior,
+	validatePlaceholder,
+	validateReadOnly,
+	validateRequired,
+	validateResizeTextarea,
 	validateRows,
 	validateSpellCheck,
-	watchBoolean,
-	watchNumber,
 	watchString,
-	watchValidator,
 } from '../../schema';
-import type { HasCounterPropType } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -40,34 +51,25 @@ export class TextareaController extends InputIconController implements TextareaW
 	}
 
 	public validateMaxLength(value?: number): void {
-		watchNumber(this.component, '_maxLength', value, {
-			min: 0,
+		validateMaxLength(this.component, value, {
+			hooks: { afterPatch: this.afterSyncCharCounter },
 		});
 	}
 
-	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
+	public validatePlaceholder(value?: PlaceholderPropType): void {
+		validatePlaceholder(this.component, value);
 	}
 
-	public validateReadOnly(value?: boolean): void {
-		watchBoolean(this.component, '_readOnly', value);
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		validateReadOnly(this.component, value);
 	}
 
-	public validateResize(value?: CSSResize): void {
-		watchValidator(
-			this.component,
-			'_resize',
-			(value) => typeof value === 'string' && cssResizeOptions.includes(value),
-			new Set(`String {${cssResizeOptions.join(', ')}`),
-			value,
-			{
-				defaultValue: 'vertical',
-			},
-		);
+	public validateResize(value?: TextareaResizePropType): void {
+		validateResizeTextarea(this.component, value);
 	}
 
-	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+	public validateRequired(value?: RequiredPropType): void {
+		validateRequired(this.component, value);
 	}
 
 	public validateRows(value?: RowsPropType): void {

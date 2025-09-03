@@ -36,6 +36,9 @@ export class KolLink implements LinkProps, FocusableElement {
 		this.linkWcRef = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.linkWcRef?.kolFocus();
@@ -56,7 +59,6 @@ export class KolLink implements LinkProps, FocusableElement {
 				_label={this._label}
 				_linkVariant={this._variant}
 				_on={this._on}
-				_role={this._role}
 				_shortKey={this._shortKey}
 				_target={this._target}
 				_tooltipAlign={this._tooltipAlign}
@@ -129,6 +131,8 @@ export class KolLink implements LinkProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 

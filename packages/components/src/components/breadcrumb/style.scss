@@ -2,25 +2,25 @@
 @use '../@shared/kol-link-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-link-styles('kol-link');
-
 @layer kol-component {
+	@include kol-link-styles('kol-link');
+
 	.kol-breadcrumb {
 		&__list,
 		&__list-element {
+			display: flex;
 			margin: 0;
 			padding: 0;
-			list-style: none;
-			display: flex;
 			gap: 0.5em;
 			flex-wrap: wrap;
 			place-items: center;
+			list-style: none;
 		}
 
 		&__icon {
 			&::part(separator) {
-				font-weight: 900;
 				font-size: 0.7em;
+				font-weight: 900;
 			}
 
 			&::part(separator):before {

@@ -1,32 +1,30 @@
 @use './mixins' as *;
 
 @mixin kol-table-settings-styles {
-	@layer kol-component {
-		.kol-table-settings {
-			background: #fff;
-			position: absolute;
-			right: 0;
-			top: 0;
-			z-index: 1;
+	.kol-table-settings {
+		background: #fff;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 1;
 
-			&__columns-container {
-				margin-top: to-rem(16);
-				max-height: to-rem(200);
-				overflow: auto;
-			}
+		&__columns-container {
+			max-height: to-rem(200);
+			margin-top: to-rem(16);
+			overflow: auto;
+		}
 
-			&__columns {
-				align-items: center;
-				display: grid;
-				gap: to-rem(8);
-				grid-auto-rows: min-content;
-				grid-template-columns: min-content 1fr to-rem(100) auto auto;
-				overflow: hidden;
-			}
+		&__columns {
+			display: grid;
+			overflow: hidden;
+			gap: to-rem(8);
+			align-items: center;
+			grid-auto-rows: min-content;
+			grid-template-columns: min-content 1fr to-rem(100) auto auto;
+		}
 
-			&__column {
-				display: contents;
-			}
+		&__column {
+			display: contents;
 		}
 	}
 }

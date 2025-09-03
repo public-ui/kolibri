@@ -51,15 +51,27 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 1. For contributing, you need a [GitHub account](https://github.com/login)
 2. Fork [our repository](https://github.com/public-ui/kolibri) on GitHub
 3. Open your preferred command line interface
-4. Clone the forked repository to your local machine
+4. Clone the forked repository via HTTPS to your local machine. The VS Code GitHub extension can handle authentication.
 5. Navigate the project root directory
 6. Create a new branch for your changes
-7. [Install PNPM](https://pnpm.io/installation) on you local machine
-8. Install all packages with `pnpm i`
-9. Build all packages within the mono repository `pnpm -r build`
-10. Navigate to the desired package in our monorepo
-11. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
-12. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
+7. Install Node.js version 22
+8. [Install PNPM](https://pnpm.io/installation) on you local machine
+9. Install all packages with `pnpm i`
+10. Build all packages within the mono repository `pnpm -r build`
+11. Navigate to the desired package in our monorepo
+12. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
+13. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
+
+### VS Code Setup
+
+We recommend using [Visual Studio Code](https://code.visualstudio.com/):
+
+- Install the Prettier and ESLint extensions.
+- Enable "Format on Save" in your settings.
+
+### Tests
+
+All tests run via GitHub Actions when you open a pull request. Monitor them under the **Actions** tab.
 
 ### Develop new component
 

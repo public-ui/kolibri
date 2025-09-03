@@ -6,12 +6,12 @@
 @use '../../styles/kol-form-field-mixin' as *;
 @use '../../styles/kol-input-container-mixin' as *;
 
-@include kol-alert;
-@include kol-field-control;
-@include kol-form-field;
-@include kol-input-container;
-
 @layer kol-component {
+	@include kol-alert;
+	@include kol-field-control;
+	@include kol-form-field;
+	@include kol-input-container;
+
 	.kol-form-field {
 		--border-width: 2px;
 		--input-size: 1.5em;
@@ -39,32 +39,33 @@
 	.kol-input-radio {
 		display: flex;
 		position: relative;
-		cursor: pointer;
-		justify-content: center;
-		align-items: center;
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
 
 		&__input {
-			appearance: none;
-			border-width: var(--border-width);
 			border-style: solid;
 			border-radius: 100%;
-			cursor: pointer;
 			display: flex;
-			height: var(--input-size);
-			margin: 0;
-			min-height: var(--input-size);
-			min-width: var(--input-size);
-			padding: 0;
 			width: var(--input-size);
+			min-width: var(--input-size);
+			height: var(--input-size);
+			min-height: var(--input-size);
+			margin: 0;
+			padding: 0;
+			border-width: var(--border-width);
+			appearance: none;
+			cursor: pointer;
 
 			&:before {
 				border-radius: 100%;
-				content: '';
-				margin: auto;
-				height: calc(var(--input-size) / 2);
 				width: calc(var(--input-size) / 2);
+				height: calc(var(--input-size) / 2);
+				margin: auto;
+
+				content: '';
 			}
 
 			&:checked {

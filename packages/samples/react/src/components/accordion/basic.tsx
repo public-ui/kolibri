@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolAccordion } from '@public-ui/react';
+import { KolAccordion } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
