@@ -38,7 +38,7 @@ describe('SCSS migration tasks', () => {
 		assert.ok(content.includes('background: blue;'));
 		assert.ok(content.includes('margin: 5px;'));
 		// Should maintain the same formatting style (newlines around braces)
-		// assert.ok(content.includes('.new-block {\n\tbackground: blue;\n\tmargin: 5px;\n}'));
+		assert.ok(content.includes('.new-block {\n\tbackground: blue;\n\tmargin: 5px;\n}'));
 	});
 
 	it('adds selectors with consistent formatting for space-indented files', () => {
