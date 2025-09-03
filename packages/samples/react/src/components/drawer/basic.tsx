@@ -1,10 +1,9 @@
 import type { FC } from 'react';
-import React, { useRef, useState, useContext, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { HideMenusContext } from '../../shares/HideMenusContext';
 import type { AlignPropType } from '@public-ui/components';
-import { KolDrawer, KolButton, KolBadge } from '@public-ui/react-v19';
+import { KolButton, KolDrawer } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import { DrawerRadioAlign } from './partials/align';
@@ -12,7 +11,6 @@ import { DrawerRadioAlign } from './partials/align';
 export const DrawerBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultAlign = searchParams.get('align') as AlignPropType;
-	const hideMenus = useContext(HideMenusContext);
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 	const drawerModalElement = useRef<HTMLKolDrawerElement>(null);
 	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
@@ -23,7 +21,6 @@ export const DrawerBasic: FC = () => {
 	}, [defaultAlign]);
 	return (
 		<>
-			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 			<SampleDescription>
 				<p>
 					KolDrawer shows a dialog attached to one of the sides of the viewport, when opened. This sample illustrates the four alignments and the modal- and
