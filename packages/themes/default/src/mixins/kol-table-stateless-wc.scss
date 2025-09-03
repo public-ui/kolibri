@@ -30,23 +30,25 @@
 		}
 
 		table {
-			width: 100%;
-			border-width: 0;
-
 			border-color: var(--color-primary-variant);
 			border-style: solid;
+
+			width: 100%;
+			border-width: 0;
 			border-spacing: 0.1rem 0;
 		}
 
 		th,
 		thead td {
-			font-weight: normal;
 			color: var(--color-light);
+
 			background-color: var(--color-primary);
+			border-color: var(--color-light);
 			border-style: solid;
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
-			border-color: var(--color-light);
+
+			font-weight: normal;
 		}
 
 		th[aria-sort='ascending'] .button,
@@ -76,10 +78,10 @@
 		}
 
 		tbody td {
+			border-color: var(--color-primary);
 			border-style: solid;
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
-			border-color: var(--color-primary);
 		}
 
 		.input {
@@ -93,7 +95,9 @@
 					outline-color: var(--color-primary-variant);
 					outline-style: solid;
 					outline-width: 3px;
+
 					border-color: var(--color-primary);
+
 					outline-offset: 2px;
 				}
 
@@ -147,16 +151,18 @@
 		th .input {
 			input {
 				&:hover {
-					border-color: var(--color-light);
 					box-shadow: 0 2px 8px 2px rgb(255, 255, 255, 0.24);
+					border-color: var(--color-light);
 				}
 
 				&:focus {
-					border-color: var(--color-light);
 					outline-color: var(--color-mute-variant);
 					outline-style: solid;
-					outline-offset: 2px;
 					outline-width: 3px;
+
+					border-color: var(--color-light);
+
+					outline-offset: 2px;
 				}
 
 				&:focus:hover {
