@@ -12,16 +12,17 @@ import { AbstractTask, TaskOptions } from '../../abstract-task';
  * @returns {string} The content with the selector removed
  */
 function removeSelectorWithNestedBraces(content: string, selector: string): string {
-	// Find all CSS rule blocks (selector groups followed by braces)
-	const ruleRegex = /([^{}]+)\s*{/g;
-	let match;
 	let result = content;
 	let offset = 0;
+	let currentIndex = 0;
 
-	while ((match = ruleRegex.exec(content)) !== null) {
-		const selectorGroup = match[1].trim();
-		const ruleStart = match.index;
-		const openBraceIndex = match.index + match[0].length - 1;
+	while (currentIndex < content.length) {
+		// Find the next opening brace while properly handling strings and comments
+		const ruleStart = findNextRuleBlock(content, currentIndex);
+		if (ruleStart === -1) break;
+
+		const openBraceIndex = ruleStart.openBraceIndex;
+		const selectorGroup = content.substring(ruleStart.selectorStart, openBraceIndex).trim();
 
 		// Check if this selector group contains our target selector
 		const selectors = selectorGroup.split(',').map((s) => s.trim());
@@ -40,104 +41,235 @@ function removeSelectorWithNestedBraces(content: string, selector: string): stri
 		}
 
 		if (targetSelectorIndex === -1) {
-			// Target selector not found in this group, continue
+			// Target selector not found in this group, advance past this rule
+			currentIndex = findMatchingCloseBrace(content, openBraceIndex);
+			if (currentIndex === -1) break;
+			currentIndex++;
 			continue;
 		}
 
-		// Find the matching closing brace using brace counting
-		let braceCount = 1;
-		let currentIndex = openBraceIndex + 1;
-		let inString = false;
-		let stringChar = '';
-		let inComment = false;
-		let inSingleLineComment = false;
+		// Find the matching closing brace using the existing brace counting logic
+		const closeBraceIndex = findMatchingCloseBrace(content, openBraceIndex);
 
-		while (currentIndex < content.length && braceCount > 0) {
-			const char = content[currentIndex];
-			const nextChar = content[currentIndex + 1];
-
-			// Handle single-line comments
-			if (!inString && !inComment && char === '/' && nextChar === '/') {
-				inSingleLineComment = true;
-				currentIndex += 2;
-				continue;
-			}
-
-			if (inSingleLineComment) {
-				if (char === '\n' || char === '\r') {
-					inSingleLineComment = false;
-				}
-				currentIndex++;
-				continue;
-			}
-
-			// Handle multi-line comments
-			if (!inString && !inSingleLineComment && char === '/' && nextChar === '*') {
-				inComment = true;
-				currentIndex += 2;
-				continue;
-			}
-
-			if (inComment) {
-				if (char === '*' && nextChar === '/') {
-					inComment = false;
-					currentIndex += 2;
-					continue;
-				}
-				currentIndex++;
-				continue;
-			}
-
-			// Handle strings
-			if (!inComment && !inSingleLineComment && (char === '"' || char === "'")) {
-				if (!inString) {
-					inString = true;
-					stringChar = char;
-				} else if (char === stringChar && content[currentIndex - 1] !== '\\') {
-					inString = false;
-					stringChar = '';
-				}
-			}
-
-			// Count braces only when not in strings or comments
-			if (!inString && !inComment && !inSingleLineComment) {
-				if (char === '{') {
-					braceCount++;
-				} else if (char === '}') {
-					braceCount--;
-				}
-			}
-
-			currentIndex++;
+		if (closeBraceIndex === -1) {
+			// Malformed CSS, skip this rule
+			break;
 		}
 
-		if (braceCount === 0) {
-			let replacement: string;
+		let replacement: string;
 
-			if (selectors.length === 1) {
-				// Only one selector in the list, remove the entire rule block
-				replacement = `/* removed ${selector} */`;
-			} else {
-				// Multiple selectors, remove only the target selector
-				const remainingSelectors = selectors.filter((_, index) => index !== targetSelectorIndex);
-				const ruleContent = content.substring(openBraceIndex, currentIndex);
-				replacement = `${remainingSelectors.join(', ')} ${ruleContent}`;
-			}
-
-			// Adjust for previous replacements
-			const adjustedStart = ruleStart - offset;
-			const adjustedEnd = currentIndex - offset;
-
-			result = result.substring(0, adjustedStart) + replacement + result.substring(adjustedEnd);
-			const originalLength = currentIndex - ruleStart;
-			offset += originalLength - replacement.length;
+		if (selectors.length === 1) {
+			// Only one selector in the list, remove the entire rule block
+			replacement = `/* removed ${selector} */`;
+		} else {
+			// Multiple selectors, remove only the target selector
+			const remainingSelectors = selectors.filter((_, index) => index !== targetSelectorIndex);
+			const ruleContent = content.substring(openBraceIndex, closeBraceIndex + 1);
+			replacement = `${remainingSelectors.join(', ')} ${ruleContent}`;
 		}
 
-		// Reset regex lastIndex to continue searching
-		ruleRegex.lastIndex = currentIndex;
+		// Adjust for previous replacements
+		const adjustedStart = ruleStart.selectorStart - offset;
+		const adjustedEnd = closeBraceIndex + 1 - offset;
+
+		result = result.substring(0, adjustedStart) + replacement + result.substring(adjustedEnd);
+		const originalLength = closeBraceIndex + 1 - ruleStart.selectorStart;
+		offset += originalLength - replacement.length;
+
+		// Continue searching after this rule
+		currentIndex = closeBraceIndex + 1;
 	}
 
 	return result;
+}
+
+/**
+ * Finds the next CSS rule block while properly handling strings and comments.
+ * @param {string} content The CSS content to search
+ * @param {number} startIndex The index to start searching from
+ * @returns {object|number} Object with selectorStart and openBraceIndex, or -1 if no rule found
+ */
+function findNextRuleBlock(content: string, startIndex: number): { selectorStart: number; openBraceIndex: number } | -1 {
+	let currentIndex = startIndex;
+	let inString = false;
+	let stringChar = '';
+	let inComment = false;
+	let inSingleLineComment = false;
+	let potentialSelectorStart = -1;
+
+	while (currentIndex < content.length) {
+		const char = content[currentIndex];
+		const nextChar = content[currentIndex + 1];
+
+		// Handle single-line comments
+		if (!inString && !inComment && char === '/' && nextChar === '/') {
+			inSingleLineComment = true;
+			currentIndex += 2;
+			continue;
+		}
+
+		if (inSingleLineComment) {
+			if (char === '\n' || char === '\r') {
+				inSingleLineComment = false;
+			}
+			currentIndex++;
+			continue;
+		}
+
+		// Handle multi-line comments
+		if (!inString && !inSingleLineComment && char === '/' && nextChar === '*') {
+			inComment = true;
+			currentIndex += 2;
+			continue;
+		}
+
+		if (inComment) {
+			if (char === '*' && nextChar === '/') {
+				inComment = false;
+				currentIndex += 2;
+				continue;
+			}
+			currentIndex++;
+			continue;
+		}
+
+		// Handle strings
+		if (!inComment && !inSingleLineComment && (char === '"' || char === "'")) {
+			if (!inString) {
+				inString = true;
+				stringChar = char;
+			} else if (char === stringChar && content[currentIndex - 1] !== '\\') {
+				inString = false;
+				stringChar = '';
+			}
+		}
+
+		// Look for rule blocks only when not in strings or comments
+		if (!inString && !inComment && !inSingleLineComment) {
+			if (char === '{') {
+				// Found opening brace, find the start of this selector
+				if (potentialSelectorStart === -1) {
+					// Find the start of the selector by looking backwards for the previous rule end or start of content
+					potentialSelectorStart = findSelectorStart(content, currentIndex);
+				}
+				return {
+					selectorStart: potentialSelectorStart,
+					openBraceIndex: currentIndex,
+				};
+			} else if (char === '}') {
+				// End of a rule, reset potential selector start
+				potentialSelectorStart = -1;
+			} else if (potentialSelectorStart === -1 && /\S/.test(char)) {
+				// First non-whitespace character, potential start of a selector
+				potentialSelectorStart = currentIndex;
+			}
+		}
+
+		currentIndex++;
+	}
+
+	return -1;
+}
+
+/**
+ * Finds the start of a selector by looking backwards from an opening brace.
+ * @param {string} content The CSS content
+ * @param {number} openBraceIndex The index of the opening brace
+ * @returns {number} The index where the selector starts
+ */
+function findSelectorStart(content: string, openBraceIndex: number): number {
+	let index = openBraceIndex - 1;
+
+	// Skip whitespace before the opening brace
+	while (index >= 0 && /\s/.test(content[index])) {
+		index--;
+	}
+
+	// Find the start of the selector (after previous '}' or at beginning)
+	while (index >= 0) {
+		if (content[index] === '}') {
+			return index + 1;
+		}
+		index--;
+	}
+
+	return 0; // Start of content
+}
+
+/**
+ * Finds the matching closing brace for an opening brace, handling nested braces correctly.
+ * @param {string} content The CSS content
+ * @param {number} openBraceIndex The index of the opening brace
+ * @returns {number} The index of the matching closing brace, or -1 if not found
+ */
+function findMatchingCloseBrace(content: string, openBraceIndex: number): number {
+	let braceCount = 1;
+	let currentIndex = openBraceIndex + 1;
+	let inString = false;
+	let stringChar = '';
+	let inComment = false;
+	let inSingleLineComment = false;
+
+	while (currentIndex < content.length && braceCount > 0) {
+		const char = content[currentIndex];
+		const nextChar = content[currentIndex + 1];
+
+		// Handle single-line comments
+		if (!inString && !inComment && char === '/' && nextChar === '/') {
+			inSingleLineComment = true;
+			currentIndex += 2;
+			continue;
+		}
+
+		if (inSingleLineComment) {
+			if (char === '\n' || char === '\r') {
+				inSingleLineComment = false;
+			}
+			currentIndex++;
+			continue;
+		}
+
+		// Handle multi-line comments
+		if (!inString && !inSingleLineComment && char === '/' && nextChar === '*') {
+			inComment = true;
+			currentIndex += 2;
+			continue;
+		}
+
+		if (inComment) {
+			if (char === '*' && nextChar === '/') {
+				inComment = false;
+				currentIndex += 2;
+				continue;
+			}
+			currentIndex++;
+			continue;
+		}
+
+		// Handle strings
+		if (!inComment && !inSingleLineComment && (char === '"' || char === "'")) {
+			if (!inString) {
+				inString = true;
+				stringChar = char;
+			} else if (char === stringChar && content[currentIndex - 1] !== '\\') {
+				inString = false;
+				stringChar = '';
+			}
+		}
+
+		// Count braces only when not in strings or comments
+		if (!inString && !inComment && !inSingleLineComment) {
+			if (char === '{') {
+				braceCount++;
+			} else if (char === '}') {
+				braceCount--;
+			}
+		}
+
+		currentIndex++;
+	}
+
+	return braceCount === 0 ? currentIndex - 1 : -1;
 }
 
 export class ScssRemoveSelectorTask extends AbstractTask {
