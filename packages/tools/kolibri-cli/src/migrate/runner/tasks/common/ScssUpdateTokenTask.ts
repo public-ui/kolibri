@@ -33,7 +33,7 @@ export class ScssUpdateTokenTask extends AbstractTask {
 			throw logAndCreateError(`Token "${newToken}" must start with "$".`);
 		}
 
-		this.regExp = new RegExp(escapeRegExp(token) + '(?=\\b)', 'g');
+		this.regExp = new RegExp(escapeRegExp(token) + '(?=\\s|:|;|,|\\)|\\}|$)', 'g');
 	}
 
 	public static getInstance(
