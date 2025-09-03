@@ -484,6 +484,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.state._tableSettings.columns = primaryHeaders
 			.filter((header) => header.key) // only headers with a key are supported
 			.map((header, index) => ({
+				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
 				key: header.key ?? nonce(),
 				label: header.label,
 				position: index,
