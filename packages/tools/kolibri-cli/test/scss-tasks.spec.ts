@@ -10,8 +10,27 @@ import { ScssRenameModifierTask } from '../src/migrate/runner/tasks/common/ScssR
 import { ScssUpdateTokenTask } from '../src/migrate/runner/tasks/common/ScssUpdateTokenTask';
 
 describe('SCSS migration tasks', () => {
-	it('adds selectors when missing', () => {
+	let tempDirectories: string[] = [];
+
+	afterEach(() => {
+		// Clean up temporary directories created during tests
+		tempDirectories.forEach((tmpDir) => {
+			if (fs.existsSync(tmpDir)) {
+				fs.rmSync(tmpDir, { recursive: true, force: true });
+			}
+		});
+		tempDirectories = [];
+	});
+
+	// Helper function to create and track temporary directories
+	const createTempDir = (): string => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		tempDirectories.push(tmpDir);
+		return tmpDir;
+	};
+
+	it('adds selectors when missing', () => {
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '.block { color: red; }');
 
@@ -24,7 +43,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('adds selectors with consistent formatting for tab-indented files', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		// File using tabs with newlines around braces
 		const tabIndentedCSS = `.existing {\n\tcolor: red;\n\tpadding: 10px;\n}\n`;
@@ -42,7 +61,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('adds selectors with consistent formatting for space-indented files', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		// File using 2 spaces with newlines around braces
 		const spaceIndentedCSS = `.existing {\n  color: red;\n  padding: 10px;\n}\n`;
@@ -60,7 +79,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('adds selectors to empty files with default formatting', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '');
 
@@ -75,7 +94,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('does not duplicate existing selectors', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '.existing-block { color: red; }');
 
@@ -89,7 +108,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes selectors', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '.old { color: red; }');
 
@@ -102,7 +121,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes selectors with nested rules (media queries)', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		const complexCSS = `
 .old {
@@ -126,7 +145,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes selectors with nested selectors', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		const nestedCSS = `
 .old {
@@ -154,7 +173,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes selectors with comments and strings', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		const cssWithComments = `
 .old {
@@ -177,7 +196,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes multiple occurrences of the same selector', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		const multipleCSS = `
 .old { color: red; }
@@ -203,7 +222,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes individual selectors from comma-separated lists', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		const css = `.old, .keep {
   color: red;
@@ -238,7 +257,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('removes middle selector from comma-separated list', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		const css = `.first, .second, .third {
   color: blue;
@@ -259,7 +278,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('renames block selectors', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '.old-block { color: red; }');
 
@@ -271,7 +290,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('renames element selectors', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '.block__old { color: red; }');
 
@@ -283,7 +302,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('renames modifier selectors', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '.block--old { color: red; }');
 
@@ -295,7 +314,7 @@ describe('SCSS migration tasks', () => {
 	});
 
 	it('updates tokens', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tmpDir = createTempDir();
 		const scssPath = path.join(tmpDir, 'style.scss');
 		fs.writeFileSync(scssPath, '$old-color: red; .btn { color: $old-color; }');
 
