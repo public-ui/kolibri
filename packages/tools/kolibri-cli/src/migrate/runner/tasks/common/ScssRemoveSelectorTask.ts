@@ -5,31 +5,44 @@ import { filterFilesByExt, logAndCreateError, MODIFIED_FILES } from '../../../sh
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 /**
- * Escapes special characters for use in a regular expression.
- * @param {string} str String to escape
- * @returns {string} Escaped string
- */
-function escapeRegExp(str: string): string {
-	return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-/**
  * Finds and removes a CSS selector and its complete rule block, handling nested braces correctly.
+ * Also handles comma-separated selector lists.
  * @param {string} content The CSS content to process
  * @param {string} selector The selector to remove (must start with a dot)
  * @returns {string} The content with the selector removed
  */
 function removeSelectorWithNestedBraces(content: string, selector: string): string {
-	const escapedSelector = escapeRegExp(selector);
-	const selectorRegex = new RegExp(`${escapedSelector}\\s*\\{`, 'g');
-
+	// Find all CSS rule blocks (selector groups followed by braces)
+	const ruleRegex = /([^{}]+)\s*{/g;
 	let match;
 	let result = content;
 	let offset = 0;
 
-	while ((match = selectorRegex.exec(content)) !== null) {
-		const startIndex = match.index;
-		const openBraceIndex = match.index + match[0].length - 1; // Position of the opening brace
+	while ((match = ruleRegex.exec(content)) !== null) {
+		const selectorGroup = match[1].trim();
+		const ruleStart = match.index;
+		const openBraceIndex = match.index + match[0].length - 1;
+
+		// Check if this selector group contains our target selector
+		const selectors = selectorGroup.split(',').map((s) => s.trim());
+		let targetSelectorIndex = -1;
+
+		// First try exact match (for comma-separated lists)
+		targetSelectorIndex = selectors.findIndex((s) => s === selector);
+
+		// If no exact match, check if any selector contains our target as a class
+		if (targetSelectorIndex === -1) {
+			targetSelectorIndex = selectors.findIndex((s) => {
+				// Split by spaces to get individual parts of compound selectors
+				const parts = s.split(/\s+/);
+				return parts.includes(selector);
+			});
+		}
+
+		if (targetSelectorIndex === -1) {
+			// Target selector not found in this group, continue
+			continue;
+		}
 
 		// Find the matching closing brace using brace counting
 		let braceCount = 1;
@@ -99,20 +112,29 @@ function removeSelectorWithNestedBraces(content: string, selector: string): stri
 		}
 
 		if (braceCount === 0) {
-			// Found the complete rule block, remove it
-			const ruleBlock = content.substring(startIndex, currentIndex);
-			const replacement = `/* removed ${selector} */`;
+			let replacement: string;
+
+			if (selectors.length === 1) {
+				// Only one selector in the list, remove the entire rule block
+				replacement = `/* removed ${selector} */`;
+			} else {
+				// Multiple selectors, remove only the target selector
+				const remainingSelectors = selectors.filter((_, index) => index !== targetSelectorIndex);
+				const ruleContent = content.substring(openBraceIndex, currentIndex);
+				replacement = `${remainingSelectors.join(', ')} ${ruleContent}`;
+			}
 
 			// Adjust for previous replacements
-			const adjustedStart = startIndex - offset;
+			const adjustedStart = ruleStart - offset;
 			const adjustedEnd = currentIndex - offset;
 
 			result = result.substring(0, adjustedStart) + replacement + result.substring(adjustedEnd);
-			offset += ruleBlock.length - replacement.length;
+			const originalLength = currentIndex - ruleStart;
+			offset += originalLength - replacement.length;
 		}
 
 		// Reset regex lastIndex to continue searching
-		selectorRegex.lastIndex = currentIndex;
+		ruleRegex.lastIndex = currentIndex;
 	}
 
 	return result;

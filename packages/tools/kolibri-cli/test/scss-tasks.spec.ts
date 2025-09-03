@@ -202,6 +202,62 @@ describe('SCSS migration tasks', () => {
 		assert.equal(matches?.length, 2);
 	});
 
+	it('removes individual selectors from comma-separated lists', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const scssPath = path.join(tmpDir, 'style.scss');
+		const css = `.old, .keep {
+  color: red;
+  background: blue;
+}
+
+.another .old {
+  margin: 10px;
+}
+
+.old {
+  padding: 5px;
+}`;
+		fs.writeFileSync(scssPath, css);
+
+		const task = ScssRemoveSelectorTask.getInstance('.old', '^1');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(scssPath, 'utf8');
+
+		// The .keep should remain in the comma-separated list
+		assert.ok(content.includes('.keep {'));
+		assert.ok(content.includes('color: red;'));
+		assert.ok(content.includes('background: blue;'));
+
+		// The standalone .old selectors should be removed
+		assert.ok(content.includes('/* removed .old */'));
+
+		// Should not contain .old selectors anymore
+		assert.ok(!content.includes('.old {'));
+		assert.ok(!content.includes('.old,'));
+	});
+
+	it('removes middle selector from comma-separated list', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const scssPath = path.join(tmpDir, 'style.scss');
+		const css = `.first, .second, .third {
+  color: blue;
+}`;
+		fs.writeFileSync(scssPath, css);
+
+		const task = ScssRemoveSelectorTask.getInstance('.second', '^1');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(scssPath, 'utf8');
+
+		// The first and third should remain
+		assert.ok(content.includes('.first, .third {'));
+		assert.ok(content.includes('color: blue;'));
+
+		// Should not contain .second anymore
+		assert.ok(!content.includes('.second'));
+	});
+
 	it('renames block selectors', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const scssPath = path.join(tmpDir, 'style.scss');
