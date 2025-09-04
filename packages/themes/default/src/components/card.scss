@@ -3,4 +3,20 @@
 
 @layer kol-theme-component {
 	@include kol-card;
+
+	.kol-card__close-button {
+		background: transparent;
+		border: none;
+		color: inherit;
+		cursor: pointer;
+
+		&:focus-visible {
+			@include focus-outline;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: var(--kol-color-danger, red);
+		}
+	}
 }
