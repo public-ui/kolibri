@@ -10,6 +10,7 @@ executeSnapshotTests<TableStatelessProps>(
 	[
 		{
 			_label: 'Table with horizontal and vertical headers',
+			_hasSettingsMenu: true,
 			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [

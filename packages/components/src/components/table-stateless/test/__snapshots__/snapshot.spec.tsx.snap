@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-table-stateless-wc should render with _label="Table with horizontal and vertical headers" _minWidth="400px" _headerCells={"horizontal":[[{"key":"header1","label":"Header1","textAlign":"left"},{"key":"header2","label":"Header2","textAlign":"center"},{"key":"header3","label":"Header3","textAlign":"right"}]],"vertical":[[{"key":"row1","label":"Row 1","textAlign":"left"},{"key":"row2","label":"Row 2","textAlign":"center"},{"key":"row3","label":"Row 3","textAlign":"right"}]]} _data=[{"header1":"Cell 1.1","header2":"Cell 1.2","header3":"Cell 1.3"},{"header1":"Cell 2.1","header2":"Cell 2.2","header3":"Cell 2.3"},{"header1":"Cell 3.1","header2":"Cell 3.2","header3":"Cell 3.3"}] 1`] = `
+exports[`kol-table-stateless-wc should render with _label="Table with horizontal and vertical headers" _hasSettingsMenu=true _minWidth="400px" _headerCells={"horizontal":[[{"key":"header1","label":"Header1","textAlign":"left"},{"key":"header2","label":"Header2","textAlign":"center"},{"key":"header3","label":"Header3","textAlign":"right"}]],"vertical":[[{"key":"row1","label":"Row 1","textAlign":"left"},{"key":"row2","label":"Row 2","textAlign":"center"},{"key":"row3","label":"Row 3","textAlign":"right"}]]} _data=[{"header1":"Cell 1.1","header2":"Cell 1.2","header3":"Cell 1.3"},{"header1":"Cell 2.1","header2":"Cell 2.2","header3":"Cell 2.3"},{"header1":"Cell 3.1","header2":"Cell 3.2","header3":"Cell 3.3"}] 1`] = `
 <kol-table-stateless-wc>
   <div class="kol-table">
+    <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
       <table class="kol-table__table" style="min-width: max(400px, 0ch);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
