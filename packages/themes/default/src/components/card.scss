@@ -6,9 +6,9 @@
 	@include kol-card;
 
 	.kol-card__close-button {
+		color: inherit;
 		background: transparent;
 		border: none;
-		color: inherit;
 		cursor: pointer;
 
 		&:focus-visible {
