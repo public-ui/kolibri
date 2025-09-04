@@ -186,7 +186,7 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	@Watch('_hasSettingsMenu')
-	public validateHasSettingsMenuProp(value?: HasSettingsMenuPropType): void {
+	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
 		validateHasSettingsMenu(this, value);
 	}
 
@@ -402,7 +402,7 @@ export class KolTableStateful implements TableAPI {
 		this.validatePaginationPosition(this._paginationPosition);
 		this.validateSelection(this._selection);
 		this.validateTableSettings(this._tableSettings);
-		this.validateHasSettingsMenuProp(this._hasSettingsMenu);
+		this.validateHasSettingsMenu(this._hasSettingsMenu);
 	}
 
 	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {

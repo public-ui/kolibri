@@ -133,7 +133,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
 	@Watch('_hasSettingsMenu')
-	public validateHasSettingsMenuProp(value?: HasSettingsMenuPropType): void {
+	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
 		validateHasSettingsMenu(this, value);
 	}
 
@@ -514,7 +514,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateTableSettings(this._tableSettings);
-		this.validateHasSettingsMenuProp(this._hasSettingsMenu);
+		this.validateHasSettingsMenu(this._hasSettingsMenu);
 	}
 
 	/**
