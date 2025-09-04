@@ -130,7 +130,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType; // + ajoute
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
 	@Watch('_hasSettingsMenu')
 	public validateHasSettingsMenuProp(value?: HasSettingsMenuPropType): void {

@@ -4,6 +4,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
+	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
 	KoliBriSortDirection,
@@ -30,6 +31,7 @@ import {
 	parseJson,
 	setState,
 	validateAllowMultiSort,
+	validateHasSettingsMenu,
 	validateLabel,
 	validatePaginationPosition,
 	validateTableData,
@@ -129,6 +131,11 @@ export class KolTableStateful implements TableAPI {
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
 
+	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
 		_data: [],
@@ -146,6 +153,7 @@ export class KolTableStateful implements TableAPI {
 		},
 		_sortedData: [],
 		_paginationPosition: 'bottom',
+		_hasSettingsMenu: false,
 	};
 
 	@Watch('_allowMultiSort')
@@ -175,6 +183,11 @@ export class KolTableStateful implements TableAPI {
 	@Watch('_paginationPosition')
 	public validatePaginationPosition(value?: PaginationPositionPropType): void {
 		validatePaginationPosition(this, value);
+	}
+
+	@Watch('_hasSettingsMenu')
+	public validateHasSettingsMenuProp(value?: HasSettingsMenuPropType): void {
+		validateHasSettingsMenu(this, value);
 	}
 
 	/**
@@ -389,6 +402,7 @@ export class KolTableStateful implements TableAPI {
 		this.validatePaginationPosition(this._paginationPosition);
 		this.validateSelection(this._selection);
 		this.validateTableSettings(this._tableSettings);
+		this.validateHasSettingsMenuProp(this._hasSettingsMenu);
 	}
 
 	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {
@@ -567,6 +581,7 @@ export class KolTableStateful implements TableAPI {
 					}}
 					_selection={this.state._selection}
 					_tableSettings={this.state._tableSettings}
+					_hasSettingsMenu={this.state._hasSettingsMenu}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
