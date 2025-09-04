@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react",
-	"version": "3.0.4-rc.2",
+	"version": "3.0.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -60,10 +60,10 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-  	"@public-ui/components": "workspace:*",
-  	"react": ">=16.14.0 <19.0.0",
-  	"react-dom": ">=16.14.0 <19.0.0"
-  },
+		"@public-ui/components": "workspace:*",
+		"react": ">=16.14.0 <19.0.0",
+		"react-dom": ">=16.14.0 <19.0.0"
+	},
 	"sideEffects": false,
 	"type": "module",
 	"exports": {
