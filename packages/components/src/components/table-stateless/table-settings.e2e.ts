@@ -89,18 +89,21 @@ test.describe('kol-table-settings', () => {
 						label: 'ID',
 						position: 0,
 						visible: true,
+						hidable: true,
 					},
 					{
 						key: 'name',
 						label: 'Name',
 						position: 1,
 						visible: true,
+						hidable: true,
 					},
 					{
 						key: 'age',
 						label: 'Age',
 						position: 2,
 						visible: true,
+						hidable: true,
 					},
 				],
 			});

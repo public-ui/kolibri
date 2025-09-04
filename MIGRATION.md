@@ -48,6 +48,10 @@ This means that components, features or functionalities may be removed and techn
 
 You can find more information about Breaking Changes in the documentation [BREAKING_CHANGES.v2.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v2.md).
 
+### Breaking changes for version 3
+
+You can find more information about Breaking Changes in the documentation [BREAKING_CHANGES.v3.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v3.md).
+
 ## Perform migration
 
 > [!TIP]

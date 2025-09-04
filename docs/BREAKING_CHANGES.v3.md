@@ -67,7 +67,7 @@ The public `focus`-methods have been removed from all components. Use `kolFocus`
 
 ## Toaster
 
-- The toast default `alertVariant` and options property `defaultAlertVariant` have been removed. Use `variant` and `defaultVariant` instead.
+- The toast property `alertVariant` has been removed. Use `variant` instead. The options property `defaultAlertType` has been renamed to `defaultVariant`.
 
 ## Themes
 

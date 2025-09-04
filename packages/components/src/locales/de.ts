@@ -46,6 +46,7 @@ export default {
 	'table-settings-move-up': 'Spalte {{column}} nach oben verschieben',
 	'table-settings-move-down': 'Spalte {{column}} nach unten verschieben',
 	'table-settings-error-all-invisible': 'Mindestens eine Spalte muss sichtbar sein.',
+	'table-settings-column-not-hidable': 'nicht ausblendbar',
 	dropdown: 'Auswahlliste',
 	'nav-label-open': 'Untermenü zu {{label}} öffnen',
 	'nav-label-close': 'Untermenü zu {{label}} schließen',
