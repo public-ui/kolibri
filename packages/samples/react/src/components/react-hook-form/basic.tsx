@@ -77,17 +77,45 @@ const genderOptions = [
 	{ label: 'Other', value: 'other' },
 ];
 
+const allFields: Array<keyof FormData> = [
+	'firstName',
+	'lastName',
+	'email',
+	'password',
+	'age',
+	'volume',
+	'birthday',
+	'favoriteColor',
+	'cv',
+	'bio',
+	'country',
+	'language',
+	'framework',
+	'gender',
+	'termsAccepted',
+];
+
 export const RHFBasic: FC = () => {
-	const { control, handleSubmit } = useForm<FormData>({
+	const { control, handleSubmit, setValue, getValues, trigger } = useForm<FormData>({
 		defaultValues,
 		mode: 'onTouched',
+		shouldFocusError: true,
 	});
+
+	const touchAndValidateAll = () => {
+		allFields.forEach((name) => {
+			setValue(name, getValues(name), { shouldTouch: true, shouldValidate: true });
+		});
+	};
 
 	const onSubmit: SubmitHandler<FormData> = (data) => {
 		alert(JSON.stringify(data, null, 2));
 	};
 
 	const onError = (errors: FieldErrors<FormData>) => {
+		touchAndValidateAll();
+		void trigger(undefined, { shouldFocus: true });
+
 		console.warn('Validation errors:', errors);
 	};
 
