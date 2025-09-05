@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import type { FieldValues, UseControllerProps } from 'src/react-hook-form';
 import {
 	KolInputCheckbox,
@@ -17,21 +17,15 @@ import {
 	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react';
-
-type ControllerProps<T extends FieldValues> = UseControllerProps<T> & {
-	control?: UseControllerProps<T>['control'];
-};
+type ControllerProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'control'> & { control: NonNullable<UseControllerProps<T>['control']> };
 
 function withController<P extends Record<string, unknown>, T extends FieldValues = FieldValues>(Component: React.ComponentType<P>, valueProp = '_value') {
 	return (props: P & ControllerProps<T>) => {
 		const { name, control, rules, defaultValue, ...rest } = props as any;
-		const context = useFormContext<T>();
-		const ctrl = control ?? context.control;
-
 		return (
 			<Controller
 				name={name}
-				control={ctrl}
+				control={control}
 				rules={rules}
 				defaultValue={defaultValue}
 				render={({ field, fieldState }) => (
@@ -43,12 +37,9 @@ function withController<P extends Record<string, unknown>, T extends FieldValues
 						_msg={
 							fieldState.error
 								? {
-									_type: 'error',
-									_description:
-										typeof fieldState.error === 'string'
-											? fieldState.error
-											: (fieldState.error as any).message ?? '',
-								}
+										_type: 'error',
+										_description: typeof fieldState.error === 'string' ? fieldState.error : ((fieldState.error as any).message ?? ''),
+									}
 								: undefined
 						}
 						_on={{
