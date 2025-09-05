@@ -14,13 +14,13 @@ type BaseProps = JSXBase.HTMLAttributes<HTMLHeadingElement | HTMLElement> & {
 type HeadlineProps = BaseProps;
 
 // Define a type for the secondary headline props
-type SecondaryHeadlineProps = BaseProps;
+type SecondaryHeadlineProps = JSXBase.HTMLAttributes<HTMLParagraphElement>;
 
 // Define a type for the main Heading component props
 export type HeadingProps = HeadlineProps & {
 	secondaryHeadline?: string;
 	HeadingGroupProps?: HGroupProps;
-	SecondaryHeadlineProps?: JSXBase.HTMLAttributes<HTMLHeadingElement | HTMLElement>;
+	SecondaryHeadlineProps?: SecondaryHeadlineProps;
 };
 
 const MIN_HEADING_LEVEL = 1;
