@@ -109,6 +109,24 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._hasOpened = false;
 	}
 
+	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
+		const event = new CustomEvent<EventDetail>(type, {
+			bubbles: true,
+			detail,
+		});
+
+		if (this.refInput) {
+			Object.defineProperty(event, 'target', {
+				value: this.refInput,
+			});
+
+			Object.defineProperty(event, 'currentTarget', {
+				value: this.refInput,
+			});
+		}
+		return event;
+	}
+
 	private clearSelection() {
 		if (this.state._disabled) {
 			return;
@@ -119,23 +137,36 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
 
-			this.controller.onFacade.onInput(
-				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				true,
-				{ value: emptyValue },
-			);
-			this.controller.onFacade.onChange(
-				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				{ value: emptyValue },
-			);
+			const inputEvent = this.createEventWithTarget('input', {
+				name: this.state._name as string,
+				value: emptyValue,
+			});
+			const changeEvent = this.createEventWithTarget('change', {
+				name: this.state._name as string,
+				value: emptyValue,
+			});
+
+			this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
+			this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 		}
 	}
 
 	private selectOption(option: Option<string>) {
 		this._value = option.value;
 		this._inputValue = option.label as string;
-		this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: option.value } }), false, option.value);
-		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: option.value } }), option.value);
+
+		const inputEvent = this.createEventWithTarget('input', {
+			name: this.state._name ?? '',
+			value: option.value,
+		});
+		const changeEvent = this.createEventWithTarget('change', {
+			name: this.state._name ?? '',
+			value: option.value,
+		});
+
+		this.controller.onFacade.onInput(inputEvent, false, option.value);
+		this.controller.onFacade.onChange(changeEvent, option.value);
+
 		this._filteredOptions = [...this.state._options];
 
 		this.controller.setFormAssociatedValue(this._value);
