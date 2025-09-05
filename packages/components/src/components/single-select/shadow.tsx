@@ -97,9 +97,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
 		if (matchingOption) {
-			if (matchingOption?.value !== this._value) {
-				this.selectOption(matchingOption as Option<string>);
-			}
+			this.selectOption(matchingOption as Option<string>);
 		} else {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
@@ -152,6 +150,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private selectOption(option: Option<string>) {
+		if (option.value === this._value) {
+			this._inputValue = option.label as string;
+			this._filteredOptions = [...this.state._options];
+			return;
+		}
+
 		this._value = option.value;
 		this._inputValue = option.label as string;
 
