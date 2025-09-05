@@ -157,9 +157,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private selectOption(option: Option<string>) {
-		// Nur weitermachen, wenn sich der Wert wirklich ändert
 		if (option.value === this._value) {
-			// trotzdem das Label und Filter zurücksetzen
 			this._inputValue = option.label as string;
 			this._filteredOptions = [...this.state._options];
 			return;
