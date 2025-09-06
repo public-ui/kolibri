@@ -27,19 +27,19 @@ export type PropHorizontalIcons = {
 const mapCustomIcon = (state: KoliBriIconsState, alignment: AlignPropType, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
 		state[alignment] = icon as KoliBriCustomIcon;
-	} else if (isString(icon, { min: 1 })) {
+	} else if (isString(icon, 1)) {
 		state[alignment] = {
-			icon,
+			icon: icon as AnyIconFontClass,
 		};
 	}
 };
 
 export const mapIconProp2State = (icon: KoliBriIconsProp): KoliBriIconsState => {
 	let state: KoliBriIconsState = {};
-	if (isString(icon, { min: 1 })) {
+	if (isString(icon, 1)) {
 		state = {
 			left: {
-				icon,
+				icon: icon as AnyIconFontClass,
 			},
 		};
 	} else if (typeof icon === 'object' && icon !== null) {
@@ -63,7 +63,7 @@ export const isIcon = (value?: unknown): boolean =>
 	value !== null &&
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
 	(typeof (value as KoliBriCustomIcon).label === 'undefined' || isString((value as KoliBriCustomIcon).label)) &&
-	isString((value as KoliBriCustomIcon).icon, { min: 1 });
+	isString((value as KoliBriCustomIcon).icon, 1);
 
 export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType, options: WatchOptions = {}): void => {
 	objectObjectHandler(value, () => {
@@ -80,16 +80,16 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 				return (
 					value === null ||
 					valueIsEmptyObject ||
-					isString(value, { min: 1 }) ||
+					isString(value, 1) ||
 					(typeof value === 'object' &&
 						value !== null &&
-						(isString(value.left, { min: 1 }) ||
+						(isString(value.left, 1) ||
 							isIcon(value.left) ||
-							isString(value.right, { min: 1 }) ||
+							isString(value.right, 1) ||
 							isIcon(value.right) ||
-							isString(value.top, { min: 1 }) ||
+							isString(value.top, 1) ||
 							isIcon(value.top) ||
-							isString(value.bottom, { min: 1 }) ||
+							isString(value.bottom, 1) ||
 							isIcon(value.bottom)))
 				);
 			},

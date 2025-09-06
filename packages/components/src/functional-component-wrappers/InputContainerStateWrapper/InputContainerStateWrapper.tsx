@@ -18,7 +18,7 @@ import {
 
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
 import KolIconButtonFc from '../../functional-components/IconButton';
-import { isObject, isString } from '../../schema';
+import { isObject, isString } from 'lodash-es';
 
 type InputState =
 	| TextareaStates
@@ -66,12 +66,12 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 	const { icons, smartButton, disabled, msg, touched } = getInputContainerProps(state);
 
 	let leftIconProps: IconOrIconClass | undefined = icons?.left;
-	if (isString(leftIconProps, { min: 1 })) {
+	if (isString(leftIconProps)) {
 		leftIconProps = { icon: leftIconProps };
 	}
 
 	let rightIconProps: IconOrIconClass | undefined = icons?.right;
-	if (isString(rightIconProps, { min: 1 })) {
+	if (isString(rightIconProps)) {
 		rightIconProps = { icon: rightIconProps };
 	}
 

@@ -2,7 +2,8 @@ import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import InternalUnderlinedBadgeText from '../InternalUnderlinedBadgeText';
-import { buildBadgeTextString, isString } from '../../schema';
+import { buildBadgeTextString } from '../../schema';
+import { isString } from 'lodash-es';
 
 type LabelProps = {
 	label?: string;
@@ -29,7 +30,7 @@ const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label, sh
 		return null;
 	}
 
-	const hasBadgeText = isString(accessKey, { min: 1 }) || isString(shortKey, { min: 1 });
+	const hasBadgeText = isString(accessKey) || isString(shortKey);
 
 	if (!showBadge || !hasBadgeText) {
 		return <span>{label}</span>;

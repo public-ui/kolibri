@@ -1,7 +1,7 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
 import type { Mode } from '../schema';
-import { isDefined, Log, setRuntimeMode } from '../schema';
+import { Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
@@ -32,8 +32,7 @@ export const bootstrap = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	koliBriOptions?: KoliBriOptions,
 ): Promise<void[]> => {
-	const proc = (globalThis as { process?: { env?: Record<string, string> } }).process;
-	const nodeEnv = isDefined(proc) && proc.env ? (proc.env.NODE_ENV as Mode) : undefined;
+	const nodeEnv = typeof process !== 'undefined' && process.env ? (process.env.NODE_ENV as Mode) : undefined;
 	setRuntimeMode(koliBriOptions?.environment || nodeEnv || 'production');
 
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);

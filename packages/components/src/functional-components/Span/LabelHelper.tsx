@@ -1,6 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import clsx from 'clsx';
-import { isString } from '../../schema';
+import { isString } from 'lodash-es';
 
 import { md } from '../../utils/markdown';
 import KolInternalUnderlinedBadgeTextFc from '../InternalUnderlinedBadgeText';
@@ -11,7 +11,7 @@ const LabelHelper: FC<{ label: string; hideLabel?: boolean; badgeText?: string; 
 	allowMarkdown,
 	badgeText,
 }) => {
-	if (hideLabel || !isString(label, { min: 1 })) {
+	if (hideLabel || !isString(label)) {
 		return null;
 	}
 
