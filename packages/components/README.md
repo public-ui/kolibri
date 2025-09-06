@@ -65,7 +65,11 @@ The [component source README](./src/components/README.md) describes additional s
 
 ## Repository structure
 
-- `src/components` – each web component lives in its own folder.
+- `src/components` – web components grouped by category:
+  - `form` – form-related elements such as `form`, `combobox`, `input-*`, `select`, `single-select` and `textarea`
+  - `feedback` – feedback elements like `alert`
+  - `navigation` – navigation elements like `pagination`
+  - other components remain at the top level
 - `src/schema` – TypeScript schema describing the API of every component.
 - `src/assets`, `src/locales` and `src/utils` – shared assets, translations and utilities.
 

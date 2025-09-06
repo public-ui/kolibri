@@ -1,0 +1,405 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
+
+import type {
+	ButtonProps,
+	DisabledPropType,
+	FocusableElement,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	IdPropType,
+	InputFileAPI,
+	InputFileStates,
+	InputTypeOnDefault,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	MultiplePropType,
+	NamePropType,
+	RequiredPropType,
+	ShortKeyPropType,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	AcceptPropType,
+} from '../../../schema';
+
+import { KolButtonWcTag } from '../../../core/component-names';
+import KolFormFieldStateWrapperFc, {
+	type FormFieldStateWrapperProps,
+} from '../../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { translate } from '../../../i18n';
+import { nonce } from '../../../utils/dev.utils';
+import { InputFileController } from './controller';
+
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
+@Component({
+	tag: 'kol-input-file',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: {
+		delegatesFocus: true,
+	},
+})
+export class KolInputFile implements InputFileAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolInputFileElement;
+	private inputRef?: HTMLInputElement;
+
+	private readonly translateDataBrowseText = translate('kol-data-browse-text');
+	private readonly translateFilenameText = translate('kol-filename-text');
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
+	};
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async getValue(): Promise<FileList | null | undefined> {
+		return this.inputRef?.files;
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
+	}
+
+	/**
+	 * Resets the component's value.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async reset() {
+		this.controller.setFormAssociatedValue('');
+		this.filename = this.translateFilenameText;
+		this.hasFileSelected = false;
+
+		if (this.inputRef) {
+			this.inputRef.value = '';
+		}
+	}
+
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: clsx('kol-input-file', 'file'),
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.inputRef?.focus(),
+			alert: this.showAsAlert(),
+		};
+	}
+
+	private getInputProps(): InputStateWrapperProps {
+		return {
+			ref: this.catchRef,
+			state: this.state,
+			type: 'file',
+			accept: this.state._accept,
+			multiple: this.state._multiple,
+			...this.controller.onFacade,
+			onChange: this.onChange,
+			onInput: this.onInput,
+			onFocus: (event: Event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event: Event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+		};
+	}
+
+	public render(): JSX.Element {
+		return (
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<KolInputContainerFc state={this.state}>
+					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
+					<KolInputStateWrapperFc {...this.getInputProps()} />
+					<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _buttonVariant="primary" _disabled={this._disabled} />
+				</KolInputContainerFc>
+			</KolFormFieldStateWrapperFc>
+		);
+	}
+
+	private readonly controller: InputFileController;
+
+	/**
+	 * Defines which file formats are accepted.
+	 */
+	@Prop() public _accept?: string;
+
+	/**
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 */
+	@Prop() public _accessKey?: string;
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the internal ID of the primary component element.
+	 */
+	@Prop() public _id?: IdPropType;
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	/**
+	 * Makes the input accept multiple inputs.
+	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _multiple?: boolean = false;
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@State() private filename: string = this.translateFilenameText;
+	@State() private hasFileSelected: boolean = false;
+
+	@State() public state: InputFileStates = {
+		_hideMsg: false,
+		_id: `id-${nonce()}`,
+		_label: '', // ⚠ required
+	};
+
+	@State() private inputHasFocus = false;
+
+	public constructor() {
+		this.controller = new InputFileController(this, 'file', this.host);
+	}
+
+	private showAsAlert(): boolean {
+		return Boolean(this.state._touched) && !this.inputHasFocus;
+	}
+
+	@Watch('_accept')
+	public validateAccept(value?: AcceptPropType): void {
+		this.controller.validateAccept(value);
+	}
+
+	@Watch('_accessKey')
+	public validateAccessKey(value?: string): void {
+		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_disabled')
+	public validateDisabled(value?: DisabledPropType): void {
+		this.controller.validateDisabled(value);
+	}
+
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
+	}
+
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: HideLabelPropType): void {
+		this.controller.validateHideLabel(value);
+	}
+
+	@Watch('_hint')
+	public validateHint(value?: HintPropType): void {
+		this.controller.validateHint(value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: IconsHorizontalPropType): void {
+		this.controller.validateIcons(value);
+	}
+
+	@Watch('_id')
+	public validateId(value?: string): void {
+		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
+		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: Stringified<MsgPropType>): void {
+		this.controller.validateMsg(value);
+	}
+
+	@Watch('_multiple')
+	public validateMultiple(value?: MultiplePropType): void {
+		this.controller.validateMultiple(value);
+	}
+
+	@Watch('_name')
+	public validateName(value?: string): void {
+		this.controller.validateName(value);
+	}
+
+	@Watch('_on')
+	public validateOn(value?: InputTypeOnDefault): void {
+		this.controller.validateOn(value);
+	}
+
+	@Watch('_required')
+	public validateRequired(value?: RequiredPropType): void {
+		this.controller.validateRequired(value);
+	}
+
+	@Watch('_shortKey')
+	public validateShortKey(value?: ShortKeyPropType): void {
+		this.controller.validateShortKey(value);
+	}
+
+	@Watch('_smartButton')
+	public validateSmartButton(value?: ButtonProps | string): void {
+		this.controller.validateSmartButton(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.controller.validateSyncValueBySelector(value);
+	}
+
+	@Watch('_touched')
+	public validateTouched(value?: boolean): void {
+		this.controller.validateTouched(value);
+	}
+
+	public componentWillLoad(): void {
+		this._touched = this._touched === true;
+		this.controller.componentWillLoad();
+	}
+
+	public componentDidLoad(): void {
+		const container = this.inputRef?.parentElement?.parentElement;
+		container?.addEventListener('dragover', this.onDragOver);
+		container?.addEventListener('dragleave', this.onDragLeave);
+		container?.addEventListener('drop', this.onDrop);
+	}
+
+	private onDragOver = (event: DragEvent): void => {
+		event.preventDefault();
+		this.inputRef?.parentElement?.parentElement?.classList.add('kol-input-container--is-dragover');
+	};
+
+	private onDragLeave = (): void => {
+		this.inputRef?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+	};
+
+	private onDrop = (event: DragEvent): void => {
+		event.preventDefault();
+		this.inputRef?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+		if (event.dataTransfer?.files.length) {
+			const files = event.dataTransfer.files;
+			this.filename = Array.from(files)
+				.map((file) => file.name)
+				.join(', ');
+			this.controller.setFormAssociatedValue(files);
+		}
+	};
+	private onChange = (event: Event): void => {
+		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
+			const value = this.inputRef.files;
+			this.hasFileSelected = !!value?.length;
+			this.filename = value?.length
+				? Array.from(value)
+						.map((file) => file.name)
+						.join(', ')
+				: this.translateFilenameText;
+
+			this.controller.onFacade.onChange(event, value);
+			this.controller.setFormAssociatedValue(value);
+		}
+	};
+
+	private onInput = (event: Event): void => {
+		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
+			const files = this.inputRef.files;
+			this.controller.onFacade.onInput(event, false, files);
+		}
+	};
+}

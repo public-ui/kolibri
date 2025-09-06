@@ -52,7 +52,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
-import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { KolTooltipWcTag } from '../../core/component-names';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';

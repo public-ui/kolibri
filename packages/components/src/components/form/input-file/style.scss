@@ -1,0 +1,59 @@
+@use '../../../styles/global' as *;
+@use '../../../styles/kol-alert-mixin' as *;
+@use '../../../styles/kol-form-field-mixin' as *;
+@use '../../../styles/kol-input-container-mixin' as *;
+@use '../../../styles/kol-input-mixin' as *;
+@use '../../@shared/mixins' as *;
+
+@layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+	@include kol-input;
+
+	.kol-input {
+		opacity: 0;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		padding: calc((var(--a11y-min-size) - to-rem(16)) / 10) 0.5em;
+		cursor: pointer;
+
+		&::-webkit-file-upload-button,
+		&::file-selector-button {
+			cursor: pointer;
+		}
+
+		&:disabled,
+		&:disabled::-webkit-file-upload-button,
+		&:disabled::file-selector-button {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+
+	.kol-input-container {
+		$root: &;
+
+		&__container {
+			display: flex;
+			height: var(--a11y-min-size);
+			overflow: hidden;
+			align-items: center;
+		}
+
+		&__filename {
+			margin-left: to-rem(4);
+			overflow: hidden;
+			flex-grow: 1;
+
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
+			grid-template-columns: auto 1fr;
+		}
+	}
+}

@@ -10,8 +10,8 @@ node_modules/
 *.log
 *.tgz
 
-/packages/components/src/components/*/readme.md
-# Diese Readme's wurde nicht in die Doku übernommen.
-!/packages/components/src/components/logo/readme.md
+/packages/components/src/components/**/readme.md
+# Diese Readme's wurden nicht in die Doku übernommen.
+!/packages/components/src/components/@else/**/readme.md
 
 node-compile-cache/

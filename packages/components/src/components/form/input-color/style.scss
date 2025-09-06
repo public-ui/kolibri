@@ -1,0 +1,39 @@
+@use '../../../styles/global' as *;
+@use '../../../styles/kol-alert-mixin' as *;
+@use '../../../styles/kol-form-field-mixin' as *;
+@use '../../../styles/kol-input-container-mixin' as *;
+@use '../../../styles/kol-input-mixin' as *;
+@use '../../@shared/mixins' as *;
+
+@layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+	@include kol-input;
+	.kol-input-color {
+		&__input {
+			&--color {
+				flex-grow: 1;
+			}
+
+			&--text {
+				width: to-rem(112);
+			}
+		}
+
+		&__inputs-wrapper {
+			display: flex;
+			gap: to-rem(6) !important;
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	.kol-input {
+		cursor: pointer;
+
+		&:disabled {
+			cursor: not-allowed;
+		}
+	}
+}

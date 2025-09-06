@@ -1,0 +1,146 @@
+@use '../../../styles/global' as *;
+@use '../../../styles/kol-field-control-mixin' as *;
+@use '../../../styles/kol-form-field-mixin' as *;
+@use '../../@shared/mixins' as *;
+@use '../../host-display-block' as *;
+@use '../../tooltip/style' as *;
+
+@layer kol-component {
+	@include kol-form-field;
+	@include kol-field-control;
+
+	$root: '.kol-checkbox';
+
+	.kol-form-field {
+		display: grid;
+	}
+
+	#{$root} {
+		display: flex;
+		position: relative;
+		align-items: center;
+		cursor: pointer;
+
+		&--disabled {
+			cursor: not-allowed;
+		}
+
+		.kol-input {
+			background-color: #fff;
+			border-style: solid;
+			margin: 0;
+			border-width: 2px;
+			appearance: none;
+			cursor: inherit;
+
+			&:before {
+				content: '';
+			}
+		}
+	}
+
+	/**
+	 * Variant: Checkbox
+	 */
+	#{$root}--variant-default {
+		position: relative;
+		width: var(--a11y-min-size);
+		height: var(--a11y-min-size);
+		justify-content: center;
+
+		.kol-icon {
+			display: flex;
+			position: absolute;
+			inset: auto;
+			z-index: 1;
+			pointer-events: none;
+
+			&::part(icon) {
+				display: none;
+			}
+		}
+
+		.kol-input {
+			width: to-rem(22);
+			height: to-rem(22);
+		}
+
+		&#{$root}--checked,
+		&#{$root}--indeterminate {
+			.kol-icon::part(icon) {
+				display: block;
+			}
+		}
+	}
+
+	/**
+	 * Variant: Switch
+	 */
+	#{$root}--variant-switch {
+		position: relative;
+
+		.kol-input {
+			display: inline-block;
+			position: relative;
+			width: 3.2em;
+			min-width: 3.2em;
+			height: 1.7em;
+
+			&::before {
+				background-color: #000;
+				position: absolute;
+				top: calc(0.25em - to-rem(2));
+				left: calc(0.25em - to-rem(2));
+				width: 1.2em;
+				height: 1.2em;
+				transition: 0.5s;
+			}
+
+			&:checked::before {
+				transform: translateX(1.5em);
+			}
+
+			&:indeterminate::before {
+				transform: translateX(0.75em);
+			}
+		}
+
+		.kol-icon {
+			transform: translate(0, -50%);
+			color: #000;
+			display: flex;
+			position: absolute;
+			top: 50%;
+			left: to-rem(4);
+			z-index: 1;
+			width: 1.2em;
+			height: 1.2em;
+			align-items: center;
+			justify-content: center;
+			transition: 0.5s;
+		}
+
+		&#{$root}--checked .kol-icon {
+			transform: translate(1.5em, -50%);
+		}
+
+		&#{$root}--indeterminate .kol-icon {
+			transform: translate(0.75em, -50%);
+		}
+	}
+
+	/**
+	 * Variant: Button
+	 */
+	#{$root}--variant-button {
+		width: var(--a11y-min-size);
+
+		.kol-icon {
+			display: flex;
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+@use '../../../styles/global' as *;
+@use '../../../styles/kol-alert-mixin' as *;
+@use '../../../styles/kol-form-field-mixin' as *;
+@use '../../../styles/kol-input-container-mixin' as *;
+@use '../../@shared/mixins' as *;
+@use '../../host-display-block' as *;
+
+@layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+
+	.kol-textarea {
+		width: 100%;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

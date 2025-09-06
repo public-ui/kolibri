@@ -1,0 +1,71 @@
+@use '../../../styles/global' as *;
+@use '../../../styles/kol-alert-mixin' as *;
+@use '../../../styles/kol-form-field-mixin' as *;
+@use '../../../styles/kol-input-container-mixin' as *;
+@use '../../../styles/kol-input-mixin' as *;
+@use '../../@shared/mixins' as *;
+
+@layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+	@include kol-input;
+
+	.kol-input-range {
+		&__inputs-wrapper {
+			display: flex;
+			flex-grow: 1;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&__input {
+			$input: &;
+
+			&--number {
+				width: var(--kolibri-input-range--input-number--width);
+			}
+
+			&--range {
+				background-color: #d3d3d3;
+				display: inline-block;
+				/* Design-Hack - related with flex-grow */
+				width: 0;
+				height: to-rem(8);
+				margin: 0;
+				padding: 0;
+				flex-grow: 1;
+
+				line-height: 1.5;
+				appearance: none;
+				border: 1px solid #000;
+
+				&::-webkit-slider-thumb {
+					@at-root #{$input}:not(:disabled)#{&} {
+						cursor: pointer;
+					}
+					background-color: #000;
+					border-radius: 20px;
+					width: to-rem(20);
+					height: to-rem(20);
+					-webkit-appearance: none;
+
+					@media (prefers-contrast: more) or (forced-colors: active) {
+						outline: 1px solid currentColor;
+					}
+				}
+
+				&::-moz-range-thumb {
+					@at-root #{$input}:not(:disabled)#{&} {
+						cursor: pointer;
+					}
+					background-color: #000;
+					border-radius: 20px;
+					width: to-rem(20);
+					height: to-rem(20);
+					-moz-appearance: none;
+				}
+			}
+		}
+	}
+}
