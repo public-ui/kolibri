@@ -66,12 +66,12 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 	const { icons, smartButton, disabled, msg, touched } = getInputContainerProps(state);
 
 	let leftIconProps: IconOrIconClass | undefined = icons?.left;
-	if (isString(leftIconProps)) {
+	if (isString(leftIconProps, { min: 1 })) {
 		leftIconProps = { icon: leftIconProps };
 	}
 
 	let rightIconProps: IconOrIconClass | undefined = icons?.right;
-	if (isString(rightIconProps)) {
+	if (isString(rightIconProps, { min: 1 })) {
 		rightIconProps = { icon: rightIconProps };
 	}
 

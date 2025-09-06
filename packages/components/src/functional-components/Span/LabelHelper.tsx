@@ -11,7 +11,7 @@ const LabelHelper: FC<{ label: string; hideLabel?: boolean; badgeText?: string; 
 	allowMarkdown,
 	badgeText,
 }) => {
-	if (hideLabel || !isString(label)) {
+	if (hideLabel || !isString(label, { min: 1 })) {
 		return null;
 	}
 

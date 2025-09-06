@@ -30,7 +30,7 @@ const KolSpanFc: FC<SpanProps> = (props, children) => {
 		leftIconProps = icons.left as IconType;
 		rightIconProps = icons.right as IconType;
 		bottomIconProps = icons.bottom as IconType;
-	} else if (isString(icons)) {
+	} else if (isString(icons, { min: 1 })) {
 		leftIconProps = {
 			icon: icons,
 		};

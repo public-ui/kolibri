@@ -29,7 +29,7 @@ const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label, sh
 		return null;
 	}
 
-	const hasBadgeText = isString(accessKey) || isString(shortKey);
+	const hasBadgeText = isString(accessKey, { min: 1 }) || isString(shortKey, { min: 1 });
 
 	if (!showBadge || !hasBadgeText) {
 		return <span>{label}</span>;

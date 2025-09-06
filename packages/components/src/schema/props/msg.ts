@@ -43,13 +43,13 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 					return true;
 				}
 				// Allow string values (shorthand for error messages)
-				if (typeof value === 'string' && value.length > 0) {
+				if (isString(value, { min: 1 })) {
 					return true;
 				}
 				// Allow object values with proper structure
 				if (isObject(value) && value !== null) {
 					const objValue = value as AlertProps & { _description: string };
-					return isString(objValue._description) && objValue._description.length >= 1;
+					return isString(objValue._description, { min: 1 });
 				}
 
 				return false;
