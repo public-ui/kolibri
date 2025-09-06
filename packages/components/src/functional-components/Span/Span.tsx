@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { isString, isObject } from 'lodash-es';
+import { isObject, isString } from '../../schema';
 
 import { type BadgeTextPropType, type HideLabelPropType, type IconOrIconClass, type KoliBriIconsProp, type LabelWithExpertSlotPropType } from '../../schema';
 
@@ -26,10 +26,10 @@ const KolSpanFc: FC<SpanProps> = (props, children) => {
 	let bottomIconProps: IconType = null;
 
 	if (isObject(icons)) {
-		topIconProps = icons.top;
-		leftIconProps = icons.left;
-		rightIconProps = icons.right;
-		bottomIconProps = icons.bottom;
+		topIconProps = icons.top as IconType;
+		leftIconProps = icons.left as IconType;
+		rightIconProps = icons.right as IconType;
+		bottomIconProps = icons.bottom as IconType;
 	} else if (isString(icons)) {
 		leftIconProps = {
 			icon: icons,

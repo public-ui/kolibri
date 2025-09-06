@@ -1,5 +1,5 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
-import { isString } from 'lodash-es';
+import { isString } from '../../schema';
 
 import { showExpertSlot } from '../../schema';
 import LabelHelper from './LabelHelper';

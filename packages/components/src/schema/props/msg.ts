@@ -49,7 +49,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 				// Allow object values with proper structure
 				if (isObject(value) && value !== null) {
 					const objValue = value as AlertProps & { _description: string };
-					return isString(objValue._description, 1);
+					return isString(objValue._description) && objValue._description.length >= 1;
 				}
 
 				return false;

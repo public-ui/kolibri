@@ -40,9 +40,9 @@ export const validateIconsInputCheckbox = (component: Generic.Element.Component,
 		(value): boolean =>
 			typeof value === 'object' &&
 			value !== null &&
-			(isString((value as Record<string, unknown>).checked, 1) ||
-				isString((value as Record<string, unknown>).indeterminate, 1) ||
-				isString((value as Record<string, unknown>).unchecked, 1)),
+			((isString((value as Record<string, unknown>).checked) && (value as Record<string, unknown>).checked.length >= 1) ||
+				(isString((value as Record<string, unknown>).indeterminate) && (value as Record<string, unknown>).indeterminate.length >= 1) ||
+				(isString((value as Record<string, unknown>).unchecked) && (value as Record<string, unknown>).unchecked.length >= 1)),
 		new Set(['InputCheckboxIcons']),
 		value as unknown,
 		{

@@ -42,7 +42,13 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 			'_icons',
 			(value): boolean => {
 				const v = value as Record<string, unknown>;
-				return typeof v === 'object' && v !== null && (isString(v.checked, 1) || isString(v.indeterminate, 1) || isString(v.unchecked, 1));
+				return (
+					typeof v === 'object' &&
+					v !== null &&
+					((isString(v.checked) && v.checked.length >= 1) ||
+						(isString(v.indeterminate) && v.indeterminate.length >= 1) ||
+						(isString(v.unchecked) && v.unchecked.length >= 1))
+				);
 			},
 			new Set(['InputCheckboxIcons']),
 			value,
