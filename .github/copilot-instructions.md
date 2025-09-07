@@ -573,6 +573,9 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
 - ✅ Use `pnpm dev` for watch mode during theme development
 - ✅ Test themes with visual tests: `pnpm test`
 - ✅ Copy assets from components: `pnpm prepare` (in theme directory)
+- ⚠️ Expose only prefixed CSS custom properties that must be themed externally
+  and rely on SASS variables for internal calculations to avoid collisions with
+  host-page styles.
 
 **Component Development Rules:**
 
