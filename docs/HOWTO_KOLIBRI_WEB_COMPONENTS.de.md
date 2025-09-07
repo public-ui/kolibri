@@ -29,6 +29,11 @@ KoliBri setzt auf ein mehrschichtiges Theming mit klaren Verantwortlichkeiten:
 
 Dieses System ermöglicht es, ein Corporate Design konsistent umzusetzen und dennoch flexibel zu bleiben.
 
+> **Hinweis:** CSS-Custom-Properties sind global und durchdringen auch den Shadow DOM.
+> Verwende sie nur für öffentliche Design-Tokens und statte sie mit einem eindeutigen Prefix aus.
+> Für interne Berechnungen und Zwischenergebnisse setze stattdessen auf SASS-Variablen,
+> um Kollisionen mit Variablen auf der Host-Seite zu vermeiden.
+
 ## Mindset für KoliBri-Nutzer:innen
 
 - **Accessibility first**: Barrierefreiheit ist kein Add-on, sondern Kernbestandteil jeder Komponente.
