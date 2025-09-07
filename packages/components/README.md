@@ -67,8 +67,8 @@ The [component source README](./src/components/README.md) describes additional s
 
 - `src/components` – web components grouped by category:
   - `form` – form-related elements such as `form`, `combobox`, `input-*`, `select`, `single-select` and `textarea`
-  - `feedback` – feedback elements like `alert`
-  - `navigation` – navigation elements like `pagination`
+  - `feedback` – feedback elements like `alert`, `badge`, `progress`, `quote`, `spin` and `toast-container`
+  - `navigation` – navigation elements like `breadcrumb`, `nav`, `pagination`, `skip-nav`, `tabs`, `toolbar` and `tree`
   - other components remain at the top level
 - `src/schema` – TypeScript schema describing the API of every component.
 - `src/assets`, `src/locales` and `src/utils` – shared assets, translations and utilities.

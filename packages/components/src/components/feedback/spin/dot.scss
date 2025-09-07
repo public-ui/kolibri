@@ -1,0 +1,86 @@
+@use '../../@shared/mixins' as *;
+
+@layer kol-component {
+	@keyframes spin1 {
+		0% {
+			transform: scale(0);
+		}
+
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes spin2 {
+		0% {
+			transform: translate(0, 0);
+		}
+
+		100% {
+			transform: translate(to-rem(16), 0);
+		}
+	}
+
+	@keyframes spin3 {
+		0% {
+			transform: scale(1);
+		}
+
+		100% {
+			transform: scale(0);
+		}
+	}
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+	@media (prefers-reduced-motion) {
+		.kol-spin__spinner-element {
+			animation-duration: 2s;
+		}
+	}
+	.kol-spin {
+		&__spinner {
+			&--dot {
+				width: to-rem(48);
+				height: to-rem(16);
+			}
+		}
+
+		&__spinner-element {
+			border-radius: 50%;
+			position: absolute;
+			top: to-rem(0.16);
+			width: to-rem(12.8);
+			height: to-rem(12.8);
+			animation-timing-function: cubic-bezier(0, 1, 1, 0);
+			border: to-rem(0.16) solid #fff;
+
+			&--1 {
+				background-color: #000;
+				left: to-rem(0.16);
+				z-index: 0;
+				animation: 1s infinite spin1;
+			}
+
+			&--2 {
+				background-color: #000;
+				left: to-rem(0.16);
+				z-index: 1;
+				animation: 1s infinite spin2;
+			}
+
+			&--3 {
+				background-color: #000;
+				left: to-rem(17.6);
+				z-index: 1;
+				animation: 1s infinite spin2;
+			}
+
+			&--neutral {
+				background-color: #666;
+				left: to-rem(33.6);
+				z-index: 0;
+				animation: 1s infinite spin3;
+			}
+		}
+	}
+}

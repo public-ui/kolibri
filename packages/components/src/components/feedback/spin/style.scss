@@ -1,0 +1,14 @@
+@use '../../@shared/mixins' as *;
+@use '../../../styles/global' as *;
+@use './cycle' as *;
+@use './dot' as *;
+
+@layer kol-component {
+	.kol-spin {
+		&__spinner {
+			display: block;
+			position: relative;
+			padding: to-rem(2);
+		}
+	}
+}
