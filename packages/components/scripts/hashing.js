@@ -74,8 +74,8 @@ function genHyndradHash(dir) {
 			let code = fs.readFileSync(fullPath, 'utf-8');
 			let list = null;
 			if (/bootstrapLazy\(/.test(code)) {
-				code = code.replace(/(.*\n)*.*bootstrapLazy\(/, '');
-				code = code.replace(/, options\)(.*\n)*/, '');
+				code = code.replace(/^[\s\S]*?bootstrapLazy\(/, '');
+				code = code.replace(/, options\)[\s\S]*/, '');
 				list = JSON.parse(code);
 				if (Array.isArray(list)) {
 					for (let i = 0; i < list.length; i++) {
@@ -112,8 +112,8 @@ function genArtifactHashes(dir) {
 		} else if (path.extname(fullPath) === '.js') {
 			let code = fs.readFileSync(fullPath, 'utf-8');
 			let css = null;
-			if (/Css ?= ?"([^"])/.test(code)) {
-				code = code.replace(/(.*\n.*)*Css ?= ?"/, '');
+			if (/Css ?= ?"[^"]/.test(code)) {
+				code = code.replace(/^[\s\S]*?Css ?= ?"/, '');
 				let matches = code.match(/[^\n]+/);
 				if (matches !== null) {
 					css = matches[0];
@@ -126,12 +126,12 @@ function genArtifactHashes(dir) {
 				css = css
 					.replace(/";$/, '')
 					.replace(/\\"/g, '"')
-					.replace(/\\\\/g, `\\`)
 					.replace(
 						/\\n/g,
 						`
   `,
-					);
+					)
+					.replace(/\\\\/g, `\\`);
 				sha = genShaAsHashAndApostrophe(css);
 				console.log(css, sha);
 				fs.writeFileSync(fullPath.replace(/.js$/, '.css'), css, 'utf-8');
