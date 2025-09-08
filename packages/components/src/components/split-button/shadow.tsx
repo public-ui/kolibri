@@ -189,7 +189,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	@Prop() public _icons?: IconsPropType;
 
 	/**
-	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
+	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: string;
 

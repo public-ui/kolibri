@@ -168,7 +168,8 @@ export class KolTooltipWc implements TooltipAPI {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
+	 * Defines the internal ID of the primary component element.
+	 * @internal
 	 */
 	@Prop() public _id?: IdPropType;
 

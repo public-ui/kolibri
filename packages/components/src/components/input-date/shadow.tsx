@@ -222,7 +222,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
+	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: IdPropType;
 

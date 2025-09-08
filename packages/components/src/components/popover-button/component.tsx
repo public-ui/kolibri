@@ -200,7 +200,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _icons?: IconsPropType;
 
 	/**
-	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
+	 * Defines the internal ID of the primary component element.
+	 * @internal
 	 */
 	@Prop() public _id?: string;
 

@@ -186,7 +186,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
+	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: IdPropType;
 
