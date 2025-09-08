@@ -18,6 +18,11 @@
 	"engines": {
 		"pnpm": "^10"
 	},
+	"pnpm": {
+		"overrides": {
+			"sane": "5.0.1"
+		}
+	},
 	"private": true,
 	"scripts": {
 		"build": "pnpm -r build",
