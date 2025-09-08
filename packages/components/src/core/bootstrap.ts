@@ -19,6 +19,12 @@ type KoliBriOptions = RegisterOptions & {
 
 let initialized = false;
 
+function readNodeEnv(): Environment | undefined {
+	if (typeof process === 'undefined' || !process.env) return undefined;
+	const v = process.env.NODE_ENV;
+	return v === 'development' ? 'development' : v === 'production' ? 'production' : undefined;
+}
+
 export const bootstrap = async (
 	themes:
 		| Generic.Theming.RegisterPatch<string, string, string>
@@ -27,7 +33,9 @@ export const bootstrap = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	options?: KoliBriOptions,
 ): Promise<void[]> => {
-	setDevMode(options?.environment === 'development');
+	const nodeEnv = readNodeEnv();
+	const env: Environment = options?.environment ?? nodeEnv ?? 'production';
+	setDevMode(env === 'development');
 
 	initializeI18n(options?.translation?.name ?? 'de', options?.translations);
 	if (options?.transformTagName) {
