@@ -72,3 +72,9 @@ You can find more information about Breaking Changes in the documentation [BREAK
    The project is on an earlier version, all dependencies are installed, the project is executable and all changes are checked in and safely pushed.
 2. **Perform migration:**<br/>
    Carry out the migration by making the breaking changes in the respective documentation.
+
+## Migration from version 3 to version 4
+
+### Removed `_id` property on all components
+
+The internal `_id` property of all components has been deprecated and will be removed in the next major release. Remove any `_id` attributes from your markup; components generate a stable internal ID automatically.

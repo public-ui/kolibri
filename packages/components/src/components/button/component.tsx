@@ -249,7 +249,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Prop() public _icons?: IconsPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
 	 */
 	@Prop() public _id?: string;
 

@@ -203,7 +203,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version. Defines the internal ID of the primary component element.
 	 */
 	@Prop() public _id?: IdPropType;
 

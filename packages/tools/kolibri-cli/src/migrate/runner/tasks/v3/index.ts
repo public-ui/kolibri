@@ -5,6 +5,7 @@ import { ModalRemovePropertyActiveElement } from './modal';
 import { InputFileRemovePropertyValue } from './input-file';
 import { AllInputTasks } from './all-input';
 import { ToasterRenameProperties } from './toaster';
+import { RemoveIdPropTasks } from './id';
 
 export const v3Tasks: AbstractTask[] = [];
 
@@ -13,5 +14,6 @@ v3Tasks.push(TextareaUpdatePropertyValue_Resize_Horizontal);
 v3Tasks.push(AbbrRemovePropertyTooltipAlign);
 v3Tasks.push(ModalRemovePropertyActiveElement);
 v3Tasks.push(InputFileRemovePropertyValue);
+v3Tasks.push(...RemoveIdPropTasks);
 v3Tasks.push(...AllInputTasks);
 v3Tasks.push(ToasterRenameProperties);
