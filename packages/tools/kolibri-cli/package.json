@@ -35,7 +35,6 @@
 	},
 	"type": "commonjs",
 	"dependencies": {
-		"@public-ui/components": "workspace:*",
 		"chalk": "5.6.0",
 		"commander": "14.0.0",
 		"deepmerge": "4.3.1",
@@ -46,6 +45,7 @@
 		"typed-bem": "1.0.0-rc.7"
 	},
 	"devDependencies": {
+		"@public-ui/components": "workspace:*",
 		"@types/node": "24.3.0",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
