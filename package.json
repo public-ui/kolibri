@@ -20,7 +20,8 @@
 	},
 	"pnpm": {
 		"overrides": {
-			"sane": "5.0.1"
+			"sane": "5.0.1",
+			"semver": "7.7.2"
 		}
 	},
 	"private": true,
