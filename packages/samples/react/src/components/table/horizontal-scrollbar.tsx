@@ -21,6 +21,7 @@ const HEADERS: KoliBriTableHeaders = {
 		],
 	],
 };
+const genericNonSorter = () => 0;
 
 export const TableHorizontalScrollbar: FC = () => {
 	const [hasWidthRestriction, setHasWidthRestriction] = useState(true);
@@ -50,7 +51,12 @@ export const TableHorizontalScrollbar: FC = () => {
 							horizontal: [
 								[
 									{ label: 'Order', key: 'order' },
-									{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+									{
+										label: 'Date',
+										key: 'date',
+										compareFn: genericNonSorter,
+										render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date),
+									},
 								],
 							],
 						}}
