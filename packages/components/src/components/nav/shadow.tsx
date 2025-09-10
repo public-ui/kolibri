@@ -95,10 +95,13 @@ export class KolNav implements NavAPI {
 		entry: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean,
 	): JSX.Element {
-		const icons =
-			this.state._hasIconsWhenExpanded || this.state._hideLabel
-				? entry._icons || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
-				: undefined;
+		const icons = {
+			left:
+				this.state._hasIconsWhenExpanded || this.state._hideLabel
+					? entry._icons?.toString() || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
+					: undefined,
+			right: collapsible && hasChildren ? 'codicon codicon-' + (expanded ? 'remove' : 'add') : undefined,
+		};
 
 		return (
 			<div class="kol-nav__entry-wrapper">
@@ -114,32 +117,13 @@ export class KolNav implements NavAPI {
 							onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
 								if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
 									entry._on.onClick(event, value);
-								} else {
-									this.handleToggleExpansionClick(entry._children);
 								}
+								this.handleToggleExpansionClick(entry._children);
 							},
 						}}
 					/>
 				)}
-
-				{hasChildren ? this.expandButton(collapsible, entry as ButtonWithChildrenProps, expanded) : ''}
 			</div>
-		);
-	}
-
-	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
-		return (
-			<KolButtonWcTag
-				class={clsx('kol-nav__expand-button', {
-					'kol-nav__expand-button--expanded': expanded,
-				})}
-				_ariaExpanded={expanded}
-				_disabled={!collapsible}
-				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
-				_hideLabel
-				_label={`${expanded ? translate('kol-nav-label-close', { placeholders: { label: link._label } }) : translate('kol-nav-label-open', { placeholders: { label: link._label } })}`}
-				_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
-			></KolButtonWcTag>
 		);
 	}
 

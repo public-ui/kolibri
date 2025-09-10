@@ -7,31 +7,22 @@
 	}
 
 	.kol-nav {
+		--kol-nav-item-padding: 0;
 		$root: &;
 
 		&__list {
 			list-style: none;
+			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
+			--kol-nav-nested-padding: calc(var(--kol-nav-item-padding) + 8);
 
-			// nested lists
-			&--nested {
-				padding-left: to-rem(16);
-
-				.kol-link,
-				.kol-button {
-					border-left-color: transparent !important;
-
-					font-weight: normal !important;
-				}
+			&-item {
+				--kol-nav-item-padding: calc(var(--kol-nav-nested-padding) + 8);
 			}
 		}
 
 		&__entry {
 			&--link {
 				display: flex;
-			}
-
-			.kol-link:hover {
-				text-decoration: underline;
 			}
 
 			.kol-link,
@@ -50,7 +41,9 @@
 
 				#{$root}__list--vertical & {
 					padding-right: to-rem(16);
-					padding-left: to-rem(16);
+					// we have to use this calc instead of to-rem() because we can't add a string to a css property ( var(--value)rem is not working)
+					// => calc( var(--value) * 1rem )
+					padding-left: calc((var(--kol-nav-item-padding) * 1rem) / var(--kolibri-root-font-size, 16));
 					border-left: 2px solid transparent;
 				}
 
@@ -58,29 +51,16 @@
 					padding: 0 to-rem(16);
 				}
 
-				#{$root}--vertical #{$root}__list-item--active & {
+				#{$root}--vertical #{$root}__list-item--active > #{$root}__entry-wrapper & {
 					border-left-color: var(--color-primary);
 				}
 
-				#{$root}__list-item--active & {
+				#{$root}__list-item--active > #{$root}__entry-wrapper & {
 					font-weight: bold;
 				}
-			}
-		}
 
-		&__expand-button {
-			.kol-button {
-				&:hover {
-					color: var(--color-light);
-					background-color: var(--color-primary);
-				}
-
-				&:focus-visible {
-					@include focus-outline;
-				}
-
-				&__text {
-					justify-content: center;
+				&:hover .kol-span__label {
+					text-decoration: underline;
 				}
 			}
 		}
