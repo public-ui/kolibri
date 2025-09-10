@@ -1,5 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import autoprefixer from 'autoprefixer';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
@@ -22,7 +23,7 @@ export default {
 		nodeResolve(),
 		commonjs(),
 		postcss({
-			plugins: [],
+			plugins: [autoprefixer()],
 			inject: false,
 			use: {
 				sass: {
