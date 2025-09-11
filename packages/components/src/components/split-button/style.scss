@@ -7,15 +7,20 @@
 	:host {
 		display: flex;
 		position: relative;
+		width: 100%;
 	}
 
 	.split-button-root {
 		display: flex;
 		position: relative;
+		width: 100%;
+		min-width: 0;
+		align-items: stretch;
 	}
 
 	.main-button {
-		flex-grow: 1;
+		min-width: 0;
+		flex: 1 1 auto;
 		text-align: left;
 	}
 
