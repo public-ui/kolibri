@@ -68,6 +68,8 @@
 
 		&__toggle-button {
 			.kol-button {
+				margin-bottom: to-rem(5);
+
 				$root: &;
 
 				&:focus {

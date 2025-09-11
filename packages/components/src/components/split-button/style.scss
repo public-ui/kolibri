@@ -7,14 +7,16 @@
 	.kol-split-button {
 		display: flex;
 		position: relative;
-
+		width: 100%;
 		&__root {
 			display: flex;
 			position: relative;
+			width: 100%;
+			align-items: stretch;
 		}
-
 		&__button {
-			flex-grow: 1;
+			min-width: 0;
+			flex: 1 1 auto;
 			text-align: left;
 		}
 
