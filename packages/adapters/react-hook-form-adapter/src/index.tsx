@@ -17,21 +17,21 @@ import {
 	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react';
+
 type ControllerProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'control'> & { control: NonNullable<UseControllerProps<T>['control']> };
 
 function withController<P extends Record<string, unknown>, T extends FieldValues = FieldValues>(Component: React.ComponentType<P>, valueProp = '_value') {
 	return (props: P & ControllerProps<T>) => {
-		const { name, control, rules, defaultValue, ...rest } = props as any;
+		const { _name, control, rules, defaultValue, ...rest } = props;
 		return (
 			<Controller
-				name={name}
+				name={_name}
 				control={control}
 				rules={rules}
 				defaultValue={defaultValue}
 				render={({ field, fieldState }) => (
 					<Component
 						{...(rest as P)}
-						_name={name}
 						{...{ [valueProp]: field.value }}
 						_touched={fieldState.isTouched}
 						_msg={
