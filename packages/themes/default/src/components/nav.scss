@@ -37,10 +37,11 @@
 				color: var(--color-primary);
 				display: flex;
 				min-height: var(--a11y-min-size);
-				gap: to-rem(8);
-				align-items: center;
 				padding-right: to-rem(var(--kol-nav-item-padding-right));
 				padding-left: to-rem(8);
+				gap: to-rem(8);
+				align-items: center;
+
 				text-decoration: none;
 
 				&:focus-visible {
