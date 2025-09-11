@@ -24,8 +24,7 @@ export const SplitButtonBasic: FC = () => {
 					assigned action. In the second sample no action is assigned and clicking the button opens the context menu instead.
 				</p>
 			</SampleDescription>
-
-			<div className="flex gap-4">
+			<div className="flex flex-col gap-4">
 				<KolSplitButton _label="Only the arrow opens" _on={{ onClick: handleButtonClick }}>
 					Dropdown-Inhalt
 				</KolSplitButton>
