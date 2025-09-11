@@ -10,12 +10,12 @@
 		 * Minimum size of interactive elements.
 		 */
 		--a11y-min-size: #{to-rem(44)};
-		color: black;
 		/*
-		 * No element should be used without a background and font color whose contrast ratio has
-		 * not been checked. By initially setting the background color to white and the font color
-		 * to black, the contrast ratio is ensured and explicit adjustment is forced.
+		 * No element should be used without verifying the contrast ratio of its background and font colors.
+		 * By initially setting the background color to white and the font color to black,
+		 * the contrast ratio is ensured and explicit adjustment is forced.
 		 */
+		color: black;
 		background-color: white;
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.

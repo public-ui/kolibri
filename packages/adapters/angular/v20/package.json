@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v20",
-	"version": "3.0.4-rc.1",
+	"version": "3.0.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -65,10 +65,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "20.2.1",
-		"@angular/compiler": "20.2.1",
-		"@angular/compiler-cli": "20.2.1",
-		"@angular/core": "20.2.1",
+		"@angular/common": "20.2.4",
+		"@angular/compiler": "20.2.4",
+		"@angular/compiler-cli": "20.2.4",
+		"@angular/core": "20.2.4",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
@@ -80,7 +80,7 @@
 		"zone.js": "0.15.1"
 	},
 	"peerDependencies": {
-		"@angular/core": "^20.2.1",
+		"@angular/core": "^20.2.4",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [
