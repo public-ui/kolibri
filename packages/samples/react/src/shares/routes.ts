@@ -48,7 +48,6 @@ import { Routes } from './types';
 import { TREE_ROUTES } from '../components/tree/routes';
 import { COMBOBOX_ROUTES } from '../components/combobox/routes';
 import { SINGLE_SELECT_ROUTES } from '../components/single-select/routes';
-import { REACT_HOOK_FORM_ROUTES } from '../components/react-hook-form/routes';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
@@ -87,7 +86,6 @@ export const ROUTES: Routes = {
 	...POPOVER_BUTTON_ROUTES,
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
-	...REACT_HOOK_FORM_ROUTES,
 	...SELECT_ROUTES,
 	...SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,

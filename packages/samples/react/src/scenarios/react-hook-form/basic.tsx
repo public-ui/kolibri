@@ -20,7 +20,7 @@ import {
 } from '@public-ui/react-hook-form-adapter';
 import { KolButton } from '@public-ui/react';
 
-import { SampleDescription } from '../SampleDescription';
+import { SampleDescription } from '../../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../../shares/country';
 
 interface FormData {
@@ -126,50 +126,50 @@ export const RHFBasic: FC = () => {
 			</SampleDescription>
 
 			<form onSubmit={handleSubmit(onSubmit, onError)} className="grid gap-4 w-full max-w-xl">
-				<KolInputTextController name="firstName" control={control} _label="First Name" rules={{ required: 'First name is required' }} _required />
-				<KolInputTextController name="lastName" control={control} _label="Last Name" rules={{ required: 'Last name is required' }} _required />
-				<KolInputEmailController name="email" control={control} _label="Email" rules={{ required: 'Email is required' }} _required />
-				<KolInputPasswordController name="password" control={control} _label="Password" rules={{ required: 'Password is required' }} _required />
-				<KolInputNumberController name="age" control={control} _label="Age" rules={{ required: 'Age is required', min: 0 }} _required />
-				<KolInputRangeController name="volume" control={control} _label="Volume (0–100)" _min={0} _max={100} />
-				<KolInputDateController name="birthday" control={control} _label="Birthday" rules={{ required: 'Birthday is required' }} />
-				<KolInputColorController name="favoriteColor" control={control} _label="Favorite Color" id="favoriteColor" _required />
-				<KolInputFileController name="cv" control={control} _label="Upload CV" rules={{ required: 'Please upload your CV' }} _required />
-				<KolTextareaController name="bio" control={control} _label="Bio" rules={{ required: 'Please provide a short bio' }} _required />
+				<KolInputTextController _name="firstName" control={control} _label="First Name" rules={{ required: 'First name is required' }} _required />
+				<KolInputTextController _name="lastName" control={control} _label="Last Name" rules={{ required: 'Last name is required' }} _required />
+				<KolInputEmailController _name="email" control={control} _label="Email" rules={{ required: 'Email is required' }} _required />
+				<KolInputPasswordController _name="password" control={control} _label="Password" rules={{ required: 'Password is required' }} _required />
+				<KolInputNumberController _name="age" control={control} _label="Age" rules={{ required: 'Age is required', min: 0 }} _required />
+				<KolInputRangeController _name="volume" control={control} _label="Volume (0–100)" _min={0} _max={100} />
+				<KolInputDateController _name="birthday" control={control} _label="Birthday" rules={{ required: 'Birthday is required' }} />
+				<KolInputColorController _name="favoriteColor" control={control} _label="Favorite Color" id="favoriteColor" _required />
+				<KolInputFileController _name="cv" control={control} _label="Upload CV" rules={{ required: 'Please upload your CV' }} _required />
+				<KolTextareaController _name="bio" control={control} _label="Bio" rules={{ required: 'Please provide a short bio' }} _required />
 				<KolComboboxController
-					name="country"
 					control={control}
-					_label="Country"
 					rules={{ required: 'Please select a country' }}
+					_name="country"
+					_label="Country"
 					_suggestions={COUNTRY_SUGGESTIONS}
 					_required
 				/>
 				<KolSelectController
-					name="language"
 					control={control}
-					_label="Preferred Language"
 					rules={{ required: 'Please select a language' }}
+					_name="language"
+					_label="Preferred Language"
 					_options={languageOptions}
 					_required
 				/>
 				<KolSingleSelectController
-					name="framework"
-					control={control}
-					_label="Favorite Framework"
 					rules={{ required: 'Please select a framework' }}
+					control={control}
+					_name="framework"
+					_label="Favorite Framework"
 					_options={frameworkOptions}
 					_required
 				/>
 				<KolInputRadioController
-					name="gender"
 					control={control}
-					_label="Gender"
 					rules={{ required: 'Please select your gender' }}
+					_name="gender"
+					_label="Gender"
 					_options={genderOptions}
 					_required
 				/>
 				<KolInputCheckboxController
-					name="termsAccepted"
+					_name="termsAccepted"
 					control={control}
 					_label="I accept the terms and conditions"
 					rules={{ required: 'You must accept the terms' }}
