@@ -106,10 +106,19 @@ export class KolNav implements NavAPI {
 		return (
 			<div class="kol-nav__entry-wrapper">
 				{entryIsLink(entry) ? (
-					<KolLinkWcTag class="kol-nav__entry kol-nav__entry--link" {...entry} _hideLabel={hideLabel} _icons={icons} />
+					<KolLinkWcTag
+						class={clsx('kol-nav__entry kol-nav__entry--link', {
+							'kol-nav__entry--collapsible': collapsible,
+						})}
+						{...entry}
+						_hideLabel={hideLabel}
+						_icons={icons}
+					/>
 				) : (
 					<KolButtonWcTag
-						class="kol-nav__entry kol-nav__entry--button"
+						class={clsx('kol-nav__entry kol-nav__entry--button', {
+							'kol-nav__entry--collapsible': collapsible,
+						})}
 						_label={entry._label}
 						_hideLabel={hideLabel}
 						_icons={icons}
