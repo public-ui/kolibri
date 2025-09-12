@@ -125,6 +125,18 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		return this.inputRef?.selectionEnd;
 	}
 
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
+		this.inputRef?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async setSelectionStart(selectionStart: number) {
+		this.inputRef?.setSelectionRange(selectionStart, selectionStart);
+	}
+
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
