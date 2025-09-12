@@ -23,4 +23,4 @@ const ID_COMPONENTS = [
 	'kol-tooltip',
 ];
 
-export const RemoveIdPropTasks: AbstractTask[] = ID_COMPONENTS.map((componentName) => RemovePropertyNameTask.getInstance(componentName, '_id', '<4'));
+export const RemoveIdPropTasks: AbstractTask[] = ID_COMPONENTS.map((componentName) => RemovePropertyNameTask.getInstance(componentName, '_id', '^4'));
