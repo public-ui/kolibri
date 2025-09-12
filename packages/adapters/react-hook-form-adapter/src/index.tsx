@@ -1,6 +1,5 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
-import type { FieldValues, UseControllerProps } from 'src/react-hook-form';
+import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
 import {
 	KolInputCheckbox,
 	KolInputColor,
@@ -20,12 +19,12 @@ import {
 
 type ControllerProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'control'> & { control: NonNullable<UseControllerProps<T>['control']> };
 
-function withController<P extends Record<string, unknown>, T extends FieldValues = FieldValues>(Component: React.ComponentType<P>, valueProp = '_value') {
+function withController<P, T extends FieldValues>(Component: React.ComponentType<Omit<P, '_name'>>, valueProp: keyof P) {
 	return (props: P & ControllerProps<T>) => {
-		const { _name, control, rules, defaultValue, ...rest } = props;
+		const { name, control, rules, defaultValue, ...rest } = props;
 		return (
 			<Controller
-				name={_name}
+				name={name}
 				control={control}
 				rules={rules}
 				defaultValue={defaultValue}
@@ -33,12 +32,13 @@ function withController<P extends Record<string, unknown>, T extends FieldValues
 					<Component
 						{...(rest as P)}
 						{...{ [valueProp]: field.value }}
+						_name={name}
 						_touched={fieldState.isTouched}
 						_msg={
 							fieldState.error
 								? {
 										_type: 'error',
-										_description: typeof fieldState.error === 'string' ? fieldState.error : ((fieldState.error as any).message ?? ''),
+										_description: typeof fieldState.error === 'string' ? fieldState.error : (fieldState.error?.message ?? ''),
 									}
 								: undefined
 						}
@@ -54,18 +54,22 @@ function withController<P extends Record<string, unknown>, T extends FieldValues
 	};
 }
 
-export const KolInputTextController = withController(KolInputText);
-export const KolInputPasswordController = withController(KolInputPassword);
-export const KolInputEmailController = withController(KolInputEmail);
-export const KolInputNumberController = withController(KolInputNumber);
-export const KolInputRangeController = withController(KolInputRange);
-export const KolInputDateController = withController(KolInputDate);
-export const KolInputColorController = withController(KolInputColor);
-export const KolInputFileController = withController(KolInputFile);
-export const KolTextareaController = withController(KolTextarea);
-export const KolComboboxController = withController(KolCombobox);
-export const KolSelectController = withController(KolSelect);
-export const KolSingleSelectController = withController(KolSingleSelect);
-export const KolInputRadioController = withController(KolInputRadio);
+// function wrapper<T extends FieldValues>() {
+// 	return
+// }
+
+export const KolInputTextController = withController(KolInputText, '_value');
+export const KolInputPasswordController = withController(KolInputPassword, '_value');
+export const KolInputEmailController = withController(KolInputEmail, '_value');
+export const KolInputNumberController = withController(KolInputNumber, '_value');
+export const KolInputRangeController = withController(KolInputRange, '_value');
+export const KolInputDateController = withController(KolInputDate, '_value');
+export const KolInputColorController = withController(KolInputColor, '_value');
+export const KolInputFileController = withController(KolInputFile, '_value');
+export const KolTextareaController = withController(KolTextarea, '_value');
+export const KolComboboxController = withController(KolCombobox, '_value');
+export const KolSelectController = withController(KolSelect, '_value');
+export const KolSingleSelectController = withController(KolSingleSelect, '_value');
+export const KolInputRadioController = withController(KolInputRadio, '_value');
 export const KolInputCheckboxController = withController(KolInputCheckbox, '_checked');
 export { withController };
