@@ -52,6 +52,10 @@ Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING
 
 Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING_CHANGES.v3.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v3.md).
 
+### Breaking Changes für Version 4
+
+Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING_CHANGES.v4.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v4.md).
+
 ## Migration durchführen
 
 > [!TIP]
@@ -72,9 +76,3 @@ Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING
    Das Projekt ist auf einer früheren Version, alle Abhängigkeiten sind installiert, das Projekt ist lauffähig und alle Änderungen sind eingecheckt und sicher gepusht.
 2. **Migration durchführen:**<br/>
    Führen Sie die Migration durch, indem Sie die Breaking Changes in der jeweiligen Dokumentation.
-
-## Migration von Version 3 auf Version 4
-
-### Entfernte `_id`-Property in allen Komponenten
-
-Die interne `_id`-Property aller Komponenten wurde als veraltet markiert und wird in der nächsten Major-Version entfernt. Entfernen Sie `_id` aus Ihrem Markup; die Komponenten erzeugen die eindeutige ID nun automatisch.
