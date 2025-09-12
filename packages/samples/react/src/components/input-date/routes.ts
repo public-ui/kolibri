@@ -7,8 +7,8 @@ import { InputDateCopyPaste } from './copy-paste';
 export const INPUT_DATE_ROUTES: Routes = {
 	'input-date': {
 		basic: InputDateBasic,
+		'copy-paste': InputDateCopyPaste,
 		reset: InputDateReset,
 		'show-hide-msg': InputDateShowHideMsg,
-		'copy-paste': InputDateCopyPaste,
 	},
 };
