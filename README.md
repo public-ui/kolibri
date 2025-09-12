@@ -33,9 +33,9 @@ KoliBri is always actively working on improvements, new features and future-orie
 | ------: | :----------: | :------: | :----: | :------------: |
 |     1.x |     LTS      | Dec 2021 |   3y   |    Dec 2024    |
 |     2.x |     LTS      | Dec 2023 |   3y   |    Dec 2026    |
-|     3.x |     STS      | Dec 2024 |   15m   |    Dec 2025    |
+|     3.x |     STS      | Dec 2024 |  15m   |    Dec 2025    |
 |     4.x |     LTS      | Dec 2025 |   3y   |    Dec 2028    |
-|     5.x |     STS      | Dec 2026 |   15m   |    Dec 2027    |
+|     5.x |     STS      | Dec 2026 |  15m   |    Dec 2027    |
 
 ```mermaid
 gantt
@@ -78,6 +78,16 @@ import { DEFAULT } from '@public-ui/theme-default';
 
 register(DEFAULT, defineCustomElements);
 ```
+
+### Avoid CSS Custom Property Collisions
+
+KoliBri themes expose a few CSS custom properties so consumers can adapt the look and feel.
+Because these properties remain global—even inside a Shadow DOM—using too many of them can
+clash with variables defined on the host page.
+
+Use namespaced custom properties only for values that must be overridden from the outside.
+For internal calculations rely on SASS variables instead of additional CSS properties.
+This keeps components robust and prevents unexpected style leaks.
 
 ## Collaboration and cooperation
 

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "3.0.4",
+	"version": "3.0.6-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -35,15 +35,15 @@
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.1.0",
 		"portfinder": "1.0.37",
-		"serve": "14.2.4"
+		"serve": "14.2.5"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.28.0",
+		"@babel/eslint-parser": "7.28.4",
 		"@babel/plugin-syntax-import-attributes": "7.27.1",
 		"@babel/preset-env": "7.28.3",
 		"@playwright/test": "1.55.0",
 		"eslint": "8.57.1",
-		"knip": "5.63.0",
+		"knip": "5.63.1",
 		"prettier": "3.6.2"
 	},
 	"peerDependencies": {

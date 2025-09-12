@@ -49,4 +49,18 @@ describe('KolHeadingFc', () => {
 		expect(page.root?.classList.contains('kol-headline')).toBe(true);
 		expect(page.root?.textContent).toContain('Custom Class Heading');
 	});
+
+	it('should apply SecondaryHeadlineProps to the secondary headline', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<KolHeadingFc secondaryHeadline="Secondary" SecondaryHeadlineProps={{ class: 'secondary-class', 'aria-label': 'secondary-label' }}>
+				Primary
+			</KolHeadingFc>
+		));
+
+		expect(page.root).toBeDefined();
+		expect(page.root).toMatchSnapshot();
+		const secondary = page.root?.querySelector('p');
+		expect(secondary?.classList.contains('secondary-class')).toBe(true);
+		expect(secondary?.getAttribute('aria-label')).toBe('secondary-label');
+	});
 });

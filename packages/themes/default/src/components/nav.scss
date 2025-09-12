@@ -30,6 +30,7 @@
 				display: flex;
 			}
 
+			.kol-button:hover,
 			.kol-link:hover {
 				text-decoration: underline;
 			}
@@ -87,6 +88,8 @@
 
 		&__toggle-button {
 			.kol-button {
+				margin-bottom: to-rem(5);
+
 				$root: &;
 
 				&:focus {
