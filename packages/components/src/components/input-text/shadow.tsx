@@ -113,6 +113,18 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async selectionStart(): Promise<number | null | undefined> {
+		return this.inputRef?.selectionStart;
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async selectionEnd(): Promise<number | null | undefined> {
+		return this.inputRef?.selectionEnd;
+	}
+
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
