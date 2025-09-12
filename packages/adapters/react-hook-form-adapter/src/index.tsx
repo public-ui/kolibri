@@ -15,7 +15,7 @@ import {
 	KolSingleSelect,
 	KolCombobox,
 	KolTextarea,
-} from '@public-ui/react';
+} from '@public-ui/react-v19';
 
 type ControllerProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'control'> & { control: NonNullable<UseControllerProps<T>['control']> };
 

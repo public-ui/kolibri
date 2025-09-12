@@ -133,7 +133,7 @@ export const RHFBasic: FC = () => {
 				<KolInputNumberController name="age" control={control} _label="Age" rules={{ required: 'Age is required', min: 0 }} _required />
 				<KolInputRangeController name="volume" control={control} _label="Volume (0–100)" _min={0} _max={100} />
 				<KolInputDateController name="birthday" control={control} _label="Birthday" rules={{ required: 'Birthday is required' }} />
-				<KolInputColorController name="favoriteColor" control={control} _label="Favorite Color" id="favoriteColor" _required />
+				<KolInputColorController name="favoriteColor" control={control} _label="Favorite Color" id="favoriteColor" />
 				<KolInputFileController name="cv" control={control} _label="Upload CV" rules={{ required: 'Please upload your CV' }} _required />
 				<KolTextareaController name="bio" control={control} _label="Bio" rules={{ required: 'Please provide a short bio' }} _required />
 				<KolComboboxController
