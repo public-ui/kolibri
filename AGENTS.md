@@ -12,6 +12,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 - Avoid that branch name may contain hidden characters.
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
+- To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
 
 ## Semantic Versioning
 
