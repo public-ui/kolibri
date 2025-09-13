@@ -1,22 +1,15 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { AlertProps, InternalAlertProps } from '../components';
+import type { AlertProps } from '../components';
 import type { Stringified } from '../types';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject, isString } from '../validators';
-import { transformObjectProperties } from '../../utils/transformObjectProperties';
 
 /* types */
 export type MsgPropType =
-	| (AlertProps & {
+	| (Omit<AlertProps, '_label' | '_variant'> & {
 			_description: string;
 	  })
 	| string;
-
-export type InternMsgPropType = Partial<
-	InternalAlertProps & {
-		description: string;
-	}
->;
 
 /**
  * Defines the properties for a message rendered as Alert component.
@@ -60,23 +53,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 	});
 };
 
-export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
-	if (!msg) {
-		return undefined;
-	}
-
-	// If msg is a string, convert it to an error message object
-	if (typeof msg === 'string') {
-		return {
-			description: msg,
-			type: 'error',
-		};
-	}
-
-	return transformObjectProperties(msg);
-}
-
-export function checkHasMsg(msg?: InternMsgPropType, touched?: boolean): boolean {
+export function checkHasMsg(msg?: MsgPropType, touched?: boolean): boolean {
 	/**
 	 * We support 5 types of messages:
 	 * - default
@@ -89,7 +66,12 @@ export function checkHasMsg(msg?: InternMsgPropType, touched?: boolean): boolean
 	 * - we show only one message at a time
 	 * - by error messages the input must be touched
 	 */
-	const showMsg = msg ? touched === true || msg?.type !== 'error' : false;
+	if (!msg) {
+		return false;
+	}
+
+	const type = typeof msg === 'string' ? 'error' : msg._type;
+	const showMsg = touched === true || type !== 'error';
 
 	return showMsg;
 }
