@@ -1,0 +1,19 @@
+name: Dependency Audit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/pnpm-setup
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Audit supply chain
+        run: pnpm run audit:supplychain

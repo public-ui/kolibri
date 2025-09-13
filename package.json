@@ -20,18 +20,18 @@
 	},
 	"private": true,
 	"scripts": {
+		"audit:supplychain": "bash scripts/check-compromised-packages.sh",
 		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
-		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
 		"format:all": "prettier --write '**/*.{js,ts,json,yml,yaml,md}' '*.{js,ts,json,yml,yaml,md}' && pnpm format:config && pnpm -r format",
+		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
 		"lint": "pnpm -r lint",
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
-		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
 		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
@@ -42,7 +42,9 @@
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
+		"unused": "pnpm -r unused",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
-	}
+	},
+	"packageManager": "pnpm@10.16.0+sha512.8066e7b034217b700a9a4dbb3a005061d641ba130a89915213a10b3ca4919c19c037bec8066afdc559b89635fdb806b16ea673f2468fbb28aabfa13c53e3f769"
 }
