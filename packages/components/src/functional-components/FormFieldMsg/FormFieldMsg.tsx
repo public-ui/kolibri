@@ -18,8 +18,8 @@ const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, id
 		<KolAlertFc
 			id={`${id}-msg`}
 			alert={message?._alert ?? alert}
-			hasCloser={message?._hasCloser}
-			level={message?._level}
+			hasCloser={false}
+			level={0}
 			type={message?._type}
 			variant="msg"
 			class={clsx('kol-form-field__msg', classNames)}
