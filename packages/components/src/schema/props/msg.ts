@@ -62,7 +62,7 @@ export function checkHasMsg(msg?: Stringified<MsgPropType>, touched?: boolean): 
 		return false;
 	}
 
-	const type = typeof msg === 'string' ? 'error' : msg._type;
+	const type = typeof msg === 'string' ? 'error' : (msg._type ?? 'error');
 	const showMsg = touched === true || type !== 'error';
 
 	return showMsg;
@@ -75,6 +75,9 @@ export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | unde
 		} catch (e) {
 			return { _description: msg, _type: 'error' };
 		}
+	}
+	if (msg && typeof msg === 'object' && !('_type' in msg)) {
+		return { ...msg, _type: 'error' };
 	}
 	return msg;
 }

@@ -107,7 +107,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
 
-	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
+	const msgType = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
 
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),

@@ -202,21 +202,8 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-close" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>
@@ -551,7 +538,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
               <kol-icon _icons="codicon codicon-close" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -561,19 +548,6 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </span>
           </label>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -907,7 +881,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-switch">
               <kol-icon _icons="codicon codicon-close" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -917,19 +891,6 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </span>
           </label>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -1270,21 +1231,8 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>
@@ -1619,7 +1567,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1629,19 +1577,6 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </span>
           </label>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -1975,7 +1910,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1985,19 +1920,6 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </span>
           </label>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -2331,7 +2253,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-switch">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -2341,19 +2263,6 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </span>
           </label>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -2687,7 +2596,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--indeterminate kol-checkbox--touched kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-remove" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -2697,19 +2606,6 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </span>
           </label>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
-          </div>
         </div>
       </div>
     </div>

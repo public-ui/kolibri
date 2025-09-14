@@ -224,21 +224,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <span class="kol-input-container__filename">
               kol-filename-text
             </span>
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="file">
+            <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="file">
             <kol-button-wc _buttonvariant="primary" _label="kol-data-browse-text" class="kol-input-container__button"></kol-button-wc>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>

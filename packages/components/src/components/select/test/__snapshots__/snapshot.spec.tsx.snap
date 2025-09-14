@@ -286,7 +286,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
+              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
                 <option class="kol-select__option kol-select__option--disabled kol-select__option--selected" disabled="" selected="" value="-0">
                   Frau
                 </option>
@@ -298,19 +298,6 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
                 </option>
               </select>
             </form>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>
@@ -641,7 +628,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
+              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
                 <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                   Frau
                 </option>
@@ -653,19 +640,6 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
                 </option>
               </select>
             </form>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>
@@ -1105,7 +1079,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
+              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
                 <option class="kol-select__option kol-select__option--disabled kol-select__option--selected" disabled="" selected="" value="-0">
                   Frau
                 </option>
@@ -1117,19 +1091,6 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
                 </option>
               </select>
             </form>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>
@@ -1750,7 +1711,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
+              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
                 <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                   Frau
                 </option>
@@ -1762,19 +1723,6 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
                 </option>
               </select>
             </form>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>

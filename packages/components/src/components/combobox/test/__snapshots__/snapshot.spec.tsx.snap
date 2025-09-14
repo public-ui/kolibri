@@ -229,24 +229,11 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-msg" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
-        <div class="kol-alert__container">
-          <span class="visually-hidden">
-            kol-error
-          </span>
-          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
-          <div class="kol-alert__container-content">
-            <span class="kol-alert__content">
-              Es ist ein Fehler aufgetreten
-            </span>
           </div>
         </div>
       </div>
