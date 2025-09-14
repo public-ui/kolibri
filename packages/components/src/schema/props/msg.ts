@@ -22,7 +22,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 		} catch (e) {
 			// value keeps original value
 		}
-		watchValidator<MsgPropType>(
+		watchValidator<Stringified<MsgPropType>>(
 			component,
 			`_msg`,
 			(value) => {
@@ -40,7 +40,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 				return false;
 			},
 			new Set(['MsgPropType', 'string']),
-			value as MsgPropType,
+			value as Stringified<MsgPropType>,
 		);
 	});
 };
@@ -66,4 +66,15 @@ export function checkHasMsg(msg?: Stringified<MsgPropType>, touched?: boolean): 
 	const showMsg = touched === true || type !== 'error';
 
 	return showMsg;
+}
+
+export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | undefined {
+	if (typeof msg === 'string') {
+		try {
+			return parseJson<MsgPropType>(msg);
+		} catch (e) {
+			return { _description: msg, _type: 'error' };
+		}
+	}
+	return msg;
 }

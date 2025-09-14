@@ -13,6 +13,7 @@ import {
 	type TextareaStates,
 	type SelectStates,
 	type MsgPropType,
+	type Stringified,
 } from '../../schema';
 
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
@@ -38,7 +39,7 @@ function getInputContainerProps(state: InputState): {
 	icons?: KoliBriHorizontalIcons;
 	smartButton?: ButtonProps;
 	disabled?: boolean;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 } {
 	let icons: KoliBriHorizontalIcons | undefined = undefined;
