@@ -72,7 +72,6 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property             | Attribute             | Description                                                                                                                                                  | Type                                                                                   | Default     |
@@ -88,11 +87,10 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 | `_label`             | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string \| undefined`                                                                  | `undefined` |
 | `_on`                | --                    | Defines the callback functions for links.                                                                                                                    | `undefined \| { onClick?: EventValueOrEventCallback<Event, string> \| undefined; }`    | `undefined` |
 | `_role`              | `_role`               | Defines the role of the components primary element.                                                                                                          | `"button" \| "link" \| "tab" \| "treeitem" \| undefined`                               | `undefined` |
-| `_shortKey`          | `_short-key`          | Adds a visual short key hint to the component.                                                                                                               | `string \| undefined`                                                                  | `undefined` |
+| `_shortKey`          | `_short-key`          | Adds a visual short key hint to the component and sets the `aria-keyshortcuts` attribute.                                                                    | `string \| undefined`                                                                  | `undefined` |
 | `_tabIndex`          | `_tab-index`          | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)             | `number \| undefined`                                                                  | `undefined` |
 | `_target`            | `_target`             | Defines where to open the link.                                                                                                                              | `string \| undefined`                                                                  | `undefined` |
 | `_tooltipAlign`      | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                  | `'right'`   |
-
 
 ## Methods
 
@@ -104,8 +102,6 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 
 Type: `Promise<void>`
 
-
-
 ### `kolFocus() => Promise<void>`
 
 Programmatically focuses the link.
@@ -114,9 +110,4 @@ Programmatically focuses the link.
 
 Type: `Promise<void>`
 
-
-
-
-----------------------------------------------
-
-
+---

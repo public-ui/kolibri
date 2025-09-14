@@ -49,7 +49,6 @@ kolibriElement._on = {
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute           | Description                                                                                                                                                                      | Type                                                                                                                                                   | Default     |
@@ -67,12 +66,11 @@ kolibriElement._on = {
 | `_name`               | `_name`             | Defines the technical name of an input field.                                                                                                                                    | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_on`                 | --                  | Gibt die EventCallback-Funktionen für die Button-Events an.                                                                                                                      | `undefined \| { onClick?: EventValueOrEventCallback<MouseEvent, StencilUnknown> \| undefined; onMouseDown?: EventCallback<MouseEvent> \| undefined; }` | `undefined` |
 | `_role`               | `_role`             | Defines the role of the components primary element.                                                                                                                              | `"button" \| "link" \| "tab" \| "treeitem" \| undefined`                                                                                               | `undefined` |
-| `_shortKey`           | `_short-key`        | Adds a visual short key hint to the component.                                                                                                                                   | `string \| undefined`                                                                                                                                  | `undefined` |
+| `_shortKey`           | `_short-key`        | Adds a visual short key hint to the component and sets the `aria-keyshortcuts` attribute.                                                                                        | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_tabIndex`           | `_tab-index`        | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                 | `number \| undefined`                                                                                                                                  | `undefined` |
 | `_tooltipAlign`       | `_tooltip-align`    | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                        | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                  | `'top'`     |
 | `_type`               | `_type`             | Defines either the type of the component or of the components interactive element.                                                                                               | `"button" \| "reset" \| "submit" \| undefined`                                                                                                         | `'button'`  |
 | `_value`              | `_value`            | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
-
 
 ## Methods
 
@@ -84,8 +82,6 @@ kolibriElement._on = {
 
 Type: `Promise<void>`
 
-
-
 ### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
 
 Returns the current value.
@@ -93,8 +89,6 @@ Returns the current value.
 #### Returns
 
 Type: `Promise<Stringified<StencilUnknown>>`
-
-
 
 ### `kolFocus() => Promise<void>`
 
@@ -104,9 +98,4 @@ Focuses the button element.
 
 Type: `Promise<void>`
 
-
-
-
-----------------------------------------------
-
-
+---

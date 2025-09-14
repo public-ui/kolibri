@@ -161,6 +161,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey}
+							aria-keyshortcuts={this.state._shortKey || undefined}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"

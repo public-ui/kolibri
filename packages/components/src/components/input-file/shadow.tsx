@@ -120,6 +120,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							title=""
 							accept={this.state._accept}
 							accessKey={this.state._accessKey}
+							aria-keyshortcuts={this.state._shortKey || undefined}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"

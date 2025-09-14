@@ -47,7 +47,6 @@ Beispiel für die Konstruktion des JSON-Array:
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                    | Attribute        | Description                                                                                                                                                                           | Type                                                                                                                                                                                                                                                                                                                                                                                        | Default     |
@@ -66,13 +65,12 @@ Beispiel für die Konstruktion des JSON-Array:
 | `_on`                       | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                                             | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput \| undefined`                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_placeholder`              | `_placeholder`   | Defines the placeholder for input field. To be shown when there's no value.                                                                                                           | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 | `_required`                 | `_required`      | Makes the input element required.                                                                                                                                                     | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                      | `false`     |
-| `_shortKey`                 | `_short-key`     | Adds a visual short key hint to the component.                                                                                                                                        | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
+| `_shortKey`                 | `_short-key`     | Adds a visual short key hint to the component and sets the `aria-keyshortcuts` attribute.                                                                                             | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 | `_suggestions` _(required)_ | `_suggestions`   | Suggestions to provide for the input.                                                                                                                                                 | `W3CInputValue[] \| string`                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_tabIndex`                 | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                      | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 | `_tooltipAlign`             | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                             | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                       | `'top'`     |
 | `_touched`                  | `_touched`       | Shows if the input was touched by a user.                                                                                                                                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                      | `false`     |
 | `_value`                    | `_value`         | Defines the value of the input.                                                                                                                                                       | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
-
 
 ## Methods
 
@@ -84,8 +82,6 @@ Returns the current value.
 
 Type: `Promise<string | undefined>`
 
-
-
 ### `kolFocus() => Promise<void>`
 
 Focuses the combobox input.
@@ -94,16 +90,10 @@ Focuses the combobox input.
 
 Type: `Promise<void>`
 
-
-
-
 ## Slots
 
 | Slot | Description                         |
 | ---- | ----------------------------------- |
 |      | Die Beschriftung des Eingabefeldes. |
 
-
-----------------------------------------------
-
-
+---

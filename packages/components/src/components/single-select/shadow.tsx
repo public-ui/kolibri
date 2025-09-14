@@ -284,6 +284,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									aria-controls="listbox"
 									value={this._inputValue}
 									accessKey={this.state._accessKey}
+									aria-keyshortcuts={this.state._shortKey || undefined}
 									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 									aria-activedescendant={this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined}

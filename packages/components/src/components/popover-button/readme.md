@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute           | Description                                                                                                                                                                      | Type                                                                                                                                                   | Default     |
@@ -11,7 +10,7 @@
 | `_ariaControls`       | `_aria-controls`    | Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)                              | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_ariaDescription`    | `_aria-description` | Defines the value for the aria-description attribute.                                                                                                                            | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_ariaSelected`       | `_aria-selected`    | Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected) | `boolean \| undefined`                                                                                                                                 | `undefined` |
-| `_customClass`        | `_custom-class`     | Defines the custom class attribute if _variant="custom" is set.                                                                                                                  | `string \| undefined`                                                                                                                                  | `undefined` |
+| `_customClass`        | `_custom-class`     | Defines the custom class attribute if \_variant="custom" is set.                                                                                                                 | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_disabled`           | `_disabled`         | Makes the element not focusable and ignore all events.                                                                                                                           | `boolean \| undefined`                                                                                                                                 | `false`     |
 | `_hideLabel`          | `_hide-label`       | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                                       | `boolean \| undefined`                                                                                                                                 | `false`     |
 | `_icons`              | `_icons`            | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                                                  | `KoliBriHorizontalIcons & KoliBriVerticalIcons \| string \| undefined`                                                                                 | `undefined` |
@@ -21,13 +20,12 @@
 | `_on`                 | --                  | Defines the callback functions for button events.                                                                                                                                | `undefined \| { onClick?: EventValueOrEventCallback<MouseEvent, StencilUnknown> \| undefined; onMouseDown?: EventCallback<MouseEvent> \| undefined; }` | `undefined` |
 | `_popoverAlign`       | `_popover-align`    | Defines where to show the Popover preferably: top, right, bottom or left.                                                                                                        | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                  | `'bottom'`  |
 | `_role`               | `_role`             | Defines the role of the components primary element.                                                                                                                              | `"button" \| "link" \| "tab" \| "treeitem" \| undefined`                                                                                               | `undefined` |
-| `_shortKey`           | `_short-key`        | Adds a visual short key hint to the component.                                                                                                                                   | `string \| undefined`                                                                                                                                  | `undefined` |
+| `_shortKey`           | `_short-key`        | Adds a visual short key hint to the component and sets the `aria-keyshortcuts` attribute.                                                                                        | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_tabIndex`           | `_tab-index`        | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                 | `number \| undefined`                                                                                                                                  | `undefined` |
 | `_tooltipAlign`       | `_tooltip-align`    | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                        | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                  | `'top'`     |
 | `_type`               | `_type`             | Defines either the type of the component or of the components interactive element.                                                                                               | `"button" \| "reset" \| "submit" \| undefined`                                                                                                         | `'button'`  |
 | `_value`              | `_value`            | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 | `_variant`            | `_variant`          | Defines which variant should be used for presentation.                                                                                                                           | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                   | `'normal'`  |
-
 
 ## Slots
 
@@ -35,7 +33,4 @@
 | ---- | -------------------- |
 |      | The popover content. |
 
-
-----------------------------------------------
-
-
+---

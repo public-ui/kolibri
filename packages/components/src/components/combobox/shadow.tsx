@@ -208,6 +208,7 @@ export class KolCombobox implements ComboboxAPI {
 									aria-controls="listbox"
 									value={this.state._value}
 									accessKey={this.state._accessKey}
+									aria-keyshortcuts={this.state._shortKey || undefined}
 									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 									aria-labelledby={this.state._id}

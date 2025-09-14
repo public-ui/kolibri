@@ -139,6 +139,7 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 					ref={this.catchRef}
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
+					aria-keyshortcuts={this.state._shortKey || undefined}
 					aria-current={this.state._ariaCurrent}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
