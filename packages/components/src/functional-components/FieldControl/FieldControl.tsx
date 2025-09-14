@@ -1,7 +1,15 @@
 import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { type AlignPropType, type LabelAlignPropType, buildBadgeTextString, checkHasMsg, type MsgPropType, showExpertSlot } from '../../schema';
+import {
+	type AlignPropType,
+	type LabelAlignPropType,
+	buildBadgeTextString,
+	checkHasMsg,
+	type MsgPropType,
+	type Stringified,
+	showExpertSlot,
+} from '../../schema';
 import KolFieldControlTooltipFc from '../FormFieldTooltip';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 import KolFieldControlHintFc from '../FormFieldHint';
@@ -16,7 +24,7 @@ export type FieldControlProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> 
 	shortKey?: string;
 	tooltipAlign?: AlignPropType;
 	disabled?: boolean;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 	required?: boolean;
 	readonly?: boolean;

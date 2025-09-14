@@ -4,14 +4,14 @@ import clsx from 'clsx';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 import NativeOptionListFc, { type NativeOptionListProps } from '../NativeOptionList';
-import { checkHasMsg, type MsgPropType } from '../../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 
 type SelectAttributes = JSXBase.SelectHTMLAttributes<HTMLSelectElement>;
 
 export type SelectProps = DefaultInputProps<SelectAttributes> &
 	NativeOptionListProps & {
 		touched?: boolean;
-		msg?: MsgPropType;
+		msg?: Stringified<MsgPropType>;
 	};
 
 const NativeSelectFc: FC<SelectProps> = (props) => {

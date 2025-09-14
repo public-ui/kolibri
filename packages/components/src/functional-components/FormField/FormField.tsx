@@ -8,7 +8,7 @@ import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/For
 import KolFormFieldTooltipFc from '../FormFieldTooltip';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import type { AlignPropType, MsgPropType, MaxLengthBehaviorPropType } from '../../schema';
+import type { AlignPropType, MsgPropType, MaxLengthBehaviorPropType, Stringified } from '../../schema';
 import { buildBadgeTextString, checkHasMsg, showExpertSlot } from '../../schema';
 
 function getModifierClassNameByMsgType(msg?: { type?: string }): string {
@@ -32,7 +32,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	id: string;
 	alert?: boolean;
 	disabled?: boolean;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	tooltipAlign?: AlignPropType;
 	hint?: string;
 	label: string;

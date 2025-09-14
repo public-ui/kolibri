@@ -2,12 +2,13 @@ import { type FunctionalComponent, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 
-import { type AlertPropType, type IdPropType, type MsgPropType, normalizeMsg } from '../../schema';
+import { type AlertPropType, type IdPropType, type MsgPropType, type Stringified } from '../../schema';
+import { normalizeMsg } from '../../utils/normalize-msg';
 import KolAlertFc from '../Alert';
 
 type FormFieldMsgProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	alert?: AlertPropType;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	id: IdPropType;
 };
 

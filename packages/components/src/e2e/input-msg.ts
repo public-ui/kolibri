@@ -1,8 +1,8 @@
 import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
-import type { MsgPropType } from '../schema';
+import type { MsgPropType, Stringified } from '../schema';
 
-const testInputMessage = <ElementType extends { _msg?: MsgPropType } & HTMLElement>(componentName: string) => {
+const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType> } & HTMLElement>(componentName: string) => {
 	test.describe('Input messages', () => {
 		test(`should render a message when provided as object`, async ({ page }) => {
 			await page.setContent(`<${componentName} _label="Input" _msg="{'_description': 'This is a info message', '_type': 'info'}"></${componentName}>`);
