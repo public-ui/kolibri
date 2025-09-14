@@ -1,20 +1,18 @@
-import clsx from 'clsx';
-import type { AlertPropType, AlertProps, IdPropType, MsgPropType } from '../../schema';
-import type { FunctionalComponent } from '@stencil/core';
-import { h } from '@stencil/core';
-import KolAlertFc from '../Alert';
+import { type FunctionalComponent, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import clsx from 'clsx';
+
+import { type AlertPropType, type IdPropType, type MsgPropType, normalizeMsg, type Stringified } from '../../schema';
+import KolAlertFc from '../Alert';
 
 type FormFieldMsgProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	alert?: AlertPropType;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	id: IdPropType;
 };
 
-type NormalizedMsg = Omit<AlertProps, '_label' | '_variant'> & { _description: string };
-
 const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, id, class: classNames, ...other }) => {
-	const message: NormalizedMsg | undefined = typeof msg === 'string' ? { _description: msg, _type: 'error' } : msg;
+	const message = normalizeMsg(msg);
 
 	return (
 		<KolAlertFc

@@ -2,7 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import clsx from 'clsx';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import InputAdornment from '../InputAdornment';
-import { checkHasMsg, type MsgPropType } from '../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../schema';
 
 type InputAdornmentType = VNode | VNode[] | null;
 
@@ -10,7 +10,7 @@ export type InputContainerProps = JSXBase.HTMLAttributes & {
 	startAdornment?: InputAdornmentType;
 	endAdornment?: InputAdornmentType;
 	disabled?: boolean;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 
 	containerProps?: JSXBase.HTMLAttributes<HTMLDivElement>;

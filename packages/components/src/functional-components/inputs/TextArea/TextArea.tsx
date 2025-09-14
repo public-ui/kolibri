@@ -3,12 +3,12 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
-import { checkHasMsg, type MsgPropType } from '../../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 
 export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement>> & {
 	value: string;
 	touched?: boolean;
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 };
 
 const TextAreaFc: FC<TextAreaProps> = (props) => {

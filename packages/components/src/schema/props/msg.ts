@@ -5,17 +5,13 @@ import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject, isString } from '../validators';
 
 /* types */
-export type MsgPropType =
-	| (Omit<AlertProps, '_label' | '_variant'> & {
-			_description: string;
-	  })
-	| string;
+export type MsgPropType = Omit<AlertProps, '_label' | '_variant'> & { _description: string };
 
 /**
  * Defines the properties for a message rendered as Alert component.
  */
 export type PropMsg = {
-	msg: MsgPropType;
+	msg: Stringified<MsgPropType>;
 };
 
 /* validator */
@@ -23,37 +19,33 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 	objectObjectHandler(value, () => {
 		try {
 			value = parseJson<MsgPropType>(value);
-			// eslint-disable-next-line no-empty
 		} catch (e) {
 			// value keeps original value
 		}
-		watchValidator<MsgPropType>(
+		watchValidator<Stringified<MsgPropType>>(
 			component,
 			`_msg`,
 			(value) => {
-				// Allow undefined values (for resetting the message)
 				if (value === undefined) {
 					return true;
 				}
-				// Allow string values (shorthand for error messages)
 				if (typeof value === 'string' && value.length > 0) {
 					return true;
 				}
-				// Allow object values with proper structure
 				if (isObject(value) && value !== null) {
-					const objValue = value as AlertProps & { _description: string };
-					return isString(objValue._description, 1);
+					const desc = (value as { _description?: unknown })._description;
+					return isString(desc, 1);
 				}
 
 				return false;
 			},
 			new Set(['MsgPropType', 'string']),
-			value as MsgPropType,
+			value as Stringified<MsgPropType>,
 		);
 	});
 };
 
-export function checkHasMsg(msg?: MsgPropType, touched?: boolean): boolean {
+export function checkHasMsg(msg?: Stringified<MsgPropType>, touched?: boolean): boolean {
 	/**
 	 * We support 5 types of messages:
 	 * - default
@@ -74,4 +66,15 @@ export function checkHasMsg(msg?: MsgPropType, touched?: boolean): boolean {
 	const showMsg = touched === true || type !== 'error';
 
 	return showMsg;
+}
+
+export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | undefined {
+	if (typeof msg === 'string') {
+		try {
+			return parseJson<MsgPropType>(msg);
+		} catch (e) {
+			return { _description: msg, _type: 'error' };
+		}
+	}
+	return msg;
 }

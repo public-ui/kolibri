@@ -1,4 +1,4 @@
-import type { MsgPropType, TouchedPropType } from '../../schema';
+import type { MsgPropType, Stringified, TouchedPropType } from '../../schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -8,7 +8,7 @@ import type { MsgPropType, TouchedPropType } from '../../schema';
  * @returns Render-States
  */
 export const getRenderStates = (state: {
-	_msg?: MsgPropType;
+	_msg?: Stringified<MsgPropType>;
 	_hint?: string;
 	_id: string;
 	_touched?: TouchedPropType;

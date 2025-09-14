@@ -1,12 +1,12 @@
 import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { checkHasMsg, type MsgPropType } from '../../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 
 export type InputProps = DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInputElement>> & {
-	msg?: MsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 	spellcheck?: boolean;
 	suggestions?: VNode;
