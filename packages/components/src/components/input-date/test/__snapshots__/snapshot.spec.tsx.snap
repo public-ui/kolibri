@@ -179,10 +179,10 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 </kol-input-date>
 `;
 
-exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
-<kol-input-date _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01">
+exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-date _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="2025-01-01">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
-    <div class="date has-value kol-form-field kol-form-field--hidden-msg kol-input-date">
+    <div class="date has-value kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-date">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -191,9 +191,22 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <span class="visually-hidden">
+            kol-error
+          </span>
+          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <span class="kol-alert__content">
+              Es ist ein Fehler aufgetreten
+            </span>
           </div>
         </div>
       </div>
