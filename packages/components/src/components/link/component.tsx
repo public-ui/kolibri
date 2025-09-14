@@ -161,6 +161,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 							? `${this.state._label}${isExternal ? ` (${this.translateOpenLinkInTab})` : ''}`
 							: undefined
 					}
+					aria-keyshortcuts={this.state._shortKey || undefined}
 					class={clsx('kol-link', {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,

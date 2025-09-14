@@ -143,6 +143,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
 					aria-label={hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-keyshortcuts={this.state._shortKey || undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
 						'kol-button--disabled': isDisabled,

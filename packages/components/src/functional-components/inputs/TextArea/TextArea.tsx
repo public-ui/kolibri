@@ -9,6 +9,9 @@ export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTM
 	value: string;
 	touched?: boolean;
 	msg?: Stringified<MsgPropType>;
+} & {
+	[key: `aria-${string}`]: unknown;
+	[key: `data-${string}`]: unknown;
 };
 
 const TextAreaFc: FC<TextAreaProps> = (props) => {

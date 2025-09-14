@@ -281,7 +281,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-close" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
@@ -616,7 +616,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
               <kol-icon _icons="codicon codicon-close" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -959,7 +959,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
               <kol-icon _icons="codicon codicon-close" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1310,7 +1310,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
@@ -1645,7 +1645,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1988,7 +1988,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -2331,7 +2331,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
               <kol-icon _icons="codicon codicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -2674,7 +2674,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
               <kol-icon _icons="codicon codicon-remove" _label="" class="kol-checkbox__icon"></kol-icon>
-              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">

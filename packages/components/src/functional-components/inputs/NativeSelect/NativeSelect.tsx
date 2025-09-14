@@ -12,6 +12,9 @@ export type SelectProps = DefaultInputProps<SelectAttributes> &
 	NativeOptionListProps & {
 		touched?: boolean;
 		msg?: Stringified<MsgPropType>;
+	} & {
+		[key: `aria-${string}`]: unknown;
+		[key: `data-${string}`]: unknown;
 	};
 
 const NativeSelectFc: FC<SelectProps> = (props) => {

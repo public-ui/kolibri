@@ -30,6 +30,7 @@ function getCheckboxProps(state: InputCheckboxStates, inputProps: Partial<InputP
 	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
 	if ('_touched' in state) props.touched = state._touched;
 	if ('_msg' in state) props.msg = state._msg as MsgPropType;
+	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
 	return { ...props, ...inputProps };
 }
