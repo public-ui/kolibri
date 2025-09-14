@@ -172,10 +172,10 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 </kol-textarea>
 `;
 
-exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
-<kol-textarea _hide-msg="" _value="Value">
+exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-textarea _hide-msg="" _touched="" _value="Value">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
-    <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-textarea">
+    <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-textarea">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -184,8 +184,21 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
-          <div class="kol-input-container__container"><textarea aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-textarea" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container"><textarea aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--error kol-textarea--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <span class="visually-hidden">
+            kol-error
+          </span>
+          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <span class="kol-alert__content">
+              Es ist ein Fehler aufgetreten
+            </span>
           </div>
         </div>
       </div>

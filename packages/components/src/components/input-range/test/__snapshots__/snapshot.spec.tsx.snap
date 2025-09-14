@@ -200,10 +200,10 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 </kol-input-range>
 `;
 
-exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
-<kol-input-range _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-range _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
-    <div class="kol-form-field kol-form-field--hidden-msg kol-input-range range">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -212,12 +212,25 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
-              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="id-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <span class="visually-hidden">
+            kol-error
+          </span>
+          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <span class="kol-alert__content">
+              Es ist ein Fehler aufgetreten
+            </span>
           </div>
         </div>
       </div>
@@ -589,10 +602,10 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 </kol-input-range>
 `;
 
-exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
-<kol-input-range _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-range _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
-    <div class="kol-form-field kol-form-field--hidden-msg kol-input-range range">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -601,11 +614,11 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
-              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-list" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" list="id-nonce-list" max="10" min="1" name="field-number" step="1" type="number" value="5">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" list="id-nonce-list" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="id-nonce" list="id-nonce-list" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
             <datalist id="id-nonce-list">
               <option value="1"></option>
@@ -619,6 +632,19 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
               <option value="9"></option>
               <option value="10"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" data-testid="alert" description="Es ist ein Fehler aufgetreten" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <span class="visually-hidden">
+            kol-error
+          </span>
+          <kol-icon _icons="codicon codicon-error" _label="" class="kol-alert__icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <span class="kol-alert__content">
+              Es ist ein Fehler aufgetreten
+            </span>
           </div>
         </div>
       </div>
