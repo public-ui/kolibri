@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { AlertPropType, AlertProps, IdPropType, MsgPropType } from '../../schema';
+import type { AlertPropType, IdPropType, MsgPropType, NormalizedMsg } from '../../schema';
 import type { FunctionalComponent } from '@stencil/core';
 import { h } from '@stencil/core';
 import KolAlertFc from '../Alert';
@@ -10,8 +10,6 @@ type FormFieldMsgProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	msg?: MsgPropType;
 	id: IdPropType;
 };
-
-type NormalizedMsg = Omit<AlertProps, '_label' | '_variant'> & { _description: string };
 
 const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, id, class: classNames, ...other }) => {
 	const message: NormalizedMsg | undefined = typeof msg === 'string' ? { _description: msg, _type: 'error' } : msg;

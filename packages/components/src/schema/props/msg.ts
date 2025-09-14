@@ -5,11 +5,8 @@ import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject, isString } from '../validators';
 
 /* types */
-export type MsgPropType =
-	| (Omit<AlertProps, '_label' | '_variant'> & {
-			_description: string;
-	  })
-	| string;
+export type NormalizedMsg = Omit<AlertProps, '_label' | '_variant'> & { _description: string };
+export type MsgPropType = NormalizedMsg | string;
 
 /**
  * Defines the properties for a message rendered as Alert component.
@@ -41,7 +38,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 				}
 				// Allow object values with proper structure
 				if (isObject(value) && value !== null) {
-					const objValue = value as AlertProps & { _description: string };
+					const objValue = value as NormalizedMsg;
 					return isString(objValue._description, 1);
 				}
 
