@@ -19,7 +19,7 @@ import {
 	KolSelect,
 	KolTextarea,
 } from '@public-ui/react-v19';
-import type { FC } from 'react';
+import type { ComponentType, FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';
 import { useToasterService } from '../hooks/useToasterService';
@@ -120,13 +120,8 @@ export const DisabledInteractiveElements: FC = () => {
 					</div>
 				</KolCard>
 				{[KolInputCheckbox, KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputNumber, KolInputPassword, KolInputRange, KolInputText].map(
-					(Input) => {
-						const render = (
-							Input as typeof KolInputCheckbox & {
-								render: { displayName: string };
-							}
-						).render;
-						const name = render.displayName;
+					(Input: ComponentType<any>) => {
+						const name = (Input as unknown as { render: { displayName: string } }).render.displayName;
 						return (
 							<KolCard key={name} _label={name} _level={0}>
 								<div className="grid gap-4">
@@ -139,13 +134,8 @@ export const DisabledInteractiveElements: FC = () => {
 						);
 					},
 				)}
-				{[KolInputRadio, KolSelect].map((Input) => {
-					const render = (
-						Input as typeof KolInputRadio & {
-							render: { displayName: string };
-						}
-					).render;
-					const name = render.displayName;
+				{[KolInputRadio, KolSelect].map((Input: ComponentType<any>) => {
+					const name = (Input as unknown as { render: { displayName: string } }).render.displayName;
 					return (
 						<KolCard key={name} _label={name} _level={0}>
 							<div className="grid gap-4">

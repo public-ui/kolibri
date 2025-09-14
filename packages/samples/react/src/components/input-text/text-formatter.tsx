@@ -77,7 +77,7 @@ export function InputTextFormatterDemo() {
 													_touched={form.touched.iban}
 													_required
 													_on={{
-														onInput: (event, value: unknown) => {
+														onInput: (event: Event, value: unknown) => {
 															if (event.target) {
 																const parsed_value = formatter.parse((value as string) ?? '');
 

@@ -11,12 +11,13 @@ type ClassType =
 			[className: string]: boolean;
 	  };
 
-export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
+export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 'onClick'> & {
 	id: string;
 	open?: boolean;
 	disabled?: boolean;
 	level?: HeadingLevel;
 	label: string;
+	onClick?: (event: MouseEvent) => void;
 
 	HeadingProps?: {
 		ref?: ((elm?: HTMLKolHeadingWcElement | undefined) => void) | undefined;
