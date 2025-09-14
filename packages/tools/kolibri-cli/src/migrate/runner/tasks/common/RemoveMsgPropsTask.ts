@@ -1,4 +1,7 @@
 import fs from 'fs';
+import { parseExpression } from '@babel/parser';
+import generate from '@babel/generator';
+import type { ObjectExpression } from '@babel/types';
 
 import { MARKUP_EXTENSIONS } from '../../../../types';
 import { filterFilesByExt, MODIFIED_FILES } from '../../../shares/reuse';
@@ -23,12 +26,28 @@ export class RemoveMsgPropsTask extends AbstractTask {
 			let newContent = content;
 
 			newContent = newContent.replace(/_msg=\{\{([\s\S]*?)\}\}/g, (_match: string, body: string) => {
-				const updated: string = String(body)
-					.replace(/,?\s*_label:\s*[^,}]+/g, '')
-					.replace(/,?\s*_variant:\s*[^,}]+/g, '')
-					.replace(/,\s*}/g, ' }')
-					.replace(/\{\s*,/g, '{ ');
-				return `_msg={{${updated}}}`;
+				try {
+					const ast = parseExpression(body, { plugins: ['typescript'] });
+					if (ast.type === 'ObjectExpression') {
+						const obj = ast as ObjectExpression;
+						obj.properties = obj.properties.filter((prop) => {
+							if (prop.type === 'ObjectProperty') {
+								const { key } = prop;
+								if (key.type === 'Identifier') {
+									return key.name !== '_label' && key.name !== '_variant';
+								}
+								if (key.type === 'StringLiteral') {
+									return key.value !== '_label' && key.value !== '_variant';
+								}
+							}
+							return true;
+						});
+						return `_msg={{${generate(obj).code}}}`;
+					}
+				} catch {
+					/* ignore parsing errors */
+				}
+				return `_msg={{${body}}}`;
 			});
 
 			newContent = newContent.replace(/_msg=('([^']*)'|"([^"]*)")/g, (match: string, _p0: string, single: string, dbl: string) => {
