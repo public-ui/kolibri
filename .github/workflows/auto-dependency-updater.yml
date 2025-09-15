@@ -58,7 +58,7 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Create update branch
-        run: git checkout -b ${{ env.issue }}-${{ env.version }}/auto-update-deps-${{ matrix.base }}
+        run: git checkout -b ${{ env.issue }}-${{ env.version }}/auto-update-deps
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
@@ -69,7 +69,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           base: ${{ matrix.base }}
-          branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps-${{ matrix.base }}
+          branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
           commit-message: chore: update dependencies and lock file
           title: 'chore: update dependencies and lock file'
           body: 'Automated dependency updates from issue #${{ env.issue }}.'
