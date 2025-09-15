@@ -67,15 +67,6 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Quality Checks
-        if: steps.verify-changed-files.outputs.changed == 'true'
-        run: |
-          pnpm build
-          pnpm format
-          pnpm lint
-          pnpm test
-          pnpm unused
-
       - name: Create Pull Request
         if: steps.verify-changed-files.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v6
@@ -86,3 +77,12 @@ jobs:
           title: 'chore(${{ env.version }}): update dependencies and lock file'
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
+
+      - name: Quality Checks
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          pnpm build
+          pnpm format
+          pnpm lint
+          pnpm test
+          pnpm unused
