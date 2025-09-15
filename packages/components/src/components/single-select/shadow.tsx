@@ -262,6 +262,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			'aria-controls': 'listbox',
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
+			'aria-keyshortcuts': this.state._shortKey,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
 			autocorrect: 'off',
