@@ -2,7 +2,7 @@
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _accessKey="V" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         Label
@@ -20,7 +20,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _alert=true 1`] = `
 <kol-input-number _alert="" class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -37,7 +37,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _disabled=true 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -54,7 +54,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _hint="Hint" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -71,7 +71,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -88,7 +88,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -105,7 +105,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -122,7 +122,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-number _hide-error="" class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -139,7 +139,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -156,7 +156,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _readOnly=true 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _readonly="" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -173,7 +173,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _shortKey="S" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="number">
       <span slot="label">
         Label
@@ -191,7 +191,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -208,7 +208,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _accessKey="V" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         Label
@@ -226,7 +226,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _alert=true 1`] = `
 <kol-input-number _alert="" class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -243,7 +243,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _disabled=true 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -260,7 +260,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _hint="Hint" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -277,7 +277,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -294,7 +294,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -311,7 +311,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -328,7 +328,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-number _hide-error="" class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -345,7 +345,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -362,7 +362,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _readOnly=true 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _readonly="" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -379,7 +379,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _shortKey="S" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="number">
       <span slot="label">
         Label
@@ -397,7 +397,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -414,7 +414,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _touched=true 1`] = `
 <kol-input-number _touched="" class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="number">
       <span slot="label">
         <span>
@@ -431,7 +431,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>
@@ -448,7 +448,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _touched=true 1`] = `
 <kol-input-number _touched="" class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="number">
       <span slot="label">
         <span>
@@ -465,7 +465,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" 1`] = `
 <kol-input-number class="kol-input-number">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="number">
       <span slot="label">
         <span>

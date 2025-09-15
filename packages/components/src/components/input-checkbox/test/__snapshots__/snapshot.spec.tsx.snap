@@ -2,7 +2,7 @@
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _accessKey="V" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         Label
@@ -21,7 +21,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -39,7 +39,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _disabled=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -57,7 +57,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _hint="Hint" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -75,7 +75,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -93,7 +93,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -111,7 +111,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -129,7 +129,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -147,7 +147,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -165,7 +165,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _readOnly=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -183,7 +183,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _shortKey="S" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         Label
@@ -202,7 +202,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _touched=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -220,7 +220,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default" data-label-align="left">
       <span slot="label">
         <span>
@@ -238,7 +238,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _accessKey="V" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         Label
@@ -257,7 +257,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -275,7 +275,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _disabled=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -293,7 +293,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _hint="Hint" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -311,7 +311,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -329,7 +329,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -347,7 +347,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -365,7 +365,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -383,7 +383,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -401,7 +401,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _readOnly=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -419,7 +419,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _shortKey="S" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         Label
@@ -438,7 +438,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _touched=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -456,7 +456,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -474,7 +474,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _accessKey="V" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         Label
@@ -493,7 +493,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -511,7 +511,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _disabled=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -529,7 +529,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _hint="Hint" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -547,7 +547,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -565,7 +565,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -583,7 +583,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -601,7 +601,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -619,7 +619,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -637,7 +637,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _readOnly=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -655,7 +655,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _shortKey="S" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         Label
@@ -674,7 +674,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _touched=true 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -692,7 +692,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -710,7 +710,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _accessKey="V" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         Label
@@ -729,7 +729,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -747,7 +747,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _disabled=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -765,7 +765,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _hint="Hint" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -783,7 +783,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -801,7 +801,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -819,7 +819,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -837,7 +837,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -855,7 +855,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -873,7 +873,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _readOnly=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -891,7 +891,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _shortKey="S" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         Label
@@ -910,7 +910,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _touched=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -928,7 +928,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="left">
       <span slot="label">
         <span>
@@ -946,7 +946,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _accessKey="V" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         Label
@@ -965,7 +965,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -983,7 +983,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _disabled=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1001,7 +1001,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _hint="Hint" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1019,7 +1019,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1037,7 +1037,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1055,7 +1055,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1073,7 +1073,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1091,7 +1091,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1109,7 +1109,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _readOnly=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1127,7 +1127,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _shortKey="S" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         Label
@@ -1146,7 +1146,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _touched=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1164,7 +1164,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked default" data-label-align="right">
       <span slot="label">
         <span>
@@ -1182,7 +1182,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _accessKey="V" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         Label
@@ -1201,7 +1201,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1219,7 +1219,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _disabled=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1237,7 +1237,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _hint="Hint" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1255,7 +1255,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1273,7 +1273,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1291,7 +1291,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1309,7 +1309,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1327,7 +1327,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1345,7 +1345,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _readOnly=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1363,7 +1363,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _shortKey="S" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         Label
@@ -1382,7 +1382,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _touched=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1400,7 +1400,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="button checkbox checked" data-label-align="right" data-role="button">
       <span slot="label">
         <span>
@@ -1418,7 +1418,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _accessKey="V" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         Label
@@ -1437,7 +1437,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _alert=true 1`] = `
 <kol-input-checkbox _alert="" _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1455,7 +1455,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _disabled=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1473,7 +1473,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _hint="Hint" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1491,7 +1491,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1509,7 +1509,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1527,7 +1527,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1545,7 +1545,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1563,7 +1563,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1581,7 +1581,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _readOnly=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1599,7 +1599,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _shortKey="S" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         Label
@@ -1618,7 +1618,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _touched=true 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1636,7 +1636,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox checked switch" data-label-align="right">
       <span slot="label">
         <span>
@@ -1654,7 +1654,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _accessKey="V" 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         Label
@@ -1673,7 +1673,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _alert=true 1`] = `
 <kol-input-checkbox _alert="" _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1691,7 +1691,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _disabled=true 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1709,7 +1709,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _hint="Hint" 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1727,7 +1727,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1745,7 +1745,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1763,7 +1763,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1781,7 +1781,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-checkbox _hide-error="" _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1799,7 +1799,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1817,7 +1817,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _readOnly=true 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1835,7 +1835,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _shortKey="S" 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         Label
@@ -1854,7 +1854,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _touched=true 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>
@@ -1872,7 +1872,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext" class="kol-input-checkbox">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="checkbox default indeterminate" data-label-align="right">
       <span slot="label">
         <span>

@@ -2,7 +2,7 @@
 
 exports[`kol-split-button should render with _label="Label" _disabled=true 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _disabled="" _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -17,7 +17,7 @@ exports[`kol-split-button should render with _label="Label" _disabled=true 1`] =
 
 exports[`kol-split-button should render with _label="Label" _hideLabel=true 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _hidelabel="" _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -32,7 +32,7 @@ exports[`kol-split-button should render with _label="Label" _hideLabel=true 1`] 
 
 exports[`kol-split-button should render with _label="Label" _icons="codicon codicon-git-pull-request" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _icons="codicon codicon-git-pull-request" _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -47,7 +47,7 @@ exports[`kol-split-button should render with _label="Label" _icons="codicon codi
 
 exports[`kol-split-button should render with _label="Label" _name="Name" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _name="Name" _tooltipalign="top" _type="button" _variant="normal" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -62,7 +62,7 @@ exports[`kol-split-button should render with _label="Label" _name="Name" 1`] = `
 
 exports[`kol-split-button should render with _label="Label" _variant="danger" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="danger" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -77,7 +77,7 @@ exports[`kol-split-button should render with _label="Label" _variant="danger" 1`
 
 exports[`kol-split-button should render with _label="Label" _variant="ghost" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="ghost" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -92,7 +92,7 @@ exports[`kol-split-button should render with _label="Label" _variant="ghost" 1`]
 
 exports[`kol-split-button should render with _label="Label" _variant="normal" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -107,7 +107,7 @@ exports[`kol-split-button should render with _label="Label" _variant="normal" 1`
 
 exports[`kol-split-button should render with _label="Label" _variant="primary" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="primary" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -122,7 +122,7 @@ exports[`kol-split-button should render with _label="Label" _variant="primary" 1
 
 exports[`kol-split-button should render with _label="Label" _variant="secondary" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="secondary" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>
@@ -137,7 +137,7 @@ exports[`kol-split-button should render with _label="Label" _variant="secondary"
 
 exports[`kol-split-button should render with _label="Label" 1`] = `
 <kol-split-button class="kol-split-button">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="split-button-root">
       <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="button main-button"></kol-button-wc>
       <div class="horizontal-line"></div>

@@ -2,7 +2,7 @@
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _accessKey="V" 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _accesskey="V" _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         Label
@@ -20,7 +20,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _alert=true 1`] = `
 <kol-input-text _alert="" class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -37,7 +37,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _disabled=true 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -54,7 +54,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _hint="Hint" 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -71,7 +71,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -88,7 +88,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -105,7 +105,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -122,7 +122,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-text _hide-error="" class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -139,7 +139,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -156,7 +156,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _readOnly=true 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _readonly="" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -173,7 +173,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _shortKey="S" 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         Label
@@ -191,7 +191,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -208,7 +208,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _touched=true 1`] = `
 <kol-input-text _touched="" class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _alert="" _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" class="text" role="presentation">
       <span slot="label">
         <span>
@@ -225,7 +225,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 
 exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" 1`] = `
 <kol-input-text class="has-value kol-input-text">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <kol-input _currentlength="5" _currentlengthdebounced="5" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="text" role="presentation">
       <span slot="label">
         <span>
