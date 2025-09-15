@@ -14,7 +14,7 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 			<KolInputText
 				{...props}
 				_hint={HINT_MSG}
-				_msg={{ _type: 'error', _description: ERROR_MSG, _label: 'test headline' }}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_placeholder="With icons"
 				_icons={{
 					right: {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormFieldMsgFc should render with all props 1`] = `
-<div aria-hidden="true" class="custom-class kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" data-testid="alert" description="This is an error message" id="test-id-msg" role="alert">
+<div class="custom-class kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" data-testid="alert" id="test-id-msg" role="alert">
   <div class="kol-alert__container">
     <span class="visually-hidden">
       kol-error

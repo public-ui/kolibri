@@ -164,7 +164,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	private readonly controller: InputNumberController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -256,7 +256,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

@@ -214,10 +214,10 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 </kol-single-select>
 `;
 
-exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
-<kol-single-select _hide-msg="">
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-single-select _hide-msg="" _touched="">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
-    <div class="kol-form-field kol-form-field--hidden-msg kol-single-select">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -226,10 +226,10 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
@@ -314,7 +314,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>

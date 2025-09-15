@@ -3,25 +3,29 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
-import { checkHasMsg, type InternMsgPropType } from '../../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 
 export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement>> & {
 	value: string;
 	touched?: boolean;
-	msg?: InternMsgPropType;
+	msg?: Stringified<MsgPropType>;
+} & {
+	[key: `aria-${string}`]: unknown;
+	[key: `data-${string}`]: unknown;
 };
 
 const TextAreaFc: FC<TextAreaProps> = (props) => {
 	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, hideLabel, label, ...other } = props;
 
 	const showMsg = checkHasMsg(msg, touched);
+	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const stateCssClasses = {
 		['kol-textarea--disabled']: Boolean(disabled),
 		['kol-textarea--required']: Boolean(required),
 		['kol-textarea--touched']: Boolean(touched),
 		['kol-textarea--readonly']: Boolean(readonly),
-		[`kol-textarea--${msg?.type || 'error'}`]: showMsg,
+		[`kol-textarea--${msgType || 'error'}`]: showMsg,
 	};
 
 	const inputProps: JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> = {
