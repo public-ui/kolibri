@@ -291,7 +291,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 
