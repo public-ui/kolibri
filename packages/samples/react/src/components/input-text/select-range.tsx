@@ -8,22 +8,22 @@ export const InputTextSelectRange = () => {
 	function setSelectioStart() {
 		textInput.current?.focus();
 		textInput.current?.setSelectionStart(8);
-		console.log(textInput.current?._selectionStart);
-		console.log(textInput.current?.selectionStart());
+		console.log('Prop: ' + textInput.current?._selectionStart);
+		textInput.current?.selectionStart().then((start) => console.log(start));
 	}
 
 	function setSelectionRange() {
 		textInput.current?.focus();
 		textInput.current?.setSelectionRange(2, 5);
-		console.log(textInput.current?._selectionStart);
-		console.log(textInput.current?.selectionStart());
+		console.log('Prop: ' + textInput.current?._selectionStart);
+		textInput.current?.selectionStart().then((start) => console.log(start));
 	}
 
 	function setRangeText() {
 		textInput.current?.focus();
 		textInput.current?.setRangeText('INSERTED', 5, 9, 'select');
-		console.log(textInput.current?._selectionStart);
-		console.log(textInput.current?.selectionStart());
+		textInput.current?.selectionStart().then((start) => console.log(start));
+		textInput.current?.getValue().then((val) => console.log(val));
 	}
 
 	return (
@@ -36,8 +36,6 @@ export const InputTextSelectRange = () => {
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
-				<p>value: {textInput.current?._value}</p>
-				<p>selection start: {textInput.current?._selectionStart}</p>
 			</div>
 		</>
 	);
