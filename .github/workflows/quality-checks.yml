@@ -1,0 +1,59 @@
+name: Quality Checks
+
+on:
+  workflow_run:
+    workflows:
+      - Auto dependency updater
+    types:
+      - completed
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v4
+        id: pnpm-install
+        with:
+          version: 10
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build all packages
+        run: pnpm build
+
+      - name: Run Format Check
+        run: pnpm format
+
+      - name: Run Linting
+        run: pnpm lint
+
+      - name: Run Tests
+        run: pnpm test
+
+      - name: Run Unused Check
+        run: pnpm unused
