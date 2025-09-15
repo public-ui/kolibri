@@ -2,7 +2,6 @@ name: Auto dependency updater
 
 env:
   issue: 6350
-  version: v2
 
 on:
   schedule:
@@ -14,7 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        base: [main, release/2]
+        include:
+          - base: develop
+            version: v3
+          - base: release/2
+            version: v2
+    env:
+      version: ${{ matrix.version }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -53,7 +58,7 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Create update branch
-        run: git checkout -b ${{env.issue}}-${{env.version}}/auto-update-deps-${{ matrix.base }}
+        run: git checkout -b ${{ env.issue }}-${{ env.version }}/auto-update-deps-${{ matrix.base }}
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
