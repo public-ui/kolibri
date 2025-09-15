@@ -182,7 +182,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </kbd>
       </span>
       <div slot="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+        <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
       </div>
     </kol-input>
   </template>
@@ -388,7 +388,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </kbd>
       </span>
       <div slot="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+        <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
       </div>
     </kol-input>
   </template>

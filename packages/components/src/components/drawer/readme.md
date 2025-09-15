@@ -127,7 +127,6 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
@@ -137,7 +136,6 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 | `_modal`              | `_modal`  | <span style="color:red">**[DEPRECATED]**</span> Indicates whether the drawer is a modal.<br/><br/>                 | `boolean \| undefined`                                    | `undefined` |
 | `_on`                 | --        | Specifies the EventCallback function to be called when the drawer is closing.                                      | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
 | `_open`               | `_open`   | Opens/expands the element when truthy, closes/collapses when falsy.                                                | `boolean \| undefined`                                    | `undefined` |
-
 
 ## Methods
 
@@ -149,8 +147,6 @@ Closes the drawer.
 
 Type: `Promise<void>`
 
-
-
 ### `open() => Promise<void>`
 
 Opens the drawer.
@@ -159,16 +155,10 @@ Opens the drawer.
 
 Type: `Promise<void>`
 
-
-
-
 ## Slots
 
 | Slot | Description            |
 | ---- | ---------------------- |
 |      | The Content of drawer. |
 
-
-----------------------------------------------
-
-
+---

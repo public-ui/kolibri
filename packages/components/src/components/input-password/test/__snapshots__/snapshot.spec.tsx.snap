@@ -182,7 +182,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
         </kbd>
       </span>
       <div slot="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+        <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
       </div>
     </kol-input>
   </template>
