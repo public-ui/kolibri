@@ -68,7 +68,7 @@
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"prepare": "npx playwright install --with-deps chromium firefox webkit",
 		"prod": "stencil build --prod",
-		"test": "pnpm test:unit",
+		"test": "pnpm test:e2e && pnpm test:unit",
 		"test:e2e": "playwright test",
 		"test:unit": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",

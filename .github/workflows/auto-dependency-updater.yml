@@ -57,6 +57,15 @@ jobs:
         run: pnpm run update
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
+
+      - name: Quality Checks
+        run: |
+          pnpm build
+          pnpm format
+          pnpm lint
+          pnpm test
+          pnpm unused
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
