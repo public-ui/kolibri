@@ -16,6 +16,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - base: develop
@@ -30,17 +31,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ matrix.base }}
           persist-credentials: false
-
-      # - uses: pnpm/action-setup@v4
-      #   with:
-      #     run_install: false
-      #     version: 8
-      # - uses: actions/setup-node@v5
-      #   with:
-      #     cache: pnpm
-      #     node-version: 22
-
-      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - uses: actions/setup-node@v5
         with:
           # cache: pnpm
@@ -61,8 +51,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
-      - name: Create update branch
-        run: git checkout -b ${{ env.issue }}-${{ env.version }}/auto-update-deps
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
@@ -75,5 +63,6 @@ jobs:
           base: ${{ matrix.base }}
           branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
           commit-message: 'chore: update dependencies and lock file'
-          title: 'chore: update dependencies and lock file'
-          body: 'Automated dependency updates from issue #${{ env.issue }}.'
+          title: 'chore(${{ env.version }}): update dependencies and lock file'
+          body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
+          delete-branch: true
