@@ -6,18 +6,21 @@
 	@include kol-card;
 
 	.kol-card__close-button {
-		color: inherit;
+		color: var(--color-primary);
 		background: transparent;
-		border: none;
 		cursor: pointer;
 
-		&:focus-visible {
-			@include focus-outline;
-		}
+		.kol-button {
+			&:focus {
+				@include focus-outline;
+			}
 
-		&:hover,
-		&:focus {
-			background-color: var(--kol-color-danger, red);
+			&:hover {
+				color: var(--color-light);
+				background-color: var(--color-danger);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-radius: var(--border-radius);
+			}
 		}
 	}
 }
