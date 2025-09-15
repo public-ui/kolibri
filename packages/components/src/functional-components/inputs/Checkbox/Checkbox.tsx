@@ -21,6 +21,7 @@ const InputWrapperFc: FC<InputProps> = ({ class: classNames, ...other }) => {
 
 const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default', icon, inputProps, ...other }) => {
 	const showMsg = checkHasMsg(inputProps?.msg, inputProps?.touched);
+	const msgType = typeof inputProps?.msg === 'string' ? 'error' : inputProps?.msg?._type;
 
 	const cssVariants = {
 		[`kol-checkbox--variant-${variant}`]: true,
@@ -29,7 +30,7 @@ const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default',
 		['kol-checkbox--disabled']: Boolean(inputProps?.disabled),
 		['kol-checkbox--required']: Boolean(inputProps?.required),
 		['kol-checkbox--touched']: Boolean(inputProps?.touched),
-		[`kol-checkbox--${inputProps?.msg?.type || 'error'}`]: Boolean(showMsg),
+		[`kol-checkbox--${msgType || 'error'}`]: Boolean(showMsg),
 	};
 
 	return (

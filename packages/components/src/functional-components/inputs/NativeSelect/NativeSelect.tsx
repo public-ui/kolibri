@@ -4,14 +4,14 @@ import clsx from 'clsx';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 import NativeOptionListFc, { type NativeOptionListProps } from '../NativeOptionList';
-import { checkHasMsg, type InternMsgPropType } from '../../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 
 type SelectAttributes = JSXBase.SelectHTMLAttributes<HTMLSelectElement>;
 
 export type SelectProps = DefaultInputProps<SelectAttributes> &
 	NativeOptionListProps & {
 		touched?: boolean;
-		msg?: InternMsgPropType;
+		msg?: Stringified<MsgPropType>;
 	};
 
 const NativeSelectFc: FC<SelectProps> = (props) => {
@@ -32,12 +32,13 @@ const NativeSelectFc: FC<SelectProps> = (props) => {
 	} = props;
 
 	const showMsg = checkHasMsg(msg, touched);
+	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const stateCssClasses = {
 		['kol-select--disabled']: Boolean(disabled),
 		['kol-select--required']: Boolean(required),
 		['kol-select--touched']: Boolean(touched),
-		[`kol-select--${msg?.type || 'error'}`]: showMsg,
+		[`kol-select--${msgType || 'error'}`]: showMsg,
 	};
 
 	const inputProps: SelectAttributes = {

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v19",
-	"version": "3.0.5",
+	"version": "3.0.6-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -65,9 +65,9 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "19.2.14",
-		"@angular/compiler": "19.2.14",
-		"@angular/compiler-cli": "19.2.14",
+		"@angular/common": "19.2.15",
+		"@angular/compiler": "19.2.15",
+		"@angular/compiler-cli": "19.2.15",
 		"@angular/core": "19.2.14",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
@@ -80,7 +80,7 @@
 		"zone.js": "0.15.1"
 	},
 	"peerDependencies": {
-		"@angular/core": "^19.2.14",
+		"@angular/core": "^19.2.15",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [

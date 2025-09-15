@@ -12,7 +12,7 @@ import {
 	type InputTextStates,
 	type InputCheckboxStates,
 	type InputRadioStates,
-	convertMsgToInternMsg,
+	type MsgPropType,
 } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 import SuggestionsFc from '../../functional-components/Suggestions';
@@ -67,7 +67,7 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 	if ('_checked' in state) props.checked = state._checked;
 	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
 	if ('_touched' in state) props.touched = state._touched;
-	if ('_msg' in state) props.msg = convertMsgToInternMsg(state._msg);
+	if ('_msg' in state) props.msg = state._msg as MsgPropType;
 
 	if ('_suggestions' in state && !customSuggestions) {
 		const hasSuggestions = Array.isArray(state._suggestions) && state._suggestions.length > 0;

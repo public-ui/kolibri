@@ -215,6 +215,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: IdPropType;
 

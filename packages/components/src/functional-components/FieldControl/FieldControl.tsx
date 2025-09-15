@@ -1,7 +1,15 @@
 import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { type AlignPropType, type LabelAlignPropType, buildBadgeTextString, checkHasMsg, type InternMsgPropType, showExpertSlot } from '../../schema';
+import {
+	type AlignPropType,
+	type LabelAlignPropType,
+	buildBadgeTextString,
+	checkHasMsg,
+	type MsgPropType,
+	type Stringified,
+	showExpertSlot,
+} from '../../schema';
 import KolFieldControlTooltipFc from '../FormFieldTooltip';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 import KolFieldControlHintFc from '../FormFieldHint';
@@ -16,7 +24,7 @@ export type FieldControlProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> 
 	shortKey?: string;
 	tooltipAlign?: AlignPropType;
 	disabled?: boolean;
-	msg?: InternMsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 	required?: boolean;
 	readonly?: boolean;
@@ -74,6 +82,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 	const hasExpertSlot = showExpertSlot(label);
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
+	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const components = [
 		<>
@@ -113,7 +122,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		['kol-field-control--touched']: Boolean(touched),
 		['kol-field-control--hide-label']: Boolean(hideLabel),
 		['kol-field-control--read-only']: Boolean(readonly),
-		[`kol-field-control--${msg?.type || 'error'}`]: Boolean(showMsg),
+		[`kol-field-control--${msgType || 'error'}`]: Boolean(showMsg),
 		[`kol-field-control--label-align-${labelAlign}`]: Boolean(labelAlign),
 	};
 

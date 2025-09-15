@@ -8,7 +8,7 @@ import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/For
 import KolFormFieldTooltipFc from '../FormFieldTooltip';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import type { AlignPropType, InternMsgPropType, MaxLengthBehaviorPropType } from '../../schema';
+import type { AlignPropType, MsgPropType, MaxLengthBehaviorPropType, Stringified } from '../../schema';
 import { buildBadgeTextString, checkHasMsg, showExpertSlot } from '../../schema';
 
 function getModifierClassNameByMsgType(msg?: { type?: string }): string {
@@ -32,7 +32,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	id: string;
 	alert?: boolean;
 	disabled?: boolean;
-	msg?: InternMsgPropType;
+	msg?: Stringified<MsgPropType>;
 	tooltipAlign?: AlignPropType;
 	hint?: string;
 	label: string;
@@ -107,6 +107,8 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
 
+	const msgType = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
+
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),
 		['kol-form-field--required']: Boolean(required),
@@ -119,8 +121,8 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	if (showMsg) {
 		stateCssClasses = {
 			...stateCssClasses,
-			[`kol-form-field--${msg?.type || 'error'}`]: true,
-			[`kol-form-field--${getModifierClassNameByMsgType(msg)}`]: true,
+			[`kol-form-field--${msgType || 'error'}`]: true,
+			[`kol-form-field--${getModifierClassNameByMsgType({ type: msgType })}`]: true,
 		};
 	}
 
@@ -145,7 +147,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 			</InputContainer>
 			{counter ? <KolFormFieldCounterFc {...counter} /> : null}
 			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
-			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideMsg={hideMsg} />}
+			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
 		</Component>
