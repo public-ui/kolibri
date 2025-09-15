@@ -52,6 +52,10 @@ You can find more information about Breaking Changes in the documentation [BREAK
 
 You can find more information about Breaking Changes in the documentation [BREAKING_CHANGES.v3.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v3.md).
 
+### Breaking changes for version 4
+
+You can find more information about Breaking Changes in the documentation [BREAKING_CHANGES.v4.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v4.md).
+
 ## Perform migration
 
 > [!TIP]

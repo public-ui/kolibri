@@ -169,6 +169,7 @@ export class KolTooltipWc implements TooltipAPI {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @internal
 	 */
 	@Prop() public _id?: IdPropType;
 

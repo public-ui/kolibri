@@ -11,7 +11,7 @@ import {
 	type InputCheckboxStates,
 	type InputRadioStates,
 	type SelectStates,
-	convertMsgToInternMsg,
+	type MsgPropType,
 } from '../../schema';
 
 type InputState =
@@ -34,7 +34,7 @@ function getFieldControlProps(state: InputState): FieldControlProps {
 	const props: FieldControlProps = {
 		id: state._id,
 		disabled: state._disabled,
-		msg: convertMsgToInternMsg(state._msg),
+		msg: state._msg as MsgPropType,
 		hint: state._hint,
 		label: state._label,
 		hideLabel: state._hideLabel,
