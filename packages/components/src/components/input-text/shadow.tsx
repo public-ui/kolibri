@@ -83,6 +83,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		this._value = this.inputRef?.value ?? '';
+		this._selectionStart = this.inputRef?.selectionStart ?? undefined;
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -113,28 +114,57 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Get selection start of internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async selectionStart(): Promise<number | null | undefined> {
 		return this.inputRef?.selectionStart;
 	}
 
+	/**
+	 * Get selection end of internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async selectionEnd(): Promise<number | null | undefined> {
 		return this.inputRef?.selectionEnd;
 	}
 
+	/**
+	 * Set selection start and end, and optional in which direction, of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
 		this.inputRef?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+		this.updateSelectionValues();
 	}
 
+	/**
+	 * Set selection start (and end = start) of internal element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setSelectionStart(selectionStart: number) {
 		this.inputRef?.setSelectionRange(selectionStart, selectionStart);
+		this.updateSelectionValues();
+	}
+
+	/**
+	 * Add string at position of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
+		if (selectionStart && selectionEnd) {
+			this.inputRef?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
+		} else {
+			this.inputRef?.setRangeText(replacement);
+		}
+
+		this.updateSelectionValues();
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -174,6 +204,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
+	}
+
+	private updateSelectionValues() {
+		this._selectionStart = this.inputRef?.selectionStart ?? undefined;
+		this._selectionEnd = this.inputRef?.selectionEnd ?? undefined;
 	}
 
 	private readonly controller: InputTextController;
@@ -325,6 +360,16 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
+
+	/**
+	 * Defines the selection start of the input.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _selectionStart?: number;
+
+	/**
+	 * Defines the selection end of the input.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _selectionEnd?: number;
 
 	@State() public state: InputTextStates = {
 		_currentLength: 0,
@@ -481,6 +526,16 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+	}
+
+	@Watch('_selectionStart')
+	public validateSelectionStart(value?: number): void {
+		this.controller.validateSelectionStart(value);
+	}
+
+	@Watch('_selectionEnd')
+	public validateSelectionEnd(value?: number): void {
+		this.controller.validateSelectionEnd(value);
 	}
 
 	public componentWillLoad(): void {
