@@ -213,8 +213,8 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       </span>
       <div slot="input">
         <div class="inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
-          <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-          <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+          <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+          <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
         </div>
       </div>
     </kol-input>
@@ -555,8 +555,8 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       </span>
       <div slot="input">
         <div class="inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
-          <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" list="id-nonce-list" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-          <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" max="10" min="1" name="field-number" step="1" type="number" value="5">
+          <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" list="id-nonce-list" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+          <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" max="10" min="1" name="field-number" step="1" type="number" value="5">
         </div>
         <datalist id="id-nonce-list">
           <option value="1"></option>

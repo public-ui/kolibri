@@ -254,7 +254,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
         <div slot="input">
           <div class="combobox__group">
-            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="combobox__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="id-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="combobox__input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
             <button class="combobox__icon" tabindex="-1">
               <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
             </button>

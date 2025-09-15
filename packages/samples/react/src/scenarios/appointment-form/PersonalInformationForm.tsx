@@ -66,7 +66,7 @@ export function PersonalInformationForm() {
 							_options={[{ label: 'Please select…', value: '' }, ...SALUTATION_OPTIONS]}
 							_required
 							_on={{
-								onChange: (event, values: unknown) => {
+								onChange: (event: Event, values: unknown) => {
 									if (event.target) {
 										const [value] = values as [FormValues['salutation']];
 										void form.setFieldValue('salutation', value, true);
@@ -95,7 +95,7 @@ export function PersonalInformationForm() {
 									_touched={form.touched.company}
 									_required
 									_on={{
-										onChange: (event, value: unknown) => {
+										onChange: (event: Event, value: unknown) => {
 											if (event.target) {
 												void form.setFieldValue('company', value, true);
 											}
@@ -124,7 +124,7 @@ export function PersonalInformationForm() {
 								_touched={form.touched.name}
 								_required
 								_on={{
-									onChange: (event, value: unknown) => {
+									onChange: (event: Event, value: unknown) => {
 										if (event.target) {
 											void form.setFieldValue('name', value, true);
 										}
@@ -149,7 +149,7 @@ export function PersonalInformationForm() {
 								_touched={form.touched.email}
 								_required
 								_on={{
-									onChange: (event, value: unknown) => {
+									onChange: (event: Event, value: unknown) => {
 										if (event.target) {
 											void form.setFieldValue('email', value, true);
 										}
@@ -174,7 +174,7 @@ export function PersonalInformationForm() {
 								}}
 								_touched={form.touched.phone}
 								_on={{
-									onChange: (event, value: unknown) => {
+									onChange: (event: Event, value: unknown) => {
 										if (event.target) {
 											void form.setFieldTouched('phone', true);
 											void form.setFieldValue('phone', value, true);

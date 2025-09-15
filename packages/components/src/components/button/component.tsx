@@ -123,6 +123,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					aria-haspopup={this._ariaHasPopup}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
+					aria-keyshortcuts={this.state._shortKey}
 					class={{
 						button: true,
 						disabled: this.state._disabled === true,
@@ -173,7 +174,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -251,7 +252,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

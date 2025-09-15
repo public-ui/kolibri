@@ -284,6 +284,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									aria-controls="listbox"
 									value={this._inputValue}
 									accessKey={this.state._accessKey}
+									aria-keyshortcuts={this.state._shortKey}
 									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 									aria-activedescendant={this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined}
@@ -512,7 +513,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@State()
 	private blockSuggestionMouseOver: boolean = false;
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -592,7 +593,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 
