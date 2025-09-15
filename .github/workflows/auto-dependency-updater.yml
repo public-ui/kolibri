@@ -5,17 +5,21 @@ env:
   version: v2
 
 on:
-  # schedule:
-  #   - cron: '0 2 * * *'
+  schedule:
+    - cron: '0 2 * * 0'
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        base: [main, release/2]
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          ref: ${{ matrix.base }}
           persist-credentials: false
 
       # - uses: pnpm/action-setup@v4
@@ -49,23 +53,19 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Create update branch
-        run: git checkout -b ${{env.issue}}-${{env.version}}/auto-update-deps
+        run: git checkout -b ${{env.issue}}-${{env.version}}/auto-update-deps-${{ matrix.base }}
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
         run: pnpm ncu:minor
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
-      - name: Commit changed files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add **/package.json pnpm-lock.yaml
-          git status
-          HUSKY=0 git commit -m "chore: update dependencies and lock file"
-
-      - uses: ad-m/github-push-action@master
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{env.issue}}-${{env.version}}/auto-update-deps
-          force: true
+          base: ${{ matrix.base }}
+          branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps-${{ matrix.base }}
+          commit-message: chore: update dependencies and lock file
+          title: 'chore: update dependencies and lock file'
+          body: 'Automated dependency updates from issue #${{ env.issue }}.'
+
