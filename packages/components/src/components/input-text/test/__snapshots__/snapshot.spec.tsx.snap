@@ -263,7 +263,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+            <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
           </div>
         </div>
       </div>

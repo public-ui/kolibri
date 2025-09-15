@@ -263,7 +263,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+            <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
           </div>
         </div>
       </div>

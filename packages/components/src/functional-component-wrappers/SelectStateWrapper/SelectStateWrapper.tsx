@@ -28,6 +28,8 @@ function getSelectProps(state: SelectStates): SelectProps {
 		msg: state._msg as MsgPropType,
 	};
 
+	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
+
 	return props;
 }
 

@@ -33,6 +33,7 @@ function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>):
 	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') {
 		props.maxLength = state._maxLength;
 	}
+	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
 	return props;
 }

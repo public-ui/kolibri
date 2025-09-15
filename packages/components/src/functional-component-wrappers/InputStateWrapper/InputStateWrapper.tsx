@@ -68,6 +68,7 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
 	if ('_touched' in state) props.touched = state._touched;
 	if ('_msg' in state) props.msg = state._msg as MsgPropType;
+	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
 	if ('_suggestions' in state && !customSuggestions) {
 		const hasSuggestions = Array.isArray(state._suggestions) && state._suggestions.length > 0;

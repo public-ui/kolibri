@@ -294,8 +294,8 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-input-color__inputs-wrapper">
-              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" name="field-color" tabindex="-1" type="color" value="#FFF">
-              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+              <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" name="field-color" tabindex="-1" type="color" value="#FFF">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
             </div>
           </div>
         </div>
@@ -629,8 +629,8 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-input-color__inputs-wrapper">
-              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" list="id-nonce-list" name="field-color" tabindex="-1" type="color" value="#FFF">
-              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" list="id-nonce-list" name="field-color" tabindex="-1" type="color" value="#FFF">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
             </div>
           </div>
         </div>

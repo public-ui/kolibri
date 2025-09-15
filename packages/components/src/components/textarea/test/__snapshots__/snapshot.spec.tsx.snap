@@ -252,7 +252,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
-          <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          <div class="kol-input-container__container"><textarea aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-textarea" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
         </div>
       </div>
