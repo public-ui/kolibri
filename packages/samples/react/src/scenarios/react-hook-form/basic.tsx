@@ -18,7 +18,7 @@ import {
 	KolInputRadioController,
 	KolInputCheckboxController,
 } from '@public-ui/react-hook-form-adapter';
-import { KolButton } from '@public-ui/react';
+import { KolButton } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../../shares/country';
