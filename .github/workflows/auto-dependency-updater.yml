@@ -62,7 +62,7 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
-        run: pnpm ncu:minor
+        run: pnpm run update
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
       - name: Create Pull Request
