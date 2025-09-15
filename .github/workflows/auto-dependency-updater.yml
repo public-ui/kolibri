@@ -70,7 +70,6 @@ jobs:
         with:
           base: ${{ matrix.base }}
           branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
-          commit-message: chore: update dependencies and lock file
+          commit-message: 'chore: update dependencies and lock file'
           title: 'chore: update dependencies and lock file'
           body: 'Automated dependency updates from issue #${{ env.issue }}.'
-
