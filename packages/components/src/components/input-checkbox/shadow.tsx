@@ -138,7 +138,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
-							aria-keyshortcuts={this.state._shortKey || undefined}
+							aria-keyshortcuts={this.state._shortKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							checked={this.state._checked}
@@ -172,7 +172,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private readonly controller: InputCheckboxController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
