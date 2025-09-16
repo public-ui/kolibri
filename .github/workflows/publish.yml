@@ -38,6 +38,10 @@ on:
           - rc
           - beta
           - alpha
+      password:
+        type: string
+        description: "Release-Passwort zur Bestätigung"
+        required: true
 
 jobs:
   publish:
@@ -47,6 +51,15 @@ jobs:
       id-token: write
       packages: write
     steps:
+      - name: Verify release password
+        run: |
+          provided="${{ github.event.inputs.password }}"
+          secret="${{ secrets.RELEASE_PASSWORD }}"
+          if [ -z "$provided" ] || \
+             [ "$(printf '%s' "$provided" | sha256sum | cut -d ' ' -f1)" != "$(printf '%s' "$secret" | sha256sum | cut -d ' ' -f1)" ]; then
+            echo "Invalid password"; exit 1
+          fi
+        shell: bash
       - uses: actions/create-github-app-token@v2
         id: app-token
         with:
