@@ -1,7 +1,7 @@
 import React from 'react';
 import { KolHeading, KolNav } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';
+import { LINKS, LINKS_WITHOUT_SUBMENU, LINKS_SUB_ACTIVE } from './links';
 
 import type { FC } from 'react';
 export const NavHorizontal: FC = () => (
@@ -18,6 +18,10 @@ export const NavHorizontal: FC = () => (
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Navigation with submenu" />
 				<KolNav _label="Navigation with submenu" _links={LINKS} _orientation="horizontal" />
+			</section>
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Navigation with submenu active" />
+				<KolNav _label="Navigation with submenu active" _links={LINKS_SUB_ACTIVE} _orientation="horizontal" />
 			</section>
 		</section>
 	</>

@@ -7,21 +7,23 @@
 	}
 
 	.kol-nav {
+		--kol-nav-item-padding-left: 0;
+		--kol-nav-item-padding-right: 16;
+
 		$root: &;
 
 		&__list {
 			list-style: none;
+			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
+			--kol-nav-nested-padding-left: calc(var(--kol-nav-item-padding-left) + 8);
 
-			// nested lists
-			&--nested {
-				padding-left: to-rem(16);
+			&-item {
+				--kol-nav-item-padding-left: calc(var(--kol-nav-nested-padding-left) + 8);
+			}
 
-				.kol-link,
-				.kol-button {
-					border-left-color: transparent !important;
-
-					font-weight: normal !important;
-				}
+			&--horizontal {
+				--kol-nav-item-padding-right: 8;
+				gap: 0 to-rem(16);
 			}
 		}
 
@@ -30,16 +32,13 @@
 				display: flex;
 			}
 
-			.kol-button:hover,
-			.kol-link:hover {
-				text-decoration: underline;
-			}
-
 			.kol-link,
 			.kol-button {
 				color: var(--color-primary);
 				display: flex;
 				min-height: var(--a11y-min-size);
+				padding-right: to-rem(var(--kol-nav-item-padding-right));
+				padding-left: to-rem(8);
 				gap: to-rem(8);
 				align-items: center;
 
@@ -50,38 +49,20 @@
 				}
 
 				#{$root}__list--vertical & {
-					padding-right: to-rem(16);
-					padding-left: to-rem(16);
+					padding-left: to-rem(var(--kol-nav-item-padding-left));
 					border-left: 2px solid transparent;
 				}
 
-				#{$root}--horizontal & {
-					padding: 0 to-rem(16);
-				}
-
-				#{$root}--vertical #{$root}__list-item--active & {
+				#{$root}--vertical #{$root}__list-item--active > #{$root}__entry-wrapper & {
 					border-left-color: var(--color-primary);
 				}
 
-				#{$root}__list-item--active & {
+				#{$root}__list-item--active > #{$root}__entry-wrapper & {
 					font-weight: bold;
 				}
-			}
-		}
 
-		&__expand-button {
-			.kol-button {
-				&:hover {
-					color: var(--color-light);
-					background-color: var(--color-primary);
-				}
-
-				&:focus-visible {
-					@include focus-outline;
-				}
-
-				&__text {
-					justify-content: center;
+				&:hover .kol-span__label {
+					text-decoration: underline;
 				}
 			}
 		}
