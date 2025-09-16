@@ -14,13 +14,14 @@ const InputWrapperFc: FC<InputProps> = ({ class: classNames, ...other }) => {
 
 const RadioFc: FC<RadioProps> = ({ class: classNames, inputProps, ...other }) => {
 	const showMsg = checkHasMsg(inputProps?.msg, inputProps?.touched);
+	const msgType = typeof inputProps?.msg === 'string' ? 'error' : inputProps?.msg?._type;
 
 	const cssVariants = {
 		['kol-input-radio--checked']: inputProps?.checked,
 		['kol-input-radio--disabled']: Boolean(inputProps?.disabled),
 		['kol-input-radio--required']: Boolean(inputProps?.required),
 		['kol-input-radio--touched']: Boolean(inputProps?.touched),
-		[`kol-input-radio--${inputProps?.msg?.type || 'error'}`]: Boolean(showMsg),
+		[`kol-input-radio--${msgType || 'error'}`]: Boolean(showMsg),
 	};
 
 	return (

@@ -128,7 +128,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	private readonly controller: SelectController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -163,6 +163,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: IdPropType;
 
@@ -204,7 +205,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 
