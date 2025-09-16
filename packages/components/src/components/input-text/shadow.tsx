@@ -83,7 +83,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		this._value = this.inputRef?.value ?? '';
-		this._selectionStart = this.inputRef?.selectionStart ?? undefined;
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -94,6 +93,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				ref: this.inputRef,
 			});
 		}
+	};
+
+	private readonly onSelectionChange = (event: Event) => {
+		this.controller.onFacade.onSelectionChange(event);
 	};
 
 	/**
@@ -139,7 +142,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
 		this.inputRef?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
-		this.updateSelectionValues();
 	}
 
 	/**
@@ -149,7 +151,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setSelectionStart(selectionStart: number) {
 		this.inputRef?.setSelectionRange(selectionStart, selectionStart);
-		this.updateSelectionValues();
 	}
 
 	/**
@@ -163,8 +164,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		} else {
 			this.inputRef?.setRangeText(replacement);
 		}
-
-		this.updateSelectionValues();
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -193,6 +192,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
+			//	onSelectionChange: this.onSelectionChange,
 		};
 	}
 
@@ -204,11 +204,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
-	}
-
-	private updateSelectionValues() {
-		this._selectionStart = this.inputRef?.selectionStart ?? undefined;
-		this._selectionEnd = this.inputRef?.selectionEnd ?? undefined;
 	}
 
 	private readonly controller: InputTextController;
@@ -361,16 +356,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
-
-	/**
-	 * Defines the selection start of the input.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _selectionStart?: number;
-
-	/**
-	 * Defines the selection end of the input.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _selectionEnd?: number;
 
 	@State() public state: InputTextStates = {
 		_currentLength: 0,
@@ -529,16 +514,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.oldValue = value;
 	}
 
-	@Watch('_selectionStart')
-	public validateSelectionStart(value?: number): void {
-		this.controller.validateSelectionStart(value);
-	}
-
-	@Watch('_selectionEnd')
-	public validateSelectionEnd(value?: number): void {
-		this.controller.validateSelectionEnd(value);
-	}
-
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
 		this.oldValue = this._value;
@@ -546,5 +521,18 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+	}
+
+	public componentDidLoad(): void {
+		this.inputRef?.addEventListener('selectionchange', this.onSelectionChange);
+
+		if (this.inputRef) {
+			// eslint-disable-next-line no-console
+			this.inputRef.addEventListener('selectionchange', (ev) => console.log('selectionchange', ev));
+			// eslint-disable-next-line no-console
+			this.inputRef.onselectionchange = (ev) => console.log('onselectionchange', ev);
+			// eslint-disable-next-line no-console
+			this.inputRef.addEventListener('focus', (ev) => console.log('focus', ev));
+		}
 	}
 }

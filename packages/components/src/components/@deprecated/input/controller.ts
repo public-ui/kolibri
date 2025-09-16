@@ -254,6 +254,16 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	protected onSelectionChange(event: Event): void {
+		// Event handling
+		this.emitEvent(KolEvent.selectionChange);
+
+		// Callback
+		if (typeof this.component._on?.onSelectionChange === 'function') {
+			this.component._on.onSelectionChange(event);
+		}
+	}
+
 	public addValueChangeListener(listener: ValueChangeListener) {
 		this.valueChangeListeners.push(listener);
 	}
@@ -272,6 +282,7 @@ export class InputController extends ControlledInputController implements Watche
 		onClick: this.onClick.bind(this),
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
+		onSelectionChange: this.onSelectionChange.bind(this),
 	};
 
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {

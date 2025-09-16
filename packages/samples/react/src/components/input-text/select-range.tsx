@@ -5,26 +5,28 @@ import { KolButtonLink, KolInputText } from '@public-ui/react-v19';
 export const InputTextSelectRange = () => {
 	const textInput = React.useRef<HTMLKolInputTextElement>(null);
 
+	const inputRef = React.useRef<HTMLInputElement>(null);
+
 	function setSelectioStart() {
 		textInput.current?.focus();
 		textInput.current?.setSelectionStart(8);
-		console.log('Prop: ' + textInput.current?._selectionStart);
-		textInput.current?.selectionStart().then((start) => console.log(start));
 	}
 
 	function setSelectionRange() {
 		textInput.current?.focus();
 		textInput.current?.setSelectionRange(2, 5);
-		console.log('Prop: ' + textInput.current?._selectionStart);
-		textInput.current?.selectionStart().then((start) => console.log(start));
 	}
 
 	function setRangeText() {
 		textInput.current?.focus();
 		textInput.current?.setRangeText('INSERTED', 5, 9, 'select');
-		textInput.current?.selectionStart().then((start) => console.log(start));
-		textInput.current?.getValue().then((val) => console.log(val));
 	}
+
+	React.useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.addEventListener('selectionchange', (ev) => console.log(ev));
+		}
+	}, []);
 
 	return (
 		<>
@@ -36,6 +38,7 @@ export const InputTextSelectRange = () => {
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
+				<input type="text" value="Very long value" ref={inputRef} />
 			</div>
 		</>
 	);
