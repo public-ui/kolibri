@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { KolButton, KolInputDate, KolInputText } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
-const DEFAULT_GERMAN_DATE = '31.12.2025';
+const DEFAULT_DOT_SEPARATED_DATE = '31.12.2025';
 
 const pad2 = (value: number): string => String(value).padStart(2, '0');
 
-const parseGermanDate = (value: string): string | null => {
+const parseDotSeparatedDate = (value: string): string | null => {
 	const match = value.trim().match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
 	if (!match) {
 		return null;
@@ -37,12 +37,12 @@ const toIsoValue = (value: unknown): string => {
 };
 
 export const InputDateCopyPaste: React.FC = () => {
-	const [germanDate, setGermanDate] = useState<string>(DEFAULT_GERMAN_DATE);
-	const [isoDate, setIsoDate] = useState<string>(() => parseGermanDate(DEFAULT_GERMAN_DATE) ?? '');
+	const [dotSeparatedDate, setDotSeparatedDate] = useState<string>(DEFAULT_DOT_SEPARATED_DATE);
+	const [isoDate, setIsoDate] = useState<string>(() => parseDotSeparatedDate(DEFAULT_DOT_SEPARATED_DATE) ?? '');
 	const [status, setStatus] = useState<string>('');
 	const dateFieldRef = useRef<HTMLKolInputDateElement | null>(null);
 
-	const isGermanDateValid = useMemo(() => parseGermanDate(germanDate) !== null, [germanDate]);
+	const isDotSeparatedDateValid = useMemo(() => parseDotSeparatedDate(dotSeparatedDate) !== null, [dotSeparatedDate]);
 
 	useEffect(() => {
 		const host = dateFieldRef.current;
@@ -53,10 +53,10 @@ export const InputDateCopyPaste: React.FC = () => {
 		const handlePaste: EventListener = (event) => {
 			const clipboardEvent = event as ClipboardEvent;
 			const raw = clipboardEvent.clipboardData?.getData('text') ?? '';
-			const iso = parseGermanDate(raw);
+			const iso = parseDotSeparatedDate(raw);
 
 			if (!iso) {
-				setStatus('Clipboard: unrecognized date. Use DD.MM.YYYY.');
+				setStatus('Clipboard: unrecognised date. Use the dot-separated DD.MM.YYYY format.');
 				return;
 			}
 
@@ -69,20 +69,20 @@ export const InputDateCopyPaste: React.FC = () => {
 		return () => host.removeEventListener('paste', handlePaste);
 	}, []);
 
-	const handleGermanInput = useCallback((_event: Event, value: unknown) => {
+	const handleDotSeparatedInput = useCallback((_event: Event, value: unknown) => {
 		setStatus('');
-		setGermanDate(typeof value === 'string' ? value : String(value ?? ''));
+		setDotSeparatedDate(typeof value === 'string' ? value : String(value ?? ''));
 	}, []);
 
 	const copyToClipboard = useCallback(async () => {
 		setStatus('');
 		try {
-			await navigator.clipboard.writeText(germanDate);
+			await navigator.clipboard.writeText(dotSeparatedDate);
 			setStatus('Copied.');
 		} catch {
 			setStatus('Copy failed. Your browser may block clipboard access.');
 		}
-	}, [germanDate]);
+	}, [dotSeparatedDate]);
 
 	const handleIsoInput = useCallback((_event: Event, value: unknown) => {
 		setStatus('');
@@ -93,35 +93,35 @@ export const InputDateCopyPaste: React.FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Type a date in German format (<code>DD.MM.YYYY</code>), click <em>Copy to Clipboard</em>, then paste it into the date field below with <kbd>Ctrl</kbd>
-					+<kbd>V</kbd>. The ISO conversion happens internally.
+					Type a date in the dot-separated day-month-year format (<code>DD.MM.YYYY</code>) that many European locales use, click <em>Copy to Clipboard</em>,
+					then paste it into the date field below with <kbd>Ctrl</kbd>+<kbd>V</kbd>. The ISO conversion happens internally.
 				</p>
 			</SampleDescription>
 
 			<div className="grid gap-8" lang="en">
 				<section aria-labelledby="de-title">
 					<h3 id="de-title" className="text-lg font-semibold mb-2">
-						German date (DD.MM.YYYY)
+						Dot-separated date (DD.MM.YYYY)
 					</h3>
 
 					<div className="grid gap-3">
 						<KolInputText
 							className="w-full"
-							_label="German date (DD.MM.YYYY)"
+							_label="Dot-separated date (DD.MM.YYYY)"
 							_placeholder="e.g., 31.12.2025"
-							_value={germanDate}
+							_value={dotSeparatedDate}
 							_type="text"
 							_on={{
-								onInput: handleGermanInput,
-								onChange: handleGermanInput,
+								onInput: handleDotSeparatedInput,
+								onChange: handleDotSeparatedInput,
 							}}
 						/>
 
-						<small className="opacity-80">Click the button to copy the exact German date, then paste it into the date field below.</small>
+						<small className="opacity-80">Click the button to copy the characters exactly as typed, then paste them into the date field below.</small>
 
 						<div className="flex items-center gap-2">
-							<KolButton _label="Copy to Clipboard" _disabled={!isGermanDateValid} _on={{ onClick: copyToClipboard }} />
-							{!isGermanDateValid && <span className="text-red-600">Invalid date</span>}
+							<KolButton _label="Copy to Clipboard" _on={{ onClick: copyToClipboard }} />
+							{!isDotSeparatedDateValid && <span className="text-red-600">Invalid date (expected DD.MM.YYYY)</span>}
 						</div>
 
 						<KolInputDate
