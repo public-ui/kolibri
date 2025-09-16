@@ -15,6 +15,7 @@ export const PredefinedSettings: FC = () => {
 			<KolTableStateful
 				_label="Table for demonstration purposes with predefined settings"
 				_minWidth="auto"
+				_hasSettingsMenu
 				_headers={{
 					horizontal: [
 						[
