@@ -12,7 +12,10 @@
 
 		.kol-button {
 			&:focus {
-				@include focus-outline;
+				outline: var(--color-primary-variant) solid to-rem(3);
+				border-top-right-radius: var(--border-radius);
+				outline-offset: 2px;
+				transition: 200ms outline-offset linear;
 			}
 
 			&:focus,
