@@ -14,6 +14,7 @@ import { TableStatefulWithSingleSelection } from './stateful-with-single-selecti
 import { TableStateless } from './stateless';
 import { TableStatelessWithSelection } from './stateless-with-selection';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
+import { TableStickyHeader } from './sticky-header';
 import { TableWithFooter } from './with-footer';
 import { TableWithPagination } from './with-pagination';
 
@@ -34,6 +35,7 @@ export const TABLE_ROUTES: Routes = {
 		stateless: TableStateless,
 		'stateless-with-selection': TableStatelessWithSelection,
 		'stateless-with-single-selection': TableStatelessWithSingleSelection,
+		'sticky-header': TableStickyHeader,
 		'with-footer': TableWithFooter,
 		'with-pagination': TableWithPagination,
 	},
