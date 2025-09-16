@@ -91,18 +91,19 @@ export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, S
 
 	public render(): JSX.Element {
 		const { count, name } = this.controller.getProps();
+		const { eCount, label, show } = this;
 		return (
 			<Host>
 				<SkeletonFC
 					count={count}
-					eCount={this.eCount}
+					eCount={eCount}
 					handlePrimaryClick={this.controller.handlePrimaryClick}
 					handleSecondaryClick={this.controller.handleSecondaryClick}
-					label={this.label}
+					label={label}
 					name={name}
 					refPrimaryButton={this.controller.setPrimaryButtonRef}
 					refSecondaryButton={this.controller.setSecondaryButtonRef}
-					show={this.show}
+					show={show}
 				/>
 			</Host>
 		);
