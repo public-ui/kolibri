@@ -1,132 +1,160 @@
-// DrawerScrolled Class
-
 import type { AlignPropType } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputCheckbox } from '@public-ui/react-v19';
-import type { FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 import React, { useRef, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 import { DrawerRadioAlign } from './partials/align';
 
+type Dimensions = {
+	height?: string;
+	width?: string;
+};
+
+type DrawerHandle = {
+	close: () => void;
+	open: () => void;
+};
+
+const BACKGROUND_PATTERN =
+	'linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%)';
+
+const BASE_CONTENT_STYLE: CSSProperties = {
+	background: BACKGROUND_PATTERN,
+	backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
+	backgroundSize: '20px 20px',
+	border: '2px dashed #ccc',
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '20px',
+	padding: '20px',
+};
+
+const OVERFLOW_CONTAINER_STYLE: CSSProperties = {
+	border: '1px solid #999',
+	overflow: 'auto',
+	padding: 0,
+};
+
+const ACTIONS_STYLE: CSSProperties = {
+	marginTop: 'auto',
+	paddingTop: '40px',
+};
+
+const getContentDimensions = (align: AlignPropType): Dimensions => ({
+	height: align === 'top' || align === 'bottom' ? '150vh' : '400px',
+	width: align === 'left' || align === 'right' ? '150vw' : '400px',
+});
+
+const getContainerDimensions = (align: AlignPropType): Dimensions => ({
+	height: align === 'top' || align === 'bottom' ? '90vh' : undefined,
+	width: align === 'left' || align === 'right' ? '90vw' : undefined,
+});
+
+const formatDimensions = ({ width, height }: Dimensions): string => `${width ?? 'auto'} wide × ${height ?? 'auto'} high`;
+
+type OverflowPanelProps = {
+	children: ReactNode;
+	heading: string;
+	onClose: () => void;
+	style: CSSProperties;
+};
+
+const OverflowPanel: FC<OverflowPanelProps> = ({ heading, onClose, style, children }) => (
+	<div style={style}>
+		<p>{heading}</p>
+		<div>
+			<h3>Large Content Area</h3>
+			{children}
+			<div style={ACTIONS_STYLE}>
+				<KolButton _label="Close drawer" _on={{ onClick: onClose }} />
+			</div>
+		</div>
+	</div>
+);
+
+type OverflowExampleProps = {
+	align: AlignPropType;
+	handled: boolean;
+	onClose: () => void;
+};
+
+const OverflowExample: FC<OverflowExampleProps> = ({ align, handled, onClose }) => {
+	const contentDimensions = getContentDimensions(align);
+	const containerDimensions = getContainerDimensions(align);
+	const contentStyle: CSSProperties = { ...BASE_CONTENT_STYLE, ...contentDimensions };
+
+	const handledPanel = (
+		<OverflowPanel heading="✅ Content with overflow handling" onClose={onClose} style={contentStyle}>
+			<p>
+				<strong>Container:</strong> {formatDimensions(containerDimensions)}
+			</p>
+			<p>
+				<strong>Content:</strong> {formatDimensions(contentDimensions)}
+			</p>
+			<p>The wrapper limits the visible area and adds its own scrolling behaviour.</p>
+			<p>This is the recommended way to display very large content inside a drawer.</p>
+		</OverflowPanel>
+	);
+
+	if (handled) {
+		return <div style={{ ...OVERFLOW_CONTAINER_STYLE, ...containerDimensions }}>{handledPanel}</div>;
+	}
+
+	return (
+		<OverflowPanel heading="❌ Content without overflow handling" onClose={onClose} style={contentStyle}>
+			<p>
+				<strong>Content:</strong> {formatDimensions(contentDimensions)}
+			</p>
+			<p>The drawer tries to render this element at its full size, so it extends beyond the viewport.</p>
+			<p>
+				Add your own wrapper with <code>overflow: auto</code> to keep the layout under control.
+			</p>
+		</OverflowPanel>
+	);
+};
+
 export const DrawerScrolled: FC = () => {
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 	const [align, setAlign] = useState<AlignPropType>('bottom');
-	const [useOverflowHandling, setUseOverflowHandling] = useState(true);
+	const [isOverflowHandled, setOverflowHandled] = useState(true);
+
+	const getDrawerHandle = (): DrawerHandle | null => {
+		const element = drawerElement.current as Partial<DrawerHandle> | null;
+		if (element && typeof element.close === 'function' && typeof element.open === 'function') {
+			return element as DrawerHandle;
+		}
+		return null;
+	};
+
+	const closeDrawer = () => {
+		getDrawerHandle()?.close();
+	};
+
+	const openDrawer = () => {
+		getDrawerHandle()?.open();
+	};
 
 	return (
 		<>
 			<SampleDescription>
-				<p>
-					This sample demonstrates how KolDrawer handles content that exceeds the drawer dimensions and shows the correct way to handle overflow. Use the
-					&#34;Enable Overflow Handling&#34; toggle to see the difference between problematic behavior (content exceeding drawer bounds) and the proper solution
-					(overflow handling within the slot content).
-				</p>
+				<p>KolDrawer renders the provided slot content. When that content is larger than the drawer you should limit it with your own scrollable wrapper.</p>
+				<p>Use the toggle to compare the recommended approach with content that breaks the layout because overflow is not handled.</p>
 			</SampleDescription>
 
 			<div className="flex flex-col gap-4 mb-4">
 				<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 				<KolInputCheckbox
-					_label="Enable Overflow Handling (Recommended)"
-					_checked={useOverflowHandling}
-					_on={{ onChange: (_, value) => setUseOverflowHandling(!!value) }}
+					_label="Enable overflow handling (recommended)"
+					_checked={isOverflowHandled}
+					_on={{ onChange: (_, value) => setOverflowHandled(Boolean(value)) }}
 				/>
 			</div>
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="Scrollable Drawer" _align={align}>
-					{useOverflowHandling ? (
-						// ✅ Correct approach: Outer container with fixed dimensions and overflow handling
-						<div
-							style={{
-								width: align === 'left' || align === 'right' ? '90vw' : undefined,
-								height: align === 'top' || align === 'bottom' ? '90vh' : undefined,
-								overflow: 'auto',
-								padding: '0',
-								border: '1px solid #999',
-							}}
-						>
-							<div
-								style={{
-									width: align === 'left' || align === 'right' ? '150vw' : undefined,
-									height: align === 'top' || align === 'bottom' ? '150vh' : undefined,
-									background:
-										'linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%)',
-									backgroundSize: '20px 20px',
-									backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
-									border: '2px dashed #ccc',
-									padding: '20px',
-									display: 'flex',
-									flexDirection: 'column',
-									gap: '20px',
-								}}
-							>
-								<p>✅ Content with proper overflow handling - scrollable within drawer bounds</p>
-								<div>
-									<h3>Large Content Area (Scrollable)</h3>
-									<p>
-										Container: {align === 'left' || align === 'right' ? '400px wide' : '90vw wide'} ×{' '}
-										{align === 'top' || align === 'bottom' ? '90vh high' : '400px high'}
-									</p>
-									<p>
-										Content: {align === 'left' || align === 'right' ? '150vw wide' : '400px wide'} ×{' '}
-										{align === 'top' || align === 'bottom' ? '150vh high' : '400px high'}
-									</p>
-									<p>
-										<strong>Overflow Handling:</strong> Enabled - Container has fixed size with overflow: auto
-									</p>
-									<p>
-										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-										dolor sit amet.
-									</p>
-									<p>
-										With overflow handling enabled, this content scrolls properly within the drawer container. You can scroll horizontally/vertically to see all
-										content.
-									</p>
-									<div style={{ marginTop: 'auto', paddingTop: '40px' }}>
-										<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
-									</div>
-								</div>
-							</div>
-						</div>
-					) : (
-						// ❌ Problematic approach: Content directly exceeds drawer bounds
-						<div
-							style={{
-								width: align === 'left' || align === 'right' ? '150vw' : '400px',
-								height: align === 'top' || align === 'bottom' ? '150vh' : '400px',
-								background:
-									'linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%)',
-								backgroundSize: '20px 20px',
-								backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
-								border: '2px dashed #ccc',
-								padding: '20px',
-								display: 'flex',
-								flexDirection: 'column',
-								gap: '20px',
-							}}
-						>
-							<p>❌ Content exceeding drawer bounds - problematic behavior</p>
-							<div>
-								<h3>Large Content Area</h3>
-								<p>Width: {align === 'left' || align === 'right' ? '150vw (exceeds drawer width)' : '400px'}</p>
-								<p>Height: {align === 'top' || align === 'bottom' ? '150vh (exceeds drawer height)' : '400px'}</p>
-								<p>
-									<strong>Overflow Handling:</strong> Disabled - Content extends beyond drawer boundaries
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-									dolor sit amet.
-								</p>
-								<p>Without overflow handling, this content may extend beyond the drawer boundaries, causing layout issues.</p>
-								<div style={{ marginTop: 'auto', paddingTop: '40px' }}>
-									<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
-								</div>
-							</div>
-						</div>
-					)}
+				<KolDrawer ref={drawerElement} _label="Scrollable drawer" _align={align}>
+					<OverflowExample align={align} handled={isOverflowHandled} onClose={closeDrawer} />
 				</KolDrawer>
 
-				<KolButton _label="Open scrollable drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
+				<KolButton _label="Open scrollable drawer" _on={{ onClick: openDrawer }} />
 			</div>
 		</>
 	);
