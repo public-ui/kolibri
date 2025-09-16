@@ -1,29 +1,33 @@
-import clsx from 'clsx';
-import type { AlertPropType, HideMsgPropType, IdPropType, InternMsgPropType } from '../../schema';
-import type { FunctionalComponent } from '@stencil/core';
-import { h } from '@stencil/core';
-import KolAlertFc from '../Alert';
+import { type FunctionalComponent, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import clsx from 'clsx';
+
+import { type AlertPropType, type IdPropType, type MsgPropType, normalizeMsg, type Stringified } from '../../schema';
+import KolAlertFc from '../Alert';
 
 type FormFieldMsgProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	alert?: AlertPropType;
-	msg?: InternMsgPropType;
-	hideMsg?: HideMsgPropType;
+	msg?: Stringified<MsgPropType>;
 	id: IdPropType;
 };
 
-const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, hideMsg, id, class: classNames, ...other }) => (
-	<KolAlertFc
-		id={`${id}-msg`}
-		alert={alert}
-		type="error"
-		class={clsx('kol-form-field__msg', { 'visually-hidden': hideMsg === true }, classNames)}
-		{...msg}
-		{...other}
-		aria-hidden="true"
-	>
-		{msg?.description || undefined}
-	</KolAlertFc>
-);
+const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, id, class: classNames, ...other }) => {
+	const message = normalizeMsg(msg);
+
+	return (
+		<KolAlertFc
+			id={`${id}-msg`}
+			alert={message?._alert ?? alert}
+			hasCloser={false}
+			level={0}
+			type={message?._type ?? 'error'}
+			variant="msg"
+			class={clsx('kol-form-field__msg', classNames)}
+			{...other}
+		>
+			{message?._description || undefined}
+		</KolAlertFc>
+	);
+};
 
 export default FormFieldMsgFc;

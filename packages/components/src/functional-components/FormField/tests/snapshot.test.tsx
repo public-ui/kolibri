@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import KolFormFieldFc from '../FormField';
-import type { InternMsgPropType } from '../../../schema';
+import type { MsgPropType } from '../../../schema';
 
 describe('KolFormFieldFc', () => {
 	it('should render correctly', async () => {
@@ -29,7 +29,7 @@ describe('KolFormFieldFc', () => {
 	});
 
 	it('should render with error message', async () => {
-		const msg: InternMsgPropType = { type: 'error', description: 'Error message' };
+		const msg: MsgPropType = { _type: 'error', _description: 'Error message' };
 		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" msg={msg} touched />);
 		expect(page.root).toMatchSnapshot();
 		expect(page.root?.textContent).toContain('Error message');

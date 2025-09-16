@@ -2,7 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import clsx from 'clsx';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import InputAdornment from '../InputAdornment';
-import { checkHasMsg, type InternMsgPropType } from '../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../schema';
 
 type InputAdornmentType = VNode | VNode[] | null;
 
@@ -10,7 +10,7 @@ export type InputContainerProps = JSXBase.HTMLAttributes & {
 	startAdornment?: InputAdornmentType;
 	endAdornment?: InputAdornmentType;
 	disabled?: boolean;
-	msg?: InternMsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 
 	containerProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
@@ -37,10 +37,11 @@ const Container: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: classNam
 const KolInputContainerFc: FC<InputContainerProps> = (props, children) => {
 	const { class: classNames, startAdornment, endAdornment, disabled, msg, touched, containerProps, startAdornmentProps, endAdornmentProps, ...other } = props;
 	const showMsg = checkHasMsg(msg, touched);
+	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const stateCssClasses = {
 		['kol-input-container--disabled']: disabled,
-		[`kol-input-container--${msg?.type || 'error'}`]: showMsg,
+		[`kol-input-container--${msgType || 'error'}`]: showMsg,
 	};
 
 	const baseProps: JSXBase.HTMLAttributes<HTMLDivElement> = {

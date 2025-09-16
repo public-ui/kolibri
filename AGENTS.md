@@ -12,6 +12,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 - Avoid that branch name may contain hidden characters.
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
+- To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
 
 ## Semantic Versioning
 
@@ -209,6 +210,13 @@ In the theme component layer, you can set what ever you need to realize your own
   ...
 }
 ```
+
+### CSS Custom Properties and SASS Variables
+
+CSS custom properties remain part of the global cascade and are not isolated by the Shadow DOM.
+Overusing them in theme files can collide with variables defined on a host page.
+Expose only well‑prefixed design tokens as custom properties and rely on SASS variables for
+internal calculations to keep components robust and avoid unintended style leaks.
 
 ### General rules for custom themes
 

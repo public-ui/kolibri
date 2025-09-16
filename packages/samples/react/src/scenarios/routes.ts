@@ -11,6 +11,7 @@ import { StaticForm } from './static-form';
 import { SampleFormWithValidation } from './sample-form-with-validation';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { TooltipPositioning } from './tooltip-positioning';
+import { RHFBasic } from './react-hook-form/basic';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
@@ -20,11 +21,12 @@ export const SCENARIO_ROUTES: Routes = {
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
-		'performance-test': PerformanceTest,
+		'react-hook-form-adapter': RHFBasic,
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'static-form': StaticForm,
 		'sample-form-with-validation': SampleFormWithValidation,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'tooltip-positioning': TooltipPositioning,
+		'performance-test': PerformanceTest,
 	},
 };

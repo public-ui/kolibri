@@ -2,7 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolRadioFc, { type RadioProps } from '../../functional-components/inputs/Radio';
 import { type InputProps } from '../../functional-components/inputs/Input';
 
-import { type InputRadioStates, convertMsgToInternMsg } from '../../schema';
+import { type InputRadioStates, type MsgPropType } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 
 export type RadioStateWrapperProps = Omit<RadioProps, 'inputProps'> & {
@@ -25,7 +25,7 @@ function getRadioProps(state: InputRadioStates, inputProps: Partial<InputProps> 
 
 	if ('_required' in state) props.required = state._required;
 	if ('_touched' in state) props.touched = state._touched;
-	if ('_msg' in state) props.msg = convertMsgToInternMsg(state._msg);
+	if ('_msg' in state) props.msg = state._msg as MsgPropType;
 
 	return { ...props, ...inputProps };
 }

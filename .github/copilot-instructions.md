@@ -11,6 +11,7 @@ KoliBri is an accessible web component library built with Stencil and TypeScript
 Execute these commands in order to set up the development environment:
 
 ### 1. Install Node.js 22
+
 ```bash
 # Download and install Node.js 22 (REQUIRED - Node.js 20 will NOT work)
 curl -fsSL https://nodejs.org/dist/v22.13.0/node-v22.13.0-linux-x64.tar.xz -o /tmp/node.tar.xz
@@ -20,12 +21,14 @@ node --version  # Should show v22.x.x
 ```
 
 ### 2. Enable pnpm
+
 ```bash
 corepack enable pnpm
 pnpm --version  # Should show 10.x.x
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 # Install all packages (takes 2-5 minutes)
 pnpm i --ignore-scripts
@@ -33,6 +36,7 @@ pnpm i --ignore-scripts
 ```
 
 ### 4. Build All Packages
+
 ```bash
 # Build everything (takes ~2 minutes, NEVER CANCEL)
 # Set timeout to 300+ seconds for this command
@@ -42,6 +46,7 @@ pnpm -r build
 ## Development Workflow
 
 ### Start Development Environment
+
 ```bash
 # Navigate to React sample app for component development
 cd packages/samples/react
@@ -55,6 +60,7 @@ pnpm start
 ```
 
 ### Code Quality Commands
+
 ```bash
 # Format code (takes ~30 seconds)
 pnpm format
@@ -81,15 +87,19 @@ pnpm test
 ### Package Details
 
 #### Main Components (`packages/components/`)
+
 The core Stencil web component library that generates all framework adapters.
+
 - **Build command:** `pnpm --filter @public-ui/components build`
 - **Dev mode:** `pnpm --filter @public-ui/components dev` (watch mode)
 - **Contains:** Stencil components, output target configurations
 
 #### Framework Adapters (`packages/adapters/`)
+
 **IMPORTANT:** All adapters are auto-generated from Stencil. Do NOT manually edit adapter source files.
 
 **Available Adapters:**
+
 - `react/` – React 18+ integration
 - `react-standalone/` – Standalone React build
 - `react-v19/` – React 19 integration
@@ -101,40 +111,50 @@ The core Stencil web component library that generates all framework adapters.
 - `hydrate/` – Server-side rendering support
 
 **Adapter Workflow:**
+
 1. Modify components in `packages/components/src/components/`
 2. Build main components: `pnpm --filter @public-ui/components build`
 3. Adapters are automatically generated via Stencil output targets
 4. Build specific adapter: `pnpm --filter @public-ui/react build`
 
 #### Themes (`packages/themes/`)
+
 Styling packages built with Rollup and Sass.
+
 - `default/` – Default KoliBri theme
 - `ecl/` – European Commission Library theme
 
 **Theme Development:**
+
 - **Build:** `pnpm --filter @public-ui/theme-default build`
 - **Watch mode:** `pnpm --filter @public-ui/theme-default dev`
 - **Live preview:** `pnpm --filter @public-ui/theme-default start`
 
 #### Tools (`packages/tools/`)
+
 Development and migration utilities.
+
 - `kolibri-cli/` – Migration and project management CLI
 - `visual-tests/` – Visual regression testing framework
 - `benchmark-tests/` – Performance testing tools
 
 #### Sample Applications (`packages/samples/`)
+
 Example applications for development and testing.
+
 - `react/` – React sample app (primary development environment)
 - `angular/` – Angular sample app
 
 ## Key Development Locations
 
 ### Frequently Modified Files
+
 - `packages/components/src/components/` – Web component implementations
 - `packages/themes/default/src/` – Default theme styles
 - `packages/samples/react/src/` – Sample applications and development testing
 
 ### Configuration Files
+
 - `package.json` (root) – Monorepo scripts and dependencies
 - `packages/*/package.json` – Individual package configurations
 - `pnpm-workspace.yaml` – Workspace configuration
@@ -143,11 +163,12 @@ Example applications for development and testing.
 ## Validation and Testing
 
 ### ALWAYS Run These Before Committing
+
 ```bash
 # 1. Build to ensure no compilation errors (2 minutes, timeout: 300s)
 pnpm -r build
 
-# 2. Format code (30 seconds, timeout: 60s)  
+# 2. Format code (30 seconds, timeout: 60s)
 pnpm format
 
 # 3. Lint for code quality (60 seconds, timeout: 120s)
@@ -158,9 +179,11 @@ pnpm test
 ```
 
 ### Manual Validation Scenarios
+
 After making changes to components or themes:
 
 1. **Component Development Testing:**
+
    ```bash
    cd packages/samples/react
    pnpm start
@@ -177,6 +200,7 @@ After making changes to components or themes:
    ```
 
 ### CLI Tool Testing
+
 ```bash
 cd packages/tools/kolibri-cli
 pnpm build
@@ -190,7 +214,7 @@ node dist/index.js info
 **CRITICAL:** Use these timeout values to prevent premature cancellation:
 
 - **Initial setup:** `pnpm i --ignore-scripts` – 2-5 minutes (timeout: 600s)
-- **Full build:** `pnpm -r build` – 2 minutes (timeout: 300s)  
+- **Full build:** `pnpm -r build` – 2 minutes (timeout: 300s)
 - **Individual package tests:** `pnpm --filter <package> test:unit` – 20 seconds (timeout: 60s)
 - **All tests:** `pnpm test` – 2-3 minutes (timeout: 300s)
 - **Linting:** `pnpm lint` – 1 minute (timeout: 120s)
@@ -203,6 +227,7 @@ node dist/index.js info
 ## Common Issues and Solutions
 
 ### Node.js Version Issues
+
 ```bash
 # Error: "Unsupported environment (bad pnpm and/or Node.js version)"
 # Solution: Ensure Node.js 22 is installed and in PATH
@@ -210,6 +235,7 @@ node --version  # Must show v22.x.x
 ```
 
 ### Playwright Installation Failures
+
 ```bash
 # Error: Playwright download failures
 # Solution: Use --ignore-scripts during installation
@@ -220,16 +246,18 @@ pnpm prepare:components && pnpm prepare:themes
 ```
 
 ### Build Dependencies
+
 ```bash
 # Error: Package build failures
 # Solution: Build packages in dependency order
 pnpm --filter @public-ui/components build  # First - generates adapters
-pnpm --filter @public-ui/themes build      # Themes can build independently  
+pnpm --filter @public-ui/themes build      # Themes can build independently
 pnpm --filter @public-ui/theme-default build
 pnpm --filter @public-ui/sample-react build
 ```
 
 **Package Build Order:**
+
 1. **Components first** – Must build before adapters (generates adapter code)
 2. **Themes** – Independent, can build in parallel
 3. **Adapters** – Depend on components being built first
@@ -237,7 +265,9 @@ pnpm --filter @public-ui/sample-react build
 5. **Tools** – Generally independent
 
 ### Branch Switching
+
 When switching branches:
+
 ```bash
 # Always reinstall and rebuild after branch changes
 pnpm i --ignore-scripts
@@ -247,6 +277,7 @@ pnpm -r build
 ## Framework-Specific Development
 
 ### Component Development (Stencil)
+
 ```bash
 cd packages/components
 # Start watch mode for component development
@@ -254,6 +285,7 @@ pnpm dev
 ```
 
 **Component Development Workflow:**
+
 1. Create/modify components in `packages/components/src/components/`
 2. Use watch mode during development: `pnpm dev`
 3. Build components: `pnpm build`
@@ -264,11 +296,13 @@ pnpm dev
 **CRITICAL:** Framework adapters are auto-generated from Stencil. Do NOT manually edit adapter files.
 
 **Adapter Generation Process:**
+
 1. Stencil output targets in `packages/components/stencil.config.ts` generate adapters
 2. Each framework has specific output target configuration
 3. Build process: Components → Stencil Output Targets → Framework Adapters
 
 **Working with Adapters:**
+
 ```bash
 # Build main components first (generates adapters)
 pnpm --filter @public-ui/components build
@@ -283,6 +317,7 @@ pnpm --filter "@public-ui/*" build
 ```
 
 **Framework-Specific Notes:**
+
 - **React:** Multiple versions supported (React 18, 19, standalone)
 - **Angular:** Version-specific packages (v17, v18, v19, v20)
 - **Vue:** Single Vue.js integration
@@ -290,6 +325,7 @@ pnpm --filter "@public-ui/*" build
 - **Vaadin:** Java/Flow framework integration
 
 ### Theme Development
+
 ```bash
 cd packages/themes/default
 # Watch mode for theme changes (with Rollup watcher)
@@ -300,6 +336,7 @@ pnpm start
 ```
 
 **Theme Development Workflow:**
+
 ```bash
 # Create new theme (copy from default)
 cd packages/themes
@@ -316,6 +353,7 @@ pnpm test
 ```
 
 **Theme Structure:**
+
 - `src/` – Theme source files (Sass/CSS)
 - `assets/` – Static assets (copied from components)
 - `dist/` – Built theme output
@@ -324,6 +362,7 @@ pnpm test
 ### Tools and CLI Development
 
 **KoliBri CLI (`packages/tools/kolibri-cli/`):**
+
 ```bash
 cd packages/tools/kolibri-cli
 pnpm build
@@ -335,6 +374,7 @@ node dist/index.js migrate --help
 ```
 
 **Visual Testing (`packages/tools/visual-tests/`):**
+
 ```bash
 # Run visual tests for a theme
 cd packages/themes/default
@@ -345,6 +385,7 @@ pnpm test-update
 ```
 
 ### React Sample Development
+
 ```bash
 cd packages/samples/react
 # Start development server with hot reload
@@ -353,6 +394,7 @@ pnpm start
 ```
 
 **Sample Development Workflow:**
+
 1. Start React sample app for component testing
 2. Make component changes in `packages/components/`
 3. Components auto-rebuild and reload in sample app
@@ -361,6 +403,7 @@ pnpm start
 ## Monorepo Commands
 
 ### Build Single Package
+
 ```bash
 # Core packages
 pnpm --filter @public-ui/components build
@@ -385,6 +428,7 @@ pnpm --filter @public-ui/visual-tests build
 ### Package Categories and Filtering
 
 **Filter by Category:**
+
 ```bash
 # All framework adapters
 pnpm --filter "@public-ui/react*" build
@@ -402,14 +446,16 @@ pnpm --filter "@public-ui/visual-tests" build
 ```
 
 ### Run Commands Across Packages
+
 ```bash
 pnpm -r lint          # Lint all packages
-pnpm -r test          # Test all packages  
+pnpm -r test          # Test all packages
 pnpm -r build         # Build all packages
 pnpm -r format        # Format all packages
 ```
 
 ### Package-Specific Operations
+
 ```bash
 # Test specific package types
 pnpm --filter @public-ui/components test:unit
@@ -425,10 +471,12 @@ pnpm --filter @public-ui/sample-react start   # Sample app dev server
 ## CI/CD Integration
 
 The repository uses GitHub Actions with these key workflows:
+
 - `ci.yml` – Main CI pipeline (build, lint, test)
 - `update-snapshots.yml` – Visual regression test updates
 
 ### Update Visual Snapshots
+
 ```bash
 # Via GitHub CLI (if available)
 gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
@@ -437,6 +485,7 @@ gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
 ## Migration and Versioning
 
 The project follows semantic versioning with LTS and STS releases:
+
 - Use `packages/tools/kolibri-cli` for component migrations
 - Version updates require updating all package.json files
 - Always use exact version numbers (no ranges)
@@ -444,12 +493,14 @@ The project follows semantic versioning with LTS and STS releases:
 ### KoliBri CLI Tool
 
 **Installation and Setup:**
+
 ```bash
 cd packages/tools/kolibri-cli
 pnpm build
 ```
 
 **Available Commands:**
+
 ```bash
 # Get CLI help
 node dist/index.js --help
@@ -466,6 +517,7 @@ pnpm start  # Runs migration on test data
 ```
 
 **CLI Features:**
+
 - **Component migration** – Automated component updates between versions
 - **Project analysis** – Dependency and usage analysis
 - **Code transformation** – Automated code refactoring
@@ -474,6 +526,7 @@ pnpm start  # Runs migration on test data
 ### Visual Testing Workflow
 
 **Theme Visual Testing:**
+
 ```bash
 cd packages/themes/default
 pnpm test                    # Run visual regression tests
@@ -481,16 +534,18 @@ pnpm test-update            # Update visual snapshots
 ```
 
 **Visual Test Tools (`packages/tools/visual-tests/`):**
+
 ```bash
 cd packages/tools/visual-tests
 pnpm build
 
 # Custom visual test runs
 THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test
-THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots
+THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=changed
 ```
 
 **Visual Testing Process:**
+
 1. Build theme: `pnpm build`
 2. Run tests: `pnpm test`
 3. Review snapshot differences
@@ -506,18 +561,24 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots
 ### Development Best Practices
 
 **Adapter Development Rules:**
+
 - ❌ **NEVER** manually edit files in `packages/adapters/*/src/` or `packages/adapters/*/dist/`
 - ✅ **ALWAYS** modify source components in `packages/components/src/components/`
 - ✅ **ALWAYS** build components first: `pnpm --filter @public-ui/components build`
 - ✅ Test adapters by building them: `pnpm --filter @public-ui/react build`
 
 **Theme Development Rules:**
+
 - ✅ Themes are independent and can be developed separately
 - ✅ Use `pnpm dev` for watch mode during theme development
 - ✅ Test themes with visual tests: `pnpm test`
 - ✅ Copy assets from components: `pnpm prepare` (in theme directory)
+- ⚠️ Expose only prefixed CSS custom properties that must be themed externally
+  and rely on SASS variables for internal calculations to avoid collisions with
+  host-page styles.
 
 **Component Development Rules:**
+
 - ✅ Use `pnpm dev` in components package for watch mode
 - ✅ Test changes in React sample app: `cd packages/samples/react && pnpm start`
 - ✅ Build components after changes to regenerate adapters
@@ -526,6 +587,7 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots
 ### Common Development Scenarios
 
 **1. Adding a New Component:**
+
 ```bash
 # 1. Create component in packages/components/src/components/
 # 2. Add to component tags list in stencil.config.ts
@@ -540,6 +602,7 @@ pnpm --filter "@public-ui/*" build
 ```
 
 **2. Updating Component Styling:**
+
 ```bash
 # 1. Modify theme files in packages/themes/default/src/
 cd packages/themes/default
@@ -553,11 +616,12 @@ cd packages/themes/default && pnpm test
 ```
 
 **3. Framework-Specific Testing:**
+
 ```bash
 # React testing
 cd packages/samples/react && pnpm start
 
-# Angular testing  
+# Angular testing
 cd packages/samples/angular && pnpm start
 
 # Direct adapter testing
@@ -566,6 +630,7 @@ pnpm --filter @public-ui/angular-v18 build
 ```
 
 **4. Migration Testing:**
+
 ```bash
 cd packages/tools/kolibri-cli
 pnpm build
@@ -575,15 +640,17 @@ pnpm start  # Tests migration on sample data
 ## Quick Reference Commands
 
 ### Essential Pre-Commit Workflow
+
 ```bash
 # Complete validation workflow (run before committing)
 pnpm -r build      # ~2 minutes - NEVER CANCEL (timeout: 300s)
 pnpm format        # ~10 seconds (timeout: 60s)
-pnpm lint          # ~1 minute (timeout: 120s)  
+pnpm lint          # ~1 minute (timeout: 120s)
 pnpm test          # ~2-3 minutes - NEVER CANCEL (timeout: 300s)
 ```
 
 ### Individual Package Operations
+
 ```bash
 # Build specific packages
 pnpm --filter @public-ui/components build
@@ -593,7 +660,7 @@ pnpm --filter @public-ui/theme-default build
 pnpm --filter @public-ui/react build
 pnpm --filter @public-ui/angular-v18 build
 
-# Test specific package  
+# Test specific package
 pnpm --filter @public-ui/components test:unit
 pnpm --filter @public-ui/theme-default test
 pnpm --filter @public-ui/kolibri-cli test
@@ -604,6 +671,7 @@ pnpm --filter @public-ui/theme-default lint
 ```
 
 ### Development Mode Commands
+
 ```bash
 # Component development with hot reload
 cd packages/components && pnpm dev

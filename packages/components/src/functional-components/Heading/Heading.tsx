@@ -14,13 +14,13 @@ type BaseProps = JSXBase.HTMLAttributes<HTMLHeadingElement | HTMLElement> & {
 type HeadlineProps = BaseProps;
 
 // Define a type for the secondary headline props
-type SecondaryHeadlineProps = BaseProps;
+type SecondaryHeadlineProps = JSXBase.HTMLAttributes<HTMLParagraphElement>;
 
 // Define a type for the main Heading component props
 export type HeadingProps = HeadlineProps & {
 	secondaryHeadline?: string;
 	HeadingGroupProps?: HGroupProps;
-	SecondaryHeadlineProps?: JSXBase.HTMLAttributes<HTMLHeadingElement | HTMLElement>;
+	SecondaryHeadlineProps?: SecondaryHeadlineProps;
 };
 
 const MIN_HEADING_LEVEL = 1;
@@ -66,6 +66,8 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
 
 /**
  * Functional component for rendering a secondary headline.
+ * The secondary text is rendered as a `<p>` because according to the HTML `hgroup`
+ * specification the subheading does not create its own outline level.
  * @param props - The properties for the secondary headline component.
  * @param children - The children to render inside the secondary headline.
  * @returns A VNode representing the secondary headline.

@@ -7,8 +7,9 @@
 		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",
-		"packages/adapters/react-v19",
+		"packages/adapters/react-hook-form-adapter",
 		"packages/adapters/react-standalone",
+		"packages/adapters/react-v19",
 		"packages/adapters/solid",
 		"packages/adapters/vue",
 		"packages/components",
@@ -21,5 +22,5 @@
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "3.0.4-rc.2"
+	"version": "3.0.6-rc.2"
 }

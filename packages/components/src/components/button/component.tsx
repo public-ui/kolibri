@@ -137,11 +137,12 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 			<Host>
 				<button
 					ref={(ref) => (this.buttonRef = ref)}
-					accessKey={this.state._accessKey || undefined}
+					accessKey={this.state._accessKey}
 					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
+					aria-keyshortcuts={this.state._shortKey}
 					aria-label={hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
@@ -196,7 +197,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -250,6 +251,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @internal
 	 */
 	@Prop() public _id?: string;
 
@@ -280,7 +282,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 
