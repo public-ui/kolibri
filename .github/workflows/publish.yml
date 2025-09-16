@@ -40,7 +40,7 @@ on:
           - alpha
       password:
         type: string
-        description: "Release-Passwort zur Bestätigung"
+        description: "Password"
         required: true
 
 jobs:
