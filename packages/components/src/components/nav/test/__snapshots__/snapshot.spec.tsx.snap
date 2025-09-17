@@ -5,7 +5,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
@@ -38,7 +38,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
@@ -74,7 +74,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
@@ -107,7 +107,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
@@ -140,7 +140,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
@@ -173,7 +173,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--is-compact kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _hidelabel="" _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
@@ -206,7 +206,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--vertical">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="nav">
-        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0">
+        <ul class="kol-nav__list kol-nav__list--vertical" data-deep="0" id="kol-nav-nonce">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
               <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
