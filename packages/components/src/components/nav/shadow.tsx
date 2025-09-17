@@ -115,7 +115,7 @@ export class KolNav implements NavAPI {
 						{...entry}
 						_hideLabel={hideLabel}
 						_icons={icons}
-						_ariaControls={collapsible && hasChildren ? ariaID : undefined}
+						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
 						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
 					/>
 				) : (
@@ -126,7 +126,7 @@ export class KolNav implements NavAPI {
 						_label={entry._label}
 						_hideLabel={hideLabel}
 						_icons={icons}
-						_ariaControls={collapsible && hasChildren ? ariaID : undefined}
+						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
 						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
 						_on={{
 							onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
