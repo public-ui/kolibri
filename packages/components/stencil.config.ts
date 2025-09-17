@@ -10,6 +10,7 @@ import { reactOutputTarget as reactOutputTargetStencil } from '@stencil/react-ou
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
+import { customSuffixOutputTarget } from 'stencil-custom-suffix-output-target';
 
 const TAGS = [
 	'kol-abbr',
@@ -218,9 +219,10 @@ if (process.env.NODE_ENV === 'production') {
 			includeDefineCustomElements: false,
 		}),
 		{
-			minify: true,
 			type: 'dist-custom-elements',
+			externalRuntime: false,
 		},
+		customSuffixOutputTarget(),
 		// {
 		// 	type: 'dist-custom-elements-bundle',
 		// 	externalRuntime: false,
