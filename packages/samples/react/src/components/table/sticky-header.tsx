@@ -10,10 +10,9 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ label: 'ID', key: 'id', textAlign: 'right' },
-			{ label: 'First Name', key: 'first_name', textAlign: 'left' },
-			{ label: 'Last Name', key: 'last_name', textAlign: 'left' },
+			{ label: 'Common Name', key: 'common_name', textAlign: 'left' },
+			{ label: 'Scientific Name', key: 'scientific_name', textAlign: 'left' },
 			{ label: 'EMail', key: 'email', textAlign: 'left' },
-			{ label: 'Gender', key: 'gender', textAlign: 'left' },
 			{ label: 'IP Address', key: 'ip_address', textAlign: 'center' },
 		],
 	],

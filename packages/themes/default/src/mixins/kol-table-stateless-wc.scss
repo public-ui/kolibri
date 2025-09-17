@@ -27,6 +27,11 @@
 			border-bottom-width: calc(var(--border-width) * 2);
 		}
 
+		&__head {
+			position: sticky;
+			top: 0;
+		}
+
 		&__table {
 			width: 100%;
 			border-spacing: 0;
@@ -38,6 +43,8 @@
 		}
 
 		&__scroll-container {
+			overflow: auto;
+			max-height: 80vh;
 			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
 				outline-color: var(--color-primary-variant);
 				outline-style: solid;
