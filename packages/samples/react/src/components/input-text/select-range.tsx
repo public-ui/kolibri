@@ -22,6 +22,7 @@ export const InputTextSelectRange = () => {
 		textInput.current?.setRangeText('INSERTED', 5, 9, 'select');
 	}
 
+	// nur zum test wie an einem normalen input selectionchange läuft
 	React.useEffect(() => {
 		if (inputRef.current) {
 			inputRef.current.addEventListener('selectionchange', (ev) => console.log(ev));
@@ -38,6 +39,7 @@ export const InputTextSelectRange = () => {
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
+
 				<input type="text" value="Very long value" ref={inputRef} />
 			</div>
 		</>

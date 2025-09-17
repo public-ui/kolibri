@@ -192,6 +192,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
+			// warum kennt er das nicht? die anderen ons kommen anscheinend aus stencil selbst aber da ist kein onSelectionChange
+			// also wie bekomme ich das rein?
 			//	onSelectionChange: this.onSelectionChange,
 		};
 	}
@@ -524,13 +526,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	public componentDidLoad(): void {
+		// verzweifelter versuch den listener ran zu bekommen... :D
 		this.inputRef?.addEventListener('selectionchange', this.onSelectionChange);
 
 		if (this.inputRef) {
+			// die ersten beiden feuern leider nur einmal beim start
 			// eslint-disable-next-line no-console
 			this.inputRef.addEventListener('selectionchange', (ev) => console.log('selectionchange', ev));
 			// eslint-disable-next-line no-console
 			this.inputRef.onselectionchange = (ev) => console.log('onselectionchange', ev);
+
+			// focus funktioniert wie erwartet
 			// eslint-disable-next-line no-console
 			this.inputRef.addEventListener('focus', (ev) => console.log('focus', ev));
 		}
