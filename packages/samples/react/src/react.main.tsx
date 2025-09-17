@@ -1,4 +1,4 @@
-import { setTagNameTransformer } from '@public-ui/react-v19';
+// import { setTagNameTransformer } from '@public-ui/react';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
@@ -24,7 +24,7 @@ const ENABLE_TAG_NAME_TRANSFORMER =
 
 const tagNameTransformer = (tagName: string) => `${tagName}-sample`;
 if (ENABLE_TAG_NAME_TRANSFORMER) {
-	setTagNameTransformer(tagNameTransformer);
+	// setTagNameTransformer(tagNameTransformer);
 }
 
 const getThemes = async () => {
