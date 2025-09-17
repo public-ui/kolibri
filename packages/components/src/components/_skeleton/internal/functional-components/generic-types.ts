@@ -1,18 +1,55 @@
 import type { EventEmitter } from '@stencil/core';
 
+type Digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+type LowerAlphabet =
+	| 'a'
+	| 'b'
+	| 'c'
+	| 'd'
+	| 'e'
+	| 'f'
+	| 'g'
+	| 'h'
+	| 'i'
+	| 'j'
+	| 'k'
+	| 'l'
+	| 'm'
+	| 'n'
+	| 'o'
+	| 'p'
+	| 'q'
+	| 'r'
+	| 's'
+	| 't'
+	| 'u'
+	| 'v'
+	| 'w'
+	| 'x'
+	| 'y'
+	| 'z';
+type UpperAlphabet = Uppercase<LowerAlphabet>;
+type AlphaNumeric = LowerAlphabet | UpperAlphabet | Digit;
+type AlphaNumericString = '' | `${AlphaNumeric}${AlphaNumericString}`;
+type CamelCaseString = `${LowerAlphabet}${AlphaNumericString}`;
+
+export type CamelCaseKey<Key extends string> = Key extends CamelCaseString ? Key : never;
+
+type CamelCaseRecord = Partial<Record<CamelCaseString, unknown>>;
+
 type Callback<T> = (value?: T) => void;
 
 export interface ComponentApi {
-	Props?: Record<string, unknown>;
-	States?: Record<string, unknown>;
-	Emitters?: Record<string, unknown>;
-	Methods?: Record<string, unknown>;
-	Listeners?: Record<string, unknown>;
-	Callbacks?: Record<string, unknown>;
-	Refs?: Record<string, unknown>;
+	Props?: CamelCaseRecord;
+	States?: CamelCaseRecord;
+	Emitters?: CamelCaseRecord;
+	Methods?: CamelCaseRecord;
+	Listeners?: CamelCaseRecord;
+	Callbacks?: CamelCaseRecord;
+	Refs?: CamelCaseRecord;
 }
 
-type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
+type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends CamelCaseRecord ? T[K] : Record<never, never>;
 
 type ExtractProps<T extends ComponentApi> = Extract<T, 'Props'>;
 type ExtractStates<T extends ComponentApi> = Extract<T, 'States'>;
