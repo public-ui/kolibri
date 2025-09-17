@@ -4,12 +4,12 @@ import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
 import type { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface } from '../generic-types';
+import type { ControllerInterface, WebComponentInterface } from '../generic-types';
 import type { SkeletonApi } from './api';
 
-export class SkeletonController extends BaseController<SkeletonApi['Props'], SkeletonApi['States']> implements ControllerInterface<SkeletonApi> {
+export class SkeletonController extends BaseController<SkeletonApi['Props'], WebComponentInterface<SkeletonApi>> implements ControllerInterface<SkeletonApi> {
 	public constructor(
-		states: SkeletonApi['States'],
+		states: WebComponentInterface<SkeletonApi>,
 		private readonly clickButtonController: ClickButtonController,
 	) {
 		super(states, {
