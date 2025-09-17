@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import type { FC } from 'react';
 
-import { KolButton, KolSkeleton } from '@public-ui/react';
+import { KolButton, KolSkeleton } from '@public-ui/react-v19';
 import { SampleDescription } from '../components/SampleDescription';
 
 export const Skeleton: FC = () => {
