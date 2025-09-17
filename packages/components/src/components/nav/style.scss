@@ -32,14 +32,6 @@
 			&--horizontal {
 				flex-wrap: wrap;
 			}
-
-			&--nested {
-				display: none;
-			}
-
-			&-item--expanded > &--nested {
-				display: block;
-			}
 		}
 
 		&__entry-wrapper {

@@ -50,7 +50,9 @@ export class KolLink implements LinkProps, FocusableElement {
 				ref={this.catchRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
+				_ariaExpanded={this._ariaExpanded}
 				_disabled={this._disabled}
 				_download={this._download}
 				_hideLabel={this._hideLabel}
@@ -83,9 +85,20 @@ export class KolLink implements LinkProps, FocusableElement {
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
 	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
+
+	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+
+	/**
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Makes the element not focusable and ignore all events.

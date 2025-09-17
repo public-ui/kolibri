@@ -95,7 +95,7 @@ export class KolNav implements NavAPI {
 		hasChildren: boolean,
 		entry: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean,
-		id: string,
+		ariaID: string,
 	): JSX.Element {
 		const icons = {
 			left:
@@ -115,7 +115,8 @@ export class KolNav implements NavAPI {
 						{...entry}
 						_hideLabel={hideLabel}
 						_icons={icons}
-						aria_controls={id}
+						_ariaControls={collapsible && hasChildren ? ariaID : undefined}
+						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
 					/>
 				) : (
 					<KolButtonWcTag
@@ -125,7 +126,8 @@ export class KolNav implements NavAPI {
 						_label={entry._label}
 						_hideLabel={hideLabel}
 						_icons={icons}
-						aria_controls={id}
+						_ariaControls={collapsible && hasChildren ? ariaID : undefined}
+						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
 						_on={{
 							onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
 								if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
@@ -147,12 +149,12 @@ export class KolNav implements NavAPI {
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		orientation: OrientationPropType,
-		id: string,
+		ariaIDparent: string,
 	): JSX.Element {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const expanded = Boolean(link._children && this.state._expandedChildren.includes(link._children));
-		const ariaID = id + '_' + deep + '_' + index;
+		const ariaID = ariaIDparent + '_' + deep + '_' + index;
 		return (
 			<li
 				class={clsx('kol-nav__list-item', {
@@ -163,7 +165,9 @@ export class KolNav implements NavAPI {
 				key={index}
 			>
 				{this.entry(collapsible, hideLabel, hasChildren, link, expanded, ariaID)}
-				{<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} id={ariaID} />}
+				{expanded && (
+					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} id={ariaID} />
+				)}
 			</li>
 		);
 	}
