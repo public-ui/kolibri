@@ -4,7 +4,7 @@ import React from 'react';
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { SampleDescription } from '../SampleDescription';
-import { COMPLEX_DATA } from './complex-data';
+import { COMPLEX_DATA } from './test-complex-data';
 
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
