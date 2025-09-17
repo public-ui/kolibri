@@ -18,7 +18,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -51,7 +51,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -87,7 +87,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -120,7 +120,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -153,7 +153,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -186,7 +186,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _hidelabel="" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _hidelabel="" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -219,7 +219,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce_0_2" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
           </li>
           <li class="kol-nav__list-item">
