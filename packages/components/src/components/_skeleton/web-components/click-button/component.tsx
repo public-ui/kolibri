@@ -1,17 +1,16 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import type { ClickButtonApi } from '../../internal/functional-components/click-button/api';
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LabelProp, LabelPropType } from '../../internal/schema/props/label';
-
-type Props = LabelProp;
+import type { LabelPropType } from '../../internal/schema/props/label';
 
 @Component({
 	tag: 'kol-click-button',
 	shadow: true,
 })
-export class KolClickButton implements WebComponentInterface<Props> {
+export class KolClickButton implements WebComponentInterface<ClickButtonApi> {
 	private readonly controller = new ClickButtonController(this);
 
 	@Prop()

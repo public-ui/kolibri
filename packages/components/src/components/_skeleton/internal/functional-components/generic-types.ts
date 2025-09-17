@@ -2,6 +2,26 @@ import type { EventEmitter } from '@stencil/core';
 
 type Callback<T> = (value?: T) => void;
 
+export interface ComponentApi {
+	Props?: Record<string, unknown>;
+	States?: Record<string, unknown>;
+	Emitters?: Record<string, unknown>;
+	Methods?: Record<string, unknown>;
+	Listeners?: Record<string, unknown>;
+	Callbacks?: Record<string, unknown>;
+	Refs?: Record<string, unknown>;
+}
+
+type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
+
+type ExtractProps<T extends ComponentApi> = Extract<T, 'Props'>;
+type ExtractStates<T extends ComponentApi> = Extract<T, 'States'>;
+type ExtractEmitters<T extends ComponentApi> = Extract<T, 'Emitters'>;
+type ExtractMethods<T extends ComponentApi> = Extract<T, 'Methods'>;
+type ExtractListeners<T extends ComponentApi> = Extract<T, 'Listeners'>;
+type ExtractCallbacks<T extends ComponentApi> = Extract<T, 'Callbacks'>;
+type ExtractRefs<T extends ComponentApi> = Extract<T, 'Refs'>;
+
 type ComponentCallbacks<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
 };
@@ -38,35 +58,23 @@ export type NotNullableFields<Props> = {
 	[K in keyof Props]-?: NonNullable<Props[K]>;
 };
 
-export type WebComponentInterface<
-	Props = Record<never, never>,
-	States = Record<never, never>,
-	Emitters = Record<never, never>,
-	Methods = Record<never, never>,
-	Listeners = Record<never, never>,
-> = {
+export type WebComponentInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(): void;
-} & ComponentProps<Props> &
-	NotNullableFields<States> &
-	ComponentWatchers<Props> &
-	WebComponentEmitters<Emitters> &
-	ComponentMethods<Methods> &
-	ComponentListeners<Listeners>;
+} & ComponentProps<ExtractProps<T>> &
+	NotNullableFields<ExtractStates<T>> &
+	ComponentWatchers<ExtractProps<T>> &
+	WebComponentEmitters<ExtractEmitters<T>> &
+	ComponentMethods<ExtractMethods<T>> &
+	ComponentListeners<ExtractListeners<T>>;
 
-export type FunctionalComponentProps<
-	Props = Record<never, never>,
-	States = Record<never, never>,
-	Callbacks = Record<never, never>,
-	Emitters = Record<never, never>,
-	Refs = Record<never, never>,
-> = NotNullableFields<Props> & NotNullableFields<States> & ComponentCallbacks<Callbacks> & ComponentRefs<Refs> & FunctionalComponentEmitters<Emitters>;
+export type FunctionalComponentProps<T extends ComponentApi = ComponentApi> = NotNullableFields<ExtractProps<T>> &
+	NotNullableFields<ExtractStates<T>> &
+	ComponentCallbacks<ExtractCallbacks<T>> &
+	ComponentRefs<ExtractRefs<T>> &
+	FunctionalComponentEmitters<ExtractEmitters<T>>;
 
 type ControllerCallbackHandlers<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: (element?: Callbacks[K]) => void;
-};
-
-type ControllerRefSetters<Refs> = {
-	[K in keyof Refs as `set${Capitalize<string & K>}Ref`]: (element?: Refs[K]) => void;
 };
 
 type ControllerListeners<Listeners> = {
@@ -77,17 +85,15 @@ type ControllerMethods<Methods> = {
 	[K in keyof Methods]: Methods[K];
 };
 
-export type ControllerInterface<
-	Props = Record<never, never>,
-	Callbacks = Record<never, never>,
-	Refs = Record<never, never>,
-	Methods = Record<never, never>,
-	Listeners = Record<never, never>,
-> = {
-	componentWillLoad(props: NotNullableFields<Props>): void;
-	getProps(): NotNullableFields<Props>;
-} & ComponentWatchers<Props> &
-	ControllerCallbackHandlers<Callbacks> &
-	ControllerRefSetters<Refs> &
-	ControllerMethods<Methods> &
-	ControllerListeners<Listeners>;
+type ControllerRefSetters<Refs> = {
+	[K in keyof Refs as `set${Capitalize<string & K>}Ref`]: (element?: Refs[K]) => void;
+};
+
+export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
+	componentWillLoad(props: NotNullableFields<ExtractProps<T>>): void;
+	getProps(): NotNullableFields<ExtractProps<T>>;
+} & ComponentWatchers<ExtractProps<T>> &
+	ControllerCallbackHandlers<ExtractCallbacks<T>> &
+	ControllerListeners<ExtractListeners<T>> &
+	ControllerMethods<ExtractMethods<T>> &
+	ControllerRefSetters<ExtractRefs<T>>;
