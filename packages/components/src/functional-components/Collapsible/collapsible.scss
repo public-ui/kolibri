@@ -22,7 +22,7 @@
 			transform: translateZ(0);
 			display: grid;
 			/**
-			 * The `overflow: hidden` ensures that the content is not visible during the animated
+			 * The overflow: hidden ensures that the content is not visible during the animated
 			 * opening and closing. This should also cut off overlays containing content, but it
 			 *does not.
 			 */
