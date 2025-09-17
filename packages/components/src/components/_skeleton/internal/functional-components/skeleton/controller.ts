@@ -1,5 +1,7 @@
 import type { CountPropType } from '../../schema/props/count';
 import { normalizeCount, validateCount } from '../../schema/props/count';
+import type { LabelPropType } from '../../schema/props/label';
+import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
@@ -22,6 +24,7 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);
+		this.watchLabel(this.component.label);
 		this.clickButtonController.componentWillLoad({
 			label: this.component.label,
 		});
@@ -38,6 +41,14 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 		const normalized = normalizeName(value);
 		if (validateName(normalized)) {
 			this.setProp('name', normalized);
+		}
+	}
+
+	public watchLabel(value?: LabelPropType): void {
+		const normalized = normalizeLabel(value);
+		if (validateLabel(normalized)) {
+			this.setState('label', normalized);
+			this.clickButtonController.watchLabel(normalized);
 		}
 	}
 

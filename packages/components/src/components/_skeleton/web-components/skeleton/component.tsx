@@ -1,5 +1,6 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import type { ClickButtonApi } from '../../internal/functional-components/click-button/api';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
@@ -14,7 +15,7 @@ import type { ShowPropType } from '../../internal/schema/props/show';
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
+export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebComponentInterface<ClickButtonApi> {
 	private readonly controller = new SkeletonController(this, new ClickButtonController(this));
 
 	@Prop()
@@ -31,6 +32,14 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
 		this.controller.watchName(value);
+	}
+
+	@Prop()
+	public _label: LabelPropType = 'Label';
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		this.controller.watchLabel(value);
 	}
 
 	@State()
@@ -65,6 +74,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	public componentWillLoad(): void {
+		this.watchLabel(this._label);
 		this.controller.componentWillLoad({
 			count: this._count,
 			name: this._name,
