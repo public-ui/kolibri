@@ -46,6 +46,8 @@ type ComponentListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
+// Ensure the Web Component contract always exposes asynchronous method signatures
+// without forcing controllers to refactor their synchronous implementations.
 type PromisifyMethod<Method> = Method extends (...args: infer Args) => infer Result
 	? (...args: Args) => Result extends Promise<unknown> ? Result : Promise<Result>
 	: Method;
