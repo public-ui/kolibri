@@ -56,8 +56,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 
 	@Method()
 	public toggle(): Promise<void> {
-		this.controller.toggle();
-		return Promise.resolve();
+		return this.controller.toggle();
 	}
 
 	@Listen('keydown', { target: 'window' })

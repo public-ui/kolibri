@@ -41,15 +41,16 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Ske
 		}
 	}
 
-	public toggle(): void {
+	public toggle(): Promise<void> {
 		this.setState('show', !this.component.show);
+		return Promise.resolve();
 	}
 
 	public onKeydown = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
 			// eslint-disable-next-line no-console
 			console.log('Show should be toggled');
-			this.toggle();
+			void this.toggle();
 		}
 	};
 
