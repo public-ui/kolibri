@@ -35,7 +35,7 @@ type FunctionalComponentEmitters<Emitters> = {
 };
 
 type ComponentProps<Props> = {
-	[K in keyof Props as `_${Lowercase<string & K>}`]: Props[K];
+	[K in keyof Props as `_${Uncapitalize<string & K>}`]: Props[K];
 };
 
 type ComponentRefs<Refs> = {
