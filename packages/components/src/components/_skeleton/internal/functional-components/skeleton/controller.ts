@@ -4,24 +4,21 @@ import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
 import type { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface, WebComponentInterface } from '../generic-types';
-import type { SkeletonCallbacks, SkeletonListeners, SkeletonMethods, SkeletonRefs, SkeletonRenderProps, SkeletonRenderStates } from './component';
+import type { ControllerInterface } from '../generic-types';
+import type { SkeletonApi } from './api';
 
-export class SkeletonController
-	extends BaseController<SkeletonRenderProps, SkeletonRenderStates>
-	implements ControllerInterface<SkeletonRenderProps, SkeletonCallbacks, SkeletonRefs, SkeletonMethods, SkeletonListeners>
-{
+export class SkeletonController extends BaseController<SkeletonApi['Props'], SkeletonApi['States']> implements ControllerInterface<SkeletonApi> {
 	public constructor(
-		component: WebComponentInterface<Record<never, never>, SkeletonRenderStates>,
+		states: SkeletonApi['States'],
 		private readonly clickButtonController: ClickButtonController,
 	) {
-		super(component, {
+		super(states, {
 			count: 0,
 			name: '',
 		});
 	}
 
-	public componentWillLoad(props: SkeletonRenderProps): void {
+	public componentWillLoad(props: SkeletonApi['Props']): void {
 		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);

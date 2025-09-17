@@ -4,18 +4,30 @@
 
 The `kol` skeleton component blueprint demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It is designed as a minimal, yet complete, reference implementation for new components.
 
-Representative code artifacts for each layer:
+Representative code artifacts for each layer and their responsibilities:
 
-- [Web component](./web-components/skeleton/component.tsx) – public API and watchers
-- [Controller](./internal/functional-components/skeleton/controller.ts) – business logic
-- [Renderer](./internal/functional-components/skeleton/component.tsx) – stateless view
-- [Schema helpers](./internal/schema/props) – prop types and validation
+- [Web component](./web-components/skeleton/component.tsx) – defines the public API, owns lifecycle hooks and bridges DOM events to controller callbacks.
+- [Controller](./internal/functional-components/skeleton/controller.ts) – implements state transitions, validation orchestration and exposes render props.
+- [Renderer](./internal/functional-components/skeleton/component.tsx) – stateless view that renders solely based on the controller-provided props.
+- [Schema helpers](./internal/schema/props) – house prop types, normalisation and validation helpers shared across layers.
 
 Primary goals:
 
 - illustrate separation of concerns for long-term maintainability
 - enable replacement or extension of layers without cascading changes
 - enforce consistent validation and type-safety boundaries
+- document an end-to-end implementation pipeline that teams can replicate when bootstrapping new components
+
+### Blueprint Layout
+
+The skeleton mirrors the structure recommended for production-ready components. Each folder holds a single responsibility to make the pipeline explicit:
+
+- `web-components/skeleton` – custom element definition, prop watchers and lifecycle management.
+- `internal/functional-components/skeleton` – controller and stateless functional component.
+- `internal/schema` – prop schema definitions shared with other layers.
+- Supporting `internal` subfolders – building blocks (e.g. reusable button controller) that can be composed from other components.
+
+This modular layout is the backbone for the architectural patterns described in the following chapters.
 
 ### Usage Example
 
@@ -44,22 +56,52 @@ flowchart LR
     WC --> Consumer
 ```
 
-The external consumer interacts solely with the custom element. The web component
-delegates normalization and state transitions to the controller, which in turn
-consults the schema helpers. Rendering is handed off to the stateless functional
-component, and the resulting DOM is patched back into the web component before it
-is presented to the consumer.
+The external consumer interacts solely with the custom element. The web component delegates normalisation and state transitions
+to the controller, which in turn consults the schema helpers. Rendering is handed off to the stateless functional component, the
+resulting DOM is patched back into the web component and finally exposed to the consumer. Each arrow in the diagram corresponds
+to an explicit TypeScript contract, ensuring that integration points are discoverable and type safe.
 
 ## 4. Solution Strategy
 
-The blueprint enforces unidirectional data flow and delegates responsibilities to isolated layers:
+The blueprint enforces unidirectional data flow and delegates responsibilities to isolated layers. Implementation-wise, each layer exposes a narrow API so that downstream code can be reasoned about in isolation.
 
-- **Controller** – encapsulates business logic and state transitions. It coordinates prop watchers, updates render props and can compose other controllers for additional behaviour.
-- **Functional component** – pure, stateless renderer that receives the current state snapshot together with callbacks, emitters and refs. It never mutates data and communicates through events.
-- **Schema helpers** – prop type declarations plus `normalize*/validate*` helpers that keep domain rules close to the data model.
-- **Web component** – public API surface. Incoming `@Prop` values are exposed with a leading `_` (e.g. `_count`). `@Watch` decorators must observe the underscored props to normalise and validate external values before delegating to the controller. Normalised values are written directly to simple internal fields instead of `@State` to avoid two Stencil-triggered re-renderings. Render props are accessed via `controller.getProps()` instead of mirroring them locally.
+### Web Component Layer
+
+- Declares the public API using underscored props (e.g. `_count`).
+- Hosts lifecycle hooks and ties DOM events to controller callbacks.
+- Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`). Watchers normalise incoming values and forward them to the controller.
+- Holds normalised data in simple fields (`count`, `name`) instead of `@State` to keep Stencil re-rendering efficient.
+- Delegates rendering to the controller output via `controller.getProps()`.
+
+### Controller Layer
+
+- Encapsulates business rules, validation orchestration and derived state.
+- Implements `componentWillLoad` to bootstrap its internal state from the current prop snapshot.
+- Exposes watcher entry points (`watchCount`, `watchName`, …) that receive raw values, request normalisation/validation from the schema helpers and update internal state accordingly.
+- Provides render props via `getProps()` so the view layer operates on a single immutable snapshot.
+- Composes other controllers (e.g. the click button behaviour) to reuse established logic across components.
+
+### Functional Component Layer
+
+- Is a pure renderer that receives props, callbacks, emitters and refs from the controller.
+- Avoids any side effects or state mutation. User interactions are signalled via DOM events which bubble back to the web component.
+- Maps controller props to accessible markup and wires refs for imperative access when required.
+
+### Schema Helper Layer
+
+- Co-locates type definitions, normalisation and validation rules for every prop.
+- Provides `normalize*` and `validate*` helpers that are consumed by controllers so data contracts stay consistent across the stack.
 
 The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](./internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
+
+### Implementation Flow
+
+1. **Initialisation** – `componentWillLoad` forwards the current prop snapshot to the controller, ensuring that internal state reflects external values before the first render.
+2. **Prop updates** – `@Watch` handlers receive raw values, delegate normalisation/validation to schema helpers via the controller and update the controller state.
+3. **Rendering** – The web component retrieves the immutable render props from the controller and feeds them into the functional component.
+4. **User interaction** – The functional component emits DOM events (for example button clicks). The web component wires these events back into controller callbacks so state transitions remain encapsulated.
+
+This pipeline makes the execution order explicit and provides guardrails for future contributors.
 
 ### Props Pattern
 
@@ -72,7 +114,7 @@ This ensures that the renderer never works with raw, unvalidated data. All value
 
 **Props must always be initialized** before being passed to the functional component. This prevents rendering with undefined or uninitialized values and ensures that the component can safely render at any point in its lifecycle without encountering unexpected undefined states.
 
-This strategy yields strong decoupling so that each layer can evolve independently.
+This strategy yields strong decoupling so that each layer can evolve independently. New components can adopt the same structure by copying the skeleton and replacing the domain-specific pieces while keeping the architectural seams intact.
 
 ### Watcher Example
 
@@ -107,69 +149,44 @@ This ensures controllers receive the complete current state before any external 
 ```mermaid
 classDiagram
     direction LR
-    class WebComponentInterface {
-        <<interface>>
-        +componentWillLoad(props)
-        +watchCount(value)
-        +watchName(value)
-        +focusButton()
-        +toggle()
-    }
-    class KolSkeleton {
-        +_count : number
-        +_name : string
-        +label : string
-        +show : boolean
-    }
-    KolSkeleton ..|> WebComponentInterface
-    class ControllerInterface {
-        <<interface>>
-        +componentWillLoad(props)
-        +watchCount(value)
-        +watchName(value)
-        +handleClick()
-        +getProps()
-        +setButtonRef(element)
+    class WebComponent {
+        +componentWillLoad()
+        +watchCount()
+        +render()
     }
     class SkeletonController {
-        +toggle()
-        +focusButton()
-        +handleClick()
-    }
-    SkeletonController ..|> ControllerInterface
-    KolSkeleton --> SkeletonController : delegates
-    class FunctionalComponentProps {
-        <<interface>>
-        +count
-        +name
-        +label
-        +show
-        +handleClick()
-        +onLoaded(number)
-        +refButton(element)
+        +componentWillLoad()
+        +watchCount()
+        +watchName()
+        +getProps()
     }
     class SkeletonFC {
-        <<stateless>>
+        +render(props)
     }
-    SkeletonFC ..|> FunctionalComponentProps
-    KolSkeleton --> SkeletonFC : renders via
     class SchemaHelpers {
         +normalizeCount()
         +validateCount()
         +normalizeName()
         +validateName()
     }
+    class ClickButtonController {
+        +getProps()
+    }
+    WebComponent ..> SkeletonController : delegates state
+    WebComponent --> SkeletonFC : renders with props
     SkeletonController ..> SchemaHelpers : uses
     SkeletonController o--> ClickButtonController : composes
 ```
 
-The web component implements `WebComponentInterface` and owns public props and
-lifecycle hooks. All normalization and state changes are delegated to a
-`SkeletonController` implementing `ControllerInterface`. The controller exposes
-validated props via `getProps()` and composes a `ClickButtonController` for
-reusable button behaviour. Rendering is performed by `SkeletonFC`, a stateless
-functional component implementing `FunctionalComponentProps`. Schema helpers
-provide the normalization and validation utilities consumed by the controller.
+**Web component** – implements `WebComponentInterface`, owns the lifecycle and keeps normalised state fields. It simply passes watcher updates and render requests through to the controller.
+
+**SkeletonController** – implements `ControllerInterface`, coordinates validation through the schema helpers and exposes immutable render props.
+
+**SkeletonFC** – implements `FunctionalComponentProps`, receives the render props and produces JSX without touching state.
+
+**Schema helpers** – provide deterministic data normalisation and validation functions that can be reused by other controllers as well.
+
+**ClickButtonController** – exemplifies composition. Its props are merged into the skeleton controller so common behaviour (e.g. button handling) can be reused without inheritance.
 
 ## 6. Runtime View
 

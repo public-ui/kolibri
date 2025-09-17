@@ -2,13 +2,7 @@ import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type {
-	SkeletonEmitters,
-	SkeletonListeners,
-	SkeletonMethods,
-	SkeletonRenderProps,
-	SkeletonRenderStates,
-} from '../../internal/functional-components/skeleton/component';
+import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
 import type { CountPropType } from '../../internal/schema/props/count';
@@ -20,7 +14,7 @@ import type { ShowPropType } from '../../internal/schema/props/show';
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements WebComponentInterface<SkeletonRenderProps, SkeletonRenderStates, SkeletonEmitters, SkeletonMethods, SkeletonListeners> {
+export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	private readonly controller = new SkeletonController(this, new ClickButtonController(this));
 
 	@Prop()
