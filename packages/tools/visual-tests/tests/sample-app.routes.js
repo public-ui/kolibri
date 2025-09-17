@@ -722,6 +722,13 @@ ROUTES.set('table/complex-headers', {
 		},
 	},
 });
+ROUTES.set('table/non-hidable-columns', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('table/stateful-with-selection', {
 	snapshot: {
 		zoom: {
