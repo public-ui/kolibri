@@ -14,6 +14,10 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 			{ label: 'Scientific Name', key: 'scientific_name', textAlign: 'left' },
 			{ label: 'EMail', key: 'email', textAlign: 'left' },
 			{ label: 'IP Address', key: 'ip_address', textAlign: 'center' },
+			{ label: 'User Name', key: 'user_name', textAlign: 'left' },
+			{ label: 'Bitcoin Address', key: 'bitcoin_address', textAlign: 'center' },
+			{ label: 'Street Address', key: 'street_address', textAlign: 'center' },
+			{ label: 'IBAN', key: 'iban', textAlign: 'left' },
 		],
 	],
 };
@@ -25,6 +29,6 @@ export const TableStickyHeader: FC = () => (
 		</SampleDescription>
 
 		<KolHeading _level={2} _label="Sticky headers" />
-		<KolTableStateful _label="Sort a date column" _minWidth="800px" _data={COMPLEX_DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+		<KolTableStateful _label="Sort a date column" _minWidth="1800px" _data={COMPLEX_DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 	</>
 );
