@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.6-rc.2",
+	"version": "3.0.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -46,7 +46,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@types/node": "24.4.0",
+		"@types/node": "24.5.0",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "6.0.0",

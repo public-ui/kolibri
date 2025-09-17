@@ -51,9 +51,9 @@ test.describe('kol-nav component', () => {
 			await expect(linkEntries).toHaveCount(1);
 		});
 
-		test('renders expand button for items with children', async ({ page }) => {
+		test('renders expand icons in nav entry for items with children', async ({ page }) => {
 			await page.setContent(`<kol-nav _label="Nav" _links='${JSON.stringify(LINKS.nested)}'></kol-nav>`);
-			const expandBtn = page.locator('.kol-nav__expand-button');
+			const expandBtn = page.locator('.kol-nav__entry--collapsible');
 			await expect(expandBtn).toHaveCount(1);
 		});
 	});

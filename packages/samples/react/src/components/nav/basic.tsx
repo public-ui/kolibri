@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';
+import { LINKS, LINKS_WITHOUT_SUBMENU, LINKS_SUB_ACTIVE } from './links';
 
 import type { FC } from 'react';
 export const NavBasic: FC = () => {
@@ -42,6 +42,16 @@ export const NavBasic: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Navigation with submenu" />
 					<KolNav class="block w-fit" _label="Navigation with submenu" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
+				</section>
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Navigation with submenu active" />
+					<KolNav
+						class="block w-fit"
+						_label="Navigation with submenu active"
+						_links={LINKS_SUB_ACTIVE}
+						_hasCompactButton
+						_hasIconsWhenExpanded={hasIconsWhenExpanded}
+					/>
 				</section>
 			</section>
 		</>
