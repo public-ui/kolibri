@@ -43,8 +43,9 @@
 		}
 
 		&__scroll-container {
-			overflow: auto;
 			max-height: 80vh;
+			overflow: auto;
+
 			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
 				outline-color: var(--color-primary-variant);
 				outline-style: solid;
