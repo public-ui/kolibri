@@ -46,8 +46,12 @@ type ComponentListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
+type PromisifyMethod<Method> = Method extends (...args: infer Args) => infer Result
+	? (...args: Args) => Result extends Promise<unknown> ? Result : Promise<Result>
+	: Method;
+
 type ComponentMethods<Methods> = {
-	[K in keyof Methods]: Methods[K];
+	[K in keyof Methods]: PromisifyMethod<Methods[K]>;
 };
 
 type ComponentWatchers<Props> = {
