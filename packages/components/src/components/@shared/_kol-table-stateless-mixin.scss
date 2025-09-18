@@ -39,7 +39,8 @@
 
 		// headings in table body default to text-align left, unless defined otherwise.
 		tbody th,
-		th.align-left {
+		th.align-left,
+		td.align-left {
 			text-align: left;
 
 			& .table-sort-button .button-inner {
@@ -47,7 +48,8 @@
 			}
 		}
 
-		th.align-center {
+		th.align-center,
+		td.align-center {
 			text-align: center;
 
 			& .table-sort-button .button-inner {
@@ -55,7 +57,8 @@
 			}
 		}
 
-		th.align-right {
+		th.align-right,
+		td.align-right {
 			text-align: right;
 
 			& .table-sort-button .button-inner {

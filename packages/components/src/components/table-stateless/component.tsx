@@ -565,10 +565,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
-		if (!selection) {
-			return <th key={`thead-0-selection`}></th>;
-		}
-		if (!selection.multiple && selection.multiple !== undefined) {
+
+		if (!selection?.multiple) {
 			return <td key={`thead-0-selection`} class="selection-cell"></td>;
 		}
 		const keyPropertyName = selection.keyPropertyName ?? 'id';
