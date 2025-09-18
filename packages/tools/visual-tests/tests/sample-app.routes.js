@@ -561,13 +561,6 @@ ROUTES.set('nav/basic', {
 		},
 	},
 });
-ROUTES.set('nav/horizontal', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('pagination/basic', {
 	snapshot: {
 		zoom: {
