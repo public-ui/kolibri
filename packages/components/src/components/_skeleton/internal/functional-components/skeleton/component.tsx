@@ -3,14 +3,14 @@ import { h } from '@stencil/core';
 
 import { ClickButtonFC } from '../click-button/component';
 import type { FunctionalComponentProps } from '../generic-types';
-import {
-	BEM_CLASS_SKELETON__ACTIONS,
-	BEM_CLASS_SKELETON__CONTAINER,
-	BEM_CLASS_SKELETON__COUNTER,
-	BEM_CLASS_SKELETON__NAME,
-	genBemSkeleton as bem,
-} from './bem';
+import { bem } from '../../../../../schema/bem-registry';
 import type { SkeletonApi } from './api';
+
+const skeletonBem = bem.forBlock('kol-skeleton');
+const BEM_CLASS_SKELETON__ACTIONS = skeletonBem('actions');
+const BEM_CLASS_SKELETON__CONTAINER = skeletonBem('container');
+const BEM_CLASS_SKELETON__COUNTER = skeletonBem('counter');
+const BEM_CLASS_SKELETON__NAME = skeletonBem('name');
 
 export const SkeletonFC: FC<FunctionalComponentProps<SkeletonApi>> = ({ count, label, name, show, onLoaded, handleClick, refButton }) => {
 	setTimeout(() => {
@@ -18,7 +18,7 @@ export const SkeletonFC: FC<FunctionalComponentProps<SkeletonApi>> = ({ count, l
 	}, 1000);
 
 	const hasName = !!(show && name?.trim());
-	const BEM_CLASS_ROOT = bem('kol-skeleton', {
+	const BEM_CLASS_ROOT = skeletonBem({
 		'has-name': hasName,
 		'is-hidden': !show,
 	});
