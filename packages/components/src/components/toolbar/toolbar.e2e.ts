@@ -1,23 +1,26 @@
-import { expect } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import type { ToolbarItemsPropType } from '../../schema';
 
 const COMPONENT_NAME = 'kol-toolbar';
 
-const ITEMS_ICONS_FIRST = [
+const ITEMS_ICONS_FIRST: ToolbarItemsPropType = [
 	{ _label: 'Back', _icons: { left: { icon: 'codicon codicon-arrow-left' } }, _disabled: false },
 	{ _label: 'Next', _disabled: false, _icons: { right: { icon: 'codicon codicon-arrow-right' } } },
 ];
 
-const ITEMS_DISABLED_FIRST = [
+const ITEMS_DISABLED_FIRST: ToolbarItemsPropType = [
 	{ _label: 'Back', _disabled: false, _icons: { left: { icon: 'codicon codicon-arrow-left' } } },
 	{ _label: 'Next', _disabled: false, _icons: { right: { icon: 'codicon codicon-arrow-right' } } },
 ];
 
-async function setItems(tb: any, items: any[]) {
-	await tb.evaluate((el: any, its) => (el._items = its), items);
+async function setItems(tb: Locator, items: ToolbarItemsPropType): Promise<void> {
+	await tb.evaluate((el, its) => {
+		(el as unknown as { _items: ToolbarItemsPropType })._items = its;
+	}, items);
 }
 
-function innerButtonOf(nthButtonWc: any) {
+function innerButtonOf(nthButtonWc: Locator): Locator {
 	return nthButtonWc.locator('button');
 }
 
@@ -33,10 +36,11 @@ test.describe(COMPONENT_NAME, () => {
 		const btnWcs = tb.locator('kol-button-wc');
 		await expect(btnWcs).toHaveCount(2);
 
-		await tb.evaluate((el: any) => {
-			el._items = el._items.map((it: any) => ({ ...it, _disabled: true }));
+		await tb.evaluate((el) => {
+			const host = el as unknown as { _items: ToolbarItemsPropType };
+			host._items = host._items.map((it) => ({ ...it, _disabled: true }));
 			setTimeout(() => {
-				el._items = el._items.map((it: any) => ({ ...it, _disabled: false }));
+				host._items = host._items.map((it) => ({ ...it, _disabled: false }));
 			}, 1200);
 		});
 
@@ -56,10 +60,11 @@ test.describe(COMPONENT_NAME, () => {
 		const btnWcs = tb.locator('kol-button-wc');
 		await expect(btnWcs).toHaveCount(2);
 
-		await tb.evaluate((el: any) => {
-			el._items = el._items.map((it: any) => ({ ...it, _disabled: true }));
+		await tb.evaluate((el) => {
+			const host = el as unknown as { _items: ToolbarItemsPropType };
+			host._items = host._items.map((it) => ({ ...it, _disabled: true }));
 			setTimeout(() => {
-				el._items = el._items.map((it: any) => ({ ...it, _disabled: false }));
+				host._items = host._items.map((it) => ({ ...it, _disabled: false }));
 			}, 1200);
 		});
 
@@ -73,8 +78,9 @@ test.describe(COMPONENT_NAME, () => {
 		const tb = page.locator('kol-toolbar');
 		await expect(tb).toHaveClass(/hydrated/);
 
-		await tb.evaluate((el: any) => {
-			el._items = [
+		await tb.evaluate((el) => {
+			const host = el as unknown as { _items: ToolbarItemsPropType };
+			host._items = [
 				{ _label: 'One', _disabled: false },
 				{ _label: 'Two', _disabled: true },
 			];

@@ -26,8 +26,8 @@ export class KolToolbar implements ToolbarAPI {
 
 	private indexToElement = new Map<number, HTMLKolLinkWcElement | HTMLKolButtonWcElement>();
 	private normalizeItem(item: ToolbarItemPropType): ToolbarItemPropType {
-		const { _icons, _disabled, ...rest } = item as any;
-		return { ...rest, _icons, _disabled } as ToolbarItemPropType;
+		const { _icons, _disabled, ...rest } = item;
+		return { ...rest, _icons, _disabled };
 	}
 
 	private renderItem = (raw: ToolbarItemPropType, index: number): JSX.Element => {
@@ -125,7 +125,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (this.state._items?.[nextIndex]?._disabled) return;
 
 		this.currentIndex = nextIndex;
-		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkWcElement | HTMLKolButtonWcElement | undefined)?.kolFocus();
+		void this.getCurrentToolbarItem(nextIndex)?.kolFocus();
 	}
 
 	/**
