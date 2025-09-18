@@ -6,7 +6,7 @@ import type { ComponentApi } from '../generic-types';
 
 export interface SkeletonApi extends ComponentApi {
 	Props: CountProp & NameProp;
-	States: LabelProp & ShowProp;
+	States: CountProp & LabelProp & ShowProp;
 	Emitters: {
 		loaded: number;
 	};

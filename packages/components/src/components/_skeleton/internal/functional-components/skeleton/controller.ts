@@ -34,6 +34,7 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 		const normalized = normalizeCount(value);
 		if (validateCount(normalized)) {
 			this.setProp('count', normalized);
+			this.setState('count', normalized);
 		}
 	}
 
@@ -66,8 +67,11 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 	};
 
 	public handleClick = (): void => {
-		// eslint-disable-next-line no-console
-		console.log(this, 'button clicked');
+		const { count } = this.getProps();
+		const nextCount = count + 1;
+		this.setProp('count', nextCount);
+		this.setState('count', nextCount);
+		this.component.loaded.emit(nextCount);
 	};
 
 	public focusButton = (): void => {

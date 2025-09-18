@@ -48,6 +48,9 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebCompo
 	@State()
 	public show: ShowPropType = true;
 
+	@State()
+	public count: CountPropType = 0;
+
 	@Method()
 	public focusButton(): Promise<void> {
 		this.controller.focusButton();
