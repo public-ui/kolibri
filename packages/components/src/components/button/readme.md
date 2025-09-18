@@ -30,12 +30,10 @@ kolibriElement._on = {
 };
 ```
 
-| Event       | Auslöser                                                       | Value                |
-| ----------- | -------------------------------------------------------------- | -------------------- |
-| onFocus     | Element wird fokussiert                                        | -                    |
-| onMouseDown | Element wird angeklickt (entspricht nativem `mouseDown`-Event) | -                    |
-| onClick     | Element wird angeklickt (entspricht nativem `click`-Event)     | Definierter `_value` |
-| onBlur      | Element verliert Fokus                                         | -                    |
+| Event         | Value             |
+|---------------|:-----------------:|
+| `onClick`     | `_value`-Property |
+| `onMouseDown` | -                 |
 
 ### Beispiel
 
