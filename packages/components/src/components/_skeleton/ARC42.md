@@ -71,6 +71,7 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Hosts lifecycle hooks and ties DOM events to controller callbacks.
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`). Watchers normalise incoming values and forward them to the controller.
 - Holds normalised data in simple fields (`count`, `name`) instead of `@State` to keep Stencil re-rendering efficient.
+- Mirrors validated props into these simple fields from the corresponding `@Watch` handlers so that the renderer and controller can rely on readily available, normalised values on the component instance.
 - Delegates rendering to the controller output via `controller.getProps()`.
 
 ### Controller Layer
