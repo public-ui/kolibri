@@ -21,9 +21,20 @@ export const Skeleton: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<KolButton _label="Toggle" onClick={() => skeletonRef.current?.toggle()} />
-			<KolButton _label="Focus Button" onClick={() => skeletonRef.current?.focusButton()} />
-			<KolSkeleton _count={initialCount} _label="Click Button" _name="Example" onKolLoaded={handleLoaded} ref={skeletonRef} />
+			<KolButton
+				_label="Toggle"
+				_on={{
+					onClick: () => skeletonRef.current?.kolToggle(),
+				}}
+				_variant="primary"
+			/>
+			<KolButton
+				_label="Focus Button"
+				_on={{
+					onClick: () => skeletonRef.current?.kolFocus(),
+				}}
+			/>
+			<KolSkeleton _count={initialCount} _label="Click Button" _name="Example" onLoaded={handleLoaded} ref={skeletonRef} />
 			<p aria-live="polite">Loaded value: {count}</p>
 		</>
 	);

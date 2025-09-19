@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, h, Host, Method, Prop, Watch } from '@stencil/core';
 import type { ClickButtonApi } from '../../internal/functional-components/click-button/api';
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
@@ -11,27 +11,33 @@ import type { LabelPropType } from '../../internal/schema/props/label';
 	shadow: true,
 })
 export class KolClickButton implements WebComponentInterface<ClickButtonApi> {
-	private readonly controller = new ClickButtonController(this);
+	private readonly ctrl = new ClickButtonController();
 
 	@Prop()
 	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		this.controller.watchLabel(value);
+		this.ctrl.watchLabel(value);
+	}
+
+	@Method()
+	public async kolFocus(): Promise<void> {
+		this.ctrl.focus();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.controller.componentWillLoad({
+		this.ctrl.componentWillLoad({
 			label: this._label,
 		});
 	}
 
 	public render(): JSX.Element {
-		const { label } = this.controller.getProps();
+		const { label } = this.ctrl.getProps();
 		return (
 			<Host>
-				<ClickButtonFC label={label} refButton={this.controller.setButtonRef} handleClick={this.controller.handleClick} />
+				<ClickButtonFC label={label} refButton={this.ctrl.setButtonRef} handleClick={this.ctrl.handleClick} />
 			</Host>
 		);
 	}

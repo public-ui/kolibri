@@ -11,7 +11,8 @@ export interface SkeletonApi extends ComponentApi {
 		loaded: number;
 	};
 	Methods: {
-		toggle: () => Promise<void>;
+		focus: () => void;
+		toggle: () => void;
 	};
 	Listeners: {
 		keydown: KeyboardEvent;

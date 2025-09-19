@@ -6,7 +6,7 @@ export interface ComponentApi {
 	Props?: Record<string, unknown>;
 	States?: Record<string, unknown>;
 	Emitters?: Record<string, unknown>;
-	Methods?: Record<string, () => Promise<unknown>>;
+	Methods?: Record<string, () => unknown>;
 	Listeners?: Record<string, unknown>;
 	Callbacks?: Record<string, () => unknown>;
 	Refs?: Record<string, HTMLElement>;
@@ -47,7 +47,7 @@ type ComponentListeners<Listeners> = {
 };
 
 type ComponentMethods<Methods> = {
-	[K in keyof Methods]: Methods[K];
+	[K in keyof Methods as `kol${Capitalize<string & K>}`]: Methods[K];
 };
 
 type ComponentWatchers<Props> = {
@@ -58,7 +58,7 @@ export type NotNullableFields<Props> = {
 	[K in keyof Props]-?: NonNullable<Props[K]>;
 };
 
-export type WebComponentInterface<T extends ComponentApi = ComponentApi> = {
+export type WebComponentInterface<T extends ComponentApi> = {
 	componentWillLoad(): void;
 } & ComponentProps<ExtractProps<T>> &
 	NotNullableFields<ExtractStates<T>> &
@@ -67,7 +67,7 @@ export type WebComponentInterface<T extends ComponentApi = ComponentApi> = {
 	ComponentMethods<ExtractMethods<T>> &
 	ComponentListeners<ExtractListeners<T>>;
 
-export type FunctionalComponentProps<T extends ComponentApi = ComponentApi> = NotNullableFields<ExtractProps<T>> &
+export type FunctionalComponentProps<T extends ComponentApi> = NotNullableFields<ExtractProps<T>> &
 	NotNullableFields<ExtractStates<T>> &
 	ComponentCallbacks<ExtractCallbacks<T>> &
 	ComponentRefs<ExtractRefs<T>> &

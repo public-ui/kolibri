@@ -1,7 +1,5 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import type { ClickButtonApi } from '../../internal/functional-components/click-button/api';
-import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
@@ -15,15 +13,27 @@ import type { ShowPropType } from '../../internal/schema/props/show';
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebComponentInterface<ClickButtonApi> {
-	private readonly controller = new SkeletonController(this, new ClickButtonController(this));
+export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
+	private readonly ctrl = new SkeletonController(this);
+
+	@Method()
+	public async kolFocus(): Promise<void> {
+		this.ctrl.focus();
+		return Promise.resolve();
+	}
+
+	@Method()
+	public async kolToggle(): Promise<void> {
+		this.ctrl.toggle();
+		return Promise.resolve();
+	}
 
 	@Prop()
 	public _count!: CountPropType;
 
 	@Watch('_count')
 	public watchCount(value?: CountPropType): void {
-		this.controller.watchCount(value);
+		this.ctrl.watchCount(value);
 	}
 
 	@Prop()
@@ -31,7 +41,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebCompo
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
-		this.controller.watchName(value);
+		this.ctrl.watchName(value);
 	}
 
 	@Prop()
@@ -39,7 +49,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebCompo
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		this.controller.watchLabel(value);
+		this.ctrl.watchLabel(value);
 	}
 
 	@State()
@@ -51,41 +61,30 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebCompo
 	@State()
 	public count: CountPropType = 0;
 
-	@Method()
-	public focusButton(): Promise<void> {
-		this.controller.focusButton();
-		return Promise.resolve();
-	}
-
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Enter' || event.key === ' ') {
-			this.controller.handleClick();
+			this.ctrl.handleClick();
 		}
 	}
 
 	@Event() public loaded!: EventEmitter<number>;
 
-	@Method()
-	public toggle(): Promise<void> {
-		return this.controller.toggle();
-	}
-
 	@Listen('keydown', { target: 'window' })
 	public onKeydown(event: KeyboardEvent): void {
-		this.controller.onKeydown(event);
+		this.ctrl.onKeydown(event);
 	}
 
 	public componentWillLoad(): void {
 		this.watchLabel(this._label);
-		this.controller.componentWillLoad({
+		this.ctrl.componentWillLoad({
 			count: this._count,
 			name: this._name,
 		});
 	}
 
 	public render(): JSX.Element {
-		const { count, name } = this.controller.getProps();
+		const { count, name } = this.ctrl.getProps();
 		const { label, show } = this;
 		return (
 			<Host>
@@ -93,10 +92,10 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi>, WebCompo
 					count={count}
 					label={label}
 					name={name}
-					handleClick={this.controller.handleClick}
+					handleClick={this.ctrl.handleClick}
 					onLoaded={this.loaded}
 					show={show}
-					refButton={this.controller.setButtonRef}
+					refButton={this.ctrl.setButtonRef}
 				/>
 			</Host>
 		);

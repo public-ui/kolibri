@@ -1,16 +1,13 @@
 import type { LabelPropType } from '../../schema/props/label';
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, WebComponentInterface } from '../generic-types';
+import type { ControllerInterface } from '../generic-types';
 import type { ClickButtonApi } from './api';
 
-export class ClickButtonController
-	extends BaseController<ClickButtonApi['Props'], WebComponentInterface<ClickButtonApi>>
-	implements ControllerInterface<ClickButtonApi>
-{
+export class ClickButtonController extends BaseController<ClickButtonApi['Props'], ClickButtonApi['States']> implements ControllerInterface<ClickButtonApi> {
 	private buttonRef?: HTMLButtonElement;
 
-	public constructor(states: WebComponentInterface<ClickButtonApi>) {
+	public constructor(states: ClickButtonApi['States'] = {}) {
 		super(states, {
 			label: '',
 		});
@@ -33,9 +30,9 @@ export class ClickButtonController
 		console.log(this, this.buttonRef, 'button clicked');
 	};
 
-	public focusButton = (): void => {
+	public focus(): void {
 		this.buttonRef?.focus();
-	};
+	}
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {
 		this.buttonRef = element;

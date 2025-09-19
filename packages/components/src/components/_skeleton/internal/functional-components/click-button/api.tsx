@@ -6,6 +6,9 @@ export interface ClickButtonApi extends ComponentApi {
 	Callbacks: {
 		click: () => void;
 	};
+	Methods: {
+		focus: () => void;
+	};
 	Refs: {
 		button: HTMLButtonElement;
 	};

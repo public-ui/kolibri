@@ -5,19 +5,23 @@ import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
-import type { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface, WebComponentInterface } from '../generic-types';
+import { ClickButtonController } from '../click-button/controller';
+import type { ControllerInterface } from '../generic-types';
 import type { SkeletonApi } from './api';
 
-export class SkeletonController extends BaseController<SkeletonApi['Props'], WebComponentInterface<SkeletonApi>> implements ControllerInterface<SkeletonApi> {
-	public constructor(
-		states: WebComponentInterface<SkeletonApi>,
-		private readonly clickButtonController: ClickButtonController,
-	) {
+export class SkeletonController extends BaseController<SkeletonApi['Props'], SkeletonApi['States']> implements ControllerInterface<SkeletonApi> {
+	private readonly clickButtonCtrl: ClickButtonController;
+
+	public constructor(states: SkeletonApi['States']) {
 		super(states, {
 			count: 0,
 			name: '',
 		});
+
+		/**
+		 * hier muss irgendein handling rein
+		 */
+		this.clickButtonCtrl = new ClickButtonController({});
 	}
 
 	public componentWillLoad(props: SkeletonApi['Props']): void {
@@ -25,7 +29,7 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 		this.watchCount(count);
 		this.watchName(name);
 		this.watchLabel(this.component.label);
-		this.clickButtonController.componentWillLoad({
+		this.clickButtonCtrl.componentWillLoad({
 			label: this.component.label,
 		});
 	}
@@ -49,13 +53,12 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 		const normalized = normalizeLabel(value);
 		if (validateLabel(normalized)) {
 			this.setState('label', normalized);
-			this.clickButtonController.watchLabel(normalized);
+			this.clickButtonCtrl.watchLabel(normalized);
 		}
 	}
 
-	public toggle(): Promise<void> {
+	public toggle(): void {
 		this.setState('show', !this.component.show);
-		return Promise.resolve();
 	}
 
 	public onKeydown = (event: KeyboardEvent): void => {
@@ -67,18 +70,19 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Web
 	};
 
 	public handleClick = (): void => {
+		// eslint-disable-next-line no-console
+		console.log('Button clicked, count should be increased');
 		const { count } = this.getProps();
 		const nextCount = count + 1;
 		this.setProp('count', nextCount);
 		this.setState('count', nextCount);
-		this.component.loaded.emit(nextCount);
 	};
 
-	public focusButton = (): void => {
-		this.clickButtonController.focusButton();
-	};
+	public focus(): void {
+		return this.clickButtonCtrl.focus();
+	}
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {
-		this.clickButtonController.setButtonRef(element);
+		this.clickButtonCtrl.setButtonRef(element);
 	};
 }
