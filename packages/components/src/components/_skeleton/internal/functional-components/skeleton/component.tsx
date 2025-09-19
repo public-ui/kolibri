@@ -12,7 +12,8 @@ const BEM_CLASS_SKELETON__CONTAINER = bem(BEM_BLOCK_SKELETON, 'container');
 const BEM_CLASS_SKELETON__COUNTER = bem(BEM_BLOCK_SKELETON, 'counter');
 const BEM_CLASS_SKELETON__NAME = bem(BEM_BLOCK_SKELETON, 'name');
 
-export const SkeletonFC: FC<FunctionalComponentProps<SkeletonApi>> = ({ count, label, name, show, handleClick, refButton }) => {
+export const SkeletonFC: FC<FunctionalComponentProps<SkeletonApi>> = (props) => {
+	const { count, label, name, show, handleClick, refButton } = props;
 	const hasName = !!(show && name?.trim());
 	const BEM_CLASS_ROOT = bem(BEM_BLOCK_SKELETON, {
 		'has-name': hasName,

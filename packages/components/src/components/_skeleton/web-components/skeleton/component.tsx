@@ -83,6 +83,15 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 			count: this._count,
 			name: this._name,
 		});
+
+		// Set up the callback for emitting loaded events
+		this.ctrl.setOnLoadedCallback((count: number) => {
+			this.loaded.emit(count);
+		});
+	}
+
+	public disconnectedCallback(): void {
+		this.ctrl.destroy();
 	}
 
 	public render(): JSX.Element {
