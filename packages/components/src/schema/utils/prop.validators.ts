@@ -5,7 +5,7 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { getDocument, Log } from './dev.utils';
+import { getDocument, getExperimentalMode, Log } from './dev.utils';
 
 import type { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
@@ -44,11 +44,11 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  * wir das Target explizit und stoppen die Propagation.
  */
 export const setEventTarget = (event: Event, target?: HTMLElement): void => {
-	// if (getExperimentalMode()) {
-	// 	event.preventDefault();
-	// 	Log.debug([event, target]);
-	// 	Log.debug(`↑ We propagate the (submit) event to this target.`);
-	// }
+	if (getExperimentalMode()) {
+		event.preventDefault();
+		Log.debug([event, target]);
+		Log.debug(`↑ We propagate the (submit) event to this target.`);
+	}
 	Object.defineProperty(event, 'target', {
 		value: target,
 		writable: false,
