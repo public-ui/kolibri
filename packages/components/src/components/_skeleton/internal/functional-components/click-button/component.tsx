@@ -10,7 +10,7 @@ const BEM_CLASS_CLICK_BUTTON = clickButtonBem();
 const BEM_CLASS_CLICK_BUTTON__LABEL = clickButtonBem('label');
 
 export const ClickButtonFC: FC<FunctionalComponentProps<ClickButtonApi>> = ({ label, handleClick, refButton }) => (
-	<button class={BEM_CLASS_CLICK_BUTTON} ref={refButton} onClick={handleClick}>
+	<button class={BEM_CLASS_CLICK_BUTTON} ref={refButton} onClick={handleClick} onKeyDown={(event) => event.preventDefault()}>
 		<span class={BEM_CLASS_CLICK_BUTTON__LABEL}>{label}</span>
 	</button>
 );

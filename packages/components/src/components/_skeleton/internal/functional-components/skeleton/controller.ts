@@ -1,3 +1,4 @@
+import { Log } from '../../../../../schema';
 import type { CountPropType } from '../../schema/props/count';
 import { normalizeCount, validateCount } from '../../schema/props/count';
 import type { LabelPropType } from '../../schema/props/label';
@@ -70,8 +71,7 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Ske
 	};
 
 	public handleClick = (): void => {
-		// eslint-disable-next-line no-console
-		console.log('Button clicked, count should be increased');
+		Log.debug('Button clicked, count should be increased');
 		const { count } = this.getProps();
 		const nextCount = count + 1;
 		this.setProp('count', nextCount);

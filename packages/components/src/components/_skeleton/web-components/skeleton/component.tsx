@@ -8,6 +8,7 @@ import type { CountPropType } from '../../internal/schema/props/count';
 import type { LabelPropType } from '../../internal/schema/props/label';
 import type { NamePropType } from '../../internal/schema/props/name';
 import type { ShowPropType } from '../../internal/schema/props/show';
+import { Log } from '../../../../schema';
 
 @Component({
 	tag: 'kol-skeleton',
@@ -64,6 +65,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Enter' || event.key === ' ') {
+			Log.debug('button pressed');
 			this.ctrl.handleClick();
 		}
 	}
