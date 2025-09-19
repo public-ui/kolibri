@@ -4,6 +4,7 @@ import type {
 	LinkVariantPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
+	PropAriaControls,
 	PropAriaCurrentValue,
 	PropAriaDescription,
 	PropAriaExpanded,
@@ -33,6 +34,7 @@ export type OptionalProps = {
 } & PropAccessKey &
 	PropAlternativeButtonLinkRole &
 	PropAriaCurrentValue &
+	PropAriaControls &
 	PropAriaDescription &
 	PropDisabled &
 	PropDownload &

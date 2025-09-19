@@ -50,6 +50,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 				ref={this.catchRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
 				_customClass={this._customClass}
 				_disabled={this._disabled}
@@ -78,6 +79,11 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Defines the value for the aria-description attribute.

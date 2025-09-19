@@ -31,6 +31,7 @@ import {
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
+	validateAriaControls,
 	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaOwns,
@@ -152,6 +153,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
+					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
@@ -226,6 +228,11 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Defines the value for the aria-description attribute.
@@ -339,6 +346,11 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		validateAriaCurrentValue(this, value);
 	}
 
+	@Watch('_ariaControls')
+	public validateAriaControls(value?: string): void {
+		validateAriaControls(this, value);
+	}
+
 	@Watch('_ariaDescription')
 	public validateAriaDescription(value?: AriaDescriptionPropType): void {
 		validateAriaDescription(this, value);
@@ -435,6 +447,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateAriaControls(this._ariaControls);
 		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaOwns(this._ariaOwns);
