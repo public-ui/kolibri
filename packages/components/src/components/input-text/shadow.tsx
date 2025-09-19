@@ -49,7 +49,7 @@ import { InputTextController } from './controller';
 		default: './style.scss',
 	},
 	shadow: {
-		delegatesFocus: true,
+		delegatesFocus: false,
 	},
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
