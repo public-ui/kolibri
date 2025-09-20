@@ -3,15 +3,16 @@ import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipWidth } from './custom-tooltip-width';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { FocusElements } from './focus-elements';
+import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
 import { PerformanceTest } from './performance-test';
-import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
-import { StaticForm } from './static-form';
-import { SampleFormWithValidation } from './sample-form-with-validation';
-import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
-import { TooltipPositioning } from './tooltip-positioning';
 import { RHFBasic } from './react-hook-form/basic';
+import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
+import { SampleFormWithValidation } from './sample-form-with-validation';
+import { Skeleton } from './skeleton';
+import { StaticForm } from './static-form';
+import { TooltipPositioning } from './tooltip-positioning';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
@@ -28,5 +29,6 @@ export const SCENARIO_ROUTES: Routes = {
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'tooltip-positioning': TooltipPositioning,
 		'performance-test': PerformanceTest,
+		skeleton: Skeleton,
 	},
 };
