@@ -2,8 +2,28 @@ import type { EventEmitter } from '@stencil/core';
 
 type Callback<T> = (value?: T) => void;
 
+type PropsDefinition = {
+	Optional?: Record<string, unknown>;
+	Required?: Record<string, unknown>;
+};
+
+type PropsOrDefault<T extends ComponentApi> = T['Props'] extends PropsDefinition ? T['Props'] : PropsDefinition;
+
+type ExtractDefinitionEntry<Definition extends PropsDefinition, K extends keyof PropsDefinition> =
+	Definition[K] extends Record<string, unknown> ? Definition[K] : Record<never, never>;
+
+type ExtractPropsDefinition<T extends ComponentApi> = PropsOrDefault<T>;
+
+type ExtractRequiredProps<T extends ComponentApi> = ExtractDefinitionEntry<ExtractPropsDefinition<T>, 'Required'>;
+
+type ExtractOptionalProps<T extends ComponentApi> = ExtractDefinitionEntry<ExtractPropsDefinition<T>, 'Optional'>;
+
+type ExtractAllProps<T extends ComponentApi> = ExtractRequiredProps<T> & ExtractOptionalProps<T>;
+
+export type ResolvedProps<T extends ComponentApi> = ExtractRequiredProps<T> & Partial<ExtractOptionalProps<T>>;
+
 export interface ComponentApi {
-	Props?: Record<string, unknown>;
+	Props?: PropsDefinition;
 	States?: Record<string, unknown>;
 	Emitters?: Record<string, unknown>;
 	Methods?: Record<string, () => unknown>;
@@ -14,13 +34,16 @@ export interface ComponentApi {
 
 type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
 
-type ExtractProps<T extends ComponentApi> = Extract<T, 'Props'>;
 type ExtractStates<T extends ComponentApi> = Extract<T, 'States'>;
 type ExtractEmitters<T extends ComponentApi> = Extract<T, 'Emitters'>;
 type ExtractMethods<T extends ComponentApi> = Extract<T, 'Methods'>;
 type ExtractListeners<T extends ComponentApi> = Extract<T, 'Listeners'>;
 type ExtractCallbacks<T extends ComponentApi> = Extract<T, 'Callbacks'>;
 type ExtractRefs<T extends ComponentApi> = Extract<T, 'Refs'>;
+
+type ExtractProps<T extends ComponentApi> = ExtractAllProps<T>;
+type ExtractRequired<T extends ComponentApi> = ExtractRequiredProps<T>;
+type ExtractOptional<T extends ComponentApi> = ExtractOptionalProps<T>;
 
 type ComponentCallbacks<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
@@ -34,9 +57,15 @@ type FunctionalComponentEmitters<Emitters> = {
 	[K in keyof Emitters as `on${Capitalize<string & K>}`]: EventEmitter<Emitters[K]>;
 };
 
-type ComponentProps<Props> = {
+type ComponentPropsRequired<Props> = {
 	[K in keyof Props as `_${Lowercase<string & K>}`]: Props[K];
 };
+
+type ComponentPropsOptional<Props> = {
+	[K in keyof Props as `_${Lowercase<string & K>}`]?: Props[K];
+};
+
+type ComponentProps<T extends ComponentApi> = ComponentPropsRequired<ExtractRequired<T>> & ComponentPropsOptional<ExtractOptional<T>>;
 
 type ComponentRefs<Refs> = {
 	[K in keyof Refs as `ref${Capitalize<string & K>}`]: (element?: Refs[K]) => void;
@@ -60,7 +89,7 @@ export type NotNullableFields<Props> = {
 
 export type WebComponentInterface<T extends ComponentApi> = {
 	componentWillLoad(): void;
-} & ComponentProps<ExtractProps<T>> &
+} & ComponentProps<T> &
 	NotNullableFields<ExtractStates<T>> &
 	ComponentWatchers<ExtractProps<T>> &
 	WebComponentEmitters<ExtractEmitters<T>> &
@@ -90,7 +119,7 @@ type ControllerRefSetters<Refs> = {
 };
 
 export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
-	componentWillLoad(props: NotNullableFields<ExtractProps<T>>): void;
+	componentWillLoad(props: ResolvedProps<T>): void;
 	getProps(): NotNullableFields<ExtractProps<T>>;
 } & ComponentWatchers<ExtractProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &

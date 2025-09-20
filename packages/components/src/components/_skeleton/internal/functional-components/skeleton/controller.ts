@@ -7,10 +7,10 @@ import type { NamePropType } from '../../schema/props/name';
 import { normalizeName, validateName } from '../../schema/props/name';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface } from '../generic-types';
+import type { ControllerInterface, ResolvedProps } from '../generic-types';
 import type { SkeletonApi } from './api';
 
-export class SkeletonController extends BaseController<SkeletonApi['Props'], SkeletonApi['States']> implements ControllerInterface<SkeletonApi> {
+export class SkeletonController extends BaseController<ResolvedProps<SkeletonApi>, SkeletonApi['States']> implements ControllerInterface<SkeletonApi> {
 	private readonly clickButtonCtrl: ClickButtonController;
 	private intervalId?: NodeJS.Timeout;
 
@@ -27,7 +27,7 @@ export class SkeletonController extends BaseController<SkeletonApi['Props'], Ske
 		this.startLoadedEventInterval();
 	}
 
-	public componentWillLoad(props: SkeletonApi['Props']): void {
+	public componentWillLoad(props: ResolvedProps<SkeletonApi>): void {
 		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);

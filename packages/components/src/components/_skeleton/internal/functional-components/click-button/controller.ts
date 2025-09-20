@@ -1,10 +1,13 @@
 import type { LabelPropType } from '../../schema/props/label';
 import { normalizeLabel, validateLabel } from '../../schema/props/label';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface } from '../generic-types';
+import type { ControllerInterface, ResolvedProps } from '../generic-types';
 import type { ClickButtonApi } from './api';
 
-export class ClickButtonController extends BaseController<ClickButtonApi['Props'], ClickButtonApi['States']> implements ControllerInterface<ClickButtonApi> {
+export class ClickButtonController
+	extends BaseController<ResolvedProps<ClickButtonApi>, ClickButtonApi['States']>
+	implements ControllerInterface<ClickButtonApi>
+{
 	private buttonRef?: HTMLButtonElement;
 
 	public constructor(states: ClickButtonApi['States'] = {}) {
@@ -13,7 +16,7 @@ export class ClickButtonController extends BaseController<ClickButtonApi['Props'
 		});
 	}
 
-	public componentWillLoad(props: ClickButtonApi['Props']): void {
+	public componentWillLoad(props: ResolvedProps<ClickButtonApi>): void {
 		const { label } = props;
 		this.watchLabel(label);
 	}

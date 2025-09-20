@@ -30,7 +30,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	@Prop()
-	public _count!: CountPropType;
+	public _count?: CountPropType;
 
 	@Watch('_count')
 	public watchCount(value?: CountPropType): void {

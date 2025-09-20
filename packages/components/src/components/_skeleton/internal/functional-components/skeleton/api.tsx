@@ -5,7 +5,10 @@ import type { ShowProp } from '../../schema/props/show';
 import type { ComponentApi } from '../generic-types';
 
 export interface SkeletonApi extends ComponentApi {
-	Props: CountProp & NameProp;
+	Props: {
+		Optional: CountProp;
+		Required: NameProp;
+	};
 	States: CountProp & LabelProp & ShowProp;
 	Emitters: {
 		loaded: number;
