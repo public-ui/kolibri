@@ -1,18 +1,56 @@
 import type { EventEmitter } from '@stencil/core';
 
+type AnyRecord = Record<string, unknown>;
+
 type Callback<T> = (value?: T) => void;
 
+type KeyToMessage<Key extends PropertyKey> = Key extends string | number ? Key : 'symbol';
+
+type KeyIntersection<OptionalKeys extends PropertyKey, RequiredKeys extends PropertyKey> = Extract<OptionalKeys, RequiredKeys>;
+
+type KeyIntersectionMessage<OptionalKeys extends PropertyKey, RequiredKeys extends PropertyKey> =
+	KeyIntersection<OptionalKeys, RequiredKeys> extends never
+		? never
+		: `PropsDefinitionError: duplicate keys ${KeyToMessage<KeyIntersection<OptionalKeys, RequiredKeys>>}`;
+
+declare const propsDefinitionMarker: unique symbol;
+
+type PropsDefinitionMetadata<Optional extends AnyRecord, Required extends AnyRecord> = {
+	optional: Optional;
+	required: Required;
+};
+
+type PropsDefinitionMessage<Optional extends AnyRecord, Required extends AnyRecord> = KeyIntersectionMessage<keyof Optional, keyof Required>;
+
+export type PropsDefinition<Optional extends AnyRecord, Required extends AnyRecord> =
+	PropsDefinitionMessage<Optional, Required> extends never
+		? Required &
+				Partial<Optional> & {
+					readonly [propsDefinitionMarker]?: PropsDefinitionMetadata<Optional, Required>;
+				}
+		: PropsDefinitionMessage<Optional, Required>;
+
+export type PropsOrDefault<Props> = Props extends null | undefined
+	? Record<never, never>
+	: Props extends {
+				readonly [propsDefinitionMarker]?: PropsDefinitionMetadata<infer Optional extends AnyRecord, infer Required extends AnyRecord>;
+		  }
+		? Required & Partial<Optional>
+		: Props extends AnyRecord
+			? Props
+			: Record<never, never>;
+
 export interface ComponentApi {
-	Props?: Record<string, unknown>;
-	States?: Record<string, unknown>;
-	Emitters?: Record<string, unknown>;
+	Props?: AnyRecord;
+	States?: AnyRecord;
+	Emitters?: AnyRecord;
 	Methods?: Record<string, () => unknown>;
-	Listeners?: Record<string, unknown>;
+	Listeners?: AnyRecord;
 	Callbacks?: Record<string, () => unknown>;
 	Refs?: Record<string, HTMLElement>;
 }
 
-type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
+type Extract<T extends ComponentApi, K extends keyof ComponentApi> = PropsOrDefault<T[K]>;
 
 type ExtractProps<T extends ComponentApi> = Extract<T, 'Props'>;
 type ExtractStates<T extends ComponentApi> = Extract<T, 'States'>;
