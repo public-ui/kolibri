@@ -5,10 +5,12 @@ import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil-community/postcss';
 import { sass } from '@stencil/sass';
-import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
+import { reactOutputTarget as reactOutputTargetKoliBri } from '@public-ui/stencil-react-output-target';
+import { reactOutputTarget as reactOutputTargetStencil } from '@stencil/react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
+import { customSuffixOutputTarget } from 'stencil-custom-suffix-output-target';
 
 const TAGS = [
 	'kol-abbr',
@@ -194,17 +196,15 @@ if (process.env.NODE_ENV === 'production') {
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v20/src/components.ts',
 		}),
-		reactOutputTarget({
+		reactOutputTargetKoliBri({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			proxiesFile: '../adapters/react/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
-		reactOutputTarget({
-			componentCorePackage: '@public-ui/components',
+		reactOutputTargetStencil({
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/react-v19/src/index.ts',
-			includeDefineCustomElements: false,
+			outDir: '../adapters/react-v19',
 		}),
 		solidOutputTarget({
 			componentCorePackage: '@public-ui/components',
@@ -219,9 +219,10 @@ if (process.env.NODE_ENV === 'production') {
 			includeDefineCustomElements: false,
 		}),
 		{
-			minify: true,
 			type: 'dist-custom-elements',
+			externalRuntime: false,
 		},
+		customSuffixOutputTarget(),
 		// {
 		// 	type: 'dist-custom-elements-bundle',
 		// 	externalRuntime: false,
