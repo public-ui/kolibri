@@ -12,13 +12,11 @@ import { SampleFormWithValidation } from './sample-form-with-validation';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { TooltipPositioning } from './tooltip-positioning';
 import { RHFBasic } from './react-hook-form/basic';
-import { LongTooltip } from './long-tooltip';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'change-tabindex': ChangeTabindex,
 		'custom-tooltip-width': CustomTooltipWidth,
-		'long-tooltip': LongTooltip,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,

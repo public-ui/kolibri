@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import React from 'react';
 import { KolButton } from '@public-ui/react-v19';
-import { SampleDescription } from '../components/SampleDescription';
+import { SampleDescription } from '../SampleDescription';
 
-export const LongTooltip: FC = () => {
+export const ButtonRowReverseTooltip: FC = () => {
 	return (
 		<>
 			<SampleDescription>
@@ -17,7 +17,7 @@ export const LongTooltip: FC = () => {
 				<KolButton
 					_icons="codicon codicon-home"
 					_hideLabel
-					_label="Das ist ein sehr sehr langer Tooltip-Text, der die Breite ausreizt."
+					_label="This is a very, very long tooltip text that exceeds the width."
 					_variant="primary"
 				></KolButton>
 			</div>
