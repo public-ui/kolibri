@@ -1,0 +1,56 @@
+name: Security Scan
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'develop'
+      - 'main'
+      - 'release/*'
+  workflow_dispatch:
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  clamav-and-trivy:
+    name: ClamAV and Trivy Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        shell: bash
+
+      - name: Scan repository with ClamAV
+        uses: djdefi/gitavscan@main
+        with:
+          full: '--full'
+
+      - name: Scan repository with Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          format: 'table'
+          exit-code: '1'
