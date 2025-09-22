@@ -31,6 +31,7 @@ KoliBri is always actively working on improvements, new features and future-orie
 
 | Version | Release type | Release  | Period | End-of-Support |
 | ------: | :----------: | :------: | :----: | :------------: |
+|     0.x |    Initial   | Jul 2020 |   -    |    Dec 2021    |
 |     1.x |     LTS      | Dec 2021 |   3y   |    Dec 2024    |
 |     2.x |     LTS      | Dec 2023 |   3y   |    Dec 2026    |
 |     3.x |     STS      | Dec 2024 |  15m   |    Dec 2025    |
@@ -42,12 +43,13 @@ gantt
     title LTS & STS
     dateFormat YYYY-MM-DD
 
-    1.x (LTS) :, 2021-12-01, 3y
-    2.x (LTS) :,  2023-12-01, 3y
-    3.x (STS) :crit , 2024-12-01, 15M
-    4.x (LTS) :, 2025-12-01, 3y
-    5.x (STS) :crit , 2026-12-01, 15M
-    6.x (LTS) :, 2027-12-01, 3y
+    0.x Initial implementation :, 2020-07-01, 17M
+    1.x (LTS)                  :, 2021-12-01, 3y
+    2.x (LTS)                  :,  2023-12-01, 3y
+    3.x (STS)                  :crit , 2024-12-01, 15M
+    4.x (LTS)                  :, 2025-12-01, 3y
+    5.x (STS)                  :crit , 2026-12-01, 15M
+    6.x (LTS)                  :, 2027-12-01, 3y
 
 ```
 
