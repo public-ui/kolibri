@@ -565,9 +565,13 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
-		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
-		const keyPropertyName = selection.keyPropertyName ?? 'id';
-		const selectedKeyLength = selection.selectedKeys?.length;
+
+		if (selection?.multiple === false) {
+			return <td key={`thead-0-selection`} class="table__header-cell table__header-cell--horizontal selection-cell"></td>;
+		}
+
+		const keyPropertyName = selection?.keyPropertyName ?? 'id';
+		const selectedKeyLength = selection?.selectedKeys?.length;
 		const dataLength = this.state._data.length;
 		const isChecked = selectedKeyLength === dataLength;
 		const indeterminate = selectedKeyLength !== 0 && !isChecked;
@@ -580,7 +584,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="selection-cell selection-control">
+			<th key={`thead-0-selection`} class="table__header-cell table__header-cell--horizontal selection-cell selection-control">
 				<div class={`input ${indeterminate ? 'indeterminate' : isChecked ? 'checked' : ''}`}>
 					<label class="checkbox-container">
 						<KolIconTag class="icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
@@ -654,10 +658,15 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
 
+		const classNames = ['table__header-cell', isVertical ? 'table__header-cell--vertical' : 'table__header-cell--horizontal'];
+		if (typeof cell.textAlign === 'string' && cell.textAlign.length > 0) {
+			classNames.push(`table__header-cell--align-${cell.textAlign}`, `align-${cell.textAlign}`);
+		}
+
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={cell.textAlign ? `align-${cell.textAlign}` : undefined}
+				class={classNames.join(' ')}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
@@ -754,9 +763,15 @@ export class KolTableStateless implements TableStatelessAPI {
 														return (
 															<td
 																key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-																class={{
-																	[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-																}}
+																class={[
+																	'table__header-cell',
+																	'table__header-cell--horizontal',
+																	typeof cell.textAlign === 'string' && cell.textAlign.length > 0 ? `table__header-cell--align-${cell.textAlign}` : undefined,
+																	typeof cell.textAlign === 'string' && cell.textAlign.length > 0 ? `align-${cell.textAlign}` : undefined,
+																	typeof cell.textAlign === 'string' && cell.textAlign.length > 0 ? cell.textAlign : undefined,
+																]
+																	.filter(Boolean)
+																	.join(' ')}
 																colSpan={cell.colSpan}
 																rowSpan={cell.rowSpan}
 																style={{
