@@ -12,6 +12,19 @@ on:
   schedule:
     - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:
+    inputs:
+      enable_clamav:
+        description: 'Run the ClamAV scan'
+        type: boolean
+        default: true
+      enable_trivy:
+        description: 'Run the Trivy scan'
+        type: boolean
+        default: true
+      enable_audit:
+        description: 'Run pnpm audit'
+        type: boolean
+        default: true
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
@@ -27,6 +40,10 @@ jobs:
           - develop
           - 'release/2'
     runs-on: ubuntu-latest
+    env:
+      RUN_CLAMAV: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.enable_clamav || 'true' }}
+      RUN_TRIVY: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.enable_trivy || 'true' }}
+      RUN_PNPM_AUDIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.enable_audit || 'true' }}
     if: |
       github.event_name == 'schedule' ||
       github.event_name == 'push' ||
@@ -80,12 +97,12 @@ jobs:
 
       - name: Scan repository with ClamAV
         id: clamav
-        if: steps.check_branch.outputs.should_run == 'true'
+        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_CLAMAV == 'true'
         continue-on-error: true
         uses: djdefi/gitavscan@main
       - name: Scan repository with Trivy
         id: trivy
-        if: steps.check_branch.outputs.should_run == 'true'
+        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_TRIVY == 'true'
         continue-on-error: true
         uses: aquasecurity/trivy-action@0.28.0
         with:
@@ -97,11 +114,11 @@ jobs:
           format: 'table'
           exit-code: '1'
 
-      - name: Run npm audit
-        id: npm_audit
-        if: steps.check_branch.outputs.should_run == 'true'
+      - name: Run pnpm audit
+        id: pnpm_audit
+        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_PNPM_AUDIT == 'true'
         continue-on-error: true
-        run: npm audit
+        run: pnpm audit
         shell: bash
 
       - name: Summarize scan results
@@ -109,15 +126,35 @@ jobs:
         env:
           CLAMAV_OUTCOME: ${{ steps.clamav.outcome }}
           TRIVY_OUTCOME: ${{ steps.trivy.outcome }}
-          NPM_AUDIT_OUTCOME: ${{ steps.npm_audit.outcome }}
+          PNPM_AUDIT_OUTCOME: ${{ steps.pnpm_audit.outcome }}
+          RUN_CLAMAV: ${{ env.RUN_CLAMAV }}
+          RUN_TRIVY: ${{ env.RUN_TRIVY }}
+          RUN_PNPM_AUDIT: ${{ env.RUN_PNPM_AUDIT }}
         run: |
           printf '| Step | Outcome |\n' >> "$GITHUB_STEP_SUMMARY"
           printf '| --- | --- |\n' >> "$GITHUB_STEP_SUMMARY"
-          printf '| ClamAV | %s |\n' "$CLAMAV_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
-          printf '| Trivy | %s |\n' "$TRIVY_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
-          printf '| npm audit | %s |\n' "$NPM_AUDIT_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
 
-          if [[ "$CLAMAV_OUTCOME" != 'success' || "$TRIVY_OUTCOME" != 'success' || "$NPM_AUDIT_OUTCOME" != 'success' ]]; then
+          clamav_outcome="$CLAMAV_OUTCOME"
+          if [[ "$RUN_CLAMAV" != 'true' ]]; then
+            clamav_outcome='skipped'
+          fi
+          printf '| ClamAV | %s |\n' "$clamav_outcome" >> "$GITHUB_STEP_SUMMARY"
+
+          trivy_outcome="$TRIVY_OUTCOME"
+          if [[ "$RUN_TRIVY" != 'true' ]]; then
+            trivy_outcome='skipped'
+          fi
+          printf '| Trivy | %s |\n' "$trivy_outcome" >> "$GITHUB_STEP_SUMMARY"
+
+          pnpm_audit_outcome="$PNPM_AUDIT_OUTCOME"
+          if [[ "$RUN_PNPM_AUDIT" != 'true' ]]; then
+            pnpm_audit_outcome='skipped'
+          fi
+          printf '| pnpm audit | %s |\n' "$pnpm_audit_outcome" >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ "$clamav_outcome" != 'success' && "$clamav_outcome" != 'skipped' || \
+                "$trivy_outcome" != 'success' && "$trivy_outcome" != 'skipped' || \
+                "$pnpm_audit_outcome" != 'success' && "$pnpm_audit_outcome" != 'skipped' ]]; then
             echo 'One or more security scans reported a problem.' >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
