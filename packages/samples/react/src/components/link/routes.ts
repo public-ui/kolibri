@@ -6,6 +6,7 @@ import { LinkTarget } from './target';
 import { LinkAriaDescription } from './aria-description';
 import { LinkAccessKey } from './access-key';
 import { LinkShortKey } from './short-key';
+import { LinkReactRouter } from './link-react-router';
 
 export const LINK_ROUTES: Routes = {
 	link: {
@@ -16,5 +17,6 @@ export const LINK_ROUTES: Routes = {
 		'aria-description': LinkAriaDescription,
 		'access-key': LinkAccessKey,
 		'short-key': LinkShortKey,
+		'react-router': LinkReactRouter,
 	},
 };
