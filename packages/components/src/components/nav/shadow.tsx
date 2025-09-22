@@ -307,6 +307,7 @@ export class KolNav implements NavAPI {
 
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _orientation?: OrientationPropType = 'vertical';
 
