@@ -1,15 +1,17 @@
-import { type FunctionalComponent as FC, h } from '@stencil/core';
+import { h, type FunctionalComponent as FC } from '@stencil/core';
 import { type JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { type InternalAlertProps } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import AlertIcon from '../AlertIcon';
 import KolHeadingFc from '../Heading';
-import { genBemAlert as bem, BEM_CLASS_ALERT__CLOSER, BEM_CLASS_ALERT__CONTENT } from './bem';
 
-const translateCloseAlert = translate('kol-close-alert');
+const alertBem = bem.forBlock('kol-alert');
+const BEM_CLASS_ALERT__CLOSER = alertBem('closer');
+const BEM_CLASS_ALERT__CONTENT = alertBem('content');
 
 export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	Partial<Omit<InternalAlertProps, 'on'>> & {
@@ -56,6 +58,8 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		...other
 	} = props;
 
+	const translateCloseAlert = translate('kol-close-alert');
+
 	if (alert) {
 		vibrateOnError();
 
@@ -67,12 +71,12 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	/**
 	 * Define the dynamic BEM class names for the alert component.
 	 */
-	const BEM_CLASS_ROOT = bem('kol-alert', {
+	const BEM_CLASS_ROOT = alertBem({
 		hasCloser: !!hasCloser,
 		[`type-${type}`]: true,
 		[`variant-${variant}`]: true,
 	});
-	const BEM_CLASS__HEADING = bem('kol-alert', 'heading', {
+	const BEM_CLASS__HEADING = alertBem('heading', {
 		[`h${level}`]: true,
 	});
 

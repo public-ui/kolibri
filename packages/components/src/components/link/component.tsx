@@ -96,7 +96,6 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 			event.preventDefault();
 		} else {
 			if (typeof this.state._on?.onClick === 'function') {
-				event.preventDefault();
 				setEventTarget(event, this.anchorRef);
 				this.state._on?.onClick(event, this.state._href);
 			}

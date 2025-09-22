@@ -1,16 +1,14 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"ignore": [
-		"src/assets/**",
-		"src/scenarios/appointment-form/AppointmentForm.tsx",
-		"src/scenarios/appointment-form/appointmentService.ts",
-		"src/scenarios/appointment-form/AvailableAppointmentsForm.tsx",
-		"src/scenarios/appointment-form/DistrictForm.tsx",
-		"src/scenarios/appointment-form/formUtils.ts",
-		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
-		"src/scenarios/appointment-form/Summary.tsx"
+	"ignore": ["src/scenarios/appointment-form/*", "unocss.config.ts"],
+	"ignoreDependencies": [
+		"@public-ui/components",
+		"@public-ui/react-v19",
+		"@public-ui/themes",
+		"@public-ui/react-hook-form-adapter",
+		"@unocss/preset-mini",
+		"uno.css",
+		"yup"
 	],
-
-	"ignoreDependencies": ["@public-ui/components", "@public-ui/react-v19", "@public-ui/themes", "@public-ui/react-hook-form-adapter", "@unocss/preset-mini", "uno.css", "yup"],
-	"project": ["src/**/*.ts", "src/**/*.tsx"]
+	"project": ["**/*.ts", "**/*.tsx"]
 }
