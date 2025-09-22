@@ -2,11 +2,15 @@ name: Security Scan
 
 on:
   pull_request:
+    branches:
+      - 'develop'
+      - 'release/2'
   push:
     branches:
       - 'develop'
-      - 'main'
-      - 'release/*'
+      - 'release/2'
+  schedule:
+    - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -16,6 +20,17 @@ concurrency:
 jobs:
   clamav-and-trivy:
     name: ClamAV and Trivy Scan
+    strategy:
+      fail-fast: false
+      matrix:
+        branch:
+          - develop
+          - 'release/2'
+    if: |
+      github.event_name == 'schedule' ||
+      (github.event_name == 'push' && github.ref_name == matrix.branch) ||
+      (github.event_name == 'pull_request' && github.base_ref == matrix.branch) ||
+      (github.event_name == 'workflow_dispatch' && (github.ref_name == matrix.branch || github.base_ref == matrix.branch))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -23,6 +38,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          ref: ${{ github.event_name == 'schedule' && matrix.branch || github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -40,11 +56,15 @@ jobs:
         shell: bash
 
       - name: Scan repository with ClamAV
+        id: clamav
+        continue-on-error: true
         uses: djdefi/gitavscan@main
         with:
           full: '--full'
 
       - name: Scan repository with Trivy
+        id: trivy
+        continue-on-error: true
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: 'fs'
@@ -54,3 +74,28 @@ jobs:
           severity: 'CRITICAL,HIGH'
           format: 'table'
           exit-code: '1'
+
+      - name: Run npm audit
+        id: npm_audit
+        continue-on-error: true
+        run: npm audit
+        shell: bash
+
+      - name: Summarize scan results
+        if: always()
+        env:
+          CLAMAV_OUTCOME: ${{ steps.clamav.outcome }}
+          TRIVY_OUTCOME: ${{ steps.trivy.outcome }}
+          NPM_AUDIT_OUTCOME: ${{ steps.npm_audit.outcome }}
+        run: |
+          printf '| Step | Outcome |\n' >> "$GITHUB_STEP_SUMMARY"
+          printf '| --- | --- |\n' >> "$GITHUB_STEP_SUMMARY"
+          printf '| ClamAV | %s |\n' "$CLAMAV_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
+          printf '| Trivy | %s |\n' "$TRIVY_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
+          printf '| npm audit | %s |\n' "$NPM_AUDIT_OUTCOME" >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ "$CLAMAV_OUTCOME" != 'success' || "$TRIVY_OUTCOME" != 'success' || "$NPM_AUDIT_OUTCOME" != 'success' ]]; then
+            echo 'One or more security scans reported a problem.' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+        shell: bash
