@@ -5,10 +5,10 @@
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
-@include kol-form-field;
-@include kol-field-control;
-
 @layer kol-component {
+	@include kol-form-field;
+	@include kol-field-control;
+
 	$root: '.kol-checkbox';
 
 	.kol-form-field {

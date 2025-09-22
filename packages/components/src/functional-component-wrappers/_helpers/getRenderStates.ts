@@ -1,5 +1,4 @@
-import type { MsgPropType, TouchedPropType } from '../../schema';
-import { convertMsgToInternMsg } from '../../schema/props/msg';
+import type { MsgPropType, Stringified, TouchedPropType } from '../../schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -9,23 +8,26 @@ import { convertMsgToInternMsg } from '../../schema/props/msg';
  * @returns Render-States
  */
 export const getRenderStates = (state: {
-	_msg?: MsgPropType;
+	_msg?: Stringified<MsgPropType>;
 	_hint?: string;
 	_id: string;
 	_touched?: TouchedPropType;
+	_hideMsg?: boolean;
 }): {
 	hasError: boolean;
 	hasHint: boolean;
 	ariaDescribedBy: string[];
 } => {
-	const internMsg = convertMsgToInternMsg(state._msg);
-	const hasMessage = Boolean(internMsg?.description && internMsg.description.length > 0);
-	const isMessageValidError = internMsg?.type === 'error' && hasMessage;
+	const msg = state._msg;
+	const description = typeof msg === 'string' ? msg : msg?._description;
+	const type = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
+	const hasMessage = Boolean(description && description.length > 0);
+	const isMessageValidError = type === 'error' && hasMessage;
 	const hasError = isMessageValidError && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
 	const ariaDescribedBy: string[] = [];
-	if (hasMessage) {
+	if (hasMessage && !state._hideMsg) {
 		ariaDescribedBy.push(`${state._id}-msg`);
 	}
 	if (hasHint) {

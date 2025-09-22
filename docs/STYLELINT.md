@@ -108,3 +108,10 @@ The configuration enforces a specific order of CSS properties:
 5. **Everything Else** (Typography, Content)
 
 This improves readability and consistency of CSS code.
+
+## CSS Custom Properties and SASS Variables
+
+Custom properties (`--*`) remain in the global CSS cascade, even inside a Shadow DOM.
+Use them sparingly and prefix them clearly for values that external themes should override.
+For internal calculations prefer SASS variables so that unused properties do not leak and collide
+with variables from host applications.

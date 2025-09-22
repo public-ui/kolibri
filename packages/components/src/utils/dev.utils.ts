@@ -1,17 +1,25 @@
-import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '../schema';
+import { Log, getDocument, isTestMode, setColorContrastAnalysis, setExperimentalMode } from '../schema';
 
 import { getWindow } from '../schema';
 import { Env } from '@stencil/core';
 
 const initMeta = (): void => {
-	const meta = getDocument().querySelector('meta[name="kolibri"]');
-	if (meta && meta.hasAttribute('content')) {
-		const content = meta.getAttribute('content');
-		if (typeof content === 'string') {
-			setDevMode(content.includes('dev-mode=true'));
-			setExperimentalMode(content.includes('experimental-mode=true'));
-			setColorContrastAnalysis(content.includes('color-contrast-analysis=true'));
+	try {
+		const document = getDocument();
+		if (!document || typeof document.querySelector !== 'function') {
+			return; // Skip meta initialization if document is not available
 		}
+
+		const meta = document.querySelector('meta[name="kolibri"]');
+		if (meta && meta.hasAttribute('content')) {
+			const content = meta.getAttribute('content');
+			if (typeof content === 'string') {
+				setExperimentalMode(content.includes('experimental-mode=true'));
+				setColorContrastAnalysis(content.includes('color-contrast-analysis=true'));
+			}
+		}
+	} catch (error) {
+		// Ignore meta initialization errors in test/SSR environments
 	}
 };
 
@@ -66,7 +74,7 @@ Email: kolibri@itzbund.de
 
 let nonce = (): string => Math.floor(Math.random() * 16777215).toString(16);
 
-if (processEnv === 'test') {
+if (isTestMode()) {
 	nonce = (): string => 'nonce';
 }
 

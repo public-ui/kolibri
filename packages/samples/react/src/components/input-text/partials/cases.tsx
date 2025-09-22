@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { KolInputText } from '@public-ui/react';
+import { KolInputText } from '@public-ui/react-v19';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
@@ -14,7 +14,7 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 			<KolInputText
 				{...props}
 				_hint={HINT_MSG}
-				_msg={{ _type: 'error', _description: ERROR_MSG, _label: 'test headline' }}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_placeholder="With icons"
 				_icons={{
 					right: {

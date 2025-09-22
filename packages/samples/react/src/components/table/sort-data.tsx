@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolHeading, KolTableStateful } from '@public-ui/react';
+import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
@@ -19,6 +19,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 			{ label: 'order', key: 'order', textAlign: 'center' },
 			{
 				label: 'date',
+				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0, data1) => {
@@ -37,6 +38,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 			{ label: 'order', key: 'order', textAlign: 'center' },
 			{
 				label: 'date',
+				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0, data1) => {

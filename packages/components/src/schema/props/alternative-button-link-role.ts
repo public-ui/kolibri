@@ -2,7 +2,7 @@
 import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../utils';
 
-const alternativeButtonLinkRolePropTypeOptions = ['button', 'link', 'tab', 'treeitem'] as const;
+const alternativeButtonLinkRolePropTypeOptions = ['tab', 'treeitem'] as const;
 export type AlternativeButtonLinkRolePropType = (typeof alternativeButtonLinkRolePropTypeOptions)[number];
 
 /**

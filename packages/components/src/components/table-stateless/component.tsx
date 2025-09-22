@@ -8,6 +8,7 @@ import { translate } from '../../i18n';
 import { isEqual } from 'lodash-es';
 import type {
 	AriaSort,
+	HasSettingsMenuPropType,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -33,6 +34,7 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
+	validateHasSettingsMenu,
 } from '../../schema';
 import type { ColumnSettings } from '../../schema/types';
 import { Callback } from '../../schema/enums';
@@ -63,6 +65,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		},
 		_label: '',
 		_minWidth: 'auto',
+		_hasSettingsMenu: false,
 	};
 
 	private tableDivElement?: HTMLDivElement;
@@ -123,6 +126,16 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the table settings including column visibility, order and width.
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
+
+	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
+	@Watch('_hasSettingsMenu')
+	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
+		validateHasSettingsMenu(this, value);
+	}
 
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
@@ -484,6 +497,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.state._tableSettings.columns = primaryHeaders
 			.filter((header) => header.key) // only headers with a key are supported
 			.map((header, index) => ({
+				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
 				key: header.key ?? nonce(),
 				label: header.label,
 				position: index,
@@ -500,6 +514,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateTableSettings(this._tableSettings);
+		this.validateHasSettingsMenu(this._hasSettingsMenu);
 	}
 
 	/**
@@ -905,7 +920,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return (
 			<div class="kol-table">
-				<KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />
+				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
@@ -922,17 +937,8 @@ export class KolTableStateless implements TableStatelessAPI {
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/*
-						 * The following element allows the table to receive focus without providing redundant content to screen readers.
-						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
-						 * prevent screen readers from just reading "blank".
-						 */}
 						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
-							&nbsp;
-						</div>
-
-						<caption class="kol-table__caption" id="caption">
+						<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
 							{this.state._label}
 						</caption>
 

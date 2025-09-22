@@ -1,16 +1,15 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
-import { setDevMode } from '../schema';
+import type { Mode } from '../schema';
+import { Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
-
-type Environment = 'development' | 'production';
 
 type KoliBriOptions = RegisterOptions & {
 	/**
 	 * The environment in which the application is running.
 	 */
-	environment?: Environment;
+	environment?: Mode;
 	/**
 	 * This option allows you to transform the component tag names.
 	 */
@@ -33,7 +32,8 @@ export const bootstrap = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	koliBriOptions?: KoliBriOptions,
 ): Promise<void[]> => {
-	setDevMode(koliBriOptions?.environment === 'development');
+	const nodeEnv = typeof process !== 'undefined' && process.env ? (process.env.NODE_ENV as Mode) : undefined;
+	setRuntimeMode(koliBriOptions?.environment || nodeEnv || 'production');
 
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);
 	if (koliBriOptions?.transformTagName) {
@@ -42,6 +42,9 @@ export const bootstrap = async (
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
 	options = koliBriOptions;
+
+	// Only log development message when actually in development mode
+	Log.info('Development mode active - Enhanced debugging features available');
 
 	return coreRegisterReturnValue;
 };

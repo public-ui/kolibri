@@ -21,6 +21,7 @@ export class KolTableSettings {
 	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
+	private readonly translateColumnNotHidable = translate('kol-table-settings-column-not-hidable');
 	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
 	@Watch('_tableSettings')
@@ -66,7 +67,7 @@ export class KolTableSettings {
 	private handleVisibilityChange(key: string, visible: unknown): void {
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, visible: Boolean(visible) } : col)),
+			columns: this.tableSettings.columns.map((col) => (col.key === key && col.hidable !== false ? { ...col, visible: Boolean(visible) } : col)),
 		};
 	}
 
@@ -120,9 +121,10 @@ export class KolTableSettings {
 									<div key={column.key} class="kol-table-settings__column">
 										<KolInputCheckboxTag
 											_checked={column.visible}
-											_label={translate('kol-table-settings-show-column', { placeholders: { column: column.label } })}
+											_label={`${column.label}${column.hidable === false ? ` (${this.translateColumnNotHidable})` : ''}`}
 											_value={true}
 											_hideLabel
+											_disabled={column.hidable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
 										/>
 										<span>{column.label}</span>

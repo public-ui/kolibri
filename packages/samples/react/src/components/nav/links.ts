@@ -128,3 +128,64 @@ export const LINKS_WITHOUT_SUBMENU: ButtonOrLinkOrTextWithChildrenProps[] = [
 		_icons: 'codicon codicon-squirrel',
 	},
 ];
+
+export const LINKS_SUB_ACTIVE: ButtonOrLinkOrTextWithChildrenProps[] = [
+	{
+		_label: 'Homepage',
+		_icons: 'codicon codicon-home',
+		_on: {
+			onClick: () => console.log('Homepage clicked'),
+		},
+	},
+	{
+		_label: '2 Navigation point',
+		_href: '#/back-page',
+		_on: {
+			onClick: () => console.log('Link clicked'),
+		},
+	},
+	{
+		_label: '3 Navigation point',
+		_href: '#/back-page',
+		_icons: 'codicon codicon-home',
+		_children: [
+			{
+				_label: '3.1 Navigation point',
+				_icons: 'codicon codicon-home',
+				_href: '#/back-page',
+			},
+			{
+				_label: '3.2 Navigation point',
+				_target: 'asdasd',
+			},
+			{
+				_label: '3.3 Navigation point',
+				_href: '#/back-page',
+				_children: [
+					{
+						_label: '3.3.1 Navigation point',
+						_href: '#/back-page',
+						_active: true,
+					},
+					{ _label: '3.3.2 Navigation point', _href: '#/back-page' },
+				],
+			},
+			{
+				_label: '3.4 Navigation point',
+				_href: '#/back-page',
+				_children: [
+					{
+						_label: '3.4.1 Navigation point',
+						_href: '#/back-page',
+						_children: [
+							{ _label: '3.4.1.1 Navigation point', _href: '#/back-page' },
+							{ _label: '3.4.1.2 Navigation point (active)', _href: '#/back-page' },
+						],
+					},
+					{ _label: '3.4.2 Navigation point', _href: '#/back-page' },
+				],
+			},
+			{ _label: '3.5 Navigation point', _href: '#/back-page' },
+		],
+	},
+];

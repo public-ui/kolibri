@@ -5,12 +5,12 @@
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-alert;
-@include kol-form-field;
-@include kol-input-container;
-@include kol-input;
-
 @layer kol-component {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+	@include kol-input;
+
 	.kol-input {
 		opacity: 0;
 		position: absolute;

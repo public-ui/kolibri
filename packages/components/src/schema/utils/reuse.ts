@@ -1,12 +1,3 @@
-const PROCESS_ENVS = ['development', 'production', 'test'] as const;
-type ProcessEnv = (typeof PROCESS_ENVS)[number];
-export let processEnv: ProcessEnv = 'development';
-try {
-	processEnv = process.env.NODE_ENV as ProcessEnv;
-} catch (e) {
-	processEnv = 'production';
-}
-
 /**
  * This function is used to handle the slot content by
  * moving a DOM element to a defined slot element.

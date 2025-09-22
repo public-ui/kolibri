@@ -2,9 +2,9 @@
 @use '../@shared/kol-link-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-link-styles('kol-link');
-
 @layer kol-component {
+	@include kol-link-styles('kol-link');
+
 	.kol-breadcrumb {
 		&__list,
 		&__list-element {

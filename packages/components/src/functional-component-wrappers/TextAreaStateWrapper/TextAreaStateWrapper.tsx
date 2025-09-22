@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolTextAreaFc, { type TextAreaProps } from '../../functional-components/inputs/TextArea';
 
-import { convertMsgToInternMsg, type TextareaStates } from '../../schema';
+import { type TextareaStates, type MsgPropType } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 
 export type TextAreaStateWrapperProps = Partial<TextAreaProps> & {
@@ -25,7 +25,7 @@ function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>):
 		required: state._required,
 		placeholder: state._placeholder,
 		touched: state._touched,
-		msg: convertMsgToInternMsg(state._msg),
+		msg: state._msg as MsgPropType,
 		...other,
 		ariaDescribedBy,
 	};
@@ -33,6 +33,7 @@ function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>):
 	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') {
 		props.maxLength = state._maxLength;
 	}
+	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
 	return props;
 }

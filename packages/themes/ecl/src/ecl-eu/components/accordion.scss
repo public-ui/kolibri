@@ -9,7 +9,11 @@
 			0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 		border-radius: 8px;
 		margin: 0;
-		overflow: hidden;
+
+		&:focus-within {
+			outline: 2px solid var(--color-blue);
+			outline-offset: -1px;
+		}
 
 		&__heading {
 			font-size: 2em;
@@ -50,6 +54,10 @@
 					content: '';
 					border-end-end-radius: to-rem(2);
 					border-end-start-radius: to-rem(2);
+				}
+
+				&:focus {
+					outline: none;
 				}
 			}
 

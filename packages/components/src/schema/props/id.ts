@@ -7,12 +7,14 @@ export type IdPropType = string;
 
 /**
  * Defines the internal ID of the primary component element.
+ * @deprecated Will be removed in the next major version.
  */
 export type PropId = {
 	id: IdPropType;
 };
 
 /* validator */
+/** @deprecated Will be removed in the next major version. */
 export const validateId = (component: Generic.Element.Component, value?: IdPropType): void => {
 	watchString(component, '_id', value);
 };

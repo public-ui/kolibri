@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FC } from 'react';
-import { KolAlert, KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react';
+import { KolAlert, KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { SampleDescription } from '../components/SampleDescription';
 import type { SelectOption } from '@public-ui/components';
 

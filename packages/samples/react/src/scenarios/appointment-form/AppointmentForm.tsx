@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import React, { useEffect, useState, useRef } from 'react';
 import * as Yup from 'yup';
 
-import { KolLink, KolTabs } from '@public-ui/react';
+import { KolLink, KolTabs } from '@public-ui/react-v19';
 
 import { checkAppointmentAvailability } from './appointmentService';
 import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';

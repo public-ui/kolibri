@@ -31,6 +31,7 @@ import {
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
+	validateAriaControls,
 	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaOwns,
@@ -152,6 +153,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
+					aria-controls={this.state._ariaControls}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
@@ -161,11 +163,12 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 							? `${this.state._label}${isExternal ? ` (${this.translateOpenLinkInTab})` : ''}`
 							: undefined
 					}
+					aria-keyshortcuts={this.state._shortKey}
 					class={clsx('kol-link', {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._buttonVariant as string}`]: this.state._role === 'button' && this.state._buttonVariant !== 'custom',
+						[`kol-link--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
 						[`kol-link--${this.state._linkVariant as string}`]: this.state._linkVariant,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
@@ -217,7 +220,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -225,6 +228,11 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Defines the value for the aria-description attribute.
@@ -296,7 +304,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 
@@ -336,6 +344,11 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Watch('_ariaCurrentValue')
 	public validateAriaCurrentValue(value?: AriaCurrentValuePropType): void {
 		validateAriaCurrentValue(this, value);
+	}
+
+	@Watch('_ariaControls')
+	public validateAriaControls(value?: string): void {
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaDescription')
@@ -434,6 +447,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateAriaControls(this._ariaControls);
 		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaOwns(this._ariaOwns);

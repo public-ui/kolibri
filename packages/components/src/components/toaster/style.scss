@@ -2,9 +2,9 @@
 @use '../../styles/kol-alert-mixin' as *;
 @use '../@shared/mixins' as *;
 
-@include kol-alert;
-
 @layer kol-component {
+	@include kol-alert;
+
 	:host {
 		display: flex;
 		position: fixed;

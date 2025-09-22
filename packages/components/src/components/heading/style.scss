@@ -1,7 +1,9 @@
 @use '../../styles/global' as *;
 
-.kol-headline {
-	&--secondary {
-		margin: 0;
+@layer kol-component {
+	.kol-headline {
+		&--secondary {
+			margin: 0;
+		}
 	}
 }

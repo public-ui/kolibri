@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { KolInputEmail } from '@public-ui/react';
+import { KolInputEmail } from '@public-ui/react-v19';
 import type { Components } from '@public-ui/components';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';

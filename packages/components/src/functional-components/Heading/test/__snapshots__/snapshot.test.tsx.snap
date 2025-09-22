@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`KolHeadingFc should apply SecondaryHeadlineProps to the secondary headline 1`] = `
+<hgroup class="kol-heading-group">
+  <h1 class="kol-headline kol-headline--group kol-headline--h1 kol-headline--primary">
+    Primary
+  </h1>
+  <p aria-label="secondary-label" class="kol-headline kol-headline--group kol-headline--secondary secondary-class">
+    Secondary
+  </p>
+</hgroup>
+`;
+
 exports[`KolHeadingFc should apply custom class names 1`] = `
 <h1 class="custom-class kol-headline kol-headline--h1 kol-headline--single">
   Custom Class Heading

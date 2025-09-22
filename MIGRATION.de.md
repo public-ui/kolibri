@@ -48,6 +48,14 @@ Dies bedeutet, dass ggf. Komponenten, Eigenschaften oder Funktionalitäten entfe
 
 Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING_CHANGES.v2.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v2.md).
 
+### Breaking Changes für Version 3
+
+Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING_CHANGES.v3.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v3.md).
+
+### Breaking Changes für Version 4
+
+Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING_CHANGES.v4.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v4.md).
+
 ## Migration durchführen
 
 > [!TIP]

@@ -113,6 +113,24 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._hasOpened = false;
 	}
 
+	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
+		const event = new CustomEvent<EventDetail>(type, {
+			bubbles: true,
+			detail,
+		});
+
+		if (this.refInput) {
+			Object.defineProperty(event, 'target', {
+				value: this.refInput,
+			});
+
+			Object.defineProperty(event, 'currentTarget', {
+				value: this.refInput,
+			});
+		}
+		return event;
+	}
+
 	private clearSelection() {
 		const isDisabled = this.state._disabled === true;
 		if (isDisabled) {
@@ -124,30 +142,41 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
 
-			this.controller.onFacade.onInput(
-				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				true,
-				{ value: emptyValue },
-			);
-			this.controller.onFacade.onChange(
-				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
-				{ value: emptyValue },
-			);
+			const inputEvent = this.createEventWithTarget('input', {
+				name: this.state._name as string,
+				value: emptyValue,
+			});
+			const changeEvent = this.createEventWithTarget('change', {
+				name: this.state._name as string,
+				value: emptyValue,
+			});
+
+			this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
+			this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 		}
 	}
 
 	private selectOption(option: Option<string>) {
+		if (option.value === this._value) {
+			this._inputValue = option.label as string;
+			this._filteredOptions = [...this.state._options];
+			return;
+		}
+
 		this._value = option.value;
 		this._inputValue = option.label as string;
-		this.controller.onFacade.onInput(
-			new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: option.value } }),
-			false,
-			option.value,
-		);
-		this.controller.onFacade.onChange(
-			new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: option.value } }),
-			option.value,
-		);
+
+		const inputEvent = this.createEventWithTarget('input', {
+			name: this.state._name ?? '',
+			value: option.value,
+		});
+		const changeEvent = this.createEventWithTarget('change', {
+			name: this.state._name ?? '',
+			value: option.value,
+		});
+
+		this.controller.onFacade.onInput(inputEvent, false, option.value);
+		this.controller.onFacade.onChange(changeEvent, option.value);
 
 		this._filteredOptions = [...this.state._options];
 
@@ -239,6 +268,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			'aria-controls': 'listbox',
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
+			'aria-keyshortcuts': this.state._shortKey,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
 			autocorrect: 'off',
@@ -462,7 +492,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _hasOpened = false;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -501,6 +531,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: IdPropType;
 
@@ -536,7 +567,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

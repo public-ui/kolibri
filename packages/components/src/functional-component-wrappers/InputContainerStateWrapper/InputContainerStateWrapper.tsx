@@ -1,5 +1,4 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import type { InternMsgPropType } from '../../schema';
 import {
 	type ButtonProps,
 	type IconOrIconClass,
@@ -13,7 +12,8 @@ import {
 	type KoliBriHorizontalIcons,
 	type TextareaStates,
 	type SelectStates,
-	convertMsgToInternMsg,
+	type MsgPropType,
+	type Stringified,
 } from '../../schema';
 
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
@@ -39,7 +39,7 @@ function getInputContainerProps(state: InputState): {
 	icons?: KoliBriHorizontalIcons;
 	smartButton?: ButtonProps;
 	disabled?: boolean;
-	msg?: InternMsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 } {
 	let icons: KoliBriHorizontalIcons | undefined = undefined;
@@ -57,7 +57,7 @@ function getInputContainerProps(state: InputState): {
 		icons,
 		smartButton,
 		disabled: state._disabled,
-		msg: convertMsgToInternMsg(state._msg),
+		msg: state._msg,
 		touched: state._touched,
 	};
 }
