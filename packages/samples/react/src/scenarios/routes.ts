@@ -9,6 +9,7 @@ import { InputsGetValue } from './inputs-get-value';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
 import { StaticForm } from './static-form';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
+import { ToolbarItemOrder } from './toolbar-item-order';
 import { TooltipPositioning } from './tooltip-positioning';
 
 export const SCENARIO_ROUTES: Routes = {
@@ -23,6 +24,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'static-form': StaticForm,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
+		'toolbar-item-order': ToolbarItemOrder,
 		'tooltip-positioning': TooltipPositioning,
 	},
 };
