@@ -287,10 +287,6 @@ importers:
         version: 3.6.1(sass@1.93.0)(typescript@5.9.2)(vue@3.5.21(typescript@5.9.2))
 
   packages/adapters/react-hook-form-adapter:
-    dependencies:
-      react-hook-form:
-        specifier: ^7
-        version: 7.62.0(react@19.1.1)
     devDependencies:
       '@public-ui/components':
         specifier: workspace:*
@@ -322,6 +318,9 @@ importers:
       react-dom:
         specifier: 19.1.1
         version: 19.1.1(react@19.1.1)
+      react-hook-form:
+        specifier: 7.63.0
+        version: 7.63.0(react@19.1.1)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -11321,12 +11320,6 @@ packages:
 
   react-fast-compare@2.0.4:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
-
-  react-hook-form@7.62.0:
-    resolution: {integrity: sha512-7KWFejc98xqG/F4bAxpL41NB3o1nnvQO1RWZT3TqRZYL8RryQETGfEdVnJN2fy1crCiBLLjkRBVK05j24FxJGA==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18 || ^19
 
   react-hook-form@7.63.0:
     resolution: {integrity: sha512-ZwueDMvUeucovM2VjkCf7zIHcs1aAlDimZu2Hvel5C5907gUzMpm4xCrQXtRzCvsBqFjonB4m3x4LzCFI1ZKWA==}
@@ -26146,10 +26139,6 @@ snapshots:
       scheduler: 0.26.0
 
   react-fast-compare@2.0.4: {}
-
-  react-hook-form@7.62.0(react@19.1.1):
-    dependencies:
-      react: 19.1.1
 
   react-hook-form@7.63.0(react@19.1.1):
     dependencies:

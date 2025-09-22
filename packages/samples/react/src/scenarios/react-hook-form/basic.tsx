@@ -102,9 +102,6 @@ export const RHFBasic: FC = () => {
 		shouldFocusError: true,
 	});
 
-	// Cast control to any to work around TypeScript generic compatibility issues with KoliBri adapters
-	const adaptedControl = control as any;
-
 	const touchAndValidateAll = () => {
 		allFields.forEach((name) => {
 			setValue(name, getValues(name), { shouldTouch: true, shouldValidate: true });
@@ -129,18 +126,18 @@ export const RHFBasic: FC = () => {
 			</SampleDescription>
 
 			<form onSubmit={handleSubmit(onSubmit, onError)} className="grid gap-4 w-full max-w-xl">
-				<KolInputTextController name="firstName" control={adaptedControl} _label="First Name" rules={{ required: 'First name is required' }} _required />
-				<KolInputTextController name="lastName" control={adaptedControl} _label="Last Name" rules={{ required: 'Last name is required' }} _required />
-				<KolInputEmailController name="email" control={adaptedControl} _label="Email" rules={{ required: 'Email is required' }} _required />
-				<KolInputPasswordController name="password" control={adaptedControl} _label="Password" rules={{ required: 'Password is required' }} _required />
-				<KolInputNumberController name="age" control={adaptedControl} _label="Age" rules={{ required: 'Age is required', min: 0 }} _required />
-				<KolInputRangeController name="volume" control={adaptedControl} _label="Volume (0–100)" _min={0} _max={100} />
-				<KolInputDateController name="birthday" control={adaptedControl} _label="Birthday" rules={{ required: 'Birthday is required' }} />
-				<KolInputColorController name="favoriteColor" control={adaptedControl} _label="Favorite Color" id="favoriteColor" />
-				<KolInputFileController name="cv" control={adaptedControl} _label="Upload CV" rules={{ required: 'Please upload your CV' }} _required />
-				<KolTextareaController name="bio" control={adaptedControl} _label="Bio" rules={{ required: 'Please provide a short bio' }} _required />
+				<KolInputTextController name="firstName" control={control} _label="First Name" rules={{ required: 'First name is required' }} _required />
+				<KolInputTextController name="lastName" control={control} _label="Last Name" rules={{ required: 'Last name is required' }} _required />
+				<KolInputEmailController name="email" control={control} _label="Email" rules={{ required: 'Email is required' }} _required />
+				<KolInputPasswordController name="password" control={control} _label="Password" rules={{ required: 'Password is required' }} _required />
+				<KolInputNumberController name="age" control={control} _label="Age" rules={{ required: 'Age is required', min: 0 }} _required />
+				<KolInputRangeController name="volume" control={control} _label="Volume (0–100)" _min={0} _max={100} />
+				<KolInputDateController name="birthday" control={control} _label="Birthday" rules={{ required: 'Birthday is required' }} />
+				<KolInputColorController name="favoriteColor" control={control} _label="Favorite Color" id="favoriteColor" />
+				<KolInputFileController name="cv" control={control} _label="Upload CV" rules={{ required: 'Please upload your CV' }} _required />
+				<KolTextareaController name="bio" control={control} _label="Bio" rules={{ required: 'Please provide a short bio' }} _required />
 				<KolComboboxController
-					control={adaptedControl}
+					control={control}
 					rules={{ required: 'Please select a country' }}
 					name="country"
 					_label="Country"
@@ -148,7 +145,7 @@ export const RHFBasic: FC = () => {
 					_required
 				/>
 				<KolSelectController
-					control={adaptedControl}
+					control={control}
 					rules={{ required: 'Please select a language' }}
 					name="language"
 					_label="Preferred Language"
@@ -157,14 +154,14 @@ export const RHFBasic: FC = () => {
 				/>
 				<KolSingleSelectController
 					rules={{ required: 'Please select a framework' }}
-					control={adaptedControl}
+					control={control}
 					name="framework"
 					_label="Favorite Framework"
 					_options={frameworkOptions}
 					_required
 				/>
 				<KolInputRadioController
-					control={adaptedControl}
+					control={control}
 					rules={{ required: 'Please select your gender' }}
 					name="gender"
 					_label="Gender"
@@ -173,7 +170,7 @@ export const RHFBasic: FC = () => {
 				/>
 				<KolInputCheckboxController
 					name="termsAccepted"
-					control={adaptedControl}
+					control={control}
 					_label="I accept the terms and conditions"
 					rules={{ required: 'You must accept the terms' }}
 					_required
