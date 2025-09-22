@@ -32,7 +32,7 @@ concurrency:
 
 jobs:
   clamav-and-trivy:
-    name: ClamAV and Trivy Scan
+    name: pnpm audit, Trivy & ClamAV Scan
     strategy:
       fail-fast: false
       matrix:
@@ -95,11 +95,13 @@ jobs:
         run: pnpm install --frozen-lockfile
         shell: bash
 
-      - name: Scan repository with ClamAV
-        id: clamav
-        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_CLAMAV == 'true'
+      - name: Run pnpm audit
+        id: pnpm_audit
+        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_PNPM_AUDIT == 'true'
         continue-on-error: true
-        uses: djdefi/gitavscan@main
+        run: pnpm audit
+        shell: bash
+
       - name: Scan repository with Trivy
         id: trivy
         if: steps.check_branch.outputs.should_run == 'true' && env.RUN_TRIVY == 'true'
@@ -114,12 +116,11 @@ jobs:
           format: 'table'
           exit-code: '1'
 
-      - name: Run pnpm audit
-        id: pnpm_audit
-        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_PNPM_AUDIT == 'true'
+      - name: Scan repository with ClamAV
+        id: clamav
+        if: steps.check_branch.outputs.should_run == 'true' && env.RUN_CLAMAV == 'true'
         continue-on-error: true
-        run: pnpm audit
-        shell: bash
+        uses: djdefi/gitavscan@main
 
       - name: Summarize scan results
         if: always() && steps.check_branch.outputs.should_run == 'true'
@@ -134,11 +135,11 @@ jobs:
           printf '| Step | Outcome |\n' >> "$GITHUB_STEP_SUMMARY"
           printf '| --- | --- |\n' >> "$GITHUB_STEP_SUMMARY"
 
-          clamav_outcome="$CLAMAV_OUTCOME"
-          if [[ "$RUN_CLAMAV" != 'true' ]]; then
-            clamav_outcome='skipped'
+          pnpm_audit_outcome="$PNPM_AUDIT_OUTCOME"
+          if [[ "$RUN_PNPM_AUDIT" != 'true' ]]; then
+            pnpm_audit_outcome='skipped'
           fi
-          printf '| ClamAV | %s |\n' "$clamav_outcome" >> "$GITHUB_STEP_SUMMARY"
+          printf '| pnpm audit | %s |\n' "$pnpm_audit_outcome" >> "$GITHUB_STEP_SUMMARY"
 
           trivy_outcome="$TRIVY_OUTCOME"
           if [[ "$RUN_TRIVY" != 'true' ]]; then
@@ -146,15 +147,15 @@ jobs:
           fi
           printf '| Trivy | %s |\n' "$trivy_outcome" >> "$GITHUB_STEP_SUMMARY"
 
-          pnpm_audit_outcome="$PNPM_AUDIT_OUTCOME"
-          if [[ "$RUN_PNPM_AUDIT" != 'true' ]]; then
-            pnpm_audit_outcome='skipped'
+          clamav_outcome="$CLAMAV_OUTCOME"
+          if [[ "$RUN_CLAMAV" != 'true' ]]; then
+            clamav_outcome='skipped'
           fi
-          printf '| pnpm audit | %s |\n' "$pnpm_audit_outcome" >> "$GITHUB_STEP_SUMMARY"
+          printf '| ClamAV | %s |\n' "$clamav_outcome" >> "$GITHUB_STEP_SUMMARY"
 
-          if [[ "$clamav_outcome" != 'success' && "$clamav_outcome" != 'skipped' || \
+          if [[ "$pnpm_audit_outcome" != 'success' && "$pnpm_audit_outcome" != 'skipped' || \
                 "$trivy_outcome" != 'success' && "$trivy_outcome" != 'skipped' || \
-                "$pnpm_audit_outcome" != 'success' && "$pnpm_audit_outcome" != 'skipped' ]]; then
+                "$clamav_outcome" != 'success' && "$clamav_outcome" != 'skipped' ]]; then
             echo 'One or more security scans reported a problem.' >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
