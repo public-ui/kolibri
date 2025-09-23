@@ -9,7 +9,7 @@ test.use({
 	timezoneId: 'Europe/Berlin',
 	viewport: {
 		width: 800,
-		height: 1,
+		height: 600,
 	},
 });
 
