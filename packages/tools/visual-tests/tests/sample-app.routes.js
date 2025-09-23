@@ -758,6 +758,13 @@ ROUTES.set('table/stateless', {
 		},
 	},
 });
+ROUTES.set('table/sticky-header', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('tabs/basic', {
 	snapshot: {
 		zoom: {
