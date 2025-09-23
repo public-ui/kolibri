@@ -18,6 +18,15 @@
 	"engines": {
 		"pnpm": "^10"
 	},
+	"pnpm": {
+		"overrides": {
+			"axios": "1.12.0",
+			"braces": "3.0.3",
+			"lodash.pick": "npm:lodash@4.17.21",
+			"loupe": "2.3.7",
+			"semver": "7.5.2"
+		}
+	},
 	"private": true,
 	"scripts": {
 		"build": "pnpm -r build",

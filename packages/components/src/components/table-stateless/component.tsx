@@ -765,8 +765,15 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
-		if (!selection || (!selection.multiple && selection.multiple !== undefined))
+
+		if (!selection) {
 			return <th class="kol-table__cell kol-table__cell--header" key={`thead-0`}></th>;
+		}
+
+		if (selection.multiple === false) {
+			return <td key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header kol-table__cell--selection"></td>;
+		}
+
 		const selectedKeyLength = this.getSelectedKeysWithoutDisabledKeys()?.length ?? 0;
 		const dataLength = this.getDataWithSelectionEnabled().length;
 		const isChecked = selectedKeyLength === dataLength;
@@ -780,7 +787,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header">
+			<th key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header kol-table__cell--selection">
 				<div
 					class={clsx('kol-table__selection', {
 						'kol-table__selection--indeterminate': indeterminate,
