@@ -509,27 +509,28 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: string[] | string): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: Array<string | number> | string | number): null | KoliBriTableDataType | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const data = this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+			const keys = Array.isArray(selectedKeys) ? selectedKeys : [selectedKeys];
+			const keySet = new Set(keys.map(String));
+			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
 			if (selection?.multiple === false) {
 				return data[0];
 			}
-
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: string[] | string): void {
+	private handleSelectionChange(event: Event, value: Array<string | number> | string | number): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: typeof value === 'object' ? value : [value],
+					selectedKeys: Array.isArray(value) ? value : [value],
 				},
 			};
 		const selectedData = this.getSelectedData(value);
@@ -548,8 +549,8 @@ export class KolTableStateful implements TableAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
-		const selectedKeys: string[] = this.state._selection?.selectedKeys || [];
-		return this.getSelectedData(selectedKeys);
+		const selectedKeys = this.state._selection?.selectedKeys ?? [];
+		return this.getSelectedData(selectedKeys as Array<string | number> | string | number);
 	}
 
 	public render(): JSX.Element {
@@ -579,7 +580,7 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: string[] | string) => {
+						onSelectionChange: (event: Event, value: Array<string | number> | string | number) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}

@@ -25,6 +25,6 @@ export type KoliBriTableSelection = {
 	label: (row: KoliBriTableDataType) => string;
 	keyPropertyName?: string;
 	multiple?: boolean;
-	selectedKeys?: string[];
-	disabledKeys?: string[];
+	selectedKeys?: Array<string | number> | string | number;
+	disabledKeys?: Array<string | number> | string | number;
 };

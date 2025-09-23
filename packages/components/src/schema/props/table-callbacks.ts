@@ -11,7 +11,7 @@ export type SortEventPayload = {
 	currentSortDirection: KoliBriSortDirection;
 };
 
-export type SelectionChangeEventPayload = string[] | string;
+export type SelectionChangeEventPayload = Array<string | number> | string | number;
 export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | KoliBriTableDataType | null;
 
 export type TableCallbacksPropType = {
