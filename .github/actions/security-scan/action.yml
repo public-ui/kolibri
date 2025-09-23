@@ -1,0 +1,92 @@
+name: 'Security Scan'
+description: 'Runs pnpm audit, Trivy and ClamAV scans with a summary report.'
+inputs:
+  enable-audit:
+    description: 'Whether to run pnpm audit.'
+    required: false
+    default: 'true'
+  enable-trivy:
+    description: 'Whether to run the Trivy scan.'
+    required: false
+    default: 'true'
+  enable-clamav:
+    description: 'Whether to run the ClamAV scan.'
+    required: false
+    default: 'true'
+  install-deps:
+    description: 'Whether to install dependencies before running the scans.'
+    required: false
+    default: 'false'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install dependencies
+      if: ${{ inputs.install-deps == 'true' }}
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Run pnpm audit
+      id: pnpm_audit
+      if: ${{ inputs.enable-audit == 'true' }}
+      shell: bash
+      run: pnpm audit --audit-level high
+      continue-on-error: true
+
+    - name: Scan repository with Trivy
+      id: trivy
+      if: ${{ inputs.enable-trivy == 'true' }}
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
+        format: 'table'
+        exit-code: '1'
+      continue-on-error: true
+
+    - name: Scan repository with ClamAV
+      id: clamav
+      if: ${{ inputs.enable-clamav == 'true' }}
+      uses: djdefi/gitavscan@main
+      continue-on-error: true
+
+    - name: Summarize scan results
+      if: ${{ always() }}
+      env:
+        PNPM_AUDIT_OUTCOME: ${{ steps.pnpm_audit.outcome }}
+        TRIVY_OUTCOME: ${{ steps.trivy.outcome }}
+        CLAMAV_OUTCOME: ${{ steps.clamav.outcome }}
+        RUN_PNPM_AUDIT: ${{ inputs.enable-audit }}
+        RUN_TRIVY: ${{ inputs.enable-trivy }}
+        RUN_CLAMAV: ${{ inputs.enable-clamav }}
+      shell: bash
+      run: |
+        printf '| Step | Outcome |\n' >> "$GITHUB_STEP_SUMMARY"
+        printf '| --- | --- |\n' >> "$GITHUB_STEP_SUMMARY"
+
+        pnpm_audit_outcome="$PNPM_AUDIT_OUTCOME"
+        if [[ "$RUN_PNPM_AUDIT" != 'true' ]]; then
+          pnpm_audit_outcome='skipped'
+        fi
+        printf '| pnpm audit | %s |\n' "$pnpm_audit_outcome" >> "$GITHUB_STEP_SUMMARY"
+
+        trivy_outcome="$TRIVY_OUTCOME"
+        if [[ "$RUN_TRIVY" != 'true' ]]; then
+          trivy_outcome='skipped'
+        fi
+        printf '| Trivy | %s |\n' "$trivy_outcome" >> "$GITHUB_STEP_SUMMARY"
+
+        clamav_outcome="$CLAMAV_OUTCOME"
+        if [[ "$RUN_CLAMAV" != 'true' ]]; then
+          clamav_outcome='skipped'
+        fi
+        printf '| ClamAV | %s |\n' "$clamav_outcome" >> "$GITHUB_STEP_SUMMARY"
+
+        if [[ ("$pnpm_audit_outcome" != 'success' && "$pnpm_audit_outcome" != 'skipped') || \
+              ("$trivy_outcome" != 'success' && "$trivy_outcome" != 'skipped') || \
+              ("$clamav_outcome" != 'success' && "$clamav_outcome" != 'skipped') ]]; then
+          echo 'One or more security scans reported a problem.' >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
