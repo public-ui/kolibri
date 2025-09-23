@@ -43,7 +43,9 @@
 		}
 
 		&__scroll-container {
-			max-height: 80vh;
+			// max-height: 80vh;
+			// nur zum test
+			max-height: 600px;
 			overflow: auto;
 
 			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
