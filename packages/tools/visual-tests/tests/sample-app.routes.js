@@ -763,6 +763,10 @@ ROUTES.set('table/sticky-header', {
 		zoom: {
 			skip: true,
 		},
+		viewportSize: {
+			width: 1300,
+			height: 1000,
+		}
 	},
 });
 ROUTES.set('tabs/basic', {
