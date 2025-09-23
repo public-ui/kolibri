@@ -50,6 +50,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 				ref={this.catchRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
 				_customClass={this._customClass}
 				_disabled={this._disabled}
@@ -59,7 +60,6 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 				_icons={this._icons}
 				_label={this._label}
 				_on={this._on}
-				_role="button"
 				_shortKey={this._shortKey}
 				_target={this._target}
 				_tooltipAlign={this._tooltipAlign}
@@ -71,7 +71,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -79,6 +79,11 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Defines the value for the aria-description attribute.
@@ -129,11 +134,13 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

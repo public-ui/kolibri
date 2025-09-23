@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ButtonCases } from './cases';
-import { KolHeading } from '@public-ui/react';
+import { KolHeading } from '@public-ui/react-v19';
 import type { ButtonSampleProps } from './type';
 
 export const ButtonVariants: React.FC<ButtonSampleProps> = (props = {}) => {

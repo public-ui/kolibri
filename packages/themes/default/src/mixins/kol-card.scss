@@ -12,15 +12,12 @@
 
 		&__header {
 			padding: to-rem(16) to-rem(16) to-rem(8) to-rem(16);
+
+			line-height: 1.75;
 		}
 
 		&__content {
 			padding: to-rem(8) to-rem(16) to-rem(16);
-			overflow: hidden;
-		}
-
-		&__headline {
-			line-height: 1.75;
 		}
 	}
 }

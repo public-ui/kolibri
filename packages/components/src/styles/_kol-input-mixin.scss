@@ -1,15 +1,13 @@
 @use '../components/@shared/mixins' as *;
 
 @mixin kol-input {
-	@layer kol-component {
-		.kol-input {
-			width: 100%;
-			// height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
+	.kol-input {
+		width: 100%;
+		// height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
 
-			&:focus {
-				outline: none;
-			}
+		&:focus {
+			outline: none;
 		}
 	}
 }

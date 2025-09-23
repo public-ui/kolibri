@@ -8,12 +8,16 @@
 	@include kol-alert-theme;
 	@include kol-pagination-styles;
 
+	:host {
+		display: flex;
+		gap: to-rem(8);
+		flex-direction: column;
+	}
+
 	.kol-table {
 		$root: &;
-		padding: to-rem(8);
 
-		overflow-x: auto;
-		overflow-y: hidden;
+		padding: to-rem(8);
 
 		&__table,
 		&__caption {

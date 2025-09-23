@@ -50,7 +50,9 @@ export class KolLink implements LinkProps, FocusableElement {
 				ref={this.catchRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
+				_ariaExpanded={this._ariaExpanded}
 				_disabled={this._disabled}
 				_download={this._download}
 				_hideLabel={this._hideLabel}
@@ -59,7 +61,6 @@ export class KolLink implements LinkProps, FocusableElement {
 				_label={this._label}
 				_linkVariant={this._variant}
 				_on={this._on}
-				_role={this._role}
 				_shortKey={this._shortKey}
 				_target={this._target}
 				_tooltipAlign={this._tooltipAlign}
@@ -74,7 +75,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -84,9 +85,20 @@ export class KolLink implements LinkProps, FocusableElement {
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
 	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
+
+	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+
+	/**
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -132,11 +144,13 @@ export class KolLink implements LinkProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

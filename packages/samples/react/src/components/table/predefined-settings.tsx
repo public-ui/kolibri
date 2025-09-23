@@ -1,5 +1,5 @@
 import { SampleDescription } from '../SampleDescription';
-import { KolTableStateful } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 
@@ -15,6 +15,7 @@ export const PredefinedSettings: FC = () => {
 			<KolTableStateful
 				_label="Table for demonstration purposes with predefined settings"
 				_minWidth="auto"
+				_hasSettingsMenu
 				_headers={{
 					horizontal: [
 						[

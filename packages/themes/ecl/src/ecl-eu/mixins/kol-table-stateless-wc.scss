@@ -6,14 +6,17 @@
 	@include kol-alert-theme;
 	@include kol-pagination-styles;
 
+	:host {
+		display: flex;
+		gap: to-rem(8);
+		flex-direction: column;
+	}
+
 	.kol-table {
 		$root: &;
 
 		display: block;
 		padding: 0.5em;
-
-		overflow-x: auto;
-		overflow-y: hidden;
 
 		&__caption {
 			padding: 0.5em;

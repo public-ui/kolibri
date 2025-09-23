@@ -1,17 +1,15 @@
 @use 'mixins' as *;
 
 @mixin kol-popover-button-styles {
-	@layer kol-component {
-		.kol-popover-button {
-			&__button {
-				display: inline-block; // critical for floating UI to work correctly
-			}
+	.kol-popover-button {
+		&__button {
+			display: inline-block; // critical for floating UI to work correctly
+		}
 
-			&__popover {
-				margin: 0;
-				padding: 0;
-				border: 0;
-			}
+		&__popover {
+			margin: 0;
+			padding: 0;
+			border: 0;
 		}
 	}
 }

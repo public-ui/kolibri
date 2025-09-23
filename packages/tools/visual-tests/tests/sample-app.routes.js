@@ -89,7 +89,13 @@ ROUTES.set('breadcrumb/basic', {
 		skipFailures: true,
 	},
 	snapshot: {
-		skip: true,
+		zoom: {
+			skip: true,
+		},
+		viewportSize: {
+			width: 600,
+			height: 400,
+		},
 	},
 });
 ROUTES.set('button-link/basic', {
@@ -536,17 +542,6 @@ ROUTES.set('modal/basic?show-modal=true', {
 		},
 	},
 });
-ROUTES.set('modal/basic?show-modal=true&variant=card', {
-	snapshot: {
-		viewportSize: {
-			width: 1920,
-			height: 600,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('nav/aria-current', {
 	snapshot: {
 		skip: true,
@@ -561,13 +556,6 @@ ROUTES.set('nav/basic', {
 			width: 400,
 			height: 100,
 		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('nav/horizontal', {
-	snapshot: {
 		zoom: {
 			skip: true,
 		},
@@ -676,6 +664,13 @@ ROUTES.set('split-button/basic', {
 		},
 	},
 });
+ROUTES.set('table/horizontal-scrollbar', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('table/column-alignment', {
 	snapshot: {
 		zoom: {
@@ -714,6 +709,13 @@ ROUTES.set('table/pagination-position', {
 	},
 });
 ROUTES.set('table/complex-headers', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/non-hidable-columns', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -1016,6 +1018,17 @@ ROUTES.set('version/context', {
 	},
 });
 ROUTES.set('scenarios/static-form', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/sample-form-with-validation', {
 	axe: {
 		skipFailures: true,
 	},

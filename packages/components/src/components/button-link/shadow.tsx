@@ -70,7 +70,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_linkVariant={this._variant}
 				_name={this._name}
 				_on={this._on}
-				_role="link"
 				_shortKey={this._shortKey}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tooltipAlign={this._tooltipAlign}
@@ -83,7 +82,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -129,6 +128,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _id?: IdPropType;
 
@@ -154,11 +154,13 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

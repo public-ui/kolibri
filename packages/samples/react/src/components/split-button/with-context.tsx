@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react';
 
-import { KolButton, KolInputText, KolSplitButton } from '@public-ui/react';
+import { KolButton, KolInputText, KolSplitButton } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
 
 export const SplitButtonWithContext: FC = () => {
-	const splitButtonRef = React.useRef<HTMLKolSplitButtonElement & { closePopup: any }>();
+	const splitButtonRef = React.useRef<HTMLKolSplitButtonElement & { closePopup: any }>(null);
 
 	const handleCloseClick = () => {
 		splitButtonRef.current?.closePopup();

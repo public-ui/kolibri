@@ -1,41 +1,39 @@
 @mixin kol-input-container {
-	@layer kol-component {
-		.kol-input-container {
-			$root: &;
-			background-color: white;
-			display: grid;
-			width: 100%;
-			min-width: var(--a11y-min-size);
-			min-height: var(--a11y-min-size);
+	.kol-input-container {
+		$root: &;
+		background-color: white;
+		display: grid;
+		width: 100%;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 
+		align-items: center;
+		grid-template-columns: 1fr;
+
+		&:has(> #{$root}__adornment--start) {
+			grid-template-columns: auto 1fr;
+		}
+
+		&:has(> #{$root}__adornment--end) {
+			grid-template-columns: 1fr auto;
+		}
+
+		&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
+			grid-template-columns: auto 1fr auto;
+		}
+
+		&__container {
+			position: relative;
+		}
+
+		&__adornment {
+			display: flex;
 			align-items: center;
-			grid-template-columns: 1fr;
 
-			&:has(> #{$root}__adornment--start) {
-				grid-template-columns: auto 1fr;
-			}
-
-			&:has(> #{$root}__adornment--end) {
-				grid-template-columns: 1fr auto;
-			}
-
-			&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
-				grid-template-columns: auto 1fr auto;
-			}
-
-			&__container {
-				position: relative;
-			}
-
-			&__adornment {
-				display: flex;
-				align-items: center;
-
-				.kol-icon {
-					display: grid;
-					height: var(--a11y-min-size);
-					place-items: center;
-				}
+			.kol-icon {
+				display: grid;
+				height: var(--a11y-min-size);
+				place-items: center;
 			}
 		}
 	}

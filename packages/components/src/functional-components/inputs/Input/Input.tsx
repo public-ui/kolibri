@@ -1,12 +1,12 @@
 import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { checkHasMsg, type InternMsgPropType } from '../../../schema';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 
 export type InputProps = DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInputElement>> & {
-	msg?: InternMsgPropType;
+	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 	spellcheck?: boolean;
 	suggestions?: VNode;
@@ -20,13 +20,14 @@ const InputFc: FC<InputProps> = (props) => {
 	const { class: classNames, msg, required, disabled, touched, readonly, ariaDescribedBy, hideLabel, label, suggestions, value, ...other } = props;
 
 	const showMsg = checkHasMsg(msg, touched);
+	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const stateCssClasses = {
 		['kol-input--disabled']: Boolean(disabled),
 		['kol-input--required']: Boolean(required),
 		['kol-input--touched']: Boolean(touched),
 		['kol-input--readonly']: Boolean(readonly),
-		[`kol-input--${msg?.type || 'error'}`]: showMsg,
+		[`kol-input--${msgType || 'error'}`]: showMsg,
 	};
 
 	const inputProps: JSXBase.InputHTMLAttributes<HTMLInputElement> = {

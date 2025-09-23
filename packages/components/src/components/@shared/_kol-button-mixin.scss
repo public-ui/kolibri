@@ -2,29 +2,27 @@
 @use '../tooltip/style' as *;
 
 @mixin kol-button-styles($block-classname) {
-	@layer kol-component {
-		:host {
-			//Needed for custom width
-			display: inline-block;
+	:host {
+		//Needed for custom width
+		display: inline-block;
+	}
+
+	.#{$block-classname} {
+		display: inline-flex;
+		place-items: center;
+		font-style: to-rem(16);
+		text-align: center;
+		text-decoration-line: none;
+
+		&::before {
+			/* Render zero-width character as first element to set the baseline correctly. */
+			content: '\200B';
 		}
 
-		.#{$block-classname} {
-			display: inline-flex;
-			place-items: center;
-			font-style: to-rem(16);
-			text-align: center;
-			text-decoration-line: none;
-
-			&::before {
-				/* Render zero-width character as first element to set the baseline correctly. */
-				content: '\200B';
-			}
-
-			&__text {
-				width: 100%;
-				// Needed for custom width
-				margin: auto;
-			}
+		&__text {
+			width: 100%;
+			// Needed for custom width
+			margin: auto;
 		}
 	}
 }

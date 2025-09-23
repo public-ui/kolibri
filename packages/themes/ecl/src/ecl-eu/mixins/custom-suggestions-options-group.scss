@@ -9,7 +9,5 @@
 		left: to-rem(-8);
 		max-height: calc($option-height * $visible-options + to-rem(2));
 		border-width: 1px;
-		overflow-x: hidden;
-		overflow-y: auto;
 	}
 }

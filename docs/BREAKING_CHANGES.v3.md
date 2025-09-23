@@ -49,6 +49,7 @@ The following components have been removed:
 - The property `_minWidth` becomes required. This is to ensure that the inner width of the table and columns are wide enough to display the content. If the table gets too narrow, then the table becomes
   automatically horizontally scrollbar.
 - The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
+- Header cells with `compareFn` must include a `key` property to enable sorting.
 
 ### kol-table-stateless
 
@@ -67,7 +68,7 @@ The public `focus`-methods have been removed from all components. Use `kolFocus`
 
 ## Toaster
 
-- The toast default `alertVariant` and options property `defaultAlertVariant` have been removed. Use `variant` and `defaultVariant` instead.
+- The toast property `alertVariant` has been removed. Use `variant` instead. The options property `defaultAlertType` has been renamed to `defaultVariant`.
 
 ## Themes
 
