@@ -16,7 +16,7 @@ import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {
-	defaultAlertType: 'msg', // Standard: 'card'
+	defaultVariant: 'msg', // Standard: 'card'
 });
 
 // Enqueue a new toast to the toaster to display:
@@ -60,15 +60,23 @@ const closeToast = toaster.enqueue({
 /* Optional: Toast wieder schließen mit `closeToast()` */
 ```
 
-### Anzeigetyp des Toast
+### Anzeige-Optionen des Toast
 
-Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögliche Werte sind:
+In KoliBri unterscheiden wir drei Ebenen:
 
-- `default`
-- `error`
-- `info`
-- `success`
-- `warning`
+- **`_type`** → definiert die **semantische Bedeutung** oder logische Funktion einer Komponente.  
+  _Beispiel_: Bei `kol-button`: `"button" | "submit" | "reset"`, bei `kol-alert`: `"info" | "success" | "warning" | "error"`.
+
+- **`_variant`** → steuert das **visuelle Erscheinungsbild**, z. B. `"primary"`, `"secondary"`, `"ghost"`.
+
+- **`_behavior`** → bestimmt das **Interaktionsverhalten** der Komponente.  
+  _Beispiel_: Bei `kol-tabs`: `"select-automatic"` vs. `"select-manual"`.
+
+👉 Kurz gesagt:
+
+- `_type` = Bedeutung & Logik
+- `_variant` = Look & Styling
+- `_behavior` = Interaktion & Verhalten
 
 <!-- Auto Generated Below -->
 
