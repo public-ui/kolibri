@@ -717,7 +717,7 @@ ROUTES.set('table/with-pagination', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 640,
 		},
 		zoom: {
 			skip: true,
@@ -751,7 +751,7 @@ ROUTES.set('table/non-hidable-columns', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 250,
 		},
 		zoom: {
 			skip: true,
@@ -762,7 +762,7 @@ ROUTES.set('table/stateful-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 450,
 		},
 		zoom: {
 			skip: true,
@@ -795,7 +795,7 @@ ROUTES.set('table/stateless-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 450,
 		},
 		zoom: {
 			skip: true,
