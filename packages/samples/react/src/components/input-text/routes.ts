@@ -4,7 +4,6 @@ import { InputTextHideMsg } from './hide-msg';
 import { InputTextFormatterDemo } from './text-formatter';
 import { InputTextSmartButton } from './smart-button';
 import { InputTextExpertSlot } from './expert-slot';
-import { InputTextTabindex } from './tabindex';
 
 export const INPUT_TEXT_ROUTES: Routes = {
 	'input-text': {
@@ -13,6 +12,5 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		'text-formatter': InputTextFormatterDemo,
 		'smart-button': InputTextSmartButton,
 		'expert-slot': InputTextExpertSlot,
-		tabindex: InputTextTabindex,
 	},
 };
