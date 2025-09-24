@@ -3,4 +3,27 @@
 
 @layer kol-theme-component {
 	@include kol-card;
+
+	.kol-card__close-button {
+		color: var(--color-primary);
+		background: transparent;
+		cursor: pointer;
+
+		.kol-button {
+			&:focus {
+				outline: var(--color-primary-variant) solid to-rem(3);
+				border-top-right-radius: var(--border-radius);
+				outline-offset: 2px;
+				transition: 200ms outline-offset linear;
+			}
+
+			&:focus,
+			&:hover {
+				color: var(--color-light);
+				background-color: var(--color-danger);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-top-right-radius: var(--border-radius);
+			}
+		}
+	}
 }

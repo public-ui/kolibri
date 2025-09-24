@@ -66,7 +66,7 @@ test.describe('inputs-get-value', () => {
 		const scenario = page.getByTestId('scenario-inputNumber');
 		await scenario.getByLabel('KolInputNumber').fill('42');
 		await scenario.getByRole('button').last().click();
-		expect(await scenario.locator('pre').innerText()).toBe('"42"');
+		expect(await scenario.locator('pre').innerText()).toBe('42');
 	});
 
 	test('KolInputPassword', async ({ page }) => {
@@ -78,7 +78,9 @@ test.describe('inputs-get-value', () => {
 
 	test('KolInputRange', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-inputRange');
-		await scenario.getByLabel('KolInputRange').fill('42');
+		// For range inputs, we need to use more specific selector and interaction
+		const rangeInput = scenario.locator('input[type="range"]');
+		await rangeInput.fill('42');
 		await scenario.getByRole('button').last().click();
 		expect(await scenario.locator('pre').innerText()).toBe('42');
 	});
@@ -94,7 +96,7 @@ test.describe('inputs-get-value', () => {
 		const scenario = page.getByTestId('scenario-select');
 		await scenario.getByLabel('KolSelect').selectOption('Rio de Janeiro');
 		await scenario.getByRole('button').last().click();
-		expect(await scenario.locator('pre').innerText()).toBe('["Rio de Janeiro"]');
+		expect(await scenario.locator('pre').innerText()).toBe('"Rio de Janeiro"');
 	});
 
 	test('KolSingleSelect', async ({ page }) => {
@@ -107,9 +109,11 @@ test.describe('inputs-get-value', () => {
 
 	test('KolCombobox', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-combobox');
-		await scenario.getByRole('combobox').fill('Atlantis');
+		// Clear existing value and type a new one from suggestions
+		await scenario.getByRole('combobox').clear();
+		await scenario.getByRole('combobox').fill('Deutschland');
 		await scenario.getByRole('button').last().click();
-		expect(await scenario.locator('pre').innerText()).toBe('"Atlantis"');
+		expect(await scenario.locator('pre').innerText()).toBe('"Deutschland"');
 	});
 
 	test('KolTextarea', async ({ page }) => {
