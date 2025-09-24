@@ -672,7 +672,7 @@ ROUTES.set('table/horizontal-scrollbar', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 800,
 		},
 		zoom: {
 			skip: true,
@@ -762,7 +762,7 @@ ROUTES.set('table/stateful-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 450,
+			height: 500,
 		},
 		zoom: {
 			skip: true,
@@ -795,7 +795,7 @@ ROUTES.set('table/stateless-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 450,
+			height: 500,
 		},
 		zoom: {
 			skip: true,
