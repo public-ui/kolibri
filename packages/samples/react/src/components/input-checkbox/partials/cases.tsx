@@ -24,6 +24,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			<KolInputCheckbox {...props} _msg={{ _type: 'error', _description: ERROR_MSG }} _label="With error" _touched _value={true} _hint="Hint text" />
 			<KolInputCheckbox {...props} _label="With access key" _accessKey="c" _value={null}></KolInputCheckbox>
 			<KolInputCheckbox {...props} _label="With short key" _shortKey="s" _value={null}></KolInputCheckbox>
+			<KolInputCheckbox {...props} _label="With tabindex -1" _tabIndex={-1} _value={null}></KolInputCheckbox>
 		</div>
 	);
 });

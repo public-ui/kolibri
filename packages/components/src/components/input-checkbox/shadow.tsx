@@ -117,6 +117,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 					'visually-hidden': this.state._variant === 'button',
 				}),
 				ref: this.catchRef,
+				tabIndex: this._tabIndex,
 				...this.controller.onFacade,
 				onInput: this.onInput,
 				onChange: this.onChange,

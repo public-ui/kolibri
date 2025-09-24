@@ -19,6 +19,7 @@ import type {
 	PropRequired,
 	PropShortKey,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
@@ -41,6 +42,7 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched &
 	PropLabelAlign;
 
@@ -63,6 +65,7 @@ type OptionalStates = {
 	PropName &
 	PropRequired &
 	PropShortKey &
+	PropTabIndex &
 	PropTouched &
 	PropLabelAlign;
 
