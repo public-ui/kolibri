@@ -111,6 +111,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 			state: this.state,
 			type: 'email',
 			ariaDescribedBy,
+			tabindex: this._tabIndex,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,

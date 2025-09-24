@@ -20,6 +20,7 @@ import type {
 	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
@@ -49,6 +50,7 @@ type OptionalProps = {
 	PropShortKey &
 	PropSuggestions &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched;
 
 type RequiredStates = {
@@ -80,6 +82,7 @@ type OptionalStates = {
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
+	PropTabIndex &
 	PropTouched;
 
 export type InputEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
