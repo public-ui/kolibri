@@ -13,7 +13,7 @@ export const ButtonRowReverseTooltip: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+			<div className="flex flex-row-reverse">
 				<KolButton
 					_icons="codicon codicon-home"
 					_hideLabel
