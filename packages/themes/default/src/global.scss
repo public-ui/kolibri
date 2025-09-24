@@ -35,7 +35,7 @@
 		padding: 0;
 	}
 
-	*[tabindex]:not(.kol-input, .kol-select):focus,
+	*[tabindex]:not(.kol-input, .kol-select, .kol-textarea):focus,
 	.kol-input:not(.checkbox, .radio) .input:focus-within,
 	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {

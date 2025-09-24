@@ -21,6 +21,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, Components.KolTe
 			<KolTextarea {...props} ref={ref} _label="Text (disabled & value)" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _disabled />
 			<KolTextarea {...props} ref={ref} _label="With access key" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _accessKey="c" />
 			<KolTextarea {...props} ref={ref} _label="With short key" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _shortKey="s" />
+			<KolTextarea {...props} ref={ref} _label="With tabindex -1" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _tabIndex={-1} />
 		</div>
 	);
 });
