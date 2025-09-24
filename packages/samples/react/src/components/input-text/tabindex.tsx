@@ -10,13 +10,13 @@ export const InputTextTabindex: FC = () => (
 			<p>This sample sets tabIndex of the First input to 1 and deaktivates tab on the second (-1).</p>
 		</SampleDescription>
 		<KolInputText _label="First input" _tabIndex={20} />
-		<KolInputText _label="Second input" _tabIndex={-1} />
+		<KolInputText _label="Second input" _tabIndex={-1} _disabled />
 
 		<KolSelect _tabIndex={21} _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label="Label-Text"></KolSelect>
 
 		<label>
 			normal input
-			<input tabIndex={-1} type="text" />
+			<input tabIndex={-1} type="text" disabled />
 		</label>
 	</div>
 );
