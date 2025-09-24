@@ -190,6 +190,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			name: this.state._name ? `${this.state._name}-number` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			type: 'number',
+			tabIndex: this._tabIndex,
 			ref: this.catchInputNumberRef,
 			onKeyDown: this.onKeyDown,
 		};
