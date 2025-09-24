@@ -1,0 +1,72 @@
+name: Verify linked ticket status
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  verify:
+    name: Ensure ticket linked and in review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate ticket link and status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prBody = context.payload.pull_request.body || '';
+            const issueNumbers = new Set();
+            const issueRegex = /(^|\s)#(\d+)/g;
+
+            let match;
+            while ((match = issueRegex.exec(prBody)) !== null) {
+              issueNumbers.add(Number.parseInt(match[2], 10));
+            }
+
+            if (issueNumbers.size === 0) {
+              core.setFailed('Kein verlinktes Ticket gefunden. Verlinke ein Issue mit #<nummer>.');
+              return;
+            }
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const reviewIssues = [];
+
+            for (const issueNumber of issueNumbers) {
+              try {
+                const { data: issue } = await github.rest.issues.get({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                });
+
+                const labels = issue.labels.map((label) =>
+                  typeof label === 'string' ? label : label.name
+                );
+
+                const hasReviewLabel = labels.some((labelName) =>
+                  typeof labelName === 'string' && labelName.toLowerCase().includes('review')
+                );
+
+                if (hasReviewLabel) {
+                  reviewIssues.push({ number: issue.number, url: issue.html_url });
+                }
+              } catch (error) {
+                core.error(`Konnte Ticket #${issueNumber} nicht abrufen: ${error.message}`);
+              }
+            }
+
+            if (reviewIssues.length === 0) {
+              core.setFailed('Es wurde kein verlinktes Ticket mit Status "Review" gefunden.');
+              return;
+            }
+
+            core.notice(
+              `Folgende Tickets sind mit "Review" markiert: ${reviewIssues
+                .map((issue) => `#${issue.number} (${issue.url})`)
+                .join(', ')}`
+            );
