@@ -141,7 +141,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
         </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
-      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
     </kol-link-wc>
   </template>
 </kol-link>
@@ -165,7 +165,7 @@ exports[`kol-link should render with _label="Label" _href="" _download="download
         </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
-      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
     </kol-link-wc>
   </template>
 </kol-link>
