@@ -19,6 +19,7 @@ import type {
 	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
@@ -45,6 +46,7 @@ type OptionalProps = {
 	PropReadOnly &
 	PropRequired &
 	PropSuggestions &
+	PropTabIndex &
 	PropTouched;
 
 type RequiredStates = {
@@ -75,6 +77,7 @@ type OptionalStates = {
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
+	PropTabIndex &
 	PropTouched;
 
 export type InputDateProps = Generic.Element.Members<RequiredProps, OptionalProps>;

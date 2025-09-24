@@ -161,6 +161,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		return {
 			ref: this.catchRef,
 			state: this.state,
+			tabIndex: this._tabIndex,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onFocus: this.onFocus,
