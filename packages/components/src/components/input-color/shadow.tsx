@@ -135,6 +135,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 			type: 'text',
 			name: this.state._name ? `${this.state._name}-text` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			tabIndex: this._tabIndex,
 			onInput: this.onTextInput,
 		};
 	}

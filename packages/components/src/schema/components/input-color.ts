@@ -15,6 +15,7 @@ import type {
 	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
@@ -37,6 +38,7 @@ type OptionalProps = {
 	PropShortKey &
 	PropSuggestions &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched;
 
 type RequiredStates = {
@@ -57,6 +59,7 @@ type OptionalStates = {
 	PropMsg &
 	PropName &
 	PropShortKey &
+	PropTabIndex &
 	PropTouched;
 
 export type InputColorProps = Generic.Element.Members<RequiredProps, OptionalProps>;
