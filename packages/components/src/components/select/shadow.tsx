@@ -223,7 +223,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop() public _tabIndex?: number;
+	@Prop({ reflect: true }) public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

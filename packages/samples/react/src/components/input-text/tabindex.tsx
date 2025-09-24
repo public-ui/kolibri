@@ -12,6 +12,11 @@ export const InputTextTabindex: FC = () => (
 		<KolInputText _label="First input" _tabIndex={20} />
 		<KolInputText _label="Second input" _tabIndex={-1} />
 
-		<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label="Label-Text" _tabIndex={-1}></KolSelect>
+		<KolSelect _tabIndex={21} _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label="Label-Text"></KolSelect>
+
+		<label>
+			normal input
+			<input tabIndex={-1} type="text" />
+		</label>
 	</div>
 );
