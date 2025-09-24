@@ -71,10 +71,10 @@ test.describe('kol-table-stateful', () => {
 					_data='${JSON.stringify(DATA_NUM)}'
 				/>`);
 			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				el._selection = { label: (r) => `Selection for ${r.id}`, keyPropertyName: 'id', selectedKeys: [1002] };
+				el._selection = { label: (row: KoliBriTableDataType) => `Selection for ${(row.id as number).toString()}`, keyPropertyName: 'id', selectedKeys: [1002] };
 			});
 			await page.waitForChanges();
-			const got = await page.locator('kol-table-stateful').evaluate((el) => el.getSelection());
+			const got = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.getSelection());
 			expect(got).toEqual([{ id: 1002 }]);
 		});
 	});
