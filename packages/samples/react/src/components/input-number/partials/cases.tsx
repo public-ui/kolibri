@@ -36,6 +36,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 			<KolInputNumber {...props} _disabled _label="Number input (Disabled)" />
 			<KolInputNumber {...props} _label="With access key" _accessKey="c" />
 			<KolInputNumber {...props} _label="With short key" _shortKey="s" />
+			<KolInputNumber {...props} _label="With tabindex -1" _tabIndex={-1} />
 		</div>
 	);
 });
