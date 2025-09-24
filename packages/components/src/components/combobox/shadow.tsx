@@ -43,9 +43,7 @@ import { ComboboxController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
@@ -210,6 +208,7 @@ export class KolCombobox implements ComboboxAPI {
 			id: this.state._id,
 			name: this.state._name,
 			required: this.state._required,
+			tabIndex: this._tabIndex,
 			...this.controller.onFacade,
 			onFocus: (event) => {
 				this.controller.onFacade.onFocus(event);
@@ -464,6 +463,11 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
+
+	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
@@ -578,6 +582,11 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_syncValueBySelector')
 	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
+	}
+
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		this.controller.validateTabIndex(value);
 	}
 
 	@Watch('_touched')
