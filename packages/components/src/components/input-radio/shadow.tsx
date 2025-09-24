@@ -130,7 +130,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				value: `-${index}`,
 				checked: selected,
 				disabled: this.calculateDisabled(option),
-
+				tabIndex: this._tabIndex,
 				...this.controller.onFacade,
 				onChange: this.onChange,
 				onClick: undefined, // onClick is not needed since onChange already triggers the correct event

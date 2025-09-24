@@ -67,6 +67,13 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_label="Salutation (horizontal with error hint and description)"
 				_hint={HINT_MSG}
 			/>
+			<KolInputRadio
+				{...props}
+				_tabIndex={-1}
+				_value="Company"
+				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
+				_label="TabIndex -1"
+			/>
 		</div>
 	);
 });

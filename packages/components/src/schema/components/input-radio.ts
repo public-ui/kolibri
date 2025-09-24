@@ -12,6 +12,7 @@ import type {
 	PropRadioOptions,
 	PropRequired,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
@@ -32,6 +33,7 @@ type OptionalProps = {
 	PropRadioOptions & // PropRadioOptions becomes required with 2.0
 	PropRequired &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched &
 	PropTooltipAlign;
 
@@ -50,6 +52,7 @@ type OptionalStates = {
 	PropMsg &
 	PropName &
 	PropRequired &
+	PropTabIndex &
 	PropTouched;
 
 export type InputRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;
