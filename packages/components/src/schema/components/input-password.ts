@@ -19,6 +19,7 @@ import type {
 	PropRequired,
 	PropShortKey,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTouched,
 } from '../props';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
@@ -49,6 +50,7 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched;
 
 type RequiredStates = {
@@ -80,6 +82,7 @@ type OptionalStates = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched;
 
 export type InputPasswordProps = Generic.Element.Members<RequiredProps, OptionalProps>;

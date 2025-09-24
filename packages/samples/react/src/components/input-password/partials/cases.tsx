@@ -36,6 +36,7 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Compon
 			<KolInputPassword {...props} _readOnly _label="Passwort (Readonly)" />
 			<KolInputPassword {...props} ref={ref} _shortKey="c" _label="With access key" />
 			<KolInputPassword {...props} ref={ref} _shortKey="s" _label="With short key" />
+			<KolInputPassword {...props} ref={ref} _tabIndex={-1} _label="With tabindex -1" />
 		</div>
 	);
 });
