@@ -133,6 +133,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			ref: this.catchRef,
 			state: this.state,
 			ariaDescribedBy,
+			tabIndex: this._tabIndex,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onChange: this.onChange,
