@@ -12,6 +12,8 @@ import type {
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
+	KoliBriTableSelectionKey,
+	KoliBriTableSelectionKeys,
 	LabelPropType,
 	PaginationPositionPropType,
 	SortEventPayload,
@@ -509,7 +511,7 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: Array<string | number> | string | number): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): null | KoliBriTableDataType | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
@@ -523,7 +525,7 @@ export class KolTableStateful implements TableAPI {
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: Array<string | number> | string | number): void {
+	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
@@ -549,7 +551,7 @@ export class KolTableStateful implements TableAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
-		const selectedKeys = this.state._selection?.selectedKeys ?? [];
+		const selectedKeys: KoliBriTableSelectionKeys = this.state._selection?.selectedKeys || [];
 		return this.getSelectedData(selectedKeys);
 	}
 
@@ -580,7 +582,7 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: Array<string | number> | string | number) => {
+						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}

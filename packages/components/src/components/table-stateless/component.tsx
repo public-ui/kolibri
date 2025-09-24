@@ -36,7 +36,7 @@ import {
 	validateTableSelection,
 	validateHasSettingsMenu,
 } from '../../schema';
-import type { ColumnSettings } from '../../schema/types';
+import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import { validateMinWidth } from '../../schema/props/min-width';
@@ -704,7 +704,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return this.state._data.filter((item) => {
 			const v = this.state._selection?.disabledKeys;
 			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return !arr.some((k) => String(k) === String(item[keyPropertyName] as string | number));
+			return !arr.some((k) => String(k) === String(item[keyPropertyName] as KoliBriTableSelectionKey));
 		});
 	}
 
@@ -737,7 +737,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selection = this.getSelectedKeysWithDisabledKeysOnly() ?? []; // Always include already selected, but disabled, rows.
 
 		if (selectAll) {
-			selection.push(...this.getDataWithSelectionEnabled().map((el) => el?.[keyPropertyName] as string | number)); // add all enabled rows
+			selection.push(...this.getDataWithSelectionEnabled().map((el) => el?.[keyPropertyName] as KoliBriTableSelectionKey)); // add all enabled rows
 		}
 
 		return selection;
