@@ -16,6 +16,7 @@ import type {
 	PropRequired,
 	PropShortKey,
 	PropSyncValueBySelector,
+	PropTabIndex,
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
@@ -38,6 +39,7 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
+	PropTabIndex &
 	PropTouched;
 
 type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
@@ -55,6 +57,7 @@ type OptionalStates = {
 	PropName &
 	PropRequired &
 	PropShortKey &
+	PropTabIndex &
 	PropTouched;
 
 export type InputFileProps = Generic.Element.Members<RequiredProps, OptionalProps>;

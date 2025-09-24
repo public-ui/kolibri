@@ -39,6 +39,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 			<KolInputFile {...props} _disabled _label="Upload file (Disabled)" />
 			<KolInputFile {...props} _label="With access key" _accessKey="c" />
 			<KolInputFile {...props} _label="With short key" _shortKey="s" />
+			<KolInputFile {...props} _label="With tabindex -1" _tabIndex={-1} />
 		</div>
 	);
 });

@@ -107,6 +107,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 			type: 'file',
 			accept: this.state._accept,
 			multiple: this.state._multiple,
+			tabindex: this._tabIndex,
 			...this.controller.onFacade,
 			onChange: this.onChange,
 			onInput: this.onInput,
@@ -127,7 +128,13 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				<KolInputContainerFc state={this.state}>
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
-					<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _buttonVariant="primary" _disabled={this._disabled} />
+					<KolButtonWcTag
+						class="kol-input-container__button"
+						_label={this.translateDataBrowseText}
+						_buttonVariant="primary"
+						_disabled={this._disabled}
+						_tabIndex={-1}
+					/>
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
