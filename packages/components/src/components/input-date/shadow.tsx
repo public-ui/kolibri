@@ -46,9 +46,7 @@ import { InputDateController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: false,
-	},
+	shadow: true,
 })
 export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputDateElement;

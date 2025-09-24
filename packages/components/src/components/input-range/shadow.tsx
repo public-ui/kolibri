@@ -41,9 +41,7 @@ import KolSuggestionsFc from '../../functional-components/Suggestions';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: false,
-	},
+	shadow: true,
 })
 export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRangeElement;

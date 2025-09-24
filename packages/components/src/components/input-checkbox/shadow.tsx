@@ -47,9 +47,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: false,
-	},
+	shadow: true,
 })
 export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;

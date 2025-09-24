@@ -48,9 +48,7 @@ import { InputTextController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: false,
-	},
+	shadow: true,
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputTextElement;
