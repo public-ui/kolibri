@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/tabindex-no-positive */
-import { KolInputText } from '@public-ui/react-v19';
+import { KolInputText, KolSelect } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -7,9 +7,11 @@ import { SampleDescription } from '../SampleDescription';
 export const InputTextTabindex: FC = () => (
 	<div className="grid gap-4">
 		<SampleDescription>
-			<p></p>
+			<p>This sample sets tabIndex of the First input to 1 and deaktivates tab on the second (-1).</p>
 		</SampleDescription>
-		<KolInputText _label="First input" tabIndex={3} />
-		<KolInputText _label="Second input" tabIndex={2} />
+		<KolInputText _label="First input" _tabIndex={20} />
+		<KolInputText _label="Second input" _tabIndex={-1} />
+
+		<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label="Label-Text" _tabIndex={-1}></KolSelect>
 	</div>
 );
