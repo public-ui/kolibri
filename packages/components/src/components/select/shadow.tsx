@@ -90,6 +90,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		return {
 			ref: this.catchRef,
 			state: this.state,
+			tabIndex: this._tabIndex,
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),
 			onChange: this.onChange.bind(this),
