@@ -48,9 +48,7 @@ import { SingleSelectController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
@@ -281,6 +279,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			state: this.state,
 			type: 'text',
 			value: this._inputValue,
+			tabIndex: this._tabIndex,
 			...this.controller.onFacade,
 			onChange: this.onChange.bind(this),
 			onClick: this.onClick.bind(this),
@@ -578,6 +577,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
+
+	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
@@ -701,6 +705,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_syncValueBySelector')
 	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
+	}
+
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		this.controller.validateTabIndex(value);
 	}
 
 	@Watch('_touched')
