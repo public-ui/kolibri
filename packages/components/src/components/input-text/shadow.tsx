@@ -77,6 +77,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onFocus = (event: FocusEvent) => {
+		// eslint-disable-next-line no-console
+		console.log('inner focus function');
 		this.controller.onFacade.onFocus(event);
 		this.inputHasFocus = true;
 	};
@@ -96,6 +98,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onSelectionChange = (event: Event) => {
+		// eslint-disable-next-line no-console
+		console.log('inner selectionchange function');
+
 		this.controller.onFacade.onSelectionChange(event);
 	};
 
@@ -192,9 +197,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
-			// warum kennt er das nicht? die anderen ons kommen anscheinend aus stencil selbst aber da ist kein onSelectionChange
-			// also wie bekomme ich das rein?
-			//	onSelectionChange: this.onSelectionChange,
+			onSelectionChange: this.onSelectionChange,
 		};
 	}
 
@@ -527,18 +530,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	public componentDidLoad(): void {
 		// verzweifelter versuch den listener ran zu bekommen... :D
-		this.inputRef?.addEventListener('selectionchange', this.onSelectionChange);
+		//this.inputRef?.addEventListener('selectionchange', this.onSelectionChange);
 
 		if (this.inputRef) {
 			// die ersten beiden feuern leider nur einmal beim start
 			// eslint-disable-next-line no-console
-			this.inputRef.addEventListener('selectionchange', (ev) => console.log('selectionchange', ev));
+			//	this.inputRef.addEventListener('selectionchange', (ev) => console.log('selectionchange', ev));
 			// eslint-disable-next-line no-console
-			this.inputRef.onselectionchange = (ev) => console.log('onselectionchange', ev);
-
+			//this.inputRef.onselectionchange = (ev) => console.log('onselectionchange', ev);
 			// focus funktioniert wie erwartet
 			// eslint-disable-next-line no-console
-			this.inputRef.addEventListener('focus', (ev) => console.log('focus', ev));
+			//	this.inputRef.addEventListener('focus', (ev) => console.log('focus', ev));
 		}
 	}
 }
