@@ -185,7 +185,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -270,7 +270,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ reflect: true }) public _value?: string;
+	@Prop() public _value?: string;
 
 	@State() public state: InputColorStates = {
 		_hideMsg: false,

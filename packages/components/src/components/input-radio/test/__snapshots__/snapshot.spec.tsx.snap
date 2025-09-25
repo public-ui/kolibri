@@ -424,7 +424,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-input-radio _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
     <fieldset class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
@@ -967,7 +967,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-input-radio _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
     <fieldset class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">

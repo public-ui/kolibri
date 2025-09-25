@@ -208,7 +208,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 `;
 
 exports[`kol-input-file should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-input-file _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-input-file _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-file">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">

@@ -271,7 +271,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 `;
 
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-select _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -613,7 +613,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 `;
 
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-select _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1064,7 +1064,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 `;
 
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _value=["Divers","Frau"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-select _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1696,7 +1696,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 `;
 
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _value="Herr" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-select _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Herr">
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Herr">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">

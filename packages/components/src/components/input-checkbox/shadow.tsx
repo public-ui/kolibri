@@ -166,7 +166,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: boolean = false;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
