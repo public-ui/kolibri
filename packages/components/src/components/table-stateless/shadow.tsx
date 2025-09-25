@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 import { KolTableStatelessWcTag } from '../../core/component-names';
 import type {
+	HasSettingsMenuPropType,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
@@ -60,6 +61,11 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _tableSettings?: TableSettingsPropType;
 
+	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
 	public render(): JSX.Element {
 		return (
 			<KolTableStatelessWcTag
@@ -71,6 +77,7 @@ export class KolTableStateless implements TableStatelessProps {
 				_on={this._on}
 				_selection={this._selection}
 				_tableSettings={this._tableSettings}
+				_hasSettingsMenu={this._hasSettingsMenu}
 			/>
 		);
 	}

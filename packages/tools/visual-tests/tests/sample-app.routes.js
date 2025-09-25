@@ -561,13 +561,6 @@ ROUTES.set('nav/basic', {
 		},
 	},
 });
-ROUTES.set('nav/horizontal', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('pagination/basic', {
 	snapshot: {
 		zoom: {
@@ -716,6 +709,13 @@ ROUTES.set('table/pagination-position', {
 	},
 });
 ROUTES.set('table/complex-headers', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/non-hidable-columns', {
 	snapshot: {
 		zoom: {
 			skip: true,

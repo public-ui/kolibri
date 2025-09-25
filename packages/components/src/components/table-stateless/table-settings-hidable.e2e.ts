@@ -23,6 +23,7 @@ test.describe('kol-table-settings hidable functionality', () => {
       _label="Table with Non-Hidable Column"
       _header-cells='${JSON.stringify(HEADERS_WITH_NON_HIDABLE)}'
       _data='${JSON.stringify(DATA)}'
+      _has-settings-menu
     />`);
 		await page.waitForChanges();
 	});
