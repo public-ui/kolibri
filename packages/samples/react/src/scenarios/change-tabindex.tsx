@@ -36,7 +36,16 @@ export const ChangeTabindex: FC = () => {
 			</SampleDescription>
 
 			<div className="w-full grid gap-4">
-				<KolCard _label="Button" _level={0}>
+				<KolCard _label="InputText" _level={0}>
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
+						<KolInputText _label="InputText 1, Tabindex 4" tabIndex={3} />
+						<KolInputText _disabled _label="InputText 2, Tabindex 3" />
+						<KolInputText _touched _label="InputText 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
+						<KolInputText _label="InputText 4, Tabindex 1" tabIndex={1} />
+					</div>
+				</KolCard>
+
+				{/* <KolCard _label="Button" _level={0}>
 					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolButton _label="Button 1, Tabindex 4" _variant="primary" tabIndex={3} />
 						<KolButton _disabled _label="Button 2, Tabindex 3" _variant="primary" />
@@ -250,7 +259,7 @@ export const ChangeTabindex: FC = () => {
 						/>
 						<KolTextarea _label="Textarea 4, Tabindex 1" _rows={3} _placeholder="Placeholder" tabIndex={1} />
 					</div>
-				</KolCard>
+				</KolCard> */}
 			</div>
 		</>
 	);

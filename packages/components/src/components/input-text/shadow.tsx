@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from 'clsx';
 
 import type {
@@ -93,6 +93,28 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		}
 	};
 
+	private configuredTabIndex: number | undefined;
+
+	@Listen('focus')
+	public handleFocus() {
+		this.configuredTabIndex = this.host?.tabIndex;
+
+		if (this.host?.tabIndex && this.inputRef && this.configuredTabIndex) {
+			this.inputRef.tabIndex = this.configuredTabIndex;
+			this.host.tabIndex = -1;
+		}
+		this.inputRef?.focus();
+	}
+
+	@Listen('blur')
+	public handleBlur() {
+		if (this.configuredTabIndex && this.host && this.inputRef) {
+			this.host.tabIndex = this.configuredTabIndex;
+			this.inputRef.tabIndex = -1;
+			this.configuredTabIndex = undefined;
+		}
+	}
+
 	/**
 	 * Returns the current value.
 	 */
@@ -119,7 +141,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
+			//onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
