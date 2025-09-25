@@ -127,5 +127,40 @@ test.describe(COMPONENT_NAME, () => {
 			const noResult = page.getByText('Keine Ergebnisse gefunden.');
 			await expect(noResult).toBeVisible();
 		});
+
+		test('should only trigger onChange when the value actually changes', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+
+			const input = page.getByTestId('single-select-input');
+			const singleSelect = page.locator('kol-single-select');
+
+			// Setup simple change counter
+			await singleSelect.evaluate((element) => {
+				const el = element as HTMLElement & { _changeCount: number };
+				el._changeCount = 0;
+
+				(element as HTMLKolSelectElement)._on = {
+					onChange: () => {
+						el._changeCount++;
+					},
+				};
+			});
+
+			// Helper to get counter
+			const getChangeCount = async () => {
+				return await singleSelect.evaluate((el) => {
+					return (el as HTMLElement & { _changeCount: number })._changeCount || 0;
+				});
+			};
+
+			// 1) Select value -> onChange should fire (counter = 1)
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+			expect(await getChangeCount()).toBe(1);
+
+			// 2) Click on free space -> onChange must NOT fire (counter stays 1)
+			await page.click('html', { position: { x: 0, y: 0 } });
+			expect(await getChangeCount()).toBe(1);
+		});
 	});
 });

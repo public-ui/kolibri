@@ -43,13 +43,12 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property             | Attribute            | Description                                                                                                        | Type                                                                                                                                                                                                                   | Default     |
 | -------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `_boundaryCount`     | `_boundary-count`    | Defines the amount of pages to show next to the outer arrow buttons.                                               | `number \| undefined`                                                                                                                                                                                                  | `1`         |
-| `_customClass`       | `_custom-class`      | Defines the custom class attribute if _variant="custom" is set.                                                    | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
+| `_customClass`       | `_custom-class`      | Defines the custom class attribute if \_variant="custom" is set.                                                   | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
 | `_hasButtons`        | `_has-buttons`       | Defines which navigation buttons to render (first, last, next, previous buttons).                                  | `boolean \| string \| undefined \| { first: boolean; last: boolean; next: boolean; previous: boolean; }`                                                                                                               | `true`      |
 | `_label`             | `_label`             | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
 | `_max` _(required)_  | `_max`               | Defines the maximum number of pages.                                                                               | `number`                                                                                                                                                                                                               | `undefined` |
@@ -60,7 +59,4 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 | `_siblingCount`      | `_sibling-count`     | Defines the amount of pages to show next to the current page.                                                      | `number \| undefined`                                                                                                                                                                                                  | `1`         |
 | `_tooltipAlign`      | `_tooltip-align`     | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                  | `'top'`     |
 
-
-----------------------------------------------
-
-
+---

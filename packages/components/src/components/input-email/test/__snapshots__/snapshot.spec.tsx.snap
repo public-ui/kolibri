@@ -182,7 +182,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
         </kbd>
       </span>
       <div slot="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+        <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
       </div>
     </kol-input>
   </template>
@@ -388,7 +388,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
         </kbd>
       </span>
       <div slot="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+        <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
       </div>
     </kol-input>
   </template>

@@ -171,7 +171,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
           S
         </kbd>
       </span>
-      <div slot="input"><textarea autocapitalize="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" spellcheck="" value="Value" style="resize: vertical;"></textarea>
+      <div slot="input"><textarea aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" spellcheck="" value="Value" style="resize: vertical;"></textarea>
       </div>
     </kol-input>
   </template>
