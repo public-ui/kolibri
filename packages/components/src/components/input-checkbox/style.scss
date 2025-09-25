@@ -86,10 +86,6 @@
 			min-width: 3.2em;
 			height: 1.7em;
 
-			&:focus {
-				border-radius: 1.25em !important;
-			}
-
 			&::before {
 				background-color: #000;
 				position: absolute;
