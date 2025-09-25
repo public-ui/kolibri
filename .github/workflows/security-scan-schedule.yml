@@ -3,6 +3,12 @@ name: Scheduled Security Scan
 on:
   schedule:
     - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      branches:
+        description: 'JSON encoded array of branch names to scan'
+        required: false
+        default: '["develop", "release/2"]'
 
 concurrency:
   group: ${{ format('workflow-{0}-{1}', github.workflow, github.ref) }}
@@ -14,9 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch:
-          - develop
-          - 'release/2'
+        branch: ${{ fromJson(github.event_name == 'workflow_dispatch' && inputs.branches || '["develop", "release/2"]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
