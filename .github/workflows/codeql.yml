@@ -21,7 +21,7 @@ on:
     - cron: '23 1 * * 6'
 
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  group: ${{ github.event_name == 'pull_request' && format('workflow-{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('workflow-{0}-{1}', github.workflow, github.ref) }}
   cancel-in-progress: true
 
 jobs:
