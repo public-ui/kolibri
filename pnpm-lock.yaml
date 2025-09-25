@@ -7,7 +7,7 @@ settings:
 overrides:
   axios: 1.12.0
   braces: 3.0.3
-  form-data@^4.0.0: 4.0.4
+  form-data: 4.0.4
   lodash.pick: npm:lodash@4.17.21
   loupe: 2.3.7
   semver: 7.5.2
@@ -8306,10 +8306,6 @@ packages:
   form-data-encoder@4.0.2:
     resolution: {integrity: sha512-KQVhvhK8ZkWzxKxOr56CPulAhH3dobtuQ4+hNQ+HekH/Wp5gSOafqRAeTphQUJAIk0GBvHZgJ2ZGRWd5kphMuw==}
     engines: {node: '>= 18'}
-
-  form-data@3.0.3:
-    resolution: {integrity: sha512-q5YBMeWy6E2Un0nMGWMgI65MAKtaylxfNJGJxpGh45YDciZB4epbWpaAfImil6CPAPTYB4sh0URQNDRIZG5F2w==}
-    engines: {node: '>= 6'}
 
   form-data@4.0.4:
     resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
@@ -23706,13 +23702,6 @@ snapshots:
 
   form-data-encoder@4.0.2: {}
 
-  form-data@3.0.3:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      es-set-tostringtag: 2.1.0
-      mime-types: 2.1.35
-
   form-data@4.0.4:
     dependencies:
       asynckit: 0.4.0
@@ -25331,7 +25320,7 @@ snapshots:
       decimal.js: 10.5.0
       domexception: 2.0.1
       escodegen: 2.1.0
-      form-data: 3.0.3
+      form-data: 4.0.4
       html-encoding-sniffer: 2.0.1
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
