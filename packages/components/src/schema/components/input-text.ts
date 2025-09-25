@@ -32,7 +32,6 @@ type OptionalProps = {
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	onSelectionChange: Event;
 	pattern: string;
 	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
@@ -69,7 +68,6 @@ type RequiredStates = {
 type OptionalStates = {
 	maxLength: number;
 	on: InputTypeOnDefault;
-	onSelectionChange: Event;
 	pattern: string;
 	placeholder: string;
 	smartButton: ButtonProps;
