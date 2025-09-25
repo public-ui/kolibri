@@ -16,7 +16,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, h, Listen, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 
 @Component({
@@ -24,9 +24,7 @@ import { KolButtonWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolButton implements ButtonProps, FocusableElement {
 	private buttonWcRef?: HTMLKolButtonWcElement;
@@ -34,6 +32,11 @@ export class KolButton implements ButtonProps, FocusableElement {
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
+
+	@Listen('focus')
+	public handleFocus() {
+		this.buttonWcRef?.dispatchEvent(new FocusEvent('focus'));
+	}
 
 	/**
 	 * Returns the current value.

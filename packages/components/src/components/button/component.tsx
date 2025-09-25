@@ -48,7 +48,7 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
@@ -73,6 +73,11 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	private tooltipRef?: HTMLKolTooltipWcElement;
 
 	private readonly internalDescriptionById = nonce();
+
+	@Listen('focus')
+	public handleFocus() {
+		this.buttonRef?.focus();
+	}
 
 	/**
 	 * Sets focus on the internal element.
@@ -294,6 +299,8 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @deprecated We prefer to use it on the host element with the default tabIndex. Please make sure not to use tabIndex for disabled elements. The property will be removed in the next major version.
 	 */
 	@Prop() public _tabIndex?: number;
 

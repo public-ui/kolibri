@@ -164,6 +164,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @deprecated We prefer to use it on the host element with the default tabIndex. Please make sure not to use tabIndex for disabled elements. The property will be removed in the next major version.
 	 */
 	@Prop() public _tabIndex?: number;
 

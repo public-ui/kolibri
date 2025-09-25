@@ -283,8 +283,10 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @deprecated We prefer to use it on the host element with the default tabIndex. Please make sure not to use tabIndex for disabled elements. The property will be removed in the next major version.
 	 */
-	@Prop({ reflect: true }) public _tabIndex?: number;
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
