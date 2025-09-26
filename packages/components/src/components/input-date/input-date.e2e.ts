@@ -395,20 +395,20 @@ test.describe('kol-input-date', () => {
 		});
 	});
 
-	test('pressing Enter on kol-input-date does not submit the form', async ({ page }) => {
-		await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+	test('pressing Enter on kol-input-date calendar icon does not submit the form', async ({ page }) => {
+		await page.setContent(`
+			<kol-form _on='{"onSubmit": "() => alert('test')"}'>
+				<kol-input-date _label="Date input" _name="datum"></kol-input-date>
+				<kol-button _label="Submit" _type="submit"></kol-button>
+			</kol-form>
+		`);
 
 		const kolInputDate = page.locator('kol-input-date');
-
-		let formSubmitted = false;
-		page.on('dialog', () => {
-			formSubmitted = true;
-		});
 
 		await kolInputDate.focus();
 		await kolInputDate.press('Enter');
 		await page.waitForTimeout(200);
 
-		expect(formSubmitted).toBeFalsy();
+		await expect(page.locator('.kol-alert-wc')).not.toBeVisible();
 	});
 });
