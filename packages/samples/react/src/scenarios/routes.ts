@@ -10,6 +10,7 @@ import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interac
 import { StaticForm } from './static-form';
 import { SampleFormWithValidation } from './sample-form-with-validation';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
+import { ToolbarItemOrder } from './toolbar-item-order';
 import { TooltipPositioning } from './tooltip-positioning';
 import { RHFBasic } from './react-hook-form/basic';
 
@@ -26,6 +27,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'static-form': StaticForm,
 		'sample-form-with-validation': SampleFormWithValidation,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
+		'toolbar-item-order': ToolbarItemOrder,
 		'tooltip-positioning': TooltipPositioning,
 		'performance-test': PerformanceTest,
 	},
