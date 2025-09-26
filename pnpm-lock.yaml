@@ -5,12 +5,13 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  axios: 1.12.0
-  braces: 3.0.3
-  form-data@^4.0.0: 4.0.4
-  lodash.pick: npm:lodash@4.17.21
-  loupe: 2.3.7
-  semver: 7.5.2
+  axios: ^1.12.0
+  braces: ^3.0.3
+  form-data: ^4.0.4
+  lodash.pick: npm:lodash@^4.17.21
+  loupe: ^2.3.7
+  semver: ^7.5.2
+  tar-fs: ^3.1.1
 
 importers:
 
@@ -1095,7 +1096,7 @@ importers:
         specifier: 3.6.2
         version: 3.6.2
       semver:
-        specifier: 7.5.2
+        specifier: ^7.5.2
         version: 7.5.2
       typed-bem:
         specifier: 1.0.2
@@ -7528,10 +7529,6 @@ packages:
     resolution: {integrity: sha512-G6NsmEW15s0Uw9XnCg+33H3ViYRyiM0hMrMhhqQOR8NFc5GhYrI+6I3u7OTw7b91J2g8rtvMBZJDbcGb2YUniw==}
     engines: {node: '>= 18'}
 
-  form-data@3.0.4:
-    resolution: {integrity: sha512-f0cRzm6dkyVYV3nPoooP8XlccPQukegwhAnpoLcXy+X+A8KfpGOoXwDr9FLZd3wzgLaBGQBE3lY93Zm/i1JvIQ==}
-    engines: {node: '>= 6'}
-
   form-data@4.0.4:
     resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
     engines: {node: '>= 6'}
@@ -12612,8 +12609,8 @@ packages:
     resolution: {integrity: sha512-Re10+NauLTMCudc7T5WLFLAwDhQ0JWdrMK+9B2M8zR5hRExKmsRDCBA7/aV/pNJFltmBFO5BAMlQFi/vq3nKOg==}
     engines: {node: '>=6'}
 
-  tar-fs@3.1.0:
-    resolution: {integrity: sha512-5Mty5y/sOF1YWj1J6GiBodjlDc05CUR8PKXrsnFAiSG0xA+GHeWLovaZPYUDXkH/1iKRf2+M5+OrRgzC7O9b7w==}
+  tar-fs@3.1.1:
+    resolution: {integrity: sha512-LZA0oaPOc2fVo82Txf3gw+AkEd38szODlptMYejQUhndHMLQ9M059uXR+AfS7DNo0NpINvSqDsvyaCrBVkptWg==}
 
   tar-stream@2.2.0:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
@@ -17004,7 +17001,7 @@ snapshots:
       progress: 2.0.3
       proxy-agent: 6.5.0
       semver: 7.5.2
-      tar-fs: 3.1.0
+      tar-fs: 3.1.1
       yargs: 17.7.2
     transitivePeerDependencies:
       - bare-buffer
@@ -17017,7 +17014,7 @@ snapshots:
       progress: 2.0.3
       proxy-agent: 6.5.0
       semver: 7.5.2
-      tar-fs: 3.1.0
+      tar-fs: 3.1.1
       yargs: 17.7.2
     transitivePeerDependencies:
       - bare-buffer
@@ -21476,14 +21473,6 @@ snapshots:
 
   form-data-encoder@4.1.0: {}
 
-  form-data@3.0.4:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      es-set-tostringtag: 2.1.0
-      hasown: 2.0.2
-      mime-types: 2.1.35
-
   form-data@4.0.4:
     dependencies:
       asynckit: 0.4.0
@@ -21591,7 +21580,7 @@ snapshots:
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       node-fetch: 3.3.2
-      tar-fs: 3.1.0
+      tar-fs: 3.1.1
       which: 5.0.0
     transitivePeerDependencies:
       - bare-buffer
@@ -23065,7 +23054,7 @@ snapshots:
       decimal.js: 10.6.0
       domexception: 2.0.1
       escodegen: 2.1.0
-      form-data: 3.0.4
+      form-data: 4.0.4
       html-encoding-sniffer: 2.0.1
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
@@ -27664,7 +27653,7 @@ snapshots:
 
   tapable@2.2.2: {}
 
-  tar-fs@3.1.0:
+  tar-fs@3.1.1:
     dependencies:
       pump: 3.0.3
       tar-stream: 3.1.7
