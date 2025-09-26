@@ -25,11 +25,10 @@
 
 		&__columns {
 			display: grid;
-			overflow: hidden;
 			gap: to-rem(8);
 			align-items: center;
 			grid-auto-rows: min-content;
-			grid-template-columns: min-content 1fr to-rem(100) auto auto;
+			grid-template-columns: min-content minmax(max-content, 1fr) to-rem(100) auto auto;
 		}
 
 		&__column {
