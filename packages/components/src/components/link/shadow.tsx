@@ -162,5 +162,5 @@ export class KolLink implements LinkProps, FocusableElement {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 }

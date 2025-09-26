@@ -324,7 +324,7 @@ export const HandoutBasic: FC = () => {
 							<div className="grid gap-2" slot="">
 								<KolLink _href="#/back-page" _label="Link text"></KolLink>
 								<KolLink _href="#/back-page" _icons="codicon codicon-home" _label="Link text with icon"></KolLink>
-								<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link text with icon only"></KolLink>
+								<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link text with icon only" _tooltipAlign="top"></KolLink>
 								<KolLink _href="/" _label="Visited link"></KolLink>
 								<p>
 									I am a <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> in the running text.
