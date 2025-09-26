@@ -5,6 +5,10 @@ on:
     branches:
       - 'develop'
       - 'release/*'
+  push:
+    branches:
+      - 'develop'
+      - 'release/*'
   workflow_dispatch:
     inputs:
       enable_audit:
@@ -34,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event_name == 'pull_request' ||
+      github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
@@ -41,7 +46,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
