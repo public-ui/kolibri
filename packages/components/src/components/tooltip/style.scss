@@ -20,7 +20,8 @@
 			top: 0;
 			left: 0;
 			/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
-			width: var(--kol-tooltip-width);
+			width: var(--kol-tooltip-width, max-content);
+			min-width: to-rem(8);
 			max-width: 90vw;
 			max-height: 90vh;
 
