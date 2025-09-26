@@ -394,4 +394,21 @@ test.describe('kol-input-date', () => {
 			await expect(page.locator('.kol-alert-wc')).not.toBeVisible();
 		});
 	});
+
+	test('pressing Enter on kol-input-date does not submit the form', async ({ page }) => {
+		await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+
+		const kolInputDate = page.locator('kol-input-date');
+
+		let formSubmitted = false;
+		page.on('dialog', () => {
+			formSubmitted = true;
+		});
+
+		await kolInputDate.focus();
+		await kolInputDate.press('Enter');
+		await page.waitForTimeout(200);
+
+		expect(formSubmitted).toBeFalsy();
+	});
 });
