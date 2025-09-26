@@ -7,6 +7,7 @@ import { ButtonIcons } from './icons';
 import { ButtonWidth } from './width';
 import { ButtonShortKey } from './short-key';
 import { ButtonExpertSlot } from './expert-slot';
+import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {
@@ -18,5 +19,6 @@ export const BUTTON_ROUTES: Routes = {
 		baselined: ButtonBaselined,
 		'short-key': ButtonShortKey,
 		'expert-slot': ButtonExpertSlot,
+		'row-reverse-tooltip': ButtonRowReverseTooltip,
 	},
 };

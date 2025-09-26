@@ -19,6 +19,12 @@ exports[`KolButtonFc should render correctly 1`] = `
 />
 `;
 
+exports[`KolButtonFc should render with a long tooltip inside a row-reverse flex container 1`] = `
+<div style="display: flex; flex-direction: row-reverse; width: 200px;">
+  <kol-button-wc _hidelabel="" _icons="codicon codicon-home" _label="This is a very long tooltip text that demonstrates the behavior in a row-reverse layout" variant="primary"></kol-button-wc>
+</div>
+`;
+
 exports[`KolButtonFc should render with custom class 1`] = `
 <kol-button-wc
   _label="Test Button"
