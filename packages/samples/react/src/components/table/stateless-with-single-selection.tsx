@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableCell, KoliBriTableSelection } from '@public-ui/components';
+import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys } from '@public-ui/components';
 import { KolEvent } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
 import { useToasterService } from '../../hooks/useToasterService';
@@ -25,7 +25,7 @@ function KolButtonWrapper({ label }: { label: string }) {
 }
 
 export const TableStatelessWithSingleSelection: FC = () => {
-	const [selectedKeys, setSelectedKeys] = useState<(string | number)[]>(['1002']);
+	const [selectedKeys, setSelectedKeys] = useState<KoliBriTableSelectionKeys>(['1002']);
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
