@@ -14,7 +14,12 @@ export const TooltipPositioning: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div style={{ container: 'test / size' }}>
+			<div
+				style={{
+					container: 'test / size',
+					contain: 'layout',
+				}}
+			>
 				<KolPopoverButton _label="Sample PopoverButton—Click for Popover" _icons="codicon codicon-info" _tooltipAlign="right" _hideLabel>
 					This is an explanation shown on click.
 				</KolPopoverButton>
