@@ -24,7 +24,7 @@
 			 * opening and closing. This should also cut off overlays containing content, but it
 			 *does not.
 			 */
-			overflow-y: hidden;
+			overflow: hidden;
 			grid-template-rows: 0fr;
 			transition: grid-template-rows 0.3s;
 		}
