@@ -30,10 +30,10 @@ kolibriElement._on = {
 };
 ```
 
-| Event         | Value             |
-|---------------|:-----------------:|
+| Event         |       Value       |
+| ------------- | :---------------: |
 | `onClick`     | `_value`-Property |
-| `onMouseDown` | -                 |
+| `onMouseDown` |         -         |
 
 ### Beispiel
 

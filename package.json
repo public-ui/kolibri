@@ -5,7 +5,7 @@
 		"husky": "9.1.7",
 		"lerna": "8.2.4",
 		"license-report": "6.8.0",
-		"lint-staged": "16.1.6",
+		"lint-staged": "16.2.1",
 		"npm-check-updates": "18.3.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
@@ -18,6 +18,17 @@
 	"engines": {
 		"pnpm": "^10"
 	},
+	"pnpm": {
+		"overrides": {
+			"axios": "^1.12.0",
+			"braces": "^3.0.3",
+			"form-data": "^4.0.4",
+			"lodash.pick": "npm:lodash@^4.17.21",
+			"loupe": "^2.3.7",
+			"semver": "^7.5.2",
+			"tar-fs": "^3.1.1"
+		}
+	},
 	"private": true,
 	"scripts": {
 		"build": "pnpm -r build",
@@ -25,11 +36,12 @@
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
+		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
+		"format:all": "prettier --write '**/*.{js,ts,json,yml,yaml,md}' '*.{js,ts,json,yml,yaml,md}' && pnpm format:config && pnpm -r format",
 		"lint": "pnpm -r lint",
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
-		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
 		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/*,@unocss/*,monaco-editor",
