@@ -1,3 +1,5 @@
+import type { JSX } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type {
 	ButtonOrLinkOrTextWithChildrenProps,
 	ButtonWithChildrenProps,
@@ -21,17 +23,15 @@ import {
 	validateLabel,
 	watchValidator,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { watchNavLinks } from './validation';
-import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
-import type { StencilUnknown } from '../../schema';
 import clsx from 'clsx';
+import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { translate } from '../../i18n';
+import type { StencilUnknown } from '../../schema';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { nonce } from '../../utils/dev.utils';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { watchNavLinks } from './validation';
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -66,6 +66,10 @@ const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryPr
 	shadow: true,
 })
 export class KolNav implements NavAPI {
+	private readonly navId = 'kol-nav-' + nonce();
+
+	private readonly listId = this.navId + '-list';
+
 	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
@@ -187,8 +191,7 @@ export class KolNav implements NavAPI {
 					'kol-nav__list--horizontal': props.deep === 0 && props.orientation === 'horizontal',
 					'kol-nav__list--vertical': props.deep !== 0 || props.orientation === 'vertical',
 				})}
-				data-deep={props.deep}
-				id={props.id}
+				id={props.deep > 0 ? props.id : undefined}
 			>
 				{props.links.map((link, index: number) => {
 					return this.li(props.collapsible, props.hideLabel, props.deep, index, link, props.orientation, props.id);
@@ -236,21 +239,27 @@ export class KolNav implements NavAPI {
 		const collapsible = this.state._collapsible === true;
 		const hideLabel = this.state._hideLabel === true;
 		const orientation = this.state._orientation;
-		const id = 'kol-nav-' + nonce();
 		return (
 			<div
 				class={clsx('kol-nav', `kol-nav--${orientation}`, {
 					'kol-nav--is-compact': this.state._hideLabel,
 				})}
 			>
-				<nav class="kol-nav__navigation" aria-label={this.state._label} id="nav">
-					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation} id={id}></this.linkList>
+				<nav aria-label={this.state._label} class="kol-nav__navigation" id={this.navId}>
+					<this.linkList
+						collapsible={collapsible}
+						hideLabel={hideLabel}
+						deep={0}
+						links={this.state._links}
+						orientation={orientation}
+						id={this.listId}
+					></this.linkList>
 				</nav>
 				{hasCompactButton && (
 					<div class="kol-nav__compact">
 						<KolButtonWcTag
 							class="kol-nav__toggle-button"
-							_ariaControls="nav"
+							_ariaControls={this.navId}
 							_ariaExpanded={!hideLabel}
 							_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 							_hideLabel
@@ -264,7 +273,6 @@ export class KolNav implements NavAPI {
 								},
 							}}
 							_tooltipAlign="right"
-							_buttonVariant="ghost"
 						></KolButtonWcTag>
 					</div>
 				)}
