@@ -43,7 +43,7 @@
 		"@babel/preset-env": "7.28.3",
 		"@playwright/test": "1.55.1",
 		"eslint": "8.57.1",
-		"knip": "5.64.0",
+		"knip": "5.64.1",
 		"prettier": "3.6.2"
 	},
 	"peerDependencies": {
