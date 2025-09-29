@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "3.0.7-rc.0",
+	"version": "3.0.7-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -55,7 +55,7 @@
 		"@types/normalize-package-data": "2.4.4",
 		"typescript": "5.9.2",
 		"unbuild": "3.6.1",
-		"vue": "3.5.21"
+		"vue": "3.5.22"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
