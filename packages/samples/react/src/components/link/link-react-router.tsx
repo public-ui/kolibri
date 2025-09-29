@@ -1,4 +1,4 @@
-import type { FC, MouseEvent } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const ROUTE = '/back-page';
 export const LinkReactRouter: FC = () => {
 	const navigate = useNavigate();
 
-	const handleClick = (event: MouseEvent<HTMLElement>): void => {
+	const handleClick = (event: Event) => {
 		event.preventDefault();
 		navigate(ROUTE);
 	};
@@ -27,24 +27,9 @@ export const LinkReactRouter: FC = () => {
 
 			<div className="grid gap-4">
 				<KolHeading _level={2} _label="React Router Navigation" />
-				<KolLink
-					_href={ROUTE}
-					_label="Go to overview"
-					_variant="standalone"
-					_on={{
-						onClick: (event: unknown): void => handleClick(event as unknown as MouseEvent<HTMLElement>),
-					}}
-				/>
+				<KolLink _href={ROUTE} _label="Go to overview" _variant="standalone" _on={{ onClick: handleClick }} />
 
-				<KolLink
-					_hideLabel
-					_icons="codicon codicon-home"
-					_href={ROUTE}
-					_label="Go to overview (icon)"
-					_on={{
-						onClick: (event: unknown): void => handleClick(event as unknown as MouseEvent<HTMLElement>),
-					}}
-				/>
+				<KolLink _hideLabel _icons="codicon codicon-home" _href={ROUTE} _label="Go to overview (icon)" _on={{ onClick: handleClick }} />
 			</div>
 		</>
 	);
