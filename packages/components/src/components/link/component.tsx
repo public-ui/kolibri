@@ -211,7 +211,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					_label={this.state._label || this.state._href}
 				></KolTooltipWcTag>
 				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
+					<span hidden id={this.internalDescriptionById}>
 						{this.state._ariaDescription}
 					</span>
 				)}

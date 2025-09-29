@@ -8,7 +8,7 @@ exports[`KolSpanFc should allow markdown in label 1`] = `
         Bold Label
       </strong>
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span class="kol-span__label" hidden=""></span>
   </span>
 </span>
 `;
@@ -16,7 +16,7 @@ exports[`KolSpanFc should allow markdown in label 1`] = `
 exports[`KolSpanFc should hide label when hideLabel is true 1`] = `
 <span class="kol-span kol-span--hide-label">
   <span class="kol-span__container">
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span class="kol-span__label" hidden=""></span>
   </span>
 </span>
 `;
@@ -30,7 +30,7 @@ exports[`KolSpanFc should render with badge text 1`] = `
         Badge
       </u>
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span class="kol-span__label" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       Badge
     </kbd>
@@ -44,7 +44,7 @@ exports[`KolSpanFc should render with default props 1`] = `
     <span class="kol-span__label">
       Default Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span class="kol-span__label" hidden=""></span>
   </span>
 </span>
 `;
@@ -57,7 +57,7 @@ exports[`KolSpanFc should render with icons 1`] = `
     <span class="kol-span__label">
       Label with Icons
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span class="kol-span__label" hidden=""></span>
     <kol-icon _icons="right-icon" _label="" class="icon right"></kol-icon>
   </span>
   <kol-icon _icons="bottom-icon" _label="" class="bottom icon"></kol-icon>

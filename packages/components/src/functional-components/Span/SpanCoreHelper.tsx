@@ -13,7 +13,7 @@ const KolSpanCoreHelperFc: FC<{ label: string; hideLabel?: boolean; badgeText?: 
 	return (
 		<>
 			{hideExpertSlot && <LabelHelper label={label} hideLabel={hideLabel} badgeText={badgeText} allowMarkdown={allowMarkdown} />}
-			<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="kol-span__label" hidden={hideExpertSlot}>
+			<span class="kol-span__label" hidden={hideExpertSlot}>
 				{children}
 			</span>
 			{isString(badgeText) && badgeText.length > 0 && (

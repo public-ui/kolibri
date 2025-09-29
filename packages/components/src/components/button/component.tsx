@@ -186,7 +186,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></KolTooltipWcTag>
 				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
+					<span hidden id={this.internalDescriptionById}>
 						{this.state._ariaDescription}
 					</span>
 				)}
