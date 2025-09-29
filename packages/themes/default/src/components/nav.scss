@@ -77,20 +77,16 @@
 					outline: none;
 				}
 
-				&--ghost {
-					&:not([disabled]):hover {
-						--text-background-color: var(--color-primary-variant);
-						--text-border-color: var(--color-primary-variant);
-						--text-color: var(--color-light);
-					}
+				&:not([disabled]):hover {
+					--text-background-color: var(--color-primary-variant);
+					--text-border-color: var(--color-primary-variant);
+					--text-color: var(--color-light);
 				}
 
-				&--ghost {
-					--text-background-color: var(--color-light);
-					--text-border-color: var(--color-light);
-					--text-color: var(--color-primary);
-					--text-box-shadow: none;
-				}
+				--text-background-color: var(--color-light);
+				--text-border-color: var(--color-light);
+				--text-color: var(--color-primary);
+				--text-box-shadow: none;
 
 				&__text {
 					color: var(--text-color);
