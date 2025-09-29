@@ -26,18 +26,22 @@ export class KolToolbar implements ToolbarAPI {
 	@State() private currentIndex: number = 0;
 
 	private indexToElement = new Map<number, HTMLKolLinkWcElement | HTMLKolButtonWcElement>();
-
-	private renderItem = (element: ToolbarItemPropType, index: number): JSX.Element => {
+	private normalizeItem(item: ToolbarItemPropType): ToolbarItemPropType {
+		const { _icons, _disabled, ...rest } = item;
+		return { ...rest, _icons, _disabled };
+	}
+	private renderItem = (raw: ToolbarItemPropType, index: number): JSX.Element => {
+		const element = this.normalizeItem(raw);
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
+
 		const props = {
 			key: index,
 			class: 'button normal kol-toolbar__item',
 			_tabIndex: tabIndex,
 		};
-		const catchRef = (element?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
-			element && this.indexToElement.set(index, element);
+		const catchRef = (el?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
+			if (el) this.indexToElement.set(index, el);
 		};
-
 		return '_href' in element ? (
 			<KolLinkWcTag {...element} {...props} ref={catchRef}></KolLinkWcTag>
 		) : (
@@ -75,6 +79,8 @@ export class KolToolbar implements ToolbarAPI {
 	@Watch('_items')
 	public validateItems(value?: ToolbarItemsPropType): void {
 		validateToolbarItems(this, value);
+		this.indexToElement.clear();
+		this.setFirstEnabledItemIndex();
 	}
 
 	@Watch('_orientation')
@@ -88,7 +94,7 @@ export class KolToolbar implements ToolbarAPI {
 	 *
 	 * @returns An array of HTMLElements representing the toolbar items.
 	 */
-	private getCurrentToolbarItem(index?: number): ChildNode | undefined {
+	private getCurrentToolbarItem(index?: number): HTMLKolLinkWcElement | HTMLKolButtonWcElement | undefined {
 		return typeof index === 'number' ? this.indexToElement.get(index) : undefined;
 	}
 
@@ -106,24 +112,28 @@ export class KolToolbar implements ToolbarAPI {
 		if (!isArrowKey) return;
 		event.preventDefault();
 
-		const lastItemIndex = this._items?.length - 1;
+		const lastItemIndex = (this._items?.length ?? 0) - 1;
+		if (lastItemIndex < 0) return;
 		const currentIndex = this.currentIndex;
-		let nextIndex = 0;
+		let nextIndex = currentIndex;
 
 		switch (pressedKey) {
 			case KeyboardKey.ArrowUp:
 			case KeyboardKey.ArrowLeft:
-				nextIndex = currentIndex !== nextIndex ? currentIndex - 1 : lastItemIndex;
+				nextIndex = currentIndex > 0 ? currentIndex - 1 : lastItemIndex;
 				break;
 			case KeyboardKey.ArrowDown:
 			case KeyboardKey.ArrowRight:
-				if (lastItemIndex !== currentIndex) nextIndex = currentIndex + 1;
+				nextIndex = currentIndex < lastItemIndex ? currentIndex + 1 : 0;
 				break;
 		}
+
 		if (currentIndex === nextIndex) return;
 
+		if (this.state._items?.[nextIndex]?._disabled) return;
+
 		this.currentIndex = nextIndex;
-		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkWcElement | HTMLKolButtonWcElement | undefined)?.kolFocus();
+		void this.getCurrentToolbarItem(nextIndex)?.kolFocus();
 	}
 
 	/**

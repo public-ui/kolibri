@@ -180,7 +180,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 `;
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-input-number _hide-msg="" _touched="">
+<kol-input-number _touched="">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -514,7 +514,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 `;
 
 exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-input-number _hide-msg="" _touched="">
+<kol-input-number _touched="">
   <template shadowrootmode="open" shadowrootdelegatesfocus>
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
