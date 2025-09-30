@@ -1,3 +1,5 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -43,16 +45,13 @@ import {
 	validateTooltipAlign,
 	watchString,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 
 /**
  * @internal
@@ -64,8 +63,6 @@ import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
-
-	private readonly internalDescriptionById = nonce();
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.buttonRef = ref;
@@ -110,7 +107,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const ariaDescription = this.state._ariaDescription?.trim();
 
 		return (
 			<Host class="kol-button-wc">
@@ -118,7 +115,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					ref={this.catchRef}
 					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
-					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
+					aria-description={ariaDescription || undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
@@ -162,11 +159,6 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></KolTooltipWcTag>
-				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this.state._ariaDescription}
-					</span>
-				)}
 			</Host>
 		);
 	}
