@@ -198,18 +198,20 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						/>
 					)}
 				</a>
-				<KolTooltipWcTag
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
-					class="kol-link__tooltip"
-					hidden={hasExpertSlot || !this.state._hideLabel}
-					_badgeText={this.state._accessKey || this.state._shortKey}
-					_align={this.state._tooltipAlign}
-					_label={this.state._label || this.state._href}
-				></KolTooltipWcTag>
+				{this.state._hideLabel === true && (
+					<KolTooltipWcTag
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						class="kol-link__tooltip"
+						hidden={hasExpertSlot}
+						_badgeText={this.state._accessKey || this.state._shortKey}
+						_align={this.state._tooltipAlign}
+						_label={this.state._label || this.state._href}
+					></KolTooltipWcTag>
+				)}
 				{hasAriaDescription && (
 					<span class="visually-hidden" id={this.internalDescriptionById}>
 						{this.state._ariaDescription}

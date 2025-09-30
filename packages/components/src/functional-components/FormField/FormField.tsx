@@ -141,8 +141,8 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 			)}
 			<InputContainer {...formFieldInputProps}>
 				{children}
-				{useTooltipInsteadOfLabel && (
-					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} hideLabel={hideLabel} align={tooltipAlign} badgeText={badgeText} />
+				{useTooltipInsteadOfLabel && hideLabel === true && (
+					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} align={tooltipAlign} badgeText={badgeText} />
 				)}
 			</InputContainer>
 			{counter ? <KolFormFieldCounterFc {...counter} /> : null}

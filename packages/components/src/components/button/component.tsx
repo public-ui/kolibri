@@ -172,19 +172,21 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 				</button>
-				<KolTooltipWcTag
-					ref={(ref) => (this.tooltipRef = ref)}
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
-					hidden={hasExpertSlot || !hideLabel}
-					class="kol-button__tooltip"
-					_badgeText={badgeText}
-					_align={this.state._tooltipAlign}
-					_label={typeof this.state._label === 'string' ? this.state._label : ''}
-				></KolTooltipWcTag>
+				{hideLabel && (
+					<KolTooltipWcTag
+						ref={(ref) => (this.tooltipRef = ref)}
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						hidden={hasExpertSlot}
+						class="kol-button__tooltip"
+						_badgeText={badgeText}
+						_align={this.state._tooltipAlign}
+						_label={typeof this.state._label === 'string' ? this.state._label : ''}
+					></KolTooltipWcTag>
+				)}
 				{hasAriaDescription && (
 					<span class="visually-hidden" id={this.internalDescriptionById}>
 						{this.state._ariaDescription}
