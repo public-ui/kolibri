@@ -2,6 +2,12 @@
 
 # Known Issues
 
+## General
+
+### Limited support for `aria-description` (WAI-ARIA 1.2)
+
+- `aria-description` was introduced with [WAI-ARIA 1.2](https://www.w3.org/TR/wai-aria-1.2/#aria-description), but many assistive technologies have not yet adopted it and continue to rely solely on `aria-describedby` when presenting supplementary text. Components that accept `_ariaDescription` therefore keep rendering hidden fallback markup and set both attributes so older screen readers still expose the description.
+
 ## select
 
 - Disabled options in KolSelect affect the total count in screen readers When an option in `KolSelect` is set to `disabled: true`, it is still counted by screen readers. This leads to incorrect numbering, for example, NVDA announces "2 of 4" instead of "2 of 3". To ensure the correct order, the `aria-hidden="true"` attribute should be set for `disabled` options. This will hide the disabled option from screen readers and keep the total number of items consistent.

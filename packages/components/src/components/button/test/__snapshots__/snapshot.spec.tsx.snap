@@ -5,15 +5,12 @@ exports[`kol-button should render with _label="Label" _ariaDescription="Aria Des
   <template shadowrootmode="open">
     <kol-button-wc class="button kol-button-wc">
       <!---->
-      <button aria-describedby="nonce" class="button normal" type="button">
+      <button aria-description="Aria Description" class="button normal" type="button">
         <kol-span-wc _label="Label" class="button-inner">
           <slot name="expert" slot="expert"></slot>
         </kol-span-wc>
       </button>
       <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
-      <span class="visually-hidden" id="nonce">
-        Aria Description
-      </span>
     </kol-button-wc>
   </template>
 </kol-button>
