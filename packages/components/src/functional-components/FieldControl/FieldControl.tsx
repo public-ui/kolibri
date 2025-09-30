@@ -88,14 +88,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		<>
 			<InputContainer {...fieldControlInputProps}>{children}</InputContainer>
 			{useTooltipInsteadOfLabel && (
-				<KolFieldControlTooltipFc
-					{...(fieldControlTooltipProps || {})}
-					id={id}
-					label={label}
-					hideLabel={hideLabel}
-					align={tooltipAlign}
-					badgeText={badgeText}
-				/>
+				<KolFieldControlTooltipFc {...(fieldControlTooltipProps || {})} id={id} label={label} align={tooltipAlign} badgeText={badgeText} />
 			)}
 		</>,
 		<KolFieldControlLabelFc

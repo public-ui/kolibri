@@ -54,7 +54,6 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { nonce } from '../../utils/dev.utils';
 import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
 import { translate } from '../../i18n';
@@ -75,7 +74,6 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
-	private readonly internalDescriptionById = nonce();
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
@@ -144,7 +142,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const ariaDescription = this.state._ariaDescription?.trim();
 
 		return (
 			<Host>
@@ -154,7 +152,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-controls={this.state._ariaControls}
-					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
+					aria-description={ariaDescription || undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
 					aria-owns={this.state._ariaOwns}
@@ -198,22 +196,19 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						/>
 					)}
 				</a>
-				<KolTooltipWcTag
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
-					class="kol-link__tooltip"
-					hidden={hasExpertSlot || !this.state._hideLabel}
-					_badgeText={this.state._accessKey || this.state._shortKey}
-					_align={this.state._tooltipAlign}
-					_label={this.state._label || this.state._href}
-				></KolTooltipWcTag>
-				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this.state._ariaDescription}
-					</span>
+				{this.state._hideLabel === true && (
+					<KolTooltipWcTag
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						class="kol-link__tooltip"
+						hidden={hasExpertSlot}
+						_badgeText={this.state._accessKey || this.state._shortKey}
+						_align={this.state._tooltipAlign}
+						_label={this.state._label || this.state._href}
+					></KolTooltipWcTag>
 				)}
 			</Host>
 		);

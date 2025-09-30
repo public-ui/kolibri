@@ -51,7 +51,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { KolTooltipWcTag } from '../../core/component-names';
@@ -71,8 +70,6 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 	private tooltipRef?: HTMLKolTooltipWcElement;
-
-	private readonly internalDescriptionById = nonce();
 
 	/**
 	 * Sets focus on the internal element.
@@ -128,7 +125,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const ariaDescription = this.state._ariaDescription?.trim();
 		const badgeText = this.state._accessKey || this.state._shortKey;
 		const isDisabled = this.state._disabled === true;
 		const hideLabel = this.state._hideLabel === true;
@@ -139,7 +136,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					ref={(ref) => (this.buttonRef = ref)}
 					accessKey={this.state._accessKey}
 					aria-controls={this.state._ariaControls}
-					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
+					aria-description={ariaDescription || undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
 					aria-keyshortcuts={this.state._shortKey}
@@ -172,23 +169,20 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 				</button>
-				<KolTooltipWcTag
-					ref={(ref) => (this.tooltipRef = ref)}
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
-					hidden={hasExpertSlot || !hideLabel}
-					class="kol-button__tooltip"
-					_badgeText={badgeText}
-					_align={this.state._tooltipAlign}
-					_label={typeof this.state._label === 'string' ? this.state._label : ''}
-				></KolTooltipWcTag>
-				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this.state._ariaDescription}
-					</span>
+				{hideLabel && (
+					<KolTooltipWcTag
+						ref={(ref) => (this.tooltipRef = ref)}
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						hidden={hasExpertSlot}
+						class="kol-button__tooltip"
+						_badgeText={badgeText}
+						_align={this.state._tooltipAlign}
+						_label={typeof this.state._label === 'string' ? this.state._label : ''}
+					></KolTooltipWcTag>
 				)}
 			</Host>
 		);

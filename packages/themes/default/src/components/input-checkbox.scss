@@ -114,6 +114,7 @@
 
 			&:focus {
 				@include switch-outline;
+				border-radius: 1.25em;
 			}
 
 			&:before {

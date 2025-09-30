@@ -19,21 +19,21 @@ import { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON } from './bem';
 export class KolIcon implements IconAPI {
 	private readonly controller: IconController;
 	public render(): JSX.Element {
-		const ariaShow = this.state._label.length > 0;
+		const hasAriaLabel = this.state._label.length > 0;
 		return (
 			<Host exportparts="icon" class={BEM_CLASS_ICON}>
 				<i
-					aria-hidden={ariaShow ? undefined : 'true'}
 					/**
 					 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
 					 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
 					 *
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
-					aria-label={ariaShow ? this.state._label : undefined}
+					aria-hidden={hasAriaLabel ? undefined : 'true'}
+					aria-label={hasAriaLabel ? this.state._label : undefined}
 					class={clsx(BEM_CLASS_ICON__ICON, this.state._icons)}
 					part="icon"
-					role="img"
+					role={hasAriaLabel ? 'img' : 'presentation'}
 				></i>
 			</Host>
 		);
