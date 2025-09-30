@@ -131,7 +131,8 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const ariaDescription = this.state._ariaDescription?.trim();
+		const hasAriaDescription = Boolean(ariaDescription?.length);
 
 		return (
 			<Host class="kol-link-wc">
@@ -139,6 +140,7 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 					ref={this.catchRef}
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
+					aria-description={ariaDescription || undefined}
 					aria-keyshortcuts={this.state._shortKey}
 					aria-current={this.state._ariaCurrent}
 					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
@@ -195,7 +197,7 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 				></KolTooltipWcTag>
 				{hasAriaDescription && (
 					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this.state._ariaDescription}
+						{ariaDescription}
 					</span>
 				)}
 			</Host>
