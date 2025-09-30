@@ -5,7 +5,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -31,7 +31,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -57,7 +57,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -83,7 +83,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -109,7 +109,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -135,7 +135,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -161,7 +161,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -187,7 +187,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -213,7 +213,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -239,7 +239,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -265,7 +265,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -291,7 +291,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -317,7 +317,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -343,7 +343,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -369,7 +369,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -395,7 +395,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -421,7 +421,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -447,7 +447,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -473,7 +473,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -499,7 +499,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -525,7 +525,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -551,7 +551,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -577,7 +577,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -603,7 +603,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -629,7 +629,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -655,7 +655,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -681,7 +681,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -707,7 +707,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -733,7 +733,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -759,7 +759,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
+      <div aria-live="polite" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -785,7 +785,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -811,7 +811,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -837,7 +837,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -863,7 +863,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -889,7 +889,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -915,7 +915,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -941,7 +941,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -967,7 +967,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -993,7 +993,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -1019,7 +1019,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -1045,7 +1045,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -1071,7 +1071,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -1097,7 +1097,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -1123,7 +1123,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -1149,7 +1149,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -1175,7 +1175,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -1201,7 +1201,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -1227,7 +1227,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -1253,7 +1253,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -1279,7 +1279,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -1305,7 +1305,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -1331,7 +1331,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -1357,7 +1357,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -1383,7 +1383,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -1409,7 +1409,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
@@ -1435,7 +1435,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-message
@@ -1461,7 +1461,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-error
@@ -1487,7 +1487,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-info
@@ -1513,7 +1513,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-success
@@ -1539,7 +1539,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
   <template shadowrootmode="open">
     <kol-alert-wc>
       <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="status">
+      <div aria-live="assertive" class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
         <div class="kol-alert__container">
           <span class="visually-hidden">
             kol-warning
