@@ -35,4 +35,21 @@ describe('KolButtonFc', () => {
 		expect(page.root).toMatchSnapshot();
 		expect(page.root?.getAttribute('_hideLabel')).toBeDefined();
 	});
+
+	it('should render with a long tooltip inside a row-reverse flex container', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<div style={{ display: 'flex', flexDirection: 'row-reverse', width: '200px' }}>
+				<KolButtonFc
+					label="This is a very long tooltip text that demonstrates the behavior in a row-reverse layout"
+					hideLabel
+					icons="codicon codicon-home"
+					variant="primary"
+				></KolButtonFc>
+			</div>
+		));
+		const button = page.root?.querySelector('kol-button-wc') as HTMLKolButtonWcElement;
+		button.focus();
+		await page.waitForChanges();
+		expect(page.root).toMatchSnapshot();
+	});
 });

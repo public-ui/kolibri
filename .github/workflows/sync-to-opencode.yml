@@ -3,7 +3,7 @@ name: Sync to OpenCoDE
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 4-20 * * *' # von 6 bis 22 Uhr
+    - cron: '0 4-20 * * *'  # stündlich 04–20 UTC (~06–22 Uhr Berlin)
 
 jobs:
   sync:
@@ -14,8 +14,37 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'develop'
-      - name: git-sync
+          ref: develop
+
+      - name: Configure Git for tiny push chunks (~5MB)
         run: |
-          git remote add opencode https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git
-          git push opencode -f
+          git config --global safe.directory "$GITHUB_WORKSPACE"
+          # sehr kleine Packs -> mehrere kleine HTTP-Requests statt eines großen
+          git config --global pack.packSizeLimit 5m
+          git config --global pack.window 0
+          git config --global pack.threads 1
+          # Fallbacks / Stabilität über HTTP
+          git config --global http.version HTTP/1.1
+          git config --global http.postBuffer 5242880 || true  # legacy, falls noch unterstützt
+          git config --global http.lowSpeedLimit 0
+          git config --global http.lowSpeedTime 0
+
+      - name: Add remote and prefetch target branch (if exists)
+        run: |
+          git remote add opencode "https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git"
+          # Prefetch, damit Git Deltas gegen die Remote-History bilden kann (reduziert Packgröße)
+          git fetch opencode develop || true
+
+      - name: Push develop to OpenCoDE (forced, tiny chunks, with retries)
+        env:
+          GIT_HTTP_MAX: 5m
+        run: |
+          set -e
+          # zusätzlicher, einmaliger Versuch mit expliziten -c Overrides
+          for i in 1 2 3; do
+            git -c pack.packSizeLimit=5m -c pack.window=0 -c pack.threads=1 \
+                push opencode develop:develop --force && break || {
+              echo "Push failed (attempt $i). Retrying in 10s…"
+              sleep 10
+            }
+          done

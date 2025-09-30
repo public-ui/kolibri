@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-hook-form-adapter",
-	"version": "3.0.6",
+	"version": "3.0.7-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -63,6 +63,7 @@
 		"prettier": "3.6.2",
 		"react": "19.1.1",
 		"react-dom": "19.1.1",
+		"react-hook-form": "7.63.0",
 		"typescript": "5.9.2",
 		"unbuild": "3.6.1"
 	},
