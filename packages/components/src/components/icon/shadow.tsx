@@ -15,21 +15,21 @@ import type { JSX } from '@stencil/core';
 })
 export class KolIcon implements IconAPI {
 	public render(): JSX.Element {
-		const ariaShow = this.state._label.length > 0;
+		const hasAriaLabel = this.state._label.length > 0;
 		return (
 			<Host exportparts="icon" class="kol-icon">
 				<i
-					aria-hidden={ariaShow ? undefined : 'true'}
 					/**
 					 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
 					 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
 					 *
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
-					aria-label={ariaShow ? this.state._label : undefined}
+					aria-hidden={hasAriaLabel ? undefined : 'true'}
+					aria-label={hasAriaLabel ? this.state._label : undefined}
 					class={this.state._icons}
 					part="icon"
-					role="img"
+					role={hasAriaLabel ? 'img' : 'presentation'}
 				></i>
 			</Host>
 		);
