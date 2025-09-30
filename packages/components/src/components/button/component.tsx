@@ -130,6 +130,9 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		const isDisabled = this.state._disabled === true;
 		const hideLabel = this.state._hideLabel === true;
 
+		const requestedRole = this.state._role as string | undefined;
+		const role = requestedRole === 'link' ? undefined : requestedRole;
+
 		return (
 			<Host>
 				<button
@@ -155,7 +158,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					name={this.state._name}
 					onClick={this.onClick}
 					onMouseDown={this.onMouseDown}
-					role={this.state._role}
+					role={role}
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>

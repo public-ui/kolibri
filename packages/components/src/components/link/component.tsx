@@ -144,6 +144,9 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		const ariaDescription = this.state._ariaDescription?.trim();
 
+		const requestedRole = this.state._role as string | undefined;
+		const role = requestedRole === 'button' ? undefined : requestedRole;
+
 		return (
 			<Host>
 				<a
@@ -175,7 +178,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
 					onClick={this.onClick}
 					onKeyPress={this.onClick}
-					role={this.state._role}
+					role={role}
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
 					<KolSpanFc
