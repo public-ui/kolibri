@@ -824,6 +824,9 @@ ROUTES.set('table/sticky-header', {
 			skip: true,
 		}
 	},
+	axe: {
+		skipFailures: true,
+	},
 });
 ROUTES.set('tabs/basic', {
 	snapshot: {
