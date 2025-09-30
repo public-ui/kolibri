@@ -117,7 +117,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 							});
 						}}
 					>
-						<input type="submit" hidden />
+						<input aria-hidden="true" class="visually-hidden" hidden type="submit" />
 						<KolSelectStateWrapperFc {...this.getSelectProps()} />
 					</form>
 				</KolInputContainerFc>

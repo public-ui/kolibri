@@ -1,4 +1,5 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
+import clsx from 'clsx';
 import { isString } from 'lodash-es';
 
 import { showExpertSlot } from '../../schema';
@@ -13,7 +14,7 @@ const KolSpanCoreHelperFc: FC<{ label: string; hideLabel?: boolean; badgeText?: 
 	return (
 		<>
 			{hideExpertSlot && <LabelHelper label={label} hideLabel={hideLabel} badgeText={badgeText} allowMarkdown={allowMarkdown} />}
-			<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="kol-span__label" hidden={hideExpertSlot}>
+			<span aria-hidden={hideExpertSlot ? 'true' : undefined} class={clsx('kol-span__label', { 'visually-hidden': hideExpertSlot })} hidden={hideExpertSlot}>
 				{children}
 			</span>
 			{isString(badgeText) && badgeText.length > 0 && (

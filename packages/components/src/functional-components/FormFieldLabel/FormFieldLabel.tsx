@@ -67,7 +67,10 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	return (
 		<Component
 			{...other}
-			class={clsx(`${baseClassName}__label`, classNames)}
+			aria-hidden={useTooltipInsteadOfLabel ? 'true' : undefined}
+			class={clsx(`${baseClassName}__label`, classNames, {
+				'visually-hidden': useTooltipInsteadOfLabel,
+			})}
 			id={!useTooltipInsteadOfLabel ? `${id}-label` : undefined}
 			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}

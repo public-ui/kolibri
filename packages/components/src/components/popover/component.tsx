@@ -99,7 +99,11 @@ export class KolPopover implements PopoverAPI {
 		return (
 			<Host ref={this.catchHostAndTriggerElement} class="kol-popover">
 				<div
-					class={clsx('kol-popover__content', { 'kol-popover__content--visible': this.state._visible })}
+					aria-hidden={this.state._show ? undefined : 'true'}
+					class={clsx('kol-popover__content', {
+						'kol-popover__content--visible': this.state._visible,
+						'visually-hidden': !this.state._show,
+					})}
 					ref={this.catchPopoverElement}
 					hidden={!this.state._show}
 				>

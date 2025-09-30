@@ -70,7 +70,14 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			</KolHeadingFc>
 			<div class={clsx('collapsible__wrapper', ContentProps?.wrapperClass)}>
 				<div class={clsx('collapsible__wrapper-animation', ContentProps?.animationClass)}>
-					<div aria-hidden={open === false ? 'true' : undefined} class={clsx('collapsible__content', ContentProps?.class)} id={`${id}-control`}>
+					<div
+						aria-hidden={open === false ? 'true' : undefined}
+						class={clsx('collapsible__content', ContentProps?.class, {
+							'visually-hidden': open === false,
+						})}
+						hidden={open === false}
+						id={`${id}-control`}
+					>
 						{children}
 					</div>
 				</div>

@@ -179,9 +179,11 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 						 */
-						aria-hidden="true"
+						aria-hidden={hasExpertSlot ? 'true' : undefined}
 						hidden={hasExpertSlot}
-						class="kol-button__tooltip"
+						class={clsx('kol-button__tooltip', {
+							'visually-hidden': hasExpertSlot,
+						})}
 						_badgeText={badgeText}
 						_align={this.state._tooltipAlign}
 						_label={typeof this.state._label === 'string' ? this.state._label : ''}

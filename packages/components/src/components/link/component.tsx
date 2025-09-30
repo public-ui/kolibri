@@ -191,10 +191,10 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					</KolSpanFc>
 					{isExternal && (
 						<KolIconTag
+							aria-hidden={this.state._hideLabel ? 'true' : undefined}
 							class="kol-link__icon"
 							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
 							_icons={'codicon codicon-link-external'}
-							aria-hidden={this.state._hideLabel}
 						/>
 					)}
 				</a>
@@ -204,8 +204,10 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 						 */
-						aria-hidden="true"
-						class="kol-link__tooltip"
+						aria-hidden={hasExpertSlot ? 'true' : undefined}
+						class={clsx('kol-link__tooltip', {
+							'visually-hidden': hasExpertSlot,
+						})}
 						hidden={hasExpertSlot}
 						_badgeText={this.state._accessKey || this.state._shortKey}
 						_align={this.state._tooltipAlign}

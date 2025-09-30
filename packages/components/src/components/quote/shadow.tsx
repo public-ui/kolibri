@@ -70,19 +70,20 @@ export class KolQuote implements QuoteAPI {
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._quote); // _quote instead of _caption as _label
+		const hideExpertSlot = !hasExpertSlot;
 		return (
 			<figure class={clsx('kol-quote', `kol-quote--${this.state._variant}`)}>
 				{this.state._variant === 'block' ? (
 					<blockquote class="kol-quote__blockquote" cite={this.state._href}>
 						{this.state._quote}
-						<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
+						<span aria-hidden={hideExpertSlot ? 'true' : undefined} class={clsx({ 'visually-hidden': hideExpertSlot })} hidden={hideExpertSlot}>
 							<slot name="expert" />
 						</span>
 					</blockquote>
 				) : (
 					<q class="kol-quote__quote" cite={this.state._href}>
 						{this.state._quote}
-						<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
+						<span aria-hidden={hideExpertSlot ? 'true' : undefined} class={clsx({ 'visually-hidden': hideExpertSlot })} hidden={hideExpertSlot}>
 							<slot name="expert" />
 						</span>
 					</q>

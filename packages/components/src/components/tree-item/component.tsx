@@ -19,6 +19,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
+		const hideChildren = !_hasChildren || !_open;
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)}>
 				<li
@@ -59,7 +60,15 @@ export class KolTreeItemWc implements TreeItemAPI {
 							<span class="kol-tree-item__text">{_label}</span>
 						</span>
 					</KolLinkWcTag>
-					<ul class="kol-tree-item__children" hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
+					<ul
+						aria-hidden={hideChildren ? 'true' : undefined}
+						class={clsx('kol-tree-item__children', {
+							'visually-hidden': hideChildren,
+						})}
+						hidden={hideChildren}
+						role="group"
+						id={this.groupId}
+					>
 						<slot />
 					</ul>
 				</li>
