@@ -19,17 +19,12 @@
 
 		padding: to-rem(8);
 
-		&__table,
-		&__caption {
+		&__table {
+			width: 100%;
 			border-color: var(--color-primary-variant);
 			border-style: solid;
 			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
-		}
-
-		&__table {
-			width: 100%;
-			border-spacing: 0;
+			border-spacing: 0.075rem;
 		}
 
 		&__caption {
@@ -53,12 +48,20 @@
 
 		&__cell {
 			padding: to-rem(8);
+			border-color: var(--color-primary);
+			border-style: solid;
+			border-width: 0;
+			border-bottom-width: calc(var(--border-width) * 2);
 
 			&--header {
-				color: var(--color-primary);
-				background-color: var(--color-light);
+				color: var(--color-light);
+				background-color: var(--color-primary);
 
 				font-weight: normal;
+
+				.kol-button:focus {
+					outline-color: var(--color-mute-variant);
+				}
 			}
 
 			&--ascending,
@@ -79,88 +82,73 @@
 		}
 
 		&__spacer {
-			display: table-row;
-			height: to-rem(24);
+			display: none;
 		}
 
-		&__spacer-line {
-			border-color: var(--color-primary-variant);
-			border-style: solid;
-			border-width: 0;
+		&__selection {
+			--kol-selection-input-main-color: var(--color-primary);
+			--kol-selection-input-off-color: var(--color-subtle);
+			--kol-selection-input-focus-color: var(--color-primary-variant);
+			--kol-selection-input-hover-color: rgb(8, 35, 48, 0.24);
+			--kol-selection-input-icon-color: var(--color-light);
 
-			&--foot {
-				border-bottom-width: calc(var(--border-width) * 2);
-			}
-
-			&--head {
-				border-top-width: calc(var(--border-width) * 2);
-			}
-		}
-
-		&__row {
-			&--body {
-				&:nth-child(even) {
-					background-color: var(--color-mute);
+			&-input {
+				&:not(:disabled):hover {
+					box-shadow: 0 2px 8px 2px var(--kol-selection-input-hover-color);
+					border-color: var(--kol-selection-input-main-color);
 				}
-			}
-		}
 
-		&__selection-input {
-			&:not(:disabled):hover {
-				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
-				border-color: var(--color-primary);
-			}
-
-			&:focus {
-				outline-color: var(--color-primary-variant);
-				outline-style: solid;
-				outline-width: 3px;
-				border-color: var(--color-primary);
-				outline-offset: 2px;
-			}
-
-			&:focus:hover {
-				box-shadow: none;
-			}
-
-			// CHECKBOX
-			&--checkbox {
-				border-color: var(--color-subtle);
-				border-radius: 5px;
-
-				&:checked {
-					background-color: var(--color-primary);
-					border-color: var(--color-primary);
+				&:focus {
+					outline-color: var(--kol-selection-input-focus-color);
+					outline-style: solid;
+					outline-width: 3px;
+					border-color: var(--kol-selection-input-main-color);
+					outline-offset: 2px;
 				}
-			}
 
-			// RADIO
-			&--radio {
-				border-color: var(--color-subtle);
-				display: flex;
+				&:focus:hover {
+					box-shadow: none;
+				}
 
-				&:checked {
-					border-color: var(--color-primary);
+				// CHECKBOX
+				&--checkbox {
+					border-color: var(--kol-selection-input-off-color);
+					border-radius: 5px;
 
-					&:before {
-						background-color: var(--color-primary);
+					&:checked {
+						background-color: var(--kol-selection-input-main-color);
+						border-color: var(--kol-selection-input-main-color);
+					}
+				}
+
+				// RADIO
+				&--radio {
+					border-color: var(--kol-selection-input-off-color);
+					display: flex;
+
+					&:checked {
+						border-color: var(--kol-selection-input-main-color);
+
+						&:before {
+							background-color: var(--kol-selection-input-main-color);
+						}
 					}
 				}
 			}
 
-			@at-root #{$root}__selection--indeterminate & {
-				background-color: var(--color-primary);
-				border-color: var(--color-primary);
+			// icon in the checkbox
+			&-icon {
+				color: var(--kol-selection-input-icon-color);
 			}
-		}
 
-		&__selection-icon {
-			color: var(--color-light);
-		}
-
-		.kol-icon:hover ~ &__selection-input--checkbox:not(:disabled),
-		&__selection-input--checkbox:not(:disabled):hover {
-			border-color: var(--color-primary);
+			//switch the colors in the table header
+			@at-root #{$root}__head-row & {
+				--kol-selection-input-main-color: var(--color-light);
+				--kol-selection-input-off-color: var(--color-mute);
+				--kol-selection-input-focus-color: var(--color-mute-variant);
+				--kol-selection-input-hover-color: rgb(255, 255, 255, 0.24);
+				--kol-selection-input-icon-color: var(--color-primary);
+			}
 		}
 	}
 }
