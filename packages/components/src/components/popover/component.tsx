@@ -1,7 +1,8 @@
-import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverStates, ShowPropType } from '../../schema';
+import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverCloseEvent, PopoverStates, ShowPropType } from '../../schema';
 import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { autoUpdate } from '@floating-ui/dom';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import clsx from 'clsx';
@@ -20,66 +21,74 @@ export class KolPopover implements PopoverAPI {
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
 	private host?: HTMLElement;
+	private cleanupAutoUpdate?: () => void;
+	private lastCloseEvent?: Event;
 
-	private async showPopover(): Promise<void> {
-		this.addListenersToBody();
+	private alignPopover = async (): Promise<void> => {
+		if (!this.popoverElement) {
+			return;
+		}
 
-		if (this.triggerElement && this.popoverElement) {
+		if (this.triggerElement) {
 			await alignFloatingElements({
 				align: this._align,
 				referenceElement: this.triggerElement,
 				arrowElement: this.arrowElement,
 				floatingElement: this.popoverElement,
 			});
-			this.state = { ...this.state, _visible: true };
 		}
-	}
-	private hidePopover(event: MouseEvent | KeyboardEvent): void {
+
+		this.popoverElement.style.removeProperty('visibility');
+	};
+
+	private handleBeforeToggle = (event: Event): void => {
+		if ((event as ToggleEvent).newState === 'open' && this.popoverElement) {
+			this.popoverElement.style.visibility = 'hidden';
+		}
+	};
+
+	private handleToggle = (event: Event): void => {
+		const toggleEvent = event as ToggleEvent;
+		const isOpen = toggleEvent.newState === 'open';
+
 		this.state = {
 			...this.state,
-			_visible: false,
+			_show: isOpen,
+			_visible: isOpen,
 		};
-		this._show = false;
-		this.triggerElement?.focus();
-		this.removeListenersToBody();
 
-		this.state._on?.onClose?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.close);
+		if (isOpen) {
+			this.cleanupAutoUpdate?.();
+
+			if (this.triggerElement && this.popoverElement) {
+				this.cleanupAutoUpdate = autoUpdate(this.triggerElement, this.popoverElement, () => {
+					void this.alignPopover();
+				});
+			}
+
+			this.addListenersToBody();
+			void this.alignPopover();
+		} else {
+			this.cleanupAutoUpdate?.();
+			this.cleanupAutoUpdate = undefined;
+
+			this.removeListenersFromBody();
+
+			const closeEvent = (this.lastCloseEvent ?? toggleEvent) as PopoverCloseEvent;
+			this.lastCloseEvent = undefined;
+
+			this.triggerElement?.focus();
+			this.state._on?.onClose?.(closeEvent);
+
+			if (this.host) {
+				dispatchDomEvent(this.host, KolEvent.close);
+			}
 		}
-	}
 
-	private hidePopoverByEscape = (event: KeyboardEvent): void => {
-		if (event.key === 'Escape') this.hidePopover(event);
-	};
-
-	private hidePopoverByClickOutside = (event: MouseEvent): void => {
-		if (this.host && !this.host.contains(event.target as HTMLElement)) {
-			this.hidePopover(event);
+		if (this._show !== isOpen) {
+			this._show = isOpen;
 		}
 	};
-
-	/* EventListener functions */
-	private addListenersToBody(): void {
-		const body = getDocument().body;
-		body.addEventListener('keyup', this.hidePopoverByEscape);
-		body.addEventListener('click', this.hidePopoverByClickOutside);
-		document.scrollingElement?.addEventListener(
-			'scroll',
-			() => {
-				void this.showPopover();
-			},
-			{ passive: true },
-		);
-	}
-	private removeListenersToBody(): void {
-		const body = getDocument().body;
-		body.removeEventListener('keyup', this.hidePopoverByEscape);
-		body.removeEventListener('click', this.hidePopoverByClickOutside);
-		document.scrollingElement?.removeEventListener('scroll', () => {
-			void this.showPopover();
-		});
-	}
 
 	/* catchElement functions */
 	private catchHostAndTriggerElement = (element: HTMLElement | null): void => {
@@ -89,20 +98,91 @@ export class KolPopover implements PopoverAPI {
 		}
 	};
 	private catchPopoverElement = (element?: HTMLDivElement): void => {
+		if (this.popoverElement) {
+			this.popoverElement.removeEventListener('beforetoggle', this.handleBeforeToggle);
+			this.popoverElement.removeEventListener('toggle', this.handleToggle);
+		}
 		this.popoverElement = element;
+
+		if (this.popoverElement) {
+			this.popoverElement.addEventListener('beforetoggle', this.handleBeforeToggle);
+			this.popoverElement.addEventListener('toggle', this.handleToggle);
+			this.syncPopoverVisibility();
+		}
 	};
 	private catchArrowElement = (element?: HTMLDivElement): void => {
 		this.arrowElement = element;
 	};
 
+	private requestHide = (event: Event): void => {
+		this.lastCloseEvent = event;
+		this.popoverElement?.hidePopover();
+	};
+
+	private handleEscape = (event: KeyboardEvent): void => {
+		if (event.key === 'Escape') {
+			this.requestHide(event);
+		}
+	};
+
+	private hidePopoverByClickOutside = (event: MouseEvent): void => {
+		if (this.host && !this.host.contains(event.target as Node)) {
+			this.requestHide(event);
+		}
+	};
+
+	private handleScroll = (): void => {
+		void this.alignPopover();
+	};
+
+	private addListenersToBody(): void {
+		const documentElement = getDocument();
+		const body = documentElement.body;
+		body.addEventListener('keyup', this.handleEscape, { capture: true });
+		body.addEventListener('click', this.hidePopoverByClickOutside, { capture: true });
+		documentElement.addEventListener('keyup', this.handleEscape, { capture: true });
+		documentElement.scrollingElement?.addEventListener('scroll', this.handleScroll, { passive: true });
+	}
+
+	private removeListenersFromBody(): void {
+		const documentElement = getDocument();
+		const body = documentElement.body;
+		body.removeEventListener('keyup', this.handleEscape, { capture: true });
+		body.removeEventListener('click', this.hidePopoverByClickOutside, { capture: true });
+		documentElement.removeEventListener('keyup', this.handleEscape, { capture: true });
+		documentElement.scrollingElement?.removeEventListener('scroll', this.handleScroll);
+	}
+
+	private syncPopoverVisibility(): void {
+		if (!this.popoverElement) {
+			return;
+		}
+
+		const toggleVisibility = (): void => {
+			if (!this.popoverElement) {
+				return;
+			}
+
+			if (this._show) {
+				this.popoverElement.showPopover();
+			} else {
+				this.popoverElement.hidePopover();
+			}
+		};
+
+		if (this.popoverElement.isConnected) {
+			toggleVisibility();
+		} else {
+			requestAnimationFrame(() => {
+				toggleVisibility();
+			});
+		}
+	}
+
 	public render(): JSX.Element {
 		return (
 			<Host ref={this.catchHostAndTriggerElement} class="kol-popover">
-				<div
-					class={clsx('kol-popover__content', { 'kol-popover__content--visible': this.state._visible })}
-					ref={this.catchPopoverElement}
-					hidden={!this.state._show}
-				>
+				<div class={clsx('kol-popover__content', { 'kol-popover__content--visible': this.state._visible })} ref={this.catchPopoverElement} popover="auto">
 					<div class={clsx('kol-popover__arrow', `kol-popover__arrow--${this.state._align}`)} ref={this.catchArrowElement} />
 					<slot />
 				</div>
@@ -136,6 +216,7 @@ export class KolPopover implements PopoverAPI {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
+		void this.alignPopover();
 	}
 
 	@Watch('_on')
@@ -146,11 +227,23 @@ export class KolPopover implements PopoverAPI {
 	@Watch('_show')
 	public validateShow(value?: ShowPropType): void {
 		validateShow(this, value);
-		if (value) void this.showPopover();
+		if (value) {
+			this.popoverElement?.showPopover();
+		} else {
+			this.popoverElement?.hidePopover();
+		}
 	}
 
 	public componentWillLoad(): void {
 		this.validateAlign(this._align);
 		this.validateShow(this._show);
+	}
+
+	public disconnectedCallback(): void {
+		this.popoverElement?.removeEventListener('beforetoggle', this.handleBeforeToggle);
+		this.popoverElement?.removeEventListener('toggle', this.handleToggle);
+		this.cleanupAutoUpdate?.();
+		this.cleanupAutoUpdate = undefined;
+		this.removeListenersFromBody();
 	}
 }
