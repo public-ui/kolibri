@@ -33,4 +33,12 @@ describe('CustomSuggestionsOption', () => {
 		});
 		expect(page.root).toMatchSnapshot();
 	});
+
+	it('renders disabled state', async () => {
+		const page = await newSpecPage({
+			components: [],
+			template: () => <CustomSuggestionsOptionFc {...defaultProps} disabled={true} />,
+		});
+		expect(page.root).toMatchSnapshot();
+	});
 });

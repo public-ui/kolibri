@@ -1,5 +1,6 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import clsx from 'clsx';
 import type { W3CInputValue } from '../../schema';
 
 export type CustomSuggestionsProps = JSXBase.HTMLAttributes<HTMLLIElement> & {
@@ -8,9 +9,21 @@ export type CustomSuggestionsProps = JSXBase.HTMLAttributes<HTMLLIElement> & {
 	selected: boolean;
 	searchTerm?: string;
 	ref?: ((elm?: HTMLLIElement | undefined) => void) | undefined;
+	disabled?: boolean;
 };
 
-const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({ index, ref, selected, onClick, onMouseOver, onFocus, onKeyDown, option, searchTerm }) => {
+const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({
+	index,
+	ref,
+	selected,
+	onClick,
+	onMouseOver,
+	onFocus,
+	onKeyDown,
+	option,
+	searchTerm,
+	disabled,
+}) => {
 	const highlightSearchTerm = (text: string, searchTerm: string) => {
 		if (!searchTerm?.trim()) return text;
 
@@ -29,10 +42,13 @@ const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({ index, ref, sel
 			tabIndex={-1}
 			role="option"
 			aria-selected={selected ? 'true' : undefined}
+			aria-disabled={disabled ? 'true' : undefined}
 			onClick={onClick}
 			onMouseOver={onMouseOver}
 			onFocus={onFocus}
-			class="kol-custom-suggestions-option"
+			class={clsx('kol-custom-suggestions-option', {
+				'kol-custom-suggestions-option--disabled': disabled,
+			})}
 			onKeyDown={onKeyDown}
 		>
 			{highlightSearchTerm(String(option), searchTerm || '')}

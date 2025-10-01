@@ -14,6 +14,11 @@ const OPTIONS = [
 	{ label: 'East', value: 'E' },
 ];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
+const OPTIONS_WITH_DISABLED = [
+	{ label: 'North', value: 'N' },
+	{ label: 'Blocked', value: 'B', disabled: true },
+	{ label: 'East', value: 'E' },
+];
 const fillAction: FillAction = async (page) => {
 	await page.getByRole('button').click();
 	await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
@@ -56,7 +61,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value);
+			const value = (await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value)) as string;
 			expect(value).toBe('S');
 		});
 
@@ -73,7 +78,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value);
+			const value = (await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value)) as string;
 			expect(value).toBe('W');
 		});
 
@@ -170,6 +175,25 @@ test.describe(COMPONENT_NAME, () => {
 			// 2) Click on free space -> onChange must NOT fire (counter stays 1)
 			await page.click('html', { position: { x: 0, y: 0 } });
 			expect(await getChangeCount()).toBe(1);
+		});
+		test('should skip disabled options and keep value unchanged', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS_WITH_DISABLED)}'></kol-single-select>`);
+
+			await page.getByRole('button').click();
+
+			const disabledOption = page.getByRole('option', { name: 'Blocked' });
+			await expect(disabledOption).toHaveAttribute('aria-disabled', 'true');
+
+			await disabledOption.click({ force: true });
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', undefined);
+			await expect(page.locator('input.kol-single-select__input')).not.toHaveValue('Blocked');
+
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Space');
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'E');
 		});
 	});
 });

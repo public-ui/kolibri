@@ -17,3 +17,9 @@ exports[`CustomSuggestionsOption renders with different index and option 1`] = `
   Different Option
 </li>
 `;
+
+exports[`CustomSuggestionsOption renders disabled state 1`] = `
+<li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+  Test Option
+</li>
+`;

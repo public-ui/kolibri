@@ -5,6 +5,10 @@
 		cursor: pointer;
 		overflow-wrap: break-word;
 
+		&--disabled {
+			cursor: not-allowed;
+		}
+
 		.kol-custom-suggestions-options-group--cursor-hidden & {
 			cursor: none !important;
 		}
