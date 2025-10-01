@@ -20,9 +20,9 @@
 		padding: to-rem(8);
 
 		&__table {
-			width: 100%;
 			border-color: var(--color-primary-variant);
 			border-style: solid;
+			width: 100%;
 			border-width: 0;
 			border-spacing: 0.075rem;
 		}
@@ -47,9 +47,9 @@
 		}
 
 		&__cell {
-			padding: to-rem(8);
 			border-color: var(--color-primary);
 			border-style: solid;
+			padding: to-rem(8);
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 
