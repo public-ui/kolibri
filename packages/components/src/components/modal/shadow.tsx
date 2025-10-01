@@ -7,6 +7,7 @@ import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { isAnyTooltipOpen } from '../../utils/tooltip-open-tracking';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -36,8 +37,7 @@ export class KolModal implements ModalAPI {
 	}
 
 	private handleCancelEvent = (event: Event): void => {
-		const docEl = document.documentElement;
-		if (docEl?.hasAttribute('data-kol-tooltip-open')) {
+		if (this.refDialog && isAnyTooltipOpen(this.refDialog.ownerDocument)) {
 			event.preventDefault();
 		}
 	};
