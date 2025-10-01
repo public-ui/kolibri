@@ -78,12 +78,11 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 
 	const rootProps: Partial<JSXBase.HTMLAttributes<HTMLDivElement>> = {
 		class: clsx(classNames, BEM_CLASS_ROOT),
-		role: alert ? (type === 'error' ? 'alert' : 'status') : undefined,
 		...other,
 	};
 
 	return (
-		<div {...rootProps} data-testid="alert">
+		<div aria-live={alert ? 'assertive' : 'polite'} role={alert ? 'alert' : 'status'} {...rootProps} data-testid="alert">
 			<div class="kol-alert__container">
 				<AlertIcon label={label} type={type} />
 				<div class="kol-alert__container-content">
