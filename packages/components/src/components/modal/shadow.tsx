@@ -35,6 +35,13 @@ export class KolModal implements ModalAPI {
 		}
 	}
 
+	private handleCancelEvent = (event: Event): void => {
+		const docEl = document.documentElement;
+		if (docEl?.hasAttribute('data-kol-tooltip-open')) {
+			event.preventDefault();
+		}
+	};
+
 	/**
 	 * Opens the modal dialog.
 	 */
@@ -68,6 +75,7 @@ export class KolModal implements ModalAPI {
 					'kol-modal__blank': this.state._variant === 'blank',
 					'kol-modal__card': this.state._variant === 'card',
 				})}
+				onCancel={this.handleCancelEvent}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;
