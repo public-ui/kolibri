@@ -815,6 +815,9 @@ ROUTES.set('table/stateless', {
 	},
 });
 ROUTES.set('table/sticky-header', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 1300,
@@ -823,9 +826,6 @@ ROUTES.set('table/sticky-header', {
 		zoom: {
 			skip: true,
 		}
-	},
-	axe: {
-		skipFailures: true,
 	},
 });
 ROUTES.set('tabs/basic', {
