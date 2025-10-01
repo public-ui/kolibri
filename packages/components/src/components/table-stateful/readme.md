@@ -53,6 +53,11 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         useTdInsteadOfTh?: boolean,
         render?: (data) => string,
         sort?: (data) => data,
+        options?: {
+          hidable?: boolean,
+          sizable?: boolean,
+          sortable?: boolean,
+        },
       },
       …
     ],
@@ -68,6 +73,11 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         useTdInsteadOfTh?: boolean,
         render?: (data) => string,
         sort?: (data) => data,
+        options?: {
+          hidable?: boolean,
+          sizable?: boolean,
+          sortable?: boolean,
+        },
       },
       …
     ],

@@ -39,7 +39,12 @@ const selection: KoliBriTableSelection = {
   _headerCells={{
     horizontal: [
       [
-        { key: 'value', label: 'Value', sortDirection: 'ASC' },
+        {
+          key: 'value',
+          label: 'Value',
+          sortDirection: 'ASC',
+          options: { hidable: false, sizable: true, sortable: true },
+        },
       ],
     ],
   }}
@@ -73,6 +78,18 @@ const selection: KoliBriTableSelection = {
 
 Der Sortierschalter verwendet das Attribut `_aria-description` und zeigt immer den
 Sprachtext `kol-sort` an, unabhängig vom aktuellen Sortierzustand.
+
+### Header-Optionen
+
+Horizontale Header-Zellen unterstützen das optionale Property `options`. Darüber lassen
+sich Einstellungen für das Table-Settings-Menü definieren:
+
+- `hidable`: Steuert, ob die Spalte ausgeblendet werden darf.
+- `sizable`: Aktiviert oder deaktiviert Größenänderungen der Spalte.
+- `sortable`: Legt fest, ob die Spalte über das Menü sortierbar ist.
+
+Alle Eigenschaften sind optional und standardmäßig deaktiviert, sofern sie nicht
+explizit gesetzt werden.
 
 <!-- Auto Generated Below -->
 

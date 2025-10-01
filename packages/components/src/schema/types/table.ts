@@ -19,9 +19,25 @@ export type KoliBriTableCell = {
 	data?: KoliBriTableDataType;
 };
 
+export type KoliBriTableHeaderCellOptions = {
+	/**
+	 * Controls whether the column can be hidden through the table settings menu.
+	 */
+	hidable?: boolean;
+	/**
+	 * Controls whether the column can be resized through the table settings menu.
+	 */
+	sizable?: boolean;
+	/**
+	 * Controls whether the column can be sorted through the table settings menu.
+	 */
+	sortable?: boolean;
+};
+
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	key?: string;
 	sortDirection?: KoliBriSortDirection;
+	options?: KoliBriTableHeaderCellOptions;
 };
 
 export type KoliBriTableSelection = {
