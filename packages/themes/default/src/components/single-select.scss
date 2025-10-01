@@ -77,6 +77,19 @@ $visible-options: 5;
 				background-color: var(--color-primary-variant);
 				outline: 0;
 			}
+
+			&.single-select__item--disabled {
+				color: var(--color-subtle);
+				background-color: transparent;
+				cursor: not-allowed;
+
+				&[aria-selected],
+				&:focus,
+				&.highlighted {
+					color: var(--color-subtle);
+					background-color: transparent;
+				}
+			}
 		}
 	}
 

@@ -12,6 +12,11 @@ const OPTIONS = [
 	{ label: 'West', value: 'W' },
 	{ label: 'East', value: 'E' },
 ];
+const OPTIONS_WITH_DISABLED = [
+	{ label: 'North', value: 'N', disabled: true },
+	{ label: 'South', value: 'S' },
+	{ label: 'East', value: 'E' },
+];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
 const fillAction: FillAction = async (page) => {
 	await page.getByRole('button').click();
@@ -109,6 +114,28 @@ test.describe(COMPONENT_NAME, () => {
 			await input.press('Space');
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+		});
+
+		test('should skip disabled options when navigating with keyboard', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS_WITH_DISABLED)}'></kol-single-select>`);
+
+			const input = page.getByTestId('single-select-input');
+
+			await input.click();
+			await input.press('ArrowDown');
+			await input.press('Space');
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'S');
+		});
+
+		test('should not select disabled option on click', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS_WITH_DISABLED)}'></kol-single-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', undefined);
+			await expect(page.getByRole('listbox')).toBeVisible();
 		});
 
 		test('should disable interaction when _disabled is true', async ({ page }) => {

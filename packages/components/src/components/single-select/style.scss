@@ -49,6 +49,11 @@ $visible-options: var(--visible-options, 5);
 			.single-select__listbox--cursor-hidden & {
 				cursor: none !important;
 			}
+
+			&--disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
 		}
 
 		&__no-results-message {

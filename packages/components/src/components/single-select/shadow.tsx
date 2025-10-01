@@ -96,8 +96,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private onBlur() {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
-		if (matchingOption) {
-			this.selectOption(matchingOption as Option<string>);
+		if (matchingOption && this.selectOption(matchingOption as Option<string>)) {
+			return;
 		} else {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
@@ -149,11 +149,15 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	}
 
-	private selectOption(option: Option<string>) {
+	private selectOption(option: Option<string>): boolean {
+		if (option.disabled) {
+			return false;
+		}
+
 		if (option.value === this._value) {
 			this._inputValue = option.label as string;
 			this._filteredOptions = [...this.state._options];
-			return;
+			return true;
 		}
 
 		this._value = option.value;
@@ -174,6 +178,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._filteredOptions = [...this.state._options];
 
 		this.controller.setFormAssociatedValue(this._value);
+		return true;
 	}
 
 	private onInput(event: Event) {
@@ -205,21 +210,27 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _focusedOptionIndex: number = -1;
 
 	private moveFocus(delta: number) {
-		if (!this._filteredOptions) {
+		if (!Array.isArray(this._filteredOptions) || this._filteredOptions.length === 0) {
 			return;
 		}
-		let newIndex = this._focusedOptionIndex + delta;
+		let newIndex = this._focusedOptionIndex;
+		for (let i = 0; i < this._filteredOptions.length; i++) {
+			newIndex += delta;
 
-		if (newIndex >= this._filteredOptions.length) {
-			newIndex = 0;
+			if (newIndex >= this._filteredOptions.length) {
+				newIndex = 0;
+			}
+
+			if (newIndex < 0) {
+				newIndex = this._filteredOptions.length - 1;
+			}
+
+			if (!(this._filteredOptions[newIndex] as Option<string>).disabled) {
+				this._focusedOptionIndex = newIndex;
+				this.focusOption(this._focusedOptionIndex);
+				break;
+			}
 		}
-
-		if (newIndex < 0) {
-			newIndex = this._filteredOptions.length - 1;
-		}
-
-		this._focusedOptionIndex = newIndex;
-		this.focusOption(this._focusedOptionIndex);
 	}
 
 	private focusOption(index: number) {
@@ -233,9 +244,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 		const charLowerCase = char.toLowerCase();
 
 		const index =
-			Array.isArray(this._filteredOptions) && this._filteredOptions.findIndex((option) => (option.label as string).toLowerCase().startsWith(charLowerCase));
+			Array.isArray(this._filteredOptions) &&
+			this._filteredOptions.findIndex((option) => !option.disabled && (option.label as string).toLowerCase().startsWith(charLowerCase));
 
-		if (typeof index === 'number') {
+		if (typeof index === 'number' && index >= 0) {
 			this._focusedOptionIndex = index;
 			this.focusOption(index);
 		}
@@ -348,30 +360,40 @@ export class KolSingleSelect implements SingleSelectAPI {
 												tabIndex={-1}
 												role="option"
 												aria-selected={this._value === (option as Option<string>).value ? 'true' : undefined}
+												aria-disabled={(option as Option<string>).disabled ? 'true' : undefined}
+												class={clsx('single-select__item', (option as Option<string>).disabled && 'single-select__item--disabled')}
 												onClick={(event: Event) => {
-													this.selectOption(option as Option<string>);
-													this.refInput?.focus();
-													this.toggleListbox(event);
-													this._isOpen = false;
-													this._hasOpened = false;
+													if (this.selectOption(option as Option<string>)) {
+														this.refInput?.focus();
+														this.toggleListbox(event);
+														this._isOpen = false;
+														this._hasOpened = false;
+													} else {
+														event.preventDefault();
+														event.stopImmediatePropagation();
+													}
 												}}
 												onMouseOver={() => {
-													if (!this.blockSuggestionMouseOver) {
+													if (!this.blockSuggestionMouseOver && !(option as Option<string>).disabled) {
 														this._focusedOptionIndex = index;
 														this.focusOption(index);
 													}
 												}}
 												onFocus={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
+													if (!(option as Option<string>).disabled) {
+														this._focusedOptionIndex = index;
+														this.focusOption(index);
+													}
 												}}
-												class="single-select__item"
 												onKeyDown={(e) => {
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(option as Option<string>);
-														this.refInput?.focus();
-														this.toggleListbox(e);
-														e.preventDefault();
+														if (this.selectOption(option as Option<string>)) {
+															this.refInput?.focus();
+															this.toggleListbox(e);
+															e.preventDefault();
+														} else {
+															e.preventDefault();
+														}
 													}
 												}}
 											>
@@ -382,6 +404,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 													id={`option-radio-${index}`}
 													value={(option as Option<string>).value}
 													checked={this._value === (option as Option<string>).value || index === this._focusedOptionIndex}
+													disabled={(option as Option<string>).disabled}
 												/>
 
 												<label htmlFor={`option-radio-${index}`} class="radio-label">
@@ -458,9 +481,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case ' ': {
 				if (this._isOpen) {
 					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
-						this.refInput?.focus();
-						handleEvent(false);
+						const option = this._filteredOptions[this._focusedOptionIndex] as Option<string> | undefined;
+						if (option && this.selectOption(option)) {
+							this.refInput?.focus();
+							handleEvent(false);
+						}
 					}
 				} else {
 					this.toggleListbox(event);
