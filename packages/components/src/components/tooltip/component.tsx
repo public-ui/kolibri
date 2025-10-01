@@ -8,7 +8,7 @@ import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { KolSpanFc } from '../../functional-components';
-import { decOpenTooltips, incOpenTooltips } from '../../utils/tooltip-open-tracking';
+import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking';
 
 // Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
 const TOOLTIP_DELAY = 300;
@@ -43,9 +43,10 @@ export class KolTooltipWc implements TooltipAPI {
 	private showTooltip = (): void => {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
+			tooltipOpened();
 			this.tooltipElement.style.setProperty('display', 'block');
-			incOpenTooltips(getDocument());
 			getDocument().addEventListener('keyup', this.hideTooltipByEscape);
+
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
 			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, () => {
@@ -80,6 +81,7 @@ export class KolTooltipWc implements TooltipAPI {
 		clearTimeout(this.showTooltipTimeout); // Cancel scheduled tooltips
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
+			tooltipClosed();
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
 			if (this.cleanupAutoPositioning) {
@@ -88,7 +90,6 @@ export class KolTooltipWc implements TooltipAPI {
 			}
 		}
 		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
-		decOpenTooltips(getDocument());
 	}
 
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {

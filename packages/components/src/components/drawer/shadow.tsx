@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { AlignPropType, DrawerAPI, DrawerStates, HasCloserPropType, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
-import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import clsx from 'clsx';
 import { KolCardWcTag } from '../../core/component-names';
+import type { AlignPropType, DrawerAPI, DrawerStates, HasCloserPropType, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
  * @slot - The Content of drawer.
@@ -87,7 +88,7 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-drawer">
-				<dialog aria-label={this.state._label} class="kol-drawer__dialog" ref={this.getRef}>
+				<dialog aria-label={this.state._label} class="kol-drawer__dialog" onCancel={handleCancelOverlay} ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
