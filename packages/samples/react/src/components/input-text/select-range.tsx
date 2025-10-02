@@ -39,12 +39,14 @@ export const InputTextSelectRange = () => {
 				<p>This sample shows how to change the selection in a KolInputText.</p>
 			</SampleDescription>
 			<div className="grid gap-4">
-				<KolInputText _value="Very long value" _label="Text Input Label" ref={textInput} selec />
+				<KolInputText _value="Very long value" _label="Text Input Label" ref={textInput} />
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
 
 				<input type="text" value="Very long value" ref={inputRef} />
+
+				<input ref={(el) => el?.addEventListener('selectionchange', console.log)} />
 			</div>
 		</>
 	);

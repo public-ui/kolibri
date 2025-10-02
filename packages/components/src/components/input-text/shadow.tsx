@@ -2,35 +2,36 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from 'clsx';
 
-import type {
-	AccessKeyPropType,
-	AutoCompletePropType,
-	ButtonProps,
-	DisabledPropType,
-	FocusableElement,
-	HasCounterPropType,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	IconsHorizontalPropType,
-	IdPropType,
-	InputTextAPI,
-	InputTextStates,
-	InputTextTypePropType,
-	InputTypeOnDefault,
-	LabelWithExpertSlotPropType,
-	MaxLengthBehaviorPropType,
-	MsgPropType,
-	NamePropType,
-	PlaceholderPropType,
-	ReadOnlyPropType,
-	RequiredPropType,
-	ShortKeyPropType,
-	SpellCheckPropType,
-	Stringified,
-	SuggestionsPropType,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
+import {
+	getDocument,
+	type AccessKeyPropType,
+	type AutoCompletePropType,
+	type ButtonProps,
+	type DisabledPropType,
+	type FocusableElement,
+	type HasCounterPropType,
+	type HideLabelPropType,
+	type HideMsgPropType,
+	type HintPropType,
+	type IconsHorizontalPropType,
+	type IdPropType,
+	type InputTextAPI,
+	type InputTextStates,
+	type InputTextTypePropType,
+	type InputTypeOnDefault,
+	type LabelWithExpertSlotPropType,
+	type MaxLengthBehaviorPropType,
+	type MsgPropType,
+	type NamePropType,
+	type PlaceholderPropType,
+	type ReadOnlyPropType,
+	type RequiredPropType,
+	type ShortKeyPropType,
+	type SpellCheckPropType,
+	type Stringified,
+	type SuggestionsPropType,
+	type SyncValueBySelectorPropType,
+	type TooltipAlignPropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -199,6 +200,13 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			onKeyDown: this.onKeyDown,
 			onSelectionChange: this.onSelectionChange,
 		};
+	}
+
+	public componentWillRender(): void {
+		// eslint-disable-next-line no-console
+		this.host?.addEventListener('selectionchange', console.warn); // geht nicht
+		// eslint-disable-next-line no-console
+		getDocument().addEventListener('selectionchange', console.info); // geht
 	}
 
 	public render(): JSX.Element {
