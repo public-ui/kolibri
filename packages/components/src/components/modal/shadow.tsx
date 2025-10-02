@@ -7,7 +7,7 @@ import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { isAnyTooltipOpen } from '../../utils/tooltip-open-tracking';
+import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -35,12 +35,6 @@ export class KolModal implements ModalAPI {
 			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	}
-
-	private handleCancelEvent = (event: Event): void => {
-		if (this.refDialog && isAnyTooltipOpen(this.refDialog.ownerDocument)) {
-			event.preventDefault();
-		}
-	};
 
 	/**
 	 * Opens the modal dialog.
@@ -75,7 +69,7 @@ export class KolModal implements ModalAPI {
 					'kol-modal__blank': this.state._variant === 'blank',
 					'kol-modal__card': this.state._variant === 'card',
 				})}
-				onCancel={this.handleCancelEvent}
+				onCancel={handleCancelOverlay}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;
