@@ -160,10 +160,6 @@ ROUTES.set('button/baselined', {
 });
 ROUTES.set('button/short-key', {
 	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 400,
-		},
 		zoom: {
 			skip: true,
 		},
@@ -825,7 +821,7 @@ ROUTES.set('table/sticky-header', {
 		},
 		zoom: {
 			skip: true,
-		}
+		},
 	},
 });
 ROUTES.set('tabs/basic', {
