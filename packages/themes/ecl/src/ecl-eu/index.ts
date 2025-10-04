@@ -8,6 +8,7 @@ import buttonCss from './components/button.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
+import multiSelectCss from './components/multi-select.scss';
 import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
@@ -70,6 +71,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-MODAL': modalCss,
+	'KOL-MULTI-SELECT': multiSelectCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-POPOVER-BUTTON': popoverButtonCss,

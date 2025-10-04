@@ -1,0 +1,60 @@
+@use '../../mixins/to-rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/custom-suggestions-option' as *;
+@use '../mixins/custom-suggestions-options-group' as *;
+@use '../mixins/custom-suggestions-toggle' as *;
+@use '../@shared/input-text' as *;
+
+$option-height: to-rem(40);
+$visible-options: 5;
+$icon-size: to-rem(24);
+
+@layer kol-theme-component {
+	@include kol-alert-theme;
+	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
+	@include kol-custom-suggestions-toggle-theme;
+
+	.kol-multi-select {
+		&__group {
+			color: var(--color-grey);
+			display: inline-flex;
+			width: 100%;
+			min-height: var(--a11y-min-size);
+			padding: to-rem(1) 0.5em;
+			order: 4;
+			align-items: center;
+		}
+
+		&__input {
+			position: relative;
+			flex: 1 1 auto;
+			min-width: 0;
+			border: none;
+
+			&::placeholder {
+				color: var(--color-grey-50);
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:focus {
+				border: none;
+			}
+		}
+
+		&__delete {
+			display: inline-flex;
+			width: $icon-size;
+			height: $icon-size;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

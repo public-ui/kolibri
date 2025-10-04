@@ -34,6 +34,7 @@ export let KolLinkButtonTag = 'kol-link-button' as const;
 export let KolLinkTag = 'kol-link' as const;
 export let KolLinkWcTag = 'kol-link-wc' as const;
 export let KolModalTag = 'kol-modal' as const;
+export let KolMultiSelectTag = 'kol-multi-select' as const;
 export let KolNavTag = 'kol-nav' as const;
 export let KolPaginationTag = 'kol-pagination' as const;
 export let KolPaginationWcTag = 'kol-pagination-wc' as const;
@@ -99,6 +100,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolLinkTag = transformTagName(KolLinkTag as string) as 'kol-link';
 	KolLinkWcTag = transformTagName(KolLinkWcTag as string) as 'kol-link-wc';
 	KolModalTag = transformTagName(KolModalTag as string) as 'kol-modal';
+	KolMultiSelectTag = transformTagName(KolMultiSelectTag as string) as 'kol-multi-select';
 	KolNavTag = transformTagName(KolNavTag as string) as 'kol-nav';
 	KolPaginationTag = transformTagName(KolPaginationTag as string) as 'kol-pagination';
 	KolPaginationWcTag = transformTagName(KolPaginationWcTag as string) as 'kol-pagination-wc';

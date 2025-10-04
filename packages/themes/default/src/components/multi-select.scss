@@ -1,0 +1,46 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/custom-suggestions-option' as *;
+@use '../mixins/custom-suggestions-options-group' as *;
+@use '../mixins/custom-suggestions-toggle' as *;
+@use '../@shared/input-core' as *;
+
+$option-height: to-rem(40);
+$visible-options: 5;
+$icon-size: to-rem(40);
+
+@layer kol-theme-component {
+	@include kol-alert-theme;
+	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
+	@include kol-custom-suggestions-toggle-theme;
+
+	.kol-multi-select {
+		&__group {
+			display: inline-flex;
+			width: 100%;
+			align-items: center;
+		}
+
+		&__input {
+			position: relative;
+			min-width: 0;
+			flex: 1 1 auto;
+			border: none;
+
+			&::placeholder {
+				color: var(--color-subtle);
+			}
+		}
+
+		&__delete {
+			display: inline-flex;
+			width: $icon-size;
+			height: $icon-size;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

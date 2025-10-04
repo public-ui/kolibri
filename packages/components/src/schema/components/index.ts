@@ -33,6 +33,7 @@ export * from './popover';
 export * from './popover-button';
 export * from './progress';
 export * from './quote';
+export * from './multi-select';
 export * from './select';
 export * from './skip-nav';
 export * from './span';

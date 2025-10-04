@@ -29,6 +29,7 @@ const isAssociatedTagName = (name?: string): boolean =>
 	name === 'KOL-INPUT-RANGE' ||
 	name === 'KOL-INPUT-TEXT' ||
 	name === 'KOL-SELECT' ||
+	name === 'KOL-MULTI-SELECT' ||
 	name === 'KOL-SINGLE-SELECT' ||
 	name === 'KOL-TEXTAREA';
 
@@ -66,6 +67,7 @@ export class AssociatedInputController implements Watches {
 					this.formAssociated.setAttribute('type', this.type);
 					break;
 				case 'select':
+				case 'multi-select':
 					this.formAssociated = document.createElement('select');
 					this.formAssociated.setAttribute('multiple', '');
 					break;
