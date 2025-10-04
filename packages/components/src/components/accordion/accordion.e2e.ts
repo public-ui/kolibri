@@ -9,31 +9,44 @@ test.describe('kol-accordion', () => {
 		});
 
 		test('should render the accordion title', async ({ page }) => {
-			const button = page.getByRole('button');
+			const button = page.getByRole('button', { name: 'Accordion Label' });
 			await expect(button).toHaveText('Accordion Label');
 		});
 
 		test('should show the accordion content after the title has been clicked', async ({ page }) => {
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.getByRole('button', { name: 'Accordion Label' }).click();
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
 		});
 
 		test('should hide the accordion content after the title has been clicked again', async ({ page }) => {
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.getByRole('button', { name: 'Accordion Label' }).click();
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.getByRole('button', { name: 'Accordion Label' }).click();
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 
 		test('should emit "click" event when the title is clicked', async ({ page }) => {
-			const eventPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement, KolEvent) => {
-				return new Promise((resolve) => {
-					element.addEventListener(KolEvent.click, resolve);
+			const eventPromise = page.evaluate((eventName: KolEvent) => {
+				return new Promise<boolean>((resolve) => {
+					const accordion = document.querySelector('kol-accordion');
+
+					if (!accordion) {
+						resolve(false);
+
+						return;
+					}
+
+					const handleEvent = () => {
+						accordion.removeEventListener(eventName, handleEvent);
+						resolve(true);
+					};
+
+					accordion.addEventListener(eventName, handleEvent);
 				});
-			}, KolEvent);
+			}, KolEvent.click);
 			await page.waitForChanges();
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.getByRole('button', { name: 'Accordion Label' }).click();
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 
@@ -48,7 +61,7 @@ test.describe('kol-accordion', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.getByRole('button', { name: 'Accordion Label' }).click();
 			await expect(callbackPromise).resolves.toBe(true);
 		});
 	});
@@ -59,7 +72,7 @@ test.describe('kol-accordion', () => {
 		});
 
 		test('should not show the accordion content after the title has been clicked', async ({ page }) => {
-			await page.getByRole('button', { name: 'Accordion label' }).click({ force: true });
+			await page.getByRole('button', { name: 'Accordion Label' }).click({ force: true });
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 	});

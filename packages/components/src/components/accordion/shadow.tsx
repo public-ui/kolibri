@@ -39,18 +39,20 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolAccordionElement;
 
 	private readonly nonce = nonce();
-	private buttonWcRef?: HTMLKolButtonWcElement;
+	private summaryRef?: HTMLElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
+	private readonly catchRef = (ref?: HTMLElement) => {
+		this.summaryRef = ref;
 	};
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+	public kolFocus(): Promise<void> {
+		this.summaryRef?.focus();
+
+		return Promise.resolve();
 	}
 
 	private handleOnClick = (event: MouseEvent) => {
@@ -65,7 +67,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		setTimeout(() => {
 			this.state._on?.onClick?.(event, this._open === true);
 			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.click, this._open === true);
+				dispatchDomEvent(this.host as HTMLElement, KolEvent.click, this._open === true);
 			}
 		});
 	};
@@ -86,6 +88,8 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 			HeadingButtonProps: {
 				ref: this.catchRef,
 				class: `${rootClass}__heading-button`,
+				iconClass: `${rootClass}__icon`,
+				labelClass: `${rootClass}__label`,
 			},
 			ContentProps: {
 				class: `${rootClass}__content`,

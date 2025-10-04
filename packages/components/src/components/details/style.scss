@@ -7,23 +7,17 @@
 	.kol-details {
 		&__heading-button {
 			display: flex;
-
-			.kol-button {
-				min-height: auto;
-
-				.kol-span {
-					&__label {
-						border-bottom-color: grey;
-						border-bottom-style: solid;
-					}
-				}
-			}
+			gap: 0.5rem;
+			align-items: center;
 		}
 
-		.collapsible--open &__heading-button {
-			.kol-icon::part(icon) {
-				transform: rotate(90deg);
-			}
+		&__label {
+			border-bottom-color: grey;
+			border-bottom-style: solid;
+		}
+
+		.collapsible--open &__icon::part(icon) {
+			transform: rotate(90deg);
 		}
 	}
 }

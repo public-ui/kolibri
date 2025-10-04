@@ -2,9 +2,9 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { KolButtonWcTag } from '../../core/component-names';
-import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
+import type { HeadingLevel } from '../../schema';
 import KolHeadingFc from '../Heading';
+import KolIconFc from '../Icon';
 
 type ClassType =
 	| string
@@ -18,7 +18,7 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 	disabled?: boolean;
 	level?: HeadingLevel;
 	label: string;
-	onClick?: EventValueOrEventCallback<MouseEvent, StencilUnknown>;
+	onClick?: (event: MouseEvent) => void;
 
 	HeadingProps?: {
 		ref?: ((elm?: HTMLElement | undefined) => void) | undefined;
@@ -26,9 +26,11 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 	};
 
 	HeadingButtonProps?: {
-		ref?: ((elm?: HTMLKolButtonWcElement | undefined) => void) | undefined;
+		ref?: ((elm?: HTMLElement | undefined) => void) | undefined;
 		class?: ClassType;
-		_icons?: IconsPropType;
+		icon?: string;
+		iconClass?: ClassType;
+		labelClass?: ClassType;
 	};
 
 	ContentProps?: {
@@ -40,11 +42,31 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 
 const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
-	const icon = open ? 'remove' : 'add';
+	const iconFromProps = HeadingButtonProps?.icon;
+	const iconClass = typeof iconFromProps === 'string' && iconFromProps.length > 0 ? iconFromProps : `codicon codicon-${open ? 'remove' : 'add'}`;
+	const headingButtonClass = clsx('collapsible__heading-button', HeadingButtonProps?.class);
+	const headingClass = clsx('collapsible__heading', HeadingProps?.class);
+	const iconClasses = clsx('collapsible__icon', HeadingButtonProps?.iconClass);
+	const labelClasses = clsx('collapsible__label', HeadingButtonProps?.labelClass);
+
+	const handleSummaryClick = (event: MouseEvent) => {
+		if (disabled) {
+			event.preventDefault();
+			event.stopPropagation();
+			return;
+		}
+
+		onClick?.(event);
+	};
+
+	const summaryRef = (element?: HTMLElement) => {
+		HeadingButtonProps?.ref?.(element);
+	};
 
 	return (
-		<div
+		<details
 			id={id}
+			open={open === true ? true : undefined}
 			class={clsx(
 				'collapsible',
 				{
@@ -55,19 +77,23 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			)}
 			{...other}
 		>
-			<KolHeadingFc ref={HeadingProps?.ref} level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
-				<KolButtonWcTag
-					class={clsx('collapsible__heading-button', HeadingButtonProps?.class)}
-					ref={HeadingButtonProps?.ref}
-					slot="expert"
-					_ariaControls={`${id}-control`}
-					_ariaExpanded={open}
-					_disabled={disabled}
-					_icons={HeadingButtonProps?._icons || `codicon codicon-${icon}`}
-					_label={label}
-					_on={{ onClick }}
-				></KolButtonWcTag>
-			</KolHeadingFc>
+			<summary
+				class={headingButtonClass}
+				ref={summaryRef}
+				aria-controls={`${id}-control`}
+				aria-expanded={open === true ? 'true' : 'false'}
+				aria-disabled={disabled ? 'true' : undefined}
+				role="button"
+				tabIndex={disabled ? -1 : undefined}
+				onClick={handleSummaryClick}
+			>
+				<KolHeadingFc ref={HeadingProps?.ref} level={level} class={headingClass}>
+					<span class="collapsible__heading-content">
+						<KolIconFc class={iconClasses} icons={iconClass} label="" />
+						<span class={labelClasses}>{label}</span>
+					</span>
+				</KolHeadingFc>
+			</summary>
 			<div class={clsx('collapsible__wrapper', ContentProps?.wrapperClass)}>
 				<div class={clsx('collapsible__wrapper-animation', ContentProps?.animationClass)}>
 					<div aria-hidden={open === false ? 'true' : undefined} class={clsx('collapsible__content', ContentProps?.class)} id={`${id}-control`}>
@@ -75,7 +101,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</details>
 	);
 };
 

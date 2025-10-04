@@ -20,19 +20,20 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 
 	private readonly nonce = nonce();
-	private buttonWcRef?: HTMLKolButtonWcElement;
+	private summaryRef?: HTMLElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
+	private readonly catchRef = (ref?: HTMLElement) => {
+		this.summaryRef = ref;
 	};
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+	public kolFocus(): Promise<void> {
+		this.summaryRef?.focus();
+
+		return Promise.resolve();
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
@@ -51,7 +52,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 
 		this.toggleTimeout = setTimeout(() => {
 			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.toggle, Boolean(this._open));
+				dispatchDomEvent(this.host as HTMLElement, KolEvent.toggle, Boolean(this._open));
 			}
 			this.state._on?.onToggle?.(event, Boolean(this._open));
 		}, 25);
@@ -74,7 +75,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			HeadingButtonProps: {
 				ref: this.catchRef,
 				class: `${rootClass}__heading-button`,
-				_icons: 'codicon codicon-chevron-right',
+				icon: 'codicon codicon-chevron-right',
+				iconClass: `${rootClass}__icon`,
+				labelClass: `${rootClass}__label`,
 			},
 			ContentProps: {
 				class: `${rootClass}__content indented-text`,
