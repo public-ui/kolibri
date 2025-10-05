@@ -24,7 +24,9 @@
 		"xformat": "prettier --check src",
 		"xunused": "knip"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@netlify/functions": "4.2.7"
+	},
 	"devDependencies": {
 		"eslint": "9.37.0",
 		"knip": "5.64.1",

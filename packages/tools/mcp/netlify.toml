@@ -1,22 +1,22 @@
 [build]
-  # Keine Build-Kommandos nötig - Daten sind embedded
-  command = "echo 'Functions ready for deployment'"
-
-  # Functions directory relativ zum Repository-Root
-  functions = "packages/tools/mcp/netlify/functions"
+  # TypeScript Functions mit automatischem Bundling
+  command = "echo 'TypeScript MCP Functions ready'"
 
 [build.environment]
   NODE_VERSION = "22"
 
-# Redirect alle Requests zur Netlify-Funktion
-[[redirects]]
-  from = "/*"
-  to = "/netlify/functions/mcp/:splat"
-  status = 200
+[functions]
+  # Functions directory
+  directory = "netlify/functions"
+  # Enable TypeScript support with esbuild
+  node_bundler = "esbuild"
 
-# CORS Headers für alle API-Endpunkte
+# Mit TypeScript Function Routing über config.path
+# Keine manuellen Redirects mehr nötig
+
+# CORS Headers für Function responses
 [[headers]]
-  for = "/netlify/functions/mcp/*"
+  for = "/.netlify/functions/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
