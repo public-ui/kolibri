@@ -1,0 +1,24 @@
+[build]
+  # Netlify build nur für MCP-Tool
+  command = "echo 'MCP Functions ready'"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  # Functions in diesem Verzeichnis
+  directory = "netlify/functions"
+
+# Redirect alle Requests zur Netlify-Funktion
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/mcp/:splat"
+  status = 200
+
+# CORS Headers für alle API-Endpunkte
+[[headers]]
+  for = "/.netlify/functions/mcp/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"

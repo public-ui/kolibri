@@ -63,7 +63,7 @@ jobs:
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publish-dir: '.'
+          publish-dir: 'packages/tools/mcp'
           production-branch: develop
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy MCP v${{ github.sha }}'
@@ -78,7 +78,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publish-dir: '.'
+          publish-dir: 'packages/tools/mcp'
           production-branch: develop
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy MCP preview PR #${{ github.event.number }}'
