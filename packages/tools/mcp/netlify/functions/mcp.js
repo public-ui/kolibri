@@ -1,1 +1,2 @@
-export { handler } from '../../src/netlify/handler-prebuilt.js';
+// Use the simple test handler for now
+module.exports = require('./mcp-test.js');
