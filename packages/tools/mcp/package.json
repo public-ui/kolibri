@@ -28,8 +28,9 @@
 		"knip": "5.64.1",
 		"prettier": "3.6.2"
 	},
-	"files": [
-		"src",
-		"README.md"
-	]
+        "files": [
+                "src",
+                "netlify",
+                "README.md"
+        ]
 }

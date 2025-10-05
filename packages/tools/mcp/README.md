@@ -10,6 +10,12 @@ pnpm --filter @public-ui/mcp start
 
 Standardmäßig lauscht der Dienst auf Port `3030`. Über die Umgebungsvariable `PORT` kann ein anderer Port gewählt werden.
 
+## Serverless-Einsatz auf Netlify
+
+Neben dem lokalen Node.js-Server stellt das Paket eine Netlify-Funktion bereit. Beim Deployen reicht es aus, das Verzeichnis `packages/tools/mcp/netlify/functions` als Funktionsordner zu konfigurieren. Die Funktion `mcp` übernimmt alle Routen (`/health`, `/samples`, `/sample`, `/refresh`) und kümmert sich intern um CORS-Header sowie die Index-Aktualisierung.
+
+Im lokalen Netlify-Dev-Modus können die Endpunkte beispielsweise unter `http://localhost:8888/.netlify/functions/mcp/health` angesprochen werden. In einer produktiven Netlify-Umgebung lautet der Pfad entsprechend `/.netlify/functions/mcp/...`.
+
 ## Endpunkte
 
 - `GET /health` – liefert den Status des Backends sowie Metadaten zum aktuellen Sample-Index.
