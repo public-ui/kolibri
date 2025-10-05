@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# Generated build artifacts
+netlify/functions/sample-index.json
+netlify/sample-index.json
+src/netlify/sample-index-data.js
+
+# Logs
+*.log

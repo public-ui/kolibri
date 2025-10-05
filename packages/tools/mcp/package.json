@@ -32,7 +32,7 @@
 	},
 	"files": [
 		"src",
-		"netlify",
+		"netlify/functions/*.js",
 		"README.md"
 	]
 }
