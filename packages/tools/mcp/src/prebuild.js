@@ -17,16 +17,16 @@ async function prebuildSampleIndex() {
 		};
 
 		// Ensure directories exist
-		mkdirSync(path.join(__dirname, '../.netlify'), { recursive: true });
-		mkdirSync(path.join(__dirname, '../.netlify/functions'), { recursive: true });
+		mkdirSync(path.join(__dirname, '../netlify'), { recursive: true });
+		mkdirSync(path.join(__dirname, '../netlify/functions'), { recursive: true });
 
 		// Write to both locations:
 		// 1. For local development
-		const localOutputPath = path.join(__dirname, '../.netlify/sample-index.json');
+		const localOutputPath = path.join(__dirname, '../netlify/sample-index.json');
 		writeFileSync(localOutputPath, JSON.stringify(indexData, null, 2));
 
 		// 2. Embedded in the function directory for Netlify
-		const embeddedOutputPath = path.join(__dirname, '../.netlify/functions/sample-index.json');
+		const embeddedOutputPath = path.join(__dirname, '../netlify/functions/sample-index.json');
 		writeFileSync(embeddedOutputPath, JSON.stringify(indexData, null, 2));
 
 		// 3. As JavaScript module for direct import (compressed)
@@ -35,7 +35,7 @@ async function prebuildSampleIndex() {
 
 export const SAMPLE_INDEX_DATA = ${JSON.stringify(indexData)};
 `;
-		const jsOutputPath = path.join(__dirname, '../.netlify/sample-index-data.js');
+		const jsOutputPath = path.join(__dirname, '../netlify/sample-index-data.js');
 		writeFileSync(jsOutputPath, jsContent);
 
 		console.log(`Sample index built with ${index.entries.length} entries`);

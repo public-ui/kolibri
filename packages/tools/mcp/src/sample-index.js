@@ -98,7 +98,7 @@ async function safeReadDir(dir) {
 	try {
 		const entries = await readdir(dir, { withFileTypes: true });
 		return entries.filter((entry) => entry.isDirectory());
-	} catch (error) {
+	} catch {
 		return [];
 	}
 }
@@ -117,7 +117,7 @@ async function pathExists(filePath) {
 	try {
 		await access(filePath);
 		return true;
-	} catch (error) {
+	} catch {
 		return false;
 	}
 }
@@ -146,7 +146,6 @@ async function parseRouteFile(filePath) {
 	}
 
 	const fnBody = `${importDeclarations.join('\n')}\nreturn ${content};`;
-	// eslint-disable-next-line no-new-func
 	const routes = new Function(fnBody)();
 	return routes && typeof routes === 'object' ? routes : {};
 }

@@ -6,10 +6,9 @@
   NODE_VERSION = "22"
 
 [functions]
-  # Functions directory (standard Netlify location)
-  directory = ".netlify/functions"
-  # Enable TypeScript support with esbuild
-  node_bundler = "esbuild"
+  # Standard Netlify functions directory
+  directory = "netlify/functions"
+  # TypeScript wird automatisch erkannt und kompiliert
 
 # Mit TypeScript Function Routing über config.path
 # Keine manuellen Redirects mehr nötig

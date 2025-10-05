@@ -10,6 +10,6 @@
 		"forceConsistentCasingInFileNames": true,
 		"types": ["@netlify/functions"]
 	},
-	"include": [".netlify/functions/**/*"],
+	"include": ["netlify/functions/**/*"],
 	"exclude": ["node_modules", "dist"]
 }

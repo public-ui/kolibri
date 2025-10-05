@@ -1,0 +1,5 @@
+{
+	"src/**/*.{ts,tsx,js,jsx}": ["prettier --list-different"],
+	"netlify/**/*.{ts,tsx,js,jsx}": ["prettier --list-different"],
+	"**/*.{md,css,scss}": "prettier --list-different"
+}
