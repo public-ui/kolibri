@@ -48,12 +48,12 @@ jobs:
 
           echo "Validating MCP package structure..."
           ls -la packages/tools/mcp/
-          ls -la packages/tools/mcp/netlify/functions/
-          ls -la packages/tools/mcp/src/netlify/
+          ls -la packages/tools/mcp/.netlify/functions/
+          ls -la packages/tools/mcp/.netlify/
 
-          if [ -f packages/tools/mcp/src/netlify/sample-index-data.js ]; then
+          if [ -f packages/tools/mcp/.netlify/sample-index-data.js ]; then
             echo "✅ Embedded sample data found"
-            head -5 packages/tools/mcp/src/netlify/sample-index-data.js
+            head -5 packages/tools/mcp/.netlify/sample-index-data.js
           else
             echo "❌ Missing embedded sample data"
             exit 1
