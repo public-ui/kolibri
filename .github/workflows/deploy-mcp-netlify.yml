@@ -47,9 +47,6 @@ jobs:
       - name: Build sample index for Netlify
         run: pnpm --filter @public-ui/mcp prebuild
 
-      - name: Build MCP tool
-        run: pnpm --filter @public-ui/mcp format
-
       - name: Validate MCP structure
         run: |
           echo "Checking MCP package structure..."

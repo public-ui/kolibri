@@ -21,7 +21,7 @@
 	"scripts": {
 		"start": "node src/index.js",
 		"prebuild": "node src/prebuild.js",
-		"format": "prettier --check src",
+		"xformat": "prettier --check src",
 		"xunused": "knip"
 	},
 	"dependencies": {},
