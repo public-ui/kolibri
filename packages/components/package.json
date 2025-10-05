@@ -111,7 +111,7 @@
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"autoprefixer": "10.4.21",
-		"cross-env": "10.0.0",
+		"cross-env": "10.1.0",
 		"cssnano": "7.1.1",
 		"eslint": "8.57.1",
 		"eslint-plugin-html": "8.1.3",
@@ -131,7 +131,7 @@
 		"stencil-awesome-test": "1.0.6",
 		"terser": "5.44.0",
 		"twig": "1.17.1",
-		"typescript": "5.9.2"
+		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
 		"adopted-style-sheets": "1.1.9-rc.20"
