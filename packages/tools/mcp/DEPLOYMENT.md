@@ -64,6 +64,7 @@ API Endpunkte:
 
 Die `netlify.toml` im Repository-Root konfiguriert:
 
+- **Build Command**: `pnpm --filter @public-ui/mcp prebuild` erzeugt den Sample-Index vor dem Deployment
 - **Functions Directory**: `packages/tools/mcp/netlify/functions`
 - **URL Redirects**: Alle API-Calls werden zur MCP-Funktion weitergeleitet
 - **CORS Headers**: Automatische CORS-Header für API-Endpunkte

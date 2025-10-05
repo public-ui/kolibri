@@ -1,63 +1,5 @@
 import { handleApiRequest } from '../api-handler.js';
-
-let prebuiltIndex;
-
-async function getIndex() {
-	if (!prebuiltIndex) {
-		try {
-			// Try to import the sample data
-			let indexData;
-			try {
-				const { SAMPLE_INDEX_DATA } = await import('./sample-index-data.js');
-				indexData = SAMPLE_INDEX_DATA;
-			} catch (importError) {
-				console.error('Failed to import sample-index-data.js:', importError);
-				// Fallback: minimal empty index
-				indexData = {
-					entries: [],
-					generatedAt: new Date().toISOString(),
-				};
-			}
-
-			// Recreate the SampleIndex-like object
-			prebuiltIndex = {
-				entries: indexData.entries,
-				generatedAt: new Date(indexData.generatedAt),
-				map: new Map(indexData.entries.map((entry) => [entry.id, entry])),
-				list(query) {
-					if (!query) {
-						return this.entries;
-					}
-					const normalized = query.trim().toLowerCase();
-					return this.entries.filter(
-						(entry) =>
-							entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
-					);
-				},
-				get(id) {
-					return this.map.get(id);
-				},
-			};
-		} catch (error) {
-			console.error('Failed to load prebuilt index:', error);
-			// Fallback empty index
-			prebuiltIndex = {
-				entries: [],
-				generatedAt: new Date(),
-				map: new Map(),
-				list: () => [],
-				get: () => undefined,
-			};
-		}
-	}
-	return prebuiltIndex;
-}
-
-async function refreshIndex() {
-	// In Netlify, we can't rebuild dynamically, so just return current index
-	console.log('Refresh requested, but using prebuilt index in Netlify environment');
-	return getIndex();
-}
+import { getCandidateIndexPaths, getCurrentIndexSource, loadPrebuiltIndex, refreshPrebuiltIndex } from './prebuilt-index.js';
 
 function buildRequestUrl(event) {
 	if (event.rawUrl) {
@@ -66,23 +8,30 @@ function buildRequestUrl(event) {
 
 	const path = event.path ?? '/';
 	const queryParams = event.queryStringParameters || {};
-	const query = Object.keys(queryParams).length > 0 ? '?' + new URLSearchParams(queryParams).toString() : '';
+	const query = Object.keys(queryParams).length > 0 ? `?${new URLSearchParams(queryParams).toString()}` : '';
 
 	return `https://netlify.local${path}${query}`;
 }
 
-export async function handler(event) {
-	console.log('MCP Handler called with event:', JSON.stringify(event, null, 2));
+export async function handler(event, _context = {}) {
+	console.log('[mcp] debug handler invoked', {
+		path: event.path,
+		httpMethod: event.httpMethod,
+		queryStringParameters: event.queryStringParameters,
+		rawUrl: event.rawUrl,
+		indexSource: getCurrentIndexSource(),
+		candidatePaths: getCandidateIndexPaths(),
+	});
 
 	try {
 		const result = await handleApiRequest({
 			method: event.httpMethod ?? 'GET',
 			url: buildRequestUrl(event),
-			getIndex,
-			refresh: refreshIndex,
+			getIndex: loadPrebuiltIndex,
+			refresh: refreshPrebuiltIndex,
 		});
 
-		console.log('Handler result:', result);
+		console.log('[mcp] debug handler result', result);
 
 		return {
 			statusCode: result.statusCode,
@@ -90,11 +39,11 @@ export async function handler(event) {
 				'Content-Type': 'application/json; charset=utf-8',
 				...result.headers,
 			},
-			body: result.body === undefined ? '' : JSON.stringify(result.body),
+			body: result.body === undefined ? '' : JSON.stringify(result.body, null, 2),
 			isBase64Encoded: false,
 		};
 	} catch (error) {
-		console.error('[mcp] netlify handler failed', error);
+		console.error('[mcp] debug netlify handler failed', error);
 		return {
 			statusCode: 500,
 			headers: {
@@ -105,8 +54,8 @@ export async function handler(event) {
 			},
 			body: JSON.stringify({
 				error: 'internal_error',
-				message: error.message,
-				stack: error.stack,
+				message: error instanceof Error ? error.message : 'unknown_error',
+				stack: error instanceof Error ? error.stack : undefined,
 				timestamp: new Date().toISOString(),
 			}),
 			isBase64Encoded: false,
