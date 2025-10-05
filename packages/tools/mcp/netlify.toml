@@ -1,5 +1,14 @@
 [build]
-  # Netlify build nur für MCP-Tool
+  ## Redirect alle Requests zur Netlify-Funktion
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
+# CORS Headers für alle API-Endpunkte
+[[headers]]
+  for = "/.netlify/functions/mcp"
+  [headers.values]uild nur für MCP-Tool
   command = "echo 'MCP Functions ready'"
 
 [build.environment]
