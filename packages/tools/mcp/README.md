@@ -14,6 +14,14 @@ Standardmäßig lauscht der Dienst auf Port `3030`. Über die Umgebungsvariable 
 
 Neben dem lokalen Node.js-Server stellt das Paket eine Netlify-Funktion bereit. Beim Deployen reicht es aus, das Verzeichnis `packages/tools/mcp/netlify/functions` als Funktionsordner zu konfigurieren. Die Funktion `mcp` übernimmt alle Routen (`/health`, `/samples`, `/sample`, `/refresh`) und kümmert sich intern um CORS-Header sowie die Index-Aktualisierung.
 
+Damit die Funktion ohne direkten Zugriff auf das Repository-Dateisystem antworten kann, muss vor dem Deploy ein vorkompilierter Sample-Index erzeugt werden:
+
+```bash
+pnpm --filter @public-ui/mcp prebuild
+```
+
+Der Befehl schreibt die Datei `netlify/functions/sample-index.json`, die beim Deployment gemeinsam mit der Funktion gebündelt wird. Der in Netlify verwendete Build-Schritt sollte diesen Befehl daher immer ausführen (siehe `netlify.toml`).
+
 Im lokalen Netlify-Dev-Modus können die Endpunkte beispielsweise unter `http://localhost:8888/.netlify/functions/mcp/health` angesprochen werden. In einer produktiven Netlify-Umgebung lautet der Pfad entsprechend `/.netlify/functions/mcp/...`.
 
 ## Endpunkte
