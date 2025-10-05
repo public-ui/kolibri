@@ -24,6 +24,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # Optimiere pnpm Performance
+      PNPM_CACHE_FOLDER: .pnpm
+      # Disable telemetry
+      NETLIFY_CLI_TELEMETRY_DISABLED: 1
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -31,39 +36,27 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
+      - uses: ./.github/actions/pnpm-setup
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build sample index for Netlify
-        run: pnpm --filter @public-ui/mcp prebuild
-
-      - name: Build MCP tool
-        run: pnpm --filter @public-ui/mcp format -w
-
-      - name: Validate MCP structure
+      - name: Build and validate MCP package
         run: |
-          echo "Checking MCP package structure..."
+          echo "Building sample index for Netlify..."
+          pnpm --filter @public-ui/mcp prebuild
+
+          echo "Formatting MCP code..."
+          pnpm --filter @public-ui/mcp format -w
+
+          echo "Validating MCP package structure..."
           ls -la packages/tools/mcp/
           ls -la packages/tools/mcp/netlify/functions/
-          ls -la packages/tools/mcp/src/
-
-          echo "Checking prebuilt sample index..."
           ls -la packages/tools/mcp/src/netlify/
-          if [ -f packages/tools/mcp/src/netlify/sample-index.json ]; then
-            echo "Sample index found, entries:"
-            jq '.entries | length' packages/tools/mcp/src/netlify/sample-index.json
+
+          if [ -f packages/tools/mcp/src/netlify/sample-index-data.js ]; then
+            echo "✅ Embedded sample data found"
+            head -5 packages/tools/mcp/src/netlify/sample-index-data.js
           else
-            echo "Warning: No sample index found"
+            echo "❌ Missing embedded sample data"
+            exit 1
           fi
 
       - name: Deploy to Netlify (Production)
