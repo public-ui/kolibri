@@ -1,28 +1,13 @@
-import { readFileSync } from 'node:fs';
 import { handleApiRequest } from '../api-handler.js';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { SAMPLE_INDEX_DATA } from './sample-index-data.js';
 
 let prebuiltIndex;
 
 async function getIndex() {
 	if (!prebuiltIndex) {
 		try {
-			// Try to load from functions directory first (Netlify deployment)
-			let indexPath = path.join(__dirname, './sample-index.json');
-			let indexData;
-
-			try {
-				indexData = JSON.parse(readFileSync(indexPath, 'utf8'));
-			} catch (error) {
-				// Fallback to local development path
-				indexPath = path.join(__dirname, '../../netlify/sample-index.json');
-				indexData = JSON.parse(readFileSync(indexPath, 'utf8'));
-			}
-
-			// Recreate the SampleIndex-like object
+			// Use embedded data directly
+			const indexData = SAMPLE_INDEX_DATA; // Recreate the SampleIndex-like object
 			prebuiltIndex = {
 				entries: indexData.entries,
 				generatedAt: new Date(indexData.generatedAt),

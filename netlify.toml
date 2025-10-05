@@ -1,6 +1,6 @@
 [build]
-  # Build command - Sample-Index wird über GitHub Workflow vorbereitet
-  command = "echo 'Sample index built by GitHub workflow'"
+  # Keine Build-Kommandos nötig - Daten sind embedded
+  command = "echo 'Functions ready for deployment'"
 
   # Functions directory relativ zum Repository-Root
   functions = "packages/tools/mcp/netlify/functions"

@@ -22,7 +22,7 @@
 		"start": "node src/index.js",
 		"prebuild": "node src/prebuild.js",
 		"format": "prettier --check src",
-		"unused": "knip"
+		"xunused": "knip"
 	},
 	"dependencies": {},
 	"devDependencies": {
