@@ -1,2 +1,1 @@
-export { handler } from '../../src/netlify/handler.js';
-
+export { handler } from '../../src/netlify/handler-prebuilt.js';

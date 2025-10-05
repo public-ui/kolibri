@@ -25,7 +25,7 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
-		"prepare": "npx playwright install --with-deps firefox",
+		"xprepare": "npx playwright install --with-deps firefox",
 		"unused": "knip"
 	},
 	"bin": {

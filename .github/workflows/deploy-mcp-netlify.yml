@@ -44,6 +44,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build sample index for Netlify
+        run: pnpm --filter @public-ui/mcp prebuild
+
       - name: Build MCP tool
         run: pnpm --filter @public-ui/mcp format
 
@@ -53,6 +56,15 @@ jobs:
           ls -la packages/tools/mcp/
           ls -la packages/tools/mcp/netlify/functions/
           ls -la packages/tools/mcp/src/
+
+          echo "Checking prebuilt sample index..."
+          ls -la packages/tools/mcp/src/netlify/
+          if [ -f packages/tools/mcp/src/netlify/sample-index.json ]; then
+            echo "Sample index found, entries:"
+            jq '.entries | length' packages/tools/mcp/src/netlify/sample-index.json
+          else
+            echo "Warning: No sample index found"
+          fi
 
       - name: Deploy to Netlify (Production)
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'

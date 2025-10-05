@@ -66,7 +66,7 @@
 		"lint:stylelint:components": "stylelint src/components/**/*.{css,scss}",
 		"lint:tsc": "tsc --noemit",
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
-		"prepare": "npx playwright install --with-deps chromium firefox webkit",
+		"xprepare": "npx playwright install --with-deps chromium firefox webkit",
 		"prod": "stencil build --prod",
 		"test": "pnpm test:e2e && pnpm test:unit",
 		"test:e2e": "playwright test",

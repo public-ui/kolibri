@@ -20,6 +20,7 @@
 	"description": "Model Context Protocol backend exposing KoliBri sample code to AI agents.",
 	"scripts": {
 		"start": "node src/index.js",
+		"prebuild": "node src/prebuild.js",
 		"format": "prettier --check src",
 		"unused": "knip"
 	},

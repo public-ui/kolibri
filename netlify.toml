@@ -1,6 +1,6 @@
 [build]
-  # Da es nur Netlify Functions sind, brauchen wir keinen Build-Befehl
-  command = "echo 'No build required for MCP functions'"
+  # Build command - Sample-Index wird über GitHub Workflow vorbereitet
+  command = "echo 'Sample index built by GitHub workflow'"
 
   # Functions directory relativ zum Repository-Root
   functions = "packages/tools/mcp/netlify/functions"
