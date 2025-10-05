@@ -150,7 +150,7 @@ vor und triggert anschließend ein Deployment.
 Lege in GitHub unter **Settings → Secrets and variables → Actions** folgende Secrets an:
 
 - `VERCEL_MCP_TOKEN`: Persönliches Access Token aus dem Vercel Dashboard unter Account Settings → Tokens (https://vercel.com/account/tokens)
-- `VERCEL_MCP_ORG_ID`: Organisations-ID aus **Vercel → Settings → General → IDs → Team ID**
+- `VERCEL_MCP_TEAM_ID`: Team-ID aus **Vercel → Settings → General → IDs → Team ID** (wird im Workflow als `VERCEL_ORG_ID` an die CLI weitergereicht)
 - `VERCEL_MCP_PROJECT_ID`: Projekt-ID aus **Vercel → Project → Settings → General → Project ID**
 
 > Tipp: Kopiere die Werte direkt aus der `vercel.json`, die du über `vercel pull --yes` lokal erzeugen kannst.
