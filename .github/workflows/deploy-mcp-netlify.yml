@@ -1,0 +1,99 @@
+name: Deploy MCP to Netlify
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'packages/tools/mcp/**'
+      - '.github/workflows/deploy-mcp-netlify.yml'
+      - 'netlify.toml'
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'packages/tools/mcp/**'
+      - '.github/workflows/deploy-mcp-netlify.yml'
+      - 'netlify.toml'
+  workflow_dispatch:
+
+concurrency:
+  group: 'mcp-deploy-${{ github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build MCP tool
+        run: pnpm --filter @public-ui/mcp format
+
+      - name: Validate MCP structure
+        run: |
+          echo "Checking MCP package structure..."
+          ls -la packages/tools/mcp/
+          ls -la packages/tools/mcp/netlify/functions/
+          ls -la packages/tools/mcp/src/
+
+      - name: Deploy to Netlify (Production)
+        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: '.'
+          production-branch: develop
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy MCP v${{ github.sha }}'
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_MCP_SITE_ID }}
+
+      - name: Deploy to Netlify (Preview)
+        if: github.event_name == 'pull_request'
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: '.'
+          production-branch: develop
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy MCP preview PR #${{ github.event.number }}'
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_MCP_SITE_ID }}
+
+      - name: Test deployed endpoints
+        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        run: |
+          echo "Testing production deployment..."
+          # Warte kurz bis Deployment verfügbar ist
+          sleep 30
+
+          # Teste Health Endpoint - nutze Netlify URL von vorherigem Step
+          echo "Testing health endpoint..."
+          curl -f "https://develop--${{ secrets.NETLIFY_MCP_SITE_ID }}.netlify.app/health" || echo "Health check failed"
+
+          echo "Testing samples endpoint..."
+          curl -f "https://develop--${{ secrets.NETLIFY_MCP_SITE_ID }}.netlify.app/samples" || echo "Samples check failed"

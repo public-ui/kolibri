@@ -25,12 +25,13 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
+		"eslint": "9.37.0",
 		"knip": "5.64.1",
 		"prettier": "3.6.2"
 	},
-        "files": [
-                "src",
-                "netlify",
-                "README.md"
-        ]
+	"files": [
+		"src",
+		"netlify",
+		"README.md"
+	]
 }
