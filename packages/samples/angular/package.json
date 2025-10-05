@@ -10,14 +10,14 @@
 		"watch": "ng build --watch --configuration development"
 	},
 	"dependencies": {
-               "@angular/animations": "20.3.2",
-               "@angular/common": "20.3.2",
-               "@angular/compiler": "20.3.2",
-               "@angular/core": "20.3.2",
-               "@angular/forms": "20.3.2",
-               "@angular/platform-browser": "20.3.2",
-               "@angular/platform-browser-dynamic": "20.3.2",
-               "@angular/router": "20.3.2",
+               "@angular/animations": "20.3.3",
+               "@angular/common": "20.3.3",
+               "@angular/compiler": "20.3.3",
+               "@angular/core": "20.3.3",
+               "@angular/forms": "20.3.3",
+               "@angular/platform-browser": "20.3.3",
+               "@angular/platform-browser-dynamic": "20.3.3",
+               "@angular/router": "20.3.3",
                "@public-ui/angular-v20": "workspace:*",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
@@ -25,9 +25,9 @@
 		"zone.js": "0.15.1"
 	},
 	"devDependencies": {
-               "@angular-devkit/build-angular": "20.3.3",
-               "@angular/cli": "20.3.3",
-               "@angular/compiler-cli": "20.3.2",
+               "@angular-devkit/build-angular": "20.3.4",
+               "@angular/cli": "20.3.4",
+               "@angular/compiler-cli": "20.3.3",
 		"@types/jasmine": "5.1.9",
 		"jasmine-core": "5.11.0",
 		"karma": "6.4.4",
@@ -35,6 +35,6 @@
 		"karma-coverage": "2.2.1",
 		"karma-jasmine": "5.1.0",
 		"karma-jasmine-html-reporter": "2.1.0",
-		"typescript": "5.9.2"
+		"typescript": "5.9.3"
 	}
 }
