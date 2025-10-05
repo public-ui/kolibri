@@ -6,8 +6,8 @@
   NODE_VERSION = "22"
 
 [functions]
-  # Functions directory
-  directory = "netlify/functions"
+  # Functions directory (standard Netlify location)
+  directory = ".netlify/functions"
   # Enable TypeScript support with esbuild
   node_bundler = "esbuild"
 
