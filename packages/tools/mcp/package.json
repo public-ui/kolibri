@@ -1,0 +1,38 @@
+{
+	"name": "@public-ui/mcp",
+	"version": "3.0.7-rc.3",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"type": "module",
+	"private": false,
+	"description": "Model Context Protocol backend exposing KoliBri sample code to AI agents.",
+	"scripts": {
+		"format": "prettier --check netlify src",
+		"prebuild": "node src/prebuild.js",
+		"start": "node src/index.js"
+	},
+	"dependencies": {
+		"@netlify/functions": "4.2.7"
+	},
+	"devDependencies": {
+		"prettier": "3.6.2"
+	},
+	"files": [
+		"README.md",
+		"netlify/functions/*.js",
+		"netlify/functions/*.json",
+		"src"
+	]
+}

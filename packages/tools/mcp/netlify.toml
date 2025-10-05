@@ -1,0 +1,22 @@
+[build]
+  # Generate the sample index before bundling the function
+  command = "pnpm --filter @public-ui/mcp prebuild"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  # Standard Netlify functions directory
+  directory = "netlify/functions"
+  included_files = ["netlify/functions/sample-index.json"]
+
+# Mit TypeScript Function Routing über config.path
+# Keine manuellen Redirects mehr nötig
+
+# CORS Headers für Function responses
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"

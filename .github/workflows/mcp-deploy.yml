@@ -1,0 +1,104 @@
+name: Netlify MCP-Deploy
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'packages/tools/mcp/**'
+      - '.github/workflows/deploy-mcp-netlify.yml'
+      - 'netlify.toml'
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'packages/tools/mcp/**'
+      - '.github/workflows/deploy-mcp-netlify.yml'
+      - 'netlify.toml'
+  workflow_dispatch:
+
+concurrency:
+  group: 'mcp-deploy-${{ github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Optimiere pnpm Performance
+      PNPM_CACHE_FOLDER: .pnpm
+      # Disable telemetry
+      NETLIFY_CLI_TELEMETRY_DISABLED: 1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: ./.github/actions/pnpm-setup
+
+      - name: Build and validate MCP package
+        run: |
+          echo "Building sample index for Netlify..."
+          pnpm --filter @public-ui/mcp prebuild
+
+          echo "Formatting MCP code..."
+          pnpm --filter @public-ui/mcp format -w
+
+          echo "Validating MCP package structure..."
+          ls -la packages/tools/mcp/
+          ls -la packages/tools/mcp/netlify/functions/
+          ls -la packages/tools/mcp/netlify/
+
+          if [ -f packages/tools/mcp/netlify/functions/sample-index.json ]; then
+            echo "✅ Embedded sample data found"
+            head -5 packages/tools/mcp/netlify/functions/sample-index.json
+          else
+            echo "❌ Missing embedded sample data"
+            exit 1
+          fi
+
+      - name: Deploy to Netlify (Production)
+        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: 'packages/tools/mcp'
+          production-branch: develop
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy MCP v${{ github.sha }}'
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_MCP_SITE_ID }}
+
+      - name: Deploy to Netlify (Preview)
+        if: github.event_name == 'pull_request'
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: 'packages/tools/mcp'
+          production-branch: develop
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy MCP preview PR #${{ github.event.number }}'
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_MCP_SITE_ID }}
+
+      - name: Test deployed endpoints
+        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        run: |
+          echo "Testing production deployment..."
+          # Warte kurz bis Deployment verfügbar ist
+          sleep 30
+
+          # Teste Health Endpoint - nutze Netlify URL von vorherigem Step
+          echo "Testing health endpoint..."
+          curl -f "https://develop--${{ secrets.NETLIFY_MCP_SITE_ID }}.netlify.app/health" || echo "Health check failed"
+
+          echo "Testing samples endpoint..."
+          curl -f "https://develop--${{ secrets.NETLIFY_MCP_SITE_ID }}.netlify.app/samples" || echo "Samples check failed"
