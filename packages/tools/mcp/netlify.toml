@@ -1,32 +1,22 @@
 [build]
-  ## Redirect alle Requests zur Netlify-Funktion
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/mcp"
-  status = 200
+  # Keine Build-Kommandos nötig - Daten sind embedded
+  command = "echo 'Functions ready for deployment'"
 
-# CORS Headers für alle API-Endpunkte
-[[headers]]
-  for = "/.netlify/functions/mcp"
-  [headers.values]uild nur für MCP-Tool
-  command = "echo 'MCP Functions ready'"
+  # Functions directory relativ zum Repository-Root
+  functions = "packages/tools/mcp/netlify/functions"
 
 [build.environment]
   NODE_VERSION = "22"
 
-[functions]
-  # Functions in diesem Verzeichnis
-  directory = "netlify/functions"
-
 # Redirect alle Requests zur Netlify-Funktion
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/mcp/:splat"
+  to = "/netlify/functions/mcp/:splat"
   status = 200
 
 # CORS Headers für alle API-Endpunkte
 [[headers]]
-  for = "/.netlify/functions/mcp/*"
+  for = "/netlify/functions/mcp/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
