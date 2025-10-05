@@ -2,6 +2,8 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildDynamicSampleIndex, createSampleIndexFromData } from '../prebuilt/sample-index-utils.js';
+
 let cachedIndex;
 let cachedSource;
 let currentStrategy = 'prebuilt';
@@ -25,41 +27,6 @@ function getCandidatePaths() {
 	}
 
 	return Array.from(candidates);
-}
-
-function createSampleIndexFromData(data) {
-	const entries = Array.isArray(data?.entries)
-		? data.entries.map((entry) => ({
-				id: entry.id,
-				group: entry.group,
-				name: entry.name,
-				path: entry.path,
-				code: entry.code,
-			}))
-		: [];
-	const indexMap = new Map(entries.map((entry) => [entry.id, entry]));
-	const generatedAt = data?.generatedAt ? new Date(data.generatedAt) : new Date();
-
-	return {
-		entries,
-		generatedAt,
-		map: indexMap,
-		list(query) {
-			if (!query) {
-				return entries;
-			}
-			const normalized = query.trim().toLowerCase();
-			return entries.filter((entry) => {
-				const id = entry.id?.toLowerCase() ?? '';
-				const group = entry.group?.toLowerCase() ?? '';
-				const name = entry.name?.toLowerCase() ?? '';
-				return id.includes(normalized) || group.includes(normalized) || name.includes(normalized);
-			});
-		},
-		get(id) {
-			return indexMap.get(id);
-		},
-	};
 }
 
 async function readJsonFile(filePath) {
@@ -92,11 +59,6 @@ async function loadPrebuiltData() {
 	return undefined;
 }
 
-async function buildIndexOnDemand() {
-	const { buildSampleIndex } = await import('../sample-index.js');
-	return buildSampleIndex();
-}
-
 export async function loadPrebuiltIndex() {
 	if (cachedIndex) {
 		return cachedIndex;
@@ -112,7 +74,7 @@ export async function loadPrebuiltIndex() {
 	}
 
 	console.warn('[mcp] no prebuilt sample index found – rebuilding on demand');
-	cachedIndex = await buildIndexOnDemand();
+	cachedIndex = await buildDynamicSampleIndex();
 	cachedSource = 'dynamic-build';
 	currentStrategy = 'dynamic';
 	return cachedIndex;
@@ -120,7 +82,7 @@ export async function loadPrebuiltIndex() {
 
 export async function refreshPrebuiltIndex() {
 	if (currentStrategy === 'dynamic') {
-		cachedIndex = await buildIndexOnDemand();
+		cachedIndex = await buildDynamicSampleIndex();
 		return cachedIndex;
 	}
 

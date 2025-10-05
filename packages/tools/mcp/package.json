@@ -21,7 +21,8 @@
 	"scripts": {
 		"format": "prettier --check netlify src",
 		"prebuild": "node src/prebuild.js",
-		"start": "node src/index.js"
+		"start": "node src/index.js",
+		"vercel:build": "node vercel/build.mjs"
 	},
 	"dependencies": {
 		"@netlify/functions": "4.2.7"
@@ -31,8 +32,11 @@
 	},
 	"files": [
 		"README.md",
+		"api/*.js",
 		"netlify/functions/*.js",
 		"netlify/functions/*.json",
-		"src"
+		"src",
+		"vercel/*.mjs",
+		"vercel/.gitignore"
 	]
 }
