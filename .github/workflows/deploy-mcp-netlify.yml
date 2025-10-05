@@ -1,4 +1,4 @@
-name: Deploy MCP to Netlify
+name: Netlify MCP serverless Deployment
 
 on:
   push:

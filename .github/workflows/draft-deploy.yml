@@ -1,4 +1,4 @@
-name: Netlify Draft Deploy
+name: Netlify deploy PR branches
 
 on:
   workflow_dispatch:

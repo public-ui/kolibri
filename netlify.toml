@@ -8,30 +8,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Redirect alle MCP-Requests zur Netlify-Funktion
+# Redirect alle Requests zur Netlify-Funktion
 [[redirects]]
-  from = "/mcp/*"
+  from = "/*"
   to = "/.netlify/functions/mcp/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/health"
-  to = "/.netlify/functions/mcp/health"
-  status = 200
-
-[[redirects]]
-  from = "/samples"
-  to = "/.netlify/functions/mcp/samples"
-  status = 200
-
-[[redirects]]
-  from = "/sample"
-  to = "/.netlify/functions/mcp/sample"
-  status = 200
-
-[[redirects]]
-  from = "/refresh"
-  to = "/.netlify/functions/mcp/refresh"
   status = 200
 
 # CORS Headers für alle API-Endpunkte

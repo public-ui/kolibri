@@ -1,4 +1,4 @@
-name: Netlify Test Deploy - Deploy stable branches under fixed aliases
+name: Netlify deploy stable branches
 
 on:
   push:
