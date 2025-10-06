@@ -3,6 +3,7 @@ import { setState, validateLabel, watchString, watchValidator } from '../../sche
 import type { JSX } from '@stencil/core';
 import { Method } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -65,6 +66,7 @@ export class KolModal implements ModalAPI {
 					width: this.state._width,
 				}}
 				aria-label={this.state._label}
+				onCancel={handleCancelOverlay}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
 				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}

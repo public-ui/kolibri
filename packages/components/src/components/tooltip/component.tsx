@@ -7,6 +7,7 @@ import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { KolSpanWcTag } from '../../core/component-names';
+import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking';
 
 /**
  * @internal
@@ -40,6 +41,7 @@ export class KolTooltipWc implements TooltipAPI {
 	private showTooltip = (): void => {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
+			tooltipOpened();
 			this.tooltipElement.style.setProperty('display', 'block');
 			getDocument().addEventListener('keyup', this.hideTooltipByEscape);
 
@@ -54,6 +56,7 @@ export class KolTooltipWc implements TooltipAPI {
 	private hideTooltip = (): void => {
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
+			tooltipClosed();
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
 			if (this.cleanupAutoPositioning) {

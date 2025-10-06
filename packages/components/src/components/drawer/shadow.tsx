@@ -4,6 +4,7 @@ import { setState, validateLabel, validateOpen, validateAlign } from '../../sche
 import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
  * @slot - The Content of drawer.
@@ -71,7 +72,7 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class={`kol-drawer drawer`} ref={(el) => (this.hostElement = el as HTMLElement)}>
-				<dialog class="drawer__dialog" ref={this.getRef}>
+				<dialog class="drawer__dialog" onCancel={handleCancelOverlay} ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
