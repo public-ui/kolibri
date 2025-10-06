@@ -69,7 +69,7 @@ Die `netlify.toml` im Repository-Root konfiguriert:
 
 - **Build Command**: `pnpm --filter @public-ui/mcp prebuild` erzeugt den Sample-Index vor dem Deployment
 - **Functions Directory**: `packages/tools/mcp/netlify/functions`
-- **URL Redirects**: Alle API-Calls werden zur MCP-Funktion weitergeleitet
+- **URL Redirects**: Alle API-Calls ohne Präfix werden automatisch zur MCP-Funktion weitergeleitet
 - **CORS Headers**: Automatische CORS-Header für API-Endpunkte
 
 #### Environment Variables (Optional)
@@ -95,7 +95,7 @@ Falls du zusätzliche Umgebungsvariablen brauchst, kannst du diese in Netlify un
 
 1. Prüfe die Redirects in `netlify.toml`
 2. Stelle sicher, dass `netlify/functions/mcp.js` existiert
-3. Teste direkt: `https://site.netlify.app/.netlify/functions/mcp/health`
+3. Teste direkt: `https://site.netlify.app/health`
 
 ## Deployment auf Vercel
 
@@ -129,16 +129,18 @@ Index nutzen kann.
 
 ### Endpunkte nach Deployment
 
-Die Vercel-Funktion liegt unter `/api/mcp`. Beispiele:
+Das Backend erwartet keine `/api/mcp`-Präfixe mehr. Richte daher in Vercel (z. B. über "Rewrites") Weiterleitungen ein, die
+die gewünschten Routen wie `/health`, `/samples` oder `/sample` auf die Funktion `api/mcp` zeigen. Nach einer entsprechenden
+Rewrite-Regel lassen sich die Endpunkte beispielsweise so aufrufen:
 
 ```bash
-https://<projekt>.vercel.app/api/mcp/health
-https://<projekt>.vercel.app/api/mcp/samples?q=button
-https://<projekt>.vercel.app/api/mcp/sample?id=button/basic
+https://<projekt>.vercel.app/health
+https://<projekt>.vercel.app/samples?q=button
+https://<projekt>.vercel.app/sample?id=button/basic
 ```
 
-Die `POST /api/mcp/refresh`-Route lädt den vorkompilierten Index neu. Sofern der Build-Command ausgeführt wurde, lädt die
-Funktion die Datei erneut; andernfalls fällt sie auf einen dynamischen Neuaufbau zurück.
+Die `POST /refresh`-Route lädt den vorkompilierten Index neu. Sofern der Build-Command ausgeführt wurde, lädt die Funktion die
+Datei erneut; andernfalls fällt sie auf einen dynamischen Neuaufbau zurück.
 
 ### Automatisiertes Deployment mit GitHub Actions
 

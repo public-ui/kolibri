@@ -12,7 +12,7 @@ Standardmäßig lauscht der Dienst auf Port `3030`. Über die Umgebungsvariable 
 
 ## Serverless-Einsatz auf Netlify
 
-Neben dem lokalen Node.js-Server stellt das Paket eine Netlify-Funktion bereit. Beim Deployen reicht es aus, das Verzeichnis `packages/tools/mcp/netlify/functions` als Funktionsordner zu konfigurieren. Die Funktion `mcp` übernimmt alle Routen (`/health`, `/samples`, `/sample`, `/refresh`) und kümmert sich intern um CORS-Header sowie die Index-Aktualisierung.
+Neben dem lokalen Node.js-Server stellt das Paket eine Netlify-Funktion bereit. Beim Deployen reicht es aus, das Verzeichnis `packages/tools/mcp/netlify/functions` als Funktionsordner zu konfigurieren. Die Funktion `mcp` übernimmt alle Routen (`/health`, `/samples`, `/sample`, `/refresh`) und kümmert sich intern um CORS-Header sowie die Index-Aktualisierung. Über die `netlify.toml` werden die Anfragen ohne Präfix auf diese Funktion umgeleitet, sodass die REST-Endpunkte direkt unter `/` verfügbar sind.
 
 Damit die Funktion ohne direkten Zugriff auf das Repository-Dateisystem antworten kann, muss vor dem Deploy ein vorkompilierter Sample-Index erzeugt werden:
 
@@ -22,7 +22,7 @@ pnpm --filter @public-ui/mcp prebuild
 
 Der Befehl schreibt die Datei `netlify/functions/sample-index.json`, die beim Deployment gemeinsam mit der Funktion gebündelt wird. Der in Netlify verwendete Build-Schritt sollte diesen Befehl daher immer ausführen (siehe `netlify.toml`).
 
-Im lokalen Netlify-Dev-Modus können die Endpunkte beispielsweise unter `http://localhost:8888/.netlify/functions/mcp/health` angesprochen werden. In einer produktiven Netlify-Umgebung lautet der Pfad entsprechend `/.netlify/functions/mcp/...`.
+Im lokalen Netlify-Dev-Modus sowie nach dem Deployment erreichst du die Endpunkte daher unmittelbar über `http://localhost:8888/health`, `https://<deine-site>.netlify.app/samples` usw. Der direkte Funktionspfad `/.netlify/functions/mcp/...` bleibt weiterhin erreichbar, ist aber nicht mehr erforderlich.
 
 ## Endpunkte
 

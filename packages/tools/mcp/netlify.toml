@@ -10,8 +10,31 @@
   directory = "netlify/functions"
   included_files = ["netlify/functions/sample-index.json"]
 
-# Mit TypeScript Function Routing über config.path
-# Keine manuellen Redirects mehr nötig
+# Rewrite API-Routen ohne Präfix auf die Function
+[[redirects]]
+  from = "/"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/mcp/health"
+  status = 200
+
+[[redirects]]
+  from = "/samples"
+  to = "/.netlify/functions/mcp/samples"
+  status = 200
+
+[[redirects]]
+  from = "/sample"
+  to = "/.netlify/functions/mcp/sample"
+  status = 200
+
+[[redirects]]
+  from = "/refresh"
+  to = "/.netlify/functions/mcp/refresh"
+  status = 200
 
 # CORS Headers für Function responses
 [[headers]]
