@@ -25,7 +25,10 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 export const TableStickyHeader: FC = () => (
 	<>
 		<SampleDescription>
-			<p></p>
+			<p>
+				This sample shows KolTableStateful with horizontal and vertical scrollbars. It should be focusable and scrollable with the keyboard. The table headline
+				should be sticky at the top of the table.
+			</p>
 		</SampleDescription>
 
 		<KolHeading _level={2} _label="Sticky headers" />
