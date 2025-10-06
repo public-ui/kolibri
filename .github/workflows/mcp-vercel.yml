@@ -37,6 +37,9 @@ jobs:
       - name: Setup pnpm workspace
         uses: ./.github/actions/pnpm-setup
 
+      - name: Build workspace dependencies
+        run: pnpm --filter @public-ui/mcp build:deps
+
       - name: Build Vercel assets
         run: |
           pnpm --filter @public-ui/mcp vercel:build
@@ -44,17 +47,20 @@ jobs:
 
       - name: Pull Vercel environment configuration (production)
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        working-directory: packages/tools/mcp
         run: |
           pnpm dlx vercel@latest pull --yes --environment=production --token "$VERCEL_TOKEN"
 
       - name: Build project with Vercel CLI (production)
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        working-directory: packages/tools/mcp
         run: |
           pnpm dlx vercel@latest build --prod --token "$VERCEL_TOKEN"
 
       - name: Deploy to Vercel (production)
         id: deploy_prod
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        working-directory: packages/tools/mcp
         run: |
           set -eo pipefail
           DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --prod --yes --token "$VERCEL_TOKEN" | tail -n1)
@@ -63,17 +69,20 @@ jobs:
 
       - name: Pull Vercel environment configuration (preview)
         if: github.event_name == 'pull_request'
+        working-directory: packages/tools/mcp
         run: |
           pnpm dlx vercel@latest pull --yes --environment=preview --token "$VERCEL_TOKEN"
 
       - name: Build project with Vercel CLI (preview)
         if: github.event_name == 'pull_request'
+        working-directory: packages/tools/mcp
         run: |
           pnpm dlx vercel@latest build --token "$VERCEL_TOKEN"
 
       - name: Deploy to Vercel (preview)
         id: deploy_preview
         if: github.event_name == 'pull_request'
+        working-directory: packages/tools/mcp
         run: |
           set -eo pipefail
           DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --yes --token "$VERCEL_TOKEN" | tail -n1)
