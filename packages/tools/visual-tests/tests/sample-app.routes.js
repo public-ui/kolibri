@@ -159,6 +159,10 @@ ROUTES.set('button/baselined', {
 	},
 });
 ROUTES.set('button/short-key', {
+	viewportSize: {
+		width: 800,
+		height: 434,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -702,7 +706,7 @@ ROUTES.set('table/with-footer', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 324,
 		},
 		zoom: {
 			skip: true,
@@ -736,7 +740,7 @@ ROUTES.set('table/complex-headers', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
+			height: 300,
 		},
 		zoom: {
 			skip: true,
@@ -747,7 +751,7 @@ ROUTES.set('table/non-hidable-columns', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 250,
+			height: 235,
 		},
 		zoom: {
 			skip: true,
@@ -758,7 +762,7 @@ ROUTES.set('table/stateful-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 500,
+			height: 509,
 		},
 		zoom: {
 			skip: true,
@@ -769,18 +773,7 @@ ROUTES.set('table/stateful-with-single-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 400,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('table/stateless-with-single-selection', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 400,
+			height: 352,
 		},
 		zoom: {
 			skip: true,
@@ -791,7 +784,18 @@ ROUTES.set('table/stateless-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 500,
+			height: 449,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateless-with-single-selection', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 352,
 		},
 		zoom: {
 			skip: true,
