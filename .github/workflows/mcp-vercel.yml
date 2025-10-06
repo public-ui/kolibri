@@ -45,38 +45,38 @@ jobs:
       - name: Pull Vercel environment configuration (production)
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
         run: |
-          pnpm dlx vercel@latest pull --yes --environment=production --cwd packages/tools/mcp --token "$VERCEL_TOKEN"
+          pnpm dlx vercel@latest pull --yes --environment=production --token "$VERCEL_TOKEN"
 
       - name: Build project with Vercel CLI (production)
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
         run: |
-          pnpm dlx vercel@latest build --prod --cwd packages/tools/mcp --token "$VERCEL_TOKEN"
+          pnpm dlx vercel@latest build --prod --token "$VERCEL_TOKEN"
 
       - name: Deploy to Vercel (production)
         id: deploy_prod
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
         run: |
           set -eo pipefail
-          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --prod --yes --cwd packages/tools/mcp --token "$VERCEL_TOKEN" | tail -n1)
+          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --prod --yes --token "$VERCEL_TOKEN" | tail -n1)
           echo "url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
           echo "Production deployment available at ${DEPLOY_URL}"
 
       - name: Pull Vercel environment configuration (preview)
         if: github.event_name == 'pull_request'
         run: |
-          pnpm dlx vercel@latest pull --yes --environment=preview --cwd packages/tools/mcp --token "$VERCEL_TOKEN"
+          pnpm dlx vercel@latest pull --yes --environment=preview --token "$VERCEL_TOKEN"
 
       - name: Build project with Vercel CLI (preview)
         if: github.event_name == 'pull_request'
         run: |
-          pnpm dlx vercel@latest build --cwd packages/tools/mcp --token "$VERCEL_TOKEN"
+          pnpm dlx vercel@latest build --token "$VERCEL_TOKEN"
 
       - name: Deploy to Vercel (preview)
         id: deploy_preview
         if: github.event_name == 'pull_request'
         run: |
           set -eo pipefail
-          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --yes --cwd packages/tools/mcp --token "$VERCEL_TOKEN" | tail -n1)
+          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --yes --token "$VERCEL_TOKEN" | tail -n1)
           echo "url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
           echo "Preview deployment available at ${DEPLOY_URL}"
 
