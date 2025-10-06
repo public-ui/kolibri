@@ -5,6 +5,10 @@ runs:
     - name: Install dependencies
       uses: ./.github/actions/pnpm-setup
 
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
+      shell: bash
+
     - name: Build required packages
       run: pnpm build:deps
       shell: bash
