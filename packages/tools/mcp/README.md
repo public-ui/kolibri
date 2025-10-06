@@ -8,28 +8,28 @@ Dieses Paket stellt einen einfachen Node.js-gestützten Backend-Dienst für das 
 pnpm --filter @public-ui/mcp start
 ```
 
-Standardmäßig lauscht der Dienst auf Port `3030`. Über die Umgebungsvariable `PORT` kann ein anderer Port gewählt werden.
+Standardmäßig lauscht der Dienst auf Port `3030`. Über die Umgebungsvariable `PORT` kann ein anderer Port gewählt werden. Die lokalen Endpunkte sind anschließend unter `http://localhost:<port>/api/mcp/...` erreichbar.
 
-## Serverless-Einsatz auf Netlify
+## Serverless-Einsatz auf Vercel
 
-Neben dem lokalen Node.js-Server stellt das Paket eine Netlify-Funktion bereit. Beim Deployen reicht es aus, das Verzeichnis `packages/tools/mcp/netlify/functions` als Funktionsordner zu konfigurieren. Die Funktion `mcp` übernimmt alle Routen (`/health`, `/samples`, `/sample`, `/refresh`) und kümmert sich intern um CORS-Header sowie die Index-Aktualisierung.
+Für den Serverless-Betrieb steht eine Vercel-Funktion im Verzeichnis `packages/tools/mcp/api/mcp.js` bereit. Sie beantwortet alle MCP-Routen (`/health`, `/samples`, `/sample`, `/refresh`) unter dem Vercel-Standardpräfix `/api/mcp`.
 
-Damit die Funktion ohne direkten Zugriff auf das Repository-Dateisystem antworten kann, muss vor dem Deploy ein vorkompilierter Sample-Index erzeugt werden:
+Vor dem Deploy sollte ein vorkompilierter Sample-Index erzeugt werden, damit die Funktion ohne Dateisystemzugriff arbeiten kann:
 
 ```bash
 pnpm --filter @public-ui/mcp prebuild
 ```
 
-Der Befehl schreibt die Datei `netlify/functions/sample-index.json`, die beim Deployment gemeinsam mit der Funktion gebündelt wird. Der in Netlify verwendete Build-Schritt sollte diesen Befehl daher immer ausführen (siehe `netlify.toml`).
+Der Befehl schreibt die Datei `vercel/sample-index.json`, die beim Deployment neben die Funktion gelegt wird. Wird kein Index gefunden, erzeugt die Funktion ihn beim ersten Aufruf dynamisch.
 
-Im lokalen Netlify-Dev-Modus können die Endpunkte beispielsweise unter `http://localhost:8888/.netlify/functions/mcp/health` angesprochen werden. In einer produktiven Netlify-Umgebung lautet der Pfad entsprechend `/.netlify/functions/mcp/...`.
+Nach dem Deployment erreichst du die Endpunkte auf Vercel beispielsweise über `https://<projekt>.vercel.app/api/mcp/health`, `https://<projekt>.vercel.app/api/mcp/samples` oder `https://<projekt>.vercel.app/api/mcp/sample?id=button/basic`.
 
 ## Endpunkte
 
-- `GET /health` – liefert den Status des Backends sowie Metadaten zum aktuellen Sample-Index.
-- `GET /samples` – listet alle verfügbaren Samples. Optional kann über den Query-Parameter `q` gefiltert werden.
-- `GET /sample?id=<component/sample>` – liefert Pfad und Quellcode eines spezifischen Samples zurück.
-- `POST /refresh` – baut den Sample-Index neu auf, falls sich Dateien verändert haben.
+- `GET /api/mcp/health` – liefert den Status des Backends sowie Metadaten zum aktuellen Sample-Index.
+- `GET /api/mcp/samples` – listet alle verfügbaren Samples. Optional kann über den Query-Parameter `q` gefiltert werden.
+- `GET /api/mcp/sample?id=<component/sample>` – liefert Pfad und Quellcode eines spezifischen Samples zurück.
+- `POST /api/mcp/refresh` – baut den Sample-Index neu auf, falls sich Dateien verändert haben.
 
 Alle Antworten werden als JSON ausgeliefert und enthalten bereits die relativen Pfade innerhalb des Repositorys.
 

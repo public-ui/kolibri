@@ -7,11 +7,7 @@ import { buildDynamicSampleIndex, createSampleIndexFromData } from '../src/prebu
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DEFAULT_INDEX_CANDIDATES = [
-	process.env.KOLIBRI_MCP_INDEX_PATH,
-	path.join(__dirname, '../vercel/sample-index.json'),
-	path.join(__dirname, '../netlify/functions/sample-index.json'),
-];
+const DEFAULT_INDEX_CANDIDATES = [process.env.KOLIBRI_MCP_INDEX_PATH, path.join(__dirname, '../vercel/sample-index.json')];
 
 let cachedIndex;
 let currentStrategy = 'prebuilt';

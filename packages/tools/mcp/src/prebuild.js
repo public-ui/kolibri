@@ -6,7 +6,7 @@ import { buildSampleIndex } from './sample-index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DEFAULT_OUTPUTS = [path.join(__dirname, '../netlify/functions/sample-index.json')];
+const DEFAULT_OUTPUTS = [path.join(__dirname, '../vercel/sample-index.json')];
 
 function serializeIndex(index) {
 	return {
@@ -92,7 +92,7 @@ function printUsage() {
 	console.log('Options:');
 	console.log('  --output, -o   Path to write the generated sample index to.');
 	console.log('                 You can provide the flag multiple times.');
-	console.log('                 Defaults to netlify/functions/sample-index.json.');
+	console.log('                 Defaults to vercel/sample-index.json.');
 }
 
 async function runFromCommandLine() {

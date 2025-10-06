@@ -5,10 +5,8 @@ import { generateSampleIndex } from '../src/prebuild.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PACKAGE_ROOT = path.join(__dirname, '..');
-
 async function main() {
-	const outputs = [path.join(PACKAGE_ROOT, 'netlify/functions/sample-index.json'), path.join(__dirname, 'sample-index.json')];
+	const outputs = [path.join(__dirname, 'sample-index.json')];
 
 	await generateSampleIndex({ outputs });
 	console.log('[mcp] vercel build preparation finished');
