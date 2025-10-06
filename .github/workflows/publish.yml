@@ -238,3 +238,27 @@ jobs:
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Manage version tags for Netlify deployments
+      - name: Update version tag for stable deployments
+        if: github.event.inputs.increment == 'true'
+        run: |
+          case "${{github.event.inputs.tag}}" in
+            "latest")
+              VERSION_TAG="latest"
+              ;;
+            "lts")
+              VERSION_TAG="v2-latest"
+              ;;
+            +)
+              echo "No stable version tag for npm-tag; ${{github.event.inputs.tag}}"
+              exit 0
+              ;;
+          esac
+
+          echo "Updating version tag: $VERSION_TAG"
+          git tag -d "$VERSION_TAG" 2>/dev/null || true
+          git push origin ":refs/tags/$VERSION_TAG" 2>/dev/null || true
+          git tag -a "$VERSION_TAG" -m "Update $VERSION_TAG to $(git describe --tags --abbrev=0)"
+          git push origin "$VERSION_TAG"
+          echo "Successfully updated tag $VERSION_TAG"
