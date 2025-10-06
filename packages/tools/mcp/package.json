@@ -19,6 +19,7 @@
 	"private": false,
 	"description": "Model Context Protocol backend exposing KoliBri sample code to AI agents.",
 	"scripts": {
+		"build:deps": "pnpm --filter @public-ui/sample-react^... build && pnpm --filter @public-ui/sample-react build",
 		"format": "prettier --check netlify src",
 		"prebuild": "node src/prebuild.js",
 		"start": "node src/index.js",

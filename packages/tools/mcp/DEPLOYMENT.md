@@ -112,7 +112,7 @@ Falls du zusätzliche Umgebungsvariablen brauchst, kannst du diese in Netlify un
 3. Setze **Root Directory** auf `packages/tools/mcp`.
 4. Framework Preset: `Other`.
 5. Install Command: leer lassen (Vercel führt automatisch `pnpm install --frozen-lockfile` aus).
-6. Build Command: `pnpm --filter @public-ui/mcp vercel:build`.
+6. Build Command: `pnpm --filter @public-ui/mcp build:deps && pnpm --filter @public-ui/mcp vercel:build`.
 7. Output Directory: leer lassen (Serverless Functions werden direkt aus `api/` erzeugt).
 8. Optional: `NODE_VERSION` auf eine unterstützte Node-18-Version setzen (z.B. `18`).
 
@@ -174,6 +174,7 @@ npm install -g vercel
 
 # Repository vorbereiten
 pnpm install
+pnpm --filter @public-ui/mcp build:deps
 pnpm --filter @public-ui/mcp vercel:build
 
 # Deploy (Preview)
@@ -184,8 +185,8 @@ vercel
 vercel --prod
 ```
 
-> Hinweis: Das Skript `pnpm --filter @public-ui/mcp vercel:build` muss vor jedem Deploy ausgeführt werden, damit die Datei
-> `vercel/sample-index.json` aktualisiert wird und im Serverless Bundle landet. Das anschließende `vercel`-Kommando wird in
+> Hinweis: Die Befehle `pnpm --filter @public-ui/mcp build:deps` und `pnpm --filter @public-ui/mcp vercel:build` müssen vor jedem Deploy ausgeführt werden, damit alle abhängigen Pakete gebaut werden und die Datei `vercel/sample-index.json` aktualisiert wird.
+> Das anschließende `vercel`-Kommando wird in
 > `packages/tools/mcp` ausgeführt, sodass keine zusätzlichen `--cwd`-Parameter mehr notwendig sind.
 
 ## Lokales Testen
