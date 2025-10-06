@@ -8,11 +8,10 @@ type FormFieldTooltipProps = Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'> 
 	id: string;
 	align?: AlignPropType;
 	badgeText?: string;
-	hideLabel?: boolean;
 	label: string;
 };
 
-const FormFieldTooltipFc: FC<FormFieldTooltipProps> = ({ id, align, badgeText, hideLabel, label, class: classNames }) => {
+const FormFieldTooltipFc: FC<FormFieldTooltipProps> = ({ id, align, badgeText, label, class: classNames }) => {
 	return (
 		<KolTooltipWcTag
 			/**
@@ -23,7 +22,7 @@ const FormFieldTooltipFc: FC<FormFieldTooltipProps> = ({ id, align, badgeText, h
 			class={clsx('kol-form-field__tooltip', classNames)}
 			_badgeText={badgeText}
 			_align={align}
-			_id={hideLabel ? `${id}-label` : undefined}
+			_id={`${id}-label`}
 			_label={label}
 		></KolTooltipWcTag>
 	);

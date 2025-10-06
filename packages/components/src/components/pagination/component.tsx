@@ -60,7 +60,7 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	shadow: false,
 })
 export class KolPaginationWc implements PaginationAPI {
-	@Element() private readonly host?: HTMLKolTextareaElement;
+	@Element() private readonly host?: HTMLKolPaginationElement;
 
 	private readonly nonce = nonce();
 	private readonly translatePageFirst = translate('kol-page-first');
@@ -322,34 +322,37 @@ export class KolPaginationWc implements PaginationAPI {
 	};
 
 	private getUnselectedPageButton(page: number): JSX.Element {
+		const pageText = NUMBER_FORMATTER.format(page);
+		const ariaDescription = `${this.translatePage} ${pageText}`;
 		return (
 			<li key={nonce()}>
 				<KolButtonWcTag
-					exportparts="icon"
+					_ariaDescription={ariaDescription}
 					_customClass={this.state._customClass}
-					_label=""
+					_label={pageText}
 					_on={{
 						onClick: (event: Event) => {
 							this.onClick(event, page);
 						},
 					}}
-				>
-					<span slot="expert">
-						<span class="visually-hidden">{this.translatePage}</span> {NUMBER_FORMATTER.format(page)}
-					</span>
-				</KolButtonWcTag>
+				></KolButtonWcTag>
 			</li>
 		);
 	}
 
 	private getSelectedPageButton(page: number): JSX.Element {
+		const pageText = NUMBER_FORMATTER.format(page);
+		const ariaDescription = `${this.translatePage} ${pageText}`;
 		return (
 			<li key={nonce()}>
-				<KolButtonWcTag class="kol-pagination__button kol-pagination__button--selected" _customClass={this.state._customClass} _disabled={true} _label="">
-					<span slot="expert">
-						<span class="visually-hidden">{this.translatePage}</span> {NUMBER_FORMATTER.format(page)}
-					</span>
-				</KolButtonWcTag>
+				<KolButtonWcTag
+					aria-current="page"
+					class="kol-pagination__button kol-pagination__button--selected selected"
+					_ariaDescription={ariaDescription}
+					_customClass={this.state._customClass}
+					_disabled={true}
+					_label={pageText}
+				></KolButtonWcTag>
 			</li>
 		);
 	}

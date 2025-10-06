@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.6",
+	"version": "3.0.7-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -58,7 +58,7 @@
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
-		"knip": "5.63.1",
+		"knip": "5.64.1",
 		"mocha": "11.7.2",
 		"nodemon": "3.1.10",
 		"rimraf": "6.0.1",

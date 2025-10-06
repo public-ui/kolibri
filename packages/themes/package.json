@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "3.0.6",
+	"version": "3.0.7-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -67,9 +67,9 @@
 		"eslint": "8.57.1",
 		"nodemon": "3.1.10",
 		"postcss": "8.5.6",
-		"rollup": "4.52.0",
+		"rollup": "4.52.3",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.93.0",
+		"sass-embedded": "1.93.2",
 		"typescript": "5.9.2"
 	},
 	"peerDependencies": {

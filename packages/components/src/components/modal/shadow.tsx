@@ -7,6 +7,7 @@ import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -68,6 +69,7 @@ export class KolModal implements ModalAPI {
 					'kol-modal__blank': this.state._variant === 'blank',
 					'kol-modal__card': this.state._variant === 'card',
 				})}
+				onCancel={handleCancelOverlay}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;
