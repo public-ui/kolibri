@@ -116,6 +116,9 @@ Falls du zusätzliche Umgebungsvariablen brauchst, kannst du diese in Netlify un
 7. Output Directory: leer lassen (Serverless Functions werden direkt aus `api/` erzeugt).
 8. Optional: `NODE_VERSION` auf eine unterstützte Node-18-Version setzen (z.B. `18`).
 
+Alle Angaben zu Install- und Build-Command sowie die notwendigen Rewrites sind zusätzlich in `vercel.json` hinterlegt.
+Die Datei liegt im Ordner `packages/tools/mcp` und stellt sicher, dass lokale `vercel`-CLI-Builds und Deployments aus der Vercel Cloud automatisch denselben Buildschritt ausführen und Anfragen auf `/health`, `/samples`, `/sample` und `/refresh` korrekt auf die Funktion `api/mcp` umleiten.
+
 Der Build-Command ruft das Skript `packages/tools/mcp/vercel/build.mjs` auf. Dieses Skript generiert den Sample-Index einmal für
 Netlify und kopiert ihn zusätzlich nach `packages/tools/mcp/vercel/sample-index.json`, sodass die Vercel-Funktion den gleichen
 Index nutzen kann.
