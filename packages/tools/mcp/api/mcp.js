@@ -145,6 +145,7 @@ export default async function handler(request, response) {
 		const result = await handleApiRequest({
 			method: request.method ?? 'GET',
 			url: buildRequestUrl(request),
+			headers: request.headers || {},
 			getIndex: () => ensureIndex(),
 			refresh: () => refreshIndex(),
 		});

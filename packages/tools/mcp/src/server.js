@@ -13,6 +13,7 @@ export async function startServer(options = {}) {
 			handleApiRequest({
 				method: request.method ?? 'GET',
 				url: request.url ?? '/',
+				headers: request.headers || {},
 				getIndex: () => index,
 				refresh: () => rebuild(),
 			}),
@@ -66,5 +67,11 @@ function respondWithResult(response, result) {
 		return;
 	}
 
-	response.end(JSON.stringify(result.body, null, 2));
+	// Check if the response is HTML
+	const contentType = response.getHeader('Content-Type') || '';
+	if (contentType.includes('text/html')) {
+		response.end(result.body);
+	} else {
+		response.end(JSON.stringify(result.body, null, 2));
+	}
 }
