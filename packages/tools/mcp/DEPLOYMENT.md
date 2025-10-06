@@ -108,12 +108,13 @@ Falls du zusätzliche Umgebungsvariablen brauchst, kannst du diese in Netlify un
 ### Projekt anlegen oder importieren
 
 1. Wähle in Vercel "Add New..." → "Project" und importiere das Repository.
-2. Setze **Root Directory** auf `packages/tools/mcp`.
-3. Framework Preset: `Other`.
-4. Install Command: leer lassen (Vercel führt automatisch `pnpm install --frozen-lockfile` aus).
-5. Build Command: `pnpm --filter @public-ui/mcp vercel:build`.
-6. Output Directory: leer lassen (Serverless Functions werden direkt aus `api/` erzeugt).
-7. Optional: `NODE_VERSION` auf eine unterstützte Node-18-Version setzen (z.B. `18`).
+2. Wähle als Projektnamen `kolibri-mcp`.
+3. Setze **Root Directory** auf `packages/tools/mcp`.
+4. Framework Preset: `Other`.
+5. Install Command: leer lassen (Vercel führt automatisch `pnpm install --frozen-lockfile` aus).
+6. Build Command: `pnpm --filter @public-ui/mcp vercel:build`.
+7. Output Directory: leer lassen (Serverless Functions werden direkt aus `api/` erzeugt).
+8. Optional: `NODE_VERSION` auf eine unterstützte Node-18-Version setzen (z.B. `18`).
 
 Der Build-Command ruft das Skript `packages/tools/mcp/vercel/build.mjs` auf. Dieses Skript generiert den Sample-Index einmal für
 Netlify und kopiert ihn zusätzlich nach `packages/tools/mcp/vercel/sample-index.json`, sodass die Vercel-Funktion den gleichen
@@ -176,14 +177,16 @@ pnpm install
 pnpm --filter @public-ui/mcp vercel:build
 
 # Deploy (Preview)
-vercel --cwd packages/tools/mcp
+cd packages/tools/mcp
+vercel
 
 # Deploy (Production)
-vercel --cwd packages/tools/mcp --prod
+vercel --prod
 ```
 
 > Hinweis: Das Skript `pnpm --filter @public-ui/mcp vercel:build` muss vor jedem Deploy ausgeführt werden, damit die Datei
-> `vercel/sample-index.json` aktualisiert wird und im Serverless Bundle landet.
+> `vercel/sample-index.json` aktualisiert wird und im Serverless Bundle landet. Das anschließende `vercel`-Kommando wird in
+> `packages/tools/mcp` ausgeführt, sodass keine zusätzlichen `--cwd`-Parameter mehr notwendig sind.
 
 ## Lokales Testen
 
