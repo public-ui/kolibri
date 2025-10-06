@@ -16,3 +16,4 @@ export type {
 	Toast,
 	ToasterOptions,
 } from './schema';
+export { isTooltipOpen } from './utils/tooltip-open-tracking';
