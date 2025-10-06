@@ -13,3 +13,5 @@ export const handleCancelOverlay = (event: Event): void => {
 		event.preventDefault();
 	}
 };
+
+export const isTooltipOpen = (): boolean => openTooltips > 0;
