@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolAlertFc should render 1`] = `
-<div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+<div aria-live="polite" class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="status">
   <div class="kol-alert__container">
     <span class="visually-hidden">
       kol-message

@@ -4,11 +4,11 @@
   {% elseif mode == 'ssr' %}
     <template shadowrootmode="open">
   {% endif %}
-  {% if _label|length > 0 %}
-    <i aria-label="{{ _label }}" class="{{ _icons }}" part="icon" role="img"></i>
-  {% else %}
-    <i aria-hidden="true" class="{{ _icons }}" part="icon" role="img"></i>
-  {% endif %}
+{% if _label|length > 0 %}
+<i aria-label="{{ _label }}" class="{{ _icons }}" part="icon" role="img"></i>
+{% else %}
+<i aria-hidden="true" class="{{ _icons }}" part="icon" role="presentation"></i>
+{% endif %}
   {% if mode == 'csr' %}
     </mock:shadow-root>
   {% elseif mode == 'ssr' %}

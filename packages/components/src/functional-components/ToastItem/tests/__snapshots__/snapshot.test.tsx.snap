@@ -2,7 +2,7 @@
 
 exports[`ToastItemFc should render with basic props and status 1`] = `
 <div class="kol-toast-item kol-toast-item--settled">
-  <div class="kol-alert kol-alert--hasCloser kol-alert--type-info kol-alert--variant-card kol-toast-item__alert" data-testid="alert" role="status">
+  <div aria-live="assertive" class="kol-alert kol-alert--hasCloser kol-alert--type-info kol-alert--variant-card kol-toast-item__alert" data-testid="alert" role="alert">
     <div class="kol-alert__container">
       <span class="visually-hidden">
         kol-info

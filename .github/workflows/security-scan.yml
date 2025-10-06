@@ -59,7 +59,7 @@ jobs:
           node-version: 22
 
       - name: Run security scans
-        uses: ./.github/actions/security-scan
+        uses: public-ui/kolibri/.github/actions/security-scan@develop
         with:
           enable-audit: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_audit || 'true' }}
           enable-trivy: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_trivy || 'true' }}

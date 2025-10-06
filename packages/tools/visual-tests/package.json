@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "3.0.7-rc.1",
+	"version": "3.0.7-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -25,7 +25,6 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
-		"prepare": "npx playwright install --with-deps firefox",
 		"unused": "knip"
 	},
 	"bin": {

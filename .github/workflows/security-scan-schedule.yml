@@ -36,6 +36,6 @@ jobs:
           cache: 'pnpm'
 
       - name: Run security scans
-        uses: ./.github/actions/security-scan
+        uses: public-ui/kolibri/.github/actions/security-scan@develop
         with:
           install-deps: 'true'

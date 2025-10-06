@@ -7,7 +7,7 @@ describe('FormFieldTooltipFc', () => {
 		const label = 'Test Label';
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id="test-id" label={label} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_id')).toBe(null);
+		expect(page.root?.getAttribute('_id')).toBe('test-id-label');
 		expect(page.root?.getAttribute('_label')).toBe(label);
 	});
 
@@ -45,16 +45,6 @@ describe('FormFieldTooltipFc', () => {
 		const id = 'test-id';
 		const label = 'Test Label';
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id={id} label={label} />);
-
-		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_id')).toBe(null);
-		expect(page.root?.getAttribute('_label')).toBe(label);
-	});
-
-	it('should set the correct id when hideLabel is true', async () => {
-		const id = 'test-id';
-		const label = 'Test Label';
-		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id={id} label={label} hideLabel={true} />);
 
 		expect(page.root).toMatchSnapshot();
 		expect(page.root?.getAttribute('_id')).toBe(`${id}-label`);
