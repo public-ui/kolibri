@@ -1,18 +1,12 @@
-name: Vercel MCP Deploy
+name: Vercel MCP-Deploy
 
 on:
   push:
     branches:
       - develop
-    paths:
-      - 'packages/tools/mcp/**'
-      - '.github/workflows/mcp-vercel.yml'
   pull_request:
     branches:
       - develop
-    paths:
-      - 'packages/tools/mcp/**'
-      - '.github/workflows/mcp-vercel.yml'
   workflow_dispatch:
 
 concurrency:
