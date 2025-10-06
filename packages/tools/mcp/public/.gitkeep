@@ -1,0 +1,2 @@
+# This file ensures the public directory is tracked by git
+# even when it might be empty during development
