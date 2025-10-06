@@ -4,6 +4,7 @@ npm deprecate @public-ui/angular-v19@$1 "Wir empfehlen die Verwendung einer neue
 npm deprecate @public-ui/angular-v20@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/hydrate@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/kolibri-cli@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
+npm deprecate @public-ui/mcp@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/preact@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/react@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/react-v19@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
