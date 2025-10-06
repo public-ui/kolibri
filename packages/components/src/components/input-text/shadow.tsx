@@ -98,13 +98,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		}
 	};
 
-	private readonly onSelectionChange = (event: Event) => {
-		// eslint-disable-next-line no-console
-		console.log('inner selectionchange function');
-
-		this.controller.onFacade.onSelectionChange(event);
-	};
-
 	/**
 	 * Returns the current value.
 	 */
@@ -198,7 +191,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
-			onSelectionChange: this.onSelectionChange,
 		};
 	}
 
@@ -534,21 +526,5 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-	}
-
-	public componentDidLoad(): void {
-		// verzweifelter versuch den listener ran zu bekommen... :D
-		//this.inputRef?.addEventListener('selectionchange', this.onSelectionChange);
-
-		if (this.inputRef) {
-			// die ersten beiden feuern leider nur einmal beim start
-			// eslint-disable-next-line no-console
-			//	this.inputRef.addEventListener('selectionchange', (ev) => console.log('selectionchange', ev));
-			// eslint-disable-next-line no-console
-			//this.inputRef.onselectionchange = (ev) => console.log('onselectionchange', ev);
-			// focus funktioniert wie erwartet
-			// eslint-disable-next-line no-console
-			//	this.inputRef.addEventListener('focus', (ev) => console.log('focus', ev));
-		}
 	}
 }

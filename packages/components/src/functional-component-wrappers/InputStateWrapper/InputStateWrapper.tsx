@@ -31,7 +31,6 @@ type InputState =
 export type InputStateWrapperProps = Partial<InputProps> & {
 	state: InputState;
 	customSuggestions?: boolean;
-	onSelectionChange?: (event: Event) => void;
 };
 
 /**

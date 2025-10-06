@@ -44,8 +44,6 @@ const InputFc: FC<InputProps> = (props) => {
 	return (
 		<>
 			<input {...inputProps} value={value} />
-			{/* eslint-disable-next-line no-console */}
-			<input ref={(el) => el?.addEventListener('selectionchange', console.log)} />
 			{suggestions}
 		</>
 	);
