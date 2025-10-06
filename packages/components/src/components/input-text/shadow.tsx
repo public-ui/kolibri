@@ -3,7 +3,6 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import {
-	getDocument,
 	type AccessKeyPropType,
 	type AutoCompletePropType,
 	type ButtonProps,
@@ -78,8 +77,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onFocus = (event: FocusEvent) => {
-		// eslint-disable-next-line no-console
-		console.log('inner focus function');
 		this.controller.onFacade.onFocus(event);
 		this.inputHasFocus = true;
 	};
@@ -130,7 +127,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async selectionEnd(): Promise<number | null | undefined> {
+	public async selectioconEnd(): Promise<number | null | undefined> {
 		return this.inputRef?.selectionEnd;
 	}
 
@@ -192,13 +189,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
 		};
-	}
-
-	public componentWillRender(): void {
-		// eslint-disable-next-line no-console
-		this.host?.addEventListener('selectionchange', console.warn); // geht nicht
-		// eslint-disable-next-line no-console
-		getDocument().addEventListener('selectionchange', console.info); // geht
 	}
 
 	public render(): JSX.Element {

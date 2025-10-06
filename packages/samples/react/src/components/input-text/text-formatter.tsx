@@ -20,7 +20,20 @@ class IbanFormatter {
 	public parse(value: string): string {
 		return this.electronicFormat(value);
 	}
-	public format(value: string): string {
+	public format(value: string, ref?: HTMLKolInputTextElement | null): string {
+		if (ref) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+			ref.selectionStart().then((value) => {
+				// schon zu spät selectionstart ist schon am ende des strings
+				console.log(value);
+
+				if (value) {
+					setTimeout(() => {
+						ref?.setSelectionStart(value);
+					}, 1);
+				}
+			});
+		}
 		return this.printFormat(value);
 	}
 }
@@ -36,6 +49,9 @@ type CurrencyExampleFormValues = {
 export function InputTextFormatterDemo() {
 	const handleSubmit = async () => {};
 	const formatter = new IbanFormatter();
+
+	const textInput1 = React.useRef<HTMLKolInputTextElement>(null);
+	const textInput2 = React.useRef<HTMLKolInputTextElement>(null);
 
 	const initialIbanExampleValues: IbanExampleFormValues = {
 		iban: 'DE89370400440532013000',
@@ -64,12 +80,13 @@ export function InputTextFormatterDemo() {
 										{({ field }: FieldProps<IbanExampleFormValues['iban']>) => (
 											<div className="block mt-2">
 												<KolInputText
+													ref={textInput1}
 													onBlur={() => {
 														void form.setFieldTouched('iban', true);
 													}}
 													id="field-iban"
 													_label="IBAN"
-													_value={formatter.format(field.value ?? '')}
+													_value={formatter.format(field.value ?? '', textInput1.current)}
 													_msg={{
 														_type: 'error',
 														_description: form.errors.iban || '',
@@ -80,7 +97,6 @@ export function InputTextFormatterDemo() {
 														onInput: (event, value: unknown) => {
 															if (event.target) {
 																const parsed_value = formatter.parse((value as string) ?? '');
-
 																void form.setFieldValue('iban', parsed_value, true);
 															}
 														},
@@ -112,7 +128,7 @@ export function InputTextFormatterDemo() {
 											<div className="block mt-2">
 												<NumericFormat
 													customInput={({ type, value, onBlur, onChange, onFocus }: any) => {
-														return <KolInputText _label="Currency" _type={type} _value={value} _on={{ onBlur, onChange, onFocus }} />;
+														return <KolInputText _label="Currency" _type={type} _value={value} _on={{ onBlur, onChange, onFocus }} ref={textInput2} />;
 													}}
 													displayType="input"
 													value={typeof field.value === 'number' ? field.value.toFixed(2) : undefined}

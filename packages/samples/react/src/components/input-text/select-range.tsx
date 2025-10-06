@@ -24,7 +24,8 @@ export const InputTextSelectRange = () => {
 
 	React.useEffect(() => {
 		if (textInput.current) {
-			textInput.current.addEventListener('kolselectionchange', (ev) => console.log(ev));
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+			textInput.current.selectionStart().then((val) => console.log(val), console.log);
 		}
 
 		// nur zum test wie an einem normalen input selectionchange läuft
@@ -43,10 +44,7 @@ export const InputTextSelectRange = () => {
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
-
-				<input type="text" value="Very long value" ref={inputRef} />
-
-				<input ref={(el) => el?.addEventListener('selectionchange', console.log)} />
+				<KolButtonLink _label="Get Selection Start" onClick={setRangeText} />
 			</div>
 		</>
 	);
