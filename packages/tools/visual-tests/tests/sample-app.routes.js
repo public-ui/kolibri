@@ -159,11 +159,11 @@ ROUTES.set('button/baselined', {
 	},
 });
 ROUTES.set('button/short-key', {
-	viewportSize: {
-		width: 800,
-		height: 434,
-	},
 	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 434,
+		},
 		zoom: {
 			skip: true,
 		},
