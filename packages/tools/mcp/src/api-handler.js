@@ -12,8 +12,7 @@ function normalizePathname(pathname) {
 	if (pathname === '/') {
 		return pathname;
 	}
-
-	const prefixes = ['/api/mcp', '/.netlify/functions/mcp'];
+	const prefixes = ['/.netlify/functions/mcp'];
 
 	for (const prefix of prefixes) {
 		if (pathname.startsWith(prefix)) {
