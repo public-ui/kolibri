@@ -21,7 +21,6 @@
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/components --filter @public-ui/theme-default build",
 		"format": "prettier --check tests",
-		"prepare": "npx playwright install --with-deps chromium",
 		"pretest": "rimraf public/*/ && npm-run-all2 pretest:*",
 		"pretest:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"pretest:components-dist": "cpy \"node_modules/@public-ui/components/dist/**/*\" public/components --dot",
