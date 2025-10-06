@@ -129,16 +129,18 @@ Index nutzen kann.
 
 ### Endpunkte nach Deployment
 
-Die Vercel-Funktion liegt unter `/api/mcp`. Beispiele:
+Das Backend erwartet keine `/api/mcp`-Präfixe mehr. Richte daher in Vercel (z. B. über "Rewrites") Weiterleitungen ein, die
+die gewünschten Routen wie `/health`, `/samples` oder `/sample` auf die Funktion `api/mcp` zeigen. Nach einer entsprechenden
+Rewrite-Regel lassen sich die Endpunkte beispielsweise so aufrufen:
 
 ```bash
-https://<projekt>.vercel.app/api/mcp/health
-https://<projekt>.vercel.app/api/mcp/samples?q=button
-https://<projekt>.vercel.app/api/mcp/sample?id=button/basic
+https://<projekt>.vercel.app/health
+https://<projekt>.vercel.app/samples?q=button
+https://<projekt>.vercel.app/sample?id=button/basic
 ```
 
-Die `POST /api/mcp/refresh`-Route lädt den vorkompilierten Index neu. Sofern der Build-Command ausgeführt wurde, lädt die
-Funktion die Datei erneut; andernfalls fällt sie auf einen dynamischen Neuaufbau zurück.
+Die `POST /refresh`-Route lädt den vorkompilierten Index neu. Sofern der Build-Command ausgeführt wurde, lädt die Funktion die
+Datei erneut; andernfalls fällt sie auf einen dynamischen Neuaufbau zurück.
 
 ### Automatisiertes Deployment mit GitHub Actions
 
