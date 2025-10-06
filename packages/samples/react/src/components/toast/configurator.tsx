@@ -24,24 +24,27 @@ export const ToastConfigurator: FC = () => {
 	const queryType = searchParams.get('type');
 	const defaultType = isAlertType(queryType) ? queryType : undefined;
 	const [selectedType, setSelectedType] = useState<AlertTypePropType>(() => defaultType ?? 'default');
-	const toaster = useMemo(
-		() =>
-			ToasterService.getInstance(document, {
-				defaultVariant: 'card',
-			}),
-		[],
-	);
+	const toaster = useMemo<ToasterService>(() => ToasterService.getInstance(document), []);
+
+	useEffect(() => {
+		toastTypes.forEach((type) => {
+			void toaster.enqueue({
+				description: 'Toasty',
+				label: `Toast with type '${type}'`,
+				type,
+			});
+		});
+
+		return () => {
+			toaster.closeAll();
+		};
+	}, [toaster]);
 
 	useEffect(() => {
 		if (defaultType) {
 			setSelectedType(defaultType);
-			void toaster.enqueue({
-				description: 'Toasty',
-				label: `Toast with type '${defaultType}'`,
-				type: defaultType,
-			});
 		}
-	}, [defaultType, toaster]);
+	}, [defaultType]);
 
 	const handleTypeChange = (_: Event, value: unknown) => {
 		if (isAlertType(value)) {

@@ -905,6 +905,17 @@ ROUTES.set('toast/basic?variant=card', {
 		},
 	},
 });
+ROUTES.set('toast/configurator', {
+	snapshot: {
+		viewportSize: {
+			width: 600,
+			height: 300,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 
 ROUTES.set('toast/basic?type=default&variant=msg', {
 	snapshot: {
