@@ -27,9 +27,11 @@ npx @public-ui/mcp
 
 The server will start on `http://localhost:3030` and provide the following endpoints:
 
-- `GET /mcp/health` - Server status and sample count
+- `GET /mcp/health` - Server status and content counts
 - `GET /mcp/samples` - List all available component examples
 - `GET /mcp/sample?id=button/basic` - Get specific sample source code
+- `GET /mcp/concepts` - List Markdown concept documentation
+- `GET /mcp/concept?id=concepts/getting-started` - Get a specific concept document
 - `POST /mcp/refresh` - Refresh sample index
 
 ### Integration with AI Tools
@@ -65,7 +67,7 @@ const samples = await response.json();
 
 ## 📚 What's Included
 
-This MCP server provides access to **136+ KoliBri component examples** and the core **Markdown documentation** of the project, including:
+This MCP server provides access to **136+ KoliBri component examples** and the core **Markdown concept documentation** of the project, including:
 
 - **Basic Components**: Button, Input, Link, Icon, Badge, etc.
 - **Form Components**: Form, Select, Textarea, Checkbox, Radio, etc.
@@ -73,7 +75,7 @@ This MCP server provides access to **136+ KoliBri component examples** and the c
 - **Navigation**: Breadcrumb, Pagination, Navigation, etc.
 - **Data Display**: Table, Alert, Toast, Progress, etc.
 - **Advanced Components**: Tree, Tooltip, Popover, etc.
-- **Markdown Docs**: `README.md`, `docs/*.md`, migration guides, security guidelines, and more.
+- **Concept Docs**: `README.md`, `docs/*.md`, migration guides, security guidelines, and more.
 
 Each sample includes:
 
@@ -94,6 +96,7 @@ Returns server status and metadata:
 	"healthy": true,
 	"totalEntries": 154,
 	"totalSamples": 136,
+	"totalConcepts": 18,
 	"totalDocs": 18,
 	"message": "System healthy with 154 entries available",
 	"generatedAt": "2024-05-28T08:15:30.000Z"
@@ -133,17 +136,26 @@ Returns:
 }
 ```
 
-### GET /mcp/sample?id=docs/<path>
+### GET /mcp/concepts
 
-Fetch Markdown documentation by referencing its `docs/...` identifier:
+List Markdown-based concept documentation entries:
 
 ```bash
-curl "http://localhost:3030/mcp/sample?id=docs/README"
+curl http://localhost:3030/mcp/concepts
+
+# Filter by term
+curl "http://localhost:3030/mcp/concepts?q=theme"
 ```
 
-Returns the Markdown content of `README.md` together with metadata.
+### GET /mcp/concept?id={conceptId}
 
-Every sample or document response also exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
+Fetch Markdown documentation by referencing its `concepts/...` identifier:
+
+```bash
+curl "http://localhost:3030/mcp/concept?id=concepts/README"
+```
+
+Returns the Markdown content together with metadata. Every sample or concept response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
 ## 🛠️ Use Cases
 

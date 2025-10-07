@@ -27,17 +27,22 @@ class SampleIndex {
 			total: counts.total,
 			byKind: counts.byKind,
 			totalSamples: counts.byKind.get('sample') ?? counts.total,
-			totalDocs: counts.byKind.get('doc') ?? 0,
+			totalConcepts: counts.byKind.get('concept') ?? counts.byKind.get('doc') ?? 0,
+			totalDocs: counts.byKind.get('doc') ?? counts.byKind.get('concept') ?? 0,
 		};
 	}
 
-	list(query) {
+	list(query, options = {}) {
+		const kinds = options.kinds ? new Set(options.kinds) : undefined;
+		const normalizeKind = (entry) => entry.kind ?? 'sample';
+		let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
+
 		if (!query) {
-			return this.entries;
+			return results;
 		}
 
 		const normalized = query.trim().toLowerCase();
-		return this.entries.filter(
+		return results.filter(
 			(entry) => entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
 		);
 	}

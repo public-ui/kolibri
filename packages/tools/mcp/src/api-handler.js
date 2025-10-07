@@ -40,7 +40,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			headers: baseHeaders,
 			body: {
 				message: 'KoliBri MCP backend is running.',
-				endpoints: ['/health', '/samples', '/sample?id=<component/sample>'],
+				endpoints: ['/health', '/samples', '/sample?id=<component/sample>', '/concepts', '/concept?id=<concept/identifier>'],
 			},
 		};
 	}
@@ -50,6 +50,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		const counts = index.counts ?? {
 			total: index.entries.length,
 			totalSamples: index.entries.length,
+			totalConcepts: 0,
 			totalDocs: 0,
 		};
 		const isHealthy = counts.total > 0;
@@ -57,7 +58,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		// Debug information for Vercel
 		console.log('[health] Total entries:', counts.total);
 		console.log('[health] Sample entries:', counts.totalSamples);
-		console.log('[health] Markdown entries:', counts.totalDocs);
+		console.log('[health] Concept entries:', counts.totalConcepts ?? counts.totalDocs);
 		console.log('[health] Index generated at:', index.generatedAt);
 		console.log('[health] Is healthy:', isHealthy);
 
@@ -69,7 +70,8 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 				healthy: isHealthy,
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
-				totalDocs: counts.totalDocs,
+				totalConcepts: counts.totalConcepts ?? counts.totalDocs ?? 0,
+				totalDocs: counts.totalDocs ?? counts.totalConcepts ?? 0,
 				message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
 				generatedAt: index.generatedAt.toISOString(),
 				debug: {
@@ -83,7 +85,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 	if (normalizedMethod === 'GET' && pathname === '/samples') {
 		const index = await getIndex();
 		const query = requestUrl.searchParams.get('q') ?? '';
-		const items = index.list(query).map((entry) => ({
+		const items = index.list(query, { kinds: ['sample'] }).map((entry) => ({
 			group: entry.group,
 			id: entry.id,
 			name: entry.name,
@@ -99,7 +101,8 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 				total: items.length,
 				totalEntries: index.counts?.total ?? index.entries.length,
 				totalSamples: index.counts?.totalSamples ?? index.entries.length,
-				totalDocs: index.counts?.totalDocs ?? 0,
+				totalConcepts: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? 0,
+				totalDocs: index.counts?.totalDocs ?? index.counts?.totalConcepts ?? 0,
 				generatedAt: index.generatedAt.toISOString(),
 			},
 		};
@@ -125,6 +128,14 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			};
 		}
 
+		if ((entry.kind ?? 'sample') !== 'sample') {
+			return {
+				statusCode: 400,
+				headers: baseHeaders,
+				body: { error: 'invalid_kind', expected: 'sample', actual: entry.kind ?? 'sample', id },
+			};
+		}
+
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
@@ -139,12 +150,72 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		};
 	}
 
+	if (normalizedMethod === 'GET' && pathname === '/concepts') {
+		const index = await getIndex();
+		const query = requestUrl.searchParams.get('q') ?? '';
+		const items = index.list(query, { kinds: ['concept', 'doc'] }).map((entry) => ({
+			group: entry.group,
+			id: entry.id,
+			name: entry.name,
+			path: entry.path,
+			kind: entry.kind ?? 'concept',
+		}));
+		return {
+			statusCode: 200,
+			headers: baseHeaders,
+			body: {
+				items,
+				query,
+				total: items.length,
+				totalEntries: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? items.length,
+				totalConcepts: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? items.length,
+				totalDocs: index.counts?.totalDocs ?? index.counts?.totalConcepts ?? items.length,
+				generatedAt: index.generatedAt.toISOString(),
+			},
+		};
+	}
+
+	if (normalizedMethod === 'GET' && pathname === '/concept') {
+		const index = await getIndex();
+		const id = requestUrl.searchParams.get('id');
+		if (!id) {
+			return {
+				statusCode: 400,
+				headers: baseHeaders,
+				body: { error: 'missing_id' },
+			};
+		}
+
+		const entry = index.get(id);
+		if (!entry || !['concept', 'doc'].includes(entry.kind ?? 'sample')) {
+			return {
+				statusCode: 404,
+				headers: baseHeaders,
+				body: { error: 'not_found', id },
+			};
+		}
+
+		return {
+			statusCode: 200,
+			headers: baseHeaders,
+			body: {
+				id: entry.id,
+				group: entry.group,
+				name: entry.name,
+				path: entry.path,
+				code: entry.code,
+				kind: entry.kind ?? 'concept',
+			},
+		};
+	}
+
 	if (normalizedMethod === 'POST' && pathname === '/refresh') {
 		try {
 			const index = await refresh();
 			const counts = index.counts ?? {
 				total: index.entries.length,
 				totalSamples: index.entries.length,
+				totalConcepts: 0,
 				totalDocs: 0,
 			};
 			return {
@@ -154,7 +225,8 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 					status: 'refreshed',
 					totalEntries: counts.total,
 					totalSamples: counts.totalSamples,
-					totalDocs: counts.totalDocs,
+					totalConcepts: counts.totalConcepts ?? counts.totalDocs ?? 0,
+					totalDocs: counts.totalDocs ?? counts.totalConcepts ?? 0,
 					generatedAt: index.generatedAt.toISOString(),
 				},
 			};

@@ -38,8 +38,8 @@ const SCENARIOS_DIR = path.join(SAMPLE_ROOT, 'scenarios');
 const DOCS_DIR = path.join(REPO_ROOT, 'docs');
 
 const MARKDOWN_SOURCES = [
-	{ directory: DOCS_DIR, groupPrefix: 'docs', recursive: true },
-	{ directory: REPO_ROOT, groupPrefix: 'docs', recursive: false },
+	{ directory: DOCS_DIR, groupPrefix: 'concepts', recursive: true },
+	{ directory: REPO_ROOT, groupPrefix: 'concepts', recursive: false },
 ];
 
 function computeCounts(entries) {
@@ -64,17 +64,23 @@ class SampleIndex {
 			total: counts.total,
 			byKind: counts.byKind,
 			totalSamples: counts.byKind.get('sample') ?? counts.total,
-			totalDocs: counts.byKind.get('doc') ?? 0,
+			totalConcepts: counts.byKind.get('concept') ?? counts.byKind.get('doc') ?? 0,
+			totalDocs: counts.byKind.get('doc') ?? counts.byKind.get('concept') ?? 0,
 		};
 	}
 
-	list(query) {
+	list(query, options = {}) {
+		const kinds = options.kinds ? new Set(options.kinds) : undefined;
+		const normalizeKind = (entry) => entry.kind ?? 'sample';
+
+		let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
+
 		if (!query) {
-			return this.entries;
+			return results;
 		}
 
 		const normalized = query.trim().toLowerCase();
-		return this.entries.filter(
+		return results.filter(
 			(entry) => entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
 		);
 	}
@@ -314,7 +320,7 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 			path: normalizedRepoPath,
 			absolutePath,
 			code,
-			kind: 'doc',
+			kind: 'concept',
 		});
 	}
 
