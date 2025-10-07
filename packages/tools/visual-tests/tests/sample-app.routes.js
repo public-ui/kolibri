@@ -831,137 +831,17 @@ ROUTES.set('textarea/with-counter', {
 		},
 	},
 });
-ROUTES.set('toast/basic', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=info', {
+ROUTES.set('toast/configurator', {
 	snapshot: {
 		viewportSize: {
 			width: 600,
-			height: 300,
+			height: 750,
 		},
 		zoom: {
 			skip: true,
 		},
 	},
 });
-ROUTES.set('toast/basic?type=success', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=warning', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=error', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?variant=msg', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?variant=card', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-
-ROUTES.set('toast/basic?type=default&variant=msg', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=info&variant=msg', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=success&variant=msg', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=warning&variant=msg', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('toast/basic?type=error&variant=msg', {
-	snapshot: {
-		viewportSize: {
-			width: 600,
-			height: 300,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-
 ROUTES.set('toolbar/basic', {
 	snapshot: {
 		viewportSize: {

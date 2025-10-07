@@ -35,7 +35,10 @@ export class KolToastContainer implements ToasterAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async enqueue(toast: Toast) {
 		const newToastState: ToastState = {
-			toast,
+			toast: {
+				...toast,
+				variant: 'card',
+			},
 			status: 'adding',
 			id: `toast-${nonce()}`,
 		};
