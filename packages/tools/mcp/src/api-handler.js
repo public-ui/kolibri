@@ -12,7 +12,7 @@ function normalizePathname(pathname) {
 	if (pathname === '/') {
 		return pathname;
 	}
-	const prefixes = ['/api/mcp'];
+	const prefixes = ['/api/mcp', '/mcp'];
 
 	for (const prefix of prefixes) {
 		if (pathname.startsWith(prefix)) {
@@ -47,17 +47,31 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 
 	if (normalizedMethod === 'GET' && pathname === '/health') {
 		const index = await getIndex();
+		const sampleCount = index.entries.length;
+		const isHealthy = sampleCount > 0;
+
+		// Debug information for Vercel
+		console.log('[health] Sample count:', sampleCount);
+		console.log('[health] Index generated at:', index.generatedAt);
+		console.log('[health] Is healthy:', isHealthy);
+
 		return {
-			statusCode: 200,
+			statusCode: isHealthy ? 200 : 503,
 			headers: baseHeaders,
 			body: {
-				status: 'ok',
-				totalSamples: index.entries.length,
+				status: isHealthy ? 'ok' : 'error',
+				healthy: isHealthy,
+				totalSamples: sampleCount,
+				message: isHealthy ? `System healthy with ${sampleCount} samples available` : 'No samples found - system may not be properly initialized',
 				generatedAt: index.generatedAt.toISOString(),
+				debug: {
+					indexGeneratedAt: index.generatedAt.toISOString(),
+					entriesLength: index.entries.length,
+					firstFewEntries: index.entries.slice(0, 3).map((e) => e.id),
+				},
 			},
 		};
 	}
-
 	if (normalizedMethod === 'GET' && pathname === '/samples') {
 		const index = await getIndex();
 		const query = requestUrl.searchParams.get('q') ?? '';
