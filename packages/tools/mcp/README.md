@@ -146,7 +146,7 @@ Returns:
 
 ## 🌐 Online Demo
 
-Try the live API at: [https://kolibri-mcp.vercel.app](https://kolibri-mcp.vercel.app)
+Try the live API at: [https://public-ui-kolibri-mcp.vercel.app/mcp/](https://public-ui-kolibri-mcp.vercel.app/mcp/)
 
 - Landing page with API documentation
 - Interactive sample browser
