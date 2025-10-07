@@ -795,7 +795,7 @@ ROUTES.set('table/stateless-with-single-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 362,
+			height: 370,
 		},
 		zoom: {
 			skip: true,
