@@ -773,7 +773,7 @@ ROUTES.set('table/stateful-with-single-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 362,
+			height: 370,
 		},
 		zoom: {
 			skip: true,
@@ -784,7 +784,7 @@ ROUTES.set('table/stateless-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 490,
+			height: 495,
 		},
 		zoom: {
 			skip: true,
