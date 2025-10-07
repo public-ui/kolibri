@@ -20,21 +20,13 @@
 		padding: to-rem(8);
 
 		&__table {
-			border-color: var(--color-primary-variant);
-			border-style: solid;
 			width: 100%;
-			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
+			border-spacing: 0.075rem;
 		}
 
 		&__head {
 			position: sticky;
 			top: 0;
-		}
-
-		&__table {
-			width: 100%;
-			border-spacing: 0;
 		}
 
 		&__caption {
