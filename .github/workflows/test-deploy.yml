@@ -7,8 +7,8 @@ on:
       - 'release/*'
     tags:
       - latest
-      - 2v-latest
-      - 1v-latest
+      - v2-latest
+      - v1-latest
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
