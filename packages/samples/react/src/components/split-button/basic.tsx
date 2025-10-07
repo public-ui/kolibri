@@ -3,6 +3,7 @@ import React from 'react';
 import { KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
+import type { ToolbarItemsPropType } from '@public-ui/components';
 
 import type { FC } from 'react';
 
@@ -11,18 +12,21 @@ export const SplitButtonBasic: FC = () => {
 	const dummyEventHandler = {
 		onClick: buttonWithTextClickEventHandler,
 	};
-	const TOOLBAR_ITEMS = [
+	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
+			type: 'button',
 			_label: 'Save',
 			_icons: 'codicon codicon-save',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Move',
 			_icons: 'codicon codicon-move',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Delete',
 			_icons: 'codicon codicon-trash',
 			_on: dummyEventHandler,

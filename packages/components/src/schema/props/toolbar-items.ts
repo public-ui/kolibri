@@ -4,7 +4,13 @@ import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } f
 import type { ButtonProps, LinkProps } from '../../schema';
 
 /* types */
-export type ToolbarItemPropType = ButtonProps | LinkProps;
+export type ToolbarItemPropType =
+	| ({
+			type: 'button';
+	  } & ButtonProps)
+	| ({
+			type: 'link';
+	  } & LinkProps);
 export type ToolbarItemsPropType = ToolbarItemPropType[];
 
 /**

@@ -2,10 +2,12 @@ import type { FC } from 'react';
 import React from 'react';
 import { KolHeading, KolToolbar } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
+import type { ToolbarItemsPropType } from '@public-ui/components';
 
 export const ToolbarBasic: FC = () => {
-	const TOOLBAR_ITEMS = [
+	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
+			type: 'button',
 			_label: 'Back',
 			_hideLabel: true,
 			_icons: {
@@ -15,6 +17,7 @@ export const ToolbarBasic: FC = () => {
 			},
 		},
 		{
+			type: 'button',
 			_label: 'Next',
 			_hideLabel: true,
 			_icons: {
@@ -24,14 +27,17 @@ export const ToolbarBasic: FC = () => {
 			},
 		},
 		{
+			type: 'link',
 			_href: '#/back-page',
 			_label: 'Simple Link 1',
 		},
 		{
+			type: 'link',
 			_href: '#/back-page',
 			_label: 'Simple Link 3',
 		},
 		{
+			type: 'button',
 			_label: 'Bold',
 		},
 	];

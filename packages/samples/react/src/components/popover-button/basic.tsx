@@ -3,6 +3,7 @@ import React from 'react';
 import { SampleDescription } from '../SampleDescription';
 import { KolPopoverButton, KolToolbar, KolHeading } from '@public-ui/react-v19';
 import { useToasterService } from '../../hooks/useToasterService';
+import type { ToolbarItemsPropType } from '@public-ui/components';
 
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
@@ -11,18 +12,21 @@ export const PopoverButtonBasic: FC = () => {
 		onClick: dummyClickEventHandler,
 	};
 
-	const TOOLBAR_ITEMS = [
+	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
+			type: 'button',
 			_label: 'Edit',
 			_icons: 'codicon codicon-edit',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Delete',
 			_icons: 'codicon codicon-trash',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Duplicate',
 			_icons: 'codicon codicon-copy',
 			_on: dummyEventHandler,

@@ -32,6 +32,7 @@ export const ToolbarItemOrder: FC = () => {
 
 	const toolbarItems = useMemo(() => {
 		const items: ToolbarItemsPropType = Array.from({ length: 5 }, (_item, index) => ({
+			type: 'button',
 			_label: `Button ${index + 1}`,
 			_on: { onClick: handleSubmit },
 			_icons: isSubmitting ? 'codicon codicon-loading codicon-modifier-spin' : void 0,
@@ -42,6 +43,7 @@ export const ToolbarItemOrder: FC = () => {
 
 	const brokenToolbarItems = useMemo(() => {
 		const items: ToolbarItemsPropType = Array.from({ length: 5 }, (_item, index) => ({
+			type: 'button',
 			_label: `Button ${index + 1}`,
 			_on: { onClick: handleSubmit2 },
 			_disabled: isSubmitting2,
