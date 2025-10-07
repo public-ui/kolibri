@@ -706,7 +706,7 @@ ROUTES.set('table/with-footer', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 324,
+			height: 360,
 		},
 		zoom: {
 			skip: true,
@@ -740,7 +740,7 @@ ROUTES.set('table/complex-headers', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 370,
+			height: 400,
 		},
 		zoom: {
 			skip: true,
@@ -784,7 +784,7 @@ ROUTES.set('table/stateless-with-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 449,
+			height: 490,
 		},
 		zoom: {
 			skip: true,
