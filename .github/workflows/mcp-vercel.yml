@@ -4,9 +4,19 @@ on:
   push:
     branches:
       - develop
+    paths:
+      - '.github/workflows/mcp-vercel.yml'
+      - 'packages/samples/react/**'
+      - 'packages/tools/mcp/**'
+      - 'packages/components/**'
   pull_request:
     branches:
       - develop
+    paths:
+      - '.github/workflows/mcp-vercel.yml'
+      - 'packages/samples/react/**'
+      - 'packages/tools/mcp/**'
+      - 'packages/components/**'
   workflow_dispatch:
 
 concurrency:
@@ -14,7 +24,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     env:
       PNPM_CACHE_FOLDER: .pnpm
@@ -31,47 +41,28 @@ jobs:
       - name: Setup pnpm workspace
         uses: ./.github/actions/pnpm-setup
 
-      - name: Build workspace dependencies
-        run: pnpm --filter @public-ui/mcp build:deps
-
-      - name: Build Vercel assets
-        run: |
-          pnpm --filter @public-ui/mcp vercel:build
-          ls -la packages/tools/mcp/vercel/
-
-      - name: Pull Vercel environment configuration (production)
-        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+      - name: Build MCP package with all samples
         working-directory: packages/tools/mcp
         run: |
-          pnpm dlx vercel@latest pull --yes --environment=production --token "$VERCEL_TOKEN"
-
-      - name: Build project with Vercel CLI (production)
-        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
-        working-directory: packages/tools/mcp
-        run: |
-          pnpm dlx vercel@latest build --prod --token "$VERCEL_TOKEN"
-
+          echo "🔨 Building MCP package with embedded samples..."
+          pnpm build
+          echo "📊 Checking built artifacts..."
+          echo "Sample files generated:"
+          ls -la dist/samples.* || echo "No sample files found!"
+          echo "API directory:"
+          ls -la api/ || echo "No API directory found!"
+          echo "Total samples in dist/samples.json:"
+          jq '.entries | length' dist/samples.json || echo "Could not count samples"
       - name: Deploy to Vercel (production)
         id: deploy_prod
         if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
         working-directory: packages/tools/mcp
         run: |
           set -eo pipefail
-          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --prod --yes --token "$VERCEL_TOKEN" | tail -n1)
+          echo "🚀 Deploying pre-built package to Vercel..."
+          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN" | tail -n1)
           echo "url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
           echo "Production deployment available at ${DEPLOY_URL}"
-
-      - name: Pull Vercel environment configuration (preview)
-        if: github.event_name == 'pull_request'
-        working-directory: packages/tools/mcp
-        run: |
-          pnpm dlx vercel@latest pull --yes --environment=preview --token "$VERCEL_TOKEN"
-
-      - name: Build project with Vercel CLI (preview)
-        if: github.event_name == 'pull_request'
-        working-directory: packages/tools/mcp
-        run: |
-          pnpm dlx vercel@latest build --token "$VERCEL_TOKEN"
 
       - name: Deploy to Vercel (preview)
         id: deploy_preview
@@ -79,7 +70,8 @@ jobs:
         working-directory: packages/tools/mcp
         run: |
           set -eo pipefail
-          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --prebuilt --yes --token "$VERCEL_TOKEN" | tail -n1)
+          echo "🚀 Deploying pre-built package to Vercel..."
+          DEPLOY_URL=$(pnpm dlx vercel@latest deploy --yes --token "$VERCEL_TOKEN" | tail -n1)
           echo "url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
           echo "Preview deployment available at ${DEPLOY_URL}"
 
@@ -120,4 +112,3 @@ jobs:
                 body,
               });
             }
-
