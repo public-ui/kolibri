@@ -717,7 +717,7 @@ ROUTES.set('table/with-pagination', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 640,
+			height: 740,
 		},
 		zoom: {
 			skip: true,
@@ -740,7 +740,7 @@ ROUTES.set('table/complex-headers', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 300,
+			height: 370,
 		},
 		zoom: {
 			skip: true,
@@ -773,7 +773,7 @@ ROUTES.set('table/stateful-with-single-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 352,
+			height: 362,
 		},
 		zoom: {
 			skip: true,
@@ -795,7 +795,7 @@ ROUTES.set('table/stateless-with-single-selection', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 352,
+			height: 362,
 		},
 		zoom: {
 			skip: true,
