@@ -47,11 +47,17 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 
 	if (normalizedMethod === 'GET' && pathname === '/health') {
 		const index = await getIndex();
-		const sampleCount = index.entries.length;
-		const isHealthy = sampleCount > 0;
+		const counts = index.counts ?? {
+			total: index.entries.length,
+			totalSamples: index.entries.length,
+			totalDocs: 0,
+		};
+		const isHealthy = counts.total > 0;
 
 		// Debug information for Vercel
-		console.log('[health] Sample count:', sampleCount);
+		console.log('[health] Total entries:', counts.total);
+		console.log('[health] Sample entries:', counts.totalSamples);
+		console.log('[health] Markdown entries:', counts.totalDocs);
 		console.log('[health] Index generated at:', index.generatedAt);
 		console.log('[health] Is healthy:', isHealthy);
 
@@ -61,8 +67,10 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			body: {
 				status: isHealthy ? 'ok' : 'error',
 				healthy: isHealthy,
-				totalSamples: sampleCount,
-				message: isHealthy ? `System healthy with ${sampleCount} samples available` : 'No samples found - system may not be properly initialized',
+				totalEntries: counts.total,
+				totalSamples: counts.totalSamples,
+				totalDocs: counts.totalDocs,
+				message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
 				generatedAt: index.generatedAt.toISOString(),
 				debug: {
 					indexGeneratedAt: index.generatedAt.toISOString(),
@@ -80,6 +88,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			id: entry.id,
 			name: entry.name,
 			path: entry.path,
+			kind: entry.kind ?? 'sample',
 		}));
 		return {
 			statusCode: 200,
@@ -88,6 +97,9 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 				items,
 				query,
 				total: items.length,
+				totalEntries: index.counts?.total ?? index.entries.length,
+				totalSamples: index.counts?.totalSamples ?? index.entries.length,
+				totalDocs: index.counts?.totalDocs ?? 0,
 				generatedAt: index.generatedAt.toISOString(),
 			},
 		};
@@ -122,6 +134,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 				name: entry.name,
 				path: entry.path,
 				code: entry.code,
+				kind: entry.kind ?? 'sample',
 			},
 		};
 	}
@@ -129,12 +142,19 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 	if (normalizedMethod === 'POST' && pathname === '/refresh') {
 		try {
 			const index = await refresh();
+			const counts = index.counts ?? {
+				total: index.entries.length,
+				totalSamples: index.entries.length,
+				totalDocs: 0,
+			};
 			return {
 				statusCode: 200,
 				headers: baseHeaders,
 				body: {
 					status: 'refreshed',
-					totalSamples: index.entries.length,
+					totalEntries: counts.total,
+					totalSamples: counts.totalSamples,
+					totalDocs: counts.totalDocs,
 					generatedAt: index.generatedAt.toISOString(),
 				},
 			};

@@ -30,15 +30,42 @@ const REPO_ROOT = findRepoRoot();
 const SAMPLE_ROOT = path.join(REPO_ROOT, 'packages/samples/react/src');
 const ROUTE_FILENAMES = ['routes.ts', 'routes.tsx'];
 const SAMPLE_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js'];
+const MARKDOWN_EXTENSIONS = ['.md', '.mdx'];
+const IGNORED_DIRECTORIES = new Set(['.git', '.github', '.nx', '.turbo', '.vercel', 'dist', 'build', 'node_modules']);
 
 const COMPONENTS_DIR = path.join(SAMPLE_ROOT, 'components');
 const SCENARIOS_DIR = path.join(SAMPLE_ROOT, 'scenarios');
+const DOCS_DIR = path.join(REPO_ROOT, 'docs');
+
+const MARKDOWN_SOURCES = [
+	{ directory: DOCS_DIR, groupPrefix: 'docs', recursive: true },
+	{ directory: REPO_ROOT, groupPrefix: 'docs', recursive: false },
+];
+
+function computeCounts(entries) {
+	return entries.reduce(
+		(acc, entry) => {
+			const kind = entry.kind ?? 'sample';
+			acc.total += 1;
+			acc.byKind.set(kind, (acc.byKind.get(kind) ?? 0) + 1);
+			return acc;
+		},
+		{ total: 0, byKind: new Map() },
+	);
+}
 
 class SampleIndex {
 	constructor(entries) {
 		this.entries = entries;
 		this.map = new Map(entries.map((entry) => [entry.id, entry]));
 		this.generatedAt = new Date();
+		const counts = computeCounts(entries);
+		this.counts = {
+			total: counts.total,
+			byKind: counts.byKind,
+			totalSamples: counts.byKind.get('sample') ?? counts.total,
+			totalDocs: counts.byKind.get('doc') ?? 0,
+		};
 	}
 
 	list(query) {
@@ -120,13 +147,20 @@ export async function buildSampleIndex() {
 					path: path.relative(REPO_ROOT, absolutePath),
 					absolutePath,
 					code,
+					kind: 'sample',
 				});
 			}
 		}
 	}
 
+	const markdownEntries = await collectMarkdownEntries();
+	entries.push(...markdownEntries);
+
 	entries.sort((a, b) => a.id.localeCompare(b.id));
 	console.log('[buildSampleIndex] Total entries found:', entries.length);
+	if (markdownEntries.length > 0) {
+		console.log('[buildSampleIndex] Markdown entries added:', markdownEntries.length);
+	}
 
 	return new SampleIndex(entries);
 }
@@ -153,6 +187,14 @@ async function safeReadDir(dir) {
 	try {
 		const entries = await readdir(dir, { withFileTypes: true });
 		return entries.filter((entry) => entry.isDirectory());
+	} catch {
+		return [];
+	}
+}
+
+async function readDirEntries(dir) {
+	try {
+		return await readdir(dir, { withFileTypes: true });
 	} catch {
 		return [];
 	}
@@ -203,6 +245,80 @@ async function parseRouteFile(filePath) {
 	const fnBody = `${importDeclarations.join('\n')}\nreturn ${content};`;
 	const routes = new Function(fnBody)();
 	return routes && typeof routes === 'object' ? routes : {};
+}
+
+async function collectMarkdownEntries() {
+	const entries = [];
+
+	for (const source of MARKDOWN_SOURCES) {
+		if (!(await pathExists(source.directory))) {
+			continue;
+		}
+
+		const sourceEntries = await collectMarkdownFromDirectory(source.directory, {
+			groupPrefix: source.groupPrefix,
+			recursive: source.recursive,
+			relativeRoot: source.directory,
+		});
+
+		entries.push(...sourceEntries);
+	}
+
+	return entries;
+}
+
+async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive, relativeRoot }) {
+	const entries = [];
+	const dirents = await readDirEntries(directory);
+
+	for (const dirent of dirents) {
+		const absolutePath = path.join(directory, dirent.name);
+
+		if (dirent.isDirectory()) {
+			if (!recursive || IGNORED_DIRECTORIES.has(dirent.name)) {
+				continue;
+			}
+
+			const nestedEntries = await collectMarkdownFromDirectory(absolutePath, {
+				groupPrefix,
+				recursive: true,
+				relativeRoot,
+			});
+
+			entries.push(...nestedEntries);
+			continue;
+		}
+
+		if (!dirent.isFile()) {
+			continue;
+		}
+
+		const extension = path.extname(dirent.name).toLowerCase();
+		if (!MARKDOWN_EXTENSIONS.includes(extension)) {
+			continue;
+		}
+
+		const code = await readFile(absolutePath, 'utf8');
+		const repoRelativePath = path.relative(REPO_ROOT, absolutePath);
+		const normalizedRepoPath = repoRelativePath.split(path.sep).join('/');
+		const relativePath = path.relative(relativeRoot, absolutePath).split(path.sep).join('/');
+		const withoutExtension = relativePath.replace(/\.[^.]+$/, '');
+		const segments = withoutExtension.split('/').filter(Boolean);
+		const name = segments.pop() ?? withoutExtension;
+		const group = segments.length ? `${groupPrefix}/${segments.join('/')}` : groupPrefix;
+
+		entries.push({
+			id: `${group}/${name}`,
+			group,
+			name,
+			path: normalizedRepoPath,
+			absolutePath,
+			code,
+			kind: 'doc',
+		});
+	}
+
+	return entries;
 }
 
 async function resolveSamplePath(baseDir, relativeImport) {

@@ -4,12 +4,31 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+function computeCounts(entries) {
+	return entries.reduce(
+		(acc, entry) => {
+			const kind = entry.kind ?? 'sample';
+			acc.total += 1;
+			acc.byKind.set(kind, (acc.byKind.get(kind) ?? 0) + 1);
+			return acc;
+		},
+		{ total: 0, byKind: new Map() },
+	);
+}
+
 class SampleIndex {
 	constructor(entries, generatedAt = new Date(), buildMode = 'runtime') {
 		this.entries = entries;
 		this.map = new Map(entries.map((entry) => [entry.id, entry]));
 		this.generatedAt = generatedAt;
 		this.buildMode = buildMode;
+		const counts = computeCounts(entries);
+		this.counts = {
+			total: counts.total,
+			byKind: counts.byKind,
+			totalSamples: counts.byKind.get('sample') ?? counts.total,
+			totalDocs: counts.byKind.get('doc') ?? 0,
+		};
 	}
 
 	list(query) {

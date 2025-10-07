@@ -65,7 +65,7 @@ const samples = await response.json();
 
 ## 📚 What's Included
 
-This MCP server provides access to **136+ KoliBri component examples** including:
+This MCP server provides access to **136+ KoliBri component examples** and the core **Markdown documentation** of the project, including:
 
 - **Basic Components**: Button, Input, Link, Icon, Badge, etc.
 - **Form Components**: Form, Select, Textarea, Checkbox, Radio, etc.
@@ -73,6 +73,7 @@ This MCP server provides access to **136+ KoliBri component examples** including
 - **Navigation**: Breadcrumb, Pagination, Navigation, etc.
 - **Data Display**: Table, Alert, Toast, Progress, etc.
 - **Advanced Components**: Tree, Tooltip, Popover, etc.
+- **Markdown Docs**: `README.md`, `docs/*.md`, migration guides, security guidelines, and more.
 
 Each sample includes:
 
@@ -89,10 +90,13 @@ Returns server status and metadata:
 
 ```json
 {
+	"status": "ok",
 	"healthy": true,
+	"totalEntries": 154,
 	"totalSamples": 136,
-	"sampleGroups": ["button", "input", "table", "..."],
-	"version": "3.0.7"
+	"totalDocs": 18,
+	"message": "System healthy with 154 entries available",
+	"generatedAt": "2024-05-28T08:15:30.000Z"
 }
 ```
 
@@ -124,9 +128,22 @@ Returns:
 	"group": "button",
 	"name": "basic",
 	"path": "packages/samples/react/src/components/button/basic.tsx",
-	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n..."
+	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n...",
+	"kind": "sample"
 }
 ```
+
+### GET /mcp/sample?id=docs/<path>
+
+Fetch Markdown documentation by referencing its `docs/...` identifier:
+
+```bash
+curl "http://localhost:3030/mcp/sample?id=docs/README"
+```
+
+Returns the Markdown content of `README.md` together with metadata.
+
+Every sample or document response also exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
 ## 🛠️ Use Cases
 
