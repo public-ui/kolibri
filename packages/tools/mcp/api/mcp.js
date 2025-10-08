@@ -65,14 +65,12 @@ export default async function handler(request, response) {
 
 			// Index-Funktionen mit eingebetteten Daten
 			const getIndex = async () => mockIndex;
-			const refresh = async () => mockIndex;
 
 			// API Handler aufrufen
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
 				getIndex,
-				refresh,
 			});
 
 			// Response senden
@@ -95,17 +93,11 @@ export default async function handler(request, response) {
 				return cachedIndex;
 			};
 
-			const refresh = async () => {
-				cachedIndex = await buildSampleIndex();
-				return cachedIndex;
-			};
-
 			// API Handler aufrufen
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
 				getIndex,
-				refresh,
 			});
 
 			// Response senden

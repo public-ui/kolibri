@@ -30,15 +30,19 @@ After deployment to Vercel, the API is available under the following URLs:
 
 - `https://<project>.vercel.app/mcp/health`
 - `https://<project>.vercel.app/mcp/samples`
-- `https://<project>.vercel.app/mcp/sample?id=button/basic`
-- `https://<project>.vercel.app/mcp/refresh` (POST)
+- `https://<project>.vercel.app/mcp/sample?id=sample/button/basic`
+- `https://<project>.vercel.app/mcp/concepts`
+- `https://<project>.vercel.app/mcp/concept?id=concept/README`
 
 ## Endpoints
 
 - `GET /api/mcp/health` – returns the backend status and metadata about the current sample index.
 - `GET /api/mcp/samples` – lists all available samples. Can optionally be filtered using the query parameter `q`.
-- `GET /api/mcp/sample?id=<component/sample>` – returns path and source code of a specific sample.
-- `POST /api/mcp/refresh` – rebuilds the sample index if files have changed.
+- `GET /api/mcp/sample?id=sample/<component>/<sample>` – returns path and source code of a specific sample.
+- `GET /api/mcp/concepts` – lists all available concept and documentation entries.
+- `GET /api/mcp/concept?id=concept/<identifier>` – returns metadata and Markdown source of a specific concept.
+
+Refresh requests are not available on deployed environments because the indexes are embedded during the build.
 
 All responses are delivered as JSON and already contain the relative paths within the repository.
 

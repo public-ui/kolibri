@@ -32,7 +32,8 @@ The server will start on `http://localhost:3030` and provide the following endpo
 - `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
 - `GET /mcp/concepts` - List Markdown concept documentation
 - `GET /mcp/concept?id=concept/README` - Get a specific concept document
-- `POST /mcp/refresh` - Refresh sample index
+
+The sample and concept indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
 
 ### Integration with AI Tools
 

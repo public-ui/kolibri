@@ -32,7 +32,7 @@ function normalizePathname(pathname) {
 	return pathname;
 }
 
-export async function handleApiRequest({ method = 'GET', url = '/', getIndex, refresh }) {
+export async function handleApiRequest({ method = 'GET', url = '/', getIndex } = {}) {
 	const baseHeaders = buildCorsHeaders();
 	const normalizedMethod = method.toUpperCase();
 	const requestUrl = new URL(url, 'http://localhost');
@@ -218,34 +218,14 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 	}
 
 	if (normalizedMethod === 'POST' && pathname === '/refresh') {
-		try {
-			const index = await refresh();
-			const counts = index.counts ?? {
-				total: index.entries.length,
-				totalSamples: index.entries.length,
-				totalConcepts: 0,
-				totalDocs: 0,
-			};
-			return {
-				statusCode: 200,
-				headers: baseHeaders,
-				body: withAiHints({
-					status: 'refreshed',
-					totalEntries: counts.total,
-					totalSamples: counts.totalSamples,
-					totalConcepts: counts.totalConcepts ?? counts.totalDocs ?? 0,
-					totalDocs: counts.totalDocs ?? counts.totalConcepts ?? 0,
-					generatedAt: index.generatedAt.toISOString(),
-				}),
-			};
-		} catch (error) {
-			console.error('[mcp] refresh failed', error);
-			return {
-				statusCode: 500,
-				headers: baseHeaders,
-				body: withAiHints({ error: 'refresh_failed' }),
-			};
-		}
+		return {
+			statusCode: 410,
+			headers: baseHeaders,
+			body: withAiHints({
+				error: 'refresh_unavailable',
+				message: 'Die Re-Indexierung ist in bereitgestellten Umgebungen deaktiviert, da die Inhalte bereits vorab eingebettet werden.',
+			}),
+		};
 	}
 
 	return {

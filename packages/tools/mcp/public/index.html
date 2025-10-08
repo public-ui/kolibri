@@ -195,19 +195,28 @@
 					</div>
 					<p class="description">List of all available samples (optional filter with ?q=filter)</p>
 
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/sample?id=button/basic" style="color: #90cdf4">/mcp/sample?id=button/basic</a></code>
-					</div>
-					<p class="description">Path and source code of a specific sample</p>
+                                        <div>
+                                                <span class="method get">GET</span>
+                                                <code class="endpoint"><a href="/mcp/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/sample?id=sample/button/basic</a></code>
+                                        </div>
+                                        <p class="description">Path and source code of a specific sample</p>
 
-					<div>
-						<span class="method post">POST</span>
-						<code class="endpoint">/mcp/refresh</code>
-					</div>
-					<p class="description">Rebuild sample index (when files change)</p>
-				</div>
-			</div>
+                                        <div>
+                                                <span class="method get">GET</span>
+                                                <code class="endpoint"><a href="/mcp/concepts" style="color: #90cdf4">/mcp/concepts</a></code>
+                                        </div>
+                                        <p class="description">List of Markdown-based concept documents</p>
+
+                                        <div>
+                                                <span class="method get">GET</span>
+                                                <code class="endpoint"><a href="/mcp/concept?id=concept/README" style="color: #90cdf4">/mcp/concept?id=concept/README</a></code>
+                                        </div>
+                                        <p class="description">Retrieve a specific concept document including its Markdown source</p>
+                                </div>
+                                <p class="description" style="margin-top: 1rem">
+                                        Hinweis: Die Indizes werden im Buildprozess erzeugt. Ein manuelles <code>refresh</code> ist in Deployments nicht verfügbar.
+                                </p>
+                        </div>
 
 			<div class="footer">
 				<p>

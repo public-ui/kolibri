@@ -26,7 +26,8 @@ server.listen(PORT, () => {
 	console.log(`   GET  /mcp/health   - Server status`);
 	console.log(`   GET  /mcp/samples  - List all samples`);
 	console.log(`   GET  /mcp/sample   - Get specific sample`);
-	console.log(`   POST /mcp/refresh  - Refresh index`);
+	console.log(`   GET  /mcp/concepts - List concept docs`);
+	console.log(`   GET  /mcp/concept  - Get specific concept`);
 	console.log(`📚 Documentation: https://www.npmjs.com/package/@public-ui/mcp`);
 });
 
