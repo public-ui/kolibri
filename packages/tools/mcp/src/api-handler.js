@@ -9,11 +9,64 @@ function buildCorsHeaders() {
 }
 
 export const AI_HINTS_KEY = 'ai-hints';
-export const AI_HINTS_MESSAGE =
-	'KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit.';
+export const AI_HINTS_MESSAGES = Object.freeze([
+	'Always register KoliBri Web Components in the browser runtime before rendering them.',
+	'Choose the integration guide that matches your project setup to load and bundle the components correctly.',
+]);
+
+function normalizeHints(value) {
+	if (Array.isArray(value)) {
+		return value.length > 0 ? value : AI_HINTS_MESSAGES;
+	}
+
+	if (typeof value === 'string') {
+		const trimmed = value.trim();
+		return trimmed ? [trimmed] : AI_HINTS_MESSAGES;
+	}
+
+	return AI_HINTS_MESSAGES;
+}
 
 function withAiHints(body = {}) {
-	return { ...body, [AI_HINTS_KEY]: AI_HINTS_MESSAGE };
+	const normalizedHints = normalizeHints(body[AI_HINTS_KEY]);
+	return { ...body, [AI_HINTS_KEY]: normalizedHints };
+}
+
+function computeCountsFromEntries(entries = []) {
+	return entries.reduce(
+		(acc, entry) => {
+			const kind = entry?.kind ?? 'sample';
+			acc.total += 1;
+			if (kind === 'sample') {
+				acc.totalSamples += 1;
+				return acc;
+			}
+
+			if (kind === 'concept' || kind === 'doc') {
+				acc.totalConcepts += 1;
+				acc.totalDocs += 1;
+			}
+
+			return acc;
+		},
+		{ total: 0, totalSamples: 0, totalConcepts: 0, totalDocs: 0 },
+	);
+}
+
+function resolveCounts(index) {
+	if (!index) {
+		return computeCountsFromEntries();
+	}
+
+	const fallbackCounts = computeCountsFromEntries(index.entries ?? []);
+	const source = index.counts ?? {};
+
+	return {
+		total: typeof source.total === 'number' ? source.total : fallbackCounts.total,
+		totalSamples: typeof source.totalSamples === 'number' ? source.totalSamples : fallbackCounts.totalSamples,
+		totalConcepts: typeof source.totalConcepts === 'number' ? source.totalConcepts : fallbackCounts.totalConcepts,
+		totalDocs: typeof source.totalDocs === 'number' ? source.totalDocs : fallbackCounts.totalDocs,
+	};
 }
 
 function normalizePathname(pathname) {
@@ -43,30 +96,41 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/') {
+		let index;
+		try {
+			index = await getIndex();
+		} catch (error) {
+			console.warn('[root] Unable to load index for overview response:', error);
+		}
+
+		const counts = resolveCounts(index);
+		const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt : undefined;
+
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
 			body: withAiHints({
 				message: 'KoliBri MCP backend is running.',
 				endpoints: ['/health', '/samples', '/sample?id=sample/<component>/<sample>', '/concepts', '/concept?id=concept/<identifier>'],
+				totalEntries: counts.total,
+				totalSamples: counts.totalSamples,
+				totalConcepts: counts.totalConcepts,
+				totalDocs: counts.totalDocs,
+				generatedAt: (generatedAt ?? new Date()).toISOString(),
+				buildMode: index?.buildMode ?? 'runtime',
 			}),
 		};
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/health') {
 		const index = await getIndex();
-		const counts = index.counts ?? {
-			total: index.entries.length,
-			totalSamples: index.entries.length,
-			totalConcepts: 0,
-			totalDocs: 0,
-		};
+		const counts = resolveCounts(index);
 		const isHealthy = counts.total > 0;
 
 		// Debug information for Vercel
 		console.log('[health] Total entries:', counts.total);
 		console.log('[health] Sample entries:', counts.totalSamples);
-		console.log('[health] Concept entries:', counts.totalConcepts ?? counts.totalDocs);
+		console.log('[health] Concept entries:', counts.totalConcepts);
 		console.log('[health] Index generated at:', index.generatedAt);
 		console.log('[health] Is healthy:', isHealthy);
 
@@ -78,8 +142,8 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				healthy: isHealthy,
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts ?? counts.totalDocs ?? 0,
-				totalDocs: counts.totalDocs ?? counts.totalConcepts ?? 0,
+				totalConcepts: counts.totalConcepts,
+				totalDocs: counts.totalDocs,
 				message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
 				generatedAt: index.generatedAt.toISOString(),
 				debug: {
@@ -90,6 +154,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			}),
 		};
 	}
+
 	if (normalizedMethod === 'GET' && pathname === '/samples') {
 		const index = await getIndex();
 		const query = requestUrl.searchParams.get('q') ?? '';
@@ -100,6 +165,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			path: entry.path,
 			kind: entry.kind ?? 'sample',
 		}));
+		const counts = resolveCounts(index);
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
@@ -107,10 +173,10 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				items,
 				query,
 				total: items.length,
-				totalEntries: index.counts?.total ?? index.entries.length,
-				totalSamples: index.counts?.totalSamples ?? index.entries.length,
-				totalConcepts: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? 0,
-				totalDocs: index.counts?.totalDocs ?? index.counts?.totalConcepts ?? 0,
+				totalEntries: counts.total,
+				totalSamples: counts.totalSamples,
+				totalConcepts: counts.totalConcepts,
+				totalDocs: counts.totalDocs,
 				generatedAt: index.generatedAt.toISOString(),
 			}),
 		};
@@ -168,6 +234,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			path: entry.path,
 			kind: entry.kind ?? 'concept',
 		}));
+		const counts = resolveCounts(index);
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
@@ -175,9 +242,9 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				items,
 				query,
 				total: items.length,
-				totalEntries: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? items.length,
-				totalConcepts: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? items.length,
-				totalDocs: index.counts?.totalDocs ?? index.counts?.totalConcepts ?? items.length,
+				totalEntries: counts.totalConcepts,
+				totalConcepts: counts.totalConcepts,
+				totalDocs: counts.totalDocs,
 				generatedAt: index.generatedAt.toISOString(),
 			}),
 		};

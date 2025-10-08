@@ -101,7 +101,10 @@ Returns server status and metadata:
 	"totalDocs": 18,
 	"message": "System healthy with 154 entries available",
 	"generatedAt": "2024-05-28T08:15:30.000Z",
-	"ai-hints": "KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit."
+	"ai-hints": [
+		"Always register KoliBri Web Components in the browser runtime before rendering them.",
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+	]
 }
 ```
 
@@ -135,7 +138,10 @@ Returns:
 	"path": "packages/samples/react/src/components/button/basic.tsx",
 	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n...",
 	"kind": "sample",
-	"ai-hints": "KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit."
+	"ai-hints": [
+		"Always register KoliBri Web Components in the browser runtime before rendering them.",
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+	]
 }
 ```
 
@@ -160,7 +166,7 @@ curl "http://localhost:3030/mcp/concept?id=concept/README"
 
 Returns the Markdown content together with metadata. Every sample or concept response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
-All JSON responses contain an `ai-hints` field reminding clients that KoliBri Web Components have to be registered in the browser and that integration details depend on the chosen project setup.
+All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered in the browser and that integration steps vary with the chosen project setup.
 
 ## 🛠️ Use Cases
 

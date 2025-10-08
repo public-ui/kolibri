@@ -1,7 +1,55 @@
 const AI_HINTS_KEY = 'ai-hints';
-const AI_HINTS_MESSAGE =
-	'KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit.';
-const withAiHints = (body = {}) => ({ ...body, [AI_HINTS_KEY]: AI_HINTS_MESSAGE });
+const AI_HINTS_MESSAGES = Object.freeze([
+	'Always register KoliBri Web Components in the browser runtime before rendering them.',
+	'Choose the integration guide that matches your project setup to load and bundle the components correctly.',
+]);
+
+const normalizeHints = (value) => {
+	if (Array.isArray(value)) {
+		return value.length > 0 ? value : AI_HINTS_MESSAGES;
+	}
+
+	if (typeof value === 'string') {
+		const trimmed = value.trim();
+		return trimmed ? [trimmed] : AI_HINTS_MESSAGES;
+	}
+
+	return AI_HINTS_MESSAGES;
+};
+
+const withAiHints = (body = {}) => ({ ...body, [AI_HINTS_KEY]: normalizeHints(body[AI_HINTS_KEY]) });
+
+const computeCountsFromEntries = (entries = []) =>
+	entries.reduce(
+		(acc, entry) => {
+			const kind = entry?.kind ?? 'sample';
+			acc.total += 1;
+			if (kind === 'sample') {
+				acc.totalSamples += 1;
+			} else if (kind === 'concept' || kind === 'doc') {
+				acc.totalConcepts += 1;
+				acc.totalDocs += 1;
+			}
+			return acc;
+		},
+		{ total: 0, totalSamples: 0, totalConcepts: 0, totalDocs: 0 },
+	);
+
+const resolveCounts = (index) => {
+	if (!index) {
+		return computeCountsFromEntries();
+	}
+
+	const fallbackCounts = computeCountsFromEntries(index.entries ?? []);
+	const source = index.counts ?? {};
+
+	return {
+		total: typeof source.total === 'number' ? source.total : fallbackCounts.total,
+		totalSamples: typeof source.totalSamples === 'number' ? source.totalSamples : fallbackCounts.totalSamples,
+		totalConcepts: typeof source.totalConcepts === 'number' ? source.totalConcepts : fallbackCounts.totalConcepts,
+		totalDocs: typeof source.totalDocs === 'number' ? source.totalDocs : fallbackCounts.totalDocs,
+	};
+};
 
 // Vercel Serverless Function für /api/mcp/*
 export default async function handler(request, response) {
@@ -40,11 +88,13 @@ export default async function handler(request, response) {
 			const { handleApiRequest } = await import('../dist/index.mjs');
 
 			// Erstelle Mock-Index mit eingebetteten Daten
+			const counts = resolveCounts({ entries: samplesData.entries, counts: samplesData.counts });
 			const mockIndex = {
 				entries: samplesData.entries,
 				map: new Map(samplesData.entries.map((entry) => [entry.id, entry])),
 				generatedAt: new Date(samplesData.generatedAt),
 				buildMode: samplesData.buildMode,
+				counts,
 				list: function (query, options = {}) {
 					const kinds = options.kinds ? new Set(options.kinds) : undefined;
 					const normalizeKind = (entry) => entry.kind ?? 'sample';
@@ -63,17 +113,14 @@ export default async function handler(request, response) {
 				},
 			};
 
-			// Index-Funktionen mit eingebetteten Daten
 			const getIndex = async () => mockIndex;
 
-			// API Handler aufrufen
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
 				getIndex,
 			});
 
-			// Response senden
 			response.status(result.statusCode);
 			Object.entries(result.headers).forEach(([key, value]) => {
 				response.setHeader(key, value);
