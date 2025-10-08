@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys } from '@public-ui/components';
+import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys, KoliBriTableSelectionKey } from '@public-ui/components';
 import { KolEvent } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
 import { useToasterService } from '../../hooks/useToasterService';
@@ -40,7 +40,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: (string | number)[] | string | number) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 		console.log('Selection change via callback', selection);
 		setSelectedKeys(Array.isArray(selection) ? selection : [selection]);
 	};
