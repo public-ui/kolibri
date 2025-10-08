@@ -19,6 +19,15 @@ const normalizeHints = (value) => {
 
 const withAiHints = (body = {}) => ({ ...body, [AI_HINTS_KEY]: normalizeHints(body[AI_HINTS_KEY]) });
 
+const JSON_METHODS = new Set(['POST', 'PUT', 'PATCH']);
+const PATH_PREFIXES = ['/api/mcp', '/mcp'];
+
+const BASE_CORS_HEADERS = Object.freeze({
+	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+	'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+});
+
 const computeCountsFromEntries = (entries = []) =>
 	entries.reduce(
 		(acc, entry) => {
@@ -51,15 +60,139 @@ const resolveCounts = (index) => {
 	};
 };
 
+const applyCorsHeaders = (response, headers = BASE_CORS_HEADERS) => {
+	Object.entries(headers).forEach(([key, value]) => {
+		response.setHeader(key, value);
+	});
+};
+
+const normalizeRequestPath = (pathname) => {
+	if (pathname === '/') {
+		return pathname;
+	}
+
+	for (const prefix of PATH_PREFIXES) {
+		if (pathname.startsWith(prefix)) {
+			const suffix = pathname.slice(prefix.length) || '/';
+			return suffix.startsWith('/') ? suffix : `/${suffix}`;
+		}
+	}
+
+	return pathname;
+};
+
+const readJsonBody = (request) =>
+	new Promise((resolve, reject) => {
+		const chunks = [];
+
+		request.on('data', (chunk) => {
+			chunks.push(typeof chunk === 'string' ? Buffer.from(chunk, 'utf8') : chunk);
+		});
+
+		request.on('end', () => {
+			if (chunks.length === 0) {
+				resolve(undefined);
+				return;
+			}
+
+			const raw = Buffer.concat(chunks).toString('utf8').trim();
+			if (!raw) {
+				resolve(undefined);
+				return;
+			}
+
+			try {
+				resolve(JSON.parse(raw));
+			} catch (error) {
+				const parseError = new SyntaxError('Invalid JSON body');
+				parseError.code = 'INVALID_JSON_BODY';
+				parseError.cause = error;
+				reject(parseError);
+			}
+		});
+
+		request.on('error', (error) => {
+			reject(error);
+		});
+	});
+
+const handleEventStream = async ({ request, response, getIndex }) => {
+	response.status(200);
+	applyCorsHeaders(response);
+	response.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+	response.setHeader('Cache-Control', 'no-cache, no-transform');
+	response.setHeader('Connection', 'keep-alive');
+	response.flushHeaders?.();
+
+	const send = (data) => {
+		response.write(data);
+	};
+
+	send('event: ready\ndata: {}\n\n');
+
+	try {
+		const index = await getIndex();
+		const counts = resolveCounts(index);
+		const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt.toISOString() : index?.generatedAt;
+		const payload = {
+			totalEntries: counts.total,
+			totalSamples: counts.totalSamples,
+			totalConcepts: counts.totalConcepts,
+			totalDocs: counts.totalDocs,
+			generatedAt,
+			buildMode: index?.buildMode ?? 'runtime',
+		};
+		send(`event: resources/list_changed\ndata: ${JSON.stringify(payload)}\n\n`);
+	} catch (error) {
+		console.warn('[api/mcp] Unable to send SSE payload:', error);
+	}
+
+	const heartbeatInterval = setInterval(() => {
+		send('event: heartbeat\ndata: {}\n\n');
+	}, 15000);
+
+	const cleanup = () => {
+		clearInterval(heartbeatInterval);
+		if (!response.writableEnded) {
+			response.end();
+		}
+	};
+
+	request.on('close', cleanup);
+	request.on('error', cleanup);
+	request.on('aborted', cleanup);
+};
+
+const resolveBodyOrRespond = async (bodyPromise, response) => {
+	try {
+		const value = await bodyPromise;
+		return { ok: true, value };
+	} catch (error) {
+		if (error?.code === 'INVALID_JSON_BODY') {
+			response.status(400);
+			applyCorsHeaders(response);
+			response.setHeader('Content-Type', 'application/json; charset=utf-8');
+			response.json(
+				withAiHints({
+					error: 'invalid_json',
+					message: 'Request body must be valid JSON.',
+				}),
+			);
+			return { ok: false };
+		}
+
+		throw error;
+	}
+};
+
 // Vercel Serverless Function für /api/mcp/*
 export default async function handler(request, response) {
-	// CORS Headers setzen
-	response.setHeader('Access-Control-Allow-Origin', '*');
-	response.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-	response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+	const method = request.method ?? 'GET';
+	const normalizedMethod = method.toUpperCase();
 
-	// OPTIONS Request für CORS Preflight
-	if (request.method === 'OPTIONS') {
+	applyCorsHeaders(response);
+
+	if (normalizedMethod === 'OPTIONS') {
 		response.status(204).end();
 		return;
 	}
@@ -82,6 +215,8 @@ export default async function handler(request, response) {
 		// URL für API Handler vorbereiten
 		const baseUrl = `https://${request.headers.host}`;
 		const fullUrl = new URL(request.url, baseUrl);
+		const pathname = normalizeRequestPath(fullUrl.pathname);
+		const bodyPromise = JSON_METHODS.has(normalizedMethod) ? readJsonBody(request) : Promise.resolve(undefined);
 
 		if (useEmbeddedData) {
 			// Verwende eingebettete Sample-Daten (schneller und zuverlässiger)
@@ -115,9 +250,22 @@ export default async function handler(request, response) {
 
 			const getIndex = async () => mockIndex;
 
+			if (normalizedMethod === 'GET' && pathname === '/events') {
+				await handleEventStream({ request, response, getIndex });
+				return;
+			}
+
+			const bodyResult = await resolveBodyOrRespond(bodyPromise, response);
+			if (!bodyResult.ok) {
+				return;
+			}
+
+			const body = bodyResult.value;
+
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
+				body,
 				getIndex,
 			});
 
@@ -140,10 +288,23 @@ export default async function handler(request, response) {
 				return cachedIndex;
 			};
 
+			if (normalizedMethod === 'GET' && pathname === '/events') {
+				await handleEventStream({ request, response, getIndex });
+				return;
+			}
+
+			const bodyResult = await resolveBodyOrRespond(bodyPromise, response);
+			if (!bodyResult.ok) {
+				return;
+			}
+
+			const body = bodyResult.value;
+
 			// API Handler aufrufen
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
+				body,
 				getIndex,
 			});
 

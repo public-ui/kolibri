@@ -33,6 +33,16 @@ The server will start on `http://localhost:3030` and provide the following endpo
 - `GET /mcp/concepts` - List Markdown concept documentation
 - `GET /mcp/concept?id=concept/README` - Get a specific concept document
 
+#### MCP Protocol Endpoints
+
+For HTTP-based Model Context Protocol clients, additional routes are available:
+
+- `POST /mcp/initialize` – returns `serverInfo`, supported capabilities, resource counts and usage instructions used during the MCP handshake
+- `GET /mcp/events` – Server-Sent Events stream emitting an initial `ready` notification, index metadata and periodic heartbeat events to keep the connection alive
+- `POST /mcp/messages` – placeholder endpoint that currently responds with `501` because this MCP server is read-only and does not accept message invocations
+
+All endpoints are also reachable with the `/api/mcp/*` prefix when the service runs behind a platform router such as Vercel.
+
 The sample and concept indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
 
 ### Integration with AI Tools

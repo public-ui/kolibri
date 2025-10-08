@@ -1,10 +1,34 @@
 import { URL } from 'node:url';
 
+const MCP_SERVER_INFO = Object.freeze({
+	name: 'kolibri-mcp',
+	version: process.env.MCP_SERVER_VERSION ?? '3.0.7-rc.3',
+	description: 'Model Context Protocol backend exposing KoliBri samples and concept documentation.',
+});
+
+const MCP_CAPABILITIES = Object.freeze({
+	resources: {
+		listChanged: true,
+	},
+	prompts: {},
+	tools: {},
+	sse: {
+		events: true,
+	},
+});
+
+const MCP_INSTRUCTIONS = Object.freeze([
+	'Use GET /mcp/samples (or /api/mcp/samples) to list available component examples.',
+	'Use GET /mcp/sample?id=sample/<component>/<sample> (or /api/mcp/sample?...) to retrieve source code for a specific example.',
+	'Use GET /mcp/docs and GET /mcp/doc?id=concept/<identifier> (or the /api equivalents) for Markdown concept documentation.',
+	'Open the Server-Sent Events stream at GET /mcp/events to receive readiness and heartbeat notifications.',
+]);
+
 function buildCorsHeaders() {
 	return {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-		'Access-Control-Allow-Headers': 'Content-Type',
+		'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 	};
 }
 
@@ -93,6 +117,55 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 
 	if (normalizedMethod === 'OPTIONS') {
 		return { statusCode: 204, headers: baseHeaders };
+	}
+
+	if (normalizedMethod === 'POST' && pathname === '/initialize') {
+		let index;
+		try {
+			index = await getIndex();
+		} catch (error) {
+			console.warn('[initialize] Unable to load index for initialize response:', error);
+		}
+
+		const counts = resolveCounts(index);
+		const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt.toISOString() : undefined;
+		const buildMode = index?.buildMode ?? 'runtime';
+
+		return {
+			statusCode: 200,
+			headers: baseHeaders,
+			body: {
+				serverInfo: MCP_SERVER_INFO,
+				capabilities: MCP_CAPABILITIES,
+				resources: {
+					samples: {
+						total: counts.totalSamples,
+					},
+					docs: {
+						total: counts.totalDocs,
+					},
+				},
+				instructions: MCP_INSTRUCTIONS,
+				sampleIndex: {
+					totalEntries: counts.total,
+					totalSamples: counts.totalSamples,
+					totalConcepts: counts.totalConcepts,
+					generatedAt,
+					buildMode,
+				},
+			},
+		};
+	}
+
+	if (normalizedMethod === 'POST' && pathname === '/messages') {
+		return {
+			statusCode: 501,
+			headers: baseHeaders,
+			body: withAiHints({
+				error: 'messages_not_supported',
+				message: 'Diese MCP-Instanz stellt nur lesende Ressourcen-Endpunkte bereit. Nutzen Sie die /mcp/*-GET-Routen, um Inhalte abzurufen.',
+			}),
+		};
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/') {
