@@ -95,7 +95,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		return { statusCode: 204, headers: baseHeaders };
 	}
 
-	if (normalizedMethod === 'GET' && pathname === '/') {
+	if ((normalizedMethod === 'GET' || normalizedMethod === 'POST') && pathname === '/') {
 		let index;
 		try {
 			index = await getIndex();
