@@ -54,12 +54,43 @@ function computeCounts(entries) {
 	);
 }
 
+function normalizeEntryId(entry) {
+	const kind = entry.kind ?? 'sample';
+	const isConcept = kind === 'concept' || kind === 'doc';
+	const expectedPrefix = isConcept ? 'concept' : 'sample';
+	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
+		return entry;
+	}
+
+	const segments = [];
+	if (entry.group) {
+		const groupSegments = entry.group.split('/').filter(Boolean);
+		if (isConcept && groupSegments[0] === 'concepts') {
+			groupSegments.shift();
+		}
+		segments.push(...groupSegments);
+	}
+
+	if (entry.name) {
+		segments.push(entry.name);
+	} else if (entry.id) {
+		segments.push(...String(entry.id).split('/').filter(Boolean));
+	}
+
+	const normalized = {
+		...entry,
+		id: [expectedPrefix, ...segments.filter(Boolean)].join('/'),
+	};
+	return normalized;
+}
+
 class SampleIndex {
 	constructor(entries) {
-		this.entries = entries;
-		this.map = new Map(entries.map((entry) => [entry.id, entry]));
+		const normalizedEntries = entries.map((entry) => normalizeEntryId(entry));
+		this.entries = normalizedEntries;
+		this.map = new Map(normalizedEntries.map((entry) => [entry.id, entry]));
 		this.generatedAt = new Date();
-		const counts = computeCounts(entries);
+		const counts = computeCounts(normalizedEntries);
 		this.counts = {
 			total: counts.total,
 			byKind: counts.byKind,
@@ -146,8 +177,9 @@ export async function buildSampleIndex() {
 				}
 
 				const code = await readFile(absolutePath, 'utf8');
+				const sampleIdSegments = ['sample', group, name].filter(Boolean);
 				entries.push({
-					id: `${group}/${name}`,
+					id: sampleIdSegments.join('/'),
 					group,
 					name,
 					path: path.relative(REPO_ROOT, absolutePath),
@@ -312,9 +344,19 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 		const segments = withoutExtension.split('/').filter(Boolean);
 		const name = segments.pop() ?? withoutExtension;
 		const group = segments.length ? `${groupPrefix}/${segments.join('/')}` : groupPrefix;
+		const conceptIdSegments = ['concept'];
+		if (group.startsWith(`${groupPrefix}/`)) {
+			const relativeGroup = group.slice(groupPrefix.length + 1);
+			if (relativeGroup) {
+				conceptIdSegments.push(...relativeGroup.split('/'));
+			}
+		} else if (group !== groupPrefix) {
+			conceptIdSegments.push(...group.split('/'));
+		}
+		conceptIdSegments.push(name);
 
 		entries.push({
-			id: `${group}/${name}`,
+			id: conceptIdSegments.join('/'),
 			group,
 			name,
 			path: normalizedRepoPath,

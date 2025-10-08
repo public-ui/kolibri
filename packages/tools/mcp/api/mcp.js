@@ -1,3 +1,8 @@
+const AI_HINTS_KEY = 'ai-hints';
+const AI_HINTS_MESSAGE =
+	'KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit.';
+const withAiHints = (body = {}) => ({ ...body, [AI_HINTS_KEY]: AI_HINTS_MESSAGE });
+
 // Vercel Serverless Function für /api/mcp/*
 export default async function handler(request, response) {
 	// CORS Headers setzen
@@ -40,10 +45,15 @@ export default async function handler(request, response) {
 				map: new Map(samplesData.entries.map((entry) => [entry.id, entry])),
 				generatedAt: new Date(samplesData.generatedAt),
 				buildMode: samplesData.buildMode,
-				list: function (query) {
-					if (!query) return this.entries;
+				list: function (query, options = {}) {
+					const kinds = options.kinds ? new Set(options.kinds) : undefined;
+					const normalizeKind = (entry) => entry.kind ?? 'sample';
+					let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
+					if (!query) {
+						return results;
+					}
 					const normalized = query.trim().toLowerCase();
-					return this.entries.filter(
+					return results.filter(
 						(entry) =>
 							entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
 					);
@@ -70,11 +80,11 @@ export default async function handler(request, response) {
 			Object.entries(result.headers).forEach(([key, value]) => {
 				response.setHeader(key, value);
 			});
-			response.json(result.body || {});
+			const responseBody = result.body ?? {};
+			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
 		} else {
 			// Fallback: Verwende Build-Artefakte (kann auf Vercel problematisch sein)
-			const { handleApiRequest } = await import('../dist/index.mjs');
-			const { buildSampleIndex } = await import('../dist/index.mjs');
+			const { handleApiRequest, buildSampleIndex } = await import('../dist/index.mjs');
 
 			// Index-Funktionen definieren (mit Runtime Discovery)
 			let cachedIndex = null;
@@ -103,7 +113,8 @@ export default async function handler(request, response) {
 			Object.entries(result.headers).forEach(([key, value]) => {
 				response.setHeader(key, value);
 			});
-			response.json(result.body || {});
+			const responseBody = result.body ?? {};
+			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
 		}
 	} catch (error) {
 		console.error('[api/mcp] Handler error:', error);
@@ -111,10 +122,12 @@ export default async function handler(request, response) {
 		// Fallback Error Response
 		response.status(500);
 		response.setHeader('Content-Type', 'application/json');
-		response.json({
-			error: 'Internal server error',
-			message: error.message,
-			timestamp: new Date().toISOString(),
-		});
+		response.json(
+			withAiHints({
+				error: 'Internal server error',
+				message: error.message,
+				timestamp: new Date().toISOString(),
+			}),
+		);
 	}
 }

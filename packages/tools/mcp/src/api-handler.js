@@ -8,6 +8,14 @@ function buildCorsHeaders() {
 	};
 }
 
+export const AI_HINTS_KEY = 'ai-hints';
+export const AI_HINTS_MESSAGE =
+	'KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit.';
+
+function withAiHints(body = {}) {
+	return { ...body, [AI_HINTS_KEY]: AI_HINTS_MESSAGE };
+}
+
 function normalizePathname(pathname) {
 	if (pathname === '/') {
 		return pathname;
@@ -38,10 +46,10 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
-			body: {
+			body: withAiHints({
 				message: 'KoliBri MCP backend is running.',
-				endpoints: ['/health', '/samples', '/sample?id=<component/sample>', '/concepts', '/concept?id=<concept/identifier>'],
-			},
+				endpoints: ['/health', '/samples', '/sample?id=sample/<component>/<sample>', '/concepts', '/concept?id=concept/<identifier>'],
+			}),
 		};
 	}
 
@@ -65,7 +73,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		return {
 			statusCode: isHealthy ? 200 : 503,
 			headers: baseHeaders,
-			body: {
+			body: withAiHints({
 				status: isHealthy ? 'ok' : 'error',
 				healthy: isHealthy,
 				totalEntries: counts.total,
@@ -79,7 +87,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 					entriesLength: index.entries.length,
 					firstFewEntries: index.entries.slice(0, 3).map((e) => e.id),
 				},
-			},
+			}),
 		};
 	}
 	if (normalizedMethod === 'GET' && pathname === '/samples') {
@@ -95,7 +103,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
-			body: {
+			body: withAiHints({
 				items,
 				query,
 				total: items.length,
@@ -104,7 +112,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 				totalConcepts: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? 0,
 				totalDocs: index.counts?.totalDocs ?? index.counts?.totalConcepts ?? 0,
 				generatedAt: index.generatedAt.toISOString(),
-			},
+			}),
 		};
 	}
 
@@ -115,7 +123,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			return {
 				statusCode: 400,
 				headers: baseHeaders,
-				body: { error: 'missing_id' },
+				body: withAiHints({ error: 'missing_id' }),
 			};
 		}
 
@@ -124,7 +132,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			return {
 				statusCode: 404,
 				headers: baseHeaders,
-				body: { error: 'not_found', id },
+				body: withAiHints({ error: 'not_found', id }),
 			};
 		}
 
@@ -132,21 +140,21 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			return {
 				statusCode: 400,
 				headers: baseHeaders,
-				body: { error: 'invalid_kind', expected: 'sample', actual: entry.kind ?? 'sample', id },
+				body: withAiHints({ error: 'invalid_kind', expected: 'sample', actual: entry.kind ?? 'sample', id }),
 			};
 		}
 
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
-			body: {
+			body: withAiHints({
 				id: entry.id,
 				group: entry.group,
 				name: entry.name,
 				path: entry.path,
 				code: entry.code,
 				kind: entry.kind ?? 'sample',
-			},
+			}),
 		};
 	}
 
@@ -163,7 +171,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
-			body: {
+			body: withAiHints({
 				items,
 				query,
 				total: items.length,
@@ -171,7 +179,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 				totalConcepts: index.counts?.totalConcepts ?? index.counts?.totalDocs ?? items.length,
 				totalDocs: index.counts?.totalDocs ?? index.counts?.totalConcepts ?? items.length,
 				generatedAt: index.generatedAt.toISOString(),
-			},
+			}),
 		};
 	}
 
@@ -182,7 +190,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			return {
 				statusCode: 400,
 				headers: baseHeaders,
-				body: { error: 'missing_id' },
+				body: withAiHints({ error: 'missing_id' }),
 			};
 		}
 
@@ -191,21 +199,21 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			return {
 				statusCode: 404,
 				headers: baseHeaders,
-				body: { error: 'not_found', id },
+				body: withAiHints({ error: 'not_found', id }),
 			};
 		}
 
 		return {
 			statusCode: 200,
 			headers: baseHeaders,
-			body: {
+			body: withAiHints({
 				id: entry.id,
 				group: entry.group,
 				name: entry.name,
 				path: entry.path,
 				code: entry.code,
 				kind: entry.kind ?? 'concept',
-			},
+			}),
 		};
 	}
 
@@ -221,21 +229,21 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 			return {
 				statusCode: 200,
 				headers: baseHeaders,
-				body: {
+				body: withAiHints({
 					status: 'refreshed',
 					totalEntries: counts.total,
 					totalSamples: counts.totalSamples,
 					totalConcepts: counts.totalConcepts ?? counts.totalDocs ?? 0,
 					totalDocs: counts.totalDocs ?? counts.totalConcepts ?? 0,
 					generatedAt: index.generatedAt.toISOString(),
-				},
+				}),
 			};
 		} catch (error) {
 			console.error('[mcp] refresh failed', error);
 			return {
 				statusCode: 500,
 				headers: baseHeaders,
-				body: { error: 'refresh_failed' },
+				body: withAiHints({ error: 'refresh_failed' }),
 			};
 		}
 	}
@@ -243,6 +251,6 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex, re
 	return {
 		statusCode: 404,
 		headers: baseHeaders,
-		body: { error: 'not_found' },
+		body: withAiHints({ error: 'not_found' }),
 	};
 }

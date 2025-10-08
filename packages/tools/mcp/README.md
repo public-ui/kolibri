@@ -29,9 +29,9 @@ The server will start on `http://localhost:3030` and provide the following endpo
 
 - `GET /mcp/health` - Server status and content counts
 - `GET /mcp/samples` - List all available component examples
-- `GET /mcp/sample?id=button/basic` - Get specific sample source code
+- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
 - `GET /mcp/concepts` - List Markdown concept documentation
-- `GET /mcp/concept?id=concepts/getting-started` - Get a specific concept document
+- `GET /mcp/concept?id=concept/README` - Get a specific concept document
 - `POST /mcp/refresh` - Refresh sample index
 
 ### Integration with AI Tools
@@ -99,7 +99,8 @@ Returns server status and metadata:
 	"totalConcepts": 18,
 	"totalDocs": 18,
 	"message": "System healthy with 154 entries available",
-	"generatedAt": "2024-05-28T08:15:30.000Z"
+	"generatedAt": "2024-05-28T08:15:30.000Z",
+	"ai-hints": "KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit."
 }
 ```
 
@@ -120,19 +121,20 @@ curl "http://localhost:3030/mcp/samples?q=button"
 Get complete source code for a specific sample:
 
 ```bash
-curl "http://localhost:3030/mcp/sample?id=button/basic"
+curl "http://localhost:3030/mcp/sample?id=sample/button/basic"
 ```
 
 Returns:
 
 ```json
 {
-	"id": "button/basic",
+	"id": "sample/button/basic",
 	"group": "button",
 	"name": "basic",
 	"path": "packages/samples/react/src/components/button/basic.tsx",
 	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n...",
-	"kind": "sample"
+	"kind": "sample",
+	"ai-hints": "KoliBri Web Components müssen im Browser registriert werden; abhängig vom Projekt-Setup stehen unterschiedliche Integrationswege bereit."
 }
 ```
 
@@ -152,10 +154,12 @@ curl "http://localhost:3030/mcp/concepts?q=theme"
 Fetch Markdown documentation by referencing its `concepts/...` identifier:
 
 ```bash
-curl "http://localhost:3030/mcp/concept?id=concepts/README"
+curl "http://localhost:3030/mcp/concept?id=concept/README"
 ```
 
 Returns the Markdown content together with metadata. Every sample or concept response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
+
+All JSON responses contain an `ai-hints` field reminding clients that KoliBri Web Components have to be registered in the browser and that integration details depend on the chosen project setup.
 
 ## 🛠️ Use Cases
 

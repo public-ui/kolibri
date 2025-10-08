@@ -4,6 +4,35 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+function normalizeEntryId(entry) {
+	const kind = entry.kind ?? 'sample';
+	const isConcept = kind === 'concept' || kind === 'doc';
+	const expectedPrefix = isConcept ? 'concept' : 'sample';
+	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
+		return entry;
+	}
+
+	const segments = [];
+	if (entry.group) {
+		const groupSegments = entry.group.split('/').filter(Boolean);
+		if (isConcept && groupSegments[0] === 'concepts') {
+			groupSegments.shift();
+		}
+		segments.push(...groupSegments);
+	}
+
+	if (entry.name) {
+		segments.push(entry.name);
+	} else if (entry.id) {
+		segments.push(...String(entry.id).split('/').filter(Boolean));
+	}
+
+	return {
+		...entry,
+		id: [expectedPrefix, ...segments.filter(Boolean)].join('/'),
+	};
+}
+
 function computeCounts(entries) {
 	return entries.reduce(
 		(acc, entry) => {
@@ -18,11 +47,12 @@ function computeCounts(entries) {
 
 class SampleIndex {
 	constructor(entries, generatedAt = new Date(), buildMode = 'runtime') {
-		this.entries = entries;
-		this.map = new Map(entries.map((entry) => [entry.id, entry]));
+		const normalizedEntries = entries.map((entry) => normalizeEntryId(entry));
+		this.entries = normalizedEntries;
+		this.map = new Map(normalizedEntries.map((entry) => [entry.id, entry]));
 		this.generatedAt = generatedAt;
 		this.buildMode = buildMode;
-		const counts = computeCounts(entries);
+		const counts = computeCounts(normalizedEntries);
 		this.counts = {
 			total: counts.total,
 			byKind: counts.byKind,
