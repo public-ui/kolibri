@@ -111,7 +111,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			headers: baseHeaders,
 			body: withAiHints({
 				message: 'KoliBri MCP backend is running.',
-				endpoints: ['/health', '/samples', '/sample?id=sample/<component>/<sample>', '/concepts', '/concept?id=concept/<identifier>'],
+				endpoints: ['/health', '/samples', '/sample?id=sample/<component>/<sample>', '/docs', '/doc?id=doc/<identifier>'],
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
 				totalConcepts: counts.totalConcepts,
@@ -224,7 +224,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		};
 	}
 
-	if (normalizedMethod === 'GET' && pathname === '/concepts') {
+	if (normalizedMethod === 'GET' && pathname === '/docs') {
 		const index = await getIndex();
 		const query = requestUrl.searchParams.get('q') ?? '';
 		const items = index.list(query, { kinds: ['concept', 'doc'] }).map((entry) => ({
@@ -232,7 +232,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			id: entry.id,
 			name: entry.name,
 			path: entry.path,
-			kind: entry.kind ?? 'concept',
+			kind: entry.kind ?? 'doc',
 		}));
 		const counts = resolveCounts(index);
 		return {
@@ -242,7 +242,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				items,
 				query,
 				total: items.length,
-				totalEntries: counts.totalConcepts,
+				totalEntries: counts.totalDocs,
 				totalConcepts: counts.totalConcepts,
 				totalDocs: counts.totalDocs,
 				generatedAt: index.generatedAt.toISOString(),
@@ -250,7 +250,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		};
 	}
 
-	if (normalizedMethod === 'GET' && pathname === '/concept') {
+	if (normalizedMethod === 'GET' && pathname === '/doc') {
 		const index = await getIndex();
 		const id = requestUrl.searchParams.get('id');
 		if (!id) {
@@ -279,7 +279,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				name: entry.name,
 				path: entry.path,
 				code: entry.code,
-				kind: entry.kind ?? 'concept',
+				kind: entry.kind ?? 'doc',
 			}),
 		};
 	}

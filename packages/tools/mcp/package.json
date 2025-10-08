@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "node prebuild.js && unbuild",
 		"format": "prettier --check src",
-		"prestart": "unbuild --stub",
+		"prestart": "pnpm build",
 		"start": "node dist/index.mjs"
 	},
 	"devDependencies": {

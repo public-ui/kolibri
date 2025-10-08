@@ -38,8 +38,8 @@ const SCENARIOS_DIR = path.join(SAMPLE_ROOT, 'scenarios');
 const DOCS_DIR = path.join(REPO_ROOT, 'docs');
 
 const MARKDOWN_SOURCES = [
-	{ directory: DOCS_DIR, groupPrefix: 'concepts', recursive: true },
-	{ directory: REPO_ROOT, groupPrefix: 'concepts', recursive: false },
+	{ directory: DOCS_DIR, groupPrefix: 'docs', recursive: true },
+	{ directory: REPO_ROOT, groupPrefix: 'docs', recursive: false },
 ];
 
 function computeCounts(entries) {
@@ -57,7 +57,7 @@ function computeCounts(entries) {
 function normalizeEntryId(entry) {
 	const kind = entry.kind ?? 'sample';
 	const isConcept = kind === 'concept' || kind === 'doc';
-	const expectedPrefix = isConcept ? 'concept' : 'sample';
+	const expectedPrefix = isConcept ? 'doc' : 'sample';
 	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
 		return entry;
 	}
@@ -65,7 +65,7 @@ function normalizeEntryId(entry) {
 	const segments = [];
 	if (entry.group) {
 		const groupSegments = entry.group.split('/').filter(Boolean);
-		if (isConcept && groupSegments[0] === 'concepts') {
+		if (isConcept && groupSegments[0] === 'docs') {
 			groupSegments.shift();
 		}
 		segments.push(...groupSegments);

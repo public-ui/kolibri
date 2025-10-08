@@ -172,8 +172,8 @@
 						<span class="stat-value" id="sample-count">–</span>
 					</div>
 					<div class="stat">
-						<span class="stat-label">Concepts</span>
-						<span class="stat-value" id="concept-count">–</span>
+						<span class="stat-label">Docs</span>
+						<span class="stat-value" id="doc-count">–</span>
 					</div>
 				</div>
 			</div>
@@ -195,28 +195,28 @@
 					</div>
 					<p class="description">List of all available samples (optional filter with ?q=filter)</p>
 
-                                        <div>
-                                                <span class="method get">GET</span>
-                                                <code class="endpoint"><a href="/mcp/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/sample?id=sample/button/basic</a></code>
-                                        </div>
-                                        <p class="description">Path and source code of a specific sample</p>
+					<div>
+						<span class="method get">GET</span>
+						<code class="endpoint"><a href="/mcp/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/sample?id=sample/button/basic</a></code>
+					</div>
+					<p class="description">Path and source code of a specific sample</p>
 
-                                        <div>
-                                                <span class="method get">GET</span>
-                                                <code class="endpoint"><a href="/mcp/concepts" style="color: #90cdf4">/mcp/concepts</a></code>
-                                        </div>
-                                        <p class="description">List of Markdown-based concept documents</p>
+					<div>
+						<span class="method get">GET</span>
+						<code class="endpoint"><a href="/mcp/docs" style="color: #90cdf4">/mcp/docs</a></code>
+					</div>
+					<p class="description">List of Markdown-based documentation documents</p>
 
-                                        <div>
-                                                <span class="method get">GET</span>
-                                                <code class="endpoint"><a href="/mcp/concept?id=concept/README" style="color: #90cdf4">/mcp/concept?id=concept/README</a></code>
-                                        </div>
-                                        <p class="description">Retrieve a specific concept document including its Markdown source</p>
-                                </div>
-                                <p class="description" style="margin-top: 1rem">
-                                        Hinweis: Die Indizes werden im Buildprozess erzeugt. Ein manuelles <code>refresh</code> ist in Deployments nicht verfügbar.
-                                </p>
-                        </div>
+					<div>
+						<span class="method get">GET</span>
+						<code class="endpoint"><a href="/mcp/doc?id=doc/README" style="color: #90cdf4">/mcp/doc?id=doc/README</a></code>
+					</div>
+					<p class="description">Retrieve a specific documentation document including its Markdown source</p>
+				</div>
+				<p class="description" style="margin-top: 1rem">
+					Hinweis: Die Indizes werden im Buildprozess erzeugt. Ein manuelles <code>refresh</code> ist in Deployments nicht verfügbar.
+				</p>
+			</div>
 
 			<div class="footer">
 				<p>
@@ -235,37 +235,57 @@
 					console.log('API Status:', data);
 					const statusElement = document.querySelector('.status');
 
-                                        const sampleCount = typeof data.totalSamples === 'number' ? data.totalSamples : typeof data.total === 'number' ? data.total : 0;
-                                        const conceptCount = typeof data.totalConcepts === 'number' ? data.totalConcepts : typeof data.totalDocs === 'number' ? data.totalDocs : 0;
-                                        const sampleCountElement = document.getElementById('sample-count');
-                                        const conceptCountElement = document.getElementById('concept-count');
+					// Extract sample count with fallback logic
+					let sampleCount = 0;
+					if (typeof data.totalSamples === 'number') {
+						sampleCount = data.totalSamples;
+					} else if (typeof data.samples === 'number') {
+						sampleCount = data.samples;
+					} else if (typeof data.total === 'number') {
+						sampleCount = data.total;
+					}
 
-                                        if (sampleCountElement && conceptCountElement) {
-                                                sampleCountElement.textContent = sampleCount.toLocaleString();
-                                                conceptCountElement.textContent = conceptCount.toLocaleString();
-                                        }
+					// Extract doc count with fallback logic
+					let docCount = 0;
+					if (typeof data.totalDocs === 'number') {
+						docCount = data.totalDocs;
+					} else if (typeof data.docs === 'number') {
+						docCount = data.docs;
+					} else if (typeof data.totalConcepts === 'number') {
+						docCount = data.totalConcepts;
+					} else if (typeof data.concepts === 'number') {
+						docCount = data.concepts;
+					}
 
-                                        if (data.healthy && sampleCount > 0) {
-                                                const conceptText = conceptCount > 0 ? `, ${conceptCount.toLocaleString()} Concepts` : '';
-                                                statusElement.textContent = `🟢 Online (${sampleCount.toLocaleString()} Samples${conceptText})`;
-                                                statusElement.style.background = '#38a169';
-                                        } else {
-                                                statusElement.textContent = '🟡 No samples found';
-                                                statusElement.style.background = '#d69e2e';
-                                        }
+					const sampleCountElement = document.getElementById('sample-count');
+					const docCountElement = document.getElementById('doc-count');
+
+					if (sampleCountElement && docCountElement) {
+						sampleCountElement.textContent = sampleCount.toLocaleString();
+						docCountElement.textContent = docCount.toLocaleString();
+					}
+
+					if (data.healthy && sampleCount > 0) {
+						const docText = docCount > 0 ? `, ${docCount.toLocaleString()} Docs` : '';
+						statusElement.textContent = `🟢 Online (${sampleCount.toLocaleString()} Samples${docText})`;
+						statusElement.style.background = '#38a169';
+					} else {
+						statusElement.textContent = '🟡 No samples found';
+						statusElement.style.background = '#d69e2e';
+					}
 				})
 				.catch((error) => {
-                                        console.warn('API not reachable:', error);
-                                        const statusElement = document.querySelector('.status');
-                                        statusElement.textContent = '🔴 Offline';
-                                        statusElement.style.background = '#e53e3e';
-                                        const sampleCountElement = document.getElementById('sample-count');
-                                        const conceptCountElement = document.getElementById('concept-count');
-                                        if (sampleCountElement && conceptCountElement) {
-                                                sampleCountElement.textContent = '–';
-                                                conceptCountElement.textContent = '–';
-                                        }
-                                });
-                </script>
+					console.warn('API not reachable:', error);
+					const statusElement = document.querySelector('.status');
+					statusElement.textContent = '🔴 Offline';
+					statusElement.style.background = '#e53e3e';
+					const sampleCountElement = document.getElementById('sample-count');
+					const docCountElement = document.getElementById('doc-count');
+					if (sampleCountElement && docCountElement) {
+						sampleCountElement.textContent = '–';
+						docCountElement.textContent = '–';
+					}
+				});
+		</script>
 	</body>
 </html>

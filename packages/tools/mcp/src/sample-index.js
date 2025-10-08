@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 function normalizeEntryId(entry) {
 	const kind = entry.kind ?? 'sample';
 	const isConcept = kind === 'concept' || kind === 'doc';
-	const expectedPrefix = isConcept ? 'concept' : 'sample';
+	const expectedPrefix = isConcept ? 'doc' : 'sample';
 	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
 		return entry;
 	}
@@ -15,7 +15,7 @@ function normalizeEntryId(entry) {
 	const segments = [];
 	if (entry.group) {
 		const groupSegments = entry.group.split('/').filter(Boolean);
-		if (isConcept && groupSegments[0] === 'concepts') {
+		if (isConcept && groupSegments[0] === 'docs') {
 			groupSegments.shift();
 		}
 		segments.push(...groupSegments);
