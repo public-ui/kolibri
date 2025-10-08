@@ -1,155 +1,172 @@
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+const AI_HINTS_KEY = 'ai-hints';
+const AI_HINTS_MESSAGES = Object.freeze([
+	'Always register KoliBri Web Components in the browser runtime before rendering them.',
+	'Choose the integration guide that matches your project setup to load and bundle the components correctly.',
+]);
 
-import { handleApiRequest } from '../src/api-handler.js';
-import { buildDynamicSampleIndex, createSampleIndexFromData } from '../src/prebuilt/sample-index-utils.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const DEFAULT_INDEX_CANDIDATES = [process.env.KOLIBRI_MCP_INDEX_PATH, path.join(__dirname, '../vercel/sample-index.json')];
-
-let cachedIndex;
-let currentStrategy = 'prebuilt';
-let lastSource;
-
-function getCandidatePaths() {
-	const candidates = new Set();
-	for (const candidate of DEFAULT_INDEX_CANDIDATES) {
-		if (candidate) {
-			candidates.add(candidate);
-		}
+const normalizeHints = (value) => {
+	if (Array.isArray(value)) {
+		return value.length > 0 ? value : AI_HINTS_MESSAGES;
 	}
-	return Array.from(candidates);
-}
 
-async function loadIndexFromFile(filePath) {
-	try {
-		const content = await readFile(filePath, 'utf8');
-		const data = JSON.parse(content);
-		const index = createSampleIndexFromData(data);
-		lastSource = filePath;
-		currentStrategy = 'prebuilt';
-		return index;
-	} catch (error) {
-		if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
-			return undefined;
-		}
-		throw error;
+	if (typeof value === 'string') {
+		const trimmed = value.trim();
+		return trimmed ? [trimmed] : AI_HINTS_MESSAGES;
 	}
-}
 
-async function loadPrebuiltIndex() {
-	const candidates = getCandidatePaths();
-	for (const candidate of candidates) {
-		try {
-			const index = await loadIndexFromFile(candidate);
-			if (index) {
-				console.log(`[mcp] loaded sample index from ${candidate}`);
-				return index;
+	return AI_HINTS_MESSAGES;
+};
+
+const withAiHints = (body = {}) => ({ ...body, [AI_HINTS_KEY]: normalizeHints(body[AI_HINTS_KEY]) });
+
+const computeCountsFromEntries = (entries = []) =>
+	entries.reduce(
+		(acc, entry) => {
+			const kind = entry?.kind ?? 'sample';
+			acc.total += 1;
+			if (kind === 'sample') {
+				acc.totalSamples += 1;
+			} else if (kind === 'concept' || kind === 'doc') {
+				acc.totalConcepts += 1;
+				acc.totalDocs += 1;
 			}
-		} catch (error) {
-			console.warn(`[mcp] failed to load prebuilt index from ${candidate}:`, error);
-		}
-	}
-	return undefined;
-}
+			return acc;
+		},
+		{ total: 0, totalSamples: 0, totalConcepts: 0, totalDocs: 0 },
+	);
 
-async function ensureIndex() {
-	if (cachedIndex) {
-		return cachedIndex;
+const resolveCounts = (index) => {
+	if (!index) {
+		return computeCountsFromEntries();
 	}
 
-	const prebuilt = await loadPrebuiltIndex();
-	if (prebuilt) {
-		cachedIndex = prebuilt;
-		return cachedIndex;
-	}
+	const fallbackCounts = computeCountsFromEntries(index.entries ?? []);
+	const source = index.counts ?? {};
 
-	console.warn('[mcp] no prebuilt index found – generating on demand');
-	cachedIndex = await buildDynamicSampleIndex();
-	currentStrategy = 'dynamic';
-	lastSource = 'dynamic-build';
-	return cachedIndex;
-}
+	return {
+		total: typeof source.total === 'number' ? source.total : fallbackCounts.total,
+		totalSamples: typeof source.totalSamples === 'number' ? source.totalSamples : fallbackCounts.totalSamples,
+		totalConcepts: typeof source.totalConcepts === 'number' ? source.totalConcepts : fallbackCounts.totalConcepts,
+		totalDocs: typeof source.totalDocs === 'number' ? source.totalDocs : fallbackCounts.totalDocs,
+	};
+};
 
-async function refreshIndex() {
-	if (currentStrategy === 'dynamic') {
-		cachedIndex = await buildDynamicSampleIndex();
-		return cachedIndex;
-	}
-
-	cachedIndex = undefined;
-	return ensureIndex();
-}
-
-function buildRequestUrl(request) {
-	const rawHost = request.headers?.host ?? 'vercel.local';
-	const forwardedProto = request.headers?.['x-forwarded-proto'];
-	const protocol = typeof forwardedProto === 'string' ? forwardedProto.split(',')[0] : rawHost.includes('localhost') ? 'http' : 'https';
-	const baseUrl = `${protocol}://${rawHost}`;
-	const requestUrl = request.url ?? '/';
-	return new URL(requestUrl, baseUrl).toString();
-}
-
-function setCorsHeaders(response) {
+// Vercel Serverless Function für /api/mcp/*
+export default async function handler(request, response) {
+	// CORS Headers setzen
 	response.setHeader('Access-Control-Allow-Origin', '*');
 	response.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
 	response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-}
 
-function sendResponse(response, result) {
-	setCorsHeaders(response);
-	const headers = {
-		'Content-Type': 'application/json; charset=utf-8',
-		...result.headers,
-	};
-	for (const [name, value] of Object.entries(headers)) {
-		if (value !== undefined) {
-			response.setHeader(name, value);
-		}
-	}
-	response.statusCode = result.statusCode;
-	response.end(result.body === undefined ? '' : JSON.stringify(result.body));
-}
-
-function sendError(response, error) {
-	console.error('[mcp] vercel handler failed', error);
-	setCorsHeaders(response);
-	response.statusCode = 500;
-	response.setHeader('Content-Type', 'application/json; charset=utf-8');
-	response.end(
-		JSON.stringify({
-			error: 'internal_error',
-			message: error instanceof Error ? error.message : 'unknown_error',
-			timestamp: new Date().toISOString(),
-			strategy: currentStrategy,
-			source: lastSource,
-		}),
-	);
-}
-
-function handleOptions(response) {
-	setCorsHeaders(response);
-	response.statusCode = 204;
-	response.end();
-}
-
-export default async function handler(request, response) {
-	if ((request.method ?? 'GET').toUpperCase() === 'OPTIONS') {
-		handleOptions(response);
+	// OPTIONS Request für CORS Preflight
+	if (request.method === 'OPTIONS') {
+		response.status(204).end();
 		return;
 	}
 
 	try {
-		const result = await handleApiRequest({
-			method: request.method ?? 'GET',
-			url: buildRequestUrl(request),
-			getIndex: () => ensureIndex(),
-			refresh: () => refreshIndex(),
-		});
-		sendResponse(response, result);
+		// Versuche eingebettete Sample-Daten zu laden (optimiert für Vercel)
+		let samplesData;
+		let useEmbeddedData = false;
+
+		try {
+			const samplesModule = await import('./samples.mjs');
+			samplesData = samplesModule.samplesData;
+			useEmbeddedData = true;
+			console.log('[api/mcp] ✅ Using embedded samples:', samplesData.entries.length);
+		} catch (samplesError) {
+			console.log('[api/mcp] ⚠️ Could not load embedded samples:', samplesError.message);
+			console.log('[api/mcp] Falling back to build artifacts...');
+		}
+
+		// URL für API Handler vorbereiten
+		const baseUrl = `https://${request.headers.host}`;
+		const fullUrl = new URL(request.url, baseUrl);
+
+		if (useEmbeddedData) {
+			// Verwende eingebettete Sample-Daten (schneller und zuverlässiger)
+			const { handleApiRequest } = await import('../dist/index.mjs');
+
+			// Erstelle Mock-Index mit eingebetteten Daten
+			const counts = resolveCounts({ entries: samplesData.entries, counts: samplesData.counts });
+			const mockIndex = {
+				entries: samplesData.entries,
+				map: new Map(samplesData.entries.map((entry) => [entry.id, entry])),
+				generatedAt: new Date(samplesData.generatedAt),
+				buildMode: samplesData.buildMode,
+				counts,
+				list: function (query, options = {}) {
+					const kinds = options.kinds ? new Set(options.kinds) : undefined;
+					const normalizeKind = (entry) => entry.kind ?? 'sample';
+					let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
+					if (!query) {
+						return results;
+					}
+					const normalized = query.trim().toLowerCase();
+					return results.filter(
+						(entry) =>
+							entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
+					);
+				},
+				get: function (id) {
+					return this.map.get(id);
+				},
+			};
+
+			const getIndex = async () => mockIndex;
+
+			const result = await handleApiRequest({
+				method: request.method || 'GET',
+				url: fullUrl.toString(),
+				getIndex,
+			});
+
+			response.status(result.statusCode);
+			Object.entries(result.headers).forEach(([key, value]) => {
+				response.setHeader(key, value);
+			});
+			const responseBody = result.body ?? {};
+			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+		} else {
+			// Fallback: Verwende Build-Artefakte (kann auf Vercel problematisch sein)
+			const { handleApiRequest, buildSampleIndex } = await import('../dist/index.mjs');
+
+			// Index-Funktionen definieren (mit Runtime Discovery)
+			let cachedIndex = null;
+			const getIndex = async () => {
+				if (!cachedIndex) {
+					cachedIndex = await buildSampleIndex();
+				}
+				return cachedIndex;
+			};
+
+			// API Handler aufrufen
+			const result = await handleApiRequest({
+				method: request.method || 'GET',
+				url: fullUrl.toString(),
+				getIndex,
+			});
+
+			// Response senden
+			response.status(result.statusCode);
+			Object.entries(result.headers).forEach(([key, value]) => {
+				response.setHeader(key, value);
+			});
+			const responseBody = result.body ?? {};
+			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+		}
 	} catch (error) {
-		sendError(response, error);
+		console.error('[api/mcp] Handler error:', error);
+
+		// Fallback Error Response
+		response.status(500);
+		response.setHeader('Content-Type', 'application/json');
+		response.json(
+			withAiHints({
+				error: 'Internal server error',
+				message: error.message,
+				timestamp: new Date().toISOString(),
+			}),
+		);
 	}
 }

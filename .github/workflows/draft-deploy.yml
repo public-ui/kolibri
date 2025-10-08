@@ -57,7 +57,7 @@ jobs:
           args: deploy --no-build --filter=@public-ui/sample-react -d packages/samples/react/dist
 
       - name: Find comment
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@v4
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -65,7 +65,7 @@ jobs:
           body-includes: Netlify Draft Deployment
 
       - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}

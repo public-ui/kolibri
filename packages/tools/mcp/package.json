@@ -17,22 +17,41 @@
 	},
 	"type": "module",
 	"private": false,
-	"description": "Model Context Protocol backend exposing KoliBri sample code to AI agents.",
+	"description": "Model Context Protocol server providing AI agents access to 136+ KoliBri component examples and source code.",
+	"keywords": [
+		"mcp",
+		"model-context-protocol",
+		"kolibri",
+		"design-system",
+		"ai-agent",
+		"component-library",
+		"accessibility",
+		"react",
+		"typescript"
+	],
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"bin": {
+		"kolibri-mcp": "dist/cli.mjs"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
 	"scripts": {
-		"build:deps": "pnpm --filter @public-ui/mcp^... build",
-		"format": "prettier --check api src vercel",
-		"prebuild": "node src/prebuild.js",
-		"start": "node src/index.js",
-		"vercel:build": "node vercel/build.mjs"
+		"build": "node prebuild.js && unbuild",
+		"format": "prettier --check src",
+		"prestart": "pnpm build",
+		"start": "node dist/index.mjs"
 	},
 	"devDependencies": {
-		"prettier": "3.6.2"
+		"prettier": "3.6.2",
+		"unbuild": "3.6.1"
 	},
 	"files": [
-		"README.md",
-		"api/*.js",
-		"src",
-		"vercel/*.mjs",
-		"vercel/.gitignore"
+		"dist/",
+		"README.md"
 	]
 }
