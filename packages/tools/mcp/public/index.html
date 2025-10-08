@@ -163,7 +163,7 @@
 		<div class="container">
 			<div class="header">
 				<div class="logo">K</div>
-				<h1>KoliBri MCP-API</h1>
+				<h1>KoliBri MCP API</h1>
 				<p class="subtitle">Model Context Protocol Backend for KoliBri Examples</p>
 				<span class="status">🟢 Online</span>
 				<div class="stats" aria-live="polite">
@@ -214,8 +214,49 @@
 					<p class="description">Retrieve a specific documentation document including its Markdown source</p>
 				</div>
 				<p class="description" style="margin-top: 1rem">
-					Hinweis: Die Indizes werden im Buildprozess erzeugt. Ein manuelles <code>refresh</code> ist in Deployments nicht verfügbar.
+					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
 				</p>
+			</div>
+
+			<div class="api-info">
+				<h2>🔧 VS Code Integration</h2>
+				<p class="description">Use the KoliBri MCP Server with GitHub Copilot Chat in VS Code:</p>
+
+				<div style="margin-top: 1rem">
+					<h3 style="color: #2d3748; margin-bottom: 0.5rem; font-size: 1.1rem">Option 1: Local Installation</h3>
+					<div class="endpoint">npm install -g @public-ui/mcp</div>
+					<p class="description">Install the MCP package globally and create an <code>mcp.json</code>:</p>
+					<div class="endpoint" style="white-space: pre-wrap; font-size: 0.9rem">
+						{ "servers": { "kolibri-mcp": { "command": "npx", "args": ["@public-ui/mcp"] } }, "inputs": [] }
+					</div>
+
+					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Option 2: Remote Server (Recommended)</h3>
+					<p class="description">Use the hosted server without local installation in your <code>mcp.json</code>:</p>
+					<div class="endpoint" style="white-space: pre-wrap; font-size: 0.9rem">
+						{ "servers": { "kolibri-mcp": { "url": "https://public-ui-kolibri-mcp.vercel.app/mcp/", "type": "http" } }, "inputs": [] }
+					</div>
+					<div style="background: #fff3cd; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #ffc107">
+						<strong style="color: #856404">⚡ Remote Advantage:</strong>
+						<span style="color: #856404"> No installation required, always up-to-date, faster setup!</span>
+					</div>
+
+					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Setup</h3>
+					<p class="description">Create an <code>mcp.json</code> file in your project directory or use the global configuration:</p>
+					<div class="endpoint" style="background: #1a202c; color: #90cdf4">
+						# Local file in project echo '{ "servers": { ... } }' > mcp.json # Or globally for all projects ~/.config/mcp/mcp.json
+					</div>
+					<p class="description">In GitHub Copilot Chat you can now write:</p>
+					<div class="endpoint" style="background: #2d3748; color: #90cdf4">
+						@kolibri show me a button example @kolibri how do I implement a KoliBri table? @kolibri create an accessible form
+					</div>
+
+					<div style="background: #e6fffa; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #38a169">
+						<strong style="color: #2d3748">💡 Tip:</strong>
+						<span style="color: #2d3748">
+							The MCP Server gives you access to all 136+ KoliBri component examples and 18 documentation files directly in VS Code!</span
+						>
+					</div>
+				</div>
 			</div>
 
 			<div class="footer">
