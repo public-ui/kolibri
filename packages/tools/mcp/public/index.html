@@ -180,7 +180,7 @@
 
 			<div class="api-info">
 				<h2>📡 REST API Endpoints</h2>
-				<p class="description">This API provides structured information about KoliBri examples that can be used by AI agents.</p>
+				<p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
 
 				<div style="margin-top: 1rem">
 					<div>
@@ -247,13 +247,13 @@
 					</div>
 					<p class="description">In GitHub Copilot Chat you can now write:</p>
 					<div class="endpoint" style="background: #2d3748; color: #90cdf4">
-						@kolibri show me a button example @kolibri how do I implement a KoliBri table? @kolibri create an accessible form
+						@kolibri show me a button sample @kolibri how do I implement a KoliBri table? @kolibri create an accessible form
 					</div>
 
 					<div style="background: #e6fffa; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #38a169">
 						<strong style="color: #2d3748">💡 Tip:</strong>
-						<span style="color: #2d3748">
-							The MCP Server gives you access to all 136+ KoliBri component examples and 18 documentation files directly in VS Code!</span
+						<span style="color: #2d3748" id="tip-text">
+							The MCP Server gives you access to all KoliBri component samples and documentation files directly in VS Code!</span
 						>
 					</div>
 				</div>
@@ -300,10 +300,18 @@
 
 					const sampleCountElement = document.getElementById('sample-count');
 					const docCountElement = document.getElementById('doc-count');
+					const tipTextElement = document.getElementById('tip-text');
 
 					if (sampleCountElement && docCountElement) {
 						sampleCountElement.textContent = sampleCount.toLocaleString();
 						docCountElement.textContent = docCount.toLocaleString();
+					}
+
+					// Update tip text with dynamic numbers
+					if (tipTextElement && sampleCount > 0) {
+						const samplesText = sampleCount > 0 ? `${sampleCount.toLocaleString()}+ ` : '';
+						const docsText = docCount > 0 ? ` and ${docCount.toLocaleString()} documentation files` : '';
+						tipTextElement.textContent = `The MCP Server gives you access to all ${samplesText}KoliBri component samples${docsText} directly in VS Code!`;
 					}
 
 					if (data.healthy && sampleCount > 0) {
