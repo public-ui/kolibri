@@ -1,4 +1,4 @@
-import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, SmartButtonProps, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { KolSpanFc } from '../../functional-components';
@@ -22,6 +22,15 @@ export class KolBadge implements BadgeAPI {
 	private colorStr = '#fff';
 	private readonly id = nonce();
 
+	private forwardSmartButtonRef(el: HTMLKolButtonWcElement | undefined, ref?: SmartButtonProps['ref']): void {
+		if (!ref) return;
+		if (typeof ref === 'function') {
+			ref(el);
+		} else {
+			ref.current = el;
+		}
+	}
+
 	private renderSmartButton(props: ButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
@@ -36,6 +45,7 @@ export class KolBadge implements BadgeAPI {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_buttonVariant={props._variant}
+				ref={(el) => this.forwardSmartButtonRef(el, (props as SmartButtonProps).ref)}
 			></KolButtonWcTag>
 		);
 	}
