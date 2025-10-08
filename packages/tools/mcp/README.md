@@ -27,10 +27,13 @@ npx @public-ui/mcp
 
 The server will start on `http://localhost:3030` and provide the following endpoints:
 
-- `GET /mcp/health` - Server status and sample count
+- `GET /mcp/health` - Server status and content counts
 - `GET /mcp/samples` - List all available component examples
-- `GET /mcp/sample?id=button/basic` - Get specific sample source code
-- `POST /mcp/refresh` - Refresh sample index
+- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
+- `GET /mcp/concepts` - List Markdown concept documentation
+- `GET /mcp/concept?id=concept/README` - Get a specific concept document
+
+The sample and concept indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
 
 ### Integration with AI Tools
 
@@ -65,7 +68,7 @@ const samples = await response.json();
 
 ## 📚 What's Included
 
-This MCP server provides access to **136+ KoliBri component examples** including:
+This MCP server provides access to **136+ KoliBri component examples** and the core **Markdown concept documentation** of the project, including:
 
 - **Basic Components**: Button, Input, Link, Icon, Badge, etc.
 - **Form Components**: Form, Select, Textarea, Checkbox, Radio, etc.
@@ -73,6 +76,7 @@ This MCP server provides access to **136+ KoliBri component examples** including
 - **Navigation**: Breadcrumb, Pagination, Navigation, etc.
 - **Data Display**: Table, Alert, Toast, Progress, etc.
 - **Advanced Components**: Tree, Tooltip, Popover, etc.
+- **Concept Docs**: `README.md`, `docs/*.md`, migration guides, security guidelines, and more.
 
 Each sample includes:
 
@@ -89,10 +93,18 @@ Returns server status and metadata:
 
 ```json
 {
+	"status": "ok",
 	"healthy": true,
+	"totalEntries": 154,
 	"totalSamples": 136,
-	"sampleGroups": ["button", "input", "table", "..."],
-	"version": "3.0.7"
+	"totalConcepts": 18,
+	"totalDocs": 18,
+	"message": "System healthy with 154 entries available",
+	"generatedAt": "2024-05-28T08:15:30.000Z",
+	"ai-hints": [
+		"Always register KoliBri Web Components in the browser runtime before rendering them.",
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+	]
 }
 ```
 
@@ -113,20 +125,48 @@ curl "http://localhost:3030/mcp/samples?q=button"
 Get complete source code for a specific sample:
 
 ```bash
-curl "http://localhost:3030/mcp/sample?id=button/basic"
+curl "http://localhost:3030/mcp/sample?id=sample/button/basic"
 ```
 
 Returns:
 
 ```json
 {
-	"id": "button/basic",
+	"id": "sample/button/basic",
 	"group": "button",
 	"name": "basic",
 	"path": "packages/samples/react/src/components/button/basic.tsx",
-	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n..."
+	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n...",
+	"kind": "sample",
+	"ai-hints": [
+		"Always register KoliBri Web Components in the browser runtime before rendering them.",
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+	]
 }
 ```
+
+### GET /mcp/concepts
+
+List Markdown-based concept documentation entries:
+
+```bash
+curl http://localhost:3030/mcp/concepts
+
+# Filter by term
+curl "http://localhost:3030/mcp/concepts?q=theme"
+```
+
+### GET /mcp/concept?id={conceptId}
+
+Fetch Markdown documentation by referencing its `concepts/...` identifier:
+
+```bash
+curl "http://localhost:3030/mcp/concept?id=concept/README"
+```
+
+Returns the Markdown content together with metadata. Every sample or concept response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
+
+All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered in the browser and that integration steps vary with the chosen project setup.
 
 ## 🛠️ Use Cases
 

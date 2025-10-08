@@ -4,21 +4,75 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-class SampleIndex {
-	constructor(entries, generatedAt = new Date(), buildMode = 'runtime') {
-		this.entries = entries;
-		this.map = new Map(entries.map((entry) => [entry.id, entry]));
-		this.generatedAt = generatedAt;
-		this.buildMode = buildMode;
+function normalizeEntryId(entry) {
+	const kind = entry.kind ?? 'sample';
+	const isConcept = kind === 'concept' || kind === 'doc';
+	const expectedPrefix = isConcept ? 'doc' : 'sample';
+	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
+		return entry;
 	}
 
-	list(query) {
+	const segments = [];
+	if (entry.group) {
+		const groupSegments = entry.group.split('/').filter(Boolean);
+		if (isConcept && groupSegments[0] === 'docs') {
+			groupSegments.shift();
+		}
+		segments.push(...groupSegments);
+	}
+
+	if (entry.name) {
+		segments.push(entry.name);
+	} else if (entry.id) {
+		segments.push(...String(entry.id).split('/').filter(Boolean));
+	}
+
+	return {
+		...entry,
+		id: [expectedPrefix, ...segments.filter(Boolean)].join('/'),
+	};
+}
+
+function computeCounts(entries) {
+	return entries.reduce(
+		(acc, entry) => {
+			const kind = entry.kind ?? 'sample';
+			acc.total += 1;
+			acc.byKind.set(kind, (acc.byKind.get(kind) ?? 0) + 1);
+			return acc;
+		},
+		{ total: 0, byKind: new Map() },
+	);
+}
+
+class SampleIndex {
+	constructor(entries, generatedAt = new Date(), buildMode = 'runtime') {
+		const normalizedEntries = entries.map((entry) => normalizeEntryId(entry));
+		this.entries = normalizedEntries;
+		this.map = new Map(normalizedEntries.map((entry) => [entry.id, entry]));
+		this.generatedAt = generatedAt;
+		this.buildMode = buildMode;
+		const counts = computeCounts(normalizedEntries);
+		this.counts = {
+			total: counts.total,
+			byKind: counts.byKind,
+			totalSamples: counts.byKind.get('sample') ?? counts.total,
+			totalConcepts: counts.byKind.get('concept') ?? counts.byKind.get('doc') ?? 0,
+			totalDocs: counts.byKind.get('doc') ?? counts.byKind.get('concept') ?? 0,
+		};
+	}
+
+	list(query, options = {}) {
+		const kinds = options.kinds ? new Set(options.kinds) : undefined;
+		const normalizeKind = (entry) => entry.kind ?? 'sample';
+		let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
+
 		if (!query) {
-			return this.entries;
+			return results;
 		}
 
 		const normalized = query.trim().toLowerCase();
-		return this.entries.filter(
+		return results.filter(
 			(entry) => entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
 		);
 	}

@@ -14,7 +14,6 @@ export async function startServer(options = {}) {
 				method: request.method ?? 'GET',
 				url: request.url ?? '/',
 				getIndex: () => index,
-				refresh: () => rebuild(),
 			}),
 		)
 			.then((result) => respondWithResult(response, result))
@@ -37,11 +36,6 @@ export async function startServer(options = {}) {
 	server.listen(port, () => {
 		console.log(`[mcp] server listening on http://localhost:${port}`);
 	});
-
-	async function rebuild() {
-		index = await buildSampleIndex();
-		return index;
-	}
 
 	return server;
 }
