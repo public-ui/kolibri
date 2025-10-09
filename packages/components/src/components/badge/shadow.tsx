@@ -1,6 +1,6 @@
 import type { BadgeAPI, BadgeStates, KoliBriIconsProp, LabelPropType, PropColor, SmartButtonProps, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Method } from '@stencil/core';
 import { KolSpanFc } from '../../functional-components';
 
 import { nonce } from '../../utils/dev.utils';
@@ -21,6 +21,7 @@ export class KolBadge implements BadgeAPI {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
+	private smartButtonEl?: HTMLKolButtonWcElement;
 
 	private forwardSmartButtonRef(el: HTMLKolButtonWcElement | undefined, ref?: SmartButtonProps['ref']): void {
 		if (!ref) return;
@@ -45,9 +46,22 @@ export class KolBadge implements BadgeAPI {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_buttonVariant={props._variant}
-				ref={(el) => this.forwardSmartButtonRef(el, props.ref)}
+				ref={(el) => {
+					this.smartButtonEl = el ?? undefined;
+					this.forwardSmartButtonRef(el, props.ref);
+				}}
 			></KolButtonWcTag>
 		);
+	}
+
+	@Method()
+	public async kolFocus(): Promise<void> {
+		const btn = this.smartButtonEl as (HTMLKolButtonWcElement & { kolFocus?: () => void | Promise<void> }) | undefined;
+		if (btn?.kolFocus && typeof btn.kolFocus === 'function') {
+			await btn.kolFocus();
+			return;
+		}
+		btn?.focus();
 	}
 
 	public render(): JSX.Element {
