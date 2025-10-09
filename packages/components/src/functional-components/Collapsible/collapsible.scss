@@ -8,18 +8,19 @@
 			/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
 			transform: translateZ(0);
 			display: grid;
-			/**
-			 * The `overflow: hidden` ensures that the content is not visible during the animated
-			 * opening and closing. This should also cut off overlays containing content, but it
-			 *does not.
-			 */
-			overflow: hidden;
 			grid-template-rows: 0fr;
 			transition: grid-template-rows 0.3s;
 		}
 
 		&__wrapper-animation {
 			min-height: 0;
+			/**
+			 * The `overflow: hidden` ensures that the content is not visible during the animated
+			 * opening and closing. This should also cut off overlays containing content, but it
+			 *does not.
+			*/
+			overflow: hidden;
+
 			/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
 			visibility: hidden;
 			transition: visibility 0.3s;
