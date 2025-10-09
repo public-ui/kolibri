@@ -1,4 +1,4 @@
-import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, SmartButtonProps, Stringified } from '../../schema';
+import type { BadgeAPI, BadgeStates, KoliBriIconsProp, LabelPropType, PropColor, SmartButtonProps, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { KolSpanFc } from '../../functional-components';
@@ -31,7 +31,7 @@ export class KolBadge implements BadgeAPI {
 		}
 	}
 
-	private renderSmartButton(props: ButtonProps): JSX.Element {
+	private renderSmartButton(props: SmartButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
 				class="kol-badge__smart-button"
@@ -45,7 +45,7 @@ export class KolBadge implements BadgeAPI {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_buttonVariant={props._variant}
-				ref={(el) => this.forwardSmartButtonRef(el, (props as SmartButtonProps).ref)}
+				ref={(el) => this.forwardSmartButtonRef(el, props.ref)}
 			></KolButtonWcTag>
 		);
 	}
@@ -64,7 +64,7 @@ export class KolBadge implements BadgeAPI {
 				}}
 			>
 				<KolSpanFc class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
-				{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
+				{hasSmartButton && this.renderSmartButton(this.state._smartButton as SmartButtonProps)}
 			</span>
 		);
 	}
@@ -87,7 +87,7 @@ export class KolBadge implements BadgeAPI {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<SmartButtonProps>;
 
 	@State() public state: BadgeStates = {
 		_color: {
@@ -119,10 +119,10 @@ export class KolBadge implements BadgeAPI {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: SmartButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<ButtonProps>(value as string);
+				value = parseJson<SmartButtonProps>(value as string);
 				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value behält den ursprünglichen Wert
