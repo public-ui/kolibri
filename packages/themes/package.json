@@ -53,7 +53,9 @@
 		"lint:tsc": "tsc --noemit",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
-		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
+		"test-all:screen-reader": "pnpm -r --workspace-concurrency=1 test:screen-reader",
+		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update",
+		"test-update-all:screen-reader": "pnpm -r --workspace-concurrency=1 test-update:screen-reader"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",

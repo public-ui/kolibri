@@ -45,6 +45,18 @@ register(
 	});
 ```
 
+## NVDA-gestützte Visualtests
+
+Die NVDA-basierten Screenreader-Szenarien sind Teil der visuellen Regressionstests. Für die ECL-Themes stehen dafür neue Skripte bereit:
+
+- `pnpm run test:screen-reader:ecl-ec` bzw. `pnpm run test:screen-reader:ecl-eu` führen die Szenarien mit gesetztem `KOLIBRI_SCREEN_READER=1`, `THEME_MODULE=dist` und dem passenden `THEME_EXPORT` aus.
+- `pnpm run test:screen-reader` startet beide Varianten nacheinander.
+- `pnpm run test-update:screen-reader` sowie die Varianten mit `:ecl-ec` und `:ecl-eu` aktualisieren die Snapshots der Screenreader-Szenarien.
+
+Die Skripte setzen alle benötigten Variablen automatisch. Voraussetzung ist weiterhin eine Windows-Umgebung mit vorbereiteter NVDA-Installation (z. B. über [`@guidepup/setup`](https://www.npmjs.com/package/@guidepup/setup)).
+
+Eine ausführlichere Beschreibung findest du im [zentralen Themes-README](../README.md#nvda-gestützte-visualtests).
+
 ## Design Tokens
 
 The token values are read from `src/ecl-ec/global.scss` and `src/ecl-eu/global.scss` and control the colors, fonts and spacing of the components.

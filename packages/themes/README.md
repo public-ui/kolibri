@@ -34,20 +34,40 @@ import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
 
 register(
-        DEFAULT,
-        // or provide an array to register multiple themes:
-        // [DEFAULT, ECL_EC, ECL_EU]
-        defineCustomElements,
+	DEFAULT,
+	// or provide an array to register multiple themes:
+	// [DEFAULT, ECL_EC, ECL_EU]
+	defineCustomElements,
 )
-        .then(() => {
-                /* KoliBri ready */
-        })
-        .catch((error) => {
-                /* Handle errors */
-        });
+	.then(() => {
+		/* KoliBri ready */
+	})
+	.catch((error) => {
+		/* Handle errors */
+	});
 ```
 
 Override theme tokens in your own stylesheet as needed. The [default theme README](./default/README.md) lists all available variables.
+
+## NVDA-gestützte Visualtests
+
+Die Screenreader-Szenarien laufen innerhalb der visuellen Regressionstests und benötigen eine vorbereitete Windows-Umgebung.
+
+### Voraussetzungen
+
+- Nutze die bereitgestellten Skripte wie `pnpm run test:screen-reader` bzw. `pnpm run test-update:screen-reader`. Sie setzen `THEME_MODULE`, `THEME_EXPORT` und `KOLIBRI_SCREEN_READER=1` automatisch und führen `kolibri-visual-test` mit dem passenden `@screen-reader`-Filter aus.
+- Installiere und konfiguriere NVDA über [`@guidepup/setup`](https://www.npmjs.com/package/@guidepup/setup); automatisierte Abläufe funktionieren nur unter Windows.
+
+### Tests starten
+
+1. Öffne eine Windows-Shell im Theme-Verzeichnis oder verwende `pnpm --filter <dein-theme> …` im Monorepo-Stamm.
+2. Führe die Screenreader-Szenarien mit `pnpm run test:screen-reader` aus. In Kombination mit `pnpm --filter` kannst du dies auch direkt aus dem Monorepo-Stamm tun, z. B. `pnpm --filter @public-ui/theme-default run test:screen-reader`.
+3. Für alle Themes gleichzeitig steht `pnpm run test-all:screen-reader` im Paket `@public-ui/themes` bereit.
+
+### Snapshots pflegen
+
+- Beim ersten Durchlauf legt das Tool ein `snapshots`-Verzeichnis an; committe die generierten Referenzen.
+- Aktualisiere geänderte Referenzen über `pnpm run test-update:screen-reader` (bzw. `pnpm run test-update-all:screen-reader` im Workspace).
 
 ## Important settings
 
