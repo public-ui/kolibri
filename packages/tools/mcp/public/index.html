@@ -292,10 +292,6 @@
 						docCount = data.totalDocs;
 					} else if (typeof data.docs === 'number') {
 						docCount = data.docs;
-					} else if (typeof data.totalConcepts === 'number') {
-						docCount = data.totalConcepts;
-					} else if (typeof data.concepts === 'number') {
-						docCount = data.concepts;
 					}
 
 					const sampleCountElement = document.getElementById('sample-count');
