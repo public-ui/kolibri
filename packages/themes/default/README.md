@@ -35,6 +35,17 @@ register(DEFAULT, defineCustomElements).then(() => {
 The default theme is token based and works with minimal adjustments. It already contains all necessary styling and can
 be customized with design tokens using _CSS Custom Properties_.
 
+### NVDA-gestützte Visualtests
+
+Die automatisierten Screenreader-Szenarien laufen innerhalb der visuellen Regressionstests. Verwende zum Start die neuen Skripte:
+
+- `pnpm run test:screen-reader` führt die Szenarien mit gesetztem `KOLIBRI_SCREEN_READER=1`, `THEME_MODULE=dist` und `THEME_EXPORT=DEFAULT` aus.
+- `pnpm run test-update:screen-reader` aktualisiert bei Bedarf die Snapshots der Screenreader-Szenarien.
+
+Die Skripte setzen alle benötigten Variablen automatisch. Voraussetzung ist weiterhin eine Windows-Umgebung mit vorbereiteter NVDA-Installation (z. B. via [`@guidepup/setup`](https://www.npmjs.com/package/@guidepup/setup)).
+
+Weitere Hintergrundinformationen findest du im [Themes-README](../README.md#nvda-gestützte-visualtests).
+
 ### Variables
 
 | Variable                          | Default value                                    | Meaning                                |

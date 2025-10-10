@@ -56,6 +56,21 @@ Add the following npm scripts to the theme's `package.json`:
 - `THEME_EXPERT`: Define the name of the export within the module. (e.g., `export const THEME_NAME = {/**/};`) Defaults to `default`.
 - `KOLIBRI_VISUAL_TESTS_TIMEOUT`: Define the Playwright [test timeout](https://playwright.dev/docs/test-timeouts).
 - `KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT`: Define the Playwright [expect timeout](https://playwright.dev/docs/test-timeouts).
+- `KOLIBRI_SCREEN_READER`: Set to `1` (or `true`) to enable NVDA based screen reader automation. Requires a Windows host with NVDA configured via [`@guidepup/setup`](https://github.com/guidepup/setup).
+
+### Screen reader automation
+
+The visual tests can run additional NVDA scenarios powered by [`@guidepup/playwright`](https://www.npmjs.com/package/@guidepup/playwright).
+When `KOLIBRI_SCREEN_READER` is enabled the Playwright configuration automatically switches to serial, headed execution so that the screen reader can control the browser.
+
+Run the screen reader tests alongside the visual ones or filter them explicitly:
+
+```bash
+KOLIBRI_SCREEN_READER=1 kolibri-visual-test --grep "@screen-reader"
+```
+
+NVDA must be installed and configured for automation on the host machine.
+Refer to the [Guidepup setup documentation](https://www.guidepup.dev/docs/getting-started) for environment preparation instructions.
 
 Run the tests with `npm test`. The first time, this will create a new folder `snapshots` which is supposed to be committed to the repository.
 In the following runs, new screenshots will be compared to this reference.

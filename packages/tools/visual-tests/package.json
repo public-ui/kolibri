@@ -31,6 +31,8 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
+		"@guidepup/guidepup": "0.24.0",
+		"@guidepup/playwright": "0.14.2",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.2.2",
 		"portfinder": "1.0.38",
