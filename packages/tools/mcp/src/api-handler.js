@@ -42,14 +42,13 @@ function computeCountsFromEntries(entries = []) {
 				return acc;
 			}
 
-			if (kind === 'concept' || kind === 'doc') {
-				acc.totalConcepts += 1;
+			if (kind === 'doc') {
 				acc.totalDocs += 1;
 			}
 
 			return acc;
 		},
-		{ total: 0, totalSamples: 0, totalConcepts: 0, totalDocs: 0 },
+		{ total: 0, totalSamples: 0, totalDocs: 0 },
 	);
 }
 
@@ -64,7 +63,6 @@ function resolveCounts(index) {
 	return {
 		total: typeof source.total === 'number' ? source.total : fallbackCounts.total,
 		totalSamples: typeof source.totalSamples === 'number' ? source.totalSamples : fallbackCounts.totalSamples,
-		totalConcepts: typeof source.totalConcepts === 'number' ? source.totalConcepts : fallbackCounts.totalConcepts,
 		totalDocs: typeof source.totalDocs === 'number' ? source.totalDocs : fallbackCounts.totalDocs,
 	};
 }
@@ -114,7 +112,6 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				endpoints: ['/health', '/samples', '/sample?id=sample/<component>/<sample>', '/docs', '/doc?id=doc/<identifier>'],
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts,
 				totalDocs: counts.totalDocs,
 				generatedAt: (generatedAt ?? new Date()).toISOString(),
 				buildMode: index?.buildMode ?? 'runtime',
@@ -130,7 +127,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		// Debug information for Vercel
 		console.log('[health] Total entries:', counts.total);
 		console.log('[health] Sample entries:', counts.totalSamples);
-		console.log('[health] Concept entries:', counts.totalConcepts);
+		console.log('[health] Doc entries:', counts.totalDocs);
 		console.log('[health] Index generated at:', index.generatedAt);
 		console.log('[health] Is healthy:', isHealthy);
 
@@ -142,7 +139,6 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				healthy: isHealthy,
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts,
 				totalDocs: counts.totalDocs,
 				message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
 				generatedAt: index.generatedAt.toISOString(),
@@ -175,7 +171,6 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				total: items.length,
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts,
 				totalDocs: counts.totalDocs,
 				generatedAt: index.generatedAt.toISOString(),
 			}),
@@ -227,7 +222,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 	if (normalizedMethod === 'GET' && pathname === '/docs') {
 		const index = await getIndex();
 		const query = requestUrl.searchParams.get('q') ?? '';
-		const items = index.list(query, { kinds: ['concept', 'doc'] }).map((entry) => ({
+		const items = index.list(query, { kinds: ['doc'] }).map((entry) => ({
 			group: entry.group,
 			id: entry.id,
 			name: entry.name,
@@ -243,7 +238,6 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 				query,
 				total: items.length,
 				totalEntries: counts.totalDocs,
-				totalConcepts: counts.totalConcepts,
 				totalDocs: counts.totalDocs,
 				generatedAt: index.generatedAt.toISOString(),
 			}),
@@ -262,7 +256,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		}
 
 		const entry = index.get(id);
-		if (!entry || !['concept', 'doc'].includes(entry.kind ?? 'sample')) {
+		if (!entry || entry.kind !== 'doc') {
 			return {
 				statusCode: 404,
 				headers: baseHeaders,
