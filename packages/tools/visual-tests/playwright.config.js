@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { screenReaderConfig } from '@guidepup/playwright';
 import * as path from 'path';
 import * as process from 'process';
 
@@ -11,6 +12,11 @@ const TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_TIMEOUT || '15000', 10
 const EXPECT_TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT || '5000', 10);
 const BUILD_PATH = process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH ?? '';
 const THEME = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
+const SCREEN_READER_ENABLED = /^(1|true)$/i.test(process.env.KOLIBRI_SCREEN_READER ?? '');
+
+const DEFAULT_WORKERS = process.env.CI ? 1 : undefined;
+const WORKERS = SCREEN_READER_ENABLED ? screenReaderConfig.workers : DEFAULT_WORKERS;
+const FULLY_PARALLEL = SCREEN_READER_ENABLED ? screenReaderConfig.fullyParallel : true;
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -21,19 +27,20 @@ export default defineConfig({
 	// snapshotPathTemplate: '',
 	outputDir: path.join(CWD, 'test-results'),
 	/* Run tests in files in parallel */
-	fullyParallel: true,
+	fullyParallel: FULLY_PARALLEL,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
 	/* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 1 : undefined,
+	workers: WORKERS,
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	reporter: 'line',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
+		...(SCREEN_READER_ENABLED ? screenReaderConfig.use : {}),
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		baseURL: BASE_URL,
 
