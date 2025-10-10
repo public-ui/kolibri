@@ -137,7 +137,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+		if (event.defaultPrevented) return;
+		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && event.target === this.inputRef) {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.inputRef,
