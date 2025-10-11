@@ -123,8 +123,17 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.controller.onFacade.onInput(event, true, remappedValue);
 	};
 
+	private readonly isNativeCalendarIconFocused = (): boolean => {
+		if (!this.inputRef || typeof window === 'undefined' || typeof window.getComputedStyle !== 'function') {
+			return false;
+		}
+
+		const computedStyle = window.getComputedStyle(this.inputRef, 'focus-visible');
+		return computedStyle.getPropertyValue('content') === 'native-icon-focused';
+	};
+
 	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !this.isNativeCalendarIconFocused()) {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.inputRef,
