@@ -17,7 +17,6 @@ on:
           - dev
           - next
           - latest
-          - lts
       version: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#semver-bump
         type: choice
         description: SemVer keyword for version bump

@@ -20,6 +20,8 @@ jobs:
       matrix:
         include:
           - base: develop
+            version: v4
+          - base: release/3
             version: v3
           - base: release/2
             version: v2

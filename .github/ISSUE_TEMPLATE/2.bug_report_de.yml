@@ -1,7 +1,7 @@
 name: Fehler melden
 description: Alle relevanten Fehler, z. B. fehlerhafte Komponenten oder Beispiele
 title: '🐞 Bug: '
-labels: ['v2', 'v3']
+labels: ['v4', 'v3', 'v2']
 type: Bug
 body:
   - type: textarea
