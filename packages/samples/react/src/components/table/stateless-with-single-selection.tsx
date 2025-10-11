@@ -1,11 +1,13 @@
+import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys } from '@public-ui/components';
+import { KolEvent } from '@public-ui/components';
+import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
-import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys, KoliBriTableSelectionKey } from '@public-ui/components';
-import { KolEvent } from '@public-ui/components';
-import { getRoot } from '../../shares/react-roots';
 import { useToasterService } from '../../hooks/useToasterService';
+import { getRoot } from '../../shares/react-roots';
+import { SampleDescription } from '../SampleDescription';
+
+type SelectionValue = string | number;
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -40,7 +42,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: SelectionValue[] | SelectionValue) => {
 		console.log('Selection change via callback', selection);
 		setSelectedKeys(Array.isArray(selection) ? selection : [selection]);
 	};
