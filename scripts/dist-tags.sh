@@ -7,6 +7,7 @@ npm dist-tag $1 @public-ui/kolibri-cli@$2 $3
 npm dist-tag $1 @public-ui/mcp@$2 $3
 npm dist-tag $1 @public-ui/preact@$2 $3
 npm dist-tag $1 @public-ui/react@$2 $3
+npm dist-tag $1 @public-ui/react-hook-form-adapter@$2 $3
 npm dist-tag $1 @public-ui/react-v19@$2 $3
 npm dist-tag $1 @public-ui/react-standalone@$2 $3
 npm dist-tag $1 @public-ui/solid@$2 $3
