@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { SortEventPayload, TableHeaderCellsPropType, KoliBriTableSelection } from '../../schema';
+import type { SortEventPayload, TableHeaderCellsPropType, KoliBriTableSelection, KoliBriTableSelectionKey, KoliBriTableSelectionKeys } from '../../schema';
 import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
@@ -30,9 +30,9 @@ test.describe('kol-table-stateless', () => {
 		test('it calls the onSelectionChange callback when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<string | string[]>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: string | string[]) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							resolve(selection);
 						},
 					};
@@ -67,9 +67,9 @@ test.describe('kol-table-stateless', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const eventPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
-				return new Promise<string | string[]>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
 					element.addEventListener(KolEvent.selectionChange, (event: Event) => {
-						resolve((event as CustomEvent).detail as string | string[]);
+						resolve((event as CustomEvent).detail as KoliBriTableSelectionKeys | KoliBriTableSelectionKey);
 					});
 				});
 			}, KolEvent);
@@ -116,9 +116,9 @@ test.describe('kol-table-stateless', () => {
 		test('it allows selecting individual rows', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<string | string[]>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: string | string[]) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							resolve(selection);
 						},
 					};
@@ -140,9 +140,9 @@ test.describe('kol-table-stateless', () => {
 		test('it allows selecting all enabled rows', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<string | string[]>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: string | string[]) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							resolve(selection);
 						},
 					};
@@ -165,9 +165,9 @@ test.describe('kol-table-stateless', () => {
 			await page.waitForChanges();
 
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<string | string[]>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: string | string[]) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							resolve(selection);
 						},
 					};
@@ -205,9 +205,9 @@ test.describe('kol-table-stateless', () => {
 			await page.waitForChanges();
 
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<string | string[]>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: string | string[]) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							resolve(selection);
 						},
 					};
