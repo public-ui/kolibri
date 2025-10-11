@@ -1,7 +1,7 @@
 name: 01 - Publish
 
 env:
-  prefix:
+  prefix: 'v4-' # remove, when v4 is released
 
 on:
   workflow_dispatch:
@@ -26,8 +26,6 @@ on:
           - patch
           - preminor
           - minor
-          # - premajor
-          # - major
       label: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#--preid
         type: choice
         description: SemVer pre release label (optional)

@@ -36,7 +36,7 @@ import {
 	validateTableSelection,
 	validateHasSettingsMenu,
 } from '../../schema';
-import type { ColumnSettings } from '../../schema/types';
+import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import { validateMinWidth } from '../../schema/props/min-width';
@@ -533,16 +533,26 @@ export class KolTableStateless implements TableStatelessAPI {
 		const firstCellData = row[0]?.data;
 
 		if (!firstCellData) return '';
-		const keyProperty = firstCellData[keyPropertyName] as string;
+		const keyProperty = firstCellData[keyPropertyName] as string | number;
 		const isMultiple = selection.multiple || selection.multiple === undefined;
-		const selected = selection?.selectedKeys?.includes(keyProperty);
-		const disabled = selection?.disabledKeys?.includes(keyProperty);
+
+		const selected = (() => {
+			const v = selection?.selectedKeys;
+			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
+			return arr.some((k) => String(k) === String(keyProperty));
+		})();
+		const disabled = (() => {
+			const v = selection?.disabledKeys;
+			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
+			return arr.some((k) => String(k) === String(keyProperty));
+		})();
+
 		const label = selection.label(firstCellData);
 		const props = {
 			name: 'selection',
 			checked: selected,
 			disabled,
-			id: keyProperty,
+			id: String(keyProperty),
 			['aria-label']: label,
 		};
 		return (
@@ -561,9 +571,12 @@ export class KolTableStateless implements TableStatelessAPI {
 								{...props}
 								type="checkbox"
 								onInput={(event: Event) => {
-									const updatedSelectedKeys = !selected
-										? [...(selection?.selectedKeys ?? []), keyProperty]
-										: selection?.selectedKeys?.filter((key) => key !== keyProperty);
+									const current = (() => {
+										const v = selection?.selectedKeys;
+										return v === undefined ? [] : Array.isArray(v) ? v : [v];
+									})();
+									const updatedSelectedKeys = !selected ? [...current, keyProperty] : current.filter((k) => String(k) !== String(keyProperty));
+
 									this.handleSelectionChangeCallbackAndEvent(event, updatedSelectedKeys ?? []);
 								}}
 							/>
@@ -688,15 +701,35 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private getDataWithSelectionEnabled() {
 		const keyPropertyName = this.getSelectionKeyPropertyName();
-		return this.state._data.filter((item) => !this.state._selection?.disabledKeys?.includes(item[keyPropertyName] as string));
+		return this.state._data.filter((item) => {
+			const v = this.state._selection?.disabledKeys;
+			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
+			return !arr.some((k) => String(k) === String(item[keyPropertyName] as KoliBriTableSelectionKey));
+		});
 	}
 
 	private getSelectedKeysWithoutDisabledKeys() {
-		return this.state._selection?.selectedKeys?.filter((key) => !this.state._selection?.disabledKeys?.includes(key));
+		const sel = (() => {
+			const v = this.state._selection?.selectedKeys;
+			return v === undefined ? [] : Array.isArray(v) ? v : [v];
+		})();
+		const dis = (() => {
+			const v = this.state._selection?.disabledKeys;
+			return v === undefined ? [] : Array.isArray(v) ? v : [v];
+		})();
+		return sel.filter((k) => !dis.some((d) => String(d) === String(k)));
 	}
 
 	private getSelectedKeysWithDisabledKeysOnly() {
-		return this.state._selection?.selectedKeys?.filter((key) => this.state._selection?.disabledKeys?.includes(key));
+		const sel = (() => {
+			const v = this.state._selection?.selectedKeys;
+			return v === undefined ? [] : Array.isArray(v) ? v : [v];
+		})();
+		const dis = (() => {
+			const v = this.state._selection?.disabledKeys;
+			return v === undefined ? [] : Array.isArray(v) ? v : [v];
+		})();
+		return sel.filter((k) => dis.some((d) => String(d) === String(k)));
 	}
 
 	private getRevertedSelection(selectAll: boolean) {
@@ -704,7 +737,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selection = this.getSelectedKeysWithDisabledKeysOnly() ?? []; // Always include already selected, but disabled, rows.
 
 		if (selectAll) {
-			selection.push(...this.getDataWithSelectionEnabled().map((el) => el?.[keyPropertyName] as string)); // add all enabled rows
+			selection.push(...this.getDataWithSelectionEnabled().map((el) => el?.[keyPropertyName] as KoliBriTableSelectionKey)); // add all enabled rows
 		}
 
 		return selection;

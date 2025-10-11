@@ -12,7 +12,7 @@ export const ButtonLinkIcons: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolButtonLink _icons="codicon codicon-home" _label="Ich bin ein Link mit Icon links" />
+			<KolButtonLink _icons="codicon codicon-home" _label="I am a link with an icon on the left" />
 			<KolButtonLink
 				_icons={{
 					right: 'codicon codicon-home',
@@ -40,6 +40,7 @@ export const ButtonLinkIcons: FC = () => (
 				}}
 				_label="I am a link with all icons"
 			/>
+			<KolButtonLink _icons="codicon codicon-home" _hideLabel _label="I am a link with icon only" />
 		</div>
 	</>
 );
