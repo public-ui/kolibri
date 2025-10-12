@@ -2,6 +2,7 @@ import { access, readdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { hasSearchableQuery, performFuzzySearch } from './fuzzy-search.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -105,14 +106,11 @@ class SampleIndex {
 
 		let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
 
-		if (!query) {
+		if (!hasSearchableQuery(query)) {
 			return results;
 		}
 
-		const normalized = query.trim().toLowerCase();
-		return results.filter(
-			(entry) => entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
-		);
+		return performFuzzySearch(results, query);
 	}
 
 	get(id) {
