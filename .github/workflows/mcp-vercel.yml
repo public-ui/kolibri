@@ -12,6 +12,7 @@ on:
   pull_request:
     branches:
       - develop
+      - release/*
     paths:
       - '.github/workflows/mcp-vercel.yml'
       - 'packages/samples/react/**'

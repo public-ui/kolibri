@@ -84,25 +84,34 @@ class SampleIndex {
 export async function buildSampleIndex() {
 	console.log('[buildSampleIndex] Starting sample index...');
 
+	const isProduction = process.env.NODE_ENV === 'production' || process.env.BUILD_MODE === 'prebuild';
+	let samplesJsonPath;
+	if (isProduction) {
+		// Always load from dist/samples.json in production
+		if (__dirname.endsWith('/src')) {
+			samplesJsonPath = path.resolve(__dirname.replace(/\/src$/, '/dist'), 'samples.json');
+		} else {
+			samplesJsonPath = path.resolve(__dirname, 'samples.json');
+		}
+	} else {
+		samplesJsonPath = path.resolve(__dirname, 'samples.json');
+	}
 	try {
-		// Try to load prebuilt data first
-		// In src/ directory for development, relative to dist/ for production
-		const samplesJsonPath = path.resolve(__dirname, 'samples.json');
 		console.log('[buildSampleIndex] Trying to load prebuilt samples from:', samplesJsonPath);
-
 		const jsonData = await readFile(samplesJsonPath, 'utf8');
 		const data = JSON.parse(jsonData);
-
 		console.log('[buildSampleIndex] ✅ Loaded prebuilt samples');
 		console.log('[buildSampleIndex] Total entries:', data.entries.length);
 		console.log('[buildSampleIndex] Build mode:', data.buildMode);
 		console.log('[buildSampleIndex] Generated at:', data.generatedAt);
-
 		return new SampleIndex(data.entries, new Date(data.generatedAt), data.buildMode);
 	} catch (error) {
+		if (isProduction) {
+			// In production, do NOT rebuild, just fail
+			throw new Error('[buildSampleIndex] ❌ Prebuilt samples.json not found in production/built mode. Please run the build step before deploying.');
+		}
 		console.log('[buildSampleIndex] ⚠️ Could not load prebuilt samples:', error.message);
 		console.log('[buildSampleIndex] Falling back to runtime discovery...');
-
 		// Fallback: use the original logic
 		const { buildSampleIndex: originalBuildSampleIndex } = await import('./sample-index-runtime.js');
 		return await originalBuildSampleIndex();
