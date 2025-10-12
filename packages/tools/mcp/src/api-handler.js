@@ -43,6 +43,8 @@ export const AI_HINTS_KEY = 'ai-hints';
 export const AI_HINTS_MESSAGES = Object.freeze([
 	'Always register KoliBri Web Components in the browser runtime before rendering them.',
 	'Choose the integration guide that matches your project setup to load and bundle the components correctly.',
+	'Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.',
+	'Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary.',
 ]);
 
 function normalizeHints(value) {

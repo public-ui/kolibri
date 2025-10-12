@@ -102,7 +102,9 @@ Returns server status and metadata:
 	"generatedAt": "2024-05-28T08:15:30.000Z",
 	"ai-hints": [
 		"Always register KoliBri Web Components in the browser runtime before rendering them.",
-		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly.",
+		"Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.",
+		"Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary."
 	]
 }
 ```
@@ -139,7 +141,9 @@ Returns the Markdown content together with metadata. Every sample or doc respons
 	"kind": "sample",
 	"ai-hints": [
 		"Always register KoliBri Web Components in the browser runtime before rendering them.",
-		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly.",
+		"Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.",
+		"Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary."
 	]
 }
 ```
@@ -165,7 +169,7 @@ curl "http://localhost:3030/mcp/doc?id=doc/README"
 
 Returns the Markdown content together with metadata. Every sample or doc response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
-All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered in the browser and that integration steps vary with the chosen project setup.
+All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered, that the correct integration guide and icon font assets need to be bundled, and that `<kol-form>` with an `_errorList` exposes validation errors via its summary.
 
 ## 🛠️ Use Cases
 
