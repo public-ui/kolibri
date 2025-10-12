@@ -42,7 +42,7 @@
 	},
 	"scripts": {
 		"build": "node prebuild.js && unbuild",
-		"format": "prettier --check src",
+		"format": "prettier --check public src",
 		"prestart": "pnpm build",
 		"start": "node dist/index.mjs"
 	},
