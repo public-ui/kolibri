@@ -2,6 +2,7 @@ import { access, readdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { computeFuzzyScore, extractQueryTokens } from './fuzzy-search.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -109,10 +110,22 @@ class SampleIndex {
 			return results;
 		}
 
-		const normalized = query.trim().toLowerCase();
-		return results.filter(
-			(entry) => entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
-		);
+		const queryTokens = extractQueryTokens(query);
+		if (queryTokens.length === 0) {
+			return results;
+		}
+
+		return results
+			.map((entry) => ({ entry, score: computeFuzzyScore(entry, queryTokens) }))
+			.filter((item) => Number.isFinite(item.score))
+			.sort((a, b) => {
+				if (a.score !== b.score) {
+					return a.score - b.score;
+				}
+
+				return a.entry.id.localeCompare(b.entry.id);
+			})
+			.map((item) => item.entry);
 	}
 
 	get(id) {
