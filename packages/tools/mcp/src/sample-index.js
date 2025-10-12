@@ -46,7 +46,7 @@ function computeCounts(entries) {
 	);
 }
 
-class SampleIndex {
+export class SampleIndex {
 	constructor(entries, generatedAt = new Date(), buildMode = 'runtime') {
 		const normalizedEntries = entries.map((entry) => normalizeEntryId(entry));
 		this.entries = normalizedEntries;
