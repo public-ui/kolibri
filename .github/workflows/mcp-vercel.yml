@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - release/*
     paths:
       - '.github/workflows/mcp-vercel.yml'
       - 'packages/samples/react/**'
@@ -12,6 +13,7 @@ on:
   pull_request:
     branches:
       - develop
+      - release/*
     paths:
       - '.github/workflows/mcp-vercel.yml'
       - 'packages/samples/react/**'
