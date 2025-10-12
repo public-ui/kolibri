@@ -53,5 +53,8 @@
 	"files": [
 		"dist/",
 		"README.md"
-	]
+	],
+	"dependencies": {
+		"fuse.js": "7.1.0"
+	}
 }
