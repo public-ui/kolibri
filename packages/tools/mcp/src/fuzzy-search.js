@@ -1,123 +1,51 @@
-const TOKEN_SPLIT_REGEX = /[^\p{L}\p{N}]+/u;
+import Fuse from 'fuse.js';
 
-function tokenize(value) {
-	if (!value) {
-		return [];
+const FUSE_OPTIONS = {
+	includeScore: true,
+	shouldSort: true,
+	ignoreLocation: true,
+	threshold: 0.35,
+	keys: [
+		{ name: 'id', weight: 0.4 },
+		{ name: 'group', weight: 0.2 },
+		{ name: 'name', weight: 0.3 },
+		{ name: 'title', weight: 0.3 },
+		{ name: 'description', weight: 0.2 },
+		{ name: 'tags', weight: 0.15 },
+		{ name: 'keywords', weight: 0.15 },
+	],
+};
+
+function normalizeQuery(query) {
+	if (query == null) {
+		return '';
 	}
 
-	return String(value).toLowerCase().split(TOKEN_SPLIT_REGEX).filter(Boolean);
+	return String(query).trim();
 }
 
-function collectFieldValues(entry) {
-	const values = [entry.id, entry.group, entry.name, entry.title, entry.description];
-
-	if (Array.isArray(entry.tags)) {
-		values.push(...entry.tags);
-	}
-
-	if (Array.isArray(entry.keywords)) {
-		values.push(...entry.keywords);
-	}
-
-	return values
-		.map((value) => (value == null ? '' : String(value)))
-		.filter((value) => value.length > 0)
-		.map((value) => value.toLowerCase());
+export function hasSearchableQuery(query) {
+	return normalizeQuery(query).length > 0;
 }
 
-export function extractQueryTokens(query) {
-	if (!query) {
-		return [];
+export function performFuzzySearch(entries, query) {
+	const normalizedQuery = normalizeQuery(query);
+	if (normalizedQuery.length === 0) {
+		return entries;
 	}
 
-	return String(query).trim().toLowerCase().split(TOKEN_SPLIT_REGEX).filter(Boolean);
-}
+	const fuse = new Fuse(entries, FUSE_OPTIONS);
+	const results = fuse.search(normalizedQuery);
 
-function levenshteinDistance(a, b) {
-	if (a === b) {
-		return 0;
-	}
-
-	const aLength = a.length;
-	const bLength = b.length;
-
-	if (aLength === 0) {
-		return bLength;
-	}
-
-	if (bLength === 0) {
-		return aLength;
-	}
-
-	const previous = new Array(bLength + 1);
-	const current = new Array(bLength + 1);
-
-	for (let j = 0; j <= bLength; j += 1) {
-		previous[j] = j;
-	}
-
-	for (let i = 1; i <= aLength; i += 1) {
-		current[0] = i;
-		const aCode = a.charCodeAt(i - 1);
-
-		for (let j = 1; j <= bLength; j += 1) {
-			const bCode = b.charCodeAt(j - 1);
-			const substitutionCost = aCode === bCode ? 0 : 1;
-			const insertion = current[j - 1] + 1;
-			const deletion = previous[j] + 1;
-			const substitution = previous[j - 1] + substitutionCost;
-			current[j] = Math.min(insertion, deletion, substitution);
-		}
-
-		for (let j = 0; j <= bLength; j += 1) {
-			previous[j] = current[j];
-		}
-	}
-
-	return previous[bLength];
-}
-
-export function computeFuzzyScore(entry, queryTokens) {
-	if (!Array.isArray(queryTokens) || queryTokens.length === 0) {
-		return 0;
-	}
-
-	const fields = collectFieldValues(entry);
-	if (fields.length === 0) {
-		return Number.POSITIVE_INFINITY;
-	}
-
-	const fieldTokens = fields.flatMap((field) => tokenize(field));
-
-	let score = 0;
-
-	for (const queryToken of queryTokens) {
-		if (fields.some((field) => field.includes(queryToken))) {
-			continue;
-		}
-
-		if (fieldTokens.length === 0) {
-			return Number.POSITIVE_INFINITY;
-		}
-
-		let bestDistance = Number.POSITIVE_INFINITY;
-		for (const fieldToken of fieldTokens) {
-			const distance = levenshteinDistance(queryToken, fieldToken);
-			if (distance < bestDistance) {
-				bestDistance = distance;
-				if (bestDistance === 0) {
-					break;
-				}
+	return results
+		.sort((a, b) => {
+			const aScore = typeof a.score === 'number' ? a.score : 0;
+			const bScore = typeof b.score === 'number' ? b.score : 0;
+			if (aScore !== bScore) {
+				return aScore - bScore;
 			}
-		}
 
-		const maxDistance = Math.max(1, Math.floor(queryToken.length / 3));
-		if (!Number.isFinite(bestDistance) || bestDistance > maxDistance) {
-			return Number.POSITIVE_INFINITY;
-		}
-
-		score += bestDistance;
-	}
-
-	return score;
+			return String(a.item.id ?? '').localeCompare(String(b.item.id ?? ''));
+		})
+		.map((result) => result.item);
 }

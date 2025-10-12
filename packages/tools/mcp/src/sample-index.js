@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { computeFuzzyScore, extractQueryTokens } from './fuzzy-search.js';
+import { hasSearchableQuery, performFuzzySearch } from './fuzzy-search.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -67,26 +67,11 @@ class SampleIndex {
 		const normalizeKind = (entry) => entry.kind ?? 'sample';
 		let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
 
-		if (!query) {
+		if (!hasSearchableQuery(query)) {
 			return results;
 		}
 
-		const queryTokens = extractQueryTokens(query);
-		if (queryTokens.length === 0) {
-			return results;
-		}
-
-		return results
-			.map((entry) => ({ entry, score: computeFuzzyScore(entry, queryTokens) }))
-			.filter((item) => Number.isFinite(item.score))
-			.sort((a, b) => {
-				if (a.score !== b.score) {
-					return a.score - b.score;
-				}
-
-				return a.entry.id.localeCompare(b.entry.id);
-			})
-			.map((item) => item.entry);
+		return performFuzzySearch(results, query);
 	}
 
 	get(id) {
