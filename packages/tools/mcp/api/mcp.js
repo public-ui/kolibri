@@ -87,7 +87,7 @@ export default async function handler(request, response) {
 
 		if (useEmbeddedData) {
 			// Verwende eingebettete Sample-Daten (schneller und zuverlässiger)
-			const { handleApiRequest } = await import('../dist/index.mjs');
+			const { handleApiRequest, performFuzzySearch, hasSearchableQuery } = await import('../dist/index.mjs');
 
 			// Erstelle Mock-Index mit eingebetteten Daten
 			const counts = resolveCounts({ entries: samplesData.entries, counts: samplesData.counts });
@@ -101,14 +101,12 @@ export default async function handler(request, response) {
 					const kinds = options.kinds ? new Set(options.kinds) : undefined;
 					const normalizeKind = (entry) => entry.kind ?? 'sample';
 					let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
-					if (!query) {
+
+					if (!hasSearchableQuery(query)) {
 						return results;
 					}
-					const normalized = query.trim().toLowerCase();
-					return results.filter(
-						(entry) =>
-							entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
-					);
+
+					return performFuzzySearch(results, query);
 				},
 				get: function (id) {
 					return this.map.get(id);
