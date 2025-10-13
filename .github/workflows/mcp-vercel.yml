@@ -78,7 +78,7 @@ jobs:
 
       - name: Share preview URL in PR
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           PREVIEW_URL: ${{ steps.deploy_preview.outputs.url }}
         with:
