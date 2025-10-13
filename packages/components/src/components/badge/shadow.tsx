@@ -25,10 +25,11 @@ export class KolBadge implements BadgeAPI {
 
 	private forwardSmartButtonRef(el: HTMLKolButtonWcElement | undefined, ref?: SmartButtonProps['ref']): void {
 		if (!ref) return;
+		const val = el ?? null;
 		if (typeof ref === 'function') {
-			ref(el);
+			ref(val);
 		} else {
-			ref.current = el;
+			ref.current = val;
 		}
 	}
 
@@ -48,7 +49,7 @@ export class KolBadge implements BadgeAPI {
 				_buttonVariant={props._variant}
 				ref={(el) => {
 					this.smartButtonEl = el ?? undefined;
-					this.forwardSmartButtonRef(el, props.ref);
+					this.forwardSmartButtonRef(el ?? undefined, props.ref);
 				}}
 			></KolButtonWcTag>
 		);

@@ -4,7 +4,7 @@ import type { ColorPair, PropColor, PropLabel } from '../props';
 import type { KoliBriIconsProp, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
-type ElementRef<T> = ((el: T | null | undefined) => void) | { current: T | null | undefined };
+type ElementRef<T> = ((el: T | null) => void) | { current: T | null } | null;
 export type SmartButtonProps = ButtonProps & { ref?: ElementRef<HTMLKolButtonWcElement> };
 type RequiredProps = PropLabel;
 type OptionalProps = {
