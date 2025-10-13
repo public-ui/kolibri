@@ -128,7 +128,11 @@ export default async function handler(request, response) {
 				response.setHeader(key, value);
 			});
 			const responseBody = result.body ?? {};
-			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			if (fullUrl.pathname === '/') {
+				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			} else {
+				response.json(responseBody);
+			}
 		} else {
 			// Fallback: Verwende Build-Artefakte (kann auf Vercel problematisch sein)
 			const { handleApiRequest, buildSampleIndex } = await import('../dist/index.mjs');
@@ -155,7 +159,11 @@ export default async function handler(request, response) {
 				response.setHeader(key, value);
 			});
 			const responseBody = result.body ?? {};
-			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			if (fullUrl.pathname === '/') {
+				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			} else {
+				response.json(responseBody);
+			}
 		}
 	} catch (error) {
 		console.error('[api/mcp] Handler error:', error);
