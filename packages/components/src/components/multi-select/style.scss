@@ -1,0 +1,90 @@
+@use '../../styles/global' as *;
+@use '../../styles/kol-alert-mixin' as *;
+@use '../../styles/kol-custom-suggestions-option' as *;
+@use '../../styles/kol-custom-suggestions-options-group' as *;
+@use '../../styles/kol-custom-suggestions-toggle' as *;
+@use '../../styles/kol-form-field-mixin' as *;
+@use '../../styles/kol-input-container-mixin' as *;
+@use '../../styles/kol-input-mixin' as *;
+@use '../@shared/mixins' as *;
+
+@layer kol-component {
+	@include kol-alert;
+	@include kol-custom-suggestions-option;
+	@include kol-custom-suggestions-options-group;
+	@include kol-custom-suggestions-toggle;
+	@include kol-form-field;
+	@include kol-input-container;
+	@include kol-input;
+
+	$option-height: to-rem(40);
+	$visible-options: var(--visible-options, 5);
+
+	.kol-multi-select {
+		&__badges {
+			display: flex;
+			flex-wrap: wrap;
+			gap: to-rem(8);
+			margin-bottom: to-rem(8);
+			padding: to-rem(8);
+			border: to-rem(1) solid var(--kolibri-border-color);
+			border-radius: to-rem(4);
+			background-color: var(--kolibri-background-color);
+
+			kol-badge {
+				flex-shrink: 0;
+			}
+		}
+
+		&__group {
+			display: flex;
+			align-items: center;
+			gap: to-rem(8);
+		}
+
+		&__input {
+			flex: 1;
+		}
+
+		&__delete {
+			cursor: pointer;
+			flex-shrink: 0;
+
+			&--disabled {
+				cursor: not-allowed;
+			}
+		}
+
+		&__no-results-message {
+			display: flex;
+			min-height: to-rem(50);
+			align-items: center;
+			justify-content: center;
+			cursor: default;
+		}
+
+		.kol-custom-suggestions-options-group {
+			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
+		}
+
+		.kol-custom-suggestions-option {
+			&--selected {
+				background-color: var(--kolibri-color-selected);
+				color: var(--kolibri-color-selected-text);
+
+				&:hover {
+					background-color: var(--kolibri-color-selected-hover);
+				}
+			}
+
+			&--disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+
+				&:hover {
+					background-color: inherit;
+				}
+			}
+		}
+	}
+}

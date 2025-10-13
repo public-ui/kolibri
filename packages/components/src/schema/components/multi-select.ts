@@ -18,6 +18,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 	PropRows,
+	PropMaxSelections,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 
@@ -56,6 +57,7 @@ type OptionalStates = {
 	KoliBriHIcons &
 	PropHint &
 	PropId &
+	PropMaxSelections &
 	PropName &
 	PropRequired &
 	PropRows &

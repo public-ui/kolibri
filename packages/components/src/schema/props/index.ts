@@ -56,6 +56,7 @@ export * from './loading';
 export * from './max';
 export * from './max-length';
 export * from './max-length-behavior';
+export * from './max-selections';
 export * from './modal';
 export * from './msg';
 export * from './multiple';

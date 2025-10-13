@@ -32,6 +32,7 @@ import { KolLinkButton } from './link-button/shadow';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
 import { KolModal } from './modal/shadow';
+import { KolMultiSelect } from './multi-select/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
 import { KolPopoverButton } from './popover-button/shadow';
@@ -89,6 +90,7 @@ export const COMPONENTS = [
 	KolLinkButton,
 	KolLinkWc,
 	KolModal,
+	KolMultiSelect,
 	KolNav,
 	KolPagination,
 	KolPopover,
