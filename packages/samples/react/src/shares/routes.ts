@@ -49,6 +49,8 @@ import { VERSION_ROUTES } from '../components/version/routes';
 import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { Routes } from './types';
 
+import { MULTI_SELECT_ROUTES } from '../components/multi-select/routes';
+
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
 	...ABBR_ROUTES,
@@ -81,6 +83,7 @@ export const ROUTES: Routes = {
 	...LINK_BUTTON_ROUTES,
 	...LINK_ROUTES,
 	...MODAL_ROUTES,
+	...MULTI_SELECT_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
 	...POPOVER_BUTTON_ROUTES,
