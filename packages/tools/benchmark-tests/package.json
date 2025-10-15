@@ -45,7 +45,7 @@
 		"@wdio/spec-reporter": "9.20.0",
 		"chromedriver": "140.0.4",
 		"cpy-cli": "6.0.0",
-		"knip": "5.64.3",
+		"knip": "5.65.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
 		"rimraf": "6.0.1",
