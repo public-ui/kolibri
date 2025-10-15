@@ -25,7 +25,7 @@ jobs:
           ref: ${{ matrix.branch }}
 
       - name: Sync ${{ matrix.branch }} to OpenCoDE
-        uses: ./.github/actions/opencode-sync
+        uses: public-ui/kolibri/.github/actions/opencode-sync@develop
         with:
           branch: ${{ matrix.branch }}
           remote-url: https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git
