@@ -62,8 +62,8 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
-		"@rollup/plugin-commonjs": "28.0.6",
-		"@rollup/plugin-node-resolve": "16.0.2",
+		"@rollup/plugin-commonjs": "28.0.7",
+		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.1.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
