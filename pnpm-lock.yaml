@@ -44,6 +44,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       stylelint:
         specifier: 16.24.0
         version: 16.24.0(typescript@5.9.2)
@@ -86,9 +89,6 @@ importers:
       '@types/normalize-package-data':
         specifier: 2.4.4
         version: 2.4.4
-      prettier:
-        specifier: 3.6.2
-        version: 3.6.2
       rimraf:
         specifier: 6.0.1
         version: 6.0.1
@@ -128,9 +128,6 @@ importers:
       '@types/normalize-package-data':
         specifier: 2.4.4
         version: 2.4.4
-      prettier:
-        specifier: 3.6.2
-        version: 3.6.2
       rimraf:
         specifier: 6.0.1
         version: 6.0.1
@@ -170,9 +167,6 @@ importers:
       '@types/normalize-package-data':
         specifier: 2.4.4
         version: 2.4.4
-      prettier:
-        specifier: 3.6.2
-        version: 3.6.2
       rimraf:
         specifier: 6.0.1
         version: 6.0.1
@@ -212,9 +206,6 @@ importers:
       '@types/normalize-package-data':
         specifier: 2.4.4
         version: 2.4.4
-      prettier:
-        specifier: 3.6.2
-        version: 3.6.2
       rimraf:
         specifier: 6.0.1
         version: 6.0.1
@@ -321,6 +312,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       react:
         specifier: 19.1.1
         version: 19.1.1
@@ -602,6 +596,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       pug:
         specifier: 3.0.3
         version: 3.0.3
@@ -708,6 +705,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       tailwindcss:
         specifier: 3.4.17
         version: 3.4.17(ts-node@10.9.2(@swc/core@1.13.5)(@types/node@24.5.2)(typescript@5.9.2))
@@ -798,6 +798,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       react:
         specifier: 19.1.1
         version: 19.1.1
@@ -882,6 +885,12 @@ importers:
       postcss:
         specifier: 8.5.6
         version: 8.5.6
+      prettier:
+        specifier: 3.6.2
+        version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       rollup:
         specifier: 4.52.3
         version: 4.52.3
@@ -939,6 +948,12 @@ importers:
       postcss:
         specifier: 8.5.6
         version: 8.5.6
+      prettier:
+        specifier: 3.6.2
+        version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       rollup:
         specifier: 4.52.3
         version: 4.52.3
@@ -1002,6 +1017,12 @@ importers:
       postcss:
         specifier: 8.5.6
         version: 8.5.6
+      prettier:
+        specifier: 3.6.2
+        version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       rollup:
         specifier: 4.52.3
         version: 4.52.3
@@ -1068,6 +1089,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       rimraf:
         specifier: 6.0.1
         version: 6.0.1
@@ -1095,6 +1119,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       semver:
         specifier: ^7.5.2
         version: 7.5.2
@@ -1169,6 +1196,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
       unbuild:
         specifier: 3.6.1
         version: 3.6.1(sass@1.93.2)(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2))
@@ -1209,6 +1239,9 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      prettier-plugin-sort-imports:
+        specifier: 1.8.8
+        version: 1.8.8(typescript@5.9.2)
 
 packages:
 
@@ -11257,6 +11290,11 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  prettier-plugin-sort-imports@1.8.8:
+    resolution: {integrity: sha512-Qqzt4nGF867zyk500YnnRhO9bqyiTiYIxgA8q3Pkxoa3BEqNCA+yB9kAFv2L3B5olEV1nBsfdwYAwyORrzQUNw==}
+    peerDependencies:
+      typescript: '>4.0.0'
 
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
@@ -26059,6 +26097,11 @@ snapshots:
   preact@10.27.2: {}
 
   prelude-ls@1.2.1: {}
+
+  prettier-plugin-sort-imports@1.8.8(typescript@5.9.2):
+    dependencies:
+      prettier: 3.6.2
+      typescript: 5.9.2
 
   prettier@2.8.8: {}
 

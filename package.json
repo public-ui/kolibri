@@ -9,6 +9,7 @@
 		"npm-check-updates": "18.3.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
+		"prettier-plugin-sort-imports": "1.8.8",
 		"stylelint": "16.24.0",
 		"stylelint-config-recommended-scss": "16.0.1",
 		"stylelint-config-standard": "39.0.0",
