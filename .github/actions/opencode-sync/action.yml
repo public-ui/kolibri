@@ -1,0 +1,53 @@
+name: Sync branch to OpenCoDE
+inputs:
+  branch:
+    description: Branch to synchronize with OpenCoDE
+    required: true
+  remote-name:
+    description: Name of the Git remote used for pushing
+    required: false
+    default: opencode
+  remote-url:
+    description: Authenticated Git remote URL for OpenCoDE
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Configure Git for tiny push chunks (~5MB)
+      shell: bash
+      run: |
+        git config --global safe.directory "$GITHUB_WORKSPACE"
+        git config --global pack.packSizeLimit 5m
+        git config --global pack.window 0
+        git config --global pack.threads 1
+        git config --global http.version HTTP/1.1
+        git config --global http.postBuffer 5242880 || true
+        git config --global http.lowSpeedLimit 0
+        git config --global http.lowSpeedTime 0
+
+    - name: Add remote and prefetch target branch (if exists)
+      shell: bash
+      env:
+        BRANCH: ${{ inputs.branch }}
+        REMOTE_NAME: ${{ inputs['remote-name'] }}
+        REMOTE_URL: ${{ inputs['remote-url'] }}
+      run: |
+        git remote remove "$REMOTE_NAME" 2>/dev/null || true
+        git remote add "$REMOTE_NAME" "$REMOTE_URL"
+        git fetch "$REMOTE_NAME" "$BRANCH" || true
+
+    - name: Push branch to OpenCoDE (forced, tiny chunks, with retries)
+      shell: bash
+      env:
+        BRANCH: ${{ inputs.branch }}
+        REMOTE_NAME: ${{ inputs['remote-name'] }}
+      run: |
+        set -e
+        for i in 1 2 3; do
+          git -c pack.packSizeLimit=5m -c pack.window=0 -c pack.threads=1 \
+            push "$REMOTE_NAME" "$BRANCH:$BRANCH" --force && exit 0
+          echo "Push failed for $BRANCH (attempt $i). Retrying in 10s…"
+          sleep 10
+        done
+        echo "::error::Failed to push $BRANCH after 3 attempts."
+        exit 1
