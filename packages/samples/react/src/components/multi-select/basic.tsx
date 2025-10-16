@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { FC } from 'react';
 import { FormWrap } from '../FormWrap';
 import { SampleDescription } from '../SampleDescription';
-import { MultiSelectVariants } from './partials/variants';
+import { MultiSelectVariants } from './variants';
 
 export const MultiSelectBasic: FC = () => {
 	return (
