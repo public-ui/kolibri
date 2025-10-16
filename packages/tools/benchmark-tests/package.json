@@ -33,7 +33,7 @@
 		"unused": "knip"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.55.1",
+		"@playwright/test": "1.56.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
 		"@types/mocha": "10.0.10",
@@ -45,7 +45,7 @@
 		"@wdio/spec-reporter": "9.20.0",
 		"chromedriver": "139.0.3",
 		"cpy-cli": "6.0.0",
-		"knip": "5.64.1",
+		"knip": "5.65.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
 		"rimraf": "6.0.1",

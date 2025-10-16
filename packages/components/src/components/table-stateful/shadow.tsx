@@ -459,7 +459,7 @@ export class KolTableStateful implements TableAPI {
 		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
-				<span>
+				<span role="status" aria-live="polite">
 					{translate('kol-table-visible-range', {
 						placeholders: {
 							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',

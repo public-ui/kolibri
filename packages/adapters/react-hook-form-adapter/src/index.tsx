@@ -1,6 +1,6 @@
-import React, { HTMLAttributes, RefAttributes } from 'react';
-import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return */
 import {
+	KolCombobox,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -13,25 +13,71 @@ import {
 	KolInputText,
 	KolSelect,
 	KolSingleSelect,
-	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react-v19';
-import { JSX } from '@public-ui/components';
+import React, { RefAttributes } from 'react';
+import { Control, Controller } from 'react-hook-form';
 
-type ControllerProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'control'> & { control: NonNullable<UseControllerProps<T>['control']> };
+// Import API types from components - these are used in generated .d.ts files
+import type {
+	ComboboxAPI,
+	InputCheckboxAPI,
+	InputColorAPI,
+	InputDateAPI,
+	InputEmailAPI,
+	InputFileAPI,
+	InputNumberAPI,
+	InputPasswordAPI,
+	InputRadioAPI,
+	InputRangeAPI,
+	InputTextAPI,
+	SelectAPI,
+	SingleSelectAPI,
+	TextareaAPI,
+} from '@public-ui/components/dist/types/schema/index';
 
-type KolComponentProps = {
-	_on?: Record<string, Function>;
-	_disabled?: boolean;
+// Export API types for convenience
+export type {
+	ComboboxAPI,
+	InputCheckboxAPI,
+	InputColorAPI,
+	InputDateAPI,
+	InputEmailAPI,
+	InputFileAPI,
+	InputNumberAPI,
+	InputPasswordAPI,
+	InputRadioAPI,
+	InputRangeAPI,
+	InputTextAPI,
+	SelectAPI,
+	SingleSelectAPI,
+	TextareaAPI,
 };
 
-// Helper type to create controller component types with proper ref forwarding
-type ControllerComponent<P> = React.ForwardRefExoticComponent<P & ControllerProps<any> & RefAttributes<HTMLElement>>;
+type KolEventHandlers = {
+	onInput?: (event: any, value: any) => void;
+	onChange?: (event: any, value: any) => void;
+	onBlur?: (event: any) => void;
+};
 
-function withController<P extends KolComponentProps>(Component: React.ComponentType<any>, valueProp?: keyof P): ControllerComponent<P> {
-	return React.forwardRef<HTMLElement, P & ControllerProps<any>>((props, ref) => {
-		const { name, control, rules, defaultValue, ...rest } = props;
-		const userEventHandlers = (props._on || {}) as Record<string, Function>;
+type ControllerBaseProps = {
+	name: string;
+	control: Control<any>;
+	rules?: any;
+	defaultValue?: any;
+	shouldUnregister?: boolean;
+	disabled?: boolean;
+};
+
+// Extract component props from React component type
+type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T extends React.ForwardRefExoticComponent<infer P> ? P : never;
+
+// Controller component type
+type ControllerComponent<P> = React.ForwardRefExoticComponent<P & ControllerBaseProps & RefAttributes<HTMLElement>>;
+
+function withController<T extends React.ComponentType<any>>(Component: T, valueProp?: string): ControllerComponent<ExtractProps<T>> {
+	const ControllerWrapper = React.forwardRef<HTMLElement, ExtractProps<T> & ControllerBaseProps>((props, ref) => {
+		const { name, control, rules, defaultValue, shouldUnregister, disabled, ...componentProps } = props;
 
 		return (
 			<Controller
@@ -39,113 +85,74 @@ function withController<P extends KolComponentProps>(Component: React.ComponentT
 				control={control}
 				rules={rules}
 				defaultValue={defaultValue}
+				shouldUnregister={shouldUnregister}
+				disabled={disabled}
 				render={({ field, fieldState }) => {
-					const componentProps = {
-						...(rest as P),
+					const userHandlers = (componentProps as any)._on as KolEventHandlers | undefined;
+
+					const mergedProps = {
+						...componentProps,
+						ref: (element: HTMLElement | null) => {
+							if (ref) {
+								if (typeof ref === 'function') ref(element);
+								else ref.current = element;
+							}
+							if (element) field.ref(element);
+						},
 						_name: name,
 						_touched: fieldState.isTouched,
-						_disabled: props._disabled || field.disabled,
+						_disabled: (componentProps as any)._disabled || disabled || field.disabled,
 						_msg: fieldState.error
 							? {
-									_type: 'error',
-									_description: typeof fieldState.error === 'string' ? fieldState.error : (fieldState.error?.message ?? ''),
+									_type: 'error' as const,
+									_description: fieldState.error.message || String(fieldState.error),
 								}
 							: undefined,
 						_on: {
-							...userEventHandlers,
-							onInput: (e: unknown, value: unknown) => {
+							...(userHandlers || {}),
+							onInput: (event: any, value: any) => {
 								field.onChange(value);
-								if (userEventHandlers.onInput) {
-									userEventHandlers.onInput(e, value);
-								}
+								userHandlers?.onInput?.(event, value);
 							},
-							onChange: (e: unknown, value: unknown) => {
+							onChange: (event: any, value: any) => {
 								field.onChange(value);
-								if (userEventHandlers.onChange) {
-									userEventHandlers.onChange(e, value);
-								}
+								userHandlers?.onChange?.(event, value);
 							},
-							onBlur: (e: unknown) => {
+							onBlur: (event: any) => {
 								field.onBlur();
-								if (userEventHandlers.onBlur) {
-									userEventHandlers.onBlur(e);
-								}
+								userHandlers?.onBlur?.(event);
 							},
 						},
 					};
 
-					// Only set the value prop if valueProp is defined (not for file inputs)
+					// Set value property if specified
 					if (valueProp) {
-						(componentProps as any)[valueProp] = field.value;
+						(mergedProps as any)[valueProp] = field.value;
 					}
 
-					return (
-						<Component
-							ref={(e: HTMLElement | null) => {
-								// Forward both refs
-								if (ref) {
-									if (typeof ref === 'function') ref(e);
-									else ref.current = e;
-								}
-								if (e && field.ref) field.ref(e);
-							}}
-							{...componentProps}
-						/>
-					);
+					return <Component {...mergedProps} />;
 				}}
 			/>
 		);
-	}) as ControllerComponent<P>;
+	});
+
+	ControllerWrapper.displayName = `withController(${Component.displayName || Component.name || 'Component'})`;
+
+	return ControllerWrapper as any;
 }
 
-interface StyleReactProps {
-	class?: string;
-	className?: string;
-	style?: {
-		[key: string]: any;
-	};
-}
-
-export const KolInputTextController = withController(KolInputText as any, '_value') as ControllerComponent<
-	JSX.KolInputText & Omit<HTMLAttributes<HTMLKolInputTextElement>, 'style'> & StyleReactProps
->;
-export const KolInputPasswordController = withController(KolInputPassword as any, '_value') as ControllerComponent<
-	JSX.KolInputPassword & Omit<HTMLAttributes<HTMLKolInputPasswordElement>, 'style'> & StyleReactProps
->;
-export const KolInputEmailController = withController(KolInputEmail as any, '_value') as ControllerComponent<
-	JSX.KolInputEmail & Omit<HTMLAttributes<HTMLKolInputEmailElement>, 'style'> & StyleReactProps
->;
-export const KolInputNumberController = withController(KolInputNumber as any, '_value') as ControllerComponent<
-	JSX.KolInputNumber & Omit<HTMLAttributes<HTMLKolInputNumberElement>, 'style'> & StyleReactProps
->;
-export const KolInputRangeController = withController(KolInputRange as any, '_value') as ControllerComponent<
-	JSX.KolInputRange & Omit<HTMLAttributes<HTMLKolInputRangeElement>, 'style'> & StyleReactProps
->;
-export const KolInputDateController = withController(KolInputDate as any, '_value') as ControllerComponent<
-	JSX.KolInputDate & Omit<HTMLAttributes<HTMLKolInputDateElement>, 'style'> & StyleReactProps
->;
-export const KolInputColorController = withController(KolInputColor as any, '_value') as ControllerComponent<
-	JSX.KolInputColor & Omit<HTMLAttributes<HTMLKolInputColorElement>, 'style'> & StyleReactProps
->;
-export const KolInputFileController = withController(KolInputFile as any, undefined as any) as ControllerComponent<
-	JSX.KolInputFile & Omit<HTMLAttributes<HTMLKolInputFileElement>, 'style'> & StyleReactProps
->;
-export const KolTextareaController = withController(KolTextarea as any, '_value') as ControllerComponent<
-	JSX.KolTextarea & Omit<HTMLAttributes<HTMLKolTextareaElement>, 'style'> & StyleReactProps
->;
-export const KolComboboxController = withController(KolCombobox as any, '_value') as ControllerComponent<
-	JSX.KolCombobox & Omit<HTMLAttributes<HTMLKolComboboxElement>, 'style'> & StyleReactProps
->;
-export const KolSelectController = withController(KolSelect as any, '_value') as ControllerComponent<
-	JSX.KolSelect & Omit<HTMLAttributes<HTMLKolSelectElement>, 'style'> & StyleReactProps
->;
-export const KolSingleSelectController = withController(KolSingleSelect as any, '_value') as ControllerComponent<
-	JSX.KolSingleSelect & Omit<HTMLAttributes<HTMLKolSingleSelectElement>, 'style'> & StyleReactProps
->;
-export const KolInputRadioController = withController(KolInputRadio as any, '_value') as ControllerComponent<
-	JSX.KolInputRadio & Omit<HTMLAttributes<HTMLKolInputRadioElement>, 'style'> & StyleReactProps
->;
-export const KolInputCheckboxController = withController(KolInputCheckbox as any, '_checked') as ControllerComponent<
-	JSX.KolInputCheckbox & Omit<HTMLAttributes<HTMLKolInputCheckboxElement>, 'style'> & StyleReactProps
->;
+export const KolInputTextController = withController(KolInputText, '_value');
+export const KolInputPasswordController = withController(KolInputPassword, '_value');
+export const KolInputEmailController = withController(KolInputEmail, '_value');
+export const KolInputNumberController = withController(KolInputNumber, '_value');
+export const KolInputRangeController = withController(KolInputRange, '_value');
+export const KolInputDateController = withController(KolInputDate, '_value');
+export const KolInputColorController = withController(KolInputColor, '_value');
+export const KolInputFileController = withController(KolInputFile);
+export const KolTextareaController = withController(KolTextarea, '_value');
+export const KolComboboxController = withController(KolCombobox, '_value');
+export const KolSelectController = withController(KolSelect, '_value');
+export const KolSingleSelectController = withController(KolSingleSelect, '_value');
+export const KolInputRadioController = withController(KolInputRadio, '_value');
+export const KolInputCheckboxController = withController(KolInputCheckbox, '_checked');
 export { withController };
