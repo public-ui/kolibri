@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
-import { validateImageSource, validateLabel } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { validateImageSource, validateLabel } from '../../schema';
 
 import { translate } from '../../i18n';
 import { formatLabelAsInitials } from './controller';

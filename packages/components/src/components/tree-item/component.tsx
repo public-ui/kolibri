@@ -1,10 +1,10 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
+import clsx from 'clsx';
+import { KolIconTag, KolLinkWcTag, KolTreeTag } from '../../core/component-names';
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
-import { KolLinkWcTag, KolIconTag, KolTreeTag } from '../../core/component-names';
 import { nonce } from '../../utils/dev.utils';
-import clsx from 'clsx';
 
 @Component({
 	tag: `kol-tree-item-wc`,

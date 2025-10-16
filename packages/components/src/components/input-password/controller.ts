@@ -8,7 +8,7 @@ import type {
 	ReadOnlyPropType,
 	RequiredPropType,
 } from '../../schema';
-import { validateHasCounter, validateMaxLength, validatePlaceholder, validateReadOnly, validateRequired, validatePattern, watchString } from '../../schema';
+import { validateHasCounter, validateMaxLength, validatePattern, validatePlaceholder, validateReadOnly, validateRequired, watchString } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';

@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { watchValidator } from '../utils';
 import type { TableSettings } from '../types/table-settings';
+import { watchValidator } from '../utils';
 
 /* types */
 export type TableSettingsPropType = TableSettings;

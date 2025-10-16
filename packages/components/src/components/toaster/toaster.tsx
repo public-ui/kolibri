@@ -1,7 +1,7 @@
+import { isInitialized } from '../../core/bootstrap';
+import { KolToastContainerTag } from '../../core/component-names';
 import type { Toast, ToasterOptions } from '../../schema';
 import { Log } from '../../schema';
-import { KolToastContainerTag } from '../../core/component-names';
-import { isInitialized } from '../../core/bootstrap';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();

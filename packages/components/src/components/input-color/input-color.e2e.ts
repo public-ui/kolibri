@@ -1,10 +1,10 @@
-import { type E2EPage, test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
-import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
-import { KolEvent } from '../../utils/events';
+import { type E2EPage, test } from '@stencil/playwright';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
+import type { FillAction } from '../../e2e/utils/FillAction';
+import { KolEvent } from '../../utils/events';
 const COMPONENT_NAME = 'kol-input-color';
 const TEST_VALUE = '#cc006e';
 const NEW_VALUE = '#00ccff';

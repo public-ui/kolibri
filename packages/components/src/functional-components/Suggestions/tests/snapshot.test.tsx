@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
+import type { W3CInputValue } from '../../../schema';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import SuggestionsFc from '../Suggestions';
-import type { W3CInputValue } from '../../../schema';
 
 describe('SuggestionsFc', () => {
 	it('should render correctly', async () => {

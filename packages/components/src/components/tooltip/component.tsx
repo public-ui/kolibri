@@ -1,13 +1,12 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
-import { getDocument, validateBadgeText, validateAlign, validateId, validateLabel } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Method } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
+import { getDocument, validateAlign, validateBadgeText, validateId, validateLabel } from '../../schema';
 
+import { KolSpanFc } from '../../functional-components';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { KolSpanFc } from '../../functional-components';
 import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking';
 
 // Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/

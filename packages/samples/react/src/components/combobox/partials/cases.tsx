@@ -2,9 +2,9 @@ import React from 'react';
 
 import { KolCombobox } from '@public-ui/react-v19';
 
+import type { Components } from '@public-ui/components';
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import { COUNTRY_SUGGESTIONS } from '../../../shares/country';
-import type { Components } from '@public-ui/components';
 
 export const ComboboxCases = (props: Partial<Components.KolCombobox>) => {
 	return (

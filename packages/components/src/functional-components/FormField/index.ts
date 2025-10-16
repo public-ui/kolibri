@@ -1,2 +1,2 @@
-export { default } from './FormField';
 export * from './FormField';
+export { default } from './FormField';

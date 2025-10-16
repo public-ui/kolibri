@@ -2,8 +2,8 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { FormWrap } from '../FormWrap';
-import { InputRadioVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';
+import { InputRadioVariants } from './partials/variants';
 
 export const InputRadioBasic: FC = () => (
 	<>

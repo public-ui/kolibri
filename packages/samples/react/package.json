@@ -52,6 +52,7 @@
 		"knip": "5.65.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
+		"prettier-plugin-organize-imports": "4.3.0",
 		"react": "19.2.0",
 		"react-dom": "19.2.0",
 		"react-hook-form": "7.65.0",

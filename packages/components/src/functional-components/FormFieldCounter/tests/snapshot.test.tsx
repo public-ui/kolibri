@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import KolFormFieldCounterFc from '../FormFieldCounter';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import KolFormFieldCounterFc from '../FormFieldCounter';
 
 const currentLength = 5;
 const currentLengthDebounced = 3;

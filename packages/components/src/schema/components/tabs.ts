@@ -2,8 +2,8 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { Callback } from '../enums';
 import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropTabBehavior, PropTooltipAlign } from '../props';
-import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
 import type { PropHasCreateButton } from '../props/has-create-button';
+import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?: EventCallback<Event>;

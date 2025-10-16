@@ -1,4 +1,5 @@
 import type {
+	MultiplePropType,
 	Optgroup,
 	Option,
 	OptionsWithOptgroupPropType,
@@ -9,7 +10,6 @@ import type {
 	SelectWatches,
 	StencilUnknown,
 	Stringified,
-	MultiplePropType,
 	W3CInputValue,
 } from '../../schema';
 import { validateMultiple, validateOptionsWithOptgroup, validateRequired, validateRows, watchJsonArrayString } from '../../schema';

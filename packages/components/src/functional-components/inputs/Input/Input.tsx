@@ -1,4 +1,5 @@
-import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
+/* eslint-disable no-console */
+import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';

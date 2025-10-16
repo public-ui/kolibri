@@ -1,7 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop } from '@stencil/core';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
-import type { PopoverButtonProps } from '../../schema/components/popover-button';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -18,6 +17,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import type { PopoverButtonProps } from '../../schema/components/popover-button';
 
 /**
  * @slot - The popover content.

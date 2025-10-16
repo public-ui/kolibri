@@ -1,24 +1,24 @@
-import type { FC } from 'react';
-import React from 'react';
-import type { SubmitHandler, FieldErrors } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
 import {
-	KolInputTextController,
-	KolInputPasswordController,
-	KolInputEmailController,
-	KolInputNumberController,
-	KolInputRangeController,
-	KolInputDateController,
-	KolInputColorController,
-	KolInputFileController,
-	KolTextareaController,
 	KolComboboxController,
+	KolInputCheckboxController,
+	KolInputColorController,
+	KolInputDateController,
+	KolInputEmailController,
+	KolInputFileController,
+	KolInputNumberController,
+	KolInputPasswordController,
+	KolInputRadioController,
+	KolInputRangeController,
+	KolInputTextController,
 	KolSelectController,
 	KolSingleSelectController,
-	KolInputRadioController,
-	KolInputCheckboxController,
+	KolTextareaController,
 } from '@public-ui/react-hook-form-adapter';
 import { KolButton } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
+import type { FieldErrors, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { SampleDescription } from '../../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../../shares/country';

@@ -1,6 +1,6 @@
+import { RefactorPropertyIconAlign } from '../common/RefactorPropertyIconAlign';
 import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 import { RenamePropertyNameTask } from '../common/RenamePropertyNameTask';
-import { RefactorPropertyIconAlign } from '../common/RefactorPropertyIconAlign';
 
 export const ButtonRemovePropertyAriaCurrent = RemovePropertyNameTask.getInstance('kol-button', '_aria-current', '^1');
 export const ButtonRemovePropertyAriaLabel = RemovePropertyNameTask.getInstance('kol-button', '_aria-label', '^1');

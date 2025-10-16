@@ -1,6 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import KolRadioFc, { type RadioProps } from '../../functional-components/inputs/Radio';
 import { type InputProps } from '../../functional-components/inputs/Input';
+import KolRadioFc, { type RadioProps } from '../../functional-components/inputs/Radio';
 
 import { type InputRadioStates, type MsgPropType } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';

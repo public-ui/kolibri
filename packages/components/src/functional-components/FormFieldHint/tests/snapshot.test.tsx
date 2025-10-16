@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import KolFormFieldHintFc from '../FormFieldHint';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import KolFormFieldHintFc from '../FormFieldHint';
 
 describe('KolFormFieldHintFc', () => {
 	it('should render with hint', async () => {

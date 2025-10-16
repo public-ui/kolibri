@@ -11,8 +11,8 @@ import {
 	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
-	type SelectStates,
 	type MsgPropType,
+	type SelectStates,
 } from '../../schema';
 
 type InputState =

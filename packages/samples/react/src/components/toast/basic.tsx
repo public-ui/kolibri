@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import type { AlertTypePropType } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react-v19';
-import type { AlertTypePropType } from '@public-ui/components';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';

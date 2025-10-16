@@ -2,9 +2,9 @@ import { expect } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
+import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { NumberString } from '../../schema';
-import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-number';
 const TEST_VALUE = '10.23';

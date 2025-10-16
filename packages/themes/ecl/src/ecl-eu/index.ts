@@ -1,11 +1,10 @@
 import { KoliBri } from '@public-ui/components';
-import globalCss from './global.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
-import buttonCss from './components/button.scss';
 import buttonLinkCss from './components/button-link.scss';
+import buttonCss from './components/button.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
@@ -39,8 +38,9 @@ import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
-import treeCss from './components/tree.scss';
 import treeItemCss from './components/tree-item.scss';
+import treeCss from './components/tree.scss';
+import globalCss from './global.scss';
 
 // Europa Component Library - European Union | https://ec.europa.eu/component-library/eu/
 export const ECL_EU = KoliBri.createTheme('ecl-eu', {

@@ -15,8 +15,8 @@ import type {
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, RadioOption, StencilUnknown, Stringified } from '../types';
 import type { PropOrientation } from '../props/orientation';
+import type { InputTypeOnDefault, RadioOption, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {

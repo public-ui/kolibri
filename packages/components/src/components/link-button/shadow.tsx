@@ -1,3 +1,6 @@
+import type { JSX } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
+import { KolLinkWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -16,9 +19,6 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-link-button',
