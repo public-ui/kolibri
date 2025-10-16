@@ -1,7 +1,7 @@
-const sortImportsPlugin = require.resolve('prettier-plugin-sort-imports');
+const organizeImportsPlugin = require.resolve('prettier-plugin-organize-imports');
 
 module.exports = {
-	plugins: [sortImportsPlugin],
+	plugins: [organizeImportsPlugin],
 	printWidth: 160,
 	singleQuote: true,
 	useTabs: true,

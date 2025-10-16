@@ -1,7 +1,7 @@
-import sortImportsPlugin from 'prettier-plugin-sort-imports';
+import organizeImportsPlugin from 'prettier-plugin-organize-imports';
 
 export default {
-	plugins: [sortImportsPlugin],
+	plugins: [organizeImportsPlugin],
 	printWidth: 160,
 	singleQuote: true,
 	useTabs: true,

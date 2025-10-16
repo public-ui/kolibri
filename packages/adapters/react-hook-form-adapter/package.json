@@ -61,7 +61,7 @@
 		"@typescript-eslint/parser": "7.18.0",
 		"eslint": "8.57.1",
 		"prettier": "3.6.2",
-		"prettier-plugin-sort-imports": "1.8.8",
+		"prettier-plugin-organize-imports": "4.3.0",
 		"react": "19.1.1",
 		"react-dom": "19.1.1",
 		"react-hook-form": "7.63.0",
