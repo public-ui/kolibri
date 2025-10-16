@@ -5,8 +5,6 @@ import { KolButtonLink, KolInputText } from '@public-ui/react-v19';
 export const InputTextSelectRange = () => {
 	const textInput = React.useRef<HTMLKolInputTextElement>(null);
 
-	const inputRef = React.useRef<HTMLInputElement>(null);
-
 	function setSelectioStart() {
 		textInput.current?.focus();
 		textInput.current?.setSelectionStart(8);
@@ -22,18 +20,6 @@ export const InputTextSelectRange = () => {
 		textInput.current?.setRangeText('INSERTED', 5, 9, 'select');
 	}
 
-	React.useEffect(() => {
-		if (textInput.current) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-			textInput.current.selectionStart().then((val) => console.log(val), console.log);
-		}
-
-		// nur zum test wie an einem normalen input selectionchange läuft
-		if (inputRef.current) {
-			inputRef.current.addEventListener('selectionchange', (ev) => console.log(ev));
-		}
-	}, []);
-
 	return (
 		<>
 			<SampleDescription>
@@ -44,7 +30,6 @@ export const InputTextSelectRange = () => {
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
-				<KolButtonLink _label="Get Selection Start" onClick={setRangeText} />
 			</div>
 		</>
 	);

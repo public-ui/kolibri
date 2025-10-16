@@ -43,7 +43,6 @@ export function InputTextFormatterDemo() {
 
 	const textInput1 = React.useRef<HTMLKolInputTextElement>(null);
 	let textInput1SelectionStart: number | null | undefined;
-	let textInput1InputLength: number | undefined;
 
 	const initialIbanExampleValues: IbanExampleFormValues = {
 		iban: 'DE89370400440532013000',
@@ -90,7 +89,6 @@ export function InputTextFormatterDemo() {
 															if (event.target) {
 																textInput1.current?.selectionStart().then((start) => {
 																	textInput1SelectionStart = start;
-																	textInput1InputLength = (value as string).length;
 																});
 																const parsed_value = formatter.parse((value as string) ?? '');
 																void form.setFieldValue('iban', parsed_value, true);
