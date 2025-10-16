@@ -11,6 +11,7 @@
 	@include kol-input-container;
 
 	.kol-select {
+		background-color: transparent;
 		width: 100%;
 
 		&:not(:disabled) {
