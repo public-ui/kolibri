@@ -291,4 +291,8 @@ export const config: Config = {
 			'^lodash-es$': 'lodash',
 		},
 	},
+	/**
+	 * @see https://github.com/stenciljs/core/pull/6389
+	 */
+	suppressReservedPublicNameWarnings: false,
 };
