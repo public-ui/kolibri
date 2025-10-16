@@ -8,11 +8,13 @@ export const MultiSelectBasic: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>MultiSelect provides a select field for multiple values, supported by a search field. Selected values are displayed as badges that can be removed individually.</p>
+				<p>
+					MultiSelect provides a select field for multiple values, supported by a search field. Selected values are displayed as badges that can be removed
+					individually.
+				</p>
 			</SampleDescription>
 
 			<FormWrap RefComponent={MultiSelectVariants} showButtons={false} />
 		</>
 	);
 };
-

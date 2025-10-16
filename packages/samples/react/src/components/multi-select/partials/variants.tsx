@@ -24,8 +24,11 @@ export const MultiSelectVariants: FC = () => {
 				_options={OPTIONS}
 				_value={value1}
 				_on={{
-					onChange: (event) => {
-						setValue1(event.target.value as string[]);
+					onChange: (event: React.MouseEvent) => {
+						const target = event.target;
+						if (target) {
+							setValue1(event.target.value as string[]);
+						}
 					},
 				}}
 			/>
@@ -35,7 +38,7 @@ export const MultiSelectVariants: FC = () => {
 				_options={OPTIONS}
 				_value={value2}
 				_on={{
-					onChange: (event) => {
+					onChange: (event: React.MouseEvent) => {
 						setValue2(event.target.value as string[]);
 					},
 				}}
@@ -47,8 +50,11 @@ export const MultiSelectVariants: FC = () => {
 				_value={value3}
 				_maxSelections={2}
 				_on={{
-					onChange: (event) => {
-						setValue3(event.target.value as string[]);
+					onChange: (event: React.MouseEvent) => {
+						const target = event.target;
+						if (target) {
+							setValue3(event.target.value as string[]);
+						}
 					},
 				}}
 			/>
@@ -59,27 +65,14 @@ export const MultiSelectVariants: FC = () => {
 				_value={value4}
 				_hideClearButton={true}
 				_on={{
-					onChange: (event) => {
-						setValue4(event.target.value as string[]);
+					onChange: (event: React.MouseEvent) => {
+						const target = event.target;
+						if (target) {
+							setValue4(event.target.value as string[]);
+						}
 					},
 				}}
 			/>
-
-			<div className="mt-4 p-4 bg-gray-100 rounded">
-				<h3 className="text-lg font-bold mb-2">Aktuelle Werte:</h3>
-				<p>
-					<strong>Leer:</strong> {JSON.stringify(value1)}
-				</p>
-				<p>
-					<strong>Vorausgewählt:</strong> {JSON.stringify(value2)}
-				</p>
-				<p>
-					<strong>Max. 2:</strong> {JSON.stringify(value3)}
-				</p>
-				<p>
-					<strong>Ohne Clear-Button:</strong> {JSON.stringify(value4)}
-				</p>
-			</div>
 		</div>
 	);
 };
