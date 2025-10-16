@@ -1,17 +1,20 @@
 import { KolAlertTag } from '../../../core/component-names';
-import type { AlertProps } from '../../../schema';
+import type { AlertProps, AlertType } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolAlert } from '../shadow';
 import { KolAlertWc } from '../component';
 
 const baseObject = { _label: 'Überschrift' };
-const baseArray = [true, false].map((_alert) => ({ ...baseObject, _alert }));
 
-function buildByType(_type: 'default' | 'error' | 'info' | 'success' | 'warning') {
+function buildByType(_type: AlertType) {
 	const nextArray: AlertProps[] = [];
-	[1, 2, 3, 4, 5, 6].forEach((_level) => {
-		nextArray.push(...baseArray.map((o) => ({ ...o, _level, _type }) as AlertProps));
+	const alertVariants = [true, false];
+
+	[0, 1, 2, 3, 4, 5, 6].forEach((_level) => {
+		alertVariants.forEach((_alert) => {
+			nextArray.push({ ...baseObject, _alert, _level, _type } as AlertProps);
+		});
 	});
 
 	return nextArray;
