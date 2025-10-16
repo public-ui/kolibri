@@ -1,10 +1,10 @@
-import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverStates, ShowPropType } from '../../schema';
-import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverStates, ShowPropType } from '../../schema';
+import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
 
-import { alignFloatingElements } from '../../utils/align-floating-elements';
 import clsx from 'clsx';
+import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**

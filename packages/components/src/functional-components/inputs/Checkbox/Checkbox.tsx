@@ -1,9 +1,9 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
+import { checkHasMsg } from '../../../schema';
 import KolIconFc, { type IconProps } from '../../Icon';
 import KolInputFc, { type InputProps } from '../Input';
-import { checkHasMsg } from '../../../schema';
 
 export type CheckboxProps = JSXBase.HTMLAttributes<HTMLLabelElement> & {
 	icon: string;

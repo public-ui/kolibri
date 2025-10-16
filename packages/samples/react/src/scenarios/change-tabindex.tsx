@@ -1,32 +1,32 @@
 /* eslint-disable jsx-a11y/tabindex-no-positive */
 
-import { SampleDescription } from '../components/SampleDescription';
+import type { Option, StencilUnknown } from '@public-ui/components';
 import {
 	KolButton,
 	KolButtonLink,
 	KolCard,
 	KolCombobox,
 	KolInputCheckbox,
+	KolInputColor,
 	KolInputDate,
 	KolInputEmail,
 	KolInputFile,
-	KolInputColor,
 	KolInputNumber,
 	KolInputPassword,
 	KolInputRadio,
 	KolInputRange,
 	KolInputText,
-	KolLinkButton,
 	KolLink,
+	KolLinkButton,
 	KolSingleSelect,
 	KolSplitButton,
 	KolTextarea,
 } from '@public-ui/react-v19';
-import React from 'react';
 import type { FC } from 'react';
+import React from 'react';
+import { SampleDescription } from '../components/SampleDescription';
 import { ERROR_MSG, HINT_MSG } from '../shares/constants';
 import { COUNTRY_OPTIONS, COUNTRY_SUGGESTIONS } from '../shares/country';
-import type { Option, StencilUnknown } from '@public-ui/components';
 
 export const ChangeTabindex: FC = () => {
 	return (

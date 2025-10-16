@@ -1,9 +1,9 @@
-import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
+import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import InternalUnderlinedBadgeText from '../InternalUnderlinedBadgeText';
-import { buildBadgeTextString } from '../../schema';
 import { isString } from 'lodash-es';
+import { buildBadgeTextString } from '../../schema';
+import InternalUnderlinedBadgeText from '../InternalUnderlinedBadgeText';
 
 type LabelProps = {
 	label?: string;

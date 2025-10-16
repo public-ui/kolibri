@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { handleApiRequest } from './index.js';
 import { createServer } from 'http';
+import { handleApiRequest } from './index.js';
 
 const PORT = process.env.PORT || 3030;
 

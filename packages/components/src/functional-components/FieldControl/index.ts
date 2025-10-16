@@ -1,2 +1,2 @@
-export { default } from './FieldControl';
 export * from './FieldControl';
+export { default } from './FieldControl';

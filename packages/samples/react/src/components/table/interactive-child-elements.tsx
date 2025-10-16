@@ -2,9 +2,9 @@ import type { ButtonProps, ButtonVariantPropType, KoliBriTableCell, KoliBriTable
 import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
-import { useToasterService } from '../../hooks/useToasterService';
 
 function KolButtonWrapper({ _on, ...other }: ButtonProps) {
 	const { dummyClickEventHandler } = useToasterService();

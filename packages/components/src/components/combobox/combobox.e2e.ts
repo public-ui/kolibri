@@ -1,6 +1,6 @@
+import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
-import { expect } from '@playwright/test';
 
 const COMPONENT_NAME = 'kol-combobox';
 const TEST_VALUE = 'Hello World';

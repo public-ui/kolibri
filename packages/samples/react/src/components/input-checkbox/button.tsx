@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import React from 'react';
 
+import type { Components } from '@public-ui/components';
 import { FormWrap } from '../FormWrap';
 import { SampleDescription } from '../SampleDescription';
-import type { Components } from '@public-ui/components';
 import { InputCheckboxVariants } from './partials/variants';
 
 export const InputCheckboxButton: FC = () => (

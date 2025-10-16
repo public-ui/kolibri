@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
-import KolInputAdornmentFc from '../InputAdornment';
 import KolIconButtonFc from '../../IconButton';
+import KolInputAdornmentFc from '../InputAdornment';
 
 describe('KolInputContainerFc', () => {
 	it('should render correctly', async () => {

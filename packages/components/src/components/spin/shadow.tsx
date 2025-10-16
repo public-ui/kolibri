@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { validateLabel, validateShow, validateSpinVariant } from '../../schema';
 import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
+import { validateLabel, validateShow, validateSpinVariant } from '../../schema';
 
 import { translate } from '../../i18n';
 
-import type { LabelPropType, ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
 import clsx from 'clsx';
+import type { LabelPropType, ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
 		case 'cycle':

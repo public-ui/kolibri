@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import KolFormFieldLabelFc from '../FormFieldLabel';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import KolFormFieldLabelFc from '../FormFieldLabel';
 
 describe('KolFormFieldLabelFc', () => {
 	it('should render with label', async () => {

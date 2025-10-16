@@ -1,15 +1,15 @@
 import type { JSX } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import KolFormFieldMsgFc from '../FormFieldMsg';
-import KolFormFieldLabelFc from '../FormFieldLabel';
-import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
-import KolFormFieldCounterFc from '../FormFieldCounter';
-import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
-import KolFormFieldTooltipFc from '../FormFieldTooltip';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import type { AlignPropType, MsgPropType, MaxLengthBehaviorPropType, Stringified } from '../../schema';
+import type { AlignPropType, MaxLengthBehaviorPropType, MsgPropType, Stringified } from '../../schema';
 import { buildBadgeTextString, checkHasMsg, showExpertSlot } from '../../schema';
+import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
+import KolFormFieldCounterFc from '../FormFieldCounter';
+import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
+import KolFormFieldLabelFc from '../FormFieldLabel';
+import KolFormFieldMsgFc from '../FormFieldMsg';
+import KolFormFieldTooltipFc from '../FormFieldTooltip';
 
 function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	if (msg?.type) {

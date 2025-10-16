@@ -14,10 +14,10 @@ import type {
 	PropName,
 	PropOptions,
 	PropRequired,
+	PropRows,
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropRows,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 

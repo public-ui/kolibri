@@ -1,11 +1,11 @@
-import { type E2EPage, test } from '@stencil/playwright';
 import type { Locator } from '@playwright/test';
 import { expect, type Page } from '@playwright/test';
-import type { FillAction } from './utils/FillAction';
+import { type E2EPage, test } from '@stencil/playwright';
 import type { InputTypeOnDefault } from '../schema';
-import { INPUTS_SELECTOR } from './utils/inputsSelector';
 import { Callback } from '../schema/enums';
 import { KolEvent } from '../utils/events';
+import type { FillAction } from './utils/FillAction';
+import { INPUTS_SELECTOR } from './utils/inputsSelector';
 
 type TestInputCallbacksAndEventsOptions = {
 	additionalProperties?: string;

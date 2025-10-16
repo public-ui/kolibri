@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
-import { translate } from '../../i18n';
 import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import { translate } from '../../i18n';
 import type { ColumnSettings } from '../../schema';
+import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal

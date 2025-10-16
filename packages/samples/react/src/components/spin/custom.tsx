@@ -1,5 +1,5 @@
-import './custom.css';
 import { SampleDescription } from '../SampleDescription';
+import './custom.css';
 
 import React from 'react';
 

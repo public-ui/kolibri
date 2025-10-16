@@ -1,5 +1,5 @@
-import { newSpecPage } from '@stencil/core/testing';
 import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
 
 const propsToLabel = (props: Record<string, unknown>) => {
 	return Object.entries(props)

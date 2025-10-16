@@ -1,6 +1,6 @@
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { LabelPropType, ProgressAPI, ProgressStates, ProgressVariantPropType } from '../../schema';
 import { validateLabel, validateUnit, validateVariantProgress, watchNumber } from '../../schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 

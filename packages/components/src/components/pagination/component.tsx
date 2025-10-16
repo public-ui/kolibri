@@ -1,3 +1,5 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import type {
 	CustomClassPropType,
 	KoliBriPaginationButtonCallbacks,
@@ -21,14 +23,12 @@ import {
 	watchNumber,
 	watchValidator,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',

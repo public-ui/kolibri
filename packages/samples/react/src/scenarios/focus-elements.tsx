@@ -1,3 +1,4 @@
+import type { FocusableElement } from '@public-ui/components';
 import {
 	KolAccordion,
 	KolAlert,
@@ -23,11 +24,9 @@ import {
 	KolTextarea,
 } from '@public-ui/react-v19';
 import type { FC, ForwardRefRenderFunction } from 'react';
-import { useMemo } from 'react';
-import React, { forwardRef, useLayoutEffect, useRef } from 'react';
+import React, { forwardRef, useLayoutEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SampleDescription } from '../components/SampleDescription';
-import type { FocusableElement } from '@public-ui/components';
 
 const getFocusElements = () => {
 	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();

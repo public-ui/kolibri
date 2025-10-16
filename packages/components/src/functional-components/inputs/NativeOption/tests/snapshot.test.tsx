@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import NativeOptionFc from '../NativeOption';
 import { renderFunctionalComponentToSpecPage } from '../../../../utils/testing';
+import NativeOptionFc from '../NativeOption';
 
 describe('NativeOptionFc', () => {
 	it('should render and match snapshot', async () => {

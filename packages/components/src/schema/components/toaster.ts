@@ -1,7 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { LabelPropType } from '../props';
-import type { AlertTypePropType } from '../props';
+import type { AlertTypePropType, LabelPropType } from '../props';
 
 const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
 type ToastStatus = (typeof toastStatusOptions)[number];

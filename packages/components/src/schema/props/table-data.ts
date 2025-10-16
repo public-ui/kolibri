@@ -1,8 +1,8 @@
 import type { Generic } from 'adopted-style-sheets';
 
+import type { KoliBriTableDataType, Stringified } from '../types';
 import type { SetStateHooks } from '../utils';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
-import type { KoliBriTableDataType, Stringified } from '../types';
 
 /* types */
 export type TableDataPropType = Stringified<KoliBriTableDataType[]>;

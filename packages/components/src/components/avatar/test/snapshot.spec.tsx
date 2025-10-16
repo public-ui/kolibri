@@ -1,8 +1,8 @@
-import { KolAvatar } from '../shadow';
-import { KolAvatarWc } from '../component';
+import { KolAvatarTag } from '../../../core/component-names';
 import type { AvatarProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
-import { KolAvatarTag } from '../../../core/component-names';
+import { KolAvatarWc } from '../component';
+import { KolAvatar } from '../shadow';
 
 executeSnapshotTests<AvatarProps>(
 	KolAvatarTag,

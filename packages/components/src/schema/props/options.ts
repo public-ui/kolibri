@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { RadioOption, Optgroup, Option, StencilUnknown } from '../types';
+import type { Optgroup, Option, RadioOption, StencilUnknown } from '../types';
 import type { Stringified } from '../types/common';
 import type { WatchOptions } from '../utils';
 import { watchJsonArrayString } from '../utils';

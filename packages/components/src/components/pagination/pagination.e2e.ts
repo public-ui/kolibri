@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 import { Callback } from '../../schema/enums';
+import { KolEvent } from '../../utils/events';
 
 test.describe('kol-pagination', () => {
 	test.beforeEach(async ({ page }) => {

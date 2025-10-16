@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
-import { buildSampleIndex } from './sample-index.js';
 import { handleApiRequest } from './api-handler.js';
+import { buildSampleIndex } from './sample-index.js';
 
 const DEFAULT_PORT = Number.parseInt(process.env.PORT ?? '3030', 10);
 

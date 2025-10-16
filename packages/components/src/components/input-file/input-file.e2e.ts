@@ -1,11 +1,11 @@
+import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents } from '../../e2e';
+import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
-import { expect } from '@playwright/test';
+import { translate } from '../../i18n';
 import { Callback } from '../../schema/enums';
 import { KolEvent } from '../../utils/events';
-import { testInputMessage } from '../../e2e/input-msg';
-import { translate } from '../../i18n';
 
 const COMPONENT_NAME = 'kol-input-file';
 const TEST_VALUE: [] = [];

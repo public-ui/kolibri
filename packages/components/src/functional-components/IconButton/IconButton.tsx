@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
+import type { ButtonVariantPropType } from '../../schema';
 import KolButtonFc, { type ButtonProps } from '../Button';
 import KolIconFc, { type IconProps } from '../Icon';
-import type { ButtonVariantPropType } from '../../schema';
 
 type IconType = Partial<Omit<IconProps, 'icons'>> & {
 	componentName: 'icon';

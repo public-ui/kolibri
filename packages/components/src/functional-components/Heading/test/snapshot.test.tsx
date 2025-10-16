@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import KolHeadingFc from '../Heading';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import KolHeadingFc from '../Heading';
 
 describe('KolHeadingFc', () => {
 	it('should render with default props', async () => {

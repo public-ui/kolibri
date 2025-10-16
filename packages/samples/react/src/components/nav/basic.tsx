@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import { LINKS, LINKS_WITHOUT_SUBMENU, LINKS_SUB_ACTIVE } from './links';
+import { LINKS, LINKS_SUB_ACTIVE, LINKS_WITHOUT_SUBMENU } from './links';
 
 import type { FC } from 'react';
 export const NavBasic: FC = () => {

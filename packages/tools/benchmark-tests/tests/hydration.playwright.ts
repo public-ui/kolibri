@@ -1,8 +1,8 @@
 import { test } from '@playwright/test';
+import { writeResultFile } from './lib/after';
+import { runBenchmark } from './lib/browser';
 import { createResultsMap, TAGS, TEST_URL } from './lib/config';
 import type { Params } from './lib/types';
-import { runBenchmark } from './lib/browser';
-import { writeResultFile } from './lib/after';
 
 const RESULTS = createResultsMap();
 

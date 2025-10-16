@@ -7,8 +7,8 @@ export const KoliBri = new Theme<'kol', keyof typeof KeyEnum, keyof typeof TagEn
 
 export * from './components';
 // export * from './enums'; // only for internal use
+export * from './interfaces';
 export * from './props';
 export * from './types';
 export * from './utils';
 export * from './validators';
-export * from './interfaces';

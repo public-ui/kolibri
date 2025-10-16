@@ -1,6 +1,6 @@
-import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
-import { RefactorPropertyErrorToMsg } from '../common/RefactorPropertyErrorToMsg';
 import { AbstractTask } from '../../abstract-task';
+import { RefactorPropertyErrorToMsg } from '../common/RefactorPropertyErrorToMsg';
+import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 import { RenamePropertyNameTask } from '../common/RenamePropertyNameTask';
 
 const INPUT_COMPONENTS = [

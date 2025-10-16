@@ -1,8 +1,8 @@
+import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents } from '../../e2e';
-import type { FillAction } from '../../e2e/utils/FillAction';
-import { expect } from '@playwright/test';
 import { testInputMessage } from '../../e2e/input-msg';
+import type { FillAction } from '../../e2e/utils/FillAction';
 
 const COMPONENT_NAME = 'kol-input-checkbox';
 const TEST_VALUE = true;
