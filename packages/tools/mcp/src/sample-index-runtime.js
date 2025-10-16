@@ -2,6 +2,7 @@ import { access, readdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { hasSearchableQuery, performFuzzySearch } from './fuzzy-search.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -56,8 +57,8 @@ function computeCounts(entries) {
 
 function normalizeEntryId(entry) {
 	const kind = entry.kind ?? 'sample';
-	const isConcept = kind === 'concept' || kind === 'doc';
-	const expectedPrefix = isConcept ? 'doc' : 'sample';
+	const isDoc = kind === 'doc';
+	const expectedPrefix = isDoc ? 'doc' : 'sample';
 	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
 		return entry;
 	}
@@ -65,7 +66,7 @@ function normalizeEntryId(entry) {
 	const segments = [];
 	if (entry.group) {
 		const groupSegments = entry.group.split('/').filter(Boolean);
-		if (isConcept && groupSegments[0] === 'docs') {
+		if (isDoc && groupSegments[0] === 'docs') {
 			groupSegments.shift();
 		}
 		segments.push(...groupSegments);
@@ -95,8 +96,7 @@ class SampleIndex {
 			total: counts.total,
 			byKind: counts.byKind,
 			totalSamples: counts.byKind.get('sample') ?? counts.total,
-			totalConcepts: counts.byKind.get('concept') ?? counts.byKind.get('doc') ?? 0,
-			totalDocs: counts.byKind.get('doc') ?? counts.byKind.get('concept') ?? 0,
+			totalDocs: counts.byKind.get('doc') ?? 0,
 		};
 	}
 
@@ -106,14 +106,11 @@ class SampleIndex {
 
 		let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
 
-		if (!query) {
+		if (!hasSearchableQuery(query)) {
 			return results;
 		}
 
-		const normalized = query.trim().toLowerCase();
-		return results.filter(
-			(entry) => entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
-		);
+		return performFuzzySearch(results, query);
 	}
 
 	get(id) {
@@ -344,25 +341,25 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 		const segments = withoutExtension.split('/').filter(Boolean);
 		const name = segments.pop() ?? withoutExtension;
 		const group = segments.length ? `${groupPrefix}/${segments.join('/')}` : groupPrefix;
-		const conceptIdSegments = ['concept'];
+		const docIdSegments = ['doc'];
 		if (group.startsWith(`${groupPrefix}/`)) {
 			const relativeGroup = group.slice(groupPrefix.length + 1);
 			if (relativeGroup) {
-				conceptIdSegments.push(...relativeGroup.split('/'));
+				docIdSegments.push(...relativeGroup.split('/'));
 			}
 		} else if (group !== groupPrefix) {
-			conceptIdSegments.push(...group.split('/'));
+			docIdSegments.push(...group.split('/'));
 		}
-		conceptIdSegments.push(name);
+		docIdSegments.push(name);
 
 		entries.push({
-			id: conceptIdSegments.join('/'),
+			id: docIdSegments.join('/'),
 			group,
 			name,
 			path: normalizedRepoPath,
 			absolutePath,
 			code,
-			kind: 'concept',
+			kind: 'doc',
 		});
 	}
 

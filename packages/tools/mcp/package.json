@@ -42,9 +42,11 @@
 	},
 	"scripts": {
 		"build": "node prebuild.js && unbuild",
-		"format": "prettier --check src",
+		"format": "prettier --check public src",
 		"prestart": "pnpm build",
-		"start": "node dist/index.mjs"
+		"start": "node dist/index.mjs",
+		"test": "node --test",
+		"test-update": "node --test"
 	},
 	"devDependencies": {
 		"prettier": "3.6.2",
@@ -53,5 +55,8 @@
 	"files": [
 		"dist/",
 		"README.md"
-	]
+	],
+	"dependencies": {
+		"fuse.js": "7.1.0"
+	}
 }

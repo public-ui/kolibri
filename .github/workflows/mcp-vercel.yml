@@ -12,6 +12,7 @@ on:
   pull_request:
     branches:
       - develop
+      - release/*
     paths:
       - '.github/workflows/mcp-vercel.yml'
       - 'packages/samples/react/**'
@@ -55,7 +56,7 @@ jobs:
           jq '.entries | length' dist/samples.json || echo "Could not count samples"
       - name: Deploy to Vercel (production)
         id: deploy_prod
-        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/develop' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         working-directory: packages/tools/mcp
         run: |
           set -eo pipefail

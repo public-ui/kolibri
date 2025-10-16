@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-hook-form-adapter",
-	"version": "3.0.7-rc.3",
+	"version": "3.0.7-rc.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -55,16 +55,16 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
-		"@types/react": "18.3.24",
+		"@types/react": "18.3.26",
 		"@types/react-dom": "18.3.7",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"eslint": "8.57.1",
 		"prettier": "3.6.2",
 		"react": "19.1.1",
-		"react-dom": "19.1.1",
+		"react-dom": "19.2.0",
 		"react-hook-form": "7.63.0",
-		"typescript": "5.9.2",
+		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {

@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>KoliBri MCP API</title>
+		<link rel="icon" type="image/svg+xml" href="/kolibri-favicon.svg" />
 		<style>
 			* {
 				margin: 0;
@@ -37,10 +38,9 @@
 			}
 
 			.logo {
-				width: 80px;
-				height: 80px;
+				width: 125px;
+				height: 125px;
 				margin: 0 auto 1rem;
-				background: #667eea;
 				border-radius: 50%;
 				display: flex;
 				align-items: center;
@@ -108,6 +108,51 @@
 				font-family: 'Courier New', monospace;
 				margin: 0.5rem 0;
 				overflow-x: auto;
+				white-space: pre;
+				display: block;
+			}
+			.endpoint-inline {
+				background: #1a202c;
+				color: #90cdf4;
+				padding: 0.2em 0.5em;
+				border-radius: 4px;
+				font-family: 'Courier New', monospace;
+				margin: 0.2em 0.2em;
+				font-size: 1em;
+				white-space: nowrap;
+				display: inline;
+			}
+			.copy-btn {
+				background: #edf2f7;
+				color: #2d3748;
+				border: none;
+				border-radius: 4px;
+				padding: 0.3em 0.6em;
+				font-size: 1em;
+				cursor: pointer;
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				opacity: 0.7;
+				transition: opacity 0.2s;
+				z-index: 2;
+			}
+			.copy-btn:focus,
+			.copy-btn:hover {
+				opacity: 1;
+				outline: 2px solid #667eea;
+			}
+			.endpoint-inline + .copy-btn {
+				position: relative;
+				top: 0;
+				right: 0;
+				margin-left: 0.5em;
+				opacity: 0.7;
+				z-index: 2;
+				background: #edf2f7;
+				color: #2d3748;
+				border-radius: 4px;
+				padding: 0.3em 0.6em;
 			}
 
 			.method {
@@ -157,12 +202,20 @@
 			a:hover {
 				text-decoration: underline;
 			}
+
+			/* Removed duplicate .copy-btn rules for clarity and consistency */
+
+			.relative {
+				position: relative;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="header">
-				<div class="logo">K</div>
+				<div class="logo">
+					<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
+				</div>
 				<h1>KoliBri MCP API</h1>
 				<p class="subtitle">Model Context Protocol Backend for KoliBri Examples</p>
 				<span class="status">🟢 Online</span>
@@ -183,12 +236,6 @@
 				<p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
 
 				<div style="margin-top: 1rem">
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/health" style="color: #90cdf4">/mcp/health</a></code>
-					</div>
-					<p class="description">Backend status and sample index metadata</p>
-
 					<div>
 						<span class="method get">GET</span>
 						<code class="endpoint"><a href="/mcp/samples" style="color: #90cdf4">/mcp/samples</a></code>
@@ -212,6 +259,12 @@
 						<code class="endpoint"><a href="/mcp/doc?id=doc/README" style="color: #90cdf4">/mcp/doc?id=doc/README</a></code>
 					</div>
 					<p class="description">Retrieve a specific documentation document including its Markdown source</p>
+
+					<div>
+						<span class="method get">GET</span>
+						<code class="endpoint"><a href="/mcp/doc?id=doc/README.md" style="color: #90cdf4">/mcp/doc?id=doc/README.md</a></code>
+					</div>
+					<p class="description">Retrieve a specific documentation document including its Markdown source (with .md extension)</p>
 				</div>
 				<p class="description" style="margin-top: 1rem">
 					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
@@ -224,16 +277,25 @@
 
 				<div style="margin-top: 1rem">
 					<h3 style="color: #2d3748; margin-bottom: 0.5rem; font-size: 1.1rem">Option 1: Local Installation</h3>
-					<div class="endpoint">npm install -g @public-ui/mcp</div>
+					<span style="position: relative; display: inline-block">
+						<code class="endpoint"> npm install -g @public-ui/mcp</code>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
+					</span>
 					<p class="description">Install the MCP package globally and create an <code>mcp.json</code>:</p>
-					<div class="endpoint" style="white-space: pre-wrap; font-size: 0.9rem">
-						{ "servers": { "kolibri-mcp": { "command": "npx", "args": ["@public-ui/mcp"] } }, "inputs": [] }
+					<div style="position: relative">
+						<pre
+							style="margin: 0"
+						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "command": "npx", "args": ["@public-ui/mcp"] } }, "inputs": [] }</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
 					</div>
 
 					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Option 2: Remote Server (Recommended)</h3>
 					<p class="description">Use the hosted server without local installation in your <code>mcp.json</code>:</p>
-					<div class="endpoint" style="white-space: pre-wrap; font-size: 0.9rem">
-						{ "servers": { "kolibri-mcp": { "url": "https://public-ui-kolibri-mcp.vercel.app/mcp/", "type": "http" } }, "inputs": [] }
+					<div style="position: relative">
+						<pre
+							style="margin: 0"
+						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "url": "https://public-ui-kolibri-mcp.vercel.app/mcp/", "type": "http" } }, "inputs": [] }</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
 					</div>
 					<div style="background: #fff3cd; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #ffc107">
 						<strong style="color: #856404">⚡ Remote Advantage:</strong>
@@ -242,26 +304,34 @@
 
 					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Setup</h3>
 					<p class="description">Create an <code>mcp.json</code> file in your project directory or use the global configuration:</p>
-					<div class="endpoint" style="background: #1a202c; color: #90cdf4">
-						# Local file in project echo '{ "servers": { ... } }' > mcp.json # Or globally for all projects ~/.config/mcp/mcp.json
+					<div style="position: relative">
+						<pre style="margin: 0"><code class="endpoint" style="background: #1a202c; color: #90cdf4"># Local file in project
+ echo '{ "servers": { ... } }' > mcp.json
+# Or globally for all projects
+~/.config/mcp/mcp.json
+</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
 					</div>
 					<p class="description">In GitHub Copilot Chat you can now write:</p>
-					<div class="endpoint" style="background: #2d3748; color: #90cdf4">
-						@kolibri show me a button sample @kolibri how do I implement a KoliBri table? @kolibri create an accessible form
+					<div style="position: relative">
+						<pre style="margin: 0"><code class="endpoint" style="background: #2d3748; color: #90cdf4">@kolibri show me a button sample
+@kolibri how do I implement a KoliBri table?
+@kolibri create an accessible form
+</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
 					</div>
-
 					<div style="background: #e6fffa; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #38a169">
 						<strong style="color: #2d3748">💡 Tip:</strong>
 						<span style="color: #2d3748" id="tip-text">
-							The MCP Server gives you access to all KoliBri component samples and documentation files directly in VS Code!</span
-						>
+							The MCP Server gives you access to all KoliBri component samples and documentation files directly in VS Code!
+						</span>
 					</div>
 				</div>
 			</div>
 
 			<div class="footer">
 				<p>
-					📚 <a href="https://public-ui.github.io/en" target="_blank">KoliBri Documentation</a> | 🔗
+					<a href="https://public-ui.github.io/en" target="_blank">KoliBri Documentation</a> | 🔗
 					<a href="https://github.com/public-ui/kolibri" target="_blank">GitHub Repository</a>
 				</p>
 				<p style="margin-top: 0.5rem; font-size: 0.9rem">Powered by KoliBri • Made with ❤️ by ITZBund</p>
@@ -292,10 +362,6 @@
 						docCount = data.totalDocs;
 					} else if (typeof data.docs === 'number') {
 						docCount = data.docs;
-					} else if (typeof data.totalConcepts === 'number') {
-						docCount = data.totalConcepts;
-					} else if (typeof data.concepts === 'number') {
-						docCount = data.concepts;
 					}
 
 					const sampleCountElement = document.getElementById('sample-count');
@@ -335,6 +401,42 @@
 						docCountElement.textContent = '–';
 					}
 				});
+
+			// Copy code logic for all .copy-btn buttons
+			function copyCodeToClipboard(code) {
+				if (navigator.clipboard) {
+					navigator.clipboard.writeText(code);
+				} else {
+					const textarea = document.createElement('textarea');
+					textarea.value = code;
+					document.body.appendChild(textarea);
+					textarea.select();
+					document.execCommand('copy');
+					document.body.removeChild(textarea);
+				}
+			}
+
+			document.addEventListener('DOMContentLoaded', function () {
+				const copyButtons = document.querySelectorAll('.copy-btn');
+				copyButtons.forEach(function (btn) {
+					btn.addEventListener('click', function (e) {
+						let code = '';
+						const parent = btn.parentElement;
+						if (parent.querySelector('code.endpoint-inline')) {
+							code = parent.querySelector('code.endpoint-inline').textContent;
+						} else if (parent.querySelector('code.endpoint')) {
+							code = parent.querySelector('code.endpoint').textContent;
+						}
+						if (code) {
+							copyCodeToClipboard(code);
+							btn.textContent = '✅';
+							setTimeout(() => {
+								btn.textContent = '📋';
+							}, 1500);
+						}
+					});
+				});
+			});
 		</script>
 	</body>
 </html>

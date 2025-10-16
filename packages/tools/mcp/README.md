@@ -30,10 +30,10 @@ The server will start on `http://localhost:3030` and provide the following endpo
 - `GET /mcp/health` - Server status and content counts
 - `GET /mcp/samples` - List all available component examples
 - `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
-- `GET /mcp/concepts` - List Markdown concept documentation
-- `GET /mcp/concept?id=concept/README` - Get a specific concept document
+- `GET /mcp/docs` - List Markdown documentation
+- `GET /mcp/doc?id=doc/README` - Get a specific documentation entry
 
-The sample and concept indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
+The sample and doc indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
 
 ### Integration with AI Tools
 
@@ -68,7 +68,7 @@ const samples = await response.json();
 
 ## 📚 What's Included
 
-This MCP server provides access to **136+ KoliBri component examples** and the core **Markdown concept documentation** of the project, including:
+This MCP server provides access to **136+ KoliBri component examples** and the core **Markdown documentation** of the project, including:
 
 - **Basic Components**: Button, Input, Link, Icon, Badge, etc.
 - **Form Components**: Form, Select, Textarea, Checkbox, Radio, etc.
@@ -76,7 +76,7 @@ This MCP server provides access to **136+ KoliBri component examples** and the c
 - **Navigation**: Breadcrumb, Pagination, Navigation, etc.
 - **Data Display**: Table, Alert, Toast, Progress, etc.
 - **Advanced Components**: Tree, Tooltip, Popover, etc.
-- **Concept Docs**: `README.md`, `docs/*.md`, migration guides, security guidelines, and more.
+- **Docs**: `README.md`, `docs/*.md`, migration guides, security guidelines, and more.
 
 Each sample includes:
 
@@ -97,38 +97,39 @@ Returns server status and metadata:
 	"healthy": true,
 	"totalEntries": 154,
 	"totalSamples": 136,
-	"totalConcepts": 18,
 	"totalDocs": 18,
 	"message": "System healthy with 154 entries available",
 	"generatedAt": "2024-05-28T08:15:30.000Z",
 	"ai-hints": [
 		"Always register KoliBri Web Components in the browser runtime before rendering them.",
-		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly.",
+		"Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.",
+		"Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary."
 	]
 }
 ```
 
-### GET /mcp/samples
+### GET /mcp/docs
 
-List all available samples with optional filtering:
-
-```bash
-# Get all samples
-curl http://localhost:3030/mcp/samples
-
-# Filter by component
-curl "http://localhost:3030/mcp/samples?q=button"
-```
-
-### GET /mcp/sample?id={sampleId}
-
-Get complete source code for a specific sample:
+List Markdown-based documentation entries:
 
 ```bash
-curl "http://localhost:3030/mcp/sample?id=sample/button/basic"
+# Get all docs
+curl http://localhost:3030/mcp/docs
+
+# Filter by term
+curl "http://localhost:3030/mcp/docs?q=theme"
 ```
 
-Returns:
+### GET /mcp/doc?id={docId}
+
+Fetch Markdown documentation by referencing its `docs/...` identifier:
+
+```bash
+curl "http://localhost:3030/mcp/doc?id=doc/README"
+```
+
+Returns the Markdown content together with metadata. Every sample or doc response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
 ```json
 {
@@ -140,33 +141,35 @@ Returns:
 	"kind": "sample",
 	"ai-hints": [
 		"Always register KoliBri Web Components in the browser runtime before rendering them.",
-		"Choose the integration guide that matches your project setup to load and bundle the components correctly."
+		"Choose the integration guide that matches your project setup to load and bundle the components correctly.",
+		"Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.",
+		"Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary."
 	]
 }
 ```
 
-### GET /mcp/concepts
+### GET /mcp/docs
 
-List Markdown-based concept documentation entries:
+List Markdown-based documentation entries:
 
 ```bash
-curl http://localhost:3030/mcp/concepts
+curl http://localhost:3030/mcp/docs
 
 # Filter by term
-curl "http://localhost:3030/mcp/concepts?q=theme"
+curl "http://localhost:3030/mcp/docs?q=theme"
 ```
 
-### GET /mcp/concept?id={conceptId}
+### GET /mcp/doc?id={docId}
 
-Fetch Markdown documentation by referencing its `concepts/...` identifier:
+Fetch Markdown documentation by referencing its `docs/...` identifier:
 
 ```bash
-curl "http://localhost:3030/mcp/concept?id=concept/README"
+curl "http://localhost:3030/mcp/doc?id=doc/README"
 ```
 
-Returns the Markdown content together with metadata. Every sample or concept response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
+Returns the Markdown content together with metadata. Every sample or doc response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
-All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered in the browser and that integration steps vary with the chosen project setup.
+All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered, that the correct integration guide and icon font assets need to be bundled, and that `<kol-form>` with an `_errorList` exposes validation errors via its summary.
 
 ## 🛠️ Use Cases
 

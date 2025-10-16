@@ -2,6 +2,8 @@ const AI_HINTS_KEY = 'ai-hints';
 const AI_HINTS_MESSAGES = Object.freeze([
 	'Always register KoliBri Web Components in the browser runtime before rendering them.',
 	'Choose the integration guide that matches your project setup to load and bundle the components correctly.',
+	'Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.',
+	'Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary.',
 ]);
 
 const normalizeHints = (value) => {
@@ -85,7 +87,7 @@ export default async function handler(request, response) {
 
 		if (useEmbeddedData) {
 			// Verwende eingebettete Sample-Daten (schneller und zuverlässiger)
-			const { handleApiRequest } = await import('../dist/index.mjs');
+			const { handleApiRequest, performFuzzySearch, hasSearchableQuery } = await import('../dist/index.mjs');
 
 			// Erstelle Mock-Index mit eingebetteten Daten
 			const counts = resolveCounts({ entries: samplesData.entries, counts: samplesData.counts });
@@ -99,14 +101,12 @@ export default async function handler(request, response) {
 					const kinds = options.kinds ? new Set(options.kinds) : undefined;
 					const normalizeKind = (entry) => entry.kind ?? 'sample';
 					let results = kinds ? this.entries.filter((entry) => kinds.has(normalizeKind(entry))) : this.entries;
-					if (!query) {
+
+					if (!hasSearchableQuery(query)) {
 						return results;
 					}
-					const normalized = query.trim().toLowerCase();
-					return results.filter(
-						(entry) =>
-							entry.id.toLowerCase().includes(normalized) || entry.group.toLowerCase().includes(normalized) || entry.name.toLowerCase().includes(normalized),
-					);
+
+					return performFuzzySearch(results, query);
 				},
 				get: function (id) {
 					return this.map.get(id);
@@ -126,7 +126,11 @@ export default async function handler(request, response) {
 				response.setHeader(key, value);
 			});
 			const responseBody = result.body ?? {};
-			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			if (fullUrl.pathname === '/') {
+				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			} else {
+				response.json(responseBody);
+			}
 		} else {
 			// Fallback: Verwende Build-Artefakte (kann auf Vercel problematisch sein)
 			const { handleApiRequest, buildSampleIndex } = await import('../dist/index.mjs');
@@ -153,7 +157,11 @@ export default async function handler(request, response) {
 				response.setHeader(key, value);
 			});
 			const responseBody = result.body ?? {};
-			response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			if (fullUrl.pathname === '/') {
+				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			} else {
+				response.json(responseBody);
+			}
 		}
 	} catch (error) {
 		console.error('[api/mcp] Handler error:', error);

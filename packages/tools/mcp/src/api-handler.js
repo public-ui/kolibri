@@ -8,10 +8,43 @@ function buildCorsHeaders() {
 	};
 }
 
+function logRequest(method, url, pathname, statusCode, responseTime) {
+	// Only log if MCP_DEBUG is enabled
+	if (!process.env.MCP_DEBUG) {
+		return;
+	}
+
+	// Skip logging for root path requests to reduce noise
+	if (pathname === '/') {
+		return;
+	}
+
+	const timestamp = new Date().toISOString();
+	const methodFormatted = method.padEnd(7);
+	const statusFormatted = statusCode.toString().padStart(3);
+	const timeFormatted = `${responseTime}ms`.padStart(6);
+
+	// Color coding for status codes
+	let statusColor = '';
+	if (statusCode >= 200 && statusCode < 300) {
+		statusColor = '\x1b[32m'; // Green for 2xx
+	} else if (statusCode >= 300 && statusCode < 400) {
+		statusColor = '\x1b[33m'; // Yellow for 3xx
+	} else if (statusCode >= 400) {
+		statusColor = '\x1b[31m'; // Red for 4xx and 5xx
+	}
+
+	console.log(
+		`\x1b[90m[${timestamp}]\x1b[0m ${methodFormatted} ${statusColor}${statusFormatted}\x1b[0m ${timeFormatted} ${pathname}${url !== pathname ? ` (${url})` : ''}`,
+	);
+}
+
 export const AI_HINTS_KEY = 'ai-hints';
 export const AI_HINTS_MESSAGES = Object.freeze([
 	'Always register KoliBri Web Components in the browser runtime before rendering them.',
 	'Choose the integration guide that matches your project setup to load and bundle the components correctly.',
+	'Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.',
+	'Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary.',
 ]);
 
 function normalizeHints(value) {
@@ -42,14 +75,13 @@ function computeCountsFromEntries(entries = []) {
 				return acc;
 			}
 
-			if (kind === 'concept' || kind === 'doc') {
-				acc.totalConcepts += 1;
+			if (kind === 'doc') {
 				acc.totalDocs += 1;
 			}
 
 			return acc;
 		},
-		{ total: 0, totalSamples: 0, totalConcepts: 0, totalDocs: 0 },
+		{ total: 0, totalSamples: 0, totalDocs: 0 },
 	);
 }
 
@@ -64,7 +96,6 @@ function resolveCounts(index) {
 	return {
 		total: typeof source.total === 'number' ? source.total : fallbackCounts.total,
 		totalSamples: typeof source.totalSamples === 'number' ? source.totalSamples : fallbackCounts.totalSamples,
-		totalConcepts: typeof source.totalConcepts === 'number' ? source.totalConcepts : fallbackCounts.totalConcepts,
 		totalDocs: typeof source.totalDocs === 'number' ? source.totalDocs : fallbackCounts.totalDocs,
 	};
 }
@@ -86,16 +117,28 @@ function normalizePathname(pathname) {
 }
 
 export async function handleApiRequest({ method = 'GET', url = '/', getIndex } = {}) {
+	const startTime = Date.now();
 	const baseHeaders = buildCorsHeaders();
 	const normalizedMethod = method.toUpperCase();
 	const requestUrl = new URL(url, 'http://localhost');
 	const pathname = normalizePathname(requestUrl.pathname);
 
+	// Helper function to create response and log it
+	const createResponse = (statusCode, body = {}) => {
+		const responseTime = Date.now() - startTime;
+		logRequest(normalizedMethod, url, pathname, statusCode, responseTime);
+		return {
+			statusCode,
+			headers: baseHeaders,
+			body,
+		};
+	};
+
 	if (normalizedMethod === 'OPTIONS') {
-		return { statusCode: 204, headers: baseHeaders };
+		return createResponse(204);
 	}
 
-	if (normalizedMethod === 'GET' && pathname === '/') {
+	if ((normalizedMethod === 'GET' || normalizedMethod === 'POST') && pathname === '/') {
 		let index;
 		try {
 			index = await getIndex();
@@ -106,20 +149,26 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		const counts = resolveCounts(index);
 		const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt : undefined;
 
-		return {
-			statusCode: 200,
-			headers: baseHeaders,
-			body: withAiHints({
+		return createResponse(
+			200,
+			withAiHints({
 				message: 'KoliBri MCP backend is running.',
-				endpoints: ['/health', '/samples', '/sample?id=sample/<component>/<sample>', '/docs', '/doc?id=doc/<identifier>'],
+				endpoints: [
+					'/health',
+					'/samples',
+					'/samples?q=<query>',
+					'/sample?id=sample/<component>/<sample>',
+					'/docs',
+					'/docs?q=<query>',
+					'/doc?id=doc/<identifier>',
+				],
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts,
 				totalDocs: counts.totalDocs,
 				generatedAt: (generatedAt ?? new Date()).toISOString(),
 				buildMode: index?.buildMode ?? 'runtime',
 			}),
-		};
+		);
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/health') {
@@ -130,29 +179,24 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		// Debug information for Vercel
 		console.log('[health] Total entries:', counts.total);
 		console.log('[health] Sample entries:', counts.totalSamples);
-		console.log('[health] Concept entries:', counts.totalConcepts);
+		console.log('[health] Doc entries:', counts.totalDocs);
 		console.log('[health] Index generated at:', index.generatedAt);
 		console.log('[health] Is healthy:', isHealthy);
 
-		return {
-			statusCode: isHealthy ? 200 : 503,
-			headers: baseHeaders,
-			body: withAiHints({
-				status: isHealthy ? 'ok' : 'error',
-				healthy: isHealthy,
-				totalEntries: counts.total,
-				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts,
-				totalDocs: counts.totalDocs,
-				message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
-				generatedAt: index.generatedAt.toISOString(),
-				debug: {
-					indexGeneratedAt: index.generatedAt.toISOString(),
-					entriesLength: index.entries.length,
-					firstFewEntries: index.entries.slice(0, 3).map((e) => e.id),
-				},
-			}),
-		};
+		return createResponse(isHealthy ? 200 : 503, {
+			status: isHealthy ? 'ok' : 'error',
+			healthy: isHealthy,
+			totalEntries: counts.total,
+			totalSamples: counts.totalSamples,
+			totalDocs: counts.totalDocs,
+			message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
+			generatedAt: index.generatedAt.toISOString(),
+			debug: {
+				indexGeneratedAt: index.generatedAt.toISOString(),
+				entriesLength: index.entries.length,
+				firstFewEntries: index.entries.slice(0, 3).map((e) => e.id),
+			},
+		});
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/samples') {
@@ -166,68 +210,47 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			kind: entry.kind ?? 'sample',
 		}));
 		const counts = resolveCounts(index);
-		return {
-			statusCode: 200,
-			headers: baseHeaders,
-			body: withAiHints({
-				items,
-				query,
-				total: items.length,
-				totalEntries: counts.total,
-				totalSamples: counts.totalSamples,
-				totalConcepts: counts.totalConcepts,
-				totalDocs: counts.totalDocs,
-				generatedAt: index.generatedAt.toISOString(),
-			}),
-		};
+		return createResponse(200, {
+			items,
+			query,
+			total: items.length,
+			totalEntries: counts.total,
+			totalSamples: counts.totalSamples,
+			totalDocs: counts.totalDocs,
+			generatedAt: index.generatedAt.toISOString(),
+		});
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/sample') {
 		const index = await getIndex();
 		const id = requestUrl.searchParams.get('id');
 		if (!id) {
-			return {
-				statusCode: 400,
-				headers: baseHeaders,
-				body: withAiHints({ error: 'missing_id' }),
-			};
+			return createResponse(400, { error: 'missing_id' });
 		}
 
 		const entry = index.get(id);
 		if (!entry) {
-			return {
-				statusCode: 404,
-				headers: baseHeaders,
-				body: withAiHints({ error: 'not_found', id }),
-			};
+			return createResponse(404, { error: 'not_found', id });
 		}
 
 		if ((entry.kind ?? 'sample') !== 'sample') {
-			return {
-				statusCode: 400,
-				headers: baseHeaders,
-				body: withAiHints({ error: 'invalid_kind', expected: 'sample', actual: entry.kind ?? 'sample', id }),
-			};
+			return createResponse(400, { error: 'invalid_kind', expected: 'sample', actual: entry.kind ?? 'sample', id });
 		}
 
-		return {
-			statusCode: 200,
-			headers: baseHeaders,
-			body: withAiHints({
-				id: entry.id,
-				group: entry.group,
-				name: entry.name,
-				path: entry.path,
-				code: entry.code,
-				kind: entry.kind ?? 'sample',
-			}),
-		};
+		return createResponse(200, {
+			id: entry.id,
+			group: entry.group,
+			name: entry.name,
+			path: entry.path,
+			code: entry.code,
+			kind: entry.kind ?? 'sample',
+		});
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/docs') {
 		const index = await getIndex();
 		const query = requestUrl.searchParams.get('q') ?? '';
-		const items = index.list(query, { kinds: ['concept', 'doc'] }).map((entry) => ({
+		const items = index.list(query, { kinds: ['doc'] }).map((entry) => ({
 			group: entry.group,
 			id: entry.id,
 			name: entry.name,
@@ -235,69 +258,44 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 			kind: entry.kind ?? 'doc',
 		}));
 		const counts = resolveCounts(index);
-		return {
-			statusCode: 200,
-			headers: baseHeaders,
-			body: withAiHints({
-				items,
-				query,
-				total: items.length,
-				totalEntries: counts.totalDocs,
-				totalConcepts: counts.totalConcepts,
-				totalDocs: counts.totalDocs,
-				generatedAt: index.generatedAt.toISOString(),
-			}),
-		};
+		return createResponse(200, {
+			items,
+			query,
+			total: items.length,
+			totalEntries: counts.totalDocs,
+			totalDocs: counts.totalDocs,
+			generatedAt: index.generatedAt.toISOString(),
+		});
 	}
 
 	if (normalizedMethod === 'GET' && pathname === '/doc') {
 		const index = await getIndex();
 		const id = requestUrl.searchParams.get('id');
 		if (!id) {
-			return {
-				statusCode: 400,
-				headers: baseHeaders,
-				body: withAiHints({ error: 'missing_id' }),
-			};
+			return createResponse(400, { error: 'missing_id' });
 		}
 
 		const entry = index.get(id);
-		if (!entry || !['concept', 'doc'].includes(entry.kind ?? 'sample')) {
-			return {
-				statusCode: 404,
-				headers: baseHeaders,
-				body: withAiHints({ error: 'not_found', id }),
-			};
+		if (!entry || entry.kind !== 'doc') {
+			return createResponse(404, { error: 'not_found', id });
 		}
 
-		return {
-			statusCode: 200,
-			headers: baseHeaders,
-			body: withAiHints({
-				id: entry.id,
-				group: entry.group,
-				name: entry.name,
-				path: entry.path,
-				code: entry.code,
-				kind: entry.kind ?? 'doc',
-			}),
-		};
+		return createResponse(200, {
+			id: entry.id,
+			group: entry.group,
+			name: entry.name,
+			path: entry.path,
+			code: entry.code,
+			kind: entry.kind ?? 'doc',
+		});
 	}
 
 	if (normalizedMethod === 'POST' && pathname === '/refresh') {
-		return {
-			statusCode: 410,
-			headers: baseHeaders,
-			body: withAiHints({
-				error: 'refresh_unavailable',
-				message: 'Die Re-Indexierung ist in bereitgestellten Umgebungen deaktiviert, da die Inhalte bereits vorab eingebettet werden.',
-			}),
-		};
+		return createResponse(410, {
+			error: 'refresh_unavailable',
+			message: 'Die Re-Indexierung ist in bereitgestellten Umgebungen deaktiviert, da die Inhalte bereits vorab eingebettet werden.',
+		});
 	}
 
-	return {
-		statusCode: 404,
-		headers: baseHeaders,
-		body: withAiHints({ error: 'not_found' }),
-	};
+	return createResponse(404, { error: 'not_found' });
 }
