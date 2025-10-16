@@ -1,8 +1,8 @@
-import React from 'react';
-import type { FC } from 'react';
-import { KolAlert, KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
-import { SampleDescription } from '../components/SampleDescription';
 import type { SelectOption } from '@public-ui/components';
+import { KolAlert, KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
+import { SampleDescription } from '../components/SampleDescription';
 
 export const InputGroupWithError: FC = () => {
 	const phoneError = true;

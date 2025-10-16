@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as Yup from 'yup';
 
 import { KolLink, KolTabs } from '@public-ui/react-v19';
@@ -10,8 +10,8 @@ import { DistrictForm } from './DistrictForm';
 import { PersonalInformationForm } from './PersonalInformationForm';
 import { Summary } from './Summary';
 
-import type { FormikHelpers, FormikProps } from 'formik';
 import type { Iso8601 } from '@public-ui/components';
+import type { FormikHelpers, FormikProps } from 'formik';
 import { SampleDescription } from '../../components/SampleDescription';
 // export interface FormProps {}
 export interface FormValues {

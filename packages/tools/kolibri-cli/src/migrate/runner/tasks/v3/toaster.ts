@@ -1,9 +1,9 @@
 import fs from 'fs';
 
 import { FILE_EXTENSIONS, type FileExtension } from '../../../../types';
-const fileExtensions: FileExtension[] = [...FILE_EXTENSIONS];
 import { filterFilesByExt, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask } from '../../abstract-task';
+const fileExtensions: FileExtension[] = [...FILE_EXTENSIONS];
 
 class ToasterRenamePropertiesTask extends AbstractTask {
 	private constructor() {

@@ -5,8 +5,8 @@ jest.mock('../../../schema', () => {
 	return { ...actual, devHint: jest.fn() };
 });
 
-import * as Schema from '../../../schema';
 import type { KoliBriTableHeaders } from '../../../schema';
+import * as Schema from '../../../schema';
 import { setRuntimeMode } from '../../../schema/utils/dev.utils';
 import { KolTableStateful } from '../shadow';
 

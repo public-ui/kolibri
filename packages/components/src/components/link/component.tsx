@@ -1,3 +1,6 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -8,9 +11,9 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
-	HideLabelPropType,
 	DownloadPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HrefPropType,
 	InternalLinkAPI,
 	KoliBriIconsProp,
@@ -23,15 +26,14 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validateLinkVariant } from '../../schema';
 import {
 	devHint,
 	setEventTarget,
 	showExpertSlot,
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
-	validateAriaCurrentValue,
 	validateAriaControls,
+	validateAriaCurrentValue,
 	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaOwns,
@@ -45,21 +47,19 @@ import {
 	validateLabelWithExpertSlot,
 	validateLinkCallbacks,
 	validateLinkTarget,
+	validateLinkVariant,
 	validateShortKey,
 	validateTooltipAlign,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
+import clsx from 'clsx';
+import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { KolSpanFc } from '../../functional-components';
-import clsx from 'clsx';
 
 /**
  * @internal

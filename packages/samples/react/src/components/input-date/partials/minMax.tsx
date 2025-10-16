@@ -1,6 +1,6 @@
-import React from 'react';
-import { KolInputDate } from '@public-ui/react-v19';
 import type { Components } from '@public-ui/components';
+import { KolInputDate } from '@public-ui/react-v19';
+import React from 'react';
 
 export const InputDateMinMaxCases = (props: Components.KolInputDate) => {
 	const minDateIso = '2024-09-26';

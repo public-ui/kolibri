@@ -1,17 +1,17 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolFieldControlFc, { type FieldControlProps } from '../../functional-components/FieldControl';
 import {
+	type InputCheckboxStates,
 	type InputColorStates,
 	type InputEmailStates,
 	type InputFileStates,
 	type InputNumberStates,
 	type InputPasswordStates,
+	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
-	type InputCheckboxStates,
-	type InputRadioStates,
-	type SelectStates,
 	type MsgPropType,
+	type SelectStates,
 } from '../../schema';
 
 type InputState =

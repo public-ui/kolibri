@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import TextAreaFc from '../TextArea';
 import { renderFunctionalComponentToSpecPage } from '../../../../utils/testing';
+import TextAreaFc from '../TextArea';
 
 describe('TextAreaFc', () => {
 	it('should render and match snapshot', async () => {

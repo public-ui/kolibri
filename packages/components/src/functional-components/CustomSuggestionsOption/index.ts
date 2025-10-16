@@ -1,2 +1,2 @@
-export { default } from './CustomSuggestionsOption';
 export * from './CustomSuggestionsOption';
+export { default } from './CustomSuggestionsOption';

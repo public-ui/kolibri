@@ -1,8 +1,8 @@
-import { Fragment, type FunctionalComponent as FC, h } from '@stencil/core';
+import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
+import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import type { SelectOption, StencilUnknown } from '../../../schema';
 import NativeOptionFc from '../NativeOption/NativeOption';
-import type { JSXBase } from '@stencil/core/internal';
 
 export type NativeOptionListProps = {
 	preKey?: string;

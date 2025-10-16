@@ -1,5 +1,5 @@
-import { access, readdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { access, readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { hasSearchableQuery, performFuzzySearch } from './fuzzy-search.js';

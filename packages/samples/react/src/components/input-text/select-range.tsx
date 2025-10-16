@@ -1,6 +1,6 @@
+import { KolButtonLink, KolInputText } from '@public-ui/react-v19';
 import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolButtonLink, KolInputText } from '@public-ui/react-v19';
 
 export const InputTextSelectRange = () => {
 	const textInput = React.useRef<HTMLKolInputTextElement>(null);

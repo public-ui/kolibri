@@ -1,5 +1,5 @@
-import type { EventCallback, EventValueOrEventCallback } from '../callbacks';
 import type { Callback } from '../../enums';
+import type { EventCallback, EventValueOrEventCallback } from '../callbacks';
 
 type InputTypeOnBlur = {
 	[Callback.onBlur]?: EventCallback<Event>;

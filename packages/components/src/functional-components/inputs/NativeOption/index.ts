@@ -1,2 +1,2 @@
-export { default } from './NativeOption';
 export * from './NativeOption';
+export { default } from './NativeOption';

@@ -2,8 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { Stringified } from '../types';
 import type { ColorContrast, WatchOptions } from '../utils';
-import { Log } from '../utils';
-import { a11yHint, createContrastColorPair, watchValidator } from '../utils';
+import { a11yHint, createContrastColorPair, Log, watchValidator } from '../utils';
 
 /**
  * Defines the colors for primary, secondary and neutral.

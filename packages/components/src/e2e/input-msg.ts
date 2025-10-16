@@ -1,5 +1,5 @@
-import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 import type { MsgPropType, Stringified } from '../schema';
 
 const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType> } & HTMLElement>(componentName: string) => {

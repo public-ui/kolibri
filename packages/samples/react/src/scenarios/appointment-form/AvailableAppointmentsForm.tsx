@@ -1,13 +1,13 @@
 import { Field, useFormikContext } from 'formik';
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { KolButton, KolForm, KolHeading, KolInputDate, KolInputRadio, KolSpin } from '@public-ui/react-v19';
 
 import { fetchAvailableTimes } from './appointmentService';
 
-import type { FormValues } from './AppointmentForm';
-import type { FieldProps, FieldInputProps } from 'formik';
 import type { Option } from '@public-ui/components';
+import type { FieldInputProps, FieldProps } from 'formik';
+import type { FormValues } from './AppointmentForm';
 import { createErrorList, focusErrorList } from './formUtils';
 
 export function AvailableAppointmentsForm() {

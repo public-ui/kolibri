@@ -1,8 +1,8 @@
+import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { SampleDescription } from '../SampleDescription';
-import { KolPopoverButton, KolToolbar, KolHeading } from '@public-ui/react-v19';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();

@@ -1,8 +1,8 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { PropCollapsible, PropHasCompactButton, PropHasIconsWhenExpanded, PropHideLabel, PropLabel } from '../props';
-import type { ButtonOrLinkOrTextWithChildrenProps, Stringified } from '../types';
 import type { PropOrientation } from '../props/orientation';
+import type { ButtonOrLinkOrTextWithChildrenProps, Stringified } from '../types';
 
 type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;

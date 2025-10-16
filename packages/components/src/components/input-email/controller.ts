@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { InputEmailProps, InputEmailWatches, MaxLengthBehaviorPropType, MultiplePropType } from '../../schema';
-import { validateMultiple, validateMaxLengthBehavior } from '../../schema';
+import { validateMaxLengthBehavior, validateMultiple } from '../../schema';
 
 import { InputTextEmailController } from '../input-text/controller';
 

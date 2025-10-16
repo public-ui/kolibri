@@ -1,13 +1,13 @@
-import type { BadgeAPI, BadgeStates, ButtonProps, FocusableElement, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
-import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolSpanFc } from '../../functional-components';
+import type { BadgeAPI, BadgeStates, ButtonProps, FocusableElement, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 import clsx from 'clsx';
+import { KolButtonWcTag } from '../../core/component-names';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({

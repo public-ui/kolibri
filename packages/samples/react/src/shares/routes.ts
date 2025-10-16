@@ -7,6 +7,7 @@ import { BREADCRUMB_ROUTES } from '../components/breadcrumb/routes';
 import { BUTTON_LINK_ROUTES } from '../components/button-link/routes';
 import { BUTTON_ROUTES } from '../components/button/routes';
 import { CARD_ROUTES } from '../components/card/routes';
+import { COMBOBOX_ROUTES } from '../components/combobox/routes';
 import { DETAILS_ROUTES } from '../components/details/routes';
 import { DRAWER_ROUTES } from '../components/drawer/routes';
 import { FORM_ROUTES } from '../components/form/routes';
@@ -33,8 +34,8 @@ import { PAGINATION_ROUTES } from '../components/pagination/routes';
 import { POPOVER_BUTTON_ROUTES } from '../components/popover-button/routes';
 import { PROGRESS_ROUTES } from '../components/progress/routes';
 import { QUOTE_ROUTES } from '../components/quote/routes';
-import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { SELECT_ROUTES } from '../components/select/routes';
+import { SINGLE_SELECT_ROUTES } from '../components/single-select/routes';
 import { SKIP_NAV_ROUTES } from '../components/skip-nav/routes';
 import { SPIN_ROUTES } from '../components/spin/routes';
 import { SPLIT_BUTTON_ROUTES } from '../components/split-button/routes';
@@ -43,11 +44,10 @@ import { TABS_ROUTES } from '../components/tabs/routes';
 import { TEXTAREA_ROUTES } from '../components/textarea/routes';
 import { TOAST_ROUTES } from '../components/toast/routes';
 import { TOOLBAR_ROUTES } from '../components/toolbar/routes';
-import { VERSION_ROUTES } from '../components/version/routes';
-import { Routes } from './types';
 import { TREE_ROUTES } from '../components/tree/routes';
-import { COMBOBOX_ROUTES } from '../components/combobox/routes';
-import { SINGLE_SELECT_ROUTES } from '../components/single-select/routes';
+import { VERSION_ROUTES } from '../components/version/routes';
+import { SCENARIO_ROUTES } from '../scenarios/routes';
+import { Routes } from './types';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,

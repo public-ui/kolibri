@@ -13,9 +13,9 @@ import type {
 } from '../../schema';
 import { setState, validateOptions, validateRequired } from '../../schema';
 
-import { InputController } from '../@deprecated/input/controller';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
+import { InputController } from '../@deprecated/input/controller';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, RadioOption<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {

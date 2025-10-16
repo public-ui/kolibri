@@ -2,20 +2,20 @@ import type { VNode } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolInputFc, { type InputProps } from '../../functional-components/inputs/Input';
 
+import SuggestionsFc from '../../functional-components/Suggestions';
 import {
+	type InputCheckboxStates,
 	type InputColorStates,
 	type InputEmailStates,
 	type InputFileStates,
 	type InputNumberStates,
 	type InputPasswordStates,
+	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
-	type InputCheckboxStates,
-	type InputRadioStates,
 	type MsgPropType,
 } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
-import SuggestionsFc from '../../functional-components/Suggestions';
 
 type InputState =
 	| InputTextStates

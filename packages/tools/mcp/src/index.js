@@ -1,7 +1,7 @@
 import { startServer } from './server.js';
 
 // Export functions for Vercel API
-export { handleApiRequest, AI_HINTS_KEY, AI_HINTS_MESSAGES } from './api-handler.js';
+export { AI_HINTS_KEY, AI_HINTS_MESSAGES, handleApiRequest } from './api-handler.js';
 export { buildSampleIndex, SampleIndex } from './sample-index.js';
 
 // Only start server when executed directly

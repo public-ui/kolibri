@@ -11,20 +11,20 @@ import { TaskRunner } from './runner/task-runner';
 import { commonTasks } from './runner/tasks';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
+import { getAssetTasks } from './runner/tasks/v1/assets';
 import { v2Tasks } from './runner/tasks/v2';
 import { v3Tasks } from './runner/tasks/v3';
 import { v4Tasks } from './runner/tasks/v4';
-import { getAssetTasks } from './runner/tasks/v1/assets';
 import {
 	getContentOfProjectPkgJson,
 	getPackageManagerCommand,
 	getVersionOfPublicUiComponents,
 	getVersionOfPublicUiKoliBriCli,
+	hasKoliBriTags,
 	logAndCreateError,
 	MODIFIED_FILES,
 	POST_MESSAGES,
 	setRemoveMode,
-	hasKoliBriTags,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
 

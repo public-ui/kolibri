@@ -5,6 +5,7 @@ import { RefactorPropertyLabelReplaceFalse } from '../common/RefactorPropertyLab
 import { RenameSlotNameTask } from '../common/RenameSlotNameTask';
 import { AbbrRenamePropertyAlignToTooltipAlign, AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
+import { AlertRenamePropertyHeadingToLabel } from './alert';
 import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel, BadgeRenamePropertyIconToIcons } from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
 import {
@@ -79,6 +80,7 @@ import {
 	SplitButtonRemovePropertyShowDropdown,
 	SplitButtonRenamePropertyShow,
 } from './split-button';
+import { SymbolRenamePropertyAriaLabelToLabel } from './symbol';
 import { TableRenamePropertyCaptionToLabel } from './table';
 import {
 	TabsRenamePropertyAriaLabelToLabel,
@@ -88,8 +90,6 @@ import {
 } from './tabs';
 import { ToastRemovePropertyNameShowDuration, ToastRenamePropertyHeadingToLabel } from './toast';
 import { VersionRenamePropertyVersionToLabel } from './version';
-import { AlertRenamePropertyHeadingToLabel } from './alert';
-import { SymbolRenamePropertyAriaLabelToLabel } from './symbol';
 
 export const v1Tasks: AbstractTask[] = [];
 v1Tasks.push(AbbrRenamePropertyAlignToTooltipAlign);

@@ -3,8 +3,8 @@ import type { PaginationProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import KolCollapsibleFc from '../../../functional-components/Collapsible';
-import { KolPagination } from '../shadow';
 import { KolPaginationWc } from '../component';
+import { KolPagination } from '../shadow';
 
 executeSnapshotTests<PaginationProps>(
 	KolPaginationTag,

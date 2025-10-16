@@ -45,9 +45,9 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import { validateTableSettings } from '../../schema/props/table-settings';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 

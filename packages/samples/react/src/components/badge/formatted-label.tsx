@@ -1,6 +1,6 @@
+import { KolBadge } from '@public-ui/react-v19';
 import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolBadge } from '@public-ui/react-v19';
 
 export const FormattedLabel = () => {
 	return (

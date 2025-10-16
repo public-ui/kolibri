@@ -1,6 +1,6 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
-import clsx from 'clsx';
 import type { JSXBase } from '@stencil/core/internal';
+import clsx from 'clsx';
 import type { HeadingLevel } from '../../schema';
 
 type HGroupProps = JSXBase.HTMLAttributes<HTMLElement>;

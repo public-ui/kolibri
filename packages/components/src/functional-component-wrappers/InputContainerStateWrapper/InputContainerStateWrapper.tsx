@@ -10,15 +10,15 @@ import {
 	type InputRangeStates,
 	type InputTextStates,
 	type KoliBriHorizontalIcons,
-	type TextareaStates,
-	type SelectStates,
 	type MsgPropType,
+	type SelectStates,
 	type Stringified,
+	type TextareaStates,
 } from '../../schema';
 
-import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
-import KolIconButtonFc from '../../functional-components/IconButton';
 import { isObject, isString } from 'lodash-es';
+import KolIconButtonFc from '../../functional-components/IconButton';
+import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
 
 type InputState =
 	| TextareaStates

@@ -1,10 +1,10 @@
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { HrefPropType, LabelPropType, QuoteAPI, QuotePropType, QuoteStates, QuoteVariantPropType } from '../../schema';
 import { showExpertSlot, validateLabel, validateQuote, validateVariantQuote, watchString } from '../../schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkTag } from '../../core/component-names';
 import clsx from 'clsx';
+import { KolLinkTag } from '../../core/component-names';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {

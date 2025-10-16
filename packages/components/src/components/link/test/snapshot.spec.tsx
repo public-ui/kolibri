@@ -2,8 +2,8 @@ import { KolLinkTag } from '../../../core/component-names';
 import type { LinkProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolLink } from '../shadow';
 import { KolLinkWc } from '../component';
+import { KolLink } from '../shadow';
 
 const baseObj = { _href: 'https://example.com', _icons: 'codicon codicon-home', _label: 'Label', _target: 'self' };
 

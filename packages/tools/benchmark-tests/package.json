@@ -48,7 +48,9 @@
 		"knip": "5.65.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
+		"prettier-plugin-organize-imports": "4.3.0",
 		"rimraf": "6.0.1",
-		"serve": "14.2.5"
+		"serve": "14.2.5",
+		"typescript": "5.9.3"
 	}
 }

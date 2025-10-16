@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AcceptPropType,
 	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
@@ -23,7 +24,6 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	AcceptPropType,
 } from '../../schema';
 
 import { KolButtonWcTag } from '../../core/component-names';
