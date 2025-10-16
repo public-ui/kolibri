@@ -2,35 +2,35 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from 'clsx';
 
-import {
-	type AccessKeyPropType,
-	type AutoCompletePropType,
-	type ButtonProps,
-	type DisabledPropType,
-	type FocusableElement,
-	type HasCounterPropType,
-	type HideLabelPropType,
-	type HideMsgPropType,
-	type HintPropType,
-	type IconsHorizontalPropType,
-	type IdPropType,
-	type InputTextAPI,
-	type InputTextStates,
-	type InputTextTypePropType,
-	type InputTypeOnDefault,
-	type LabelWithExpertSlotPropType,
-	type MaxLengthBehaviorPropType,
-	type MsgPropType,
-	type NamePropType,
-	type PlaceholderPropType,
-	type ReadOnlyPropType,
-	type RequiredPropType,
-	type ShortKeyPropType,
-	type SpellCheckPropType,
-	type Stringified,
-	type SuggestionsPropType,
-	type SyncValueBySelectorPropType,
-	type TooltipAlignPropType,
+import type {
+	AccessKeyPropType,
+	AutoCompletePropType,
+	ButtonProps,
+	DisabledPropType,
+	FocusableElement,
+	HasCounterPropType,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	IdPropType,
+	InputTextAPI,
+	InputTextStates,
+	InputTextTypePropType,
+	InputTypeOnDefault,
+	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
+	MsgPropType,
+	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+	ShortKeyPropType,
+	SpellCheckPropType,
+	Stringified,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -117,18 +117,16 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Get selection start of internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async selectionStart(): Promise<number | null | undefined> {
-		return this.inputRef?.selectionStart;
+	public async selectionStart() {
+		return Promise.resolve(this.inputRef?.selectionStart);
 	}
 
 	/**
 	 * Get selection end of internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async selectioconEnd(): Promise<number | null | undefined> {
-		return this.inputRef?.selectionEnd;
+	public async selectioconEnd() {
+		return Promise.resolve(this.inputRef?.selectionEnd);
 	}
 
 	/**
