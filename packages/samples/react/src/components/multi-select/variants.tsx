@@ -24,11 +24,8 @@ export const MultiSelectVariants: FC = () => {
 				_options={OPTIONS}
 				_value={value1}
 				_on={{
-					onChange: (event: React.MouseEvent) => {
-						const target = event.target;
-						if (target) {
-							setValue1(event.target.value as string[]);
-						}
+					onChange: (_event: Event, value: unknown) => {
+						setValue1(value as string[]);
 					},
 				}}
 			/>
@@ -38,8 +35,8 @@ export const MultiSelectVariants: FC = () => {
 				_options={OPTIONS}
 				_value={value2}
 				_on={{
-					onChange: (event: React.MouseEvent) => {
-						setValue2(event.target.value as string[]);
+					onChange: (_event: Event, value: unknown) => {
+						setValue2(value as string[]);
 					},
 				}}
 			/>
@@ -50,11 +47,8 @@ export const MultiSelectVariants: FC = () => {
 				_value={value3}
 				_maxSelections={2}
 				_on={{
-					onChange: (event: React.MouseEvent) => {
-						const target = event.target;
-						if (target) {
-							setValue3(event.target.value as string[]);
-						}
+					onChange: (_event: Event, value: unknown) => {
+						setValue3(value as string[]);
 					},
 				}}
 			/>
@@ -65,11 +59,8 @@ export const MultiSelectVariants: FC = () => {
 				_value={value4}
 				_hideClearButton={true}
 				_on={{
-					onChange: (event: React.MouseEvent) => {
-						const target = event.target;
-						if (target) {
-							setValue4(event.target.value as string[]);
-						}
+					onChange: (_event: Event, value: unknown) => {
+						setValue4(value as string[]);
 					},
 				}}
 			/>

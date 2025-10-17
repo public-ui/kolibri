@@ -60,7 +60,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByText('East')).toBeVisible();
 			await expect(page.getByText('West')).toBeVisible();
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['E', 'W']);
 		});
 
@@ -77,7 +77,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByText('East')).toHaveCount(0);
 			await expect(page.getByText('West')).toBeVisible();
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['W']);
 		});
 
@@ -87,12 +87,12 @@ test.describe(COMPONENT_NAME, () => {
 			await page.getByRole('button').click();
 			await page.getByRole('listbox').getByText('East').click({ force: true });
 
-			let value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			let value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['E']);
 
 			await page.getByRole('listbox').getByText('East').click({ force: true });
 
-			value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual([]);
 		});
 
@@ -106,7 +106,7 @@ test.describe(COMPONENT_NAME, () => {
 			const clearButton = page.getByTestId('multi-select-delete');
 			await clearButton.click({ force: true });
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual([]);
 
 			await expect(page.getByText('East')).toHaveCount(0);
@@ -121,7 +121,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.getByRole('listbox').getByText('West').click({ force: true });
 			await page.getByRole('listbox').getByText('North').click({ force: true });
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['E', 'W']);
 
 			await expect(page.getByText('North')).toHaveCount(0);
@@ -138,7 +138,7 @@ test.describe(COMPONENT_NAME, () => {
 			await input.click();
 			await input.press('Backspace');
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['E']);
 
 			await expect(page.getByText('West')).toHaveCount(0);
@@ -154,13 +154,13 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['S']);
 
 			// Press Enter again to deselect
 			await page.keyboard.press('Enter');
 
-			const valueAfterDeselect = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const valueAfterDeselect = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(valueAfterDeselect).toEqual([]);
 		});
 
@@ -177,7 +177,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value);
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['W']);
 		});
 
