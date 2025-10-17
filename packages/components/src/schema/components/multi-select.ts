@@ -10,15 +10,15 @@ import type {
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMaxSelections,
 	PropMsg,
 	PropName,
 	PropOptions,
 	PropRequired,
+	PropRows,
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropRows,
-	PropMaxSelections,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 

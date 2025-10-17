@@ -1,11 +1,11 @@
 import type {
+	MultiSelectProps,
+	MultiSelectWatches,
 	Option,
 	OptionsPropType,
 	PlaceholderPropType,
 	RequiredPropType,
 	SelectOption,
-	MultiSelectProps,
-	MultiSelectWatches,
 	StencilUnknown,
 	W3CInputValue,
 } from '../../schema';

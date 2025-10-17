@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { KolMultiSelect } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import { KolMultiSelect } from '@public-ui/react';
+import React, { useState } from 'react';
 
 const OPTIONS = [
 	{ label: 'Frau', value: 'Frau' },

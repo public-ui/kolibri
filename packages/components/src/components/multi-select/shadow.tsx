@@ -10,6 +10,8 @@ import type {
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MultiSelectAPI,
+	MultiSelectStates,
 	NamePropType,
 	Option,
 	OptionsPropType,
@@ -17,8 +19,6 @@ import type {
 	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
-	MultiSelectAPI,
-	MultiSelectStates,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -26,7 +26,7 @@ import type {
 } from '../../schema';
 
 import clsx from 'clsx';
-import { KolIconTag, KolBadgeTag } from '../../core/component-names';
+import { KolBadgeTag, KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';

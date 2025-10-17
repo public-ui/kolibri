@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import type { FC } from 'react';
+import React from 'react';
 import { FormWrap } from '../FormWrap';
 import { SampleDescription } from '../SampleDescription';
 import { MultiSelectVariants } from './variants';
@@ -13,7 +13,6 @@ export const MultiSelectBasic: FC = () => {
 					individually.
 				</p>
 			</SampleDescription>
-
 			<FormWrap RefComponent={MultiSelectVariants} showButtons={false} />
 		</>
 	);
