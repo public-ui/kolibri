@@ -20,8 +20,8 @@
 	:host {
 		input[type='date'],
 		input[type='datetime-local'],
-		input[type='month'],
 		input[type='time'],
+		input[type='month'],
 		input[type='week'] {
 			content: 'native-icon-focused';
 		}
