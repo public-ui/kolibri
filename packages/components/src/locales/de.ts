@@ -54,6 +54,8 @@ export default {
 	'show-password': 'einblenden',
 	'hide-password': 'ausblenden',
 	'no-results-message': 'Keine Ergebnisse gefunden.',
+	'selected-options': 'Selektierte elemente',
+	'remove-selection': 'Auswahl aufheben',
 	'delete-selection': 'Auswahl entfernen',
 	'filename-text': 'Datei auswählen oder hier ablegen...',
 	'data-browse-text': 'Datei auswählen',

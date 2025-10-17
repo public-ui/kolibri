@@ -58,8 +58,8 @@ export class KolMultiSelect implements MultiSelectAPI {
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
-	private readonly translateSelectedOptions = translate('kol-selected-options' as any);
-	private readonly translateRemove = translate('kol-remove-selection' as any);
+	private readonly translateSelectedOptions = translate('kol-selected-options');
+	private readonly translateRemove = translate('kol-remove-selection');
 
 	/**
 	 * Returns the current value.
@@ -400,7 +400,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 												if (el) this.refOptions[index] = el;
 											}}
 											selected={isSelected}
-											onClick={(_event: Event) => {
+											onClick={() => {
 												if (canSelect || isSelected) {
 													this.selectOption(option as Option<string>);
 													this.refInput?.focus();
@@ -441,7 +441,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Listen('focusout', { target: 'window' })
 	public handleFocusOut() {
 		setTimeout(() => {
-			if (!this.host?.contains(document.activeElement)) {
+			if (!this.host!.contains(document.activeElement)) {
 				this.onBlur();
 			}
 		}, 0);
