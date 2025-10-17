@@ -22,14 +22,17 @@
 
 	.kol-multi-select {
 		&__badges {
+			background-color: var(--kolibri-background-color);
+			border-radius: to-rem(4);
 			display: flex;
-			flex-wrap: wrap;
-			gap: to-rem(8);
+
 			margin-bottom: to-rem(8);
 			padding: to-rem(8);
+
+			gap: to-rem(8);
+			flex-wrap: wrap;
+
 			border: to-rem(1) solid var(--kolibri-border-color);
-			border-radius: to-rem(4);
-			background-color: var(--kolibri-background-color);
 
 			kol-badge {
 				flex-shrink: 0;
@@ -38,8 +41,8 @@
 
 		&__group {
 			display: flex;
-			align-items: center;
 			gap: to-rem(8);
+			align-items: center;
 		}
 
 		&__input {
@@ -47,8 +50,8 @@
 		}
 
 		&__delete {
-			cursor: pointer;
 			flex-shrink: 0;
+			cursor: pointer;
 
 			&--disabled {
 				cursor: not-allowed;
@@ -69,8 +72,8 @@
 
 		.kol-custom-suggestions-option {
 			&--selected {
-				background-color: var(--kolibri-color-selected);
 				color: var(--kolibri-color-selected-text);
+				background-color: var(--kolibri-color-selected);
 
 				&:hover {
 					background-color: var(--kolibri-color-selected-hover);
