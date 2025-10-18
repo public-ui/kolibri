@@ -5,6 +5,7 @@ import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil-community/postcss';
 import { sass } from '@stencil/sass';
+import { svelteOutputTarget } from '@stencil/svelte-output-target';
 import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
@@ -210,6 +211,12 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			proxiesFile: '../adapters/solid/src/index.ts',
+			includeDefineCustomElements: false,
+		}),
+		svelteOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			proxiesFile: '../adapters/svelte/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
 		vueOutputTarget({

@@ -69,6 +69,8 @@ If errors occur in our packages, we would like to ask you to create an issue und
 
 With the `migrate` command you can migrate your project to the latest version of `KoliBri`.
 
+> **Hint:** The migration tool currently supports React projects (JSX/TSX), Vue single-file components, and HTML/XHTML template-based projects such as Angular applications or vanilla custom elements. Support for additional project types is planned.
+
 Actually the following migration tasks from version 1 to version 2 are available:
 
 - Component renaming ✓

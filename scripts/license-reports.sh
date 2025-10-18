@@ -8,6 +8,7 @@ npx license-report --output=html --package=packages/adapters/preact/package.json
 npx license-report --output=html --package=packages/adapters/react/package.json >> license-reports/adapter-react.html
 npx license-report --output=html --package=packages/adapters/react-standalone/package.json >> license-reports/adapter-react-standalone.html
 npx license-report --output=html --package=packages/adapters/solid/package.json >> license-reports/adapter-solid.html
+npx license-report --output=html --package=packages/adapters/svelte/package.json >> license-reports/adapter-svelte.html
 npx license-report --output=html --package=packages/adapters/vue/package.json >> license-reports/adapter-vue.html
 npx license-report --output=html --package=packages/components/package.json >> license-reports/components.html
 npx license-report --output=html --package=packages/samples/angular/package.json >> license-reports/sample-angular.html

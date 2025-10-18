@@ -11,6 +11,7 @@ npm dist-tag $1 @public-ui/react-hook-form-adapter@$2 $3
 npm dist-tag $1 @public-ui/react-v19@$2 $3
 npm dist-tag $1 @public-ui/react-standalone@$2 $3
 npm dist-tag $1 @public-ui/solid@$2 $3
+npm dist-tag $1 @public-ui/svelte@$2 $3
 npm dist-tag $1 @public-ui/vue@$2 $3
 npm dist-tag $1 @public-ui/components@$2 $3
 npm dist-tag $1 @public-ui/sample-react@$2 $3

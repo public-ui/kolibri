@@ -14,6 +14,8 @@ This means that components, features or functionalities may be removed and techn
   Before the migration takes place, we recommend checking in an executable version so that there are no uncommitted changes to the source code to be migrated. This means that all changes can be easily tracked and checked during and after the migration.
 - **Migrationstool:**<br/>
   We provide a migration tool that generally supports the migration of source code with KoliBri. This tool is able to migrate most breaking changes automatically. Further information can be found in the [Tool-Dokumentation (EN)](https://www.npmjs.com/package/@public-ui/kolibri-cli).
+  > [!NOTE]
+  > The migration tool currently covers React projects (`.jsx`/`.tsx`), Vue single-file components (`.vue`), and HTML/XHTML template projects (for example Angular templates or vanilla custom elements).
 - **Help and feedback:**<br/>
   If there are any problems with the migration, we are happy to help. Please open an [Issue on GitHub](https://github.com/public-ui/kolibri/issues/new/choose).
 
