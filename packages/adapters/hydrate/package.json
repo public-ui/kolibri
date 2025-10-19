@@ -44,13 +44,19 @@
 		"wcag",
 		"hydrate"
 	],
-	"scripts": {
-		"build": "rimraf dist/package.json"
-	},
-	"devDependencies": {
-		"@public-ui/components": "workspace:*",
-		"rimraf": "6.0.1"
-	},
+        "scripts": {
+                "build": "rimraf dist/package.json",
+                "test": "mocha \"test/**/*.spec.js\" --require ./test/setup.js --require mocha-snapshots --timeout 20000",
+                "test:update": "cross-env UPDATE=1 mocha \"test/**/*.spec.js\" --require ./test/setup.js --require mocha-snapshots --timeout 20000"
+        },
+        "devDependencies": {
+                "@public-ui/components": "workspace:*",
+                "chai": "4.5.0",
+                "cross-env": "10.1.0",
+                "mocha": "11.7.4",
+                "mocha-snapshots": "4.2.0",
+                "rimraf": "6.0.1"
+        },
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"
 	},
