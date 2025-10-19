@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import process from 'node:process';
 
+import { Command, CommanderError } from 'commander';
+
+import packageJson from '../package.json' assert { type: 'json' };
 import { createHydrateServer } from './server.js';
 import type { HydrateServerOptions } from './types.js';
 
@@ -9,172 +12,118 @@ const DEFAULT_GRPC_PORT = 50051;
 const DEFAULT_ROUTE = '/render';
 const DEFAULT_HOST = '0.0.0.0';
 
-type ParsedArgs = {
-	restPort?: number;
-	restHost?: string;
-	grpcPort?: number;
-	grpcHost?: string;
-	route?: string;
-	logLevel?: string;
-	quiet?: boolean;
-	help?: boolean;
+type CliOptions = {
+        restPort?: number;
+        restHost?: string;
+        grpcPort?: number;
+        grpcHost?: string;
+        host?: string;
+        route?: string;
+        logLevel?: string;
+        quiet?: boolean;
 };
 
-const parsePort = (value: string, flag: string): number => {
-	const port = Number.parseInt(value, 10);
+const parsePort = (
+        value: string,
+        flag: string,
+        errorFactory: (message: string) => Error = (message) =>
+                new CommanderError(1, 'InvalidOptionArgument', message)
+): number => {
+        const port = Number.parseInt(value, 10);
 
-	if (!Number.isInteger(port) || port < 0 || port > 65535) {
-		throw new Error(`Invalid value for ${flag}: ${value}`);
-	}
+        if (!Number.isInteger(port) || port < 0 || port > 65535) {
+                throw errorFactory(`Invalid value for ${flag}: ${value}`);
+        }
 
-	return port;
-};
-
-const parseArgs = (argv: string[]): ParsedArgs => {
-	const parsed: ParsedArgs = {};
-
-	for (let index = 0; index < argv.length; index += 1) {
-		const arg = argv[index];
-
-		switch (arg) {
-			case '--help':
-			case '-h': {
-				parsed.help = true;
-				break;
-			}
-			case '--rest-port': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--rest-port requires a value');
-				}
-
-				parsed.restPort = parsePort(value, '--rest-port');
-				break;
-			}
-			case '--grpc-port': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--grpc-port requires a value');
-				}
-
-				parsed.grpcPort = parsePort(value, '--grpc-port');
-				break;
-			}
-			case '--rest-host': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--rest-host requires a value');
-				}
-
-				parsed.restHost = value;
-				break;
-			}
-			case '--grpc-host': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--grpc-host requires a value');
-				}
-
-				parsed.grpcHost = value;
-				break;
-			}
-			case '--host': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--host requires a value');
-				}
-
-				parsed.restHost = parsed.restHost ?? value;
-				parsed.grpcHost = parsed.grpcHost ?? value;
-				break;
-			}
-			case '--route': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--route requires a value');
-				}
-
-				parsed.route = value.startsWith('/') ? value : `/${value}`;
-				break;
-			}
-			case '--log-level': {
-				const value = argv[++index];
-				if (!value) {
-					throw new Error('--log-level requires a value');
-				}
-
-				parsed.logLevel = value;
-				break;
-			}
-			case '--quiet': {
-				parsed.quiet = true;
-				break;
-			}
-			default: {
-				if (arg.startsWith('-')) {
-					throw new Error(`Unknown option: ${arg}`);
-				}
-				break;
-			}
-		}
-	}
-
-	return parsed;
+        return port;
 };
 
 const readEnvPort = (key: string): number | undefined => {
-	const value = process.env[key];
-	return value ? parsePort(value, key) : undefined;
+        const value = process.env[key];
+
+        if (!value) {
+                return undefined;
+        }
+
+        return parsePort(value, key, (message) => new Error(message));
 };
 
-const printHelp = () => {
-	const helpMessage = `Usage: kolibri-hydrate-server [options]
+const program = new Command();
 
-Options:
-  -h, --help             Show this help text
-      --host <host>      Hostname for both REST and gRPC servers
-      --rest-host <host> Hostname for the REST server (default: ${DEFAULT_HOST})
-      --rest-port <port> Port for the REST server (default: ${DEFAULT_REST_PORT})
-      --grpc-host <host> Hostname for the gRPC server (default: ${DEFAULT_HOST})
-      --grpc-port <port> Port for the gRPC server (default: ${DEFAULT_GRPC_PORT})
-      --route <path>      REST endpoint path (default: ${DEFAULT_ROUTE})
-      --log-level <lvl>  Set Fastify logger level
-      --quiet            Disable the Fastify logger`;
+program
+        .name('kolibri-hydrate-server')
+        .description('High-performance REST and gRPC server for hydrating KoliBri components')
+        .version(packageJson.version as string, '-v, --version', 'Display version number')
+        .helpOption('-h, --help', 'Show this help text')
+        .showHelpAfterError()
+        .allowExcessArguments(false)
+        .option('--host <host>', 'Hostname for both REST and gRPC servers')
+        .option('--rest-host <host>', `Hostname for the REST server (default: ${DEFAULT_HOST})`)
+        .option('--rest-port <port>', `Port for the REST server (default: ${DEFAULT_REST_PORT})`, (value) =>
+                parsePort(value, '--rest-port')
+        )
+        .option('--grpc-host <host>', `Hostname for the gRPC server (default: ${DEFAULT_HOST})`)
+        .option('--grpc-port <port>', `Port for the gRPC server (default: ${DEFAULT_GRPC_PORT})`, (value) =>
+                parsePort(value, '--grpc-port')
+        )
+        .option('--route <path>', `REST endpoint path (default: ${DEFAULT_ROUTE})`)
+        .option('--log-level <lvl>', 'Set Fastify logger level')
+        .option('--quiet', 'Disable the Fastify logger');
 
-	console.log(helpMessage);
-};
+program.exitOverride();
 
 const main = async () => {
-	let parsedArgs: ParsedArgs;
+        let parsedArgs: CliOptions;
 
-	try {
-		parsedArgs = parseArgs(process.argv.slice(2));
-	} catch (error) {
-		console.error(error instanceof Error ? error.message : String(error));
-		process.exitCode = 1;
-		return;
-	}
+        try {
+                program.parse(process.argv);
+                parsedArgs = program.opts<CliOptions>();
+        } catch (error) {
+                if (error instanceof CommanderError) {
+                        if (error.code === 'commander.helpDisplayed' || error.code === 'commander.version') {
+                                return;
+                        }
 
-	if (parsedArgs.help) {
-		printHelp();
-		return;
-	}
+                        process.exitCode = error.exitCode;
+                        return;
+                }
 
-	const envRestPort = readEnvPort('KOLIBRI_HYDRATE_REST_PORT');
-	const envGrpcPort = readEnvPort('KOLIBRI_HYDRATE_GRPC_PORT');
-	const envRestHost = process.env.KOLIBRI_HYDRATE_REST_HOST;
-	const envGrpcHost = process.env.KOLIBRI_HYDRATE_GRPC_HOST;
-	const envRoute = process.env.KOLIBRI_HYDRATE_ROUTE;
+                throw error;
+        }
+
+        if (parsedArgs.host) {
+                parsedArgs.restHost = parsedArgs.restHost ?? parsedArgs.host;
+                parsedArgs.grpcHost = parsedArgs.grpcHost ?? parsedArgs.host;
+        }
+
+        let envRestPort: number | undefined;
+        let envGrpcPort: number | undefined;
+
+        try {
+                envRestPort = readEnvPort('KOLIBRI_HYDRATE_REST_PORT');
+                envGrpcPort = readEnvPort('KOLIBRI_HYDRATE_GRPC_PORT');
+        } catch (error) {
+                console.error(error instanceof Error ? error.message : String(error));
+                process.exitCode = 1;
+                return;
+        }
+
+        const envRestHost = process.env.KOLIBRI_HYDRATE_REST_HOST;
+        const envGrpcHost = process.env.KOLIBRI_HYDRATE_GRPC_HOST;
+        const envRoute = process.env.KOLIBRI_HYDRATE_ROUTE;
+        const normalizedEnvRoute = envRoute ? (envRoute.startsWith('/') ? envRoute : `/${envRoute}`) : undefined;
 
 	const options: HydrateServerOptions = {
 		restHost: parsedArgs.restHost ?? envRestHost ?? DEFAULT_HOST,
 		restPort: parsedArgs.restPort ?? envRestPort ?? DEFAULT_REST_PORT,
-		restRoute: parsedArgs.route ?? envRoute ?? DEFAULT_ROUTE,
-		grpcHost: parsedArgs.grpcHost ?? envGrpcHost ?? DEFAULT_HOST,
-		grpcPort: parsedArgs.grpcPort ?? envGrpcPort ?? DEFAULT_GRPC_PORT,
-	};
+                restRoute: (parsedArgs.route?.startsWith('/') ? parsedArgs.route : parsedArgs.route ? `/${parsedArgs.route}` : undefined) ??
+                        normalizedEnvRoute ??
+                        DEFAULT_ROUTE,
+                grpcHost: parsedArgs.grpcHost ?? envGrpcHost ?? DEFAULT_HOST,
+                grpcPort: parsedArgs.grpcPort ?? envGrpcPort ?? DEFAULT_GRPC_PORT,
+        };
 
-	if (parsedArgs.quiet ?? process.env.KOLIBRI_HYDRATE_QUIET === 'true') {
+        if (parsedArgs.quiet ?? process.env.KOLIBRI_HYDRATE_QUIET === 'true') {
 		options.logger = false;
 	} else if (parsedArgs.logLevel ?? process.env.KOLIBRI_HYDRATE_LOG_LEVEL) {
 		options.logger = { level: parsedArgs.logLevel ?? process.env.KOLIBRI_HYDRATE_LOG_LEVEL };

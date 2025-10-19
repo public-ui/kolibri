@@ -1125,6 +1125,9 @@ importers:
       '@public-ui/hydrate':
         specifier: workspace:*
         version: link:../../adapters/hydrate
+      commander:
+        specifier: 14.0.1
+        version: 14.0.1
       fastify:
         specifier: 5.2.1
         version: 5.2.1

@@ -41,6 +41,7 @@ kolibri-hydrate-server [options]
 | `--log-level <level>`  | Fastify logger level (`info`, `warn`, …)                | `info`    |
 | `--quiet`              | Disable the Fastify logger                              | `false`   |
 | `--help`               | Show CLI help                                           | –         |
+| `--version`            | Display version number                                  | –         |
 
 Environment variables can also be used:
 
@@ -48,6 +49,9 @@ Environment variables can also be used:
 - `KOLIBRI_HYDRATE_REST_HOST`
 - `KOLIBRI_HYDRATE_GRPC_PORT`
 - `KOLIBRI_HYDRATE_GRPC_HOST`
+- `KOLIBRI_HYDRATE_ROUTE`
+- `KOLIBRI_HYDRATE_LOG_LEVEL`
+- `KOLIBRI_HYDRATE_QUIET`
 
 ### REST Example
 
