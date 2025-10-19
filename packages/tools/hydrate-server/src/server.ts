@@ -1,3 +1,5 @@
+import { createRequire } from 'node:module';
+
 import { loadPackageDefinition, Server, ServerCredentials, status, type handleUnaryCall } from '@grpc/grpc-js';
 import { load } from '@grpc/proto-loader';
 import type { FastifyInstance } from 'fastify';
@@ -66,19 +68,84 @@ const normalizeOptionsInput = (input: unknown) => {
 	return input;
 };
 
+const require = createRequire(import.meta.url);
+
+const isHydrateRenderer = (value: unknown): value is HydrateRenderer => typeof value === 'function';
+
+const isResolutionError = (error: unknown, codes: string[]): error is NodeJS.ErrnoException => {
+	if (!error || !(error instanceof Error)) {
+		return false;
+	}
+
+	const candidateCode = (error as Partial<NodeJS.ErrnoException>).code;
+
+	return typeof candidateCode === 'string' && codes.includes(candidateCode);
+};
+
+const extractRenderer = (module: unknown): HydrateRenderer | null => {
+	if (!module) {
+		return null;
+	}
+
+	const asRecord = module as Record<string, unknown>;
+	const directExport = asRecord.renderToString;
+	if (isHydrateRenderer(directExport)) {
+		return directExport;
+	}
+
+	const defaultExport = asRecord.default;
+
+	if (isHydrateRenderer(defaultExport)) {
+		return defaultExport;
+	}
+
+	if (defaultExport && typeof defaultExport === 'object') {
+		const nestedExport = (defaultExport as Record<string, unknown>).renderToString;
+
+		if (isHydrateRenderer(nestedExport)) {
+			return nestedExport;
+		}
+	}
+
+	return null;
+};
+
+const loadHydrateRenderer = async (): Promise<HydrateRenderer> => {
+	try {
+		const hydrate = await import('@public-ui/hydrate');
+		const renderer = extractRenderer(hydrate);
+
+		if (renderer) {
+			return renderer;
+		}
+	} catch (error) {
+		if (!isResolutionError(error, ['ERR_MODULE_NOT_FOUND', 'ERR_PACKAGE_PATH_NOT_EXPORTED'])) {
+			throw error;
+		}
+	}
+
+	try {
+		const hydrate = require('@public-ui/hydrate');
+		const renderer = extractRenderer(hydrate);
+
+		if (renderer) {
+			return renderer;
+		}
+	} catch (error) {
+		if (!isResolutionError(error, ['MODULE_NOT_FOUND', 'ERR_PACKAGE_PATH_NOT_EXPORTED'])) {
+			throw error;
+		}
+	}
+
+	throw new Error('Unable to resolve renderToString from @public-ui/hydrate. Ensure the package is installed and built before starting the hydrate server.');
+};
+
 const resolveRenderer = async (renderer?: HydrateRenderer): Promise<HydrateRenderer> => {
 	if (renderer) {
 		return renderer;
 	}
 
-	const hydrate = await import('@public-ui/hydrate');
-	const candidate = (hydrate as Partial<{ renderToString: HydrateRenderer }>).renderToString;
-
-	if (typeof candidate !== 'function') {
-		throw new Error('Unable to load renderToString from @public-ui/hydrate');
-	}
-
-	return candidate as HydrateRenderer;
+	return loadHydrateRenderer();
 };
 
 const createRestHandler =
