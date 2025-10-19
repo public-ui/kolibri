@@ -57,9 +57,6 @@
 		"mocha-snapshots": "4.2.0",
 		"rimraf": "6.0.1"
 	},
-	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
-	},
 	"sideEffects": false,
 	"type": "commonjs",
 	"exports": {
