@@ -15,4 +15,5 @@ packages:
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/mcp
+  - packages/tools/hydrate-server
   - packages/tools/visual-tests
