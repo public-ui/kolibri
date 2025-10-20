@@ -3,6 +3,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { expect } = require('chai');
+const { hydrateOptions, timeouts } = require('./test-config');
+const { extractBodyContent } = require('./test-utils');
 
 const distPath = path.resolve(__dirname, '..', 'dist', 'index.js');
 
@@ -18,22 +20,6 @@ const snapshotHtml =
 	'<kol-button _label="Snapshot Button" _variant="primary"></kol-button><kol-alert _heading="Snapshot alert" _variant="info">Snapshot content</kol-alert>';
 const snapshotDocument =
 	'<!DOCTYPE html><html lang="de" dir="ltr"><head><meta charset="utf-8"><title>Hydration Snapshot</title></head><body>' + snapshotHtml + '</body></html>';
-
-const hydrateOptions = {
-	buildId: 'snapshot-build',
-	canonicalUrl: 'https://snapshot.test/components',
-	clientHydrateAnnotations: true,
-	direction: 'ltr',
-	language: 'de',
-	prettyHtml: true,
-	removeAttributeQuotes: false,
-	removeBooleanAttributeQuotes: false,
-	removeEmptyAttributes: false,
-	removeHtmlComments: false,
-	removeUnusedStyles: false,
-	resourcesUrl: 'https://cdn.snapshot.test/components/',
-	title: 'Hydration Snapshot',
-};
 
 const factoryOptions = {
 	...hydrateOptions,
@@ -59,7 +45,7 @@ const extractBodyContent = (html) => {
 };
 
 describe('Hydration adapter snapshots', function () {
-	this.timeout(20000);
+	this.timeout(timeouts.hydration);
 
 	it('renders markup to a deterministic HTML snapshot', async () => {
 		const result = await renderToString(snapshotHtml, hydrateOptions);
