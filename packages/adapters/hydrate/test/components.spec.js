@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { expect } = require('chai');
-const { hydrateOptions, timeouts } = require('./test-config');
+const { hydrateOptions } = require('./test-config');
 const { extractBodyContent } = require('./test-utils');
 
 // Read custom-elements.json from @public-ui/components package
@@ -97,10 +97,7 @@ const skipComponents = new Set([
 	'kol-version',
 ]);
 
-describe('Component hydration snapshots', function () {
-	// Default timeout for the suite
-	this.timeout(timeouts.default);
-
+describe('Component hydration snapshots', () => {
 	customElements.tags.forEach((componentMeta) => {
 		const { name } = componentMeta;
 
@@ -122,15 +119,7 @@ describe('Component hydration snapshots', function () {
 			return;
 		}
 
-		it(`renders ${name} to HTML snapshot`, async function () {
-			/**
-			 * PERFORMANCE REQUIREMENT:
-			 * Each component must render within 5 seconds maximum.
-			 * This ensures high-performance server-side rendering.
-			 * Components that exceed this timeout need optimization.
-			 */
-			this.timeout(5000); // 5 seconds max per component
-
+		it(`renders ${name} to HTML snapshot`, async () => {
 			const html = generateComponentHTML(componentMeta);
 			const result = await renderToString(html, hydrateOptions);
 

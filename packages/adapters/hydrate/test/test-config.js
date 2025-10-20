@@ -20,10 +20,11 @@ const hydrateOptions = {
 
 /**
  * Test timeout configuration (in milliseconds)
+ * Global default is 5000ms (set in .mocharc.json)
+ * Only override for tests that need more time.
  */
 const timeouts = {
-	default: 5000, // Default timeout for test suites
-	hydration: 20000, // Timeout for full hydration tests
+	hydration: 20000, // Hydration tests need more time for complex operations
 };
 
 module.exports = {

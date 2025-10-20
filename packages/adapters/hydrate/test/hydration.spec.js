@@ -39,11 +39,6 @@ const collectStream = (readable) =>
 		readable.on('error', reject);
 	});
 
-const extractBodyContent = (html) => {
-	const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/);
-	return bodyMatch ? bodyMatch[1].trim() : html;
-};
-
 describe('Hydration adapter snapshots', function () {
 	this.timeout(timeouts.hydration);
 
