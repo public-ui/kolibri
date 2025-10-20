@@ -60,9 +60,10 @@ type KolEventHandlers = {
 	onBlur?: (event: any) => void;
 };
 
-type ControllerBaseProps = {
+// Use generic constraint that makes control compatible with any field values
+type ControllerBaseProps<TControl = Control<any>> = {
 	name: string;
-	control: Control<any>;
+	control: TControl;
 	rules?: any;
 	defaultValue?: any;
 	shouldUnregister?: boolean;
@@ -73,10 +74,10 @@ type ControllerBaseProps = {
 type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T extends React.ForwardRefExoticComponent<infer P> ? P : never;
 
 // Controller component type
-type ControllerComponent<P> = React.ForwardRefExoticComponent<P & ControllerBaseProps & RefAttributes<HTMLElement>>;
+type ControllerComponent<P> = React.ForwardRefExoticComponent<P & ControllerBaseProps<any> & RefAttributes<HTMLElement>>;
 
 function withController<T extends React.ComponentType<any>>(Component: T, valueProp?: string): ControllerComponent<ExtractProps<T>> {
-	const ControllerWrapper = React.forwardRef<HTMLElement, ExtractProps<T> & ControllerBaseProps>((props, ref) => {
+	const ControllerWrapper = React.forwardRef<HTMLElement, ExtractProps<T> & ControllerBaseProps<any>>((props, ref) => {
 		const { name, control, rules, defaultValue, shouldUnregister, disabled, ...componentProps } = props;
 
 		return (
