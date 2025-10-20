@@ -293,6 +293,7 @@ export const createHydrateServer = async (options: HydrateServerOptions = {}): P
 
 				boundGrpcPort = boundPort;
 				grpcEndpoint = `${grpcHost}:${boundPort}`;
+				grpcServer.start();
 				resolve();
 			});
 		});

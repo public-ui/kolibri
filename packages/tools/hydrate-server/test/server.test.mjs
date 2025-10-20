@@ -63,17 +63,14 @@ test('REST and gRPC endpoints return hydrated markup', async (t) => {
 	const client = new hydratePackage.HydrateRenderer(grpcEndpoint, credentials.createInsecure());
 
 	const grpcResponse = await new Promise((resolve, reject) => {
-		client.renderHtml(
-			{ html: '<kol-button _label="gRPC"></kol-button>' },
-			(error, response) => {
-				if (error) {
-					reject(error);
-					return;
-				}
-
-				resolve(response);
+		client.renderHtml({ html: '<kol-button _label="gRPC"></kol-button>' }, (error, response) => {
+			if (error) {
+				reject(error);
+				return;
 			}
-		);
+
+			resolve(response);
+		});
 	});
 
 	client.close();
