@@ -1,0 +1,71 @@
+{
+        "name": "@public-ui/hydrate-server",
+        "version": "3.0.7-rc.3",
+        "license": "EUPL-1.2",
+        "homepage": "https://public-ui.github.io",
+        "repository": {
+                "type": "git",
+                "url": "https://github.com/public-ui/kolibri"
+        },
+        "bugs": {
+                "url": "https://github.com/public-ui/kolibri/issues",
+                "email": "kolibri@itzbund.de"
+        },
+        "author": {
+                "name": "Informationstechnikzentrum Bund",
+                "email": "kolibri@itzbund.de"
+        },
+        "type": "module",
+        "private": false,
+        "description": "High-performance REST and gRPC server that hydrates individual KoliBri components using @public-ui/hydrate.",
+        "keywords": [
+                "kolibri",
+                "hydrate",
+                "design-system",
+                "rest",
+                "grpc",
+                "server-side-rendering",
+                "ssr"
+        ],
+        "bin": {
+                "kolibri-hydrate-server": "dist/cli.mjs"
+        },
+        "exports": {
+                ".": {
+                        "types": "./dist/index.d.ts",
+                        "import": "./dist/index.mjs",
+                        "require": "./dist/index.cjs"
+                },
+                "./proto/render.proto": "./dist/proto/render.proto"
+        },
+        "main": "./dist/index.cjs",
+        "module": "./dist/index.mjs",
+        "types": "./dist/index.d.ts",
+        "files": [
+                "dist",
+                "README.md"
+        ],
+        "scripts": {
+                "build": "unbuild",
+                "format": "prettier --check src test",
+                "pretest": "pnpm build",
+                "test": "node --test \"test/**/*.mjs\"",
+                "test-update": "node --test \"test/**/*.mjs\""
+        },
+        "dependencies": {
+                "@grpc/grpc-js": "1.12.4",
+                "@grpc/proto-loader": "0.7.13",
+                "@public-ui/hydrate": "workspace:*",
+                "commander": "14.0.1",
+                "fastify": "5.2.1"
+        },
+        "devDependencies": {
+                "@typescript-eslint/eslint-plugin": "7.18.0",
+                "@typescript-eslint/parser": "7.18.0",
+                "eslint": "8.57.1",
+                "prettier": "3.6.2",
+                "prettier-plugin-organize-imports": "4.3.0",
+                "typescript": "5.7.2",
+                "unbuild": "3.6.1"
+        }
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package publicui.hydrate;
+
+service HydrateRenderer {
+rpc RenderHtml(RenderRequest) returns (RenderResponse);
+}
+
+message RenderRequest {
+string html = 1;
+string options_json = 2;
+}
+
+message RenderResponse {
+string html = 1;
+repeated string components = 2;
+uint32 hydrated_count = 3;
+string diagnostics_json = 4;
+}
