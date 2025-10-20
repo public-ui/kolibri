@@ -7,8 +7,8 @@
 
 		display: grid;
 		grid-template-areas:
-      "header  close"
-      "content content";
+			'header  close'
+			'content content';
 		grid-template-columns: 1fr max-content;
 		grid-template-rows: auto 1fr;
 		gap: to-rem(8);
