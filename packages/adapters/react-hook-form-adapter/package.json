@@ -48,9 +48,9 @@
 	"scripts": {
 		"build": "unbuild",
 		"format": "prettier --check src",
-		"-lint": "pnpm lint:eslint && pnpm lint:tsc",
-		"-lint:eslint": "eslint src",
-		"-lint:tsc": "tsc --noemit"
+		"lint": "pnpm lint:eslint && pnpm lint:tsc",
+		"lint:eslint": "eslint src",
+		"lint:tsc": "tsc --noemit"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",

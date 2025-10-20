@@ -130,7 +130,7 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 						(mergedProps as any)[valueProp] = field.value;
 					}
 
-					return <Component {...mergedProps} />;
+					return <Component {...(mergedProps as any)} />;
 				}}
 			/>
 		);
