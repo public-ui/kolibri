@@ -151,17 +151,13 @@ export class KolMultiSelect implements MultiSelectAPI {
 		const currentValues = Array.isArray(this._value) ? [...this._value] : [];
 		const optionValue = option.value;
 
-		// Check if option is already selected
 		const isSelected = currentValues.includes(optionValue);
 
 		if (isSelected) {
-			// Remove option if already selected
 			this._value = currentValues.filter((val) => val !== optionValue);
 		} else {
-			// Add option if not selected and maxSelections not reached
 			const maxSelections = this.state._maxSelections;
 			if (maxSelections && currentValues.length >= maxSelections) {
-				// Max selections reached, don't add
 				return;
 			}
 			this._value = [...currentValues, optionValue];
@@ -190,7 +186,9 @@ export class KolMultiSelect implements MultiSelectAPI {
 		}
 
 		const currentValues = Array.isArray(this._value) ? [...this._value] : [];
-		this._value = currentValues.filter((val) => val !== value);
+		const newValue = currentValues.filter((val) => val !== value);
+
+		this._value = [...newValue];
 
 		const inputEvent = this.createEventWithTarget('input', {
 			name: this.state._name ?? '',
@@ -204,6 +202,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 		this.controller.onFacade.onInput(inputEvent, false, this._value);
 		this.controller.onFacade.onChange(changeEvent, this._value);
 		this.controller.setFormAssociatedValue(this._value);
+		this.badgeRefs = [];
 	}
 
 	private onInput(event: Event) {
@@ -333,6 +332,79 @@ export class KolMultiSelect implements MultiSelectAPI {
 		return Array.isArray(this._value) && this._value.includes(option.value);
 	}
 
+	private badgeRefs: HTMLDivElement[] = [];
+
+	private readonly catchBadgeRef = (index: number) => (ref?: HTMLDivElement) => {
+		if (ref) {
+			this.badgeRefs[index] = ref;
+		}
+	};
+
+	private handleBadgeKeyDown(event: KeyboardEvent, value: StencilUnknown, index: number) {
+		switch (event.key) {
+			case 'Delete':
+			case 'Backspace': {
+				event.preventDefault();
+				const totalChips = this.badgeRefs.length;
+				const nextIndex = index < totalChips - 1 ? index : index - 1;
+
+				this.removeOption(value);
+
+				if (this.badgeRefs.length > 0) {
+					const targetIndex = Math.min(nextIndex, this.badgeRefs.length - 1);
+					if (targetIndex >= 0 && this.badgeRefs[targetIndex]) {
+						this.badgeRefs[targetIndex].focus();
+					} else {
+						this.refInput?.focus();
+					}
+				} else {
+					this.refInput?.focus();
+				}
+
+				break;
+			}
+			case 'ArrowLeft': {
+				event.preventDefault();
+				if (index > 0) {
+					this.badgeRefs[index - 1]?.focus();
+				}
+				break;
+			}
+			case 'ArrowRight': {
+				event.preventDefault();
+				if (index < this.badgeRefs.length - 1) {
+					this.badgeRefs[index + 1]?.focus();
+				} else {
+					this.refInput?.focus();
+				}
+				break;
+			}
+			case 'Home': {
+				event.preventDefault();
+				this.badgeRefs[0]?.focus();
+				break;
+			}
+			case 'End': {
+				event.preventDefault();
+				this.refInput?.focus();
+				break;
+			}
+		}
+	}
+
+	private handleInputKeyDown(event: KeyboardEvent) {
+		if (event.key === 'Backspace' && this._inputValue === '' && Array.isArray(this._value) && this._value.length > 0) {
+			event.preventDefault();
+			const lastBadgeIndex = this.badgeRefs.length - 1;
+			if (this.badgeRefs[lastBadgeIndex]) {
+				this.badgeRefs[lastBadgeIndex].focus();
+			}
+		} else if (event.key === 'ArrowLeft' && this._inputValue === '' && this.badgeRefs.length > 0) {
+			event.preventDefault();
+			this.badgeRefs[this.badgeRefs.length - 1]?.focus();
+		}
+	}
+
 	public render(): JSX.Element {
 		const isDisabled = this.state._disabled === true;
 		const selectedOptions = this.getSelectedOptions();
@@ -341,26 +413,55 @@ export class KolMultiSelect implements MultiSelectAPI {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
-					{hasSelections && (
-						<div class="kol-multi-select__badges" role="list" aria-label={this.translateSelectedOptions}>
-							{selectedOptions.map((option) => (
-								<KolBadgeTag
-									key={option.value}
-									_label={option.label as string}
-									_smartButton={{
-										_label: `${this.translateRemove} ${option.label}`,
-										_icons: 'codicon codicon-close',
-										_hideLabel: true,
-										_on: {
-											onClick: () => this.removeOption(option.value),
-										},
-									}}
-								/>
-							))}
+					<div
+						class={clsx('kol-multi-select__content', {
+							'kol-multi-select__content--disabled': isDisabled,
+						})}
+					>
+						{hasSelections && (
+							<div class="kol-multi-select__badges" role="list" aria-label={this.translateSelectedOptions}>
+								{selectedOptions.map((option, index) => (
+									<div
+										key={`chip-${option.value}-${index}`}
+										class="kol-multi-select__badge-wrapper"
+										ref={this.catchBadgeRef(index)}
+										tabindex={isDisabled ? -1 : 0}
+										role="button"
+										aria-label={`${option.label}`}
+										onKeyDown={(e) => this.handleBadgeKeyDown(e, option.value, index)}
+									>
+										<KolBadgeTag
+											_label={option.label as string}
+											_smartButton={{
+												_label: `${this.translateRemove} ${option.label}`,
+												_icons: 'codicon codicon-close',
+												_hideLabel: true,
+												_tabIndex: -1,
+												_on: {
+													onClick: (event: Event) => {
+														event.stopPropagation();
+														this.removeOption(option.value);
+														requestAnimationFrame(() => {
+															this.refInput?.focus();
+														});
+													},
+												},
+											}}
+										/>
+									</div>
+								))}
+							</div>
+						)}
+
+						<div class="kol-multi-select__input-wrapper">
+							<KolInputStateWrapperFc
+								{...this.getInputProps()}
+								onKeyDown={(e) => {
+									this.handleInputKeyDown(e);
+									this.getInputProps().onKeyDown?.(e);
+								}}
+							/>
 						</div>
-					)}
-					<div class="kol-multi-select__group">
-						<KolInputStateWrapperFc {...this.getInputProps()} />
 
 						{hasSelections && !this.state._hideClearButton && (
 							<KolIconTag
@@ -374,11 +475,13 @@ export class KolMultiSelect implements MultiSelectAPI {
 								class={clsx('kol-multi-select__delete', {
 									'kol-multi-select__delete--disabled': isDisabled,
 								})}
+								tabIndex={isDisabled ? -1 : 0}
 							/>
 						)}
 
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} />
+						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} tabIndex={isDisabled ? -1 : 0} />
 					</div>
+
 					{this._isOpen && !isDisabled && (
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
@@ -429,7 +532,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 									);
 								})
 							) : (
-								<li class="kol-multi-select__no-results-message">{this.translateNoResultsMessage} </li>
+								<li class="kol-multi-select__no-results-message">{this.translateNoResultsMessage}</li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
 					)}
@@ -437,7 +540,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 			</KolFormFieldStateWrapperFc>
 		);
 	}
-
 	@Listen('focusout', { target: 'window' })
 	public handleFocusOut() {
 		setTimeout(() => {
@@ -453,6 +555,13 @@ export class KolMultiSelect implements MultiSelectAPI {
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
+		const activeElement = document.activeElement;
+		const isBadgeFocused = this.badgeRefs.some((badge) => badge === activeElement);
+
+		if (isBadgeFocused) {
+			return;
+		}
+
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
 
@@ -489,15 +598,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 				this._hasOpened = false;
 				this._isOpen = false;
 				handleEvent(false);
-				break;
-			}
-			case 'Backspace': {
-				// Remove last selected option if input is empty
-				if (this._inputValue === '' && Array.isArray(this._value) && this._value.length > 0) {
-					const lastValue = this._value[this._value.length - 1];
-					this.removeOption(lastValue);
-					this.refInput?.focus();
-				}
 				break;
 			}
 			case ' ': {
@@ -816,6 +916,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 
 	public componentWillLoad(): void {
 		this.refOptions = [];
+		this.badgeRefs = [];
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this._filteredOptions = this.state._options;

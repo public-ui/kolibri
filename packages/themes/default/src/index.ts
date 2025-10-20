@@ -25,6 +25,7 @@ import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import modalCss from './components/modal.scss';
+import multiSelect from './components/multi-select.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
@@ -87,4 +88,5 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
+	'KOL-MULTI-SELECT': multiSelect,
 });

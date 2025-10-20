@@ -21,72 +21,66 @@
 	$visible-options: var(--visible-options, 5);
 
 	.kol-multi-select {
-		&__badges {
-			background-color: var(--kolibri-background-color);
-			border-radius: to-rem(4);
+		&__container {
 			display: flex;
+			width: 100%;
+			flex-direction: column;
+		}
 
-			margin-bottom: to-rem(8);
-			padding: to-rem(8);
-
+		&__content {
+			display: flex;
 			gap: to-rem(8);
 			flex-wrap: wrap;
+			align-items: center;
 
-			border: to-rem(1) solid var(--kolibri-border-color);
-
-			kol-badge {
-				flex-shrink: 0;
+			&--disabled {
+				background: var(--color-background-disabled);
+				cursor: not-allowed;
 			}
 		}
 
-		&__group {
+		&__badges {
+			display: contents;
+		}
+
+		&__badge-wrapper {
+			display: inline-flex;
+			align-items: center;
+
+			kol-badge {
+				margin: 0;
+			}
+		}
+
+		&__input-wrapper {
 			display: flex;
-			gap: to-rem(8);
+			flex: 1 1 auto;
 			align-items: center;
 		}
 
 		&__input {
+			min-width: 0;
 			flex: 1;
-		}
 
-		&__delete {
-			flex-shrink: 0;
-			cursor: pointer;
-
-			&--disabled {
+			&:disabled {
 				cursor: not-allowed;
 			}
 		}
 
-		&__no-results-message {
+		&__group {
+			position: relative;
+			width: 100%;
+		}
+
+		&__delete {
 			display: flex;
-			min-height: to-rem(50);
 			align-items: center;
 			justify-content: center;
-			cursor: default;
-		}
-
-		.kol-custom-suggestions-options-group {
-			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
-		}
-
-		.kol-custom-suggestions-option {
-			&--selected {
-				color: var(--kolibri-color-selected-text);
-				background-color: var(--kolibri-color-selected);
-
-				&:hover {
-					background-color: var(--kolibri-color-selected-hover);
-				}
-			}
+			cursor: pointer;
 
 			&--disabled {
 				opacity: 0.5;
 				cursor: not-allowed;
-
-				&:hover {
-					background-color: inherit;
-				}
 			}
 		}
 	}
