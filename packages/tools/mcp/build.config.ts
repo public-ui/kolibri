@@ -1,5 +1,5 @@
-import { defineBuildConfig } from 'unbuild';
 import { copyFile, unlink } from 'fs/promises';
+import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
 	entries: [

@@ -11,6 +11,7 @@
 		"packages/adapters/react-standalone",
 		"packages/adapters/react-v19",
 		"packages/adapters/solid",
+		"packages/adapters/svelte",
 		"packages/adapters/vue",
 		"packages/components",
 		"packages/samples/react",

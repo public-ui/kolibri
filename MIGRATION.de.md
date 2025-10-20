@@ -14,6 +14,8 @@ Dies bedeutet, dass ggf. Komponenten, Eigenschaften oder Funktionalitäten entfe
   Bevor die Migration erfolgt, empfehlen wir einen lauffähigen Stand einzuchecken und somit keine uncommiteten Änderungen auf dem zu migrierenden Quellcode zu haben. Während und nach der Migration können so alle Änderungen gut nachvollzogen und geprüft werden.
 - **Migrationstool:**<br/>
   Wir stellen ein Migrationstool bereit, welches generell die Migration von Quellcode mit KoliBri unterstützt. Dieses Tool ist in der Lage, die meisten Breaking Changes automatisch zu migrieren. Weitere Informationen finden Sie in der [Tool-Dokumentation (EN)](https://www.npmjs.com/package/@public-ui/kolibri-cli).
+  > [!NOTE]
+  > Das Migrationstool unterstützt aktuell React-Projekte (`.jsx`/`.tsx`), Vue-Single-File-Components (`.vue`) sowie HTML/XHTML-Template-Projekte (z. B. Angular-Templates oder Projekte mit nativen Custom Elements).
 - **Hilfe und Feedback:**<br/>
   Sollte es Probleme bei der Migration geben, stehen wir gerne zur Verfügung. Bitte eröffnen Sie ein [Issue auf GitHub](https://github.com/public-ui/kolibri/issues/new/choose).
 

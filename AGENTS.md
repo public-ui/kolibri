@@ -10,6 +10,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
 - If you change a dependency in a package:
   - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
+- Never add a `packageManager` field to any `package.json` file.
 - Avoid that branch name may contain hidden characters.
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
 - To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).

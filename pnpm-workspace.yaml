@@ -4,6 +4,7 @@ packages:
   - packages/adapters/preact*
   - packages/adapters/react*
   - packages/adapters/solid*
+  - packages/adapters/svelte
   - packages/adapters/vue
   - packages/components
   - packages/samples/angular
