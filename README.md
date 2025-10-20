@@ -31,7 +31,7 @@ KoliBri is always actively working on improvements, new features and future-orie
 
 | Version | Release type | Release  | Period | End-of-Support |
 | ------: | :----------: | :------: | :----: | :------------: |
-|     0.x |    Initial   | Jul 2020 |   -    |    Dec 2021    |
+|     0.x |   Initial    | Jul 2020 |   -    |    Dec 2021    |
 |     1.x |     LTS      | Dec 2021 |   3y   |    Dec 2024    |
 |     2.x |     LTS      | Dec 2023 |   3y   |    Dec 2026    |
 |     3.x |     STS      | Dec 2024 |  15m   |    Dec 2025    |

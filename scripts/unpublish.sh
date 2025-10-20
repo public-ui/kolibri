@@ -11,6 +11,7 @@ npm unpublish @public-ui/react-hook-form-adapter@$1
 npm unpublish @public-ui/react-v19@$1
 npm unpublish @public-ui/react-standalone@$1
 npm unpublish @public-ui/solid@$1
+npm unpublish @public-ui/svelte@$1
 npm unpublish @public-ui/vue@$1
 npm unpublish @public-ui/components@$1
 npm unpublish @public-ui/sample-react@$1

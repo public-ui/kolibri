@@ -1,7 +1,10 @@
 {
 	"compilerOptions": {
+		"allowUnreachableCode": false,
 		"allowSyntheticDefaultImports": true,
 		"declaration": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
 		"esModuleInterop": true,
 		"lib": ["dom", "es2015"],
 		"module": "ESNext",
@@ -11,14 +14,14 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"outDir": "dist",
+		"removeComments": true,
 		"sourceMap": true,
 		"jsx": "react",
 		"target": "es2015",
-		"strict": true,
-		"skipLibCheck": true
+		"forceConsistentCasingInFileNames": false,
+		"importHelpers": false,
+		"strict": false
 	},
-	"exclude": [
-		"node_modules",
-		"dist",
-	]
+	"include": ["src/**/*.ts", "src/**/*.tsx"],
+	"exclude": ["node_modules", "dist"]
 }

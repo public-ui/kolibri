@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
-import { execSync } from 'node:child_process';
-import react from '@vitejs/plugin-react-swc';
 import UnoCSS from '@unocss/vite';
-import process from 'process';
+import react from '@vitejs/plugin-react-swc';
+import { execSync } from 'node:child_process';
 import path from 'path';
+import process from 'process';
+import { defineConfig } from 'vite';
 
 function getGitCommitHash(): string | null {
 	try {
