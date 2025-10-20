@@ -68,6 +68,9 @@
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
+
+				position: relative;
+				@include focus-outline;
 			}
 		}
 
@@ -75,6 +78,7 @@
 			&:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
+				outline-color: var(--color-danger);
 			}
 		}
 
