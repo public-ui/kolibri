@@ -30,6 +30,7 @@ const isAssociatedTagName = (name?: string): boolean =>
 	name === 'KOL-INPUT-TEXT' ||
 	name === 'KOL-SELECT' ||
 	name === 'KOL-SINGLE-SELECT' ||
+	name === 'KOL-MULTI-SELECT' ||
 	name === 'KOL-TEXTAREA';
 
 export class AssociatedInputController implements Watches {
@@ -74,6 +75,7 @@ export class AssociatedInputController implements Watches {
 					break;
 				case 'checkbox': // Checkbox uses default case
 				case 'single-select': // SingleSelect uses default case
+				case 'multi-select':
 				case 'combobox': // Combobox uses default case
 				default:
 					this.formAssociated = document.createElement('input');

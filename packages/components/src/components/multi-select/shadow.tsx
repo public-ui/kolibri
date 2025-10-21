@@ -609,6 +609,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 				} else {
 					this.toggleListbox(event);
 				}
+				this.refInput!.value = '';
 				break;
 			}
 			case 'NumpadEnter':

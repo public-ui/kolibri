@@ -61,6 +61,7 @@ export let KolTreeItemWcTag = 'kol-tree-item-wc' as const;
 export let KolTreeTag = 'kol-tree' as const;
 export let KolTreeWcTag = 'kol-tree-wc' as const;
 export let KolVersionTag = 'kol-version' as const;
+export let KolMultiSelectTag = 'kol-multi-select' as const;
 
 export const setCustomTagNames = (transformTagName: (tagName: string) => string) => {
 	KolAbbrTag = transformTagName(KolAbbrTag as string) as 'kol-abbr';
@@ -126,4 +127,5 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolTreeTag = transformTagName(KolTreeTag as string) as 'kol-tree';
 	KolTreeWcTag = transformTagName(KolTreeWcTag as string) as 'kol-tree-wc';
 	KolVersionTag = transformTagName(KolVersionTag as string) as 'kol-version';
+	KolMultiSelectTag = transformTagName(KolMultiSelectTag as string) as 'kol-multi-select';
 };
