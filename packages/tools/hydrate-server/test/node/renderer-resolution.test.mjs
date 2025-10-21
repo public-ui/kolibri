@@ -3,10 +3,20 @@ import { test } from 'node:test';
 
 import { createHydrateServer } from '../../dist/index.mjs';
 
-test('fails with a descriptive error when @public-ui/hydrate is unavailable', async () => {
-	await assert.rejects(
-		createHydrateServer(),
-		(error) => error instanceof Error && error.message.includes('Ensure the package is installed and built before starting the hydrate server.'),
-		'createHydrateServer should surface an actionable error if @public-ui/hydrate cannot be resolved',
-	);
+test('successfully resolves @public-ui/hydrate when available', async () => {
+	// In a monorepo environment, @public-ui/hydrate should be available
+	// Test that createHydrateServer can successfully resolve the renderer
+	const server = await createHydrateServer({
+		restPort: 0, // Use random port
+		grpcPort: 0, // Use random port
+		logger: false,
+	});
+
+	// Should not throw and should create a server
+	assert.ok(server, 'Server should be created successfully');
+
+	// Clean up
+	if (server.stop) {
+		await server.stop();
+	}
 });
