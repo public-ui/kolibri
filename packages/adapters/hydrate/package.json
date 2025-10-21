@@ -47,7 +47,7 @@
 	"scripts": {
 		"build": "rimraf dist/package.json",
 		"format": "prettier --check '**/*.{js,json,md}'",
-		"test": "cross-env NODE_ENV=test mocha",
+		"test:unit": "cross-env NODE_ENV=test mocha",
 		"test:update": "cross-env NODE_ENV=test UPDATE=1 mocha",
 		"test:timers": "cross-env NODE_ENV=test node test/detect-timer-components.js"
 	},

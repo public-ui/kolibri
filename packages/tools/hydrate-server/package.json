@@ -50,9 +50,9 @@
 		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
 		"pretest": "pnpm build",
-		"test": "pnpm run test:node && pnpm run test:mocha",
 		"test:node": "node --test \"test/node/**/*.test.mjs\"",
 		"test:mocha": "mocha \"test/mocha/**/*.spec.mjs\"",
+		"test:unit": "pnpm run test:node && pnpm run test:mocha",
 		"test-update": "pnpm run test:node && SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
