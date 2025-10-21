@@ -1,16 +1,17 @@
 'use strict';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { expect } = require('chai');
-const { hydrateOptions } = require('./test-config');
+const { hydrateOptions, resetHydrationState } = require('./test-config');
 const { extractBodyContent } = require('./test-utils');
+const { handleTracker } = require('./setup');
 
 // Read custom-elements.json from @public-ui/components package
 const customElementsPath = require.resolve('@public-ui/components/custom-elements.json');
 const customElements = JSON.parse(fs.readFileSync(customElementsPath, 'utf-8'));
-
-console.log(`Found ${customElements.tags.length} components to test`);
 
 // Check if hydration bundle exists
 const distPath = path.resolve(__dirname, '..', 'dist', 'index.js');
@@ -18,7 +19,38 @@ if (!fs.existsSync(distPath)) {
 	throw new Error('Cannot find the hydration bundle. Run "pnpm --filter @public-ui/components build" before executing tests.');
 }
 
-const { renderToString } = require(distPath);
+const { renderToString, streamToString } = require(distPath);
+
+const collectStream = (readable) =>
+	new Promise((resolve, reject) => {
+		let buffer = '';
+		readable.setEncoding('utf8');
+		readable.on('data', (chunk) => {
+			buffer += chunk;
+		});
+		readable.on('end', () => resolve(buffer));
+		readable.on('error', reject);
+	});
+
+/**
+ * Get fresh renderToString function by clearing require cache
+ * This prevents accumulation of state between tests
+ */
+function getFreshRenderToString() {
+	// Clear the hydration module from require cache
+	delete require.cache[distPath];
+
+	// Also clear related modules to prevent state accumulation
+	Object.keys(require.cache).forEach((key) => {
+		if (key.includes('@public-ui/components') && !key.includes('custom-elements.json')) {
+			delete require.cache[key];
+		}
+	});
+
+	// Require fresh module
+	const { renderToString } = require(distPath);
+	return renderToString;
+}
 
 /**
  * Generates a minimal HTML string for a component based on its metadata
@@ -62,73 +94,124 @@ function generateComponentHTML(componentMeta) {
 	return `<${name}${attrs ? ' ' + attrs : ''}>${content}</${name}>`;
 }
 
-// Known problematic components - still need investigation
-const skipComponents = new Set([
-	'kol-accordion',
-	'kol-card',
-	'kol-combobox', // Dynamic IDs cause snapshot mismatches
-	'kol-details',
-	'kol-drawer',
-	'kol-input-checkbox',
-	'kol-input-color',
-	'kol-input-date',
-	'kol-input-email',
-	'kol-input-file',
-	'kol-input-number',
-	'kol-input-password',
-	'kol-input-radio',
-	'kol-input-range', // Dynamic IDs cause snapshot mismatches
-	'kol-input-text',
-	'kol-kolibri',
-	'kol-modal',
-	'kol-nav',
-	'kol-pagination',
-	'kol-popover-button',
-	'kol-select',
-	'kol-single-select', // Dynamic IDs cause snapshot mismatches
-	'kol-skip-nav',
-	'kol-split-button',
-	'kol-table-stateful',
-	'kol-table-stateless',
-	'kol-tabs',
-	'kol-textarea',
-	'kol-toast-container',
-	'kol-toolbar',
-	'kol-version',
-]);
-
 describe('Component hydration snapshots', () => {
+	// Setup and teardown for each test
+	beforeEach(() => {
+		// Clear any existing timers before each test
+		if (handleTracker) {
+			handleTracker.clearAllTimers();
+		}
+
+		// Reset hydration state
+		resetHydrationState();
+
+		// No delays - they interfere with timeouts
+	});
+
+	afterEach(() => {
+		// Clear component tracking and timers after each test
+		if (handleTracker) {
+			handleTracker.clearCurrentComponent();
+			handleTracker.clearAllTimers();
+		}
+
+		// Reset hydration state
+		resetHydrationState();
+
+		// No delays - they interfere with timeouts
+	}); // Force garbage collection after all tests if available
+	after(() => {
+		// Report any components that created timers
+		if (handleTracker) {
+			const timersByComponent = handleTracker.getTimersByComponent();
+			const componentNames = Object.keys(timersByComponent);
+
+			if (componentNames.length > 0) {
+				console.log('\n=== COMPONENTS THAT CREATED TIMERS ===');
+				componentNames.forEach((componentName) => {
+					const timers = timersByComponent[componentName];
+					console.log(`\n${componentName}:`);
+					timers.forEach((timer, index) => {
+						console.log(`  Timer ${index + 1}: ${timer.type} (${timer.delay}ms)`);
+						console.log(`    Stack: ${timer.stack.split('\n')[1]?.trim() || 'unknown'}`);
+					});
+				});
+				console.log('\n=== END TIMER REPORT ===\n');
+			}
+
+			// Final cleanup
+			handleTracker.clearAllTimers();
+		}
+
+		if (global.gc) {
+			global.gc();
+		}
+	});
+
 	customElements.tags.forEach((componentMeta) => {
 		const { name } = componentMeta;
 
-		// Skip -wc components (Web Component wrappers)
-		if (name.endsWith('-wc')) {
-			it.skip(`renders ${name} to HTML snapshot (Web Component wrapper - not tested)`, () => {});
-			return;
-		}
+		it(`renders ${name} with renderToString`, async function () {
+			// Set timeout for individual component tests
+			this.timeout(3000);
 
-		// Skip tree components (kol-tree, kol-tree-item)
-		if (name.startsWith('kol-tree')) {
-			it.skip(`renders ${name} to HTML snapshot (Tree component - not tested)`, () => {});
-			return;
-		}
+			// Track timers for this component
+			if (handleTracker) {
+				handleTracker.setCurrentComponent(name);
+			}
 
-		// Skip components that are known to cause issues
-		if (skipComponents.has(name)) {
-			it.skip(`renders ${name} to HTML snapshot (known to hang or fail)`, () => {});
-			return;
-		}
+			try {
+				const html = generateComponentHTML(componentMeta);
 
-		it(`renders ${name} to HTML snapshot`, async () => {
-			const html = generateComponentHTML(componentMeta);
-			const result = await renderToString(html, hydrateOptions);
+				// Render component to HTML using renderToString
+				const result = await renderToString(html, hydrateOptions);
 
-			expect(result).to.be.an('object');
-			expect(result.html).to.be.a('string');
-			expect(result.diagnostics).to.be.an('array');
+				expect(result).to.be.an('object');
+				expect(result.html).to.be.a('string');
+				expect(result.diagnostics).to.be.an('array');
 
-			const bodyContent = extractBodyContent(result.html);
-			expect(bodyContent).to.matchSnapshot();
+				const bodyContent = extractBodyContent(result.html);
+				expect(bodyContent).to.matchSnapshot();
+			} catch (error) {
+				throw error;
+			} finally {
+				// Clear component tracking
+				if (handleTracker) {
+					handleTracker.clearCurrentComponent();
+					handleTracker.clearAllTimers();
+				}
+			}
+		});
+
+		it(`renders ${name} with streamToString`, async function () {
+			// Set timeout for individual component tests
+			this.timeout(3000);
+
+			// Track timers for this component
+			if (handleTracker) {
+				handleTracker.setCurrentComponent(name);
+			}
+
+			try {
+				const html = generateComponentHTML(componentMeta);
+
+				// Render component to HTML using streamToString
+				const readable = streamToString(html, hydrateOptions);
+				const resultHtml = await collectStream(readable);
+
+				expect(resultHtml).to.be.a('string');
+
+				const bodyContent = extractBodyContent(resultHtml);
+				expect(bodyContent).to.matchSnapshot();
+			} catch (error) {
+				throw error;
+			} finally {
+				// Clear component tracking
+				if (handleTracker) {
+					handleTracker.clearCurrentComponent();
+					handleTracker.clearAllTimers();
+				}
+			}
 		});
 	});
 });
