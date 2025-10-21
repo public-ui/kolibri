@@ -12,9 +12,10 @@
 
 		grid-template-areas:
 			'header  close'
-			'content content';
+			'content content'
+			'footer  footer';
 		grid-template-columns: 1fr max-content;
-		grid-template-rows: auto 1fr;
+		grid-template-rows: auto 1fr auto;
 
 		&__header {
 			align-self: start;
@@ -32,6 +33,11 @@
 			align-self: start;
 			justify-self: end;
 			grid-area: close;
+		}
+
+		&__footer {
+			align-self: end;
+			grid-area: footer;
 		}
 	}
 }
