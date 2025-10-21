@@ -46,8 +46,9 @@
 	],
 	"scripts": {
 		"build": "rimraf dist/package.json",
-		"test": "mocha",
-		"test:update": "cross-env UPDATE=1 mocha"
+		"test": "cross-env NODE_ENV=test mocha",
+		"test:update": "cross-env NODE_ENV=test UPDATE=1 mocha",
+		"test:timers": "cross-env NODE_ENV=test node test/detect-timer-components.js"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
