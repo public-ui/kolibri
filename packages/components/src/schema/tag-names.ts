@@ -51,4 +51,5 @@ export enum TagEnum {
 	'tooltip',
 	'tree',
 	'tree-item',
+	'multi-select',
 }
