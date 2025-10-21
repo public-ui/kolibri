@@ -49,7 +49,7 @@
 		"build": "unbuild",
 		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
-		"pretest": "pnpm build",
+		"pretest:unit": "pnpm build",
 		"test:node": "node --test \"test/node/**/*.test.mjs\"",
 		"test:mocha": "mocha \"test/mocha/**/*.spec.mjs\"",
 		"test:unit": "pnpm run test:node && pnpm run test:mocha",
