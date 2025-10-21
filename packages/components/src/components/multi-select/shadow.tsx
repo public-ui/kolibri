@@ -93,7 +93,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 				this._isOpen = true;
 				this._hasOpened = true;
 				this.refInput?.focus();
-				this._focusedOptionIndex = -1;
+				this._focusedOptionIndex = 0;
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
@@ -175,8 +175,13 @@ export class KolMultiSelect implements MultiSelectAPI {
 		this.controller.onFacade.onInput(inputEvent, false, this._value);
 		this.controller.onFacade.onChange(changeEvent, this._value);
 
+		this._inputValue = '';
 		this._filteredOptions = [...this.state._options];
 		this.controller.setFormAssociatedValue(this._value);
+
+		if (this.refInput) {
+			this.refInput.value = '';
+		}
 	}
 
 	private removeOption(value: StencilUnknown) {
@@ -210,7 +215,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 		this._inputValue = target.value;
 		this._isOpen = true;
 		this.setFilteredOptionsByQuery(target.value);
-		this._focusedOptionIndex = -1;
+		this._focusedOptionIndex = 0;
 	}
 
 	private handleKeyDownDropdown(event: KeyboardEvent) {
@@ -601,8 +606,14 @@ export class KolMultiSelect implements MultiSelectAPI {
 				break;
 			}
 			case ' ': {
+				event.preventDefault();
 				if (this._isOpen) {
-					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
+					if (
+						Array.isArray(this._filteredOptions) &&
+						this._filteredOptions.length > 0 &&
+						this._focusedOptionIndex >= 0 &&
+						this._focusedOptionIndex < this._filteredOptions.length
+					) {
 						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 						this.refInput?.focus();
 					}
@@ -614,8 +625,14 @@ export class KolMultiSelect implements MultiSelectAPI {
 			}
 			case 'NumpadEnter':
 			case 'Enter': {
+				event.preventDefault();
 				if (this._isOpen) {
-					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
+					if (
+						Array.isArray(this._filteredOptions) &&
+						this._filteredOptions.length > 0 &&
+						this._focusedOptionIndex >= 0 &&
+						this._focusedOptionIndex < this._filteredOptions.length
+					) {
 						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 						this.refInput?.focus();
 					}
