@@ -5,6 +5,82 @@ import type { HydrateRenderer, HydrateRendererOptions, HydrateRendererResult } f
  */
 export class HydrateResourceManager {
 	private activeTimers = new Set<NodeJS.Timeout>();
+	private originalHandlers: {
+		setTimeout?: typeof setTimeout;
+		setInterval?: typeof setInterval;
+		clearTimeout?: typeof clearTimeout;
+		clearInterval?: typeof clearInterval;
+	} = {};
+	private isTrackingEnabled = false;
+
+	/**
+	 * Enable aggressive timer tracking like hydrate-adapter
+	 */
+	public enableTimerTracking(): void {
+		if (this.isTrackingEnabled) return;
+
+		// Store original handlers
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		this.originalHandlers.setTimeout = (global as any).setTimeout;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		this.originalHandlers.setInterval = (global as any).setInterval;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		this.originalHandlers.clearTimeout = (global as any).clearTimeout;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		this.originalHandlers.clearInterval = (global as any).clearInterval;
+
+		// Intercept timer creation like in hydrate-adapter
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(global as any).setTimeout = (...args: any[]) => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const timer = (this.originalHandlers.setTimeout as any).apply(global, args);
+			this.activeTimers.add(timer);
+			return timer;
+		};
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(global as any).setInterval = (...args: any[]) => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const timer = (this.originalHandlers.setInterval as any).apply(global, args);
+			this.activeTimers.add(timer);
+			return timer;
+		};
+
+		// Intercept timer clearing
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(global as any).clearTimeout = (timer: any) => {
+			this.activeTimers.delete(timer);
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			return (this.originalHandlers.clearTimeout as any)(timer);
+		};
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(global as any).clearInterval = (timer: any) => {
+			this.activeTimers.delete(timer);
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			return (this.originalHandlers.clearInterval as any)(timer);
+		};
+
+		this.isTrackingEnabled = true;
+	}
+
+	/**
+	 * Disable timer tracking and restore original handlers
+	 */
+	public disableTimerTracking(): void {
+		if (!this.isTrackingEnabled) return;
+
+		// Clear all active timers before restoring
+		this.clearAllTimers();
+
+		// Restore original handlers
+		if (this.originalHandlers.setTimeout) global.setTimeout = this.originalHandlers.setTimeout;
+		if (this.originalHandlers.setInterval) global.setInterval = this.originalHandlers.setInterval;
+		if (this.originalHandlers.clearTimeout) global.clearTimeout = this.originalHandlers.clearTimeout;
+		if (this.originalHandlers.clearInterval) global.clearInterval = this.originalHandlers.clearInterval;
+
+		this.isTrackingEnabled = false;
+	}
 
 	/**
 	 * Track a timer for cleanup
@@ -21,19 +97,35 @@ export class HydrateResourceManager {
 	}
 
 	/**
-	 * Clean up all tracked resources
+	 * Clear all tracked timers using original handlers
 	 */
-	public cleanup(): void {
-		// Clear all active timers
+	private clearAllTimers(): void {
 		for (const timer of this.activeTimers) {
 			try {
-				clearTimeout(timer);
-				clearInterval(timer);
+				if (this.originalHandlers.clearTimeout) {
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					(this.originalHandlers.clearTimeout as any)(timer);
+				}
+				if (this.originalHandlers.clearInterval) {
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					(this.originalHandlers.clearInterval as any)(timer);
+				}
 			} catch {
 				// Ignore errors when clearing timers
 			}
 		}
 		this.activeTimers.clear();
+	}
+
+	/**
+	 * Clean up all tracked resources - using hydrate-adapter strategy
+	 */
+	public cleanup(): void {
+		// Clear all active timers first
+		this.clearAllTimers();
+
+		// Aggressive module cache clearing like hydrate-adapter
+		this.clearModuleCache();
 
 		// Reset DOM-related globals that might accumulate state
 		const globalsToReset = ['document', 'window', 'navigator', 'location', 'history', 'screen'];
@@ -48,9 +140,61 @@ export class HydrateResourceManager {
 			}
 		}
 
-		// Force garbage collection if available
+		// Clear additional potential leak sources
+		this.clearEventListeners();
+
+		// Force garbage collection if available (twice for more thorough cleanup)
 		if (global.gc) {
 			global.gc();
+			// Small delay then GC again to catch more references
+			setTimeout(() => {
+				if (global.gc) {
+					global.gc();
+				}
+			}, 10);
+		}
+	}
+
+	/**
+	 * Clear event listeners that might cause memory leaks
+	 */
+	private clearEventListeners(): void {
+		// Clear process event listeners that might accumulate
+		const processEvents = ['uncaughtException', 'unhandledRejection', 'warning', 'exit'];
+		for (const event of processEvents) {
+			try {
+				process.removeAllListeners(event);
+			} catch {
+				// Ignore errors
+			}
+		}
+	}
+
+	/**
+	 * Clear module cache for better isolation - using aggressive strategy from hydrate-adapter
+	 */
+	private clearModuleCache(): void {
+		// Clear require cache for Stencil-related modules to prevent accumulation
+		if (typeof require !== 'undefined' && require.cache) {
+			Object.keys(require.cache).forEach((key) => {
+				// Aggressive clearing like in hydrate-adapter tests - clear ALL @public-ui/components modules
+				// except custom-elements.json to prevent state accumulation
+				if (key.includes('@public-ui/components') && !key.includes('custom-elements.json')) {
+					try {
+						delete require.cache[key];
+					} catch {
+						// Ignore errors
+					}
+				}
+				// Also clear Stencil and hydrate-related modules
+				else if (key.includes('stencil') || key.includes('hydrate')) {
+					try {
+						delete require.cache[key];
+					} catch {
+						// Ignore errors
+					}
+				}
+			});
 		}
 	}
 
@@ -68,7 +212,10 @@ export class HydrateResourceManager {
 export class IsolatedHydrateRenderer {
 	private resourceManager = new HydrateResourceManager();
 
-	constructor(private baseRenderer: HydrateRenderer) {}
+	constructor(private baseRenderer: HydrateRenderer) {
+		// Enable aggressive timer tracking like hydrate-adapter
+		this.resourceManager.enableTimerTracking();
+	}
 
 	/**
 	 * Render HTML with automatic resource cleanup and timeout protection
@@ -77,7 +224,7 @@ export class IsolatedHydrateRenderer {
 		let renderTimeout: NodeJS.Timeout | null = null;
 
 		try {
-			// Clean up any lingering resources before rendering
+			// Clean up any lingering resources before rendering (aggressive like hydrate-adapter)
 			this.resourceManager.cleanup();
 
 			// Render with enhanced options for proper cleanup
@@ -124,7 +271,7 @@ export class IsolatedHydrateRenderer {
 
 			return result;
 		} catch (error) {
-			// Always clean up on error or timeout
+			// Always clean up on error or timeout with aggressive strategy
 			if (renderTimeout) {
 				clearTimeout(renderTimeout);
 			}
@@ -147,5 +294,6 @@ export class IsolatedHydrateRenderer {
 	 */
 	public destroy(): void {
 		this.resourceManager.cleanup();
+		this.resourceManager.disableTimerTracking();
 	}
 }
