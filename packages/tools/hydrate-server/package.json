@@ -47,10 +47,13 @@
 	],
 	"scripts": {
 		"build": "unbuild",
+		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
 		"pretest": "pnpm build",
-		"test": "node --test \"test/**/*.mjs\"",
-		"test-update": "node --test \"test/**/*.mjs\""
+		"test": "pnpm run test:node && pnpm run test:mocha",
+		"test:node": "node --test \"test/node/**/*.test.mjs\"",
+		"test:mocha": "mocha \"test/mocha/**/*.spec.mjs\"",
+		"test-update": "pnpm run test:node && SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
 		"@grpc/grpc-js": "1.14.0",
@@ -60,9 +63,11 @@
 		"fastify": "5.6.1"
 	},
 	"devDependencies": {
+		"@public-ui/components": "workspace:*",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"eslint": "8.57.1",
+		"mocha": "10.7.3",
 		"prettier": "3.6.2",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"typescript": "5.9.3",
