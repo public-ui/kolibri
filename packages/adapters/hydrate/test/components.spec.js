@@ -94,11 +94,6 @@ function generateComponentHTML(componentMeta) {
 	return `<${name}${attrs ? ' ' + attrs : ''}>${content}</${name}>`;
 }
 
-// Minimal skip list - only components that truly cause issues
-const skipComponents = new Set([
-	// Temporarily skip nothing - let's test them all with our improved setup
-]);
-
 describe('Component hydration snapshots', () => {
 	// Setup and teardown for each test
 	beforeEach(() => {
@@ -155,24 +150,6 @@ describe('Component hydration snapshots', () => {
 
 	customElements.tags.forEach((componentMeta) => {
 		const { name } = componentMeta;
-
-		// Skip -wc components (Web Component wrappers)
-		if (name.endsWith('-wc')) {
-			it.skip(`renders ${name} to HTML snapshot (Web Component wrapper - not tested)`, () => {});
-			return;
-		}
-
-		// Skip tree components (kol-tree, kol-tree-item)
-		if (name.startsWith('kol-tree')) {
-			it.skip(`renders ${name} to HTML snapshot (Tree component - not tested)`, () => {});
-			return;
-		}
-
-		// Skip components that are known to cause issues
-		if (skipComponents.has(name)) {
-			it.skip(`renders ${name} to HTML snapshot (known to hang or fail)`, () => {});
-			return;
-		}
 
 		it(`renders ${name} with renderToString`, async function () {
 			// Set timeout for individual component tests
