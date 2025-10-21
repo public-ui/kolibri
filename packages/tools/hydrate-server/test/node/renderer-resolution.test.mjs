@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { createHydrateServer } from '../dist/index.mjs';
+import { createHydrateServer } from '../../dist/index.mjs';
 
 test('fails with a descriptive error when @public-ui/hydrate is unavailable', async () => {
 	await assert.rejects(

@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { credentials, loadPackageDefinition } from '@grpc/grpc-js';
 import { load } from '@grpc/proto-loader';
 
-import { createHydrateServer, hydrateProtoPath } from '../dist/index.mjs';
+import { createHydrateServer, hydrateProtoPath } from '../../dist/index.mjs';
 
 const stubRenderer = async (html) => ({
 	html: `<hydrated>${html}</hydrated>`,
