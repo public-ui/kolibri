@@ -10,7 +10,6 @@ import type {
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
-	PropMaxSelections,
 	PropMsg,
 	PropName,
 	PropOptions,
@@ -57,7 +56,6 @@ type OptionalStates = {
 	KoliBriHIcons &
 	PropHint &
 	PropId &
-	PropMaxSelections &
 	PropName &
 	PropRequired &
 	PropRows &

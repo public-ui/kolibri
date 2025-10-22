@@ -13,13 +13,11 @@ export const MultiSelectVariants: FC = () => {
 			value: 'de',
 		},
 	]);
-	const [value3, setValue3] = useState<Option<StencilUnknown>[]>([]);
-	const [value4, setValue4] = useState<Option<StencilUnknown>[]>([]);
 
 	return (
 		<div className="grid gap-4">
 			<KolMultiSelect
-				_label="Anrede (leer)"
+				_label="Label"
 				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
 				_value={value1}
 				_on={{
@@ -30,36 +28,12 @@ export const MultiSelectVariants: FC = () => {
 			/>
 
 			<KolMultiSelect
-				_label="Anrede (vorausgewählt)"
+				_label="With hidden Button"
 				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
-				_value={value2}
+				_value={value2.map((val) => val.value)}
 				_on={{
 					onChange: (_event: Event, value: unknown) => {
 						setValue2(value as Option<StencilUnknown>[]);
-					},
-				}}
-			/>
-
-			<KolMultiSelect
-				_label="Anrede (max. 2 Auswahlen)"
-				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
-				_value={value3}
-				_maxSelections={2}
-				_on={{
-					onChange: (_event: Event, value: unknown) => {
-						setValue3(value as Option<StencilUnknown>[]);
-					},
-				}}
-			/>
-
-			<KolMultiSelect
-				_label="Anrede (ohne Clear-Button)"
-				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
-				_value={value4}
-				_hideClearButton={true}
-				_on={{
-					onChange: (_event: Event, value: unknown) => {
-						setValue4(value as Option<StencilUnknown>[]);
 					},
 				}}
 			/>

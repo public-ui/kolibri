@@ -73,10 +73,6 @@ export class MultiSelectController extends InputIconController implements MultiS
 		watchNumber(this.component, '_rows', value);
 	}
 
-	public validateMaxSelections(value?: number) {
-		watchNumber(this.component, '_maxSelections', value, { min: 1 });
-	}
-
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateOptions(this.component._options);

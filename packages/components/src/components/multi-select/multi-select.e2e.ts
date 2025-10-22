@@ -113,20 +113,6 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByText('West')).toHaveCount(0);
 		});
 
-		test('should respect maxSelections limit', async ({ page }) => {
-			await page.setContent(`<kol-multi-select _label="Input" _maxSelections="2" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
-
-			await page.getByRole('button').click();
-			await page.getByRole('listbox').getByText('East').click({ force: true });
-			await page.getByRole('listbox').getByText('West').click({ force: true });
-			await page.getByRole('listbox').getByText('North').click({ force: true });
-
-			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
-			expect(value).toEqual(['E', 'W']);
-
-			await expect(page.getByText('North')).toHaveCount(0);
-		});
-
 		test('should remove last selected option with Backspace when input is empty', async ({ page }) => {
 			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
 
@@ -137,6 +123,11 @@ test.describe(COMPONENT_NAME, () => {
 			const input = page.locator('input.kol-multi-select__input');
 			await input.click();
 			await input.press('Backspace');
+
+			const badges = page.locator('.kol-multi-select__badge-wrapper');
+			await expect(badges.last()).toBeFocused();
+
+			await page.keyboard.press('Backspace');
 
 			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
 			expect(value).toEqual(['E']);
@@ -150,7 +141,6 @@ test.describe(COMPONENT_NAME, () => {
 
 			await page.getByRole('button').click();
 
-			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
@@ -254,6 +244,265 @@ test.describe(COMPONENT_NAME, () => {
 
 			const eastOption = page.getByRole('listbox').getByText('East');
 			await expect(eastOption).toHaveAttribute('aria-selected', 'true');
+		});
+
+		test('should not add space to input when selecting with Space key', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			const input = page.locator('input.kol-multi-select__input');
+			await page.getByRole('button').click();
+
+			await input.fill('Eas');
+
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Space');
+
+			const inputValue = await input.inputValue();
+			expect(inputValue).toBe('');
+
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
+			expect(value).toEqual(['E']);
+		});
+
+		test('should not add space to input when selecting with Enter key', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			const input = page.locator('input.kol-multi-select__input');
+			await page.getByRole('button').click();
+
+			await input.fill('Wes');
+
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+
+			const inputValue = await input.inputValue();
+			expect(inputValue).toBe('');
+
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
+			expect(value).toEqual(['W']);
+		});
+
+		test('should clear input value after selecting an option', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			const input = page.locator('input.kol-multi-select__input');
+			await page.getByRole('button').click();
+
+			await input.fill('North');
+
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+
+			const inputValue = await input.inputValue();
+			expect(inputValue).toBe('');
+
+			await page.getByRole('button').click();
+			await expect(page.getByRole('listbox').getByText('South')).toBeVisible();
+			await expect(page.getByRole('listbox').getByText('East')).toBeVisible();
+		});
+
+		test('should not select first option when typing and no option is focused', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			const input = page.locator('input.kol-multi-select__input');
+			await page.getByRole('button').click();
+
+			await input.fill('Pro');
+			await page.keyboard.press('Enter');
+
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
+			expect(value).toEqual(['Prof.']);
+		});
+
+		test('should navigate badges with Tab and skip close buttons', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			await input.click();
+
+			await page.keyboard.press('Shift+Tab');
+
+			const lastBadge = page.locator('.kol-multi-select__badge-wrapper').last();
+			await expect(lastBadge).toBeFocused();
+
+			await page.keyboard.press('Shift+Tab');
+			const secondBadge = page.locator('.kol-multi-select__badge-wrapper').nth(1);
+			await expect(secondBadge).toBeFocused();
+		});
+
+		test('should navigate between badges with Arrow keys', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			await input.press('Backspace');
+
+			const badges = page.locator('.kol-multi-select__badge-wrapper');
+
+			await expect(badges.nth(2)).toBeFocused();
+
+			await page.keyboard.press('ArrowLeft');
+			await expect(badges.nth(1)).toBeFocused();
+
+			await page.keyboard.press('ArrowLeft');
+			await expect(badges.nth(0)).toBeFocused();
+
+			await page.keyboard.press('ArrowRight');
+			await expect(badges.nth(1)).toBeFocused();
+
+			await page.keyboard.press('ArrowRight');
+			await expect(badges.nth(2)).toBeFocused();
+
+			await page.keyboard.press('ArrowRight');
+			await expect(input).toBeFocused();
+		});
+
+		test('should delete badge with Delete key when badge is focused', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			await input.press('Backspace');
+			await page.keyboard.press('Delete');
+
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
+			expect(value).toEqual(['E']);
+
+			await expect(page.getByText('West')).toHaveCount(0);
+		});
+
+		test('should delete badge with Backspace key when badge is focused', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			await input.press('Backspace');
+
+			await page.keyboard.press('Backspace');
+
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
+			expect(value).toEqual(['E']);
+
+			await expect(page.getByText('West')).toHaveCount(0);
+		});
+
+		test('should move focus to correct badge after deleting one', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			const badges = page.locator('.kol-multi-select__badge-wrapper');
+
+			await input.press('Backspace');
+			await page.keyboard.press('ArrowLeft');
+
+			await expect(badges.nth(1)).toBeFocused();
+			await page.keyboard.press('Delete');
+			await expect(badges.nth(1)).toBeFocused();
+		});
+
+		test('should jump to first badge with Home key when badge is focused', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+			await page.getByRole('listbox').getByText('North').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			const badges = page.locator('.kol-multi-select__badge-wrapper');
+
+			await input.press('Backspace');
+			await expect(badges.nth(2)).toBeFocused();
+			await page.keyboard.press('Home');
+			await expect(badges.nth(0)).toBeFocused();
+		});
+
+		test('should jump to input with End key when badge is focused', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			const badges = page.locator('.kol-multi-select__badge-wrapper');
+
+			await input.press('Backspace');
+			await page.keyboard.press('ArrowLeft');
+			await expect(badges.nth(0)).toBeFocused();
+
+			await page.keyboard.press('End');
+			await expect(input).toBeFocused();
+		});
+
+		test('should display pre-selected values on load', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}' _value='["E", "W"]'></kol-multi-select>`);
+
+			await expect(page.getByText('East')).toBeVisible();
+			await expect(page.getByText('West')).toBeVisible();
+
+			const value = await page.locator('kol-multi-select').evaluate((el: HTMLKolMultiSelectElement) => el._value as string[]);
+			expect(value).toEqual(['E', 'W']);
+		});
+
+		test('should handle ArrowLeft from input to move to last badge', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+			await page.getByRole('listbox').getByText('West').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+			const badges = page.locator('.kol-multi-select__badge-wrapper');
+
+			await input.focus();
+
+			await page.keyboard.press('ArrowLeft');
+			await expect(badges.last()).toBeFocused();
+		});
+
+		test('should not move to badge with ArrowLeft if input has content', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await page.getByRole('listbox').getByText('East').click({ force: true });
+
+			const input = page.locator('input.kol-multi-select__input');
+
+			await input.fill('test');
+
+			await page.keyboard.press('ArrowLeft');
+			await expect(input).toBeFocused();
+		});
+
+		test('should close listbox on Tab key', async ({ page }) => {
+			await page.setContent(`<kol-multi-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-multi-select>`);
+
+			await page.getByRole('button').click();
+			await expect(page.getByRole('listbox')).toBeVisible();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.getByRole('listbox')).toHaveCount(0);
 		});
 	});
 });

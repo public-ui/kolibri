@@ -156,10 +156,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 		if (isSelected) {
 			this._value = currentValues.filter((val) => val !== optionValue);
 		} else {
-			const maxSelections = this.state._maxSelections;
-			if (maxSelections && currentValues.length >= maxSelections) {
-				return;
-			}
 			this._value = [...currentValues, optionValue];
 		}
 
@@ -311,6 +307,10 @@ export class KolMultiSelect implements MultiSelectAPI {
 			type: 'text',
 			value: this._inputValue,
 			...this.controller.onFacade,
+			onKeyDown: (e) => {
+				this.handleInputKeyDown(e);
+				this.getInputProps().onKeyDown?.(e);
+			},
 			onChange: this.onChange.bind(this),
 			onClick: this.onClick.bind(this),
 			onInput: this.onInput.bind(this),
@@ -398,15 +398,24 @@ export class KolMultiSelect implements MultiSelectAPI {
 	}
 
 	private handleInputKeyDown(event: KeyboardEvent) {
-		if (event.key === 'Backspace' && this._inputValue === '' && Array.isArray(this._value) && this._value.length > 0) {
+		const target = event.target as HTMLInputElement;
+		const inputValue = target.value;
+		const cursorPosition = target.selectionStart ?? 0;
+		const isInputEmpty = inputValue === '';
+		const isCursorAtStart = cursorPosition === 0;
+
+		if (event.key === 'Backspace' && isInputEmpty && Array.isArray(this._value) && this._value.length > 0) {
 			event.preventDefault();
 			const lastBadgeIndex = this.badgeRefs.length - 1;
-			if (this.badgeRefs[lastBadgeIndex]) {
+			if (lastBadgeIndex >= 0 && this.badgeRefs[lastBadgeIndex]) {
 				this.badgeRefs[lastBadgeIndex].focus();
 			}
-		} else if (event.key === 'ArrowLeft' && this._inputValue === '' && this.badgeRefs.length > 0) {
+		} else if (event.key === 'ArrowLeft' && isInputEmpty && isCursorAtStart && this.badgeRefs.length > 0) {
 			event.preventDefault();
-			this.badgeRefs[this.badgeRefs.length - 1]?.focus();
+			const lastBadgeIndex = this.badgeRefs.length - 1;
+			if (lastBadgeIndex >= 0 && this.badgeRefs[lastBadgeIndex]) {
+				this.badgeRefs[lastBadgeIndex].focus();
+			}
 		}
 	}
 
@@ -427,8 +436,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 							<div class="kol-multi-select__badges" role="list" aria-label={this.translateSelectedOptions}>
 								{selectedOptions.map((option, index) => (
 									<div
-										key={`chip-${option.value}-${index}`}
-										class="kol-multi-select__badge-wrapper"
+										key={`badge-${option.value}-${index}`}
 										ref={this.catchBadgeRef(index)}
 										tabindex={isDisabled ? -1 : 0}
 										role="button"
@@ -496,8 +504,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => {
 									const isSelected = this.isOptionSelected(option as Option<string>);
-									const isMaxReached = this.state._maxSelections && Array.isArray(this._value) && this._value.length >= this.state._maxSelections;
-									const canSelect = !isSelected && !isMaxReached;
+									const canSelect = !isSelected;
 
 									return (
 										<CustomSuggestionsOptionFc
@@ -798,15 +805,10 @@ export class KolMultiSelect implements MultiSelectAPI {
 	 */
 	@Prop() public _rows?: RowsPropType;
 
-	/**
-	 * Maximum number of selections allowed.
-	 */
-	@Prop() public _maxSelections?: number;
-
 	@State() public state: MultiSelectStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
-		_label: '', // ⚠ required
+		_label: '',
 		_options: [],
 		_hideClearButton: false,
 	};
@@ -922,11 +924,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 		this.controller.validateRows(value);
 	}
 
-	@Watch('_maxSelections')
-	public validateMaxSelections(value?: number): void {
-		this.controller.validateMaxSelections(value);
-	}
-
 	@Listen('mousemove')
 	public handleMouseEvent() {
 		this.blockSuggestionMouseOver = false;
@@ -938,6 +935,12 @@ export class KolMultiSelect implements MultiSelectAPI {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this._filteredOptions = this.state._options;
+
+		if (!Array.isArray(this._value)) {
+			this._value = this._value ? [this._value] : [];
+		}
+
+		this.controller.setFormAssociatedValue(this._value);
 	}
 
 	private onChange(event: Event): void {
