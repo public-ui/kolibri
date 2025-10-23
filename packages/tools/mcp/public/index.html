@@ -21,10 +21,11 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				padding: 2.5rem;
 			}
 
 			.container {
-				max-width: 800px;
+				width: min(100%, 800px);
 				margin: 0 auto;
 				padding: 2rem;
 				background: white;
@@ -38,8 +39,8 @@
 			}
 
 			.logo {
-				width: 125px;
-				height: 125px;
+				width: clamp(96px, 18vw, 125px);
+				height: clamp(96px, 18vw, 125px);
 				margin: 0 auto 1rem;
 				border-radius: 50%;
 				display: flex;
@@ -48,6 +49,12 @@
 				color: white;
 				font-size: 2rem;
 				font-weight: bold;
+			}
+
+			.logo img {
+				width: 100%;
+				height: auto;
+				display: block;
 			}
 
 			h1 {
@@ -207,6 +214,74 @@
 
 			.relative {
 				position: relative;
+			}
+
+			@media (max-width: 900px) {
+				body {
+					padding: 2rem;
+				}
+
+				h1 {
+					font-size: 2.2rem;
+				}
+
+				.subtitle {
+					font-size: 1rem;
+				}
+			}
+
+			@media (max-width: 640px) {
+				body {
+					align-items: flex-start;
+					padding: 1.5rem;
+				}
+
+				.container {
+					padding: 1.75rem;
+				}
+
+				h1 {
+					font-size: 1.9rem;
+				}
+
+				.subtitle {
+					margin-bottom: 1.5rem;
+				}
+
+				.api-info {
+					padding: 1.25rem;
+				}
+
+				.stat {
+					padding: 0.85rem;
+				}
+			}
+
+			@media (max-width: 480px) {
+				body {
+					padding: 1.25rem;
+				}
+
+				.container {
+					padding: 1.5rem;
+				}
+
+				h1 {
+					font-size: 1.7rem;
+				}
+
+				.subtitle {
+					font-size: 0.95rem;
+				}
+
+				.endpoint {
+					font-size: 0.9rem;
+				}
+
+				.copy-btn {
+					top: 6px;
+					right: 6px;
+				}
 			}
 		</style>
 	</head>
