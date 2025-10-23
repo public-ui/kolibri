@@ -49,11 +49,15 @@
 		"build": "unbuild",
 		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
-		"pretest": "pnpm build",
-		"test": "pnpm run test:node && pnpm run test:mocha",
+		"pretest:unit": "pnpm build",
+		"pretest:unit-update": "pnpm build",
+		"pretest:quick": "pnpm build",
 		"test:node": "node --test \"test/node/**/*.test.mjs\"",
+		"test:node:quick": "TEST_COMPONENT_LIMIT=5 node --test \"test/node/**/*.test.mjs\"",
 		"test:mocha": "mocha \"test/mocha/**/*.spec.mjs\"",
-		"test-update": "pnpm run test:node && SNAPSHOT_UPDATE=1 pnpm run test:mocha"
+		"test:quick": "pnpm run test:mocha",
+		"test:unit": "pnpm run test:node && pnpm run test:mocha",
+		"test:unit-update": "pnpm run test:node && SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
 		"@grpc/grpc-js": "1.14.0",

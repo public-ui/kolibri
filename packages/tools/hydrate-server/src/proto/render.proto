@@ -2,18 +2,21 @@ syntax = "proto3";
 
 package publicui.hydrate;
 
+// Service for rendering HTML components server-side
 service HydrateRenderer {
-rpc RenderHtml(RenderRequest) returns (RenderResponse);
+  // Renders HTML with hydrated components
+  rpc renderHtml(RenderRequest) returns (RenderResponse);
 }
 
+// Request message containing HTML to render
 message RenderRequest {
-string html = 1;
-string options_json = 2;
+  string html = 1;
 }
 
+// Response message with rendered HTML and diagnostics
 message RenderResponse {
-string html = 1;
-repeated string components = 2;
-uint32 hydrated_count = 3;
-string diagnostics_json = 4;
+  string html = 1;
+  repeated string components = 2;
+  int32 hydratedCount = 3;
+  string diagnosticsJson = 4;
 }

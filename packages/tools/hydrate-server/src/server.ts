@@ -6,8 +6,8 @@ import type { FastifyInstance } from 'fastify';
 import Fastify from 'fastify';
 
 import { hydrateProtoPath } from './proto-path.js';
-import { hydrateFragment, isPlainObject } from './renderer.js';
-import type { HydrateRenderer, HydrateServer, HydrateServerOptions } from './types.js';
+import { cleanupGlobalRenderer, hydrateFragmentForServer, isPlainObject } from './renderer.js';
+import type { HydrateRenderer, HydrateRendererOptions, HydrateServer, HydrateServerOptions } from './types.js';
 
 interface GrpcRenderRequest {
 	html?: string;
@@ -25,7 +25,8 @@ interface HydrateProtoModule {
 	publicui: {
 		hydrate: {
 			HydrateRenderer: {
-				service: Record<string, unknown>;
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				service: any;
 			};
 		};
 	};
@@ -149,7 +150,8 @@ const resolveRenderer = async (renderer?: HydrateRenderer): Promise<HydrateRende
 };
 
 const createRestHandler =
-	(renderer: HydrateRenderer) => async (request: { body: unknown; log: FastifyInstance['log'] }, reply: { code: (statusCode: number) => void }) => {
+	(renderer: HydrateRenderer, baseOptions?: HydrateRendererOptions) =>
+	async (request: { body: unknown; log: FastifyInstance['log'] }, reply: { code: (statusCode: number) => void }) => {
 		let html: string | undefined;
 		let options: unknown;
 
@@ -174,7 +176,7 @@ const createRestHandler =
 
 		try {
 			const normalizedOptions = normalizeOptionsInput(options);
-			return await hydrateFragment(renderer, html, normalizedOptions);
+			return await hydrateFragmentForServer(renderer, html, normalizedOptions, baseOptions);
 		} catch (error) {
 			request.log.error({ err: error }, 'Hydration failed');
 			reply.code(500);
@@ -186,7 +188,7 @@ const createRestHandler =
 		}
 	};
 
-const createGrpcHandler = (renderer: HydrateRenderer): handleUnaryCall<GrpcRenderRequest, GrpcRenderResponse> => {
+const createGrpcHandler = (renderer: HydrateRenderer, baseOptions?: HydrateRendererOptions): handleUnaryCall<GrpcRenderRequest, GrpcRenderResponse> => {
 	return async (call, callback) => {
 		const { html, optionsJson } = call.request;
 
@@ -211,7 +213,7 @@ const createGrpcHandler = (renderer: HydrateRenderer): handleUnaryCall<GrpcRende
 		}
 
 		try {
-			const result = await hydrateFragment(renderer, html, parsedOptions);
+			const result = await hydrateFragmentForServer(renderer, html, parsedOptions, baseOptions);
 
 			const response: GrpcRenderResponse = {
 				html: result.html,
@@ -232,6 +234,7 @@ const createGrpcHandler = (renderer: HydrateRenderer): handleUnaryCall<GrpcRende
 
 export const createHydrateServer = async (options: HydrateServerOptions = {}): Promise<HydrateServer> => {
 	const renderer = await resolveRenderer(options.renderer);
+	const defaultRendererOptions = isPlainObject(options.defaultRendererOptions) ? (options.defaultRendererOptions as HydrateRendererOptions) : undefined;
 	const restHost = options.restHost ?? options.host ?? DEFAULT_HOST;
 	const grpcHost = options.grpcHost ?? options.host ?? DEFAULT_HOST;
 	const restRoute = options.restRoute ?? DEFAULT_ROUTE;
@@ -251,7 +254,7 @@ export const createHydrateServer = async (options: HydrateServerOptions = {}): P
 	let boundRestPort = restPort;
 	let boundGrpcPort = grpcPort;
 
-	rest.post(restRoute, createRestHandler(renderer));
+	rest.post(restRoute, createRestHandler(renderer, defaultRendererOptions));
 	rest.get('/health', () => ({
 		status: started ? 'ready' : 'initializing',
 		rest: {
@@ -271,7 +274,8 @@ export const createHydrateServer = async (options: HydrateServerOptions = {}): P
 	const grpcServer = new Server();
 	const grpcServiceDefinition = await loadGrpcDefinition();
 
-	grpcServer.addService(grpcServiceDefinition, { renderHtml: createGrpcHandler(renderer) });
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	grpcServer.addService(grpcServiceDefinition as any, { renderHtml: createGrpcHandler(renderer, defaultRendererOptions) });
 
 	const start = async () => {
 		if (started) {
@@ -306,6 +310,9 @@ export const createHydrateServer = async (options: HydrateServerOptions = {}): P
 			return;
 		}
 
+		// Clean up global renderer resources
+		cleanupGlobalRenderer();
+
 		await rest.close();
 
 		await new Promise<void>((resolve) => {
@@ -319,10 +326,6 @@ export const createHydrateServer = async (options: HydrateServerOptions = {}): P
 		});
 
 		started = false;
-		grpcEndpoint = null;
-		restUrl = null;
-		boundRestPort = restPort;
-		boundGrpcPort = grpcPort;
 	};
 
 	const getRestUrl = () => (restUrl ? `${restUrl}${restRoute}` : null);

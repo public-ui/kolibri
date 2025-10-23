@@ -20,10 +20,13 @@ export interface HydrateRendererResult {
 	diagnostics?: unknown;
 }
 
-export type HydrateRenderer = (html: string, options?: Record<string, unknown>) => Promise<HydrateRendererResult>;
+export type HydrateRendererOptions = Record<string, unknown>;
+
+export type HydrateRenderer = (html: string, options?: HydrateRendererOptions) => Promise<HydrateRendererResult>;
 
 export interface HydrateServerOptions {
 	host?: string;
+	defaultRendererOptions?: HydrateRendererOptions;
 	restHost?: string;
 	restPort?: number;
 	restRoute?: string;

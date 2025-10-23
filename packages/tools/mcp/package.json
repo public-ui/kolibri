@@ -45,8 +45,7 @@
 		"format": "prettier --check public src",
 		"prestart": "pnpm build",
 		"start": "node dist/index.mjs",
-		"test": "node --test",
-		"test-update": "node --test"
+		"test:unit": "node --test"
 	},
 	"devDependencies": {
 		"prettier": "3.6.2",
