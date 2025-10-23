@@ -566,17 +566,25 @@ ROUTES.set('nav/basic', {
 	},
 });
 ROUTES.set('pagination/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
+        snapshot: {
+                zoom: {
+                        skip: true,
+                },
+        },
+});
+ROUTES.set('popover-button/basic', {
+        snapshot: {
+                waitForTimeout: 250,
+                zoom: {
+                        skip: true,
+                },
+        },
 });
 ROUTES.set('progress/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
+        snapshot: {
+                zoom: {
+                        skip: true,
+                },
 	},
 });
 ROUTES.set('quote/basic', {

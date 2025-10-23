@@ -1,15 +1,44 @@
 import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+        const { dummyClickEventHandler } = useToasterService();
+        const helpPopoverRef = useRef<HTMLKolPopoverButtonElement | null>(null);
 
-	const dummyEventHandler = {
-		onClick: dummyClickEventHandler,
-	};
+        useEffect(() => {
+                let isActive = true;
+                type NativePopoverElement = HTMLElement & {
+                        hidePopover?: () => void;
+                        showPopover?: () => void;
+                };
+                let popoverElement: NativePopoverElement | undefined;
+
+                const openPopover = async () => {
+                        await customElements.whenDefined('kol-popover-button');
+                        if (!isActive) {
+                                return;
+                        }
+
+                        popoverElement = helpPopoverRef.current
+                                ?.shadowRoot?.querySelector('[popover]') as NativePopoverElement | undefined;
+
+                        popoverElement?.showPopover?.();
+                };
+
+                void openPopover();
+
+                return () => {
+                        isActive = false;
+                        popoverElement?.hidePopover?.();
+                };
+        }, []);
+
+        const dummyEventHandler = {
+                onClick: dummyClickEventHandler,
+        };
 
 	const TOOLBAR_ITEMS = [
 		{
@@ -47,7 +76,14 @@ export const PopoverButtonBasic: FC = () => {
 
 				<KolHeading _label="Info icon with help text" _level={2}></KolHeading>
 
-				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
+                                <KolPopoverButton
+                                        _label="Help"
+                                        _icons="codicon codicon-info"
+                                        _popoverAlign="right"
+                                        _tooltipAlign="bottom"
+                                        _hideLabel
+                                        ref={helpPopoverRef}
+                                >
 					<div className="w-sm p-2 border border-solid border-gray">
 						<KolHeading _label="Help Information" _level={3}></KolHeading>
 						<p>
