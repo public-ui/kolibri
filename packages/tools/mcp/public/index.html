@@ -315,7 +315,25 @@
 						<span class="method get">GET</span>
 						<code class="endpoint"><a href="/mcp/samples" style="color: #90cdf4">/mcp/samples</a></code>
 					</div>
-					<p class="description">List of all available samples (optional filter with ?q=filter)</p>
+					<p class="description">
+						List of all available samples. Add the
+						<code class="endpoint-inline">?q=&lt;search&gt;</code>
+						query parameter to perform a fuzzy search across component names, tags, titles, descriptions and the component folder path. The search is tolerant
+						to typos and partial matches, so even short tokens can surface the relevant sample.
+					</p>
+					<div class="relative" style="margin-bottom: 0.75rem">
+						<code class="endpoint"><a href="/mcp/samples?q=btn" style="color: #90cdf4">/mcp/samples?q=btn</a></code>
+						<button class="copy-btn" aria-label="Copy fuzzy search endpoint" tabindex="0">📋</button>
+					</div>
+					<p class="description">
+						The example above demonstrates fuzzy matching&mdash;the short token
+						<code class="endpoint-inline">btn</code> still returns button samples.
+					</p>
+					<div class="relative" style="margin-bottom: 0.75rem">
+						<code class="endpoint"><a href="/mcp/samples?q=table%20responsive" style="color: #90cdf4">/mcp/samples?q=table%20responsive</a></code>
+						<button class="copy-btn" aria-label="Copy multi-word search endpoint" tabindex="0">📋</button>
+					</div>
+					<p class="description">Combine multiple words with spaces to narrow the result set&mdash;this request filters for responsive table samples.</p>
 
 					<div>
 						<span class="method get">GET</span>
