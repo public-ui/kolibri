@@ -10,29 +10,25 @@ export const PopoverButtonBasic: FC = () => {
 
         useEffect(() => {
                 let isActive = true;
-                type NativePopoverElement = HTMLElement & {
-                        hidePopover?: () => void;
-                        showPopover?: () => void;
-                };
-                let popoverElement: NativePopoverElement | undefined;
 
                 const openPopover = async () => {
-                        await customElements.whenDefined('kol-popover-button');
+                        const popoverHost = helpPopoverRef.current;
+                        await popoverHost?.componentOnReady?.();
                         if (!isActive) {
                                 return;
                         }
 
-                        popoverElement = helpPopoverRef.current
-                                ?.shadowRoot?.querySelector('[popover]') as NativePopoverElement | undefined;
-
-                        popoverElement?.showPopover?.();
+                        const popover = popoverHost?.shadowRoot?.querySelector('[popover]') as
+                                | (HTMLElement & { showPopover?: () => void })
+                                | null;
+                        popover?.showPopover?.();
                 };
 
                 void openPopover();
 
                 return () => {
                         isActive = false;
-                        popoverElement?.hidePopover?.();
+                        helpPopoverRef.current?.hidePopover?.();
                 };
         }, []);
 
