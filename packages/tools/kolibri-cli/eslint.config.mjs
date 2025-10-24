@@ -7,12 +7,13 @@ import jsdoc from 'eslint-plugin-jsdoc';
 import jsonPlugin from 'eslint-plugin-json';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
+import globals from 'globals';
 
 export default [
 	{ ignores: ['dist/**', 'node_modules/**'] },
 	js.configs.recommended,
 	{
-		files: ['src/**/*.{ts,tsx}'],
+		files: ['src/**/*.{ts,tsx,js,jsx}'],
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
@@ -21,6 +22,10 @@ export default [
 				sourceType: 'module',
 				ecmaVersion: 'latest',
 				ecmaFeatures: { jsx: true },
+			},
+			globals: {
+				...globals.node,
+				...globals.browser,
 			},
 		},
 		plugins: {
