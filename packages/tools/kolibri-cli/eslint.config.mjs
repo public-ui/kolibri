@@ -2,7 +2,9 @@ import js from '@eslint/js';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import prettier from 'eslint-config-prettier';
+import htmlPlugin from 'eslint-plugin-html';
 import jsdoc from 'eslint-plugin-jsdoc';
+import jsonPlugin from 'eslint-plugin-json';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 
@@ -36,8 +38,21 @@ export default [
 			...prettier.rules,
 			eqeqeq: 'error',
 		},
-		settings: {
-			react: { version: 'detect' },
+		settings: { react: { version: 'detect' } },
+	},
+	{
+		files: ['**/*.html'],
+		plugins: { html: htmlPlugin },
+		processor: 'html',
+		rules: {
+			eqeqeq: 'error',
+		},
+	},
+	{
+		files: ['**/*.json'],
+		plugins: { json: jsonPlugin },
+		rules: {
+			...(jsonPlugin.configs?.recommended?.rules ?? {}),
 		},
 	},
 ];
