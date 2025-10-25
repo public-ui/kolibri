@@ -1,4 +1,14 @@
+import { createRequire } from 'node:module';
 import { URL } from 'node:url';
+
+const require = createRequire(import.meta.url);
+const packageJson = require('../package.json');
+
+const JSON_RPC_VERSION = '2.0';
+const SERVER_INFO = Object.freeze({
+	name: 'kolibri-mcp',
+	version: packageJson.version ?? '0.0.0',
+});
 
 function buildCorsHeaders() {
 	return {
@@ -116,15 +126,135 @@ function normalizePathname(pathname) {
 	return pathname;
 }
 
-export async function handleApiRequest({ method = 'GET', url = '/', getIndex } = {}) {
+function resolveContentType(headers = {}) {
+	for (const [name, value] of Object.entries(headers ?? {})) {
+		if (typeof value === 'string' && name.toLowerCase() === 'content-type') {
+			return value;
+		}
+	}
+
+	return '';
+}
+
+function tryParseJsonBody(rawBody, contentType) {
+	if (!rawBody) {
+		return { value: undefined };
+	}
+
+	const normalized = typeof contentType === 'string' ? contentType.toLowerCase() : '';
+	if (normalized && !normalized.includes('application/json')) {
+		return { value: undefined };
+	}
+
+	try {
+		return { value: JSON.parse(rawBody) };
+	} catch (error) {
+		return { error };
+	}
+}
+
+function toJsonRpcRequest(payload) {
+	if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+		return undefined;
+	}
+
+	if (payload.jsonrpc !== JSON_RPC_VERSION || typeof payload.method !== 'string') {
+		return undefined;
+	}
+
+	return {
+		id: Object.prototype.hasOwnProperty.call(payload, 'id') ? payload.id : undefined,
+		method: payload.method,
+		params: payload.params,
+	};
+}
+
+function createJsonRpcSuccess(id, result) {
+	return {
+		jsonrpc: JSON_RPC_VERSION,
+		id: id ?? null,
+		result,
+	};
+}
+
+function createJsonRpcError(id, code, message, data) {
+	return {
+		jsonrpc: JSON_RPC_VERSION,
+		id: id ?? null,
+		error: data
+			? {
+					code,
+					message,
+					data,
+				}
+			: {
+					code,
+					message,
+				},
+	};
+}
+
+async function handleJsonRpcRequest({ request, createResponse, getIndex }) {
+	const { id, method } = request;
+
+	switch (method) {
+		case 'initialize': {
+			let index;
+			try {
+				index = await getIndex();
+			} catch (error) {
+				console.warn('[rpc] Unable to load index during initialize:', error);
+			}
+
+			const counts = resolveCounts(index);
+			const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt.toISOString() : new Date().toISOString();
+
+			return createResponse(
+				200,
+				createJsonRpcSuccess(id, {
+					serverInfo: SERVER_INFO,
+					capabilities: {
+						resources: ['resources/list', 'resources/read'],
+						restApi: ['/health', '/samples', '/sample', '/docs', '/doc'],
+					},
+					data: {
+						totalEntries: counts.total,
+						totalSamples: counts.totalSamples,
+						totalDocs: counts.totalDocs,
+						generatedAt,
+					},
+				}),
+			);
+		}
+		case 'initialized': {
+			if (id === undefined) {
+				return createResponse(204);
+			}
+
+			return createResponse(200, createJsonRpcSuccess(id, null));
+		}
+		default:
+			if (id === undefined) {
+				return createResponse(204);
+			}
+
+			return createResponse(200, createJsonRpcError(id, -32601, `Method not found: ${method}`));
+	}
+}
+
+export async function handleApiRequest({ method = 'GET', url = '/', headers = {}, body = '', getIndex } = {}) {
 	const startTime = Date.now();
 	const baseHeaders = buildCorsHeaders();
 	const normalizedMethod = method.toUpperCase();
 	const requestUrl = new URL(url, 'http://localhost');
 	const pathname = normalizePathname(requestUrl.pathname);
+	const rawBody = typeof body === 'string' ? body : '';
+	const contentType = resolveContentType(headers);
+	const { value: parsedJsonBody, error: jsonError } = tryParseJsonBody(rawBody, contentType);
+	const jsonRpcRequest = normalizedMethod === 'POST' ? toJsonRpcRequest(parsedJsonBody) : undefined;
 
 	// Helper function to create response and log it
-	const createResponse = (statusCode, body = {}) => {
+	const createResponse = (statusCode, body) => {
 		const responseTime = Date.now() - startTime;
 		logRequest(normalizedMethod, url, pathname, statusCode, responseTime);
 		return {
@@ -136,6 +266,14 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 
 	if (normalizedMethod === 'OPTIONS') {
 		return createResponse(204);
+	}
+
+	if (jsonError) {
+		return createResponse(400, { error: 'invalid_json' });
+	}
+
+	if (jsonRpcRequest) {
+		return handleJsonRpcRequest({ request: jsonRpcRequest, createResponse, getIndex });
 	}
 
 	if ((normalizedMethod === 'GET' || normalizedMethod === 'POST') && pathname === '/') {

@@ -9,28 +9,51 @@ export async function startServer(options = {}) {
 	let index = await buildSampleIndex();
 
 	const server = createServer((request, response) => {
-		Promise.resolve(
-			handleApiRequest({
-				method: request.method ?? 'GET',
-				url: request.url ?? '/',
-				getIndex: () => index,
-			}),
-		)
-			.then((result) => respondWithResult(response, result))
-			.catch((error) => {
-				console.error('[mcp] request failed', error);
-				if (!response.headersSent) {
-					respondWithResult(response, {
-						statusCode: 500,
-						headers: {
-							'Access-Control-Allow-Origin': '*',
-							'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-							'Access-Control-Allow-Headers': 'Content-Type',
-						},
-						body: { error: 'internal_error' },
-					});
-				}
-			});
+		const chunks = [];
+		request.on('data', (chunk) => {
+			chunks.push(chunk);
+		});
+		request.on('end', () => {
+			const rawBody = chunks.length > 0 ? Buffer.concat(chunks).toString('utf8') : '';
+			Promise.resolve(
+				handleApiRequest({
+					method: request.method ?? 'GET',
+					url: request.url ?? '/',
+					headers: request.headers ?? {},
+					body: rawBody,
+					getIndex: () => index,
+				}),
+			)
+				.then((result) => respondWithResult(response, result))
+				.catch((error) => {
+					console.error('[mcp] request failed', error);
+					if (!response.headersSent) {
+						respondWithResult(response, {
+							statusCode: 500,
+							headers: {
+								'Access-Control-Allow-Origin': '*',
+								'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+								'Access-Control-Allow-Headers': 'Content-Type',
+							},
+							body: { error: 'internal_error' },
+						});
+					}
+				});
+		});
+		request.on('error', (error) => {
+			console.error('[mcp] request stream failed', error);
+			if (!response.headersSent) {
+				respondWithResult(response, {
+					statusCode: 500,
+					headers: {
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type',
+					},
+					body: { error: 'request_stream_error' },
+				});
+			}
+		});
 	});
 
 	server.listen(port, () => {
