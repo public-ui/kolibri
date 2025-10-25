@@ -30,17 +30,21 @@ test.describe('kol-badge', () => {
 	});
 
 	test.describe('DOM events', () => {
-		[KolEvent.click, KolEvent.mousedown].forEach((event) => {
-			test(`should emit ${event} when smart button emits ${event}`, async ({ page }) => {
+		const EVENTS: [string, KolEvent][] = [
+			['click', KolEvent.click],
+			['mousedown', KolEvent.mousedown],
+		];
+		EVENTS.forEach(([nativeEvent, kolEvent]) => {
+			test(`should emit ${kolEvent} when smart button emits ${nativeEvent}`, async ({ page }) => {
 				const BADGE_PROPS = { _label: `Smart Button` };
 				await page.setContent(`<kol-badge _label="Badge with Button" _smart-button='${JSON.stringify(BADGE_PROPS)}'></kol-badge>`);
 				const eventPromise = page.locator('kol-badge').evaluate(async (element, event) => {
 					return new Promise((resolve) => {
 						element.addEventListener(event, resolve);
 					});
-				}, event);
+				}, kolEvent);
 				await page.waitForChanges();
-				await page.locator('button').dispatchEvent(event);
+				await page.locator('button').dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeTruthy();
 			});
 		});

@@ -33,16 +33,20 @@ test.describe('kol-button', () => {
 	});
 
 	test.describe('DOM events', () => {
-		[KolEvent.click, KolEvent.mousedown].forEach((event) => {
-			test(`should emit ${event} when internal button emits ${event}`, async ({ page }) => {
+		const EVENTS: [string, KolEvent][] = [
+			['click', KolEvent.click],
+			['mousedown', KolEvent.mousedown],
+		];
+		EVENTS.forEach(([nativeEvent, kolEvent]) => {
+			test(`should emit ${kolEvent} when internal button emits ${nativeEvent}`, async ({ page }) => {
 				await page.setContent('<kol-button _label="Button"></kol-button>');
 				const eventPromise = page.locator('kol-button').evaluate(async (element, event) => {
 					return new Promise((resolve) => {
 						element.addEventListener(event, resolve);
 					});
-				}, event);
+				}, kolEvent);
 				await page.waitForChanges();
-				await page.locator('button').dispatchEvent(event);
+				await page.locator('button').dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeTruthy();
 			});
 		});
