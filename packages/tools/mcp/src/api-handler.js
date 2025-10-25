@@ -5,9 +5,16 @@ const require = createRequire(import.meta.url);
 const packageJson = require('../package.json');
 
 const JSON_RPC_VERSION = '2.0';
+const MCP_PROTOCOL_VERSION = '2024-11-05';
 const SERVER_INFO = Object.freeze({
 	name: 'kolibri-mcp',
 	version: packageJson.version ?? '0.0.0',
+});
+const INITIALIZE_RESOURCE = Object.freeze({
+	uri: 'kolibri://initialize',
+	name: 'Getting started with the KoliBri MCP server',
+	description: 'Overview, usage instructions, and REST endpoints for Codex and other MCP clients.',
+	mimeType: 'text/markdown',
 });
 
 function buildCorsHeaders() {
@@ -110,6 +117,73 @@ function resolveCounts(index) {
 	};
 }
 
+function toNonEmptyString(value) {
+	if (typeof value !== 'string') {
+		return undefined;
+	}
+
+	const trimmed = value.trim();
+	return trimmed ? trimmed : undefined;
+}
+
+function resolveProtocolVersion(requestedVersion) {
+	if (typeof requestedVersion === 'string') {
+		return requestedVersion.trim() || MCP_PROTOCOL_VERSION;
+	}
+
+	if (typeof requestedVersion === 'number' && Number.isFinite(requestedVersion)) {
+		return `${requestedVersion}`;
+	}
+
+	return MCP_PROTOCOL_VERSION;
+}
+
+function formatGeneratedAt(index) {
+	if (index?.generatedAt instanceof Date) {
+		return index.generatedAt.toISOString();
+	}
+
+	return new Date().toISOString();
+}
+
+function buildInitializeResourceText(index) {
+	const counts = resolveCounts(index);
+	const generatedAt = formatGeneratedAt(index);
+	return [
+		'# Welcome to the KoliBri MCP server',
+		'',
+		'This server exposes the KoliBri component and documentation samples to Model Context Protocol clients.',
+		'',
+		'## Getting started',
+		'- Call `resources/list` to discover available resources.',
+		`- Read the ${INITIALIZE_RESOURCE.uri} resource via resources/read for human-friendly usage instructions.`,
+		'- Use the REST endpoints if your client prefers HTTP access over JSON-RPC.',
+		'',
+		'## REST endpoints',
+		'- `GET /health` — Service health and index metadata.',
+		'- `GET /samples` — List of component samples (filterable with `?q=`).',
+		'- `GET /sample?id=sample/<component>/<sample>` — Retrieve a specific component sample.',
+		'- `GET /docs` — List of documentation entries.',
+		'- `GET /doc?id=doc/<identifier>` — Retrieve a specific documentation entry.',
+		'',
+		'## Sample statistics',
+		`- Total entries: ${counts.total}`,
+		`- Component samples: ${counts.totalSamples}`,
+		`- Documentation entries: ${counts.totalDocs}`,
+		`- Index generated at: ${generatedAt}`,
+		'',
+		'For more details, inspect the JSON payloads returned by the endpoints above or the metadata included in JSON-RPC responses.',
+	].join('\n');
+}
+
+function buildInitializeResource(index) {
+	const text = buildInitializeResourceText(index);
+	return {
+		...INITIALIZE_RESOURCE,
+		size: Buffer.byteLength(text, 'utf8'),
+	};
+}
+
 function normalizePathname(pathname) {
 	if (pathname === '/') {
 		return pathname;
@@ -195,7 +269,7 @@ function createJsonRpcError(id, code, message, data) {
 }
 
 async function handleJsonRpcRequest({ request, createResponse, getIndex }) {
-	const { id, method } = request;
+	const { id, method, params } = request;
 
 	switch (method) {
 		case 'initialize': {
@@ -207,21 +281,28 @@ async function handleJsonRpcRequest({ request, createResponse, getIndex }) {
 			}
 
 			const counts = resolveCounts(index);
-			const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt.toISOString() : new Date().toISOString();
+			const generatedAt = formatGeneratedAt(index);
+			const resource = buildInitializeResource(index);
 
 			return createResponse(
 				200,
 				createJsonRpcSuccess(id, {
+					protocolVersion: resolveProtocolVersion(params?.protocolVersion),
 					serverInfo: SERVER_INFO,
 					capabilities: {
-						resources: ['resources/list', 'resources/read'],
-						restApi: ['/health', '/samples', '/sample', '/docs', '/doc'],
+						resources: {
+							subscribe: false,
+							listChanged: false,
+						},
 					},
+					instructions: 'Call resources/list followed by resources/read for kolibri://initialize to receive full usage guidance.',
 					data: {
 						totalEntries: counts.total,
 						totalSamples: counts.totalSamples,
 						totalDocs: counts.totalDocs,
 						generatedAt,
+						resources: [resource],
+						restEndpoints: ['/health', '/samples', '/sample', '/docs', '/doc'],
 					},
 				}),
 			);
@@ -232,6 +313,60 @@ async function handleJsonRpcRequest({ request, createResponse, getIndex }) {
 			}
 
 			return createResponse(200, createJsonRpcSuccess(id, null));
+		}
+		case 'resources/list': {
+			if (id === undefined) {
+				return createResponse(204);
+			}
+
+			let index;
+			try {
+				index = await getIndex();
+			} catch (error) {
+				console.warn('[rpc] Unable to load index during resources/list:', error);
+			}
+
+			return createResponse(
+				200,
+				createJsonRpcSuccess(id, {
+					resources: [buildInitializeResource(index)],
+					nextCursor: null,
+				}),
+			);
+		}
+		case 'resources/read': {
+			if (id === undefined) {
+				return createResponse(204);
+			}
+
+			const uri = toNonEmptyString(params?.uri);
+			if (!uri) {
+				return createResponse(200, createJsonRpcError(id, -32602, 'Missing required parameter "uri"'));
+			}
+
+			if (uri !== INITIALIZE_RESOURCE.uri) {
+				return createResponse(200, createJsonRpcError(id, -32004, `Resource not found: ${uri}`, { uri }));
+			}
+
+			let index;
+			try {
+				index = await getIndex();
+			} catch (error) {
+				console.warn('[rpc] Unable to load index during resources/read:', error);
+			}
+
+			return createResponse(
+				200,
+				createJsonRpcSuccess(id, {
+					contents: [
+						{
+							uri: INITIALIZE_RESOURCE.uri,
+							mimeType: INITIALIZE_RESOURCE.mimeType,
+							text: buildInitializeResourceText(index),
+						},
+					],
+				}),
+			);
 		}
 		default:
 			if (id === undefined) {
@@ -300,6 +435,7 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 					'/docs?q=<query>',
 					'/doc?id=doc/<identifier>',
 				],
+				resources: [INITIALIZE_RESOURCE.uri],
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
 				totalDocs: counts.totalDocs,
@@ -400,7 +536,8 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 			items,
 			query,
 			total: items.length,
-			totalEntries: counts.totalDocs,
+			totalEntries: counts.total,
+			totalSamples: counts.totalSamples,
 			totalDocs: counts.totalDocs,
 			generatedAt: index.generatedAt.toISOString(),
 		});
@@ -435,5 +572,5 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 		});
 	}
 
-	return createResponse(404, { error: 'not_found' });
+	return createResponse(404, { error: 'not_found', path: pathname });
 }
