@@ -48,7 +48,7 @@ Then, you can import any component from `@public-ui/vue` and render it within yo
 import { KolButton } from '@public-ui/vue';
 </script>
 <template>
-        <KolButton _label="Hello World" />
+	<KolButton _label="Hello World" />
 </template>
 ```
 

@@ -34,7 +34,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 
 		// Check that the ID column (hidable: false) has a disabled checkbox
 		const idColumnRow = page.locator('.kol-table-settings__column').filter({ hasText: 'ID' });
-		const idCheckbox = idColumnRow.getByRole('checkbox');
+		const idCheckbox = idColumnRow.getByTestId('table-settings-visible-id');
 		await expect(idCheckbox).toBeVisible();
 		await expect(idCheckbox).toBeDisabled();
 		await expect(idCheckbox).toBeChecked(); // Should be checked since it's visible
@@ -44,12 +44,12 @@ test.describe('kol-table-settings hidable functionality', () => {
 
 		// Check that other columns have enabled checkboxes
 		const nameColumnRow = page.locator('.kol-table-settings__column').filter({ hasText: 'Name' });
-		const nameCheckbox = nameColumnRow.getByRole('checkbox');
+		const nameCheckbox = nameColumnRow.getByTestId('table-settings-visible-name');
 		await expect(nameCheckbox).toBeVisible();
 		await expect(nameCheckbox).toBeEnabled();
 
 		const ageColumnRow = page.locator('.kol-table-settings__column').filter({ hasText: 'Age' });
-		const ageCheckbox = ageColumnRow.getByRole('checkbox');
+		const ageCheckbox = ageColumnRow.getByTestId('table-settings-visible-age');
 		await expect(ageCheckbox).toBeVisible();
 		await expect(ageCheckbox).toBeEnabled();
 	});
@@ -59,8 +59,8 @@ test.describe('kol-table-settings hidable functionality', () => {
 		await settingsButton.click();
 
 		// Hide all hidable columns (Name and Age) - ID checkbox should be disabled
-		const nameCheckbox = page.locator('.kol-table-settings__column').filter({ hasText: 'Name' }).getByRole('checkbox');
-		const ageCheckbox = page.locator('.kol-table-settings__column').filter({ hasText: 'Age' }).getByRole('checkbox');
+		const nameCheckbox = page.locator('.kol-table-settings__column').filter({ hasText: 'Name' }).getByTestId('table-settings-visible-name');
+		const ageCheckbox = page.locator('.kol-table-settings__column').filter({ hasText: 'Age' }).getByTestId('table-settings-visible-age');
 
 		await nameCheckbox.click();
 		await ageCheckbox.click();
@@ -84,7 +84,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 		await settingsButton.click();
 
 		// Try to click the disabled ID checkbox
-		const idCheckbox = page.locator('.kol-table-settings__column').filter({ hasText: 'ID' }).getByRole('checkbox');
+		const idCheckbox = page.locator('.kol-table-settings__column').filter({ hasText: 'ID' }).getByTestId('table-settings-visible-id');
 		await expect(idCheckbox).toBeDisabled();
 
 		// Checkbox should remain checked after attempted interaction
