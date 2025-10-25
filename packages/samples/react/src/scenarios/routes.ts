@@ -1,6 +1,6 @@
 import { Routes } from '../shares/types';
 import { ChangeTabindex } from './change-tabindex';
-import { CustomTooltipWidth } from './custom-tooltip-width';
+import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { FocusElements } from './focus-elements';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
@@ -17,7 +17,7 @@ import { TooltipPositioning } from './tooltip-positioning';
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'change-tabindex': ChangeTabindex,
-		'custom-tooltip-width': CustomTooltipWidth,
+		'custom-tooltip-css-properties': CustomTooltipCssProperties,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,
