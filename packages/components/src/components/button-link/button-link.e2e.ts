@@ -4,16 +4,17 @@ import { KolEvent } from '../../utils/events';
 
 test.describe('kol-button-link', () => {
 	test('it renders label', async ({ page }) => {
-		await page.setContent('<kol-button-link _label="Test ButtonLink Element" _variant="primary"></kol-button-link>');
-		const kolButton = page.locator('kol-button-link');
-		await expect(kolButton).toContainText('Test ButtonLink Element');
+                await page.setContent('<kol-button-link _label="Test ButtonLink Element" _variant="primary"></kol-button-link>');
+                const kolButton = page.locator('kol-button-link');
+                await expect(kolButton).toContainText('Test ButtonLink Element');
 	});
 
 	test.describe('Callbacks', () => {
 		['onClick', 'onMouseDown'].forEach((callbackName) => {
 			test(`should call ${callbackName} callback when internal button emits`, async ({ page }) => {
 				await page.setContent('<kol-button-link _label="Button"></kol-button-link>');
-				const kolButton = page.locator('kol-button-link');
+                                const kolButton = page.locator('kol-button-link');
+                                const internalButton = kolButton.locator('kol-button-wc').locator('button');
 
 				const callbackPromise = kolButton.evaluate((element: HTMLKolButtonElement, callbackName) => {
 					return new Promise<void>((resolve) => {
@@ -26,7 +27,7 @@ test.describe('kol-button-link', () => {
 				}, callbackName);
 				await page.waitForChanges();
 
-				await page.locator('button').click();
+                                await internalButton.click();
 				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
@@ -46,7 +47,11 @@ test.describe('kol-button-link', () => {
 					});
 				}, kolEvent);
 				await page.waitForChanges();
-				await page.locator('button').dispatchEvent(nativeEvent);
+                                const internalButton = page
+                                        .locator('kol-button-link')
+                                        .locator('kol-button-wc')
+                                        .locator('button');
+                                await internalButton.dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeTruthy();
 			});
 		});

@@ -7,7 +7,7 @@ test.describe('kol-badge', () => {
 		['onClick', 'onMouseDown'].forEach((callbackName) => {
 			test(`should call ${callbackName} callback when smart button emits`, async ({ page }) => {
 				await page.setContent(`<kol-badge _label="Badge with Button"></kol-badge>`);
-				const kolBadge = page.locator('kol-badge');
+                                const kolBadge = page.locator('kol-badge');
 
 				const callbackPromise = kolBadge.evaluate((element: HTMLKolBadgeElement, callbackName) => {
 					return new Promise<void>((resolve) => {
@@ -23,7 +23,8 @@ test.describe('kol-badge', () => {
 				}, callbackName);
 				await page.waitForChanges();
 
-				await page.locator('button').click();
+                                const smartButton = kolBadge.locator('kol-button-wc').locator('button');
+                                await smartButton.click();
 				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
@@ -38,13 +39,17 @@ test.describe('kol-badge', () => {
 			test(`should emit ${kolEvent} when smart button emits ${nativeEvent}`, async ({ page }) => {
 				const BADGE_PROPS = { _label: `Smart Button` };
 				await page.setContent(`<kol-badge _label="Badge with Button" _smart-button='${JSON.stringify(BADGE_PROPS)}'></kol-badge>`);
-				const eventPromise = page.locator('kol-badge').evaluate(async (element, event) => {
-					return new Promise((resolve) => {
-						element.addEventListener(event, resolve);
-					});
-				}, kolEvent);
-				await page.waitForChanges();
-				await page.locator('button').dispatchEvent(nativeEvent);
+                                const eventPromise = page.locator('kol-badge').evaluate(async (element, event) => {
+                                        return new Promise((resolve) => {
+                                                element.addEventListener(event, resolve);
+                                        });
+                                }, kolEvent);
+                                await page.waitForChanges();
+                                const smartButton = page
+                                        .locator('kol-badge')
+                                        .locator('kol-button-wc')
+                                        .locator('button');
+                                await smartButton.dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeTruthy();
 			});
 		});
