@@ -8,6 +8,7 @@ test.describe('kol-abbr', () => {
 		const tooltip = kolAbbr.locator('kol-tooltip-wc kol-span-wc');
 		await expect(tooltip).not.toBeVisible();
 		await kolAbbr.hover();
+		await page.waitForChanges();
 		await expect(tooltip).toBeVisible();
 		await expect(tooltip).toContainText('for example');
 	});

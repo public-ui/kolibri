@@ -29,6 +29,17 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 }
 ```
 
+## Animation
+
+Die Dauer der Ein- und Ausblendanimation kann \u00fcber CSS-Custom-Properties angepasst werden.
+Die Dauer der Ein- und Ausblendanimation wird über `--kolibri-tooltip-animation-duration` gesteuert.
+
+```css
+body {
+	--kolibri-tooltip-animation-duration: 300ms;
+}
+```
+
 ## Links und Referenzen
 
 - <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
