@@ -1,6 +1,7 @@
 import { Routes } from '../../shares/types';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
+import { TableDirectionAwareSort } from './direction-aware-sort';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { InteractiveChildElements } from './interactive-child-elements';
 import { MultiSortTable } from './multi-sort';
@@ -31,6 +32,7 @@ export const TABLE_ROUTES: Routes = {
 		'predefined-settings': PredefinedSettings,
 		'render-cell': TableRenderCell,
 		'sort-data': TableSortData,
+		'direction-aware-sort': TableDirectionAwareSort,
 		'stateful-with-selection': TableStatefulWithSelection,
 		'stateless-with-settings-menu': TableStatelessWithSettingsMenu,
 		'stateful-with-single-selection': TableStatefulWithSingleSelection,
