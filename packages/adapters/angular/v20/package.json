@@ -65,10 +65,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "20.3.5",
-		"@angular/compiler": "20.3.5",
-		"@angular/compiler-cli": "20.3.5",
-		"@angular/core": "20.3.4",
+		"@angular/common": "20.3.7",
+		"@angular/compiler": "20.3.7",
+		"@angular/compiler-cli": "20.3.7",
+		"@angular/core": "20.3.7",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
