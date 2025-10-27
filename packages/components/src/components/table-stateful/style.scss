@@ -16,25 +16,8 @@
 	.kol-table-stateful {
 		&__pagination,
 		&__pagination-wrapper {
-			display: grid;
-			place-items: center;
-
-			@media (min-width: 1024px) {
-				grid-auto-flow: column;
-			}
-		}
-	}
-
-	.kol-pagination {
-		display: flex;
-		flex-wrap: wrap;
-
-		@media (min-width: 1024px) {
 			display: flex;
-		}
-
-		@media (max-width: 1024px) {
-			flex-direction: column;
+			flex-wrap: wrap;
 		}
 	}
 }

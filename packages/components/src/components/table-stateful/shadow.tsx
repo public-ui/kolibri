@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
+import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
 	HasSettingsMenuPropType,
@@ -473,21 +473,19 @@ export class KolTableStateful implements TableAPI {
 						},
 					})}
 				</span>
-				<div class="kol-table-stateful__pagination-wrapper">
-					<KolPaginationWcTag
-						class="test"
-						_boundaryCount={this.state._pagination._boundaryCount}
-						_customClass={this.state._pagination._customClass}
-						_on={this.handlePagination}
-						_page={this.state._pagination._page}
-						_pageSize={this.state._pagination._pageSize}
-						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-						_siblingCount={this.state._pagination._siblingCount}
-						_tooltipAlign="bottom"
-						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-						_label={label}
-					></KolPaginationWcTag>
-				</div>
+				<KolPaginationTag
+					class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}
+					_boundaryCount={this.state._pagination._boundaryCount}
+					_customClass={this.state._pagination._customClass}
+					_on={this.handlePagination}
+					_page={this.state._pagination._page}
+					_pageSize={this.state._pagination._pageSize}
+					_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+					_siblingCount={this.state._pagination._siblingCount}
+					_tooltipAlign="bottom"
+					_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+					_label={label}
+				/>
 			</div>
 		);
 	}

@@ -1,24 +1,52 @@
 @use 'mixins' as *;
 
 @mixin kol-pagination-styles {
-	.kol-pagination {
-		display: grid;
+	:host {
+		display: flex;
 		gap: to-rem(16);
+		flex-wrap: wrap;
 		align-items: center;
-		grid-template-columns: 1fr auto;
+	}
 
-		&__navigation-list {
-			display: inline-flex;
-			margin: 0;
-			padding: 0;
-			gap: 0.5em;
-			flex-wrap: wrap;
-			align-items: center;
-			list-style: none;
-		}
+	.kol-pagination__range-text {
+		order: var(--kol-pagination-range-order, 0);
+		flex: 0 0 auto;
+		text-align: left;
+	}
 
-		&__separator:before {
-			content: '•••';
+	.kol-pagination__navigation {
+		display: flex;
+		min-width: 0;
+		order: var(--kol-pagination-controls-order, 1);
+		flex: 1 1 auto;
+		justify-content: center;
+	}
+
+	.kol-pagination__page-size {
+		order: var(--kol-pagination-page-size-order, 2);
+		flex: 0 0 auto;
+	}
+
+	.kol-pagination__navigation-list {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		gap: 0.5em;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		list-style: none;
+	}
+
+	.kol-pagination__separator:before {
+		content: '•••';
+	}
+
+	@media (max-width: 600px) {
+		.kol-pagination__range-text,
+		.kol-pagination__page-size {
+			flex: 0 0 100%;
+			text-align: center;
 		}
 	}
 }
