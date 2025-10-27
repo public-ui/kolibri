@@ -9,8 +9,13 @@ export const PopoverButtonBasic: FC = () => {
 	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
 
 	useEffect(() => {
-		buttonRef.current?.kolFocus();
-		// es muesste noch ein Klick ausgefuehrt werden
+		const run = async () => {
+			await buttonRef.current?.kolFocus();
+			if (buttonRef.current instanceof HTMLButtonElement) {
+				buttonRef.current.click();
+			}
+		};
+		run();
 	}, []);
 
 	const dummyEventHandler = {
