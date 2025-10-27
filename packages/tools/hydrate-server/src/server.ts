@@ -311,7 +311,7 @@ export const createHydrateServer = async (options: HydrateServerOptions = {}): P
 		}
 
 		// Clean up global renderer resources
-		cleanupGlobalRenderer();
+		await cleanupGlobalRenderer();
 
 		await rest.close();
 

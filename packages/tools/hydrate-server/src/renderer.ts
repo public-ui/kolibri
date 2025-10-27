@@ -47,6 +47,58 @@ const mergeHydrateOptions = (base: Record<string, unknown> | undefined, override
 	...(overrides ?? {}),
 });
 
+class AsyncMutex {
+	private queue: Array<() => void> = [];
+	private locked = false;
+
+	public async acquire(): Promise<() => void> {
+		return new Promise<() => void>((resolve) => {
+			const release = this.createReleaseCallback();
+
+			if (!this.locked) {
+				this.locked = true;
+				resolve(release);
+				return;
+			}
+
+			this.queue.push(() => resolve(release));
+		});
+	}
+
+	public async runExclusive<T>(callback: () => Promise<T>): Promise<T>;
+	public async runExclusive<T>(callback: () => T): Promise<T>;
+	public async runExclusive<T>(callback: () => Promise<T> | T): Promise<T> {
+		const release = await this.acquire();
+
+		try {
+			return await callback();
+		} finally {
+			release();
+		}
+	}
+
+	private createReleaseCallback(): () => void {
+		let released = false;
+
+		return () => {
+			if (released) {
+				return;
+			}
+
+			released = true;
+			const next = this.queue.shift();
+			if (next) {
+				next();
+				return;
+			}
+
+			this.locked = false;
+		};
+	}
+}
+
+const rendererMutex = new AsyncMutex();
+
 // Global isolated renderer instance for resource management
 let globalIsolatedRenderer: IsolatedHydrateRenderer | null = null;
 
@@ -63,11 +115,13 @@ export const getIsolatedRenderer = (baseRenderer: HydrateRenderer): IsolatedHydr
 /**
  * Cleanup the global isolated renderer
  */
-export const cleanupGlobalRenderer = (): void => {
-	if (globalIsolatedRenderer) {
-		globalIsolatedRenderer.destroy();
-		globalIsolatedRenderer = null;
-	}
+export const cleanupGlobalRenderer = async (): Promise<void> => {
+	await rendererMutex.runExclusive(async () => {
+		if (globalIsolatedRenderer) {
+			globalIsolatedRenderer.destroy();
+			globalIsolatedRenderer = null;
+		}
+	});
 };
 
 /**
@@ -101,33 +155,35 @@ export const hydrateFragmentForServer = async (
 	// Extract timeout from options or use default
 	const timeoutMs = (effectiveOptions.timeout as number) || 5000;
 
-	// Use shared isolated renderer for server efficiency
-	const isolatedRenderer = getIsolatedRenderer(renderer);
+	return rendererMutex.runExclusive(async () => {
+		// Use shared isolated renderer for server efficiency
+		const isolatedRenderer = getIsolatedRenderer(renderer);
 
-	try {
-		// Race between rendering and timeout to prevent hanging
-		const renderPromise = isolatedRenderer.render(html, effectiveOptions);
-		const timeoutPromise = createTimeoutPromise(timeoutMs, html);
+		try {
+			// Race between rendering and timeout to prevent hanging
+			const renderPromise = isolatedRenderer.render(html, effectiveOptions);
+			const timeoutPromise = createTimeoutPromise(timeoutMs, html);
 
-		const result = await Promise.race([renderPromise, timeoutPromise]);
+			const result = await Promise.race([renderPromise, timeoutPromise]);
 
-		return {
-			html: typeof result.html === 'string' ? result.html : html,
-			components: coerceComponents(result.components),
-			hydratedCount: coerceHydratedCount(result.hydratedCount),
-			diagnostics: normalizeDiagnostics(result.diagnostics),
-		};
-	} catch (error) {
-		// Log renderer stats for debugging
-		const stats = isolatedRenderer.getStats();
-		console.warn(`Hydration failed with ${stats.activeTimers} active timers:`, error);
+			return {
+				html: typeof result.html === 'string' ? result.html : html,
+				components: coerceComponents(result.components),
+				hydratedCount: coerceHydratedCount(result.hydratedCount),
+				diagnostics: normalizeDiagnostics(result.diagnostics),
+			};
+		} catch (error) {
+			// Log renderer stats for debugging
+			const stats = isolatedRenderer.getStats();
+			console.warn(`Hydration failed with ${stats.activeTimers} active timers:`, error);
 
-		// Force cleanup on timeout/error
-		isolatedRenderer.destroy();
-		globalIsolatedRenderer = null;
+			// Force cleanup on timeout/error
+			isolatedRenderer.destroy();
+			globalIsolatedRenderer = null;
 
-		throw error;
-	}
+			throw error;
+		}
+	});
 };
 
 export const hydrateFragment = async (
