@@ -14,6 +14,10 @@ export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableData
 
 export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	compareFn?: KoliBriDataCompareFn;
+	/**
+	 * @deprecated Use `compareFn` instead. Will be removed in v4.
+	 */
+	_sort?: KoliBriSortFunction;
 	sortDirection?: KoliBriSortDirection;
 	headerCell?: true;
 };
