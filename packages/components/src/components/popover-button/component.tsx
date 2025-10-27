@@ -52,6 +52,16 @@ export class KolPopoverButton implements PopoverButtonProps {
 		void this.refPopover?.hidePopover();
 	}
 
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async kolFocus() {
+		// eslint-disable-next-line no-console
+		console.log('Focusing popover button', this.refButton);
+		await this.refButton?.kolFocus();
+	}
+
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
 	private handleBeforeToggle(event: Event) {
 		if ((event as ToggleEvent).newState === 'closed') {
