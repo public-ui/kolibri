@@ -231,3 +231,32 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
   </div>
 </kol-table-stateless-wc>
 `;
+
+exports[`kol-table-stateless-wc should render with _label="Table without data shows empty hint" _minWidth="400px" _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left"}]],"vertical":[]} _data=[] 1`] = `
+<kol-table-stateless-wc class="kol-table-stateless-wc">
+  <div class="table">
+    <table style="min-width: 400px;">
+      <caption id="caption">
+        Table without data shows empty hint
+      </caption>
+      <thead>
+        <tr>
+          <th aria-sort="none" class="align-left table__header-cell table__header-cell--align-left table__header-cell--horizontal" data-sort="sort-undefined" scope="col">
+            Header 1
+          </th>
+        </tr>
+        <tr aria-hidden="true" class="head-spacer">
+          <td colspan="1"></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td aria-atomic="false" aria-live="polite" aria-relevant="text" colspan="1" rowspan="1">
+            kol-no-entries
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</kol-table-stateless-wc>
+`;

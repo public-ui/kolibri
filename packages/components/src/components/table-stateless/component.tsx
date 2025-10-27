@@ -62,6 +62,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private checkboxRefs: HTMLInputElement[] = [];
 
 	private translateSort = translate('kol-sort');
+	private translateNoEntries = translate('kol-no-entries');
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -529,12 +530,17 @@ export class KolTableStateless implements TableStatelessAPI {
 		if (cell.asTd === false) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
+			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
+
 			return (
 				<td
 					key={`cell-${key}`}
 					class={{
 						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
 					}}
+					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
+					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
+					aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
 					colSpan={cell.colSpan}
 					rowSpan={cell.rowSpan}
 					style={{
