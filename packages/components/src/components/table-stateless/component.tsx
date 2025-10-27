@@ -669,12 +669,17 @@ export class KolTableStateless implements TableStatelessAPI {
 		if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
+			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
+
 			return (
 				<td
 					key={`cell-${key}`}
 					class={clsx('kol-table__cell kol-table__cell--body', {
 						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
 					})}
+					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
+					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
+					aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
 					colSpan={cell.colSpan}
 					rowSpan={cell.rowSpan}
 					style={{
