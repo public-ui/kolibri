@@ -46,6 +46,7 @@
 	],
 	"scripts": {
 		"build": "rimraf dist/package.json",
+		"build:deps": "pnpm --filter @public-ui/hydrate... build",
 		"format": "prettier --check '**/*.{js,json,md}'",
 		"test:unit": "cross-env NODE_ENV=test mocha",
 		"test:update": "cross-env NODE_ENV=test UPDATE=1 mocha",
