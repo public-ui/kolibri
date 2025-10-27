@@ -1,12 +1,13 @@
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
 import { validateLabel } from '../../schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
+
 @Component({
 	tag: 'kol-skip-nav',
 	styleUrls: {
@@ -15,6 +16,8 @@ import { KolLinkWcTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolSkipNav implements SkipNavAPI {
+	private firstLinkRef?: HTMLKolLinkWcElement;
+
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-skip-nav">
@@ -23,7 +26,7 @@ export class KolSkipNav implements SkipNavAPI {
 						{this.state._links.map((link: LinkProps, index: number) => {
 							return (
 								<li key={index}>
-									<KolLinkWcTag {...link}></KolLinkWcTag>
+									<KolLinkWcTag {...link} ref={index === 0 ? (el) => (this.firstLinkRef = el) : undefined} />
 								</li>
 							);
 						})}
@@ -71,5 +74,10 @@ export class KolSkipNav implements SkipNavAPI {
 
 	public disconnectedCallback(): void {
 		removeNavLabel(this.state._label);
+	}
+
+	@Method()
+	public async kolFocus(): Promise<void> {
+		await this.firstLinkRef?.kolFocus();
 	}
 }
