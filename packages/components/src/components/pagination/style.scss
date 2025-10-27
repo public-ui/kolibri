@@ -12,15 +12,55 @@
 
 	.navigation-list {
 		display: inline-flex;
+		display: flex;
+		gap: to-rem(16);
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	.range {
+		order: var(--kol-pagination-range-order, 0);
+		flex: 0 0 auto;
+		text-align: left;
+	}
+
+	.controls {
+		display: flex;
+		min-width: 0;
+		order: var(--kol-pagination-controls-order, 1);
+		flex: 1 1 auto;
+		justify-content: center;
+	}
+
+	.page-size {
+		order: var(--kol-pagination-page-size-order, 2);
+		flex: 0 0 auto;
+	}
+
+	.navigation-list {
+		display: flex;
 		margin: 0;
 		padding: 0;
 		gap: 0.5em;
+		gap: 0.5em;
+		flex-wrap: wrap;
 		flex-wrap: wrap;
 		align-items: center;
+		align-items: center;
+		justify-content: center;
+		list-style: none;
 		list-style: none;
 	}
 
 	.separator:before {
 		content: '•••';
+	}
+
+	@media (max-width: 600px) {
+		.range,
+		.page-size {
+			flex: 0 0 100%;
+			text-align: center;
+		}
 	}
 }
