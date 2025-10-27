@@ -45,6 +45,14 @@ export class KolPopoverButton implements PopoverButtonProps {
 		this.ref = ref;
 	};
 
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async kolFocus() {
+		await this.ref?.kolFocus();
+	}
+
 	public render(): JSX.Element {
 		return (
 			<KolPopoverButtonWcTag

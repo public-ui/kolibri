@@ -1,19 +1,11 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	@keyframes fadeInOpacity {
-		0% {
-			opacity: 0;
-		}
-
-		100% {
-			opacity: 1;
-		}
-	}
 	.kol-tooltip {
 		display: contents;
 
 		&__floating {
+			opacity: 0;
 			display: none;
 			position: fixed;
 			/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
@@ -25,11 +17,20 @@
 			max-width: 90vw;
 			max-height: 90vh;
 
-			visibility: hidden;
-			animation-duration: 0.25s;
+			animation-direction: normal;
+			/* Can be used to specify the animation duration from the outside. 250ms by default. */
+			animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+			animation-fill-mode: forwards;
 			animation-iteration-count: 1;
-			animation-name: fadeInOpacity;
 			animation-timing-function: ease-in;
+
+			&.hide {
+				animation-name: hideTooltip;
+			}
+
+			&.show {
+				animation-name: showTooltip;
+			}
 		}
 
 		&__arrow {
@@ -47,6 +48,27 @@
 			background-color: #fff;
 			position: relative;
 			z-index: 1000;
+		}
+	}
+
+	@keyframes hideTooltip {
+		0% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+			display: none;
+		}
+	}
+
+	@keyframes showTooltip {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
 		}
 	}
 }

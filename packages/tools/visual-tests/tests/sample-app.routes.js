@@ -572,6 +572,13 @@ ROUTES.set('pagination/basic', {
 		},
 	},
 });
+ROUTES.set('popover-button/basic', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('progress/basic', {
 	snapshot: {
 		zoom: {
@@ -604,7 +611,6 @@ ROUTES.set('select/basic?noColumns', {
 });
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
