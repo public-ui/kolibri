@@ -12,9 +12,9 @@ export type KoliBriTableSelectedHead = { key: string; label: string; sortDirecti
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType, sortDirection?: KoliBriSortDirection) => number;
 
 export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
-        compareFn?: KoliBriDataCompareFn;
-        sortDirection?: KoliBriSortDirection;
-        headerCell?: true;
+	compareFn?: KoliBriDataCompareFn;
+	sortDirection?: KoliBriSortDirection;
+	headerCell?: true;
 };
 
 export type KoliBriTableHeaders = {

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import type { KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import type { Data } from './test-data';
@@ -13,6 +13,15 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	year: 'numeric',
 });
 
+const compareByDate =
+	(sortDirection = 'ASC') =>
+	(data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+		const first = (data0 as Data).date.getTime();
+		const second = (data1 as Data).date.getTime();
+		const result = first - second;
+		return sortDirection === 'DESC' ? -result : result;
+	};
+
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
@@ -22,11 +31,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				compareFn: (data0, data1) => {
-					if ((data0 as Data).date < (data1 as Data).date) return -1;
-					else if ((data1 as Data).date < (data0 as Data).date) return 1;
-					else return 0;
-				},
+				compareFn: (data0, data1, direction) => compareByDate(direction)(data0, data1),
 			},
 		],
 	],
@@ -41,11 +46,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				compareFn: (data0, data1) => {
-					if ((data0 as Data).date < (data1 as Data).date) return -1;
-					else if ((data1 as Data).date < (data0 as Data).date) return 1;
-					else return 0;
-				},
+				compareFn: (data0, data1, direction) => compareByDate(direction)(data0, data1),
 			},
 		],
 	],
