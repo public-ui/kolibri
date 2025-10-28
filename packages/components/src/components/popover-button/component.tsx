@@ -53,12 +53,19 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
+	 * Show the popover programmatically by calling the native showPopover method.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.refPopover?.showPopover();
+	}
+
+	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
 	public async kolFocus() {
-		// eslint-disable-next-line no-console
-		console.log('Focusing popover button', this.refButton);
 		await this.refButton?.kolFocus();
 	}
 
@@ -169,6 +176,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
+	 * Defines whether the popover is shown.
+	 */
+	@Prop() public _show?: boolean = false;
+
+	/**
 	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
@@ -277,9 +289,24 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
+	@Watch('_show')
+	public validateShow(value?: boolean): void {
+		if (value && this.refPopover && !this.popoverOpen) {
+			this.refPopover.showPopover();
+		} else if (!value && this.refPopover && this.popoverOpen) {
+			this.refPopover.hidePopover();
+		}
+	}
+
 	@Watch('_popoverAlign')
 	public validatePopoverAlign(value?: PopoverAlignPropType): void {
 		validatePopoverAlign(this, value);
+	}
+
+	public componentDidLoad() {
+		if (this._show && this.refPopover) {
+			this.refPopover?.showPopover();
+		}
 	}
 
 	public componentWillLoad() {

@@ -53,4 +53,15 @@ test.describe('kol-popover-button', () => {
 		await button.click();
 		await expect(tooltip).not.toBeVisible();
 	});
+
+	test('should be open initially when the show prop is set to true', async ({ page }) => {
+		await page.setContent(`
+			<kol-popover-button _show _label="Toggle popover">
+				Popover content
+			</kol-popover-button>
+		`);
+
+		const popover = page.getByTestId('popover-content');
+		await expect(popover).toBeVisible();
+	});
 });

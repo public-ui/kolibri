@@ -41,6 +41,15 @@ export class KolPopoverButton implements PopoverButtonProps {
 		void this.ref?.hidePopover();
 	}
 
+	/**
+	 * Shows the popover programmatically by forwarding the call to the web component.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.ref?.showPopover();
+	}
+
 	private catchRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.ref = ref;
 	};
@@ -71,6 +80,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_on={this._on}
 				_popoverAlign={this._popoverAlign}
 				_shortKey={this._shortKey}
+				_show={this._show}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tabIndex={this._tabIndex}
 				_tooltipAlign={this._tooltipAlign}
@@ -83,6 +93,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 			</KolPopoverButtonWcTag>
 		);
 	}
+
+	/**
+	 * Defines whether the popover is shown.
+	 */
+	@Prop() public _show?: boolean;
 
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.

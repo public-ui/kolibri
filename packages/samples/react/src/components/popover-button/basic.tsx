@@ -1,22 +1,12 @@
 import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
 	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
-
-	useEffect(() => {
-		const run = async () => {
-			await buttonRef.current?.kolFocus();
-			if (buttonRef.current instanceof HTMLButtonElement) {
-				buttonRef.current.click();
-			}
-		};
-		run();
-	}, []);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -49,6 +39,10 @@ export const PopoverButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<div className="flex flex-col gap-4">
+				<p>Popower initially open</p>
+				<KolPopoverButton _show _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
+					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
+				</KolPopoverButton>
 				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
