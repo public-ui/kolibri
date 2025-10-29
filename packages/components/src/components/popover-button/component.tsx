@@ -176,11 +176,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
-	 * Defines whether the popover is shown.
-	 */
-	@Prop() public _show?: boolean = false;
-
-	/**
 	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
@@ -259,6 +254,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
+	 * Defines whether the popover is shown.
+	 */
+	@Prop() public _show?: boolean = false;
+
+	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
@@ -289,6 +289,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
+	@Watch('_popoverAlign')
+	public validatePopoverAlign(value?: PopoverAlignPropType): void {
+		validatePopoverAlign(this, value);
+	}
+
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
 		if (value && this.refPopover && !this.popoverOpen) {
@@ -296,11 +301,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 		} else if (!value && this.refPopover && this.popoverOpen) {
 			this.refPopover.hidePopover();
 		}
-	}
-
-	@Watch('_popoverAlign')
-	public validatePopoverAlign(value?: PopoverAlignPropType): void {
-		validatePopoverAlign(this, value);
 	}
 
 	public componentDidLoad() {

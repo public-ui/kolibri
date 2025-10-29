@@ -95,11 +95,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
-	 * Defines whether the popover is shown.
-	 */
-	@Prop() public _show?: boolean;
-
-	/**
 	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
@@ -178,6 +173,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
+	 * Defines whether the popover is shown.
+	 */
+	@Prop() public _show?: boolean;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

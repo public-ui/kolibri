@@ -677,7 +677,6 @@ export class KolTableStateless implements TableStatelessAPI {
 					class={clsx('kol-table__cell kol-table__cell--body', {
 						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
 					})}
-					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
 					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
 					aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
 					colSpan={cell.colSpan}

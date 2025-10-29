@@ -43,9 +43,6 @@ export const PopoverButtonBasic: FC = () => {
 				<KolPopoverButton _show _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
-				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
-					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
-				</KolPopoverButton>
 				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
 					<div className="w-sm p-2 border border-solid border-gray">
 						<KolHeading _label="Help Information" _level={0}></KolHeading>
