@@ -46,9 +46,7 @@ import { InputEmailController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputEmailElement;

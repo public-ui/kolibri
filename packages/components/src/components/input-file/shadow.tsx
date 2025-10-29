@@ -42,9 +42,7 @@ import { InputFileController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputFileElement;

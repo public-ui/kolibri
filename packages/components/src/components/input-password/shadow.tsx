@@ -48,9 +48,7 @@ import { InputPasswordController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputPasswordElement;

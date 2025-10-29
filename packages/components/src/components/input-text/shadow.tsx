@@ -48,9 +48,7 @@ import { InputTextController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputTextElement;
@@ -168,7 +166,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

@@ -37,9 +37,7 @@ import { InputColorController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputColorElement;
