@@ -6,10 +6,10 @@
 
 	.kol-textarea {
 		display: block;
+		height: 100%;
+		padding: 0 to-rem(8);
 		overflow: auto;
 		border: none;
-		padding: 0 to-rem(8);
-		height: 100%;
 
 		&::placeholder {
 			color: var(--color-subtle);

@@ -5,15 +5,15 @@
 	.kol-input-range {
 		&__inputs-wrapper {
 			height: 100%;
-			gap: to-rem(16);
 			padding: 0 to-rem(2);
+			gap: to-rem(16);
 		}
 
 		&__input--number {
 			border-radius: var(--border-radius);
+			height: to-rem(36);
 			border: 1px solid var(--color-subtle);
 			text-align: right;
-			height: to-rem(36);
 		}
 
 		&__input--range {
