@@ -158,7 +158,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

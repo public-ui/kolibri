@@ -17,13 +17,13 @@
 			}
 
 			&--text {
-				width: to-rem(112);
+				width: to-rem(120);
 			}
 		}
 
 		&__inputs-wrapper {
 			display: flex;
-			gap: to-rem(6) !important;
+			gap: to-rem(6);
 			flex-direction: row;
 			align-items: center;
 		}

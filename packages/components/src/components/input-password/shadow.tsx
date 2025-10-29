@@ -101,7 +101,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

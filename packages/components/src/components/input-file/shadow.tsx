@@ -93,7 +93,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-file', 'file'),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
