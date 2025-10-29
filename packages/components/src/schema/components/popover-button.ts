@@ -5,7 +5,7 @@ import type { OptionalButtonProps, RequiredButtonProps } from './button';
 export type RequiredPopoverButtonProps = RequiredButtonProps;
 export type OptionalPopoverButtonProps = OptionalButtonProps &
 	PropPopoverAlign & {
-		show: boolean;
+		open: boolean;
 	};
 
 export type RequiredPopoverButtonStates = PropLabelWithExpertSlot;

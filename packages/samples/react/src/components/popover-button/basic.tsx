@@ -40,7 +40,7 @@ export const PopoverButtonBasic: FC = () => {
 			</SampleDescription>
 			<div className="flex flex-col gap-4">
 				<p>Popower initially open</p>
-				<KolPopoverButton _show _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
+				<KolPopoverButton _open _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
 				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>

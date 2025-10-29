@@ -239,6 +239,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
+	 * Defines whether the popover is shown.
+	 */
+	@Prop() public _open?: boolean = false;
+
+	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
 	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
@@ -252,11 +257,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Defines whether the popover is shown.
-	 */
-	@Prop() public _show?: boolean = false;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -289,13 +289,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@Watch('_popoverAlign')
-	public validatePopoverAlign(value?: PopoverAlignPropType): void {
-		validatePopoverAlign(this, value);
-	}
-
-	@Watch('_show')
-	public validateShow(value?: boolean): void {
+	@Watch('_open')
+	public validateOpen(value?: boolean): void {
 		if (value && this.refPopover && !this.popoverOpen) {
 			this.refPopover.showPopover();
 		} else if (!value && this.refPopover && this.popoverOpen) {
@@ -303,8 +298,13 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
+	@Watch('_popoverAlign')
+	public validatePopoverAlign(value?: PopoverAlignPropType): void {
+		validatePopoverAlign(this, value);
+	}
+
 	public componentDidLoad() {
-		if (this._show && this.refPopover) {
+		if (this._open && this.refPopover) {
 			this.refPopover?.showPopover();
 		}
 	}
