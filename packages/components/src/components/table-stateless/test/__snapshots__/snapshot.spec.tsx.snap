@@ -261,7 +261,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data sh
         </thead>
         <tbody class="kol-table__body">
           <tr class="kol-table__row kol-table__row--body">
-            <td aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
+            <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
               kol-no-entries
             </td>
           </tr>
