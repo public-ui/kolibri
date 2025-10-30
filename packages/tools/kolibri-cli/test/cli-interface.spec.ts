@@ -1,17 +1,17 @@
-import assert from 'node:assert';
+import { Command } from 'commander';
 import fs from 'fs';
+import assert from 'node:assert';
 import os from 'os';
 import path from 'path';
-import { Command } from 'commander';
 import generateScss from '../src/generate-scss';
 import info from '../src/info';
 import migrate from '../src/migrate';
-import { getRemoveMode, setRemoveMode } from '../src/migrate/shares/reuse';
 import { TaskRunner } from '../src/migrate/runner/task-runner';
+import { getRemoveMode, setRemoveMode } from '../src/migrate/shares/reuse';
 
 describe('CLI interface', function () {
-       this.timeout(5000);
-       it('runs generate-scss command', async () => {
+	this.timeout(5000);
+	it('runs generate-scss command', async () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const cwd = process.cwd();
 		process.chdir(tmpDir);
@@ -25,7 +25,7 @@ describe('CLI interface', function () {
 
 		const program = new Command();
 		generateScss(program);
-               await program.parseAsync(['node', 'cli', 'generate-scss']);
+		await program.parseAsync(['node', 'cli', 'generate-scss']);
 
 		typedBem.generateBemScssFile = original;
 		process.chdir(cwd);
@@ -33,7 +33,7 @@ describe('CLI interface', function () {
 		assert.deepStrictEqual(calls, ['alert', 'icon']);
 	});
 
-       it('runs info command', async () => {
+	it('runs info command', async () => {
 		const program = new Command();
 		info(program);
 		let output = '';
@@ -41,12 +41,12 @@ describe('CLI interface', function () {
 		console.log = (str: string) => {
 			output += str;
 		};
-               await program.parseAsync(['node', 'cli', 'info']);
+		await program.parseAsync(['node', 'cli', 'info']);
 		console.log = original;
 		assert.ok(output.includes('Operating System'));
 	});
 
-       it('runs migrate command with options', async () => {
+	it('runs migrate command with options', async () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		fs.writeFileSync(
 			path.join(tmpDir, 'package.json'),
@@ -74,10 +74,10 @@ describe('CLI interface', function () {
 
 			const program = new Command();
 			migrate(program);
-                       await program.parseAsync([
-                                'node',
-                                'cli',
-                                'migrate',
+			await program.parseAsync([
+				'node',
+				'cli',
+				'migrate',
 				'.',
 				'--ignore-uncommitted-changes',
 				'--overwrite-current-version',

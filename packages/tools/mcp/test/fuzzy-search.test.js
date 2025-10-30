@@ -1,5 +1,5 @@
-import test from 'node:test';
 import assert from 'node:assert/strict';
+import test from 'node:test';
 
 import { hasSearchableQuery, performFuzzySearch } from '../src/fuzzy-search.js';
 import { SampleIndex } from '../src/sample-index.js';
