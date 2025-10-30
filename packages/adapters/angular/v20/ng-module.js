@@ -5,13 +5,13 @@ const componentList = [...componentFileContents.matchAll(/export class ([^ ]+)/g
 const componentListStr = componentList.join(', ');
 
 fs.writeFileSync(
-        './src/index.ts',
-        `
+	'./src/index.ts',
+	`
 /* AutoGen NgModule */
 
 export { ${componentListStr} } from './components';
 export { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
 export { setTagNameTransformer } from './angular-component-lib/tagNameTransformer';
 `,
-        'utf-8',
+	'utf-8',
 );
