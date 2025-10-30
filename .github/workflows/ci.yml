@@ -27,13 +27,13 @@ jobs:
       - name: Build
         run: pnpm -r build
       - name: Format
-        run: pnpm -r --parallel format
+        run: pnpm -r format
       - name: Lint
-        run: pnpm -r --parallel lint
+        run: pnpm -r lint
       - name: Unit Tests
-        run: pnpm -r --parallel test:unit
+        run: pnpm -r test:unit
       - name: Unused
-        run: pnpm -r --parallel unused
+        run: pnpm -r unused
 
   e2e-tests:
     continue-on-error: true
