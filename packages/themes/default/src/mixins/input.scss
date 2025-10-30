@@ -9,10 +9,11 @@
 		border-color: var(--color-subtle);
 		border-style: solid;
 		border-radius: var(--border-radius);
+		padding: 0 to-rem(8);
 		border-width: 2px;
 		align-items: stretch;
 
-		@at-root #{$root}__adornment {
+		&__adornment {
 			&--start {
 				> .kol-icon {
 					margin-left: to-rem(8);
@@ -43,8 +44,12 @@
 			@include focus-outline;
 		}
 
-		&__smart-button .kol-button:focus {
-			@include focus-outline;
+		&__smart-button {
+			position: relative;
+			z-index: 2;
+			.kol-button:focus {
+				@include focus-outline;
+			}
 		}
 
 		&--error {
@@ -52,10 +57,5 @@
 				outline-color: var(--color-danger);
 			}
 		}
-	}
-
-	.kol-input {
-		height: 100%;
-		padding: 0 to-rem(8);
 	}
 }

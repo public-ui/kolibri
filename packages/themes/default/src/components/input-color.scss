@@ -1,4 +1,4 @@
-@use '../@shared/input-text' as *;
+@use '../@shared/input-core' as *;
 @use '../mixins/to-rem' as *;
 
 @layer kol-theme-component {
@@ -8,7 +8,6 @@
 		}
 
 		&__input {
-			height: auto;
 			padding: 0;
 
 			&--text,
