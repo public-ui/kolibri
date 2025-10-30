@@ -10,7 +10,12 @@ export type KoliBriTableSelectedHead = { key: string; label: string; sortDirecti
 type KoliBriTableSort = <T>(data: T[]) => T[];
 
 export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
-export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
+export type KoliBriDataCompareFn = (
+		a: KoliBriTableDataType,
+		b: KoliBriTableDataType,
+		sortDirection?: KoliBriSortDirection,
+)
+		=> number;
 
 export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	compareFn?: KoliBriDataCompareFn;

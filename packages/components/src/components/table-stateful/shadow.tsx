@@ -457,9 +457,12 @@ export class KolTableStateful implements TableAPI {
 			sortedData.sort((a: KoliBriTableDataType, b: KoliBriTableDataType) => {
 				for (let index = 0; index < this.sortData.length; index++) {
 					const data = this.sortData[index];
-					const result = data.compareFn(a, b);
-					if (result !== 0) {
-						return data.direction === 'ASC' ? result : -result;
+                                        const result = data.compareFn(a, b, data.direction);
+                                        if (result !== 0) {
+                                                if (data.direction === 'DESC' && data.compareFn.length < 3) {
+                                                        return -result;
+                                                }
+                                                return result;
 					}
 				}
 				return 0;
