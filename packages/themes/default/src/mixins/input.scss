@@ -39,7 +39,11 @@
 			}
 		}
 
-		&:focus-within {
+		&:has(.kol-input:focus) {
+			@include focus-outline;
+		}
+
+		&__smart-button .kol-button:focus {
 			@include focus-outline;
 		}
 
