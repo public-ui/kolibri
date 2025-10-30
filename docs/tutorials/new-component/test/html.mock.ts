@@ -11,14 +11,14 @@ export const getNewComponentHtml = (
 		header?: string;
 		content?: string;
 		footer?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_heading: '…', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const open = props._open === true;
 	return `<kol-new-component${open ? ' _open' : ''}>
