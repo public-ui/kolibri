@@ -61,6 +61,8 @@ jobs:
         run: pnpm run update
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
+      - name: format code
+        run: pnpm format:all -w
 
       - name: Check for changes
         id: verify-changed-files
