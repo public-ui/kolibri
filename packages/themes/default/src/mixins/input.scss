@@ -11,9 +11,12 @@
 		border-radius: var(--border-radius);
 		padding: 0 to-rem(8);
 		border-width: 2px;
+		gap: to-rem(6);
 		align-items: stretch;
 
 		&__adornment {
+			min-width: to-rem(8);
+
 			&--start {
 				> .kol-icon {
 					margin-left: to-rem(8);
