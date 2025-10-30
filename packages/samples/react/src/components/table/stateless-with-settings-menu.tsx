@@ -34,11 +34,11 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 			_headerCells={{
 				horizontal: [
 					[
-						{ key: 'id', label: 'ID', textAlign: 'center' },
-						{ key: 'name', label: 'Name', textAlign: 'center' },
-						{ key: 'role', label: 'Role', textAlign: 'center' },
-						{ key: 'email', label: 'E-Mail', textAlign: 'center' },
-						{ key: 'active', label: 'Active', textAlign: 'center' },
+						{ key: 'id', label: 'ID', textAlign: 'center', sortDirection: 'NOS' },
+						{ key: 'name', label: 'Name', textAlign: 'center', sortDirection: 'NOS' },
+						{ key: 'role', label: 'Role', textAlign: 'center', sortDirection: 'NOS', sizable: false },
+						{ key: 'email', label: 'E-Mail', textAlign: 'center', sortDirection: 'NOS', sortable: false },
+						{ key: 'active', label: 'Active', textAlign: 'center', sortDirection: 'NOS', sortable: false, sizable: false },
 					],
 				],
 			}}

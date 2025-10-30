@@ -2,7 +2,8 @@ export interface ColumnSettings {
 	hidable?: boolean;
 	key: string;
 	label: string;
-	position: number;
+	sortable?: boolean;
+	sizable?: boolean;
 	visible: boolean;
 	width?: number;
 }
