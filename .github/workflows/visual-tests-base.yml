@@ -21,18 +21,43 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Determine package paths
+        id: package-paths
+        shell: bash
+        run: |
+          set -eo pipefail
+          PACKAGE="${{ matrix.package }}"
+          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
+            PACKAGE_DIR="packages/test-tag-name-transformer"
+          else
+            THEME_DIR="${PACKAGE#theme-}"
+            PACKAGE_DIR="packages/themes/${THEME_DIR}"
+          fi
+          SNAPSHOT_DIR="${PACKAGE_DIR}/snapshots"
+          echo "package_dir=${PACKAGE_DIR}" >> "$GITHUB_OUTPUT"
+          echo "snapshot_dir=${SNAPSHOT_DIR}" >> "$GITHUB_OUTPUT"
+          if [ -d "${PACKAGE_DIR}" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping base snapshot generation because ${PACKAGE_DIR} does not exist on the base branch."
+          fi
+
       - uses: ./.github/actions/pnpm-setup
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps firefox
 
       - name: Build base branch
+        if: steps.package-paths.outputs.exists == 'true'
         run: pnpm --filter @public-ui/sample-react^... build
 
       - name: Generate base snapshots
+        if: steps.package-paths.outputs.exists == 'true'
         run: pnpm --filter=@public-ui/${{ matrix.package }} test-update
 
       - name: Store base snapshots
+        if: steps.package-paths.outputs.exists == 'true'
         run: |
           set -eo pipefail
           PACKAGE="${{ matrix.package }}"
@@ -57,6 +82,7 @@ jobs:
       - uses: ./.github/actions/pnpm-setup
 
       - name: Restore base snapshots
+        if: steps.package-paths.outputs.exists == 'true'
         run: |
           set -eo pipefail
           PACKAGE="${{ matrix.package }}"
@@ -84,7 +110,7 @@ jobs:
           name: report-base-snapshots-${{ matrix.package }}
 
       - name: Upload base snapshots
-        if: failure()
+        if: failure() && steps.package-paths.outputs.exists == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: base-snapshots-${{ matrix.package }}
