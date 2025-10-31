@@ -46,9 +46,7 @@ import { InputDateController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputDateElement;
@@ -160,7 +158,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
