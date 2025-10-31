@@ -19,7 +19,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validatePopoverAlign } from '../../schema';
+import { validatePopoverAlign, validateShow } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
@@ -289,23 +289,20 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@Watch('_show')
-	public validateShow(value?: boolean): void {
-		if (value && this.refPopover && !this.popoverOpen) {
-			this.refPopover.showPopover();
-		} else if (!value && this.refPopover && this.popoverOpen) {
-			this.refPopover.hidePopover();
-		}
-	}
-
 	@Watch('_popoverAlign')
 	public validatePopoverAlign(value?: PopoverAlignPropType): void {
 		validatePopoverAlign(this, value);
 	}
 
+	@Watch('_show')
+	public validateShow(value?: boolean): void {
+		validateShow(this, value);
+		if (value) void this.showPopover();
+	}
+
 	public componentDidLoad() {
-		if (this._show && this.refPopover) {
-			this.refPopover?.showPopover();
+		if (this._show) {
+			void this.showPopover();
 		}
 	}
 
