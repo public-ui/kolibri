@@ -300,7 +300,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	public componentDidLoad() {
-		if (this._show) void this.showPopover();
+		if (this._show) {
+			void this.showPopover();
+		}
 	}
 
 	public componentWillLoad() {

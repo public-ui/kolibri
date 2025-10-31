@@ -578,8 +578,8 @@ ROUTES.set('popover-button/basic', {
 			skip: true,
 		},
 		viewportSize: {
-			width: 800,
-			height: 300,
+			width: 200,
+			height: 220,
 		}
 	},
 });
