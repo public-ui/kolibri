@@ -12,8 +12,9 @@
 		padding: 0 to-rem(8);
 		border-width: 2px;
 		gap: to-rem(6);
+		align-items: stretch;
 
-		@at-root #{$root}__adornment {
+		&__adornment {
 			min-width: to-rem(8);
 
 			&--start {
@@ -42,8 +43,16 @@
 			}
 		}
 
-		&:focus-within {
+		&:has(.kol-input:focus) {
 			@include focus-outline;
+		}
+
+		&__smart-button {
+			position: relative;
+			z-index: 2;
+			.kol-button:focus {
+				@include focus-outline;
+			}
 		}
 
 		&--error {
