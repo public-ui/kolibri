@@ -12,10 +12,9 @@
 
 		grid-template-areas:
 			'header  close'
-			'content content'
-			'footer  footer';
-		grid-template-columns: 1fr max-content;
-		grid-template-rows: auto 1fr auto;
+			'content content';
+		grid-template-columns: 1fr min-content;
+		grid-template-rows: min-content 1fr;
 
 		&__header {
 			align-self: start;
@@ -23,21 +22,12 @@
 		}
 
 		&__content {
-			min-width: 0;
-			min-height: 0;
-			align-self: start;
+			align-self: stretch;
 			grid-area: content;
 		}
 
 		&__close-button {
-			align-self: start;
-			justify-self: end;
 			grid-area: close;
-		}
-
-		&__footer {
-			align-self: end;
-			grid-area: footer;
 		}
 	}
 }
