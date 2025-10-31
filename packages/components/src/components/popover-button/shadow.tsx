@@ -175,7 +175,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
-	 * Defines whether the popover is shown.
+	 * Makes the element show up.
 	 */
 	@Prop() public _show?: boolean;
 

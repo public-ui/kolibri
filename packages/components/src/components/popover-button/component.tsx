@@ -254,7 +254,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
-	 * Defines whether the popover is shown.
+	 * Makes the element show up.
 	 */
 	@Prop() public _show?: boolean = false;
 
@@ -297,13 +297,10 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
 		validateShow(this, value);
-		if (value) void this.showPopover();
 	}
 
 	public componentDidLoad() {
-		if (this._show) {
-			void this.showPopover();
-		}
+		if (this._show) void this.showPopover();
 	}
 
 	public componentWillLoad() {
