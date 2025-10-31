@@ -577,6 +577,10 @@ ROUTES.set('popover-button/basic', {
 		zoom: {
 			skip: true,
 		},
+		viewportSize: {
+			width: 800,
+			height: 300,
+		}
 	},
 });
 ROUTES.set('progress/basic', {
