@@ -61,8 +61,13 @@ jobs:
         run: pnpm run update
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
-      - name: format code
-        run: pnpm format:all -w
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps firefox
+      - name: Format code and configs
+        run: |
+          pnpx prettier --write '**/*.{js,ts,json,yml,yaml,md}' '*.{js,ts,json,yml,yaml,md}'
+          pnpx prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'
+          pnpm -r format -w
 
       - name: Check for changes
         id: verify-changed-files
@@ -79,10 +84,13 @@ jobs:
         with:
           base: ${{ matrix.base }}
           branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
+          author: 'deleonio <6279703+deleonio@users.noreply.github.com>'
           commit-message: 'chore: update dependencies and lock file'
+          # committer: 'deleonio <6279703+deleonio@users.noreply.github.com>'
           title: 'chore(${{ env.version }}): update dependencies and lock file'
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
+          # token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Quality Checks
         if: steps.verify-changed-files.outputs.changed == 'true'
