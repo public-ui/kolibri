@@ -34,7 +34,7 @@
 		"monaco-editor": "0.52.2",
 		"prettier": "2.8.8",
 		"register-service-worker": "1.7.2",
-		"solid-js": "1.9.9",
+		"solid-js": "1.9.10",
 		"world_countries_lists": "3.2.0"
 	},
 	"devDependencies": {
@@ -53,7 +53,7 @@
 		"nightwatch-axe-verbose": "2.4.0",
 		"npm-run-all2": "8.0.4",
 		"react-dev-utils": "12.0.1",
-		"rimraf": "6.0.1",
+		"rimraf": "6.1.0",
 		"typescript": "5.9.3",
 		"webpack": "5.102.1"
 	},
