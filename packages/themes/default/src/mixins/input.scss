@@ -43,7 +43,7 @@
 			}
 		}
 
-		&:has(.kol-input:focus) {
+		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 			@include focus-outline;
 		}
 
@@ -56,7 +56,7 @@
 		}
 
 		&--error {
-			&:has(.kol-input:focus) {
+			&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 				outline-color: var(--color-danger);
 			}
 		}
