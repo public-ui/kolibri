@@ -25,9 +25,7 @@ import type {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	private buttonWcRef?: HTMLKolButtonWcElement;
