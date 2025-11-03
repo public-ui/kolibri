@@ -34,8 +34,8 @@
 	.kol-input-container:has(:not(.kol-select[multiple])) {
 		position: relative;
 		padding: 0;
-		grid-template-columns: auto max-content min-content;
 		gap: 0;
+		grid-template-columns: auto max-content min-content;
 
 		.kol-input-container__adornment {
 			position: absolute;
