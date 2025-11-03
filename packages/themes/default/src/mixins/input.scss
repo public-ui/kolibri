@@ -56,7 +56,7 @@
 		}
 
 		&--error {
-			&:focus-within {
+			&:has(.kol-input:focus) {
 				outline-color: var(--color-danger);
 			}
 		}
