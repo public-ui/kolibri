@@ -6,6 +6,8 @@
 		padding-right: to-rem(8);
 		padding-left: to-rem(8);
 		place-items: center;
+		height: to-rem(40);
+		min-height: 0;
 
 		&:focus {
 			outline: 0;

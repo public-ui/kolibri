@@ -4,7 +4,7 @@
 @layer kol-theme-component {
 	.kol-input {
 		background-color: transparent;
-		height: var(--a11y-min-size);
+		height: to-rem(40);
 		padding: 0 to-rem(10);
 		border: none;
 
@@ -21,6 +21,7 @@
 
 		&__adornment {
 			position: absolute;
+			top: to-rem(-2);
 
 			&--start {
 				left: 0;
