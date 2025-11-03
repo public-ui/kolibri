@@ -42,12 +42,12 @@
 			}
 		}
 
-		&:focus-within {
+		&:has(.kol-input:focus) {
 			@include focus-outline;
 		}
 
 		&--error {
-			&:focus-within {
+			&:has(.kol-input:focus) {
 				outline-color: var(--color-danger);
 			}
 		}
