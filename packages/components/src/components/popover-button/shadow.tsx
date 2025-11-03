@@ -78,9 +78,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_label={this._label}
 				_name={this._name}
 				_on={this._on}
-				_show={this._show}
 				_popoverAlign={this._popoverAlign}
 				_shortKey={this._shortKey}
+				_show={this._show}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tabIndex={this._tabIndex}
 				_tooltipAlign={this._tooltipAlign}

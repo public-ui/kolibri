@@ -75,4 +75,15 @@ test.describe('kol-popover-button', () => {
 		const popover = page.getByTestId('popover-content');
 		await expect(popover).not.toBeVisible();
 	});
+
+	test('should be closed initially when the _show prop is not set', async ({ page }) => {
+		await page.setContent(`
+			<kol-popover-button _label="Toggle popover">
+				Popover content
+			</kol-popover-button>
+		`);
+
+		const popover = page.getByTestId('popover-content');
+		await expect(popover).not.toBeVisible();
+	});
 });
