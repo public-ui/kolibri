@@ -50,7 +50,7 @@ jobs:
       # Tests in sample app are currently failing and hence disabled.
       # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
       - name: E2E Test
-        run: pnpm test:e2e
+        run: pnpm -r test:e2e
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
