@@ -1,4 +1,8 @@
+import { createRequire } from 'node:module';
 import { URL } from 'node:url';
+
+const require = createRequire(import.meta.url);
+const { version: PACKAGE_VERSION, name: PACKAGE_NAME, description: PACKAGE_DESCRIPTION, homepage: PACKAGE_HOMEPAGE } = require('../package.json');
 
 function buildCorsHeaders() {
 	return {
@@ -9,10 +13,10 @@ function buildCorsHeaders() {
 }
 
 function logRequest(method, url, pathname, statusCode, responseTime) {
-	// Only log if MCP_DEBUG is enabled
-	if (!process.env.MCP_DEBUG) {
-		return;
-	}
+        // Only log if MCP_DEBUG is enabled
+        if (!process.env.MCP_DEBUG) {
+                return;
+        }
 
 	// Skip logging for root path requests to reduce noise
 	if (pathname === '/') {
@@ -34,9 +38,33 @@ function logRequest(method, url, pathname, statusCode, responseTime) {
 		statusColor = '\x1b[31m'; // Red for 4xx and 5xx
 	}
 
-	console.log(
-		`\x1b[90m[${timestamp}]\x1b[0m ${methodFormatted} ${statusColor}${statusFormatted}\x1b[0m ${timeFormatted} ${pathname}${url !== pathname ? ` (${url})` : ''}`,
-	);
+        console.log(
+                `\x1b[90m[${timestamp}]\x1b[0m ${methodFormatted} ${statusColor}${statusFormatted}\x1b[0m ${timeFormatted} ${pathname}${url !== pathname ? ` (${url})` : ''}`,
+        );
+}
+
+const STREAMING_HEADERS = {
+        'Content-Type': 'text/event-stream; charset=utf-8',
+        'Cache-Control': 'no-cache, no-transform',
+        Connection: 'keep-alive',
+        'X-Accel-Buffering': 'no',
+};
+
+function createSseStream({ meta = {}, items = [], itemEventName = 'item' } = {}) {
+        const enrichedMeta = withAiHints(meta);
+        return (async function* streamGenerator() {
+                yield ': connected\n\n';
+                yield `event: meta\ndata: ${JSON.stringify(enrichedMeta)}\n\n`;
+
+                let index = 0;
+                for (const item of items) {
+                        const payload = { index, ...item };
+                        yield `event: ${itemEventName}\ndata: ${JSON.stringify(payload)}\n\n`;
+                        index += 1;
+                }
+
+                yield `event: end\ndata: ${JSON.stringify({ total: items.length })}\n\n`;
+        })();
 }
 
 export const AI_HINTS_KEY = 'ai-hints';
@@ -116,23 +144,38 @@ function normalizePathname(pathname) {
 	return pathname;
 }
 
-export async function handleApiRequest({ method = 'GET', url = '/', getIndex } = {}) {
-	const startTime = Date.now();
-	const baseHeaders = buildCorsHeaders();
-	const normalizedMethod = method.toUpperCase();
-	const requestUrl = new URL(url, 'http://localhost');
-	const pathname = normalizePathname(requestUrl.pathname);
+export async function handleApiRequest({ method = 'GET', url = '/', headers = {}, getIndex } = {}) {
+        const startTime = Date.now();
+        const baseHeaders = buildCorsHeaders();
+        const normalizedMethod = method.toUpperCase();
+        const requestUrl = new URL(url, 'http://localhost');
+        const pathname = normalizePathname(requestUrl.pathname);
+        const acceptsHeader = `${headers.accept ?? ''}`.toLowerCase();
+        const wantsStream =
+                acceptsHeader.includes('text/event-stream') ||
+                ['1', 'true', 'yes'].includes((requestUrl.searchParams.get('stream') ?? '').toLowerCase()) ||
+                (requestUrl.searchParams.get('format') ?? '').toLowerCase() === 'sse';
 
-	// Helper function to create response and log it
-	const createResponse = (statusCode, body = {}) => {
-		const responseTime = Date.now() - startTime;
-		logRequest(normalizedMethod, url, pathname, statusCode, responseTime);
-		return {
-			statusCode,
-			headers: baseHeaders,
-			body,
-		};
-	};
+        // Helper function to create response and log it
+        const finalizeResponse = (statusCode, { body, headers: extraHeaders = {}, stream } = {}) => {
+                const responseTime = Date.now() - startTime;
+                logRequest(normalizedMethod, url, pathname, statusCode, responseTime);
+                return {
+                        statusCode,
+                        headers: { ...baseHeaders, ...extraHeaders },
+                        body,
+                        stream,
+                };
+        };
+
+        const createResponse = (statusCode, body = {}, headersOverride = {}) =>
+                finalizeResponse(statusCode, { body, headers: headersOverride });
+
+        const createStreamResponse = (statusCode, { meta = {}, items = [], itemEventName = 'item' } = {}) =>
+                finalizeResponse(statusCode, {
+                        headers: { ...STREAMING_HEADERS },
+                        stream: createSseStream({ meta, items, itemEventName }),
+                });
 
 	if (normalizedMethod === 'OPTIONS') {
 		return createResponse(204);
@@ -149,27 +192,100 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		const counts = resolveCounts(index);
 		const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt : undefined;
 
-		return createResponse(
-			200,
-			withAiHints({
-				message: 'KoliBri MCP backend is running.',
-				endpoints: [
-					'/health',
-					'/samples',
-					'/samples?q=<query>',
-					'/sample?id=sample/<component>/<sample>',
-					'/docs',
-					'/docs?q=<query>',
-					'/doc?id=doc/<identifier>',
-				],
-				totalEntries: counts.total,
-				totalSamples: counts.totalSamples,
-				totalDocs: counts.totalDocs,
-				generatedAt: (generatedAt ?? new Date()).toISOString(),
-				buildMode: index?.buildMode ?? 'runtime',
-			}),
-		);
-	}
+                return createResponse(
+                        200,
+                        withAiHints({
+                                message: 'KoliBri MCP backend is running.',
+                                endpoints: [
+                                        '/initialize',
+                                        '/health',
+                                        '/samples',
+                                        '/samples?q=<query>',
+                                        '/samples?stream=1',
+                                        '/sample?id=sample/<component>/<sample>',
+                                        '/docs',
+                                        '/docs?q=<query>',
+                                        '/docs?stream=1',
+                                        '/doc?id=doc/<identifier>',
+                                ],
+                                totalEntries: counts.total,
+                                totalSamples: counts.totalSamples,
+                                totalDocs: counts.totalDocs,
+                                generatedAt: (generatedAt ?? new Date()).toISOString(),
+                                buildMode: index?.buildMode ?? 'runtime',
+                                streaming: { sse: true },
+                        }),
+                );
+        }
+
+        if ((normalizedMethod === 'POST' || normalizedMethod === 'GET') && pathname === '/initialize') {
+                const index = await getIndex();
+                const counts = resolveCounts(index);
+                const generatedAt = index.generatedAt instanceof Date ? index.generatedAt : new Date();
+
+                return createResponse(
+                        200,
+                        withAiHints({
+                                protocol: '2024-11-05',
+                                server: {
+                                        name: PACKAGE_NAME ?? 'KoliBri MCP Server',
+                                        version: PACKAGE_VERSION,
+                                        description:
+                                                PACKAGE_DESCRIPTION ??
+                                                'Model Context Protocol server providing access to KoliBri samples and documentation.',
+                                        homepage: PACKAGE_HOMEPAGE ?? 'https://public-ui.github.io',
+                                },
+                                capabilities: {
+                                        streaming: { sse: true },
+                                        filters: ['q'],
+                                },
+                                resources: [
+                                        {
+                                                id: 'samples',
+                                                name: 'Component Samples',
+                                                endpoint: '/samples',
+                                                kind: 'collection',
+                                                streaming: true,
+                                                methods: ['GET'],
+                                                params: ['q'],
+                                        },
+                                        {
+                                                id: 'sample',
+                                                name: 'Component Sample Detail',
+                                                endpoint: '/sample',
+                                                kind: 'item',
+                                                streaming: false,
+                                                methods: ['GET'],
+                                                params: ['id'],
+                                        },
+                                        {
+                                                id: 'docs',
+                                                name: 'Documentation Entries',
+                                                endpoint: '/docs',
+                                                kind: 'collection',
+                                                streaming: true,
+                                                methods: ['GET'],
+                                                params: ['q'],
+                                        },
+                                        {
+                                                id: 'doc',
+                                                name: 'Documentation Detail',
+                                                endpoint: '/doc',
+                                                kind: 'item',
+                                                streaming: false,
+                                                methods: ['GET'],
+                                                params: ['id'],
+                                        },
+                                ],
+                                totals: {
+                                        total: counts.total,
+                                        samples: counts.totalSamples,
+                                        docs: counts.totalDocs,
+                                },
+                                generatedAt: generatedAt.toISOString(),
+                        }),
+                );
+        }
 
 	if (normalizedMethod === 'GET' && pathname === '/health') {
 		const index = await getIndex();
@@ -199,27 +315,39 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		});
 	}
 
-	if (normalizedMethod === 'GET' && pathname === '/samples') {
-		const index = await getIndex();
-		const query = requestUrl.searchParams.get('q') ?? '';
-		const items = index.list(query, { kinds: ['sample'] }).map((entry) => ({
-			group: entry.group,
-			id: entry.id,
-			name: entry.name,
-			path: entry.path,
-			kind: entry.kind ?? 'sample',
-		}));
-		const counts = resolveCounts(index);
-		return createResponse(200, {
-			items,
-			query,
-			total: items.length,
-			totalEntries: counts.total,
-			totalSamples: counts.totalSamples,
-			totalDocs: counts.totalDocs,
-			generatedAt: index.generatedAt.toISOString(),
-		});
-	}
+        if (normalizedMethod === 'GET' && pathname === '/samples') {
+                const index = await getIndex();
+                const query = requestUrl.searchParams.get('q') ?? '';
+                const items = index.list(query, { kinds: ['sample'] }).map((entry) => ({
+                        group: entry.group,
+                        id: entry.id,
+                        name: entry.name,
+                        path: entry.path,
+                        kind: entry.kind ?? 'sample',
+                }));
+                const counts = resolveCounts(index);
+                const meta = {
+                        query,
+                        total: items.length,
+                        totalEntries: counts.total,
+                        totalSamples: counts.totalSamples,
+                        totalDocs: counts.totalDocs,
+                        generatedAt: index.generatedAt.toISOString(),
+                };
+
+                if (wantsStream) {
+                        return createStreamResponse(200, {
+                                meta,
+                                items,
+                                itemEventName: 'sample',
+                        });
+                }
+
+                return createResponse(200, {
+                        items,
+                        ...meta,
+                });
+        }
 
 	if (normalizedMethod === 'GET' && pathname === '/sample') {
 		const index = await getIndex();
@@ -247,26 +375,38 @@ export async function handleApiRequest({ method = 'GET', url = '/', getIndex } =
 		});
 	}
 
-	if (normalizedMethod === 'GET' && pathname === '/docs') {
-		const index = await getIndex();
-		const query = requestUrl.searchParams.get('q') ?? '';
-		const items = index.list(query, { kinds: ['doc'] }).map((entry) => ({
-			group: entry.group,
-			id: entry.id,
-			name: entry.name,
-			path: entry.path,
-			kind: entry.kind ?? 'doc',
-		}));
-		const counts = resolveCounts(index);
-		return createResponse(200, {
-			items,
-			query,
-			total: items.length,
-			totalEntries: counts.totalDocs,
-			totalDocs: counts.totalDocs,
-			generatedAt: index.generatedAt.toISOString(),
-		});
-	}
+        if (normalizedMethod === 'GET' && pathname === '/docs') {
+                const index = await getIndex();
+                const query = requestUrl.searchParams.get('q') ?? '';
+                const items = index.list(query, { kinds: ['doc'] }).map((entry) => ({
+                        group: entry.group,
+                        id: entry.id,
+                        name: entry.name,
+                        path: entry.path,
+                        kind: entry.kind ?? 'doc',
+                }));
+                const counts = resolveCounts(index);
+                const meta = {
+                        query,
+                        total: items.length,
+                        totalEntries: counts.totalDocs,
+                        totalDocs: counts.totalDocs,
+                        generatedAt: index.generatedAt.toISOString(),
+                };
+
+                if (wantsStream) {
+                        return createStreamResponse(200, {
+                                meta,
+                                items,
+                                itemEventName: 'doc',
+                        });
+                }
+
+                return createResponse(200, {
+                        items,
+                        ...meta,
+                });
+        }
 
 	if (normalizedMethod === 'GET' && pathname === '/doc') {
 		const index = await getIndex();
