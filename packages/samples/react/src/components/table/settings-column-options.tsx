@@ -21,8 +21,8 @@ export const TableSettingsColumnOptions: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				This example demonstrates how the table settings respect column metadata. Some columns can be hidden, reordered, or sized, while others stay locked
-				based on their <code>hidable</code>, <code>sortable</code>, and <code>sizable</code> flags.
+                                This example demonstrates how the table settings respect column metadata. Some columns can be hidden, reordered, or resized, while others stay locked
+                                based on their <code>hidable</code>, <code>sortable</code>, and <code>resizable</code> flags.
 			</p>
 		</SampleDescription>
 
@@ -36,8 +36,8 @@ export const TableSettingsColumnOptions: FC = () => (
 						{ key: 'id', label: 'ID', hidable: false, sortable: false },
 						{ key: 'name', label: 'Name' },
 						{ key: 'team', label: 'Team', sortable: false },
-						{ key: 'email', label: 'E-Mail', sizable: false },
-						{ key: 'status', label: 'Status', hidable: false, sizable: false },
+                                                { key: 'email', label: 'E-Mail', resizable: false },
+                                                { key: 'status', label: 'Status', hidable: false, resizable: false },
 					],
 				],
 			}}
@@ -46,8 +46,8 @@ export const TableSettingsColumnOptions: FC = () => (
 					{ key: 'id', label: 'ID', visible: true, width: 15, hidable: false, sortable: false },
 					{ key: 'name', label: 'Name', visible: true, width: 30 },
 					{ key: 'team', label: 'Team', visible: true, width: 20, sortable: false },
-					{ key: 'email', label: 'E-Mail', visible: true, width: 25, sizable: false },
-					{ key: 'status', label: 'Status', visible: true, width: 10, hidable: false, sizable: false },
+                                        { key: 'email', label: 'E-Mail', visible: true, width: 25, resizable: false },
+                                        { key: 'status', label: 'Status', visible: true, width: 10, hidable: false, resizable: false },
 				],
 			}}
 			_data={DATA}
