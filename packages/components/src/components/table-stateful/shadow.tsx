@@ -425,6 +425,7 @@ export class KolTableStateful implements TableAPI {
 
 	private updateSortedData = () => {
 		if (this.disableSort) {
+			this.updateHeaderCellsSortOrder();
 			setState(this, '_sortedData', this.state._data);
 			return;
 		}
@@ -442,7 +443,37 @@ export class KolTableStateful implements TableAPI {
 				return 0;
 			});
 		}
+		this.updateHeaderCellsSortOrder();
 		setState(this, '_sortedData', sortedData);
+	};
+
+	private updateHeaderCellsSortOrder = () => {
+		const updateCells = (cells: KoliBriTableHeaderCellWithLogic[]) => {
+			cells.forEach((cell) => {
+				if (cell.key) {
+					const sortIndex = this.sortData.findIndex((s) => s.key === cell.key);
+					if (sortIndex >= 0) {
+						cell.sortOrder = sortIndex + 1;
+					} else {
+						delete cell.sortOrder;
+					}
+				}
+			});
+		};
+
+		if (this.state._headers.horizontal) {
+			this.state._headers.horizontal.forEach((row) => {
+				updateCells(row);
+			});
+		}
+
+		if (this.state._headers.vertical) {
+			this.state._headers.vertical.forEach((column) => {
+				updateCells(column);
+			});
+		}
+
+		this.state = { ...this.state };
 	};
 
 	/**
@@ -572,6 +603,7 @@ export class KolTableStateful implements TableAPI {
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
+					_allowMultiSort={this.state._allowMultiSort}
 					ref={this.catchRef}
 					_data={displayedData}
 					_headerCells={headerCells}

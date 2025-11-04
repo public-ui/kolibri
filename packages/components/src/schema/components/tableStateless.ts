@@ -19,6 +19,7 @@ type RequiredStates = {
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];
 	selection: KoliBriTableSelection;
+	allowMultiSort: boolean;
 } & PropTableCallbacks &
 	PropTableSettings &
 	PropHasSettingsMenu;

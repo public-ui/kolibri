@@ -92,7 +92,7 @@ export const MultiSortTable: FC = () => {
 						_data={DATA.slice(0, 10)}
 						_headers={HEADERS_VERTICAL}
 						className="block"
-						_allowMultiSort={allowMultiSortVertical}
+						_allowMultiSort={true}
 					/>
 				</section>
 				<section className="grid gap-4">
@@ -109,7 +109,7 @@ export const MultiSortTable: FC = () => {
 						_data={DATA}
 						_headers={HEADERS_HORIZONTAL}
 						className="block"
-						_allowMultiSort={allowMultiSortHorizontal}
+						_allowMultiSort={true}
 					/>
 				</section>
 			</section>

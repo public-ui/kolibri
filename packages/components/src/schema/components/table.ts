@@ -20,6 +20,7 @@ export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	_sort?: KoliBriSortFunction;
 	sortDirection?: KoliBriSortDirection;
 	headerCell?: true;
+	sortOrder?: number;
 };
 
 export type KoliBriTableHeaders = {
