@@ -176,6 +176,13 @@ ROUTES.set('card/basic', {
 		},
 	},
 });
+ROUTES.set('card/headlines', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('combobox/basic?noColumns', {
 	snapshot: {
 		skip: true,
