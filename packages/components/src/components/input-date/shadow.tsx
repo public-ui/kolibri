@@ -128,8 +128,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			return false;
 		}
 
-		const computedStyle = window.getComputedStyle(this.inputRef, 'focus-visible');
-		return computedStyle.getPropertyValue('content') === 'native-icon-focused';
+		const computedStyle = window.getComputedStyle(this.inputRef);
+		return computedStyle.content.includes('native-icon-focused');
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
