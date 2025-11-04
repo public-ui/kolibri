@@ -115,37 +115,37 @@ export default async function handler(request, response) {
 
 			const getIndex = async () => mockIndex;
 
-                        const result = await handleApiRequest({
-                                method: request.method || 'GET',
-                                url: fullUrl.toString(),
-                                headers: request.headers || {},
-                                getIndex,
-                        });
+			const result = await handleApiRequest({
+				method: request.method || 'GET',
+				url: fullUrl.toString(),
+				headers: request.headers || {},
+				getIndex,
+			});
 
-                        response.status(result.statusCode);
-                        Object.entries(result.headers).forEach(([key, value]) => {
-                                response.setHeader(key, value);
-                        });
+			response.status(result.statusCode);
+			Object.entries(result.headers).forEach(([key, value]) => {
+				response.setHeader(key, value);
+			});
 
-                        if (result.stream) {
-                                response.flushHeaders?.();
-                                try {
-                                        for await (const chunk of result.stream) {
-                                                response.write(chunk);
-                                        }
-                                } finally {
-                                        response.end();
-                                }
-                                return;
-                        }
+			if (result.stream) {
+				response.flushHeaders?.();
+				try {
+					for await (const chunk of result.stream) {
+						response.write(chunk);
+					}
+				} finally {
+					response.end();
+				}
+				return;
+			}
 
-                        const responseBody = result.body ?? {};
-                        if (fullUrl.pathname === '/') {
-                                response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
-                        } else {
-                                response.json(responseBody);
-                        }
-                } else {
+			const responseBody = result.body ?? {};
+			if (fullUrl.pathname === '/') {
+				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			} else {
+				response.json(responseBody);
+			}
+		} else {
 			// Fallback: Verwende Build-Artefakte (kann auf Vercel problematisch sein)
 			const { handleApiRequest, buildSampleIndex } = await import('../dist/index.mjs');
 
@@ -159,38 +159,38 @@ export default async function handler(request, response) {
 			};
 
 			// API Handler aufrufen
-                        const result = await handleApiRequest({
-                                method: request.method || 'GET',
-                                url: fullUrl.toString(),
-                                headers: request.headers || {},
-                                getIndex,
-                        });
+			const result = await handleApiRequest({
+				method: request.method || 'GET',
+				url: fullUrl.toString(),
+				headers: request.headers || {},
+				getIndex,
+			});
 
-                        // Response senden
-                        response.status(result.statusCode);
-                        Object.entries(result.headers).forEach(([key, value]) => {
-                                response.setHeader(key, value);
-                        });
+			// Response senden
+			response.status(result.statusCode);
+			Object.entries(result.headers).forEach(([key, value]) => {
+				response.setHeader(key, value);
+			});
 
-                        if (result.stream) {
-                                response.flushHeaders?.();
-                                try {
-                                        for await (const chunk of result.stream) {
-                                                response.write(chunk);
-                                        }
-                                } finally {
-                                        response.end();
-                                }
-                                return;
-                        }
+			if (result.stream) {
+				response.flushHeaders?.();
+				try {
+					for await (const chunk of result.stream) {
+						response.write(chunk);
+					}
+				} finally {
+					response.end();
+				}
+				return;
+			}
 
-                        const responseBody = result.body ?? {};
-                        if (fullUrl.pathname === '/') {
-                                response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
-                        } else {
-                                response.json(responseBody);
-                        }
-                }
+			const responseBody = result.body ?? {};
+			if (fullUrl.pathname === '/') {
+				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
+			} else {
+				response.json(responseBody);
+			}
+		}
 	} catch (error) {
 		console.error('[api/mcp] Handler error:', error);
 
