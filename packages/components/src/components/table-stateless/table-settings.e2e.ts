@@ -19,6 +19,14 @@ const HEADERS: TableHeaderCellsPropType = {
 	],
 };
 
+const LEGACY_TABLE_SETTINGS = {
+	columns: [
+		{ key: 'id', label: 'ID', visible: true, sizable: false },
+		{ key: 'name', label: 'Name', visible: true },
+		{ key: 'age', label: 'Age', visible: true },
+	],
+};
+
 test.describe('kol-table-settings', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.setContent(`<kol-table-stateless
@@ -90,25 +98,25 @@ test.describe('kol-table-settings', () => {
 						label: 'ID',
 						visible: true,
 						hidable: true,
-                                                resizable: true,
-                                                sortable: true,
-                                        },
-                                        {
-                                                key: 'name',
-                                                label: 'Name',
-                                                visible: true,
-                                                hidable: true,
-                                                resizable: true,
-                                                sortable: true,
-                                        },
-                                        {
-                                                key: 'age',
-                                                label: 'Age',
-                                                visible: true,
-                                                hidable: true,
-                                                resizable: true,
-                                                sortable: true,
-                                        },
+						resizable: true,
+						sortable: true,
+					},
+					{
+						key: 'name',
+						label: 'Name',
+						visible: true,
+						hidable: true,
+						resizable: true,
+						sortable: true,
+					},
+					{
+						key: 'age',
+						label: 'Age',
+						visible: true,
+						hidable: true,
+						resizable: true,
+						sortable: true,
+					},
 				],
 			});
 		});
@@ -193,6 +201,23 @@ test.describe('kol-table-settings', () => {
 			// Verify width is applied
 			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
 			await expect(idColumn).toHaveAttribute('style', 'width: 50ch;');
+		});
+
+		test('it keeps width inputs disabled when legacy sizable is false', async ({ page }) => {
+			await page.setContent(`<kol-table-stateless
+      _label="Table with Settings"
+      _header-cells='${JSON.stringify(HEADERS)}'
+      _data='${JSON.stringify(DATA)}'
+      _has-settings-menu
+      _table-settings='${JSON.stringify(LEGACY_TABLE_SETTINGS)}'
+    />`);
+			await page.waitForChanges();
+
+			const settingsButton = page.getByTestId('popover-button').locator('button');
+			await settingsButton.click();
+
+			const idWidthInput = page.getByRole('spinbutton', { name: 'ID' });
+			await expect(idWidthInput).toBeDisabled();
 		});
 	});
 

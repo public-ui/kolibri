@@ -190,6 +190,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		validateTableSettingsProp(this, this.normalizeTableSettings(value));
 	}
 
+	private getNormalizedResizableFlag(flags: { resizable?: boolean; sizable?: boolean }): boolean {
+		if (flags.resizable !== undefined) {
+			return flags.resizable !== false;
+		}
+
+		return flags.sizable !== false;
+	}
+
 	private normalizeTableSettings(value?: TableSettingsPropType): TableSettingsPropType | undefined {
 		if (!value || typeof value !== 'object') {
 			return value;
@@ -199,13 +207,18 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return {
 			...value,
-			columns: columns.map((column) => ({
-				...column,
-				hidable: column.hidable !== false,
-				sortable: column.sortable !== false,
-				resizable: column.resizable !== false,
-				visible: column.visible !== false,
-			})),
+			columns: columns.map((column) => {
+				const { resizable, sizable, ...rest } = column as ColumnSettings & { sizable?: boolean };
+				const normalizedResizable = this.getNormalizedResizableFlag({ resizable, sizable });
+
+				return {
+					...rest,
+					hidable: column.hidable !== false,
+					sortable: column.sortable !== false,
+					resizable: normalizedResizable,
+					visible: column.visible !== false,
+				};
+			}),
 		};
 	}
 
@@ -523,14 +536,21 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		this.state._tableSettings.columns = primaryHeaders
 			.filter((header) => header.key) // only headers with a key are supported
-			.map((header) => ({
-				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
-				sortable: header.sortable !== false,
-				resizable: header.resizable !== false,
-				key: header.key ?? nonce(),
-				label: header.label,
-				visible: true,
-			}));
+			.map((header) => {
+				const normalizedResizable = this.getNormalizedResizableFlag({
+					resizable: header.resizable,
+					sizable: (header as { sizable?: boolean }).sizable,
+				});
+
+				return {
+					hidable: header.hidable !== false, // default to true, only false if explicitly set to false
+					sortable: header.sortable !== false,
+					resizable: normalizedResizable,
+					key: header.key ?? nonce(),
+					label: header.label,
+					visible: true,
+				};
+			});
 	}
 
 	public componentWillLoad(): void {
