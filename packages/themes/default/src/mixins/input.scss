@@ -42,12 +42,12 @@
 			}
 		}
 
-		&:focus-within {
+		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 			@include focus-outline;
 		}
 
 		&--error {
-			&:focus-within {
+			&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 				outline-color: var(--color-danger);
 			}
 		}
