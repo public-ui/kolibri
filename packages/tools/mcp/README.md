@@ -32,6 +32,8 @@ The server will start on `http://localhost:3030` and provide the following endpo
   - `http://localhost:3030/http` – force plain JSON/HTTP responses
   - `http://localhost:3030/sse` – force Server-Sent Events streaming
 
+  Use the explicit `/http/*` prefix for classic `fetch`/`curl` style requests and `/sse/*` when a Server-Sent Events transport is required. The automatic `/mcp/*` routes continue to exist but may negotiate a different transport depending on the headers a client sends.
+
 - `POST /mcp/initialize` - Discover available resources and capabilities (JSON or SSE)
 - `GET /mcp/health` - Server status and content counts (JSON or SSE)
 - `GET /mcp/samples` - List all available component examples (JSON or SSE)
@@ -80,7 +82,7 @@ import { spawn } from 'child_process';
 const mcpServer = spawn('npx', ['@public-ui/mcp']);
 
 // Make requests to the server
-const response = await fetch('http://localhost:3030/mcp/samples');
+const response = await fetch('http://localhost:3030/http/samples');
 const samples = await response.json();
 ```
 

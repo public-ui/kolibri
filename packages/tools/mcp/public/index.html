@@ -307,13 +307,18 @@
 			</div>
 
 			<div class="api-info">
-				<h2>📡 REST API Endpoints</h2>
-				<p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
+                                <h2>📡 REST API Endpoints</h2>
+                                <p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
+                                <p class="description">
+                                        Use the <code class="endpoint-inline">/http/*</code> base path for classic JSON requests (fetch, curl, etc.) and
+                                        <code class="endpoint-inline">/sse/*</code> for streaming Server-Sent Events. The auto-detecting
+                                        <code class="endpoint-inline">/mcp/*</code> routes remain available but negotiate the transport based on the request headers.
+                                </p>
 
 				<div style="margin-top: 1rem">
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/samples" style="color: #90cdf4">/mcp/samples</a></code>
+                                                <code class="endpoint"><a href="/http/samples" style="color: #90cdf4">/http/samples</a></code>
 					</div>
 					<p class="description">
 						List of all available samples. Add the
@@ -322,7 +327,7 @@
 						to typos and partial matches, so even short tokens can surface the relevant sample.
 					</p>
 					<div class="relative" style="margin-bottom: 0.75rem">
-						<code class="endpoint"><a href="/mcp/samples?q=btn" style="color: #90cdf4">/mcp/samples?q=btn</a></code>
+                                                <code class="endpoint"><a href="/http/samples?q=btn" style="color: #90cdf4">/http/samples?q=btn</a></code>
 						<button class="copy-btn" aria-label="Copy fuzzy search endpoint" tabindex="0">📋</button>
 					</div>
 					<p class="description">
@@ -330,35 +335,40 @@
 						<code class="endpoint-inline">btn</code> still returns button samples.
 					</p>
 					<div class="relative" style="margin-bottom: 0.75rem">
-						<code class="endpoint"><a href="/mcp/samples?q=table%20responsive" style="color: #90cdf4">/mcp/samples?q=table%20responsive</a></code>
+                                                <code class="endpoint"><a href="/http/samples?q=table%20responsive" style="color: #90cdf4">/http/samples?q=table%20responsive</a></code>
 						<button class="copy-btn" aria-label="Copy multi-word search endpoint" tabindex="0">📋</button>
 					</div>
 					<p class="description">Combine multiple words with spaces to narrow the result set&mdash;this request filters for responsive table samples.</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/sample?id=sample/button/basic</a></code>
+                                                <code class="endpoint"><a href="/http/sample?id=sample/button/basic" style="color: #90cdf4">/http/sample?id=sample/button/basic</a></code>
 					</div>
 					<p class="description">Path and source code of a specific sample</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/docs" style="color: #90cdf4">/mcp/docs</a></code>
+                                                <code class="endpoint"><a href="/http/docs" style="color: #90cdf4">/http/docs</a></code>
 					</div>
 					<p class="description">List of Markdown-based documentation documents</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/doc?id=doc/README" style="color: #90cdf4">/mcp/doc?id=doc/README</a></code>
+                                                <code class="endpoint"><a href="/http/doc?id=doc/README" style="color: #90cdf4">/http/doc?id=doc/README</a></code>
 					</div>
 					<p class="description">Retrieve a specific documentation document including its Markdown source</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/doc?id=doc/README.md" style="color: #90cdf4">/mcp/doc?id=doc/README.md</a></code>
+                                                <code class="endpoint"><a href="/http/doc?id=doc/README.md" style="color: #90cdf4">/http/doc?id=doc/README.md</a></code>
 					</div>
-					<p class="description">Retrieve a specific documentation document including its Markdown source (with .md extension)</p>
-				</div>
+                                        <p class="description">Retrieve a specific documentation document including its Markdown source (with .md extension)</p>
+
+                                        <p class="description">
+                                                Need streaming updates? Swap the prefix to <code class="endpoint-inline">/sse/*</code>, for example
+                                                <code class="endpoint-inline">/sse/samples</code> to receive the sample list via Server-Sent Events.
+                                        </p>
+                                </div>
 				<p class="description" style="margin-top: 1rem">
 					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
 				</p>
@@ -385,9 +395,9 @@
 					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Option 2: Remote Server (Recommended)</h3>
 					<p class="description">Use the hosted server without local installation in your <code>mcp.json</code>:</p>
 					<div style="position: relative">
-						<pre
-							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "url": "https://public-ui-kolibri-mcp.vercel.app/mcp/", "type": "http" } }, "inputs": [] }</code></pre>
+                                                <pre
+                                                        style="margin: 0"
+                                                ><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri-mcp": { "url": "<origin>/mcp/", "type": "http" } }, "inputs": [] }</code></pre>
 						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
 					</div>
 					<div style="background: #fff3cd; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #ffc107">
@@ -431,9 +441,15 @@
 			</div>
 		</div>
 
-		<script>
-			// Test API status when page loads
-			fetch('/mcp/health')
+                <script>
+                        const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+                        if (remoteConfigElement) {
+                                const origin = window.location.origin.replace(/\/$/, '');
+                                remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
+                        }
+
+                        // Test API status when page loads
+                        fetch('/http/health')
 				.then((response) => response.json())
 				.then((data) => {
 					console.log('API Status:', data);
