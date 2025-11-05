@@ -2,9 +2,18 @@
  * Logs the available tools to stderr when the server starts
  */
 export function logAvailableTools(): void {
+	// Detect if running in local development (via pnpm/npm start)
+	const isLocal = process.env.NODE_ENV !== 'production' && !process.env.VERCEL;
+	const sseUrl = isLocal ? 'http://localhost:3000/api/sse' : 'https://kolibri-mcp.vercel.app/api/sse';
+
 	console.error('╔══════════════════════════════════════════════════════════════╗');
 	console.error('║        KoliBri MCP Server running on stdio                   ║');
 	console.error('╚══════════════════════════════════════════════════════════════╝');
+	console.error('');
+	console.error('🔗 MCP Server (stdio): npx -y @public-ui/mcp');
+	console.error(`🔗 MCP Server (SSE): ${sseUrl}`);
+	console.error('🌐 Documentation: https://public-ui.github.io');
+	console.error('📦 Repository: https://github.com/public-ui/kolibri');
 	console.error('');
 	console.error('📋 Available Tools:');
 	console.error('');
