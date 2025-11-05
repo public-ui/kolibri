@@ -242,13 +242,13 @@ function registerResources(server: McpServer, index: SampleIndexLike, counts: Co
 }
 
 function registerTools(server: McpServer, index: SampleIndexLike, counts: ContentCounts) {
-	const searchInput = {
+	const searchInput = z.object({
 		query: z.string().min(1, 'Provide a non-empty search query.'),
 		kinds: z.array(z.enum(['sample', 'doc'])).optional(),
 		limit: z.number().int().min(1).max(100).optional(),
-	} as const;
+	});
 
-	const searchHandler = async ({ query, kinds, limit }: z.infer<z.ZodObject<typeof searchInput>>) => {
+	const searchHandler = async ({ query, kinds, limit }: z.infer<typeof searchInput>) => {
 		const payload = createSearchPayload(index, counts, { query, kinds, limit });
 		const structured = {
 			...payload,
@@ -303,10 +303,10 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		searchHandler,
 	);
 
-	const listInput = {
+	const listInput = z.object({
 		query: z.string().optional(),
 		limit: z.number().int().min(1).max(100).optional(),
-	} as const;
+	});
 
 	server.registerTool(
 		'list-samples',
@@ -338,9 +338,9 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		{
 			title: 'Fetch sample source code',
 			description: 'Retrieves the full source code for a single KoliBri sample entry.',
-			inputSchema: {
+			inputSchema: z.object({
 				id: z.string().min(1, 'Provide a sample identifier such as sample/button/basic.'),
-			} as const,
+			}),
 			annotations: {
 				readOnlyHint: true,
 				idempotentHint: true,
@@ -390,9 +390,9 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		{
 			title: 'Fetch documentation entry',
 			description: 'Returns the Markdown content for a documentation entry.',
-			inputSchema: {
+			inputSchema: z.object({
 				id: z.string().min(1, 'Provide a documentation identifier such as doc/README.'),
-			} as const,
+			}),
 			annotations: {
 				readOnlyHint: true,
 				idempotentHint: true,
@@ -417,9 +417,9 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		{
 			title: 'Fetch entry by identifier',
 			description: 'Retrieves the full text content for a sample or documentation entry.',
-			inputSchema: {
+			inputSchema: z.object({
 				id: z.string().min(1, 'Provide a sample or documentation identifier.'),
-			} as const,
+			}),
 			annotations: {
 				readOnlyHint: true,
 				idempotentHint: true,
