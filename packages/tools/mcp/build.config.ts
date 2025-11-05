@@ -14,6 +14,14 @@ export default defineBuildConfig({
 			input: 'src/cli.ts',
 			name: 'cli',
 		},
+		{
+			input: 'src/data.ts',
+			name: 'data',
+		},
+		{
+			input: 'src/search.ts',
+			name: 'search',
+		},
 	],
 	declaration: false,
 	clean: true,
