@@ -1,4 +1,2 @@
-dist/
-src/samples.json
-src/samples.mjs
+.cache/
 api/samples.mjs

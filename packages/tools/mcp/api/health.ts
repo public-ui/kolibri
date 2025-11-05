@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { getSampleIndexMetadata } from '../dist/data.mjs';
 
 /**
  * Health Check Endpoint
@@ -18,6 +19,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 		return res.status(405).json({ error: 'Method not allowed' });
 	}
 
+	const metadata = getSampleIndexMetadata();
+
 	const health = {
 		status: 'ok',
 		timestamp: new Date().toISOString(),
@@ -28,6 +31,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			health: '/api/health',
 		},
 		transport: 'sse',
+		index: {
+			generatedAt: metadata.generatedAt,
+			buildMode: metadata.buildMode,
+			counts: metadata.counts,
+			repo: metadata.repo,
+		},
 	};
 
 	return res.status(200).json(health);

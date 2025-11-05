@@ -1,7 +1,7 @@
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { createRequire } from 'node:module';
-import { getAllEntries, getEntryById } from './data.js';
+import { getAllEntries, getEntryById, getSampleIndexMetadata } from './data.js';
 import { searchEntries } from './search.js';
 
 const require = createRequire(import.meta.url);
@@ -90,11 +90,15 @@ export function createKolibriMcpServer(): Server {
 
 		if (name === 'hello_kolibri') {
 			const userName = (args as { name?: string })?.name ?? 'World';
+			const metadata = getSampleIndexMetadata();
+			const totalEntries = metadata.counts.total;
+			const totalSamples = metadata.counts.totalSamples;
+			const totalDocs = metadata.counts.totalDocs;
 			return {
 				content: [
 					{
 						type: 'text',
-						text: `Hello ${userName}! This is KoliBri MCP Server v${PACKAGE_VERSION}.\n${PACKAGE_DESCRIPTION ?? ''}`,
+						text: `Hello ${userName}! This is KoliBri MCP Server v${PACKAGE_VERSION}.\n${PACKAGE_DESCRIPTION ?? ''}\n\nSample index generated: ${metadata.generatedAt ?? 'unknown'} (mode: ${metadata.buildMode}).\nEntries available: ${totalEntries} (${totalSamples} samples, ${totalDocs} docs).`,
 					},
 				],
 			};
