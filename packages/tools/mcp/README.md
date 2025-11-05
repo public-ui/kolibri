@@ -25,16 +25,59 @@ Start the MCP server for AI agents:
 npx @public-ui/mcp
 ```
 
-The server will start on `http://localhost:3030` and provide the following endpoints:
+The server listens on `http://localhost:3030` and speaks the **Streamable HTTP** transport provided by the
+[`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk).
+Three convenience paths are exposed:
 
-- `POST /mcp/initialize` - Discover available resources and capabilities
-- `GET /mcp/health` - Server status and content counts
-- `GET /mcp/samples` - List all available component examples
-- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
-- `GET /mcp/docs` - List Markdown documentation
-- `GET /mcp/doc?id=doc/README` - Get a specific documentation entry
+| Path(s)                                                                     | Purpose                                                                                               |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `POST http://localhost:3030/mcp`<br/>`POST http://localhost:3030/api/mcp`   | Default entry point. Negotiates streaming vs. JSON automatically based on request headers.            |
+| `POST http://localhost:3030/http`<br/>`POST http://localhost:3030/api/http` | Forces plain JSON responses. Perfect for `curl`, custom scripts, or environments without SSE support. |
+| `GET http://localhost:3030/sse`<br/>`GET http://localhost:3030/api/sse`     | Opens a dedicated Server-Sent Events stream that receives JSON-RPC responses as they arrive.          |
 
-The sample and doc indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
+> **Important:** JSON-RPC requests **must** include an `Accept` header with both
+> `application/json` and `text/event-stream`, as mandated by the MCP specification:
+>
+> ```http
+> Accept: application/json, text/event-stream
+> Content-Type: application/json
+> ```
+
+All responses implement the official MCP protocol. The underlying sample index is prebuilt for deployments, so
+there is no refresh endpoint in production builds.
+
+### Resources exposed by the server
+
+The MCP handshake advertises a set of structured resources. Each resource is addressed by URI – clients should use the
+standard `resources/list` and `resources/read` JSON-RPC methods rather than bespoke HTTP routes.
+
+| Resource URI                | Description                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `kolibri://overview`        | High-level metadata about the server and currently indexed content.             |
+| `kolibri://health`          | Health status with diagnostic counters and timestamps.                          |
+| `kolibri://catalog/samples` | JSON catalogue of every component sample (includes fuzzy-search metadata).      |
+| `kolibri://catalog/docs`    | JSON catalogue of Markdown documentation entries.                               |
+| `kolibri-sample://{id}`     | Dynamic resource returning the source code and metadata for a specific sample.  |
+| `kolibri-doc://{id}`        | Dynamic resource returning Markdown content for a specific documentation entry. |
+
+Each dynamic URI supports completions so clients can offer auto-complete behaviour when prompting for identifiers.
+
+### Tools available to models
+
+In addition to resources, the server registers a rich set of tools that LLMs can call via `tools/list` and `tools/call`:
+
+| Tool name      | Description                                                                    |
+| -------------- | ------------------------------------------------------------------------------ |
+| `search`       | Free-text search across samples and docs with optional kind and result limits. |
+| `list-samples` | Lists sample summaries and supports optional filtering/limits.                 |
+| `get-sample`   | Returns full source code and metadata for a specific sample.                   |
+| `list-docs`    | Lists documentation entries with optional filtering/limits.                    |
+| `get-doc`      | Retrieves Markdown for a specific documentation entry.                         |
+| `fetch`        | Generic fetch that works with both sample and doc identifiers.                 |
+| `get-health`   | Returns the current health status (alias: `health`).                           |
+
+All tool responses include a `structuredContent` payload plus textual JSON output, making them easy to consume from both
+LLM-driven workflows and traditional scripts.
 
 ### Integration with AI Tools
 
@@ -62,8 +105,24 @@ import { spawn } from 'child_process';
 // Start MCP server
 const mcpServer = spawn('npx', ['@public-ui/mcp']);
 
-// Make requests to the server
-const response = await fetch('http://localhost:3030/mcp/samples');
+// Make a JSON-RPC request via the Streamable HTTP transport
+const response = await fetch('http://localhost:3030/http', {
+	method: 'POST',
+	headers: {
+		Accept: 'application/json, text/event-stream',
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify({
+		jsonrpc: '2.0',
+		id: 1,
+		method: 'tools/call',
+		params: {
+			name: 'list-samples',
+			arguments: { limit: 3 },
+		},
+	}),
+});
+
 const samples = await response.json();
 ```
 
@@ -88,108 +147,80 @@ Each sample includes:
 
 ## 🔌 API Reference
 
-### POST /mcp/initialize
+### Initialization
 
-Returns the server capabilities, available resources, and content counters so MCP clients can configure themselves without hard-coding endpoints.
-
-```bash
-curl -X POST http://localhost:3030/mcp/initialize
-```
-
-The response includes protocol metadata, streaming support information, and the exact endpoints exposed by the server.
-
-### GET /mcp/health
-
-Returns server status and metadata:
-
-```json
-{
-	"status": "ok",
-	"healthy": true,
-	"totalEntries": 154,
-	"totalSamples": 136,
-	"totalDocs": 18,
-	"message": "System healthy with 154 entries available",
-	"generatedAt": "2024-05-28T08:15:30.000Z",
-	"ai-hints": [
-		"Always register KoliBri Web Components in the browser runtime before rendering them.",
-		"Choose the integration guide that matches your project setup to load and bundle the components correctly.",
-		"Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.",
-		"Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary."
-	]
-}
-```
-
-### GET /mcp/docs
-
-List Markdown-based documentation entries:
+The first call every MCP client should make is an `initialize` request. The server will negotiate the protocol version and
+describe its capabilities:
 
 ```bash
-# Get all docs
-curl http://localhost:3030/mcp/docs
-
-# Filter by term
-curl "http://localhost:3030/mcp/docs?q=theme"
+curl \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","clientInfo":{"name":"curl","version":"8"}}}' \
+  http://localhost:3030/http
 ```
 
-### GET /mcp/doc?id={docId}
+### Listing resources
 
-Fetch Markdown documentation by referencing its `docs/...` identifier:
+Use `resources/list` to discover the URIs of available data sets:
 
 ```bash
-curl "http://localhost:3030/mcp/doc?id=doc/README"
+curl \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":2,"method":"resources/list"}' \
+  http://localhost:3030/http
 ```
 
-Returns the Markdown content together with metadata. Every sample or doc response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
+### Reading a resource
 
-```json
-{
-	"id": "sample/button/basic",
-	"group": "button",
-	"name": "basic",
-	"path": "packages/samples/react/src/components/button/basic.tsx",
-	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n...",
-	"kind": "sample",
-	"ai-hints": [
-		"Always register KoliBri Web Components in the browser runtime before rendering them.",
-		"Choose the integration guide that matches your project setup to load and bundle the components correctly.",
-		"Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.",
-		"Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary."
-	]
-}
-```
-
-### GET /mcp/docs
-
-List Markdown-based documentation entries:
+Once you have a URI (for example `kolibri-sample://sample/button/basic`), read its contents via `resources/read`:
 
 ```bash
-curl http://localhost:3030/mcp/docs
-
-# Filter by term
-curl "http://localhost:3030/mcp/docs?q=theme"
+curl \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":3,"method":"resources/read","params":{"uri":"kolibri-sample://sample/button/basic"}}' \
+  http://localhost:3030/http
 ```
 
-### GET /mcp/doc?id={docId}
+### Calling tools
 
-Fetch Markdown documentation by referencing its `docs/...` identifier:
+Tools encapsulate higher-level workflows. For example, the snippet below returns the first three samples along with AI hints:
 
 ```bash
-curl "http://localhost:3030/mcp/doc?id=doc/README"
+curl \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"list-samples","arguments":{"limit":3}}}' \
+  http://localhost:3030/http
 ```
 
-Returns the Markdown content together with metadata. Every sample or doc response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
+Tool responses contain both `content` (textual JSON) and `structuredContent` so they are simple to consume in either
+automation scripts or LLM pipelines.
 
 All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered, that the correct integration guide and icon font assets need to be bundled, and that `<kol-form>` with an `_errorList` exposes validation errors via its summary.
 
 ### 🔁 Server-Sent Events Streaming
 
-Collection endpoints (`/mcp/samples` and `/mcp/docs`) also support **Server-Sent Events (SSE)** to stream large result sets progressively. Request streaming responses by either:
+Prefer streaming responses? Switch to the SSE transport by issuing a `GET` request to `/sse` and then POSTing JSON-RPC messages
+over the same connection. The TypeScript SDK automatically multiplexes events so each JSON-RPC response arrives as its own SSE
+message, making incremental rendering straightforward.
 
-- Sending the header `Accept: text/event-stream`
-- Adding the query parameter `stream=1`
+```bash
+# Terminal 1 - open SSE stream
+curl -N http://localhost:3030/sse
 
-The server emits a `meta` event with the query context followed by one event per resource (`sample` or `doc`) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload.
+# Terminal 2 - send requests bound to the SSE session
+curl \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"search","arguments":{"query":"button"}}}' \
+  http://localhost:3030/http
+```
+
+Each SSE message contains the JSON-RPC payload, allowing UI clients to render partial results without waiting for the entire
+response to complete.
 
 ## 🛠️ Use Cases
 
@@ -232,7 +263,7 @@ import { handleApiRequest } from '@public-ui/mcp';
 
 // Create custom server
 const server = require('http').createServer((req, res) => {
-	handleApiRequest(req, res);
+	void handleApiRequest(req, res);
 });
 
 server.listen(3030, () => {

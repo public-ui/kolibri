@@ -4,19 +4,27 @@ import { defineBuildConfig } from 'unbuild';
 export default defineBuildConfig({
 	entries: [
 		{
-			input: 'src/index.js',
+			input: 'src/index.ts',
 			name: 'index',
 		},
 		{
-			input: 'src/api-handler.js',
-			name: 'api-handler',
+			input: 'src/http-handler.ts',
+			name: 'http-handler',
 		},
 		{
 			input: 'src/sample-index.js',
 			name: 'sample-index',
 		},
 		{
-			input: 'src/cli.js',
+			input: 'src/mcp-server.ts',
+			name: 'mcp-server',
+		},
+		{
+			input: 'src/server.ts',
+			name: 'server',
+		},
+		{
+			input: 'src/cli.ts',
 			name: 'cli',
 		},
 	],
