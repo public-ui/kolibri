@@ -41,7 +41,9 @@
 		}
 	},
 	"scripts": {
+		"prebuild": "node ./scripts/build-sample-index.mjs pre",
 		"build": "unbuild",
+		"postbuild": "node ./scripts/build-sample-index.mjs post",
 		"format": "prettier --check src",
 		"prestart": "pnpm build",
 		"start": "node dist/index.mjs",

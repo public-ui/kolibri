@@ -8,7 +8,8 @@ test/
 build.config.ts
 tsconfig.json
 prettier.config.js
-prebuild.js
+scripts/
+.cache/
 
 # Development files
 

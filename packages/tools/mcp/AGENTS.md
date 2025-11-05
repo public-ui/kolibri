@@ -108,15 +108,13 @@ The package uses a two-stage build process optimized for Vercel deployment:
 
 
 
-```bash### GitHub Actions Build
-
+```bash
+# GitHub Actions Build
 pnpm install
+pnpm build  # → runs scripts/build-sample-index.mjs pre && unbuild && scripts/build-sample-index.mjs post
+```
 
-``````bash
-
-pnpm build  # → node prebuild.js && unbuild → collects all samples
-
-### 2. Build```
+### 2. Build
 
 
 

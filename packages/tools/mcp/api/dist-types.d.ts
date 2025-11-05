@@ -10,12 +10,32 @@ declare module '../dist/data.mjs' {
 		code?: string;
 		description?: string;
 		tags?: string[];
+		path?: string;
 	}
 
-	export const SAMPLE_DATA: SampleEntry[];
+	export interface SampleIndexCounts {
+		total: number;
+		totalSamples: number;
+		totalDocs: number;
+		byKind: Record<string, number>;
+	}
+
+	export interface SampleIndexMetadata {
+		generatedAt: string | null;
+		buildMode: string;
+		counts: SampleIndexCounts;
+		repo: {
+			commit: string | null;
+			branch: string | null;
+			repoUrl: string | null;
+		};
+	}
+
+	export const FALLBACK_SAMPLES: SampleEntry[];
 	export function getAllEntries(): SampleEntry[];
 	export function getEntriesByKind(kind: 'sample' | 'doc'): SampleEntry[];
 	export function getEntryById(id: string): SampleEntry | undefined;
+	export function getSampleIndexMetadata(): SampleIndexMetadata;
 }
 
 declare module '../dist/search.mjs' {
