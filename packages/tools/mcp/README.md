@@ -27,14 +27,33 @@ npx @public-ui/mcp
 
 The server will start on `http://localhost:3030` and provide the following endpoints:
 
-- `POST /mcp/initialize` - Discover available resources and capabilities
-- `GET /mcp/health` - Server status and content counts
-- `GET /mcp/samples` - List all available component examples
-- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
-- `GET /mcp/docs` - List Markdown documentation
-- `GET /mcp/doc?id=doc/README` - Get a specific documentation entry
+- **Base paths**
+  - `http://localhost:3030/mcp` – automatic transport detection (default)
+  - `http://localhost:3030/http` – force plain JSON/HTTP responses
+  - `http://localhost:3030/sse` – force Server-Sent Events streaming
+
+  Use the explicit `/http/*` prefix for classic `fetch`/`curl` style requests and `/sse/*` when a Server-Sent Events transport is required. The automatic `/mcp/*` routes continue to exist but may negotiate a different transport depending on the headers a client sends.
+
+- `POST /mcp/initialize` - Discover available resources and capabilities (JSON or SSE)
+- `GET /mcp/health` - Server status and content counts (JSON or SSE)
+- `GET /mcp/samples` - List all available component examples (JSON or SSE)
+- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code (JSON or SSE)
+- `GET /mcp/docs` - List Markdown documentation (JSON or SSE)
+- `GET /mcp/doc?id=doc/README` - Get a specific documentation entry (JSON or SSE)
 
 The sample and doc indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
+
+### Resource catalogue
+
+The MCP `initialize` handshake advertises the following resources so clients can understand how to query the server:
+
+| ID      | Description                                                                        | Methods | Parameters |
+| ------- | ---------------------------------------------------------------------------------- | ------- | ---------- |
+| health  | Reports the service health together with counters for all indexed entries.         | `GET`   | –          |
+| samples | Lists every indexed sample and supports optional filtering by free-text query.     | `GET`   | `q`        |
+| sample  | Returns the source code, metadata, and AI hints for a specific component example.  | `GET`   | `id`       |
+| docs    | Lists Markdown documentation entries such as guides, migration notes, and READMEs. | `GET`   | `q`        |
+| doc     | Returns the Markdown content and metadata for a single documentation entry.        | `GET`   | `id`       |
 
 ### Integration with AI Tools
 
@@ -63,7 +82,7 @@ import { spawn } from 'child_process';
 const mcpServer = spawn('npx', ['@public-ui/mcp']);
 
 // Make requests to the server
-const response = await fetch('http://localhost:3030/mcp/samples');
+const response = await fetch('http://localhost:3030/http/samples');
 const samples = await response.json();
 ```
 
@@ -184,12 +203,13 @@ All JSON responses contain an `ai-hints` string array that reiterates in English
 
 ### 🔁 Server-Sent Events Streaming
 
-Collection endpoints (`/mcp/samples` and `/mcp/docs`) also support **Server-Sent Events (SSE)** to stream large result sets progressively. Request streaming responses by either:
+Every resource can also be consumed as **Server-Sent Events (SSE)** so MCP clients that prefer streaming never have to switch transports mid-session. Request streaming responses by either:
 
 - Sending the header `Accept: text/event-stream`
 - Adding the query parameter `stream=1`
+- Using the dedicated base path `http://localhost:3030/sse`, e.g. `http://localhost:3030/sse/samples`
 
-The server emits a `meta` event with the query context followed by one event per resource (`sample` or `doc`) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload.
+The server emits a `meta` event with the query context followed by one event per resource (`initialize`, `health`, `sample`, `doc`, etc.) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload, even when requesting individual items.
 
 ## 🛠️ Use Cases
 
