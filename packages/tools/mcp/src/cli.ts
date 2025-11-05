@@ -1,27 +1,18 @@
 #!/usr/bin/env node
 
-import { startServer } from './index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { createKolibriMcpServer } from './mcp-server.js';
 
 async function main() {
-	try {
-		const server = await startServer();
-		console.log('🚀 KoliBri MCP Server running on http://localhost:3030/mcp');
-		console.log('📚 Documentation: https://www.npmjs.com/package/@public-ui/mcp');
+	const server = createKolibriMcpServer();
+	const transport = new StdioServerTransport();
 
-		const shutdown = (signal: string) => {
-			console.log(`🛑 Received ${signal}, shutting down gracefully...`);
-			server.close(() => {
-				console.log('✅ Server closed');
-				process.exit(0);
-			});
-		};
+	await server.connect(transport);
 
-		process.on('SIGTERM', () => shutdown('SIGTERM'));
-		process.on('SIGINT', () => shutdown('SIGINT'));
-	} catch (error) {
-		console.error('[mcp] failed to start CLI server', error);
-		process.exitCode = 1;
-	}
+	console.error('KoliBri MCP Server running on stdio');
 }
 
-void main();
+main().catch((error) => {
+	console.error('Failed to start server:', error);
+	process.exit(1);
+});

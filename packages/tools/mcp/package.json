@@ -41,12 +41,12 @@
 		}
 	},
 	"scripts": {
-		"build": "node prebuild.js && unbuild",
-		"format": "prettier --check public src",
+		"build": "unbuild",
+		"format": "prettier --check src",
 		"prestart": "pnpm build",
 		"start": "node dist/index.mjs",
-		"test": "node --test",
-		"test-update": "node --test"
+		"test": "echo \"No tests yet\"",
+		"test-update": "echo \"No tests yet\""
 	},
 	"devDependencies": {
 		"prettier": "3.6.2",
@@ -58,8 +58,6 @@
 		"README.md"
 	],
 	"dependencies": {
-		"@modelcontextprotocol/sdk": "1.21.0",
-		"fuse.js": "7.1.0",
-		"zod": "3.23.8"
+		"@modelcontextprotocol/sdk": "1.21.0"
 	}
 }

@@ -1,15 +1,22 @@
-export { hasSearchableQuery, performFuzzySearch } from './fuzzy-search.js';
-export { handleApiRequest } from './http-handler.js';
-export { AI_HINTS_KEY, AI_HINTS_MESSAGES } from './mcp-content.js';
-export { createKolibriMcpServer } from './mcp-server.js';
-export { SampleIndex, buildSampleIndex } from './sample-index.js';
-export { startServer } from './server.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { createKolibriMcpServer } from './mcp-server.js';
 
+export { createKolibriMcpServer } from './mcp-server.js';
+
+// Start server when run directly
 const executedModule = process.argv[1] ? `file://${process.argv[1]}` : null;
 
 if (executedModule && import.meta.url === executedModule) {
-	startServer().catch((error) => {
-		console.error('[mcp] failed to start server', error);
-		process.exitCode = 1;
-	});
+	const server = createKolibriMcpServer();
+	const transport = new StdioServerTransport();
+
+	server
+		.connect(transport)
+		.then(() => {
+			console.error('KoliBri MCP Server running on stdio');
+		})
+		.catch((error) => {
+			console.error('[mcp] failed to start server', error);
+			process.exitCode = 1;
+		});
 }
