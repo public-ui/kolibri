@@ -52,7 +52,7 @@ jobs:
       - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
       - name: E2E Test react samples
-        run: pnpm --filter @public-ui/samples/react test:e2e
+        run: pnpm --filter @public-ui/sample-react^ test:e2e
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
