@@ -57,7 +57,7 @@ function buildDefaultServerInfo(overrides: KolibriServerInfo = {}) {
 	};
 }
 
-function buildResourceDescriptors(entries: SampleEntry[], kind: 'sample' | 'doc') {
+function buildResourceDescriptors(entries: SampleEntry[], kind: 'doc' | 'sample') {
 	return entries.map((entry) => ({
 		name: entry.id,
 		uri: `${kind === 'sample' ? 'kolibri-sample' : 'kolibri-doc'}://${entry.id}`,
@@ -242,27 +242,34 @@ function registerResources(server: McpServer, index: SampleIndexLike, counts: Co
 }
 
 function registerTools(server: McpServer, index: SampleIndexLike, counts: ContentCounts) {
-	const searchInput = {
-		query: z.string().min(1, 'Provide a non-empty search query.'),
-		kinds: z.array(z.enum(['sample', 'doc'])).optional(),
-		limit: z.number().int().min(1).max(100).optional(),
-	} as const;
+        const searchInput = z.object({
+                query: z.string().min(1, 'Provide a non-empty search query.'),
+                kinds: z.array(z.enum(['doc', 'sample'])).optional(),
+                limit: z.number().int().min(1).max(100).optional(),
+        });
 
-	const searchHandler = async ({ query, kinds, limit }: z.infer<z.ZodObject<typeof searchInput>>) => {
-		const payload = createSearchPayload(index, counts, { query, kinds, limit });
-		const structured = {
-			...payload,
-			results: createSearchToolResult(payload, { index }).results,
-		};
+        const executeSearch = async (
+                { query, kinds, limit }: z.infer<typeof searchInput>,
+                fallbackKinds?: ['doc'] | ['sample'],
+        ) => {
+                const payload = createSearchPayload(index, counts, {
+                        query,
+                        kinds: kinds ?? fallbackKinds,
+                        limit,
+                });
+                const structured = {
+                        ...payload,
+                        results: createSearchToolResult(payload, { index }).results,
+                };
 
-		return {
-			content: createToolTextContent(structured),
-			structuredContent: structured,
-		};
-	};
+                return {
+                        content: createToolTextContent(structured),
+                        structuredContent: structured,
+                };
+        };
 
-	server.registerTool(
-		'search',
+        server.registerTool(
+                'search',
 		{
 			title: 'Search KoliBri entries',
 			description: 'Searches KoliBri samples and documentation entries by text query.',
@@ -272,41 +279,41 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 				idempotentHint: true,
 			},
 		},
-		searchHandler,
-	);
+                async (input) => executeSearch(input),
+        );
 
-	server.registerTool(
-		'search-samples',
-		{
-			title: 'Search KoliBri entries',
-			description: 'Alias of the search tool for compatibility with previous integrations.',
-			inputSchema: searchInput,
-			annotations: {
-				readOnlyHint: true,
-				idempotentHint: true,
-			},
-		},
-		searchHandler,
-	);
+        server.registerTool(
+                'search-samples',
+                {
+                        title: 'Search KoliBri samples',
+                        description: 'Searches only KoliBri component samples by text query.',
+                        inputSchema: searchInput,
+                        annotations: {
+                                readOnlyHint: true,
+                                idempotentHint: true,
+                        },
+                },
+                async (input) => executeSearch(input, ['sample']),
+        );
 
-	server.registerTool(
-		'search-docs',
-		{
-			title: 'Search KoliBri entries',
-			description: 'Alias of the search tool for documentation-specific lookups.',
-			inputSchema: searchInput,
-			annotations: {
-				readOnlyHint: true,
-				idempotentHint: true,
-			},
-		},
-		searchHandler,
-	);
+        server.registerTool(
+                'search-docs',
+                {
+                        title: 'Search KoliBri documentation',
+                        description: 'Searches only KoliBri documentation entries by text query.',
+                        inputSchema: searchInput,
+                        annotations: {
+                                readOnlyHint: true,
+                                idempotentHint: true,
+                        },
+                },
+                async (input) => executeSearch(input, ['doc']),
+        );
 
-	const listInput = {
+	const listInput = z.object({
 		query: z.string().optional(),
 		limit: z.number().int().min(1).max(100).optional(),
-	} as const;
+	});
 
 	server.registerTool(
 		'list-samples',
@@ -338,9 +345,9 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		{
 			title: 'Fetch sample source code',
 			description: 'Retrieves the full source code for a single KoliBri sample entry.',
-			inputSchema: {
+			inputSchema: z.object({
 				id: z.string().min(1, 'Provide a sample identifier such as sample/button/basic.'),
-			} as const,
+			}),
 			annotations: {
 				readOnlyHint: true,
 				idempotentHint: true,
@@ -390,9 +397,9 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		{
 			title: 'Fetch documentation entry',
 			description: 'Returns the Markdown content for a documentation entry.',
-			inputSchema: {
+			inputSchema: z.object({
 				id: z.string().min(1, 'Provide a documentation identifier such as doc/README.'),
-			} as const,
+			}),
 			annotations: {
 				readOnlyHint: true,
 				idempotentHint: true,
@@ -417,9 +424,9 @@ function registerTools(server: McpServer, index: SampleIndexLike, counts: Conten
 		{
 			title: 'Fetch entry by identifier',
 			description: 'Retrieves the full text content for a sample or documentation entry.',
-			inputSchema: {
+			inputSchema: z.object({
 				id: z.string().min(1, 'Provide a sample or documentation identifier.'),
-			} as const,
+			}),
 			annotations: {
 				readOnlyHint: true,
 				idempotentHint: true,

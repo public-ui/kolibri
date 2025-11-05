@@ -358,7 +358,9 @@ export function sanitizeKinds(input: unknown): string[] | undefined {
 		return undefined;
 	}
 
-	const normalized = input.map((value) => `${value ?? ''}`.trim().toLowerCase()).filter((value) => value === 'sample' || value === 'doc');
+        const normalized = input
+                .map((value) => `${value ?? ''}`.trim().toLowerCase())
+                .filter((value) => value === 'doc' || value === 'sample');
 
 	const unique = Array.from(new Set(normalized));
 	return unique.length > 0 ? unique : undefined;
@@ -377,7 +379,7 @@ export function createSearchPayload(index: SampleIndexLike, counts: ContentCount
 
 	return withAiHints({
 		query: normalizedQuery,
-		kinds: normalizedKinds ?? ['sample', 'doc'],
+                kinds: normalizedKinds ?? ['doc', 'sample'],
 		totalMatches: items.length,
 		returned: limitedItems.length,
 		generatedAt: ensureDate(index.generatedAt).toISOString(),
