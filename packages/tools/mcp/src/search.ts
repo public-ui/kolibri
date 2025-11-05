@@ -1,7 +1,7 @@
-import Fuse from 'fuse.js';
+import Fuse, { type IFuseOptions } from 'fuse.js';
 import type { SampleEntry } from './data.js';
 
-const FUSE_OPTIONS: Fuse.IFuseOptions<SampleEntry> = {
+const FUSE_OPTIONS: IFuseOptions<SampleEntry> = {
 	includeScore: true,
 	shouldSort: true,
 	threshold: 0.4,
