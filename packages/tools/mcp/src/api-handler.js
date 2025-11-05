@@ -23,6 +23,9 @@ const TRANSPORT_PATHS = Object.freeze({
 	sse: '/sse',
 });
 
+const REPO_BLOB_BASE_URL = 'https://github.com/public-ui/kolibri/blob/main/';
+const REPO_DEFAULT_URL = 'https://github.com/public-ui/kolibri';
+
 const RESOURCE_DEFINITIONS = Object.freeze([
 	{
 		id: 'health',
@@ -177,6 +180,48 @@ function normalizeHints(value) {
 function withAiHints(body = {}) {
 	const normalizedHints = normalizeHints(body[AI_HINTS_KEY]);
 	return { ...body, [AI_HINTS_KEY]: normalizedHints };
+}
+
+function normalizePathForRepoUrl(pathValue) {
+	if (typeof pathValue !== 'string' || !pathValue.trim()) {
+		return undefined;
+	}
+
+	const normalized = pathValue
+		.replace(/^[.\/]+/, '')
+		.replace(/\\/g, '/')
+		.trim();
+
+	return normalized ? normalized : undefined;
+}
+
+function createCanonicalUrlFromEntry(entry = {}) {
+	if (typeof entry.url === 'string' && entry.url.trim()) {
+		return entry.url.trim();
+	}
+
+	const normalizedPath = normalizePathForRepoUrl(entry.path);
+	if (!normalizedPath) {
+		return REPO_DEFAULT_URL;
+	}
+
+	return `${REPO_BLOB_BASE_URL}${normalizedPath}`;
+}
+
+function resolveEntryTitle(entry = {}) {
+	if (typeof entry.title === 'string' && entry.title.trim()) {
+		return entry.title.trim();
+	}
+
+	if (typeof entry.name === 'string' && entry.name.trim()) {
+		return entry.name.trim();
+	}
+
+	if (typeof entry.id === 'string' && entry.id.trim()) {
+		return entry.id.trim();
+	}
+
+	return 'Untitled entry';
 }
 
 function computeCountsFromEntries(entries = []) {
@@ -398,6 +443,141 @@ function createHealthPayload(index, counts) {
 	};
 }
 
+function createSnippetFromText(text, maxLength = 200) {
+	if (typeof text !== 'string') {
+		return undefined;
+	}
+
+	const normalized = text.replace(/\s+/g, ' ').trim();
+	if (!normalized) {
+		return undefined;
+	}
+
+	if (normalized.length <= maxLength) {
+		return normalized;
+	}
+
+	return `${normalized.slice(0, Math.max(0, maxLength - 1))}…`;
+}
+
+function createSearchToolResult(payload = {}, context = {}) {
+	const items = Array.isArray(payload.items) ? payload.items : [];
+	const results = items
+		.map((item) => {
+			const metadata = {};
+			const kind = item.kind ?? 'sample';
+			if (kind) {
+				metadata.kind = kind;
+			}
+			if (item.group) {
+				metadata.group = item.group;
+			}
+			if (item.path) {
+				metadata.path = item.path;
+			}
+
+			const entry = typeof context?.index?.get === 'function' ? context.index.get(item.id) : undefined;
+			const snippet = entry ? createSnippetFromText(entry.code) : undefined;
+			if (snippet) {
+				metadata.snippet = snippet;
+			}
+
+			const id = typeof item.id === 'string' ? item.id : `${item.id ?? ''}`.trim();
+			if (!id) {
+				return null;
+			}
+
+			const result = {
+				id,
+				title: resolveEntryTitle(item),
+				url: createCanonicalUrlFromEntry(item),
+			};
+
+			if (Object.keys(metadata).length > 0) {
+				result.metadata = metadata;
+			}
+
+			return result;
+		})
+		.filter(Boolean);
+
+	return { results };
+}
+
+function createToolTextContent(payload) {
+	return [
+		{
+			type: 'text',
+			text: JSON.stringify(payload),
+		},
+	];
+}
+
+function compactMetadata(metadata = {}) {
+	return Object.fromEntries(Object.entries(metadata).filter(([, value]) => value !== undefined && value !== null && value !== ''));
+}
+
+function resolveIdFromArguments(args) {
+	if (typeof args === 'string') {
+		return args.trim();
+	}
+
+	if (Array.isArray(args)) {
+		const first = args.find((value) => typeof value === 'string' && value.trim());
+		if (first) {
+			return first.trim();
+		}
+	}
+
+	if (isPlainObject(args)) {
+		if (typeof args.id === 'string' && args.id.trim()) {
+			return args.id.trim();
+		}
+		if (typeof args.name === 'string' && args.name.trim()) {
+			return args.name.trim();
+		}
+	}
+
+	return '';
+}
+
+function normalizeSearchArguments(args) {
+	if (typeof args === 'string') {
+		return { query: args };
+	}
+
+	if (Array.isArray(args) && args.length > 0) {
+		const first = args.find((value) => typeof value === 'string' && value.trim());
+		if (first) {
+			return { query: first };
+		}
+	}
+
+	if (isPlainObject(args)) {
+		return args;
+	}
+
+	return {};
+}
+
+function createFetchToolPayload(entry, index) {
+	const text = typeof entry?.code === 'string' ? entry.code : JSON.stringify(entry?.code ?? '', null, 2);
+	const metadata = compactMetadata({
+		kind: entry?.kind ?? 'sample',
+		group: entry?.group,
+		path: entry?.path,
+		generatedAt: ensureDate(index?.generatedAt).toISOString(),
+	});
+
+	return {
+		id: entry?.id,
+		title: resolveEntryTitle(entry),
+		text,
+		url: createCanonicalUrlFromEntry(entry),
+		...(Object.keys(metadata).length > 0 ? { metadata } : {}),
+	};
+}
+
 function createOverviewPayload(index, counts) {
 	const generatedAt = ensureDate(index?.generatedAt).toISOString();
 	return withAiHints({
@@ -473,33 +653,81 @@ const TOOL_ENTRIES = Object.freeze([
 			name: 'search',
 			description: 'Searches KoliBri samples and documentation entries by text query.',
 			input_schema: {
-				type: 'object',
-				properties: {
-					query: {
+				oneOf: [
+					{
 						type: 'string',
 						description: 'Free-text search term used to match ids, names, and titles.',
 					},
-					kinds: {
-						type: 'array',
-						description: 'Optional entry kinds to include. Defaults to both samples and docs.',
-						items: {
-							type: 'string',
-							enum: ['sample', 'doc'],
+					{
+						type: 'object',
+						properties: {
+							query: {
+								type: 'string',
+								description: 'Free-text search term used to match ids, names, and titles.',
+							},
+							kinds: {
+								type: 'array',
+								description: 'Optional entry kinds to include. Defaults to both samples and docs.',
+								items: {
+									type: 'string',
+									enum: ['sample', 'doc'],
+								},
+							},
+							limit: {
+								type: 'integer',
+								minimum: 1,
+								maximum: 100,
+								description: 'Maximum number of items to return.',
+							},
 						},
+						required: ['query'],
+						additionalProperties: false,
 					},
-					limit: {
-						type: 'integer',
-						minimum: 1,
-						maximum: 100,
-						description: 'Maximum number of items to return.',
-					},
-				},
-				required: ['query'],
-				additionalProperties: false,
+				],
 			},
 		},
-		handler: async (args, context) => createSearchPayload(context.index, context.counts, isPlainObject(args) ? args : {}),
+		handler: async (args, context) => createSearchPayload(context.index, context.counts, normalizeSearchArguments(args)),
+		contentFormatter: (payload, context) => createToolTextContent(createSearchToolResult(payload, context)),
 		aliases: ['search-samples', 'search-docs'],
+	},
+	{
+		definition: {
+			name: 'fetch',
+			description: 'Retrieves the full text content for a sample or documentation entry by identifier.',
+			input_schema: {
+				oneOf: [
+					{
+						type: 'string',
+						description: 'Identifier of the entry such as sample/button/basic or doc/README.',
+					},
+					{
+						type: 'object',
+						properties: {
+							id: {
+								type: 'string',
+								description: 'Identifier of the entry such as sample/button/basic or doc/README.',
+							},
+						},
+						required: ['id'],
+						additionalProperties: false,
+					},
+				],
+			},
+		},
+		handler: async (args, context) => {
+			const id = resolveIdFromArguments(args);
+			if (!id) {
+				throw new ToolExecutionError(JSON_RPC_ERROR_CODES.INVALID_PARAMS, 'The "id" parameter must be a non-empty string.');
+			}
+
+			const entry = context.index.get(id);
+			if (!entry) {
+				throw new ToolExecutionError(TOOL_ERROR_CODES.NOT_FOUND, `Entry not found: ${id}`, { id });
+			}
+
+			return createFetchToolPayload(entry, context.index);
+		},
+		contentFormatter: (payload) => createToolTextContent(payload),
 	},
 	{
 		definition: {
@@ -706,13 +934,13 @@ async function executeJsonRpcRequest(request, context) {
 					return buildJsonRpcError(id, JSON_RPC_ERROR_CODES.METHOD_NOT_FOUND, `Tool not found: ${rawName}`);
 				}
 
-				const args = isPlainObject(params.arguments) ? params.arguments : {};
+				const args = Object.prototype.hasOwnProperty.call(params, 'arguments') ? params.arguments : {};
 				const index = await context.getIndex();
 				const counts = resolveCounts(index);
 
 				try {
 					const payload = await tool.handler(args, { index, counts });
-					const content = tool.contentFormatter ? tool.contentFormatter(payload) : [{ type: 'json', json: payload }];
+					const content = tool.contentFormatter ? tool.contentFormatter(payload, { index, counts }) : [{ type: 'json', json: payload }];
 					return buildJsonRpcResult(id, {
 						tool: tool.definition.name,
 						content,
