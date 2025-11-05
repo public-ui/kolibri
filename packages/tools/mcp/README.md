@@ -27,6 +27,11 @@ npx @public-ui/mcp
 
 The server will start on `http://localhost:3030` and provide the following endpoints:
 
+- **Base paths**
+  - `http://localhost:3030/mcp` – automatic transport detection (default)
+  - `http://localhost:3030/http` – force plain JSON/HTTP responses
+  - `http://localhost:3030/sse` – force Server-Sent Events streaming
+
 - `POST /mcp/initialize` - Discover available resources and capabilities
 - `GET /mcp/health` - Server status and content counts
 - `GET /mcp/samples` - List all available component examples
@@ -188,6 +193,7 @@ Collection endpoints (`/mcp/samples` and `/mcp/docs`) also support **Server-Sent
 
 - Sending the header `Accept: text/event-stream`
 - Adding the query parameter `stream=1`
+- Using the dedicated base path `http://localhost:3030/sse`, e.g. `http://localhost:3030/sse/samples`
 
 The server emits a `meta` event with the query context followed by one event per resource (`sample` or `doc`) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload.
 

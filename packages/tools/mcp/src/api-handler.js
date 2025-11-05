@@ -44,11 +44,17 @@ function logRequest(method, url, pathname, statusCode, responseTime) {
 }
 
 const STREAMING_HEADERS = {
-	'Content-Type': 'text/event-stream; charset=utf-8',
 	'Cache-Control': 'no-cache, no-transform',
 	Connection: 'keep-alive',
+	'Content-Type': 'text/event-stream; charset=utf-8',
 	'X-Accel-Buffering': 'no',
 };
+
+const TRANSPORT_MODES = Object.freeze({
+	AUTO: 'auto',
+	HTTP: 'http',
+	SSE: 'sse',
+});
 
 function createSseStream({ meta = {}, items = [], itemEventName = 'item' } = {}) {
 	const enrichedMeta = withAiHints(meta);
@@ -128,20 +134,24 @@ function resolveCounts(index) {
 	};
 }
 
-function normalizePathname(pathname) {
-	if (pathname === '/') {
-		return pathname;
-	}
-	const prefixes = ['/api/mcp', '/mcp'];
+function resolveRequestContext(pathname = '/') {
+	const normalized = pathname || '/';
+	const mappings = [
+		{ mode: TRANSPORT_MODES.AUTO, prefix: '/api/mcp' },
+		{ mode: TRANSPORT_MODES.AUTO, prefix: '/mcp' },
+		{ mode: TRANSPORT_MODES.HTTP, prefix: '/http' },
+		{ mode: TRANSPORT_MODES.SSE, prefix: '/sse' },
+	];
 
-	for (const prefix of prefixes) {
-		if (pathname.startsWith(prefix)) {
-			const suffix = pathname.slice(prefix.length) || '/';
-			return suffix.startsWith('/') ? suffix : `/${suffix}`;
+	for (const { mode, prefix } of mappings) {
+		if (normalized === prefix || normalized.startsWith(`${prefix}/`)) {
+			const suffix = normalized.slice(prefix.length) || '/';
+			const normalizedSuffix = suffix.startsWith('/') ? suffix : `/${suffix}`;
+			return { pathname: normalizedSuffix, transportMode: mode };
 		}
 	}
 
-	return pathname;
+	return { pathname: normalized, transportMode: TRANSPORT_MODES.AUTO };
 }
 
 export async function handleApiRequest({ method = 'GET', url = '/', headers = {}, getIndex } = {}) {
@@ -149,12 +159,18 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 	const baseHeaders = buildCorsHeaders();
 	const normalizedMethod = method.toUpperCase();
 	const requestUrl = new URL(url, 'http://localhost');
-	const pathname = normalizePathname(requestUrl.pathname);
+	const { pathname, transportMode } = resolveRequestContext(requestUrl.pathname);
 	const acceptsHeader = `${headers.accept ?? ''}`.toLowerCase();
-	const wantsStream =
+	let wantsStream =
 		acceptsHeader.includes('text/event-stream') ||
 		['1', 'true', 'yes'].includes((requestUrl.searchParams.get('stream') ?? '').toLowerCase()) ||
 		(requestUrl.searchParams.get('format') ?? '').toLowerCase() === 'sse';
+
+	if (transportMode === TRANSPORT_MODES.HTTP) {
+		wantsStream = false;
+	} else if (transportMode === TRANSPORT_MODES.SSE) {
+		wantsStream = true;
+	}
 
 	// Helper function to create response and log it
 	const finalizeResponse = (statusCode, { body, headers: extraHeaders = {}, stream } = {}) => {
@@ -207,6 +223,11 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 					'/docs?stream=1',
 					'/doc?id=doc/<identifier>',
 				],
+				transports: {
+					auto: '/mcp',
+					http: '/http',
+					sse: '/sse',
+				},
 				totalEntries: counts.total,
 				totalSamples: counts.totalSamples,
 				totalDocs: counts.totalDocs,
@@ -235,6 +256,11 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 				capabilities: {
 					streaming: { sse: true },
 					filters: ['q'],
+				},
+				transports: {
+					auto: '/mcp',
+					http: '/http',
+					sse: '/sse',
 				},
 				resources: [
 					{
