@@ -8,6 +8,11 @@
 			"destination": "/public/index.html"
 		}
 	],
+	"functions": {
+		"api/**/*.ts": {
+			"runtime": "@vercel/node@latest"
+		}
+	},
 	"headers": [
 		{
 			"source": "/api/(.*)",
@@ -23,6 +28,10 @@
 				{
 					"key": "Access-Control-Allow-Headers",
 					"value": "Content-Type"
+				},
+				{
+					"key": "Cache-Control",
+					"value": "no-cache, no-store, must-revalidate"
 				}
 			]
 		}
