@@ -45,13 +45,13 @@ The sample and doc indexes are prebuilt for deployments, therefore no manual ref
 
 The MCP `initialize` handshake advertises the following resources so clients can understand how to query the server:
 
-| ID      | Description                                                                                 | Methods | Parameters |
-| ------- | ------------------------------------------------------------------------------------------- | ------- | ---------- |
-| health  | Reports the service health together with counters for all indexed entries.                  | `GET`   | –          |
-| samples | Lists every indexed sample and supports optional filtering by free-text query.              | `GET`   | `q`        |
-| sample  | Returns the source code, metadata, and AI hints for a specific component example.           | `GET`   | `id`       |
-| docs    | Lists Markdown documentation entries such as guides, migration notes, and READMEs.          | `GET`   | `q`        |
-| doc     | Returns the Markdown content and metadata for a single documentation entry.                 | `GET`   | `id`       |
+| ID      | Description                                                                        | Methods | Parameters |
+| ------- | ---------------------------------------------------------------------------------- | ------- | ---------- |
+| health  | Reports the service health together with counters for all indexed entries.         | `GET`   | –          |
+| samples | Lists every indexed sample and supports optional filtering by free-text query.     | `GET`   | `q`        |
+| sample  | Returns the source code, metadata, and AI hints for a specific component example.  | `GET`   | `id`       |
+| docs    | Lists Markdown documentation entries such as guides, migration notes, and READMEs. | `GET`   | `q`        |
+| doc     | Returns the Markdown content and metadata for a single documentation entry.        | `GET`   | `id`       |
 
 ### Integration with AI Tools
 
