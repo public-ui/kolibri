@@ -19,7 +19,6 @@ const TOOL_ERROR_CODES = Object.freeze({
 });
 
 const TRANSPORT_PATHS = Object.freeze({
-	auto: '/mcp',
 	http: '/http',
 	sse: '/sse',
 });
@@ -85,7 +84,6 @@ const STREAMING_HEADERS = {
 };
 
 const TRANSPORT_MODES = Object.freeze({
-	AUTO: 'auto',
 	HTTP: 'http',
 	SSE: 'sse',
 });
@@ -771,8 +769,6 @@ function shouldAttemptJsonRpc(method, body) {
 function resolveRequestContext(pathname = '/') {
 	const normalized = pathname || '/';
 	const mappings = [
-		{ mode: TRANSPORT_MODES.AUTO, prefix: '/api/mcp' },
-		{ mode: TRANSPORT_MODES.AUTO, prefix: TRANSPORT_PATHS.auto },
 		{ mode: TRANSPORT_MODES.HTTP, prefix: TRANSPORT_PATHS.http },
 		{ mode: TRANSPORT_MODES.SSE, prefix: TRANSPORT_PATHS.sse },
 	];
@@ -785,7 +781,7 @@ function resolveRequestContext(pathname = '/') {
 		}
 	}
 
-	return { pathname: normalized, transportMode: TRANSPORT_MODES.AUTO };
+	return { pathname: normalized, transportMode: TRANSPORT_MODES.HTTP };
 }
 
 export async function handleApiRequest({ method = 'GET', url = '/', headers = {}, body = '', getIndex } = {}) {

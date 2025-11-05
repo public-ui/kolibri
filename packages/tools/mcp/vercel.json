@@ -5,14 +5,6 @@
 	"installCommand": "echo 'Skipping install - using pre-built artifacts'",
 	"rewrites": [
 		{
-			"source": "/mcp",
-			"destination": "/api/mcp"
-		},
-		{
-			"source": "/mcp/(.*)",
-			"destination": "/api/mcp"
-		},
-		{
 			"source": "/http",
 			"destination": "/api/mcp"
 		},
