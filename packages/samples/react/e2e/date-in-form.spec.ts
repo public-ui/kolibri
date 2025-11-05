@@ -19,7 +19,7 @@ test.describe('date-in-form', () => {
 		await kolInputDate.focus();
 		await page.keyboard.press('Enter');
 		await page.waitForTimeout(500);
-		await expect(errorLogs).toHaveLength(2);
+		await expect(errorLogs).toHaveLength(1);
 
 		await kolInputDate.focus();
 		await page.keyboard.press('Tab');
