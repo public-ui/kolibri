@@ -27,6 +27,7 @@ npx @public-ui/mcp
 
 The server will start on `http://localhost:3030` and provide the following endpoints:
 
+- `POST /mcp/initialize` - Discover available resources and capabilities
 - `GET /mcp/health` - Server status and content counts
 - `GET /mcp/samples` - List all available component examples
 - `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
@@ -86,6 +87,16 @@ Each sample includes:
 - ✅ **Responsive design patterns**
 
 ## 🔌 API Reference
+
+### POST /mcp/initialize
+
+Returns the server capabilities, available resources, and content counters so MCP clients can configure themselves without hard-coding endpoints.
+
+```bash
+curl -X POST http://localhost:3030/mcp/initialize
+```
+
+The response includes protocol metadata, streaming support information, and the exact endpoints exposed by the server.
 
 ### GET /mcp/health
 
@@ -170,6 +181,15 @@ curl "http://localhost:3030/mcp/doc?id=doc/README"
 Returns the Markdown content together with metadata. Every sample or doc response exposes a `kind` field so that clients can distinguish between component examples and documentation entries.
 
 All JSON responses contain an `ai-hints` string array that reiterates in English that KoliBri Web Components must be registered, that the correct integration guide and icon font assets need to be bundled, and that `<kol-form>` with an `_errorList` exposes validation errors via its summary.
+
+### 🔁 Server-Sent Events Streaming
+
+Collection endpoints (`/mcp/samples` and `/mcp/docs`) also support **Server-Sent Events (SSE)** to stream large result sets progressively. Request streaming responses by either:
+
+- Sending the header `Accept: text/event-stream`
+- Adding the query parameter `stream=1`
+
+The server emits a `meta` event with the query context followed by one event per resource (`sample` or `doc`) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload.
 
 ## 🛠️ Use Cases
 

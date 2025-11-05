@@ -13,6 +13,7 @@ export async function startServer(options = {}) {
 			handleApiRequest({
 				method: request.method ?? 'GET',
 				url: request.url ?? '/',
+				headers: request.headers ?? {},
 				getIndex: () => index,
 			}),
 		)
@@ -20,7 +21,7 @@ export async function startServer(options = {}) {
 			.catch((error) => {
 				console.error('[mcp] request failed', error);
 				if (!response.headersSent) {
-					respondWithResult(response, {
+					return respondWithResult(response, {
 						statusCode: 500,
 						headers: {
 							'Access-Control-Allow-Origin': '*',
@@ -40,19 +41,44 @@ export async function startServer(options = {}) {
 	return server;
 }
 
-function respondWithResult(response, result) {
+async function respondWithResult(response, result) {
 	if (response.headersSent) {
 		return;
 	}
 
-	response.statusCode = result.statusCode;
-	const headers = {
-		'Content-Type': 'application/json; charset=utf-8',
-		...result.headers,
-	};
+	const headers = { ...result.headers };
+	if (!result.stream) {
+		headers['Content-Type'] = headers['Content-Type'] ?? 'application/json; charset=utf-8';
+	}
 
 	for (const [name, value] of Object.entries(headers)) {
 		response.setHeader(name, value);
+	}
+
+	response.statusCode = result.statusCode;
+
+	if (result.stream) {
+		try {
+			for await (const chunk of result.stream) {
+				if (response.writableEnded) {
+					break;
+				}
+				response.write(chunk);
+			}
+		} catch (streamError) {
+			console.error('[mcp] failed to stream response', streamError);
+			if (!response.headersSent) {
+				response.statusCode = 500;
+				response.setHeader('Content-Type', 'application/json; charset=utf-8');
+				response.end(JSON.stringify({ error: 'stream_error' }));
+				return;
+			}
+		}
+
+		if (!response.writableEnded) {
+			response.end();
+		}
+		return;
 	}
 
 	if (result.body === undefined) {
