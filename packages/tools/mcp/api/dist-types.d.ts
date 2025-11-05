@@ -54,3 +54,9 @@ declare module '../dist/search.mjs' {
 
 	export function searchEntries(entries: SampleEntry[], query: string, options?: SearchOptions): SearchResult[];
 }
+
+declare module '../dist/index.mjs' {
+	import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
+
+	export function createKolibriMcpServer(): Server;
+}

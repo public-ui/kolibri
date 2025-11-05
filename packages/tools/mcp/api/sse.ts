@@ -1,209 +1,83 @@
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
-import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-// Runtime imports from built artifacts (available after GitHub Actions build)
-// Type declarations are in ./dist-types.d.ts
-import { getAllEntries, getEntryById } from '../dist/data.mjs';
-import { searchEntries, type SearchResult } from '../dist/search.mjs';
+import { createKolibriMcpServer } from '../dist/index.mjs';
+import { deleteSession, setSession } from './session-store.js';
 
-// Global MCP Server instance
-let mcpServer: Server | null = null;
+const MESSAGE_ENDPOINT = '/api/message';
 
-function getMcpServer(): Server {
-	if (!mcpServer) {
-		mcpServer = new Server(
-			{
-				name: '@public-ui/mcp',
-				version: '1.0.0',
-			},
-			{
-				capabilities: {
-					tools: {},
-				},
-			},
-		);
-
-		// Register tools/list handler
-		mcpServer.setRequestHandler(ListToolsRequestSchema, async () => {
-			return {
-				tools: [
-					{
-						name: 'hello_kolibri',
-						description: 'A simple test tool that returns a greeting from KoliBri',
-						inputSchema: {
-							type: 'object',
-							properties: {
-								name: {
-									type: 'string',
-									description: 'The name to greet',
-								},
-							},
-						},
-					},
-					{
-						name: 'search',
-						description: 'Search for KoliBri component samples and documentation using fuzzy search',
-						inputSchema: {
-							type: 'object',
-							properties: {
-								query: {
-									type: 'string',
-									description: 'Search query to find samples or docs',
-								},
-								kind: {
-									type: 'string',
-									enum: ['sample', 'doc'],
-									description: 'Filter by kind: "sample" for component examples or "doc" for documentation',
-								},
-								limit: {
-									type: 'number',
-									description: 'Maximum number of results to return (default: 10)',
-								},
-							},
-							required: ['query'],
-						},
-					},
-					{
-						name: 'get_entry',
-						description: 'Get a specific sample or documentation entry by its ID',
-						inputSchema: {
-							type: 'object',
-							properties: {
-								id: {
-									type: 'string',
-									description: 'Entry ID (e.g., "button/basic" or "docs/getting-started")',
-								},
-							},
-							required: ['id'],
-						},
-					},
-				],
-			};
-		});
-
-		// Register tools/call handler
-		mcpServer.setRequestHandler(CallToolRequestSchema, async (request) => {
-			const { name, arguments: args } = request.params;
-
-			if (name === 'hello_kolibri') {
-				const userName = (args as { name?: string })?.name ?? 'World';
-				return {
-					content: [
-						{
-							type: 'text',
-							text: `Hello ${userName}! This is KoliBri MCP Server via SSE on Vercel.`,
-						},
-					],
-				};
-			}
-
-			if (name === 'search') {
-				const { query, kind, limit } = args as { query: string; kind?: 'sample' | 'doc'; limit?: number };
-
-				if (!query || query.trim().length === 0) {
-					return {
-						content: [
-							{
-								type: 'text',
-								text: 'Error: Query parameter is required and cannot be empty',
-							},
-						],
-					};
-				}
-
-				const allEntries = getAllEntries();
-				const results = searchEntries(allEntries, query, {
-					kind,
-					limit: limit ?? 10,
-				});
-
-				const resultText = results.map((result: SearchResult) => {
-					const { item, score } = result;
-					return `- [${item.kind}] ${item.id}: ${item.name}\n  Description: ${item.description ?? 'N/A'}\n  Match score: ${(score * 100).toFixed(1)}%\n  Tags: ${item.tags?.join(', ') ?? 'none'}`;
-				});
-
-				return {
-					content: [
-						{
-							type: 'text',
-							text: `Found ${results.length} result(s) for "${query}":\n\n${resultText.join('\n\n')}`,
-						},
-					],
-				};
-			}
-
-			if (name === 'get_entry') {
-				const { id } = args as { id: string };
-
-				if (!id) {
-					return {
-						content: [
-							{
-								type: 'text',
-								text: 'Error: ID parameter is required',
-							},
-						],
-					};
-				}
-
-				const entry = getEntryById(id);
-
-				if (!entry) {
-					return {
-						content: [
-							{
-								type: 'text',
-								text: `Error: Entry with ID "${id}" not found`,
-							},
-						],
-					};
-				}
-
-				return {
-					content: [
-						{
-							type: 'text',
-							text: `# ${entry.name}\n\nID: ${entry.id}\nKind: ${entry.kind}\nGroup: ${entry.group ?? 'N/A'}\nDescription: ${entry.description ?? 'N/A'}\nTags: ${entry.tags?.join(', ') ?? 'none'}\n\n## Code\n\n\`\`\`\n${entry.code ?? 'No code available'}\n\`\`\``,
-						},
-					],
-				};
-			}
-
-			throw new Error(`Unknown tool: ${name}`);
-		});
-	}
-
-	return mcpServer;
-}
-
-/**
- * SSE Endpoint for MCP Server
- * GET /api/sse - Establishes SSE connection with MCP protocol
- */
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-	// Only allow GET requests for SSE
-	if (req.method !== 'GET') {
-		return res.status(405).json({ error: 'Method not allowed. Use GET for SSE connection.' });
-	}
-
-	// CORS headers
+function setCorsHeaders(res: VercelResponse): void {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-	res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Mcp-Session-Id');
+	res.setHeader('Access-Control-Expose-Headers', 'Mcp-Session-Id');
+	res.setHeader('X-Accel-Buffering', 'no');
+}
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+	setCorsHeaders(res);
+
+	if (req.method === 'OPTIONS') {
+		res.status(204).end();
+		return;
+	}
+
+	if (req.method !== 'GET') {
+		res.status(405).json({ error: 'Method not allowed. Use GET for SSE connection.' });
+		return;
+	}
+
+	let sessionId: string | null = null;
+	let cleanupRequested = false;
+	let server: ReturnType<typeof createKolibriMcpServer> | null = null;
+	let transport: SSEServerTransport | null = null;
 
 	try {
-		const server = getMcpServer();
+		server = createKolibriMcpServer();
+		transport = new SSEServerTransport(MESSAGE_ENDPOINT, res);
 
-		// Create SSE transport
-		const transport = new SSEServerTransport('/api/message', res);
+		sessionId = transport.sessionId;
+		res.setHeader('Mcp-Session-Id', sessionId);
 
-		// Connect server to transport
+		server.onclose = () => {
+			if (sessionId) {
+				deleteSession(sessionId);
+				if (!cleanupRequested) {
+					console.log(`[api/sse] Session ${sessionId} closed`);
+				}
+			}
+		};
+
+		transport.onerror = (error) => {
+			if (sessionId) {
+				console.error(`[api/sse] Transport error for session ${sessionId}`, error);
+			} else {
+				console.error('[api/sse] Transport error before session established', error);
+			}
+		};
+
+		setSession(transport.sessionId, { server, transport });
+
 		await server.connect(transport);
 
-		console.log('[api/sse] MCP Server connected via SSE');
+		console.log(`[api/sse] Session ${transport.sessionId} connected`);
 	} catch (error) {
-		console.error('[api/sse] Error:', error);
-		res.status(500).json({ error: 'Failed to establish SSE connection' });
+		cleanupRequested = true;
+		if (sessionId) {
+			deleteSession(sessionId);
+		}
+
+		if (server) {
+			await server.close().catch((closeError) => {
+				console.error('[api/sse] Failed to close server after error', closeError);
+			});
+		}
+
+		console.error('[api/sse] Error establishing SSE connection', error);
+
+		if (!res.headersSent) {
+			res.status(500).json({ error: 'Failed to establish SSE connection' });
+		} else {
+			res.end();
+		}
 	}
 }
