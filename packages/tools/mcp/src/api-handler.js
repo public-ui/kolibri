@@ -28,6 +28,7 @@ const RESOURCE_DEFINITIONS = Object.freeze([
 	{
 		id: 'health',
 		name: 'Health Status',
+		description: 'Reports the service health together with counters for all indexed entries.',
 		endpoint: '/health',
 		kind: 'status',
 		streaming: true,
@@ -37,6 +38,7 @@ const RESOURCE_DEFINITIONS = Object.freeze([
 	{
 		id: 'samples',
 		name: 'Component Samples',
+		description: 'Lists every indexed sample and supports optional filtering by free-text query.',
 		endpoint: '/samples',
 		kind: 'collection',
 		streaming: true,
@@ -46,6 +48,7 @@ const RESOURCE_DEFINITIONS = Object.freeze([
 	{
 		id: 'sample',
 		name: 'Component Sample Detail',
+		description: 'Returns the source code, metadata, and AI hints for a specific component example.',
 		endpoint: '/sample',
 		kind: 'item',
 		streaming: true,
@@ -55,6 +58,7 @@ const RESOURCE_DEFINITIONS = Object.freeze([
 	{
 		id: 'docs',
 		name: 'Documentation Entries',
+		description: 'Lists Markdown documentation entries such as guides, migration notes, and READMEs.',
 		endpoint: '/docs',
 		kind: 'collection',
 		streaming: true,
@@ -64,6 +68,7 @@ const RESOURCE_DEFINITIONS = Object.freeze([
 	{
 		id: 'doc',
 		name: 'Documentation Detail',
+		description: 'Returns the Markdown content and metadata for a single documentation entry.',
 		endpoint: '/doc',
 		kind: 'item',
 		streaming: true,
