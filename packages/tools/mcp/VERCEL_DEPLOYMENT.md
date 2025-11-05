@@ -1,43 +1,66 @@
 # Vercel Deployment Guide for KoliBri MCP Server
 
-This guide explains how to deploy the KoliBri MCP Server to Vercel.
+This guide explains how to deploy the KoliBri MCP Server to Vercel using GitHub Actions for building.
 
 ## Prerequisites
 
-- Vercel account
-- Vercel CLI installed: `npm install -g vercel`
-- Project built successfully: `pnpm build`
+- GitHub repository with proper access
+- Vercel account connected to GitHub
+- Vercel secrets configured in repository (VERCEL_MCP_TEAM_ID, VERCEL_MCP_PROJECT_ID, VERCEL_MCP_TOKEN)
 
 ## Architecture
 
-The MCP Server is deployed as Vercel Serverless Functions with SSE (Server-Sent Events) transport:
+The MCP Server uses a **GitHub Actions → Vercel** deployment pipeline:
+
+1. **GitHub Actions** builds the project (`pnpm build`)
+2. Generated `dist/` files are created with all data
+3. Vercel deploys the **pre-built artifacts** (no build on Vercel)
+4. API endpoints run as Vercel Serverless Functions
+
+### Endpoints
 
 - **GET /api/sse** - SSE endpoint for MCP protocol communication
 - **POST /api/message** - Message endpoint (used internally by SSE transport)
 - **GET /api/health** - Health check endpoint
 - **GET /** - Landing page with API documentation
 
-## Important Configuration
+## Build Process
 
-### 1. TypeScript Files in api/
+### GitHub Actions Workflow
 
-The `api/` directory contains TypeScript files that Vercel automatically compiles to serverless functions. These files **import directly from src/** to avoid issues with the build directory:
+The `.github/workflows/mcp-vercel.yml` workflow:
+
+1. Checks out the repository
+2. Sets up pnpm workspace
+3. Builds the MCP package: `pnpm build`
+4. Verifies built artifacts in `dist/`
+5. Deploys to Vercel using `vercel` CLI
+
+### Important: Pre-Built Artifacts
+
+The deployment uses **pre-built JavaScript files** from `dist/`:
 
 ```typescript
-// ✅ Correct - imports from src/
-import { getAllEntries } from '../src/data.js';
-import { searchEntries } from '../src/search.js';
-
-// ❌ Wrong - dist/ is not available during Vercel build
+// API files import from dist/ (built by GitHub Actions)
 import { getAllEntries } from '../dist/data.mjs';
+import { searchEntries } from '../dist/search.mjs';
 ```
 
-### 2. vercel.json Configuration
+**Why?** This ensures:
+
+- ✅ Consistent builds (same Node.js version)
+- ✅ All sample data is correctly generated
+- ✅ Faster Vercel deployments (no build step)
+- ✅ Better error detection (build fails in CI, not on Vercel)
+
+## Configuration Files
+
+### 1. vercel.json
 
 ```json
 {
-	"buildCommand": "pnpm build",
-	"installCommand": "pnpm install",
+	"buildCommand": "echo 'Using pre-built artifacts from GitHub Actions'",
+	"installCommand": "echo 'Dependencies already installed by GitHub Actions'",
 	"functions": {
 		"api/**/*.ts": {
 			"runtime": "nodejs20.x"
@@ -46,9 +69,32 @@ import { getAllEntries } from '../dist/data.mjs';
 }
 ```
 
+**Key Points:**
+
+- Build and install commands are no-ops (GitHub Actions handles this)
+- TypeScript files in `api/` are still compiled by Vercel
+- Pre-built `dist/` files are deployed as-is
+
+### 2. .vercelignore
+
+```
+src/
+test/
+build.config.ts
+tsconfig.json
+# ... other development files
+```
+
+**Purpose:** Exclude source files and only deploy:
+
+- `api/` - Serverless function definitions
+- `dist/` - Pre-built JavaScript modules
+- `public/` - Static assets
+- `package.json` - Dependency information
+
 ### 3. tsconfig.json
 
-Ensure TypeScript can compile both `src/` and `api/` directories:
+For local development, TypeScript needs to compile API files:
 
 ```json
 {
@@ -56,16 +102,52 @@ Ensure TypeScript can compile both `src/` and `api/` directories:
 		"target": "ES2022",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
-		"strict": true
+		"strict": false,
+		"noImplicitAny": false
 	},
 	"include": ["src/**/*", "api/**/*"],
 	"exclude": ["node_modules", "dist"]
 }
 ```
 
-## Deployment Steps
+**Note:** `strict: false` is required because API files import from `dist/` which has no TypeScript declarations. This is intentional and safe because GitHub Actions validates the build.
 
-### 1. First Deployment
+### 4. Type Declarations
+
+The file `api/dist-types.d.ts` provides type information for built modules:
+
+```typescript
+declare module '../dist/data.mjs' {
+	export function getAllEntries(): SampleEntry[];
+	// ...
+}
+```
+
+This allows TypeScript to understand imports from `dist/` during development.
+
+## Deployment Process
+
+### Automatic Deployment via GitHub Actions
+
+**Production:** Pushing to `release/3` branch automatically deploys to production
+
+```bash
+git checkout release/3
+git merge your-feature-branch
+git push origin release/3
+```
+
+**Preview:** Opening a pull request automatically creates a preview deployment
+
+```bash
+git checkout -b feature/my-feature
+git push origin feature/my-feature
+# Create PR on GitHub
+```
+
+### Manual Deployment (Not Recommended)
+
+If you need to deploy manually:
 
 ```bash
 # Login to Vercel

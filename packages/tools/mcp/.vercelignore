@@ -1,0 +1,38 @@
+# Source files - we only deploy built artifacts
+
+src/
+test/
+
+# Build configuration
+
+build.config.ts
+tsconfig.json
+prettier.config.js
+prebuild.js
+
+# Development files
+
+.lintstagedrc
+\*.old
+AGENTS.md
+AGENTS.md.old
+README.md
+VERCEL_DEPLOYMENT.md
+
+# Node modules will be installed by Vercel if needed
+
+# But we prefer pre-built artifacts
+
+node_modules/
+
+# Keep these directories:
+
+# - api/ (serverless functions)
+
+# - dist/ (built JavaScript)
+
+# - public/ (static files)
+
+# - vercel.json (configuration)
+
+# - package.json (dependencies)

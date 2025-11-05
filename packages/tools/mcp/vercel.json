@@ -1,8 +1,8 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"version": 2,
-	"buildCommand": "pnpm build",
-	"installCommand": "pnpm install",
+	"buildCommand": "echo 'Using pre-built artifacts from GitHub Actions'",
+	"installCommand": "echo 'Dependencies already installed by GitHub Actions'",
 	"rewrites": [
 		{
 			"source": "/",

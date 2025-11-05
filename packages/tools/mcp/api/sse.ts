@@ -2,8 +2,10 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getAllEntries, getEntryById } from '../src/data.js';
-import { searchEntries, type SearchResult } from '../src/search.js';
+// Runtime imports from built artifacts (available after GitHub Actions build)
+// Type declarations are in ./dist-types.d.ts
+import { getAllEntries, getEntryById } from '../dist/data.mjs';
+import { searchEntries, type SearchResult } from '../dist/search.mjs';
 
 // Global MCP Server instance
 let mcpServer: Server | null = null;
