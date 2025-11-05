@@ -196,147 +196,195 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 		return createResponse(204);
 	}
 
-	if ((normalizedMethod === 'GET' || normalizedMethod === 'POST') && pathname === '/') {
-		let index;
-		try {
-			index = await getIndex();
-		} catch (error) {
-			console.warn('[root] Unable to load index for overview response:', error);
-		}
+        if ((normalizedMethod === 'GET' || normalizedMethod === 'POST') && pathname === '/') {
+                let index;
+                try {
+                        index = await getIndex();
+                } catch (error) {
+                        console.warn('[root] Unable to load index for overview response:', error);
+                }
 
-		const counts = resolveCounts(index);
-		const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt : undefined;
+                const counts = resolveCounts(index);
+                const generatedAt = index?.generatedAt instanceof Date ? index.generatedAt : undefined;
+                const body = withAiHints({
+                        message: 'KoliBri MCP backend is running.',
+                        endpoints: [
+                                '/initialize',
+                                '/initialize?stream=1',
+                                '/health',
+                                '/health?stream=1',
+                                '/samples',
+                                '/samples?q=<query>',
+                                '/samples?stream=1',
+                                '/sample?id=sample/<component>/<sample>',
+                                '/sample?id=sample/<component>/<sample>&stream=1',
+                                '/docs',
+                                '/docs?q=<query>',
+                                '/docs?stream=1',
+                                '/doc?id=doc/<identifier>',
+                                '/doc?id=doc/<identifier>&stream=1',
+                        ],
+                        transports: {
+                                auto: '/mcp',
+                                http: '/http',
+                                sse: '/sse',
+                        },
+                        totalEntries: counts.total,
+                        totalSamples: counts.totalSamples,
+                        totalDocs: counts.totalDocs,
+                        generatedAt: (generatedAt ?? new Date()).toISOString(),
+                        buildMode: index?.buildMode ?? 'runtime',
+                        streaming: { sse: true },
+                });
 
-		return createResponse(
-			200,
-			withAiHints({
-				message: 'KoliBri MCP backend is running.',
-				endpoints: [
-					'/initialize',
-					'/health',
-					'/samples',
-					'/samples?q=<query>',
-					'/samples?stream=1',
-					'/sample?id=sample/<component>/<sample>',
-					'/docs',
-					'/docs?q=<query>',
-					'/docs?stream=1',
-					'/doc?id=doc/<identifier>',
-				],
-				transports: {
-					auto: '/mcp',
-					http: '/http',
-					sse: '/sse',
-				},
-				totalEntries: counts.total,
-				totalSamples: counts.totalSamples,
-				totalDocs: counts.totalDocs,
-				generatedAt: (generatedAt ?? new Date()).toISOString(),
-				buildMode: index?.buildMode ?? 'runtime',
-				streaming: { sse: true },
-			}),
-		);
-	}
+                if (wantsStream) {
+                        return createStreamResponse(200, {
+                                meta: {
+                                        endpoint: '/',
+                                        method: normalizedMethod,
+                                        totalEntries: counts.total,
+                                        totalSamples: counts.totalSamples,
+                                        totalDocs: counts.totalDocs,
+                                },
+                                items: [body],
+                                itemEventName: 'overview',
+                        });
+                }
 
-	if ((normalizedMethod === 'POST' || normalizedMethod === 'GET') && pathname === '/initialize') {
-		const index = await getIndex();
-		const counts = resolveCounts(index);
-		const generatedAt = index.generatedAt instanceof Date ? index.generatedAt : new Date();
+                return createResponse(200, body);
+        }
 
-		return createResponse(
-			200,
-			withAiHints({
-				protocol: '2024-11-05',
-				server: {
-					name: PACKAGE_NAME ?? 'KoliBri MCP Server',
-					version: PACKAGE_VERSION,
-					description: PACKAGE_DESCRIPTION ?? 'Model Context Protocol server providing access to KoliBri samples and documentation.',
-					homepage: PACKAGE_HOMEPAGE ?? 'https://public-ui.github.io',
-				},
-				capabilities: {
-					streaming: { sse: true },
-					filters: ['q'],
-				},
-				transports: {
-					auto: '/mcp',
-					http: '/http',
-					sse: '/sse',
-				},
-				resources: [
-					{
-						id: 'samples',
-						name: 'Component Samples',
-						endpoint: '/samples',
-						kind: 'collection',
-						streaming: true,
-						methods: ['GET'],
-						params: ['q'],
-					},
-					{
-						id: 'sample',
-						name: 'Component Sample Detail',
-						endpoint: '/sample',
-						kind: 'item',
-						streaming: false,
-						methods: ['GET'],
-						params: ['id'],
-					},
-					{
-						id: 'docs',
-						name: 'Documentation Entries',
-						endpoint: '/docs',
-						kind: 'collection',
-						streaming: true,
-						methods: ['GET'],
-						params: ['q'],
-					},
-					{
-						id: 'doc',
-						name: 'Documentation Detail',
-						endpoint: '/doc',
-						kind: 'item',
-						streaming: false,
-						methods: ['GET'],
-						params: ['id'],
-					},
-				],
-				totals: {
-					total: counts.total,
-					samples: counts.totalSamples,
-					docs: counts.totalDocs,
-				},
-				generatedAt: generatedAt.toISOString(),
-			}),
-		);
-	}
+        if ((normalizedMethod === 'POST' || normalizedMethod === 'GET') && pathname === '/initialize') {
+                const index = await getIndex();
+                const counts = resolveCounts(index);
+                const generatedAt = index.generatedAt instanceof Date ? index.generatedAt : new Date();
+                const body = withAiHints({
+                        protocol: '2024-11-05',
+                        server: {
+                                name: PACKAGE_NAME ?? 'KoliBri MCP Server',
+                                version: PACKAGE_VERSION,
+                                description: PACKAGE_DESCRIPTION ?? 'Model Context Protocol server providing access to KoliBri samples and documentation.',
+                                homepage: PACKAGE_HOMEPAGE ?? 'https://public-ui.github.io',
+                        },
+                        capabilities: {
+                                streaming: { sse: true },
+                                filters: ['q'],
+                        },
+                        transports: {
+                                auto: '/mcp',
+                                http: '/http',
+                                sse: '/sse',
+                        },
+                        resources: [
+                                {
+                                        id: 'health',
+                                        name: 'Health Status',
+                                        endpoint: '/health',
+                                        kind: 'status',
+                                        streaming: true,
+                                        methods: ['GET'],
+                                        params: [],
+                                },
+                                {
+                                        id: 'samples',
+                                        name: 'Component Samples',
+                                        endpoint: '/samples',
+                                        kind: 'collection',
+                                        streaming: true,
+                                        methods: ['GET'],
+                                        params: ['q'],
+                                },
+                                {
+                                        id: 'sample',
+                                        name: 'Component Sample Detail',
+                                        endpoint: '/sample',
+                                        kind: 'item',
+                                        streaming: true,
+                                        methods: ['GET'],
+                                        params: ['id'],
+                                },
+                                {
+                                        id: 'docs',
+                                        name: 'Documentation Entries',
+                                        endpoint: '/docs',
+                                        kind: 'collection',
+                                        streaming: true,
+                                        methods: ['GET'],
+                                        params: ['q'],
+                                },
+                                {
+                                        id: 'doc',
+                                        name: 'Documentation Detail',
+                                        endpoint: '/doc',
+                                        kind: 'item',
+                                        streaming: true,
+                                        methods: ['GET'],
+                                        params: ['id'],
+                                },
+                        ],
+                        totals: {
+                                total: counts.total,
+                                samples: counts.totalSamples,
+                                docs: counts.totalDocs,
+                        },
+                        generatedAt: generatedAt.toISOString(),
+                });
 
-	if (normalizedMethod === 'GET' && pathname === '/health') {
-		const index = await getIndex();
-		const counts = resolveCounts(index);
-		const isHealthy = counts.total > 0;
+                if (wantsStream) {
+                        return createStreamResponse(200, {
+                                meta: {
+                                        endpoint: '/initialize',
+                                        method: normalizedMethod,
+                                        totals: body.totals,
+                                },
+                                items: [body],
+                                itemEventName: 'initialize',
+                        });
+                }
 
-		// Debug information for Vercel
-		console.log('[health] Total entries:', counts.total);
-		console.log('[health] Sample entries:', counts.totalSamples);
-		console.log('[health] Doc entries:', counts.totalDocs);
-		console.log('[health] Index generated at:', index.generatedAt);
-		console.log('[health] Is healthy:', isHealthy);
+                return createResponse(200, body);
+        }
 
-		return createResponse(isHealthy ? 200 : 503, {
-			status: isHealthy ? 'ok' : 'error',
-			healthy: isHealthy,
-			totalEntries: counts.total,
-			totalSamples: counts.totalSamples,
-			totalDocs: counts.totalDocs,
-			message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
-			generatedAt: index.generatedAt.toISOString(),
-			debug: {
-				indexGeneratedAt: index.generatedAt.toISOString(),
-				entriesLength: index.entries.length,
-				firstFewEntries: index.entries.slice(0, 3).map((e) => e.id),
-			},
-		});
-	}
+        if (normalizedMethod === 'GET' && pathname === '/health') {
+                const index = await getIndex();
+                const counts = resolveCounts(index);
+                const isHealthy = counts.total > 0;
+
+                // Debug information for Vercel
+                console.log('[health] Total entries:', counts.total);
+                console.log('[health] Sample entries:', counts.totalSamples);
+                console.log('[health] Doc entries:', counts.totalDocs);
+                console.log('[health] Index generated at:', index.generatedAt);
+                console.log('[health] Is healthy:', isHealthy);
+                const body = {
+                        status: isHealthy ? 'ok' : 'error',
+                        healthy: isHealthy,
+                        totalEntries: counts.total,
+                        totalSamples: counts.totalSamples,
+                        totalDocs: counts.totalDocs,
+                        message: isHealthy ? `System healthy with ${counts.total} entries available` : 'No entries found - system may not be properly initialized',
+                        generatedAt: index.generatedAt.toISOString(),
+                        debug: {
+                                indexGeneratedAt: index.generatedAt.toISOString(),
+                                entriesLength: index.entries.length,
+                                firstFewEntries: index.entries.slice(0, 3).map((e) => e.id),
+                        },
+                };
+
+                if (wantsStream) {
+                        return createStreamResponse(isHealthy ? 200 : 503, {
+                                meta: {
+                                        endpoint: '/health',
+                                        method: normalizedMethod,
+                                        healthy: isHealthy,
+                                },
+                                items: [body],
+                                itemEventName: 'health',
+                        });
+                }
+
+                return createResponse(isHealthy ? 200 : 503, body);
+        }
 
 	if (normalizedMethod === 'GET' && pathname === '/samples') {
 		const index = await getIndex();
@@ -375,32 +423,74 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 	if (normalizedMethod === 'GET' && pathname === '/sample') {
 		const index = await getIndex();
 		const id = requestUrl.searchParams.get('id');
-		if (!id) {
-			return createResponse(400, { error: 'missing_id' });
-		}
+                if (!id) {
+                        const errorBody = { error: 'missing_id' };
+                        if (wantsStream) {
+                                return createStreamResponse(400, {
+                                        meta: { endpoint: '/sample', method: normalizedMethod },
+                                        items: [errorBody],
+                                        itemEventName: 'sample',
+                                });
+                        }
+
+                        return createResponse(400, errorBody);
+                }
 
 		const entry = index.get(id);
-		if (!entry) {
-			return createResponse(404, { error: 'not_found', id });
-		}
+                if (!entry) {
+                        const errorBody = { error: 'not_found', id };
+                        if (wantsStream) {
+                                return createStreamResponse(404, {
+                                        meta: { endpoint: '/sample', method: normalizedMethod, id },
+                                        items: [errorBody],
+                                        itemEventName: 'sample',
+                                });
+                        }
 
-		if ((entry.kind ?? 'sample') !== 'sample') {
-			return createResponse(400, { error: 'invalid_kind', expected: 'sample', actual: entry.kind ?? 'sample', id });
-		}
+                        return createResponse(404, errorBody);
+                }
 
-		return createResponse(200, {
-			id: entry.id,
-			group: entry.group,
-			name: entry.name,
-			path: entry.path,
-			code: entry.code,
-			kind: entry.kind ?? 'sample',
-		});
-	}
+                if ((entry.kind ?? 'sample') !== 'sample') {
+                        const errorBody = {
+                                error: 'invalid_kind',
+                                expected: 'sample',
+                                actual: entry.kind ?? 'sample',
+                                id,
+                        };
+                        if (wantsStream) {
+                                return createStreamResponse(400, {
+                                        meta: { endpoint: '/sample', method: normalizedMethod, id },
+                                        items: [errorBody],
+                                        itemEventName: 'sample',
+                                });
+                        }
 
-	if (normalizedMethod === 'GET' && pathname === '/docs') {
-		const index = await getIndex();
-		const query = requestUrl.searchParams.get('q') ?? '';
+                        return createResponse(400, errorBody);
+                }
+
+                const body = {
+                        id: entry.id,
+                        group: entry.group,
+                        name: entry.name,
+                        path: entry.path,
+                        code: entry.code,
+                        kind: entry.kind ?? 'sample',
+                };
+
+                if (wantsStream) {
+                        return createStreamResponse(200, {
+                                meta: { endpoint: '/sample', method: normalizedMethod, id },
+                                items: [body],
+                                itemEventName: 'sample',
+                        });
+                }
+
+                return createResponse(200, body);
+        }
+
+        if (normalizedMethod === 'GET' && pathname === '/docs') {
+                const index = await getIndex();
+                const query = requestUrl.searchParams.get('q') ?? '';
 		const items = index.list(query, { kinds: ['doc'] }).map((entry) => ({
 			group: entry.group,
 			id: entry.id,
@@ -434,31 +524,78 @@ export async function handleApiRequest({ method = 'GET', url = '/', headers = {}
 	if (normalizedMethod === 'GET' && pathname === '/doc') {
 		const index = await getIndex();
 		const id = requestUrl.searchParams.get('id');
-		if (!id) {
-			return createResponse(400, { error: 'missing_id' });
-		}
+                if (!id) {
+                        const errorBody = { error: 'missing_id' };
+                        if (wantsStream) {
+                                return createStreamResponse(400, {
+                                        meta: { endpoint: '/doc', method: normalizedMethod },
+                                        items: [errorBody],
+                                        itemEventName: 'doc',
+                                });
+                        }
+
+                        return createResponse(400, errorBody);
+                }
 
 		const entry = index.get(id);
-		if (!entry || entry.kind !== 'doc') {
-			return createResponse(404, { error: 'not_found', id });
-		}
+                if (!entry || entry.kind !== 'doc') {
+                        const errorBody = { error: 'not_found', id };
+                        if (wantsStream) {
+                                return createStreamResponse(404, {
+                                        meta: { endpoint: '/doc', method: normalizedMethod, id },
+                                        items: [errorBody],
+                                        itemEventName: 'doc',
+                                });
+                        }
 
-		return createResponse(200, {
-			id: entry.id,
-			group: entry.group,
-			name: entry.name,
-			path: entry.path,
-			code: entry.code,
-			kind: entry.kind ?? 'doc',
-		});
-	}
+                        return createResponse(404, errorBody);
+                }
 
-	if (normalizedMethod === 'POST' && pathname === '/refresh') {
-		return createResponse(410, {
-			error: 'refresh_unavailable',
-			message: 'Die Re-Indexierung ist in bereitgestellten Umgebungen deaktiviert, da die Inhalte bereits vorab eingebettet werden.',
-		});
-	}
+                const body = {
+                        id: entry.id,
+                        group: entry.group,
+                        name: entry.name,
+                        path: entry.path,
+                        code: entry.code,
+                        kind: entry.kind ?? 'doc',
+                };
 
-	return createResponse(404, { error: 'not_found' });
+                if (wantsStream) {
+                        return createStreamResponse(200, {
+                                meta: { endpoint: '/doc', method: normalizedMethod, id },
+                                items: [body],
+                                itemEventName: 'doc',
+                        });
+                }
+
+                return createResponse(200, body);
+        }
+
+        if (normalizedMethod === 'POST' && pathname === '/refresh') {
+                const body = {
+                        error: 'refresh_unavailable',
+                        message: 'Die Re-Indexierung ist in bereitgestellten Umgebungen deaktiviert, da die Inhalte bereits vorab eingebettet werden.',
+                };
+
+                if (wantsStream) {
+                        return createStreamResponse(410, {
+                                meta: { endpoint: '/refresh', method: normalizedMethod },
+                                items: [body],
+                                itemEventName: 'refresh',
+                        });
+                }
+
+                return createResponse(410, body);
+        }
+
+        const fallbackBody = { error: 'not_found', endpoint: pathname, method: normalizedMethod };
+        if (wantsStream) {
+                return createStreamResponse(404, {
+                        meta: { endpoint: pathname, method: normalizedMethod },
+                        items: [fallbackBody],
+                        itemEventName: 'error',
+                });
+        }
+
+        return createResponse(404, fallbackBody);
 }

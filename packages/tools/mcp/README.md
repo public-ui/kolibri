@@ -32,12 +32,12 @@ The server will start on `http://localhost:3030` and provide the following endpo
   - `http://localhost:3030/http` – force plain JSON/HTTP responses
   - `http://localhost:3030/sse` – force Server-Sent Events streaming
 
-- `POST /mcp/initialize` - Discover available resources and capabilities
-- `GET /mcp/health` - Server status and content counts
-- `GET /mcp/samples` - List all available component examples
-- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code
-- `GET /mcp/docs` - List Markdown documentation
-- `GET /mcp/doc?id=doc/README` - Get a specific documentation entry
+- `POST /mcp/initialize` - Discover available resources and capabilities (JSON or SSE)
+- `GET /mcp/health` - Server status and content counts (JSON or SSE)
+- `GET /mcp/samples` - List all available component examples (JSON or SSE)
+- `GET /mcp/sample?id=sample/button/basic` - Get specific sample source code (JSON or SSE)
+- `GET /mcp/docs` - List Markdown documentation (JSON or SSE)
+- `GET /mcp/doc?id=doc/README` - Get a specific documentation entry (JSON or SSE)
 
 The sample and doc indexes are prebuilt for deployments, therefore no manual refresh endpoint is exposed in production.
 
@@ -189,13 +189,13 @@ All JSON responses contain an `ai-hints` string array that reiterates in English
 
 ### 🔁 Server-Sent Events Streaming
 
-Collection endpoints (`/mcp/samples` and `/mcp/docs`) also support **Server-Sent Events (SSE)** to stream large result sets progressively. Request streaming responses by either:
+Every resource can also be consumed as **Server-Sent Events (SSE)** so MCP clients that prefer streaming never have to switch transports mid-session. Request streaming responses by either:
 
 - Sending the header `Accept: text/event-stream`
 - Adding the query parameter `stream=1`
 - Using the dedicated base path `http://localhost:3030/sse`, e.g. `http://localhost:3030/sse/samples`
 
-The server emits a `meta` event with the query context followed by one event per resource (`sample` or `doc`) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload.
+The server emits a `meta` event with the query context followed by one event per resource (`initialize`, `health`, `sample`, `doc`, etc.) and an `end` event once streaming is complete. This enables MCP clients to render results immediately without waiting for the entire payload, even when requesting individual items.
 
 ## 🛠️ Use Cases
 
