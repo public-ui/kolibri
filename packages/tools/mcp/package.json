@@ -49,6 +49,7 @@
 		"test-update": "echo \"No tests yet\""
 	},
 	"devDependencies": {
+		"@vercel/node": "3.2.26",
 		"prettier": "3.6.2",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"unbuild": "3.6.1"

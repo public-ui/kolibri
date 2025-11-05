@@ -122,7 +122,7 @@ pnpm install
 # Build
 pnpm build
 
-# Start
+# Start (stdio mode)
 pnpm start
 
 # Format
@@ -130,6 +130,41 @@ pnpm format
 
 # Test
 pnpm test
+```
+
+## Deployment
+
+### Vercel (SSE)
+
+This package can be deployed to Vercel as a serverless API with Server-Sent Events support:
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Production
+vercel --prod
+```
+
+After deployment, the following endpoints are available:
+
+- `GET /` - Landing page with API documentation
+- `GET /api/sse` - SSE endpoint for MCP client connections
+- `POST /api/message` - JSON-RPC message endpoint
+- `GET /api/health` - Health check endpoint
+
+See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for detailed deployment instructions and client integration examples.
+
+### Local stdio mode
+
+```bash
+# Start server locally
+pnpm start
+# or
+npx @public-ui/mcp
 ```
 
 ## Sample Data

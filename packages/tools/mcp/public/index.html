@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>KoliBri MCP API</title>
-		<link rel="icon" type="image/svg+xml" href="/kolibri-favicon.svg" />
+		<title>KoliBri MCP Server (SSE)</title>
 		<style>
 			* {
 				margin: 0;
@@ -21,33 +20,166 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				padding: 2.5rem;
+				padding: 2rem;
 			}
 
 			.container {
-				width: min(100%, 800px);
-				margin: 0 auto;
+				max-width: 800px;
+				width: 100%;
 				padding: 2rem;
 				background: white;
 				border-radius: 12px;
 				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 			}
 
-			.header {
+			h1 {
+				color: #667eea;
+				margin-bottom: 1rem;
 				text-align: center;
+			}
+
+			.badge {
+				display: inline-block;
+				padding: 0.25rem 0.75rem;
+				background: #667eea;
+				color: white;
+				border-radius: 20px;
+				font-size: 0.875rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.section {
 				margin-bottom: 2rem;
 			}
 
-			.logo {
-				width: clamp(96px, 18vw, 125px);
-				height: clamp(96px, 18vw, 125px);
-				margin: 0 auto 1rem;
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			.section h2 {
+				color: #555;
+				font-size: 1.25rem;
+				margin-bottom: 0.75rem;
+				border-bottom: 2px solid #667eea;
+				padding-bottom: 0.5rem;
+			}
+
+			.endpoint {
+				background: #f7f7f7;
+				padding: 1rem;
+				border-radius: 8px;
+				margin-bottom: 0.75rem;
+				border-left: 4px solid #667eea;
+			}
+
+			.endpoint code {
+				background: #e0e0e0;
+				padding: 0.25rem 0.5rem;
+				border-radius: 4px;
+				font-family: 'Courier New', monospace;
+				color: #d63384;
+			}
+
+			.method {
+				display: inline-block;
+				padding: 0.25rem 0.5rem;
+				background: #28a745;
 				color: white;
-				font-size: 2rem;
+				border-radius: 4px;
+				font-size: 0.75rem;
+				font-weight: bold;
+				margin-right: 0.5rem;
+			}
+
+			.method.post {
+				background: #ffc107;
+			}
+
+			ul {
+				margin-left: 1.5rem;
+				margin-top: 0.5rem;
+			}
+
+			li {
+				margin-bottom: 0.5rem;
+			}
+
+			footer {
+				text-align: center;
+				margin-top: 2rem;
+				padding-top: 1rem;
+				border-top: 1px solid #e0e0e0;
+				color: #777;
+				font-size: 0.875rem;
+			}
+
+			a {
+				color: #667eea;
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>🚀 KoliBri MCP Server</h1>
+			<div style="text-align: center">
+				<span class="badge">Server-Sent Events (SSE)</span>
+			</div>
+
+			<div class="section">
+				<h2>📡 API Endpoints</h2>
+
+				<div class="endpoint">
+					<span class="method">GET</span>
+					<code>/api/sse</code>
+					<p>Establishes a Server-Sent Events (SSE) connection for receiving real-time updates from the MCP server.</p>
+				</div>
+
+				<div class="endpoint">
+					<span class="method post">POST</span>
+					<code>/api/message</code>
+					<p>Sends JSON-RPC messages to the MCP server. Use this endpoint to call tools and interact with the server.</p>
+				</div>
+
+				<div class="endpoint">
+					<span class="method">GET</span>
+					<code>/api/health</code>
+					<p>Health check endpoint that returns server status and available endpoints.</p>
+				</div>
+			</div>
+
+			<div class="section">
+				<h2>🔧 Available Tools</h2>
+				<ul>
+					<li><strong>hello_kolibri</strong> - Test tool that returns a greeting</li>
+					<li><strong>search</strong> - Search for KoliBri component samples and documentation</li>
+					<li><strong>get_entry</strong> - Get a specific entry by ID</li>
+				</ul>
+			</div>
+
+			<div class="section">
+				<h2>💡 Quick Start</h2>
+				<p>Connect to this MCP server using the Model Context Protocol SDK:</p>
+				<pre style="background: #f7f7f7; padding: 1rem; border-radius: 8px; overflow-x: auto"><code>import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
+
+const transport = new SSEClientTransport(
+  new URL('https://your-deployment.vercel.app/api/sse')
+);
+
+const client = new Client({ name: 'my-client', version: '1.0.0' }, {});
+await client.connect(transport);</code></pre>
+			</div>
+
+			<footer>
+				<p>
+					Powered by <a href="https://public-ui.github.io" target="_blank">KoliBri</a> |
+					<a href="https://modelcontextprotocol.io" target="_blank">Model Context Protocol</a>
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
 				font-weight: bold;
 			}
 
