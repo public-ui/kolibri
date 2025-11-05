@@ -118,6 +118,7 @@ export default async function handler(request, response) {
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
+				headers: request.headers || {},
 				getIndex,
 			});
 
@@ -125,6 +126,19 @@ export default async function handler(request, response) {
 			Object.entries(result.headers).forEach(([key, value]) => {
 				response.setHeader(key, value);
 			});
+
+			if (result.stream) {
+				response.flushHeaders?.();
+				try {
+					for await (const chunk of result.stream) {
+						response.write(chunk);
+					}
+				} finally {
+					response.end();
+				}
+				return;
+			}
+
 			const responseBody = result.body ?? {};
 			if (fullUrl.pathname === '/') {
 				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
@@ -148,6 +162,7 @@ export default async function handler(request, response) {
 			const result = await handleApiRequest({
 				method: request.method || 'GET',
 				url: fullUrl.toString(),
+				headers: request.headers || {},
 				getIndex,
 			});
 
@@ -156,6 +171,19 @@ export default async function handler(request, response) {
 			Object.entries(result.headers).forEach(([key, value]) => {
 				response.setHeader(key, value);
 			});
+
+			if (result.stream) {
+				response.flushHeaders?.();
+				try {
+					for await (const chunk of result.stream) {
+						response.write(chunk);
+					}
+				} finally {
+					response.end();
+				}
+				return;
+			}
+
 			const responseBody = result.body ?? {};
 			if (fullUrl.pathname === '/') {
 				response.json(responseBody[AI_HINTS_KEY] ? responseBody : withAiHints(responseBody));
