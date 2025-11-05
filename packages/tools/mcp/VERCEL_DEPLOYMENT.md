@@ -1,56 +1,131 @@
-# KoliBri MCP Server - Vercel Deployment
+# Vercel Deployment Guide for KoliBri MCP Server
 
-## Deployment auf Vercel
+This guide explains how to deploy the KoliBri MCP Server to Vercel.
 
-### 1. Vorbereitung
+## Prerequisites
 
-```bash
-# Build lokal testen
-pnpm build
+- Vercel account
+- Vercel CLI installed: `npm install -g vercel`
+- Project built successfully: `pnpm build`
 
-# Vercel CLI installieren (falls noch nicht vorhanden)
-npm i -g vercel
+## Architecture
+
+The MCP Server is deployed as Vercel Serverless Functions with SSE (Server-Sent Events) transport:
+
+- **GET /api/sse** - SSE endpoint for MCP protocol communication
+- **POST /api/message** - Message endpoint (used internally by SSE transport)
+- **GET /api/health** - Health check endpoint
+- **GET /** - Landing page with API documentation
+
+## Important Configuration
+
+### 1. TypeScript Files in api/
+
+The `api/` directory contains TypeScript files that Vercel automatically compiles to serverless functions. These files **import directly from src/** to avoid issues with the build directory:
+
+```typescript
+// ✅ Correct - imports from src/
+import { getAllEntries } from '../src/data.js';
+import { searchEntries } from '../src/search.js';
+
+// ❌ Wrong - dist/ is not available during Vercel build
+import { getAllEntries } from '../dist/data.mjs';
 ```
 
-### 2. Deployment
+### 2. vercel.json Configuration
+
+```json
+{
+	"buildCommand": "pnpm build",
+	"installCommand": "pnpm install",
+	"functions": {
+		"api/**/*.ts": {
+			"runtime": "nodejs20.x"
+		}
+	}
+}
+```
+
+### 3. tsconfig.json
+
+Ensure TypeScript can compile both `src/` and `api/` directories:
+
+```json
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"strict": true
+	},
+	"include": ["src/**/*", "api/**/*"],
+	"exclude": ["node_modules", "dist"]
+}
+```
+
+## Deployment Steps
+
+### 1. First Deployment
 
 ```bash
-# Login bei Vercel
+# Login to Vercel
 vercel login
 
-# Projekt deployen
+# Deploy to preview
 vercel
 
-# Production deployment
+# Deploy to production
 vercel --prod
 ```
 
-### 3. Umgebungsvariablen (optional)
+### 2. Subsequent Deployments
 
-Keine speziellen Umgebungsvariablen erforderlich.
+```bash
+# Deploy to production
+vercel --prod
+```
 
-## API Endpoints
+### 3. Environment Variables (Optional)
 
-Nach dem Deployment sind folgende Endpoints verfügbar:
+If needed, set environment variables in Vercel dashboard or via CLI:
 
-- `GET /` - Landing Page mit Dokumentation
-- `GET /api/sse` - SSE Endpoint für MCP Client-Verbindung
-- `POST /api/message` - JSON-RPC Message Endpoint
-- `GET /api/health` - Health Check
+```bash
+vercel env add VARIABLE_NAME
+```
 
-## Client-Integration
+## Testing the Deployment
 
-### JavaScript/TypeScript Client
+After deployment, test the endpoints:
 
-```typescript
+### 1. Health Check
+
+```bash
+curl https://your-deployment-url.vercel.app/api/health
+```
+
+Expected response:
+
+```json
+{
+	"status": "ok",
+	"timestamp": "2025-11-05T16:00:00.000Z",
+	"version": "1.0.0",
+	"endpoints": ["/api/sse", "/api/message", "/api/health"]
+}
+```
+
+### 2. SSE Connection (with MCP Client)
+
+```javascript
+// Example MCP client connection
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
 
-const transport = new SSEClientTransport(new URL('https://your-deployment.vercel.app/api/sse'));
+const transport = new SSEClientTransport(new URL('https://your-deployment-url.vercel.app/api/sse'));
 
 const client = new Client(
 	{
-		name: 'kolibri-client',
+		name: 'test-client',
 		version: '1.0.0',
 	},
 	{
@@ -60,106 +135,89 @@ const client = new Client(
 
 await client.connect(transport);
 
-// Tools aufrufen
-const result = await client.request({
-	method: 'tools/call',
-	params: {
-		name: 'search',
-		arguments: {
-			query: 'button',
-		},
-	},
-});
+// List available tools
+const tools = await client.listTools();
+console.log('Available tools:', tools);
 ```
 
-### cURL Test
+### 3. Landing Page
 
-```bash
-# Health Check
-curl https://your-deployment.vercel.app/api/health
-
-# SSE Connection (Terminal bleibt offen)
-curl -N https://your-deployment.vercel.app/api/sse
-
-# Message senden
-curl -X POST https://your-deployment.vercel.app/api/message \
-  -H "Content-Type: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "id": 1,
-    "method": "tools/list"
-  }'
-```
-
-## Architektur
-
-```
-┌─────────────┐         ┌──────────────┐
-│   Client    │◄────────┤  GET /api/sse │
-│   (Browser) │         └──────────────┘
-│             │         Server-Sent Events
-└─────────────┘                ▲
-       │                       │
-       │                       │
-       ├─────────────────►┌────────────────┐
-       │ POST /api/message │  MCP Server    │
-       │ JSON-RPC          │  (Serverless)  │
-       └───────────────────┤  - search      │
-                           │  - get_entry   │
-                           │  - hello       │
-                           └────────────────┘
-```
-
-## Features
-
-- ✅ SSE (Server-Sent Events) Transport
-- ✅ Serverless Functions auf Vercel
-- ✅ CORS enabled für Browser-Clients
-- ✅ Fuzzy Search mit fuse.js
-- ✅ Health Check Endpoint
-- ✅ Automatische Reconnection
+Visit `https://your-deployment-url.vercel.app/` to see the API documentation.
 
 ## Troubleshooting
 
-### SSE Verbindung bricht ab
+### 404 Error on /api/sse
 
-Vercel hat ein 60-Sekunden Timeout für Serverless Functions. Der Code sendet Keep-Alive Pings alle 30 Sekunden.
+**Problem**: SSE endpoint returns 404 Not Found
 
-### CORS Fehler
+**Solutions**:
 
-Alle API Endpoints haben `Access-Control-Allow-Origin: *` gesetzt. Prüfe Browser DevTools für Details.
+1. Ensure `api/sse.ts` has a default export named `handler`
+2. Check that TypeScript files are being compiled (see `vercel.json` functions config)
+3. Verify imports use `src/` not `dist/` paths
+4. Check Vercel build logs for compilation errors
 
-### Build Fehler
+### TypeScript Compilation Errors
 
-```bash
-# Clean und neu bauen
-rm -rf dist/ .vercel/
-pnpm build
-vercel
-```
+**Problem**: Build fails with TypeScript errors
 
-## Lokale Entwicklung
+**Solutions**:
 
-```bash
-# Vercel Dev Server starten
-vercel dev
+1. Run `pnpm build` locally to check for errors
+2. Ensure `tsconfig.json` includes both `src/` and `api/` directories
+3. Check that all imports have correct file extensions (`.js` or `.ts`)
 
-# Oder: Build + eigener Server
-pnpm build
-pnpm start
-```
+### Module Resolution Issues
 
-Der Server läuft dann auf `http://localhost:3000`.
+**Problem**: Cannot find module errors during runtime
 
-## Produktionshinweise
+**Solutions**:
 
-1. **Rate Limiting**: Vercel Serverless Functions haben Limits - siehe [Vercel Limits](https://vercel.com/docs/limits)
-2. **Cold Starts**: Erste Anfrage kann langsamer sein
-3. **Logs**: Verwende `vercel logs` für Production Logs
-4. **Monitoring**: Aktiviere Vercel Analytics für besseres Monitoring
+1. Use `.js` extensions in imports even for TypeScript files
+2. Set `"moduleResolution": "bundler"` in `tsconfig.json`
+3. Ensure all dependencies are in `dependencies`, not `devDependencies`
 
-## Links
+### SSE Connection Timeouts
 
-- [Vercel Dokumentation](https://vercel.com/docs)
-- [MCP Specification](https://modelcontextprotocol.io)
-- [KoliBri Docs](https://public-ui.github.io)
+**Problem**: SSE connection closes immediately or times out
+
+**Solutions**:
+
+1. Vercel has a 60-second timeout for serverless functions
+2. SSE connections should be kept alive with periodic messages
+3. Check that `SSEServerTransport` is properly configured
+
+## Performance Considerations
+
+1. **Cold Starts**: First request may be slower due to serverless cold start
+2. **Timeouts**: Vercel limits function execution to 60 seconds (Pro: 300s)
+3. **Memory**: Default is 1024 MB, can be increased in `vercel.json`
+4. **Regions**: Deploy to regions closest to your users
+
+## Security
+
+1. **CORS**: Configured to allow all origins (`*`) - restrict in production
+2. **Rate Limiting**: Consider adding rate limiting for production
+3. **Authentication**: Add authentication if needed (e.g., Bearer tokens)
+
+## Monitoring
+
+Monitor your deployment in Vercel Dashboard:
+
+- **Logs**: View function execution logs
+- **Analytics**: Track request counts and performance
+- **Errors**: Monitor error rates and stack traces
+
+## Continuous Deployment
+
+Connect your GitHub repository to Vercel for automatic deployments:
+
+1. Link repository in Vercel Dashboard
+2. Configure branch deployments (main → production)
+3. Enable automatic deployments on push
+
+## Cost Considerations
+
+- **Free Tier**: 100GB bandwidth, 100GB-hrs compute time
+- **Pro Tier**: Increased limits and features
+- Monitor usage in Vercel Dashboard

@@ -3,7 +3,7 @@ import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { getAllEntries, getEntryById } from '../src/data.js';
-import { searchEntries } from '../src/search.js';
+import { searchEntries, type SearchResult } from '../src/search.js';
 
 // Global MCP Server instance
 let mcpServer: Server | null = null;
@@ -116,7 +116,7 @@ function getMcpServer(): Server {
 					limit: limit ?? 10,
 				});
 
-				const resultText = results.map((result) => {
+				const resultText = results.map((result: SearchResult) => {
 					const { item, score } = result;
 					return `- [${item.kind}] ${item.id}: ${item.name}\n  Description: ${item.description ?? 'N/A'}\n  Match score: ${(score * 100).toFixed(1)}%\n  Tags: ${item.tags?.join(', ') ?? 'none'}`;
 				});

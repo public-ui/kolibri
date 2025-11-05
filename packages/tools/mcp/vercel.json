@@ -2,17 +2,13 @@
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"version": 2,
 	"buildCommand": "pnpm build",
+	"installCommand": "pnpm install",
 	"rewrites": [
 		{
 			"source": "/",
 			"destination": "/public/index.html"
 		}
 	],
-	"functions": {
-		"api/**/*.ts": {
-			"runtime": "@vercel/node@latest"
-		}
-	},
 	"headers": [
 		{
 			"source": "/api/(.*)",
@@ -35,5 +31,10 @@
 				}
 			]
 		}
-	]
+	],
+	"functions": {
+		"api/**/*.ts": {
+			"runtime": "nodejs20.x"
+		}
+	}
 }
