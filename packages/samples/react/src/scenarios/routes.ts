@@ -11,12 +11,14 @@ import { StaticForm } from './static-form';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { ToolbarItemOrder } from './toolbar-item-order';
 import { TooltipPositioning } from './tooltip-positioning';
+import { DateInForm } from './date-in-form';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'appointment-form': AppointmentForm,
 		'change-tabindex': ChangeTabindex,
 		'custom-tooltip-css-properties': CustomTooltipCssProperties,
+		'date-in-form': DateInForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
 		'input-group-with-error': InputGroupWithError,
