@@ -51,6 +51,8 @@ jobs:
       # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
       - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
+      - name: React samples build dependencies
+        run: pnpm --filter @public-ui/sample-react^... build
       - name: E2E Test react samples
         run: pnpm --filter @public-ui/sample-react test:e2e
       - uses: ./.github/actions/upload-reports
