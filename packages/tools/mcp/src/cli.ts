@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { logAvailableTools } from './logging.js';
 import { createKolibriMcpServer } from './mcp-server.js';
 
 async function main() {
@@ -9,7 +10,7 @@ async function main() {
 
 	await server.connect(transport);
 
-	console.error('KoliBri MCP Server running on stdio');
+	logAvailableTools();
 }
 
 main().catch((error) => {

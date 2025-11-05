@@ -22,6 +22,10 @@ export default defineBuildConfig({
 			input: 'src/search.ts',
 			name: 'search',
 		},
+		{
+			input: 'src/logging.ts',
+			name: 'logging',
+		},
 	],
 	declaration: false,
 	clean: true,

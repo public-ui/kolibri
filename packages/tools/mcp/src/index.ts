@@ -1,4 +1,5 @@
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { logAvailableTools } from './logging.js';
 import { createKolibriMcpServer } from './mcp-server.js';
 
 export { createKolibriMcpServer } from './mcp-server.js';
@@ -13,7 +14,7 @@ if (executedModule && import.meta.url === executedModule) {
 	server
 		.connect(transport)
 		.then(() => {
-			console.error('KoliBri MCP Server running on stdio');
+			logAvailableTools();
 		})
 		.catch((error) => {
 			console.error('[mcp] failed to start server', error);
