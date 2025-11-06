@@ -193,6 +193,49 @@ ${PACKAGE_DESCRIPTION ?? ''}
 		},
 	);
 
+	// Add best practices resource
+	server.registerResource(
+		'best-practices',
+		new ResourceTemplate('kolibri://best-practices', { list: undefined }),
+		{
+			title: 'KoliBri Best Practices',
+			description: 'Essential guidelines for working with KoliBri Web Components',
+		},
+		async (uri) => {
+			const practicesText = `# KoliBri Web Components - Best Practices
+
+## Essential Guidelines
+
+1. **Component Registration**
+   Always register KoliBri Web Components in the browser runtime before rendering them.
+
+2. **Integration Setup**
+   Choose the integration guide that matches your project setup to load and bundle the components correctly.
+
+3. **Icon Font Assets**
+   Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render.
+
+4. **Form Validation**
+   Wrap input elements with <kol-form> and feed its _errorList to surface validation issues via the generated error summary.
+
+## Additional Resources
+
+Use the 'search' tool to find specific component examples and implementation details.
+Use the 'get_entry' tool to retrieve full code samples for specific components.
+`;
+
+			return {
+				contents: [
+					{
+						uri: uri.href,
+						mimeType: 'text/markdown',
+						text: practicesText,
+					},
+				],
+			};
+		},
+	);
+
 	return server;
 }
 

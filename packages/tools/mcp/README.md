@@ -105,6 +105,45 @@ Get a specific sample or documentation entry by its ID.
 }
 ```
 
+## Available Resources
+
+### 1. `info`
+
+Get information about the KoliBri MCP Server and available samples.
+
+**Resource URI:** `kolibri://info`
+
+**Example:**
+
+```json
+{
+	"method": "resources/read",
+	"params": { "uri": "kolibri://info" }
+}
+```
+
+### 2. `best-practices`
+
+Essential guidelines for working with KoliBri Web Components. This resource provides base knowledge that AI agents should always consider when working with KoliBri components.
+
+**Resource URI:** `kolibri://best-practices`
+
+**Includes:**
+
+1. Always register KoliBri Web Components in the browser runtime before rendering them
+2. Choose the integration guide that matches your project setup to load and bundle the components correctly
+3. Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render
+4. Wrap input elements with `<kol-form>` and feed its `_errorList` to surface validation issues via the generated error summary
+
+**Example:**
+
+```json
+{
+	"method": "resources/read",
+	"params": { "uri": "kolibri://best-practices" }
+}
+```
+
 ## Example Searches
 
 **Search for button components:**
