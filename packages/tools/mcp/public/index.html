@@ -513,69 +513,6 @@ echo '{ "servers": { ... } }' > mcp.json
 
                         applyCountsFromBuild(window.__KOLIBRI_MCP_COUNTS__);
 
-                        // Test API status when page loads
-                        fetch('/mcp/http/health')
-                                .then((response) => response.json())
-				.then((data) => {
-					console.log('API Status:', data);
-					const statusElement = document.querySelector('.status');
-
-					// Extract sample count with fallback logic
-					let sampleCount = 0;
-					if (typeof data.totalSamples === 'number') {
-						sampleCount = data.totalSamples;
-					} else if (typeof data.samples === 'number') {
-						sampleCount = data.samples;
-					} else if (typeof data.total === 'number') {
-						sampleCount = data.total;
-					}
-
-					// Extract doc count with fallback logic
-					let docCount = 0;
-					if (typeof data.totalDocs === 'number') {
-						docCount = data.totalDocs;
-					} else if (typeof data.docs === 'number') {
-						docCount = data.docs;
-					}
-
-					const sampleCountElement = document.getElementById('sample-count');
-					const docCountElement = document.getElementById('doc-count');
-					const tipTextElement = document.getElementById('tip-text');
-
-					if (sampleCountElement && docCountElement) {
-						sampleCountElement.textContent = sampleCount.toLocaleString();
-						docCountElement.textContent = docCount.toLocaleString();
-					}
-
-                                        // Update tip text with dynamic numbers
-                                        if (tipTextElement && sampleCount > 0) {
-                                                const samplesText = sampleCount > 0 ? sampleCount.toLocaleString() : '0';
-                                                const docsText = docCount > 0 ? ` and ${docCount.toLocaleString()} documentation files` : '';
-                                                tipTextElement.textContent = `The MCP Server gives you access to all ${samplesText} KoliBri component samples${docsText} directly in VS Code!`;
-                                        }
-
-					if (data.healthy && sampleCount > 0) {
-						const docText = docCount > 0 ? `, ${docCount.toLocaleString()} Docs` : '';
-						statusElement.textContent = `🟢 Online (${sampleCount.toLocaleString()} Samples${docText})`;
-						statusElement.style.background = '#38a169';
-					} else {
-						statusElement.textContent = '🟡 No samples found';
-						statusElement.style.background = '#d69e2e';
-					}
-				})
-				.catch((error) => {
-					console.warn('API not reachable:', error);
-					const statusElement = document.querySelector('.status');
-					statusElement.textContent = '🔴 Offline';
-					statusElement.style.background = '#e53e3e';
-					const sampleCountElement = document.getElementById('sample-count');
-					const docCountElement = document.getElementById('doc-count');
-					if (sampleCountElement && docCountElement) {
-						sampleCountElement.textContent = '–';
-						docCountElement.textContent = '–';
-					}
-				});
-
 			// Copy code logic for all .copy-btn buttons
 			function copyCodeToClipboard(code) {
 				if (navigator.clipboard) {
