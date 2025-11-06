@@ -8,6 +8,7 @@ import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import type {
 	AriaSort,
+	FixedColsPropType,
 	HasSettingsMenuPropType,
 	KoliBriTableCell,
 	KoliBriTableDataType,
@@ -44,7 +45,6 @@ import { validateTableSettings } from '../../schema/props/table-settings';
 import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-
 /**
  * @internal
  */
@@ -96,6 +96,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the data for the table footer.
 	 */
 	@Prop() public _dataFoot?: TableDataFootPropType;
+
+	@Prop() public _fixedCols?: FixedColsPropType;
 
 	/**
 	 * Defines the horizontal and vertical table headers.
@@ -229,6 +231,53 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public disconnectedCallback() {
 		this.tableDivElementResizeObserver?.disconnect();
+	}
+
+	private getFixedCols() {
+		const fixedCols = this._fixedCols;
+
+		if (Array.isArray(fixedCols) && fixedCols.length === 2) {
+			return [Math.max(0, fixedCols[0]), Math.max(0, fixedCols[1])];
+		}
+		return [0, 0];
+	}
+
+	private getVisibleColumnsInOrder() {
+		const cols = this.state._tableSettings?.columns ?? [];
+		return [...cols]
+			.filter((col) => col.visible !== false)
+			.sort((a, b) => a.position - b.position)
+			.map((col) => ({ key: col.key, with: col.width }));
+	}
+
+	private computeStickyOffsets() {
+		const visible = this.getVisibleColumnsInOrder();
+		const [leftCountRaw, rightCountRaw] = this.getFixedCols();
+
+		const maxStickable = Math.max(0, visible.length);
+		const leftCount = Math.min(leftCountRaw, maxStickable);
+		const rightCount = Math.min(rightCountRaw, Math.max(0, maxStickable - leftCount));
+
+		const leftOffsets: Record<string, number> = {};
+		const rightOffsets: Record<string, number> = {};
+
+		let accLeft = 0;
+		for (let i = 0; i < leftCount; i++) {
+			const col = visible[i];
+			leftOffsets[col.key] = accLeft;
+			const width = typeof col.with === 'number' ? col.with : 12;
+			accLeft += width;
+		}
+
+		let accRight = 0;
+		for (let i = 0; i < rightCount; i++) {
+			const col = visible[visible.length - i - 1];
+			rightOffsets[col.key] = accRight;
+			const width = typeof col.with === 'number' ? col.with : 12;
+			accRight += width;
+		}
+
+		return { leftOffsets, rightOffsets };
 	}
 
 	private checkDivElementScrollbar() {
@@ -962,6 +1011,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.checkboxRefs = [];
 
 		const sortedHorizontalHeaders = this.state._headerCells.horizontal?.map((row) => this.sortByColumnPosition(row));
+
+		//const stickyMeta = this.computeStickyOffsets();
 
 		return (
 			<div class="kol-table">

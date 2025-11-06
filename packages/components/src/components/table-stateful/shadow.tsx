@@ -4,6 +4,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
+	FixedColsPropType,
 	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
@@ -33,6 +34,7 @@ import {
 	parseJson,
 	setState,
 	validateAllowMultiSort,
+	validateFixedCols,
 	validateHasSettingsMenu,
 	validateLabel,
 	validatePaginationPosition,
@@ -95,6 +97,8 @@ export class KolTableStateful implements TableAPI {
 	 * Defines the data for the table footer.
 	 */
 	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
+
+	@Prop() public _fixedCols?: FixedColsPropType;
 
 	/**
 	 * Defines the horizontal and vertical table headers.
@@ -180,6 +184,11 @@ export class KolTableStateful implements TableAPI {
 				setTimeout(this.updateSortedData);
 			},
 		});
+	}
+
+	@Watch('_fixedCols')
+	public validateFixedCols(value?: FixedColsPropType) {
+		validateFixedCols(this, value);
 	}
 
 	@Watch('_paginationPosition')
@@ -577,6 +586,7 @@ export class KolTableStateful implements TableAPI {
 					_headerCells={headerCells}
 					_label={this.state._label}
 					_dataFoot={this.state._dataFoot}
+					_fixedCols={this._fixedCols}
 					_minWidth={this.state._minWidth}
 					_on={{
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {

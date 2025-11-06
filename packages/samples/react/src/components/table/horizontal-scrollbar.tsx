@@ -45,6 +45,7 @@ export const TableHorizontalScrollbar: FC = () => {
 						className="block"
 					/>
 					<KolTableStateful
+						_fixedCols={[1, 0]}
 						_label="Table for demonstration horizontal scrolling with pagination."
 						_minWidth={hasWidthRestriction ? '600px' : '300px'}
 						_headers={{
