@@ -79,6 +79,8 @@ export class KolMultiSelect implements MultiSelectAPI {
 		this.refInput?.focus();
 	}
 
+	private _focusedOptionIndex: number = -1;
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
 	};
@@ -88,14 +90,14 @@ export class KolMultiSelect implements MultiSelectAPI {
 		const isDisabled = this.state._disabled === true;
 		if (isDisabled) {
 			return;
-		} else {
-			if (!this._hasOpened) {
-				this._isOpen = true;
-				this._hasOpened = true;
-				this.refInput?.focus();
-				this._focusedOptionIndex = 0;
-				this.focusOption(this._focusedOptionIndex);
-			}
+		}
+
+		if (!this._hasOpened) {
+			this._isOpen = true;
+			this._hasOpened = true;
+			this.refInput?.focus();
+			this._focusedOptionIndex = 0;
+			this.focusOption(this._focusedOptionIndex);
 		}
 	};
 
@@ -126,25 +128,25 @@ export class KolMultiSelect implements MultiSelectAPI {
 		const isDisabled = this.state._disabled === true;
 		if (isDisabled) {
 			return;
-		} else {
-			const emptyValue: StencilUnknown[] = [];
-			this._focusedOptionIndex = -1;
-			this._value = emptyValue;
-			this._inputValue = '';
-			this._filteredOptions = [...this.state._options];
-
-			const inputEvent = this.createEventWithTarget('input', {
-				name: this.state._name as string,
-				value: emptyValue,
-			});
-			const changeEvent = this.createEventWithTarget('change', {
-				name: this.state._name as string,
-				value: emptyValue,
-			});
-
-			this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
-			this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 		}
+
+		const emptyValue: StencilUnknown[] = [];
+		this._focusedOptionIndex = -1;
+		this._value = emptyValue;
+		this._inputValue = '';
+		this._filteredOptions = [...this.state._options];
+
+		const inputEvent = this.createEventWithTarget('input', {
+			name: this.state._name as string,
+			value: emptyValue,
+		});
+		const changeEvent = this.createEventWithTarget('change', {
+			name: this.state._name as string,
+			value: emptyValue,
+		});
+
+		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
+		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 	}
 
 	private selectOption(option: Option<string>) {
@@ -231,8 +233,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 			});
 		}
 	}
-
-	private _focusedOptionIndex: number = -1;
 
 	private moveFocus(delta: number) {
 		if (!this._filteredOptions) {
@@ -552,14 +552,17 @@ export class KolMultiSelect implements MultiSelectAPI {
 			</KolFormFieldStateWrapperFc>
 		);
 	}
+
 	@Listen('focusout', { target: 'window' })
 	public handleFocusOut() {
 		setTimeout(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			if (!this.host!.contains(document.activeElement)) {
 				this.onBlur();
 			}
 		}, 0);
 	}
+
 	@Listen('blur', { target: 'window' })
 	public handleWindowBlur() {
 		this.onBlur();
@@ -709,6 +712,11 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
+	 * Defines the whether the clear button should be hidden.
+	 */
+	@Prop() public _hideClearButton?: boolean = false;
+
+	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
@@ -796,11 +804,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown[] = [];
 
 	/**
-	 * Defines the whether the clear button should be hidden.
-	 */
-	@Prop() public _hideClearButton?: boolean = false;
-
-	/**
 	 * Maximum number of visible rows in the options dropdown before scrolling.
 	 */
 	@Prop() public _rows?: RowsPropType;
@@ -836,6 +839,11 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
+	}
+
+	@Watch('_hideClearButton')
+	public validateHideClearButton(value?: boolean): void {
+		this.controller.validateHideClearButton(value);
 	}
 
 	@Watch('_hideMsg')
@@ -912,11 +920,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Watch('_value')
 	public validateValue(value?: StencilUnknown[]): void {
 		this.controller.validateValue(value);
-	}
-
-	@Watch('_hideClearButton ')
-	public validateHideClearButton(value?: boolean): void {
-		this.controller.validateHideClearButton(value);
 	}
 
 	@Watch('_rows')
