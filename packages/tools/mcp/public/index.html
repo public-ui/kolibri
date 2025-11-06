@@ -315,80 +315,25 @@
 			</div>
 
                         <div class="api-info">
-                                <h2>📡 REST & Streaming Endpoints</h2>
-                                <p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
-                                <p class="description">
-                                        Use the <code class="endpoint-inline">/mcp/http/*</code> base path for classic JSON requests (fetch, curl, etc.) and
-                                        <code class="endpoint-inline">/mcp/sse/*</code> for streaming Server-Sent Events. The auto-detecting
-                                        <code class="endpoint-inline">/mcp/mcp/*</code> routes remain available but negotiate the transport based on the request headers.
-                                </p>
+                                <h2>📡 Streaming MCP Endpoint</h2>
+                                <p class="description">This server exposes the Model Context Protocol directly over HTTP and streams responses so that AI copilots see updates as soon as they are generated.</p>
                                 <div class="highlight-box info" style="margin-top: 1rem">
-                                        <strong style="color: #2d3748">🆕 Native MCP over HTTP:</strong>
+                                        <strong style="color: #2d3748">🆕 Stream-first transport:</strong>
                                         <span style="color: #2d3748">
-                                                Clients that speak the Model Context Protocol can connect directly via
-                                                <code class="endpoint-inline">POST /mcp</code>. The server streams responses using the official
-                                                <code class="endpoint-inline">StreamableHTTPServerTransport</code>, so Copilot Chat, Claude Desktop, and other MCP clients receive incremental updates without polling.
+                                                Connect with <code class="endpoint-inline">POST /mcp</code> and keep the request open. The
+                                                <code class="endpoint-inline">StreamableHTTPServerTransport</code> sends newline-delimited JSON frames, allowing Claude Desktop, Copilot Chat, and every MCP client to process tool output incrementally without polling.
                                         </span>
                                 </div>
-
-				<div style="margin-top: 1rem">
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/http/samples" style="color: #90cdf4">/mcp/http/samples</a></code>
-					</div>
-					<p class="description">
-						List of all available samples. Add the
-						<code class="endpoint-inline">?q=&lt;search&gt;</code>
-						query parameter to perform a fuzzy search across component names, tags, titles, descriptions and the component folder path. The search is tolerant
-						to typos and partial matches, so even short tokens can surface the relevant sample.
-					</p>
-					<div class="relative" style="margin-bottom: 0.75rem">
-						<code class="endpoint"><a href="/mcp/http/samples?q=btn" style="color: #90cdf4">/mcp/http/samples?q=btn</a></code>
-						<button class="copy-btn" aria-label="Copy fuzzy search endpoint" tabindex="0">📋</button>
-					</div>
-					<p class="description">
-						The example above demonstrates fuzzy matching&mdash;the short token
-						<code class="endpoint-inline">btn</code> still returns button samples.
-					</p>
-					<div class="relative" style="margin-bottom: 0.75rem">
-						<code class="endpoint"><a href="/mcp/http/samples?q=table%20responsive" style="color: #90cdf4">/mcp/http/samples?q=table%20responsive</a></code>
-						<button class="copy-btn" aria-label="Copy multi-word search endpoint" tabindex="0">📋</button>
-					</div>
-					<p class="description">Combine multiple words with spaces to narrow the result set&mdash;this request filters for responsive table samples.</p>
-
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/http/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/http/sample?id=sample/button/basic</a></code>
-					</div>
-					<p class="description">Path and source code of a specific sample</p>
-
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/http/docs" style="color: #90cdf4">/mcp/http/docs</a></code>
-					</div>
-					<p class="description">List of Markdown-based documentation documents</p>
-
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/http/doc?id=doc/README" style="color: #90cdf4">/mcp/http/doc?id=doc/README</a></code>
-					</div>
-					<p class="description">Retrieve a specific documentation document including its Markdown source</p>
-
-					<div>
-						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/http/doc?id=doc/README.md" style="color: #90cdf4">/mcp/http/doc?id=doc/README.md</a></code>
-					</div>
-					<p class="description">Retrieve a specific documentation document including its Markdown source (with .md extension)</p>
-
-					<p class="description">
-						Need streaming updates? Swap the prefix to <code class="endpoint-inline">/mcp/sse/*</code>, for example
-						<code class="endpoint-inline">/mcp/sse/samples</code> to receive the sample list via Server-Sent Events.
-					</p>
-				</div>
-				<p class="description" style="margin-top: 1rem">
-					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
-				</p>
-			</div>
+                                <p class="description" style="margin-top: 1rem">
+                                        Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to discover all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
+                                </p>
+                                <p class="description">
+                                        Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
+                                </p>
+                                <p class="description" style="margin-top: 1rem">
+                                        Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
+                                </p>
+                        </div>
 
 			<div class="api-info">
 				<h2>🔧 VS Code Integration</h2>
