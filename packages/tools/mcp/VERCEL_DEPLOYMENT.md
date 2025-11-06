@@ -11,7 +11,7 @@ Der MCP Server wird als **vorgebaute Vercel Serverless Function** deployed:
 - **Vercel Install**: Dependencies werden installiert (für imports in `api/index.js`)
 - **Vercel Build**: Übersprungen (nur Echo-Nachricht)
 - **API-Endpoint**: `/api/index.js` (importiert vorgebaute Module aus `dist/`)
-- **Öffentliche Route**: `/mcp` wird zu `/api/index` umgeleitet
+- **Öffentlicher Rewrite**: `/mcp` wird zu `/api/index` umgeschrieben
 - **Statische Seite**: `/` zeigt `public/index.html`
 
 ## Build-Workflow (GitHub Actions)
@@ -78,6 +78,8 @@ Dies startet einen lokalen Server, der die Vercel-Serverless-Funktionen simulier
 
 Der Deploy-Prozess ist bereits in GitHub Actions integriert. Die Workflow-Datei befindet sich im Haupt-Repository.
 
+**Wichtig:** Jeder Pull Request triggert automatisch ein Preview-Deployment über Vercel. Dadurch steht Reviewer:innen stets eine aktuelle Test-Instanz zur Verfügung, unabhängig davon, welche Dateien im PR geändert wurden.
+
 **Build-Schritte in CI:**
 
 1. Dependencies installieren
@@ -134,9 +136,8 @@ Für Claude Desktop oder andere MCP-Clients:
 
 Die Konfiguration in `vercel.json`:
 
-- **buildCommand**: Führt `pnpm run build` aus
-- **installCommand**: Installiert Dependencies mit `pnpm install --frozen-lockfile`
-- **rewrites**: Leitet `/mcp` zu `/api/index` um
+- **buildCommand**: Überspringt den Build, da dieser bereits in GitHub Actions erfolgt
+- **rewrites**: Schreibt `/mcp` auf die Serverless Function `api/index` um (Root `/` bleibt bei der statischen Landingpage)
 - **headers**: CORS-Header für Cross-Origin-Zugriffe
 - **functions**: Timeout-Konfiguration für Serverless Functions
 

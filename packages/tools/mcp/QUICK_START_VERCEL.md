@@ -52,8 +52,8 @@ vercel --prod
 
 ```
 /                      → public/index.html (Landingpage)
-/mcp                   → api/index.ts (MCP Server Handler)
-/api/index             → api/index.ts (direkte API-Route)
+/mcp                   → api/index.js (MCP Server Handler)
+/api/index             → api/index.js (direkte API-Route)
 ```
 
 ### Dateistruktur für Vercel
