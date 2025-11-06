@@ -112,7 +112,7 @@ function configureServer(server: McpServer): McpServer {
 				})),
 			};
 
-                        const resultText = results
+			const resultText = results
 				.map((result, index) => {
 					const { item, score } = result;
 					const codePreview = item.code ? `\n  Code preview: ${item.code.substring(0, 150).replace(/\n/g, ' ')}...` : '';
@@ -124,7 +124,7 @@ function configureServer(server: McpServer): McpServer {
 				content: [
 					{
 						type: 'text',
-                                                text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
+						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
 					},
 				],
 				structuredContent: output,
@@ -132,12 +132,12 @@ function configureServer(server: McpServer): McpServer {
 		},
 	);
 
-        // Add fetch tool to retrieve specific samples/docs
-        server.registerTool(
-                'fetch',
+	// Add fetch tool to retrieve specific samples/docs
+	server.registerTool(
+		'fetch',
 		{
 			title: 'Get Sample or Doc Entry',
-                        description: 'Get a specific sample or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic" or "docs/getting-started")',
+			description: 'Get a specific sample or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic" or "docs/getting-started")',
 			inputSchema: {
 				id: z.string(),
 			},
@@ -147,23 +147,23 @@ function configureServer(server: McpServer): McpServer {
 				name: z.string(),
 			},
 		},
-                async ({ id }) => {
-                        log('tool', 'fetch called', { id });
+		async ({ id }) => {
+			log('tool', 'fetch called', { id });
 
 			const idStr = String(id ?? '');
-                        if (!idStr) {
-                                log('error', 'fetch failed: empty id');
+			if (!idStr) {
+				log('error', 'fetch failed: empty id');
 				throw new Error('ID parameter is required');
 			}
 
 			const entry = getEntryById(idStr);
 
-                        if (!entry) {
-                                log('error', 'fetch failed: entry not found', { id: idStr });
+			if (!entry) {
+				log('error', 'fetch failed: entry not found', { id: idStr });
 				throw new Error(`Entry with ID "${idStr}" not found`);
 			}
 
-                        log('tool', 'fetch completed', { id: idStr, kind: entry.kind });
+			log('tool', 'fetch completed', { id: idStr, kind: entry.kind });
 
 			const output = {
 				id: entry.id,
