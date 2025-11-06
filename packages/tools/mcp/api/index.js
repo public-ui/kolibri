@@ -80,7 +80,7 @@ function createKolibriMcpServer() {
 				content: [
 					{
 						type: 'text',
-						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'get_entry' with any ID above to see the full code.`,
+                                                text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
 					},
 				],
 				structuredContent: output,
@@ -88,9 +88,9 @@ function createKolibriMcpServer() {
 		},
 	);
 
-	// Add get_entry tool to retrieve specific samples/docs
-	server.registerTool(
-		'get_entry',
+        // Add fetch tool to retrieve specific samples/docs
+        server.registerTool(
+                'fetch',
 		{
 			title: 'Get Sample or Doc Entry',
 			description: 'Get a specific sample or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic" or "docs/getting-started")',
@@ -103,15 +103,15 @@ function createKolibriMcpServer() {
 				name: z.string(),
 			},
 		},
-		async ({ id }) => {
+                async ({ id }) => {
 			const idStr = String(id ?? '');
-			if (!idStr) {
+                        if (!idStr) {
 				throw new Error('ID parameter is required');
 			}
 
 			const entry = getEntryById(idStr);
 
-			if (!entry) {
+                        if (!entry) {
 				throw new Error(`Entry with ID "${idStr}" not found`);
 			}
 

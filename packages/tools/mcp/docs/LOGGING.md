@@ -34,7 +34,7 @@ function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data
 
 2. **[TOOL]** - Tool invocations
    - `search` called/completed (with query, kind, limit, result count)
-   - `get_entry` called/completed (with ID, kind)
+   - `fetch` called/completed (with ID, kind)
 
 3. **[RESOURCE]** - Resource accesses
    - `info` accessed
@@ -103,13 +103,13 @@ const server = createKolibriMcpServer();
 }
 ```
 
-### get_entry Tool Example
+### fetch Tool Example
 
 ```
-[2025-11-06T09:45:24.123Z] [TOOL] get_entry called {
+[2025-11-06T09:45:24.123Z] [TOOL] fetch called {
   "id": "sample/button/basic"
 }
-[2025-11-06T09:45:24.145Z] [TOOL] get_entry completed {
+[2025-11-06T09:45:24.145Z] [TOOL] fetch completed {
   "id": "sample/button/basic",
   "kind": "sample"
 }
@@ -132,7 +132,7 @@ const server = createKolibriMcpServer();
 ### Error Example
 
 ```
-[2025-11-06T09:45:25.789Z] [ERROR] get_entry failed: entry not found {
+[2025-11-06T09:45:25.789Z] [ERROR] fetch failed: entry not found {
   "id": "non-existent-id"
 }
 ```

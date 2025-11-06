@@ -75,14 +75,14 @@ paths:
                     arguments:
                       query: button
                       limit: 5
-              get_entry:
-                summary: Get specific entry
+              fetch:
+                summary: Fetch specific entry
                 value:
                   jsonrpc: '2.0'
                   id: 4
                   method: tools/call
                   params:
-                    name: get_entry
+                    name: fetch
                     arguments:
                       id: button/basic
       responses:
