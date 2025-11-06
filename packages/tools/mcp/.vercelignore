@@ -1,23 +1,20 @@
-# Source files - we only deploy built artifacts
+# Source files - deploy only built artifacts
 src/
 test/
 
 # Build configuration and scripts
 build.config.ts
 tsconfig.json
-prettier.config.js
 scripts/
-.cache/
-nodemon.json
 
 # Development and documentation files
 .lintstagedrc
 *.md
 openapi.yaml
 test-vercel-api.mjs
-
-# Dependencies - already installed by GitHub Actions
-node_modules/
+prettier.config.js
+.cache/
+nodemon.json
 
 # Git files
 .git/
@@ -25,8 +22,8 @@ node_modules/
 
 # DEPLOYED FILES (these are included):
 # ✅ api/ (serverless functions)
-# ✅ dist/ (pre-built JavaScript from TypeScript)
-# ✅ shared/ (pre-generated sample-index.json)
+# ✅ dist/ (built by GitHub workflow, contains data.mjs, search.mjs, etc.)
+# ✅ shared/ (contains sample-index.json, generated in prebuild)
 # ✅ public/ (static landing page)
 # ✅ vercel.json (Vercel configuration)
 # ✅ package.json (for dependency resolution)

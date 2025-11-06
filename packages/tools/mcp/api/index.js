@@ -1,8 +1,8 @@
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { z } from 'zod';
-import { getAllEntries, getEntryById, getSampleIndexMetadata } from '../dist/data.js';
-import { searchEntries } from '../dist/search.js';
+import { getAllEntries, getEntryById, getSampleIndexMetadata } from '../dist/data.mjs';
+import { searchEntries } from '../dist/search.mjs';
 
 // Package info - read from environment or use defaults
 const PACKAGE_VERSION = process.env.npm_package_version || '3.0.7';
