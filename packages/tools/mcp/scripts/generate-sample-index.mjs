@@ -18,6 +18,8 @@ const __dirname = path.dirname(__filename);
 const PACKAGE_ROOT = path.resolve(__dirname, '..');
 const SHARED_DIR = path.join(PACKAGE_ROOT, 'shared');
 const OUTPUT_FILE = path.join(SHARED_DIR, 'sample-index.json');
+const PUBLIC_DIR = path.join(PACKAGE_ROOT, 'public');
+const LANDING_PAGE = path.join(PUBLIC_DIR, 'index.html');
 
 // Robust repo root detection
 function findRepoRoot() {
@@ -378,8 +380,11 @@ async function main() {
 		// Write index to shared directory
 		await writeFile(OUTPUT_FILE, JSON.stringify(index, null, 2), 'utf8');
 
-		console.log(`[generate-sample-index] ✅ Successfully wrote ${index.entries.length} entries to ${OUTPUT_FILE}`);
-		process.exit(0);
+                console.log(`[generate-sample-index] ✅ Successfully wrote ${index.entries.length} entries to ${OUTPUT_FILE}`);
+
+                await updateLandingPageCounts(index);
+
+                process.exit(0);
 	} catch (error) {
 		console.error('[generate-sample-index] ❌ Failed to generate sample index:', error);
 		process.exit(1);
@@ -387,3 +392,94 @@ async function main() {
 }
 
 main();
+
+async function updateLandingPageCounts(index) {
+        try {
+                const html = await readFile(LANDING_PAGE, 'utf8');
+
+                const counts = index?.metadata?.counts ?? {};
+                const markers = [
+                        {
+                                placeholder: '__BUILD_TOTAL_COUNT__',
+                                htmlComment: '<!--BUILD:TOTAL_COUNT-->',
+                                jsComment: '/*BUILD:TOTAL_COUNT*/',
+                                value: Number.isFinite(counts.total) ? String(counts.total) : '0',
+                        },
+                        {
+                                placeholder: '__BUILD_SAMPLE_COUNT__',
+                                htmlComment: '<!--BUILD:SAMPLE_COUNT-->',
+                                jsComment: '/*BUILD:SAMPLE_COUNT*/',
+                                value: Number.isFinite(counts.totalSamples) ? String(counts.totalSamples) : '0',
+                        },
+                        {
+                                placeholder: '__BUILD_DOC_COUNT__',
+                                htmlComment: '<!--BUILD:DOC_COUNT-->',
+                                jsComment: '/*BUILD:DOC_COUNT*/',
+                                value: Number.isFinite(counts.totalDocs) ? String(counts.totalDocs) : '0',
+                        },
+                ];
+
+                const escapeRegExp = (input) => input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+
+                let updated = html;
+                let changed = false;
+
+                for (const marker of markers) {
+                        const { placeholder, htmlComment, jsComment, value } = marker;
+
+                        if (updated.includes(`${htmlComment}${placeholder}`)) {
+                                const next = updated.replaceAll(`${htmlComment}${placeholder}`, `${htmlComment}${value}`);
+                                if (next !== updated) {
+                                        changed = true;
+                                        updated = next;
+                                }
+                        }
+
+                        const htmlPattern = new RegExp(`${escapeRegExp(htmlComment)}\s*([0-9][0-9,]*)`, 'g');
+                        const htmlReplaced = updated.replace(htmlPattern, `${htmlComment}${value}`);
+                        if (htmlReplaced !== updated) {
+                                changed = true;
+                                updated = htmlReplaced;
+                        }
+
+                        if (updated.includes(`${placeholder} ${jsComment}`)) {
+                                const next = updated.replaceAll(`${placeholder} ${jsComment}`, `${value} ${jsComment}`);
+                                if (next !== updated) {
+                                        changed = true;
+                                        updated = next;
+                                }
+                        }
+
+                        const jsPattern = new RegExp(`([0-9][0-9,]*)\s*${escapeRegExp(jsComment)}`, 'g');
+                        const jsReplaced = updated.replace(jsPattern, `${value} ${jsComment}`);
+                        if (jsReplaced !== updated) {
+                                changed = true;
+                                updated = jsReplaced;
+                        }
+                }
+
+                if (changed) {
+                        await writeFile(LANDING_PAGE, updated, 'utf8');
+                        console.log(
+                                `[generate-sample-index] ✅ Updated landing page counts in ${path.relative(
+                                        PACKAGE_ROOT,
+                                        LANDING_PAGE,
+                                )}`,
+                        );
+                } else {
+                        console.warn(
+                                `[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(
+                                        PACKAGE_ROOT,
+                                        LANDING_PAGE,
+                                )}`,
+                        );
+                }
+        } catch (error) {
+                console.warn(
+                        `[generate-sample-index] ⚠️ Unable to update landing page counts (${error.message}). Ensure ${path.relative(
+                                PACKAGE_ROOT,
+                                LANDING_PAGE,
+                        )} contains __BUILD_* placeholders.`,
+                );
+        }
+}
