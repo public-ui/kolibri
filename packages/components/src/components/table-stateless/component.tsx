@@ -76,7 +76,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
 	private checkboxRefs: HTMLInputElement[] = [];
-	private readonly translateSortOrder = translate('kol-no-entries');
+	private readonly translateSortOrder = translate('kol-multi-sort-order');
 	private translateSort = translate('kol-sort');
 
 	@State()
@@ -89,11 +89,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	private previousHeaderCells?: TableHeaderCellsPropType;
 
 	@Prop() public _allowMultiSort?: boolean = false;
-
-	@Watch('_allowMultiSort')
-	public validateAllowMultiSort(value?: boolean): void {
-		setState(this, '_allowMultiSort', value ?? false);
-	}
 
 	/**
 	 * Defines the primary table data.
@@ -139,6 +134,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
+	@Watch('_allowMultiSort')
+	public validateAllowMultiSort(value?: boolean): void {
+		setState(this, '_allowMultiSort', value ?? false);
+	}
 
 	@Watch('_hasSettingsMenu')
 	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
@@ -902,7 +902,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const cellWithLogic = cell as KoliBriTableHeaderCellWithLogic;
 		const sortDirection = cellWithLogic.sortDirection;
 		const sortOrder = this.getSortOrderForColumn(cellWithLogic.key);
-		const showSortOrder = this.state._allowMultiSort && sortOrder !== undefined;
+		const showSortOrder = sortOrder !== undefined;
 		let ariaSort: AriaSort = 'none';
 		let sortButtonIcon = 'codicon codicon-fold';
 

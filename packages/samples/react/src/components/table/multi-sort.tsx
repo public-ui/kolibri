@@ -17,7 +17,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{
-				label: 'order',
+				label: 'Order',
 				key: 'order',
 				textAlign: 'center',
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
@@ -27,14 +27,62 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 				},
 			},
 			{
-				label: 'date',
-				key: 'date',
-				textAlign: 'center',
-				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
+				label: 'Name',
+				key: 'name',
+				textAlign: 'left',
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).date < (data1 as Data).date) return -1;
-					else if ((data1 as Data).date < (data0 as Data).date) return 1;
+					return (data0 as Data).name.localeCompare((data1 as Data).name, 'de');
+				},
+			},
+			{
+				label: 'Vorname',
+				key: 'vorname',
+				textAlign: 'left',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).vorname.localeCompare((data1 as Data).vorname, 'de');
+				},
+			},
+			{
+				label: 'Geburtsdatum',
+				key: 'geburtsdatum',
+				textAlign: 'center',
+				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).geburtsdatum),
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					if ((data0 as Data).geburtsdatum < (data1 as Data).geburtsdatum) return -1;
+					else if ((data1 as Data).geburtsdatum < (data0 as Data).geburtsdatum) return 1;
 					else return 0;
+				},
+			},
+			{
+				label: 'Straße',
+				key: 'strasse',
+				textAlign: 'left',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).strasse.localeCompare((data1 as Data).strasse, 'de');
+				},
+			},
+			{
+				label: 'Haus-Nr.',
+				key: 'hausNr',
+				textAlign: 'center',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).hausNr.localeCompare((data1 as Data).hausNr, 'de', { numeric: true });
+				},
+			},
+			{
+				label: 'PLZ',
+				key: 'plz',
+				textAlign: 'center',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).plz.localeCompare((data1 as Data).plz);
+				},
+			},
+			{
+				label: 'Ort',
+				key: 'ort',
+				textAlign: 'left',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).ort.localeCompare((data1 as Data).ort, 'de');
 				},
 			},
 		],
@@ -45,7 +93,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 	vertical: [
 		[
 			{
-				label: 'order',
+				label: 'Order',
 				key: 'order',
 				textAlign: 'center',
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
@@ -55,14 +103,62 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 				},
 			},
 			{
-				label: 'date',
-				key: 'date',
-				textAlign: 'center',
-				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
+				label: 'Name',
+				key: 'name',
+				textAlign: 'left',
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).date < (data1 as Data).date) return -1;
-					else if ((data1 as Data).date < (data0 as Data).date) return 1;
+					return (data0 as Data).name.localeCompare((data1 as Data).name, 'de');
+				},
+			},
+			{
+				label: 'Vorname',
+				key: 'vorname',
+				textAlign: 'left',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).vorname.localeCompare((data1 as Data).vorname, 'de');
+				},
+			},
+			{
+				label: 'Geburtsdatum',
+				key: 'geburtsdatum',
+				textAlign: 'center',
+				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).geburtsdatum),
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					if ((data0 as Data).geburtsdatum < (data1 as Data).geburtsdatum) return -1;
+					else if ((data1 as Data).geburtsdatum < (data0 as Data).geburtsdatum) return 1;
 					else return 0;
+				},
+			},
+			{
+				label: 'Straße',
+				key: 'strasse',
+				textAlign: 'left',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).strasse.localeCompare((data1 as Data).strasse, 'de');
+				},
+			},
+			{
+				label: 'Haus-Nr.',
+				key: 'hausNr',
+				textAlign: 'center',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).hausNr.localeCompare((data1 as Data).hausNr, 'de', { numeric: true });
+				},
+			},
+			{
+				label: 'PLZ',
+				key: 'plz',
+				textAlign: 'center',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).plz.localeCompare((data1 as Data).plz);
+				},
+			},
+			{
+				label: 'Ort',
+				key: 'ort',
+				textAlign: 'left',
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+					return (data0 as Data).ort.localeCompare((data1 as Data).ort, 'de');
 				},
 			},
 		],
@@ -92,7 +188,7 @@ export const MultiSortTable: FC = () => {
 						_data={DATA.slice(0, 10)}
 						_headers={HEADERS_VERTICAL}
 						className="block"
-						_allowMultiSort={true}
+						_allowMultiSort={allowMultiSortVertical}
 					/>
 				</section>
 				<section className="grid gap-4">
@@ -109,7 +205,7 @@ export const MultiSortTable: FC = () => {
 						_data={DATA}
 						_headers={HEADERS_HORIZONTAL}
 						className="block"
-						_allowMultiSort={true}
+						_allowMultiSort={allowMultiSortHorizontal}
 					/>
 				</section>
 			</section>

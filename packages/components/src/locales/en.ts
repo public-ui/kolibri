@@ -58,6 +58,7 @@ export default {
 	'filename-text': 'Choose a file or drop it here...',
 	'data-browse-text': 'Browse',
 	sort: 'sort',
+	'multi-sort-order': 'Sort order',
 	'pagination-position-top': 'top',
 	'pagination-position-bottom': 'bottom',
 	'character-limit-hint': 'You can enter up to {{limit}} characters',

@@ -58,6 +58,7 @@ export default {
 	'filename-text': 'Datei auswählen oder hier ablegen...',
 	'data-browse-text': 'Datei auswählen',
 	sort: 'sortieren',
+	'multi-sort-order': 'Sortierreihenfolge',
 	'pagination-position-top': 'oben',
 	'pagination-position-bottom': 'unten',
 	'character-limit-hint': 'Es können bis zu {{limit}} Zeichen eingegeben werden.',
