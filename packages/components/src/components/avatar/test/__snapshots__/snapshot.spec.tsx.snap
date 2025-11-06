@@ -14,20 +14,6 @@ exports[`kol-avatar should render with _label="Erika Maria Mustermann" _src=unde
 </kol-avatar>
 `;
 
-exports[`kol-avatar should render with _label="Erika Maria Mustermann" _src=undefined 1`] = `
-<kol-avatar>
-  <template shadowrootmode="open">
-    <kol-avatar-wc>
-      <div aria-label="kol-avatar-alt" class="kol-avatar" role="img">
-        <span aria-hidden="true" class="kol-avatar__initials">
-          EM
-        </span>
-      </div>
-    </kol-avatar-wc>
-  </template>
-</kol-avatar>
-`;
-
 exports[`kol-avatar should render with _label="Erika" _color="#0000FF" 1`] = `
 <kol-avatar>
   <template shadowrootmode="open">
@@ -54,37 +40,11 @@ exports[`kol-avatar should render with _label="Erika" _src="/image.webp" _color=
 </kol-avatar>
 `;
 
-exports[`kol-avatar should render with _label="Erika" _src="/image.webp" 1`] = `
-<kol-avatar>
-  <template shadowrootmode="open">
-    <kol-avatar-wc>
-      <div aria-label="kol-avatar-alt" class="kol-avatar" role="img">
-        <img alt="" aria-hidden="true" class="kol-avatar__image" src="/image.webp">
-      </div>
-    </kol-avatar-wc>
-  </template>
-</kol-avatar>
-`;
-
 exports[`kol-avatar should render with _label="Erika" _src=undefined _color=undefined 1`] = `
 <kol-avatar>
   <template shadowrootmode="open">
     <kol-avatar-wc>
       <div aria-label="kol-avatar-alt" class="kol-avatar" role="img" style="background-color: #d3d3d3; color: #3f3f3f;">
-        <span aria-hidden="true" class="kol-avatar__initials">
-          E
-        </span>
-      </div>
-    </kol-avatar-wc>
-  </template>
-</kol-avatar>
-`;
-
-exports[`kol-avatar should render with _label="Erika" _src=undefined 1`] = `
-<kol-avatar>
-  <template shadowrootmode="open">
-    <kol-avatar-wc>
-      <div aria-label="kol-avatar-alt" class="kol-avatar" role="img">
         <span aria-hidden="true" class="kol-avatar__initials">
           E
         </span>
