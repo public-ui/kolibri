@@ -51,6 +51,8 @@
 		"prestart": "pnpm build",
 		"start": "node dist/mcp.cjs",
 		"start:stdio": "node dist/cli.cjs",
+		"pretest": "pnpm build",
+		"test": "node --test test/*.test.js",
 		"test:api": "node test-vercel-api.mjs",
 		"vercel:dev": "vercel dev",
 		"vercel:deploy": "vercel",
