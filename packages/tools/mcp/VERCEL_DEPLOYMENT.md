@@ -134,9 +134,8 @@ Für Claude Desktop oder andere MCP-Clients:
 
 Die Konfiguration in `vercel.json`:
 
-- **buildCommand**: Führt `pnpm run build` aus
-- **installCommand**: Installiert Dependencies mit `pnpm install --frozen-lockfile`
-- **rewrites**: Leitet `/mcp` zu `/api/index` um
+- **buildCommand**: Überspringt den Build, da dieser bereits in GitHub Actions erfolgt
+- **routes**: Leitet `^/mcp$` zur Serverless Function `api/index` und `^/$` zur statischen Landingpage `index.html`
 - **headers**: CORS-Header für Cross-Origin-Zugriffe
 - **functions**: Timeout-Konfiguration für Serverless Functions
 

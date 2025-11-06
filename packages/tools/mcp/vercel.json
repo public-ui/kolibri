@@ -2,14 +2,14 @@
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"version": 2,
 	"buildCommand": "echo 'Build was already done in GitHub Actions - skipping'",
-	"rewrites": [
+	"routes": [
 		{
-			"source": "/",
-			"destination": "/public/index.html"
+			"src": "^/mcp$",
+			"dest": "/api/index"
 		},
 		{
-			"source": "/mcp",
-			"destination": "/api/index"
+			"src": "^/$",
+			"dest": "/index.html"
 		}
 	],
 	"headers": [
