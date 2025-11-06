@@ -58,9 +58,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTextareaElement;
@@ -96,7 +94,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.textareaRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

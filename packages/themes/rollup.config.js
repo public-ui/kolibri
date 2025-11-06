@@ -1,8 +1,8 @@
-import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
-import autoprefixer from 'autoprefixer';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
+import autoprefixer from 'autoprefixer';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
 	input: 'src/index.ts',

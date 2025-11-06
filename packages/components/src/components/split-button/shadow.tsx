@@ -30,9 +30,7 @@ import { translate } from '../../i18n';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;

@@ -43,9 +43,7 @@ import { ComboboxController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
@@ -178,7 +176,6 @@ export class KolCombobox implements ComboboxAPI {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInput?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
