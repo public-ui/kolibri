@@ -10,7 +10,7 @@ console.log('==========================================\n');
 console.log('When MCP_LOGGING=true, you will see logs for:\n');
 
 console.log('1️⃣  TOOL CALLS');
-console.log('   When AI agents invoke tools like search or get_entry:\n');
+console.log('   When AI agents invoke tools like search or fetch:\n');
 console.log('   Example: search tool');
 console.log('   [2025-11-06T10:00:00.123Z] [TOOL] search called {');
 console.log('     "query": "button",');
@@ -23,11 +23,11 @@ console.log('     "resultCount": 5,');
 console.log('     "options": { "limit": 10, "kind": "sample" }');
 console.log('   }\n');
 
-console.log('   Example: get_entry tool');
-console.log('   [2025-11-06T10:00:01.234Z] [TOOL] get_entry called {');
+console.log('   Example: fetch tool');
+console.log('   [2025-11-06T10:00:01.234Z] [TOOL] fetch called {');
 console.log('     "id": "sample/button/basic"');
 console.log('   }');
-console.log('   [2025-11-06T10:00:01.256Z] [TOOL] get_entry completed {');
+console.log('   [2025-11-06T10:00:01.256Z] [TOOL] fetch completed {');
 console.log('     "id": "sample/button/basic",');
 console.log('     "kind": "sample"');
 console.log('   }\n');
@@ -44,7 +44,7 @@ console.log('   }\n');
 console.log('3️⃣  ERROR CONDITIONS');
 console.log('   When something goes wrong:\n');
 console.log('   [2025-11-06T10:00:03.123Z] [ERROR] search failed: empty query');
-console.log('   [2025-11-06T10:00:03.234Z] [ERROR] get_entry failed: entry not found {');
+console.log('   [2025-11-06T10:00:03.234Z] [ERROR] fetch failed: entry not found {');
 console.log('     "id": "non-existent"');
 console.log('   }\n');
 

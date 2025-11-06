@@ -14,7 +14,7 @@ console.log('   Environment variable: MCP_LOGGING');
 console.log('   Values: "true" or "1" to enable\n');
 
 console.log('🔍 When enabled, logs will show:');
-console.log('   • [TOOL] Tool invocations (search, get_entry)');
+console.log('   • [TOOL] Tool invocations (search, fetch)');
 console.log('   • [RESOURCE] Resource accesses (info, best-practices)');
 console.log('   • [ERROR] Error conditions\n');
 

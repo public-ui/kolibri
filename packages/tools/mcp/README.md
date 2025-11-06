@@ -69,7 +69,7 @@ MCP_LOGGING=true PORT=8080 node dist/mcp.mjs
 
 When enabled, logs include:
 
-- **[TOOL]** - Tool invocations (search, get_entry) with parameters and results
+- **[TOOL]** - Tool invocations (search, fetch) with parameters and results
 - **[RESOURCE]** - Resource accesses (info, best-practices)
 - **[ERROR]** - Error conditions and failures
 
@@ -136,7 +136,7 @@ Search for KoliBri component samples and documentation using fuzzy search powere
 }
 ```
 
-### 3. `get_entry`
+### 3. `fetch`
 
 Get a specific sample or documentation entry by its ID.
 
@@ -148,8 +148,8 @@ Get a specific sample or documentation entry by its ID.
 
 ```json
 {
-	"name": "get_entry",
-	"arguments": { "id": "button/basic" }
+        "name": "fetch",
+        "arguments": { "id": "button/basic" }
 }
 ```
 
@@ -209,7 +209,7 @@ echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search","a
 **Get a specific sample:**
 
 ```bash
-echo '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_entry","arguments":{"id":"button/basic"}}}' | npx @public-ui/mcp
+echo '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"fetch","arguments":{"id":"button/basic"}}}' | npx @public-ui/mcp
 ```
 
 ## Development

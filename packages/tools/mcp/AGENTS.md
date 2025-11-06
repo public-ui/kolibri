@@ -226,7 +226,7 @@ Features:
 
 - Uses Express.js for HTTP handling
 - Provides `POST /mcp` endpoint for MCP protocol communication
-- Supports `search` and `get_entry` tools
+- Supports `search` and `fetch` tools
 - Includes an `info` resource for server metadata
 - **Loads static index at startup** from `shared/sample-index.json`
 - Currently serves 163 entries: 142 samples + 21 docs
@@ -323,7 +323,7 @@ Fuzzy search for KoliBri component samples and documentation.
 }
 ```
 
-### 3. `get_entry`
+### 3. `fetch`
 
 Retrieve a specific sample or documentation entry by ID.
 

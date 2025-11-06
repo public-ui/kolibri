@@ -77,13 +77,13 @@ async function runTests() {
 		},
 	});
 
-	// Test 5: Get specific entry
-	await testRequest('tools/call', {
-		name: 'get_entry',
-		arguments: {
-			id: 'button/basic',
-		},
-	});
+        // Test 5: Fetch specific entry
+        await testRequest('tools/call', {
+                name: 'fetch',
+                arguments: {
+                        id: 'button/basic',
+                },
+        });
 
 	// Test 6: List resources
 	await testRequest('resources/list', {});
