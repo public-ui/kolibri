@@ -50,7 +50,20 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 	/* KolSelect calls onChange initially by design - work around this with a state variable  */
 
 	const getIndexOfSample = () => routeList.indexOf(sample);
-	const formatSampleAsLabel = () => sample.replace(/\//g, ' ');
+	const formatSampleAsLabel = () => {
+		const segments = sample.replace(/^\//, '').split('/');
+		if (segments.length === 0) {
+			return '';
+		}
+		const [category, ...rest] = segments;
+		const categoryLabelMap: Record<string, string> = {
+			components: 'Component Stories',
+			scenarios: 'Scenarios',
+			docs: 'Docs',
+		};
+		const categoryLabel = categoryLabelMap[category] ?? category;
+		return rest.length > 0 ? `${categoryLabel} / ${rest.join(' / ')}` : categoryLabel;
+	};
 
 	const handleThemeSelectChange = (_event: Event, value: unknown) => {
 		onThemeChange(value as string);
@@ -77,13 +90,13 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 				</div>
 				<BuildInformation buildDate={buildDate} commitHash={commitHash} />
 				<KolSelect _label="Theme" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
-				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
+				<KolHeading _label="Samples" _level={2} className="block mt"></KolHeading>
 				<div className="flex flex-justify-between flex-items-center mt">
-					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
+					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous sample" _on={{ onClick: handlePreviousClick }} />
 					<span className="text-base text-center">
 						{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
 					</span>
-					<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
+					<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next sample" _on={{ onClick: handleNextClick }} />
 				</div>
 				<Navigation routes={routes} />
 			</div>

@@ -49,8 +49,7 @@ import { VERSION_ROUTES } from '../components/version/routes';
 import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { Routes } from './types';
 
-export const ROUTES: Routes = {
-	...HANDOUT_ROUTES,
+const COMPONENT_ROUTES: Routes = {
 	...ABBR_ROUTES,
 	...ACCORDION_ROUTES,
 	...ALERT_ROUTES,
@@ -87,10 +86,9 @@ export const ROUTES: Routes = {
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
 	...SELECT_ROUTES,
-	...SELECT_ROUTES,
+	...SINGLE_SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,
 	...SPIN_ROUTES,
-	...SINGLE_SELECT_ROUTES,
 	...SPLIT_BUTTON_ROUTES,
 	...TABLE_ROUTES,
 	...TABS_ROUTES,
@@ -99,5 +97,14 @@ export const ROUTES: Routes = {
 	...TOOLBAR_ROUTES,
 	...TREE_ROUTES,
 	...VERSION_ROUTES,
-	...SCENARIO_ROUTES,
+};
+
+const DOC_ROUTES: Routes = {
+	...HANDOUT_ROUTES,
+};
+
+export const ROUTES: Routes = {
+	components: COMPONENT_ROUTES,
+	scenarios: SCENARIO_ROUTES,
+	docs: DOC_ROUTES,
 };
