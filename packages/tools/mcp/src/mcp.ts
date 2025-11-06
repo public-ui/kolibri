@@ -17,6 +17,25 @@ const {
 	description?: string;
 };
 
+// Logging configuration
+const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOGGING === '1';
+
+/**
+ * Log a message if logging is enabled
+ */
+function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data?: any): void {
+	if (!ENABLE_LOGGING) return;
+
+	const timestamp = new Date().toISOString();
+	const prefix = `[${timestamp}] [${type.toUpperCase()}]`;
+
+	if (data) {
+		console.error(`${prefix} ${message}`, JSON.stringify(data, null, 2));
+	} else {
+		console.error(`${prefix} ${message}`);
+	}
+}
+
 /**
  * Create a configured KoliBri MCP server instance.
  * Can be used with both stdio and HTTP transports.
@@ -52,8 +71,11 @@ function configureServer(server: McpServer): McpServer {
 			},
 		},
 		async ({ query, kind, limit }) => {
+			log('tool', 'search called', { query, kind, limit });
+
 			const queryStr = String(query ?? '');
 			if (!queryStr || queryStr.trim().length === 0) {
+				log('error', 'search failed: empty query');
 				throw new Error('Query parameter is required and cannot be empty');
 			}
 
@@ -67,6 +89,12 @@ function configureServer(server: McpServer): McpServer {
 			}
 
 			const results = searchEntries(allEntries, queryStr, searchOptions);
+
+			log('tool', 'search completed', {
+				query: queryStr,
+				resultCount: results.length,
+				options: searchOptions,
+			});
 
 			const output = {
 				query: queryStr,
@@ -120,16 +148,22 @@ function configureServer(server: McpServer): McpServer {
 			},
 		},
 		async ({ id }) => {
+			log('tool', 'get_entry called', { id });
+
 			const idStr = String(id ?? '');
 			if (!idStr) {
+				log('error', 'get_entry failed: empty id');
 				throw new Error('ID parameter is required');
 			}
 
 			const entry = getEntryById(idStr);
 
 			if (!entry) {
+				log('error', 'get_entry failed: entry not found', { id: idStr });
 				throw new Error(`Entry with ID "${idStr}" not found`);
 			}
+
+			log('tool', 'get_entry completed', { id: idStr, kind: entry.kind });
 
 			const output = {
 				id: entry.id,
@@ -163,6 +197,8 @@ function configureServer(server: McpServer): McpServer {
 			description: 'Get information about the KoliBri MCP Server and available samples',
 		},
 		async (uri) => {
+			log('resource', 'info accessed', { uri: uri.href });
+
 			const metadata = getSampleIndexMetadata();
 			const infoText = `# KoliBri MCP Server v${PACKAGE_VERSION}
 
@@ -202,6 +238,8 @@ ${PACKAGE_DESCRIPTION ?? ''}
 			description: 'Essential guidelines for working with KoliBri Web Components',
 		},
 		async (uri) => {
+			log('resource', 'best-practices accessed', { uri: uri.href });
+
 			const practicesText = `# KoliBri Web Components - Best Practices
 
 ## Essential Guidelines
@@ -273,6 +311,12 @@ if (
 			console.log(`KoliBri MCP Server v${PACKAGE_VERSION} running on http://localhost:${port}/mcp`);
 			const metadata = getSampleIndexMetadata();
 			console.log(`Loaded ${metadata.counts.total} entries (${metadata.counts.totalSamples} samples, ${metadata.counts.totalDocs} docs)`);
+
+			if (ENABLE_LOGGING) {
+				console.log('🔍 Logging is ENABLED (MCP_LOGGING=true)');
+			} else {
+				console.log('💡 Logging is disabled. Set MCP_LOGGING=true to enable request logging');
+			}
 		})
 		.on('error', (error) => {
 			console.error('Server error:', error);

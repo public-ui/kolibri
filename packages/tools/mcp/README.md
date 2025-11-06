@@ -46,6 +46,54 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
 
+## Logging
+
+The MCP server supports optional request logging for debugging and monitoring. Logging is **disabled by default**.
+
+### Enable Logging
+
+Set the environment variable `MCP_LOGGING=true` or `MCP_LOGGING=1`:
+
+```bash
+# HTTP Server with logging
+MCP_LOGGING=true node dist/mcp.mjs
+
+# CLI with logging
+MCP_LOGGING=true npx @public-ui/mcp
+
+# Custom port with logging
+MCP_LOGGING=true PORT=8080 node dist/mcp.mjs
+```
+
+### Log Types
+
+When enabled, logs include:
+
+- **[TOOL]** - Tool invocations (search, get_entry) with parameters and results
+- **[RESOURCE]** - Resource accesses (info, best-practices)
+- **[ERROR]** - Error conditions and failures
+
+### Log Format
+
+```
+[timestamp] [TYPE] message {json_data}
+```
+
+**Example:**
+
+```
+[2025-11-06T09:45:23.456Z] [TOOL] search called {
+  "query": "button",
+  "kind": "sample",
+  "limit": 10
+}
+[2025-11-06T09:45:23.478Z] [TOOL] search completed {
+  "query": "button",
+  "resultCount": 5,
+  "options": { "limit": 10, "kind": "sample" }
+}
+```
+
 ## Available Tools
 
 ### 1. `hello_kolibri`
