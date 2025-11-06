@@ -1,20 +1,21 @@
 {
-        "compilerOptions": {
-                "allowSyntheticDefaultImports": true,
-                "declaration": true,
-                "esModuleInterop": true,
-                "lib": ["dom", "es2015"],
-                "module": "ESNext",
-                "moduleResolution": "node",
-                "noImplicitAny": true,
-                "noImplicitReturns": true,
-                "noUnusedLocals": true,
-                "noUnusedParameters": true,
-                "outDir": "dist",
-                "sourceMap": true,
-                "jsx": "react",
-                "target": "es2015",
-                "strict": true
-        },
-        "exclude": ["node_modules", "dist"]
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"esModuleInterop": true,
+		"lib": ["dom", "es2015"],
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "dist",
+		"sourceMap": true,
+		"jsx": "react",
+		"target": "es2015",
+		"strict": true,
+		"skipLibCheck": true
+	},
+	"exclude": ["node_modules", "dist"]
 }

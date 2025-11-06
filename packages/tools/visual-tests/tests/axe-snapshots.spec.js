@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { checkA11y, injectAxe } from 'axe-playwright';
-import { ROUTES } from './sample-app.routes.js';
 import process from 'process';
+import { ROUTES } from './sample-app.routes.js';
 
 const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
 const rename = (snapshotName) => {

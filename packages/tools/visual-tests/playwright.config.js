@@ -12,6 +12,16 @@ const EXPECT_TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT 
 const BUILD_PATH = process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH ?? '';
 const THEME = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
 
+const VALID_COLOR_SCHEMES = ['light', 'dark'];
+const colorSchemeInput = process.env.KOLIBRI_VISUAL_TESTS_COLOR_SCHEME;
+const colorSchema = (colorSchemeInput || 'light').toLocaleLowerCase();
+
+if (!VALID_COLOR_SCHEMES.includes(colorSchema)) {
+	throw new Error(
+		`Environment variable KOLIBRI_VISUAL_TESTS_COLOR_SCHEME must be one of "${VALID_COLOR_SCHEMES.join('", "')}" (received "${colorSchemeInput}").`,
+	);
+}
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -68,5 +78,5 @@ export default defineConfig({
 		url: BASE_URL,
 		reuseExistingServer: false,
 	},
-	snapshotPathTemplate: `{snapshotDir}/theme-${THEME}/{arg}-{projectName}-{platform}{ext}`,
+	snapshotPathTemplate: `{snapshotDir}/theme-${THEME}${colorSchema === 'light' ? '' : `-${colorSchema}`}/{arg}-{projectName}-{platform}{ext}`,
 });

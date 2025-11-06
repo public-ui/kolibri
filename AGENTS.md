@@ -10,6 +10,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
 - If you change a dependency in a package:
   - Use only exact version numbers in `package.json`. Other peers will not be able to use the package if you can use a range version.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
+- Never add a `packageManager` field to any `package.json` file.
 - Avoid that branch name may contain hidden characters.
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
 - To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
@@ -238,6 +239,9 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - `.editorconfig` sets `indent_style = tab` and `max_line_length = 160` for code files. Markdown and YAML files use spaces.
 - ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files. Lint rules should **not** be disabled via inline comments. Instead, describe the problem and work towards a clean solution.
 - Lists and enumerations in code should be kept in alphanumeric order. This also applies to import specifiers and union type literals.
+- Do not disable ESLint, Stylelint or TypeScript rules inline. Fix the code instead of turning such rules off.
+- ESLint and Stylelint are run using `pnpm lint`. Pre‑commit hooks run `lint-staged` which formats and lints changed files.
+- Lists and enumerations in code should be kept in alphabetical order (see `docs/tutorials/NEW_COMPONENT.md`).
 - Commit messages follow the **Conventional Commits** specification.
 - See also the [Contributing Guide](CONTRIBUTING.md) for more details on coding conventions and best practices.
 - Spell "KoliBri" with this casing in all documentation and code. The only exception is the component named KolKolibri.

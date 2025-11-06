@@ -1,6 +1,7 @@
 import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -49,6 +50,16 @@ export class KolPopoverButton implements PopoverButtonProps {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hidePopover() {
 		void this.refPopover?.hidePopover();
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async kolFocus() {
+		// eslint-disable-next-line no-console
+		console.log('Focusing popover button', this.refButton);
+		await this.refButton?.kolFocus();
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
@@ -117,7 +128,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-popover-button">
+			<div class={clsx('kol-popover-button', { 'kol-popover-button--open': this.popoverOpen })}>
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
 					_aria-controls="popover"

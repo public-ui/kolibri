@@ -1,5 +1,5 @@
-import { defineConfig } from '@unocss/vite';
 import { presetMini } from '@unocss/preset-mini';
+import { defineConfig } from '@unocss/vite';
 
 function pxValueToRem(size: number): string {
 	return `calc(${size}rem / var(--kolibri-root-font-size, 16))`;

@@ -4,7 +4,7 @@
 $duration: 0.4s;
 
 @layer kol-theme-component {
-	@include kol-card;
+	@include kol-card($border-radius: 0);
 
 	.kol-drawer {
 		&__wrapper {
@@ -42,10 +42,6 @@ $duration: 0.4s;
 				}
 			}
 		}
-	}
-
-	.kol-card {
-		border-radius: 0;
 	}
 }
 

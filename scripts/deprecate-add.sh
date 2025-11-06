@@ -11,6 +11,7 @@ npm deprecate @public-ui/react-hook-form-adapter@$1 "Wir empfehlen die Verwendun
 npm deprecate @public-ui/react-v19@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/react-standalone@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/solid@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
+npm deprecate @public-ui/svelte@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/vue@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/components@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/sample-react@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
