@@ -11,6 +11,7 @@ const SAMPLE_ENTRIES = [
 		description: 'Default button style for generic actions',
 		tags: ['button', 'action'],
 		kind: 'sample',
+		code: 'import { KolButton } from "@public-ui/react"; export const Basic = () => <KolButton _label="Click me" />;',
 	},
 	{
 		id: 'sample/button/primary',
@@ -19,6 +20,7 @@ const SAMPLE_ENTRIES = [
 		description: 'Primary call-to-action button variant',
 		tags: ['button', 'primary'],
 		kind: 'sample',
+		code: 'import { KolButton } from "@public-ui/react"; export const Primary = () => <KolButton _label="Primary" _variant="primary" />;',
 	},
 	{
 		id: 'sample/form/text-input',
@@ -27,6 +29,7 @@ const SAMPLE_ENTRIES = [
 		description: 'Form field for textual user input',
 		tags: ['form'],
 		kind: 'sample',
+		code: 'import { KolInputText } from "@public-ui/react"; export const TextInput = () => <KolInputText _label="Enter text" />;',
 	},
 	{
 		id: 'doc/guides/accessibility',
@@ -35,6 +38,7 @@ const SAMPLE_ENTRIES = [
 		description: 'Documentation on accessible components',
 		tags: ['guides'],
 		kind: 'doc',
+		code: '# Accessibility Guide\n\nThis guide explains how to make components accessible.',
 	},
 ];
 
