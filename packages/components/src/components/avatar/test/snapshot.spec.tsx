@@ -9,6 +9,7 @@ executeSnapshotTests<AvatarProps>(
 	[KolAvatar, KolAvatarWc],
 	[
 		{ _label: 'Erika Maria Mustermann', _src: undefined },
+		{ _label: 'Erika', _color: '#0000FF' },
 		{ _label: 'Erika', _src: undefined },
 		{ _label: 'Erika', _src: '/image.webp' },
 	],
