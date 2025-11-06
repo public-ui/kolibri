@@ -125,6 +125,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	public componentDidRender() {
 		this.refPopover?.addEventListener('toggle', this.handleToggle.bind(this));
 		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		if (this._show) {
+			void this.showPopover();
+		} else {
+			void this.hidePopover();
+		}
 	}
 
 	public disconnectedCallback() {
@@ -297,14 +302,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
 		validateShow(this, value);
-	}
-
-	public componentDidLoad() {
-		if (this._show) {
-			void this.showPopover();
-		} else {
-			void this.hidePopover();
-		}
 	}
 
 	public componentWillLoad() {
