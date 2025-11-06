@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>KoliBri MCP API</title>
-		<link rel="icon" type="image/svg+xml" href="/kolibri-favicon.svg" />
+		<title>KoliBri MCP Server</title>
 		<style>
 			* {
 				margin: 0;
@@ -15,18 +14,18 @@
 			body {
 				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 				line-height: 1.6;
-				color: #333;
+				color: #2d3748;
 				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 				min-height: 100vh;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				padding: 2.5rem;
+				padding: 2rem;
 			}
 
 			.container {
-				width: min(100%, 800px);
-				margin: 0 auto;
+				max-width: 900px;
+				width: 100%;
 				padding: 2rem;
 				background: white;
 				border-radius: 12px;
@@ -38,23 +37,12 @@
 				margin-bottom: 2rem;
 			}
 
-			.logo {
-				width: clamp(96px, 18vw, 125px);
-				height: clamp(96px, 18vw, 125px);
-				margin: 0 auto 1rem;
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: white;
-				font-size: 2rem;
-				font-weight: bold;
-			}
-
 			.logo img {
 				width: 100%;
+				max-width: 200px;
 				height: auto;
 				display: block;
+				margin: 0 auto 1rem;
 			}
 
 			h1 {
@@ -66,7 +54,17 @@
 			.subtitle {
 				color: #718096;
 				font-size: 1.1rem;
-				margin-bottom: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			.status {
+				display: inline-block;
+				background: #38a169;
+				color: white;
+				padding: 0.25rem 0.75rem;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				font-weight: 500;
 			}
 
 			.stats {
@@ -107,59 +105,43 @@
 				border-left: 4px solid #667eea;
 			}
 
+			.api-info h2 {
+				color: #2d3748;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+			}
+
+			.api-info h3 {
+				color: #2d3748;
+				margin-bottom: 0.5rem;
+				margin-top: 1.5rem;
+				font-size: 1.1rem;
+			}
+
+			.description {
+				color: #4a5568;
+				margin: 0.5rem 0;
+			}
+
 			.endpoint {
 				background: #1a202c;
-				color: white;
+				color: #90cdf4;
 				padding: 1rem;
 				border-radius: 6px;
 				font-family: 'Courier New', monospace;
 				margin: 0.5rem 0;
 				overflow-x: auto;
-				white-space: pre;
 				display: block;
 			}
+
 			.endpoint-inline {
 				background: #1a202c;
 				color: #90cdf4;
 				padding: 0.2em 0.5em;
 				border-radius: 4px;
 				font-family: 'Courier New', monospace;
-				margin: 0.2em 0.2em;
-				font-size: 1em;
+				font-size: 0.95em;
 				white-space: nowrap;
-				display: inline;
-			}
-			.copy-btn {
-				background: #edf2f7;
-				color: #2d3748;
-				border: none;
-				border-radius: 4px;
-				padding: 0.3em 0.6em;
-				font-size: 1em;
-				cursor: pointer;
-				position: absolute;
-				top: 8px;
-				right: 8px;
-				opacity: 0.7;
-				transition: opacity 0.2s;
-				z-index: 2;
-			}
-			.copy-btn:focus,
-			.copy-btn:hover {
-				opacity: 1;
-				outline: 2px solid #667eea;
-			}
-			.endpoint-inline + .copy-btn {
-				position: relative;
-				top: 0;
-				right: 0;
-				margin-left: 0.5em;
-				opacity: 0.7;
-				z-index: 2;
-				background: #edf2f7;
-				color: #2d3748;
-				border-radius: 4px;
-				padding: 0.3em 0.6em;
 			}
 
 			.method {
@@ -169,28 +151,43 @@
 				font-size: 0.8rem;
 				font-weight: bold;
 				margin-right: 0.5rem;
+				color: white;
 			}
 
 			.get {
 				background: #38a169;
 			}
+
 			.post {
 				background: #3182ce;
 			}
 
-			.description {
-				color: #4a5568;
-				margin: 0.5rem 0;
+			.relative {
+				position: relative;
 			}
 
-			.status {
-				display: inline-block;
-				background: #38a169;
-				color: white;
-				padding: 0.25rem 0.75rem;
-				border-radius: 20px;
-				font-size: 0.9rem;
-				font-weight: 500;
+			.copy-btn {
+				background: #edf2f7;
+				color: #2d3748;
+				border: none;
+				border-radius: 4px;
+				padding: 0.3em 0.6em;
+				font-size: 1em;
+				cursor: pointer;
+				opacity: 0.7;
+				transition: opacity 0.2s;
+			}
+
+			.copy-btn:hover,
+			.copy-btn:focus {
+				opacity: 1;
+				outline: 2px solid #667eea;
+			}
+
+			.relative .copy-btn {
+				position: absolute;
+				top: 8px;
+				right: 8px;
 			}
 
 			.footer {
@@ -210,10 +207,21 @@
 				text-decoration: underline;
 			}
 
-			/* Removed duplicate .copy-btn rules for clarity and consistency */
+			.highlight-box {
+				padding: 1rem;
+				border-radius: 6px;
+				margin-top: 1rem;
+				border-left: 4px solid #ffc107;
+			}
 
-			.relative {
-				position: relative;
+			.highlight-box.info {
+				background: #e6fffa;
+				border-left-color: #38a169;
+			}
+
+			.highlight-box.warning {
+				background: #fff3cd;
+				border-left-color: #ffc107;
 			}
 
 			@media (max-width: 900px) {
@@ -309,11 +317,16 @@
 			<div class="api-info">
 				<h2>📡 REST API Endpoints</h2>
 				<p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
+				<p class="description">
+					Use the <code class="endpoint-inline">/mcp/http/*</code> base path for classic JSON requests (fetch, curl, etc.) and
+					<code class="endpoint-inline">/mcp/sse/*</code> for streaming Server-Sent Events. The auto-detecting
+					<code class="endpoint-inline">/mcp/mcp/*</code> routes remain available but negotiate the transport based on the request headers.
+				</p>
 
 				<div style="margin-top: 1rem">
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/samples" style="color: #90cdf4">/mcp/samples</a></code>
+						<code class="endpoint"><a href="/mcp/http/samples" style="color: #90cdf4">/mcp/http/samples</a></code>
 					</div>
 					<p class="description">
 						List of all available samples. Add the
@@ -322,7 +335,7 @@
 						to typos and partial matches, so even short tokens can surface the relevant sample.
 					</p>
 					<div class="relative" style="margin-bottom: 0.75rem">
-						<code class="endpoint"><a href="/mcp/samples?q=btn" style="color: #90cdf4">/mcp/samples?q=btn</a></code>
+						<code class="endpoint"><a href="/mcp/http/samples?q=btn" style="color: #90cdf4">/mcp/http/samples?q=btn</a></code>
 						<button class="copy-btn" aria-label="Copy fuzzy search endpoint" tabindex="0">📋</button>
 					</div>
 					<p class="description">
@@ -330,34 +343,39 @@
 						<code class="endpoint-inline">btn</code> still returns button samples.
 					</p>
 					<div class="relative" style="margin-bottom: 0.75rem">
-						<code class="endpoint"><a href="/mcp/samples?q=table%20responsive" style="color: #90cdf4">/mcp/samples?q=table%20responsive</a></code>
+						<code class="endpoint"><a href="/mcp/http/samples?q=table%20responsive" style="color: #90cdf4">/mcp/http/samples?q=table%20responsive</a></code>
 						<button class="copy-btn" aria-label="Copy multi-word search endpoint" tabindex="0">📋</button>
 					</div>
 					<p class="description">Combine multiple words with spaces to narrow the result set&mdash;this request filters for responsive table samples.</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/sample?id=sample/button/basic</a></code>
+						<code class="endpoint"><a href="/mcp/http/sample?id=sample/button/basic" style="color: #90cdf4">/mcp/http/sample?id=sample/button/basic</a></code>
 					</div>
 					<p class="description">Path and source code of a specific sample</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/docs" style="color: #90cdf4">/mcp/docs</a></code>
+						<code class="endpoint"><a href="/mcp/http/docs" style="color: #90cdf4">/mcp/http/docs</a></code>
 					</div>
 					<p class="description">List of Markdown-based documentation documents</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/doc?id=doc/README" style="color: #90cdf4">/mcp/doc?id=doc/README</a></code>
+						<code class="endpoint"><a href="/mcp/http/doc?id=doc/README" style="color: #90cdf4">/mcp/http/doc?id=doc/README</a></code>
 					</div>
 					<p class="description">Retrieve a specific documentation document including its Markdown source</p>
 
 					<div>
 						<span class="method get">GET</span>
-						<code class="endpoint"><a href="/mcp/doc?id=doc/README.md" style="color: #90cdf4">/mcp/doc?id=doc/README.md</a></code>
+						<code class="endpoint"><a href="/mcp/http/doc?id=doc/README.md" style="color: #90cdf4">/mcp/http/doc?id=doc/README.md</a></code>
 					</div>
 					<p class="description">Retrieve a specific documentation document including its Markdown source (with .md extension)</p>
+
+					<p class="description">
+						Need streaming updates? Swap the prefix to <code class="endpoint-inline">/mcp/sse/*</code>, for example
+						<code class="endpoint-inline">/mcp/sse/samples</code> to receive the sample list via Server-Sent Events.
+					</p>
 				</div>
 				<p class="description" style="margin-top: 1rem">
 					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
@@ -369,51 +387,51 @@
 				<p class="description">Use the KoliBri MCP Server with GitHub Copilot Chat in VS Code:</p>
 
 				<div style="margin-top: 1rem">
-					<h3 style="color: #2d3748; margin-bottom: 0.5rem; font-size: 1.1rem">Option 1: Local Installation</h3>
-					<span style="position: relative; display: inline-block">
-						<code class="endpoint"> npm install -g @public-ui/mcp</code>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
-					</span>
+					<h3>Option 1: Local Installation</h3>
+					<div class="relative">
+						<code class="endpoint">npm install -g @public-ui/mcp</code>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
 					<p class="description">Install the MCP package globally and create an <code>mcp.json</code>:</p>
-					<div style="position: relative">
+					<div class="relative">
 						<pre
 							style="margin: 0"
 						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "command": "npx", "args": ["@public-ui/mcp"] } }, "inputs": [] }</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
 
-					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Option 2: Remote Server (Recommended)</h3>
+					<h3>Option 2: Remote Server (Recommended)</h3>
 					<p class="description">Use the hosted server without local installation in your <code>mcp.json</code>:</p>
-					<div style="position: relative">
+					<div class="relative">
 						<pre
 							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "url": "https://public-ui-kolibri-mcp.vercel.app/mcp/", "type": "http" } }, "inputs": [] }</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
+						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri-mcp": { "url": "&lt;origin&gt;/mcp/", "type": "http" } }, "inputs": [] }</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
-					<div style="background: #fff3cd; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #ffc107">
+					<div class="highlight-box warning">
 						<strong style="color: #856404">⚡ Remote Advantage:</strong>
 						<span style="color: #856404"> No installation required, always up-to-date, faster setup!</span>
 					</div>
 
-					<h3 style="color: #2d3748; margin-bottom: 0.5rem; margin-top: 1.5rem; font-size: 1.1rem">Setup</h3>
+					<h3>Setup</h3>
 					<p class="description">Create an <code>mcp.json</code> file in your project directory or use the global configuration:</p>
-					<div style="position: relative">
-						<pre style="margin: 0"><code class="endpoint" style="background: #1a202c; color: #90cdf4"># Local file in project
- echo '{ "servers": { ... } }' > mcp.json
+					<div class="relative">
+						<pre style="margin: 0"><code class="endpoint"># Local file in project
+echo '{ "servers": { ... } }' > mcp.json
 # Or globally for all projects
 ~/.config/mcp/mcp.json
 </code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
 					<p class="description">In GitHub Copilot Chat you can now write:</p>
-					<div style="position: relative">
-						<pre style="margin: 0"><code class="endpoint" style="background: #2d3748; color: #90cdf4">@kolibri show me a button sample
+					<div class="relative">
+						<pre style="margin: 0"><code class="endpoint">@kolibri show me a button sample
 @kolibri how do I implement a KoliBri table?
 @kolibri create an accessible form
 </code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0" style="position: absolute; top: 8px; right: 8px">📋</button>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
-					<div style="background: #e6fffa; padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 4px solid #38a169">
+					<div class="highlight-box info">
 						<strong style="color: #2d3748">💡 Tip:</strong>
 						<span style="color: #2d3748" id="tip-text">
 							The MCP Server gives you access to all KoliBri component samples and documentation files directly in VS Code!
@@ -432,8 +450,14 @@
 		</div>
 
 		<script>
+			const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+			if (remoteConfigElement) {
+				const origin = window.location.origin.replace(/\/$/, '');
+				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
+			}
+
 			// Test API status when page loads
-			fetch('/mcp/health')
+			fetch('/mcp/http/health')
 				.then((response) => response.json())
 				.then((data) => {
 					console.log('API Status:', data);

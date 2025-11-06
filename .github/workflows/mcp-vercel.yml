@@ -10,14 +10,11 @@ on:
       - 'packages/tools/mcp/**'
       - 'packages/components/**'
   pull_request:
-    branches:
-      - develop
-      - release/*
     paths:
       - '.github/workflows/mcp-vercel.yml'
+      - 'packages/components/**'
       - 'packages/samples/react/**'
       - 'packages/tools/mcp/**'
-      - 'packages/components/**'
   workflow_dispatch:
 
 concurrency:

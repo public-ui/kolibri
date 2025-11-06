@@ -32,7 +32,7 @@
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"bin": {
-		"kolibri-mcp": "dist/cli.mjs"
+		"kolibri-mcp": "dist/cli.cjs"
 	},
 	"exports": {
 		".": {
@@ -41,23 +41,41 @@
 		}
 	},
 	"scripts": {
-		"build": "node prebuild.js && unbuild",
-		"format": "prettier --check public src",
+		"generate-index": "node ./scripts/generate-sample-index.mjs",
+		"prebuild": "pnpm generate-index",
+		"build": "unbuild",
+		"predev": "pnpm generate-index",
+		"dev": "nodemon",
+		"format": "prettier --check src",
+		"inspect": "mcp-inspector tsx src/mcp.ts",
 		"prestart": "pnpm build",
-		"start": "node dist/index.mjs",
-		"test": "node --test",
-		"test-update": "node --test"
+		"start": "node dist/mcp.cjs",
+		"start:stdio": "node dist/cli.cjs",
+		"test:api": "node test-vercel-api.mjs",
+		"vercel:dev": "vercel dev",
+		"vercel:deploy": "vercel",
+		"vercel:deploy:prod": "vercel --prod"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "1.21.0",
+		"express": "5.1.0",
+		"fuse.js": "7.1.0",
+		"zod": "3.25.76"
 	},
 	"devDependencies": {
+		"@modelcontextprotocol/inspector": "0.17.2",
+		"@types/express": "5.0.5",
+		"@types/node": "24.10.0",
+		"@vercel/node": "3.2.26",
+		"nodemon": "3.1.10",
 		"prettier": "3.6.2",
 		"prettier-plugin-organize-imports": "4.3.0",
+		"tsx": "4.20.6",
+		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"files": [
 		"dist/",
 		"README.md"
-	],
-	"dependencies": {
-		"fuse.js": "7.1.0"
-	}
+	]
 }

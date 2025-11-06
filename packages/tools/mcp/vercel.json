@@ -2,11 +2,10 @@
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"version": 2,
 	"buildCommand": "echo 'Skipping build - using pre-built artifacts'",
-	"installCommand": "echo 'Skipping install - using pre-built artifacts'",
 	"rewrites": [
 		{
 			"source": "/mcp/(.*)",
-			"destination": "/api/mcp"
+			"destination": "/api/index"
 		}
 	]
 }
