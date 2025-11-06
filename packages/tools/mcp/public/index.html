@@ -300,28 +300,36 @@
 					<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
 				</div>
 				<h1>KoliBri MCP API</h1>
-				<p class="subtitle">Model Context Protocol Backend for KoliBri Examples</p>
-				<span class="status">🟢 Online</span>
+                                <p class="subtitle">Model Context Protocol backend for KoliBri examples with streaming-native HTTP transport</p>
+                                <span class="status">📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples, <!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ Docs)</span>
 				<div class="stats" aria-live="polite">
 					<div class="stat">
 						<span class="stat-label">Samples</span>
-						<span class="stat-value" id="sample-count">–</span>
+                                                <span class="stat-value" id="sample-count"><!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__</span>
 					</div>
 					<div class="stat">
 						<span class="stat-label">Docs</span>
-						<span class="stat-value" id="doc-count">–</span>
+                                                <span class="stat-value" id="doc-count"><!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="api-info">
-				<h2>📡 REST API Endpoints</h2>
-				<p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
-				<p class="description">
-					Use the <code class="endpoint-inline">/mcp/http/*</code> base path for classic JSON requests (fetch, curl, etc.) and
-					<code class="endpoint-inline">/mcp/sse/*</code> for streaming Server-Sent Events. The auto-detecting
-					<code class="endpoint-inline">/mcp/mcp/*</code> routes remain available but negotiate the transport based on the request headers.
-				</p>
+                        <div class="api-info">
+                                <h2>📡 REST & Streaming Endpoints</h2>
+                                <p class="description">This API provides structured information about KoliBri samples that can be used by AI agents.</p>
+                                <p class="description">
+                                        Use the <code class="endpoint-inline">/mcp/http/*</code> base path for classic JSON requests (fetch, curl, etc.) and
+                                        <code class="endpoint-inline">/mcp/sse/*</code> for streaming Server-Sent Events. The auto-detecting
+                                        <code class="endpoint-inline">/mcp/mcp/*</code> routes remain available but negotiate the transport based on the request headers.
+                                </p>
+                                <div class="highlight-box info" style="margin-top: 1rem">
+                                        <strong style="color: #2d3748">🆕 Native MCP over HTTP:</strong>
+                                        <span style="color: #2d3748">
+                                                Clients that speak the Model Context Protocol can connect directly via
+                                                <code class="endpoint-inline">POST /mcp</code>. The server streams responses using the official
+                                                <code class="endpoint-inline">StreamableHTTPServerTransport</code>, so Copilot Chat, Claude Desktop, and other MCP clients receive incremental updates without polling.
+                                        </span>
+                                </div>
 
 				<div style="margin-top: 1rem">
 					<div>
@@ -423,7 +431,15 @@ echo '{ "servers": { ... } }' > mcp.json
 </code></pre>
 						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
-					<p class="description">In GitHub Copilot Chat you can now write:</p>
+                                        <h3>Detailed VS Code steps</h3>
+                                        <ol class="description" style="padding-left: 1.25rem; color: #4a5568">
+                                                <li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
+                                                <li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
+                                                <li>Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace <code>&lt;origin&gt;</code> with the deployed server URL.</li>
+                                                <li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri-mcp</strong> to establish the streaming session.</li>
+                                                <li>Ask Copilot things like <code class="endpoint-inline">@kolibri-mcp search button</code> or <code class="endpoint-inline">@kolibri-mcp fetch sample/button/basic</code> to receive streamed answers.</li>
+                                        </ol>
+                                        <p class="description">In GitHub Copilot Chat you can now write:</p>
 					<div class="relative">
 						<pre style="margin: 0"><code class="endpoint">@kolibri show me a button sample
 @kolibri how do I implement a KoliBri table?
@@ -433,9 +449,9 @@ echo '{ "servers": { ... } }' > mcp.json
 					</div>
 					<div class="highlight-box info">
 						<strong style="color: #2d3748">💡 Tip:</strong>
-						<span style="color: #2d3748" id="tip-text">
-							The MCP Server gives you access to all KoliBri component samples and documentation files directly in VS Code!
-						</span>
+                                                <span style="color: #2d3748" id="tip-text">
+                                                        The MCP Server gives you access to all <!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ KoliBri component samples and <!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ documentation files directly in VS Code!
+                                                </span>
 					</div>
 				</div>
 			</div>
@@ -449,16 +465,57 @@ echo '{ "servers": { ... } }' > mcp.json
 			</div>
 		</div>
 
-		<script>
-			const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
-			if (remoteConfigElement) {
-				const origin = window.location.origin.replace(/\/$/, '');
-				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
-			}
+                <script>
+                        window.__KOLIBRI_MCP_COUNTS__ = Object.freeze({
+                                total: __BUILD_TOTAL_COUNT__ /*BUILD:TOTAL_COUNT*/,
+                                samples: __BUILD_SAMPLE_COUNT__ /*BUILD:SAMPLE_COUNT*/,
+                                docs: __BUILD_DOC_COUNT__ /*BUILD:DOC_COUNT*/,
+                        });
 
-			// Test API status when page loads
-			fetch('/mcp/http/health')
-				.then((response) => response.json())
+                        const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+                        if (remoteConfigElement) {
+                                const origin = window.location.origin.replace(/\/$/, '');
+                                remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
+                        }
+
+                        function applyCountsFromBuild(counts) {
+                                if (!counts) {
+                                        return;
+                                }
+
+                                const statusElement = document.querySelector('.status');
+                                const sampleCountElement = document.getElementById('sample-count');
+                                const docCountElement = document.getElementById('doc-count');
+                                const tipTextElement = document.getElementById('tip-text');
+
+                                const sampleCount = Number.parseInt(counts.samples ?? 0, 10) || 0;
+                                const docCount = Number.parseInt(counts.docs ?? 0, 10) || 0;
+
+                                if (sampleCountElement) {
+                                        sampleCountElement.textContent = sampleCount.toLocaleString();
+                                }
+
+                                if (docCountElement) {
+                                        docCountElement.textContent = docCount.toLocaleString();
+                                }
+
+                                if (statusElement) {
+                                        const docFragment = docCount > 0 ? `, ${docCount.toLocaleString()} Docs` : '';
+                                        statusElement.textContent = `📦 Prebuilt index (${sampleCount.toLocaleString()} Samples${docFragment})`;
+                                        statusElement.style.background = '#4a5568';
+                                }
+
+                                if (tipTextElement && sampleCount > 0) {
+                                        const docsText = docCount > 0 ? ` and ${docCount.toLocaleString()} documentation files` : '';
+                                        tipTextElement.textContent = `The MCP Server gives you access to all ${sampleCount.toLocaleString()} KoliBri component samples${docsText} directly in VS Code!`;
+                                }
+                        }
+
+                        applyCountsFromBuild(window.__KOLIBRI_MCP_COUNTS__);
+
+                        // Test API status when page loads
+                        fetch('/mcp/http/health')
+                                .then((response) => response.json())
 				.then((data) => {
 					console.log('API Status:', data);
 					const statusElement = document.querySelector('.status');
@@ -490,12 +547,12 @@ echo '{ "servers": { ... } }' > mcp.json
 						docCountElement.textContent = docCount.toLocaleString();
 					}
 
-					// Update tip text with dynamic numbers
-					if (tipTextElement && sampleCount > 0) {
-						const samplesText = sampleCount > 0 ? `${sampleCount.toLocaleString()}+ ` : '';
-						const docsText = docCount > 0 ? ` and ${docCount.toLocaleString()} documentation files` : '';
-						tipTextElement.textContent = `The MCP Server gives you access to all ${samplesText}KoliBri component samples${docsText} directly in VS Code!`;
-					}
+                                        // Update tip text with dynamic numbers
+                                        if (tipTextElement && sampleCount > 0) {
+                                                const samplesText = sampleCount > 0 ? sampleCount.toLocaleString() : '0';
+                                                const docsText = docCount > 0 ? ` and ${docCount.toLocaleString()} documentation files` : '';
+                                                tipTextElement.textContent = `The MCP Server gives you access to all ${samplesText} KoliBri component samples${docsText} directly in VS Code!`;
+                                        }
 
 					if (data.healthy && sampleCount > 0) {
 						const docText = docCount > 0 ? `, ${docCount.toLocaleString()} Docs` : '';
