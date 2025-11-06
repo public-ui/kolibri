@@ -54,6 +54,32 @@ const MARKDOWN_SOURCES = [
 	{ directory: REPO_ROOT, groupPrefix: 'docs', recursive: false },
 ];
 
+function createLegacyPaths({ kind, group, name }) {
+	if (kind !== 'sample' || typeof group !== 'string' || typeof name !== 'string' || !name) {
+		return [];
+	}
+
+	const segments = group.split('/').filter(Boolean);
+	if (segments.length === 0) {
+		return [];
+	}
+
+	const aliases = new Set();
+
+	if (segments[0] === 'components') {
+		const withoutCategory = segments.slice(1);
+		if (withoutCategory.length > 0) {
+			aliases.add(['sample', ...withoutCategory, name].join('/'));
+			aliases.add([...withoutCategory, name].join('/'));
+		} else {
+			aliases.add(['sample', name].join('/'));
+			aliases.add(name);
+		}
+	}
+
+	return Array.from(aliases);
+}
+
 function getCommitMetadata() {
 	const commit = process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || null;
 	const branch = process.env.GITHUB_REF_NAME || process.env.VERCEL_GIT_COMMIT_REF || null;
@@ -314,6 +340,7 @@ async function generateSampleIndex() {
 
 				const code = await readFile(absolutePath, 'utf8');
 				const sampleIdSegments = ['sample', group, name].filter(Boolean);
+				const legacyPaths = createLegacyPaths({ kind: 'sample', group, name });
 				entries.push({
 					id: sampleIdSegments.join('/'),
 					group,
@@ -321,6 +348,7 @@ async function generateSampleIndex() {
 					path: path.relative(REPO_ROOT, absolutePath),
 					code,
 					kind: 'sample',
+					legacyPaths: legacyPaths.length > 0 ? legacyPaths : undefined,
 				});
 			}
 		}

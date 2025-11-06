@@ -109,6 +109,7 @@ function configureServer(server: McpServer): McpServer {
 					score: result.score,
 					code: result.item.code ?? 'No code available',
 					path: result.item.path ?? 'N/A',
+					legacyPaths: result.item.legacyPaths ?? [],
 				})),
 			};
 
@@ -116,7 +117,8 @@ function configureServer(server: McpServer): McpServer {
 				.map((result, index) => {
 					const { item, score } = result;
 					const codePreview = item.code ? `\n  Code preview: ${item.code.substring(0, 150).replace(/\n/g, ' ')}...` : '';
-					return `${index + 1}. [${item.kind}] ${item.id}: ${item.name}\n   Description: ${item.description ?? 'N/A'}\n   Match score: ${(score * 100).toFixed(1)}%\n   Tags: ${item.tags?.join(', ') ?? 'none'}${codePreview}`;
+					const legacyPathText = item.legacyPaths?.length ? `\n   Legacy IDs: ${item.legacyPaths.join(', ')}` : '';
+					return `${index + 1}. [${item.kind}] ${item.id}: ${item.name}\n   Description: ${item.description ?? 'N/A'}\n   Match score: ${(score * 100).toFixed(1)}%\n   Tags: ${item.tags?.join(', ') ?? 'none'}${codePreview}${legacyPathText}`;
 				})
 				.join('\n\n');
 
@@ -124,7 +126,7 @@ function configureServer(server: McpServer): McpServer {
 				content: [
 					{
 						type: 'text',
-						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
+						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above (or its legacy IDs) to see the full code.`,
 					},
 				],
 				structuredContent: output,
@@ -174,13 +176,16 @@ function configureServer(server: McpServer): McpServer {
 				tags: entry.tags ?? [],
 				code: entry.code ?? 'No code available',
 				path: entry.path ?? 'N/A',
+				legacyPaths: entry.legacyPaths ?? [],
 			};
 
 			return {
 				content: [
 					{
 						type: 'text',
-						text: `# ${entry.name}\n\nID: ${entry.id}\nKind: ${entry.kind}\nGroup: ${entry.group ?? 'N/A'}\nDescription: ${entry.description ?? 'N/A'}\nTags: ${entry.tags?.join(', ') ?? 'none'}\n\n## Code\n\n\`\`\`\n${entry.code ?? 'No code available'}\n\`\`\``,
+						text: `# ${entry.name}\n\nID: ${entry.id}\nKind: ${entry.kind}\nGroup: ${entry.group ?? 'N/A'}\nLegacy IDs: ${
+							entry.legacyPaths?.length ? entry.legacyPaths.join(', ') : 'none'
+						}\nDescription: ${entry.description ?? 'N/A'}\nTags: ${entry.tags?.join(', ') ?? 'none'}\n\n## Code\n\n\`\`\`\n${entry.code ?? 'No code available'}\n\`\`\``,
 					},
 				],
 				structuredContent: output,

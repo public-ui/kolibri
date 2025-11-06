@@ -10,6 +10,7 @@ export interface SampleEntry {
 	tags?: string[];
 	code?: string;
 	path?: string;
+	legacyPaths?: string[];
 }
 
 export interface SampleIndexCounts {
@@ -57,12 +58,20 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 
 function normalizeEntry(entry: SampleEntry): SampleEntry {
 	const normalizedKind: 'sample' | 'doc' = entry.kind === 'doc' ? 'doc' : 'sample';
+	const normalizedId = typeof entry.id === 'string' ? entry.id.trim() : String(entry.id ?? '');
 	const tags = Array.isArray(entry.tags) ? entry.tags.map((tag) => String(tag)).filter((tag) => tag.trim().length > 0) : undefined;
+	const legacyPaths = Array.isArray(entry.legacyPaths)
+		? Array.from(
+				new Set(entry.legacyPaths.map((legacyPath) => String(legacyPath).trim()).filter((legacyPath) => legacyPath.length > 0 && legacyPath !== normalizedId)),
+			)
+		: undefined;
 
 	return {
 		...entry,
 		kind: normalizedKind,
+		id: normalizedId,
 		tags,
+		legacyPaths,
 	};
 }
 
@@ -134,7 +143,21 @@ export function getEntriesByKind(kind: 'sample' | 'doc'): SampleEntry[] {
 }
 
 export function getEntryById(id: string): SampleEntry | undefined {
-	return getAllEntries().find((entry) => entry.id === id);
+	const sanitized = id.trim().replace(/^\/+/u, '').replace(/\/+/gu, '/');
+	const normalizedId = sanitized.endsWith('/') ? sanitized.slice(0, -1) : sanitized;
+	const entries = getAllEntries();
+
+	for (const entry of entries) {
+		if (entry.id === normalizedId) {
+			return entry;
+		}
+
+		if (entry.legacyPaths?.some((legacyId) => legacyId === normalizedId)) {
+			return entry;
+		}
+	}
+
+	return undefined;
 }
 
 export function getSampleIndexMetadata(): SampleIndexMetadata {
