@@ -1,2 +1,5 @@
 .cache/
 api/samples.mjs
+
+# Generated sample index (static)
+shared/*.json

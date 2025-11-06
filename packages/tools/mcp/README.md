@@ -1,8 +1,8 @@
 # @public-ui/mcp
 
-> **Minimal KoliBri MCP Server with Search**
+> **KoliBri MCP Server with Search and HTTP Transport**
 
-A Model Context Protocol (MCP) server implementation using the official `@modelcontextprotocol/sdk` with fuzzy search capabilities for KoliBri component samples and documentation.
+A Model Context Protocol (MCP) server implementation using the official `@modelcontextprotocol/sdk` with fuzzy search capabilities for KoliBri component samples and documentation. Supports both stdio and HTTP/StreamableHTTP transports.
 
 ## Installation
 
@@ -22,7 +22,19 @@ npx @public-ui/mcp
 pnpm exec kolibri-mcp
 ```
 
-### Programmatically
+### As HTTP Server
+
+```bash
+# Start the HTTP server on default port 3000
+node dist/mcp.mjs
+
+# Or specify a custom port
+PORT=8080 node dist/mcp.mjs
+```
+
+The HTTP server provides a StreamableHTTP transport endpoint at `POST /mcp` and loads all KoliBri samples and documentation at startup.
+
+### Programmatically (stdio)
 
 ```typescript
 import { createKolibriMcpServer } from '@public-ui/mcp';
@@ -38,7 +50,7 @@ await server.connect(transport);
 
 ### 1. `hello_kolibri`
 
-A simple greeting tool for testing the connection.
+A simple greeting tool for testing the connection and getting server metadata.
 
 **Parameters:**
 
@@ -134,29 +146,26 @@ pnpm test
 
 ## Deployment
 
-### Vercel (SSE)
+### Vercel
 
-This package can be deployed to Vercel as a serverless API with Server-Sent Events support:
+This package can be deployed to Vercel as a serverless API:
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Production
+# Quick start
+pnpm run generate-index
+pnpm run build
 vercel --prod
 ```
 
 After deployment, the following endpoints are available:
 
 - `GET /` - Landing page with API documentation
-- `GET /api/sse` - SSE endpoint for MCP client connections
-- `POST /api/message` - JSON-RPC message endpoint
-- `GET /api/health` - Health check endpoint
+- `POST /mcp` - MCP server endpoint (StreamableHTTP transport)
 
-See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for detailed deployment instructions and client integration examples.
+For detailed deployment instructions:
+
+- **Quick Start**: See [QUICK_START_VERCEL.md](./QUICK_START_VERCEL.md)
+- **Full Guide**: See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
 
 ### Local stdio mode
 

@@ -1,12 +1,15 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"version": 2,
-	"buildCommand": "echo 'Using pre-built artifacts from GitHub Actions'",
-	"installCommand": "echo 'Dependencies already installed by GitHub Actions'",
+	"buildCommand": "echo 'Build was already done in GitHub Actions - skipping'",
 	"rewrites": [
 		{
 			"source": "/",
 			"destination": "/public/index.html"
+		},
+		{
+			"source": "/mcp",
+			"destination": "/api/index"
 		}
 	],
 	"headers": [
@@ -23,13 +26,18 @@
 				},
 				{
 					"key": "Access-Control-Allow-Headers",
-					"value": "Content-Type"
+					"value": "Content-Type, Mcp-Session-Id"
 				},
 				{
-					"key": "Cache-Control",
-					"value": "no-cache, no-store, must-revalidate"
+					"key": "Access-Control-Expose-Headers",
+					"value": "Mcp-Session-Id"
 				}
 			]
 		}
-	]
+	],
+	"functions": {
+		"api/index.js": {
+			"maxDuration": 30
+		}
+	}
 }

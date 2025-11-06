@@ -14,5 +14,9 @@
 		"types": ["node"]
 	},
 	"include": ["src/**/*", "api/**/*"],
-	"exclude": ["node_modules", "dist", "src/_old"]
+	"exclude": ["node_modules", "dist", "src/_old"],
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifierResolution": "node"
+	}
 }

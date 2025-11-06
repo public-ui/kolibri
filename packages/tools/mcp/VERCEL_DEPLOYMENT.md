@@ -1,305 +1,192 @@
-# Vercel Deployment Guide for KoliBri MCP Server
+# Vercel Deployment Guide
 
-This guide explains how to deploy the KoliBri MCP Server to Vercel using GitHub Actions for building.
+Diese Anleitung beschreibt, wie der KoliBri MCP Server auf Vercel deployed wird.
 
-## Prerequisites
+## Vercel-Konfiguration
 
-- GitHub repository with proper access
-- Vercel account connected to GitHub
-- Vercel secrets configured in repository (VERCEL_MCP_TEAM_ID, VERCEL_MCP_PROJECT_ID, VERCEL_MCP_TOKEN)
+Der MCP Server wird als **vorgebaute Vercel Serverless Function** deployed:
 
-## Architecture
+- **Build-Prozess**: Erfolgt in GitHub Actions, nicht auf Vercel
+- **Deployment**: Nur fertig kompilierte Dateien (`dist/`, `api/`, `shared/`) werden hochgeladen
+- **Vercel Install**: Dependencies werden installiert (für imports in `api/index.js`)
+- **Vercel Build**: Übersprungen (nur Echo-Nachricht)
+- **API-Endpoint**: `/api/index.js` (importiert vorgebaute Module aus `dist/`)
+- **Öffentliche Route**: `/mcp` wird zu `/api/index` umgeleitet
+- **Statische Seite**: `/` zeigt `public/index.html`
 
-The MCP Server uses a **GitHub Actions → Vercel** deployment pipeline:
+## Build-Workflow (GitHub Actions)
 
-1. **GitHub Actions** builds the project (`pnpm build`)
-2. Generated `dist/` files are created with all data
-3. Vercel deploys the **pre-built artifacts** (no build on Vercel)
-4. API endpoints run as Vercel Serverless Functions
+Der Build-Prozess läuft automatisch in GitHub Actions:
 
-### Endpoints
+1. Sample-Index generieren (`pnpm run generate-index`)
+2. TypeScript kompilieren (`pnpm run build`)
+3. Artefakte hochladen
+4. Zu Vercel deployen
 
-- **GET /api/sse** - SSE endpoint for MCP protocol communication
-- **POST /api/message** - Message endpoint (used internally by SSE transport)
-- **GET /api/health** - Health check endpoint
-- **GET /** - Landing page with API documentation
+**Wichtig:** Vercel führt **keinen** Build aus - es verwendet nur die vorgebauten Dateien.
 
-## Build Process
+## Lokale Entwicklung
 
-### GitHub Actions Workflow
+```bash
+# Abhängigkeiten installieren
+pnpm install
 
-The `.github/workflows/mcp-vercel.yml` workflow:
+# Sample-Index generieren
+pnpm run generate-index
 
-1. Checks out the repository
-2. Sets up pnpm workspace
-3. Builds the MCP package: `pnpm build`
-4. Verifies built artifacts in `dist/`
-5. Deploys to Vercel using `vercel` CLI
+# Build für Vercel
+pnpm run build
 
-### Important: Pre-Built Artifacts
+# Lokalen Express-Server starten (für Entwicklung)
+pnpm run start
 
-The deployment uses **pre-built JavaScript files** from `dist/`:
-
-```typescript
-// API files import from dist/ (built by GitHub Actions)
-import { getAllEntries } from '../dist/data.mjs';
-import { searchEntries } from '../dist/search.mjs';
+# Oder mit Nodemon für Hot-Reload
+pnpm run dev
 ```
 
-**Why?** This ensures:
+## Vercel CLI Deployment
 
-- ✅ Consistent builds (same Node.js version)
-- ✅ All sample data is correctly generated
-- ✅ Faster Vercel deployments (no build step)
-- ✅ Better error detection (build fails in CI, not on Vercel)
+### Installation
 
-## Configuration Files
+```bash
+npm i -g vercel
+```
 
-### 1. vercel.json
+### Deployment
+
+```bash
+# Erstmaliges Deployment (interaktiv)
+vercel
+
+# Production Deployment
+vercel --prod
+
+# Preview Deployment
+vercel
+```
+
+### Lokale Vercel-Umgebung testen
+
+```bash
+# Vercel Dev Server starten
+vercel dev
+```
+
+Dies startet einen lokalen Server, der die Vercel-Serverless-Funktionen simuliert.
+
+## GitHub Actions Integration
+
+Der Deploy-Prozess ist bereits in GitHub Actions integriert. Die Workflow-Datei befindet sich im Haupt-Repository.
+
+**Build-Schritte in CI:**
+
+1. Dependencies installieren
+2. Sample-Index generieren (`pnpm run generate-index`)
+3. TypeScript kompilieren (`pnpm run build` → `dist/`)
+4. Zu Vercel deployen (nur `dist/`, `api/`, `shared/`, `public/`)
+
+**Vercel-Verhalten:**
+
+- `installCommand`: Standard (Dependencies werden installiert für imports)
+- `buildCommand`: Übersprungen (gibt nur Info-Nachricht aus)
+- Alle Dateien (`dist/`) sind bereits gebaut und einsatzbereit
+
+## Umgebungsvariablen
+
+Keine speziellen Umgebungsvariablen erforderlich. Der Server verwendet statische Daten aus `shared/sample-index.json`.
+
+## API-Endpunkt Nutzung
+
+### MCP über HTTP
+
+```bash
+# POST Request an den MCP-Endpunkt
+curl -X POST https://your-deployment.vercel.app/mcp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/list",
+    "params": {}
+  }'
+```
+
+### Als MCP-Client konfigurieren
+
+Für Claude Desktop oder andere MCP-Clients:
 
 ```json
 {
-	"buildCommand": "echo 'Using pre-built artifacts from GitHub Actions'",
-	"installCommand": "echo 'Dependencies already installed by GitHub Actions'",
-	"functions": {
-		"api/**/*.ts": {
-			"runtime": "nodejs20.x"
+	"mcpServers": {
+		"kolibri": {
+			"url": "https://your-deployment.vercel.app/mcp",
+			"transport": {
+				"type": "http"
+			}
 		}
 	}
 }
 ```
 
-**Key Points:**
+## Vercel-spezifische Konfiguration
 
-- Build and install commands are no-ops (GitHub Actions handles this)
-- TypeScript files in `api/` are still compiled by Vercel
-- Pre-built `dist/` files are deployed as-is
+### vercel.json
 
-### 2. .vercelignore
+Die Konfiguration in `vercel.json`:
 
-```
-src/
-test/
-build.config.ts
-tsconfig.json
-# ... other development files
-```
+- **buildCommand**: Führt `pnpm run build` aus
+- **installCommand**: Installiert Dependencies mit `pnpm install --frozen-lockfile`
+- **rewrites**: Leitet `/mcp` zu `/api/index` um
+- **headers**: CORS-Header für Cross-Origin-Zugriffe
+- **functions**: Timeout-Konfiguration für Serverless Functions
 
-**Purpose:** Exclude source files and only deploy:
+### Wichtige Dateien für Vercel
 
-- `api/` - Serverless function definitions
-- `dist/` - Pre-built JavaScript modules
-- `public/` - Static assets
-- `package.json` - Dependency information
+**Deployed werden:**
 
-### 3. tsconfig.json
+- `api/index.js` - Haupthandler für MCP-Requests (Vercel Serverless Function, plain JavaScript)
+- `dist/` - Vorgebaute JavaScript-Module (importiert von `api/index.js`)
+  - `dist/data.js` - Datenzugriff für Sample-Index
+  - `dist/search.js` - Fuzzy-Search-Implementierung
+  - `dist/mcp.js` - Core MCP Server Logic (für lokale Entwicklung)
+- `shared/sample-index.json` - Statischer Index aller Komponenten-Samples (vor-generiert)
+- `public/index.html` - Landingpage
+- `vercel.json` - Deployment-Konfiguration
 
-For local development, TypeScript needs to compile API files:
+**Nicht deployed (nur für Entwicklung):**
 
-```json
-{
-	"compilerOptions": {
-		"target": "ES2022",
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"strict": false,
-		"noImplicitAny": false
-	},
-	"include": ["src/**/*", "api/**/*"],
-	"exclude": ["node_modules", "dist"]
-}
-```
-
-**Note:** `strict: false` is required because API files import from `dist/` which has no TypeScript declarations. This is intentional and safe because GitHub Actions validates the build.
-
-### 4. Type Declarations
-
-The file `api/dist-types.d.ts` provides type information for built modules:
-
-```typescript
-declare module '../dist/data.mjs' {
-	export function getAllEntries(): SampleEntry[];
-	// ...
-}
-```
-
-This allows TypeScript to understand imports from `dist/` during development.
-
-## Deployment Process
-
-### Automatic Deployment via GitHub Actions
-
-**Production:** Pushing to `release/3` branch automatically deploys to production
-
-```bash
-git checkout release/3
-git merge your-feature-branch
-git push origin release/3
-```
-
-**Preview:** Opening a pull request automatically creates a preview deployment
-
-```bash
-git checkout -b feature/my-feature
-git push origin feature/my-feature
-# Create PR on GitHub
-```
-
-### Manual Deployment (Not Recommended)
-
-If you need to deploy manually:
-
-```bash
-# Login to Vercel
-vercel login
-
-# Deploy to preview
-vercel
-
-# Deploy to production
-vercel --prod
-```
-
-### 2. Subsequent Deployments
-
-```bash
-# Deploy to production
-vercel --prod
-```
-
-### 3. Environment Variables (Optional)
-
-If needed, set environment variables in Vercel dashboard or via CLI:
-
-```bash
-vercel env add VARIABLE_NAME
-```
-
-## Testing the Deployment
-
-After deployment, test the endpoints:
-
-### 1. Health Check
-
-```bash
-curl https://your-deployment-url.vercel.app/api/health
-```
-
-Expected response:
-
-```json
-{
-	"status": "ok",
-	"timestamp": "2025-11-05T16:00:00.000Z",
-	"version": "1.0.0",
-	"endpoints": ["/api/sse", "/api/message", "/api/health"]
-}
-```
-
-### 2. SSE Connection (with MCP Client)
-
-```javascript
-// Example MCP client connection
-import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
-
-const transport = new SSEClientTransport(new URL('https://your-deployment-url.vercel.app/api/sse'));
-
-const client = new Client(
-	{
-		name: 'test-client',
-		version: '1.0.0',
-	},
-	{
-		capabilities: {},
-	},
-);
-
-await client.connect(transport);
-
-// List available tools
-const tools = await client.listTools();
-console.log('Available tools:', tools);
-```
-
-### 3. Landing Page
-
-Visit `https://your-deployment-url.vercel.app/` to see the API documentation.
+- `src/` - TypeScript-Quellcode
+- `node_modules/` - Nicht hochgeladen (werden von Vercel installiert für Runtime)
 
 ## Troubleshooting
 
-### 404 Error on /api/sse
+### Build Fehler: "Cannot find module"
 
-**Problem**: SSE endpoint returns 404 Not Found
+Stelle sicher, dass:
 
-**Solutions**:
+1. `pnpm run generate-index` vor dem Build ausgeführt wurde
+2. `pnpm run build` erfolgreich durchgelaufen ist
+3. Die `dist/` Verzeichnis vorhanden ist
 
-1. Ensure `api/sse.ts` has a default export named `handler`
-2. Check that TypeScript files are being compiled (see `vercel.json` functions config)
-3. Verify imports use `src/` not `dist/` paths
-4. Check Vercel build logs for compilation errors
+### Timeout-Fehler
 
-### TypeScript Compilation Errors
+Vercel Free Tier hat ein 10s Timeout, Hobby/Pro 30s. Bei komplexen Queries:
 
-**Problem**: Build fails with TypeScript errors
+- Limit-Parameter nutzen: `{"limit": 5}`
+- Kind-Filter anwenden: `{"kind": "sample"}`
 
-**Solutions**:
+### CORS-Fehler
 
-1. Run `pnpm build` locally to check for errors
-2. Ensure `tsconfig.json` includes both `src/` and `api/` directories
-3. Check that all imports have correct file extensions (`.js` or `.ts`)
+Überprüfe die `headers` Konfiguration in `vercel.json`. Die CORS-Header sind für alle `/api/*` Routen konfiguriert.
 
-### Module Resolution Issues
+## Performance-Optimierung
 
-**Problem**: Cannot find module errors during runtime
+1. **Caching**: Sample-Index wird beim Startup geladen und gecacht
+2. **Fuzzy Search**: Fuse.js mit optimierten Schwellwerten (0.4)
+3. **Serverless Cold Start**: Erste Request kann ~1-2s dauern
 
-**Solutions**:
+## Links
 
-1. Use `.js` extensions in imports even for TypeScript files
-2. Set `"moduleResolution": "bundler"` in `tsconfig.json`
-3. Ensure all dependencies are in `dependencies`, not `devDependencies`
-
-### SSE Connection Timeouts
-
-**Problem**: SSE connection closes immediately or times out
-
-**Solutions**:
-
-1. Vercel has a 60-second timeout for serverless functions
-2. SSE connections should be kept alive with periodic messages
-3. Check that `SSEServerTransport` is properly configured
-
-## Performance Considerations
-
-1. **Cold Starts**: First request may be slower due to serverless cold start
-2. **Timeouts**: Vercel limits function execution to 60 seconds (Pro: 300s)
-3. **Memory**: Default is 1024 MB, can be increased in `vercel.json`
-4. **Regions**: Deploy to regions closest to your users
-
-## Security
-
-1. **CORS**: Configured to allow all origins (`*`) - restrict in production
-2. **Rate Limiting**: Consider adding rate limiting for production
-3. **Authentication**: Add authentication if needed (e.g., Bearer tokens)
-
-## Monitoring
-
-Monitor your deployment in Vercel Dashboard:
-
-- **Logs**: View function execution logs
-- **Analytics**: Track request counts and performance
-- **Errors**: Monitor error rates and stack traces
-
-## Continuous Deployment
-
-Connect your GitHub repository to Vercel for automatic deployments:
-
-1. Link repository in Vercel Dashboard
-2. Configure branch deployments (main → production)
-3. Enable automatic deployments on push
-
-## Cost Considerations
-
-- **Free Tier**: 100GB bandwidth, 100GB-hrs compute time
-- **Pro Tier**: Increased limits and features
-- Monitor usage in Vercel Dashboard
+- [Vercel Documentation](https://vercel.com/docs)
+- [Vercel Serverless Functions](https://vercel.com/docs/functions/serverless-functions)
+- [Model Context Protocol](https://modelcontextprotocol.io/)

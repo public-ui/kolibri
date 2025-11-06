@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { logAvailableTools } from './logging.js';
-import { createKolibriMcpServer } from './mcp-server.js';
+import { createKolibriMcpServer } from './mcp.js';
 
-async function main() {
+/**
+ * CLI entry point for KoliBri MCP Server (stdio transport).
+ * Used for local MCP clients like Claude Desktop.
+ */
+function main() {
 	const server = createKolibriMcpServer();
 	const transport = new StdioServerTransport();
 
-	await server.connect(transport);
+	server.connect(transport);
 
-	logAvailableTools();
+	// Log to stderr to avoid interfering with stdio protocol
+	console.error('KoliBri MCP Server running on stdio');
 }
 
-main().catch((error) => {
-	console.error('Failed to start server:', error);
-	process.exit(1);
-});
+main();

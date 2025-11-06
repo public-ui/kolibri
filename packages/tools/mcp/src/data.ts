@@ -37,81 +37,7 @@ interface SerializedSampleIndex {
 	};
 }
 
-const FALLBACK_SAMPLE_ENTRIES: SampleEntry[] = [
-	{
-		id: 'sample/button/basic',
-		kind: 'sample',
-		name: 'Basic Button',
-		group: 'button',
-		description: 'A basic button component example',
-		tags: ['button', 'interactive', 'form'],
-		code: `import { KolButton } from '@public-ui/react';
-
-export const BasicButton = () => (
-  <KolButton _label="Click me" />
-);`,
-	},
-	{
-		id: 'sample/input/text',
-		kind: 'sample',
-		name: 'Text Input',
-		group: 'input',
-		description: 'A text input field example',
-		tags: ['input', 'form', 'text'],
-		code: `import { KolInput } from '@public-ui/react';
-
-export const TextInput = () => (
-  <KolInput _type="text" _label="Username" />
-);`,
-	},
-	{
-		id: 'sample/table/basic',
-		kind: 'sample',
-		name: 'Basic Table',
-		group: 'table',
-		description: 'A basic table component example',
-		tags: ['table', 'data', 'grid'],
-		code: `import { KolTable } from '@public-ui/react';
-
-export const BasicTable = () => (
-  <KolTable _label="User table" _data={[...] } />
-);`,
-	},
-	{
-		id: 'doc/docs/getting-started',
-		kind: 'doc',
-		name: 'Getting Started',
-		description: 'Introduction to KoliBri component library',
-		tags: ['documentation', 'guide', 'setup'],
-		code: `# Getting Started with KoliBri
-
-KoliBri is an accessible web component library...`,
-	},
-	{
-		id: 'doc/docs/accessibility',
-		kind: 'doc',
-		name: 'Accessibility Guide',
-		description: 'Best practices for accessibility in KoliBri',
-		tags: ['documentation', 'a11y', 'accessibility'],
-		code: `# Accessibility in KoliBri
-
-All KoliBri components follow WCAG 2.1 guidelines...`,
-	},
-];
-
-const FALLBACK_METADATA: SampleIndexMetadata = {
-	generatedAt: null,
-	buildMode: 'fallback',
-	counts: calculateCounts(FALLBACK_SAMPLE_ENTRIES),
-	repo: {
-		commit: null,
-		branch: null,
-		repoUrl: null,
-	},
-};
-
 let cachedData: { entries: SampleEntry[]; metadata: SampleIndexMetadata } | undefined;
-let warnedAboutFallback = false;
 
 function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 	const byKind: Record<string, number> = {};
@@ -142,7 +68,7 @@ function normalizeEntry(entry: SampleEntry): SampleEntry {
 
 function normalizeMetadata(metadata: SerializedSampleIndex['metadata'], entries: SampleEntry[]): SampleIndexMetadata {
 	const counts = calculateCounts(entries);
-	const repo = metadata?.repo ?? {};
+	const repo = metadata?.repo ?? { commit: null, branch: null, repoUrl: null };
 
 	return {
 		generatedAt: metadata?.generatedAt ?? null,
@@ -159,21 +85,27 @@ function normalizeMetadata(metadata: SerializedSampleIndex['metadata'], entries:
 						: counts.byKind,
 		},
 		repo: {
-			commit: repo?.commit ?? null,
-			branch: repo?.branch ?? null,
-			repoUrl: repo?.repoUrl ?? null,
+			commit: repo.commit ?? null,
+			branch: repo.branch ?? null,
+			repoUrl: repo.repoUrl ?? null,
 		},
 	};
 }
 
+/**
+ * Load sample data from the static index file in shared/
+ * The index MUST be generated before build/dev using: node scripts/generate-sample-index.mjs
+ * This ensures no runtime index generation is needed.
+ */
 function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetadata } {
 	if (cachedData) {
 		return cachedData;
 	}
 
 	try {
-		const samplesUrl = new URL('./samples.json', import.meta.url);
-		const filePath = fileURLToPath(samplesUrl);
+		// Try to load from shared/sample-index.json (static, pre-generated)
+		const sharedIndexUrl = new URL('../shared/sample-index.json', import.meta.url);
+		const filePath = fileURLToPath(sharedIndexUrl);
 		const raw = readFileSync(filePath, 'utf8');
 		const parsed = JSON.parse(raw) as SerializedSampleIndex;
 		const entries = Array.isArray(parsed.entries) ? parsed.entries.map(normalizeEntry) : [];
@@ -186,13 +118,10 @@ function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetada
 		cachedData = { entries, metadata };
 		return cachedData;
 	} catch (error) {
-		if (!warnedAboutFallback) {
-			const message = error instanceof Error ? error.message : String(error);
-			console.warn(`[mcp:data] Falling back to embedded samples: ${message}`);
-			warnedAboutFallback = true;
-		}
-		cachedData = { entries: FALLBACK_SAMPLE_ENTRIES, metadata: FALLBACK_METADATA };
-		return cachedData;
+		const message = error instanceof Error ? error.message : String(error);
+		throw new Error(
+			`Failed to load sample index from shared/sample-index.json. ` + `Please run 'pnpm generate-index' to create the index file. ` + `Error: ${message}`,
+		);
 	}
 }
 
@@ -211,5 +140,3 @@ export function getEntryById(id: string): SampleEntry | undefined {
 export function getSampleIndexMetadata(): SampleIndexMetadata {
 	return loadSampleData().metadata;
 }
-
-export const FALLBACK_SAMPLES = FALLBACK_SAMPLE_ENTRIES;
