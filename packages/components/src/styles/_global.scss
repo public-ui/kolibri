@@ -29,6 +29,7 @@
 		/* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
 		&__container {
 			display: flex;
+			align-items: center;
 		}
 	}
 
