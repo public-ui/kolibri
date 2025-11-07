@@ -6,6 +6,12 @@ import { searchEntries } from '../dist/search.mjs';
 
 const KIND_OPTIONS = ['doc', 'sample', 'scenario'];
 
+const normalizeTags = (tags) => (Array.isArray(tags) ? tags : []);
+const formatTagsForText = (tags) => {
+	const normalized = normalizeTags(tags);
+	return normalized.length > 0 ? normalized.join(', ') : 'none';
+};
+
 // Package info - read from environment or use defaults
 const PACKAGE_VERSION = process.env.npm_package_version || '3.0.7';
 const PACKAGE_NAME = '@public-ui/mcp';
@@ -51,38 +57,40 @@ function createKolibriMcpServer() {
 
 			const results = searchEntries(allEntries, queryStr, searchOptions);
 
-			const output = {
+			const structuredContent = {
 				query: queryStr,
 				totalResults: results.length,
-				results: results.map((result) => ({
-					id: result.item.id,
-					kind: result.item.kind,
-					name: result.item.name,
-					group: result.item.group ?? 'N/A',
-					description: result.item.description ?? 'N/A',
-					tags: result.item.tags ?? [],
-					score: result.score,
-					code: result.item.code ?? 'No code available',
-					path: result.item.path ?? 'N/A',
+				results: results.map(({ item, score }) => ({
+					id: item.id,
+					kind: item.kind,
+					name: item.name,
+					group: item.group ?? 'N/A',
+					description: item.description ?? 'N/A',
+					tags: normalizeTags(item.tags),
+					score: score ?? 1,
+					path: item.path ?? 'N/A',
 				})),
 			};
 
-			const resultText = results
-				.map((result, index) => {
-					const { item, score } = result;
-					const codePreview = item.code ? `\n  Code preview: ${item.code.substring(0, 150).replace(/\n/g, ' ')}...` : '';
-					return `${index + 1}. [${item.kind}] ${item.id}: ${item.name}\n   Description: ${item.description ?? 'N/A'}\n   Match score: ${(score * 100).toFixed(1)}%\n   Tags: ${item.tags?.join(', ') ?? 'none'}${codePreview}`;
-				})
-				.join('\n\n');
+			const resultText = results.length
+				? results
+						.map(({ item, score }, index) => {
+							const matchScore = ((score ?? 1) * 100).toFixed(1);
+							const pathLine = item.path ? `\n   Path: ${item.path}` : '';
+							return `${index + 1}. [${item.kind}] ${item.id}: ${item.name}\n   Description: ${item.description ?? 'N/A'}\n   Match score: ${matchScore}%\n   Tags: ${formatTagsForText(item.tags)}${pathLine}`;
+						})
+						.join('\n\n')
+				: 'No matches found.';
+			const tipText = results.length ? "\n\n💡 Tip: Use 'fetch' with any ID above to see full entry details." : '';
 
 			return {
 				content: [
 					{
 						type: 'text',
-						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
+						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}${tipText}`,
 					},
 				],
-				structuredContent: output,
+				structuredContent,
 			};
 		},
 	);

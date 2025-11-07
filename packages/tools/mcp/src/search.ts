@@ -15,7 +15,6 @@ const FUSE_OPTIONS: IFuseOptions<SampleEntry> = {
 		{ name: 'group', weight: 0.15 },
 		{ name: 'description', weight: 0.1 },
 		{ name: 'tags', weight: 0.05 },
-		{ name: 'code', weight: 0.3 }, // Added code content search
 	],
 };
 
