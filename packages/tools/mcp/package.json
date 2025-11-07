@@ -68,7 +68,6 @@
 		"@modelcontextprotocol/inspector": "0.17.2",
 		"@types/express": "5.0.5",
 		"@types/node": "24.10.0",
-		"@vercel/node": "3.2.26",
 		"nodemon": "3.1.10",
 		"prettier": "3.6.2",
 		"prettier-plugin-organize-imports": "4.3.0",
