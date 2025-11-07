@@ -110,7 +110,6 @@ function configureServer(server: McpServer): McpServer {
 					description: result.item.description ?? 'N/A',
 					tags: result.item.tags ?? [],
 					score: result.score,
-					code: result.item.code ?? 'No code available',
 					path: result.item.path ?? 'N/A',
 				})),
 			};
@@ -118,8 +117,7 @@ function configureServer(server: McpServer): McpServer {
 			const resultText = results
 				.map((result, index) => {
 					const { item, score } = result;
-					const codePreview = item.code ? `\n  Code preview: ${item.code.substring(0, 150).replace(/\n/g, ' ')}...` : '';
-					return `${index + 1}. [${item.kind}] ${item.id}: ${item.name}\n   Description: ${item.description ?? 'N/A'}\n   Match score: ${(score * 100).toFixed(1)}%\n   Tags: ${item.tags?.join(', ') ?? 'none'}${codePreview}`;
+					return `${index + 1}. [${item.kind}] ${item.id}: ${item.name}\n   Description: ${item.description ?? 'N/A'}\n   Match score: ${(score * 100).toFixed(1)}%\n   Tags: ${item.tags?.join(', ') ?? 'none'}\n   Path: ${item.path ?? 'N/A'}`;
 				})
 				.join('\n\n');
 
