@@ -669,6 +669,10 @@ export class KolTableStateless implements TableStatelessAPI {
 		rowIndex: number,
 		isVertical: boolean,
 		isFooter: boolean = false,
+		stickyMeta?: {
+			leftOffsets: Record<string, number>;
+			rightOffsets: Record<string, number>;
+		},
 	): JSX.Element => {
 		let key = String(rowIndex);
 		if (this.horizontal && row[0]?.data) {
@@ -684,7 +688,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				key={`row-${key}`}
 			>
 				{this.renderSelectionCell(row, rowIndex)}
-				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical))}
+				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical, stickyMeta))}
 			</tr>
 		);
 	};
@@ -702,7 +706,16 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} colIndex  The current column index.
 	 * @returns {JSX.Element}  The rendered table cell (either `<td>` or `<th>`).
 	 */
-	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
+	private readonly renderTableCell = (
+		cell: KoliBriTableCell,
+		rowIndex: number,
+		colIndex: number,
+		isVertical: boolean,
+		stickyMeta?: {
+			leftOffsets: Record<string, number>;
+			rightOffsets: Record<string, number>;
+		},
+	): JSX.Element => {
 		// Skip rendering if the column is not visible
 		const columnSetting = this.getColumnSettings(cell);
 		if (columnSetting && !columnSetting.visible) {
@@ -719,6 +732,21 @@ export class KolTableStateless implements TableStatelessAPI {
 			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
 			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
+			const metaKey = (cell as KoliBriTableDataType).key as string | undefined;
+
+			const stickyStyle: Record<string, string> = {};
+			if (metaKey && stickyMeta) {
+				if (metaKey && stickyMeta.leftOffsets) {
+					stickyStyle.position = 'sticky';
+					stickyStyle.zIndex = '3';
+					stickyStyle.left = `calc(${stickyMeta.leftOffsets[metaKey]})ch + var(--kol-table-sticky-left, 0px)`;
+				}
+				if (metaKey && stickyMeta.rightOffsets) {
+					stickyStyle.position = 'sticky';
+					stickyStyle.zIndex = '3';
+					stickyStyle.right = `calc(${stickyMeta.rightOffsets[metaKey]})ch + var(--kol-table-sticky-right, 0px)`;
+				}
+			}
 
 			return (
 				<td
@@ -734,6 +762,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					style={{
 						textAlign: cell.textAlign,
 						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
+						...stickyStyle,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -904,7 +933,16 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} colIndex  The index of the current column in the row.
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
-	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
+	private renderHeadingCell(
+		cell: KoliBriTableHeaderCell,
+		rowIndex: number,
+		colIndex: number,
+		isVertical: boolean,
+		stickyMeta?: {
+			leftOffsets: Record<string, number>;
+			rightOffsets: Record<string, number>;
+		},
+	): JSX.Element {
 		// Skip rendering if the column is not visible
 		const columnSettings = this.getColumnSettings(cell);
 		if (columnSettings && !columnSettings.visible) {
@@ -930,6 +968,21 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
+		const key = cell.key;
+
+		const stickyStyle: Record<string, string> = {};
+		if (key && stickyMeta) {
+			if (key && stickyMeta.leftOffsets) {
+				stickyStyle.position = 'sticky';
+				stickyStyle.zIndex = '3';
+				stickyStyle.left = `calc(${stickyMeta.leftOffsets[key]})ch + var(--kol-table-sticky-left, 0px)`;
+			}
+			if (key && stickyMeta.rightOffsets) {
+				stickyStyle.position = 'sticky';
+				stickyStyle.zIndex = '3';
+				stickyStyle.right = `calc(${stickyMeta.rightOffsets[key]})ch + var(--kol-table-sticky-right, 0px)`;
+			}
+		}
 
 		return (
 			<th
@@ -943,6 +996,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				rowSpan={cell.rowSpan}
 				style={{
 					width: columnSettings?.width ? `${columnSettings.width}ch` : cell.width,
+					...stickyStyle,
 				}}
 				aria-sort={ariaSort}
 				data-sort={`sort-${cell.sortDirection}`}
@@ -1012,8 +1066,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const sortedHorizontalHeaders = this.state._headerCells.horizontal?.map((row) => this.sortByColumnPosition(row));
 
-		//const stickyMeta = this.computeStickyOffsets();
-
+		const stickyMeta = this.computeStickyOffsets();
 		return (
 			<div class="kol-table">
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />}
@@ -1045,7 +1098,7 @@ export class KolTableStateless implements TableStatelessAPI {
 										<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
 											{this.state._selection && this.renderHeadingSelectionCell()}
 											{rowIndex === 0 && this.renderHeaderTdCell()}
-											{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false))}
+											{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false, stickyMeta))}
 										</tr>
 									)),
 									this.renderSpacer('head', sortedHorizontalHeaders),
@@ -1053,7 +1106,9 @@ export class KolTableStateless implements TableStatelessAPI {
 							</thead>
 						)}
 						<tbody class="kol-table__body">
-							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
+							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) =>
+								this.renderTableRow(row, rowIndex, true, false, stickyMeta),
+							)}
 						</tbody>
 						{this.renderFoot()}
 					</table>

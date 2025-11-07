@@ -38,6 +38,7 @@ export const TableHorizontalScrollbar: FC = () => {
 			<section className="w-full flex flex-col gap-4">
 				<div className="w-[400px] flex flex-col gap-4">
 					<KolTableStateful
+						_fixedCols={[2, 1]}
 						_label="Table for demonstration purposes with horizontal scrollbar."
 						_minWidth={hasWidthRestriction ? '600px' : '300px'}
 						_headers={HEADERS}
@@ -45,7 +46,6 @@ export const TableHorizontalScrollbar: FC = () => {
 						className="block"
 					/>
 					<KolTableStateful
-						_fixedCols={[1, 0]}
 						_label="Table for demonstration horizontal scrolling with pagination."
 						_minWidth={hasWidthRestriction ? '600px' : '300px'}
 						_headers={{
