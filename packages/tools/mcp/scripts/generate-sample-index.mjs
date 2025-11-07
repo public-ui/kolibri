@@ -65,8 +65,8 @@ function getCommitMetadata() {
 
 function normalizeEntryId(entry) {
 	const kind = entry.kind ?? 'sample';
-	const isDoc = kind === 'doc';
-	const expectedPrefix = isDoc ? 'doc' : 'sample';
+	const normalizedKind = kind === 'doc' ? 'doc' : kind === 'scenario' ? 'scenario' : 'sample';
+	const expectedPrefix = normalizedKind;
 
 	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
 		return entry;
@@ -75,7 +75,7 @@ function normalizeEntryId(entry) {
 	const segments = [];
 	if (entry.group) {
 		const groupSegments = entry.group.split('/').filter(Boolean);
-		if (isDoc && groupSegments[0] === 'docs') {
+		if (normalizedKind === 'doc' && groupSegments[0] === 'docs') {
 			groupSegments.shift();
 		}
 		segments.push(...groupSegments);
@@ -285,7 +285,7 @@ async function generateSampleIndex() {
 		console.log('[generate-sample-index] ✅ SAMPLE_ROOT exists');
 	} catch (error) {
 		console.log('[generate-sample-index] ❌ SAMPLE_ROOT does not exist:', error.message);
-		return { metadata: { counts: { total: 0, totalSamples: 0, totalDocs: 0 } }, entries: [] };
+		return { metadata: { counts: { total: 0, totalDocs: 0, totalSamples: 0, totalScenarios: 0 } }, entries: [] };
 	}
 
 	const routeFiles = await discoverRouteFiles();
@@ -297,6 +297,9 @@ async function generateSampleIndex() {
 	for (const routeFile of routeFiles) {
 		const routeDir = path.dirname(routeFile);
 		const routeData = await parseRouteFile(routeFile);
+		const isScenarioRoute = routeFile.startsWith(SCENARIOS_DIR);
+		const entryKind = isScenarioRoute ? 'scenario' : 'sample';
+		const idPrefix = entryKind;
 
 		for (const [group, value] of Object.entries(routeData)) {
 			if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -315,14 +318,14 @@ async function generateSampleIndex() {
 				}
 
 				const code = await readFile(absolutePath, 'utf8');
-				const sampleIdSegments = ['sample', group, name].filter(Boolean);
+				const sampleIdSegments = [idPrefix, group, name].filter(Boolean);
 				entries.push({
 					id: sampleIdSegments.join('/'),
 					group,
 					name,
 					path: path.relative(REPO_ROOT, absolutePath),
 					code,
-					kind: 'sample',
+					kind: entryKind,
 				});
 			}
 		}
@@ -346,12 +349,14 @@ async function generateSampleIndex() {
 
 	normalizedEntries.sort((a, b) => a.id.localeCompare(b.id));
 
-	const totalSamples = normalizedEntries.filter((e) => e.kind !== 'doc').length;
 	const totalDocs = normalizedEntries.filter((e) => e.kind === 'doc').length;
+	const totalSamples = normalizedEntries.filter((e) => e.kind === 'sample').length;
+	const totalScenarios = normalizedEntries.filter((e) => e.kind === 'scenario').length;
 
 	console.log('[generate-sample-index] Total entries found:', normalizedEntries.length);
-	console.log('[generate-sample-index] Samples:', totalSamples);
 	console.log('[generate-sample-index] Docs:', totalDocs);
+	console.log('[generate-sample-index] Samples:', totalSamples);
+	console.log('[generate-sample-index] Scenarios:', totalScenarios);
 
 	const payload = {
 		metadata: {
@@ -359,8 +364,9 @@ async function generateSampleIndex() {
 			buildMode: process.env.CI ? 'ci' : 'local',
 			counts: {
 				total: normalizedEntries.length,
-				totalSamples,
 				totalDocs,
+				totalSamples,
+				totalScenarios,
 			},
 			repo: getCommitMetadata(),
 		},
@@ -380,11 +386,11 @@ async function main() {
 		// Write index to shared directory
 		await writeFile(OUTPUT_FILE, JSON.stringify(index, null, 2), 'utf8');
 
-                console.log(`[generate-sample-index] ✅ Successfully wrote ${index.entries.length} entries to ${OUTPUT_FILE}`);
+		console.log(`[generate-sample-index] ✅ Successfully wrote ${index.entries.length} entries to ${OUTPUT_FILE}`);
 
-                await updateLandingPageCounts(index);
+		await updateLandingPageCounts(index);
 
-                process.exit(0);
+		process.exit(0);
 	} catch (error) {
 		console.error('[generate-sample-index] ❌ Failed to generate sample index:', error);
 		process.exit(1);
@@ -394,92 +400,88 @@ async function main() {
 main();
 
 async function updateLandingPageCounts(index) {
-        try {
-                const html = await readFile(LANDING_PAGE, 'utf8');
+	try {
+		const html = await readFile(LANDING_PAGE, 'utf8');
 
-                const counts = index?.metadata?.counts ?? {};
-                const markers = [
-                        {
-                                placeholder: '__BUILD_TOTAL_COUNT__',
-                                htmlComment: '<!--BUILD:TOTAL_COUNT-->',
-                                jsComment: '/*BUILD:TOTAL_COUNT*/',
-                                value: Number.isFinite(counts.total) ? String(counts.total) : '0',
-                        },
-                        {
-                                placeholder: '__BUILD_SAMPLE_COUNT__',
-                                htmlComment: '<!--BUILD:SAMPLE_COUNT-->',
-                                jsComment: '/*BUILD:SAMPLE_COUNT*/',
-                                value: Number.isFinite(counts.totalSamples) ? String(counts.totalSamples) : '0',
-                        },
-                        {
-                                placeholder: '__BUILD_DOC_COUNT__',
-                                htmlComment: '<!--BUILD:DOC_COUNT-->',
-                                jsComment: '/*BUILD:DOC_COUNT*/',
-                                value: Number.isFinite(counts.totalDocs) ? String(counts.totalDocs) : '0',
-                        },
-                ];
+		const counts = index?.metadata?.counts ?? {};
+		const markers = [
+			{
+				placeholder: '__BUILD_TOTAL_COUNT__',
+				htmlComment: '<!--BUILD:TOTAL_COUNT-->',
+				jsComment: '/*BUILD:TOTAL_COUNT*/',
+				value: Number.isFinite(counts.total) ? String(counts.total) : '0',
+			},
+			{
+				placeholder: '__BUILD_SAMPLE_COUNT__',
+				htmlComment: '<!--BUILD:SAMPLE_COUNT-->',
+				jsComment: '/*BUILD:SAMPLE_COUNT*/',
+				value: Number.isFinite(counts.totalSamples) ? String(counts.totalSamples) : '0',
+			},
+			{
+				placeholder: '__BUILD_SCENARIO_COUNT__',
+				htmlComment: '<!--BUILD:SCENARIO_COUNT-->',
+				jsComment: '/*BUILD:SCENARIO_COUNT*/',
+				value: Number.isFinite(counts.totalScenarios) ? String(counts.totalScenarios) : '0',
+			},
+			{
+				placeholder: '__BUILD_DOC_COUNT__',
+				htmlComment: '<!--BUILD:DOC_COUNT-->',
+				jsComment: '/*BUILD:DOC_COUNT*/',
+				value: Number.isFinite(counts.totalDocs) ? String(counts.totalDocs) : '0',
+			},
+		];
 
-                const escapeRegExp = (input) => input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+		const escapeRegExp = (input) => input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
-                let updated = html;
-                let changed = false;
+		let updated = html;
+		let changed = false;
 
-                for (const marker of markers) {
-                        const { placeholder, htmlComment, jsComment, value } = marker;
+		for (const marker of markers) {
+			const { placeholder, htmlComment, jsComment, value } = marker;
 
-                        if (updated.includes(`${htmlComment}${placeholder}`)) {
-                                const next = updated.replaceAll(`${htmlComment}${placeholder}`, `${htmlComment}${value}`);
-                                if (next !== updated) {
-                                        changed = true;
-                                        updated = next;
-                                }
-                        }
+			if (updated.includes(`${htmlComment}${placeholder}`)) {
+				const next = updated.replaceAll(`${htmlComment}${placeholder}`, `${htmlComment}${value}`);
+				if (next !== updated) {
+					changed = true;
+					updated = next;
+				}
+			}
 
-                        const htmlPattern = new RegExp(`${escapeRegExp(htmlComment)}\s*([0-9][0-9,]*)`, 'g');
-                        const htmlReplaced = updated.replace(htmlPattern, `${htmlComment}${value}`);
-                        if (htmlReplaced !== updated) {
-                                changed = true;
-                                updated = htmlReplaced;
-                        }
+			const htmlPattern = new RegExp(`${escapeRegExp(htmlComment)}\s*([0-9][0-9,]*)`, 'g');
+			const htmlReplaced = updated.replace(htmlPattern, `${htmlComment}${value}`);
+			if (htmlReplaced !== updated) {
+				changed = true;
+				updated = htmlReplaced;
+			}
 
-                        if (updated.includes(`${placeholder} ${jsComment}`)) {
-                                const next = updated.replaceAll(`${placeholder} ${jsComment}`, `${value} ${jsComment}`);
-                                if (next !== updated) {
-                                        changed = true;
-                                        updated = next;
-                                }
-                        }
+			if (updated.includes(`${placeholder} ${jsComment}`)) {
+				const next = updated.replaceAll(`${placeholder} ${jsComment}`, `${value} ${jsComment}`);
+				if (next !== updated) {
+					changed = true;
+					updated = next;
+				}
+			}
 
-                        const jsPattern = new RegExp(`([0-9][0-9,]*)\s*${escapeRegExp(jsComment)}`, 'g');
-                        const jsReplaced = updated.replace(jsPattern, `${value} ${jsComment}`);
-                        if (jsReplaced !== updated) {
-                                changed = true;
-                                updated = jsReplaced;
-                        }
-                }
+			const jsPattern = new RegExp(`([0-9][0-9,]*)\s*${escapeRegExp(jsComment)}`, 'g');
+			const jsReplaced = updated.replace(jsPattern, `${value} ${jsComment}`);
+			if (jsReplaced !== updated) {
+				changed = true;
+				updated = jsReplaced;
+			}
+		}
 
-                if (changed) {
-                        await writeFile(LANDING_PAGE, updated, 'utf8');
-                        console.log(
-                                `[generate-sample-index] ✅ Updated landing page counts in ${path.relative(
-                                        PACKAGE_ROOT,
-                                        LANDING_PAGE,
-                                )}`,
-                        );
-                } else {
-                        console.warn(
-                                `[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(
-                                        PACKAGE_ROOT,
-                                        LANDING_PAGE,
-                                )}`,
-                        );
-                }
-        } catch (error) {
-                console.warn(
-                        `[generate-sample-index] ⚠️ Unable to update landing page counts (${error.message}). Ensure ${path.relative(
-                                PACKAGE_ROOT,
-                                LANDING_PAGE,
-                        )} contains __BUILD_* placeholders.`,
-                );
-        }
+		if (changed) {
+			await writeFile(LANDING_PAGE, updated, 'utf8');
+			console.log(`[generate-sample-index] ✅ Updated landing page counts in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);
+		} else {
+			console.warn(`[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);
+		}
+	} catch (error) {
+		console.warn(
+			`[generate-sample-index] ⚠️ Unable to update landing page counts (${error.message}). Ensure ${path.relative(
+				PACKAGE_ROOT,
+				LANDING_PAGE,
+			)} contains __BUILD_* placeholders.`,
+		);
+	}
 }

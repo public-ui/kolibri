@@ -1,6 +1,8 @@
 import Fuse, { type IFuseOptions } from 'fuse.js';
 import type { SampleEntry } from './data.js';
 
+type EntryKind = SampleEntry['kind'];
+
 const FUSE_OPTIONS: IFuseOptions<SampleEntry> = {
 	includeScore: true,
 	shouldSort: true,
@@ -20,7 +22,7 @@ const FUSE_OPTIONS: IFuseOptions<SampleEntry> = {
 export interface SearchOptions {
 	threshold?: number;
 	limit?: number;
-	kind?: 'sample' | 'doc';
+	kind?: EntryKind;
 }
 
 export interface SearchResult {

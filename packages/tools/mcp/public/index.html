@@ -300,40 +300,53 @@
 					<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
 				</div>
 				<h1>KoliBri MCP API</h1>
-                                <p class="subtitle">Model Context Protocol backend for KoliBri examples with streaming-native HTTP transport</p>
-                                <span class="status">📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples, <!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ Docs)</span>
+				<p class="subtitle">Model Context Protocol backend for KoliBri examples with streaming-native HTTP transport</p>
+				<span class="status"
+					>📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples,
+					<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ Scenarios,
+					<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ Docs)</span
+				>
 				<div class="stats" aria-live="polite">
 					<div class="stat">
 						<span class="stat-label">Samples</span>
-                                                <span class="stat-value" id="sample-count"><!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__</span>
+						<span class="stat-value" id="sample-count"><!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__</span>
 					</div>
 					<div class="stat">
 						<span class="stat-label">Docs</span>
-                                                <span class="stat-value" id="doc-count"><!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__</span>
+						<span class="stat-value" id="doc-count"><!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__</span>
+					</div>
+					<div class="stat">
+						<span class="stat-label">Scenarios</span>
+						<span class="stat-value" id="scenario-count"><!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__</span>
 					</div>
 				</div>
 			</div>
 
-                        <div class="api-info">
-                                <h2>📡 Streaming MCP Endpoint</h2>
-                                <p class="description">This server exposes the Model Context Protocol directly over HTTP and streams responses so that AI copilots see updates as soon as they are generated.</p>
-                                <div class="highlight-box info" style="margin-top: 1rem">
-                                        <strong style="color: #2d3748">🆕 Stream-first transport:</strong>
-                                        <span style="color: #2d3748">
-                                                Connect with <code class="endpoint-inline">POST /mcp</code> and keep the request open. The
-                                                <code class="endpoint-inline">StreamableHTTPServerTransport</code> sends newline-delimited JSON frames, allowing Claude Desktop, Copilot Chat, and every MCP client to process tool output incrementally without polling.
-                                        </span>
-                                </div>
-                                <p class="description" style="margin-top: 1rem">
-                                        Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to discover all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
-                                </p>
-                                <p class="description">
-                                        Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
-                                </p>
-                                <p class="description" style="margin-top: 1rem">
-                                        Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
-                                </p>
-                        </div>
+			<div class="api-info">
+				<h2>📡 Streaming MCP Endpoint</h2>
+				<p class="description">
+					This server exposes the Model Context Protocol directly over HTTP and streams responses so that AI copilots see updates as soon as they are generated.
+				</p>
+				<div class="highlight-box info" style="margin-top: 1rem">
+					<strong style="color: #2d3748">🆕 Stream-first transport:</strong>
+					<span style="color: #2d3748">
+						Connect with <code class="endpoint-inline">POST /mcp</code> and keep the request open. The
+						<code class="endpoint-inline">StreamableHTTPServerTransport</code> sends newline-delimited JSON frames, allowing Claude Desktop, Copilot Chat, and
+						every MCP client to process tool output incrementally without polling.
+					</span>
+				</div>
+				<p class="description" style="margin-top: 1rem">
+					Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to discover
+					all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
+				</p>
+				<p class="description">
+					Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool
+					catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
+				</p>
+				<p class="description" style="margin-top: 1rem">
+					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
+				</p>
+			</div>
 
 			<div class="api-info">
 				<h2>🔧 VS Code Integration</h2>
@@ -376,15 +389,21 @@ echo '{ "servers": { ... } }' > mcp.json
 </code></pre>
 						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
-                                        <h3>Detailed VS Code steps</h3>
-                                        <ol class="description" style="padding-left: 1.25rem; color: #4a5568">
-                                                <li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
-                                                <li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
-                                                <li>Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace <code>&lt;origin&gt;</code> with the deployed server URL.</li>
-                                                <li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri-mcp</strong> to establish the streaming session.</li>
-                                                <li>Ask Copilot things like <code class="endpoint-inline">@kolibri-mcp search button</code> or <code class="endpoint-inline">@kolibri-mcp fetch sample/button/basic</code> to receive streamed answers.</li>
-                                        </ol>
-                                        <p class="description">In GitHub Copilot Chat you can now write:</p>
+					<h3>Detailed VS Code steps</h3>
+					<ol class="description" style="padding-left: 1.25rem; color: #4a5568">
+						<li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
+						<li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
+						<li>
+							Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace
+							<code>&lt;origin&gt;</code> with the deployed server URL.
+						</li>
+						<li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri-mcp</strong> to establish the streaming session.</li>
+						<li>
+							Ask Copilot things like <code class="endpoint-inline">@kolibri-mcp search button</code> or
+							<code class="endpoint-inline">@kolibri-mcp fetch sample/button/basic</code> to receive streamed answers.
+						</li>
+					</ol>
+					<p class="description">In GitHub Copilot Chat you can now write:</p>
 					<div class="relative">
 						<pre style="margin: 0"><code class="endpoint">@kolibri show me a button sample
 @kolibri how do I implement a KoliBri table?
@@ -394,9 +413,12 @@ echo '{ "servers": { ... } }' > mcp.json
 					</div>
 					<div class="highlight-box info">
 						<strong style="color: #2d3748">💡 Tip:</strong>
-                                                <span style="color: #2d3748" id="tip-text">
-                                                        The MCP Server gives you access to all <!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ KoliBri component samples and <!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ documentation files directly in VS Code!
-                                                </span>
+						<span style="color: #2d3748" id="tip-text">
+							The MCP Server gives you access to all
+							<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ KoliBri component samples,
+							<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ guided scenarios, and
+							<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ documentation files directly in VS Code!
+						</span>
 					</div>
 				</div>
 			</div>
@@ -410,53 +432,81 @@ echo '{ "servers": { ... } }' > mcp.json
 			</div>
 		</div>
 
-                <script>
-                        window.__KOLIBRI_MCP_COUNTS__ = Object.freeze({
-                                total: __BUILD_TOTAL_COUNT__ /*BUILD:TOTAL_COUNT*/,
-                                samples: __BUILD_SAMPLE_COUNT__ /*BUILD:SAMPLE_COUNT*/,
-                                docs: __BUILD_DOC_COUNT__ /*BUILD:DOC_COUNT*/,
-                        });
+		<script>
+			window.__KOLIBRI_MCP_COUNTS__ = Object.freeze({
+				total: __BUILD_TOTAL_COUNT__ /*BUILD:TOTAL_COUNT*/,
+				samples: __BUILD_SAMPLE_COUNT__ /*BUILD:SAMPLE_COUNT*/,
+				docs: __BUILD_DOC_COUNT__ /*BUILD:DOC_COUNT*/,
+				scenarios: __BUILD_SCENARIO_COUNT__ /*BUILD:SCENARIO_COUNT*/,
+			});
 
-                        const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
-                        if (remoteConfigElement) {
-                                const origin = window.location.origin.replace(/\/$/, '');
-                                remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
-                        }
+			const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+			if (remoteConfigElement) {
+				const origin = window.location.origin.replace(/\/$/, '');
+				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
+			}
 
-                        function applyCountsFromBuild(counts) {
-                                if (!counts) {
-                                        return;
-                                }
+			function applyCountsFromBuild(counts) {
+				if (!counts) {
+					return;
+				}
 
-                                const statusElement = document.querySelector('.status');
-                                const sampleCountElement = document.getElementById('sample-count');
-                                const docCountElement = document.getElementById('doc-count');
-                                const tipTextElement = document.getElementById('tip-text');
+				const statusElement = document.querySelector('.status');
+				const sampleCountElement = document.getElementById('sample-count');
+				const docCountElement = document.getElementById('doc-count');
+				const scenarioCountElement = document.getElementById('scenario-count');
+				const tipTextElement = document.getElementById('tip-text');
 
-                                const sampleCount = Number.parseInt(counts.samples ?? 0, 10) || 0;
-                                const docCount = Number.parseInt(counts.docs ?? 0, 10) || 0;
+				const sampleCount = Number.parseInt(counts.samples ?? 0, 10) || 0;
+				const docCount = Number.parseInt(counts.docs ?? 0, 10) || 0;
+				const scenarioCount = Number.parseInt(counts.scenarios ?? 0, 10) || 0;
 
-                                if (sampleCountElement) {
-                                        sampleCountElement.textContent = sampleCount.toLocaleString();
-                                }
+				if (sampleCountElement) {
+					sampleCountElement.textContent = sampleCount.toLocaleString();
+				}
 
-                                if (docCountElement) {
-                                        docCountElement.textContent = docCount.toLocaleString();
-                                }
+				if (docCountElement) {
+					docCountElement.textContent = docCount.toLocaleString();
+				}
 
-                                if (statusElement) {
-                                        const docFragment = docCount > 0 ? `, ${docCount.toLocaleString()} Docs` : '';
-                                        statusElement.textContent = `📦 Prebuilt index (${sampleCount.toLocaleString()} Samples${docFragment})`;
-                                        statusElement.style.background = '#4a5568';
-                                }
+				if (scenarioCountElement) {
+					scenarioCountElement.textContent = scenarioCount.toLocaleString();
+				}
 
-                                if (tipTextElement && sampleCount > 0) {
-                                        const docsText = docCount > 0 ? ` and ${docCount.toLocaleString()} documentation files` : '';
-                                        tipTextElement.textContent = `The MCP Server gives you access to all ${sampleCount.toLocaleString()} KoliBri component samples${docsText} directly in VS Code!`;
-                                }
-                        }
+				if (statusElement) {
+					const fragments = [`${sampleCount.toLocaleString()} Samples`];
+					if (scenarioCount > 0) {
+						fragments.push(`${scenarioCount.toLocaleString()} Scenarios`);
+					}
+					if (docCount > 0) {
+						fragments.push(`${docCount.toLocaleString()} Docs`);
+					}
+					statusElement.textContent = `📦 Prebuilt index (${fragments.join(', ')})`;
+					statusElement.style.background = '#4a5568';
+				}
 
-                        applyCountsFromBuild(window.__KOLIBRI_MCP_COUNTS__);
+				if (tipTextElement && sampleCount > 0) {
+					const resourceParts = [`${sampleCount.toLocaleString()} KoliBri component samples`];
+					if (scenarioCount > 0) {
+						resourceParts.push(`${scenarioCount.toLocaleString()} guided scenarios`);
+					}
+					if (docCount > 0) {
+						resourceParts.push(`${docCount.toLocaleString()} documentation files`);
+					}
+
+					let resourceText = resourceParts[0];
+					if (resourceParts.length === 2) {
+						resourceText = `${resourceParts[0]} and ${resourceParts[1]}`;
+					} else if (resourceParts.length > 2) {
+						const lastResource = resourceParts[resourceParts.length - 1];
+						resourceText = `${resourceParts.slice(0, -1).join(', ')}, and ${lastResource}`;
+					}
+
+					tipTextElement.textContent = `The MCP Server gives you access to ${resourceText} directly in VS Code!`;
+				}
+			}
+
+			applyCountsFromBuild(window.__KOLIBRI_MCP_COUNTS__);
 
 			// Copy code logic for all .copy-btn buttons
 			function copyCodeToClipboard(code) {

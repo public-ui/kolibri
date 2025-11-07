@@ -115,12 +115,12 @@ A simple greeting tool for testing the connection and getting server metadata.
 
 ### 2. `search`
 
-Search for KoliBri component samples and documentation using fuzzy search powered by Fuse.js.
+Search for KoliBri component samples, scenarios, and documentation using fuzzy search powered by Fuse.js.
 
 **Parameters:**
 
-- `query` (string, required): Search query
-- `kind` (string, optional): Filter by "sample" or "doc"
+- `query` (string, optional): Search query (leave empty to return all entries)
+- `kind` (string, optional): Filter by "doc", "sample", or "scenario"
 - `limit` (number, optional): Maximum results (default: 10)
 
 **Example:**
@@ -148,8 +148,8 @@ Get a specific sample or documentation entry by its ID.
 
 ```json
 {
-        "name": "fetch",
-        "arguments": { "id": "button/basic" }
+	"name": "fetch",
+	"arguments": { "id": "button/basic" }
 }
 ```
 
