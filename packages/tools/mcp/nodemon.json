@@ -1,0 +1,8 @@
+{
+	"watch": ["src"],
+	"ext": "ts,json",
+	"exec": "tsx src/mcp.ts",
+	"env": {
+		"NODE_ENV": "development"
+	}
+}
