@@ -345,7 +345,7 @@
 				</p>
 				<p class="description">Want to try it from your own tooling? Point any MCP-aware client directly to the hosted endpoint below.</p>
 				<div class="relative">
-					<code class="endpoint" data-mcp-direct-url>https://example.com/mcp/</code>
+					<code class="endpoint" data-mcp-direct-url>https://example.com/mcp</code>
 					<button class="copy-btn" aria-label="Copy endpoint URL" tabindex="0">📋</button>
 				</div>
 				<p class="description" style="margin-top: 1rem">
@@ -376,7 +376,7 @@
 					<div class="relative">
 						<pre
 							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri-mcp": { "url": "&lt;origin&gt;/mcp/", "type": "http" } }, "inputs": [] }</code></pre>
+						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri-mcp": { "url": "&lt;origin&gt;/mcp", "type": "http" } }, "inputs": [] }</code></pre>
 						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
 					<div class="highlight-box warning">
@@ -449,12 +449,12 @@ echo '{ "servers": { ... } }' > mcp.json
 			const directUrlElement = document.querySelector('[data-mcp-direct-url]');
 			if (remoteConfigElement) {
 				const origin = window.location.origin.replace(/\/$/, '');
-				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
+				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp", "type": "http" } }, "inputs": [] }`;
 				if (directUrlElement) {
-					directUrlElement.textContent = `${origin}/mcp/`;
+					directUrlElement.textContent = `${origin}/mcp`;
 				}
 			} else if (directUrlElement) {
-				directUrlElement.textContent = `${window.location.origin.replace(/\/$/, '')}/mcp/`;
+				directUrlElement.textContent = `${window.location.origin.replace(/\/$/, '')}/mcp`;
 			}
 
 			function applyCountsFromBuild(counts) {
