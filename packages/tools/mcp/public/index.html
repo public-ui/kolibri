@@ -339,20 +339,18 @@
 					Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to discover
 					all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
 				</p>
-                                <p class="description">
-                                        Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool
-                                        catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
-                                </p>
-                                <p class="description">
-                                        Want to try it from your own tooling? Point any MCP-aware client directly to the hosted endpoint below.
-                                </p>
-                                <div class="relative">
-                                        <code class="endpoint" data-mcp-direct-url>https://example.com/mcp/</code>
-                                        <button class="copy-btn" aria-label="Copy endpoint URL" tabindex="0">📋</button>
-                                </div>
-                                <p class="description" style="margin-top: 1rem">
-                                        Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
-                                </p>
+				<p class="description">
+					Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool
+					catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
+				</p>
+				<p class="description">Want to try it from your own tooling? Point any MCP-aware client directly to the hosted endpoint below.</p>
+				<div class="relative">
+					<code class="endpoint" data-mcp-direct-url>https://example.com/mcp/</code>
+					<button class="copy-btn" aria-label="Copy endpoint URL" tabindex="0">📋</button>
+				</div>
+				<p class="description" style="margin-top: 1rem">
+					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
+				</p>
 			</div>
 
 			<div class="api-info">
@@ -447,17 +445,17 @@ echo '{ "servers": { ... } }' > mcp.json
 				scenarios: __BUILD_SCENARIO_COUNT__ /*BUILD:SCENARIO_COUNT*/,
 			});
 
-                        const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
-                        const directUrlElement = document.querySelector('[data-mcp-direct-url]');
-                        if (remoteConfigElement) {
-                                const origin = window.location.origin.replace(/\/$/, '');
-                                remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
-                                if (directUrlElement) {
-                                        directUrlElement.textContent = `${origin}/mcp/`;
-                                }
-                        } else if (directUrlElement) {
-                                directUrlElement.textContent = `${window.location.origin.replace(/\/$/, '')}/mcp/`;
-                        }
+			const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+			const directUrlElement = document.querySelector('[data-mcp-direct-url]');
+			if (remoteConfigElement) {
+				const origin = window.location.origin.replace(/\/$/, '');
+				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp/", "type": "http" } }, "inputs": [] }`;
+				if (directUrlElement) {
+					directUrlElement.textContent = `${origin}/mcp/`;
+				}
+			} else if (directUrlElement) {
+				directUrlElement.textContent = `${window.location.origin.replace(/\/$/, '')}/mcp/`;
+			}
 
 			function applyCountsFromBuild(counts) {
 				if (!counts) {
