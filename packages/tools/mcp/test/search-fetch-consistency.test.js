@@ -1,13 +1,33 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+
 import { getEntryById } from '../dist/data.mjs';
 import { createKolibriMcpServer } from '../dist/mcp.mjs';
 
 const DEFAULT_LIMIT = 5;
 
-async function runSearch(server, query = 'button', limit = DEFAULT_LIMIT) {
-	const searchTool = server._registeredTools?.search;
+function createServerWithRegisteredTools() {
+	const registeredTools = new Map();
+	const originalRegisterTool = McpServer.prototype.registerTool;
+
+	try {
+		McpServer.prototype.registerTool = function patchedRegisterTool(name, config, callback) {
+			const tool = originalRegisterTool.call(this, name, config, callback);
+			registeredTools.set(name, tool);
+			return tool;
+		};
+
+		const server = createKolibriMcpServer();
+		return { server, registeredTools };
+	} finally {
+		McpServer.prototype.registerTool = originalRegisterTool;
+	}
+}
+
+async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
+	const searchTool = tools.get('search');
 	assert.ok(searchTool, 'expected search tool to be registered');
 
 	const response = await searchTool.callback({ query, limit });
@@ -16,12 +36,12 @@ async function runSearch(server, query = 'button', limit = DEFAULT_LIMIT) {
 }
 
 test('search tool results stay consistent with fetch results', async () => {
-	const server = createKolibriMcpServer();
-	const structuredContent = await runSearch(server);
+	const { server, registeredTools } = createServerWithRegisteredTools();
+	const structuredContent = await runSearch(registeredTools);
 
 	assert.ok(structuredContent.results.length > 0, 'search should return at least one result');
 
-	const fetchTool = server._registeredTools?.fetch;
+	const fetchTool = registeredTools.get('fetch');
 	assert.ok(fetchTool, 'expected fetch tool to be registered');
 
 	for (const result of structuredContent.results) {
