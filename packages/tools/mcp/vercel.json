@@ -4,7 +4,7 @@
 	"buildCommand": "echo 'Skipping build - using pre-built artifacts'",
 	"rewrites": [
 		{
-			"source": "/mcp/(.*)",
+			"source": "/mcp/:path*",
 			"destination": "/api/index"
 		}
 	]
