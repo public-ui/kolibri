@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 export interface SampleEntry {
 	id: string;
-	kind: 'sample' | 'doc';
+	kind: 'doc' | 'sample' | 'scenario';
 	name: string;
 	group?: string;
 	description?: string;
@@ -14,8 +14,9 @@ export interface SampleEntry {
 
 export interface SampleIndexCounts {
 	total: number;
-	totalSamples: number;
 	totalDocs: number;
+	totalSamples: number;
+	totalScenarios: number;
 	byKind: Record<string, number>;
 }
 
@@ -43,20 +44,21 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 	const byKind: Record<string, number> = {};
 
 	for (const entry of entries) {
-		const key = entry.kind === 'doc' ? 'doc' : 'sample';
+		const key = entry.kind;
 		byKind[key] = (byKind[key] ?? 0) + 1;
 	}
 
 	return {
 		total: entries.length,
-		totalSamples: byKind.sample ?? 0,
 		totalDocs: byKind.doc ?? 0,
+		totalSamples: byKind.sample ?? 0,
+		totalScenarios: byKind.scenario ?? 0,
 		byKind,
 	};
 }
 
 function normalizeEntry(entry: SampleEntry): SampleEntry {
-	const normalizedKind: 'sample' | 'doc' = entry.kind === 'doc' ? 'doc' : 'sample';
+	const normalizedKind: SampleEntry['kind'] = entry.kind === 'doc' ? 'doc' : entry.kind === 'scenario' ? 'scenario' : 'sample';
 	const tags = Array.isArray(entry.tags) ? entry.tags.map((tag) => String(tag)).filter((tag) => tag.trim().length > 0) : undefined;
 
 	return {
@@ -75,8 +77,9 @@ function normalizeMetadata(metadata: SerializedSampleIndex['metadata'], entries:
 		buildMode: metadata?.buildMode ?? 'unknown',
 		counts: {
 			total: metadata?.counts?.total ?? counts.total,
-			totalSamples: metadata?.counts?.totalSamples ?? counts.totalSamples,
 			totalDocs: metadata?.counts?.totalDocs ?? counts.totalDocs,
+			totalSamples: metadata?.counts?.totalSamples ?? counts.totalSamples,
+			totalScenarios: metadata?.counts?.totalScenarios ?? counts.totalScenarios,
 			byKind:
 				metadata?.counts?.byKind instanceof Map
 					? Object.fromEntries(metadata.counts.byKind.entries())
@@ -129,7 +132,7 @@ export function getAllEntries(): SampleEntry[] {
 	return loadSampleData().entries;
 }
 
-export function getEntriesByKind(kind: 'sample' | 'doc'): SampleEntry[] {
+export function getEntriesByKind(kind: SampleEntry['kind']): SampleEntry[] {
 	return getAllEntries().filter((entry) => entry.kind === kind);
 }
 

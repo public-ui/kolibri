@@ -4,6 +4,8 @@ import { z } from 'zod';
 import { getAllEntries, getEntryById, getSampleIndexMetadata } from '../dist/data.mjs';
 import { searchEntries } from '../dist/search.mjs';
 
+const KIND_OPTIONS = ['doc', 'sample', 'scenario'];
+
 // Package info - read from environment or use defaults
 const PACKAGE_VERSION = process.env.npm_package_version || '3.0.7';
 const PACKAGE_NAME = '@public-ui/mcp';
@@ -24,10 +26,10 @@ function createKolibriMcpServer() {
 		{
 			title: 'Search KoliBri Samples and Docs',
 			description:
-				'Search for KoliBri component samples and documentation using fuzzy search. Parameters: query (required string), kind (optional: "sample" or "doc"), limit (optional number, default 10)',
+				'Search for KoliBri component samples, scenarios, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", or "scenario"), limit (optional number, default 10).',
 			inputSchema: {
-				query: z.string(),
-				kind: z.string().optional(),
+				query: z.string().optional().default(''),
+				kind: z.enum(KIND_OPTIONS).optional(),
 				limit: z.number().optional(),
 			},
 			outputSchema: {
@@ -36,17 +38,14 @@ function createKolibriMcpServer() {
 			},
 		},
 		async ({ query, kind, limit }) => {
-			const queryStr = String(query ?? '');
-			if (!queryStr || queryStr.trim().length === 0) {
-				throw new Error('Query parameter is required and cannot be empty');
-			}
+			const queryStr = typeof query === 'string' ? query : '';
 
 			const allEntries = getAllEntries();
 			const searchOptions = {
 				limit: typeof limit === 'number' ? limit : 10,
 			};
 
-			if (kind === 'sample' || kind === 'doc') {
+			if (typeof kind === 'string' && KIND_OPTIONS.includes(kind)) {
 				searchOptions.kind = kind;
 			}
 
@@ -80,7 +79,7 @@ function createKolibriMcpServer() {
 				content: [
 					{
 						type: 'text',
-                                                text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
+						text: `Found ${results.length} result(s) for "${queryStr}":\n\n${resultText}\n\n💡 Tip: Use 'fetch' with any ID above to see the full code.`,
 					},
 				],
 				structuredContent: output,
@@ -88,9 +87,9 @@ function createKolibriMcpServer() {
 		},
 	);
 
-        // Add fetch tool to retrieve specific samples/docs
-        server.registerTool(
-                'fetch',
+	// Add fetch tool to retrieve specific samples/docs
+	server.registerTool(
+		'fetch',
 		{
 			title: 'Get Sample or Doc Entry',
 			description: 'Get a specific sample or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic" or "docs/getting-started")',
@@ -103,15 +102,15 @@ function createKolibriMcpServer() {
 				name: z.string(),
 			},
 		},
-                async ({ id }) => {
+		async ({ id }) => {
 			const idStr = String(id ?? '');
-                        if (!idStr) {
+			if (!idStr) {
 				throw new Error('ID parameter is required');
 			}
 
 			const entry = getEntryById(idStr);
 
-                        if (!entry) {
+			if (!entry) {
 				throw new Error(`Entry with ID "${idStr}" not found`);
 			}
 
@@ -156,8 +155,9 @@ ${PACKAGE_DESCRIPTION}
 - Generated: ${metadata.generatedAt ?? 'unknown'}
 - Build mode: ${metadata.buildMode}
 - Total entries: ${metadata.counts.total}
-- Samples: ${metadata.counts.totalSamples}
 - Documentation: ${metadata.counts.totalDocs}
+- Samples: ${metadata.counts.totalSamples}
+- Scenarios: ${metadata.counts.totalScenarios ?? 0}
 
 ## Repository
 - Branch: ${metadata.repo.branch ?? 'N/A'}

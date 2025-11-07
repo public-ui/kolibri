@@ -305,12 +305,12 @@ Simple test tool that returns server metadata and greeting.
 
 ### 2. `search`
 
-Fuzzy search for KoliBri component samples and documentation.
+Fuzzy search for KoliBri component samples, scenarios, and documentation.
 
 **Parameters:**
 
-- `query` (string, required): Search query
-- `kind` (string, optional): Filter by "sample" or "doc"
+- `query` (string, optional): Search query (leave empty to return all entries)
+- `kind` (string, optional): Filter by "doc", "sample", or "scenario"
 - `limit` (number, optional): Maximum results (default: 10)
 
 **Example:**

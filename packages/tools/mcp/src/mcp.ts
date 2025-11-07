@@ -6,6 +6,13 @@ import { z } from 'zod';
 import { getAllEntries, getEntryById, getSampleIndexMetadata } from './data.js';
 import { searchEntries, type SearchOptions } from './search.js';
 
+const KIND_OPTIONS = ['doc', 'sample', 'scenario'] as const;
+type KindOption = (typeof KIND_OPTIONS)[number];
+
+function isValidKind(value: unknown): value is KindOption {
+	return typeof value === 'string' && (KIND_OPTIONS as readonly string[]).includes(value);
+}
+
 const require = createRequire(import.meta.url);
 const {
 	version: PACKAGE_VERSION = '0.0.0',
@@ -59,10 +66,10 @@ function configureServer(server: McpServer): McpServer {
 		{
 			title: 'Search KoliBri Samples and Docs',
 			description:
-				'Search for KoliBri component samples and documentation using fuzzy search. Parameters: query (required string), kind (optional: "sample" or "doc"), limit (optional number, default 10)',
+				'Search for KoliBri component samples, scenarios, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", or "scenario"), limit (optional number, default 10).',
 			inputSchema: {
-				query: z.string(),
-				kind: z.string().optional() as any,
+				query: z.string().optional().default(''),
+				kind: z.enum(KIND_OPTIONS).optional(),
 				limit: z.number().optional() as any,
 			},
 			outputSchema: {
@@ -73,18 +80,14 @@ function configureServer(server: McpServer): McpServer {
 		async ({ query, kind, limit }) => {
 			log('tool', 'search called', { query, kind, limit });
 
-			const queryStr = String(query ?? '');
-			if (!queryStr || queryStr.trim().length === 0) {
-				log('error', 'search failed: empty query');
-				throw new Error('Query parameter is required and cannot be empty');
-			}
+			const queryStr = typeof query === 'string' ? query : '';
 
 			const allEntries = getAllEntries();
 			const searchOptions: SearchOptions = {
 				limit: typeof limit === 'number' ? limit : 10,
 			};
 
-			if (kind === 'sample' || kind === 'doc') {
+			if (isValidKind(kind)) {
 				searchOptions.kind = kind;
 			}
 
@@ -208,8 +211,9 @@ ${PACKAGE_DESCRIPTION ?? ''}
 - Generated: ${metadata.generatedAt ?? 'unknown'}
 - Build mode: ${metadata.buildMode}
 - Total entries: ${metadata.counts.total}
-- Samples: ${metadata.counts.totalSamples}
 - Documentation: ${metadata.counts.totalDocs}
+- Samples: ${metadata.counts.totalSamples}
+- Scenarios: ${metadata.counts.totalScenarios ?? 0}
 
 ## Repository
 - Branch: ${metadata.repo.branch ?? 'N/A'}
@@ -310,7 +314,9 @@ if (
 		.listen(port, () => {
 			console.log(`KoliBri MCP Server v${PACKAGE_VERSION} running on http://localhost:${port}/mcp`);
 			const metadata = getSampleIndexMetadata();
-			console.log(`Loaded ${metadata.counts.total} entries (${metadata.counts.totalSamples} samples, ${metadata.counts.totalDocs} docs)`);
+			console.log(
+				`Loaded ${metadata.counts.total} entries (${metadata.counts.totalDocs} docs, ${metadata.counts.totalSamples} samples, ${metadata.counts.totalScenarios ?? 0} scenarios)`,
+			);
 
 			if (ENABLE_LOGGING) {
 				console.log('🔍 Logging is ENABLED (MCP_LOGGING=true)');

@@ -177,16 +177,14 @@ components:
 
     SearchArguments:
       type: object
-      required:
-        - query
       properties:
         query:
           type: string
-          description: Search query string
+          description: Optional search query string (leave empty to return all entries)
           example: button
         kind:
           type: string
-          enum: [sample, doc]
+          enum: [doc, sample, scenario]
           description: Filter by entry type
         limit:
           type: integer

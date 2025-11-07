@@ -40,6 +40,15 @@ const SAMPLE_ENTRIES = [
 		kind: 'doc',
 		code: '# Accessibility Guide\n\nThis guide explains how to make components accessible.',
 	},
+	{
+		id: 'scenario/forms/login',
+		group: 'scenarios/forms',
+		name: 'login',
+		description: 'Scenario demonstrating a login flow across multiple components',
+		tags: ['scenario', 'form'],
+		kind: 'scenario',
+		code: 'import { KolFormLogin } from "@public-ui/react"; export const LoginScenario = () => <KolFormLogin />;',
+	},
 ];
 
 function ids(result) {
@@ -88,6 +97,9 @@ test('searchEntries filters entries by kind before searching', () => {
 
 	const sampleResults = searchEntries(SAMPLE_ENTRIES, 'guide', { kind: 'sample' });
 	assert.deepStrictEqual(ids(sampleResults), []);
+
+	const scenarioResults = searchEntries(SAMPLE_ENTRIES, 'login', { kind: 'scenario' });
+	assert.deepStrictEqual(ids(scenarioResults), ['scenario/forms/login']);
 });
 
 test('searchEntries respects limit option', () => {
