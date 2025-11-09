@@ -48,7 +48,7 @@
 		"build": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.28.4",
+		"@babel/types": "7.28.5",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
@@ -59,7 +59,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"vue": "^3.5.22"
+		"vue": "^3.5.24"
 	},
 	"sideEffects": false,
 	"type": "module",

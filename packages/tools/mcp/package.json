@@ -59,7 +59,7 @@
 		"vercel:deploy:prod": "vercel --prod"
 	},
 	"dependencies": {
-		"@modelcontextprotocol/sdk": "1.21.0",
+		"@modelcontextprotocol/sdk": "1.21.1",
 		"express": "5.1.0",
 		"fuse.js": "7.1.0",
 		"zod": "3.25.76"
