@@ -7,7 +7,7 @@ test.describe('date-in-form', () => {
 
 	test('Enter on date icon', async ({ page }) => {
 		const errorLogs: string[] = [];
-		page.on("console", (msg) => {
+		page.on('console', (msg) => {
 			if (msg.type() === 'error') {
 				errorLogs.push(msg.text());
 			}
@@ -28,6 +28,5 @@ test.describe('date-in-form', () => {
 		await page.keyboard.press('Enter');
 		await page.waitForTimeout(500);
 		await expect(errorLogs).toHaveLength(1);
-
 	});
 });
