@@ -168,8 +168,8 @@ function configureServer(server: McpServer): McpServer {
 		'fetch',
 		{
 			title: 'Get Sample or Doc Entry',
-                        description:
-                                'Get a specific sample, specification, or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic", "spec/button/README", or "docs/getting-started")',
+			description:
+				'Get a specific sample, specification, or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic", "spec/button", or "docs/getting-started")',
 			inputSchema: {
 				id: z.string(),
 			},

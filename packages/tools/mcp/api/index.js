@@ -101,7 +101,7 @@ function createKolibriMcpServer() {
 		{
 			title: 'Get Sample, Scenario, Doc, or Spec Entry',
 			description:
-				'Get a specific sample, scenario, documentation file, or specification entry by its ID. Parameter: id (required string, e.g. "button/basic", "scenario/forms/advanced", "docs/getting-started", or "spec/button/README")',
+				'Get a specific sample, scenario, documentation file, or specification entry by its ID. Parameter: id (required string, e.g. "button/basic", "scenario/forms/advanced", "docs/getting-started", or "spec/button")',
 			inputSchema: {
 				id: z.string(),
 			},
