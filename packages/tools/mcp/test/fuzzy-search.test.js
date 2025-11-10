@@ -37,6 +37,14 @@ const SAMPLE_ENTRIES = [
 		kind: 'doc',
 	},
 	{
+		id: 'spec/button/readme',
+		group: 'spec/button',
+		name: 'readme',
+		description: 'Component specification for the button component',
+		tags: ['specification'],
+		kind: 'spec',
+	},
+	{
 		id: 'scenario/forms/login',
 		group: 'scenarios/forms',
 		name: 'login',
@@ -94,6 +102,9 @@ test('searchEntries filters entries by kind before searching', () => {
 
 	const scenarioResults = searchEntries(SAMPLE_ENTRIES, 'login', { kind: 'scenario' });
 	assert.deepStrictEqual(ids(scenarioResults), ['scenario/forms/login']);
+
+	const specResults = searchEntries(SAMPLE_ENTRIES, 'button', { kind: 'spec' });
+	assert.deepStrictEqual(ids(specResults), ['spec/button/readme']);
 });
 
 test('searchEntries respects limit option', () => {

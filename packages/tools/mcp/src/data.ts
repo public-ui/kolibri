@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 export interface SampleEntry {
 	id: string;
-	kind: 'doc' | 'sample' | 'scenario';
+	kind: 'doc' | 'sample' | 'scenario' | 'spec';
 	name: string;
 	group?: string;
 	description?: string;
@@ -17,6 +17,7 @@ export interface SampleIndexCounts {
 	totalDocs: number;
 	totalSamples: number;
 	totalScenarios: number;
+	totalSpecs: number;
 	byKind: Record<string, number>;
 }
 
@@ -53,12 +54,20 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 		totalDocs: byKind.doc ?? 0,
 		totalSamples: byKind.sample ?? 0,
 		totalScenarios: byKind.scenario ?? 0,
+		totalSpecs: byKind.spec ?? 0,
 		byKind,
 	};
 }
 
 function normalizeEntry(entry: SampleEntry): SampleEntry {
-	const normalizedKind: SampleEntry['kind'] = entry.kind === 'doc' ? 'doc' : entry.kind === 'scenario' ? 'scenario' : 'sample';
+	const normalizedKind: SampleEntry['kind'] =
+		entry.kind === 'doc'
+			? 'doc'
+			: entry.kind === 'scenario'
+				? 'scenario'
+				: entry.kind === 'spec'
+					? 'spec'
+					: 'sample';
 	const tags = Array.isArray(entry.tags) ? entry.tags.map((tag) => String(tag)).filter((tag) => tag.trim().length > 0) : undefined;
 
 	return {
@@ -80,6 +89,7 @@ function normalizeMetadata(metadata: SerializedSampleIndex['metadata'], entries:
 			totalDocs: metadata?.counts?.totalDocs ?? counts.totalDocs,
 			totalSamples: metadata?.counts?.totalSamples ?? counts.totalSamples,
 			totalScenarios: metadata?.counts?.totalScenarios ?? counts.totalScenarios,
+			totalSpecs: metadata?.counts?.totalSpecs ?? counts.totalSpecs,
 			byKind:
 				metadata?.counts?.byKind instanceof Map
 					? Object.fromEntries(metadata.counts.byKind.entries())

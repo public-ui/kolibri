@@ -41,11 +41,13 @@
 		}
 	},
 	"scripts": {
-		"generate-index": "node ./scripts/generate-sample-index.mjs",
-		"prebuild": "pnpm generate-index",
-		"build": "unbuild",
-		"predev": "pnpm generate-index",
-		"dev": "nodemon",
+                "build:deps": "pnpm --filter @public-ui/mcp^... build",
+                "generate-index": "node ./scripts/generate-sample-index.mjs",
+                "prebuild": "pnpm generate-index",
+                "build": "unbuild",
+                "predev": "pnpm generate-index",
+                "dev": "nodemon",
+                "pregenerate-index": "pnpm run build:deps",
 		"format": "prettier --check src",
 		"inspect": "mcp-inspector tsx src/mcp.ts",
 		"prestart": "pnpm build",
@@ -60,6 +62,7 @@
 	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "1.21.0",
+		"@public-ui/components": "workspace:*",
 		"express": "5.1.0",
 		"fuse.js": "7.1.0",
 		"zod": "3.25.76"

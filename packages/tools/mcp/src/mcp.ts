@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { getAllEntries, getEntryById, getSampleIndexMetadata } from './data.js';
 import { searchEntries, type SearchOptions } from './search.js';
 
-const KIND_OPTIONS = ['doc', 'sample', 'scenario'] as const;
+const KIND_OPTIONS = ['doc', 'sample', 'scenario', 'spec'] as const;
 type KindOption = (typeof KIND_OPTIONS)[number];
 
 function isValidKind(value: unknown): value is KindOption {
@@ -91,8 +91,8 @@ function configureServer(server: McpServer): McpServer {
 		'search',
 		{
 			title: 'Search KoliBri Samples and Docs',
-			description:
-				'Search for KoliBri component samples, scenarios, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", or "scenario"), limit (optional number, default 10).',
+                        description:
+                                'Search for KoliBri component samples, scenarios, specifications, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", "scenario", or "spec"), limit (optional number, default 10).',
 			inputSchema: {
 				query: z.string().optional().default(''),
 				kind: z.enum(KIND_OPTIONS).optional(),
@@ -163,12 +163,13 @@ function configureServer(server: McpServer): McpServer {
 		},
 	);
 
-	// Add fetch tool to retrieve specific samples/docs
+        // Add fetch tool to retrieve specific samples/docs/specs
 	server.registerTool(
 		'fetch',
 		{
 			title: 'Get Sample or Doc Entry',
-			description: 'Get a specific sample or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic" or "docs/getting-started")',
+                        description:
+                                'Get a specific sample, specification, or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic", "spec/button/README", or "docs/getting-started")',
 			inputSchema: {
 				id: z.string(),
 			},
@@ -240,6 +241,7 @@ ${PACKAGE_DESCRIPTION ?? ''}
 - Build mode: ${metadata.buildMode}
 - Total entries: ${metadata.counts.total}
 - Documentation: ${metadata.counts.totalDocs}
+- Specifications: ${metadata.counts.totalSpecs ?? 0}
 - Samples: ${metadata.counts.totalSamples}
 - Scenarios: ${metadata.counts.totalScenarios ?? 0}
 
