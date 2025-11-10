@@ -302,6 +302,10 @@ ROUTES.set('heading/paragraph', {
 });
 ROUTES.set('icon/basic', {
 	snapshot: {
+		viewportSize: {
+			width: 60,
+			height: 200,
+		},
 		zoom: {
 			skip: true,
 		},
@@ -309,6 +313,10 @@ ROUTES.set('icon/basic', {
 });
 ROUTES.set('icon/font-awesome', {
 	snapshot: {
+		viewportSize: {
+			width: 250,
+			height: 345,
+		},
 		zoom: {
 			skip: true,
 		},
