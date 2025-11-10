@@ -62,6 +62,26 @@ jobs:
           echo ""
           echo "API directory:"
           ls -la api/ || echo "No API directory found!"
+      - name: Strip workspace-only dependencies for Vercel
+        working-directory: packages/tools/mcp
+        run: |
+          echo "🧹 Preparing package.json for Vercel..."
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const pkgPath = path.resolve('package.json');
+          const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+
+          if (pkg.dependencies && pkg.dependencies['@public-ui/components']) {
+            console.log('Removing @public-ui/components dependency before deployment');
+            delete pkg.dependencies['@public-ui/components'];
+            fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
+          } else {
+            console.log('No @public-ui/components dependency found; nothing to strip.');
+          }
+          NODE
+          pnpm exec prettier --write package.json
       - name: Deploy to Vercel (production)
         id: deploy_prod
         if: github.ref == 'refs/heads/release/3' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
