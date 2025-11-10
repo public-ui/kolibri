@@ -60,7 +60,7 @@ const COMPONENTS_DOC_DIRECTORIES = COMPONENTS_DOC_CANDIDATES.filter((directory) 
 if (COMPONENTS_DOC_DIRECTORIES.length === 0) {
 	console.warn(
 		[
-			"[generate-sample-index] ⚠️ Component specifications not found.",
+			'[generate-sample-index] ⚠️ Component specifications not found.',
 			"Run 'pnpm --filter @public-ui/components build' or 'pnpm --filter @public-ui/mcp build:deps'",
 			'before generating the index to include spec READMEs.',
 		].join(' '),
@@ -87,14 +87,7 @@ function getCommitMetadata() {
 
 function normalizeEntryId(entry) {
 	const kind = entry.kind ?? 'sample';
-	const normalizedKind =
-		kind === 'doc'
-			? 'doc'
-			: kind === 'scenario'
-				? 'scenario'
-				: kind === 'spec'
-					? 'spec'
-					: 'sample';
+	const normalizedKind = kind === 'doc' ? 'doc' : kind === 'scenario' ? 'scenario' : kind === 'spec' ? 'spec' : 'sample';
 	const expectedPrefix = normalizedKind;
 
 	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
@@ -261,7 +254,7 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 		const group = parentSegments.length ? `${groupPrefix}/${parentSegments.join('/')}` : groupPrefix;
 		const docIdSegments = [kind === 'spec' ? 'spec' : 'doc'];
 		const isSpecReadme = kind === 'spec' && /^readme$/i.test(fileName);
-		const displayName = isSpecReadme && parentSegments.length > 0 ? parentSegments.at(-1) ?? fileName : fileName;
+		const displayName = isSpecReadme && parentSegments.length > 0 ? (parentSegments.at(-1) ?? fileName) : fileName;
 
 		if (group.startsWith(`${groupPrefix}/`)) {
 			const relativeGroup = group.slice(groupPrefix.length + 1);
@@ -444,17 +437,12 @@ main();
 
 async function updateLandingPageCounts(index) {
 	try {
-                if (!(await pathExists(LANDING_TEMPLATE))) {
-                        console.warn(
-                                `[generate-sample-index] ⚠️ Unable to update landing page counts (${path.relative(
-                                        PACKAGE_ROOT,
-                                        LANDING_TEMPLATE,
-                                )} not found).`,
-                        );
-                        return;
-                }
+		if (!(await pathExists(LANDING_TEMPLATE))) {
+			console.warn(`[generate-sample-index] ⚠️ Unable to update landing page counts (${path.relative(PACKAGE_ROOT, LANDING_TEMPLATE)} not found).`);
+			return;
+		}
 
-                const html = await readFile(LANDING_TEMPLATE, 'utf8');
+		const html = await readFile(LANDING_TEMPLATE, 'utf8');
 
 		const counts = index?.metadata?.counts ?? {};
 		const markers = [
@@ -531,16 +519,16 @@ async function updateLandingPageCounts(index) {
 
 		if (changed) {
 			await writeFile(LANDING_PAGE, updated, 'utf8');
-                        console.log(`[generate-sample-index] ✅ Updated landing page counts in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);
-                } else {
-                        console.warn(`[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(PACKAGE_ROOT, LANDING_TEMPLATE)}`);
-                }
-        } catch (error) {
-                console.warn(
-                        `[generate-sample-index] ⚠️ Unable to update landing page counts (${error.message}). Ensure ${path.relative(
-                                PACKAGE_ROOT,
-                                LANDING_TEMPLATE,
-                        )} contains __BUILD_* placeholders.`,
-                );
-        }
+			console.log(`[generate-sample-index] ✅ Updated landing page counts in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);
+		} else {
+			console.warn(`[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(PACKAGE_ROOT, LANDING_TEMPLATE)}`);
+		}
+	} catch (error) {
+		console.warn(
+			`[generate-sample-index] ⚠️ Unable to update landing page counts (${error.message}). Ensure ${path.relative(
+				PACKAGE_ROOT,
+				LANDING_TEMPLATE,
+			)} contains __BUILD_* placeholders.`,
+		);
+	}
 }

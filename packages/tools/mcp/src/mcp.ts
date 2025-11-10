@@ -91,8 +91,8 @@ function configureServer(server: McpServer): McpServer {
 		'search',
 		{
 			title: 'Search KoliBri Samples and Docs',
-                        description:
-                                'Search for KoliBri component samples, scenarios, specifications, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", "scenario", or "spec"), limit (optional number, default 10).',
+			description:
+				'Search for KoliBri component samples, scenarios, specifications, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", "scenario", or "spec"), limit (optional number, default 10).',
 			inputSchema: {
 				query: z.string().optional().default(''),
 				kind: z.enum(KIND_OPTIONS).optional(),
@@ -163,7 +163,7 @@ function configureServer(server: McpServer): McpServer {
 		},
 	);
 
-        // Add fetch tool to retrieve specific samples/docs/specs
+	// Add fetch tool to retrieve specific samples/docs/specs
 	server.registerTool(
 		'fetch',
 		{

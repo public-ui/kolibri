@@ -60,14 +60,7 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 }
 
 function normalizeEntry(entry: SampleEntry): SampleEntry {
-	const normalizedKind: SampleEntry['kind'] =
-		entry.kind === 'doc'
-			? 'doc'
-			: entry.kind === 'scenario'
-				? 'scenario'
-				: entry.kind === 'spec'
-					? 'spec'
-					: 'sample';
+	const normalizedKind: SampleEntry['kind'] = entry.kind === 'doc' ? 'doc' : entry.kind === 'scenario' ? 'scenario' : entry.kind === 'spec' ? 'spec' : 'sample';
 	const tags = Array.isArray(entry.tags) ? entry.tags.map((tag) => String(tag)).filter((tag) => tag.trim().length > 0) : undefined;
 
 	return {
