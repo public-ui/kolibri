@@ -37,6 +37,7 @@ export const ButtonIcons: FC = () => {
 					}}
 					_label="Label"
 					_on={dummyEventHandler}
+					className="w-10rem"
 				/>
 			</div>
 		</>

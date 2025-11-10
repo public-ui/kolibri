@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>KoliBri MCP Server</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				line-height: 1.6;
+				color: #2d3748;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 2rem;
+			}
+
+			.container {
+				max-width: 900px;
+				width: 100%;
+				padding: 2rem;
+				background: white;
+				border-radius: 12px;
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			}
+
+			.header {
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+
+			.logo img {
+				width: 100%;
+				max-width: 200px;
+				height: auto;
+				display: block;
+				margin: 0 auto 1rem;
+			}
+
+			h1 {
+				color: #2d3748;
+				margin-bottom: 0.5rem;
+				font-size: 2.5rem;
+			}
+
+			.subtitle {
+				color: #718096;
+				font-size: 1.1rem;
+				margin-bottom: 1rem;
+			}
+
+			.status {
+				display: inline-block;
+				background: #38a169;
+				color: white;
+				padding: 0.25rem 0.75rem;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				font-weight: 500;
+			}
+
+			.stats {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+				gap: 1rem;
+				margin-top: 1.5rem;
+			}
+
+			.stat {
+				background: #edf2f7;
+				border-radius: 8px;
+				padding: 1rem;
+				text-align: center;
+				border: 1px solid #e2e8f0;
+			}
+
+			.stat-label {
+				display: block;
+				color: #4a5568;
+				font-size: 0.9rem;
+				margin-bottom: 0.5rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+			}
+
+			.stat-value {
+				font-size: 1.75rem;
+				font-weight: 700;
+				color: #2d3748;
+			}
+
+			.api-info {
+				background: #f7fafc;
+				padding: 1.5rem;
+				border-radius: 8px;
+				margin-bottom: 2rem;
+				border-left: 4px solid #667eea;
+			}
+
+			.api-info h2 {
+				color: #2d3748;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+			}
+
+			.api-info h3 {
+				color: #2d3748;
+				margin-bottom: 0.5rem;
+				margin-top: 1.5rem;
+				font-size: 1.1rem;
+			}
+
+			.description {
+				color: #4a5568;
+				margin: 0.5rem 0;
+			}
+
+			.endpoint {
+				background: #1a202c;
+				color: #90cdf4;
+				padding: 1rem;
+				border-radius: 6px;
+				font-family: 'Courier New', monospace;
+				margin: 0.5rem 0;
+				overflow-x: auto;
+				display: block;
+			}
+
+			.endpoint-inline {
+				background: #1a202c;
+				color: #90cdf4;
+				padding: 0.2em 0.5em;
+				border-radius: 4px;
+				font-family: 'Courier New', monospace;
+				font-size: 0.95em;
+				white-space: nowrap;
+			}
+
+			.method {
+				display: inline-block;
+				padding: 0.2rem 0.5rem;
+				border-radius: 4px;
+				font-size: 0.8rem;
+				font-weight: bold;
+				margin-right: 0.5rem;
+				color: white;
+			}
+
+			.get {
+				background: #38a169;
+			}
+
+			.post {
+				background: #3182ce;
+			}
+
+			.relative {
+				position: relative;
+			}
+
+			.copy-btn {
+				background: #edf2f7;
+				color: #2d3748;
+				border: none;
+				border-radius: 4px;
+				padding: 0.3em 0.6em;
+				font-size: 1em;
+				cursor: pointer;
+				opacity: 0.7;
+				transition: opacity 0.2s;
+			}
+
+			.copy-btn:hover,
+			.copy-btn:focus {
+				opacity: 1;
+				outline: 2px solid #667eea;
+			}
+
+			.relative .copy-btn {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+			}
+
+			.footer {
+				text-align: center;
+				margin-top: 2rem;
+				padding-top: 2rem;
+				border-top: 1px solid #e2e8f0;
+				color: #718096;
+			}
+
+			a {
+				color: #667eea;
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			.highlight-box {
+				padding: 1rem;
+				border-radius: 6px;
+				margin-top: 1rem;
+				border-left: 4px solid #ffc107;
+			}
+
+			.highlight-box.info {
+				background: #e6fffa;
+				border-left-color: #38a169;
+			}
+
+			.highlight-box.warning {
+				background: #fff3cd;
+				border-left-color: #ffc107;
+			}
+
+			@media (max-width: 900px) {
+				body {
+					padding: 2rem;
+				}
+
+				h1 {
+					font-size: 2.2rem;
+				}
+
+				.subtitle {
+					font-size: 1rem;
+				}
+			}
+
+			@media (max-width: 640px) {
+				body {
+					align-items: flex-start;
+					padding: 1.5rem;
+				}
+
+				.container {
+					padding: 1.75rem;
+				}
+
+				h1 {
+					font-size: 1.9rem;
+				}
+
+				.subtitle {
+					margin-bottom: 1.5rem;
+				}
+
+				.api-info {
+					padding: 1.25rem;
+				}
+
+				.stat {
+					padding: 0.85rem;
+				}
+			}
+
+			@media (max-width: 480px) {
+				body {
+					padding: 1.25rem;
+				}
+
+				.container {
+					padding: 1.5rem;
+				}
+
+				h1 {
+					font-size: 1.7rem;
+				}
+
+				.subtitle {
+					font-size: 0.95rem;
+				}
+
+				.endpoint {
+					font-size: 0.9rem;
+				}
+
+				.copy-btn {
+					top: 6px;
+					right: 6px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="logo">
+					<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
+				</div>
+				<h1>KoliBri MCP API</h1>
+				<p class="subtitle">Model Context Protocol backend for KoliBri examples with streaming-native HTTP transport</p>
+				<span class="status"
+					>📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples,
+					<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ Specs,
+					<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ Scenarios,
+					<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ Docs)</span
+				>
+				<div class="stats" aria-live="polite">
+					<div class="stat">
+						<span class="stat-label">Samples</span>
+						<span class="stat-value" id="sample-count"><!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__</span>
+					</div>
+					<div class="stat">
+						<span class="stat-label">Specs</span>
+						<span class="stat-value" id="spec-count"><!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__</span>
+					</div>
+					<div class="stat">
+						<span class="stat-label">Docs</span>
+						<span class="stat-value" id="doc-count"><!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__</span>
+					</div>
+					<div class="stat">
+						<span class="stat-label">Scenarios</span>
+						<span class="stat-value" id="scenario-count"><!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="api-info">
+				<h2>📡 Streaming MCP Endpoint</h2>
+				<p class="description">
+					This server exposes the Model Context Protocol directly over HTTP and streams responses so that AI copilots see updates as soon as they are generated.
+				</p>
+				<div class="highlight-box info" style="margin-top: 1rem">
+					<strong style="color: #2d3748">🆕 Stream-first transport:</strong>
+					<span style="color: #2d3748">
+						Connect with <code class="endpoint-inline">POST /mcp</code> and keep the request open. The
+						<code class="endpoint-inline">StreamableHTTPServerTransport</code> sends newline-delimited JSON frames, allowing Claude Desktop, Copilot Chat, and
+						every MCP client to process tool output incrementally without polling.
+					</span>
+				</div>
+				<p class="description" style="margin-top: 1rem">
+					Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to discover
+					all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
+				</p>
+				<p class="description">
+					Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool
+					catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
+				</p>
+				<p class="description">Want to try it from your own tooling? Point any MCP-aware client directly to the hosted endpoint below.</p>
+				<div class="relative">
+					<code class="endpoint" data-mcp-direct-url>https://example.com/mcp</code>
+					<button class="copy-btn" aria-label="Copy endpoint URL" tabindex="0">📋</button>
+				</div>
+				<p class="description" style="margin-top: 1rem">
+					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
+				</p>
+			</div>
+
+			<div class="api-info">
+				<h2>🔧 VS Code Integration</h2>
+				<p class="description">Use the KoliBri MCP Server with GitHub Copilot Chat in VS Code:</p>
+
+				<div style="margin-top: 1rem">
+					<h3>Option 1: Local Installation</h3>
+					<div class="relative">
+						<code class="endpoint">npm install -g @public-ui/mcp</code>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+					<p class="description">Install the MCP package globally and create an <code>mcp.json</code>:</p>
+					<div class="relative">
+						<pre
+							style="margin: 0"
+						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "command": "npx", "args": ["@public-ui/mcp"] } }, "inputs": [] }</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+
+					<h3>Option 2: Remote Server (Recommended)</h3>
+					<p class="description">Use the hosted server without local installation in your <code>mcp.json</code>:</p>
+					<div class="relative">
+						<pre
+							style="margin: 0"
+						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri-mcp": { "url": "&lt;origin&gt;/mcp", "type": "http" } }, "inputs": [] }</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+					<div class="highlight-box warning">
+						<strong style="color: #856404">⚡ Remote Advantage:</strong>
+						<span style="color: #856404"> No installation required, always up-to-date, faster setup!</span>
+					</div>
+
+					<h3>Setup</h3>
+					<p class="description">Create an <code>mcp.json</code> file in your project directory or use the global configuration:</p>
+					<div class="relative">
+						<pre style="margin: 0"><code class="endpoint"># Local file in project
+echo '{ "servers": { ... } }' > mcp.json
+# Or globally for all projects
+~/.config/mcp/mcp.json
+</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+					<h3>Detailed VS Code steps</h3>
+					<ol class="description" style="padding-left: 1.25rem; color: #4a5568">
+						<li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
+						<li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
+						<li>
+							Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace
+							<code>&lt;origin&gt;</code> with the deployed server URL.
+						</li>
+						<li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri-mcp</strong> to establish the streaming session.</li>
+						<li>
+							Ask Copilot things like <code class="endpoint-inline">@kolibri-mcp search button</code> or
+							<code class="endpoint-inline">@kolibri-mcp fetch sample/button/basic</code> to receive streamed answers.
+						</li>
+					</ol>
+					<p class="description">In GitHub Copilot Chat you can now write:</p>
+					<div class="relative">
+						<pre style="margin: 0"><code class="endpoint">@kolibri show me a button sample
+@kolibri how do I implement a KoliBri table?
+@kolibri create an accessible form
+</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+					<div class="highlight-box info">
+						<strong style="color: #2d3748">💡 Tip:</strong>
+						<span style="color: #2d3748" id="tip-text">
+							The MCP Server gives you access to all
+							<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ KoliBri component samples,
+							<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ component specifications,
+							<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ guided scenarios, and
+							<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ documentation files directly in VS Code!
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer">
+				<p>
+					<a href="https://public-ui.github.io/en" target="_blank">KoliBri Documentation</a> | 🔗
+					<a href="https://github.com/public-ui/kolibri" target="_blank">GitHub Repository</a>
+				</p>
+				<p style="margin-top: 0.5rem; font-size: 0.9rem">Powered by KoliBri • Made with ❤️ by ITZBund</p>
+			</div>
+		</div>
+
+		<script>
+			window.__KOLIBRI_MCP_COUNTS__ = Object.freeze({
+				total: __BUILD_TOTAL_COUNT__ /*BUILD:TOTAL_COUNT*/,
+				samples: __BUILD_SAMPLE_COUNT__ /*BUILD:SAMPLE_COUNT*/,
+				specs: __BUILD_SPEC_COUNT__ /*BUILD:SPEC_COUNT*/,
+				docs: __BUILD_DOC_COUNT__ /*BUILD:DOC_COUNT*/,
+				scenarios: __BUILD_SCENARIO_COUNT__ /*BUILD:SCENARIO_COUNT*/,
+			});
+
+			const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+			const directUrlElement = document.querySelector('[data-mcp-direct-url]');
+			if (remoteConfigElement) {
+				const origin = window.location.origin.replace(/\/$/, '');
+				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp", "type": "http" } }, "inputs": [] }`;
+				if (directUrlElement) {
+					directUrlElement.textContent = `${origin}/mcp`;
+				}
+			} else if (directUrlElement) {
+				directUrlElement.textContent = `${window.location.origin.replace(/\/$/, '')}/mcp`;
+			}
+
+			function applyCountsFromBuild(counts) {
+				if (!counts) {
+					return;
+				}
+
+				const statusElement = document.querySelector('.status');
+				const sampleCountElement = document.getElementById('sample-count');
+				const specCountElement = document.getElementById('spec-count');
+				const docCountElement = document.getElementById('doc-count');
+				const scenarioCountElement = document.getElementById('scenario-count');
+				const tipTextElement = document.getElementById('tip-text');
+
+				const sampleCount = Number.parseInt(counts.samples ?? 0, 10) || 0;
+				const specCount = Number.parseInt(counts.specs ?? 0, 10) || 0;
+				const docCount = Number.parseInt(counts.docs ?? 0, 10) || 0;
+				const scenarioCount = Number.parseInt(counts.scenarios ?? 0, 10) || 0;
+
+				if (sampleCountElement) {
+					sampleCountElement.textContent = sampleCount.toLocaleString();
+				}
+
+				if (specCountElement) {
+					specCountElement.textContent = specCount.toLocaleString();
+				}
+
+				if (docCountElement) {
+					docCountElement.textContent = docCount.toLocaleString();
+				}
+
+				if (scenarioCountElement) {
+					scenarioCountElement.textContent = scenarioCount.toLocaleString();
+				}
+
+				if (statusElement) {
+					const fragments = [`${sampleCount.toLocaleString()} Samples`];
+					if (specCount > 0) {
+						fragments.push(`${specCount.toLocaleString()} Specs`);
+					}
+					if (scenarioCount > 0) {
+						fragments.push(`${scenarioCount.toLocaleString()} Scenarios`);
+					}
+					if (docCount > 0) {
+						fragments.push(`${docCount.toLocaleString()} Docs`);
+					}
+					statusElement.textContent = `📦 Prebuilt index (${fragments.join(', ')})`;
+					statusElement.style.background = '#4a5568';
+				}
+
+				if (tipTextElement) {
+					const resourceParts = [];
+					if (sampleCount > 0) {
+						resourceParts.push(`${sampleCount.toLocaleString()} KoliBri component samples`);
+					}
+					if (specCount > 0) {
+						resourceParts.push(`${specCount.toLocaleString()} component specifications`);
+					}
+					if (scenarioCount > 0) {
+						resourceParts.push(`${scenarioCount.toLocaleString()} guided scenarios`);
+					}
+					if (docCount > 0) {
+						resourceParts.push(`${docCount.toLocaleString()} documentation files`);
+					}
+
+					if (resourceParts.length > 0) {
+						let resourceText = resourceParts[0];
+						if (resourceParts.length === 2) {
+							resourceText = `${resourceParts[0]} and ${resourceParts[1]}`;
+						} else if (resourceParts.length > 2) {
+							const lastResource = resourceParts[resourceParts.length - 1];
+							resourceText = `${resourceParts.slice(0, -1).join(', ')}, and ${lastResource}`;
+						}
+
+						tipTextElement.textContent = `The MCP Server gives you access to ${resourceText} directly in VS Code!`;
+					} else {
+						tipTextElement.textContent = 'The MCP Server is ready to stream fresh KoliBri resources directly in VS Code!';
+					}
+				}
+			}
+
+			applyCountsFromBuild(window.__KOLIBRI_MCP_COUNTS__);
+
+			// Copy code logic for all .copy-btn buttons
+			function copyCodeToClipboard(code) {
+				if (navigator.clipboard) {
+					navigator.clipboard.writeText(code);
+				} else {
+					const textarea = document.createElement('textarea');
+					textarea.value = code;
+					document.body.appendChild(textarea);
+					textarea.select();
+					document.execCommand('copy');
+					document.body.removeChild(textarea);
+				}
+			}
+
+			document.addEventListener('DOMContentLoaded', function () {
+				const copyButtons = document.querySelectorAll('.copy-btn');
+				copyButtons.forEach(function (btn) {
+					btn.addEventListener('click', function (e) {
+						let code = '';
+						const parent = btn.parentElement;
+						if (parent.querySelector('code.endpoint-inline')) {
+							code = parent.querySelector('code.endpoint-inline').textContent;
+						} else if (parent.querySelector('code.endpoint')) {
+							code = parent.querySelector('code.endpoint').textContent;
+						}
+						if (code) {
+							copyCodeToClipboard(code);
+							btn.textContent = '✅';
+							setTimeout(() => {
+								btn.textContent = '📋';
+							}, 1500);
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

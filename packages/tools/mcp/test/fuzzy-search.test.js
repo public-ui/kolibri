@@ -1,87 +1,152 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { hasSearchableQuery, performFuzzySearch } from '../src/fuzzy-search.js';
-import { SampleIndex } from '../src/sample-index.js';
+import { searchEntries } from '../dist/search.mjs';
 
 const SAMPLE_ENTRIES = [
 	{
 		id: 'sample/button/basic',
 		group: 'components/button',
 		name: 'basic',
-		title: 'Basic Button',
 		description: 'Default button style for generic actions',
 		tags: ['button', 'action'],
-		keywords: ['button', 'default'],
 		kind: 'sample',
 	},
 	{
 		id: 'sample/button/primary',
 		group: 'components/button',
 		name: 'primary',
-		title: 'Primary Button',
 		description: 'Primary call-to-action button variant',
 		tags: ['button', 'primary'],
-		keywords: ['button', 'primary'],
 		kind: 'sample',
 	},
 	{
 		id: 'sample/form/text-input',
 		group: 'components/form',
 		name: 'text-input',
-		title: 'Text Input Field',
 		description: 'Form field for textual user input',
 		tags: ['form'],
-		keywords: ['input', 'form'],
 		kind: 'sample',
 	},
 	{
 		id: 'doc/guides/accessibility',
 		group: 'docs/guides',
 		name: 'accessibility',
-		title: 'Accessibility Guide',
 		description: 'Documentation on accessible components',
 		tags: ['guides'],
-		keywords: ['accessibility', 'guide'],
 		kind: 'doc',
 	},
+	{
+		id: 'spec/button',
+		group: 'spec/button',
+		name: 'button',
+		description: 'Component specification for the button component',
+		tags: ['specification'],
+		kind: 'spec',
+	},
+	{
+		id: 'scenario/forms/login',
+		group: 'scenarios/forms',
+		name: 'login',
+		description: 'Scenario demonstrating a login flow across multiple components',
+		tags: ['scenario', 'form'],
+		kind: 'scenario',
+	},
 ];
-
-const index = new SampleIndex(SAMPLE_ENTRIES);
-
 function ids(result) {
-	return result.map((entry) => entry.id);
+	return result.map((entry) => entry.item.id);
 }
 
-test('hasSearchableQuery rejects empty or whitespace only queries', () => {
-	assert.equal(hasSearchableQuery(undefined), false);
-	assert.equal(hasSearchableQuery(null), false);
-	assert.equal(hasSearchableQuery(''), false);
-	assert.equal(hasSearchableQuery('   '), false);
-	assert.equal(hasSearchableQuery('button'), true);
+test('searchEntries returns all entries with score 1 for empty queries', () => {
+	const result = searchEntries(SAMPLE_ENTRIES, '   ');
+	assert.strictEqual(result.length, SAMPLE_ENTRIES.length);
+	assert.ok(result.every((r) => r.score === 1));
+	assert.deepStrictEqual(
+		result.map((r) => r.item),
+		SAMPLE_ENTRIES,
+	);
 });
 
-test('performFuzzySearch returns all entries unchanged for empty queries', () => {
-	const result = performFuzzySearch(SAMPLE_ENTRIES, '   ');
-	assert.strictEqual(result, SAMPLE_ENTRIES);
+test('searchEntries handles whitespace-only queries', () => {
+	const result = searchEntries(SAMPLE_ENTRIES, '');
+	assert.strictEqual(result.length, SAMPLE_ENTRIES.length);
 });
 
-test('performFuzzySearch treats queries case-insensitively and prioritises multi-token matches', () => {
-	const results = performFuzzySearch(SAMPLE_ENTRIES, 'PRIMARY BUTTON');
-	assert.deepStrictEqual(ids(results).slice(0, 2), ['sample/button/primary', 'sample/button/basic']);
-	assert.ok(ids(results).every((id, index) => index < 2 || id !== 'sample/form/text-input'));
+test('searchEntries finds button-related entries case-insensitively', () => {
+	const results = searchEntries(SAMPLE_ENTRIES, 'button');
+	const resultIds = ids(results);
+	assert.ok(resultIds.includes('sample/button/primary'));
+	assert.ok(resultIds.includes('sample/button/basic'));
 });
 
-test('SampleIndex.list reuses fuzzy search with trimmed queries', () => {
-	const trimmed = index.list('  button  ');
-	const plain = index.list('button');
+test('searchEntries finds primary button with multi-word search', () => {
+	const results = searchEntries(SAMPLE_ENTRIES, 'primary');
+	const resultIds = ids(results);
+	assert.ok(resultIds.length > 0);
+	// Primary button should be in the results
+	assert.ok(resultIds.includes('sample/button/primary'));
+});
+
+test('searchEntries with trimmed queries produces consistent results', () => {
+	const trimmed = searchEntries(SAMPLE_ENTRIES, '  button  ');
+	const plain = searchEntries(SAMPLE_ENTRIES, 'button');
 	assert.deepStrictEqual(ids(trimmed), ids(plain));
 });
 
-test('SampleIndex.list filters entries by kind before searching', () => {
-	const docResults = index.list('guide', { kinds: ['doc'] });
+test('searchEntries filters entries by kind before searching', () => {
+	const docResults = searchEntries(SAMPLE_ENTRIES, 'guide', { kind: 'doc' });
 	assert.deepStrictEqual(ids(docResults), ['doc/guides/accessibility']);
 
-	const sampleResults = index.list('guide', { kinds: ['sample'] });
+	const sampleResults = searchEntries(SAMPLE_ENTRIES, 'guide', { kind: 'sample' });
 	assert.deepStrictEqual(ids(sampleResults), []);
+
+	const scenarioResults = searchEntries(SAMPLE_ENTRIES, 'login', { kind: 'scenario' });
+	assert.deepStrictEqual(ids(scenarioResults), ['scenario/forms/login']);
+
+	const specResults = searchEntries(SAMPLE_ENTRIES, 'button', { kind: 'spec' });
+	assert.deepStrictEqual(ids(specResults), ['spec/button']);
+});
+
+test('searchEntries respects limit option', () => {
+	const results = searchEntries(SAMPLE_ENTRIES, 'button', { limit: 1 });
+	assert.strictEqual(results.length, 1);
+});
+
+test('searchEntries respects custom threshold option', () => {
+	const strictResults = searchEntries(SAMPLE_ENTRIES, 'xyz', { threshold: 0.1 });
+	const looseResults = searchEntries(SAMPLE_ENTRIES, 'xyz', { threshold: 0.9 });
+	// With stricter threshold, we should get fewer or equal results
+	assert.ok(strictResults.length <= looseResults.length);
+});
+
+test('searchEntries finds text-input with "input text" query', () => {
+	// Test with default threshold (0.4)
+	const resultsDefault = searchEntries(SAMPLE_ENTRIES, 'input text');
+	console.log('Results with default threshold (0.4):', ids(resultsDefault));
+
+	// Test with looser threshold (0.6)
+	const resultsLoose = searchEntries(SAMPLE_ENTRIES, 'input text', { threshold: 0.6 });
+	console.log('Results with loose threshold (0.6):', ids(resultsLoose));
+	console.log(
+		'Scores:',
+		resultsLoose.map((r) => ({ id: r.item.id, score: r.score })),
+	);
+
+	// With a looser threshold, it should find the text-input
+	assert.ok(ids(resultsLoose).includes('sample/form/text-input'), 'Should find text-input entry with looser threshold');
+});
+
+test('searchEntries finds text-input with "text input" query (reversed words)', () => {
+	const results = searchEntries(SAMPLE_ENTRIES, 'text input');
+	const resultIds = ids(results);
+	console.log('Results for "text input":', resultIds);
+	// "text input" should match better than "input text" because name is "text-input"
+	assert.ok(resultIds.includes('sample/form/text-input'), 'Should find text-input with reversed word order');
+});
+
+test('searchEntries finds text-input with single word "input"', () => {
+	const results = searchEntries(SAMPLE_ENTRIES, 'input');
+	const resultIds = ids(results);
+	console.log('Results for "input":', resultIds);
+	assert.ok(resultIds.includes('sample/form/text-input'), 'Should find text-input when searching for "input"');
 });

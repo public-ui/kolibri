@@ -38,7 +38,7 @@
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
 		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
-		"format:all": "prettier --write '**/*.{js,ts,json,yml,yaml,md}' '*.{js,ts,json,yml,yaml,md}' && pnpm format:config && pnpm -r format",
+		"format:all": "prettier --write '**/*.{js,ts,json,yml,yaml,md}' '*.{js,ts,json,yml,yaml,md}' && pnpm format:config && pnpm -r format -w",
 		"lint": "pnpm -r lint",
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
