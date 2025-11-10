@@ -1195,6 +1195,9 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: 1.21.0
         version: 1.21.0
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../../components
       express:
         specifier: 5.1.0
         version: 5.1.0

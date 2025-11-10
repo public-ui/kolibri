@@ -19,6 +19,7 @@ const PACKAGE_ROOT = path.resolve(__dirname, '..');
 const SHARED_DIR = path.join(PACKAGE_ROOT, 'shared');
 const OUTPUT_FILE = path.join(SHARED_DIR, 'sample-index.json');
 const PUBLIC_DIR = path.join(PACKAGE_ROOT, 'public');
+const LANDING_TEMPLATE = path.join(PUBLIC_DIR, 'index.template.html');
 const LANDING_PAGE = path.join(PUBLIC_DIR, 'index.html');
 
 // Robust repo root detection
@@ -50,10 +51,31 @@ const IGNORED_DIRECTORIES = new Set(['.git', '.github', '.nx', '.turbo', '.verce
 const COMPONENTS_DIR = path.join(SAMPLE_ROOT, 'components');
 const SCENARIOS_DIR = path.join(SAMPLE_ROOT, 'scenarios');
 const DOCS_DIR = path.join(REPO_ROOT, 'docs');
+const COMPONENTS_DOC_CANDIDATES = [
+	path.join(PACKAGE_ROOT, 'node_modules', '@public-ui', 'components', 'docs'),
+	path.join(PACKAGE_ROOT, 'node_modules', '@public-ui', 'components', 'doc'),
+];
+const COMPONENTS_DOC_DIRECTORIES = COMPONENTS_DOC_CANDIDATES.filter((directory) => existsSync(directory));
+
+if (COMPONENTS_DOC_DIRECTORIES.length === 0) {
+	console.warn(
+		[
+			'[generate-sample-index] ⚠️ Component specifications not found.',
+			"Run 'pnpm --filter @public-ui/components build' or 'pnpm --filter @public-ui/mcp build:deps'",
+			'before generating the index to include spec READMEs.',
+		].join(' '),
+	);
+}
 
 const MARKDOWN_SOURCES = [
-	{ directory: DOCS_DIR, groupPrefix: 'docs', recursive: true },
-	{ directory: REPO_ROOT, groupPrefix: 'docs', recursive: false },
+	{ directory: DOCS_DIR, groupPrefix: 'docs', recursive: true, kind: 'doc' },
+	{ directory: REPO_ROOT, groupPrefix: 'docs', recursive: false, kind: 'doc' },
+	...COMPONENTS_DOC_DIRECTORIES.map((directory) => ({
+		directory,
+		groupPrefix: 'spec',
+		recursive: true,
+		kind: 'spec',
+	})),
 ];
 
 function getCommitMetadata() {
@@ -65,7 +87,7 @@ function getCommitMetadata() {
 
 function normalizeEntryId(entry) {
 	const kind = entry.kind ?? 'sample';
-	const normalizedKind = kind === 'doc' ? 'doc' : kind === 'scenario' ? 'scenario' : 'sample';
+	const normalizedKind = kind === 'doc' ? 'doc' : kind === 'scenario' ? 'scenario' : kind === 'spec' ? 'spec' : 'sample';
 	const expectedPrefix = normalizedKind;
 
 	if (typeof entry.id === 'string' && entry.id.startsWith(`${expectedPrefix}/`)) {
@@ -189,7 +211,7 @@ async function discoverRouteFiles() {
 	return files;
 }
 
-async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive, relativeRoot }) {
+async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive, relativeRoot, kind }) {
 	const entries = [];
 	const dirents = await readDirEntries(directory);
 
@@ -205,6 +227,7 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 				groupPrefix,
 				recursive: true,
 				relativeRoot,
+				kind,
 			});
 
 			entries.push(...nestedEntries);
@@ -225,10 +248,13 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 		const normalizedRepoPath = repoRelativePath.split(path.sep).join('/');
 		const relativePath = path.relative(relativeRoot, absolutePath).split(path.sep).join('/');
 		const withoutExtension = relativePath.replace(/\.[^.]+$/, '');
-		const segments = withoutExtension.split('/').filter(Boolean);
-		const name = segments.pop() ?? withoutExtension;
-		const group = segments.length ? `${groupPrefix}/${segments.join('/')}` : groupPrefix;
-		const docIdSegments = ['doc'];
+		const pathSegments = withoutExtension.split('/').filter(Boolean);
+		const fileName = pathSegments.at(-1) ?? withoutExtension;
+		const parentSegments = pathSegments.slice(0, -1);
+		const group = parentSegments.length ? `${groupPrefix}/${parentSegments.join('/')}` : groupPrefix;
+		const docIdSegments = [kind === 'spec' ? 'spec' : 'doc'];
+		const isSpecReadme = kind === 'spec' && /^readme$/i.test(fileName);
+		const displayName = isSpecReadme && parentSegments.length > 0 ? (parentSegments.at(-1) ?? fileName) : fileName;
 
 		if (group.startsWith(`${groupPrefix}/`)) {
 			const relativeGroup = group.slice(groupPrefix.length + 1);
@@ -238,16 +264,19 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 		} else if (group !== groupPrefix) {
 			docIdSegments.push(...group.split('/'));
 		}
-		docIdSegments.push(name);
+
+		if (!(isSpecReadme && docIdSegments.length > 1)) {
+			docIdSegments.push(fileName);
+		}
 
 		entries.push({
 			id: docIdSegments.join('/'),
 			group,
-			name,
+			name: displayName,
 			path: normalizedRepoPath,
 			absolutePath,
 			code,
-			kind: 'doc',
+			kind: kind ?? 'doc',
 		});
 	}
 
@@ -266,6 +295,7 @@ async function collectMarkdownEntries() {
 			groupPrefix: source.groupPrefix,
 			recursive: source.recursive,
 			relativeRoot: source.directory,
+			kind: source.kind,
 		});
 
 		entries.push(...sourceEntries);
@@ -285,7 +315,10 @@ async function generateSampleIndex() {
 		console.log('[generate-sample-index] ✅ SAMPLE_ROOT exists');
 	} catch (error) {
 		console.log('[generate-sample-index] ❌ SAMPLE_ROOT does not exist:', error.message);
-		return { metadata: { counts: { total: 0, totalDocs: 0, totalSamples: 0, totalScenarios: 0 } }, entries: [] };
+		return {
+			metadata: { counts: { total: 0, totalDocs: 0, totalSamples: 0, totalScenarios: 0, totalSpecs: 0 } },
+			entries: [],
+		};
 	}
 
 	const routeFiles = await discoverRouteFiles();
@@ -350,11 +383,13 @@ async function generateSampleIndex() {
 	normalizedEntries.sort((a, b) => a.id.localeCompare(b.id));
 
 	const totalDocs = normalizedEntries.filter((e) => e.kind === 'doc').length;
+	const totalSpecs = normalizedEntries.filter((e) => e.kind === 'spec').length;
 	const totalSamples = normalizedEntries.filter((e) => e.kind === 'sample').length;
 	const totalScenarios = normalizedEntries.filter((e) => e.kind === 'scenario').length;
 
 	console.log('[generate-sample-index] Total entries found:', normalizedEntries.length);
 	console.log('[generate-sample-index] Docs:', totalDocs);
+	console.log('[generate-sample-index] Specs:', totalSpecs);
 	console.log('[generate-sample-index] Samples:', totalSamples);
 	console.log('[generate-sample-index] Scenarios:', totalScenarios);
 
@@ -365,6 +400,7 @@ async function generateSampleIndex() {
 			counts: {
 				total: normalizedEntries.length,
 				totalDocs,
+				totalSpecs,
 				totalSamples,
 				totalScenarios,
 			},
@@ -401,7 +437,12 @@ main();
 
 async function updateLandingPageCounts(index) {
 	try {
-		const html = await readFile(LANDING_PAGE, 'utf8');
+		if (!(await pathExists(LANDING_TEMPLATE))) {
+			console.warn(`[generate-sample-index] ⚠️ Unable to update landing page counts (${path.relative(PACKAGE_ROOT, LANDING_TEMPLATE)} not found).`);
+			return;
+		}
+
+		const html = await readFile(LANDING_TEMPLATE, 'utf8');
 
 		const counts = index?.metadata?.counts ?? {};
 		const markers = [
@@ -416,6 +457,12 @@ async function updateLandingPageCounts(index) {
 				htmlComment: '<!--BUILD:SAMPLE_COUNT-->',
 				jsComment: '/*BUILD:SAMPLE_COUNT*/',
 				value: Number.isFinite(counts.totalSamples) ? String(counts.totalSamples) : '0',
+			},
+			{
+				placeholder: '__BUILD_SPEC_COUNT__',
+				htmlComment: '<!--BUILD:SPEC_COUNT-->',
+				jsComment: '/*BUILD:SPEC_COUNT*/',
+				value: Number.isFinite(counts.totalSpecs) ? String(counts.totalSpecs) : '0',
 			},
 			{
 				placeholder: '__BUILD_SCENARIO_COUNT__',
@@ -474,13 +521,13 @@ async function updateLandingPageCounts(index) {
 			await writeFile(LANDING_PAGE, updated, 'utf8');
 			console.log(`[generate-sample-index] ✅ Updated landing page counts in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);
 		} else {
-			console.warn(`[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);
+			console.warn(`[generate-sample-index] ⚠️ No landing page placeholders replaced. Check tokens in ${path.relative(PACKAGE_ROOT, LANDING_TEMPLATE)}`);
 		}
 	} catch (error) {
 		console.warn(
 			`[generate-sample-index] ⚠️ Unable to update landing page counts (${error.message}). Ensure ${path.relative(
 				PACKAGE_ROOT,
-				LANDING_PAGE,
+				LANDING_TEMPLATE,
 			)} contains __BUILD_* placeholders.`,
 		);
 	}

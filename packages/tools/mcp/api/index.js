@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { getAllEntries, getEntryById, getSampleIndexMetadata } from '../dist/data.mjs';
 import { searchEntries } from '../dist/search.mjs';
 
-const KIND_OPTIONS = ['doc', 'sample', 'scenario'];
+const KIND_OPTIONS = ['doc', 'sample', 'scenario', 'spec'];
 
 const normalizeTags = (tags) => (Array.isArray(tags) ? tags : []);
 const formatTagsForText = (tags) => {
@@ -32,7 +32,7 @@ function createKolibriMcpServer() {
 		{
 			title: 'Search KoliBri Samples and Docs',
 			description:
-				'Search for KoliBri component samples, scenarios, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", or "scenario"), limit (optional number, default 10).',
+				'Search for KoliBri component samples, scenarios, specifications, and documentation using fuzzy search. Parameters: query (optional string), kind (optional select: "doc", "sample", "scenario", or "spec"), limit (optional number, default 10).',
 			inputSchema: {
 				query: z.string().optional().default(''),
 				kind: z.enum(KIND_OPTIONS).optional(),
@@ -95,12 +95,13 @@ function createKolibriMcpServer() {
 		},
 	);
 
-	// Add fetch tool to retrieve specific samples/docs
+	// Add fetch tool to retrieve specific samples/docs/scenarios/specs
 	server.registerTool(
 		'fetch',
 		{
-			title: 'Get Sample or Doc Entry',
-			description: 'Get a specific sample or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic" or "docs/getting-started")',
+			title: 'Get Sample, Scenario, Doc, or Spec Entry',
+			description:
+				'Get a specific sample, scenario, documentation file, or specification entry by its ID. Parameter: id (required string, e.g. "button/basic", "scenario/forms/advanced", "docs/getting-started", or "spec/button")',
 			inputSchema: {
 				id: z.string(),
 			},
@@ -164,6 +165,7 @@ ${PACKAGE_DESCRIPTION}
 - Build mode: ${metadata.buildMode}
 - Total entries: ${metadata.counts.total}
 - Documentation: ${metadata.counts.totalDocs}
+- Specifications: ${metadata.counts.totalSpecs ?? 0}
 - Samples: ${metadata.counts.totalSamples}
 - Scenarios: ${metadata.counts.totalScenarios ?? 0}
 
