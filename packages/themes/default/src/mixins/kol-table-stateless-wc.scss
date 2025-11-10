@@ -58,6 +58,23 @@
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 
+			&--sticky {
+				background-color: inherit;
+				transition: box-shadow 0.2s ease-in-out;
+
+				&::before {
+					background-color: inherit;
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					z-index: -1;
+
+					content: '';
+				}
+			}
+
 			&--header {
 				color: var(--color-light);
 				background-color: var(--color-primary);

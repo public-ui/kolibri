@@ -215,12 +215,21 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public componentDidRender(): void {
 		this.checkDivElementScrollbar();
+		this.updateScrollState();
 	}
 
 	public componentDidLoad() {
-		if (this.tableDivElement && ResizeObserver) {
-			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
-			this.tableDivElementResizeObserver.observe(this.tableDivElement);
+		if (this.tableDivElement) {
+			if (ResizeObserver) {
+				this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
+				this.tableDivElementResizeObserver.observe(this.tableDivElement);
+			}
+
+			// Add scroll listener for visual feedback
+			this.tableDivElement.addEventListener('scroll', this.updateScrollState.bind(this), { passive: true });
+
+			// Initial state check
+			this.updateScrollState();
 		}
 	}
 
@@ -231,6 +240,10 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public disconnectedCallback() {
 		this.tableDivElementResizeObserver?.disconnect();
+
+		if (this.tableDivElement) {
+			this.tableDivElement.removeEventListener('scroll', this.updateScrollState.bind(this));
+		}
 	}
 
 	private getFixedCols() {
@@ -243,11 +256,18 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private getVisibleColumnsInOrder() {
-		const cols = this.state._tableSettings?.columns ?? [];
-		return [...cols]
-			.filter((col) => col.visible !== false)
-			.sort((a, b) => a.position - b.position)
-			.map((col) => ({ key: col.key, with: col.width }));
+		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
+		const sortedHeaders = this.sortByColumnPosition(primaryHeaders);
+
+		return sortedHeaders
+			.filter((h) => {
+				const setting = this.getColumnSettings(h);
+				return setting ? setting.visible !== false : true;
+			})
+			.map((h) => ({
+				key: h.key ?? '',
+				width: this.getColumnSettings(h)?.width,
+			}));
 	}
 
 	private computeStickyOffsets() {
@@ -260,30 +280,127 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const leftOffsets: Record<string, number> = {};
 		const rightOffsets: Record<string, number> = {};
+		const leftKeys = new Set<string>();
+		const rightKeys = new Set<string>();
 
 		let accLeft = 0;
 		for (let i = 0; i < leftCount; i++) {
 			const col = visible[i];
+			if (!col.key) continue;
+
 			leftOffsets[col.key] = accLeft;
-			const width = typeof col.with === 'number' ? col.with : 12;
+			leftKeys.add(col.key);
+
+			const width = this.getColumnWidth(col.key, col.width);
 			accLeft += width;
 		}
 
 		let accRight = 0;
 		for (let i = 0; i < rightCount; i++) {
-			const col = visible[visible.length - i - 1];
+			const col = visible[visible.length - 1 - i];
+			if (!col.key) continue;
+
 			rightOffsets[col.key] = accRight;
-			const width = typeof col.with === 'number' ? col.with : 12;
+			rightKeys.add(col.key);
+
+			const width = this.getColumnWidth(col.key, col.width);
 			accRight += width;
 		}
 
-		return { leftOffsets, rightOffsets };
+		return { leftOffsets, rightOffsets, leftKeys, rightKeys };
+	}
+
+	private getColumnWidth(key: string, proposedWidth?: number): number {
+		// First, try to get width from table settings
+		const columnSetting = this.state._tableSettings?.columns.find((col) => col.key === key);
+		if (columnSetting?.width && typeof columnSetting.width === 'number') {
+			return columnSetting.width;
+		}
+
+		// Use proposed width if available
+		if (typeof proposedWidth === 'number' && proposedWidth > 0) {
+			return proposedWidth;
+		}
+
+		// Fallback: Estimate based on header cell content
+		const headerCell = this.findHeaderCellByKey(key);
+		if (headerCell?.label) {
+			// Rough estimation: 1ch per character + padding
+			return Math.max(headerCell.label.length + 2, 12);
+		}
+
+		// Last resort fallback
+		return 12;
+	}
+
+	private findHeaderCellByKey(key: string): KoliBriTableHeaderCell | undefined {
+		const allHeaders = [...(this.state._headerCells.horizontal ?? []).flat(), ...(this.state._headerCells.vertical ?? []).flat()];
+		return allHeaders.find((cell) => cell.key === key);
+	}
+
+	private applyStickyStyles(
+		metaKey: string | undefined,
+		stickyMeta: { leftOffsets: Record<string, number>; rightOffsets: Record<string, number>; leftKeys: Set<string>; rightKeys: Set<string> },
+		isHeader: boolean,
+	): Record<string, string> {
+		const styles: Record<string, string> = {};
+
+		if (!metaKey || !stickyMeta) {
+			return styles;
+		}
+
+		const isLeftSticky = stickyMeta.leftKeys.has(metaKey);
+		const isRightSticky = stickyMeta.rightKeys.has(metaKey);
+
+		if (!isLeftSticky && !isRightSticky) {
+			return styles;
+		}
+
+		styles.position = 'sticky';
+		styles.zIndex = isHeader ? '5' : '3';
+
+		if (isLeftSticky) {
+			const offset = stickyMeta.leftOffsets[metaKey] ?? 0;
+			styles.left = `calc(${offset}ch + var(--kol-table-sticky-left, 0px))`;
+
+			const leftKeys = Array.from(stickyMeta.leftKeys);
+			const isLastLeft = metaKey === leftKeys[leftKeys.length - 1];
+			if (isLastLeft) {
+				styles.boxShadow = '2px 0 4px -2px rgba(0, 0, 0, 0.15)';
+			}
+		}
+
+		if (isRightSticky) {
+			const offset = stickyMeta.rightOffsets[metaKey] ?? 0;
+			styles.right = `calc(${offset}ch + var(--kol-table-sticky-right, 0px))`;
+
+			const rightKeys = Array.from(stickyMeta.rightKeys);
+			const isFirstRight = metaKey === rightKeys[rightKeys.length - 1];
+			if (isFirstRight) {
+				styles.boxShadow = '-2px 0 4px -2px rgba(0, 0, 0, 0.15)';
+			}
+		}
+
+		return styles;
 	}
 
 	private checkDivElementScrollbar() {
 		if (this.tableDivElement) {
 			this.tableDivElementHasScrollbar = this.tableDivElement.scrollWidth > this.tableDivElement.clientWidth;
 		}
+	}
+
+	private updateScrollState(): void {
+		if (!this.tableDivElement) return;
+
+		const { scrollLeft, scrollWidth, clientWidth } = this.tableDivElement;
+
+		const isScrolledLeft = scrollLeft > 0;
+		const isScrolledRight = scrollLeft < scrollWidth - clientWidth - 1;
+
+		this.tableDivElement.classList.toggle('is-scrolled-left', isScrolledLeft);
+		this.tableDivElement.classList.toggle('is-scrolled-right', isScrolledRight);
+		this.tableDivElement.classList.toggle('is-scrolled', isScrolledLeft || isScrolledRight);
 	}
 
 	private updateDataToKeyMap(data: KoliBriTableDataType[]) {
@@ -672,6 +789,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		stickyMeta?: {
 			leftOffsets: Record<string, number>;
 			rightOffsets: Record<string, number>;
+			leftKeys: Set<string>;
+			rightKeys: Set<string>;
 		},
 	): JSX.Element => {
 		let key = String(rowIndex);
@@ -714,6 +833,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		stickyMeta?: {
 			leftOffsets: Record<string, number>;
 			rightOffsets: Record<string, number>;
+			leftKeys: Set<string>;
+			rightKeys: Set<string>;
 		},
 	): JSX.Element => {
 		// Skip rendering if the column is not visible
@@ -729,53 +850,45 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
-			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
-		} else {
-			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
-			const metaKey = (cell as KoliBriTableDataType).key as string | undefined;
-
-			const stickyStyle: Record<string, string> = {};
-			if (metaKey && stickyMeta) {
-				if (metaKey && stickyMeta.leftOffsets) {
-					stickyStyle.position = 'sticky';
-					stickyStyle.zIndex = '3';
-					stickyStyle.left = `calc(${stickyMeta.leftOffsets[metaKey]})ch + var(--kol-table-sticky-left, 0px)`;
-				}
-				if (metaKey && stickyMeta.rightOffsets) {
-					stickyStyle.position = 'sticky';
-					stickyStyle.zIndex = '3';
-					stickyStyle.right = `calc(${stickyMeta.rightOffsets[metaKey]})ch + var(--kol-table-sticky-right, 0px)`;
-				}
-			}
-
-			return (
-				<td
-					key={`cell-${key}`}
-					class={clsx('kol-table__cell kol-table__cell--body', {
-						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
-					})}
-					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
-					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
-					aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
-					colSpan={cell.colSpan}
-					rowSpan={cell.rowSpan}
-					style={{
-						textAlign: cell.textAlign,
-						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
-						...stickyStyle,
-					}}
-					ref={
-						typeof cell.render === 'function'
-							? (el) => {
-									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
-								}
-							: undefined
-					}
-				>
-					{typeof cell.render !== 'function' ? cell.label : ''}
-				</td>
-			);
+			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical, stickyMeta);
 		}
+
+		const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
+		const metaKey = (cell as KoliBriTableDataType).key as string | undefined;
+
+		// Apply sticky styles with improved logic
+		const stickyStyle = stickyMeta && metaKey ? this.applyStickyStyles(metaKey, stickyMeta, false) : {};
+
+		return (
+			<td
+				key={`cell-${key}`}
+				class={clsx('kol-table__cell kol-table__cell--body', {
+					[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
+					'kol-table__cell--sticky': Object.keys(stickyStyle).length > 0,
+					'kol-table__cell--sticky-left': stickyMeta?.leftKeys.has(metaKey ?? ''),
+					'kol-table__cell--sticky-right': stickyMeta?.rightKeys.has(metaKey ?? ''),
+				})}
+				aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
+				aria-live={isNoEntriesHintCell ? 'polite' : undefined}
+				aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
+				colSpan={cell.colSpan}
+				rowSpan={cell.rowSpan}
+				style={{
+					textAlign: cell.textAlign,
+					width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
+					...stickyStyle,
+				}}
+				ref={
+					typeof cell.render === 'function'
+						? (el) => {
+								this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
+							}
+						: undefined
+				}
+			>
+				{typeof cell.render !== 'function' ? cell.label : ''}
+			</td>
+		);
 	};
 
 	private getSelectionKeyPropertyName(): string {
@@ -941,6 +1054,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		stickyMeta?: {
 			leftOffsets: Record<string, number>;
 			rightOffsets: Record<string, number>;
+			leftKeys: Set<string>;
+			rightKeys: Set<string>;
 		},
 	): JSX.Element {
 		// Skip rendering if the column is not visible
@@ -970,19 +1085,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
 		const key = cell.key;
 
-		const stickyStyle: Record<string, string> = {};
-		if (key && stickyMeta) {
-			if (key && stickyMeta.leftOffsets) {
-				stickyStyle.position = 'sticky';
-				stickyStyle.zIndex = '3';
-				stickyStyle.left = `calc(${stickyMeta.leftOffsets[key]})ch + var(--kol-table-sticky-left, 0px)`;
-			}
-			if (key && stickyMeta.rightOffsets) {
-				stickyStyle.position = 'sticky';
-				stickyStyle.zIndex = '3';
-				stickyStyle.right = `calc(${stickyMeta.rightOffsets[key]})ch + var(--kol-table-sticky-right, 0px)`;
-			}
-		}
+		const stickyStyle = stickyMeta && key ? this.applyStickyStyles(key, stickyMeta, true) : {};
 
 		return (
 			<th
@@ -990,6 +1093,9 @@ export class KolTableStateless implements TableStatelessAPI {
 				class={clsx('kol-table__cell kol-table__cell--header', {
 					[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
 					[`kol-table__cell--${ariaSort}`]: ariaSort,
+					'kol-table__cell--sticky': Object.keys(stickyStyle).length > 0,
+					'kol-table__cell--sticky-left': stickyMeta?.leftKeys.has(key ?? ''),
+					'kol-table__cell--sticky-right': stickyMeta?.rightKeys.has(key ?? ''),
 				})}
 				scope={scope}
 				colSpan={cell.colSpan}
