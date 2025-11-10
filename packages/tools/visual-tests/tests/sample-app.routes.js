@@ -302,10 +302,13 @@ ROUTES.set('heading/paragraph', {
 });
 ROUTES.set('icon/basic', {
 	snapshot: {
-		viewportSize: {
-			width: 60,
-			height: 80,
+		zoom: {
+			skip: true,
 		},
+	},
+});
+ROUTES.set('icon/font-awesome', {
+	snapshot: {
 		zoom: {
 			skip: true,
 		},

@@ -5,6 +5,6 @@ import { IconFontAwesome } from './font-awesome';
 export const ICON_ROUTES: Routes = {
 	icon: {
 		basic: IconBasic,
-		fontAwesome: IconFontAwesome,
+		'font-awesome': IconFontAwesome,
 	},
 };
