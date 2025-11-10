@@ -39,9 +39,14 @@ jobs:
       - name: Setup pnpm workspace
         uses: ./.github/actions/pnpm-setup
 
-      - name: Build dependencies and MCP package
+      - name: Build MCP dependencies
         run: |
-          echo "🔨 Building MCP package and all dependencies..."
+          echo "🧱 Building MCP workspace dependencies..."
+          pnpm --filter @public-ui/mcp run build:deps
+
+      - name: Build MCP package
+        run: |
+          echo "🔨 Building MCP package..."
           pnpm --filter @public-ui/mcp build
 
       - name: Verify MCP build artifacts
