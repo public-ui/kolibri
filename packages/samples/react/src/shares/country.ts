@@ -5,6 +5,7 @@ type Country = {
 	id: number;
 	alpha2: string;
 	alpha3: string;
+	disabled: boolean;
 	name: string;
 };
 

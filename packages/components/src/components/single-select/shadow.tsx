@@ -378,6 +378,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 												<input
 													class="visually-hidden"
 													type="radio"
+													disabled={option.disabled}
 													name="options"
 													id={`option-radio-${index}`}
 													value={(option as Option<string>).value}
