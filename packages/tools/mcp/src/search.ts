@@ -31,12 +31,12 @@ export interface SearchResult {
 
 export function searchEntries(entries: SampleEntry[], query: string, options: SearchOptions = {}): SearchResult[] {
 	const normalizedQuery = query.trim();
-	if (!normalizedQuery) {
-		return entries.map((item) => ({ item, score: 1 }));
-	}
-
 	// Filter by kind if specified
 	const filteredEntries = options.kind ? entries.filter((e) => e.kind === options.kind) : entries;
+
+	if (!normalizedQuery) {
+		return filteredEntries.map((item) => ({ item, score: 1 }));
+	}
 
 	// Split query into words to determine search strategy
 	const words = normalizedQuery.split(/\s+/).filter((w) => w.length > 0);
