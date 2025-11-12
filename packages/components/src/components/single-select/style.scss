@@ -11,7 +11,13 @@ $visible-options: var(--visible-options, 5);
 
 		&.disabled,
 		&.disabled * {
+			opacity: 0.5;
 			cursor: not-allowed !important;
+			pointer-events: none;
+		}
+
+		.radio-label {
+			cursor: not-allowed;
 		}
 
 		&__group {
@@ -48,6 +54,16 @@ $visible-options: var(--visible-options, 5);
 
 			.single-select__listbox--cursor-hidden & {
 				cursor: none !important;
+			}
+
+			&--disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+				pointer-events: none; // Verhindert alle Mausinteraktionen
+
+				.radio-label {
+					cursor: not-allowed;
+				}
 			}
 		}
 

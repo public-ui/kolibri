@@ -209,13 +209,25 @@ export class KolSingleSelect implements SingleSelectAPI {
 			return;
 		}
 		let newIndex = this._focusedOptionIndex + delta;
+		let iterations = 0;
 
-		if (newIndex >= this._filteredOptions.length) {
-			newIndex = 0;
-		}
+		const maxIterations = this._filteredOptions.length;
 
-		if (newIndex < 0) {
-			newIndex = this._filteredOptions.length - 1;
+		while (iterations < maxIterations) {
+			if (newIndex >= this._filteredOptions.length) {
+				newIndex = 0;
+			}
+			if (newIndex < 0) {
+				newIndex = this._filteredOptions.length - 1;
+			}
+
+			const option = this._filteredOptions[newIndex] as Option<StencilUnknown>;
+			if (!option.disabled) {
+				break;
+			}
+
+			newIndex += delta;
+			iterations++;
 		}
 
 		this._focusedOptionIndex = newIndex;
@@ -348,7 +360,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 												tabIndex={-1}
 												role="option"
 												aria-selected={this._value === (option as Option<string>).value ? 'true' : undefined}
+												aria-disabled={option.disabled ? 'true' : undefined}
 												onClick={(event: Event) => {
+													if (option.disabled) return;
 													this.selectOption(option as Option<string>);
 													this.refInput?.focus();
 													this.toggleListbox(event);
@@ -362,11 +376,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 													}
 												}}
 												onFocus={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
+													if (!option.disabled) {
+														this._focusedOptionIndex = index;
+														this.focusOption(index);
+													}
 												}}
-												class="single-select__item"
+												class={clsx('single-select__item', option.disabled && 'single-select__item--disabled')}
 												onKeyDown={(e) => {
+													if (option.disabled) return;
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
 														this.selectOption(option as Option<string>);
 														this.refInput?.focus();
@@ -378,7 +395,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 												<input
 													class="visually-hidden"
 													type="radio"
-													disabled={option.disabled}
+													disabled={option.disabled ?? undefined}
 													name="options"
 													id={`option-radio-${index}`}
 													value={(option as Option<string>).value}

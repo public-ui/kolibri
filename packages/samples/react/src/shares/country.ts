@@ -13,6 +13,7 @@ export const COUNTRY_OPTIONS: SelectOption<string>[] = [
 	...(countries as Country[]).map((country) => ({
 		label: country.name,
 		value: country.alpha2,
+		disabled: country.disabled,
 	})),
 ];
 

@@ -38,6 +38,90 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 			<KolSingleSelect {...props} _label="With access key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _accessKey="c" />
 			<KolSingleSelect {...props} _label="With short key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _shortKey="s" />
 			<KolSingleSelect {...props} _label="With hidden clear button" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _hideClearButton />
+			<KolSingleSelect
+				{...props}
+				_hint={HINT_MSG}
+				_label="With disabled options"
+				_options={
+					[
+						{
+							value: 'bw',
+							label: 'Baden-Württemberg',
+						},
+						{
+							value: 'by',
+							label: 'Bayern',
+						},
+						{
+							value: 'be',
+							label: 'Berlin',
+						},
+						{
+							value: 'bb',
+							label: 'Brandenburg',
+						},
+						{
+							value: 'hb',
+							label: 'Bremen',
+						},
+						{
+							value: 'hh',
+							label: 'Hamburg',
+							disabled: true,
+						},
+						{
+							value: 'he',
+							label: 'Hessen',
+						},
+						{
+							value: 'mv',
+							label: 'Mecklenburg-Vorpommern',
+						},
+						{
+							value: 'ni',
+							label: 'Niedersachsen',
+							disabled: true,
+						},
+						{
+							value: 'nw',
+							label: 'Nordrhein-Westfalen',
+						},
+						{
+							value: 'rp',
+							label: 'Rheinland-Pfalz',
+						},
+						{
+							value: 'sl',
+							label: 'Saarland',
+						},
+						{
+							value: 'sn',
+							label: 'Sachsen',
+						},
+						{
+							value: 'st',
+							label: 'Sachsen-Anhalt',
+							disabled: true,
+						},
+						{
+							value: 'sh',
+							label: 'Schleswig-Holstein',
+						},
+						{
+							value: 'th',
+							label: 'Thüringen',
+						},
+					] as Option<StencilUnknown>[]
+				}
+				_value={'be'}
+				_on={{
+					onBlur: console.log,
+					onInput: console.log,
+					onChange: console.log,
+					onClick: console.log,
+					onFocus: console.log,
+				}}
+			/>
 		</div>
 	);
 });
