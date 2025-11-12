@@ -149,6 +149,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 				ref: this.inputRef,
 			});
 		}
+		if (this.state._readOnly && event.code === 'Space') {
+			event.preventDefault();
+		}
 	};
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
