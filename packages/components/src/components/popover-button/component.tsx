@@ -19,7 +19,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validatePopoverAlign, validateShow } from '../../schema';
+import { validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
@@ -125,11 +125,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	public componentDidRender() {
 		this.refPopover?.addEventListener('toggle', this.handleToggle.bind(this));
 		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
-		if (this._show) {
-			void this.showPopover();
-		} else {
-			void this.hidePopover();
-		}
 	}
 
 	public disconnectedCallback() {
@@ -259,11 +254,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
-	 * Makes the element show up.
-	 */
-	@Prop() public _show?: boolean = false;
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
@@ -297,11 +287,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Watch('_popoverAlign')
 	public validatePopoverAlign(value?: PopoverAlignPropType): void {
 		validatePopoverAlign(this, value);
-	}
-
-	@Watch('_show')
-	public validateShow(value?: boolean): void {
-		validateShow(this, value);
 	}
 
 	public componentWillLoad() {

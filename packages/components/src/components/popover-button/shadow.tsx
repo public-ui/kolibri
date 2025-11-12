@@ -80,7 +80,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_on={this._on}
 				_popoverAlign={this._popoverAlign}
 				_shortKey={this._shortKey}
-				_show={this._show}
 				_syncValueBySelector={this._syncValueBySelector}
 				_tabIndex={this._tabIndex}
 				_tooltipAlign={this._tooltipAlign}
@@ -173,11 +172,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Makes the element show up.
-	 */
-	@Prop() public _show?: boolean;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

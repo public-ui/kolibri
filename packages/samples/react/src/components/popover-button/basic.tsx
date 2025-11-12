@@ -1,6 +1,6 @@
 import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
@@ -30,6 +30,14 @@ export const PopoverButtonBasic: FC = () => {
 		},
 	];
 
+	useEffect(() => {
+		// Ensure the popover is closed on initial render
+		if (buttonRef.current) {
+			buttonRef.current.showPopover();
+			buttonRef.current.kolFocus();
+		}
+	}, []);
+
 	return (
 		<>
 			<SampleDescription>
@@ -39,7 +47,7 @@ export const PopoverButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<div className="flex flex-col gap-4">
-				<KolPopoverButton _show _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
+				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
 				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
