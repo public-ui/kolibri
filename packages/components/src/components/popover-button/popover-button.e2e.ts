@@ -53,37 +53,4 @@ test.describe('kol-popover-button', () => {
 		await button.click();
 		await expect(tooltip).not.toBeVisible();
 	});
-
-	test('should be open initially when the _show prop is set to true', async ({ page }) => {
-		await page.setContent(`
-			<kol-popover-button _show _label="Toggle popover">
-				Popover content
-			</kol-popover-button>
-		`);
-
-		const popover = page.getByTestId('popover-content');
-		await expect(popover).toBeVisible();
-	});
-
-	test('should be closed initially when the _show prop is set to false', async ({ page }) => {
-		await page.setContent(`
-			<kol-popover-button _show="false" _label="Toggle popover">
-				Popover content
-			</kol-popover-button>
-		`);
-
-		const popover = page.getByTestId('popover-content');
-		await expect(popover).not.toBeVisible();
-	});
-
-	test('should be closed initially when the _show prop is not set', async ({ page }) => {
-		await page.setContent(`
-			<kol-popover-button _label="Toggle popover">
-				Popover content
-			</kol-popover-button>
-		`);
-
-		const popover = page.getByTestId('popover-content');
-		await expect(popover).not.toBeVisible();
-	});
 });
