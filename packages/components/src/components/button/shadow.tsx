@@ -28,6 +28,7 @@ import type {
 })
 export class KolButton implements ButtonProps, FocusableElement {
 	private buttonWcRef?: HTMLKolButtonWcElement;
+	private tooltipRef?: HTMLKolTooltipWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
@@ -40,6 +41,15 @@ export class KolButton implements ButtonProps, FocusableElement {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this._value;
+	}
+
+	/**
+	 * Hides the tooltip.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hideTooltip() {
+		void this.tooltipRef?.hideTooltip();
 	}
 
 	/**

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { KolButton } from '@public-ui/react-v19';
 
@@ -8,6 +8,11 @@ import { SampleDescription } from '../SampleDescription';
 
 export const ButtonIcons: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
+	const buttonRef = useRef<HTMLKolButtonElement>(null);
+
+	const hide = () => {
+		buttonRef.current?.hideTooltip();
+	};
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -21,6 +26,7 @@ export const ButtonIcons: FC = () => {
 
 			<div>
 				<KolButton
+					ref={buttonRef}
 					_icons={{
 						bottom: 'codicon codicon-arrow-down',
 						left: {
