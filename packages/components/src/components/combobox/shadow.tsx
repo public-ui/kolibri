@@ -119,6 +119,10 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private setFilteredSuggestionsByQuery(query: string) {
+		if (typeof this._suggestions === 'string') {
+			this._suggestions = JSON.parse(this._suggestions.replace(/'/g, '"')) as W3CInputValue[];
+		}
+
 		if (query.trim() === '') {
 			this._filteredSuggestions = [...this._suggestions];
 		} else {
@@ -441,7 +445,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions!: SuggestionsPropType;
+	@Prop() public _suggestions!: SuggestionsPropType | string;
 
 	/**
 	 * Makes the input element required.
