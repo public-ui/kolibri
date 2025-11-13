@@ -1,5 +1,5 @@
-import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 import type { FillAction } from './utils/FillAction';
 import { INPUTS_SELECTOR } from './utils/inputsSelector';
 

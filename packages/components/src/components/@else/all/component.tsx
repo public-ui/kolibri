@@ -1,6 +1,6 @@
-import type { Generic } from 'adopted-style-sheets';
 import type { JSX } from '@stencil/core';
 import { h, Host, State } from '@stencil/core';
+import type { Generic } from 'adopted-style-sheets';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = NonNullable<unknown>;

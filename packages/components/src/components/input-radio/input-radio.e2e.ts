@@ -1,9 +1,9 @@
-import { type E2EPage, test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
-import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
+import { type E2EPage, test } from '@stencil/playwright';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
+import type { FillAction } from '../../e2e/utils/FillAction';
 
 const COMPONENT_NAME = 'kol-input-radio';
 const TEST_VALUE = 'test-value';

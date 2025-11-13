@@ -1,7 +1,7 @@
+import { isInitialized } from '../../core/bootstrap';
+import { KolToastContainerTag } from '../../core/component-names';
 import type { Toast, ToasterOptions } from '../../schema';
 import { Log } from '../../schema';
-import { KolToastContainerTag } from '../../core/component-names';
-import { isInitialized } from '../../core/bootstrap';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
@@ -14,6 +14,9 @@ export class ToasterService {
 	) {
 		this.toastContainerElement = this.document.createElement(KolToastContainerTag);
 		this.document.body.prepend(this.toastContainerElement);
+		if (this.options?.defaultVariant) {
+			Log.info(`ToasterService: Default variant is deprecated. Use 'card' variant for all toasts instead.`);
+		}
 	}
 
 	/**
@@ -48,12 +51,15 @@ export class ToasterService {
 		 * so we can't enqueue toasts.
 		 */
 		if (this.toastContainerElement && typeof this.toastContainerElement.enqueue === 'function') {
-			toast.variant ??= this.options?.defaultVariant;
 			return this.toastContainerElement.enqueue(toast);
 		}
 	}
 
 	public closeAll(immediate: boolean = false): void {
+		/**
+		 * We need this condition for SSR. The toast container is not rendered on the server,
+		 * so we can't enqueue toasts.
+		 */
 		if (this.toastContainerElement && typeof this.toastContainerElement.closeAll === 'function') {
 			void this.toastContainerElement.closeAll(immediate);
 		}

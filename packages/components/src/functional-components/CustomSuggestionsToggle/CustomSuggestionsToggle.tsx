@@ -1,7 +1,7 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
+import type { JSXBase } from '@stencil/core/internal';
 import { KolIconTag } from '../../core/component-names';
 import { translate } from '../../i18n';
-import type { JSXBase } from '@stencil/core/internal';
 
 const translateDropdown = translate('kol-dropdown');
 

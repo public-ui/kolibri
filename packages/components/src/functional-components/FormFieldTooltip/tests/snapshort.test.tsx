@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import FormFieldTooltipFc from '../FormFieldTooltip';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import FormFieldTooltipFc from '../FormFieldTooltip';
 
 describe('FormFieldTooltipFc', () => {
 	it('should render correctly', async () => {

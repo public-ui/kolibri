@@ -1,5 +1,5 @@
+import { describe, expect, it } from '@jest/globals';
 import { InputDateController } from './controller';
-import { describe, it, expect } from '@jest/globals';
 
 const TEST_DATE = new Date('2020-03-03T03:02:01.099');
 

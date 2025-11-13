@@ -1,5 +1,7 @@
 import {
 	KolButton,
+	KolCombobox,
+	KolHeading,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -12,9 +14,7 @@ import {
 	KolInputText,
 	KolSelect,
 	KolSingleSelect,
-	KolCombobox,
 	KolTextarea,
-	KolHeading,
 } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';

@@ -1,9 +1,9 @@
 import { Routes } from '../../shares/types';
-import { TabsBasic } from './basic';
 import { TabsAlign } from './align';
-import { TabsIconsOnly } from './icons-only';
+import { TabsBasic } from './basic';
 import { TabsBehavior } from './behavior';
 import { CreateButton } from './create-button';
+import { TabsIconsOnly } from './icons-only';
 
 export const TABS_ROUTES: Routes = {
 	tabs: {

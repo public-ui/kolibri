@@ -5,8 +5,8 @@ import { PUBLIC_CODE_COMPONENT_URL, PUBLIC_DOC_COMPONENT_URL } from '../shares/c
 
 import { KolLink } from '@public-ui/react-v19';
 
-import { HideMenusContext } from '../shares/HideMenusContext';
 import { useLocation } from 'react-router';
+import { HideMenusContext } from '../shares/HideMenusContext';
 
 export const SampleDescription: FC<PropsWithChildren> = (props) => {
 	const hideMenus = useContext(HideMenusContext);

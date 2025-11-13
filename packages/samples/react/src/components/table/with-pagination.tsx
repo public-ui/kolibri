@@ -3,8 +3,8 @@ import React from 'react';
 
 import { KolTableStateful } from '@public-ui/react-v19';
 
-import { DATE_FORMATTER } from './formatter';
 import { SampleDescription } from '../SampleDescription';
+import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
 

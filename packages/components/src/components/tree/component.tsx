@@ -1,9 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
+import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
-import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 
 /**
  * @internal

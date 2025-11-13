@@ -1,7 +1,7 @@
 import { Component, h, type JSX, Method, Prop } from '@stencil/core';
 
-import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 import { KolTreeItemWcTag } from '../../core/component-names';
+import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 
 @Component({
 	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`

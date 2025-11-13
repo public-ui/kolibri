@@ -48,9 +48,7 @@ import { SingleSelectController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
@@ -253,7 +251,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 			state: this.state,
 			class: 'kol-single-select',
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInput?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -319,7 +316,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 							/>
 						)}
 
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} />
+						<CustomSuggestionsToggleFc onClick={this.onClick.bind(this)} disabled={isDisabled} />
 					</div>
 					{this._isOpen && !isDisabled && (
 						<CustomSuggestionsOptionsGroupFc
@@ -758,6 +755,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private onClick(event: MouseEvent): void {
 		this.toggleListbox(event);
+		this.refInput?.focus();
 		this.controller.onFacade.onClick(event);
 	}
 }

@@ -82,7 +82,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 	};
 
 	return (
-		<div aria-live={alert ? 'assertive' : 'polite'} role={alert ? 'alert' : 'status'} {...rootProps} data-testid="alert">
+		<div role={alert ? 'alert' : undefined} {...rootProps} data-testid="alert">
 			<div class="kol-alert__container">
 				<AlertIcon label={label} type={type} />
 				<div class="kol-alert__container-content">

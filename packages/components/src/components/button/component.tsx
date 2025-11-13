@@ -1,3 +1,5 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -10,8 +12,8 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
-	HideLabelPropType,
 	FocusableElement,
+	HideLabelPropType,
 	IconsPropType,
 	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
@@ -21,7 +23,6 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validateLinkVariant } from '../../schema';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
@@ -42,22 +43,21 @@ import {
 	validateHideLabel,
 	validateIcons,
 	validateLabelWithExpertSlot,
+	validateLinkVariant,
 	validateShortKey,
 	validateTooltipAlign,
 	watchString,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import clsx from 'clsx';
+import { KolTooltipWcTag } from '../../core/component-names';
+import { KolSpanFc } from '../../functional-components';
+import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { KolTooltipWcTag } from '../../core/component-names';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
-import { KolSpanFc } from '../../functional-components';
-import clsx from 'clsx';
 
 /**
  * @internal

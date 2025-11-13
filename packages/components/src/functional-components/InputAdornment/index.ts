@@ -1,2 +1,2 @@
-export { default } from './InputAdornment';
 export * from './InputAdornment';
+export { default } from './InputAdornment';

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { SampleDescription } from '../SampleDescription';
 import { ToasterService } from '@public-ui/components';
 import { KolInputText } from '@public-ui/react-v19';
+import * as React from 'react';
+import { SampleDescription } from '../SampleDescription';
 
 const smartButtonProps = {
 	_icons: 'codicon codicon-info',

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { KolSplitButton, KolToolbar } from '@public-ui/react-v19';
-import { SampleDescription } from '../SampleDescription';
-import { useToasterService } from '../../hooks/useToasterService';
 import type { ToolbarItemsPropType } from '@public-ui/components';
+import { KolSplitButton, KolToolbar } from '@public-ui/react-v19';
+import { useToasterService } from '../../hooks/useToasterService';
+import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
 

@@ -1,8 +1,8 @@
-import React from 'react';
 import type { Components } from '@public-ui/components';
+import React from 'react';
 
-import { ComboboxCases } from './cases';
 import { SampleColumns } from '../../SampleColumns';
+import { ComboboxCases } from './cases';
 
 export const ComboboxVariants = (props: Partial<Components.KolCombobox>) => {
 	return (

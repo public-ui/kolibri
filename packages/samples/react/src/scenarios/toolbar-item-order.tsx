@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import type { FC } from 'react';
 import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolHeading, KolToolbar } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 export const ToolbarItemOrder: FC = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);

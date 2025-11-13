@@ -6,4 +6,10 @@
 @layer kol-component {
 	@include kol-button-styles('kol-button');
 	@include kol-popover-button-styles;
+
+	.kol-popover-button--open {
+		.kol-button__tooltip {
+			display: none;
+		}
+	}
 }

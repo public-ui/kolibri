@@ -4,7 +4,8 @@ export type KoliBriTableCellTextAlign = 'center' | 'left' | 'right' | 'justify';
 export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
 
 export type KoliBriTableDataType = Record<string, unknown>;
-
+export type KoliBriTableSelectionKey = string | number;
+export type KoliBriTableSelectionKeys = KoliBriTableSelectionKey[];
 export type KoliBriTableCell = {
 	colSpan?: number;
 	label: string;
@@ -25,6 +26,6 @@ export type KoliBriTableSelection = {
 	label: (row: KoliBriTableDataType) => string;
 	keyPropertyName?: string;
 	multiple?: boolean;
-	selectedKeys?: string[];
-	disabledKeys?: string[];
+	selectedKeys?: KoliBriTableSelectionKeys;
+	disabledKeys?: KoliBriTableSelectionKeys;
 };

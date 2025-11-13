@@ -1,12 +1,12 @@
 import { Routes } from '../../shares/types';
+import { LinkAccessKey } from './access-key';
+import { LinkAriaDescription } from './aria-description';
 import { LinkBasic } from './basic';
 import { LinkIcons } from './icons';
 import { LinkImage } from './image';
-import { LinkTarget } from './target';
-import { LinkAriaDescription } from './aria-description';
-import { LinkAccessKey } from './access-key';
-import { LinkShortKey } from './short-key';
 import { LinkReactRouter } from './link-react-router';
+import { LinkShortKey } from './short-key';
+import { LinkTarget } from './target';
 
 export const LINK_ROUTES: Routes = {
 	link: {

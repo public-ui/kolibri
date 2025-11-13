@@ -1,9 +1,9 @@
+import { KolButton, KolTree, KolTreeItem } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useContext, useState } from 'react';
-import { KolButton, KolTree, KolTreeItem } from '@public-ui/react-v19';
-import { getRandomEmoji } from '../../shares/randomEmoji';
 import { useParams } from 'react-router';
 import { HideMenusContext } from '../../shares/HideMenusContext';
+import { getRandomEmoji } from '../../shares/randomEmoji';
 import { SampleDescription } from '../SampleDescription';
 
 export const TreeBasic: FC = () => {

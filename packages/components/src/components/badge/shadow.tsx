@@ -1,13 +1,13 @@
-import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
-import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolSpanFc } from '../../functional-components';
+import type { BadgeAPI, BadgeStates, ButtonProps, FocusableElement, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 import clsx from 'clsx';
+import { KolButtonWcTag } from '../../core/component-names';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({
@@ -17,14 +17,20 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge implements BadgeAPI {
+export class KolBadge implements BadgeAPI, FocusableElement {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
+	private smartButtonRef?: HTMLKolButtonWcElement;
+
+	private readonly catchSmartButtonRef = (ref?: HTMLKolButtonWcElement) => {
+		this.smartButtonRef = ref;
+	};
 
 	private renderSmartButton(props: ButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
+				ref={this.catchSmartButtonRef}
 				class="kol-badge__smart-button"
 				_ariaControls={this.id}
 				_customClass={props._customClass}
@@ -38,6 +44,14 @@ export class KolBadge implements BadgeAPI {
 				_buttonVariant={props._variant}
 			></KolButtonWcTag>
 		);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async kolFocus(): Promise<void> {
+		await this.smartButtonRef?.kolFocus();
 	}
 
 	public render(): JSX.Element {

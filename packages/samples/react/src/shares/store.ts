@@ -1,7 +1,7 @@
 import { Option } from '@public-ui/components';
 import PackageJson from '@public-ui/components/package.json';
 
-import { isTheme, Store, ThemeAndUnstyled, THEME_OPTIONS } from './theme';
+import { isTheme, Store, THEME_OPTIONS, ThemeAndUnstyled } from './theme';
 
 const STORE_IDENTIFIER = `public-ui.v${PackageJson.version}`;
 

@@ -3,6 +3,7 @@
 This package contains the Stencil based web component library for KoliBri.
 
 Use `pnpm --filter @public-ui/components build` to build the library or `pnpm start` for development.
+Always run a build before linting so the generated component typings exist for the check.
 
 ## Structure
 

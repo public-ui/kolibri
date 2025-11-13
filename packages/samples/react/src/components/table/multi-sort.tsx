@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
+import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
 import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react-v19';
-import type { KoliBriTableHeaders, KoliBriTableDataType } from '@public-ui/components';
+import { SampleDescription } from '../SampleDescription';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
-import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',

@@ -1,5 +1,5 @@
-import type { AccessKeyPropType, ButtonProps, InputTypeOnDefault, MsgPropType, PropLabelWithExpertSlot, ShortKeyPropType, Stringified } from '../../../schema';
 import type { Generic } from 'adopted-style-sheets';
+import type { AccessKeyPropType, ButtonProps, InputTypeOnDefault, MsgPropType, PropLabelWithExpertSlot, ShortKeyPropType, Stringified } from '../../../schema';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropLabelWithExpertSlot & {

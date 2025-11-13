@@ -1,199 +1,283 @@
-# KoliBri MCP Server
+# @public-ui/mcp
 
-[![npm version](https://badge.fury.io/js/@public-ui%2Fmcp.svg)](https://www.npmjs.com/package/@public-ui/mcp)
-[![License: EUPL-1.2](https://img.shields.io/badge/License-EUPL--1.2-blue.svg)](https://opensource.org/licenses/EUPL-1.2)
+> **KoliBri MCP Server with Search and HTTP Transport**
 
-A **Model Context Protocol (MCP) server** that provides AI agents with access to **136+ KoliBri component examples** and their source code. This enables LLMs to understand and generate code using the KoliBri design system components.
+A Model Context Protocol (MCP) server implementation using the official `@modelcontextprotocol/sdk` with fuzzy search capabilities for KoliBri component samples and documentation. Supports both stdio and HTTP/StreamableHTTP transports.
 
-## 🚀 Quick Start
-
-### Installation
+## Installation
 
 ```bash
-npm install @public-ui/mcp
-# or
 pnpm add @public-ui/mcp
 # or
-yarn add @public-ui/mcp
+npm install @public-ui/mcp
 ```
 
-### Usage as MCP Server
+## Usage
 
-Start the MCP server for AI agents:
+### As CLI (stdio transport)
 
 ```bash
 npx @public-ui/mcp
+# or
+pnpm exec kolibri-mcp
 ```
 
-The server will start on `http://localhost:3030` and provide the following endpoints:
+### As HTTP Server
 
-- `GET /mcp/health` - Server status and sample count
-- `GET /mcp/samples` - List all available component examples
-- `GET /mcp/sample?id=button/basic` - Get specific sample source code
-- `POST /mcp/refresh` - Refresh sample index
+```bash
+# Start the HTTP server on default port 3000
+node dist/mcp.mjs
 
-### Integration with AI Tools
+# Or specify a custom port
+PORT=8080 node dist/mcp.mjs
+```
 
-#### Claude Desktop (Anthropic)
+The HTTP server provides a StreamableHTTP transport endpoint at `POST /mcp` and loads all KoliBri samples and documentation at startup.
 
-Add to your Claude Desktop configuration:
+### Programmatically (stdio)
+
+```typescript
+import { createKolibriMcpServer } from '@public-ui/mcp';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+
+const server = createKolibriMcpServer();
+const transport = new StdioServerTransport();
+
+await server.connect(transport);
+```
+
+## Logging
+
+The MCP server supports optional request logging for debugging and monitoring. Logging is **disabled by default**.
+
+### Enable Logging
+
+Set the environment variable `MCP_LOGGING=true` or `MCP_LOGGING=1`:
+
+```bash
+# HTTP Server with logging
+MCP_LOGGING=true node dist/mcp.mjs
+
+# CLI with logging
+MCP_LOGGING=true npx @public-ui/mcp
+
+# Custom port with logging
+MCP_LOGGING=true PORT=8080 node dist/mcp.mjs
+```
+
+### Log Types
+
+When enabled, logs include:
+
+- **[TOOL]** - Tool invocations (search, fetch) with parameters and results
+- **[RESOURCE]** - Resource accesses (info, best-practices)
+- **[ERROR]** - Error conditions and failures
+
+### Log Format
+
+```
+[timestamp] [TYPE] message {json_data}
+```
+
+**Example:**
+
+```
+[2025-11-06T09:45:23.456Z] [TOOL] search called {
+  "query": "button",
+  "kind": "sample",
+  "limit": 10
+}
+[2025-11-06T09:45:23.478Z] [TOOL] search completed {
+  "query": "button",
+  "resultCount": 5,
+  "options": { "limit": 10, "kind": "sample" }
+}
+```
+
+## Available Tools
+
+### 1. `hello_kolibri`
+
+A simple greeting tool for testing the connection and getting server metadata.
+
+**Parameters:**
+
+- `name` (string, optional): Name to greet
+
+**Example:**
 
 ```json
 {
-	"mcpServers": {
-		"kolibri": {
-			"command": "npx",
-			"args": ["@public-ui/mcp"],
-			"env": {}
-		}
+	"name": "hello_kolibri",
+	"arguments": { "name": "World" }
+}
+```
+
+### 2. `search`
+
+Search for KoliBri component samples, scenarios, and documentation using fuzzy search powered by Fuse.js.
+
+**Parameters:**
+
+- `query` (string, optional): Search query (leave empty to return all entries)
+- `kind` (string, optional): Filter by "doc", "sample", or "scenario"
+- `limit` (number, optional): Maximum results (default: 10)
+
+**Example:**
+
+```json
+{
+	"name": "search",
+	"arguments": {
+		"query": "button",
+		"kind": "sample",
+		"limit": 5
 	}
 }
 ```
 
-#### Custom MCP Client
+### 3. `fetch`
 
-```javascript
-import { spawn } from 'child_process';
+Get a specific sample or documentation entry by its ID.
 
-// Start MCP server
-const mcpServer = spawn('npx', ['@public-ui/mcp']);
+**Parameters:**
 
-// Make requests to the server
-const response = await fetch('http://localhost:3030/mcp/samples');
-const samples = await response.json();
-```
+- `id` (string, required): Entry ID (e.g., "button/basic")
 
-## 📚 What's Included
-
-This MCP server provides access to **136+ KoliBri component examples** including:
-
-- **Basic Components**: Button, Input, Link, Icon, Badge, etc.
-- **Form Components**: Form, Select, Textarea, Checkbox, Radio, etc.
-- **Layout Components**: Card, Accordion, Tabs, Modal, etc.
-- **Navigation**: Breadcrumb, Pagination, Navigation, etc.
-- **Data Display**: Table, Alert, Toast, Progress, etc.
-- **Advanced Components**: Tree, Tooltip, Popover, etc.
-
-Each sample includes:
-
-- ✅ **Complete source code** (React/TypeScript)
-- ✅ **Component usage examples**
-- ✅ **Accessibility implementations**
-- ✅ **Responsive design patterns**
-
-## 🔌 API Reference
-
-### GET /mcp/health
-
-Returns server status and metadata:
+**Example:**
 
 ```json
 {
-	"healthy": true,
-	"totalSamples": 136,
-	"sampleGroups": ["button", "input", "table", "..."],
-	"version": "3.0.7"
+	"name": "fetch",
+	"arguments": { "id": "button/basic" }
 }
 ```
 
-### GET /mcp/samples
+## Available Resources
 
-List all available samples with optional filtering:
+### 1. `info`
 
-```bash
-# Get all samples
-curl http://localhost:3030/mcp/samples
+Get information about the KoliBri MCP Server and available samples.
 
-# Filter by component
-curl "http://localhost:3030/mcp/samples?q=button"
-```
+**Resource URI:** `kolibri://info`
 
-### GET /mcp/sample?id={sampleId}
-
-Get complete source code for a specific sample:
-
-```bash
-curl "http://localhost:3030/mcp/sample?id=button/basic"
-```
-
-Returns:
+**Example:**
 
 ```json
 {
-	"id": "button/basic",
-	"group": "button",
-	"name": "basic",
-	"path": "packages/samples/react/src/components/button/basic.tsx",
-	"code": "import React from 'react';\nimport { KolButton } from '@public-ui/react';\n..."
+	"method": "resources/read",
+	"params": { "uri": "kolibri://info" }
 }
 ```
 
-## 🛠️ Use Cases
+### 2. `best-practices`
 
-### For AI Agents
+Essential guidelines for working with KoliBri Web Components. This resource provides base knowledge that AI agents should always consider when working with KoliBri components.
 
-- **Code Generation**: Generate KoliBri components with proper usage patterns
-- **Documentation**: Understand component APIs and props
-- **Best Practices**: Learn accessibility and responsive design implementations
-- **Debugging**: Find working examples for troubleshooting
+**Resource URI:** `kolibri://best-practices`
 
-### For Developers
+**Includes:**
 
-- **Component Discovery**: Browse all available KoliBri components
-- **Copy-Paste Examples**: Get ready-to-use component code
-- **Learning Resource**: Understand KoliBri design system patterns
-- **Integration Guide**: See how components work together
+1. Always register KoliBri Web Components in the browser runtime before rendering them
+2. Choose the integration guide that matches your project setup to load and bundle the components correctly
+3. Bundle the KoliBri icon font assets (for example codicon.css and codicon.ttf) so kol-icon glyphs can render
+4. Wrap input elements with `<kol-form>` and feed its `_errorList` to surface validation issues via the generated error summary
 
-## 🌐 Online Demo
+**Example:**
 
-Try the live API at: [https://kolibri-mcp.vercel.app](https://kolibri-mcp.vercel.app)
+```json
+{
+	"method": "resources/read",
+	"params": { "uri": "kolibri://best-practices" }
+}
+```
 
-- Landing page with API documentation
-- Interactive sample browser
-- Real-time health status
-- Direct API access
+## Example Searches
 
-## 🔧 Configuration
-
-### Environment Variables
+**Search for button components:**
 
 ```bash
-PORT=3030          # Server port (default: 3030)
-NODE_ENV=production # Environment mode
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"search","arguments":{"query":"button"}}}' | npx @public-ui/mcp
 ```
 
-### Programmatic Usage
+**Search for accessibility documentation:**
 
-```javascript
-import { handleApiRequest } from '@public-ui/mcp';
-
-// Create custom server
-const server = require('http').createServer((req, res) => {
-	handleApiRequest(req, res);
-});
-
-server.listen(3030, () => {
-	console.log('KoliBri MCP Server running on port 3030');
-});
+```bash
+echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search","arguments":{"query":"accessibility","kind":"doc"}}}' | npx @public-ui/mcp
 ```
 
-## 📖 About KoliBri
+**Get a specific sample:**
 
-[KoliBri](https://public-ui.github.io) is a comprehensive design system and component library focused on:
+```bash
+echo '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"fetch","arguments":{"id":"button/basic"}}}' | npx @public-ui/mcp
+```
 
-- ♿ **Accessibility-first** design (WCAG 2.1 AA compliant)
-- 🎨 **Themeable** components with design tokens
-- 🔧 **Framework-agnostic** (React, Angular, Vue, etc.)
-- 🏛️ **Government-ready** (developed by ITZBund)
+## Development
 
-## 📄 License
+```bash
+# Install dependencies
+pnpm install
 
-This project is licensed under the [EUPL-1.2](https://opensource.org/licenses/EUPL-1.2) license.
+# Build
+pnpm build
 
-## 🤝 Contributing
+# Start (stdio mode)
+pnpm start
 
-See [AGENTS.md](./AGENTS.md) for development instructions and contribution guidelines.
+# Format
+pnpm format
 
----
+# Test
+pnpm test
+```
 
-**Made with ❤️ by [ITZBund](https://www.itzbund.de) for the German government and open source community.**
+## Deployment
+
+### Vercel
+
+This package can be deployed to Vercel as a serverless API:
+
+```bash
+# Quick start
+pnpm run generate-index
+pnpm run build
+vercel --prod
+```
+
+After deployment, the following endpoints are available:
+
+- `GET /` - Landing page with API documentation
+- `POST /mcp` - MCP server endpoint (StreamableHTTP transport)
+
+For detailed deployment instructions:
+
+- **Quick Start**: See [QUICK_START_VERCEL.md](./QUICK_START_VERCEL.md)
+- **Full Guide**: See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
+
+### Local stdio mode
+
+```bash
+# Start server locally
+pnpm start
+# or
+npx @public-ui/mcp
+```
+
+## Sample Data
+
+Currently includes example entries for:
+
+- **Samples**: button/basic, input/text, table/basic
+- **Docs**: getting-started, accessibility
+
+In production, this would be replaced with actual KoliBri component data.
+
+## Dependencies
+
+- `@modelcontextprotocol/sdk`: ^1.21.0 - Official MCP SDK
+- `fuse.js`: ^7.1.0 - Fuzzy search library
+- `zod`: ^3.23.8 - Schema validation
+
+## License
+
+EUPL-1.2

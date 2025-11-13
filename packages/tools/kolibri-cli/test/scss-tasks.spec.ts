@@ -1,5 +1,5 @@
-import assert from 'node:assert';
 import fs from 'fs';
+import assert from 'node:assert';
 import os from 'os';
 import path from 'path';
 import { ScssAddSelectorTask } from '../src/migrate/runner/tasks/common/ScssAddSelectorTask';

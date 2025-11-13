@@ -1,10 +1,11 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import type {
 	AccordionAPI,
-	AccordionStates,
 	AccordionCallbacksPropType,
+	AccordionStates,
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
@@ -13,9 +14,8 @@ import type {
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
-import { watchHeadingLevel } from '../heading/validation';
-import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { watchHeadingLevel } from '../heading/validation';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 

@@ -3,8 +3,8 @@ import React, { forwardRef } from 'react';
 import { InputDateCases } from './cases';
 
 import type { Components } from '@public-ui/components';
-import { InputDateMinMaxCases } from './minMax';
 import { SampleColumns } from '../../SampleColumns';
+import { InputDateMinMaxCases } from './minMax';
 export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.KolInputDate>(function InputDateVariant(props, ref) {
 	return (
 		<SampleColumns>

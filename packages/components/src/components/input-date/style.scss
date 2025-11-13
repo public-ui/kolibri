@@ -10,4 +10,28 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+
+	/**
+	 * Workaround for detecting focus state of the native date input's calendar icon.
+	 * The `:focus-visible` pseudo class does not work on the icon itself, but only on the input element.
+	 * By using the `content` property we can detect whether the icon is focused by inspecting the computed style in JS.
+	 * This should be replaced once native focus detection for the icon is available.
+	 */
+	:host {
+		input[type='date'],
+		input[type='datetime-local'],
+		input[type='month'],
+		input[type='time'],
+		input[type='week'] {
+			content: 'native-icon-focused';
+		}
+
+		input[type='date']:focus-visible,
+		input[type='datetime-local']:focus-visible,
+		input[type='month']:focus-visible,
+		input[type='time']:focus-visible,
+		input[type='week']:focus-visible {
+			content: 'native-icon-not-focused';
+		}
+	}
 }

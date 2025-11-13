@@ -5,6 +5,7 @@ import {
 	KolButton,
 	KolButtonLink,
 	KolCard,
+	KolCombobox,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -17,15 +18,14 @@ import {
 	KolInputText,
 	KolSelect,
 	KolSingleSelect,
-	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../shares/country';
 
-import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { W3CInputValue } from '@public-ui/components';
+import type { HTMLStencilElement } from '@stencil/core/internal';
 
 const EventTargetContext = createContext<EventTarget | undefined>(undefined);
 const EventLoggerActiveContext = createContext<boolean>(false);

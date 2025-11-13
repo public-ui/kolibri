@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
 import type { ButtonProps, LinkProps } from '../../schema';
+import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
 
 /* types */
 export type ToolbarItemPropType =

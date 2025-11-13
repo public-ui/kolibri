@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { KolAlert, KolHeading } from '@public-ui/react-v19';
-import { SampleDescription } from '../SampleDescription';
 import type { FC } from 'react';
+import { SampleDescription } from '../SampleDescription';
 
 export const AlertHtml: FC = () => (
 	<>

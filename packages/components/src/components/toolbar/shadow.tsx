@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Prop, State, Watch } from '@stencil/core';
 
-import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
+import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import type { LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
-import { KolLinkWcTag, KolButtonWcTag } from '../../core/component-names';
+import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
-import { KeyboardKey } from '../../schema/enums';
 
 @Component({
 	tag: 'kol-toolbar',

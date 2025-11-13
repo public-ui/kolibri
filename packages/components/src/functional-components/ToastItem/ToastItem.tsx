@@ -2,8 +2,8 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { type Toast } from '../../schema';
 
-import KolAlertFc from '../Alert';
 import clsx from 'clsx';
+import KolAlertFc from '../Alert';
 
 type ToastItemProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	status: 'adding' | 'settled' | 'removing';

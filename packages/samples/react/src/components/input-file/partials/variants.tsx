@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
-import { InputFileCases } from './cases';
 import { SampleColumns } from '../../SampleColumns';
+import { InputFileCases } from './cases';
 
 import type { Components } from '@public-ui/components';
 export const InputFileVariants = forwardRef<HTMLKolInputFileElement, Components.KolInputFile>(function InputFileVariant(props, ref) {

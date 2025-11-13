@@ -1,10 +1,10 @@
 import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@stencil/core';
+import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { nonce } from '../../utils/dev.utils';
-import { watchHeadingLevel } from '../heading/validation';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.

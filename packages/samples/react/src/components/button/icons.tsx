@@ -3,8 +3,8 @@ import React from 'react';
 import { KolButton } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
-import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleDescription } from '../SampleDescription';
 
 export const ButtonIcons: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
@@ -37,6 +37,7 @@ export const ButtonIcons: FC = () => {
 					}}
 					_label="Label"
 					_on={dummyEventHandler}
+					className="w-10rem"
 				/>
 			</div>
 		</>

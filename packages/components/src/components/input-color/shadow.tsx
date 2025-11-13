@@ -3,8 +3,11 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import type {
 	AutoCompletePropType,
 	ButtonProps,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputColorAPI,
@@ -18,9 +21,6 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -37,9 +37,7 @@ import { InputColorController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputColorElement;
@@ -110,7 +108,6 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 			state: this.state,
 			class: 'kol-input-color',
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInputText?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

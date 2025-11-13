@@ -12,6 +12,8 @@ import type {
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
+	KoliBriTableSelectionKey,
+	KoliBriTableSelectionKeys,
 	LabelPropType,
 	PaginationPositionPropType,
 	SortEventPayload,
@@ -43,9 +45,9 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import { validateTableSettings } from '../../schema/props/table-settings';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -432,7 +434,7 @@ export class KolTableStateful implements TableAPI {
 			sortedData.sort((a: KoliBriTableDataType, b: KoliBriTableDataType) => {
 				for (let index = 0; index < this.sortData.length; index++) {
 					const data = this.sortData[index];
-					const result = data.compareFn(a, b);
+					const result = data.compareFn(a, b, data.direction);
 					if (result !== 0) {
 						return data.direction === 'ASC' ? result : -result;
 					}
@@ -457,7 +459,7 @@ export class KolTableStateful implements TableAPI {
 		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
-				<span>
+				<span role="status" aria-live="polite">
 					{translate('kol-table-visible-range', {
 						placeholders: {
 							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
@@ -509,27 +511,28 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: string[] | string): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): null | KoliBriTableDataType | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const data = this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+			const keys = Array.isArray(selectedKeys) ? selectedKeys : [selectedKeys];
+			const keySet = new Set(keys.map(String));
+			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
 			if (selection?.multiple === false) {
 				return data[0];
 			}
-
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: string[] | string): void {
+	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: typeof value === 'object' ? value : [value],
+					selectedKeys: Array.isArray(value) ? value : [value],
 				},
 			};
 		const selectedData = this.getSelectedData(value);
@@ -548,7 +551,7 @@ export class KolTableStateful implements TableAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
-		const selectedKeys: string[] = this.state._selection?.selectedKeys || [];
+		const selectedKeys: KoliBriTableSelectionKeys = this.state._selection?.selectedKeys || [];
 		return this.getSelectedData(selectedKeys);
 	}
 
@@ -579,7 +582,7 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: string[] | string) => {
+						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}

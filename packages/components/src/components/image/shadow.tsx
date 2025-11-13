@@ -1,6 +1,6 @@
-import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '../../schema';
-import { validateAlt, validateImageSizes, validateImageSrcset, validateImageSource, validateLoading } from '../../schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
+import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '../../schema';
+import { validateAlt, validateImageSizes, validateImageSource, validateImageSrcset, validateLoading } from '../../schema';
 
 import type { JSX } from '@stencil/core';
 @Component({

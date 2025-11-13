@@ -1,8 +1,8 @@
+import type { ToolbarItemsPropType } from '@public-ui/components';
+import { KolHeading, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { KolHeading, KolToolbar } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import type { ToolbarItemsPropType } from '@public-ui/components';
 
 export const ToolbarBasic: FC = () => {
 	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
