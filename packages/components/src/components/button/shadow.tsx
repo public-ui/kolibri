@@ -43,6 +43,14 @@ export class KolButton implements ButtonProps, FocusableElement {
 	}
 
 	/**
+	 * Hides the tooltip.
+	 */
+	@Method()
+	public async hideTooltip() {
+		await this.buttonWcRef?.hideTooltip();
+	}
+
+	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()

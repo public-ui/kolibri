@@ -86,10 +86,14 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {
-		void this.tooltipRef?.hideTooltip();
+		void this.tooltipRef?.hideTooltipPermanently();
 	}
 
 	private readonly onClick = (event: MouseEvent) => {
+		if (this.state._hideLabel) {
+			void this.hideTooltip();
+		}
+
 		if (this.state._type === 'submit') {
 			propagateSubmitEventToForm({
 				form: this.host,

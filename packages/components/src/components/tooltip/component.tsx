@@ -24,6 +24,8 @@ export class KolTooltipWc implements TooltipAPI {
 	private tooltipElement?: HTMLDivElement;
 	private hasFocusIn = false;
 	private hasMouseIn = false;
+	private wasManuallyHidden = false;
+	private manualHideTimeout?: ReturnType<typeof setTimeout>;
 
 	private cleanupAutoPositioning?: () => void;
 
@@ -39,6 +41,10 @@ export class KolTooltipWc implements TooltipAPI {
 	}
 
 	private showTooltip = (): void => {
+		if (this.wasManuallyHidden) {
+			return;
+		}
+
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
 			tooltipOpened();
@@ -77,6 +83,20 @@ export class KolTooltipWc implements TooltipAPI {
 		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
 	}
 
+	/**
+	 * Hides the tooltip and prevents it from reopening automatically for a short time.
+	 * @internal
+	 */
+	@Method()
+	public async hideTooltipPermanently() {
+		if (this.manualHideTimeout) {
+			clearTimeout(this.manualHideTimeout);
+		}
+
+		this.wasManuallyHidden = true;
+		await this.hideTooltip();
+	}
+
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
 			void this.hideTooltip();
@@ -85,21 +105,41 @@ export class KolTooltipWc implements TooltipAPI {
 
 	private handleMouseEnter = (): void => {
 		this.hasMouseIn = true;
+
+		const isTooltipVisible = this.tooltipElement?.classList.contains('show');
+		if (!isTooltipVisible) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
 	private handleMouseleave = (event: Event): void => {
 		this.hasMouseIn = this.tooltipElement?.contains((event as MouseEvent).relatedTarget as Node) ?? false;
+
+		if (!this.hasMouseIn && !this.hasFocusIn && this.wasManuallyHidden) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
 	private handleFocusIn = (): void => {
 		this.hasFocusIn = true;
+		const isTooltipVisible = this.tooltipElement?.classList.contains('show');
+		if (!isTooltipVisible) {
+			this.wasManuallyHidden = false;
+		}
 		this.showOrHideTooltip();
 	};
 
 	private handleFocusout = (): void => {
 		this.hasFocusIn = false;
+
+		if (!this.hasMouseIn && !this.hasFocusIn) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
@@ -210,7 +250,6 @@ export class KolTooltipWc implements TooltipAPI {
 			} else {
 				void this.hideTooltip();
 			}
-			// Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
 		}, 300);
 	};
 
@@ -248,6 +287,9 @@ export class KolTooltipWc implements TooltipAPI {
 		}
 		if (this.cleanupAutoPositioning) {
 			this.cleanupAutoPositioning();
+		}
+		if (this.manualHideTimeout) {
+			clearTimeout(this.manualHideTimeout);
 		}
 	}
 }
