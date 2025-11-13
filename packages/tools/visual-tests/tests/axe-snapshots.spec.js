@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { checkA11y, injectAxe } from 'axe-playwright';
+import { checkA11y, injectAxe } from '@axe-core/playwright';
 import process from 'process';
 import { ROUTES } from './sample-app.routes.js';
 
