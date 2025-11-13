@@ -10,10 +10,6 @@ export const ButtonIcons: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
 	const buttonRef = useRef<HTMLKolButtonElement>(null);
 
-	const hide = () => {
-		buttonRef.current?.hideTooltip();
-	};
-
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
