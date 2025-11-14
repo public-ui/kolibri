@@ -26,6 +26,8 @@ export const ButtonHideLabel: FC = () => {
 					<div className="flex flex-wrap gap-4">
 						<KolButton _hideLabel _icons="codicon codicon-home" _label="Home" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="codicon codicon-heart" _label="Like" _variant="secondary" _on={dummyEventHandler} />
+						<KolButton _hideLabel _icons="codicon codicon-bell" _label="Subscribe" _variant="tertiary" _on={dummyEventHandler} />
+						<KolButton _hideLabel _icons="codicon codicon-coffee" _label="Buy me a coffee" _variant="normal" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="codicon codicon-trash" _label="Delete" _variant="danger" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="codicon codicon-settings-gear" _label="Settings" _variant="ghost" _on={dummyEventHandler} />
 					</div>
@@ -44,6 +46,8 @@ export const ButtonHideLabel: FC = () => {
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _hideLabel _icons="codicon codicon-home" _label="Home" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _hideLabel _icons="codicon codicon-heart" _label="Like" _variant="secondary" _on={dummyEventHandler} />
+						<KolButton _disabled _hideLabel _icons="codicon codicon-bell" _label="Subscribe" _variant="tertiary" _on={dummyEventHandler} />
+						<KolButton _disabled _hideLabel _icons="codicon codicon-coffee" _label="Buy me a coffee" _variant="normal" _on={dummyEventHandler} />
 						<KolButton _disabled _hideLabel _icons="codicon codicon-trash" _label="Delete" _variant="danger" _on={dummyEventHandler} />
 					</div>
 				</section>
