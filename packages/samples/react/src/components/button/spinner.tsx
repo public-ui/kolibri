@@ -15,8 +15,8 @@ export const ButtonSpinner: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates icon-only buttons with an animated spinning loader icon. The animation is applied using CSS parts to target the icon
-					element directly.
+					This story demonstrates icon-only buttons with an animated spinning loader icon. The animation is applied using CSS parts to target the icon element
+					directly.
 				</p>
 			</SampleDescription>
 

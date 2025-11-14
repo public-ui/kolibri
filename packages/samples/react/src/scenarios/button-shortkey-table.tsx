@@ -3,8 +3,8 @@ import { ToasterService } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useRef } from 'react';
-import { getRoot } from '../shares/react-roots';
 import { SampleDescription } from '../components/SampleDescription';
+import { getRoot } from '../shares/react-roots';
 
 const RowActions: FC<{ label: string }> = ({ label }) => {
 	const toaster = ToasterService.getInstance(document);
@@ -103,8 +103,8 @@ export const ButtonShortkeyTable: FC = () => {
 					indicators and are also functionally implemented.
 				</p>
 				<p>
-					<strong>How to use:</strong> Move focus within one of the &quot;Actions&quot; cells and press &quot;e&quot; to edit or &quot;d&quot; to delete
-					the corresponding row.
+					<strong>How to use:</strong> Move focus within one of the &quot;Actions&quot; cells and press &quot;e&quot; to edit or &quot;d&quot; to delete the
+					corresponding row.
 				</p>
 			</SampleDescription>
 

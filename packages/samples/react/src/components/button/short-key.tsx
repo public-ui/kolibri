@@ -15,8 +15,8 @@ export const ButtonShortKey: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates buttons with short keys (visual keyboard shortcuts). The short key is displayed as a visual indicator within the button
-					label, but it is purely visual and needs custom functionality implementation to make it interactive.
+					This story demonstrates buttons with short keys (visual keyboard shortcuts). The short key is displayed as a visual indicator within the button label,
+					but it is purely visual and needs custom functionality implementation to make it interactive.
 				</p>
 			</SampleDescription>
 
