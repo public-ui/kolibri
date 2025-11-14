@@ -588,7 +588,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
-									this.handleSelectionChangeCallbackAndEvent(event, keyProperty);
+									this.handleSelectionChangeCallbackAndEvent(event, [keyProperty]);
 								}}
 							/>
 						</label>
