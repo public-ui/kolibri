@@ -9,6 +9,7 @@ import { ButtonHideLabel } from './hide-label';
 import { ButtonIcons } from './icons';
 import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
 import { ButtonShortKey } from './short-key';
+import { ButtonSpinner } from './spinner';
 import { ButtonVariants } from './variants';
 import { ButtonWidth } from './width';
 
@@ -19,6 +20,7 @@ export const BUTTON_ROUTES: Routes = {
 		disabled: ButtonDisabled,
 		'hide-label': ButtonHideLabel,
 		icons: ButtonIcons,
+		spinner: ButtonSpinner,
 		width: ButtonWidth,
 		'access-key': ButtonAccessKey,
 		'aria-description': ButtonAriaDescription,

@@ -109,6 +109,24 @@ export const ButtonIcons: FC = () => {
 						<KolButton _icons="codicon codicon-trash" _label="Trash Icon" _on={dummyEventHandler} />
 					</div>
 				</section>
+
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Large Icon on Top" />
+					<div className="flex flex-wrap gap-4">
+						<KolButton
+							_icons={{
+								top: {
+									style: {
+										'font-size': '400%',
+									},
+									icon: 'codicon codicon-home',
+								},
+							}}
+							_label="Home"
+							_on={dummyEventHandler}
+						/>
+					</div>
+				</section>
 			</div>
 		</>
 	);
