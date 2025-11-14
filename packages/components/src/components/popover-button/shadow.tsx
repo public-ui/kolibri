@@ -41,6 +41,15 @@ export class KolPopoverButton implements PopoverButtonProps {
 		void this.ref?.hidePopover();
 	}
 
+	/**
+	 * Shows the popover programmatically by forwarding the call to the web component.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.ref?.showPopover();
+	}
+
 	private catchRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.ref = ref;
 	};
