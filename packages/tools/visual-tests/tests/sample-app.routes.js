@@ -119,7 +119,21 @@ ROUTES.set('button-link/image', {
 		},
 	},
 });
-ROUTES.set('button/basic', {
+ROUTES.set('button/variants', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('button/disabled', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('button/hide-label', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -128,31 +142,6 @@ ROUTES.set('button/basic', {
 });
 ROUTES.set('button/icons', {
 	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/width', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/access-key', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/baselined', {
-	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
@@ -160,10 +149,6 @@ ROUTES.set('button/baselined', {
 });
 ROUTES.set('button/short-key', {
 	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 434,
-		},
 		zoom: {
 			skip: true,
 		},
