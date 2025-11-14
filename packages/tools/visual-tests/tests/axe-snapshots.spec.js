@@ -1,5 +1,5 @@
-import { test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { test } from '@playwright/test';
 import axeHtmlReporter from 'axe-html-reporter';
 import process from 'process';
 import { ROUTES } from './sample-app.routes.js';
@@ -66,12 +66,12 @@ ROUTES.forEach((options, route) => {
 	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots')) {
 		return;
 	}
-        test(`snapshot for ${route}`, async ({ page }, testInfo) => {
-                const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
-                await page.goto(`/#${route}${hideMenusParam}`);
-                await page.waitForLoadState('networkidle');
-                await page.addStyleTag({
-                        content: `
+	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
+		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
+		await page.goto(`/#${route}${hideMenusParam}`);
+		await page.waitForLoadState('networkidle');
+		await page.addStyleTag({
+			content: `
 				* {
 					transition: none !important;
 					animation: none !important;
@@ -81,9 +81,9 @@ ROUTES.forEach((options, route) => {
 		if (options?.snapshot?.viewportSize) {
 			await page.setViewportSize(options?.snapshot?.viewportSize);
 		}
-                if (options?.snapshot?.waitForTimeout) {
-                        await page.waitForTimeout(options?.snapshot?.waitForTimeout);
-                }
+		if (options?.snapshot?.waitForTimeout) {
+			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
+		}
 
 		const builder = new AxeBuilder({ page }).withTags(AXE_TAGS);
 		const results = await builder.analyze();
@@ -96,5 +96,5 @@ ROUTES.forEach((options, route) => {
 			options: buildReportOptions(testInfo, route),
 		});
 		logViolations(route, results.violations);
-        });
+	});
 });
