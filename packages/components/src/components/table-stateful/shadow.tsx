@@ -269,7 +269,9 @@ export class KolTableStateful implements TableAPI {
 									if (sortDirection === 'ASC' || sortDirection === 'DESC') {
 										if (typeof cell.compareFn === 'function') {
 											if (this.state._allowMultiSort || this.sortData.length === 0) {
-												this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
+												if (!this.sortData.some((value) => value.label === cell.label)) {
+													this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
+												}
 											}
 											hasSortedCells = true;
 										}
