@@ -51,6 +51,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 						{
 							value: 'by',
 							label: 'Bayern',
+							disabled: true,
 						},
 						{
 							value: 'be',
@@ -67,7 +68,6 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 						{
 							value: 'hh',
 							label: 'Hamburg',
-							disabled: true,
 						},
 						{
 							value: 'he',
@@ -76,6 +76,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 						{
 							value: 'mv',
 							label: 'Mecklenburg-Vorpommern',
+							disabled: true,
 						},
 						{
 							value: 'ni',
@@ -89,6 +90,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 						{
 							value: 'rp',
 							label: 'Rheinland-Pfalz',
+							disabled: true,
 						},
 						{
 							value: 'sl',
@@ -106,6 +108,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 						{
 							value: 'sh',
 							label: 'Schleswig-Holstein',
+							disabled: true,
 						},
 						{
 							value: 'th',
