@@ -44,14 +44,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	}
 
 	/**
-	 * Hides the tooltip.
-	 */
-	@Method()
-	public async hideTooltip() {
-		await this.buttonWcRef?.hideTooltip();
-	}
-
-	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()

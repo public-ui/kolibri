@@ -22,7 +22,6 @@ export const ButtonIcons: FC = () => {
 
 			<div>
 				<KolButton
-					ref={buttonRef}
 					_icons={{
 						bottom: 'codicon codicon-arrow-down',
 						left: {

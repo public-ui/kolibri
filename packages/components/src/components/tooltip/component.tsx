@@ -69,6 +69,11 @@ export class KolTooltipWc implements TooltipAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {
+		if (this.manualHideTimeout) {
+			clearTimeout(this.manualHideTimeout);
+		}
+
+		this.wasManuallyHidden = true;
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
 			tooltipClosed();
@@ -81,20 +86,6 @@ export class KolTooltipWc implements TooltipAPI {
 			}
 		}
 		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
-	}
-
-	/**
-	 * Hides the tooltip and prevents it from reopening automatically for a short time.
-	 * @internal
-	 */
-	@Method()
-	public async hideTooltipPermanently() {
-		if (this.manualHideTimeout) {
-			clearTimeout(this.manualHideTimeout);
-		}
-
-		this.wasManuallyHidden = true;
-		await this.hideTooltip();
 	}
 
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
