@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
 import { KolButton, KolHeading, KolLink } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { SampleDescription } from '../../SampleDescription';
 
@@ -16,8 +16,8 @@ export const ButtonStoryAccessKey: FC = () => {
 			<SampleDescription>
 				<p>
 					This story demonstrates buttons with{' '}
-					<KolLink _label="access keys" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="blank" />.
-					Access keys allow users to trigger buttons using keyboard shortcuts.
+					<KolLink _label="access keys" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="blank" />. Access keys
+					allow users to trigger buttons using keyboard shortcuts.
 				</p>
 			</SampleDescription>
 

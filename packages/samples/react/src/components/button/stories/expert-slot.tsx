@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
 import { KolButton, KolHeading } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { SampleDescription } from '../../SampleDescription';
 
@@ -15,8 +15,8 @@ export const ButtonStoryExpertSlot: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates the expert slot feature of KolButton. The expert slot allows you to insert custom content into the button,
-					providing advanced customization options beyond the standard label and icon properties.
+					This story demonstrates the expert slot feature of KolButton. The expert slot allows you to insert custom content into the button, providing advanced
+					customization options beyond the standard label and icon properties.
 				</p>
 			</SampleDescription>
 

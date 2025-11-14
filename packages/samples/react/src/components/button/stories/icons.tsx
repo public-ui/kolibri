@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
 import { KolButton, KolHeading } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { SampleDescription } from '../../SampleDescription';
 
@@ -15,8 +15,8 @@ export const ButtonStoryIcons: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story showcases buttons with icons in various positions and configurations. Icons can be placed on the left, right, top, bottom,
-					or in multiple positions at once.
+					This story showcases buttons with icons in various positions and configurations. Icons can be placed on the left, right, top, bottom, or in multiple
+					positions at once.
 				</p>
 			</SampleDescription>
 

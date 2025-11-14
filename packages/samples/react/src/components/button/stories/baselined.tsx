@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
 import { KolButton, KolHeading } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { SampleDescription } from '../../SampleDescription';
 
@@ -15,8 +15,8 @@ export const ButtonStoryBaselined: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates button baseline alignment. It shows multiple buttons with and without icons that are vertically aligned,
-					useful for testing layout consistency.
+					This story demonstrates button baseline alignment. It shows multiple buttons with and without icons that are vertically aligned, useful for testing
+					layout consistency.
 				</p>
 			</SampleDescription>
 

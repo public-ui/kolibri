@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
 import { KolButton, KolHeading } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { SampleDescription } from '../../SampleDescription';
 
@@ -15,8 +15,8 @@ export const ButtonStoryBase: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates the most important features of the KolButton component. It showcases the different button variants, icons,
-					disabled state, and hidden labels.
+					This story demonstrates the most important features of the KolButton component. It showcases the different button variants, icons, disabled state, and
+					hidden labels.
 				</p>
 			</SampleDescription>
 

@@ -7,8 +7,8 @@ import { ButtonExpertSlot } from './expert-slot';
 import { ButtonIcons } from './icons';
 import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
 import { ButtonShortKey } from './short-key';
-import { ButtonWidth } from './width';
 import { BUTTON_STORY_ROUTES } from './stories/routes';
+import { ButtonWidth } from './width';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {

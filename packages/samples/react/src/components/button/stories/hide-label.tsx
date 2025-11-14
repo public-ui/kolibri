@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
 import { KolButton, KolHeading } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { SampleDescription } from '../../SampleDescription';
 
@@ -15,8 +15,8 @@ export const ButtonStoryHideLabel: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates buttons with hidden labels. The label is still accessible to screen readers but visually hidden, showing only
-					the icon. This is useful for icon-only buttons.
+					This story demonstrates buttons with hidden labels. The label is still accessible to screen readers but visually hidden, showing only the icon. This
+					is useful for icon-only buttons.
 				</p>
 			</SampleDescription>
 

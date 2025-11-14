@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import type { FC } from 'react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolHeading, KolTableStateful } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React, { useRef } from 'react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import { getRoot } from '../../../shares/react-roots';
 import { SampleDescription } from '../../SampleDescription';
@@ -100,12 +100,12 @@ export const ButtonStoryShortKey: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This story demonstrates buttons with short keys (visual keyboard shortcuts). The first section shows basic short key usage - the
-					short key is purely visual and needs custom functionality implementation.
+					This story demonstrates buttons with short keys (visual keyboard shortcuts). The first section shows basic short key usage - the short key is purely
+					visual and needs custom functionality implementation.
 				</p>
 				<p>
-					The second section showcases an interactive table where each row contains two buttons with shortcut keys. Move focus to any
-					&quot;Actions&quot; cell and press &quot;e&quot; or &quot;d&quot; to activate the corresponding action.
+					The second section showcases an interactive table where each row contains two buttons with shortcut keys. Move focus to any &quot;Actions&quot; cell
+					and press &quot;e&quot; or &quot;d&quot; to activate the corresponding action.
 				</p>
 			</SampleDescription>
 
