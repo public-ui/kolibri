@@ -14,58 +14,41 @@ export const ButtonSpinner: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This story demonstrates icon-only buttons with an animated spinning loader icon. The animation is specified in the icon property as style.</p>
+				<p>
+					This story demonstrates icon-only buttons with an animated spinning loader icon. The animation is applied using CSS parts to target the icon
+					element directly.
+				</p>
 			</SampleDescription>
 
 			<div className="grid gap-8">
 				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Animated Spinner Icon" />
+					<KolHeading _level={2} _label="Animated Spinner Icon via CSS Part" />
 					<div className="flex flex-wrap gap-4">
 						<KolButton
+							className="spinner-button"
 							_hideLabel
 							_icons={{
-								left: {
-									style: {
-										animation: 'spin 1s linear infinite',
-										'@keyframes spin': {
-											from: {
-												transform: 'rotate(0deg)',
-											},
-											to: {
-												transform: 'rotate(360deg)',
-											},
-										},
-									},
-									icon: 'codicon codicon-loading',
-								},
+								left: 'codicon codicon-loading',
 							}}
 							_label="Loading"
 							_variant="primary"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
+							className="spinner-button spinner-slow"
 							_hideLabel
 							_icons={{
-								left: {
-									style: {
-										animation: 'spin 1s linear infinite',
-									},
-									icon: 'codicon codicon-sync',
-								},
+								left: 'codicon codicon-sync',
 							}}
 							_label="Syncing"
 							_variant="secondary"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
+							className="spinner-button spinner-slower"
 							_hideLabel
 							_icons={{
-								left: {
-									style: {
-										animation: 'spin 1.5s linear infinite',
-									},
-									icon: 'codicon codicon-settings-gear',
-								},
+								left: 'codicon codicon-settings-gear',
 							}}
 							_label="Processing"
 							_variant="tertiary"
@@ -78,26 +61,18 @@ export const ButtonSpinner: FC = () => {
 					<KolHeading _level={2} _label="Spinner with Label" />
 					<div className="flex flex-wrap gap-4">
 						<KolButton
+							className="spinner-button"
 							_icons={{
-								left: {
-									style: {
-										animation: 'spin 1s linear infinite',
-									},
-									icon: 'codicon codicon-loading',
-								},
+								left: 'codicon codicon-loading',
 							}}
 							_label="Loading..."
 							_variant="primary"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
+							className="spinner-button"
 							_icons={{
-								left: {
-									style: {
-										animation: 'spin 1s linear infinite',
-									},
-									icon: 'codicon codicon-sync',
-								},
+								left: 'codicon codicon-sync',
 							}}
 							_label="Syncing..."
 							_variant="secondary"
@@ -116,6 +91,19 @@ export const ButtonSpinner: FC = () => {
 						to {
 							transform: rotate(360deg);
 						}
+					}
+
+					/* Target the icon part inside the button */
+					.spinner-button::part(icon) {
+						animation: spin 1s linear infinite;
+					}
+
+					.spinner-button.spinner-slow::part(icon) {
+						animation: spin 1.5s linear infinite;
+					}
+
+					.spinner-button.spinner-slower::part(icon) {
+						animation: spin 2s linear infinite;
 					}
 				`}
 			</style>
