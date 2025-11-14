@@ -1,7 +1,6 @@
 import { Routes } from '../../shares/types';
 import { ButtonAccessKey } from './access-key';
 import { ButtonAriaDescription } from './aria-description';
-import { ButtonBase } from './base';
 import { ButtonBaselined } from './baselined';
 import { ButtonBasic } from './basic';
 import { ButtonDisabled } from './disabled';
@@ -16,7 +15,6 @@ import { ButtonWidth } from './width';
 export const BUTTON_ROUTES: Routes = {
 	button: {
 		basic: ButtonBasic,
-		base: ButtonBase,
 		variants: ButtonVariants,
 		disabled: ButtonDisabled,
 		'hide-label': ButtonHideLabel,
