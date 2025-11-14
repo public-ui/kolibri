@@ -33,28 +33,13 @@ function TreeItem({ label, to, children }: any) {
 }
 
 function Navigation({ routes }: NavigationProps): React.ReactNode {
-	const buildSubTree = (parentPath: string, children: Route): React.ReactNode[] => {
-		const childrenObj = children as Routes;
-		return Object.keys(childrenObj).map((childName) => {
-			const child = childrenObj[childName];
-			const isTreeExample = parentPath === 'tree' && childName === 'basic/:subPage';
+	const buildSubTree = (parentName: string, children: Route) => {
+		return Object.keys(children).map((childName) => {
+			const isTreeExample = parentName === 'tree' && childName === 'basic/:subPage';
 			const subPathName = isTreeExample ? 'basic/home' : childName;
 			const label = isTreeExample ? 'basic' : childName;
-			const fullPath = `${parentPath}/${subPathName}`;
 
-			// Check if this is a nested route object (more routes inside)
-			// Functional components are 'function' type, nested routes are 'object' type
-			if (typeof child === 'object' && child !== null) {
-				// This is a nested route, recursively build its children
-				return (
-					<TreeItem key={fullPath} label={label} to={fullPath}>
-						{buildSubTree(fullPath, child as Routes)}
-					</TreeItem>
-				);
-			}
-
-			// This is a leaf node (functional component)
-			return <TreeItem key={fullPath} label={label} to={fullPath}></TreeItem>;
+			return <TreeItem key={[parentName, childName].join('/')} label={label} to={[parentName, subPathName].join('/')}></TreeItem>;
 		});
 	};
 

@@ -100,40 +100,57 @@ export const ButtonShortKey: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					The first sample shows KolButton with short key without functionality. The short key is purely visual. Its functionality needs to be developed
-					separately.
+					This story demonstrates buttons with short keys (visual keyboard shortcuts). The first section shows basic short key usage - the short key is purely
+					visual and needs custom functionality implementation.
 				</p>
 				<p>
-					The second sample showcases a table where each row contains two KolButtons, each with its own shortcut key. To trigger an action, move the focus to
-					any of the &quot;Actions&quot; cells and press &quot;e&quot; or &quot;d.&quot; Doing so will activate the corresponding action and display a Toast
-					notification for demonstration purposes.
+					The second section showcases an interactive table where each row contains two buttons with shortcut keys. Move focus to any &quot;Actions&quot; cell
+					and press &quot;e&quot; or &quot;d&quot; to activate the corresponding action.
 				</p>
 			</SampleDescription>
 
-			<div className="flex flex-wrap gap-4">
-				<KolButton _label="With S short key" _shortKey="S" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Very small b" _shortKey="b" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Short key does not appear in label" _shortKey="x" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="short key without label" _hideLabel _shortKey="k" _icons="codicon codicon-dashboard" _on={dummyEventHandler}></KolButton>
-				<KolButton
-					_label="with inline icons"
-					_icons={{
-						left: 'codicon codicon-dashboard',
-						right: 'codicon codicon-dashboard',
-					}}
-					_shortKey="n"
-					_on={dummyEventHandler}
-				/>
+			<div className="grid gap-8">
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Buttons with Short Keys" />
+					<div className="flex flex-wrap gap-4">
+						<KolButton _label="With S short key" _shortKey="S" _on={dummyEventHandler} />
+						<KolButton _label="Very small b" _shortKey="b" _on={dummyEventHandler} />
+						<KolButton _label="Short key does not appear in label" _shortKey="x" _on={dummyEventHandler} />
+					</div>
+				</section>
+
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Short Key with Hidden Label" />
+					<div className="flex flex-wrap gap-4">
+						<KolButton _label="short key without label" _hideLabel _shortKey="k" _icons="codicon codicon-dashboard" _on={dummyEventHandler} />
+					</div>
+				</section>
+
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Short Key with Inline Icons" />
+					<div className="flex flex-wrap gap-4">
+						<KolButton
+							_label="with inline icons"
+							_icons={{
+								left: 'codicon codicon-dashboard',
+								right: 'codicon codicon-dashboard',
+							}}
+							_shortKey="n"
+							_on={dummyEventHandler}
+						/>
+					</div>
+				</section>
+
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Interactive Sample" />
+					<KolTableStateful
+						_label={`Move focus within one of the "Actions" cells and press "e" or "d" to trigger an action.`}
+						_data={DATA}
+						_headers={HEADERS}
+						_minWidth="400px"
+					/>
+				</section>
 			</div>
-
-			<KolHeading _level={2} _label="Interactive sample" className="mt" />
-
-			<KolTableStateful
-				_label={`Move focus within one of the "Actions" cells and press "e" or "d" to trigger an action.`}
-				_data={DATA}
-				_headers={HEADERS}
-				_minWidth="400px"
-			/>
 		</>
 	);
 };

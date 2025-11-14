@@ -1,10 +1,10 @@
 import { KolButton, KolHeading } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { useToasterService } from '../../../hooks/useToasterService';
-import { SampleDescription } from '../../SampleDescription';
+import { useToasterService } from '../../hooks/useToasterService';
+import { SampleDescription } from '../SampleDescription';
 
-export const ButtonStoryHideLabel: FC = () => {
+export const ButtonHideLabel: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
 
 	const dummyEventHandler = {
