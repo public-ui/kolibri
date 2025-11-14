@@ -1,9 +1,9 @@
 import { KolForm, KolHeading, KolInputText } from '@public-ui/react-v19';
 import { Field, Formik, type FieldProps } from 'formik';
 import * as React from 'react';
-import { SampleDescription } from '../SampleDescription';
-
 import { NumericFormat, type NumberFormatValues } from 'react-number-format';
+
+import { SampleDescription } from '../SampleDescription';
 
 const NON_ALPHANUM = /[^a-zA-Z0-9]/g;
 const EVERY_FOUR_CHARS = /(.{4})(?!$)/g;
@@ -20,11 +20,13 @@ class IbanFormatter {
 	public parse(value: string): string {
 		return this.electronicFormat(value);
 	}
+
 	public format(value: string, ref?: HTMLKolInputTextElement | null, selectionStart?: number | null): string {
 		if (ref && selectionStart) {
 			if (selectionStart % 5 === 0) selectionStart++;
 			ref?.setSelectionStart(selectionStart);
 		}
+
 		return this.printFormat(value);
 	}
 }
@@ -57,8 +59,9 @@ export function InputTextFormatterDemo() {
 			<SampleDescription>
 				<p>
 					This example demonstrates formatting a data value in an input field (example IBAN). The data value is formatted to the input field (print format) and
-					vice versa the formatting is removed again (machine format)
+					vice versa the formatting is removed again (machine format).
 				</p>
+				<p>It also illustrates how to format a number input using react-number-format.</p>
 			</SampleDescription>
 			<section className="w-full flex flex-col">
 				<Formik<IbanExampleFormValues> initialValues={initialIbanExampleValues} onSubmit={handleSubmit}>
@@ -90,8 +93,8 @@ export function InputTextFormatterDemo() {
 																textInput1.current?.selectionStart().then((start) => {
 																	textInput1SelectionStart = start;
 																});
-																const parsed_value = formatter.parse((value as string) ?? '');
-																void form.setFieldValue('iban', parsed_value, true);
+																const parsedValue = formatter.parse((value as string) ?? '');
+																void form.setFieldValue('iban', parsedValue, true);
 															}
 														},
 													}}
