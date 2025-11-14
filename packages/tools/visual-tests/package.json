@@ -32,6 +32,7 @@
 	},
 	"dependencies": {
 		"@axe-core/playwright": "4.11.0",
+		"axe-html-reporter": "2.2.11",
 		"@public-ui/sample-react": "workspace:*",
 		"portfinder": "1.0.38",
 		"serve": "14.2.5"

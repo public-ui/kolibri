@@ -1244,6 +1244,9 @@ importers:
       '@public-ui/sample-react':
         specifier: workspace:*
         version: link:../../samples/react
+      axe-html-reporter:
+        specifier: 2.2.11
+        version: 2.2.11(axe-core@4.11.0)
       portfinder:
         specifier: 1.0.38
         version: 1.0.38
@@ -6176,6 +6179,12 @@ packages:
   axe-core@4.11.0:
     resolution: {integrity: sha512-ilYanEU8vxxBexpJd8cWM4ElSQq4QctCLKih0TSfjIfCQTeyH/6zVrmIJfLPrKTKJRbiG+cfnZbQIjAlJmF1jQ==}
     engines: {node: '>=4'}
+
+  axe-html-reporter@2.2.11:
+    resolution: {integrity: sha512-WlF+xlNVgNVWiM6IdVrsh+N0Cw7qupe5HT9N6Uyi+aN7f6SSi92RDomiP1noW8OWIV85V6x404m5oKMeqRV3tQ==}
+    engines: {node: '>=8.9.0'}
+    peerDependencies:
+      axe-core: '>=3'
 
   axios@1.12.0:
     resolution: {integrity: sha512-oXTDccv8PcfjZmPGlWsPSwtOJCZ/b6W5jAMCNcfwJbCzDckwG0jrYJFaWH1yvivfCXjVzV/SPDEhMB3Q+DSurg==}
@@ -20491,6 +20500,11 @@ snapshots:
   axe-core@4.10.3: {}
 
   axe-core@4.11.0: {}
+
+  axe-html-reporter@2.2.11(axe-core@4.11.0):
+    dependencies:
+      axe-core: 4.11.0
+      mustache: 4.2.0
 
   axios@1.12.0:
     dependencies:
