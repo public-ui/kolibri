@@ -4,6 +4,8 @@ import * as React from 'react';
 
 import { SampleDescription } from '../SampleDescription';
 
+const WHOLE_YEAR_ERROR = 'Please enter a whole number.';
+
 type YearExampleFormValues = {
 	year?: number;
 };
@@ -27,6 +29,8 @@ export function InputNumberYearFormatter() {
 						const errors: Record<string, string> = {};
 						if (typeof values.year !== 'number') {
 							errors.year = 'Please enter a year.';
+							} else if (!Number.isInteger(values.year)) {
+								errors.year = WHOLE_YEAR_ERROR;
 						} else if (values.year > currentYear) {
 							errors.year = `The value must not exceed ${currentYear}.`;
 						}
@@ -62,12 +66,20 @@ export function InputNumberYearFormatter() {
 															const parsedValue = typeof value === 'number' ? value : Number(value);
 															if (Number.isNaN(parsedValue)) {
 																void form.setFieldValue('year', undefined, true);
-															} else {
-																const normalizedValue = Math.min(currentYear, Math.max(0, Math.trunc(parsedValue)));
-																void form.setFieldValue('year', normalizedValue, true);
+																return;
 															}
+
+															if (!Number.isInteger(parsedValue)) {
+																void form.setFieldTouched('year', true, false);
+																form.setFieldError('year', WHOLE_YEAR_ERROR);
+																return;
+															}
+
+															form.setFieldError('year', undefined);
+															const normalizedValue = Math.min(currentYear, Math.max(0, parsedValue));
+															void form.setFieldValue('year', normalizedValue, true);
 														},
-													}}
+												}}
 												/>
 											</div>
 										)}
