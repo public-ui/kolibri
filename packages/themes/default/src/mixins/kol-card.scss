@@ -1,24 +1,51 @@
-@use '../mixins/to-rem' as *;
+@use './to-rem' as *;
 
-@mixin kol-card {
+@mixin kol-card($border-radius: var(--border-radius)) {
 	.kol-card {
 		background-color: var(--color-light);
 		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
-		border-radius: var(--border-radius);
-		display: grid;
+		border-radius: $border-radius;
 		width: 100%;
 		height: 100%;
-		grid-template-rows: min-content 2fr min-content;
 
 		&__header {
-			display: block;
-			padding: to-rem(16) to-rem(16) to-rem(8) to-rem(16);
+			padding: to-rem(16) 0 0 to-rem(16);
 
 			line-height: 1.75;
 		}
 
 		&__content {
-			padding: to-rem(8) to-rem(16) to-rem(16);
+			padding: 0 to-rem(16) to-rem(16);
+
+			& ::slotted(p:first-child) {
+				margin-top: 0;
+			}
+
+			& ::slotted(p:last-child) {
+				margin-bottom: 0;
+			}
+		}
+
+		&__close-button {
+			color: var(--color-primary);
+			background: transparent;
+			cursor: pointer;
+
+			.kol-button {
+				&:focus {
+					outline: var(--color-primary-variant) solid to-rem(3);
+					outline-offset: 2px;
+					transition: 200ms outline-offset linear;
+				}
+
+				&:focus,
+				&:hover {
+					color: var(--color-light);
+					background-color: var(--color-danger);
+					box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+					border-top-right-radius: $border-radius;
+				}
+			}
 		}
 	}
 }

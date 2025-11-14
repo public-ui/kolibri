@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/react-v19",
+	"name": "@public-ui/svelte",
 	"version": "4.0.0-alpha.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -15,7 +15,7 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"description": "React 19 framework adapter for KoliBri - The accessible HTML-Standard.",
+	"description": "Svelte framework adapter for the KoliBri accessible web component library (@public-ui).",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -42,27 +42,24 @@
 		"w3c",
 		"webstandard",
 		"wcag",
-		"react"
+		"svelte"
 	],
 	"scripts": {
 		"build": "unbuild"
 	},
 	"devDependencies": {
+		"@babel/types": "7.28.4",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "19.2.2",
-		"@types/react-dom": "19.2.2",
-		"react": "19.1.1",
-		"react-dom": "19.1.1",
 		"typescript": "5.9.3",
-		"unbuild": "3.6.1"
+		"unbuild": "3.6.1",
+		"svelte": "5.40.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
+		"svelte": "^5.40.2"
 	},
 	"sideEffects": false,
 	"type": "module",

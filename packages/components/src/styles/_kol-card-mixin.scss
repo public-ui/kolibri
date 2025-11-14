@@ -4,13 +4,30 @@
 	.kol-card {
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
-		position: relative;
+
+		display: grid;
 		height: 100%;
+		overflow: visible;
+		gap: to-rem(8);
+
+		grid-template-areas:
+			'header  close'
+			'content content';
+		grid-template-columns: 1fr min-content;
+		grid-template-rows: min-content 1fr;
+
+		&__header {
+			align-self: start;
+			grid-area: header;
+		}
+
+		&__content {
+			align-self: stretch;
+			grid-area: content;
+		}
 
 		&__close-button {
-			position: absolute;
-			top: 0;
-			right: 0;
+			grid-area: close;
 		}
 	}
 }

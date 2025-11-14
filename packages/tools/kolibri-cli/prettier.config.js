@@ -1,5 +1,5 @@
 module.exports = {
-	plugins: ['prettier-plugin-organize-imports'],
+	plugins: [organizeImportsPlugin],
 	printWidth: 160,
 	singleQuote: true,
 	useTabs: true,
