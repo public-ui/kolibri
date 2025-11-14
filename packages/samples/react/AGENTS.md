@@ -17,7 +17,4 @@ This package contains the React based sample application showcasing the KoliBri 
 
 Run `pnpm start` in this directory to launch the development server.
 
-## Formatting discipline
-
-- Run `pnpm --filter @public-ui/sample-react format -- --write` (or `pnpm format` at the root) before every commit so prettierized React/Vite files match the enforced style.
-- Once formatted, re-stage the touched files; this prevents CI from reformatting them and blocking the quality gates.
+> 🧹 **Formatting**: Follow the repo-wide “Format-first rule” in `/AGENTS.md`. Use `pnpm format` or `pnpm --filter @public-ui/sample-react format` before committing—no additional `--write` flags are required.

@@ -4,10 +4,7 @@
 
 This package provides a Model Context Protocol (MCP) server implementation using the official `@modelcontextprotocol/sdk`. It offers AI agents structured access to KoliBri component samples and documentation with fuzzy search capabilities.
 
-### Formatting discipline
-
-- Run `pnpm --filter @public-ui/mcp format -- --write` (or `pnpm format` from the repo root) immediately before committing so that CI's Prettier check passes the first time.
-- Re-stage the formatted files to avoid "changes not staged" surprises.
+> 🧹 **Formatting**: Follow the repo-wide “Format-first rule” in `/AGENTS.md`. Run `pnpm format` or `pnpm --filter @public-ui/mcp format` before committing—no extra arguments like `--write` are necessary.
 
 The server supports **three deployment modes**:
 

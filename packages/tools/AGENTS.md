@@ -2,10 +2,7 @@
 
 This folder hosts all developer tooling packages (CLI, MCP server, shared scripts). Each tool is published as its own workspace package.
 
-## Formatting discipline
-
-- Run `pnpm --filter <tool-package> format -- --write` (or `pnpm format` at the root) right before committing so Prettier-stable files reach CI.
-- Restage the files after formatting to ensure the final commit contains the auto-formatted output.
+> 🧹 **Formatting**: Follow the repo-wide “Format-first rule” in `/AGENTS.md`. Use `pnpm format` or `pnpm --filter <tool-package> format` before committing—no extra flags or manual write arguments are needed.
 
 ## Build & test expectations
 
