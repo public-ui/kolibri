@@ -256,6 +256,11 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
 - If your pull request only modifies Markdown files, skip `pnpm build`, `pnpm lint` and `pnpm test`. Just format the Markdown using `pnpm format` or Prettier.
 
+### Pre-commit checklist
+
+- **Always run `pnpm format` (or the relevant `pnpm --filter <package> format -- --write` command) right before committing.** Formatting failures are one of the most common reasons for blocked quality gates, so make this the last step before `git commit` even for documentation-only changes.
+- After formatting, re-stage affected files with `git add -u` so the formatted content is what gets committed.
+
 ## Testing
 
 - Run `pnpm test` from the repository root to execute all unit and integration tests.

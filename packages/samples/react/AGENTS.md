@@ -16,3 +16,8 @@ This package contains the React based sample application showcasing the KoliBri 
 - `e2e` – end to end tests for the sample app.
 
 Run `pnpm start` in this directory to launch the development server.
+
+## Formatting discipline
+
+- Run `pnpm --filter @public-ui/sample-react format -- --write` (or `pnpm format` at the root) before every commit so prettierized React/Vite files match the enforced style.
+- Once formatted, re-stage the touched files; this prevents CI from reformatting them and blocking the quality gates.

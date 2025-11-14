@@ -14,6 +14,11 @@ This folder collects all official KoliBri themes. Each theme package under this 
 - The build stack is based on **Rollup**, **TypeScript** and **PostCSS**. Keep `rollup.config.js`, `tsconfig.json` and dependency versions identical across all theme packages.
 - Do not edit the generated `assets` folders. Modify the source files instead and rebuild.
 
+### Formatting discipline
+
+- Before committing, run `pnpm --filter <theme> format -- --write` (or `pnpm format` at the repo root) so that SCSS/TS edits pass the shared Prettier rules.
+- Each theme package reuses the same Prettier configuration; formatting all touched files immediately before `git commit` prevents follow-up runs when CI enforces the checks.
+
 ## Coding Guidelines
 
 - Organise SCSS using `@layer kol-theme-global` and `@layer kol-theme-component`.
