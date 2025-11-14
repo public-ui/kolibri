@@ -1,0 +1,118 @@
+name: Visual Tests Snapshot Comparison
+
+on:
+  pull_request:
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  visual-tests-snapshots:
+    strategy:
+      matrix:
+        package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Determine package paths
+        id: package-paths
+        shell: bash
+        run: |
+          set -eo pipefail
+          PACKAGE="${{ matrix.package }}"
+          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
+            PACKAGE_DIR="packages/test-tag-name-transformer"
+          else
+            THEME_DIR="${PACKAGE#theme-}"
+            PACKAGE_DIR="packages/themes/${THEME_DIR}"
+          fi
+          SNAPSHOT_DIR="${PACKAGE_DIR}/snapshots"
+          echo "package_dir=${PACKAGE_DIR}" >> "$GITHUB_OUTPUT"
+          echo "snapshot_dir=${SNAPSHOT_DIR}" >> "$GITHUB_OUTPUT"
+          if [ -d "${PACKAGE_DIR}" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping base snapshot generation because ${PACKAGE_DIR} does not exist on the base branch."
+          fi
+
+      - uses: ./.github/actions/pnpm-setup
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps firefox
+
+      - name: Build base branch
+        if: steps.package-paths.outputs.exists == 'true'
+        run: pnpm --filter @public-ui/sample-react^... build
+
+      - name: Generate base snapshots
+        if: steps.package-paths.outputs.exists == 'true'
+        run: pnpm --filter=@public-ui/${{ matrix.package }} test-update
+
+      - name: Store base snapshots
+        if: steps.package-paths.outputs.exists == 'true'
+        run: |
+          set -eo pipefail
+          PACKAGE="${{ matrix.package }}"
+          mkdir -p "/tmp/snapshots/${PACKAGE}"
+          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
+            SNAPSHOT_DIR="packages/test-tag-name-transformer/snapshots"
+          else
+            THEME_DIR="${PACKAGE#theme-}"
+            SNAPSHOT_DIR="packages/themes/${THEME_DIR}/snapshots"
+          fi
+          if [ -d "$SNAPSHOT_DIR" ]; then
+            rsync -a "$SNAPSHOT_DIR/" "/tmp/snapshots/${PACKAGE}/"
+          fi
+
+      - name: Checkout head branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: ./.github/actions/pnpm-setup
+
+      - name: Restore base snapshots
+        if: steps.package-paths.outputs.exists == 'true'
+        run: |
+          set -eo pipefail
+          PACKAGE="${{ matrix.package }}"
+          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
+            SNAPSHOT_DIR="packages/test-tag-name-transformer/snapshots"
+          else
+            THEME_DIR="${PACKAGE#theme-}"
+            SNAPSHOT_DIR="packages/themes/${THEME_DIR}/snapshots"
+          fi
+          rm -rf "$SNAPSHOT_DIR"
+          mkdir -p "$SNAPSHOT_DIR"
+          if [ -d "/tmp/snapshots/${PACKAGE}" ]; then
+            rsync -a "/tmp/snapshots/${PACKAGE}/" "$SNAPSHOT_DIR/"
+          fi
+
+      - name: Build head branch
+        run: pnpm --filter @public-ui/sample-react^... build
+
+      - name: Visual Tests
+        run: pnpm --filter=@public-ui/${{ matrix.package }} test
+
+      - uses: ./.github/actions/upload-reports
+        if: failure()
+        with:
+          name: report-base-snapshots-${{ matrix.package }}
+
+      - name: Upload base snapshots
+        if: failure() && steps.package-paths.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: base-snapshots-${{ matrix.package }}
+          path: /tmp/snapshots/${{ matrix.package }}
+          if-no-files-found: ignore

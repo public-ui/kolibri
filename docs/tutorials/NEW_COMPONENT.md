@@ -13,7 +13,7 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 ## Checkliste
 
 | Schritt | Kurzbeschreibung                                                                                                                         |
-|:-------:|------------------------------------------------------------------------------------------------------------------------------------------|
+| :-----: | ---------------------------------------------------------------------------------------------------------------------------------------- |
 |    0    | Projekt starten                                                                                                                          |
 |    1    | Name im Schema hinterlegen                                                                                                               |
 |    2    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit Shadow DOM<br>- styles.css<br>- types.ts |
