@@ -84,7 +84,6 @@ export const ButtonIcons: FC = () => {
 							_icons={{
 								top: {
 									style: {
-										'font-size': '200%',
 										transform: 'rotate(45deg)',
 									},
 									icon: 'codicon codicon-arrow-up',
