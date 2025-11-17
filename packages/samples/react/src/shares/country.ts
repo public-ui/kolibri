@@ -5,7 +5,6 @@ type Country = {
 	id: number;
 	alpha2: string;
 	alpha3: string;
-	disabled: boolean;
 	name: string;
 };
 
@@ -13,7 +12,6 @@ export const COUNTRY_OPTIONS: SelectOption<string>[] = [
 	...(countries as Country[]).map((country) => ({
 		label: country.name,
 		value: country.alpha2,
-		disabled: country.disabled,
 	})),
 ];
 

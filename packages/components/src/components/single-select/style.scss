@@ -11,9 +11,7 @@ $visible-options: var(--visible-options, 5);
 
 		&.disabled,
 		&.disabled * {
-			opacity: 0.5;
 			cursor: not-allowed !important;
-			pointer-events: none;
 		}
 
 		.radio-label {

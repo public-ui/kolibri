@@ -362,7 +362,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 												aria-selected={this._value === (option as Option<string>).value ? 'true' : undefined}
 												aria-disabled={option.disabled ? 'true' : undefined}
 												onClick={(event: Event) => {
-													if (option.disabled) return;
+													if (option.disabled) {
+														return;
+													}
 													this.selectOption(option as Option<string>);
 													this.refInput?.focus();
 													this.toggleListbox(event);
@@ -383,7 +385,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 												}}
 												class={clsx('single-select__item', option.disabled && 'single-select__item--disabled')}
 												onKeyDown={(e) => {
-													if (option.disabled) return;
+													if (option.disabled) {
+														return;
+													}
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
 														this.selectOption(option as Option<string>);
 														this.refInput?.focus();
