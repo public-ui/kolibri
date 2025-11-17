@@ -441,7 +441,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions!: SuggestionsPropType | string;
+	@Prop() public _suggestions!: SuggestionsPropType;
 
 	/**
 	 * Makes the input element required.
