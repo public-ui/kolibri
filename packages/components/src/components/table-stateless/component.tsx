@@ -88,6 +88,10 @@ export class KolTableStateless implements TableStatelessAPI {
 	@State()
 	private previousHeaderCells?: TableHeaderCellsPropType;
 
+	/**
+	 * Defines whether to allow multi sort.
+	 * @internal
+	 */
 	@Prop() public _allowMultiSort?: boolean = false;
 
 	/**
