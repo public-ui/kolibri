@@ -10,7 +10,7 @@ type WholeNumberFormValues = {
 	value?: number;
 };
 
-export function InputNumberYearFormatter() {
+export function InputNumberWholeNumberFormatter() {
 	const handleSubmit = async () => {};
 	const initialWholeNumberValues: WholeNumberFormValues = {
 		value: undefined,
