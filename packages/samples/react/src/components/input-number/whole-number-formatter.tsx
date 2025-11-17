@@ -5,6 +5,7 @@ import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 const WHOLE_NUMBER_ERROR = 'Please enter a whole number.';
+const LEADING_ZERO_ERROR = 'Numbers with multiple digits cannot start with 0.';
 
 type WholeNumberFormValues = {
 	value?: number;
@@ -19,7 +20,7 @@ export function InputNumberWholeNumberFormatter() {
 	return (
 		<>
 			<SampleDescription>
-				<p>This example limits the KolInputNumber to whole numbers only. Empty input remains valid.</p>
+				<p>This example allows only whole numbers or an empty field. Multi-digit numbers may not start with 0.</p>
 			</SampleDescription>
 			<section className="w-full flex flex-col">
 				<Formik<WholeNumberFormValues>
@@ -55,7 +56,27 @@ export function InputNumberWholeNumberFormatter() {
 															void form.setFieldTouched('value', true);
 														},
 														onInput: (_, value: unknown) => {
-															const parsedValue = typeof value === 'number' ? value : Number(value);
+															const rawValue =
+																typeof value === 'string'
+																	? value
+																	: value === undefined || value === null
+																		? ''
+																		: String(value);
+															const normalizedValue = rawValue.trim();
+
+															if (normalizedValue === '') {
+																form.setFieldError('value', undefined);
+																void form.setFieldValue('value', undefined, true);
+																return;
+															}
+
+															if (/^[+-]?0\d+/.test(normalizedValue)) {
+																void form.setFieldTouched('value', true, false);
+																form.setFieldError('value', LEADING_ZERO_ERROR);
+																return;
+															}
+
+															const parsedValue = typeof value === 'number' ? value : Number(rawValue);
 															if (Number.isNaN(parsedValue)) {
 																form.setFieldError('value', undefined);
 																void form.setFieldValue('value', undefined, true);
@@ -70,21 +91,22 @@ export function InputNumberWholeNumberFormatter() {
 
 															form.setFieldError('value', undefined);
 															void form.setFieldValue('value', parsedValue, true);
-														},
+													},
 													}}
-												/>
-										)}
-									</Field>
-								</KolForm>
-							</div>
-							<div className="p-2">
-								<KolHeading _label="Model" _level={2} />
-								<pre className="text-base">{JSON.stringify(form.values, null, 2)}</pre>
-							</div>
-						</>
-					)}
-				</Formik>
-			</section>
+											/>
+									</div>
+								)}
+							</Field>
+						</KolForm>
+					</div>
+					<div className="p-2">
+						<KolHeading _label="Model" _level={2} />
+						<pre className="text-base">{JSON.stringify(form.values, null, 2)}</pre>
+					</div>
+				</>
+				)}
+			</Formik>
+		</section>
 		</>
 	);
 }
