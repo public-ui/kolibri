@@ -25,6 +25,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 					else if ((data1 as Data).order < (data0 as Data).order) return 1;
 					else return 0;
 				},
+				sortDirection: 'ASC',
 			},
 			{
 				label: 'date',
