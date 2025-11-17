@@ -117,7 +117,7 @@ export const ButtonShortkeyTable: FC = () => {
 						_headers={HEADERS}
 						_minWidth="400px"
 						_pagination={{
-							page: 1,
+							_page: 1,
 						}}
 					/>
 				</section>
