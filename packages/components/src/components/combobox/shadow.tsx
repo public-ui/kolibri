@@ -119,15 +119,11 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private setFilteredSuggestionsByQuery(query: string) {
-		if (typeof this._suggestions === 'string') {
-			this._suggestions = JSON.parse(this._suggestions.replace(/'/g, '"')) as W3CInputValue[];
-		}
-
 		if (query.trim() === '') {
-			this._filteredSuggestions = [...this._suggestions];
+			this._filteredSuggestions = [...this.state._suggestions];
 		} else {
-			this._filteredSuggestions = Array.isArray(this._suggestions)
-				? this._suggestions.filter((option: W3CInputValue) => {
+			this._filteredSuggestions = Array.isArray(this.state._suggestions)
+				? this.state._suggestions.filter((option: W3CInputValue) => {
 						return (option as string).toLowerCase().includes(query.toLowerCase());
 					})
 				: this._filteredSuggestions;
