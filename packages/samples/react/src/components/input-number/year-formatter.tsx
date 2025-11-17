@@ -4,35 +4,30 @@ import * as React from 'react';
 
 import { SampleDescription } from '../SampleDescription';
 
-const WHOLE_YEAR_ERROR = 'Please enter a whole number.';
+const WHOLE_NUMBER_ERROR = 'Please enter a whole number.';
 
-type YearExampleFormValues = {
-	year?: number;
+type WholeNumberFormValues = {
+	value?: number;
 };
 
 export function InputNumberYearFormatter() {
 	const handleSubmit = async () => {};
-	const currentYear = React.useMemo(() => new Date().getFullYear(), []);
-	const initialYearExampleValues: YearExampleFormValues = {
-		year: currentYear,
+	const initialWholeNumberValues: WholeNumberFormValues = {
+		value: undefined,
 	};
 
 	return (
 		<>
 			<SampleDescription>
-				<p>This example limits the KolInputNumber to whole years that cannot exceed the current year.</p>
+				<p>This example limits the KolInputNumber to whole numbers only. Empty input remains valid.</p>
 			</SampleDescription>
 			<section className="w-full flex flex-col">
-				<Formik<YearExampleFormValues>
-					initialValues={initialYearExampleValues}
+				<Formik<WholeNumberFormValues>
+					initialValues={initialWholeNumberValues}
 					validate={(values) => {
 						const errors: Record<string, string> = {};
-						if (typeof values.year !== 'number') {
-							errors.year = 'Please enter a year.';
-							} else if (!Number.isInteger(values.year)) {
-								errors.year = WHOLE_YEAR_ERROR;
-						} else if (values.year > currentYear) {
-							errors.year = `The value must not exceed ${currentYear}.`;
+						if (typeof values.value === 'number' && !Number.isInteger(values.value)) {
+							errors.value = WHOLE_NUMBER_ERROR;
 						}
 						return errors;
 					}}
@@ -41,47 +36,43 @@ export function InputNumberYearFormatter() {
 					{(form) => (
 						<>
 							<div className="p-2">
-								<KolHeading _label="Year input (whole numbers only)" _level={2} />
+								<KolHeading _label="Whole number input" _level={2} />
 								<KolForm>
-									<Field name="year">
-										{({ field }: FieldProps<YearExampleFormValues['year']>) => (
+									<Field name="value">
+										{({ field }: FieldProps<WholeNumberFormValues['value']>) => (
 											<div className="block mt-2">
 												<KolInputNumber
-													_label="Year"
-													_required
-													_min={0}
-													_max={currentYear}
+													_label="Whole number"
 													_step={1}
 													_value={field.value ?? undefined}
 													_msg={{
 														_type: 'error',
-														_description: form.errors.year || '',
+														_description: form.errors.value || '',
 													}}
-													_touched={form.touched.year}
+													_touched={form.touched.value}
 													_on={{
 														onBlur: () => {
-															void form.setFieldTouched('year', true);
+															void form.setFieldTouched('value', true);
 														},
 														onInput: (_, value: unknown) => {
 															const parsedValue = typeof value === 'number' ? value : Number(value);
 															if (Number.isNaN(parsedValue)) {
-																void form.setFieldValue('year', undefined, true);
+																form.setFieldError('value', undefined);
+																void form.setFieldValue('value', undefined, true);
 																return;
 															}
 
 															if (!Number.isInteger(parsedValue)) {
-																void form.setFieldTouched('year', true, false);
-																form.setFieldError('year', WHOLE_YEAR_ERROR);
+																void form.setFieldTouched('value', true, false);
+																form.setFieldError('value', WHOLE_NUMBER_ERROR);
 																return;
 															}
 
-															form.setFieldError('year', undefined);
-															const normalizedValue = Math.min(currentYear, Math.max(0, parsedValue));
-															void form.setFieldValue('year', normalizedValue, true);
+															form.setFieldError('value', undefined);
+															void form.setFieldValue('value', parsedValue, true);
 														},
-												}}
+													}}
 												/>
-											</div>
 										)}
 									</Field>
 								</KolForm>
