@@ -26,7 +26,7 @@
 			&--start {
 				left: 0;
 
-				> .kol-icon {
+				> .kol-icon:first-child {
 					margin-left: to-rem(16);
 				}
 			}
@@ -34,21 +34,25 @@
 			&--end {
 				right: 0;
 
-				> .kol-icon {
+				> .kol-icon:last-child {
 					margin-right: to-rem(16);
 				}
 			}
 		}
 
 		&:has(&__adornment--start:not(:empty)) .kol-input {
-			padding-left: to-rem(38);
+			padding-left: to-rem(48);
+		}
+
+		&:has(&__adornment--start &__smart-button + &__icon) .kol-input {
+			padding-left: to-rem(76);
 		}
 
 		&:has(&__adornment--end:not(:empty)) .kol-input {
-			padding-right: to-rem(38);
+			padding-right: to-rem(48);
 		}
 
-		&:has(&__adornment--end &__smart-button + &__icon) .kol-input {
+		&:has(&__adornment--end &__icon + &__smart-button) .kol-input {
 			padding-right: to-rem(76);
 		}
 

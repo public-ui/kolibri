@@ -10,4 +10,13 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+
+	.kol-input-number {
+		--kol-input-number-show-alternate-buttons: none;
+
+		&__step-up-button,
+		&__step-down-button {
+			display: var(--kol-input-number-show-alternate-buttons);
+		}
+	}
 }

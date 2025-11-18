@@ -16,18 +16,6 @@
 
 		&__adornment {
 			min-width: to-rem(8);
-
-			&--start {
-				> .kol-icon {
-					margin-left: to-rem(8);
-				}
-			}
-
-			&--end {
-				> .kol-icon {
-					margin-right: to-rem(8);
-				}
-			}
 		}
 
 		@at-root #{$root}--disabled {

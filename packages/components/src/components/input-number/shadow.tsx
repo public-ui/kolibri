@@ -1,4 +1,4 @@
-import type { JSX } from '@stencil/core';
+import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from 'clsx';
 
@@ -32,6 +32,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import KolIconButtonFc from '../../functional-components/IconButton';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
@@ -148,10 +149,46 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		};
 	}
 
+	private getStepUpButton(): VNode | null {
+		return (
+			<KolIconButtonFc
+				tabIndex={-1}
+				componentName="button"
+				class="kol-input-number__step-up-button kol-input-container__smart-button"
+				data-testid="kol-input-number-step-up"
+				label={'step up'}
+				buttonVariant="ghost"
+				onClick={(): void => {
+					this.inputRef?.stepUp();
+				}}
+				icon="codicon codicon-add"
+				disabled={this._disabled || this._readOnly}
+			/>
+		);
+	}
+
+	private getStepDownButton(): VNode | null {
+		return (
+			<KolIconButtonFc
+				tabIndex={-1}
+				componentName="button"
+				class="kol-input-number__step-down-button kol-input-container__smart-button"
+				data-testid="kol-input-number-step-down"
+				label={'step down'}
+				buttonVariant="ghost"
+				onClick={(): void => {
+					this.inputRef?.stepDown();
+				}}
+				icon="codicon codicon-remove"
+				disabled={this._disabled || this._readOnly}
+			/>
+		);
+	}
+
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
+				<KolInputContainerFc state={this.state} startAdornment={this.getStepDownButton()} endAdornment={this.getStepUpButton()}>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
