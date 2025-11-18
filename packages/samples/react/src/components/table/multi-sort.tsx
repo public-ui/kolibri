@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
-import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react-v19';
+import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '@public-ui/components';
+import { KolButtonLink, KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import type { MultiSortData as Data } from './test-data';
 import { MULTI_SORT_DATA as DATA } from './test-data';
@@ -13,160 +13,89 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	year: 'numeric',
 });
 
+const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
+	{
+		label: 'Order',
+		key: 'order',
+		textAlign: 'center',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			if ((data0 as Data).order < (data1 as Data).order) return -1;
+			else if ((data1 as Data).order < (data0 as Data).order) return 1;
+			else return 0;
+		},
+	},
+	{
+		label: 'Name',
+		key: 'name',
+		textAlign: 'left',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			return (data0 as Data).name.localeCompare((data1 as Data).name, 'de');
+		},
+	},
+	{
+		label: 'Vorname',
+		key: 'vorname',
+		textAlign: 'left',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			return (data0 as Data).vorname.localeCompare((data1 as Data).vorname, 'de');
+		},
+	},
+	{
+		label: 'Geburtsdatum',
+		key: 'geburtsdatum',
+		textAlign: 'center',
+		render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).geburtsdatum),
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			if ((data0 as Data).geburtsdatum < (data1 as Data).geburtsdatum) return -1;
+			else if ((data1 as Data).geburtsdatum < (data0 as Data).geburtsdatum) return 1;
+			else return 0;
+		},
+	},
+	{
+		label: 'Straße',
+		key: 'strasse',
+		textAlign: 'left',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			return (data0 as Data).strasse.localeCompare((data1 as Data).strasse, 'de');
+		},
+	},
+	{
+		label: 'Haus-Nr.',
+		key: 'hausNr',
+		textAlign: 'center',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			return (data0 as Data).hausNr.localeCompare((data1 as Data).hausNr, 'de', { numeric: true });
+		},
+	},
+	{
+		label: 'PLZ',
+		key: 'plz',
+		textAlign: 'center',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			return (data0 as Data).plz.localeCompare((data1 as Data).plz);
+		},
+	},
+	{
+		label: 'Ort',
+		key: 'ort',
+		textAlign: 'left',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			return (data0 as Data).ort.localeCompare((data1 as Data).ort, 'de');
+		},
+	},
+];
+
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
-	horizontal: [
-		[
-			{
-				label: 'Order',
-				key: 'order',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).order < (data1 as Data).order) return -1;
-					else if ((data1 as Data).order < (data0 as Data).order) return 1;
-					else return 0;
-				},
-			},
-			{
-				label: 'Name',
-				key: 'name',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).name.localeCompare((data1 as Data).name, 'de');
-				},
-			},
-			{
-				label: 'Vorname',
-				key: 'vorname',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).vorname.localeCompare((data1 as Data).vorname, 'de');
-				},
-			},
-			{
-				label: 'Geburtsdatum',
-				key: 'geburtsdatum',
-				textAlign: 'center',
-				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).geburtsdatum),
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).geburtsdatum < (data1 as Data).geburtsdatum) return -1;
-					else if ((data1 as Data).geburtsdatum < (data0 as Data).geburtsdatum) return 1;
-					else return 0;
-				},
-			},
-			{
-				label: 'Straße',
-				key: 'strasse',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).strasse.localeCompare((data1 as Data).strasse, 'de');
-				},
-			},
-			{
-				label: 'Haus-Nr.',
-				key: 'hausNr',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).hausNr.localeCompare((data1 as Data).hausNr, 'de', { numeric: true });
-				},
-			},
-			{
-				label: 'PLZ',
-				key: 'plz',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).plz.localeCompare((data1 as Data).plz);
-				},
-			},
-			{
-				label: 'Ort',
-				key: 'ort',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).ort.localeCompare((data1 as Data).ort, 'de');
-				},
-			},
-		],
-	],
+	horizontal: [TABLE_HEADER_CELLS],
 };
 
 const HEADERS_VERTICAL: KoliBriTableHeaders = {
-	vertical: [
-		[
-			{
-				label: 'Order',
-				key: 'order',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).order < (data1 as Data).order) return -1;
-					else if ((data1 as Data).order < (data0 as Data).order) return 1;
-					else return 0;
-				},
-			},
-			{
-				label: 'Name',
-				key: 'name',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).name.localeCompare((data1 as Data).name, 'de');
-				},
-			},
-			{
-				label: 'Vorname',
-				key: 'vorname',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).vorname.localeCompare((data1 as Data).vorname, 'de');
-				},
-			},
-			{
-				label: 'Geburtsdatum',
-				key: 'geburtsdatum',
-				textAlign: 'center',
-				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).geburtsdatum),
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).geburtsdatum < (data1 as Data).geburtsdatum) return -1;
-					else if ((data1 as Data).geburtsdatum < (data0 as Data).geburtsdatum) return 1;
-					else return 0;
-				},
-			},
-			{
-				label: 'Straße',
-				key: 'strasse',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).strasse.localeCompare((data1 as Data).strasse, 'de');
-				},
-			},
-			{
-				label: 'Haus-Nr.',
-				key: 'hausNr',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).hausNr.localeCompare((data1 as Data).hausNr, 'de', { numeric: true });
-				},
-			},
-			{
-				label: 'PLZ',
-				key: 'plz',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).plz.localeCompare((data1 as Data).plz);
-				},
-			},
-			{
-				label: 'Ort',
-				key: 'ort',
-				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					return (data0 as Data).ort.localeCompare((data1 as Data).ort, 'de');
-				},
-			},
-		],
-	],
+	vertical: [TABLE_HEADER_CELLS],
 };
+
 export const MultiSortTable: FC = () => {
-	const [allowMultiSortVertical, setAllowMultiSortVertical] = useState(false);
-	const [allowMultiSortHorizontal, setAllowMultiSortHorizontal] = useState(true);
+	const [verticalHeader, setVerticalHeader] = useState(HEADERS_VERTICAL);
+	const [horizontalHeader, setHorizontalHeader] = useState(HEADERS_HORIZONTAL);
 	return (
 		<>
 			<SampleDescription>
@@ -176,36 +105,26 @@ export const MultiSortTable: FC = () => {
 			<section className="w-full grid gap-4">
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Vertical" />
-					<KolInputCheckbox
-						_checked={allowMultiSortVertical}
-						_label="Allow Multi-Sort"
-						_variant="switch"
-						_on={{ onChange: (_, value) => setAllowMultiSortVertical(Boolean(value)) }}
-					></KolInputCheckbox>
-					<KolTableStateful
-						_label="Sort Table with Order and Date"
-						_minWidth="auto"
-						_data={DATA.slice(0, 10)}
-						_headers={HEADERS_VERTICAL}
-						className="block"
-						_allowMultiSort={allowMultiSortVertical}
-					/>
-				</section>
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Horizontal" />
-					<KolInputCheckbox
-						_checked={allowMultiSortHorizontal}
-						_label="Allow Multi-Sort"
-						_variant="switch"
-						_on={{ onChange: (_, value) => setAllowMultiSortHorizontal(Boolean(value)) }}
-					></KolInputCheckbox>
+					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setVerticalHeader({ vertical: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
 						_minWidth="auto"
 						_data={DATA}
-						_headers={HEADERS_HORIZONTAL}
+						_headers={verticalHeader}
 						className="block"
-						_allowMultiSort={allowMultiSortHorizontal}
+						_allowMultiSort={true}
+					/>
+				</section>
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Horizontal" />
+					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setHorizontalHeader({ horizontal: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
+					<KolTableStateful
+						_label="Sort Table with Order and Date"
+						_minWidth="auto"
+						_data={DATA}
+						_headers={horizontalHeader}
+						className="block"
+						_allowMultiSort={true}
 					/>
 				</section>
 			</section>
