@@ -17,9 +17,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input accesskey="V" aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -45,9 +44,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -73,9 +71,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" disabled="" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _disabled="" _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete kol-combobox__delete--disabled" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle kol-custom-suggestions-toggle--disabled"></kol-icon>
             </div>
           </div>
         </div>
@@ -101,9 +98,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-hint" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -130,18 +126,17 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
         </div>
       </div>
@@ -164,14 +159,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
@@ -199,13 +193,12 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
         </div>
       </div>
@@ -230,9 +223,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -258,9 +250,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-msg" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -286,9 +277,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -315,9 +305,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -343,9 +332,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>
@@ -371,9 +359,8 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <button class="kol-custom-suggestions-toggle" tabindex="-1">
-                <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
-              </button>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-close" _label="kol-delete-selection" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
+              <kol-icon _icons="codicon codicon-triangle-down" _label="" class="kol-custom-suggestions-toggle"></kol-icon>
             </div>
           </div>
         </div>

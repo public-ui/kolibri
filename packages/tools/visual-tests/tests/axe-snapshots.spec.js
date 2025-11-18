@@ -1,7 +1,12 @@
+import AxeBuilder from '@axe-core/playwright';
 import { test } from '@playwright/test';
-import { checkA11y, injectAxe } from 'axe-playwright';
+import axeHtmlReporter from 'axe-html-reporter';
 import process from 'process';
 import { ROUTES } from './sample-app.routes.js';
+
+const { createHtmlReport } = axeHtmlReporter;
+
+const AXE_TAGS = ['best-practices', 'wcag2a', 'wcag2aa', 'wcag21aa'];
 
 const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
 const rename = (snapshotName) => {
@@ -25,6 +30,25 @@ const rename = (snapshotName) => {
 	return result;
 };
 
+const sanitizeRouteForReport = (route) => route.replace(/[/?]/g, '-').replace(/^-+/, '') || 'root';
+
+const buildReportOptions = (testInfo, route) => ({
+	projectKey: `axe-${themeName}`,
+	reportFileName: `${sanitizeRouteForReport(route)}.html`,
+	outputDirPath: rename(testInfo.outputDir),
+	outputDir: `axe-${themeName}`,
+});
+
+const logViolations = (route, violations) => {
+	if (!violations?.length) {
+		return;
+	}
+	console.warn(`Axe found ${violations.length} violation(s) on ${route}`);
+	for (const violation of violations) {
+		console.warn(`- ${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`);
+	}
+};
+
 // https://playwright.dev/docs/emulation
 test.use({
 	colorScheme: 'light',
@@ -43,7 +67,6 @@ ROUTES.forEach((options, route) => {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
-		const outputPath = rename(testInfo.outputDir);
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`);
 		await page.waitForLoadState('networkidle');
@@ -62,29 +85,16 @@ ROUTES.forEach((options, route) => {
 			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
 
-		await injectAxe(page);
-		await checkA11y(
-			page,
-			undefined,
-			{
-				axeOptions: {
-					runOnly: {
-						type: 'tag',
-						values: ['best-practices', 'wcag2a', 'wcag2aa', 'wcag21aa'],
-					},
-				},
-				detailedReport: true,
-				detailedReportOptions: {
-					html: true,
-				},
-			},
-			true, // options?.axe?.skipFailures ?? false,
-			'html',
-			{
-				outputDirPath: outputPath.replace(/\/[^/]+$/, ''),
-				outputDir: `axe-${themeName}`,
-				reportFileName: `${route.replace(/[/?]/g, '-')}.html`,
-			},
-		);
+		const builder = new AxeBuilder({ page }).withTags(AXE_TAGS);
+		const results = await builder.analyze();
+		await testInfo.attach('axe-results', {
+			body: JSON.stringify(results, null, 2),
+			contentType: 'application/json',
+		});
+		createHtmlReport({
+			results,
+			options: buildReportOptions(testInfo, route),
+		});
+		logViolations(route, results.violations);
 	});
 });

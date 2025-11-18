@@ -299,8 +299,8 @@
 				<div class="logo">
 					<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
 				</div>
-				<h1>KoliBri MCP API</h1>
-				<p class="subtitle">Model Context Protocol backend for KoliBri examples with streaming-native HTTP transport</p>
+				<h1>KoliBri MCP Server</h1>
+				<p class="subtitle">Access 200+ KoliBri component examples via Model Context Protocol – zero installation required</p>
 				<span class="status"
 					>📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples,
 					<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ Specs,
@@ -359,47 +359,57 @@
 			</div>
 
 			<div class="api-info">
-				<h2>🔧 VS Code Integration</h2>
-				<p class="description">Use the KoliBri MCP Server with GitHub Copilot Chat in VS Code:</p>
+				<h2>🚀 Quick Start – Zero Installation</h2>
+				<p class="description">Use the hosted KoliBri MCP Server directly without any installation. Just add the configuration to your MCP client:</p>
 
 				<div style="margin-top: 1rem">
-					<h3>Option 1: Local Installation</h3>
+					<h3>🔧 VS Code Copilot (Recommended)</h3>
+					<p class="description">Create an <code>mcp.json</code> in your workspace root or <code>~/.config/mcp/mcp.json</code>:</p>
+					<div class="relative">
+						<pre
+							style="margin: 0"
+						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri": { "url": "&lt;origin&gt;/mcp", "type": "http" } }, "inputs": [] }</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+
+					<h3>🤖 Claude Desktop</h3>
+					<p class="description">Add to your Claude Desktop config (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS):</p>
+					<div class="relative">
+						<pre style="margin: 0"><code class="endpoint" style="font-size: 0.9rem" data-claude-remote-config>{
+  "mcpServers": {
+    "kolibri": {
+      "url": "&lt;origin&gt;/mcp",
+      "type": "http"
+    }
+  }
+}</code></pre>
+						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+					</div>
+
+					<div class="highlight-box info" style="margin-top: 1rem">
+						<strong style="color: #2d3748">✅ Benefits of Remote Server:</strong>
+						<ul style="color: #2d3748; margin: 0.5rem 0 0 1.5rem; padding: 0">
+							<li>No installation required</li>
+							<li>Always up-to-date with latest samples</li>
+							<li>Works from any device</li>
+							<li>Zero maintenance</li>
+						</ul>
+					</div>
+
+					<h3>💻 Alternative: Local Installation</h3>
+					<p class="description">For offline use or local development, install and run locally:</p>
 					<div class="relative">
 						<code class="endpoint">npm install -g @public-ui/mcp</code>
 						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
-					<p class="description">Install the MCP package globally and create an <code>mcp.json</code>:</p>
+					<p class="description" style="margin-top: 0.5rem">Then run with <code>kolibri-mcp</code> or configure with stdio transport:</p>
 					<div class="relative">
 						<pre
 							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri-mcp": { "command": "npx", "args": ["@public-ui/mcp"] } }, "inputs": [] }</code></pre>
+						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri": { "command": "kolibri-mcp" } }, "inputs": [] }</code></pre>
 						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
 					</div>
-
-					<h3>Option 2: Remote Server (Recommended)</h3>
-					<p class="description">Use the hosted server without local installation in your <code>mcp.json</code>:</p>
-					<div class="relative">
-						<pre
-							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri-mcp": { "url": "&lt;origin&gt;/mcp", "type": "http" } }, "inputs": [] }</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
-					</div>
-					<div class="highlight-box warning">
-						<strong style="color: #856404">⚡ Remote Advantage:</strong>
-						<span style="color: #856404"> No installation required, always up-to-date, faster setup!</span>
-					</div>
-
-					<h3>Setup</h3>
-					<p class="description">Create an <code>mcp.json</code> file in your project directory or use the global configuration:</p>
-					<div class="relative">
-						<pre style="margin: 0"><code class="endpoint"># Local file in project
-echo '{ "servers": { ... } }' > mcp.json
-# Or globally for all projects
-~/.config/mcp/mcp.json
-</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
-					</div>
-					<h3>Detailed VS Code steps</h3>
+					<h3>Detailed VS Code Setup Steps</h3>
 					<ol class="description" style="padding-left: 1.25rem; color: #4a5568">
 						<li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
 						<li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
@@ -407,10 +417,10 @@ echo '{ "servers": { ... } }' > mcp.json
 							Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace
 							<code>&lt;origin&gt;</code> with the deployed server URL.
 						</li>
-						<li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri-mcp</strong> to establish the streaming session.</li>
+						<li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri</strong> to establish the streaming session.</li>
 						<li>
-							Ask Copilot things like <code class="endpoint-inline">@kolibri-mcp search button</code> or
-							<code class="endpoint-inline">@kolibri-mcp fetch sample/button/basic</code> to receive streamed answers.
+							Ask Copilot things like <code class="endpoint-inline">@kolibri search button</code> or
+							<code class="endpoint-inline">@kolibri fetch sample/button/basic</code> to receive streamed answers.
 						</li>
 					</ol>
 					<p class="description">In GitHub Copilot Chat you can now write:</p>
@@ -453,10 +463,16 @@ echo '{ "servers": { ... } }' > mcp.json
 			});
 
 			const remoteConfigElement = document.querySelector('[data-mcp-remote-config]');
+			const claudeRemoteConfigElement = document.querySelector('[data-claude-remote-config]');
 			const directUrlElement = document.querySelector('[data-mcp-direct-url]');
+			const origin = window.location.origin.replace(/\/$/, '');
+
 			if (remoteConfigElement) {
-				const origin = window.location.origin.replace(/\/$/, '');
-				remoteConfigElement.textContent = `{ "servers": { "kolibri-mcp": { "url": "${origin}/mcp", "type": "http" } }, "inputs": [] }`;
+				remoteConfigElement.textContent = `{ "servers": { "kolibri": { "url": "${origin}/mcp", "type": "http" } }, "inputs": [] }`;
+			}
+
+			if (claudeRemoteConfigElement) {
+				claudeRemoteConfigElement.textContent = `{\n  "mcpServers": {\n    "kolibri": {\n      "url": "${origin}/mcp",\n      "type": "http"\n    }\n  }\n}`;
 				if (directUrlElement) {
 					directUrlElement.textContent = `${origin}/mcp`;
 				}

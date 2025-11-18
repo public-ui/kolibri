@@ -72,6 +72,18 @@ test('searchEntries handles whitespace-only queries', () => {
 	assert.strictEqual(result.length, SAMPLE_ENTRIES.length);
 });
 
+test('searchEntries returns only entries of requested kind for empty queries', () => {
+	const sampleEntries = SAMPLE_ENTRIES.filter((entry) => entry.kind === 'sample');
+	const results = searchEntries(SAMPLE_ENTRIES, '   ', { kind: 'sample' });
+
+	assert.strictEqual(results.length, sampleEntries.length);
+	assert.ok(results.every((r) => r.item.kind === 'sample'));
+	assert.deepStrictEqual(
+		ids(results),
+		sampleEntries.map((entry) => entry.id),
+	);
+});
+
 test('searchEntries finds button-related entries case-insensitively', () => {
 	const results = searchEntries(SAMPLE_ENTRIES, 'button');
 	const resultIds = ids(results);
