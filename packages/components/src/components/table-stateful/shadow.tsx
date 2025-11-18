@@ -256,6 +256,7 @@ export class KolTableStateful implements TableAPI {
 						beforePatch: (nextValue: unknown) => {
 							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
 								let hasSortedCells = false;
+								this.sortData = [];
 								headers.forEach((cell) => {
 									if (typeof cell.compareFn === 'function' && !cell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
@@ -269,9 +270,7 @@ export class KolTableStateful implements TableAPI {
 									if (sortDirection === 'ASC' || sortDirection === 'DESC') {
 										if (typeof cell.compareFn === 'function') {
 											if (this.state._allowMultiSort || this.sortData.length === 0) {
-												if (!this.sortData.some((value) => value.label === cell.label)) {
-													this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
-												}
+												this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
 											}
 											hasSortedCells = true;
 										}
