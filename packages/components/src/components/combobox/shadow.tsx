@@ -43,9 +43,7 @@ import { ComboboxController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
@@ -122,10 +120,10 @@ export class KolCombobox implements ComboboxAPI {
 
 	private setFilteredSuggestionsByQuery(query: string) {
 		if (query.trim() === '') {
-			this._filteredSuggestions = [...this._suggestions];
+			this._filteredSuggestions = [...this.state._suggestions];
 		} else {
-			this._filteredSuggestions = Array.isArray(this._suggestions)
-				? this._suggestions.filter((option: W3CInputValue) => {
+			this._filteredSuggestions = Array.isArray(this.state._suggestions)
+				? this.state._suggestions.filter((option: W3CInputValue) => {
 						return (option as string).toLowerCase().includes(query.toLowerCase());
 					})
 				: this._filteredSuggestions;
@@ -178,7 +176,6 @@ export class KolCombobox implements ComboboxAPI {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInput?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
