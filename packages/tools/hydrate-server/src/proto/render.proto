@@ -11,6 +11,7 @@ service HydrateRenderer {
 // Request message containing HTML to render
 message RenderRequest {
   string html = 1;
+  string options_json = 2;
 }
 
 // Response message with rendered HTML and diagnostics

@@ -41,6 +41,9 @@ const DEFAULT_RENDERER_OPTIONS: Readonly<HydrateRendererOptions> = Object.freeze
 	timeout: 5000, // Keep original timeout for backward compatibility
 });
 
+const DEFAULT_TIMEOUT_MS = 5000;
+const MAX_TIMEOUT_MS = 30000; // Reasonable upper bound (30s)
+
 const mergeHydrateOptions = (base: Record<string, unknown> | undefined, overrides: Record<string, unknown> | undefined): HydrateRendererOptions => ({
 	...DEFAULT_RENDERER_OPTIONS,
 	...(base ?? {}),
@@ -165,8 +168,13 @@ export const hydrateFragmentForServer = async (
 	const normalizedBaseOptions = isPlainObject(baseOptions) ? baseOptions : undefined;
 	const effectiveOptions = mergeHydrateOptions(normalizedBaseOptions, normalizedOptions);
 
-	// Extract timeout from options or use default
-	const timeoutMs = (effectiveOptions.timeout as number) || 5000;
+	// Extract and clamp timeout from options or use default
+	let timeoutMs = Number(effectiveOptions.timeout);
+	if (!Number.isFinite(timeoutMs) || timeoutMs < 0) {
+		timeoutMs = DEFAULT_TIMEOUT_MS;
+	} else {
+		timeoutMs = Math.min(timeoutMs, MAX_TIMEOUT_MS);
+	}
 
 	return rendererMutex.runExclusive(async () => {
 		// Use shared isolated renderer for server efficiency
