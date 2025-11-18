@@ -1,4 +1,4 @@
-import { KolButton } from '@public-ui/react-v19';
+import { KolButton, KolHeading } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
@@ -14,12 +14,20 @@ export const ButtonAriaDescription: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows KolButton with aria-description</p>
+				<p>
+					This story demonstrates buttons with ARIA descriptions. The aria-description attribute provides additional descriptive text for screen readers,
+					helping users understand the button&apos;s purpose or action in more detail.
+				</p>
 			</SampleDescription>
 
-			<div className="flex flex-wrap gap-4">
-				<KolButton _label="Button Text without area description" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Button Text" _ariaDescription="Button Area Description" _on={dummyEventHandler}></KolButton>
+			<div className="grid gap-8">
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Buttons with and without ARIA Description" />
+					<div className="flex flex-wrap gap-4">
+						<KolButton _label="Button without ARIA description" _on={dummyEventHandler} />
+						<KolButton _label="Button with ARIA description" _ariaDescription="This button performs an important action" _on={dummyEventHandler} />
+					</div>
+				</section>
 			</div>
 		</>
 	);

@@ -1,4 +1,5 @@
 import { Routes } from '../shares/types';
+import { ButtonShortkeyTable } from './button-shortkey-table';
 import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
@@ -16,6 +17,7 @@ import { TooltipPositioning } from './tooltip-positioning';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
+		'button-shortkey-table': ButtonShortkeyTable,
 		'change-tabindex': ChangeTabindex,
 		'custom-tooltip-css-properties': CustomTooltipCssProperties,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
