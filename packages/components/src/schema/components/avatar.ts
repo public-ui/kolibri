@@ -1,9 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropImageSource, PropLabel } from '../props';
+import type { PropColor, PropImageSource, PropLabel } from '../props';
+import type { Stringified } from '../types';
 
 type RequiredAvatarProps = PropLabel;
-type OptionalAvatarProps = PropImageSource;
+type OptionalAvatarProps = PropImageSource & {
+	color: Stringified<PropColor>;
+};
 
 type RequiredAvatarStates = RequiredAvatarProps;
 type OptionalAvatarStates = OptionalAvatarProps;

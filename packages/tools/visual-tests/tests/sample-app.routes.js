@@ -119,7 +119,21 @@ ROUTES.set('button-link/image', {
 		},
 	},
 });
-ROUTES.set('button/basic', {
+ROUTES.set('button/variants', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('button/disabled', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('button/hide-label', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -128,31 +142,6 @@ ROUTES.set('button/basic', {
 });
 ROUTES.set('button/icons', {
 	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/width', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/access-key', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/baselined', {
-	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
@@ -160,16 +149,19 @@ ROUTES.set('button/baselined', {
 });
 ROUTES.set('button/short-key', {
 	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 434,
-		},
 		zoom: {
 			skip: true,
 		},
 	},
 });
 ROUTES.set('card/basic', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('card/headlines', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -297,7 +289,18 @@ ROUTES.set('icon/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 60,
-			height: 80,
+			height: 200,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('icon/font-awesome', {
+	snapshot: {
+		viewportSize: {
+			width: 250,
+			height: 345,
 		},
 		zoom: {
 			skip: true,
@@ -577,6 +580,10 @@ ROUTES.set('popover-button/basic', {
 		zoom: {
 			skip: true,
 		},
+		viewportSize: {
+			width: 200,
+			height: 220,
+		}
 	},
 });
 ROUTES.set('progress/basic', {

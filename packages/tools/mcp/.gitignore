@@ -1,4 +1,8 @@
-dist/
-src/samples.json
-src/samples.mjs
+.cache/
 api/samples.mjs
+
+# Generated sample index (static)
+shared/*.json
+
+# Generated landing page with resolved counters
+public/index.html

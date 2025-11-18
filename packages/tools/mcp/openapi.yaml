@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info:
+  title: KoliBri MCP Server API
+  version: 3.0.7
+  description: |
+    Model Context Protocol (MCP) server for KoliBri component library.
+    Provides AI agents with access to 136+ KoliBri component examples and source code.
+  contact:
+    name: Informationstechnikzentrum Bund
+    email: kolibri@itzbund.de
+    url: https://public-ui.github.io
+  license:
+    name: EUPL-1.2
+    url: https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12
+
+servers:
+  - url: https://kolibri-mcp.vercel.app
+    description: Production server
+  - url: http://localhost:3000
+    description: Local development server
+
+paths:
+  /:
+    get:
+      summary: Landing page
+      description: Returns the HTML landing page with API documentation
+      responses:
+        '200':
+          description: HTML landing page
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /mcp:
+    post:
+      summary: MCP Server Endpoint
+      description: |
+        Main endpoint for Model Context Protocol communication.
+        Supports JSON-RPC 2.0 protocol with MCP-specific methods.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonRpcRequest'
+            examples:
+              initialize:
+                summary: Initialize session
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: initialize
+                  params:
+                    protocolVersion: '2024-11-05'
+                    capabilities: {}
+                    clientInfo:
+                      name: example-client
+                      version: 1.0.0
+              list_tools:
+                summary: List available tools
+                value:
+                  jsonrpc: '2.0'
+                  id: 2
+                  method: tools/list
+                  params: {}
+              search:
+                summary: Search for components
+                value:
+                  jsonrpc: '2.0'
+                  id: 3
+                  method: tools/call
+                  params:
+                    name: search
+                    arguments:
+                      query: button
+                      limit: 5
+              fetch:
+                summary: Fetch specific entry
+                value:
+                  jsonrpc: '2.0'
+                  id: 4
+                  method: tools/call
+                  params:
+                    name: fetch
+                    arguments:
+                      id: button/basic
+      responses:
+        '200':
+          description: Successful JSON-RPC response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonRpcResponse'
+        '400':
+          description: Bad request - Invalid JSON-RPC format
+        '405':
+          description: Method not allowed - Only POST is supported
+        '500':
+          description: Internal server error
+
+    options:
+      summary: CORS preflight
+      description: Handles CORS preflight requests
+      responses:
+        '200':
+          description: CORS preflight response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+                example: GET, POST, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: Content-Type, Mcp-Session-Id
+
+components:
+  schemas:
+    JsonRpcRequest:
+      type: object
+      required:
+        - jsonrpc
+        - id
+        - method
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+        id:
+          oneOf:
+            - type: string
+            - type: number
+        method:
+          type: string
+          description: JSON-RPC method name
+          examples:
+            - initialize
+            - tools/list
+            - tools/call
+            - resources/list
+            - resources/read
+        params:
+          type: object
+          description: Method-specific parameters
+
+    JsonRpcResponse:
+      type: object
+      required:
+        - jsonrpc
+        - id
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+        id:
+          oneOf:
+            - type: string
+            - type: number
+        result:
+          type: object
+          description: Method result (on success)
+        error:
+          type: object
+          description: Error details (on failure)
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+            data:
+              type: object
+
+    SearchArguments:
+      type: object
+      properties:
+        query:
+          type: string
+          description: Optional search query string (leave empty to return all entries)
+          example: button
+        kind:
+          type: string
+          enum: [doc, sample, scenario]
+          description: Filter by entry type
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+          description: Maximum number of results
+
+    GetEntryArguments:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: Entry ID (e.g., "button/basic")
+          example: button/basic
+
+    SearchResult:
+      type: object
+      properties:
+        id:
+          type: string
+        kind:
+          type: string
+          enum: [sample, doc]
+        name:
+          type: string
+        group:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        score:
+          type: number
+          description: Search relevance score (0-1)
+        code:
+          type: string
+          description: Source code or content
+        path:
+          type: string
+          description: File path
+
+    Entry:
+      type: object
+      properties:
+        id:
+          type: string
+        kind:
+          type: string
+          enum: [sample, doc]
+        name:
+          type: string
+        group:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        code:
+          type: string
+        path:
+          type: string
+
+tags:
+  - name: MCP
+    description: Model Context Protocol endpoints
+  - name: Landing
+    description: Documentation and landing pages
