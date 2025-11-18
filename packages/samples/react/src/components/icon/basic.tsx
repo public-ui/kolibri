@@ -8,11 +8,15 @@ import { SampleDescription } from '../SampleDescription';
 export const IconBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolIcon renders an icon. This sample shows one regular icon and one with a custom style-property, changing the icon color.</p>
+			<p>KolIcon renders codicon icons. This sample shows regular icons and one with a custom style-property, changing the icon color.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolIcon className="block w-[1em] h-[1em]" _label="" _icons="codicon codicon-home" />
+			<KolIcon className="block" _label="" _icons="codicon codicon-home" />
+			<KolIcon className="block" _label="" _icons="codicon codicon-compass-active" />
+			<KolIcon className="block" _label="" _icons="codicon codicon-debug" />
+			<KolIcon className="block" _label="" _icons="codicon codicon-squirrel" />
+
 			<KolIcon
 				className="block w-[1em] h-[1em]"
 				style={{
