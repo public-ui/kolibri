@@ -264,6 +264,12 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	protected onKeyDown(event: KeyboardEvent): void {
+		if (typeof this.component._on?.onKeyDown === 'function') {
+			this.component._on.onKeyDown(event);
+		}
+	}
+
 	/**
 	 * Hinweis: In der Subklasse 'InputPasswordController'
 	 *          werden die Methoden onBlur und onFocus
@@ -279,6 +285,7 @@ export class InputController extends ControlledInputController implements Watche
 		onClick: this.onClick.bind(this),
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
+		onKeyDown: this.onKeyDown.bind(this),
 	};
 
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {

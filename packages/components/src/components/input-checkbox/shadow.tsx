@@ -284,7 +284,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
+		this.controller = new InputCheckboxController(this, 'checkbox', this.host as HTMLElement | undefined);
 	}
 
 	private showAsAlert(): boolean {
@@ -410,9 +410,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
-				form: this.host,
+				form: this.host as HTMLElement | undefined,
 				ref: this.inputRef,
 			});
 		}

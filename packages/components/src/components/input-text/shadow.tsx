@@ -85,9 +85,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
-				form: this.host,
+				form: this.host as HTMLElement | undefined,
 				ref: this.inputRef,
 			});
 		}
@@ -361,7 +363,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new InputTextController(this, 'text', this.host);
+		this.controller = new InputTextController(this, 'text', this.host as HTMLElement | undefined);
 	}
 
 	private showAsAlert(): boolean {

@@ -143,9 +143,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !this.isNativeCalendarIconFocused()) {
 			propagateSubmitEventToForm({
-				form: this.host,
+				form: this.host as HTMLElement | undefined,
 				ref: this.inputRef,
 			});
 		}
@@ -336,7 +338,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new InputDateController(this, 'date', this.host);
+		this.controller = new InputDateController(this, 'date', this.host as HTMLElement | undefined);
 	}
 
 	private showAsAlert(): boolean {
