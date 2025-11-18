@@ -2,7 +2,7 @@
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _accessKey="V" 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -31,7 +31,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _alert=true 1`] = `
 <kol-single-select _alert="">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -59,7 +59,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _disabled=true 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -87,7 +87,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hint="Hint" 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -118,7 +118,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -130,7 +130,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
@@ -141,7 +141,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -164,7 +164,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
@@ -184,7 +184,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -205,7 +205,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-single-select _touched="">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -244,7 +244,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -272,7 +272,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _readOnly=true 1`] = `
 <kol-single-select _readonly="">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -300,7 +300,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _shortKey="S" 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -329,7 +329,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _touched=true 1`] = `
 <kol-single-select _touched="">
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
@@ -357,7 +357,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 
 exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
 <kol-single-select>
-  <template shadowrootmode="open" shadowrootdelegatesfocus>
+  <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
