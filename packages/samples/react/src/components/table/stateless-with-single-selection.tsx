@@ -44,6 +44,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 	};
 	const handleSelectionChangeCallback = (_event: Event, selection: SelectionValue[]) => {
 		console.log('Selection change via callback', selection);
+		setSelectedKeys([selection]);
 	};
 
 	useEffect(() => {
