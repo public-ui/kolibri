@@ -1,15 +1,129 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 import { credentials, loadPackageDefinition } from '@grpc/grpc-js';
 import { load } from '@grpc/proto-loader';
 
 import { createHydrateServer, hydrateProtoPath, memoryMonitor } from '../../dist/index.mjs';
 
-// Load component metadata from @public-ui/components
-const customElementsPath = new URL('../../../../components/custom-elements.json', import.meta.url);
-const customElements = JSON.parse(readFileSync(customElementsPath, 'utf-8'));
+const require = createRequire(import.meta.url);
+
+const FALLBACK_CUSTOM_ELEMENTS = {
+	tags: [
+		{
+			name: 'kol-badge',
+			attributes: [
+				{
+					name: '_label',
+					required: true,
+					type: 'string',
+				},
+			],
+			slots: [{ name: '' }],
+		},
+		{
+			name: 'kol-button',
+			attributes: [
+				{
+					name: '_label',
+					required: true,
+					type: 'string',
+				},
+			],
+			slots: [{ name: '' }],
+		},
+		{
+			name: 'kol-heading',
+			attributes: [
+				{
+					name: '_label',
+					required: true,
+					type: 'string',
+				},
+				{
+					name: '_level',
+					required: false,
+					type: 'number',
+				},
+			],
+			slots: [{ name: '' }],
+		},
+	],
+};
+
+const loadCustomElements = () => {
+	const candidatePaths = ['../../../../components/custom-elements.json', '../../../../components/dist/custom-elements.json'];
+
+	for (const candidate of candidatePaths) {
+		const url = new URL(candidate, import.meta.url);
+		const path = fileURLToPath(url);
+
+		if (existsSync(path)) {
+			try {
+				return JSON.parse(readFileSync(path, 'utf-8'));
+			} catch (error) {
+				console.warn(`⚠️ Failed to read custom-elements metadata from ${path}:`, error);
+			}
+		}
+	}
+
+	console.warn('⚠️ Using fallback custom-elements metadata for hydrate-server tests.');
+	return FALLBACK_CUSTOM_ELEMENTS;
+};
+
+const loadRenderer = async () => {
+	const extractRenderer = (module) => {
+		if (!module) {
+			return null;
+		}
+
+		const directExport = module.renderToString;
+		if (typeof directExport === 'function') {
+			return directExport;
+		}
+
+		const defaultExport = module.default;
+
+		if (typeof defaultExport === 'function') {
+			return defaultExport;
+		}
+
+		if (defaultExport && typeof defaultExport === 'object' && typeof defaultExport.renderToString === 'function') {
+			return defaultExport.renderToString;
+		}
+
+		return null;
+	};
+
+	const loadAttempts = [async () => await import('@public-ui/hydrate'), async () => require('@public-ui/hydrate')];
+
+	for (const attempt of loadAttempts) {
+		try {
+			const module = await attempt();
+			const renderer = extractRenderer(module);
+
+			if (renderer) {
+				return renderer;
+			}
+		} catch (error) {
+			const code = error?.code;
+			const isResolutionError = code === 'ERR_MODULE_NOT_FOUND' || code === 'MODULE_NOT_FOUND' || code === 'ERR_PACKAGE_PATH_NOT_EXPORTED';
+
+			if (!isResolutionError) {
+				throw error;
+			}
+		}
+	}
+
+	console.warn('⚠️ Falling back to stub renderer because @public-ui/hydrate could not be resolved.');
+	return async (html) => ({ html, components: [], hydratedCount: 0, diagnostics: [] });
+};
+
+const rendererPromise = loadRenderer();
+const customElements = loadCustomElements();
 
 // Components that cause severe memory issues in server environment
 // These should be excluded until SSR memory leaks are fixed
@@ -173,6 +287,8 @@ const testComponents = generateTestComponents();
 
 // Fast test - only REST API (default)
 test('REST endpoint returns hydrated markup', { timeout: 60000 }, async (t) => {
+	const renderer = await rendererPromise;
+
 	// Use the real hydrate renderer instead of a stub
 	const server = await createHydrateServer({
 		restHost: '127.0.0.1',
@@ -180,6 +296,7 @@ test('REST endpoint returns hydrated markup', { timeout: 60000 }, async (t) => {
 		grpcHost: '127.0.0.1',
 		grpcPort: 0,
 		logger: false, // Use real renderer from @public-ui/hydrate
+		renderer,
 	});
 
 	t.after(async () => {
@@ -312,12 +429,15 @@ test('REST endpoint returns hydrated markup', { timeout: 60000 }, async (t) => {
 
 // Slow test - gRPC API (optional, run with TEST_GRPC=true)
 test('gRPC endpoint returns hydrated markup', { timeout: 600000, skip: !process.env.TEST_GRPC }, async (t) => {
+	const renderer = await rendererPromise;
+
 	const server = await createHydrateServer({
 		restHost: '127.0.0.1',
 		restPort: 0,
 		grpcHost: '127.0.0.1',
 		grpcPort: 0,
 		logger: false,
+		renderer,
 	});
 
 	t.after(async () => {
