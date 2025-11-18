@@ -41,8 +41,7 @@ const DEFAULT_RENDERER_OPTIONS: Readonly<HydrateRendererOptions> = Object.freeze
 	timeout: 5000, // Keep original timeout for backward compatibility
 });
 
-const DEFAULT_TIMEOUT_MS = 5000;
-const MAX_TIMEOUT_MS = 30000; // Reasonable upper bound (30s)
+const DEFAULT_TIMEOUT = 5000;
 
 const mergeHydrateOptions = (base: Record<string, unknown> | undefined, overrides: Record<string, unknown> | undefined): HydrateRendererOptions => ({
 	...DEFAULT_RENDERER_OPTIONS,
@@ -141,17 +140,6 @@ export const cleanupGlobalRenderer = (): void => {
 };
 
 /**
- * Creates a timeout promise that rejects after a specified duration
- */
-const createTimeoutPromise = (timeoutMs: number, componentHtml: string): Promise<never> => {
-	return new Promise((_, reject) => {
-		setTimeout(() => {
-			reject(new Error(`Hydration timeout after ${timeoutMs}ms for component: ${componentHtml.substring(0, 100)}...`));
-		}, timeoutMs);
-	});
-};
-
-/**
  * Server-optimized hydrate function that reuses isolated renderer instance
  */
 export const hydrateFragmentForServer = async (
@@ -168,14 +156,6 @@ export const hydrateFragmentForServer = async (
 	const normalizedBaseOptions = isPlainObject(baseOptions) ? baseOptions : undefined;
 	const effectiveOptions = mergeHydrateOptions(normalizedBaseOptions, normalizedOptions);
 
-	// Extract and clamp timeout from options or use default
-	let timeoutMs = Number(effectiveOptions.timeout);
-	if (!Number.isFinite(timeoutMs) || timeoutMs < 0) {
-		timeoutMs = DEFAULT_TIMEOUT_MS;
-	} else {
-		timeoutMs = Math.min(timeoutMs, MAX_TIMEOUT_MS);
-	}
-
 	return rendererMutex.runExclusive(async () => {
 		// Use shared isolated renderer for server efficiency
 		const isolatedRenderer = getIsolatedRenderer(renderer);
@@ -183,7 +163,11 @@ export const hydrateFragmentForServer = async (
 		try {
 			// Race between rendering and timeout to prevent hanging
 			const renderPromise = isolatedRenderer.render(html, effectiveOptions);
-			const timeoutPromise = createTimeoutPromise(timeoutMs, html);
+			const timeoutPromise = new Promise<never>((_, reject) => {
+				setTimeout(() => {
+					reject(new Error(`Hydration timeout after ${DEFAULT_TIMEOUT}ms`));
+				}, DEFAULT_TIMEOUT);
+			});
 
 			const result = await Promise.race([renderPromise, timeoutPromise]);
 
@@ -221,16 +205,17 @@ export const hydrateFragment = async (
 	const normalizedBaseOptions = isPlainObject(baseOptions) ? baseOptions : undefined;
 	const effectiveOptions = mergeHydrateOptions(normalizedBaseOptions, normalizedOptions);
 
-	// Extract timeout from options or use default
-	const timeoutMs = (effectiveOptions.timeout as number) || 5000;
-
 	// Create a new isolated renderer for each call to ensure test isolation
 	const isolatedRenderer = new IsolatedHydrateRenderer(renderer);
 
 	try {
 		// Race between rendering and timeout to prevent hanging
 		const renderPromise = isolatedRenderer.render(html, effectiveOptions);
-		const timeoutPromise = createTimeoutPromise(timeoutMs, html);
+		const timeoutPromise = new Promise<never>((_, reject) => {
+			setTimeout(() => {
+				reject(new Error(`Hydration timeout after ${DEFAULT_TIMEOUT}ms`));
+			}, DEFAULT_TIMEOUT);
+		});
 
 		const result = await Promise.race([renderPromise, timeoutPromise]);
 
