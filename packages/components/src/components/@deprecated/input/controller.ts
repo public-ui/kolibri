@@ -100,6 +100,12 @@ export class InputController extends ControlledInputController implements Watche
 		validateHint(this.component, value);
 	}
 
+	public validateOn(value?: InputTypeOnDefault): void {
+		if (typeof value === 'object') {
+			setState(this.component, '_on', value);
+		}
+	}
+
 	public validateId(value?: string): void {
 		watchString(this.component, '_id', value, { minLength: 1 });
 		if (value === '' || typeof value === 'undefined') {
@@ -115,12 +121,6 @@ export class InputController extends ControlledInputController implements Watche
 
 	public validateMsg(value?: Stringified<MsgPropType>): void {
 		validateMsg(this.component, value);
-	}
-
-	public validateOn(value?: InputTypeOnDefault): void {
-		if (typeof value === 'object') {
-			setState(this.component, '_on', value);
-		}
 	}
 
 	public validateShortKey(value?: ShortKeyPropType): void {
@@ -258,6 +258,12 @@ export class InputController extends ControlledInputController implements Watche
 		this.valueChangeListeners.push(listener);
 	}
 
+	protected onBeforeInput(event: InputEvent): void {
+		if (typeof this.component._on?.onBeforeInput === 'function') {
+			this.component._on.onBeforeInput(event);
+		}
+	}
+
 	/**
 	 * Hinweis: In der Subklasse 'InputPasswordController'
 	 *          werden die Methoden onBlur und onFocus
@@ -267,6 +273,7 @@ export class InputController extends ControlledInputController implements Watche
 	 *          Oberklassen.
 	 */
 	public readonly onFacade = {
+		onBeforeInput: this.onBeforeInput.bind(this),
 		onBlur: this.onBlur.bind(this),
 		onChange: this.onChange.bind(this),
 		onClick: this.onClick.bind(this),

@@ -1,4 +1,5 @@
 export enum Callback {
+	onBeforeInput = 'onBeforeInput',
 	onBlur = 'onBlur',
 	onChange = 'onChange',
 	onChangePage = 'onChangePage',

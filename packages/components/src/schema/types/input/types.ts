@@ -5,6 +5,10 @@ type InputTypeOnBlur = {
 	[Callback.onBlur]?: EventCallback<Event>;
 };
 
+type InputTypeOnBeforeInput = {
+	[Callback.onBeforeInput]?: EventCallback<InputEvent>;
+};
+
 type InputTypeOnClick = {
 	[Callback.onClick]?: EventCallback<Event>;
 };
@@ -39,4 +43,4 @@ export type Optgroup<T> = {
 
 export type SelectOption<T> = Option<T> | Optgroup<T> | RadioOption<T>;
 
-export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput;
+export type InputTypeOnDefault = InputTypeOnBeforeInput & InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput;
