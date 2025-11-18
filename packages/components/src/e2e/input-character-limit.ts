@@ -105,7 +105,7 @@ const testInputCharacterLimit = (componentName: string) => {
 				const hintElement = page.locator('#test-input-character-limit-hint');
 
 				await expect(hintElement).not.toBeVisible();
-				await expect(inputElement).not.toHaveAttribute('aria-describedby');
+				await expect(inputElement).toHaveAttribute('aria-describedby');
 			});
 		});
 	});
