@@ -860,32 +860,33 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private getSortOrderForColumn(key?: string): number | undefined {
-		if (!this.state._allowMultiSort) return undefined;
-		if (!key) return undefined;
-
-		let sortOrder: number | undefined = undefined;
-
-		this.state._headerCells.horizontal?.forEach((row) => {
-			row.forEach((cell) => {
-				const cellWithLogic = cell as KoliBriTableHeaderCellWithLogic;
-				if (cellWithLogic.key === key && cellWithLogic.sortOrder !== undefined) {
-					sortOrder = cellWithLogic.sortOrder;
-				}
-			});
-		});
-
-		if (sortOrder === undefined) {
-			this.state._headerCells.vertical?.forEach((row) => {
-				row.forEach((cell) => {
-					const cellWithLogic = cell as KoliBriTableHeaderCellWithLogic;
-					if (cellWithLogic.key === key && cellWithLogic.sortOrder !== undefined) {
-						sortOrder = cellWithLogic.sortOrder;
-					}
-				});
-			});
+		if (!this.state._allowMultiSort || !key) {
+			return undefined;
 		}
 
-		return sortOrder;
+		if (this.state._headerCells.horizontal) {
+			for (const row of this.state._headerCells.horizontal) {
+				for (const cell of row) {
+					const cellWithLogic = cell as KoliBriTableHeaderCellWithLogic;
+					if (cellWithLogic.key === key && cellWithLogic.sortOrder !== undefined) {
+						return cellWithLogic.sortOrder;
+					}
+				}
+			}
+		}
+
+		if (this.state._headerCells.vertical) {
+			for (const row of this.state._headerCells.vertical) {
+				for (const cell of row) {
+					const cellWithLogic = cell as KoliBriTableHeaderCellWithLogic;
+					if (cellWithLogic.key === key && cellWithLogic.sortOrder !== undefined) {
+						return cellWithLogic.sortOrder;
+					}
+				}
+			}
+		}
+
+		return undefined;
 	}
 
 	/**
