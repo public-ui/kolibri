@@ -50,6 +50,7 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
+		"lint:stylelint": "pnpm -r lint:stylelint",
 		"lint:tsc": "tsc --noemit",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",

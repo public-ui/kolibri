@@ -14,6 +14,16 @@ We have a monorepo structure with multiple packages, each with its own `package.
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
 - To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
 
+## 🚨 Format-first rule
+
+> **Stop before you commit:** run the formatter so CI never rejects your patch for style drift.
+
+1. Run `pnpm format` from the repo root whenever you change code, docs or configs.
+2. If you only touched one package, you may instead run `pnpm --filter <package> format` for a quicker pass.
+3. Re-stage the affected files (`git add -u`) so the formatted result is what lands in the commit.
+
+No package scripts in this repo need extra flags such as `-- --write`; the scripts already know when to write changes versus just check.
+
 ## Semantic Versioning
 
 This repository follows **Semantic Versioning** (SemVer) for all packages. Each package version is defined in its own `package.json` file. The versioning scheme is as follows:
@@ -255,6 +265,11 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Ensure all packages are built by running `pnpm build` before executing `pnpm lint` or `pnpm test`. Some packages rely on generated artifacts that linting and testing depend on.
 - Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
 - If your pull request only modifies Markdown files, skip `pnpm build`, `pnpm lint` and `pnpm test`. Just format the Markdown using `pnpm format` or Prettier.
+
+### Pre-commit checklist
+
+- **Always run `pnpm format` (or `pnpm --filter <package> format` for a single workspace) right before committing.** Formatting failures are one of the most common reasons for blocked quality gates, so make this the last step before `git commit` even for documentation-only changes.
+- After formatting, re-stage affected files with `git add -u` so the formatted content is what gets committed.
 
 ## Testing
 
