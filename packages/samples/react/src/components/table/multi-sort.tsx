@@ -96,6 +96,13 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 export const MultiSortTable: FC = () => {
 	const [verticalHeader, setVerticalHeader] = useState(HEADERS_VERTICAL);
 	const [horizontalHeader, setHorizontalHeader] = useState(HEADERS_HORIZONTAL);
+	const resetVerticalHeaders = () => {
+		setVerticalHeader({ vertical: [TABLE_HEADER_CELLS] });
+	};
+
+	const resetHorizontalHeaders = () => {
+		setHorizontalHeader({ horizontal: [TABLE_HEADER_CELLS] });
+	};
 	return (
 		<>
 			<SampleDescription>
@@ -105,7 +112,7 @@ export const MultiSortTable: FC = () => {
 			<section className="w-full grid gap-4">
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Vertical" />
-					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setVerticalHeader({ vertical: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
+					<KolButtonLink _label="Reset Table" _on={{ onClick: resetVerticalHeaders }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sortable Table with vertical headers"
 						_minWidth="auto"
@@ -117,7 +124,7 @@ export const MultiSortTable: FC = () => {
 				</section>
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Horizontal" />
-					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setHorizontalHeader({ horizontal: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
+					<KolButtonLink _label="Reset Table" _on={{ onClick: resetHorizontalHeaders }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sortable Table with horizontal headers"
 						_minWidth="auto"

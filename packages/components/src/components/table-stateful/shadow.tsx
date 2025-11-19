@@ -254,9 +254,29 @@ export class KolTableStateful implements TableAPI {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
+							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
+
+							let hasAnySortDirection = false;
+							const checkForSortDirection = (cells: KoliBriTableHeaderCellWithLogic[]) => {
+								cells.forEach((cell) => {
+									if (cell.sortDirection === 'ASC' || cell.sortDirection === 'DESC') {
+										hasAnySortDirection = true;
+									}
+								});
+							};
+
+							headers.horizontal?.forEach(checkForSortDirection);
+							headers.vertical?.forEach(checkForSortDirection);
+
+							if (!hasAnySortDirection) {
+								this.sortData = [];
+							}
+
 							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
 								let hasSortedCells = false;
-								this.sortData = [];
+								if (hasAnySortDirection) {
+									this.sortData = [];
+								}
 								headers.forEach((cell) => {
 									if (typeof cell.compareFn === 'function' && !cell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
@@ -281,7 +301,6 @@ export class KolTableStateful implements TableAPI {
 								}
 							};
 
-							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
 							headers.horizontal?.forEach(applySort);
 							headers.vertical?.forEach(applySort);
 
@@ -290,6 +309,9 @@ export class KolTableStateful implements TableAPI {
 								devHint(
 									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`,
 								);
+							}
+							if (this.sortData.length === 0) {
+								setTimeout(() => this.updateSortedData());
 							}
 						},
 					},
