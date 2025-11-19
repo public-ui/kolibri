@@ -99,7 +99,7 @@ export const MultiSortTable: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows KolTableStateful with multi-sort functionality, allowing sorting by both &quot;order&quot; and &quot;date&quot; columns.</p>
+				<p>This sample shows KolTableStateful with multi-sort functionality, allowing sorting all columns.</p>
 			</SampleDescription>
 
 			<section className="w-full grid gap-4">
@@ -107,7 +107,7 @@ export const MultiSortTable: FC = () => {
 					<KolHeading _level={2} _label="Vertical" />
 					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setVerticalHeader({ vertical: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
-						_label="Sort Table with Order and Date"
+						_label="Sortable Table with vertical headers"
 						_minWidth="auto"
 						_data={DATA}
 						_headers={verticalHeader}
@@ -119,7 +119,7 @@ export const MultiSortTable: FC = () => {
 					<KolHeading _level={2} _label="Horizontal" />
 					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setHorizontalHeader({ horizontal: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
-						_label="Sort Table with Order and Date"
+						_label="Sortable Table with horizontal headers"
 						_minWidth="auto"
 						_data={DATA}
 						_headers={horizontalHeader}
