@@ -21,12 +21,14 @@
 
 		&__table {
 			width: 100%;
+			table-layout: auto;
 			border-spacing: 0.075rem;
 		}
 
 		&__head {
 			position: sticky;
 			top: 0;
+			z-index: 99;
 		}
 
 		&__caption {
@@ -60,6 +62,7 @@
 
 			&--sticky {
 				background-color: var(--color-light);
+				box-sizing: border-box;
 				transition: box-shadow 0.2s ease-in-out;
 
 				&::before {

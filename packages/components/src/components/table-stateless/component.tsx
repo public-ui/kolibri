@@ -291,7 +291,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			leftOffsets[col.key] = accLeft;
 			leftKeys.add(col.key);
 
-			const width = this.getColumnWidth(col.key, col.width);
+			const width = this.getColumnWidthInPixels(col.key);
 			accLeft += width;
 		}
 
@@ -303,34 +303,40 @@ export class KolTableStateless implements TableStatelessAPI {
 			rightOffsets[col.key] = accRight;
 			rightKeys.add(col.key);
 
-			const width = this.getColumnWidth(col.key, col.width);
+			const width = this.getColumnWidthInPixels(col.key);
 			accRight += width;
 		}
 
 		return { leftOffsets, rightOffsets, leftKeys, rightKeys };
 	}
 
-	private getColumnWidth(key: string, proposedWidth?: number): number {
-		// First, try to get width from table settings
-		const columnSetting = this.state._tableSettings?.columns.find((col) => col.key === key);
-		if (columnSetting?.width && typeof columnSetting.width === 'number') {
-			return columnSetting.width;
+	private getColumnWidthInPixels(key: string): number {
+		if (!this.tableDivElement) {
+			const headerCell = this.findHeaderCellByKey(key);
+			if (headerCell?.label) {
+				return Math.max(headerCell.label.length * 10 + 40, 80);
+			}
+			return 100;
 		}
 
-		// Use proposed width if available
-		if (typeof proposedWidth === 'number' && proposedWidth > 0) {
-			return proposedWidth;
+		const headerCell = this.tableDivElement.querySelector(`th[data-column-key="${key}"]`) as HTMLElement;
+
+		if (headerCell && headerCell.offsetWidth > 0) {
+			return headerCell.offsetWidth;
 		}
 
-		// Fallback: Estimate based on header cell content
-		const headerCell = this.findHeaderCellByKey(key);
-		if (headerCell?.label) {
-			// Rough estimation: 1ch per character + padding
-			return Math.max(headerCell.label.length + 2, 12);
+		const bodyCell = this.tableDivElement.querySelector(`td[data-column-key="${key}"]`) as HTMLElement;
+
+		if (bodyCell && bodyCell.offsetWidth > 0) {
+			return bodyCell.offsetWidth;
 		}
 
-		// Last resort fallback
-		return 12;
+		const header = this.findHeaderCellByKey(key);
+		if (header?.label) {
+			return Math.max(header.label.length * 10 + 40, 80);
+		}
+
+		return 100;
 	}
 
 	private findHeaderCellByKey(key: string): KoliBriTableHeaderCell | undefined {
@@ -360,22 +366,36 @@ export class KolTableStateless implements TableStatelessAPI {
 		styles.zIndex = isHeader ? '5' : '3';
 
 		if (isLeftSticky) {
-			const offset = stickyMeta.leftOffsets[metaKey] ?? 0;
-			styles.left = `calc(${offset}ch + var(--kol-table-sticky-left, 0px))`;
-
 			const leftKeys = Array.from(stickyMeta.leftKeys);
-			const isLastLeft = metaKey === leftKeys[leftKeys.length - 1];
+			const positionIndex = leftKeys.indexOf(metaKey);
+
+			const baseZIndex = isHeader ? 10 : 5;
+			const zIndex = baseZIndex - positionIndex;
+
+			styles.zIndex = String(zIndex);
+
+			const offset = stickyMeta.leftOffsets[metaKey] ?? 0;
+			styles.left = `${offset}px`;
+
+			const isLastLeft = positionIndex === leftKeys.length - 1;
 			if (isLastLeft) {
 				styles.boxShadow = '2px 0 4px -2px rgba(0, 0, 0, 0.15)';
 			}
 		}
 
 		if (isRightSticky) {
-			const offset = stickyMeta.rightOffsets[metaKey] ?? 0;
-			styles.right = `calc(${offset}ch + var(--kol-table-sticky-right, 0px))`;
-
 			const rightKeys = Array.from(stickyMeta.rightKeys);
-			const isFirstRight = metaKey === rightKeys[rightKeys.length - 1];
+			const positionIndex = rightKeys.indexOf(metaKey);
+
+			const baseZIndex = isHeader ? 10 : 5;
+			const zIndex = baseZIndex - (rightKeys.length - 1 - positionIndex);
+
+			styles.zIndex = String(zIndex);
+
+			const offset = stickyMeta.rightOffsets[metaKey] ?? 0;
+			styles.right = `${offset}px`;
+
+			const isFirstRight = positionIndex === rightKeys.length - 1;
 			if (isFirstRight) {
 				styles.boxShadow = '-2px 0 4px -2px rgba(0, 0, 0, 0.15)';
 			}
@@ -872,6 +892,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				aria-live={isNoEntriesHintCell ? 'polite' : undefined}
 				aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
 				colSpan={cell.colSpan}
+				data-column-key={metaKey}
 				rowSpan={cell.rowSpan}
 				style={{
 					textAlign: cell.textAlign,
@@ -1097,6 +1118,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					'kol-table__cell--sticky-left': stickyMeta?.leftKeys.has(key ?? ''),
 					'kol-table__cell--sticky-right': stickyMeta?.rightKeys.has(key ?? ''),
 				})}
+				data-column-key={cell.key}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
