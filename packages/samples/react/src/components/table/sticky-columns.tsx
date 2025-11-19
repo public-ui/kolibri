@@ -28,16 +28,16 @@ export const TableStickyColumns: FC = () => {
 	return (
 		<>
 			<SampleDescription>
+				<p>This sample demonstrates KolTableStateful with sticky columns. The table is keyboard accessible and has horizontal and vertical scrollbars.</p>
 				<p>
-					This sample shows KolTableStateful with and without horizontal scrollbars. When a scrollbar is present, it should be possible to focus the table
-					container and to scroll it using arrow keys.
+					Configure sticky columns with <code>_fixedCols={'{[left, right]}'}</code>:
 				</p>
 			</SampleDescription>
 
 			<section className="w-full flex flex-col gap-4">
 				<KolTableStateful
 					_fixedCols={[1, 1]}
-					_label="Table for demonstration purposes with horizontal scrollbar."
+					_label="Table for demonstration purposes with horizontal scrollbar and sticky columns."
 					_headers={HEADERS}
 					_minWidth="1800px"
 					_data={DATA}
