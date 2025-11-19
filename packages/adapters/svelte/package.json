@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/svelte",
-	"version": "4.0.0-alpha.4",
+	"version": "4.0.0-alpha.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -53,9 +53,9 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
+		"svelte": "5.40.2",
 		"typescript": "5.9.3",
-		"unbuild": "3.6.1",
-		"svelte": "5.40.2"
+		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
