@@ -18,7 +18,7 @@ class WholeNumberFormatter {
 
 const disallowedCharactersPattern = /[.,eE]/;
 
-const preventInvalidKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
+const preventInvalidKeyDown = (event: KeyboardEvent) => {
 	if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && disallowedCharactersPattern.test(event.key)) {
 		event.preventDefault();
 	}
@@ -64,7 +64,7 @@ export function InputNumberWholeNumberFormatter() {
 														onBlur: () => {
 															void form.setFieldTouched('value', true);
 														},
-														onInput: (_, value: unknown) => {
+														onInput: (_event: Event, value: unknown) => {
 															const cleaned = formatter.parse(value);
 															const numValue = cleaned === '' ? undefined : Number(cleaned);
 
