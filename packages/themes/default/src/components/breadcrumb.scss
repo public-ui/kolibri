@@ -15,10 +15,11 @@
 			}
 		}
 
-		&__icon {
+		&__separator {
 			color: var(--color-subtle);
 
 			font-size: to-rem(12);
+			font-weight: 900;
 		}
 	}
 
