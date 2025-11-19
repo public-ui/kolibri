@@ -6,7 +6,9 @@
 		"build": "ng build",
 		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
 		"format": "prettier --check src",
-		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
+		"prepare": "pnpm prepare:components && pnpm prepare:theme-default",
+		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
+		"prepare:theme-default": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" src/assets --dot",
 		"start": "ng serve",
 		"unused": "knip"
 	},

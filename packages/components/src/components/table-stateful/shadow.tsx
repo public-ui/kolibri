@@ -265,6 +265,7 @@ export class KolTableStateful implements TableAPI {
 						beforePatch: (nextValue: unknown) => {
 							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
 								let hasSortedCells = false;
+								this.sortData = [];
 								headers.forEach((cell) => {
 									if (typeof cell.compareFn === 'function' && !cell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);

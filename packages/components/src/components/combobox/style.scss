@@ -16,4 +16,28 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+
+	.kol-combobox {
+		&__delete {
+			.kol-button {
+				cursor: pointer;
+			}
+
+			&--disabled {
+				.kol-button {
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+
+	.kol-custom-suggestions-toggle {
+		&:not(&--disabled) {
+			cursor: pointer;
+		}
+
+		&--disabled {
+			opacity: 0.5;
+		}
+	}
 }

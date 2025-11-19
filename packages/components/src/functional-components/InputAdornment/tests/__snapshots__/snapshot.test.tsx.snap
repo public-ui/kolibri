@@ -4,6 +4,6 @@ exports[`KolInputContainerFc should render correctly 1`] = `<div class="kol-inpu
 
 exports[`KolInputContainerFc should render with children 1`] = `
 <div class="kol-input-container__adornment kol-input-container__adornment--start">
-  <kol-icon _icons="codicon codicon-start-icon" _label=""></kol-icon>
+  <kol-icon _icons="start-icon" _label=""></kol-icon>
 </div>
 `;
