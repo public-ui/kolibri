@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "3.0.8-rc.0",
+	"version": "3.0.8-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -32,8 +32,8 @@
 	},
 	"dependencies": {
 		"@axe-core/playwright": "4.11.0",
-		"axe-html-reporter": "2.2.11",
 		"@public-ui/sample-react": "workspace:*",
+		"axe-html-reporter": "2.2.11",
 		"portfinder": "1.0.38",
 		"serve": "14.2.5"
 	},
