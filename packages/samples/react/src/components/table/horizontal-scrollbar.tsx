@@ -14,10 +14,10 @@ const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
+			{ label: 'Large Column Fixed', key: 'first', textAlign: 'left', width: '300px' },
 			{ label: 'Small Column', key: 'small', textAlign: 'left', width: '200px' },
-			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
-			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
+			{ label: 'Larger Column', key: 'third', textAlign: 'left', width: '400px' },
+			{ label: 'Larger fixed', key: 'fourth', textAlign: 'left', width: '400px' },
 		],
 	],
 };
@@ -38,7 +38,7 @@ export const TableHorizontalScrollbar: FC = () => {
 			<section className="w-full flex flex-col gap-4">
 				<div className="w-[400px] flex flex-col gap-4">
 					<KolTableStateful
-						_fixedCols={[1, 0]}
+						_fixedCols={[1, 1]}
 						_label="Table for demonstration purposes with horizontal scrollbar."
 						_minWidth={hasWidthRestriction ? '600px' : '300px'}
 						_headers={HEADERS}

@@ -59,7 +59,7 @@
 			border-bottom-width: calc(var(--border-width) * 2);
 
 			&--sticky {
-				background-color: inherit;
+				background-color: var(--color-light);
 				transition: box-shadow 0.2s ease-in-out;
 
 				&::before {
