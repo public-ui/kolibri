@@ -1,7 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { LabelPropType } from '../props';
-import type { AlertTypePropType, AlertVariantPropType } from '../props';
+import type { AlertTypePropType, LabelPropType } from '../props';
 
 const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
 type ToastStatus = (typeof toastStatusOptions)[number];
@@ -13,7 +12,10 @@ export type Toast = {
 	render?: ToastRenderFunction;
 	label: LabelPropType;
 	type: AlertTypePropType;
-	variant?: AlertVariantPropType;
+	/**
+	 * @deprecated Use `ToasterOptions.defaultVariant` when initializing the service instead.
+	 */
+	variant?: 'card';
 	onClose?: () => void;
 };
 
@@ -24,7 +26,10 @@ export type ToastState = {
 };
 
 export type ToasterOptions = {
-	defaultVariant: AlertVariantPropType;
+	/**
+	 * @deprecated Use `ToasterOptions.defaultVariant` when initializing the service instead.
+	 */
+	defaultVariant: 'card';
 };
 
 type RequiredProps = NonNullable<unknown>;

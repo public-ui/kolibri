@@ -1,6 +1,6 @@
+import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
-import { expect } from '@playwright/test';
 
 const COMPONENT_NAME = 'kol-combobox';
 const TEST_VALUE = 'Hello World';
@@ -26,15 +26,18 @@ test.describe(COMPONENT_NAME, () => {
 
 	test('should open listbox when button is clicked', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
-		await page.getByRole('button').click();
+		const input = page.locator('input.kol-combobox__input');
+		await input.focus();
+		await page.keyboard.press('ArrowDown');
 		const listbox = page.locator('ul[role="listbox"]');
 		await expect(listbox).toBeVisible();
 	});
 
 	test('should close listbox when pressing Escape', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
-		await page.getByRole('button').click();
 		const input = page.locator('input.kol-combobox__input');
+		await input.focus();
+		await page.keyboard.press('ArrowDown');
 		await input.press('Escape');
 		const listbox = page.locator('ul[role="listbox"]');
 		await expect(listbox).toHaveCount(0);
@@ -42,7 +45,6 @@ test.describe(COMPONENT_NAME, () => {
 
 	test('should select option with Enter key', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
-		await page.getByRole('button').click();
 		const input = page.locator('input.kol-combobox__input');
 		await input.focus();
 		await page.keyboard.press('ArrowDown');
@@ -70,7 +72,8 @@ test.describe(COMPONENT_NAME, () => {
 
 	test('should disable interaction when _disabled is true', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _disabled _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
-		await page.getByRole('button').click({ force: true });
+		const input = page.locator('input.kol-combobox__input');
+		await expect(input).toBeDisabled();
 		const listbox = page.locator('ul[role="listbox"]');
 		await expect(listbox).toHaveCount(0);
 	});

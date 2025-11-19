@@ -1,8 +1,8 @@
 import type { VNode } from '@stencil/core';
 import { h } from '@stencil/core';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
-import KolInputContainerFc from '../InputContainer';
 import KolIconButtonFc from '../../IconButton';
+import KolInputContainerFc from '../InputContainer';
 
 describe('KolInputContainerFc', () => {
 	it('should render correctly', async () => {

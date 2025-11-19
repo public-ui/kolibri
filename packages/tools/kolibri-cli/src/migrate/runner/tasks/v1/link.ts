@@ -1,6 +1,6 @@
+import { RefactorPropertyIconAlign } from '../common/RefactorPropertyIconAlign';
 import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 import { RenamePropertyNameTask } from '../common/RenamePropertyNameTask';
-import { RefactorPropertyIconAlign } from '../common/RefactorPropertyIconAlign';
 
 export const LinkRemovePropertyAriaControls = RemovePropertyNameTask.getInstance('kol-link', '_aria-controls', '^1');
 export const LinkRenamePropertyAriaCurrentToListenAriaCurrent = RenamePropertyNameTask.getInstance('kol-link', '_aria-current', '_listen-aria-current', '^1');

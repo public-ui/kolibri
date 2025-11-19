@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { LabelPropType, IconProps, IconWatches } from '../../schema';
+import type { IconProps, IconWatches, LabelPropType } from '../../schema';
 import { validateLabel, watchString } from '../../schema';
 
 type Component = Generic.Element.Component & IconProps;

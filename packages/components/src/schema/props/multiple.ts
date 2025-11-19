@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { watchBoolean } from '../utils';
 import type { WatchBooleanOptions } from '../utils';
+import { watchBoolean } from '../utils';
 
 /* types */
 export type MultiplePropType = boolean;

@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 
-import { FileExtension, PackageJson, MARKUP_EXTENSIONS, WEB_TAG_REGEX, REACT_TAG_REGEX } from '../../types';
+import { FileExtension, MARKUP_EXTENSIONS, PackageJson, REACT_TAG_REGEX, WEB_TAG_REGEX } from '../../types';
 import { RemoveMode } from '../types';
 
 /**

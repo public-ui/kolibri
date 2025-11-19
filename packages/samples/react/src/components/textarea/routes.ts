@@ -1,9 +1,9 @@
 import { Routes } from '../../shares/types';
 import { TextareaAdjustHeight } from './adjust-height';
 import { TextareaBasic } from './basic';
-import { TextareaWithCounter } from './with-counter';
 import { TextareaResize } from './resize';
 import { TextareaRows } from './rows';
+import { TextareaWithCounter } from './with-counter';
 
 export const TEXTAREA_ROUTES: Routes = {
 	textarea: {

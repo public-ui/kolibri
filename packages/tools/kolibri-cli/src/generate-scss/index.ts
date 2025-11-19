@@ -1,5 +1,5 @@
-import type { Command } from 'commander';
 import { BEM_ALERT, BEM_ICON } from '@public-ui/components';
+import type { Command } from 'commander';
 import { generateBemScssFile } from 'typed-bem/scss';
 
 /**

@@ -28,5 +28,4 @@ const BEM: SCHEMA = {
 const BEM_CLASS_ICON = bem('kol-icon');
 const BEM_CLASS_ICON__ICON = bem('kol-icon', 'icon');
 
-export { bem as genBemAlert, BEM as BEM_ICON };
-export { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON };
+export { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, BEM as BEM_ICON, bem as genBemAlert };

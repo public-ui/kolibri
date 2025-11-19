@@ -1,13 +1,12 @@
-import assert from 'node:assert';
 import fs from 'fs';
+import assert from 'node:assert';
 import os from 'os';
 import path from 'path';
-import child_process from 'node:child_process';
 
 import { TaskRunner } from '../src/migrate/runner/task-runner';
-import { RenameTagNameTask } from '../src/migrate/runner/tasks/common/RenameTagNameTask';
-import { RenamePropertyNameTask } from '../src/migrate/runner/tasks/common/RenamePropertyNameTask';
 import { RemovePropertyNameTask } from '../src/migrate/runner/tasks/common/RemovePropertyNameTask';
+import { RenamePropertyNameTask } from '../src/migrate/runner/tasks/common/RenamePropertyNameTask';
+import { RenameTagNameTask } from '../src/migrate/runner/tasks/common/RenameTagNameTask';
 import { setRemoveMode } from '../src/migrate/shares/reuse';
 
 function createStubModules(baseDir: string) {

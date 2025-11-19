@@ -1,18 +1,18 @@
 import { KoliBri } from '@public-ui/components';
-import globalCss from './global.scss';
 import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
-import buttonCss from './components/button.scss';
 import buttonLinkCss from './components/button-link.scss';
+import buttonCss from './components/button.scss';
 import cardCss from './components/card.scss';
 import comboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
+import iconCss from './components/icon.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -24,8 +24,8 @@ import inputRadioCss from './components/input-radio.scss';
 import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
-import modalCss from './components/modal.scss';
 import linkCss from './components/link.scss';
+import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
@@ -42,6 +42,7 @@ import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
 import treeItemCss from './components/tree-item.scss';
 import treeCss from './components/tree.scss';
+import globalCss from './global.scss';
 
 export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: globalCss,
@@ -58,6 +59,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
+	'KOL-ICON': iconCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-DATE': inputDateCss,

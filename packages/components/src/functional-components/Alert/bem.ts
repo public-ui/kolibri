@@ -72,5 +72,4 @@ const BEM_CLASS_ALERT__CLOSER = bem('kol-alert', 'closer');
 const BEM_CLASS_ALERT__CONTENT = bem('kol-alert', 'content');
 const BEM_CLASS_ALERT__ICON = bem('kol-alert', 'icon');
 
-export { bem as genBemAlert, BEM as BEM_ALERT };
-export { BEM_CLASS_ALERT__CLOSER, BEM_CLASS_ALERT__CONTENT, BEM_CLASS_ALERT__ICON };
+export { BEM as BEM_ALERT, BEM_CLASS_ALERT__CLOSER, BEM_CLASS_ALERT__CONTENT, BEM_CLASS_ALERT__ICON, bem as genBemAlert };

@@ -1,6 +1,6 @@
+import { KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { KolTableStateless } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }, {}, {}, {}];

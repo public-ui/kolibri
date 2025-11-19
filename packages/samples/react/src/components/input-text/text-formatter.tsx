@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Formik, Field, type FieldProps } from 'formik';
 import { KolForm, KolHeading, KolInputText } from '@public-ui/react-v19';
+import { Field, Formik, type FieldProps } from 'formik';
+import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 import { NumericFormat, type NumberFormatValues } from 'react-number-format';
@@ -20,7 +20,11 @@ class IbanFormatter {
 	public parse(value: string): string {
 		return this.electronicFormat(value);
 	}
-	public format(value: string): string {
+	public format(value: string, ref?: HTMLKolInputTextElement | null, selectionStart?: number | null): string {
+		if (ref && selectionStart) {
+			if (selectionStart % 5 === 0) selectionStart++;
+			ref?.setSelectionStart(selectionStart);
+		}
 		return this.printFormat(value);
 	}
 }
@@ -36,6 +40,9 @@ type CurrencyExampleFormValues = {
 export function InputTextFormatterDemo() {
 	const handleSubmit = async () => {};
 	const formatter = new IbanFormatter();
+
+	const textInput1 = React.useRef<HTMLKolInputTextElement>(null);
+	let textInput1SelectionStart: number | null | undefined;
 
 	const initialIbanExampleValues: IbanExampleFormValues = {
 		iban: 'DE89370400440532013000',
@@ -64,12 +71,13 @@ export function InputTextFormatterDemo() {
 										{({ field }: FieldProps<IbanExampleFormValues['iban']>) => (
 											<div className="block mt-2">
 												<KolInputText
+													ref={textInput1}
 													onBlur={() => {
 														void form.setFieldTouched('iban', true);
 													}}
 													id="field-iban"
 													_label="IBAN"
-													_value={formatter.format(field.value ?? '')}
+													_value={formatter.format(field.value ?? '', textInput1.current, textInput1SelectionStart)}
 													_msg={{
 														_type: 'error',
 														_description: form.errors.iban || '',
@@ -79,8 +87,10 @@ export function InputTextFormatterDemo() {
 													_on={{
 														onInput: (event, value: unknown) => {
 															if (event.target) {
+																textInput1.current?.selectionStart().then((start) => {
+																	textInput1SelectionStart = start;
+																});
 																const parsed_value = formatter.parse((value as string) ?? '');
-
 																void form.setFieldValue('iban', parsed_value, true);
 															}
 														},

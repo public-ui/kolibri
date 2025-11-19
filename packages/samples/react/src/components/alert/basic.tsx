@@ -1,7 +1,7 @@
-import React from 'react';
+import type { AlertTypePropType, AlertVariantPropType, HeadingLevel } from '@public-ui/components';
 import { KolAlert } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import type { AlertTypePropType, AlertVariantPropType, HeadingLevel } from '@public-ui/components';
+import React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 type PropsByType = {

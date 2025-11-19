@@ -1,5 +1,4 @@
 @use '../@shared/input-text' as *;
-@use '../mixins/input-file' as *;
 @use '../mixins/to-rem' as *;
 @use '../mixins/button' as *;
 
@@ -7,15 +6,20 @@
 	@include kol-button('kol-button');
 
 	.kol-input-container {
-		padding: 0 0 0 to-rem(8);
+		padding: 0;
 		gap: initial;
 
 		&__filename {
 			color: var(--color-subtle);
+			padding-left: to-rem(8);
 		}
 
 		&--is-dragover {
 			border-color: var(--color-primary);
+		}
+
+		&:has(&__adornment--start:not(:empty)) &__filename {
+			padding-left: to-rem(52);
 		}
 	}
 

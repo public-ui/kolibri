@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropHideLabel, PropLabelWithExpertSlot, PropBadgeText } from '../props';
+import type { PropBadgeText, PropHideLabel, PropLabelWithExpertSlot } from '../props';
 import type { KoliBriCustomIcon, KoliBriIconsProp, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;

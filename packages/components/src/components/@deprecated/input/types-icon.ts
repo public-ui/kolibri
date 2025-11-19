@@ -1,5 +1,5 @@
-import type { PropHorizontalIcons, PropLabelWithExpertSlot } from '../../../schema';
 import type { Generic } from 'adopted-style-sheets';
+import type { PropHorizontalIcons, PropLabelWithExpertSlot } from '../../../schema';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropLabelWithExpertSlot & PropHorizontalIcons;

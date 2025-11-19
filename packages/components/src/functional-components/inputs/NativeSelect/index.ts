@@ -1,2 +1,2 @@
-export { default } from './NativeSelect';
 export * from './NativeSelect';
+export { default } from './NativeSelect';

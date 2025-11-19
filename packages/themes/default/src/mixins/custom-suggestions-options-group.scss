@@ -5,9 +5,15 @@
 		border-color: var(--color-subtle);
 		border-style: solid;
 		border-radius: var(--border-radius);
-		right: to-rem(-8);
-		left: to-rem(-8);
+		right: 0;
+		left: 0;
+		z-index: 5;
 		max-height: calc($option-height * $visible-options + to-rem(2));
 		border-width: 1px;
+	}
+
+	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
+	.kol-input-container__container:has(.kol-custom-suggestions-options-group) {
+		z-index: 10;
 	}
 }

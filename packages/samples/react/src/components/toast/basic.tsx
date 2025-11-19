@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import type { AlertTypePropType } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react-v19';
-import type { AlertTypePropType, AlertVariantPropType } from '@public-ui/components';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
@@ -13,7 +13,6 @@ import type { FC } from 'react';
 export const ToastBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultType = searchParams.get('type') as AlertTypePropType;
-	const defaultVariant = searchParams.get('variant') as AlertVariantPropType;
 	const toaster = ToasterService.getInstance(document);
 	const handleButtonClickSimple = () => {
 		void toaster.enqueue({
@@ -26,38 +25,15 @@ export const ToastBasic: FC = () => {
 		});
 	};
 
-	const handleButtonClickVariantMessage = () => {
-		void toaster.enqueue({
-			description: 'Toasty',
-			label: `Toast with variant 'msg'`,
-			type: 'warning',
-			variant: 'msg',
-		});
-	};
-
 	useEffect(() => {
-		if (defaultType && defaultVariant) {
+		if (defaultType) {
 			void toaster.enqueue({
 				description: 'Toasty',
-				label: `Toast with variant 'msg'`,
+				label: `Toast with type '${defaultType}'`,
 				type: defaultType,
-				variant: defaultVariant,
-			});
-		} else if (defaultType) {
-			void toaster.enqueue({
-				description: 'Toasty',
-				label: `Initial Toast`,
-				type: defaultType,
-			});
-		} else if (defaultVariant) {
-			void toaster.enqueue({
-				description: 'Toasty',
-				label: `Initial Toast`,
-				type: 'default',
-				variant: defaultVariant,
 			});
 		}
-	}, [defaultType, defaultVariant]);
+	}, [defaultType, toaster]);
 
 	const handleButtonClickComplex = () => {
 		void toaster.enqueue({
@@ -102,19 +78,13 @@ export const ToastBasic: FC = () => {
 			<SampleDescription>
 				<p>This sample demonstrates the toast service with all its options.</p>
 			</SampleDescription>
-
 			<section className="grid gap-4">
-				<section className="flex gap-2">
+				<div className="flex flex-wrap gap-2">
 					<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>
-					<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>
 					<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
-				</section>
-				<section className="flex gap-2">
 					<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
-				</section>
-				<section className="flex gap-2">
 					<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
-				</section>
+				</div>
 			</section>
 		</>
 	);

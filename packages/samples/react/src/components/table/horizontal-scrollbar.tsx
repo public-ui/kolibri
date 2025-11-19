@@ -5,8 +5,8 @@ import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react
 
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
-import { DATA as tableData } from './test-data';
 import type { Data } from './test-data';
+import { DATA as tableData } from './test-data';
 
 import type { KoliBriTableHeaders } from '@public-ui/components';
 

@@ -1,5 +1,5 @@
-import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
 const testInputCharacterLimit = (componentName: string) => {
 	test.describe('character limit', () => {

@@ -1,5 +1,5 @@
-import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 import { AbstractTask } from '../../abstract-task';
+import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 
 const ID_COMPONENTS = [
 	'kol-button',

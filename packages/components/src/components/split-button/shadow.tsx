@@ -1,3 +1,5 @@
+import type { JSX } from '@stencil/core';
+import { Component, h, Method, Prop, State } from '@stencil/core';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -15,12 +17,10 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop, State } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 import clsx from 'clsx';
+import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
+import { translate } from '../../i18n';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -30,9 +30,7 @@ import clsx from 'clsx';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;

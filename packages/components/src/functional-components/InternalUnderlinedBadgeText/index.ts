@@ -1,2 +1,2 @@
-export { default } from './InternalUnderlinedBadgeText';
 export * from './InternalUnderlinedBadgeText';
+export { default } from './InternalUnderlinedBadgeText';

@@ -1,9 +1,9 @@
 import { AbstractTask } from '../../abstract-task';
-import { TextareaUpdatePropertyValue_Resize_Both, TextareaUpdatePropertyValue_Resize_Horizontal } from './textarea';
 import { AbbrRemovePropertyTooltipAlign } from './abbr';
-import { ModalRemovePropertyActiveElement } from './modal';
-import { InputFileRemovePropertyValue } from './input-file';
 import { AllInputTasks } from './all-input';
+import { InputFileRemovePropertyValue } from './input-file';
+import { ModalRemovePropertyActiveElement } from './modal';
+import { TextareaUpdatePropertyValue_Resize_Both, TextareaUpdatePropertyValue_Resize_Horizontal } from './textarea';
 import { ToasterRenameProperties } from './toaster';
 
 export const v3Tasks: AbstractTask[] = [];

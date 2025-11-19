@@ -1,3 +1,6 @@
+import type { JSX } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
+import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -15,18 +18,13 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolButton implements ButtonProps, FocusableElement {
 	private buttonWcRef?: HTMLKolButtonWcElement;

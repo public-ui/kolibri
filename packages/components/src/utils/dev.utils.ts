@@ -1,7 +1,7 @@
 import { Log, getDocument, isTestMode, setColorContrastAnalysis, setExperimentalMode } from '../schema';
 
-import { getWindow } from '../schema';
 import { Env } from '@stencil/core';
+import { getWindow } from '../schema';
 
 const initMeta = (): void => {
 	try {
