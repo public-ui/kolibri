@@ -56,6 +56,7 @@ export const BreadcrumbBasic: FC = () => (
 					},
 				]}
 			></KolBreadcrumb>
+			<KolBreadcrumb _label="Minimal Breadcrumb" _links={[{ _label: 'Homepage', _href: '#/back-page' }]}></KolBreadcrumb>
 		</div>
 	</>
 );
