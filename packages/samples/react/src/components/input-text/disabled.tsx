@@ -12,7 +12,7 @@ export const InputTextDisabled: FC = () => (
 		<div className="grid gap-4">
 			<KolInputText _label="Disabled with placeholder" _placeholder="Placeholder text" _disabled />
 			<KolInputText _label="Disabled with value" _value="This field is disabled" _disabled />
-			<KolInputText _label="Disabled with error message" _value="Invalid value" _msg={{ _type: 'error', _description: 'Error message' }} _disabled />
+			<KolInputText _label="Disabled with error message" _value="Invalid value" _msg={{ _type: 'error', _description: 'Error message' }} _disabled _touched />
 			<KolInputText _label="Comparison: Enabled" _value="This field is enabled" />
 		</div>
 	</>
