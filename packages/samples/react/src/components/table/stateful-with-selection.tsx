@@ -42,7 +42,6 @@ export const TableStatefulWithSelection: FC = () => {
 	};
 	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | null) => {
 		console.log('Selection change via callback', selection);
-		setSelectedValue(selection);
 	};
 
 	const handleButtonClick = async () => {
