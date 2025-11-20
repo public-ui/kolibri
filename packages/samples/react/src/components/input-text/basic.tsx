@@ -1,8 +1,8 @@
 import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { SampleDescription } from '../SampleDescription';
 import { ERROR_MSG } from '../../shares/constants';
+import { SampleDescription } from '../SampleDescription';
 
 export const InputTextBasic: FC = () => (
 	<>

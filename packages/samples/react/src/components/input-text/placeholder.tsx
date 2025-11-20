@@ -11,7 +11,7 @@ export const InputTextPlaceholder: FC = () => (
 
 		<div className="grid gap-4">
 			<KolInputText _label="First name" _placeholder="Enter your first name" />
-			<KolInputText _label="Email address" _placeholder="user@example.com" _type="email" />
+			<KolInputText _label="Email address" _placeholder="user@example.com" />
 			<KolInputText _label="Phone number" _placeholder="+49 123 456789" _type="tel" />
 			<KolInputText _label="Website" _placeholder="https://example.com" _type="url" />
 			<KolInputText _label="Search" _placeholder="Search..." _type="search" />

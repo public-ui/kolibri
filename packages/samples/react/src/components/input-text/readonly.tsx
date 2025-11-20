@@ -12,7 +12,12 @@ export const InputTextReadonly: FC = () => (
 		<div className="grid gap-4">
 			<KolInputText _label="Readonly with placeholder" _placeholder="Placeholder text" _readOnly />
 			<KolInputText _label="Readonly with value" _value="This field is readonly" _readOnly />
-			<KolInputText _label="Readonly with info message" _value="Read-only value" _msg={{ _type: 'info', _description: 'This field cannot be edited' }} _readOnly />
+			<KolInputText
+				_label="Readonly with info message"
+				_value="Read-only value"
+				_msg={{ _type: 'info', _description: 'This field cannot be edited' }}
+				_readOnly
+			/>
 			<KolInputText _label="Comparison: Editable" _value="This field is editable" />
 		</div>
 	</>
