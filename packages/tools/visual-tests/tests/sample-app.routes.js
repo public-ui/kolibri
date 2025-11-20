@@ -544,6 +544,17 @@ ROUTES.set('input-text/access-short-key?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-text/hide-label?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 500,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-text/hide-msg?noColumns', {
 	snapshot: {
 		viewportSize: {

@@ -10,10 +10,10 @@ const smartButtonProps = {
 
 const icons = {
 	left: {
-		icon: 'codicon codicon-arrow-left',
+		icon: 'codicon codicon-search',
 	},
 	right: {
-		icon: 'codicon codicon-arrow-right',
+		icon: 'codicon codicon-check',
 	},
 };
 

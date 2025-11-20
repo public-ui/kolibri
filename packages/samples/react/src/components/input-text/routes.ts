@@ -3,6 +3,7 @@ import { InputTextAccessShortKey } from './access-short-key';
 import { InputTextBasic } from './basic';
 import { InputTextDisabled } from './disabled';
 import { InputTextExpertSlot } from './expert-slot';
+import { InputTextHideLabel } from './hide-label';
 import { InputTextHideMsg } from './hide-msg';
 import { InputTextMessageTypes } from './message-types';
 import { InputTextPlaceholder } from './placeholder';
@@ -19,6 +20,7 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		disabled: InputTextDisabled,
 		readonly: InputTextReadonly,
 		'access-short-key': InputTextAccessShortKey,
+		'hide-label': InputTextHideLabel,
 		'hide-msg': InputTextHideMsg,
 		'text-formatter': InputTextFormatterDemo,
 		'smart-button': InputTextSmartButton,

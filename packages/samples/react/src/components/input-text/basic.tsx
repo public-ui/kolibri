@@ -14,6 +14,18 @@ export const InputTextBasic: FC = () => (
 			<KolInputText _label="First name" _value="John Doe" />
 			<KolInputText _label="Email" _value="john@example.com" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
 			<KolInputText _label="Address" _value="123 Main Street" _disabled />
+			<KolInputText
+				_label="Username with icons"
+				_value="squirrel_home"
+				_icons={{
+					left: {
+						icon: 'codicon codicon-squirrel',
+					},
+					right: {
+						icon: 'codicon codicon-home',
+					},
+				}}
+			/>
 		</div>
 	</>
 );
