@@ -53,12 +53,19 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
+	 * Show the popover programmatically by calling the native showPopover method.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.refPopover?.showPopover();
+	}
+
+	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
 	public async kolFocus() {
-		// eslint-disable-next-line no-console
-		console.log('Focusing popover button', this.refButton);
 		await this.refButton?.kolFocus();
 	}
 

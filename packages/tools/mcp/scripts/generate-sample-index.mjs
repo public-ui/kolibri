@@ -494,7 +494,7 @@ async function updateLandingPageCounts(index) {
 				}
 			}
 
-			const htmlPattern = new RegExp(`${escapeRegExp(htmlComment)}\s*([0-9][0-9,]*)`, 'g');
+			const htmlPattern = new RegExp(`${escapeRegExp(htmlComment)}\\s*([0-9][0-9,]*)`, 'g');
 			const htmlReplaced = updated.replace(htmlPattern, `${htmlComment}${value}`);
 			if (htmlReplaced !== updated) {
 				changed = true;
@@ -509,14 +509,13 @@ async function updateLandingPageCounts(index) {
 				}
 			}
 
-			const jsPattern = new RegExp(`([0-9][0-9,]*)\s*${escapeRegExp(jsComment)}`, 'g');
+			const jsPattern = new RegExp(`([0-9][0-9,]*)\\s*${escapeRegExp(jsComment)}`, 'g');
 			const jsReplaced = updated.replace(jsPattern, `${value} ${jsComment}`);
 			if (jsReplaced !== updated) {
 				changed = true;
 				updated = jsReplaced;
 			}
 		}
-
 		if (changed) {
 			await writeFile(LANDING_PAGE, updated, 'utf8');
 			console.log(`[generate-sample-index] ✅ Updated landing page counts in ${path.relative(PACKAGE_ROOT, LANDING_PAGE)}`);

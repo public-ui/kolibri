@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.8-rc.0",
+	"version": "3.0.8-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -26,10 +26,9 @@
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
 		"lint:tsc": "tsc --noemit",
-		"pretest": "pnpm build",
+		"pretest:unit": "pnpm build",
 		"restart": "pnpm reset && pnpm start",
 		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
-		"test": "pnpm test:unit",
 		"test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts --no-experimental-strip-types",
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test"
@@ -63,7 +62,7 @@
 		"knip": "5.65.0",
 		"mocha": "11.7.4",
 		"nodemon": "3.1.10",
-		"rimraf": "6.0.1",
+		"rimraf": "6.1.0",
 		"ts-node": "10.9.2",
 		"typescript": "5.9.3"
 	},

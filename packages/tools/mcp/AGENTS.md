@@ -4,6 +4,8 @@
 
 This package provides a Model Context Protocol (MCP) server implementation using the official `@modelcontextprotocol/sdk`. It offers AI agents structured access to KoliBri component samples and documentation with fuzzy search capabilities.
 
+> 🧹 **Formatting**: Follow the repo-wide “Format-first rule” in `/AGENTS.md`. Run `pnpm format` or `pnpm --filter @public-ui/mcp format` before committing—no extra arguments like `--write` are necessary.
+
 The server supports **three deployment modes**:
 
 - **stdio**: For local MCP clients (Claude Desktop, VS Code MCP extension)
