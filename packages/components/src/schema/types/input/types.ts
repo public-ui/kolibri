@@ -21,6 +21,10 @@ type InputTypeOnInput = {
 	[Callback.onInput]?: EventValueOrEventCallback<Event, unknown>;
 };
 
+type InputTypeOnKeyDown = {
+	[Callback.onKeyDown]?: EventCallback<KeyboardEvent>;
+};
+
 // https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element
 export type Option<T> = {
 	disabled?: boolean;
@@ -39,4 +43,4 @@ export type Optgroup<T> = {
 
 export type SelectOption<T> = Option<T> | Optgroup<T> | RadioOption<T>;
 
-export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput;
+export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput & InputTypeOnKeyDown;

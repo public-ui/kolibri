@@ -14,11 +14,11 @@ const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOG
  * CLI entry point for KoliBri MCP Server (stdio transport).
  * Used for local MCP clients like Claude Desktop, VS Code, etc.
  */
-function main() {
+async function main() {
 	const server = createKolibriMcpServer();
 	const transport = new StdioServerTransport();
 
-	server.connect(transport);
+	await server.connect(transport);
 
 	// Log to stderr to avoid interfering with stdio protocol
 	const metadata = getSampleIndexMetadata();
@@ -41,4 +41,4 @@ function main() {
 	console.error('✅ Ready for MCP requests\n');
 }
 
-main();
+void main();
