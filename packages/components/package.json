@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "4.0.0-alpha.4",
+	"version": "4.0.0-alpha.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -99,12 +99,12 @@
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
 		"@public-ui/stencil-vue-output-target": "0.9.0",
+		"@revolist/svelte-output-target": "0.0.7",
 		"@stencil-community/eslint-plugin": "0.10.0",
 		"@stencil-community/postcss": "2.2.0",
 		"@stencil/core": "4.38.0",
 		"@stencil/playwright": "0.2.1",
 		"@stencil/sass": "3.2.2",
-		"@revolist/svelte-output-target": "0.0.7",
 		"@types/color-convert": "2.0.4",
 		"@types/jest": "26.0.24",
 		"@types/lodash-es": "4.17.12",
