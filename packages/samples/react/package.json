@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "3.0.8-rc.0",
+	"version": "3.0.8-rc.1",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -20,7 +20,6 @@
 		"prepare:themes": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"serve": "vite",
 		"start": "vite --open",
-		"test": "pnpm test:e2e",
 		"test:e2e": "playwright test",
 		"unused": "knip"
 	},

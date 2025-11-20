@@ -553,7 +553,7 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
 
 ## Performance Notes
 
-- **Build parallelization:** Most pnpm commands support `--parallel` flag
+- **No parallelization:** We prefer readable sequential builds over complex parallel setups
 - **Incremental builds:** Individual packages can be built separately
 - **Development mode:** Use `pnpm dev` in specific packages for watch mode
 - **Asset copying:** Required for themes and icons before development

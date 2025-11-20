@@ -1,0 +1,12 @@
+{
+	"require": ["./test/setup.js", "mocha-snapshots"],
+	"spec": ["test/**/*.spec.js"],
+	"timeout": 1000,
+	"exit": true,
+	"forbidOnly": true,
+	"color": true,
+	"bail": true,
+	"retries": 0,
+	"jobs": 1,
+	"parallel": false
+}

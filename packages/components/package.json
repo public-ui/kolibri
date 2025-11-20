@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "3.0.8-rc.0",
+	"version": "3.0.8-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -67,7 +67,7 @@
 		"lint:tsc": "tsc --noemit",
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"prod": "stencil build --prod",
-		"test": "pnpm test:e2e && pnpm test:unit",
+		"test": "pnpm test:unit && pnpm test:e2e",
 		"test:e2e": "playwright test",
 		"test:unit": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",

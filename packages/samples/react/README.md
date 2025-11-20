@@ -12,7 +12,7 @@
 
 This app demonstrates all KoliBri components in a small React project.
 
-Live example: <https://public-ui.github.io/v2/sample-react>
+Live example: <https://release-3--kolibri-public-ui.netlify.app>
 
 The sample is built with **Vite** for fast development and production builds.
 
