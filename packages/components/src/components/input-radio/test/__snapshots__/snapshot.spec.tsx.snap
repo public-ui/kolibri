@@ -438,7 +438,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <div class="kol-field-control kol-field-control--disabled kol-field-control--error kol-field-control--touched">
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--disabled kol-input-radio--error kol-input-radio--touched">
-              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="id-nonce-0" name="field" type="radio" value="-0">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="id-nonce-0" name="field" type="radio" value="-0">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce-0" id="id-nonce-0-label">
@@ -452,7 +452,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <div class="kol-field-control kol-field-control--error kol-field-control--touched">
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
-              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-1" name="field" type="radio" value="-1">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-1" name="field" type="radio" value="-1">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce-1" id="id-nonce-1-label">
@@ -466,7 +466,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <div class="kol-field-control kol-field-control--error kol-field-control--touched">
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
-              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-2" name="field" type="radio" value="-2">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-2" name="field" type="radio" value="-2">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce-2" id="id-nonce-2-label">
@@ -981,7 +981,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <div class="kol-field-control kol-field-control--disabled kol-field-control--error kol-field-control--touched">
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--disabled kol-input-radio--error kol-input-radio--touched">
-              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="id-nonce-0" name="field" type="radio" value="-0">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="id-nonce-0" name="field" type="radio" value="-0">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce-0" id="id-nonce-0-label">
@@ -995,7 +995,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <div class="kol-field-control kol-field-control--error kol-field-control--touched">
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
-              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-1" name="field" type="radio" value="-1">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-1" name="field" type="radio" value="-1">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce-1" id="id-nonce-1-label">
@@ -1009,7 +1009,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
         <div class="kol-field-control kol-field-control--error kol-field-control--touched">
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
-              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-2" name="field" type="radio" value="-2">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="id-nonce-2" name="field" type="radio" value="-2">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce-2" id="id-nonce-2-label">

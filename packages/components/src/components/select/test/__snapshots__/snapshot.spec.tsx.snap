@@ -286,7 +286,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
+              <select aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
                 <option class="kol-select__option kol-select__option--disabled kol-select__option--selected" disabled="" selected="" value="-0">
                   Frau
                 </option>
@@ -628,7 +628,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
+              <select aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
                 <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                   Frau
                 </option>
@@ -1079,7 +1079,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
+              <select aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" multiple="" name="field">
                 <option class="kol-select__option kol-select__option--disabled kol-select__option--selected" disabled="" selected="" value="-0">
                   Frau
                 </option>
@@ -1711,7 +1711,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           <div class="kol-input-container__container">
             <form>
               <input hidden="" type="submit">
-              <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
+              <select aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id-nonce" name="field">
                 <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                   Frau
                 </option>
