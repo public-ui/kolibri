@@ -1,16 +1,19 @@
+import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-
-import { FormWrap } from '../FormWrap';
 import { SampleDescription } from '../SampleDescription';
-import { InputTextVariants } from './partials/variants';
+import { ERROR_MSG } from '../../shares/constants';
 
 export const InputTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolInputText renders a text input field. The sample shows KolInputText in a form context with all variations and states.</p>
+			<p>This story showcases basic KolInputText usage: simple text input, with error message, and disabled state.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputTextVariants} showButtons={false} />
+		<div className="grid gap-4">
+			<KolInputText _label="First name" _value="John Doe" />
+			<KolInputText _label="Email" _value="john@example.com" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
+			<KolInputText _label="Address" _value="123 Main Street" _disabled />
+		</div>
 	</>
 );
