@@ -729,6 +729,17 @@ ROUTES.set('table/horizontal-scrollbar', {
 		},
 	},
 });
+ROUTES.set('table/multi-sort', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 400,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('table/column-alignment', {
 	snapshot: {
 		viewportSize: {

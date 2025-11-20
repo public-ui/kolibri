@@ -17,6 +17,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Order',
 		key: 'order',
+		sortDirection: 'ASC',
 		textAlign: 'center',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 			if ((data0 as Data).order < (data1 as Data).order) return -1;
@@ -27,6 +28,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Name',
 		key: 'name',
+		sortDirection: 'ASC',
 		textAlign: 'left',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 			return (data0 as Data).name.localeCompare((data1 as Data).name, 'de');
@@ -35,6 +37,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Vorname',
 		key: 'vorname',
+		sortDirection: 'DESC',
 		textAlign: 'left',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
 			return (data0 as Data).vorname.localeCompare((data1 as Data).vorname, 'de');
