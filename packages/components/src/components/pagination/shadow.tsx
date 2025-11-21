@@ -165,16 +165,20 @@ export class KolPagination implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSelectTag
-						_hideLabel
-						_id={`pagination-size-${this.nonce}`}
-						_label={translate('kol-entries-per-site')}
-						_options={this.state._pageSizeOptions}
-						_on={{
-							onChange: this.onChangePageSize,
-						}}
-						_value={[this.state._pageSize]}
-					></KolSelectTag>
+					<div class="page-size">
+						<label htmlFor={`pagination-size-${this.nonce}`}>{translate('kol-page-per-site')}</label>
+
+						<KolSelectTag
+							_hideLabel
+							_id={`pagination-size-${this.nonce}`}
+							_label={translate('kol-entries-per-site')}
+							_options={this.state._pageSizeOptions}
+							_on={{
+								onChange: this.onChangePageSize,
+							}}
+							_value={[this.state._pageSize]}
+						></KolSelectTag>
+					</div>
 				)}
 			</Host>
 		);
@@ -474,7 +478,7 @@ export class KolPagination implements PaginationAPI {
 			for (const value of nextValue) {
 				if (typeof value === 'number') {
 					options.push({
-						label: translate('kol-page-per-site', { placeholders: { entries: `${value}` } }),
+						label: `${value}`,
 						value: value,
 					});
 				}
