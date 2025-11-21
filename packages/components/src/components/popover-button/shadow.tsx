@@ -123,6 +123,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _disabled?: boolean = false;
 
+	@Prop() public _inline?: boolean = false;
+
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.

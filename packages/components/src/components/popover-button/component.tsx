@@ -135,7 +135,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<div class={clsx('kol-popover-button', { 'kol-popover-button--open': this.popoverOpen })}>
+			<div class={clsx('kol-popover-button', { 'kol-popover-button--open': this.popoverOpen, 'kol-popover-button--inline': this._inline })}>
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
 					_aria-controls="popover"
@@ -222,6 +222,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * @internal
 	 */
 	@Prop() public _id?: string;
+
+	@Prop() public _inline?: boolean;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
