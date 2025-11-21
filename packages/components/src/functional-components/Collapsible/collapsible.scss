@@ -26,23 +26,25 @@
 		}
 
 		&__wrapper-animation {
+			transform: scaleY(0);
+			transform-origin: top;
 			min-height: 0;
-			/**
-			 * The `overflow: hidden` ensures that the content is not visible during the animated
-			 * opening and closing. This should also cut off overlays containing content, but it
-			 *does not.
-			 */
-			overflow: hidden;
+
 			/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
 			visibility: hidden;
-			transition: visibility 0.3s;
+
+			transition:
+				transform 0.3s,
+				visibility 0.3s;
 		}
 
-		.collapsible--open &__wrapper {
+		&--open &__wrapper {
 			grid-template-rows: 1fr;
 		}
 
-		.collapsible--open &__wrapper-animation {
+		&--open &__wrapper-animation {
+			transform: scaleY(1);
+
 			visibility: visible;
 		}
 
@@ -55,5 +57,10 @@
 				align-items: flex-start;
 			}
 		}
+	}
+
+	.collapsible--open:has(.kol-combobox) {
+		position: relative;
+		z-index: 10;
 	}
 }
