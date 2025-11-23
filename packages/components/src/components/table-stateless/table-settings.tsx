@@ -39,12 +39,12 @@ export class KolTableSettings {
 	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
 
 	private normalizeColumns(columns: ColumnSettings[]): ColumnSettings[] {
-		return columns.map((column) => ({
-			...column,
-			visible: column.visible !== false,
-			hidable: column.hidable !== false,
-			sortable: column.sortable !== false,
-			sizable: column.sizable !== false,
+		return columns.map(({ hidable, resizable, sortable, visible, ...rest }) => ({
+			...rest,
+			hidable: hidable !== false,
+			resizable: resizable !== false,
+			sortable: sortable !== false,
+			visible: visible !== false,
 		}));
 	}
 
@@ -78,7 +78,7 @@ export class KolTableSettings {
 	private handleWidthChange(key: string, width: unknown): void {
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? (col.sizable === false ? col : { ...col, width: Number(width) }) : col)),
+			columns: this.tableSettings.columns.map((col) => (col.key === key ? (col.resizable === false ? col : { ...col, width: Number(width) }) : col)),
 		};
 	}
 
@@ -138,7 +138,7 @@ export class KolTableSettings {
 											_value={column.width}
 											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
 											_min={1}
-											_disabled={column.sizable === false}
+											_disabled={column.resizable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
 										/>
 										<KolButtonWcTag
