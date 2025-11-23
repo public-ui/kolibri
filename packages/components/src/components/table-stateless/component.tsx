@@ -40,7 +40,7 @@ import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import { validateMinWidth } from '../../schema/props/min-width';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
-import { validateTableSettings } from '../../schema/props/table-settings';
+import { validateTableSettings as validateTableSettingsProp } from '../../schema/props/table-settings';
 import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -187,7 +187,28 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	@Watch('_tableSettings')
 	public validateTableSettings(value?: TableSettingsPropType) {
-		validateTableSettings(this, value);
+		validateTableSettingsProp(this, this.normalizeTableSettings(value));
+	}
+
+	private normalizeTableSettings(value?: TableSettingsPropType): TableSettingsPropType | undefined {
+		if (!value || typeof value !== 'object') {
+			return value;
+		}
+
+                const columns = Array.isArray(value.columns) ? value.columns : [];
+
+                return {
+                        ...value,
+                        columns: columns.map(({ hidable, sortable, resizable, visible, key, label, width }) => ({
+                                hidable: hidable !== false,
+                                sortable: sortable !== false,
+                                resizable: resizable !== false,
+                                visible: visible !== false,
+                                key: key ?? nonce(),
+                                label,
+                                width,
+                        })),
+                };
 	}
 
 	@Listen('keydown')
@@ -507,7 +528,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			.map((header) => ({
 				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
 				sortable: header.sortable !== false,
-				sizable: header.sizable !== false,
+				resizable: header.resizable !== false,
 				key: header.key ?? nonce(),
 				label: header.label,
 				visible: true,
