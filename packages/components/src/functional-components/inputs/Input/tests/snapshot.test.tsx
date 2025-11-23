@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import InputFc from '../Input';
 import { renderFunctionalComponentToSpecPage } from '../../../../utils/testing';
+import InputFc from '../Input';
 
 describe('InputFc', () => {
 	it('should render and match snapshot', async () => {

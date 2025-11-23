@@ -1,7 +1,7 @@
 import assert from 'node:assert';
 import { TaskRunner } from '../src/migrate/runner/task-runner';
-import { TestVersionZero } from '../src/migrate/runner/tasks/test/test-version-zero';
 import { TestVersion13 } from '../src/migrate/runner/tasks/test/test-version-1.3';
+import { TestVersionZero } from '../src/migrate/runner/tasks/test/test-version-zero';
 
 describe('TaskRunner', () => {
 	it('runs applicable tasks and leaves others pending', () => {

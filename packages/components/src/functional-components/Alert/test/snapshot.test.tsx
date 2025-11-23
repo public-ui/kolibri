@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import KolAlertFc from './..';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import KolAlertFc from './..';
 
 describe('KolAlertFc', () => {
 	it('should render', async () => {

@@ -1,9 +1,9 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
-import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 
 export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement>> & {
 	value: string;

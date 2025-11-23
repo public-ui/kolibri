@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, PropOpen, PropAlign, PropHasCloser } from '../props';
+import type { PropAlign, PropHasCloser, PropLabel, PropOpen } from '../props';
 import type { KoliBriModalEventCallbacks } from '../types';
 
 type RequiredProps = PropLabel;

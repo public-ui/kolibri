@@ -2,8 +2,8 @@ import { KolTreeItemTag } from '../../../core/component-names';
 import type { TreeItemProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolTreeItem } from '../shadow';
 import { KolTreeItemWc } from '../component';
+import { KolTreeItem } from '../shadow';
 
 executeSnapshotTests<TreeItemProps>(
 	KolTreeItemTag,

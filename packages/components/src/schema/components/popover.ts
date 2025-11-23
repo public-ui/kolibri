@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropAlign, PropShow, PropPopoverCallbacks } from '../props';
+import type { PropAlign, PropPopoverCallbacks, PropShow } from '../props';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropAlign & PropShow & PropPopoverCallbacks;

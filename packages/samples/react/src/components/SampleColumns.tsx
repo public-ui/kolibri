@@ -1,5 +1,4 @@
-import React from 'react';
-import { type PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 export function SampleColumns({ children }: PropsWithChildren) {

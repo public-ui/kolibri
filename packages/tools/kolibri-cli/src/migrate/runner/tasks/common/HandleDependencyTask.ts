@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
-import { AbstractTask, TaskOptions } from '../../abstract-task';
 import { PackageManagerCommand, getPackageManagerCommand } from '../../../shares/reuse';
+import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 export class HandleDependencyTask extends AbstractTask {
 	protected constructor(

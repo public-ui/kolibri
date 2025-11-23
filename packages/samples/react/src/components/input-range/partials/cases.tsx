@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
-import { KolInputRange } from '@public-ui/react-v19';
 import type { Components } from '@public-ui/components';
+import { KolInputRange } from '@public-ui/react-v19';
+import React, { forwardRef } from 'react';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 

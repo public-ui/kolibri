@@ -1,3 +1,6 @@
+import type { JSX } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
+import { KolLinkWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -16,18 +19,13 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolLink implements LinkProps, FocusableElement {
 	private linkWcRef?: HTMLKolLinkWcElement;

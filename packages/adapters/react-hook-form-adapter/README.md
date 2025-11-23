@@ -18,18 +18,13 @@ import { useForm } from 'react-hook-form';
 import { KolInputTextController } from '@public-ui/react-hook-form-adapter';
 
 const MyForm = () => {
-        const { control, handleSubmit } = useForm({
-                defaultValues: { firstName: '' },
-        });
-        return (
-                <form onSubmit={handleSubmit(console.log)}>
-                        <KolInputTextController
-                                name="firstName"
-                                control={control}
-                                rules={{ required: 'Please enter your name' }}
-                                _label="First name"
-                        />
-                </form>
-        );
+	const { control, handleSubmit } = useForm({
+		defaultValues: { firstName: '' },
+	});
+	return (
+		<form onSubmit={handleSubmit(console.log)}>
+			<KolInputTextController name="firstName" control={control} rules={{ required: 'Please enter your name' }} _label="First name" />
+		</form>
+	);
 };
 ```

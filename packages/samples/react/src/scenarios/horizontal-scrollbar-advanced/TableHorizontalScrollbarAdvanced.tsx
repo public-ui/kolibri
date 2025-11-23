@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { KolTableStateful, KolTabs, KolNav } from '@public-ui/react-v19';
 import type { KoliBriTableHeaders, TabButtonProps } from '@public-ui/components';
+import { KolNav, KolTableStateful, KolTabs } from '@public-ui/react-v19';
+import * as React from 'react';
 import { SampleDescription } from '../../components/SampleDescription';
 import { LINKS } from '../../components/nav/links';
 import DATA from './databasedata.json';

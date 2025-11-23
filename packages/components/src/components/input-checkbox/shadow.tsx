@@ -47,9 +47,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
@@ -412,6 +410,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,

@@ -3,8 +3,8 @@ import React from 'react';
 import { KolButtonLink, KolHeading } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
-import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleDescription } from '../SampleDescription';
 
 export const ButtonLinkBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();

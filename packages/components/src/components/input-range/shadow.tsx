@@ -3,14 +3,17 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AutoCompletePropType,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputRangeAPI,
 	InputRangeStates,
 	InputTypeOnDefault,
-	AutoCompletePropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -20,18 +23,15 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	DisabledPropType,
-	HideLabelPropType,
-	HintPropType,
 } from '../../schema';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import KolSuggestionsFc from '../../functional-components/Suggestions';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import { InputRangeController } from './controller';
-import KolSuggestionsFc from '../../functional-components/Suggestions';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -41,9 +41,7 @@ import KolSuggestionsFc from '../../functional-components/Suggestions';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
@@ -123,6 +121,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -142,7 +142,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-range', 'range'),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInputRange?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

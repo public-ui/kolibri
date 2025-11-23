@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import React from 'react';
 
+import type { AlignPropType } from '@public-ui/components';
 import { KolHeading, KolTabs } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import type { AlignPropType } from '@public-ui/components';
 
 const tabs = [
 	{

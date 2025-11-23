@@ -44,9 +44,7 @@ import { InputNumberController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
@@ -111,6 +109,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -126,7 +126,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

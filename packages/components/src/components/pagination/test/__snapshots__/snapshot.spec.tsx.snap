@@ -3,7 +3,11 @@
 exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 _hasButtons=false _siblingCount=0 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc _boundarycount="1" _label="Label" _max="0" _page="4" _pagesize="1" _siblingcount="0" _tooltipalign="top"></kol-pagination-wc>
+    <kol-pagination-wc class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list"></ul>
+      </nav>
+    </kol-pagination-wc>
   </template>
 </kol-pagination>
 `;
@@ -11,7 +15,145 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 
 exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc _boundarycount="1" _hasbuttons="" _label="Label" _max="2" _page="1" _pagesize="1" _siblingcount="1" _tooltipalign="top"></kol-pagination-wc>
+    <kol-pagination-wc class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 1" _disabled="" _label="1" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 2" _label="2" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last" exportparts="icon"></kol-button-wc>
+          </li>
+        </ul>
+      </nav>
+    </kol-pagination-wc>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=10 _boundaryCount=2 _siblingCount=2 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <kol-pagination-wc class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 1" _label="1" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 2" _label="2" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 8" _label="8" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 9" _label="9" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 10" _disabled="" _label="10" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last" exportparts="icon"></kol-button-wc>
+          </li>
+        </ul>
+      </nav>
+    </kol-pagination-wc>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6 _hasButtons={"first":false,"last":false,"next":true,"previous":true} _boundaryCount=0 _siblingCount=1 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <kol-pagination-wc class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 5" _label="5" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 6" _disabled="" _label="6" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 7" _label="7" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next" exportparts="icon"></kol-button-wc>
+          </li>
+        </ul>
+      </nav>
+    </kol-pagination-wc>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3 _pageSizeOptions=[5,10,20] _pageSize=5 _siblingCount=3 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <kol-pagination-wc class="kol-pagination">
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 1" _label="1" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 2" _label="2" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 3" _disabled="" _label="3" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 4" _label="4" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _ariadescription="kol-page 5" _label="5" class="kol-pagination__button"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next" exportparts="icon"></kol-button-wc>
+          </li>
+          <li>
+            <kol-button-wc _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last" exportparts="icon"></kol-button-wc>
+          </li>
+        </ul>
+      </nav>
+      <kol-select _hidelabel="" _id="pagination-size-nonce" _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select>
+    </kol-pagination-wc>
   </template>
 </kol-pagination>
 `;

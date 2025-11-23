@@ -1,8 +1,8 @@
-import type { Command } from 'commander';
-import os from 'os';
 import { execSync } from 'child_process';
-import path from 'path';
+import type { Command } from 'commander';
 import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import { PackageJson } from '../types';
 
 // Function to get the binary version

@@ -48,9 +48,7 @@ import { InputTextController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputTextElement;
@@ -87,6 +85,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -113,6 +113,53 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Get selection start of internal element.
+	 */
+	@Method()
+	public async selectionStart() {
+		return Promise.resolve(this.inputRef?.selectionStart);
+	}
+
+	/**
+	 * Get selection end of internal element.
+	 */
+	@Method()
+	public async selectioconEnd() {
+		return Promise.resolve(this.inputRef?.selectionEnd);
+	}
+
+	/**
+	 * Set selection start and end, and optional in which direction, of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
+		this.inputRef?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+	}
+
+	/**
+	 * Set selection start (and end = start) of internal element.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async setSelectionStart(selectionStart: number) {
+		this.inputRef?.setSelectionRange(selectionStart, selectionStart);
+	}
+
+	/**
+	 * Add string at position of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
+		if (selectionStart && selectionEnd) {
+			this.inputRef?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
+		} else {
+			this.inputRef?.setRangeText(replacement);
+		}
+	}
+
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
@@ -121,7 +168,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

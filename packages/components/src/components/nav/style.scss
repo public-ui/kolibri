@@ -49,10 +49,10 @@
 
 	.kol-span {
 		width: 100%;
+		justify-content: flex-start;
 
 		&__container {
 			width: 100%;
-			justify-content: flex-start;
 
 			.kol-span__label {
 				flex: 1;

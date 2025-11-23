@@ -1,7 +1,7 @@
-import { Fragment, type FunctionalComponent as FC, h } from '@stencil/core';
+import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import { KolIconTag } from '../../core/component-names';
-import type { AlertType } from '../../schema';
 import { translate } from '../../i18n';
+import type { AlertType } from '../../schema';
 import { BEM_CLASS_ALERT__ICON } from '../Alert/bem';
 
 const translateError = translate('kol-error');

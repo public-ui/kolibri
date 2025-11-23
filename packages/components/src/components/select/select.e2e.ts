@@ -1,9 +1,9 @@
+import type { Page } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
-import type { FillAction } from '../../e2e/utils/FillAction';
-import type { Page } from '@playwright/test';
 import { testInputMessage } from '../../e2e/input-msg';
+import type { FillAction } from '../../e2e/utils/FillAction';
 
 const COMPONENT_NAME = 'kol-select';
 const TEST_VALUE = 'E';

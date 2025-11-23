@@ -10,6 +10,7 @@
 	.#{$block-classname} {
 		$root: &;
 		display: inline-flex;
+		max-width: fit-content;
 
 		align-items: baseline;
 		place-items: center;

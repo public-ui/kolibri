@@ -48,9 +48,7 @@ import { InputPasswordController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputPasswordElement;
@@ -82,6 +80,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -103,7 +103,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -138,7 +137,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		return (
 			<KolIconButtonFc
 				componentName="button"
-				class="kol-input-password__password-toggle-button"
+				class="kol-input-password__password-toggle-button kol-input-container__smart-button"
 				data-testid="kol-input-password-toggle-button"
 				label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
 				buttonVariant="ghost"

@@ -43,9 +43,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
@@ -374,6 +372,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,

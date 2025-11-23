@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "3.0.7-rc.2",
+	"version": "3.0.8-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -25,29 +25,30 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
-		"prepare": "npx playwright install --with-deps firefox",
 		"unused": "knip"
 	},
 	"bin": {
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
+		"@axe-core/playwright": "4.11.0",
 		"@public-ui/sample-react": "workspace:*",
-		"axe-playwright": "2.2.2",
+		"axe-html-reporter": "2.2.11",
 		"portfinder": "1.0.38",
 		"serve": "14.2.5"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.28.4",
+		"@babel/eslint-parser": "7.28.5",
 		"@babel/plugin-syntax-import-attributes": "7.27.1",
-		"@babel/preset-env": "7.28.3",
-		"@playwright/test": "1.55.1",
+		"@babel/preset-env": "7.28.5",
+		"@playwright/test": "1.56.1",
 		"eslint": "8.57.1",
-		"knip": "5.64.1",
-		"prettier": "3.6.2"
+		"knip": "5.70.1",
+		"prettier": "3.6.2",
+		"prettier-plugin-organize-imports": "4.3.0"
 	},
 	"peerDependencies": {
-		"@playwright/test": "1.55.1"
+		"@playwright/test": "1.56.1"
 	},
 	"files": [
 		"playwright.config.js",

@@ -1,10 +1,14 @@
-name: Netlify Test Deploy - Deploy stable branches under fixed aliases
+name: Netlify Stable-Deploy
 
 on:
   push:
     branches:
       - 'develop'
       - 'release/*'
+    tags:
+      - latest
+      - v2-latest
+      - v1-latest
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'

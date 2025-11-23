@@ -1,9 +1,8 @@
+import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
-import { autoUpdate } from '@floating-ui/dom';
+import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
-import { alignFloatingElements } from '../../utils/align-floating-elements';
-import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -21,6 +20,8 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import { validatePopoverAlign } from '../../schema';
+import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
+import { alignFloatingElements } from '../../utils/align-floating-elements';
 
 /**
  * @slot - The popover content.
@@ -49,6 +50,23 @@ export class KolPopoverButton implements PopoverButtonProps {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hidePopover() {
 		void this.refPopover?.hidePopover();
+	}
+
+	/**
+	 * Show the popover programmatically by calling the native showPopover method.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.refPopover?.showPopover();
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async kolFocus() {
+		await this.refButton?.kolFocus();
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
@@ -117,7 +135,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-popover-button">
+			<div class={clsx('kol-popover-button', { 'kol-popover-button--open': this.popoverOpen })}>
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
 					_aria-controls="popover"

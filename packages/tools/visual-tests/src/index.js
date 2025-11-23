@@ -1,12 +1,12 @@
-import child_process from 'node:child_process';
-import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'url';
 import * as crypto from 'crypto';
-import { readFile } from 'fs/promises';
 import * as fs from 'fs';
+import { readFile } from 'fs/promises';
+import child_process from 'node:child_process';
+import os from 'node:os';
+import path from 'node:path';
 import portfinder from 'portfinder';
 import * as process from 'process';
-import os from 'node:os';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR || os.tmpdir(); // TODO: Check on Windows
 

@@ -1,8 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 
-import type { LabelPropType, TreeProps } from '../../schema';
 import { KolTreeWcTag } from '../../core/component-names';
+import type { LabelPropType, TreeProps } from '../../schema';
 
 @Component({
 	tag: 'kol-tree',

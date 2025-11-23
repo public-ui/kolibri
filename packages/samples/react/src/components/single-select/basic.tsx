@@ -1,5 +1,5 @@
-import React from 'react';
 import type { FC } from 'react';
+import React from 'react';
 import { FormWrap } from '../FormWrap';
 import { SampleDescription } from '../SampleDescription';
 import { SingleSelectVariants } from './partials/variants';

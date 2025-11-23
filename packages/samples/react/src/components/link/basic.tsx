@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolLink, KolHeading } from '@public-ui/react-v19';
+import { KolLink } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkBasic: FC = () => (
@@ -13,13 +13,10 @@ export const LinkBasic: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolHeading _level={2} _label="Links with variant 'standalone'" />
 			<KolLink _href="#/back-page" _label="Simple Link" _variant="standalone" />
-			<KolLink _disabled _href="#/back-page" _label="Simple Link (deaktiviert)" _variant="standalone" />
+			<KolLink _disabled _href="#/back-page" _label="Simple Link (disabled)" _variant="standalone" />
 			<KolLink _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link" _variant="standalone" />
-			<KolLink _disabled _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link (deaktiviert)" _variant="standalone" />
-
-			<KolHeading _level={2} _label="Links with variant 'inline'" />
+			<KolLink _disabled _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link (disabled)" _variant="standalone" />
 			<p>
 				In this paragraph, a link is inserted that contains no additional attributes. <KolLink _href="#/back-page" _label="Simple Link" /> It is rendered by
 				default as a <strong>inline element</strong>.

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v17",
-	"version": "3.0.7-rc.2",
+	"version": "3.0.8-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -73,8 +73,7 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"prettier": "3.6.2",
-		"rimraf": "6.0.1",
+		"rimraf": "6.1.2",
 		"rxjs": "7.8.2",
 		"typescript": "5.4.5",
 		"zone.js": "0.14.10"

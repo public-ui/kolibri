@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { SingleSelectCases } from './cases';
 import type { Components } from '@public-ui/components';
 import { SampleColumns } from '../../SampleColumns';
+import { SingleSelectCases } from './cases';
 
 export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 	return (

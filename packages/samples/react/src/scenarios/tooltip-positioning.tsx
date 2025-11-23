@@ -1,6 +1,6 @@
+import { KolPopoverButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { KolPopoverButton } from '@public-ui/react-v19';
 import { SampleDescription } from '../components/SampleDescription';
 
 export const TooltipPositioning: FC = () => {

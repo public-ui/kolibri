@@ -1,7 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop } from '@stencil/core';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
-import type { PopoverButtonProps } from '../../schema/components/popover-button';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -18,6 +17,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import type { PopoverButtonProps } from '../../schema/components/popover-button';
 
 /**
  * @slot - The popover content.
@@ -41,9 +41,26 @@ export class KolPopoverButton implements PopoverButtonProps {
 		void this.ref?.hidePopover();
 	}
 
+	/**
+	 * Shows the popover programmatically by forwarding the call to the web component.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.ref?.showPopover();
+	}
+
 	private catchRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.ref = ref;
 	};
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async kolFocus() {
+		await this.ref?.kolFocus();
+	}
 
 	public render(): JSX.Element {
 		return (

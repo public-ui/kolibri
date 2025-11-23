@@ -1,6 +1,6 @@
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { KolButton } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonRowReverseTooltip: FC = () => {

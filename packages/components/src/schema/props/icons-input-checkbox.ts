@@ -1,8 +1,8 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { AnyIconFontClass, Stringified } from '../types';
-import { isString } from '../validators';
 import { watchValidator } from '../utils';
+import { isString } from '../validators';
 
 export type InputCheckboxIconsProp =
 	| {

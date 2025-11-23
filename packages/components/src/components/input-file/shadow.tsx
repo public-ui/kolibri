@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from 'clsx';
 
 import type {
+	AcceptPropType,
 	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
@@ -23,7 +24,6 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	AcceptPropType,
 } from '../../schema';
 
 import { KolButtonWcTag } from '../../core/component-names';
@@ -42,9 +42,7 @@ import { InputFileController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputFileElement;
@@ -95,7 +93,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-file', 'file'),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

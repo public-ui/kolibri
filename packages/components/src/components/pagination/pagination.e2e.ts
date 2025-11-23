@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 import { Callback } from '../../schema/enums';
+import { KolEvent } from '../../utils/events';
 
 test.describe('kol-pagination', () => {
 	test.beforeEach(async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('kol-pagination', () => {
 						};
 					});
 				}, callbackName);
-				await page.getByRole('button', { name: 'Seite 2' }).click();
+				await page.getByRole('button', { name: '2' }).click();
 
 				await expect(callbackPromise).resolves.toBe(2);
 			});
@@ -62,7 +62,7 @@ test.describe('kol-pagination', () => {
 						});
 					});
 				}, eventName);
-				await page.getByRole('button', { name: 'Seite 2' }).click();
+				await page.getByRole('button', { name: '2' }).click();
 
 				await expect(eventPromise).resolves.toBe(2);
 			});

@@ -1,10 +1,10 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
+import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 import NativeOptionListFc, { type NativeOptionListProps } from '../NativeOptionList';
-import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
 
 type SelectAttributes = JSXBase.SelectHTMLAttributes<HTMLSelectElement>;
 

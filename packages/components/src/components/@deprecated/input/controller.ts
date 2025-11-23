@@ -4,10 +4,10 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
+	DisabledPropType,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
-	DisabledPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -25,11 +25,11 @@ import {
 	validateAccessKey,
 	validateAdjustHeight,
 	validateDisabled,
-	validateHideMsg,
 	validateHideLabel,
+	validateHideMsg,
+	validateHint,
 	validateLabelWithExpertSlot,
 	validateMsg,
-	validateHint,
 	validateShortKey,
 	validateTooltipAlign,
 	watchString,
@@ -39,10 +39,10 @@ import { validateTabIndex } from '../../../schema/props/tab-index';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
+import { debounce } from 'lodash-es';
+import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
-import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import { debounce } from 'lodash-es';
 
 type ValueChangeListener = (value: StencilUnknown) => void;
 
@@ -254,6 +254,16 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	protected onKeyDown(event: KeyboardEvent): void {
+		// Event handling
+		this.emitEvent(KolEvent.keydown);
+
+		// Callback
+		if (typeof this.component._on?.onKeyDown === 'function') {
+			this.component._on.onKeyDown(event);
+		}
+	}
+
 	public addValueChangeListener(listener: ValueChangeListener) {
 		this.valueChangeListeners.push(listener);
 	}
@@ -272,6 +282,7 @@ export class InputController extends ControlledInputController implements Watche
 		onClick: this.onClick.bind(this),
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
+		onKeyDown: this.onKeyDown.bind(this),
 	};
 
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {

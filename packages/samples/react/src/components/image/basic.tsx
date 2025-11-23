@@ -1,7 +1,7 @@
+import { KolImage } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { KolImage } from '@public-ui/react-v19';
 
 export const ImageBasic: FC = () => (
 	<>

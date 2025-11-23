@@ -7,8 +7,8 @@
 @layer kol-a11y {
 	:host {
 		/*
-		 * Minimum size of interactive elements.
-		 */
+                 * Minimum size of interactive elements.
+                 */
 		--a11y-min-size: #{to-rem(44)};
 		/*
 		 * No element should be used without verifying the contrast ratio of its background and font colors.
@@ -29,6 +29,10 @@
 		 * Word spacing is required for all texts.
 		 */
 		word-spacing: inherit;
+		/*
+		 * Text should be aligned left by default to provide a predictable starting point.
+		 */
+		text-align: left;
 	}
 
 	* {
@@ -70,6 +74,10 @@
 	option,
 	select,
 	textarea {
+		/*
+		 * All elements should inherit the text color from his parent element.
+		 */
+		color: inherit;
 		/*
 		 * All elements should inherit the font family from his parent element.
 		 */

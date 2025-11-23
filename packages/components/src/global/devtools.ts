@@ -1,9 +1,9 @@
 import {
 	getColorContrastAnalysis,
-	isDevMode,
 	getDocument,
 	getExperimentalMode,
 	getWindow,
+	isDevMode,
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
 	koliBriQuerySelectorAll,

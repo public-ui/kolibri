@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import { KolSpin } from '@public-ui/react-v19';
 import type { FC } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const SpinLabel: FC = () => {

@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropShow, PropSpinVariant, PropLabel } from '../props';
+import type { PropLabel, PropShow, PropSpinVariant } from '../props';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropSpinVariant & PropShow & PropLabel;
