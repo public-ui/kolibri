@@ -22,24 +22,20 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 		<SampleDescription>
 			<p>
 				This sample shows <code>KolTableStateless</code> with the settings menu enabled via
-				<code>_hasSettingsMenu</code>. Each column demonstrates a different combination of sorting and
-				resizing options.
+				<code>_hasSettingsMenu</code>. Each column demonstrates a different combination of sorting and resizing options.
 			</p>
 			<ul>
 				<li>
-					<strong>ID</strong> keeps a fixed width with <code>resizable: false</code> while still allowing
-					sorting.
+					<strong>ID</strong> keeps a fixed width with <code>resizable: false</code> while still allowing sorting.
 				</li>
 				<li>
 					<strong>Name</strong> represents the default behaviour with both sorting and resizing enabled.
 				</li>
 				<li>
-					<strong>Role</strong> disables sorting but keeps <code>resizable: true</code> so users can widen the
-					column if necessary.
+					<strong>Role</strong> disables sorting but keeps <code>resizable: true</code> so users can widen the column if necessary.
 				</li>
 				<li>
-					<strong>E-Mail</strong> allows sorting but locks its width with <code>resizable: false</code> to keep
-					the layout stable.
+					<strong>E-Mail</strong> allows sorting but locks its width with <code>resizable: false</code> to keep the layout stable.
 				</li>
 				<li>
 					<strong>Active</strong> is neither sortable nor resizable to emphasise the status indicator.

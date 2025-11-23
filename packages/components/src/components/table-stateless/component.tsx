@@ -195,20 +195,20 @@ export class KolTableStateless implements TableStatelessAPI {
 			return value;
 		}
 
-                const columns = Array.isArray(value.columns) ? value.columns : [];
+		const columns = Array.isArray(value.columns) ? value.columns : [];
 
-                return {
-                        ...value,
-                        columns: columns.map(({ hidable, sortable, resizable, visible, key, label, width }) => ({
-                                hidable: hidable !== false,
-                                sortable: sortable !== false,
-                                resizable: resizable !== false,
-                                visible: visible !== false,
-                                key: key ?? nonce(),
-                                label,
-                                width,
-                        })),
-                };
+		return {
+			...value,
+			columns: columns.map(({ hidable, key, label, resizable, sortable, visible, width }) => ({
+				hidable: hidable !== false,
+				key: key ?? nonce(),
+				label,
+				resizable: resizable !== false,
+				sortable: sortable !== false,
+				visible: visible !== false,
+				width,
+			})),
+		};
 	}
 
 	@Listen('keydown')

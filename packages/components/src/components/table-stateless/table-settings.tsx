@@ -38,15 +38,15 @@ export class KolTableSettings {
 
 	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
 
-        private normalizeColumns(columns: ColumnSettings[]): ColumnSettings[] {
-                return columns.map(({ hidable, sortable, resizable, visible, sizable, ...rest }) => ({
-                        ...rest,
-                        resizable: resizable !== false,
-                        visible: visible !== false,
-                        hidable: hidable !== false,
-                        sortable: sortable !== false,
-                }));
-        }
+	private normalizeColumns(columns: ColumnSettings[]): ColumnSettings[] {
+		return columns.map(({ hidable, resizable, sortable, visible, ...rest }) => ({
+			...rest,
+			hidable: hidable !== false,
+			resizable: resizable !== false,
+			sortable: sortable !== false,
+			visible: visible !== false,
+		}));
+	}
 
 	private moveColumn(columnId: string, direction: 'up' | 'down'): void {
 		const columns = [...this.tableSettings.columns];
@@ -76,11 +76,11 @@ export class KolTableSettings {
 	}
 
 	private handleWidthChange(key: string, width: unknown): void {
-                this.tableSettings = {
-                        ...this.tableSettings,
-                        columns: this.tableSettings.columns.map((col) => (col.key === key ? (col.resizable === false ? col : { ...col, width: Number(width) }) : col)),
-                };
-        }
+		this.tableSettings = {
+			...this.tableSettings,
+			columns: this.tableSettings.columns.map((col) => (col.key === key ? (col.resizable === false ? col : { ...col, width: Number(width) }) : col)),
+		};
+	}
 
 	private handleCancel() {
 		void this.popoverRef?.hidePopover();
@@ -138,7 +138,7 @@ export class KolTableSettings {
 											_value={column.width}
 											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
 											_min={1}
-                                                                                        _disabled={column.resizable === false}
+											_disabled={column.resizable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
 										/>
 										<KolButtonWcTag
