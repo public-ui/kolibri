@@ -309,7 +309,7 @@ pnpm --filter @public-ui/components build
 
 # Build specific adapter
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 pnpm --filter @public-ui/vue build
 
 # Build all adapters
@@ -319,7 +319,7 @@ pnpm --filter "@public-ui/*" build
 **Framework-Specific Notes:**
 
 - **React:** Multiple versions supported (React 18, 19, standalone)
-- **Angular:** Version-specific packages (v17, v18, v19, v20)
+- **Angular:** Version-specific packages (v19, v20, v21)
 - **Vue:** Single Vue.js integration
 - **Solid:** SolidJS framework integration
 - **Vaadin:** Java/Flow framework integration
@@ -412,7 +412,7 @@ pnpm --filter @public-ui/theme-ecl build
 
 # Framework adapters (must build components first)
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 pnpm --filter @public-ui/vue build
 pnpm --filter @public-ui/solid build
 
@@ -626,7 +626,7 @@ cd packages/samples/angular && pnpm start
 
 # Direct adapter testing
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 ```
 
 **4. Migration Testing:**
@@ -658,7 +658,7 @@ pnpm --filter @public-ui/theme-default build
 
 # Framework adapters (components must be built first)
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 
 # Test specific package
 pnpm --filter @public-ui/components test:unit
