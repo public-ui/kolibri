@@ -2,6 +2,20 @@
 
 @layer kol-theme-component {
 	.kol-input-number {
-		--kol-input-number-show-alternate-buttons: block;
+		.kol-input-number__step-button {
+			color: var(--color-primary);
+			border-radius: var(--border-radius);
+			transition-duration: 0.3s;
+			transition-property: background-color, color;
+
+			&:focus {
+				outline: 0;
+			}
+
+			&:hover {
+				color: var(--color-light);
+				background-color: var(--color-primary);
+			}
+		}
 	}
 }

@@ -12,11 +12,12 @@
 	@include kol-input;
 
 	.kol-input-number {
-		--kol-input-number-show-alternate-buttons: none;
+		input {
+			appearance: textfield;
 
-		&__step-up-button,
-		&__step-down-button {
-			display: var(--kol-input-number-show-alternate-buttons);
+			&::-webkit-inner-spin-button {
+				display: none;
+			}
 		}
 	}
 }

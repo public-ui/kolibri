@@ -32,7 +32,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolIconButtonFc from '../../functional-components/IconButton';
+import { KolIconFc } from '../../functional-components';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
@@ -151,37 +151,37 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	private getStepUpButton(): VNode | null {
 		return (
-			<KolIconButtonFc
+			<button
+				type="button"
 				tabIndex={-1}
-				componentName="button"
-				class="kol-input-number__step-up-button kol-input-container__smart-button"
+				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
 				data-testid="kol-input-number-step-up"
-				label={'step up'}
-				buttonVariant="ghost"
 				onClick={(): void => {
 					this.inputRef?.stepUp();
+					this.inputRef?.focus();
 				}}
-				icon="codicon codicon-add"
 				disabled={this._disabled || this._readOnly}
-			/>
+			>
+				<KolIconFc icons="codicon codicon-add" label="" />
+			</button>
 		);
 	}
 
 	private getStepDownButton(): VNode | null {
 		return (
-			<KolIconButtonFc
+			<button
+				type="button"
 				tabIndex={-1}
-				componentName="button"
-				class="kol-input-number__step-down-button kol-input-container__smart-button"
+				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
 				data-testid="kol-input-number-step-down"
-				label={'step down'}
-				buttonVariant="ghost"
 				onClick={(): void => {
 					this.inputRef?.stepDown();
+					this.inputRef?.focus();
 				}}
-				icon="codicon codicon-remove"
 				disabled={this._disabled || this._readOnly}
-			/>
+			>
+				<KolIconFc icons="codicon codicon-remove" label="" />
+			</button>
 		);
 	}
 
