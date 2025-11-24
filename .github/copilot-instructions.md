@@ -103,7 +103,7 @@ The core Stencil web component library that generates all framework adapters.
 - `react/` – React 18+ integration
 - `react-standalone/` – Standalone React build
 - `react-v19/` – React 19 integration
-- `angular/v17/`, `angular/v18/`, `angular/v19/`, `angular/v20/` – Angular version-specific adapters
+- `angular/v19/`, `angular/v20/`, `angular/v21/` – Angular version-specific adapters
 - `vue/` – Vue.js integration
 - `solid/` – SolidJS integration
 - `preact/` – Preact integration

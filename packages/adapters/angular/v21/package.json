@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/angular-v17",
+	"name": "@public-ui/angular-v21",
 	"version": "3.0.8-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -16,7 +16,7 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"sideEffects": false,
-	"description": "Angular (v17) framework adapter for KoliBri - The accessible HTML-Standard.",
+	"description": "Angular (v21) framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -65,21 +65,21 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "17.3.12",
-		"@angular/compiler": "17.3.12",
-		"@angular/compiler-cli": "17.3.12",
-		"@angular/core": "17.3.12",
+		"@angular/common": "21.0.0",
+		"@angular/compiler": "21.0.0",
+		"@angular/compiler-cli": "21.0.0",
+		"@angular/core": "21.0.0",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
 		"rimraf": "6.1.2",
 		"rxjs": "7.8.2",
-		"typescript": "5.4.5",
-		"zone.js": "0.14.10"
+		"typescript": "5.9.3",
+		"zone.js": "0.15.1"
 	},
 	"peerDependencies": {
-		"@angular/core": "^17.3.12",
+		"@angular/core": "^21.0.0",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [
