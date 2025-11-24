@@ -16,7 +16,9 @@ export const validateFixedCols = (component: Generic.Element.Component, value?: 
 			typeof value[0] === 'number' &&
 			typeof value[1] === 'number' &&
 			Number.isInteger(value[0]) &&
-			Number.isInteger(value[1]),
+			Number.isInteger(value[1]) &&
+			value[0] >= 0 &&
+			value[1] >= 0,
 		new Set(['FixedColsPropType [leftFixed: number, rightFixed: number]']),
 		value,
 	);
