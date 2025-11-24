@@ -98,6 +98,9 @@ export class KolTableStateful implements TableAPI {
 	 */
 	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
 
+	/**
+	 * Defines the fixed number of columns from start and end of the table
+	 */
 	@Prop() public _fixedCols?: FixedColsPropType;
 
 	/**

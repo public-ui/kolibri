@@ -32,6 +32,9 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _dataFoot?: TableDataFootPropType;
 
+	/**
+	 * Defines the fixed number of columns from start and end of the table
+	 */
 	@Prop() public _fixedCols?: FixedColsPropType;
 
 	/**
