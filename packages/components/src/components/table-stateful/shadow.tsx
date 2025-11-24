@@ -514,13 +514,13 @@ export class KolTableStateful implements TableAPI {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const keys = selectedKeys;
-			const keySet = new Set(keys.map(String));
+			const keySet = new Set(selectedKeys.map(String));
 			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
+
 	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys): void {
 		const selection = this.state._selection;
 		if (selection)
