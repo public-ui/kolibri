@@ -15,15 +15,15 @@ export const AccordionBasic: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolAccordion _label="Heading Accordion Tab 1">
-				Contents Accordion Tab 1
-				<KolCombobox _label="With string array in html" _suggestions="['Herr','Frau','Firma']" />
+			<KolAccordion _label="Heading Accordion Tab 1 (open)" _open>
+				<KolCombobox _label="Combobox in Accordion" _suggestions="['Herr','Frau','Firma']" />
 			</KolAccordion>
 			<KolAccordion _label="Heading Accordion Tab 2">Contents Accordion Tab 2</KolAccordion>
-			<KolAccordion _label="Heading Accordion Tab 2 (deactivated)" _disabled></KolAccordion>
-			<KolAccordion _label="Heading Accordion Tab 2 (disabled and open)" _disabled _open>
-				Contents Accordion Tab 2
-				<KolCombobox _label="With string array in html" _suggestions="['Herr','Frau','Firma']" />
+			<KolAccordion _label="Heading Accordion Tab 3 (deactivated)" _disabled>
+				Contents Accordion Tab 3
+			</KolAccordion>
+			<KolAccordion _label="Heading Accordion Tab 4 (disabled and open)" _disabled _open>
+				Contents Accordion Tab 4
 			</KolAccordion>
 		</div>
 	</>
