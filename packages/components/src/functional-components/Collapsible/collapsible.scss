@@ -26,6 +26,7 @@
 		}
 
 		&__wrapper-animation {
+			opacity: 0;
 			transform: scaleY(0);
 			transform-origin: top;
 			min-height: 0;
@@ -35,6 +36,7 @@
 
 			transition:
 				transform 0.3s,
+				opacity 0.3s,
 				visibility 0.3s;
 		}
 
@@ -43,6 +45,7 @@
 		}
 
 		&--open &__wrapper-animation {
+			opacity: 1;
 			transform: scaleY(1);
 
 			visibility: visible;
