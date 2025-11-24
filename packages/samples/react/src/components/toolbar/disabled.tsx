@@ -15,6 +15,7 @@ export const ToolbarDisabled: FC = () => {
 				class="block w-fit"
 				_items={[
 					{
+						type: 'button',
 						_label: 'Back',
 						_disabled: true,
 						_hideLabel: true,
@@ -25,6 +26,7 @@ export const ToolbarDisabled: FC = () => {
 						},
 					},
 					{
+						type: 'button',
 						_label: 'Next',
 						_hideLabel: true,
 						_icons: {
@@ -34,15 +36,18 @@ export const ToolbarDisabled: FC = () => {
 						},
 					},
 					{
+						type: 'link',
 						_href: '#/back-page',
 						_label: 'Simple Link 1',
 					},
 					{
+						type: 'link',
 						_href: '#/back-page',
 						_disabled: true,
 						_label: 'Simple Link 3',
 					},
 					{
+						type: 'button',
 						_label: 'Bold',
 					},
 				]}

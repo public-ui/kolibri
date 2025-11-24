@@ -1,14 +1,16 @@
 import { KolToolbarTag } from '../../../core/component-names';
-import type { ToolbarProps } from '../../../schema';
+import type { ToolbarItemsPropType, ToolbarProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolToolbar } from '../shadow';
 
-const ITEMS = [
+const ITEMS: ToolbarItemsPropType = [
 	{
+		type: 'button',
 		_label: 'Button',
 	},
 	{
+		type: 'link',
 		_href: '#',
 		_label: 'Link',
 	},

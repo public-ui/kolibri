@@ -5,13 +5,13 @@ import type { ToolbarItemsPropType } from '../../schema';
 const COMPONENT_NAME = 'kol-toolbar';
 
 const ITEMS_ICONS_FIRST: ToolbarItemsPropType = [
-	{ _label: 'Back', _icons: { left: { icon: 'codicon codicon-arrow-left' } }, _disabled: false },
-	{ _label: 'Next', _disabled: false, _icons: { right: { icon: 'codicon codicon-arrow-right' } } },
+	{ type: 'button', _label: 'Back', _icons: { left: { icon: 'codicon codicon-arrow-left' } }, _disabled: false },
+	{ type: 'button', _label: 'Next', _disabled: false, _icons: { right: { icon: 'codicon codicon-arrow-right' } } },
 ];
 
 const ITEMS_DISABLED_FIRST: ToolbarItemsPropType = [
-	{ _label: 'Back', _disabled: false, _icons: { left: { icon: 'codicon codicon-arrow-left' } } },
-	{ _label: 'Next', _disabled: false, _icons: { right: { icon: 'codicon codicon-arrow-right' } } },
+	{ type: 'button', _label: 'Back', _disabled: false, _icons: { left: { icon: 'codicon codicon-arrow-left' } } },
+	{ type: 'button', _label: 'Next', _disabled: false, _icons: { right: { icon: 'codicon codicon-arrow-right' } } },
 ];
 
 async function setItems(tb: Locator, items: ToolbarItemsPropType): Promise<void> {
@@ -78,11 +78,10 @@ test.describe(COMPONENT_NAME, () => {
 		const tb = page.locator('kol-toolbar');
 		await expect(tb).toHaveClass(/hydrated/);
 
-		await tb.evaluate((el) => {
-			const host = el as unknown as { _items: ToolbarItemsPropType };
-			host._items = [
-				{ _label: 'One', _disabled: false },
-				{ _label: 'Two', _disabled: true },
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			el._items = [
+				{ type: 'button', _label: 'One', _disabled: false },
+				{ type: 'button', _label: 'Two', _disabled: true },
 			];
 		});
 		await page.waitForChanges();
