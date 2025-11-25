@@ -248,7 +248,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        # Manage version tags for Netlify deployments
+      # Manage version tags for Netlify deployments
       - name: Update version tag for stable deployments
         if: github.event.inputs.tag == 'latest'
         run: |
