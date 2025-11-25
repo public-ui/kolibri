@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/solid",
-	"version": "2.2.17",
+	"version": "2.2.18-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -58,7 +58,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"solid-js": ">=1.9.9"
+		"solid-js": ">=1.9.10"
 	},
 	"sideEffects": false,
 	"type": "module",
