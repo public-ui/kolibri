@@ -1,6 +1,7 @@
-import { Formik } from 'formik';
-import React, { useEffect, useRef, useState } from 'react';
-import * as Yup from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
+import React, { useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 import { KolLink, KolTabs } from '@public-ui/react-v19';
 
@@ -10,20 +11,46 @@ import { DistrictForm } from './DistrictForm';
 import { PersonalInformationForm } from './PersonalInformationForm';
 import { Summary } from './Summary';
 
-import type { Iso8601 } from '@public-ui/components';
-import type { FormikHelpers, FormikProps } from 'formik';
 import { SampleDescription } from '../../components/SampleDescription';
+
+const validationSchema = z
+	.object({
+		district: z.string().min(1, 'Please select district.'),
+		date: z.string().min(1, 'Please enter date.'),
+		time: z.string(),
+		salutation: z.string().min(1, 'Please select salutation.'),
+		name: z.string().min(1, 'Please enter your first and last name.'),
+		company: z.string(),
+		email: z.string().min(1, 'Please enter your e-mail address.'),
+		phone: z.string(),
+	})
+	.superRefine(async (data, ctx) => {
+		// Conditional validation: company is required when salutation is 'Company'
+		if (data.salutation === 'Company' && !data.company) {
+			ctx.addIssue({
+				code: z.ZodIssueCode.custom,
+				path: ['company'],
+				message: 'Please specify company.',
+			});
+		}
+
+		// Async validation: check time availability when date is set
+		if (data.date && data.time) {
+			const isAvailable = await checkAppointmentAvailability(data.time);
+			if (!isAvailable) {
+				ctx.addIssue({
+					code: z.ZodIssueCode.custom,
+					path: ['time'],
+					message: 'Date unfortunately no longer available.',
+				});
+			}
+		}
+	});
+
+export type FormValues = z.infer<typeof validationSchema>;
 // export interface FormProps {}
-export interface FormValues {
-	district: string;
-	date: Iso8601;
-	time: Iso8601;
-	salutation: string;
-	name: string;
-	company: string;
-	email: string;
-	phone: string;
-}
+
+export type FormFieldName = keyof FormValues & string;
 
 enum FormSection {
 	DISTRICT,
@@ -34,10 +61,17 @@ enum FormSection {
 
 const formSectionSequence = [FormSection.DISTRICT, FormSection.AVAILABLE_APPOINTMENTS, FormSection.PERSONAL_INFORMATION, FormSection.SUMMARY] as const;
 
+const sectionFields: Record<FormSection, FormFieldName[]> = {
+	[FormSection.DISTRICT]: ['district'],
+	[FormSection.AVAILABLE_APPOINTMENTS]: ['date', 'time'],
+	[FormSection.PERSONAL_INFORMATION]: ['salutation', 'company', 'name', 'email', 'phone'],
+	[FormSection.SUMMARY]: [],
+};
+
 const initialValues: FormValues = {
 	district: '',
-	date: '' as Iso8601,
-	time: '' as Iso8601,
+	date: '',
+	time: '',
 	salutation: '',
 	name: '',
 	company: '',
@@ -45,103 +79,90 @@ const initialValues: FormValues = {
 	phone: '',
 };
 
-const districtSchema = {
-	district: Yup.string().required('Please select district.'),
-};
-const personalInformationSchema = {
-	salutation: Yup.string().required('Please select salutation.'),
-	name: Yup.string().required('Please enter your first and last name.'),
-	company: Yup.string().when('salutation', {
-		is: (salutation: string) => salutation === 'Company',
-		then: (schema) => schema.required('Please specify company.'),
-	}),
-	email: Yup.string().required('Please enter your e-mail address.'),
-};
-const availableAppointmentsSchema = {
-	date: Yup.string().required('Please enter date.'),
-	time: Yup.string().when('date', {
-		is: (date: string) => Boolean(date), // only validate time when date is already set
-		then: (schema) => schema.test('checkTimeAvailability', 'Date unfortunately no longer available.', checkAppointmentAvailability),
-	}),
-};
-
 export function AppointmentForm() {
 	const [activeFormSection, setActiveFormSection] = useState(FormSection.DISTRICT);
 	const [selectedTab, setSelectedTab] = useState(activeFormSection);
-	const formikRef = useRef<FormikProps<FormValues>>(null);
 
-	const validationSchema = Yup.object().shape({
-		...(activeFormSection === FormSection.DISTRICT ? districtSchema : {}),
-		...(activeFormSection === FormSection.AVAILABLE_APPOINTMENTS ? availableAppointmentsSchema : {}),
-		...(activeFormSection === FormSection.PERSONAL_INFORMATION ? personalInformationSchema : {}),
+	const formMethods = useForm<FormValues>({
+		defaultValues: initialValues,
+		mode: 'onTouched',
+		reValidateMode: 'onChange',
+		resolver: zodResolver(validationSchema),
+		shouldFocusError: false,
 	});
 
 	useEffect(() => {
 		setSelectedTab(activeFormSection);
 	}, [activeFormSection]);
 
-	const handleSubmit = async (_values: FormValues, formik: FormikHelpers<FormValues>) => {
-		const currentSectionIndex = formSectionSequence.indexOf(activeFormSection);
-		const nextSection = formSectionSequence[currentSectionIndex + 1];
-		if (nextSection !== undefined) {
-			await formik.setTouched({});
-			setActiveFormSection(nextSection);
-		}
+	const goToSection = (section: FormSection) => {
+		setActiveFormSection(section);
+		formMethods.clearErrors();
+	};
+
+	const getNextSection = (section: FormSection) => {
+		const currentSectionIndex = formSectionSequence.indexOf(section);
+		return formSectionSequence[currentSectionIndex + 1];
 	};
 
 	return (
-		<>
+		<FormProvider {...formMethods}>
 			<SampleDescription>
 				<p>
-					The Appointment Form is a full form example featuring a large variety of KoliBri form components,{' '}
-					<KolLink _label="Formik" _href="https://formik.org/" _target="blank" /> and{' '}
-					<KolLink _label="Yup" _href="https://github.com/jquense/yup" _target="blank" />.
+					The Appointment Form is a full form example featuring a large variety of KoliBri form components, React Hook Form and{' '}
+					<KolLink _label="Zod" _href="https://github.com/colinhacks/zod" _target="blank" />.
 				</p>
 			</SampleDescription>
 
-			<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-				<KolTabs
-					className="w-full"
-					_tabs={[
-						{
-							_label: '1. Choose registration office',
-						},
-						{
-							_label: '2. Available dates',
-							_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
-						},
-						{
-							_label: '3. Personal data',
-							_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
-						},
-						{
-							_label: 'Summary',
-							_disabled: activeFormSection < FormSection.SUMMARY,
-						},
-					]}
-					_label="Form navigation"
-					_selected={selectedTab}
-					_on={{
-						onSelect: (_event, selectedTab) => {
-							setActiveFormSection(selectedTab);
-							formikRef.current?.setErrors({});
-						},
-					}}
-				>
-					<div>
-						<DistrictForm />
-					</div>
-					<div>
-						<AvailableAppointmentsForm />
-					</div>
-					<div>
-						<PersonalInformationForm />
-					</div>
-					<div>
-						<Summary />
-					</div>
-				</KolTabs>
-			</Formik>
-		</>
+			<KolTabs
+				className="w-full"
+				_tabs={[
+					{
+						_label: '1. Choose registration office',
+					},
+					{
+						_label: '2. Available dates',
+						_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
+					},
+					{
+						_label: '3. Personal data',
+						_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
+					},
+					{
+						_label: 'Summary',
+						_disabled: activeFormSection < FormSection.SUMMARY,
+					},
+				]}
+				_label="Form navigation"
+				_selected={selectedTab}
+				_on={{
+					onSelect: (_event, selectedTab) => {
+						goToSection(selectedTab);
+					},
+				}}
+			>
+				<div>
+					<DistrictForm
+						fieldsToValidate={sectionFields[FormSection.DISTRICT]}
+						onComplete={() => goToSection(getNextSection(FormSection.DISTRICT) ?? FormSection.DISTRICT)}
+					/>
+				</div>
+				<div>
+					<AvailableAppointmentsForm
+						fieldsToValidate={sectionFields[FormSection.AVAILABLE_APPOINTMENTS]}
+						onComplete={() => goToSection(getNextSection(FormSection.AVAILABLE_APPOINTMENTS) ?? FormSection.AVAILABLE_APPOINTMENTS)}
+					/>
+				</div>
+				<div>
+					<PersonalInformationForm
+						fieldsToValidate={sectionFields[FormSection.PERSONAL_INFORMATION]}
+						onComplete={() => goToSection(getNextSection(FormSection.PERSONAL_INFORMATION) ?? FormSection.PERSONAL_INFORMATION)}
+					/>
+				</div>
+				<div>
+					<Summary />
+				</div>
+			</KolTabs>
+		</FormProvider>
 	);
 }
