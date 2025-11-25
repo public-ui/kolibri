@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolAlert, KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react-v19';
+import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../SampleDescription';
 
