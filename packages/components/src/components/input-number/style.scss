@@ -14,6 +14,7 @@
 	.kol-input-number {
 		input {
 			appearance: textfield;
+			text-align: right;
 
 			&::-webkit-inner-spin-button {
 				display: none;
