@@ -82,9 +82,7 @@ export function AvailableAppointmentsForm({ fieldsToValidate, onComplete }: Prop
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
-						setSectionSubmitted(true);
 						void handleSubmit();
-						focusErrorList(formRef);
 					},
 				}}
 			>
