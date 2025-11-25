@@ -53,6 +53,7 @@
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
 		"test": "pnpm -r test",
+		"test:unit:update": "pnpm -r test:unit:update",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
