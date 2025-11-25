@@ -91,13 +91,11 @@ export class KolTooltipWc implements TooltipAPI {
 
 	private handleMouseEnter = (): void => {
 		this.hasMouseIn = true;
-
 		this.showOrHideTooltip();
 	};
 
 	private handleMouseleave = (event: Event): void => {
 		this.hasMouseIn = this.tooltipElement?.contains((event as MouseEvent).relatedTarget as Node) ?? false;
-
 		this.showOrHideTooltip();
 	};
 
@@ -108,7 +106,6 @@ export class KolTooltipWc implements TooltipAPI {
 
 	private handleFocusout = (): void => {
 		this.hasFocusIn = false;
-
 		this.showOrHideTooltip();
 	};
 
