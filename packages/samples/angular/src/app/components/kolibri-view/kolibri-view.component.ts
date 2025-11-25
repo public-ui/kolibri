@@ -1,6 +1,6 @@
 import { NgForOf } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/angular-v20';
+import { KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/angular-v21';
 import { NUMBER_OF_INPUTS } from '../../shares/constants';
 
 @Component({

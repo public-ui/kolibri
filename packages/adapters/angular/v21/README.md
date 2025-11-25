@@ -1,11 +1,11 @@
-# KoliBri Angular Adapter (v18)
+# KoliBri Angular Adapter (v21)
 
-[![npm](https://img.shields.io/npm/v/@public-ui/angular-v18)](https://www.npmjs.com/package/@public-ui/components)
-[![license](https://img.shields.io/npm/l/@public-ui/angular-v18)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
-[![downloads](https://img.shields.io/npm/dt/@public-ui/angular-v18)](https://www.npmjs.com/package/@public-ui/angular-v18)
+[![npm](https://img.shields.io/npm/v/@public-ui/angular-21)](https://www.npmjs.com/package/@public-ui/components)
+[![license](https://img.shields.io/npm/l/@public-ui/angular-21)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/angular-21)](https://www.npmjs.com/package/@public-ui/angular-21)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
-[![size](https://img.shields.io/bundlephobia/min/@public-ui/angular-v18)](https://bundlephobia.com/result?p=@public-ui/angular-v18)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/angular-21)](https://bundlephobia.com/result?p=@public-ui/angular-21)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
 This package provides an Angular adapter for KoliBri components, making them easily usable in Angular applications.
@@ -13,30 +13,17 @@ This package provides an Angular adapter for KoliBri components, making them eas
 ## Installation
 
 ```bash
-npm install @public-ui/angular-v18
-pnpm add @public-ui/angular-v18
+npm install @public-ui/angular-v21
+pnpm add @public-ui/angular-v21
 ```
 
 ## Usage
 
-### With NgModule (Traditional)
-
-```typescript
-import { NgModule } from '@angular/core';
-import { KoliBriModule } from '@public-ui/angular-v18';
-
-@NgModule({
-	imports: [KoliBriModule],
-	// ...
-})
-export class AppModule {}
-```
-
-### With Standalone Components (New)
+### With Standalone Components (Recommended)
 
 ```typescript
 import { Component } from '@angular/core';
-import { KolButton } from '@public-ui/angular-v18';
+import { KolButton } from '@public-ui/angular-v21';
 
 @Component({
 	selector: 'app-root',
@@ -52,7 +39,7 @@ export class AppComponent {}
 All KoliBri components are available as standalone components. Here's how to use them:
 
 ```typescript
-import { KolButton, KolInputText, KolHeading } from '@public-ui/angular-v18';
+import { KolButton, KolInputText, KolHeading } from '@public-ui/angular-v21';
 
 @Component({
   // ...
@@ -73,7 +60,7 @@ Example migration:
 
 ```typescript
 // Before (NgModule)
-import { KoliBriModule } from '@public-ui/angular-v18';
+import { KoliBriModule } from '@public-ui/angular-v21';
 
 @NgModule({
 	imports: [KoliBriModule],
@@ -81,7 +68,7 @@ import { KoliBriModule } from '@public-ui/angular-v18';
 export class AppModule {}
 
 // After (Standalone)
-import { KolButton } from '@public-ui/angular-v18';
+import { KolButton } from '@public-ui/angular-v21';
 
 @Component({
 	standalone: true,
@@ -92,9 +79,9 @@ export class AppComponent {}
 
 ## Browser Support
 
-This package supports all modern browsers that are supported by Angular 18.
+This package supports all modern browsers that are supported by Angular 21.
 
-Customize tokens with your own theme as described in the [default theme README](../../../themes/default/README.md).
+Tokens can be customized with your own theme. See [default theme README](../../../themes/default/README.md).
 
 ## License
 
