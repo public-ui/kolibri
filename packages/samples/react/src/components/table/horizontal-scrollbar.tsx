@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolAlert, KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react-v19';
+import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../SampleDescription';
 
@@ -39,11 +39,6 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<KolAlert _variant="card" _type="warning" _label="Deprecation of minWidth">
-				In version 3, the width of the column will be required for the implicit calculation of the minWidth. This behavior is also implemented in version 2, if
-				the _minWidth property is undefined.
-			</KolAlert>
-			<br />
 			<section className="w-full flex flex-col gap-4">
 				<KolHeading _label="Table with scrollbar" _level={2} />
 
