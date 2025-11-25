@@ -8,6 +8,7 @@ enum KolEvent {
 	create = 'kolCreate',
 	focus = 'kolFocus',
 	input = 'kolInput',
+	keydown = 'kolKeydown',
 	mousedown = 'kolMousedown',
 	reset = 'kolReset',
 	select = 'kolSelect',
