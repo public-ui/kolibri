@@ -521,17 +521,17 @@ export class KolTableStateful implements TableAPI {
 		return null;
 	}
 
-	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys): void {
+	private handleSelectionChange(event: Event, selectedKeys: KoliBriTableSelectionKeys): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: value,
+					selectedKeys,
 				},
 			};
-		const selectedData = this.getSelectedData(value);
+		const selectedData = this.getSelectedData(selectedKeys);
 
 		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
 			this.state._on[Callback.onSelectionChange](event, selectedData);
