@@ -140,7 +140,6 @@ export class KolPopover implements PopoverAPI {
 		const body = documentElement.body;
 		body.addEventListener('keyup', this.handleEscape, { capture: true });
 		body.addEventListener('click', this.hidePopoverByClickOutside, { capture: true });
-		documentElement.addEventListener('keyup', this.handleEscape, { capture: true });
 		documentElement.scrollingElement?.addEventListener('scroll', this.handleScroll, { passive: true });
 	}
 
@@ -149,7 +148,6 @@ export class KolPopover implements PopoverAPI {
 		const body = documentElement.body;
 		body.removeEventListener('keyup', this.handleEscape, { capture: true });
 		body.removeEventListener('click', this.hidePopoverByClickOutside, { capture: true });
-		documentElement.removeEventListener('keyup', this.handleEscape, { capture: true });
 		documentElement.scrollingElement?.removeEventListener('scroll', this.handleScroll);
 	}
 
