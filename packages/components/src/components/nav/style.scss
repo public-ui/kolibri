@@ -9,10 +9,6 @@
 		display: grid;
 		place-items: center;
 
-		&--horizontal {
-			width: 100%;
-		}
-
 		&__navigation {
 			#{$root}:not(#{$root}--is-compact) & {
 				width: 100%;
@@ -23,15 +19,8 @@
 			display: flex;
 			margin: 0;
 			padding: 0;
+			flex-direction: column;
 			list-style: none;
-
-			&--vertical {
-				flex-direction: column;
-			}
-
-			&--horizontal {
-				flex-wrap: wrap;
-			}
 		}
 
 		&__entry-wrapper {

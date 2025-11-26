@@ -20,11 +20,6 @@
 			&-item {
 				--kol-nav-item-padding-left: calc(var(--kol-nav-nested-padding-left) + 8);
 			}
-
-			&--horizontal {
-				--kol-nav-item-padding-right: 8;
-				gap: 0 to-rem(16);
-			}
 		}
 
 		&__entry {
@@ -48,12 +43,12 @@
 					@include focus-outline;
 				}
 
-				#{$root}__list--vertical & {
+				#{$root}__list & {
 					padding-left: to-rem(var(--kol-nav-item-padding-left));
 					border-left: 2px solid transparent;
 				}
 
-				#{$root}--vertical #{$root}__list-item--active > #{$root}__entry-wrapper & {
+				#{$root}__list-item--active > #{$root}__entry-wrapper & {
 					border-left-color: var(--color-primary);
 				}
 
@@ -91,18 +86,17 @@
 				&__text {
 					color: var(--text-color);
 					background-color: var(--text-background-color);
-					border-color: var(--text-border-color);
-					border-style: solid;
 					border-radius: var(--border-radius);
 					min-width: var(--a11y-min-size);
 					min-height: var(--a11y-min-size);
-					padding: to-rem(8) to-rem(14);
-					border-width: var(--border-width);
+					justify-content: center;
 
-					font-weight: 700;
-					text-align: center;
 					transition-duration: 0.5s;
 					transition-property: background-color, color, border-color;
+
+					.kol-span__container {
+						justify-content: center;
+					}
 
 					&:hover {
 						color: var(--text-color);
