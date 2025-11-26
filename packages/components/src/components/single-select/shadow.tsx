@@ -383,7 +383,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 														this.focusOption(index);
 													}
 												}}
-												class={clsx('single-select__item', option.disabled && 'single-select__item--disabled')}
+												class={clsx('single-select__item', { 'single-select__item--disabled': option.disabled })}
 												onKeyDown={(e) => {
 													if (option.disabled) {
 														return;

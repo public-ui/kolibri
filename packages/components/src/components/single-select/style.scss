@@ -56,11 +56,13 @@ $visible-options: var(--visible-options, 5);
 
 			&--disabled {
 				opacity: 0.5;
-				cursor: not-allowed;
-				pointer-events: none; // Verhindert alle Mausinteraktionen
-
+				cursor: not-allowed !important;
+				&:hover {
+					color: black !important;
+					background: white !important;
+				}
 				.radio-label {
-					cursor: not-allowed;
+					pointer-events: none;
 				}
 			}
 		}
