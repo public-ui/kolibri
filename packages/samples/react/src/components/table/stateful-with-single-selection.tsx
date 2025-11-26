@@ -39,7 +39,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | string | null) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | null) => {
 		console.log('Selection change via callback', selection);
 	};
 
