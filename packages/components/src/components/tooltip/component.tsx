@@ -24,6 +24,7 @@ export class KolTooltipWc implements TooltipAPI {
 	private tooltipElement?: HTMLDivElement;
 	private hasFocusIn = false;
 	private hasMouseIn = false;
+	private wasManuallyHidden = false;
 
 	private cleanupAutoPositioning?: () => void;
 
@@ -39,6 +40,9 @@ export class KolTooltipWc implements TooltipAPI {
 	}
 
 	private showTooltip = (): void => {
+		if (this.wasManuallyHidden) {
+			return;
+		}
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
 			tooltipOpened();
@@ -63,12 +67,7 @@ export class KolTooltipWc implements TooltipAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {
-		/**
-		 * The tooltip visibility is derived solely from the current hover/focus state.
-		 * A manual hide call should therefore just remove the overlay without tracking
-		 * extra state, because visibility is recalculated on the next pointer or focus
-		 * change through {@link showOrHideTooltip}.
-		 */
+		this.wasManuallyHidden = true;
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
 			tooltipClosed();
@@ -91,21 +90,43 @@ export class KolTooltipWc implements TooltipAPI {
 
 	private handleMouseEnter = (): void => {
 		this.hasMouseIn = true;
+
+		const isTooltipVisible = this.tooltipElement?.classList.contains('show');
+		if (!isTooltipVisible) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
 	private handleMouseleave = (event: Event): void => {
 		this.hasMouseIn = this.tooltipElement?.contains((event as MouseEvent).relatedTarget as Node) ?? false;
+
+		if (!this.hasMouseIn && !this.hasFocusIn && this.wasManuallyHidden) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
 	private handleFocusIn = (): void => {
 		this.hasFocusIn = true;
+
+		const isTooltipVisible = this.tooltipElement?.classList.contains('show');
+		if (!isTooltipVisible) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
 	private handleFocusout = (): void => {
 		this.hasFocusIn = false;
+
+		if (!this.hasMouseIn && !this.hasFocusIn) {
+			this.wasManuallyHidden = false;
+		}
+
 		this.showOrHideTooltip();
 	};
 
