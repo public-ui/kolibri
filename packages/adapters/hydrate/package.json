@@ -58,7 +58,7 @@
 		"cross-env": "10.1.0",
 		"mocha": "11.7.4",
 		"mocha-snapshots": "4.2.0",
-		"prettier": "3.6.2",
+		"prettier": "3.7.0",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rimraf": "6.1.2"
 	},
