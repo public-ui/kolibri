@@ -19,8 +19,8 @@
 		"pnpm": "^10"
 	},
 	"private": true,
-	"scripts": {
-		"build": "pnpm -r build",
+        "scripts": {
+                "build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
@@ -35,9 +35,15 @@
 		"prepare": "pnpm exec playwright install && husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"test": "pnpm -r test",
-		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
-		"test-update": "pnpm -r test-update",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
-		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
-	}
+                "test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
+                "test-update": "pnpm -r test-update",
+                "update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
+                "version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
+        },
+        "pnpm": {
+                "overrides": {
+                        "ansi-regex": "^6.0.1",
+                        "minimist": "^1.2.8"
+                }
+        }
 }
