@@ -24,9 +24,36 @@ export class KolTooltipWc implements TooltipAPI {
 	private tooltipElement?: HTMLDivElement;
 	private hasFocusIn = false;
 	private hasMouseIn = false;
-	private wasManuallyHidden = false;
+
+	/**
+	 * Prevents the tooltip from showing during the current interaction session.
+	 * An "interaction session" (visit) is active while the user hovers over or focuses the trigger element.
+	 *
+	 * Behavior:
+	 * - Set to true when hideTooltip() is called (e.g., via Escape key, click, or programmatically)
+	 * - Remains true for the entire session, even if interaction type changes (e.g., from click to hover)
+	 * - Reset to false when the session ends (user leaves the element completely)
+	 * - Tooltip will show again on the next session unless manually hidden again
+	 */
+	private isHiddenForCurrentVisit = false;
 
 	private cleanupAutoPositioning?: () => void;
+
+	/**
+	 * Checks if a new interaction session is starting (no prior hover or focus active).
+	 */
+	private isNewVisit(): boolean {
+		return !this.hasMouseIn && !this.hasFocusIn;
+	}
+
+	/**
+	 * Resets the hide flag when the interaction session ends.
+	 */
+	private resetHideFlag = (): void => {
+		if (this.isNewVisit()) {
+			this.isHiddenForCurrentVisit = false;
+		}
+	};
 
 	private async alignTooltip(): Promise<void> {
 		if (this.tooltipElement && this.previousSibling) {
@@ -40,7 +67,7 @@ export class KolTooltipWc implements TooltipAPI {
 	}
 
 	private showTooltip = (): void => {
-		if (this.wasManuallyHidden) {
+		if (this.isHiddenForCurrentVisit) {
 			return;
 		}
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
@@ -67,7 +94,8 @@ export class KolTooltipWc implements TooltipAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hideTooltip() {
-		this.wasManuallyHidden = true;
+		this.isHiddenForCurrentVisit = true;
+
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
 			tooltipClosed();
@@ -89,44 +117,32 @@ export class KolTooltipWc implements TooltipAPI {
 	};
 
 	private handleMouseEnter = (): void => {
+		const isNewVisit = this.isNewVisit();
 		this.hasMouseIn = true;
-
-		const isTooltipVisible = this.tooltipElement?.classList.contains('show');
-		if (!isTooltipVisible) {
-			this.wasManuallyHidden = false;
+		if (isNewVisit) {
+			this.isHiddenForCurrentVisit = false;
 		}
-
 		this.showOrHideTooltip();
 	};
 
 	private handleMouseleave = (event: Event): void => {
 		this.hasMouseIn = this.tooltipElement?.contains((event as MouseEvent).relatedTarget as Node) ?? false;
-
-		if (!this.hasMouseIn && !this.hasFocusIn && this.wasManuallyHidden) {
-			this.wasManuallyHidden = false;
-		}
-
+		this.resetHideFlag();
 		this.showOrHideTooltip();
 	};
 
 	private handleFocusIn = (): void => {
+		const isNewVisit = this.isNewVisit();
 		this.hasFocusIn = true;
-
-		const isTooltipVisible = this.tooltipElement?.classList.contains('show');
-		if (!isTooltipVisible) {
-			this.wasManuallyHidden = false;
+		if (isNewVisit) {
+			this.isHiddenForCurrentVisit = false;
 		}
-
 		this.showOrHideTooltip();
 	};
 
 	private handleFocusout = (): void => {
 		this.hasFocusIn = false;
-
-		if (!this.hasMouseIn && !this.hasFocusIn) {
-			this.wasManuallyHidden = false;
-		}
-
+		this.resetHideFlag();
 		this.showOrHideTooltip();
 	};
 
