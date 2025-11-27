@@ -30,7 +30,7 @@
 			}
 		}
 
-		@at-root #{$root}--disabled {
+		&--disabled {
 			color: var(--color-text);
 			background-color: var(--color-mute);
 			border-color: var(--color-mute-variant);
@@ -45,6 +45,21 @@
 
 		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 			@include focus-outline;
+		}
+
+		&:has(.kol-input--readonly) {
+			border-color: var(--color-mute-variant);
+			border-radius: 0 0 0 var(--border-radius);
+			border-right-width: 0;
+			border-top-width: 0;
+
+			&:hover {
+				border-color: var(--color-mute-variant);
+			}
+
+			&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
+				outline-color: var(--color-mute-variant);
+			}
 		}
 
 		&__smart-button {
