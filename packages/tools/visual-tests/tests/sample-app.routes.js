@@ -412,6 +412,17 @@ ROUTES.set('input-number/basic?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-number/number-formatter', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 300,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-password/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
@@ -486,6 +497,17 @@ ROUTES.set('input-text/basic?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/text-formatter', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 690,
 		},
 		zoom: {
 			skip: true,
@@ -583,7 +605,7 @@ ROUTES.set('popover-button/basic', {
 		viewportSize: {
 			width: 200,
 			height: 220,
-		}
+		},
 	},
 });
 ROUTES.set('progress/basic', {

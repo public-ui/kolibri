@@ -15,7 +15,8 @@ const OPTIONS = [
 ];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
 const fillAction: FillAction = async (page) => {
-	await page.getByRole('button').click();
+	const input = page.locator('input.kol-single-select__input');
+	await input.click();
 	await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 };
 
@@ -38,7 +39,8 @@ test.describe(COMPONENT_NAME, () => {
 		test('should open listbox on button click and close on ESC', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await expect(page.getByRole('listbox')).toBeVisible();
 
@@ -50,7 +52,8 @@ test.describe(COMPONENT_NAME, () => {
 		test('should move focus with arrow keys and select with Enter', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
@@ -62,7 +65,8 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('should filter options when typing and select the filtered one', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.locator('input.kol-single-select__input').focus();
 			await page.locator('input.kol-single-select__input').fill('We');
@@ -79,9 +83,8 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('should clear the selection when clear button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
-			await page.getByRole('button').click();
-
 			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 
@@ -99,7 +102,8 @@ test.describe(COMPONENT_NAME, () => {
 		test('should not render clear button when _hideClearButton is true', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _hideClearButton="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 
 			if (page.locator('input.kol-single-select__input')) await expect(page.locator('input.kol-single-select__input')).toHaveValue(TEST_LABEL);
@@ -109,9 +113,8 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('should select option with SPACE key', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
-			await page.getByRole('button').click();
-
 			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await input.click();
 			await input.press('ArrowDown');
