@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-v19",
-	"version": "3.0.8-rc.1",
+	"version": "3.0.8-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -52,7 +52,7 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "19.2.6",
+		"@types/react": "19.2.7",
 		"@types/react-dom": "19.2.3",
 		"react": "19.2.0",
 		"react-dom": "19.2.0",
