@@ -20,6 +20,8 @@ export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	key?: string;
 	sortDirection?: KoliBriSortDirection;
 	hidable?: boolean;
+	sortable?: boolean;
+	resizable?: boolean;
 };
 
 export type KoliBriTableSelection = {

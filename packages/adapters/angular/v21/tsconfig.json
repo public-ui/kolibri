@@ -3,7 +3,7 @@
 		"annotateForClosureCompiler": false,
 		"strictMetadataEmit": true,
 		"flatModuleOutFile": "core.js",
-		"flatModuleId": "@public-ui/angular-v17",
+		"flatModuleId": "@public-ui/angular-v21",
 		"skipTemplateCodegen": true,
 		"fullTemplateTypeCheck": false,
 		"enableIvy": true
