@@ -282,6 +282,9 @@ importers:
       '@public-ui/react-v19':
         specifier: workspace:*
         version: link:../react-v19
+      '@types/minimatch':
+        specifier: 6.0.0
+        version: 6.0.0
       '@types/react':
         specifier: 19.2.2
         version: 19.2.2
