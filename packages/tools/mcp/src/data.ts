@@ -12,7 +12,7 @@ export interface SampleEntry {
 	path?: string;
 }
 
-export interface SampleIndexCounts {
+interface SampleIndexCounts {
 	total: number;
 	totalDocs: number;
 	totalSamples: number;
@@ -21,7 +21,7 @@ export interface SampleIndexCounts {
 	byKind: Record<string, number>;
 }
 
-export interface SampleIndexMetadata {
+interface SampleIndexMetadata {
 	generatedAt: string | null;
 	buildMode: string;
 	counts: SampleIndexCounts;
@@ -133,10 +133,6 @@ function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetada
 
 export function getAllEntries(): SampleEntry[] {
 	return loadSampleData().entries;
-}
-
-export function getEntriesByKind(kind: SampleEntry['kind']): SampleEntry[] {
-	return getAllEntries().filter((entry) => entry.kind === kind);
 }
 
 export function getEntryById(id: string): SampleEntry | undefined {
