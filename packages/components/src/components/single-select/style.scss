@@ -22,10 +22,14 @@
 
 	.kol-single-select {
 		&__delete {
-			cursor: pointer;
+			.kol-button {
+				cursor: pointer;
+			}
 
 			&--disabled {
-				cursor: not-allowed;
+				.kol-button {
+					cursor: not-allowed;
+				}
 			}
 		}
 
@@ -39,6 +43,16 @@
 
 		.kol-custom-suggestions-options-group {
 			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
+		}
+	}
+
+	.kol-custom-suggestions-toggle {
+		&:not(&--disabled) {
+			cursor: pointer;
+		}
+
+		&--disabled {
+			opacity: 0.5;
 		}
 	}
 }

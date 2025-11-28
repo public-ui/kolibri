@@ -22,6 +22,7 @@ import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } fr
 
 type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
+	hideClearButton: boolean;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -40,6 +41,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	hasValue: boolean;
+	hideClearButton: boolean;
 	suggestions: W3CInputValue[];
 	value: string;
 } & PropId &

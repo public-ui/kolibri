@@ -27,9 +27,9 @@ export const PredefinedSettings: FC = () => {
 				}}
 				_tableSettings={{
 					columns: [
-						{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-						{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
-						{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
+						{ key: 'columnC', visible: true, label: 'Column C', width: 45 },
+						{ key: 'columnB', visible: true, label: 'Column B', width: 20 },
+						{ key: 'columnA', visible: false, label: 'Column A' },
 					],
 				}}
 				_data={DATA}
