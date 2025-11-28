@@ -156,4 +156,3 @@ export const KolSelectController = withController(KolSelect, '_value');
 export const KolSingleSelectController = withController(KolSingleSelect, '_value');
 export const KolInputRadioController = withController(KolInputRadio, '_value');
 export const KolInputCheckboxController = withController(KolInputCheckbox, '_checked');
-export { withController };
