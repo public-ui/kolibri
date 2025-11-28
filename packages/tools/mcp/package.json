@@ -61,7 +61,7 @@
 		"vercel:deploy:prod": "vercel --prod"
 	},
 	"dependencies": {
-		"@modelcontextprotocol/sdk": "1.21.0",
+		"@modelcontextprotocol/sdk": "1.23.0",
 		"@public-ui/components": "workspace:*",
 		"express": "5.1.0",
 		"fuse.js": "7.1.0",
@@ -70,9 +70,9 @@
 	"devDependencies": {
 		"@modelcontextprotocol/inspector": "0.17.2",
 		"@types/express": "5.0.5",
-		"@types/node": "24.10.0",
-		"nodemon": "3.1.10",
-		"prettier": "3.6.2",
+		"@types/node": "24.10.1",
+		"nodemon": "3.1.11",
+		"prettier": "3.7.1",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"tsx": "4.20.6",
 		"typescript": "5.9.3",
