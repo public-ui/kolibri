@@ -48,3 +48,52 @@ toaster.enqueue({
 	type: 'info',
 });
 ```
+
+#### kol-table-stateless
+
+The `onSelectionChange` callback now always returns `KoliBriTableSelectionKeys` (array of keys):
+
+**Before (v3):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+	// Type guard required
+	const keys = Array.isArray(selection) ? selection : [selection];
+	setSelectedKeys(keys);
+};
+```
+
+**After (v4):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
+	// Direct usage - always an array
+	setSelectedKeys(selection);
+};
+```
+
+#### kol-table-stateful
+
+The `onSelectionChange` callback now always returns `KoliBriTableDataType[] | null` (array of objects or null):
+
+**Before (v3):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | null) => {
+	// Type guard required for single selection
+	if (Array.isArray(selection)) {
+		setSelectedData(selection);
+	} else if (selection !== null) {
+		setSelectedData([selection]);
+	}
+};
+```
+
+**After (v4):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | null) => {
+	// Direct usage - always an array or null
+	setSelectedData(selection || []);
+};
+```
