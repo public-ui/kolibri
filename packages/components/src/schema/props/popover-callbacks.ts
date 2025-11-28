@@ -4,8 +4,10 @@ import type { EventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
 /* types */
+export type PopoverCloseEvent = MouseEvent | KeyboardEvent | ToggleEvent;
+
 export type PopoverCallbacksPropType = {
-	[Callback.onClose]?: EventCallback<MouseEvent | KeyboardEvent>;
+	[Callback.onClose]?: EventCallback<PopoverCloseEvent>;
 };
 
 /**

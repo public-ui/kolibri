@@ -11,6 +11,7 @@ export type {
 	FocusableElement,
 	KoliBriTableCell,
 	KoliBriTableHeaderCell,
+	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableSelection,
 	Optgroup,
 	Option,
