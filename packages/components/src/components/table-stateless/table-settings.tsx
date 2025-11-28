@@ -28,7 +28,7 @@ export class KolTableSettings {
 	handleTableSettingsChange(newValue: TableSettingsPropType) {
 		this.tableSettings = {
 			...newValue,
-			columns: this.sortColumnsByPosition(newValue.columns),
+			columns: this.normalizeColumns(Array.isArray(newValue.columns) ? newValue.columns : []),
 		};
 	}
 
@@ -38,29 +38,33 @@ export class KolTableSettings {
 
 	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
 
-	private sortColumnsByPosition(columns: ColumnSettings[]): ColumnSettings[] {
-		return [...columns].sort((colA, colB) => colA.position - colB.position);
+	private normalizeColumns(columns: ColumnSettings[]): ColumnSettings[] {
+		return columns.map(({ hidable, resizable, sortable, visible, ...rest }) => ({
+			...rest,
+			hidable: hidable !== false,
+			resizable: resizable !== false,
+			sortable: sortable !== false,
+			visible: visible !== false,
+		}));
 	}
 
 	private moveColumn(columnId: string, direction: 'up' | 'down'): void {
-		const columnSettings = [...this.tableSettings.columns];
-
-		const sourceIndex = columnSettings.findIndex((col) => col.key === columnId);
+		const columns = [...this.tableSettings.columns];
+		const sourceIndex = columns.findIndex((col) => col.key === columnId);
+		const sourceColumn = columns[sourceIndex];
 		const targetIndex = direction === 'up' ? sourceIndex - 1 : sourceIndex + 1;
+		const targetColumn = columns[targetIndex];
 
-		const source = columnSettings[sourceIndex];
-		const target = columnSettings[targetIndex];
+		if (sourceIndex < 0 || targetIndex < 0 || targetIndex >= columns.length || sourceColumn?.sortable === false || targetColumn?.sortable === false) {
+			return;
+		}
 
-		const newCols = columnSettings.map((col) => {
-			if (col.key === source.key) return { ...col, position: target.position };
-			if (col.key === target.key) return { ...col, position: source.position };
-			return col;
-		});
+		const [movedColumn] = columns.splice(sourceIndex, 1);
+		columns.splice(targetIndex, 0, movedColumn);
 
-		// re-sort by position and update
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.sortColumnsByPosition(newCols),
+			columns,
 		};
 	}
 
@@ -74,7 +78,7 @@ export class KolTableSettings {
 	private handleWidthChange(key: string, width: unknown): void {
 		this.tableSettings = {
 			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, width: Number(width) } : col)),
+			columns: this.tableSettings.columns.map((col) => (col.key === key ? (col.resizable === false ? col : { ...col, width: Number(width) }) : col)),
 		};
 	}
 
@@ -98,7 +102,7 @@ export class KolTableSettings {
 	}
 
 	public render(): JSX.Element {
-		const sortedColumns = [...this.tableSettings.columns].sort((a, b) => a.position - b.position);
+		const sortedColumns = this.tableSettings.columns;
 
 		return (
 			<KolPopoverButtonWcTag
@@ -126,13 +130,15 @@ export class KolTableSettings {
 											_hideLabel
 											_disabled={column.hidable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
+											data-testid={`table-settings-visible-${column.key}`}
 										/>
-										<span>{column.label}</span>
+										<span class="kol-table-settings__column-label">{column.label}</span>
 										<KolInputNumberTag
 											_hideLabel
 											_value={column.width}
 											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
 											_min={1}
+											_disabled={column.resizable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
 										/>
 										<KolButtonWcTag
@@ -141,7 +147,7 @@ export class KolTableSettings {
 											_hideLabel
 											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key, 'up') }}
-											_disabled={index === 0}
+											_disabled={index === 0 || column.sortable === false || sortedColumns[index - 1]?.sortable === false}
 											data-testid="table-settings-move-up"
 										/>
 										<KolButtonWcTag
@@ -150,7 +156,7 @@ export class KolTableSettings {
 											_hideLabel
 											_buttonVariant="ghost"
 											_on={{ onClick: () => this.moveColumn(column.key, 'down') }}
-											_disabled={index === sortedColumns.length - 1}
+											_disabled={index === sortedColumns.length - 1 || column.sortable === false || sortedColumns[index + 1]?.sortable === false}
 											data-testid="table-settings-move-down"
 										/>
 									</div>

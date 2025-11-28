@@ -1,9 +1,24 @@
-import { KolForm, KolHeading, KolInputText } from '@public-ui/react-v19';
-import { Field, Formik, type FieldProps } from 'formik';
-import * as React from 'react';
+import { KolForm, KolInputText } from '@public-ui/react-v19';
+import React, { useMemo, useRef, type BaseSyntheticEvent } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+
 import { SampleDescription } from '../SampleDescription';
 
-import { NumericFormat, type NumberFormatValues } from 'react-number-format';
+type InputTextElementSelection = {
+	setSelectionStart?: (position: number) => Promise<void>;
+	selectionStart?: () => Promise<number | null>;
+};
+
+type KolInputTextEvents = {
+	onBlur?: (event: Event) => void;
+	onChange?: (event: Event, value: unknown) => void;
+	onFocus?: (event: Event) => void;
+	onInput?: (event: Event, value: unknown) => void;
+};
+type KolInputTextProps = Omit<React.ComponentProps<typeof KolInputText>, '_on' | '_value'> & {
+	_on?: KolInputTextEvents;
+	_value?: string;
+};
 
 const NON_ALPHANUM = /[^a-zA-Z0-9]/g;
 const EVERY_FOUR_CHARS = /(.{4})(?!$)/g;
@@ -20,10 +35,12 @@ class IbanFormatter {
 	public parse(value: string): string {
 		return this.electronicFormat(value);
 	}
+
 	public format(value: string, ref?: HTMLKolInputTextElement | null, selectionStart?: number | null): string {
-		if (ref && selectionStart) {
+		const setSelectionStart = (ref as InputTextElementSelection | null)?.setSelectionStart;
+		if (selectionStart && setSelectionStart) {
 			if (selectionStart % 5 === 0) selectionStart++;
-			ref?.setSelectionStart(selectionStart);
+			void setSelectionStart(selectionStart);
 		}
 		return this.printFormat(value);
 	}
@@ -33,23 +50,104 @@ type IbanExampleFormValues = {
 	iban: string;
 };
 
-type CurrencyExampleFormValues = {
-	currency: number;
-};
+function FormattedKolInputText({
+	formatter,
+	selectionStartRef,
+	_on,
+	_value,
+	...props
+}: KolInputTextProps & {
+	formatter: IbanFormatter;
+	selectionStartRef: React.MutableRefObject<number | null>;
+}) {
+	const inputRef = useRef<HTMLKolInputTextElement | null>(null);
+	const normalizedOn = _on && typeof _on === 'object' ? (_on as KolInputTextEvents) : undefined;
+	const sanitizedSelectionRef = selectionStartRef as React.MutableRefObject<number | null>;
+
+	const element = inputRef.current;
+	const selectionStart = sanitizedSelectionRef.current;
+	const sanitizedFormatter: IbanFormatter = formatter;
+
+	return (
+		<KolInputText
+			{...props}
+			ref={inputRef}
+			_value={sanitizedFormatter.format(_value ?? '', element, selectionStart)}
+			_on={{
+				...normalizedOn,
+				onInput: (event: Event, value: unknown) => {
+					const selectionStartGetter = (inputRef.current as InputTextElementSelection | null)?.selectionStart;
+					selectionStartGetter?.().then((start) => {
+						sanitizedSelectionRef.current = start ?? null;
+					});
+					const parsedValue = sanitizedFormatter.parse(typeof value === 'string' ? value : '');
+					normalizedOn?.onInput?.(event, parsedValue);
+				},
+			}}
+		/>
+	);
+}
+
+function KolFormattedIbanController(props: any) {
+	const { name, control, rules, defaultValue, shouldUnregister, disabled, formatter, selectionStartRef, ...componentProps } = props;
+	return (
+		<Controller
+			name={name}
+			control={control}
+			rules={rules}
+			defaultValue={defaultValue}
+			shouldUnregister={shouldUnregister}
+			disabled={disabled}
+			render={({ field, fieldState }) => {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+				const userHandlers = componentProps._on as KolInputTextEvents | undefined;
+				return (
+					<FormattedKolInputText
+						{...(componentProps as any)}
+						formatter={formatter}
+						selectionStartRef={selectionStartRef}
+						_value={field.value}
+						_touched={fieldState.isTouched}
+						_msg={
+							fieldState.error
+								? {
+										_type: 'error' as const,
+										_description: fieldState.error.message || String(fieldState.error),
+									}
+								: undefined
+						}
+						_on={{
+							onInput: (event: Event, value: unknown) => {
+								field.onChange(value);
+								userHandlers?.onInput?.(event, value);
+							},
+							onBlur: () => field.onBlur(),
+						}}
+					/>
+				);
+			}}
+		/>
+	);
+}
 
 export function InputTextFormatterDemo() {
-	const handleSubmit = async () => {};
-	const formatter = new IbanFormatter();
+	const formatter = useMemo(() => new IbanFormatter(), []);
 
-	const textInput1 = React.useRef<HTMLKolInputTextElement>(null);
-	let textInput1SelectionStart: number | null | undefined;
+	const textInput1SelectionStart = useRef<number | null>(null);
 
 	const initialIbanExampleValues: IbanExampleFormValues = {
 		iban: 'DE89370400440532013000',
 	};
 
-	const initialCurrencyExampleValues: CurrencyExampleFormValues = {
-		currency: 1000000,
+	const ibanForm = useForm<IbanExampleFormValues>({
+		defaultValues: initialIbanExampleValues,
+		mode: 'onTouched',
+	});
+
+	const ibanValues = ibanForm.watch();
+
+	const handleIbanSubmit = (event: Event) => {
+		void ibanForm.handleSubmit(async () => {})(event as unknown as BaseSyntheticEvent);
 	};
 
 	return (
@@ -60,93 +158,22 @@ export function InputTextFormatterDemo() {
 					vice versa the formatting is removed again (machine format)
 				</p>
 			</SampleDescription>
-			<section className="w-full flex flex-col">
-				<Formik<IbanExampleFormValues> initialValues={initialIbanExampleValues} onSubmit={handleSubmit}>
-					{(form) => (
-						<>
-							<div className="p-2">
-								<KolHeading _label="Formatted Form Field" _level={2} />
-								<KolForm>
-									<Field name="iban">
-										{({ field }: FieldProps<IbanExampleFormValues['iban']>) => (
-											<div className="block mt-2">
-												<KolInputText
-													ref={textInput1}
-													onBlur={() => {
-														void form.setFieldTouched('iban', true);
-													}}
-													id="field-iban"
-													_label="IBAN"
-													_value={formatter.format(field.value ?? '', textInput1.current, textInput1SelectionStart)}
-													_msg={{
-														_type: 'error',
-														_description: form.errors.iban || '',
-													}}
-													_touched={form.touched.iban}
-													_required
-													_on={{
-														onInput: (event, value: unknown) => {
-															if (event.target) {
-																textInput1.current?.selectionStart().then((start) => {
-																	textInput1SelectionStart = start;
-																});
-																const parsed_value = formatter.parse((value as string) ?? '');
-																void form.setFieldValue('iban', parsed_value, true);
-															}
-														},
-													}}
-												/>
-											</div>
-										)}
-									</Field>
-								</KolForm>
-							</div>
-							<div className="p-2">
-								<KolHeading _label="Model" _level={2} />
-								<pre className="text-base">{JSON.stringify(form.values, null, 2)}</pre>
-							</div>
-						</>
-					)}
-				</Formik>
-			</section>
-
-			<section className="w-full flex flex-col">
-				<Formik<CurrencyExampleFormValues> initialValues={initialCurrencyExampleValues} onSubmit={handleSubmit}>
-					{(form) => (
-						<>
-							<div className="p-2">
-								<KolHeading _label="Formatted Form Field (with react-number-format)" _level={2} />
-								<KolForm>
-									<Field name="currency">
-										{({ field }: FieldProps<CurrencyExampleFormValues['currency']>) => (
-											<div className="block mt-2">
-												<NumericFormat
-													customInput={({ type, value, onBlur, onChange, onFocus }: any) => {
-														return <KolInputText _label="Currency" _type={type} _value={value} _on={{ onBlur, onChange, onFocus }} />;
-													}}
-													displayType="input"
-													value={typeof field.value === 'number' ? field.value.toFixed(2) : undefined}
-													onBlur={() => {
-														void form.setFieldTouched('currency', true);
-													}}
-													onValueChange={(value: NumberFormatValues) => {
-														void form.setFieldValue('currency', value.floatValue, true);
-													}}
-													suffix={'€'}
-													thousandSeparator={true}
-												/>
-											</div>
-										)}
-									</Field>
-								</KolForm>
-							</div>
-							<div className="p-2">
-								<KolHeading _label="Model" _level={2} />
-								<pre className="text-base">{JSON.stringify(form.values, null, 2)}</pre>
-							</div>
-						</>
-					)}
-				</Formik>
+			<section className="w-full">
+				<div>
+					<KolForm _on={{ onSubmit: handleIbanSubmit }}>
+						<KolFormattedIbanController
+							control={ibanForm.control as any}
+							name="iban"
+							id="field-iban"
+							formatter={formatter}
+							selectionStartRef={textInput1SelectionStart}
+							rules={{ required: 'Please enter an IBAN.' }}
+							_label="IBAN"
+							_required
+						/>
+					</KolForm>
+					<pre className="text-base mt-2">{JSON.stringify(ibanValues, null, 2)}</pre>
+				</div>
 			</section>
 		</>
 	);

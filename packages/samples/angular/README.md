@@ -8,7 +8,7 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/sample-angular)](https://bundlephobia.com/result?p=@public-ui/sample-angular)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 21.
 
 ## Development server
 

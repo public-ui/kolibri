@@ -6,7 +6,6 @@ import { SampleDescription } from '../SampleDescription';
 
 export const ButtonIcons: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
-
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};

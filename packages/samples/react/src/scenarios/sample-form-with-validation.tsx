@@ -1,28 +1,24 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import {
+	KolComboboxController,
+	KolInputCheckboxController,
+	KolInputColorController,
+	KolInputDateController,
+	KolInputEmailController,
+	KolInputNumberController,
+	KolInputPasswordController,
+	KolInputRadioController,
+	KolInputRangeController,
+	KolInputTextController,
+	KolSelectController,
+	KolSingleSelectController,
+	KolTextareaController,
+} from '@public-ui/react-hook-form-adapter';
+import { KolAlert, KolButton, KolHeading, KolLink } from '@public-ui/react-v19';
 import React from 'react';
 import type { FieldError } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import {
-	KolAlert,
-	KolButton,
-	KolCombobox,
-	KolHeading,
-	KolInputCheckbox,
-	KolInputColor,
-	KolInputDate,
-	KolInputEmail,
-	KolInputNumber,
-	KolInputPassword,
-	KolInputRadio,
-	KolInputRange,
-	KolInputText,
-	KolLink,
-	KolSelect,
-	KolSingleSelect,
-	KolTextarea,
-} from '@public-ui/react-v19';
 
 import { SampleDescription } from '../components/SampleDescription';
 import { useToasterService } from '../hooks/useToasterService';
@@ -59,11 +55,9 @@ export const SampleFormWithValidation: React.FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
 	const {
 		handleSubmit,
-		formState: { errors, touchedFields },
+		formState: { errors },
 		reset,
-		setValue,
-		trigger,
-		watch,
+		control,
 	} = useForm({
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
@@ -71,35 +65,6 @@ export const SampleFormWithValidation: React.FC = () => {
 		defaultValues: {
 			range: 30,
 			number: 5,
-		},
-	});
-
-	const err = (key: keyof z.infer<typeof formSchema>) => {
-		const fieldError = errors[key];
-
-		if (!fieldError || typeof fieldError !== 'object' || !('message' in fieldError)) {
-			return undefined;
-		}
-
-		return {
-			_description: fieldError.message as string,
-			_type: 'error' as const,
-		};
-	};
-
-	const isTouched = (key: keyof z.infer<typeof formSchema>) => {
-		return !!touchedFields[key];
-	};
-
-	const bind = <K extends keyof z.infer<typeof formSchema>>(key: K) => ({
-		id: `field-${key as string}`,
-		_name: key,
-		_value: watch(key) as z.infer<typeof formSchema>[K],
-		_touched: isTouched(key),
-		_msg: err(key),
-		_on: {
-			onInput: (_: Event, v: unknown) => setValue(key, v as any, { shouldTouch: true, shouldValidate: true }),
-			onBlur: () => trigger(key),
 		},
 	});
 
@@ -147,40 +112,43 @@ export const SampleFormWithValidation: React.FC = () => {
 			)}
 
 			<form onSubmit={handleSubmit(dummyClickEventHandler)} noValidate className="grid gap-4 mt-6">
-				<KolInputDate _label="Date" {...bind('date')} />
-				<KolInputText _label="Text (≥ 10 chars)" {...bind('text')} />
-				<KolInputEmail _label="Email" {...bind('email')} />
-				<KolInputPassword _label="Password" {...bind('password')} />
-				<KolInputRange _label="Range (≥ 30)" _min={0} _max={100} {...bind('range')} />
-				<KolInputNumber _label="Number (1 – 10)" {...bind('number')} />
-				<KolInputCheckbox _label="Accept terms" {...bind('checkbox')} />
-				<KolInputRadio
+				<KolInputDateController control={control as any} name="date" _label="Date" />
+				<KolInputTextController control={control as any} name="text" _label="Text (≥ 10 chars)" />
+				<KolInputEmailController control={control as any} name="email" _label="Email" />
+				<KolInputPasswordController control={control as any} name="password" _label="Password" />
+				<KolInputRangeController control={control as any} name="range" _label="Range (≥ 30)" _min={0} _max={100} />
+				<KolInputNumberController control={control as any} name="number" _label="Number (1 – 10)" />
+				<KolInputCheckboxController control={control as any} name="checkbox" _label="Accept terms" />
+				<KolInputRadioController
+					control={control as any}
+					name="radio"
 					_label="Gender"
 					_options={[
 						{ label: 'Female', value: 'f' },
 						{ label: 'Male', value: 'm' },
 					]}
-					{...bind('radio')}
 				/>
-				<KolInputColor _label="Favorite Color" {...bind('color')} />
-				<KolSelect
+				<KolInputColorController control={control as any} name="color" _label="Favorite Color" />
+				<KolSelectController
+					control={control as any}
+					name="select"
 					_label="Select"
 					_options={[
 						{ label: 'Option A', value: 'A' },
 						{ label: 'Option B', value: 'B' },
 					]}
-					{...bind('select')}
 				/>
-				<KolSingleSelect
+				<KolSingleSelectController
+					control={control as any}
+					name="singleSelect"
 					_label="Single Select"
 					_options={[
 						{ label: 'Option A', value: 'A' },
 						{ label: 'Option B', value: 'B' },
 					]}
-					{...bind('singleSelect')}
 				/>
-				<KolCombobox _label="Country" _suggestions={COUNTRY_SUGGESTIONS} {...bind('combobox')} />
-				<KolTextarea _label="Message" _rows={4} {...bind('textarea')} />
+				<KolComboboxController control={control as any} name="combobox" _label="Country" _suggestions={COUNTRY_SUGGESTIONS} />
+				<KolTextareaController control={control as any} name="textarea" _label="Message" _rows={4} />
 
 				<div className="flex gap-4 mt-4">
 					<KolButton _label="Submit" _type="submit" _variant="primary" />
