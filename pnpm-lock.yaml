@@ -283,11 +283,11 @@ importers:
         specifier: workspace:*
         version: link:../react-v19
       '@types/react':
-        specifier: 18.3.27
-        version: 18.3.27
+        specifier: 19.2.7
+        version: 19.2.7
       '@types/react-dom':
-        specifier: 18.3.7
-        version: 18.3.7(@types/react@18.3.27)
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.7)
       '@typescript-eslint/eslint-plugin':
         specifier: 7.18.0
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
