@@ -25,6 +25,7 @@ interface StructuredSearchResultEntry {
 }
 
 interface StructuredSearchResult {
+	[key: string]: unknown;
 	query: string;
 	totalResults: number;
 	results: StructuredSearchResultEntry[];
@@ -56,7 +57,7 @@ const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOG
 /**
  * Log a message if logging is enabled
  */
-function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data?: any): void {
+function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data?: unknown): void {
 	if (!ENABLE_LOGGING) return;
 
 	const timestamp = new Date().toISOString();
@@ -96,14 +97,14 @@ function configureServer(server: McpServer): McpServer {
 			inputSchema: {
 				query: z.string().optional().default(''),
 				kind: z.enum(KIND_OPTIONS).optional(),
-				limit: z.number().optional() as any,
+				limit: z.number().optional(),
 			},
 			outputSchema: {
 				query: z.string(),
 				totalResults: z.number(),
 			},
 		},
-		async ({ query, kind, limit }) => {
+		({ query, kind, limit }: { query?: string; kind?: string; limit?: number }) => {
 			log('tool', 'search called', { query, kind, limit });
 
 			const queryStr = typeof query === 'string' ? query : '';
@@ -118,7 +119,6 @@ function configureServer(server: McpServer): McpServer {
 			}
 
 			const results = searchEntries(allEntries, queryStr, searchOptions);
-
 			log('tool', 'search completed', {
 				query: queryStr,
 				resultCount: results.length,
@@ -179,7 +179,7 @@ function configureServer(server: McpServer): McpServer {
 				name: z.string(),
 			},
 		},
-		async ({ id }) => {
+		({ id }) => {
 			log('tool', 'fetch called', { id });
 
 			const idStr = String(id ?? '');
@@ -228,7 +228,7 @@ function configureServer(server: McpServer): McpServer {
 			title: 'KoliBri MCP Server Info',
 			description: 'Get information about the KoliBri MCP Server and available samples',
 		},
-		async (uri) => {
+		(uri) => {
 			log('resource', 'info accessed', { uri: uri.href });
 
 			const metadata = getSampleIndexMetadata();
@@ -271,7 +271,7 @@ ${PACKAGE_DESCRIPTION ?? ''}
 			title: 'KoliBri Best Practices',
 			description: 'Essential guidelines for working with KoliBri Web Components',
 		},
-		async (uri) => {
+		(uri) => {
 			log('resource', 'best-practices accessed', { uri: uri.href });
 
 			const practicesText = `# KoliBri Web Components - Best Practices
@@ -332,7 +332,7 @@ if (
 		});
 
 		res.on('close', () => {
-			transport.close();
+			void transport.close();
 		});
 
 		await server.connect(transport);
@@ -340,7 +340,7 @@ if (
 	});
 
 	const port = parseInt(process.env.PORT || '3000');
-	app
+	void app
 		.listen(port, () => {
 			console.log(`KoliBri MCP Server v${PACKAGE_VERSION} running on http://localhost:${port}/mcp`);
 			const metadata = getSampleIndexMetadata();

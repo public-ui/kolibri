@@ -13,8 +13,8 @@
 		"noImplicitAny": false,
 		"types": ["node"]
 	},
-	"include": ["src/**/*", "api/**/*"],
-	"exclude": ["node_modules", "dist", "src/_old"],
+	"include": ["api/**/*", "src/**/*", "test/**/*"],
+	"exclude": ["dist", "node_modules"],
 	"ts-node": {
 		"esm": true,
 		"experimentalSpecifierResolution": "node"

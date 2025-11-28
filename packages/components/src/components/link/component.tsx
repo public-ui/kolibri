@@ -72,12 +72,17 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	private anchorRef?: HTMLAnchorElement;
+	private tooltipRef?: HTMLKolTooltipWcElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.anchorRef = ref;
+	};
+
+	private readonly hideTooltip = () => {
+		void this.tooltipRef?.hideTooltip();
 	};
 
 	/**
@@ -90,6 +95,10 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	private readonly onClick = (event: Event) => {
+		if (this.state._hideLabel) {
+			this.hideTooltip();
+		}
+
 		if (this.state._disabled === true) {
 			event.preventDefault();
 		} else {
@@ -204,6 +213,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						 */
 						aria-hidden="true"
 						class="kol-link__tooltip"
+						ref={(ref) => (this.tooltipRef = ref)}
 						hidden={hasExpertSlot}
 						_badgeText={this.state._accessKey || this.state._shortKey}
 						_align={this.state._tooltipAlign}
