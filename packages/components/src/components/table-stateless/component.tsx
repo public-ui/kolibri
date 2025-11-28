@@ -41,7 +41,7 @@ import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
 import { validateMinWidth } from '../../schema/props/min-width';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
-import { validateTableSettings } from '../../schema/props/table-settings';
+import { validateTableSettings as validateTableSettingsProp } from '../../schema/props/table-settings';
 import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -189,7 +189,28 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	@Watch('_tableSettings')
 	public validateTableSettings(value?: TableSettingsPropType) {
-		validateTableSettings(this, value);
+		validateTableSettingsProp(this, this.normalizeTableSettings(value));
+	}
+
+	private normalizeTableSettings(value?: TableSettingsPropType): TableSettingsPropType | undefined {
+		if (!value || typeof value !== 'object') {
+			return value;
+		}
+
+		const columns = Array.isArray(value.columns) ? value.columns : [];
+
+		return {
+			...value,
+			columns: columns.map(({ hidable, key, label, resizable, sortable, visible, width }) => ({
+				hidable: hidable !== false,
+				key: key ?? nonce(),
+				label,
+				resizable: resizable !== false,
+				sortable: sortable !== false,
+				visible: visible !== false,
+				width,
+			})),
+		};
 	}
 
 	@Listen('keydown')
@@ -531,19 +552,27 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private getColumnPositionMap(): Map<string, number> {
 		const keyToPosition = new Map<string, number>();
-		this.state._tableSettings?.columns.forEach((setting) => {
-			keyToPosition.set(setting.key, setting.position);
+		this.state._tableSettings?.columns.forEach((setting, index) => {
+			keyToPosition.set(setting.key, index);
 		});
 		return keyToPosition;
 	}
 
 	private sortByColumnPosition<T extends { key?: string }>(columns: T[]): T[] {
 		const keyToPosition = this.getColumnPositionMap();
-		return [...columns].sort((a, b) => {
-			const posA = keyToPosition.get(a.key ?? '') ?? Number.MAX_SAFE_INTEGER;
-			const posB = keyToPosition.get(b.key ?? '') ?? Number.MAX_SAFE_INTEGER;
-			return posA - posB;
-		});
+		return columns
+			.map((column, index) => ({ column, index }))
+			.sort((a, b) => {
+				const posA = keyToPosition.get(a.column.key ?? '') ?? Number.MAX_SAFE_INTEGER;
+				const posB = keyToPosition.get(b.column.key ?? '') ?? Number.MAX_SAFE_INTEGER;
+
+				if (posA !== posB) {
+					return posA - posB;
+				}
+
+				return a.index - b.index;
+			})
+			.map(({ column }) => column);
 	}
 
 	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
@@ -682,11 +711,12 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		this.state._tableSettings.columns = primaryHeaders
 			.filter((header) => header.key) // only headers with a key are supported
-			.map((header, index) => ({
+			.map((header) => ({
 				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
+				sortable: header.sortable !== false,
+				resizable: header.resizable !== false,
 				key: header.key ?? nonce(),
 				label: header.label,
-				position: index,
 				visible: true,
 			}));
 	}
@@ -1085,10 +1115,14 @@ export class KolTableStateless implements TableStatelessAPI {
 			return '';
 		}
 
+		const sortableSetting = columnSettings?.sortable !== false;
+		const hasSortDirection = typeof cell.sortDirection === 'string';
+		const canSort = sortableSetting && hasSortDirection;
+
 		let ariaSort: AriaSort = 'none';
 		let sortButtonIcon = 'codicon codicon-fold';
 
-		if (cell.sortDirection) {
+		if (canSort && cell.sortDirection) {
 			switch (cell.sortDirection) {
 				case 'ASC':
 					sortButtonIcon = 'codicon codicon-chevron-up';
@@ -1127,9 +1161,9 @@ export class KolTableStateless implements TableStatelessAPI {
 					...stickyStyle,
 				}}
 				aria-sort={ariaSort}
-				data-sort={`sort-${cell.sortDirection}`}
+				data-sort={canSort && cell.sortDirection ? `sort-${cell.sortDirection}` : undefined}
 			>
-				{cell.sortDirection ? (
+				{canSort && cell.sortDirection ? (
 					<KolButtonWcTag
 						class="kol-table__sort-button"
 						exportparts="icon"
