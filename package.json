@@ -18,7 +18,8 @@
 	},
 	"engines": {
 		"pnpm": "^10"
-	},"pnpm": {
+	},
+	"pnpm": {
 		"overrides": {
 			"axios": "^1.12.0",
 			"body-parser": ">=2.2.1",
@@ -61,6 +62,8 @@
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
 		"test": "pnpm -r test",
+		"test:e2e": "pnpm -r test:e2e",
+		"test:unit": "pnpm -r test:unit",
 		"test:unit:update": "pnpm -r test:unit:update",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
