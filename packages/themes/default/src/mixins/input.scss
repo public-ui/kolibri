@@ -49,9 +49,7 @@
 
 		&:has(.kol-input--readonly) {
 			border-color: var(--color-mute-variant);
-			border-radius: 0 0 0 var(--border-radius);
-			border-right-width: 0;
-			border-top-width: 0;
+			border-width: 1px;
 
 			&:hover {
 				border-color: var(--color-mute-variant);
