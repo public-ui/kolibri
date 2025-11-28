@@ -85,8 +85,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				 */
 				this.refPopover.style.visibility = 'hidden';
 			}
-
-			void this.refButton?.hideTooltip();
 		}
 	}
 
