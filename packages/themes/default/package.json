@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "3.0.8-rc.2",
+	"version": "3.0.8-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -73,7 +73,7 @@
 		"nodemon": "3.1.11",
 		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.6",
-		"prettier": "3.7.1",
+		"prettier": "3.7.3",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rollup": "4.53.3",
 		"rollup-plugin-postcss": "4.0.2",
