@@ -84,6 +84,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 				sortDirection: 'ASC',
 				textAlign: 'right',
+				width: '100px',
 			},
 			{
 				key: 'tuesday',
@@ -105,6 +106,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					return 0;
 				},
 				sortDirection: 'DESC',
+				width: '100px',
 			},
 			{
 				key: 'wednesday',
@@ -116,6 +118,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#006" _label={cell.label}></KolBadge>);
 				},
+				width: '110px',
 			},
 			{
 				key: 'thursday',
@@ -127,6 +130,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#600" _label={cell.label}></KolBadge>);
 				},
+				width: '100px',
 			},
 			{
 				key: 'friday',
@@ -138,6 +142,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#303" _label={cell.label}></KolBadge>);
 				},
+				width: '100px',
 			},
 			{
 				key: 'saturday',
@@ -149,6 +154,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#330" _label={cell.label}></KolBadge>);
 				},
+				width: '100px',
 			},
 			{
 				key: 'sunday',
@@ -160,6 +166,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#033" _label={cell.label}></KolBadge>);
 				},
+				width: '100px',
 			},
 		],
 	],
@@ -470,8 +477,8 @@ export const HandoutBasic: FC = () => {
 					</KolForm>
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
-					<div slot="" className="grid gap-2 p-2">
-						<KolTableStateful _label="Table" _minWidth="auto" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
+					<div slot="" className="grid gap-2 p-2 flex">
+						<KolTableStateful _label="Table" _minWidth="800px" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
 					</div>
 				</KolCard>
 			</div>

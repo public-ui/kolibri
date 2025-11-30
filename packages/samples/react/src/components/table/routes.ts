@@ -9,6 +9,7 @@ import { TableNonHidableColumns } from './non-hidable-columns';
 import { PaginationPosition } from './pagination-position';
 import { PredefinedSettings } from './predefined-settings';
 import { TableRenderCell } from './render-cell';
+import { TableSettingsColumnOptions } from './settings-column-options';
 import { TableSortData } from './sort-data';
 import { TableStatefulWithSelection } from './stateful-with-selection';
 import { TableStatefulWithSingleSelection } from './stateful-with-single-selection';
@@ -31,6 +32,7 @@ export const TABLE_ROUTES: Routes = {
 		'pagination-position': PaginationPosition,
 		'predefined-settings': PredefinedSettings,
 		'render-cell': TableRenderCell,
+		'settings-column-options': TableSettingsColumnOptions,
 		'sort-data': TableSortData,
 		'direction-aware-sort': TableDirectionAwareSort,
 		'stateful-with-selection': TableStatefulWithSelection,

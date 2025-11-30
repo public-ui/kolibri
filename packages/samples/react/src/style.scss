@@ -63,24 +63,18 @@ hr {
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
-		height: 100%;
-		min-height: 100vh;
+		height: 100vh;
 		grid-template-columns: rem(360) calc(100% - rem(360));
 	}
 
 	.app-sidebar {
-		position: relative;
-		z-index: 1;
+		background-color: white;
+		max-height: calc(100vh - 32px);
 		border-right: 1px solid gray;
 
 		& .scrollable-container-wrapper {
 			display: flex;
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			width: rem(330);
-			margin: rem(16);
+			max-height: calc(100vh - 32px);
 			flex-direction: column;
 
 			& .scrollable-container {
@@ -88,6 +82,11 @@ hr {
 				flex: 1 auto;
 			}
 		}
+	}
+
+	main {
+		max-height: calc(100vh);
+		overflow: auto;
 	}
 }
 

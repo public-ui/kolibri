@@ -1,9 +1,8 @@
 {
 	"packages": [
-		"packages/adapters/angular/v17",
-		"packages/adapters/angular/v18",
 		"packages/adapters/angular/v19",
 		"packages/adapters/angular/v20",
+		"packages/adapters/angular/v21",
 		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",
@@ -23,5 +22,5 @@
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "4.0.0-alpha.5"
+	"version": "4.0.0-alpha.6"
 }
