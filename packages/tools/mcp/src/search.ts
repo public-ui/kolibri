@@ -24,7 +24,7 @@ export interface SearchOptions {
 	kind?: EntryKind;
 }
 
-export interface SearchResult {
+interface SearchResult {
 	item: SampleEntry;
 	score: number;
 }

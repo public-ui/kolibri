@@ -1,11 +1,16 @@
-import { Field, useFormikContext } from 'formik';
+import { KolSelectController } from '@public-ui/react-hook-form-adapter';
 import React, { useRef, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react-v19';
+import { KolButton, KolForm, KolHeading } from '@public-ui/react-v19';
 
-import type { FieldProps } from 'formik';
-import type { FormValues } from './AppointmentForm';
-import { createErrorList, focusErrorList } from './formUtils';
+import type { FormFieldName, FormValues } from './AppointmentForm';
+import { createErrorList, focusErrorList, touchFields } from './formUtils';
+
+type Props = {
+	fieldsToValidate: FormFieldName[];
+	onComplete: () => void;
+};
 
 const LOCATION_OPTIONS = [
 	{
@@ -30,61 +35,56 @@ const LOCATION_OPTIONS = [
 	},
 ];
 
-export function DistrictForm() {
-	const form = useFormikContext<FormValues>();
-	const errorList = createErrorList(form.errors);
+export function DistrictForm({ fieldsToValidate, onComplete }: Props) {
+	const {
+		clearErrors,
+		control,
+		formState: { errors },
+		getValues,
+		setValue,
+		trigger,
+	} = useFormContext<FormValues>();
+	const errorList = createErrorList<FormValues>(errors, fieldsToValidate);
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
-	const formikRef = useRef<HTMLKolFormElement>(null);
+	const formRef = useRef<HTMLKolFormElement>(null);
+
+	const handleSubmit = async () => {
+		setSectionSubmitted(true);
+		touchFields<FormValues>(fieldsToValidate, getValues, setValue);
+		const isValid = await trigger(fieldsToValidate, { shouldFocus: true });
+		if (isValid) {
+			setSectionSubmitted(false);
+			onComplete();
+		} else {
+			focusErrorList(formRef);
+		}
+	};
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Select a district"></KolHeading>
 			<KolForm
-				ref={formikRef}
+				ref={formRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
-						setSectionSubmitted(true);
-						form
-							.validateForm()
-							.then((res) => {
-								if (res && Object.keys(res).length > 0) throw Error();
-								void form.submitForm();
-							})
-							.catch(() => {
-								focusErrorList(formikRef);
-							});
+						void handleSubmit();
 					},
 				}}
 			>
-				<Field name="district">
-					{({ field }: FieldProps<FormValues['district']>) => (
-						<KolSelect
-							id="field-district"
-							_label="District"
-							_options={[{ label: 'Please select…', value: '' }, ...LOCATION_OPTIONS]}
-							_value={field.value}
-							_msg={{
-								_type: 'error',
-								_description: form.errors.district || '',
-							}}
-							_touched={form.touched.district}
-							_required
-							onBlur={() => {
-								void form.setFieldTouched('district', true);
-							}}
-							_on={{
-								onChange: (event, values: unknown) => {
-									setSectionSubmitted(false);
-									// Select und Radio setzen den Wert immer initial.
-									if (event.target) {
-										const [value] = values as [FormValues['district']];
-										void form.setFieldValue('district', value, true);
-									}
-								},
-							}}
-						/>
-					)}
-				</Field>
+				<KolSelectController
+					control={control}
+					name="district"
+					id="field-district"
+					_label="District"
+					_options={[{ label: 'Please select…', value: '' }, ...LOCATION_OPTIONS]}
+					_required
+					_on={{
+						onChange: () => {
+							setSectionSubmitted(false);
+							clearErrors(fieldsToValidate);
+						},
+					}}
+				/>
 
 				<KolButton _label="Next" _type="submit" className="mt-2" />
 			</KolForm>

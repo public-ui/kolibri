@@ -106,7 +106,7 @@ The core Stencil web component library that generates all framework adapters.
 - `react/` – React 18+ integration
 - `react-standalone/` – Standalone React build
 - `react-v19/` – React 19 integration
-- `angular/v17/`, `angular/v18/`, `angular/v19/`, `angular/v20/` – Angular version-specific adapters
+- `angular/v19/`, `angular/v20/`, `angular/v21/` – Angular version-specific adapters
 - `vue/` – Vue.js integration
 - `solid/` – SolidJS integration
 - `svelte/` – Svelte integration
@@ -312,8 +312,8 @@ pnpm dev
 pnpm --filter @public-ui/components build
 
 # Build specific adapter
+pnpm --filter @public-ui/angular-v21 build
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
 pnpm --filter @public-ui/svelte build
 pnpm --filter @public-ui/vue build
 
@@ -324,7 +324,7 @@ pnpm --filter "@public-ui/*" build
 **Framework-Specific Notes:**
 
 - **React:** Multiple versions supported (React 18, 19, standalone)
-- **Angular:** Version-specific packages (v17, v18, v19, v20)
+- **Angular:** Version-specific packages (v19, v20, v21)
 - **Vue:** Single Vue.js integration
 - **Solid:** SolidJS framework integration
 - **Svelte:** Svelte integration powered by generated proxies
@@ -418,7 +418,7 @@ pnpm --filter @public-ui/theme-ecl build
 
 # Framework adapters (must build components first)
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 pnpm --filter @public-ui/vue build
 pnpm --filter @public-ui/solid build
 pnpm --filter @public-ui/svelte build
@@ -560,7 +560,7 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
 
 ## Performance Notes
 
-- **Build parallelization:** Most pnpm commands support `--parallel` flag
+- **No parallelization:** We prefer readable sequential builds over complex parallel setups
 - **Incremental builds:** Individual packages can be built separately
 - **Development mode:** Use `pnpm dev` in specific packages for watch mode
 - **Asset copying:** Required for themes and icons before development
@@ -633,7 +633,7 @@ cd packages/samples/angular && pnpm start
 
 # Direct adapter testing
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 ```
 
 **4. Migration Testing:**
@@ -665,7 +665,7 @@ pnpm --filter @public-ui/theme-default build
 
 # Framework adapters (components must be built first)
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v18 build
+pnpm --filter @public-ui/angular-v20 build
 
 # Test specific package
 pnpm --filter @public-ui/components test:unit

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate",
-	"version": "4.0.0-alpha.5",
+	"version": "4.0.0-alpha.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -45,14 +45,22 @@
 		"hydrate"
 	],
 	"scripts": {
-		"build": "rimraf dist/package.json"
+		"build": "rimraf dist/package.json",
+		"build:deps": "pnpm --filter @public-ui/hydrate... build",
+		"format": "prettier --check '**/*.{js,json,md}'",
+		"test": "pnpm run test:unit",
+		"test:unit": "cross-env NODE_ENV=test mocha",
+		"test:unit:update": "cross-env NODE_ENV=test UPDATE=1 mocha"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"rimraf": "6.1.0"
-	},
-	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
+		"chai": "4.5.0",
+		"cross-env": "10.1.0",
+		"mocha": "11.7.4",
+		"mocha-snapshots": "4.2.0",
+		"prettier": "3.7.3",
+		"prettier-plugin-organize-imports": "4.3.0",
+		"rimraf": "6.1.2"
 	},
 	"sideEffects": false,
 	"type": "commonjs",

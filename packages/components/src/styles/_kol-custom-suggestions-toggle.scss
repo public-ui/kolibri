@@ -4,9 +4,11 @@
 		width: var(--a11y-min-size);
 		height: var(--a11y-min-size);
 		align-items: center;
+		justify-content: center;
+		cursor: default;
 
-		&:not(:disabled) {
-			cursor: pointer;
+		&.kol-custom-suggestions-toggle--disabled {
+			cursor: not-allowed;
 		}
 	}
 }
