@@ -3,8 +3,8 @@ name: KoliBri – Die barrierefreie WebComponent-Bibliothek
 genericName: Accessible WebComponent Library
 url: https://github.com/public-ui/kolibri
 landingURL: https://github.com/public-ui
-releaseDate: '2025-11-28'
-softwareVersion: 3.0.8-rc.2
+releaseDate: '2025-11-30'
+softwareVersion: 3.0.8-rc.3
 logo: kolibri.logo.png
 developmentStatus: stable
 softwareType: library
