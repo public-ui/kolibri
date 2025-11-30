@@ -56,7 +56,7 @@ This means that components, features or functionalities may be removed and techn
 ```diff
   - import { register } from '@public-ui/core';
   + import { register } from '@public-ui/components';
-  import { defineCustomElements } from '@public-ui/components/dist/loader';
+  import { defineCustomElements } from '@public-ui/components/loader';
   import { MyTheme } from '...';
   await register(MyTheme, defineCustomElements);
 ```

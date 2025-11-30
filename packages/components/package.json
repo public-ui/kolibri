@@ -17,6 +17,19 @@
 	},
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.js",
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js"
+		},
+		"./loader": {
+			"types": "./loader/index.d.ts",
+			"import": "./loader/index.mjs",
+			"require": "./dist/loader/index.cjs.js"
+		},
+		"./package.json": "./package.json"
+	},
 	"customElements": "custom-elements.json",
 	"es2015": "dist/esm/index.mjs",
 	"es2017": "dist/esm/index.mjs",
@@ -57,7 +70,7 @@
 		"build": "npm run build:light",
 		"build:deps": "pnpm --filter @public-ui/components^... build",
 		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && npm run format -- -w",
-		"clear": "rimraf -g dist doc loader www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
+		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
@@ -149,6 +162,7 @@
 		"doc",
 		"custom-elements.json",
 		"index.scss",
+		"loader",
 		"postinstall.js",
 		"vscode-custom-data.json"
 	]
