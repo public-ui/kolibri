@@ -12,9 +12,9 @@ const DATA = [
 const HEADERS: TableHeaderCellsPropType = {
 	horizontal: [
 		[
-			{ key: 'id', label: 'ID' },
-			{ key: 'name', label: 'Name' },
-			{ key: 'age', label: 'Age' },
+			{ key: 'id', label: 'ID', minWidth: 'auto' },
+			{ key: 'name', label: 'Name', minWidth: 'auto' },
+			{ key: 'age', label: 'Age', minWidth: 'auto' },
 		],
 	],
 };

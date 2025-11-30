@@ -13,8 +13,8 @@ import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-u
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Order', key: 'order' },
-			{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+			{ label: 'Order', key: 'order', minWidth: 'auto' },
+			{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date), minWidth: 'auto' },
 		],
 	],
 };

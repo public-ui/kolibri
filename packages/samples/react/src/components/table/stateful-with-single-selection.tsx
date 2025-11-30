@@ -75,9 +75,9 @@ export const TableStatefulWithSingleSelection: FC = () => {
 					_headers={{
 						horizontal: [
 							[
-								{ key: 'id', label: '#ID', textAlign: 'left' },
-								{ key: 'name', label: 'Name', textAlign: 'left' },
-								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+								{ key: 'id', label: '#ID', textAlign: 'left', minWidth: 'auto' },
+								{ key: 'name', label: 'Name', textAlign: 'left', minWidth: 'auto' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton, minWidth: 'auto' },
 							],
 						],
 					}}

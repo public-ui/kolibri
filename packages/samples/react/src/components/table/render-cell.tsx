@@ -51,6 +51,7 @@ const HEADERS: KoliBriTableHeaders = {
 				key: 'order',
 				textAlign: 'center',
 				width: '10em',
+				minWidth: '10em',
 
 				/* Example 1: Use render return value to format data */
 				render: (_el, cell) => `Index: ${cell.label}`,
@@ -60,6 +61,7 @@ const HEADERS: KoliBriTableHeaders = {
 				key: 'shipped',
 				textAlign: 'center',
 				width: '10em',
+				minWidth: '10em',
 
 				/* Example 2: Simple render function using textContent */
 				render: (el, cell) => {
@@ -75,6 +77,7 @@ const HEADERS: KoliBriTableHeaders = {
 				key: 'date',
 				width: '20em',
 				textAlign: 'center',
+				minWidth: '20em',
 
 				/* Example 3: Render function using innerHTML. ⚠️Make sure to sanitize data to avoid XSS. */
 				render: (el, cell) => {
@@ -85,6 +88,7 @@ const HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Action (react)',
 				width: '20em',
+				minWidth: '20em',
 
 				/* Example 4: Render function using React */
 				render: (el) => {

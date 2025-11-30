@@ -18,18 +18,18 @@ export const TableStateless: FC = () => (
 				_headerCells={{
 					horizontal: [
 						[
-							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },
-							{ key: 'center', label: 'center', textAlign: 'center', sortDirection: 'DESC' },
-							{ key: 'right', label: 'right', textAlign: 'right', sortDirection: 'NOS' },
-							{ key: 'nosort', label: 'no sort option' },
+							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC', minWidth: 'auto' },
+							{ key: 'center', label: 'center', textAlign: 'center', sortDirection: 'DESC', minWidth: 'auto' },
+							{ key: 'right', label: 'right', textAlign: 'right', sortDirection: 'NOS', minWidth: 'auto' },
+							{ key: 'nosort', label: 'no sort option', minWidth: 'auto' },
 						],
 					],
 					vertical: [
 						[
-							{ key: 'vertical-left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },
-							{ key: 'vertical-center', label: 'center', textAlign: 'center', sortDirection: 'DESC' },
-							{ key: 'vertical-right', label: 'right', textAlign: 'right', sortDirection: 'NOS' },
-							{ key: 'vertical-nosort', label: 'no sort option' },
+							{ key: 'vertical-left', label: 'left', textAlign: 'left', sortDirection: 'ASC', minWidth: 'auto' },
+							{ key: 'vertical-center', label: 'center', textAlign: 'center', sortDirection: 'DESC', minWidth: 'auto' },
+							{ key: 'vertical-right', label: 'right', textAlign: 'right', sortDirection: 'NOS', minWidth: 'auto' },
+							{ key: 'vertical-nosort', label: 'no sort option', minWidth: 'auto' },
 						],
 					],
 				}}

@@ -43,6 +43,8 @@ import type { ColumnSettings } from '../../schema/types';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
+const EMPTY_CELL_MIN_WIDTH = 'auto';
+
 /**
  * @internal
  */
@@ -456,7 +458,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			const emptyCell = {
 				colSpan: colspan,
 				label: this.translateNoEntries,
-				minWidth: 'auto',
+				minWidth: EMPTY_CELL_MIN_WIDTH,
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
@@ -491,10 +493,14 @@ export class KolTableStateless implements TableStatelessAPI {
 			.map((header, index) => ({
 				key: header.key ?? nonce(),
 				label: header.label,
-				minWidth: header.minWidth ?? header.width ?? 'auto',
+				minWidth: this.getHeaderMinWidth(header),
 				position: index,
 				visible: true,
 			}));
+	}
+
+	private getHeaderMinWidth(header: KoliBriTableHeaderCell): string {
+		return header.minWidth ?? header.width ?? EMPTY_CELL_MIN_WIDTH;
 	}
 
 	public componentWillLoad(): void {
@@ -645,7 +651,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
-			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
+			return this.renderHeadingCell(cell as KoliBriTableHeaderCell, rowIndex, colIndex, isVertical);
 		} else {
 			return (
 				<td
@@ -708,17 +714,22 @@ export class KolTableStateless implements TableStatelessAPI {
 		const visibleColumns = this.state._tableSettings?.columns.filter((col) => col.visible) ?? [];
 
 		if (visibleColumns.length === 0) {
-			return this._minWidth || 'auto';
+			return this._minWidth || EMPTY_CELL_MIN_WIDTH;
 		}
 
-		const nonAutoWidths = visibleColumns.map((col) => col.minWidth).filter((width) => width !== 'auto');
+		const nonAutoWidths = visibleColumns.map((col) => col.minWidth).filter((width) => width !== EMPTY_CELL_MIN_WIDTH);
 
 		if (nonAutoWidths.length === 0) {
-			return this._minWidth || 'auto';
+			return this._minWidth || EMPTY_CELL_MIN_WIDTH;
 		}
 
 		if (nonAutoWidths.length === 1) {
 			return nonAutoWidths[0];
+		}
+
+		const units = nonAutoWidths.map((width) => width.match(/[a-z%]+$/)?.[0] ?? '');
+		if (new Set(units).size > 1) {
+			return this._minWidth || EMPTY_CELL_MIN_WIDTH;
 		}
 
 		return `calc(${nonAutoWidths.join(' + ')})`;

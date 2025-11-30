@@ -19,10 +19,11 @@ export type KoliBriTableCell = {
 	width?: string;
 };
 
-export type KoliBriTableHeaderCell = KoliBriTableCell & {
-	key?: string;
-	sortDirection?: KoliBriSortDirection;
-};
+export type KoliBriTableHeaderCell = KoliBriTableCell &
+	Required<Pick<KoliBriTableCell, 'minWidth'>> & {
+		key?: string;
+		sortDirection?: KoliBriSortDirection;
+	};
 
 export type KoliBriTableSelection = {
 	label: (row: KoliBriTableDataType) => string;

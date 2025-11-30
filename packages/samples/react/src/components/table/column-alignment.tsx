@@ -22,9 +22,9 @@ export const TableColumnAlignment: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left' },
-							{ label: 'center', key: 'center', textAlign: 'center' },
-							{ label: 'right', key: 'right', textAlign: 'right' },
+							{ label: 'left', key: 'left', textAlign: 'left', minWidth: 'auto' },
+							{ label: 'center', key: 'center', textAlign: 'center', minWidth: 'auto' },
+							{ label: 'right', key: 'right', textAlign: 'right', minWidth: 'auto' },
 						],
 					],
 				}}
@@ -40,9 +40,9 @@ export const TableColumnAlignment: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
-							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter },
-							{ label: 'right', key: 'right', textAlign: 'right', compareFn: genericNonSorter },
+							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter, minWidth: 'auto' },
+							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter, minWidth: 'auto' },
+							{ label: 'right', key: 'right', textAlign: 'right', compareFn: genericNonSorter, minWidth: 'auto' },
 						],
 					],
 				}}
@@ -58,9 +58,9 @@ export const TableColumnAlignment: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
-							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter },
-							{ label: 'right', key: 'right', textAlign: 'right' },
+							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter, minWidth: 'auto' },
+							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter, minWidth: 'auto' },
+							{ label: 'right', key: 'right', textAlign: 'right', minWidth: 'auto' },
 						],
 					],
 				}}
@@ -76,12 +76,12 @@ export const TableColumnAlignment: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left' },
-							{ label: 'center', key: 'center', textAlign: 'center' },
-							{ label: 'right', key: 'right', textAlign: 'right' },
+							{ label: 'left', key: 'left', textAlign: 'left', minWidth: 'auto' },
+							{ label: 'center', key: 'center', textAlign: 'center', minWidth: 'auto' },
+							{ label: 'right', key: 'right', textAlign: 'right', minWidth: 'auto' },
 						],
 					],
-					vertical: [[{ label: 'Vertical' }]],
+					vertical: [[{ label: 'Vertical', minWidth: 'auto' }]],
 				}}
 				_data={DATA}
 				className="block"

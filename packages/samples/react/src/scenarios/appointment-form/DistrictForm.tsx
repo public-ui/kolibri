@@ -73,10 +73,11 @@ export function DistrictForm() {
 								void form.setFieldTouched('district', true);
 							}}
 							_on={{
-								onChange: (event, values: unknown) => {
+								onChange: (event: Event, values: unknown) => {
 									setSectionSubmitted(false);
 									// Select und Radio setzen den Wert immer initial.
-									if (event.target) {
+									const target = event.target as HTMLElement | null;
+									if (target) {
 										const [value] = values as [FormValues['district']];
 										void form.setFieldValue('district', value, true);
 									}

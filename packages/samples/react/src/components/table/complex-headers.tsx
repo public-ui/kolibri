@@ -45,9 +45,11 @@ export const TableComplexHeaders: FC = () => (
 							{
 								label: 'Berlin',
 								rowSpan: 2,
+								minWidth: 'auto',
 							},
 							{
 								label: 'München',
+								minWidth: 'auto',
 							},
 						],
 					],
@@ -57,44 +59,54 @@ export const TableComplexHeaders: FC = () => (
 								label: 'District',
 								rowSpan: 2,
 								key: 'asp',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Workdays',
 								colSpan: 5,
+								minWidth: 'auto',
 							},
 							{
 								label: 'Weekend',
 								colSpan: 2,
+								minWidth: 'auto',
 							},
 						],
 						[
 							{
 								label: 'Monday',
 								key: 'monday',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Tuesday',
 								key: 'tuesday',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Wednesday',
 								key: 'wednesday',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Thursday',
 								key: 'thursday',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Friday',
 								key: 'friday',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Saturday',
 								key: 'saturday',
+								minWidth: 'auto',
 							},
 							{
 								label: 'Sunday',
 								key: 'sunday',
+								minWidth: 'auto',
 							},
 						],
 					],
