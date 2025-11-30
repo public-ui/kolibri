@@ -5,9 +5,13 @@ on:
     branches:
       - 'develop'
       - 'release/*'
+    tags:
+      - latest
+      - v2-latest
+      - v1-latest
 
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
   cancel-in-progress: true
 
 jobs:

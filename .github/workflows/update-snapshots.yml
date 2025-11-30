@@ -10,7 +10,7 @@ on:
         type: boolean
 
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
   cancel-in-progress: true
 
 jobs:
@@ -64,6 +64,9 @@ jobs:
 
       - name: Install
         run: pnpm i --no-frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps firefox
 
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build

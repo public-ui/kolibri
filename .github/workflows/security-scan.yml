@@ -1,0 +1,67 @@
+name: Security Scan
+
+on:
+  pull_request:
+    branches:
+      - 'develop'
+      - 'release/*'
+  push:
+    branches:
+      - 'develop'
+      - 'release/*'
+  workflow_dispatch:
+    inputs:
+      enable_audit:
+        description: 'Run pnpm audit'
+        type: boolean
+        default: true
+      enable_trivy:
+        description: 'Run the Trivy scan'
+        type: boolean
+        default: true
+      enable_clamav:
+        description: 'Run the ClamAV scan'
+        type: boolean
+        default: true
+      install_deps:
+        description: 'Install dependencies'
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('workflow-{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('workflow-{0}-{1}', github.workflow, github.ref) }}
+  cancel-in-progress: true
+
+jobs:
+  targeted-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' ||
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run security scans
+        uses: public-ui/kolibri/.github/actions/security-scan@develop
+        with:
+          enable-audit: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_audit || 'true' }}
+          enable-trivy: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_trivy || 'true' }}
+          enable-clamav: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_clamav || 'true' }}
+          install-deps: ${{ github.event_name == 'workflow_dispatch' && inputs.install_deps || 'false' }}

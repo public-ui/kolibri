@@ -605,7 +605,6 @@ ROUTES.set('select/basic', {
 });
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},

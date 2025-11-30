@@ -34,12 +34,11 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 
 	const rootProps: Partial<JSXBase.HTMLAttributes<HTMLDivElement>> = {
 		class: clsx('kol-alert-wc', 'alert', type, variant, { hasCloser: !!hasCloser }, classNames),
-		role: alert ? 'alert' : undefined,
 		...other,
 	};
 
 	return (
-		<div {...rootProps}>
+		<div {...rootProps} aria-live={alert ? 'assertive' : 'polite'} role={alert ? 'alert' : 'status'}>
 			<div class="heading">
 				<AlertIcon label={label} type={type} />
 				<div class="heading-content">

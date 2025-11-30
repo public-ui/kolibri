@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
   cancel-in-progress: true
 
 jobs:
@@ -27,13 +27,13 @@ jobs:
       - name: Build
         run: pnpm -r build
       - name: Format
-        run: pnpm -r --parallel format
+        run: pnpm -r format
       - name: Lint
-        run: pnpm -r --parallel lint
+        run: pnpm -r lint
       - name: Unit Tests
-        run: pnpm -r --parallel test:unit
+        run: pnpm -r test:unit
       - name: Unused
-        run: pnpm -r --parallel unused
+        run: pnpm -r unused
 
   e2e-tests:
     continue-on-error: true
@@ -45,10 +45,14 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      # Tests in sample app are currently failing and hence disabled.
-      # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
-      - name: E2E Test
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
+      - name: React samples build dependencies
+        run: pnpm --filter @public-ui/sample-react^... build
+      - name: E2E Test react samples
+        run: pnpm --filter @public-ui/sample-react test:e2e
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
@@ -67,6 +71,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps firefox
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
       - name: Visual Tests

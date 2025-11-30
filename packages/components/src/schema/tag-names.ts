@@ -1,7 +1,6 @@
 export enum TagEnum {
 	'abbr',
 	'accordion',
-	'accordion-group', // TODO: github pr link
 	'alert',
 	'avatar',
 	'badge',
@@ -38,8 +37,8 @@ export enum TagEnum {
 	'pagination',
 	'popover-button',
 	'progress',
+	'quote',
 	'select',
-	'separator', // TODO: github pr link
 	'single-select',
 	'skip-nav',
 	'spin',
@@ -51,7 +50,7 @@ export enum TagEnum {
 	'tabs',
 	'textarea',
 	'toast-container',
-	'toolbar', // TODO: github pr link
+	'toolbar',
 	'tooltip',
 	'tree',
 	'tree-item',

@@ -125,13 +125,13 @@ function genArtifactHashes(dir) {
 			if (typeof css === 'string') {
 				css = css
 					.replace(/";$/, '')
-					.replace(/\\"/g, '"')
-					.replace(/\\\\/g, `\\`)
 					.replace(
 						/\\n/g,
 						`
-  `
-					);
+  `,
+					)
+					.replace(/\\"/g, '"')
+					.replace(/\\\\/g, `\\`);
 				sha = genShaAsHashAndApostrophe(css);
 				console.log(css, sha);
 				fs.writeFileSync(fullPath.replace(/.js$/, '.css'), css, 'utf-8');

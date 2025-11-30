@@ -7,6 +7,7 @@ import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { KolSpanWcTag } from '../../core/component-names';
+import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking';
 
 /**
  * @internal
@@ -40,8 +41,13 @@ export class KolTooltipWc implements TooltipAPI {
 	private showTooltip = (): void => {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
+			tooltipOpened();
+			this.tooltipElement.classList.remove('hide');
+			this.tooltipElement.classList.add('show');
 			this.tooltipElement.style.setProperty('display', 'block');
-			getDocument().addEventListener('keyup', this.hideTooltipByEscape);
+			getDocument().addEventListener('keyup', this.hideTooltipByEscape, {
+				once: true,
+			});
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
@@ -54,8 +60,10 @@ export class KolTooltipWc implements TooltipAPI {
 	private hideTooltip = (): void => {
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			hideOverlay(this.tooltipElement);
-			this.tooltipElement.style.setProperty('display', 'none');
-			this.tooltipElement.style.setProperty('visibility', 'hidden');
+			tooltipClosed();
+			this.tooltipElement.classList.remove('show');
+			this.tooltipElement.classList.add('hide');
+
 			if (this.cleanupAutoPositioning) {
 				this.cleanupAutoPositioning();
 				this.cleanupAutoPositioning = undefined;
@@ -70,35 +78,38 @@ export class KolTooltipWc implements TooltipAPI {
 		}
 	};
 
-	private handleMouseEnter() {
+	private handleMouseEnter = (): void => {
 		this.hasMouseIn = true;
 		this.showOrHideTooltip();
-	}
-	private handleMouseleave() {
-		this.hasMouseIn = false;
+	};
+
+	private handleMouseleave = (event: Event): void => {
+		this.hasMouseIn = this.tooltipElement?.contains((event as MouseEvent).relatedTarget as Node) ?? false;
 		this.showOrHideTooltip();
-	}
-	private handleFocusIn() {
+	};
+
+	private handleFocusIn = (): void => {
 		this.hasFocusIn = true;
 		this.showOrHideTooltip();
-	}
-	private handleFocusout() {
+	};
+
+	private handleFocusout = (): void => {
 		this.hasFocusIn = false;
 		this.showOrHideTooltip();
-	}
+	};
 
 	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
-		el.addEventListener('mouseleave', this.handleMouseleave.bind(this));
-		el.addEventListener('focusin', this.handleFocusIn.bind(this));
-		el.addEventListener('focusout', this.handleFocusout.bind(this));
+		el.addEventListener('mouseenter', this.handleMouseEnter);
+		el.addEventListener('mouseleave', this.handleMouseleave);
+		el.addEventListener('focusin', this.handleFocusIn);
+		el.addEventListener('focusout', this.handleFocusout);
 	};
 
 	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
-		el.removeEventListener('mouseleave', this.handleMouseleave.bind(this));
-		el.removeEventListener('focusin', this.handleFocusIn.bind(this));
-		el.removeEventListener('focusout', this.handleFocusout.bind(this));
+		el.removeEventListener('mouseenter', this.handleMouseEnter);
+		el.removeEventListener('mouseleave', this.handleMouseleave);
+		el.removeEventListener('focusin', this.handleFocusIn);
+		el.removeEventListener('focusout', this.handleFocusout);
 	};
 
 	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
@@ -205,12 +216,13 @@ export class KolTooltipWc implements TooltipAPI {
 	}
 
 	private handleEventListeners(): void {
-		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling, true);
+		const nextSibling = this.host?.previousElementSibling ?? null;
+		this.resyncListeners(this.previousSibling, nextSibling as Element, true);
 		this.resyncListeners(this.tooltipElement, this.tooltipElement);
 	}
 
 	public connectedCallback(): void {
-		this.previousSibling = this.host?.previousElementSibling;
+		this.previousSibling = this.host?.previousElementSibling ?? null;
 	}
 
 	public componentDidRender(): void {

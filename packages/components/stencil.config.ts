@@ -183,22 +183,17 @@ if (process.env.NODE_ENV === 'production') {
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v18/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v19/src/components.ts',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v20/src/components.ts',
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v21/src/components.ts',
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',

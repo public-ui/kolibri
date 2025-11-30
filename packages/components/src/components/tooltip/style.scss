@@ -3,25 +3,36 @@
 @layer kol-component {
 	.kol-tooltip-wc {
 		display: contents;
-		contain: layout;
 	}
 
-	.kol-tooltip-wc .tooltip-floating {
-		display: none;
-		position: fixed;
-		/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
-		top: 0;
-		left: 0;
-		/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
-		width: var(--kol-tooltip-width);
-		max-width: 90vw;
-		max-height: 90vh;
+	.kol-tooltip-wc {
+		.tooltip-floating {
+			opacity: 0;
+			display: none;
+			position: fixed;
 
-		visibility: hidden;
-		animation-duration: 0.25s;
-		animation-iteration-count: 1;
-		animation-name: fadeInOpacity;
-		animation-timing-function: ease-in;
+			/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+			top: 0;
+			left: 0;
+			/* Can be used to specify the tooltip-width from the outside. Unset by default. */
+			width: var(--kol-tooltip-width, unset);
+			max-width: 90vw;
+			max-height: 90vh;
+			animation-direction: normal;
+			/* Can be used to specify the animation duration from the outside. 250ms by default. */
+			animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+			animation-fill-mode: forwards;
+			animation-iteration-count: 1;
+			animation-timing-function: ease-in;
+
+			&.hide {
+				animation-name: hideTooltip;
+			}
+
+			&.show {
+				animation-name: showTooltip;
+			}
+		}
 	}
 
 	/* Shared between content and arrow */
@@ -43,7 +54,18 @@
 		z-index: 1000;
 	}
 
-	@keyframes fadeInOpacity {
+	@keyframes hideTooltip {
+		0% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+			display: none;
+		}
+	}
+
+	@keyframes showTooltip {
 		0% {
 			opacity: 0;
 		}

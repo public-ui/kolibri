@@ -6,7 +6,7 @@
 	if _label && _label.length > 0
 		<i aria-label="#{_label}" class="#{_icon}" part="icon" role="img"></i>
 	else
-		<i aria-hidden="true" class="#{_icon}" part="icon" role="img"></i>
+		<i aria-hidden="true" class="#{_icon}" part="icon" role="presentation"></i>
 	if mode == 'csr'
 		</mock:shadow-root>
 	else if mode == 'ssr'

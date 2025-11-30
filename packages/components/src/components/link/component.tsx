@@ -1,3 +1,6 @@
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -45,13 +48,9 @@ import {
 	validateTabIndex,
 	validateTooltipAlign,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { preventDefaultAndStopPropagation } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
-import { preventDefaultAndStopPropagation } from '../../utils/events';
-import { nonce } from '../../utils/dev.utils';
-import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
@@ -66,8 +65,6 @@ import { validateAccessAndShortKey } from '../../schema/validators/access-and-sh
 export class KolLinkWc implements LinkWcAPI, FocusableElement {
 	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
-
-	private readonly internalDescriptionById = nonce();
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.anchorRef = ref;
@@ -131,7 +128,7 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const ariaDescription = this.state._ariaDescription?.trim();
 
 		return (
 			<Host class="kol-link-wc">
@@ -140,9 +137,10 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
-					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
+					aria-description={ariaDescription || undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
+					aria-keyshortcuts={this.state._shortKey}
 					aria-owns={this.state._ariaOwns}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
@@ -192,17 +190,12 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
 				></KolTooltipWcTag>
-				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this.state._ariaDescription}
-					</span>
-				)}
 			</Host>
 		);
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -275,7 +268,7 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 

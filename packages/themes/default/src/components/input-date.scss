@@ -1,1 +1,8 @@
 @use '../@shared/input-core' as *;
+
+@layer kol-theme-component {
+	*::-webkit-calendar-picker-indicator {
+		outline-color: var(--color-primary-variant);
+		border-radius: var(--border-radius);
+	}
+}

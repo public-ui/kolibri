@@ -8,6 +8,7 @@
 
 	:is(a, button) {
 		display: inline-flex;
+		max-width: fit-content;
 		align-items: baseline;
 		place-items: center;
 		text-align: left;

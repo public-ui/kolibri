@@ -19,7 +19,7 @@
 		"typeRoots": ["node_modules/@types"],
 		"strict": true,
 		"skipLibCheck": true,
-		"resolveJsonModule": true,
+		"resolveJsonModule": true
 	},
 	"include": ["stencil.config.ts", ".eslintrc.js", "test-env.js"],
 	"exclude": ["node_modules"]

@@ -148,7 +148,7 @@ export class KolInputWc implements Props {
 							{this._currentLength}
 							{this._maxLength && `/${this._maxLength}`} {translate('kol-characters')}
 						</span>
-						<span aria-live="polite" aria-atomic="true" class="visually-hidden" data-testid="input-counter-aria">
+						<span id={`${this._id}-counter`} aria-live="polite" aria-atomic="true" class="visually-hidden" data-testid="input-counter-aria">
 							{this._currentLengthDebounced}
 							{this._maxLength && ` ${translate('kol-of')} ${this._maxLength}`} {translate('kol-characters')}
 						</span>
@@ -159,7 +159,7 @@ export class KolInputWc implements Props {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -252,7 +252,7 @@ export class KolInputWc implements Props {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Adds a visual short key hint to the component.
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
 
