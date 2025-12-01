@@ -10,6 +10,10 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 Import the component loader from `@public-ui/components/loader`. The previous `@public-ui/components/dist/loader` path is no longer part of the public API surface.
 
+**Before:**
+
+```typescript
+import { defineCustomElements } from '@public-ui/components/dist/loader';
 ## Changed Components
 
 ### All components
