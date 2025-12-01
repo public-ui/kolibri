@@ -13,7 +13,7 @@ We have simplified the modularization of KoliBri in version 1 and for version 2.
 ```diff
   - import { register } from '@public-ui/core';
   + import { register } from '@public-ui/components';
-  import { defineCustomElements } from '@public-ui/components/loader';
+  import { defineCustomElements } from '@public-ui/components/dist/loader';
   import { MyTheme } from '...';
   await register(MyTheme, defineCustomElements);
 ```
