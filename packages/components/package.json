@@ -17,20 +17,20 @@
 	},
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.js",
-"exports": {
-".": {
-"types": "./dist/types/index.d.ts",
-"import": "./dist/index.js",
-"require": "./dist/index.cjs.js"
-},
-"./loader": {
-"types": "./loader/index.d.ts",
-"import": "./loader/index.mjs",
-"require": "./dist/loader/index.cjs.js"
-},
-"./*": "./*",
-"./package.json": "./package.json"
-},
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js"
+		},
+		"./loader": {
+			"types": "./loader/index.d.ts",
+			"import": "./loader/index.mjs",
+			"require": "./dist/loader/index.cjs.js"
+		},
+		"./custom-elements.json": "./custom-elements.json",
+		"./package.json": "./package.json"
+	},
 	"customElements": "custom-elements.json",
 	"es2015": "dist/esm/index.mjs",
 	"es2017": "dist/esm/index.mjs",
