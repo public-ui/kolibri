@@ -75,7 +75,7 @@ Install the default theme and register the components:
 pnpm add @public-ui/components @public-ui/theme-default
 
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 register(DEFAULT, defineCustomElements);

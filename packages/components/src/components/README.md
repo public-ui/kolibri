@@ -15,7 +15,7 @@ yarn add @public-ui/components
 First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/themes) of your choice:
 
 ```ts
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { register } from '@public-ui/components';
 import { DEFAULT } from '@public-ui/theme-default';
 
