@@ -62,7 +62,7 @@ jobs:
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
+        run: npx playwright install --with-deps chromium firefox webkit
       - name: Fix format
         run: pnpm -r format -w
 
