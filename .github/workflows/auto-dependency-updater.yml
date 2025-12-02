@@ -61,8 +61,6 @@ jobs:
         run: pnpm run update
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium firefox webkit
       - name: Fix format
         run: pnpm -r format -w
 
@@ -86,6 +84,8 @@ jobs:
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium firefox webkit
       - name: Quality Checks
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
