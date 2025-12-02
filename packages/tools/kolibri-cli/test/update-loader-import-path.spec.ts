@@ -188,4 +188,17 @@ register([DEFAULT], []);
 		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
 		assert.ok(!content.includes('/dist/loader'));
 	});
+
+	it('updates loader import path in dynamic imports', () => {
+		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+		const tsPath = path.join(tmpDir, 'main.ts');
+		fs.writeFileSync(tsPath, `const loader = import('@public-ui/components/dist/loader');`);
+
+		const task = UpdateLoaderImportPathTask.getInstance('^4');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(tsPath, 'utf8');
+		assert.ok(content.includes("import('@public-ui/components/loader')"));
+		assert.ok(!content.includes('/dist/loader'));
+	});
 });
