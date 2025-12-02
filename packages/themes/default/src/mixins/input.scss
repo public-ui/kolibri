@@ -50,13 +50,14 @@
 		&:has(.kol-input--readonly) {
 			border-color: var(--color-mute-variant);
 			border-width: 1px;
+			border-bottom: 2px solid var(--color-subtle);
 
-			&:hover {
-				border-color: var(--color-mute-variant);
+			#{$root}__container {
+				padding-top: 1px;
 			}
 
-			&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
-				outline-color: var(--color-mute-variant);
+			&:hover {
+				border-color: var(--color-subtle);
 			}
 		}
 
