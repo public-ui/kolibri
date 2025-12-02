@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { expect } = require('chai');
 const { hydrateOptions, resetHydrationState } = require('./test-config');
-const { extractBodyContent } = require('./test-utils');
+const { extractBodyContent, normalizeComponentHTML } = require('./test-utils');
 const { handleTracker } = require('./setup');
 
 // Read custom-elements.json from @public-ui/components package
@@ -172,7 +172,8 @@ describe('Component hydration snapshots', () => {
 				expect(result.diagnostics).to.be.an('array');
 
 				const bodyContent = extractBodyContent(result.html);
-				expect(bodyContent).to.matchSnapshot();
+				const normalizedContent = normalizeComponentHTML(bodyContent);
+				expect(normalizedContent).to.matchSnapshot();
 			} catch (error) {
 				throw error;
 			} finally {
@@ -203,7 +204,8 @@ describe('Component hydration snapshots', () => {
 				expect(resultHtml).to.be.a('string');
 
 				const bodyContent = extractBodyContent(resultHtml);
-				expect(bodyContent).to.matchSnapshot();
+				const normalizedContent = normalizeComponentHTML(bodyContent);
+				expect(normalizedContent).to.matchSnapshot();
 			} catch (error) {
 				throw error;
 			} finally {
