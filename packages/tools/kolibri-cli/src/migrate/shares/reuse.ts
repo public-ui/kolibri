@@ -189,7 +189,10 @@ export function setRemoveMode(mode: RemoveMode): void {
 }
 
 /**
- * Gets the remove mode.
+ * Gets the current remove mode chosen via the CLI flag `--remove-mode`.
+ * - `prefix` (default) renames removed properties to `data-removed-<property>` so that developers can
+ *   clean them up manually after the migration.
+ * - `delete` removes the properties entirely during migration.
  * @returns {RemoveMode} The remove mode
  */
 export function getRemoveMode(): RemoveMode {
