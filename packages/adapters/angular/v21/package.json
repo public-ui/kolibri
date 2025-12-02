@@ -68,7 +68,7 @@
 		"@angular/common": "21.0.2",
 		"@angular/compiler": "21.0.2",
 		"@angular/compiler-cli": "21.0.2",
-		"@angular/core": "21.0.1",
+		"@angular/core": "21.0.2",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
