@@ -2,6 +2,7 @@ import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { isString } from 'lodash-es';
+import { translate } from '../../i18n';
 import { buildBadgeTextString } from '../../schema';
 import InternalUnderlinedBadgeText from '../InternalUnderlinedBadgeText';
 
@@ -19,6 +20,7 @@ type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLe
 	hideLabel?: boolean;
 	baseClassName?: string;
 	showBadge?: boolean;
+	readOnly?: boolean;
 } & LabelProps;
 
 const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label, showBadge = true }) => {
@@ -60,9 +62,11 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	hideLabel,
 	hasExpertSlot,
 	showBadge,
+	readOnly,
 	...other
 }) => {
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
+	const translateReadOnly = translate('kol-readonly');
 
 	return (
 		<Component
@@ -76,6 +80,11 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			<span class={clsx(`${baseClassName}__label-text`)}>
 				{/* INFO: label comes with any html tag or as plain text! */}
 				<LabelFc hasExpertSlot={hasExpertSlot} accessKey={accessKey} shortKey={shortKey} label={label} showBadge={showBadge} />
+				{readOnly ? (
+					<span class={clsx(`${baseClassName}__label__read-only`)} aria-hidden="true">
+						({translateReadOnly})
+					</span>
+				) : null}
 			</span>
 		</Component>
 	);
