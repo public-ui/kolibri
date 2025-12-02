@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "2.2.18-rc.0",
+	"version": "2.2.18-rc.1",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -26,13 +26,13 @@
 	},
 	"dependencies": {
 		"@leanup/stack": "1.3.54",
-		"@playwright/test": "1.56.1",
+		"@playwright/test": "1.57.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.36.3",
 		"@types/node": "24.10.1",
-		"@types/react": "19.2.6",
+		"@types/react": "19.2.7",
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.5.1",
 		"@unocss/vite": "66.5.1",
@@ -42,7 +42,7 @@
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"formik": "2.4.9",
-		"knip": "5.70.1",
+		"knip": "5.71.0",
 		"npm-run-all2": "8.0.4",
 		"react": "19.2.0",
 		"react-dom": "19.2.0",
@@ -51,7 +51,7 @@
 		"react-router-dom": "7.9.6",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "7.2.4",
+		"vite": "7.2.6",
 		"world_countries_lists": "3.3.0",
 		"yup": "1.7.1"
 	},
