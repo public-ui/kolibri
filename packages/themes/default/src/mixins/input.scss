@@ -33,31 +33,25 @@
 		&--disabled {
 			color: var(--color-text);
 			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
 			cursor: not-allowed;
 		}
 
-		&:not(&--disabled) {
-			&:hover {
-				border-color: var(--color-primary);
-			}
+		&:not(&--disabled, &:has(.kol-input--readonly)):hover {
+			border-color: var(--color-primary);
 		}
 
 		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 			@include focus-outline;
 		}
 
-		&:has(.kol-input--readonly) {
+		&:has(.kol-input--readonly),
+		&--disabled {
 			border-color: var(--color-mute-variant);
 			border-width: 1px;
 			border-bottom: 2px solid var(--color-subtle);
 
 			#{$root}__container {
 				padding-top: 1px;
-			}
-
-			&:hover {
-				border-color: var(--color-subtle);
 			}
 		}
 
