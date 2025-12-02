@@ -1254,8 +1254,8 @@ importers:
   packages/tools/mcp:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: 1.24.0
-        version: 1.24.0(zod@3.25.76)
+        specifier: 1.24.1
+        version: 1.24.1(zod@3.25.76)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -3518,8 +3518,8 @@ packages:
     resolution: {integrity: sha512-j/P+yuxXfgxb+mW7OEoRCM3G47zCTDqUPivJo/VzpjbG8I9csTXtOprCf5FfOfHK4whOJny0aHuBEON+kS7CCA==}
     engines: {node: '>=18'}
 
-  '@modelcontextprotocol/sdk@1.24.0':
-    resolution: {integrity: sha512-D8h5KXY2vHFW8zTuxn2vuZGN0HGrQ5No6LkHwlEA9trVgNdPL3TF1dSqKA7Dny6BbBYKSW/rOBDXdC8KJAjUCg==}
+  '@modelcontextprotocol/sdk@1.24.1':
+    resolution: {integrity: sha512-YTg4v6bKSst8EJM8NXHC3nGm8kgHD08IbIBbognUeLAgGLVgLpYrgQswzLQd4OyTL4l614ejhqsDrV1//t02Qw==}
     engines: {node: '>=18'}
     peerDependencies:
       '@cfworker/json-schema': ^4.1.1
@@ -17507,7 +17507,7 @@ snapshots:
 
   '@modelcontextprotocol/inspector-cli@0.17.2(zod@3.25.76)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.24.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.24.1(zod@3.25.76)
       commander: 13.1.0
       spawn-rx: 5.1.2
     transitivePeerDependencies:
@@ -17517,7 +17517,7 @@ snapshots:
 
   '@modelcontextprotocol/inspector-client@0.17.2(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.24.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.24.1(zod@3.25.76)
       '@radix-ui/react-checkbox': 1.3.3(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dialog': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-icons': 1.3.2(react@18.3.1)
@@ -17550,7 +17550,7 @@ snapshots:
 
   '@modelcontextprotocol/inspector-server@0.17.2':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.24.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.24.1(zod@3.25.76)
       cors: 2.8.5
       express: 5.2.1
       shell-quote: 1.8.3
@@ -17568,7 +17568,7 @@ snapshots:
       '@modelcontextprotocol/inspector-cli': 0.17.2(zod@3.25.76)
       '@modelcontextprotocol/inspector-client': 0.17.2(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)
       '@modelcontextprotocol/inspector-server': 0.17.2
-      '@modelcontextprotocol/sdk': 1.24.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.24.1(zod@3.25.76)
       concurrently: 9.2.1
       node-fetch: 3.3.2
       open: 10.2.0
@@ -17605,7 +17605,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@modelcontextprotocol/sdk@1.24.0(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@1.24.1(zod@3.25.76)':
     dependencies:
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
