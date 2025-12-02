@@ -60,8 +60,6 @@ export class RemovePropertyNameTask extends GenericRenamePropertyTask {
 	}
 
 	public run(baseDir: string): void {
-		// The CLI option `--remove-mode` controls whether removed properties are kept with a
-		// `data-removed-` prefix for manual cleanup (`prefix`) or deleted outright (`delete`).
 		switch (getRemoveMode()) {
 			case 'delete':
 				this.transpileComponentFileDelete(baseDir);
