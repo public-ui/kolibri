@@ -5,19 +5,19 @@ import path from 'path';
 import { UpdateLoaderImportPathTask } from '../src/migrate/runner/tasks/v4/loader';
 
 describe('UpdateLoaderImportPathTask', () => {
-	const tmpDirs: string[] = [];
+	let tmpDir: string;
+
+	before(() => {
+		tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
+	});
 
 	after(() => {
-		for (const dir of tmpDirs) {
-			if (fs.existsSync(dir)) {
-				fs.rmSync(dir, { recursive: true, force: true });
-			}
+		if (fs.existsSync(tmpDir)) {
+			fs.rmSync(tmpDir, { recursive: true, force: true });
 		}
 	});
 
 	it('updates loader import path in TypeScript file', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const tsPath = path.join(tmpDir, 'main.ts');
 		fs.writeFileSync(
 			tsPath,
@@ -36,8 +36,6 @@ defineCustomElements();
 	});
 
 	it('updates loader import path in JavaScript file', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const jsPath = path.join(tmpDir, 'main.js');
 		fs.writeFileSync(
 			jsPath,
@@ -56,8 +54,6 @@ defineCustomElements();
 	});
 
 	it('updates loader import path in TSX file', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const tsxPath = path.join(tmpDir, 'App.tsx');
 		fs.writeFileSync(
 			tsxPath,
@@ -83,8 +79,6 @@ defineCustomElements();
 	});
 
 	it('updates loader import path in JSX file', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const jsxPath = path.join(tmpDir, 'App.jsx');
 		fs.writeFileSync(
 			jsxPath,
@@ -103,8 +97,6 @@ export const App = () => <div>Hello</div>;
 	});
 
 	it('updates loader import path in Vue file', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const vuePath = path.join(tmpDir, 'App.vue');
 		fs.writeFileSync(
 			vuePath,
@@ -130,9 +122,7 @@ defineCustomElements();
 	});
 
 	it('handles multiple loader imports in same file', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
-		const tsPath = path.join(tmpDir, 'main.ts');
+		const tsPath = path.join(tmpDir, 'multi-import.ts');
 		fs.writeFileSync(
 			tsPath,
 			`import { defineCustomElements } from '@public-ui/components/dist/loader';
@@ -153,8 +143,6 @@ defineCustomElements();
 	});
 
 	it('does not modify files without loader import', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const tsPath = path.join(tmpDir, 'component.ts');
 		const originalContent = `import { KolButton } from '@public-ui/components';
 
@@ -170,9 +158,7 @@ export const MyComponent = () => <KolButton>Click me</KolButton>;
 	});
 
 	it('does not modify files already using new import path', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
-		const tsPath = path.join(tmpDir, 'main.ts');
+		const tsPath = path.join(tmpDir, 'already-migrated.ts');
 		const originalContent = `import { defineCustomElements } from '@public-ui/components/loader';
 
 defineCustomElements();
@@ -187,8 +173,6 @@ defineCustomElements();
 	});
 
 	it('processes files in subdirectories', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
 		const subDir = path.join(tmpDir, 'src', 'bootstrap');
 		fs.mkdirSync(subDir, { recursive: true });
 		const tsPath = path.join(subDir, 'init.ts');
@@ -209,9 +193,7 @@ defineCustomElements();
 	});
 
 	it('updates loader import path in dynamic imports', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
-		tmpDirs.push(tmpDir);
-		const tsPath = path.join(tmpDir, 'main.ts');
+		const tsPath = path.join(tmpDir, 'dynamic-import.ts');
 		fs.writeFileSync(tsPath, `const loader = import('@public-ui/components/dist/loader');`);
 
 		const task = UpdateLoaderImportPathTask.getInstance('^4');
