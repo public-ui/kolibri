@@ -85,7 +85,7 @@ jobs:
           delete-branch: true
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium firefox webkit
+        run: npx playwright install chromium
       - name: Quality Checks
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
