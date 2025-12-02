@@ -1,4 +1,5 @@
 import { Routes } from '../../shares/types';
+import { Basic } from './basic';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableDirectionAwareSort } from './direction-aware-sort';
@@ -22,6 +23,7 @@ import { TableWithPagination } from './with-pagination';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
+		basic: Basic,
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
 		'horizontal-scrollbar': TableHorizontalScrollbar,

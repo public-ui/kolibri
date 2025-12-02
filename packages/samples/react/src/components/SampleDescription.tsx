@@ -29,23 +29,25 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 		<>
 			<h1 className="visually-hidden">{location.pathname.replace(/\//g, ' ')}</h1>
 			{hideMenus ? null : (
-				<div className="grid sm:flex gap-4 justify-between pb-sm border-b-1 border-b-solid border-gray mb-2">
+				<div className="flex flex-col gap-4">
+					<div className="grid sm:flex gap-4 justify-between pb-sm border-b-1 border-b-solid border-gray mb-2">
+						<ul className="flex flex-wrap gap-2 list-none m-0 p-0">
+							{codeLink && (
+								<li>
+									<KolLink _href={codeLink} _label="Code" _target="_blank" />
+								</li>
+							)}
+							{docLink && (
+								<li>
+									<KolLink _href={docLink} _label="Documentation" _target="_blank" />
+								</li>
+							)}
+							<li>
+								<KolLink _href={`#${location.pathname}?hideMenus`} _label="Standalone example" _target="_blank" />
+							</li>
+						</ul>
+					</div>
 					<div className="indented-text">{props.children}</div>
-					<ul className="flex flex-wrap gap-2 list-none m-0 p-0">
-						{codeLink && (
-							<li>
-								<KolLink _href={codeLink} _label="Code" _target="_blank" />
-							</li>
-						)}
-						{docLink && (
-							<li>
-								<KolLink _href={docLink} _label="Documentation" _target="_blank" />
-							</li>
-						)}
-						<li>
-							<KolLink _href={`#${location.pathname}?hideMenus`} _label="Standalone example" _target="_blank" />
-						</li>
-					</ul>
 				</div>
 			)}
 		</>

@@ -121,7 +121,7 @@ export const App: FC = () => {
 
 	return (
 		<HideMenusContext.Provider value={hideMenus}>
-			<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
+			<div className={`${!hideMenus ? 'app-container' : ''} px-4`} data-theme={theme}>
 				{!hideMenus && (
 					<Sidebar
 						version={PackageJson.version}
