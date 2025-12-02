@@ -10,9 +10,9 @@ describe('UpdateLoaderImportPathTask', () => {
 		const tsPath = path.join(tmpDir, 'main.ts');
 		fs.writeFileSync(
 			tsPath,
-			`import { register } from '@public-ui/components/dist/loader';
+			`import { defineCustomElements } from '@public-ui/components/dist/loader';
 
-register([DEFAULT], []);
+defineCustomElements();
 `,
 		);
 
@@ -20,7 +20,7 @@ register([DEFAULT], []);
 		task.run(tmpDir);
 
 		const content = fs.readFileSync(tsPath, 'utf8');
-		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
 		assert.ok(!content.includes('/dist/loader'));
 	});
 
@@ -29,9 +29,9 @@ register([DEFAULT], []);
 		const jsPath = path.join(tmpDir, 'main.js');
 		fs.writeFileSync(
 			jsPath,
-			`const { register } = require('@public-ui/components/dist/loader');
+			`const { defineCustomElements } = require('@public-ui/components/dist/loader');
 
-register([DEFAULT], []);
+defineCustomElements();
 `,
 		);
 
@@ -48,14 +48,14 @@ register([DEFAULT], []);
 		const tsxPath = path.join(tmpDir, 'App.tsx');
 		fs.writeFileSync(
 			tsxPath,
-			`import { register } from '@public-ui/components/dist/loader';
+			`import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT } from '@public-ui/themes';
 
 export const App = () => {
 	return <div>Hello</div>;
 };
 
-register([DEFAULT], []);
+defineCustomElements();
 `,
 		);
 
@@ -63,7 +63,7 @@ register([DEFAULT], []);
 		task.run(tmpDir);
 
 		const content = fs.readFileSync(tsxPath, 'utf8');
-		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
 		assert.ok(!content.includes('/dist/loader'));
 		// Other imports should remain unchanged
 		assert.ok(content.includes("import { DEFAULT } from '@public-ui/themes';"));
@@ -74,7 +74,7 @@ register([DEFAULT], []);
 		const jsxPath = path.join(tmpDir, 'App.jsx');
 		fs.writeFileSync(
 			jsxPath,
-			`import { register } from '@public-ui/components/dist/loader';
+			`import { defineCustomElements } from '@public-ui/components/dist/loader';
 
 export const App = () => <div>Hello</div>;
 `,
@@ -84,7 +84,7 @@ export const App = () => <div>Hello</div>;
 		task.run(tmpDir);
 
 		const content = fs.readFileSync(jsxPath, 'utf8');
-		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
 		assert.ok(!content.includes('/dist/loader'));
 	});
 
@@ -94,10 +94,10 @@ export const App = () => <div>Hello</div>;
 		fs.writeFileSync(
 			vuePath,
 			`<script setup lang="ts">
-import { register } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT } from '@public-ui/themes';
 
-register([DEFAULT], []);
+defineCustomElements();
 </script>
 
 <template>
@@ -110,7 +110,7 @@ register([DEFAULT], []);
 		task.run(tmpDir);
 
 		const content = fs.readFileSync(vuePath, 'utf8');
-		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
 		assert.ok(!content.includes('/dist/loader'));
 	});
 
@@ -119,11 +119,11 @@ register([DEFAULT], []);
 		const tsPath = path.join(tmpDir, 'main.ts');
 		fs.writeFileSync(
 			tsPath,
-			`import { register } from '@public-ui/components/dist/loader';
+			`import { defineCustomElements } from '@public-ui/components/dist/loader';
 // Alternative import style
 const loader = require('@public-ui/components/dist/loader');
 
-register([DEFAULT], []);
+defineCustomElements();
 `,
 		);
 
@@ -131,7 +131,7 @@ register([DEFAULT], []);
 		task.run(tmpDir);
 
 		const content = fs.readFileSync(tsPath, 'utf8');
-		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
 		assert.ok(content.includes("require('@public-ui/components/loader')"));
 		assert.ok(!content.includes('/dist/loader'));
 	});
@@ -155,9 +155,9 @@ export const MyComponent = () => <KolButton>Click me</KolButton>;
 	it('does not modify files already using new import path', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const tsPath = path.join(tmpDir, 'main.ts');
-		const originalContent = `import { register } from '@public-ui/components/loader';
+		const originalContent = `import { defineCustomElements } from '@public-ui/components/loader';
 
-register([DEFAULT], []);
+defineCustomElements();
 `;
 		fs.writeFileSync(tsPath, originalContent);
 
@@ -175,9 +175,9 @@ register([DEFAULT], []);
 		const tsPath = path.join(subDir, 'init.ts');
 		fs.writeFileSync(
 			tsPath,
-			`import { register } from '@public-ui/components/dist/loader';
+			`import { defineCustomElements } from '@public-ui/components/dist/loader';
 
-register([DEFAULT], []);
+defineCustomElements();
 `,
 		);
 
@@ -185,7 +185,7 @@ register([DEFAULT], []);
 		task.run(tmpDir);
 
 		const content = fs.readFileSync(tsPath, 'utf8');
-		assert.ok(content.includes("import { register } from '@public-ui/components/loader';"));
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
 		assert.ok(!content.includes('/dist/loader'));
 	});
 });
