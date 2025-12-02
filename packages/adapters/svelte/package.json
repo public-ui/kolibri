@@ -48,18 +48,18 @@
 		"build": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.28.4",
+		"@babel/types": "7.28.5",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"svelte": "5.40.2",
+		"svelte": "5.45.3",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"svelte": "^5.40.2"
+		"svelte": "^5.45.2"
 	},
 	"sideEffects": false,
 	"type": "module",

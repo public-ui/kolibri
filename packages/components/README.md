@@ -30,7 +30,7 @@ Register the components with a theme before using them:
 
 ```ts
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 register(DEFAULT, defineCustomElements).catch(console.error);
