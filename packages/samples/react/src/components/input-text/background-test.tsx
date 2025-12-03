@@ -9,8 +9,12 @@ export const InputTextBackground: FC = () => (
 			<p>This story showcases the component placed on a colored background.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4 bg-blue-100 p-4 rounded">
+		<div className="grid gap-4 bg-blue-400 p-4 rounded">
+			<strong>Default background:</strong>
 			<KolInputText _label="First name" _value="John Doe" />
+
+			<strong>Unset background:</strong>
+			<KolInputText style={{ backgroundColor: 'unset' }} _label="First name" _value="John Doe" />
 		</div>
 	</>
 );
