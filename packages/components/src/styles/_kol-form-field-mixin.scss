@@ -18,7 +18,7 @@
 
 		&__label-text::after {
 			#{$root}--required & {
-				content: '*';
+				content: '*' / '';
 			}
 		}
 
@@ -30,7 +30,7 @@
 
 		&__tooltip .span-label::after {
 			#{$root}--required & {
-				content: '*';
+				content: '*' / '';
 			}
 		}
 	}

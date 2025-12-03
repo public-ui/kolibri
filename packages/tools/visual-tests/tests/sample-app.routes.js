@@ -15,7 +15,7 @@ export const ROUTES = new Map();
  *   - skip: boolean (Default: false)
  *   - viewportSize:
  *     - width (Default: 800)
- *     - height (Default: 600)
+ *     - height (Default: 100)
  *   - waitForTimeout: number (Default: 15000)
  *   - zoom:
  *     - options:
@@ -322,7 +322,7 @@ ROUTES.set('input-checkbox/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -336,7 +336,7 @@ ROUTES.set('input-checkbox/button?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -350,7 +350,7 @@ ROUTES.set('input-checkbox/switch?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -361,7 +361,7 @@ ROUTES.set('input-color/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -372,7 +372,7 @@ ROUTES.set('input-date/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -383,7 +383,7 @@ ROUTES.set('input-email/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -394,7 +394,7 @@ ROUTES.set('input-file/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -405,7 +405,18 @@ ROUTES.set('input-number/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-number/number-formatter', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -416,7 +427,7 @@ ROUTES.set('input-password/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -427,7 +438,7 @@ ROUTES.set('input-password/show-password?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -441,7 +452,7 @@ ROUTES.set('input-radio/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -452,7 +463,7 @@ ROUTES.set('input-radio/horizontal?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -463,7 +474,7 @@ ROUTES.set('input-radio/object?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -474,7 +485,7 @@ ROUTES.set('input-range/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -670,7 +681,7 @@ ROUTES.set('nav/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 400,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -692,7 +703,7 @@ ROUTES.set('popover-button/basic', {
 		viewportSize: {
 			width: 200,
 			height: 220,
-		}
+		},
 	},
 });
 ROUTES.set('progress/basic', {
@@ -718,7 +729,7 @@ ROUTES.set('select/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -736,7 +747,7 @@ ROUTES.set('spin/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 100,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -750,7 +761,7 @@ ROUTES.set('single-select/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -761,7 +772,7 @@ ROUTES.set('spin/custom', {
 	snapshot: {
 		viewportSize: {
 			width: 100,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -772,7 +783,7 @@ ROUTES.set('spin/cycle', {
 	snapshot: {
 		viewportSize: {
 			width: 100,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -783,7 +794,7 @@ ROUTES.set('split-button/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -971,7 +982,7 @@ ROUTES.set('tabs/icons-only', {
 	snapshot: {
 		viewportSize: {
 			width: 200,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -989,7 +1000,7 @@ ROUTES.set('textarea/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1016,7 +1027,7 @@ ROUTES.set('textarea/with-counter', {
 	snapshot: {
 		viewportSize: {
 			width: 200,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1038,7 +1049,7 @@ ROUTES.set('toolbar/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 600,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1049,7 +1060,7 @@ ROUTES.set('toolbar/disabled', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1063,7 +1074,7 @@ ROUTES.set('tree/basic/home', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1074,7 +1085,7 @@ ROUTES.set('version/basic', {
 	snapshot: {
 		viewportSize: {
 			width: 150,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1139,7 +1150,7 @@ ROUTES.set('scenarios/focus-elements?component=accordion', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1150,7 +1161,7 @@ ROUTES.set('scenarios/focus-elements?component=button', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1161,7 +1172,7 @@ ROUTES.set('scenarios/focus-elements?component=buttonLink', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1172,7 +1183,7 @@ ROUTES.set('scenarios/focus-elements?component=combobox', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1183,7 +1194,7 @@ ROUTES.set('scenarios/focus-elements?component=details', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1194,7 +1205,7 @@ ROUTES.set('scenarios/focus-elements?component=inputCheckbox', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1205,7 +1216,7 @@ ROUTES.set('scenarios/focus-elements?component=inputColor', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1216,7 +1227,7 @@ ROUTES.set('scenarios/focus-elements?component=inputDate', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1227,7 +1238,7 @@ ROUTES.set('scenarios/focus-elements?component=inputEmail', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1238,7 +1249,7 @@ ROUTES.set('scenarios/focus-elements?component=inputFile', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1249,7 +1260,7 @@ ROUTES.set('scenarios/focus-elements?component=inputFileMultiple', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1260,7 +1271,7 @@ ROUTES.set('scenarios/focus-elements?component=inputNumber', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1271,7 +1282,7 @@ ROUTES.set('scenarios/focus-elements?component=inputPassword', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1282,7 +1293,7 @@ ROUTES.set('scenarios/focus-elements?component=inputRadio', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1293,7 +1304,7 @@ ROUTES.set('scenarios/focus-elements?component=inputRange', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1304,7 +1315,7 @@ ROUTES.set('scenarios/focus-elements?component=inputText', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1315,7 +1326,7 @@ ROUTES.set('scenarios/focus-elements?component=link', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1326,7 +1337,7 @@ ROUTES.set('scenarios/focus-elements?component=linkButton', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1337,7 +1348,7 @@ ROUTES.set('scenarios/focus-elements?component=select', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1348,7 +1359,7 @@ ROUTES.set('scenarios/focus-elements?component=selectMultiple', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -1361,7 +1372,7 @@ ROUTES.set('scenarios/focus-elements?component=singleSelect', {
 	},
 	viewportSize: {
 		width: 300,
-		height: 100,
+		height: 0,
 	},
 	zoom: {
 		skip: true,
@@ -1371,7 +1382,7 @@ ROUTES.set('scenarios/focus-elements?component=textarea', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
-			height: 100,
+			height: 0,
 		},
 		zoom: {
 			skip: true,

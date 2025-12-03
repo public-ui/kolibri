@@ -5,6 +5,10 @@ on:
     branches:
       - 'develop'
       - 'release/*'
+    tags:
+      - latest
+      - v2-latest
+      - v1-latest
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
@@ -14,7 +18,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false

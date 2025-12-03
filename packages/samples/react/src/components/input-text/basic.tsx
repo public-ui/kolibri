@@ -22,14 +22,7 @@ export const InputTextBasic: FC = () => (
 			<KolInputText
 				_label="Username with icons"
 				_placeholder="Please enter your username"
-				_icons={{
-					left: {
-						icon: 'codicon codicon-squirrel',
-					},
-					right: {
-						icon: 'codicon codicon-home',
-					},
-				}}
+				_icons="codicon codicon-home"
 				_hint="The icons can only be on the left or right as well."
 			/>
 		</div>

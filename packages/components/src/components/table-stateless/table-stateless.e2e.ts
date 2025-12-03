@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableSelection, KoliBriTableSelectionKey, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
 import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
@@ -30,9 +30,9 @@ test.describe('kol-table-stateless', () => {
 		test('it calls the onSelectionChange callback when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 							resolve(selection);
 						},
 					};
@@ -67,9 +67,9 @@ test.describe('kol-table-stateless', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const eventPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
-				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
 					element.addEventListener(KolEvent.selectionChange, (event: Event) => {
-						resolve((event as CustomEvent).detail as KoliBriTableSelectionKeys | KoliBriTableSelectionKey);
+						resolve((event as CustomEvent).detail as KoliBriTableSelectionKeys);
 					});
 				});
 			}, KolEvent);
@@ -116,9 +116,9 @@ test.describe('kol-table-stateless', () => {
 		test('it allows selecting individual rows', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 							resolve(selection);
 						},
 					};
@@ -140,9 +140,9 @@ test.describe('kol-table-stateless', () => {
 		test('it allows selecting all enabled rows', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 							resolve(selection);
 						},
 					};
@@ -165,9 +165,9 @@ test.describe('kol-table-stateless', () => {
 			await page.waitForChanges();
 
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 							resolve(selection);
 						},
 					};
@@ -205,9 +205,9 @@ test.describe('kol-table-stateless', () => {
 			await page.waitForChanges();
 
 			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
-				return new Promise<KoliBriTableSelectionKeys | KoliBriTableSelectionKey>((resolve) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
 					element._on = {
-						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 							resolve(selection);
 						},
 					};
@@ -215,7 +215,7 @@ test.describe('kol-table-stateless', () => {
 			});
 			await kolTableStateless.getByLabel(`Selection for ${DATA[0].id}`).check();
 
-			await expect(callbackPromise).resolves.toEqual(DATA[0].id);
+			await expect(callbackPromise).resolves.toEqual([DATA[0].id]);
 		});
 	});
 });
