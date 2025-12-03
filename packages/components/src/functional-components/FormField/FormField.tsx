@@ -137,6 +137,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					label={label}
 					accessKey={accessKey}
 					shortKey={shortKey}
+					readOnly={readOnly}
 				/>
 			)}
 			<InputContainer {...formFieldInputProps}>
