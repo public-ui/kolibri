@@ -494,6 +494,14 @@ ROUTES.set('input-range/basic?noColumns', {
 });
 ROUTES.set('input-text/basic?noColumns', {
 	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/message-types?noColumns', {
+	snapshot: {
 		viewportSize: {
 			width: 500,
 			height: 0,
@@ -503,10 +511,111 @@ ROUTES.set('input-text/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-text/text-formatter', {
+ROUTES.set('input-text/placeholder?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/disabled?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/readonly?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/access-short-key?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/hide-label?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/hide-msg?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/text-formatter?noColumns', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/smart-button?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/expert-slot?noColumns', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/select-range?noColumns', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/background?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 250,
 			height: 0,
 		},
 		zoom: {

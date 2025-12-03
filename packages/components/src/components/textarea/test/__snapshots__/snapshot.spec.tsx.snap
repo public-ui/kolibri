@@ -225,6 +225,9 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
           <span>
             Label
           </span>
+          <span aria-hidden="true" class="kol-form-field__label__read-only">
+            (kol-readonly)
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
