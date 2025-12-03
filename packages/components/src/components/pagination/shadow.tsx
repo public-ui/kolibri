@@ -166,7 +166,6 @@ export class KolPagination implements PaginationAPI {
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<div class="page-size">
-						<label htmlFor={`pagination-size-${this.nonce}`}>{translate('kol-page-per-site')}</label>
 
 						<KolSelectTag
 							_hideLabel
