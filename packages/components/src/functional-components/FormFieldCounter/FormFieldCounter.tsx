@@ -7,11 +7,12 @@ import type { MaxLengthBehaviorPropType } from '../../schema';
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	currentLength: number;
 	currentLengthDebounced: number;
-	maxLength?: number;
 	maxLengthBehavior: MaxLengthBehaviorPropType;
+	maxLength?: number;
+	id?: string;
 };
 
-const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, maxLengthBehavior }) => {
+const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, maxLengthBehavior, id }) => {
 	let visualText: string | undefined;
 	let ariaText: string | undefined;
 	const counterClasses = ['kol-form-field__counter'];
@@ -52,7 +53,7 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			<span class={clsx(counterClasses)} aria-hidden="true" data-testid="input-counter">
 				{visualText}
 			</span>
-			<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
+			<span id={`${id}-counter`} aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
 				{ariaText}
 			</span>
 		</>
