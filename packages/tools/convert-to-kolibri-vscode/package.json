@@ -1,0 +1,68 @@
+{
+	"name": "@public-ui/convert-to-kolibri-vscode",
+	"displayName": "Convert to KoliBri",
+	"version": "0.1.0",
+	"description": "VS Code extension that migrates HTML or TSX snippets into accessible KoliBri components.",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"private": true,
+	"main": "./dist/extension.js",
+	"type": "commonjs",
+	"engines": {
+		"vscode": "^1.93.0",
+		"node": ">=18"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:kolibri.convertSelection",
+		"onCommand:kolibri.scanDocument"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "kolibri.convertSelection",
+				"title": "KoliBri: Convert selection to KoliBri"
+			},
+			{
+				"command": "kolibri.scanDocument",
+				"title": "KoliBri: Scan document for convertible components"
+			}
+		]
+	},
+	"scripts": {
+		"build": "tsc -p .",
+		"format": "prettier -c src README.md package.json tsconfig.json",
+		"lint": "pnpm lint:tsc",
+		"lint:tsc": "tsc --noEmit"
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@babel/generator": "7.28.5",
+		"@babel/parser": "7.28.5",
+		"@babel/traverse": "7.28.5",
+		"@babel/types": "7.28.5"
+	},
+	"devDependencies": {
+		"@types/node": "24.10.1",
+		"@types/vscode": "1.93.0",
+		"prettier": "3.7.3",
+		"prettier-plugin-organize-imports": "4.3.0",
+		"typescript": "5.9.3"
+	}
+}
