@@ -28,7 +28,7 @@ function KolButtonWrapper({ label }: { label: string }) {
 }
 
 export const TableStatelessWithSelection: FC = () => {
-	const [selectedKeys, setSelectedKeys] = useState<KoliBriTableSelectionKeys>([]);
+	const [selectedKeys, setSelectedKeys] = useState<KoliBriTableSelectionKeys>(['AAA1002', 'AAA1004']);
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,

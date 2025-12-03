@@ -36,7 +36,7 @@ async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
 }
 
 test('search tool results stay consistent with fetch results', async () => {
-	const { server, registeredTools } = createServerWithRegisteredTools();
+	const { registeredTools } = createServerWithRegisteredTools();
 	const structuredContent = await runSearch(registeredTools);
 
 	assert.ok(structuredContent.results.length > 0, 'search should return at least one result');

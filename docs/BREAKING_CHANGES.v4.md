@@ -6,6 +6,22 @@ New major versions of KoliBri are developed with the goal of simplifying mainten
 
 For more information, see the [KoliBri Maintenance and Support Strategy](https://github.com/public-ui/kolibri/blob/develop/MIGRATION.md).
 
+## Loader entry point
+
+Import the component loader from `@public-ui/components/loader`. The previous `@public-ui/components/dist/loader` path is no longer part of the public API surface.
+
+**Before:**
+
+```ts
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+```
+
+**After:**
+
+```ts
+import { defineCustomElements } from '@public-ui/components/loader';
+```
+
 ## Changed Components
 
 ### All components
@@ -47,4 +63,53 @@ toaster.enqueue({
 	label: 'Label',
 	type: 'info',
 });
+```
+
+#### kol-table-stateless
+
+The `onSelectionChange` callback now always returns `KoliBriTableSelectionKeys` (array of keys):
+
+**Before (v3):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+	// Type guard required
+	const keys = Array.isArray(selection) ? selection : [selection];
+	setSelectedKeys(keys);
+};
+```
+
+**After (v4):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
+	// Direct usage - always an array
+	setSelectedKeys(selection);
+};
+```
+
+#### kol-table-stateful
+
+The `onSelectionChange` callback now always returns `KoliBriTableDataType[] | null` (array of objects or null):
+
+**Before (v3):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | null) => {
+	// Type guard required for single selection
+	if (Array.isArray(selection)) {
+		setSelectedData(selection);
+	} else if (selection !== null) {
+		setSelectedData([selection]);
+	}
+};
+```
+
+**After (v4):**
+
+```typescript
+onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | null) => {
+	// Direct usage - always an array or null
+	setSelectedData(selection || []);
+};
 ```

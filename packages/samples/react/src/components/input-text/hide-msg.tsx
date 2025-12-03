@@ -1,4 +1,4 @@
-import { KolAlert, KolCard, KolInputText } from '@public-ui/react-v19';
+import { KolAlert, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -12,10 +12,10 @@ export const InputTextHideMsg: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolCard _label="Normal input field with error" _level={0}>
+		<section>
 			<KolInputText _msg={{ _type: 'error', _description: 'Error message' }} _label="Input with error" _touched />
-		</KolCard>
-		<KolCard _label="Input fields with hidden error" _level={0}>
+		</section>
+		<section>
 			<fieldset className="grid md:grid-cols-2 gap-4">
 				<legend>Combined input field</legend>
 				<KolAlert className="col-span-2" _level={0} _type="error">
@@ -24,6 +24,6 @@ export const InputTextHideMsg: FC = () => (
 				<KolInputText _msg={{ _type: 'error', _description: 'This is a combined error message' }} _hideMsg _label="First input" _touched />
 				<KolInputText _msg={{ _type: 'error', _description: 'This is a combined error message' }} _hideMsg _label="Second input with error" _touched />
 			</fieldset>
-		</KolCard>
+		</section>
 	</div>
 );

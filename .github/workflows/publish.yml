@@ -55,7 +55,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
@@ -110,18 +110,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter angular v17
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-        working-directory: packages/adapters/angular/v17
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter angular v18
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-        working-directory: packages/adapters/angular/v18
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v19
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/adapters/angular/v19
@@ -131,6 +119,12 @@ jobs:
       - name: Build and publish adapter angular v20
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/adapters/angular/v20
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish adapter angular v21
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/adapters/angular/v21
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
@@ -247,3 +241,15 @@ jobs:
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Manage version tags for Netlify deployments
+      - name: Update version tag for stable deployments
+        if: github.event.inputs.tag == 'latest'
+        run: |
+          VERSION_TAG="${{env.prefix}}${{github.event.inputs.tag}}"
+          echo "Updating version tag: $VERSION_TAG"
+          git tag -d "$VERSION_TAG" 2>/dev/null || true
+          git push origin ":refs/tags/$VERSION_TAG" 2>/dev/null || true
+          git tag -a "$VERSION_TAG" -m "Update $VERSION_TAG to $(git describe --tags --abbrev=0)"
+          git push origin "$VERSION_TAG"
+          echo "Successfully updated tag $VERSION_TAG"

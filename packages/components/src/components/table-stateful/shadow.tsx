@@ -255,6 +255,7 @@ export class KolTableStateful implements TableAPI {
 						beforePatch: (nextValue: unknown) => {
 							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
 								let hasSortedCells = false;
+								this.sortData = [];
 								headers.forEach((cell) => {
 									if (typeof cell.compareFn === 'function' && !cell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
@@ -514,24 +515,24 @@ export class KolTableStateful implements TableAPI {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const keys = selectedKeys;
-			const keySet = new Set(keys.map(String));
+			const keySet = new Set(selectedKeys.map(String));
 			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys): void {
+
+	private handleSelectionChange(event: Event, selectedKeys: KoliBriTableSelectionKeys): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: value,
+					selectedKeys,
 				},
 			};
-		const selectedData = this.getSelectedData(value);
+		const selectedData = this.getSelectedData(selectedKeys);
 
 		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
 			this.state._on[Callback.onSelectionChange](event, selectedData);
