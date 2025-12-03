@@ -84,8 +84,6 @@ jobs:
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
 
-      - name: Install Playwright browsers
-        run: npx playwright install chromium
       - name: Quality Checks
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
@@ -93,6 +91,7 @@ jobs:
           pnpm format
           pnpm lint
           pnpm test:unit
+          npx playwright install chromium
           pnpm test:e2e
           pnpm unused
       - name: Update dependencies (major)
