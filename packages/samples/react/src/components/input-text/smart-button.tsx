@@ -10,10 +10,10 @@ const smartButtonProps = {
 
 const icons = {
 	left: {
-		icon: 'codicon codicon-arrow-left',
+		icon: 'codicon codicon-search',
 	},
 	right: {
-		icon: 'codicon codicon-arrow-right',
+		icon: 'codicon codicon-check',
 	},
 };
 
@@ -48,13 +48,14 @@ export const InputTextSmartButton = () => {
 					_icons={icons}
 				></KolInputText>
 				<KolInputText
-					_label="Disabled input with button and without icons"
+					_label="Disabled input with button and icons"
 					_disabled
 					_type="text"
 					_smartButton={{
 						...smartButtonProps,
 						_label: 'Disabled Button',
 					}}
+					_icons={icons}
 				></KolInputText>
 			</div>
 		</>
