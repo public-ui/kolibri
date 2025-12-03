@@ -6,25 +6,16 @@ import { SampleDescription } from '../SampleDescription';
 export const InputTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This story showcases basic KolInputText usage: simple text input, with error message, and disabled state.</p>
+			<p>This story showcases the most important InputText variants: default, required, validation error, disabled, read-only, and with icons.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolInputText _label="First name" _value="John Doe" />
-			<KolInputText
-				_label="Email"
-				_value="john@example.com"
-				_msg={{ _type: 'error', _description: 'Unknown email address' }}
-				_touched
-				_hint="Enter the email address you provided during registration."
-			/>
-			<KolInputText _label="Address" _value="123 Main Street" _disabled />
-			<KolInputText
-				_label="Username with icons"
-				_placeholder="Please enter your username"
-				_icons="codicon codicon-home"
-				_hint="The icons can only be on the left or right as well."
-			/>
+			<KolInputText _label="Name" _value="Anderson-Clark" />
+			<KolInputText _label="Name" _required _msg={{ _type: 'error', _description: 'Please enter your name' }} _touched />
+			<KolInputText _label="Name" _required _hint="Enter your surname" />
+			<KolInputText _label="Name" _value="Anderson-Clark" _disabled />
+			<KolInputText _label="Name" _readOnly _value="Anderson-Clark" />
+			<KolInputText _label="Name" _icons="codicon codicon-account" _value="Anderson-Clark" />
 		</div>
 	</>
 );
