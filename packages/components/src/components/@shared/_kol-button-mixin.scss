@@ -9,7 +9,6 @@
 
 	.#{$block-classname} {
 		display: inline-flex;
-		font-style: to-rem(16);
 		text-decoration-line: none;
 
 		&::before {

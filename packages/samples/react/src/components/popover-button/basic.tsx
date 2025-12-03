@@ -51,7 +51,7 @@ export const PopoverButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<div className="flex flex-col gap-4">
-				<KolPopoverButton _inline={true} _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
+				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
 				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
@@ -63,6 +63,19 @@ export const PopoverButtonBasic: FC = () => {
 						</p>
 					</div>
 				</KolPopoverButton>
+				<p style={{ fontSize: '30px' }}>
+					<u>Lorem ipsum dolor sit amet</u>, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
+					Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.
+					<KolPopoverButton _inline={true} _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
+						<div className="w-sm p-2 border border-solid border-gray">
+							<KolHeading _label="Help Information" _level={0}></KolHeading>
+							<p>
+								<u>Lorem ipsum dolor sit amet</u>, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
+								Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.
+							</p>
+						</div>
+					</KolPopoverButton>
+				</p>
 			</div>
 		</>
 	);

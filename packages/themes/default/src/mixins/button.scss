@@ -86,9 +86,7 @@
 			color: var(--text-color);
 			background-color: var(--text-background-color);
 			border-color: var(--text-border-color);
-			min-width: var(--a11y-min-size);
 
-			min-height: var(--a11y-min-size);
 			padding: to-rem(8) to-rem(14);
 			// text-align: center;
 			transition-duration: 0.5s;
@@ -102,8 +100,7 @@
 			}
 
 			@at-root #{$root}--hide-label & {
-				width: unset;
-				padding: to-rem(12);
+				padding: 0;
 
 				.kol-span__label {
 					display: none;
