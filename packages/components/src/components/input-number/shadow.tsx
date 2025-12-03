@@ -152,6 +152,10 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	private getStepUpButton(): VNode | null {
+		if (this._disabled) {
+			return null;
+		}
+
 		return (
 			<button
 				type="button"
@@ -170,6 +174,10 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	private getStepDownButton(): VNode | null {
+		if (this._disabled) {
+			return null;
+		}
+
 		return (
 			<button
 				type="button"

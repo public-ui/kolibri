@@ -16,6 +16,10 @@
 				color: var(--color-light);
 				background-color: var(--color-primary);
 			}
+
+			&:disabled {
+				visibility: hidden;
+			}
 		}
 	}
 }

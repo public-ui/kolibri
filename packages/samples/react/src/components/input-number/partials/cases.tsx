@@ -32,8 +32,8 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 			<KolInputNumber {...props} _required _msg={{ _type: 'info', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
 			<KolInputNumber {...props} _required _msg={{ _type: 'success', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
 			<KolInputNumber {...props} ref={ref} _accessKey="Z" _max={10} _min={-10} _step={2} _label="Number input (-10 to 10 in steps of 2)" />
-			<KolInputNumber {...props} _readOnly _label="Number input (Readonly)" />
-			<KolInputNumber {...props} _disabled _label="Number input (Disabled)" />
+			<KolInputNumber {...props} _readOnly _value={123} _label="Number input (Readonly)" />
+			<KolInputNumber {...props} _disabled _value={123} _label="Number input (Disabled)" />
 			<KolInputNumber {...props} _label="With access key" _accessKey="c" />
 			<KolInputNumber {...props} _label="With short key" _shortKey="s" />
 		</div>
