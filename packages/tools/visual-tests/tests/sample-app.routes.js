@@ -504,7 +504,7 @@ ROUTES.set('input-text/message-types?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 400,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -515,7 +515,7 @@ ROUTES.set('input-text/placeholder?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 400,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -526,7 +526,7 @@ ROUTES.set('input-text/disabled?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 300,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -537,7 +537,7 @@ ROUTES.set('input-text/readonly?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 300,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -548,7 +548,7 @@ ROUTES.set('input-text/access-short-key?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 300,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -559,7 +559,7 @@ ROUTES.set('input-text/hide-label?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 500,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -570,7 +570,7 @@ ROUTES.set('input-text/hide-msg?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 800,
-			height: 500,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -589,7 +589,7 @@ ROUTES.set('input-text/smart-button?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 200,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
@@ -616,7 +616,7 @@ ROUTES.set('input-text/background?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 250,
-			height: 20,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
