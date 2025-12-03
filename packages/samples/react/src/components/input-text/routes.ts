@@ -1,5 +1,6 @@
 import { Routes } from '../../shares/types';
 import { InputTextAccessShortKey } from './access-short-key';
+import { InputTextBackground } from './background-test';
 import { InputTextBasic } from './basic';
 import { InputTextDisabled } from './disabled';
 import { InputTextExpertSlot } from './expert-slot';
@@ -26,5 +27,6 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		'smart-button': InputTextSmartButton,
 		'expert-slot': InputTextExpertSlot,
 		'select-range': InputTextSelectRange,
+		background: InputTextBackground,
 	},
 };

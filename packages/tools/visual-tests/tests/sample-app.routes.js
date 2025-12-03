@@ -612,6 +612,17 @@ ROUTES.set('input-text/select-range?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-text/background?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 250,
+			height: 20,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('kolibri/basic', {
 	snapshot: {
 		skip: true,
