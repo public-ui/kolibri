@@ -5,6 +5,7 @@
 
 @layer kol-component {
 	@include kol-button-styles('kol-link');
+	@include kol-button-styles('kol-button');
 
 	.kol-toolbar {
 		display: flex;

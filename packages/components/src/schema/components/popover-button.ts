@@ -3,7 +3,10 @@ import type { PropLabelWithExpertSlot, PropPopoverAlign } from '../props';
 import type { OptionalButtonProps, RequiredButtonProps } from './button';
 
 export type RequiredPopoverButtonProps = RequiredButtonProps;
-export type OptionalPopoverButtonProps = OptionalButtonProps & PropPopoverAlign;
+export type OptionalPopoverButtonProps = OptionalButtonProps &
+	PropPopoverAlign & {
+		inline: boolean;
+	};
 
 export type RequiredPopoverButtonStates = PropLabelWithExpertSlot;
 export type OptionalPopoverButtonStates = PropPopoverAlign;
