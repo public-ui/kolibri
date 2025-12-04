@@ -274,7 +274,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 ## Testing
 
 - Run `pnpm test` from the repository root to execute all unit and integration tests.
-- Visual and snapshot tests can be updated with `pnpm test-update` or via the `update-snapshots.yml` GitHub workflow (see `CONTRIBUTING.md`).
+- Visual and snapshot tests can be updated with `pnpm test:update` or via the `update-snapshots.yml` GitHub workflow (see `CONTRIBUTING.md`).
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
 
 ## Pull Request Guidelines
