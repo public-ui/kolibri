@@ -6,7 +6,7 @@
 	"description": "Performs snapshot testing on the default theme with a tag name transformer enabled.",
 	"scripts": {
 		"test": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test",
-		"test-update": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js"
+		"test:update": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js"
 	},
 	"devDependencies": {
 		"@public-ui/themes": "workspace:*",
