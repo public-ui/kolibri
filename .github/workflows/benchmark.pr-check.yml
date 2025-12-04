@@ -13,7 +13,7 @@ jobs:
     if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -34,7 +34,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
 
       - name: Post PR Comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           body-path: packages/tools/benchmark-tests/benchmark-report.md
           comment-id: ${{ steps.fc.outputs.comment-id }}
