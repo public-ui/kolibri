@@ -47,7 +47,7 @@
 		"cpy-cli": "6.0.0",
 		"knip": "5.71.0",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.7.3",
+		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rimraf": "6.1.2",
 		"serve": "14.2.5",
