@@ -43,7 +43,7 @@
 		"@playwright/test": "1.57.0",
 		"eslint": "8.57.1",
 		"knip": "5.71.0",
-		"prettier": "3.7.3"
+		"prettier": "3.7.4"
 	},
 	"peerDependencies": {
 		"@playwright/test": "1.57.0"
