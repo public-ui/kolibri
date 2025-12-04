@@ -87,7 +87,7 @@
 			background-color: var(--text-background-color);
 			border-color: var(--text-border-color);
 
-			padding: 0 to-rem(14);
+			padding: to-rem(8) to-rem(14);
 
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
@@ -100,6 +100,8 @@
 			}
 
 			@at-root #{$root}--hide-label & {
+				padding: to-rem(12);
+
 				.kol-span__label {
 					display: none;
 				}

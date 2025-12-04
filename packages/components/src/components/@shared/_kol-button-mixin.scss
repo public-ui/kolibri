@@ -13,12 +13,12 @@
 		font-style: to-rem(16);
 		text-decoration-line: none;
 
-		.#{$block-classname}::before {
+		&::before {
 			/* Render zero-width character as first element to set the baseline correctly. */
 			content: '\200B';
 		}
 
-		.#{$block-classname}__text {
+		&__text {
 			flex: 1 0 100%;
 		}
 	}
