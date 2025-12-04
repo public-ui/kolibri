@@ -80,18 +80,8 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
-          <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-remove" _label=""></kol-icon>
-            </button>
-          </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
-          </div>
-          <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-add" _label=""></kol-icon>
-            </button>
           </div>
         </div>
       </div>
@@ -321,18 +311,8 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
-          <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-remove" _label=""></kol-icon>
-            </button>
-          </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number">
-          </div>
-          <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-add" _label=""></kol-icon>
-            </button>
           </div>
         </div>
       </div>
@@ -499,11 +479,6 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
-          <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-remove" _label=""></kol-icon>
-            </button>
-          </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="id-nonce-list">
@@ -511,11 +486,6 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
               <option value="2"></option>
               <option value="3"></option>
             </datalist>
-          </div>
-          <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-add" _label=""></kol-icon>
-            </button>
           </div>
         </div>
       </div>
@@ -775,11 +745,6 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
-          <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-remove" _label=""></kol-icon>
-            </button>
-          </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number">
             <datalist id="id-nonce-list">
@@ -787,11 +752,6 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
               <option value="2"></option>
               <option value="3"></option>
             </datalist>
-          </div>
-          <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" disabled="" tabindex="-1" type="button">
-              <kol-icon _icons="codicon codicon-add" _label=""></kol-icon>
-            </button>
           </div>
         </div>
       </div>
