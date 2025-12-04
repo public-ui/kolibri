@@ -54,7 +54,7 @@
 		"lint:tsc": "tsc --noemit",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
-		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
+		"test:update:all": "pnpm -r --workspace-concurrency=1 test:update"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
