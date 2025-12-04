@@ -59,7 +59,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"svelte": "^5.45.4"
+		"svelte": "^5.45.5"
 	},
 	"sideEffects": false,
 	"type": "module",
