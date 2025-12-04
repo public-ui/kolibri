@@ -7,17 +7,13 @@
 	@include kol-button-styles('kol-button');
 	@include kol-popover-button-styles;
 
-	:host {
-		font-size: inherit;
-	}
-
 	.kol-popover-button {
-		--font-size: inherit;
 		&--open {
 			.kol-button__tooltip {
 				display: none;
 			}
 		}
+
 		&--inline {
 			.kol-button {
 				min-width: 0;

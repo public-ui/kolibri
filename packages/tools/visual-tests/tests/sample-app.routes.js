@@ -717,6 +717,9 @@ ROUTES.set('popover-button/basic', {
 		},
 	},
 });
+ROUTES.set('popover-button/inline', {
+	snapshot: {},
+});
 ROUTES.set('progress/basic', {
 	snapshot: {
 		zoom: {

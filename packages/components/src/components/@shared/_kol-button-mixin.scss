@@ -8,16 +8,18 @@
 	}
 
 	.#{$block-classname} {
-		display: inline-flex;
+		display: flex;
+		min-height: var(--a11y-min-size);
+		font-style: to-rem(16);
 		text-decoration-line: none;
 
-		&::before {
+		.#{$block-classname}::before {
 			/* Render zero-width character as first element to set the baseline correctly. */
 			content: '\200B';
 		}
 
-		&__text {
-			width: 100%;
+		.#{$block-classname}__text {
+			flex: 1 0 100%;
 		}
 	}
 }
