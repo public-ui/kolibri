@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-v19",
-	"version": "3.0.8-rc.3",
+	"version": "3.0.8",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -61,8 +61,8 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
+		"react": "^19.2.1",
+		"react-dom": "^19.2.1"
 	},
 	"sideEffects": false,
 	"type": "module",

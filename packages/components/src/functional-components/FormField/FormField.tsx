@@ -40,7 +40,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
-	counter?: { currentLength: number; currentLengthDebounced: number; maxLength?: number; maxLengthBehavior: MaxLengthBehaviorPropType };
+	counter?: { currentLength: number; currentLengthDebounced: number; maxLengthBehavior: MaxLengthBehaviorPropType; maxLength?: number; id?: string };
 	readOnly?: boolean;
 	touched?: boolean;
 	required?: boolean;
@@ -137,6 +137,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					label={label}
 					accessKey={accessKey}
 					shortKey={shortKey}
+					readOnly={readOnly}
 				/>
 			)}
 			<InputContainer {...formFieldInputProps}>
@@ -145,7 +146,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} align={tooltipAlign} badgeText={badgeText} />
 				)}
 			</InputContainer>
-			{counter ? <KolFormFieldCounterFc {...counter} /> : null}
+			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
 			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
