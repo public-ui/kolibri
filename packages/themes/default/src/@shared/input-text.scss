@@ -25,18 +25,10 @@
 
 			&--start {
 				left: 0;
-
-				> .kol-icon:first-child {
-					margin-left: to-rem(16);
-				}
 			}
 
 			&--end {
 				right: 0;
-
-				> .kol-icon:last-child {
-					margin-right: to-rem(16);
-				}
 			}
 		}
 
