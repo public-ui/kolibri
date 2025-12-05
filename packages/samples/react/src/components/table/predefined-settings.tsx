@@ -19,17 +19,10 @@ export const PredefinedSettings: FC = () => {
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'column A', key: 'columnA' },
-							{ label: 'column B', key: 'columnB' },
-							{ label: 'column C', key: 'columnC' },
+							{ key: 'columnC', visible: true, label: 'Column C', width: '45' },
+							{ key: 'columnB', visible: true, label: 'Column B', width: '20' },
+							{ key: 'columnA', visible: false, label: 'Column A' },
 						],
-					],
-				}}
-				_tableSettings={{
-					columns: [
-						{ key: 'columnC', visible: true, label: 'Column C', width: 45 },
-						{ key: 'columnB', visible: true, label: 'Column B', width: 20 },
-						{ key: 'columnA', visible: false, label: 'Column A' },
 					],
 				}}
 				_data={DATA}

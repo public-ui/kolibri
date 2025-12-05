@@ -45,8 +45,6 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { MinWidthPropType } from '../../schema/props/min-width';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
-import { validateTableSettings } from '../../schema/props/table-settings';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -127,11 +125,6 @@ export class KolTableStateful implements TableAPI {
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableStatefulCallbacksPropType;
-
-	/**
-	 * Defines the table settings including column visibility, order and width.
-	 */
-	@Prop() public _tableSettings?: TableSettingsPropType;
 
 	/**
 	 * Enables the settings menu if true (default: false).
@@ -321,11 +314,6 @@ export class KolTableStateful implements TableAPI {
 		validateTableStatefulCallbacks(this, value);
 	}
 
-	@Watch('_tableSettings')
-	public validateTableSettings(value?: TableSettingsPropType): void {
-		validateTableSettings(this, value);
-	}
-
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
 		onClick: (event: Event, page: number) => {
 			if (typeof this.state._pagination._on?.onClick === 'function') {
@@ -408,7 +396,6 @@ export class KolTableStateful implements TableAPI {
 		this.validatePagination(this._pagination);
 		this.validatePaginationPosition(this._paginationPosition);
 		this.validateSelection(this._selection);
-		this.validateTableSettings(this._tableSettings);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
 	}
 
@@ -588,7 +575,6 @@ export class KolTableStateful implements TableAPI {
 						},
 					}}
 					_selection={this.state._selection}
-					_tableSettings={this.state._tableSettings}
 					_hasSettingsMenu={this.state._hasSettingsMenu}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
