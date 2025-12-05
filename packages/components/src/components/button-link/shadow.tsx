@@ -65,7 +65,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
 				_id={this._id}
-				_inline={this._inline || this._variant === 'inline' ? true : this._variant === 'standalone' ? false : undefined}
+				_inline={this._inline !== undefined ? this._inline : this._variant === 'inline' ? true : this._variant === 'standalone' ? false : undefined}
 				_label={this._label}
 				_name={this._name}
 				_on={this._on}
