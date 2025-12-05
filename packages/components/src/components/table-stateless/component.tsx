@@ -717,7 +717,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const totalColumnWidth =
 			this.state._headerCells.horizontal?.[this.state._headerCells.horizontal.length - 1]
 				?.filter((col) => col.visible !== false)
-				.reduce((total, col) => total + parseColumnWidth(col.width), 0) ?? 0;
+				.reduce((total, col) => total + parseColumnWidth(col.width, 0), 0) ?? 0;
 		return this.state._minWidth === 'auto' ? `${totalColumnWidth}ch` : `max(${this.state._minWidth}, ${totalColumnWidth}ch)`;
 	}
 
