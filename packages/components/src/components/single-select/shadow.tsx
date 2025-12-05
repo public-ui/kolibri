@@ -249,9 +249,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 		const charLowerCase = char.toLowerCase();
 
 		const index =
-			Array.isArray(this._filteredOptions) && this._filteredOptions.findIndex((option) => (option.label as string).toLowerCase().startsWith(charLowerCase));
+			Array.isArray(this._filteredOptions) &&
+			this._filteredOptions.findIndex((option) => (option.label as string).toLowerCase().startsWith(charLowerCase) && !option.disabled);
 
-		if (typeof index === 'number') {
+		if (typeof index === 'number' && index >= 0) {
 			this._focusedOptionIndex = index;
 			this.focusOption(index);
 		}
