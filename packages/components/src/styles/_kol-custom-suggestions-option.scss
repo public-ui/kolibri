@@ -8,5 +8,10 @@
 		.kol-custom-suggestions-options-group--cursor-hidden & {
 			cursor: none !important;
 		}
+
+		&--disabled:focus,
+		&--disabled:focus * {
+			cursor: not-allowed;
+		}
 	}
 }

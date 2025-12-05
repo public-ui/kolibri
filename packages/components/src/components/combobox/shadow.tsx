@@ -288,6 +288,7 @@ export class KolCombobox implements ComboboxAPI {
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
 									<CustomSuggestionsOptionFc
+										disabled={false}
 										index={index}
 										option={option}
 										searchTerm={this.state._value}
