@@ -24,7 +24,7 @@ export const LinkReactRouter: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-4">
-				<KolLink _href="/back-page" _label="Go to overview" _variant="standalone" _on={on} />
+				<KolLink _href="/back-page" _inline={false} _label="Go to overview" _on={on} />
 			</div>
 		</>
 	);
