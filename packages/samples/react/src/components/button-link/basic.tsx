@@ -21,7 +21,7 @@ export const ButtonLinkBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<section className="text-base">
-				<KolHeading _level={2} _label="Button-Link with variant 'inline'" />
+				<KolHeading _level={2} _label="Button-Link with _inline" />
 
 				<p>
 					In this paragraph, a link is inserted that contains no additional attributes. <KolButtonLink _label="Simple Link" /> It is rendered by default as an{' '}
@@ -38,16 +38,18 @@ export const ButtonLinkBasic: FC = () => {
 					Therefore, I go over the entire width of the parent element to create a line break.
 				</p>
 
-				<KolHeading _level={2} _label="Button-Link with variant 'standalone'" />
+				<KolHeading _level={2} _label="Button-Link with _inline={false}" />
+
+				<p>Use the boolean _inline property to render the link inline (default) or standalone.</p>
 
 				<p>
-					<KolButtonLink _label="Disabled ButtonLink" _disabled _variant="standalone" />
+					<KolButtonLink _label="Disabled ButtonLink" _disabled _inline={false} />
 				</p>
 				<p>
-					<KolButtonLink _label="With access key" _accessKey="c" _on={dummyEventHandler} _variant="standalone" />
+					<KolButtonLink _label="With access key" _accessKey="c" _inline={false} _on={dummyEventHandler} />
 				</p>
 				<p>
-					<KolButtonLink _label="Disabled ButtonLink" _shortKey="s" _variant="standalone" />
+					<KolButtonLink _label="Disabled ButtonLink" _inline={false} _shortKey="s" />
 				</p>
 			</section>
 		</>
