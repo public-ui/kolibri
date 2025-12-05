@@ -4,13 +4,13 @@
 @layer kol-theme-component {
 	@include kol-button('kol-button');
 
-	.kol-button {
-		&__text {
-			border-style: solid;
-			border-radius: var(--border-radius);
-			border-width: var(--border-width);
+	.kol-popover-button {
+		&--inline {
+			margin: 0 to-rem(4);
 
-			font-weight: 700;
+			.kol-button__text {
+				padding: 0;
+			}
 		}
 	}
 }

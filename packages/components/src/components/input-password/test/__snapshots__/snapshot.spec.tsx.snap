@@ -193,7 +193,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+            <input aria-describedby="id-nonce-error" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
           </div>
         </div>
       </div>

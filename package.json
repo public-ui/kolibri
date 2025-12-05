@@ -62,11 +62,12 @@
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
 		"test": "pnpm -r test",
+		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test:update",
 		"test:e2e": "pnpm -r test:e2e",
 		"test:unit": "pnpm -r test:unit",
-		"test:unit:update": "pnpm -r test:unit:update",
-		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
-		"test-update": "pnpm -r test-update",
+		"test:update": "pnpm test:update:e2e && pnpm test:update:unit",
+		"test:update:e2e": "pnpm -r --workspace-concurrency=1 test:update:e2e",
+		"test:update:unit": "pnpm -r --workspace-concurrency=1 test:update:unit",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
