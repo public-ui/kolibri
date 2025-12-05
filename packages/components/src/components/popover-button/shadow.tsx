@@ -75,7 +75,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_disabled={this._disabled}
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
-				_inline={this._inline}
 				_id={this._id}
 				_inline={this._inline}
 				_label={this._label}
@@ -137,8 +136,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsPropType;
-
-	@Prop() public _inline?: boolean = false;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
