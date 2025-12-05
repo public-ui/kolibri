@@ -22436,11 +22436,7 @@ snapshots:
       react-dom: 19.2.1(react@19.2.1)
       react-is: 16.13.1
       react-test-renderer: 16.14.0(react@19.2.1)
-<<<<<<< HEAD
       semver: 7.7.3
-=======
-      semver: 7.5.2
->>>>>>> 14655a2d9bea505626815c435f748991cadd25cb
 
   enzyme-adapter-utils@1.14.2(react@19.2.1):
     dependencies:
@@ -22451,11 +22447,7 @@ snapshots:
       object.fromentries: 2.0.8
       prop-types: 15.8.1
       react: 19.2.1
-<<<<<<< HEAD
       semver: 7.7.3
-=======
-      semver: 7.5.2
->>>>>>> 14655a2d9bea505626815c435f748991cadd25cb
 
   enzyme-shallow-equal@1.0.7:
     dependencies:
