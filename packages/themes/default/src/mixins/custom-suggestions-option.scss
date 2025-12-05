@@ -21,8 +21,8 @@
 
 		&--disabled:focus,
 		&--disabled:focus * {
-			cursor: not-allowed;
 			outline: 0;
+			cursor: not-allowed;
 		}
 	}
 }
