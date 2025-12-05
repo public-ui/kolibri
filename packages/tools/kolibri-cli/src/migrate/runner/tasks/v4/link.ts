@@ -1,8 +1,8 @@
 import fs from 'fs';
 
-import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS, MARKUP_EXTENSIONS } from '../../../../types';
-import { filterFilesByExt, kebabToCapitalCase, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
+import { filterFilesByExt, kebabToCapitalCase, MODIFIED_FILES } from '../../../shares/reuse';
+import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS, MARKUP_EXTENSIONS } from '../../../../types';
 
 class MapVariantStandaloneToInlineTask extends AbstractTask {
         private readonly tagCapitalCase: string;

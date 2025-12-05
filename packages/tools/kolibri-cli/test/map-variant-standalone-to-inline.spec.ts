@@ -1,5 +1,5 @@
-import fs from 'fs';
 import assert from 'node:assert';
+import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { MapButtonLinkVariantStandaloneToInlineTask, MapLinkVariantStandaloneToInlineTask } from '../src/migrate/runner/tasks/v4/link';
