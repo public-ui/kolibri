@@ -45,7 +45,7 @@ Add the following npm scripts to the theme's `package.json`:
 {
 	"scripts": {
 		"test": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test --update-snapshots=changed"
+		"test:update:e2e": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test --update-snapshots=changed"
 	}
 }
 ```

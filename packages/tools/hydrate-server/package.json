@@ -53,7 +53,7 @@
 		"test:unit": "pnpm run test:node && pnpm run test:mocha",
 		"test:node": "node --test \"test/node/**/*.test.mjs\"",
 		"test:mocha": "mocha \"test/mocha/**/*.spec.mjs\"",
-		"test:update": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
+		"test:update:unit": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
 		"@grpc/grpc-js": "1.14.2",
