@@ -14,7 +14,7 @@ This is the default theme for the [Public UI web component library](https://publ
 
 ```tsx
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 register(DEFAULT, defineCustomElements).then(() => {
@@ -62,7 +62,7 @@ Import and register the theme:
 
 ```js
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 register(DEFAULT, defineCustomElements);

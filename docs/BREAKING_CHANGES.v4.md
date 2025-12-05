@@ -6,6 +6,22 @@ New major versions of KoliBri are developed with the goal of simplifying mainten
 
 For more information, see the [KoliBri Maintenance and Support Strategy](https://github.com/public-ui/kolibri/blob/develop/MIGRATION.md).
 
+## Loader entry point
+
+Import the component loader from `@public-ui/components/loader`. The previous `@public-ui/components/dist/loader` path is no longer part of the public API surface.
+
+**Before:**
+
+```ts
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+```
+
+**After:**
+
+```ts
+import { defineCustomElements } from '@public-ui/components/loader';
+```
+
 ## Changed Components
 
 ### All components

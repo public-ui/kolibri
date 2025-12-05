@@ -5,7 +5,7 @@ env:
 
 on:
   schedule:
-    - cron: '0 2 * * 0'
+    - cron: '0 2 * * *' # Runs daily at 02:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -57,12 +57,10 @@ jobs:
 
       - name: Install
         run: pnpm i --no-frozen-lockfile
-      - name: Update dependencies
-        run: pnpm run update
+      - name: Update dependencies (minor)
+        run: pnpm ncu:minor
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
       - name: Fix format
         run: pnpm -r format -w
 
@@ -89,8 +87,13 @@ jobs:
       - name: Quality Checks
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
+          pnpm audit --audit-level high
           pnpm build
           pnpm format
           pnpm lint
-          pnpm test
+          pnpm test:unit
+          npx playwright install chromium
+          pnpm test:e2e
           pnpm unused
+      - name: Update dependencies (major)
+        run: pnpm ncu:major

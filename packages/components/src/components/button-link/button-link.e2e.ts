@@ -9,6 +9,20 @@ test.describe('kol-button-link', () => {
 		await expect(kolButton).toContainText('Test ButtonLink Element');
 	});
 
+	test('it supports inline rendering via _inline', async ({ page }) => {
+		await page.setContent('<kol-button-link _label="Inline ButtonLink" _inline></kol-button-link>');
+		const kolButtonLink = page.locator('kol-button-link');
+		const button = kolButtonLink.locator('button');
+		await expect(button).toHaveClass(/kol-button--inline/);
+	});
+
+	test('it maps legacy _variant to inline handling', async ({ page }) => {
+		await page.setContent('<kol-button-link _label="Legacy Variant" _variant="standalone" _inline="false"></kol-button-link>');
+		const kolButtonLink = page.locator('kol-button-link');
+		const button = kolButtonLink.locator('button');
+		await expect(button).toHaveClass(/kol-button--standalone/);
+	});
+
 	test.describe('Callbacks', () => {
 		['onClick', 'onMouseDown'].forEach((callbackName) => {
 			test(`should call ${callbackName} callback when internal button emits`, async ({ page }) => {

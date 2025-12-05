@@ -1,11 +1,13 @@
 {
-	"html": "<kol-snapshot><kol-button _label=\"Snapshot gRPC\"></kol-button></kol-snapshot>",
-	"components": ["kol-button"],
-	"hydratedCount": 1,
-	"diagnostics": [
-		{
-			"level": "info",
-			"message": "stub-renderer"
-		}
-	]
+  "html": "<kol-snapshot><kol-button _label=\"Snapshot gRPC\"></kol-button></kol-snapshot>",
+  "components": [
+    "kol-button"
+  ],
+  "hydratedCount": 1,
+  "diagnostics": [
+    {
+      "level": "info",
+      "message": "stub-renderer"
+    }
+  ]
 }

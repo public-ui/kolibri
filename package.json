@@ -8,13 +8,13 @@
 		"lint-staged": "16.2.7",
 		"npm-check-updates": "18.3.1",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.7.3",
+		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "16.26.1",
 		"stylelint-config-recommended-scss": "16.0.2",
 		"stylelint-config-standard": "39.0.1",
 		"stylelint-order": "7.0.0",
-		"stylelint-scss": "6.12.1"
+		"stylelint-scss": "6.13.0"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -62,11 +62,12 @@
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
 		"test": "pnpm -r test",
+		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test:update",
 		"test:e2e": "pnpm -r test:e2e",
 		"test:unit": "pnpm -r test:unit",
-		"test:unit:update": "pnpm -r test:unit:update",
-		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
-		"test-update": "pnpm -r test-update",
+		"test:update": "pnpm test:update:e2e && pnpm test:update:unit",
+		"test:update:e2e": "pnpm -r --workspace-concurrency=1 test:update:e2e",
+		"test:update:unit": "pnpm -r --workspace-concurrency=1 test:update:unit",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}

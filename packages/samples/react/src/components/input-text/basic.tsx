@@ -1,16 +1,21 @@
+import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-
-import { FormWrap } from '../FormWrap';
 import { SampleDescription } from '../SampleDescription';
-import { InputTextVariants } from './partials/variants';
 
 export const InputTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolInputText renders a text input field. The sample shows KolInputText in a form context with all variations and states.</p>
+			<p>This story showcases the most important InputText variants: default, required, validation error, disabled, read-only, and with icons.</p>
 		</SampleDescription>
 
-		<FormWrap RefComponent={InputTextVariants} showButtons={false} />
+		<div className="grid gap-4">
+			<KolInputText _label="Name" _value="Anderson-Clark" />
+			<KolInputText _label="Name" _required _msg={{ _type: 'error', _description: 'Please enter your name' }} _touched />
+			<KolInputText _label="Name" _required _hint="Enter your surname" />
+			<KolInputText _label="Name" _value="Anderson-Clark" _disabled />
+			<KolInputText _label="Name" _readOnly _value="Anderson-Clark" />
+			<KolInputText _label="Name" _icons="codicon codicon-account" _value="Anderson-Clark" />
+		</div>
 	</>
 );
