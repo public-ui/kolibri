@@ -48,3 +48,39 @@ toaster.enqueue({
 	type: 'info',
 });
 ```
+
+### Table
+
+- The settings menu is now part of the `_horizontalHeaderCells` prop. The settings for visibility (`visible`), hidability (`hidable`), sortability (`sortable`), and resizability (`resizable`) are now managed directly through the header cell configuration.
+
+**Before:**
+
+```tsx
+// Settings were applied immediately
+<kol-table-stateless
+	_headerCells={headerCells}
+	_tableSettings={tableSettings}
+	_on={{
+		onSettingsChange: (event, tableSettings) => {
+			// Settings applied immediately
+			setTableSettings(tableSettings);
+		},
+	}}
+/>
+```
+
+**After:**
+
+```tsx
+// Settings are only applied after clicking "Apply"
+<kol-table-stateless
+	_headerCells={headerCells}
+	_hasSettingsMenu={true}
+	_on={{
+		onChangeHeaderCells: (event, headerCells) => {
+			// Settings only updated after user confirms
+			setHeaderCells(headerCells);
+		},
+	}}
+/>
+```

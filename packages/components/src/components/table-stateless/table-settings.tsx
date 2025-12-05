@@ -2,9 +2,9 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
-import type { ColumnSettings } from '../../schema';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import type { KoliBriTableHeaderCell } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { parseColumnWidth } from './controller';
 
 /**
  * @internal
@@ -15,94 +15,102 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 })
 export class KolTableSettings {
 	@Element() private readonly host?: HTMLKolTableSettingsWcElement;
-	@State() tableSettings: TableSettingsPropType = { columns: [] };
+	@State() headerCells: KoliBriTableHeaderCell[][] = [];
+	@State() editingHeaderCells: KoliBriTableHeaderCell[][] = [];
 	@State() errorMessage: string | null = null;
 	private readonly translateTableSettings = translate('kol-table-settings');
 	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
 	private readonly translateColumnNotHidable = translate('kol-table-settings-column-not-hidable');
-	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
-
-	@Watch('_tableSettings')
-	handleTableSettingsChange(newValue: TableSettingsPropType) {
-		this.tableSettings = {
-			...newValue,
-			columns: this.normalizeColumns(Array.isArray(newValue.columns) ? newValue.columns : []),
-		};
+	@Prop() _horizontalHeaderCells: KoliBriTableHeaderCell[][] = [];
+	@Watch('_horizontalHeaderCells')
+	handleHeaderCellsChange(newValue: KoliBriTableHeaderCell[][]) {
+		this.headerCells = newValue.map((row) => [...row]);
+		this.editingHeaderCells = newValue.map((row) => [...row]);
 	}
 
 	public componentWillLoad() {
-		this.handleTableSettingsChange(this._tableSettings);
+		this.handleHeaderCellsChange(this._horizontalHeaderCells);
 	}
 
 	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
 
-	private normalizeColumns(columns: ColumnSettings[]): ColumnSettings[] {
-		return columns.map(({ hidable, resizable, sortable, visible, ...rest }) => ({
-			...rest,
-			hidable: hidable !== false,
-			resizable: resizable !== false,
-			sortable: sortable !== false,
-			visible: visible !== false,
-		}));
+	private getPrimaryRow(): KoliBriTableHeaderCell[] {
+		return this.editingHeaderCells[this.editingHeaderCells.length - 1] ?? [];
+	}
+
+	private updatePrimaryRow(newRow: KoliBriTableHeaderCell[]): void {
+		this.editingHeaderCells = this.editingHeaderCells.map((row, index, arr) => (index === arr.length - 1 ? newRow : row));
 	}
 
 	private moveColumn(columnId: string, direction: 'up' | 'down'): void {
-		const columns = [...this.tableSettings.columns];
-		const sourceIndex = columns.findIndex((col) => col.key === columnId);
-		const sourceColumn = columns[sourceIndex];
-		const targetIndex = direction === 'up' ? sourceIndex - 1 : sourceIndex + 1;
-		const targetColumn = columns[targetIndex];
+		const row = [...this.getPrimaryRow()];
+		const sourceIndex = row.findIndex((col) => col.key === columnId);
+		if (sourceIndex === -1) return;
 
-		if (sourceIndex < 0 || targetIndex < 0 || targetIndex >= columns.length || sourceColumn?.sortable === false || targetColumn?.sortable === false) {
-			return;
+		let targetIndex: number;
+		if (direction === 'up') {
+			targetIndex = sourceIndex === 0 ? row.length - 1 : sourceIndex - 1;
+		} else {
+			targetIndex = sourceIndex === row.length - 1 ? 0 : sourceIndex + 1;
 		}
 
-		const [movedColumn] = columns.splice(sourceIndex, 1);
-		columns.splice(targetIndex, 0, movedColumn);
-
-		this.tableSettings = {
-			...this.tableSettings,
-			columns,
-		};
+		// Swap with target
+		const [source] = row.splice(sourceIndex, 1);
+		row.splice(targetIndex, 0, source);
+		this.updatePrimaryRow(row);
 	}
 
 	private handleVisibilityChange(key: string, visible: unknown): void {
-		this.tableSettings = {
-			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key && col.hidable !== false ? { ...col, visible: Boolean(visible) } : col)),
-		};
+		const row = this.getPrimaryRow().map((col) => (col.key === key && col.hidable !== false ? { ...col, visible: Boolean(visible) } : col));
+		this.updatePrimaryRow(row);
 	}
 
 	private handleWidthChange(key: string, width: unknown): void {
-		this.tableSettings = {
-			...this.tableSettings,
-			columns: this.tableSettings.columns.map((col) => (col.key === key ? (col.resizable === false ? col : { ...col, width: Number(width) }) : col)),
-		};
+		const row = this.getPrimaryRow().map((col) => (col.key === key ? { ...col, width: `${Number(width)}ch` } : col));
+		this.updatePrimaryRow(row);
 	}
 
 	private handleCancel() {
+		this.editingHeaderCells = this.headerCells.map((row) => [...row]);
+		this.errorMessage = null;
 		void this.popoverRef?.hidePopover();
 	}
 
 	private handleSubmit(event: Event): void {
 		event.preventDefault();
 
-		const hasVisibleColumn = this.tableSettings.columns.some((column) => column.visible);
+		const primaryRow = this.getPrimaryRow();
+		const hasVisibleColumn = primaryRow.some((column) => column.visible !== false);
 
 		if (!hasVisibleColumn) {
 			this.errorMessage = this.translateErrorAllInvisible;
 			return;
 		} else if (this.host) {
 			this.errorMessage = null;
-			dispatchDomEvent(this.host, KolEvent.settingsChange, this.tableSettings);
+			// Update headerCells with the edited values
+			this.headerCells = this.editingHeaderCells.map((row) => [...row]);
+			const sanitizedHeaderCells = this.editingHeaderCells.map((row) =>
+				row.map((column) => {
+					const cell = { ...column } as KoliBriTableHeaderCell & { position?: unknown };
+					delete cell.position;
+					if (cell.visible !== false) {
+						delete cell.visible;
+					}
+					if (cell.hidable !== false) {
+						delete cell.hidable;
+					}
+					return cell;
+				}),
+			);
+			dispatchDomEvent(this.host, KolEvent.settingsChange, sanitizedHeaderCells);
 			void this.popoverRef?.hidePopover();
 		}
 	}
 
 	public render(): JSX.Element {
-		const sortedColumns = this.tableSettings.columns;
+		const columns = this.getPrimaryRow();
 
 		return (
 			<KolPopoverButtonWcTag
@@ -121,33 +129,32 @@ export class KolTableSettings {
 					<form onSubmit={this.handleSubmit.bind(this)}>
 						<div class="kol-table-settings__columns-container">
 							<div class="kol-table-settings__columns">
-								{sortedColumns.map((column, index) => (
+								{columns.map((column) => (
 									<div key={column.key} class="kol-table-settings__column">
 										<KolInputCheckboxTag
-											_checked={column.visible}
+											_checked={column.visible !== false}
 											_label={`${column.label}${column.hidable === false ? ` (${this.translateColumnNotHidable})` : ''}`}
 											_value={true}
 											_hideLabel
 											_disabled={column.hidable === false}
-											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
-											data-testid={`table-settings-visible-${column.key}`}
+											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key ?? '', value) }}
 										/>
 										<span class="kol-table-settings__column-label">{column.label}</span>
 										<KolInputNumberTag
 											_hideLabel
-											_value={column.width}
+											_value={parseColumnWidth(column.width)}
 											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
 											_min={1}
 											_disabled={column.resizable === false}
-											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
+											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
 										/>
 										<KolButtonWcTag
 											_icons="codicon codicon-arrow-up"
 											_label={translate('kol-table-settings-move-up', { placeholders: { column: column.label } })}
 											_hideLabel
 											_buttonVariant="ghost"
-											_on={{ onClick: () => this.moveColumn(column.key, 'up') }}
-											_disabled={index === 0 || column.sortable === false || sortedColumns[index - 1]?.sortable === false}
+											_on={{ onClick: () => this.moveColumn(column.key ?? '', 'up') }}
+											_disabled={column.sortable === false}
 											data-testid="table-settings-move-up"
 										/>
 										<KolButtonWcTag
@@ -155,8 +162,8 @@ export class KolTableSettings {
 											_label={translate('kol-table-settings-move-down', { placeholders: { column: column.label } })}
 											_hideLabel
 											_buttonVariant="ghost"
-											_on={{ onClick: () => this.moveColumn(column.key, 'down') }}
-											_disabled={index === sortedColumns.length - 1 || column.sortable === false || sortedColumns[index + 1]?.sortable === false}
+											_on={{ onClick: () => this.moveColumn(column.key ?? '', 'down') }}
+											_disabled={column.sortable === false}
 											data-testid="table-settings-move-down"
 										/>
 									</div>

@@ -3,12 +3,11 @@ import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, P
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
 import type { PropMinWidth } from '../props/min-width';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
-import type { PropTableSettings } from '../props/table-settings';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 
 type RequiredProps = PropLabel & PropMinWidth & PropTableData & PropTableHeaderCells;
 
-type OptionalProps = PropTableCallbacks & PropTableDataFoot & PropTableSelection & PropTableSettings & PropHasSettingsMenu;
+type OptionalProps = PropTableCallbacks & PropTableDataFoot & PropTableSelection & PropHasSettingsMenu;
 
 type RequiredStates = {
 	headerCells: TableHeaderCells;
@@ -19,9 +18,8 @@ type RequiredStates = {
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];
 	selection: KoliBriTableSelection;
-} & PropTableCallbacks &
-	PropTableSettings &
-	PropHasSettingsMenu;
+} & PropHasSettingsMenu &
+	PropTableCallbacks;
 
 export type TableStatelessProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TableStatelessStates = Generic.Element.Members<RequiredStates, OptionalStates>;

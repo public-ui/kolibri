@@ -12,6 +12,7 @@ export type KoliBriTableCell = {
 	render?: KoliBriTableRender;
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
+	/** @default 100 */
 	width?: string;
 	data?: KoliBriTableDataType;
 };
@@ -22,6 +23,7 @@ export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	hidable?: boolean;
 	sortable?: boolean;
 	resizable?: boolean;
+	visible?: boolean;
 };
 
 export type KoliBriTableSelection = {
