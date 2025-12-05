@@ -76,12 +76,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
+		const { ariaDescribedBy, hasError, hasHint } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		return (
 			<Host class="kol-input-radio">
 				<fieldset
+					aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 					class={{
 						fieldset: true,
 						disabled: this.state._disabled === true,
@@ -173,7 +173,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						);
 					})}
 					{hasError && <KolFormFieldMsgFc _alert={this.showAsAlert()} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
-					{hasHint && <span class="hint">{this.state._hint}</span>}
+					{hasHint && (
+						<span class="hint" id={`${this.state._id}-hint`}>
+							{this.state._hint}
+						</span>
+					})
 				</fieldset>
 			</Host>
 		);
