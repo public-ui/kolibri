@@ -9,6 +9,11 @@ import { searchEntries, type SearchOptions } from './search.js';
 const KIND_OPTIONS = ['doc', 'sample', 'scenario', 'spec'] as const;
 type KindOption = (typeof KIND_OPTIONS)[number];
 
+/**
+ * Check if a value is a valid KindOption
+ * @param value - The value to check
+ * @returns True if value is a valid KindOption
+ */
 function isValidKind(value: unknown): value is KindOption {
 	return typeof value === 'string' && (KIND_OPTIONS as readonly string[]).includes(value);
 }
@@ -31,15 +36,28 @@ interface StructuredSearchResult {
 	results: StructuredSearchResultEntry[];
 }
 
+/**
+ * Normalize tags array, filtering empty values
+ * @param tags - The tags array to normalize
+ * @returns Normalized tags array
+ */
 function normalizeTags(tags?: string[]): string[] {
 	return Array.isArray(tags) ? tags : [];
 }
 
+/**
+ * Format tags array as comma-separated text
+ * @param tags - The tags array to format
+ * @returns Formatted tags string
+ */
 function formatTagsForText(tags?: string[]): string {
 	const normalized = normalizeTags(tags);
 	return normalized.length > 0 ? normalized.join(', ') : 'none';
 }
 
+/**
+ * Load package.json metadata for the MCP server
+ */
 const require = createRequire(import.meta.url);
 const {
 	version: PACKAGE_VERSION = '0.0.0',
@@ -56,6 +74,9 @@ const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOG
 
 /**
  * Log a message if logging is enabled
+ * @param type - The log type (info, tool, resource, or error)
+ * @param message - The log message
+ * @param data - Optional data object to log as JSON
  */
 function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data?: unknown): void {
 	if (!ENABLE_LOGGING) return;
@@ -85,6 +106,8 @@ export function createKolibriMcpServer(): McpServer {
 
 /**
  * Configure the MCP server with tools and resources.
+ * @param server - The MCP server to configure
+ * @returns The configured MCP server
  */
 function configureServer(server: McpServer): McpServer {
 	// Add search tool for KoliBri samples and docs

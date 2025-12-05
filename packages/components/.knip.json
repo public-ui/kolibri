@@ -8,7 +8,6 @@
 		"@stencil/solid-output-target",
 		"@stencil/vue-output-target",
 		"eslint-plugin-html",
-		"eslint-plugin-jsdoc",
 		"eslint-plugin-react"
 	],
 	"project": ["src/**/*.ts"]

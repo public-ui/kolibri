@@ -38,7 +38,9 @@ export function searchEntries(entries: SampleEntry[], query: string, options: Se
 		return filteredEntries.map((item) => ({ item, score: 1 }));
 	}
 
-	// Split query into words to determine search strategy
+	/**
+	 * Split query into words to determine search strategy
+	 */
 	const words = normalizedQuery.split(/\s+/).filter((w) => w.length > 0);
 	const isMultiWord = words.length > 1;
 

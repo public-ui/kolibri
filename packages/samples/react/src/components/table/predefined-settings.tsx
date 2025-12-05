@@ -19,8 +19,8 @@ export const PredefinedSettings: FC = () => {
 				_headers={{
 					horizontal: [
 						[
-							{ key: 'columnC', visible: true, label: 'Column C', width: 45 },
-							{ key: 'columnB', visible: true, label: 'Column B', width: 20 },
+							{ key: 'columnC', visible: true, label: 'Column C', width: '45' },
+							{ key: 'columnB', visible: true, label: 'Column B', width: '20' },
 							{ key: 'columnA', visible: false, label: 'Column A' },
 						],
 					],
