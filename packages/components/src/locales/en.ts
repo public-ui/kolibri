@@ -32,7 +32,7 @@ export default {
 	'avatar-alt': 'Avatar of {{name}}',
 	'split-button-dropdown-label-open': 'Show options',
 	'split-button-dropdown-label-close': 'Hide options',
-        'toast-close-all': 'Close all notifications',
+	'toast-close-all': 'Close all notifications',
 	'error-list': 'Error list',
 	'error-list-message': 'Please correct the following errors',
 	version: 'Version number',

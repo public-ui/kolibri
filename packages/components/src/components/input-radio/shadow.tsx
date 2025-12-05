@@ -130,7 +130,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										title=""
-										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
 										type="radio"
 										id={customId}
