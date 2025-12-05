@@ -376,7 +376,9 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 
 	@Watch('_inline')
 	public validateInline(value?: InlinePropType): void {
-		validateInline(this, value);
+		validateInline(this, value, {
+			defaultValue: false,
+		});
 	}
 
 	@Watch('_label')
