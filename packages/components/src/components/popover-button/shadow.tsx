@@ -76,6 +76,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
 				_id={this._id}
+				_inline={this._inline}
 				_label={this._label}
 				_name={this._name}
 				_on={this._on}
