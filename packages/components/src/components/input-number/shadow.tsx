@@ -1,4 +1,4 @@
-import type { JSX } from '@stencil/core';
+import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from 'clsx';
 
@@ -32,6 +32,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { KolIconFc } from '../../functional-components';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
@@ -150,10 +151,54 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		};
 	}
 
+	private getStepUpButton(): VNode | null {
+		if (this._disabled || this._readOnly) {
+			return null;
+		}
+
+		return (
+			<button
+				type="button"
+				tabIndex={-1}
+				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
+				data-testid="kol-input-number-step-up"
+				onClick={(): void => {
+					this.inputRef?.stepUp();
+					this.inputRef?.focus();
+				}}
+				disabled={this._disabled || this._readOnly}
+			>
+				<KolIconFc icons="codicon codicon-add" label="" />
+			</button>
+		);
+	}
+
+	private getStepDownButton(): VNode | null {
+		if (this._disabled || this._readOnly) {
+			return null;
+		}
+
+		return (
+			<button
+				type="button"
+				tabIndex={-1}
+				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
+				data-testid="kol-input-number-step-down"
+				onClick={(): void => {
+					this.inputRef?.stepDown();
+					this.inputRef?.focus();
+				}}
+				disabled={this._disabled || this._readOnly}
+			>
+				<KolIconFc icons="codicon codicon-remove" label="" />
+			</button>
+		);
+	}
+
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
+				<KolInputContainerFc state={this.state} startAdornment={this.getStepDownButton()} endAdornment={this.getStepUpButton()}>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
