@@ -15,20 +15,17 @@ import type {
 import {
 	a11yHintLabelingLandmarks,
 	devHint,
-	devWarning,
 	validateCollapsible,
 	validateHasCompactButton,
 	validateHasIconsWhenExpanded,
 	validateHideLabel,
 	validateLabel,
-	watchValidator,
 } from '../../schema';
 
 import clsx from 'clsx';
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { StencilUnknown } from '../../schema';
-import type { OrientationPropType } from '../../schema/props/orientation';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
@@ -152,7 +149,6 @@ export class KolNav implements NavAPI {
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		orientation: OrientationPropType,
 		ariaIDparent: string,
 	): JSX.Element {
 		const active = !!link._active;
@@ -169,9 +165,7 @@ export class KolNav implements NavAPI {
 				key={index}
 			>
 				{this.entry(collapsible, hideLabel, hasChildren, link, expanded, ariaID)}
-				{expanded && (
-					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} id={ariaID} />
-				)}
+				{expanded && <this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} id={ariaID} />}
 			</li>
 		);
 	}
@@ -181,20 +175,18 @@ export class KolNav implements NavAPI {
 		hideLabel: HideLabelPropType;
 		deep: number;
 		links: ButtonOrLinkOrTextWithChildrenProps[];
-		orientation: OrientationPropType;
 		id: string;
 	}): JSX.Element => {
 		return (
 			<ul
 				class={clsx('kol-nav__list', {
 					'kol-nav__list--nested': props.deep > 0,
-					'kol-nav__list--horizontal': props.deep === 0 && props.orientation === 'horizontal',
-					'kol-nav__list--vertical': props.deep !== 0 || props.orientation === 'vertical',
+					'kol-nav__list--vertical': props.deep !== 0,
 				})}
 				id={props.deep > 0 ? props.id : undefined}
 			>
 				{props.links.map((link, index: number) => {
-					return this.li(props.collapsible, props.hideLabel, props.deep, index, link, props.orientation, props.id);
+					return this.li(props.collapsible, props.hideLabel, props.deep, index, link, props.id);
 				})}
 			</ul>
 		);
@@ -231,31 +223,18 @@ export class KolNav implements NavAPI {
 	}
 
 	public render(): JSX.Element {
-		let hasCompactButton = this.state._hasCompactButton;
-		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
-			hasCompactButton = false;
-			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
-		}
 		const collapsible = this.state._collapsible === true;
 		const hideLabel = this.state._hideLabel === true;
-		const orientation = this.state._orientation;
 		return (
 			<div
-				class={clsx('kol-nav', `kol-nav--${orientation}`, {
+				class={clsx('kol-nav', `kol-nav--vertical`, {
 					'kol-nav--is-compact': this.state._hideLabel,
 				})}
 			>
 				<nav aria-label={this.state._label} class="kol-nav__navigation" id={this.navId}>
-					<this.linkList
-						collapsible={collapsible}
-						hideLabel={hideLabel}
-						deep={0}
-						links={this.state._links}
-						orientation={orientation}
-						id={this.listId}
-					></this.linkList>
+					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} id={this.listId}></this.linkList>
 				</nav>
-				{hasCompactButton && (
+				{this.state._hasCompactButton && (
 					<div class="kol-nav__compact">
 						<KolButtonWcTag
 							class="kol-nav__toggle-button"
@@ -287,7 +266,7 @@ export class KolNav implements NavAPI {
 	@Prop() public _collapsible?: boolean = true;
 
 	/**
-	 * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
+	 * Creates a button below the navigation, that toggles _collapsible.
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
 
@@ -313,12 +292,6 @@ export class KolNav implements NavAPI {
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
-	/**
-	 * Defines whether the orientation of the component is horizontal or vertical.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _orientation?: OrientationPropType = 'vertical';
-
 	@State() public state: NavStates = {
 		_collapsible: true,
 		_hasCompactButton: false,
@@ -326,7 +299,6 @@ export class KolNav implements NavAPI {
 		_hideLabel: false,
 		_label: '', // ⚠ required
 		_links: [],
-		_orientation: 'vertical',
 		_expandedChildren: [],
 	};
 
@@ -370,20 +342,6 @@ export class KolNav implements NavAPI {
 		this.initializeExpandedChildren();
 	}
 
-	@Watch('_orientation')
-	public validateOrientation(value?: OrientationPropType): void {
-		watchValidator(
-			this,
-			'_orientation',
-			(value): boolean => value === 'horizontal' || value === 'vertical',
-			new Set(['Orientation {horizontal, vertical}']),
-			value,
-			{
-				defaultValue: 'vertical',
-			},
-		);
-	}
-
 	public componentWillLoad(): void {
 		this.validateCollapsible(this._collapsible);
 		this.validateHideLabel(this._hideLabel);
@@ -391,7 +349,6 @@ export class KolNav implements NavAPI {
 		this.validateHasIconsWhenExpanded(this._hasIconsWhenExpanded);
 		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
-		this.validateOrientation(this._orientation);
 		this.initializeExpandedChildren();
 	}
 
