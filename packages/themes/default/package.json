@@ -56,7 +56,7 @@
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",
-		"pretest:update": "pnpm build"
+		"pretest:update:e2e": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
