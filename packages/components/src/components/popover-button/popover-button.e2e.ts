@@ -56,7 +56,7 @@ test.describe('kol-popover-button', () => {
 
 	test('should render inline without enforcing a minimum height', async ({ page }) => {
 		await page.setContent(`
-			<kol-popover-button _label="Inline" _icons="codicon codicon-info" _inline>
+			<kol-popover-button _label="Inline" _icons="codicon codicon-info" _inline="true">
 				Popover content
 			</kol-popover-button>
 		`);

@@ -17,7 +17,7 @@ test.describe('kol-button-link', () => {
 	});
 
 	test('it maps legacy _variant to inline handling', async ({ page }) => {
-		await page.setContent('<kol-button-link _label="Legacy Variant" _variant="standalone"></kol-button-link>');
+		await page.setContent('<kol-button-link _label="Legacy Variant" _variant="standalone" _inline="false"></kol-button-link>');
 		const kolButtonLink = page.locator('kol-button-link');
 		const button = kolButtonLink.locator('button');
 		await expect(button).toHaveClass(/kol-button--standalone/);
