@@ -52,7 +52,7 @@
 		"pretest:update:unit": "pnpm run pretest:unit",
 		"test": "pnpm run test:unit",
 		"test:unit": "cross-env NODE_ENV=test mocha",
-		"test:update:unit": "cross-env NODE_ENV=test UPDATE=1 mocha"
+		"test:update:unit": "cross-env CI= NODE_ENV=test UPDATE=1 mocha"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
