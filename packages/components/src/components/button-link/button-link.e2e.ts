@@ -10,7 +10,7 @@ test.describe('kol-button-link', () => {
 	});
 
 	test('it supports inline rendering via _inline', async ({ page }) => {
-		await page.setContent('<kol-button-link _label="Inline ButtonLink" _inline="true"></kol-button-link>');
+		await page.setContent('<kol-button-link _label="Inline ButtonLink" _inline></kol-button-link>');
 		const kolButtonLink = page.locator('kol-button-link');
 		const button = kolButtonLink.locator('button');
 		await expect(button).toHaveClass(/kol-button--inline/);
