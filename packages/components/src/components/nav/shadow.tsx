@@ -315,7 +315,7 @@ export class KolNav implements NavAPI {
 
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
-	 * @deprecated Will be removed in the next major version.
+	 * @deprecated Will be removed in the next major version. The navigation defaults to vertical orientation.
 	 */
 	@Prop() public _orientation?: OrientationPropType = 'vertical';
 
@@ -372,6 +372,12 @@ export class KolNav implements NavAPI {
 
 	@Watch('_orientation')
 	public validateOrientation(value?: OrientationPropType): void {
+		if (value !== 'vertical') {
+			devWarning(
+				'[KolNav] Die Eigenschaft _orientation ist veraltet, wird im nächsten Major Release entfernt und ' +
+					'sollte nicht mehr auf horizontale Navigation gesetzt werden. Die Navigation ist standardmäßig vertikal.',
+			);
+		}
 		watchValidator(
 			this,
 			'_orientation',
