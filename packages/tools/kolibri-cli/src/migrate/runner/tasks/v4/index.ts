@@ -1,11 +1,11 @@
 import { AbstractTask } from '../../abstract-task';
-import { MapVariantStandaloneToInlineTasks } from './link';
-import { NavRemovePropertyOrientationTask } from './nav';
 import { RemoveIdPropTasks } from './id';
+import { MapVariantStandaloneToInlineTasks } from './link';
+import { UpdateLoaderImportPathTask } from './loader';
 import { RemoveMsgPropsTasks } from './msg';
+import { NavRemovePropertyOrientationTask } from './nav';
 import { RemoveToastVariantTask } from './toast';
 import { RemoveToasterGetInstanceOptionsTask } from './toaster';
-import { UpdateLoaderImportPathTask } from './loader';
 
 export const v4Tasks: AbstractTask[] = [];
 
