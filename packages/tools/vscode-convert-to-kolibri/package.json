@@ -1,0 +1,133 @@
+{
+	"name": "vscode-public-ui-convert-to-kolibri",
+	"displayName": "Convert to KoliBri",
+	"version": "4.0.0-alpha.7",
+	"description": "VS Code extension that migrates HTML or TSX snippets into accessible KoliBri components.",
+	"license": "EUPL-1.2",
+	"icon": "icon.png",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"publisher": "ITZBund",
+	"private": true,
+	"main": "./dist/extension.js",
+	"type": "commonjs",
+	"engines": {
+		"vscode": "^1.93.0",
+		"node": ">=18"
+	},
+	"categories": [
+		"Formatters",
+		"Other"
+	],
+	"keywords": [
+		"kolibri",
+		"accessibility",
+		"a11y",
+		"web components",
+		"html",
+		"tsx",
+		"jsx",
+		"converter",
+		"migration"
+	],
+	"galleryBanner": {
+		"color": "#003C78",
+		"theme": "dark"
+	},
+	"activationEvents": [
+		"onLanguage:html",
+		"onLanguage:typescriptreact",
+		"onLanguage:javascriptreact"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "kolibri.convertSelection",
+				"title": "KoliBri: Convert selection to KoliBri",
+				"icon": "$(symbol-color)",
+				"enablement": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
+			},
+			{
+				"command": "kolibri.scanDocument",
+				"title": "KoliBri: Scan document for convertible components",
+				"icon": "$(search)",
+				"enablement": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "kolibri.convertSelection",
+					"when": "editorHasSelection && (editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript)",
+					"group": "1_modification@1"
+				},
+				{
+					"command": "kolibri.scanDocument",
+					"when": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript",
+					"group": "1_modification@2"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "kolibri.convertSelection",
+					"when": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
+				},
+				{
+					"command": "kolibri.scanDocument",
+					"when": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "kolibri.convertSelection",
+				"key": "ctrl+shift+k ctrl+shift+c",
+				"mac": "cmd+shift+k cmd+shift+c",
+				"when": "editorTextFocus && (editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript)"
+			},
+			{
+				"command": "kolibri.scanDocument",
+				"key": "ctrl+shift+k ctrl+shift+s",
+				"mac": "cmd+shift+k cmd+shift+s",
+				"when": "editorTextFocus && (editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript)"
+			}
+		]
+	},
+	"scripts": {
+		"build": "tsc -p .",
+		"format": "prettier -c src README.md package.json tsconfig.json",
+		"lint": "pnpm lint:tsc",
+		"lint:tsc": "tsc --noEmit",
+		"package": "pnpm build && vsce package --no-dependencies"
+	},
+	"files": [
+		"dist",
+		"icon.png",
+		"icon.svg"
+	],
+	"dependencies": {
+		"@babel/generator": "7.28.5",
+		"@babel/parser": "7.28.5",
+		"@babel/traverse": "7.28.5",
+		"@babel/types": "7.28.5"
+	},
+	"devDependencies": {
+		"@types/node": "24.10.1",
+		"@types/vscode": "1.93.0",
+		"@vscode/vsce": "3.7.1",
+		"prettier": "3.7.3",
+		"prettier-plugin-organize-imports": "4.3.0",
+		"typescript": "5.9.3"
+	}
+}

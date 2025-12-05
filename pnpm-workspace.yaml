@@ -13,6 +13,7 @@ packages:
   - packages/themes/default
   - packages/themes/ecl
   - packages/themes
+  - packages/tools/vscode-convert-to-kolibri
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/mcp
