@@ -34,7 +34,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 						)}
 					</span>
 				) : (
-					<KolLinkWcTag class="kol-breadcrumb__link" _linkVariant="standalone" {...link}></KolLinkWcTag>
+					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
 				)}
 			</li>
 		);

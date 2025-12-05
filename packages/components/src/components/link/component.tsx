@@ -15,6 +15,7 @@ import type {
 	FocusableElement,
 	HideLabelPropType,
 	HrefPropType,
+	InlinePropType,
 	InternalLinkAPI,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
@@ -44,10 +45,10 @@ import {
 	validateHideLabel,
 	validateHref,
 	validateIcons,
+	validateInline,
 	validateLabelWithExpertSlot,
 	validateLinkCallbacks,
 	validateLinkTarget,
-	validateLinkVariant,
 	validateShortKey,
 	validateTooltipAlign,
 } from '../../schema';
@@ -176,7 +177,8 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
 						[`kol-link--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
-						[`kol-link--${this.state._linkVariant as string}`]: this.state._linkVariant,
+						'kol-link--inline': this.state._inline === true,
+						'kol-link--standalone': this.state._inline === false,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
@@ -288,13 +290,18 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = true;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines which variant should be used for presentation.
-	 * @internal
+	 * @deprecated Use the new _inline property instead.
 	 */
 	@Prop() public _linkVariant?: LinkVariantPropType;
 
@@ -403,14 +410,24 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		validateIcons(this, value);
 	}
 
+	@Watch('_inline')
+	public validateInline(value?: InlinePropType): void {
+		validateInline(this, value, {
+			defaultValue: true,
+		});
+	}
+
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value);
 	}
 
+	/**
+	 * @deprecated Use the new _inline property instead.
+	 */
 	@Watch('_linkVariant')
 	public validateLinkVariant(value?: LinkVariantPropType): void {
-		validateLinkVariant(this, value);
+		this.validateInline(value === 'inline' ? true : value === 'standalone' ? false : undefined);
 	}
 
 	@Watch('_on')
@@ -462,6 +479,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);
 		this.validateIcons(this._icons);
+		this.validateInline(this._inline);
 		this.validateLabel(this._label);
 		this.validateLinkVariant(this._linkVariant);
 		this.validateOn(this._on);

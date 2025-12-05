@@ -15,6 +15,7 @@ import type {
 	FocusableElement,
 	HideLabelPropType,
 	IconsPropType,
+	InlinePropType,
 	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
 	LinkVariantPropType,
@@ -42,8 +43,8 @@ import {
 	validateDisabled,
 	validateHideLabel,
 	validateIcons,
+	validateInline,
 	validateLabelWithExpertSlot,
-	validateLinkVariant,
 	validateShortKey,
 	validateTooltipAlign,
 	watchString,
@@ -144,7 +145,8 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					class={clsx('kol-button', {
 						'kol-button--disabled': isDisabled,
 						[`kol-button--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
-						[`kol-button--${this.state._linkVariant as string}`]: this.state._linkVariant,
+						'kol-button--inline': this.state._inline === true,
+						'kol-button--standalone': this.state._inline === false,
 						'kol-button--hide-label': hideLabel,
 						[this.state._customClass as string]:
 							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
@@ -249,13 +251,18 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Prop() public _id?: string;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines which variant should be used for presentation.
-	 * @internal
+	 * @deprecated Use the new _inline property instead.
 	 */
 	@Prop() public _linkVariant?: LinkVariantPropType;
 
@@ -374,16 +381,23 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		watchString(this, '_id', value);
 	}
 
+	@Watch('_inline')
+	public validateInline(value?: InlinePropType): void {
+		validateInline(this, value);
+	}
+
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value, {
 			required: true,
 		});
 	}
-
+	/**
+	 * @deprecated Use the new _inline property instead.
+	 */
 	@Watch('_linkVariant')
 	public validateLinkVariant(value?: LinkVariantPropType): void {
-		validateLinkVariant(this, value);
+		this.validateInline(value === 'inline' ? true : value === 'standalone' ? false : undefined);
 	}
 
 	@Watch('_name')
@@ -449,6 +463,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateHideLabel(this._hideLabel);
 		this.validateIcons(this._icons);
 		this.validateId(this._id);
+		this.validateInline(this._inline);
 		this.validateLabel(this._label);
 		this.validateLinkVariant(this._linkVariant);
 		this.validateName(this._name);
