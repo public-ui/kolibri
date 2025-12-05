@@ -70,12 +70,21 @@ $visible-options: 5;
 				align-self: center;
 			}
 
-			&[aria-selected],
-			&:focus,
-			&.highlighted {
-				color: var(--color-light);
-				background-color: var(--color-primary-variant);
-				outline: 0;
+			&:not(&--disabled) {
+				&[aria-selected],
+				&:focus,
+				&.highlighted {
+					color: var(--color-light);
+					background-color: var(--color-primary-variant);
+					outline: 0;
+				}
+			}
+
+			&--disabled {
+				&:focus {
+					outline: 0;
+					cursor: not-allowed;
+				}
 			}
 		}
 	}
