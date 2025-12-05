@@ -30,7 +30,7 @@ export default defineConfig({
 		sourcemap: true,
 	},
 	server: {
-		port: 9191,
+		port: parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '9191', 10),
 		fs: {
 			allow: [
 				path.resolve(__dirname),
