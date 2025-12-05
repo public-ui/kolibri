@@ -30,7 +30,7 @@ export default {
 	'avatar-alt': 'Avatar von {{name}}',
 	'split-button-dropdown-label-open': 'Optionen anzeigen',
 	'split-button-dropdown-label-close': 'Optionen schließen',
-	'toast-close-all': 'Alle schließen',
+	'toast-close-all': 'Alle Benachrichtigungen schließen',
 	'error-list': 'Fehlerliste',
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 	version: 'Versionsnummer',
