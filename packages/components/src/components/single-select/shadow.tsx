@@ -210,6 +210,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 		let newIndex = this._focusedOptionIndex + delta;
 		let iterations = 0;
+		let foundEnabledOption = false;
 
 		const maxIterations = this._filteredOptions.length;
 
@@ -223,6 +224,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 			const option = this._filteredOptions[newIndex] as Option<StencilUnknown>;
 			if (!option.disabled) {
+				foundEnabledOption = true;
 				break;
 			}
 
@@ -230,8 +232,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 			iterations++;
 		}
 
-		this._focusedOptionIndex = newIndex;
-		this.focusOption(this._focusedOptionIndex);
+		if (foundEnabledOption) {
+			this._focusedOptionIndex = newIndex;
+			this.focusOption(this._focusedOptionIndex);
+		}
 	}
 
 	private focusOption(index: number) {
@@ -245,9 +249,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 		const charLowerCase = char.toLowerCase();
 
 		const index =
-			Array.isArray(this._filteredOptions) && this._filteredOptions.findIndex((option) => (option.label as string).toLowerCase().startsWith(charLowerCase));
+			Array.isArray(this._filteredOptions) &&
+			this._filteredOptions.findIndex((option) => (option.label as string).toLowerCase().startsWith(charLowerCase) && !option.disabled);
 
-		if (typeof index === 'number') {
+		if (typeof index === 'number' && index >= 0) {
 			this._focusedOptionIndex = index;
 			this.focusOption(index);
 		}
