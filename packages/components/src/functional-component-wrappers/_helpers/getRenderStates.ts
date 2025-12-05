@@ -13,6 +13,7 @@ export const getRenderStates = (state: {
 	_id: string;
 	_touched?: TouchedPropType;
 	_hideMsg?: boolean;
+	_hasCounter?: boolean;
 }): {
 	hasError: boolean;
 	hasHint: boolean;
@@ -30,8 +31,16 @@ export const getRenderStates = (state: {
 	if (hasMessage && !state._hideMsg) {
 		ariaDescribedBy.push(`${state._id}-msg`);
 	}
-	if (hasHint) {
+	if (hasHint === true) {
 		ariaDescribedBy.push(`${state._id}-hint`);
+	}
+
+	if (state._hasCounter) {
+		ariaDescribedBy.push(`${state._id}-counter`);
+	}
+
+	if (hasError === true) {
+		ariaDescribedBy.push(`${state._id}-error`);
 	}
 	return { hasError, hasHint, ariaDescribedBy };
 };
