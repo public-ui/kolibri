@@ -11,3 +11,4 @@ node_modules/
 *.tgz
 
 node-compile-cache/
+package-lock.json
