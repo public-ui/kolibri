@@ -177,7 +177,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						<span class="hint" id={`${this.state._id}-hint`}>
 							{this.state._hint}
 						</span>
-					})
+					)}
 				</fieldset>
 			</Host>
 		);
