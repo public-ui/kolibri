@@ -61,6 +61,6 @@ Add the following npm scripts to the theme's `package.json`:
 Run the tests with `npm test`. The first time, this will create a new folder `snapshots` which is supposed to be committed to the repository.
 In the following runs, new screenshots will be compared to this reference.
 
-To update the reference screenshots call `npm run test-update`.
+To update the reference screenshots call `npm run test:update`.
 
 For details on theming see the [default theme README](../../themes/default/README.md).
