@@ -57,7 +57,7 @@ export class KolLink implements LinkProps, FocusableElement {
 				_hideLabel={this._hideLabel}
 				_href={this._href}
 				_icons={this._icons}
-				_inline={this._inline || this._variant === 'inline' ? true : this._variant === 'standalone' ? false : undefined}
+				_inline={this._inline !== undefined ? this._inline : this._variant === 'inline' ? true : this._variant === 'standalone' ? false : undefined}
 				_label={this._label}
 				_on={this._on}
 				_shortKey={this._shortKey}
