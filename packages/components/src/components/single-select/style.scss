@@ -14,10 +14,6 @@ $visible-options: var(--visible-options, 5);
 			cursor: not-allowed !important;
 		}
 
-		.radio-label {
-			cursor: not-allowed;
-		}
-
 		&__group {
 			display: inline-flex;
 			align-items: center;
@@ -46,12 +42,19 @@ $visible-options: var(--visible-options, 5);
 		}
 
 		&__item {
-			&.highlighted {
-				background-color: #f0f0f0;
+			&:not(&--disabled) {
+				&.highlighted {
+					background-color: #f0f0f0;
+				}
 			}
 
 			.single-select__listbox--cursor-hidden & {
 				cursor: none !important;
+			}
+
+			&--disabled:focus,
+			&--disabled:focus * {
+				cursor: not-allowed;
 			}
 		}
 
