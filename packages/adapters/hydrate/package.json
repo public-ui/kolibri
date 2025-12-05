@@ -48,6 +48,8 @@
 		"build": "rimraf dist/package.json",
 		"build:deps": "pnpm --filter @public-ui/hydrate... build",
 		"format": "prettier --check '**/*.{js,json,md}'",
+		"pretest:unit": "pnpm run build",
+		"pretest:update:unit": "pnpm run pretest:unit",
 		"test": "pnpm run test:unit",
 		"test:unit": "cross-env NODE_ENV=test mocha",
 		"test:update:unit": "cross-env NODE_ENV=test UPDATE=1 mocha"
