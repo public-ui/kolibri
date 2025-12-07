@@ -58,7 +58,11 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies (minor)
-        run: pnpm ncu:minor
+        run: |
+          pnpm exec ncu -t minor -u
+          pnpm -r exec ncu -t minor -u
+          # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
+          pnpm -r exec ncu -t minor -u
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
       - name: Fix format
@@ -96,4 +100,6 @@ jobs:
           pnpm test:e2e
           pnpm unused
       - name: Update dependencies (major)
-        run: pnpm ncu:major
+        run: |
+          pnpm exec ncu
+          pnpm -r exec ncu
