@@ -54,9 +54,6 @@
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
 		"unused": "pnpm -r unused",
-		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
@@ -68,7 +65,6 @@
 		"test:update": "pnpm test:update:e2e && pnpm test:update:unit",
 		"test:update:e2e": "pnpm -r --workspace-concurrency=1 test:update:e2e",
 		"test:update:unit": "pnpm -r --workspace-concurrency=1 test:update:unit",
-		"update": "pnpm ncu:minor && pnpm ncu:major",
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
 }
