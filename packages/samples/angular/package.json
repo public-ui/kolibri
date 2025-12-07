@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-angular",
-	"version": "3.0.0-rc.13",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"build": "ng build",

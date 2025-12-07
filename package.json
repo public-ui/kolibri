@@ -60,7 +60,7 @@
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
-		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test && pnpm unused",
+		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test:update",
 		"test:e2e": "pnpm -r test:e2e",

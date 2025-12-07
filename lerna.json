@@ -14,11 +14,12 @@
 		"packages/adapters/vue",
 		"packages/components",
 		"packages/samples/react",
-		"packages/schema",
 		"packages/themes/default",
 		"packages/themes/ecl",
 		"packages/themes",
+		"packages/tools/hydrate-server",
 		"packages/tools/kolibri-cli",
+		"packages/tools/mcp",
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,

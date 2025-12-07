@@ -14,7 +14,7 @@ packages:
   - packages/themes/ecl
   - packages/themes
   - packages/tools/benchmark-tests
-  - packages/tools/kolibri-cli
-  - packages/tools/mcp
+  - packages/tools/kolibri-clix
   - packages/tools/hydrate-server
+  - packages/tools/mcp
   - packages/tools/visual-tests

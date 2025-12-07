@@ -25,7 +25,6 @@ test.describe('kol-table-stateful', () => {
 					selectedKeys: [],
 				};
 			});
-			await page.waitForChanges();
 		});
 
 		test.describe('Callbacks', () => {
@@ -73,7 +72,6 @@ test.describe('kol-table-stateful', () => {
 			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
 				el._selection = { label: (row: KoliBriTableDataType) => `Selection for ${(row.id as number).toString()}`, keyPropertyName: 'id', selectedKeys: [1002] };
 			});
-			await page.waitForChanges();
 			const got = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.getSelection());
 			expect(got).toEqual([{ id: 1002 }]);
 		});

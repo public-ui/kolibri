@@ -13,7 +13,7 @@ const formatTagsForText = (tags) => {
 };
 
 // Package info - read from environment or use defaults
-const PACKAGE_VERSION = process.env.npm_package_version || '3.0.7';
+const PACKAGE_VERSION = process.env.npm_package_version || '4.0.0-alpha.7';
 const PACKAGE_NAME = '@public-ui/mcp';
 const PACKAGE_DESCRIPTION = 'Model Context Protocol server providing AI agents access to 136+ KoliBri component examples and source code.';
 
