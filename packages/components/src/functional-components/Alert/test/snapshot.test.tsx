@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
-import KolAlertFc from './..';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import KolAlertFc from './..';
 
 describe('KolAlertFc', () => {
 	it('should render', async () => {
@@ -9,17 +9,17 @@ describe('KolAlertFc', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
-	it('should treat string "true" as an active alert', async () => {
+	it('should treat true as an active alert', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <KolAlertFc alert={true} />);
 
 		expect(page.root?.getAttribute('role')).toBe('alert');
-		expect(page.root?.getAttribute('aria-live')).toBe('assertive');
+		expect(page.root?.getAttribute('aria-live')).toBeNull();
 	});
 
-	it('should treat string "false" as an inactive alert', async () => {
+	it('should treat false or undefined as an inactive alert', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <KolAlertFc alert={false} />);
 
-		expect(page.root?.getAttribute('role')).toBe('status');
-		expect(page.root?.getAttribute('aria-live')).toBe('polite');
+		expect(page.root?.getAttribute('role')).toBeNull();
+		expect(page.root?.getAttribute('aria-live')).toBeNull();
 	});
 });
