@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -30,6 +31,7 @@ type OptionalProps = {
 	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
+	PropHideError &
 	PropHideMsg &
 	PropHideLabel &
 	PropHint &
@@ -44,6 +46,7 @@ type OptionalProps = {
 type RequiredStates = {
 	options: Option<StencilUnknown>[];
 } & PropId &
+	PropHideError &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

@@ -15,5 +15,6 @@ export type PropHideMsg = {
 
 /* validator */
 export const validateHideMsg = (component: Generic.Element.Component, value?: HideMsgPropType, options?: WatchBooleanOptions): void => {
-	watchBoolean(component, '_hideMsg', value, options);
+	const defaultValue = typeof options?.defaultValue === 'undefined' ? (component.state?._hideMsg ?? false) : options.defaultValue;
+	watchBoolean(component, '_hideMsg', value, { ...options, defaultValue });
 };

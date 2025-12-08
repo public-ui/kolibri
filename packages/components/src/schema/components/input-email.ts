@@ -5,6 +5,7 @@ import type {
 	PropAccessKey,
 	PropAutoComplete,
 	PropDisabled,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -37,6 +38,7 @@ type OptionalProps = {
 } & PropAccessKey &
 	PropAutoComplete &
 	PropDisabled &
+	PropHideError &
 	PropHideMsg &
 	PropHideLabel &
 	PropHint &
@@ -57,6 +59,7 @@ type RequiredStates = {
 	currentLength: number;
 	currentLengthDebounced: number;
 } & PropId &
+	PropHideError &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 

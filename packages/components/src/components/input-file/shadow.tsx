@@ -7,8 +7,8 @@ import type {
 	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
+	HideErrorPropType,
 	HideLabelPropType,
-	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
@@ -149,10 +149,15 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
+	 * @deprecated Use `_hideMsg` instead.
+	 */
+	@Prop() public _hideError?: boolean;
+
+	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: boolean;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -269,10 +274,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
-
-	@Watch('_hideMsg')
-	public validateHideMsg(value?: HideMsgPropType): void {
-		this.controller.validateHideMsg(value);
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
 	}
 
 	@Watch('_hideLabel')

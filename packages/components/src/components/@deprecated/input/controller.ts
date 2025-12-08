@@ -5,6 +5,7 @@ import type {
 	AdjustHeightPropType,
 	ButtonProps,
 	DisabledPropType,
+	HideErrorPropType,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -25,6 +26,7 @@ import {
 	validateAccessKey,
 	validateAdjustHeight,
 	validateDisabled,
+	validateHideError,
 	validateHideLabel,
 	validateHideMsg,
 	validateHint,
@@ -67,6 +69,9 @@ export class InputController extends ControlledInputController implements Watche
 
 	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this.component, value);
+	}
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value);
 	}
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this.component, value);
@@ -150,6 +155,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateAdjustHeight(this.component._adjustHeight);
 		this.validateMsg(this.component._msg);
 		this.validateDisabled(this.component._disabled);
+		this.validateHideError(this.component._hideError);
 		this.validateHideMsg(this.component._hideMsg);
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);

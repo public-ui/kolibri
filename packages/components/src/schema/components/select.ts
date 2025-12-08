@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -30,6 +31,7 @@ type OptionalProps = {
 	value: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 } & PropAccessKey &
 	PropDisabled &
+	PropHideError &
 	PropHideMsg &
 	PropHideLabel &
 	PropHint &
@@ -47,6 +49,7 @@ type RequiredStates = {
 	options: SelectOption<W3CInputValue>[];
 	value: StencilUnknown[] | StencilUnknown;
 } & PropId &
+	PropHideError &
 	PropHideMsg &
 	PropMultiple &
 	PropLabelWithExpertSlot;

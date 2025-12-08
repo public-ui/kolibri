@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -29,6 +30,7 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 } & PropAccessKey &
 	PropDisabled &
+	PropHideError &
 	PropHideMsg &
 	PropHideLabel &
 	PropHint &

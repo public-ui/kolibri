@@ -7,6 +7,7 @@ import type {
 	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -41,6 +42,7 @@ type OptionalProps = {
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
+	PropHideError &
 	PropHideMsg &
 	PropHideLabel &
 	PropHint &
@@ -62,7 +64,8 @@ type RequiredStates = {
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	type: InputTextTypePropType;
-} & PropHideMsg &
+} & PropHideError &
+	PropHideMsg &
 	PropId &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

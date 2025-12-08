@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -29,6 +30,7 @@ type OptionalProps = {
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
+	PropHideError &
 	PropHideMsg &
 	PropHideLabel &
 	PropHint &
@@ -45,6 +47,7 @@ type RequiredStates = {
 	suggestions: W3CInputValue[];
 	value: string;
 } & PropId &
+	PropHideError &
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

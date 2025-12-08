@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropDisabled,
+	PropHideError,
 	PropHideLabel,
 	PropHideMsg,
 	PropHint,
@@ -25,6 +26,7 @@ type OptionalProps = {
 	value: StencilUnknown;
 } & PropDisabled &
 	PropHideLabel &
+	PropHideError &
 	PropHideMsg &
 	PropHint &
 	PropName &
@@ -38,6 +40,7 @@ type OptionalProps = {
 type RequiredStates = {
 	options: RadioOption<StencilUnknown>[];
 } & PropId &
+	PropHideError &
 	PropHideMsg &
 	PropLabelWithExpertSlot &
 	PropOrientation;

@@ -35,6 +35,7 @@ export * from './has-counter';
 export * from './has-icons-when-expanded';
 export * from './has-settings-menu';
 export * from './has-value';
+export * from './hide-error';
 export * from './hide-label';
 export * from './hide-msg';
 export * from './hint';
