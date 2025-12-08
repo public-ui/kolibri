@@ -55,6 +55,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 		key: 'assignee',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			(data0 as BacklogEntry).assignee.localeCompare((data1 as BacklogEntry).assignee, 'de'),
+		sortDirection: 'ASC',
 	},
 	{
 		label: 'Department',
@@ -68,6 +69,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 		textAlign: 'center',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			PRIORITY_ORDER[(data0 as BacklogEntry).priority] - PRIORITY_ORDER[(data1 as BacklogEntry).priority],
+		sortDirection: 'DESC',
 	},
 	{
 		label: 'Status',
