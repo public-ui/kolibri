@@ -1,0 +1,78 @@
+{
+	"name": "@public-ui/hydrate-server",
+	"version": "4.0.0-alpha.7",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"type": "module",
+	"private": false,
+	"description": "High-performance REST and gRPC server that hydrates individual KoliBri components using @public-ui/hydrate.",
+	"keywords": [
+		"kolibri",
+		"hydrate",
+		"design-system",
+		"rest",
+		"grpc",
+		"server-side-rendering",
+		"ssr"
+	],
+	"bin": {
+		"kolibri-hydrate-server": "dist/cli.mjs"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./proto/render.proto": "./dist/proto/render.proto"
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "unbuild",
+		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
+		"format": "prettier --check src test",
+		"pretest:unit": "pnpm run build",
+		"pretest:update:unit": "pnpm run pretest:unit",
+		"test:unit": "pnpm run test:node && pnpm run test:mocha",
+		"test:node": "node --test \"test/node/**/*.test.mjs\"",
+		"test:mocha": "mocha \"test/mocha/**/*.spec.mjs\"",
+		"test:update:unit": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
+	},
+	"dependencies": {
+		"@grpc/grpc-js": "1.14.2",
+		"@grpc/proto-loader": "0.8.0",
+		"@public-ui/hydrate": "workspace:*",
+		"commander": "14.0.2",
+		"fastify": "5.6.2"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"@typescript-eslint/eslint-plugin": "7.18.0",
+		"@typescript-eslint/parser": "7.18.0",
+		"cross-env": "10.1.0",
+		"eslint": "8.57.1",
+		"mocha": "10.8.2",
+		"prettier": "3.7.4",
+		"prettier-plugin-organize-imports": "4.3.0",
+		"typescript": "5.9.3",
+		"unbuild": "3.6.1"
+	}
+}

@@ -20,7 +20,6 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 		const lastIndex = this.state._links.length - 1;
 		return (
 			<li class="kol-breadcrumb__list-element" key={index}>
-				{index !== 0 && <KolIconTag class="kol-breadcrumb__icon" _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span class="kol-breadcrumb__list-element-span" aria-current="page">
 						{link._hideLabel ? (
@@ -34,8 +33,9 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 						)}
 					</span>
 				) : (
-					<KolLinkWcTag class="kol-breadcrumb__link" _linkVariant="standalone" {...link}></KolLinkWcTag>
+					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
 				)}
+				{index !== lastIndex && <KolIconTag class="kol-breadcrumb__separator" _label="" _icons="codicon codicon-chevron-right" />}
 			</li>
 		);
 	};

@@ -67,4 +67,5 @@ export default {
 	'character-counter-current': '{{current}} Zeichen',
 	'character-counter-current-of-max': '{{current}}/{{max}} Zeichen',
 	'character-counter-current-of-max-aria': '{{current}} von {{max}} Zeichen',
+	readonly: 'schreibgeschützt',
 };

@@ -30,7 +30,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Checkout branch
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
@@ -78,8 +78,8 @@ jobs:
       - name: Display git status (before test-update)
         run: git status
 
-      - name: Run test-update in all packages
-        run: pnpm -r --workspace-concurrency=1 test-update
+      - name: Run snapshot updates
+        run: pnpm test:update
 
       - name: Display git status (after test-update)
         run: git status
@@ -88,6 +88,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update all snapshots
-          file_pattern: 'packages/themes/**/snapshots/* packages/test-tag-name-transformer/snapshots/*'
+          file_pattern: 'packages/**/__snapshots__/** packages/**/snapshots/**'
           commit_user_name: '${{ steps.app-token.outputs.app-slug }}[bot]'
           commit_user_email: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'

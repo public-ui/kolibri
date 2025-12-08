@@ -26,7 +26,7 @@ import type {
 } from '../../schema';
 
 import clsx from 'clsx';
-import { KolIconTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -34,7 +34,6 @@ import type { InputStateWrapperProps } from '../../functional-component-wrappers
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
-import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
@@ -48,9 +47,7 @@ import { SingleSelectController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
@@ -88,10 +85,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (isDisabled) {
 			return;
 		} else {
-			if (!this._hasOpened) {
+			this.refInput?.focus();
+			if (this._isOpen) {
+				// Liste schließen
+				this._isOpen = false;
+			} else {
+				// Liste öffnen
 				this._isOpen = true;
-				this._hasOpened = true;
-				this.refInput?.focus();
 				const selectedIndex = Array.isArray(this._filteredOptions) ? this._filteredOptions.findIndex((option) => option.label === this._inputValue) : -1;
 				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : -1;
 				this.focusOption(this._focusedOptionIndex);
@@ -110,7 +110,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 
 		this._isOpen = false;
-		this._hasOpened = false;
 	}
 
 	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
@@ -253,7 +252,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 			state: this.state,
 			class: 'kol-single-select',
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInput?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -305,21 +303,33 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
 						{this._inputValue && !this.state._hideClearButton && (
-							<KolIconTag
+							<KolButtonWcTag
 								_icons="codicon codicon-close"
-								data-testid="single-select-delete"
 								_label={this.translateDeleteSelection}
-								onClick={() => {
-									this.clearSelection();
-									this.refInput?.focus();
-								}}
+								_hideLabel
+								_buttonVariant="ghost"
+								_disabled={isDisabled}
+								data-testid="single-select-delete"
 								class={clsx('kol-single-select__delete', {
 									'kol-single-select__delete--disabled': isDisabled,
 								})}
+								_on={{
+									onClick: () => {
+										this.clearSelection();
+										this.refInput?.focus();
+									},
+								}}
 							/>
 						)}
 
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} />
+						<KolIconTag
+							_icons="codicon codicon-triangle-down"
+							_label=""
+							class={clsx('kol-custom-suggestions-toggle', {
+								'kol-custom-suggestions-toggle--disabled': isDisabled,
+							})}
+							onClick={this.toggleListbox.bind(this)}
+						/>
 					</div>
 					{this._isOpen && !isDisabled && (
 						<CustomSuggestionsOptionsGroupFc
@@ -342,7 +352,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 											this.refInput?.focus();
 											this.toggleListbox(event);
 											this._isOpen = false;
-											this._hasOpened = false;
 										}}
 										onMouseOver={() => {
 											if (!this.blockSuggestionMouseOver) {
@@ -422,7 +431,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 				break;
 			case 'Esc':
 			case 'Escape': {
-				this._hasOpened = false;
 				this._isOpen = false;
 				handleEvent(false);
 				break;
@@ -442,7 +450,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'NumpadEnter':
 			case 'Enter': {
 				this.toggleListbox(event);
-				this._hasOpened = false;
 				this._isOpen = false;
 				break;
 			}
@@ -488,11 +495,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _inputValue: string = '';
 	@State()
 	private blockSuggestionMouseOver: boolean = false;
-	@State()
-	private _hasOpened = false;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -758,6 +763,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private onClick(event: MouseEvent): void {
 		this.toggleListbox(event);
+		this.refInput?.focus();
 		this.controller.onFacade.onClick(event);
 	}
 }

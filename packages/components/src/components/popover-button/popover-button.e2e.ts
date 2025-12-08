@@ -53,4 +53,16 @@ test.describe('kol-popover-button', () => {
 		await button.click();
 		await expect(tooltip).not.toBeVisible();
 	});
+
+	test('should render inline without enforcing a minimum height', async ({ page }) => {
+		await page.setContent(`
+			<kol-popover-button _label="Inline" _icons="codicon codicon-info" _inline="true">
+				Popover content
+			</kol-popover-button>
+		`);
+
+		const wrapper = page.locator('.kol-popover-button');
+
+		await expect(wrapper).toHaveClass(/kol-popover-button--inline/);
+	});
 });

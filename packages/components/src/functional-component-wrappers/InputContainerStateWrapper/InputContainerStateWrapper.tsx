@@ -62,7 +62,10 @@ function getInputContainerProps(state: InputState): {
 	};
 }
 
-const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ state, endAdornment: defaultEndAdornment }, children) => {
+const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = (
+	{ state, startAdornment: defaultStartAdornment, endAdornment: defaultEndAdornment },
+	children,
+) => {
 	const { icons, smartButton, disabled, msg, touched } = getInputContainerProps(state);
 
 	let leftIconProps: IconOrIconClass | undefined = icons?.left;
@@ -78,11 +81,11 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 	const startAdornment = [];
 	const endAdornment = [];
 
-	if (defaultEndAdornment) {
-		if (Array.isArray(defaultEndAdornment)) {
-			endAdornment.push(...defaultEndAdornment);
+	if (defaultStartAdornment) {
+		if (Array.isArray(defaultStartAdornment)) {
+			startAdornment.push(...defaultStartAdornment);
 		} else {
-			endAdornment.push(defaultEndAdornment);
+			startAdornment.push(defaultStartAdornment);
 		}
 	}
 
@@ -98,6 +101,14 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 
 	if (rightIconProps) {
 		endAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(rightIconProps) ? rightIconProps : {})} />);
+	}
+
+	if (defaultEndAdornment) {
+		if (Array.isArray(defaultEndAdornment)) {
+			endAdornment.push(...defaultEndAdornment);
+		} else {
+			endAdornment.push(defaultEndAdornment);
+		}
 	}
 
 	return (

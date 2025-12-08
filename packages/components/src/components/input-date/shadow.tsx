@@ -46,9 +46,7 @@ import { InputDateController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputDateElement;
@@ -140,16 +138,21 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		if (!this.inputRef || typeof window === 'undefined' || typeof window.getComputedStyle !== 'function') {
 			return false;
 		}
-		const computedStyle = window.getComputedStyle(this.inputRef, 'focus-visible');
-		return computedStyle.getPropertyValue('content') === 'native-icon-focused';
+		const computedStyle = window.getComputedStyle(this.inputRef);
+		return computedStyle.content.includes('native-icon-focused');
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !this.isNativeCalendarIconFocused()) {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.inputRef,
 			});
+		}
+		if (this.state._readOnly && event.code === 'Space') {
+			event.preventDefault();
 		}
 	};
 
@@ -160,7 +163,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

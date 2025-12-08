@@ -8,10 +8,9 @@
 	}
 
 	.#{$block-classname} {
-		display: inline-flex;
-		place-items: center;
+		display: flex;
+		min-height: var(--a11y-min-size);
 		font-style: to-rem(16);
-		text-align: center;
 		text-decoration-line: none;
 
 		&::before {
@@ -20,9 +19,7 @@
 		}
 
 		&__text {
-			width: 100%;
-			// Needed for custom width
-			margin: auto;
+			flex: 1 0 100%;
 		}
 	}
 }

@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -40,17 +40,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
-      # Tests in sample app are currently failing and hence disabled.
-      # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
-      - name: E2E Test
+      - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
+      - name: React samples build dependencies
+        run: pnpm --filter @public-ui/sample-react^... build
+      - name: E2E Test react samples
+        run: pnpm --filter @public-ui/sample-react test:e2e
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
@@ -64,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false

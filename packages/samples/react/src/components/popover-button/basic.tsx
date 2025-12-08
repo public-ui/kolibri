@@ -1,3 +1,4 @@
+import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect } from 'react';
@@ -8,37 +9,38 @@ export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
 	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
 
-	useEffect(() => {
-		const run = async () => {
-			await buttonRef.current?.kolFocus();
-			if (buttonRef.current instanceof HTMLButtonElement) {
-				buttonRef.current.click();
-			}
-		};
-		run();
-	}, []);
-
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
 
-	const TOOLBAR_ITEMS = [
+	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
+			type: 'button',
 			_label: 'Edit',
 			_icons: 'codicon codicon-edit',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Delete',
 			_icons: 'codicon codicon-trash',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Duplicate',
 			_icons: 'codicon codicon-copy',
 			_on: dummyEventHandler,
 		},
 	];
+
+	useEffect(() => {
+		// Ensure the popover is closed on initial render
+		if (buttonRef.current) {
+			buttonRef.current.showPopover();
+			buttonRef.current.kolFocus();
+		}
+	}, []);
 
 	return (
 		<>

@@ -27,7 +27,7 @@ yarn add @public-ui/react
 First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/themes) and create a React root:
 
 ```ts
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { register } from '@public-ui/components';
 import { DEFAULT } from '@public-ui/theme-default';
 

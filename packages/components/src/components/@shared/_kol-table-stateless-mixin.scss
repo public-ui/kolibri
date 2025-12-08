@@ -78,7 +78,7 @@
 				text-align: left;
 
 				.kol-button__text {
-					justify-items: start;
+					align-items: start;
 				}
 			}
 
@@ -86,7 +86,7 @@
 				text-align: center;
 
 				& .kol-button__text {
-					justify-items: center;
+					align-items: center;
 				}
 			}
 
@@ -94,7 +94,7 @@
 				text-align: right;
 
 				.kol-button__text {
-					justify-items: end;
+					align-items: end;
 				}
 			}
 		}

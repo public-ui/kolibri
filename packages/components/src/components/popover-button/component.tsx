@@ -12,6 +12,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	IconsPropType,
+	InlinePropType,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
 	ShortKeyPropType,
@@ -19,7 +20,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validatePopoverAlign } from '../../schema';
+import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
@@ -53,12 +54,19 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
+	 * Show the popover programmatically by calling the native showPopover method.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.refPopover?.showPopover();
+	}
+
+	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
 	public async kolFocus() {
-		// eslint-disable-next-line no-console
-		console.log('Focusing popover button', this.refButton);
 		await this.refButton?.kolFocus();
 	}
 
@@ -78,8 +86,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				 */
 				this.refPopover.style.visibility = 'hidden';
 			}
-
-			void this.refButton?.hideTooltip();
 		}
 	}
 
@@ -128,7 +134,13 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<div class={clsx('kol-popover-button', { 'kol-popover-button--open': this.popoverOpen })}>
+			<div
+				class={clsx('kol-popover-button', {
+					'kol-popover-button--open': this.popoverOpen,
+					'kol-popover-button--inline': this.state._inline === true,
+					'kol-popover-button--standalone': this.state._inline === false,
+				})}
+			>
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
 					_aria-controls="popover"
@@ -142,6 +154,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_hideLabel={this._hideLabel}
 					_icons={this._icons}
 					_id={this._id}
+					_inline={this._inline}
 					_label={this._label}
 					_name={this._name}
 					_on={this._on}
@@ -217,6 +230,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _id?: string;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -277,12 +295,20 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
+	@Watch('_inline')
+	public validateInline(value?: InlinePropType): void {
+		validateInline(this, value, {
+			defaultValue: false,
+		});
+	}
+
 	@Watch('_popoverAlign')
 	public validatePopoverAlign(value?: PopoverAlignPropType): void {
 		validatePopoverAlign(this, value);
 	}
 
 	public componentWillLoad() {
+		this.validateInline(this._inline);
 		this.validatePopoverAlign(this._popoverAlign);
 	}
 }

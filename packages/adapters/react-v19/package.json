@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-v19",
-	"version": "4.0.0-alpha.4",
+	"version": "4.0.0-alpha.7",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -52,17 +52,17 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "19.2.2",
-		"@types/react-dom": "19.2.2",
-		"react": "19.1.1",
-		"react-dom": "19.1.1",
+		"@types/react": "19.2.7",
+		"@types/react-dom": "19.2.3",
+		"react": "19.2.1",
+		"react-dom": "19.2.1",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
+		"react": "^19.2.1",
+		"react-dom": "^19.2.1"
 	},
 	"sideEffects": false,
 	"type": "module",

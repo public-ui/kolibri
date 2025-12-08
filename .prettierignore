@@ -1,0 +1,6 @@
+assets/
+coverage/
+dist/
+snapshots/
+test-results/
+pnpm-lock.yaml

@@ -41,9 +41,7 @@ import { InputRangeController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
@@ -123,6 +121,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -142,7 +142,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			state: this.state,
 			class: clsx('kol-input-range', 'range'),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.refInputRange?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}

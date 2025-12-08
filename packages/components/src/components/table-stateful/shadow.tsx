@@ -12,7 +12,6 @@ import type {
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
-	KoliBriTableSelectionKey,
 	KoliBriTableSelectionKeys,
 	LabelPropType,
 	PaginationPositionPropType,
@@ -256,6 +255,7 @@ export class KolTableStateful implements TableAPI {
 						beforePatch: (nextValue: unknown) => {
 							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
 								let hasSortedCells = false;
+								this.sortData = [];
 								headers.forEach((cell) => {
 									if (typeof cell.compareFn === 'function' && !cell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
@@ -520,31 +520,28 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys): null | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const keys = Array.isArray(selectedKeys) ? selectedKeys : [selectedKeys];
-			const keySet = new Set(keys.map(String));
+			const keySet = new Set(selectedKeys.map(String));
 			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
-			if (selection?.multiple === false) {
-				return data[0];
-			}
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): void {
+
+	private handleSelectionChange(event: Event, selectedKeys: KoliBriTableSelectionKeys): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: Array.isArray(value) ? value : [value],
+					selectedKeys,
 				},
 			};
-		const selectedData = this.getSelectedData(value);
+		const selectedData = this.getSelectedData(selectedKeys);
 
 		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
 			this.state._on[Callback.onSelectionChange](event, selectedData);
@@ -559,7 +556,7 @@ export class KolTableStateful implements TableAPI {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
+	public async getSelection(): Promise<KoliBriTableDataType[] | null> {
 		const selectedKeys: KoliBriTableSelectionKeys = this.state._selection?.selectedKeys || [];
 		return this.getSelectedData(selectedKeys);
 	}
@@ -605,7 +602,7 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}

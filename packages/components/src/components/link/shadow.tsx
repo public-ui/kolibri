@@ -9,12 +9,12 @@ import type {
 	DownloadPropType,
 	FocusableElement,
 	HrefPropType,
+	InlinePropType,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
 	LinkProps,
 	LinkTargetPropType,
-	LinkVariantPropType,
 	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
@@ -25,9 +25,7 @@ import type {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolLink implements LinkProps, FocusableElement {
 	private linkWcRef?: HTMLKolLinkWcElement;
@@ -58,8 +56,8 @@ export class KolLink implements LinkProps, FocusableElement {
 				_hideLabel={this._hideLabel}
 				_href={this._href}
 				_icons={this._icons}
+				_inline={this._inline}
 				_label={this._label}
-				_linkVariant={this._variant}
 				_on={this._on}
 				_shortKey={this._shortKey}
 				_target={this._target}
@@ -128,14 +126,14 @@ export class KolLink implements LinkProps, FocusableElement {
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = true;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: LinkVariantPropType = 'inline';
 
 	/**
 	 * Defines the callback functions for links.

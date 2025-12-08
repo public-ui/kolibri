@@ -5,7 +5,7 @@ import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject, isString } from '../validators';
 
 /* types */
-export type MsgPropType = Omit<AlertProps, '_label' | '_variant'> & { _description: string };
+export type MsgPropType = Omit<AlertProps, '_level' | '_on' | '_label' | '_hasCloser' | '_variant'> & { _description: string };
 
 /**
  * Defines the properties for a message rendered as Alert component.

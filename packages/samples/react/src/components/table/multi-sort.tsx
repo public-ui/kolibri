@@ -1,11 +1,9 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
-import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react-v19';
+import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '@public-ui/components';
+import { KolButtonLink, KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
-import type { Data } from './test-data';
-import { DATA } from './test-data';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
@@ -13,7 +11,8 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	year: 'numeric',
 });
 
-type BacklogEntry = Data & {
+type BacklogEntry = {
+	date: Date;
 	assignee: string;
 	department: string;
 	priority: 'High' | 'Medium' | 'Low';
@@ -42,124 +41,71 @@ const STATUS_ORDER = STATUS_SEQUENCE.reduce<Record<BacklogEntry['status'], numbe
 	{} as Record<BacklogEntry['status'], number>,
 );
 
-const BACKLOG_DATA: BacklogEntry[] = DATA.slice(0, 15).map((entry, index) => ({
-	...entry,
+const BACKLOG_DATA: BacklogEntry[] = Array.from({ length: 15 }).map((_, index) => ({
+	date: new Date(Date.now() - index * 1000 * 60 * 60 * 24),
 	assignee: ASSIGNEES[index % ASSIGNEES.length],
 	department: DEPARTMENTS[index % DEPARTMENTS.length],
 	priority: PRIORITY_SEQUENCE[index % PRIORITY_SEQUENCE.length],
 	status: STATUS_SEQUENCE[index % STATUS_SEQUENCE.length],
 	openTickets: (index * 3) % 11,
 }));
+const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
+	{
+		label: 'Assignee',
+		key: 'assignee',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
+			(data0 as BacklogEntry).assignee.localeCompare((data1 as BacklogEntry).assignee, 'de'),
+	},
+	{
+		label: 'Department',
+		key: 'department',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
+			(data0 as BacklogEntry).department.localeCompare((data1 as BacklogEntry).department, 'de'),
+	},
+	{
+		label: 'Priority',
+		key: 'priority',
+		textAlign: 'center',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
+			PRIORITY_ORDER[(data0 as BacklogEntry).priority] - PRIORITY_ORDER[(data1 as BacklogEntry).priority],
+	},
+	{
+		label: 'Status',
+		key: 'status',
+		textAlign: 'center',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
+			STATUS_ORDER[(data0 as BacklogEntry).status] - STATUS_ORDER[(data1 as BacklogEntry).status],
+	},
+	{
+		label: 'Open tickets',
+		key: 'openTickets',
+		textAlign: 'right',
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as BacklogEntry).openTickets - (data1 as BacklogEntry).openTickets,
+	},
+	{
+		label: 'Last updated',
+		key: 'date',
+		textAlign: 'center',
+		render: (_el, _cell, tuple) => DATE_FORMATTER.format((tuple as BacklogEntry).date),
+		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
+			if ((data0 as BacklogEntry).date < (data1 as BacklogEntry).date) return -1;
+			else if ((data1 as BacklogEntry).date < (data0 as BacklogEntry).date) return 1;
+			else return 0;
+		},
+	},
+];
 
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
-	horizontal: [
-		[
-			{
-				label: 'order',
-				key: 'order',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).order < (data1 as Data).order) return -1;
-					else if ((data1 as Data).order < (data0 as Data).order) return 1;
-					else return 0;
-				},
-			},
-			{
-				label: 'date',
-				key: 'date',
-				textAlign: 'center',
-				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).date < (data1 as Data).date) return -1;
-					else if ((data1 as Data).date < (data0 as Data).date) return 1;
-					else return 0;
-				},
-			},
-		],
-	],
+	horizontal: [TABLE_HEADER_CELLS],
 };
 
 const HEADERS_VERTICAL: KoliBriTableHeaders = {
-	vertical: [
-		[
-			{
-				label: 'order',
-				key: 'order',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).order < (data1 as Data).order) return -1;
-					else if ((data1 as Data).order < (data0 as Data).order) return 1;
-					else return 0;
-				},
-			},
-			{
-				label: 'date',
-				key: 'date',
-				textAlign: 'center',
-				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as Data).date < (data1 as Data).date) return -1;
-					else if ((data1 as Data).date < (data0 as Data).date) return 1;
-					else return 0;
-				},
-			},
-		],
-	],
+	vertical: [TABLE_HEADER_CELLS],
 };
 
-const HEADERS_BACKLOG: KoliBriTableHeaders = {
-	horizontal: [
-		[
-			{
-				label: 'Assignee',
-				key: 'assignee',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-					(data0 as BacklogEntry).assignee.localeCompare((data1 as BacklogEntry).assignee, 'de'),
-			},
-			{
-				label: 'Department',
-				key: 'department',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-					(data0 as BacklogEntry).department.localeCompare((data1 as BacklogEntry).department, 'de'),
-			},
-			{
-				label: 'Priority',
-				key: 'priority',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-					PRIORITY_ORDER[(data0 as BacklogEntry).priority] - PRIORITY_ORDER[(data1 as BacklogEntry).priority],
-			},
-			{
-				label: 'Status',
-				key: 'status',
-				textAlign: 'center',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-					STATUS_ORDER[(data0 as BacklogEntry).status] - STATUS_ORDER[(data1 as BacklogEntry).status],
-			},
-			{
-				label: 'Open tickets',
-				key: 'openTickets',
-				textAlign: 'right',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as BacklogEntry).openTickets - (data1 as BacklogEntry).openTickets,
-			},
-			{
-				label: 'Last updated',
-				key: 'date',
-				textAlign: 'center',
-				render: (_el, _cell, tuple) => DATE_FORMATTER.format((tuple as BacklogEntry).date),
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
-					if ((data0 as BacklogEntry).date < (data1 as BacklogEntry).date) return -1;
-					else if ((data1 as BacklogEntry).date < (data0 as BacklogEntry).date) return 1;
-					else return 0;
-				},
-			},
-		],
-	],
-};
 export const MultiSortTable: FC = () => {
-	const [allowMultiSortVertical, setAllowMultiSortVertical] = useState(false);
-	const [allowMultiSortHorizontal, setAllowMultiSortHorizontal] = useState(true);
-	const [allowBacklogMultiSort, setAllowBacklogMultiSort] = useState(true);
+	const [verticallHeader, setVerticalHeader] = useState(HEADERS_VERTICAL);
+	const [horizontalHeader, setHorizontalHeader] = useState(HEADERS_HORIZONTAL);
 	return (
 		<>
 			<SampleDescription>
@@ -172,57 +118,26 @@ export const MultiSortTable: FC = () => {
 			<section className="w-full grid gap-6">
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Vertical" />
-					<KolInputCheckbox
-						_checked={allowMultiSortVertical}
-						_label="Allow Multi-Sort"
-						_variant="switch"
-						_on={{ onChange: (_, value) => setAllowMultiSortVertical(Boolean(value)) }}
-					></KolInputCheckbox>
+					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setVerticalHeader({ vertical: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
 						_minWidth="auto"
-						_data={DATA.slice(0, 10)}
-						_headers={HEADERS_VERTICAL}
+						_data={BACKLOG_DATA.slice(0, 10)}
+						_headers={verticallHeader}
 						className="block"
-						_allowMultiSort={allowMultiSortVertical}
+						_allowMultiSort={true}
 					/>
 				</section>
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Horizontal" />
-					<KolInputCheckbox
-						_checked={allowMultiSortHorizontal}
-						_label="Allow Multi-Sort"
-						_variant="switch"
-						_on={{ onChange: (_, value) => setAllowMultiSortHorizontal(Boolean(value)) }}
-					></KolInputCheckbox>
+					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setHorizontalHeader({ horizontal: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
 						_minWidth="auto"
-						_data={DATA}
-						_headers={HEADERS_HORIZONTAL}
-						className="block"
-						_allowMultiSort={allowMultiSortHorizontal}
-					/>
-				</section>
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Project backlog" />
-					<p className="m-0 text-sm">
-						Use multi-sort to group by priority, status and department. Hold the Shift key while clicking headers to add a second or third sort level and reveal
-						the order indicators.
-					</p>
-					<KolInputCheckbox
-						_checked={allowBacklogMultiSort}
-						_label="Allow Multi-Sort"
-						_variant="switch"
-						_on={{ onChange: (_, value) => setAllowBacklogMultiSort(Boolean(value)) }}
-					></KolInputCheckbox>
-					<KolTableStateful
-						_label="Project backlog"
-						_minWidth="60rem"
 						_data={BACKLOG_DATA}
-						_headers={HEADERS_BACKLOG}
+						_headers={horizontalHeader}
 						className="block"
-						_allowMultiSort={allowBacklogMultiSort}
+						_allowMultiSort={true}
 					/>
 				</section>
 			</section>
