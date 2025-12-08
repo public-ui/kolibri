@@ -3,7 +3,6 @@ import { type InputProps } from '../../functional-components/inputs/Input';
 import KolRadioFc, { type RadioProps } from '../../functional-components/inputs/Radio';
 
 import { type InputRadioStates, type MsgPropType } from '../../schema';
-import { getRenderStates } from '../_helpers/getRenderStates';
 
 export type RadioStateWrapperProps = Omit<RadioProps, 'inputProps'> & {
 	state: InputRadioStates;
@@ -11,8 +10,6 @@ export type RadioStateWrapperProps = Omit<RadioProps, 'inputProps'> & {
 };
 
 function getRadioProps(state: InputRadioStates, inputProps: Partial<InputProps> = {}): InputProps {
-	const { ariaDescribedBy } = getRenderStates(state);
-
 	const props: InputProps = {
 		id: state._id,
 		hideLabel: state._hideLabel,
@@ -20,7 +17,6 @@ function getRadioProps(state: InputRadioStates, inputProps: Partial<InputProps> 
 		value: state._value as string | number | string[] | undefined,
 		disabled: state._disabled,
 		name: state._name,
-		ariaDescribedBy,
 	};
 
 	if ('_required' in state) props.required = state._required;

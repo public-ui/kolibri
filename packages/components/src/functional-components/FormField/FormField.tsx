@@ -27,7 +27,7 @@ function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	return '';
 }
 
-export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
+export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	component?: 'div' | 'fieldset';
 	id: string;
 	alert?: boolean;
@@ -55,8 +55,6 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	formFieldTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
 	formFieldMsgProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 	formFieldInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
-} & {
-	[key: `data-${string}`]: unknown;
 };
 
 const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: classNames, ...other }, children) => {
@@ -91,6 +89,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		readOnly,
 		touched,
 		maxLength,
+		ariaDescribedBy,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -127,7 +126,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	}
 
 	return (
-		<Component class={clsx('kol-form-field', stateCssClasses, classNames)} {...other}>
+		<Component class={clsx('kol-form-field', stateCssClasses, classNames)} aria-describedby={ariaDescribedBy} {...other}>
 			{showLabel && (
 				<KolFormFieldLabelFc
 					{...(formFieldLabelProps || {})}
