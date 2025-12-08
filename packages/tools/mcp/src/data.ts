@@ -65,7 +65,7 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 }
 
 /**
- * Normalize and validate a sample entry
+ * Normalize a sample entry
  * @param entry - The sample entry to normalize
  * @returns Normalized sample entry
  */
@@ -81,7 +81,7 @@ function normalizeEntry(entry: SampleEntry): SampleEntry {
 }
 
 /**
- * Normalize and validate sample index metadata
+ * Normalize sample index metadata
  * @param metadata - The metadata to normalize
  * @param entries - The sample entries for calculating counts
  * @returns Normalized sample index metadata
