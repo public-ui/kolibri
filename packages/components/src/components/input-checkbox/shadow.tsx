@@ -89,7 +89,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			'data-role': this.state._variant === 'button' ? 'button' : undefined,
 			alert: this.showAsAlert(),
 			renderNoTooltip: true,
 		};
