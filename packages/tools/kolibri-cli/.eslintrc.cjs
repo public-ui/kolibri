@@ -18,8 +18,6 @@ module.exports = {
 	},
 	plugins: [
 		'html',
-		// 'json',
-		// 'jsx-a11y',
 		'react',
 	],
 	rules: {
