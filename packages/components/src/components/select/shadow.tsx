@@ -41,9 +41,8 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Returns the selected values.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
-		return this._value;
+		return this.selectWcRef?.getValue();
 	}
 
 	/**
