@@ -12,7 +12,7 @@ concurrency:
 jobs:
   deploy:
     # Skip this job when the base clone URL may be different from the head clone URL.
-    if: github.actor != 'dependabot[bot]' && github.event.pull_request.head.repo.fork == false
+    if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
