@@ -1,4 +1,5 @@
 import { AbstractTask } from '../../abstract-task';
+import { RefactorErrorToMsgTasks } from './error';
 import { RemoveIdPropTasks } from './id';
 import { MapVariantStandaloneToInlineTasks } from './link';
 import { UpdateLoaderImportPathTask } from './loader';
@@ -8,6 +9,7 @@ import { RemoveToasterGetInstanceOptionsTask } from './toaster';
 
 export const v4Tasks: AbstractTask[] = [];
 
+v4Tasks.push(...RefactorErrorToMsgTasks);
 v4Tasks.push(...MapVariantStandaloneToInlineTasks);
 v4Tasks.push(...RemoveIdPropTasks);
 v4Tasks.push(...RemoveMsgPropsTasks);
