@@ -459,14 +459,12 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private initializeHeaderCellSettings() {
 		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
-		primaryHeaders.forEach((header) => {
-			if (typeof header.visible !== 'boolean') {
-				header.visible = true;
-			}
-			if (typeof header.hidable !== 'boolean') {
-				header.hidable = true;
-			}
-		});
+		const updatedHeaders = primaryHeaders.map(header => ({
+			...header,
+			visible: typeof header.visible === 'boolean' ? header.visible : true,
+			hidable: typeof header.hidable === 'boolean' ? header.hidable : true,
+		}));
+		// If you need to update state or use updatedHeaders, do so here.
 	}
 
 	public componentWillLoad(): void {
