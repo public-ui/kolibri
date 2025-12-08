@@ -47,21 +47,9 @@
 		}
 
 		&__sort-order {
-			border-color: currentColor;
-			border-style: solid;
-			border-radius: 999px;
-
 			display: inline-flex;
-			min-width: 1.5em;
-			height: 1.5em;
-			padding-right: 0.25rem;
-			padding-left: 0.25rem;
-			border-width: 1px;
 			align-items: center;
 			justify-content: center;
-
-			font-size: 0.75em;
-			line-height: 1;
 		}
 
 		// headings in table body default to text-align left, unless defined otherwise.
