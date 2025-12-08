@@ -7,8 +7,9 @@ import { SampleDescription } from '../SampleDescription';
 const createBadgeProps = (label: string) => ({
 	_label: label,
 	_smartButton: {
+		_ariaDescription: label,
 		_icons: 'codicon codicon-close',
-		_label: `Remove ${label}`,
+		_label: `Remove`,
 		_on: {
 			onClick: () => alert('clicked'),
 		},

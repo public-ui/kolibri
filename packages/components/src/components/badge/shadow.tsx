@@ -33,6 +33,8 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 				ref={this.catchSmartButtonRef}
 				class="kol-badge__smart-button"
 				_ariaControls={this.id}
+				_ariaDescription={props._ariaDescription}
+				_buttonVariant={props._variant}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
 				_hideLabel={true}
@@ -41,8 +43,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 				_label={props._label}
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
-				_buttonVariant={props._variant}
-			></KolButtonWcTag>
+			/>
 		);
 	}
 
