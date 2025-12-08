@@ -108,6 +108,12 @@ export class KolTableSettings {
 					if (cell.hidable !== false) {
 						delete cell.hidable;
 					}
+					if (cell.sortable !== false) {
+						delete cell.sortable;
+					}
+					if (cell.resizable !== false) {
+						delete cell.resizable;
+					}
 					return cell;
 				}),
 			);
