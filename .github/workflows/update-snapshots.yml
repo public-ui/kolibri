@@ -85,7 +85,7 @@ jobs:
         run: git status
 
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update all snapshots
           file_pattern: 'packages/themes/**/snapshots/* packages/test-tag-name-transformer/snapshots/*'
