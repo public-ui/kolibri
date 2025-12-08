@@ -22,7 +22,7 @@ export default {
 	page: 'Page',
 	'page-current': 'Page {{page}}',
 	'page-selected': 'Page {{page}} is selected',
-	'page-per-site': '{{entries}} entries per page',
+	'page-per-site': 'Entries per page',
 	'nav-maximize': 'Maximize navigation',
 	'nav-minimize': 'Minimize navigation',
 	'logo-description': 'Logo {{orgShort}}. Federal eagle with flag staff and lettering {{orgLong}}',

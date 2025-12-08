@@ -27,7 +27,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
+import { KolButtonWcTag, KolSelectWcTag } from '../../core/component-names';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -62,8 +62,6 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	shadow: true,
 })
 export class KolPagination implements PaginationAPI {
-	private readonly nonce = nonce();
-
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
@@ -165,16 +163,16 @@ export class KolPagination implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSelectTag
-						_hideLabel
-						_id={`pagination-size-${this.nonce}`}
-						_label={translate('kol-entries-per-site')}
-						_options={this.state._pageSizeOptions}
-						_on={{
-							onChange: this.onChangePageSize,
-						}}
-						_value={[this.state._pageSize]}
-					></KolSelectTag>
+					<div class="page-size">
+						<KolSelectWcTag
+							_label={translate('kol-entries-per-site')}
+							_options={this.state._pageSizeOptions}
+							_on={{
+								onChange: this.onChangePageSize,
+							}}
+							_value={[this.state._pageSize]}
+						/>
+					</div>
 				)}
 			</Host>
 		);
@@ -474,7 +472,7 @@ export class KolPagination implements PaginationAPI {
 			for (const value of nextValue) {
 				if (typeof value === 'number') {
 					options.push({
-						label: translate('kol-page-per-site', { placeholders: { entries: `${value}` } }),
+						label: `${value}`,
 						value: value,
 					});
 				}

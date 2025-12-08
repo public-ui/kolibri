@@ -1,5 +1,6 @@
 @use '../@shared/mixins' as *;
 @use '../style' as *;
+@use '../select/style.scss' as *;
 @use '../tooltip/style.scss' as *;
 
 @layer kol-component {
@@ -22,5 +23,11 @@
 
 	.separator:before {
 		content: '•••';
+	}
+
+	.page-size {
+		display: flex;
+		gap: 0.5em;
+		align-items: center;
 	}
 }
