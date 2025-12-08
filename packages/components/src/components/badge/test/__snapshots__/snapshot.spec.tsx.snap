@@ -10,6 +10,17 @@ exports[`kol-badge should render with _label="**Te**xt" 1`] = `
 </kol-badge>
 `;
 
+exports[`kol-badge should render with _label="Badge fallback" _smartButton={"_ariaDescription":"Badge label","_label":"Remove"} 1`] = `
+<kol-badge class="kol-badge">
+  <template shadowrootmode="open">
+    <span class="smart-button" style="background-color: #000; color: #959595;">
+      <kol-span-wc _allowmarkdown="" _label="Badge fallback" id="nonce"></kol-span-wc>
+      <kol-button-wc _ariacontrols="nonce" _ariadescription="Badge label" _hidelabel="" _label="Remove"></kol-button-wc>
+    </span>
+  </template>
+</kol-badge>
+`;
+
 exports[`kol-badge should render with _label="Text" _color="#000000" 1`] = `
 <kol-badge class="kol-badge">
   <template shadowrootmode="open">

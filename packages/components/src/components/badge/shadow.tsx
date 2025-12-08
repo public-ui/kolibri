@@ -25,6 +25,7 @@ export class KolBadge implements BadgeAPI {
 		return (
 			<KolButtonWcTag
 				_ariaControls={this.id}
+				_ariaDescription={props._ariaDescription}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
 				_hideLabel={true}
@@ -34,7 +35,7 @@ export class KolBadge implements BadgeAPI {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_variant={props._variant}
-			></KolButtonWcTag>
+			/>
 		);
 	}
 
