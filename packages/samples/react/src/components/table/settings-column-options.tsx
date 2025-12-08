@@ -33,11 +33,11 @@ export const TableSettingsColumnOptions: FC = () => (
 			_headers={{
 				horizontal: [
 					[
-						{ key: 'id', label: 'ID', hidable: false, sortable: false, visible: true, width: '15px' },
-						{ key: 'name', label: 'Name', visible: true, width: '30px' },
-						{ key: 'team', label: 'Team', sortable: false, visible: true, width: '20px' },
-						{ key: 'email', label: 'E-Mail', resizable: false, visible: true, width: '25px' },
-						{ key: 'status', label: 'Status', hidable: false, resizable: false, visible: true, width: '10px' },
+						{ key: 'id', label: 'ID', hidable: false, sortable: false, visible: true, width: '15' },
+						{ key: 'name', label: 'Name', visible: true, width: '30' },
+						{ key: 'team', label: 'Team', sortable: false, visible: true, width: '20' },
+						{ key: 'email', label: 'E-Mail', resizable: false, visible: true, width: '25' },
+						{ key: 'status', label: 'Status', hidable: false, resizable: false, visible: true, width: '10' },
 					],
 				],
 			}}
