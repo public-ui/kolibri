@@ -60,7 +60,7 @@
 		"stylelint": "16.26.1",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "7.2.6",
+		"vite": "7.2.7",
 		"world_countries_lists": "3.3.0",
 		"zod": "4.1.13"
 	},
