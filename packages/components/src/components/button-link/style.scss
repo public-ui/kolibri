@@ -5,8 +5,9 @@
 @layer kol-component {
 	@include kol-link-styles('kol-button');
 
+	// Inline may have the height and width of the flowing text and do not necessarily have to be 44px high or width.
 	.kol-button--inline {
 		min-width: unset;
-		min-height: unset; // Inline links may have the height of the flowing text and do not necessarily have to be 44px high.
+		min-height: unset;
 	}
 }
