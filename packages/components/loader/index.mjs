@@ -1,1 +1,1 @@
-export { defineCustomElements } from '../dist/loader';
+export { defineCustomElements } from '../dist/esm/loader.js';
