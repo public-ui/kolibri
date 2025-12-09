@@ -48,4 +48,10 @@
 			border: 0;
 		}
 	}
+
+	.kol-input {
+		grid-template-columns: 1fr max-content;
+		align-items: center;
+		gap: to-rem(8);
+	}
 }
