@@ -72,5 +72,8 @@
 		"tsconfig.json",
 		"unocss.config.ts",
 		"vite.config.ts"
-	]
+	],
+	"exports": {
+		".": "./src/index.ts"
+	}
 }

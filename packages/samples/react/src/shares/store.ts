@@ -1,7 +1,13 @@
-import { Option } from '@public-ui/components';
 import PackageJson from '@public-ui/components/package.json';
 
-import { isTheme, Store, THEME_OPTIONS, ThemeAndUnstyled } from './theme';
+import { UNSTYLED_THEME, type Theme } from './theme';
+
+type Store = {
+	darkMode: boolean;
+	theme: string;
+	nextTheme?: string;
+	registeredThemes: Theme[];
+};
 
 const STORE_IDENTIFIER = `public-ui.v${PackageJson.version}`;
 
@@ -20,6 +26,7 @@ class StaticStorage {
 const STORE: Store = {
 	darkMode: false,
 	theme: 'default',
+	registeredThemes: [],
 };
 
 let STORAGE: Storage;
@@ -30,7 +37,7 @@ export function setStorage(storage: Storage) {
 		const store = JSON.parse(RESTORE as string) as Store;
 		if (typeof store === 'object' && store !== null) {
 			STORE.darkMode = store.darkMode === true;
-			if (isTheme(store.theme)) {
+			if (typeof store.theme === 'string' && store.theme.length > 0) {
 				STORE.theme = store.theme;
 			}
 		}
@@ -44,22 +51,40 @@ const setStore = () => {
 	STORAGE.setItem(STORE_IDENTIFIER, JSON.stringify(STORE));
 };
 
-export const setTheme = (theme: ThemeAndUnstyled) => {
+export const setRegisteredThemes = (themes: Theme[]) => {
+	STORE.registeredThemes = themes;
+	if (!isTheme(STORE.theme)) {
+		STORE.theme = STORE.nextTheme ?? themes[1]?.key ?? UNSTYLED_THEME.key;
+		delete STORE.nextTheme;
+	}
+	setStore();
+};
+
+export const isTheme = (value: string) => {
+	return STORE.registeredThemes.findIndex((theme) => theme.key === value) !== -1 || value === UNSTYLED_THEME.key;
+};
+
+export const setTheme = (theme: string) => {
 	if (isTheme(theme)) {
 		STORE.theme = theme;
-		setStore();
+	} else if (!!theme) {
+		STORE.nextTheme = theme;
 	} else {
 		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);
 	}
+	setStore();
 };
 
-export const getTheme = (): ThemeAndUnstyled => {
-	return `${STORE.theme}`;
+export const getTheme = (): string => {
+	return STORE.theme ?? UNSTYLED_THEME.key;
 };
 
-export const getThemeName = (theme: ThemeAndUnstyled) => {
+export const getThemeName = (theme: string) => {
+	if (STORE.registeredThemes.length === 0) {
+		return theme;
+	}
 	if (isTheme(theme)) {
-		return THEME_OPTIONS.find((option) => (option as Option<ThemeAndUnstyled>).value === theme)?.label;
+		return STORE.registeredThemes.find((option) => option.key === theme)?.name;
 	} else {
 		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);
 	}
