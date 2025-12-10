@@ -9,9 +9,7 @@
 		"src/scenarios/appointment-form/**"
 	],
 	"ignoreDependencies": [
-		"@public-ui/components",
-		"@public-ui/react-hook-form-adapter",
-		"@public-ui/react-v19",
+		"@public-ui/sample-react",
 		"@public-ui/themes",
 		"uno.css"
 	],
