@@ -12,7 +12,7 @@ export const IconBasic: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolIcon className="block" _label="" _icons="codicon codicon-home" />
+			<KolIcon className="block" _label="" _icons="kol-logo" />
 			<KolIcon className="block" _label="" _icons="codicon codicon-compass-active" />
 			<KolIcon className="block" _label="" _icons="codicon codicon-debug" />
 			<KolIcon className="block" _label="" _icons="codicon codicon-squirrel" />
