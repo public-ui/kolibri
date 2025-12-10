@@ -108,7 +108,7 @@ export class KolTableSettings {
 			<KolPopoverButtonWcTag
 				ref={(el) => (this.popoverRef = el)}
 				class="kol-table-settings"
-				_icons="codicon codicon-settings-gear"
+				_icons="kol-icons-cogwheel"
 				_label={this.translateTableSettings}
 				_popoverAlign="top"
 				_hideLabel

@@ -1,77 +1,42 @@
 @font-face {
-	font-family: 'kol-icons';
-	src:
-		url('./kol-icons.woff?t=1765358146459') format('woff'),
-		url('./kol-icons.ttf?t=1765358146459') format('truetype'),
-		url('./kol-icons.svg?t=1765358146459') format('svg');
+  font-family: "kol-icons";
+  src: url('kol-icons.eot?t=1765377603936'); /* IE9*/
+  src: url('kol-icons.eot?t=1765377603936#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('kol-icons.woff2?t=1765377603936') format('woff2'),
+  url('kol-icons.woff?t=1765377603936') format('woff'),
+  url('kol-icons.ttf?t=1765377603936') format('truetype'),
+  url('kol-icons.svg?t=1765377603936') format('svg');
 }
 
-[class^='kol-'],
-[class*=' kol-'] {
-	font-family: 'kol-icons';
-	font-size: undefined;
-	font-style: normal;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+[class^="kol-icons-"], [class*=" kol-icons-"] {
+  font-family: 'kol-icons' !important;
+  font-size: undefined;
+  line-height: 1em;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.kol-alert-error::before {
-	content: '\ea01';
-}
-.kol-alert-info::before {
-	content: '\ea02';
-}
-.kol-alert-success::before {
-	content: '\ea03';
-}
-.kol-alert-warning::before {
-	content: '\ea04';
-}
-.kol-check::before {
-	content: '\ea05';
-}
-.kol-chevron-double::before {
-	content: '\ea06';
-}
-.kol-chevron::before {
-	content: '\ea07';
-}
-.kol-cogwheel::before {
-	content: '\ea08';
-}
-.kol-cross::before {
-	content: '\ea09';
-}
-.kol-eye-closed::before {
-	content: '\ea0a';
-}
-.kol-eye::before {
-	content: '\ea0b';
-}
-.kol-link-external::before {
-	content: '\ea0c';
-}
-.kol-link::before {
-	content: '\ea0d';
-}
-.kol-logo::before {
-	content: '\ea0e';
-}
-.kol-minus::before {
-	content: '\ea0f';
-}
-.kol-plus::before {
-	content: '\ea10';
-}
-.kol-sort-asc::before {
-	content: '\ea11';
-}
-.kol-sort-desc::before {
-	content: '\ea12';
-}
-.kol-sort-neutral::before {
-	content: '\ea13';
-}
-.kol-version::before {
-	content: '\ea14';
-}
+
+.kol-icons-alert-error::before { content: "\ea01"; }
+.kol-icons-alert-info::before { content: "\ea02"; }
+.kol-icons-alert-success::before { content: "\ea03"; }
+.kol-icons-alert-warning::before { content: "\ea04"; }
+.kol-icons-check::before { content: "\ea05"; }
+.kol-icons-chevron-double::before { content: "\ea06"; }
+.kol-icons-chevron::before { content: "\ea07"; }
+.kol-icons-cogwheel::before { content: "\ea08"; }
+.kol-icons-cross::before { content: "\ea09"; }
+.kol-icons-eye-closed::before { content: "\ea0a"; }
+.kol-icons-eye::before { content: "\ea0b"; }
+.kol-icons-link-external::before { content: "\ea0c"; }
+.kol-icons-link::before { content: "\ea0d"; }
+.kol-icons-logo::before { content: "\ea0e"; }
+.kol-icons-minus::before { content: "\ea0f"; }
+.kol-icons-plus::before { content: "\ea10"; }
+.kol-icons-sort-asc::before { content: "\ea11"; }
+.kol-icons-sort-desc::before { content: "\ea12"; }
+.kol-icons-sort-neutral::before { content: "\ea13"; }
+.kol-icons-version::before { content: "\ea14"; }
+
+

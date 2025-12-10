@@ -258,7 +258,7 @@ export class KolCombobox implements ComboboxAPI {
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 						{this.state._value && !this.state._hideClearButton && (
 							<KolButtonWcTag
-								_icons="codicon codicon-close"
+								_icons="kol-icons-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_disabled={isDisabled}

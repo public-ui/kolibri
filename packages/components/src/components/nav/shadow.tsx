@@ -100,10 +100,8 @@ export class KolNav implements NavAPI {
 	): JSX.Element {
 		const icons = {
 			left:
-				this.state._hasIconsWhenExpanded || this.state._hideLabel
-					? entry._icons?.toString() || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
-					: undefined,
-			right: collapsible && hasChildren ? 'codicon codicon-' + (expanded ? 'remove' : 'add') : undefined,
+				this.state._hasIconsWhenExpanded || this.state._hideLabel ? entry._icons?.toString() || (this.state._hideLabel ? 'kol-link' : undefined) : undefined,
+			right: collapsible && hasChildren ? 'kol-icons' + (expanded ? 'minus' : 'plus') : undefined,
 		};
 
 		return (
@@ -240,7 +238,7 @@ export class KolNav implements NavAPI {
 							class="kol-nav__toggle-button"
 							_ariaControls={this.navId}
 							_ariaExpanded={!hideLabel}
-							_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+							_icons={hideLabel ? 'kol-icons-chevron' : 'codicon codicon-chevron-left'}
 							_hideLabel
 							_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 							_on={{
@@ -356,39 +354,3 @@ export class KolNav implements NavAPI {
 		removeNavLabel(this.state._label);
 	}
 }
-
-// console.log(
-//   stringifyJson([
-//     { _label: '1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
-//     { _label: '2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
-//     {
-//       _active: true,
-//       _label: '3 Navigationspunkt',
-//       _href: '#abc',
-//       _icons: 'codicon codicon-folder-closed',
-//       _children: [
-//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
-//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
-//         {
-//           _active: true,
-//           _label: '3.3 Navigationspunkt',
-//           _href: '#abc',
-//           _children: [
-//             { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-//             { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-//           ],
-//         },
-//         {
-//           _label: '3.4 Navigationspunkt',
-//           _href: '#abc',
-//           _children: [
-//             { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-//             { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-//           ],
-//         },
-//         { _label: '3.5 Navigationspunkt', _href: '#abc' },
-//       ],
-//     },
-//     { _label: '4 Navigationspunkt', _href: '#abc' },
-//   ])
-// );

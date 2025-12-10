@@ -35,7 +35,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 				) : (
 					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
 				)}
-				{index !== lastIndex && <KolIconTag class="kol-breadcrumb__separator" _label="" _icons="codicon codicon-chevron-right" />}
+				{index !== lastIndex && <KolIconTag class="kol-breadcrumb__separator" _label="" _icons="kol-icons-chevron" />}
 			</li>
 		);
 	};

@@ -269,9 +269,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		_checked: false,
 		_hideMsg: false,
 		_icons: {
-			checked: 'codicon codicon-check',
-			indeterminate: 'codicon codicon-remove',
-			unchecked: 'codicon codicon-close',
+			checked: 'kol-icons-check',
+			indeterminate: 'kol-icons-minus',
+			unchecked: 'kol-icons-cross',
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,

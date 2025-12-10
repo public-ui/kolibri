@@ -201,7 +201,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						<KolIconTag
 							class="kol-link__icon"
 							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							_icons={'codicon codicon-link-external'}
+							_icons={'kol-icons-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
 					)}

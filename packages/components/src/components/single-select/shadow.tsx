@@ -304,7 +304,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 						{this._inputValue && !this.state._hideClearButton && (
 							<KolButtonWcTag
-								_icons="codicon codicon-close"
+								_icons="kol-icons-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_buttonVariant="ghost"

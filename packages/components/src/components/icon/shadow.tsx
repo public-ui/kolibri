@@ -50,7 +50,7 @@ export class KolIcon implements IconAPI {
 	@Prop() public _label!: LabelPropType;
 
 	@State() public state: IconStates = {
-		_icons: 'kol-logo',
+		_icons: 'kol-icons-logo',
 		_label: '', // ⚠ required
 	};
 

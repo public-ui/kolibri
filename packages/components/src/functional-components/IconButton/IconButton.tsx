@@ -41,7 +41,7 @@ export type IconButtonProps = IconType | ButtonType;
  *
  * Example usage:
  * ```tsx
- * <KolIconButtonFc componentName="button" label="Submit" icon="codicon codicon-check" onClick={handleClick} />
+ * <KolIconButtonFc componentName="button" label="Submit" icon="kol-icons-check" onClick={handleClick} />
  * <KolIconButtonFc componentName="icon" icon="alert" onClick={handleClick} />
  * ```
  *

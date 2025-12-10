@@ -74,7 +74,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			HeadingButtonProps: {
 				ref: this.catchRef,
 				class: `${rootClass}__heading-button`,
-				_icons: 'codicon codicon-chevron-right',
+				_icons: 'kol-icons-chevron',
 			},
 			ContentProps: {
 				class: `${rootClass}__content indented-text`,

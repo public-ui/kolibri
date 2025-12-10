@@ -58,7 +58,7 @@ export class KolCardWc implements CardAPI {
 							_hideLabel
 							_icons={{
 								left: {
-									icon: 'codicon codicon-close',
+									icon: 'kol-icons-cross',
 								},
 							}}
 							_label={this.translateClose}

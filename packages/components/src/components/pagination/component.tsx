@@ -37,10 +37,10 @@ const leftSingleArrow = {
 	left: 'codicon codicon-chevron-left',
 };
 const rightSingleArrowIcon = {
-	right: 'codicon codicon-chevron-right',
+	right: 'kol-icons-chevron',
 };
 const rightDoubleArrowIcon = {
-	right: 'codicon codicon-debug-continue',
+	right: 'kol-icons-chevron-double',
 };
 
 function getUserLanguage(): string {

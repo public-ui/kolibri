@@ -105,7 +105,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 						_hideLabel
 						_icons={{
 							left: {
-								icon: 'codicon codicon-close',
+								icon: 'kol-icons-cross',
 							},
 						}}
 						_label={translateCloseAlert}
