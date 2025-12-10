@@ -60,7 +60,7 @@ export const setRegisteredThemes = (themes: Theme[]) => {
 	setStore();
 };
 
-export const isTheme = (value: string) => {
+const isTheme = (value: string) => {
 	return STORE.registeredThemes.findIndex((theme) => theme.key === value) !== -1 || value === UNSTYLED_THEME.key;
 };
 
