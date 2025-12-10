@@ -67,7 +67,7 @@ export const isTheme = (value: string) => {
 export const setTheme = (theme: string) => {
 	if (isTheme(theme)) {
 		STORE.theme = theme;
-	} else if (!!theme) {
+	} else if (theme) {
 		STORE.nextTheme = theme;
 	} else {
 		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);

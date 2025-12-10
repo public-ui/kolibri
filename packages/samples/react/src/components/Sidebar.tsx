@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 
 import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react-v19';
 
-import { SelectOption } from '@public-ui/components';
+import type { SelectOption } from '@public-ui/components';
 import type { Theme } from '../shares/theme';
 import type { Routes } from '../shares/types';
 import Navigation from './Navigation';
