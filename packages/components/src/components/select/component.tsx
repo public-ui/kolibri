@@ -1,0 +1,511 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	FocusableElement,
+	HideErrorPropType,
+	IconsHorizontalPropType,
+	IdPropType,
+	InputTypeOnDefault,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	Optgroup,
+	Option,
+	OptionsWithOptgroupPropType,
+	RowsPropType,
+	SelectAPI,
+	SelectOption,
+	SelectStates,
+	ShortKeyPropType,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	W3CInputValue,
+} from '../../schema';
+import { buildBadgeTextString, showExpertSlot } from '../../schema';
+
+import { KolInputTag } from '../../core/component-names';
+import { nonce } from '../../utils/dev.utils';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { propagateSubmitEventToForm } from '../form/controller';
+import { getRenderStates } from '../input/controller';
+import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { SelectController } from './controller';
+
+const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
+	return Array.isArray(valueList) && valueList.includes(optionValue);
+};
+
+/**
+ * @internal
+ */
+@Component({
+	tag: 'kol-select-wc',
+	shadow: false,
+})
+export class KolSelectWc implements SelectAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolSelectWcElement;
+	private selectRef?: HTMLSelectElement;
+
+	private readonly catchRef = (ref?: HTMLSelectElement) => {
+		this.selectRef = ref;
+	};
+
+	/**
+	 * Returns the selected values.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+		return this.state._value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	/**
+	 * Focuses the select element.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.selectRef?.focus();
+	}
+
+	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
+		return (
+			<optgroup disabled={optgroup.disabled} label={optgroup.label}>
+				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
+					const key = `${preKey}-${index}`;
+					if (Array.isArray((option as Optgroup<string>).options)) {
+						return this.renderOptgroup(option as Optgroup<string>, key);
+					} else {
+						return (
+							<option
+								disabled={option.disabled}
+								key={key}
+								// label={option.label}
+								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
+								value={key}
+							>
+								{option.label}
+							</option>
+						);
+					}
+				})}
+			</optgroup>
+		);
+	}
+
+	public render(): JSX.Element {
+		const { ariaDescribedBy } = getRenderStates(this.state);
+		const hasExpertSlot = showExpertSlot(this.state._label);
+
+		return (
+			<Host class={{ 'kol-select-wc': true, 'has-value': this.state._hasValue }}>
+				<KolInputTag
+					class={{
+						'hide-label': !!this.state._hideLabel,
+						select: true,
+					}}
+					_accessKey={this.state._accessKey}
+					_alert={this.showAsAlert()}
+					_disabled={this.state._disabled}
+					_hideError={this.state._hideError}
+					_hideLabel={this.state._hideLabel}
+					_hint={this.state._hint}
+					_icons={this.state._icons}
+					_id={this.state._id}
+					_label={this.state._label}
+					_msg={this.state._msg}
+					_required={this.state._required}
+					_shortKey={this.state._shortKey}
+					_tooltipAlign={this._tooltipAlign}
+					_touched={this.state._touched}
+					onClick={() => this.selectRef?.focus()}
+					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
+				>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
+							<>
+								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
+								<kbd class="badge-text-hint" aria-hidden="true">
+									{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
+								</kbd>
+							</>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
+					<div slot="input">
+						<form
+							onSubmit={(event) => {
+								event.preventDefault();
+								propagateSubmitEventToForm({
+									form: this.host,
+									ref: this.selectRef,
+								});
+							}}
+						>
+							<input type="submit" hidden />
+							<select
+								ref={this.catchRef}
+								title=""
+								accessKey={this.state._accessKey}
+								aria-keyshortcuts={this.state._shortKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								id={this.state._id}
+								multiple={this.state._multiple}
+								name={this.state._name}
+								required={this.state._required}
+								size={this.state._rows}
+								{...this.controller.onFacade}
+								onInput={this.onInput.bind(this)}
+								onChange={this.onChange.bind(this)}
+								onFocus={(event) => {
+									this.controller.onFacade.onFocus(event);
+									this.inputHasFocus = true;
+								}}
+								onBlur={(event) => {
+									this.controller.onFacade.onBlur(event);
+									this.inputHasFocus = false;
+								}}
+							>
+								{this.state._options.map((option, index) => {
+									/**
+									 * Damit der Value einer Option ein beliebigen Typ haben kann
+									 * muss man auf HTML-Ebene den Value auf einen String-Wert
+									 * mappen. Das tun wir mittels der Map.
+									 */
+									const key = `-${index}`;
+									if (Array.isArray((option as unknown as Optgroup<string>).options)) {
+										return this.renderOptgroup(option as unknown as Optgroup<string>, key);
+									} else {
+										return (
+											<option
+												// removed the aria-hidden attribute because the browser caused errors and ignores it
+												// see also:
+												// - https://github.com/public-ui/kolibri/issues/7755
+												// - https://github.com/public-ui/public-ui.github.io/issues/336
+												disabled={option.disabled}
+												key={key}
+												// label={option.label}
+												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
+												value={key}
+											>
+												{option.label}
+											</option>
+										);
+									}
+								})}
+							</select>
+						</form>
+					</div>
+				</KolInputTag>
+			</Host>
+		);
+	}
+
+	private readonly controller: SelectController;
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: string;
+
+	/**
+	 * Defines whether the screen-readers should read out the notification.
+	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	/**
+	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
+	@Prop() public _error?: string;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the internal ID of the primary component element.
+	 */
+	@Prop() public _id?: IdPropType;
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	/**
+	 * Makes the input accept multiple inputs.
+	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _multiple?: boolean = false;
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 */
+	@Prop() public _options!: OptionsWithOptgroupPropType;
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
+	 * Defines how many rows of options should be visible at the same time.
+	 */
+	@Prop() public _rows?: RowsPropType;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	/**
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop() public _tabIndex?: number;
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	/**
+	 * Defines the value of the input.
+	 */
+	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
+
+	@State() public state: SelectStates = {
+		_hasValue: false,
+		_hideError: false,
+		_id: `id-${nonce()}`,
+		_label: '', // ⚠ required
+		_multiple: false,
+		_options: [],
+		_value: [],
+	};
+
+	@State() private inputHasFocus = false;
+
+	public constructor() {
+		this.controller = new SelectController(this, 'select', this.host);
+	}
+
+	private showAsAlert(): boolean {
+		if (this.state._alert === undefined) {
+			return Boolean(this.state._touched) && !this.inputHasFocus;
+		}
+		return this.state._alert;
+	}
+
+	@Watch('_accessKey')
+	public validateAccessKey(value?: string): void {
+		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_alert')
+	public validateAlert(value?: boolean): void {
+		this.controller.validateAlert(value);
+	}
+
+	@Watch('_disabled')
+	public validateDisabled(value?: boolean): void {
+		this.controller.validateDisabled(value);
+	}
+
+	@Watch('_error')
+	public validateError(value?: string): void {
+		this.controller.validateError(value);
+	}
+
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
+	}
+
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		this.controller.validateHideLabel(value);
+	}
+
+	@Watch('_hint')
+	public validateHint(value?: string): void {
+		this.controller.validateHint(value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: IconsHorizontalPropType): void {
+		this.controller.validateIcons(value);
+	}
+
+	@Watch('_id')
+	public validateId(value?: string): void {
+		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
+		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: Stringified<MsgPropType>): void {
+		this.controller.validateMsg(value);
+	}
+
+	@Watch('_multiple')
+	public validateMultiple(value?: boolean): void {
+		this.controller.validateMultiple(value);
+	}
+
+	@Watch('_name')
+	public validateName(value?: string): void {
+		this.controller.validateName(value);
+	}
+
+	@Watch('_on')
+	public validateOn(value?: InputTypeOnDefault): void {
+		this.controller.validateOn(value);
+	}
+
+	@Watch('_options')
+	public validateOptions(value?: OptionsWithOptgroupPropType): void {
+		this.controller.validateOptions(value);
+	}
+
+	@Watch('_required')
+	public validateRequired(value?: boolean): void {
+		this.controller.validateRequired(value);
+	}
+
+	@Watch('_rows')
+	public validateRows(value?: RowsPropType): void {
+		this.controller.validateRows(value);
+	}
+
+	@Watch('_shortKey')
+	public validateShortKey(value?: ShortKeyPropType): void {
+		this.controller.validateShortKey(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.controller.validateSyncValueBySelector(value);
+	}
+
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		this.controller.validateTabIndex(value);
+	}
+
+	@Watch('_touched')
+	public validateTouched(value?: boolean): void {
+		this.controller.validateTouched(value);
+	}
+
+	@Watch('_value')
+	public validateValue(value?: Stringified<W3CInputValue[]>): void {
+		this.controller.validateValue(value);
+	}
+
+	public componentWillLoad(): void {
+		this._touched = this._touched === true;
+		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+	}
+
+	private onInput(event: Event): void {
+		this._value = Array.from(this.selectRef?.options || [])
+			.filter((option) => option.selected === true)
+			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+
+		// Event handling
+		tryToDispatchKoliBriEvent('input', this.host, this._value);
+
+		// Callback
+		this.state._on?.onInput?.(event, this._value);
+	}
+
+	private onChange(event: Event): void {
+		// Event handling
+		stopPropagation(event);
+		tryToDispatchKoliBriEvent('change', this.host, this._value);
+
+		// Static form handling
+		this.controller.setFormAssociatedValue(this._value as unknown as string);
+
+		// Callback
+		this.state._on?.onChange?.(event, this._value);
+	}
+}

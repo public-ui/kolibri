@@ -22,7 +22,7 @@ export default {
 	page: 'Seite',
 	'page-current': 'Seite {{page}}',
 	'page-selected': 'Seite {{page}} ist ausgewählt',
-	'page-per-site': '{{entries}} Einträge pro Seite',
+	'page-per-site': 'Einträge pro Seite',
 	'nav-maximize': 'Navigation maximieren',
 	'nav-minimize': 'Navigation minimieren',
 	'logo-description': 'Logo {{orgShort}}. Bundesadler mit Flaggenstab und Schriftzug {{orgLong}}',
