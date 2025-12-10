@@ -8,6 +8,7 @@ packages:
   - packages/adapters/vue
   - packages/components
   - packages/samples/angular
+  - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
   - packages/themes/default
