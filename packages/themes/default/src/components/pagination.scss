@@ -53,5 +53,20 @@
 		grid-template-columns: 1fr max-content;
 		align-items: center;
 		gap: to-rem(8);
+
+		select {
+			height: var(--a11y-min-size);
+			background-color: var(--color-light);
+			border-color: var(--color-subtle);
+			border-style: solid;
+			border-radius: var(--border-radius);
+			padding: 0 to-rem(8);
+			border-width: 2px;
+
+			&:hover,
+			&:focus {
+				border-color: var(--color-primary);
+			}
+		}
 	}
 }
