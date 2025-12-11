@@ -10,7 +10,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
               Überschrift
@@ -140,7 +140,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
               Überschrift
@@ -270,7 +270,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
               Überschrift
@@ -400,7 +400,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
               Überschrift
@@ -530,7 +530,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
               Überschrift
@@ -660,7 +660,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
               Überschrift
@@ -790,7 +790,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
               Überschrift
@@ -920,7 +920,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
               Überschrift
@@ -1050,7 +1050,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
               Überschrift
@@ -1180,7 +1180,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
               Überschrift
@@ -1310,7 +1310,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
               Überschrift
@@ -1440,7 +1440,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
               Überschrift
@@ -1570,7 +1570,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
               Überschrift
@@ -1700,7 +1700,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
           <span class="visually-hidden">
             kol-message
           </span>
-          <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+          <kol-icon _icons="kol-icons-alert-info" _label="" class="kol-alert__icon"></kol-icon>
           <div class="kol-alert__container-content">
             <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
               Überschrift
