@@ -20,5 +20,10 @@
 		&__separator:before {
 			content: '•••';
 		}
+
+		&__page-size-select .kol-form-field-select {
+			align-items: center;
+			grid-template-columns: 1fr max-content;
+		}
 	}
 }

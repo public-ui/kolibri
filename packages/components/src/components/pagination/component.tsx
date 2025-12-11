@@ -24,7 +24,7 @@ import {
 	watchValidator,
 } from '../../schema';
 
-import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
+import { KolButtonWcTag, KolSelectWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -172,17 +172,18 @@ export class KolPaginationWc implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSelectTag
-						class="kol-pagination__page-size-select"
-						_hideLabel
-						_id={`pagination-size-${this.nonce}`}
-						_label={this.translateEntriesPerSite}
-						_options={this.state._pageSizeOptions}
-						_on={{
-							onChange: this.onChangePageSize,
-						}}
-						_value={this.state._pageSize}
-					></KolSelectTag>
+					<div class="page-size">
+						<KolSelectWcTag
+							class="kol-pagination__page-size-select"
+							_id={`pagination-size-${this.nonce}`}
+							_label={this.translateEntriesPerSite}
+							_options={this.state._pageSizeOptions}
+							_on={{
+								onChange: this.onChangePageSize,
+							}}
+							_value={this.state._pageSize}
+						/>
+					</div>
 				)}
 			</Host>
 		);
@@ -494,7 +495,7 @@ export class KolPaginationWc implements PaginationAPI {
 			for (const value of nextValue) {
 				if (typeof value === 'number') {
 					options.push({
-						label: translate('kol-page-per-site', { placeholders: { entries: `${value}` } }),
+						label: `${value}`,
 						value: value,
 					});
 				}
