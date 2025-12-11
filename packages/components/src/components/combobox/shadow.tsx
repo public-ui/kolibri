@@ -274,7 +274,7 @@ export class KolCombobox implements ComboboxAPI {
 							/>
 						)}
 						<KolIconTag
-							_icons="codicon codicon-triangle-down"
+							_icons="kol-icons-chevron-down"
 							_label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,

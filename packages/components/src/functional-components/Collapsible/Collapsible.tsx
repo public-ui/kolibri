@@ -40,7 +40,7 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 
 const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
-	const icon = open ? 'kol-icons-minus' : 'kol-icons-plus';
+	const icon = open ? 'kol-icons-chevron-down' : 'kol-icons-chevron-right';
 
 	return (
 		<div
