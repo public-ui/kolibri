@@ -22,7 +22,7 @@ describe('kol-select aria-describedby', () => {
 		const formField = page.root?.shadowRoot?.querySelector('.kol-form-field');
 		const select = page.root?.shadowRoot?.querySelector('select');
 
-		expect(formField?.getAttribute('aria-describedby')).toBeNull();
+		expect(formField?.getAttribute('aria-describedby')).toBeUndefined();
 		expect(select?.getAttribute('aria-describedby')).toBe('select-hint');
 	});
 });
