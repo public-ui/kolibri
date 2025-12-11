@@ -1,11 +1,11 @@
 @font-face {
   font-family: "kol-icons";
-  src: url('kol-icons.eot?t=1765377603936'); /* IE9*/
-  src: url('kol-icons.eot?t=1765377603936#iefix') format('embedded-opentype') /* IE6-IE8 */,
-  url('kol-icons.woff2?t=1765377603936') format('woff2'),
-  url('kol-icons.woff?t=1765377603936') format('woff'),
-  url('kol-icons.ttf?t=1765377603936') format('truetype'),
-  url('kol-icons.svg?t=1765377603936') format('svg');
+  src: url('kol-icons.eot?t=1765441086208'); /* IE9*/
+  src: url('kol-icons.eot?t=1765441086208#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('kol-icons.woff2?t=1765441086208') format('woff2'),
+  url('kol-icons.woff?t=1765441086208') format('woff'),
+  url('kol-icons.ttf?t=1765441086208') format('truetype'),
+  url('kol-icons.svg?t=1765441086208') format('svg');
 }
 
 [class^="kol-icons-"], [class*=" kol-icons-"] {
@@ -34,9 +34,10 @@
 .kol-icons-logo::before { content: "\ea0e"; }
 .kol-icons-minus::before { content: "\ea0f"; }
 .kol-icons-plus::before { content: "\ea10"; }
-.kol-icons-sort-asc::before { content: "\ea11"; }
-.kol-icons-sort-desc::before { content: "\ea12"; }
-.kol-icons-sort-neutral::before { content: "\ea13"; }
-.kol-icons-version::before { content: "\ea14"; }
+.kol-icons-settings::before { content: "\ea11"; }
+.kol-icons-sort-asc::before { content: "\ea12"; }
+.kol-icons-sort-desc::before { content: "\ea13"; }
+.kol-icons-sort-neutral::before { content: "\ea14"; }
+.kol-icons-version::before { content: "\ea15"; }
 
 
