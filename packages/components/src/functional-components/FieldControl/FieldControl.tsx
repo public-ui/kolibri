@@ -78,11 +78,9 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 
 	const canShowHint = !renderNoHint;
 	const canShowTooltip = !renderNoTooltip;
-	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const hasExpertSlot = showExpertSlot(label);
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
-	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const components = [
 		<>
@@ -115,7 +113,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		['kol-field-control--touched']: Boolean(touched),
 		['kol-field-control--hide-label']: Boolean(hideLabel),
 		['kol-field-control--read-only']: Boolean(readonly),
-		[`kol-field-control--${msgType || 'error'}`]: Boolean(showMsg),
+		[`kol-field-control--${(typeof msg === 'string' ? 'error' : msg?._type) || 'error'}`]: Boolean(isMsgDefinedAndInputTouched(msg, touched)),
 		[`kol-field-control--label-align-${labelAlign}`]: Boolean(labelAlign),
 	};
 

@@ -20,15 +20,12 @@ export type InputProps = DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInput
 const InputFc: FC<InputProps> = (props) => {
 	const { class: classNames, msg, required, disabled, touched, readonly, ariaDescribedBy, hideLabel, label, suggestions, value, ...other } = props;
 
-	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
-	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
-
 	const stateCssClasses = {
 		['kol-input--disabled']: Boolean(disabled),
 		['kol-input--required']: Boolean(required),
 		['kol-input--touched']: Boolean(touched),
 		['kol-input--readonly']: Boolean(readonly),
-		[`kol-input--${msgType || 'error'}`]: showMsg,
+		[`kol-input--${(typeof msg === 'string' ? 'error' : msg?._type) || 'error'}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
 	const inputProps: JSXBase.InputHTMLAttributes<HTMLInputElement> = {

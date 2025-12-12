@@ -36,12 +36,9 @@ const Container: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: classNam
 
 const KolInputContainerFc: FC<InputContainerProps> = (props, children) => {
 	const { class: classNames, startAdornment, endAdornment, disabled, msg, touched, containerProps, startAdornmentProps, endAdornmentProps, ...other } = props;
-	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
-	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
-
 	const stateCssClasses = {
 		['kol-input-container--disabled']: disabled,
-		[`kol-input-container--${msgType || 'error'}`]: showMsg,
+		[`kol-input-container--${(typeof msg === 'string' ? 'error' : msg?._type) || 'error'}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
 	const baseProps: JSXBase.HTMLAttributes<HTMLDivElement> = {

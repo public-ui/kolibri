@@ -17,15 +17,12 @@ export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTM
 const TextAreaFc: FC<TextAreaProps> = (props) => {
 	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, hideLabel, label, ...other } = props;
 
-	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
-	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
-
 	const stateCssClasses = {
 		['kol-textarea--disabled']: Boolean(disabled),
 		['kol-textarea--required']: Boolean(required),
 		['kol-textarea--touched']: Boolean(touched),
 		['kol-textarea--readonly']: Boolean(readonly),
-		[`kol-textarea--${msgType || 'error'}`]: showMsg,
+		[`kol-textarea--${(typeof msg === 'string' ? 'error' : msg?._type) || 'error'}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
 	const inputProps: JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> = {
