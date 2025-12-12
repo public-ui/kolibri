@@ -45,6 +45,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
+      - name: Build icons package
+        run: pnpm --filter @public-ui/icons build
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
       - name: E2E Test components
