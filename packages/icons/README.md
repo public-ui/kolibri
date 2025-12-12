@@ -37,7 +37,7 @@ yarn add @public-ui/icons
 Include the icon font stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="node_modules/@public-ui/icons/font/kol-icon.css" />
+<link rel="stylesheet" href="node_modules/@public-ui/icons/font/style.css" />
 ```
 
 Then use icons with the CSS class syntax:
