@@ -3,7 +3,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import type { AlignPropType, MaxLengthBehaviorPropType, MsgPropType, Stringified } from '../../schema';
-import { buildBadgeTextString, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
+import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
 import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
@@ -107,7 +107,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
 
-	const msgType = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
+	const msgType = getMsgType(msg);
 
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),

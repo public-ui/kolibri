@@ -62,6 +62,14 @@ export function isMsgDefinedAndInputTouched(msg?: Stringified<MsgPropType>, touc
 
 export const checkHasMsg = isMsgDefinedAndInputTouched;
 
+export function getMsgType(msg?: Stringified<MsgPropType>): MsgPropType['_type'] | 'error' {
+	if (typeof msg === 'string') {
+		return 'error';
+	}
+
+	return msg?._type ?? 'error';
+}
+
 export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | undefined {
 	if (typeof msg === 'string') {
 		try {
