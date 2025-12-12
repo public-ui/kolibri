@@ -68,7 +68,7 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "npm run build:light",
+		"build": "pnpm --filter @public-ui/icons build && npm run build:light",
 		"build:deps": "pnpm --filter @public-ui/components^... build",
 		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && npm run format -- -w",
 		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
