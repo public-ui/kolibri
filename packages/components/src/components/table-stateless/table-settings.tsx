@@ -114,6 +114,10 @@ export class KolTableSettings {
 					if (cell.resizable !== false) {
 						delete cell.resizable;
 					}
+					// Remove width if undefined, null, or empty string (default)
+					if (cell.width === undefined || cell.width === null || cell.width === '') {
+						delete cell.width;
+					}
 					return cell;
 				}),
 			);
