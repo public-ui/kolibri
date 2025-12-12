@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { checkHasMsg } from '../../../schema';
+import { isMsgDefinedAndInputTouched } from '../../../schema';
 import KolIconFc, { type IconProps } from '../../Icon';
 import KolInputFc, { type InputProps } from '../Input';
 
@@ -20,7 +20,7 @@ const InputWrapperFc: FC<InputProps> = ({ class: classNames, ...other }) => {
 };
 
 const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default', icon, inputProps, ...other }) => {
-	const showMsg = checkHasMsg(inputProps?.msg, inputProps?.touched);
+	const showMsg = isMsgDefinedAndInputTouched(inputProps?.msg, inputProps?.touched);
 	const msgType = typeof inputProps?.msg === 'string' ? 'error' : inputProps?.msg?._type;
 
 	const cssVariants = {

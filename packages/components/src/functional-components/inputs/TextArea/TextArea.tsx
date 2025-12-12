@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
+import { isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 
@@ -17,7 +17,7 @@ export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTM
 const TextAreaFc: FC<TextAreaProps> = (props) => {
 	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, hideLabel, label, ...other } = props;
 
-	const showMsg = checkHasMsg(msg, touched);
+	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
 
 	const stateCssClasses = {

@@ -21,9 +21,10 @@ export const InputDateCases = forwardRef<HTMLKolInputDateElement, Components.Kol
 				_required
 				_touched
 			/>
-			<KolInputDate {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Color" />
-			<KolInputDate {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Color" />
-			<KolInputDate {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Color" />
+			<KolInputDate {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Date" _touched />
+			<KolInputDate {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Date" _touched />
+			<KolInputDate {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Date" _touched />
+			<KolInputDate {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Date" _touched />
 			<KolInputDate {...props} _type="month" _label="Month" _required />
 			<KolInputDate {...props} ref={ref} _accessKey="W" _type="week" _label="Week" _required />
 			<KolInputDate {...props} _type="time" _label="Time (standard)" _required />

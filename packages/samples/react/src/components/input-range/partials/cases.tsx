@@ -37,9 +37,10 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				_label="Slider with error"
 				_touched
 			/>
-			<KolInputRange {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Slider" />
-			<KolInputRange {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Slider" />
-			<KolInputRange {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Slider" />
+			<KolInputRange {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Slider" _touched />
+			<KolInputRange {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Slider" _touched />
+			<KolInputRange {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Slider" _touched />
+			<KolInputRange {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Slider" _touched />
 			<KolInputRange {...props} _disabled _min={0} _max={50} _label="Slider (disabled)" />
 			<KolInputRange {...props} _min={0} _max={50} _label="With access key" _accessKey="c" />
 			<KolInputRange {...props} _min={0} _max={50} _label="With short key" _shortKey="s" />
