@@ -43,9 +43,9 @@ Include the icon font stylesheet in your HTML:
 Then use icons with the CSS class syntax:
 
 ```html
-<i class="kol-icon kol-icon-home"></i>
-<i class="kol-icon kol-icon-user"></i>
-<i class="kol-icon kol-icon-settings"></i>
+<i class="kol-icon-home"></i>
+<i class="kol-icon-user"></i>
+<i class="kol-icon-settings"></i>
 ```
 
 ### With KoliBri components
