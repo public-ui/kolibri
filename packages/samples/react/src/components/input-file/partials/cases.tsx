@@ -32,9 +32,10 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 				}}
 				_touched
 			/>
-			<KolInputFile {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Upload file" />
-			<KolInputFile {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Upload file" />
-			<KolInputFile {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Upload file" />
+			<KolInputFile {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Upload file" _touched />
+			<KolInputFile {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Upload file" _touched />
+			<KolInputFile {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Upload file" _touched />
+			<KolInputFile {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Upload file" _touched />
 			<KolInputFile {...props} ref={ref} _accessKey="h" _multiple _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Upload file (Multiple)" />
 			<KolInputFile {...props} _disabled _label="Upload file (Disabled)" />
 			<KolInputFile {...props} _label="With access key" _accessKey="c" />

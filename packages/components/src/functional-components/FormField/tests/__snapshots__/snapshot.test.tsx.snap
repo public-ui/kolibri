@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`KolFormFieldFc should hide messages until touched 1`] = `
+<div class="kol-form-field">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+</div>
+`;
+
 exports[`KolFormFieldFc should render correctly 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
