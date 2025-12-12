@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import {
 	buildBadgeTextString,
-	checkHasMsg,
+	isMsgDefinedAndInputTouched,
 	showExpertSlot,
 	type AlignPropType,
 	type LabelAlignPropType,
@@ -78,7 +78,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 
 	const canShowHint = !renderNoHint;
 	const canShowTooltip = !renderNoTooltip;
-	const showMsg = checkHasMsg(msg, touched);
+	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const hasExpertSlot = showExpertSlot(label);
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);

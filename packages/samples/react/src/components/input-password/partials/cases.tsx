@@ -29,9 +29,10 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Compon
 				}}
 				_touched
 			/>
-			<KolInputPassword {...props} _placeholder="Placeholder" _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Password" />
-			<KolInputPassword {...props} _placeholder="Placeholder" _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Password" />
-			<KolInputPassword {...props} _placeholder="Placeholder" _msg={{ _type: 'success', _description: 'Success message' }} _label="Password" />
+			<KolInputPassword {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Passwort" _touched />
+			<KolInputPassword {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Passwort" _touched />
+			<KolInputPassword {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Passwort" _touched />
+			<KolInputPassword {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Passwort" _touched />
 			<KolInputPassword {...props} _disabled _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Passwort (Disabled)" _touched />
 			<KolInputPassword {...props} _readOnly _label="Passwort (Readonly)" />
 			<KolInputPassword {...props} ref={ref} _shortKey="c" _label="With access key" />
