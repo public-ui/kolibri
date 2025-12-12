@@ -120,7 +120,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 
 		stateCssClasses = {
 			...stateCssClasses,
-			[`kol-form-field--${msgType || 'error'}`]: true,
+			[`kol-form-field--${msgType}`]: true,
 			[`kol-form-field--${getModifierClassNameByMsgType({ type: msgType })}`]: true,
 		};
 	}
