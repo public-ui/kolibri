@@ -14,6 +14,7 @@ import {
 	type MsgPropType,
 	type SelectStates,
 } from '../../schema';
+import { getRenderStates } from '../_helpers/getRenderStates';
 
 type InputState =
 	| InputTextStates
@@ -84,8 +85,13 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 }
 
 const FormFieldStateWrapper: FC<FormFieldStateWrapperProps> = ({ state, ...other }, children) => {
+	const { ariaDescribedBy: ariaDescribedByArray } = getRenderStates(state);
+	const isRadioVariant = other.component === 'fieldset' || ('_options' in state && '_orientation' in state);
+	const ariaDescribedBy = isRadioVariant && ariaDescribedByArray.length > 0 ? ariaDescribedByArray.join(' ') : undefined;
+	const baseProps = getFormFieldProps(state);
+
 	return (
-		<KolFormFieldFc {...getFormFieldProps(state)} {...other}>
+		<KolFormFieldFc {...baseProps} {...other} ariaDescribedBy={ariaDescribedBy}>
 			{children}
 		</KolFormFieldFc>
 	);

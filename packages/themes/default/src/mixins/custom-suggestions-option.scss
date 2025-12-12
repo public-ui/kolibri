@@ -13,10 +13,16 @@
 			color: var(--color-primary-variant);
 		}
 
-		&:focus {
+		&:not(&--disabled):focus {
 			color: var(--color-light);
 			background-color: var(--color-primary-variant);
 			outline: 0;
+		}
+
+		&--disabled:focus,
+		&--disabled:focus * {
+			outline: 0;
+			cursor: not-allowed;
 		}
 	}
 }
