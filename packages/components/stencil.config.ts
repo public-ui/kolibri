@@ -278,7 +278,7 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [sass(), postcss()],
+	plugins: [sass({ includePaths: ['node_modules'] }), postcss()],
 	rollupPlugins: {
 		before: [],
 		after: [],
