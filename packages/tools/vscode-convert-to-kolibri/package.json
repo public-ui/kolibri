@@ -48,7 +48,8 @@
 	"activationEvents": [
 		"onLanguage:html",
 		"onLanguage:typescriptreact",
-		"onLanguage:javascriptreact"
+		"onLanguage:javascriptreact",
+		"onCommand:kolibri.openGuiBuilder"
 	],
 	"contributes": {
 		"commands": [
@@ -63,6 +64,11 @@
 				"title": "KoliBri: Scan document for convertible components",
 				"icon": "$(search)",
 				"enablement": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
+			},
+			{
+				"command": "kolibri.openGuiBuilder",
+				"title": "KoliBri: Open GUI Builder",
+				"icon": "$(screen-full)"
 			}
 		],
 		"menus": {
@@ -76,6 +82,10 @@
 					"command": "kolibri.scanDocument",
 					"when": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript",
 					"group": "1_modification@2"
+				},
+				{
+					"command": "kolibri.openGuiBuilder",
+					"group": "navigation@1"
 				}
 			],
 			"commandPalette": [
@@ -85,6 +95,10 @@
 				},
 				{
 					"command": "kolibri.scanDocument",
+					"when": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
+				},
+				{
+					"command": "kolibri.openGuiBuilder",
 					"when": "editorLangId == html || editorLangId == typescriptreact || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == javascript"
 				}
 			]

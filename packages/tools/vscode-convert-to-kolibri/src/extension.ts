@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { convertHtml, scanHtml } from './conversion/html-converter';
 import { convertTsx, scanTsx } from './conversion/tsx-converter';
 import { ConversionOutput, ScanSummary } from './conversion/types';
+import { openGuiBuilder } from './gui-builder';
 
 function getConverter(languageId: string): {
 	convert: (text: string) => ConversionOutput;
@@ -105,7 +106,11 @@ export function activate(context: vscode.ExtensionContext): void {
 		}
 	});
 
-	context.subscriptions.push(convertCommand, scanCommand, channel);
+	const guiBuilderCommand = vscode.commands.registerCommand('kolibri.openGuiBuilder', () => {
+		openGuiBuilder(channel);
+	});
+
+	context.subscriptions.push(convertCommand, scanCommand, guiBuilderCommand, channel);
 }
 
 export function deactivate(): void {

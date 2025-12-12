@@ -47,12 +47,17 @@ Every suggestion includes a confidence level:
 - **High**: Safe to auto-apply (simple labels, well-mapped props)
 - **Medium**: Manual review recommended (ambiguous labels, unknown variants)
 
+### GUI Builder (preview)
+
+Open the interactive GUI builder to assemble KoliBri components visually inside VS Code. Drag components like `KolButton`, `KolInputText`, and `KolForm` onto the canvas, tweak their props, and insert the generated React code into the active editor with one click. You can also export or import the canvas state as JSON for later editing.
+
 ## Commands
 
 | Command                                             | Keyboard Shortcut                                               | Description                                 |
 | --------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------- |
 | `KoliBri: Convert selection to KoliBri`             | `Ctrl+Shift+K Ctrl+Shift+C`<br/>`Cmd+Shift+K Cmd+Shift+C` (Mac) | Convert selected code to KoliBri components |
 | `KoliBri: Scan document for convertible components` | `Ctrl+Shift+K Ctrl+Shift+S`<br/>`Cmd+Shift+K Cmd+Shift+S` (Mac) | Analyze document for migration candidates   |
+| `KoliBri: Open GUI Builder`                         | —                                                               | Launch the drag-and-drop builder panel      |
 
 Both commands are also available via:
 
