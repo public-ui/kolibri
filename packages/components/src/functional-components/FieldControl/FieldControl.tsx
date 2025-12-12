@@ -3,6 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import {
 	buildBadgeTextString,
+	getMsgType,
 	isMsgDefinedAndInputTouched,
 	showExpertSlot,
 	type AlignPropType,
@@ -113,7 +114,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		['kol-field-control--touched']: Boolean(touched),
 		['kol-field-control--hide-label']: Boolean(hideLabel),
 		['kol-field-control--read-only']: Boolean(readonly),
-		[`kol-field-control--${(typeof msg === 'string' ? 'error' : msg?._type) || 'error'}`]: Boolean(isMsgDefinedAndInputTouched(msg, touched)),
+		[`kol-field-control--${getMsgType(msg)}`]: Boolean(isMsgDefinedAndInputTouched(msg, touched)),
 		[`kol-field-control--label-align-${labelAlign}`]: Boolean(labelAlign),
 	};
 

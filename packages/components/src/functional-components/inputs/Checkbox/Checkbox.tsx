@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { isMsgDefinedAndInputTouched } from '../../../schema';
+import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
 import KolIconFc, { type IconProps } from '../../Icon';
 import KolInputFc, { type InputProps } from '../Input';
 
@@ -27,9 +27,7 @@ const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default',
 		['kol-checkbox--disabled']: Boolean(inputProps?.disabled),
 		['kol-checkbox--required']: Boolean(inputProps?.required),
 		['kol-checkbox--touched']: Boolean(inputProps?.touched),
-		[`kol-checkbox--${(typeof inputProps?.msg === 'string' ? 'error' : inputProps?.msg?._type) || 'error'}`]: Boolean(
-			isMsgDefinedAndInputTouched(inputProps?.msg, inputProps?.touched),
-		),
+		[`kol-checkbox--${getMsgType(inputProps?.msg)}`]: Boolean(isMsgDefinedAndInputTouched(inputProps?.msg, inputProps?.touched)),
 	};
 
 	return (

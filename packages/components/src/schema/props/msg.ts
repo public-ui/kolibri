@@ -75,3 +75,11 @@ export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | unde
 	}
 	return msg;
 }
+
+export function getMsgType(msg?: Stringified<MsgPropType>): MsgPropType['_type'] | 'error' {
+	if (typeof msg === 'string') {
+		return 'error';
+	}
+
+	return msg?._type ?? 'error';
+}
