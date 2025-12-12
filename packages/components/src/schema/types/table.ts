@@ -21,6 +21,7 @@ export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	sortDirection?: KoliBriSortDirection;
 	hidable?: boolean;
 	sortable?: boolean;
+	sortOrder?: number;
 	resizable?: boolean;
 };
 

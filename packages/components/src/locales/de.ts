@@ -27,6 +27,7 @@ export default {
 	'open-link-in-tab': 'Öffnet in neuem Tab.',
 	'kolibri-logo': 'Logo von KoliBri',
 	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
+	'table-sort-order': 'Priorität {{order}}',
 	'avatar-alt': 'Avatar von {{name}}',
 	'split-button-dropdown-label-open': 'Optionen anzeigen',
 	'split-button-dropdown-label-close': 'Optionen schließen',
