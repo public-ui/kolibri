@@ -109,7 +109,8 @@ function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetada
 
 	try {
 		// Try to load from shared/sample-index.json (static, pre-generated)
-		const parsed = JSON.parse(readFileSync(fileURLToPath(new URL('../shared/sample-index.json', import.meta.url)), 'utf8')) as SerializedSampleIndex;
+		const indexPath = fileURLToPath(new URL('../shared/sample-index.json', import.meta.url));
+		const parsed = JSON.parse(readFileSync(indexPath, 'utf8')) as SerializedSampleIndex;
 		const entries = Array.isArray(parsed.entries) ? parsed.entries.map(normalizeEntry) : [];
 
 		if (entries.length === 0) {
