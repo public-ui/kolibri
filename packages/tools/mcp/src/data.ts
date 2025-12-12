@@ -45,8 +45,7 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 	const byKind: Record<string, number> = {};
 
 	for (const entry of entries) {
-		const key = entry.kind;
-		byKind[key] = (byKind[key] ?? 0) + 1;
+		byKind[entry.kind] = (byKind[entry.kind] ?? 0) + 1;
 	}
 
 	return {
@@ -110,10 +109,8 @@ function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetada
 
 	try {
 		// Try to load from shared/sample-index.json (static, pre-generated)
-		const sharedIndexUrl = new URL('../shared/sample-index.json', import.meta.url);
-		const filePath = fileURLToPath(sharedIndexUrl);
-		const raw = readFileSync(filePath, 'utf8');
-		const parsed = JSON.parse(raw) as SerializedSampleIndex;
+		const indexPath = fileURLToPath(new URL('../shared/sample-index.json', import.meta.url));
+		const parsed = JSON.parse(readFileSync(indexPath, 'utf8')) as SerializedSampleIndex;
 		const entries = Array.isArray(parsed.entries) ? parsed.entries.map(normalizeEntry) : [];
 
 		if (entries.length === 0) {
@@ -124,9 +121,10 @@ function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetada
 		cachedData = { entries, metadata };
 		return cachedData;
 	} catch (error) {
-		const message = error instanceof Error ? error.message : String(error);
 		throw new Error(
-			`Failed to load sample index from shared/sample-index.json. ` + `Please run 'pnpm generate-index' to create the index file. ` + `Error: ${message}`,
+			`Failed to load sample index from shared/sample-index.json. ` +
+				`Please run 'pnpm generate-index' to create the index file. ` +
+				`Error: ${error instanceof Error ? error.message : String(error)}`,
 		);
 	}
 }

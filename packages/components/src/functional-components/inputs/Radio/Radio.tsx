@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { isMsgDefinedAndInputTouched } from '../../../schema';
+import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
 import KolInputFc, { type InputProps } from '../Input';
 
 export type RadioProps = JSXBase.HTMLAttributes<HTMLLabelElement> & {
@@ -13,15 +13,12 @@ const InputWrapperFc: FC<InputProps> = ({ class: classNames, ...other }) => {
 };
 
 const RadioFc: FC<RadioProps> = ({ class: classNames, inputProps, ...other }) => {
-	const showMsg = isMsgDefinedAndInputTouched(inputProps?.msg, inputProps?.touched);
-	const msgType = typeof inputProps?.msg === 'string' ? 'error' : inputProps?.msg?._type;
-
 	const cssVariants = {
 		['kol-input-radio--checked']: inputProps?.checked,
 		['kol-input-radio--disabled']: Boolean(inputProps?.disabled),
 		['kol-input-radio--required']: Boolean(inputProps?.required),
 		['kol-input-radio--touched']: Boolean(inputProps?.touched),
-		[`kol-input-radio--${msgType || 'error'}`]: Boolean(showMsg),
+		[`kol-input-radio--${getMsgType(inputProps?.msg)}`]: Boolean(isMsgDefinedAndInputTouched(inputProps?.msg, inputProps?.touched)),
 	};
 
 	return (
