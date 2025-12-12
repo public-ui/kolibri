@@ -32,8 +32,9 @@ function createServerWithRegisteredTools() {
 async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
 	const searchTool = tools.get('search');
 	assert.ok(searchTool, 'expected search tool to be registered');
+	assert.strictEqual(typeof searchTool.handler, 'function', 'search tool should expose a handler');
 
-	const response = await searchTool.callback({ query, limit });
+	const response = await searchTool.handler({ query, limit });
 	assert.ok(response?.structuredContent, 'search tool should return structured content');
 	return response.structuredContent;
 }
@@ -49,6 +50,7 @@ test('search tool results stay consistent with fetch results', async () => {
 
 	const fetchTool = registeredTools.get('fetch');
 	assert.ok(fetchTool, 'expected fetch tool to be registered');
+	assert.strictEqual(typeof fetchTool.handler, 'function', 'fetch tool should expose a handler');
 
 	for (const result of structuredContent.results) {
 		assert.strictEqual(Object.prototype.hasOwnProperty.call(result, 'code'), false, 'search results should not expose code');
@@ -63,7 +65,7 @@ test('search tool results stay consistent with fetch results', async () => {
 		assert.strictEqual(result.description, entry.description ?? 'N/A');
 		assert.deepStrictEqual(result.tags, Array.isArray(entry.tags) ? entry.tags : []);
 
-		const fetchResponse = await fetchTool.callback({ id: result.id });
+		const fetchResponse = await fetchTool.handler({ id: result.id });
 		assert.ok(fetchResponse?.structuredContent, 'fetch tool should return structured content');
 		assert.strictEqual(fetchResponse.structuredContent.id, result.id);
 		assert.strictEqual(typeof fetchResponse.structuredContent.code, 'string', 'fetch should include code content');
