@@ -81,16 +81,16 @@ describe('parseColumnWidth', () => {
 			expect(parseColumnWidth('-5')).toBe(100);
 		});
 
-		it('should parse "0.5" as 0 (parseInt truncates), then return default (not positive)', () => {
+		it('should parse "0.5" as 0.5 (parseFloat preserves decimals), then return default (not positive)', () => {
 			expect(parseColumnWidth('0.5')).toBe(100);
 		});
 
-		it('should parse "10.9" as 10', () => {
-			expect(parseColumnWidth('10.9')).toBe(10);
+		it('should parse "10.9" as 10.9', () => {
+			expect(parseColumnWidth('10.9')).toBe(10.9);
 		});
 
-		it('should parse "99.1" as 99', () => {
-			expect(parseColumnWidth('99.1')).toBe(99);
+		it('should parse "99.1" as 99.1', () => {
+			expect(parseColumnWidth('99.1')).toBe(99.1);
 		});
 
 		it('should handle very large numbers', () => {
