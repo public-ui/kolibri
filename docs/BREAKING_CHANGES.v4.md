@@ -46,7 +46,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 <kol-nav _label="" _links="[]"></kol-nav>
 ```
 
-### Toast System
+### ToasterService and toast component
 
 - The `variant` property has been removed from Toast objects. All toasts now use the `card` variant by default.
 - The `defaultVariant` option has been removed from `ToasterService.getInstance()`. The service no longer accepts variant configuration.
@@ -82,9 +82,13 @@ toaster.enqueue({
 });
 ```
 
-#### kol-table-stateless
+### kol-table-stateless & kol-table-stateful
 
-The `onSelectionChange` callback now always returns `KoliBriTableSelectionKeys` (array of keys):
+#### Selection Callbacks
+
+The `onSelectionChange` callback signatures have been simplified to always return arrays:
+
+**kol-table-stateless** - Always returns `KoliBriTableSelectionKeys` (array of keys):
 
 **Before (v3):**
 
@@ -105,9 +109,7 @@ onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 };
 ```
 
-#### kol-table-stateful
-
-The `onSelectionChange` callback now always returns `KoliBriTableDataType[] | null` (array of objects or null):
+**kol-table-stateful** - Always returns `KoliBriTableDataType[] | null` (array of objects or null):
 
 **Before (v3):**
 
@@ -129,4 +131,41 @@ onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | null) => 
 	// Direct usage - always an array or null
 	setSelectedData(selection || []);
 };
+```
+
+#### Settings Menu
+
+The settings menu is now part of the `_horizontalHeaderCells` prop. The settings for visibility (`visible`), hidability (`hidable`), sortability (`sortable`), and resizability (`resizable`) are now managed directly through the header cell configuration.
+
+**Before:**
+
+```tsx
+// Settings were applied immediately
+<kol-table-stateless
+	_hasSettingsMenu
+	_headerCells={headerCells}
+	_tableSettings={tableSettings}
+	_on={{
+		onSettingsChange: (event, tableSettings) => {
+			// Settings applied immediately
+			setTableSettings(tableSettings);
+		},
+	}}
+/>
+```
+
+**After:**
+
+```tsx
+// Settings are only applied after clicking "Apply"
+<kol-table-stateless
+	_hasSettingsMenu
+	_headerCells={headerCells}
+	_on={{
+		onChangeHeaderCells: (event, headerCells) => {
+			// Settings only updated after user confirms
+			setHeaderCells(headerCells);
+		},
+	}}
+/>
 ```
