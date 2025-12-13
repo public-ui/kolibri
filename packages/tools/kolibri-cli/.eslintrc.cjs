@@ -16,12 +16,7 @@ module.exports = {
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
-	plugins: [
-		'html',
-		// 'json',
-		// 'jsx-a11y',
-		'react',
-	],
+	plugins: ['html', 'react'],
 	rules: {
 		eqeqeq: 'error',
 	},
