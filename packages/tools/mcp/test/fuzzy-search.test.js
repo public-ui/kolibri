@@ -53,6 +53,10 @@ const SAMPLE_ENTRIES = [
 		kind: 'scenario',
 	},
 ];
+
+/**
+ * Extract ids from search results
+ */
 function ids(result) {
 	return result.map((entry) => entry.item.id);
 }

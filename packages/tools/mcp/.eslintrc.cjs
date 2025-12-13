@@ -20,7 +20,6 @@ module.exports = {
 		},
 		{
 			files: ['test/**/*.js'],
-			extends: [],
 			env: {
 				node: true,
 				es2022: true,
