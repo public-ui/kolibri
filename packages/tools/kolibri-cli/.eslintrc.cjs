@@ -3,7 +3,6 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
-		'plugin:jsdoc/recommended',
 		'plugin:json/recommended',
 		'plugin:jsx-a11y/recommended',
 		'plugin:react/recommended',
@@ -17,19 +16,18 @@ module.exports = {
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
-        plugins: [
-                'html',
-                // 'jsdoc',
-                // 'json',
-                // 'jsx-a11y',
-                'react',
-        ],
-        rules: {
-                'eqeqeq': 'error',
-        },
-        settings: {
-                react: {
-                        version: 'detect',
-                },
-        },
+	plugins: [
+		'html',
+		// 'json',
+		// 'jsx-a11y',
+		'react',
+	],
+	rules: {
+		eqeqeq: 'error',
+	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
+	},
 };

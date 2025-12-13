@@ -1,5 +1,8 @@
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { z } from 'zod';
 import { getAllEntries, getEntryById, getSampleIndexMetadata } from '../dist/data.mjs';
 import { searchEntries } from '../dist/search.mjs';
@@ -12,8 +15,14 @@ const formatTagsForText = (tags) => {
 	return normalized.length > 0 ? normalized.join(', ') : 'none';
 };
 
-// Package info - read from environment or use defaults
-const PACKAGE_VERSION = process.env.npm_package_version || '3.0.7';
+// Read package version from package.json
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJsonPath = join(__dirname, '../package.json');
+const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+
+// Package info
+const PACKAGE_VERSION = packageJson.version;
 const PACKAGE_NAME = '@public-ui/mcp';
 const PACKAGE_DESCRIPTION = 'Model Context Protocol server providing AI agents access to 136+ KoliBri component examples and source code.';
 
