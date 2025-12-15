@@ -73,7 +73,7 @@ test.describe('kol-table-settings', () => {
 
 			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
 				return new Promise<KoliBriTableHeaderCell[][]>((resolve) => {
-					element.addEventListener(KolEvent.settingsChange, (event: Event) => {
+					element.addEventListener(KolEvent.changeHeaderCells, (event: Event) => {
 						resolve((event as CustomEvent).detail as KoliBriTableHeaderCell[][]);
 					});
 				});

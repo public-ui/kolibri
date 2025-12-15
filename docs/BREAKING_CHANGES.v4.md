@@ -164,7 +164,8 @@ The settings menu is now part of the `_horizontalHeaderCells` prop. The settings
 	_on={{
 		onChangeHeaderCells: (event, headerCells) => {
 			// Settings only updated after user confirms
-			setHeaderCells({ horizontal: headerCells });
+			// headerCells contains both horizontal and vertical header cells
+			setHeaderCells(headerCells);
 		},
 	}}
 />

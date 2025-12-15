@@ -120,7 +120,7 @@ export class KolTableSettings {
 					return cell;
 				}),
 			);
-			dispatchDomEvent(this.host, KolEvent.settingsChange, sanitizedHeaderCells);
+			dispatchDomEvent(this.host, KolEvent.changeHeaderCells, sanitizedHeaderCells);
 			void this.popoverRef?.hidePopover();
 		}
 	}
