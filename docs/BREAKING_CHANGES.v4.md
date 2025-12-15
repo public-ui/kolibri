@@ -158,26 +158,14 @@ The settings menu is now part of the `_horizontalHeaderCells` prop. The settings
 
 ```tsx
 // Settings are only applied after clicking "Apply"
-// Use a ref to access the element
-const tableRef = useRef<HTMLKolTableStatelessElement>(null);
-
-useEffect(() => {
-	const table = tableRef.current;
-	if (!table) return;
-
-	const handleSettingsChange = (event: Event) => {
-		const customEvent = event as CustomEvent<KoliBriTableHeaderCell[][]>;
-		// Settings only updated after user confirms
-		setHeaderCells({ horizontal: customEvent.detail });
-	};
-
-	table.addEventListener('settingsChange', handleSettingsChange);
-	return () => table.removeEventListener('settingsChange', handleSettingsChange);
-}, []);
-
 <kol-table-stateless
-	ref={tableRef}
 	_hasSettingsMenu
 	_headerCells={headerCells}
+	_on={{
+		onChangeHeaderCells: (event, headerCells) => {
+			// Settings only updated after user confirms
+			setHeaderCells({ horizontal: headerCells });
+		},
+	}}
 />
 ```
