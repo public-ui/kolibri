@@ -309,7 +309,7 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"add--cpy-cli,rimraf": true,
 			"package.json-reconfigure-scripts.prepare": true,
 			"remove-public/assets/codicons": true,
-			"exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"undefined/assets\" --dot": true,
+			"exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"public/assets\" --dot": true,
 			"kol-button-link-remove-property-_access-key": true,
 			"kol-button-remove-property-_access-key": true,
 			"kol-nav-remove-property-_has-compact-button": true
@@ -317,6 +317,8 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 	}
 }
 ```
+
+> The `exec-npx cpy` task copies the packaged component assets into your project's `public/assets` folder; leave it enabled unless your build already handles asset copying in a different location.
 
 ## Troubleshooting
 
