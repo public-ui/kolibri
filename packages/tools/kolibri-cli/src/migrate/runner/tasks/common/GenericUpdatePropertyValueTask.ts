@@ -72,14 +72,6 @@ export class GenericUpdatePropertyValueTask extends AbstractTask {
 	}
 }
 
-// Helper function to update attribute values in HTML strings
-/**
- *
- * @param htmlString
- * @param tagRegExp
- * @param oldValue
- * @param newValue
- */
 function updateAttributeValue(htmlString: string, tagRegExp: RegExp, oldValue: string, newValue: string): string {
 	return htmlString.replace(tagRegExp, (match) => {
 		return match.replace(`="${oldValue}"`, `="${newValue}"`).replace(`='${oldValue}'`, `='${newValue}'`);

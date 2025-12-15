@@ -8,6 +8,9 @@ import { createKolibriMcpServer } from '../dist/mcp.mjs';
 
 const DEFAULT_LIMIT = 5;
 
+/**
+ * Create server with registered tools for testing
+ */
 function createServerWithRegisteredTools() {
 	const registeredTools = new Map();
 	const originalRegisterTool = McpServer.prototype.registerTool;
@@ -35,6 +38,9 @@ async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
 	return response.structuredContent;
 }
 
+/**
+ * Verify consistent results across multiple calls
+ */
 test('search tool results stay consistent with fetch results', async () => {
 	const { registeredTools } = createServerWithRegisteredTools();
 	const structuredContent = await runSearch(registeredTools);

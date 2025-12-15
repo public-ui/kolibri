@@ -41,6 +41,11 @@ interface SerializedSampleIndex {
 
 let cachedData: { entries: SampleEntry[]; metadata: SampleIndexMetadata } | undefined;
 
+/**
+ * Calculate counts of entries by kind
+ * @param entries - Array of sample entries
+ * @returns Object containing total counts and counts by kind
+ */
 function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 	const byKind: Record<string, number> = {};
 
@@ -58,6 +63,11 @@ function calculateCounts(entries: SampleEntry[]): SampleIndexCounts {
 	};
 }
 
+/**
+ * Normalize a sample entry
+ * @param entry - The sample entry to normalize
+ * @returns Normalized sample entry
+ */
 function normalizeEntry(entry: SampleEntry): SampleEntry {
 	const normalizedKind: SampleEntry['kind'] = entry.kind === 'doc' ? 'doc' : entry.kind === 'scenario' ? 'scenario' : entry.kind === 'spec' ? 'spec' : 'sample';
 	const tags = Array.isArray(entry.tags) ? entry.tags.map((tag) => String(tag)).filter((tag) => tag.trim().length > 0) : undefined;
@@ -69,6 +79,12 @@ function normalizeEntry(entry: SampleEntry): SampleEntry {
 	};
 }
 
+/**
+ * Normalize sample index metadata
+ * @param metadata - The metadata to normalize
+ * @param entries - The sample entries for calculating counts
+ * @returns Normalized sample index metadata
+ */
 function normalizeMetadata(metadata: SerializedSampleIndex['metadata'], entries: SampleEntry[]): SampleIndexMetadata {
 	const counts = calculateCounts(entries);
 	const repo = metadata?.repo ?? { commit: null, branch: null, repoUrl: null };

@@ -11,13 +11,7 @@ module.exports = {
 	overrides: [
 		{
 			files: ['src/**/*.ts'],
-			extends: [
-				'eslint:recommended',
-				'plugin:@typescript-eslint/recommended',
-				'plugin:@typescript-eslint/recommended-requiring-type-checking',
-				'plugin:jsdoc/recommended-typescript',
-				'prettier',
-			],
+			extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking', 'prettier'],
 			parserOptions: {
 				project: 'tsconfig.json',
 				sourceType: 'module',
@@ -26,7 +20,6 @@ module.exports = {
 		},
 		{
 			files: ['test/**/*.js'],
-			extends: ['plugin:jsdoc/recommended'],
 			env: {
 				node: true,
 				es2022: true,
