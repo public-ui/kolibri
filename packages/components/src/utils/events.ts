@@ -14,7 +14,6 @@ enum KolEvent {
 	reset = 'kolReset',
 	select = 'kolSelect',
 	selectionChange = 'kolSelectionChange',
-	settingsChange = 'settingsChange',
 	sort = 'kolSort',
 	submit = 'kolSubmit',
 	toggle = 'kolToggle',
