@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.base.sha }}
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - uses: ./.github/actions/pnpm-setup
@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - uses: ./.github/actions/pnpm-setup
