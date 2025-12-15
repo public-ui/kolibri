@@ -46,7 +46,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 	shadow: true,
 })
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputRadioElement;
+	@Element() private readonly host!: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
@@ -68,6 +68,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
+		const focusableInput = this.getFocusableInput();
+		this.inputRef = focusableInput ?? this.inputRef;
 		this.inputRef?.focus();
 	}
 
@@ -259,7 +261,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'radio', this.host);
+		this.controller = new InputRadioController(this, 'radio', this.getHostElement());
 	}
 
 	private showAsAlert(): boolean {
@@ -351,6 +353,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.controller.componentWillLoad();
 	}
 
+	public componentDidRender(): void {
+		this.inputRef = this.getFocusableInput();
+	}
+
 	private onInput = (event: Event): void => {
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
@@ -376,9 +382,32 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
-				form: this.host,
+				form: this.getHostElement(),
 				ref: this.inputRef,
 			});
 		}
 	};
+
+	private getFocusableInput(): HTMLInputElement | undefined {
+		const shadowRoot = this.getHostElement()?.shadowRoot;
+		if (!shadowRoot) {
+			return undefined;
+		}
+
+		const selectedInput = shadowRoot.querySelector('input[type="radio"]:not(:disabled):checked');
+		if (selectedInput instanceof HTMLInputElement) {
+			return selectedInput;
+		}
+
+		const firstEnabledInput = shadowRoot.querySelector('input[type="radio"]:not(:disabled)');
+		if (firstEnabledInput instanceof HTMLInputElement) {
+			return firstEnabledInput;
+		}
+
+		return undefined;
+	}
+
+	private getHostElement(): HTMLElement | undefined {
+		return this.host instanceof HTMLElement ? this.host : undefined;
+	}
 }
