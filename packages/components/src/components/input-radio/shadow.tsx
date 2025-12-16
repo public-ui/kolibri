@@ -48,6 +48,8 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
+	private previousValue: StencilUnknown = undefined;
+	private previousOptions: RadioOption<StencilUnknown>[] = [];
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
@@ -354,7 +356,15 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	public componentDidRender(): void {
-		this.inputRef = this.getFocusableInput();
+		// Only update inputRef when value or options change to avoid unnecessary DOM queries
+		const valueChanged = this._value !== this.previousValue;
+		const optionsChanged = this.state._options !== this.previousOptions;
+
+		if (valueChanged || optionsChanged) {
+			this.inputRef = this.getFocusableInput();
+			this.previousValue = this._value;
+			this.previousOptions = this.state._options;
+		}
 	}
 
 	private onInput = (event: Event): void => {
