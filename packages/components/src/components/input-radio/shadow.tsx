@@ -49,7 +49,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
 	private previousValue: StencilUnknown = undefined;
-	private previousOptions: RadioOption<StencilUnknown>[] = [];
+	private previousOptions?: RadioOption<StencilUnknown>[];
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
@@ -363,9 +363,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		const optionsChanged = this.state._options !== this.previousOptions;
 
 		if (valueChanged || optionsChanged) {
-			this.inputRef = this.getFocusableInput();
+			// Update tracking variables first to avoid inconsistent state if getFocusableInput throws
 			this.previousValue = this._value;
 			this.previousOptions = this.state._options;
+			this.inputRef = this.getFocusableInput();
 		}
 	}
 
