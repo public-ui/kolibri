@@ -17,7 +17,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
     </kol-link-wc>
   </template>
@@ -41,7 +41,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
     </kol-link-wc>
   </template>
@@ -65,7 +65,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
     </kol-link-wc>
   </template>
@@ -86,7 +86,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="" aria-hidden="" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="" aria-hidden="" class="kol-link__icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" class="kol-link__tooltip"></kol-tooltip-wc>
     </kol-link-wc>
@@ -111,7 +111,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
     </kol-link-wc>
   </template>
@@ -135,7 +135,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
     </kol-link-wc>
   </template>
@@ -158,7 +158,7 @@ exports[`kol-link should render with _label="Label" _href="" _download="download
             </span>
           </span>
         </span>
-        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+        <kol-icon _icons="kol-icons-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
       </a>
     </kol-link-wc>
   </template>

@@ -100,7 +100,9 @@ export class KolNav implements NavAPI {
 	): JSX.Element {
 		const icons = {
 			left:
-				this.state._hasIconsWhenExpanded || this.state._hideLabel ? entry._icons?.toString() || (this.state._hideLabel ? 'kol-link' : undefined) : undefined,
+				this.state._hasIconsWhenExpanded || this.state._hideLabel
+					? entry._icons?.toString() || (this.state._hideLabel ? 'kol-icons-link' : undefined)
+					: undefined,
 			right: collapsible && hasChildren ? 'kol-icons' + (expanded ? 'minus' : 'plus') : undefined,
 		};
 

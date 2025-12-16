@@ -35,7 +35,7 @@ const AlertIcon: FC<{ label?: string; type?: AlertType }> = ({ type, label }) =>
 		case 'success':
 			return <Icon ariaLabel={translateSuccess} icon="kol-icons-alert-success" label={label} />;
 		default:
-			return <Icon ariaLabel={translateMessage} icon="codicon codicon-comment" label={label} />;
+			return <Icon ariaLabel={translateMessage} icon="kol-icons-alert-info" label={label} />;
 	}
 };
 

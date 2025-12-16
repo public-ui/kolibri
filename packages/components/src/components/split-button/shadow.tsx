@@ -117,7 +117,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						class="kol-split-button__secondary-button"
 						_disabled={this._disabled}
 						_hideLabel
-						_icons="codicon codicon-triangle-down"
+						_icons="kol-icons-chevron-down"
 						_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
 						_on={this.clickToggleHandler}
 					></KolButtonWcTag>

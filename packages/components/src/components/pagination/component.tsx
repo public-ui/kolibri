@@ -31,16 +31,16 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const leftDoubleArrowIcon = {
-	left: 'codicon codicon-debug-reverse-continue',
+	left: 'kol-icons-chevron-left',
 };
 const leftSingleArrow = {
-	left: 'codicon codicon-chevron-left',
+	left: 'kol-icons-chevron-double-left',
 };
 const rightSingleArrowIcon = {
-	right: 'kol-icons-chevron',
+	right: 'kol-icons-chevron-right',
 };
 const rightDoubleArrowIcon = {
-	right: 'kol-icons-chevron-double',
+	right: 'kol-icons-chevron-double-right',
 };
 
 function getUserLanguage(): string {
