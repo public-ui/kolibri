@@ -263,7 +263,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'radio', this.getHostElement());
+		this.controller = new InputRadioController(this, 'radio', this.host);
 	}
 
 	private showAsAlert(): boolean {
