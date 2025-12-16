@@ -357,6 +357,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	public componentDidRender(): void {
 		// Only update inputRef when value or options change to avoid unnecessary DOM queries
+		// Note: Reference equality is sufficient here because Stencil creates a new state object
+		// when properties are updated, so state._options will have a new reference on change
 		const valueChanged = this._value !== this.previousValue;
 		const optionsChanged = this.state._options !== this.previousOptions;
 
