@@ -46,7 +46,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 	shadow: true,
 })
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
-	@Element() private readonly host!: HTMLKolInputRadioElement;
+	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
