@@ -10,6 +10,10 @@ import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState 
 
 const TRANSITION_TIMEOUT = 300;
 
+/**
+ * @deprecated Will be removed in the next major version.
+ * For more information please refer to: https://public-ui.github.io/docs/components/toaster
+ */
 @Component({
 	tag: 'kol-toast-container',
 	styleUrls: {

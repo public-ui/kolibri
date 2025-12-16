@@ -3,6 +3,10 @@ import { KolToastContainerTag } from '../../core/component-names';
 import type { Toast, ToasterOptions } from '../../schema';
 import { Log } from '../../schema';
 
+/**
+ * @deprecated Will be removed in the next major version.
+ * For more information please refer to: https://public-ui.github.io/docs/components/toaster
+ */
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
 
