@@ -75,6 +75,14 @@ export class KolPaginationWc implements PaginationAPI {
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
+	private getPageStart(): string {
+		return (this.state._page - 1) * this.state._pageSize + 1 + '';
+	}
+
+	private getPageEnd(): string {
+		return this.state._page * this.state._pageSize + '';
+	}
+
 	public render(): JSX.Element {
 		let ellipsis = false;
 		const count = this.getCount();
@@ -106,6 +114,15 @@ export class KolPaginationWc implements PaginationAPI {
 
 		return (
 			<Host class="kol-pagination">
+				<span role="status" aria-live="polite">
+					{translate('kol-table-visible-range', {
+						placeholders: {
+							start: this.getPageStart(),
+							end: this.getPageEnd(),
+							total: this.state._max.toString(),
+						},
+					})}
+				</span>
 				<nav class="kol-pagination__navigation" aria-label={this.state._label}>
 					<ul class="kol-pagination__navigation-list">
 						{this.state._hasButtons.first && (
