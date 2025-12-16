@@ -459,20 +459,6 @@ export class KolTableStateful implements TableAPI {
 		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
-				<span role="status" aria-live="polite">
-					{translate('kol-table-visible-range', {
-						placeholders: {
-							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
-							end: this.pageEndSlice.toString(),
-							total:
-								this.state._pagination && this.state._pagination._max > 0
-									? this.state._pagination._max.toString()
-									: Array.isArray(this.state._data)
-										? this.state._data.length.toString()
-										: '0',
-						},
-					})}
-				</span>
 				<div class="kol-table-stateful__pagination-wrapper">
 					<KolPaginationWcTag
 						class="test"
