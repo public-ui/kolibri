@@ -43,9 +43,9 @@ Include the icon font stylesheet in your HTML:
 Then use icons with the CSS class syntax:
 
 ```html
-<i class="kol-icon-home"></i>
-<i class="kol-icon-user"></i>
-<i class="kol-icon-settings"></i>
+<i class="kol-icon-check"></i>
+<i class="kol-icon-alert-info"></i>
+<i class="kol-icon-eye"></i>
 ```
 
 ### With KoliBri components
@@ -74,15 +74,6 @@ You can also import the stylesheet directly in your styles:
 
 ## Available icons
 
-The package includes a comprehensive set of icons covering common use cases:
-
-- Navigation icons (home, menu, arrow-left, arrow-right, etc.)
-- Action icons (edit, delete, save, search, etc.)
-- Status icons (check, close, warning, info, etc.)
-- Communication icons (mail, phone, message, etc.)
-- File icons (file, folder, download, upload, etc.)
-- And many more...
-
 For a complete list of available icons, browse the `svg/` directory or visit the [KoliBri documentation](https://public-ui.github.io/docs/components/icon).
 
 ## Development
@@ -98,9 +89,11 @@ pnpm build
 This command:
 
 1. Reads all SVG files from the `svg/` directory
-2. Generates a web font (TTF, WOFF, WOFF2, EOT, SVG)
-3. Creates CSS files with icon class definitions
-4. Outputs everything to the `font/` directory
+2. Fixes them (flattens everything to one path, minimizes, removes unessecary definitions)
+3. Outputs the fixed svgs in `svg-fixed/` directory
+4. Generates a web font (TTF, WOFF, WOFF2, EOT, SVG) from the fixed svgs
+5. Creates CSS files with icon class definitions
+6. Outputs everything to the `font/` directory
 
 ### Preview locally
 
@@ -115,18 +108,13 @@ Then open your browser at the URL shown in the terminal (typically <http://local
 ### Adding new icons
 
 1. Add your SVG file to the `svg/` directory
-2. Ensure the SVG is optimized (single path, no colors, viewBox defined)
-3. Run `pnpm build` to regenerate the font
-4. The icon will be available as `.kol-icon-{filename}`
+2. Run `pnpm build` to regenerate the font
+3. The icon will be available as `.kol-icon-{filename}`
 
 ### SVG requirements
 
-For best results, SVG files should:
-
-- Use a single color (black or `currentColor`)
-- Have a viewBox attribute (typically `0 0 24 24`)
-- Contain simple paths without complex features
-- Be optimized and cleaned up
+We use [oslllo-svg-fixer](https://github.com/oslllo/svg-fixer) to convert all SVGs to paths.
+Everything that is colored black will part of the path.
 
 ## Font technical details
 

@@ -13,27 +13,32 @@
 	"main": "./font/style.css",
 	"type": "module",
 	"keywords": [
+		"accessibility",
 		"kolibri",
 		"icons",
 		"font",
-		"web-components",
-		"accessibility"
+		"web-components"
 	],
 	"devDependencies": {
+		"oslllo-svg-fixer": "5.0.0",
 		"rimraf": "6.1.2",
 		"serve": "14.2.5",
 		"svgtofont": "6.5.0"
 	},
 	"scripts": {
-		"build": "svgtofont --sources ./svg --output ./font",
-		"prebuild": "rimraf ./font",
+		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
+		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ./font",
+		"prebuild": "rimraf ./font && rimraf ./svg-fixed && mkdir ./svg-fixed",
 		"start": "serve"
 	},
 	"svgtofont": {
-		"fontName": "kolibri",
 		"classNamePrefix": "kol-icon",
 		"css": {
 			"fileName": "style"
+		},
+		"fontName": "kolicons",
+		"svgicons2svgfont": {
+			"fontHeight": 1000
 		}
 	},
 	"files": [

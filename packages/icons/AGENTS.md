@@ -20,7 +20,7 @@ The icon font is configured in `package.json`:
 ```json
 {
 	"svgtofont": {
-		"fontName": "kolibri",
+		"fontName": "kolicons",
 		"classNamePrefix": "kol-icon",
 		"css": {
 			"fileName": "style"
@@ -31,8 +31,8 @@ The icon font is configured in `package.json`:
 
 **Important settings:**
 
-- `fontName: "kolibri"` – The generated font family name
-- `classNamePrefix: "kol-icon"` – Prefix for all icon CSS classes (e.g., `.kol-icon-home`)
+- `fontName: "kolicons"` – The generated font family name
+- `classNamePrefix: "kol-icon"` – Prefix for all icon CSS classes (e.g., `.kol-icon-chevron-left`)
 - `css.fileName: "style"` – Name of the generated CSS file
 
 > ⚠️ Do not change these settings unless you understand the impact on all KoliBri components that depend on the icon font.
@@ -78,7 +78,7 @@ Then open `http://localhost:3000` in your browser to see the icon catalog.
 2. Name the file descriptively (e.g., `arrow-left.svg`, `user-profile.svg`)
 3. Ensure the SVG meets the requirements (see below)
 4. Run `pnpm build` to regenerate the font
-5. The icon will be available as `.kol-icon-{filename}` (e.g., `.kol-icon-arrow-left`)
+5. The icon will be available as `.kol-icon-{filename}` (e.g., `.kol-icon-chevron-left`)
 
 ### SVG Requirements
 
@@ -136,11 +136,11 @@ When modifying existing icons:
 
 The `font/` directory is generated during build and contains:
 
-- `kolibri.ttf` – TrueType font
-- `kolibri.woff` – Web Open Font Format (legacy)
-- `kolibri.woff2` – Web Open Font Format 2 (modern browsers)
-- `kolibri.eot` – Embedded OpenType (IE11 support)
-- `kolibri.svg` – SVG font (legacy fallback)
+- `kolicons.ttf` – TrueType font
+- `kolicons.woff` – Web Open Font Format (legacy)
+- `kolicons.woff2` – Web Open Font Format 2 (modern browsers)
+- `kolicons.eot` – Embedded OpenType (IE11 support)
+- `kolicons.svg` – SVG font (legacy fallback)
 - `style.css` – CSS with icon classes and font-face declarations
 - `index.html` – Preview page with all icons
 
