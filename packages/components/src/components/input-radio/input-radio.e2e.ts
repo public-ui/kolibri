@@ -13,6 +13,7 @@ const OPTIONS = [
 ];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
 const OMITTED_EVENTS = ['click'];
+const FOCUS_TIMEOUT = 10;
 const fillAction: FillAction = async (page) => {
 	await page.locator('input').first().check();
 };
@@ -98,12 +99,12 @@ test.describe(COMPONENT_NAME, () => {
 			});
 			await page.waitForChanges();
 
-			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement) => {
+			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement, timeout: number) => {
 				// Call kolFocus and check what gets focused
 				await element.kolFocus();
 
 				// Wait for focus to be applied
-				await new Promise((resolve) => setTimeout(resolve, 10));
+				await new Promise((resolve) => setTimeout(resolve, timeout));
 
 				// Check the focused element in the shadow DOM
 				const shadowActiveElement = element.shadowRoot?.activeElement;
@@ -113,7 +114,7 @@ test.describe(COMPONENT_NAME, () => {
 					shadowActiveElementType: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.type : null,
 					shadowActiveElementChecked: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.checked : null,
 				};
-			});
+			}, FOCUS_TIMEOUT);
 
 			// The checked radio input should be focused in the shadow DOM
 			expect(result.shadowActiveElementTag).toBe('INPUT');
@@ -126,16 +127,16 @@ test.describe(COMPONENT_NAME, () => {
 			const kolInputRadio = page.locator('kol-input-radio');
 			await page.waitForChanges();
 
-			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement) => {
+			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement, timeout: number) => {
 				// Call kolFocus and check what gets focused
 				await element.kolFocus();
 
 				// Wait for focus to be applied
-				await new Promise((resolve) => setTimeout(resolve, 10));
+				await new Promise((resolve) => setTimeout(resolve, timeout));
 
 				// Check the focused element in the shadow DOM
 				const shadowActiveElement = element.shadowRoot?.activeElement;
-				const firstInput = element.shadowRoot?.querySelector('input[type="radio"]');
+				const firstInput = element.shadowRoot?.querySelector('input[type="radio"]:not(:disabled)');
 
 				return {
 					shadowActiveElementTag: shadowActiveElement?.tagName,
@@ -143,7 +144,7 @@ test.describe(COMPONENT_NAME, () => {
 					shadowActiveElementChecked: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.checked : null,
 					isFirstInput: shadowActiveElement === firstInput,
 				};
-			});
+			}, FOCUS_TIMEOUT);
 
 			// The first enabled radio input should be focused in the shadow DOM
 			expect(result.shadowActiveElementTag).toBe('INPUT');
@@ -165,12 +166,12 @@ test.describe(COMPONENT_NAME, () => {
 			}, disabledOptions);
 			await page.waitForChanges();
 
-			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement) => {
+			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement, timeout: number) => {
 				// Call kolFocus and check what gets focused
 				await element.kolFocus();
 
 				// Wait for focus to be applied
-				await new Promise((resolve) => setTimeout(resolve, 10));
+				await new Promise((resolve) => setTimeout(resolve, timeout));
 
 				// Check the focused element in the shadow DOM
 				const shadowActiveElement = element.shadowRoot?.activeElement;
@@ -178,7 +179,7 @@ test.describe(COMPONENT_NAME, () => {
 				return {
 					shadowActiveElementTag: shadowActiveElement?.tagName ?? null,
 				};
-			});
+			}, FOCUS_TIMEOUT);
 
 			// No input should be focused when all are disabled
 			expect(result.shadowActiveElementTag).toBeNull();
