@@ -86,4 +86,102 @@ test.describe(COMPONENT_NAME, () => {
 			});
 		});
 	});
+
+	test.describe('kolFocus behavior', () => {
+		test('should focus the checked radio input when kolFocus is called', async ({ page }) => {
+			await page.setContent(`<kol-input-radio _label="Radio Group" ${OPTIONS_ATTRIBUTE}></kol-input-radio>`);
+			const kolInputRadio = page.locator('kol-input-radio');
+
+			// Set a value to check one of the options
+			await kolInputRadio.evaluate((element: HTMLKolInputRadioElement) => {
+				element._value = 'option-2';
+			});
+			await page.waitForChanges();
+
+			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement) => {
+				// Call kolFocus and check what gets focused
+				await element.kolFocus();
+
+				// Wait for focus to be applied
+				await new Promise((resolve) => setTimeout(resolve, 10));
+
+				// Check the focused element in the shadow DOM
+				const shadowActiveElement = element.shadowRoot?.activeElement;
+
+				return {
+					shadowActiveElementTag: shadowActiveElement?.tagName,
+					shadowActiveElementType: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.type : null,
+					shadowActiveElementChecked: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.checked : null,
+				};
+			});
+
+			// The checked radio input should be focused in the shadow DOM
+			expect(result.shadowActiveElementTag).toBe('INPUT');
+			expect(result.shadowActiveElementType).toBe('radio');
+			expect(result.shadowActiveElementChecked).toBe(true);
+		});
+
+		test('should focus the first enabled radio input when no option is checked', async ({ page }) => {
+			await page.setContent(`<kol-input-radio _label="Radio Group" ${OPTIONS_ATTRIBUTE}></kol-input-radio>`);
+			const kolInputRadio = page.locator('kol-input-radio');
+			await page.waitForChanges();
+
+			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement) => {
+				// Call kolFocus and check what gets focused
+				await element.kolFocus();
+
+				// Wait for focus to be applied
+				await new Promise((resolve) => setTimeout(resolve, 10));
+
+				// Check the focused element in the shadow DOM
+				const shadowActiveElement = element.shadowRoot?.activeElement;
+				const firstInput = element.shadowRoot?.querySelector('input[type="radio"]');
+
+				return {
+					shadowActiveElementTag: shadowActiveElement?.tagName,
+					shadowActiveElementType: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.type : null,
+					shadowActiveElementChecked: shadowActiveElement instanceof HTMLInputElement ? shadowActiveElement.checked : null,
+					isFirstInput: shadowActiveElement === firstInput,
+				};
+			});
+
+			// The first enabled radio input should be focused in the shadow DOM
+			expect(result.shadowActiveElementTag).toBe('INPUT');
+			expect(result.shadowActiveElementType).toBe('radio');
+			expect(result.shadowActiveElementChecked).toBe(false);
+			expect(result.isFirstInput).toBe(true);
+		});
+
+		test('should handle kolFocus when all radio inputs are disabled', async ({ page }) => {
+			const disabledOptions = [
+				{ label: 'Option 1', value: 'option-1', disabled: true },
+				{ label: 'Option 2', value: 'option-2', disabled: true },
+			];
+			await page.setContent(`<kol-input-radio _label="Radio Group"></kol-input-radio>`);
+			const kolInputRadio = page.locator('kol-input-radio');
+
+			await kolInputRadio.evaluate((element: HTMLKolInputRadioElement, options) => {
+				element._options = options;
+			}, disabledOptions);
+			await page.waitForChanges();
+
+			const result = await kolInputRadio.evaluate(async (element: HTMLKolInputRadioElement) => {
+				// Call kolFocus and check what gets focused
+				await element.kolFocus();
+
+				// Wait for focus to be applied
+				await new Promise((resolve) => setTimeout(resolve, 10));
+
+				// Check the focused element in the shadow DOM
+				const shadowActiveElement = element.shadowRoot?.activeElement;
+
+				return {
+					shadowActiveElementTag: shadowActiveElement?.tagName ?? null,
+				};
+			});
+
+			// No input should be focused when all are disabled
+			expect(result.shadowActiveElementTag).toBeNull();
+		});
+	});
 });
