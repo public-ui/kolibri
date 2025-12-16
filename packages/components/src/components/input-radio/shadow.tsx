@@ -48,8 +48,6 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
-	private previousValue: StencilUnknown = undefined;
-	private previousOptions?: RadioOption<StencilUnknown>[];
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
@@ -323,6 +321,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_options')
 	public validateOptions(value?: RadioOptionsPropType): void {
 		this.controller.validateOptions(value);
+		this.updateInputRef();
 	}
 
 	@Watch('_orientation')
@@ -348,26 +347,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value: StencilUnknown): void {
 		this.controller.validateValue(value);
+		this.updateInputRef();
 	}
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-	}
-
-	public componentDidRender(): void {
-		// Only update inputRef when value or options change to avoid unnecessary DOM queries
-		// Note: Reference equality is sufficient here because Stencil creates a new state object
-		// when properties are updated, so state._options will have a new reference on change
-		const valueChanged = this._value !== this.previousValue;
-		const optionsChanged = this.state._options !== this.previousOptions;
-
-		if (valueChanged || optionsChanged) {
-			// Update tracking variables first to avoid inconsistent state if getFocusableInput throws
-			this.previousValue = this._value;
-			this.previousOptions = this.state._options;
-			this.inputRef = this.getFocusableInput();
-		}
 	}
 
 	private onInput = (event: Event): void => {
@@ -400,6 +385,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			});
 		}
 	};
+
+	private updateInputRef(): void {
+		this.inputRef = this.getFocusableInput();
+	}
 
 	private getFocusableInput(): HTMLInputElement | undefined {
 		const shadowRoot = this.getHostElement()?.shadowRoot;
