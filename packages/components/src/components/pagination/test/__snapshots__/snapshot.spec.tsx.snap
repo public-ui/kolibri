@@ -4,6 +4,9 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 
 <kol-pagination>
   <template shadowrootmode="open">
     <kol-pagination-wc class="kol-pagination">
+      <span aria-live="polite" role="status">
+        kol-table-visible-range
+      </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list"></ul>
       </nav>
@@ -16,6 +19,9 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
 <kol-pagination>
   <template shadowrootmode="open">
     <kol-pagination-wc class="kol-pagination">
+      <span aria-live="polite" role="status">
+        kol-table-visible-range
+      </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
@@ -47,6 +53,9 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
 <kol-pagination>
   <template shadowrootmode="open">
     <kol-pagination-wc class="kol-pagination">
+      <span aria-live="polite" role="status">
+        kol-table-visible-range
+      </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
@@ -90,6 +99,9 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
 <kol-pagination>
   <template shadowrootmode="open">
     <kol-pagination-wc class="kol-pagination">
+      <span aria-live="polite" role="status">
+        kol-table-visible-range
+      </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
@@ -121,6 +133,9 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
 <kol-pagination>
   <template shadowrootmode="open">
     <kol-pagination-wc class="kol-pagination">
+      <span aria-live="polite" role="status">
+        kol-table-visible-range
+      </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
