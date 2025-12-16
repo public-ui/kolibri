@@ -69,7 +69,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		const focusableInput = this.getFocusableInput();
-		this.inputRef = focusableInput ?? this.inputRef;
+		this.inputRef = focusableInput;
 		this.inputRef?.focus();
 	}
 
