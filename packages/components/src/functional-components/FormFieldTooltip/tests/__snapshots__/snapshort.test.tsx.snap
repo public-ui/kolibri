@@ -2,7 +2,7 @@
 
 exports[`FormFieldTooltipFc should render correctly 1`] = `
 <kol-tooltip-wc
-  _id="test-id-label"
+
   _label="Test Label"
   aria-hidden="true"
   class="kol-form-field__tooltip"
@@ -12,7 +12,7 @@ exports[`FormFieldTooltipFc should render correctly 1`] = `
 exports[`FormFieldTooltipFc should set the correct align property 1`] = `
 <kol-tooltip-wc
   _align="left"
-  _id="test-id-label"
+
   _label="Test Label"
   aria-hidden="true"
   class="kol-form-field__tooltip"
@@ -22,7 +22,7 @@ exports[`FormFieldTooltipFc should set the correct align property 1`] = `
 exports[`FormFieldTooltipFc should set the correct badgeText 1`] = `
 <kol-tooltip-wc
   _badgetext="Badge Text"
-  _id="test-id-label"
+
   _label="Test Label"
   aria-hidden="true"
   class="kol-form-field__tooltip"
@@ -31,7 +31,7 @@ exports[`FormFieldTooltipFc should set the correct badgeText 1`] = `
 
 exports[`FormFieldTooltipFc should set the correct class names 1`] = `
 <kol-tooltip-wc
-  _id="test-id-label"
+
   _label="Test Label"
   aria-hidden="true"
   class="kol-form-field__tooltip custom-class"
@@ -40,10 +40,9 @@ exports[`FormFieldTooltipFc should set the correct class names 1`] = `
 
 exports[`FormFieldTooltipFc should set the correct id and label 1`] = `
 <kol-tooltip-wc
-  _id="test-id-label"
+
   _label="Test Label"
   aria-hidden="true"
   class="kol-form-field__tooltip"
 />
 `;
-
