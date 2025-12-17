@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
           persist-credentials: false
           ref: 'develop'
       - name: git-sync
