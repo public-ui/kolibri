@@ -191,7 +191,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 

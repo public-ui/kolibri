@@ -128,7 +128,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	private readonly controller: SelectController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -194,7 +194,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Options the user can choose from.
 	 */
 	@Prop() public _options!: OptionsWithOptgroupPropType;
 
@@ -210,7 +210,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
-	 * Defines how many rows of options should be visible at the same time.
+	 * Maximum number of visible rows of the element.
 	 */
 	@Prop() public _rows?: RowsPropType;
 
@@ -237,7 +237,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 

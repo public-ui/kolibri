@@ -164,7 +164,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	private readonly controller: InputPasswordController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -293,7 +293,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

@@ -6,7 +6,7 @@ import { watchNumber } from '../utils';
 export type RowsPropType = number;
 
 /**
- * Number of rows of the input element that should be visible at the same time.
+ * Maximum number of visible rows of the element.
  */
 export type PropRows = {
 	rows: RowsPropType;
