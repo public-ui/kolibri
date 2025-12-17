@@ -33,7 +33,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: ${{ github.ref_name }}
-          fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
