@@ -224,7 +224,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private readonly controller: InputRangeController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -274,7 +274,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: number | NumberString = 100;
 
@@ -331,7 +331,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString;
 
