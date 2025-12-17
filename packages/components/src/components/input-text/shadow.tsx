@@ -345,7 +345,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop() public _type?: InputTextTypePropType = 'text';
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

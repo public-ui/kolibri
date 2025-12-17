@@ -255,7 +255,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value: StencilUnknown = true;
 
