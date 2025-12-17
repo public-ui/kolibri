@@ -79,7 +79,7 @@ export const ToastBasic: FC = () => {
 				<p>This sample demonstrates the toast service with all its options.</p>
 			</SampleDescription>
 			<KolAlert _label="Component is DEPRECATED" _type="error" _variant="card">
-				For more information please refer
+				For more information, please refer
 				<KolLink _href="https://public-ui.github.io/docs/components/toaster" _target="_blank">
 					to the documentation
 				</KolLink>
