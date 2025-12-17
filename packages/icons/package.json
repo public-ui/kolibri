@@ -28,7 +28,7 @@
 	"scripts": {
 		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
 		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ./font",
-		"prebuild": "rimraf ./font && rimraf ./svg-fixed && mkdir ./svg-fixed",
+		"prebuild": "rimraf ./font && rimraf ./svg-fixed && mkdir svg-fixed",
 		"start": "serve"
 	},
 	"svgtofont": {
