@@ -77,6 +77,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private checkboxRefs: HTMLInputElement[] = [];
 
 	private translateSort = translate('kol-sort');
+	private translateSortOrder = translate('kol-table-sort-order');
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -885,6 +886,17 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} colIndex  The index of the current column in the row.
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
+	private formatSortOrderDescription(order: number): string {
+		return this.translateSortOrder.replace('{{order}}', `${order}`);
+	}
+
+	private getSortAriaDescription(order?: number): string {
+		if (typeof order === 'number' && order > 0) {
+			return `${this.translateSort} – ${this.formatSortOrderDescription(order)}`;
+		}
+		return this.translateSort;
+	}
+
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		// Skip rendering if the column is not visible
 		const columnSettings = this.getColumnSettings(cell);
@@ -916,6 +928,9 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
 
+		const sortOrder = typeof cell.sortOrder === 'number' && cell.sortOrder > 0 ? cell.sortOrder : undefined;
+		const sortDescription = this.getSortAriaDescription(sortOrder);
+
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
@@ -933,29 +948,36 @@ export class KolTableStateless implements TableStatelessAPI {
 				data-sort={canSort && cell.sortDirection ? `sort-${cell.sortDirection}` : undefined}
 			>
 				{canSort && cell.sortDirection ? (
-					<KolButtonWcTag
-						class="kol-table__sort-button"
-						exportparts="icon"
-						_icons={{ right: sortButtonIcon }}
-						_label={cell.label}
-						_ariaDescription={this.translateSort}
-						_on={{
-							onClick: (event: MouseEvent) => {
-								if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
-									this.state._on.onSort(event, {
-										key: cell.key,
-										currentSortDirection: cell.sortDirection,
-									});
-								}
-								if (this.host) {
-									dispatchDomEvent(this.host, KolEvent.sort, {
-										key: cell.key,
-										currentSortDirection: cell.sortDirection,
-									});
-								}
-							},
-						}}
-					></KolButtonWcTag>
+					<span class="kol-table__sort">
+						<KolButtonWcTag
+							class="kol-table__sort-button"
+							exportparts="icon"
+							_icons={{ right: sortButtonIcon }}
+							_label={cell.label}
+							_ariaDescription={sortDescription}
+							_on={{
+								onClick: (event: MouseEvent) => {
+									if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
+										this.state._on.onSort(event, {
+											key: cell.key,
+											currentSortDirection: cell.sortDirection,
+										});
+									}
+									if (this.host) {
+										dispatchDomEvent(this.host, KolEvent.sort, {
+											key: cell.key,
+											currentSortDirection: cell.sortDirection,
+										});
+									}
+								},
+							}}
+						></KolButtonWcTag>
+						{sortOrder && (
+							<span aria-hidden="true" class="kol-table__sort-order">
+								{sortOrder}
+							</span>
+						)}
+					</span>
 				) : (
 					cell.label
 				)}

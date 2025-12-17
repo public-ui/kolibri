@@ -243,7 +243,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;

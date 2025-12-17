@@ -17,6 +17,7 @@ export const InputTextReadonly: FC = () => (
 				_value="Read-only value"
 				_msg={{ _type: 'info', _description: 'This field cannot be edited' }}
 				_readOnly
+				_touched
 			/>
 			<KolInputText _label="Comparison: Editable" _value="This field is editable" />
 		</div>

@@ -24,7 +24,7 @@ export type PropRadioOptions = {
 };
 
 /**
- * Options the user can choose from, also supporting Optgroup.
+ * Options the user can choose from.
  */
 export type PropOptionsWithOptgroup = {
 	options: OptionsWithOptgroupPropType;

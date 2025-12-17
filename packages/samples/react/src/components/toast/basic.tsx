@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import type { AlertTypePropType } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
-import { KolButton } from '@public-ui/react-v19';
+import { KolAlert, KolButton, KolLink } from '@public-ui/react-v19';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
@@ -75,9 +75,15 @@ export const ToastBasic: FC = () => {
 
 	return (
 		<>
+			<KolAlert _label="Component is DEPRECATED" _type="error" _variant="card" className="header-alert">
+				For more information, please refer&nbsp;
+				<KolLink _href="https://public-ui.github.io/docs/components/toaster" _target="_blank" _label="to the documentation"></KolLink>.
+			</KolAlert>
+
 			<SampleDescription>
 				<p>This sample demonstrates the toast service with all its options.</p>
 			</SampleDescription>
+
 			<section className="grid gap-4">
 				<div className="flex flex-wrap gap-2">
 					<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>

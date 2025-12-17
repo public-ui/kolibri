@@ -2,10 +2,15 @@
 
 @mixin kol-pagination-styles {
 	.kol-pagination {
-		display: grid;
+		display: flex;
 		gap: to-rem(16);
+		flex-wrap: wrap;
 		align-items: center;
-		grid-template-columns: 1fr auto;
+		justify-content: center;
+
+		@media (max-width: 1024px) {
+			flex-direction: column;
+		}
 
 		&__navigation-list {
 			display: inline-flex;

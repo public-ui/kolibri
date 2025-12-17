@@ -89,7 +89,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			'data-role': this.state._variant === 'button' ? 'button' : undefined,
 			alert: this.showAsAlert(),
 			renderNoTooltip: true,
 		};
@@ -151,7 +150,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private readonly controller: InputCheckboxController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -256,7 +255,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value: StencilUnknown = true;
 

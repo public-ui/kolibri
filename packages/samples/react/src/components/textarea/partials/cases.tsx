@@ -11,9 +11,10 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, Components.KolTe
 				<KolTextarea {...props} ref={ref} _placeholder="Placeholder" _label="Text" />
 			</div>
 			<KolTextarea {...props} _placeholder="Placeholder" _required _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Text" _touched _hint={HINT_MSG} />
-			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'info', _description: 'Just a hint' }} />
-			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'warning', _description: 'Small warning' }} />
-			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'success', _description: 'Success message' }} />
+			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'info', _description: 'Just a hint' }} _touched />
+			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'warning', _description: 'Small warning' }} _touched />
+			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'success', _description: 'Success message' }} _touched />
+			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'default', _description: 'Default message' }} _touched />
 			<KolTextarea {...props} ref={ref} _accessKey="T" _label="Text (3 rows)" _rows={3} />
 			<KolTextarea {...props} ref={ref} _label="Text (placeholder)" _rows={3} _placeholder="Placeholder" />
 			<KolTextarea {...props} ref={ref} _label="Text (disabled & placeholder)" _rows={3} _placeholder="Placeholder" _disabled />

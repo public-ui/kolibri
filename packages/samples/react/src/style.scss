@@ -60,6 +60,10 @@ hr {
 	list-style: none;
 }
 
+.header-alert {
+	margin-bottom: rem(16);
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;

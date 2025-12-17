@@ -459,20 +459,6 @@ export class KolTableStateful implements TableAPI {
 		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
-				<span role="status" aria-live="polite">
-					{translate('kol-table-visible-range', {
-						placeholders: {
-							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
-							end: this.pageEndSlice.toString(),
-							total:
-								this.state._pagination && this.state._pagination._max > 0
-									? this.state._pagination._max.toString()
-									: Array.isArray(this.state._data)
-										? this.state._data.length.toString()
-										: '0',
-						},
-					})}
-				</span>
 				<div class="kol-table-stateful__pagination-wrapper">
 					<KolPaginationWcTag
 						class="test"
@@ -501,6 +487,15 @@ export class KolTableStateful implements TableAPI {
 				}
 			}
 			return 'NOS';
+		}
+	}
+
+	private getHeaderCellSortOrder(headerCell: KoliBriTableHeaderCellWithLogic): number | undefined {
+		if (!this.disableSort && this.state._allowMultiSort && typeof headerCell.compareFn === 'function' && headerCell.key) {
+			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
+			if (index >= 0) {
+				return index + 1;
+			}
 		}
 	}
 
@@ -562,8 +557,22 @@ export class KolTableStateful implements TableAPI {
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
 		const headerCells: TableHeaderCells = {
-			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
-			vertical: this.state._headers.vertical?.map((column) => column.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
+			horizontal:
+				this.state._headers.horizontal?.map((row) =>
+					row.map((cell) => ({
+						...cell,
+						sortDirection: this.getHeaderCellSortState(cell),
+						sortOrder: this.getHeaderCellSortOrder(cell),
+					})),
+				) ?? [],
+			vertical:
+				this.state._headers.vertical?.map((column) =>
+					column.map((cell) => ({
+						...cell,
+						sortDirection: this.getHeaderCellSortState(cell),
+						sortOrder: this.getHeaderCellSortOrder(cell),
+					})),
+				) ?? [],
 		};
 		return (
 			<Host class="kol-table-stateful">

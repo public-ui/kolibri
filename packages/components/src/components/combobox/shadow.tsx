@@ -288,6 +288,7 @@ export class KolCombobox implements ComboboxAPI {
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
 									<CustomSuggestionsOptionFc
+										disabled={false}
 										index={index}
 										option={option}
 										searchTerm={this.state._value}
@@ -420,7 +421,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -522,7 +523,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

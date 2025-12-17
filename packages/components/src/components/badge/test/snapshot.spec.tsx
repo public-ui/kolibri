@@ -13,5 +13,6 @@ executeSnapshotTests<BadgeProps>(
 		{ _label: 'Text', _color: '#000000' },
 		{ _label: 'Text', _icons: 'codicon codicon-home' },
 		{ _label: 'Text', _icons: 'codicon codicon-home', _color: '#000000' },
+		{ _label: 'Badge fallback', _smartButton: { _ariaDescription: 'Badge label', _label: 'Remove' } },
 	],
 );

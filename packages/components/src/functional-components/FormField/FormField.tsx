@@ -3,7 +3,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import type { AlignPropType, MaxLengthBehaviorPropType, MsgPropType, Stringified } from '../../schema';
-import { buildBadgeTextString, checkHasMsg, showExpertSlot } from '../../schema';
+import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
 import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
@@ -27,7 +27,7 @@ function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	return '';
 }
 
-export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
+export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	component?: 'div' | 'fieldset';
 	id: string;
 	alert?: boolean;
@@ -55,8 +55,6 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	formFieldTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
 	formFieldMsgProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 	formFieldInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
-} & {
-	[key: `data-${string}`]: unknown;
 };
 
 const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: classNames, ...other }, children) => {
@@ -91,6 +89,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		readOnly,
 		touched,
 		maxLength,
+		ariaDescribedBy,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -103,11 +102,9 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const showHint = !renderNoHint;
 	const showTooltip = !renderNoTooltip;
 	const hasExpertSlot = showExpertSlot(label);
-	const showMsg = checkHasMsg(msg, touched);
+	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
-
-	const msgType = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
 
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),
@@ -119,15 +116,17 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	};
 
 	if (showMsg) {
+		const msgType = getMsgType(msg);
+
 		stateCssClasses = {
 			...stateCssClasses,
-			[`kol-form-field--${msgType || 'error'}`]: true,
+			[`kol-form-field--${msgType}`]: true,
 			[`kol-form-field--${getModifierClassNameByMsgType({ type: msgType })}`]: true,
 		};
 	}
 
 	return (
-		<Component class={clsx('kol-form-field', stateCssClasses, classNames)} {...other}>
+		<Component class={clsx('kol-form-field', stateCssClasses, classNames)} aria-describedby={ariaDescribedBy} {...other}>
 			{showLabel && (
 				<KolFormFieldLabelFc
 					{...(formFieldLabelProps || {})}

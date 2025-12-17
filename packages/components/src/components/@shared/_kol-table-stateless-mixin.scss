@@ -40,6 +40,18 @@
 			}
 		}
 
+		&__sort {
+			display: inline-flex;
+			gap: 0.25rem;
+			align-items: center;
+		}
+
+		&__sort-order {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
 		// headings in table body default to text-align left, unless defined otherwise.
 		&__body {
 			text-align: left;

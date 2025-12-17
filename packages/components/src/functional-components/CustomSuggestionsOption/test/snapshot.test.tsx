@@ -5,6 +5,7 @@ import CustomSuggestionsOptionFc from '../CustomSuggestionsOption';
 
 describe('CustomSuggestionsOption', () => {
 	const defaultProps = {
+		disabled: false,
 		index: 0,
 		option: 'Test Option',
 		selected: false,
