@@ -122,7 +122,7 @@ export class KolProgress implements ProgressAPI {
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Defines at which value the progress display is completed.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max!: number;
 
@@ -132,7 +132,7 @@ export class KolProgress implements ProgressAPI {
 	@Prop() public _unit?: string = '%';
 
 	/**
-	 * Defines the progress.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value!: number;
 

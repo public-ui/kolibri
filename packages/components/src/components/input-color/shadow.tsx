@@ -261,7 +261,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: string;
 

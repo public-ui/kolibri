@@ -213,7 +213,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: number | NumberString;
 
@@ -292,7 +292,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
 

@@ -238,7 +238,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Defines how many rows of text should be visible at the same time.
+	 * Maximum number of visible rows of the element.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
 
@@ -270,7 +270,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

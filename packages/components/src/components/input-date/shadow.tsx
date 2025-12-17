@@ -243,7 +243,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: Iso8601 | Date;
 
@@ -322,7 +322,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _type: InputDateTypePropType = 'date';
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 

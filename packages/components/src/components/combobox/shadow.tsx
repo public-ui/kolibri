@@ -523,7 +523,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

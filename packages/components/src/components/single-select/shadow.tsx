@@ -621,17 +621,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	/**
-	 * Defines the whether the clear button should be hidden.
+	 * Hides the clear button.
 	 */
 	@Prop() public _hideClearButton?: boolean = false;
 
 	/**
-	 * Maximum number of visible rows in the options dropdown before scrolling.
+	 * Maximum number of visible rows of the element.
 	 */
 	@Prop() public _rows?: RowsPropType;
 
