@@ -11,8 +11,9 @@
 		height: 100%;
 		padding: to-rem(8) to-rem(10);
 		overflow: auto;
-		border: none;
+
 		line-height: 1.5em;
+		border: none;
 
 		&::placeholder {
 			color: var(--color-subtle);
