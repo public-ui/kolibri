@@ -7,13 +7,13 @@ describe('kol-input-text aria-describedby', () => {
 	it('keeps aria-describedby on the input element', async () => {
 		const page = await newSpecPage({
 			components: [KolInputText],
-			template: () => <kol-input-text _id="text" _label="Label" _hint="Hint" />,
+			template: () => <kol-input-text _label="Label" _hint="Hint" />,
 		});
 
 		const formField = page.root?.shadowRoot?.querySelector('.kol-form-field');
 		const input = page.root?.shadowRoot?.querySelector('input');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		expect(input?.getAttribute('aria-describedby')).toBe('text-hint');
+		expect(input?.getAttribute('aria-describedby')).toBe('id-nonce-hint');
 	});
 });

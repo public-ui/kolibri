@@ -69,7 +69,6 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"react": "^19",
 		"react-hook-form": "^7"
