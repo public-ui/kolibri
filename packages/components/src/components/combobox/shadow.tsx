@@ -47,7 +47,7 @@ import { ComboboxController } from './controller';
 	shadow: true,
 })
 export class KolCombobox implements ComboboxAPI {
-	@Element() private readonly host?: HTMLKolComboboxElement;
+	@Element() private readonly host?: HTMLElement;
 	private refInput?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
@@ -256,7 +256,7 @@ export class KolCombobox implements ComboboxAPI {
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						{this.state._value && !this.state._hideClearButton && (
+						{this.state._value && this.state._hasClearButton && (
 							<KolButtonWcTag
 								_icons="codicon codicon-close"
 								_label={this.translateDeleteSelection}
@@ -485,9 +485,9 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Hides the clear button.
+	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hideClearButton?: boolean = false;
+	@Prop() public _hasClearButton?: boolean = true;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -529,7 +529,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
-		_hideClearButton: false,
+		_hasClearButton: true,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -619,9 +619,9 @@ export class KolCombobox implements ComboboxAPI {
 		this._filteredSuggestions = value;
 	}
 
-	@Watch('_hideClearButton')
-	public validateHideClearButton(value?: boolean): void {
-		this.controller.validateHideClearButton(value);
+	@Watch('_hasClearButton')
+	public validateHasClearButton(value?: boolean): void {
+		this.controller.validateHasClearButton(value);
 	}
 
 	@Watch('_required')
