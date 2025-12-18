@@ -20,7 +20,27 @@ export class RenameClearButtonPropTask extends AbstractTask {
 	public run(baseDir: string): void {
 		filterFilesByExt(baseDir, MARKUP_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
-			const newContent = content.replace(/_hide-clear-button/g, '_has-clear-button').replace(/_hideClearButton/g, '_hasClearButton');
+			const newContent = content
+				.replace(/_hide-clear-button\s*=\s*"(true|false)"/g, (_match, value: string) => {
+					return `_has-clear-button="${value === 'true' ? 'false' : 'true'}"`;
+				})
+				.replace(/_hide-clear-button\s*=\s*'(true|false)'/g, (_match, value: string) => {
+					return `_has-clear-button='${value === 'true' ? 'false' : 'true'}'`;
+				})
+				.replace(/_hide-clear-button\s*=\s*\{\s*(true|false)\s*\}/g, (_match, value: string) => {
+					return `_has-clear-button={${value === 'true' ? 'false' : 'true'}}`;
+				})
+				.replace(/_hideClearButton\s*=\s*"(true|false)"/g, (_match, value: string) => {
+					return `_hasClearButton="${value === 'true' ? 'false' : 'true'}"`;
+				})
+				.replace(/_hideClearButton\s*=\s*'(true|false)'/g, (_match, value: string) => {
+					return `_hasClearButton='${value === 'true' ? 'false' : 'true'}'`;
+				})
+				.replace(/_hideClearButton\s*=\s*\{\s*(true|false)\s*\}/g, (_match, value: string) => {
+					return `_hasClearButton={${value === 'true' ? 'false' : 'true'}}`;
+				})
+				.replace(/_hide-clear-button(?=[\s/>])/g, '_has-clear-button="false"')
+				.replace(/_hideClearButton(?=[\s/>])/g, '_hasClearButton={false}');
 
 			if (content !== newContent) {
 				fs.writeFileSync(file, newContent);
