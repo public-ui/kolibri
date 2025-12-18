@@ -26,20 +26,18 @@ export class SelectController extends InputIconController implements SelectWatch
 
 	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: string, options: SelectOption<W3CInputValue>[]): boolean => {
-		return (
-			options.find((option) =>
-				typeof (option as Option<W3CInputValue>).value === 'string'
-					? (option as Option<W3CInputValue>).value === value
-					: Array.isArray((option as Optgroup<string>).options)
-						? this.isValueInOptions(value, (option as Optgroup<string>).options)
-						: false,
-			) !== undefined
-		);
+	private readonly isValueInOptions = (value: W3CInputValue, options: SelectOption<W3CInputValue>[]): boolean => {
+		return options.some((option) => {
+			if (Array.isArray((option as Optgroup<W3CInputValue>).options)) {
+				return this.isValueInOptions(value, (option as Optgroup<W3CInputValue>).options);
+			}
+
+			return (option as Option<W3CInputValue>).value === value;
+		});
 	};
 
-	private readonly filterValuesInOptions = (values: string[], options: SelectOption<W3CInputValue>[]): string[] => {
-		return values.filter((value) => this.isValueInOptions(value, options) !== undefined);
+	private readonly filterValuesInOptions = (values: W3CInputValue[], options: SelectOption<W3CInputValue>[]): W3CInputValue[] => {
+		return values.filter((value) => this.isValueInOptions(value, options));
 	};
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
@@ -55,14 +53,14 @@ export class SelectController extends InputIconController implements SelectWatch
 			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 			const selected = this.filterValuesInOptions(
-				Array.isArray(value) && value.length > 0 ? (value as string[]) : [],
+				Array.isArray(value) && value.length > 0 ? (value as W3CInputValue[]) : [],
 				options as SelectOption<W3CInputValue>[],
 			);
 			if (this.component._multiple === false && selected.length === 0) {
 				nextState.set('_value', [
 					(
 						options[0] as {
-							value: string;
+							value: W3CInputValue;
 						}
 					).value,
 				]);
