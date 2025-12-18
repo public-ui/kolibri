@@ -141,7 +141,6 @@ test.describe('kol-table-settings', () => {
 		test('it shows error message when all columns are hidden', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
-			await page.waitForChanges();
 
 			// Hide all columns
 			const checkboxes = page.getByRole('checkbox');
@@ -159,7 +158,6 @@ test.describe('kol-table-settings', () => {
 		test('it removes error message when at least one column is visible', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
-			await page.waitForChanges();
 
 			// Hide all columns
 			const checkboxes = page.getByRole('checkbox');

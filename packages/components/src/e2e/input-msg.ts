@@ -5,7 +5,7 @@ import type { MsgPropType, Stringified } from '../schema';
 const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType> } & HTMLElement>(componentName: string) => {
 	test.describe('Input messages', () => {
 		test(`should render a message when provided as object`, async ({ page }) => {
-			await page.setContent(`<${componentName} _label="Input" _msg="{'_description': 'This is a info message', '_type': 'info'}"></${componentName}>`);
+			await page.setContent(`<${componentName} _label="Input" _msg="{'_description': 'This is a info message', '_type': 'info'}" _touched></${componentName}>`);
 			const alert = page.getByTestId('alert');
 
 			await expect(alert).toContainText('This is a info message');

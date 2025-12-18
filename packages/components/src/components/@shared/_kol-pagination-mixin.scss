@@ -1,6 +1,9 @@
 @use 'mixins' as *;
+@use './kol-select-mixin' as *;
 
 @mixin kol-pagination-styles {
+	@include kol-select;
+
 	.kol-pagination {
 		display: grid;
 		gap: to-rem(16);
@@ -19,6 +22,11 @@
 
 		&__separator:before {
 			content: '•••';
+		}
+
+		&__page-size-select .kol-form-field-select {
+			align-items: center;
+			grid-template-columns: 1fr max-content;
 		}
 	}
 }

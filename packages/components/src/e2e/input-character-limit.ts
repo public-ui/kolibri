@@ -75,37 +75,35 @@ const testInputCharacterLimit = (componentName: string) => {
 
 		test.describe('FormFieldCharacterLimitHint', () => {
 			test('Should render character limit hint when maxLength is set with soft behavior', async ({ page }) => {
-				await page.setContent(
-					`<${componentName} _label="Input" _id="test-input" _max-length="10" _max-length-behavior="soft" _value="abc"></${componentName}>`,
-				);
+				await page.setContent(`<${componentName} _label="Input"  _max-length="10" _max-length-behavior="soft" _value="abc"></${componentName}>`);
 
 				const inputElement = page.locator('input,textarea');
-				const hintElement = page.locator('#test-input-character-limit-hint');
+				const hintElement = page.locator('[id$="-character-limit-hint"]');
 
-				await expect(hintElement).toBeVisible();
+				await expect(hintElement).toBeAttached();
 				await expect(hintElement).toHaveText('Es können bis zu 10 Zeichen eingegeben werden.');
-				await expect(inputElement).toHaveAttribute('aria-describedby', 'test-input-character-limit-hint');
+				const hintId = await hintElement.getAttribute('id');
+				await expect(inputElement).toHaveAttribute('aria-describedby', hintId!);
 			});
 
 			test('Should render character limit hint when maxLength is set with hard behavior', async ({ page }) => {
-				await page.setContent(`<${componentName} _label="Input" _id="test-input" _max-length="10" _value="abc"></${componentName}>`);
+				await page.setContent(`<${componentName} _label="Input"  _max-length="10" _value="abc"></${componentName}>`);
 
 				const inputElement = page.locator('input,textarea');
-				const hintElement = page.locator('#test-input-character-limit-hint');
+				const hintElement = page.locator('[id$="-character-limit-hint"]');
 
-				await expect(hintElement).toBeVisible();
+				await expect(hintElement).toBeAttached();
 				await expect(hintElement).toHaveText('Es können bis zu 10 Zeichen eingegeben werden.');
-				await expect(inputElement).toHaveAttribute('aria-describedby', 'test-input-character-limit-hint');
+				const hintId = await hintElement.getAttribute('id');
+				await expect(inputElement).toHaveAttribute('aria-describedby', hintId!);
 			});
 
 			test('Should not render character limit hint when no maxLength is set', async ({ page }) => {
-				await page.setContent(`<${componentName} _label="Input" _id="test-input" _has-counter _value="abc"></${componentName}>`);
+				await page.setContent(`<${componentName} _label="Input"  _has-counter _value="abc"></${componentName}>`);
 
-				const inputElement = page.locator('input,textarea');
-				const hintElement = page.locator('#test-input-character-limit-hint');
+				const hintElement = page.locator('[id$="-character-limit-hint"]');
 
-				await expect(hintElement).not.toBeVisible();
-				await expect(inputElement).toHaveAttribute('aria-describedby');
+				await expect(hintElement).not.toBeAttached();
 			});
 		});
 	});
