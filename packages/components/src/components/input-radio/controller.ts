@@ -68,7 +68,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
 		if (key === '_value') {
-			this.setFormAssociatedValue(value as string);
+			this.setFormAssociatedValue(value as StencilUnknown);
 		}
 	};
 

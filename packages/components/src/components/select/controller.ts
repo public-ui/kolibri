@@ -6,6 +6,7 @@ import type {
 	SelectOption,
 	SelectProps,
 	SelectWatches,
+	StencilUnknown,
 	Stringified,
 	W3CInputValue,
 } from '../../schema';
@@ -26,25 +27,25 @@ export class SelectController extends InputIconController implements SelectWatch
 
 	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: string, options: SelectOption<W3CInputValue>[]): boolean => {
+	private readonly isValueInOptions = (value: StencilUnknown, options: SelectOption<StencilUnknown>[]): boolean => {
 		return (
 			options.find((option) =>
-				typeof (option as Option<W3CInputValue>).value === 'string'
-					? (option as Option<W3CInputValue>).value === value
-					: Array.isArray((option as Optgroup<string>).options)
-						? this.isValueInOptions(value, (option as Optgroup<string>).options)
+				(option as Option<StencilUnknown>).value === value
+					? true
+					: Array.isArray((option as Optgroup<StencilUnknown>).options)
+						? this.isValueInOptions(value, (option as Optgroup<StencilUnknown>).options)
 						: false,
 			) !== undefined
 		);
 	};
 
-	private readonly filterValuesInOptions = (values: string[], options: SelectOption<W3CInputValue>[]): string[] => {
-		return values.filter((value) => this.isValueInOptions(value, options) !== undefined);
+	private readonly filterValuesInOptions = (values: StencilUnknown[], options: SelectOption<StencilUnknown>[]): StencilUnknown[] => {
+		return values.filter((value) => this.isValueInOptions(value, options));
 	};
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
 		if (key === '_value') {
-			this.setFormAssociatedValue(value as string);
+			this.setFormAssociatedValue(value as Stringified<StencilUnknown[]>);
 		}
 	};
 
@@ -52,20 +53,14 @@ export class SelectController extends InputIconController implements SelectWatch
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<StencilUnknown>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 			const selected = this.filterValuesInOptions(
-				Array.isArray(value) && value.length > 0 ? (value as string[]) : [],
-				options as SelectOption<W3CInputValue>[],
+				Array.isArray(value) && value.length > 0 ? (value as StencilUnknown[]) : [],
+				options as SelectOption<StencilUnknown>[],
 			);
 			if (this.component._multiple === false && selected.length === 0) {
-				nextState.set('_value', [
-					(
-						options[0] as {
-							value: string;
-						}
-					).value,
-				]);
+				nextState.set('_value', [(options[0] as Option<StencilUnknown>).value]);
 			} else if (Array.isArray(value) && selected.length < value.length) {
 				nextState.set('_value', selected);
 			}
@@ -89,10 +84,10 @@ export class SelectController extends InputIconController implements SelectWatch
 			},
 		});
 		// if (value === true) {
-		// 	devHint(
-		// 		'[KolSelect] Currently, multiple selection is not yet supported. We are working on implementing it to be functional, as there are some gaps in the browser standard.'
-		// 	);
-		// 	devHint('[KolSelect] For multiple selections, the list length (size) should also be set.');
+		//      devHint(
+		//              '[KolSelect] Currently, multiple selection is not yet supported. We are working on implementing it to be functional, as there are some gaps in the browser standard.'
+		//      );
+		//      devHint('[KolSelect] For multiple selections, the list length (size) should also be set.');
 		// }
 	}
 
@@ -105,12 +100,19 @@ export class SelectController extends InputIconController implements SelectWatch
 	}
 
 	public validateValue(value?: Stringified<W3CInputValue[]>): void {
-		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
-			hooks: {
-				afterPatch: this.afterPatchOptions,
-				beforePatch: this.beforePatchOptions,
+		watchJsonArrayString(
+			this.component,
+			'_value',
+			(item: W3CInputValue) => typeof item === 'string' || typeof item === 'number' || typeof item === 'boolean',
+			value,
+			undefined,
+			{
+				hooks: {
+					afterPatch: this.afterPatchOptions,
+					beforePatch: this.beforePatchOptions,
+				},
 			},
-		});
+		);
 	}
 
 	public componentWillLoad(): void {

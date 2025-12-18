@@ -138,7 +138,7 @@ export class KolInputWc implements Props {
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
-							<option value={option} />
+							<option value={JSON.stringify(option)} />
 						))}
 					</datalist>
 				)}

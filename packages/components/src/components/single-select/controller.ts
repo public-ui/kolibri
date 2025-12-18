@@ -8,7 +8,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 export class SingleSelectController extends InputIconController implements SingleSelectWatches {
 	protected readonly component: Generic.Element.Component & SingleSelectProps;
-	private readonly keyOptionMap = new Map<string, Option<string>>();
+	private readonly keyOptionMap = new Map<string, Option<StencilUnknown>>();
 
 	public constructor(component: Generic.Element.Component & SingleSelectProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
@@ -17,7 +17,7 @@ export class SingleSelectController extends InputIconController implements Singl
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
 		if (key === '_value') {
-			this.setFormAssociatedValue(value as string);
+			this.setFormAssociatedValue(value as StencilUnknown);
 		}
 	};
 
@@ -49,12 +49,15 @@ export class SingleSelectController extends InputIconController implements Singl
 	public validatePlaceholder(value?: string): void {
 		watchString(this.component, '_placeholder', value);
 	}
+
 	public validateHideClearButton(value?: boolean): void {
 		watchBoolean(this.component, '_hideClearButton', value);
 	}
+
 	public validateRows(value?: number): void {
 		watchNumber(this.component, '_rows', value);
 	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateOptions(this.component._options);

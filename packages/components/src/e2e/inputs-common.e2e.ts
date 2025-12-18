@@ -20,16 +20,24 @@ const ALL_INPUT_COMPONENTS = [
 
 const INPUT_COMPONENTS_WITH_COUNTER = [`kol-input-text`, `kol-input-password`, `kol-input-email`, `kol-textarea`];
 
+const INPUT_COMPONENTS_REQUIRING_OPTIONS = [`kol-combobox`, `kol-input-radio`, `kol-select`, `kol-single-select`];
+const DEFAULT_OPTIONS = JSON.stringify([
+	{ label: 'Option 1', value: 'option1' },
+	{ label: 'Option 2', value: 'option2' },
+]);
+
 test.describe('inputs-common', () => {
 	for (const component of ALL_INPUT_COMPONENTS) {
 		test.describe(component, () => {
 			test.describe('alert', () => {
 				test('should render error messages with role=alert when the _alert prop is set to true', async ({ page }) => {
+					const optionsAttr = INPUT_COMPONENTS_REQUIRING_OPTIONS.includes(component) ? `_options='${DEFAULT_OPTIONS}'` : '';
 					await page.setContent(`<${component}
 															_label="Input"
 															_msg="{'_description': 'Broken', '_type': 'error'}"
 															_touched
 															_alert
+															${optionsAttr}
 														/>`);
 
 					await expect(page.locator('.kol-alert-wc')).toHaveAttribute('role', 'alert');

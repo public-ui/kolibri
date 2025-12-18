@@ -17,6 +17,7 @@ import type {
 	SelectOption,
 	SelectStates,
 	ShortKeyPropType,
+	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
@@ -77,13 +78,13 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		this.selectRef?.focus();
 	}
 
-	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
+	private renderOptgroup(optgroup: Optgroup<StencilUnknown>, preKey: string): JSX.Element {
 		return (
 			<optgroup disabled={optgroup.disabled} label={optgroup.label}>
-				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
+				{optgroup.options?.map((option: SelectOption<StencilUnknown>, index: number) => {
 					const key = `${preKey}-${index}`;
-					if (Array.isArray((option as Optgroup<string>).options)) {
-						return this.renderOptgroup(option as Optgroup<string>, key);
+					if (Array.isArray((option as Optgroup<StencilUnknown>).options)) {
+						return this.renderOptgroup(option as Optgroup<StencilUnknown>, key);
 					} else {
 						return (
 							<option
@@ -189,8 +190,8 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 									 * mappen. Das tun wir mittels der Map.
 									 */
 									const key = `-${index}`;
-									if (Array.isArray((option as unknown as Optgroup<string>).options)) {
-										return this.renderOptgroup(option as unknown as Optgroup<string>, key);
+									if (Array.isArray((option as unknown as Optgroup<StencilUnknown>).options)) {
+										return this.renderOptgroup(option as unknown as Optgroup<StencilUnknown>, key);
 									} else {
 										return (
 											<option
@@ -488,7 +489,8 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	private onInput(event: Event): void {
 		this._value = Array.from(this.selectRef?.options || [])
 			.filter((option) => option.selected === true)
-			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+			.map((option) => this.controller.getOptionByKey(option.value)?.value)
+			.filter((value): value is W3CInputValue => value !== undefined);
 
 		// Event handling
 		tryToDispatchKoliBriEvent('input', this.host, this._value);
@@ -503,7 +505,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(this._value as unknown as string);
+		this.controller.setFormAssociatedValue(this._value as Stringified<W3CInputValue[]>);
 
 		// Callback
 		this.state._on?.onChange?.(event, this._value);

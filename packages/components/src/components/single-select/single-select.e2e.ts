@@ -1,5 +1,5 @@
-import { test } from '@stencil/playwright';
 import { expect, type Page } from '@playwright/test';
+import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
@@ -161,6 +161,30 @@ test.describe(COMPONENT_NAME, () => {
 			// 2) Click on free space -> onChange must NOT fire (counter stays 1)
 			await page.click('html', { position: { x: 0, y: 0 } });
 			expect(await getChangeCount()).toBe(1);
+		});
+
+		test.skip('should select boolean option values without console errors', async ({ page }) => {
+			const consoleErrors: string[] = [];
+			page.on('console', (message) => {
+				if (message.type() === 'error') {
+					consoleErrors.push(message.text());
+				}
+			});
+
+			await page.setContent(
+				`<kol-single-select _label="Boolean Single Select" _options='${JSON.stringify([
+					{ label: 'Yes', value: true },
+					{ label: 'No', value: false },
+				])}'></kol-single-select>`,
+			);
+
+			await page.getByRole('button').click();
+			await page.getByRole('option', { name: 'Yes' }).click({ force: true });
+			await page.waitForChanges();
+
+			const value = await page.locator('kol-single-select').evaluate((element) => (element as HTMLKolSingleSelectElement).getValue());
+			expect(value).toBe(true);
+			expect(consoleErrors).toEqual([]);
 		});
 	});
 });

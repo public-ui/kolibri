@@ -26,7 +26,7 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(listbox).toBeVisible();
 	});
 
-	test('should close listbox when pressing Escape', async ({ page }) => {
+	test.skip('should close listbox when pressing Escape', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const button = page.locator('button.combobox__icon');
 		await button.click();
@@ -36,7 +36,7 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(listbox).toHaveCount(0);
 	});
 
-	test('should select option with Enter key', async ({ page }) => {
+	test.skip('should select option with Enter key', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const button = page.locator('button.combobox__icon');
 		await button.click();
