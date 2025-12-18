@@ -3,7 +3,7 @@
 exports[`KolNav nested navigation landmarks assigns a single nav id and multiple ul ids for expanded submenus 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Main navigation" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
@@ -45,7 +45,7 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
@@ -78,7 +78,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
@@ -114,7 +114,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasIconsWhenExpanded=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
@@ -147,7 +147,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasIconsWhenExpanded=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
@@ -180,7 +180,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hideLabel=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
@@ -213,7 +213,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hideLabel=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--is-compact kol-nav--vertical">
+    <div class="kol-nav kol-nav--is-compact">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
@@ -246,7 +246,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
-    <div class="kol-nav kol-nav--vertical">
+    <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
