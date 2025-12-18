@@ -8,7 +8,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 export class SingleSelectController extends InputIconController implements SingleSelectWatches {
 	protected readonly component: Generic.Element.Component & SingleSelectProps;
-	private readonly keyOptionMap = new Map<string, Option<string>>();
+	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
 
 	public constructor(component: Generic.Element.Component & SingleSelectProps, name: string, host?: HTMLElement) {
 		super(component, name, host);

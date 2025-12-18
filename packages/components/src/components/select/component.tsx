@@ -488,7 +488,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	private onInput(event: Event): void {
 		this._value = Array.from(this.selectRef?.options || [])
 			.filter((option) => option.selected === true)
-			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+			.map((option) => this.controller.getOptionByKey(option.value)?.value as W3CInputValue);
 
 		// Event handling
 		tryToDispatchKoliBriEvent('input', this.host, this._value);
