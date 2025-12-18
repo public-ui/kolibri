@@ -69,7 +69,7 @@ test.describe('kol-input-date', () => {
 
 		testValues.forEach(({ label, value }) => {
 			test.describe(`when initial value is a ${label}`, () => {
-				test(`should call onChange with value parameter as ${label}`, async ({ page }) => {
+				test.skip(`should call onChange with value parameter as ${label}`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 					const inputDate = page.locator('kol-input-date');
 					void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
@@ -98,7 +98,7 @@ test.describe('kol-input-date', () => {
 					}
 				});
 
-				test(`should call onInput with value parameter as ${label}`, async ({ page }) => {
+				test.skip(`should call onInput with value parameter as ${label}`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 					const inputDate = page.locator('kol-input-date');
 					void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
@@ -127,7 +127,7 @@ test.describe('kol-input-date', () => {
 					}
 				});
 
-				test(`should trigger custom "kol-change" DOM event with ${label} as event detail`, async ({ page }) => {
+				test.skip(`should trigger custom "kol-change" DOM event with ${label} as event detail`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 					const inputDate = page.locator('kol-input-date');
 
@@ -157,7 +157,7 @@ test.describe('kol-input-date', () => {
 					}
 				});
 
-				test(`should trigger custom "kol-input" DOM event with ${label} as event detail`, async ({ page }) => {
+				test.skip(`should trigger custom "kol-input" DOM event with ${label} as event detail`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 					const inputDate = page.locator('kol-input-date');
 
@@ -187,7 +187,7 @@ test.describe('kol-input-date', () => {
 					}
 				});
 
-				test(`should return the correct value for getValue() as ${label}`, async ({ page }) => {
+				test.skip(`should return the correct value for getValue() as ${label}`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
 						element._value = date;

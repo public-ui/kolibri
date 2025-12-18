@@ -26,4 +26,27 @@ test.describe('kol-select', () => {
 		await select.selectOption({ label: 'East' });
 		expect(await inputEventPromise).toEqual(['E']);
 	});
+
+	test('it should handle boolean option values without console errors', async ({ page }) => {
+		const options = JSON.stringify([
+			{ label: 'Enabled', value: true },
+			{ label: 'Disabled', value: false },
+		]);
+		const consoleErrors: string[] = [];
+		page.on('console', (message) => {
+			if (message.type() === 'error') {
+				consoleErrors.push(message.text());
+			}
+		});
+
+		await page.setContent(`<kol-select _label="Boolean Select" _options='${options}'></kol-select>`);
+		const kolSelect = page.locator('kol-select');
+		const select = page.locator('select');
+
+		await select.selectOption({ label: 'Enabled' });
+		await page.waitForChanges();
+
+		expect(await kolSelect.evaluate(async (element) => (element as HTMLKolSelectElement).getValue())).toEqual([true]);
+		expect(consoleErrors).toEqual([]);
+	});
 });

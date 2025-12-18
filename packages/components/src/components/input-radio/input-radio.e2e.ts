@@ -35,7 +35,7 @@ test.describe('kol-input-radio', () => {
 
 		TEST_CASES.forEach(({ name, options, value }) => {
 			test(`should match option with ${name}`, async ({ page }) => {
-				await page.setContent(`<kol-input-radio	_label="Radio Group"></kol-input-radio>`);
+				await page.setContent(`<kol-input-radio _label="Radio Group"></kol-input-radio>`);
 				const kolInputRadio = page.locator('kol-input-radio');
 
 				await kolInputRadio.evaluate(
@@ -52,5 +52,31 @@ test.describe('kol-input-radio', () => {
 				await expect(firstOption).toBeChecked();
 			});
 		});
+	});
+
+	test('should select boolean value without console errors', async ({ page }) => {
+		const consoleErrors: string[] = [];
+		page.on('console', (message) => {
+			if (message.type() === 'error') {
+				consoleErrors.push(message.text());
+			}
+		});
+
+		await page.setContent(`<kol-input-radio _label="Radio Group"></kol-input-radio>`);
+		const kolInputRadio = page.locator('kol-input-radio');
+
+		await kolInputRadio.evaluate((element: HTMLKolInputRadioElement) => {
+			element._options = [
+				{ label: 'Yes', value: true },
+				{ label: 'No', value: false },
+			];
+		});
+
+		const firstRadio = kolInputRadio.locator('input[type="radio"]').first();
+		await firstRadio.click();
+		await page.waitForChanges();
+
+		expect(await kolInputRadio.evaluate(async (element) => (element as HTMLKolInputRadioElement).getValue())).toBe(true);
+		expect(consoleErrors).toEqual([]);
 	});
 });

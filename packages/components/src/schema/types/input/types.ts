@@ -28,7 +28,6 @@ type InputTypeOnInput = {
 export type Option<T> = {
 	disabled?: boolean;
 	label: string | number;
-	// selected?: boolean; // wird über den value der *-Komponente gesteuert
 	value: T;
 };
 export type RadioOption<T> = Option<T> & {

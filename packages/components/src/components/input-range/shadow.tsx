@@ -237,7 +237,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 						{hasSuggestions && [
 							<datalist id={`${this.state._id}-list`}>
 								{this.state._suggestions.map((option: W3CInputValue) => (
-									<option value={option} />
+									<option value={JSON.stringify(option)} />
 								))}
 							</datalist>,
 							// <ul class="grid gap-1 text-sm grid-flow-col">
