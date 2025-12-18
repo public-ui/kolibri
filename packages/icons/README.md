@@ -43,9 +43,9 @@ Include the icon font stylesheet in your HTML:
 Then use icons with the CSS class syntax:
 
 ```html
-<i class="kol-icon-check"></i>
-<i class="kol-icon-alert-info"></i>
-<i class="kol-icon-eye"></i>
+<i class="kolicon-check"></i>
+<i class="kolicon-alert-info"></i>
+<i class="kolicon-eye"></i>
 ```
 
 ### With KoliBri components
@@ -109,7 +109,7 @@ Then open your browser at the URL shown in the terminal (typically <http://local
 
 1. Add your SVG file to the `svg/` directory
 2. Run `pnpm build` to regenerate the font
-3. The icon will be available as `.kol-icon-{filename}`
+3. The icon will be available as `.kolicon-{filename}`
 
 ### SVG requirements
 
@@ -120,8 +120,8 @@ Everything that is colored black will part of the path.
 
 The generated font includes:
 
-- **Font name**: `kol-icon`
-- **Class prefix**: `kol-icon-`
+- **Font name**: `kolicons`
+- **Class prefix**: `kolicon-`
 - **Formats**: TTF, WOFF, WOFF2, EOT, SVG
 - **Base size**: Inherits from parent element
 - **Color**: Inherits from `color` property (customizable via CSS)
@@ -148,7 +148,7 @@ When using icon fonts for meaningful content (not decorative):
 
 <!-- Good: Standalone icon with aria-label -->
 <button aria-label="Close dialog">
-	<i class="kol-icon-kolibri" aria-hidden="true"></i>
+	<i class="kolicon-kolibri" aria-hidden="true"></i>
 </button>
 ```
 

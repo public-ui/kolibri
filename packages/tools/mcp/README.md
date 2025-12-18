@@ -111,16 +111,18 @@ kolibri-mcp
 
 #### VS Code Copilot (Local)
 
-````json
+```json
 {
-  "servers": {
-    "kolibri": {
-      "command": "kolibri-mcp"
-    }
-  },
-  "inputs": []
+	"servers": {
+		"kolibri": {
+			"command": "kolibri-mcp"
+		}
+	},
+	"inputs": []
 }
-```#### Claude Desktop (Local)
+```
+
+#### Claude Desktop (Local)
 
 ```json
 {
@@ -131,7 +133,7 @@ kolibri-mcp
 		}
 	}
 }
-````
+```
 
 ### Self-Hosted HTTP Server
 

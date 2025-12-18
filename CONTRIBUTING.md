@@ -26,7 +26,7 @@ Please do not create issue tickets for general support questions. We want to use
 Instead, we recommend first checking [Stack Overflow](https://stackoverflow.com/questions/tagged/kolibri) to see whether someone else has already solved the question or problem. You can also create new questions with the tag “hummingbird”.
 To save your time and ours, we will close all general questions in the ticket system and redirect those asking to Stack Overflow.
 
-If you would like to contact us, please send us an email to [kolibri@itzbund.de](kolibri@itzbund.de).
+If you would like to contact us, please send us an email to [kolibri@itzbund.de](mailto:kolibri@itzbund.de).
 
 ## Report an error
 
