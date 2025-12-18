@@ -48,9 +48,18 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
+	private inputRefs = new Map<number, HTMLInputElement>();
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
+	};
+
+	private readonly catchInputRef = (index: number) => (ref?: HTMLInputElement) => {
+		if (ref) {
+			this.inputRefs.set(index, ref);
+		} else {
+			this.inputRefs.delete(index);
+		}
 	};
 
 	/**
@@ -68,7 +77,31 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.inputRef?.focus();
+		this.getFocusableInput()?.focus();
+	}
+
+	private getFocusableInput(): HTMLInputElement | undefined {
+		const options = this.state._options;
+		const isComponentDisabled = Boolean(this.state._disabled);
+
+		// Find the index of the selected option if it's not disabled
+		const selectedIndex = options.findIndex((option) => option.value === this.state._value && !isComponentDisabled && !option.disabled);
+
+		if (selectedIndex !== -1) {
+			const input = this.inputRefs.get(selectedIndex);
+			if (input) {
+				return input;
+			}
+		}
+
+		// Otherwise find the first non-disabled option
+		const firstEnabledIndex = options.findIndex((option) => !isComponentDisabled && !option.disabled);
+
+		if (firstEnabledIndex !== -1) {
+			return this.inputRefs.get(firstEnabledIndex);
+		}
+
+		return undefined;
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -121,7 +154,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			state: this.state,
 			inputProps: {
 				id: id,
-				ref: this.state._value === option.value ? this.catchRef : undefined,
+				ref: (ref?: HTMLInputElement) => {
+					this.catchInputRef(index)(ref);
+					if (selected) {
+						this.catchRef(ref);
+					}
+				},
 				'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
 				type: 'radio',
 				name: this.state._name || this.state._id,
