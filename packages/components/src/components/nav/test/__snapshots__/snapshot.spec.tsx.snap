@@ -104,7 +104,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         </ul>
       </nav>
       <div class="kol-nav__compact">
-        <kol-button-wc _ariacontrols="kol-nav-nonce" _ariaexpanded="" _hidelabel="" _icons="codicon codicon-chevron-left" _label="kol-nav-minimize" _tooltipalign="right" class="kol-nav__toggle-button"></kol-button-wc>
+        <kol-button-wc _ariacontrols="kol-nav-nonce" _ariaexpanded="" _hidelabel="" _icons="kolicon-chevron-left" _label="kol-nav-minimize" _tooltipalign="right" class="kol-nav__toggle-button"></kol-button-wc>
       </div>
     </div>
   </template>
