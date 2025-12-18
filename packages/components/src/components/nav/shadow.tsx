@@ -5,6 +5,7 @@ import type {
 	ButtonWithChildrenProps,
 	CollapsiblePropType,
 	HideLabelPropType,
+	KoliBriIconsProp,
 	LabelPropType,
 	LinkProps,
 	LinkWithChildrenProps,
@@ -93,21 +94,33 @@ export class KolNav implements NavAPI {
 		}
 	};
 
-	private entry(
-		collapsible: boolean,
-		hideLabel: HideLabelPropType,
-		hasChildren: boolean,
-		entry: ButtonOrLinkOrTextWithChildrenProps,
-		expanded: boolean,
-		ariaID: string,
-	): JSX.Element {
-		const icons = {
-			left:
-				this.state._hasIconsWhenExpanded || this.state._hideLabel
-					? entry._icons?.toString() || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
-					: undefined,
-			right: collapsible && hasChildren ? 'codicon codicon-' + (expanded ? 'remove' : 'add') : undefined,
+	private buildIconObject(collapsible: boolean, expanded: boolean, leftIcon?: string): KoliBriIconsProp {
+		const icon = {
+			left: '',
+			right: '',
 		};
+		if (this.state._hasIconsWhenExpanded && leftIcon) {
+			icon.left = leftIcon;
+		}
+		if (this.state._hideLabel) {
+			if (leftIcon) {
+				icon.left = leftIcon;
+			} else {
+				icon.left = 'codicon codicon-symbol-method';
+			}
+		}
+		if (collapsible) {
+			if (expanded) {
+				icon.right = 'codicon codicon-remove';
+			} else {
+				icon.right = 'codicon codicon-add';
+			}
+		}
+		return icon;
+	}
+
+	private entry(collapsible: boolean, hasChildren: boolean, entry: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean, ariaID: string): JSX.Element {
+		const icons = this.buildIconObject(collapsible && hasChildren, expanded, entry._icons?.toString());
 
 		return (
 			<div class="kol-nav__entry-wrapper">
@@ -117,7 +130,7 @@ export class KolNav implements NavAPI {
 							'kol-nav__entry--collapsible': collapsible,
 						})}
 						{...entry}
-						_hideLabel={hideLabel}
+						_hideLabel={this.state._hideLabel}
 						_icons={icons}
 						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
 						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
@@ -128,7 +141,7 @@ export class KolNav implements NavAPI {
 							'kol-nav__entry--collapsible': collapsible,
 						})}
 						_label={entry._label}
-						_hideLabel={hideLabel}
+						_hideLabel={this.state._hideLabel}
 						_icons={icons}
 						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
 						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
@@ -148,7 +161,6 @@ export class KolNav implements NavAPI {
 
 	private li(
 		collapsible: boolean,
-		hideLabel: HideLabelPropType,
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
@@ -168,17 +180,14 @@ export class KolNav implements NavAPI {
 				})}
 				key={index}
 			>
-				{this.entry(collapsible, hideLabel, hasChildren, link, expanded, ariaID)}
-				{expanded && (
-					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} id={ariaID} />
-				)}
+				{this.entry(collapsible, hasChildren, link, expanded, ariaID)}
+				{expanded && <this.linkList collapsible={collapsible} deep={deep + 1} links={link._children || []} orientation={orientation} id={ariaID} />}
 			</li>
 		);
 	}
 
 	private linkList = (props: {
 		collapsible: boolean;
-		hideLabel: HideLabelPropType;
 		deep: number;
 		links: ButtonOrLinkOrTextWithChildrenProps[];
 		orientation: OrientationPropType;
@@ -194,7 +203,7 @@ export class KolNav implements NavAPI {
 				id={props.deep > 0 ? props.id : undefined}
 			>
 				{props.links.map((link, index: number) => {
-					return this.li(props.collapsible, props.hideLabel, props.deep, index, link, props.orientation, props.id);
+					return this.li(props.collapsible, props.deep, index, link, props.orientation, props.id);
 				})}
 			</ul>
 		);
@@ -236,22 +245,18 @@ export class KolNav implements NavAPI {
 			hasCompactButton = false;
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
-		const collapsible = this.state._collapsible === true;
-		const hideLabel = this.state._hideLabel === true;
-		const orientation = this.state._orientation;
 		return (
 			<div
-				class={clsx('kol-nav', `kol-nav--${orientation}`, {
+				class={clsx('kol-nav', `kol-nav--${this.state._orientation}`, {
 					'kol-nav--is-compact': this.state._hideLabel,
 				})}
 			>
 				<nav aria-label={this.state._label} class="kol-nav__navigation" id={this.navId}>
 					<this.linkList
-						collapsible={collapsible}
-						hideLabel={hideLabel}
+						collapsible={this.state._collapsible}
 						deep={0}
 						links={this.state._links}
-						orientation={orientation}
+						orientation={this.state._orientation}
 						id={this.listId}
 					></this.linkList>
 				</nav>
@@ -260,15 +265,15 @@ export class KolNav implements NavAPI {
 						<KolButtonWcTag
 							class="kol-nav__toggle-button"
 							_ariaControls={this.navId}
-							_ariaExpanded={!hideLabel}
-							_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+							_ariaExpanded={!this.state._hideLabel}
+							_icons={this.state._hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 							_hideLabel
-							_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+							_label={translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 							_on={{
 								onClick: (): void => {
 									this.state = {
 										...this.state,
-										_hideLabel: this.state._hideLabel === false,
+										_hideLabel: !this.state._hideLabel,
 									};
 								},
 							}}
@@ -405,39 +410,3 @@ export class KolNav implements NavAPI {
 		removeNavLabel(this.state._label);
 	}
 }
-
-// console.log(
-//   stringifyJson([
-//     { _label: '1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
-//     { _label: '2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
-//     {
-//       _active: true,
-//       _label: '3 Navigationspunkt',
-//       _href: '#abc',
-//       _icons: 'codicon codicon-folder-closed',
-//       _children: [
-//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
-//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
-//         {
-//           _active: true,
-//           _label: '3.3 Navigationspunkt',
-//           _href: '#abc',
-//           _children: [
-//             { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-//             { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-//           ],
-//         },
-//         {
-//           _label: '3.4 Navigationspunkt',
-//           _href: '#abc',
-//           _children: [
-//             { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-//             { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-//           ],
-//         },
-//         { _label: '3.5 Navigationspunkt', _href: '#abc' },
-//       ],
-//     },
-//     { _label: '4 Navigationspunkt', _href: '#abc' },
-//   ])
-// );
