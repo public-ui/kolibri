@@ -22,6 +22,10 @@ export class KolTableSettings {
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
 	private readonly translateColumnNotHidable = translate('kol-table-settings-column-not-hidable');
+
+	/**
+	 * The table settings
+	 */
 	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
 	@Watch('_tableSettings')
@@ -108,7 +112,7 @@ export class KolTableSettings {
 			<KolPopoverButtonWcTag
 				ref={(el) => (this.popoverRef = el)}
 				class="kol-table-settings"
-				_icons="kol-icons-settings"
+				_icons="kolicon-settings"
 				_label={this.translateTableSettings}
 				_popoverAlign="top"
 				_hideLabel

@@ -909,16 +909,16 @@ export class KolTableStateless implements TableStatelessAPI {
 		const canSort = sortableSetting && hasSortDirection;
 
 		let ariaSort: AriaSort = 'none';
-		let sortButtonIcon = 'kol-icons-sort-neutral';
+		let sortButtonIcon = 'kolicon-sort-neutral';
 
 		if (canSort && cell.sortDirection) {
 			switch (cell.sortDirection) {
 				case 'ASC':
-					sortButtonIcon = 'kol-icons-sort-asc';
+					sortButtonIcon = 'kolicon-sort-asc';
 					ariaSort = 'ascending';
 					break;
 				case 'DESC':
-					sortButtonIcon = 'kol-icons-sort-desc';
+					sortButtonIcon = 'kolicon-sort-desc';
 					ariaSort = 'descending';
 					break;
 				default:

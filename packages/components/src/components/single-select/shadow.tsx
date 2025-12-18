@@ -322,7 +322,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 						{this._inputValue && !this.state._hideClearButton && (
 							<KolButtonWcTag
-								_icons="kol-icons-cross"
+								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_buttonVariant="ghost"
@@ -341,7 +341,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 						)}
 
 						<KolIconTag
-							_icons="kol-icons-chevron-down"
+							_icons="kolicon-chevron-down"
 							_label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,

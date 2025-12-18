@@ -182,7 +182,7 @@ export class KolTabs implements TabsAPI {
 						_on={{
 							onClick: this.onCreate,
 						}}
-						_icons="kol-icons-plus"
+						_icons="kolicon-plus"
 						data-testid="tabs-create-button"
 					></KolButtonWcTag>
 				)}

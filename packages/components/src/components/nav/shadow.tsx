@@ -101,9 +101,9 @@ export class KolNav implements NavAPI {
 		const icons = {
 			left:
 				this.state._hasIconsWhenExpanded || this.state._hideLabel
-					? entry._icons?.toString() || (this.state._hideLabel ? 'kol-icons-link' : undefined)
+					? entry._icons?.toString() || (this.state._hideLabel ? 'kolicon-link' : undefined)
 					: undefined,
-			right: collapsible && hasChildren ? 'kol-icons' + (expanded ? 'minus' : 'plus') : undefined,
+			right: collapsible && hasChildren ? 'kolicon-' + (expanded ? 'minus' : 'plus') : undefined,
 		};
 
 		return (
@@ -240,7 +240,7 @@ export class KolNav implements NavAPI {
 							class="kol-nav__toggle-button"
 							_ariaControls={this.navId}
 							_ariaExpanded={!hideLabel}
-							_icons={hideLabel ? 'kol-icons-chevron' : 'codicon codicon-chevron-left'}
+							_icons={hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left'}
 							_hideLabel
 							_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 							_on={{

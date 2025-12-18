@@ -40,6 +40,8 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 
+/assets/kolicons
+
 # Allow
 !/node_martin/*.tgz
 /test-results/

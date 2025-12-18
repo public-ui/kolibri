@@ -10,7 +10,6 @@
 		"directory": "packages/icons"
 	},
 	"license": "EUPL-1.2",
-	"main": "./font/style.css",
 	"type": "module",
 	"keywords": [
 		"accessibility",
@@ -27,15 +26,17 @@
 	},
 	"scripts": {
 		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
-		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ./font",
-		"prebuild": "rimraf ./font && rimraf ./svg-fixed && mkdir svg-fixed",
+		"delete-unused": "rimraf ../components/assets/kolicons/react && rimraf ../components/assets/kolicons/vue && rimraf ../components/assets/kolicons/kolicons.symbol.svg && rimraf ../components/assets/kolicons/style.less && rimraf ../components/assets/kolicons/style.module.less && rimraf ../components/assets/kolicons/style.scss && rimraf ../components/assets/kolicons/style.styl",
+		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ../components/assets/kolicons && pnpm delete-unused",
+		"prebuild": "rimraf ../components/assets/kolicons && rimraf ./svg-fixed && mkdir svg-fixed",
 		"start": "serve"
 	},
 	"svgtofont": {
-		"classNamePrefix": "kol-icon",
+		"classNamePrefix": "kolicon",
 		"css": {
 			"fileName": "style"
 		},
+		"styleTemplates": "./styles",
 		"fontName": "kolicons",
 		"svgicons2svgfont": {
 			"fontHeight": 1000
