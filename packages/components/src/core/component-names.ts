@@ -43,6 +43,7 @@ export let KolPopoverButtonWcTag = 'kol-popover-button-wc' as const;
 export let KolProgressTag = 'kol-progress' as const;
 export let KolQuoteTag = 'kol-quote' as const;
 export let KolSelectTag = 'kol-select' as const;
+export let KolSelectWcTag = 'kol-select-wc' as const;
 export let KolSingleSelectTag = 'kol-single-select' as const;
 export let KolSkipNavTag = 'kol-skip-nav' as const;
 export let KolSpinTag = 'kol-spin' as const;
@@ -108,6 +109,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolProgressTag = transformTagName(KolProgressTag as string) as 'kol-progress';
 	KolQuoteTag = transformTagName(KolQuoteTag as string) as 'kol-quote';
 	KolSelectTag = transformTagName(KolSelectTag as string) as 'kol-select';
+	KolSelectWcTag = transformTagName(KolSelectWcTag as string) as 'kol-select-wc';
 	KolSingleSelectTag = transformTagName(KolSingleSelectTag as string) as 'kol-single-select';
 	KolSkipNavTag = transformTagName(KolSkipNavTag as string) as 'kol-skip-nav';
 	KolSpinTag = transformTagName(KolSpinTag as string) as 'kol-spin';

@@ -47,6 +47,7 @@ export class SelectController extends InputIconController implements SelectWatch
 
 	private readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const raw = nextState.get('_value');
+
 		if (raw !== undefined && !Array.isArray(raw)) {
 			nextState.set('_value', [raw]);
 		}

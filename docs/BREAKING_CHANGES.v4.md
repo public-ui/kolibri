@@ -48,3 +48,27 @@ toaster.enqueue({
 	type: 'info',
 });
 ```
+
+### Pagination
+
+- The pagination text (e.g., "Page 1 of 10") is now integrated into the Pagination component itself. Previously, this text had to be provided by the application code or was handled by the Stateful Table component.
+- The `_page` property now automatically generates and displays the pagination information text within the component.
+
+**Before (Version 3):**
+
+```typescript
+// Application code had to provide pagination text
+<kol-pagination _page={currentPage} _total={totalPages}></kol-pagination>
+<div>Page {currentPage} of {totalPages}</div>
+
+// Or it was handled by Stateful Table
+<kol-table-stateful></kol-table-stateful>
+```
+
+**After (Version 4):**
+
+```typescript
+// Pagination component handles text internally
+<kol-pagination _page={currentPage} _total={totalPages}></kol-pagination>
+// Text is automatically displayed within the component
+```

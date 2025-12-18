@@ -7,13 +7,13 @@ describe('kol-textarea aria-describedby', () => {
 	it('keeps aria-describedby on the textarea element', async () => {
 		const page = await newSpecPage({
 			components: [KolTextarea],
-			template: () => <kol-textarea _id="textarea" _label="Label" _hint="Hint" />,
+			template: () => <kol-textarea _label="Label" _hint="Hint" />,
 		});
 
 		const formField = page.root?.shadowRoot?.querySelector('.kol-form-field');
 		const textarea = page.root?.shadowRoot?.querySelector('textarea');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		expect(textarea?.getAttribute('aria-describedby')).toBe('textarea-hint');
+		expect(textarea?.getAttribute('aria-describedby')).toBe('id-nonce-hint');
 	});
 });

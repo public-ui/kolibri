@@ -747,7 +747,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.updateInputValue(value);
 	}
 
-	@Watch('_hideClearButton ')
+	@Watch('_hideClearButton')
 	public validateHideClearButton(value?: boolean): void {
 		this.controller.validateHideClearButton(value);
 	}
