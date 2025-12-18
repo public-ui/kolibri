@@ -87,8 +87,9 @@
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postpack": "mv package.bak.json package.json",
 		"postinstall": "node ./postinstall.js",
-		"prebuild:light": "pnpm clear && pnpm --filter @public-ui/icons build",
+		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
 		"prepack": "pnpm build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
+		"pretest:e2e": "pnpm --filter @public-ui/icons build",
 		"xunused": "knip"
 	},
 	"dependencies": {
