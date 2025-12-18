@@ -132,7 +132,7 @@ export class KolProgress implements ProgressAPI {
 	@Prop() public _unit?: string = '%';
 
 	/**
-	 * Defines the progress.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value!: number;
 
