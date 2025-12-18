@@ -26,16 +26,10 @@ export const CustomTooltipCssProperties: FC = () => {
 					_label="Custom duration"
 					_hideLabel
 					style={{ '--kolibri-tooltip-animation-duration': '2500ms' }}
-					_icons="codicon codicon-clock"
+					_icons="fa-solid fa-clock"
 					_on={dummyEventHandler}
 				></KolButton>
-				<KolButton
-					_label="Custom width"
-					_hideLabel
-					style={{ '--kol-tooltip-width': '400px' }}
-					_icons="codicon codicon-arrow-both"
-					_on={dummyEventHandler}
-				></KolButton>
+				<KolButton _label="Custom width" _hideLabel style={{ '--kol-tooltip-width': '400px' }} _icons="kolicon-chevron-up" _on={dummyEventHandler}></KolButton>
 			</div>
 		</>
 	);

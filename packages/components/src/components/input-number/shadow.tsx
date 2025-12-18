@@ -168,7 +168,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="codicon codicon-add" label="" />
+				<KolIconFc icons="kolicon-plus" label="" />
 			</button>
 		);
 	}
@@ -190,7 +190,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="codicon codicon-remove" label="" />
+				<KolIconFc icons="kolicon-minus" label="" />
 			</button>
 		);
 	}

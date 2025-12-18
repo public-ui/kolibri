@@ -21,7 +21,7 @@ export const ToolbarDisabled: FC = () => {
 						_hideLabel: true,
 						_icons: {
 							left: {
-								icon: 'codicon codicon-arrow-left',
+								icon: 'kolicon-chevron-left',
 							},
 						},
 					},
@@ -31,7 +31,7 @@ export const ToolbarDisabled: FC = () => {
 						_hideLabel: true,
 						_icons: {
 							right: {
-								icon: 'codicon codicon-arrow-right',
+								icon: 'kolicon-chevron-right',
 							},
 						},
 					},

@@ -26,7 +26,7 @@ const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeader
 			const commonProps = {
 				_label: capitalizedVariant,
 				_variant: variant,
-				_icons: { right: 'codicon codicon-squirrel' },
+				_icons: { right: 'kolicon-kolibri' },
 			};
 			getRoot(createReactRenderElement(element)).render(
 				cell.label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
@@ -91,7 +91,7 @@ export const InteractiveChildElements: FC = () => (
 								render: (element: HTMLElement, cell: KoliBriTableCell) => {
 									const commonProps = {
 										_label: cell.label,
-										_icons: { right: 'codicon codicon-squirrel' },
+										_icons: { right: 'kolicon-kolibri' },
 									};
 									getRoot(createReactRenderElement(element)).render(
 										cell.label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,

@@ -8,7 +8,7 @@
 		"url": "https://github.com/public-ui/kolibri"
 	},
 	"scripts": {
-		"build": "vite build",
+		"build": "pnpm prepare && vite build",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",

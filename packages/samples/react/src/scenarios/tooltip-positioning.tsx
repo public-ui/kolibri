@@ -20,7 +20,7 @@ export const TooltipPositioning: FC = () => {
 					contain: 'layout',
 				}}
 			>
-				<KolPopoverButton _label="Sample PopoverButton—Click for Popover" _icons="codicon codicon-info" _tooltipAlign="right" _hideLabel>
+				<KolPopoverButton _label="Sample PopoverButton—Click for Popover" _icons="kolicon-alert-info" _tooltipAlign="right" _hideLabel>
 					This is an explanation shown on click.
 				</KolPopoverButton>
 			</div>

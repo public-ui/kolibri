@@ -54,10 +54,10 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				_label="Salutation"
 				_icons={{
 					left: {
-						icon: 'codicon codicon-arrow-left',
+						icon: 'kolicon-chevron-left',
 					},
 					right: {
-						icon: 'codicon codicon-arrow-right',
+						icon: 'kolicon-chevron-right',
 					},
 				}}
 			/>

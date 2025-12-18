@@ -1,3 +1,5 @@
-assets/codicons/
-assets/kolibri.ico
+assets/**
 test-results/
+
+!assets/fontawesome-free/
+

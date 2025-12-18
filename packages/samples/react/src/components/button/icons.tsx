@@ -25,28 +25,28 @@ export const ButtonIcons: FC = () => {
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
-								left: 'codicon codicon-arrow-left',
+								left: 'kolicon-chevron-left',
 							}}
 							_label="Icon Left"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
 							_icons={{
-								right: 'codicon codicon-arrow-right',
+								right: 'kolicon-chevron-right',
 							}}
 							_label="Icon Right"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
 							_icons={{
-								top: 'codicon codicon-arrow-up',
+								top: 'kolicon-chevron-up',
 							}}
 							_label="Icon Top"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
 							_icons={{
-								bottom: 'codicon codicon-arrow-down',
+								bottom: 'kolicon-chevron-down',
 							}}
 							_label="Icon Bottom"
 							_on={dummyEventHandler}
@@ -59,16 +59,16 @@ export const ButtonIcons: FC = () => {
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
-								left: 'codicon codicon-arrow-left',
-								right: 'codicon codicon-arrow-right',
+								left: 'kolicon-chevron-left',
+								right: 'kolicon-chevron-right',
 							}}
 							_label="Left & Right"
 							_on={dummyEventHandler}
 						/>
 						<KolButton
 							_icons={{
-								top: 'codicon codicon-arrow-up',
-								bottom: 'codicon codicon-arrow-down',
+								top: 'kolicon-chevron-up',
+								bottom: 'kolicon-chevron-down',
 							}}
 							_label="Top & Bottom"
 							_on={dummyEventHandler}
@@ -85,13 +85,13 @@ export const ButtonIcons: FC = () => {
 									style: {
 										transform: 'rotate(45deg)',
 									},
-									icon: 'codicon codicon-arrow-up',
+									icon: 'kolicon-chevron-up',
 								},
-								bottom: 'codicon codicon-arrow-down',
+								bottom: 'kolicon-chevron-down',
 								left: {
-									icon: 'codicon codicon-arrow-left',
+									icon: 'kolicon-chevron-left',
 								},
-								right: 'codicon codicon-arrow-right',
+								right: 'kolicon-chevron-right',
 							}}
 							_label="All Directions"
 							_on={dummyEventHandler}
@@ -102,9 +102,9 @@ export const ButtonIcons: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Simple Icon String" />
 					<div className="flex flex-wrap gap-4">
-						<KolButton _icons="codicon codicon-home" _label="Home Icon" _on={dummyEventHandler} />
-						<KolButton _icons="codicon codicon-heart" _label="Heart Icon" _on={dummyEventHandler} />
-						<KolButton _icons="codicon codicon-trash" _label="Trash Icon" _on={dummyEventHandler} />
+						<KolButton _icons="fa-solid fa-house" _label="Home Icon" _on={dummyEventHandler} />
+						<KolButton _icons="fa-solid fa-heart" _label="Heart Icon" _on={dummyEventHandler} />
+						<KolButton _icons="fa-solid fa-trash" _label="Trash Icon" _on={dummyEventHandler} />
 					</div>
 				</section>
 
@@ -117,7 +117,7 @@ export const ButtonIcons: FC = () => {
 									style: {
 										'font-size': '400%',
 									},
-									icon: 'codicon codicon-home',
+									icon: 'fa-solid fa-house',
 								},
 							}}
 							_label="Home"

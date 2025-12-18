@@ -21,10 +21,10 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Compon
 				_label="Passwort"
 				_icons={{
 					left: {
-						icon: 'codicon codicon-arrow-left',
+						icon: 'kolicon-chevron-left',
 					},
 					right: {
-						icon: 'codicon codicon-arrow-right',
+						icon: 'kolicon-chevron-right',
 					},
 				}}
 				_touched

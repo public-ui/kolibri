@@ -448,3 +448,10 @@ curl -X POST localhost:3000/hydrate -H "Content-Type: text/html" \
   -d '<kol-my-component _prop="test">Test content</kol-my-component>'
 ```
 ````
+
+````
+
+```
+
+```
+````

@@ -409,11 +409,10 @@ Search queries use Fuse.js for fuzzy matching across:
 
 The package uses a two-stage build process optimized for Vercel deployment:
 
-## Development Workflow
-
 1. **GitHub Actions**: Builds the complete package with all 136+ samples from the monorepo
+2. **Vercel**: Skips the build process and uses pre-built artifacts
 
-### 1. Install Dependencies2. **Vercel**: Skips the build process and uses pre-built artifacts
+### 1. Install Dependencies
 
 ```bash
 # GitHub Actions Build
@@ -423,47 +422,48 @@ pnpm build  # → runs scripts/build-sample-index.mjs pre && unbuild && scripts/
 
 ### 2. Build
 
-```````bash### Vercel Build Strategy
-
+```bash
+# Vercel Build Strategy
 pnpm build
+```
 
-``````bash
-
-echo 'Skipping build - using pre-built artifacts'  # → uses existing dist/ and api/ files
-
-This uses `unbuild` to:```
-
-- Compile TypeScript to JavaScript
-
-- Generate both ESM (`.mjs`) and CommonJS (`.cjs`) outputsThis approach ensures that:
-
-- Bundle dependencies appropriately
-
-- GitHub Actions has access to the full monorepo and can collect all samples
-
-### 3. Test the Server- Vercel receives pre-built artifacts with embedded sample data
-
-- No "0 samples" issues occur due to missing monorepo context
-
-**List available tools:**
-
-## Further Development
+**Vercel skips build and uses pre-built artifacts:**
 
 ```bash
+echo 'Skipping build - using pre-built artifacts'  # → uses existing dist/ and api/ files
+```
 
-echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node dist/cli.mjs- Additional filters or full-text search can be implemented directly in the `SampleIndex`.
+This uses `unbuild` to:
 
-```- For production environments, it is recommended to implement authentication in front of the MCP backend.
+- Compile TypeScript to JavaScript
+- Generate both ESM (`.mjs`) and CommonJS (`.cjs`) outputs
 
+This approach ensures that:
+
+- Bundle dependencies appropriately
+- GitHub Actions has access to the full monorepo and can collect all samples
+- Vercel receives pre-built artifacts with embedded sample data
+- No "0 samples" issues occur due to missing monorepo context
+
+### 3. List available tools
+
+```bash
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node dist/cli.mjs
+```
+
+### 4. Further Development
+
+- Additional filters or full-text search can be implemented directly in the `SampleIndex`.
+- For production environments, it is recommended to implement authentication in front of the MCP backend.
 - The prebuild system can be extended to support additional sample sources beyond React samples.
 
-**Call a tool:**
+### 5. Call a tool
 
 ```bash
 echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"hello_kolibri","arguments":{"name":"Test"}}}' | node dist/cli.mjs
-```````
+```
 
-### 4. Format Code
+### 6. Format Code
 
 ```bash
 pnpm format

@@ -1,5 +1,6 @@
 @use '../mixins/to-rem' as *;
 @use './focus-outline' as *;
+@use './select' as *;
 
 @mixin kol-pagination-styles {
 	.kol-table-stateful {
@@ -12,6 +13,8 @@
 	}
 
 	.kol-pagination {
+		@include kol-select();
+
 		.kol-button {
 			&:focus .kol-button__text {
 				@include focus-outline;
@@ -53,6 +56,10 @@
 				background-color: var(--color-primary);
 				border: 0;
 			}
+		}
+
+		&__page-size-select .kol-form-field-select {
+			gap: to-rem(8);
 		}
 	}
 }

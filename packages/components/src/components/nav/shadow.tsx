@@ -103,14 +103,14 @@ export class KolNav implements NavAPI {
 			if (leftIcon) {
 				icon.left = leftIcon;
 			} else {
-				icon.left = 'codicon codicon-symbol-method';
+				icon.left = 'kolicon-link';
 			}
 		}
 		if (collapsible) {
 			if (expanded) {
-				icon.right = 'codicon codicon-remove';
+				icon.right = 'kolicon-minus';
 			} else {
-				icon.right = 'codicon codicon-add';
+				icon.right = 'kolicon-plus';
 			}
 		}
 		return icon;
@@ -239,7 +239,7 @@ export class KolNav implements NavAPI {
 							class="kol-nav__toggle-button"
 							_ariaControls={this.navId}
 							_ariaExpanded={!this.state._hideLabel}
-							_icons={this.state._hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+							_icons={this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left'}
 							_hideLabel
 							_label={translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 							_on={{

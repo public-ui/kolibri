@@ -145,7 +145,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					this._passwordVisible = !this._passwordVisible;
 					this.inputRef?.focus();
 				}}
-				icon={`codicon codicon-eye-${this._passwordVisible ? 'closed' : 'watch'}`}
+				icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
 				disabled={this._disabled}
 			/>
 		);

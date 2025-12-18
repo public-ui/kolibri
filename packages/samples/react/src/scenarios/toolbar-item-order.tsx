@@ -35,7 +35,7 @@ export const ToolbarItemOrder: FC = () => {
 			type: 'button',
 			_label: `Button ${index + 1}`,
 			_on: { onClick: handleSubmit },
-			_icons: isSubmitting ? 'codicon codicon-loading codicon-modifier-spin' : void 0,
+			_icons: isSubmitting ? 'fa-solid fa-spinner fa-spin' : void 0,
 			_disabled: isSubmitting,
 		}));
 		return items;
@@ -47,7 +47,7 @@ export const ToolbarItemOrder: FC = () => {
 			_label: `Button ${index + 1}`,
 			_on: { onClick: handleSubmit2 },
 			_disabled: isSubmitting2,
-			_icons: isSubmitting2 ? 'codicon codicon-loading codicon-modifier-spin' : void 0,
+			_icons: isSubmitting2 ? 'fa-solid fa-spinner fa-spin' : void 0,
 		}));
 		return items;
 	}, [isSubmitting2]);

@@ -1,23 +1,6 @@
 {
 	"name": "@public-ui/benchmark-tests",
-	"version": "1.0.0",
-	"license": "EUPL-1.2",
-	"homepage": "https://public-ui.github.io",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/public-ui/kolibri"
-	},
-	"bugs": {
-		"url": "https://github.com/public-ui/kolibri/issues",
-		"email": "kolibri@itzbund.de"
-	},
-	"author": {
-		"name": "Informationstechnikzentrum Bund",
-		"email": "kolibri@itzbund.de"
-	},
 	"private": true,
-	"type": "commonjs",
-	"description": "Provides benchmark tests for components and themes.",
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/components --filter @public-ui/theme-default build",
 		"format": "prettier --check tests",

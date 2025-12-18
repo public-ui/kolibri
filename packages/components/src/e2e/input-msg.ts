@@ -27,10 +27,10 @@ const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>;
 
 		test('should display and hide message based on _msg value', async ({ page }) => {
 			await page.setContent(`<${componentName}
-				_label="Input"
-				_msg="{'_description': 'An error message', '_type': 'error'}"
-				_touched
-			></${componentName}>`);
+					_label="Input"
+					_msg="{'_description': 'An error message', '_type': 'error'}"
+					_touched
+				></${componentName}>`);
 			const alert = page.getByTestId('alert');
 
 			await expect(alert).toBeVisible();

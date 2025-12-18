@@ -25,13 +25,13 @@ export const LinkTarget: FC = () => (
 					<KolLink _href="#/back-page" _label="Link with target (_blank)" _target="_blank" />
 				</li>
 				<li>
-					<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link without target" />
+					<KolLink _href="#/back-page" _icons="fa-solid fa-house" _hideLabel _label="Link without target" />
 				</li>
 				<li>
-					<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link with target (_self)" _target="_self" />
+					<KolLink _href="#/back-page" _icons="fa-solid fa-house" _hideLabel _label="Link with target (_self)" _target="_self" />
 				</li>
 				<li>
-					<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link with target (_blank)" _target="_blank" />
+					<KolLink _href="#/back-page" _icons="fa-solid fa-house" _hideLabel _label="Link with target (_blank)" _target="_blank" />
 				</li>
 			</ul>
 		</div>

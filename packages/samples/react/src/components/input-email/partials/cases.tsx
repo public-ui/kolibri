@@ -22,10 +22,10 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 				_touched
 				_icons={{
 					left: {
-						icon: 'codicon codicon-arrow-left',
+						icon: 'kolicon-chevron-left',
 					},
 					right: {
-						icon: 'codicon codicon-arrow-right',
+						icon: 'kolicon-chevron-right',
 					},
 				}}
 			/>
