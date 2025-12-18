@@ -68,10 +68,9 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "npm run build:light",
-		"build:deps": "pnpm --filter @public-ui/components^... build",
-		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && npm run format -- -w",
-		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
+		"build": "pnpm build:light",
+		"build:light": "mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
+		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src assets/kolicons",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
@@ -87,8 +86,9 @@
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postpack": "mv package.bak.json package.json",
-		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"postinstall": "node ./postinstall.js",
+		"prebuild:light": "pnpm clear && pnpm --filter @public-ui/icons build",
+		"prepack": "pnpm build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"xunused": "knip"
 	},
 	"dependencies": {
@@ -109,7 +109,6 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "1.57.0",
-		"@public-ui/icons": "workspace:*",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
@@ -155,7 +154,6 @@
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
-		"@public-ui/icons": "workspace:*",
 		"adopted-style-sheets": "1.1.9-rc.20"
 	},
 	"files": [

@@ -13,7 +13,6 @@ npm dist-tag $1 @public-ui/solid@$2 $3
 npm dist-tag $1 @public-ui/svelte@$2 $3
 npm dist-tag $1 @public-ui/vue@$2 $3
 npm dist-tag $1 @public-ui/components@$2 $3
-npm dist-tag $1 @public-ui/icons@$2 $3
 npm dist-tag $1 @public-ui/sample-react@$2 $3
 npm dist-tag $1 @public-ui/theme-default@$2 $3
 npm dist-tag $1 @public-ui/theme-ecl@$2 $3

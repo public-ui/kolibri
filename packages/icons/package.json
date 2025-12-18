@@ -1,23 +1,7 @@
 {
 	"name": "@public-ui/icons",
-	"version": "1.0.0",
-	"description": "KoliBri Icon Font Package",
-	"homepage": "https://public-ui.github.io",
-	"bugs": "https://github.com/public-ui/kolibri/issues",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/public-ui/kolibri.git",
-		"directory": "packages/icons"
-	},
-	"license": "EUPL-1.2",
+	"private": true,
 	"type": "module",
-	"keywords": [
-		"accessibility",
-		"kolibri",
-		"icons",
-		"font",
-		"web-components"
-	],
 	"devDependencies": {
 		"oslllo-svg-fixer": "5.0.0",
 		"rimraf": "6.1.2",
@@ -41,9 +25,5 @@
 		"svgicons2svgfont": {
 			"fontHeight": 1000
 		}
-	},
-	"files": [
-		"font",
-		"svg"
-	]
+	}
 }

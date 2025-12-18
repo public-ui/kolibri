@@ -13,7 +13,6 @@
 		"packages/adapters/svelte",
 		"packages/adapters/vue",
 		"packages/components",
-		"packages/icons",
 		"packages/samples/react",
 		"packages/themes/default",
 		"packages/themes/ecl",
