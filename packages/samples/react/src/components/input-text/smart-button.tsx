@@ -4,16 +4,16 @@ import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 const smartButtonProps = {
-	_icons: 'codicon codicon-info',
+	_icons: 'kolicon-alert-info',
 	_hideLabel: true,
 };
 
 const icons = {
 	left: {
-		icon: 'codicon codicon-search',
+		icon: 'fa-solid fa-magnifying-glass',
 	},
 	right: {
-		icon: 'codicon codicon-check',
+		icon: 'kolicon-check',
 	},
 };
 

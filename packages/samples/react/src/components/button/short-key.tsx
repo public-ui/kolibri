@@ -33,7 +33,7 @@ export const ButtonShortKey: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Short Key with Hidden Label" />
 					<div className="flex flex-wrap gap-4">
-						<KolButton _label="short key without label" _hideLabel _shortKey="k" _icons="codicon codicon-dashboard" _on={dummyEventHandler} />
+						<KolButton _label="short key without label" _hideLabel _shortKey="k" _icons="fa-solid fa-gauge" _on={dummyEventHandler} />
 					</div>
 				</section>
 
@@ -43,8 +43,8 @@ export const ButtonShortKey: FC = () => {
 						<KolButton
 							_label="with inline icons"
 							_icons={{
-								left: 'codicon codicon-dashboard',
-								right: 'codicon codicon-dashboard',
+								left: 'fa-solid fa-gauge',
+								right: 'fa-solid fa-gauge',
 							}}
 							_shortKey="n"
 							_on={dummyEventHandler}

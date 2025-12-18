@@ -28,7 +28,7 @@ export const ButtonSpinner: FC = () => {
 							className="spinner-button"
 							_hideLabel
 							_icons={{
-								left: 'codicon codicon-loading',
+								left: 'fa-solid fa-spinner',
 							}}
 							_label="Loading"
 							_variant="primary"
@@ -38,7 +38,7 @@ export const ButtonSpinner: FC = () => {
 							className="spinner-button spinner-slow"
 							_hideLabel
 							_icons={{
-								left: 'codicon codicon-sync',
+								left: 'fa-solid fa-rotate',
 							}}
 							_label="Syncing"
 							_variant="secondary"
@@ -48,7 +48,7 @@ export const ButtonSpinner: FC = () => {
 							className="spinner-button spinner-slower"
 							_hideLabel
 							_icons={{
-								left: 'codicon codicon-settings-gear',
+								left: 'fa-solid fa-gear',
 							}}
 							_label="Processing"
 							_variant="tertiary"
@@ -63,7 +63,7 @@ export const ButtonSpinner: FC = () => {
 						<KolButton
 							className="spinner-button"
 							_icons={{
-								left: 'codicon codicon-loading',
+								left: 'fa-solid fa-spinner',
 							}}
 							_label="Loading..."
 							_variant="primary"
@@ -72,7 +72,7 @@ export const ButtonSpinner: FC = () => {
 						<KolButton
 							className="spinner-button"
 							_icons={{
-								left: 'codicon codicon-sync',
+								left: 'fa-solid fa-rotate',
 							}}
 							_label="Syncing..."
 							_variant="secondary"

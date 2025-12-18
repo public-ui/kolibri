@@ -25,7 +25,7 @@ export const ButtonBaselined: FC = () => {
 					<KolHeading _level={2} _label="Vertically Aligned Buttons" />
 					<div className="flex flex-wrap gap-2">
 						<KolButton _label="Label-Text" _on={dummyEventHandler} />
-						<KolButton _icons="codicon codicon-reactions" _label="Label-Text with Icon" _on={dummyEventHandler} />
+						<KolButton _icons="fa-solid fa-face-smile" _label="Label-Text with Icon" _on={dummyEventHandler} />
 					</div>
 				</section>
 			</div>

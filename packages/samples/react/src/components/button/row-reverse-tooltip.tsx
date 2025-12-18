@@ -17,7 +17,7 @@ export const ButtonRowReverseTooltip: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Button in Row-Reverse Container" />
 					<div className="flex flex-row-reverse">
-						<KolButton _icons="codicon codicon-home" _hideLabel _label="This is a very, very long tooltip text that exceeds the width." _variant="primary" />
+						<KolButton _icons="fa-solid fa-house" _hideLabel _label="This is a very, very long tooltip text that exceeds the width." _variant="primary" />
 					</div>
 				</section>
 			</div>

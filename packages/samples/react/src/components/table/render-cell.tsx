@@ -99,7 +99,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 						>
 							<KolInputText _label="Input" />
-							<KolButtonWrapper label="Save" icons={{ left: 'codicon codicon-save' }} />
+							<KolButtonWrapper label="Save" icons={{ left: 'fa-solid fa-floppy-disk' }} />
 						</div>,
 					);
 				},

@@ -20,10 +20,10 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 				_label="Number input"
 				_icons={{
 					left: {
-						icon: 'codicon codicon-snake',
+						icon: 'kolicon-kolibri',
 					},
 					right: {
-						icon: 'codicon codicon-squirrel',
+						icon: 'kolicon-kolibri',
 					},
 				}}
 			/>

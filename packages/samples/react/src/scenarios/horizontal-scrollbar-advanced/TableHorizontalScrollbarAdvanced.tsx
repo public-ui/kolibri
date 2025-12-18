@@ -9,21 +9,21 @@ import './layout.scss';
 
 const TABS: TabButtonProps[] = [
 	{
-		_icons: 'codicon codicon-pie-chart',
+		_icons: 'fa-solid fa-chart-pie',
 		_label: 'Erster Tab',
 	},
 	{
-		_icons: 'codicon codicon-calendar',
+		_icons: 'fa-solid fa-calendar',
 		_label: 'Zweiter Tab',
 		_disabled: true,
 	},
 	{
-		_icons: 'codicon codicon-briefcase',
+		_icons: 'fa-solid fa-briefcase',
 		_label: 'Deaktivierter Tab',
 		_disabled: true,
 	},
 	{
-		_icons: 'codicon codicon-telescope',
+		_icons: 'fa-solid fa-address-card',
 		_label: 'Letzter Tab',
 		_disabled: true,
 	},

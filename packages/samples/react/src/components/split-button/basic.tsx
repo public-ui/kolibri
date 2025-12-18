@@ -16,19 +16,19 @@ export const SplitButtonBasic: FC = () => {
 		{
 			type: 'button',
 			_label: 'Save',
-			_icons: 'codicon codicon-save',
+			_icons: 'fa-solid fa-floppy-disk',
 			_on: dummyEventHandler,
 		},
 		{
 			type: 'button',
 			_label: 'Move',
-			_icons: 'codicon codicon-move',
+			_icons: 'fa-solid fa-arrows-up-down-left-right',
 			_on: dummyEventHandler,
 		},
 		{
 			type: 'button',
 			_label: 'Delete',
-			_icons: 'codicon codicon-trash',
+			_icons: 'fa-solid fa-trash',
 			_on: dummyEventHandler,
 		},
 	];
