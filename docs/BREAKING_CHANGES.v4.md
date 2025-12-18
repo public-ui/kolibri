@@ -30,6 +30,10 @@ import { defineCustomElements } from '@public-ui/components/loader';
 - The `_msg` prop no longer supports the `_label` and `_variant` options. Messages always render with the `msg` variant and without a label.
 - Input messages only render once the field is marked as `_touched`, regardless of the message type. Ensure `_touched` is set when a message should be displayed.
 
+### kol-combobox & kol-single-select
+
+- `_hideClearButton` has been replaced with `_hasClearButton` (default: `true`). Set `_hasClearButton="false"` to hide the clear button while keeping existing values intact. The migration CLI rewrites `_hide-clear-button` attributes and `_hideClearButton` props automatically, flipping boolean values so behaviour stays the same.
+
 ### kol-nav
 
 - The `orientation` property has been removed from kol-nav. It is now always in vertical mode by default.
