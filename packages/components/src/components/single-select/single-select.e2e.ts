@@ -59,7 +59,9 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value);
+			const value = await page
+				.locator('kol-single-select')
+				.evaluate<string | null>((element) => (element as HTMLKolSingleSelectElement)._value as string | null);
 			expect(value).toBe('S');
 		});
 
@@ -77,7 +79,9 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value);
+			const value = await page
+				.locator('kol-single-select')
+				.evaluate<string | null>((element) => (element as HTMLKolSingleSelectElement)._value as string | null);
 			expect(value).toBe('W');
 		});
 
@@ -99,8 +103,8 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(input).toHaveValue('');
 		});
 
-		test('should not render clear button when _hideClearButton is true', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _hideClearButton="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _hasClearButton="false" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();

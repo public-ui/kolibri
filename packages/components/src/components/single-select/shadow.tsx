@@ -50,7 +50,7 @@ import { SingleSelectController } from './controller';
 	shadow: true,
 })
 export class KolSingleSelect implements SingleSelectAPI {
-	@Element() private readonly host?: HTMLKolSingleSelectElement;
+	@Element() private readonly host?: HTMLElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
@@ -320,7 +320,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
-						{this._inputValue && !this.state._hideClearButton && (
+						{this._inputValue && this.state._hasClearButton && (
 							<KolButtonWcTag
 								_icons="codicon codicon-close"
 								_label={this.translateDeleteSelection}
@@ -626,9 +626,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	/**
-	 * Hides the clear button.
+	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hideClearButton?: boolean = false;
+	@Prop() public _hasClearButton?: boolean = true;
 
 	/**
 	 * Maximum number of visible rows of the element.
@@ -640,7 +640,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
-		_hideClearButton: false,
+		_hasClearButton: true,
 	};
 
 	@State() private inputHasFocus = false;
@@ -747,9 +747,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.updateInputValue(value);
 	}
 
-	@Watch('_hideClearButton ')
-	public validateHideClearButton(value?: boolean): void {
-		this.controller.validateHideClearButton(value);
+	@Watch('_hasClearButton')
+	public validateHasClearButton(value?: boolean): void {
+		this.controller.validateHasClearButton(value);
 	}
 
 	@Watch('_rows')
