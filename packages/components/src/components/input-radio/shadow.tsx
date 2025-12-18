@@ -47,10 +47,14 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 })
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private inputRef?: HTMLInputElement;
+	private inputRefs: Map<number, HTMLInputElement> = new Map();
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly createCatchRef = (index: number) => (ref?: HTMLInputElement) => {
+		if (ref) {
+			this.inputRefs.set(index, ref);
+		} else {
+			this.inputRefs.delete(index);
+		}
 	};
 
 	/**
@@ -68,7 +72,30 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.inputRef?.focus();
+		this.getFocusableInput()?.focus();
+	}
+
+	private getFocusableInput(): HTMLInputElement | undefined {
+		const options = this.state._options;
+		const isGloballyDisabled = Boolean(this.state._disabled);
+
+		// Find index of selected and enabled option
+		const selectedIndex = options.findIndex(
+			(option, index) => option.value === this.state._value && !isGloballyDisabled && !option.disabled && this.inputRefs.has(index),
+		);
+
+		if (selectedIndex !== -1) {
+			return this.inputRefs.get(selectedIndex);
+		}
+
+		// Find index of first enabled option
+		const firstEnabledIndex = options.findIndex((option, index) => !isGloballyDisabled && !option.disabled && this.inputRefs.has(index));
+
+		if (firstEnabledIndex !== -1) {
+			return this.inputRefs.get(firstEnabledIndex);
+		}
+
+		return undefined;
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -121,7 +148,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			state: this.state,
 			inputProps: {
 				id: id,
-				ref: this.state._value === option.value ? this.catchRef : undefined,
+				ref: this.createCatchRef(index),
 				'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
 				type: 'radio',
 				name: this.state._name || this.state._id,
@@ -377,7 +404,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: event.target instanceof HTMLInputElement ? event.target : undefined,
 			});
 		}
 	};
