@@ -14,8 +14,8 @@ const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
 			{ label: 'Small Column', key: 'small', textAlign: 'left', width: '200px' },
+			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
 			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
 			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
 		],
