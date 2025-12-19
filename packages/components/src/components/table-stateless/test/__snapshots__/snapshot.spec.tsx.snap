@@ -5,7 +5,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with horizontal and vertical headers
         </caption>
@@ -80,7 +80,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with only horizontal headers
         </caption>
@@ -125,7 +125,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two horizontal header rows
         </caption>
@@ -133,10 +133,10 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
           <tr class="kol-table__head-row">
             <td aria-hidden="true" colspan="1" rowspan="2"></td>
             <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="col">
-              Sub Header 1
+              Header 1
             </th>
             <th aria-sort="none" class="kol-table__cell kol-table__cell--align-center kol-table__cell--header kol-table__cell--none" scope="col">
-              Sub Header 2
+              Header 2
             </th>
           </tr>
           <tr class="kol-table__head-row">
@@ -185,18 +185,15 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two spanned horizontal and vertical headers
         </caption>
         <thead class="kol-table__head">
           <tr class="kol-table__head-row">
             <td aria-hidden="true" colspan="2" rowspan="2"></td>
-            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-              Sub H-Header 1
-            </th>
-            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-              Sub H-Header 2
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" colspan="2" scope="colgroup">
+              H-Header
             </th>
           </tr>
           <tr class="kol-table__head-row">
@@ -248,7 +245,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data sh
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table without data shows empty hint
         </caption>
