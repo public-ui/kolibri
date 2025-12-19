@@ -104,13 +104,22 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _hasClearButton="false" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			// Use setContent like other tests to ensure proper setup
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+
+			// Set _hasClearButton to false after component is loaded
+			await page.evaluate(() => {
+				const el = document.querySelector('kol-single-select') as HTMLElement & { _hasClearButton: boolean };
+				el._hasClearButton = false;
+			});
 
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
-			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 
-			if (page.locator('input.kol-single-select__input')) await expect(page.locator('input.kol-single-select__input')).toHaveValue(TEST_LABEL);
+			// Select a value to potentially trigger clear button
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+			await expect(input).toHaveValue(TEST_LABEL);
+
 			const clearButton = page.getByTestId('single-select-delete');
 			await expect(clearButton).not.toBeVisible();
 		});

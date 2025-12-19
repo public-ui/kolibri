@@ -73,6 +73,9 @@ export class KolSkipNav implements SkipNavAPI {
 		removeNavLabel(this.state._label);
 	}
 
+	/**
+	 * Sets focus on the skip navigation's first link.
+	 */
 	@Method()
 	public async kolFocus(): Promise<void> {
 		await this.firstLinkRef?.kolFocus();

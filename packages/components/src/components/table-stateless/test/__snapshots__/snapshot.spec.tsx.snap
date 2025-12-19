@@ -5,7 +5,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with horizontal and vertical headers
         </caption>
@@ -80,7 +80,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with only horizontal headers
         </caption>
@@ -125,7 +125,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two horizontal header rows
         </caption>
@@ -185,7 +185,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two spanned horizontal and vertical headers
         </caption>
@@ -245,7 +245,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data sh
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
+      <table class="kol-table__table" style="min-width: 400px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table without data shows empty hint
         </caption>

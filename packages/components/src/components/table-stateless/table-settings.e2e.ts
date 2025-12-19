@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { TableHeaderCellsPropType, TableSettings } from '../../schema';
+import type { KoliBriTableHeaderCell, TableHeaderCellsPropType } from '../../schema';
 import { KolEvent } from '../../utils/events';
 
 const DATA = [
@@ -72,9 +72,9 @@ test.describe('kol-table-settings', () => {
 			await settingsButton.click();
 
 			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
-				return new Promise<TableSettings>((resolve) => {
-					element.addEventListener(KolEvent.settingsChange, (event: Event) => {
-						resolve((event as CustomEvent).detail as TableSettings);
+				return new Promise<KoliBriTableHeaderCell[][]>((resolve) => {
+					element.addEventListener(KolEvent.changeHeaderCells, (event: Event) => {
+						resolve((event as CustomEvent).detail as KoliBriTableHeaderCell[][]);
 					});
 				});
 			}, KolEvent);
@@ -83,34 +83,13 @@ test.describe('kol-table-settings', () => {
 			const applyButton = page.getByTestId('table-settings-apply');
 			await applyButton.click();
 
-			await expect(eventPromise).resolves.toEqual({
-				columns: [
-					{
-						key: 'id',
-						label: 'ID',
-						visible: true,
-						hidable: true,
-						resizable: true,
-						sortable: true,
-					},
-					{
-						key: 'name',
-						label: 'Name',
-						visible: true,
-						hidable: true,
-						resizable: true,
-						sortable: true,
-					},
-					{
-						key: 'age',
-						label: 'Age',
-						visible: true,
-						hidable: true,
-						resizable: true,
-						sortable: true,
-					},
+			await expect(eventPromise).resolves.toEqual([
+				[
+					{ key: 'id', label: 'ID', visible: true, hidable: true },
+					{ key: 'name', label: 'Name', visible: true, hidable: true },
+					{ key: 'age', label: 'Age', visible: true, hidable: true },
 				],
-			});
+			]);
 		});
 	});
 

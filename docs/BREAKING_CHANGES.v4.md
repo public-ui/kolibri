@@ -50,7 +50,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 <kol-nav _label="" _links="[]"></kol-nav>
 ```
 
-### Toast System
+### ToasterService and toast component
 
 - The `variant` property has been removed from Toast objects. All toasts now use the `card` variant by default.
 - The `defaultVariant` option has been removed from `ToasterService.getInstance()`. The service no longer accepts variant configuration.
@@ -86,9 +86,13 @@ toaster.enqueue({
 });
 ```
 
-#### kol-table-stateless
+### kol-table-stateless & kol-table-stateful
 
-The `onSelectionChange` callback now always returns `KoliBriTableSelectionKeys` (array of keys):
+#### Selection Callbacks
+
+The `onSelectionChange` callback signatures have been simplified to always return arrays:
+
+**kol-table-stateless** - Always returns `KoliBriTableSelectionKeys` (array of keys):
 
 **Before (v3):**
 
@@ -109,9 +113,7 @@ onSelectionChange: (_event: Event, selection: KoliBriTableSelectionKeys) => {
 };
 ```
 
-#### kol-table-stateful
-
-The `onSelectionChange` callback now always returns `KoliBriTableDataType[] | null` (array of objects or null):
+**kol-table-stateful** - Always returns `KoliBriTableDataType[] | null` (array of objects or null):
 
 **Before (v3):**
 
@@ -156,3 +158,87 @@ onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | null) => 
 <kol-pagination _page={currentPage} _total={totalPages}></kol-pagination>
 // Text is automatically displayed within the component
 ```
+
+#### Settings Menu
+
+The settings menu is now part of the `_horizontalHeaderCells` prop. The settings for visibility (`visible`), hidability (`hidable`), sortability (`sortable`), and resizability (`resizable`) are now managed directly through the header cell configuration.
+
+**Header Cell Properties:**
+
+- **`visible: boolean`** - Controls whether the column is currently displayed in the table. Users can toggle this in the settings menu if `hidable` is true.
+- **`hidable: boolean`** - Determines if the column can be hidden/shown by the user through the settings menu. If false, the visibility cannot be changed by the user (but may still be changed programmatically).
+- **`sortable: boolean`** - Controls whether a sort button appears in the column header. If true, users can click to sort. The current sort direction is indicated by `sortDirection` ('ASC', 'DESC', or undefined).
+- **`resizable: boolean`** - Determines if the column width can be adjusted by the user through the settings menu.
+- **`width: string`** - CSS width value (e.g., '20ch', '150px') that can be modified by users if `resizable` is true.
+
+**Before:**
+
+```tsx
+// Settings were applied immediately
+<kol-table-stateless
+	_hasSettingsMenu
+	_headerCells={headerCells}
+	_tableSettings={tableSettings}
+	_on={{
+		onSettingsChange: (event, tableSettings) => {
+			// Settings applied immediately
+			setTableSettings(tableSettings);
+		},
+	}}
+/>
+```
+
+**After:**
+
+```tsx
+// Settings are only applied after clicking "Apply"
+const headerCells = {
+	horizontal: [
+		[
+			{
+				key: 'firstName',
+				label: 'First Name',
+				visible: true, // Column is displayed
+				hidable: true, // User can hide this column
+				sortable: true, // User can sort by this column
+				resizable: true, // User can resize this column
+				width: '20ch', // Current width
+				sortDirection: 'ASC', // Current sort state
+			},
+			{
+				key: 'age',
+				label: 'Age',
+				visible: true,
+				hidable: false, // This column cannot be hidden by user
+				sortable: true,
+				resizable: false, // Fixed width
+				width: '8ch',
+			},
+		],
+	],
+	vertical: [],
+};
+
+<kol-table-stateless
+	_hasSettingsMenu
+	_headerCells={headerCells}
+	_on={{
+		onChangeHeaderCells: (event, headerCells) => {
+			// Settings only updated after user confirms in the menu
+			// The callback receives the complete header cell structure with both
+			// horizontal and vertical cells. Only the horizontal cells may have
+			// been modified by the settings menu; vertical cells are preserved unchanged.
+			setHeaderCells(headerCells);
+		},
+	}}
+/>;
+```
+
+**Behavior:**
+
+- When `_hasSettingsMenu={true}`, a settings button appears in the table header
+- Users can modify column visibility, width, and other properties through the settings dialog
+- Changes are only applied to the table when the user clicks "Apply" or "OK"
+- The `onChangeHeaderCells` callback receives the updated header cells after confirmation
+- Columns with `hidable={false}` cannot be toggled in the settings menu
+- Columns with `resizable={false}` cannot be resized by the user
