@@ -23,6 +23,7 @@ export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	sortable?: boolean;
 	sortOrder?: number;
 	resizable?: boolean;
+	visible?: boolean;
 };
 
 export type KoliBriTableSelection = {

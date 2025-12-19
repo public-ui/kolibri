@@ -8,6 +8,5 @@ export * from './input/numberString';
 export * from './input/types';
 export * from './modal';
 export * from './table';
-export * from './table-settings';
 export * from './unknown';
 export * from './w3c';

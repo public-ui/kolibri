@@ -133,10 +133,10 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
           <tr class="kol-table__head-row">
             <td aria-hidden="true" colspan="1" rowspan="2"></td>
             <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="col">
-              Header 1
+              Sub Header 1
             </th>
             <th aria-sort="none" class="kol-table__cell kol-table__cell--align-center kol-table__cell--header kol-table__cell--none" scope="col">
-              Header 2
+              Sub Header 2
             </th>
           </tr>
           <tr class="kol-table__head-row">
@@ -192,8 +192,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
         <thead class="kol-table__head">
           <tr class="kol-table__head-row">
             <td aria-hidden="true" colspan="2" rowspan="2"></td>
-            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" colspan="2" scope="colgroup">
-              H-Header
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+              Sub H-Header 1
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+              Sub H-Header 2
             </th>
           </tr>
           <tr class="kol-table__head-row">
