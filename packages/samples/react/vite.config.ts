@@ -34,7 +34,7 @@ export default defineConfig({
 		fs: {
 			allow: [
 				path.resolve(__dirname),
-				...(process.env.THEME_MODULE ? [path.resolve(process.env.THEME_MODULE), path.resolve(process.env.THEME_MODULE, '..')] : []),
+				...(process.env.THEME_MODULE ? [path.resolve(process.env.THEME_MODULE)] : []),
 				...(process.env.THEME_CSS ? [path.resolve(process.env.THEME_CSS, '..')] : []),
 			],
 		},
