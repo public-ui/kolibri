@@ -49,7 +49,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 								>
 									<KolIconTag
 										class="kol-tree-item__toggle-button-icon"
-										_icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
+										_icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
 										_label={'' /* Label deliberately left empty */}
 									/>
 								</span>
