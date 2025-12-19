@@ -595,7 +595,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								'kol-table__selection-label--disabled': disabled,
 							})}
 						>
-							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
+							<KolIconTag class="kol-table__selection-icon" _icons={`kolicon ${selected ? 'kolicon-check' : ''}`} _label="" />
 							<input
 								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 								ref={(el) => el && this.checkboxRefs.push(el)}
@@ -831,7 +831,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					})}
 				>
 					<label class="kol-table__selection-label">
-						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
+						<KolIconTag class="kol-table__selection-icon" _icons={`kolicon ${indeterminate ? 'kolicon-minus' : isChecked ? 'kolicon-check' : ''}`} _label="" />
 						<input
 							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 							data-testid="selection-checkbox-all"
