@@ -398,6 +398,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					) {
 						dataRow.push({
 							...sortedPrimaryHeader[j],
+							colSpan: undefined,
+							rowSpan: undefined,
 							data: row,
 							label: row[sortedPrimaryHeader[j].key as unknown as string] as string,
 						});
@@ -412,6 +414,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					) {
 						dataRow.push({
 							...sortedPrimaryHeader[i],
+							colSpan: undefined,
+							rowSpan: undefined,
 							data: data[j],
 							label: data[j][sortedPrimaryHeader[i].key as unknown as number] as string,
 						});
