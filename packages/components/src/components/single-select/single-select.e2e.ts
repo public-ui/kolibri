@@ -116,7 +116,10 @@ test.describe(COMPONENT_NAME, () => {
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
-			if (page.locator('input.kol-single-select__input')) await expect(page.locator('input.kol-single-select__input')).toHaveValue(TEST_LABEL);
+			// Select a value to potentially trigger clear button
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+			await expect(input).toHaveValue(TEST_LABEL);
+
 			const clearButton = page.getByTestId('single-select-delete');
 			await expect(clearButton).not.toBeVisible();
 		});
