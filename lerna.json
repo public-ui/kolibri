@@ -23,5 +23,5 @@
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "4.0.0-alpha.13"
+	"version": "4.0.0-beta.0"
 }
