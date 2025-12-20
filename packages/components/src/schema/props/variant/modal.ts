@@ -1,24 +1,13 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { DialogVariantPropType, PropDialogVariant } from './dialog';
+export { validateDialogVariant as validateModalVariant } from './dialog';
 
-import { watchValidator } from '../../utils/prop.validators';
-
-const ModalVariantPropTypeOptions = ['blank', 'card'] as const;
-export type ModalVariantPropType = (typeof ModalVariantPropTypeOptions)[number];
+/**
+ * @deprecated Use `DialogVariantPropType` instead.
+ */
+export type ModalVariantPropType = DialogVariantPropType;
 
 /**
  * Defines the different variants for displaying the Modal.
+ * @deprecated Use `PropDialogVariant` instead.
  */
-export type PropModalVariant = {
-	variant: ModalVariantPropType;
-};
-
-/* validator */
-export const validateModalVariant = (component: Generic.Element.Component, value?: ModalVariantPropType): void => {
-	watchValidator(
-		component,
-		'_variant',
-		(value) => typeof value === 'string' && ModalVariantPropTypeOptions.includes(value),
-		new Set(ModalVariantPropTypeOptions),
-		value,
-	);
-};
+export type PropModalVariant = PropDialogVariant;

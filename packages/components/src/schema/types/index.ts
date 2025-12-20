@@ -2,6 +2,7 @@ export * from './aria';
 export * from './button-link-text';
 export * from './callbacks';
 export * from './common';
+export * from './dialog';
 export * from './icons';
 export * from './input/iso8601';
 export * from './input/numberString';

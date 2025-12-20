@@ -19,6 +19,9 @@ const isAlertType = (value: unknown): value is AlertTypePropType => {
 	return typeof value === 'string' && toastTypes.includes(value as AlertTypePropType);
 };
 
+/**
+ * @deprecated For more information, please refer to the documentation.
+ */
 export const ToastConfigurator: FC = () => {
 	const [searchParams] = useSearchParams();
 	const queryType = searchParams.get('type');
@@ -68,7 +71,7 @@ export const ToastConfigurator: FC = () => {
 		<>
 			<KolAlert _label="Component is DEPRECATED" _type="error" _variant="card" className="header-alert">
 				For more information, please refer&nbsp;
-				<KolLink _href="https://public-ui.github.io/docs/components/toaster" _target="_blank" _label="to the documentation"></KolLink>.
+				<KolLink _href="https://public-ui.github.io/en/docs/components/toaster" _target="_blank" _label="to the documentation"></KolLink>.
 			</KolAlert>
 			<SampleDescription>
 				<p>

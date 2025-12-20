@@ -5,17 +5,16 @@ import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType } from '..
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 
 /**
- * @deprecated Use `kol-dialog` instead.
- * @slot - The modal's contents.
+ * @slot - The dialog's contents.
  */
 @Component({
-	tag: 'kol-modal',
+	tag: 'kol-dialog',
 	styleUrls: {
 		default: './style.scss',
 	},
 	shadow: true,
 })
-export class KolModal implements DialogProps {
+export class KolDialog implements DialogProps {
 	private dialogRef?: HTMLKolDialogWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolDialogWcElement) => {
@@ -23,7 +22,7 @@ export class KolModal implements DialogProps {
 	};
 
 	/**
-	 * Opens the modal dialog.
+	 * Opens the dialog.
 	 */
 	@Method()
 	public async openModal() {
@@ -31,7 +30,7 @@ export class KolModal implements DialogProps {
 	}
 
 	/**
-	 * Closes the modal dialog.
+	 * Closes the dialog.
 	 */
 	@Method()
 	public async closeModal() {

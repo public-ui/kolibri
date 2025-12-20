@@ -84,6 +84,11 @@ toaster.enqueue({
 	label: 'Label',
 	type: 'info',
 });
+
+### kol-modal → kol-dialog
+
+- The Modal component was renamed to Dialog. Use the new tag `<kol-dialog>` (or the `KolDialog` React wrapper) instead of `<kol-modal>` / `KolModal`.
+- No functional API changes are intended; this is a naming alignment. The migration CLI for v4 rewrites the tag name automatically.
 ```
 
 ### kol-table-stateless & kol-table-stateful
