@@ -99,7 +99,7 @@ export class SelectController extends InputIconController implements SelectWatch
 	}
 
 	public validateValue(value?: Stringified<StencilUnknown[]>): void {
-		watchJsonArrayString(this.component, '_value', (item: StencilUnknown) => typeof item !== 'undefined', value, undefined, {
+		watchJsonArrayString(this.component, '_value', (item: StencilUnknown) => item !== null && typeof item !== 'undefined', value, undefined, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
