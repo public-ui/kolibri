@@ -10,6 +10,9 @@ import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
 
+/**
+ * @deprecated For more information, please refer to the documentation.
+ */
 export const ToastBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultType = searchParams.get('type') as AlertTypePropType;
@@ -77,7 +80,7 @@ export const ToastBasic: FC = () => {
 		<>
 			<KolAlert _label="Component is DEPRECATED" _type="error" _variant="card" className="header-alert">
 				For more information, please refer&nbsp;
-				<KolLink _href="https://public-ui.github.io/docs/components/toaster" _target="_blank" _label="to the documentation"></KolLink>.
+				<KolLink _href="https://public-ui.github.io/en/docs/components/toaster" _target="_blank" _label="to the documentation" />.
 			</KolAlert>
 
 			<SampleDescription>

@@ -14,6 +14,7 @@
 - [kol-button](../button)
 - [kol-card](../card)
 - [kol-details](../details)
+- [kol-dialog](../dialog)
 - [kol-form](../form)
 - [kol-heading](../heading)
 - [kol-icon](../icon)
@@ -53,6 +54,7 @@ graph TD;
   kol-all --> kol-button
   kol-all --> kol-card
   kol-all --> kol-details
+  kol-all --> kol-dialog
   kol-all --> kol-form
   kol-all --> kol-heading
   kol-all --> kol-icon
@@ -94,6 +96,7 @@ graph TD;
   kol-button --> kol-icon-icofont
   kol-button --> kol-tooltip
   kol-card --> kol-heading
+  kol-dialog --> kol-card
   kol-details --> kol-icon-icofont
   kol-icon-font-awesome --> kol-icon
   kol-input-checkbox --> kol-alert

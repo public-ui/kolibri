@@ -4,6 +4,7 @@
 @layer kol-theme-component {
 	@include kol-card;
 
+	.kol-dialog,
 	.kol-modal {
 		&__card {
 			box-shadow: 0 0 4px var(--color-subtle);
