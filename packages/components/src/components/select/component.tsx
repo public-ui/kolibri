@@ -21,7 +21,6 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '../../schema';
 import { buildBadgeTextString, showExpertSlot } from '../../schema';
 
@@ -57,7 +56,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+	public async getValue(): Promise<Stringified<StencilUnknown[]> | undefined> {
 		return this.state._value;
 	}
 
@@ -91,7 +90,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 								disabled={option.disabled}
 								key={key}
 								// label={option.label}
-								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
+								selected={isSelected(this.state._value, (option as Option<StencilUnknown>).value)}
 								value={key}
 							>
 								{option.label}
@@ -202,7 +201,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 												disabled={option.disabled}
 												key={key}
 												// label={option.label}
-												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
+												selected={isSelected(this.state._value, (option as unknown as Option<StencilUnknown>).value)}
 												value={key}
 											>
 												{option.label}
@@ -343,7 +342,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true }) public _value?: Stringified<StencilUnknown[]>;
 
 	@State() public state: SelectStates = {
 		_hasValue: false,
@@ -474,7 +473,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
+	public validateValue(value?: Stringified<StencilUnknown[]>): void {
 		this.controller.validateValue(value);
 	}
 
@@ -490,7 +489,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		this._value = Array.from(this.selectRef?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value)
-			.filter((value): value is W3CInputValue => value !== undefined);
+			.filter((value): value is StencilUnknown => value !== undefined);
 
 		// Event handling
 		tryToDispatchKoliBriEvent('input', this.host, this._value);
@@ -505,7 +504,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(this._value as Stringified<W3CInputValue[]>);
+		this.controller.setFormAssociatedValue(this._value as Stringified<StencilUnknown[]>);
 
 		// Callback
 		this.state._on?.onChange?.(event, this._value);

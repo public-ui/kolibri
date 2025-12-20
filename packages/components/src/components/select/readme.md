@@ -140,7 +140,7 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 | `_tabIndex`             | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                      | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 | `_tooltipAlign`         | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                             | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                       | `'top'`     |
 | `_touched`              | `_touched`       | Shows if the input was touched by a user.                                                                                                                                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                      | `false`     |
-| `_value`                | `_value`         | Defines the value of the input.                                                                                                                                                       | `W3CInputValue[] \| string \| undefined`                                                                                                                                                                                                                                                                                                                                                    | `undefined` |
+| `_value`                | `_value`         | Defines the value of the input.                                                                                                                                                       | `StencilUnknown[] \| string \| undefined`                                                                                                                                                                                                                                                                                                                                                   | `undefined` |
 
 ## Methods
 
@@ -152,13 +152,13 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 
 Type: `Promise<void>`
 
-### `getValue() => Promise<Stringified<W3CInputValue[]> | undefined>`
+### `getValue() => Promise<Stringified<StencilUnknown[]> | undefined>`
 
 Returns the selected values.
 
 #### Returns
 
-Type: `Promise<Stringified<W3CInputValue[]> | undefined>`
+Type: `Promise<Stringified<StencilUnknown[]> | undefined>`
 
 ### `kolFocus() => Promise<void>`
 

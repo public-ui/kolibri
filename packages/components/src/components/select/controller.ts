@@ -8,7 +8,6 @@ import type {
 	SelectWatches,
 	StencilUnknown,
 	Stringified,
-	W3CInputValue,
 } from '../../schema';
 import { validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
 
@@ -18,14 +17,14 @@ import { fillKeyOptionMap } from '../input-radio/controller';
 import type { Generic } from 'adopted-style-sheets';
 export class SelectController extends InputIconController implements SelectWatches {
 	protected readonly component: Generic.Element.Component & SelectProps;
-	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
+	private readonly keyOptionMap = new Map<string, Option<StencilUnknown>>();
 
 	public constructor(component: Generic.Element.Component & SelectProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
+	public readonly getOptionByKey = (key: string): Option<StencilUnknown> | undefined => this.keyOptionMap.get(key);
 
 	private readonly isValueInOptions = (value: StencilUnknown, options: SelectOption<StencilUnknown>[]): boolean => {
 		return (
@@ -99,20 +98,13 @@ export class SelectController extends InputIconController implements SelectWatch
 		validateRows(this.component, value);
 	}
 
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
-		watchJsonArrayString(
-			this.component,
-			'_value',
-			(item: W3CInputValue) => typeof item === 'string' || typeof item === 'number' || typeof item === 'boolean',
-			value,
-			undefined,
-			{
-				hooks: {
-					afterPatch: this.afterPatchOptions,
-					beforePatch: this.beforePatchOptions,
-				},
+	public validateValue(value?: Stringified<StencilUnknown[]>): void {
+		watchJsonArrayString(this.component, '_value', (item: StencilUnknown) => typeof item !== 'undefined', value, undefined, {
+			hooks: {
+				afterPatch: this.afterPatchOptions,
+				beforePatch: this.beforePatchOptions,
 			},
-		);
+		});
 	}
 
 	public componentWillLoad(): void {

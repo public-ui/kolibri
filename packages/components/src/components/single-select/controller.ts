@@ -1,4 +1,4 @@
-import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue } from '../../schema';
+import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown } from '../../schema';
 import { validateOptions, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -25,7 +25,7 @@ export class SingleSelectController extends InputIconController implements Singl
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<StencilUnknown>[]);
 		}
 	};
 

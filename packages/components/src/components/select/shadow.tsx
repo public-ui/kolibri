@@ -15,7 +15,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
+	StencilUnknown,
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
@@ -41,7 +41,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Returns the selected values.
 	 */
 	@Method()
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+	public async getValue(): Promise<Stringified<StencilUnknown[]> | undefined> {
 		return this.selectWcRef?.getValue();
 	}
 
@@ -219,5 +219,5 @@ export class KolSelect implements SelectProps, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true }) public _value?: Stringified<StencilUnknown[]>;
 }
