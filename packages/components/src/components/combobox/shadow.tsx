@@ -66,9 +66,16 @@ export class KolCombobox implements ComboboxAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
+	public async focus() {
+		return Promise.resolve(this.refInput?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
 	public async kolFocus() {
-		this.refInput?.focus();
+		return this.focus();
 	}
 
 	private toggleListbox = () => {

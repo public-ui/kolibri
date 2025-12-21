@@ -1,0 +1,10 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "TypeScript Lint Check",
+			"type": "shell",
+			"command": "pnpm lint:tsc"
+		}
+	]
+}

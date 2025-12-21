@@ -6,10 +6,10 @@ import { KolSkipNav } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const SkipNavBasic: FC = () => {
-	const skipNavRef = useRef<HTMLKolSkipNavElement>(null);
+	const skipNavRef = useRef<HTMLKolSkipNavElement | null>(null);
 
 	useEffect(() => {
-		skipNavRef.current?.kolFocus();
+		skipNavRef.current?.focus();
 	}, []);
 
 	return (
