@@ -38,7 +38,7 @@ export class KolTreeItem implements TreeItemProps {
 	 */
 	@Method() async focusLink() {
 		if (this.element) {
-			await this.element.focusLink();
+			await this.element.focus();
 		}
 	}
 
