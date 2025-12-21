@@ -7,6 +7,11 @@ import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import type { Components, Option, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
 
+// Add onChange handler to log value changes
+const ON = {
+	onChange: console.info,
+};
+
 export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Components.KolSingleSelect>(function SingleSelectCases(props) {
 	return (
 		<div className="grid gap-4">
@@ -124,6 +129,42 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 					onClick: console.log,
 					onFocus: console.log,
 				}}
+			/>
+			<KolSingleSelect
+				{...props}
+				_label="Boolean, Object, Array values"
+				_on={ON}
+				_options={[
+					{
+						disabled: true,
+						label: 'True (does not works)',
+						value: true,
+					},
+					{
+						label: 'False',
+						value: false,
+					},
+					{
+						label: '1',
+						value: 1,
+					},
+					{
+						label: '0',
+						value: 0,
+					},
+					{
+						label: 'Object',
+						value: {
+							key: 'true',
+							text: 'This is true',
+						},
+					},
+					{
+						label: 'Array',
+						value: ['0', '1'],
+					},
+				]}
+				_value={false}
 			/>
 		</div>
 	);

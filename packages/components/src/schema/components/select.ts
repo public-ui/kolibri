@@ -19,7 +19,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
 type OptionalProps = {
@@ -32,7 +32,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
-	value: Stringified<W3CInputValue[]>;
+	value: Stringified<StencilUnknown[]>;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideError &
@@ -48,8 +48,8 @@ type OptionalProps = {
 
 type RequiredStates = {
 	hasValue: boolean;
-	options: SelectOption<W3CInputValue>[];
-	value: W3CInputValue[];
+	options: SelectOption<StencilUnknown>[];
+	value: StencilUnknown[];
 } & PropId &
 	PropHideError &
 	PropMultiple &
