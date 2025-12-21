@@ -16,7 +16,9 @@ import type { FC } from 'react';
 export const ToastBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultType = searchParams.get('type') as AlertTypePropType;
-	const toaster = ToasterService.getInstance(document);
+	type ToasterApi = Pick<ToasterService, 'closeAll' | 'enqueue'>;
+	const toasterFactory = ToasterService as unknown as { getInstance: (doc: Document) => ToasterApi };
+	const toaster: ToasterApi = toasterFactory.getInstance(document);
 	const handleButtonClickSimple = () => {
 		void toaster.enqueue({
 			description: 'Toasty',

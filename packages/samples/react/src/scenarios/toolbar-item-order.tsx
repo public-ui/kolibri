@@ -59,7 +59,7 @@ export const ToolbarItemOrder: FC = () => {
 			<KolHeading _label="icon vor disabled" _level={2} />
 			<KolToolbar _label="KolToolbar A" _items={toolbarItems} />
 			<KolHeading _label="disabled vor icon" _level={2} />
-			<p>Klicke auf einen der {brokenToolbarItems.length - 1} ersten Buttons hatte zur Folge, dass die nachfolgenden Buttons kaputt gehen.</p>
+			<p>Klicke auf einen der {(brokenToolbarItems as unknown[]).length - 1} ersten Buttons hatte zur Folge, dass die nachfolgenden Buttons kaputt gehen.</p>
 			<KolToolbar _label="KolToolbar B" _items={brokenToolbarItems} />
 		</div>
 	);

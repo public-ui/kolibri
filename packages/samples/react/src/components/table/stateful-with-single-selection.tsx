@@ -34,7 +34,15 @@ export const TableStatefulWithSingleSelection: FC = () => {
 		keyPropertyName: 'internalIdentifier',
 	};
 
-	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);
+	type TableStatefulHandle = HTMLElement & {
+		addEventListener: HTMLElement['addEventListener'];
+		getSelection: () => Promise<KoliBriTableDataType[] | null>;
+		removeEventListener: HTMLElement['removeEventListener'];
+	};
+	const isTableStatefulHandle = (element: unknown): element is TableStatefulHandle => typeof (element as TableStatefulHandle)?.getSelection === 'function';
+
+	const kolTableStatefulRef = useRef<unknown>(null);
+	const selectionChangeEvent = (KolEvent as { selectionChange: string }).selectionChange;
 
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
@@ -44,22 +52,27 @@ export const TableStatefulWithSingleSelection: FC = () => {
 	};
 
 	const handleButtonClick = async () => {
-		const selection = await kolTableStatefulRef.current?.getSelection();
-		setSelectedValue(selection as Data | null);
+		if (isTableStatefulHandle(kolTableStatefulRef.current)) {
+			const selection = await kolTableStatefulRef.current.getSelection();
+			setSelectedValue(selection as Data | null);
+		}
 	};
 
 	useEffect(() => {
-		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-		kolTableStatefulRef.current?.addEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+		if (isTableStatefulHandle(kolTableStatefulRef.current)) {
+			kolTableStatefulRef.current.addEventListener(selectionChangeEvent, handleSelectionChangeEvent as EventListener);
+		}
 
 		return () => {
-			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-			kolTableStatefulRef.current?.removeEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+			if (isTableStatefulHandle(kolTableStatefulRef.current)) {
+				kolTableStatefulRef.current.removeEventListener(selectionChangeEvent, handleSelectionChangeEvent as EventListener);
+			}
 		};
 	}, [kolTableStatefulRef]);
 
 	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${cell.data?.id}`} />);
+		const id = (cell as { data?: { id?: unknown } }).data?.id;
+		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${String(id)}`} />);
 	};
 
 	return (
@@ -86,7 +99,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}
 					className="block"
 					style={{ maxWidth: '600px' }}
-					ref={kolTableStatefulRef}
+					ref={(element) => (kolTableStatefulRef.current = element)}
 				/>
 				<div className="grid grid-cols-3 items-end gap-4 mt-4">
 					<KolButton

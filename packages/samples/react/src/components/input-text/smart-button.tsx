@@ -18,7 +18,9 @@ const icons = {
 };
 
 export const InputTextSmartButton = () => {
-	const toaster = ToasterService.getInstance(document);
+	type ToasterApi = Pick<ToasterService, 'enqueue'>;
+	const toasterFactory = ToasterService as unknown as { getInstance: (doc: Document) => ToasterApi };
+	const toaster: ToasterApi = toasterFactory.getInstance(document);
 
 	const handleClick = {
 		onClick: () => {

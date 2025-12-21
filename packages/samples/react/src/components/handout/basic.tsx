@@ -40,6 +40,14 @@ import { getRoot } from '../../shares/react-roots';
 import { getTheme, getThemeName } from '../../shares/store';
 import { TABLE_DATA, type TableDataType } from './table-data';
 
+const mountIntoCell = (element: HTMLElement, content: React.ReactElement) => {
+	const renderElement = document.createElement('div');
+	renderElement.setAttribute('role', 'presentation');
+	element.innerHTML = '';
+	element.appendChild(renderElement);
+	getRoot(renderElement).render(content);
+};
+
 function KolButtonWrapper({ _on, ...other }: ButtonProps & { style: Record<string, unknown> }) {
 	const { dummyClickEventHandler } = useToasterService();
 
@@ -66,12 +74,8 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'monday',
 				label: 'Monday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
 				},
 				compareFn: (first, second) => {
 					if ((first as TableDataType).monday < (second as TableDataType).monday) {
@@ -89,12 +93,8 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'tuesday',
 				label: 'Tuesday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#060" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolBadge _color="#060" _label={cell.label}></KolBadge>);
 				},
 				compareFn: (first, second) => {
 					if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
@@ -111,60 +111,40 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'wednesday',
 				label: 'Wednesday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#006" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolBadge _color="#006" _label={cell.label}></KolBadge>);
 				},
 				width: '110px',
 			},
 			{
 				key: 'thursday',
 				label: 'Thursday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#600" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolBadge _color="#600" _label={cell.label}></KolBadge>);
 				},
 				width: '100px',
 			},
 			{
 				key: 'friday',
 				label: 'Friday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#303" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolBadge _color="#303" _label={cell.label}></KolBadge>);
 				},
 				width: '100px',
 			},
 			{
 				key: 'saturday',
 				label: 'Saturday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#330" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolBadge _color="#330" _label={cell.label}></KolBadge>);
 				},
 				width: '100px',
 			},
 			{
 				key: 'sunday',
 				label: 'Sunday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#033" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: { label: string }) => {
+					mountIntoCell(el, <KolBadge _color="#033" _label={cell.label}></KolBadge>);
 				},
 				width: '100px',
 			},

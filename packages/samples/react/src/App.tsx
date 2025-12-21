@@ -15,10 +15,15 @@ import { THEMES, THEME_OPTIONS } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
-import type { Option } from '@public-ui/components';
 import type { Theme, ThemeAndUnstyled } from './shares/theme';
 
 setStorage(localStorage);
+
+type ThemeOption = { label: string; value: ThemeAndUnstyled };
+const typedThemeOptions: ThemeOption[] = THEME_OPTIONS.map((option) => ({
+	label: String((option as { label?: unknown }).label ?? ''),
+	value: (option as { value?: unknown }).value as ThemeAndUnstyled,
+}));
 
 const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
 	let list: string[] = [];
@@ -50,17 +55,19 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						path={`${path}/all`}
 						element={
 							<div className="d-grid gap-4">
-								{THEME_OPTIONS.filter((theme) => THEMES.indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
-									<div className="d-grid gap-2" key={(theme as Option<ThemeAndUnstyled>).value}>
-										<div className="mt-4">
-											<strong>{theme.label}</strong>
+								{typedThemeOptions
+									.filter((theme) => THEMES.includes(theme.value as Theme))
+									.map((theme) => (
+										<div className="d-grid gap-2" key={theme.value}>
+											<div className="mt-4">
+												<strong>{theme.label}</strong>
+											</div>
+											<div className="my-2">
+												<ThisRoute />
+											</div>
+											<hr aria-hidden="true" />
 										</div>
-										<div className="my-2">
-											<ThisRoute />
-										</div>
-										<hr aria-hidden="true" />
-									</div>
-								))}
+									))}
 							</div>
 						}
 					/>,

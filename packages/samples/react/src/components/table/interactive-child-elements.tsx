@@ -17,19 +17,21 @@ function KolButtonWrapper({ _on, ...other }: ButtonProps) {
 }
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
-	const capitalizedVariant = variant.charAt(0).toUpperCase() + variant.slice(1);
+	const variantLabel = String(variant);
+	const capitalizedVariant = variantLabel.charAt(0).toUpperCase() + variantLabel.slice(1);
 	return {
 		label: capitalizedVariant,
 		key: variant,
 		textAlign: 'left',
 		render: (element: HTMLElement, cell: KoliBriTableCell) => {
+			const label = String((cell as { label?: unknown }).label ?? '');
 			const commonProps = {
 				_label: capitalizedVariant,
 				_variant: variant,
 				_icons: { right: 'kolicon-kolibri' },
 			};
 			getRoot(createReactRenderElement(element)).render(
-				cell.label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
+				label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
 			);
 		},
 	};
@@ -89,12 +91,13 @@ export const InteractiveChildElements: FC = () => (
 								label: 'Regular',
 								textAlign: 'left',
 								render: (element: HTMLElement, cell: KoliBriTableCell) => {
+									const label = String((cell as { label?: unknown }).label ?? '');
 									const commonProps = {
-										_label: cell.label,
+										_label: label,
 										_icons: { right: 'kolicon-kolibri' },
 									};
 									getRoot(createReactRenderElement(element)).render(
-										cell.label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,
+										label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,
 									);
 								},
 							},

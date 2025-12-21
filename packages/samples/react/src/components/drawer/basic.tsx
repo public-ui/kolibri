@@ -11,14 +11,23 @@ export const DrawerBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const defaultAlign = searchParams.get('align') as AlignPropType;
 	const defaultCloser = searchParams.get('closer') === 'true';
-	const drawerElement = useRef<HTMLKolDrawerElement>(null);
+	type DrawerHandle = {
+		close: () => void;
+		open: () => void;
+	};
+	const isDrawerHandle = (element: unknown): element is DrawerHandle => {
+		return typeof (element as DrawerHandle)?.open === 'function' && typeof (element as DrawerHandle)?.close === 'function';
+	};
+	const drawerElement = useRef<unknown>(null);
 
 	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
 	const [hasCloser, setHasCloser] = useState<boolean>(defaultCloser);
 
 	useEffect(() => {
 		if (defaultAlign) {
-			drawerElement.current?.open();
+			if (isDrawerHandle(drawerElement.current)) {
+				drawerElement.current.open();
+			}
 		}
 	}, [defaultAlign]);
 	return (
@@ -42,7 +51,7 @@ export const DrawerBasic: FC = () => {
 
 			<div className="flex flex-wrap gap-4">
 				<KolDrawer
-					ref={drawerElement}
+					ref={(element) => (drawerElement.current = element)}
 					_label="I am a drawer"
 					_align={align}
 					_hasCloser={hasCloser}
@@ -53,10 +62,28 @@ export const DrawerBasic: FC = () => {
 							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 							voluptua.
 						</p>
-						<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
+						<KolButton
+							_label="Close drawer"
+							_on={{
+								onClick: () => {
+									if (isDrawerHandle(drawerElement.current)) {
+										drawerElement.current.close();
+									}
+								},
+							}}
+						/>
 					</div>
 				</KolDrawer>
-				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
+				<KolButton
+					_label="Open drawer"
+					_on={{
+						onClick: () => {
+							if (isDrawerHandle(drawerElement.current)) {
+								drawerElement.current.open();
+							}
+						},
+					}}
+				/>
 			</div>
 		</>
 	);

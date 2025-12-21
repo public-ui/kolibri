@@ -33,7 +33,7 @@ function parseDeToIso(input: string): IsoDate | null {
  * ----------------------------- */
 type SetIsoValueMethod = (iso: IsoDate | null) => Promise<void>;
 
-type KolInputDateHost = HTMLKolInputDateElement & {
+type KolInputDateHost = HTMLElement & {
 	setIsoValue?: SetIsoValueMethod;
 	value?: string;
 	_value?: IsoDate | Date | null;
@@ -85,7 +85,7 @@ export const InputDateCopyPaste: React.FC = () => {
 
 		const onPaste = (e: ClipboardEvent): void => {
 			const host = activeKolHostRef.current;
-			if (!host) return;
+			if (!host || !isKolHost(host)) return;
 
 			const raw = e.clipboardData?.getData('text') ?? '';
 			const iso = parseDeToIso(raw);

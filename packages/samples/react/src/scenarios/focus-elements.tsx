@@ -1,4 +1,3 @@
-import type { FocusableElement } from '@public-ui/components';
 import {
 	KolAccordion,
 	KolAlert,
@@ -150,7 +149,8 @@ const Fallback = (props: FallbackProps) => {
 };
 
 export const FocusElements: FC = () => {
-	const ref = useRef<FocusableElement>(null);
+	type FocusHandle = { focus: () => void };
+	const ref = useRef<unknown>(null);
 	const focusElements = useMemo(() => getFocusElements(), []);
 	const [searchParams] = useSearchParams();
 	const componentName = searchParams.get('component');
@@ -158,7 +158,10 @@ export const FocusElements: FC = () => {
 	useLayoutEffect(() => {
 		setTimeout(() => {
 			// Timeout not strictly necessary but prevents a layout glitch in snapshots with Playwright.
-			void ref.current?.focus();
+			const element = ref.current as FocusHandle | null;
+			if (element?.focus) {
+				void element.focus();
+			}
 		}, 500);
 	}, [ref]);
 

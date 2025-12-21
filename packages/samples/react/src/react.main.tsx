@@ -90,7 +90,8 @@ void (async () => {
 		 * You should patch the theme after the components and your default theme are registered.
 		 */
 		if (ENABLE_THEME_PATCHING) {
-			KoliBriDevHelper.patchTheme(
+			const devHelper = KoliBriDevHelper as unknown as { patchTheme: typeof KoliBriDevHelper.patchTheme };
+			devHelper.patchTheme(
 				'default',
 				{
 					'KOL-BUTTON': `

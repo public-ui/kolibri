@@ -121,12 +121,7 @@ export const DisabledInteractiveElements: FC = () => {
 				</KolCard>
 				{[KolInputCheckbox, KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputNumber, KolInputPassword, KolInputRange, KolInputText].map(
 					(Input) => {
-						const render = (
-							Input as typeof KolInputCheckbox & {
-								render: { displayName: string };
-							}
-						).render;
-						const name = render.displayName;
+						const name = (Input as { displayName?: string; name?: string }).displayName ?? (Input as { name?: string }).name ?? 'Input';
 						return (
 							<KolCard key={name} _label={name} _level={0}>
 								<div className="grid gap-4">
@@ -140,12 +135,7 @@ export const DisabledInteractiveElements: FC = () => {
 					},
 				)}
 				{[KolInputRadio, KolSelect].map((Input) => {
-					const render = (
-						Input as typeof KolInputRadio & {
-							render: { displayName: string };
-						}
-					).render;
-					const name = render.displayName;
+					const name = (Input as { displayName?: string; name?: string }).displayName ?? (Input as { name?: string }).name ?? 'Input';
 					return (
 						<KolCard key={name} _label={name} _level={0}>
 							<div className="grid gap-4">

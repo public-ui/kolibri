@@ -4,7 +4,7 @@ import { KolSelect } from '@public-ui/react-v19';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
-import type { Components, Optgroup, SelectOption, StencilUnknown } from '@public-ui/components';
+import type { Components, SelectOption } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
@@ -32,14 +32,18 @@ const SALUTATION_OPTIONS_DISABLED = SALUTATION_OPTIONS.map((option, index) =>
 
 type GroupedOptionsType = Record<string, Optgroup<StencilUnknown>>;
 
-const groupedOptions: GroupedOptionsType = COUNTRY_OPTIONS.reduce((acc, option) => {
-	const firstLetter = (option.label as string).charAt(0).toUpperCase();
+const countryOptions = COUNTRY_OPTIONS as SelectOption<string>[];
+
+type OptionGroup = { label: string; options: Array<SelectOption<string>> };
+const groupedOptions: Record<string, OptionGroup> = countryOptions.reduce<Record<string, OptionGroup>>((acc, option: SelectOption<string>) => {
+	const label = String((option as { label?: unknown }).label ?? '');
+	const firstLetter = label.charAt(0).toUpperCase();
 	if (!acc[firstLetter]) {
 		acc[firstLetter] = { label: firstLetter, options: [] };
 	}
-	acc[firstLetter].options.push({ label: option.label, value: option.label });
+	acc[firstLetter].options.push({ label, value: label });
 	return acc;
-}, {} as GroupedOptionsType);
+}, {});
 
 const groupedOptionsArray = Object.values(groupedOptions);
 
@@ -63,10 +67,10 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Disabled" _disabled />
 			<KolSelect {...props} _options={SALUTATION_OPTIONS_DISABLED} _label="Salutation with error" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
-			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Multiple choice" _multiple />
+			<KolSelect {...props} _options={countryOptions} _label="Multiple choice" _multiple />
 			<KolSelect
 				{...props}
-				_options={COUNTRY_OPTIONS}
+				_options={countryOptions}
 				_label="Multiple choice with error"
 				_multiple
 				_required

@@ -8,7 +8,15 @@ import { SampleDescription } from '../SampleDescription';
 import { DrawerRadioAlign } from './partials/align';
 
 export const DrawerScrolled: FC = () => {
-	const drawerElement = useRef<HTMLKolDrawerElement>(null);
+	type DrawerHandle = {
+		close: () => void;
+		open: () => void;
+	};
+	const isDrawerHandle = (element: unknown): element is DrawerHandle => {
+		return typeof (element as DrawerHandle)?.open === 'function' && typeof (element as DrawerHandle)?.close === 'function';
+	};
+
+	const drawerElement = useRef<unknown>(null);
 	const [align, setAlign] = useState<AlignPropType>('bottom');
 	const [useOverflowHandling, setUseOverflowHandling] = useState(true);
 
@@ -31,7 +39,7 @@ export const DrawerScrolled: FC = () => {
 				/>
 			</div>
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="Scrollable Drawer" _align={align}>
+				<KolDrawer ref={(element) => (drawerElement.current = element)} _label="Scrollable Drawer" _align={align}>
 					{useOverflowHandling ? (
 						// ✅ Correct approach: Outer container with fixed dimensions and overflow handling
 						<div
@@ -119,14 +127,32 @@ export const DrawerScrolled: FC = () => {
 								</p>
 								<p>Without overflow handling, this content may extend beyond the drawer boundaries, causing layout issues.</p>
 								<div style={{ marginTop: 'auto', paddingTop: '40px' }}>
-									<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
+									<KolButton
+										_label="Close drawer"
+										_on={{
+											onClick: () => {
+												if (isDrawerHandle(drawerElement.current)) {
+													drawerElement.current.close();
+												}
+											},
+										}}
+									/>
 								</div>
 							</div>
 						</div>
 					)}
 				</KolDrawer>
 
-				<KolButton _label="Open scrollable drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
+				<KolButton
+					_label="Open scrollable drawer"
+					_on={{
+						onClick: () => {
+							if (isDrawerHandle(drawerElement.current)) {
+								drawerElement.current.open();
+							}
+						},
+					}}
+				/>
 			</div>
 		</>
 	);

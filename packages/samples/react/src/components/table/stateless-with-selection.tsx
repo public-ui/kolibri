@@ -37,7 +37,15 @@ export const TableStatelessWithSelection: FC = () => {
 		disabledKeys: ['AAA1003', 'AAA1004'],
 	};
 
-	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
+	type TableStatelessHandle = HTMLElement & {
+		addEventListener: HTMLElement['addEventListener'];
+		getSelection: () => Promise<KoliBriTableDataType[] | null>;
+		removeEventListener: HTMLElement['removeEventListener'];
+	};
+	const isTableStatelessHandle = (element: unknown): element is TableStatelessHandle => typeof (element as TableStatelessHandle)?.getSelection === 'function';
+
+	const kolTableStatelessRef = useRef<unknown>(null);
+	const selectionChangeEvent = (KolEvent as { selectionChange: string }).selectionChange;
 
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
@@ -48,17 +56,20 @@ export const TableStatelessWithSelection: FC = () => {
 	};
 
 	useEffect(() => {
-		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-		kolTableStatelessRef.current?.addEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+		if (isTableStatelessHandle(kolTableStatelessRef.current)) {
+			kolTableStatelessRef.current.addEventListener(selectionChangeEvent, handleSelectionChangeEvent as EventListener);
+		}
 
 		return () => {
-			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-			kolTableStatelessRef.current?.removeEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+			if (isTableStatelessHandle(kolTableStatelessRef.current)) {
+				kolTableStatelessRef.current.removeEventListener(selectionChangeEvent, handleSelectionChangeEvent as EventListener);
+			}
 		};
 	}, [kolTableStatelessRef]);
 
 	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${cell.data?.id}`} />);
+		const id = (cell as { data?: { id?: unknown } }).data?.id;
+		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${String(id)}`} />);
 	};
 
 	return (
@@ -85,7 +96,7 @@ export const TableStatelessWithSelection: FC = () => {
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}
 					className="block"
 					style={{ maxWidth: '600px' }}
-					ref={kolTableStatelessRef}
+					ref={(element) => (kolTableStatelessRef.current = element)}
 				/>
 			</section>
 		</>

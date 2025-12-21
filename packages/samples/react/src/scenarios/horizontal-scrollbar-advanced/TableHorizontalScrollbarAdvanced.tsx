@@ -42,11 +42,12 @@ const HEADERS: KoliBriTableHeaders = {
 };
 
 function TableHorizontalScrollbarAdvanced() {
+	const headers = HEADERS as { horizontal?: Array<Array<{ width?: string }>> };
 	const [tableWith] = React.useState(() => {
-		const columnDefinitions = HEADERS.horizontal![0];
+		const columnDefinitions = headers.horizontal?.[0] ?? [];
 		let width = 0;
 
-		for (const def of columnDefinitions as { width: string }[]) {
+		for (const def of columnDefinitions) {
 			width += parseFloat(def.width?.replace('px', '') || '0');
 		}
 		return `${width}px`;

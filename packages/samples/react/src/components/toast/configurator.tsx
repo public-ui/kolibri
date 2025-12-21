@@ -27,7 +27,11 @@ export const ToastConfigurator: FC = () => {
 	const queryType = searchParams.get('type');
 	const defaultType = isAlertType(queryType) ? queryType : undefined;
 	const [selectedType, setSelectedType] = useState<AlertTypePropType>(() => defaultType ?? 'default');
-	const toaster = useMemo<ToasterService>(() => ToasterService.getInstance(document), []);
+	type ToasterApi = Pick<ToasterService, 'closeAll' | 'enqueue'>;
+	const toaster = useMemo<ToasterApi>(() => {
+		const factory = ToasterService as unknown as { getInstance: (doc: Document) => ToasterApi };
+		return factory.getInstance(document);
+	}, []);
 
 	useEffect(() => {
 		toastTypes.forEach((type) => {

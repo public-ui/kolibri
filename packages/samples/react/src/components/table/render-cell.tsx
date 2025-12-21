@@ -53,7 +53,7 @@ const HEADERS: KoliBriTableHeaders = {
 				width: '10em',
 
 				/* Example 1: Use render return value to format data */
-				render: (_el, cell) => `Index: ${cell.label}`,
+				render: (_el: HTMLElement, cell: { label: string | number }) => `Index: ${String(cell.label)}`,
 			},
 			{
 				label: 'Status',
@@ -62,7 +62,7 @@ const HEADERS: KoliBriTableHeaders = {
 				width: '10em',
 
 				/* Example 2: Simple render function using textContent */
-				render: (el, cell) => {
+				render: (el: HTMLElement, cell: { label?: unknown }) => {
 					if (cell.label) {
 						el.textContent = `Order has been dispatched 🚚`;
 					} else {
@@ -77,8 +77,8 @@ const HEADERS: KoliBriTableHeaders = {
 				textAlign: 'center',
 
 				/* Example 3: Render function using innerHTML. ⚠️Make sure to sanitize data to avoid XSS. */
-				render: (el, cell) => {
-					el.innerHTML = `<strong>${DATE_FORMATTER.format(cell.label as unknown as Date)}</strong>`;
+				render: (el: HTMLElement, cell: { label: Date }) => {
+					el.innerHTML = `<strong>${DATE_FORMATTER.format(cell.label)}</strong>`;
 				},
 				compareFn: (data0, data1) => (data0 as Data).date.getTime() - (data1 as Data).date.getTime(),
 			},

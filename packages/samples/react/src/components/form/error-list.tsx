@@ -4,17 +4,26 @@ import React, { useEffect, useRef } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const FormErrorList: FC = () => {
-	const formRef = useRef<HTMLKolFormElement | null>(null);
+	type FormHandle = {
+		focusErrorList: () => void;
+	};
+	const isFormHandle = (element: unknown): element is FormHandle => typeof (element as FormHandle)?.focusErrorList === 'function';
+
+	const formRef = useRef<unknown>(null);
 
 	const scrollTo = () => {
-		formRef.current?.focusErrorList();
+		if (isFormHandle(formRef.current)) {
+			formRef.current.focusErrorList();
+		}
 	};
 
 	/**
 	 * Simulate the form submission
 	 */
 	useEffect(() => {
-		formRef.current?.focusErrorList();
+		if (isFormHandle(formRef.current)) {
+			formRef.current.focusErrorList();
+		}
 	}, []);
 
 	return (
@@ -25,7 +34,7 @@ export const FormErrorList: FC = () => {
 
 			<KolForm
 				className="w-full"
-				ref={formRef}
+				ref={(element) => (formRef.current = element)}
 				_on={{
 					onSubmit: scrollTo,
 				}}

@@ -8,10 +8,17 @@ import { SampleDescription } from '../SampleDescription';
 import type { FC } from 'react';
 
 export const SplitButtonWithContext: FC = () => {
-	const splitButtonRef = React.useRef<HTMLKolSplitButtonElement & { closePopup: any }>(null);
+	type SplitButtonHandle = {
+		closePopup: () => void;
+	};
+	const isSplitButtonHandle = (element: unknown): element is SplitButtonHandle => typeof (element as SplitButtonHandle)?.closePopup === 'function';
+
+	const splitButtonRef = React.useRef<unknown>(null);
 
 	const handleCloseClick = () => {
-		splitButtonRef.current?.closePopup();
+		if (isSplitButtonHandle(splitButtonRef.current)) {
+			splitButtonRef.current.closePopup();
+		}
 	};
 
 	return (
@@ -21,7 +28,7 @@ export const SplitButtonWithContext: FC = () => {
 			</SampleDescription>
 
 			<div className="flex gap-4">
-				<KolSplitButton ref={splitButtonRef as any} _label="Only the arrow opens">
+				<KolSplitButton ref={(element) => (splitButtonRef.current = element)} _label="Only the arrow opens">
 					<div style={{ width: 300, padding: 16, border: '1px solid #ccc' }} onClick={(e) => e.stopPropagation()}>
 						<p>SplitButton renders a button with an additional context-menu, that can be opened by clicking the arrow icon.</p>
 						<div style={{ gap: 16, display: 'flex', flexDirection: 'column' }}>
