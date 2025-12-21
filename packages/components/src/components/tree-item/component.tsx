@@ -159,7 +159,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.focus();
+		await this.linkElement?.focus();
 		await this.expand();
 	}
 
