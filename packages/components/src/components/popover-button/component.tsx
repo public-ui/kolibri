@@ -66,8 +66,16 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
+	public async focus() {
+		return Promise.resolve(this.refButton?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
 	public async kolFocus() {
-		await this.refButton?.kolFocus();
+		await this.focus();
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */

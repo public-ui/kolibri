@@ -133,7 +133,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (this.state._items?.[nextIndex]?._disabled) return;
 
 		this.currentIndex = nextIndex;
-		void this.getCurrentToolbarItem(nextIndex)?.kolFocus();
+		void this.getCurrentToolbarItem(nextIndex)?.focus();
 	}
 
 	/**

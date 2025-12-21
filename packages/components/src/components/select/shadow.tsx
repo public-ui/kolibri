@@ -50,8 +50,16 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Focuses the select element.
 	 */
 	@Method()
+	public async focus() {
+		return Promise.resolve(this.selectWcRef?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
 	public async kolFocus() {
-		await this.selectWcRef?.kolFocus();
+		return this.focus();
 	}
 
 	public render(): JSX.Element {

@@ -5,9 +5,11 @@ import React, { useEffect } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
+type PopoverButtonElement = HTMLElement & { focus: () => void; showPopover: () => void };
+
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
-	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
+	const buttonRef = React.useRef<PopoverButtonElement | null>(null);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -38,7 +40,7 @@ export const PopoverButtonBasic: FC = () => {
 		// Ensure the popover is closed on initial render
 		if (buttonRef.current) {
 			buttonRef.current.showPopover();
-			buttonRef.current.kolFocus();
+			buttonRef.current.focus();
 		}
 	}, []);
 

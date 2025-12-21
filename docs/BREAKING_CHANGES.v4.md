@@ -29,6 +29,10 @@ import { defineCustomElements } from '@public-ui/components/loader';
 - The `_id` prop has been removed from components that use Shadow DOM. IDs within a shadow tree are not visible outside, so each component now generates its own stable ID internally and manages all references. For tests or external lookups, set an `id` on the host element instead.
 - The `_msg` prop no longer supports the `_label` and `_variant` options. Messages always render with the `msg` variant and without a label.
 - Input messages only render once the field is marked as `_touched`, regardless of the message type. Ensure `_touched` is set when a message should be displayed.
+- The `kolFocus()` method has been removed. Use the native `focus()` method instead.
+  - **Migration note:** The new `focus()` method has been refactored for better native alignment and interoperability across frameworks. See [Focus Method Refactoring: Native Character & Interoperability](./tutorials/FOCUS_METHOD_REFACTORING.md) for detailed information about the rationale and benefits of this change.
+- The `kolFocus()` method has been removed. Use the native `focus()` method instead.
+  - **Migration note:** The new `focus()` method has been refactored for better native alignment and interoperability across frameworks. See [Focus Method Refactoring: Native Character & Interoperability](./FOCUS_METHOD_REFACTORING.md) for detailed information about the rationale and benefits of this change.
 
 ### kol-combobox & kol-single-select
 

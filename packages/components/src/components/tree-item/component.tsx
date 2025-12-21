@@ -145,13 +145,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 	/**
 	 * Focuses the link element.
 	 */
-	@Method() async focusLink() {
-		await this.linkElement.kolFocus();
+	@Method() async focus() {
+		return Promise.resolve(this.linkElement.focus());
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.linkElement.kolFocus();
+		await this.focus();
 		await this.expand();
 	}
 
@@ -171,7 +171,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private async handleCollapseClick(event: MouseEvent) {
 		event.preventDefault();
-		this.linkElement.focus();
+		await this.linkElement.focus();
 		await this.collapse();
 	}
 

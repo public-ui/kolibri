@@ -6,10 +6,15 @@ import React, { useRef } from 'react';
 import { SampleDescription } from '../components/SampleDescription';
 import { getRoot } from '../shares/react-roots';
 
+type ButtonElement = HTMLElement & { focus: () => void };
+type ToasterServiceInstance = { enqueue: InstanceType<typeof ToasterService>['enqueue'] };
+type ToasterServiceType = { getInstance: (host: Document) => ToasterServiceInstance };
+
 const RowActions: FC<{ label: string }> = ({ label }) => {
-	const toaster = ToasterService.getInstance(document);
-	const editButtonRef = useRef<HTMLKolButtonElement | null>(null);
-	const deleteButtonRef = useRef<HTMLKolButtonElement | null>(null);
+	const toasterService = ToasterService as unknown as ToasterServiceType;
+	const toaster = toasterService.getInstance(document);
+	const editButtonRef = useRef<ButtonElement | null>(null);
+	const deleteButtonRef = useRef<ButtonElement | null>(null);
 
 	const handleEditClick = () => {
 		toaster.enqueue({
@@ -30,11 +35,11 @@ const RowActions: FC<{ label: string }> = ({ label }) => {
 	const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (event.code) {
 			case 'KeyE':
-				void editButtonRef.current?.kolFocus();
+				void editButtonRef.current?.focus();
 				handleEditClick();
 				return;
 			case 'KeyD':
-				void deleteButtonRef.current?.kolFocus();
+				void deleteButtonRef.current?.focus();
 				handleDeleteClick();
 				return;
 		}
@@ -87,8 +92,12 @@ export const ButtonShortkeyTable: FC = () => {
 					key: 'actions',
 					textAlign: 'left',
 
-					render: (el, cell) => {
-						getRoot(createReactRenderElement(el)).render(<RowActions label={(cell.data as Data).label} />);
+					render: (el, cell: { data?: Data }) => {
+						if (!cell.data?.label) {
+							return;
+						}
+
+						getRoot(createReactRenderElement(el)).render(<RowActions label={cell.data.label} />);
 					},
 				},
 			],
