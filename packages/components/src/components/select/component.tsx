@@ -57,7 +57,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+	public async getValue(): Promise<Stringified<StencilUnknown[]> | undefined> {
 		return this.state._value;
 	}
 
@@ -474,7 +474,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
+	public validateValue(value?: Stringified<StencilUnknown[]>): void {
 		this.controller.validateValue(value);
 	}
 

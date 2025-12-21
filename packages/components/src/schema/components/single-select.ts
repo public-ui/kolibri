@@ -49,7 +49,7 @@ type RequiredStates = {
 type OptionalStates = {
 	alert: boolean;
 	hint: string;
-	value: string;
+	value: StencilUnknown;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	placeholder: string;

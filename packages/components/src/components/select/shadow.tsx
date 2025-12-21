@@ -12,6 +12,7 @@ import type {
 	RowsPropType,
 	SelectProps,
 	ShortKeyPropType,
+	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
@@ -41,7 +42,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Returns the selected values.
 	 */
 	@Method()
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+	public async getValue(): Promise<Stringified<StencilUnknown[]> | undefined> {
 		return this.selectWcRef?.getValue();
 	}
 

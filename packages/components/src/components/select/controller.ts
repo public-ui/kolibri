@@ -99,20 +99,13 @@ export class SelectController extends InputIconController implements SelectWatch
 		validateRows(this.component, value);
 	}
 
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
-		watchJsonArrayString(
-			this.component,
-			'_value',
-			(item: W3CInputValue) => typeof item === 'string' || typeof item === 'number' || typeof item === 'boolean',
-			value,
-			undefined,
-			{
-				hooks: {
-					afterPatch: this.afterPatchOptions,
-					beforePatch: this.beforePatchOptions,
-				},
+	public validateValue(value?: Stringified<StencilUnknown[]>): void {
+		watchJsonArrayString(this.component, '_value', (item) => typeof item !== 'undefined', value, undefined, {
+			hooks: {
+				afterPatch: this.afterPatchOptions,
+				beforePatch: this.beforePatchOptions,
 			},
-		);
+		});
 	}
 
 	public componentWillLoad(): void {
