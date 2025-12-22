@@ -30,11 +30,11 @@ const RowActions: FC<{ label: string }> = ({ label }) => {
 	const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (event.code) {
 			case 'KeyE':
-				void editButtonRef.current?.kolFocus();
+				void editButtonRef.current?.focus();
 				handleEditClick();
 				return;
 			case 'KeyD':
-				void deleteButtonRef.current?.kolFocus();
+				void deleteButtonRef.current?.focus();
 				handleDeleteClick();
 				return;
 		}
@@ -88,7 +88,12 @@ export const ButtonShortkeyTable: FC = () => {
 					textAlign: 'left',
 
 					render: (el, cell) => {
-						getRoot(createReactRenderElement(el)).render(<RowActions label={(cell.data as Data).label} />);
+						const data = cell.data as Data | undefined;
+						if (!data?.label) {
+							return;
+						}
+
+						getRoot(createReactRenderElement(el)).render(<RowActions label={data.label} />);
 					},
 				},
 			],

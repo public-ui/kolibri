@@ -158,7 +158,7 @@ export const FocusElements: FC = () => {
 	useLayoutEffect(() => {
 		setTimeout(() => {
 			// Timeout not strictly necessary but prevents a layout glitch in snapshots with Playwright.
-			void ref.current?.kolFocus();
+			void ref.current?.focus();
 		}, 500);
 	}, [ref]);
 
