@@ -5,7 +5,7 @@ env:
 
 on:
   schedule:
-    - cron: '0 2 * * 1' # Runs weekly on Monday at 02:00 UTC
+    - cron: '0 2 * * *' # Runs daily at 02:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -25,8 +25,8 @@ jobs:
             version: v3
           - base: release/2
             version: v2
-          # - base: release/1
-          #   version: v1
+          - base: release/1
+            version: v1
     env:
       version: ${{ matrix.version }}
     steps:
