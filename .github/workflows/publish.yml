@@ -1,7 +1,7 @@
 name: 01 - Publish
 
 env:
-  prefix: 'v4-' # remove, when v4 is released
+  prefix: # 'v4-', when v5 is released
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ on:
         options:
           - dev
           - next
-          # - latest
+          - latest
       version: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#semver-bump
         type: choice
         description: SemVer keyword for version bump
@@ -30,9 +30,9 @@ on:
         type: choice
         description: SemVer pre release label (optional)
         options:
-          - alpha
-          - beta
           - rc
+          - beta
+          - alpha
 
 permissions:
   contents: read
