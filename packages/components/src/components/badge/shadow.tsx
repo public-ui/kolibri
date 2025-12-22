@@ -51,8 +51,16 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus(): Promise<void> {
-		await this.smartButtonRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.smartButtonRef?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
+	public async kolFocus() {
+		return this.focus();
 	}
 
 	public render(): JSX.Element {

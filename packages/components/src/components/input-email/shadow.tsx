@@ -69,9 +69,16 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
 	public async kolFocus() {
-		this.inputRef?.focus();
+		return this.focus();
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
