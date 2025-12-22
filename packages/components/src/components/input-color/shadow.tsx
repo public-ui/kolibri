@@ -94,9 +94,16 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
+	public async focus() {
+		return Promise.resolve(this.refInputText?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
 	public async kolFocus() {
-		this.refInputText?.focus();
+		return this.focus();
 	}
 
 	private get hasSuggestions(): boolean {

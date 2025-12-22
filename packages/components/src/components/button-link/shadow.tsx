@@ -48,8 +48,16 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
+	public async focus() {
+		return Promise.resolve(this.buttonWcRef?.focus());
+	}
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	@Method()
 	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+		return this.focus();
 	}
 
 	public render(): JSX.Element {

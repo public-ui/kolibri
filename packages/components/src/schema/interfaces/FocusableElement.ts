@@ -1,3 +1,8 @@
 export interface FocusableElement {
-	kolFocus(): Promise<void>;
+	focus(): Promise<void>;
+
+	/**
+	 * @deprecated Use {@link focus} instead.
+	 */
+	kolFocus?(): Promise<void>;
 }

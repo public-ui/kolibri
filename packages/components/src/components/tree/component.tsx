@@ -131,12 +131,12 @@ export class KolTreeWc implements TreeAPI {
 
 		switch (event.key) {
 			case 'ArrowDown': {
-				await openItems[currentIndex + 1]?.focusLink();
+				await openItems[currentIndex + 1]?.focus();
 				event.preventDefault();
 				break;
 			}
 			case 'ArrowUp': {
-				await openItems[currentIndex - 1]?.focusLink();
+				await openItems[currentIndex - 1]?.focus();
 				event.preventDefault();
 				break;
 			}
@@ -144,7 +144,7 @@ export class KolTreeWc implements TreeAPI {
 			case 'ArrowRight': {
 				event.preventDefault();
 				if (await currentTreeItem.isOpen()) {
-					await openItems[currentIndex + 1]?.focusLink();
+					await openItems[currentIndex + 1]?.focus();
 				} else {
 					await currentTreeItem.expand();
 				}
@@ -157,18 +157,18 @@ export class KolTreeWc implements TreeAPI {
 					await currentTreeItem.collapse();
 				} else {
 					const parentIndex = openItems.findIndex((item) => item === currentTreeItem.parentElement);
-					parentIndex !== -1 && (await openItems[parentIndex]?.focusLink());
+					parentIndex !== -1 && (await openItems[parentIndex]?.focus());
 				}
 
 				break;
 			}
 			case 'Home': {
-				await openItems[0]?.focusLink();
+				await openItems[0]?.focus();
 				event.preventDefault();
 				break;
 			}
 			case 'End': {
-				await openItems[openItems.length - 1]?.focusLink();
+				await openItems[openItems.length - 1]?.focus();
 				event.preventDefault();
 				break;
 			}
@@ -183,7 +183,7 @@ export class KolTreeWc implements TreeAPI {
 						.findIndex((item) => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char));
 
 					if (matchIndex !== -1) {
-						await wrapAroundItems[startIndex + matchIndex].focusLink();
+						await wrapAroundItems[startIndex + matchIndex]?.focus();
 						event.preventDefault();
 					}
 				}

@@ -6,7 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
-	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
+	const buttonRef = React.useRef<HTMLKolPopoverButtonElement | null>(null);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -34,7 +34,7 @@ export const PopoverButtonBasic: FC = () => {
 		// Ensure the popover is closed on initial render
 		if (buttonRef.current) {
 			buttonRef.current.showPopover();
-			buttonRef.current.kolFocus();
+			buttonRef.current.focus();
 		}
 	}, []);
 

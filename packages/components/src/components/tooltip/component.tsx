@@ -17,7 +17,7 @@ import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking'
 	shadow: false,
 })
 export class KolTooltipWc implements TooltipAPI {
-	@Element() private host!: HTMLKolTooltipWcElement;
+	@Element() private host?: HTMLKolTooltipWcElement;
 
 	private arrowElement?: HTMLDivElement;
 	private previousSibling?: Element | null;
