@@ -29,6 +29,8 @@ import { defineCustomElements } from '@public-ui/components/loader';
 - The `_id` prop has been removed from components that use Shadow DOM. IDs within a shadow tree are not visible outside, so each component now generates its own stable ID internally and manages all references. For tests or external lookups, set an `id` on the host element instead.
 - The `_msg` prop no longer supports the `_label` and `_variant` options. Messages always render with the `msg` variant and without a label.
 - Input messages only render once the field is marked as `_touched`, regardless of the message type. Ensure `_touched` is set when a message should be displayed.
+- The `kolFocus()` and `kolFocusLink()` methods have been removed in v4. Use the native `focus()` method instead.
+  - **Migration note:** Runtime backward compatibility for `kolFocus()` and `kolFocusLink()` is not provided. If your code still calls these helper methods, you must update it (for example, by running the KoliBri migration CLI) to use the native `focus()` method on the relevant element.
 
 ### kol-combobox & kol-single-select
 

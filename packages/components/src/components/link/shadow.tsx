@@ -38,8 +38,8 @@ export class KolLink implements LinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.linkWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.linkWcRef?.focus());
 	}
 
 	public render(): JSX.Element {

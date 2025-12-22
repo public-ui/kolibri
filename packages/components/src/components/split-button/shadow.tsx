@@ -52,8 +52,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.primaryButtonWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.primaryButtonWcRef?.focus());
 	}
 
 	private readonly clickButtonHandler = {

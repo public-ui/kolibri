@@ -70,9 +70,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.refInput?.focus();
+	public async focus() {
+		return Promise.resolve(this.refInput?.focus());
 	}
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {

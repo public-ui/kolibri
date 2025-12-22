@@ -75,9 +75,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.getFocusableInput()?.focus();
+	public async focus() {
+		return Promise.resolve(this.getFocusableInput()?.focus());
 	}
 
 	private getFocusableInput(): HTMLInputElement | undefined {

@@ -68,9 +68,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {

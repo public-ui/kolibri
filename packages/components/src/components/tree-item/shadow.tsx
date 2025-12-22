@@ -36,28 +36,22 @@ export class KolTreeItem implements TreeItemProps {
 	/**
 	 * Focuses the link element.
 	 */
-	@Method() async focusLink() {
-		if (this.element) {
-			await this.element.focusLink();
-		}
+	@Method() async focus() {
+		return Promise.resolve(this.element?.focus());
 	}
 
 	/**
 	 * Expands the tree item.
 	 */
 	@Method() async expand() {
-		if (this.element) {
-			await this.element.expand();
-		}
+		return Promise.resolve(this.element?.expand());
 	}
 
 	/**
 	 * Collapses the tree item.
 	 */
 	@Method() async collapse() {
-		if (this.element) {
-			await this.element.collapse();
-		}
+		return Promise.resolve(this.element?.collapse());
 	}
 
 	/**

@@ -48,7 +48,7 @@ describe('KolButtonFc', () => {
 			</div>
 		));
 		const button = page.root?.querySelector('kol-button-wc') as HTMLKolButtonWcElement;
-		button.focus();
+		await button.focus();
 		await page.waitForChanges();
 		expect(page.root).toMatchSnapshot();
 	});

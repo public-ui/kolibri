@@ -66,9 +66,8 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.selectRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.selectRef?.focus());
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
