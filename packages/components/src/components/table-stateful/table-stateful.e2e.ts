@@ -25,11 +25,13 @@ test.describe('kol-table-stateful', () => {
 					selectedKeys: [],
 				};
 			});
+			await page.waitForChanges();
 		});
 
 		test.describe('Callbacks', () => {
 			test('it calls the onSelectionChange callback when the selection changes', async ({ page }) => {
 				const kolTableStateful = page.locator('kol-table-stateful');
+				const selectionCheckbox = kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`);
 				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement) => {
 					return new Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>((resolve) => {
 						element._on = {
@@ -39,7 +41,8 @@ test.describe('kol-table-stateful', () => {
 						};
 					});
 				});
-				await kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`).check();
+				await expect(selectionCheckbox).toBeVisible();
+				await selectionCheckbox.check();
 
 				await expect(callbackPromise).resolves.toEqual([DATA[0]]);
 			});
@@ -48,14 +51,18 @@ test.describe('kol-table-stateful', () => {
 		test.describe('DOM events', () => {
 			test('it emits selectionChange when the selection changes', async ({ page }) => {
 				const kolTableStateful = page.locator('kol-table-stateful');
-				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement, KolEvent) => {
+				const selectionCheckbox = kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`);
+				const selectionChange = String(KolEvent.selectionChange);
+				const callbackPromise = kolTableStateful.evaluate((element: Element, selectionChangeEvent: string) => {
+					const host = element as HTMLElement;
 					return new Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>((resolve) => {
-						element.addEventListener(KolEvent.selectionChange, (event: Event) => {
-							resolve((event as CustomEvent).detail as KoliBriTableDataType[] | KoliBriTableDataType | null);
+						host.addEventListener(selectionChangeEvent, (event: Event) => {
+							resolve((event as CustomEvent<KoliBriTableDataType[] | KoliBriTableDataType | null>).detail);
 						});
 					});
-				}, KolEvent);
-				await kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`).check();
+				}, selectionChange);
+				await expect(selectionCheckbox).toBeVisible();
+				await selectionCheckbox.check();
 
 				await expect(callbackPromise).resolves.toEqual([DATA[0]]);
 			});
@@ -72,7 +79,11 @@ test.describe('kol-table-stateful', () => {
 			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
 				el._selection = { label: (row: KoliBriTableDataType) => `Selection for ${(row.id as number).toString()}`, keyPropertyName: 'id', selectedKeys: [1002] };
 			});
-			const got = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.getSelection());
+			await page.waitForChanges();
+			const got = await page.locator('kol-table-stateful').evaluate<KoliBriTableDataType[] | null>(async (el: Element) => {
+				const table = el as HTMLElement & { getSelection: () => Promise<KoliBriTableDataType[] | null> };
+				return await table.getSelection();
+			});
 			expect(got).toEqual([{ id: 1002 }]);
 		});
 	});
