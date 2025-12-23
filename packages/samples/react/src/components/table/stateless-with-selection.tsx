@@ -1,13 +1,17 @@
 import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys } from '@public-ui/components';
-import { KolEvent } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 type SelectionValue = string | number;
+type KolTableStatelessElement = {
+	addEventListener: (type: string, listener: (event: CustomEvent<SelectionValue[]>) => void) => void;
+	removeEventListener: (type: string, listener: (event: CustomEvent<SelectionValue[]>) => void) => void;
+};
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -39,7 +43,7 @@ export const TableStatelessWithSelection: FC = () => {
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
 
-	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
+	const handleSelectionChangeEvent = ({ detail: selection }: CustomEvent<SelectionValue[]>) => {
 		console.log('Selection change via event', selection);
 	};
 	const handleSelectionChangeCallback = (_event: Event, selection: SelectionValue[]) => {
@@ -48,17 +52,19 @@ export const TableStatelessWithSelection: FC = () => {
 	};
 
 	useEffect(() => {
-		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-		kolTableStatelessRef.current?.addEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+		const tableElement = kolTableStatelessRef.current as unknown as KolTableStatelessElement | null;
+		const selectionChangeEvent = 'kolSelectionChange';
+		tableElement?.addEventListener(selectionChangeEvent, handleSelectionChangeEvent);
 
 		return () => {
-			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-			kolTableStatelessRef.current?.removeEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+			tableElement?.removeEventListener(selectionChangeEvent, handleSelectionChangeEvent);
 		};
 	}, [kolTableStatelessRef]);
 
 	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${cell.data?.id}`} />);
+		const data = (cell as { data?: Data }).data;
+		const id = data?.id;
+		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${id}`} />);
 	};
 
 	return (
@@ -70,8 +76,7 @@ export const TableStatelessWithSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
-					_minWidth="auto"
-					_headerCells={{
+					_headerCells={ensureHeaderWidths({
 						horizontal: [
 							[
 								{ key: 'id', label: '#ID', textAlign: 'left' },
@@ -79,7 +84,7 @@ export const TableStatelessWithSelection: FC = () => {
 								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
 							],
 						],
-					}}
+					})}
 					_data={DATA}
 					_selection={selection}
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}

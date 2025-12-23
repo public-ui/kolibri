@@ -2,6 +2,7 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 const DATA = [{ columnA: 'Column A', columnB: 'Column B', columnC: 'Column C' }];
 
@@ -15,17 +16,16 @@ export const PredefinedSettings: FC = () => {
 			<KolTableStateful
 				_label="Table for demonstration purposes with predefined settings"
 				_hasSettingsMenu
-				_headers={{
+				_headers={ensureHeaderWidths({
 					horizontal: [
 						[
-							{ key: 'columnC', visible: true, label: 'Column C', width: '45ch' },
-							{ key: 'columnB', visible: true, label: 'Column B', width: '20ch' },
+							{ key: 'columnC', visible: true, label: 'Column C', width: 450 },
+							{ key: 'columnB', visible: true, label: 'Column B', width: 200 },
 							{ key: 'columnA', visible: false, label: 'Column A' },
 						],
 					],
-				}}
+				})}
 				_data={DATA}
-				_minWidth="500px"
 				className="block"
 				style={{ maxWidth: '600px' }}
 			/>

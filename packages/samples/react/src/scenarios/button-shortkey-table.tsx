@@ -81,19 +81,16 @@ export const ButtonShortkeyTable: FC = () => {
 					label: 'Label',
 					key: 'label',
 					textAlign: 'left',
+					width: 200,
 				},
 				{
 					label: 'Actions',
 					key: 'actions',
 					textAlign: 'left',
-
+					width: 150,
 					render: (el, cell) => {
 						const data = cell.data as Data | undefined;
-						if (!data?.label) {
-							return;
-						}
-
-						getRoot(createReactRenderElement(el)).render(<RowActions label={data.label} />);
+						getRoot(createReactRenderElement(el)).render(<RowActions label={data?.label ?? ''} />);
 					},
 				},
 			],
@@ -120,7 +117,6 @@ export const ButtonShortkeyTable: FC = () => {
 						_label={`Interactive table with shortkey buttons in each row`}
 						_data={DATA}
 						_headers={HEADERS}
-						_minWidth="400px"
 						_pagination={{
 							_page: 1,
 						}}

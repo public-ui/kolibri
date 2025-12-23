@@ -4,6 +4,7 @@ import React from 'react';
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }];
 const genericNonSorter = () => 0;
@@ -18,8 +19,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Simple table" _level={3}></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with different text align properties"
-				_minWidth="auto"
-				_headers={{
+				_headers={ensureHeaderWidths({
 					horizontal: [
 						[
 							{ label: 'left', key: 'left', textAlign: 'left' },
@@ -27,7 +27,7 @@ export const TableColumnAlignment: FC = () => (
 							{ label: 'right', key: 'right', textAlign: 'right' },
 						],
 					],
-				}}
+				})}
 				_data={DATA}
 				className="block"
 				style={{ maxWidth: '600px' }}
@@ -36,8 +36,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table with sortable columns" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with sortable columns"
-				_minWidth="auto"
-				_headers={{
+				_headers={ensureHeaderWidths({
 					horizontal: [
 						[
 							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
@@ -45,7 +44,7 @@ export const TableColumnAlignment: FC = () => (
 							{ label: 'right', key: 'right', textAlign: 'right', compareFn: genericNonSorter },
 						],
 					],
-				}}
+				})}
 				_data={DATA}
 				className="block"
 				style={{ maxWidth: '600px' }}
@@ -54,8 +53,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table some sortable columns" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with some but not all columns sortable"
-				_minWidth="auto"
-				_headers={{
+				_headers={ensureHeaderWidths({
 					horizontal: [
 						[
 							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
@@ -63,7 +61,7 @@ export const TableColumnAlignment: FC = () => (
 							{ label: 'right', key: 'right', textAlign: 'right' },
 						],
 					],
-				}}
+				})}
 				_data={DATA}
 				className="block"
 				style={{ maxWidth: '600px' }}
@@ -72,8 +70,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table with vertical heading" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with vertical heading"
-				_minWidth="auto"
-				_headers={{
+				_headers={ensureHeaderWidths({
 					horizontal: [
 						[
 							{ label: 'left', key: 'left', textAlign: 'left' },
@@ -82,7 +79,7 @@ export const TableColumnAlignment: FC = () => (
 						],
 					],
 					vertical: [[{ label: 'Vertical' }]],
-				}}
+				})}
 				_data={DATA}
 				className="block"
 				style={{ maxWidth: '600px' }}

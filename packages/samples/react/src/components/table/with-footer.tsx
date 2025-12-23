@@ -2,6 +2,7 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 export const TableWithFooter: FC = () => (
 	<>
@@ -12,8 +13,7 @@ export const TableWithFooter: FC = () => (
 		<KolTableStateful
 			className="w-full"
 			_label="Business hours"
-			_minWidth="auto"
-			_headers={{
+			_headers={ensureHeaderWidths({
 				horizontal: [
 					[
 						{
@@ -42,7 +42,7 @@ export const TableWithFooter: FC = () => (
 						},
 					],
 				],
-			}}
+			})}
 			_data={[
 				{
 					asp: 'Center',

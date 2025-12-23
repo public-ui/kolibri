@@ -2,6 +2,7 @@ import { KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 type Data = {
 	id: string;
@@ -45,10 +46,9 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 
 		<KolTableStateless
 			_label="Users (stateless with settings menu)"
-			_minWidth="auto"
 			className="w-full"
 			_hasSettingsMenu={true}
-			_headerCells={{
+			_headerCells={ensureHeaderWidths({
 				horizontal: [
 					[
 						{
@@ -93,7 +93,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 						},
 					],
 				],
-			}}
+			})}
 			_data={DATA}
 			_on={{
 				onSort: (_e, payload) => console.log('sort', payload),

@@ -5,8 +5,9 @@ import type { KoliBriTableHeaders } from '@public-ui/components';
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import { COMPLEX_DATA } from './test-complex-data';
+import { ensureHeaderWidths } from './utils';
 
-const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
+const HEADERS_HORIZONTAL: KoliBriTableHeaders = ensureHeaderWidths({
 	horizontal: [
 		[
 			{ label: 'ID', key: 'id', textAlign: 'right' },
@@ -18,7 +19,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left' },
 		],
 	],
-};
+});
 
 export const TableStickyHeader: FC = () => (
 	<>
@@ -30,6 +31,6 @@ export const TableStickyHeader: FC = () => (
 		</SampleDescription>
 
 		<KolHeading _level={2} _label="Sticky headers" />
-		<KolTableStateful _label="Animal species overview" _minWidth="1200px" _data={COMPLEX_DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+		<KolTableStateful _label="Animal species overview" _data={COMPLEX_DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 	</>
 );

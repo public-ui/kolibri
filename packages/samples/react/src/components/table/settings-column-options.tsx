@@ -2,6 +2,7 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 type UserRow = {
 	id: string;
@@ -28,19 +29,18 @@ export const TableSettingsColumnOptions: FC = () => (
 
 		<KolTableStateful
 			_label="Table with column option restrictions"
-			_minWidth="auto"
 			_hasSettingsMenu
-			_headers={{
+			_headers={ensureHeaderWidths({
 				horizontal: [
 					[
-						{ key: 'id', label: 'ID', hidable: false, sortable: false, visible: true, width: '15ch' },
-						{ key: 'name', label: 'Name', visible: true, width: '30ch' },
-						{ key: 'team', label: 'Team', sortable: false, visible: true, width: '20ch' },
-						{ key: 'email', label: 'E-Mail', resizable: false, visible: true, width: '25ch' },
-						{ key: 'status', label: 'Status', hidable: false, resizable: false, visible: true, width: '10ch' },
+						{ key: 'id', label: 'ID', hidable: false, sortable: false, visible: true, width: 240 },
+						{ key: 'name', label: 'Name', visible: true, width: 480 },
+						{ key: 'team', label: 'Team', sortable: false, visible: true, width: 320 },
+						{ key: 'email', label: 'E-Mail', resizable: false, visible: true, width: 400 },
+						{ key: 'status', label: 'Status', hidable: false, resizable: false, visible: true, width: 160 },
 					],
 				],
-			}}
+			})}
 			_data={DATA}
 			className="block"
 			style={{ maxWidth: '720px' }}

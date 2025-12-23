@@ -7,17 +7,18 @@ import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
+import { ensureHeaderWidths } from './utils';
 
 import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
 
-const HEADERS: KoliBriTableHeaders = {
+const HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
 	horizontal: [
 		[
 			{ label: 'Order', key: 'order' },
 			{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
 		],
 	],
-};
+});
 const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 
 export const PaginationPosition: FC = () => (
@@ -31,7 +32,6 @@ export const PaginationPosition: FC = () => (
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at the bottom"
-					_minWidth="auto"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
@@ -42,7 +42,6 @@ export const PaginationPosition: FC = () => (
 				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at the top"
-					_minWidth="auto"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
@@ -53,7 +52,6 @@ export const PaginationPosition: FC = () => (
 				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at both top and bottom"
-					_minWidth="auto"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}

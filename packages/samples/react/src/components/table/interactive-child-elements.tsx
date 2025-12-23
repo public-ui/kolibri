@@ -17,19 +17,22 @@ function KolButtonWrapper({ _on, ...other }: ButtonProps) {
 }
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
-	const capitalizedVariant = variant.charAt(0).toUpperCase() + variant.slice(1);
+	const variantLabel = `${variant}`;
+	const capitalizedVariant = variantLabel.charAt(0).toUpperCase() + variantLabel.slice(1);
 	return {
 		label: capitalizedVariant,
-		key: variant,
+		key: variantLabel,
 		textAlign: 'left',
+		width: 160,
 		render: (element: HTMLElement, cell: KoliBriTableCell) => {
+			const { label } = cell as { label: string };
 			const commonProps = {
 				_label: capitalizedVariant,
 				_variant: variant,
 				_icons: { right: 'kolicon-kolibri' },
 			};
 			getRoot(createReactRenderElement(element)).render(
-				cell.label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
+				label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
 			);
 		},
 	};
@@ -46,7 +49,6 @@ export const InteractiveChildElements: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateless
 				_label="Button styles"
-				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[
@@ -57,7 +59,12 @@ export const InteractiveChildElements: FC = () => (
 							getButtonHeaderCell('ghost'),
 						],
 					],
-					vertical: [[{ label: 'Button' }, { label: 'Link-Button' }]],
+					vertical: [
+						[
+							{ label: 'Button', width: 120 },
+							{ label: 'Link-Button', width: 120 },
+						],
+					],
 				}}
 				_data={[
 					{
@@ -80,7 +87,6 @@ export const InteractiveChildElements: FC = () => (
 
 			<KolTableStateless
 				_label="Link styles"
-				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[
@@ -88,19 +94,26 @@ export const InteractiveChildElements: FC = () => (
 								key: 'regular',
 								label: 'Regular',
 								textAlign: 'left',
+								width: 180,
 								render: (element: HTMLElement, cell: KoliBriTableCell) => {
+									const { label } = cell as { label: string };
 									const commonProps = {
-										_label: cell.label,
+										_label: label,
 										_icons: { right: 'kolicon-kolibri' },
 									};
 									getRoot(createReactRenderElement(element)).render(
-										cell.label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,
+										label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,
 									);
 								},
 							},
 						],
 					],
-					vertical: [[{ label: 'Link' }, { label: 'Button-Link' }]],
+					vertical: [
+						[
+							{ label: 'Link', width: 140 },
+							{ label: 'Button-Link', width: 140 },
+						],
+					],
 				}}
 				_data={[
 					{
