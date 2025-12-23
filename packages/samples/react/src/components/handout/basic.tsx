@@ -1,4 +1,4 @@
-import type { ButtonProps, KoliBriTableHeaders } from '@public-ui/components';
+import type { ButtonProps, KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -56,22 +56,21 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Workdays',
 				colSpan: 5,
+				width: 500,
 			},
 			{
 				label: 'Weekend',
 				colSpan: 2,
+				width: 200,
 			},
 		],
 		[
 			{
 				key: 'monday',
 				label: 'Monday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolButtonWrapper _label={label} style={{ fontSize: '75%' }} />);
 				},
 				compareFn: (first, second) => {
 					if ((first as TableDataType).monday < (second as TableDataType).monday) {
@@ -84,17 +83,14 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 				sortDirection: 'ASC',
 				textAlign: 'right',
-				width: '100px',
+				width: 100,
 			},
 			{
 				key: 'tuesday',
 				label: 'Tuesday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#060" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#060" _label={label}></KolBadge>);
 				},
 				compareFn: (first, second) => {
 					if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
@@ -106,67 +102,52 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					return 0;
 				},
 				sortDirection: 'DESC',
-				width: '100px',
+				width: 100,
 			},
 			{
 				key: 'wednesday',
 				label: 'Wednesday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#006" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#006" _label={label}></KolBadge>);
 				},
-				width: '110px',
+				width: 110,
 			},
 			{
 				key: 'thursday',
 				label: 'Thursday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#600" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#600" _label={label}></KolBadge>);
 				},
-				width: '100px',
+				width: 100,
 			},
 			{
 				key: 'friday',
 				label: 'Friday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#303" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#303" _label={label}></KolBadge>);
 				},
-				width: '100px',
+				width: 100,
 			},
 			{
 				key: 'saturday',
 				label: 'Saturday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#330" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#330" _label={label}></KolBadge>);
 				},
-				width: '100px',
+				width: 100,
 			},
 			{
 				key: 'sunday',
 				label: 'Sunday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#033" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#033" _label={label}></KolBadge>);
 				},
-				width: '100px',
+				width: 100,
 			},
 		],
 	],
@@ -174,18 +155,30 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 		[
 			{
 				label: 'Early',
+				width: 100,
 			},
 			{
 				label: 'Noon',
+				width: 100,
 			},
 			{
 				label: 'Evening',
+				width: 100,
 			},
 			{
 				label: 'Night',
+				width: 100,
 			},
 		],
 	],
+};
+
+const renderCellContent = (element: HTMLElement, content: React.ReactNode) => {
+	const renderElement = document.createElement('div');
+	renderElement.setAttribute('role', 'presentation');
+	element.innerHTML = '';
+	element.appendChild(renderElement);
+	getRoot(renderElement).render(content);
 };
 
 export const HandoutBasic: FC = () => {
@@ -471,8 +464,8 @@ export const HandoutBasic: FC = () => {
 					</KolForm>
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
-					<div slot="" className="grid gap-2 p-2 flex">
-						<KolTableStateful _label="Table" _minWidth="800px" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
+					<div slot="" className="gap-2 p-2 flex flex-col">
+						<KolTableStateful _label="Table" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
 					</div>
 				</KolCard>
 			</div>

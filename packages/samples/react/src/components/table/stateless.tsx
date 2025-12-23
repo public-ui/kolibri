@@ -2,6 +2,7 @@ import { KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }, {}, {}, {}];
 
@@ -14,8 +15,7 @@ export const TableStateless: FC = () => (
 		<section className="w-full">
 			<KolTableStateless
 				_label="Table for demonstration purposes"
-				_minWidth="auto"
-				_headerCells={{
+				_headerCells={ensureHeaderWidths({
 					horizontal: [
 						[
 							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },
@@ -32,7 +32,7 @@ export const TableStateless: FC = () => (
 							{ key: 'vertical-nosort', label: 'no sort option' },
 						],
 					],
-				}}
+				})}
 				_data={DATA}
 				className="block"
 				style={{ maxWidth: '600px' }}

@@ -4,6 +4,7 @@ import React from 'react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 type TemperatureRow = {
 	city: string;
@@ -20,7 +21,7 @@ const TEMPERATURE_DATA: TemperatureRow[] = [
 	{ city: 'Helsinki', temperature: 14 },
 ];
 
-const HEADERS: KoliBriTableHeaders = {
+const HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
 	horizontal: [
 		[
 			{ label: 'City', key: 'city' },
@@ -47,7 +48,7 @@ const HEADERS: KoliBriTableHeaders = {
 			},
 		],
 	],
-};
+});
 
 export const TableDirectionAwareSort: FC = () => (
 	<>
@@ -59,7 +60,7 @@ export const TableDirectionAwareSort: FC = () => (
 		</SampleDescription>
 
 		<section className="w-full">
-			<KolTableStateful _minWidth="100%" _label="Direction aware compare function" _data={TEMPERATURE_DATA} _headers={HEADERS} className="block" />
+			<KolTableStateful _label="Direction aware compare function" _data={TEMPERATURE_DATA} _headers={HEADERS} className="block" />
 		</section>
 	</>
 );

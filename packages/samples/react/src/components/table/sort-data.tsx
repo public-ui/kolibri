@@ -6,6 +6,7 @@ import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
+import { ensureHeaderWidths } from './utils';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
@@ -22,7 +23,7 @@ const compareByDate =
 		return sortDirection === 'DESC' ? -result : result;
 	};
 
-const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
+const HEADERS_HORIZONTAL: KoliBriTableHeaders = ensureHeaderWidths({
 	horizontal: [
 		[
 			{ label: 'order', key: 'order', textAlign: 'center' },
@@ -35,9 +36,9 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 			},
 		],
 	],
-};
+});
 
-const HEADERS_VERTICAL: KoliBriTableHeaders = {
+const HEADERS_VERTICAL: KoliBriTableHeaders = ensureHeaderWidths({
 	vertical: [
 		[
 			{ label: 'order', key: 'order', textAlign: 'center' },
@@ -50,7 +51,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 			},
 		],
 	],
-};
+});
 
 export const TableSortData: FC = () => (
 	<>
@@ -61,11 +62,11 @@ export const TableSortData: FC = () => (
 		<section className="w-full grid gap-4">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical headers" />
-				<KolTableStateful _label="Sort a date column" _minWidth="auto" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+				<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Horizontal headers" />
-				<KolTableStateful _label="Sort a date column" _minWidth="auto" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+				<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 			</section>
 		</section>
 	</>

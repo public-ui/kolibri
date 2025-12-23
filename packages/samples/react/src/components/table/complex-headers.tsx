@@ -2,6 +2,7 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import { ensureHeaderWidths } from './utils';
 
 export const TableComplexHeaders: FC = () => (
 	<>
@@ -12,7 +13,6 @@ export const TableComplexHeaders: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateful
 				_label="Business hours"
-				_minWidth="auto"
 				_data={[
 					{
 						asp: 'Center',
@@ -39,7 +39,7 @@ export const TableComplexHeaders: FC = () => (
 						friday: '08:00',
 					},
 				]}
-				_headers={{
+				_headers={ensureHeaderWidths({
 					vertical: [
 						[
 							{
@@ -98,7 +98,7 @@ export const TableComplexHeaders: FC = () => (
 							},
 						],
 					],
-				}}
+				})}
 			/>
 		</section>
 	</>

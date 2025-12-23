@@ -75,7 +75,7 @@ export class KolTableSettings {
 	}
 
 	private handleWidthChange(key: string, width: unknown): void {
-		const row = this.getPrimaryRow().map((col) => (col.key === key && col.resizable !== false ? { ...col, width: `${Number(width)}ch` } : col));
+		const row = this.getPrimaryRow().map((col) => (col.key === key && col.resizable !== false ? { ...col, width: Number(width) } : col));
 		this.updatePrimaryRow(row);
 	}
 
@@ -98,25 +98,22 @@ export class KolTableSettings {
 			this.errorMessage = null;
 			// Update headerCells with the edited values
 			this.headerCells = this.editingHeaderCells.map((row) => row.map((cell) => ({ ...cell })));
+
+			// Type for sanitized cells where optional properties are truly omitted
+			type SanitizedHeaderCell = Omit<KoliBriTableHeaderCell, 'hidable' | 'position' | 'resizable' | 'sortable' | 'visible' | 'width'> &
+				Partial<Pick<KoliBriTableHeaderCell, 'hidable' | 'resizable' | 'sortable' | 'visible' | 'width'>>;
+
 			const sanitizedHeaderCells = this.editingHeaderCells.map((row) =>
-				row.map((column) => {
-					const cell = { ...column } as KoliBriTableHeaderCell & { position?: unknown };
-					delete cell.position;
-					if (cell.visible === undefined) {
-						delete cell.visible;
-					}
-					if (cell.hidable === undefined) {
-						delete cell.hidable;
-					}
-					if (cell.sortable === undefined) {
-						delete cell.sortable;
-					}
-					if (cell.resizable === undefined) {
-						delete cell.resizable;
-					}
-					if (cell.width === undefined || cell.width === null || cell.width === '') {
-						delete cell.width;
-					}
+				row.map((column): SanitizedHeaderCell => {
+					const { hidable, resizable, sortable, visible, width, ...rest } = column as KoliBriTableHeaderCell & { position?: unknown };
+					const cell: SanitizedHeaderCell = { ...rest };
+
+					if (visible !== undefined) cell.visible = visible;
+					if (hidable !== undefined) cell.hidable = hidable;
+					if (sortable !== undefined) cell.sortable = sortable;
+					if (resizable !== undefined) cell.resizable = resizable;
+					if (width !== undefined && width !== null) cell.width = width;
+
 					return cell;
 				}),
 			);
