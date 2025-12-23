@@ -100,19 +100,18 @@ export class KolTableSettings {
 			this.headerCells = this.editingHeaderCells.map((row) => row.map((cell) => ({ ...cell })));
 
 			// Type for sanitized cells where optional properties are truly omitted
-			type SanitizedHeaderCell = Omit<KoliBriTableHeaderCell, 'hidable' | 'position' | 'resizable' | 'sortable' | 'visible' | 'width'> &
-				Partial<Pick<KoliBriTableHeaderCell, 'hidable' | 'resizable' | 'sortable' | 'visible' | 'width'>>;
+			type SanitizedHeaderCell = Omit<KoliBriTableHeaderCell, 'hidable' | 'position' | 'resizable' | 'sortable' | 'visible'> &
+				Partial<Pick<KoliBriTableHeaderCell, 'hidable' | 'resizable' | 'sortable' | 'visible'>>;
 
 			const sanitizedHeaderCells = this.editingHeaderCells.map((row) =>
 				row.map((column): SanitizedHeaderCell => {
-					const { hidable, resizable, sortable, visible, width, ...rest } = column as KoliBriTableHeaderCell & { position?: unknown };
+					const { hidable, resizable, sortable, visible, ...rest } = column as KoliBriTableHeaderCell & { position?: unknown };
 					const cell: SanitizedHeaderCell = { ...rest };
 
 					if (visible !== undefined) cell.visible = visible;
 					if (hidable !== undefined) cell.hidable = hidable;
 					if (sortable !== undefined) cell.sortable = sortable;
 					if (resizable !== undefined) cell.resizable = resizable;
-					if (width !== undefined && width !== null) cell.width = width;
 
 					return cell;
 				}),
