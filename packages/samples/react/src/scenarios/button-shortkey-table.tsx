@@ -90,7 +90,7 @@ export const ButtonShortkeyTable: FC = () => {
 					width: 150,
 					render: (el, cell) => {
 						const data = cell.data as Data | undefined;
-						if (!data?.label) {
+						if (!data?.label?.trim()) {
 							return;
 						}
 						getRoot(createReactRenderElement(el)).render(<RowActions label={data.label} />);
