@@ -7,12 +7,11 @@ import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
 import { DATA as tableData } from './test-data';
-import { ensureHeaderWidths } from './utils';
 
 import type { KoliBriTableHeaders } from '@public-ui/components';
 
 const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
-const HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ label: 'Small Column', key: 'small', textAlign: 'left', width: 200 },
@@ -21,30 +20,31 @@ const HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
 			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: 400 },
 		],
 	],
-});
-const COMPACT_HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
+};
+const COMPACT_HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Small Column', key: 'small', textAlign: 'left' },
-			{ label: 'Large Column', key: 'large', textAlign: 'left' },
-			{ label: 'Larger Column', key: 'large', textAlign: 'left' },
+			{ label: 'Small Column', key: 'small', textAlign: 'left', width: 160 },
+			{ label: 'Large Column', key: 'large', textAlign: 'left', width: 160 },
+			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: 160 },
 		],
 	],
-});
+};
 const genericNonSorter = () => 0;
-const ORDER_HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
+const ORDER_HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Order', key: 'order' },
+			{ label: 'Order', key: 'order', width: 160 },
 			{
 				label: 'Date',
 				key: 'date',
+				width: 160,
 				compareFn: genericNonSorter,
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date),
 			},
 		],
 	],
-});
+};
 
 export const TableHorizontalScrollbar: FC = () => {
 	const [hasWidthRestriction, setHasWidthRestriction] = useState(true);

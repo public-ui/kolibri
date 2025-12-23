@@ -2,7 +2,6 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 type UserRow = {
 	id: string;
@@ -30,7 +29,7 @@ export const TableSettingsColumnOptions: FC = () => (
 		<KolTableStateful
 			_label="Table with column option restrictions"
 			_hasSettingsMenu
-			_headers={ensureHeaderWidths({
+			_headers={{
 				horizontal: [
 					[
 						{ key: 'id', label: 'ID', hidable: false, sortable: false, visible: true, width: 240 },
@@ -40,7 +39,7 @@ export const TableSettingsColumnOptions: FC = () => (
 						{ key: 'status', label: 'Status', hidable: false, resizable: false, visible: true, width: 160 },
 					],
 				],
-			})}
+			}}
 			_data={DATA}
 			className="block"
 			style={{ maxWidth: '720px' }}

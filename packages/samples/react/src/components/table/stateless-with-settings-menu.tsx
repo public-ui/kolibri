@@ -2,7 +2,6 @@ import { KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 type Data = {
 	id: string;
@@ -48,7 +47,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 			_label="Users (stateless with settings menu)"
 			className="w-full"
 			_hasSettingsMenu={true}
-			_headerCells={ensureHeaderWidths({
+			_headerCells={{
 				horizontal: [
 					[
 						{
@@ -58,6 +57,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: false,
+							width: 160,
 						},
 						{
 							key: 'name',
@@ -66,6 +66,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: true,
+							width: 160,
 						},
 						{
 							key: 'role',
@@ -74,6 +75,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: false,
 							resizable: true,
+							width: 160,
 						},
 						{
 							key: 'email',
@@ -82,6 +84,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: false,
+							width: 160,
 						},
 						{
 							key: 'active',
@@ -90,10 +93,11 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: false,
 							resizable: false,
+							width: 160,
 						},
 					],
 				],
-			})}
+			}}
 			_data={DATA}
 			_on={{
 				onSort: (_e, payload) => console.log('sort', payload),

@@ -5,7 +5,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -79,15 +78,15 @@ export const TableStatefulWithSingleSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateful
 					_label="Table with selection radio"
-					_headers={ensureHeaderWidths({
+					_headers={{
 						horizontal: [
 							[
-								{ key: 'id', label: '#ID', textAlign: 'left' },
-								{ key: 'name', label: 'Name', textAlign: 'left' },
-								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+								{ key: 'id', label: '#ID', textAlign: 'left', width: 160 },
+								{ key: 'name', label: 'Name', textAlign: 'left', width: 160 },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton, width: 160 },
 							],
 						],
-					})}
+					}}
 					_data={DATA}
 					_selection={selection}
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}

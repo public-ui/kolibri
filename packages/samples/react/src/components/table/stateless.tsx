@@ -2,7 +2,6 @@ import { KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }, {}, {}, {}];
 
@@ -15,24 +14,24 @@ export const TableStateless: FC = () => (
 		<section className="w-full">
 			<KolTableStateless
 				_label="Table for demonstration purposes"
-				_headerCells={ensureHeaderWidths({
+				_headerCells={{
 					horizontal: [
 						[
-							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },
-							{ key: 'center', label: 'center', textAlign: 'center', sortDirection: 'DESC' },
-							{ key: 'right', label: 'right', textAlign: 'right', sortDirection: 'NOS' },
-							{ key: 'nosort', label: 'no sort option' },
+							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC', width: 160 },
+							{ key: 'center', label: 'center', textAlign: 'center', sortDirection: 'DESC', width: 160 },
+							{ key: 'right', label: 'right', textAlign: 'right', sortDirection: 'NOS', width: 160 },
+							{ key: 'nosort', label: 'no sort option', width: 160 },
 						],
 					],
 					vertical: [
 						[
-							{ key: 'vertical-left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },
-							{ key: 'vertical-center', label: 'center', textAlign: 'center', sortDirection: 'DESC' },
-							{ key: 'vertical-right', label: 'right', textAlign: 'right', sortDirection: 'NOS' },
-							{ key: 'vertical-nosort', label: 'no sort option' },
+							{ key: 'vertical-left', label: 'left', textAlign: 'left', sortDirection: 'ASC', width: 160 },
+							{ key: 'vertical-center', label: 'center', textAlign: 'center', sortDirection: 'DESC', width: 160 },
+							{ key: 'vertical-right', label: 'right', textAlign: 'right', sortDirection: 'NOS', width: 160 },
+							{ key: 'vertical-nosort', label: 'no sort option', width: 160 },
 						],
 					],
-				})}
+				}}
 				_data={DATA}
 				className="block"
 				style={{ maxWidth: '600px' }}

@@ -2,7 +2,6 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },
@@ -18,15 +17,15 @@ export const TableNonHidableColumns: FC = () => (
 		<KolTableStateful
 			_label="Table with a non-hidable column"
 			_hasSettingsMenu
-			_headers={ensureHeaderWidths({
+			_headers={{
 				horizontal: [
 					[
-						{ key: 'id', label: 'ID', hidable: false },
-						{ key: 'name', label: 'Name' },
-						{ key: 'age', label: 'Age' },
+						{ key: 'id', label: 'ID', hidable: false, width: 160 },
+						{ key: 'name', label: 'Name', width: 160 },
+						{ key: 'age', label: 'Age', width: 160 },
 					],
 				],
-			})}
+			}}
 			_data={DATA}
 			className="block"
 			style={{ maxWidth: '600px' }}

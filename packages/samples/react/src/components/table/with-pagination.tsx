@@ -7,18 +7,17 @@ import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
-import { ensureHeaderWidths } from './utils';
 
 import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
 
-const HEADERS: KoliBriTableHeaders = ensureHeaderWidths({
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Order', key: 'order' },
-			{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+			{ label: 'Order', key: 'order', width: 160 },
+			{ label: 'Date', key: 'date', width: 160, render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
 		],
 	],
-});
+};
 const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 
 export const TableWithPagination: FC = () => (

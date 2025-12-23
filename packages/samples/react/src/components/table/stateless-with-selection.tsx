@@ -5,7 +5,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 type SelectionValue = string | number;
 type KolTableStatelessElement = {
@@ -76,15 +75,15 @@ export const TableStatelessWithSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
-					_headerCells={ensureHeaderWidths({
+					_headerCells={{
 						horizontal: [
 							[
-								{ key: 'id', label: '#ID', textAlign: 'left' },
-								{ key: 'name', label: 'Name', textAlign: 'left' },
-								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+								{ key: 'id', label: '#ID', textAlign: 'left', width: 160 },
+								{ key: 'name', label: 'Name', textAlign: 'left', width: 160 },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton, width: 160 },
 							],
 						],
-					})}
+					}}
 					_data={DATA}
 					_selection={selection}
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}

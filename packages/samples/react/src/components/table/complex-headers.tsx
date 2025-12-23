@@ -2,7 +2,6 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import { ensureHeaderWidths } from './utils';
 
 export const TableComplexHeaders: FC = () => (
 	<>
@@ -39,15 +38,17 @@ export const TableComplexHeaders: FC = () => (
 						friday: '08:00',
 					},
 				]}
-				_headers={ensureHeaderWidths({
+				_headers={{
 					vertical: [
 						[
 							{
 								label: 'Berlin',
 								rowSpan: 2,
+								width: 160,
 							},
 							{
 								label: 'München',
+								width: 160,
 							},
 						],
 					],
@@ -57,48 +58,58 @@ export const TableComplexHeaders: FC = () => (
 								label: 'District',
 								rowSpan: 2,
 								key: 'asp',
+								width: 160,
 							},
 							{
 								label: 'Workdays',
 								colSpan: 5,
+								width: 160,
 							},
 							{
 								label: 'Weekend',
 								colSpan: 2,
+								width: 160,
 							},
 						],
 						[
 							{
 								label: 'Monday',
 								key: 'monday',
+								width: 160,
 							},
 							{
 								label: 'Tuesday',
 								key: 'tuesday',
+								width: 160,
 							},
 							{
 								label: 'Wednesday',
 								key: 'wednesday',
+								width: 160,
 							},
 							{
 								label: 'Thursday',
 								key: 'thursday',
+								width: 160,
 							},
 							{
 								label: 'Friday',
 								key: 'friday',
+								width: 160,
 							},
 							{
 								label: 'Saturday',
 								key: 'saturday',
+								width: 160,
 							},
 							{
 								label: 'Sunday',
 								key: 'sunday',
+								width: 160,
 							},
 						],
 					],
-				})}
+				}}
 			/>
 		</section>
 	</>
