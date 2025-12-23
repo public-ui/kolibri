@@ -719,13 +719,24 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const allWidths = [...verticalHeaderWidths, ...primaryHeaders.map((cell) => cell.width)];
 
-		if (allWidths.length === 0) {
+		// Build the parts of the calc() expression
+		const parts: string[] = [];
+
+		// Add selection column width if selection is enabled
+		if (this.state._selection) {
+			parts.push('var(--a11y-min-size)');
+		}
+
+		// Add all header widths
+		parts.push(...allWidths.map((w) => `${w}px`));
+
+		if (parts.length === 0) {
 			return '0px';
 		}
-		if (allWidths.length === 1) {
-			return `${allWidths[0]}px`;
+		if (parts.length === 1) {
+			return parts[0];
 		}
-		return `calc(${allWidths.map((w) => `${w}px`).join(' + ')})`;
+		return `calc(${parts.join(' + ')})`;
 	}
 
 	/**
