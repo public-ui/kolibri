@@ -41,6 +41,13 @@ import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
+ * The width (in pixels) allocated for the selection column (checkbox/radio button).
+ * This ensures adequate space for the interactive element and padding.
+ * Based on accessibility requirements (44px min touch target) + padding.
+ */
+const SELECTION_COLUMN_WIDTH = 60;
+
+/**
  * @internal
  */
 @Component({
@@ -707,6 +714,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	/**
 	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
+	 * Includes the selection column width when selection is enabled.
 	 *
 	 * @return {string} The minimum width of the table as a string based on the sum of visible header widths.
 	 */
@@ -718,6 +726,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		const verticalHeaderWidths = Array.isArray(verticalHeaders) ? verticalHeaders.map((column) => column?.[0]?.width ?? 0).filter((w) => w > 0) : [];
 
 		const allWidths = [...verticalHeaderWidths, ...primaryHeaders.map((cell) => cell.width)];
+
+		// Add selection column width if selection is enabled
+		if (this.state._selection) {
+			allWidths.push(SELECTION_COLUMN_WIDTH);
+		}
 
 		if (allWidths.length === 0) {
 			return '0px';
