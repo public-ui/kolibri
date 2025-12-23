@@ -176,7 +176,7 @@ test.describe('kol-table-settings', () => {
 
 			// Verify width is applied
 			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
-			await expect(idColumn).toHaveAttribute('style', 'width: 50ch;');
+			await expect(idColumn).toHaveAttribute('style', 'width: 50px;');
 		});
 	});
 
