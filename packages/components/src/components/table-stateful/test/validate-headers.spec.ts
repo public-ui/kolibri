@@ -20,6 +20,7 @@ describe('KolTableStateful.validateHeaders', () => {
 					{
 						label: 'Foo',
 						compareFn: () => 0,
+						width: 100,
 					},
 				],
 			],

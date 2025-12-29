@@ -9,13 +9,13 @@ import { COMPLEX_DATA } from './test-complex-data';
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'ID', key: 'id', textAlign: 'right' },
-			{ label: 'Common name', key: 'common_name', textAlign: 'left' },
-			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left' },
-			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left' },
-			{ label: 'Habitat', key: 'habitat', textAlign: 'left' },
-			{ label: 'Diet', key: 'diet', textAlign: 'left' },
-			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left' },
+			{ label: 'ID', key: 'id', textAlign: 'right', width: 160 },
+			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160 },
+			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160 },
+			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160 },
+			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160 },
+			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160 },
+			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160 },
 		],
 	],
 };
@@ -30,6 +30,6 @@ export const TableStickyHeader: FC = () => (
 		</SampleDescription>
 
 		<KolHeading _level={2} _label="Sticky headers" />
-		<KolTableStateful _label="Animal species overview" _minWidth="1200px" _data={COMPLEX_DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+		<KolTableStateful _label="Animal species overview" _data={COMPLEX_DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 	</>
 );

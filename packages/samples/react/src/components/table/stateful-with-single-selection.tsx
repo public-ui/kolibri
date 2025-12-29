@@ -1,5 +1,4 @@
 import type { KoliBriTableCell, KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
-import { KolEvent } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
@@ -13,6 +12,11 @@ const DATA = [
 ];
 
 type Data = (typeof DATA)[0];
+type KolTableStatefulElement = {
+	addEventListener: (type: string, listener: (event: CustomEvent<Data[]>) => void) => void;
+	removeEventListener: (type: string, listener: (event: CustomEvent<Data[]>) => void) => void;
+	getSelection?: () => Promise<KoliBriTableDataType[] | null>;
+};
 
 function KolButtonWrapper({ label }: { label: string }) {
 	const { dummyClickEventHandler } = useToasterService();
@@ -36,7 +40,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);
 
-	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
+	const handleSelectionChangeEvent = ({ detail: selection }: CustomEvent<Data[]>) => {
 		console.log('Selection change via event', selection);
 	};
 	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | null) => {
@@ -44,22 +48,25 @@ export const TableStatefulWithSingleSelection: FC = () => {
 	};
 
 	const handleButtonClick = async () => {
-		const selection = await kolTableStatefulRef.current?.getSelection();
+		const tableElement = kolTableStatefulRef.current as unknown as KolTableStatefulElement | null;
+		const selection = await tableElement?.getSelection?.();
 		setSelectedValue(selection as Data | null);
 	};
 
 	useEffect(() => {
-		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-		kolTableStatefulRef.current?.addEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+		const tableElement = kolTableStatefulRef.current as unknown as KolTableStatefulElement | null;
+		const selectionChangeEvent = 'kolSelectionChange';
+		tableElement?.addEventListener(selectionChangeEvent, handleSelectionChangeEvent);
 
 		return () => {
-			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-			kolTableStatefulRef.current?.removeEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
+			tableElement?.removeEventListener(selectionChangeEvent, handleSelectionChangeEvent);
 		};
 	}, [kolTableStatefulRef]);
 
 	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${cell.data?.id}`} />);
+		const data = (cell as { data?: Data }).data;
+		const id = data?.id;
+		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${id}`} />);
 	};
 
 	return (
@@ -71,7 +78,6 @@ export const TableStatefulWithSingleSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateful
 					_label="Table with selection radio"
-					_minWidth="auto"
 					_headers={{
 						horizontal: [
 							[

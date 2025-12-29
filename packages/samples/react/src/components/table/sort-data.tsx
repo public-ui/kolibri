@@ -25,11 +25,12 @@ const compareByDate =
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center' },
+			{ label: 'order', key: 'order', textAlign: 'center', width: 160 },
 			{
 				label: 'date',
 				key: 'date',
 				textAlign: 'center',
+				width: 160,
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0, data1, direction) => compareByDate(direction)(data0, data1),
 			},
@@ -40,11 +41,12 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 const HEADERS_VERTICAL: KoliBriTableHeaders = {
 	vertical: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center' },
+			{ label: 'order', key: 'order', textAlign: 'center', width: 160 },
 			{
 				label: 'date',
 				key: 'date',
 				textAlign: 'center',
+				width: 160,
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				compareFn: (data0, data1, direction) => compareByDate(direction)(data0, data1),
 			},
@@ -61,11 +63,11 @@ export const TableSortData: FC = () => (
 		<section className="w-full grid gap-4">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical headers" />
-				<KolTableStateful _label="Sort a date column" _minWidth="auto" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+				<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Horizontal headers" />
-				<KolTableStateful _label="Sort a date column" _minWidth="auto" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+				<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 			</section>
 		</section>
 	</>

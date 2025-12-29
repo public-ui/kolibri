@@ -8,28 +8,28 @@ export type KoliBriTableSelectionKey = string | number;
 export type KoliBriTableSelectionKeys = KoliBriTableSelectionKey[];
 export type KoliBriTableCell = {
 	colSpan?: number;
+	data?: KoliBriTableDataType;
 	label: string;
 	render?: KoliBriTableRender;
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
-	width?: string;
-	data?: KoliBriTableDataType;
+	width?: number;
 };
 
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
-	key?: string;
-	sortDirection?: KoliBriSortDirection;
 	hidable?: boolean;
-	sortable?: boolean;
-	sortOrder?: number;
+	key?: string;
 	resizable?: boolean;
+	sortable?: boolean;
+	sortDirection?: KoliBriSortDirection;
+	sortOrder?: number;
 	visible?: boolean;
 };
 
 export type KoliBriTableSelection = {
-	label: (row: KoliBriTableDataType) => string;
+	disabledKeys?: KoliBriTableSelectionKeys;
 	keyPropertyName?: string;
+	label: (row: KoliBriTableDataType) => string;
 	multiple?: boolean;
 	selectedKeys?: KoliBriTableSelectionKeys;
-	disabledKeys?: KoliBriTableSelectionKeys;
 };

@@ -16,14 +16,13 @@ export const TableNonHidableColumns: FC = () => (
 
 		<KolTableStateful
 			_label="Table with a non-hidable column"
-			_minWidth="auto"
 			_hasSettingsMenu
 			_headers={{
 				horizontal: [
 					[
-						{ key: 'id', label: 'ID', hidable: false },
-						{ key: 'name', label: 'Name' },
-						{ key: 'age', label: 'Age' },
+						{ key: 'id', label: 'ID', hidable: false, width: 160 },
+						{ key: 'name', label: 'Name', width: 160 },
+						{ key: 'age', label: 'Age', width: 160 },
 					],
 				],
 			}}

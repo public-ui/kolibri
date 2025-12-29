@@ -45,7 +45,6 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 
 		<KolTableStateless
 			_label="Users (stateless with settings menu)"
-			_minWidth="auto"
 			className="w-full"
 			_hasSettingsMenu={true}
 			_headerCells={{
