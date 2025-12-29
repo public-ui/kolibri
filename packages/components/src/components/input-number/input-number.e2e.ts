@@ -102,4 +102,120 @@ test.describe(COMPONENT_NAME, () => {
 			});
 		}
 	});
+
+	test.describe('step buttons', () => {
+		test('should fire onInput when clicking step up button', async ({ page }) => {
+			await page.setContent('<kol-input-number _label="Number input" _value="5"></kol-input-number>');
+			await page.waitForChanges();
+
+			// Set up onInput callback to track if it's called
+			const inputCallbackPromise = page.locator('kol-input-number').evaluate((element: HTMLKolInputNumberElement) => {
+				return new Promise<unknown>((resolve) => {
+					element._on = {
+						...element._on,
+						onInput: (_event: Event, value?: unknown) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			// Click the step up button
+			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			await stepUpButton.click();
+			await page.waitForChanges();
+
+			// Verify onInput was called with the incremented value
+			await expect(inputCallbackPromise).resolves.toBe(6);
+
+			// Also verify the value was actually updated
+			const currentValue = await getCurrentValue(page);
+			expect(currentValue).toBe(6);
+		});
+
+		test('should fire onInput when clicking step down button', async ({ page }) => {
+			await page.setContent('<kol-input-number _label="Number input" _value="5"></kol-input-number>');
+			await page.waitForChanges();
+
+			// Set up onInput callback to track if it's called
+			const inputCallbackPromise = page.locator('kol-input-number').evaluate((element: HTMLKolInputNumberElement) => {
+				return new Promise<unknown>((resolve) => {
+					element._on = {
+						...element._on,
+						onInput: (_event: Event, value?: unknown) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			// Click the step down button
+			const stepDownButton = page.locator('[data-testid="kol-input-number-step-down"]');
+			await stepDownButton.click();
+			await page.waitForChanges();
+
+			// Verify onInput was called with the decremented value
+			await expect(inputCallbackPromise).resolves.toBe(4);
+
+			// Also verify the value was actually updated
+			const currentValue = await getCurrentValue(page);
+			expect(currentValue).toBe(4);
+		});
+
+		test('should respect step size when using buttons', async ({ page }) => {
+			await page.setContent('<kol-input-number _label="Number input" _value="10" _step="5"></kol-input-number>');
+			await page.waitForChanges();
+
+			// Set up onInput callback
+			const inputCallbackPromise = page.locator('kol-input-number').evaluate((element: HTMLKolInputNumberElement) => {
+				return new Promise<unknown>((resolve) => {
+					element._on = {
+						...element._on,
+						onInput: (_event: Event, value?: unknown) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			// Click the step up button
+			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			await stepUpButton.click();
+			await page.waitForChanges();
+
+			// Verify onInput was called with value incremented by step size
+			await expect(inputCallbackPromise).resolves.toBe(15);
+		});
+
+		test('should return string type when initial value was string', async ({ page }) => {
+			await page.setContent('<kol-input-number _label="Number input" _value="5"></kol-input-number>');
+			await page.waitForChanges();
+
+			// Set up onInput callback
+			const inputCallbackPromise = page.locator('kol-input-number').evaluate((element: HTMLKolInputNumberElement) => {
+				return new Promise<unknown>((resolve) => {
+					element._on = {
+						...element._on,
+						onInput: (_event: Event, value?: unknown) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			// Click the step up button
+			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			await stepUpButton.click();
+			await page.waitForChanges();
+
+			// Verify onInput was called with string type (since initial value was string)
+			const result = await inputCallbackPromise;
+			expect(result).toBe('6');
+			expect(typeof result).toBe('string');
+		});
+	});
 });
