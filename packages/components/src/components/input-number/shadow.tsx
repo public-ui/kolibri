@@ -166,7 +166,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					// Manually trigger onInput since stepUp() doesn't fire input events
 					const newValue = this.inputRef?.value;
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
-					this.controller.onFacade.onInput(event as unknown as InputEvent, true, this._value);
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
@@ -192,7 +193,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					// Manually trigger onInput since stepDown() doesn't fire input events
 					const newValue = this.inputRef?.value;
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
-					this.controller.onFacade.onInput(event as unknown as InputEvent, true, this._value);
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
