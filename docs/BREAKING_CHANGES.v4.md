@@ -153,7 +153,6 @@ The `_minWidth` property has been removed from kol-table components. The table n
 - `KoliBriTableCell.width` remains optional, but is now `number | undefined` (pixels only, no string units)
   - When provided, must be a number (e.g., `200` for 200 pixels)
   - When omitted, the column width is determined by CSS (auto-sized by content)
-- `KoliBriTableCell.label` is already required (no change in v4)
 
 **CSS Behavior Change:**
 
