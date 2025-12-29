@@ -80,18 +80,45 @@ exports[`kol-table-stateless-wc should render with _label="Table with merged par
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 0px;">
+      <table class="kol-table__table" style="min-width: 300px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with merged parent column width only
         </caption>
         <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" colspan="2" scope="colgroup" style="width: 300px;">
+              Personal Info
+            </th>
+          </tr>
+          <tr class="kol-table__head-row">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+              First Name
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+              Last Name
+            </th>
+          </tr>
           <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="NaN"></td>
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="2"></td>
           </tr>
         </thead>
         <tbody class="kol-table__body">
-          <tr class="kol-table__row kol-table__row--body"></tr>
-          <tr class="kol-table__row kol-table__row--body"></tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--body">
+              John
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              Doe
+            </td>
+          </tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--body">
+              Jane
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              Smith
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -148,18 +175,55 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 0px;">
+      <table class="kol-table__table" style="min-width: calc(90px + 90px + 120px + 190px);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two horizontal header rows
         </caption>
         <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <td aria-hidden="true" colspan="1" rowspan="2" style="width: 90px;"></td>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="col">
+              Header 1
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-center kol-table__cell--header kol-table__cell--none" scope="col">
+              Header 2
+            </th>
+          </tr>
+          <tr class="kol-table__head-row">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="col" style="width: 120px;">
+              Sub Header 1
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-center kol-table__cell--header kol-table__cell--none" scope="col" style="width: 190px;">
+              Sub Header 2
+            </th>
+          </tr>
           <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="NaN"></td>
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
           </tr>
         </thead>
         <tbody class="kol-table__body">
-          <tr class="kol-table__row kol-table__row--body"></tr>
-          <tr class="kol-table__row kol-table__row--body"></tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 90px;">
+              Row 1
+            </th>
+            <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
+              Cell 1.1
+            </td>
+            <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
+              Cell 1.2
+            </td>
+          </tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-center kol-table__cell--header kol-table__cell--none" scope="row" style="width: 90px;">
+              Row 2
+            </th>
+            <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
+              Cell 2.1
+            </td>
+            <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
+              Cell 2.2
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -171,18 +235,55 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 0px;">
+      <table class="kol-table__table" style="min-width: calc(100px + 100px + 130px + 130px);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two spanned horizontal and vertical headers
         </caption>
         <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <td aria-hidden="true" colspan="2" rowspan="2" style="width: 100px;"></td>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" colspan="2" scope="colgroup">
+              H-Header
+            </th>
+          </tr>
+          <tr class="kol-table__head-row">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col" style="width: 130px;">
+              Sub H-Header 1
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col" style="width: 130px;">
+              Sub H-Header 2
+            </th>
+          </tr>
           <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="NaN"></td>
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="4"></td>
           </tr>
         </thead>
         <tbody class="kol-table__body">
-          <tr class="kol-table__row kol-table__row--body"></tr>
-          <tr class="kol-table__row kol-table__row--body"></tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" rowspan="2" scope="row">
+              V-Header
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="row" style="width: 100px;">
+              Sub V-Header 1
+            </th>
+            <td class="kol-table__cell kol-table__cell--body">
+              Cell 1.1
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              Cell 1.2
+            </td>
+          </tr>
+          <tr class="kol-table__row kol-table__row--body">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="row" style="width: 100px;">
+              Sub V-Header 2
+            </th>
+            <td class="kol-table__cell kol-table__cell--body">
+              Cell 2.1
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              Cell 2.2
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
