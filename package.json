@@ -13,8 +13,8 @@
 		"stylelint": "16.26.1",
 		"stylelint-config-recommended-scss": "16.0.2",
 		"stylelint-config-standard": "39.0.1",
-		"stylelint-order": "7.0.0",
-		"stylelint-scss": "6.13.0"
+		"stylelint-order": "7.0.1",
+		"stylelint-scss": "6.14.0"
 	},
 	"engines": {
 		"pnpm": "^10"

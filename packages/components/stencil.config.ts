@@ -289,5 +289,5 @@ export const config: Config = {
 	/**
 	 * @see https://github.com/stenciljs/core/pull/6389
 	 */
-	suppressReservedPublicNameWarnings: false,
+	suppressReservedPublicNameWarnings: true,
 };
