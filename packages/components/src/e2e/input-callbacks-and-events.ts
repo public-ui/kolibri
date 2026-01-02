@@ -37,7 +37,7 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 			['change', Callback.onChange, KolEvent.change, testValue, expectedValue ?? testValue],
 		];
 
-		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEventName, callbackName, kolEventName, testValue, expectedValue]) => {
+		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEventName, callbackName, eventName, testValue, expectedValue]) => {
 			test(`should call ${callbackName} callback when internal input emits ${nativeEventName}`, async ({ page, browserName }) => {
 				/* See https://github.com/microsoft/playwright/issues/33864 */
 				test.skip(
@@ -59,13 +59,13 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 					});
 				}, callbackName);
 
-				const eventPromise = component.evaluate((element: ElementType, kolEventName) => {
+				const eventPromise = component.evaluate((element: ElementType, eventName: string) => {
 					return new Promise<unknown>((resolve) => {
-						element.addEventListener(kolEventName, (event: Event) => {
+						element.addEventListener(eventName, (event: Event) => {
 							resolve((event as CustomEvent).detail);
 						});
 					});
-				}, kolEventName);
+				}, eventName as string);
 
 				await page.waitForChanges();
 

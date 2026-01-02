@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-drawer', () => {
 	test.describe('Callbacks', () => {
@@ -54,14 +53,14 @@ test.describe('kol-drawer', () => {
 			await page.setContent('<kol-drawer _label="Details" >Drawer content</kol-drawer>');
 			const kolDrawer = page.locator('kol-drawer');
 
-			const eventPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement, KolEvent) => {
+			const eventPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
 				element._open = true; // see #7165
 				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.close, () => {
+					element.addEventListener('close', () => {
 						resolve();
 					});
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 			await page.keyboard.press('Escape');
 

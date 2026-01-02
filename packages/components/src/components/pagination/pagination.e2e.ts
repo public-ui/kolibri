@@ -69,13 +69,13 @@ test.describe('kol-pagination', () => {
 		});
 
 		test('it emits changePageSize when the page size is changed', async ({ page }) => {
-			const eventPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement, KolEvent) => {
+			const eventPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement) => {
 				return new Promise<number>((resolve) => {
-					element.addEventListener(KolEvent.changePageSize, (event: Event) => {
+					element.addEventListener('changePageSize', (event: Event) => {
 						resolve((event as CustomEvent).detail as number);
 					});
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 			await page.locator('select').selectOption('-1'); // choose second option (20)
 

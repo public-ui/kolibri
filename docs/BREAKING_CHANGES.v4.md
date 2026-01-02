@@ -31,6 +31,44 @@ import { defineCustomElements } from '@public-ui/components/loader';
 - Input messages only render once the field is marked as `_touched`, regardless of the message type. Ensure `_touched` is set when a message should be displayed.
 - The `kolFocus()` and `kolFocusLink()` methods have been removed in v4. Use the native `focus()` method instead.
   - **Migration note:** Runtime backward compatibility for `kolFocus()` and `kolFocusLink()` is not provided. If your code still calls these helper methods, you must update it (for example, by running the KoliBri migration CLI) to use the native `focus()` method on the relevant element.
+- DOM events emitted by components now use native event names without the `kol` prefix. Listen for `change`, `submit`, `click`, and similar names. All `kol*` event aliases have been removed.
+
+**Complete list of event name changes:**
+
+| Old Event Name         | New Event Name      |
+| ---------------------- | ------------------- |
+| `kolBlur`              | `blur`              |
+| `kolChange`            | `change`            |
+| `kolChangeHeaderCells` | `changeHeaderCells` |
+| `kolChangePage`        | `changePage`        |
+| `kolChangePageSize`    | `changePageSize`    |
+| `kolClick`             | `click`             |
+| `kolClose`             | `close`             |
+| `kolCreate`            | `create`            |
+| `kolFocus`             | `focus`             |
+| `kolInput`             | `input`             |
+| `kolKeydown`           | `keydown`           |
+| `kolMousedown`         | `mousedown`         |
+| `kolReset`             | `reset`             |
+| `kolSelect`            | `select`            |
+| `kolSelectionChange`   | `selectionChange`   |
+| `kolSort`              | `sort`              |
+| `kolSubmit`            | `submit`            |
+| `kolToggle`            | `toggle`            |
+
+**Before:**
+
+```ts
+element.addEventListener('kolSubmit', handler);
+element.dispatchEvent(new CustomEvent('kolChange', { detail: value }));
+```
+
+**After:**
+
+```ts
+element.addEventListener('submit', handler);
+element.dispatchEvent(new CustomEvent('change', { detail: value }));
+```
 
 ### kol-combobox & kol-single-select
 

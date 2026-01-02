@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { KoliBriTableDataType, TableHeaderCells } from '../../schema';
-import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];
@@ -56,13 +55,13 @@ test.describe('kol-table-stateful', () => {
 		test.describe('DOM events', () => {
 			test('it emits selectionChange when the selection changes', async ({ page }) => {
 				const kolTableStateful = page.locator('kol-table-stateful');
-				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement, KolEvent) => {
+				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement) => {
 					return new Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>((resolve) => {
-						element.addEventListener(KolEvent.selectionChange, (event: Event) => {
+						element.addEventListener('selectionChange', (event: Event) => {
 							resolve((event as CustomEvent).detail as KoliBriTableDataType[] | KoliBriTableDataType | null);
 						});
 					});
-				}, KolEvent);
+				});
 				await kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`).check();
 
 				await expect(callbackPromise).resolves.toEqual([DATA[0]]);
