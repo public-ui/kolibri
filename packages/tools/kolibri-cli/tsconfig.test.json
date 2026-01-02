@@ -3,5 +3,8 @@
 	"compilerOptions": {
 		"types": ["node", "mocha"]
 	},
-	"include": ["src", "test"]
+	"include": ["src", "test"],
+	"ts-node": {
+		"files": true
+	}
 }

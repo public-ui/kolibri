@@ -70,6 +70,9 @@ export class RenameKolEventNamesTask extends AbstractTask {
 		const customEventPattern = new RegExp(`(new\\s+CustomEvent\\s*\\(\\s*['"])${oldName}(['"])`, 'g');
 		updatedContent = updatedContent.replace(customEventPattern, `$1${newName}$2`);
 
+		const identifierPattern = new RegExp(`\\b${oldName}\\b`, 'g');
+		updatedContent = updatedContent.replace(identifierPattern, newName);
+
 		return updatedContent;
 	}
 }
