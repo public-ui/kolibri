@@ -39,11 +39,9 @@ import {
 	validateTableDataFoot,
 	validateTableSelection,
 	validateTableStatefulCallbacks,
-	watchString,
 	watchValidator,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
-import type { MinWidthPropType } from '../../schema/props/min-width';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -65,7 +63,7 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	@Element() private readonly host?: HTMLKolTableStatefulElement;
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
@@ -104,11 +102,6 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width (CSS width values).
-	 */
-	@Prop() public _minWidth!: MinWidthPropType;
-
-	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
@@ -139,7 +132,6 @@ export class KolTableStateful implements TableAPI {
 			vertical: [],
 		},
 		_label: '', // ⚠ required
-		_minWidth: 'auto',
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
@@ -297,13 +289,6 @@ export class KolTableStateful implements TableAPI {
 		});
 	}
 
-	@Watch('_minWidth')
-	public validateMinWidth(value?: string): void {
-		watchString(this, '_minWidth', value, {
-			defaultValue: undefined,
-		});
-	}
-
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
@@ -390,7 +375,6 @@ export class KolTableStateful implements TableAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
 		this.validateLabel(this._label);
-		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validatePagination(this._pagination);
 		this.validatePaginationPosition(this._paginationPosition);
@@ -570,7 +554,6 @@ export class KolTableStateful implements TableAPI {
 					_headerCells={headerCells}
 					_label={this.state._label}
 					_dataFoot={this.state._dataFoot}
-					_minWidth={this.state._minWidth}
 					_on={{
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);

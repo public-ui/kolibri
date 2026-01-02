@@ -49,10 +49,12 @@ const BACKLOG_DATA: BacklogEntry[] = Array.from({ length: 15 }).map((_, index) =
 	status: STATUS_SEQUENCE[index % STATUS_SEQUENCE.length],
 	openTickets: (index * 3) % 11,
 }));
+
 const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Assignee',
 		key: 'assignee',
+
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			(data0 as BacklogEntry).assignee.localeCompare((data1 as BacklogEntry).assignee, 'de'),
 		sortDirection: 'ASC',
@@ -60,12 +62,14 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Department',
 		key: 'department',
+
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			(data0 as BacklogEntry).department.localeCompare((data1 as BacklogEntry).department, 'de'),
 	},
 	{
 		label: 'Priority',
 		key: 'priority',
+
 		textAlign: 'center',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			PRIORITY_ORDER[(data0 as BacklogEntry).priority] - PRIORITY_ORDER[(data1 as BacklogEntry).priority],
@@ -74,6 +78,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Status',
 		key: 'status',
+
 		textAlign: 'center',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			STATUS_ORDER[(data0 as BacklogEntry).status] - STATUS_ORDER[(data1 as BacklogEntry).status],
@@ -81,12 +86,14 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 	{
 		label: 'Open tickets',
 		key: 'openTickets',
+
 		textAlign: 'right',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as BacklogEntry).openTickets - (data1 as BacklogEntry).openTickets,
 	},
 	{
 		label: 'Last updated',
 		key: 'date',
+
 		textAlign: 'center',
 		render: (_el, _cell, tuple) => DATE_FORMATTER.format((tuple as BacklogEntry).date),
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => {
@@ -123,7 +130,6 @@ export const MultiSortTable: FC = () => {
 					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setVerticalHeader({ vertical: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
-						_minWidth="auto"
 						_data={BACKLOG_DATA.slice(0, 10)}
 						_headers={verticallHeader}
 						className="block"
@@ -133,14 +139,7 @@ export const MultiSortTable: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Horizontal" />
 					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setHorizontalHeader({ horizontal: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
-					<KolTableStateful
-						_label="Sort Table with Order and Date"
-						_minWidth="auto"
-						_data={BACKLOG_DATA}
-						_headers={horizontalHeader}
-						className="block"
-						_allowMultiSort={true}
-					/>
+					<KolTableStateful _label="Sort Table with Order and Date" _data={BACKLOG_DATA} _headers={horizontalHeader} className="block" _allowMultiSort={true} />
 				</section>
 			</section>
 		</>

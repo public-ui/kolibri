@@ -11,20 +11,19 @@ executeSnapshotTests<TableStatelessProps>(
 		{
 			_label: 'Table with horizontal and vertical headers',
 			_hasSettingsMenu: true,
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
-						{ key: 'header1', label: 'Header1', textAlign: 'left' },
-						{ key: 'header2', label: 'Header2', textAlign: 'center' },
-						{ key: 'header3', label: 'Header3', textAlign: 'right' },
+						{ key: 'header1', label: 'Header1', textAlign: 'left', width: 140 },
+						{ key: 'header2', label: 'Header2', textAlign: 'center', width: 130 },
+						{ key: 'header3', label: 'Header3', textAlign: 'right', width: 120 },
 					],
 				],
 				vertical: [
 					[
-						{ key: 'row1', label: 'Row 1', textAlign: 'left' },
-						{ key: 'row2', label: 'Row 2', textAlign: 'center' },
-						{ key: 'row3', label: 'Row 3', textAlign: 'right' },
+						{ key: 'row1', label: 'Row 1', textAlign: 'left', width: 80 },
+						{ key: 'row2', label: 'Row 2', textAlign: 'center', width: 80 },
+						{ key: 'row3', label: 'Row 3', textAlign: 'right', width: 80 },
 					],
 				],
 			},
@@ -36,12 +35,11 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with only horizontal headers',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
-						{ key: 'header1', label: 'Header 1', textAlign: 'left' },
-						{ key: 'header2', label: 'Header 2', textAlign: 'center' },
+						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 150 },
+						{ key: 'header2', label: 'Header 2', textAlign: 'center', width: 180 },
 					],
 				],
 				vertical: [],
@@ -53,7 +51,6 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two horizontal header rows',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
@@ -61,14 +58,14 @@ executeSnapshotTests<TableStatelessProps>(
 						{ label: 'Header 2', textAlign: 'center' },
 					],
 					[
-						{ key: 'header1', label: 'Sub Header 1', textAlign: 'left' },
-						{ key: 'header2', label: 'Sub Header 2', textAlign: 'center' },
+						{ key: 'header1', label: 'Sub Header 1', textAlign: 'left', width: 120 },
+						{ key: 'header2', label: 'Sub Header 2', textAlign: 'center', width: 190 },
 					],
 				],
 				vertical: [
 					[
-						{ key: 'row-1', label: 'Row 1', textAlign: 'left' },
-						{ key: 'row-2', label: 'Row 2', textAlign: 'center' },
+						{ key: 'row-1', label: 'Row 1', textAlign: 'left', width: 90 },
+						{ key: 'row-2', label: 'Row 2', textAlign: 'center', width: 90 },
 					],
 				],
 			},
@@ -79,16 +76,21 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two spanned horizontal and vertical headers',
-			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[{ label: 'H-Header', colSpan: 2 }],
 					[
-						{ key: 'header1', label: 'Sub H-Header 1' },
-						{ key: 'header2', label: 'Sub H-Header 2' },
+						{ key: 'header1', label: 'Sub H-Header 1', width: 130 },
+						{ key: 'header2', label: 'Sub H-Header 2', width: 130 },
 					],
 				],
-				vertical: [[{ label: 'V-Header', rowSpan: 2 }], [{ label: 'Sub V-Header 1' }, { label: 'Sub V-Header 2' }]],
+				vertical: [
+					[{ label: 'V-Header', rowSpan: 2 }],
+					[
+						{ label: 'Sub V-Header 1', width: 100 },
+						{ label: 'Sub V-Header 2', width: 100 },
+					],
+				],
 			},
 			_data: [
 				{ header1: 'Cell 1.1', header2: 'Cell 1.2' },
@@ -96,10 +98,26 @@ executeSnapshotTests<TableStatelessProps>(
 			],
 		},
 		{
-			_label: 'Table without data shows empty hint',
-			_minWidth: '400px',
+			_label: 'Table with merged parent column width only',
 			_headerCells: {
-				horizontal: [[{ key: 'header1', label: 'Header 1', textAlign: 'left' }]],
+				horizontal: [
+					[{ label: 'Personal Info', colSpan: 2, width: 300 }],
+					[
+						{ key: 'firstName', label: 'First Name' },
+						{ key: 'lastName', label: 'Last Name' },
+					],
+				],
+				vertical: [],
+			},
+			_data: [
+				{ firstName: 'John', lastName: 'Doe' },
+				{ firstName: 'Jane', lastName: 'Smith' },
+			],
+		},
+		{
+			_label: 'Table without data shows empty hint',
+			_headerCells: {
+				horizontal: [[{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 180 }]],
 				vertical: [],
 			},
 			_data: [],

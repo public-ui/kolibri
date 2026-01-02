@@ -18,14 +18,13 @@ export const PredefinedSettings: FC = () => {
 				_headers={{
 					horizontal: [
 						[
-							{ key: 'columnC', visible: true, label: 'Column C', width: '45ch' },
-							{ key: 'columnB', visible: true, label: 'Column B', width: '20ch' },
-							{ key: 'columnA', visible: false, label: 'Column A' },
+							{ key: 'columnC', visible: true, label: 'Column C', width: 450 },
+							{ key: 'columnB', visible: true, label: 'Column B', width: 200 },
+							{ key: 'columnA', visible: false, label: 'Column A', width: 160 },
 						],
 					],
 				}}
 				_data={DATA}
-				_minWidth="500px"
 				className="block"
 				style={{ maxWidth: '600px' }}
 			/>

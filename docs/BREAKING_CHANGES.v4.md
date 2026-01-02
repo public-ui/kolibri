@@ -137,11 +137,137 @@ onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | KoliBriTa
 
 **After (v4):**
 
-````typescript
+```typescript
 onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | null) => {
 	// Direct usage - always an array or null
 	setSelectedData(selection || []);
 };
+```
+
+#### Header Cell Width and Label Requirements, \_minWidth Removal
+
+The `_minWidth` property has been removed from kol-table components. The table now uses `table-layout: fixed` in CSS. When `width` values are provided on header cells, the sum of all widths determines the table's minimum width.
+
+**Breaking Type Changes:**
+
+- `KoliBriTableCell.width` remains optional, but is now `number | undefined` (pixels only, no string units)
+  - When provided, must be a number (e.g., `200` for 200 pixels)
+  - When omitted, the column width is determined by CSS (auto-sized by content)
+
+**CSS Behavior Change:**
+
+The table now uses `table-layout: fixed`, which provides:
+
+- Predictable column widths: Columns with explicit `width` are exactly as wide as specified
+- Better performance: Browser doesn't need to calculate widths based on content
+- Flexible layout: Columns without `width` are auto-sized; the table's minimum width is only the sum of explicitly defined column widths
+
+**Before (v3):**
+
+```typescript
+// _minWidth property on component, table-layout: auto (content-dependent widths)
+<kol-table-stateful _minWidth="400px" _headerCells={headerCells}></kol-table-stateful>
+
+const headerCells = {
+	horizontal: [
+		[
+			{ key: 'name', label: 'Name' },                    // width optional
+			{ key: 'age', label: 'Age', width: '150px' },      // width as string with unit
+		],
+	],
+	vertical: [],
+};
+```
+
+**After (v4):**
+
+```typescript
+// _minWidth removed - table uses table-layout: fixed
+<kol-table-stateful _headerCells={headerCells}></kol-table-stateful>
+
+const headerCells = {
+	horizontal: [
+		[
+			{ key: 'name', label: 'Name' },                   // width optional - column auto-sizes
+			{ key: 'age', label: 'Age', width: 150 },         // width as number (pixels)
+		],
+	],
+	vertical: [],
+};
+// Table minimum width is 150px (only columns with explicit width are counted)
+```
+
+**Migration:**
+
+- Remove all `_minWidth` properties from table components
+- Convert any `width` string values (e.g., `'150px'`) to numbers (e.g., `150`)
+- The `width` property is optional – omit it if you want the column to auto-size
+- The `label` property is already required
+- With `table-layout: fixed`, columns with explicit widths are exact – plan your widths to accommodate content
+
+#### Multiple Header Rows and Width Calculation
+
+When using multiple header rows (e.g., a parent row with merged columns and a child row with individual columns), the table's minimum width is calculated by summing **all** width values from **all** header rows.
+
+**Important:** With multiple header rows, you should specify width on **either** the merged (parent) column **or** the individual (child) columns—not both. If you specify widths on both levels, all widths are summed together, which may result in a wider table than intended.
+
+**Guidelines:**
+
+- **Equal distribution:** Specify only the width of the merged (parent) column. Child columns will distribute the space equally based on their content.
+- **More control:** Specify widths on individual (child) columns instead of the merged column. This gives precise control over each column's width.
+
+**Example 1: Width on merged column only (equal distribution)**
+
+```typescript
+const headerCells = {
+	horizontal: [
+		[
+			{ label: 'Personal Info', colSpan: 2, width: 300 }, // Merged column with total width
+		],
+		[
+			{ key: 'firstName', label: 'First Name' }, // Child column - auto-sizes within parent
+			{ key: 'lastName', label: 'Last Name' }, // Child column - auto-sizes within parent
+		],
+	],
+};
+// Table minimum width: 300px
+```
+
+**Example 2: Width on individual columns only (more control)**
+
+```typescript
+const headerCells = {
+	horizontal: [
+		[
+			{ label: 'Personal Info', colSpan: 2 }, // Merged column - no width specified
+		],
+		[
+			{ key: 'firstName', label: 'First Name', width: 150 }, // Explicit width
+			{ key: 'lastName', label: 'Last Name', width: 200 }, // Explicit width
+		],
+	],
+};
+// Table minimum width: 350px (150 + 200)
+```
+
+**Example 3: Avoid specifying widths on both levels**
+
+```typescript
+// ⚠️ NOT RECOMMENDED - widths are summed from all rows
+const headerCells = {
+	horizontal: [
+		[
+			{ label: 'Personal Info', colSpan: 2, width: 300 }, // Parent width: 300
+		],
+		[
+			{ key: 'firstName', label: 'First Name', width: 150 }, // Child width: 150
+			{ key: 'lastName', label: 'Last Name', width: 200 }, // Child width: 200
+		],
+	],
+};
+// Table minimum width: 650px (300 + 150 + 200) - probably not intended!
+```
+
 ### Pagination
 
 - The pagination text (e.g., "Page 1 of 10") is now integrated into the Pagination component itself. Previously, this text had to be provided by the application code or was handled by the Stateful Table component.
@@ -156,7 +282,7 @@ onSelectionChange: (_event: Event, selection: KoliBriTableDataType[] | null) => 
 
 // Or it was handled by Stateful Table
 <kol-table-stateful></kol-table-stateful>
-````
+```
 
 **After (Version 4):**
 
@@ -172,11 +298,12 @@ The settings menu is now part of the `_horizontalHeaderCells` prop. The settings
 
 **Header Cell Properties:**
 
+- **`label: string`** - Required. The display text for the column header.
+- **`width?: number`** - Optional. Column width in pixels. The sum of all defined widths determines the table's minimum width. Columns without `width` auto-size.
 - **`visible: boolean`** - Controls whether the column is currently displayed in the table. Users can toggle this in the settings menu if `hidable` is true.
 - **`hidable: boolean`** - Determines if the column can be hidden/shown by the user through the settings menu. If false, the visibility cannot be changed by the user (but may still be changed programmatically).
-- **`sortable: boolean`** - Controls whether a sort button appears in the column header. If true, users can click to sort. The current sort direction is indicated by `sortDirection` ('ASC', 'DESC', or undefined).
+- **`sortable: boolean`** - Controls whether a sort button appears in the column header. If true, users can click to sort. The current sort direction is indicated by `sortDirection` ('ASC', 'DESC', or 'NOS').
 - **`resizable: boolean`** - Determines if the column width can be adjusted by the user through the settings menu.
-- **`width: string`** - CSS width value (e.g., '20ch', '150px') that can be modified by users if `resizable` is true.
 
 **Before:**
 
@@ -205,21 +332,21 @@ const headerCells = {
 			{
 				key: 'firstName',
 				label: 'First Name',
+				width: 200, // Optional: width in pixels
 				visible: true, // Column is displayed
 				hidable: true, // User can hide this column
 				sortable: true, // User can sort by this column
 				resizable: true, // User can resize this column
-				width: '20ch', // Current width
 				sortDirection: 'ASC', // Current sort state
 			},
 			{
 				key: 'age',
 				label: 'Age',
+				width: 100, // Optional: width in pixels
 				visible: true,
 				hidable: false, // This column cannot be hidden by user
 				sortable: true,
 				resizable: false, // Fixed width
-				width: '8ch',
 			},
 		],
 	],

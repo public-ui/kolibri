@@ -12,9 +12,9 @@ const DATA = [
 const HEADERS: TableHeaderCellsPropType = {
 	horizontal: [
 		[
-			{ key: 'id', label: 'ID' },
-			{ key: 'name', label: 'Name' },
-			{ key: 'age', label: 'Age' },
+			{ key: 'id', label: 'ID', width: 120 },
+			{ key: 'name', label: 'Name', width: 180 },
+			{ key: 'age', label: 'Age', width: 120 },
 		],
 	],
 };
@@ -85,9 +85,9 @@ test.describe('kol-table-settings', () => {
 
 			await expect(eventPromise).resolves.toEqual([
 				[
-					{ key: 'id', label: 'ID', visible: true, hidable: true },
-					{ key: 'name', label: 'Name', visible: true, hidable: true },
-					{ key: 'age', label: 'Age', visible: true, hidable: true },
+					{ key: 'id', label: 'ID', visible: true, hidable: true, width: 120 },
+					{ key: 'name', label: 'Name', visible: true, hidable: true, width: 180 },
+					{ key: 'age', label: 'Age', visible: true, hidable: true, width: 120 },
 				],
 			]);
 		});
@@ -169,7 +169,7 @@ test.describe('kol-table-settings', () => {
 
 			// Verify width is applied
 			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
-			await expect(idColumn).toHaveAttribute('style', 'width: 50ch;');
+			await expect(idColumn).toHaveCSS('width', '50px');
 		});
 	});
 

@@ -36,8 +36,6 @@ import {
 	validateTableSelection,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
-import type { MinWidthPropType } from '../../schema/props/min-width';
-import { validateMinWidth } from '../../schema/props/min-width';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -61,7 +59,6 @@ export class KolTableStateless implements TableStatelessAPI {
 			vertical: [],
 		},
 		_label: '',
-		_minWidth: 'auto',
 		_hasSettingsMenu: false,
 	};
 
@@ -104,11 +101,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: string;
-
-	/**
-	 * Defines the table min-width (CSS width values).
-	 */
-	@Prop() public _minWidth!: MinWidthPropType;
 
 	/**
 	 * Defines the callback functions for table events.
@@ -161,11 +153,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		validateLabel(this, value, {
 			required: true,
 		});
-	}
-
-	@Watch('_minWidth')
-	public validateMinWidth(value?: MinWidthPropType): void {
-		validateMinWidth(this, value);
 	}
 
 	@Watch('_on')
@@ -487,7 +474,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
-		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
@@ -655,7 +641,6 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowSpan={cell.rowSpan}
 					style={{
 						textAlign: cell.textAlign,
-						width: cell.width,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -721,13 +706,49 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	/**
 	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
+	 * Includes the selection column width when selection is enabled.
 	 *
-	 * @return {string} The minimum width of the table as a string. If `_minWidth` is set to 'auto', the width is
-	 * calculated based on the total visible column widths in characters. Otherwise, it returns the greater value
-	 * between `_minWidth` and the calculated total visible column widths.
+	 * When multiple header rows exist, widths from ALL rows are summed. This allows developers to either:
+	 * - Specify the width on merged (parent) columns for equal distribution of child columns
+	 * - Specify widths on individual (child) columns for more control
+	 *
+	 * Note: If widths are specified on both parent and child columns, all widths are summed,
+	 * which may result in a wider table than expected.
+	 *
+	 * @return {string} The minimum width of the table as a string based on the sum of all header widths.
 	 */
 	private getTableMinWidth(): string {
-		return this.state._minWidth ?? 'auto';
+		// Collect widths from ALL horizontal header rows (including parent/merged rows)
+		const horizontalHeaders = this.state._headerCells.horizontal ?? [];
+		const horizontalHeaderWidths: number[] = [];
+		horizontalHeaders.forEach((row) => {
+			row.forEach((cell) => {
+				if (cell.visible !== false && cell.width !== undefined && cell.width > 0) {
+					horizontalHeaderWidths.push(cell.width);
+				}
+			});
+		});
+
+		// Calculate width from ALL vertical headers (all rows, not just first cell)
+		const verticalHeaders = this.state._headerCells.vertical ?? [];
+		const verticalHeaderWidths: number[] = [];
+		verticalHeaders.forEach((column) => {
+			column.forEach((cell) => {
+				if (cell.width !== undefined && cell.width > 0) {
+					verticalHeaderWidths.push(cell.width);
+				}
+			});
+		});
+
+		const allWidths = [...verticalHeaderWidths, ...horizontalHeaderWidths];
+
+		if (allWidths.length === 0) {
+			return '0px';
+		}
+		if (allWidths.length === 1) {
+			return `${allWidths[0]}px`;
+		}
+		return `calc(${allWidths.map((w) => `${w}px`).join(' + ')})`;
 	}
 
 	/**
@@ -742,7 +763,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selection = this.state._selection;
 
 		if (!selection) {
-			return <th class="kol-table__cell kol-table__cell--header" key={`thead-0`}></th>;
+			return <td class="kol-table__cell kol-table__cell--header" key={`thead-0`}></td>;
 		}
 
 		if (selection.multiple === false) {
@@ -801,18 +822,31 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * This header cell is rendered as a TD element when in addition to the horizontal header rows
 	 * there are also vertical header columns. In this case, the cell is rendered blank above the
 	 * vertical header columns.
+	 *
+	 * The width is calculated from the first cell of each vertical header column to ensure
+	 * proper column widths with table-layout: fixed.
 	 */
 	private renderHeaderTdCell(): JSX.Element {
+		const horizontalHeaders = this.state._headerCells.horizontal;
+		const verticalHeaders = this.state._headerCells.vertical;
+
+		if (!Array.isArray(horizontalHeaders) || horizontalHeaders.length === 0 || !Array.isArray(verticalHeaders) || verticalHeaders.length === 0) {
+			return <Fragment></Fragment>;
+		}
+
+		// Calculate total width from the first cell of each vertical header column
+		const totalWidth = verticalHeaders.reduce((sum, column) => {
+			const firstCell = column?.[0];
+			return sum + (firstCell?.width ?? 0);
+		}, 0);
+
 		return (
-			<Fragment>
-				{Array.isArray(this.state._headerCells.horizontal) &&
-					this.state._headerCells.horizontal.length > 0 &&
-					Array.isArray(this.state._headerCells.vertical) &&
-					this.state._headerCells.vertical.length > 0 &&
-					Array.isArray(this.state._headerCells.horizontal) && (
-						<td aria-hidden="true" colSpan={this.state._headerCells.vertical.length} rowSpan={this.state._headerCells.horizontal.length}></td>
-					)}
-			</Fragment>
+			<td
+				aria-hidden="true"
+				colSpan={verticalHeaders.length}
+				rowSpan={horizontalHeaders.length}
+				style={totalWidth > 0 ? { width: `${totalWidth}px` } : undefined}
+			></td>
 		);
 	}
 
@@ -879,9 +913,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
-				style={{
-					width: cell.width,
-				}}
+				style={cell.width !== undefined ? { width: `${cell.width}px` } : undefined}
 				aria-sort={ariaSort}
 				data-sort={canSort && cell.sortDirection ? `sort-${cell.sortDirection}` : undefined}
 			>

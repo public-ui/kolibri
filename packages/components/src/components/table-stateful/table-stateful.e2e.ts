@@ -1,12 +1,20 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableDataType } from '../../schema';
+import type { KoliBriTableDataType, TableHeaderCells } from '../../schema';
 import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];
-const HEADERS = {
-	horizontal: [[{ key: 'id', label: 'ID' }]],
+const HEADERS: TableHeaderCells = {
+	horizontal: [
+		[
+			{
+				key: 'id',
+				label: 'ID',
+				width: 100,
+			},
+		],
+	],
 };
 
 type Data = (typeof DATA)[0];
