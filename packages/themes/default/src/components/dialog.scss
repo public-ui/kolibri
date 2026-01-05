@@ -7,7 +7,7 @@
 	.kol-dialog,
 	.kol-modal {
 		&__card {
-			box-shadow: 0 0 4px var(--color-subtle);
+			box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
 			border-radius: var(--border-radius);
 		}
 	}
