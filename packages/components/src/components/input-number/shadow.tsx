@@ -161,8 +161,13 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				tabIndex={-1}
 				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
 				data-testid="kol-input-number-step-up"
-				onClick={(): void => {
+				onClick={(event: MouseEvent): void => {
 					this.inputRef?.stepUp();
+					// Manually trigger onInput since stepUp() doesn't fire input events
+					const newValue = this.inputRef?.value;
+					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
@@ -183,8 +188,13 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				tabIndex={-1}
 				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
 				data-testid="kol-input-number-step-down"
-				onClick={(): void => {
+				onClick={(event: MouseEvent): void => {
 					this.inputRef?.stepDown();
+					// Manually trigger onInput since stepDown() doesn't fire input events
+					const newValue = this.inputRef?.value;
+					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
