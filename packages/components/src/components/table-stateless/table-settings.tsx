@@ -162,7 +162,7 @@ export class KolTableSettings {
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
 										/>
 										<KolButtonWcTag
-											_icons="codicon codicon-arrow-up"
+											_icons="kolicon-chevron-up"
 											_label={translate('kol-table-settings-move-up', { placeholders: { column: column.label } })}
 											_hideLabel
 											_buttonVariant="ghost"
@@ -171,7 +171,7 @@ export class KolTableSettings {
 											data-testid="table-settings-move-up"
 										/>
 										<KolButtonWcTag
-											_icons="codicon codicon-arrow-down"
+											_icons="kolicon-chevron-down"
 											_label={translate('kol-table-settings-move-down', { placeholders: { column: column.label } })}
 											_hideLabel
 											_buttonVariant="ghost"
