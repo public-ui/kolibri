@@ -68,7 +68,7 @@ const BEM: SCHEMA = {
 /**
  * Define the static BEM class names for the alert component.
  */
-const BEM_CLASS_ALERT__CLOSER = bem('kol-alert', 'closer');
+const BEM_CLASS_ALERT__CLOSER = bem('kol-alert', 'closer') + ' kol-close-button';
 const BEM_CLASS_ALERT__CONTENT = bem('kol-alert', 'content');
 const BEM_CLASS_ALERT__ICON = bem('kol-alert', 'icon');
 
