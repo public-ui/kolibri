@@ -1,14 +1,6 @@
 name: Security Scan
 
 on:
-  pull_request:
-    branches:
-      - 'develop'
-      - 'release/*'
-  push:
-    branches:
-      - 'develop'
-      - 'release/*'
   workflow_dispatch:
     inputs:
       enable_audit:
@@ -36,10 +28,6 @@ jobs:
   targeted-scan:
     name: Security Scan
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'pull_request' ||
-      github.event_name == 'push' ||
-      github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
