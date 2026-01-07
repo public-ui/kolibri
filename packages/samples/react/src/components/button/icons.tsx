@@ -117,7 +117,7 @@ export const ButtonIcons: FC = () => {
 									style: {
 										'font-size': '400%',
 									},
-									icon: 'fa-solid fa-house',
+									icon: 'kolicon-house',
 								},
 							}}
 							_label="Home"

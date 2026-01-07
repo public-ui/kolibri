@@ -20,14 +20,23 @@
 		&--standalone {
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
+			align-items: stretch;
+
+			.#{$block-classname}__text {
+				display: inline-flex;
+				flex: 1 1 100%;
+				place-items: center;
+			}
 		}
 
-		&__text {
+		.kol-span__label {
+			text-decoration-line: underline;
+		}
+
+		&:focus:not([aria-disabled], [disabled]),
+		&:hover:not([aria-disabled], [disabled]) {
 			.kol-span__label {
-				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
-					text-decoration-thickness: 0.2em;
-				}
-				text-decoration-line: underline;
+				text-decoration-thickness: 0.2em;
 			}
 		}
 
