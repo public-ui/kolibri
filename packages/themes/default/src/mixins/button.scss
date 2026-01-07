@@ -52,10 +52,7 @@
 		}
 
 		&--ghost {
-			--text-background-color: var(--color-light);
-			--text-border-color: var(--color-light);
-			--text-color: var(--color-primary);
-			--text-box-shadow: none;
+			@include kol-button-ghost();
 		}
 
 		&--primary,
@@ -123,4 +120,17 @@
 			}
 		}
 	}
+
+	.kol-close-button .#{$block-classname}--normal {
+		@include kol-button-ghost();
+
+		--kol-focus-outline-offset: -2px;
+	}
+}
+
+@mixin kol-button-ghost {
+	--text-background-color: transparent;
+	--text-border-color: transparent;
+	--text-color: var(--color-primary);
+	--text-box-shadow: none;
 }
