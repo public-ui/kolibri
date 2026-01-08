@@ -31,10 +31,10 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const leftDoubleArrowIcon = {
-	left: 'kolicon-chevron-left',
+	left: 'kolicon-chevron-double-left',
 };
 const leftSingleArrow = {
-	left: 'kolicon-chevron-double-left',
+	left: 'kolicon-chevron-left',
 };
 const rightSingleArrowIcon = {
 	right: 'kolicon-chevron-right',
