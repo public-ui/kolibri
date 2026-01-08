@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-button-link', () => {
 	test('it renders label', async ({ page }) => {
@@ -47,7 +46,7 @@ test.describe('kol-button-link', () => {
 	});
 
 	test.describe('DOM events', () => {
-		[KolEvent.click, KolEvent.mousedown].forEach((event) => {
+		['click', 'mousedown'].forEach((event) => {
 			test(`should emit ${event} when internal button emits ${event}`, async ({ page }) => {
 				await page.setContent('<kol-button-link _label="Button"></kol-button-link>');
 				const eventPromise = page.locator('kol-button-link').evaluate(async (element, event) => {

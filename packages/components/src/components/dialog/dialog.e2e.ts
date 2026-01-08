@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 const dialogTags = ['kol-dialog', 'kol-modal'] as const;
 
@@ -84,14 +83,14 @@ dialogTags.forEach((tag) => {
 				await page.setContent(`<${tag} _label="">Modal content</${tag}>`);
 				const dialogElement = page.locator(tag);
 
-				const eventPromise = dialogElement.evaluate((element, kolEvent: typeof KolEvent) => {
+				const eventPromise = dialogElement.evaluate((element) => {
 					const dialog = element as HTMLKolDialogElement;
 					return new Promise<void>((resolve) => {
-						dialog.addEventListener(kolEvent.close, () => {
+						dialog.addEventListener('close', () => {
 							resolve();
 						});
 					});
-				}, KolEvent);
+				});
 
 				await dialogElement.evaluate(async (element) => {
 					const dialog = element as HTMLKolDialogElement;
@@ -106,14 +105,14 @@ dialogTags.forEach((tag) => {
 				await page.setContent(`<${tag} _label="">Modal content</${tag}>`);
 				const dialogElement = page.locator(tag);
 
-				const eventPromise = dialogElement.evaluate((element, kolEvent: typeof KolEvent) => {
+				const eventPromise = dialogElement.evaluate((element) => {
 					const dialog = element as HTMLKolDialogElement;
 					return new Promise<void>((resolve) => {
-						dialog.addEventListener(kolEvent.close, () => {
+						dialog.addEventListener('close', () => {
 							resolve();
 						});
 					});
-				}, KolEvent);
+				});
 
 				await dialogElement.evaluate(async (element) => {
 					const dialog = element as HTMLKolDialogElement;

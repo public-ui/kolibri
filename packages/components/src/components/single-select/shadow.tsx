@@ -98,17 +98,19 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	};
 
-	private onBlur() {
+	private onBlur(event: FocusEvent) {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else {
+		} else if (!this._isOpen) {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
 
-		this._isOpen = false;
+		if (event instanceof FocusEvent && event.view === window) {
+			this._isOpen = false;
+		}
 	}
 
 	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
@@ -249,6 +251,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 			const optionElement = this.refOptions[index];
 			optionElement?.focus();
 		}
+	}
+
+	private selectFocusedOption(): boolean {
+		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
+			this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+			return true;
+		}
+		return false;
 	}
 
 	private focusSuggestionStartingWith(char: string) {
@@ -409,17 +419,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 		);
 	}
 
-	@Listen('focusout', { target: 'window' })
-	public handleFocusOut() {
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
 		setTimeout(() => {
 			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur();
+				this.onBlur(event);
 			}
-		}, 0);
+		});
 	}
-	@Listen('blur', { target: 'window' })
-	public handleWindowBlur() {
-		this.onBlur();
+	@Listen('blur')
+	public handleWindowBlur(event: FocusEvent) {
+		this.onBlur(event);
 	}
 
 	@Listen('keydown')
@@ -461,22 +471,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 				handleEvent(false);
 				break;
 			}
-			case ' ': {
+			case ' ':
+			case 'Enter':
+			case 'NumpadEnter': {
 				if (this._isOpen) {
-					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+					if (this.selectFocusedOption()) {
 						this.refInput?.focus();
 						handleEvent(false);
 					}
 				} else {
 					this.toggleListbox(event);
 				}
-				break;
-			}
-			case 'NumpadEnter':
-			case 'Enter': {
-				this.toggleListbox(event);
-				this._isOpen = false;
 				break;
 			}
 			case 'Home': {

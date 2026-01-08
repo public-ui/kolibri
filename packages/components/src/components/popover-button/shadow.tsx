@@ -3,9 +3,7 @@ import { Component, h, Method, Prop } from '@stencil/core';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
-	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
-	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
@@ -68,9 +66,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 			<KolPopoverButtonWcTag
 				ref={this.catchRef}
 				_accessKey={this._accessKey}
-				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}
-				_ariaSelected={this._ariaSelected}
 				_customClass={this._customClass}
 				_disabled={this._disabled}
 				_hideLabel={this._hideLabel}
@@ -79,7 +75,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_inline={this._inline}
 				_label={this._label}
 				_name={this._name}
-				_on={this._on}
 				_popoverAlign={this._popoverAlign}
 				_shortKey={this._shortKey}
 				_syncValueBySelector={this._syncValueBySelector}
@@ -101,19 +96,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 */
-	@Prop() public _ariaControls?: string;
-
-	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 */
-	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
@@ -159,21 +144,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _name?: string;
 
 	/**
-	 * Defines the callback functions for button events.
-	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
-
-	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
 	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
-
-	/**
-	 * Defines the role of the components primary element.
-	 *
-	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
-	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
