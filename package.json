@@ -1,20 +1,20 @@
 {
 	"devDependencies": {
-		"@commitlint/cli": "19.8.1",
-		"@commitlint/config-conventional": "19.8.1",
+		"@commitlint/cli": "20.3.0",
+		"@commitlint/config-conventional": "20.3.0",
 		"husky": "9.1.7",
-		"lerna": "8.2.4",
+		"lerna": "9.0.3",
 		"license-report": "6.8.1",
 		"lint-staged": "16.2.7",
-		"npm-check-updates": "18.3.1",
+		"npm-check-updates": "19.3.1",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "16.26.1",
 		"stylelint-config-recommended-scss": "16.0.2",
 		"stylelint-config-standard": "39.0.1",
-		"stylelint-order": "7.0.0",
-		"stylelint-scss": "6.13.0"
+		"stylelint-order": "7.0.1",
+		"stylelint-scss": "6.14.0"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -55,8 +55,8 @@
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @unocss/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
