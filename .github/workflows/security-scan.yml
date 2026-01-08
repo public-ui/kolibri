@@ -1,14 +1,6 @@
 name: Security Scan
 
 on:
-  pull_request:
-    branches:
-      - 'develop'
-      - 'release/*'
-  push:
-    branches:
-      - 'develop'
-      - 'release/*'
   workflow_dispatch:
     inputs:
       enable_audit:
