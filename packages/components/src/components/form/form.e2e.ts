@@ -1,16 +1,23 @@
-import { expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
 test.describe('kol-form', () => {
+	const setUpForm = async (page: Page) => {
+		await page.setContent('<kol-form />');
+		return {
+			form: page.locator('form'),
+			kolForm: page.locator('kol-form'),
+		};
+	};
+
 	test.describe('Callbacks', () => {
-		const EVENTS: [string, string, unknown?][] = [
+		const EVENTS: [string, string][] = [
 			['submit', 'onSubmit'],
 			['reset', 'onReset'],
 		];
 		EVENTS.forEach(([eventName, callbackName]) => {
 			test(`should call ${callbackName} callback when internal form emits`, async ({ page }) => {
-				await page.setContent('<kol-form />');
-				const kolForm = page.locator('kol-form');
+				const { form, kolForm } = await setUpForm(page);
 
 				const callbackPromise = kolForm.evaluate((element: HTMLKolFormElement, callbackName) => {
 					return new Promise<void>((resolve) => {
@@ -23,7 +30,7 @@ test.describe('kol-form', () => {
 				}, callbackName);
 				await page.waitForChanges();
 
-				await page.locator('form').dispatchEvent(eventName);
+				await form.dispatchEvent(eventName);
 				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
@@ -36,8 +43,8 @@ test.describe('kol-form', () => {
 		];
 		EVENTS.forEach(([nativeEvent, eventName]) => {
 			test(`should emit ${eventName} when internal form emits ${nativeEvent}`, async ({ page }) => {
-				await page.setContent('<kol-form />');
-				const eventPromise = page.locator('kol-form').evaluate(async (element: HTMLKolFormElement, eventName: string) => {
+				const { form, kolForm } = await setUpForm(page);
+				const eventPromise = kolForm.evaluate(async (element: HTMLElement, eventName: string) => {
 					return new Promise<void>((resolve) => {
 						element.addEventListener(eventName, () => {
 							resolve();
@@ -45,7 +52,7 @@ test.describe('kol-form', () => {
 					});
 				}, eventName);
 				await page.waitForChanges();
-				await page.locator('form').dispatchEvent(nativeEvent);
+				await form.dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeUndefined();
 			});
 		});
