@@ -66,14 +66,14 @@
 		"vercel:deploy:prod": "vercel --prod"
 	},
 	"dependencies": {
-		"@modelcontextprotocol/sdk": "1.24.3",
+		"@modelcontextprotocol/sdk": "1.25.2",
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
 		"fuse.js": "7.1.0",
 		"zod": "3.25.76"
 	},
 	"devDependencies": {
-		"@modelcontextprotocol/inspector": "0.17.5",
+		"@modelcontextprotocol/inspector": "0.18.0",
 		"@types/express": "5.0.6",
 		"@types/node": "24.10.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
@@ -82,7 +82,7 @@
 		"eslint-config-prettier": "9.1.2",
 		"eslint-plugin-html": "8.1.3",
 		"eslint-plugin-json": "3.1.0",
-		"knip": "5.73.4",
+		"knip": "5.80.0",
 		"nodemon": "3.1.11",
 		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0",
