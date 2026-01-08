@@ -63,7 +63,8 @@
 		"nodemon": "3.1.11",
 		"rimraf": "6.1.2",
 		"ts-node": "10.9.2",
-		"typescript": "5.9.3"
+		"typescript": "5.9.3",
+		"@eslint/js": "9.39.2"
 	},
 	"files": [
 		"dist"

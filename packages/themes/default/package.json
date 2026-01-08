@@ -80,7 +80,8 @@
 		"sass-embedded": "1.97.2",
 		"stylelint": "16.26.1",
 		"typescript": "5.9.3",
-		"unbuild": "3.6.1"
+		"unbuild": "3.6.1",
+		"@eslint/js": "9.39.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"

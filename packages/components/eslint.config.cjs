@@ -1,8 +1,16 @@
+const js = require('@eslint/js');
 const { FlatCompat } = require('@eslint/eslintrc');
 
 const compat = new FlatCompat({
 	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
 	resolvePluginsRelativeTo: __dirname,
+	allConfig: js.configs.all,
 });
 
-module.exports = [...compat.config(require('./.eslintrc.js'))];
+module.exports = [
+	{
+		ignores: ['**/assets/**', 'scripts/*.js', 'src/**/*.js', 'src/**/*.html'],
+	},
+	...compat.config(require('./.eslintrc.js'))
+]

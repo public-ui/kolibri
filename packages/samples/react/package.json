@@ -72,5 +72,8 @@
 		"tsconfig.json",
 		"unocss.config.ts",
 		"vite.config.ts"
-	]
+	],
+	"devDependencies": {
+		"@eslint/js": "9.39.2"
+	}
 }

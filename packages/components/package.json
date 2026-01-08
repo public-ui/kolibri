@@ -136,7 +136,8 @@
 		"stylelint": "16.26.1",
 		"terser": "5.44.1",
 		"twig": "1.17.1",
-		"typescript": "5.9.3"
+		"typescript": "5.9.3",
+		"@eslint/js": "9.39.2"
 	},
 	"peerDependencies": {
 		"adopted-style-sheets": "1.1.9-rc.20"
