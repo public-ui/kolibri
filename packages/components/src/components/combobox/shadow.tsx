@@ -675,7 +675,7 @@ export class KolCombobox implements ComboboxAPI {
 			if (!this.host?.contains(document.activeElement)) {
 				this.onBlur(event);
 			}
-		}, 0);
+		});
 	}
 	@Listen('blur')
 	public handleWindowBlur(event: FocusEvent) {
