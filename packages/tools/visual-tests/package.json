@@ -42,7 +42,7 @@
 		"@babel/plugin-syntax-import-attributes": "7.27.1",
 		"@babel/preset-env": "7.28.5",
 		"@playwright/test": "1.57.0",
-		"eslint": "8.57.1",
+		"eslint": "9.39.2",
 		"knip": "5.80.0",
 		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0"

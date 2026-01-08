@@ -65,10 +65,10 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "7.18.0",
-		"@typescript-eslint/parser": "7.18.0",
+		"@typescript-eslint/eslint-plugin": "8.52.0",
+		"@typescript-eslint/parser": "8.52.0",
 		"cross-env": "10.1.0",
-		"eslint": "8.57.1",
+		"eslint": "9.39.2",
 		"mocha": "10.8.2",
 		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0",
