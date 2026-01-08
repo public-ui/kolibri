@@ -53,7 +53,7 @@ export class KolCardWc implements CardAPI {
 					</div>
 					{this.state._hasCloser && (
 						<KolButtonWcTag
-							class="kol-card__close-button"
+							class="kol-card__close-button kol-close-button"
 							data-testid="card-close-button"
 							_hideLabel
 							_icons={{
