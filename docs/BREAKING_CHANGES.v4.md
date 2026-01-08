@@ -31,6 +31,62 @@ import { defineCustomElements } from '@public-ui/components/loader';
 - Input messages only render once the field is marked as `_touched`, regardless of the message type. Ensure `_touched` is set when a message should be displayed.
 - The `kolFocus()` and `kolFocusLink()` methods have been removed in v4. Use the native `focus()` method instead.
   - **Migration note:** Runtime backward compatibility for `kolFocus()` and `kolFocusLink()` is not provided. If your code still calls these helper methods, you must update it (for example, by running the KoliBri migration CLI) to use the native `focus()` method on the relevant element.
+- DOM events emitted by components now use native event names without the `kol` prefix. Listen for `change`, `submit`, `click`, and similar names. All `kol*` event aliases have been removed.
+
+**Complete list of event name changes:**
+
+| Old Event Name         | New Event Name      |
+| ---------------------- | ------------------- |
+| `kolBlur`              | `blur`              |
+| `kolChange`            | `change`            |
+| `kolChangeHeaderCells` | `changeheadercells` |
+| `kolChangePage`        | `changepage`        |
+| `kolChangePageSize`    | `changepagesize`    |
+| `kolClick`             | `click`             |
+| `kolClose`             | `close`             |
+| `kolCreate`            | `create`            |
+| `kolFocus`             | `focus`             |
+| `kolInput`             | `input`             |
+| `kolKeydown`           | `keydown`           |
+| `kolMousedown`         | `mousedown`         |
+| `kolReset`             | `reset`             |
+| `kolSelect`            | `select`            |
+| `kolSelectionChange`   | `selectionchange`   |
+| `kolSort`              | `sort`              |
+| `kolSubmit`            | `submit`            |
+| `kolToggle`            | `toggle`            |
+
+**Before:**
+
+```ts
+element.addEventListener('kolSubmit', handler);
+element.dispatchEvent(new CustomEvent('kolChange', { detail: value }));
+```
+
+**After:**
+
+```ts
+element.addEventListener('submit', handler);
+element.dispatchEvent(new CustomEvent('change', { detail: value }));
+```
+
+> **W3C Standard Compliance:** All custom event names now follow the W3C naming convention and use lowercase letters only (see [W3C Event Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document/selectionchange_event)). This includes custom events like `changeheadercells`, `changepage`, `changepagesize`, and `selectionchange`. While standard DOM events (like `blur`, `change`, `click`) were already lowercase, our custom composite event names have been updated from camelCase to lowercase for consistency with web standards.
+
+> **TypeScript note:** If you use TypeScript event maps or typed listeners, update any type declarations that still reference the old `kol*` event names. This includes global `HTMLElementEventMap` / `DocumentEventMap` augmentations, custom event map interfaces, and `CustomEvent` type aliases keyed by names like `'kolSubmit'` or `'kolChange'`. Replace those keys with the new native event names (for example, `'submit'`, `'change'`, `'changeheadercells'`, etc.) so your type checks stay in sync with the runtime events.
+
+**Migration examples for custom events:**
+
+```ts
+// Before (v3)
+element.addEventListener('kolChangeHeaderCells', handler);
+element.addEventListener('kolChangePage', handler);
+element.addEventListener('kolSelectionChange', handler);
+
+// After (v4)
+element.addEventListener('changeheadercells', handler);
+element.addEventListener('changepage', handler);
+element.addEventListener('selectionchange', handler);
+```
 
 ### kol-combobox & kol-single-select
 

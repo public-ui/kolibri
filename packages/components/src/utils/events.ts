@@ -1,30 +1,34 @@
 enum KolEvent {
-	blur = 'kolBlur',
-	change = 'kolChange',
-	changeHeaderCells = 'changeHeaderCells',
-	changePage = 'kolChangePage',
-	changePageSize = 'kolChangePageSize',
-	click = 'kolClick',
-	close = 'kolClose',
-	create = 'kolCreate',
-	focus = 'kolFocus',
-	input = 'kolInput',
-	keydown = 'kolKeydown',
-	mousedown = 'kolMousedown',
-	reset = 'kolReset',
-	select = 'kolSelect',
-	selectionChange = 'kolSelectionChange',
-	sort = 'kolSort',
-	submit = 'kolSubmit',
-	toggle = 'kolToggle',
+	blur = 'blur',
+	change = 'change',
+	changeHeaderCells = 'changeheadercells',
+	changePage = 'changepage',
+	changePageSize = 'changepagesize',
+	click = 'click',
+	close = 'close',
+	create = 'create',
+	focus = 'focus',
+	input = 'input',
+	keydown = 'keydown',
+	mousedown = 'mousedown',
+	reset = 'reset',
+	select = 'select',
+	selectionChange = 'selectionchange',
+	sort = 'sort',
+	submit = 'submit',
+	toggle = 'toggle',
 }
 
-function createKoliBriEvent<T>(event: KolEvent, detail?: T): CustomEvent {
-	return new CustomEvent(event, {
-		bubbles: true,
-		cancelable: true,
-		composed: true,
-		detail: detail,
+const DEFAULT_OPTIONS = {
+	bubbles: true,
+	cancelable: true,
+	composed: true,
+} as const;
+
+function createKoliBriEvent<T>(event: KolEvent, detail: T | null = null): CustomEvent<T | null> {
+	return new CustomEvent<T | null>(event, {
+		...DEFAULT_OPTIONS,
+		detail,
 	});
 }
 

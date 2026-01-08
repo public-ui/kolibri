@@ -135,7 +135,7 @@ export const cleanupGlobalRenderer = (): void => {
 
 		setTimeout(() => {
 			throw error;
-		}, 0);
+		});
 	});
 };
 

@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
-import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
 const HEADERS: TableHeaderCellsPropType = {
@@ -64,23 +63,15 @@ test.describe('kol-table-stateless', () => {
 	});
 
 	test.describe('DOM events', () => {
-		test('it emits selectionChange when the selection changes', async ({ page }) => {
+		test('it emits selectionchange when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
-			const selectionChange = String(KolEvent.selectionChange);
-			const eventPromise = page.evaluate(
-				({ selectionChange }) =>
-					new Promise<KoliBriTableSelectionKeys>((resolve) => {
-						const element = document.querySelector('kol-table-stateless');
-						if (!(element instanceof HTMLElement)) {
-							resolve([]);
-							return;
-						}
-						element.addEventListener(selectionChange, (event: Event) => {
-							resolve((event as CustomEvent<KoliBriTableSelectionKeys>).detail);
-						});
-					}),
-				{ selectionChange },
-			);
+			const eventPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				return new Promise<KoliBriTableSelectionKeys>((resolve) => {
+					element.addEventListener('selectionchange', (event: Event) => {
+						resolve((event as CustomEvent<KoliBriTableSelectionKeys>).detail);
+					});
+				});
+			});
 			await kolTableStateless.getByLabel(`Selection for ${DATA[0].id}`).check();
 
 			await expect(eventPromise).resolves.toEqual([DATA[0].id]);
@@ -88,21 +79,13 @@ test.describe('kol-table-stateless', () => {
 
 		test('it emits sort when the ID column header is clicked', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
-			const sortEvent = String(KolEvent.sort);
-			const eventPromise = page.evaluate(
-				({ sortEvent }) =>
-					new Promise<SortEventPayload>((resolve) => {
-						const element = document.querySelector('kol-table-stateless');
-						if (!(element instanceof HTMLElement)) {
-							resolve({ key: '', currentSortDirection: 'NOS' });
-							return;
-						}
-						element.addEventListener(sortEvent, (event: Event) => {
-							resolve((event as CustomEvent<SortEventPayload>).detail);
-						});
-					}),
-				{ sortEvent },
-			);
+			const eventPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				return new Promise<SortEventPayload>((resolve) => {
+					element.addEventListener('sort', (event: Event) => {
+						resolve((event as CustomEvent<SortEventPayload>).detail);
+					});
+				});
+			});
 			await kolTableStateless.getByRole('button', { name: 'ID' }).click();
 
 			await expect(eventPromise).resolves.toEqual({

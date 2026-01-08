@@ -182,6 +182,14 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
+	private selectFocusedOption(): boolean {
+		if (this._filteredSuggestions && this._focusedOptionIndex >= 0 && this._focusedOptionIndex < this._filteredSuggestions.length) {
+			this.selectOption(this._filteredSuggestions[this._focusedOptionIndex] as string);
+			return true;
+		}
+		return false;
+	}
+
 	private focusSuggestionStartingWith(char: string) {
 		const charLowerCase = char.toLowerCase();
 
@@ -362,11 +370,13 @@ export class KolCombobox implements ComboboxAPI {
 				this.refInput?.focus();
 				break;
 			}
-			case 'NumpadEnter':
-			case 'Enter': {
-				if (this._isOpen && this._focusedOptionIndex >= 0) {
-					this._filteredSuggestions && this.selectOption(this._filteredSuggestions[this._focusedOptionIndex] as string);
-					this._isOpen = false;
+			case ' ':
+			case 'Enter':
+			case 'NumpadEnter': {
+				if (this._isOpen) {
+					if (this.selectFocusedOption()) {
+						this._isOpen = false;
+					}
 				} else {
 					this.toggleListbox();
 				}
@@ -412,7 +422,7 @@ export class KolCombobox implements ComboboxAPI {
 	@State()
 	private _filteredSuggestions?: SuggestionsPropType;
 
-	@Listen('click', { target: 'window' })
+	@Listen('click')
 	handleWindowClick(event: MouseEvent) {
 		if (this.host !== undefined && !this.host.contains(event.target as Node)) {
 			this._isOpen = false;
@@ -659,23 +669,24 @@ export class KolCombobox implements ComboboxAPI {
 		this.blockSuggestionMouseOver = false;
 	}
 
-	@Listen('focusout', { target: 'window' })
-	public handleFocusOut() {
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
 		setTimeout(() => {
 			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur();
+				this.onBlur(event);
 			}
-		}, 0);
+		});
 	}
-	@Listen('blur', { target: 'window' })
-	public handleWindowBlur() {
-		this.onBlur();
+	@Listen('blur')
+	public handleWindowBlur(event: FocusEvent) {
+		this.onBlur(event);
 	}
 
-	private onBlur() {
+	private onBlur(event: FocusEvent): void {
 		if (this._isOpen) {
-			this._isOpen = !this._isOpen;
-			this.refInput?.focus();
+			if (event instanceof FocusEvent && event.view === window) {
+				this._isOpen = false;
+			}
 		}
 	}
 

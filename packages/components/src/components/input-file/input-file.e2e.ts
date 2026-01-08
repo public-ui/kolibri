@@ -5,7 +5,6 @@ import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { translate } from '../../i18n';
 import { Callback } from '../../schema/enums';
-import { KolEvent } from '../../utils/events';
 
 const COMPONENT_NAME = 'kol-input-file';
 const TEST_VALUE: [] = [];
@@ -52,7 +51,7 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	test.describe('DOM events', () => {
-		[KolEvent.input, KolEvent.change].forEach((eventName) => {
+		['input', 'change'].forEach((eventName) => {
 			test(`should emit ${eventName} when internal input receives file selection`, async ({ page }) => {
 				await page.setContent(`<kol-input-file _label="Input"></kol-input-file>`);
 				const component = page.locator(COMPONENT_NAME);

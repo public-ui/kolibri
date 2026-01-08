@@ -197,7 +197,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	@Listen('changeHeaderCells')
+	@Listen('changeheadercells')
 	public handleSettingsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
 		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
 		setState(this, '_headerCells', updatedHeaderCells);

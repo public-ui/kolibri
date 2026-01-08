@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { KoliBriTableHeaderCell, TableHeaderCellsPropType } from '../../schema';
-import { KolEvent } from '../../utils/events';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },
@@ -71,13 +70,13 @@ test.describe('kol-table-settings', () => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
 
-			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
+			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
 				return new Promise<KoliBriTableHeaderCell[][]>((resolve) => {
-					element.addEventListener(KolEvent.changeHeaderCells, (event: Event) => {
+					element.addEventListener('changeheadercells', (event: Event) => {
 						resolve((event as CustomEvent).detail as KoliBriTableHeaderCell[][]);
 					});
 				});
-			}, KolEvent);
+			});
 
 			// Apply changes
 			const applyButton = page.getByTestId('table-settings-apply');

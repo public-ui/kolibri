@@ -427,7 +427,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			} else if (!this._rows) {
 				this._rows = 1;
 			}
-		}, 0);
+		});
 	}
 
 	public componentWillLoad(): void {
