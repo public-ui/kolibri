@@ -70,7 +70,7 @@
 		"@angular/compiler-cli": "19.2.18",
 		"@angular/core": "19.2.18",
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "6.0.0"
+		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
 		"rimraf": "6.1.2",
