@@ -94,10 +94,16 @@ Source folder to migrate: ${baseDir}
 `);
 
 				if (!fs.existsSync(baseDir)) {
-					throw logAndCreateError(`The specified source folder "${baseDir}" does not exist or is inaccessible. Please check the path and try again.`);
+					const absolutePath = path.resolve(process.cwd(), baseDir);
+					throw logAndCreateError(
+						`The specified source folder "${absolutePath}" (${baseDir}) does not exist or is inaccessible. Please check the path and try again.`,
+					);
 				}
 				if (!hasKoliBriTags(baseDir)) {
-					console.log(chalk.yellow(`No KoliBri components (web or React) found under "${baseDir}". Check the path or your task configuration.`));
+					const absolutePath = path.resolve(process.cwd(), baseDir);
+					console.log(
+						chalk.yellow(`No KoliBri components (web or React) found under "${absolutePath}" (${baseDir}). Check the path or your task configuration.`),
+					);
 				}
 
 				if (!options.ignoreGreaterVersion && semver.lt(options.overwriteTargetVersion, options.overwriteCurrentVersion)) {
