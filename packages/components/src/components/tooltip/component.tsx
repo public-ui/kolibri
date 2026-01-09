@@ -276,7 +276,6 @@ export class KolTooltipWc implements TooltipAPI {
 	public connectedCallback(): void {
 		this.previousSibling = this.host?.previousElementSibling ?? null;
 		this.parentElement = this.host?.parentElement ?? null;
-		console.log(this.parentElement);
 	}
 
 	public componentDidRender(): void {
