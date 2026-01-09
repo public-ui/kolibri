@@ -211,12 +211,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter react-v19
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-        working-directory: packages/adapters/react-v19
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools visual-tests
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/tools/visual-tests
