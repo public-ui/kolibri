@@ -73,6 +73,10 @@ importers:
         version: 6.14.0(stylelint@16.26.1(typescript@5.9.3))
 
   packages/adapters/angular/v19:
+    dependencies:
+      '@types/minimatch':
+        specifier: 6.0.0
+        version: 6.0.0
     devDependencies:
       '@angular/common':
         specifier: 19.2.18
@@ -89,9 +93,6 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../../components
-      '@types/minimatch':
-        specifier: 6.0.0
-        version: 6.0.0
       '@types/minimist':
         specifier: 1.2.5
         version: 1.2.5
