@@ -1,0 +1,97 @@
+name: Manage NPM Tags
+
+env:
+  prefix: 'v2-'
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        description: 'Action to perform'
+        required: true
+        options:
+          - add
+          - remove
+      tag:
+        type: choice
+        description: 'NPM tag name'
+        required: true
+        options:
+          - dev
+          - latest
+          - lts
+          - next
+      version:
+        type: string
+        description: 'Version to tag (required for add, e.g., 2.3.0)'
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  manage-tags:
+    if: github.repository == 'public-ui/kolibri'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - '@public-ui/angular-v19'
+          - '@public-ui/angular-v20'
+          - '@public-ui/angular-v21'
+          - '@public-ui/components'
+          - '@public-ui/hydrate'
+          - '@public-ui/kolibri-cli'
+          - '@public-ui/preact'
+          - '@public-ui/react'
+          - '@public-ui/react-standalone'
+          - '@public-ui/react-v19'
+          - '@public-ui/sample-react'
+          - '@public-ui/solid'
+          - '@public-ui/theme-bwst'
+          - '@public-ui/theme-default'
+          - '@public-ui/theme-ecl'
+          - '@public-ui/themes'
+          - '@public-ui/visual-tests'
+          - '@public-ui/vue'
+    steps:
+      - name: Validate inputs
+        if: github.event.inputs.action == 'add' && github.event.inputs.version == ''
+        run: |
+          echo "❌ Error: Version is required when adding a tag"
+          exit 1
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: ${{ github.event.inputs.action }} tag "${{ github.event.inputs.tag }}" for ${{ matrix.package }}
+        run: |
+          if [ "${{ github.event.inputs.action }}" == "add" ]; then
+            npm dist-tag add ${{ matrix.package }}@${{ github.event.inputs.version }} ${{ env.prefix }}${{ github.event.inputs.tag }}
+          else
+            npm dist-tag rm ${{ matrix.package }} ${{ env.prefix }}${{ github.event.inputs.tag }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
+
+  summary:
+    if: github.repository == 'public-ui/kolibri'
+    needs: manage-tags
+    runs-on: ubuntu-latest
+    steps:
+      - name: Summary
+        run: |
+          echo "## NPM Tag Management Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Action:** ${{ github.event.inputs.action }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** ${{ env.prefix }}${{ github.event.inputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event.inputs.action }}" == "add" ]; then
+            echo "**Version:** ${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All packages processed successfully." >> $GITHUB_STEP_SUMMARY
