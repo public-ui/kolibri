@@ -5,6 +5,7 @@ import { filterFilesByExt, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 const LOADER_FILE_EXTENSIONS: FileExtension[] = ['js', 'jsx', 'ts', 'tsx', 'vue'];
+const LOADER_IMPORT_REGEX = /@public-ui\/components\/dist\/loader(?:\/[^\s'"]+)?/g;
 
 export class UpdateLoaderImportPathTask extends AbstractTask {
 	protected constructor(identifier: string, versionRange: string, dependentTasks?: AbstractTask[], options?: TaskOptions) {
@@ -26,7 +27,7 @@ export class UpdateLoaderImportPathTask extends AbstractTask {
 	private transpileFiles(baseDir: string): void {
 		filterFilesByExt(baseDir, LOADER_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
-			const newContent = content.replace(/@public-ui\/components\/dist\/loader/g, '@public-ui/components/loader');
+			const newContent = content.replace(LOADER_IMPORT_REGEX, '@public-ui/components/loader');
 
 			if (newContent !== content) {
 				MODIFIED_FILES.add(file);
