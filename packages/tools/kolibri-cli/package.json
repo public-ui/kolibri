@@ -21,14 +21,12 @@
 	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
 		"build": "tsc",
-		"reset": "pnpm i @public-ui/components@1.1.7",
 		"format": "prettier -c src",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
 		"lint:tsc": "tsc --noemit",
 		"pretest:unit": "pnpm build",
-		"restart": "pnpm reset && pnpm start",
-		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
+		"start": "ts-node src/index.ts migrate --ignore-uncommitted-changes --overwrite-current-version=3.0.9 --overwrite-target-version=4.0.0 --test-tasks ./release-2-temp",
 		"test:unit": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register test/**/*.ts --no-experimental-strip-types",
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test"
@@ -50,7 +48,6 @@
 		"@types/node": "24.10.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"cpy-cli": "6.0.0",
 		"cross-env": "10.1.0",
 		"eslint": "8.57.1",
 		"eslint-config-prettier": "9.1.2",
@@ -61,7 +58,6 @@
 		"knip": "5.80.0",
 		"mocha": "11.7.5",
 		"nodemon": "3.1.11",
-		"rimraf": "6.1.2",
 		"ts-node": "10.9.2",
 		"typescript": "5.9.3"
 	},

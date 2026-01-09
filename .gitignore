@@ -2,6 +2,7 @@
 /.nx/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
+/test-migration/
 
 # in all sub folders
 .DS_Store/

@@ -4,8 +4,6 @@
 	"ignoreDependencies": [
 		"@public-ui/components",
 		"@public-ui/theme-default",
-		"@types/mocha",
-		"@wdio/globals",
 		"@wdio/local-runner",
 		"@wdio/mocha-framework",
 		"@wdio/spec-reporter",
