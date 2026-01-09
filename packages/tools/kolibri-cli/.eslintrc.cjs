@@ -18,6 +18,14 @@ module.exports = {
 	},
 	plugins: ['html', 'react'],
 	rules: {
+		'@typescript-eslint/no-unused-vars': [
+			'warn',
+			{
+				argsIgnorePattern: '^_',
+				caughtErrors: 'none',
+				ignoreRestSiblings: true,
+			},
+		],
 		eqeqeq: 'error',
 	},
 	settings: {
