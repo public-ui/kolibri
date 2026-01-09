@@ -124,9 +124,9 @@ jobs:
       # Run migration
       - name: Run migration
         run: |
-          cd main/packages/tools/kolibri-cli/dist
+          cd main/packages/tools/kolibri-cli
 
-          node index.js migrate ../../../../packages/migration-test/src \
+          node dist/index.js migrate ../../../packages/migration-test/src \
             --ignore-uncommitted-changes \
             --overwrite-current-version "${{ steps.source-version.outputs.version }}" \
             --overwrite-target-version "${{ steps.target-version.outputs.version }}" \
