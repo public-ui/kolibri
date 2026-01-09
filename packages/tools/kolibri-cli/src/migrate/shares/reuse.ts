@@ -69,7 +69,8 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
  */
 export function hasKoliBriTags(dir: string): boolean {
 	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
-	const files = filterFilesByExt(dir, MARKUP_EXTENSIONS);
+	const dirPath = path.resolve(process.cwd(), dir);
+	const files = filterFilesByExt(dirPath, MARKUP_EXTENSIONS);
 
 	for (const file of files) {
 		let fd: number | undefined;
