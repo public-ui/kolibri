@@ -121,19 +121,12 @@ jobs:
           cd main
           pnpm --filter @public-ui/kolibri-cli... build
 
-      - name: Debug src folder
-        run: |
-          cd main/packages/migration-test
-          find src -type f -name "*.tsx" -o -name "*.jsx" | head -20
-          grep -r "<Kol" src || echo "No React components found"
-          grep -r "<kol-" src || echo "No web components found"
-
       # Run migration
       - name: Run migration
         run: |
-          cd main/packages/migration-test
+          cd main/packages/tools/kolibri-cli/dist
 
-          node ../../packages/tools/kolibri-cli/dist/index.js migrate src \
+          node index.js migrate ../../../../packages/migration-test/src \
             --ignore-uncommitted-changes \
             --overwrite-current-version "${{ steps.source-version.outputs.version }}" \
             --overwrite-target-version "${{ steps.target-version.outputs.version }}" \
