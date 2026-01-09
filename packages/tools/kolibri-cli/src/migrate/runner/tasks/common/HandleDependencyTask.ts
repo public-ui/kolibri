@@ -37,25 +37,44 @@ export class HandleDependencyTask extends AbstractTask {
 		return this.instances.get(identifier) as HandleDependencyTask;
 	}
 
-	public run(): void {
+	/**
+	 * Collect dependency commands to be executed in batch mode.
+	 * Does NOT execute immediately - returns commands for aggregation.
+	 */
+	public prepareExecutables(): string[] {
+		const commands: string[] = [];
+
 		if (Object.keys(this.dependencies ?? {}).length > 0) {
 			let command = `${getPackageManagerCommand(this.command)}`;
 			Object.keys(this.dependencies ?? {}).forEach((dependency) => {
 				command += ` ${dependency}@${this.dependencies[dependency]}`;
 			});
-			try {
-				execSync(command, {
-					encoding: 'utf8',
-				});
-			} catch (error) {
-				console.warn(error);
-			}
+			commands.push(command);
 		}
+
 		if (Object.keys(this.devDependencies ?? {}).length > 0) {
 			let command = `${getPackageManagerCommand(this.command)} -D`;
 			Object.keys(this.devDependencies ?? {}).forEach((dependency) => {
 				command += ` ${dependency}`;
 			});
+			commands.push(command);
+		}
+
+		return commands;
+	}
+
+	public run(): void {
+		// In batch mode, commands are collected and executed later
+		// This method is kept for backward compatibility but does nothing
+		// Actual execution happens in TaskRunner with aggregated commands
+	}
+
+	/**
+	 * Execute collected commands immediately (used for backward compatibility).
+	 */
+	public executeImmediate(): void {
+		const commands = this.prepareExecutables();
+		commands.forEach((command) => {
 			try {
 				execSync(command, {
 					encoding: 'utf8',
@@ -63,6 +82,6 @@ export class HandleDependencyTask extends AbstractTask {
 			} catch (error) {
 				console.warn(error);
 			}
-		}
+		});
 	}
 }

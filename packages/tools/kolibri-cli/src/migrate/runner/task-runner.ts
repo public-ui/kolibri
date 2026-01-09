@@ -1,11 +1,12 @@
 import chalk from 'chalk';
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
 
 import { Configuration, Migrate } from '../../types';
 import { logAndCreateError } from '../shares/reuse';
-import { AbstractTask } from './abstract-task';
+import { AbstractTask, ExecutionMode } from './abstract-task';
 
 const MIN_VERSION_OF_PUBLIC_UI = '1.4.2';
 
@@ -38,6 +39,8 @@ export class TaskRunner {
 	private baseDir: string = '/';
 	private cliVersion: string = '0.0.0';
 	private projectVersion: string = '0.0.0';
+	private executionMode: ExecutionMode = 'immediate';
+	private aggregatedCommands: Map<string, string[]> = new Map(); // taskId -> commands
 	private readonly config: Configuration = {
 		migrate: {
 			tasks: {},
@@ -73,6 +76,13 @@ export class TaskRunner {
 		if (this.projectVersion !== version) {
 			this.projectVersion = version;
 		}
+	}
+
+	public setExecutionMode(mode: ExecutionMode): void {
+		this.executionMode = mode;
+		this.tasks.forEach((task) => {
+			task.setExecutionMode(mode);
+		});
 	}
 
 	private setConfig(config: Configuration): void {
@@ -141,6 +151,12 @@ export class TaskRunner {
 					this.registerTask(task);
 				}
 				task.run(this.baseDir);
+
+				// Collect commands if in batch mode
+				if (this.executionMode === 'batch') {
+					this.aggregateCommandsFromTask(task);
+				}
+
 				task.setStatus('done');
 			}
 		}
@@ -159,6 +175,7 @@ export class TaskRunner {
 
 	public run(): void {
 		this.completedTasks = 0;
+		this.aggregatedCommands.clear();
 
 		displayProgressBar(0, this.tasks.size);
 
@@ -171,6 +188,47 @@ export class TaskRunner {
 		if (this.tasks.size > 0) {
 			console.log(); // New line after progress bar
 		}
+
+		// If in batch mode, collect and execute all commands at the end
+		if (this.executionMode === 'batch') {
+			this.executeAggregatedCommands();
+		}
+	}
+
+	private aggregateCommandsFromTask(task: AbstractTask): void {
+		// HandleDependencyTask has prepareExecutables method
+		if ('prepareExecutables' in task && typeof (task as { prepareExecutables?: () => string[] }).prepareExecutables === 'function') {
+			const taskWithPrepare = task as { prepareExecutables: () => string[] };
+			const commands: string[] = taskWithPrepare.prepareExecutables();
+			if (commands.length > 0) {
+				this.aggregatedCommands.set(task.getIdentifier(), commands);
+			}
+		}
+	}
+
+	private executeAggregatedCommands(): void {
+		const allCommands: string[] = [];
+
+		this.aggregatedCommands.forEach((commands) => {
+			allCommands.push(...commands);
+		});
+
+		if (allCommands.length === 0) {
+			return;
+		}
+
+		console.log('\nExecuting aggregated dependency commands...');
+		allCommands.forEach((command) => {
+			try {
+				console.log(`  Running: ${command}`);
+				execSync(command, {
+					encoding: 'utf8',
+					stdio: 'inherit',
+				});
+			} catch (error) {
+				console.warn(`Warning: Failed to execute command: ${command}`, error);
+			}
+		});
 	}
 
 	public getPendingMinVersion(): string {
