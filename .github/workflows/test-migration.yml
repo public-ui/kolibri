@@ -125,8 +125,11 @@ jobs:
       - name: Run migration
         run: |
           cd main/packages/migration-test
+          echo "Running migration from version ${{ steps.source-version.outputs.version }} to ${{ steps.target-version.outputs.version }}"
           node ../../packages/tools/kolibri-cli/dist/index.js migrate src \
             --ignore-uncommitted-changes \
+            --overwrite-current-version "${{ steps.source-version.outputs.version }}" \
+            --overwrite-target-version "${{ steps.target-version.outputs.version }}" \
             --format
 
       # Replace versions with workspace:* to use local packages
