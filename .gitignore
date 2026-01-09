@@ -15,3 +15,4 @@ node_modules/
 !/packages/components/src/components/logo/readme.md
 
 node-compile-cache/
+.claude/settings.local.json

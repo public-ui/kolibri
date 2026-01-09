@@ -1,0 +1,173 @@
+name: Test Migration
+
+on:
+  push:
+    branches:
+      - "develop"
+      - "main"
+    paths:
+      - "packages/tools/kolibri-cli/**"
+  pull_request:
+    paths:
+      - "packages/tools/kolibri-cli/**"
+      - ".github/workflows/test-migration.yml"
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: "Source branch to migrate from"
+        required: true
+        default: "release/2"
+        type: choice
+        options:
+          - release/3
+          - release/2
+          - release/1
+
+concurrency:
+  group: "workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  test-migration:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout main repo
+      - name: Checkout main repo
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          path: main
+
+      # Checkout old version to migrate from
+      - name: Checkout source branch
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ inputs.source_branch || 'release/2' }}
+          persist-credentials: false
+          path: migration-source
+
+      # Setup pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      # Setup Node.js
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: "pnpm"
+          cache-dependency-path: main/pnpm-lock.yaml
+
+      # Extract version from migration source
+      - name: Get source version
+        id: source-version
+        run: |
+          VERSION=$(jq -r '.version' migration-source/lerna.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected source version: $VERSION"
+
+      # Extract target version from main repo
+      - name: Get target version
+        id: target-version
+        run: |
+          VERSION=$(jq -r '.version' main/lerna.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected target version: $VERSION"
+
+      # Copy sample app from migration source to main repo
+      - name: Copy sample app from migration source
+        run: |
+          mkdir -p main/packages/migration-test
+          cp -r migration-source/packages/samples/react/* main/packages/migration-test/
+
+      # Replace workspace:* with real versions and rename package
+      - name: Replace workspace versions with source version
+        run: |
+          cd main/packages/migration-test
+          VERSION="${{ steps.source-version.outputs.version }}"
+
+          # Rename package to avoid conflicts with existing sample-react
+          sed -i 's/"name": "@public-ui\/sample-react"/"name": "@public-ui\/migration-test"/g' package.json
+
+          # Replace workspace:* with actual version for @public-ui packages
+          sed -i "s/\"workspace:\*\"/\"$VERSION\"/g" package.json
+
+          # Also handle other workspace protocols if present
+          sed -i "s/\"workspace:~\"/\"~$VERSION\"/g" package.json
+          sed -i "s/\"workspace:^\"/\"^$VERSION\"/g" package.json
+
+          echo "Updated package.json:"
+          cat package.json
+
+      # Add migration-test to workspace
+      - name: Add migration-test to workspace
+        run: |
+          echo "  - packages/migration-test" >> main/pnpm-workspace.yaml
+          echo "Updated pnpm-workspace.yaml:"
+          cat main/pnpm-workspace.yaml
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          cd main
+          pnpm install --no-frozen-lockfile
+
+      # Build kolibri-cli
+      - name: Build kolibri-cli
+        run: |
+          cd main
+          pnpm --filter @public-ui/kolibri-cli... build
+
+      # Run migration
+      - name: Run migration
+        run: |
+          cd main/packages/migration-test
+          node ../../packages/tools/kolibri-cli/dist/index.js migrate src \
+            --ignore-uncommitted-changes \
+            --overwrite-current-version "${{ steps.source-version.outputs.version }}" \
+            --overwrite-target-version "${{ steps.target-version.outputs.version }}" \
+            --format
+
+      # Replace versions with workspace:* to use local packages
+      - name: Replace versions with workspace protocol
+        run: |
+          cd main/packages/migration-test
+          VERSION="${{ steps.source-version.outputs.version }}"
+
+          # Replace version back to workspace:* for @public-ui packages
+          sed -i "s/\"$VERSION\"/\"workspace:*\"/g" package.json
+
+          echo "Updated package.json:"
+          cat package.json
+
+      # Verify migration - Install updated dependencies
+      - name: Install updated dependencies after migration
+        run: |
+          cd main
+          pnpm install --no-frozen-lockfile
+
+      # Verify migration - Build dependencies
+      - name: Build migration-test dependencies
+        run: |
+          cd main
+          pnpm --filter @public-ui/migration-test^... build
+
+      # Verify migration - Build the migrated app
+      - name: Build migrated app
+        run: |
+          cd main
+          pnpm --filter @public-ui/migration-test build
+
+      # Upload migration results as artifacts
+      - name: Upload migration results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: migration-results-${{ inputs.source_branch || 'release-3' }}
+          path: |
+            main/packages/migration-test/src/
+            main/packages/migration-test/.kolibri.config.json
+            main/packages/migration-test/package.json
