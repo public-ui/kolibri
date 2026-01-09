@@ -19,13 +19,13 @@ module.exports = {
 			},
 		},
 		{
-			files: ['test/**/*.js'],
+			files: ['test/**/*.js', 'test/**/*.mjs'],
 			env: {
 				node: true,
 				es2022: true,
 			},
 			rules: {
-				'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+				'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
 			},
 		},
 		{

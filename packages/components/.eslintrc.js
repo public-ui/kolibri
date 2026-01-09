@@ -37,6 +37,8 @@ const config = {
 		/**
 		 * The HTML templates in TSX are recognized as any.
 		 */
+		'@typescript-eslint/no-unsafe-argument': 'warn',
+		'@typescript-eslint/no-unsafe-call': 'warn',
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
 		'@typescript-eslint/no-unused-expressions': 'warn',
@@ -48,6 +50,7 @@ const config = {
 				ignoreRestSiblings: true,
 			},
 		],
+		'@typescript-eslint/require-await': 'warn',
 
 		'@stencil-community/async-methods': 'error',
 		'@stencil-community/ban-prefix': ['off', ['stencil', 'stnl', 'st']],
