@@ -134,8 +134,6 @@ Source folder to migrate: ${baseDir}
 					runner.registerTasks(testTasks);
 				}
 
-				let version = options.overwriteCurrentVersion;
-
 				/**
 				 * Creates a replacer function for the package.json file.
 				 * @param {string} version Version to set
@@ -153,43 +151,53 @@ Source folder to migrate: ${baseDir}
 				/**
 				 * Sets the version of the @public-ui/* packages in the package.json file.
 				 * @param {string} version Version to set
-				 * @param {Function} cb Callback function
 				 */
-				function setVersionOfPublicUiPackages(version: string, cb: () => void) {
+				function setVersionOfPublicUiPackages(version: string) {
 					let packageJson = getContentOfProjectPkgJson();
 					packageJson = packageJson.replace(/"(@public-ui\/[^"]+)":\s*"(.*)"/g, createVersionReplacer(version));
 					fs.writeFileSync(path.resolve(process.cwd(), 'package.json'), packageJson);
 					runner.setProjectVersion(version);
 					console.log(`- Update @public-ui/* to version ${version}`);
-					exec(getPackageManagerCommand('install'), (err) => {
-						if (err) {
-							console.error(`exec error: ${err.message}`);
-							return;
-						}
-						cb();
-					});
 				}
 
 				/**
-				 * Runs the task runner in a loop until all tasks are completed.
+				 * Runs the task runner in batch mode with collected version steps.
 				 */
-				function runLoop() {
+				async function runMigrationBatch() {
+					// Set execution mode to batch - tasks don't install immediately
+					runner.setExecutionMode('batch');
+
+					console.log(`\nStarting migration in batch mode...`);
+
+					// Start version is the current project version (from package.json or --overwrite-current-version)
+					const startVersion = options.overwriteCurrentVersion;
+					// Target version is --overwrite-target-version (CLI version = migration target)
+					const targetVersion = options.overwriteTargetVersion;
+
+					console.log(`Migration path: ${startVersion} → ${targetVersion}`);
+
+					// Run all tasks (they transform the code, not the dependencies)
 					runner.run();
-					if (version !== runner.getPendingMinVersion()) {
-						// Tasks
-						version = runner.getPendingMinVersion();
-						setVersionOfPublicUiPackages(version, runLoop);
-					} else if (semver.lt(version, options.overwriteTargetVersion)) {
-						// CLI
-						version = options.overwriteTargetVersion;
-						setVersionOfPublicUiPackages(version, finish);
-					} else if (semver.lt(version, options.overwriteCurrentVersion)) {
-						// Components
-						version = options.overwriteCurrentVersion;
-						setVersionOfPublicUiPackages(version, finish);
-					} else {
-						finish();
-					}
+
+					// Write final target version to package.json (only once)
+					setVersionOfPublicUiPackages(targetVersion);
+
+					// Install only once at the end
+					console.log(`\nInstalling dependencies once...`);
+					await new Promise<void>((resolve, reject) => {
+						exec(getPackageManagerCommand('install'), (err) => {
+							if (err) {
+								console.error(`exec error: ${err.message}`);
+								reject(err);
+								return;
+							}
+							resolve();
+						});
+					});
+
+					console.log(`Dependencies installed successfully.`);
+
+					finish();
 				}
 
 				/**
@@ -282,7 +290,11 @@ If something is wrong, the migration can be reverted with ${chalk.italic.white(
 				const status = runner.getStatus();
 				console.log(`
 Execute ${status.total} registered tasks...`);
-				runLoop();
+				// Use optimized batch mode for single-pass installation
+				runMigrationBatch().catch((error) => {
+					console.error('Migration failed:', error);
+					process.exit(1);
+				});
 			});
 		});
 }
