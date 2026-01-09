@@ -51,7 +51,7 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 	let files: string[] = [];
 	const dirPath = path.resolve(process.cwd(), dir);
 	fs.readdirSync(dirPath).forEach((file) => {
-		const fullPath = path.resolve(dir, file);
+		const fullPath = path.resolve(dirPath, file);
 		if (fs.lstatSync(fullPath).isDirectory()) {
 			files = files.concat(filterFilesByExt(fullPath, ext));
 		} else if (ext.includes(path.extname(fullPath).replace('.', '') as FileExtension)) {
