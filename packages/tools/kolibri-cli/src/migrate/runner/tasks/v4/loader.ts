@@ -4,7 +4,7 @@ import { FileExtension } from '../../../../types';
 import { filterFilesByExt, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
-const LOADER_FILE_EXTENSIONS: FileExtension[] = ['js', 'jsx', 'ts', 'tsx', 'vue'];
+const LOADER_FILE_EXTENSIONS: FileExtension[] = ['cjs', 'cts', 'js', 'jsx', 'mjs', 'mts', 'ts', 'tsx', 'vue'];
 const LOADER_IMPORT_REGEX = /@public-ui\/components\/dist\/loader(?:\/[^\s'"]+)?/g;
 
 export class UpdateLoaderImportPathTask extends AbstractTask {
