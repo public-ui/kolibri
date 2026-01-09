@@ -136,7 +136,12 @@ jobs:
       - name: Replace versions with workspace protocol
         run: |
           cd main/packages/migration-test
-          VERSION="${{ steps.source-version.outputs.version }}"
+          VERSION="${{ steps.target-version.outputs.version }}"
+
+          echo "Current package.json before reverting versions:"
+          cat package.json
+
+          echo "Reverting versions back to workspace:* for local packages. Replacing version $VERSION to workspace:*"
 
           # Replace version back to workspace:* for @public-ui packages
           sed -i "s/\"$VERSION\"/\"workspace:*\"/g" package.json
