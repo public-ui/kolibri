@@ -9,6 +9,30 @@ import { AbstractTask } from './abstract-task';
 
 const MIN_VERSION_OF_PUBLIC_UI = '1.4.2';
 
+/**
+ * Displays a progress bar in the console.
+ * @param {number} current Current progress
+ * @param {number} total Total items
+ * @param {string} title Optional title
+ */
+function displayProgressBar(current: number, total: number, title: string = ''): void {
+	const barLength = 30;
+	const percentage = total === 0 ? 0 : (current / total) * 100;
+	const filledLength = Math.round((barLength * current) / total);
+	const emptyLength = barLength - filledLength;
+
+	const bar = chalk.green('█'.repeat(filledLength)) + chalk.gray('░'.repeat(emptyLength));
+	const percentStr = percentage.toFixed(0).padStart(3, ' ');
+
+	// Bestimme die maximale Ziffernzahl des totals
+	const totalDigits = total.toString().length;
+	const currentStr = current.toString().padStart(totalDigits, ' ');
+	const taskStr = `${currentStr}/${total}`;
+
+	const titleStr = title ? ` ${title}` : '';
+	process.stdout.write(`\r${bar} ${percentStr}% [${taskStr}]${titleStr}`);
+}
+
 export class TaskRunner {
 	private readonly tasks: Map<string, AbstractTask> = new Map();
 	private baseDir: string = '/';
@@ -19,6 +43,7 @@ export class TaskRunner {
 			tasks: {},
 		},
 	};
+	private completedTasks: number = 0;
 
 	public constructor(baseDir: string, cliVersion: string, projectVersion: string, config: Configuration) {
 		this.setBaseDir(baseDir);
@@ -102,12 +127,15 @@ export class TaskRunner {
 			task.setStatus('skipped');
 		} else {
 			(this.config.migrate as unknown as Migrate).tasks[task.getIdentifier()] = true;
-			if (
-				task.getStatus() === 'pending' &&
-				semver.satisfies(this.projectVersion, task.getVersionRange(), {
-					includePrerelease: true,
-				})
-			) {
+
+			const isProjectVersionGreater = semver.gtr(this.projectVersion, task.getVersionRange(), {
+				includePrerelease: true,
+			});
+			const isCliVersionLower = semver.ltr(this.cliVersion, task.getVersionRange(), {
+				includePrerelease: true,
+			});
+
+			if (task.getStatus() === 'pending' && !isProjectVersionGreater && !isCliVersionLower) {
 				// task.setStatus('running'); only of the task is async
 				if (!this.tasks.has(task.getIdentifier())) {
 					this.registerTask(task);
@@ -122,15 +150,27 @@ export class TaskRunner {
 		taskDependencies.forEach((dependentTask) => {
 			this.dependentTaskRun(dependentTask, dependentTask.getTaskDependencies());
 		});
-		if (taskDependencies.every((dependentTask) => dependentTask.getStatus() === 'done')) {
+		if (taskDependencies.length === 0 || taskDependencies.every((dependentTask) => dependentTask.getStatus() === 'done')) {
+			displayProgressBar(this.completedTasks, this.tasks.size, task.getTitle());
 			this.runTask(task);
+			this.completedTasks++;
 		}
 	}
 
 	public run(): void {
+		this.completedTasks = 0;
+
+		displayProgressBar(0, this.tasks.size);
+
 		this.tasks.forEach((task) => {
 			this.dependentTaskRun(task, task.getTaskDependencies());
 		});
+
+		displayProgressBar(this.tasks.size, this.tasks.size);
+
+		if (this.tasks.size > 0) {
+			console.log(); // New line after progress bar
+		}
 	}
 
 	public getPendingMinVersion(): string {
