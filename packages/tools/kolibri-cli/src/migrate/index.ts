@@ -134,7 +134,7 @@ Source folder to migrate: ${baseDir}
 					runner.registerTasks(testTasks);
 				}
 
-				let version = options.overwriteCurrentVersion;
+				let version = options.overwriteTargetVersion;
 
 				/**
 				 * Creates a replacer function for the package.json file.
