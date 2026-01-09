@@ -42,7 +42,7 @@
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"formik": "2.4.9",
-		"knip": "5.80.0",
+		"knip": "5.80.1",
 		"npm-run-all2": "8.0.4",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
