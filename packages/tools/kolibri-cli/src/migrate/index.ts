@@ -161,6 +161,28 @@ Source folder to migrate: ${baseDir}
 				}
 
 				/**
+				 * Validates that only one package manager lockfile exists to prevent conflicts.
+				 * @throws {Error} If multiple lockfile types are detected
+				 */
+				function validateLockfileConsistency() {
+					const lockfiles = [
+						{ file: 'pnpm-lock.yaml', manager: 'pnpm' },
+						{ file: 'yarn.lock', manager: 'yarn' },
+						{ file: 'package-lock.json', manager: 'npm' },
+					];
+
+					const foundLockfiles = lockfiles.filter((lockfile) => fs.existsSync(path.resolve(process.cwd(), lockfile.file)));
+
+					if (foundLockfiles.length > 1) {
+						const managers = foundLockfiles.map((l) => `${l.manager} (${l.file})`).join(', ');
+						throw logAndCreateError(
+							`Multiple package manager lockfiles detected: ${managers}. This can cause dependency conflicts during migration.`,
+							`Please remove all but one lockfile and run the migration again.`,
+						);
+					}
+				}
+
+				/**
 				 * Runs the task runner in batch mode with collected version steps.
 				 */
 				async function runMigrationBatch() {
@@ -181,6 +203,9 @@ Source folder to migrate: ${baseDir}
 
 					// Write final target version to package.json (only once)
 					setVersionOfPublicUiPackages(targetVersion);
+
+					// Validate lockfile consistency before installation
+					validateLockfileConsistency();
 
 					// Install only once at the end
 					console.log(`\nInstalling dependencies once...`);

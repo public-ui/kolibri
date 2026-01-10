@@ -35,17 +35,71 @@ function displayProgressBar(current: number, total: number, title: string = ''):
 }
 
 export class TaskRunner {
+	/**
+	 * Task queue for execution.
+	 * Maps task identifiers to their corresponding task instances.
+	 * @private
+	 */
 	private readonly tasks: Map<string, AbstractTask> = new Map();
+
+	/**
+	 * Base directory for migration operations.
+	 * All file transformations are performed relative to this directory.
+	 * @private
+	 */
 	private baseDir: string = '/';
+
+	/**
+	 * Target version (CLI version).
+	 * The version that migration targets - all packages should be migrated to this version.
+	 * @private
+	 */
 	private cliVersion: string = '0.0.0';
+
+	/**
+	 * Current project version.
+	 * The starting version for migration - used to determine which version-specific tasks to run.
+	 * @private
+	 */
 	private projectVersion: string = '0.0.0';
+
+	/**
+	 * Execution mode for the task runner.
+	 * - 'immediate': Tasks execute their code/package manager commands immediately
+	 * - 'batch': Tasks collect commands without executing them; execution deferred to end
+	 *
+	 * Batch mode is used during migration to:
+	 * 1. Perform all code transformations first
+	 * 2. Aggregate all package manager commands
+	 * 3. Update package.json with final target version
+	 * 4. Execute package manager install exactly ONCE (prevents lockfile conflicts)
+	 * @private
+	 */
 	private executionMode: ExecutionMode = 'immediate';
+
+	/**
+	 * Commands aggregated for deferred execution.
+	 * Maps taskId to array of commands collected during batch mode.
+	 * These are executed after all code transformations are complete.
+	 * @private
+	 */
 	private aggregatedCommands: Map<string, string[]> = new Map(); // taskId -> commands
+
+	/**
+	 * Migration configuration loaded from .kolibri.config.json.
+	 * Tracks which tasks have been run and their status.
+	 * @private
+	 */
 	private readonly config: Configuration = {
 		migrate: {
 			tasks: {},
 		},
 	};
+
+	/**
+	 * Counter for completed tasks (used for progress bar display).
+	 * @private
+	 */
 	private completedTasks: number = 0;
 
 	public constructor(baseDir: string, cliVersion: string, projectVersion: string, config: Configuration) {
@@ -79,6 +133,17 @@ export class TaskRunner {
 	}
 
 	public setExecutionMode(mode: ExecutionMode): void {
+		/**
+		 * Sets execution mode for all tasks.
+		 *
+		 * In batch mode:
+		 * - Code transformation tasks run immediately and transform files
+		 * - Package manager tasks (HandleDependencyTask) collect commands without executing
+		 * - This allows final package.json version update before any installation
+		 * - Single installation at the end prevents multiple lockfile rewrites
+		 *
+		 * Critical for migration: prevents dependency conflicts during version transition
+		 */
 		this.executionMode = mode;
 		this.tasks.forEach((task) => {
 			task.setExecutionMode(mode);
@@ -174,6 +239,36 @@ export class TaskRunner {
 	}
 
 	public run(): void {
+		/**
+		 * Executes all registered tasks in the proper order with dependency resolution.
+		 *
+		 * Execution Flow:
+		 * 1. Initialize progress tracking
+		 * 2. Execute tasks respecting their dependencies (topological sort)
+		 * 3. Tasks perform:
+		 *    - Code transformations (e.g., rename components, update properties)
+		 *    - Collect package manager commands (if in batch mode, no execution yet)
+		 * 4. Display final progress
+		 * 5. In batch mode: aggregate and execute all collected commands at the end
+		 *
+		 * Batch Mode Workflow (used during migration):
+		 * ============================================
+		 * Phase 1: Code Transformation (this method)
+		 *  - All tasks run and transform source files
+		 *  - Package manager commands are collected, NOT executed
+		 *  - Files are modified in-place
+		 *
+		 * Phase 2: Version Update (migrate/index.ts)
+		 *  - package.json is updated with target version
+		 *  - Lockfile consistency is validated
+		 *
+		 * Phase 3: Single Installation (migrate/index.ts)
+		 *  - Package manager install runs ONCE with --ignore-lockfile
+		 *  - Prevents multiple lockfile rewrites and dependency conflicts
+		 *
+		 * This prevents the issue where old package.json versions cause
+		 * dependency resolution conflicts during installation.
+		 */
 		this.completedTasks = 0;
 		this.aggregatedCommands.clear();
 
