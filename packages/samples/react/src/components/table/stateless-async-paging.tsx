@@ -1,10 +1,11 @@
-import { KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableHeaders } from '@public-ui/components';
 import { KolPagination, KolSpin, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
-import { COMPLEX_DATA, ComplexData } from './test-complex-data';
+import type { ComplexData } from './test-complex-data';
+import { COMPLEX_DATA } from './test-complex-data';
 
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
@@ -33,10 +34,10 @@ const LoadingOverlayFC: FC<{ show: boolean }> = ({ show }) => {
 };
 
 export const TableStatelessAsync: FC = () => {
-	const getAsyncData = () => new Promise((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
+	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
 	const loadData = () => {
 		setLoading(true);
-		getAsyncData().then((result: any) => {
+		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
 			setComplexData(result.COMPLEX_DATA.slice(0, 15));
 			setLoading(false);
 		});
