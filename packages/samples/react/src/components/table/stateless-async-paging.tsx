@@ -20,7 +20,19 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
-function LoadingOverlay({ show }) {
+const LoadingOverlayFC: FC<{show: boolean}> = ({show}) => {
+	if (show) {
+		return (
+			<div className="loading-overlay">
+				<KolSpin _show _variant="cycle" />
+			</div>
+		);
+	} else {
+		return null;
+	}
+}
+
+function LoadingOverlay({ show }: {show: boolean}) {
 	if (show) {
 		return (
 			<div className="loading-overlay">
@@ -61,12 +73,10 @@ export const TableStatelessAsync: FC = () => {
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: () => {
-							loadData;
-						},
+						onSort: loadData
 					}}
 				/>
-				<LoadingOverlay show={loading}></LoadingOverlay>
+				<LoadingOverlay show={loading} />
 			</section>
 		</>
 	);
