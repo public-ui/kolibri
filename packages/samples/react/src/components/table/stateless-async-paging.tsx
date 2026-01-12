@@ -9,13 +9,13 @@ import { COMPLEX_DATA, ComplexData } from './test-complex-data';
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'ID', key: 'id', textAlign: 'right', width: 160 },
-			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160 },
-			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160 },
-			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160 },
-			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160 },
-			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160 },
-			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160 },
+			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'NOS' },
+			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160, sortDirection: 'NOS' },
 		],
 	],
 };
@@ -32,21 +32,27 @@ function LoadingOverlay({ show }) {
 
 export const TableStatelessAsync: FC = () => {
 	const getAsyncData = () => new Promise((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
+	const loadData = () => {
+		console.log('loading');
 
-	const [complexData, setComplexData] = useState<ComplexData[]>([]);
-	const [loading, setLoading] = useState<boolean>(true);
+		setLoading(true);
+		setComplexData([]);
 
-	useEffect(() => {
 		getAsyncData().then((result: any) => {
 			setComplexData(result.COMPLEX_DATA);
 			setLoading(false);
 		});
-	}, []);
+	};
+
+	const [complexData, setComplexData] = useState<ComplexData[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
+
+	useEffect(() => loadData, []);
 
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows how KolTableStateless can used async and with KolPagination.</p>
+				<p>This sample shows how KolTableStateless can be used async and with KolPagination.</p>
 			</SampleDescription>
 
 			<section className="w-full">
@@ -55,8 +61,8 @@ export const TableStatelessAsync: FC = () => {
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: (_event, payload) => {
-							console.log(payload);
+						onSort: () => {
+							loadData;
 						},
 					}}
 				/>
