@@ -1,5 +1,5 @@
 import { KoliBriTableHeaders } from '@public-ui/components';
-import { KolSpin, KolTableStateless } from '@public-ui/react-v19';
+import { KolPagination, KolSpin, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -20,7 +20,7 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
-const LoadingOverlayFC: FC<{show: boolean}> = ({show}) => {
+const LoadingOverlayFC: FC<{ show: boolean }> = ({ show }) => {
 	if (show) {
 		return (
 			<div className="loading-overlay">
@@ -30,28 +30,14 @@ const LoadingOverlayFC: FC<{show: boolean}> = ({show}) => {
 	} else {
 		return null;
 	}
-}
-
-function LoadingOverlay({ show }: {show: boolean}) {
-	if (show) {
-		return (
-			<div className="loading-overlay">
-				<KolSpin _show _variant="cycle" />
-			</div>
-		);
-	}
-}
+};
 
 export const TableStatelessAsync: FC = () => {
 	const getAsyncData = () => new Promise((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
 	const loadData = () => {
-		console.log('loading');
-
 		setLoading(true);
-		setComplexData([]);
-
 		getAsyncData().then((result: any) => {
-			setComplexData(result.COMPLEX_DATA);
+			setComplexData(result.COMPLEX_DATA.slice(0, 15));
 			setLoading(false);
 		});
 	};
@@ -64,19 +50,32 @@ export const TableStatelessAsync: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows how KolTableStateless can be used async and with KolPagination.</p>
+				<p>
+					This sample shows how KolTableStateless can be used async and with KolPagination. Paging and sorting are not functional here, because a backend would
+					offer this in real life.
+				</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<section className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: loadData
+						onSort: loadData,
 					}}
 				/>
-				<LoadingOverlay show={loading} />
+				<KolPagination
+					_max={200}
+					_page={1}
+					_siblingCount={0}
+					_boundaryCount={2}
+					_pageSize={15}
+					_on={{
+						onChangePage: loadData,
+					}}
+				/>
+				<LoadingOverlayFC show={loading} />
 			</section>
 		</>
 	);
