@@ -1,3 +1,0 @@
-{
-	"**/*.{md,css,scss,ts,tsx,js,jsx,json}": ["prettier --list-different"]
-}
