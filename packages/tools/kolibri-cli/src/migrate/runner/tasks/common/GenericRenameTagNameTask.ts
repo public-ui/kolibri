@@ -33,7 +33,10 @@ export class GenericRenameTagNameTask extends AbstractTask {
 		this.newTagNameInCamelCase = kebabToCapitalCase(newTagName);
 
 		this.componentRegExp = new RegExp(`([\\<\\/])${kebabToCapitalCase(oldTagName)}(\\s+[^\\>]*|\\>)`, 'g');
-		this.componentImportRegExp = new RegExp(`([\\w {,\\r\\n]+)${kebabToCapitalCase(oldTagName)}([, ]\\s+[\\r\\n\\w },]+'@public-ui/react')`, 'g');
+		this.componentImportRegExp = new RegExp(
+			`([\\w {,\\r\\n]+)${kebabToCapitalCase(oldTagName)}([, ]\\s+[\\r\\n\\w },]+'@public-ui\\/(?:react(?:-v19)?|vue)')`,
+			'g',
+		);
 		this.customElementRegExp = new RegExp(`([\\<\\/])${oldTagName}(\\s+[^\\>]*|\\>)`, 'g');
 	}
 
