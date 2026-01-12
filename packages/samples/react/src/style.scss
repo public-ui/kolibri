@@ -100,3 +100,7 @@ hr {
 		display: none !important;
 	}
 }
+
+.expert-slot-required-label::after {
+	content: ' *' / '';
+}
