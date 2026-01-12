@@ -7,9 +7,14 @@ import { AbstractTask, TaskOptions } from '../../abstract-task';
 export class GenericRenameTagNameTask extends AbstractTask {
 	private readonly componentRegExp: RegExp;
 	private readonly componentImportRegExp: RegExp;
+	private readonly componentNamedImportRegExp: RegExp;
+	private readonly componentDefaultImportRegExp: RegExp;
+	private readonly componentTypeImportRegExp: RegExp;
+	private readonly componentRequireRegExp: RegExp;
 	private readonly customElementRegExp: RegExp;
 
 	private readonly newTagNameInCamelCase: string;
+	private readonly oldTagNameInCamelCase: string;
 
 	protected constructor(
 		identifier: string,
@@ -31,12 +36,33 @@ export class GenericRenameTagNameTask extends AbstractTask {
 		}
 
 		this.newTagNameInCamelCase = kebabToCapitalCase(newTagName);
+		this.oldTagNameInCamelCase = kebabToCapitalCase(oldTagName);
 
-		this.componentRegExp = new RegExp(`([\\<\\/])${kebabToCapitalCase(oldTagName)}(\\s+[^\\>]*|\\>)`, 'g');
+		// Tag replacement in JSX: <KolButton ... /> → <KolButtonNew ... />
+		this.componentRegExp = new RegExp(`([\\<\\/])${this.oldTagNameInCamelCase}(\\s+[^\\>]*|\\>)`, 'g');
+
+		// Legacy: React/Vue adapter imports with package restriction
 		this.componentImportRegExp = new RegExp(
-			`([\\w {,\\r\\n]+)${kebabToCapitalCase(oldTagName)}([, ]\\s+[\\r\\n\\w },]+'@public-ui\\/(?:react(?:-v19)?|vue)')`,
+			`([\\w {,\\r\\n]+)${this.oldTagNameInCamelCase}([, ]\\s+[\\r\\n\\w },]+'@public-ui\\/(?:react(?:-v19)?|vue)')`,
 			'g',
 		);
+
+		// ESM Named Imports: import { KolButton, ... } from '@public-ui/react-v19';
+		this.componentNamedImportRegExp = new RegExp(`(import\\s*{[^}]*?)\\b${this.oldTagNameInCamelCase}\\b([^}]*}\\s*from\\s*['"\`][^'"\`]*['"\`])`, 'g');
+
+		// ESM Default Imports: import KolButton from '@public-ui/react-v19';
+		this.componentDefaultImportRegExp = new RegExp(`import\\s+${this.oldTagNameInCamelCase}\\s+(from\\s+['"\`][^'"\`]*['"\`])`, 'g');
+
+		// TypeScript Type Imports: import type { KolButton } from '@public-ui/react-v19';
+		this.componentTypeImportRegExp = new RegExp(`(import\\s+type\\s*{[^}]*?)\\b${this.oldTagNameInCamelCase}\\b([^}]*}\\s*from\\s*['"\`][^'"\`]*['"\`])`, 'g');
+
+		// CommonJS Requires: const { KolButton } = require('@public-ui/react-v19');
+		this.componentRequireRegExp = new RegExp(
+			`((?:const|var|let)\\s*{[^}]*?)\\b${this.oldTagNameInCamelCase}\\b([^}]*}\\s*=\\s*require\\(['"\`][^'"\`]*['"\`]\\))`,
+			'g',
+		);
+
+		// Custom element tag replacement in HTML: <kol-button ... /> → <kol-button-new ... />
 		this.customElementRegExp = new RegExp(`([\\<\\/])${oldTagName}(\\s+[^\\>]*|\\>)`, 'g');
 	}
 
@@ -48,10 +74,15 @@ export class GenericRenameTagNameTask extends AbstractTask {
 	private transpileComponentFileRename(baseDir: string): void {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
-			const newContent = content
-				// Replacements
-				.replace(this.componentRegExp, `$1${this.newTagNameInCamelCase}$2`)
-				.replace(this.componentImportRegExp, `$1${this.newTagNameInCamelCase}$2`);
+			let newContent = content;
+
+			// Replace JSX/HTML tags
+			newContent = newContent.replace(this.componentRegExp, `$1${this.newTagNameInCamelCase}$2`);
+
+			// Replace ALL component name usages with a simple word-boundary pattern
+			// This catches: imports, const/var/let declarations, function calls, type annotations, etc.
+			newContent = newContent.replace(new RegExp(`\\b${this.oldTagNameInCamelCase}\\b`, 'g'), this.newTagNameInCamelCase);
+
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
