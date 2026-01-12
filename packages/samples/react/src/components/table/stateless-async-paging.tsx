@@ -21,11 +21,21 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
-const LoadingOverlayFC: FC<{ show: boolean }> = ({ show }) => {
+const LoadingOverlayFC: FC<{
+	label: string;
+	show: boolean;
+}> = ({ label, show }) => {
 	if (show) {
 		return (
 			<div className="loading-overlay">
-				<KolSpin _show _variant="cycle" />
+				<KolSpin
+					_label={label}
+					_show={show}
+					_variant="cycle"
+					style={{
+						backgroundColor: 'transparent',
+					}}
+				/>
 			</div>
 		);
 	} else {
@@ -34,9 +44,10 @@ const LoadingOverlayFC: FC<{ show: boolean }> = ({ show }) => {
 };
 
 export const TableStatelessAsync: FC = () => {
-	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
-	const loadData = () => {
+	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 3000));
+	const loadData = (action: 'sort' | 'paginate') => {
 		setLoading(true);
+		setCurrentAction(action);
 		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
 			setComplexData(result.COMPLEX_DATA.slice(0, 15));
 			setLoading(false);
@@ -45,8 +56,9 @@ export const TableStatelessAsync: FC = () => {
 
 	const [complexData, setComplexData] = useState<ComplexData[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
+	const [currentAction, setCurrentAction] = useState<'sort' | 'paginate'>('sort');
 
-	useEffect(() => loadData, []);
+	useEffect(() => loadData('sort'), []);
 
 	return (
 		<>
@@ -63,7 +75,7 @@ export const TableStatelessAsync: FC = () => {
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: loadData,
+						onSort: () => loadData('sort'),
 					}}
 				/>
 				<KolPagination
@@ -73,10 +85,10 @@ export const TableStatelessAsync: FC = () => {
 					_boundaryCount={2}
 					_pageSize={15}
 					_on={{
-						onChangePage: loadData,
+						onChangePage: () => loadData('paginate'),
 					}}
 				/>
-				<LoadingOverlayFC show={loading} />
+				<LoadingOverlayFC label={currentAction === 'sort' ? 'Table is being sorted...' : 'Page is loading...'} show={loading} />
 			</section>
 		</>
 	);
