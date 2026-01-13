@@ -8,20 +8,83 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 ## Kolicons instead of Codicons
 
-KolBri introduced its own set of icons, named Kolicons. Please make sure you provide them like you provided the codicons before in your index.html.
+KoliBri now provides its own comprehensive icon set called **Kolicons**, replacing the previous dependency on Microsoft's Codicons. This change provides better control over iconography, improved consistency across the component library, and reduced external dependencies.
 
-**Before:**
+### Asset Loading
+
+In HTML documents, load the Kolicons stylesheet instead of Codicons:
+
+**Before (v3):**
 
 ```html
 <link rel="stylesheet" href="/assets/codicons/codicon.css" />
 ```
 
-**After:**
+**After (v4):**
 
 ```html
 <link rel="stylesheet" href="/assets/kolicons/style.css" />
-<!-- if you use codicons in your app you have to provide both fonts -->
+```
+
+### Using Codicons Alongside Kolicons (Optional)
+
+If your application still uses Codicons, you can include both stylesheets. However, this is **optional** and most projects can migrate fully to Kolicons:
+
+```html
+<link rel="stylesheet" href="/assets/kolicons/style.css" />
+<!-- Only if you still use Codicons elsewhere in your app -->
 <link rel="stylesheet" href="/assets/codicons/codicon.css" />
+```
+
+### CSS Import
+
+In modern bundlers (webpack, Vite, etc.), import Kolicons in your main entry point:
+
+**Before (v3):**
+
+```ts
+import '@public-ui/components/assets/codicons/codicon.css';
+```
+
+**After (v4):**
+
+```ts
+import '@public-ui/components/assets/kolicons/style.css';
+```
+
+### Icon Class Names
+
+Update all icon references in your code from `codicon` to `kolicon`. For example:
+
+**Before (v3):**
+
+```tsx
+<KolButton _label="Save" _icons="codicon codicon-save" />
+<KolIcon _icon="codicon codicon-check" />
+```
+
+**After (v4):**
+
+```tsx
+<KolButton _label="Save" _icons="kolicon kolicon-save" />
+<KolIcon _icon="kolicon kolicon-check" />
+```
+
+See the [Kolicons documentation](https://github.com/public-ui/kolibri/tree/develop/packages/components/src/assets/kolicons) for the complete list of available icon names.
+
+### Font Files
+
+The font file is now located at:
+
+```
+node_modules/@public-ui/components/assets/kolicons/kolicons.ttf
+```
+
+If you're manually copying assets to a public folder for custom builds:
+
+```bash
+cp node_modules/@public-ui/components/assets/kolicons/style.css dist/assets/kolicons/
+cp node_modules/@public-ui/components/assets/kolicons/kolicons.ttf dist/assets/kolicons/
 ```
 
 ## Loader entry point
