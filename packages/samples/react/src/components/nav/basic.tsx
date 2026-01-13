@@ -6,7 +6,7 @@ import { LINKS, LINKS_SUB_ACTIVE, LINKS_WITHOUT_SUBMENU } from './links';
 
 import type { FC } from 'react';
 export const NavBasic: FC = () => {
-	const [hasIconsWhenExpanded, setHasIconsWhenExpanded] = useState(false);
+	const [hasIconsWhenExpanded, setHasIconsWhenExpanded] = useState(true);
 
 	return (
 		<>

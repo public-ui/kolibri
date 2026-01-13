@@ -1,4 +1,4 @@
-export const FILE_EXTENSIONS = ['html', 'xhtml', 'js', 'json', 'jsx', 'ts', 'tsx', 'vue', 'css', 'sass', 'scss'] as const;
+export const FILE_EXTENSIONS = ['cjs', 'css', 'cts', 'html', 'js', 'json', 'jsx', 'mjs', 'mts', 'sass', 'scss', 'ts', 'tsx', 'vue', 'xhtml'] as const;
 export type FileExtension = (typeof FILE_EXTENSIONS)[number];
 
 export const COMPONENT_FILE_EXTENSIONS: FileExtension[] = ['jsx', 'tsx', 'vue'];
