@@ -27,15 +27,15 @@ const Icon: FC<{ ariaLabel: string; icon: string; label?: string }> = ({ ariaLab
 const AlertIcon: FC<{ label?: string; type?: AlertType }> = ({ type, label }) => {
 	switch (type) {
 		case 'error':
-			return <Icon ariaLabel={translateError} icon="codicon codicon-error" label={label} />;
+			return <Icon ariaLabel={translateError} icon="kolicon-alert-error" label={label} />;
 		case 'info':
-			return <Icon ariaLabel={translateInfo} icon="codicon codicon-info" label={label} />;
+			return <Icon ariaLabel={translateInfo} icon="kolicon-alert-info" label={label} />;
 		case 'warning':
-			return <Icon ariaLabel={translateWarning} icon="codicon codicon-warning" label={label} />;
+			return <Icon ariaLabel={translateWarning} icon="kolicon-alert-warning" label={label} />;
 		case 'success':
-			return <Icon ariaLabel={translateSuccess} icon="codicon codicon-pass" label={label} />;
+			return <Icon ariaLabel={translateSuccess} icon="kolicon-alert-success" label={label} />;
 		default:
-			return <Icon ariaLabel={translateMessage} icon="codicon codicon-comment" label={label} />;
+			return <Icon ariaLabel={translateMessage} icon="kolicon-alert-info" label={label} />;
 	}
 };
 

@@ -7,7 +7,7 @@ import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
-	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
+	const buttonRef = React.useRef<HTMLKolPopoverButtonElement | null>(null);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -17,19 +17,19 @@ export const PopoverButtonBasic: FC = () => {
 		{
 			type: 'button',
 			_label: 'Edit',
-			_icons: 'codicon codicon-edit',
+			_icons: 'fa-solid fa-pen',
 			_on: dummyEventHandler,
 		},
 		{
 			type: 'button',
 			_label: 'Delete',
-			_icons: 'codicon codicon-trash',
+			_icons: 'fa-solid fa-trash',
 			_on: dummyEventHandler,
 		},
 		{
 			type: 'button',
 			_label: 'Duplicate',
-			_icons: 'codicon codicon-copy',
+			_icons: 'fa-solid fa-copy',
 			_on: dummyEventHandler,
 		},
 	];
@@ -38,7 +38,7 @@ export const PopoverButtonBasic: FC = () => {
 		// Ensure the popover is closed on initial render
 		if (buttonRef.current) {
 			buttonRef.current.showPopover();
-			buttonRef.current.kolFocus();
+			buttonRef.current.focus();
 		}
 	}, []);
 
@@ -51,10 +51,10 @@ export const PopoverButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<div className="flex flex-col gap-4">
-				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
+				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'kolicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
-				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
+				<KolPopoverButton _label="Help" _icons="kolicon-alert-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
 					<div className="w-sm p-2 border border-solid border-gray">
 						<KolHeading _label="Help Information" _level={0}></KolHeading>
 						<p>

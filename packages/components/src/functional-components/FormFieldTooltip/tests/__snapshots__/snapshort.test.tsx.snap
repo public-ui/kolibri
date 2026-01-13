@@ -46,4 +46,3 @@ exports[`FormFieldTooltipFc should set the correct id and label 1`] = `
   class="kol-form-field__tooltip"
 />
 `;
-

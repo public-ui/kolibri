@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { checkHasMsg, type MsgPropType, type Stringified } from '../../../schema';
+import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 import NativeOptionListFc, { type NativeOptionListProps } from '../NativeOptionList';
@@ -34,14 +34,11 @@ const NativeSelectFc: FC<SelectProps> = (props) => {
 		...other
 	} = props;
 
-	const showMsg = checkHasMsg(msg, touched);
-	const msgType = typeof msg === 'string' ? 'error' : msg?._type;
-
 	const stateCssClasses = {
 		['kol-select--disabled']: Boolean(disabled),
 		['kol-select--required']: Boolean(required),
 		['kol-select--touched']: Boolean(touched),
-		[`kol-select--${msgType || 'error'}`]: showMsg,
+		[`kol-select--${getMsgType(msg)}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
 	const inputProps: SelectAttributes = {

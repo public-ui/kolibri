@@ -68,9 +68,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	/**
@@ -138,7 +137,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Prop() public _accept?: string;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 

@@ -10,7 +10,7 @@ describe('TaskRunner', () => {
 		runner.run();
 		const status = runner.getStatus();
 		assert.equal(status.total, 2);
-		assert.equal(status.done, 1);
-		assert.equal(status.pending, 1);
+		assert.equal(status.done, 2);
+		assert.equal(status.pending, 0);
 	});
 });

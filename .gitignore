@@ -2,6 +2,7 @@
 /.nx/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
+/test-migration/
 
 # in all sub folders
 .DS_Store/
@@ -15,3 +16,4 @@ node_modules/
 !/packages/components/src/components/logo/readme.md
 
 node-compile-cache/
+.claude/settings.local.json

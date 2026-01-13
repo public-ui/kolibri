@@ -22,7 +22,6 @@ import type {
 	TableDataPropType,
 	TableHeaderCellsPropType,
 	TableSelectionPropType,
-	TableSettings,
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '../../schema';
@@ -37,11 +36,7 @@ import {
 	validateTableSelection,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
-import type { MinWidthPropType } from '../../schema/props/min-width';
-import { validateMinWidth } from '../../schema/props/min-width';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
-import { validateTableSettings as validateTableSettingsProp } from '../../schema/props/table-settings';
-import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
+import type { KoliBriTableSelectionKey } from '../../schema/types';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -64,7 +59,6 @@ export class KolTableStateless implements TableStatelessAPI {
 			vertical: [],
 		},
 		_label: '',
-		_minWidth: 'auto',
 		_hasSettingsMenu: false,
 	};
 
@@ -77,6 +71,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private checkboxRefs: HTMLInputElement[] = [];
 
 	private translateSort = translate('kol-sort');
+	private translateSortOrder = translate('kol-table-sort-order');
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -108,11 +103,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width (CSS width values).
-	 */
-	@Prop() public _minWidth!: MinWidthPropType;
-
-	/**
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
@@ -121,11 +111,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines how rows can be selected and the current selection.
 	 */
 	@Prop() public _selection?: TableSelectionPropType;
-
-	/**
-	 * Defines the table settings including column visibility, order and width.
-	 */
-	@Prop() public _tableSettings?: TableSettingsPropType;
 
 	/**
 	 * Enables the settings menu if true (default: false).
@@ -157,7 +142,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		/* The reference changes on every render. Only reinitialize settings when headers actually changed */
 		if (!isEqual(this.previousHeaderCells, this.state._headerCells)) {
-			this.initializeTableSettings();
+			this.initializeHeaderCellSettings();
 		}
 
 		this.previousHeaderCells = this.state._headerCells;
@@ -170,11 +155,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		});
 	}
 
-	@Watch('_minWidth')
-	public validateMinWidth(value?: MinWidthPropType): void {
-		validateMinWidth(this, value);
-	}
-
 	@Watch('_on')
 	public validateOn(value?: TableCallbacksPropType): void {
 		validateTableCallbacks(this, value);
@@ -183,32 +163,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
-	}
-
-	@Watch('_tableSettings')
-	public validateTableSettings(value?: TableSettingsPropType) {
-		validateTableSettingsProp(this, this.normalizeTableSettings(value));
-	}
-
-	private normalizeTableSettings(value?: TableSettingsPropType): TableSettingsPropType | undefined {
-		if (!value || typeof value !== 'object') {
-			return value;
-		}
-
-		const columns = Array.isArray(value.columns) ? value.columns : [];
-
-		return {
-			...value,
-			columns: columns.map(({ hidable, key, label, resizable, sortable, visible, width }) => ({
-				hidable: hidable !== false,
-				key: key ?? nonce(),
-				label,
-				resizable: resizable !== false,
-				sortable: sortable !== false,
-				visible: visible !== false,
-				width,
-			})),
-		};
 	}
 
 	@Listen('keydown')
@@ -243,9 +197,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	@Listen('settingsChange')
-	public handleSettingsChange(event: CustomEvent<TableSettings>) {
-		setState(this, '_tableSettings', event.detail);
+	@Listen('changeheadercells')
+	public handleSettingsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
+		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
+		setState(this, '_headerCells', updatedHeaderCells);
+
+		// Call the onChangeHeaderCells callback if provided
+		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
+			this.state._on[Callback.onChangeHeaderCells](event, updatedHeaderCells);
+		}
 	}
 
 	public disconnectedCallback() {
@@ -364,31 +324,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		return primaryHeaders;
 	}
 
-	private getColumnPositionMap(): Map<string, number> {
-		const keyToPosition = new Map<string, number>();
-		this.state._tableSettings?.columns.forEach((setting, index) => {
-			keyToPosition.set(setting.key, index);
-		});
-		return keyToPosition;
-	}
-
-	private sortByColumnPosition<T extends { key?: string }>(columns: T[]): T[] {
-		const keyToPosition = this.getColumnPositionMap();
-		return columns
-			.map((column, index) => ({ column, index }))
-			.sort((a, b) => {
-				const posA = keyToPosition.get(a.column.key ?? '') ?? Number.MAX_SAFE_INTEGER;
-				const posB = keyToPosition.get(b.column.key ?? '') ?? Number.MAX_SAFE_INTEGER;
-
-				if (posA !== posB) {
-					return posA - posB;
-				}
-
-				return a.index - b.index;
-			})
-			.map(({ column }) => column);
-	}
-
 	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];
@@ -409,7 +344,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			rowSpans[index] = [];
 		});
 
-		const sortedPrimaryHeader = this.sortByColumnPosition(primaryHeader);
+		const sortedPrimaryHeader = primaryHeader;
 
 		for (let i = startRow; i < maxRows; i++) {
 			const dataRow: KoliBriTableHeaderCellWithLogic[] = [];
@@ -451,9 +386,9 @@ export class KolTableStateless implements TableStatelessAPI {
 						dataRow.push({
 							...sortedPrimaryHeader[j],
 							colSpan: undefined,
+							rowSpan: undefined,
 							data: row,
 							label: row[sortedPrimaryHeader[j].key as unknown as string] as string,
-							rowSpan: undefined,
 						});
 					}
 				} else {
@@ -467,9 +402,9 @@ export class KolTableStateless implements TableStatelessAPI {
 						dataRow.push({
 							...sortedPrimaryHeader[i],
 							colSpan: undefined,
+							rowSpan: undefined,
 							data: data[j],
 							label: data[j][sortedPrimaryHeader[i].key as unknown as number] as string,
-							rowSpan: undefined,
 						});
 					}
 				}
@@ -515,24 +450,23 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	private initializeTableSettings() {
-		if (this._tableSettings) {
-			return; // when tableSettings are defined via props, don't override them.
+	private initializeHeaderCellSettings() {
+		// Update header cells using setState to trigger Stencil's change detection
+		if (this.state._headerCells && this.state._headerCells.horizontal && this.state._headerCells.horizontal.length > 0) {
+			// Preserve all original header cells (including colSpan, rowSpan, etc.)
+			// and only add/update visible and hidable properties
+			const updatedHeaderCells = {
+				...this.state._headerCells,
+				horizontal: this.state._headerCells.horizontal.map((row) =>
+					row.map((header) => ({
+						...header,
+						visible: typeof header.visible === 'boolean' ? header.visible : true,
+						hidable: typeof header.hidable === 'boolean' ? header.hidable : true,
+					})),
+				),
+			};
+			setState(this, '_headerCells', updatedHeaderCells);
 		}
-		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
-		if (!this.state._tableSettings) {
-			this.state._tableSettings = { columns: [] };
-		}
-		this.state._tableSettings.columns = primaryHeaders
-			.filter((header) => header.key) // only headers with a key are supported
-			.map((header) => ({
-				hidable: header.hidable !== false, // default to true, only false if explicitly set to false
-				sortable: header.sortable !== false,
-				resizable: header.resizable !== false,
-				key: header.key ?? nonce(),
-				label: header.label,
-				visible: true,
-			}));
 	}
 
 	public componentWillLoad(): void {
@@ -540,10 +474,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
-		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
-		this.validateTableSettings(this._tableSettings);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
 	}
 
@@ -594,7 +526,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								'kol-table__selection-label--disabled': disabled,
 							})}
 						>
-							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
+							<KolIconTag class="kol-table__selection-icon" _icons={`kolicon ${selected ? 'kolicon-check' : ''}`} _label="" />
 							<input
 								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 								ref={(el) => el && this.checkboxRefs.push(el)}
@@ -670,10 +602,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	};
 
-	private getColumnSettings(cell: KoliBriTableCell | KoliBriTableHeaderCell): ColumnSettings | undefined {
-		return this.state._tableSettings?.columns.find((setting) => setting.key === (cell as KoliBriTableHeaderCellWithLogic).key);
-	}
-
 	/**
 	 * Renders a table cell, either as a data cell (`<td>`) or a header cell (`<th>`).
 	 * If a custom `render` function is provided in the cell, it will be used to display content.
@@ -685,8 +613,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
 		// Skip rendering if the column is not visible
-		const columnSetting = this.getColumnSettings(cell);
-		if (columnSetting && !columnSetting.visible) {
+		if ((cell as KoliBriTableHeaderCell).visible === false) {
 			return '';
 		}
 
@@ -714,7 +641,6 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowSpan={cell.rowSpan}
 					style={{
 						textAlign: cell.textAlign,
-						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -780,14 +706,49 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	/**
 	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
+	 * Includes the selection column width when selection is enabled.
 	 *
-	 * @return {string} The minimum width of the table as a string. If `_minWidth` is set to 'auto', the width is
-	 * calculated based on the total visible column widths in characters. Otherwise, it returns the greater value
-	 * between `_minWidth` and the calculated total visible column widths.
+	 * When multiple header rows exist, widths from ALL rows are summed. This allows developers to either:
+	 * - Specify the width on merged (parent) columns for equal distribution of child columns
+	 * - Specify widths on individual (child) columns for more control
+	 *
+	 * Note: If widths are specified on both parent and child columns, all widths are summed,
+	 * which may result in a wider table than expected.
+	 *
+	 * @return {string} The minimum width of the table as a string based on the sum of all header widths.
 	 */
 	private getTableMinWidth(): string {
-		const totalColumnWidth = this.state._tableSettings?.columns.filter((col) => col.visible).reduce((total, col) => total + (col.width ?? 0), 0) ?? 0;
-		return this.state._minWidth === 'auto' ? `${totalColumnWidth}ch` : `max(${this.state._minWidth}, ${totalColumnWidth}ch)`;
+		// Collect widths from ALL horizontal header rows (including parent/merged rows)
+		const horizontalHeaders = this.state._headerCells.horizontal ?? [];
+		const horizontalHeaderWidths: number[] = [];
+		horizontalHeaders.forEach((row) => {
+			row.forEach((cell) => {
+				if (cell.visible !== false && cell.width !== undefined && cell.width > 0) {
+					horizontalHeaderWidths.push(cell.width);
+				}
+			});
+		});
+
+		// Calculate width from ALL vertical headers (all rows, not just first cell)
+		const verticalHeaders = this.state._headerCells.vertical ?? [];
+		const verticalHeaderWidths: number[] = [];
+		verticalHeaders.forEach((column) => {
+			column.forEach((cell) => {
+				if (cell.width !== undefined && cell.width > 0) {
+					verticalHeaderWidths.push(cell.width);
+				}
+			});
+		});
+
+		const allWidths = [...verticalHeaderWidths, ...horizontalHeaderWidths];
+
+		if (allWidths.length === 0) {
+			return '0px';
+		}
+		if (allWidths.length === 1) {
+			return `${allWidths[0]}px`;
+		}
+		return `calc(${allWidths.map((w) => `${w}px`).join(' + ')})`;
 	}
 
 	/**
@@ -802,7 +763,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selection = this.state._selection;
 
 		if (!selection) {
-			return <th class="kol-table__cell kol-table__cell--header" key={`thead-0`}></th>;
+			return <td class="kol-table__cell kol-table__cell--header" key={`thead-0`}></td>;
 		}
 
 		if (selection.multiple === false) {
@@ -830,7 +791,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					})}
 				>
 					<label class="kol-table__selection-label">
-						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
+						<KolIconTag class="kol-table__selection-icon" _icons={`kolicon ${indeterminate ? 'kolicon-minus' : isChecked ? 'kolicon-check' : ''}`} _label="" />
 						<input
 							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 							data-testid="selection-checkbox-all"
@@ -861,18 +822,31 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * This header cell is rendered as a TD element when in addition to the horizontal header rows
 	 * there are also vertical header columns. In this case, the cell is rendered blank above the
 	 * vertical header columns.
+	 *
+	 * The width is calculated from the first cell of each vertical header column to ensure
+	 * proper column widths with table-layout: fixed.
 	 */
 	private renderHeaderTdCell(): JSX.Element {
+		const horizontalHeaders = this.state._headerCells.horizontal;
+		const verticalHeaders = this.state._headerCells.vertical;
+
+		if (!Array.isArray(horizontalHeaders) || horizontalHeaders.length === 0 || !Array.isArray(verticalHeaders) || verticalHeaders.length === 0) {
+			return <Fragment></Fragment>;
+		}
+
+		// Calculate total width from the first cell of each vertical header column
+		const totalWidth = verticalHeaders.reduce((sum, column) => {
+			const firstCell = column?.[0];
+			return sum + (firstCell?.width ?? 0);
+		}, 0);
+
 		return (
-			<Fragment>
-				{Array.isArray(this.state._headerCells.horizontal) &&
-					this.state._headerCells.horizontal.length > 0 &&
-					Array.isArray(this.state._headerCells.vertical) &&
-					this.state._headerCells.vertical.length > 0 &&
-					Array.isArray(this.state._headerCells.horizontal) && (
-						<td aria-hidden="true" colSpan={this.state._headerCells.vertical.length} rowSpan={this.state._headerCells.horizontal.length}></td>
-					)}
-			</Fragment>
+			<td
+				aria-hidden="true"
+				colSpan={verticalHeaders.length}
+				rowSpan={horizontalHeaders.length}
+				style={totalWidth > 0 ? { width: `${totalWidth}px` } : undefined}
+			></td>
 		);
 	}
 
@@ -885,28 +859,38 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} colIndex  The index of the current column in the row.
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
+	private formatSortOrderDescription(order: number): string {
+		return this.translateSortOrder.replace('{{order}}', `${order}`);
+	}
+
+	private getSortAriaDescription(order?: number): string {
+		if (typeof order === 'number' && order > 0) {
+			return `${this.translateSort} – ${this.formatSortOrderDescription(order)}`;
+		}
+		return this.translateSort;
+	}
+
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		// Skip rendering if the column is not visible
-		const columnSettings = this.getColumnSettings(cell);
-		if (columnSettings && !columnSettings.visible) {
+		if (cell.visible === false) {
 			return '';
 		}
 
-		const sortableSetting = columnSettings?.sortable !== false;
+		const sortableSetting = cell?.sortable !== false;
 		const hasSortDirection = typeof cell.sortDirection === 'string';
 		const canSort = sortableSetting && hasSortDirection;
 
 		let ariaSort: AriaSort = 'none';
-		let sortButtonIcon = 'codicon codicon-fold';
+		let sortButtonIcon = 'kolicon-sort-neutral';
 
 		if (canSort && cell.sortDirection) {
 			switch (cell.sortDirection) {
 				case 'ASC':
-					sortButtonIcon = 'codicon codicon-chevron-up';
+					sortButtonIcon = 'kolicon-sort-asc';
 					ariaSort = 'ascending';
 					break;
 				case 'DESC':
-					sortButtonIcon = 'codicon codicon-chevron-down';
+					sortButtonIcon = 'kolicon-sort-desc';
 					ariaSort = 'descending';
 					break;
 				default:
@@ -915,6 +899,9 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
+
+		const sortOrder = typeof cell.sortOrder === 'number' && cell.sortOrder > 0 ? cell.sortOrder : undefined;
+		const sortDescription = this.getSortAriaDescription(sortOrder);
 
 		return (
 			<th
@@ -926,36 +913,41 @@ export class KolTableStateless implements TableStatelessAPI {
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
-				style={{
-					width: columnSettings?.width ? `${columnSettings.width}ch` : cell.width,
-				}}
+				style={cell.width !== undefined ? { width: `${cell.width}px` } : undefined}
 				aria-sort={ariaSort}
 				data-sort={canSort && cell.sortDirection ? `sort-${cell.sortDirection}` : undefined}
 			>
 				{canSort && cell.sortDirection ? (
-					<KolButtonWcTag
-						class="kol-table__sort-button"
-						exportparts="icon"
-						_icons={{ right: sortButtonIcon }}
-						_label={cell.label}
-						_ariaDescription={this.translateSort}
-						_on={{
-							onClick: (event: MouseEvent) => {
-								if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
-									this.state._on.onSort(event, {
-										key: cell.key,
-										currentSortDirection: cell.sortDirection,
-									});
-								}
-								if (this.host) {
-									dispatchDomEvent(this.host, KolEvent.sort, {
-										key: cell.key,
-										currentSortDirection: cell.sortDirection,
-									});
-								}
-							},
-						}}
-					></KolButtonWcTag>
+					<span class="kol-table__sort">
+						<KolButtonWcTag
+							class="kol-table__sort-button"
+							exportparts="icon"
+							_icons={{ right: sortButtonIcon }}
+							_label={cell.label}
+							_ariaDescription={sortDescription}
+							_on={{
+								onClick: (event: MouseEvent) => {
+									if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
+										this.state._on.onSort(event, {
+											key: cell.key,
+											currentSortDirection: cell.sortDirection,
+										});
+									}
+									if (this.host) {
+										dispatchDomEvent(this.host, KolEvent.sort, {
+											key: cell.key,
+											currentSortDirection: cell.sortDirection,
+										});
+									}
+								},
+							}}
+						></KolButtonWcTag>
+						{sortOrder && (
+							<span aria-hidden="true" class="kol-table__sort-order">
+								{sortOrder}
+							</span>
+						)}
+					</span>
 				) : (
 					cell.label
 				)}
@@ -995,11 +987,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
 		this.checkboxRefs = [];
 
-		const sortedHorizontalHeaders = this.state._headerCells.horizontal?.map((row) => this.sortByColumnPosition(row));
+		const horizontalHeaders = this.state._headerCells.horizontal;
 
 		return (
 			<div class="kol-table">
-				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _tableSettings={this.state._tableSettings} />}
+				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
@@ -1021,17 +1013,17 @@ export class KolTableStateless implements TableStatelessAPI {
 							{this.state._label}
 						</caption>
 
-						{Array.isArray(sortedHorizontalHeaders) && (
+						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">
 								{[
-									sortedHorizontalHeaders.map((cols, rowIndex) => (
+									horizontalHeaders.map((cols, rowIndex) => (
 										<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
 											{this.state._selection && this.renderHeadingSelectionCell()}
 											{rowIndex === 0 && this.renderHeaderTdCell()}
 											{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false))}
 										</tr>
 									)),
-									this.renderSpacer('head', sortedHorizontalHeaders),
+									this.renderSpacer('head', horizontalHeaders),
 								]}
 							</thead>
 						)}

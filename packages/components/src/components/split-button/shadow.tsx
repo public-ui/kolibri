@@ -52,8 +52,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.primaryButtonWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.primaryButtonWcRef?.focus());
 	}
 
 	private readonly clickButtonHandler = {
@@ -117,7 +117,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						class="kol-split-button__secondary-button"
 						_disabled={this._disabled}
 						_hideLabel
-						_icons="codicon codicon-triangle-down"
+						_icons="kolicon-chevron-down"
 						_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
 						_on={this.clickToggleHandler}
 					></KolButtonWcTag>
@@ -140,7 +140,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -236,7 +236,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Defines the value that the button emits on click.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
 

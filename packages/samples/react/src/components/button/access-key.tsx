@@ -34,7 +34,7 @@ export const ButtonAccessKey: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Access Key with Hidden Label" />
 					<div className="flex flex-wrap gap-4">
-						<KolButton _label="access key without label" _hideLabel _accessKey="a" _icons="codicon codicon-dashboard" _on={dummyEventHandler} />
+						<KolButton _label="access key without label" _hideLabel _accessKey="a" _icons="fa-solid fa-gauge" _on={dummyEventHandler} />
 					</div>
 				</section>
 
@@ -44,8 +44,8 @@ export const ButtonAccessKey: FC = () => {
 						<KolButton
 							_label="with inline icons"
 							_icons={{
-								left: 'codicon codicon-dashboard',
-								right: 'codicon codicon-dashboard',
+								left: 'fa-solid fa-gauge',
+								right: 'fa-solid fa-gauge',
 							}}
 							_accessKey="n"
 							_on={dummyEventHandler}

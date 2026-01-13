@@ -22,6 +22,7 @@ const TAGS = [
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-dialog',
 	'kol-drawer',
 	'kol-form',
 	'kol-heading',
@@ -67,6 +68,7 @@ const EXCLUDE_TAGS = [
 	'kol-button-wc',
 	'kol-color',
 	'kol-counter',
+	'kol-dialog-wc',
 	'kol-heading-wc',
 	'kol-input',
 	'kol-link-wc',
@@ -278,7 +280,12 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [sass(), postcss()],
+	plugins: [
+		sass({
+			includePaths: ['node_modules'],
+		}),
+		postcss(),
+	],
 	rollupPlugins: {
 		before: [],
 		after: [],
@@ -296,5 +303,5 @@ export const config: Config = {
 	/**
 	 * @see https://github.com/stenciljs/core/pull/6389
 	 */
-	suppressReservedPublicNameWarnings: false,
+	suppressReservedPublicNameWarnings: true,
 };

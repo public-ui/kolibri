@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-details', () => {
 	test.describe('Callbacks', () => {
@@ -29,11 +28,11 @@ test.describe('kol-details', () => {
 			await page.setContent('<kol-details _label="Details" _has-closer />');
 			const kolDetails = page.locator('kol-details');
 
-			const eventPromise = kolDetails.evaluate(async (element: HTMLKolDetailsElement, KolEvent) => {
+			const eventPromise = kolDetails.evaluate(async (element: HTMLKolDetailsElement) => {
 				return new Promise((resolve) => {
-					element.addEventListener(KolEvent.toggle, resolve);
+					element.addEventListener('toggle', resolve);
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 
 			await page.locator('button').click();

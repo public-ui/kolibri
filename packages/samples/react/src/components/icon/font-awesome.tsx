@@ -16,8 +16,8 @@ export const IconFontAwesome: FC = () => (
 			<KolIcon className="block" _label="" _icons="fa-solid fa-circle-user"></KolIcon>
 			<KolIcon className="block" _label="" _icons="fa-solid fa-truck"></KolIcon>
 			<KolIcon className="block" _label="" _icons="fa-solid fa-city"></KolIcon>
-			<KolIcon className="block" _label="" _icons="fa-regular fa-heart"></KolIcon>
-			<KolIcon className="block" _label="" _icons="fa-regular fa-thumbs-up"></KolIcon>
+			<KolIcon className="block" _label="" _icons="fa-solid fa-heart"></KolIcon>
+			<KolIcon className="block" _label="" _icons="fa-solid fa-thumbs-up"></KolIcon>
 			<KolIcon className="block" _label="" _icons="fa-brands fa-github"></KolIcon>
 
 			<KolInputText

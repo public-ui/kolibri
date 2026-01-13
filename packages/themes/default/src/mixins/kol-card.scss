@@ -1,7 +1,10 @@
 @use './to-rem' as *;
+@use './button' as *;
 
 @mixin kol-card($border-radius: var(--border-radius)) {
 	.kol-card {
+		@include kol-button('kol-button');
+
 		background-color: var(--color-light);
 		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
 		border-radius: $border-radius;
@@ -24,28 +27,6 @@
 
 			& ::slotted(p:last-child) {
 				margin-bottom: 0;
-			}
-		}
-
-		&__close-button {
-			color: var(--color-primary);
-			background: transparent;
-			cursor: pointer;
-
-			.kol-button {
-				&:focus {
-					outline: var(--color-primary-variant) solid to-rem(3);
-					outline-offset: 2px;
-					transition: 200ms outline-offset linear;
-				}
-
-				&:focus,
-				&:hover {
-					color: var(--color-light);
-					background-color: var(--color-danger);
-					box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
-					border-top-right-radius: $border-radius;
-				}
 			}
 		}
 	}

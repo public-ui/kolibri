@@ -47,7 +47,7 @@ import { ComboboxController } from './controller';
 	shadow: true,
 })
 export class KolCombobox implements ComboboxAPI {
-	@Element() private readonly host?: HTMLKolComboboxElement;
+	@Element() private readonly host?: HTMLElement;
 	private refInput?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
@@ -66,9 +66,8 @@ export class KolCombobox implements ComboboxAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.refInput?.focus();
+	public async focus() {
+		return Promise.resolve(this.refInput?.focus());
 	}
 
 	private toggleListbox = () => {
@@ -183,6 +182,14 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
+	private selectFocusedOption(): boolean {
+		if (this._filteredSuggestions && this._focusedOptionIndex >= 0 && this._focusedOptionIndex < this._filteredSuggestions.length) {
+			this.selectOption(this._filteredSuggestions[this._focusedOptionIndex] as string);
+			return true;
+		}
+		return false;
+	}
+
 	private focusSuggestionStartingWith(char: string) {
 		const charLowerCase = char.toLowerCase();
 
@@ -256,9 +263,9 @@ export class KolCombobox implements ComboboxAPI {
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						{this.state._value && !this.state._hideClearButton && (
+						{this.state._value && this.state._hasClearButton && (
 							<KolButtonWcTag
-								_icons="codicon codicon-close"
+								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_disabled={isDisabled}
@@ -274,7 +281,7 @@ export class KolCombobox implements ComboboxAPI {
 							/>
 						)}
 						<KolIconTag
-							_icons="codicon codicon-triangle-down"
+							_icons="kolicon-chevron-down"
 							_label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,
@@ -288,6 +295,7 @@ export class KolCombobox implements ComboboxAPI {
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
 									<CustomSuggestionsOptionFc
+										disabled={false}
 										index={index}
 										option={option}
 										searchTerm={this.state._value}
@@ -362,11 +370,13 @@ export class KolCombobox implements ComboboxAPI {
 				this.refInput?.focus();
 				break;
 			}
-			case 'NumpadEnter':
-			case 'Enter': {
-				if (this._isOpen && this._focusedOptionIndex >= 0) {
-					this._filteredSuggestions && this.selectOption(this._filteredSuggestions[this._focusedOptionIndex] as string);
-					this._isOpen = false;
+			case ' ':
+			case 'Enter':
+			case 'NumpadEnter': {
+				if (this._isOpen) {
+					if (this.selectFocusedOption()) {
+						this._isOpen = false;
+					}
 				} else {
 					this.toggleListbox();
 				}
@@ -412,7 +422,7 @@ export class KolCombobox implements ComboboxAPI {
 	@State()
 	private _filteredSuggestions?: SuggestionsPropType;
 
-	@Listen('click', { target: 'window' })
+	@Listen('click')
 	handleWindowClick(event: MouseEvent) {
 		if (this.host !== undefined && !this.host.contains(event.target as Node)) {
 			this._isOpen = false;
@@ -420,7 +430,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -484,9 +494,9 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Hides the clear button.
+	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hideClearButton?: boolean = false;
+	@Prop() public _hasClearButton?: boolean = true;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -522,13 +532,13 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
-		_hideClearButton: false,
+		_hasClearButton: true,
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -618,9 +628,9 @@ export class KolCombobox implements ComboboxAPI {
 		this._filteredSuggestions = value;
 	}
 
-	@Watch('_hideClearButton')
-	public validateHideClearButton(value?: boolean): void {
-		this.controller.validateHideClearButton(value);
+	@Watch('_hasClearButton')
+	public validateHasClearButton(value?: boolean): void {
+		this.controller.validateHasClearButton(value);
 	}
 
 	@Watch('_required')
@@ -659,23 +669,24 @@ export class KolCombobox implements ComboboxAPI {
 		this.blockSuggestionMouseOver = false;
 	}
 
-	@Listen('focusout', { target: 'window' })
-	public handleFocusOut() {
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
 		setTimeout(() => {
 			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur();
+				this.onBlur(event);
 			}
-		}, 0);
+		});
 	}
-	@Listen('blur', { target: 'window' })
-	public handleWindowBlur() {
-		this.onBlur();
+	@Listen('blur')
+	public handleWindowBlur(event: FocusEvent) {
+		this.onBlur(event);
 	}
 
-	private onBlur() {
+	private onBlur(event: FocusEvent): void {
 		if (this._isOpen) {
-			this._isOpen = !this._isOpen;
-			this.refInput?.focus();
+			if (event instanceof FocusEvent && event.view === window) {
+				this._isOpen = false;
+			}
 		}
 	}
 

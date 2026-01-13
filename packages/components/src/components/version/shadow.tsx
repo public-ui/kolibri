@@ -22,7 +22,7 @@ export class KolVersion implements VersionAPI {
 				<KolBadgeTag
 					_color="#bec5c9"
 					_icons={{
-						left: { icon: 'codicon codicon-versions', label: this.translateVersion },
+						left: { icon: 'kolicon-version', label: this.translateVersion },
 					}}
 					_label={this.state._label}
 				/>

@@ -24,23 +24,23 @@ import {
 	watchValidator,
 } from '../../schema';
 
-import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
+import { KolButtonWcTag, KolSelectWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const leftDoubleArrowIcon = {
-	left: 'codicon codicon-debug-reverse-continue',
+	left: 'kolicon-chevron-double-left',
 };
 const leftSingleArrow = {
-	left: 'codicon codicon-chevron-left',
+	left: 'kolicon-chevron-left',
 };
 const rightSingleArrowIcon = {
-	right: 'codicon codicon-chevron-right',
+	right: 'kolicon-chevron-right',
 };
 const rightDoubleArrowIcon = {
-	right: 'codicon codicon-debug-continue',
+	right: 'kolicon-chevron-double-right',
 };
 
 function getUserLanguage(): string {
@@ -75,6 +75,14 @@ export class KolPaginationWc implements PaginationAPI {
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
+	private getPageStart(): string {
+		return (this.state._page - 1) * this.state._pageSize + 1 + '';
+	}
+
+	private getPageEnd(): string {
+		return this.state._page * this.state._pageSize + '';
+	}
+
 	public render(): JSX.Element {
 		let ellipsis = false;
 		const count = this.getCount();
@@ -106,6 +114,15 @@ export class KolPaginationWc implements PaginationAPI {
 
 		return (
 			<Host class="kol-pagination">
+				<span role="status" aria-live="polite">
+					{translate('kol-table-visible-range', {
+						placeholders: {
+							start: this.getPageStart(),
+							end: this.getPageEnd(),
+							total: this.state._max.toString(),
+						},
+					})}
+				</span>
 				<nav class="kol-pagination__navigation" aria-label={this.state._label}>
 					<ul class="kol-pagination__navigation-list">
 						{this.state._hasButtons.first && (
@@ -172,17 +189,18 @@ export class KolPaginationWc implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSelectTag
-						class="kol-pagination__page-size-select"
-						_hideLabel
-						_id={`pagination-size-${this.nonce}`}
-						_label={this.translateEntriesPerSite}
-						_options={this.state._pageSizeOptions}
-						_on={{
-							onChange: this.onChangePageSize,
-						}}
-						_value={this.state._pageSize}
-					></KolSelectTag>
+					<div class="page-size">
+						<KolSelectWcTag
+							class="kol-pagination__page-size-select"
+							_id={`pagination-size-${this.nonce}`}
+							_label={this.translateEntriesPerSite}
+							_options={this.state._pageSizeOptions}
+							_on={{
+								onChange: this.onChangePageSize,
+							}}
+							_value={this.state._pageSize}
+						/>
+					</div>
 				)}
 			</Host>
 		);
@@ -239,7 +257,7 @@ export class KolPaginationWc implements PaginationAPI {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Defines the maximum number of pages.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max!: MaxPropType;
 
@@ -494,7 +512,7 @@ export class KolPaginationWc implements PaginationAPI {
 			for (const value of nextValue) {
 				if (typeof value === 'number') {
 					options.push({
-						label: translate('kol-page-per-site', { placeholders: { entries: `${value}` } }),
+						label: `${value}`,
 						value: value,
 					});
 				}

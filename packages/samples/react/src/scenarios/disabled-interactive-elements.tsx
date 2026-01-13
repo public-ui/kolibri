@@ -63,32 +63,32 @@ export const DisabledInteractiveElements: FC = () => {
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="Label" _on={dummyEventHandler} />
 						<KolButton _disabled _label="Label" _on={dummyEventHandler} />
-						<KolButton _hideLabel _icons="codicon codicon-home" _label="Label" _on={dummyEventHandler} />
-						<KolButton _disabled _hideLabel _icons="codicon codicon-home" _label="Label" _on={dummyEventHandler} />
+						<KolButton _hideLabel _icons="fa-solid fa-house" _label="Label" _on={dummyEventHandler} />
+						<KolButton _disabled _hideLabel _icons="fa-solid fa-house" _label="Label" _on={dummyEventHandler} />
 					</div>
 				</KolCard>
 				<KolCard _label="ButtonLink" _level={0}>
 					<div className="flex flex-wrap gap-4">
 						<KolButtonLink _label="Label" />
 						<KolButtonLink _disabled _label="Label" />
-						<KolButtonLink _hideLabel _icons="codicon codicon-home" _label="Label" />
-						<KolButtonLink _hideLabel _icons="codicon codicon-home" _disabled _label="Label" />
+						<KolButtonLink _hideLabel _icons="fa-solid fa-house" _label="Label" />
+						<KolButtonLink _hideLabel _icons="fa-solid fa-house" _disabled _label="Label" />
 					</div>
 				</KolCard>
 				<KolCard _label="Link" _level={0}>
 					<div className="flex flex-wrap gap-4">
 						<KolLink _href="#" _label="Label" />
 						<KolLink _disabled _href="#" _label="Label" />
-						<KolLink _hideLabel _href="#" _icons="codicon codicon-home" _label="Label" />
-						<KolLink _disabled _hideLabel _href="#" _icons="codicon codicon-home" _label="Label" />
+						<KolLink _hideLabel _href="#" _icons="fa-solid fa-house" _label="Label" />
+						<KolLink _disabled _hideLabel _href="#" _icons="fa-solid fa-house" _label="Label" />
 					</div>
 				</KolCard>
 				<KolCard _label="LinkButton" _level={0}>
 					<div className="flex flex-wrap gap-4">
 						<KolLinkButton _href="#" _label="Label" />
 						<KolLinkButton _disabled _href="#" _label="Label" />
-						<KolLinkButton _hideLabel _href="#" _icons="codicon codicon-home" _label="Label" />
-						<KolLinkButton _disabled _hideLabel _href="#" _icons="codicon codicon-home" _label="Label" />
+						<KolLinkButton _hideLabel _href="#" _icons="fa-solid fa-house" _label="Label" />
+						<KolLinkButton _disabled _hideLabel _href="#" _icons="fa-solid fa-house" _label="Label" />
 					</div>
 				</KolCard>
 				<KolCard _label="Accordion" _level={0}>

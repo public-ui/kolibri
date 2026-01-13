@@ -17,5 +17,9 @@
 				background-color: var(--color-primary);
 			}
 		}
+
+		.kol-input {
+			min-width: calc(3 * var(--a11y-min-size) + 8px); // at least 2 buttons + text with a11y min size + gaps
+		}
 	}
 }

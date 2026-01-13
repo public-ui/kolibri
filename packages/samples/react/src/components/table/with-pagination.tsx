@@ -13,8 +13,8 @@ import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-u
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Order', key: 'order' },
-			{ label: 'Date', key: 'date', render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+			{ label: 'Order', key: 'order', width: 160 },
+			{ label: 'Date', key: 'date', width: 160, render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
 		],
 	],
 };
@@ -26,7 +26,7 @@ export const TableWithPagination: FC = () => (
 			<p>This sample shows how KolTableStateful can be navigated using a pagination.</p>
 		</SampleDescription>
 		<div className="w-full">
-			<KolTableStateful _label="Table description" _minWidth="auto" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTableStateful>
+			<KolTableStateful _label="Table description" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTableStateful>
 		</div>
 	</>
 );

@@ -11,24 +11,23 @@
 
 		&:focus {
 			outline: none;
-		}
 
-		&:visited {
-			color: var(--visited);
-		}
-
-		&__text {
-			@at-root #{$root}:focus & {
+			#{$root}__text {
 				outline: var(--border-width) solid;
 				border-radius: var(--border-radius);
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
+		}
 
+		&:focus:not([aria-disabled], [disabled]),
+		&:hover:not([aria-disabled], [disabled]) {
 			.kol-span__label {
-				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
-					text-decoration-thickness: 0.25em;
-				}
+				text-decoration-thickness: 0.25em;
 			}
+		}
+
+		&:visited {
+			color: var(--color-visited);
 		}
 	}
 }

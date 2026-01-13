@@ -74,9 +74,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -145,7 +144,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					this._passwordVisible = !this._passwordVisible;
 					this.inputRef?.focus();
 				}}
-				icon={`codicon codicon-eye-${this._passwordVisible ? 'closed' : 'watch'}`}
+				icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
 				disabled={this._disabled}
 			/>
 		);
@@ -164,7 +163,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	private readonly controller: InputPasswordController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -293,7 +292,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

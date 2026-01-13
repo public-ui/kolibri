@@ -180,6 +180,17 @@ ROUTES.set('details/basic', {
 		},
 	},
 });
+ROUTES.set('dialog/basic?show-dialog=true', {
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('drawer/basic?align=left', {
 	snapshot: {
 		viewportSize: {
@@ -661,15 +672,7 @@ ROUTES.set('link/target', {
 		skip: true,
 	},
 });
-ROUTES.set('modal/basic', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('modal/basic?show-modal=true', {
+ROUTES.set('modal/basic?show-dialog=true', {
 	snapshot: {
 		viewportSize: {
 			width: 1920,

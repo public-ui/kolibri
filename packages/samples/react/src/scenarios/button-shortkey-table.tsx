@@ -30,11 +30,11 @@ const RowActions: FC<{ label: string }> = ({ label }) => {
 	const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (event.code) {
 			case 'KeyE':
-				void editButtonRef.current?.kolFocus();
+				void editButtonRef.current?.focus();
 				handleEditClick();
 				return;
 			case 'KeyD':
-				void deleteButtonRef.current?.kolFocus();
+				void deleteButtonRef.current?.focus();
 				handleDeleteClick();
 				return;
 		}
@@ -81,14 +81,19 @@ export const ButtonShortkeyTable: FC = () => {
 					label: 'Label',
 					key: 'label',
 					textAlign: 'left',
+					width: 200,
 				},
 				{
 					label: 'Actions',
 					key: 'actions',
 					textAlign: 'left',
-
+					width: 150,
 					render: (el, cell) => {
-						getRoot(createReactRenderElement(el)).render(<RowActions label={(cell.data as Data).label} />);
+						const data = cell.data as Data | undefined;
+						if (!data?.label) {
+							return;
+						}
+						getRoot(createReactRenderElement(el)).render(<RowActions label={data.label} />);
 					},
 				},
 			],
@@ -115,7 +120,6 @@ export const ButtonShortkeyTable: FC = () => {
 						_label={`Interactive table with shortkey buttons in each row`}
 						_data={DATA}
 						_headers={HEADERS}
-						_minWidth="400px"
 						_pagination={{
 							_page: 1,
 						}}

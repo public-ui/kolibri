@@ -35,6 +35,7 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 					(value.horizontal === undefined ||
 						(Array.isArray(value.horizontal) && value.horizontal.find((headerRow) => !Array.isArray(headerRow)) === undefined)) &&
 					(value.vertical === undefined || (Array.isArray(value.vertical) && value.vertical.find((headerCol) => !Array.isArray(headerCol)) === undefined)) &&
+					[...(value.horizontal ?? []), ...(value.vertical ?? [])].flat().every((cell) => cell.width === undefined || typeof cell.width === 'number') &&
 					true,
 				new Set(['TableHeaderCellsPropType']),
 				value,

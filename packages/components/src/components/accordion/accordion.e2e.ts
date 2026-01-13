@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-accordion', () => {
 	test.describe('when accordion is enabled', () => {
@@ -27,11 +26,11 @@ test.describe('kol-accordion', () => {
 		});
 
 		test('should emit "click" event when the title is clicked', async ({ page }) => {
-			const eventPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement, KolEvent) => {
+			const eventPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement) => {
 				return new Promise((resolve) => {
-					element.addEventListener(KolEvent.click, resolve);
+					element.addEventListener('click', resolve);
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 			await page.getByRole('button', { name: 'Accordion label' }).click();
 			await expect(eventPromise).resolves.toBeTruthy();

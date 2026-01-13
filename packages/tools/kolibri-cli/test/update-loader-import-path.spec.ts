@@ -53,6 +53,24 @@ defineCustomElements();
 		assert.ok(!content.includes('/dist/loader'));
 	});
 
+	it('updates loader import path in MJS file', () => {
+		const mjsPath = path.join(tmpDir, 'main.mjs');
+		fs.writeFileSync(
+			mjsPath,
+			`import { defineCustomElements } from '@public-ui/components/dist/loader';
+
+defineCustomElements();
+`,
+		);
+
+		const task = UpdateLoaderImportPathTask.getInstance('^4');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(mjsPath, 'utf8');
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
+		assert.ok(!content.includes('/dist/loader'));
+	});
+
 	it('updates loader import path in TSX file', () => {
 		const tsxPath = path.join(tmpDir, 'App.tsx');
 		fs.writeFileSync(
@@ -202,5 +220,18 @@ defineCustomElements();
 		const content = fs.readFileSync(tsPath, 'utf8');
 		assert.ok(content.includes("import('@public-ui/components/loader')"));
 		assert.ok(!content.includes('/dist/loader'));
+	});
+
+	it('strips loader subpaths to the public loader entry', () => {
+		const tsPath = path.join(tmpDir, 'loader-subpath.ts');
+		fs.writeFileSync(tsPath, `import { defineCustomElements } from '@public-ui/components/dist/loader/index.es2017';`);
+
+		const task = UpdateLoaderImportPathTask.getInstance('^4');
+		task.run(tmpDir);
+
+		const content = fs.readFileSync(tsPath, 'utf8');
+		assert.ok(content.includes("import { defineCustomElements } from '@public-ui/components/loader';"));
+		assert.ok(!content.includes('/dist/loader'));
+		assert.ok(!content.includes('/loader/index'));
 	});
 });

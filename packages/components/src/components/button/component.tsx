@@ -75,9 +75,8 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.buttonRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.buttonRef?.focus());
 	}
 
 	private readonly hideTooltip = () => {
@@ -191,7 +190,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -301,7 +300,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Defines the value that the button emits on click.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
 

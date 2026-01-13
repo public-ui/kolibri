@@ -17,7 +17,7 @@ export const InputTextExpertSlot = () => {
 				<KolInputText _label="" _type="text" _value="Complex example">
 					<div slot="expert" className="flex items-center gap-2">
 						<KolBadge _label="Premium" _color="#1a73e8" />
-						<KolIcon _icons="codicon codicon-verified-filled" _label="" />
+						<KolIcon _icons="kolicon-check" _label="" />
 						<span>Verified account with premium features</span>
 					</div>
 				</KolInputText>

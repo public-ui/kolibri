@@ -13,6 +13,19 @@
 			#{$root}:not(#{$root}--is-compact) & {
 				width: 100%;
 			}
+
+			.kol-span {
+				width: 100%;
+				justify-content: flex-start;
+
+				&__container {
+					width: 100%;
+
+					.kol-span__label {
+						flex: 1;
+					}
+				}
+			}
 		}
 
 		&__list {
@@ -34,18 +47,5 @@
 
 	.kol-button {
 		text-align: left;
-	}
-
-	.kol-span {
-		width: 100%;
-		justify-content: flex-start;
-
-		&__container {
-			width: 100%;
-
-			.kol-span__label {
-				flex: 1;
-			}
-		}
 	}
 }

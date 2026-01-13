@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { TableHeaderCellsPropType, TableSettings } from '../../schema';
-import { KolEvent } from '../../utils/events';
+import type { KoliBriTableHeaderCell, TableHeaderCellsPropType } from '../../schema';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },
@@ -12,9 +11,9 @@ const DATA = [
 const HEADERS: TableHeaderCellsPropType = {
 	horizontal: [
 		[
-			{ key: 'id', label: 'ID' },
-			{ key: 'name', label: 'Name' },
-			{ key: 'age', label: 'Age' },
+			{ key: 'id', label: 'ID', width: 120 },
+			{ key: 'name', label: 'Name', width: 180 },
+			{ key: 'age', label: 'Age', width: 120 },
 		],
 	],
 };
@@ -71,46 +70,25 @@ test.describe('kol-table-settings', () => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
 
-			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
-				return new Promise<TableSettings>((resolve) => {
-					element.addEventListener(KolEvent.settingsChange, (event: Event) => {
-						resolve((event as CustomEvent).detail as TableSettings);
+			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				return new Promise<KoliBriTableHeaderCell[][]>((resolve) => {
+					element.addEventListener('changeheadercells', (event: Event) => {
+						resolve((event as CustomEvent).detail as KoliBriTableHeaderCell[][]);
 					});
 				});
-			}, KolEvent);
+			});
 
 			// Apply changes
 			const applyButton = page.getByTestId('table-settings-apply');
 			await applyButton.click();
 
-			await expect(eventPromise).resolves.toEqual({
-				columns: [
-					{
-						key: 'id',
-						label: 'ID',
-						visible: true,
-						hidable: true,
-						resizable: true,
-						sortable: true,
-					},
-					{
-						key: 'name',
-						label: 'Name',
-						visible: true,
-						hidable: true,
-						resizable: true,
-						sortable: true,
-					},
-					{
-						key: 'age',
-						label: 'Age',
-						visible: true,
-						hidable: true,
-						resizable: true,
-						sortable: true,
-					},
+			await expect(eventPromise).resolves.toEqual([
+				[
+					{ key: 'id', label: 'ID', visible: true, hidable: true, width: 120 },
+					{ key: 'name', label: 'Name', visible: true, hidable: true, width: 180 },
+					{ key: 'age', label: 'Age', visible: true, hidable: true, width: 120 },
 				],
-			});
+			]);
 		});
 	});
 
@@ -141,7 +119,6 @@ test.describe('kol-table-settings', () => {
 		test('it shows error message when all columns are hidden', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
-			await page.waitForChanges();
 
 			// Hide all columns
 			const checkboxes = page.getByRole('checkbox');
@@ -159,7 +136,6 @@ test.describe('kol-table-settings', () => {
 		test('it removes error message when at least one column is visible', async ({ page }) => {
 			const settingsButton = page.getByTestId('popover-button').locator('button');
 			await settingsButton.click();
-			await page.waitForChanges();
 
 			// Hide all columns
 			const checkboxes = page.getByRole('checkbox');
@@ -192,7 +168,7 @@ test.describe('kol-table-settings', () => {
 
 			// Verify width is applied
 			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
-			await expect(idColumn).toHaveAttribute('style', 'width: 50ch;');
+			await expect(idColumn).toHaveCSS('width', '50px');
 		});
 	});
 

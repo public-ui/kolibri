@@ -92,11 +92,11 @@ export const Sidebar: FC<Props> = ({ version, themes, theme, routes, routeList, 
 				<KolSelect _label="Theme" _options={themeOption} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
 				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
 				<div className="flex flex-justify-between flex-items-center mt">
-					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
+					<KolButton _icons="kolicon-chevron-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
 					<span className="text-base text-center">
 						{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
 					</span>
-					<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
+					<KolButton _icons="kolicon-chevron-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
 				</div>
 				<Navigation routes={routes} />
 			</div>

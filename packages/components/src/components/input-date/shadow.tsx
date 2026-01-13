@@ -71,9 +71,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	/**
@@ -193,7 +192,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	private readonly controller: InputDateController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -243,7 +242,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: Iso8601 | Date;
 
@@ -322,7 +321,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _type: InputDateTypePropType = 'date';
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 

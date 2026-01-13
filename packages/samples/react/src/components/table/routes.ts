@@ -14,6 +14,7 @@ import { TableSortData } from './sort-data';
 import { TableStatefulWithSelection } from './stateful-with-selection';
 import { TableStatefulWithSingleSelection } from './stateful-with-single-selection';
 import { TableStateless } from './stateless';
+import { TableStatelessAsync } from './stateless-async-paging';
 import { TableStatelessWithSelection } from './stateless-with-selection';
 import { TableStatelessWithSettingsMenu } from './stateless-with-settings-menu';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
@@ -39,6 +40,7 @@ export const TABLE_ROUTES: Routes = {
 		'stateless-with-settings-menu': TableStatelessWithSettingsMenu,
 		'stateful-with-single-selection': TableStatefulWithSingleSelection,
 		stateless: TableStateless,
+		'stateless-async': TableStatelessAsync,
 		'stateless-with-selection': TableStatelessWithSelection,
 		'stateless-with-single-selection': TableStatelessWithSingleSelection,
 		'sticky-header': TableStickyHeader,

@@ -68,9 +68,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {
@@ -162,13 +161,18 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				tabIndex={-1}
 				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
 				data-testid="kol-input-number-step-up"
-				onClick={(): void => {
+				onClick={(event: MouseEvent): void => {
 					this.inputRef?.stepUp();
+					// Manually trigger onInput since stepUp() doesn't fire input events
+					const newValue = this.inputRef?.value;
+					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="codicon codicon-add" label="" />
+				<KolIconFc icons="kolicon-plus" label="" />
 			</button>
 		);
 	}
@@ -184,13 +188,18 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				tabIndex={-1}
 				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
 				data-testid="kol-input-number-step-down"
-				onClick={(): void => {
+				onClick={(event: MouseEvent): void => {
 					this.inputRef?.stepDown();
+					// Manually trigger onInput since stepDown() doesn't fire input events
+					const newValue = this.inputRef?.value;
+					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="codicon codicon-remove" label="" />
+				<KolIconFc icons="kolicon-minus" label="" />
 			</button>
 		);
 	}
@@ -208,7 +217,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	private readonly controller: InputNumberController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -258,7 +267,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: number | NumberString;
 
@@ -337,7 +346,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
 

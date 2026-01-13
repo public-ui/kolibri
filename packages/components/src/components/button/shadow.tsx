@@ -47,8 +47,8 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
 	public render(): JSX.Element {
@@ -82,7 +82,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -183,7 +183,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Defines the value that the button emits on click.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
 

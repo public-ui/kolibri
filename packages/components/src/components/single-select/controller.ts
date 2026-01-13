@@ -60,8 +60,8 @@ export class SingleSelectController extends InputIconController implements Singl
 		validatePlaceholder(this.component, value);
 	}
 
-	public validateHideClearButton(value?: boolean): void {
-		watchBoolean(this.component, '_hideClearButton', value);
+	public validateHasClearButton(value?: boolean): void {
+		watchBoolean(this.component, '_hasClearButton', value);
 	}
 
 	public validateRows(value?: number): void {
@@ -74,7 +74,7 @@ export class SingleSelectController extends InputIconController implements Singl
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
 		this.validatePlaceholder(this.component._placeholder);
-		this.validateHideClearButton(this.component._hideClearButton);
+		this.validateHasClearButton(this.component._hasClearButton);
 		this.validateRows(this.component._rows);
 	}
 }

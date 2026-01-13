@@ -34,6 +34,14 @@ export class KolSkipNav implements SkipNavAPI {
 	}
 
 	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async focus() {
+		return Promise.resolve(this.firstLinkRef?.focus());
+	}
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
@@ -71,10 +79,5 @@ export class KolSkipNav implements SkipNavAPI {
 
 	public disconnectedCallback(): void {
 		removeNavLabel(this.state._label);
-	}
-
-	@Method()
-	public async kolFocus(): Promise<void> {
-		await this.firstLinkRef?.kolFocus();
 	}
 }

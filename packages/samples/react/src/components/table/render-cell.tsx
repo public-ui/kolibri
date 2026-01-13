@@ -7,7 +7,7 @@ import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
-import type { IconsPropType, KoliBriTableHeaders } from '@public-ui/components';
+import type { IconsPropType, KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
 import { useToasterService } from '../../hooks/useToasterService';
 
 type Data = {
@@ -50,41 +50,47 @@ const HEADERS: KoliBriTableHeaders = {
 				label: '#',
 				key: 'order',
 				textAlign: 'center',
-				width: '10em',
+				width: 100,
 
 				/* Example 1: Use render return value to format data */
-				render: (_el, cell) => `Index: ${cell.label}`,
+				render: (_el, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					return `Index: ${label}`;
+				},
 			},
 			{
 				label: 'Status',
 				key: 'shipped',
 				textAlign: 'center',
-				width: '10em',
+				width: 100,
 
 				/* Example 2: Simple render function using textContent */
-				render: (el, cell) => {
-					if (cell.label) {
-						el.textContent = `Order has been dispatched 🚚`;
+				render: (el, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					const element = el as HTMLElement;
+					if (label) {
+						element.textContent = `Order has been dispatched 🚚`;
 					} else {
-						el.textContent = `Order pending 📦`;
+						element.textContent = `Order pending 📦`;
 					}
 				},
 			},
 			{
 				label: 'Date (string)',
 				key: 'date',
-				width: '20em',
+				width: 200,
 				textAlign: 'center',
 
 				/* Example 3: Render function using innerHTML. ⚠️Make sure to sanitize data to avoid XSS. */
-				render: (el, cell) => {
-					el.innerHTML = `<strong>${DATE_FORMATTER.format(cell.label as unknown as Date)}</strong>`;
+				render: (el, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					(el as HTMLElement).innerHTML = `<strong>${DATE_FORMATTER.format(label as unknown as Date)}</strong>`;
 				},
 				compareFn: (data0, data1) => (data0 as Data).date.getTime() - (data1 as Data).date.getTime(),
 			},
 			{
 				label: 'Action (react)',
-				width: '20em',
+				width: 200,
 
 				/* Example 4: Render function using React */
 				render: (el) => {
@@ -99,7 +105,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 						>
 							<KolInputText _label="Input" />
-							<KolButtonWrapper label="Save" icons={{ left: 'codicon codicon-save' }} />
+							<KolButtonWrapper label="Save" icons={{ left: 'fa-solid fa-floppy-disk' }} />
 						</div>,
 					);
 				},
@@ -114,6 +120,6 @@ export const TableRenderCell: FC = () => (
 			<p>This sample shows KolTableStateful using React render functions for the cell contents.</p>
 		</SampleDescription>
 
-		<KolTableStateful _label="Sort by date column" _minWidth="auto" _data={DATA} _headers={HEADERS} className="w-full" />
+		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
 	</>
 );

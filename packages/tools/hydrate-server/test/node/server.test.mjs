@@ -271,7 +271,7 @@ function getComponentCategory(componentName) {
 	if (['kol-button', 'kol-badge', 'kol-heading', 'kol-link', 'kol-image', 'kol-icon'].includes(componentName)) {
 		return 'basic';
 	}
-	if (['kol-card', 'kol-accordion', 'kol-modal', 'kol-drawer', 'kol-details'].includes(componentName)) {
+	if (['kol-card', 'kol-accordion', 'kol-dialog', 'kol-modal', 'kol-drawer', 'kol-details'].includes(componentName)) {
 		return 'layout';
 	}
 	if (['kol-alert', 'kol-progress', 'kol-spin', 'kol-toast-container'].includes(componentName)) {

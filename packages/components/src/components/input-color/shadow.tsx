@@ -94,9 +94,8 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.refInputText?.focus();
+	public async focus() {
+		return Promise.resolve(this.refInputText?.focus());
 	}
 
 	private get hasSuggestions(): boolean {
@@ -164,7 +163,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private readonly controller: InputColorController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -261,7 +260,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: string;
 

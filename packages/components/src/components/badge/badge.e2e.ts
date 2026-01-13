@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-badge', () => {
 	test.describe('Callbacks', () => {
@@ -30,7 +29,7 @@ test.describe('kol-badge', () => {
 	});
 
 	test.describe('DOM events', () => {
-		[KolEvent.click, KolEvent.mousedown].forEach((event) => {
+		['click', 'mousedown'].forEach((event) => {
 			test(`should emit ${event} when smart button emits ${event}`, async ({ page }) => {
 				const BADGE_PROPS = { _label: `Smart Button` };
 				await page.setContent(`<kol-badge _label="Badge with Button" _smart-button='${JSON.stringify(BADGE_PROPS)}'></kol-badge>`);
@@ -46,14 +45,14 @@ test.describe('kol-badge', () => {
 		});
 	});
 
-	test('should focus the smart button when kolFocus is called', async ({ page }) => {
+	test('should focus the smart button when focus is called', async ({ page }) => {
 		const BADGE_PROPS = { _label: `Smart Button` };
 		await page.setContent(`<kol-badge _label="Badge with Button" _smart-button='${JSON.stringify(BADGE_PROPS)}'></kol-badge>`);
 		await page.waitForChanges();
 
 		const result = await page.locator('kol-badge').evaluate(async (badge: HTMLKolBadgeElement) => {
-			// Call kolFocus and check what gets focused
-			await badge.kolFocus();
+			// Call focus and check what gets focused
+			await badge.focus();
 
 			// Wait for focus to be applied
 			await new Promise((resolve) => setTimeout(resolve, 10));

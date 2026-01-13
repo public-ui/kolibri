@@ -23,11 +23,12 @@ const TEMPERATURE_DATA: TemperatureRow[] = [
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'City', key: 'city' },
+			{ label: 'City', key: 'city', width: 160 },
 			{
 				label: 'Temperature (°C)',
 				key: 'temperature',
 				textAlign: 'right',
+				width: 160,
 				compareFn: (rowA, rowB, direction = 'ASC') => {
 					const temperatureA = (rowA as TemperatureRow).temperature;
 					const temperatureB = (rowB as TemperatureRow).temperature;
@@ -59,7 +60,7 @@ export const TableDirectionAwareSort: FC = () => (
 		</SampleDescription>
 
 		<section className="w-full">
-			<KolTableStateful _minWidth="100%" _label="Direction aware compare function" _data={TEMPERATURE_DATA} _headers={HEADERS} className="block" />
+			<KolTableStateful _label="Direction aware compare function" _data={TEMPERATURE_DATA} _headers={HEADERS} className="block" />
 		</section>
 	</>
 );

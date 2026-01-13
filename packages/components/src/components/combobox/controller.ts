@@ -13,8 +13,8 @@ export class ComboboxController extends InputIconController implements ComboboxW
 		this.component = component;
 	}
 
-	public validateHideClearButton(value?: boolean): void {
-		watchBoolean(this.component, '_hideClearButton', value);
+	public validateHasClearButton(value?: boolean): void {
+		watchBoolean(this.component, '_hasClearButton', value);
 	}
 
 	public validatePlaceholder(value?: PlaceholderPropType): void {
@@ -35,7 +35,7 @@ export class ComboboxController extends InputIconController implements ComboboxW
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
-		this.validateHideClearButton(this.component._hideClearButton);
+		this.validateHasClearButton(this.component._hasClearButton);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateRequired(this.component._required);
 		this.validateSuggestions(this.component._suggestions);

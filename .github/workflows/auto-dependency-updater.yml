@@ -5,7 +5,7 @@ env:
 
 on:
   schedule:
-    - cron: '0 2 * * 1' # Runs weekly on Monday at 02:00 UTC
+    - cron: '0 2 * * *' # Runs daily at 02:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -25,14 +25,13 @@ jobs:
             version: v3
           - base: release/2
             version: v2
-          # - base: release/1
-          #   version: v1
+          - base: release/1
+            version: v1
     env:
       version: ${{ matrix.version }}
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
           ref: ${{ matrix.base }}
           persist-credentials: false
       - uses: actions/setup-node@v6
@@ -48,7 +47,7 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store
@@ -78,7 +77,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.verify-changed-files.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           base: ${{ matrix.base }}
           branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps

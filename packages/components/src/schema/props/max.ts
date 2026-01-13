@@ -9,7 +9,7 @@ import type { RowsPropType } from './rows';
 export type MaxPropType = number;
 
 /**
- * Number of rows of the input element that should be visible at the same time.
+ * Defines the maximum value of the element.
  */
 export type PropMax = {
 	max: MaxPropType;

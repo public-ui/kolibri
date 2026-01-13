@@ -30,9 +30,8 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
@@ -74,7 +73,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			HeadingButtonProps: {
 				ref: this.catchRef,
 				class: `${rootClass}__heading-button`,
-				_icons: 'codicon codicon-chevron-right',
+				_icons: 'kolicon-chevron-right',
 			},
 			ContentProps: {
 				class: `${rootClass}__content indented-text`,

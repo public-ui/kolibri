@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-link', () => {
 	test.describe('Callbacks', () => {
@@ -27,13 +26,13 @@ test.describe('kol-link', () => {
 	test.describe('DOM events', () => {
 		test(`should emit click when internal anchor emits click`, async ({ page }) => {
 			await page.setContent('<kol-link _label="Link"></kol-link>');
-			const eventPromise = page.locator('kol-link').evaluate(async (element: HTMLKolLinkElement, KolEvent) => {
+			const eventPromise = page.locator('kol-link').evaluate(async (element: HTMLKolLinkElement) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.click, () => {
+					element.addEventListener('click', () => {
 						resolve();
 					});
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 			await page.locator('a').dispatchEvent('click');
 
