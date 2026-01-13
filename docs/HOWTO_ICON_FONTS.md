@@ -1,14 +1,14 @@
 # HOWTO: Bundle KoliBri Icon Fonts
 
-KoliBri ships the [`kol-icon`](https://public-ui.github.io/components/icon/) component to render pictograms. Starting with **v4**, KoliBri includes its own font-based icon set called **Kolicons**. Previously, this relied on [Codicon](https://github.com/microsoft/vscode-codicons).
+KoliBri ships the [`kol-icon`](https://public-ui.github.io/components/icon/) component to render pictograms. Starting with **v4**, KoliBri includes its own font-based icon set called **KolIcons**. Previously, this relied on [Codicon](https://github.com/microsoft/vscode-codicons).
 
-This guide shows how to install and bundle the Kolicons font assets that are published with `@public-ui/components`.
+This guide shows how to install and bundle the KolIcons font assets that are published with `@public-ui/components`.
 
 > **Migration from v3 to v4:** If you're upgrading from v3, see [BREAKING_CHANGES.v4.md](./BREAKING_CHANGES.v4.md#kolicons-instead-of-codicons) for migration details.
 
 ## 1. Install the assets
 
-The Kolicons font files are part of the KoliBri component package. Ensure your project depends on it:
+The KolIcons font files are part of the KoliBri component package. Ensure your project depends on it:
 
 ```bash
 pnpm add @public-ui/components
@@ -37,7 +37,7 @@ Make sure the relative path inside `style.css` still points to the TTF file afte
 
 ## 3. Reference the icons from components
 
-Use Kolicon class names via the `_icons` property. Multiple icons can be provided by separating classes with a space:
+Use KolIcon class names via the `_icons` property. Multiple icons can be provided by separating classes with a space:
 
 ```tsx
 <KolButton _label="Save" _icons="kolicon kolicon-save" />
@@ -48,7 +48,7 @@ The first class (`kolicon`) ensures the font family is applied, the second selec
 
 ### Available Icon Names
 
-View the complete list of available Kolicons in the [Kolicons directory](https://github.com/public-ui/kolibri/tree/develop/packages/components/src/assets/kolicons). Icon names follow the pattern `kolicon-{name}`.
+View the complete list of available KolIcons in the [KolIcons directory](https://github.com/public-ui/kolibri/tree/develop/packages/components/src/assets/kolicons). Icon names follow the pattern `kolicon-{name}`.
 
 ## 4. Serve the font file
 
@@ -73,4 +73,4 @@ import '@public-ui/components/assets/kolicons/style.css';
 import '@public-ui/components/assets/codicons/codicon.css';
 ```
 
-However, we recommend migrating all Codicons to Kolicons for consistency and reduced bundle size.
+However, we recommend migrating all Codicons to KolIcons for consistency and reduced bundle size.

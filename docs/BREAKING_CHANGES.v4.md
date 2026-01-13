@@ -6,13 +6,13 @@ New major versions of KoliBri are developed with the goal of simplifying mainten
 
 For more information, see the [KoliBri Maintenance and Support Strategy](https://github.com/public-ui/kolibri/blob/develop/MIGRATION.md).
 
-## Kolicons instead of Codicons
+## KolIcons instead of Codicons
 
-KoliBri now provides its own comprehensive icon set called **Kolicons**, replacing the previous dependency on Microsoft's Codicons. This change provides better control over iconography, improved consistency across the component library, and reduced external dependencies.
+KoliBri now provides its own comprehensive icon set called **KolIcons**, replacing the previous dependency on Microsoft's Codicons. This change provides better control over iconography, improved consistency across the component library, and reduced external dependencies.
 
 ### Asset Loading
 
-In HTML documents, load the Kolicons stylesheet instead of Codicons:
+In HTML documents, load the KolIcons stylesheet instead of Codicons:
 
 **Before (v3):**
 
@@ -26,9 +26,9 @@ In HTML documents, load the Kolicons stylesheet instead of Codicons:
 <link rel="stylesheet" href="/assets/kolicons/style.css" />
 ```
 
-### Using Codicons Alongside Kolicons (Optional)
+### Using Codicons Alongside KolIcons (Optional)
 
-If your application still uses Codicons, you can include both stylesheets. However, this is **optional** and most projects can migrate fully to Kolicons:
+If your application still uses Codicons, you can include both stylesheets. However, this is **optional** and most projects can migrate fully to KolIcons:
 
 ```html
 <link rel="stylesheet" href="/assets/kolicons/style.css" />
@@ -38,7 +38,7 @@ If your application still uses Codicons, you can include both stylesheets. Howev
 
 ### CSS Import
 
-In modern bundlers (webpack, Vite, etc.), import Kolicons in your main entry point:
+In modern bundlers (webpack, Vite, etc.), import KolIcons in your main entry point:
 
 **Before (v3):**
 
@@ -70,7 +70,7 @@ Update all icon references in your code from `codicon` to `kolicon`. For example
 <KolIcon _icon="kolicon kolicon-check" />
 ```
 
-See the [Kolicons documentation](https://github.com/public-ui/kolibri/tree/develop/packages/components/src/assets/kolicons) for the complete list of available icon names.
+See the [KolIcons documentation](https://github.com/public-ui/kolibri/tree/develop/packages/components/src/assets/kolicons) for the complete list of available icon names.
 
 ### Font Files
 
