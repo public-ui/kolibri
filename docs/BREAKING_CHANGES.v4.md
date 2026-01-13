@@ -6,6 +6,24 @@ New major versions of KoliBri are developed with the goal of simplifying mainten
 
 For more information, see the [KoliBri Maintenance and Support Strategy](https://github.com/public-ui/kolibri/blob/develop/MIGRATION.md).
 
+## Kolicons instead of Codicons
+
+KolBri introduced its own set of icons, named Kolicons. Please make sure you provide them like you provided the codicons before in your index.html.
+
+**Before:**
+
+```html
+<link rel="stylesheet" href="/assets/codicons/codicon.css" />
+```
+
+**After:**
+
+```html
+<link rel="stylesheet" href="/assets/kolicons/style.css" />
+<!-- if you use codicons in your app you have to provide both fonts -->
+<link rel="stylesheet" href="/assets/codicons/codicon.css" />
+```
+
 ## Loader entry point
 
 Import the component loader from `@public-ui/components/loader`. The previous `@public-ui/components/dist/loader` path is no longer part of the public API surface.
