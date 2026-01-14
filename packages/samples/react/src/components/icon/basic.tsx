@@ -1,49 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { KolIcon } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
-export const IconBasic: FC = () => {
-	const [icons, setIcons] = useState<object>({});
+export const IconBasic: FC = () => (
+	<>
+		<SampleDescription>
+			<p>KolIcon renders codicon icons. This sample shows regular icons and one with a custom style-property, changing the icon color.</p>
+		</SampleDescription>
 
-	useEffect(() => {
-		fetch('/assets/kolicons/kolicons.json')
-			.then((response) => response.json())
-			.then((data) => {
-				setIcons(data);
-			});
-	});
+		<div className="grid gap-4">
+			<KolIcon className="block" _label="" _icons="kolicon-alert-info" />
+			<KolIcon className="block" _label="" _icons="kolicon-kolibri" />
+			<KolIcon className="block" _label="" _icons="kolicon-house" />
+			<KolIcon className="block" _label="" _icons="kolicon-settings" />
 
-	return (
-		<>
-			<SampleDescription>
-				<p>KolIcon renders kolicon icons. This sample shows all kolicons and the last one with a custom style-property, changing the icon color and size.</p>
-			</SampleDescription>
-
-			<div className="grid grid-cols-2 gap-8 p-8">
-				{Object.entries(icons).map(([key]) => {
-					return (
-						<div className="flex gap-4" key={key}>
-							<KolIcon _label="" _icons={'kolicon-' + key} />
-							<span>{key}</span>
-						</div>
-					);
-				})}
-			</div>
-
-			<div className="grid gap-4 p-8">
-				<KolIcon
-					className="block"
-					style={{
-						color: 'red',
-						fontSize: '40px',
-					}}
-					_label=""
-					_icons="kolicon-house"
-				/>
-			</div>
-		</>
-	);
-};
+			<KolIcon
+				className="block w-[1em] h-[1em]"
+				style={{
+					color: 'red',
+				}}
+				_label=""
+				_icons="kolicon-house"
+			/>
+		</div>
+	</>
+);
