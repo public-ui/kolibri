@@ -23,7 +23,7 @@
 		"styleTemplates": "./styles",
 		"fontName": "kolicons",
 		"svgicons2svgfont": {
-			"fontHeight": 1000
+			"fontHeight": 10000
 		}
 	}
 }
