@@ -39,8 +39,8 @@
 	.kol-input-radio {
 		display: flex;
 		position: relative;
-		width: var(--a11y-min-size);
-		height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
