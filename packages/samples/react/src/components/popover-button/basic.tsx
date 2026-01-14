@@ -16,20 +16,20 @@ export const PopoverButtonBasic: FC = () => {
 	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
 			type: 'button',
-			_label: 'Edit',
-			_icons: 'fa-solid fa-pen',
+			_label: 'Show',
+			_icons: 'kolicon-eye',
 			_on: dummyEventHandler,
 		},
 		{
 			type: 'button',
 			_label: 'Delete',
-			_icons: 'kolicon-alert-warning',
+			_icons: 'kolicon-minus',
 			_on: dummyEventHandler,
 		},
 		{
 			type: 'button',
-			_label: 'Duplicate',
-			_icons: 'fa-solid fa-copy',
+			_label: 'Add',
+			_icons: 'kolicon-plus',
 			_on: dummyEventHandler,
 		},
 	];

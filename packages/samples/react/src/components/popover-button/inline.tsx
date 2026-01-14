@@ -17,7 +17,7 @@ export const PopoverButtonInline: FC = () => {
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
 					Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.
-					<KolPopoverButton _inline={true} _label="Help" _icons="fa-solid fa-circle-question" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
+					<KolPopoverButton _inline={true} _label="Help" _icons="kolicon-alert-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
 						<div className="w-sm p-2 border border-solid border-gray">
 							<KolHeading _label="Help Information" _level={0}></KolHeading>
 							<p>
