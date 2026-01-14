@@ -28,7 +28,7 @@ export const SplitButtonBasic: FC = () => {
 		{
 			type: 'button',
 			_label: 'Delete',
-			_icons: 'fa-solid fa-trash',
+			_icons: 'kolicon-alert-warning',
 			_on: dummyEventHandler,
 		},
 	];

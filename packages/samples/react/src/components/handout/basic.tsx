@@ -279,7 +279,7 @@ export const HandoutBasic: FC = () => {
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 									<KolButton _label="ghost" _variant="ghost"></KolButton>
 									<KolButton _disabled _label="ghost" _variant="ghost"></KolButton>
-									<KolButton _icons="fa-solid fa-house" _hideLabel _label="ghost" _variant="ghost" _on={dummyEventHandler}></KolButton>
+									<KolButton _icons="kolicon-house" _hideLabel _label="ghost" _variant="ghost" _on={dummyEventHandler}></KolButton>
 								</div>
 							</div>
 							<div className="grid gap-2 py-2">
@@ -306,7 +306,7 @@ export const HandoutBasic: FC = () => {
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 									<KolLinkButton _href="#/back-page" _label="ghost" _variant="ghost"></KolLinkButton>
 									<KolLinkButton _href="#/back-page" _label="ghost" _variant="ghost"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _icons="fa-solid fa-house" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons="kolicon-house" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
 								</div>
 							</div>
 						</KolTabs>
@@ -317,8 +317,8 @@ export const HandoutBasic: FC = () => {
 						<KolAccordion _label="Links" _level={3} _open>
 							<div className="grid gap-2" slot="">
 								<KolLink _href="#/back-page" _label="Link text"></KolLink>
-								<KolLink _href="#/back-page" _icons="fa-solid fa-house" _label="Link text with icon"></KolLink>
-								<KolLink _href="#/back-page" _icons="fa-solid fa-house" _hideLabel _label="Link text with icon only"></KolLink>
+								<KolLink _href="#/back-page" _icons="kolicon-house" _label="Link text with icon"></KolLink>
+								<KolLink _href="#/back-page" _icons="kolicon-house" _hideLabel _label="Link text with icon only"></KolLink>
 								<KolLink _href="/" _label="Visited link"></KolLink>
 								<p>
 									I am a <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> in the running text.
@@ -328,8 +328,8 @@ export const HandoutBasic: FC = () => {
 						<KolAccordion _label="ButtonLinks" _level={3}>
 							<div className="grid gap-2" slot="">
 								<KolButtonLink _label="Link text"></KolButtonLink>
-								<KolButtonLink _icons="fa-solid fa-house" _label="Link text with icon"></KolButtonLink>
-								<KolButtonLink _icons="fa-solid fa-house" _hideLabel _label="Link text with icon only"></KolButtonLink>
+								<KolButtonLink _icons="kolicon-house" _label="Link text with icon"></KolButtonLink>
+								<KolButtonLink _icons="kolicon-house" _hideLabel _label="Link text with icon only"></KolButtonLink>
 								<p>
 									I am a <KolButtonLink _label="Link"></KolButtonLink> in the running text.
 								</p>
@@ -371,48 +371,48 @@ export const HandoutBasic: FC = () => {
 								_links={[
 									{
 										_label: 'Homepage',
-										_icons: 'fa-solid fa-house',
+										_icons: 'kolicon-house',
 										_href: '#/back-page',
 									},
 									{
 										_label: '2 Navigation point',
-										_icons: 'fa-solid fa-house',
+										_icons: 'kolicon-house',
 										_href: '#/back-page',
 									},
 									{
 										_active: true,
 										_label: '3 Navigation point',
 										_href: '#/back-page',
-										_icons: 'fa-solid fa-house',
+										_icons: 'kolicon-house',
 										_children: [
 											{
 												_label: '3.1 Navigation point',
-												_icons: 'fa-solid fa-house',
+												_icons: 'kolicon-house',
 												_href: '#/back-page',
 											},
 											{
 												_label: '3.2 External navigation point',
-												_icons: 'fa-solid fa-house',
+												_icons: 'kolicon-house',
 												_href: '#/back-page',
 												_target: '_blank',
 											},
 											{
 												_label: '3.3 Navigation point',
 												_href: '#/back-page',
-												_icons: 'fa-solid fa-house',
+												_icons: 'kolicon-house',
 												_children: [
 													{
 														_active: true,
 														_label: '3.3.1 Navigation point (active)',
-														_icons: 'fa-solid fa-house',
+														_icons: 'kolicon-house',
 														_href: '#/back-page',
 													},
-													{ _label: '3.3.2 Navigation point', _icons: 'fa-solid fa-house', _href: '#/back-page' },
+													{ _label: '3.3.2 Navigation point', _icons: 'kolicon-house', _href: '#/back-page' },
 												],
 											},
 										],
 									},
-									{ _label: '3 Navigation point', _icons: 'fa-solid fa-house', _href: '#/back-page' },
+									{ _label: '3 Navigation point', _icons: 'kolicon-house', _href: '#/back-page' },
 								]}
 								_hasCompactButton
 							/>
@@ -441,7 +441,7 @@ export const HandoutBasic: FC = () => {
 							<KolInputNumber _label={`Number input`} />
 							<KolInputDate _type="date" _label={`Date`} />
 							<KolInputEmail
-								_icons="{'left': 'fa-solid fa-house'}"
+								_icons="{'left': 'kolicon-house'}"
 								_msg={{ _type: 'error', _description: 'Test of an error message' }}
 								_touched
 								_label={`E-mail address`}

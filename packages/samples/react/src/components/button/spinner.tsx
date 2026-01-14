@@ -48,7 +48,7 @@ export const ButtonSpinner: FC = () => {
 							className="spinner-button spinner-slower"
 							_hideLabel
 							_icons={{
-								left: 'fa-solid fa-gear',
+								left: 'kolicon-cogwheel',
 							}}
 							_label="Processing"
 							_variant="tertiary"

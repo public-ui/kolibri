@@ -28,7 +28,7 @@ export const BadgeButton: FC = () => (
 			<KolBadge {...createBadgeProps('black')}></KolBadge>
 			<KolBadge _color="#86ffc6" {...createBadgeProps('teal')}></KolBadge>
 			<KolBadge _color="#06539e" {...createBadgeProps('blue')}></KolBadge>
-			<KolBadge _color="#ae0000" _icons="fa-solid fa-face-smile" {...createBadgeProps('red with icon')}></KolBadge>
+			<KolBadge _color="#ae0000" _icons="kolicon-house" {...createBadgeProps('red with icon')}></KolBadge>
 			<KolBadge _color="#8b008b" _icons="kolicon-kolibri" {...createBadgeProps('purple with icon')}></KolBadge>
 		</div>
 	</>

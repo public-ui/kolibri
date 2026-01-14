@@ -28,7 +28,7 @@ export const BreadcrumbBasic: FC = () => (
 				_links={[
 					{
 						_label: 'Homepage',
-						_icons: 'fa-solid fa-house',
+						_icons: 'kolicon-house',
 						_hideLabel: true,
 						_href: '#/back-page',
 					},

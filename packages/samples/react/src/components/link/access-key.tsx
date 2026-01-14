@@ -14,7 +14,7 @@ export const LinkAccessKey: FC = () => (
 			<KolLink _href="#/back-page" _label="With S access key" _accessKey="S" />
 			<KolLink _href="#/back-page" _label="Very small s" _accessKey="s" />
 			<KolLink _href="#/back-page" _label="Access key does not appear in label" _accessKey="s" />
-			<KolLink _hideLabel _icons="fa-solid fa-house" _href="#/back-page" _label="access key without label" _accessKey="s" />
+			<KolLink _hideLabel _icons="kolicon-house" _href="#/back-page" _label="access key without label" _accessKey="s" />
 		</div>
 	</>
 );
