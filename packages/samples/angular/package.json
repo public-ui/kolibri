@@ -28,7 +28,7 @@
 		"@angular-devkit/build-angular": "21.0.5",
 		"@angular/cli": "21.0.5",
 		"@angular/compiler-cli": "21.0.8",
-		"@types/jasmine": "5.1.13",
+		"@types/jasmine": "5.1.15",
 		"jasmine-core": "5.13.0",
 		"karma": "6.4.4",
 		"karma-chrome-launcher": "3.2.0",
