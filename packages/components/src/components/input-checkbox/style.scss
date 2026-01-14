@@ -44,8 +44,8 @@
 	 */
 	#{$root}--variant-default {
 		position: relative;
-		width: var(--a11y-min-size);
-		height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		justify-content: center;
 
 		.kol-icon {
@@ -133,12 +133,12 @@
 	 * Variant: Button
 	 */
 	#{$root}--variant-button {
-		width: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
 
 		.kol-icon {
 			display: flex;
-			width: var(--a11y-min-size);
-			height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
 			align-items: center;
 			justify-content: center;
 		}

@@ -89,8 +89,8 @@
 
 		&__cell {
 			&--selection {
-				width: var(--a11y-min-size);
-				height: var(--a11y-min-size);
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
 
 				white-space: nowrap;
 			}
@@ -103,8 +103,8 @@
 		&__selection-label {
 			display: flex;
 			position: relative;
-			width: var(--a11y-min-size);
-			height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
@@ -139,8 +139,8 @@
 				background-color: rgb(255, 255, 255);
 				display: flex;
 				position: relative;
-				width: calc(var(--a11y-min-size) / 2);
-				height: calc(var(--a11y-min-size) / 2);
+				min-width: calc(var(--a11y-min-size) / 2);
+				min-height: calc(var(--a11y-min-size) / 2);
 				border-width: 2px;
 				align-items: center;
 				justify-content: center;

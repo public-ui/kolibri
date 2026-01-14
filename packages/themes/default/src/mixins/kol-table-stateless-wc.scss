@@ -77,13 +77,10 @@
 					font-weight: 700;
 				}
 			}
-		}
 
-		&__selection {
-			display: flex;
-			gap: to-rem(8);
-			align-items: center;
-			grid-template-columns: 1fr auto;
+			&--selection {
+				width: to-rem(62);
+			}
 		}
 
 		&__spacer {
@@ -91,6 +88,11 @@
 		}
 
 		&__selection {
+			display: flex;
+			gap: to-rem(8);
+			align-items: center;
+			grid-template-columns: 1fr auto;
+
 			--kol-selection-input-main-color: var(--color-primary);
 			--kol-selection-input-off-color: var(--color-subtle);
 			--kol-selection-input-focus-color: var(--color-primary-variant);
