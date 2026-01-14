@@ -11,7 +11,7 @@
 [class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
   font-family: '{{fontname}}';
   font-size: inherit;
-  font-style: normal;
+  font-style:normal;
   line-height: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
