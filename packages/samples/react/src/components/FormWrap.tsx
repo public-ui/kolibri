@@ -13,7 +13,7 @@ export const FormWrap = <P,>({ RefComponent: Component, showButtons = true, ...p
 						<KolButton
 							_label="Bunte Icons"
 							_icons={{
-								left: { icon: 'fa-solid fa-heart', style: { color: '#cc006e' } },
+								left: { icon: 'kolicon-house', style: { color: '#cc006e' } },
 								right: { icon: 'kolicon-kolibri', style: { color: '#b41b1b' } },
 							}}
 							_type="submit"

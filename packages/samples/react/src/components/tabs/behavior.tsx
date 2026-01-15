@@ -6,7 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 const tabs = [
 	{
-		_icons: 'fa-solid fa-chart-pie',
+		_icons: 'kolicon-check',
 		_label: 'First tab',
 		_on: {
 			onSelect: (event: Event) => {
@@ -15,16 +15,16 @@ const tabs = [
 		},
 	},
 	{
-		_icons: 'fa-solid fa-calendar',
+		_icons: 'kolicon-link-external',
 		_label: 'Second Tab',
 	},
 	{
 		_disabled: true,
-		_icons: 'fa-solid fa-briefcase',
+		_icons: 'kolicon-house',
 		_label: 'Disabled Tab',
 	},
 	{
-		_icons: 'fa-solid fa-address-card',
+		_icons: 'kolicon-eye',
 		_label: 'Last tab',
 	},
 ];

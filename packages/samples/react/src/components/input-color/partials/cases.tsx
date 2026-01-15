@@ -12,7 +12,7 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.K
 					{...props}
 					_msg={{ _type: 'error', _description: ERROR_MSG }}
 					_icons={{
-						left: 'fa-solid fa-palette',
+						left: 'kolicon-kolibri',
 					}}
 					_label="Color (Black background test)"
 					_value="#f08080"

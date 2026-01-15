@@ -102,9 +102,9 @@ export const ButtonIcons: FC = () => {
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Simple Icon String" />
 					<div className="flex flex-wrap gap-4">
-						<KolButton _icons="fa-solid fa-house" _label="Home Icon" _on={dummyEventHandler} />
-						<KolButton _icons="fa-solid fa-heart" _label="Heart Icon" _on={dummyEventHandler} />
-						<KolButton _icons="fa-solid fa-trash" _label="Trash Icon" _on={dummyEventHandler} />
+						<KolButton _icons="kolicon-house" _label="Home Icon" _on={dummyEventHandler} />
+						<KolButton _icons="kolicon-kolibri" _label="Heart Icon" _on={dummyEventHandler} />
+						<KolButton _icons="kolicon-alert-warning" _label="Trash Icon" _on={dummyEventHandler} />
 					</div>
 				</section>
 
