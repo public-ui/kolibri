@@ -53,7 +53,7 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"svelte": "5.46.3",
+		"svelte": "5.46.4",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
