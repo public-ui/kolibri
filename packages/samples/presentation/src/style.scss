@@ -1,0 +1,98 @@
+@use './@shared/mixins' as *;
+
+:root {
+	--kolibri-root-font-size: 100;
+	font-size: 625%;
+}
+
+body {
+	margin: 0;
+
+	font-family: Verdana;
+	font-size: rem(16);
+	line-height: normal;
+}
+
+dl,
+hr {
+	margin: 0;
+}
+
+.grid-cols-2 {
+	grid-template-columns: auto auto;
+}
+
+.indented-text {
+	p {
+		margin: 0;
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+
+	white-space: nowrap;
+	clip-path: inset(50%);
+}
+
+.black-background {
+	background-color: black;
+	display: flex;
+	padding: rem(8);
+	flex-direction: column;
+}
+
+.w-image {
+	width: 500px;
+}
+
+.drawer-content-vertical {
+	width: rem(400);
+}
+
+/* Remove bullet points from horizontal link lists */
+.list-none {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 1024px) {
+	.app-container {
+		display: grid;
+		height: 100vh;
+		grid-template-columns: rem(360) calc(100% - rem(360));
+	}
+
+	.app-sidebar {
+		background-color: white;
+		max-height: calc(100vh - 32px);
+		border-right: 1px solid gray;
+
+		& .scrollable-container-wrapper {
+			display: flex;
+			max-height: calc(100vh - 32px);
+			flex-direction: column;
+
+			& .scrollable-container {
+				overflow: auto;
+				flex: 1 auto;
+			}
+		}
+	}
+
+	main {
+		max-height: calc(100vh);
+		overflow: auto;
+	}
+}
+
+@media print {
+	.no-print,
+	.no-print * {
+		display: none !important;
+	}
+}

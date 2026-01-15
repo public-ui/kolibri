@@ -101,6 +101,10 @@ hr {
 	}
 }
 
+.expert-slot-required-label::after {
+	content: ' *' / '';
+}
+
 .loading-overlay {
 	background-color: rgb(250, 250, 250, 0.4);
 	backdrop-filter: blur(5px);

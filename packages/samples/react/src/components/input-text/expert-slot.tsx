@@ -1,4 +1,4 @@
-import { KolBadge, KolIcon, KolInputText } from '@public-ui/react-v19';
+import { KolBadge, KolIcon, KolInputText, KolPopoverButton } from '@public-ui/react-v19';
 import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
@@ -25,6 +25,15 @@ export const InputTextExpertSlot = () => {
 				<KolInputText _label="" _type="text" _placeholder="Enter your email">
 					<div slot="expert" style={{ padding: '0.5rem', backgroundColor: '#f0f0f0', borderRadius: '4px' }}>
 						<strong>Note:</strong> This email will be used for account recovery and notifications.
+					</div>
+				</KolInputText>
+
+				<KolInputText _label="" _type="text" _required>
+					<div slot="expert" className="inline-block">
+						<span className="expert-slot-required-label">Username</span>
+						<KolPopoverButton _label="Help" _icons="kolicon-alert-info" _variant="ghost" _hideLabel _inline>
+							<div className="w-sm p-2 border border-solid border-gray">You have to take care of the asterics on your own!</div>
+						</KolPopoverButton>
 					</div>
 				</KolInputText>
 			</div>

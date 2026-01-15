@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLocation } from 'react-router';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
@@ -10,102 +10,114 @@ import { Sidebar } from './components/Sidebar';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
-import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { THEMES, THEME_OPTIONS } from './shares/theme';
+import { getTheme, getThemeName, setRegisteredThemes, setStorage, setTheme } from './shares/store';
+import { PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import type { Option } from '@public-ui/components';
-import type { Theme, ThemeAndUnstyled } from './shares/theme';
+import type { Theme } from './shares/theme';
 
 setStorage(localStorage);
 
-const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
-	let list: string[] = [];
-	for (const key in routes) {
-		if (routes[key]) {
-			const ThisRoute: MyRoute = routes[key];
-			const path = `${offset}${key}`;
-			if (typeof ThisRoute === 'function') {
-				list.push(path);
-			} else if (typeof ThisRoute === 'object' && ThisRoute !== null) {
-				list = list.concat(getRouteList(ThisRoute, `${path}/`));
-			}
-		}
-	}
-	return list;
+type Props = {
+	customThemes?: Theme[];
 };
 
-const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
-	const tree: ReturnType<typeof Route>[] = [];
-	for (const key in routes) {
-		if (routes[key]) {
-			const ThisRoute: MyRoute = routes[key];
-			const path = `/${key}`;
-			if (typeof ThisRoute === 'function') {
-				tree.push(<Route key={path} path={path} element={<ThisRoute />} />);
-				tree.push(
-					<Route
-						key={`${path}/all`}
-						path={`${path}/all`}
-						element={
-							<div className="d-grid gap-4">
-								{THEME_OPTIONS.filter((theme) => THEMES.indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
-									<div className="d-grid gap-2" key={(theme as Option<ThemeAndUnstyled>).value}>
-										<div className="mt-4">
-											<strong>{theme.label}</strong>
-										</div>
-										<div className="my-2">
-											<ThisRoute />
-										</div>
-										<hr aria-hidden="true" />
-									</div>
-								))}
-							</div>
-						}
-					/>,
-				);
-			} else if (typeof ThisRoute === 'object' && ThisRoute !== null) {
-				const keys = Object.keys(ThisRoute);
-				if (keys.length > 0) {
-					tree.push(
-						<Route
-							key={path}
-							path={`${path}/*`}
-							element={
-								<Routes>
-									<Route path="/" element={<Navigate to={keys[0]} />} />
-									{getRouteTree(ThisRoute)}
-								</Routes>
-							}
-						/>,
-					);
+export const App: FC<Props> = ({ customThemes }) => {
+	const routerLocation = useLocation();
+	const [searchParams, setSearchParams] = useSearchParams();
+	const hideMenus = searchParams.has('hideMenus');
+
+	const themes = useMemo<Theme[]>(() => {
+		const allThemes = [UNSTYLED_THEME, ...(customThemes && customThemes.length > 0 ? customThemes : PUBLIC_THEMES)];
+		setRegisteredThemes(allThemes);
+		return allThemes;
+	}, [customThemes]);
+	const theme: string = searchParams.get('theme') ?? themes[1].key;
+
+	const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
+		let list: string[] = [];
+		for (const key in routes) {
+			if (routes[key]) {
+				const ThisRoute: MyRoute = routes[key];
+				const path = `${offset}${key}`;
+				if (typeof ThisRoute === 'function') {
+					list.push(path);
+				} else if (typeof ThisRoute === 'object' && ThisRoute !== null) {
+					list = list.concat(getRouteList(ThisRoute, `${path}/`));
 				}
 			}
 		}
-	}
-	return tree;
-};
+		return list;
+	};
 
-const ROUTE_LIST = getRouteList(ROUTES);
-const ROUTE_TREE = getRouteTree(ROUTES);
+	const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
+		const tree: ReturnType<typeof Route>[] = [];
+		for (const key in routes) {
+			if (routes[key]) {
+				const ThisRoute: MyRoute = routes[key];
+				const path = `/${key}`;
+				if (typeof ThisRoute === 'function') {
+					tree.push(<Route key={path} path={path} element={<ThisRoute />} />);
+					tree.push(
+						<Route
+							key={`${path}/all`}
+							path={`${path}/all`}
+							element={
+								<div className="d-grid gap-4">
+									{themes
+										.filter((theme) => themes.map((t) => t.key).indexOf(theme.key) >= 0)
+										.map((theme) => (
+											<div className="d-grid gap-2" key={theme.key}>
+												<div className="mt-4">
+													<strong>{theme.name}</strong>
+												</div>
+												<div className="my-2">
+													<ThisRoute />
+												</div>
+												<hr aria-hidden="true" />
+											</div>
+										))}
+								</div>
+							}
+						/>,
+					);
+				} else if (typeof ThisRoute === 'object' && ThisRoute !== null) {
+					const keys = Object.keys(ThisRoute);
+					if (keys.length > 0) {
+						tree.push(
+							<Route
+								key={path}
+								path={`${path}/*`}
+								element={
+									<Routes>
+										<Route path="/" element={<Navigate to={keys[0]} />} />
+										{getRouteTree(ThisRoute)}
+									</Routes>
+								}
+							/>,
+						);
+					}
+				}
+			}
+		}
+		return tree;
+	};
 
-const componentList: Map<string, Option<string>> = new Map();
-ROUTE_LIST.forEach((route) => {
-	const routeSplit = route.split('/');
-	if (!componentList.has(routeSplit[1])) {
-		componentList.set(routeSplit[1], {
-			label: routeSplit[1],
-			value: route,
-		});
-	}
-});
+	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), [customThemes]);
+	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), [customThemes]);
 
-export const App: FC = () => {
-	const routerLocation = useLocation();
-	const [searchParams, setSearchParams] = useSearchParams();
-	const theme: ThemeAndUnstyled = (searchParams.get('theme') as ThemeAndUnstyled) ?? getTheme();
-	const hideMenus = searchParams.has('hideMenus');
+	const componentList: Map<string, Option<string>> = new Map();
+	ROUTE_LIST.forEach((route) => {
+		const routeSplit = route.split('/');
+		if (!componentList.has(routeSplit[1])) {
+			componentList.set(routeSplit[1], {
+				label: routeSplit[1],
+				value: route,
+			});
+		}
+	});
 
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
@@ -125,6 +137,7 @@ export const App: FC = () => {
 				{!hideMenus && (
 					<Sidebar
 						version={PackageJson.version}
+						themes={themes}
 						theme={theme}
 						sample={routerLocation.pathname}
 						routes={ROUTES}

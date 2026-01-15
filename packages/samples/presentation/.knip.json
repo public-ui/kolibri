@@ -1,0 +1,20 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": [
+		"src/main.ts",
+		"src/react.main.tsx",
+		"unocss.config.ts"
+	],
+	"ignore": [
+		"src/scenarios/appointment-form/**"
+	],
+	"ignoreDependencies": [
+		"@public-ui/sample-react",
+		"@public-ui/themes",
+		"uno.css"
+	],
+	"project": [
+		"**/*.ts",
+		"**/*.tsx"
+	]
+}

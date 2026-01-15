@@ -9,6 +9,7 @@ packages:
   - packages/components
   - packages/icons
   - packages/samples/angular
+  - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
   - packages/themes/default

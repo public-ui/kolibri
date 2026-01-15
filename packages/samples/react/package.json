@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "4.0.1-rc.1",
+	"version": "4.0.1-rc.2",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -33,11 +33,11 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.41.1",
-		"@types/node": "24.10.4",
-		"@types/react": "19.2.7",
+		"@types/node": "24.10.8",
+		"@types/react": "19.2.8",
 		"@types/react-dom": "19.2.3",
-		"@typescript-eslint/eslint-plugin": "8.52.0",
-		"@typescript-eslint/parser": "8.52.0",
+		"@typescript-eslint/eslint-plugin": "8.53.0",
+		"@typescript-eslint/parser": "8.53.0",
 		"@unocss/preset-mini": "66.5.10",
 		"@unocss/vite": "66.5.10",
 		"@vitejs/plugin-react-swc": "4.2.2",
@@ -48,13 +48,13 @@
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
-		"knip": "5.80.1",
+		"knip": "5.80.2",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.7.4",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
-		"react-hook-form": "7.70.0",
+		"react-hook-form": "7.71.1",
 		"react-number-format": "5.4.4",
 		"react-router": "7.12.0",
 		"react-router-dom": "7.12.0",
@@ -73,5 +73,9 @@
 		"tsconfig.json",
 		"unocss.config.ts",
 		"vite.config.ts"
-	]
+	],
+	"exports": {
+		".": "./src/index.ts",
+		"./package.json": "./package.json"
+	}
 }
