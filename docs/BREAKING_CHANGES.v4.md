@@ -70,7 +70,7 @@ Update all icon references in your code from `codicon` to `kolicon`. For example
 <KolIcon _icon="kolicon kolicon-check" />
 ```
 
-See the [KolIcons documentation](https://github.com/public-ui/kolibri/tree/develop/packages/components/src/assets/kolicons) for the complete list of available icon names.
+See the [KolIcons documentation](https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons) for the complete list of available icon names.
 
 ### Font Files
 
