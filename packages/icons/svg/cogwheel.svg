@@ -1,7 +1,7 @@
 <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
   <symbol id="tooths">
-      <rect height="16" width="16" y="5" x="42" fill="black"/>
-      <rect height="16" width="16" y="79" x="42" fill="black"/>
+      <rect height="20" width="20" y="0" x="40" fill="black"/>
+      <rect height="20" width="20" y="80" x="40" fill="black"/>
   </symbol>
 
     <ellipse ry="35" rx="35" cy="50" cx="50" fill="black"/>
