@@ -10,7 +10,7 @@ const smartButtonProps = {
 
 const icons = {
 	left: {
-		icon: 'fa-solid fa-magnifying-glass',
+		icon: 'kolicon-eye',
 	},
 	right: {
 		icon: 'kolicon-check',
