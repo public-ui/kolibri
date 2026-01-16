@@ -1,0 +1,9 @@
+:root {
+	--kolibri-color-primary: #1b6cfb;
+	--kolibri-color-primary-contrast: #ffffff;
+	--kolibri-color-surface: #ffffff;
+	--kolibri-color-text: #111827;
+	--kolibri-font-family: "Inter", Verdana, Arial, sans-serif;
+	--kolibri-radius-md: 0.375rem;
+	--kolibri-radius-sm: 0.25rem;
+}

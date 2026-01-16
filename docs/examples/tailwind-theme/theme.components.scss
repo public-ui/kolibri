@@ -1,0 +1,11 @@
+@layer kol-theme-component {
+	.kol-button {
+		background-color: var(--color-primary);
+		border-radius: var(--radius-md);
+		color: var(--color-primary-contrast);
+	}
+
+	.kol-link {
+		color: var(--color-primary);
+	}
+}

@@ -1,0 +1,19 @@
+@layer kol-theme-global {
+	:host {
+		--color-primary: var(--kolibri-color-primary);
+		--color-primary-contrast: var(--kolibri-color-primary-contrast);
+		--color-surface: var(--kolibri-color-surface);
+		--color-text: var(--kolibri-color-text);
+		--font-family: var(--kolibri-font-family, Verdana, Arial, sans-serif);
+		--radius-md: var(--kolibri-radius-md);
+		--radius-sm: var(--kolibri-radius-sm);
+	}
+
+	:host {
+		font-size: var(--font-size, 1rem);
+
+		* {
+			font-family: var(--font-family);
+		}
+	}
+}
