@@ -11,7 +11,7 @@ export const LinkHeadline: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolLink _href="#headline2" _label="">
+			<KolLink _href="/#/link/linked-headline#headline2" _label="">
 				<KolHeading _label="I'm a H2-heading" _level={2} slot="expert" id="headline2" />
 			</KolLink>
 		</div>
