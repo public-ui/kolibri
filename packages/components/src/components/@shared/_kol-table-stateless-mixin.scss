@@ -94,6 +94,17 @@
 
 				white-space: nowrap;
 			}
+
+			&--actions {
+				white-space: nowrap;
+			}
+		}
+
+		&__cell-actions {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
 		}
 
 		&__spacer {

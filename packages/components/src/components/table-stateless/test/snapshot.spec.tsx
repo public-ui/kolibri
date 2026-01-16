@@ -122,5 +122,93 @@ executeSnapshotTests<TableStatelessProps>(
 			},
 			_data: [],
 		},
+		{
+			_label: 'Table with action column',
+			_headerCells: {
+				horizontal: [
+					[
+						{ key: 'name', label: 'Name', textAlign: 'left', width: 150 },
+						{ key: 'actions', label: 'Actions', textAlign: 'center', width: 180 },
+					],
+				],
+				vertical: [],
+			},
+			_data: [
+				{
+					name: 'John Doe',
+					actions: {
+						buttons: [
+							{ _label: 'Edit', _icons: 'kolicon-edit', _hideLabel: true },
+							{ _label: 'Delete', _icons: 'kolicon-trash', _hideLabel: true },
+						],
+					},
+				},
+				{
+					name: 'Jane Smith',
+					actions: {
+						buttons: [{ _label: 'View', _buttonVariant: 'secondary' }],
+					},
+				},
+			],
+		},
+		{
+			_label: 'Table with mixed action buttons (different variants)',
+			_headerCells: {
+				horizontal: [
+					[
+						{ key: 'id', label: 'ID', textAlign: 'left', width: 60 },
+						{ key: 'name', label: 'Name', textAlign: 'left', width: 150 },
+						{ key: 'actions', label: 'Actions', textAlign: 'right', width: 200 },
+					],
+				],
+				vertical: [],
+			},
+			_data: [
+				{
+					id: 1,
+					name: 'Admin User',
+					actions: {
+						buttons: [
+							{ _label: 'Edit', _buttonVariant: 'primary', _icons: 'kolicon-edit' },
+							{ _label: 'Delete', _buttonVariant: 'danger', _icons: 'kolicon-trash' },
+							{ _label: 'Settings', _buttonVariant: 'secondary', _icons: 'kolicon-settings' },
+						],
+					},
+				},
+				{
+					id: 2,
+					name: 'Regular User',
+					actions: {
+						buttons: [{ _label: 'View Profile', _buttonVariant: 'normal' }],
+					},
+				},
+			],
+		},
+		{
+			_label: 'Table with single action button per row',
+			_headerCells: {
+				horizontal: [
+					[
+						{ key: 'task', label: 'Task', textAlign: 'left', width: 200 },
+						{ key: 'actions', label: 'Actions', textAlign: 'center', width: 120 },
+					],
+				],
+				vertical: [],
+			},
+			_data: [
+				{
+					task: 'Complete documentation',
+					actions: {
+						buttons: [{ _label: 'Done', _buttonVariant: 'primary' }],
+					},
+				},
+				{
+					task: 'Review pull request',
+					actions: {
+						buttons: [{ _label: 'Review', _buttonVariant: 'secondary' }],
+					},
+				},
+			],
+		},
 	],
 );

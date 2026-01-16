@@ -10,6 +10,7 @@ import type {
 	AriaSort,
 	HasSettingsMenuPropType,
 	KoliBriTableCell,
+	KoliBriTableCellActions,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
@@ -383,12 +384,22 @@ export class KolTableStateless implements TableStatelessAPI {
 						row !== null &&
 						(typeof sortedPrimaryHeader[j].key === 'string' || typeof sortedPrimaryHeader[j].render === 'function')
 					) {
+						const cellKey = sortedPrimaryHeader[j].key as unknown as string;
+						const cellValue = row[cellKey];
+
+						// Check if the cell value is an actions object with buttons array
+						const isActionsCell =
+							typeof cellValue === 'object' && cellValue !== null && 'buttons' in cellValue && Array.isArray((cellValue as { buttons: unknown }).buttons);
+
 						dataRow.push({
 							...sortedPrimaryHeader[j],
 							colSpan: undefined,
 							rowSpan: undefined,
 							data: row,
-							label: row[sortedPrimaryHeader[j].key as unknown as string] as string,
+							// If the cell value is an actions object with buttons, use it as actions
+							// Otherwise, use the cell value as label
+							actions: isActionsCell ? (cellValue as KoliBriTableCellActions) : undefined,
+							label: isActionsCell ? '' : (cellValue as string),
 						});
 					}
 				} else {
@@ -399,12 +410,22 @@ export class KolTableStateless implements TableStatelessAPI {
 						data[j] !== null &&
 						(typeof sortedPrimaryHeader[i].key === 'string' || typeof sortedPrimaryHeader[i].render === 'function')
 					) {
+						const cellKey = sortedPrimaryHeader[i].key as unknown as number;
+						const cellValue = data[j][cellKey];
+
+						// Check if the cell value is an actions object with buttons array
+						const isActionsCell =
+							typeof cellValue === 'object' && cellValue !== null && 'buttons' in cellValue && Array.isArray((cellValue as { buttons: unknown }).buttons);
+
 						dataRow.push({
 							...sortedPrimaryHeader[i],
 							colSpan: undefined,
 							rowSpan: undefined,
 							data: data[j],
-							label: data[j][sortedPrimaryHeader[i].key as unknown as number] as string,
+							// If the cell value is an actions object with buttons, use it as actions
+							// Otherwise, use the cell value as label
+							actions: isActionsCell ? (cellValue as KoliBriTableCellActions) : undefined,
+							label: isActionsCell ? '' : (cellValue as string),
 						});
 					}
 				}
@@ -626,13 +647,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
-			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
+			const isNoEntriesHintCell = typeof cell.render !== 'function' && !cell.actions && cell.label === this.translateNoEntries;
+			const hasActions = cell.actions && Array.isArray(cell.actions.buttons) && cell.actions.buttons.length > 0;
 
 			return (
 				<td
 					key={`cell-${key}`}
 					class={clsx('kol-table__cell kol-table__cell--body', {
 						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
+						'kol-table__cell--actions': hasActions,
 					})}
 					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
 					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
@@ -645,15 +668,38 @@ export class KolTableStateless implements TableStatelessAPI {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
-								}
+								this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
+							}
 							: undefined
 					}
 				>
-					{typeof cell.render !== 'function' ? cell.label : ''}
+					{hasActions ? this.renderActionButtons(cell, key) : typeof cell.render !== 'function' ? cell.label : ''}
 				</td>
 			);
 		}
+	};
+
+	/**
+	 * Renders action buttons directly in a table cell.
+	 * This approach is more performant than using custom render functions
+	 * because buttons are rendered as native JSX elements without setTimeout delays.
+	 *
+	 * @param {KoliBriTableCell} cell The cell containing the actions configuration.
+	 * @param {string} key The unique key for the cell.
+	 * @returns {JSX.Element} The rendered action buttons wrapped in a container.
+	 */
+	private readonly renderActionButtons = (cell: KoliBriTableCell, key: string): JSX.Element => {
+		if (!cell.actions?.buttons) {
+			return '';
+		}
+
+		return (
+			<div class="kol-table__cell-actions">
+				{cell.actions.buttons.map((buttonProps, buttonIndex) => (
+					<KolButtonWcTag key={`action-${key}-${buttonIndex}`} {...buttonProps} _buttonVariant={buttonProps._variant} />
+				))}
+			</div>
+		);
 	};
 
 	private getSelectionKeyPropertyName(): string {
