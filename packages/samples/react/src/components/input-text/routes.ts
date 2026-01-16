@@ -7,6 +7,7 @@ import { InputTextExpertSlot } from './expert-slot';
 import { InputTextHideLabel } from './hide-label';
 import { InputTextHideMsg } from './hide-msg';
 import { InputTextMessageTypes } from './message-types';
+import { InputTextPattern } from './pattern';
 import { InputTextPlaceholder } from './placeholder';
 import { InputTextReadonly } from './readonly';
 import { InputTextSelectRange } from './select-range';
@@ -26,6 +27,7 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		'text-formatter': InputTextFormatterDemo,
 		'smart-button': InputTextSmartButton,
 		'expert-slot': InputTextExpertSlot,
+		pattern: InputTextPattern,
 		'select-range': InputTextSelectRange,
 		background: InputTextBackground,
 	},
