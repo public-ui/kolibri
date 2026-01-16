@@ -852,6 +852,17 @@ ROUTES.set('table/sort-data', {
 		},
 	},
 });
+ROUTES.set('table/action-columns', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 300,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('table/with-footer', {
 	snapshot: {
 		viewportSize: {
