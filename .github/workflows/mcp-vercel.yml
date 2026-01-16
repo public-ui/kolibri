@@ -31,7 +31,7 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_MCP_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
         with:
           persist-credentials: false
 
@@ -110,7 +110,7 @@ jobs:
 
       - name: Share preview URL in PR
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           PREVIEW_URL: ${{ steps.deploy_preview.outputs.url }}
         with:

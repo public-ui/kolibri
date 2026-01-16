@@ -18,13 +18,13 @@ jobs:
           - release/2
           - release/3
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
         with:
           persist-credentials: false
           ref: ${{ matrix.branch }}
 
       - name: Sync ${{ matrix.branch }} to OpenCoDE
-        uses: public-ui/kolibri/.github/actions/opencode-sync@develop
+        uses: public-ui/kolibri/.github/actions/opencode-sync@5cc50fb7d237644be4810da80bc3e05050a85cdf # develop
         with:
           branch: ${{ matrix.branch }}
           remote-url: https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git

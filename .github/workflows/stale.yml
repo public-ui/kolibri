@@ -11,7 +11,7 @@ jobs:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v10
+      - uses: actions/stale@997185467fa4f803885201cee163a9f38240193d # v10
         with:
           days-before-stale: 170
           days-before-close: 10
