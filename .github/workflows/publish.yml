@@ -85,7 +85,7 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Install
-        run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
+        run: pnpm i --frozen-lockfile
 
       - name: Configure Git user
         run: |
