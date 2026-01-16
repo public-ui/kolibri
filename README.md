@@ -112,10 +112,10 @@ We aim for **SLSA Build Level 3** for the npm packages published from this repos
 
 ```bash
 # Inspect provenance metadata for a published package
-npm view @public-ui/components dist.provenance
+pnpm view @public-ui/components dist.provenance
 
 # (Optional) Verify signatures/provenance if your npm client supports it
-npm audit signatures --package=@public-ui/components@<version>
+pnpm audit signatures --package=@public-ui/components@<version>
 ```
 
 ## Resources
