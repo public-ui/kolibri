@@ -1,8 +1,11 @@
 @use '../components/@shared/mixins' as *;
 @use '../components/host-display-block' as *;
 @use '../components/tooltip/style' as *;
+@use '../components/@shared/kol-button-mixin' as *;
 
 @mixin kol-alert {
+	@include kol-button-styles('kol-button');
+
 	.kol-alert {
 		display: grid;
 
