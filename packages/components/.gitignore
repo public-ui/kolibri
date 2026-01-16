@@ -1,6 +1,5 @@
 /dist/
 /doc/**
-/loader/
 /public/
 /screenshot/
 /src/components.d.ts
@@ -40,6 +39,8 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+/assets/kolicons
 
 # Allow
 !/node_martin/*.tgz

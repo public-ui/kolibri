@@ -42,14 +42,6 @@ export class KolSkipNav implements SkipNavAPI {
 	}
 
 	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;

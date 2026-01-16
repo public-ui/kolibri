@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { KolEvent } from '../../utils/events';
 
 const TABS = [
 	{
@@ -41,13 +40,13 @@ test.describe('kol-tabs', () => {
 				<div slot="tab-1">Contents of Tab 2</div>
 			</kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
-			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement, KolEvent) => {
+			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<number>((resolve) => {
-					element.addEventListener(KolEvent.select, (event: Event) => {
+					element.addEventListener('select', (event: Event) => {
 						resolve((event as CustomEvent).detail as number);
 					});
 				});
-			}, KolEvent);
+			});
 			await kolTabs.getByRole('tab', { name: 'Second Tab' }).click();
 
 			await expect(eventPromise).resolves.toEqual(1);
@@ -109,13 +108,13 @@ test.describe('kol-tabs', () => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
 			const createButton = page.getByTestId('tabs-create-button');
-			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement, KolEvent) => {
+			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.create, () => {
+					element.addEventListener('create', () => {
 						resolve();
 					});
 				});
-			}, KolEvent);
+			});
 			await createButton.click();
 			await expect(eventPromise).resolves.toBeUndefined();
 		});

@@ -79,14 +79,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return Promise.resolve(this.getFocusableInput()?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private getFocusableInput(): HTMLInputElement | undefined {
 		const options = this.state._options;
 		const isComponentDisabled = Boolean(this.state._disabled);

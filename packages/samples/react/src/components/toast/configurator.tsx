@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import type { AlertTypePropType } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
-import { KolButton, KolInputRadio } from '@public-ui/react-v19';
+import { KolAlert, KolButton, KolInputRadio, KolLink } from '@public-ui/react-v19';
 
 import { SampleDescription } from '../SampleDescription';
 
@@ -19,6 +19,9 @@ const isAlertType = (value: unknown): value is AlertTypePropType => {
 	return typeof value === 'string' && toastTypes.includes(value as AlertTypePropType);
 };
 
+/**
+ * @deprecated For more information, please refer to the documentation.
+ */
 export const ToastConfigurator: FC = () => {
 	const [searchParams] = useSearchParams();
 	const queryType = searchParams.get('type');
@@ -66,6 +69,10 @@ export const ToastConfigurator: FC = () => {
 
 	return (
 		<>
+			<KolAlert _label="Component is DEPRECATED" _type="error" _variant="card" className="header-alert">
+				For more information, please refer&nbsp;
+				<KolLink _href="https://public-ui.github.io/en/docs/components/toaster" _target="_blank" _label="to the documentation"></KolLink>.
+			</KolAlert>
 			<SampleDescription>
 				<p>
 					This sample demonstrates the toast service with all its options. Use the configuration below to choose a toast type and open a toast with the card

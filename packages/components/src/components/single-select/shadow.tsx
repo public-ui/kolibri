@@ -50,7 +50,7 @@ import { SingleSelectController } from './controller';
 	shadow: true,
 })
 export class KolSingleSelect implements SingleSelectAPI {
-	@Element() private readonly host?: HTMLKolSingleSelectElement;
+	@Element() private readonly host?: HTMLElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
@@ -72,14 +72,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Method()
 	public async focus() {
 		return Promise.resolve(this.refInput?.focus());
-	}
-
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
 	}
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
@@ -106,17 +98,19 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	};
 
-	private onBlur() {
+	private onBlur(event: FocusEvent) {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else {
+		} else if (!this._isOpen) {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
 
-		this._isOpen = false;
+		if (event instanceof FocusEvent && event.view === window) {
+			this._isOpen = false;
+		}
 	}
 
 	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
@@ -259,6 +253,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	}
 
+	private selectFocusedOption(): boolean {
+		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
+			this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+			return true;
+		}
+		return false;
+	}
+
 	private focusSuggestionStartingWith(char: string) {
 		const charLowerCase = char.toLowerCase();
 
@@ -327,9 +329,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
-						{this._inputValue && !this.state._hideClearButton && (
+						{this._inputValue && this.state._hasClearButton && (
 							<KolButtonWcTag
-								_icons="codicon codicon-close"
+								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_buttonVariant="ghost"
@@ -348,7 +350,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 						)}
 
 						<KolIconTag
-							_icons="codicon codicon-triangle-down"
+							_icons="kolicon-chevron-down"
 							_label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,
@@ -417,17 +419,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 		);
 	}
 
-	@Listen('focusout', { target: 'window' })
-	public handleFocusOut() {
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
 		setTimeout(() => {
 			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur();
+				this.onBlur(event);
 			}
-		}, 0);
+		});
 	}
-	@Listen('blur', { target: 'window' })
-	public handleWindowBlur() {
-		this.onBlur();
+	@Listen('blur')
+	public handleWindowBlur(event: FocusEvent) {
+		this.onBlur(event);
 	}
 
 	@Listen('keydown')
@@ -469,22 +471,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 				handleEvent(false);
 				break;
 			}
-			case ' ': {
+			case ' ':
+			case 'Enter':
+			case 'NumpadEnter': {
 				if (this._isOpen) {
-					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+					if (this.selectFocusedOption()) {
 						this.refInput?.focus();
 						handleEvent(false);
 					}
 				} else {
 					this.toggleListbox(event);
 				}
-				break;
-			}
-			case 'NumpadEnter':
-			case 'Enter': {
-				this.toggleListbox(event);
-				this._isOpen = false;
 				break;
 			}
 			case 'Home': {
@@ -633,9 +630,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	/**
-	 * Hides the clear button.
+	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hideClearButton?: boolean = false;
+	@Prop() public _hasClearButton?: boolean = true;
 
 	/**
 	 * Maximum number of visible rows of the element.
@@ -647,7 +644,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
-		_hideClearButton: false,
+		_hasClearButton: true,
 	};
 
 	@State() private inputHasFocus = false;
@@ -754,9 +751,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.updateInputValue(value);
 	}
 
-	@Watch('_hideClearButton')
-	public validateHideClearButton(value?: boolean): void {
-		this.controller.validateHideClearButton(value);
+	@Watch('_hasClearButton')
+	public validateHasClearButton(value?: boolean): void {
+		this.controller.validateHasClearButton(value);
 	}
 
 	@Watch('_rows')

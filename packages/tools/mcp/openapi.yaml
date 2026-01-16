@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: KoliBri MCP Server API
-  version: 3.0.7
+  version: 4.0.0-alpha.7
   description: |
     Model Context Protocol (MCP) server for KoliBri component library.
     Provides AI agents with access to 136+ KoliBri component examples and source code.

@@ -12,7 +12,6 @@ import type {
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
-	KoliBriTableSelectionKey,
 	KoliBriTableSelectionKeys,
 	LabelPropType,
 	PaginationPositionPropType,
@@ -40,13 +39,9 @@ import {
 	validateTableDataFoot,
 	validateTableSelection,
 	validateTableStatefulCallbacks,
-	watchString,
 	watchValidator,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
-import type { MinWidthPropType } from '../../schema/props/min-width';
-import type { TableSettingsPropType } from '../../schema/props/table-settings';
-import { validateTableSettings } from '../../schema/props/table-settings';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -68,7 +63,7 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	@Element() private readonly host?: HTMLKolTableStatefulElement;
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
@@ -107,11 +102,6 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width (CSS width values).
-	 */
-	@Prop() public _minWidth!: MinWidthPropType;
-
-	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
@@ -129,11 +119,6 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _on?: TableStatefulCallbacksPropType;
 
 	/**
-	 * Defines the table settings including column visibility, order and width.
-	 */
-	@Prop() public _tableSettings?: TableSettingsPropType;
-
-	/**
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
@@ -147,7 +132,6 @@ export class KolTableStateful implements TableAPI {
 			vertical: [],
 		},
 		_label: '', // ⚠ required
-		_minWidth: 'auto',
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
@@ -305,13 +289,6 @@ export class KolTableStateful implements TableAPI {
 		});
 	}
 
-	@Watch('_minWidth')
-	public validateMinWidth(value?: string): void {
-		watchString(this, '_minWidth', value, {
-			defaultValue: undefined,
-		});
-	}
-
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
@@ -319,11 +296,6 @@ export class KolTableStateful implements TableAPI {
 	@Watch('_on')
 	public validateOn(value?: TableStatefulCallbacksPropType): void {
 		validateTableStatefulCallbacks(this, value);
-	}
-
-	@Watch('_tableSettings')
-	public validateTableSettings(value?: TableSettingsPropType): void {
-		validateTableSettings(this, value);
 	}
 
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
@@ -403,12 +375,10 @@ export class KolTableStateful implements TableAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
 		this.validateLabel(this._label);
-		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validatePagination(this._pagination);
 		this.validatePaginationPosition(this._paginationPosition);
 		this.validateSelection(this._selection);
-		this.validateTableSettings(this._tableSettings);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
 	}
 
@@ -460,20 +430,6 @@ export class KolTableStateful implements TableAPI {
 		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
-				<span role="status" aria-live="polite">
-					{translate('kol-table-visible-range', {
-						placeholders: {
-							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
-							end: this.pageEndSlice.toString(),
-							total:
-								this.state._pagination && this.state._pagination._max > 0
-									? this.state._pagination._max.toString()
-									: Array.isArray(this.state._data)
-										? this.state._data.length.toString()
-										: '0',
-						},
-					})}
-				</span>
 				<div class="kol-table-stateful__pagination-wrapper">
 					<KolPaginationWcTag
 						class="test"
@@ -505,6 +461,15 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	private getHeaderCellSortOrder(headerCell: KoliBriTableHeaderCellWithLogic): number | undefined {
+		if (!this.disableSort && this.state._allowMultiSort && typeof headerCell.compareFn === 'function' && headerCell.key) {
+			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
+			if (index >= 0) {
+				return index + 1;
+			}
+		}
+	}
+
 	private handleSort({ key }: SortEventPayload) {
 		const headerCell = [...(this.state._headers.horizontal || []).flat(), ...(this.state._headers.vertical || []).flat()].find((cell) => cell.key === key);
 		if (headerCell) {
@@ -512,31 +477,28 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys): null | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const keys = Array.isArray(selectedKeys) ? selectedKeys : [selectedKeys];
-			const keySet = new Set(keys.map(String));
+			const keySet = new Set(selectedKeys.map(String));
 			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
-			if (selection?.multiple === false) {
-				return data[0];
-			}
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey): void {
+
+	private handleSelectionChange(event: Event, selectedKeys: KoliBriTableSelectionKeys): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: Array.isArray(value) ? value : [value],
+					selectedKeys,
 				},
 			};
-		const selectedData = this.getSelectedData(value);
+		const selectedData = this.getSelectedData(selectedKeys);
 
 		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
 			this.state._on[Callback.onSelectionChange](event, selectedData);
@@ -551,7 +513,7 @@ export class KolTableStateful implements TableAPI {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
+	public async getSelection(): Promise<KoliBriTableDataType[] | null> {
 		const selectedKeys: KoliBriTableSelectionKeys = this.state._selection?.selectedKeys || [];
 		return this.getSelectedData(selectedKeys);
 	}
@@ -566,8 +528,22 @@ export class KolTableStateful implements TableAPI {
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
 		const headerCells: TableHeaderCells = {
-			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
-			vertical: this.state._headers.vertical?.map((column) => column.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))) ?? [],
+			horizontal:
+				this.state._headers.horizontal?.map((row) =>
+					row.map((cell) => ({
+						...cell,
+						sortDirection: this.getHeaderCellSortState(cell),
+						sortOrder: this.getHeaderCellSortOrder(cell),
+					})),
+				) ?? [],
+			vertical:
+				this.state._headers.vertical?.map((column) =>
+					column.map((cell) => ({
+						...cell,
+						sortDirection: this.getHeaderCellSortState(cell),
+						sortOrder: this.getHeaderCellSortOrder(cell),
+					})),
+				) ?? [],
 		};
 		return (
 			<Host class="kol-table-stateful">
@@ -578,17 +554,15 @@ export class KolTableStateful implements TableAPI {
 					_headerCells={headerCells}
 					_label={this.state._label}
 					_dataFoot={this.state._dataFoot}
-					_minWidth={this.state._minWidth}
 					_on={{
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys | KoliBriTableSelectionKey) => {
+						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}
 					_selection={this.state._selection}
-					_tableSettings={this.state._tableSettings}
 					_hasSettingsMenu={this.state._hasSettingsMenu}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}

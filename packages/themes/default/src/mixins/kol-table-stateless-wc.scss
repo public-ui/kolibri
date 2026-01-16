@@ -77,13 +77,10 @@
 					font-weight: 700;
 				}
 			}
-		}
 
-		&__selection {
-			display: flex;
-			gap: to-rem(8);
-			align-items: center;
-			grid-template-columns: 1fr auto;
+			&--selection {
+				width: to-rem(62);
+			}
 		}
 
 		&__spacer {
@@ -91,6 +88,11 @@
 		}
 
 		&__selection {
+			display: flex;
+			gap: to-rem(8);
+			align-items: center;
+			grid-template-columns: 1fr auto;
+
 			--kol-selection-input-main-color: var(--color-primary);
 			--kol-selection-input-off-color: var(--color-subtle);
 			--kol-selection-input-focus-color: var(--color-primary-variant);
@@ -154,6 +156,26 @@
 				--kol-selection-input-hover-color: rgb(255, 255, 255, 0.24);
 				--kol-selection-input-icon-color: var(--color-primary);
 			}
+		}
+
+		&__sort {
+			display: inline-flex;
+			gap: to-rem(4);
+			align-items: center;
+		}
+
+		&__sort-order {
+			color: var(--color-primary);
+			background-color: var(--color-light);
+			border-radius: to-rem(12);
+
+			min-width: to-rem(20);
+			height: to-rem(20);
+			padding-right: to-rem(4);
+			padding-left: to-rem(4);
+
+			font-size: to-rem(11);
+			line-height: 1;
 		}
 	}
 }

@@ -10,9 +10,9 @@ const DATA = [
 const HEADERS_WITH_NON_HIDABLE: TableHeaderCellsPropType = {
 	horizontal: [
 		[
-			{ key: 'id', label: 'ID', hidable: false },
-			{ key: 'name', label: 'Name' },
-			{ key: 'age', label: 'Age' },
+			{ key: 'id', label: 'ID', hidable: false, width: 120 },
+			{ key: 'name', label: 'Name', width: 180 },
+			{ key: 'age', label: 'Age', width: 120 },
 		],
 	],
 };

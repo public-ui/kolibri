@@ -3,7 +3,7 @@ import { ButtonOrLinkOrTextWithChildrenProps } from '@public-ui/components';
 export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: 'Homepage',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_on: {
 			onClick: () => console.log('Homepage clicked'),
 		},
@@ -18,11 +18,11 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: '3 Navigation point',
 		_href: '#/back-page',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_children: [
 			{
 				_label: '3.1 Navigation point',
-				_icons: 'codicon codicon-home',
+				_icons: 'kolicon-house',
 				_href: '#/back-page',
 			},
 			{
@@ -83,7 +83,7 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	},
 	{
 		_label: '6 No own page, with icon',
-		_icons: 'codicon codicon-squirrel',
+		_icons: 'kolicon-kolibri',
 		_children: [
 			{
 				_label: '6.1 Nested link',
@@ -96,7 +96,7 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 export const LINKS_WITHOUT_SUBMENU: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: 'Homepage',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_on: {
 			onClick: () => console.log('Homepage clicked'),
 		},
@@ -111,7 +111,7 @@ export const LINKS_WITHOUT_SUBMENU: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: '3 Navigation point',
 		_href: '#/back-page',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 	},
 	{
 		_label: '4 Navigation point with children and onClick',
@@ -125,14 +125,14 @@ export const LINKS_WITHOUT_SUBMENU: ButtonOrLinkOrTextWithChildrenProps[] = [
 	},
 	{
 		_label: '6 No own page, with icon',
-		_icons: 'codicon codicon-squirrel',
+		_icons: 'kolicon-kolibri',
 	},
 ];
 
 export const LINKS_SUB_ACTIVE: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: 'Homepage',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_on: {
 			onClick: () => console.log('Homepage clicked'),
 		},
@@ -147,11 +147,11 @@ export const LINKS_SUB_ACTIVE: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: '3 Navigation point',
 		_href: '#/back-page',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_children: [
 			{
 				_label: '3.1 Navigation point',
-				_icons: 'codicon codicon-home',
+				_icons: 'kolicon-house',
 				_href: '#/back-page',
 			},
 			{

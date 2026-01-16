@@ -119,7 +119,21 @@ ROUTES.set('button-link/image', {
 		},
 	},
 });
-ROUTES.set('button/basic', {
+ROUTES.set('button/variants', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('button/disabled', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('button/hide-label', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -128,31 +142,6 @@ ROUTES.set('button/basic', {
 });
 ROUTES.set('button/icons', {
 	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/width', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/access-key', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/baselined', {
-	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
@@ -160,10 +149,6 @@ ROUTES.set('button/baselined', {
 });
 ROUTES.set('button/short-key', {
 	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 434,
-		},
 		zoom: {
 			skip: true,
 		},
@@ -190,6 +175,17 @@ ROUTES.set('combobox/basic?noColumns', {
 });
 ROUTES.set('details/basic', {
 	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('dialog/basic?show-dialog=true', {
+	snapshot: {
+		viewportSize: {
+			width: 1920,
+			height: 600,
+		},
 		zoom: {
 			skip: true,
 		},
@@ -509,6 +505,14 @@ ROUTES.set('input-range/basic?noColumns', {
 });
 ROUTES.set('input-text/basic?noColumns', {
 	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/message-types?noColumns', {
+	snapshot: {
 		viewportSize: {
 			width: 500,
 			height: 0,
@@ -518,10 +522,111 @@ ROUTES.set('input-text/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-text/text-formatter', {
+ROUTES.set('input-text/placeholder?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/disabled?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/readonly?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/access-short-key?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/hide-label?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/hide-msg?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 800,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/text-formatter?noColumns', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/smart-button?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/expert-slot?noColumns', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/select-range?noColumns', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('input-text/background?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 250,
 			height: 0,
 		},
 		zoom: {
@@ -567,15 +672,7 @@ ROUTES.set('link/target', {
 		skip: true,
 	},
 });
-ROUTES.set('modal/basic', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('modal/basic?show-modal=true', {
+ROUTES.set('modal/basic?show-dialog=true', {
 	snapshot: {
 		viewportSize: {
 			width: 1920,
@@ -622,6 +719,9 @@ ROUTES.set('popover-button/basic', {
 			height: 220,
 		},
 	},
+});
+ROUTES.set('popover-button/inline', {
+	snapshot: {},
 });
 ROUTES.set('progress/basic', {
 	snapshot: {

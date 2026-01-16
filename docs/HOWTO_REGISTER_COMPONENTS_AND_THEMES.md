@@ -17,7 +17,7 @@ pnpm add @public-ui/components @public-ui/theme-default
 
 ```ts
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 await register(DEFAULT, defineCustomElements);
@@ -33,7 +33,7 @@ You can pass an array when you want to ship several themes at once:
 
 ```ts
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { ECL } from '@public-ui/theme-ecl';
 
@@ -44,7 +44,7 @@ Switching themes at runtime works through the `kol-theme` attribute—no additio
 
 ## 4. Framework-specific notes
 
-- **React / Solid / Vue**: Use the official adapters (`@public-ui/react`, `@public-ui/solid`, `@public-ui/vue`). They wrap `register` for you, but you still need to call it once in your app entry point before rendering.
+- **React / Solid / Svelte / Vue**: Use the official adapters (`@public-ui/react`, `@public-ui/solid`, `@public-ui/svelte`, `@public-ui/vue`). They wrap `register` for you, but you still need to call it once in your app entry point before rendering.
 - **Angular**: Install `@public-ui/angular` and follow the schematic. It invokes `register` during the Angular bootstrapping phase.
 - **Static HTML / plain JS**: Load the ESM bundles from a CDN and call `register` with `defineCustomElements` inside a `<script type="module">` block.
 

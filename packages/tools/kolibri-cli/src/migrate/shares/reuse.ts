@@ -51,7 +51,7 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 	let files: string[] = [];
 	const dirPath = path.resolve(process.cwd(), dir);
 	fs.readdirSync(dirPath).forEach((file) => {
-		const fullPath = path.resolve(dir, file);
+		const fullPath = path.resolve(dirPath, file);
 		if (fs.lstatSync(fullPath).isDirectory()) {
 			files = files.concat(filterFilesByExt(fullPath, ext));
 		} else if (ext.includes(path.extname(fullPath).replace('.', '') as FileExtension)) {
@@ -69,7 +69,8 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
  */
 export function hasKoliBriTags(dir: string): boolean {
 	const regexes = [WEB_TAG_REGEX, REACT_TAG_REGEX];
-	const files = filterFilesByExt(dir, MARKUP_EXTENSIONS);
+	const dirPath = path.resolve(process.cwd(), dir);
+	const files = filterFilesByExt(dirPath, MARKUP_EXTENSIONS);
 
 	for (const file of files) {
 		let fd: number | undefined;
@@ -189,7 +190,10 @@ export function setRemoveMode(mode: RemoveMode): void {
 }
 
 /**
- * Gets the remove mode.
+ * Gets the current remove mode chosen via the CLI flag `--remove-mode`.
+ * - `prefix` (default) renames removed properties to `data-removed-<property>` so that developers can
+ *   clean them up manually after the migration.
+ * - `delete` removes the properties entirely during migration.
  * @returns {RemoveMode} The remove mode
  */
 export function getRemoveMode(): RemoveMode {

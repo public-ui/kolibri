@@ -9,8 +9,12 @@ export type TaskOptions = {
 	description?: string;
 };
 
+export type ExecutionMode = 'batch' | 'immediate';
+
 export abstract class AbstractTask {
 	private status: TaskStatus = 'pending';
+	protected executionMode: ExecutionMode = 'immediate';
+	protected pendingExecutables: string[] = [];
 
 	protected static readonly instances: Map<string, AbstractTask> = new Map();
 
@@ -58,6 +62,22 @@ export abstract class AbstractTask {
 
 	public getVersionRange(): string {
 		return this.versionRange;
+	}
+
+	public setExecutionMode(mode: ExecutionMode): void {
+		this.executionMode = mode;
+	}
+
+	public getExecutionMode(): ExecutionMode {
+		return this.executionMode;
+	}
+
+	public getPendingExecutables(): string[] {
+		return this.pendingExecutables;
+	}
+
+	public clearPendingExecutables(): void {
+		this.pendingExecutables = [];
 	}
 
 	public abstract run(baseDir: string): void;

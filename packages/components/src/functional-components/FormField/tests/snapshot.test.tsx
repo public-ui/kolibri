@@ -35,6 +35,13 @@ describe('KolFormFieldFc', () => {
 		expect(page.root?.textContent).toContain('Error message');
 	});
 
+	it('should hide messages until touched', async () => {
+		const msg: MsgPropType = { _type: 'info', _description: 'Info message' };
+		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" msg={msg} />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.textContent).not.toContain('Info message');
+	});
+
 	it('should render with hint', async () => {
 		const hint = 'Hint message';
 		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" hint={hint} />);

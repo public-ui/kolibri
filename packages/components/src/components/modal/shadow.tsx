@@ -1,17 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
-import { KolCardWcTag } from '../../core/component-names';
-import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
-import { setState, validateLabel, validateWidth } from '../../schema';
+import { Component, h, Method, Prop } from '@stencil/core';
+import { KolDialogWcTag } from '../../core/component-names';
+import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
-import { validateModalVariant } from '../../schema/props/variant/modal';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
- * https://en.wikipedia.org/wiki/Modal_window
- *
+ * @deprecated Use `kol-dialog` instead.
  * @slot - The modal's contents.
  */
 @Component({
@@ -21,70 +15,34 @@ import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 	},
 	shadow: true,
 })
-export class KolModal implements ModalAPI {
-	@Element() private readonly host?: HTMLKolModalElement;
-	private refDialog?: HTMLDialogElement;
+export class KolModal implements DialogProps {
+	private dialogRef?: HTMLKolDialogWcElement;
 
-	public disconnectedCallback(): void {
-		void this.closeModal();
-	}
-
-	private handleNativeCloseEvent() {
-		this.state._on?.onClose?.();
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.close);
-		}
-	}
+	private readonly catchRef = (ref?: HTMLKolDialogWcElement) => {
+		this.dialogRef = ref;
+	};
 
 	/**
 	 * Opens the modal dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	async openModal() {
-		this.refDialog?.showModal();
+	public async openModal() {
+		await this.dialogRef?.openModal();
 	}
 
 	/**
 	 * Closes the modal dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {
-		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
-		this.refDialog?.close?.();
+		await this.dialogRef?.closeModal();
 	}
-
-	private readonly on = {
-		onClose: async () => {
-			await this.closeModal();
-		},
-	};
 
 	public render(): JSX.Element {
 		return (
-			<dialog
-				aria-label={this.state._label}
-				class={clsx('kol-modal', {
-					'kol-modal__blank': this.state._variant === 'blank',
-					'kol-modal__card': this.state._variant === 'card',
-				})}
-				onCancel={handleCancelOverlay}
-				onClose={this.handleNativeCloseEvent.bind(this)}
-				ref={(el) => {
-					this.refDialog = el;
-				}}
-				style={{
-					width: this.state._width,
-				}}
-			>
-				{this.state._variant === 'blank' && <slot />}
-				{this.state._variant === 'card' && (
-					<KolCardWcTag _label={this.state._label} _hasCloser _on={this.on}>
-						<slot />
-					</KolCardWcTag>
-				)}
-			</dialog>
+			<KolDialogWcTag ref={this.catchRef} _label={this._label} _on={this._on} _variant={this._variant} _width={this._width}>
+				<slot />
+			</KolDialogWcTag>
 		);
 	}
 
@@ -96,7 +54,7 @@ export class KolModal implements ModalAPI {
 	/**
 	 * Defines the modal callback functions.
 	 */
-	@Prop() public _on?: KoliBriModalEventCallbacks;
+	@Prop() public _on?: KoliBriDialogEventCallbacks;
 
 	/**
 	 * Defines the width of the modal. (max-width: 100%)
@@ -107,44 +65,4 @@ export class KolModal implements ModalAPI {
 	 * Defines the variant of the modal.
 	 */
 	@Prop() public _variant?: ModalVariantPropType = 'blank';
-
-	@State() public state: ModalStates = {
-		_label: '', // ⚠ required
-		_width: '100%',
-	};
-
-	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			required: true,
-		});
-	}
-
-	@Watch('_on')
-	public validateOn(value?: KoliBriModalEventCallbacks): void {
-		if (typeof value === 'object' && value !== null) {
-			const callbacks: KoliBriModalEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
-				callbacks.onClose = value.onClose;
-			}
-			setState<KoliBriModalEventCallbacks>(this, '_on', callbacks);
-		}
-	}
-
-	@Watch('_width')
-	public validateWidth(value?: string): void {
-		validateWidth(this, value);
-	}
-
-	@Watch('_variant')
-	public validateVariant(value?: ModalVariantPropType): void {
-		validateModalVariant(this, value);
-	}
-
-	public componentWillLoad(): void {
-		this.validateLabel(this._label);
-		this.validateOn(this._on);
-		this.validateWidth(this._width);
-		this.validateVariant(this._variant);
-	}
 }

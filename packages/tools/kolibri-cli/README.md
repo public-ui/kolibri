@@ -77,6 +77,8 @@ If errors occur in our packages, we would like to ask you to create an issue und
 
 With the `migrate` command you can migrate your project to the latest version of `KoliBri`.
 
+> **Hint:** The migration tool currently supports React projects (JSX/TSX), Vue single-file components, and HTML/XHTML template-based projects such as Angular applications or vanilla custom elements. Support for additional project types is planned.
+
 The migration runner registers tasks in the following order and executes only those whose semantic version ranges match your
 project: common tasks (`*`), v1 tasks (`^1`), v2 tasks (`^2` / `>=2.1.7 <3`), v3 tasks (`>=2 <4`), v4 tasks (`^4`) and
 asset-related tasks (`^1`). All tasks are enabled by default. If you need to disable a noisy task or explicitly re-enable a

@@ -98,14 +98,6 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		return Promise.resolve(this.refInputText?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private get hasSuggestions(): boolean {
 		return Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 	}
@@ -171,7 +163,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private readonly controller: InputColorController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 

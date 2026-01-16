@@ -15,7 +15,6 @@ import type {
 	LinkOnCallbacksPropType,
 	LinkProps,
 	LinkTargetPropType,
-	LinkVariantPropType,
 	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
@@ -43,14 +42,6 @@ export class KolLink implements LinkProps, FocusableElement {
 		return Promise.resolve(this.linkWcRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	public render(): JSX.Element {
 		return (
 			<KolLinkWcTag
@@ -65,7 +56,7 @@ export class KolLink implements LinkProps, FocusableElement {
 				_hideLabel={this._hideLabel}
 				_href={this._href}
 				_icons={this._icons}
-				_inline={this._inline !== undefined ? this._inline : this._variant === 'inline' ? true : this._variant === 'standalone' ? false : undefined}
+				_inline={this._inline}
 				_label={this._label}
 				_on={this._on}
 				_shortKey={this._shortKey}
@@ -82,7 +73,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -143,12 +134,6 @@ export class KolLink implements LinkProps, FocusableElement {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 * @deprecated Use the new _inline property instead.
-	 */
-	@Prop() public _variant?: LinkVariantPropType = 'inline';
 
 	/**
 	 * Defines the callback functions for links.

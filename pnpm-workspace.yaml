@@ -4,9 +4,12 @@ packages:
   - packages/adapters/preact*
   - packages/adapters/react*
   - packages/adapters/solid*
+  - packages/adapters/svelte
   - packages/adapters/vue
   - packages/components
+  - packages/icons
   - packages/samples/angular
+  - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
   - packages/themes/default
@@ -14,6 +17,6 @@ packages:
   - packages/themes
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
-  - packages/tools/mcp
   - packages/tools/hydrate-server
+  - packages/tools/mcp
   - packages/tools/visual-tests

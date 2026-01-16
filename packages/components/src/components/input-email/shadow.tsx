@@ -73,14 +73,6 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		return Promise.resolve(this.inputRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
 
@@ -144,7 +136,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	private readonly controller: InputEmailController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 

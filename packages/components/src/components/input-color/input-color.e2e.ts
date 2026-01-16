@@ -4,7 +4,6 @@ import { type E2EPage, test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
-import { KolEvent } from '../../utils/events';
 const COMPONENT_NAME = 'kol-input-color';
 const TEST_VALUE = '#cc006e';
 const NEW_VALUE = '#00ccff';
@@ -65,13 +64,13 @@ test.describe(COMPONENT_NAME, () => {
 			await page.setContent(`<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
 			const textInput = selectTextInput(page);
-			const eventPromise = component.evaluate((element: HTMLKolInputColorElement, KolEvent) => {
+			const eventPromise = component.evaluate((element: HTMLKolInputColorElement) => {
 				return new Promise<unknown>((resolve) => {
-					element.addEventListener(KolEvent.change, (event: Event) => {
+					element.addEventListener('change', (event: Event) => {
 						resolve((event as CustomEvent).detail);
 					});
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 			await fillAction(page);
 			await page.waitForChanges();

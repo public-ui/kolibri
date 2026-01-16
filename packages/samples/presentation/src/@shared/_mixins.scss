@@ -1,0 +1,3 @@
+@function rem($size) {
+	@return calc(#{$size}rem / var(--kolibri-root-font-size, 16));
+}

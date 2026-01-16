@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "3.1.0-rc.1",
+	"version": "4.0.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -17,6 +17,20 @@
 	},
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.js",
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js"
+		},
+		"./loader": {
+			"types": "./loader/index.d.ts",
+			"import": "./loader/index.mjs",
+			"require": "./dist/loader/index.cjs.js"
+		},
+		"./custom-elements.json": "./custom-elements.json",
+		"./package.json": "./package.json"
+	},
 	"customElements": "custom-elements.json",
 	"es2015": "dist/esm/index.mjs",
 	"es2017": "dist/esm/index.mjs",
@@ -54,10 +68,9 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "npm run build:light",
-		"build:deps": "pnpm --filter @public-ui/components^... build",
-		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && npm run format -- -w",
-		"clear": "rimraf -g dist doc loader www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
+		"build": "pnpm build:light",
+		"build:light": "mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
+		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src assets/kolicons",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
@@ -73,13 +86,14 @@
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postpack": "mv package.bak.json package.json",
-		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"postinstall": "node ./postinstall.js",
+		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
+		"prepack": "pnpm build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
+		"pretest:e2e": "pnpm --filter @public-ui/icons build",
 		"xunused": "knip"
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.4",
-		"adopted-style-sheets": "1.1.9-rc.20",
 		"boxen": "8.0.1",
 		"chalk": "5.6.2",
 		"clsx": "2.1.1",
@@ -100,6 +114,7 @@
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
 		"@public-ui/stencil-vue-output-target": "0.9.0",
+		"@revolist/svelte-output-target": "0.0.7",
 		"@stencil-community/eslint-plugin": "0.10.0",
 		"@stencil-community/postcss": "2.2.0",
 		"@stencil/core": "4.38.3",
@@ -115,6 +130,7 @@
 		"@types/wcag-contrast": "3.0.3",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
+		"adopted-style-sheets": "1.1.9-rc.20",
 		"autoprefixer": "10.4.23",
 		"cross-env": "10.1.0",
 		"cssnano": "7.1.2",
@@ -123,7 +139,7 @@
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"jest": "26.6.3",
-		"knip": "5.80.0",
+		"knip": "5.80.2",
 		"lighthouse": "12.8.2",
 		"mustache": "4.2.0",
 		"postcss": "8.5.6",
@@ -147,6 +163,7 @@
 		"doc",
 		"custom-elements.json",
 		"index.scss",
+		"loader",
 		"postinstall.js",
 		"vscode-custom-data.json"
 	]

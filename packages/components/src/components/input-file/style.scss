@@ -4,12 +4,14 @@
 @use '../../styles/kol-input-container-mixin' as *;
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/kol-button-mixin' as *;
 
 @layer kol-component {
 	@include kol-alert;
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+	@include kol-button-styles('kol-button');
 
 	.kol-input {
 		opacity: 0;
@@ -38,7 +40,6 @@
 
 		&__container {
 			display: flex;
-			height: var(--a11y-min-size);
 			overflow: hidden;
 			align-items: center;
 		}

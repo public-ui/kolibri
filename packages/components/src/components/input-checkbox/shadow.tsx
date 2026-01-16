@@ -78,14 +78,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return Promise.resolve(this.inputRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
@@ -157,7 +149,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private readonly controller: InputCheckboxController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -275,9 +267,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		_checked: false,
 		_hideMsg: false,
 		_icons: {
-			checked: 'codicon codicon-check',
-			indeterminate: 'codicon codicon-remove',
-			unchecked: 'codicon codicon-close',
+			checked: 'kolicon-check',
+			indeterminate: 'kolicon-minus',
+			unchecked: 'kolicon-cross',
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,

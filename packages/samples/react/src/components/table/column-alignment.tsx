@@ -18,13 +18,12 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Simple table" _level={3}></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with different text align properties"
-				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left' },
-							{ label: 'center', key: 'center', textAlign: 'center' },
-							{ label: 'right', key: 'right', textAlign: 'right' },
+							{ label: 'left', key: 'left', textAlign: 'left', width: 160 },
+							{ label: 'center', key: 'center', textAlign: 'center', width: 160 },
+							{ label: 'right', key: 'right', textAlign: 'right', width: 160 },
 						],
 					],
 				}}
@@ -36,13 +35,12 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table with sortable columns" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with sortable columns"
-				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
-							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter },
-							{ label: 'right', key: 'right', textAlign: 'right', compareFn: genericNonSorter },
+							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter, width: 160 },
+							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter, width: 160 },
+							{ label: 'right', key: 'right', textAlign: 'right', compareFn: genericNonSorter, width: 160 },
 						],
 					],
 				}}
@@ -54,13 +52,12 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table some sortable columns" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with some but not all columns sortable"
-				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
-							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter },
-							{ label: 'right', key: 'right', textAlign: 'right' },
+							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter, width: 160 },
+							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter, width: 160 },
+							{ label: 'right', key: 'right', textAlign: 'right', width: 160 },
 						],
 					],
 				}}
@@ -72,16 +69,15 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table with vertical heading" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with vertical heading"
-				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left' },
-							{ label: 'center', key: 'center', textAlign: 'center' },
-							{ label: 'right', key: 'right', textAlign: 'right' },
+							{ label: 'left', key: 'left', textAlign: 'left', width: 160 },
+							{ label: 'center', key: 'center', textAlign: 'center', width: 160 },
+							{ label: 'right', key: 'right', textAlign: 'right', width: 160 },
 						],
 					],
-					vertical: [[{ label: 'Vertical' }]],
+					vertical: [[{ label: 'Vertical', width: 160 }]],
 				}}
 				_data={DATA}
 				className="block"

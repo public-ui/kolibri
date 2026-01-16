@@ -16,8 +16,8 @@ export const LinkBasic: FC = () => (
 		<div className="grid gap-4">
 			<KolLink _href="#/back-page" _inline={false} _label="Simple Link" />
 			<KolLink _disabled _href="#/back-page" _inline={false} _label="Simple Link (disabled)" />
-			<KolLink _hideLabel _icons="codicon codicon-home" _href="#/back-page" _inline={false} _label="Icon Link" />
-			<KolLink _disabled _hideLabel _icons="codicon codicon-home" _href="#/back-page" _inline={false} _label="Icon Link (disabled)" />
+			<KolLink _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link" />
+			<KolLink _disabled _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link (disabled)" />
 			<p>
 				In this paragraph, a link is inserted that contains no additional attributes. <KolLink _href="#/back-page" _label="Simple Link" /> It is rendered by
 				default as a <strong>inline element</strong>.

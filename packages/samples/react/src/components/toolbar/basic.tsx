@@ -1,37 +1,43 @@
+import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolHeading, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const ToolbarBasic: FC = () => {
-	const TOOLBAR_ITEMS = [
+	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
+			type: 'button',
 			_label: 'Back',
 			_hideLabel: true,
 			_icons: {
 				left: {
-					icon: 'codicon codicon-arrow-left',
+					icon: 'kolicon-chevron-left',
 				},
 			},
 		},
 		{
+			type: 'button',
 			_label: 'Next',
 			_hideLabel: true,
 			_icons: {
 				right: {
-					icon: 'codicon codicon-arrow-right',
+					icon: 'kolicon-chevron-right',
 				},
 			},
 		},
 		{
+			type: 'link',
 			_href: '#/back-page',
 			_label: 'Simple Link 1',
 		},
 		{
+			type: 'link',
 			_href: '#/back-page',
 			_label: 'Simple Link 3',
 		},
 		{
+			type: 'button',
 			_label: 'Bold',
 		},
 	];

@@ -79,14 +79,6 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		return Promise.resolve(this.buttonRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private readonly hideTooltip = () => {
 		void this.tooltipRef?.hideTooltip();
 	};
@@ -198,7 +190,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 

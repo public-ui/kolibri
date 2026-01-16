@@ -22,16 +22,17 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 				_touched
 				_icons={{
 					left: {
-						icon: 'codicon codicon-arrow-left',
+						icon: 'kolicon-chevron-left',
 					},
 					right: {
-						icon: 'codicon codicon-arrow-right',
+						icon: 'kolicon-chevron-right',
 					},
 				}}
 			/>
-			<KolInputEmail {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="E-Mail" />
-			<KolInputEmail {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="E-Mail" />
-			<KolInputEmail {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="E-Mail" />
+			<KolInputEmail {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="E-Mail" _touched />
+			<KolInputEmail {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="E-Mail" _touched />
+			<KolInputEmail {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="E-Mail" _touched />
+			<KolInputEmail {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="E-Mail" _touched />
 			<KolInputEmail {...props} _disabled _value="test@mail.de" _label="E-Mail (Disabled)" />
 			<KolInputEmail {...props} _readOnly _value="test@mail.de" _label="E-Mail (Readonly)" />
 			<KolInputEmail {...props} _value="test@mail.de" _label="With access key" _accessKey="c" />

@@ -6,7 +6,7 @@ exports[`KolAlertFc should render 1`] = `
     <span class="visually-hidden">
       kol-message
     </span>
-    <kol-icon _icons="codicon codicon-comment" _label="" class="kol-alert__icon"></kol-icon>
+    <kol-icon _icons="kolicon-alert-info" _label="" class="kol-alert__icon"></kol-icon>
     <div class="kol-alert__container-content">
       <span class="kol-alert__content"></span>
     </div>

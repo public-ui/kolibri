@@ -34,14 +34,6 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
 
 	private handleOnClick = (event: MouseEvent) => {
@@ -81,7 +73,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			HeadingButtonProps: {
 				ref: this.catchRef,
 				class: `${rootClass}__heading-button`,
-				_icons: 'codicon codicon-chevron-right',
+				_icons: 'kolicon-chevron-right',
 			},
 			ContentProps: {
 				class: `${rootClass}__content indented-text`,

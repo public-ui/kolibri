@@ -21,7 +21,7 @@ on:
         default: false
 
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('workflow-{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('workflow-{0}-{1}', github.workflow, github.ref) }}
+  group: ${{ format('workflow-{0}-{1}', github.workflow, github.ref) }}
   cancel-in-progress: true
 
 jobs:
@@ -32,7 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          fetch-depth: 1
           persist-credentials: false
           ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
 

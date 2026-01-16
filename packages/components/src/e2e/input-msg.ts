@@ -2,11 +2,18 @@ import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { MsgPropType, Stringified } from '../schema';
 
-const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType> } & HTMLElement>(componentName: string) => {
+const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>; _touched?: boolean } & HTMLElement>(componentName: string) => {
 	test.describe('Input messages', () => {
 		test(`should render a message when provided as object`, async ({ page }) => {
-			await page.setContent(`<${componentName} _label="Input" _msg="{'_description': 'This is a info message', '_type': 'info'}" _touched></${componentName}>`);
+			await page.setContent(`<${componentName} _label="Input" _msg="{'_description': 'This is a info message', '_type': 'info'}"></${componentName}>`);
 			const alert = page.getByTestId('alert');
+
+			await expect(alert).toHaveCount(0);
+
+			const input = page.locator(componentName);
+			await input.evaluate((element: ElementType) => {
+				element._touched = true;
+			});
 
 			await expect(alert).toContainText('This is a info message');
 		});
@@ -20,10 +27,10 @@ const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType> 
 
 		test('should display and hide message based on _msg value', async ({ page }) => {
 			await page.setContent(`<${componentName}
-				_label="Input"
-				_msg="{'_description': 'An error message', '_type': 'error'}"
-				_touched
-			></${componentName}>`);
+					_label="Input"
+					_msg="{'_description': 'An error message', '_type': 'error'}"
+					_touched
+				></${componentName}>`);
 			const alert = page.getByTestId('alert');
 
 			await expect(alert).toBeVisible();

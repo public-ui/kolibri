@@ -28,26 +28,16 @@ export const TableSettingsColumnOptions: FC = () => (
 
 		<KolTableStateful
 			_label="Table with column option restrictions"
-			_minWidth="auto"
 			_hasSettingsMenu
 			_headers={{
 				horizontal: [
 					[
-						{ key: 'id', label: 'ID', hidable: false, sortable: false },
-						{ key: 'name', label: 'Name' },
-						{ key: 'team', label: 'Team', sortable: false },
-						{ key: 'email', label: 'E-Mail', resizable: false },
-						{ key: 'status', label: 'Status', hidable: false, resizable: false },
+						{ key: 'id', label: 'ID', hidable: false, sortable: false, visible: true, width: 240 },
+						{ key: 'name', label: 'Name', visible: true, width: 480 },
+						{ key: 'team', label: 'Team', sortable: false, visible: true, width: 320 },
+						{ key: 'email', label: 'E-Mail', resizable: false, visible: true, width: 400 },
+						{ key: 'status', label: 'Status', hidable: false, resizable: false, visible: true, width: 160 },
 					],
-				],
-			}}
-			_tableSettings={{
-				columns: [
-					{ hidable: false, key: 'id', label: 'ID', sortable: false, visible: true, width: 15 },
-					{ key: 'name', label: 'Name', visible: true, width: 30 },
-					{ key: 'team', label: 'Team', sortable: false, visible: true, width: 20 },
-					{ key: 'email', label: 'E-Mail', resizable: false, visible: true, width: 25 },
-					{ hidable: false, key: 'status', label: 'Status', resizable: false, visible: true, width: 10 },
 				],
 			}}
 			_data={DATA}

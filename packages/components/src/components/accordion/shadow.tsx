@@ -53,14 +53,6 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private handleOnClick = (event: MouseEvent) => {
 		this._open = !this._open;
 

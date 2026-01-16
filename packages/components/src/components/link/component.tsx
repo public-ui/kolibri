@@ -93,14 +93,6 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		return Promise.resolve(this.anchorRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private readonly onClick = (event: Event) => {
 		if (this.state._hideLabel) {
 			this.hideTooltip();
@@ -208,7 +200,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						<KolIconTag
 							class="kol-link__icon"
 							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							_icons={'codicon codicon-link-external'}
+							_icons={'kolicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
 					)}
@@ -233,7 +225,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 

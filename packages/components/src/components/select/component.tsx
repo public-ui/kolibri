@@ -70,14 +70,6 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		return Promise.resolve(this.selectRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,

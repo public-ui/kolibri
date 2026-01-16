@@ -56,14 +56,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return Promise.resolve(this.refInputNumber?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
@@ -231,7 +223,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private readonly controller: InputRangeController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 

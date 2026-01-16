@@ -10,7 +10,8 @@ const { extractBodyContent, normalizeComponentHTML } = require('./test-utils');
 const { handleTracker } = require('./setup');
 
 // Read custom-elements.json from @public-ui/components package
-const customElementsPath = require.resolve('@public-ui/components/custom-elements.json');
+const componentsPackagePath = require.resolve('@public-ui/components/package.json');
+const customElementsPath = path.resolve(path.dirname(componentsPackagePath), 'custom-elements.json');
 const customElements = JSON.parse(fs.readFileSync(customElementsPath, 'utf-8'));
 
 // Check if hydration bundle exists

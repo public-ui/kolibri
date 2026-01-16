@@ -1,23 +1,16 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
-import type { PropMinWidth } from '../props/min-width';
 import type { PropPaginationPosition } from '../props/pagination-position';
-import type { PropTableSettings } from '../props/table-settings';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
-export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType, sortDirection?: KoliBriSortDirection) => number;
 
 export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	compareFn?: KoliBriDataCompareFn;
-	/**
-	 * @deprecated Use `compareFn` instead. Will be removed in v4.
-	 */
-	_sort?: KoliBriSortFunction;
 	sortDirection?: KoliBriSortDirection;
 	headerCell?: true;
 };
@@ -44,7 +37,6 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 type RequiredProps = {
 	headers: Stringified<KoliBriTableHeaders>;
 } & PropLabel &
-	PropMinWidth &
 	PropTableData;
 type OptionalProps = {
 	allowMultiSort: boolean;
@@ -53,7 +45,6 @@ type OptionalProps = {
 	PropPaginationPosition &
 	PropTableSelection &
 	StatefulPropTableCallbacks &
-	PropTableSettings &
 	PropHasSettingsMenu;
 
 type RequiredStates = {
@@ -64,13 +55,11 @@ type RequiredStates = {
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];
 } & PropLabel &
-	PropMinWidth &
 	PropPaginationPosition;
 type OptionalStates = {
 	sortDirection: KoliBriSortDirection;
 	selection: KoliBriTableSelection;
 } & StatefulPropTableCallbacks &
-	PropTableSettings &
 	PropHasSettingsMenu;
 
 export type TableStates = Generic.Element.Members<RequiredStates, OptionalStates>;

@@ -18,6 +18,10 @@
 		--color-text: var(--kolibri-color-text, #202020);
 		--color-mute: var(--kolibri-color-mute, #f2f3f4);
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+		--color-visited: var(
+			--kolibri-color-visited,
+			#551a8b
+		); // Html defined standard value https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
 	}
 
 	:host {

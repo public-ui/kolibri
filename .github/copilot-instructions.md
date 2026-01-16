@@ -10,6 +10,9 @@ KoliBri is an accessible web component library built with Stencil and TypeScript
 
 Execute these commands in order to set up the development environment:
 
+> [!IMPORTANT]
+> Never add a `packageManager` entry to any `package.json` file in this repository. The workspace tooling manages package managers implicitly, so additional metadata causes conflicts.
+
 ### 1. Install Node.js 22
 
 ```bash
@@ -106,6 +109,7 @@ The core Stencil web component library that generates all framework adapters.
 - `angular/v19/`, `angular/v20/`, `angular/v21/` – Angular version-specific adapters
 - `vue/` – Vue.js integration
 - `solid/` – SolidJS integration
+- `svelte/` – Svelte integration
 - `preact/` – Preact integration
 - `vaadin/` – Vaadin Flow integration
 - `hydrate/` – Server-side rendering support
@@ -308,8 +312,9 @@ pnpm dev
 pnpm --filter @public-ui/components build
 
 # Build specific adapter
+pnpm --filter @public-ui/angular-v21 build
 pnpm --filter @public-ui/react build
-pnpm --filter @public-ui/angular-v20 build
+pnpm --filter @public-ui/svelte build
 pnpm --filter @public-ui/vue build
 
 # Build all adapters
@@ -322,6 +327,7 @@ pnpm --filter "@public-ui/*" build
 - **Angular:** Version-specific packages (v19, v20, v21)
 - **Vue:** Single Vue.js integration
 - **Solid:** SolidJS framework integration
+- **Svelte:** Svelte integration powered by generated proxies
 - **Vaadin:** Java/Flow framework integration
 
 ### Theme Development
@@ -415,6 +421,7 @@ pnpm --filter @public-ui/react build
 pnpm --filter @public-ui/angular-v20 build
 pnpm --filter @public-ui/vue build
 pnpm --filter @public-ui/solid build
+pnpm --filter @public-ui/svelte build
 
 # Sample applications
 pnpm --filter @public-ui/sample-react build

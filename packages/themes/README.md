@@ -30,7 +30,7 @@ Register the themes like this:
 
 ```tsx
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
 
 register(

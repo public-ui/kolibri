@@ -15,34 +15,39 @@ export const ToolbarDisabled: FC = () => {
 				class="block w-fit"
 				_items={[
 					{
+						type: 'button',
 						_label: 'Back',
 						_disabled: true,
 						_hideLabel: true,
 						_icons: {
 							left: {
-								icon: 'codicon codicon-arrow-left',
+								icon: 'kolicon-chevron-left',
 							},
 						},
 					},
 					{
+						type: 'button',
 						_label: 'Next',
 						_hideLabel: true,
 						_icons: {
 							right: {
-								icon: 'codicon codicon-arrow-right',
+								icon: 'kolicon-chevron-right',
 							},
 						},
 					},
 					{
+						type: 'link',
 						_href: '#/back-page',
 						_label: 'Simple Link 1',
 					},
 					{
+						type: 'link',
 						_href: '#/back-page',
 						_disabled: true,
 						_label: 'Simple Link 3',
 					},
 					{
+						type: 'button',
 						_label: 'Bold',
 					},
 				]}

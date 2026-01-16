@@ -1,4 +1,4 @@
-import type { ButtonProps, KoliBriTableHeaders } from '@public-ui/components';
+import type { ButtonProps, KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -56,22 +56,21 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Workdays',
 				colSpan: 5,
+				width: 500,
 			},
 			{
 				label: 'Weekend',
 				colSpan: 2,
+				width: 200,
 			},
 		],
 		[
 			{
 				key: 'monday',
 				label: 'Monday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolButtonWrapper _label={label} style={{ fontSize: '75%' }} />);
 				},
 				compareFn: (first, second) => {
 					if ((first as TableDataType).monday < (second as TableDataType).monday) {
@@ -84,16 +83,14 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 				sortDirection: 'ASC',
 				textAlign: 'right',
+				width: 100,
 			},
 			{
 				key: 'tuesday',
 				label: 'Tuesday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#060" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#060" _label={label}></KolBadge>);
 				},
 				compareFn: (first, second) => {
 					if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
@@ -105,61 +102,52 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					return 0;
 				},
 				sortDirection: 'DESC',
+				width: 100,
 			},
 			{
 				key: 'wednesday',
 				label: 'Wednesday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#006" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#006" _label={label}></KolBadge>);
 				},
+				width: 110,
 			},
 			{
 				key: 'thursday',
 				label: 'Thursday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#600" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#600" _label={label}></KolBadge>);
 				},
+				width: 100,
 			},
 			{
 				key: 'friday',
 				label: 'Friday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#303" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#303" _label={label}></KolBadge>);
 				},
+				width: 100,
 			},
 			{
 				key: 'saturday',
 				label: 'Saturday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#330" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#330" _label={label}></KolBadge>);
 				},
+				width: 100,
 			},
 			{
 				key: 'sunday',
 				label: 'Sunday',
-				render: (el, cell) => {
-					const renderElement = document.createElement('div');
-					renderElement.setAttribute('role', 'presentation');
-					el.innerHTML = '';
-					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolBadge _color="#033" _label={cell.label}></KolBadge>);
+				render: (el: HTMLElement, cell: KoliBriTableCell) => {
+					const { label } = cell as { label: string };
+					renderCellContent(el, <KolBadge _color="#033" _label={label}></KolBadge>);
 				},
+				width: 100,
 			},
 		],
 	],
@@ -167,18 +155,30 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 		[
 			{
 				label: 'Early',
+				width: 100,
 			},
 			{
 				label: 'Noon',
+				width: 100,
 			},
 			{
 				label: 'Evening',
+				width: 100,
 			},
 			{
 				label: 'Night',
+				width: 100,
 			},
 		],
 	],
+};
+
+const renderCellContent = (element: HTMLElement, content: React.ReactNode) => {
+	const renderElement = document.createElement('div');
+	renderElement.setAttribute('role', 'presentation');
+	element.innerHTML = '';
+	element.appendChild(renderElement);
+	getRoot(renderElement).render(content);
 };
 
 export const HandoutBasic: FC = () => {
@@ -257,62 +257,56 @@ export const HandoutBasic: FC = () => {
 						<KolTabs _label="" _selected={0} _tabs={[{ _label: 'Button' }, { _label: 'LinkButton' }, { _label: 'Disabled Tab', _disabled: true }]}>
 							<div className="grid gap-2 py-2">
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolButton _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary" _on={dummyEventHandler}></KolButton>
-									<KolButton _disabled _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary" _on={dummyEventHandler}></KolButton>
-									<KolButton _hideLabel _icons="codicon codicon-arrow-left" _label="primary" _variant="primary" _on={dummyEventHandler}></KolButton>
+									<KolButton _icons={{ left: 'kolicon-chevron-left' }} _label="primary" _variant="primary" _on={dummyEventHandler}></KolButton>
+									<KolButton _disabled _icons={{ left: 'kolicon-chevron-left' }} _label="primary" _variant="primary" _on={dummyEventHandler}></KolButton>
+									<KolButton _hideLabel _icons="kolicon-chevron-left" _label="primary" _variant="primary" _on={dummyEventHandler}></KolButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolButton _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary" _on={dummyEventHandler}></KolButton>
-									<KolButton
-										_disabled
-										_icons={{ right: 'codicon codicon-arrow-right' }}
-										_label="secondary"
-										_variant="secondary"
-										_on={dummyEventHandler}
-									></KolButton>
-									<KolButton _hideLabel _icons="codicon codicon-arrow-right" _label="secondary" _variant="secondary" _on={dummyEventHandler}></KolButton>
+									<KolButton _icons={{ right: 'kolicon-chevron-right' }} _label="secondary" _variant="secondary" _on={dummyEventHandler}></KolButton>
+									<KolButton _disabled _icons={{ right: 'kolicon-chevron-right' }} _label="secondary" _variant="secondary" _on={dummyEventHandler}></KolButton>
+									<KolButton _hideLabel _icons="kolicon-chevron-right" _label="secondary" _variant="secondary" _on={dummyEventHandler}></KolButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolButton _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger" _on={dummyEventHandler}></KolButton>
-									<KolButton _disabled _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger" _on={dummyEventHandler}></KolButton>
-									<KolButton _hideLabel _icons="codicon codicon-arrow-up" _label="danger" _variant="danger" _on={dummyEventHandler}></KolButton>
+									<KolButton _icons={{ top: 'kolicon-chevron-up' }} _label="danger" _variant="danger" _on={dummyEventHandler}></KolButton>
+									<KolButton _disabled _icons={{ top: 'kolicon-chevron-up' }} _label="danger" _variant="danger" _on={dummyEventHandler}></KolButton>
+									<KolButton _hideLabel _icons="kolicon-chevron-up" _label="danger" _variant="danger" _on={dummyEventHandler}></KolButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolButton _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal" _on={dummyEventHandler}></KolButton>
-									<KolButton _disabled _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal" _on={dummyEventHandler}></KolButton>
-									<KolButton _hideLabel _icons="codicon codicon-arrow-down" _label="normal" _variant="normal" _on={dummyEventHandler}></KolButton>
+									<KolButton _icons={{ bottom: 'kolicon-chevron-down' }} _label="normal" _variant="normal" _on={dummyEventHandler}></KolButton>
+									<KolButton _disabled _icons={{ bottom: 'kolicon-chevron-down' }} _label="normal" _variant="normal" _on={dummyEventHandler}></KolButton>
+									<KolButton _hideLabel _icons="kolicon-chevron-down" _label="normal" _variant="normal" _on={dummyEventHandler}></KolButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 									<KolButton _label="ghost" _variant="ghost"></KolButton>
 									<KolButton _disabled _label="ghost" _variant="ghost"></KolButton>
-									<KolButton _icons="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost" _on={dummyEventHandler}></KolButton>
+									<KolButton _icons="kolicon-house" _hideLabel _label="ghost" _variant="ghost" _on={dummyEventHandler}></KolButton>
 								</div>
 							</div>
 							<div className="grid gap-2 py-2">
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolLinkButton _href="#/back-page" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ left: 'kolicon-chevron-left' }} _label="primary" _variant="primary"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ left: 'kolicon-chevron-left' }} _label="primary" _variant="primary"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _hideLabel _icons="kolicon-chevron-left" _label="primary" _variant="primary"></KolLinkButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolLinkButton _href="#/back-page" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ right: 'kolicon-chevron-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ right: 'kolicon-chevron-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _hideLabel _icons="kolicon-chevron-right" _label="secondary" _variant="secondary"></KolLinkButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolLinkButton _href="#/back-page" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ top: 'kolicon-chevron-up' }} _label="danger" _variant="danger"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ top: 'kolicon-chevron-up' }} _label="danger" _variant="danger"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _hideLabel _icons="kolicon-chevron-up" _label="danger" _variant="danger"></KolLinkButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-									<KolLinkButton _href="#/back-page" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ bottom: 'kolicon-chevron-down' }} _label="normal" _variant="normal"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons={{ bottom: 'kolicon-chevron-down' }} _label="normal" _variant="normal"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _hideLabel _icons="kolicon-chevron-down" _label="normal" _variant="normal"></KolLinkButton>
 								</div>
 								<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 									<KolLinkButton _href="#/back-page" _label="ghost" _variant="ghost"></KolLinkButton>
 									<KolLinkButton _href="#/back-page" _label="ghost" _variant="ghost"></KolLinkButton>
-									<KolLinkButton _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
+									<KolLinkButton _href="#/back-page" _icons="kolicon-house" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
 								</div>
 							</div>
 						</KolTabs>
@@ -323,8 +317,8 @@ export const HandoutBasic: FC = () => {
 						<KolAccordion _label="Links" _level={3} _open>
 							<div className="grid gap-2" slot="">
 								<KolLink _href="#/back-page" _label="Link text"></KolLink>
-								<KolLink _href="#/back-page" _icons="codicon codicon-home" _label="Link text with icon"></KolLink>
-								<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link text with icon only"></KolLink>
+								<KolLink _href="#/back-page" _icons="kolicon-house" _label="Link text with icon"></KolLink>
+								<KolLink _href="#/back-page" _icons="kolicon-house" _hideLabel _label="Link text with icon only"></KolLink>
 								<KolLink _href="/" _label="Visited link"></KolLink>
 								<p>
 									I am a <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> in the running text.
@@ -334,17 +328,17 @@ export const HandoutBasic: FC = () => {
 						<KolAccordion _label="ButtonLinks" _level={3}>
 							<div className="grid gap-2" slot="">
 								<KolButtonLink _label="Link text"></KolButtonLink>
-								<KolButtonLink _icons="codicon codicon-home" _label="Link text with icon"></KolButtonLink>
-								<KolButtonLink _icons="codicon codicon-home" _hideLabel _label="Link text with icon only"></KolButtonLink>
+								<KolButtonLink _icons="kolicon-house" _label="Link text with icon"></KolButtonLink>
+								<KolButtonLink _icons="kolicon-house" _hideLabel _label="Link text with icon only"></KolButtonLink>
 								<p>
 									I am a <KolButtonLink _label="Link"></KolButtonLink> in the running text.
 								</p>
 								<KolButtonLink
 									_icons={{
-										left: 'codicon codicon-arrow-left',
-										right: 'codicon codicon-arrow-right',
-										top: 'codicon codicon-arrow-up',
-										bottom: 'codicon codicon-arrow-down',
+										left: 'kolicon-chevron-left',
+										right: 'kolicon-chevron-right',
+										top: 'kolicon-chevron-up',
+										bottom: 'kolicon-chevron-down',
 									}}
 									_label="Icons"
 								></KolButtonLink>
@@ -377,48 +371,48 @@ export const HandoutBasic: FC = () => {
 								_links={[
 									{
 										_label: 'Homepage',
-										_icons: 'codicon codicon-home',
+										_icons: 'kolicon-house',
 										_href: '#/back-page',
 									},
 									{
 										_label: '2 Navigation point',
-										_icons: 'codicon codicon-home',
+										_icons: 'kolicon-house',
 										_href: '#/back-page',
 									},
 									{
 										_active: true,
 										_label: '3 Navigation point',
 										_href: '#/back-page',
-										_icons: 'codicon codicon-home',
+										_icons: 'kolicon-house',
 										_children: [
 											{
 												_label: '3.1 Navigation point',
-												_icons: 'codicon codicon-home',
+												_icons: 'kolicon-house',
 												_href: '#/back-page',
 											},
 											{
 												_label: '3.2 External navigation point',
-												_icons: 'codicon codicon-home',
+												_icons: 'kolicon-house',
 												_href: '#/back-page',
 												_target: '_blank',
 											},
 											{
 												_label: '3.3 Navigation point',
 												_href: '#/back-page',
-												_icons: 'codicon codicon-home',
+												_icons: 'kolicon-house',
 												_children: [
 													{
 														_active: true,
 														_label: '3.3.1 Navigation point (active)',
-														_icons: 'codicon codicon-home',
+														_icons: 'kolicon-house',
 														_href: '#/back-page',
 													},
-													{ _label: '3.3.2 Navigation point', _icons: 'codicon codicon-home', _href: '#/back-page' },
+													{ _label: '3.3.2 Navigation point', _icons: 'kolicon-house', _href: '#/back-page' },
 												],
 											},
 										],
 									},
-									{ _label: '3 Navigation point', _icons: 'codicon codicon-home', _href: '#/back-page' },
+									{ _label: '3 Navigation point', _icons: 'kolicon-house', _href: '#/back-page' },
 								]}
 								_hasCompactButton
 							/>
@@ -447,7 +441,7 @@ export const HandoutBasic: FC = () => {
 							<KolInputNumber _label={`Number input`} />
 							<KolInputDate _type="date" _label={`Date`} />
 							<KolInputEmail
-								_icons="{'left': 'codicon codicon-home'}"
+								_icons="{'left': 'kolicon-house'}"
 								_msg={{ _type: 'error', _description: 'Test of an error message' }}
 								_touched
 								_label={`E-mail address`}
@@ -470,8 +464,8 @@ export const HandoutBasic: FC = () => {
 					</KolForm>
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
-					<div slot="" className="grid gap-2 p-2">
-						<KolTableStateful _label="Table" _minWidth="auto" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
+					<div slot="" className="gap-2 p-2 flex flex-col">
+						<KolTableStateful _label="Table" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
 					</div>
 				</KolCard>
 			</div>

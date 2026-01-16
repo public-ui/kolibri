@@ -113,14 +113,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
-	/**
 	 * Get selection start of internal element.
 	 */
 	@Method()
@@ -208,7 +200,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private readonly controller: InputTextController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 

@@ -1,6 +1,7 @@
 export enum Callback {
 	onBlur = 'onBlur',
 	onChange = 'onChange',
+	onChangeHeaderCells = 'onChangeHeaderCells',
 	onChangePage = 'onChangePage',
 	onClick = 'onClick',
 	onClose = 'onClose',

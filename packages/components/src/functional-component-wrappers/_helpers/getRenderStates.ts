@@ -1,4 +1,4 @@
-import type { MsgPropType, Stringified, TouchedPropType } from '../../schema';
+import { getMsgType, type MsgPropType, type Stringified, type TouchedPropType } from '../../schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -21,7 +21,7 @@ export const getRenderStates = (state: {
 } => {
 	const msg = state._msg;
 	const description = typeof msg === 'string' ? msg : msg?._description;
-	const type = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
+	const type = getMsgType(msg);
 	const hasMessage = Boolean(description && description.length > 0);
 	const isMessageValidError = type === 'error' && hasMessage;
 	const hasError = isMessageValidError && state._touched === true;

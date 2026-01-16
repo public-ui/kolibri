@@ -78,14 +78,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		return Promise.resolve(this.inputRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
 
@@ -152,7 +144,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					this._passwordVisible = !this._passwordVisible;
 					this.inputRef?.focus();
 				}}
-				icon={`codicon codicon-eye-${this._passwordVisible ? 'closed' : 'watch'}`}
+				icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
 				disabled={this._disabled}
 			/>
 		);
@@ -171,7 +163,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	private readonly controller: InputPasswordController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 

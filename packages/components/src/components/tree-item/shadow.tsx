@@ -41,14 +41,6 @@ export class KolTreeItem implements TreeItemProps {
 	}
 
 	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async focusLink() {
-		return this.focus();
-	}
-
-	/**
 	 * Expands the tree item.
 	 */
 	@Method() async expand() {

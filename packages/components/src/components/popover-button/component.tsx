@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
-	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
@@ -36,6 +35,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
 	private cleanupAutoPositioning?: () => void;
+	private on: ButtonCallbacksPropType<StencilUnknown> = {
+		onClick: this.handleButtonClick.bind(this),
+	};
 
 	@State() public state: PopoverButtonStates = {
 		_label: '',
@@ -68,14 +70,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Method()
 	public async focus() {
 		return Promise.resolve(this.refButton?.focus());
-	}
-
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
@@ -152,11 +146,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
 					_aria-controls="popover"
-					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
 					_ariaExpanded={this.popoverOpen}
 					_ariaHasPopup={'dialog'}
-					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
@@ -165,8 +157,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_inline={this._inline}
 					_label={this._label}
 					_name={this._name}
-					_on={this._on}
-					_role={this._role}
+					_on={this.on}
 					_shortKey={this._shortKey}
 					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
@@ -177,7 +168,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 					data-testid="popover-button"
 					class="kol-popover-button__button"
 					ref={(element) => (this.refButton = element)}
-					onClick={this.handleButtonClick.bind(this)}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>
@@ -190,24 +180,14 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
-
-	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 */
-	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 */
-	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
@@ -253,19 +233,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _name?: string;
 
 	/**
-	 * Defines the callback functions for button events.
-	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
-
-	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
 	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
-
-	/**
-	 * Defines the role of the components primary element.
-	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.

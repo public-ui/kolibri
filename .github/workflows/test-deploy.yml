@@ -20,7 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 1
           persist-credentials: false
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time

@@ -76,14 +76,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
-	/**
 	 * Resets the component's value.
 	 */
 	@Method()
@@ -200,7 +192,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	private readonly controller: InputDateController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 

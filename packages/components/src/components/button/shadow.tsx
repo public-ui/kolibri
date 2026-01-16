@@ -51,14 +51,6 @@ export class KolButton implements ButtonProps, FocusableElement {
 		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
@@ -90,7 +82,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 

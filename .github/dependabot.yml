@@ -5,9 +5,41 @@
 
 version: 2
 updates:
+  # === Default Branch ===
   - package-ecosystem: github-actions
     directory: /
     labels:
       - dependabot
+      - v4
+    schedule:
+      interval: weekly
+
+  # === Release Branch: v3 ===
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: release/3
+    labels:
+      - dependabot
+      - v3
+    schedule:
+      interval: weekly
+
+  # === Release Branch: v2 ===
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: release/2
+    labels:
+      - dependabot
+      - v2
+    schedule:
+      interval: weekly
+
+  # === Release Branch: v1 ===
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: release/1
+    labels:
+      - dependabot
+      - v1
     schedule:
       interval: weekly

@@ -16,6 +16,7 @@ export const TAGS = [
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-dialog',
 	'kol-drawer',
 	'kol-form',
 	'kol-heading',

@@ -14,13 +14,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ['develop', 'release/2']
+        branch: ['develop', 'release/3', 'release/2']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          fetch-depth: 1
           persist-credentials: false
           ref: ${{ matrix.branch }}
 

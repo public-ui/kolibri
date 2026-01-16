@@ -12,6 +12,8 @@ import { KolButton } from './button/shadow';
 import { KolCard } from './card/shadow';
 import { KolCombobox } from './combobox/shadow';
 import { KolDetails } from './details/shadow';
+import { KolDialogWc } from './dialog/component';
+import { KolDialog } from './dialog/shadow';
 import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
 import { KolHeading } from './heading/shadow';
@@ -69,6 +71,8 @@ export const COMPONENTS = [
 	KolCard,
 	KolCombobox,
 	KolDetails,
+	KolDialog,
+	KolDialogWc,
 	KolDrawer,
 	KolForm,
 	KolHeading,

@@ -4,6 +4,7 @@ import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
 import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
+import { svelteOutputTarget } from '@revolist/svelte-output-target';
 import { postcss } from '@stencil-community/postcss';
 import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
@@ -21,6 +22,7 @@ const TAGS = [
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-dialog',
 	'kol-drawer',
 	'kol-form',
 	'kol-heading',
@@ -66,6 +68,7 @@ const EXCLUDE_TAGS = [
 	'kol-button-wc',
 	'kol-color',
 	'kol-counter',
+	'kol-dialog-wc',
 	'kol-heading-wc',
 	'kol-input',
 	'kol-link-wc',
@@ -207,6 +210,12 @@ if (process.env.NODE_ENV === 'production') {
 			proxiesFile: '../adapters/solid/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
+		svelteOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			proxiesFile: '../adapters/svelte/src/index.ts',
+			includeDefineCustomElements: false,
+		}),
 		vueOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
@@ -271,7 +280,12 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [sass(), postcss()],
+	plugins: [
+		sass({
+			includePaths: ['node_modules'],
+		}),
+		postcss(),
+	],
 	rollupPlugins: {
 		before: [],
 		after: [],

@@ -85,14 +85,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		return Promise.resolve(this.textareaRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
@@ -141,7 +133,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	private readonly controller: TextareaController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -435,7 +427,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			} else if (!this._rows) {
 				this._rows = 1;
 			}
-		}, 0);
+		});
 	}
 
 	public componentWillLoad(): void {

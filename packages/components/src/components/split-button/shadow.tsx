@@ -56,14 +56,6 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 		return Promise.resolve(this.primaryButtonWcRef?.focus());
 	}
 
-	/**
-	 * @deprecated Use {@link focus} instead.
-	 */
-	@Method()
-	public async kolFocus() {
-		return this.focus();
-	}
-
 	private readonly clickButtonHandler = {
 		onClick: (event: MouseEvent) => {
 			event.stopPropagation(); // stop propagation to avoid triggering the event that closes the popover
@@ -125,7 +117,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						class="kol-split-button__secondary-button"
 						_disabled={this._disabled}
 						_hideLabel
-						_icons="codicon codicon-triangle-down"
+						_icons="kolicon-chevron-down"
 						_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
 						_on={this.clickToggleHandler}
 					></KolButtonWcTag>
@@ -148,7 +140,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
