@@ -4,9 +4,8 @@
 @use '../components/@shared/kol-button-mixin' as *;
 
 @mixin kol-alert {
-	@include kol-button-styles('kol-button');
-
 	.kol-alert {
+		@include kol-button-styles('kol-button');
 		display: grid;
 
 		&__container {
