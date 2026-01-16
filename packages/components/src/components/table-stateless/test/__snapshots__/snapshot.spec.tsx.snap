@@ -39,7 +39,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with action col
             </td>
             <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
               <div class="kol-table__cell-actions">
-                <kol-button-wc _buttonvariant="secondary" _label="View"></kol-button-wc>
+                <kol-button-wc _label="View"></kol-button-wc>
               </div>
             </td>
           </tr>
@@ -210,9 +210,9 @@ exports[`kol-table-stateless-wc should render with _label="Table with mixed acti
             </td>
             <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
               <div class="kol-table__cell-actions">
-                <kol-button-wc _buttonvariant="primary" _icons="kolicon-edit" _label="Edit"></kol-button-wc>
-                <kol-button-wc _buttonvariant="danger" _icons="kolicon-trash" _label="Delete"></kol-button-wc>
-                <kol-button-wc _buttonvariant="secondary" _icons="kolicon-settings" _label="Settings"></kol-button-wc>
+                <kol-button-wc _icons="kolicon-edit" _label="Edit"></kol-button-wc>
+                <kol-button-wc _icons="kolicon-trash" _label="Delete"></kol-button-wc>
+                <kol-button-wc _icons="kolicon-settings" _label="Settings"></kol-button-wc>
               </div>
             </td>
           </tr>
@@ -225,7 +225,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with mixed acti
             </td>
             <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
               <div class="kol-table__cell-actions">
-                <kol-button-wc _buttonvariant="normal" _label="View Profile"></kol-button-wc>
+                <kol-button-wc _label="View Profile"></kol-button-wc>
               </div>
             </td>
           </tr>
@@ -309,7 +309,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with single act
             </td>
             <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
               <div class="kol-table__cell-actions">
-                <kol-button-wc _buttonvariant="primary" _label="Done"></kol-button-wc>
+                <kol-button-wc _label="Done"></kol-button-wc>
               </div>
             </td>
           </tr>
@@ -319,7 +319,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with single act
             </td>
             <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
               <div class="kol-table__cell-actions">
-                <kol-button-wc _buttonvariant="secondary" _label="Review"></kol-button-wc>
+                <kol-button-wc _label="Review"></kol-button-wc>
               </div>
             </td>
           </tr>
