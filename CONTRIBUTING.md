@@ -62,6 +62,8 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 12. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
 13. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
 
+Run ESLint across the repository with `pnpm lint` (or `pnpm lint:eslint` to invoke ESLint directly); the configuration lives in `packages/*/eslint.config.cjs`. Formatting is handled by Prettier via `pnpm format`, so run format first to keep ESLint focused on code-quality rules rather than style drift.
+
 ### VS Code Setup
 
 We recommend using [Visual Studio Code](https://code.visualstudio.com/):
