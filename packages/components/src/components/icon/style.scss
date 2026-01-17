@@ -3,7 +3,8 @@
 
 @layer kol-component {
 	/* :host implicitly inherits font-size, see below */
-	:host {
+	:host,
+	.kol-icon {
 		color: inherit;
 		display: contents;
 

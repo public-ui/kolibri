@@ -1,7 +1,8 @@
-@use '../@shared/mixins' as *;
+@use '../../assets/kolicons/style' as *;
 @use '../../styles/global' as *;
-@use '../host-display-block' as *;
 @use '../../functional-components/Collapsible/collapsible' as *;
+@use '../@shared/mixins' as *;
+@use '../host-display-block' as *;
 
 @layer kol-component {
 	.kol-details {
@@ -21,7 +22,7 @@
 		}
 
 		.collapsible--open &__heading-button {
-			.kol-icon::part(icon) {
+			.kol-icon__icon {
 				transform: rotate(90deg);
 			}
 		}

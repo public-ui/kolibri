@@ -1,5 +1,6 @@
-@use '../@shared/mixins' as *;
+@use '../../assets/kolicons/style' as *;
 @use '../../styles/global' as *;
+@use '../@shared/mixins' as *;
 
 @layer kol-component {
 	$base-horizontal-padding: to-rem(8);
