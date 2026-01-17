@@ -82,7 +82,9 @@ exports[`KolFormFieldFc should render with error message 1`] = `
       <span class="visually-hidden">
         kol-error
       </span>
-      <kol-icon _icons="kolicon-alert-error" _label="" class="kol-alert__icon"></kol-icon>
+      <span class="kol-alert__icon kol-icon">
+        <i aria-hidden="true" class="kol-icon__icon kolicon-alert-error" part="icon" role="presentation"></i>
+      </span>
       <div class="kol-alert__container-content">
         <span class="kol-alert__content">
           Error message

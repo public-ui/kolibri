@@ -1,6 +1,7 @@
 @use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 @use '../@shared/kol-button-mixin' as *;
+@use '../../../assets/kolicons/style' as *;
 
 @layer kol-component {
 	@include kol-button-styles('kol-button');

@@ -34,7 +34,8 @@ describe('KolIconFc', () => {
 		const label = 'test-label';
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons={icons} label={label} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_icons')).toBe(icons);
-		expect(page.root?.getAttribute('_label')).toBe(label);
+		const iconElement = page.root?.querySelector('i');
+		expect(iconElement?.classList.contains(icons)).toBe(true);
+		expect(iconElement?.getAttribute('aria-label')).toBe(label);
 	});
 });

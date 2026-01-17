@@ -1,6 +1,7 @@
 @use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 @use '../tooltip/style.scss' as *;
+@use '../../../assets/kolicons/style' as *;
 
 @layer kol-component {
 	.kol-badge {

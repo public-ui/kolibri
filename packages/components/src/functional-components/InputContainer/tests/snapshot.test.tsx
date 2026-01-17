@@ -16,7 +16,7 @@ describe('KolInputContainerFc', () => {
 			<KolInputContainerFc startAdornment={(<KolIconButtonFc componentName="icon" icon="start-icon" />) as VNode} />
 		));
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.querySelector('kol-icon')).not.toBeNull();
+		expect(page.root?.querySelector('.kol-icon')).not.toBeNull();
 	});
 
 	it('should render with endAdornment', async () => {
@@ -24,7 +24,7 @@ describe('KolInputContainerFc', () => {
 			<KolInputContainerFc endAdornment={(<KolIconButtonFc componentName="icon" icon="end-icon" />) as VNode} />
 		));
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.querySelector('kol-icon')).not.toBeNull();
+		expect(page.root?.querySelector('.kol-icon')).not.toBeNull();
 	});
 
 	it('should render with both startAdornment and endAdornment', async () => {
@@ -35,7 +35,7 @@ describe('KolInputContainerFc', () => {
 			/>
 		));
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.querySelectorAll('kol-icon')).toHaveLength(2);
+		expect(page.root?.querySelectorAll('.kol-icon')).toHaveLength(2);
 	});
 
 	it('should render with children', async () => {

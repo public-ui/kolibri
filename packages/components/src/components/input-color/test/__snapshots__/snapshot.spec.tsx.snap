@@ -122,7 +122,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-input-color__inputs-wrapper">
@@ -131,7 +133,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -154,7 +158,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-input-color__inputs-wrapper">
@@ -191,7 +197,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -457,7 +465,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-input-color__inputs-wrapper">
@@ -466,7 +476,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -489,7 +501,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-input-color__inputs-wrapper">
@@ -526,7 +540,9 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <span class="kol-icon kol-input-container__icon" hidelabel="">
+              <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon__icon" part="icon" role="presentation"></i>
+            </span>
           </div>
         </div>
       </div>

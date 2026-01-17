@@ -51,15 +51,23 @@ exports[`KolSpanFc should render with default props 1`] = `
 
 exports[`KolSpanFc should render with icons 1`] = `
 <span class="kol-span">
-  <kol-icon _icons="top-icon" _label="" class="icon top"></kol-icon>
+  <span class="icon kol-icon top">
+    <i aria-hidden="true" class="kol-icon__icon top-icon" part="icon" role="presentation"></i>
+  </span>
   <span class="kol-span__container">
-    <kol-icon _icons="left-icon" _label="" class="icon left"></kol-icon>
+    <span class="icon kol-icon left">
+      <i aria-hidden="true" class="kol-icon__icon left-icon" part="icon" role="presentation"></i>
+    </span>
     <span class="kol-span__label">
       Label with Icons
     </span>
     <span aria-hidden="true" class="kol-span__label" hidden=""></span>
-    <kol-icon _icons="right-icon" _label="" class="icon right"></kol-icon>
+    <span class="icon kol-icon right">
+      <i aria-hidden="true" class="kol-icon__icon right-icon" part="icon" role="presentation"></i>
+    </span>
   </span>
-  <kol-icon _icons="bottom-icon" _label="" class="bottom icon"></kol-icon>
+  <span class="bottom icon kol-icon">
+    <i aria-hidden="true" class="bottom-icon kol-icon__icon" part="icon" role="presentation"></i>
+  </span>
 </span>
 `;

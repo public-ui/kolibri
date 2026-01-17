@@ -16,7 +16,7 @@ describe('KolIconButtonFc', () => {
 		const props: IconButtonProps = { componentName: 'icon', icon: 'test-icon' };
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconButtonFc {...props} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.tagName).toBe('KOL-ICON');
+		expect(page.root?.tagName).toBe('SPAN');
 	});
 
 	it('should handle onClick event', async () => {

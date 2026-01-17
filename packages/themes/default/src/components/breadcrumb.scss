@@ -10,7 +10,7 @@
 		}
 
 		&__link {
-			&::part(icon) {
+			.kol-icon__icon {
 				font-size: to-rem(20);
 			}
 		}

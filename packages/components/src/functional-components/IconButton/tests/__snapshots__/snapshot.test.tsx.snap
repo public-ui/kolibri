@@ -9,10 +9,9 @@ exports[`KolIconButtonFc should render button component correctly 1`] = `
 `;
 
 exports[`KolIconButtonFc should render icon component correctly 1`] = `
-<kol-icon
-  _icons="test-icon"
-  _label=""
-/>
+<span class="kol-icon" hidelabel="">
+  <i aria-hidden="true" class="kol-icon__icon test-icon" part="icon" role="presentation"></i>
+</span>
 `;
 
 exports[`KolIconButtonFc should render with additional props 1`] = `

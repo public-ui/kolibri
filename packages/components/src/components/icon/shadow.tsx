@@ -3,8 +3,8 @@ import type { IconAPI, IconStates, LabelPropType } from '../../schema';
 import { IconController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import clsx from 'clsx';
-import { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON } from './bem';
+import KolIconFc from '../../functional-components/Icon';
+import { BEM_CLASS_ICON } from './bem';
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
@@ -19,22 +19,9 @@ import { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON } from './bem';
 export class KolIcon implements IconAPI {
 	private readonly controller: IconController;
 	public render(): JSX.Element {
-		const hasAriaLabel = this.state._label.length > 0;
 		return (
 			<Host exportparts="icon" class={BEM_CLASS_ICON}>
-				<i
-					/**
-					 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
-					 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
-					 *
-					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
-					 */
-					aria-hidden={hasAriaLabel ? undefined : 'true'}
-					aria-label={hasAriaLabel ? this.state._label : undefined}
-					class={clsx(BEM_CLASS_ICON__ICON, this.state._icons)}
-					part="icon"
-					role={hasAriaLabel ? 'img' : 'presentation'}
-				></i>
+				<KolIconFc icons={this.state._icons} label={this.state._label} />
 			</Host>
 		);
 	}

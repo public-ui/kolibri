@@ -4,6 +4,7 @@
 @use '../@shared/mixins' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
+@use '../../../assets/kolicons/style' as *;
 
 @layer kol-component {
 	@include kol-form-field;
@@ -55,7 +56,7 @@
 			z-index: 1;
 			pointer-events: none;
 
-			&::part(icon) {
+			.kol-icon__icon {
 				display: none;
 			}
 		}
@@ -67,7 +68,7 @@
 
 		&#{$root}--checked,
 		&#{$root}--indeterminate {
-			.kol-icon::part(icon) {
+			.kol-icon__icon {
 				display: block;
 			}
 		}

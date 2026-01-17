@@ -1,6 +1,7 @@
 @use '../../styles/global' as *;
 @use '../@shared/kol-link-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../../../assets/kolicons/style' as *;
 
 @layer kol-component {
 	@include kol-link-styles('kol-link');

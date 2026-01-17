@@ -47,7 +47,7 @@
 			color: var(--color-blue);
 		}
 
-		&__toggle-button:hover &__toggle-button-icon::part(icon) {
+		&__toggle-button:hover &__toggle-button-icon .kol-icon__icon {
 			transform: scale(1.3);
 		}
 

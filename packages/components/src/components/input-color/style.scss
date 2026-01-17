@@ -4,6 +4,7 @@
 @use '../../styles/kol-input-container-mixin' as *;
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../../../assets/kolicons/style' as *;
 
 @layer kol-component {
 	@include kol-alert;
