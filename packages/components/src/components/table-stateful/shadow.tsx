@@ -4,6 +4,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
+	DefaultHeaderCell,
 	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
@@ -182,13 +183,18 @@ export class KolTableStateful implements TableAPI {
 	 * Otherwise, sorting is cleared when switching between columns.
 	 */
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
-		if (typeof headerCell.compareFn === 'function') {
-			if (!this.state._allowMultiSort && headerCell.key !== this.sortData[0]?.key) {
+		if (headerCell.type === undefined || headerCell.type === 'default') {
+			const cell = headerCell as DefaultHeaderCell;
+			if (typeof cell.compareFn !== 'function') {
+				return;
+			}
+
+			if (!this.state._allowMultiSort && cell.key !== this.sortData[0]?.key) {
 				// clear when another column is sorted and multi sort is not allowed
 				this.sortData = [];
 			}
 
-			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
+			const index = this.sortData.findIndex((value) => value.key === cell.key);
 			if (index >= 0) {
 				const settings = this.sortData[index];
 				switch (settings.direction) {
@@ -202,11 +208,11 @@ export class KolTableStateful implements TableAPI {
 						settings.direction = 'ASC';
 						break;
 				}
-			} else if (headerCell.key) {
+			} else if (cell.key) {
 				this.sortData.push({
-					label: headerCell.label,
-					key: headerCell.key,
-					compareFn: headerCell.compareFn,
+					label: cell.label,
+					key: cell.key,
+					compareFn: cell.compareFn,
 					direction: 'ASC',
 				});
 			}
@@ -242,11 +248,16 @@ export class KolTableStateful implements TableAPI {
 								let hasSortedCells = false;
 								this.sortData = [];
 								headers.forEach((cell) => {
-									if (typeof cell.compareFn === 'function' && !cell.key) {
+									if (cell.type !== undefined && cell.type !== 'default') {
+										return;
+									}
+
+									const defaultCell = cell as DefaultHeaderCell;
+									if (typeof defaultCell.compareFn === 'function' && !defaultCell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
 										return;
 									}
-									const key = cell.key;
+									const key = defaultCell.key;
 									if (!key) {
 										return;
 									}
@@ -450,9 +461,14 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private getHeaderCellSortState(headerCell: KoliBriTableHeaderCellWithLogic): KoliBriSortDirection | undefined {
-		if (!this.disableSort && typeof headerCell.compareFn === 'function') {
-			if (headerCell.key) {
-				const data = this.sortData.find((value) => value.key === headerCell.key);
+		if (headerCell.type !== undefined && headerCell.type !== 'default') {
+			return;
+		}
+
+		const defaultCell = headerCell as DefaultHeaderCell;
+		if (!this.disableSort && typeof defaultCell.compareFn === 'function') {
+			if (defaultCell.key) {
+				const data = this.sortData.find((value) => value.key === defaultCell.key);
 				if (data?.direction) {
 					return data.direction;
 				}
@@ -462,8 +478,13 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private getHeaderCellSortOrder(headerCell: KoliBriTableHeaderCellWithLogic): number | undefined {
-		if (!this.disableSort && this.state._allowMultiSort && typeof headerCell.compareFn === 'function' && headerCell.key) {
-			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
+		if (headerCell.type !== undefined && headerCell.type !== 'default') {
+			return;
+		}
+
+		const defaultCell = headerCell as DefaultHeaderCell;
+		if (!this.disableSort && this.state._allowMultiSort && typeof defaultCell.compareFn === 'function' && defaultCell.key) {
+			const index = this.sortData.findIndex((value) => value.key === defaultCell.key);
 			if (index >= 0) {
 				return index + 1;
 			}

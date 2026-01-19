@@ -8,6 +8,8 @@ export { BEM_ALERT } from './functional-components/Alert/bem';
 export * from './kolibri';
 export { KoliBri, KoliBriDevHelper } from './schema';
 export type {
+	ActionColumnHeaderCell,
+	ActionColumnPropType,
 	FocusableElement,
 	KoliBriTableCell,
 	KoliBriTableHeaderCell,

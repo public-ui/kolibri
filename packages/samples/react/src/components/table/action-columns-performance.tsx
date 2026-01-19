@@ -1,4 +1,4 @@
-import type { ButtonProps, KoliBriTableDataType, KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
+import type { ActionColumnHeaderCell, KoliBriTableDataType, KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
 import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
@@ -77,49 +77,7 @@ const generateData = (count: number): DataRow[] => {
 
 const DATA: DataRow[] = generateData(ROWS_COUNT);
 
-const createRowActions = (row: DataRow): ButtonProps[] => [
-	{
-		_label: 'Bearbeiten',
-		_icons: 'kolicon-eye',
-		_hideLabel: true,
-		_tooltipAlign: 'top',
-		_variant: 'secondary',
-		_on: {
-			onClick: () => {
-				console.log('Edit clicked for:', row);
-				alert(`Bearbeiten: ${row.name}`);
-			},
-		},
-	},
-	{
-		_label: 'Löschen',
-		_icons: 'kolicon-alert-error',
-		_hideLabel: true,
-		_tooltipAlign: 'top',
-		_variant: 'danger',
-		_on: {
-			onClick: () => {
-				console.log('Delete clicked for:', row);
-				alert(`Löschen: ${row.name}`);
-			},
-		},
-	},
-	{
-		_label: 'Details anzeigen',
-		_icons: 'kolicon-alert-info',
-		_hideLabel: true,
-		_tooltipAlign: 'top',
-		_variant: 'normal',
-		_on: {
-			onClick: () => {
-				console.log('Details clicked for:', row);
-				alert(`Details: ${JSON.stringify(row, null, 2)}`);
-			},
-		},
-	},
-];
-
-const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
+const HEADERS: { horizontal: (KoliBriTableHeaderCellWithLogic | ActionColumnHeaderCell)[][] } = {
 	horizontal: [
 		[
 			{
@@ -156,37 +114,77 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				sortDirection: 'ASC',
 			},
 			{
+				type: 'action',
 				key: 'actions',
 				label: 'Aktionen',
 				textAlign: 'center',
 				width: 180,
+				actions: (row) => {
+					const dataRow = row as unknown as DataRow;
+					return [
+						{
+							type: 'button',
+							_label: 'Bearbeiten',
+							_icons: 'kolicon-eye',
+							_hideLabel: true,
+							_tooltipAlign: 'top',
+							_variant: 'secondary',
+							_on: {
+								onClick: () => {
+									console.log('Edit clicked for:', dataRow);
+									alert(`Bearbeiten: ${dataRow.name}`);
+								},
+							},
+						},
+						{
+							type: 'button',
+							_label: 'Löschen',
+							_icons: 'kolicon-alert-error',
+							_hideLabel: true,
+							_tooltipAlign: 'top',
+							_variant: 'danger',
+							_on: {
+								onClick: () => {
+									console.log('Delete clicked for:', dataRow);
+									alert(`Löschen: ${dataRow.name}`);
+								},
+							},
+						},
+						{
+							type: 'button',
+							_label: 'Details anzeigen',
+							_icons: 'kolicon-alert-info',
+							_hideLabel: true,
+							_tooltipAlign: 'top',
+							_variant: 'normal',
+							_on: {
+								onClick: () => {
+									console.log('Details clicked for:', dataRow);
+									alert(`Details: ${JSON.stringify(dataRow, null, 2)}`);
+								},
+							},
+						},
+					];
+				},
 			},
 		],
 	],
 };
 
-const transformDataWithActions = (data: DataRow[]) =>
-	data.map((row) => ({
-		...row,
-		actions: {
-			buttons: createRowActions(row),
-		},
-	}));
-
 export const TableActionColumnPerformance: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Performance demo: {ROWS_COUNT} rows, actions per row are bound directly via the <code>actions</code> property. No custom render functions, so the table
-				can render action buttons without extra portals or timeouts.
+				Performance demo: {ROWS_COUNT} rows with action buttons defined once in the column header using the refactored approach. The factory function generates
+				actions for each row on demand, eliminating redundant data and improving maintainability.
 			</p>
 			<p>
-				Use this version to compare render speed against older approaches and to see how action configs stay type safe with <code>ButtonProps</code>.
+				Actions stay type-safe with <code>ActionColumnPropType</code> (ButtonProps or LinkProps), and no custom render functions are needed.
 			</p>
 		</SampleDescription>
 
 		<section className="w-full">
-			<KolTableStateful _label="Benutzerverwaltung mit Action-Spalte" _headers={HEADERS} _data={transformDataWithActions(DATA)} className="block" />
+			<KolTableStateful _label="Benutzerverwaltung mit Action-Spalte" _headers={HEADERS} _data={DATA} className="block" />
 		</section>
 	</>
 );
