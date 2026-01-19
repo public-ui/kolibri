@@ -702,10 +702,10 @@ export class KolTableStateless implements TableStatelessAPI {
 			<div class="kol-table__cell-actions">
 				{actions.map((action, actionIndex) => {
 					if (action.type === 'button') {
-						const { type, ...buttonProps } = action;
+						const { ...buttonProps } = action;
 						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _buttonVariant={buttonProps._variant} />;
 					} else if (action.type === 'link') {
-						const { type, ...linkProps } = action;
+						const { ...linkProps } = action;
 						return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
 					}
 					return null;
