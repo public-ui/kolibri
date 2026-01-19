@@ -1,4 +1,4 @@
-import type { ActionColumnHeaderCell, KoliBriTableDataType, KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
+import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
 import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
@@ -77,7 +77,7 @@ const generateData = (count: number): DataRow[] => {
 
 const DATA: DataRow[] = generateData(ROWS_COUNT);
 
-const HEADERS: { horizontal: (KoliBriTableHeaderCellWithLogic | ActionColumnHeaderCell)[][] } = {
+const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 	horizontal: [
 		[
 			{
