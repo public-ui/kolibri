@@ -32,7 +32,7 @@ const actionColumn: ActionColumnHeaderCell = {
 			{
 				type: 'button',
 				_label: 'Start',
-				_icons: 'kolicon-play',
+				_icons: 'kolicon-chevron-right',
 				_variant: 'secondary',
 				_on: {
 					onClick: () => alert(`Start task ${simpleRow.id}`),
