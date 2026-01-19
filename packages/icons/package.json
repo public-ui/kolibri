@@ -10,7 +10,7 @@
 	},
 	"scripts": {
 		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
-		"delete-unused": "rimraf ../components/assets/kolicons/react && rimraf ../components/assets/kolicons/vue && rimraf ../components/assets/kolicons/kolicons.symbol.svg && rimraf ../components/assets/kolicons/style.less && rimraf ../components/assets/kolicons/style.module.less && rimraf ../components/assets/kolicons/style.scss && rimraf ../components/assets/kolicons/style.styl",
+		"delete-unused": "rimraf ../components/assets/kolicons/kolicons.symbol.svg && rimraf ../components/assets/kolicons/style.less && rimraf ../components/assets/kolicons/style.module.less && rimraf ../components/assets/kolicons/style.scss && rimraf ../components/assets/kolicons/style.styl",
 		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ../components/assets/kolicons && pnpm delete-unused",
 		"prebuild": "rimraf ../components/assets/kolicons && rimraf ./svg-fixed && mkdir svg-fixed",
 		"start": "serve"
@@ -24,6 +24,9 @@
 		"fontName": "kolicons",
 		"svgicons2svgfont": {
 			"fontHeight": 10000
-		}
+		},
+		"outSVGReact": false,
+		"outSVGVue": false,
+		"addLigatures": true
 	}
 }
