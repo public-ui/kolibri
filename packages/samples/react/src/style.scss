@@ -89,3 +89,9 @@ hr {
 		display: none !important;
 	}
 }
+
+
+.handout-table-card-content {
+	max-width: calc(100vw - 95px);
+	overflow: auto;
+}
