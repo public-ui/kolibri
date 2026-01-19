@@ -12,33 +12,38 @@ export const TableWithFooter: FC = () => (
 		<KolTableStateful
 			className="w-full"
 			_label="Business hours"
-			_minWidth="auto"
 			_headers={{
 				horizontal: [
 					[
 						{
 							label: 'District',
 							key: 'asp',
+							width: 160,
 						},
 						{
 							label: 'Monday',
 							key: 'monday',
+							width: 160,
 						},
 						{
 							label: 'Tuesday',
 							key: 'tuesday',
+							width: 160,
 						},
 						{
 							label: 'Wednesday',
 							key: 'wednesday',
+							width: 160,
 						},
 						{
 							label: 'Thursday',
 							key: 'thursday',
+							width: 160,
 						},
 						{
 							label: 'Friday',
 							key: 'friday',
+							width: 160,
 						},
 					],
 				],

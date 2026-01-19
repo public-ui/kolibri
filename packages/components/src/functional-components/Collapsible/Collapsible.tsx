@@ -40,7 +40,7 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 
 const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
-	const icon = open ? 'remove' : 'add';
+	const icon = open ? 'kolicon-chevron-down' : 'kolicon-chevron-right';
 
 	return (
 		<div
@@ -63,7 +63,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 					_ariaControls={`${id}-control`}
 					_ariaExpanded={open}
 					_disabled={disabled}
-					_icons={HeadingButtonProps?._icons || `codicon codicon-${icon}`}
+					_icons={HeadingButtonProps?._icons || `${icon}`}
 					_label={label}
 					_on={{ onClick }}
 				></KolButtonWcTag>

@@ -17,7 +17,7 @@ pnpm add @public-ui/components @public-ui/theme-default
 
 ```ts
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 await register(DEFAULT, defineCustomElements);
@@ -33,7 +33,7 @@ You can pass an array when you want to ship several themes at once:
 
 ```ts
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import { ECL } from '@public-ui/theme-ecl';
 

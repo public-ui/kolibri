@@ -3,7 +3,8 @@ import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
 import type { Generic } from 'adopted-style-sheets';
-import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableSelectionKey, KoliBriTableSelectionKeys } from '../types';
+import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableSelectionKeys } from '../types';
+import type { TableHeaderCells } from './table-header-cells';
 
 /* types */
 export type SortEventPayload = {
@@ -11,12 +12,14 @@ export type SortEventPayload = {
 	currentSortDirection: KoliBriSortDirection;
 };
 
-export type SelectionChangeEventPayload = KoliBriTableSelectionKeys | KoliBriTableSelectionKey;
-export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | KoliBriTableDataType | null;
+export type SelectionChangeEventPayload = KoliBriTableSelectionKeys;
+export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | null;
+export type ChangeHeaderCellsEventPayload = TableHeaderCells;
 
 export type TableCallbacksPropType = {
 	[Callback.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
 	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
+	[Callback.onChangeHeaderCells]?: EventValueOrEventCallback<Event, ChangeHeaderCellsEventPayload>;
 };
 export type TableStatefulCallbacksPropType = {
 	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, StatefulSelectionChangeEventPayload>;
@@ -38,7 +41,7 @@ export const validateTableCallbacks = (component: Generic.Element.Component, val
 		component,
 		`_on`,
 		(value) => typeof value === 'object' && value !== null,
-		new Set(['TableCallbacksPropType {Events.onSort, Events.onSelectionChange}']),
+		new Set(['TableCallbacksPropType {Events.onSort, Events.onSelectionChange, Events.onChangeHeaderCells}']),
 		value,
 	);
 };

@@ -4,16 +4,16 @@ import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 const smartButtonProps = {
-	_icons: 'codicon codicon-info',
+	_icons: 'kolicon-alert-info',
 	_hideLabel: true,
 };
 
 const icons = {
 	left: {
-		icon: 'codicon codicon-arrow-left',
+		icon: 'kolicon-eye',
 	},
 	right: {
-		icon: 'codicon codicon-arrow-right',
+		icon: 'kolicon-check',
 	},
 };
 
@@ -48,13 +48,14 @@ export const InputTextSmartButton = () => {
 					_icons={icons}
 				></KolInputText>
 				<KolInputText
-					_label="Disabled input with button and without icons"
+					_label="Disabled input with button and icons"
 					_disabled
 					_type="text"
 					_smartButton={{
 						...smartButtonProps,
 						_label: 'Disabled Button',
 					}}
+					_icons={icons}
 				></KolInputText>
 			</div>
 		</>

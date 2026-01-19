@@ -10,4 +10,15 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+
+	.kol-input-number {
+		input {
+			appearance: textfield;
+			text-align: right;
+
+			&::-webkit-inner-spin-button {
+				display: none;
+			}
+		}
+	}
 }

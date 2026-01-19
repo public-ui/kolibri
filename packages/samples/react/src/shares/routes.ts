@@ -9,6 +9,7 @@ import { BUTTON_ROUTES } from '../components/button/routes';
 import { CARD_ROUTES } from '../components/card/routes';
 import { COMBOBOX_ROUTES } from '../components/combobox/routes';
 import { DETAILS_ROUTES } from '../components/details/routes';
+import { DIALOG_ROUTES } from '../components/dialog/routes';
 import { DRAWER_ROUTES } from '../components/drawer/routes';
 import { FORM_ROUTES } from '../components/form/routes';
 import { HANDOUT_ROUTES } from '../components/handout/routes';
@@ -64,6 +65,7 @@ export const ROUTES: Routes = {
 	...CARD_ROUTES,
 	...COMBOBOX_ROUTES,
 	...DETAILS_ROUTES,
+	...DIALOG_ROUTES,
 	...DRAWER_ROUTES,
 	...FORM_ROUTES,
 	...HEADING_ROUTES,
@@ -89,7 +91,6 @@ export const ROUTES: Routes = {
 	...POPOVER_BUTTON_ROUTES,
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
-	...SELECT_ROUTES,
 	...SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,
 	...SPIN_ROUTES,

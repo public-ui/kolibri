@@ -10,14 +10,11 @@ on:
       - 'packages/tools/mcp/**'
       - 'packages/components/**'
   pull_request:
-    branches:
-      - develop
-      - release/*
     paths:
       - '.github/workflows/mcp-vercel.yml'
+      - 'packages/components/**'
       - 'packages/samples/react/**'
       - 'packages/tools/mcp/**'
-      - 'packages/components/**'
   workflow_dispatch:
 
 concurrency:
@@ -34,26 +31,61 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_MCP_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       - name: Setup pnpm workspace
         uses: ./.github/actions/pnpm-setup
 
-      - name: Build MCP package with all samples
+      - name: Build MCP dependencies
+        run: |
+          echo "🧱 Building MCP workspace dependencies..."
+          pnpm --filter @public-ui/mcp run build:deps
+
+      - name: Build MCP package
+        run: |
+          echo "🔨 Building MCP package..."
+          pnpm --filter @public-ui/mcp build
+
+      - name: Verify MCP build artifacts
         working-directory: packages/tools/mcp
         run: |
-          echo "🔨 Building MCP package with embedded samples..."
-          pnpm build
           echo "📊 Checking built artifacts..."
-          echo "Sample files generated:"
-          ls -la dist/samples.* || echo "No sample files found!"
+          echo "Dist directory contents:"
+          ls -la dist/ || echo "No dist directory found!"
+          echo ""
+          echo "Checking for required files:"
+          test -f dist/data.mjs && echo "✅ dist/data.mjs exists" || echo "❌ dist/data.mjs missing"
+          test -f dist/search.mjs && echo "✅ dist/search.mjs exists" || echo "❌ dist/search.mjs missing"
+          test -f dist/mcp.mjs && echo "✅ dist/mcp.mjs exists" || echo "❌ dist/mcp.mjs missing"
+          test -f shared/sample-index.json && echo "✅ shared/sample-index.json exists" || echo "❌ shared/sample-index.json missing"
+          echo ""
+          echo "Sample index stats:"
+          jq '.entries | length' shared/sample-index.json || echo "Could not read sample-index.json"
+          echo ""
           echo "API directory:"
           ls -la api/ || echo "No API directory found!"
-          echo "Total samples in dist/samples.json:"
-          jq '.entries | length' dist/samples.json || echo "Could not count samples"
+      - name: Strip workspace-only dependencies for Vercel
+        working-directory: packages/tools/mcp
+        run: |
+          echo "🧹 Preparing package.json for Vercel..."
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const pkgPath = path.resolve('package.json');
+          const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+
+          if (pkg.dependencies && pkg.dependencies['@public-ui/components']) {
+            console.log('Removing @public-ui/components dependency before deployment');
+            delete pkg.dependencies['@public-ui/components'];
+            fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
+          } else {
+            console.log('No @public-ui/components dependency found; nothing to strip.');
+          }
+          NODE
+          pnpm exec prettier --write package.json
       - name: Deploy to Vercel (production)
         id: deploy_prod
         if: github.ref == 'refs/heads/release/3' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')

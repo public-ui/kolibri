@@ -1,25 +1,17 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
+import { Component, h, Host, Method, Prop } from '@stencil/core';
 
 import type {
-	DisabledPropType,
 	FocusableElement,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
 	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
-	MultiplePropType,
 	NamePropType,
 	OptionsWithOptgroupPropType,
-	RequiredPropType,
 	RowsPropType,
-	SelectAPI,
-	SelectStates,
+	SelectProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
@@ -27,12 +19,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
-import { nonce } from '../../utils/dev.utils';
-import { propagateSubmitEventToForm } from '../form/controller';
-import { SelectController } from './controller';
+import { KolSelectWcTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -44,91 +31,63 @@ import { SelectController } from './controller';
 	},
 	shadow: true,
 })
-export class KolSelect implements SelectAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolSelectElement;
-	private selectRef?: HTMLSelectElement;
+export class KolSelect implements SelectProps, FocusableElement {
+	private selectWcRef?: HTMLKolSelectWcElement;
 
-	private readonly catchRef = (ref?: HTMLSelectElement) => {
-		this.selectRef = ref;
+	private readonly catchRef = (ref?: HTMLKolSelectWcElement) => {
+		this.selectWcRef = ref;
 	};
 
 	/**
-	 * Returns the current value.
+	 * Returns the selected values.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
-		if (this._multiple) {
-			return this.state._value;
-		} else {
-			return Array.isArray(this.state._value) && this.state._value.length > 0 ? this.state._value[0] : this.state._value;
-		}
+		return this.selectWcRef?.getValue();
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.selectRef?.focus();
-	}
-
-	private getFormFieldProps(): FormFieldStateWrapperProps {
-		return {
-			state: this.state,
-			class: clsx('kol-form-field-select', {
-				'kol-form-field--has-value': this.state._hasValue,
-			}),
-			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.selectRef?.focus(),
-			alert: this.showAsAlert(),
-		};
-	}
-
-	private getSelectProps(): SelectStateWrapperProps {
-		return {
-			ref: this.catchRef,
-			state: this.state,
-			...this.controller.onFacade,
-			onInput: this.onInput.bind(this),
-			onChange: this.onChange.bind(this),
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
-		};
+	public async focus() {
+		return Promise.resolve(this.selectWcRef?.focus());
 	}
 
 	public render(): JSX.Element {
 		return (
-			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
-					<form
-						onSubmit={(event) => {
-							event.preventDefault();
-							propagateSubmitEventToForm({
-								form: this.host,
-								ref: this.selectRef,
-							});
-						}}
-					>
-						<input type="submit" hidden />
-						<KolSelectStateWrapperFc {...this.getSelectProps()} />
-					</form>
-				</KolInputContainerFc>
-			</KolFormFieldStateWrapperFc>
+			<Host class="kol-select">
+				<KolSelectWcTag
+					ref={this.catchRef}
+					_accessKey={this._accessKey}
+					_disabled={this._disabled}
+					_hideLabel={this._hideLabel}
+					_hint={this._hint}
+					_icons={this._icons}
+					_id={this._id}
+					_label={this._label}
+					_msg={this._msg}
+					_multiple={this._multiple}
+					_name={this._name}
+					_on={this._on}
+					_options={this._options}
+					_required={this._required}
+					_rows={this._rows}
+					_shortKey={this._shortKey}
+					_syncValueBySelector={this._syncValueBySelector}
+					_tabIndex={this._tabIndex}
+					_tooltipAlign={this._tooltipAlign}
+					_touched={this._touched}
+					_value={this._value}
+				>
+					<slot name="expert" slot="expert"></slot>
+				</KolSelectWcTag>
+			</Host>
 		);
 	}
 
-	private readonly controller: SelectController;
-
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -194,7 +153,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Options the user can choose from.
 	 */
 	@Prop() public _options!: OptionsWithOptgroupPropType;
 
@@ -210,7 +169,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
-	 * Defines how many rows of options should be visible at the same time.
+	 * Maximum number of visible rows of the element.
 	 */
 	@Prop() public _rows?: RowsPropType;
 
@@ -237,158 +196,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
-
-	@State() public state: SelectStates = {
-		_hasValue: false,
-		_hideMsg: false,
-		_id: `id-${nonce()}`,
-		_label: '', // ⚠ required
-		_multiple: false,
-		_options: [],
-		_value: [],
-	};
-
-	@State() private inputHasFocus = false;
-
-	public constructor() {
-		this.controller = new SelectController(this, 'select', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
-	}
-
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_disabled')
-	public validateDisabled(value?: DisabledPropType): void {
-		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_hideMsg')
-	public validateHideMsg(value?: HideMsgPropType): void {
-		this.controller.validateHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public validateHideLabel(value?: HideLabelPropType): void {
-		this.controller.validateHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public validateHint(value?: HintPropType): void {
-		this.controller.validateHint(value);
-	}
-
-	@Watch('_icons')
-	public validateIcons(value?: IconsHorizontalPropType): void {
-		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		this.controller.validateLabel(value);
-	}
-
-	@Watch('_msg')
-	public validateMsg(value?: Stringified<MsgPropType>): void {
-		this.controller.validateMsg(value);
-	}
-
-	@Watch('_multiple')
-	public validateMultiple(value?: MultiplePropType): void {
-		this.controller.validateMultiple(value);
-	}
-
-	@Watch('_name')
-	public validateName(value?: string): void {
-		this.controller.validateName(value);
-	}
-
-	@Watch('_on')
-	public validateOn(value?: InputTypeOnDefault): void {
-		this.controller.validateOn(value);
-	}
-
-	@Watch('_options')
-	public validateOptions(value?: OptionsWithOptgroupPropType): void {
-		this.controller.validateOptions(value);
-	}
-
-	@Watch('_required')
-	public validateRequired(value?: RequiredPropType): void {
-		this.controller.validateRequired(value);
-	}
-
-	@Watch('_rows')
-	public validateRows(value?: RowsPropType): void {
-		this.controller.validateRows(value);
-	}
-
-	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		this.controller.validateShortKey(value);
-	}
-
-	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.controller.validateSyncValueBySelector(value);
-	}
-
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		this.controller.validateTabIndex(value);
-	}
-
-	@Watch('_touched')
-	public validateTouched(value?: boolean): void {
-		this.controller.validateTouched(value);
-	}
-
-	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
-		this.controller.validateValue(value);
-	}
-
-	public componentWillLoad(): void {
-		this._touched = this._touched === true;
-		this.controller.componentWillLoad();
-
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-	}
-
-	private onInput(event: Event): void {
-		const selectedValues = Array.from(this.selectRef?.options || [])
-			.filter((option) => option.selected)
-			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
-
-		if (this._multiple) {
-			this._value = selectedValues;
-			this.controller.onFacade.onInput(event, true, selectedValues);
-		} else {
-			const singleValue: StencilUnknown = selectedValues.length > 0 ? selectedValues[0] : undefined;
-			this._value = singleValue;
-			this.controller.onFacade.onInput(event, true, singleValue);
-		}
-	}
-
-	private onChange(event: Event): void {
-		if (this._multiple) {
-			this.controller.onFacade.onChange(event, this._value as StencilUnknown[]);
-		} else {
-			this.controller.onFacade.onChange(event, this._value as StencilUnknown);
-		}
-	}
 }

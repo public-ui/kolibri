@@ -1,9 +1,8 @@
 {
 	"packages": [
-		"packages/adapters/angular/v17",
-		"packages/adapters/angular/v18",
 		"packages/adapters/angular/v19",
 		"packages/adapters/angular/v20",
+		"packages/adapters/angular/v21",
 		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",
@@ -15,13 +14,15 @@
 		"packages/adapters/vue",
 		"packages/components",
 		"packages/samples/react",
-		"packages/schema",
+		"packages/samples/presentation",
 		"packages/themes/default",
 		"packages/themes/ecl",
 		"packages/themes",
+		"packages/tools/hydrate-server",
 		"packages/tools/kolibri-cli",
+		"packages/tools/mcp",
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "4.0.0-alpha.4"
+	"version": "4.0.1"
 }

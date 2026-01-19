@@ -1,10 +1,10 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react-v19';
 
-import { THEME_OPTIONS } from '../shares/theme';
-
+import type { SelectOption } from '@public-ui/components';
+import type { Theme } from '../shares/theme';
 import type { Routes } from '../shares/types';
 import Navigation from './Navigation';
 
@@ -37,6 +37,7 @@ const BuildInformation: FC<BuildInformationProps> = ({ buildDate, commitHash }) 
 
 type Props = {
 	version: string;
+	themes: Theme[];
 	theme: string;
 	routes: Routes;
 	routeList: string[];
@@ -46,7 +47,7 @@ type Props = {
 	onThemeChange: (theme: unknown) => void;
 };
 
-export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, buildDate, commitHash, onThemeChange }) => {
+export const Sidebar: FC<Props> = ({ version, themes, theme, routes, routeList, sample, buildDate, commitHash, onThemeChange }) => {
 	/* KolSelect calls onChange initially by design - work around this with a state variable  */
 
 	const getIndexOfSample = () => routeList.indexOf(sample);
@@ -68,6 +69,18 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 		location.replace(`#${routeList[nextIndex]}`);
 	};
 
+	const themeOption = useMemo<SelectOption<string>[]>(
+		() =>
+			themes.map(
+				(t) =>
+					({
+						label: t.name,
+						value: t.key,
+					}) satisfies SelectOption<string>,
+			),
+		[themes],
+	);
+
 	return (
 		<aside className="app-sidebar p-4">
 			<div className="scrollable-container-wrapper">
@@ -76,14 +89,14 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 					<KolVersion _label={version}></KolVersion>
 				</div>
 				<BuildInformation buildDate={buildDate} commitHash={commitHash} />
-				<KolSelect _label="Theme" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
+				<KolSelect _label="Theme" _options={themeOption} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
 				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
 				<div className="flex flex-justify-between flex-items-center mt">
-					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
+					<KolButton _icons="kolicon-chevron-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
 					<span className="text-base text-center">
 						{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
 					</span>
-					<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
+					<KolButton _icons="kolicon-chevron-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
 				</div>
 				<Navigation routes={routes} />
 			</div>

@@ -9,9 +9,11 @@ import buttonCss from './components/button.scss';
 import cardCss from './components/card.scss';
 import comboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
+import dialogCss from './components/dialog.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
+import iconCss from './components/icon.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -24,7 +26,6 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
-import modalCss from './components/modal.scss';
 import multiSelectCss from './components/multi-select.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
@@ -56,9 +57,11 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': comboboxCss,
 	'KOL-DETAILS': detailsCss,
+	'KOL-DIALOG': dialogCss,
 	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
+	'KOL-ICON': iconCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-DATE': inputDateCss,
@@ -71,7 +74,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-INPUT-TEXT': inputTextCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
-	'KOL-MODAL': modalCss,
 	'KOL-MULTI-SELECT': multiSelectCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,

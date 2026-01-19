@@ -48,9 +48,7 @@ import { InputTextController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputTextElement;
@@ -87,6 +85,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -108,9 +108,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	/**
@@ -168,7 +167,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -202,7 +200,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private readonly controller: InputTextController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -346,7 +344,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop() public _type?: InputTextTypePropType = 'text';
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 

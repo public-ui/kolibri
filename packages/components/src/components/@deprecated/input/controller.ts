@@ -254,6 +254,16 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	protected onKeyDown(event: KeyboardEvent): void {
+		// Event handling
+		this.emitEvent(KolEvent.keydown);
+
+		// Callback
+		if (typeof this.component._on?.onKeyDown === 'function') {
+			this.component._on.onKeyDown(event);
+		}
+	}
+
 	public addValueChangeListener(listener: ValueChangeListener) {
 		this.valueChangeListeners.push(listener);
 	}
@@ -272,6 +282,7 @@ export class InputController extends ControlledInputController implements Watche
 		onClick: this.onClick.bind(this),
 		onFocus: this.onFocus.bind(this),
 		onInput: this.onInput.bind(this),
+		onKeyDown: this.onKeyDown.bind(this),
 	};
 
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {

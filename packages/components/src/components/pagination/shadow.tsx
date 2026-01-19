@@ -91,7 +91,7 @@ export class KolPagination implements PaginationProps {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Defines the maximum number of pages.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max!: MaxPropType;
 }

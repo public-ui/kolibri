@@ -27,7 +27,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	placeholder: string;
 	value: StencilUnknown;
-	hideClearButton: boolean;
+	hasClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
@@ -49,7 +49,7 @@ type RequiredStates = {
 type OptionalStates = {
 	on: InputTypeOnDefault;
 	placeholder: string;
-	hideClearButton: boolean;
+	hasClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &

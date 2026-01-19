@@ -9,6 +9,7 @@ export * from './button-link';
 export * from './card';
 export * from './combobox';
 export * from './details';
+export * from './dialog';
 export * from './drawer';
 export * from './form';
 export * from './heading';

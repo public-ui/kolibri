@@ -15,7 +15,8 @@ const OPTIONS = [
 ];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
 const fillAction: FillAction = async (page) => {
-	await page.getByRole('button').click();
+	const input = page.locator('input.kol-single-select__input');
+	await input.click();
 	await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 };
 
@@ -38,7 +39,8 @@ test.describe(COMPONENT_NAME, () => {
 		test('should open listbox on button click and close on ESC', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await expect(page.getByRole('listbox')).toBeVisible();
 
@@ -50,19 +52,23 @@ test.describe(COMPONENT_NAME, () => {
 		test('should move focus with arrow keys and select with Enter', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value);
+			const value = await page
+				.locator('kol-single-select')
+				.evaluate<string | null>((element) => (element as HTMLKolSingleSelectElement)._value as string | null);
 			expect(value).toBe('S');
 		});
 
 		test('should filter options when typing and select the filtered one', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
-			await page.getByRole('button').click();
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.locator('input.kol-single-select__input').focus();
 			await page.locator('input.kol-single-select__input').fill('We');
@@ -73,15 +79,16 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page.locator('kol-single-select').evaluate((el: HTMLKolInputDateElement) => el._value);
+			const value = await page
+				.locator('kol-single-select')
+				.evaluate<string | null>((element) => (element as HTMLKolSingleSelectElement)._value as string | null);
 			expect(value).toBe('W');
 		});
 
 		test('should clear the selection when clear button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
-			await page.getByRole('button').click();
-
 			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 
@@ -96,22 +103,31 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(input).toHaveValue('');
 		});
 
-		test('should not render clear button when _hideClearButton is true', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _hideClearButton="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
+			// Use setContent like other tests to ensure proper setup
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
-			await page.getByRole('button').click();
+			// Set _hasClearButton to false after component is loaded
+			await page.evaluate(() => {
+				const el = document.querySelector('kol-single-select') as HTMLElement & { _hasClearButton: boolean };
+				el._hasClearButton = false;
+			});
+
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+
+			// Select a value to potentially trigger clear button
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+			await expect(input).toHaveValue(TEST_LABEL);
 
-			if (page.locator('input.kol-single-select__input')) await expect(page.locator('input.kol-single-select__input')).toHaveValue(TEST_LABEL);
 			const clearButton = page.getByTestId('single-select-delete');
 			await expect(clearButton).not.toBeVisible();
 		});
 
 		test('should select option with SPACE key', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
-			await page.getByRole('button').click();
-
 			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await input.click();
 			await input.press('ArrowDown');

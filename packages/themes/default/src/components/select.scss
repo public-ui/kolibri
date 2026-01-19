@@ -1,29 +1,5 @@
-@use '../@shared/input-core' as *;
-@use '../mixins/to-rem' as *;
+@use '../mixins/select' as *;
 
 @layer kol-theme-component {
-	.kol-select {
-		border: none;
-
-		&[multiple] {
-			overflow: auto;
-		}
-
-		&__option {
-			border-radius: var(--border-radius);
-			margin: to-rem(1) 0;
-
-			&:active:not(:disabled),
-			&:checked:not(:disabled),
-			&:focus:not(:disabled),
-			&:hover:not(:disabled) {
-				color: var(--color-light);
-				background-color: var(--color-primary-variant);
-			}
-		}
-
-		&:not([multiple]) &__option {
-			padding: 0.5em;
-		}
-	}
+	@include kol-select();
 }

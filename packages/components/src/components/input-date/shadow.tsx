@@ -46,9 +46,7 @@ import { InputDateController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputDateElement;
@@ -73,9 +71,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	/**
@@ -140,16 +137,21 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		if (!this.inputRef || typeof window === 'undefined' || typeof window.getComputedStyle !== 'function') {
 			return false;
 		}
-		const computedStyle = window.getComputedStyle(this.inputRef, 'focus-visible');
-		return computedStyle.getPropertyValue('content') === 'native-icon-focused';
+		const computedStyle = window.getComputedStyle(this.inputRef);
+		return computedStyle.content.includes('native-icon-focused');
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !this.isNativeCalendarIconFocused()) {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.inputRef,
 			});
+		}
+		if (this.state._readOnly && event.code === 'Space') {
+			event.preventDefault();
 		}
 	};
 
@@ -160,7 +162,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -191,7 +192,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	private readonly controller: InputDateController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -241,7 +242,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: Iso8601 | Date;
 
@@ -320,7 +321,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _type: InputDateTypePropType = 'date';
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 

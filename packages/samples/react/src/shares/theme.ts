@@ -1,37 +1,24 @@
-import { SelectOption } from '@public-ui/components';
-
-export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'unstyled'] as const;
-export type Theme = (typeof THEMES)[number];
-export type ThemeAndUnstyled = Theme | 'unstyled';
-
-// const drafts: ThemeAndUnstyled[] = ['ecl-ec', 'ecl-eu'];
-
-// export const isDraftTheme = (theme: ThemeAndUnstyled) => drafts.includes(theme);
-
-export const isTheme = (value: unknown) => {
-	return THEMES.find((theme) => theme === value) !== undefined;
+export type Theme = {
+	name: string;
+	key: string;
 };
 
-export type Store = {
-	darkMode: boolean;
-	theme: ThemeAndUnstyled;
+export const UNSTYLED_THEME: Theme = {
+	name: 'Unstyled (Uncolored)',
+	key: 'unstyled',
 };
 
-export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
+export const PUBLIC_THEMES: Theme[] = [
 	{
-		label: 'Unstyled (Uncolored)',
-		value: 'unstyled',
+		name: 'Default (Tested)',
+		key: 'default',
 	},
 	{
-		label: 'Default (Tested)',
-		value: 'default',
+		name: 'European Commission (in progress)',
+		key: 'ecl-ec',
 	},
 	{
-		label: 'European Commission (in progress)',
-		value: 'ecl-ec',
-	},
-	{
-		label: 'European Union (in progress)',
-		value: 'ecl-eu',
+		name: 'European Union (in progress)',
+		key: 'ecl-eu',
 	},
 ];

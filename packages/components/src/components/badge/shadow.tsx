@@ -33,6 +33,8 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 				ref={this.catchSmartButtonRef}
 				class="kol-badge__smart-button"
 				_ariaControls={this.id}
+				_ariaDescription={props._ariaDescription}
+				_buttonVariant={props._variant}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
 				_hideLabel={true}
@@ -41,8 +43,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 				_label={props._label}
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
-				_buttonVariant={props._variant}
-			></KolButtonWcTag>
+			/>
 		);
 	}
 
@@ -50,8 +51,8 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus(): Promise<void> {
-		await this.smartButtonRef?.kolFocus();
+	public async focus(): Promise<void> {
+		return Promise.resolve(this.smartButtonRef?.focus());
 	}
 
 	public render(): JSX.Element {

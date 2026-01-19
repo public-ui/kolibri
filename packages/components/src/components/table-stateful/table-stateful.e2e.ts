@@ -1,12 +1,19 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableDataType } from '../../schema';
-import { KolEvent } from '../../utils/events';
+import type { KoliBriTableDataType, TableHeaderCells } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];
-const HEADERS = {
-	horizontal: [[{ key: 'id', label: 'ID' }]],
+const HEADERS: TableHeaderCells = {
+	horizontal: [
+		[
+			{
+				key: 'id',
+				label: 'ID',
+				width: 100,
+			},
+		],
+	],
 };
 
 type Data = (typeof DATA)[0];
@@ -25,7 +32,6 @@ test.describe('kol-table-stateful', () => {
 					selectedKeys: [],
 				};
 			});
-			await page.waitForChanges();
 		});
 
 		test.describe('Callbacks', () => {
@@ -47,15 +53,15 @@ test.describe('kol-table-stateful', () => {
 		});
 
 		test.describe('DOM events', () => {
-			test('it emits selectionChange when the selection changes', async ({ page }) => {
+			test('it emits selectionchange when the selection changes', async ({ page }) => {
 				const kolTableStateful = page.locator('kol-table-stateful');
-				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement, KolEvent) => {
+				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement) => {
 					return new Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>((resolve) => {
-						element.addEventListener(KolEvent.selectionChange, (event: Event) => {
+						element.addEventListener('selectionchange', (event: Event) => {
 							resolve((event as CustomEvent).detail as KoliBriTableDataType[] | KoliBriTableDataType | null);
 						});
 					});
-				}, KolEvent);
+				});
 				await kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`).check();
 
 				await expect(callbackPromise).resolves.toEqual([DATA[0]]);
@@ -73,7 +79,6 @@ test.describe('kol-table-stateful', () => {
 			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
 				el._selection = { label: (row: KoliBriTableDataType) => `Selection for ${(row.id as number).toString()}`, keyPropertyName: 'id', selectedKeys: [1002] };
 			});
-			await page.waitForChanges();
 			const got = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.getSelection());
 			expect(got).toEqual([{ id: 1002 }]);
 		});

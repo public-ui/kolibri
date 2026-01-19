@@ -6,25 +6,26 @@ import { SampleDescription } from '../SampleDescription';
 
 const tabs = [
 	{
-		_icons: 'codicon codicon-pie-chart',
-		_label: 'First Tab',
-		_hideLabel: true,
+		_icons: 'kolicon-check',
+		_label: 'First tab',
+		_on: {
+			onSelect: (event: Event) => {
+				console.log('First tab selected', event);
+			},
+		},
 	},
 	{
-		_icons: 'codicon codicon-calendar',
+		_icons: 'kolicon-link-external',
 		_label: 'Second Tab',
-		_hideLabel: true,
 	},
 	{
 		_disabled: true,
-		_icons: 'codicon codicon-briefcase',
+		_icons: 'kolicon-house',
 		_label: 'Disabled Tab',
-		_hideLabel: true,
 	},
 	{
-		_icons: 'codicon codicon-telescope',
-		_label: 'Last Tab',
-		_hideLabel: true,
+		_icons: 'kolicon-eye',
+		_label: 'Last tab',
 	},
 ];
 export const TabsIconsOnly: FC = () => (

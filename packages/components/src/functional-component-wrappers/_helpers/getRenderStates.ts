@@ -1,4 +1,4 @@
-import type { MsgPropType, Stringified, TouchedPropType } from '../../schema';
+import { getMsgType, type MsgPropType, type Stringified, type TouchedPropType } from '../../schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -13,6 +13,7 @@ export const getRenderStates = (state: {
 	_id: string;
 	_touched?: TouchedPropType;
 	_hideMsg?: boolean;
+	_hasCounter?: boolean;
 }): {
 	hasError: boolean;
 	hasHint: boolean;
@@ -20,7 +21,7 @@ export const getRenderStates = (state: {
 } => {
 	const msg = state._msg;
 	const description = typeof msg === 'string' ? msg : msg?._description;
-	const type = typeof msg === 'string' ? 'error' : (msg?._type ?? 'error');
+	const type = getMsgType(msg);
 	const hasMessage = Boolean(description && description.length > 0);
 	const isMessageValidError = type === 'error' && hasMessage;
 	const hasError = isMessageValidError && state._touched === true;
@@ -30,8 +31,16 @@ export const getRenderStates = (state: {
 	if (hasMessage && !state._hideMsg) {
 		ariaDescribedBy.push(`${state._id}-msg`);
 	}
-	if (hasHint) {
+	if (hasHint === true) {
 		ariaDescribedBy.push(`${state._id}-hint`);
+	}
+
+	if (state._hasCounter) {
+		ariaDescribedBy.push(`${state._id}-counter`);
+	}
+
+	if (hasError === true) {
+		ariaDescribedBy.push(`${state._id}-error`);
 	}
 	return { hasError, hasHint, ariaDescribedBy };
 };

@@ -1,7 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 import type {
 	ButtonVariantPropType,
-	LinkVariantPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaControls,
@@ -15,10 +14,10 @@ import type {
 	PropHideLabel,
 	PropHref,
 	PropIcons,
+	PropInline,
 	PropLabelWithExpertSlot,
 	PropLinkOnCallbacks,
 	PropLinkTarget,
-	PropLinkVariant,
 	PropShortKey,
 	PropTooltipAlign,
 } from '../props';
@@ -40,10 +39,10 @@ export type OptionalProps = {
 	PropDownload &
 	PropHideLabel &
 	PropIcons &
+	PropInline &
 	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
-	PropLinkVariant &
 	PropShortKey &
 	PropTooltipAlign;
 
@@ -53,7 +52,6 @@ type OptionalStates = { ariaCurrent: string } & PropAriaExpanded &
 	PropCustomClass &
 	Omit<RequiredProps & OptionalProps, keyof RequiredStates> & {
 		buttonVariant: ButtonVariantPropType;
-		linkVariant: LinkVariantPropType;
 	};
 
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;

@@ -1,0 +1,29 @@
+{
+	"name": "@public-ui/icons",
+	"private": true,
+	"type": "module",
+	"devDependencies": {
+		"oslllo-svg-fixer": "5.0.0",
+		"rimraf": "6.1.2",
+		"serve": "14.2.5",
+		"svgtofont": "6.5.0"
+	},
+	"scripts": {
+		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
+		"delete-unused": "rimraf ../components/assets/kolicons/react && rimraf ../components/assets/kolicons/vue && rimraf ../components/assets/kolicons/kolicons.symbol.svg && rimraf ../components/assets/kolicons/style.less && rimraf ../components/assets/kolicons/style.module.less && rimraf ../components/assets/kolicons/style.scss && rimraf ../components/assets/kolicons/style.styl",
+		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ../components/assets/kolicons && pnpm delete-unused",
+		"prebuild": "rimraf ../components/assets/kolicons && rimraf ./svg-fixed && mkdir svg-fixed",
+		"start": "serve"
+	},
+	"svgtofont": {
+		"classNamePrefix": "kolicon",
+		"css": {
+			"fileName": "style"
+		},
+		"styleTemplates": "./styles",
+		"fontName": "kolicons",
+		"svgicons2svgfont": {
+			"fontHeight": 10000
+		}
+	}
+}

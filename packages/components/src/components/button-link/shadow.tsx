@@ -11,8 +11,8 @@ import type {
 	FocusableElement,
 	IconsPropType,
 	IdPropType,
+	InlinePropType,
 	LabelWithExpertSlotPropType,
-	LinkVariantPropType,
 	NamePropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -25,9 +25,7 @@ import type {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	private buttonWcRef?: HTMLKolButtonWcElement;
@@ -49,8 +47,8 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
 	public render(): JSX.Element {
@@ -66,8 +64,8 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
 				_id={this._id}
+				_inline={this._inline}
 				_label={this._label}
-				_linkVariant={this._variant}
 				_name={this._name}
 				_on={this._on}
 				_shortKey={this._shortKey}
@@ -82,7 +80,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -133,14 +131,14 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	@Prop() public _id?: IdPropType;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = true;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: LinkVariantPropType = 'inline';
 
 	/**
 	 * Defines the technical name of an input field.
@@ -181,7 +179,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Defines the value that the button emits on click.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
 }

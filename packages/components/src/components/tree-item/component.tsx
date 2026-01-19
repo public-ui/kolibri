@@ -11,7 +11,7 @@ import { nonce } from '../../utils/dev.utils';
 	shadow: false,
 })
 export class KolTreeItemWc implements TreeItemAPI {
-	private linkElement!: HTMLKolLinkWcElement;
+	private linkElement?: HTMLKolLinkWcElement;
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
@@ -49,7 +49,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 								>
 									<KolIconTag
 										class="kol-tree-item__toggle-button-icon"
-										_icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
+										_icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
 										_label={'' /* Label deliberately left empty */}
 									/>
 								</span>
@@ -145,13 +145,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 	/**
 	 * Focuses the link element.
 	 */
-	@Method() async focusLink() {
-		await this.linkElement.kolFocus();
+	@Method() async focus() {
+		return Promise.resolve(this.linkElement?.focus());
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.linkElement.kolFocus();
+		await this.linkElement?.focus();
 		await this.expand();
 	}
 
@@ -171,7 +171,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private async handleCollapseClick(event: MouseEvent) {
 		event.preventDefault();
-		this.linkElement.focus();
+		await this.linkElement?.focus();
 		await this.collapse();
 	}
 

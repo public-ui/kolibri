@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 9191;
+const PORT = parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '9191', 10);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -43,8 +43,9 @@ export default defineConfig({
 	],
 
 	webServer: {
-		command: `npm run start -- --no-open --port=${PORT}`,
+		command: `node ./playwright-serve.mjs`,
 		url: `http://localhost:${PORT}`,
 		reuseExistingServer: !process.env.CI,
+		timeout: 120000,
 	},
 });

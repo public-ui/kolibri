@@ -64,7 +64,6 @@ const config = {
 		'@stencil-community/props-must-be-public': 'off',
 		'@stencil-community/props-must-be-readonly': 'off',
 		'@stencil-community/render-returns-host': 'off',
-		'@stencil-community/required-jsdoc': 'off',
 		'@stencil-community/reserved-member-names': 'off',
 		'@stencil-community/single-export': 'off',
 		'@stencil-community/strict-mutable': 'off',

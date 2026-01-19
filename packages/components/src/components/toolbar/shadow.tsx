@@ -42,7 +42,7 @@ export class KolToolbar implements ToolbarAPI {
 		const catchRef = (el?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
 			if (el) this.indexToElement.set(index, el);
 		};
-		return '_href' in element ? (
+		return element.type === 'link' ? (
 			<KolLinkWcTag {...element} {...props} ref={catchRef}></KolLinkWcTag>
 		) : (
 			<KolButtonWcTag {...element} {...props} ref={catchRef}></KolButtonWcTag>
@@ -133,7 +133,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (this.state._items?.[nextIndex]?._disabled) return;
 
 		this.currentIndex = nextIndex;
-		void this.getCurrentToolbarItem(nextIndex)?.kolFocus();
+		void this.getCurrentToolbarItem(nextIndex)?.focus();
 	}
 
 	/**

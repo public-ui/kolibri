@@ -5,6 +5,7 @@
 
 @layer kol-component {
 	@include kol-button-styles('kol-link');
+	@include kol-button-styles('kol-button');
 
 	.kol-toolbar {
 		display: flex;
@@ -14,6 +15,10 @@
 		&--orientation-vertical {
 			flex-direction: column;
 			align-items: stretch;
+
+			.kol-span {
+				align-items: flex-start;
+			}
 		}
 
 		&:focus-within {

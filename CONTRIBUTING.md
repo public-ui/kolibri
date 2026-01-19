@@ -26,7 +26,7 @@ Please do not create issue tickets for general support questions. We want to use
 Instead, we recommend first checking [Stack Overflow](https://stackoverflow.com/questions/tagged/kolibri) to see whether someone else has already solved the question or problem. You can also create new questions with the tag “hummingbird”.
 To save your time and ours, we will close all general questions in the ticket system and redirect those asking to Stack Overflow.
 
-If you would like to contact us, please send us an email to [kolibri@itzbund.de](kolibri@itzbund.de).
+If you would like to contact us, please send us an email to [kolibri@itzbund.de](mailto:kolibri@itzbund.de).
 
 ## Report an error
 
@@ -61,6 +61,8 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 11. Navigate to the desired package in our monorepo
 12. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
 13. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
+
+Run ESLint across the repository with `pnpm lint` (or `pnpm lint:eslint` to invoke ESLint directly); the configuration lives in `packages/*/eslint.config.cjs`. Formatting is handled by Prettier via `pnpm format`, so run format first to keep ESLint focused on code-quality rules rather than style drift.
 
 ### VS Code Setup
 

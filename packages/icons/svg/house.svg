@@ -1,0 +1,10 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="100" fill="grey" />  
+
+  <rect x="0" y="45" width="100" height="60" fill="black" />
+
+  <path d="M -1 46 L 50 0 L 101 46"  fill="black"/>
+
+  <rect x="40" y="75" width="20" height="25" fill="grey" />  
+
+</svg>

@@ -8,15 +8,16 @@ export const LinkBasic: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				KolLink renders a link. This sample shows disabled links, links with hidden label and links with different CSS <code>display</code>-properties.
+				KolLink renders a link. This sample shows disabled links, links with hidden label, the boolean _inline property and links with different CSS{' '}
+				<code>display</code>-properties.
 			</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolLink _href="#/back-page" _label="Simple Link" _variant="standalone" />
-			<KolLink _disabled _href="#/back-page" _label="Simple Link (disabled)" _variant="standalone" />
-			<KolLink _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link" _variant="standalone" />
-			<KolLink _disabled _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link (disabled)" _variant="standalone" />
+			<KolLink _href="#/back-page" _inline={false} _label="Simple Link" />
+			<KolLink _disabled _href="#/back-page" _inline={false} _label="Simple Link (disabled)" />
+			<KolLink _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link" />
+			<KolLink _disabled _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link (disabled)" />
 			<p>
 				In this paragraph, a link is inserted that contains no additional attributes. <KolLink _href="#/back-page" _label="Simple Link" /> It is rendered by
 				default as a <strong>inline element</strong>.

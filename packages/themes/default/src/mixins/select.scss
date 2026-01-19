@@ -1,0 +1,84 @@
+@use '../@shared/input-core' as *;
+@use '../mixins/to-rem' as *;
+
+@mixin kol-select {
+	.kol-select {
+		border: none;
+
+		&[multiple] {
+			overflow: auto;
+		}
+
+		&__option {
+			border-radius: var(--border-radius);
+			margin: to-rem(1) 0;
+
+			&:active:not(:disabled),
+			&:checked:not(:disabled),
+			&:focus:not(:disabled),
+			&:hover:not(:disabled) {
+				color: var(--color-light);
+				background-color: var(--color-primary-variant);
+			}
+		}
+
+		&:not([multiple]) &__option {
+			padding: 0.5em;
+		}
+
+		&:not([multiple], [size]) {
+			height: to-rem(40);
+		}
+	}
+
+	.kol-input-container:has(:not(.kol-select[multiple])) {
+		position: relative;
+		padding: 0;
+		gap: 0;
+		grid-template-columns: auto max-content min-content;
+
+		.kol-input-container__adornment {
+			position: absolute;
+			top: to-rem(-2);
+
+			&--start {
+				left: 0;
+
+				> .kol-icon {
+					margin-left: to-rem(16);
+				}
+			}
+
+			&--end {
+				right: 0;
+
+				> .kol-icon {
+					margin-right: to-rem(16);
+				}
+			}
+		}
+
+		.kol-select {
+			// we use a transparent border to push the content inward, because padding does not move the select arrow icon inwards
+			border-left: to-rem(10) solid transparent;
+			border-right: to-rem(10) solid transparent;
+		}
+
+		&:has(.kol-input-container__adornment--start:not(:empty)) .kol-select {
+			border-left-width: to-rem(38);
+		}
+
+		&:has(.kol-input-container__adornment--end:not(:empty)) .kol-select {
+			border-right-width: to-rem(38);
+		}
+
+		&:has(.kol-input-container__adornment--end .kol-input-container__smart-button + .kol-input-container__icon) .kol-select {
+			border-right-width: to-rem(76);
+		}
+
+		.kol-input-container__container {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}

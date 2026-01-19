@@ -1,12 +1,14 @@
 @mixin kol-custom-suggestions-toggle {
 	.kol-custom-suggestions-toggle {
 		display: flex;
-		width: var(--a11y-min-size);
-		height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 		align-items: center;
+		justify-content: center;
+		cursor: default;
 
-		&:not(:disabled) {
-			cursor: pointer;
+		&.kol-custom-suggestions-toggle--disabled {
+			cursor: not-allowed;
 		}
 	}
 }

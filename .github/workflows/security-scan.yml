@@ -1,14 +1,6 @@
 name: Security Scan
 
 on:
-  pull_request:
-    branches:
-      - 'develop'
-      - 'release/*'
-  push:
-    branches:
-      - 'develop'
-      - 'release/*'
   workflow_dispatch:
     inputs:
       enable_audit:
@@ -29,22 +21,17 @@ on:
         default: false
 
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('workflow-{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('workflow-{0}-{1}', github.workflow, github.ref) }}
+  group: ${{ format('workflow-{0}-{1}', github.workflow, github.ref) }}
   cancel-in-progress: true
 
 jobs:
   targeted-scan:
     name: Security Scan
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'pull_request' ||
-      github.event_name == 'push' ||
-      github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
-          fetch-depth: 0
           persist-credentials: false
           ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
 

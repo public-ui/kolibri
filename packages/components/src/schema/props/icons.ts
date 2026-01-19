@@ -83,13 +83,13 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 					isString(value, 1) ||
 					(typeof value === 'object' &&
 						value !== null &&
-						(isString(value.left, 1) ||
+						(isString(value.left, 0) ||
 							isIcon(value.left) ||
-							isString(value.right, 1) ||
+							isString(value.right, 0) ||
 							isIcon(value.right) ||
-							isString(value.top, 1) ||
+							isString(value.top, 0) ||
 							isIcon(value.top) ||
-							isString(value.bottom, 1) ||
+							isString(value.bottom, 0) ||
 							isIcon(value.bottom)))
 				);
 			},

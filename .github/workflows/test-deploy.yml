@@ -5,6 +5,10 @@ on:
     branches:
       - 'develop'
       - 'release/*'
+    tags:
+      - latest
+      - v2-latest
+      - v1-latest
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
@@ -14,9 +18,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
@@ -33,7 +36,7 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}

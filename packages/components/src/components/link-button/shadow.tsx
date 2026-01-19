@@ -25,9 +25,7 @@ import type {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	private linkWcRef?: HTMLKolLinkWcElement;
@@ -40,8 +38,8 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.linkWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.linkWcRef?.focus());
 	}
 
 	public render(): JSX.Element {
@@ -71,7 +69,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 

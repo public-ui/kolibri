@@ -1,3 +1,3 @@
 export interface FocusableElement {
-	kolFocus(): Promise<void>;
+	focus(): Promise<void>;
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "4.0.0-alpha.4",
+	"version": "4.0.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -31,22 +31,24 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
+		"@axe-core/playwright": "4.11.0",
 		"@public-ui/sample-react": "workspace:*",
-		"axe-playwright": "2.2.2",
+		"axe-html-reporter": "2.2.11",
 		"portfinder": "1.0.38",
 		"serve": "14.2.5"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.28.4",
-		"@babel/plugin-syntax-import-attributes": "7.27.1",
-		"@babel/preset-env": "7.28.3",
-		"@playwright/test": "1.56.0",
+		"@babel/eslint-parser": "7.28.6",
+		"@babel/plugin-syntax-import-attributes": "7.28.6",
+		"@babel/preset-env": "7.28.6",
+		"@playwright/test": "1.57.0",
 		"eslint": "8.57.1",
-		"knip": "5.65.0",
-		"prettier": "3.6.2"
+		"knip": "5.80.2",
+		"prettier": "3.7.4",
+		"prettier-plugin-organize-imports": "4.3.0"
 	},
 	"peerDependencies": {
-		"@playwright/test": "1.56.0"
+		"@playwright/test": "1.57.0"
 	},
 	"files": [
 		"playwright.config.js",

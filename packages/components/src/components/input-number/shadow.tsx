@@ -1,4 +1,4 @@
-import type { JSX } from '@stencil/core';
+import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from 'clsx';
 
@@ -32,6 +32,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { KolIconFc } from '../../functional-components';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
@@ -44,9 +45,7 @@ import { InputNumberController } from './controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
@@ -69,9 +68,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {
@@ -111,6 +109,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -126,7 +126,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -151,10 +150,64 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		};
 	}
 
+	private getStepUpButton(): VNode | null {
+		if (this._disabled || this._readOnly) {
+			return null;
+		}
+
+		return (
+			<button
+				type="button"
+				tabIndex={-1}
+				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
+				data-testid="kol-input-number-step-up"
+				onClick={(event: MouseEvent): void => {
+					this.inputRef?.stepUp();
+					// Manually trigger onInput since stepUp() doesn't fire input events
+					const newValue = this.inputRef?.value;
+					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
+					this.inputRef?.focus();
+				}}
+				disabled={this._disabled || this._readOnly}
+			>
+				<KolIconFc icons="kolicon-plus" label="" />
+			</button>
+		);
+	}
+
+	private getStepDownButton(): VNode | null {
+		if (this._disabled || this._readOnly) {
+			return null;
+		}
+
+		return (
+			<button
+				type="button"
+				tabIndex={-1}
+				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
+				data-testid="kol-input-number-step-down"
+				onClick={(event: MouseEvent): void => {
+					this.inputRef?.stepDown();
+					// Manually trigger onInput since stepDown() doesn't fire input events
+					const newValue = this.inputRef?.value;
+					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					// Pass MouseEvent as Event - onInput handler accepts generic Event type
+					this.controller.onFacade.onInput(event, true, this._value);
+					this.inputRef?.focus();
+				}}
+				disabled={this._disabled || this._readOnly}
+			>
+				<KolIconFc icons="kolicon-minus" label="" />
+			</button>
+		);
+	}
+
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
+				<KolInputContainerFc state={this.state} startAdornment={this.getStepDownButton()} endAdornment={this.getStepUpButton()}>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
@@ -164,7 +217,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	private readonly controller: InputNumberController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -214,7 +267,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Defines the largest possible input value.
+	 * Defines the maximum value of the element.
 	 */
 	@Prop() public _max?: number | NumberString;
 
@@ -293,7 +346,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
 

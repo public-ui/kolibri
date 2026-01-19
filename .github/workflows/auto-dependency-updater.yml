@@ -5,7 +5,7 @@ env:
 
 on:
   schedule:
-    - cron: '0 2 * * 0'
+    - cron: '0 2 * * *' # Runs daily at 02:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -30,9 +30,8 @@ jobs:
     env:
       version: ${{ matrix.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
           ref: ${{ matrix.base }}
           persist-credentials: false
       - uses: actions/setup-node@v6
@@ -48,7 +47,7 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store
@@ -57,12 +56,13 @@ jobs:
 
       - name: Install
         run: pnpm i --no-frozen-lockfile
-      - name: Update dependencies
-        run: pnpm run update
+      - name: Update dependencies (minor)
+        run: |
+          pnpm ncu:minor
+          # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
+          pnpm ncu:minor
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
       - name: Fix format
         run: pnpm -r format -w
 
@@ -77,7 +77,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.verify-changed-files.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           base: ${{ matrix.base }}
           branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
@@ -86,11 +86,29 @@ jobs:
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
 
-      - name: Quality Checks
+      - name: Run audit
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm audit --audit-level high
+      - name: Run build
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm build
+      - name: Run format
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm format
+      - name: Run lint
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm lint
+      - name: Run unit tests
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm test:unit
+      - name: Run e2e tests
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
-          pnpm build
-          pnpm format
-          pnpm lint
-          pnpm test
-          pnpm unused
+          npx playwright install chromium
+          pnpm test:e2e
+      - name: Run unused
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm unused
+
+      - name: Update dependencies (major)
+        run: pnpm ncu:major

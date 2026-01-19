@@ -9,21 +9,21 @@ import './layout.scss';
 
 const TABS: TabButtonProps[] = [
 	{
-		_icons: 'codicon codicon-pie-chart',
+		_icons: 'fa-solid fa-chart-pie',
 		_label: 'Erster Tab',
 	},
 	{
-		_icons: 'codicon codicon-calendar',
+		_icons: 'fa-solid fa-calendar',
 		_label: 'Zweiter Tab',
 		_disabled: true,
 	},
 	{
-		_icons: 'codicon codicon-briefcase',
+		_icons: 'fa-solid fa-briefcase',
 		_label: 'Deaktivierter Tab',
 		_disabled: true,
 	},
 	{
-		_icons: 'codicon codicon-telescope',
+		_icons: 'fa-solid fa-address-card',
 		_label: 'Letzter Tab',
 		_disabled: true,
 	},
@@ -32,26 +32,16 @@ const TABS: TabButtonProps[] = [
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ key: 'name', label: 'Name', textAlign: 'left', width: '400px' },
-			{ key: 'species', label: 'Species', textAlign: 'left', width: '400px' },
-			{ key: 'habitat', label: 'Habitat', textAlign: 'left', width: '400px' },
-			{ key: 'diet', label: 'Diet', textAlign: 'left', width: '400px' },
-			{ key: 'lifespan', label: 'lifespan', textAlign: 'right', width: '400px' },
+			{ key: 'name', label: 'Name', textAlign: 'left' },
+			{ key: 'species', label: 'Species', textAlign: 'left' },
+			{ key: 'habitat', label: 'Habitat', textAlign: 'left' },
+			{ key: 'diet', label: 'Diet', textAlign: 'left' },
+			{ key: 'lifespan', label: 'lifespan', textAlign: 'right' },
 		],
 	],
 };
 
 function TableHorizontalScrollbarAdvanced() {
-	const [tableWith] = React.useState(() => {
-		const columnDefinitions = HEADERS.horizontal![0];
-		let width = 0;
-
-		for (const def of columnDefinitions as { width: string }[]) {
-			width += parseFloat(def.width?.replace('px', '') || '0');
-		}
-		return `${width}px`;
-	});
-
 	return (
 		<>
 			<SampleDescription>
@@ -70,7 +60,6 @@ function TableHorizontalScrollbarAdvanced() {
 						<div style={{ overflow: 'hidden' }}>
 							<KolTableStateful
 								_label="Table for demonstration purposes with horizontal scrollbar"
-								_minWidth={tableWith}
 								_headers={HEADERS}
 								_data={DATA}
 								_pagination={{ _page: 1 }}

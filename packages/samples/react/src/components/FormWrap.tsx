@@ -9,12 +9,12 @@ export const FormWrap = <P,>({ RefComponent: Component, showButtons = true, ...p
 				<Component {...props} />
 				{showButtons && (
 					<div className="flex gap-4">
-						<KolButton _label="Submit" _icons="codicon codicon-arrow-right" _type="submit" _variant="primary" />
+						<KolButton _label="Submit" _icons="kolicon-chevron-right" _type="submit" _variant="primary" />
 						<KolButton
 							_label="Bunte Icons"
 							_icons={{
-								left: { icon: 'codicon codicon-heart-filled', style: { color: '#cc006e' } },
-								right: { icon: 'codicon codicon-squirrel', style: { color: '#b41b1b' } },
+								left: { icon: 'kolicon-house', style: { color: '#cc006e' } },
+								right: { icon: 'kolicon-kolibri', style: { color: '#b41b1b' } },
 							}}
 							_type="submit"
 							_variant="secondary"

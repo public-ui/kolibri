@@ -17,16 +17,8 @@
 			list-style: none;
 		}
 
-		&__icon {
-			&::part(separator) {
-				font-size: 0.7em;
-				font-weight: 900;
-			}
-
-			&::part(separator):before {
-				content: '\f054';
-				font-family: 'Font Awesome 6 Free';
-			}
+		&__list-element:first-child:last-child {
+			min-height: var(--a11y-min-size);
 		}
 	}
 }

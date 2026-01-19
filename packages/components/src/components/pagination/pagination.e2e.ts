@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { Callback } from '../../schema/enums';
-import { KolEvent } from '../../utils/events';
 
 test.describe('kol-pagination', () => {
 	test.beforeEach(async ({ page }) => {
@@ -53,7 +52,7 @@ test.describe('kol-pagination', () => {
 	});
 
 	test.describe('DOM events', () => {
-		[KolEvent.click, KolEvent.changePage].forEach((eventName) => {
+		['click', 'changepage'].forEach((eventName) => {
 			test(`it emits ${eventName} when a page is clicked`, async ({ page }) => {
 				const eventPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement, eventName) => {
 					return new Promise<number>((resolve) => {
@@ -68,14 +67,14 @@ test.describe('kol-pagination', () => {
 			});
 		});
 
-		test('it emits changePageSize when the page size is changed', async ({ page }) => {
-			const eventPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement, KolEvent) => {
+		test('it emits changepagesize when the page size is changed', async ({ page }) => {
+			const eventPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement) => {
 				return new Promise<number>((resolve) => {
-					element.addEventListener(KolEvent.changePageSize, (event: Event) => {
+					element.addEventListener('changepagesize', (event: Event) => {
 						resolve((event as CustomEvent).detail as number);
 					});
 				});
-			}, KolEvent);
+			});
 			await page.waitForChanges();
 			await page.locator('select').selectOption('-1'); // choose second option (20)
 

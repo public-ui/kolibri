@@ -1,8 +1,6 @@
-import React from 'react';
-
-import { KolButton } from '@public-ui/react-v19';
-
+import { KolButton, KolHeading } from '@public-ui/react-v19';
 import type { FC } from 'react';
+import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
@@ -16,14 +14,20 @@ export const ButtonBaselined: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This KolButton sample is used for internal testing purposes: It features multiple buttons with and without icons which are vertically aligned.</p>
+				<p>
+					This story demonstrates button baseline alignment. It shows multiple buttons with and without icons that are vertically aligned, useful for testing
+					layout consistency.
+				</p>
 			</SampleDescription>
 
-			<div className="flex flex-wrap gap-2">
-				<KolButton _label="Label-Text" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Label-Text" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Label-Text" _on={dummyEventHandler}></KolButton>
-				<KolButton _icons="codicon codicon-reactions" _label="Label-Text with Icon" _on={dummyEventHandler}></KolButton>
+			<div className="grid gap-8">
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Vertically Aligned Buttons" />
+					<div className="flex flex-wrap gap-2">
+						<KolButton _label="Label-Text" _on={dummyEventHandler} />
+						<KolButton _icons="kolicon-cogwheel" _label="Label-Text with Icon" _on={dummyEventHandler} />
+					</div>
+				</section>
 			</div>
 		</>
 	);

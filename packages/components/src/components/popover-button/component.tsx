@@ -5,13 +5,13 @@ import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
-	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
 	IconsPropType,
+	InlinePropType,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
 	ShortKeyPropType,
@@ -19,7 +19,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validatePopoverAlign } from '../../schema';
+import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
@@ -35,6 +35,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
 	private cleanupAutoPositioning?: () => void;
+	private on: ButtonCallbacksPropType<StencilUnknown> = {
+		onClick: this.handleButtonClick.bind(this),
+	};
 
 	@State() public state: PopoverButtonStates = {
 		_label: '',
@@ -53,13 +56,20 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
+	 * Show the popover programmatically by calling the native showPopover method.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async showPopover() {
+		void this.refPopover?.showPopover();
+	}
+
+	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		// eslint-disable-next-line no-console
-		console.log('Focusing popover button', this.refButton);
-		await this.refButton?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.refButton?.focus());
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
@@ -78,8 +88,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				 */
 				this.refPopover.style.visibility = 'hidden';
 			}
-
-			void this.refButton?.hideTooltip();
 		}
 	}
 
@@ -128,24 +136,28 @@ export class KolPopoverButton implements PopoverButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<div class={clsx('kol-popover-button', { 'kol-popover-button--open': this.popoverOpen })}>
+			<div
+				class={clsx('kol-popover-button', {
+					'kol-popover-button--open': this.popoverOpen,
+					'kol-popover-button--inline': this.state._inline === true,
+					'kol-popover-button--standalone': this.state._inline === false,
+				})}
+			>
 				<KolButtonWcTag
 					_accessKey={this._accessKey}
 					_aria-controls="popover"
-					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
 					_ariaExpanded={this.popoverOpen}
 					_ariaHasPopup={'dialog'}
-					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
 					_icons={this._icons}
 					_id={this._id}
+					_inline={this._inline}
 					_label={this._label}
 					_name={this._name}
-					_on={this._on}
-					_role={this._role}
+					_on={this.on}
 					_shortKey={this._shortKey}
 					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
@@ -156,7 +168,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 					data-testid="popover-button"
 					class="kol-popover-button__button"
 					ref={(element) => (this.refButton = element)}
-					onClick={this.handleButtonClick.bind(this)}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>
@@ -169,24 +180,14 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
-
-	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 */
-	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 */
-	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
@@ -217,6 +218,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _id?: string;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -227,19 +233,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _name?: string;
 
 	/**
-	 * Defines the callback functions for button events.
-	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
-
-	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
 	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
-
-	/**
-	 * Defines the role of the components primary element.
-	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
@@ -268,7 +264,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Defines the value that the button emits on click.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
 
@@ -277,12 +273,20 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
+	@Watch('_inline')
+	public validateInline(value?: InlinePropType): void {
+		validateInline(this, value, {
+			defaultValue: false,
+		});
+	}
+
 	@Watch('_popoverAlign')
 	public validatePopoverAlign(value?: PopoverAlignPropType): void {
 		validatePopoverAlign(this, value);
 	}
 
 	public componentWillLoad() {
+		this.validateInline(this._inline);
 		this.validatePopoverAlign(this._popoverAlign);
 	}
 }

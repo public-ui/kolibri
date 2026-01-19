@@ -47,9 +47,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
@@ -76,9 +74,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.inputRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.inputRef?.focus());
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -91,7 +88,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			'data-role': this.state._variant === 'button' ? 'button' : undefined,
 			alert: this.showAsAlert(),
 			renderNoTooltip: true,
 		};
@@ -153,7 +149,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private readonly controller: InputCheckboxController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -258,7 +254,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value: StencilUnknown = true;
 
@@ -271,9 +267,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		_checked: false,
 		_hideMsg: false,
 		_icons: {
-			checked: 'codicon codicon-check',
-			indeterminate: 'codicon codicon-remove',
-			unchecked: 'codicon codicon-close',
+			checked: 'kolicon-check',
+			indeterminate: 'kolicon-minus',
+			unchecked: 'kolicon-cross',
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,
@@ -412,6 +408,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,

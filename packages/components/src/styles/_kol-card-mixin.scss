@@ -1,7 +1,10 @@
 @use '../components/@shared/mixins' as *;
+@use '../components/@shared/kol-button-mixin' as *;
 
 @mixin kol-card {
 	.kol-card {
+		@include kol-button-styles('kol-button');
+
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
 

@@ -20,7 +20,7 @@ export const PaginationBasic: FC = () => (
 			<KolPagination _max={4} _page={1} _siblingCount={0} _boundaryCount={2} _label="Test pagination 3" _on={{}} />
 			<KolPagination _max={4} _page={6} _siblingCount={0} _boundaryCount={2} _hasButtons={false} _label="Test pagination 4" _on={{}} />
 			<KolPagination
-				_max={4}
+				_max={400}
 				_page={6}
 				_siblingCount={0}
 				_boundaryCount={2}

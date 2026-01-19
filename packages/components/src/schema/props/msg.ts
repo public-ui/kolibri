@@ -5,7 +5,7 @@ import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject, isString } from '../validators';
 
 /* types */
-export type MsgPropType = Omit<AlertProps, '_label' | '_variant'> & { _description: string };
+export type MsgPropType = Omit<AlertProps, '_level' | '_on' | '_label' | '_hasCloser' | '_variant'> & { _description: string };
 
 /**
  * Defines the properties for a message rendered as Alert component.
@@ -45,7 +45,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 	});
 };
 
-export function checkHasMsg(msg?: Stringified<MsgPropType>, touched?: boolean): boolean {
+export function isMsgDefinedAndInputTouched(msg?: Stringified<MsgPropType>, touched?: boolean): boolean {
 	/**
 	 * We support 5 types of messages:
 	 * - default
@@ -54,19 +54,13 @@ export function checkHasMsg(msg?: Stringified<MsgPropType>, touched?: boolean): 
 	 * - warning
 	 * - error
 	 *
-	 * The message is shown if:
-	 * - we show only one message at a time
-	 * - by error messages the input must be touched
+	 * Messages on inputs are only rendered after the field has been touched,
+	 * regardless of the message type.
 	 */
-	if (!msg) {
-		return false;
-	}
-
-	const type = typeof msg === 'string' ? 'error' : (msg._type ?? 'error');
-	const showMsg = touched === true || type !== 'error';
-
-	return showMsg;
+	return Boolean(msg) && touched === true;
 }
+
+export const checkHasMsg = isMsgDefinedAndInputTouched;
 
 export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | undefined {
 	if (typeof msg === 'string') {
@@ -80,4 +74,12 @@ export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | unde
 		return { ...msg, _type: 'error' };
 	}
 	return msg;
+}
+
+export function getMsgType(msg?: Stringified<MsgPropType>): MsgPropType['_type'] | 'error' {
+	if (typeof msg === 'string') {
+		return 'error';
+	}
+
+	return msg?._type ?? 'error';
 }

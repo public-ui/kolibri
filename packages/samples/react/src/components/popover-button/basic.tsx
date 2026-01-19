@@ -1,3 +1,4 @@
+import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect } from 'react';
@@ -6,39 +7,40 @@ import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
-	const buttonRef = React.useRef<HTMLKolPopoverButtonElement>(null);
-
-	useEffect(() => {
-		const run = async () => {
-			await buttonRef.current?.kolFocus();
-			if (buttonRef.current instanceof HTMLButtonElement) {
-				buttonRef.current.click();
-			}
-		};
-		run();
-	}, []);
+	const buttonRef = React.useRef<HTMLKolPopoverButtonElement | null>(null);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
 
-	const TOOLBAR_ITEMS = [
+	const TOOLBAR_ITEMS: ToolbarItemsPropType = [
 		{
-			_label: 'Edit',
-			_icons: 'codicon codicon-edit',
+			type: 'button',
+			_label: 'Show',
+			_icons: 'kolicon-eye',
 			_on: dummyEventHandler,
 		},
 		{
+			type: 'button',
 			_label: 'Delete',
-			_icons: 'codicon codicon-trash',
+			_icons: 'kolicon-minus',
 			_on: dummyEventHandler,
 		},
 		{
-			_label: 'Duplicate',
-			_icons: 'codicon codicon-copy',
+			type: 'button',
+			_label: 'Add',
+			_icons: 'kolicon-plus',
 			_on: dummyEventHandler,
 		},
 	];
+
+	useEffect(() => {
+		// Ensure the popover is closed on initial render
+		if (buttonRef.current) {
+			buttonRef.current.showPopover();
+			buttonRef.current.focus();
+		}
+	}, []);
 
 	return (
 		<>
@@ -49,10 +51,10 @@ export const PopoverButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<div className="flex flex-col gap-4">
-				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }} ref={buttonRef}>
+				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'kolicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
-				<KolPopoverButton _label="Help" _icons="codicon codicon-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
+				<KolPopoverButton _label="Help" _icons="kolicon-alert-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
 					<div className="w-sm p-2 border border-solid border-gray">
 						<KolHeading _label="Help Information" _level={0}></KolHeading>
 						<p>

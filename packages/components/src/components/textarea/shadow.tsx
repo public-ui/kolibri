@@ -58,9 +58,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTextareaElement;
@@ -83,9 +81,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async kolFocus() {
-		this.textareaRef?.focus();
+	public async focus() {
+		return Promise.resolve(this.textareaRef?.focus());
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -96,7 +93,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.textareaRef?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
@@ -137,7 +133,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	private readonly controller: TextareaController;
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -241,7 +237,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Defines how many rows of text should be visible at the same time.
+	 * Maximum number of visible rows of the element.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
 
@@ -273,7 +269,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
@@ -431,7 +427,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			} else if (!this._rows) {
 				this._rows = 1;
 			}
-		}, 0);
+		});
 	}
 
 	public componentWillLoad(): void {

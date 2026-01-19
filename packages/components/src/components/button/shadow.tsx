@@ -12,6 +12,7 @@ import type {
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
+	InlinePropType,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -24,9 +25,7 @@ import type {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolButton implements ButtonProps, FocusableElement {
 	private buttonWcRef?: HTMLKolButtonWcElement;
@@ -48,8 +47,8 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async kolFocus() {
-		await this.buttonWcRef?.kolFocus();
+	public async focus() {
+		return Promise.resolve(this.buttonWcRef?.focus());
 	}
 
 	public render(): JSX.Element {
@@ -66,6 +65,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
 				_id={this._id}
+				_inline={this._inline}
 				_label={this._label}
 				_name={this._name}
 				_on={this._on}
@@ -82,7 +82,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	}
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -135,6 +135,11 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Prop() public _id?: string;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -178,7 +183,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Defines the value that the button emits on click.
+	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
 
