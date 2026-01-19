@@ -6,12 +6,12 @@ import { SampleDescription } from '../SampleDescription';
 
 const ROWS_COUNT = 50;
 
-interface DataRow {
+type DataRow = {
 	id: number;
 	name: string;
 	email: string;
 	status: string;
-}
+};
 
 const FIRST_NAMES = [
 	'Max',
