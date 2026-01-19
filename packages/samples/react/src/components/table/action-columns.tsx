@@ -10,42 +10,44 @@ type ProjectTask = {
 	owner: string;
 };
 
-
 const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
-	horizontal: [[
-		{ key: 'id', label: 'ID', width: 80 },
-		{ key: 'project', label: 'Project' },
-		{ key: 'owner', label: 'Owner', width: 140 },
-		{
-			type: 'action',
-			key: 'actions',
-			label: 'Actions',
-			textAlign: 'center',
-			width: 250,
-			actions: (row) => {
-				const simpleRow = row as ProjectTask;
-				return [
-					{
-						type: 'button',
-						_label: 'Details',
-						_icons: 'kolicon-eye',
-						_hideLabel: true,
-						_on: {
-							onClick: () => alert(`Details: ${simpleRow.id} - ${simpleRow.project}`),
+	horizontal: [
+		[
+			{ key: 'id', label: 'ID', width: 80 },
+			{ key: 'project', label: 'Project' },
+			{ key: 'owner', label: 'Owner', width: 140 },
+			{
+				type: 'action',
+				key: 'actions',
+				label: 'Actions',
+				textAlign: 'center',
+				width: 250,
+				actions: (row) => {
+					const simpleRow = row as ProjectTask;
+					return [
+						{
+							type: 'button',
+							_label: 'Details',
+							_icons: 'kolicon-eye',
+							_hideLabel: true,
+							_on: {
+								onClick: () => alert(`Details: ${simpleRow.id} - ${simpleRow.project}`),
+							},
 						},
-					},
-					{
-						type: 'button',
-						_label: 'Start',
-						_icons: 'kolicon-chevron-right',
-						_variant: 'secondary',
-						_on: {
-							onClick: () => alert(`Start task ${simpleRow.id}`),
+						{
+							type: 'button',
+							_label: 'Start',
+							_icons: 'kolicon-chevron-right',
+							_variant: 'secondary',
+							_on: {
+								onClick: () => alert(`Start task ${simpleRow.id}`),
+							},
 						},
-					},
-				];
+					];
+				},
 			},
-		}]],
+		],
+	],
 };
 
 const DATA: ProjectTask[] = [
