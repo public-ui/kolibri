@@ -4,7 +4,6 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
-	DefaultHeaderCell,
 	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,

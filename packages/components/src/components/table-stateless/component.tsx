@@ -675,8 +675,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-								this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
-							}
+									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
+								}
 							: undefined
 					}
 				>
