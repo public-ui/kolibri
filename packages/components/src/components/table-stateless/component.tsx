@@ -3,10 +3,11 @@ import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@st
 
 import clsx from 'clsx';
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import type {
+	ActionColumnHeaderCell,
 	AriaSort,
 	HasSettingsMenuPropType,
 	KoliBriTableCell,
@@ -238,6 +239,24 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	/**
+	 * Finds the ActionColumnHeaderCell for a given column index.
+	 * Returns the action column header if found, otherwise undefined.
+	 */
+	private getActionColumnHeader(colIndex: number): ActionColumnHeaderCell | undefined {
+		const headers = this.horizontal ? this.state._headerCells.horizontal : this.state._headerCells.vertical;
+		if (!headers || headers.length === 0) return undefined;
+
+		// Get the primary headers (those with keys)
+		const primaryHeader = this.getPrimaryHeaders(this.state._headerCells);
+		const header = primaryHeader[colIndex];
+
+		if (header && (header as ActionColumnHeaderCell).type === 'action') {
+			return header as ActionColumnHeaderCell;
+		}
+		return undefined;
+	}
+
+	/**
 	 * Applies a custom render function to a specific table cell if provided.
 	 * Ensures that the content is updated after a delay to avoid excessive re-renders.
 	 *
@@ -383,12 +402,15 @@ export class KolTableStateless implements TableStatelessAPI {
 						row !== null &&
 						(typeof sortedPrimaryHeader[j].key === 'string' || typeof sortedPrimaryHeader[j].render === 'function')
 					) {
+						const cellKey = sortedPrimaryHeader[j].key as unknown as string;
+						const cellValue = row[cellKey];
+
 						dataRow.push({
 							...sortedPrimaryHeader[j],
 							colSpan: undefined,
 							rowSpan: undefined,
 							data: row,
-							label: row[sortedPrimaryHeader[j].key as unknown as string] as string,
+							label: cellValue as string,
 						});
 					}
 				} else {
@@ -399,12 +421,15 @@ export class KolTableStateless implements TableStatelessAPI {
 						data[j] !== null &&
 						(typeof sortedPrimaryHeader[i].key === 'string' || typeof sortedPrimaryHeader[i].render === 'function')
 					) {
+						const cellKey = sortedPrimaryHeader[i].key as unknown as number;
+						const cellValue = data[j][cellKey];
+
 						dataRow.push({
 							...sortedPrimaryHeader[i],
 							colSpan: undefined,
 							rowSpan: undefined,
 							data: data[j],
-							label: data[j][sortedPrimaryHeader[i].key as unknown as number] as string,
+							label: cellValue as string,
 						});
 					}
 				}
@@ -628,11 +653,16 @@ export class KolTableStateless implements TableStatelessAPI {
 		} else {
 			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
 
+			// Check if this column is an action column
+			const actionColumn = this.getActionColumnHeader(colIndex);
+			const isActionColumn = actionColumn && cell.data;
+
 			return (
 				<td
 					key={`cell-${key}`}
 					class={clsx('kol-table__cell kol-table__cell--body', {
 						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
+						'kol-table__cell--actions': isActionColumn,
 					})}
 					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
 					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
@@ -650,10 +680,38 @@ export class KolTableStateless implements TableStatelessAPI {
 							: undefined
 					}
 				>
-					{typeof cell.render !== 'function' ? cell.label : ''}
+					{isActionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : typeof cell.render !== 'function' ? cell.label : ''}
 				</td>
 			);
 		}
+	};
+
+	/**
+	 * Renders action items (buttons or links) for a table cell.
+	 * Uses the ActionColumnHeaderCell factory function to generate actions based on row data.
+	 *
+	 * @param {ActionColumnHeaderCell} actionColumn The action column header definition.
+	 * @param {KoliBriTableDataType} rowData The data for the current row.
+	 * @param {string} key Unique key for the cell.
+	 * @returns {JSX.Element} The rendered action items wrapped in a container.
+	 */
+	private readonly renderActionItems = (actionColumn: ActionColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => {
+		const actions = actionColumn.actions(rowData);
+
+		return (
+			<div class="kol-table__cell-actions">
+				{actions.map((action, actionIndex) => {
+					if (action.type === 'button') {
+						const { ...buttonProps } = action;
+						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _buttonVariant={buttonProps._variant} />;
+					} else if (action.type === 'link') {
+						const { ...linkProps } = action;
+						return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
+					}
+					return null;
+				})}
+			</div>
+		);
 	};
 
 	private getSelectionKeyPropertyName(): string {

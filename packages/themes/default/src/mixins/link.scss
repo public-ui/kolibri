@@ -1,9 +1,7 @@
-@use '../mixins/to-rem' as *;
+@use './to-rem' as *;
 
 @mixin kol-link($block-classname) {
 	.#{$block-classname} {
-		$root: &;
-
 		color: var(--color-primary);
 
 		font-weight: 400;
@@ -12,7 +10,7 @@
 		&:focus {
 			outline: none;
 
-			#{$root}__text {
+			.#{$block-classname}__text {
 				outline: var(--border-width) solid;
 				border-radius: var(--border-radius);
 				position: relative; // make sure focus outline is visible and not covered by adjacent element

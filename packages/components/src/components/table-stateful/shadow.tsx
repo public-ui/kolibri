@@ -182,7 +182,11 @@ export class KolTableStateful implements TableAPI {
 	 * Otherwise, sorting is cleared when switching between columns.
 	 */
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
-		if (typeof headerCell.compareFn === 'function') {
+		if (headerCell.type === undefined || headerCell.type === 'default') {
+			if (typeof headerCell.compareFn !== 'function') {
+				return;
+			}
+
 			if (!this.state._allowMultiSort && headerCell.key !== this.sortData[0]?.key) {
 				// clear when another column is sorted and multi sort is not allowed
 				this.sortData = [];
@@ -242,6 +246,10 @@ export class KolTableStateful implements TableAPI {
 								let hasSortedCells = false;
 								this.sortData = [];
 								headers.forEach((cell) => {
+									if (cell.type !== undefined && cell.type !== 'default') {
+										return;
+									}
+
 									if (typeof cell.compareFn === 'function' && !cell.key) {
 										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
 										return;
@@ -450,6 +458,10 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private getHeaderCellSortState(headerCell: KoliBriTableHeaderCellWithLogic): KoliBriSortDirection | undefined {
+		if (headerCell.type !== undefined && headerCell.type !== 'default') {
+			return;
+		}
+
 		if (!this.disableSort && typeof headerCell.compareFn === 'function') {
 			if (headerCell.key) {
 				const data = this.sortData.find((value) => value.key === headerCell.key);
@@ -462,6 +474,10 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private getHeaderCellSortOrder(headerCell: KoliBriTableHeaderCellWithLogic): number | undefined {
+		if (headerCell.type !== undefined && headerCell.type !== 'default') {
+			return;
+		}
+
 		if (!this.disableSort && this.state._allowMultiSort && typeof headerCell.compareFn === 'function' && headerCell.key) {
 			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
 			if (index >= 0) {

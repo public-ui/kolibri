@@ -3,16 +3,40 @@ import type { Generic } from 'adopted-style-sheets';
 import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
+import type { ButtonProps } from './button';
+import type { LinkProps } from './link';
 import type { KoliBriPaginationProps } from './pagination';
+
+/**
+ * Action column item type that can be either a button or a link.
+ */
+export type ActionColumnPropType =
+	| ({
+			type: 'button';
+	  } & ButtonProps)
+	| ({
+			type: 'link';
+	  } & LinkProps);
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType, sortDirection?: KoliBriSortDirection) => number;
 
-export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
+export type DefaultHeaderCell = KoliBriTableHeaderCell & {
+	type?: 'default';
 	compareFn?: KoliBriDataCompareFn;
 	sortDirection?: KoliBriSortDirection;
-	headerCell?: true;
+};
+
+export type KoliBriTableHeaderCellWithLogic = DefaultHeaderCell | ActionColumnHeaderCell;
+
+/**
+ * Action column header cell that defines actions for each row.
+ * The actions function receives the row data and returns an array of action items (buttons or links).
+ */
+export type ActionColumnHeaderCell = KoliBriTableHeaderCell & {
+	type: 'action';
+	actions: (row: KoliBriTableDataType) => ActionColumnPropType[];
 };
 
 export type KoliBriTableHeaders = {
