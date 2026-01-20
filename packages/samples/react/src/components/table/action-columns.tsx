@@ -70,8 +70,8 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 							_hideLabel: false,
 						},
 					];
-				}
-			}
+				},
+			},
 		],
 	],
 };
