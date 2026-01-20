@@ -99,7 +99,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 				</div>
 				{hasCloser && (
 					<KolButtonWcTag
-						class={BEM_CLASS_ALERT__CLOSER}
+						class={BEM_CLASS_ALERT__CLOSER + ' kol-close-button'}
 						data-testid="alert-close-button"
 						_ariaDescription={label?.trim() || ''}
 						_hideLabel
