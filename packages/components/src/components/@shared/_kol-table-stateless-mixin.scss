@@ -2,6 +2,7 @@
 @use '../tooltip/style' as *;
 @use './kol-table-settings-mixin' as *;
 @use './mixins' as *;
+@use './kol-link-mixin' as *;
 
 @mixin kol-table-stateless-styles {
 	@include kol-table-settings-styles;
@@ -97,6 +98,8 @@
 
 			&--actions {
 				white-space: nowrap;
+
+				@include kol-link-styles('kol-link');
 			}
 		}
 
