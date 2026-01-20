@@ -2,6 +2,8 @@
 @use '../tooltip/style' as *;
 @use './kol-table-settings-mixin' as *;
 @use './mixins' as *;
+@use './kol-button-mixin' as *;
+@use './kol-link-mixin' as *;
 
 @mixin kol-table-stateless-styles {
 	@include kol-table-settings-styles;
@@ -94,6 +96,20 @@
 
 				white-space: nowrap;
 			}
+
+			&--actions {
+				white-space: nowrap;
+
+				@include kol-button-styles('kol-button');
+				@include kol-link-styles('kol-link');
+			}
+		}
+
+		&__cell-actions {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
 		}
 
 		&__spacer {
