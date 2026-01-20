@@ -3,6 +3,7 @@
 @use './alert-wc' as *;
 @use './pagination-mixin' as *;
 @use './button' as *;
+@use './link' as *;
 
 @mixin kol-table-stateless-theme {
 	@include kol-table-settings-theme;
@@ -87,6 +88,7 @@
 		&__cell-actions {
 			gap: to-rem(4);
 			@include kol-button('kol-button');
+			@include kol-link('kol-link');
 		}
 
 		&__spacer {

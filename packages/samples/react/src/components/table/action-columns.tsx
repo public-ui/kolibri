@@ -20,7 +20,6 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				type: 'action',
 				key: 'actions',
 				label: 'Actions',
-				textAlign: 'center',
 				width: 250,
 				actions: (row) => {
 					const simpleRow = row as ProjectTask;
@@ -43,9 +42,36 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 								onClick: () => alert(`Start task ${simpleRow.id}`),
 							},
 						},
+						{
+							type: 'link',
+							_label: 'View',
+							_href: `#/back-page?taskId=${simpleRow.id}`,
+							_target: '_blank',
+							_icons: 'kolicon-external-link',
+							_hideLabel: false,
+						},
 					];
 				},
 			},
+			{
+				type: 'action',
+				key: 'externalActions',
+				label: 'External Actions',
+				width: 280,
+				actions: (row) => {
+					const simpleRow = row as ProjectTask;
+					return [
+						{
+							type: 'link',
+							_label: 'View on Dashboard',
+							_href: `#/back-page?taskId=${simpleRow.id}`,
+							_target: '_blank',
+							_icons: 'kolicon-external-link',
+							_hideLabel: false,
+						},
+					];
+				}
+			}
 		],
 	],
 };
