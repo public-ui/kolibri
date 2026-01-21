@@ -5,7 +5,8 @@
 type ClassDictionary = Record<string, boolean>;
 type ClassValue = ClassDictionary | ClassValue[] | number | string | null | undefined | boolean;
 
-const toVal = (mix: ClassValue): string => {
+// Normalize any supported class input into a space-delimited string.
+const toClassString = (mix: ClassValue): string => {
 	if (typeof mix === 'string' || typeof mix === 'number') {
 		return String(mix);
 	}
@@ -18,7 +19,7 @@ const toVal = (mix: ClassValue): string => {
 		let str = '';
 		for (const item of mix) {
 			if (item) {
-				const val = toVal(item);
+				const val = toClassString(item);
 				if (val) {
 					if (str) {
 						str += ' ';
@@ -46,7 +47,7 @@ const clsx = (...args: ClassValue[]): string => {
 	let str = '';
 	for (const arg of args) {
 		if (arg) {
-			const val = toVal(arg);
+			const val = toClassString(arg);
 			if (val) {
 				if (str) {
 					str += ' ';
