@@ -1,7 +1,7 @@
 import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,

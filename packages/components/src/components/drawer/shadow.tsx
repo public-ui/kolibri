@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { KolCardWcTag } from '../../core/component-names';
 import type { AlignPropType, DrawerAPI, DrawerStates, HasCloserPropType, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
 import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';

@@ -50,7 +50,7 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { KolTooltipWcTag } from '../../core/component-names';
 import { KolSpanFc } from '../../functional-components';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';

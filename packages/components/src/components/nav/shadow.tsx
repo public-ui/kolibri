@@ -23,7 +23,7 @@ import {
 	validateLabel,
 } from '../../schema';
 
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { StencilUnknown } from '../../schema';

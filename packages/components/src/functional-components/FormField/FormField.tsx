@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import type { AlignPropType, MaxLengthBehaviorPropType, MsgPropType, Stringified } from '../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';

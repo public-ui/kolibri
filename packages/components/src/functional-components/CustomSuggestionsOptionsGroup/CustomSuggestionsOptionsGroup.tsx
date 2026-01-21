@@ -1,6 +1,6 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 
 export type CustomSuggestionsOptionsGroupProps = JSXBase.HTMLAttributes<HTMLUListElement> & {
 	blockSuggestionMouseOver: boolean;

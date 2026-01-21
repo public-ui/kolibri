@@ -18,7 +18,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 

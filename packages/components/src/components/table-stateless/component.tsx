@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { isEqual } from 'lodash-es';
 import { KolButtonWcTag, KolIconTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';

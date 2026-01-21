@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
-import clsx from 'clsx';
+import clsx from '../../../utils/clsx';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';

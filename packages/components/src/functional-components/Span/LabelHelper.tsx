@@ -1,5 +1,5 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { isString } from 'lodash-es';
 
 import { md } from '../../utils/markdown';

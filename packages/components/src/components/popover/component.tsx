@@ -4,7 +4,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverCloseEvent, PopoverStates, ShowPropType } from '../../schema';
 import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
 
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 

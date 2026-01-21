@@ -25,7 +25,7 @@ import {
 } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
