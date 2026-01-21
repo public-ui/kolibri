@@ -114,7 +114,7 @@ export class KolPaginationWc implements PaginationAPI {
 
 		return (
 			<Host class="kol-pagination">
-				<span role="status" aria-live="polite">
+				<span role="status" aria-live="polite" class="kol-pagination__entries">
 					{translate('kol-table-visible-range', {
 						placeholders: {
 							start: this.getPageStart(),
@@ -345,7 +345,7 @@ export class KolPaginationWc implements PaginationAPI {
 		return (
 			<li key={nonce()}>
 				<KolButtonWcTag
-					class="kol-pagination__button"
+					class="kol-pagination__button kol-pagination__button--numbers"
 					_ariaDescription={ariaDescription}
 					_customClass={this.state._customClass}
 					_label={pageText}
