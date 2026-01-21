@@ -2,6 +2,7 @@ import { Routes } from '../../shares/types';
 import { InputTextAccessShortKey } from './access-short-key';
 import { InputTextBackground } from './background-test';
 import { InputTextBasic } from './basic';
+import { InputTextCounter } from './counter';
 import { InputTextDisabled } from './disabled';
 import { InputTextExpertSlot } from './expert-slot';
 import { InputTextHideLabel } from './hide-label';
@@ -20,6 +21,7 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		placeholder: InputTextPlaceholder,
 		disabled: InputTextDisabled,
 		readonly: InputTextReadonly,
+		counter: InputTextCounter,
 		'access-short-key': InputTextAccessShortKey,
 		'hide-label': InputTextHideLabel,
 		'hide-msg': InputTextHideMsg,
