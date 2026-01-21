@@ -386,6 +386,7 @@ export class KolTabs implements TabsAPI {
 			div.setAttribute('id', `tabpanel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
+			div.setAttribute('tabindex', '0');
 			const slot = document.createElement('slot');
 			slot.setAttribute('name', `tabpanel-slot-${i}`);
 			div.appendChild(slot);
