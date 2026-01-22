@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
 import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
+import clsx from '../../../utils/clsx';
 import KolInputFc, { type InputProps } from '../Input';
 
 export type RadioProps = JSXBase.HTMLAttributes<HTMLLabelElement> & {

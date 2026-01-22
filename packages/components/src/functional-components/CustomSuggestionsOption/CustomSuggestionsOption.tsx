@@ -1,7 +1,7 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
 import type { W3CInputValue } from '../../schema';
+import clsx from '../../utils/clsx';
 
 export type CustomSuggestionsProps = JSXBase.HTMLAttributes<HTMLLIElement> & {
 	disabled: boolean;

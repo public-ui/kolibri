@@ -56,10 +56,10 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
-import clsx from 'clsx';
 import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import clsx from '../../utils/clsx';
 
 /**
  * @internal

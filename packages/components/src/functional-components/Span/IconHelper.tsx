@@ -1,5 +1,5 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 
 import type { KoliBriCustomIcon } from '../../schema';
 import KolIconFc from '../Icon';

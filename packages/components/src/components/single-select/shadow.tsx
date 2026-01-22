@@ -25,7 +25,6 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -36,6 +35,7 @@ import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggest
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { SingleSelectController } from './controller';
 

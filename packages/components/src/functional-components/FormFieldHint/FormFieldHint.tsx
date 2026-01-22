@@ -1,6 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 
 type FormFieldHintProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	hint?: string;

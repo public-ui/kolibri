@@ -50,11 +50,11 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 
-import clsx from 'clsx';
 import { KolTooltipWcTag } from '../../core/component-names';
 import { KolSpanFc } from '../../functional-components';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
