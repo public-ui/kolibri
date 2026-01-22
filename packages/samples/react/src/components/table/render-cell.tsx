@@ -15,23 +15,30 @@ type Data = {
 	date: Date;
 	shipped: boolean;
 };
-const DATA: Data[] = [
-	{
-		order: 0,
-		shipped: false,
-		date: new Date('1981-05-26T21:33:43.612Z'),
-	},
-	{
-		order: 1,
-		shipped: true,
-		date: new Date('1971-04-25T19:44:17.014Z'),
-	},
-	{
-		order: 2,
-		shipped: false,
-		date: new Date('1986-07-10T11:39:29.539Z'),
-	},
-];
+
+/**
+ * Generates n data entries with random dates and shipping status
+ * @param n - Number of data entries to generate
+ * @returns Array of Data objects
+ */
+function generateDataEntries(n: number): Data[] {
+	const entries: Data[] = [];
+	const startDate = new Date('1970-01-01').getTime();
+	const endDate = new Date('2025-12-31').getTime();
+
+	for (let i = 0; i < n; i++) {
+		const randomTimestamp = startDate + Math.random() * (endDate - startDate);
+		entries.push({
+			order: i,
+			shipped: Math.random() > 0.5,
+			date: new Date(randomTimestamp),
+		});
+	}
+
+	return entries;
+}
+
+const DATA: Data[] = generateDataEntries(100);
 
 function KolButtonWrapper({ label, icons }: { label: string; icons: IconsPropType }) {
 	const { dummyClickEventHandler } = useToasterService();
@@ -105,7 +112,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 						>
 							<KolInputText _label="Input" />
-							<KolButtonWrapper label="Save" icons={{ left: 'fa-solid fa-floppy-disk' }} />
+							<KolButtonWrapper label="Save" icons={{ left: 'kolicon-check' }} />
 						</div>,
 					);
 				},

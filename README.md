@@ -104,6 +104,20 @@ Let's make KoliBri **better** and **more colorful** together!
 
 Bug reports and pull requests are welcome. Please read our [contribution guide](./CONTRIBUTING.md) before getting started.
 
+## SLSA/Provenance
+
+We aim for **SLSA Build Level 3** for the npm packages published from this repository. Releases are built in GitHub Actions with OIDC-based identity and published with npm provenance (`--provenance`), producing verifiable attestations for the published artifacts. See the [publish workflow](./.github/workflows/publish.yml) for the release steps and npm provenance configuration.
+
+**Verification example**
+
+```bash
+# Inspect provenance metadata for a published package
+pnpm view @public-ui/components dist.provenance
+
+# (Optional) Verify signatures/provenance if your npm client supports it
+pnpm audit signatures --package=@public-ui/components@<version>
+```
+
 ## Resources
 
 - [Get Started](https://public-ui.github.io/en/docs/get-started/first-steps)

@@ -5,6 +5,7 @@ import { LinkBasic } from './basic';
 import { LinkIcons } from './icons';
 import { LinkImage } from './image';
 import { LinkReactRouter } from './link-react-router';
+import { LinkHeadline } from './linked-headline';
 import { LinkShortKey } from './short-key';
 import { LinkTarget } from './target';
 
@@ -18,5 +19,6 @@ export const LINK_ROUTES: Routes = {
 		'access-key': LinkAccessKey,
 		'short-key': LinkShortKey,
 		'react-router': LinkReactRouter,
+		'linked-headline': LinkHeadline,
 	},
 };

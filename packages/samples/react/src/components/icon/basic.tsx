@@ -14,8 +14,8 @@ export const IconBasic: FC = () => (
 		<div className="grid gap-4">
 			<KolIcon className="block" _label="" _icons="kolicon-alert-info" />
 			<KolIcon className="block" _label="" _icons="kolicon-kolibri" />
-			<KolIcon className="block" _label="" _icons="fa-solid fa-house" />
-			<KolIcon className="block" _label="" _icons="fa-solid fa-heart" />
+			<KolIcon className="block" _label="" _icons="kolicon-house" />
+			<KolIcon className="block" _label="" _icons="kolicon-settings" />
 
 			<KolIcon
 				className="block w-[1em] h-[1em]"
@@ -23,7 +23,7 @@ export const IconBasic: FC = () => (
 					color: 'red',
 				}}
 				_label=""
-				_icons="fa-solid fa-house"
+				_icons="kolicon-house"
 			/>
 		</div>
 	</>

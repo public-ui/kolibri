@@ -555,6 +555,17 @@ ROUTES.set('input-text/readonly?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-text/counter?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('input-text/access-short-key?noColumns', {
 	snapshot: {
 		viewportSize: {
@@ -847,6 +858,17 @@ ROUTES.set('table/sort-data', {
 			height: 400,
 		},
 		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/action-columns', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 300,
+		},
 		zoom: {
 			skip: true,
 		},
