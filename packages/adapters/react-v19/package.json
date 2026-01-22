@@ -52,7 +52,7 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "19.2.8",
+		"@types/react": "19.2.9",
 		"@types/react-dom": "19.2.3",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
