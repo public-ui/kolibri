@@ -1,7 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
 import { getCssStyle, patchTheme, patchThemeTag } from 'adopted-style-sheets';
-import { querySelectorAll } from 'query-selector-all-shadow-root';
-import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
@@ -299,11 +297,78 @@ export const mapStringOrBoolean2String = (value?: string | boolean): string | un
 	return typeof value === 'string' ? value : mapBoolean2String(value);
 };
 
+const querySelectorShadow = <T extends Element>(selector: string, rootNode: Document | HTMLElement | ShadowRoot): T | null => {
+	const visited = new Set<Node>();
+	const queue: ParentNode[] = [rootNode];
+	let index = 0;
+	while (index < queue.length) {
+		const current = queue[index++];
+		if (visited.has(current)) {
+			continue;
+		}
+		visited.add(current);
+		if (current instanceof Element && current.matches(selector)) {
+			return current as T;
+		}
+		const children = Array.from(current.children || []);
+		for (let i = 0; i < children.length; i++) {
+			queue.push(children[i]);
+		}
+		if (current instanceof HTMLElement && current.shadowRoot) {
+			queue.push(current.shadowRoot);
+		}
+		if (current instanceof HTMLSlotElement) {
+			const assigned = current.assignedNodes({ flatten: true });
+			for (let i = 0; i < assigned.length; i++) {
+				if (assigned[i] instanceof Element) {
+					queue.push(assigned[i] as HTMLElement);
+				}
+			}
+		}
+	}
+	return null;
+};
+
+const querySelectorAllShadow = <T extends Element>(selector: string, rootNode: Document | HTMLElement | ShadowRoot): T[] => {
+	const visited = new Set<Node>();
+	const results: T[] = [];
+	const resultSet = new Set<Element>();
+	const queue: ParentNode[] = [rootNode];
+	let index = 0;
+	while (index < queue.length) {
+		const current = queue[index++];
+		if (visited.has(current)) {
+			continue;
+		}
+		visited.add(current);
+		if (current instanceof Element && current.matches(selector) && !resultSet.has(current)) {
+			results.push(current as T);
+			resultSet.add(current);
+		}
+		const children = Array.from(current.children || []);
+		for (let i = 0; i < children.length; i++) {
+			queue.push(children[i]);
+		}
+		if (current instanceof HTMLElement && current.shadowRoot) {
+			queue.push(current.shadowRoot);
+		}
+		if (current instanceof HTMLSlotElement) {
+			const assigned = current.assignedNodes({ flatten: true });
+			for (let i = 0; i < assigned.length; i++) {
+				if (assigned[i] instanceof Element) {
+					queue.push(assigned[i] as HTMLElement);
+				}
+			}
+		}
+	}
+	return results;
+};
+
 export const koliBriQuerySelector = <T extends Element>(selector: string, node?: Document | HTMLElement | ShadowRoot): T | null =>
-	querySelector<T>(selector, node || getDocument());
+	querySelectorShadow<T>(selector, node || getDocument());
 
 export const koliBriQuerySelectorAll = <T extends Element>(selector: string, node?: Document | HTMLElement | ShadowRoot): T[] =>
-	querySelectorAll<T>(selector, node || getDocument());
+	querySelectorAllShadow<T>(selector, node || getDocument());
 
 interface A11yColorContrast {
 	backgroundColor: string;
