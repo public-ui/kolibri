@@ -61,7 +61,7 @@
 		"@grpc/proto-loader": "0.8.0",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "14.0.2",
-		"fastify": "5.6.2"
+		"fastify": "5.7.1"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
@@ -70,7 +70,7 @@
 		"cross-env": "10.1.0",
 		"eslint": "8.57.1",
 		"mocha": "10.8.2",
-		"prettier": "3.7.4",
+		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
