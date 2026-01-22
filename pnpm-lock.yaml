@@ -478,34 +478,34 @@ importers:
         version: 1.57.0
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.41.2)
+        version: 0.9.0(@stencil/core@4.38.3)
       '@public-ui/stencil-react-output-target':
         specifier: 0.6.0
-        version: 0.6.0(@stencil/core@4.41.2)
+        version: 0.6.0(@stencil/core@4.38.3)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
-        version: 0.2.0(@stencil/core@4.41.2)
+        version: 0.2.0(@stencil/core@4.38.3)
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.41.2)
+        version: 0.9.0(@stencil/core@4.38.3)
       '@revolist/svelte-output-target':
         specifier: 0.0.7
-        version: 0.0.7(@stencil/core@4.41.2)
+        version: 0.0.7(@stencil/core@4.38.3)
       '@stencil-community/eslint-plugin':
         specifier: 0.10.0
         version: 0.10.0(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3))(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.9.3))(eslint-plugin-react@7.37.5(eslint@8.57.1))(eslint@8.57.1)(typescript@5.9.3)
       '@stencil-community/postcss':
         specifier: 2.2.0
-        version: 2.2.0(@stencil/core@4.41.2)
+        version: 2.2.0(@stencil/core@4.38.3)
       '@stencil/core':
-        specifier: 4.41.2
-        version: 4.41.2
+        specifier: 4.38.3
+        version: 4.38.3
       '@stencil/playwright':
         specifier: 0.2.1
-        version: 0.2.1(@playwright/test@1.57.0)(@stencil/core@4.41.2)
+        version: 0.2.1(@playwright/test@1.57.0)(@stencil/core@4.38.3)
       '@stencil/sass':
         specifier: 3.2.3
-        version: 3.2.3(@stencil/core@4.41.2)
+        version: 3.2.3(@stencil/core@4.38.3)
       '@types/color-convert':
         specifier: 2.0.4
         version: 2.0.4
@@ -592,7 +592,7 @@ importers:
         version: 6.1.2
       stencil-awesome-test:
         specifier: 1.0.6
-        version: 1.0.6(@stencil/core@4.41.2)
+        version: 1.0.6(@stencil/core@4.38.3)
       stylelint:
         specifier: 16.26.1
         version: 16.26.1(typescript@5.9.3)
@@ -5690,6 +5690,11 @@ packages:
     resolution: {integrity: sha512-PuPdjqgF6HdvSLwS6fpLf1TRzd3bd6zqpsICCUA0u9sxPnwrsIpx1xYyA/K9hSWrmyUg0WhHPvkX9k26N5DCnw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
+
+  '@stencil/core@4.38.3':
+    resolution: {integrity: sha512-rSDzGUfi58X8K79ySjlM6KlY+mq7D+ittzgNAdYHcsXHc70sBpdatFhnbOg25uVDiMf7xRAH9slP38pPdXnZOQ==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
 
   '@stencil/core@4.41.2':
     resolution: {integrity: sha512-H+WRGshEgcRLrnyj2G+gvMlzEYaAFTjqDQeiP+AuVB7YneuA9pM3Ms8T1L+KwcCSzcZFsLfQN/3sAhHSlpZAQQ==}
@@ -19147,21 +19152,21 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.41.2)':
+  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
 
-  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.41.2)':
+  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
 
-  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.41.2)':
+  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
 
-  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.41.2)':
+  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
 
   '@puppeteer/browsers@2.10.9':
     dependencies:
@@ -19637,9 +19642,9 @@ snapshots:
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.2
       '@resvg/resvg-js-win32-x64-msvc': 2.6.2
 
-  '@revolist/svelte-output-target@0.0.7(@stencil/core@4.41.2)':
+  '@revolist/svelte-output-target@0.0.7(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
 
   '@rolldown/binding-android-arm64@1.0.0-beta.58':
     optional: true
@@ -20172,10 +20177,21 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@stencil-community/postcss@2.2.0(@stencil/core@4.41.2)':
+  '@stencil-community/postcss@2.2.0(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
       postcss: 8.4.49
+
+  '@stencil/core@4.38.3':
+    optionalDependencies:
+      '@rollup/rollup-darwin-arm64': 4.34.9
+      '@rollup/rollup-darwin-x64': 4.34.9
+      '@rollup/rollup-linux-arm64-gnu': 4.34.9
+      '@rollup/rollup-linux-arm64-musl': 4.34.9
+      '@rollup/rollup-linux-x64-gnu': 4.34.9
+      '@rollup/rollup-linux-x64-musl': 4.34.9
+      '@rollup/rollup-win32-arm64-msvc': 4.34.9
+      '@rollup/rollup-win32-x64-msvc': 4.34.9
 
   '@stencil/core@4.41.2':
     optionalDependencies:
@@ -20188,16 +20204,16 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.2.1(@playwright/test@1.57.0)(@stencil/core@4.41.2)':
+  '@stencil/playwright@0.2.1(@playwright/test@1.57.0)(@stencil/core@4.38.3)':
     dependencies:
       '@playwright/test': 1.57.0
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
       deepmerge: 4.3.1
       find-up: 7.0.0
 
-  '@stencil/sass@3.2.3(@stencil/core@4.41.2)':
+  '@stencil/sass@3.2.3(@stencil/core@4.38.3)':
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
       sass-embedded: 1.93.3
 
   '@sveltejs/acorn-typescript@1.0.6(acorn@8.15.0)':
@@ -30205,9 +30221,9 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
-  stencil-awesome-test@1.0.6(@stencil/core@4.41.2):
+  stencil-awesome-test@1.0.6(@stencil/core@4.38.3):
     dependencies:
-      '@stencil/core': 4.41.2
+      '@stencil/core': 4.38.3
 
   stop-iteration-iterator@1.1.0:
     dependencies:

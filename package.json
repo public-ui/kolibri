@@ -52,7 +52,7 @@
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
 		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @stencil/core,@unocss/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",
