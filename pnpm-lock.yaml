@@ -475,12 +475,6 @@ importers:
       markdown-it:
         specifier: 14.1.0
         version: 14.1.0
-      query-selector-all-shadow-root:
-        specifier: 0.0.3
-        version: 0.0.3
-      query-selector-shadow-root:
-        specifier: 0.0.3
-        version: 0.0.3
       rgba-convert:
         specifier: 0.3.0
         version: 0.3.0
@@ -12800,14 +12794,8 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  query-selector-all-shadow-root@0.0.3:
-    resolution: {integrity: sha512-J7TPo7c+Ut6Wl7Ujk/dToR15eqwu84vJAazgzkcUxCeCtoxbDJPsFs9mBaYoSUfS0ZN3xspLDGBajr0G8d2QZQ==}
-
   query-selector-shadow-dom@1.0.1:
     resolution: {integrity: sha512-lT5yCqEBgfoMYpf3F2xQRK7zEr1rhIIZuceDK6+xRkJQ4NMbHTwXqk4NkwDwQMNqXgG9r9fyHnzwNVs6zV5KRw==}
-
-  query-selector-shadow-root@0.0.3:
-    resolution: {integrity: sha512-QXU2+N4fR2g8gqjGRjwg7x2oCiudc+nUAbaOqLtXvAlF7nQ32sRlkgFdpHLwzfeBvyvBgJzN/QFCogGCSjB/bQ==}
 
   querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
@@ -29113,11 +29101,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  query-selector-all-shadow-root@0.0.3: {}
-
   query-selector-shadow-dom@1.0.1: {}
-
-  query-selector-shadow-root@0.0.3: {}
 
   querystringify@2.2.0: {}
 
