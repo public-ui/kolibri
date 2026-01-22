@@ -86,7 +86,6 @@
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postinstall": "node ./postinstall.js",
-		"postpack": "mv package.bak.json package.json",
 		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
 		"prepack": "pnpm build && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/minify.js",
 		"pretest:e2e": "pnpm --filter @public-ui/icons build",
