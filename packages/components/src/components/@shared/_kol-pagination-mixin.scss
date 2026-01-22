@@ -5,12 +5,12 @@
 	@include kol-select;
 
 	.kol-pagination {
-		container: paging / inline-size;
 		display: flex;
 		gap: to-rem(16);
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
+		container: paging / inline-size;
 
 		&__navigation-list {
 			display: inline-flex;
