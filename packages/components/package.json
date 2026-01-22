@@ -85,10 +85,9 @@
 		"test:unit": "mkdir -p dist && cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"postpack": "mv package.bak.json package.json",
 		"postinstall": "node ./postinstall.js",
 		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
-		"prepack": "pnpm build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
+		"prepack": "pnpm build && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/minify.js",
 		"pretest:e2e": "pnpm --filter @public-ui/icons build",
 		"xunused": "knip"
 	},
