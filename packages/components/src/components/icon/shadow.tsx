@@ -3,7 +3,7 @@ import type { IconAPI, IconStates, LabelPropType } from '../../schema';
 import { IconController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 import { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON } from './bem';
 
 /**

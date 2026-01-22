@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
-import clsx from 'clsx';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../schema';
+import clsx from '../../utils/clsx';
 import InputAdornment from '../InputAdornment';
 
 type InputAdornmentType = VNode | VNode[] | null;

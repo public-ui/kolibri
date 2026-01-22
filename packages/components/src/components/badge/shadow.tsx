@@ -6,8 +6,8 @@ import { featureHint, handleColorChange, objectObjectHandler, parseJson, setStat
 import { nonce } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
-import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
+import clsx from '../../utils/clsx';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({

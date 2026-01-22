@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
 import type { StencilUnknown, W3CInputValue } from '../../../schema';
+import clsx from '../../../utils/clsx';
 
 export type NativeOptionProps = Omit<JSXBase.OptionHTMLAttributes<HTMLOptionElement>, 'value' | 'label'> & {
 	selectedValue?: StencilUnknown | StencilUnknown[];

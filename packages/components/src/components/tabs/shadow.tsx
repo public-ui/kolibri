@@ -25,12 +25,12 @@ import {
 } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
-import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
+import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 

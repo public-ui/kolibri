@@ -1,9 +1,9 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
+import clsx from '../../utils/clsx';
 import KolHeadingFc from '../Heading';
 
 type ClassType =

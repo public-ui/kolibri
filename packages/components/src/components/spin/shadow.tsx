@@ -4,8 +4,8 @@ import { validateLabel, validateShow, validateSpinVariant } from '../../schema';
 
 import { translate } from '../../i18n';
 
-import clsx from 'clsx';
 import type { LabelPropType, ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
+import clsx from '../../utils/clsx';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
 		case 'cycle':

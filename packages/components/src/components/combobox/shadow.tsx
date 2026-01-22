@@ -1,6 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -33,6 +32,7 @@ import type {
 	W3CInputValue,
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { ComboboxController } from './controller';
 
