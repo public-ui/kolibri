@@ -61,4 +61,8 @@
 			position: relative;
 		}
 	}
+
+	.kol-drawer__dialog .kol-card__content {
+		overflow-y: auto;
+	}
 }
