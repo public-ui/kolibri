@@ -110,7 +110,7 @@
 		"@revolist/svelte-output-target": "0.0.7",
 		"@stencil-community/eslint-plugin": "0.10.0",
 		"@stencil-community/postcss": "2.2.0",
-		"@stencil/core": "4.38.3",
+		"@stencil/core": "4.41.2",
 		"@stencil/playwright": "0.2.1",
 		"@stencil/sass": "3.2.3",
 		"@types/color-convert": "2.0.4",
