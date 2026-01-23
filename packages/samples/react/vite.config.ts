@@ -15,6 +15,9 @@ function getGitCommitHash(): string | null {
 
 export default defineConfig({
 	plugins: [react(), UnoCSS()],
+	resolve: {
+		dedupe: ['react', 'react-dom'],
+	},
 	define: {
 		'process.env.THEME_MODULE': JSON.stringify(process.env.THEME_MODULE || ''),
 		'process.env.THEME_EXPORT': JSON.stringify(process.env.THEME_EXPORT || ''),
