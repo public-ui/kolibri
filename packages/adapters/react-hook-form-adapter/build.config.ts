@@ -10,8 +10,8 @@ export default defineBuildConfig({
 	],
 	clean: true,
 	declaration: true,
+	externals: ['@public-ui/react-v19', 'react', 'react-dom', 'react-hook-form'],
 	rollup: {
 		emitCJS: true,
-		inlineDependencies: true,
 	},
 });
