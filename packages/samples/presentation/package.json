@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.0.2-rc.0",
+	"version": "4.0.2-rc.1",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
