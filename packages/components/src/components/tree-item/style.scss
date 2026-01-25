@@ -1,7 +1,9 @@
 @use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
 @layer kol-component {
+	@include kol-icon-styles();
 	$base-horizontal-padding: to-rem(8);
 
 	.kol-tree-item {

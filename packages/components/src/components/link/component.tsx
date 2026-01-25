@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolTooltipWcTag } from '../../core/component-names';
+import IconFC from '../../functional-components/Icon';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -196,10 +197,10 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 					{isExternal && (
-						<KolIconTag
+						<IconFC
 							class="kol-link__icon"
-							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							_icons={'kolicon-link-external'}
+							label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
+							icons={'kolicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
 					)}

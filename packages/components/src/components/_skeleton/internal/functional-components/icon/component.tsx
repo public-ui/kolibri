@@ -10,7 +10,7 @@ const iconBem = bem.forBlock('kol-icon');
 const BEM_CLASS_ICON = iconBem();
 const BEM_CLASS_ICON__ICON = iconBem('icon');
 
-export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ icons, label, ...htmlAttributes }) => {
+export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: classNames, icons, label, ...htmlAttributes }) => {
 	const hasAriaLabel = label.length > 0;
 	return (
 		<i
@@ -22,7 +22,7 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ icons, label, ..
 			 */
 			aria-hidden={hasAriaLabel ? undefined : 'true'}
 			aria-label={hasAriaLabel ? label : undefined}
-			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons)}
+			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, classNames)}
 			part="icon"
 			role={hasAriaLabel ? 'img' : 'presentation'}
 			{...htmlAttributes}

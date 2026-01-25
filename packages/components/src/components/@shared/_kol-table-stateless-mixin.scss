@@ -4,9 +4,11 @@
 @use './mixins' as *;
 @use './kol-button-mixin' as *;
 @use './kol-link-mixin' as *;
+@use './kol-icon-mixin' as *;
 
 @mixin kol-table-stateless-styles {
 	@include kol-table-settings-styles;
+	@include kol-icon-styles();
 
 	.kol-table {
 		$root: &;
