@@ -14,6 +14,7 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: className
 	const hasAriaLabel = label.length > 0;
 	return (
 		<i
+			{...htmlAttributes}
 			/**
 			 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
 			 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
@@ -25,7 +26,6 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: className
 			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, classNames)}
 			part="icon"
 			role={hasAriaLabel ? 'img' : 'presentation'}
-			{...htmlAttributes}
 		></i>
 	);
 };

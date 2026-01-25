@@ -3,8 +3,8 @@ import type { JSXBase } from '@stencil/core/internal';
 import { isObject, isString } from 'lodash-es';
 import clsx from '../../utils/clsx';
 
-import { type BadgeTextPropType, type HideLabelPropType, type IconOrIconClass, type KoliBriIconsProp, type LabelWithExpertSlotPropType } from '../../schema';
 import { IconFC } from '../../components/_skeleton/internal/functional-components/icon/component';
+import { type BadgeTextPropType, type HideLabelPropType, type IconOrIconClass, type KoliBriIconsProp, type LabelWithExpertSlotPropType } from '../../schema';
 import SpanCoreHelper from './SpanCoreHelper';
 
 type IconType = IconOrIconClass | undefined | null;
