@@ -3,8 +3,12 @@ import type { IconAPI, IconStates, LabelPropType } from '../../schema';
 import { IconController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { bem } from '../../schema/bem-registry';
 import clsx from '../../utils/clsx';
-import { BEM_CLASS_ICON, BEM_CLASS_ICON__ICON } from './bem';
+
+const iconBem = bem.forBlock('kol-icon');
+const BEM_CLASS_ICON = iconBem();
+const BEM_CLASS_ICON__ICON = iconBem('icon');
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
