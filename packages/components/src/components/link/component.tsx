@@ -1,7 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { KolTooltipWcTag } from '../../core/component-names';
-import IconFC from '../../functional-components/Icon';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -54,6 +53,7 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 

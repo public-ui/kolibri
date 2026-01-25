@@ -33,11 +33,11 @@ import type { InputStateWrapperProps } from '../../functional-component-wrappers
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
-import IconFC from '../../functional-components/Icon';
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 import { SingleSelectController } from './controller';
 
 /**

@@ -3,7 +3,6 @@ import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@st
 
 import { isEqual } from 'lodash-es';
 import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
-import IconFC from '../../functional-components/Icon';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import type {
@@ -41,6 +40,7 @@ import type { KoliBriTableSelectionKey } from '../../schema/types';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 
 /**
  * @internal

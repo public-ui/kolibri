@@ -7,7 +7,7 @@ import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
-import IconFC from '../../functional-components/Icon';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 
 @Component({
 	tag: 'kol-breadcrumb',
