@@ -16,7 +16,18 @@ describe('KolIconButtonFc', () => {
 		const props: IconButtonProps = { componentName: 'icon', icon: 'test-icon' };
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconButtonFc {...props} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.tagName).toBe('KOL-ICON');
+		expect(page.root?.tagName).toBe('I');
+		expect(page.root?.className).toContain('kol-icon');
+	});
+
+	it('should render icon with correct classes when componentName is icon', async () => {
+		const props: IconButtonProps = { componentName: 'icon', icon: 'fas fa-star', class: 'custom-icon-class' };
+		const page = await renderFunctionalComponentToSpecPage(() => <KolIconButtonFc {...props} />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.tagName).toBe('I');
+		expect(page.root?.className).toContain('kol-icon');
+		expect(page.root?.className).toContain('fas');
+		expect(page.root?.className).toContain('fa-star');
 	});
 
 	it('should handle onClick event', async () => {

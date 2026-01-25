@@ -1,7 +1,9 @@
 @use 'mixins' as *;
 @use '../tooltip/style' as *;
+@use 'kol-icon-mixin' as *;
 
 @mixin kol-link-styles($block-classname) {
+	@include kol-icon-styles();
 	:host {
 		// Causing linebreak, when removed
 		display: inline-block;

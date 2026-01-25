@@ -1,17 +1,15 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import { KolIconTag } from '../../core/component-names';
+import { IconFC } from '../../components/_skeleton/internal/functional-components/icon/component';
 import type { InternalIconProps } from '../../schema';
 
 export type IconProps = InternalIconProps & {
 	class?: string;
-	style?: { [key: string]: string };
 	onClick?: (event: MouseEvent) => void;
+	style?: { [key: string]: string };
 };
 
-const KolIconFc: FC<IconProps> = (props) => {
-	const { class: classNames, style, icons, label, onClick } = props;
-
-	return <KolIconTag class={classNames} style={style} onClick={onClick} _icons={icons} _label={label} />;
-};
+const KolIconFc: FC<IconProps> = ({ class: classNames, icons, label, onClick, style }) => (
+	<IconFC class={classNames} icons={icons} label={label} onClick={onClick} style={style} />
+);
 
 export default KolIconFc;

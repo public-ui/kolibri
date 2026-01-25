@@ -1,6 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["src/components/_skeleton/**/*.tsx"],
+	"ignore": ["src/components/_skeleton/internal/schema/props/helpers/number.ts", "src/components/_skeleton/internal/schema/props/show.ts"],
 	"ignoreDependencies": [
 		"@floating-ui/dom",
 		"@jest/globals",
@@ -32,5 +32,5 @@
 		"typed-bem",
 		"wcag-contrast"
 	],
-	"project": ["src/components/_skeleton/**/*.ts", "src/components/_skeleton/**/*.tsx"]
+	"project": ["src/components/_skeleton/**/*.ts*", "src/components/icon/**/*.ts*"]
 }
