@@ -53,13 +53,13 @@
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"svelte": "5.48.0",
+		"svelte": "5.48.2",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"svelte": "^5.48.0"
+		"svelte": "^5.48.2"
 	},
 	"sideEffects": false,
 	"type": "module",
