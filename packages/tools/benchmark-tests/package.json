@@ -33,7 +33,7 @@
 		"unused": "knip"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.57.0",
+		"@playwright/test": "1.58.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
 		"@types/mocha": "10.0.10",
