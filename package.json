@@ -2,7 +2,7 @@
 	"devDependencies": {
 		"lerna": "9.0.3",
 		"license-report": "6.8.1",
-		"npm-check-updates": "19.3.1",
+		"npm-check-updates": "19.3.2",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
@@ -14,26 +14,6 @@
 	},
 	"engines": {
 		"pnpm": "^10"
-	},
-	"pnpm": {
-		"overrides": {
-			"axios": "^1.12.0",
-			"body-parser": ">=2.2.1",
-			"braces": "^3.0.3",
-			"ejs": ">=3.1.10",
-			"form-data": "^4.0.4",
-			"glob": "^11.1.0",
-			"js-yaml": ">=3.14.2",
-			"lodash.pick": "npm:lodash@^4.17.21",
-			"loupe": "^2.3.7",
-			"micromatch": ">=4.0.8",
-			"nanoid": ">=3.3.8",
-			"node-forge": ">=1.3.2",
-			"semver": "^7.5.2",
-			"serialize-javascript": ">=6.0.2",
-			"tar-fs": "^3.1.1",
-			"tmp": ">=0.2.4"
-		}
 	},
 	"private": true,
 	"scripts": {
