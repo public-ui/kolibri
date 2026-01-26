@@ -16,7 +16,6 @@
 	.kol-alert {
 		@include kol-button('kol-button');
 
-		$root: &;
 		background-color: var(--color-light);
 
 		display: flex;
@@ -59,7 +58,7 @@
 			gap: 0.5em;
 			place-items: center;
 
-			@at-root #{$root}--variant-card & {
+			.kol-alert--variant-card & {
 				background-color: var(--alert-accent-color);
 				padding: to-rem(8) to-rem(16);
 			}
@@ -69,7 +68,7 @@
 			display: grid;
 			gap: to-rem(4);
 
-			@at-root #{$root}--variant-card & {
+			.kol-alert--variant-card & {
 				width: 100%;
 				min-height: to-rem(20);
 			}
@@ -84,11 +83,11 @@
 				height: var(--a11y-min-size);
 				cursor: pointer;
 
-				@at-root #{$root}--variant-msg & {
+				.kol-alert--variant-msg & {
 					--text-color: var(--alert-accent-color);
 				}
 
-				@at-root #{$root}--variant-card & {
+				.kol-alert--variant-card & {
 					--text-color: var(--color-light);
 				}
 			}
@@ -99,12 +98,12 @@
 		}
 
 		&__heading {
-			@at-root #{$root}--variant-msg & {
+			.kol-alert--variant-msg & {
 				color: var(--alert-accent-color);
 				padding-top: calc(--var-spacing / 2);
 			}
 
-			@at-root #{$root}--variant-card & {
+			.kol-alert--variant-card & {
 				color: var(--color-light);
 				display: flex;
 				width: 100%;
@@ -118,23 +117,20 @@
 			color: var(--color-light);
 			padding: 0;
 
-			@at-root #{$root}:not(#{$root}--type-default) & {
-				font-size: to-rem(20);
-			}
-
-			@at-root #{$root}--variant-msg & {
+			.kol-alert--variant-msg & {
 				color: var(--alert-accent-color);
 				place-items: baseline;
 			}
 
-			@at-root #{$root}--variant-card & {
+			.kol-alert--variant-card & {
+				font-size: to-rem(20);
 				margin-top: to-rem(-4);
 				justify-self: right;
 			}
 		}
 
 		&__content {
-			@at-root #{$root}--variant-card & {
+			.kol-alert--variant-card & {
 				padding: to-rem(16);
 			}
 		}
