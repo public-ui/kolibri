@@ -1,10 +1,11 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolIconTag, KolLinkWcTag, KolTreeTag } from '../../core/component-names';
+import { KolLinkWcTag, KolTreeTag } from '../../core/component-names';
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -47,10 +48,10 @@ export class KolTreeItemWc implements TreeItemAPI {
 									class="kol-tree-item__toggle-button"
 									onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}
 								>
-									<KolIconTag
+									<IconFC
 										class="kol-tree-item__toggle-button-icon"
-										_icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
-										_label={'' /* Label deliberately left empty */}
+										icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
+										label={'' /* Label deliberately left empty */}
 									/>
 								</span>
 							) : (

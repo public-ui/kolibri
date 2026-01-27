@@ -43,6 +43,7 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  */
 export const setEventTarget = (event: Event, target?: HTMLElement): void => {
 	if (getExperimentalMode()) {
+		// event.preventDefault(); /* WHY? */
 		Log.debug([event, target]);
 		Log.debug(`↑ We propagate the (submit) event to this target.`);
 	}

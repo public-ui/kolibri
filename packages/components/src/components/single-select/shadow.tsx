@@ -25,7 +25,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -37,6 +37,7 @@ import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 import { SingleSelectController } from './controller';
 
 /**
@@ -349,9 +350,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 							/>
 						)}
 
-						<KolIconTag
-							_icons="kolicon-chevron-down"
-							_label=""
+						<IconFC
+							icons="kolicon-chevron-down"
+							label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,
 							})}
@@ -561,7 +562,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames (e.g. `icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
 
