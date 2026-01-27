@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-click-button should render with _label="Click me" 1`] = `
+<kol-click-button>
+  <template shadowrootmode="open">
+    <button class="kol-click-button">
+      <span class="kol-click-button__label">
+        Click me
+      </span>
+    </button>
+  </template>
+</kol-click-button>
+`;
+
+exports[`kol-click-button should render with _label="Submit form" 1`] = `
+<kol-click-button>
+  <template shadowrootmode="open">
+    <button class="kol-click-button">
+      <span class="kol-click-button__label">
+        Submit form
+      </span>
+    </button>
+  </template>
+</kol-click-button>
+`;

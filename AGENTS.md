@@ -262,8 +262,9 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 
 ## Linting and Formatting
 
-- Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks. You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
-- Ensure all packages are built by running `pnpm build` before executing `pnpm lint` or `pnpm test`. Some packages rely on generated artifacts that linting and testing depend on.
+- Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks.
+  - ⚠️ **Note**: TypeScript type checking in the lint script can require built artifacts. If you've made source code changes, lint will handle any necessary compilation. Explicit pre-build is typically unnecessary.
+  - You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
 - Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
 - If your pull request only modifies Markdown files, skip `pnpm build`, `pnpm lint` and `pnpm test`. Just format the Markdown using `pnpm format` or Prettier.
 
@@ -275,8 +276,10 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 ## Testing
 
 - Run `pnpm test` from the repository root to execute all unit and integration tests.
+  - ⚠️ **Note**: Test runners (Vitest, Jest, Playwright, etc.) execute an implicit build automatically before running tests. **Do NOT run a separate `pnpm build` beforehand** — this wastes time. The test scripts handle compilation and type checking internally.
 - Visual and snapshot tests can be updated with `pnpm test:update` or via the `update-snapshots.yml` GitHub workflow (see `CONTRIBUTING.md`).
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
+  - These also perform implicit builds, so explicit pre-build is unnecessary.
 
 ## Pull Request Guidelines
 
