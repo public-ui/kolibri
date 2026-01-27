@@ -96,7 +96,7 @@
 				border-color: var(--text-border-color);
 			}
 
-			@at-root #{$root}--hide-label & {
+			.kol-span--hide-label {
 				padding: to-rem(12);
 
 				.kol-span__label {
