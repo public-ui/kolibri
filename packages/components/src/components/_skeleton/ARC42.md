@@ -51,7 +51,8 @@ This modular layout is the backbone for the architectural patterns described in 
 
 ## 2. Architecture Constraints
 
-- **Stencil** is used for authoring web components.
+- **Stencil** is used for authoring web components with **shadow: true** only (Shadow DOM enabled for style isolation).
+- Components without Shadow DOM (`shadow: false`) are implemented as **Functional Components** instead of web components to avoid style conflicts and reduce maintainability burden.
 - Components must compile to framework-agnostic Custom Elements.
 - Public API properties use an underscored naming convention (e.g. `_count`) to separate external inputs from internal state.
 - Documentation and code follow the `KoliBri` casing and repository conventions.
@@ -59,6 +60,14 @@ This modular layout is the backbone for the architectural patterns described in 
 ## 3. Context and Scope
 
 The skeleton lives inside `packages/components` and does not depend on runtime frameworks. External consumers interact through HTML attributes or DOM APIs.
+
+**Shadow DOM Strategy**: KoliBri exclusively uses Web Components with Shadow DOM enabled (`shadow: true`). This ensures:
+
+- **Style Isolation**: Component styles cannot leak into host page styles and vice versa
+- **Encapsulation**: Components maintain consistent appearance regardless of host environment
+- **Maintainability**: Clear boundaries prevent unintended style interactions
+
+Components that historically did not use Shadow DOM (`shadow: false`) are being migrated to **Functional Components** instead, which can be composed into other components without Shadow DOM overhead while maintaining clean architectural separation.
 
 ```mermaid
 flowchart LR
@@ -87,7 +96,8 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Holds normalised data in simple fields (`count`, `name`) instead of `@State` to keep Stencil re-rendering efficient.
 - Mirrors validated props into these simple fields from the corresponding `@Watch` handlers so that the renderer and controller can rely on readily available, normalised values on the component instance.
 - Delegates rendering to the controller output via `controller.getProps()`.
-- Renders the functional component always wrapped in a bare `<Host>` element without redundant class attributes (no `<Host class="kol-component-name">`). The shadow DOM handles styling isolation; the host tag name itself is sufficient for component identification.
+- Renders the functional component always wrapped in a bare `<Host>` element without redundant class attributes (no `<Host class="kol-component-name">`). **All web components use shadow DOM (shadow: true) to ensure style isolation and prevent CSS conflicts** with host page styles. The shadow DOM handles styling isolation; the host tag name itself is sufficient for component identification.
+- **Components that should not use Shadow DOM are implemented as Functional Components instead** (not web components), avoiding complexity and ensuring clean style boundaries.
 
 ### Controller Layer
 
@@ -269,6 +279,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **Decoupling**                   | Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.                                             |
 | **Event-driven communication**   | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                |
 | **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized. |
+| **Shadow DOM First**             | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                    |
 | **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                             |
 | **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                      |
 | **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                           |
@@ -279,22 +290,28 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 1. **Underscored public props**
    - _Alternative_: mirror external props directly without underscores.
    - _Reason_: underscores make the separation between public API and internal state explicit.
-2. **Centralised validation in the controller**
+2. **Shadow DOM enabled for all web components (shadow: true)**
+   - _Alternative_: allow some components to have `shadow: false`.
+   - _Reason_: Shadow DOM ensures consistent style isolation and prevents CSS conflicts from host page styles. This eliminates a category of hard-to-debug styling issues and maintains strong encapsulation boundaries.
+3. **Functional Components for non-Shadow-DOM use cases**
+   - _Alternative_: implement components without Shadow DOM as web components with `shadow: false`.
+   - _Reason_: Components without Shadow DOM requirements are cleaner and more maintainable as pure Functional Components. This avoids the complexity of managing style pollution in web components while maintaining consistent architecture for components that do require Shadow DOM.
+4. **Centralised validation in the controller**
    - _Alternative_: perform validation inside prop watchers.
    - _Reason_: keeping validation in the controller makes testing and reuse easier.
-3. **Functional component rendering**
+5. **Functional component rendering**
    - _Alternative_: render JSX directly inside the web component class.
    - _Reason_: a pure renderer improves testability and eliminates side effects.
-4. **Generic interface contracts**
+6. **Generic interface contracts**
    - _Alternative_: rely on ad-hoc typing per component.
    - _Reason_: shared interfaces keep props, callbacks, emitters and refs uniform across components, making controllers and renderers interchangeable.
-5. **Stateful controllers over stateless proxies**
+7. **Stateful controllers over stateless proxies**
    - _Alternative_: instantiate a single stateless controller and provide proxy functions in the web component layer for each business function so the web component instance can be passed into the controller rather than the other way round.
    - _Reason_: every business function would need such a proxy, creating significant boilerplate and reducing readability when implementing multiple components. The marginal benefit of reusing a single controller instance does not justify this complexity, so controllers remain stateful.
-6. **Direct assignment instead of prop-to-state mapping**
+8. **Direct assignment instead of prop-to-state mapping**
    - _Alternative_: map validated props to `@State` fields and read from there.
    - _Reason_: mapping to `@State` triggers two re-renderings in Stencil. Assigning props to plain fields after validation and handing them to the functional component results in at most one batched re-render per change.
-7. **Host element without redundant class attribute**
+9. **Host element without redundant class attribute**
    - _Alternative_: add component name as class attribute to `<Host>` (e.g. `<Host class="kol-skeleton">`).
    - _Reason_: the tag name alone (e.g. `<kol-skeleton>`) is sufficient for styling and component identification. Shadow DOM already provides style isolation. Redundant classes add noise and complicate selectors in theme files without additional benefit. The functional component is always wrapped inside the bare `<Host>` element.
 
