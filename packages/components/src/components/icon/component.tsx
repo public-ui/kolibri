@@ -8,7 +8,7 @@ import type { IconsPropType } from '../_skeleton/internal/schema/props/icons';
 import type { LabelPropType } from '../_skeleton/internal/schema/props/label';
 
 /**
- * @part icon - Ermöglicht das Styling des inneren Icons.
+ * @part icon - Allows styling of the inner icon element.
  */
 @Component({
 	tag: 'kol-icon',
