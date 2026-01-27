@@ -2,7 +2,7 @@
 
 ## 1. Introduction and Goals
 
-The `kol` skeleton component blueprint demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It is designed as a minimal, yet complete, reference implementation for new components.
+The `kol-skeleton` component blueprint demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It is designed as a minimal, yet complete, reference implementation for new components.
 
 Representative code artifacts for each layer and their responsibilities:
 
@@ -22,10 +22,24 @@ Primary goals:
 
 The skeleton mirrors the structure recommended for production-ready components. Each folder holds a single responsibility to make the pipeline explicit:
 
-- `web-components/skeleton` – custom element definition, prop watchers and lifecycle management.
-- `internal/functional-components/skeleton` – controller and stateless functional component.
-- `internal/schema` – prop schema definitions shared with other layers.
-- Supporting `internal` subfolders – building blocks (e.g. reusable button controller) that can be composed from other components.
+```text
+_skeleton/
+├── web-components/
+│   └── skeleton/              # Custom element definition
+│       └── component.tsx      # Prop watchers and lifecycle management
+├── internal/
+│   ├── functional-components/
+│   │   ├── skeleton/          # Skeleton-specific logic
+│   │   │   ├── api.tsx        # Type definitions
+│   │   │   ├── component.tsx  # Stateless functional component
+│   │   │   └── controller.ts  # State transitions and validation
+│   │   ├── click-button/      # Reusable button behaviour
+│   │   ├── base-controller.ts # Shared controller logic
+│   │   └── generic-types.ts   # Interface contracts
+│   └── schema/
+│       └── props/             # Prop types, normalisation and validation
+└── ARC42.md                   # This document
+```
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
 
@@ -122,24 +136,47 @@ This strategy yields strong decoupling so that each layer can evolve independent
 Incoming props are normalised in dedicated watchers before reaching the controller:
 
 ```ts
+// Web Component (web-components/skeleton/component.tsx)
 @Watch('_count')
 public watchCount(value?: CountPropType): void {
-  this.controller.watchCount(value);
+  this.ctrl.watchCount(value);
 }
 ```
 
-See the [controller](./internal/functional-components/skeleton/controller.ts) for the corresponding validation logic.
+```ts
+// Controller (internal/functional-components/skeleton/controller.ts)
+public watchCount(value?: CountPropType): void {
+  const count = countProp.normalize(value);
+  if (countProp.validate(count)) {
+    this.setProp('count', count);
+    this.setState('count', count);
+  }
+}
+```
+
+See the [controller](./internal/functional-components/skeleton/controller.ts) for the complete validation logic.
 
 ### Controller Initialization
 
-Web components must initialise controllers by passing the current render props to ensure proper state setup:
+Web components must initialise controllers by passing the current props to ensure proper state setup:
 
 ```ts
+// Web Component
 public componentWillLoad(): void {
-  this.controller.componentWillLoad({
+  this.ctrl.componentWillLoad({
     count: this._count,
     name: this._name,
   });
+}
+```
+
+```ts
+// Controller
+public componentWillLoad(props: ResolvedProps<SkeletonApi>): void {
+  const { count, name } = props;
+  this.watchCount(count);
+  this.watchName(name);
+  this.watchLabel(this.component.label);
 }
 ```
 
@@ -224,15 +261,17 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 8. Cross-cutting Concepts
 
-- **Composition over inheritance**: Controllers compose behaviour rather than relying on inheritance.
-- **Declarative rendering**: Functional components are pure and stateless.
-- **Decoupling**: Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.
-- **Event-driven communication**: User interaction is emitted as DOM events rather than calling functions across layers.
-- **Props Pattern**: Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized to prevent rendering with undefined values. This guarantees that rendering logic never operates on raw, unvalidated inputs and maintains data integrity throughout the component lifecycle.
-- **State ownership**: Web components own state, controllers manage transitions and functional components consume state.
-- **Template Method Pattern**: The WebComponent defines the overall component lifecycle and structure (template), while the Controller implements the specific business logic steps. The WebComponent provides itself as a reference to the Controller, allowing the Controller to modify the component's state during the execution of the template.
-- **Type safety and interface contracts**: `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers, enforcing consistent APIs and preventing accidental drift.
-- **Watcher placement**: Attach `@Watch` only to underscored public props; internal state fields remain undecorated.
+| Concept                          | Description                                                                                                                                                           |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Composition over inheritance** | Controllers compose behaviour (e.g. `ClickButtonController`) rather than relying on inheritance.                                                                      |
+| **Declarative rendering**        | Functional components are pure and stateless.                                                                                                                         |
+| **Decoupling**                   | Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.                                             |
+| **Event-driven communication**   | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                |
+| **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized. |
+| **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                             |
+| **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                      |
+| **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                           |
+| **Watcher placement**            | Attach `@Watch` only to underscored public props (`_count`); internal state fields use `@State`.                                                                      |
 
 ## 9. Design Decisions
 
@@ -271,10 +310,12 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 12. Glossary
 
-- **Controller** – orchestrates state transitions and validation.
-- **Functional Component** – pure renderer without side effects that exclusively works with Props.
-- **Props** – normalized and validated props or internal state passed to functional components for rendering. Must always be initialized before use.
-- **Schema Helper** – utility providing normalization and validation functions.
-- **Watch Decorator** – Stencil decorator that observes prop changes.
-- **Stencil** – compiler for building framework-agnostic web components.
-- **BEM** – Block Element Modifier naming convention for CSS class names.
+| Term                     | Definition                                                                                                    |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                 |
+| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                      |
+| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                         |
+| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized. |
+| **Schema Helper**        | Utility providing `normalize` and `validate` functions for props.                                             |
+| **Stencil**              | Compiler for building framework-agnostic web components.                                                      |
+| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                      |
