@@ -1,5 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"ignore": ["src/components/_skeleton/internal/schema/props/helpers/number.ts", "src/components/_skeleton/internal/schema/props/show.ts"],
 	"ignoreDependencies": [
 		"@floating-ui/dom",
 		"@jest/globals",
