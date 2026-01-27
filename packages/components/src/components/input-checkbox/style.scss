@@ -2,12 +2,14 @@
 @use '../../styles/kol-field-control-mixin' as *;
 @use '../../styles/kol-form-field-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/kol-icon-mixin' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
 @layer kol-component {
 	@include kol-form-field;
 	@include kol-field-control;
+	@include kol-icon-styles();
 
 	$root: '.kol-checkbox';
 
