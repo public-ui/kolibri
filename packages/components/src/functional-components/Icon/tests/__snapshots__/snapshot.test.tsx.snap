@@ -1,30 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`KolIconFc should render correctly 1`] = `
-<kol-icon
-  _icons="test"
-  _label="test"
-/>
-`;
+exports[`KolIconFc should have aria-hidden when no label provided 1`] = `<i aria-hidden="true" class="kol-icon kol-icon__icon test" part="icon" role="presentation"></i>`;
 
-exports[`KolIconFc should render with the correct class 1`] = `
-<kol-icon
-  _icons="test"
-  _label="test"
-  class="test-class"
-/>
-`;
+exports[`KolIconFc should have role=img when label provided 1`] = `<i aria-label="test-label" class="kol-icon kol-icon__icon test" part="icon" role="img"></i>`;
 
-exports[`KolIconFc should render with the correct icons and label 1`] = `
-<kol-icon
-  _icons="test-icons"
-  _label="test-label"
-/>
-`;
+exports[`KolIconFc should have role=presentation when no label provided 1`] = `<i aria-hidden="true" class="kol-icon kol-icon__icon test" part="icon" role="presentation"></i>`;
 
-exports[`KolIconFc should render with the correct style 1`] = `
-<kol-icon
-  _icons="test"
-  _label="test"
-/>
-`;
+exports[`KolIconFc should render correctly 1`] = `<i aria-label="test" class="kol-icon kol-icon__icon test" part="icon" role="img"></i>`;
+
+exports[`KolIconFc should render with the correct class 1`] = `<i aria-label="test" class="kol-icon kol-icon__icon test test-class" part="icon" role="img"></i>`;
+
+exports[`KolIconFc should render with the correct icons and label 1`] = `<i aria-label="test-label" class="kol-icon kol-icon__icon test-icons" part="icon" role="img"></i>`;
+
+exports[`KolIconFc should render with the correct style 1`] = `<i aria-label="test" class="kol-icon kol-icon__icon test" part="icon" role="img" style="color: red;"></i>`;
