@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolTooltipWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -53,6 +53,7 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
@@ -102,7 +103,6 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 			event.preventDefault();
 		} else {
 			if (typeof this.state._on?.onClick === 'function') {
-				event.preventDefault();
 				setEventTarget(event, this.anchorRef);
 				this.state._on?.onClick(event, this.state._href);
 			}
@@ -197,10 +197,10 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanFc>
 					{isExternal && (
-						<KolIconTag
+						<IconFC
 							class="kol-link__icon"
-							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							_icons={'kolicon-link-external'}
+							label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
+							icons={'kolicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
 					)}

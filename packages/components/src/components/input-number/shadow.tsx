@@ -32,8 +32,8 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { KolIconFc } from '../../functional-components';
 import { nonce } from '../../utils/dev.utils';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
 
@@ -172,7 +172,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="kolicon-plus" label="" />
+				<IconFC icons="kolicon-plus" label="" />
 			</button>
 		);
 	}
@@ -199,7 +199,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="kolicon-minus" label="" />
+				<IconFC icons="kolicon-minus" label="" />
 			</button>
 		);
 	}

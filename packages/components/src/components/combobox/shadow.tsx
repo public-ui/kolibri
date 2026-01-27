@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -34,6 +34,7 @@ import type {
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { IconFC } from '../_skeleton/internal/functional-components/icon/component';
 import { ComboboxController } from './controller';
 
 /**
@@ -280,9 +281,9 @@ export class KolCombobox implements ComboboxAPI {
 								}}
 							/>
 						)}
-						<KolIconTag
-							_icons="kolicon-chevron-down"
-							_label=""
+						<IconFC
+							icons="kolicon-chevron-down"
+							label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,
 							})}

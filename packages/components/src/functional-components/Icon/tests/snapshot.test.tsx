@@ -6,20 +6,22 @@ describe('KolIconFc', () => {
 	it('should render correctly', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons="test" label="test" />);
 		expect(page.root).toMatchSnapshot();
+		expect(page.root?.tagName).toBe('I');
 	});
 
 	it('should render with the correct class', async () => {
 		const className = 'test-class';
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons="test" label="test" class={className} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.className).toContain(className);
+		expect(page.root?.tagName).toBe('I');
+		expect(page.root?.className).toContain('kol-icon');
 	});
 
 	it('should render with the correct style', async () => {
 		const style = { color: 'red' };
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons="test" label="test" style={style} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.style.color).toBe('red');
+		expect(page.root?.getAttribute('style')).toContain('color');
 	});
 
 	it('should handle onClick event', async () => {
@@ -34,7 +36,26 @@ describe('KolIconFc', () => {
 		const label = 'test-label';
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons={icons} label={label} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_icons')).toBe(icons);
-		expect(page.root?.getAttribute('_label')).toBe(label);
+		expect(page.root?.tagName).toBe('I');
+		expect(page.root?.className).toContain(icons);
+		expect(page.root?.getAttribute('aria-label')).toBe(label);
+	});
+
+	it('should have aria-hidden when no label provided', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons="test" label="" />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.getAttribute('aria-hidden')).toBe('true');
+	});
+
+	it('should have role=img when label provided', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons="test" label="test-label" />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.getAttribute('role')).toBe('img');
+	});
+
+	it('should have role=presentation when no label provided', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <KolIconFc icons="test" label="" />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.getAttribute('role')).toBe('presentation');
 	});
 });

@@ -229,6 +229,130 @@ Overusing them in theme files can collide with variables defined on a host page.
 Expose only well‑prefixed design tokens as custom properties and rely on SASS variables for
 internal calculations to keep components robust and avoid unintended style leaks.
 
+### SCSS Architecture Guidelines: BEM with Smart Nesting
+
+When writing component theme styles, follow these principles for clean, maintainable SCSS:
+
+#### 1. **Flat BEM Structure (Root Level)**
+
+All BEM modifiers and independent elements belong at **root level** of the mixin. Never nest BEM class names:
+
+```scss
+@mixin kol-alert-theme {
+	// ✅ All BEM selectors on root (flat)
+	.kol-alert { ... }
+	.kol-alert--variant-msg { ... }
+	.kol-alert--variant-card { ... }
+	.kol-alert--type-default { ... }
+	.kol-alert__container { ... }
+	.kol-alert__heading { ... }
+}
+```
+
+**Why?** BEM classnames are independent selectors. Each class should be predictable and flat.
+
+#### 2. **Contextual Nesting (When Variants Change Element Behavior)**
+
+Nest **only when a modifier changes how a child element behaves**. Keep all rules for an element together:
+
+```scss
+.kol-alert__closer {
+	place-self: center;
+
+	.kol-button {
+		border-radius: 50%;
+		width: var(--a11y-min-size);
+		height: var(--a11y-min-size);
+		cursor: pointer;
+
+		// ✅ Variant changes button styling - nest here
+		.kol-alert--variant-msg & {
+			--text-color: var(--alert-accent-color);
+		}
+
+		.kol-alert--variant-card & {
+			--text-color: var(--color-light);
+		}
+	}
+}
+```
+
+**Rule of thumb**: All rules for `.kol-button` in `.kol-alert__closer` stay in one place. This keeps related styles together and makes maintenance easier.
+
+#### 3. **Never Use `$root` or `@at-root`**
+
+❌ **Outdated pattern (removed):**
+
+```scss
+.kol-alert {
+	$root: &;
+	&__closer {
+		@at-root #{$root}--variant-msg & { ... }
+	}
+}
+```
+
+✅ **Modern pattern (direct nesting):**
+
+```scss
+.kol-alert__closer {
+	.kol-button {
+		.kol-alert--variant-msg & { ... }
+	}
+}
+```
+
+This is clearer and doesn't require Sass variable gymnastics.
+
+#### 4. **Structure Template**
+
+```scss
+@mixin kol-component-theme {
+	// 1. Base component (no children)
+	.kol-component {
+		display: flex;
+		width: 100%;
+	}
+
+	// 2. All BEM modifiers at root (flat)
+	.kol-component--variant-a {
+		...
+	}
+
+	.kol-component--type-default {
+		...
+	}
+
+	// 3. Elements with contextual nesting for variants
+	.kol-component__heading {
+		font-weight: bold;
+
+		.kol-component--variant-a & {
+			color: red;
+		}
+	}
+
+	.kol-component__content {
+		padding: 1rem;
+
+		.kol-component--variant-a & {
+			background: white;
+		}
+	}
+
+	// 4. Child components with variant context
+	.kol-component__button {
+		.kol-button {
+			cursor: pointer;
+
+			.kol-component--variant-a & {
+				--text-color: var(--accent);
+			}
+		}
+	}
+}
+```
+
 ### General rules for custom themes
 
 - Do not use `!important` in your styles, as this will override the styles of the basis global and component layers.
@@ -238,6 +362,7 @@ internal calculations to keep components robust and avoid unintended style leaks
 - Do not set `margin` or `padding` in the basis global and component layers. If you need to set a different margin or padding, you can do this in the theme global or component layers.
 - Do not use `overflow: hidden` in styling or theming, as it often causes issues for reuse and should be avoided.
 - **Do not use `@layer` declarations in utility files**: Helper files, mixin files, and partial files (starting with `_`) should not contain `@layer` declarations. These files are utilities and should be layer-agnostic. This is enforced by the custom Stylelint rule `kolibri/no-layer-in-utility-files`.
+- **Never use `$root` variables or `@at-root` in component mixins**: All selectors should be explicit. Use direct child/descendant nesting only when a modifier changes element behavior within a specific context.
 
 ## Samples
 
@@ -262,21 +387,25 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 
 ## Linting and Formatting
 
-- Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks. You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
-- Ensure all packages are built by running `pnpm build` before executing `pnpm lint` or `pnpm test`. Some packages rely on generated artifacts that linting and testing depend on.
+- Run `pnpm lint` to check for linting errors across all packages. This script runs ESLint, Stylelint and TypeScript checks.
+  - ⚠️ **Note**: TypeScript type checking in the lint script can require built artifacts. If you've made source code changes, lint will handle any necessary compilation. Explicit pre-build is typically unnecessary.
+  - You can try to automatically fix linting issues with `pnpm lint:eslint --fix`, but this may not resolve all issues.
 - Run `pnpm format` to format all code files using Prettier. You can try to automatically fix linting issues with `pnpm format -w`, but this may not resolve all issues.
 - If your pull request only modifies Markdown files, skip `pnpm build`, `pnpm lint` and `pnpm test`. Just format the Markdown using `pnpm format` or Prettier.
 
 ### Pre-commit checklist
 
 - **Always run `pnpm format` (or `pnpm --filter <package> format` for a single workspace) right before committing.** Formatting failures are one of the most common reasons for blocked quality gates, so make this the last step before `git commit` even for documentation-only changes.
+- **For SCSS changes**: Always run `pnpm lint:stylelint --fix` (or `pnpm --filter <package> lint:stylelint --fix`) to automatically correct formatting, property order, and selector structure rules before committing. This ensures compliance with BEM structure and style consistency.
 - After formatting, re-stage affected files with `git add -u` so the formatted content is what gets committed.
 
 ## Testing
 
 - Run `pnpm test` from the repository root to execute all unit and integration tests.
+  - ⚠️ **Note**: Test runners (Vitest, Jest, Playwright, etc.) execute an implicit build automatically before running tests. **Do NOT run a separate `pnpm build` beforehand** — this wastes time. The test scripts handle compilation and type checking internally.
 - Visual and snapshot tests can be updated with `pnpm test:update` or via the `update-snapshots.yml` GitHub workflow (see `CONTRIBUTING.md`).
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
+  - These also perform implicit builds, so explicit pre-build is unnecessary.
 
 ## Pull Request Guidelines
 
