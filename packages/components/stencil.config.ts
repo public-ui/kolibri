@@ -156,6 +156,10 @@ let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
 	},
+	{
+		type: 'www',
+		dir: './build/kolibri',
+	},
 	// {
 	//   type: 'custom',
 	//   name: 'CSP',
