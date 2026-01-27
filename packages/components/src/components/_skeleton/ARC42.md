@@ -87,6 +87,7 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Holds normalised data in simple fields (`count`, `name`) instead of `@State` to keep Stencil re-rendering efficient.
 - Mirrors validated props into these simple fields from the corresponding `@Watch` handlers so that the renderer and controller can rely on readily available, normalised values on the component instance.
 - Delegates rendering to the controller output via `controller.getProps()`.
+- Renders the functional component always wrapped in a bare `<Host>` element without redundant class attributes (no `<Host class="kol-component-name">`). The shadow DOM handles styling isolation; the host tag name itself is sufficient for component identification.
 
 ### Controller Layer
 
@@ -293,6 +294,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 6. **Direct assignment instead of prop-to-state mapping**
    - _Alternative_: map validated props to `@State` fields and read from there.
    - _Reason_: mapping to `@State` triggers two re-renderings in Stencil. Assigning props to plain fields after validation and handing them to the functional component results in at most one batched re-render per change.
+7. **Host element without redundant class attribute**
+   - _Alternative_: add component name as class attribute to `<Host>` (e.g. `<Host class="kol-skeleton">`).
+   - _Reason_: the tag name alone (e.g. `<kol-skeleton>`) is sufficient for styling and component identification. Shadow DOM already provides style isolation. Redundant classes add noise and complicate selectors in theme files without additional benefit. The functional component is always wrapped inside the bare `<Host>` element.
 
 ## 10. Quality Requirements
 
