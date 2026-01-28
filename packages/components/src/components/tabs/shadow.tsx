@@ -166,7 +166,7 @@ export class KolTabs implements TabsAPI {
 						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
 						_tooltipAlign={button._tooltipAlign}
-						_buttonVariant={this.state._selected === index ? 'custom' : undefined}
+						_variant={this.state._selected === index ? 'custom' : undefined}
 						_customClass={this.state._selected === index ? 'selected' : undefined}
 						_ariaControls={`tabpanel-${index}`}
 						_ariaSelected={this.state._selected === index}

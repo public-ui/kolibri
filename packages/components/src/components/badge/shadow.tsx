@@ -34,7 +34,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 				class="kol-badge__smart-button"
 				_ariaControls={this.id}
 				_ariaDescription={props._ariaDescription}
-				_buttonVariant={props._variant}
+				_variant={props._variant}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
 				_hideLabel={true}

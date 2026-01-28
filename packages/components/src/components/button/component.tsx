@@ -142,12 +142,12 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
 						'kol-button--disabled': isDisabled,
-						[`kol-button--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
+						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
 						'kol-button--inline': this.state._inline === true,
 						'kol-button--standalone': this.state._inline === false,
 						'kol-button--hide-label': hideLabel,
 						[this.state._customClass as string]:
-							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
 					disabled={isDisabled}
 					id={this.state._id}
@@ -221,7 +221,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Defines the custom class attribute if _buttonVariant="custom" is set.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
 
@@ -308,14 +308,14 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _buttonVariant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
 		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_buttonVariant: 'normal',
+		_variant: 'normal',
 	};
 
 	public constructor() {
@@ -434,7 +434,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
-	@Watch('_buttonVariant')
+	@Watch('_variant')
 	public validateButtonVariant(value?: ButtonVariantPropType): void {
 		validateButtonVariant(this, value);
 	}
@@ -461,7 +461,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateButtonVariant(this._buttonVariant);
+		this.validateButtonVariant(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }
