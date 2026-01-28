@@ -29,8 +29,7 @@ export class KolClickButton implements WebComponentInterface<ClickButtonApi> {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		this.ctrl.focus();
-		return Promise.resolve();
+		return Promise.resolve(this.ctrl.focus());
 	}
 
 	public componentWillLoad(): void {

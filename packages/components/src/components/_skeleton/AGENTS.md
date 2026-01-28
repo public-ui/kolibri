@@ -21,3 +21,7 @@ architectural and design details, see [ARC42.md](./ARC42.md).
 - Public props use a leading `_` (for example `_count`) and mirror to internal fields without the underscore
 - Watchers attach only to these underscored props
 - **Do not create web components with `shadow: false`** – use Functional Components instead for such cases
+
+## Event Handler Convention
+
+**The controller event-handler policy is detailed in [ARC42](./ARC42.md#controller-layer).** Refer there for the rationale, examples and preferred rendering pattern.

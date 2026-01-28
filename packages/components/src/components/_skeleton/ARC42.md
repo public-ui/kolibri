@@ -107,6 +107,13 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Provides render props via `getProps()` so the view layer operates on a single immutable snapshot.
 - Composes other controllers (e.g. the click button behaviour) to reuse established logic across components.
 
+#### Event Handler Policy
+
+- **Controller methods stay as prototype methods** so they are allocated once by the JS engine and stay performant across hundreds of instances.
+- When a controller method is handed to JSX/TSX (for example the `handleClick` callback consumed by `SkeletonFC`) the renderer wraps it once in a short arrow (`<SkeletonFC handleClick={(event) => this.ctrl.handleClick(event)} />`) so no `.bind(this)` is needed in the render tree and the controller still executes with the correct context.
+
+This keeps the controller code lean while keeping the renderer integration simple and aligned with the Skeleton blueprint.
+
 ### Functional Component Layer
 
 - Is a pure renderer that receives props, callbacks, emitters and refs from the controller.

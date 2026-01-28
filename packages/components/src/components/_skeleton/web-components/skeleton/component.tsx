@@ -22,8 +22,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		this.ctrl.focus();
-		return Promise.resolve();
+		return Promise.resolve(this.ctrl.focus());
 	}
 
 	/**
@@ -31,8 +30,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 */
 	@Method()
 	public async toggle(): Promise<void> {
-		this.ctrl.toggle();
-		return Promise.resolve();
+		return Promise.resolve(this.ctrl.toggle());
 	}
 
 	/**
