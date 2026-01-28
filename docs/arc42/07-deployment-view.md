@@ -1,5 +1,7 @@
 # 7. Deployment View
 
+This section describes the infrastructure and deployment scenarios for Public UI - KoliBri. It covers development environments, CI/CD pipelines, package distribution strategies, and various application deployment patterns that consumers can use when integrating KoliBri components into their projects.
+
 ## 7.1 Infrastructure Overview
 
 ```mermaid
@@ -163,33 +165,35 @@ Primary distribution channel for KoliBri packages:
 
 ```mermaid
 graph TB
-    subgraph Published Packages
-        Core[@public-ui/components]
-        DefaultTheme[@public-ui/theme-default]
-        ECLTheme[@public-ui/theme-ecl]
-        ReactAdapter[@public-ui/react]
-        AngularAdapter[@public-ui/angular-v21]
-        VueAdapter[@public-ui/vue]
-        CLI[@public-ui/kolibri-cli]
+    subgraph "Published Packages"
+        Core["@public-ui/components"]
+        DefaultTheme["@public-ui/theme-default"]
+        ECLTheme["@public-ui/theme-ecl"]
+        ReactAdapter["@public-ui/react"]
+        AngularAdapter["@public-ui/angular-v21"]
+        VueAdapter["@public-ui/vue"]
+        CLI["@public-ui/kolibri-cli"]
     end
     
-    subgraph npm Registry
-        Core --> Registry
-        DefaultTheme --> Registry
-        ECLTheme --> Registry
-        ReactAdapter --> Registry
-        AngularAdapter --> Registry
-        VueAdapter --> Registry
-        CLI --> Registry
+    subgraph "npm Registry"
+        Registry[npm Registry]
     end
-    
-    Registry[npm Registry] -->|mirror| unpkg
-    Registry -->|mirror| jsDelivr
     
     subgraph CDN
         unpkg[unpkg.com]
         jsDelivr[jsDelivr.net]
     end
+    
+    Core --> Registry
+    DefaultTheme --> Registry
+    ECLTheme --> Registry
+    ReactAdapter --> Registry
+    AngularAdapter --> Registry
+    VueAdapter --> Registry
+    CLI --> Registry
+    
+    Registry -->|mirror| unpkg
+    Registry -->|mirror| jsDelivr
 ```
 
 ### Package Structure
@@ -226,7 +230,7 @@ Verification:
 pnpm view @public-ui/components dist.provenance
 
 # Verify signatures (if npm client supports)
-pnpm audit signatures --package=@public-ui/components@4.0.2
+pnpm audit signatures --package=@public-ui/components@latest
 ```
 
 ## 7.5 Application Deployment Scenarios
@@ -289,7 +293,7 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
-register(DEFAULT, defineCustomElements);
+await register(DEFAULT, defineCustomElements);
 
 function App() {
 	return <KolButton _label="Click me" />;
@@ -337,11 +341,11 @@ graph LR
 
 ```html
 <script type="module">
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.0.2/loader/index.mjs';
-	import { register } from 'https://unpkg.com/@public-ui/components@4.0.2/dist/index.js';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.0.2/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@latest/loader/index.mjs';
+	import { register } from 'https://unpkg.com/@public-ui/components@latest/dist/index.js';
+	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@latest/index.js';
 
-	register(DEFAULT, defineCustomElements);
+	await register(DEFAULT, defineCustomElements);
 </script>
 ```
 
@@ -351,22 +355,22 @@ graph LR
 
 ```mermaid
 graph TB
-    subgraph User Tier
+    subgraph "User Tier"
         Browser[Web Browser]
         AT[Assistive Technology]
     end
     
-    subgraph CDN Tier
+    subgraph "CDN Tier"
         CDN[Content Delivery Network]
     end
     
-    subgraph Application Tier
-        AppServer[Application Server<br/>Node.js/Static]
-        API[Backend API<br/>(optional)]
+    subgraph "Application Tier"
+        AppServer[Application Server - Node.js/Static]
+        API[Backend API - optional]
     end
     
-    subgraph Data Tier
-        DB[(Database<br/>(optional))]
+    subgraph "Data Tier"
+        DB[Database - optional]
     end
     
     Browser -->|HTTPS| CDN

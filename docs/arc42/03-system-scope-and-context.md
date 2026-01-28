@@ -1,5 +1,7 @@
 # 3. System Scope and Context
 
+This section defines the boundaries of Public UI - KoliBri by identifying what is inside and outside the system. It clarifies the relationships with external systems, users, and dependencies, providing both business and technical perspectives on the system's environment.
+
 ## 3.1 Business Context
 
 ```mermaid

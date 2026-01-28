@@ -1,6 +1,6 @@
-# KoliBri Architecture Documentation (arc42)
+# Public UI - KoliBri Architecture Documentation (arc42)
 
-This directory contains the architecture documentation for KoliBri following the arc42 template.
+This directory contains the comprehensive architecture documentation for Public UI - KoliBri (KoliBri), an accessible web component library. The documentation follows the proven arc42 template structure, providing stakeholders, developers, and architects with clear insights into the system's design, decisions, and quality requirements.
 
 ## Table of Contents
 

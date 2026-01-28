@@ -1,6 +1,10 @@
 # 6. Runtime View
 
+This section illustrates the dynamic behavior of Public UI - KoliBri through key runtime scenarios. Using sequence diagrams and detailed descriptions, it shows how components interact during common operations such as initialization, rendering, event handling, and theme switching.
+
 ## 6.1 Component Registration and Initialization
+
+The component registration process establishes the foundation for all KoliBri components in an application. This critical initialization step must occur before any components are rendered.
 
 ```mermaid
 sequenceDiagram
@@ -359,7 +363,7 @@ sequenceDiagram
 - Proper ARIA roles on all interactive elements
 - Keyboard navigation support
 - Focus management (trap focus in modals, etc.)
-- Sufficient color contrast (WCAG AA minimum)
+- Sufficient color contrast (WCAG 2.2 AAA compliant)
 - Minimum touch target sizes (44x44px)
 - Semantic HTML structure
 - Error message associations

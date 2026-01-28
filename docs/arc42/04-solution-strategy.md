@@ -1,5 +1,7 @@
 # 4. Solution Strategy
 
+This section presents the fundamental approach and key decisions that shape Public UI - KoliBri's architecture. It describes the chosen technologies, architectural patterns, and strategies for achieving the project's quality goals while addressing its core requirements.
+
 ## 4.1 Technology Decisions
 
 | Decision | Rationale | Consequences |
@@ -102,11 +104,11 @@ This layering ensures:
 
 ### Accessibility First
 
-- Every component implements WCAG 2.1 AA standards
-- Keyboard navigation mandatory
+- Every component implements WCAG 2.2 Level AAA standards
+- Keyboard navigation mandatory for all interactive elements
 - Screen reader testing for all interactive components
 - Automated axe-core testing in CI
-- Manual accessibility reviews
+- Manual accessibility reviews and compliance verification
 
 ### Standards Compliance
 

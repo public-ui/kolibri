@@ -1,5 +1,7 @@
 # 11. Risks and Technical Debt
 
+This section identifies and assesses potential risks to the Public UI - KoliBri project, along with current technical debt items. Understanding these factors helps prioritize mitigation efforts and plan for sustainable long-term development.
+
 ## 11.1 Identified Risks
 
 ### Risk R1: Browser API Changes
@@ -244,7 +246,7 @@
 - Provide theme migration guides
 - Archive old themes as examples
 
-**Timeline:** 2026 Q3
+**Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ### TD2: Test Coverage Gaps
 
@@ -290,7 +292,7 @@
 - Automated documentation generation improvements
 - Community documentation contributions
 
-**Timeline:** 2026 Q2
+**Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ### TD4: Deprecated Components
 
@@ -313,7 +315,7 @@
 - Remove in next major version
 - Clear communication to users
 
-**Timeline:** v5.0 (2026 Q4)
+**Timeline:** Planned for next major version release
 
 ### TD5: Build Time Optimization
 
@@ -336,7 +338,7 @@
 - Better use of Nx caching
 - Consider parallel builds where safe
 
-**Timeline:** 2026 Q3
+**Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ### TD6: SSR Support
 
@@ -359,7 +361,7 @@
 - Document SSR limitations
 - Provide SSR examples
 
-**Timeline:** 2026 Q2-Q3
+**Timeline:** To be reviewed in upcoming quarterly planning sessions-Q3
 
 ### TD7: Accessibility Test Automation
 
@@ -382,7 +384,7 @@
 - Consider automated screen reader testing tools
 - Improve accessibility test documentation
 
-**Timeline:** 2026 Q2
+**Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ### TD8: Monorepo Structure
 
@@ -405,7 +407,7 @@
 - Create package template
 - Document standards
 
-**Timeline:** 2026 Q4
+**Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ### TD9: Migration Tool Coverage
 
@@ -451,7 +453,7 @@
 - Create performance dashboard
 - Set up performance alerts
 
-**Timeline:** 2026 Q3
+**Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ## 11.3 Risk Management Strategy
 

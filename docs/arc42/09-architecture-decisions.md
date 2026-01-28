@@ -1,5 +1,7 @@
 # 9. Architecture Decisions
 
+This section documents the significant architectural decisions made during the development of Public UI - KoliBri. Each Architecture Decision Record (ADR) captures the context, decision, and consequences of important choices, providing transparency and rationale for future maintainers and contributors.
+
 ## 9.1 Decision Records
 
 ### ADR-001: Use Web Components as Foundation
@@ -393,6 +395,8 @@ Use Playwright as the E2E testing framework.
 
 ## 9.2 Open Decisions
 
+These decisions are under consideration and will be addressed in future planning cycles as the project evolves and new requirements emerge.
+
 ### OD-001: Server-Side Rendering Strategy
 
 **Status:** Open
@@ -407,36 +411,36 @@ SSR support for Web Components is complex. Current hydrate adapter is limited. F
 3. Partner with SSR framework projects
 4. Document limitations and workarounds
 
-**Decision Needed By:** 2026 Q2
+**Decision Timeline:** To be reviewed in upcoming quarterly planning sessions
 
 ### OD-002: Component Library Composition
 
 **Status:** Open
 
 **Context:**
-Applications might not need all 50+ components. Tree-shaking helps but isn't perfect. Consider splitting into smaller packages (forms, navigation, feedback, etc.).
+Applications might not need all 50+ components. Stencil already provides automatic lazy loading and code splitting on a per-component basis, loading only the components that are actually used in the application. This architectural decision is about whether additional package-level splitting would provide meaningful benefits beyond what Stencil's lazy loading already achieves.
 
 **Options:**
 
-1. Keep single components package with tree-shaking
-2. Split into category packages (@public-ui/forms, @public-ui/navigation)
-3. Provide both options
-4. Wait for better tree-shaking support
+1. Keep single components package with Stencil's lazy loading (current approach)
+2. Split into category packages (@public-ui/forms, @public-ui/navigation) for additional granularity
+3. Provide both options to support different use cases
+4. Wait for enhanced tree-shaking and bundler capabilities
 
-**Decision Needed By:** 2026 Q3
+**Decision Timeline:** To be reviewed after evaluating real-world bundle size feedback
 
 ### OD-003: Design Token Standard
 
 **Status:** Open
 
 **Context:**
-Design tokens are becoming standardized (Design Tokens Community Group). Consider adopting a standard format for theme tokens.
+The default theme deliberately avoids CSS custom properties (design tokens) for theming because they cross the Shadow DOM boundary and can be manipulated from outside, reducing component robustness. Each organization can decide whether to use design tokens in their custom themes. For internal calculations and maintainability, SASS variables are used instead as they provide similar benefits without the external manipulability concerns.
 
 **Options:**
 
-1. Adopt Design Tokens W3C Community Group format
-2. Create custom token format
-3. Support multiple formats
-4. Continue with current SASS variables
+1. Adopt Design Tokens W3C Community Group format for custom themes (while keeping base theme token-free)
+2. Create custom token format optimized for Shadow DOM isolation
+3. Support multiple token formats to accommodate different organizational preferences
+4. Continue with current approach: SASS variables for base theme, optional tokens for custom themes
 
-**Decision Needed By:** 2026 Q4
+**Decision Timeline:** To be reviewed as W3C Design Token Community Group standards mature

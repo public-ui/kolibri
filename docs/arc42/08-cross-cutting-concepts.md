@@ -1,10 +1,14 @@
 # 8. Cross-cutting Concepts
 
+This section covers architectural principles and patterns that span multiple components and layers of the system. These cross-cutting concerns—accessibility, internationalization, security, performance, and testing—apply consistently throughout Public UI - KoliBri and form the foundation of its design philosophy.
+
 ## 8.1 Accessibility (A11y)
+
+Accessibility is the cornerstone of Public UI - KoliBri. Every component is designed and tested to ensure usability for all people, regardless of their abilities or the assistive technologies they use.
 
 ### Principles
 
-KoliBri follows the **WCAG 2.1 Level AA** standard and **BITV** requirements as core principles.
+Public UI - KoliBri follows the **WCAG 2.2 Level AAA** standards and **BITV** requirements as core principles, always implementing the latest version of accessibility standards.
 
 ### Implementation Strategy
 
@@ -45,31 +49,51 @@ Every KoliBri component includes:
 
 ## 8.2 Internationalization (i18n)
 
+Public UI - KoliBri provides robust internationalization support through browser-based language detection and flexible configuration options.
+
 ### Language Support
 
-Components support internationalization through:
+Components support internationalization based on browser language and locale settings, as well as HTML element attributes:
 
-- **Locale-aware formatting**: Dates, numbers, currencies
-- **RTL support**: Right-to-left language layouts
-- **Label customization**: All text labels configurable
-- **External localization**: Integration with application i18n systems
+- **Browser Language Detection**: Automatically uses browser's language settings
+- **HTML Attributes**: Respects `lang`, `dir` (for RTL), and locale attributes on the `html` element
+- **Translation Management**: Optional key-value language maps configured during bootstrap/register call
+- **i18next Integration**: Native support for i18next translation framework
 
 ### Implementation
 
 ```typescript
-// Component props accept translated strings
-<KolButton _label={t('button.submit')} />
+// Translation management via register configuration
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+import { DEFAULT } from '@public-ui/theme-default';
 
-// Built-in formatting respects locale
-<KolInputDate _locale="de-DE" />
+await register(DEFAULT, defineCustomElements, {
+	translations: {
+		'de': {
+			'button.submit': 'Absenden',
+			'button.cancel': 'Abbrechen'
+		},
+		'en': {
+			'button.submit': 'Submit',
+			'button.cancel': 'Cancel'
+		}
+	}
+});
+
+// Components receive translated strings via props
+<KolButton _label="button.submit" />
+
+// Browser locale respected for formatting
+<KolInputDate /> // Uses browser locale automatically
 ```
 
 ### Best Practices
 
-- Components don't contain hard-coded text
-- All user-facing strings passed via props
-- Applications handle translation management
-- Components respect `lang` attribute on HTML element
+- Set `lang` and `dir` attributes on the HTML element for proper localization
+- Provide translation keys rather than hard-coded text
+- Use i18next integration for complex translation needs
+- Components automatically format dates, numbers, and currencies based on browser locale
 
 ## 8.3 Security
 

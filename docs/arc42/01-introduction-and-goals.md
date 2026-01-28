@@ -1,12 +1,14 @@
 # 1. Introduction and Goals
 
+This section introduces Public UI - KoliBri (KoliBri), outlining its core mission, stakeholders, and overarching quality objectives. Understanding these foundational elements provides context for all subsequent architectural decisions and design choices.
+
 ## 1.1 Requirements Overview
 
-**KoliBri** (Component Library for Accessibility) is an open-source web component library designed to make HTML accessible, semantic, and valid by default.
+**Public UI - KoliBri (KoliBri)** is an open-source web component library designed to make HTML accessible, semantic, and valid by default. It serves as a reference implementation of accessibility standards while remaining flexible enough for diverse organizational needs.
 
 ### Key Requirements
 
-- **Accessibility First**: Ensure all components meet WCAG 2.1 standards and BITV requirements
+- **Accessibility First**: Ensure all components meet WCAG 2.2 Level AAA standards and BITV requirements
 - **Framework Agnostic**: Work seamlessly with any web framework or vanilla JavaScript
 - **Multi-theming**: Support multiple design systems and corporate identities
 - **Reusability**: Provide atomic, flexible components that can be composed into complex interfaces

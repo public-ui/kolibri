@@ -1,5 +1,7 @@
 # 2. Architecture Constraints
 
+This section documents the technical, organizational, and legal boundaries within which Public UI - KoliBri must operate. These constraints shape architectural decisions and guide implementation choices throughout the project.
+
 ## 2.1 Technical Constraints
 
 | Constraint | Description | Motivation |
@@ -39,7 +41,7 @@
 
 | Constraint | Description | Verification |
 |-----------|-------------|--------------|
-| **WCAG 2.1 AA Compliance** | All components must meet WCAG 2.1 Level AA | Automated axe-core testing + manual review |
+| **WCAG 2.2 AAA Compliance** | All components must meet WCAG 2.2 Level AAA standards | Automated axe-core testing + manual review |
 | **BITV Compliance** | Components must meet German accessibility requirements | Manual testing and certification |
 | **Browser Support** | Modern browsers with ES2017+ support | Automated cross-browser testing |
 | **Bundle Size** | Keep individual components small and tree-shakeable | Bundle size monitoring in CI |

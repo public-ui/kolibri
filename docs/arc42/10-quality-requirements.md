@@ -1,5 +1,7 @@
 # 10. Quality Requirements
 
+This section defines the concrete quality goals for Public UI - KoliBri through measurable scenarios and acceptance criteria. It translates the abstract quality objectives from Section 1 into specific, testable requirements that guide development and validation efforts.
+
 ## 10.1 Quality Tree
 
 ```mermaid

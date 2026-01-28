@@ -1,5 +1,7 @@
 # 5. Building Block View
 
+This section decomposes Public UI - KoliBri into its major structural elements, showing how packages, components, and modules are organized and how they interact. It provides progressively more detailed views of the system's static structure, from high-level packages down to individual component organization.
+
 ## 5.1 Whitebox Overall System
 
 ```mermaid
