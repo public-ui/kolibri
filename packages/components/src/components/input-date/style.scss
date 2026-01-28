@@ -34,4 +34,12 @@
 			content: 'native-icon-not-focused';
 		}
 	}
+
+	.kol-input {
+		cursor: text;
+
+		&::-webkit-calendar-picker-indicator {
+			cursor: pointer;
+		}
+	}
 }
