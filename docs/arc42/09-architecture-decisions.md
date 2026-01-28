@@ -393,6 +393,60 @@ Use Playwright as the E2E testing framework.
 - Selenium: Older, slower, more complex
 - TestCafe: Less ecosystem support
 
+### ADR-015: Automatic Component-Level Lazy Loading via Stencil
+
+**Status:** Accepted
+
+**Context:**
+Applications using KoliBri might not need all 50+ components loaded immediately. Bundle size and performance are critical concerns for web applications.
+
+**Decision:**
+Rely on Stencil's built-in lazy loading and code splitting capabilities, which automatically load only the components actually used in the application on a per-component basis.
+
+**Consequences:**
+
+- ✅ Components automatically loaded on-demand when first used
+- ✅ No manual configuration required for lazy loading
+- ✅ Minimal initial bundle size
+- ✅ Optimal performance without developer intervention
+- ✅ Each component compiled to separate bundle for efficient loading
+- ❌ Requires modern bundler support for ES modules
+- ❌ Additional HTTP requests for each component (mitigated by HTTP/2)
+
+**Alternatives Considered:**
+
+- Split into category packages: More complex maintenance, less flexible
+- Single monolithic bundle: Larger initial load, slower performance
+- Manual lazy loading: More developer burden, error-prone
+
+### ADR-016: SASS Variables for Base Theme (No Design Tokens)
+
+**Status:** Accepted
+
+**Context:**
+Design tokens (CSS custom properties) are becoming popular for theming, but they cross the Shadow DOM boundary and can be manipulated from outside the component, potentially breaking the component's appearance and reducing robustness.
+
+**Decision:**
+Use SASS variables exclusively for internal calculations and styling in the base theme. Organizations can optionally use design tokens in their custom themes, but the base theme avoids them to maintain component robustness and prevent external manipulation.
+
+**Consequences:**
+
+- ✅ Components remain robust and predictable in all environments
+- ✅ No external manipulation of component internals via CSS variables
+- ✅ Similar maintainability benefits as design tokens (variables, calculations)
+- ✅ Organizations free to use design tokens in custom themes if desired
+- ✅ Clear separation between component-internal styling and external customization
+- ❌ Less runtime flexibility compared to CSS custom properties
+- ❌ Theme changes require recompilation rather than runtime updates
+- ❌ Cannot leverage some modern CSS features that rely on custom properties
+
+**Alternatives Considered:**
+
+- Heavy use of CSS custom properties: External manipulation risk, less robust
+- Design Tokens W3C format: Same issues as CSS custom properties for base theme
+- No variables at all: Poor maintainability, code duplication
+- Component-specific CSS variables only: Still crosses Shadow DOM boundary
+
 ## 9.2 Open Decisions
 
 These decisions are under consideration and will be addressed in future planning cycles as the project evolves and new requirements emerge.
@@ -412,35 +466,3 @@ SSR support for Web Components is complex. Current hydrate adapter is limited. F
 4. Document limitations and workarounds
 
 **Decision Timeline:** To be reviewed in upcoming quarterly planning sessions
-
-### OD-002: Component Library Composition
-
-**Status:** Open
-
-**Context:**
-Applications might not need all 50+ components. Stencil already provides automatic lazy loading and code splitting on a per-component basis, loading only the components that are actually used in the application. This architectural decision is about whether additional package-level splitting would provide meaningful benefits beyond what Stencil's lazy loading already achieves.
-
-**Options:**
-
-1. Keep single components package with Stencil's lazy loading (current approach)
-2. Split into category packages (@public-ui/forms, @public-ui/navigation) for additional granularity
-3. Provide both options to support different use cases
-4. Wait for enhanced tree-shaking and bundler capabilities
-
-**Decision Timeline:** To be reviewed after evaluating real-world bundle size feedback
-
-### OD-003: Design Token Standard
-
-**Status:** Open
-
-**Context:**
-The default theme deliberately avoids CSS custom properties (design tokens) for theming because they cross the Shadow DOM boundary and can be manipulated from outside, reducing component robustness. Each organization can decide whether to use design tokens in their custom themes. For internal calculations and maintainability, SASS variables are used instead as they provide similar benefits without the external manipulability concerns.
-
-**Options:**
-
-1. Adopt Design Tokens W3C Community Group format for custom themes (while keeping base theme token-free)
-2. Create custom token format optimized for Shadow DOM isolation
-3. Support multiple token formats to accommodate different organizational preferences
-4. Continue with current approach: SASS variables for base theme, optional tokens for custom themes
-
-**Decision Timeline:** To be reviewed as W3C Design Token Community Group standards mature

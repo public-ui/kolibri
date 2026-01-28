@@ -63,7 +63,7 @@ Components support internationalization based on browser language and locale set
 ### Implementation
 
 ```typescript
-// Translation management via register configuration
+// Translation management via register configuration for component-internal texts
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
@@ -71,27 +71,28 @@ import { DEFAULT } from '@public-ui/theme-default';
 await register(DEFAULT, defineCustomElements, {
 	translations: {
 		'de': {
-			'button.submit': 'Absenden',
-			'button.cancel': 'Abbrechen'
+			'kol.button.close': 'Schließen',
+			'kol.modal.close': 'Schließen'
 		},
 		'en': {
-			'button.submit': 'Submit',
-			'button.cancel': 'Cancel'
+			'kol.button.close': 'Close',
+			'kol.modal.close': 'Close'
 		}
 	}
 });
 
-// Components receive translated strings via props
-<KolButton _label="button.submit" />
+// For application text, pass translated strings directly via props
+<KolButton _label={t('app.button.submit')} />
 
-// Browser locale respected for formatting
-<KolInputDate /> // Uses browser locale automatically
+// Browser locale respected for date/number formatting
+<KolInputDate /> // Automatically uses browser locale for formatting
 ```
 
 ### Best Practices
 
 - Set `lang` and `dir` attributes on the HTML element for proper localization
-- Provide translation keys rather than hard-coded text
+- Component-internal texts can be customized via translation keys in register configuration
+- Application-specific text should be translated externally and passed via component props
 - Use i18next integration for complex translation needs
 - Components automatically format dates, numbers, and currencies based on browser locale
 
