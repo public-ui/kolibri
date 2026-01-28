@@ -25,4 +25,12 @@
 			content: 'native-icon-not-focused';
 		}
 	}
+
+	.input {
+		cursor: text;
+
+		input::-webkit-calendar-picker-indicator {
+			cursor: pointer;
+		}
+	}
 }
