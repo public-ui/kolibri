@@ -2,7 +2,7 @@
 	"devDependencies": {
 		"lerna": "9.0.3",
 		"license-report": "6.8.1",
-		"npm-check-updates": "19.3.1",
+		"npm-check-updates": "19.3.2",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
@@ -46,7 +46,9 @@
 			"diff@>=5.0.0 <5.2.2": ">=5.2.2",
 			"diff@>=6.0.0 <8.0.3": ">=8.0.3",
 			"undici@<6.23.0": ">=6.23.0",
-			"undici@>=7.0.0 <7.18.2": ">=7.18.2"
+			"undici@>=7.0.0 <7.18.2": ">=7.18.2",
+			"hono@<4.11.7": ">=4.11.7",
+			"tar@<7.5.7": ">=7.5.7"
 		}
 	},
 	"private": true,
