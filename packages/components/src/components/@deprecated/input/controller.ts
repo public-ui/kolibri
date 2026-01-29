@@ -39,8 +39,8 @@ import { validateTabIndex } from '../../../schema/props/tab-index';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
-import { debounce } from 'lodash-es';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
+import { debounce } from '../../../utils/debounce';
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
 
