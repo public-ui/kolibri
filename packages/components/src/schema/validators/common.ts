@@ -1,6 +1,6 @@
-export const isObject = (value: unknown): boolean => typeof value === 'object' && value !== null;
+export const isObject = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
-export const isString = (value: unknown, minLength = 0): boolean => typeof value === 'string' && value.length >= minLength;
+export const isString = (value: unknown, minLength = 0): value is string => typeof value === 'string' && value.length >= minLength;
 
 export const isEqual = (left: unknown, right: unknown): boolean => {
 	if (Object.is(left, right)) {
