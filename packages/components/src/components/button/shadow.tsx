@@ -74,7 +74,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_value={this._value}
-				_buttonVariant={this._variant}
+				_variant={this._variant}
 			>
 				<slot name="expert" slot="expert"></slot>
 			</KolButtonWcTag>

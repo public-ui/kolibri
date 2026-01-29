@@ -334,7 +334,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
-								_buttonVariant="ghost"
+								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="single-select-delete"
 								class={clsx('kol-single-select__delete', {

@@ -164,7 +164,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
 					_value={this._value}
-					_buttonVariant={this._variant}
+					_variant={this._variant}
 					data-testid="popover-button"
 					class="kol-popover-button__button"
 					ref={(element) => (this.refButton = element)}
