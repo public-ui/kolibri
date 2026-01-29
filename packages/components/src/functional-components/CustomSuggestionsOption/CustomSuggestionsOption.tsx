@@ -30,7 +30,9 @@ const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({
 		const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
 		const parts = text.split(regex);
 
-		return parts.map((part, partIndex) => (regex.test(part) ? <mark key={partIndex}>{part}</mark> : part));
+		parts[1] = <mark>{parts[1]}</mark>;
+
+		return parts;
 	};
 
 	return (
@@ -49,7 +51,7 @@ const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({
 			class={clsx('kol-custom-suggestions-option', { 'kol-custom-suggestions-option--disabled': disabled })}
 			onKeyDown={onKeyDown}
 		>
-			{highlightSearchTerm(String(option), searchTerm || '')}
+			<span>{highlightSearchTerm(String(option), searchTerm || '')}</span>
 		</li>
 	);
 };
