@@ -3,11 +3,10 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from '../../utils/clsx';
 
 import {
-	isObject,
-	isString,
 	type BadgeTextPropType,
 	type HideLabelPropType,
 	type IconOrIconClass,
+	type KoliBriCustomIcon,
 	type KoliBriIconsProp,
 	type LabelWithExpertSlotPropType,
 } from '../../schema';
@@ -25,6 +24,18 @@ export type SpanProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	hideLabel?: HideLabelPropType;
 };
 
+const normalizeIconProps = (icon?: IconOrIconClass | null): KoliBriCustomIcon | null => {
+	if (!icon) {
+		return null;
+	}
+
+	if (typeof icon === 'string') {
+		return { icon };
+	}
+
+	return icon;
+};
+
 const KolSpanFc: FC<SpanProps> = (props, children) => {
 	const { class: classNames, label, hideLabel = false, badgeText, allowMarkdown, icons, ...other } = props;
 	let topIconProps: IconType = null;
@@ -32,28 +43,26 @@ const KolSpanFc: FC<SpanProps> = (props, children) => {
 	let rightIconProps: IconType = null;
 	let bottomIconProps: IconType = null;
 
-	if (isObject(icons)) {
-		topIconProps = icons.top;
-		leftIconProps = icons.left;
-		rightIconProps = icons.right;
-		bottomIconProps = icons.bottom;
-	} else if (isString(icons)) {
-		leftIconProps = {
-			icon: icons,
-		};
+	if (typeof icons === 'object' && icons !== null) {
+		topIconProps = normalizeIconProps(icons.top);
+		leftIconProps = normalizeIconProps(icons.left);
+		rightIconProps = normalizeIconProps(icons.right);
+		bottomIconProps = normalizeIconProps(icons.bottom);
+	} else if (typeof icons === 'string') {
+		leftIconProps = { icon: icons };
 	}
 
 	return (
 		<span class={clsx('kol-span', { 'kol-span--hide-label': hideLabel }, classNames)} {...other}>
-			{isObject(topIconProps) && <IconHelper class="top" {...topIconProps} />}
+			{topIconProps && <IconHelper class="top" {...topIconProps} />}
 			<span class="kol-span__container">
-				{isObject(leftIconProps) && <IconHelper class="left" {...leftIconProps} />}
+				{leftIconProps && <IconHelper class="left" {...leftIconProps} />}
 				<SpanCoreHelper label={label} hideLabel={hideLabel} allowMarkdown={allowMarkdown} badgeText={badgeText}>
 					{children}
 				</SpanCoreHelper>
-				{isObject(rightIconProps) && <IconHelper class="right" {...rightIconProps} />}
+				{rightIconProps && <IconHelper class="right" {...rightIconProps} />}
 			</span>
-			{isObject(bottomIconProps) && <IconHelper class="bottom" {...bottomIconProps} />}
+			{bottomIconProps && <IconHelper class="bottom" {...bottomIconProps} />}
 		</span>
 	);
 };
