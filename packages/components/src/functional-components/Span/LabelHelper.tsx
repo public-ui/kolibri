@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import { isString } from 'lodash-es';
 import clsx from '../../utils/clsx';
 
+import { isString } from '../../schema/validators/common';
 import { md } from '../../utils/markdown';
 import KolInternalUnderlinedBadgeTextFc from '../InternalUnderlinedBadgeText';
 

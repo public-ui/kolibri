@@ -1,8 +1,7 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { isString } from 'lodash-es';
 import { translate } from '../../i18n';
-import { buildBadgeTextString } from '../../schema';
+import { buildBadgeTextString, isString } from '../../schema';
 import clsx from '../../utils/clsx';
 import InternalUnderlinedBadgeText from '../InternalUnderlinedBadgeText';
 

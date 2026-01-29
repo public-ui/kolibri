@@ -1,9 +1,16 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { isObject, isString } from 'lodash-es';
 import clsx from '../../utils/clsx';
 
-import { type BadgeTextPropType, type HideLabelPropType, type IconOrIconClass, type KoliBriIconsProp, type LabelWithExpertSlotPropType } from '../../schema';
+import {
+	isObject,
+	isString,
+	type BadgeTextPropType,
+	type HideLabelPropType,
+	type IconOrIconClass,
+	type KoliBriIconsProp,
+	type LabelWithExpertSlotPropType,
+} from '../../schema';
 
 import IconHelper from './IconHelper';
 import SpanCoreHelper from './SpanCoreHelper';

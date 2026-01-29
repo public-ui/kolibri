@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
-import { isEqual } from 'lodash-es';
+import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
@@ -37,7 +37,7 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
-import clsx from '../../utils/clsx';
+import { isEqual } from '../../schema/validators';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
