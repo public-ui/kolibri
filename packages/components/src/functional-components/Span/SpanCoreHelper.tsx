@@ -1,5 +1,4 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
-import { isString } from '../../schema/validators';
 
 import { showExpertSlot } from '../../schema';
 import LabelHelper from './LabelHelper';
@@ -16,7 +15,7 @@ const KolSpanCoreHelperFc: FC<{ label: string; hideLabel?: boolean; badgeText?: 
 			<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="kol-span__label" hidden={hideExpertSlot}>
 				{children}
 			</span>
-			{isString(badgeText) && badgeText.length > 0 && (
+			{typeof badgeText === 'string' && badgeText.length > 0 && (
 				<kbd class="badge-text-hint" aria-hidden="true">
 					{badgeText}
 				</kbd>

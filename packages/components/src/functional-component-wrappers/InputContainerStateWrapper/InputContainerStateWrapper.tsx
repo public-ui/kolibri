@@ -9,6 +9,7 @@ import {
 	type InputPasswordStates,
 	type InputRangeStates,
 	type InputTextStates,
+	type KoliBriCustomIcon,
 	type KoliBriHorizontalIcons,
 	type MsgPropType,
 	type SelectStates,
@@ -18,7 +19,6 @@ import {
 
 import KolIconButtonFc from '../../functional-components/IconButton';
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
-import { isObject, isString } from '../../schema/validators';
 
 type InputState =
 	| TextareaStates
@@ -33,6 +33,18 @@ type InputState =
 
 export type InputContainerStateWrapperProps = Partial<InputContainerProps> & {
 	state: InputState;
+};
+
+const normalizeIconProps = (icon?: IconOrIconClass): KoliBriCustomIcon | undefined => {
+	if (!icon) {
+		return undefined;
+	}
+
+	if (typeof icon === 'string') {
+		return { icon };
+	}
+
+	return icon;
 };
 
 function getInputContainerProps(state: InputState): {
@@ -68,15 +80,8 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = (
 ) => {
 	const { icons, smartButton, disabled, msg, touched } = getInputContainerProps(state);
 
-	let leftIconProps: IconOrIconClass | undefined = icons?.left;
-	if (isString(leftIconProps)) {
-		leftIconProps = { icon: leftIconProps };
-	}
-
-	let rightIconProps: IconOrIconClass | undefined = icons?.right;
-	if (isString(rightIconProps)) {
-		rightIconProps = { icon: rightIconProps };
-	}
+	const leftIconProps = normalizeIconProps(icons?.left);
+	const rightIconProps = normalizeIconProps(icons?.right);
 
 	const startAdornment = [];
 	const endAdornment = [];
@@ -90,17 +95,17 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = (
 	}
 
 	if (leftIconProps) {
-		startAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(leftIconProps) ? leftIconProps : {})} />);
+		startAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...leftIconProps} />);
 	}
 
-	if (isObject(smartButton)) {
+	if (smartButton) {
 		endAdornment.push(
 			<KolIconButtonFc componentName="button" class="kol-input-container__smart-button" {...smartButton} hideLabel={true} disabled={disabled} />,
 		);
 	}
 
 	if (rightIconProps) {
-		endAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(rightIconProps) ? rightIconProps : {})} />);
+		endAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...rightIconProps} />);
 	}
 
 	if (defaultEndAdornment) {
