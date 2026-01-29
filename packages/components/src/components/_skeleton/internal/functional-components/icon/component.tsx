@@ -11,6 +11,7 @@ const BEM_CLASS_ICON = iconBem();
 const BEM_CLASS_ICON__ICON = iconBem('icon');
 
 export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ icons, label, ...htmlAttributes }) => {
+	const { class: htmlClass, ...htmlAttributesRest } = htmlAttributes;
 	const hasAriaLabel = label.length > 0;
 	return (
 		<i
@@ -22,10 +23,10 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ icons, label, ..
 			 */
 			aria-hidden={hasAriaLabel ? undefined : 'true'}
 			aria-label={hasAriaLabel ? label : undefined}
-			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons)}
+			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, htmlClass)}
 			part="icon"
 			role={hasAriaLabel ? 'img' : 'presentation'}
-			{...htmlAttributes}
+			{...htmlAttributesRest}
 		></i>
 	);
 };
