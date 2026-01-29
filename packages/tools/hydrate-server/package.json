@@ -61,7 +61,7 @@
 		"@grpc/proto-loader": "0.8.0",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "14.0.2",
-		"fastify": "5.7.1"
+		"fastify": "5.7.2"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
