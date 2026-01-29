@@ -86,7 +86,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
             </span>
           </span>
         </span>
-        <i aria-hidden="" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" part="icon" role="presentation"></i>
+        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" part="icon" role="presentation"></i>
       </a>
       <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" class="kol-link__tooltip"></kol-tooltip-wc>
     </kol-link-wc>
