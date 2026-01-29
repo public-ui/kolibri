@@ -42,7 +42,7 @@
 		"@unocss/vite": "66.5.10",
 		"@vitejs/plugin-react-swc": "4.2.2",
 		"cpy-cli": "6.0.0",
-		"eslint": "8.57.1",
+		"eslint": "9.26.0",
 		"eslint-plugin-html": "8.1.4",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",

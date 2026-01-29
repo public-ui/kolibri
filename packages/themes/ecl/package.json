@@ -75,7 +75,7 @@
 		"autoprefixer": "10.4.23",
 		"cpy-cli": "6.0.0",
 		"cross-env": "10.1.0",
-		"eslint": "8.57.1",
+		"eslint": "9.26.0",
 		"nodemon": "3.1.11",
 		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.6",

@@ -65,7 +65,7 @@
 		"@typescript-eslint/parser": "7.18.0",
 		"autoprefixer": "10.4.23",
 		"cpy-cli": "6.0.0",
-		"eslint": "8.57.1",
+		"eslint": "9.26.0",
 		"nodemon": "3.1.11",
 		"postcss": "8.5.6",
 		"prettier": "3.8.1",
