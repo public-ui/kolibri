@@ -10,11 +10,12 @@ const iconBem = bem.forBlock('kol-icon');
 const BEM_CLASS_ICON = iconBem();
 const BEM_CLASS_ICON__ICON = iconBem('icon');
 
-export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ icons, label, ...htmlAttributes }) => {
-	const { class: htmlClass, ...htmlAttributesRest } = htmlAttributes;
+export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: classNames, icons, label, ...htmlAttributes }) => {
+	// label should be trimmed by normalization in controller
 	const hasAriaLabel = label.length > 0;
 	return (
 		<i
+			{...htmlAttributes}
 			/**
 			 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
 			 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
@@ -23,10 +24,9 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ icons, label, ..
 			 */
 			aria-hidden={hasAriaLabel ? undefined : 'true'}
 			aria-label={hasAriaLabel ? label : undefined}
-			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, htmlClass)}
+			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, classNames)}
 			part="icon"
 			role={hasAriaLabel ? 'img' : 'presentation'}
-			{...htmlAttributesRest}
 		></i>
 	);
 };
