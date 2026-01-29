@@ -28,6 +28,7 @@
 		"rgba-convert",
 		"stencil-awesome-test",
 		"tslib",
+		"typed-bem",
 		"twig",
 		"wcag-contrast"
 	],
