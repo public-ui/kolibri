@@ -16,9 +16,9 @@ import {
 	type TextareaStates,
 } from '../../schema';
 
-import { isObject, isString } from 'lodash-es';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
+import { isObject, isString } from '../../schema/validators';
 
 type InputState =
 	| TextareaStates

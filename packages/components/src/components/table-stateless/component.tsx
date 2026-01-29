@@ -2,7 +2,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import clsx from 'clsx';
-import { isEqual } from 'lodash-es';
 import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
@@ -42,6 +41,7 @@ import { validateMinWidth } from '../../schema/props/min-width';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import { validateTableSettings as validateTableSettingsProp } from '../../schema/props/table-settings';
 import type { ColumnSettings, KoliBriTableSelectionKey } from '../../schema/types';
+import { isEqual } from '../../schema/validators';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 

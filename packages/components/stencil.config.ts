@@ -282,9 +282,6 @@ export const config: Config = {
 	},
 	testing: {
 		setupFilesAfterEnv: ['./test-env.js'],
-		moduleNameMapper: {
-			'^lodash-es$': 'lodash',
-		},
 	},
 	/**
 	 * @see https://github.com/stenciljs/core/pull/6389
