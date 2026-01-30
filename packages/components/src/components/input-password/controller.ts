@@ -6,7 +6,7 @@ import { validatePasswordVariant } from '../../schema/props/variant/password-var
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
-import { debounce } from 'lodash-es';
+import { debounce } from '../../utils/debounce';
 
 export class InputPasswordController extends InputIconController implements InputPasswordWatches {
 	protected readonly component: Generic.Element.Component & InputPasswordProps;

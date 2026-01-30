@@ -14,7 +14,7 @@ import {
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
-import { debounce } from 'lodash-es';
+import { debounce } from '../../utils/debounce';
 
 export class TextareaController extends InputIconController implements TextareaWatches {
 	protected readonly component: Generic.Element.Component & TextareaProps;
