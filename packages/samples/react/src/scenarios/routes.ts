@@ -10,6 +10,7 @@ import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
 import { PerformanceTest } from './performance-test';
 import { RHFBasic } from './react-hook-form/basic';
+import { RHFReset } from './react-hook-form/reset';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
 import { SampleFormWithValidation } from './sample-form-with-validation';
 import { StaticForm } from './static-form';
@@ -28,6 +29,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
 		'react-hook-form-adapter': RHFBasic,
+		'react-hook-form-reset': RHFReset,
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'static-form': StaticForm,
 		'sample-form-with-validation': SampleFormWithValidation,
