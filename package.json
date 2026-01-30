@@ -2,7 +2,7 @@
 	"devDependencies": {
 		"lerna": "9.0.3",
 		"license-report": "6.8.1",
-		"npm-check-updates": "19.3.1",
+		"npm-check-updates": "19.3.2",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
