@@ -6,6 +6,7 @@ export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
 export type KoliBriTableDataType = Record<string, unknown>;
 export type KoliBriTableSelectionKey = string | number;
 export type KoliBriTableSelectionKeys = KoliBriTableSelectionKey[];
+
 export type KoliBriTableCell = {
 	colSpan?: number;
 	data?: KoliBriTableDataType;
@@ -17,6 +18,7 @@ export type KoliBriTableCell = {
 };
 
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
+	headerCell?: true;
 	hidable?: boolean;
 	key?: string;
 	resizable?: boolean;

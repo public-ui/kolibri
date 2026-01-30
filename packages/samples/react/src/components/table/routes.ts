@@ -1,4 +1,6 @@
 import { Routes } from '../../shares/types';
+import { TableActionColumns } from './action-columns';
+import { TableActionColumnPerformance } from './action-columns-performance';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableDirectionAwareSort } from './direction-aware-sort';
@@ -32,6 +34,8 @@ export const TABLE_ROUTES: Routes = {
 		'non-hidable-columns': TableNonHidableColumns,
 		'pagination-position': PaginationPosition,
 		'predefined-settings': PredefinedSettings,
+		'action-columns': TableActionColumns,
+		'action-columns-performance': TableActionColumnPerformance,
 		'render-cell': TableRenderCell,
 		'settings-column-options': TableSettingsColumnOptions,
 		'sort-data': TableSortData,

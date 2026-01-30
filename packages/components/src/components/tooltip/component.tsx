@@ -21,6 +21,7 @@ export class KolTooltipWc implements TooltipAPI {
 
 	private arrowElement?: HTMLDivElement;
 	private previousSibling?: Element | null;
+	private parentElement?: Element | null;
 	private tooltipElement?: HTMLDivElement;
 	private hasFocusIn = false;
 	private hasMouseIn = false;
@@ -76,6 +77,7 @@ export class KolTooltipWc implements TooltipAPI {
 			this.tooltipElement.classList.remove('hide');
 			this.tooltipElement.classList.add('show');
 			this.tooltipElement.style.setProperty('display', 'block');
+			this.parentElement?.classList.add('hastooltip');
 			getDocument().addEventListener('keyup', this.hideTooltipByEscape, {
 				once: true,
 			});
@@ -101,6 +103,7 @@ export class KolTooltipWc implements TooltipAPI {
 			tooltipClosed();
 			this.tooltipElement.classList.remove('show');
 			this.tooltipElement.classList.add('hide');
+			this.parentElement?.classList.remove('hastooltip');
 
 			if (this.cleanupAutoPositioning) {
 				this.cleanupAutoPositioning();
@@ -272,6 +275,7 @@ export class KolTooltipWc implements TooltipAPI {
 
 	public connectedCallback(): void {
 		this.previousSibling = this.host?.previousElementSibling ?? null;
+		this.parentElement = this.host?.parentElement ?? null;
 	}
 
 	public componentDidRender(): void {

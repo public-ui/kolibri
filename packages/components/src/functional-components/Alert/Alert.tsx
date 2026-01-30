@@ -1,6 +1,6 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import { type JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
+import clsx from '../../utils/clsx';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
@@ -99,7 +99,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 				</div>
 				{hasCloser && (
 					<KolButtonWcTag
-						class={BEM_CLASS_ALERT__CLOSER}
+						class={BEM_CLASS_ALERT__CLOSER + ' kol-close-button'}
 						data-testid="alert-close-button"
 						_ariaDescription={label?.trim() || ''}
 						_hideLabel

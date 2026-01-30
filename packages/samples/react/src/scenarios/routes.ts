@@ -15,6 +15,7 @@ import { SampleFormWithValidation } from './sample-form-with-validation';
 import { StaticForm } from './static-form';
 import { ToolbarItemOrder } from './toolbar-item-order';
 import { TooltipPositioning } from './tooltip-positioning';
+import { ZIndexScenario } from './z-index';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
@@ -33,6 +34,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'toolbar-item-order': ToolbarItemOrder,
 		'tooltip-positioning': TooltipPositioning,
+		'z-index': ZIndexScenario,
 		'performance-test': PerformanceTest,
 	},
 };

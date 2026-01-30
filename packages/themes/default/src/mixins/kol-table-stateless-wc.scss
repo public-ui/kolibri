@@ -1,7 +1,9 @@
-@use '../mixins/to-rem' as *;
+@use './to-rem' as *;
 @use './kol-table-settings-wc' as *;
 @use './alert-wc' as *;
 @use './pagination-mixin' as *;
+@use './button' as *;
+@use './link' as *;
 
 @mixin kol-table-stateless-theme {
 	@include kol-table-settings-theme;
@@ -27,6 +29,7 @@
 		&__head {
 			position: sticky;
 			top: 0;
+			z-index: 10;
 		}
 
 		&__caption {
@@ -81,6 +84,12 @@
 			&--selection {
 				width: to-rem(62);
 			}
+		}
+
+		&__cell-actions {
+			gap: to-rem(4);
+			@include kol-button('kol-button');
+			@include kol-link('kol-link');
 		}
 
 		&__spacer {

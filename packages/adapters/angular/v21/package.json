@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v21",
-	"version": "4.0.1",
+	"version": "4.0.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -65,10 +65,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "21.0.8",
-		"@angular/compiler": "21.0.8",
-		"@angular/compiler-cli": "21.0.8",
-		"@angular/core": "21.0.8",
+		"@angular/common": "21.1.1",
+		"@angular/compiler": "21.1.1",
+		"@angular/compiler-cli": "21.1.1",
+		"@angular/core": "21.1.1",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "6.0.0",
 		"@types/minimist": "1.2.5",
@@ -79,7 +79,7 @@
 		"zone.js": "0.16.0"
 	},
 	"peerDependencies": {
-		"@angular/core": "^21.0.8",
+		"@angular/core": "^21.1.1",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [

@@ -1,8 +1,8 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
 import { translate } from '../../i18n';
 import type { MaxLengthBehaviorPropType } from '../../schema';
+import clsx from '../../utils/clsx';
 
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	currentLength: number;

@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
 import { KolCardWcTag } from '../../core/component-names';
 import type { DialogAPI, DialogStates, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
+import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 

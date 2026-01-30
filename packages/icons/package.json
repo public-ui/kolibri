@@ -6,7 +6,7 @@
 		"oslllo-svg-fixer": "5.0.0",
 		"rimraf": "6.1.2",
 		"serve": "14.2.5",
-		"svgtofont": "6.5.0"
+		"svgtofont": "6.5.1"
 	},
 	"scripts": {
 		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",

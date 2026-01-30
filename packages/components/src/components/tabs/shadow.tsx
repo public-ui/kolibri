@@ -25,12 +25,12 @@ import {
 } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
-import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
+import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -166,7 +166,7 @@ export class KolTabs implements TabsAPI {
 						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
 						_tooltipAlign={button._tooltipAlign}
-						_buttonVariant={this.state._selected === index ? 'custom' : undefined}
+						_variant={this.state._selected === index ? 'custom' : undefined}
 						_customClass={this.state._selected === index ? 'selected' : undefined}
 						_ariaControls={`tabpanel-${index}`}
 						_ariaSelected={this.state._selected === index}
@@ -386,6 +386,7 @@ export class KolTabs implements TabsAPI {
 			div.setAttribute('id', `tabpanel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
+			div.setAttribute('tabindex', '0');
 			const slot = document.createElement('slot');
 			slot.setAttribute('name', `tabpanel-slot-${i}`);
 			div.appendChild(slot);
