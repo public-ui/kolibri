@@ -303,6 +303,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			placeholder: this.state._placeholder,
 			ref: this.catchRef,
 			required: this.state._required,
+			role: 'combobox',
 			state: this.state,
 			type: 'text',
 			value: this._inputValue,
@@ -410,7 +411,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 									/>
 								))
 							) : (
-								<li class="kol-single-select__no-results-message">{this.translateNoResultsMessage} </li>
+								// role=alert is the only role/state thats read from screenreader
+								<li class="kol-single-select__no-results-message" role="alert">
+									{this.translateNoResultsMessage}{' '}
+								</li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
 					)}
