@@ -268,6 +268,7 @@ export class KolCombobox implements ComboboxAPI {
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
+								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="combobox-delete"
 								class={clsx('kol-combobox__delete', {
@@ -289,8 +290,12 @@ export class KolCombobox implements ComboboxAPI {
 							onClick={this.toggleListbox.bind(this)}
 						/>
 					</div>
-					{this._isOpen && !isDisabled && (
-						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+					{
+						<CustomSuggestionsOptionsGroupFc
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+							hidden={!this._isOpen || isDisabled}
+						>
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
@@ -326,7 +331,7 @@ export class KolCombobox implements ComboboxAPI {
 									/>
 								))}
 						</CustomSuggestionsOptionsGroupFc>
-					)}
+					}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
