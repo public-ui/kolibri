@@ -42,5 +42,10 @@
 				color: var(--color-danger);
 			}
 		}
+
+		&__input {
+			//space for focus outline
+			padding-top: to-rem(2);
+		}
 	}
 }
