@@ -121,6 +121,7 @@ pnpm audit signatures --package=@public-ui/components@<version>
 ## Resources
 
 - [Get Started](https://public-ui.github.io/en/docs/get-started/first-steps)
+- [Package status (npm majors 2-4)](./docs/PACKAGE_STATUS.md)
 - [Contributing](./CONTRIBUTING.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
 - [Known Issues](http://public-ui.github.io/en/docs/known-issues)
