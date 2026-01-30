@@ -74,7 +74,7 @@ test.describe(COMPONENT_NAME, () => {
 		await page.setContent(`<kol-combobox _label="Input" _disabled _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');
 		await expect(input).toBeDisabled();
-		const listbox = page.locator('.kol-custom-suggestions-options-group--open"');
+		const listbox = page.locator('.kol-custom-suggestions-options-group--open');
 		await expect(listbox).toHaveCount(0);
 	});
 });
