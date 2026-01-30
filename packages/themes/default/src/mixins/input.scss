@@ -10,6 +10,8 @@
 		border-style: solid;
 		border-radius: var(--border-radius);
 		padding: 0 to-rem(8);
+		//space for focus outline
+		margin-top: to-rem(2);
 		border-width: 2px;
 		column-gap: to-rem(6);
 		align-items: stretch;
