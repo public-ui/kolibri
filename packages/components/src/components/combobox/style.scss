@@ -12,7 +12,6 @@
 @layer kol-component {
 	@include kol-alert;
 
-	@include kol-button-styles('kol-button');
 	@include kol-custom-suggestions-option;
 	@include kol-custom-suggestions-options-group;
 	@include kol-custom-suggestions-toggle;
@@ -21,9 +20,12 @@
 	@include kol-input;
 
 	.kol-combobox {
-		&__delete .kol-button {
-			margin-top: -2px;
-			margin-bottom: -2px;
+		&__delete {
+			@include kol-button-styles('kol-button');
+			.kol-button {
+				margin-top: -2px;
+				margin-bottom: -2px;
+			}
 		}
 	}
 
