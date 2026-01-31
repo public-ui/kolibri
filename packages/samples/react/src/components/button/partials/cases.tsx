@@ -1,13 +1,12 @@
 import * as React from 'react';
 
-import type { Components } from '@public-ui/components';
 import { KolButton } from '@public-ui/react-v19';
 import { useToasterService } from '../../../hooks/useToasterService';
 import type { ButtonSampleProps } from './type';
 
 import './tooltip.scss';
 
-const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<Components.KolTooltipWc>;
+const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<{ _label: string }>;
 
 export const ButtonCases: React.FC<ButtonSampleProps> = (props) => {
 	const { children, ...other } = props;
