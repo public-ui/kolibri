@@ -46,5 +46,5 @@ jobs:
           	}
           }
           EOF
-          npm --prefix "$WORKDIR" install --ignore-scripts --no-audit --no-fund
+          npm --prefix "$WORKDIR" install --package-lock-only --ignore-scripts --no-audit --no-fund
           snyk test --package-manager=npm --file="$WORKDIR/package.json" --project-name="kolibri-components-v${{ matrix.major }}"

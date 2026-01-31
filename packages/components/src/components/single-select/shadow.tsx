@@ -359,11 +359,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 							onClick={this.toggleListbox.bind(this)}
 						/>
 					</div>
-					{this._isOpen && !isDisabled && (
+					{
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
+							hidden={!this._isOpen || isDisabled}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
@@ -417,7 +418,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								</li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
-					)}
+					}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
