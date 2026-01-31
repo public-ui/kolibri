@@ -78,38 +78,38 @@ export class KolTooltipWc implements TooltipAPI {
 		}
 	};
 
-	private handleMouseEnter = (): void => {
+	private handleMouseEnter() {
 		this.hasMouseIn = true;
 		this.showOrHideTooltip();
-	};
+	}
 
-	private handleMouseleave = (event: Event): void => {
-		this.hasMouseIn = this.tooltipElement?.contains((event as MouseEvent).relatedTarget as Node) ?? false;
+	private handleMouseLeave() {
+		this.hasMouseIn = false;
 		this.showOrHideTooltip();
-	};
+	}
 
-	private handleFocusIn = (): void => {
+	private handleFocusIn() {
 		this.hasFocusIn = true;
 		this.showOrHideTooltip();
-	};
+	}
 
-	private handleFocusout = (): void => {
+	private handleFocusOut() {
 		this.hasFocusIn = false;
 		this.showOrHideTooltip();
-	};
+	}
 
 	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseenter', this.handleMouseEnter);
-		el.addEventListener('mouseleave', this.handleMouseleave);
-		el.addEventListener('focusin', this.handleFocusIn);
-		el.addEventListener('focusout', this.handleFocusout);
+		el.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
+		el.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+		el.addEventListener('focusin', this.handleFocusIn.bind(this));
+		el.addEventListener('focusout', this.handleFocusOut.bind(this));
 	};
 
 	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseenter', this.handleMouseEnter);
-		el.removeEventListener('mouseleave', this.handleMouseleave);
-		el.removeEventListener('focusin', this.handleFocusIn);
-		el.removeEventListener('focusout', this.handleFocusout);
+		el.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
+		el.removeEventListener('mouseleave', this.handleMouseLeave.bind(this));
+		el.removeEventListener('focusin', this.handleFocusIn.bind(this));
+		el.removeEventListener('focusout', this.handleFocusOut.bind(this));
 	};
 
 	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
@@ -137,12 +137,10 @@ export class KolTooltipWc implements TooltipAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-tooltip-wc">
-				{this.state._label !== '' && (
-					<div class="tooltip-floating" ref={this.catchTooltipElement}>
-						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<KolSpanWcTag class="tooltip-area tooltip-content" id={this.state._id} _badgeText={this._badgeText} _label={this.state._label}></KolSpanWcTag>
-					</div>
-				)}
+				<div class="tooltip-floating" hidden={this.state._label.length === 0} ref={this.catchTooltipElement}>
+					<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
+					<KolSpanWcTag class="tooltip-area tooltip-content" id={this.state._id} _badgeText={this._badgeText} _label={this.state._label}></KolSpanWcTag>
+				</div>
 			</Host>
 		);
 	}
@@ -216,13 +214,12 @@ export class KolTooltipWc implements TooltipAPI {
 	}
 
 	private handleEventListeners(): void {
-		const nextSibling = this.host?.previousElementSibling ?? null;
-		this.resyncListeners(this.previousSibling, nextSibling as Element, true);
+		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling, true);
 		this.resyncListeners(this.tooltipElement, this.tooltipElement);
 	}
 
 	public connectedCallback(): void {
-		this.previousSibling = this.host?.previousElementSibling ?? null;
+		this.previousSibling = this.host?.previousElementSibling;
 	}
 
 	public componentDidRender(): void {
