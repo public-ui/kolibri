@@ -4,6 +4,8 @@
 
 @layer kol-theme-component {
 	.kol-accordion {
+		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+		border-radius: var(--border-radius);
 		display: grid;
 		width: 100%;
 		height: 100%;
@@ -13,7 +15,7 @@
 		}
 
 		&__content {
-			margin: 0;
+			padding-top: to-rem(12);
 			padding-right: to-rem(8);
 			padding-bottom: to-rem(12);
 			padding-left: 2.25em;
@@ -21,6 +23,7 @@
 
 		&__heading {
 			margin: 0;
+			border-bottom: 1px solid var(--color-mute-variant);
 		}
 
 		&__heading-button {
