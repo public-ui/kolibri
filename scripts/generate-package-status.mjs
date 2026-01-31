@@ -1,5 +1,4 @@
 import { promises as fs } from 'node:fs';
-import https from 'node:https';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -42,89 +41,24 @@ const loadPackages = async () => {
 
 const encodePackageName = (name) => name.replace('@', '%40').replace('/', '%2F');
 
-const fetchJson = (url) =>
-	new Promise((resolve, reject) => {
-		https
-			.get(url, (response) => {
-				if (response.statusCode && response.statusCode >= 400) {
-					reject(new Error(`Request failed (${response.statusCode}) for ${url}`));
-					response.resume();
-					return;
-				}
-				const chunks = [];
-				response.on('data', (chunk) => chunks.push(chunk));
-				response.on('end', () => {
-					try {
-						const text = Buffer.concat(chunks).toString('utf8');
-						resolve(JSON.parse(text));
-					} catch (error) {
-						reject(error);
-					}
-				});
-			})
-			.on('error', reject);
-	});
-
-const versionCompare = (a, b) =>
-	a.localeCompare(b, undefined, {
-		numeric: true,
-		sensitivity: 'base',
-	});
-
-const getMajorVersion = (version) => Number.parseInt(version.split('.')[0], 10);
-
-const getLatestByMajor = (versions, major) => {
-	const matching = versions.filter((version) => getMajorVersion(version) === major);
-	if (matching.length === 0) {
-		return null;
-	}
-	return matching.sort(versionCompare).at(-1) ?? null;
-};
-
-const fetchLatestVersions = async (name) => {
+const buildSnykBadge = (name, major) => {
 	const encoded = encodePackageName(name);
-	const registryUrl = `https://registry.npmjs.org/${encoded}`;
-	try {
-		const data = await fetchJson(registryUrl);
-		const versions = Object.keys(data.versions ?? {});
-		return {
-			2: getLatestByMajor(versions, 2),
-			3: getLatestByMajor(versions, 3),
-			4: getLatestByMajor(versions, 4),
-		};
-	} catch (error) {
-		console.warn(`Skipping ${name}: ${error.message}`);
-		return {
-			2: null,
-			3: null,
-			4: null,
-		};
-	}
-};
-
-const buildSnykBadge = (name, version, major) => {
-	if (!version) {
-		return '-';
-	}
-	const encoded = encodePackageName(name);
-	const badgeUrl = `https://snyk.io/test/npm/${encoded}/${version}/badge.svg`;
-	const linkUrl = `https://security.snyk.io/package/npm/${encoded}/${version}`;
+	const range = `^${major}`;
+	const badgeUrl = `https://snyk.io/test/npm/${encoded}/${range}/badge.svg`;
+	const linkUrl = `https://security.snyk.io/package/npm/${encoded}/${range}`;
 	return `[![Snyk v${major}](${badgeUrl})](${linkUrl})`;
 };
 
 const renderMarkdown = async (packages) => {
 	const header = `# Paket-Status (npm Majors 2, 3, 4)\n\n`;
 	const intro =
-		'Diese Übersicht zeigt die aktuell veröffentlichten Versionen je Major für alle öffentlich verfügbaren Pakete in diesem Repository. Die Badges kommen von Snyk und verlinken direkt zur Sicherheitsübersicht pro Version.\n\n';
+		'Diese Übersicht zeigt die Security-Status-Badges je Major für alle öffentlich verfügbaren Pakete in diesem Repository. Die Badges kommen von Snyk und verlinken direkt zur Sicherheitsübersicht pro Major.\n\n';
 	const tableHeader = '| Paket | v2 | v3 | v4 |\n| --- | --- | --- | --- |\n';
-	const rows = await Promise.all(
-		packages.map(async (pkg) => {
-			const npmUrl = `https://www.npmjs.com/package/${pkg.name}`;
-			const versions = await fetchLatestVersions(pkg.name);
-			return `| [${pkg.name}](${npmUrl}) | ${buildSnykBadge(pkg.name, versions[2], 2)} | ${buildSnykBadge(pkg.name, versions[3], 3)} | ${buildSnykBadge(pkg.name, versions[4], 4)} |`;
-		}),
-	);
-	return `${header}${intro}${tableHeader}${rows}\n`;
+	const rows = packages.map((pkg) => {
+		const npmUrl = `https://www.npmjs.com/package/${pkg.name}`;
+		return `| [${pkg.name}](${npmUrl}) | ${buildSnykBadge(pkg.name, 2)} | ${buildSnykBadge(pkg.name, 3)} | ${buildSnykBadge(pkg.name, 4)} |`;
+	});
+	return `${header}${intro}${tableHeader}${rows.join('\n')}\n`;
 };
 
 const main = async () => {
