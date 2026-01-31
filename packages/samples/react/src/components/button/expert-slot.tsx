@@ -1,4 +1,3 @@
-import type { Components } from '@public-ui/components';
 import { KolButton, KolHeading, KolIcon } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
@@ -7,7 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 import './expert-slot.tooltip.scss';
 
-const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<Components.KolTooltipWc>;
+const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<{ _label: string }>;
 
 export const ButtonExpertSlot: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
