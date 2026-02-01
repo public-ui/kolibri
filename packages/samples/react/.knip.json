@@ -10,16 +10,6 @@
 		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
 		"src/scenarios/appointment-form/Summary.tsx"
 	],
-	"ignoreBinaries": ["eslint", "prettier", "stylelint"],
-	"ignoreDependencies": [
-		"@leanup/stack",
-		"@public-ui/components",
-		"@public-ui/react-v19",
-		"@public-ui/themes",
-		"@unocss/preset-mini",
-		"eslint-plugin-jsx-a11y",
-		"eslint-plugin-react",
-		"uno.css"
-	],
+	"ignoreDependencies": ["@public-ui/components", "@public-ui/react-v19", "@public-ui/themes", "@unocss/preset-mini", "uno.css"],
 	"project": ["src/**/*.ts", "src/**/*.tsx"]
 }
