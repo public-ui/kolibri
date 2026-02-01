@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { IndentedTextBasic } from './basic';
 
 export const INDENTED_ROUTES: Routes = {

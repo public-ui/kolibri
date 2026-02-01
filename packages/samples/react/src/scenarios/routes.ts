@@ -1,4 +1,4 @@
-import { Routes } from '../shares/types';
+import type { Routes } from '../shares/types';
 import { AppointmentForm } from './appointment-form/AppointmentForm';
 import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';

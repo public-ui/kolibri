@@ -1,36 +1,37 @@
-const config = require('@leanup/stack/.eslintrc');
-
-config.parserOptions = {
-	tsconfigRootDir: __dirname,
-};
-
-config.overrides = config.overrides || [];
-config.overrides.push({
-	extends: ['plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
-	files: ['**/*.tsx'],
+module.exports = {
+	ignorePatterns: ['.eslintrc.js'],
+	env: {
+		browser: true,
+		es2021: true,
+	},
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:react/recommended',
+		'plugin:react-hooks/recommended',
+		'plugin:jsx-a11y/recommended',
+	],
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true,
 		},
+		ecmaVersion: 'latest',
+		project: true,
+		sourceType: 'module',
+		tsconfigRootDir: __dirname,
 	},
+	plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y'],
 	rules: {
 		'@typescript-eslint/consistent-type-imports': 'error',
 		'@typescript-eslint/no-unsafe-member-access': 'error',
+		eqeqeq: 'error',
 		'react/no-unused-state': 'error',
+		'react/react-in-jsx-scope': 'off',
 	},
-});
-
-config.plugins = config.plugins || [];
-config.plugins.push('react');
-config.plugins.push('jsx-a11y');
-
-config.rules = config.rules || {};
-config.rules.eqeqeq = 'error';
-
-config.settings = {
-	react: {
-		version: 'detect',
+	settings: {
+		react: {
+			version: 'detect',
+		},
 	},
 };
-
-module.exports = config;

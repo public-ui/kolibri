@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { BadgeBasic } from './basic';
 import { BadgeButton } from './button';
 

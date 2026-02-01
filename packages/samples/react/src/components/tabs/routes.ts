@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { TabsBasic } from './basic';
 import { TabsAlign } from './align';
 import { TabsIconsOnly } from './icons-only';

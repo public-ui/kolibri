@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { LinkBasic } from './basic';
 import { LinkIcons } from './icons';
 import { LinkImage } from './image';

@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { LinkGroupBasic } from './basic';
 import { LinkGroupHorizontal } from './horizontal';
 

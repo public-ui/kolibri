@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { NavAriaCurrent } from './aria-current';
 import { NavBasic } from './basic';
 import { NavHorizontal } from './horizontal';

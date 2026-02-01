@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { TextareaAdjustHeight } from './adjust-height';
 import { TextareaBasic } from './basic';
 import { TextareaCounter } from './with-counter';

@@ -1,7 +1,8 @@
-import { Option } from '@public-ui/components';
+import type { Option } from '@public-ui/components';
 import PackageJson from '@public-ui/components/package.json';
 
-import { isTheme, Store, ThemeAndUnstyled, THEME_OPTIONS } from './theme';
+import type { Store, ThemeAndUnstyled } from './theme';
+import { isTheme, THEME_OPTIONS } from './theme';
 
 const STORE_IDENTIFIER = `public-ui.v${PackageJson.version}`;
 
@@ -34,7 +35,7 @@ export function setStorage(storage: Storage) {
 				STORE.theme = store.theme;
 			}
 		}
-	} catch (e) {
+	} catch {
 		/* empty */
 	}
 }

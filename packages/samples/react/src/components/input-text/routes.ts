@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputTextBasic } from './basic';
 import { InputTextHideErrors } from './hide-errors';
 import { InputTextFormatterDemo } from './text-formatter';

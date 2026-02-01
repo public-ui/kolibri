@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputDateBasic } from './basic';
 import { InputDateReset } from './reset';
 import { InputDateShowHideMsg } from './show-hide-msg';

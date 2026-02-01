@@ -1,4 +1,4 @@
-import { SelectOption } from '@public-ui/components';
+import type { SelectOption } from '@public-ui/components';
 
 export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'itzbund', 'bwst', 'unstyled'] as const;
 export type Theme = (typeof THEMES)[number];
