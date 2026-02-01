@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.0.3-rc.0",
+	"version": "4.0.3-rc.1",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -24,8 +24,8 @@
 	},
 	"dependencies": {
 		"@public-ui/components": "workspace:*",
-		"@public-ui/sample-react": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
+		"@public-ui/sample-react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"adopted-style-sheets": "1.1.9-rc.20",
 		"react": "19.2.4",
