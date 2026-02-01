@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { ComboboxBasic } from './basic';
 import { ComboboxHtml } from './html';
 

@@ -1,4 +1,4 @@
-import { Routes } from '../shares/types';
+import type { Routes } from '../shares/types';
 import { ButtonShortkeyTable } from './button-shortkey-table';
 import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';

@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { ToolbarBasic } from './basic';
 import { ToolbarDisabled } from './disabled';
 

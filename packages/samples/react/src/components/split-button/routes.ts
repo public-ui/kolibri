@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { SplitButtonBasic } from './basic';
 import { SplitButtonWithContext } from './with-context';
 
