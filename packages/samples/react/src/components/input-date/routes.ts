@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputDateBasic } from './basic';
 import { InputDateCopyPaste } from './copy-paste';
 import { InputDateReset } from './reset';

@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputEmailBasic } from './basic';
 
 export const INPUT_EMAIL_ROUTES: Routes = {

@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputRadioBasic } from './basic';
 import { InputRadioHorizontal } from './horizontal';
 import { InputRadioObjectValue } from './objectValue';

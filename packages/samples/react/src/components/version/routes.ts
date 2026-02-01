@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { VersionBasic } from './basic';
 import { VersionContext } from './context';
 
