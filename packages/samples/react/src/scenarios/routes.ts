@@ -1,4 +1,4 @@
-import { Routes } from '../shares/types';
+import type { Routes } from '../shares/types';
 import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
 import { DateInForm } from './date-in-form';

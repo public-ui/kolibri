@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputTextBasic } from './basic';
 import { InputTextExpertSlot } from './expert-slot';
 import { InputTextHideMsg } from './hide-msg';

@@ -47,7 +47,7 @@ import { TOOLBAR_ROUTES } from '../components/toolbar/routes';
 import { TREE_ROUTES } from '../components/tree/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
 import { SCENARIO_ROUTES } from '../scenarios/routes';
-import { Routes } from './types';
+import type { Routes } from './types';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,

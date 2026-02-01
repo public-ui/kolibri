@@ -1,4 +1,4 @@
-import { SelectOption } from '@public-ui/components';
+import type { SelectOption } from '@public-ui/components';
 import countries from 'world_countries_lists/data/countries/de/countries.json';
 
 type Country = {

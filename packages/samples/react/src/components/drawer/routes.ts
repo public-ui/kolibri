@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { DrawerBasic } from './basic';
 import { DrawerControlled } from './controlled';
 import { DrawerScrolled } from './scrolled';

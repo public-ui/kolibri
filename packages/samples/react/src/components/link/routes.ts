@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { LinkAccessKey } from './access-key';
 import { LinkAriaDescription } from './aria-description';
 import { LinkBasic } from './basic';

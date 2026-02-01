@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { IconBasic } from './basic';
 import { IconFontAwesome } from './font-awesome';
 
