@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputNumberBasic } from './basic';
 
 export const INPUT_NUMBER_ROUTES: Routes = {

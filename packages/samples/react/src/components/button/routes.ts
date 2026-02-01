@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { ButtonAccessKey } from './access-key';
 import { ButtonAriaDescription } from './aria-description';
 import { ButtonBaselined } from './baselined';

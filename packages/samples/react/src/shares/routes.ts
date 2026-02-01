@@ -1,4 +1,4 @@
-import { Routes } from './types';
+import type { Routes } from './types';
 import { ABBR_ROUTES } from '../components/abbr/routes';
 import { ACCORDION_ROUTES } from '../components/accordion/routes';
 import { ALERT_ROUTES } from '../components/alert/routes';

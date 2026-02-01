@@ -1,4 +1,4 @@
-import { ButtonOrLinkOrTextWithChildrenProps } from '@public-ui/components';
+import type { ButtonOrLinkOrTextWithChildrenProps } from '@public-ui/components';
 
 export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{

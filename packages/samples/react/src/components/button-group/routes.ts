@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { ButtonGroupBasic } from './basic';
 
 export const BUTTON_GROUP_ROUTES: Routes = {
