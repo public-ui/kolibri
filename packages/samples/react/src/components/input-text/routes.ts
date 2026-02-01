@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputTextAccessShortKey } from './access-short-key';
 import { InputTextBackground } from './background-test';
 import { InputTextBasic } from './basic';
