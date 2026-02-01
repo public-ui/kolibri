@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { HeadingBadged } from './badged';
 import { HeadingBasic } from './basic';
 import { HeadingParagraph } from './paragraph';

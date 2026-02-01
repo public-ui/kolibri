@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputCheckboxBasic } from './basic';
 import { InputCheckboxButton } from './button';
 import { InputCheckboxSwitch } from './switch';

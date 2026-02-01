@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { InputPasswordBasic } from './basic';
 import { InputPasswordShowPassword } from './show-password';
 

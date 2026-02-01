@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { DetailsBasic } from './basic';
 
 export const DETAILS_ROUTES: Routes = {
