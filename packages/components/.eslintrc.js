@@ -18,11 +18,7 @@ const config = {
 		 * Import types with `import type` instead of `import`.
 		 */
 		'@typescript-eslint/consistent-type-imports': 'warn',
-		/**
-		 * This rule is disabled because it is not possible to use the
-		 * `no-unsafe-assignment` rule without breaking the build.
-		 */
-		'@typescript-eslint/no-unsafe-assignment': 'warn',
+		'@typescript-eslint/no-base-to-string': 'warn',
 
 		/**
 		 * This setting is necessary because required and optional properties
@@ -32,12 +28,29 @@ const config = {
 		 */
 		'@typescript-eslint/no-duplicate-type-constituents': 'off',
 		'@typescript-eslint/no-redundant-type-constituents': 'off',
+		/**
+		 * This rule is disabled because it is not possible to use the
+		 * `no-unsafe-assignment` rule without breaking the build.
+		 */
+		'@typescript-eslint/no-unsafe-assignment': 'warn',
 
 		/**
 		 * The HTML templates in TSX are recognized as any.
 		 */
+		'@typescript-eslint/no-unsafe-argument': 'warn',
+		'@typescript-eslint/no-unsafe-call': 'warn',
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
+		'@typescript-eslint/no-unused-expressions': 'warn',
+		'@typescript-eslint/no-unused-vars': [
+			'warn',
+			{
+				argsIgnorePattern: '^_',
+				caughtErrors: 'none',
+				ignoreRestSiblings: true,
+			},
+		],
+		'@typescript-eslint/require-await': 'warn',
 
 		'@stencil-community/async-methods': 'error',
 		'@stencil-community/ban-prefix': ['off', ['stencil', 'stnl', 'st']],

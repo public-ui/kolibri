@@ -6,9 +6,12 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 	},
 	plugins: ['@typescript-eslint'],
-        extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking'],
-        rules: {
-                '@typescript-eslint/no-namespace': 'off',
-                'eqeqeq': 'error',
-        },
+	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking'],
+	rules: {
+		'@typescript-eslint/no-namespace': 'off',
+		'@typescript-eslint/no-unsafe-assignment': 'warn',
+		'@typescript-eslint/no-unsafe-call': 'warn',
+		'@typescript-eslint/no-unsafe-member-access': 'warn',
+		eqeqeq: 'error',
+	},
 };
