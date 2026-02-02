@@ -7,6 +7,8 @@ on:
 jobs:
   validate-pr-title:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     steps:
       - name: Validate PR title follows Conventional Commits
         uses: amannn/action-semantic-pull-request@v5
