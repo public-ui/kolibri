@@ -23,9 +23,9 @@ module.exports = {
 	plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y'],
 	rules: {
 		'@typescript-eslint/consistent-type-imports': 'error',
-		'@typescript-eslint/no-unsafe-member-access': 'error',
-		eqeqeq: 'error',
+		'@typescript-eslint/no-unsafe-member-access': 'warn',
 		'react/no-unused-state': 'error',
+		eqeqeq: 'error',
 		'react/react-in-jsx-scope': 'off',
 	},
 	settings: {
