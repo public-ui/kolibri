@@ -63,7 +63,9 @@ jobs:
           pnpm ncu:minor
       - name: Try to fix audit issues
         run: |
-          sed -i '' '/^overrides:/,$ d' pnpm-workspace.yaml
+          if grep -q '^overrides:' pnpm-workspace.yaml; then
+            sed -i '/^overrides:/,$ d' pnpm-workspace.yaml
+          fi
           pnpm audit --audit-level high --fix --production
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
