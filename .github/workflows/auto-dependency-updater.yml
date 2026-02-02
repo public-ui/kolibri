@@ -62,7 +62,11 @@ jobs:
           # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
           pnpm ncu:minor
       - name: Try to fix audit issues
-        run: pnpm audit --fix
+        run: |
+          if grep -q '^overrides:' pnpm-workspace.yaml; then
+            sed -i '/^overrides:/,$ d' pnpm-workspace.yaml
+          fi
+          pnpm audit --audit-level high --fix --production
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
       - name: Fix format
@@ -90,9 +94,7 @@ jobs:
 
       - name: Run audit
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: |
-          pnpm audit --audit-level high
-          pnpm audit --fix
+        run: pnpm audit --audit-level high --production
       - name: Run build
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: pnpm build

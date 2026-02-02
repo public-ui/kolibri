@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { AlertBasic } from './basic';
 import { AlertCardMsg } from './card-msg';
 import { AlertHtml } from './html';

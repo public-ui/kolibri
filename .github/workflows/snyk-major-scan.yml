@@ -1,0 +1,52 @@
+name: Snyk Major Scan
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ format('workflow-{0}-{1}', github.workflow, github.ref) }}
+  cancel-in-progress: true
+
+jobs:
+  snyk-major-scan:
+    if: github.ref == 'refs/heads/develop'
+    name: Snyk Major Scan (v${{ matrix.major }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        major: [2, 3, 4]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install Snyk CLI
+        run: |
+          pnpm i
+          npm install -g snyk
+
+      - name: Run Snyk scan
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          WORKDIR="$(mktemp -d)"
+          cat > "$WORKDIR/package.json" <<EOF
+          {
+          	"name": "kolibri-snyk-major-${{ matrix.major }}",
+          	"private": true,
+          	"dependencies": {
+          		"@public-ui/components": "^${{ matrix.major }}"
+          	}
+          }
+          EOF
+          npm --prefix "$WORKDIR" install --package-lock-only --ignore-scripts --no-audit --no-fund
+          snyk test --package-manager=npm --file="$WORKDIR/package.json" --project-name="kolibri-components-v${{ matrix.major }}"

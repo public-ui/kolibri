@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { TableActionColumns } from './action-columns';
 import { TableActionColumnPerformance } from './action-columns-performance';
 import { TableColumnAlignment } from './column-alignment';
