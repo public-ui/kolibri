@@ -9,8 +9,8 @@ Date: 2026-02-02
 | Severity | v4 | v3 | v2 | v1 |
 | --- | ---: | ---: | ---: | ---: |
 | critical | 0 | 0 | 0 | 1 |
-| high | 0 | 2 | 0 | 25 |
-| moderate | 0 | 4 | 0 | 19 |
+| high | 0 | 0 | 0 | 25 |
+| moderate | 0 | 0 | 0 | 19 |
 | low | 0 | 0 | 0 | 10 |
 | info | 0 | 0 | 0 | 0 |
 | unknown | 0 | 0 | 0 | 0 |
@@ -20,8 +20,8 @@ Date: 2026-02-02
 | Severity | v4 | v3 | v2 | v1 |
 | --- | ---: | ---: | ---: | ---: |
 | critical | 0 | 0 | 0 | 2 |
-| high | 6 | 8 | 10 | 38 |
-| moderate | 2 | 6 | 14 | 32 |
+| high | 6 | 6 | 10 | 38 |
+| moderate | 2 | 2 | 14 | 32 |
 | low | 1 | 1 | 2 | 13 |
 | info | 0 | 0 | 0 | 0 |
 | unknown | 0 | 0 | 0 | 0 |
@@ -43,8 +43,8 @@ Date: 2026-02-02
 | cross-spawn | high | CVE-2024-21538 | v1 | Regular Expression Denial of Service (ReDoS) in cross-spawn |
 | fast-xml-parser | high | CVE-2026-25128 | v4, v3, v2 | fast-xml-parser has RangeError DoS Numeric Entities Bug |
 | glob | high | CVE-2025-64756 | v1 | glob CLI: Command injection via -c/--cmd executes matches with shell:true |
-| hono | high | CVE-2026-22818 | v3, v2 | Hono JWK Auth Middleware has JWT algorithm confusion when JWK lacks "alg" (untru |
-| hono | high | CVE-2026-22817 | v3, v2 | Hono JWT Middleware's JWT Algorithm Confusion via Unsafe Default (HS256) Allows  |
+| hono | high | CVE-2026-22818 | v2 | Hono JWK Auth Middleware has JWT algorithm confusion when JWK lacks "alg" (untru |
+| hono | high | CVE-2026-22817 | v2 | Hono JWT Middleware's JWT Algorithm Confusion via Unsafe Default (HS256) Allows  |
 | http-proxy-middleware | high | CVE-2024-21536 | v1 | Denial of service in http-proxy-middleware |
 | lodash.pick | high | CVE-2020-8203 | v2, v1 | Prototype Pollution in lodash |
 | node-forge | high | CVE-2025-66031 | v1 | node-forge has ASN.1 Unbounded Recursion |
@@ -75,10 +75,10 @@ Date: 2026-02-02
 | ejs | moderate | CVE-2024-33883 | v2, v1 | ejs lacks certain pollution protection |
 | esbuild | moderate | GHSA-67mh-4wv8-2f99 | v2, v1 | esbuild enables any website to send any requests to the development server and r |
 | eslint | moderate | CVE-2025-50537 | v4, v3, v2, v1 | eslint has a Stack Overflow when serializing objects with circular references |
-| hono | moderate | CVE-2026-24771 | v3, v2 | Hono vulnerable to XSS through ErrorBoundary component  |
-| hono | moderate | CVE-2026-24473 | v3, v2 | Hono has an Arbitrary Key Read in Serve static Middleware (Cloudflare Workers Ad |
-| hono | moderate | CVE-2026-24472 | v3, v2 | Hono cache middleware ignores "Cache-Control: private" leading to Web Cache Dece |
-| hono | moderate | CVE-2026-24398 | v3, v2 | Hono IPv4 address validation bypass in IP Restriction Middleware allows IP spoof |
+| hono | moderate | CVE-2026-24771 | v2 | Hono vulnerable to XSS through ErrorBoundary component  |
+| hono | moderate | CVE-2026-24473 | v2 | Hono has an Arbitrary Key Read in Serve static Middleware (Cloudflare Workers Ad |
+| hono | moderate | CVE-2026-24472 | v2 | Hono cache middleware ignores "Cache-Control: private" leading to Web Cache Dece |
+| hono | moderate | CVE-2026-24398 | v2 | Hono IPv4 address validation bypass in IP Restriction Middleware allows IP spoof |
 | http-proxy-middleware | moderate | CVE-2025-32997 | v1 | http-proxy-middleware allows fixRequestBody to proceed even if bodyParser has fa |
 | http-proxy-middleware | moderate | CVE-2025-32996 | v1 | http-proxy-middleware can call writeBody twice because "else if" is not used |
 | js-yaml | moderate | CVE-2025-64718 | v2, v1 | js-yaml has prototype pollution in merge (<<) |
