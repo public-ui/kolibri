@@ -50,23 +50,3 @@ For an improved developer experience, use the framework-specific adapters descri
 ## Theming
 
 KoliBri themes provide the visual layer for the components. The default theme is maintained in this repository; see the [default theme guide](../themes/default/README.md) to customize styles and tokens.
-
-## Resources
-
-- [NPM package](https://www.npmjs.com/package/@public-ui/components)
-- [GitHub repository](https://github.com/public-ui/kolibri)
-
-## Development (repo context)
-
-- `pnpm start` – local dev server with live reload
-- `pnpm --filter @public-ui/components build` – build the package
-- `pnpm lint` – ESLint/Stylelint checks
-- `pnpm test` – unit and snapshot tests
-
-The [component source README](./src/components/README.md) covers additional styling rules.
-
-## Repository structure
-
-- `src/components` – component implementations
-- `src/schema` – TypeScript API schema
-- `src/assets`, `src/locales`, `src/utils` – shared assets, translations, and utilities
