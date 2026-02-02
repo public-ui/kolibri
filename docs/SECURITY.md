@@ -2,7 +2,7 @@
 
 ## CVE Overview
 
-See [CVE-OVERVIEW.md](./CVE-OVERVIEW.md) for an automated overview of security vulnerabilities across all KoliBri versions.
+See [CVE_OVERVIEW.md](./CVE_OVERVIEW.md) for an automated overview of security vulnerabilities across all KoliBri versions.
 
 ## Report security issues (EN)
 
