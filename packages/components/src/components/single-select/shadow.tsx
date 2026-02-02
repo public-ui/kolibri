@@ -103,7 +103,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen) {
+		} else if (!this._isOpen && this._value) {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
