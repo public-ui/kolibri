@@ -52,7 +52,7 @@
 		"lint:tsc": "tsc --noemit",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "npm-run-all2 --parallel dev serve",
-		"serve": "sh serve.sh DEFAULT",
+		"serve": "node serve.mjs DEFAULT",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",

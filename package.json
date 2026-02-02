@@ -19,7 +19,7 @@
 	"scripts": {
 		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
-		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
+		"clean:branches": "node scripts/clean-branches.mjs",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm format:config && pnpm format:markdown && pnpm format:packages",
 		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
