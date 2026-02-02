@@ -118,7 +118,6 @@ graph TB
 - First Contentful Paint < 1.8s
 - Time to Interactive < 3.8s
 - Total Blocking Time < 300ms
-- Lighthouse Performance Score > 90
 
 #### Scenario P2: Component Load
 
@@ -398,8 +397,7 @@ graph TB
 |-------------------|--------|--------|-------------------|
 | **Accessibility** | WCAG 2.1 AA Compliance | 100% | Manual testing + axe-core |
 | **Accessibility** | Keyboard Navigation | 100% | Manual testing |
-| **Performance** | Lighthouse Score | > 90 | Automated Lighthouse tests |
-| **Performance** | Time to Interactive | < 3.8s | Lighthouse/WebPageTest |
+| **Performance** | Time to Interactive | < 3.8s | WebPageTest |
 | **Performance** | Bundle Size | < 50KB per component | Bundlephobia analysis |
 | **Maintainability** | Test Coverage | > 80% | Jest coverage report |
 | **Maintainability** | Code Duplication | < 5% | SonarQube/manual review |

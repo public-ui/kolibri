@@ -45,7 +45,6 @@ Dieser Abschnitt dokumentiert die technischen, organisatorischen und rechtlichen
 | **BITV-Konformität** | Komponenten müssen deutsche Barrierefreiheitsanforderungen erfüllen | Manuelle Tests und Zertifizierung |
 | **Browser-Unterstützung** | Moderne Browser mit ES2017+ Unterstützung | Automatisierte Cross-Browser-Tests |
 | **Bundle-Größe** | Einzelne Komponenten klein und tree-shakeable halten | Bundle-Größen-Monitoring in CI |
-| **Performance** | Lighthouse-Score > 90 für Beispielanwendungen | Automatisierte Lighthouse-Tests |
 | **Kontrastverhältnisse** | Minimum 4,5:1 für normalen Text, 3:1 für großen Text | wcag-contrast-Bibliotheksvalidierung |
 | **Interaktive Elementgröße** | Mindestens 44x44px Touch-Target-Größe | Eingebaut in Komponenten-Styling |
 

@@ -99,7 +99,6 @@ Dieser Abschnitt identifiziert und bewertet potenzielle Risiken für das Public 
 
 **Mitigierung:**
 
-- Lighthouse-Tests in CI
 - Bundle-Größen-Monitoring
 - Performance-Budgets
 - Regelmäßiges Performance-Profiling
@@ -442,7 +441,6 @@ Dieser Abschnitt identifiziert und bewertet potenzielle Risiken für das Public 
 
 **Details:**
 
-- Lighthouse-Tests nur in CI
 - Keine Real-World-Performance-Daten
 - Kann Performance-Regressionen in Produktion nicht erkennen
 

@@ -176,7 +176,6 @@ await register(DEFAULT, defineCustomElements, {
 
 Target metrics for applications using KoliBri:
 
-- **Lighthouse Performance Score**: >90
 - **First Contentful Paint**: <1.8s
 - **Time to Interactive**: <3.8s
 - **Total Blocking Time**: <300ms

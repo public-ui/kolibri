@@ -405,7 +405,7 @@ graph TB
 
 Empfehlungen für Anwendungen mit KoliBri:
 
-- **Performance-Monitoring**: Lighthouse CI, Web Vitals
+- **Performance-Monitoring**: Web Vitals
 - **Fehler-Tracking**: Sentry, Rollbar (Anwendungsebene)
 - **Barrierefreiheits-Monitoring**: axe DevTools, automatisierte Scans
 - **Bundle-Size-Tracking**: bundlephobia, webpack-bundle-analyzer

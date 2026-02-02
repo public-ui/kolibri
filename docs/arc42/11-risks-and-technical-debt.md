@@ -99,7 +99,6 @@ This section identifies and assesses potential risks to the Public UI - KoliBri 
 
 **Mitigation:**
 
-- Lighthouse tests in CI
 - Bundle size monitoring
 - Performance budgets
 - Regular performance profiling
@@ -442,7 +441,6 @@ This section identifies and assesses potential risks to the Public UI - KoliBri 
 
 **Details:**
 
-- Lighthouse tests in CI only
 - No real-world performance data
 - Can't detect performance regressions in production
 

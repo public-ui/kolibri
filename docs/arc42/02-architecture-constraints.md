@@ -45,7 +45,6 @@ This section documents the technical, organizational, and legal boundaries withi
 | **BITV Compliance** | Components must meet German accessibility requirements | Manual testing and certification |
 | **Browser Support** | Modern browsers with ES2017+ support | Automated cross-browser testing |
 | **Bundle Size** | Keep individual components small and tree-shakeable | Bundle size monitoring in CI |
-| **Performance** | Lighthouse score > 90 for sample applications | Automated Lighthouse tests |
 | **Contrast Ratios** | Minimum 4.5:1 for normal text, 3:1 for large text | wcag-contrast library validation |
 | **Interactive Element Size** | Minimum 44x44px touch target size | Built into component styling |
 

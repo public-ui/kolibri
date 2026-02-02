@@ -99,7 +99,6 @@ graph TB
         Jest[Jest Unit Tests]
         Playwright[Playwright E2E Tests]
         AxeCore[axe-core Accessibility Tests]
-        Lighthouse[Lighthouse Performance]
     end
     
     subgraph Quality Tools

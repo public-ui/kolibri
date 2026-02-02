@@ -118,7 +118,6 @@ graph TB
 - First Contentful Paint < 1,8s
 - Time to Interactive < 3,8s
 - Total Blocking Time < 300ms
-- Lighthouse Performance Score > 90
 
 #### Szenario P2: Komponenten-Laden
 
@@ -398,8 +397,7 @@ graph TB
 |-------------------|--------|--------|-------------------|
 | **Barrierefreiheit** | WCAG 2.1 AA Konformität | 100% | Manuelles Testing + axe-core |
 | **Barrierefreiheit** | Tastaturnavigation | 100% | Manuelles Testing |
-| **Performance** | Lighthouse Score | > 90 | Automatisierte Lighthouse-Tests |
-| **Performance** | Time to Interactive | < 3,8s | Lighthouse/WebPageTest |
+| **Performance** | Time to Interactive | < 3,8s | WebPageTest |
 | **Performance** | Bundle-Größe | < 50KB pro Komponente | Bundlephobia-Analyse |
 | **Wartbarkeit** | Test-Abdeckung | > 80% | Jest-Coverage-Report |
 | **Wartbarkeit** | Code-Duplizierung | < 5% | SonarQube/manuelle Überprüfung |
