@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execSync } from 'node:child_process';
+import { execFileSync, execSync } from 'node:child_process';
 
 try {
 	// Get all merged branches
@@ -27,7 +27,8 @@ try {
 	// Delete each branch
 	for (const branch of branches) {
 		try {
-			execSync(`git branch -D ${branch}`, { stdio: 'inherit' });
+			// Use execFileSync with array arguments to prevent command injection
+			execFileSync('git', ['branch', '-D', branch], { stdio: 'inherit' });
 		} catch (error) {
 			console.error(`Failed to delete branch: ${branch}`);
 		}
