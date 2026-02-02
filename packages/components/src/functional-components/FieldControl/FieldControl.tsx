@@ -1,6 +1,5 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import clsx from 'clsx';
 import {
 	buildBadgeTextString,
 	getMsgType,
@@ -11,6 +10,7 @@ import {
 	type MsgPropType,
 	type Stringified,
 } from '../../schema';
+import clsx from '../../utils/clsx';
 import KolFieldControlHintFc from '../FormFieldHint';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 import KolFieldControlTooltipFc from '../FormFieldTooltip';

@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { ToastBasic } from './basic';
 import { ToastConfigurator } from './configurator';
 

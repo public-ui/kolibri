@@ -25,7 +25,6 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -36,6 +35,7 @@ import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggest
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { SingleSelectController } from './controller';
 
@@ -303,6 +303,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			placeholder: this.state._placeholder,
 			ref: this.catchRef,
 			required: this.state._required,
+			role: 'combobox',
 			state: this.state,
 			type: 'text',
 			value: this._inputValue,
@@ -334,7 +335,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
-								_buttonVariant="ghost"
+								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="single-select-delete"
 								class={clsx('kol-single-select__delete', {
@@ -358,11 +359,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 							onClick={this.toggleListbox.bind(this)}
 						/>
 					</div>
-					{this._isOpen && !isDisabled && (
+					{
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
+							hidden={!this._isOpen || isDisabled}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
@@ -410,10 +412,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 									/>
 								))
 							) : (
-								<li class="kol-single-select__no-results-message">{this.translateNoResultsMessage} </li>
+								// role=alert is the only role/state thats read from screenreader
+								<li class="kol-single-select__no-results-message" role="alert">
+									{this.translateNoResultsMessage}{' '}
+								</li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
-					)}
+					}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);

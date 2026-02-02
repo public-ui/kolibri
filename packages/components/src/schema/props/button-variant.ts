@@ -16,7 +16,7 @@ export type PropButtonVariant = {
 export const validateButtonVariant = (component: Generic.Element.Component, value?: ButtonVariantPropType): void => {
 	watchValidator(
 		component,
-		`_buttonVariant`,
+		`_variant`,
 		(value) => typeof value === 'string' && buttonVariantPropTypeOptions.includes(value),
 		new Set([`KoliBriButtonVariant {${buttonVariantPropTypeOptions.join(', ')}`]),
 		value,

@@ -1,7 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
-import clsx from 'clsx';
 import { isEqual } from 'lodash-es';
 import { KolButtonWcTag, KolIconTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
@@ -38,6 +37,7 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
+import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -655,15 +655,16 @@ export class KolTableStateless implements TableStatelessAPI {
 
 			// Check if this column is an action column
 			const actionColumn = this.getActionColumnHeader(colIndex);
-			const isActionColumn = actionColumn && cell.data;
+			const isActionColumn = Boolean(actionColumn && cell.data);
 
 			return (
 				<td
 					key={`cell-${key}`}
-					class={clsx('kol-table__cell kol-table__cell--body', {
-						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
-						'kol-table__cell--actions': isActionColumn,
-					})}
+					class={clsx(
+						'kol-table__cell kol-table__cell--body',
+						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
+						isActionColumn && 'kol-table__cell--actions',
+					)}
 					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
 					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
 					aria-relevant={isNoEntriesHintCell ? 'text' : undefined}
@@ -680,7 +681,11 @@ export class KolTableStateless implements TableStatelessAPI {
 							: undefined
 					}
 				>
-					{isActionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : typeof cell.render !== 'function' ? cell.label : ''}
+					{isActionColumn && actionColumn && cell.data
+						? this.renderActionItems(actionColumn, cell.data, key)
+						: typeof cell.render !== 'function'
+							? cell.label
+							: ''}
 				</td>
 			);
 		}
@@ -703,7 +708,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				{actions.map((action, actionIndex) => {
 					if (action.type === 'button') {
 						const { ...buttonProps } = action;
-						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _buttonVariant={buttonProps._variant} />;
+						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _variant={buttonProps._variant} />;
 					} else if (action.type === 'link') {
 						const { ...linkProps } = action;
 						return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
@@ -964,10 +969,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={clsx('kol-table__cell kol-table__cell--header', {
-					[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
-					[`kol-table__cell--${ariaSort}`]: ariaSort,
-				})}
+				class={clsx('kol-table__cell kol-table__cell--header', cell.textAlign && `kol-table__cell--align-${cell.textAlign}`, `kol-table__cell--${ariaSort}`)}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}

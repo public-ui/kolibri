@@ -7,6 +7,7 @@
 @use '../../styles/kol-input-container-mixin' as *;
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/kol-button-mixin' as *;
 
 @layer kol-component {
 	@include kol-alert;
@@ -22,14 +23,10 @@
 
 	.kol-single-select {
 		&__delete {
+			@include kol-button-styles('kol-button');
 			.kol-button {
-				cursor: pointer;
-			}
-
-			&--disabled {
-				.kol-button {
-					cursor: not-allowed;
-				}
+				margin-top: -2px;
+				margin-bottom: -2px;
 			}
 		}
 

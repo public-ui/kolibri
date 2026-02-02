@@ -3,8 +3,8 @@ import type { HrefPropType, LabelPropType, QuoteAPI, QuotePropType, QuoteStates,
 import { showExpertSlot, validateLabel, validateQuote, validateVariantQuote, watchString } from '../../schema';
 
 import type { JSX } from '@stencil/core';
-import clsx from 'clsx';
 import { KolLinkTag } from '../../core/component-names';
+import clsx from '../../utils/clsx';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {

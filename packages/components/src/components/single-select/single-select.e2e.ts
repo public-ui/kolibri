@@ -141,7 +141,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			await expect(page.locator('input.kol-single-select__input')).toBeDisabled();
 
-			const listbox = page.locator('ul[role="listbox"]');
+			const listbox = page.locator('.kol-custom-suggestions-options-group--open');
 			await expect(listbox).toHaveCount(0);
 		});
 

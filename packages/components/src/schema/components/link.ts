@@ -51,7 +51,7 @@ type OptionalStates = { ariaCurrent: string } & PropAriaExpanded &
 	PropAriaOwns &
 	PropCustomClass &
 	Omit<RequiredProps & OptionalProps, keyof RequiredStates> & {
-		buttonVariant: ButtonVariantPropType;
+		variant: ButtonVariantPropType;
 	};
 
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;

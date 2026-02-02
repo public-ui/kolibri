@@ -39,6 +39,17 @@ export const ToolbarBasic: FC = () => {
 		{
 			type: 'button',
 			_label: 'Bold',
+			_variant: 'secondary',
+		},
+		{
+			type: 'button',
+			_label: 'Delete',
+			_icons: {
+				right: {
+					icon: 'kolicon-cross',
+				},
+			},
+			_variant: 'danger',
 		},
 	];
 	return (

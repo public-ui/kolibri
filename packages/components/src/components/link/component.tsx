@@ -56,10 +56,10 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
-import clsx from 'clsx';
 import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import clsx from '../../utils/clsx';
 
 /**
  * @internal
@@ -174,11 +174,11 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._buttonVariant as string}`]: this.state._buttonVariant !== 'custom',
+						[`kol-link--${this.state._variant as string}`]: this.state._variant !== 'custom',
 						'kol-link--inline': this.state._inline === true,
 						'kol-link--standalone': this.state._inline === false,
 						[this.state._customClass as string]:
-							this.state._buttonVariant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
@@ -256,7 +256,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Prop() public _ariaOwns?: AriaOwnsPropType;
 
 	/**
-	 * Defines the custom class attribute if _buttonVariant="custom" is set.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
 
@@ -331,7 +331,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Defines which button variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _buttonVariant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: LinkStates = {
 		_ariaCurrentValue: 'page',
@@ -445,7 +445,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		validateTooltipAlign(this, value);
 	}
 
-	@Watch('_buttonVariant')
+	@Watch('_variant')
 	public validateButtonVariant(value?: ButtonVariantPropType): void {
 		validateButtonVariant(this, value);
 	}
@@ -471,7 +471,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateButtonVariant(this._buttonVariant);
+		this.validateButtonVariant(this._variant);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});

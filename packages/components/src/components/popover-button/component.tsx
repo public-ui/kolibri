@@ -1,7 +1,6 @@
 import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -22,6 +21,7 @@ import type {
 import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
+import clsx from '../../utils/clsx';
 
 /**
  * @slot - The popover content.
@@ -164,7 +164,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
 					_value={this._value}
-					_buttonVariant={this._variant}
+					_variant={this._variant}
 					data-testid="popover-button"
 					class="kol-popover-button__button"
 					ref={(element) => (this.refButton = element)}

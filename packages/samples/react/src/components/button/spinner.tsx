@@ -98,12 +98,18 @@ export const ButtonSpinner: FC = () => {
 						animation: spin 1s linear infinite;
 					}
 
-					.spinner-button.spinner-slow::part(icon) {
-						animation: spin 1.5s linear infinite;
+					.spinner-slow::part(icon) {
+						animation-duration: 1.5s;
 					}
 
-					.spinner-button.spinner-slower::part(icon) {
-						animation: spin 2s linear infinite;
+					.spinner-slower::part(icon) {
+						animation-duration: 2s;
+					}
+
+					@media (prefers-reduced-motion) {
+						.spinner-button::part(icon){
+							animation-duration: 10s;
+						}
 					}
 				`}
 			</style>

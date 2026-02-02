@@ -29,7 +29,7 @@ test.describe(COMPONENT_NAME, () => {
 		const input = page.locator('input.kol-combobox__input');
 		await input.focus();
 		await page.keyboard.press('ArrowDown');
-		const listbox = page.locator('ul[role="listbox"]');
+		const listbox = page.locator('.kol-custom-suggestions-options-group');
 		await expect(listbox).toBeVisible();
 	});
 
@@ -39,7 +39,7 @@ test.describe(COMPONENT_NAME, () => {
 		await input.focus();
 		await page.keyboard.press('ArrowDown');
 		await input.press('Escape');
-		const listbox = page.locator('ul[role="listbox"]');
+		const listbox = page.locator('.kol-custom-suggestions-options-group--open');
 		await expect(listbox).toHaveCount(0);
 	});
 
@@ -65,7 +65,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		await page.waitForChanges();
 		await page.waitForTimeout(300);
-		const suggestions = page.locator('ul[role="listbox"] li');
+		const suggestions = page.locator('.kol-custom-suggestions-options-group li');
 		await expect(suggestions).toHaveCount(1);
 		await expect(suggestions.first()).toHaveText('South');
 	});
@@ -74,7 +74,7 @@ test.describe(COMPONENT_NAME, () => {
 		await page.setContent(`<kol-combobox _label="Input" _disabled _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');
 		await expect(input).toBeDisabled();
-		const listbox = page.locator('ul[role="listbox"]');
+		const listbox = page.locator('.kol-custom-suggestions-options-group--open');
 		await expect(listbox).toHaveCount(0);
 	});
 });

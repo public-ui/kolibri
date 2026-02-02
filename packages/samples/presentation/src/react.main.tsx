@@ -49,10 +49,10 @@ void (async () => {
 			await getThemes(),
 			() => {
 				// @see https://github.com/ionic-team/stencil/issues/2847
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-				defineCustomElements(window, {
+				const options = {
 					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
-				} as any);
+				};
+				defineCustomElements(window, options);
 			},
 			{
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',

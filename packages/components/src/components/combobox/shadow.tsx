@@ -1,6 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -33,6 +32,7 @@ import type {
 	W3CInputValue,
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { ComboboxController } from './controller';
 
@@ -268,6 +268,7 @@ export class KolCombobox implements ComboboxAPI {
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
+								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="combobox-delete"
 								class={clsx('kol-combobox__delete', {
@@ -289,8 +290,12 @@ export class KolCombobox implements ComboboxAPI {
 							onClick={this.toggleListbox.bind(this)}
 						/>
 					</div>
-					{this._isOpen && !isDisabled && (
-						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+					{
+						<CustomSuggestionsOptionsGroupFc
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+							hidden={!this._isOpen || isDisabled}
+						>
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
@@ -326,7 +331,7 @@ export class KolCombobox implements ComboboxAPI {
 									/>
 								))}
 						</CustomSuggestionsOptionsGroupFc>
-					)}
+					}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);

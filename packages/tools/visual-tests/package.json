@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "4.0.1",
+	"version": "4.0.3-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -40,15 +40,15 @@
 	"devDependencies": {
 		"@babel/eslint-parser": "7.28.6",
 		"@babel/plugin-syntax-import-attributes": "7.28.6",
-		"@babel/preset-env": "7.28.6",
-		"@playwright/test": "1.57.0",
+		"@babel/preset-env": "7.29.0",
+		"@playwright/test": "1.58.1",
 		"eslint": "8.57.1",
-		"knip": "5.80.2",
-		"prettier": "3.7.4",
+		"knip": "5.82.1",
+		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0"
 	},
 	"peerDependencies": {
-		"@playwright/test": "1.57.0"
+		"@playwright/test": "1.58.1"
 	},
 	"files": [
 		"playwright.config.js",
