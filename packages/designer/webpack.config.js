@@ -14,6 +14,22 @@ module.exports = (...args) => {
 	// 	config.plugins.push(new GenerateSW(require(workboxConfigPath)));
 	// }
 
+	// Configure esbuild-loader target to ES2018 to support async generators in monaco-editor
+	if (config.module && config.module.rules) {
+		config.module.rules.forEach((rule) => {
+			if (rule.use && Array.isArray(rule.use)) {
+				rule.use.forEach((loader) => {
+					if (loader.loader === 'esbuild-loader') {
+						loader.options = {
+							...loader.options,
+							target: 'es2018',
+						};
+					}
+				});
+			}
+		});
+	}
+
 	config.plugins.push(UnoCSS());
 	config.plugins.push(new MonacoWebpackPlugin());
 
