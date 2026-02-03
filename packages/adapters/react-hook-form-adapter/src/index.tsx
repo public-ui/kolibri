@@ -87,7 +87,7 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 				rules={rules}
 				defaultValue={defaultValue}
 				shouldUnregister={shouldUnregister}
-				disabled={disabled}
+				disabled={props._disabled}
 				render={({ field, fieldState }) => {
 					const userHandlers = (componentProps as any)._on as KolEventHandlers | undefined;
 
@@ -102,7 +102,7 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 						},
 						_name: name,
 						_touched: fieldState.isTouched,
-						_disabled: (componentProps as any)._disabled || disabled || field.disabled,
+						_disabled: props._disabled || disabled || field.disabled,
 						_msg: fieldState.error
 							? {
 									_type: 'error' as const,
