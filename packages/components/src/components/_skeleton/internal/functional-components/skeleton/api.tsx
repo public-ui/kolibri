@@ -1,7 +1,4 @@
-import type { CountProp } from '../../schema/props/count';
-import type { LabelProp } from '../../schema/props/label';
-import type { NameProp } from '../../schema/props/name';
-import type { ShowProp } from '../../schema/props/show';
+import type { CountProp, LabelProp, NameProp, ShowProp } from '../../schema/props';
 import type { ComponentApi } from '../generic-types';
 
 export interface SkeletonApi extends ComponentApi {

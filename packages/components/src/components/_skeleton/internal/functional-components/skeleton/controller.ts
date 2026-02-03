@@ -1,15 +1,14 @@
 import { Log } from '../../../../../schema';
-import { countProp, type CountPropType } from '../../schema/props/count';
-import { labelProp, type LabelPropType } from '../../schema/props/label';
-import { nameProp, type NamePropType } from '../../schema/props/name';
+import { withValidPropValue } from '../../schema/props/helpers/factory';
+import { countProp, labelProp, nameProp } from '../../schema/props';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, ResolvedProps } from '../generic-types';
 import type { SkeletonApi } from './api';
 
-export class SkeletonController extends BaseController<ResolvedProps<SkeletonApi>, SkeletonApi['States']> implements ControllerInterface<SkeletonApi> {
+export class SkeletonController extends BaseController<SkeletonApi> implements ControllerInterface<SkeletonApi> {
 	private readonly clickButtonCtrl: ClickButtonController;
-	private intervalId?: NodeJS.Timeout;
+	private intervalId?: ReturnType<typeof setTimeout>;
 
 	public constructor(states: SkeletonApi['States']) {
 		super(states, {
@@ -34,27 +33,24 @@ export class SkeletonController extends BaseController<ResolvedProps<SkeletonApi
 		});
 	}
 
-	public watchCount(value?: CountPropType): void {
-		const count = countProp.normalize(value);
-		if (countProp.validate(count)) {
-			this.setProp('count', count);
-			this.setState('count', count);
-		}
+	public watchCount(value?: number): void {
+		withValidPropValue(countProp, value, (v) => {
+			this.setProp('count', v);
+			this.setState('count', v);
+		});
 	}
 
-	public watchName(value?: NamePropType): void {
-		const name = nameProp.normalize(value);
-		if (nameProp.validate(name)) {
-			this.setProp('name', name);
-		}
+	public watchName(value?: string): void {
+		withValidPropValue(nameProp, value, (v) => {
+			this.setProp('name', v);
+		});
 	}
 
-	public watchLabel(value?: LabelPropType): void {
-		const label = labelProp.normalize(value);
-		if (labelProp.validate(label)) {
-			this.setState('label', label);
-			this.clickButtonCtrl.watchLabel(label);
-		}
+	public watchLabel(value?: string): void {
+		withValidPropValue(labelProp, value, (v) => {
+			this.setState('label', v);
+			this.clickButtonCtrl.watchLabel(v);
+		});
 	}
 
 	public toggle(): void {

@@ -1,6 +1,5 @@
 import { createPropDefinition, type Prop } from './helpers/factory';
-import { normalizeInteger, validateInteger } from './helpers/integer';
+import { normalizeInteger } from './helpers/normalizers';
 
-export type CountPropType = number;
-export type CountProp = Prop<CountPropType, 'count'>;
-export const countProp = createPropDefinition<CountProp>(normalizeInteger, validateInteger);
+export type CountProp = Prop<number, 'count'>;
+export const countProp = createPropDefinition<CountProp>(normalizeInteger, (v) => v >= 0);

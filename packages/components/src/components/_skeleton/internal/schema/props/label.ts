@@ -1,6 +1,5 @@
 import { createPropDefinition, type Prop } from './helpers/factory';
-import { normalizeString, validateString } from './helpers/string';
+import { normalizeString } from './helpers/normalizers';
 
-export type LabelPropType = string;
-export type LabelProp = Prop<LabelPropType, 'label'>;
-export const labelProp = createPropDefinition<LabelProp>(normalizeString, validateString);
+export type LabelProp = Prop<string, 'label'>;
+export const labelProp = createPropDefinition<LabelProp>(normalizeString, (v) => v.length >= 2 && v.length <= 80);

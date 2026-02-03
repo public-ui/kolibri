@@ -1,6 +1,5 @@
-import { normalizeBoolean, validateBoolean } from './helpers/boolean';
+import { normalizeBoolean } from './helpers/normalizers';
 import { createPropDefinition, type Prop } from './helpers/factory';
 
-export type ShowPropType = boolean;
-export type ShowProp = Prop<ShowPropType, 'show'>;
-export const showProp = createPropDefinition<ShowProp>(normalizeBoolean, validateBoolean);
+export type ShowProp = Prop<boolean, 'show'>;
+export const showProp = createPropDefinition<ShowProp>(normalizeBoolean, () => true);
