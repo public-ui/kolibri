@@ -28,7 +28,7 @@
 		"@wdio/spec-reporter": "9.23.3",
 		"chromedriver": "139.0.3",
 		"cpy-cli": "6.0.0",
-		"knip": "5.82.1",
+		"knip": "5.83.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",

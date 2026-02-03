@@ -21,6 +21,11 @@ concurrency:
   group: 'mcp-vercel-${{ github.ref }}'
   cancel-in-progress: true
 
+permissions:
+  attestations: write
+  contents: read
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -86,6 +91,15 @@ jobs:
           }
           NODE
           pnpm exec prettier --write package.json
+
+      - name: Attest MCP build outputs
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: |
+            packages/tools/mcp/api
+            packages/tools/mcp/dist
+            packages/tools/mcp/shared/sample-index.json
+
       - name: Deploy to Vercel (production)
         id: deploy_prod
         if: github.ref == 'refs/heads/release/3' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
