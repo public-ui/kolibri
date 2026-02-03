@@ -1,6 +1,6 @@
 # CVE Overview
 
-Date: 2026-02-02
+Date: 2026-02-03
 
 > For more security information, see [SECURITY.md](./SECURITY.md)
 
@@ -19,9 +19,9 @@ Date: 2026-02-02
 
 | Severity | v4 | v3 | v2 | v1 |
 | --- | ---: | ---: | ---: | ---: |
-| critical | 0 | 0 | 0 | 2 |
+| critical | 1 | 1 | 1 | 3 |
 | high | 6 | 6 | 10 | 38 |
-| moderate | 2 | 2 | 14 | 32 |
+| moderate | 2 | 1 | 14 | 32 |
 | low | 1 | 1 | 2 | 13 |
 | info | 0 | 0 | 0 | 0 |
 | unknown | 0 | 0 | 0 | 0 |
@@ -31,6 +31,7 @@ Date: 2026-02-02
 | Package | Severity | CVE | Affected Versions | Description |
 | --- | --- | --- | --- | --- |
 | form-data | critical | CVE-2025-7783 | v1 | form-data uses unsafe random function in form-data for choosing boundary |
+| locutus | critical | GHSA-rxrv-835q-v5mh | v4, v3, v2, v1 | locutus is vulnerable to Prototype Pollution |
 | @angular/common | high | CVE-2025-66035 | v1 | Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angula |
 | @angular/compiler | high | CVE-2025-66412 | v1 | Angular Stored XSS Vulnerability via SVG Animation, SVG URL and MathML Attribute |
 | @angular/compiler | high | CVE-2026-22610 | v1 | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes |
@@ -74,7 +75,7 @@ Date: 2026-02-02
 | @octokit/request-error | moderate | CVE-2025-25289 | v1 | @octokit/request-error has a Regular Expression in index that Leads to ReDoS Vul |
 | ejs | moderate | CVE-2024-33883 | v2, v1 | ejs lacks certain pollution protection |
 | esbuild | moderate | GHSA-67mh-4wv8-2f99 | v2, v1 | esbuild enables any website to send any requests to the development server and r |
-| eslint | moderate | CVE-2025-50537 | v4, v3, v2, v1 | eslint has a Stack Overflow when serializing objects with circular references |
+| eslint | moderate | CVE-2025-50537 | v4, v2, v1 | eslint has a Stack Overflow when serializing objects with circular references |
 | hono | moderate | CVE-2026-24771 | v2 | Hono vulnerable to XSS through ErrorBoundary component  |
 | hono | moderate | CVE-2026-24473 | v2 | Hono has an Arbitrary Key Read in Serve static Middleware (Cloudflare Workers Ad |
 | hono | moderate | CVE-2026-24472 | v2 | Hono cache middleware ignores "Cache-Control: private" leading to Web Cache Dece |
