@@ -52,6 +52,7 @@ void (async () => {
 				const options = {
 					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				};
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 				defineCustomElements(window, options);
 			},
 			{
