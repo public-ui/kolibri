@@ -31,7 +31,7 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@axe-core/playwright": "4.11.0",
+		"@axe-core/playwright": "4.11.1",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-html-reporter": "2.2.11",
 		"portfinder": "1.0.38",
