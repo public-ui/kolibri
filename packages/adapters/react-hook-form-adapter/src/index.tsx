@@ -106,7 +106,7 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 						_msg: fieldState.error
 							? {
 									_type: 'error' as const,
-									_description: fieldState.error.message || String(fieldState.error),
+									_description: fieldState.error.message || (fieldState.error as any).toString?.() || 'Unknown error',
 								}
 							: undefined,
 						_on: {

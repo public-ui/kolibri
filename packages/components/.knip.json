@@ -1,14 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["src/index.ts"],
 	"ignore": ["src/assets/**", "src/dev/**", "src/global/**"],
-	"ignoreDependencies": [
-		"@stencil/angular-output-target",
-		"@stencil/react-output-target",
-		"@stencil/solid-output-target",
-		"@stencil/vue-output-target",
-		"eslint-plugin-html",
-		"eslint-plugin-react"
-	],
+	"ignoreDependencies": ["@stencil/angular-output-target", "@stencil/react-output-target", "@stencil/solid-output-target", "@stencil/vue-output-target"],
 	"project": ["src/**/*.ts"]
 }
