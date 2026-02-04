@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react",
-	"version": "4.0.3-rc.0",
+	"version": "4.0.3-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,11 +49,9 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "6.0.0",
-		"@types/minimist": "1.2.5",
-		"@types/normalize-package-data": "2.4.4",
 		"@types/react": "18.3.27",
 		"@types/react-dom": "18.3.7",
+		"minimatch": "10.1.2",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"typescript": "5.9.3",

@@ -9,6 +9,13 @@ concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
   cancel-in-progress: true
 
+permissions:
+  attestations: write
+  contents: read
+  id-token: write
+  issues: write
+  pull-requests: write
+
 jobs:
   deploy:
     # Skip this job when the base clone URL may be different from the head clone URL.
@@ -45,6 +52,11 @@ jobs:
 
       - name: Build
         run: pnpm --filter @public-ui/sample-react... build
+
+      - name: Attest sample react build
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: packages/samples/react/dist
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
