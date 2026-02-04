@@ -67,7 +67,6 @@ type ControllerBaseProps<TControl = Control<any>> = {
 	rules?: any;
 	defaultValue?: any;
 	shouldUnregister?: boolean;
-	disabled?: boolean;
 };
 
 // Extract component props from React component type
@@ -78,7 +77,7 @@ type ControllerComponent<P> = React.ForwardRefExoticComponent<P & ControllerBase
 
 function withController<T extends React.ComponentType<any>>(Component: T, valueProp?: string): ControllerComponent<ExtractProps<T>> {
 	const ControllerWrapper = React.forwardRef<HTMLElement, ExtractProps<T> & ControllerBaseProps<any>>((props, ref) => {
-		const { name, control, rules, defaultValue, shouldUnregister, disabled, ...componentProps } = props;
+		const { name, control, rules, defaultValue, shouldUnregister, ...componentProps } = props;
 
 		return (
 			<Controller
@@ -102,7 +101,7 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 						},
 						_name: name,
 						_touched: fieldState.isTouched,
-						_disabled: props._disabled || disabled || field.disabled,
+						_disabled: field.disabled, // https://react-hook-form.com/docs/useform#disabled
 						_msg: fieldState.error
 							? {
 									_type: 'error' as const,
