@@ -51,18 +51,6 @@
 
 				visibility: hidden;
 			}
-
-			&-text {
-				&::after {
-					content: '';
-				}
-			}
-		}
-
-		&__tooltip {
-			.span-label::after {
-				content: '';
-			}
 		}
 
 		&__hint {
@@ -82,11 +70,11 @@
 					content: '*' / '';
 				}
 			}
+		}
 
-			&__tooltip {
-				.span-label::after {
-					content: '*' / '';
-				}
+		&--required .kol-tooltip {
+			.kol-span__label::after {
+				content: '*' / '';
 			}
 		}
 	}
