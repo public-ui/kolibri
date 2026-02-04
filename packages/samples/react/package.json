@@ -32,7 +32,7 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.41.2",
-		"@types/node": "24.10.9",
+		"@types/node": "24.10.10",
 		"@types/react": "19.2.10",
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.5.10",

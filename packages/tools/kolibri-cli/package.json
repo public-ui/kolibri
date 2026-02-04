@@ -45,7 +45,7 @@
 		"typed-bem": "1.0.2"
 	},
 	"devDependencies": {
-		"@types/node": "24.10.9",
+		"@types/node": "24.10.10",
 		"@types/semver": "7.7.1",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",

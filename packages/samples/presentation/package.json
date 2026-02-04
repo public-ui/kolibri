@@ -33,7 +33,7 @@
 		"react-router-dom": "7.13.0"
 	},
 	"devDependencies": {
-		"@types/node": "24.10.9",
+		"@types/node": "24.10.10",
 		"@types/react": "19.2.10",
 		"@types/react-dom": "19.2.3",
 		"@typescript-eslint/eslint-plugin": "8.54.0",
