@@ -37,7 +37,6 @@ import {
 	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaOwns,
-	validateButtonVariant,
 	validateCustomClass,
 	validateDisabled,
 	validateDownload,
@@ -58,6 +57,7 @@ import { onLocationChange } from './ariaCurrentService';
 
 import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
+import { validateVariantClassName, VariantClassNamePropType } from '../../schema/props/variant-class-name';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 
@@ -174,7 +174,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._variant as string}`]: this.state._variant !== 'custom',
+						[`kol-link--${this.state._variant as string}`]: this.state._variant !== undefined,
 						'kol-link--inline': this.state._inline === true,
 						'kol-link--standalone': this.state._inline === false,
 						[this.state._customClass as string]:
@@ -331,7 +331,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Defines which button variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType | VariantClassNamePropType;
 
 	@State() public state: LinkStates = {
 		_ariaCurrentValue: 'page',
@@ -446,8 +446,8 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateButtonVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
+	public validateVariantClassName(value?: ButtonVariantPropType | VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
 	public componentWillLoad(): void {
@@ -471,7 +471,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateButtonVariant(this._variant);
+		this.validateVariantClassName(this._variant);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});

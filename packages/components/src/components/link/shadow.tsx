@@ -19,6 +19,7 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
+import { VariantClassNamePropType } from '../../schema/props/variant-class-name';
 
 @Component({
 	tag: 'kol-link',
@@ -62,6 +63,7 @@ export class KolLink implements LinkProps, FocusableElement {
 				_shortKey={this._shortKey}
 				_target={this._target}
 				_tooltipAlign={this._tooltipAlign}
+				_variant={this._variant}
 			>
 				{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
@@ -161,4 +163,9 @@ export class KolLink implements LinkProps, FocusableElement {
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 }
