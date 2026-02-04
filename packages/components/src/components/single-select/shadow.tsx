@@ -56,6 +56,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
+	// so onBlur doesn't close the panel if clear button is pressed
+	private isClearing = false;
 
 	/**
 	 * Returns the current value.
@@ -100,15 +102,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private onBlur(event: FocusEvent) {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
-
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen) {
+		} else if (!this._isOpen && this._value) {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
-
-		if (event instanceof FocusEvent && event.view === window) {
+		if (event instanceof FocusEvent && event.view === window && !this.isClearing) {
 			this._isOpen = false;
 		}
 	}
@@ -132,28 +132,31 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private clearSelection() {
-		const isDisabled = this.state._disabled === true;
-		if (isDisabled) {
+		this.isClearing = true;
+
+		if (this.state._disabled) {
 			return;
-		} else {
-			const emptyValue = null;
-			this._focusedOptionIndex = -1;
-			this._value = emptyValue;
-			this._inputValue = '';
-			this._filteredOptions = [...this.state._options];
-
-			const inputEvent = this.createEventWithTarget('input', {
-				name: this.state._name as string,
-				value: emptyValue,
-			});
-			const changeEvent = this.createEventWithTarget('change', {
-				name: this.state._name as string,
-				value: emptyValue,
-			});
-
-			this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
-			this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 		}
+
+		const emptyValue = null;
+		this._focusedOptionIndex = -1;
+		this._value = emptyValue;
+		this._inputValue = '';
+		this._filteredOptions = [...this.state._options];
+
+		const inputEvent = this.createEventWithTarget('input', {
+			name: this.state._name as string,
+			value: emptyValue,
+		});
+		const changeEvent = this.createEventWithTarget('change', {
+			name: this.state._name as string,
+			value: emptyValue,
+		});
+
+		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
+		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
+
+		this.isClearing = false;
 	}
 
 	private selectOption(option: Option<string>) {
