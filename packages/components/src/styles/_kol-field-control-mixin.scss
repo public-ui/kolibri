@@ -79,13 +79,13 @@
 		&--required & {
 			&__label-text {
 				&::after {
-					content: '*';
+					content: '*' / '';
 				}
 			}
 
 			&__tooltip {
 				.span-label::after {
-					content: '*';
+					content: '*' / '';
 				}
 			}
 		}
