@@ -1,0 +1,189 @@
+/**
+ * @file _variables.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 16.12.2024
+ * @modified 26.05.2025
+ * @@VERSION@@
+ * @brief Tokens für mertics, components, typography.
+ *
+ * Diese Datei enthält Tokens, um die Sizes zu definieren.
+ * Variationen (Mobile und Desktop).
+ */
+
+@use 'sass:map' as map;
+@use '../utilities/maps' as *;
+
+:root {
+	// ####### Mobile #######
+	// border
+	--kern-metric-border-width-none: var(--kern-0);
+	--kern-metric-border-width-light: var(--kern-1);
+	--kern-metric-border-width-default: var(--kern-2);
+	--kern-metric-border-width-bold: var(--kern-4);
+	--kern-metric-border-width-heavy: var(--kern-8);
+	// border-radius
+	--kern-metric-border-radius-none: var(--kern-0);
+	--kern-metric-border-radius-small: var(--kern-2);
+	--kern-metric-border-radius-default: var(--theme-border-radius); // TODO: Theming Variable Bsp.: --theme-border-radius
+	--kern-metric-border-radius-large: var(--kern-8);
+	--kern-metric-border-radius-circle: 50%;
+
+	// component
+	--kern-component-badge-space-left: var(--kern-12);
+	--kern-component-description-list-term-max-width: var(--kern-352);
+	--kern-component-alert-icon-size: var(--kern-32);
+	--kern-component-kopfzeile-font-family: 'Fira Sans', 'Fira Sans Regular', 'Noto Sans', 'Noto Sans Regular', 'SF Pro Text', 'Segoe UI', SegoeUI, Roboto, Arial,
+		Helvetica, sans-serif;
+	--kern-component-kopfzeile-font-size: var(--kern-font-size-14);
+	--kern-component-kopfzeile-line-height: var(--kern-font-size-16);
+	--kern-component-kopfzeile-padding: var(--kern-7);
+
+	// dimensions
+	--kern-metric-dimension-2x-small: var(--kern-8);
+	--kern-metric-dimension-x-small: var(--kern-16);
+	--kern-metric-dimension-small: var(--kern-20);
+	--kern-metric-dimension-default: var(--kern-24);
+	--kern-metric-dimension-large: var(--kern-32);
+	--kern-metric-dimension-x-large: var(--kern-48);
+	--kern-metric-dimension-2x-large: var(--kern-56);
+	--kern-metric-dimension-3x-large: var(--kern-64);
+	--kern-metric-dimension-4x-large: var(--kern-80);
+	--kern-metric-dimension-5x-large: var(--kern-96);
+	// dimensions-media
+	--kern-metric-dimension-media-small: var(--kern-96);
+	--kern-metric-dimension-media-default: var(--kern-160);
+	--kern-metric-dimension-media-large: var(--kern-240);
+
+	// screen-size
+	--kern-metric-screen-size: var(--kern-360);
+
+	// space
+	--kern-metric-space-none: var(--kern-0);
+	--kern-metric-space-2x-small: var(--kern-2);
+	--kern-metric-space-x-small: var(--kern-4);
+	--kern-metric-space-small: var(--kern-8);
+	--kern-metric-space-default: var(--kern-16);
+	--kern-metric-space-large: var(--kern-24);
+	--kern-metric-space-x-large: var(--kern-32);
+
+	// text
+	--kern-typography-font-family-default: var(--kern-typography-font-family-fira-sans);
+
+	// typography-line-height
+	--kern-typography-line-height-static-medium: var(--kern-font-size-24);
+	--kern-typography-line-height-static-large: var(--kern-font-size-32);
+	--kern-typography-line-height-adaptive-medium: var(--kern-font-size-24);
+	--kern-typography-line-height-adaptive-large: var(--kern-font-size-32);
+	--kern-typography-line-height-adaptive-x-large: var(--kern-font-size-40);
+	--kern-typography-line-height-adaptive-2x-large: var(--kern-font-size-56);
+
+	// // typography-font-size
+	// --kern-component-kopfzeile-font-size: var(--kern-font-size-12);
+	--kern-typography-font-size-static-small: var(--kern-font-size-16);
+	--kern-typography-font-size-static-medium: var(--kern-font-size-18);
+	--kern-typography-font-size-static-large: var(--kern-font-size-21);
+	--kern-typography-font-size-adaptive-medium: var(--kern-font-size-21);
+	--kern-typography-font-size-adaptive-large: var(--kern-font-size-26);
+	--kern-typography-font-size-adaptive-x-large: var(--kern-font-size-32);
+	--kern-typography-font-size-adaptive-2x-large: var(--kern-font-size-48);
+
+	// text-spacing
+	// spacing-baseline
+	--kern-metric-baseline-body-default-padding-top: var(--kern-6);
+	--kern-metric-baseline-body-default-padding-bottom: var(--kern-2);
+	--kern-metric-baseline-body-large-padding-top: var(--kern-1);
+	--kern-metric-baseline-body-large-padding-bottom: var(--kern-7);
+	--kern-metric-baseline-body-small-padding-top: var(--kern-7);
+	--kern-metric-baseline-body-small-padding-bottom: var(--kern-1);
+
+	--kern-metric-baseline-heading-display-padding-top: var(--kern-12);
+	--kern-metric-baseline-heading-display-padding-bottom: var(--kern-12);
+	--kern-metric-baseline-heading-x-large-padding-top: var(--kern-9);
+	--kern-metric-baseline-heading-x-large-padding-bottom: var(--kern-7);
+	--kern-metric-baseline-heading-large-padding-top: var(--kern-7);
+	--kern-metric-baseline-heading-large-padding-bottom: var(--kern-9);
+	--kern-metric-baseline-heading-medium-padding-top: var(--kern-5);
+	--kern-metric-baseline-heading-medium-padding-bottom: var(--kern-3);
+	--kern-metric-baseline-heading-small-padding-top: var(--kern-6);
+	--kern-metric-baseline-heading-small-padding-bottom: var(--kern-2);
+
+	--kern-metric-baseline-title-large-padding-top: var(--kern-7);
+	--kern-metric-baseline-title-large-padding-bottom: var(--kern-9);
+	--kern-metric-baseline-title-default-padding-top: var(--kern-5);
+	--kern-metric-baseline-title-default-padding-bottom: var(--kern-3);
+	--kern-metric-baseline-title-small-padding-top: var(--kern-6);
+	--kern-metric-baseline-title-small-padding-bottom: var(--kern-2);
+
+	--kern-metric-baseline-preline-large-padding-top: var(--kern-1);
+	--kern-metric-baseline-preline-large-padding-bottom: var(--kern-7);
+	--kern-metric-baseline-preline-default-padding-top: var(--kern-6);
+	--kern-metric-baseline-preline-default-padding-bottom: var(--kern-2);
+	--kern-metric-baseline-preline-small-padding-top: var(--kern-7);
+	--kern-metric-baseline-preline-small-padding-bottom: var(--kern-1);
+
+	--kern-metric-baseline-subline-large-padding-top: var(--kern-1);
+	--kern-metric-baseline-subline-large-padding-bottom: var(--kern-7);
+	--kern-metric-baseline-subline-default-padding-top: var(--kern-6);
+	--kern-metric-baseline-subline-default-padding-bottom: var(--kern-2);
+	--kern-metric-baseline-subline-small-padding-top: var(--kern-7);
+	--kern-metric-baseline-subline-small-padding-bottom: var(--kern-9);
+
+	--kern-metric-baseline-label-large-padding-top: var(--kern-1);
+	--kern-metric-baseline-label-large-padding-bottom: var(--kern-7);
+	--kern-metric-baseline-label-default-padding-top: var(--kern-6);
+	--kern-metric-baseline-label-default-padding-bottom: var(--kern-2);
+	--kern-metric-baseline-label-small-padding-top: var(--kern-7);
+	--kern-metric-baseline-label-small-padding-bottom: var(--kern-1);
+
+	// typography-font-weight
+	--kern-typography-font-weight-regular: 400;
+	--kern-typography-font-weight-medium: 500;
+	--kern-typography-font-weight-semi-bold: 600;
+
+	// ####### Desktop #######
+	@media (min-width: map.get($grid-breakpoints, md)) {
+		// component
+		--kern-component-kopfzeile-padding: var(--kern-7);
+		--kern-component-alert-icon-size: var(--kern-40);
+		--kern-component-kopfzeile-font-size: var(--kern-font-size-16);
+		--kern-component-kopfzeile-line-height: var(--kern-font-size-20);
+		--kern-component-kopfzeile-padding: var(--kern-5);
+
+		// dimensions
+		--kern-metric-dimension-media-small: var(--kern-128);
+		--kern-metric-dimension-media-default: var(--kern-192);
+		--kern-metric-dimension-media-large: var(--kern-360);
+
+		// screen-size
+		--kern-metric-screen-size: var(--kern-1920);
+
+		// typography--line-height
+		--kern-typography-line-height-adaptive-medium: var(--kern-font-size-32);
+		--kern-typography-line-height-adaptive-large: var(--kern-font-size-40);
+		--kern-typography-line-height-adaptive-x-large: var(--kern-font-size-56);
+		--kern-typography-line-height-adaptive-2x-large: var(--kern-font-size-80);
+
+		// typography-font-size
+		--kern-typography-font-size-adaptive-medium: var(--kern-font-size-24);
+		--kern-typography-font-size-adaptive-large: var(--kern-font-size-32);
+		--kern-typography-font-size-adaptive-x-large: var(--kern-font-size-48);
+		--kern-typography-font-size-adaptive-2x-large: var(--kern-font-size-72);
+
+		// text-spacing
+		// spacing-baseline
+		--kern-metric-baseline-heading-x-large-padding-top: var(--kern-12);
+		--kern-metric-baseline-heading-x-large-padding-bottom: var(--kern-12);
+		--kern-metric-baseline-heading-large-padding-top: var(--kern-9);
+		--kern-metric-baseline-heading-large-padding-bottom: var(--kern-7);
+		--kern-metric-baseline-heading-medium-padding-top: var(--kern-8);
+		--kern-metric-baseline-heading-medium-padding-bottom: var(--kern-8);
+		--kern-metric-baseline-heading-display-padding-top: var(--kern-16);
+		--kern-metric-baseline-heading-display-padding-bottom: var(--kern-16);
+
+		--kern-metric-baseline-title-large-padding-top: var(--kern-9);
+		--kern-metric-baseline-title-large-padding-bottom: var(--kern-7);
+		--kern-metric-baseline-title-default-padding-top: var(--kern-8);
+		--kern-metric-baseline-title-default-padding-bottom: var(--kern-8);
+	}
+}

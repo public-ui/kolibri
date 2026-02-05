@@ -1,0 +1,11 @@
+@use '../mixins/button' as *;
+@use '../mixins/link' as *;
+
+@layer kol-theme-component {
+	@include button('kol-button');
+	@include button('kol-link');
+
+	.kol-toolbar {
+		gap: var(--kern-metric-space-default);
+	}
+}

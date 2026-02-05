@@ -1,0 +1,16 @@
+@use '../mixins/input-core' as *;
+@use '~@public-ui/components/index' as *;
+
+@layer kol-theme-component {
+	@include input-core;
+	.kol-input-container {
+		height: auto;
+		min-height: var(--kern-metric-dimension-x-large);
+	}
+	.kol-textarea {
+		background: transparent;
+		display: block;
+		height: auto;
+		border: none;
+	}
+}

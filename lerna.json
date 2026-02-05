@@ -17,6 +17,7 @@
 		"packages/samples/presentation",
 		"packages/themes/default",
 		"packages/themes/ecl",
+		"packages/themes/kern",
 		"packages/themes",
 		"packages/tools/hydrate-server",
 		"packages/tools/kolibri-cli",

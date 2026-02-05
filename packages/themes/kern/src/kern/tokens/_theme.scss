@@ -1,0 +1,82 @@
+/**
+ * @file _themes.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 16.12.2024
+ * @modified 26.05.2025
+ * @@VERSION@@
+ * @brief Tokens für Color-Themes.
+ *
+ * Diese Datei enthält Tokens, um die Colors zu definieren.
+ * Variationen (Light und Dark).
+ */
+
+@mixin light-color {
+	/* action */
+	--kern-color-action-default: #2d47a3; // TODO: Theming Variable
+	--kern-color-action-on-default: #ffffff;
+	--kern-color-action-visited: #74009e;
+	/* action-focus */
+	--kern-color-action-focus-background: #404464;
+	--kern-color-action-focus-border-inside: #6e7596;
+	--kern-color-action-focus-border-outside: #c2c6d6;
+	/* action-state */
+	/* action-state-indicator */
+	--kern-color-action-state-indicator-default: var(--kern-color-action-default);
+	--kern-color-action-state-indicator-shade: var(--kern-color-layout-text-default);
+	--kern-color-action-state-indicator-tint: var(--kern-color-action-on-default);
+	/* action-state-opacity */
+	--kern-color-action-state-opacity-hover: 0.08;
+	--kern-color-action-state-opacity-pressed: 0.32;
+	--kern-color-action-state-opacity-selected: 0.12;
+	--kern-color-action-state-opacity-disabled: 0.4;
+	--kern-color-action-state-opacity-active: 0.16;
+	--kern-color-action-state-opacity-overlay: 0.72;
+
+	/* feedback */
+	--kern-color-feedback-danger: #be0f09;
+	--kern-color-feedback-danger-background: #feebe7;
+	--kern-color-feedback-info: #00648f;
+	--kern-color-feedback-info-background: #def4fc;
+	--kern-color-feedback-success: #006b50;
+	--kern-color-feedback-success-background: #dff6ee;
+	--kern-color-feedback-warning: #8a4e00;
+	--kern-color-feedback-warning-background: #fff0d1;
+	/* feedback-loader */
+	--kern-color-feedback-loader: #404464;
+	--kern-color-feedback-loader-background: #e0e2eb;
+
+	/* form-inputs */
+	--kern-color-form-input-background: #f6f6f8;
+	--kern-color-form-input-background-inverted: #ffffff;
+	--kern-color-form-input-border: #171a2b;
+
+	/* layout */
+	--kern-color-layout-border: #a6abc4;
+	--layout-border: #a5aac3;
+	/* layout-text */
+	--kern-color-layout-text-default: #171a2b;
+	--kern-color-layout-text-inverse: #f6f6f8;
+	--kern-color-layout-text-muted: #404464;
+	/* layout-background */
+	--kern-color-layout-background-default: #ffffff;
+	--kern-color-layout-background-hued: #f6f6f8;
+	--kern-color-layout-background-overlay: rgb(0, 0, 0, 0.72); // opacity
+
+	// Actins Hover Active
+	--kern-color-action-state-indicator-shade-hover: #2f57c0;
+	--kern-color-action-state-indicator-shade-active: #4671dd;
+	// --kern-color-action-state-indicator-tint-hover: oklch(var(--kern-darkblue-025-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+	// --kern-color-action-state-indicator-tint-active: oklch(var(--kern-darkblue-050-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+
+	--kern-color-action-state-indicator-tint-hover: #ebeff9;
+	--kern-color-action-state-indicator-tint-active: #d7e0f4;
+
+	// Opacity
+	--kern-color-action-state-indicator-tint-hover-opacity: rgb(45, 71, 163, 0.08); // opacity
+	--kern-color-action-state-indicator-tint-active-opacity: rgb(45, 71, 163, 0.16); // opacity
+}
+
+:root {
+	@include light-color;
+}

@@ -1,0 +1,109 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/input-core' as *;
+
+@layer kol-theme-component {
+	@include input-core;
+	.kol-input {
+		opacity: 0 !important;
+	}
+
+	.kol-input-container {
+		outline: var(--kern-metric-border-width-default) dashed var(--kern-color-form-input-border);
+		display: flex;
+		position: relative;
+		height: var(--kern-metric-dimension-5x-large);
+		padding: 0;
+		align-items: center;
+		border: none;
+
+		&:hover {
+			outline-style: solid;
+			outline-width: 4px;
+			padding: 0;
+			outline-offset: -4px;
+		}
+
+		&:focus-within {
+			outline-style: solid;
+			outline-width: 4px;
+			padding: 0;
+			outline-offset: -4px;
+		}
+
+		&__adornment {
+			width: 44px;
+
+			&--start {
+				position: absolute;
+				left: var(--kern-metric-space-large);
+
+				& + .kol-input-container__container {
+					padding-left: calc(var(--kern-metric-space-large) + 44px);
+				}
+			}
+
+			&--end {
+				position: absolute;
+				right: var(--kern-metric-space-large);
+
+				& + .kol-input-container__container {
+					padding-left: calc(var(--kern-metric-space-large) + 44px);
+				}
+			}
+
+			.kol-icon {
+				color: var(--color-blue-100);
+				display: flex;
+				margin: 0 to-rem(7);
+			}
+		}
+
+		&__container {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			padding: var(--kern-metric-space-large);
+			align-items: center;
+
+			&:has(+ .kol-input-container__adornment--end) {
+				padding-right: calc(var(--kern-metric-space-large) + 44px);
+			}
+		}
+
+		&__button {
+			border-radius: var(--kern-metric-border-radius-default);
+			display: flex;
+			padding: 0 to-rem(16);
+			align-items: center;
+			justify-content: center;
+			border: 1px solid var(--kern-color-action-default);
+
+			.kol-span__label {
+				white-space: nowrap;
+			}
+		}
+
+		&__filename {
+			display: none;
+
+			&--has-file {
+				color: var(--color-black-100);
+				display: flex;
+				padding: 0 to-rem(12);
+				overflow: hidden;
+				order: 1;
+				flex-grow: 1;
+
+				font-size: to-rem(16);
+				font-weight: 400;
+				line-height: 1.5;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+
+		&--is-dragover {
+			border-color: var(--color-blue-100);
+		}
+	}
+}
