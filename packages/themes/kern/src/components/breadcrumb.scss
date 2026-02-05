@@ -1,0 +1,63 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/link' as *;
+
+@layer kol-theme-component {
+	$vertical-padding: to-rem(5);
+	$horizontal-padding: to-rem(10);
+
+	@include kol-link('kol-link');
+
+	.kol-breadcrumb {
+		font-size: to-rem(13);
+		line-height: 1.25;
+
+		&__list {
+			gap: 0;
+		}
+
+		&__list-element {
+			gap: 0;
+			flex-wrap: nowrap;
+		}
+
+		&__list-element-span {
+			color: var(--kern-color-layout-text-default);
+			padding: $vertical-padding $horizontal-padding;
+		}
+
+		&__icon {
+			color: var(--kern-color-layout-text-muted);
+
+			font-size: to-rem(14);
+		}
+	}
+
+	.kol-link {
+		color: var(--kern-color-layout-text-default);
+		border-radius: var(--kern-metric-border-radius-large);
+		padding: $vertical-padding $horizontal-padding;
+		align-items: center;
+		justify-content: center;
+
+		font-size: to-rem(13);
+
+		.kol-icon {
+			font-size: to-rem(18);
+		}
+
+		&:hover {
+			color: var(--kern-color-action-default);
+			background: var(--kern-color-layout-background-hued);
+		}
+	}
+
+	.kol-span {
+		&__container {
+			gap: to-rem(8);
+		}
+
+		&__label {
+			text-decoration: underline;
+		}
+	}
+}

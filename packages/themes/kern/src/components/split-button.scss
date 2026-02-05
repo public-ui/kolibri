@@ -1,0 +1,21 @@
+@use '../mixins/button' as *;
+
+@layer kol-theme-component {
+	@include button('kol-button');
+
+	.kol-split-button {
+		&__button {
+			.kol-button__text {
+				border-radius: var(--kern-metric-border-radius-default) 0 0 var(--kern-metric-border-radius-default);
+				border-right-width: 0;
+			}
+		}
+
+		&__secondary-button {
+			.kol-button__text {
+				border-radius: 0 var(--kern-metric-border-radius-default) var(--kern-metric-border-radius-default) 0;
+				border-left-width: 0;
+			}
+		}
+	}
+}

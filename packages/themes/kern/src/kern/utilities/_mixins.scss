@@ -1,0 +1,277 @@
+/**
+ * @file _mixims.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 16.12.2024
+ * @modified 26.05.2025
+ * @@VERSION@@
+ * @brief Styles und wiederverwendbare Snippets für mehrere Komponenten.
+ *
+ * Diese Datei enthält wiederverwendbare Snippets, die in mehrere Komponenten
+ * eingesetzt werden können.
+ */
+
+// Text Base
+@mixin text-base {
+	color: var(--kern-color-layout-text-default, #171a2b);
+
+	font-family: var(--kern-typography-font-family-default, 'Fira Sans');
+	letter-spacing: var(--kern-metric-space-none, 0);
+	font-style: normal;
+}
+
+// Text - Headings
+@mixin heading-display {
+	@include text-base;
+	padding: var(--kern-metric-baseline-heading-display-padding-top, 12px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-display-padding-bottom, 12px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-2x-large, 48px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-adaptive-2x-large, 56px);
+}
+
+@mixin heading-x-large {
+	@include text-base;
+	padding: var(--kern-metric-baseline-heading-x-large-padding-top, 9px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-x-large-padding-bottom, 7px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-x-large, 32px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-adaptive-x-large, 40px);
+}
+
+@mixin heading-large {
+	@include text-base;
+	padding: var(--kern-metric-baseline-heading-large-padding-top, 7px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-large-padding-bottom, 9px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-large, 26px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-adaptive-large, 32px);
+}
+
+@mixin heading-medium {
+	@include text-base;
+	padding: var(--kern-metric-baseline-heading-medium-padding-top, 5px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-medium-padding-bottom, 3px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-medium, 21px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-adaptive-medium, 24px);
+}
+
+@mixin heading-small {
+	@include text-base;
+	padding: var(--kern-metric-baseline-heading-small-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-small-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+// Text - Title
+@mixin title-large {
+	@include text-base;
+	padding: var(--kern-metric-baseline-title-large-padding-top, 7px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-title-large-padding-bottom, 9px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-large, 26px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-adaptive-large, 32px);
+}
+
+@mixin title-default {
+	@include text-base;
+	padding: var(--kern-metric-baseline-title-default-padding-top, 5px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-title-default-padding-bottom, 3px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-medium, 21px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-adaptive-medium, 24px);
+}
+
+@mixin title-small {
+	@include text-base;
+	padding: var(--kern-metric-baseline-title-small-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-title-small-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+// Text - Body
+@mixin body-large {
+	@include text-base;
+	padding: var(--kern-metric-baseline-body-large-padding-top, 1px) var(--kern-metric-space-none, 0) var(--kern-metric-baseline-body-large-padding-bottom, 7px)
+		var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-large, 21px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-large, 32px);
+}
+
+@mixin body-default {
+	@include text-base;
+	padding: var(--kern-metric-baseline-body-default-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-body-default-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin body-small {
+	@include text-base;
+	padding: var(--kern-metric-baseline-body-small-padding-top, 7px) var(--kern-metric-space-none, 0) var(--kern-metric-baseline-body-small-padding-bottom, 1px)
+		var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-small, 16px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+// Text - Preline
+@mixin preline-large {
+	@include text-base;
+	color: var(--kern-color-layout-text-muted, #404565);
+	padding: var(--kern-metric-baseline-preline-large-padding-top, 1px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-preline-large-padding-bottom, 7px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-large, 21px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-large, 32px);
+}
+
+@mixin preline-default {
+	@include text-base;
+	color: var(--kern-color-layout-text-muted, #404565);
+	padding: var(--kern-metric-baseline-preline-default-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-preline-default-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin preline-small {
+	@include text-base;
+	color: var(--kern-color-layout-text-muted, #404565);
+	padding: var(--kern-metric-baseline-preline-small-padding-top, 7px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-preline-small-padding-bottom, 1px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-small, 16px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+// Text - Subline
+@mixin subline-large {
+	@include text-base;
+	color: var(--kern-color-layout-text-muted, #404565);
+	padding: var(--kern-metric-baseline-subline-large-padding-top, 1px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-subline-large-padding-bottom, 7px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-large, 21px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-large, 32px);
+}
+
+@mixin subline-default {
+	@include text-base;
+	color: var(--kern-color-layout-text-muted, #404565);
+	padding: var(--kern-metric-baseline-subline-default-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-subline-default-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin subline-small {
+	@include text-base;
+	color: var(--kern-color-layout-text-muted, #404565);
+	padding: var(--kern-metric-baseline-subline-small-padding-top, 7px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-subline-small-padding-bottom, 9px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-small, 16px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+// Text - Label
+@mixin label-large {
+	@include text-base;
+	padding: var(--kern-metric-baseline-label-large-padding-top, 1px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-label-large-padding-bottom, 7px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-large, 21px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-large, 32px);
+}
+
+@mixin label-default {
+	@include text-base;
+	padding: var(--kern-metric-baseline-label-default-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-label-default-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin label-small {
+	@include text-base;
+	padding: var(--kern-metric-baseline-label-small-padding-top, 7px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-label-small-padding-bottom, 1px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-small, 16px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin kern-sr-only {
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+	padding: 0 !important;
+	overflow: hidden !important;
+
+	white-space: nowrap !important;
+	border: 0 !important;
+	clip: rect(0, 0, 0, 0) !important;
+
+	// Fix for positioned table caption that could become anonymous cells
+	&:not(caption) {
+		position: absolute !important;
+	}
+}
+
+@mixin hint {
+	@include body-default;
+	color: var(--kern-color-layout-text-muted, #404565);
+}
+
+@mixin optional {
+	display: flex;
+	gap: var(--kern-metric-space-none, 0) var(--kern-metric-space-small, 8px);
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	align-self: stretch;
+}
+
+@mixin normalize {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+
+	font-size: 100%;
+	border: 0;
+}
+
+@mixin normalize-media {
+	vertical-align: middle;
+}

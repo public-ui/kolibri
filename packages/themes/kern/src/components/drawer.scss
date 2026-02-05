@@ -1,0 +1,30 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/card' as *;
+
+@layer kol-theme-component {
+	@include card('kol-card');
+
+	.kol-drawer__wrapper {
+		--kol-card-box-shadow: 0 to-rem(24) to-rem(60) rgb(0, 0, 0, 0.3), 0 to-rem(8) to-rem(16) 0 rgb(0, 0, 0, 0.1);
+
+		&--left {
+			--kol-card-border-radius: 0 var(--kern-metric-border-radius-large) var(--kern-metric-border-radius-large) 0;
+		}
+
+		&--right {
+			--kol-card-border-radius: var(--kern-metric-border-radius-large) 0 0 var(--kern-metric-border-radius-large);
+		}
+
+		&--top {
+			--kol-card-border-radius: 0 0 var(--kern-metric-border-radius-large) var(--kern-metric-border-radius-large);
+		}
+
+		&--bottom {
+			--kol-card-border-radius: var(--kern-metric-border-radius-large) var(--kern-metric-border-radius-large) 0 0;
+		}
+
+		.kol-card {
+			border: 0;
+		}
+	}
+}

@@ -1,0 +1,37 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/kol-alert' as *;
+@use '../mixins/form-field-order' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/custom-suggestions-option' as *;
+@use '../mixins/custom-suggestions-options-group' as *;
+@use '../mixins/custom-suggestions-toggle' as *;
+@use '../mixins/listbox-common' as *;
+@use '../mixins/input-core' as *;
+
+@layer kol-theme-component {
+	$option-height: to-rem(40);
+	$visible-options: 5;
+
+	@include input-core;
+	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
+	@include kol-custom-suggestions-toggle-theme;
+	@include listbox-common(kol-single-select);
+
+	.kol-single-select {
+		&__delete {
+			color: var(--kern-color-action-default);
+			display: flex;
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
+			align-items: center;
+			justify-content: center;
+
+			font-size: var(--kern-metric-dimension-default);
+
+			&:not(:disabled):hover {
+				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+			}
+		}
+	}
+}

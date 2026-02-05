@@ -1,0 +1,81 @@
+@use '~@public-ui/components/index' as *;
+@use './focus-outline' as *;
+
+@mixin checkbox($block-classname) {
+	.#{$block-classname} {
+		&__input,
+		&-input {
+			background: var(--kern-color-form-input-background);
+			border-radius: var(--kern-metric-border-radius-small);
+			width: var(--kern-metric-dimension-large);
+			height: var(--kern-metric-dimension-large);
+			margin: 0;
+			appearance: none;
+			border: var(--kern-metric-border-width-default) solid var(--kern-color-form-input-border);
+
+			&:not(:disabled):hover {
+				border: var(--kern-metric-border-width-bold) solid var(--kern-color-form-input-border);
+				transition: none;
+			}
+
+			&:not(:disabled):focus,
+			&:not(:disabled):focus-visible {
+				box-shadow: 0 0 0 var(--kern-metric-border-width-bold) var(--kern-color-form-input-border);
+				outline: 0;
+				border: 0;
+
+				&:hover {
+					border: 0;
+				}
+			}
+
+			&:not(:disabled):checked {
+				&:focus,
+				&:focus-visible {
+					box-shadow: 0 0 0 var(--kern-metric-border-width-bold) var(--kern-color-form-input-border);
+					outline: 0;
+					border: 0;
+
+					&:hover {
+						border: 0;
+					}
+				}
+			}
+
+			&[disabled] {
+				opacity: var(--kern-color-action-state-opacity-disabled);
+				outline: 0;
+
+				&:checked {
+					outline: 0;
+				}
+
+				&:hover {
+					cursor: default;
+				}
+
+				~ .kern-label {
+					opacity: var(--kern-color-action-state-opacity-disabled);
+					cursor: default;
+				}
+			}
+		}
+
+		.kol-icon {
+			display: flex;
+			position: absolute;
+			inset: auto;
+			z-index: 1;
+
+			font-size: to-rem(28);
+			pointer-events: none;
+		}
+
+		&--disabled,
+		&-label--disabled {
+			.kol-icon {
+				opacity: var(--kern-color-action-state-opacity-disabled);
+			}
+		}
+	}
+}
