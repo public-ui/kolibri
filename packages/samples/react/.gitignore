@@ -28,7 +28,7 @@ Thumbs.db
 .env
 .eslintcache
 /dist/
-/public/assets/
+/assets/
 *~
 *.log
 *.tgz
