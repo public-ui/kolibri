@@ -1,48 +1,80 @@
-import { KolForm, KolInputText } from '@public-ui/react-v19';
-import React, { useMemo, useRef, type BaseSyntheticEvent } from 'react';
+import { KolForm, KolHeading, KolInputText } from '@public-ui/react-v19';
+import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-
 import { SampleDescription } from '../SampleDescription';
 
-type InputTextElementSelection = {
-	setSelectionStart?: (position: number) => Promise<void>;
-	selectionStart?: () => Promise<number | null>;
-};
-
-type KolInputTextEvents = {
-	onBlur?: (event: Event) => void;
-	onChange?: (event: Event, value: unknown) => void;
-	onFocus?: (event: Event) => void;
-	onInput?: (event: Event, value: unknown) => void;
-};
-type KolInputTextProps = Omit<React.ComponentProps<typeof KolInputText>, '_on' | '_value'> & {
-	_on?: KolInputTextEvents;
-	_value?: string;
-};
-
-const NON_ALPHANUM = /[^a-zA-Z0-9]/g;
-const EVERY_FOUR_CHARS = /(.{4})(?!$)/g;
-
 class IbanFormatter {
-	private electronicFormat(iban: string): string {
-		return iban.replace(NON_ALPHANUM, '').toUpperCase();
+	private readonly SEPARATOR = ' ';
+	private readonly CHARS_PER_GROUP = 4;
+	private readonly KEEP_ALPHANUM = /[^a-zA-Z0-9]/g;
+
+	parse(value: string): string {
+		return value.replace(this.KEEP_ALPHANUM, '').toUpperCase();
 	}
 
-	private printFormat(iban: string, separator?: string) {
-		return this.electronicFormat(iban).replace(EVERY_FOUR_CHARS, '$1' + (separator || ' '));
+	format(value: string): string {
+		const clean = this.parse(value);
+		const regex = new RegExp(`(.{${this.CHARS_PER_GROUP}})(?!$)`, 'g');
+		return clean.replace(regex, `$1${this.SEPARATOR}`);
 	}
 
-	public parse(value: string): string {
-		return this.electronicFormat(value);
-	}
+	adjustCursorPosition(oldValue: string, newValue: string, oldCursorPos: number): number {
+		const oldText = this.format(oldValue);
+		const newText = this.format(newValue);
 
-	public format(value: string, ref?: HTMLKolInputTextElement | null, selectionStart?: number | null): string {
-		const setSelectionStart = (ref as InputTextElementSelection | null)?.setSelectionStart;
-		if (selectionStart && setSelectionStart) {
-			if (selectionStart % 5 === 0) selectionStart++;
-			void setSelectionStart(selectionStart);
+		if (oldCursorPos >= oldText.length) return newText.length;
+
+		// Zähle Zeichen bis Cursor (ignoriere Separatoren)
+		let significantChars = 0;
+		for (let i = 0; i < oldCursorPos && i < oldText.length; i++) {
+			if (oldText[i] !== this.SEPARATOR) significantChars++;
 		}
-		return this.printFormat(value);
+
+		// Finde entsprechende Position im neuen Text
+		let count = 0;
+		for (let i = 0; i < newText.length; i++) {
+			if (newText[i] !== this.SEPARATOR && count++ === significantChars) return i;
+		}
+		return newText.length;
+	}
+}
+
+class CurrencyFormatter {
+	private readonly LOCALE = navigator.language;
+	private readonly CURRENCY_SYMBOL = ' €';
+
+	parse(value: string): number {
+		const sanitized = value.replace(/[^\d.,]/g, '').replace(/,/g, '.');
+		return parseFloat(sanitized) || 0;
+	}
+
+	format(value: number | string): string {
+		const number = typeof value === 'string' ? this.parse(value) : value;
+		const formatted = new Intl.NumberFormat(this.LOCALE, {
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		}).format(number);
+		return formatted + this.CURRENCY_SYMBOL;
+	}
+
+	adjustCursorPosition(oldValue: string, newValue: string, oldCursorPos: number): number {
+		const oldText = this.format(oldValue);
+		const newText = this.format(newValue);
+
+		if (oldCursorPos >= oldText.length) return newText.length;
+
+		// Zähle Ziffern bis Cursor
+		let digitCount = 0;
+		for (let i = 0; i < oldCursorPos && i < oldText.length; i++) {
+			if (/\d/.test(oldText[i])) digitCount++;
+		}
+
+		// Finde entsprechende Position im neuen Text
+		let count = 0;
+		for (let i = 0; i < newText.length; i++) {
+			if (/\d/.test(newText[i]) && count++ === digitCount) return i;
+		}
+		return newText.length;
 	}
 }
 
@@ -50,129 +82,115 @@ type IbanExampleFormValues = {
 	iban: string;
 };
 
-function FormattedKolInputText({
-	formatter,
-	selectionStartRef,
-	_on,
-	_value,
-	...props
-}: KolInputTextProps & {
-	formatter: IbanFormatter;
-	selectionStartRef: React.MutableRefObject<number | null>;
-}) {
-	const inputRef = useRef<HTMLKolInputTextElement | null>(null);
-	const normalizedOn = _on && typeof _on === 'object' ? (_on as KolInputTextEvents) : undefined;
-	const sanitizedSelectionRef = selectionStartRef as React.MutableRefObject<number | null>;
-
-	const element = inputRef.current;
-	const selectionStart = sanitizedSelectionRef.current;
-	const sanitizedFormatter: IbanFormatter = formatter;
-
-	return (
-		<KolInputText
-			{...props}
-			ref={inputRef}
-			_value={sanitizedFormatter.format(_value ?? '', element, selectionStart)}
-			_on={{
-				...normalizedOn,
-				onInput: (event: Event, value: unknown) => {
-					const selectionStartGetter = (inputRef.current as InputTextElementSelection | null)?.selectionStart;
-					selectionStartGetter?.().then((start) => {
-						sanitizedSelectionRef.current = start ?? null;
-					});
-					const parsedValue = sanitizedFormatter.parse(typeof value === 'string' ? value : '');
-					normalizedOn?.onInput?.(event, parsedValue);
-				},
-			}}
-		/>
-	);
-}
-
-function KolFormattedIbanController(props: any) {
-	const { name, control, rules, defaultValue, shouldUnregister, disabled, formatter, selectionStartRef, ...componentProps } = props;
-	return (
-		<Controller
-			name={name}
-			control={control}
-			rules={rules}
-			defaultValue={defaultValue}
-			shouldUnregister={shouldUnregister}
-			disabled={disabled}
-			render={({ field, fieldState }) => {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-				const userHandlers = componentProps._on as KolInputTextEvents | undefined;
-				return (
-					<FormattedKolInputText
-						{...(componentProps as any)}
-						formatter={formatter}
-						selectionStartRef={selectionStartRef}
-						_value={field.value}
-						_touched={fieldState.isTouched}
-						_msg={
-							fieldState.error
-								? {
-										_type: 'error' as const,
-										_description: fieldState.error.message || String(fieldState.error),
-									}
-								: undefined
-						}
-						_on={{
-							onInput: (event: Event, value: unknown) => {
-								field.onChange(value);
-								userHandlers?.onInput?.(event, value);
-							},
-							onBlur: () => field.onBlur(),
-						}}
-					/>
-				);
-			}}
-		/>
-	);
-}
+type CurrencyExampleFormValues = {
+	currency: number;
+};
 
 export function InputTextFormatterDemo() {
-	const formatter = useMemo(() => new IbanFormatter(), []);
-
-	const textInput1SelectionStart = useRef<number | null>(null);
-
-	const initialIbanExampleValues: IbanExampleFormValues = {
-		iban: 'DE89370400440532013000',
-	};
+	const ibanFormatter = new IbanFormatter();
+	const currencyFormatter = new CurrencyFormatter();
 
 	const ibanForm = useForm<IbanExampleFormValues>({
-		defaultValues: initialIbanExampleValues,
-		mode: 'onTouched',
+		defaultValues: { iban: 'DE89370400440532013000' },
+	});
+	const currencyForm = useForm<CurrencyExampleFormValues>({
+		defaultValues: { currency: 1000000 },
 	});
 
-	const ibanValues = ibanForm.watch();
+	const handleIbanInput = (event: Event) => {
+		const input = event.target as HTMLInputElement;
+		const newValue = ibanFormatter.parse(input.value);
+		const newCursorPos = ibanFormatter.adjustCursorPosition(ibanForm.getValues('iban'), newValue, input.selectionStart || 0);
 
-	const handleIbanSubmit = (event: Event) => {
-		void ibanForm.handleSubmit(async () => {})(event as unknown as BaseSyntheticEvent);
+		ibanForm.setValue('iban', newValue);
+
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				input.setSelectionRange(newCursorPos, newCursorPos);
+			});
+		});
 	};
 
 	return (
 		<>
 			<SampleDescription>
-				<p>
-					This example demonstrates formatting a data value in an input field (example IBAN). The data value is formatted to the input field (print format) and
-					vice versa the formatting is removed again (machine format)
-				</p>
+				<p>This example demonstrates two different formatting strategies:</p>
+				<ul>
+					<li>
+						<strong>Live Formatting (IBAN):</strong> Formatierung während der Eingabe. Der Wert wird sofort formatiert und angezeigt, mit intelligenter
+						Cursor-Position.
+					</li>
+					<li>
+						<strong>On-Blur Formatting (Currency):</strong> Formatierung beim Verlassen des Feldes. Ermöglicht freies Tippen ohne Unterbrechung durch
+						Formatierung.
+					</li>
+				</ul>
 			</SampleDescription>
-			<section className="w-full">
-				<div>
-					<KolForm _on={{ onSubmit: handleIbanSubmit }}>
-						<KolFormattedIbanController
-							control={ibanForm.control as any}
-							name="iban"
-							id="field-iban"
-							formatter={formatter}
-							selectionStartRef={textInput1SelectionStart}
-							rules={{ required: 'Please enter an IBAN.' }}
-							_label="IBAN"
-							_required
-						/>
+			<section className="w-full flex flex-col">
+				<div className="p-2">
+					<KolHeading _label="Live Formatting - IBAN" _level={2} />
+					<p className="text-sm mb-2">Formatierung erfolgt während der Eingabe mit intelligenter Cursor-Kontrolle</p>
+					<KolForm>
+						<form onSubmit={ibanForm.handleSubmit(async () => {})}>
+							<Controller
+								name="iban"
+								control={ibanForm.control}
+								render={({ field }) => (
+									<div className="block mt-2">
+										<KolInputText
+											id="field-iban"
+											_label="IBAN"
+											_value={ibanFormatter.format(field.value ?? '')}
+											_required
+											_on={{
+												onInput: handleIbanInput,
+												onBlur: field.onBlur,
+											}}
+										/>
+									</div>
+								)}
+							/>
+						</form>
 					</KolForm>
-					<pre className="text-base mt-2">{JSON.stringify(ibanValues, null, 2)}</pre>
+				</div>
+				<div className="p-2">
+					<KolHeading _label="Model" _level={2} />
+					<pre className="text-base">{JSON.stringify(ibanForm.watch(), null, 2)}</pre>
+				</div>
+			</section>
+
+			<section className="w-full flex flex-col">
+				<div className="p-2">
+					<KolHeading _label="On-Blur Formatting - Currency" _level={2} />
+					<p className="text-sm mb-2">Formatierung erfolgt beim Verlassen des Feldes (onBlur) für ungestörte Eingabe</p>
+					<KolForm>
+						<form onSubmit={currencyForm.handleSubmit(async () => {})}>
+							<Controller
+								name="currency"
+								control={currencyForm.control}
+								render={({ field }) => (
+									<div className="block mt-2">
+										<KolInputText
+											id="field-currency"
+											_label="Currency"
+											_value={currencyFormatter.format(field.value ?? 0)}
+											_on={{
+												onBlur: (event: Event) => {
+													const parsed = currencyFormatter.parse((event.target as HTMLInputElement).value);
+													field.onChange(parsed);
+													field.onBlur();
+												},
+											}}
+										/>
+									</div>
+								)}
+							/>
+						</form>
+					</KolForm>
+				</div>
+				<div className="p-2">
+					<KolHeading _label="Model" _level={2} />
+					<pre className="text-base">{JSON.stringify(currencyForm.watch(), null, 2)}</pre>
 				</div>
 			</section>
 		</>
