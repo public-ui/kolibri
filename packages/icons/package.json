@@ -3,7 +3,7 @@
 	"private": true,
 	"type": "module",
 	"devDependencies": {
-		"oslllo-svg-fixer": "5.0.0",
+		"oslllo-svg-fixer": "6.0.1",
 		"rimraf": "6.1.2",
 		"serve": "14.2.5",
 		"svgtofont": "6.5.1"

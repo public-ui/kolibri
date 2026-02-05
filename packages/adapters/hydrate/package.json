@@ -56,9 +56,9 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"chai": "4.5.0",
+		"chai": "6.2.2",
 		"cross-env": "10.1.0",
-		"mocha": "11.7.4",
+		"mocha": "11.7.5",
 		"mocha-snapshots": "4.2.0",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
