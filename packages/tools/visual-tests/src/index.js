@@ -35,7 +35,7 @@ if (!fs.existsSync(workingDir)) {
 
 const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
 const packageJsonPath = await import(new URL(`${workingDir}/package.json`, import.meta.url), {
-	assert: { type: 'json' },
+	with: { type: 'json' },
 });
 
 process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH = buildPath;

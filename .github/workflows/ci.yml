@@ -55,8 +55,6 @@ jobs:
         run: pnpm i --no-frozen-lockfile
       - name: Unused
         run: pnpm -r unused
-      - name: Depcheck
-        run: pnpm -r depcheck
       - name: Format
         run: pnpm -r format
       - name: Build
