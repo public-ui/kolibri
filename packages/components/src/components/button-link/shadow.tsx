@@ -18,6 +18,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { VariantClassNamePropType } from '../../schema/props/variant-class-name';
 
 @Component({
 	tag: 'kol-button-link',
@@ -71,6 +72,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_value={this._value}
+				_variant={this._variant}
 			>
 				<slot name="expert" slot="expert"></slot>
 			</KolButtonWcTag>
@@ -174,4 +176,9 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 }

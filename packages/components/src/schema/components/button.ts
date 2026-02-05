@@ -2,7 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	AriaExpandedPropType,
-	ButtonVariantPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaControls,
@@ -10,7 +9,6 @@ import type {
 	PropAriaSelected,
 	PropButtonCallbacks,
 	PropButtonType,
-	PropButtonVariant,
 	PropCustomClass,
 	PropDisabled,
 	PropHideLabel,
@@ -22,6 +20,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
+	VariantClassNamePropType,
 } from '../props';
 import type { KoliBriAllIcons, StencilUnknown } from '../types';
 
@@ -37,7 +36,7 @@ export type OptionalButtonProps = {
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &
 	PropButtonType &
-	PropButtonVariant &
+	VariantClassNamePropType &
 	PropCustomClass &
 	PropDisabled &
 	PropHideLabel &
@@ -54,7 +53,7 @@ export type RequiredButtonStates = RequiredButtonProps &
 		icons: KoliBriAllIcons;
 	};
 export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates> & {
-	buttonVariant: ButtonVariantPropType;
+	variant: VariantClassNamePropType;
 };
 
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;

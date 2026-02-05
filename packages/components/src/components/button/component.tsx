@@ -9,7 +9,6 @@ import type {
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
 	FocusableElement,
@@ -23,6 +22,7 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	mapBoolean2String,
@@ -38,7 +38,6 @@ import {
 	validateAriaSelected,
 	validateButtonCallbacks,
 	validateButtonType,
-	validateButtonVariant,
 	validateCustomClass,
 	validateDisabled,
 	validateHideLabel,
@@ -47,6 +46,7 @@ import {
 	validateLabelWithExpertSlot,
 	validateShortKey,
 	validateTooltipAlign,
+	validateVariantClassName,
 	watchString,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
@@ -309,14 +309,14 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: ButtonStates = {
 		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_variant: 'normal',
+		_variant: '',
 	};
 
 	public constructor() {
@@ -436,8 +436,8 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateButtonVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
+	public validateVariantClassName(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
 	public componentWillLoad(): void {
@@ -462,7 +462,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateButtonVariant(this._variant);
+		this.validateVariantClassName(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }
