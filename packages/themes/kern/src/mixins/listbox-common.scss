@@ -1,0 +1,21 @@
+// Shared styles for combobox and single-select
+@mixin listbox-common($block-classname) {
+	.#{$block-classname} {
+		&__group {
+			display: inline-flex;
+			width: 100%;
+			align-items: center;
+		}
+
+		&__input {
+			position: relative;
+			padding: 0;
+			flex-grow: 1;
+			border: none;
+		}
+	}
+
+	.kol-input-container {
+		padding-right: 0;
+	}
+}

@@ -1,0 +1,46 @@
+@use '../../assets/material-symbols-subset/variables' as *;
+
+.codicon {
+	$codIconToMaterial: (
+		codicon-add: $icon-add,
+		codicon-arrow-down: $icon-arrow-down,
+		codicon-arrow-left: $icon-arrow-back,
+		codicon-arrow-right: $icon-arrow-forward,
+		codicon-arrow-up: $icon-arrow-up,
+		codicon-check: $icon-check,
+		codicon-chevron-down: $icon-arrow-down,
+		codicon-chevron-left: $icon-chevron-left,
+		codicon-chevron-right: $icon-chevron-right,
+		codicon-chevron-up: $icon-arrow-up,
+		codicon-close: $icon-close,
+		codicon-debug-continue: $icon-keyboard-double-arrow-left,
+		codicon-debug-reverse-continue: $icon-keyboard-double-arrow-right,
+		codicon-error: $icon-danger,
+		codicon-eye-closed: $icon-visibility-off,
+		codicon-eye: $icon-visibility,
+		codicon-eye-watch: $icon-visibility,
+		codicon-fold: $icon-unfold-less,
+		codicon-home: $icon-home,
+		codicon-info: $icon-info,
+		codicon-link-external: $icon-open-in-new,
+		codicon-pass: $icon-check,
+		codicon-plus: $icon-add,
+		codicon-remove: $icon-remove,
+		codicon-save: $icon-save,
+		codicon-settings-gear: $icon-settings,
+		codicon-symbol-color: $icon-palette,
+		codicon-triangle-down: $icon-arrow-down,
+		codicon-versions: $icon-view-timeline,
+		codicon-warning: $icon-warning,
+	);
+
+	@each $class, $icon in $codIconToMaterial {
+		&.#{$class} {
+			font-family: '#{$icomoon-font-family}';
+
+			&::before {
+				content: $icon;
+			}
+		}
+	}
+}

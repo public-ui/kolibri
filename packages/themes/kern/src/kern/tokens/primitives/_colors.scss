@@ -1,0 +1,775 @@
+/**
+ * @file _colors.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 17.04.2025
+ * @modified 23.05.2025
+ * @@VERSION@@
+ * @brief Tokens für die Colors.
+ *
+ * Diese Datei enthält die Tokens für die Colors
+ * Colors sind als HEX-Werte bereitgestellt.
+ */
+
+// ############### COLORS HEX ###############
+// -- darkblue --
+:root {
+	/* Dark Blue 025 */
+	--kern-darkblue-025: #f6f6fa;
+
+	/* Dark Blue 050 */
+	--kern-darkblue-050: #ebeff9;
+
+	/* Dark Blue 100 */
+	--kern-darkblue-100: #d7e0f4;
+
+	/* Dark Blue 150 */
+	--kern-darkblue-150: #c4d1ee;
+
+	/* Dark Blue 200 */
+	--kern-darkblue-200: #aabce7;
+
+	/* Dark Blue 250 */
+	--kern-darkblue-250: #96acdf;
+
+	/* Dark Blue 300 */
+	--kern-darkblue-300: #7a9ad6;
+
+	/* Dark Blue 350 */
+	--kern-darkblue-350: #658bce;
+
+	/* Dark Blue 400 */
+	--kern-darkblue-400: #507bc5;
+
+	/* Dark Blue 450 */
+	--kern-darkblue-450: #3668bb;
+
+	/* Dark Blue 500 */
+	--kern-darkblue-500: #3c5fcf;
+
+	/* Dark Blue 550 */
+	--kern-darkblue-550: #2c52b8;
+
+	/* Dark Blue 600 */
+	--kern-darkblue-600: #2f4fad;
+
+	/* Dark Blue 650 */
+	--kern-darkblue-650: #2145a3;
+
+	/* Dark Blue 700 */
+	--kern-darkblue-700: #2d47a3;
+
+	/* Dark Blue 750 */
+	--kern-darkblue-750: #1f3b8f;
+
+	/* Dark Blue 800 */
+	--kern-darkblue-800: #19327f;
+
+	/* Dark Blue 850 */
+	--kern-darkblue-850: #152973;
+
+	/* Dark Blue 900 */
+	--kern-darkblue-900: #101f5c;
+
+	/* Dark Blue 950 */
+	--kern-darkblue-950: #0c1747;
+}
+
+// -- lightblue --
+:root {
+	/* Light Blue 025 */
+	--kern-lightblue-025: #f8fafe;
+
+	/* Light Blue 050 */
+	--kern-lightblue-050: #def4fc;
+
+	/* Light Blue 100 */
+	--kern-lightblue-100: #c4e8f8;
+
+	/* Light Blue 150 */
+	--kern-lightblue-150: #abdcf3;
+
+	/* Light Blue 200 */
+	--kern-lightblue-200: #90d0ee;
+
+	/* Light Blue 250 */
+	--kern-lightblue-250: #71c2e8;
+
+	/* Light Blue 300 */
+	--kern-lightblue-300: #4db2e0;
+
+	/* Light Blue 350 */
+	--kern-lightblue-350: #3ba4d4;
+
+	/* Light Blue 400 */
+	--kern-lightblue-400: #2f96c7;
+
+	/* Light Blue 450 */
+	--kern-lightblue-450: #1f84b7;
+
+	/* Light Blue 500 */
+	--kern-lightblue-500: #1c74a5;
+
+	/* Light Blue 550 */
+	--kern-lightblue-550: #0d6596;
+
+	/* Light Blue 600 */
+	--kern-lightblue-600: #00648f;
+
+	/* Light Blue 650 */
+	--kern-lightblue-650: #00507c;
+
+	/* Light Blue 700 */
+	--kern-lightblue-700: #00466d;
+
+	/* Light Blue 750 */
+	--kern-lightblue-750: #003a59;
+
+	/* Light Blue 800 */
+	--kern-lightblue-800: #002f48;
+
+	/* Light Blue 850 */
+	--kern-lightblue-850: #002238;
+
+	/* Light Blue 900 */
+	--kern-lightblue-900: #001828;
+
+	/* Light Blue 950 */
+	--kern-lightblue-950: #000e1a;
+}
+
+// -- turquoise --
+:root {
+	/* Turquoise 025 */
+	--kern-turquoise-025: #f6f9f9;
+
+	/* Turquoise 050 */
+	--kern-turquoise-050: #eef6f7;
+
+	/* Turquoise 100 */
+	--kern-turquoise-100: #d3eaec;
+
+	/* Turquoise 150 */
+	--kern-turquoise-150: #b8dee0;
+
+	/* Turquoise 200 */
+	--kern-turquoise-200: #a0d1d5;
+
+	/* Turquoise 250 */
+	--kern-turquoise-250: #88c4c9;
+
+	/* Turquoise 300 */
+	--kern-turquoise-300: #69b5bc;
+
+	/* Turquoise 350 */
+	--kern-turquoise-350: #52a9b1;
+
+	/* Turquoise 400 */
+	--kern-turquoise-400: #3b9ba5;
+
+	/* Turquoise 450 */
+	--kern-turquoise-450: #268d98;
+
+	/* Turquoise 500 */
+	--kern-turquoise-500: #157f8c;
+
+	/* Turquoise 550 */
+	--kern-turquoise-550: #0a7581;
+
+	/* Turquoise 600 */
+	--kern-turquoise-600: #006a77;
+
+	/* Turquoise 650 */
+	--kern-turquoise-650: #005d6b;
+
+	/* Turquoise 700 */
+	--kern-turquoise-700: #00545f;
+
+	/* Turquoise 750 */
+	--kern-turquoise-750: #004651;
+
+	/* Turquoise 800 */
+	--kern-turquoise-800: #003d46;
+
+	/* Turquoise 850 */
+	--kern-turquoise-850: #00343c;
+
+	/* Turquoise 900 */
+	--kern-turquoise-900: #002a31;
+
+	/* Turquoise 950 */
+	--kern-turquoise-950: #002126;
+}
+
+// -- green --
+:root {
+	/* Green 025 */
+	--kern-green-025: #f8faf8;
+
+	/* Green 050 */
+	--kern-green-050: #f1f7f2;
+
+	/* Green 100 */
+	--kern-green-100: #dcecdf;
+
+	/* Green 150 */
+	--kern-green-150: #c7e1cc;
+
+	/* Green 200 */
+	--kern-green-200: #b0d5b7;
+
+	/* Green 250 */
+	--kern-green-250: #99c9a3;
+
+	/* Green 300 */
+	--kern-green-300: #80bc8d;
+
+	/* Green 350 */
+	--kern-green-350: #69b079;
+
+	/* Green 400 */
+	--kern-green-400: #52a364;
+
+	/* Green 450 */
+	--kern-green-450: #3c9650;
+
+	/* Green 500 */
+	--kern-green-500: #26893c;
+
+	/* Green 550 */
+	--kern-green-550: #147c2a;
+
+	/* Green 600 */
+	--kern-green-600: #026f1a;
+
+	/* Green 650 */
+	--kern-green-650: #00650d;
+
+	/* Green 700 */
+	--kern-green-700: #005700;
+
+	/* Green 750 */
+	--kern-green-750: #004e00;
+
+	/* Green 800 */
+	--kern-green-800: #004200;
+
+	/* Green 850 */
+	--kern-green-850: #003700;
+
+	/* Green 900 */
+	--kern-green-900: #002a00;
+
+	/* Green 950 */
+	--kern-green-950: #001f00;
+}
+
+// -- limette --
+:root {
+	/* Limette 025 */
+	--kern-limette-025: #f1faf1;
+
+	/* Limette 050 */
+	--kern-limette-050: #e6f4e6;
+
+	/* Limette 100 */
+	--kern-limette-100: #c8e5c8;
+
+	/* Limette 150 */
+	--kern-limette-150: #abd7ab;
+
+	/* Limette 200 */
+	--kern-limette-200: #8dc88d;
+
+	/* Limette 250 */
+	--kern-limette-250: #73bb73;
+
+	/* Limette 300 */
+	--kern-limette-300: #5aac5a;
+
+	/* Limette 350 */
+	--kern-limette-350: #429e42;
+
+	/* Limette 400 */
+	--kern-limette-400: #309230;
+
+	/* Limette 450 */
+	--kern-limette-450: #208420;
+
+	/* Limette 500 */
+	--kern-limette-500: #117611;
+
+	/* Limette 550 */
+	--kern-limette-550: #036803;
+
+	/* Limette 600 */
+	--kern-limette-600: #005c00;
+
+	/* Limette 650 */
+	--kern-limette-650: #004e00;
+
+	/* Limette 700 */
+	--kern-limette-700: #004300;
+
+	/* Limette 750 */
+	--kern-limette-750: #003900;
+
+	/* Limette 800 */
+	--kern-limette-800: #002d00;
+
+	/* Limette 850 */
+	--kern-limette-850: #002400;
+
+	/* Limette 900 */
+	--kern-limette-900: #001a00;
+
+	/* Limette 950 */
+	--kern-limette-950: #001200;
+}
+
+// -- yellow --
+:root {
+	/* Yellow 025 */
+	--kern-yellow-025: #eafadf;
+
+	/* Yellow 050 */
+	--kern-yellow-050: #dff4ca;
+
+	/* Yellow 100 */
+	--kern-yellow-100: #c6e699;
+
+	/* Yellow 150 */
+	--kern-yellow-150: #b1da71;
+
+	/* Yellow 200 */
+	--kern-yellow-200: #9ccd4e;
+
+	/* Yellow 250 */
+	--kern-yellow-250: #87be2c;
+
+	/* Yellow 300 */
+	--kern-yellow-300: #72b00f;
+
+	/* Yellow 350 */
+	--kern-yellow-350: #5da100;
+
+	/* Yellow 400 */
+	--kern-yellow-400: #499200;
+
+	/* Yellow 450 */
+	--kern-yellow-450: #368300;
+
+	/* Yellow 500 */
+	--kern-yellow-500: #237400;
+
+	/* Yellow 550 */
+	--kern-yellow-550: #126500;
+
+	/* Yellow 600 */
+	--kern-yellow-600: #015700;
+
+	/* Yellow 650 */
+	--kern-yellow-650: #004c00;
+
+	/* Yellow 700 */
+	--kern-yellow-700: #003f00;
+
+	/* Yellow 750 */
+	--kern-yellow-750: #003300;
+
+	/* Yellow 800 */
+	--kern-yellow-800: #002800;
+
+	/* Yellow 850 */
+	--kern-yellow-850: #001c00;
+
+	/* Yellow 900 */
+	--kern-yellow-900: #001300;
+
+	/* Yellow 950 */
+	--kern-yellow-950: #000a00;
+}
+
+// -- orange --
+:root {
+	/* Orange 025 */
+	--kern-orange-025: #fafaf6;
+
+	/* Orange 050 */
+	--kern-orange-050: #f3f4e9;
+
+	/* Orange 100 */
+	--kern-orange-100: #e2e6c9;
+
+	/* Orange 150 */
+	--kern-orange-150: #d1d7aa;
+
+	/* Orange 200 */
+	--kern-orange-200: #bfc889;
+
+	/* Orange 250 */
+	--kern-orange-250: #adb969;
+
+	/* Orange 300 */
+	--kern-orange-300: #99a948;
+
+	/* Orange 350 */
+	--kern-orange-350: #889930;
+
+	/* Orange 400 */
+	--kern-orange-400: #768a1a;
+
+	/* Orange 450 */
+	--kern-orange-450: #647a06;
+
+	/* Orange 500 */
+	--kern-orange-500: #526b00;
+
+	/* Orange 550 */
+	--kern-orange-550: #415c00;
+
+	/* Orange 600 */
+	--kern-orange-600: #314d00;
+
+	/* Orange 650 */
+	--kern-orange-650: #233f00;
+
+	/* Orange 700 */
+	--kern-orange-700: #173200;
+
+	/* Orange 750 */
+	--kern-orange-750: #0d2600;
+
+	/* Orange 800 */
+	--kern-orange-800: #051a00;
+
+	/* Orange 850 */
+	--kern-orange-850: #001000;
+
+	/* Orange 900 */
+	--kern-orange-900: #000800;
+
+	/* Orange 950 */
+	--kern-orange-950: #000200;
+}
+
+// -- red --
+:root {
+	/* Red 025 */
+	--kern-red-025: #fafaf9;
+
+	/* Red 050 */
+	--kern-red-050: #f6f2f0;
+
+	/* Red 100 */
+	--kern-red-100: #ebe0dc;
+
+	/* Red 150 */
+	--kern-red-150: #e0cfc8;
+
+	/* Red 200 */
+	--kern-red-200: #d4bdb3;
+
+	/* Red 250 */
+	--kern-red-250: #c8ac9f;
+
+	/* Red 300 */
+	--kern-red-300: #bb998a;
+
+	/* Red 350 */
+	--kern-red-350: #ae8776;
+
+	/* Red 400 */
+	--kern-red-400: #a07562;
+
+	/* Red 450 */
+	--kern-red-450: #92634e;
+
+	/* Red 500 */
+	--kern-red-500: #83513a;
+
+	/* Red 550 */
+	--kern-red-550: #744027;
+
+	/* Red 600 */
+	--kern-red-600: #642f15;
+
+	/* Red 650 */
+	--kern-red-650: #541f05;
+
+	/* Red 700 */
+	--kern-red-700: #441000;
+
+	/* Red 750 */
+	--kern-red-750: #350300;
+
+	/* Red 800 */
+	--kern-red-800: #260000;
+
+	/* Red 850 */
+	--kern-red-850: #1a0000;
+
+	/* Red 900 */
+	--kern-red-900: #0f0000;
+
+	/* Red 950 */
+	--kern-red-950: #060000;
+}
+
+// -- violet --
+:root {
+	/* Violet 025 */
+	--kern-violet-025: #faf9fa;
+
+	/* Violet 050 */
+	--kern-violet-050: #f4f1f4;
+
+	/* Violet 100 */
+	--kern-violet-100: #e8dde8;
+
+	/* Violet 150 */
+	--kern-violet-150: #ddcfdd;
+
+	/* Violet 200 */
+	--kern-violet-200: #cdb8cd;
+
+	/* Violet 250 */
+	--kern-violet-250: #bfa3bf;
+
+	/* Violet 300 */
+	--kern-violet-300: #b18eb1;
+
+	/* Violet 350 */
+	--kern-violet-350: #a2779f;
+
+	/* Violet 400 */
+	--kern-violet-400: #94628e;
+
+	/* Violet 450 */
+	--kern-violet-450: #844d7b;
+
+	/* Violet 500 */
+	--kern-violet-500: #753969;
+
+	/* Violet 550 */
+	--kern-violet-550: #662558;
+
+	/* Violet 600 */
+	--kern-violet-600: #551246;
+
+	/* Violet 650 */
+	--kern-violet-650: #450036;
+
+	/* Violet 700 */
+	--kern-violet-700: #360026;
+
+	/* Violet 750 */
+	--kern-violet-750: #280018;
+
+	/* Violet 800 */
+	--kern-violet-800: #1b000b;
+
+	/* Violet 850 */
+	--kern-violet-850: #100001;
+
+	/* Violet 900 */
+	--kern-violet-900: #070000;
+
+	/* Violet 950 */
+	--kern-violet-950: #010000;
+}
+
+// -- neutral --
+:root {
+	/* Neutral 000 */
+	--kern-neutral-000: #ffffff;
+
+	/* Neutral 025 */
+	--kern-neutral-025: #f9f9f9;
+
+	/* Neutral 050 */
+	--kern-neutral-050: #f5f5f6;
+
+	/* Neutral 100 */
+	--kern-neutral-100: #e8e8ea;
+
+	/* Neutral 150 */
+	--kern-neutral-150: #dbdbde;
+
+	/* Neutral 200 */
+	--kern-neutral-200: #cecdd2;
+
+	/* Neutral 250 */
+	--kern-neutral-250: #c0bfc5;
+
+	/* Neutral 300 */
+	--kern-neutral-300: #b5b4bb;
+
+	/* Neutral 350 */
+	--kern-neutral-350: #a7a6ae;
+
+	/* Neutral 400 */
+	--kern-neutral-400: #9897a0;
+
+	/* Neutral 450 */
+	--kern-neutral-450: #8a8993;
+
+	/* Neutral 500 */
+	--kern-neutral-500: #7c7b85;
+
+	/* Neutral 550 */
+	--kern-neutral-550: #6d6c77;
+
+	/* Neutral 600 */
+	--kern-neutral-600: #605f6b;
+
+	/* Neutral 650 */
+	--kern-neutral-650: #52515d;
+
+	/* Neutral 700 */
+	--kern-neutral-700: #45444f;
+
+	/* Neutral 750 */
+	--kern-neutral-750: #383742;
+
+	/* Neutral 800 */
+	--kern-neutral-800: #2c2b35;
+
+	/* Neutral 850 */
+	--kern-neutral-850: #22212a;
+
+	/* Neutral 900 */
+	--kern-neutral-900: #18171e;
+
+	/* Neutral 950 */
+	--kern-neutral-950: #0f0e14;
+
+	/* Neutral 1000 */
+	--kern-neutral-1000: #000000;
+}
+
+// -- dataport-red --
+:root {
+	/* Dataport Red 025 */
+	--kern-dataport-red-025: #f9f8f8;
+
+	/* Dataport Red 050 */
+	--kern-dataport-red-050: #f5f1f0;
+
+	/* Dataport Red 100 */
+	--kern-dataport-red-100: #e8ddd9;
+
+	/* Dataport Red 150 */
+	--kern-dataport-red-150: #dbcac3;
+
+	/* Dataport Red 200 */
+	--kern-dataport-red-200: #ceb6ad;
+
+	/* Dataport Red 250 */
+	--kern-dataport-red-250: #c1a398;
+
+	/* Dataport Red 300 */
+	--kern-dataport-red-300: #b38f82;
+
+	/* Dataport Red 350 */
+	--kern-dataport-red-350: #a57c6e;
+
+	/* Dataport Red 400 */
+	--kern-dataport-red-400: #986a5b;
+
+	/* Dataport Red 450 */
+	--kern-dataport-red-450: #8a5848;
+
+	/* Dataport Red 500 */
+	--kern-dataport-red-500: #7c4635;
+
+	/* Dataport Red 550 */
+	--kern-dataport-red-550: #6e3523;
+
+	/* Dataport Red 600 */
+	--kern-dataport-red-600: #602413;
+
+	/* Dataport Red 650 */
+	--kern-dataport-red-650: #521404;
+
+	/* Dataport Red 700 */
+	--kern-dataport-red-700: #440600;
+
+	/* Dataport Red 750 */
+	--kern-dataport-red-750: #360000;
+
+	/* Dataport Red 800 */
+	--kern-dataport-red-800: #290000;
+
+	/* Dataport Red 850 */
+	--kern-dataport-red-850: #1d0000;
+
+	/* Dataport Red 900 */
+	--kern-dataport-red-900: #130000;
+
+	/* Dataport Red 950 */
+	--kern-dataport-red-950: #0a0000;
+}
+
+// -- gray --
+:root {
+	/* Gray 025 */
+	--kern-gray-025: #f9f9f9;
+
+	/* Gray 050 */
+	--kern-gray-050: #f6f6f6;
+
+	/* Gray 100 */
+	--kern-gray-100: #eaeaea;
+
+	/* Gray 150 */
+	--kern-gray-150: #dddddd;
+
+	/* Gray 200 */
+	--kern-gray-200: #d4d4d4;
+
+	/* Gray 250 */
+	--kern-gray-250: #c9c9c9;
+
+	/* Gray 300 */
+	--kern-gray-300: #bdbdbd;
+
+	/* Gray 350 */
+	--kern-gray-350: #b3b3b3;
+
+	/* Gray 400 */
+	--kern-gray-400: #a8a8a8;
+
+	/* Gray 450 */
+	--kern-gray-450: #9d9d9d;
+
+	/* Gray 500 */
+	--kern-gray-500: #909090;
+
+	/* Gray 550 */
+	--kern-gray-550: #878787;
+
+	/* Gray 600 */
+	--kern-gray-600: #7b7b7b;
+
+	/* Gray 650 */
+	--kern-gray-650: #707070;
+
+	/* Gray 700 */
+	--kern-gray-700: #666666;
+
+	/* Gray 750 */
+	--kern-gray-750: #5a5a5a;
+
+	/* Gray 800 */
+	--kern-gray-800: #4f4f4f;
+
+	/* Gray 850 */
+	--kern-gray-850: #444444;
+
+	/* Gray 900 */
+	--kern-gray-900: #3a3a3a;
+
+	/* Gray 950 */
+	--kern-gray-950: #2e2e2e;
+}

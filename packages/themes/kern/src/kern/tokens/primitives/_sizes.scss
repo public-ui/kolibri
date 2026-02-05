@@ -1,0 +1,64 @@
+@use '~@public-ui/components/index' as *;
+
+/**
+ * @file _sizes.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 17.04.2025
+ * @modified 23.05.2025
+ * @@VERSION@@
+ * @brief Tokens für die Sizes.
+ *
+ * Diese Datei enthält die Tokens für die Sizes
+ */
+
+// ############### SIZES ###############
+:root {
+	/* primitive-number */
+	--kern-0: #{to-rem(0)};
+	--kern-1: #{to-rem(1)}; // new
+	--kern-2: #{to-rem(2)};
+	--kern-3: #{to-rem(3)}; // new
+	--kern-4: #{to-rem(4)};
+	--kern-5: #{to-rem(5)}; // new
+	--kern-6: #{to-rem(6)}; // new
+	--kern-7: #{to-rem(7)}; // new
+	--kern-8: #{to-rem(8)};
+	--kern-9: #{to-rem(9)}; // new
+	--kern-10: #{to-rem(10)}; // new
+	--kern-14: #{to-rem(14)}; // new
+	--kern-12: #{to-rem(12)};
+	--kern-16: #{to-rem(16)};
+	--kern-18: #{to-rem(18)}; // new
+	--kern-20: #{to-rem(20)};
+	--kern-24: #{to-rem(24)};
+	--kern-32: #{to-rem(32)};
+	--kern-40: #{to-rem(40)};
+	--kern-48: #{to-rem(48)};
+	--kern-56: #{to-rem(56)};
+	--kern-64: #{to-rem(64)};
+	--kern-80: #{to-rem(80)};
+	--kern-96: #{to-rem(96)};
+	--kern-128: #{to-rem(128)};
+	--kern-160: #{to-rem(160)};
+	--kern-192: #{to-rem(192)};
+	--kern-224: #{to-rem(224)};
+	--kern-240: #{to-rem(240)};
+	--kern-256: #{to-rem(256)};
+	--kern-352: #{to-rem(352)};
+	--kern-360: #{to-rem(360)};
+	--kern-384: #{to-rem(384)};
+	--kern-480: #{to-rem(480)};
+	--kern-512: #{to-rem(512)};
+	--kern-736: #{to-rem(736)};
+	--kern-768: #{to-rem(768)};
+	--kern-992: #{to-rem(992)};
+	--kern-1024: #{to-rem(1024)};
+	--kern-1140: #{to-rem(1140)};
+	--kern-1248: #{to-rem(1248)};
+	--kern-1280: #{to-rem(1280)};
+	--kern-1504: #{to-rem(1504)};
+	--kern-1536: #{to-rem(1536)};
+	--kern-1600: #{to-rem(1600)};
+	--kern-1920: #{to-rem(1920)};
+}
