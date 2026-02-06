@@ -9,7 +9,6 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	hideMsg: boolean;
 	hideLabel: boolean;
 	hint: string;
-	id: string;
 	msg: MsgPropType;
 	on: InputTypeOnDefault;
 	shortKey: ShortKeyPropType;

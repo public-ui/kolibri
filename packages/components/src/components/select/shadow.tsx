@@ -4,7 +4,6 @@ import { Component, h, Host, Method, Prop } from '@stencil/core';
 import type {
 	FocusableElement,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -64,7 +63,6 @@ export class KolSelect implements SelectProps, FocusableElement {
 					_hideLabel={this._hideLabel}
 					_hint={this._hint}
 					_icons={this._icons}
-					_id={this._id}
 					_label={this._label}
 					_msg={this._msg}
 					_multiple={this._multiple}
@@ -119,12 +117,6 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

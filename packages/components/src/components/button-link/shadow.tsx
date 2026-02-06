@@ -10,7 +10,6 @@ import type {
 	ButtonTypePropType,
 	FocusableElement,
 	IconsPropType,
-	IdPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
 	NamePropType,
@@ -63,7 +62,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_disabled={this._disabled}
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
-				_id={this._id}
 				_inline={this._inline}
 				_label={this._label}
 				_name={this._name}
@@ -123,12 +121,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsPropType;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.

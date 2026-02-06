@@ -8,7 +8,6 @@ import type {
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
-	IdPropType,
 	InputRadioAPI,
 	InputRadioStates,
 	InputTypeOnDefault,
@@ -221,12 +220,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -326,11 +319,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_hint')
 	public validateHint(value?: HintPropType): void {
 		this.controller.validateHint(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_label')
