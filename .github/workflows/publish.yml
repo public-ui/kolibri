@@ -205,12 +205,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme kern
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-        working-directory: packages/themes/kern
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
+      # - name: Build and publish theme kern
+      #   run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+      #   working-directory: packages/themes/kern
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+      #     NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes
