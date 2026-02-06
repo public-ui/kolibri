@@ -1094,9 +1094,15 @@ importers:
 
   packages/themes/kern:
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: 3.3.3
+        version: 3.3.3
+      '@eslint/js':
+        specifier: 9.39.2
+        version: 9.39.2
       '@kern-ux/native':
-        specifier: 2.4.0
-        version: 2.4.0
+        specifier: 2.3.0
+        version: 2.3.0
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -3570,8 +3576,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@kern-ux/native@2.4.0':
-    resolution: {integrity: sha512-wZRRWidk7ZocPCB/2kXlFfOUyIsTQHXSqHSUlzbICorUkZ+9krrNZKLbuftUwv1Y/WUJSKHm0C4Gyzjka8YQtA==}
+  '@kern-ux/native@2.3.0':
+    resolution: {integrity: sha512-lIsFMNItGSDDwZGP1iauB4OCOUNuLYVktukRgHwV958gOwmL3MUKreZloibI/8YbzX79BPDjmzSveIlSAsgLJg==}
 
   '@kessler/tableify@1.0.2':
     resolution: {integrity: sha512-e4psVV9Fe2eBfS9xK2rzQ9lE5xS4tARm7EJzDb6sVZy3F+EMyHJ67i0NdBVR9BRyQx7YhogMCbB6R1QwXuBxMg==}
@@ -17541,7 +17547,7 @@ snapshots:
       '@jsonjoy.com/codegen': 1.0.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@kern-ux/native@2.4.0': {}
+  '@kern-ux/native@2.3.0': {}
 
   '@kessler/tableify@1.0.2': {}
 
