@@ -59,7 +59,7 @@
 		"pretest:update:e2e": "pnpm build"
 	},
 	"devDependencies": {
-		"@kern-ux/native": "2.3.0",
+		"@kern-ux/native": "2.4.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
 		"@rollup/plugin-commonjs": "29.0.0",
