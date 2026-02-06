@@ -29,7 +29,6 @@ export const validateToolbarItems = (component: Generic.Element.Component, value
 			}
 			try {
 				value = parseJson<ToolbarItemPropType[]>(value);
-				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value keeps the original items
 			}

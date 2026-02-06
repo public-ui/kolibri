@@ -123,7 +123,6 @@ export class InputController extends ControlledInputController implements Watche
 		objectObjectHandler(value, () => {
 			try {
 				value = parseJson<InternalButtonProps>(value as string);
-				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value behält den ursprünglichen Wert
 			}

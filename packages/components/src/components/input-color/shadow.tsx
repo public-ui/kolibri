@@ -135,11 +135,8 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	private getGenericInputProps() {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { _suggestions, ...other } = this.state;
-
 		return {
-			state: { ...other, _suggestions: [] },
+			state: { ...this.state, _suggestions: [] },
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onFocus: this.onFocus,
