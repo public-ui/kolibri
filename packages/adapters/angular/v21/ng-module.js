@@ -16,10 +16,9 @@ import { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective
 export { setTagNameTransformer } from './angular-component-lib/tagNameTransformer';
 
 @NgModule({
-  declarations: [ReplaceTagDirective, ${componentListStr}],
+  imports: [CommonModule, ReplaceTagDirective, ${componentListStr}],
   exports: [${componentListStr}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule],
 })
 export class KoliBriModule {}
 export { ${componentListStr} }
