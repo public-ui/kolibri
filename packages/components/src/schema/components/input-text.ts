@@ -45,7 +45,6 @@ type OptionalProps = {
 	PropHideLabel &
 	PropHint &
 	PropHorizontalIcons &
-	PropId &
 	PropMaxLengthBehavior &
 	PropName &
 	PropReadOnly &

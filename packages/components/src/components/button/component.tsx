@@ -15,6 +15,7 @@ import type {
 	FocusableElement,
 	HideLabelPropType,
 	IconsPropType,
+	IdPropType,
 	InlinePropType,
 	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
@@ -246,7 +247,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines the internal ID of the primary component element.
 	 * @internal
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
@@ -369,7 +370,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_id')
-	public validateId(value?: string): void {
+	public validateId(value?: IdPropType): void {
 		watchString(this, '_id', value);
 	}
 

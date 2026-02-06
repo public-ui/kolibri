@@ -11,7 +11,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputFileAPI,
 	InputFileStates,
 	InputTypeOnDefault,
@@ -171,12 +170,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -287,11 +280,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Watch('_icons')
 	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_label')
