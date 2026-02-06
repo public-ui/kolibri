@@ -51,6 +51,9 @@ export const ButtonLinkBasic: FC = () => {
 				<p>
 					<KolButtonLink _label="Disabled ButtonLink" _inline={false} _shortKey="s" />
 				</p>
+				<p>
+					<KolButtonLink _label="Special Variant ButtonLink" _variant="theme-link" />
+				</p>
 			</section>
 		</>
 	);

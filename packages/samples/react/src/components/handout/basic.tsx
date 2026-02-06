@@ -40,14 +40,12 @@ import { getRoot } from '../../shares/react-roots';
 import { getTheme, getThemeName } from '../../shares/store';
 import { TABLE_DATA, type TableDataType } from './table-data';
 
-function KolButtonWrapper({ _on, ...other }: ButtonProps & { style: Record<string, unknown> }) {
+function KolButtonWrapper(props: ButtonProps & { style: Record<string, unknown> }) {
 	const { dummyClickEventHandler } = useToasterService();
-
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
-
-	return <KolButton {...other} _on={dummyEventHandler} />;
+	return <KolButton {...props} _on={dummyEventHandler} />;
 }
 
 const TABLE_HEADERS: KoliBriTableHeaders = {

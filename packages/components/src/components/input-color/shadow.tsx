@@ -2,7 +2,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AutoCompletePropType,
-	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -12,6 +11,7 @@ import type {
 	InputColorAPI,
 	InputColorStates,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -228,7 +228,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -335,7 +335,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 

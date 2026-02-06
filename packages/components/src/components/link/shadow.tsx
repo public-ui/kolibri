@@ -18,8 +18,8 @@ import type {
 	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
-import { VariantClassNamePropType } from '../../schema/props/variant-class-name';
 
 @Component({
 	tag: 'kol-link',

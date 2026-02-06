@@ -1,6 +1,5 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import {
-	type ButtonProps,
 	type IconOrIconClass,
 	type InputColorStates,
 	type InputEmailStates,
@@ -9,6 +8,7 @@ import {
 	type InputPasswordStates,
 	type InputRangeStates,
 	type InputTextStates,
+	type InternalButtonProps,
 	type KoliBriHorizontalIcons,
 	type MsgPropType,
 	type SelectStates,
@@ -37,13 +37,13 @@ export type InputContainerStateWrapperProps = Partial<InputContainerProps> & {
 
 function getInputContainerProps(state: InputState): {
 	icons?: KoliBriHorizontalIcons;
-	smartButton?: ButtonProps;
+	smartButton?: InternalButtonProps;
 	disabled?: boolean;
 	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 } {
 	let icons: KoliBriHorizontalIcons | undefined = undefined;
-	let smartButton: ButtonProps | undefined;
+	let smartButton: InternalButtonProps | undefined;
 
 	if ('_icons' in state) {
 		icons = state._icons;

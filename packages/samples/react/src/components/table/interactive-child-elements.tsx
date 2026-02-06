@@ -6,14 +6,12 @@ import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 
-function KolButtonWrapper({ _on, ...other }: ButtonProps) {
+function KolButtonWrapper(props: ButtonProps) {
 	const { dummyClickEventHandler } = useToasterService();
-
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
-
-	return <KolButton {...other} _on={dummyEventHandler} />;
+	return <KolButton {...props} _on={dummyEventHandler} />;
 }
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {

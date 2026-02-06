@@ -1,13 +1,13 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { ButtonProps, LinkProps } from '../../schema';
+import type { InternalButtonProps, LinkProps } from '../../schema';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
 
 /* types */
 export type ToolbarItemPropType =
 	| ({
 			type: 'button';
-	  } & ButtonProps)
+	  } & InternalButtonProps)
 	| ({
 			type: 'link';
 	  } & LinkProps);

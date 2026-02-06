@@ -1,9 +1,7 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import {
-	ButtonStates,
-	validateButtonVariant,
 	type AccessKeyPropType,
 	type AlternativeButtonLinkRolePropType,
 	type AriaDescriptionPropType,
@@ -186,17 +184,4 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
-
-	@State() public state: ButtonStates = {
-		_icons: {},
-		_label: '', // ⚠ required
-		_on: {},
-		_type: 'button',
-		_variant: 'normal',
-	};
-
-	@Watch('_variant')
-	public validateButtonVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
-	}
 }

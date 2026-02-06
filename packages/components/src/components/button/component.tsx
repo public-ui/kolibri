@@ -6,6 +6,7 @@ import type {
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaSelectedPropType,
+	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
@@ -16,7 +17,6 @@ import type {
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
-	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -67,7 +67,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements InternalButtonAPI, FocusableElement {
+export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 	private tooltipRef?: HTMLKolTooltipWcElement;
@@ -316,7 +316,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_variant: '',
+		_variant: 'normal',
 	};
 
 	public constructor() {
@@ -436,7 +436,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateVariantClassName(value?: VariantClassNamePropType): void {
+	public validateVariant(value?: VariantClassNamePropType): void {
 		validateVariantClassName(this, value);
 	}
 
@@ -462,7 +462,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateVariantClassName(this._variant);
+		this.validateVariant(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }

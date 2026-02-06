@@ -17,8 +17,8 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
-import { VariantClassNamePropType } from '../../schema/props/variant-class-name';
 
 @Component({
 	tag: 'kol-button-link',

@@ -4,7 +4,6 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AutoCompletePropType,
-	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -15,6 +14,7 @@ import type {
 	InputDateStates,
 	InputDateTypePropType,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	Iso8601,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -279,7 +279,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -418,7 +418,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 
