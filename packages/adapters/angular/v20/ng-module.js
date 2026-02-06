@@ -9,19 +9,9 @@ fs.writeFileSync(
 	`
 /* AutoGen NgModule */
 
-import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { ${componentListStr} } from './components';
-import { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
+export { ${componentListStr} } from './components';
+export { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
 export { setTagNameTransformer } from './angular-component-lib/tagNameTransformer';
-
-@NgModule({
-  imports: [CommonModule, ReplaceTagDirective, ${componentListStr}],
-  exports: [${componentListStr}],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
-export class KoliBriModule {}
-export { ${componentListStr} }
 `,
 	'utf-8',
 );
