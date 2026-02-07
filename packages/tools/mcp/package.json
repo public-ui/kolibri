@@ -82,7 +82,7 @@
 		"eslint": "9.39.2",
 		"eslint-plugin-json": "4.0.1",
 		"globals": "17.3.0",
-		"knip": "5.83.0",
+		"knip": "5.83.1",
 		"nodemon": "3.1.11",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
