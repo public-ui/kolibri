@@ -2,8 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { AlertTypePropType, LabelPropType } from '../props';
 
-const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
-type ToastStatus = (typeof toastStatusOptions)[number];
+type ToastStatus = 'adding' | 'removing' | 'settled';
 
 export type ToastRenderFunction = (nodeRef: HTMLElement, options: { close: () => void }) => void;
 

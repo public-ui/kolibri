@@ -2,13 +2,13 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { ColorPair, PropColor, PropLabel } from '../props';
 import type { KoliBriIconsProp, Stringified } from '../types';
-import type { ButtonProps } from './button';
+import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	icons: Stringified<KoliBriIconsProp>;
 	color: Stringified<PropColor>;
-	smartButton: Stringified<ButtonProps>;
+	smartButton: Stringified<InternalButtonProps>;
 };
 
 type RequiredStates = {
@@ -16,7 +16,7 @@ type RequiredStates = {
 };
 type OptionalStates = {
 	icons: KoliBriIconsProp;
-	smartButton: ButtonProps;
+	smartButton: InternalButtonProps;
 };
 
 type RequiredWatchers = RequiredStates;

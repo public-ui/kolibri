@@ -1,19 +1,19 @@
-import type { ButtonProps, ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
+import type { ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react-v19';
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 
-function KolButtonWrapper({ _on, ...other }: ButtonProps) {
-	const { dummyClickEventHandler } = useToasterService();
+type KolButtonProps = ComponentProps<typeof KolButton>;
 
+function KolButtonWrapper(props: KolButtonProps) {
+	const { dummyClickEventHandler } = useToasterService();
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
-
-	return <KolButton {...other} _on={dummyEventHandler} />;
+	return <KolButton {...props} _on={dummyEventHandler} />;
 }
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {

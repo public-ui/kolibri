@@ -4,7 +4,6 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AcceptPropType,
-	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -14,6 +13,7 @@ import type {
 	InputFileAPI,
 	InputFileStates,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	MultiplePropType,
@@ -209,7 +209,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -318,7 +318,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 

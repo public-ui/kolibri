@@ -91,6 +91,7 @@ export * from './type-input-date';
 export * from './type-input-text';
 export * from './unit';
 export * from './variant-alert';
+export * from './variant-class-name';
 export * from './variant-input-checkbox';
 export * from './variant-progress';
 export * from './variant-quote';

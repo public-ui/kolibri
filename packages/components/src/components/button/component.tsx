@@ -6,10 +6,10 @@ import type {
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaSelectedPropType,
+	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
 	FocusableElement,
@@ -17,12 +17,12 @@ import type {
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
-	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	mapBoolean2String,
@@ -38,7 +38,6 @@ import {
 	validateAriaSelected,
 	validateButtonCallbacks,
 	validateButtonType,
-	validateButtonVariant,
 	validateCustomClass,
 	validateDisabled,
 	validateHideLabel,
@@ -47,6 +46,7 @@ import {
 	validateLabelWithExpertSlot,
 	validateShortKey,
 	validateTooltipAlign,
+	validateVariantClassName,
 	watchString,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
@@ -67,7 +67,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements InternalButtonAPI, FocusableElement {
+export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 	private tooltipRef?: HTMLKolTooltipWcElement;
@@ -309,7 +309,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: ButtonStates = {
 		_icons: {},
@@ -436,8 +436,8 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateButtonVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
+	public validateVariant(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
 	public componentWillLoad(): void {
@@ -462,7 +462,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateButtonVariant(this._variant);
+		this.validateVariant(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }

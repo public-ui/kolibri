@@ -23,7 +23,6 @@ export const validateTableData = (component: Generic.Element.Component, value?: 
 			}
 			try {
 				value = parseJson<KoliBriTableDataType[]>(value);
-				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value keeps the original data
 			}

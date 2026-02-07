@@ -54,7 +54,7 @@
 		"start": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh KERN_V2",
 		"xtest": "cross-env THEME_MODULE=dist THEME_EXPORT=KERN_V2 kolibri-visual-test",
-		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=KERN_V2 kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
+		"xtest:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=KERN_V2 kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest:update:e2e": "pnpm build"
 	},

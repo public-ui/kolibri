@@ -1,8 +1,7 @@
 /* types */
 
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup#values
-const ariaHasPopupOptions = ['false', 'true', 'menu', 'listbox', 'tree', 'grid', 'dialog'] as const;
-export type AriaHasPopupPropType = (typeof ariaHasPopupOptions)[number];
+export type AriaHasPopupPropType = 'dialog' | 'false' | 'grid' | 'listbox' | 'menu' | 'tree' | 'true';
 
 /**
  * Defines the aria-haspopup attribute.

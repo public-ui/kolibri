@@ -22,7 +22,7 @@ import type {
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
-import type { ButtonProps } from './button';
+import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -30,7 +30,7 @@ type OptionalProps = {
 	min: Iso8601 | Date;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	smartButton: Stringified<ButtonProps>;
+	smartButton: Stringified<InternalButtonProps>;
 	step: number | NumberString;
 	type: InputDateTypePropType;
 	value: Iso8601 | Date | null;
@@ -60,7 +60,7 @@ type OptionalStates = {
 	min: Iso8601;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	smartButton: ButtonProps;
+	smartButton: InternalButtonProps;
 	step: number;
 	value: Iso8601 | null;
 } & PropAccessKey &
