@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "4.0.3-rc.1",
+	"version": "4.0.3-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -40,9 +40,9 @@
 	"devDependencies": {
 		"@babel/eslint-parser": "7.28.6",
 		"@eslint/js": "9.39.2",
-		"globals": "17.3.0",
 		"@playwright/test": "1.58.2",
 		"eslint": "9.39.2",
+		"globals": "17.3.0",
 		"knip": "5.83.1",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0"
