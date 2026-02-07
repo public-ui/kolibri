@@ -4,7 +4,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
           <kbd aria-hidden="true" class="badge-text-hint">
@@ -27,7 +27,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _alert="" _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -49,7 +49,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -71,7 +71,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -96,7 +96,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -124,7 +124,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -150,7 +150,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -176,7 +176,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _touched="" _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -198,7 +198,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -220,7 +220,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--read-only kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -245,7 +245,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
           <kbd aria-hidden="true" class="badge-text-hint">
@@ -268,7 +268,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _touched="" _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label
@@ -290,7 +290,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" for="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
             Label

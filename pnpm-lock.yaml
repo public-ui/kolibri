@@ -421,34 +421,34 @@ importers:
         version: 1.58.2
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.38.3)
+        version: 0.9.0(@stencil/core@4.42.1)
       '@public-ui/stencil-react-output-target':
         specifier: 0.6.0
-        version: 0.6.0(@stencil/core@4.38.3)
+        version: 0.6.0(@stencil/core@4.42.1)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
-        version: 0.2.0(@stencil/core@4.38.3)
+        version: 0.2.0(@stencil/core@4.42.1)
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.38.3)
+        version: 0.9.0(@stencil/core@4.42.1)
       '@revolist/svelte-output-target':
         specifier: 0.0.7
-        version: 0.0.7(@stencil/core@4.38.3)
+        version: 0.0.7(@stencil/core@4.42.1)
       '@stencil-community/eslint-plugin':
         specifier: 0.10.0
         version: 0.10.0(@typescript-eslint/eslint-plugin@8.54.0(@typescript-eslint/parser@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/parser@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-react@7.37.5(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@stencil-community/postcss':
         specifier: 2.2.0
-        version: 2.2.0(@stencil/core@4.38.3)
+        version: 2.2.0(@stencil/core@4.42.1)
       '@stencil/core':
-        specifier: 4.38.3
-        version: 4.38.3
+        specifier: 4.42.1
+        version: 4.42.1
       '@stencil/playwright':
         specifier: 0.2.3
-        version: 0.2.3(@playwright/test@1.58.2)(@stencil/core@4.38.3)
+        version: 0.2.3(@playwright/test@1.58.2)(@stencil/core@4.42.1)
       '@stencil/sass':
         specifier: 3.2.3
-        version: 3.2.3(@stencil/core@4.38.3)
+        version: 3.2.3(@stencil/core@4.42.1)
       '@types/color-convert':
         specifier: 2.0.4
         version: 2.0.4
@@ -532,7 +532,7 @@ importers:
         version: 6.1.2
       stencil-awesome-test:
         specifier: 1.0.6
-        version: 1.0.6(@stencil/core@4.38.3)
+        version: 1.0.6(@stencil/core@4.42.1)
       stylelint:
         specifier: 17.1.1
         version: 17.1.1(typescript@5.9.3)
@@ -810,8 +810,8 @@ importers:
         specifier: 1.58.2
         version: 1.58.2
       '@stencil/core':
-        specifier: 4.38.3
-        version: 4.38.3
+        specifier: 4.42.1
+        version: 4.42.1
       '@types/node':
         specifier: 25.2.1
         version: 25.2.1
@@ -5599,8 +5599,8 @@ packages:
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
 
-  '@stencil/core@4.38.3':
-    resolution: {integrity: sha512-rSDzGUfi58X8K79ySjlM6KlY+mq7D+ittzgNAdYHcsXHc70sBpdatFhnbOg25uVDiMf7xRAH9slP38pPdXnZOQ==}
+  '@stencil/core@4.42.1':
+    resolution: {integrity: sha512-KsjkaWnJmjMcsLjTK77FJV/8OK9qZ4f83/sXzYsjkUF21pqpNrDUkY6/+rnVFWnVfoYMpNdjWfGyJem4VlcMXw==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
@@ -18643,21 +18643,21 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.38.3)':
+  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
 
-  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.38.3)':
+  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
 
-  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.38.3)':
+  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
 
-  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.38.3)':
+  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
 
   '@puppeteer/browsers@2.10.9':
     dependencies:
@@ -19146,9 +19146,9 @@ snapshots:
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.2
       '@resvg/resvg-js-win32-x64-msvc': 2.6.2
 
-  '@revolist/svelte-output-target@0.0.7(@stencil/core@4.38.3)':
+  '@revolist/svelte-output-target@0.0.7(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
 
   '@rolldown/binding-android-arm64@1.0.0-beta.58':
     optional: true
@@ -19577,12 +19577,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@stencil-community/postcss@2.2.0(@stencil/core@4.38.3)':
+  '@stencil-community/postcss@2.2.0(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
       postcss: 8.4.49
 
-  '@stencil/core@4.38.3':
+  '@stencil/core@4.42.1':
     optionalDependencies:
       '@rollup/rollup-darwin-arm64': 4.34.9
       '@rollup/rollup-darwin-x64': 4.34.9
@@ -19593,16 +19593,16 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.2.3(@playwright/test@1.58.2)(@stencil/core@4.38.3)':
+  '@stencil/playwright@0.2.3(@playwright/test@1.58.2)(@stencil/core@4.42.1)':
     dependencies:
       '@playwright/test': 1.58.2
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
       deepmerge: 4.3.1
       find-up: 8.0.0
 
-  '@stencil/sass@3.2.3(@stencil/core@4.38.3)':
+  '@stencil/sass@3.2.3(@stencil/core@4.42.1)':
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
       sass-embedded: 1.93.3
 
   '@sveltejs/acorn-typescript@1.0.6(acorn@8.15.0)':
@@ -24648,7 +24648,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.15.11)(@types/node@25.2.1)(typescript@5.9.3))
+      jest-jasmine2: 26.6.3
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -24735,7 +24735,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.15.11)(@types/node@25.2.1)(typescript@5.9.3)):
+  jest-jasmine2@26.6.3:
     dependencies:
       '@babel/traverse': 7.29.0
       '@jest/environment': 26.6.2
@@ -24756,11 +24756,7 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
-      - bufferutil
-      - canvas
       - supports-color
-      - ts-node
-      - utf-8-validate
 
   jest-leak-detector@26.6.2:
     dependencies:
@@ -29215,9 +29211,9 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
-  stencil-awesome-test@1.0.6(@stencil/core@4.38.3):
+  stencil-awesome-test@1.0.6(@stencil/core@4.42.1):
     dependencies:
-      '@stencil/core': 4.38.3
+      '@stencil/core': 4.42.1
 
   stop-iteration-iterator@1.1.0:
     dependencies:
