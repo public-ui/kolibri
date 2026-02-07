@@ -399,8 +399,8 @@ importers:
         version: 3.0.0
     devDependencies:
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.20.0)
@@ -424,7 +424,7 @@ importers:
         version: 4.20.0
       '@stencil/playwright':
         specifier: 0.2.1
-        version: 0.2.1(@playwright/test@1.58.1)(@stencil/core@4.20.0)
+        version: 0.2.1(@playwright/test@1.58.2)(@stencil/core@4.20.0)
       '@stencil/sass':
         specifier: 3.0.12
         version: 3.0.12(@stencil/core@4.20.0)
@@ -483,8 +483,8 @@ importers:
         specifier: 26.6.3
         version: 26.6.3(ts-node@10.9.2(@swc/core@1.15.11)(@types/node@24.10.11)(typescript@5.9.3))
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       lighthouse:
         specifier: 12.8.2
         version: 12.8.2
@@ -680,8 +680,8 @@ importers:
   packages/samples/react:
     dependencies:
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -774,8 +774,8 @@ importers:
         specifier: 4.6.2
         version: 4.6.2(eslint@8.57.1)
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -1083,8 +1083,8 @@ importers:
   packages/tools/benchmark-tests:
     devDependencies:
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -1119,8 +1119,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
@@ -1192,8 +1192,8 @@ importers:
         specifier: 7.37.5
         version: 7.37.5(eslint@8.57.1)
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       mocha:
         specifier: 11.7.5
         version: 11.7.5
@@ -1217,7 +1217,7 @@ importers:
         version: link:../../samples/react
       axe-playwright:
         specifier: 2.2.2
-        version: 2.2.2(playwright@1.58.1)
+        version: 2.2.2(playwright@1.58.2)
       portfinder:
         specifier: 1.0.38
         version: 1.0.38
@@ -1235,14 +1235,14 @@ importers:
         specifier: 7.29.0
         version: 7.29.0(@babel/core@7.28.5)
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       eslint:
         specifier: 8.57.1
         version: 8.57.1
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -4289,8 +4289,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.58.1':
-    resolution: {integrity: sha512-6LdVIUERWxQMmUSSQi0I53GgCBYgM2RpGngCPY7hSeju+VrKjq3lvs7HpJoPbDiY5QM5EYRtRX5fvrinnMAz3w==}
+  '@playwright/test@1.58.2':
+    resolution: {integrity: sha512-akea+6bHYBBfA9uQqSYmlJXn61cTa+jbO87xVLCWbTqbWadRVmhxlXATaOjOgcBaWU4ePo0wB41KMFv3o35IXA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -10127,8 +10127,8 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  knip@5.83.0:
-    resolution: {integrity: sha512-FfmaHMntpZB13B1oJQMSs1hTOZxd0TOn+FYB3oWEI02XlxTW3RH4H7d8z5Us3g0ziHCYyl7z0B1xi8ENP3QEKA==}
+  knip@5.83.1:
+    resolution: {integrity: sha512-av3ZG/Nui6S/BNL8Tmj12yGxYfTnwWnslouW97m40him7o8MwiMjZBY9TPvlEWUci45aVId0/HbgTwSKIDGpMw==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -11707,13 +11707,13 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playwright-core@1.58.1:
-    resolution: {integrity: sha512-bcWzOaTxcW+VOOGBCQgnaKToLJ65d6AqfLVKEWvexyS3AS6rbXl+xdpYRMGSRBClPvyj44njOWoxjNdL/H9UNg==}
+  playwright-core@1.58.2:
+    resolution: {integrity: sha512-yZkEtftgwS8CsfYo7nm0KE8jsvm6i/PTgVtB8DL726wNf6H2IMsDuxCpJj59KDaxCtSnrWan2AeDqM7JBaultg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.58.1:
-    resolution: {integrity: sha512-+2uTZHxSCcxjvGc5C891LrS1/NlxglGxzrC4seZiVjcYVQfUa87wBL6rTDqzGjuoWNjnBzRqKmF6zRYGMvQUaQ==}
+  playwright@1.58.2:
+    resolution: {integrity: sha512-vA30H8Nvkq/cPBnNw4Q8TWz1EJyqgpuinBcHET0YVJVFldr8JDNiU9LaWAE1KqSkRYazuaBhTpB5ZzShOezQ6A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -19305,9 +19305,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.58.1':
+  '@playwright/test@1.58.2':
     dependencies:
-      playwright: 1.58.1
+      playwright: 1.58.2
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -19915,9 +19915,9 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.2.1(@playwright/test@1.58.1)(@stencil/core@4.20.0)':
+  '@stencil/playwright@0.2.1(@playwright/test@1.58.2)(@stencil/core@4.20.0)':
     dependencies:
-      '@playwright/test': 1.58.1
+      '@playwright/test': 1.58.2
       '@stencil/core': 4.20.0
       deepmerge: 4.3.1
       find-up: 7.0.0
@@ -21434,14 +21434,14 @@ snapshots:
       axe-core: 4.10.3
       mustache: 4.2.0
 
-  axe-playwright@2.2.2(playwright@1.58.1):
+  axe-playwright@2.2.2(playwright@1.58.2):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.3
       axe-html-reporter: 2.2.11(axe-core@4.10.3)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.58.1
+      playwright: 1.58.2
 
   axios@1.12.0:
     dependencies:
@@ -26171,7 +26171,7 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.83.0(@types/node@24.10.11)(typescript@5.9.3):
+  knip@5.83.1(@types/node@24.10.11)(typescript@5.9.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       '@types/node': 24.10.11
@@ -28174,11 +28174,11 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playwright-core@1.58.1: {}
+  playwright-core@1.58.2: {}
 
-  playwright@1.58.1:
+  playwright@1.58.2:
     dependencies:
-      playwright-core: 1.58.1
+      playwright-core: 1.58.2
     optionalDependencies:
       fsevents: 2.3.2
 
