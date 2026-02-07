@@ -441,8 +441,8 @@ importers:
         specifier: 9.39.2
         version: 9.39.2
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.38.3)
@@ -465,8 +465,8 @@ importers:
         specifier: 4.38.3
         version: 4.38.3
       '@stencil/playwright':
-        specifier: 0.2.1
-        version: 0.2.1(@playwright/test@1.58.1)(@stencil/core@4.38.3)
+        specifier: 0.2.3
+        version: 0.2.3(@playwright/test@1.58.2)(@stencil/core@4.38.3)
       '@stencil/sass':
         specifier: 3.2.3
         version: 3.2.3(@stencil/core@4.38.3)
@@ -522,8 +522,8 @@ importers:
         specifier: 26.6.3
         version: 26.6.3(ts-node@10.9.2(@swc/core@1.15.11)(@types/node@24.10.11)(typescript@5.9.3))
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       lighthouse:
         specifier: 12.8.2
         version: 12.8.2
@@ -640,8 +640,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(jasmine-core@5.13.0)(karma-jasmine@5.1.0(karma@6.4.4))(karma@6.4.4)
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -713,8 +713,8 @@ importers:
         specifier: 9.39.2
         version: 9.39.2
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       '@stencil/core':
         specifier: 4.41.2
         version: 4.41.2
@@ -758,8 +758,8 @@ importers:
         specifier: 4.6.2
         version: 4.6.2(eslint@9.39.2(jiti@2.6.1))
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
@@ -998,8 +998,8 @@ importers:
   packages/tools/benchmark-tests:
     devDependencies:
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -1034,8 +1034,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
@@ -1186,8 +1186,8 @@ importers:
         specifier: 7.37.5
         version: 7.37.5(eslint@9.39.2(jiti@2.6.1))
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       mocha:
         specifier: 11.7.5
         version: 11.7.5
@@ -1253,8 +1253,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       nodemon:
         specifier: 3.1.11
         version: 3.1.11
@@ -1278,7 +1278,7 @@ importers:
     dependencies:
       '@axe-core/playwright':
         specifier: 4.11.1
-        version: 4.11.1(playwright-core@1.58.1)
+        version: 4.11.1(playwright-core@1.58.2)
       '@public-ui/sample-react':
         specifier: workspace:*
         version: link:../../samples/react
@@ -1308,14 +1308,14 @@ importers:
         specifier: 9.39.2
         version: 9.39.2
       '@playwright/test':
-        specifier: 1.58.1
-        version: 1.58.1
+        specifier: 1.58.2
+        version: 1.58.2
       eslint:
         specifier: 9.39.2
         version: 9.39.2(jiti@2.6.1)
       knip:
-        specifier: 5.83.0
-        version: 5.83.0(@types/node@24.10.11)(typescript@5.9.3)
+        specifier: 5.83.1
+        version: 5.83.1(@types/node@24.10.11)(typescript@5.9.3)
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -4146,8 +4146,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.58.1':
-    resolution: {integrity: sha512-6LdVIUERWxQMmUSSQi0I53GgCBYgM2RpGngCPY7hSeju+VrKjq3lvs7HpJoPbDiY5QM5EYRtRX5fvrinnMAz3w==}
+  '@playwright/test@1.58.2':
+    resolution: {integrity: sha512-akea+6bHYBBfA9uQqSYmlJXn61cTa+jbO87xVLCWbTqbWadRVmhxlXATaOjOgcBaWU4ePo0wB41KMFv3o35IXA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -5343,8 +5343,8 @@ packages:
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
-  '@stencil/playwright@0.2.1':
-    resolution: {integrity: sha512-SMZpS7OGV3IfCie49Lcb31VexsgXxuPUS19r+T20Ru1t2ahhGBmsRYnYYZEFwlDFO9+6R8gqpomZ+obSB7A1KQ==}
+  '@stencil/playwright@0.2.3':
+    resolution: {integrity: sha512-UUQOPu2DvI2zXSLbL1uYbhbYpn7cR11nQyWZDE2Pl7xuwLmmZQLiYvp6IQTMOwm/PS4h+jXU7Jgj7Fu/bSOAEQ==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
       '@playwright/test': '>=1.41.2'
@@ -8395,9 +8395,9 @@ packages:
     resolution: {integrity: sha512-v2ZsoEuVHYy8ZIlYqwPe/39Cy+cFDzp4dXPaxNvkEuouymu+2Jbz0PxpKarJHYJTmv2HWT3O382qY8l4jMWthw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  find-up@7.0.0:
-    resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
-    engines: {node: '>=18'}
+  find-up@8.0.0:
+    resolution: {integrity: sha512-JGG8pvDi2C+JxidYdIwQDyS/CgcrIdh18cvgxcBge3wSHRQOrooMD3GlFBcmMJAN9M42SAZjDp5zv1dglJjwww==}
+    engines: {node: '>=20'}
 
   fix-dts-default-cjs-exports@1.0.1:
     resolution: {integrity: sha512-pVIECanWFC61Hzl2+oOCtoJ3F17kglZC/6N94eRWycFgBH35hHx0Li604ZIzhseh97mf2p0cv7vVrOZGoqhlEg==}
@@ -9824,8 +9824,8 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
-  knip@5.83.0:
-    resolution: {integrity: sha512-FfmaHMntpZB13B1oJQMSs1hTOZxd0TOn+FYB3oWEI02XlxTW3RH4H7d8z5Us3g0ziHCYyl7z0B1xi8ENP3QEKA==}
+  knip@5.83.1:
+    resolution: {integrity: sha512-av3ZG/Nui6S/BNL8Tmj12yGxYfTnwWnslouW97m40him7o8MwiMjZBY9TPvlEWUci45aVId0/HbgTwSKIDGpMw==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -10066,6 +10066,10 @@ packages:
   locate-path@7.2.0:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  locate-path@8.0.0:
+    resolution: {integrity: sha512-XT9ewWAC43tiAV7xDAPflMkG0qOPn2QjHqlgX8FOqmWa/rxnyYDulF9T0F7tRy1u+TVTmK/M//6VIOye+2zDXg==}
+    engines: {node: '>=20'}
 
   locutus@2.0.32:
     resolution: {integrity: sha512-fr7OCpbE4xeefhHqfh6hM2/l9ZB3XvClHgtgFnQNImrM/nqL950o6FO98vmUH8GysfQRCcyBYtZ4C8GcY52Edw==}
@@ -11263,13 +11267,13 @@ packages:
   pkg-types@2.2.0:
     resolution: {integrity: sha512-2SM/GZGAEkPp3KWORxQZns4M+WSeXbC2HEvmOIJe3Cmiv6ieAJvdVhDldtHqM5J1Y7MrR1XhkBT/rMlhh9FdqQ==}
 
-  playwright-core@1.58.1:
-    resolution: {integrity: sha512-bcWzOaTxcW+VOOGBCQgnaKToLJ65d6AqfLVKEWvexyS3AS6rbXl+xdpYRMGSRBClPvyj44njOWoxjNdL/H9UNg==}
+  playwright-core@1.58.2:
+    resolution: {integrity: sha512-yZkEtftgwS8CsfYo7nm0KE8jsvm6i/PTgVtB8DL726wNf6H2IMsDuxCpJj59KDaxCtSnrWan2AeDqM7JBaultg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.58.1:
-    resolution: {integrity: sha512-+2uTZHxSCcxjvGc5C891LrS1/NlxglGxzrC4seZiVjcYVQfUa87wBL6rTDqzGjuoWNjnBzRqKmF6zRYGMvQUaQ==}
+  playwright@1.58.2:
+    resolution: {integrity: sha512-vA30H8Nvkq/cPBnNw4Q8TWz1EJyqgpuinBcHET0YVJVFldr8JDNiU9LaWAE1KqSkRYazuaBhTpB5ZzShOezQ6A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -13884,10 +13888,6 @@ packages:
     resolution: {integrity: sha512-6t3foTQI9qne+OZoVQB/8x8rk2k1eVy1gRXhV3oFQ5T6R1dqQ1xtin3XqSlx3+ATBkliTaR/hHyJBm+LVPNM8w==}
     engines: {node: '>=4'}
 
-  unicorn-magic@0.1.0:
-    resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
-    engines: {node: '>=18'}
-
   unicorn-magic@0.3.0:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
     engines: {node: '>=18'}
@@ -15056,10 +15056,10 @@ snapshots:
       '@csstools/css-tokenizer': 3.0.4
       lru-cache: 10.4.3
 
-  '@axe-core/playwright@4.11.1(playwright-core@1.58.1)':
+  '@axe-core/playwright@4.11.1(playwright-core@1.58.2)':
     dependencies:
       axe-core: 4.11.1
-      playwright-core: 1.58.1
+      playwright-core: 1.58.2
 
   '@babel/code-frame@7.27.1':
     dependencies:
@@ -17916,9 +17916,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.58.1':
+  '@playwright/test@1.58.2':
     dependencies:
-      playwright: 1.58.1
+      playwright: 1.58.2
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -18933,12 +18933,12 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.2.1(@playwright/test@1.58.1)(@stencil/core@4.38.3)':
+  '@stencil/playwright@0.2.3(@playwright/test@1.58.2)(@stencil/core@4.38.3)':
     dependencies:
-      '@playwright/test': 1.58.1
+      '@playwright/test': 1.58.2
       '@stencil/core': 4.38.3
       deepmerge: 4.3.1
-      find-up: 7.0.0
+      find-up: 8.0.0
 
   '@stencil/sass@3.2.3(@stencil/core@4.38.3)':
     dependencies:
@@ -22732,11 +22732,10 @@ snapshots:
       locate-path: 7.2.0
       path-exists: 5.0.0
 
-  find-up@7.0.0:
+  find-up@8.0.0:
     dependencies:
-      locate-path: 7.2.0
-      path-exists: 5.0.0
-      unicorn-magic: 0.1.0
+      locate-path: 8.0.0
+      unicorn-magic: 0.3.0
 
   fix-dts-default-cjs-exports@1.0.1:
     dependencies:
@@ -24470,7 +24469,7 @@ snapshots:
 
   kleur@3.0.3: {}
 
-  knip@5.83.0(@types/node@24.10.11)(typescript@5.9.3):
+  knip@5.83.1(@types/node@24.10.11)(typescript@5.9.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       '@types/node': 24.10.11
@@ -24851,6 +24850,10 @@ snapshots:
       p-locate: 5.0.0
 
   locate-path@7.2.0:
+    dependencies:
+      p-locate: 6.0.0
+
+  locate-path@8.0.0:
     dependencies:
       p-locate: 6.0.0
 
@@ -26292,11 +26295,11 @@ snapshots:
       exsolve: 1.0.7
       pathe: 2.0.3
 
-  playwright-core@1.58.1: {}
+  playwright-core@1.58.2: {}
 
-  playwright@1.58.1:
+  playwright@1.58.2:
     dependencies:
-      playwright-core: 1.58.1
+      playwright-core: 1.58.2
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -29204,8 +29207,6 @@ snapshots:
   unicode-match-property-value-ecmascript@2.2.1: {}
 
   unicode-property-aliases-ecmascript@2.1.0: {}
-
-  unicorn-magic@0.1.0: {}
 
   unicorn-magic@0.3.0: {}
 
