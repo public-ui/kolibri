@@ -1,6 +1,6 @@
 # CVE Overview
 
-Date: 2026-02-06
+Date: 2026-02-07
 
 > For more security information, see [SECURITY.md](./SECURITY.md)
 
@@ -9,9 +9,9 @@ Date: 2026-02-06
 | Severity | v4 | v3 | v2 | v1 |
 | --- | ---: | ---: | ---: | ---: |
 | critical | 0 | 0 | 0 | 0 |
-| high | 0 | 0 | 0 | 4 |
-| moderate | 0 | 0 | 0 | 8 |
-| low | 0 | 0 | 0 | 3 |
+| high | 0 | 0 | 0 | 1 |
+| moderate | 0 | 0 | 0 | 0 |
+| low | 0 | 0 | 0 | 0 |
 | info | 0 | 0 | 0 | 0 |
 | unknown | 0 | 0 | 0 | 0 |
 
@@ -20,9 +20,9 @@ Date: 2026-02-06
 | Severity | v4 | v3 | v2 | v1 |
 | --- | ---: | ---: | ---: | ---: |
 | critical | 1 | 1 | 1 | 1 |
-| high | 6 | 6 | 9 | 13 |
-| moderate | 1 | 1 | 9 | 9 |
-| low | 1 | 1 | 4 | 3 |
+| high | 6 | 6 | 9 | 10 |
+| moderate | 1 | 1 | 9 | 1 |
+| low | 1 | 1 | 4 | 0 |
 | info | 0 | 0 | 0 | 0 |
 | unknown | 0 | 0 | 0 | 0 |
 
@@ -39,22 +39,21 @@ Date: 2026-02-06
 | braces | high | CVE-2024-4068 | v4, v3, v2, v1 | Uncontrolled resource consumption in braces |
 | fast-xml-parser | high | CVE-2026-25128 | v4, v3, v2 | fast-xml-parser has RangeError DoS Numeric Entities Bug |
 | lodash.pick | high | CVE-2020-8203 | v2, v1 | Prototype Pollution in lodash |
-| playwright | high | CVE-2025-59288 | v1 | Playwright downloads and installs browsers without verifying the authenticity of |
-| qs | high | CVE-2025-15284 | v4, v3, v2, v1 | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion |
-| semver | high | CVE-2022-25883 | v2, v1 | semver vulnerable to Regular Expression Denial of Service |
+| qs | high | CVE-2025-15284 | v4, v3, v2 | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion |
+| semver | high | CVE-2022-25883 | v2 | semver vulnerable to Regular Expression Denial of Service |
 | tar | high | CVE-2026-23745 | v4, v3, v2, v1 | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins |
 | tar | high | CVE-2026-23950 | v4, v3, v2, v1 | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on  |
 | tar | high | CVE-2026-24842 | v4, v3, v2, v1 | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave |
-| ejs | moderate | CVE-2024-33883 | v2, v1 | ejs lacks certain pollution protection |
-| esbuild | moderate | GHSA-67mh-4wv8-2f99 | v2, v1 | esbuild enables any website to send any requests to the development server and r |
-| js-yaml | moderate | CVE-2025-64718 | v2, v1 | js-yaml has prototype pollution in merge (<<) |
+| ejs | moderate | CVE-2024-33883 | v2 | ejs lacks certain pollution protection |
+| esbuild | moderate | GHSA-67mh-4wv8-2f99 | v2 | esbuild enables any website to send any requests to the development server and r |
+| js-yaml | moderate | CVE-2025-64718 | v2 | js-yaml has prototype pollution in merge (<<) |
 | micromatch | moderate | CVE-2024-4067 | v4, v3, v2, v1 | Regular Expression Denial of Service (ReDoS) in micromatch |
-| nanoid | moderate | CVE-2024-55565 | v2, v1 | Predictable results in nanoid generation when given non-integer values |
-| serialize-javascript | moderate | CVE-2024-11831 | v2, v1 | Cross-site Scripting (XSS) in serialize-javascript |
-| webpack | moderate | CVE-2024-43788 | v2, v1 | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to  |
-| webpack-dev-server | moderate | CVE-2025-30360 | v2, v1 | webpack-dev-server users' source code may be stolen when they access a malicious |
-| webpack-dev-server | moderate | CVE-2025-30359 | v2, v1 | webpack-dev-server users' source code may be stolen when they access a malicious |
-| diff | low | CVE-2026-24001 | v4, v3, v2, v1 | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch |
-| webpack | low | CVE-2025-68458 | v2, v1 | webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to |
-| webpack | low | CVE-2025-68157 | v2, v1 | webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + c |
+| nanoid | moderate | CVE-2024-55565 | v2 | Predictable results in nanoid generation when given non-integer values |
+| serialize-javascript | moderate | CVE-2024-11831 | v2 | Cross-site Scripting (XSS) in serialize-javascript |
+| webpack | moderate | CVE-2024-43788 | v2 | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to  |
+| webpack-dev-server | moderate | CVE-2025-30360 | v2 | webpack-dev-server users' source code may be stolen when they access a malicious |
+| webpack-dev-server | moderate | CVE-2025-30359 | v2 | webpack-dev-server users' source code may be stolen when they access a malicious |
+| diff | low | CVE-2026-24001 | v4, v3, v2 | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch |
+| webpack | low | CVE-2025-68458 | v2 | webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to |
+| webpack | low | CVE-2025-68157 | v2 | webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + c |
 
