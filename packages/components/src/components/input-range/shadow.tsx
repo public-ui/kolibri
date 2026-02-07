@@ -145,11 +145,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	private getGenericInputProps() {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { _suggestions, ...other } = this.state;
-
 		return {
-			state: { ...other, _suggestions: [] },
+			state: { ...this.state, _suggestions: [] },
 			...this.controller.onFacade,
 			onChange: this.onChange,
 			onInput: this.onInput,

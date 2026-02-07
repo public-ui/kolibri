@@ -24,7 +24,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -37,7 +36,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -72,7 +70,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -85,7 +82,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -120,7 +116,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -133,7 +128,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -168,7 +162,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -181,7 +174,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -222,7 +214,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -235,7 +226,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -276,7 +266,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -289,7 +278,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -326,7 +314,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -339,7 +326,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -377,7 +363,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -390,7 +375,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -425,7 +409,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -438,7 +421,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -473,7 +455,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -486,7 +467,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -522,7 +502,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -535,7 +514,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -570,7 +548,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -583,7 +560,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>
@@ -618,7 +594,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
-                  <mark></mark>
                 </span>
               </li>
               <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
@@ -631,7 +606,6 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
                 <span>
                   Divers
-                  <mark></mark>
                 </span>
               </li>
             </ul>

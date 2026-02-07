@@ -1,5 +1,13 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { AccessKeyPropType, ButtonProps, InputTypeOnDefault, MsgPropType, PropLabelWithExpertSlot, ShortKeyPropType, Stringified } from '../../../schema';
+import type {
+	AccessKeyPropType,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	MsgPropType,
+	PropLabelWithExpertSlot,
+	ShortKeyPropType,
+	Stringified,
+} from '../../../schema';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropLabelWithExpertSlot & {
@@ -12,7 +20,7 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	msg: MsgPropType;
 	on: InputTypeOnDefault;
 	shortKey: ShortKeyPropType;
-	smartButton: Stringified<ButtonProps>;
+	smartButton: Stringified<InternalButtonProps>;
 	syncValueBySelector: string;
 	tabIndex: number;
 };

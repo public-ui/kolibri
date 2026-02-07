@@ -22,7 +22,7 @@ import type {
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
-import type { ButtonProps } from './button';
+import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -31,7 +31,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: PlaceholderPropType;
-	smartButton: Stringified<ButtonProps>;
+	smartButton: Stringified<InternalButtonProps>;
 	step: number | NumberString;
 	value: number | NumberString | null;
 } & PropAccessKey &
@@ -59,7 +59,7 @@ type OptionalStates = {
 	min: number;
 	on: InputTypeOnDefault;
 	placeholder: PlaceholderPropType;
-	smartButton: ButtonProps;
+	smartButton: InternalButtonProps;
 	step: number;
 	value: number;
 } & PropAccessKey &

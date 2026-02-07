@@ -8,7 +8,6 @@ import type {
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaOwnsPropType,
-	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
 	DownloadPropType,
@@ -25,6 +24,7 @@ import type {
 	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	devHint,
@@ -49,6 +49,7 @@ import {
 	validateLinkTarget,
 	validateShortKey,
 	validateTooltipAlign,
+	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -57,7 +58,6 @@ import { onLocationChange } from './ariaCurrentService';
 
 import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
-import { validateVariantClassName, VariantClassNamePropType } from '../../schema/props/variant-class-name';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 
@@ -331,7 +331,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Defines which button variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType | VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: LinkStates = {
 		_ariaCurrentValue: 'page',
@@ -446,7 +446,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateVariantClassName(value?: ButtonVariantPropType | VariantClassNamePropType): void {
+	public validateVariantClassName(value?: VariantClassNamePropType): void {
 		validateVariantClassName(this, value);
 	}
 

@@ -3,12 +3,12 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
-	ButtonProps,
 	DisabledPropType,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	ShortKeyPropType,
@@ -119,11 +119,10 @@ export class InputController extends ControlledInputController implements Watche
 		validateAccessAndShortKey(this.component._accessKey, value);
 	}
 
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<ButtonProps>(value as string);
-				// eslint-disable-next-line no-empty
+				value = parseJson<InternalButtonProps>(value as string);
 			} catch (e) {
 				// value behält den ursprünglichen Wert
 			}

@@ -4,7 +4,6 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AutoCompletePropType,
-	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -15,6 +14,7 @@ import type {
 	InputPasswordAPI,
 	InputPasswordStates,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -265,7 +265,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -417,7 +417,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 

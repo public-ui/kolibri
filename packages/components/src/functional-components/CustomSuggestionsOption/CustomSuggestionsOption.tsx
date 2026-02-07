@@ -30,9 +30,7 @@ const CustomSuggestionsOptionFc: FC<CustomSuggestionsProps> = ({
 		const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
 		const parts = text.split(regex);
 
-		parts[1] = <mark>{parts[1]}</mark>;
-
-		return parts;
+		return parts.map((part, partIndex) => (partIndex % 2 === 1 ? <mark>{part}</mark> : part));
 	};
 
 	return (
