@@ -54,6 +54,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
+      - name: Remove overrides before install
+        run: |
+          if grep -q '^overrides:' pnpm-workspace.yaml; then
+            sed -i '/^overrides:/,$ d' pnpm-workspace.yaml
+          fi
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Update dependencies (minor)
@@ -65,9 +70,6 @@ jobs:
         run: pnpm i --no-frozen-lockfile
       - name: Try to fix audit issues
         run: |
-          if grep -q '^overrides:' pnpm-workspace.yaml; then
-            sed -i '/^overrides:/,$ d' pnpm-workspace.yaml
-          fi
           pnpm audit --audit-level high --fix --production
       - name: Reinstall dependencies (final lock file)
         run: pnpm i --no-frozen-lockfile
