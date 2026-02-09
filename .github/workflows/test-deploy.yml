@@ -55,7 +55,7 @@ jobs:
         run: pnpm --filter @public-ui/sample-react... build
 
       - name: Attest sample react build
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v3
         with:
           subject-path: packages/samples/react/dist
 
