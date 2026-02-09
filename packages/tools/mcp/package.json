@@ -77,7 +77,7 @@
 		"@eslint/js": "9.39.2",
 		"@modelcontextprotocol/inspector": "0.19.0",
 		"@types/express": "5.0.6",
-		"@types/node": "24.10.11",
+		"@types/node": "24.10.12",
 		"@typescript-eslint/eslint-plugin": "8.54.0",
 		"@typescript-eslint/parser": "8.54.0",
 		"eslint": "9.39.2",
