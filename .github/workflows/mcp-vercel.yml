@@ -95,7 +95,7 @@ jobs:
           pnpm exec prettier --write package.json
 
       - name: Attest MCP build outputs
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v3
         with:
           subject-path: |
             packages/tools/mcp/api
