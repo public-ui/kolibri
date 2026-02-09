@@ -161,15 +161,31 @@ export class KolPopover implements PopoverAPI {
 				return;
 			}
 
-			const isOpen = this.popoverElement.matches(':popover-open');
+			// Use try-catch to determine if popover is open
+			// In test environments, :popover-open pseudo-class is not supported
+			let isOpen = false;
+			try {
+				isOpen = this.popoverElement.matches(':popover-open');
+			} catch (e) {
+				// Fallback: Check if popover is visible or use state
+				isOpen = this.state._show;
+			}
 
 			if (this._show) {
 				if (!isOpen) {
-					this.popoverElement.showPopover();
+					try {
+						this.popoverElement.showPopover();
+					} catch (e) {
+						// Ignore if showPopover fails (already open or not supported)
+					}
 				}
 			} else {
 				if (isOpen) {
-					this.popoverElement.hidePopover();
+					try {
+						this.popoverElement.hidePopover();
+					} catch (e) {
+						// Ignore if hidePopover fails (already closed or not supported)
+					}
 				}
 			}
 		};
@@ -232,7 +248,16 @@ export class KolPopover implements PopoverAPI {
 	public validateShow(value?: ShowPropType): void {
 		validateShow(this, value);
 		if (this.popoverElement) {
-			const isOpen = this.popoverElement.matches(':popover-open');
+			// Use try-catch to determine if popover is open
+			// In test environments, :popover-open pseudo-class is not supported
+			let isOpen = false;
+			try {
+				isOpen = this.popoverElement.matches(':popover-open');
+			} catch (e) {
+				// Fallback: Check using state
+				isOpen = this.state._show;
+			}
+
 			if (value) {
 				if (!isOpen) {
 					try {
