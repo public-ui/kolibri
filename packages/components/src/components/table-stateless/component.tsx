@@ -284,7 +284,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		let max = 0;
 		horizontalHeaders.forEach((row) => {
 			let count = 0;
-			Array.isArray(row) && row.forEach((col) => (count += col.colSpan ?? 1));
+			if (Array.isArray(row)) {
+				row.forEach((col) => {
+					count += col.colSpan ?? 1;
+				});
+			}
 			if (max < count) {
 				max = count;
 			}
@@ -299,7 +303,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		let max = 0;
 		verticalHeaders.forEach((col) => {
 			let count = 0;
-			Array.isArray(col) && col.forEach((row) => (count += row.rowSpan ?? 1));
+			if (Array.isArray(col)) {
+				col.forEach((row) => {
+					count += row.rowSpan ?? 1;
+				});
+			}
 			if (max < count) {
 				max = count;
 			}
@@ -1056,7 +1064,6 @@ export class KolTableStateless implements TableStatelessAPI {
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
 				 */}
-				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
 					class="kol-table__scroll-container"

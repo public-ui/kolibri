@@ -168,7 +168,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
         </ul>
       </nav>
       <div class="page-size">
-        <kol-select-wc _id="pagination-size-nonce" _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select-wc>
+        <kol-select-wc _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select-wc>
       </div>
     </kol-pagination-wc>
   </template>

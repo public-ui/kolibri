@@ -6,6 +6,7 @@ import { getDocument, validateAlign, validateBadgeText, validateId, validateLabe
 
 import { KolSpanFc } from '../../functional-components';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
+import { nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking';
 
@@ -219,6 +220,7 @@ export class KolTooltipWc implements TooltipAPI {
 
 	@State() public state: TooltipStates = {
 		_align: 'top',
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 	};
 

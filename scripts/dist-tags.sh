@@ -16,5 +16,6 @@ npm dist-tag $1 @public-ui/components@$2 $3
 npm dist-tag $1 @public-ui/sample-react@$2 $3
 npm dist-tag $1 @public-ui/theme-default@$2 $3
 npm dist-tag $1 @public-ui/theme-ecl@$2 $3
+npm dist-tag $1 @public-ui/theme-kern@$2 $3
 npm dist-tag $1 @public-ui/themes@$2 $3
 npm dist-tag $1 @public-ui/visual-tests@$2 $3

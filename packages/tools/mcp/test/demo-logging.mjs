@@ -37,6 +37,6 @@ if (process.env.MCP_LOGGING === 'true' || process.env.MCP_LOGGING === '1') {
 
 console.log('\n==========================================');
 console.log('Creating server instance...');
-const server = createKolibriMcpServer();
+createKolibriMcpServer();
 console.log('✅ Server created successfully!');
 console.log('==========================================\n');

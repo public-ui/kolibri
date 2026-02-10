@@ -10,6 +10,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	IconsPropType,
+	IdPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
@@ -215,7 +216,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines the internal ID of the primary component element.
 	 * @internal
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.

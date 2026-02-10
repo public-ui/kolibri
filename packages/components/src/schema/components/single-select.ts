@@ -55,7 +55,6 @@ type OptionalStates = {
 	PropHideLabel &
 	KoliBriHIcons &
 	PropHint &
-	PropId &
 	PropName &
 	PropRequired &
 	PropRows &

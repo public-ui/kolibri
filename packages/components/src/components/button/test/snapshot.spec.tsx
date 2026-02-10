@@ -1,11 +1,11 @@
 import { KolButtonTag } from '../../../core/component-names';
-import type { ButtonProps } from '../../../schema';
+import type { InternalButtonProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolButtonWc } from '../component';
 import { KolButton } from '../shadow';
 
-executeSnapshotTests<ButtonProps>(
+executeSnapshotTests<InternalButtonProps>(
 	KolButtonTag,
 	[KolButton, KolButtonWc],
 	[
@@ -19,7 +19,7 @@ executeSnapshotTests<ButtonProps>(
 				({
 					_label: 'Label',
 					_variant,
-				}) as ButtonProps,
+				}) as InternalButtonProps,
 		),
 
 		{ _label: 'Label', _value: 'Hello' },

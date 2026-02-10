@@ -1,4 +1,4 @@
-import type { ButtonProps, KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -32,7 +32,7 @@ import {
 	KolTextarea,
 	KolVersion,
 } from '@public-ui/react-v19';
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import React from 'react';
 
 import { useToasterService } from '../../hooks/useToasterService';
@@ -40,14 +40,14 @@ import { getRoot } from '../../shares/react-roots';
 import { getTheme, getThemeName } from '../../shares/store';
 import { TABLE_DATA, type TableDataType } from './table-data';
 
-function KolButtonWrapper({ _on, ...other }: ButtonProps & { style: Record<string, unknown> }) {
-	const { dummyClickEventHandler } = useToasterService();
+type KolButtonProps = ComponentProps<typeof KolButton>;
 
+function KolButtonWrapper(props: KolButtonProps & { style: Record<string, unknown> }) {
+	const { dummyClickEventHandler } = useToasterService();
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
-
-	return <KolButton {...other} _on={dummyEventHandler} />;
+	return <KolButton {...props} _on={dummyEventHandler} />;
 }
 
 const TABLE_HEADERS: KoliBriTableHeaders = {

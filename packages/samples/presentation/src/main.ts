@@ -9,7 +9,7 @@ if (process.env.THEME_CSS) {
 			 Note: process.env.THEME_CSS must be used literally in the import(). Moving it to a constant breaks the import. */
 		process.env.THEME_CSS = `/${process.env.THEME_CSS}`;
 	}
-	import(/* @vite-ignore */ process.env.THEME_CSS);
+	void import(/* @vite-ignore */ process.env.THEME_CSS);
 }
 
 // App

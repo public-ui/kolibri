@@ -1,13 +1,13 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { ButtonProps, LinkProps } from '../../schema';
+import type { InternalButtonProps, LinkProps } from '../../schema';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
 
 /* types */
 export type ToolbarItemPropType =
 	| ({
 			type: 'button';
-	  } & ButtonProps)
+	  } & InternalButtonProps)
 	| ({
 			type: 'link';
 	  } & LinkProps);
@@ -29,7 +29,6 @@ export const validateToolbarItems = (component: Generic.Element.Component, value
 			}
 			try {
 				value = parseJson<ToolbarItemPropType[]>(value);
-				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value keeps the original items
 			}
