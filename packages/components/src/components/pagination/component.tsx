@@ -62,7 +62,6 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 export class KolPaginationWc implements PaginationAPI {
 	@Element() private readonly host?: HTMLKolPaginationElement;
 
-	private readonly nonce = nonce();
 	private readonly translatePageFirst = translate('kol-page-first');
 	private readonly translatePageBack = translate('kol-page-back');
 	private readonly translatePageNext = translate('kol-page-next');
@@ -192,7 +191,6 @@ export class KolPaginationWc implements PaginationAPI {
 					<div class="page-size">
 						<KolSelectWcTag
 							class="kol-pagination__page-size-select"
-							_id={`pagination-size-${this.nonce}`}
 							_label={this.translateEntriesPerSite}
 							_options={this.state._pageSizeOptions}
 							_on={{

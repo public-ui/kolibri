@@ -4,18 +4,17 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AutoCompletePropType,
-	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputDateAPI,
 	InputDateStates,
 	InputDateTypePropType,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	Iso8601,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -231,12 +230,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -286,7 +279,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -379,11 +372,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.controller.validateIcons(value);
 	}
 
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
-	}
-
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
@@ -430,7 +418,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 

@@ -1,0 +1,7 @@
+@use '~@public-ui/components/index' as *;
+
+@layer kol-theme-component {
+	abbr:has(+ .kol-tooltip) {
+		border-bottom: 1px dashed;
+	}
+}

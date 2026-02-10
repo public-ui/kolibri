@@ -17,6 +17,7 @@ npx license-report --output=html --package=packages/samples/vite/package.json >>
 npx license-report --output=html --package=packages/schema/package.json >> license-reports/schema.html
 npx license-report --output=html --package=packages/theme-default/package.json >> license-reports/theme-default.html
 npx license-report --output=html --package=packages/theme-ecl/package.json >> license-reports/theme-ecl.html
+npx license-report --output=html --package=packages/theme-kern/package.json >> license-reports/theme-kern.html
 npx license-report --output=html --package=packages/themes/package.json >> license-reports/themes.html
 npx license-report --output=html --package=packages/tools/kolibri-cli/package.json >> license-reports/tools-kolibri-cli.html
 npx license-report --output=html --package=packages/tools/mcp/package.json >> license-reports/tools-mcp.html

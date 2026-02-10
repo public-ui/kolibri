@@ -2,7 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	AriaExpandedPropType,
-	ButtonVariantPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaControls,
@@ -22,8 +21,9 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
+	PropVariantClassName,
 } from '../props';
-import type { KoliBriAllIcons, StencilUnknown } from '../types';
+import type { StencilUnknown } from '../types';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
@@ -49,17 +49,18 @@ export type OptionalButtonProps = {
 	PropSyncValueBySelector &
 	PropTooltipAlign;
 
-export type RequiredButtonStates = RequiredButtonProps &
-	PropButtonType & {
-		icons: KoliBriAllIcons;
-	};
-export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates> & {
-	buttonVariant: ButtonVariantPropType;
-};
+export type RequiredButtonStates = PropIcons & PropLabelWithExpertSlot & PropButtonCallbacks<StencilUnknown> & PropButtonType & PropButtonVariant;
+export type OptionalButtonStates = Omit<
+	OptionalButtonProps,
+	keyof PropIcons | keyof PropLabelWithExpertSlot | keyof PropButtonCallbacks<StencilUnknown> | keyof PropButtonType | keyof PropButtonVariant
+>;
 
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+export type InternalButtonProps = Generic.Element.Members<RequiredButtonProps, Omit<OptionalButtonProps, keyof PropButtonVariant> & PropVariantClassName>;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
-export type ButtonAPI = Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates>;
-
-export type InternalButtonProps = RequiredButtonProps & OptionalButtonProps;
-export type InternalButtonAPI = Omit<ButtonAPI, 'validateVariant'>;
+export type ButtonAPI = Generic.Element.ComponentApi<
+	RequiredButtonProps,
+	Omit<OptionalButtonProps, keyof PropButtonVariant> & PropVariantClassName,
+	RequiredButtonStates,
+	OptionalButtonStates
+>;

@@ -1,0 +1,36 @@
+@use '~@public-ui/components/index' as *;
+
+/**
+ * @file _font.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 17.04.2025
+ * @modified 23.05.2025
+ * @@VERSION@@
+ * @brief Tokens für die Font.
+ *
+ * Diese Datei enthält die Tokens für die Font
+ */
+
+// ############### FONT ###############
+:root {
+	/* primitive-font-familiy */
+	--kern-typography-font-family-fira-sans: Fira Sans;
+	--kern-typography-font-family-fira-mono: Fira Mono;
+
+	/* primitive-font-size */
+	--kern-font-size-12: #{to-rem(12)};
+	--kern-font-size-14: #{to-rem(14)};
+	--kern-font-size-16: #{to-rem(16)};
+	--kern-font-size-18: #{to-rem(18)};
+	--kern-font-size-20: #{to-rem(20)};
+	--kern-font-size-21: #{to-rem(21)};
+	--kern-font-size-24: #{to-rem(24)};
+	--kern-font-size-26: #{to-rem(26)};
+	--kern-font-size-32: #{to-rem(32)};
+	--kern-font-size-40: #{to-rem(40)};
+	--kern-font-size-48: #{to-rem(48)};
+	--kern-font-size-56: #{to-rem(56)};
+	--kern-font-size-72: #{to-rem(72)};
+	--kern-font-size-80: #{to-rem(80)};
+}

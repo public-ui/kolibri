@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v19",
-	"version": "4.0.3-rc.1",
+	"version": "4.0.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -70,9 +70,7 @@
 		"@angular/compiler-cli": "19.2.18",
 		"@angular/core": "19.2.18",
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "6.0.0",
-		"@types/minimist": "1.2.5",
-		"@types/normalize-package-data": "2.4.4",
+		"minimatch": "10.1.2",
 		"rimraf": "6.1.2",
 		"rxjs": "7.8.2",
 		"typescript": "5.8.3",

@@ -2,17 +2,16 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AutoCompletePropType,
-	ButtonProps,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputColorAPI,
 	InputColorStates,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -136,11 +135,8 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	private getGenericInputProps() {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { _suggestions, ...other } = this.state;
-
 		return {
-			state: { ...other, _suggestions: [] },
+			state: { ...this.state, _suggestions: [] },
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onFocus: this.onFocus,
@@ -202,12 +198,6 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -235,7 +225,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -316,11 +306,6 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.controller.validateIcons(value);
 	}
 
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
-	}
-
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
@@ -347,7 +332,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 

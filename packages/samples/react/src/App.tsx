@@ -34,7 +34,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 		setRegisteredThemes(allThemes);
 		return allThemes;
 	}, [customThemes]);
-	const theme: string = searchParams.get('theme') ?? themes[1].key;
+	const theme: string = searchParams.get('theme') ?? getTheme();
 
 	const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
 		let list: string[] = [];

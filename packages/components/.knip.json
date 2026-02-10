@@ -1,35 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"ignore": ["src/components/_skeleton/internal/schema/props/helpers/number.ts", "src/components/_skeleton/internal/schema/props/show.ts"],
-	"ignoreDependencies": [
-		"@floating-ui/dom",
-		"@jest/globals",
-		"@public-ui/stencil-angular-output-target",
-		"@public-ui/stencil-react-output-target",
-		"@public-ui/stencil-solid-output-target",
-		"@public-ui/stencil-vue-output-target",
-		"@revolist/svelte-output-target",
-		"@stencil-community/postcss",
-		"@stencil/sass",
-		"@types/color-convert",
-		"@types/lodash-es",
-		"@types/markdown-it",
-		"@types/mustache",
-		"@types/pug",
-		"@types/twig",
-		"@types/wcag-contrast",
-		"color-convert",
-		"color-rgba",
-		"jest",
-		"lodash-es",
-		"markdown-it",
-		"mustache",
-		"pug",
-		"rgba-convert",
-		"stencil-awesome-test",
-		"tslib",
-		"twig",
-		"wcag-contrast"
-	],
-	"project": ["src/components/_skeleton/**/*.ts*", "src/components/icon/**/*.ts*"]
+	"ignore": ["src/assets/**", "src/dev/**", "src/global/**"],
+	"ignoreDependencies": ["@stencil/angular-output-target", "@stencil/react-output-target", "@stencil/solid-output-target", "@stencil/vue-output-target"],
+	"project": ["src/**/*.ts"]
 }

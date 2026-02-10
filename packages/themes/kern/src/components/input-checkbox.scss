@@ -1,0 +1,123 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/kol-alert' as *;
+@use '../mixins/field-control' as *;
+@use '../mixins/form-field-order' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/checkbox.scss' as *;
+
+@layer kol-theme-component {
+	@include kol-alert;
+	@include kol-field-control-theme;
+	@include kol-form-field-order-theme;
+	@include kol-form-field;
+
+	@include checkbox('kol-checkbox');
+
+	.kol-input-checkbox--label-align-right {
+		padding-right: var(--kern-metric-space-default);
+		gap: var(--kern-metric-space-small) var(--kern-metric-space-default);
+	}
+
+	/* Align left to the visual checkbox */
+	:is(.kol-input-checkbox--label-align-right, .kol-form-field--hide-label) :is(.kol-alert, .kol-form-field__hint) {
+		padding-left: to-rem(6);
+	}
+
+	.kol-field-control {
+		gap: var(--kern-metric-space-small) var(--kern-metric-space-default);
+
+		&--error .kol-checkbox .kol-input {
+			background: var(--kern-color-feedback-danger-background);
+			outline-color: var(--kern-color-feedback-danger);
+			border-color: var(--kern-color-feedback-danger);
+
+			&:checked,
+			&:indeterminate {
+				&::before {
+					border-color: var(--kern-color-feedback-danger);
+
+					@media (forced-colors: active) {
+						border-color: var(--kern-color-layout-background-inverted);
+					}
+				}
+
+				&:focus,
+				&:focus-visible {
+					box-shadow: 0 0 0 var(--kern-metric-border-width-bold, 4px) var(--kern-color-feedback-danger);
+					outline: var(--kern-metric-border-width-none, 0);
+					border: var(--kern-metric-border-width-none, 0);
+				}
+			}
+
+			&:focus,
+			&:focus-visible {
+				box-shadow: 0 0 0 var(--kern-metric-border-width-bold, 4px) var(--kern-color-feedback-danger);
+				outline: var(--kern-metric-border-width-none, 0);
+				border: var(--kern-metric-border-width-none, 0);
+			}
+		}
+	}
+
+	.kol-checkbox--variant-switch {
+		.kol-icon {
+			top: to-rem(14);
+			left: to-rem(2);
+			width: 1.25em;
+			height: 1.25em;
+
+			font-size: inherit;
+		}
+
+		.kol-input {
+			background-color: var(--kern-color-feedback-loader-background);
+			/* Visible with forced colors  */
+			outline: transparent solid to-rem(1);
+			border-radius: 1.25em;
+			display: block;
+			position: relative;
+			width: 3.5em;
+			min-width: 3.5em;
+			height: 1.5em;
+			border-width: 0;
+
+			&:hover {
+				outline-color: var(--kern-color-form-input-border, #171a2b);
+				outline-style: solid;
+				outline-width: var(--kern-metric-border-width-bold, 4px);
+				border: 0;
+				outline-offset: 0;
+			}
+
+			&:before {
+				background-color: white;
+				border-radius: 1.25em;
+				position: absolute;
+				top: calc(0.25em - to-rem(2));
+				left: calc(0.25em - to-rem(2));
+				width: 1.25em;
+				height: 1.25em;
+				margin: 0 !important;
+			}
+
+			&:checked {
+				background-color: var(--kern-color-feedback-loader);
+			}
+
+			&:checked::before {
+				transform: translateX(2em);
+			}
+
+			&:indeterminate::before {
+				transform: translateX(1em);
+			}
+		}
+
+		&.kol-checkbox--checked .kol-icon {
+			transform: translate(2em, -50%);
+		}
+
+		&.kol-checkbox--indeterminate .kol-icon {
+			transform: translate(1em, -50%);
+		}
+	}
+}

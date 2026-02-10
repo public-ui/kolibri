@@ -228,7 +228,6 @@ export const watchJsonArrayString = <T>(
 			try {
 				try {
 					value = parseJson<T[]>(value);
-					// eslint-disable-next-line no-empty
 				} catch (e) {
 					// value behält den ursprünglichen Wert
 				}

@@ -23,7 +23,7 @@ import type {
 } from '../props';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
-import type { ButtonProps } from './button';
+import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -31,7 +31,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
-	smartButton: Stringified<ButtonProps>;
+	smartButton: Stringified<InternalButtonProps>;
 	value: string;
 	msg: Stringified<MsgPropType>;
 } & PropAccessKey &
@@ -63,7 +63,7 @@ type OptionalStates = {
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
-	smartButton: ButtonProps;
+	smartButton: InternalButtonProps;
 	value: string | null;
 } & PropAccessKey &
 	PropAutoComplete &

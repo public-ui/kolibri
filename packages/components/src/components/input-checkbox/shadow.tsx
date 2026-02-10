@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
@@ -10,7 +9,6 @@ import type {
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
-	IdPropType,
 	IndeterminatePropType,
 	InputCheckboxAPI,
 	InputCheckboxIconsProp,
@@ -189,12 +187,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 * @TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
 	 */
@@ -322,11 +314,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
 		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_indeterminate')

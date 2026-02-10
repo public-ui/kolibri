@@ -3,12 +3,12 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
-	ButtonProps,
 	DisabledPropType,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	ShortKeyPropType,
@@ -18,7 +18,6 @@ import type {
 } from '../../../schema';
 import {
 	a11yHint,
-	devHint,
 	objectObjectHandler,
 	parseJson,
 	setState,
@@ -32,7 +31,6 @@ import {
 	validateMsg,
 	validateShortKey,
 	validateTooltipAlign,
-	watchString,
 } from '../../../schema';
 import { validateTabIndex } from '../../../schema/props/tab-index';
 
@@ -100,13 +98,6 @@ export class InputController extends ControlledInputController implements Watche
 		validateHint(this.component, value);
 	}
 
-	public validateId(value?: string): void {
-		watchString(this.component, '_id', value, { minLength: 1 });
-		if (value === '' || typeof value === 'undefined') {
-			devHint(`A unique ID on the input fields is not strictly required, but it might be relevant for E2E tests.`);
-		}
-	}
-
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this.component, value, {
 			required: true,
@@ -128,11 +119,10 @@ export class InputController extends ControlledInputController implements Watche
 		validateAccessAndShortKey(this.component._accessKey, value);
 	}
 
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<ButtonProps>(value as string);
-				// eslint-disable-next-line no-empty
+				value = parseJson<InternalButtonProps>(value as string);
 			} catch (e) {
 				// value behält den ursprünglichen Wert
 			}
@@ -153,7 +143,6 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateHideMsg(this.component._hideMsg);
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);
-		this.validateId(this.component._id);
 		this.validateLabel(this.component._label);
 		this.validateShortKey(this.component._shortKey);
 		this.validateSmartButton(this.component._smartButton);

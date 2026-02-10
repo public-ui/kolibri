@@ -1,0 +1,24 @@
+@use '~@public-ui/components/index' as *;
+
+@mixin kol-input {
+	.kol-input {
+		color: var(--kern-color-layout-text-default);
+		background: transparent;
+
+		font-family: var(--kern-typography-font-family-default);
+		border: none;
+
+		&--readonly {
+			color: var(--color-black-70);
+		}
+
+		&:disabled {
+			opacity: 1;
+			color: var(--color-black-60);
+
+			&::placeholder {
+				color: var(--color-black-60);
+			}
+		}
+	}
+}

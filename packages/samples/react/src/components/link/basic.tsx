@@ -31,6 +31,7 @@ export const LinkBasic: FC = () => (
 				After that, there is a link that is rendered as a block element. <KolLink class="d-block" _href="#/back-page" _label="Simple Link" />, therefore, I span
 				the entire width of the parent element, causing a line break.
 			</p>
+			<KolLink _href="#/back-page" _inline={false} _label="Special Variant Link" _variant="theme-link" />
 		</div>
 	</>
 );
