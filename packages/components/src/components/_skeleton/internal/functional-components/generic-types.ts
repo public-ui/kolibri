@@ -47,12 +47,13 @@ export type ResolvedProps<T extends ComponentApi> = InternalOf<ExtractRequiredPr
  * Used for componentWillLoad and watchers.
  */
 export type ResolvedInputProps<T extends ComponentApi> = ExternalOf<ExtractRequiredProps<T>> & Partial<ExternalOf<ExtractOptionalProps<T>>>;
+type PromiseMethod = (...args: unknown[]) => Promise<unknown>;
 
 export interface ComponentApi {
 	Props?: PropsDefinition;
 	States?: Record<string, unknown>;
 	Emitters?: Record<string, unknown>;
-	Methods?: Record<string, () => unknown>;
+	Methods?: Record<string, PromiseMethod>;
 	Listeners?: Record<string, unknown>;
 	Callbacks?: Record<string, () => unknown>;
 	Refs?: Record<string, HTMLElement>;
