@@ -9,25 +9,19 @@ import { Log } from '../../../../../../schema';
  *
  * Phantom-Keys `__input_${K}` tragen den externen Typ auf Type-Ebene.
  */
-export type Prop<TExternal, TInternal = TExternal, K extends string = 'value'> = {
+export type Prop<K extends string, TExternal, TInternal = TExternal> = {
 	[P in K]: TInternal;
 } & {
 	[P in K as `__input_${P}`]?: TExternal;
 };
 
-/**
- * Shorthand für Props, bei denen externer und interner Typ identisch sind.
- * Vermeidet redundante Angabe beider Typ-Parameter.
- */
-export type SimpleProp<T, K extends string = 'value'> = Prop<T, T, K>;
-
 export type PropDefinition<TExternal, TInternal = TExternal> = {
-	normalize: (value: TExternal | undefined) => TInternal | null;
+	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
 };
 
 export function createPropDefinition<TExternal, TInternal = TExternal>(
-	normalize: (value: TExternal | undefined) => TInternal | never,
+	normalize: (value: unknown) => TInternal | never,
 	validate: (value: TInternal) => boolean,
 ): PropDefinition<TExternal, TInternal> {
 	return {
@@ -38,7 +32,7 @@ export function createPropDefinition<TExternal, TInternal = TExternal>(
 
 export function withValidPropValue<TExternal, TInternal = TExternal>(
 	propDef: PropDefinition<TExternal, TInternal>,
-	value: TExternal | undefined,
+	value: unknown,
 	callback: (normalized: TInternal) => void,
 ): void {
 	try {
