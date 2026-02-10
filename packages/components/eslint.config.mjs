@@ -62,16 +62,6 @@ export default [
 			'no-undef': 'off',
 
 			/**
-			 * Props must be imported via barrel files (index.ts), not directly.
-			 */
-			'kolibri/require-barrel-import': [
-				'error',
-				{
-					directories: ['schema/props'],
-				},
-			],
-
-			/**
 			 * Import types with `import type` instead of `import`.
 			 */
 			'@typescript-eslint/consistent-type-imports': 'warn',
@@ -132,6 +122,25 @@ export default [
 			eqeqeq: 'error',
 			'no-console': 'error',
 			'no-mixed-spaces-and-tabs': 'off',
+		},
+	},
+
+	// Barrel import rule – scoped to skeleton blueprint only
+	{
+		files: ['src/components/_skeleton/**/*.ts', 'src/components/_skeleton/**/*.tsx'],
+		plugins: {
+			kolibri: kolibriPlugin,
+		},
+		rules: {
+			/**
+			 * Props must be imported via barrel files (index.ts), not directly.
+			 */
+			'kolibri/require-barrel-import': [
+				'error',
+				{
+					directories: ['schema/props'],
+				},
+			],
 		},
 	},
 
