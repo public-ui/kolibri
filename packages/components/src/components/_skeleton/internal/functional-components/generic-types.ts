@@ -3,6 +3,21 @@ import type { JSXBase } from '@stencil/core/internal';
 
 type Callback<T> = (value?: T) => void;
 
+/**
+ * Extracts the internal (normalized) property types by filtering out __input_* phantom keys.
+ */
+export type InternalOf<P> = {
+	[K in keyof P as K extends `__input_${string}` ? never : K]: P[K];
+};
+
+/**
+ * Extracts the external (input) property types.
+ * For each real key K, uses the __input_K type if present, otherwise falls back to the internal type.
+ */
+type ExternalOf<P> = {
+	[K in keyof P as K extends `__input_${string}` ? never : K]: `__input_${K & string}` extends keyof P ? NonNullable<P[`__input_${K & string}`]> : P[K];
+};
+
 type PropsDefinition = {
 	Optional?: Record<string, unknown>;
 	Required?: Record<string, unknown>;
@@ -21,7 +36,17 @@ type ExtractOptionalProps<T extends ComponentApi> = ExtractDefinitionEntry<Extra
 
 type ExtractAllProps<T extends ComponentApi> = ExtractRequiredProps<T> & ExtractOptionalProps<T>;
 
-export type ResolvedProps<T extends ComponentApi> = ExtractRequiredProps<T> & Partial<ExtractOptionalProps<T>>;
+/**
+ * Resolved internal prop types (normalized).
+ * Required props are mandatory, optional props are Partial.
+ */
+export type ResolvedProps<T extends ComponentApi> = InternalOf<ExtractRequiredProps<T>> & Partial<InternalOf<ExtractOptionalProps<T>>>;
+
+/**
+ * Resolved external/input prop types (before normalization).
+ * Used for componentWillLoad and watchers.
+ */
+export type ResolvedInputProps<T extends ComponentApi> = ExternalOf<ExtractRequiredProps<T>> & Partial<ExternalOf<ExtractOptionalProps<T>>>;
 
 export interface ComponentApi {
 	Props?: PropsDefinition;
@@ -35,16 +60,15 @@ export interface ComponentApi {
 
 type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
 
-type ExtractStates<T extends ComponentApi> = Extract<T, 'States'>;
+type ExtractStates<T extends ComponentApi> = InternalOf<Extract<T, 'States'>>;
 type ExtractEmitters<T extends ComponentApi> = Extract<T, 'Emitters'>;
 type ExtractMethods<T extends ComponentApi> = Extract<T, 'Methods'>;
 type ExtractListeners<T extends ComponentApi> = Extract<T, 'Listeners'>;
 type ExtractCallbacks<T extends ComponentApi> = Extract<T, 'Callbacks'>;
 type ExtractRefs<T extends ComponentApi> = Extract<T, 'Refs'>;
 
-type ExtractProps<T extends ComponentApi> = ExtractAllProps<T>;
-type ExtractRequired<T extends ComponentApi> = ExtractRequiredProps<T>;
-type ExtractOptional<T extends ComponentApi> = ExtractOptionalProps<T>;
+type ExtractInternalProps<T extends ComponentApi> = InternalOf<ExtractAllProps<T>>;
+type ExtractExternalProps<T extends ComponentApi> = ExternalOf<ExtractAllProps<T>>;
 
 type ComponentCallbacks<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
@@ -66,7 +90,8 @@ type ComponentPropsOptional<Props> = {
 	[K in keyof Props as `_${Lowercase<string & K>}`]?: Props[K];
 };
 
-type ComponentProps<T extends ComponentApi> = ComponentPropsRequired<ExtractRequired<T>> & ComponentPropsOptional<ExtractOptional<T>>;
+type ComponentProps<T extends ComponentApi> = ComponentPropsRequired<ExternalOf<ExtractRequiredProps<T>>> &
+	ComponentPropsOptional<ExternalOf<ExtractOptionalProps<T>>>;
 
 type ComponentRefs<Refs> = {
 	[K in keyof Refs as `ref${Capitalize<string & K>}`]: (element?: Refs[K]) => void;
@@ -92,12 +117,12 @@ export type WebComponentInterface<T extends ComponentApi> = {
 	componentWillLoad(): void;
 } & ComponentProps<T> &
 	NotNullableFields<ExtractStates<T>> &
-	ComponentWatchers<ExtractProps<T>> &
+	ComponentWatchers<ExtractExternalProps<T>> &
 	WebComponentEmitters<ExtractEmitters<T>> &
 	ComponentMethods<ExtractMethods<T>> &
 	ComponentListeners<ExtractListeners<T>>;
 
-export type FunctionalComponentProps<T extends ComponentApi> = NotNullableFields<ExtractProps<T>> &
+export type FunctionalComponentProps<T extends ComponentApi> = NotNullableFields<ExtractInternalProps<T>> &
 	NotNullableFields<ExtractStates<T>> &
 	ComponentCallbacks<ExtractCallbacks<T>> &
 	ComponentRefs<ExtractRefs<T>> &
@@ -121,9 +146,9 @@ type ControllerRefSetters<Refs> = {
 };
 
 export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
-	componentWillLoad(props: ResolvedProps<T>): void;
-	getProps(): NotNullableFields<ExtractProps<T>>;
-} & ComponentWatchers<ExtractProps<T>> &
+	componentWillLoad(props: ResolvedInputProps<T>): void;
+	getProps(): NotNullableFields<ExtractInternalProps<T>>;
+} & ComponentWatchers<ExtractExternalProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &
 	ControllerListeners<ExtractListeners<T>> &
 	ControllerMethods<ExtractMethods<T>> &

@@ -123,7 +123,11 @@ This keeps the controller code lean while keeping the renderer integration simpl
 ### Schema Helper Layer
 
 - Co-locates type definitions, normalisation and validation rules for every prop.
-- Provides `normalize*` and `validate*` helpers that are consumed by controllers so data contracts stay consistent across the stack.
+- Provides `Prop<TExternal, TInternal, K>` to encode both external and internal types in a single generic.
+- Provides `SimpleProp<T, K>` shorthand when both types are identical.
+- `PropDefinition<TExternal, TInternal>` defines `normalize` (TExternal → TInternal) and `validate` (TInternal → boolean).
+- `withValidPropValue` combines normalization and validation into a single call, ensuring callbacks only receive type-safe internal values.
+- `InternalOf<P>` and `ExternalOf<P>` utility types extract the correct type for each architectural layer automatically.
 
 The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](./internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
 
@@ -151,24 +155,40 @@ This strategy yields strong decoupling so that each layer can evolve independent
 
 ### Watcher Example
 
-Incoming props are normalised in dedicated watchers before reaching the controller:
+Incoming props are normalised in dedicated watchers before reaching the controller.
+Props can define different external and internal types – the external type supports
+shorthand values (e.g. `_count="42"`), while the controller always works with the
+normalized internal type:
+
+```ts
+// Prop definition (internal/schema/props/count.ts)
+type CountProp = Prop<number | string, number, 'count'>;
+//                     └─ external         └─ internal
+const countProp = createPropDefinition<number | string, number>(
+	normalizeInteger, // (number | string | undefined) → number
+	(v) => v >= 0, // validates the internal type
+);
+```
 
 ```ts
 // Web Component (web-components/skeleton/component.tsx)
+@Prop()
+public _count?: number | string; // External type
+
 @Watch('_count')
-public watchCount(value?: CountPropType): void {
+public watchCount(value?: number | string): void {
   this.ctrl.watchCount(value);
 }
 ```
 
 ```ts
 // Controller (internal/functional-components/skeleton/controller.ts)
-public watchCount(value?: CountPropType): void {
-  const count = countProp.normalize(value);
-  if (countProp.validate(count)) {
-    this.setProp('count', count);
-    this.setState('count', count);
-  }
+public watchCount(value?: number | string): void {
+  withValidPropValue(countProp, value, (v) => {
+    // v is number (internal type), guaranteed by normalize + validate
+    this.setProp('count', v);
+    this.setState('count', v);
+  });
 }
 ```
 
@@ -176,23 +196,24 @@ See the [controller](./internal/functional-components/skeleton/controller.ts) fo
 
 ### Controller Initialization
 
-Web components must initialise controllers by passing the current props to ensure proper state setup:
+Web components must initialise controllers by passing the current props to ensure proper state setup.
+The `componentWillLoad` method receives `ResolvedInputProps`, which uses the **external** types:
 
 ```ts
 // Web Component
 public componentWillLoad(): void {
   this.ctrl.componentWillLoad({
-    count: this._count,
-    name: this._name,
+    count: this._count, // number | string (external type)
+    name: this._name,   // string
   });
 }
 ```
 
 ```ts
 // Controller
-public componentWillLoad(props: ResolvedProps<SkeletonApi>): void {
+public componentWillLoad(props: ResolvedInputProps<SkeletonApi>): void {
   const { count, name } = props;
-  this.watchCount(count);
+  this.watchCount(count);  // normalizes to internal type
   this.watchName(name);
   this.watchLabel(this.component.label);
 }
@@ -256,15 +277,16 @@ sequenceDiagram
     participant FC as FunctionalComponent
     participant S as Schema
     U->>WC: set attribute _count="5"
-    WC->>CTRL: watchCount(5)
-    CTRL->>S: normalizeCount(5)
-    S-->>CTRL: 5
-    CTRL->>S: validateCount(5)
+    WC->>CTRL: watchCount(\"5\")
+    CTRL->>S: normalize(\"5\")
+    S-->>CTRL: 5 (number)
+    CTRL->>S: validate(5)
     S-->>CTRL: true
-    CTRL->>WC: update count
+    CTRL->>WC: update count = 5
     WC->>FC: render(renderProps)
     FC-->>WC: markup
     WC-->>U: updated DOM
+    Note over S,CTRL: normalize converts TExternal to TInternal
     Note over FC,WC: renderProps contain normalized/validated data or internal state
 ```
 
@@ -338,12 +360,12 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 12. Glossary
 
-| Term                     | Definition                                                                                                    |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                 |
-| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                      |
-| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                         |
-| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized. |
-| **Schema Helper**        | Utility providing `normalize` and `validate` functions for props.                                             |
-| **Stencil**              | Compiler for building framework-agnostic web components.                                                      |
-| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                      |
+| Term                     | Definition                                                                                                      |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                   |
+| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                        |
+| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                           |
+| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.   |
+| **Schema Helper**        | Utility providing `normalize` (TExternal → TInternal) and `validate` (TInternal → boolean) functions for props. |
+| **Stencil**              | Compiler for building framework-agnostic web components.                                                        |
+| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                        |

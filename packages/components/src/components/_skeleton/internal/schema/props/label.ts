@@ -1,5 +1,5 @@
-import { createPropDefinition, type Prop } from './helpers/factory';
+import { createPropDefinition, type SimpleProp } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
-export type LabelProp = Prop<string, 'label'>;
-export const labelProp = createPropDefinition<LabelProp>(normalizeString, (v) => v.length >= 2 && v.length <= 80);
+export type LabelProp = SimpleProp<string, 'label'>;
+export const labelProp = createPropDefinition<string>(normalizeString, (v) => v.length >= 2 && v.length <= 80);

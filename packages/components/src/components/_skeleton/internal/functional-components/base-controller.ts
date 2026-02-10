@@ -1,8 +1,10 @@
-import type { ComponentApi, NotNullableFields, ResolvedProps } from './generic-types';
+import type { ComponentApi, InternalOf, NotNullableFields, ResolvedProps } from './generic-types';
+
+type InternalStates<Api extends ComponentApi> = InternalOf<NonNullable<Api['States']>>;
 
 export abstract class BaseController<Api extends ComponentApi> {
 	public constructor(
-		protected readonly component: NonNullable<Api['States']>,
+		protected readonly component: InternalStates<Api>,
 		private readonly props: NotNullableFields<ResolvedProps<Api>>,
 	) {}
 
@@ -14,7 +16,7 @@ export abstract class BaseController<Api extends ComponentApi> {
 		return this.props;
 	}
 
-	protected setState<K extends keyof NonNullable<Api['States']>>(key: K, value: NonNullable<Api['States']>[K]): void {
-		this.component[key as string] = value;
+	protected setState<K extends keyof InternalStates<Api>>(key: K, value: InternalStates<Api>[K]): void {
+		(this.component as Record<string, unknown>)[key as string] = value;
 	}
 }

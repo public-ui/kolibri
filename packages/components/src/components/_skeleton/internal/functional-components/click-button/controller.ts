@@ -1,6 +1,6 @@
 import { labelProp, withValidPropValue } from '../../schema/props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedProps } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ClickButtonApi } from './api';
 
 export class ClickButtonController extends BaseController<ClickButtonApi> implements ControllerInterface<ClickButtonApi> {
@@ -12,7 +12,7 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 		});
 	}
 
-	public componentWillLoad(props: ResolvedProps<ClickButtonApi>): void {
+	public componentWillLoad(props: ResolvedInputProps<ClickButtonApi>): void {
 		const { label } = props;
 		this.watchLabel(label);
 	}

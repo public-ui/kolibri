@@ -33,10 +33,10 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 * Sets the label of the skeleton component.
 	 */
 	@Prop()
-	public _count?: number;
+	public _count?: number | string;
 
 	@Watch('_count')
-	public watchCount(value?: number): void {
+	public watchCount(value?: number | string): void {
 		this.ctrl.watchCount(value);
 	}
 

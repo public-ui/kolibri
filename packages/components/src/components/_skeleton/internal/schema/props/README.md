@@ -11,23 +11,68 @@ Web components receive dynamic values from HTML attributes, but internal renderi
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **No magic defaults**: Components provide their own meaningful defaults, not the schema
 
+## Dual-Type Props
+
+Each prop can define an **external** (Web Component API) and an **internal** (Controller/FC) type.
+The external type may be more permissive to support shorthand values from HTML attributes,
+while the internal type is always the normalized form.
+
+### `Prop<TExternal, TInternal, K>`
+
+Carries both types via a phantom key pattern:
+
+```typescript
+// Different external and internal types:
+type CountProp = Prop<number | string, number, 'count'>;
+//                     └─ Web Component   └─ Controller/FC  └─ Key
+
+// Same external and internal type (shorthand):
+type NameProp = SimpleProp<string, 'name'>;
+//                          └─ Both types    └─ Key
+```
+
+### `PropDefinition<TExternal, TInternal>`
+
+The normalization function receives the external type and returns the internal type:
+
+```typescript
+const countProp = createPropDefinition<number | string, number>(
+	normalizeInteger, // (value: number | string | undefined) → number
+	(v) => v >= 0, // (value: number) → boolean
+);
+```
+
 ## Available Properties
 
-- **count** - Numeric values
-- **label** - Text content
-- **name** - Identifiers
-- **show** - Boolean states
+- **count** – Numeric values (accepts `number | string` externally, normalized to `number`)
+- **label** – Text content
+- **name** – Identifiers
+- **show** – Boolean states
 
 ## Usage Pattern
 
-The two-phase approach separates concerns: normalization handles web platform quirks, validation enforces business rules.
+The two-phase approach separates concerns: normalization converts from external to internal type, validation enforces business rules on the internal type.
 
 ```typescript
-const normalized = normalizeValue(input);
-if (validateValue(normalized)) {
-	// Type-safe usage guaranteed
-}
+withValidPropValue(countProp, '42', (normalized) => {
+	// normalized is number (42), type-safe
+	this.setProp('count', normalized);
+	this.setState('count', normalized);
+});
 ```
+
+## Type Extraction
+
+The generic-types module provides `InternalOf<P>` and `ExternalOf<P>` to automatically
+extract the correct type for each layer:
+
+| Layer                 | Type Extractor | Example (`CountProp`) |
+| --------------------- | -------------- | --------------------- |
+| Web Component `@Prop` | `ExternalOf`   | `number \| string`    |
+| `@Watch` handler      | `ExternalOf`   | `number \| string`    |
+| Controller `setProp`  | `InternalOf`   | `number`              |
+| Controller `getProps` | `InternalOf`   | `number`              |
+| Functional Component  | `InternalOf`   | `number`              |
 
 ## Initialization Contract
 
@@ -35,7 +80,7 @@ Controllers expect the current values of render props during initialization to e
 
 ```typescript
 this.controller.componentWillLoad({
-	count: this._count, // Current render prop values
-	name: this._name, // from component initialization
+	count: this._count, // External type (number | string)
+	name: this._name, // External type (string)
 });
 ```

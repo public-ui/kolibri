@@ -1,12 +1,12 @@
 import type { CountProp, LabelProp, NameProp, ShowProp } from '../../schema/props';
-import type { ComponentApi } from '../generic-types';
+import type { ComponentApi, InternalOf } from '../generic-types';
 
 export interface SkeletonApi extends ComponentApi {
 	Props: {
 		Optional: CountProp;
 		Required: NameProp;
 	};
-	States: CountProp & LabelProp & ShowProp;
+	States: InternalOf<CountProp> & LabelProp & ShowProp;
 	Emitters: {
 		loaded: number;
 	};

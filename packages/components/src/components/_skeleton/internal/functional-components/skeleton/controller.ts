@@ -2,7 +2,7 @@ import { Log } from '../../../../../schema';
 import { countProp, labelProp, nameProp, withValidPropValue } from '../../schema/props';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface, ResolvedProps } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { SkeletonApi } from './api';
 
 export class SkeletonController extends BaseController<SkeletonApi> implements ControllerInterface<SkeletonApi> {
@@ -22,7 +22,7 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 		this.startLoadedEventInterval();
 	}
 
-	public componentWillLoad(props: ResolvedProps<SkeletonApi>): void {
+	public componentWillLoad(props: ResolvedInputProps<SkeletonApi>): void {
 		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);
@@ -32,7 +32,7 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 		});
 	}
 
-	public watchCount(value?: number): void {
+	public watchCount(value?: number | string): void {
 		withValidPropValue(countProp, value, (v) => {
 			this.setProp('count', v);
 			this.setState('count', v);
