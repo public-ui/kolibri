@@ -32,7 +32,7 @@
 
 	@each $class, $icon in $codIconToMaterial {
 		&.#{$class} {
-			font-family: 'material-symbols-subset';
+			font-family: material-symbols-subset;
 
 			&::before {
 				content: $icon;
