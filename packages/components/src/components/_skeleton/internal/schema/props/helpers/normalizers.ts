@@ -9,6 +9,7 @@ export function normalizeString(value?: unknown): string | never {
 	}
 	throw new Error(`Invalid string: ${value}`);
 }
+
 export function normalizeInteger(value?: unknown): number | never {
 	if (typeof value === 'number') {
 		return Number.isInteger(value) ? value : Math.round(value);
@@ -21,6 +22,7 @@ export function normalizeInteger(value?: unknown): number | never {
 	}
 	throw new Error(`Invalid integer: ${value as string}`);
 }
+
 export function normalizeNumber(value?: unknown): number | never {
 	if (typeof value === 'number') {
 		return value;
@@ -33,6 +35,7 @@ export function normalizeNumber(value?: unknown): number | never {
 	}
 	throw new Error(`Invalid number: ${value as string}`);
 }
+
 export function normalizeBoolean(value?: unknown): boolean | never {
 	if (typeof value === 'boolean') {
 		return value;
@@ -42,14 +45,15 @@ export function normalizeBoolean(value?: unknown): boolean | never {
 	}
 	throw new Error(`Invalid boolean: ${value as string}`);
 }
+
 export function normalizeObject(value?: unknown): object | never {
 	if (isObject(value)) {
-		return value;
+		return value as object;
 	}
 	if (typeof value === 'string') {
 		const parsed = JSON.parse(value) as unknown;
 		if (isObject(parsed)) {
-			return parsed;
+			return parsed as object;
 		}
 	}
 	throw new Error(`Invalid object: ${value as string}`);
@@ -57,12 +61,12 @@ export function normalizeObject(value?: unknown): object | never {
 
 export function normalizeArray(value?: unknown): unknown[] | never {
 	if (isObject(value) && Array.isArray(value)) {
-		return value;
+		return value as unknown[];
 	}
 	if (typeof value === 'string') {
 		const parsed = JSON.parse(value) as unknown;
 		if (isObject(parsed) && Array.isArray(parsed)) {
-			return parsed;
+			return parsed as unknown[];
 		}
 	}
 	throw new Error(`Invalid array: ${value as string}`);

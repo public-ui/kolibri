@@ -4,7 +4,6 @@ import type { ClickButtonApi } from '../../internal/functional-components/click-
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LabelPropType } from '../../internal/schema/props/label';
 
 @Component({
 	tag: 'kol-click-button',
@@ -17,10 +16,10 @@ export class KolClickButton implements WebComponentInterface<ClickButtonApi> {
 	 * Sets the label of the click button component.
 	 */
 	@Prop()
-	public _label!: LabelPropType;
+	public _label!: string;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: string): void {
 		this.ctrl.watchLabel(value);
 	}
 

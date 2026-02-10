@@ -27,9 +27,9 @@ export function withValidPropValue<P extends Prop<unknown, string>>(
 	callback: (normalized: PropValue<P>) => void,
 ): void {
 	try {
-		const count = propDef.normalize(value);
-		if (count !== null && propDef.validate(count)) {
-			callback(count);
+		const normalized = propDef.normalize(value);
+		if (normalized !== null && propDef.validate(normalized)) {
+			callback(normalized);
 		}
 	} catch (e) {
 		Log.debug(e);

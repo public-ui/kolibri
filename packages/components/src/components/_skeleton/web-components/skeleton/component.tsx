@@ -5,10 +5,6 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
-import type { CountPropType } from '../../internal/schema/props/count';
-import type { LabelPropType } from '../../internal/schema/props/label';
-import type { NamePropType } from '../../internal/schema/props/name';
-import type { ShowPropType } from '../../internal/schema/props/show';
 
 @Component({
 	tag: 'kol-skeleton',
@@ -37,10 +33,10 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 * Sets the label of the skeleton component.
 	 */
 	@Prop()
-	public _count?: CountPropType;
+	public _count?: number;
 
 	@Watch('_count')
-	public watchCount(value?: CountPropType): void {
+	public watchCount(value?: number): void {
 		this.ctrl.watchCount(value);
 	}
 
@@ -48,10 +44,10 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 * Sets the name of the skeleton component.
 	 */
 	@Prop()
-	public _name!: NamePropType;
+	public _name!: string;
 
 	@Watch('_name')
-	public watchName(value?: NamePropType): void {
+	public watchName(value?: string): void {
 		this.ctrl.watchName(value);
 	}
 
@@ -59,21 +55,21 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 * Sets the label of the skeleton component.
 	 */
 	@Prop()
-	public _label: LabelPropType = 'Label';
+	public _label: string = 'Label';
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: string): void {
 		this.ctrl.watchLabel(value);
 	}
 
 	@State()
-	public label: LabelPropType = 'Label';
+	public label: string = 'Label';
 
 	@State()
-	public show: ShowPropType = true;
+	public show: boolean = true;
 
 	@State()
-	public count: CountPropType = 0;
+	public count: number = 0;
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
