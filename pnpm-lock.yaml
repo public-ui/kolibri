@@ -485,9 +485,6 @@ importers:
       knip:
         specifier: 5.83.1
         version: 5.83.1(@types/node@24.10.12)(typescript@5.9.3)
-      lighthouse:
-        specifier: 12.8.2
-        version: 12.8.2
       mustache:
         specifier: 4.2.0
         version: 4.2.0
@@ -10224,17 +10221,6 @@ packages:
 
   lie@3.3.0:
     resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
-
-  lighthouse-logger@2.0.2:
-    resolution: {integrity: sha512-vWl2+u5jgOQuZR55Z1WM0XDdrJT6mzMP8zHUct7xTlWhuQs+eV0g+QL0RQdFjT54zVmbhLCP8vIVpy1wGn/gCg==}
-
-  lighthouse-stack-packs@1.12.2:
-    resolution: {integrity: sha512-Ug8feS/A+92TMTCK6yHYLwaFMuelK/hAKRMdldYkMNwv+d9PtWxjXEg6rwKtsUXTADajhdrhXyuNCJ5/sfmPFw==}
-
-  lighthouse@12.8.2:
-    resolution: {integrity: sha512-+5SKYzVaTFj22MgoYDPNrP9tlD2/Ay7j3SxPSFD9FpPyVxGr4UtOQGKyrdZ7wCmcnBaFk0mCkPfARU3CsE0nvA==}
-    engines: {node: '>=18.16'}
-    hasBin: true
 
   lightningcss-darwin-arm64@1.30.1:
     resolution: {integrity: sha512-c8JK7hyE65X1MHMN+Viq9n11RRC7hgin3HhYKhrMyaXflk5GVplZ60IxyoVtzILeKr+xAJwg6zK6sjTBJ0FKYQ==}
@@ -22069,7 +22055,6 @@ snapshots:
       '@types/node': 24.10.12
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
-      lighthouse-logger: 2.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -26388,50 +26373,6 @@ snapshots:
   lie@3.3.0:
     dependencies:
       immediate: 3.0.6
-
-  lighthouse-logger@2.0.2:
-    dependencies:
-      debug: 4.4.1
-      marky: 1.3.0
-    transitivePeerDependencies:
-      - supports-color
-
-  lighthouse-stack-packs@1.12.2: {}
-
-  lighthouse@12.8.2:
-    dependencies:
-      '@paulirish/trace_engine': 0.0.59
-      '@sentry/node': 9.46.0
-      axe-core: 4.10.3
-      chrome-launcher: 1.2.0
-      configstore: 7.0.0
-      csp_evaluator: 1.1.5
-      devtools-protocol: 0.0.1507524
-      enquirer: 2.4.1
-      http-link-header: 1.1.3
-      intl-messageformat: 10.7.16
-      jpeg-js: 0.4.4
-      js-library-detector: 6.7.0
-      lighthouse-logger: 2.0.2
-      lighthouse-stack-packs: 1.12.2
-      lodash-es: 4.17.23
-      lookup-closest-locale: 6.2.0
-      metaviewport-parser: 0.3.0
-      open: 8.4.2
-      parse-cache-control: 1.0.1
-      puppeteer-core: 24.19.0
-      robots-parser: 3.0.1
-      speedline-core: 1.4.3
-      third-party-web: 0.27.0
-      tldts-icann: 7.0.13
-      ws: 7.5.10
-      yargs: 17.7.2
-      yargs-parser: 21.1.1
-    transitivePeerDependencies:
-      - bare-buffer
-      - bufferutil
-      - supports-color
-      - utf-8-validate
 
   lightningcss-darwin-arm64@1.30.1:
     optional: true
