@@ -15,6 +15,15 @@ const config = {
 	],
 	rules: {
 		/**
+		 * Props must be imported via barrel files (index.ts), not directly.
+		 */
+		'kolibri/require-barrel-import': [
+			'error',
+			{
+				directories: ['schema/props'],
+			},
+		],
+		/**
 		 * Import types with `import type` instead of `import`.
 		 */
 		'@typescript-eslint/consistent-type-imports': 'warn',
