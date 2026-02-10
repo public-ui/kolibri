@@ -65,18 +65,30 @@ module.exports = {
 		/**
 		 * Checks whether an import source is a relative path that reaches into
 		 * a barrel-protected directory instead of stopping at it.
+		 *
+		 * Files that reside *inside* the barrel directory are allowed to import
+		 * siblings and sub-modules freely – only external consumers must go
+		 * through the barrel.
 		 */
 		function check(node, importSource) {
 			if (!importSource || !importSource.startsWith('.')) {
 				return; // only check relative imports
 			}
 
-			const currentDir = path.dirname(context.getFilename());
+			const currentFile = context.filename;
+			const currentDir = path.dirname(currentFile);
+			const normalizedCurrentFile = currentFile.replace(/\\/g, '/');
 			const resolved = path.resolve(currentDir, importSource);
 			const normalizedResolved = resolved.replace(/\\/g, '/');
 
 			for (const dir of directories) {
 				const normalizedDir = dir.replace(/\\/g, '/');
+
+				// Check if the current file itself is inside the barrel directory.
+				// If so, internal imports are allowed.
+				if (normalizedCurrentFile.includes(`/${normalizedDir}/`)) {
+					continue;
+				}
 
 				// Find the position of the directory pattern in the resolved path
 				const dirIndex = normalizedResolved.indexOf(`/${normalizedDir}/`);

@@ -1,6 +1,5 @@
 import { Log } from '../../../../../schema';
-import { countProp, labelProp, nameProp } from '../../schema/props';
-import { withValidPropValue } from '../../schema/props/helpers/factory';
+import { countProp, labelProp, nameProp, withValidPropValue } from '../../schema/props';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, ResolvedProps } from '../generic-types';
