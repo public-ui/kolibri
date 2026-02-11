@@ -1,6 +1,6 @@
 # CVE Overview
 
-Date: 2026-02-09
+Date: 2026-02-11
 
 > For more security information, see [SECURITY.md](./SECURITY.md)
 
@@ -20,7 +20,7 @@ Date: 2026-02-09
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   1 |   1 |   1 |   1 |
-| high     |   6 |   6 |   9 |  10 |
+| high     |   4 |   4 |   7 |  10 |
 | moderate |   1 |   1 |   9 |   1 |
 | low      |   1 |   1 |   4 |   0 |
 | info     |   0 |   0 |   0 |   0 |
@@ -36,14 +36,15 @@ Date: 2026-02-09
 | @angular/compiler       | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes              |
 | @angular/core           | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes              |
 | @isaacs/brace-expansion | high     | CVE-2026-25547      | v2, v1            | @isaacs/brace-expansion has Uncontrolled Resource Consumption                    |
+| axios                   | high     | CVE-2026-25639      | v4, v3, v2        | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig        |
 | braces                  | high     | CVE-2024-4068       | v4, v3, v2, v1    | Uncontrolled resource consumption in braces                                      |
 | fast-xml-parser         | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                          |
 | lodash.pick             | high     | CVE-2020-8203       | v2, v1            | Prototype Pollution in lodash                                                    |
 | qs                      | high     | CVE-2025-15284      | v4, v3, v2        | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion  |
 | semver                  | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                        |
-| tar                     | high     | CVE-2026-23745      | v4, v3, v2, v1    | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins |
-| tar                     | high     | CVE-2026-23950      | v4, v3, v2, v1    | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on  |
-| tar                     | high     | CVE-2026-24842      | v4, v3, v2, v1    | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave |
+| tar                     | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins |
+| tar                     | high     | CVE-2026-23950      | v1                | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on  |
+| tar                     | high     | CVE-2026-24842      | v1                | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave |
 | ejs                     | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                           |
 | esbuild                 | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r |
 | js-yaml                 | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                    |
