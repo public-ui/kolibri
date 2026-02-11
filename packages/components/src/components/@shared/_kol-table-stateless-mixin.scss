@@ -87,9 +87,7 @@
 					align-items: end;
 				}
 			}
-		}
 
-		&__cell {
 			&--selection {
 				min-width: var(--a11y-min-size);
 				min-height: var(--a11y-min-size);
@@ -102,6 +100,12 @@
 
 				@include kol-button-styles('kol-button');
 				@include kol-link-styles('kol-link');
+			}
+
+			&--sticky {
+				position: sticky;
+				left: 0;
+				background-color: white;
 			}
 		}
 

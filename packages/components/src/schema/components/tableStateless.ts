@@ -15,6 +15,7 @@ type RequiredStates = {
 
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];
+	fixedCols: [number, number];
 	selection: KoliBriTableSelection;
 } & PropHasSettingsMenu &
 	PropTableCallbacks;

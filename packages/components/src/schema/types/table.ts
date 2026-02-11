@@ -8,8 +8,10 @@ export type KoliBriTableSelectionKey = string | number;
 export type KoliBriTableSelectionKeys = KoliBriTableSelectionKey[];
 
 export type KoliBriTableCell = {
+	colIndex?: number;
 	colSpan?: number;
 	data?: KoliBriTableDataType;
+	fixed?: boolean;
 	label: string;
 	render?: KoliBriTableRender;
 	rowSpan?: number;
