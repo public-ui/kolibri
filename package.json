@@ -3,7 +3,7 @@
 		"@commitlint/cli": "20.4.1",
 		"@commitlint/config-conventional": "20.4.1",
 		"husky": "9.1.7",
-		"lerna": "9.0.3",
+		"lerna": "9.0.4",
 		"license-report": "6.8.1",
 		"lint-staged": "16.2.7",
 		"npm-check-updates": "19.3.2",
