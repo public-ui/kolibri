@@ -1,7 +1,20 @@
 import type { EventEmitter } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 
+// ============================================================================
+// Utility Types
+// ============================================================================
+
 type Callback<T> = (value?: T) => void;
+
+/** Makes all fields required and non-nullable. */
+export type StrictFields<T> = {
+	[K in keyof T]-?: NonNullable<T[K]>;
+};
+
+// ============================================================================
+// Phantom Key Mapping (__input_* convention)
+// ============================================================================
 
 /**
  * Extracts the internal (normalized) property types by filtering out __input_* phantom keys.
@@ -18,79 +31,86 @@ type ExternalOf<P> = {
 	[K in keyof P as K extends `__input_${string}` ? never : K]: `__input_${K & string}` extends keyof P ? NonNullable<P[`__input_${K & string}`]> : P[K];
 };
 
+// ============================================================================
+// Component API Definition
+// ============================================================================
+
 type PropsDefinition = {
 	Optional?: Record<string, unknown>;
 	Required?: Record<string, unknown>;
 };
 
-type PropsOrDefault<T extends ComponentApi> = T['Props'] extends PropsDefinition ? T['Props'] : PropsDefinition;
+export interface ComponentApi {
+	Callbacks?: Record<string, () => unknown>;
+	Emitters?: Record<string, unknown>;
+	Listeners?: Record<string, unknown>;
+	Methods?: Record<string, (...args: never[]) => unknown>;
+	Props?: PropsDefinition;
+	Refs?: Record<string, HTMLElement>;
+	States?: Record<string, unknown>;
+}
 
-type ExtractDefinitionEntry<Definition extends PropsDefinition, K extends keyof PropsDefinition> =
-	Definition[K] extends Record<string, unknown> ? Definition[K] : Record<never, never>;
+// ============================================================================
+// Props Extraction
+// ============================================================================
 
-type ExtractPropsDefinition<T extends ComponentApi> = PropsOrDefault<T>;
+/** Safely extracts a sub-record from a ComponentApi's Props definition, defaulting to an empty record. */
+type PropsEntry<T extends ComponentApi, K extends keyof PropsDefinition> = T['Props'] extends PropsDefinition
+	? T['Props'][K] extends Record<string, unknown>
+		? T['Props'][K]
+		: Record<never, never>
+	: Record<never, never>;
 
-type ExtractRequiredProps<T extends ComponentApi> = ExtractDefinitionEntry<ExtractPropsDefinition<T>, 'Required'>;
-
-type ExtractOptionalProps<T extends ComponentApi> = ExtractDefinitionEntry<ExtractPropsDefinition<T>, 'Optional'>;
-
-type ExtractAllProps<T extends ComponentApi> = ExtractRequiredProps<T> & ExtractOptionalProps<T>;
+type RequiredProps<T extends ComponentApi> = PropsEntry<T, 'Required'>;
+type OptionalProps<T extends ComponentApi> = PropsEntry<T, 'Optional'>;
+type AllProps<T extends ComponentApi> = RequiredProps<T> & OptionalProps<T>;
 
 /**
  * Resolved internal prop types (normalized).
  * Required props are mandatory, optional props are Partial.
  */
-export type ResolvedProps<T extends ComponentApi> = InternalOf<ExtractRequiredProps<T>> & Partial<InternalOf<ExtractOptionalProps<T>>>;
+export type ResolvedProps<T extends ComponentApi> = InternalOf<RequiredProps<T>> & Partial<InternalOf<OptionalProps<T>>>;
 
 /**
  * Resolved external/input prop types (before normalization).
  * Used for componentWillLoad and watchers.
  */
-export type ResolvedInputProps<T extends ComponentApi> = ExternalOf<ExtractRequiredProps<T>> & Partial<ExternalOf<ExtractOptionalProps<T>>>;
+export type ResolvedInputProps<T extends ComponentApi> = ExternalOf<RequiredProps<T>> & Partial<ExternalOf<OptionalProps<T>>>;
+
+// ============================================================================
+// API Field Extraction
+// ============================================================================
+
+/** Safely extracts a top-level field from a ComponentApi, defaulting to an empty record. */
+type ApiField<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
+
+type ExtractCallbacks<T extends ComponentApi> = ApiField<T, 'Callbacks'>;
+type ExtractEmitters<T extends ComponentApi> = ApiField<T, 'Emitters'>;
+type ExtractListeners<T extends ComponentApi> = ApiField<T, 'Listeners'>;
+type ExtractMethods<T extends ComponentApi> = ApiField<T, 'Methods'>;
+type ExtractRefs<T extends ComponentApi> = ApiField<T, 'Refs'>;
+type ExtractStates<T extends ComponentApi> = InternalOf<ApiField<T, 'States'>>;
+
+type InternalProps<T extends ComponentApi> = InternalOf<AllProps<T>>;
+type ExternalProps<T extends ComponentApi> = ExternalOf<AllProps<T>>;
+
+// ============================================================================
+// Method Promise Wrapping
+// ============================================================================
 
 /**
  * Wraps the return type of each method in a Promise.
- * This allows API definitions to use simple return types (e.g., `() => void`)
- * while the resolved type becomes `() => Promise<void>`.
- * Uses `Awaited<R>` to ensure idempotency when a return type is already a Promise.
+ * API definitions use simple return types (e.g., `() => void`)
+ * and the resolved type becomes `() => Promise<void>`.
+ * Uses `Awaited<R>` for idempotency — `() => Promise<void>` stays `Promise<void>`, not `Promise<Promise<void>>`.
  */
 type PromiseMethod<Methods> = {
 	[K in keyof Methods]: Methods[K] extends (...args: infer A) => infer R ? (...args: A) => Promise<Awaited<R>> : Methods[K];
 };
 
-export interface ComponentApi {
-	Props?: PropsDefinition;
-	States?: Record<string, unknown>;
-	Emitters?: Record<string, unknown>;
-	Methods?: Record<string, (...args: never[]) => unknown>;
-	Listeners?: Record<string, unknown>;
-	Callbacks?: Record<string, () => unknown>;
-	Refs?: Record<string, HTMLElement>;
-}
-
-type Extract<T extends ComponentApi, K extends keyof ComponentApi> = T[K] extends Record<string, unknown> ? T[K] : Record<never, never>;
-
-type ExtractStates<T extends ComponentApi> = InternalOf<Extract<T, 'States'>>;
-type ExtractEmitters<T extends ComponentApi> = Extract<T, 'Emitters'>;
-type ExtractMethods<T extends ComponentApi> = Extract<T, 'Methods'>;
-type ExtractListeners<T extends ComponentApi> = Extract<T, 'Listeners'>;
-type ExtractCallbacks<T extends ComponentApi> = Extract<T, 'Callbacks'>;
-type ExtractRefs<T extends ComponentApi> = Extract<T, 'Refs'>;
-
-type ExtractInternalProps<T extends ComponentApi> = InternalOf<ExtractAllProps<T>>;
-type ExtractExternalProps<T extends ComponentApi> = ExternalOf<ExtractAllProps<T>>;
-
-type ComponentCallbacks<Callbacks> = {
-	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
-};
-
-type WebComponentEmitters<Emitters> = {
-	[K in keyof Emitters as `${Lowercase<string & K>}`]: EventEmitter<Emitters[K]>;
-};
-
-type FunctionalComponentEmitters<Emitters> = {
-	[K in keyof Emitters as `on${Capitalize<string & K>}`]: EventEmitter<Emitters[K]>;
-};
+// ============================================================================
+// Web Component Types
+// ============================================================================
 
 type ComponentPropsRequired<Props> = {
 	[K in keyof Props as `_${Lowercase<string & K>}`]: Props[K];
@@ -100,42 +120,55 @@ type ComponentPropsOptional<Props> = {
 	[K in keyof Props as `_${Lowercase<string & K>}`]?: Props[K];
 };
 
-type ComponentProps<T extends ComponentApi> = ComponentPropsRequired<ExternalOf<ExtractRequiredProps<T>>> &
-	ComponentPropsOptional<ExternalOf<ExtractOptionalProps<T>>>;
+type ComponentProps<T extends ComponentApi> = ComponentPropsRequired<ExternalOf<RequiredProps<T>>> & ComponentPropsOptional<ExternalOf<OptionalProps<T>>>;
 
-type ComponentRefs<Refs> = {
-	[K in keyof Refs as `ref${Capitalize<string & K>}`]: (element?: Refs[K]) => void;
+type ComponentWatchers<Props> = {
+	[K in keyof Props as `watch${Capitalize<string & K>}`]: Callback<Props[K]>;
+};
+
+type ComponentEmitters<Emitters> = {
+	[K in keyof Emitters as `${Lowercase<string & K>}`]: EventEmitter<Emitters[K]>;
 };
 
 type ComponentListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
-type ComponentMethods<Methods> = PromiseMethod<Methods>;
-
-type ComponentWatchers<Props> = {
-	[K in keyof Props as `watch${Capitalize<string & K>}`]: Callback<Props[K]>;
-};
-
-export type NotNullableFields<Props> = {
-	[K in keyof Props]-?: NonNullable<Props[K]>;
-};
-
 export type WebComponentInterface<T extends ComponentApi> = {
 	componentWillLoad(): void;
 } & ComponentProps<T> &
-	NotNullableFields<ExtractStates<T>> &
-	ComponentWatchers<ExtractExternalProps<T>> &
-	WebComponentEmitters<ExtractEmitters<T>> &
-	ComponentMethods<ExtractMethods<T>> &
+	StrictFields<ExtractStates<T>> &
+	ComponentWatchers<ExternalProps<T>> &
+	ComponentEmitters<ExtractEmitters<T>> &
+	PromiseMethod<ExtractMethods<T>> &
 	ComponentListeners<ExtractListeners<T>>;
 
-export type FunctionalComponentProps<T extends ComponentApi> = NotNullableFields<ExtractInternalProps<T>> &
-	NotNullableFields<ExtractStates<T>> &
+// ============================================================================
+// Functional Component Types
+// ============================================================================
+
+type ComponentCallbacks<Callbacks> = {
+	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
+};
+
+type ComponentRefs<Refs> = {
+	[K in keyof Refs as `ref${Capitalize<string & K>}`]: (element?: Refs[K]) => void;
+};
+
+type FunctionalComponentEmitters<Emitters> = {
+	[K in keyof Emitters as `on${Capitalize<string & K>}`]: EventEmitter<Emitters[K]>;
+};
+
+export type FunctionalComponentProps<T extends ComponentApi> = StrictFields<InternalProps<T>> &
+	StrictFields<ExtractStates<T>> &
 	ComponentCallbacks<ExtractCallbacks<T>> &
 	ComponentRefs<ExtractRefs<T>> &
 	FunctionalComponentEmitters<ExtractEmitters<T>> &
 	Partial<JSXBase.HTMLAttributes<HTMLElement>>;
+
+// ============================================================================
+// Controller Types
+// ============================================================================
 
 type ControllerCallbackHandlers<Callbacks> = {
 	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: (element?: Callbacks[K]) => void;
@@ -145,19 +178,15 @@ type ControllerListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
-type ControllerMethods<Methods> = {
-	[K in keyof Methods]: Methods[K];
-};
-
 type ControllerRefSetters<Refs> = {
 	[K in keyof Refs as `set${Capitalize<string & K>}Ref`]: (element?: Refs[K]) => void;
 };
 
 export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(props: ResolvedInputProps<T>): void;
-	getProps(): NotNullableFields<ExtractInternalProps<T>>;
-} & ComponentWatchers<ExtractExternalProps<T>> &
+	getProps(): StrictFields<InternalProps<T>>;
+} & ComponentWatchers<ExternalProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &
 	ControllerListeners<ExtractListeners<T>> &
-	ControllerMethods<ExtractMethods<T>> &
+	ExtractMethods<T> &
 	ControllerRefSetters<ExtractRefs<T>>;

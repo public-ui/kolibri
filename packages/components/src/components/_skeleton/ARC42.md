@@ -143,7 +143,7 @@ Methods: {
 };
 ```
 
-The `PromiseMethod<Methods>` utility type in `generic-types.ts` automatically wraps each method's return type in `Promise<T>`. This transformation is applied through `ComponentMethods` which feeds into `WebComponentInterface`, so the resolved web component type correctly requires:
+The `PromiseMethod<Methods>` utility type in `generic-types.ts` automatically wraps each method's return type in `Promise<T>`. This transformation is applied directly in `WebComponentInterface` via `PromiseMethod<ExtractMethods<T>>`, so the resolved web component type correctly requires:
 
 ```ts
 // Resolved in WebComponentInterface — automatically Promise-wrapped
