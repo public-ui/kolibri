@@ -47,13 +47,22 @@ export type ResolvedProps<T extends ComponentApi> = InternalOf<ExtractRequiredPr
  * Used for componentWillLoad and watchers.
  */
 export type ResolvedInputProps<T extends ComponentApi> = ExternalOf<ExtractRequiredProps<T>> & Partial<ExternalOf<ExtractOptionalProps<T>>>;
-type PromiseMethod = (...args: unknown[]) => Promise<unknown>;
+
+/**
+ * Wraps the return type of each method in a Promise.
+ * This allows API definitions to use simple return types (e.g., `() => void`)
+ * while the resolved type becomes `() => Promise<void>`.
+ * Uses `Awaited<R>` to ensure idempotency when a return type is already a Promise.
+ */
+type PromiseMethod<Methods> = {
+	[K in keyof Methods]: Methods[K] extends (...args: infer A) => infer R ? (...args: A) => Promise<Awaited<R>> : Methods[K];
+};
 
 export interface ComponentApi {
 	Props?: PropsDefinition;
 	States?: Record<string, unknown>;
 	Emitters?: Record<string, unknown>;
-	Methods?: Record<string, PromiseMethod>;
+	Methods?: Record<string, (...args: never[]) => unknown>;
 	Listeners?: Record<string, unknown>;
 	Callbacks?: Record<string, () => unknown>;
 	Refs?: Record<string, HTMLElement>;
@@ -102,9 +111,7 @@ type ComponentListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
-type ComponentMethods<Methods> = {
-	[K in keyof Methods]: Methods[K];
-};
+type ComponentMethods<Methods> = PromiseMethod<Methods>;
 
 type ComponentWatchers<Props> = {
 	[K in keyof Props as `watch${Capitalize<string & K>}`]: Callback<Props[K]>;

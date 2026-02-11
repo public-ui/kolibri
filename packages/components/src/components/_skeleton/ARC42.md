@@ -131,6 +131,48 @@ This keeps the controller code lean while keeping the renderer integration simpl
 
 The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](./internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
 
+### Methods and Automatic Promise Wrapping
+
+Stencil requires that all public `@Method()` decorated methods return a `Promise`. To keep API definitions concise and focused on business semantics, `ComponentApi` allows method signatures to be defined with plain return types:
+
+```ts
+// API definition — simple, no Promise required
+Methods: {
+  focus: () => void;
+  getValue: () => number;
+};
+```
+
+The `PromiseMethod<Methods>` utility type in `generic-types.ts` automatically wraps each method's return type in `Promise<T>`. This transformation is applied through `ComponentMethods` which feeds into `WebComponentInterface`, so the resolved web component type correctly requires:
+
+```ts
+// Resolved in WebComponentInterface — automatically Promise-wrapped
+focus: () => Promise<void>;
+getValue: () => Promise<number>;
+```
+
+`ControllerInterface` intentionally does **not** apply `PromiseMethod` wrapping. Controllers implement methods with their plain return types (`void`, `number`, etc.) since the `async`/`Promise.resolve()` wrapping happens at the web component layer:
+
+```ts
+// Controller — plain return type
+public focus(): void {
+  this.buttonRef?.focus();
+}
+
+// Web Component — wraps the controller call
+@Method()
+public async focus(): Promise<void> {
+  return Promise.resolve(this.ctrl.focus());
+}
+```
+
+This separation ensures that:
+
+- API definitions remain clean and declarative
+- Controllers stay synchronous and testable
+- Web components satisfy the Stencil `@Method()` Promise requirement automatically
+- `Awaited<R>` is used internally for idempotency — writing `() => Promise<void>` in the API still resolves to `Promise<void>`, not `Promise<Promise<void>>`
+
 ### Implementation Flow
 
 1. **Initialisation** – `componentWillLoad` forwards the current prop snapshot to the controller, ensuring that internal state reflects external values before the first render.
