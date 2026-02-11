@@ -51,17 +51,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 		this.ctrl.watchName(value);
 	}
 
-	/**
-	 * Sets the label of the skeleton component.
-	 */
-	@Prop()
-	public _label: string = 'Label';
-
-	@Watch('_label')
-	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
-	}
-
 	@State()
 	public label: string = 'Label';
 
@@ -90,7 +79,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	public componentWillLoad(): void {
-		this.watchLabel(this._label);
 		this.ctrl.componentWillLoad({
 			count: this._count,
 			name: this._name,
