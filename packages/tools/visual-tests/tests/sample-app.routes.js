@@ -989,6 +989,17 @@ ROUTES.set('table/sticky-header', {
 		},
 	},
 });
+ROUTES.set('table/sticky-cols', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 1000,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('tabs/basic', {
 	snapshot: {
 		zoom: {

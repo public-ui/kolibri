@@ -534,6 +534,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		//const cell = this.tableDivElement.querySelector('th[data-column-key="${index - 1}"]') as HTMLElement;
 	}
 
+	private getOffsetString(index: number | undefined, left?: boolean): string | undefined {
+		if (left && this._selection) {
+			return 'calc( var(--kol-table-selection-col-width) + ' + this.getFixedOffset(index) + 'px)';
+		}
+
+		return this.getFixedOffset(index) + 'px';
+	}
+
 	private handleSelectionChangeCallbackAndEvent(event: Event, payload: SelectionChangeEventPayload) {
 		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
 			this.state._on[Callback.onSelectionChange](event, payload);
@@ -725,8 +733,8 @@ export class KolTableStateless implements TableStatelessAPI {
 			const actionColumn = this.getActionColumnHeader(colIndex);
 			const isActionColumn = Boolean(actionColumn && cell.data);
 			const fixed = this.isFixedCol(colIndex);
-			const offsetLeft = fixed === 'left' ? this.getFixedOffset(cell.colIndex) + 'px' : undefined;
-			const offsetRight = fixed === 'right' ? this.getFixedOffset(cell.colIndex) + 'px' : undefined;
+			const offsetLeft = fixed === 'left' ? this.getOffsetString(cell.colIndex, true) : undefined;
+			const offsetRight = fixed === 'right' ? this.getOffsetString(cell.colIndex) : undefined;
 
 			return (
 				<td
@@ -735,7 +743,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
 						isActionColumn && 'kol-table__cell--actions',
-						fixed && 'kol-table__cell--sticky',
+						fixed && `kol-table__cell--sticky-${fixed}`,
 					)}
 					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
 					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
@@ -1041,8 +1049,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		const sortDescription = this.getSortAriaDescription(sortOrder);
 		const width = cell.width !== undefined ? `${cell.width}px` : undefined;
 		const fixed = this.isFixedCol(colIndex);
-		const offsetLeft = fixed === 'left' ? this.getFixedOffset(colIndex) + 'px' : undefined;
-		const offsetRight = fixed === 'right' ? this.getFixedOffset(colIndex) + 'px' : undefined;
+		const offsetLeft = fixed === 'left' ? this.getOffsetString(colIndex, true) : undefined;
+		const offsetRight = fixed === 'right' ? this.getOffsetString(colIndex) : undefined;
 
 		return (
 			<th
@@ -1051,7 +1059,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					'kol-table__cell kol-table__cell--header',
 					`kol-table__cell--${ariaSort}`,
 					cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
-					fixed && 'kol-table__cell--sticky',
+					fixed && `kol-table__cell--sticky-${fixed}`,
 				)}
 				scope={scope}
 				colSpan={cell.colSpan}

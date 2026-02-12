@@ -18,12 +18,14 @@
 
 	.kol-table {
 		$root: &;
+		$selection-width: to-rem(62);
+		--kol-table-selection-col-width: #{$selection-width};
 
 		padding: to-rem(8);
 
 		&__table {
 			width: 100%;
-			border-spacing: 0.075rem;
+			border-spacing: 0.075rem 0;
 		}
 
 		&__head {
@@ -81,8 +83,12 @@
 				}
 			}
 
-			&--selection {
-				width: to-rem(62);
+			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
+				border-right: 2px solid black;
+			}
+
+			&--sticky-right:nth-child(1 of .kol-table__cell--sticky-right) {
+				border-left: 2px solid black;
 			}
 		}
 
