@@ -59,7 +59,7 @@
 		&__cell {
 			border-color: var(--color-primary);
 			border-style: solid;
-			padding: to-rem(8);
+			padding: to-rem(15) to-rem(8) to-rem(8);
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 
