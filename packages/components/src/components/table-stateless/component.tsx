@@ -475,8 +475,6 @@ export class KolTableStateless implements TableStatelessAPI {
 					}
 				}
 			}
-			console.log(this.fixedOffsets);
-
 			dataField.push(dataRow);
 		}
 		if (data.length === 0) {
