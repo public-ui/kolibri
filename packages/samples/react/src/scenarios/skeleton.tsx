@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useRef, useState } from 'react';
 
-import { KolButton, KolSkeleton } from '@public-ui/react-v19';
+import { KolButton, KolInputRange, KolSkeleton } from '@public-ui/react-v19';
 import { SampleDescription } from '../components/SampleDescription';
 
 interface EventLogEntry {
@@ -17,6 +17,7 @@ export const Skeleton: FC = () => {
 	const [eventLog, setEventLog] = useState<EventLogEntry[]>([]);
 	const [lastEventTime, setLastEventTime] = useState<string>('');
 	const [eventCount, setEventCount] = useState<number>(0);
+	const [skeletonCount, setSkeletonCount] = useState<number>(20);
 
 	const handleLoaded = (event: CustomEvent<number>) => {
 		const now = new Date();
@@ -47,24 +48,52 @@ export const Skeleton: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex gap-4 mb-4">
-				<KolButton
-					_label="Toggle Sichtbarkeit"
-					_on={{
-						onClick: () => skeletonRef.current?.toggle(),
-					}}
-					_variant="primary"
-				/>
-				<KolButton
-					_label="Fokus auf Button"
-					_on={{
-						onClick: () => skeletonRef.current?.focus(),
-					}}
-					_variant="secondary"
-				/>
+			<div className="grid md:grid-cols-2 gap-4 mb-4 items-center">
+				<div className="grid sm:grid-cols-2 gap-4">
+					<KolButton
+						_label="Toggle Sichtbarkeit"
+						_on={{
+							onClick: () => skeletonRef.current?.toggle(),
+						}}
+						_variant="primary"
+					/>
+					<KolButton
+						_label="Fokus auf Button"
+						_on={{
+							onClick: () => skeletonRef.current?.focus(),
+						}}
+						_variant="secondary"
+					/>
+				</div>
+				<div className="grid sm:grid-cols-2 gap-4 items-center">
+					<KolInputRange
+						_label="Anzahl der Skeletons"
+						_hideLabel
+						_min={1}
+						_max={1000}
+						_value={skeletonCount}
+						_on={{
+							onChange: (event: Event) => {
+								const target = event.target as HTMLKolInputRangeElement;
+								setSkeletonCount(Number(target.value));
+							},
+						}}
+					/>
+					<span className="text-sm text-gray-600 whitespace-nowrap">{skeletonCount} Skeletons</span>
+				</div>
 			</div>
 
-			<KolSkeleton _count={initialCount} _name="Example" onLoaded={handleLoaded} ref={skeletonRef} />
+			<div className="flex flex-wrap gap-4">
+				{Array.from({ length: skeletonCount }, (_, idx) => (
+					<KolSkeleton
+						key={`skeleton-${idx}`}
+						_count={initialCount}
+						_name={`Example ${idx}`}
+						onLoaded={idx === 0 ? handleLoaded : undefined}
+						ref={idx === 0 ? skeletonRef : undefined}
+					/>
+				))}
+			</div>
 
 			<div className="mt-6 p-4 border border-gray-300 rounded-lg bg-gray-50">
 				<h3 className="text-lg font-semibold mb-3">Event Monitor</h3>
