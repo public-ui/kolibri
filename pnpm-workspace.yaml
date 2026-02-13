@@ -17,3 +17,6 @@ packages:
   - packages/tools/mcp
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
+
+overrides:
+  qs@>=6.7.0 <=6.14.1: '>=6.14.2'
