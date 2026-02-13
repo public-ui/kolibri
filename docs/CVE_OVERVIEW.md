@@ -1,6 +1,6 @@
 # CVE Overview
 
-Date: 2026-02-11
+Date: 2026-02-13
 
 > For more security information, see [SECURITY.md](./SECURITY.md)
 
@@ -11,7 +11,7 @@ Date: 2026-02-11
 | critical |   0 |   0 |   0 |   0 |
 | high     |   0 |   0 |   0 |   1 |
 | moderate |   0 |   0 |   0 |   0 |
-| low      |   0 |   0 |   0 |   0 |
+| low      |   1 |   1 |   0 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -22,7 +22,7 @@ Date: 2026-02-11
 | critical |   1 |   1 |   1 |   1 |
 | high     |   4 |   4 |   7 |  10 |
 | moderate |   1 |   1 |   9 |   1 |
-| low      |   1 |   1 |   4 |   0 |
+| low      |   2 |   2 |   5 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -55,5 +55,6 @@ Date: 2026-02-11
 | webpack-dev-server      | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious |
 | webpack-dev-server      | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious |
 | diff                    | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch        |
+| qs                      | low      | CVE-2026-2391       | v4, v3, v2, v1    | qs's arrayLimit bypass in comma parsing allows denial of service                 |
 | webpack                 | low      | CVE-2025-68458      | v2                | webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to |
 | webpack                 | low      | CVE-2025-68157      | v2                | webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + c |
