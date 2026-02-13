@@ -15,9 +15,6 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 			name: '',
 		});
 
-		/**
-		 * hier muss irgendein handling rein
-		 */
 		this.clickButtonCtrl = new ClickButtonController({});
 		this.startLoadedEventInterval();
 	}

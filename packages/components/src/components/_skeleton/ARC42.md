@@ -204,8 +204,8 @@ normalized internal type:
 
 ```ts
 // Prop definition (internal/schema/props/count.ts)
-type CountProp = Prop<number | string, number, 'count'>;
-//                     └─ external         └─ internal
+type CountProp = Prop<'count', number | string, number>;
+//                     └─ Key  └─ external      └─ internal
 const countProp = createPropDefinition<number | string, number>(
 	normalizeInteger, // (number | string | undefined) → number
 	(v) => v >= 0, // validates the internal type
