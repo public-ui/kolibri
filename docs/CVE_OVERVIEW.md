@@ -11,7 +11,7 @@ Date: 2026-02-13
 | critical |   0 |   0 |   0 |   0 |
 | high     |   0 |   0 |   0 |   1 |
 | moderate |   0 |   0 |   0 |   0 |
-| low      |   1 |   1 |   0 |   1 |
+| low      |   1 |   0 |   0 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -20,9 +20,9 @@ Date: 2026-02-13
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   1 |   1 |   1 |   1 |
-| high     |   4 |   4 |   7 |  10 |
+| high     |   4 |   3 |   7 |  10 |
 | moderate |   1 |   1 |   9 |   1 |
-| low      |   2 |   2 |   5 |   1 |
+| low      |   2 |   1 |   5 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -40,7 +40,7 @@ Date: 2026-02-13
 | braces                  | high     | CVE-2024-4068       | v4, v3, v2, v1    | Uncontrolled resource consumption in braces                                      |
 | fast-xml-parser         | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                          |
 | lodash.pick             | high     | CVE-2020-8203       | v2, v1            | Prototype Pollution in lodash                                                    |
-| qs                      | high     | CVE-2025-15284      | v4, v3, v2        | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion  |
+| qs                      | high     | CVE-2025-15284      | v4, v2            | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion  |
 | semver                  | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                        |
 | tar                     | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins |
 | tar                     | high     | CVE-2026-23950      | v1                | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on  |
@@ -55,6 +55,6 @@ Date: 2026-02-13
 | webpack-dev-server      | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious |
 | webpack-dev-server      | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious |
 | diff                    | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch        |
-| qs                      | low      | CVE-2026-2391       | v4, v3, v2, v1    | qs's arrayLimit bypass in comma parsing allows denial of service                 |
+| qs                      | low      | CVE-2026-2391       | v4, v2            | qs's arrayLimit bypass in comma parsing allows denial of service                 |
 | webpack                 | low      | CVE-2025-68458      | v2                | webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to |
 | webpack                 | low      | CVE-2025-68157      | v2                | webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + c |
