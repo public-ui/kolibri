@@ -3,9 +3,9 @@ import { Log } from '../../../../../../schema';
 /**
  * Definiert einen Prop-Typ mit internem und externem Typ.
  *
- * - TExternal: der externe Eingabe-Typ (Web Component), default = TInternal
- * - TInternal: der normalisierte Typ (Controller/FC)
  * - K: der Property-Name
+ * - TExternal: der externe Eingabe-Typ (Web Component)
+ * - TInternal: der normalisierte Typ (Controller/FC), default = TExternal
  *
  * Phantom-Keys `__input_${K}` tragen den externen Typ auf Type-Ebene.
  */
@@ -14,6 +14,14 @@ export type Prop<K extends string, TExternal, TInternal = TExternal> = {
 } & {
 	[P in K as `__input_${P}`]?: TExternal;
 };
+
+/**
+ * Shorthand for Prop when external and internal types are identical.
+ *
+ * - K: der Property-Name
+ * - T: der Typ (verwendet für externe und interne Nutzung)
+ */
+export type SimpleProp<K extends string, T> = Prop<K, T, T>;
 
 export type PropDefinition<TExternal, TInternal = TExternal> = {
 	normalize: (value: unknown) => TInternal | never;

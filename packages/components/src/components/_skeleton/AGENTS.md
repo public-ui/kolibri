@@ -21,7 +21,7 @@ architectural and design details, see [ARC42.md](./ARC42.md).
 - Public props use a leading `_` (for example `_count`) and mirror to internal fields without the underscore
 - Watchers attach only to these underscored props
 - **Do not create web components with `shadow: false`** – use Functional Components instead for such cases
-- Props support different external and internal types via `Prop<TExternal, TInternal, K>` — use `SimpleProp<T, K>` when both are identical
+- Props support different external and internal types via `Prop<K, TExternal, TInternal>` — use `SimpleProp<K, T>` when both are identical
 - `PropDefinition<TExternal, TInternal>` normalizes from external to internal type; `withValidPropValue` combines normalization and validation
 - States in `ComponentApi` should use `InternalOf<...>` to strip phantom keys when a Prop has different external/internal types
 

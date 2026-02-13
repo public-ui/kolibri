@@ -30,7 +30,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	/**
-	 * Sets the label of the skeleton component.
+	 * Sets the count of the skeleton component.
 	 */
 	@Prop()
 	public _count?: number | string;
@@ -103,10 +103,10 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 					count={count}
 					label={label}
 					name={name}
-					handleClick={this.ctrl.handleClick}
+					handleClick={() => this.ctrl.handleClick()}
 					onLoaded={this.loaded}
 					show={show}
-					refButton={this.ctrl.setButtonRef}
+					refButton={(element) => this.ctrl.setButtonRef(element)}
 				/>
 			</Host>
 		);

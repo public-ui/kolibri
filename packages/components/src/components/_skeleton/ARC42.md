@@ -93,8 +93,8 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Declares the public API using underscored props (e.g. `_count`).
 - Hosts lifecycle hooks and ties DOM events to controller callbacks.
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`). Watchers normalise incoming values and forward them to the controller.
-- Holds normalised data in simple fields (`count`, `name`) instead of `@State` to keep Stencil re-rendering efficient.
-- Mirrors validated props into these simple fields from the corresponding `@Watch` handlers so that the renderer and controller can rely on readily available, normalised values on the component instance.
+- Normalised public props (from `@Watch` handlers) are stored in the controller and passed to the functional component via `getProps()` to minimize re-renders.
+- Internal UI state managed by the controller (like `label`, `show`, `count` when they're derived or managed state) uses `@State` for reactivity — changes to these fields trigger re-renders.
 - Delegates rendering to the controller output via `controller.getProps()`.
 - Renders the functional component always wrapped in a bare `<Host>` element without redundant class attributes (no `<Host class="kol-component-name">`). **All web components use shadow DOM (shadow: true) to ensure style isolation and prevent CSS conflicts** with host page styles. The shadow DOM handles styling isolation; the host tag name itself is sufficient for component identification.
 - **Components that should not use Shadow DOM are implemented as Functional Components instead** (not web components), avoiding complexity and ensuring clean style boundaries.
@@ -123,8 +123,8 @@ This keeps the controller code lean while keeping the renderer integration simpl
 ### Schema Helper Layer
 
 - Co-locates type definitions, normalisation and validation rules for every prop.
-- Provides `Prop<TExternal, TInternal, K>` to encode both external and internal types in a single generic.
-- Provides `SimpleProp<T, K>` shorthand when both types are identical.
+- Provides `Prop<K, TExternal, TInternal>` to encode both external and internal types in a single generic.
+- Provides `SimpleProp<K, T>` shorthand when both types are identical.
 - `PropDefinition<TExternal, TInternal>` defines `normalize` (TExternal → TInternal) and `validate` (TInternal → boolean).
 - `withValidPropValue` combines normalization and validation into a single call, ensuring callbacks only receive type-safe internal values.
 - `InternalOf<P>` and `ExternalOf<P>` utility types extract the correct type for each architectural layer automatically.
@@ -379,9 +379,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 7. **Stateful controllers over stateless proxies**
    - _Alternative_: instantiate a single stateless controller and provide proxy functions in the web component layer for each business function so the web component instance can be passed into the controller rather than the other way round.
    - _Reason_: every business function would need such a proxy, creating significant boilerplate and reducing readability when implementing multiple components. The marginal benefit of reusing a single controller instance does not justify this complexity, so controllers remain stateful.
-8. **Direct assignment instead of prop-to-state mapping**
-   - _Alternative_: map validated props to `@State` fields and read from there.
-   - _Reason_: mapping to `@State` triggers two re-renderings in Stencil. Assigning props to plain fields after validation and handing them to the functional component results in at most one batched re-render per change.
+8. **@State for managed UI state, plain fields for normalized props**
+   - _Pattern_: public props (\_count, \_name) are normalized by the controller and stored in plain fields within the controller. UI state that is managed but not exposed as props (like label, show) uses `@State` to trigger reactive re-renders.
+   - _Reason_: normalized props coming from external inputs do not need `@State` — they're held in the controller and passed to the functional component via `getProps()`. This avoids unnecessary re-rendering. Internal UI state (like visibility toggles) that the controller manages should use `@State` for reactivity. This strategy minimizes renders while maintaining clarity about which state is reactive.
 9. **Host element without redundant class attribute**
    - _Alternative_: add component name as class attribute to `<Host>` (e.g. `<Host class="kol-skeleton">`).
    - _Reason_: the tag name alone (e.g. `<kol-skeleton>`) is sufficient for styling and component identification. Shadow DOM already provides style isolation. Redundant classes add noise and complicate selectors in theme files without additional benefit. The functional component is always wrapped inside the bare `<Host>` element.

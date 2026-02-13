@@ -64,7 +64,7 @@ export const Skeleton: FC = () => {
 				/>
 			</div>
 
-			<KolSkeleton _count={initialCount} _label="Click Button" _name="Example" onLoaded={handleLoaded} ref={skeletonRef} />
+			<KolSkeleton _count={initialCount} _name="Example" onLoaded={handleLoaded} ref={skeletonRef} />
 
 			<div className="mt-6 p-4 border border-gray-300 rounded-lg bg-gray-50">
 				<h3 className="text-lg font-semibold mb-3">Event Monitor</h3>

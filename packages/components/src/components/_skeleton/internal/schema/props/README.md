@@ -17,18 +17,18 @@ Each prop can define an **external** (Web Component API) and an **internal** (Co
 The external type may be more permissive to support shorthand values from HTML attributes,
 while the internal type is always the normalized form.
 
-### `Prop<TExternal, TInternal, K>`
+### `Prop<K, TExternal, TInternal>`
 
 Carries both types via a phantom key pattern:
 
 ```typescript
 // Different external and internal types:
-type CountProp = Prop<number | string, number, 'count'>;
-//                     └─ Web Component   └─ Controller/FC  └─ Key
+type CountProp = Prop<'count', number | string, number>;
+//                     └─ Key  └─ Web Component └─ Controller/FC
 
 // Same external and internal type (shorthand):
-type NameProp = SimpleProp<string, 'name'>;
-//                          └─ Both types    └─ Key
+type NameProp = SimpleProp<'name', string>;
+//                         └─ Key  └─ Both types
 ```
 
 ### `PropDefinition<TExternal, TInternal>`
