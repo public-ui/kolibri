@@ -13,7 +13,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 					_label="Upload file (Black background test)"
 					_icons={{
 						left: {
-							icon: 'kolicon-check',
+							icon: 'kolicon-up',
 						},
 					}}
 					_touched
@@ -27,7 +27,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 				_label="Upload file (Black background test)"
 				_icons={{
 					left: {
-						icon: 'kolicon-check',
+						icon: 'kolicon-up',
 					},
 				}}
 				_touched

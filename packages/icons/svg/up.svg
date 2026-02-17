@@ -1,0 +1,14 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+  <symbol id="arrow">
+    <rect height="40" width="36" y="35" x="60" fill="grey"/>
+    <rect height="40" width="6" y="20" x="75" fill="black"/>
+    <path d="M 78 33 l 20 0 l -20 -20 l -20 20 l 20 0 " fill="black" />    
+  </symbol>
+
+  <rect x="10" y="5" width="80" height="90" fill="grey" stroke="black" stroke-width="10"/> 
+
+  <rect x="0" y="0" width="100" height="50" fill="grey" />  
+
+ <use href="#arrow" x="-28" y="15" height="100" width="100"/>
+</svg>
