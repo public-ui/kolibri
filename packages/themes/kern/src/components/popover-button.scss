@@ -2,4 +2,8 @@
 
 @layer kol-theme-component {
 	@include button('kol-button');
+
+	.kol-popover-button--inline .kol-button--inline {
+		--button-padding: 0;
+	}
 }

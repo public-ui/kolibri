@@ -41,15 +41,17 @@
 
 			&:checked:not(:disabled) {
 				color: var(--kern-color-layout-text-default);
-				background: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-selected));
+				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-selected));
 			}
 
 			&:hover:not(:disabled) {
-				background: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-hover));
+				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-hover));
 			}
 
-			&:focus:not(:disabled) {
-				background: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-focus));
+			&:focus:not(:disabled),
+			&:focus-visible:not(:disabled) {
+				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-focus));
+				outline: 0;
 			}
 
 			&:active:not(:disabled) {

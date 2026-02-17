@@ -4,6 +4,9 @@
 
 @mixin button($block-classname) {
 	.#{$block-classname} {
+		--button-min-size: var(--kern-metric-dimension-x-large);
+		--button-padding: var(--kern-metric-space-small) var(--kern-metric-space-default);
+
 		font-size: var(--kern-typography-font-size-static-medium);
 
 		&:focus-visible {
@@ -12,6 +15,39 @@
 
 		&:disabled {
 			opacity: 0.4;
+		}
+
+		&--hide-label {
+			--button-padding: var(--kern-metric-space-small);
+		}
+
+		&--inline {
+			--button-min-size: 0;
+		}
+
+		&__text {
+			color: var(--button-text-color);
+			background-color: var(--button-text-background-color);
+			border-color: var(--button-text-border-color);
+			border-style: solid;
+			border-radius: var(--kern-metric-border-radius-default);
+			min-width: var(--button-min-size);
+			min-height: var(--button-min-size);
+			padding: var(--button-padding);
+			border-width: var(--kern-metric-border-width-light);
+			border-width: var(--kern-metric-border-width-light);
+		}
+
+		.kol-span__container {
+			gap: var(--kern-metric-space-small);
+		}
+
+		.kol-span__label {
+			font-weight: var(--kern-typography-font-weight-medium);
+		}
+
+		.kol-icon {
+			font-size: var(--kern-metric-space-large);
 		}
 
 		&--primary {
@@ -54,35 +90,6 @@
 					--button-text-background-color: #980c07;
 				}
 			}
-		}
-
-		&__text {
-			color: var(--button-text-color);
-			background-color: var(--button-text-background-color);
-			border-color: var(--button-text-border-color);
-			border-style: solid;
-			border-radius: var(--kern-metric-border-radius-default);
-			min-width: var(--kern-metric-dimension-x-large);
-			min-height: var(--kern-metric-dimension-x-large);
-			padding: var(--kern-metric-space-small) var(--kern-metric-space-default);
-			border-width: var(--kern-metric-border-width-light);
-			border-width: var(--kern-metric-border-width-light);
-
-			&.kol-span--hide-label {
-				padding: var(--kern-metric-space-small);
-			}
-		}
-
-		.kol-span__container {
-			gap: var(--kern-metric-space-small);
-		}
-
-		.kol-span__label {
-			font-weight: var(--kern-typography-font-weight-medium);
-		}
-
-		.kol-icon {
-			font-size: var(--kern-metric-space-large);
 		}
 
 		@include badge-text-hint(var(--button-text-color), var(--button-text-background-color-default));

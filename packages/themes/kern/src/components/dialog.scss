@@ -4,7 +4,7 @@
 
 @layer kol-theme-component {
 	@include card('kol-card');
-	.kol-modal {
+	.kol-dialog {
 		&__card {
 			--kol-card-border-radius: var(--kern-metric-border-radius-large);
 			--kol-card-box-shadow: 0 to-rem(24) to-rem(60) rgb(0, 0, 0, 0.3), 0 to-rem(8) to-rem(16) 0 rgb(0, 0, 0, 0.1);
