@@ -96,6 +96,10 @@
 					}
 				}
 			}
+
+			&--selection {
+				width: to-rem(52);
+			}
 		}
 
 		&__cell-actions {
