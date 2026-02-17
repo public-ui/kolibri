@@ -28,6 +28,8 @@
 
 		kolicon-cogwheel: $icon-settings,
 		kolicon-settings: $icon-settings,
+
+		kolicon-up: $icon-drive-folder-upload,
 	);
 
 	@each $class, $icon in $codIconToMaterial {
