@@ -43,7 +43,7 @@
 	"type": "module",
 	"sideEffects": false,
 	"scripts": {
-		"build": "rollup -c",
+		"build": "THEME_CSS=$(pwd)/inject-assets.css rollup -c",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
