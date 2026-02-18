@@ -1,0 +1,49 @@
+// @use '~@kern-ux/native/src/scss/core/tokens/_index';
+@use '~@public-ui/components/index' as *;
+@use './global/icons' as *;
+@use './kern/tokens/index';
+@use './mixins/badge-text-hint' as *;
+
+@layer kol-theme-global {
+	// Properties
+	:host {
+		--font-family: var(--kern-typography-font-family-default, sans-serif);
+	}
+
+	// Font
+	:host {
+		font-family: var(--font-family);
+		font-size: to-rem(16);
+	}
+
+	// Hint
+	@include badge-text-hint(var(--kern-color-layout-text-muted), var(--kern-color-layout-text-inverse));
+
+	// Tooltip
+	.kol-tooltip {
+		&__floating {
+			border-radius: var(--kern-metric-border-radius-large);
+			border: var(--kern-metric-border-width-light) solid var(--kern-color-layout-border);
+		}
+
+		&__arrow {
+			background-color: var(--kern-color-layout-background-default);
+			border: var(--kern-metric-border-width-light) solid var(--kern-color-layout-border);
+		}
+
+		&__content {
+			color: var(--kern-color-layout-text-default);
+			background-color: var(--kern-color-layout-background-default);
+			border-radius: var(--kern-metric-border-radius-large);
+			max-width: to-rem(400);
+			padding: to-rem(12);
+
+			line-height: 1.55;
+		}
+	}
+
+	// Quote
+	blockquote {
+		margin: var(--kern-metric-space-small) var(--kern-metric-space-large);
+	}
+}

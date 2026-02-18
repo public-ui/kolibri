@@ -10,10 +10,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-
-		@media (max-width: 1024px) {
-			flex-direction: column;
-		}
+		container: paging / inline-size;
 
 		&__navigation-list {
 			display: inline-flex;
@@ -32,6 +29,15 @@
 		&__page-size-select .kol-form-field-select {
 			align-items: center;
 			grid-template-columns: 1fr max-content;
+		}
+
+		&:has(&__button--first) {
+			@container paging (width < 600px) {
+				li:has(.kol-pagination__button--numbers),
+				li:has(.kol-pagination__separator) {
+					display: none;
+				}
+			}
 		}
 	}
 }

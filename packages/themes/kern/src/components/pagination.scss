@@ -1,0 +1,5 @@
+@use '../mixins/pagination' as *;
+
+@layer kol-theme-component {
+	@include pagination('kol-pagination');
+}

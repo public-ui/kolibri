@@ -19,14 +19,14 @@ import type {
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
-import type { ButtonProps } from './button';
+import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accept: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	smartButton: Stringified<ButtonProps>;
+	smartButton: Stringified<InternalButtonProps>;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
@@ -44,7 +44,7 @@ type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
 type OptionalStates = {
 	accept: string;
 	on: InputTypeOnDefault;
-	smartButton: ButtonProps;
+	smartButton: InternalButtonProps;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &

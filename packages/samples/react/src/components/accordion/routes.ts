@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { AccordionBasic } from './basic';
 import { AccordionHeadlines } from './headlines';
 import { AccordionMultiple } from './multiple';

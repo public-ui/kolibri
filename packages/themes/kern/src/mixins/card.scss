@@ -1,0 +1,57 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/button' as *;
+
+@mixin card($block-classname) {
+	@include button('kol-button');
+
+	.#{$block-classname} {
+		background: var(--kern-color-layout-background-default);
+		box-shadow: var(--kol-card-box-shadow);
+		border-radius: var(--kol-card-border-radius);
+		display: grid;
+		height: 100%;
+		padding: var(--kern-metric-space-small) var(--kern-metric-space-small) var(--kern-metric-space-large) var(--kern-metric-space-large);
+		gap: var(--kern-metric-space-default);
+		flex-direction: column;
+		align-items: flex-start;
+		align-self: stretch;
+		grid-template-areas:
+			' header close '
+			' content content ';
+		grid-template-columns: 1fr min-content;
+		grid-template-rows: min-content 1fr;
+		border: var(--kern-metric-border-width-light, 1px) solid var(--layout-border);
+
+		&__header {
+			display: flex;
+			padding: var(--kern-metric-space-default) 0 0;
+			gap: var(--kern-metric-space-none);
+			flex-direction: column;
+			align-items: flex-start;
+			align-self: stretch;
+			grid-area: header;
+		}
+
+		&__content {
+			display: flex;
+			padding-right: var(--kern-metric-space-default);
+			gap: var(--kern-metric-space-small);
+			flex: 1 1 auto;
+			flex-direction: column;
+			align-items: flex-start;
+			align-self: stretch;
+			grid-area: content;
+		}
+
+		&__close-button {
+			position: static;
+
+			line-height: to-rem(16);
+			grid-area: close;
+			@include ghostButton('kol-button');
+			.kol-icon {
+				font-size: to-rem(24);
+			}
+		}
+	}
+}

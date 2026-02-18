@@ -1,4 +1,4 @@
-import { Routes } from '../shares/types';
+import type { Routes } from '../shares/types';
 import { ButtonShortkeyTable } from './button-shortkey-table';
 import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
@@ -10,6 +10,7 @@ import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
 import { PerformanceTest } from './performance-test';
 import { RHFBasic } from './react-hook-form/basic';
+import { RHFDisabled } from './react-hook-form/disabled';
 import { RHFReset } from './react-hook-form/reset';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
 import { SampleFormWithValidation } from './sample-form-with-validation';
@@ -29,6 +30,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
 		'react-hook-form-adapter': RHFBasic,
+		'react-hook-form-adapter-disabled': RHFDisabled,
 		'react-hook-form-reset': RHFReset,
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'static-form': StaticForm,

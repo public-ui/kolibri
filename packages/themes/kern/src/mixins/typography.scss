@@ -1,0 +1,72 @@
+@use '~@public-ui/components/index' as *;
+
+@mixin kol-typography-h1 {
+	padding: var(--kern-metric-baseline-heading-x-large-padding-top, 9px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-x-large-padding-bottom, 7px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-x-large, 32px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-adaptive-x-large, 40px);
+}
+
+@mixin kol-typography-h2 {
+	padding: var(--kern-metric-baseline-heading-large-padding-top, 7px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-large-padding-bottom, 9px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-large, 26px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-adaptive-large, 32px);
+}
+
+@mixin kol-typography-h3 {
+	padding: var(--kern-metric-baseline-heading-medium-padding-top, 5px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-medium-padding-bottom, 3px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-adaptive-medium, 21px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-adaptive-medium, 24px);
+}
+
+@mixin kol-typography-h4 {
+	padding: var(--kern-metric-baseline-heading-small-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-small-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+// TBD: h5 & h6 gibt es bei KernUX nicht, das ist ein Vorschlag damit die Styles nicht leer bleiben und noch als headline erkennbar sind
+@mixin kol-typography-h5 {
+	padding: var(--kern-metric-baseline-heading-small-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-small-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-medium, 500);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin kol-typography-h6 {
+	padding: var(--kern-metric-baseline-heading-small-padding-top, 6px) var(--kern-metric-space-none, 0)
+		var(--kern-metric-baseline-heading-small-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+
+	font-size: var(--kern-typography-font-size-static-medium, 18px);
+	font-weight: var(--kern-typography-font-weight-regular, 400);
+	line-height: var(--kern-typography-line-height-static-medium, 24px);
+}
+
+@mixin kern-title {
+	color: var(--kern-color-layout-text-default);
+	margin: 0;
+	padding: var(--kern-metric-baseline-title-default-padding-top) 0 var(--kern-metric-baseline-title-default-padding-bottomx) 0;
+	vertical-align: baseline;
+
+	font-family: var(--kern-typography-font-family-default);
+	font-size: 100%;
+	font-size: var(--kern-typography-font-size-adaptive-medium);
+	font-weight: var(--kern-typography-font-weight-semi-bold);
+	line-height: var(--kern-typography-line-height-adaptive-medium);
+	letter-spacing: var(--kern-metric-space-none, 0);
+	border: 0;
+	font-style: normal;
+}

@@ -1,0 +1,68 @@
+@use '../mixins/input-core' as *;
+
+@layer kol-theme-component {
+	@include input-core;
+	.kol-input-container {
+		box-shadow: none;
+		padding: 0;
+		align-items: stretch;
+		border: 0;
+
+		--kol-input-range-border-color: var(--kern-color-form-input-border);
+
+		&:hover,
+		&:focus-within {
+			box-shadow: none;
+			padding: 0;
+		}
+
+		&--error {
+			background: var(--kern-color-feedback-danger-background);
+			--kol-input-range-border-color: var(--kern-color-feedback-danger);
+		}
+
+		&__adornment {
+			padding: 0 var(--kern-metric-space-default);
+
+			& + .kol-input-container__container .kol-input-range__inputs-wrapper {
+				padding-left: 0;
+			}
+		}
+
+		&:focus-within .kol-input-range__input--number {
+			border-color: transparent;
+		}
+	}
+
+	.kol-input-range {
+		&__inputs-wrapper {
+			display: flex;
+			height: 100%;
+			padding-left: var(--kern-metric-space-default);
+			gap: var(--kern-metric-space-default);
+			align-items: center;
+		}
+
+		&__input--range {
+			background-color: var(--kol-input-range-border-color);
+			height: var(--kern-metric-border-width-default);
+			border: none;
+
+			&:hover {
+				height: var(--kern-metric-border-width-bold);
+			}
+		}
+
+		&__input--number {
+			background-color: transparent;
+			align-self: stretch;
+			border: none;
+			border-bottom: var(--kol-input-range-border-color) solid var(--kern-metric-border-width-default);
+
+			&:hover {
+				margin-top: calc(var(--kern-metric-border-width-bold) - var(--kern-metric-border-width-default));
+				border-width: var(--kern-metric-border-width-bold);
+			}
+		}
+	}
+}

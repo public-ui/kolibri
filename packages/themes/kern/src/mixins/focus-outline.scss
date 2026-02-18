@@ -1,0 +1,13 @@
+@mixin focus-outline($angularBorder: false) {
+	@if $angularBorder {
+		border-radius: 0;
+	} @else {
+		border-radius: var(--kern-metric-border-radius-default);
+	}
+
+	box-shadow:
+		0 0 0 2px var(--kern-color-action-on-default),
+		0 0 0 4px var(--kern-color-action-focus-border-inside),
+		0 0 0 6px var(--kern-color-action-focus-border-outside);
+	outline: 0;
+}

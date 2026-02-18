@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/solid",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,9 +49,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "6.0.0",
-		"@types/minimist": "1.2.5",
-		"@types/normalize-package-data": "2.4.4",
+		"minimatch": "10.1.2",
 		"solid-js": "1.9.11",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"

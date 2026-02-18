@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { SingleSelectBasic } from './basic';
 
 export const SINGLE_SELECT_ROUTES: Routes = {

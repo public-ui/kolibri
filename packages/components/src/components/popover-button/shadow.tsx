@@ -71,7 +71,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 				_disabled={this._disabled}
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
-				_id={this._id}
 				_inline={this._inline}
 				_label={this._label}
 				_name={this._name}
@@ -126,12 +125,6 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
 	@Prop() public _inline?: InlinePropType = false;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: string;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

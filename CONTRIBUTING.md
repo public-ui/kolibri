@@ -8,6 +8,7 @@ We would love for you to contribute to **KoliBri**and help make it even better t
   - [Report an error](#report-an-error)
   - [Further development](#further-development)
     - [Git flow](#git-flow)
+    - [Pull Request Guidelines](#pull-request-guidelines)
     - [Developing](#developing)
     - [Develop new component](#develop-new-component)
     - [Switching between branches](#switching-between-branches)
@@ -45,6 +46,28 @@ You can request new features by submitting an issue to our ticket system. If you
 ### Git flow
 
 We work according to the Git flow: https://medium.com/android-news/gitflow-with-github-c675aa4f606a
+
+### Pull Request Guidelines
+
+When creating a pull request, please follow these guidelines:
+
+- **PR Title:** The pull request title must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification. This is enforced by automated validation in our CI pipeline.
+- **PR Title Format:** `<type>: <description>` or `<type>(<scope>): <description>`
+- **Allowed Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- **Description:** The description should start with a lowercase letter and clearly explain the change.
+
+**Examples of valid PR titles:**
+
+- `feat: add new button component`
+- `fix: resolve navigation issue on mobile devices`
+- `docs: update installation instructions`
+- `refactor(components): simplify input validation logic`
+
+**Examples of invalid PR titles:**
+
+- `Add new feature` (missing type prefix)
+- `feat: Add feature` (description should start with lowercase)
+- `feature: add new button` (invalid type, should be `feat`)
 
 ### Developing
 

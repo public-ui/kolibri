@@ -6,7 +6,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -56,6 +55,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
+	// so onBlur doesn't close the panel if clear button is pressed
+	private isClearing = false;
 
 	/**
 	 * Returns the current value.
@@ -100,15 +101,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private onBlur(event: FocusEvent) {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
-
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen) {
+		} else if (!this._isOpen && this._value) {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
-
-		if (event instanceof FocusEvent && event.view === window) {
+		if (event instanceof FocusEvent && event.view === window && !this.isClearing) {
 			this._isOpen = false;
 		}
 	}
@@ -132,28 +131,31 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private clearSelection() {
-		const isDisabled = this.state._disabled === true;
-		if (isDisabled) {
+		this.isClearing = true;
+
+		if (this.state._disabled) {
 			return;
-		} else {
-			const emptyValue = null;
-			this._focusedOptionIndex = -1;
-			this._value = emptyValue;
-			this._inputValue = '';
-			this._filteredOptions = [...this.state._options];
-
-			const inputEvent = this.createEventWithTarget('input', {
-				name: this.state._name as string,
-				value: emptyValue,
-			});
-			const changeEvent = this.createEventWithTarget('change', {
-				name: this.state._name as string,
-				value: emptyValue,
-			});
-
-			this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
-			this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 		}
+
+		const emptyValue = null;
+		this._focusedOptionIndex = -1;
+		this._value = emptyValue;
+		this._inputValue = '';
+		this._filteredOptions = [...this.state._options];
+
+		const inputEvent = this.createEventWithTarget('input', {
+			name: this.state._name as string,
+			value: emptyValue,
+		});
+		const changeEvent = this.createEventWithTarget('change', {
+			name: this.state._name as string,
+			value: emptyValue,
+		});
+
+		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
+		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
+
+		this.isClearing = false;
 	}
 
 	private selectOption(option: Option<string>) {
@@ -359,11 +361,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 							onClick={this.toggleListbox.bind(this)}
 						/>
 					</div>
-					{this._isOpen && !isDisabled && (
+					{
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
+							hidden={!this._isOpen || isDisabled}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
@@ -417,7 +420,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								</li>
 							)}
 						</CustomSuggestionsOptionsGroupFc>
-					)}
+					}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -570,12 +573,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -694,11 +691,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_icons')
 	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_label')

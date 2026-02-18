@@ -1,0 +1,9 @@
+{
+	"extends": "../tsconfig.base.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"types": ["../shims-css.d.ts"]
+	},
+	"exclude": ["node_modules", "dist"],
+	"include": ["src/**/*"]
+}

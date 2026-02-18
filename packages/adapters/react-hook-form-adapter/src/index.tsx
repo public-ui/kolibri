@@ -78,7 +78,7 @@ type ControllerComponent<P> = React.ForwardRefExoticComponent<P & ControllerBase
 
 function withController<T extends React.ComponentType<any>>(Component: T, valueProp?: string): ControllerComponent<ExtractProps<T>> {
 	const ControllerWrapper = React.forwardRef<HTMLElement, ExtractProps<T> & ControllerBaseProps<any>>((props, ref) => {
-		const { name, control, rules, defaultValue, shouldUnregister, disabled, ...componentProps } = props;
+		const { name, control, rules, defaultValue, shouldUnregister, ...componentProps } = props;
 
 		return (
 			<Controller
@@ -87,7 +87,7 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 				rules={rules}
 				defaultValue={defaultValue}
 				shouldUnregister={shouldUnregister}
-				disabled={disabled}
+				disabled={props._disabled}
 				render={({ field, fieldState }) => {
 					const userHandlers = (componentProps as any)._on as KolEventHandlers | undefined;
 
@@ -102,11 +102,11 @@ function withController<T extends React.ComponentType<any>>(Component: T, valueP
 						},
 						_name: name,
 						_touched: fieldState.isTouched,
-						_disabled: (componentProps as any)._disabled || disabled || field.disabled,
+						_disabled: field.disabled, // https://react-hook-form.com/docs/useform#disabled
 						_msg: fieldState.error
 							? {
 									_type: 'error' as const,
-									_description: fieldState.error.message || String(fieldState.error),
+									_description: fieldState.error.message || (fieldState.error as any).toString?.() || 'Unknown error',
 								}
 							: undefined,
 						_on: {
