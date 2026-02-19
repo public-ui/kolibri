@@ -132,18 +132,4 @@
 			@include checkbox('kol-table__selection');
 		}
 	}
-
-	.kol-table-stateful__pagination {
-		display: flex;
-		gap: var(--kern-metric-space-default);
-		justify-content: end;
-		grid-template-columns: 1fr max-content;
-	}
-
-	@media (max-width: 1024px) {
-		.kol-table-stateful__pagination {
-			flex-direction: column;
-			justify-items: center;
-		}
-	}
 }
