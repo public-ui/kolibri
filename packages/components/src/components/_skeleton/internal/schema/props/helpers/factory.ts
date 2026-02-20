@@ -8,11 +8,14 @@ import { Log } from '../../../../../../schema';
  * - TInternal: der normalisierte Typ (Controller/FC), default = TExternal
  *
  * Phantom-Keys `__input_${K}` tragen den externen Typ auf Type-Ebene.
+ * Der feste Phantom-Key `__propInternal__` trägt TInternal für eine zuverlässige Inferenz.
  */
-export type Prop<K extends string, TExternal, TInternal = TExternal> = {
+export type Prop<K extends string, TExternal, TInternal> = {
 	[P in K]: TInternal;
 } & {
 	[P in K as `__input_${P}`]?: TExternal;
+} & {
+	readonly __propInternal__?: TInternal;
 };
 
 /**
@@ -23,29 +26,31 @@ export type Prop<K extends string, TExternal, TInternal = TExternal> = {
  */
 export type SimpleProp<K extends string, T> = Prop<K, T, T>;
 
-export type PropDefinition<TExternal, TInternal = TExternal> = {
+export type InternalPropValue<P extends Prop<string, unknown, unknown>> = NonNullable<P['__propInternal__']>;
+
+export type PropDefinition<TInternal> = {
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
 };
 
-export function createPropDefinition<TExternal, TInternal = TExternal>(
-	normalize: (value: unknown) => TInternal | never,
-	validate: (value: TInternal) => boolean,
-): PropDefinition<TExternal, TInternal> {
+export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
+	normalize: (value: unknown) => InternalPropValue<P> | never,
+	validate: (value: InternalPropValue<P>) => boolean,
+): PropDefinition<InternalPropValue<P>> {
 	return {
 		normalize,
 		validate,
 	};
 }
 
-export function withValidPropValue<TExternal, TInternal = TExternal>(
-	propDef: PropDefinition<TExternal, TInternal>,
+export function withValidPropValue<P extends Prop<string, unknown, unknown>>(
+	propDef: PropDefinition<InternalPropValue<P>>,
 	value: unknown,
-	callback: (normalized: TInternal) => void,
+	callback: (normalized: InternalPropValue<P>) => void,
 ): void {
 	try {
 		const normalized = propDef.normalize(value);
-		if (normalized !== null && propDef.validate(normalized)) {
+		if (propDef.validate(normalized)) {
 			callback(normalized);
 		}
 	} catch (e) {

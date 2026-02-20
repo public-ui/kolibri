@@ -1,5 +1,5 @@
-import { createPropDefinition, type Prop } from './helpers/factory';
+import { createPropDefinition, SimpleProp } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
-export type NameProp = Prop<'name', string>;
-export const nameProp = createPropDefinition<string>(normalizeString, () => true);
+export type NameProp = SimpleProp<'name', string>;
+export const nameProp = createPropDefinition<NameProp>(normalizeString, () => true);

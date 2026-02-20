@@ -17,10 +17,10 @@ export type StrictFields<T> = {
 // ============================================================================
 
 /**
- * Extracts the internal (normalized) property types by filtering out __input_* phantom keys.
+ * Extracts the internal (normalized) property types by filtering out __input_* and __propInternal__ phantom keys.
  */
 export type InternalOf<P> = {
-	[K in keyof P as K extends `__input_${string}` ? never : K]: P[K];
+	[K in keyof P as K extends `__input_${string}` | '__propInternal__' ? never : K]: P[K];
 };
 
 /**
@@ -28,7 +28,9 @@ export type InternalOf<P> = {
  * For each real key K, uses the __input_K type if present, otherwise falls back to the internal type.
  */
 type ExternalOf<P> = {
-	[K in keyof P as K extends `__input_${string}` ? never : K]: `__input_${K & string}` extends keyof P ? NonNullable<P[`__input_${K & string}`]> : P[K];
+	[K in keyof P as K extends `__input_${string}` | '__propInternal__' ? never : K]: `__input_${K & string}` extends keyof P
+		? NonNullable<P[`__input_${K & string}`]>
+		: P[K];
 };
 
 // ============================================================================
@@ -164,7 +166,7 @@ export type FunctionalComponentProps<T extends ComponentApi> = StrictFields<Inte
 	ComponentCallbacks<ExtractCallbacks<T>> &
 	ComponentRefs<ExtractRefs<T>> &
 	FunctionalComponentEmitters<ExtractEmitters<T>> &
-	Partial<JSXBase.HTMLAttributes<HTMLElement>>;
+	Partial<Omit<JSXBase.HTMLAttributes<HTMLElement>, keyof InternalProps<T> | keyof ExtractStates<T>>>;
 
 // ============================================================================
 // Controller Types
