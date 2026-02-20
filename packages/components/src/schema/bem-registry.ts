@@ -53,6 +53,17 @@ type KoliBriComponentsBemSchema = {
 		 */
 		modifiers: Set<'hasCloser' | 'type-default' | 'type-error' | 'type-info' | 'type-success' | 'type-warning' | 'variant-card' | 'variant-msg'>;
 	};
+	'kol-avatar': {
+		elements: {
+			image: {
+				modifiers: null;
+			};
+			initials: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -108,6 +119,13 @@ const BEM: KoliBriComponentsBemSchema = {
 			container: { modifiers: null },
 		},
 		modifiers: new Set(['hasCloser', 'type-default', 'type-error', 'type-info', 'type-success', 'type-warning', 'variant-card', 'variant-msg']),
+	},
+	'kol-avatar': {
+		elements: {
+			image: { modifiers: null },
+			initials: { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-icon': {
 		elements: {
