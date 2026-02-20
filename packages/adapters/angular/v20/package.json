@@ -70,7 +70,7 @@
 		"@angular/compiler-cli": "20.3.16",
 		"@angular/core": "20.3.16",
 		"@public-ui/components": "workspace:*",
-		"minimatch": "10.1.2",
+		"minimatch": "10.2.1",
 		"rimraf": "6.1.2",
 		"rxjs": "7.8.2",
 		"typescript": "5.9.3",
