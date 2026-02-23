@@ -1,10 +1,10 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
+import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
+import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
+import { SkeletonController } from '../../../../internal/functional-components/skeleton/controller';
 import { Log } from '../../../../schema';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
-import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
-import { SkeletonController } from '../../internal/functional-components/skeleton/controller';
 
 @Component({
 	tag: 'kol-skeleton',

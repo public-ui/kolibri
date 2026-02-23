@@ -1,4 +1,4 @@
-import type { ColorProp, InitialsProp, LabelProp, SrcProp } from '../../schema/props';
+import type { ColorProp, InitialsProp, LabelProp, SrcProp } from '../../props';
 import type { ComponentApi } from '../generic-types';
 
 export interface AvatarApi extends ComponentApi {

@@ -1,5 +1,5 @@
-import type { LabelProp } from '../../schema/props';
-import { labelProp, withValidPropValue } from '../../schema/props';
+import type { LabelProp } from '../../props';
+import { labelProp, withValidPropValue } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ClickButtonApi } from './api';

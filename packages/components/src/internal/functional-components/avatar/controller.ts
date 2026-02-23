@@ -1,6 +1,6 @@
-import type { ColorPair } from '../../../../../schema';
-import { ColorProp, colorProp, InitialsProp, initialsProp, LabelProp, labelProp, SrcProp, srcProp } from '../../schema/props';
-import { withValidPropValue } from '../../schema/props/helpers/factory';
+import type { ColorPair } from '../../../schema';
+import { ColorProp, colorProp, InitialsProp, initialsProp, LabelProp, labelProp, SrcProp, srcProp } from '../../props';
+import { withValidPropValue } from '../../props/helpers/factory';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { AvatarApi } from './api';

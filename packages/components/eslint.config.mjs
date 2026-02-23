@@ -127,7 +127,7 @@ export default [
 
 	// Barrel import rule – scoped to skeleton blueprint only
 	{
-		files: ['src/components/_skeleton/**/*.ts', 'src/components/_skeleton/**/*.tsx'],
+		files: ['src/internals/**/*.ts', 'src/internals/**/*.tsx', 'src/components/avatar/*.tsx'],
 		plugins: {
 			kolibri: kolibriPlugin,
 		},

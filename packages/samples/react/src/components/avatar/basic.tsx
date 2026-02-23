@@ -1,4 +1,4 @@
-import { KolAvatar2 as KolAvatar } from '@public-ui/react-v19';
+import { KolAvatar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';

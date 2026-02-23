@@ -1,5 +1,5 @@
-import type { ColorPair } from '../../../../../schema';
-import { createContrastColorPair } from '../../../../../schema';
+import type { ColorPair } from '../../schema';
+import { createContrastColorPair } from '../../schema';
 import { createPropDefinition, type Prop } from './helpers/factory';
 
 const HEX_REGEX = /^#((\d|[a-f]){8}|(\d|[a-f]){6}|(\d|[a-f]){3,4})$/i;

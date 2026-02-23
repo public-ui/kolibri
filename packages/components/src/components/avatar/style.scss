@@ -15,18 +15,11 @@
 		width: to-rem(100);
 		height: to-rem(100);
 
-		&__image,
-		&__initials {
-			width: 100%;
-			height: 100%;
-		}
+		display: flex;
 
 		&__initials {
+			margin: auto;
 			background-color: inherit;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
 			font-size: to-rem(40);
 		}
 	}

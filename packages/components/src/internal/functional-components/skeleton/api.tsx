@@ -1,4 +1,4 @@
-import type { CountProp, LabelProp, NameProp, ShowProp } from '../../schema/props';
+import type { CountProp, LabelProp, NameProp, ShowProp } from '../../props';
 import type { ComponentApi, InternalOf } from '../generic-types';
 
 export interface SkeletonApi extends ComponentApi {

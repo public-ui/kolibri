@@ -16,7 +16,6 @@ const TAGS = [
 	'kol-accordion',
 	'kol-alert',
 	'kol-avatar',
-	'kol-avatar2',
 	'kol-badge',
 	'kol-breadcrumb',
 	'kol-button',

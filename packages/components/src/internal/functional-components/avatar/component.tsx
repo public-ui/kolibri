@@ -1,8 +1,8 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../../../../i18n';
-import { bem } from '../../../../../schema/bem-registry';
+import { translate } from '../../../i18n';
+import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { AvatarApi } from './api';
 
