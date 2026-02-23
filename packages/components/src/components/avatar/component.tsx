@@ -17,7 +17,7 @@ export class KolAvatar implements WebComponentInterface<AvatarApi> {
 	private readonly ctrl = new AvatarController(this);
 
 	/**
-	 * Sets the color(s) of the avatar
+	 * Defines the backgroundColor and foregroundColor.
 	 */
 	@Prop()
 	public _color?: string | ColorPair;
@@ -28,7 +28,7 @@ export class KolAvatar implements WebComponentInterface<AvatarApi> {
 	}
 
 	/**
-	 * Sets the label of the avatar component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
 	public _label!: string;
