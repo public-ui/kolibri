@@ -39,7 +39,7 @@ export class KolAvatar implements WebComponentInterface<AvatarApi> {
 	}
 
 	/**
-	 * Sets the source of the avatar component.
+	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop()
 	public _src?: string;
