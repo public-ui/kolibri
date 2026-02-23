@@ -3,8 +3,8 @@ import type { ComponentApi } from '../generic-types';
 
 export interface AvatarApi extends ComponentApi {
 	Props: {
-		Optional: SrcProp;
-		Required: LabelProp & ColorProp;
+		Optional: SrcProp & ColorProp;
+		Required: LabelProp;
 	};
 	States: InitialsProp;
 }

@@ -1,10 +1,10 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { translate } from '../../../../../i18n';
 import { bem } from '../../../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { AvatarApi } from './api';
-import { translate } from '../../../../../i18n';
 
 const BEM_BLOCK_AVATAR = 'kol-avatar';
 const BEM_CLASS_AVATAR__IMAGE = bem(BEM_BLOCK_AVATAR, 'image');
@@ -20,7 +20,7 @@ export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 			role="img"
 			style={{
 				backgroundColor: color.backgroundColor,
-				color: color.foregroundColor
+				color: color.foregroundColor,
 			}}
 		>
 			{src ? (

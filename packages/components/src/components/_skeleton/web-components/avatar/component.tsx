@@ -1,14 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { ColorPair } from '../../../../schema';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { AvatarApi } from '../../internal/functional-components/avatar/api';
-import { AvatarController } from '../../internal/functional-components/avatar/controller';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
+import { AvatarController } from '../../internal/functional-components/avatar/controller';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 
 @Component({
 	tag: 'kol-avatar2',
 	shadow: true,
+	styleUrls: {
+		default: './style.scss',
+	},
 })
 export class KolAvatar2 implements WebComponentInterface<AvatarApi> {
 	private readonly ctrl = new AvatarController(this);
@@ -17,7 +20,7 @@ export class KolAvatar2 implements WebComponentInterface<AvatarApi> {
 	 * Sets the color(s) of the avatar
 	 */
 	@Prop()
-	public _color!: string | ColorPair;
+	public _color?: string | ColorPair;
 
 	@Watch('_color')
 	public watchColor(value?: string | ColorPair): void {
@@ -50,9 +53,6 @@ export class KolAvatar2 implements WebComponentInterface<AvatarApi> {
 	public initials: string = '';
 
 	public componentWillLoad(): void {
-		this.watchColor(this._color);
-		this.watchLabel(this._label);
-		this.watchSrc(this._src);
 		this.ctrl.componentWillLoad({
 			color: this._color,
 			label: this._label,
@@ -65,12 +65,7 @@ export class KolAvatar2 implements WebComponentInterface<AvatarApi> {
 		const { initials } = this;
 		return (
 			<Host>
-				<AvatarFC
-					color={color}
-					label={label}
-					src={src}
-					initials={initials}
-				/>
+				<AvatarFC color={color} label={label} src={src} initials={initials} />
 			</Host>
 		);
 	}

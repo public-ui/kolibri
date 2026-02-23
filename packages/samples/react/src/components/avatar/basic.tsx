@@ -1,4 +1,4 @@
-import { KolAvatar } from '@public-ui/react-v19';
+import { KolAvatar2 as KolAvatar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -15,7 +15,7 @@ export const AvatarBasic: FC = () => (
 		<div className="flex flex-wrap gap-4">
 			<KolAvatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Elke Mustermann" />
 
-			{/* intentional trailing space    👇 - it's supposed to be trimmed */}
+			{/* intentional trailing space   👇 - it's supposed to be trimmed */}
 			<KolAvatar _label="Elke Mustermann " />
 			<KolAvatar _label="Marianne" />
 			<KolAvatar _color="#0000FF" _label="Christian" />
