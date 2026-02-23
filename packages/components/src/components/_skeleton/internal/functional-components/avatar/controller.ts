@@ -8,7 +8,7 @@ import type { AvatarApi } from './api';
 export class AvatarController extends BaseController<AvatarApi> implements ControllerInterface<AvatarApi> {
 	public constructor(states: AvatarApi['States']) {
 		super(states, {
-			color: { backgroundColor: '#d3d3d3', foregroundColor: '#000' },
+			color: { backgroundColor: '#d3d3d3', foregroundColor: '#3f3f3f' },
 			label: '',
 			src: '',
 		});
