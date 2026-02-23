@@ -18,3 +18,7 @@ packages:
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
+
+overrides:
+  ajv@>=7.0.0-alpha.0 <8.18.0: '>=8.18.0'
+  minimatch@<10.2.1: '>=10.2.1'
