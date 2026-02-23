@@ -47,6 +47,7 @@ const TAGS = [
 	'kol-progress',
 	'kol-quote',
 	'kol-select',
+	'kol-skeleton',
 	'kol-skip-nav',
 	'kol-spin',
 	'kol-split-button',
@@ -154,20 +155,6 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
-		copy: [
-			{
-				src: 'assets',
-			},
-		],
-	},
-	{
-		type: 'www',
-		serviceWorker: null,
-		copy: [
-			{
-				src: 'assets',
-			},
-		],
 	},
 	// {
 	//   type: 'custom',

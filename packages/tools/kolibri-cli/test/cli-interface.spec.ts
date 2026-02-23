@@ -18,19 +18,25 @@ describe('CLI interface', function () {
 
 		const typedBem = require('typed-bem/scss');
 		const original = typedBem.generateBemScssFile;
-		const calls: string[] = [];
-		typedBem.generateBemScssFile = (_: unknown, name: string) => {
-			calls.push(name);
+		const calls: Array<{ name: string; options?: any }> = [];
+		typedBem.generateBemScssFile = (_: unknown, name: string, options?: any) => {
+			calls.push({ name, options });
 		};
 
 		const program = new Command();
 		generateScss(program);
-		await program.parseAsync(['node', 'cli', 'generate-scss']);
+		await program.parseAsync(['node', 'cli', 'generate-scss', 'alert', 'icon']);
 
 		typedBem.generateBemScssFile = original;
 		process.chdir(cwd);
 
-		assert.deepStrictEqual(calls, ['alert', 'icon']);
+		// Verify that both components were called with default layer option
+		assert.strictEqual(calls.length, 2);
+		assert.strictEqual(calls[0].name, 'alert');
+		assert.strictEqual(calls[1].name, 'icon');
+		// Both should have layer option set to 'kol-theme-component' (default)
+		assert.deepStrictEqual(calls[0].options, { layer: 'kol-theme-component' });
+		assert.deepStrictEqual(calls[1].options, { layer: 'kol-theme-component' });
 	});
 
 	it('runs info command', async () => {
