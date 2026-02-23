@@ -1,4 +1,5 @@
-import { createPropDefinition, SimpleProp } from './helpers/factory';
+import type { SimpleProp } from './helpers/factory';
+import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 export type LabelProp = SimpleProp<'label', string>;

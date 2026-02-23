@@ -53,11 +53,11 @@
 		"minimatch": "10.1.2",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1",
-		"vue": "3.5.27"
+		"vue": "3.5.28"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"vue": "^3.5.27"
+		"vue": "^3.5.28"
 	},
 	"sideEffects": false,
 	"type": "module",
