@@ -1,10 +1,10 @@
 # CVE Overview
 
-Date: 2026-02-23
-
 > For more security information, see [SECURITY.md](./SECURITY.md)
 
 ## 1. Production Dependencies
+
+### Summary
 
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
@@ -15,7 +15,15 @@ Date: 2026-02-23
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
+### Vulnerabilities
+
+| Package     | Severity | CVE           | Affected Versions | Description                   |
+| ----------- | -------- | ------------- | ----------------- | ----------------------------- |
+| lodash.pick | high     | CVE-2020-8203 | v1                | Prototype Pollution in lodash |
+
 ## 2. All Dependencies
+
+### Summary
 
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
@@ -26,7 +34,7 @@ Date: 2026-02-23
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
-## 3. All Security Vulnerabilities (Unique)
+### Vulnerabilities
 
 | Package              | Severity | CVE                 | Affected Versions | Description                                                                      |
 | -------------------- | -------- | ------------------- | ----------------- | -------------------------------------------------------------------------------- |
