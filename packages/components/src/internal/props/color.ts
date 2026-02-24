@@ -9,10 +9,7 @@ function isHexString(value: string): boolean {
 
 function normalizer(value: unknown): ColorPair {
 	if (typeof value === 'string' && isHexString(value)) {
-		const colors = createContrastColorPair({
-			background: value,
-			foreground: '#fff',
-		});
+		const colors = createContrastColorPair(value);
 		return {
 			backgroundColor: colors.background,
 			foregroundColor: colors.foreground,
@@ -25,7 +22,14 @@ function normalizer(value: unknown): ColorPair {
 			isHexString(colorPair.backgroundColor) &&
 			isHexString(colorPair.foregroundColor)
 		) {
-			return colorPair;
+			const colors = createContrastColorPair({
+				background: colorPair.backgroundColor,
+				foreground: colorPair.foregroundColor,
+			});
+			return {
+				backgroundColor: colors.background,
+				foregroundColor: colors.foreground,
+			};
 		}
 	}
 	throw new Error(`Invalid color ${value as string}`);
