@@ -275,9 +275,8 @@ export class KolCombobox implements ComboboxAPI {
 								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="combobox-delete"
-								class={clsx('kol-combobox__delete', {
-									'kol-combobox__delete--disabled': isDisabled,
-								})}
+								class="kol-combobox__delete"
+								hidden={isDisabled}
 								_on={{
 									onClick: () => {
 										this.clearSelection();
