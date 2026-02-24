@@ -53,7 +53,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.refInputNumber?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInputNumber?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**

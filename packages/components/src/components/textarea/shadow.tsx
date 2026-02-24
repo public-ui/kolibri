@@ -82,7 +82,12 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.textareaRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.textareaRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**
