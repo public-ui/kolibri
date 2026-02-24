@@ -51,12 +51,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.selectWcRef?.focus();
-				resolve();
-			});
-		});
+		return Promise.resolve(this.selectWcRef?.focus());
 	}
 
 	/**
