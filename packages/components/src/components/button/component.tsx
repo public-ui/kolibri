@@ -77,7 +77,12 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.buttonRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.buttonRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly hideTooltip = () => {

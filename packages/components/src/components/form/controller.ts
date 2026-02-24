@@ -16,7 +16,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 			} else {
 				el = null;
 			}
-		} catch (error) {
+		} catch {
 			/**
 			 * Try is needed for SSR.
 			 * - no HTMLElement is available

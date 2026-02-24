@@ -73,6 +73,11 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	 */
 	@Event() public loaded!: EventEmitter<number>;
 
+	/**
+	 * Emitted when the skeleton has been rendered for the first time.
+	 */
+	@Event() public rendered!: EventEmitter<void>;
+
 	@Listen('keydown', { target: 'window' })
 	public onKeydown(event: KeyboardEvent): void {
 		this.ctrl.onKeydown(event);
@@ -87,6 +92,12 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 		// Set up the callback for emitting loaded events
 		this.ctrl.setOnLoadedCallback((count: number) => {
 			this.loaded.emit(count);
+		});
+	}
+
+	public componentDidLoad(): void {
+		requestAnimationFrame(() => {
+			this.rendered.emit();
 		});
 	}
 
@@ -105,6 +116,7 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 					name={name}
 					handleClick={() => this.ctrl.handleClick()}
 					onLoaded={this.loaded}
+					onRendered={this.rendered}
 					show={show}
 					refButton={(element) => this.ctrl.setButtonRef(element)}
 				/>

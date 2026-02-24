@@ -88,7 +88,7 @@
 		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
 		"prepack": "pnpm build && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/minify.js",
 		"pretest:e2e": "pnpm --filter @public-ui/icons build",
-		"unused": "knip"
+		"xunused": "knip"
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.5",
@@ -101,7 +101,7 @@
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.3",
+		"@eslint/eslintrc": "3.3.4",
 		"@eslint/js": "9.39.3",
 		"@playwright/test": "1.58.2",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
@@ -122,9 +122,9 @@
 		"@types/pug": "2.0.10",
 		"@types/twig": "1.12.17",
 		"@types/wcag-contrast": "3.0.3",
-		"@typescript-eslint/eslint-plugin": "8.56.0",
-		"@typescript-eslint/parser": "8.56.0",
-		"adopted-style-sheets": "1.1.9-rc.20",
+		"@typescript-eslint/eslint-plugin": "8.56.1",
+		"@typescript-eslint/parser": "8.56.1",
+		"adopted-style-sheets": "1.1.9-rc.21",
 		"autoprefixer": "10.4.24",
 		"cross-env": "10.1.0",
 		"cssnano": "7.1.2",
@@ -146,7 +146,7 @@
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.9-rc.20"
+		"adopted-style-sheets": "1.1.9-rc.21"
 	},
 	"files": [
 		"assets",
