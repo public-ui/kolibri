@@ -4,7 +4,7 @@
 	"type": "module",
 	"devDependencies": {
 		"oslllo-svg-fixer": "6.0.1",
-		"rimraf": "6.1.2",
+		"rimraf": "6.1.3",
 		"serve": "14.2.5",
 		"svgtofont": "6.5.1"
 	},
