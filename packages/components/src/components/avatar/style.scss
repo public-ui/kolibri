@@ -12,14 +12,15 @@
 	.kol-avatar {
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
+
+		display: flex;
 		width: to-rem(100);
 		height: to-rem(100);
 
-		display: flex;
-
 		&__initials {
-			margin: auto;
 			background-color: inherit;
+			margin: auto;
+
 			font-size: to-rem(40);
 		}
 	}
