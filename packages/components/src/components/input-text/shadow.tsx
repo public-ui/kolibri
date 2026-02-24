@@ -109,7 +109,12 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.inputRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.inputRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**

@@ -76,7 +76,12 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.getFocusableInput()?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.getFocusableInput()?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**

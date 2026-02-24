@@ -76,7 +76,12 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.buttonRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.buttonRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**

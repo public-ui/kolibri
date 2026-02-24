@@ -67,7 +67,12 @@ export class KolCombobox implements ComboboxAPI {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.refInput?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInput?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**

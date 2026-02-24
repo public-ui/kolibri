@@ -95,7 +95,12 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.refInputText?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInputText?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**

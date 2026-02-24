@@ -90,7 +90,12 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.anchorRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.anchorRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	/**
