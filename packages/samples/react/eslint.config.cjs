@@ -1,15 +1,11 @@
-import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const js = require('@eslint/js');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const reactHooks = require('eslint-plugin-react-hooks');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
+const globals = require('globals');
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default [
+module.exports = [
 	{
 		ignores: ['**/assets/**', '**/complex-form/**', 'dist/**', 'node_modules/**'],
 	},
@@ -27,33 +23,25 @@ export default [
 				tsconfigRootDir: __dirname,
 			},
 			globals: {
-				browser: true,
-				es2021: true,
+				...globals.browser,
+				...globals.es2021,
 			},
 		},
 		plugins: {
 			'@typescript-eslint': tsPlugin,
-			react,
 			'react-hooks': reactHooks,
 			'jsx-a11y': jsxA11y,
 		},
 		rules: {
 			...js.configs.recommended.rules,
 			...tsPlugin.configs['recommended'].rules,
-			...react.configs.recommended.rules,
-			...reactHooks.configs.recommended.rules,
 			...jsxA11y.configs.recommended.rules,
 
 			'@typescript-eslint/consistent-type-imports': 'error',
 			'@typescript-eslint/no-unsafe-member-access': 'warn',
-			'react/no-unused-state': 'error',
 			eqeqeq: 'error',
-			'react/react-in-jsx-scope': 'off',
-		},
-		settings: {
-			react: {
-				version: 'detect',
-			},
+			'react-hooks/exhaustive-deps': 'warn',
+			'react-hooks/rules-of-hooks': 'error',
 		},
 	},
 ];

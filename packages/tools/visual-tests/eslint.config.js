@@ -1,4 +1,3 @@
-import babelParser from '@babel/eslint-parser';
 import js from '@eslint/js';
 import globals from 'globals';
 import { dirname } from 'path';
@@ -13,16 +12,10 @@ export default [
 	{
 		files: ['src/**/*.{js,mjs}'],
 		languageOptions: {
-			parser: babelParser,
 			globals: globals.node,
 			parserOptions: {
-				babelOptions: {
-					babelrc: false,
-					configFile: false,
-					plugins: ['@babel/plugin-syntax-import-attributes'],
-					presets: ['@babel/preset-env'],
-				},
-				requireConfigFile: false,
+				ecmaVersion: 2022,
+				sourceType: 'module',
 			},
 		},
 		rules: {
