@@ -123,7 +123,7 @@ export class InputController extends ControlledInputController implements Watche
 		objectObjectHandler(value, () => {
 			try {
 				value = parseJson<InternalButtonProps>(value as string);
-			} catch (e) {
+			} catch {
 				// value behält den ursprünglichen Wert
 			}
 			setState(this.component, '_smartButton', value);

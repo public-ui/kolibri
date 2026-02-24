@@ -156,6 +156,12 @@ let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
 	},
+	{
+		type: 'www',
+		dir: 'www',
+		serviceWorker: null,
+		empty: false,
+	},
 	// {
 	//   type: 'custom',
 	//   name: 'CSP',

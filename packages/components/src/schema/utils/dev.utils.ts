@@ -35,7 +35,7 @@ export const setRuntimeMode = (mode: Mode): void => {
 		} else {
 			throw new Error(`Invalid NODE_ENV value: ${mode}. Expected one of ${MODES.join(', ')}.`);
 		}
-	} catch (e) {
+	} catch {
 		runtimeMode = 'production';
 	}
 };
@@ -48,7 +48,7 @@ const getInitialMode = (): Mode => {
 		if (nodeEnv && MODES.includes(nodeEnv as Mode)) {
 			return nodeEnv as Mode;
 		}
-	} catch (e) {
+	} catch {
 		// Ignore errors in browser environments where process might not be available
 	}
 	return 'production';

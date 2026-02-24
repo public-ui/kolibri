@@ -66,7 +66,12 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.selectRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.selectRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
