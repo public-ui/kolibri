@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 import { KolButton, KolInputRange, KolSkeleton } from '@public-ui/react-v19';
 import { SampleDescription } from '../components/SampleDescription';
@@ -12,16 +12,31 @@ interface EventLogEntry {
 
 export const Skeleton: FC = () => {
 	const skeletonRef = useRef<HTMLKolSkeletonElement>(null);
+	const rangeRef = useRef<HTMLKolInputRangeElement>(null);
 	const initialCount = 3;
+
+	const durationFormatter = new Intl.NumberFormat('de-DE', { style: 'unit', unit: 'millisecond', maximumFractionDigits: 1 });
+	const timeFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
 	const [count, setCount] = useState<number>(initialCount);
 	const [eventLog, setEventLog] = useState<EventLogEntry[]>([]);
 	const [lastEventTime, setLastEventTime] = useState<string>('');
 	const [eventCount, setEventCount] = useState<number>(0);
 	const [skeletonCount, setSkeletonCount] = useState<number>(20);
 
+	// Render benchmark state
+	const [generation, setGeneration] = useState<number>(0);
+	const [renderDuration, setRenderDuration] = useState<number | null>(null);
+	const [isMeasuring, setIsMeasuring] = useState<boolean>(false);
+
+	// Refs for stable values in closures (no stale closure issues)
+	const renderStartTimeRef = useRef<number>(0);
+	const expectedCountRef = useRef<number>(20);
+	const renderedCountRef = useRef<number>(0);
+
 	const handleLoaded = (event: CustomEvent<number>) => {
 		const now = new Date();
-		const timestamp = now.toLocaleTimeString('de-DE');
+		const timestamp = timeFormatter.format(now);
 		const newEventCount = eventCount + 1;
 
 		setCount(event.detail);
@@ -37,6 +52,36 @@ export const Skeleton: FC = () => {
 			};
 			return [newEntry, ...prev.slice(0, 4)];
 		});
+	};
+
+	const handleRendered = useCallback(() => {
+		renderedCountRef.current += 1;
+
+		if (renderedCountRef.current >= expectedCountRef.current) {
+			const duration = performance.now() - renderStartTimeRef.current;
+			setRenderDuration(duration);
+			setIsMeasuring(false);
+		}
+	}, []);
+
+	const handleRangeChange = (_event: Event, value: unknown) => {
+		const newValue = Number(value);
+		setSkeletonCount(newValue);
+
+		// Start benchmark measurement
+		renderedCountRef.current = 0;
+		expectedCountRef.current = newValue;
+		renderStartTimeRef.current = performance.now();
+		setRenderDuration(null);
+		setIsMeasuring(true);
+		setGeneration((prev) => prev + 1);
+	};
+
+	const handleRangeBlur = () => {
+		// Sicherstellen, dass der interne Wert mit dem State synchronisiert ist
+		if (rangeRef.current) {
+			rangeRef.current._value = skeletonCount;
+		}
 	};
 
 	return (
@@ -67,29 +112,41 @@ export const Skeleton: FC = () => {
 				</div>
 				<div className="grid sm:grid-cols-2 gap-4 items-center">
 					<KolInputRange
+						ref={rangeRef}
 						_label="Anzahl der Skeletons"
 						_hideLabel
 						_min={1}
-						_max={1000}
+						_max={10000}
+						_step={25}
 						_value={skeletonCount}
 						_on={{
-							onChange: (event: Event) => {
-								const target = event.target as HTMLKolInputRangeElement;
-								setSkeletonCount(Number(target._value));
-							},
+							onChange: handleRangeChange,
+							onBlur: handleRangeBlur,
 						}}
 					/>
 					<span className="text-sm text-gray-600 whitespace-nowrap">{skeletonCount} Skeletons</span>
 				</div>
 			</div>
 
+			{/* Render Benchmark */}
+			<div className="mb-4 px-3 py-2 border border-gray-300 rounded bg-gray-50 flex items-center gap-4 text-sm">
+				<span className="font-semibold">Benchmark:</span>
+				<span className={isMeasuring ? 'text-orange-600 font-bold' : renderDuration !== null ? 'text-green-600' : 'text-gray-400'}>
+					{isMeasuring ? 'Rendering…' : renderDuration !== null ? 'Fertig' : 'Bereit'}
+				</span>
+				<span className="font-bold text-blue-600" aria-live="polite">
+					{renderDuration !== null ? durationFormatter.format(renderDuration) : '—'}
+				</span>
+			</div>
+
 			<div className="flex flex-wrap gap-4">
 				{Array.from({ length: skeletonCount }, (_, idx) => (
 					<KolSkeleton
-						key={`skeleton-${idx}`}
+						key={`skeleton-${generation}-${idx}`}
 						_count={initialCount}
 						_name={`Example ${idx}`}
 						onLoaded={idx === 0 ? handleLoaded : undefined}
+						onRendered={handleRendered}
 						ref={idx === 0 ? skeletonRef : undefined}
 					/>
 				))}
