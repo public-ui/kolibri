@@ -64,7 +64,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.refInput?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInput?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {

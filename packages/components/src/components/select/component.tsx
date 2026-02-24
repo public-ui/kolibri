@@ -75,7 +75,12 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.selectRef?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.selectRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private renderOptgroup(optgroup: Optgroup<StencilUnknown>, preKey: string): JSX.Element {

@@ -61,7 +61,12 @@ export class KolCombobox implements ComboboxAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.refInput?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInput?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private toggleListbox = () => {
