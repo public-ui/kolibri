@@ -71,7 +71,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.7.5",
 		"@public-ui/schema": "workspace:*",
-		"adopted-style-sheets": "1.1.9-rc.20",
+		"adopted-style-sheets": "1.1.9-rc.21",
 		"i18next": "23.16.8",
 		"markdown-it": "14.1.1"
 	},
@@ -125,7 +125,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/schema": "workspace:*",
-		"adopted-style-sheets": "1.1.9-rc.20"
+		"adopted-style-sheets": "1.1.9-rc.21"
 	},
 	"files": [
 		"assets",
