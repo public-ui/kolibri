@@ -345,9 +345,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="single-select-delete"
-								class={clsx('kol-single-select__delete', {
-									'kol-single-select__delete--disabled': isDisabled,
-								})}
+								class="kol-single-select__delete"
+								hidden={isDisabled}
 								_on={{
 									onClick: () => {
 										this.clearSelection();
