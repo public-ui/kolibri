@@ -26,7 +26,7 @@ function isColorObjectString(value: string): { type: typeOfColorType; value: Pro
 		try {
 			const parsed = JSON.parse(value) as unknown;
 			if (isValidColorPair(parsed as ColorPair)) return { type: 'ColorPair', value: parsed as ColorPair };
-		} catch (error) {
+		} catch {
 			return { type: null, value: null };
 		}
 	}
