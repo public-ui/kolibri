@@ -76,7 +76,12 @@ export class KolLinkWc implements LinkWcAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.anchorRef?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.anchorRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly onClick = (event: Event) => {
