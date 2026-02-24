@@ -46,13 +46,13 @@
 		"typed-bem": "1.0.2"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.3",
+		"@eslint/eslintrc": "3.3.4",
 		"@eslint/js": "9.39.3",
 		"@public-ui/components": "workspace:*",
 		"@types/node": "24.10.13",
 		"@types/semver": "7.7.1",
-		"@typescript-eslint/eslint-plugin": "8.56.0",
-		"@typescript-eslint/parser": "8.56.0",
+		"@typescript-eslint/eslint-plugin": "8.56.1",
+		"@typescript-eslint/parser": "8.56.1",
 		"cpy-cli": "6.0.0",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.3",

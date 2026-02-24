@@ -64,11 +64,11 @@
 		"fastify": "5.7.4"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.3",
+		"@eslint/eslintrc": "3.3.4",
 		"@eslint/js": "9.39.3",
 		"@public-ui/components": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "8.56.0",
-		"@typescript-eslint/parser": "8.56.0",
+		"@typescript-eslint/eslint-plugin": "8.56.1",
+		"@typescript-eslint/parser": "8.56.1",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.3",
 		"mocha": "10.8.2",
