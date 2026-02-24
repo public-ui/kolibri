@@ -74,7 +74,12 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.buttonRef?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.buttonRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly onClick = (event: MouseEvent) => {

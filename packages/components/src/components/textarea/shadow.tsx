@@ -85,7 +85,12 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.textareaRef?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.textareaRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	public render(): JSX.Element {

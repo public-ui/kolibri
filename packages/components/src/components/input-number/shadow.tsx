@@ -72,7 +72,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.inputRef?.focus();
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.inputRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
