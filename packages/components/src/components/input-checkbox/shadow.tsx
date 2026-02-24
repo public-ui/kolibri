@@ -73,7 +73,12 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.inputRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.inputRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
