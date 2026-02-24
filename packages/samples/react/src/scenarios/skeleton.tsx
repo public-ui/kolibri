@@ -12,6 +12,7 @@ interface EventLogEntry {
 
 export const Skeleton: FC = () => {
 	const skeletonRef = useRef<HTMLKolSkeletonElement>(null);
+	const rangeRef = useRef<HTMLKolInputRangeElement>(null);
 	const initialCount = 3;
 	const [count, setCount] = useState<number>(initialCount);
 	const [eventLog, setEventLog] = useState<EventLogEntry[]>([]);
@@ -37,6 +38,17 @@ export const Skeleton: FC = () => {
 			};
 			return [newEntry, ...prev.slice(0, 4)];
 		});
+	};
+
+	const handleRangeChange = (_event: Event, value: unknown) => {
+		setSkeletonCount(Number(value));
+	};
+
+	const handleRangeBlur = () => {
+		// Sicherstellen, dass der interne Wert mit dem State synchronisiert ist
+		if (rangeRef.current) {
+			rangeRef.current._value = skeletonCount;
+		}
 	};
 
 	return (
@@ -67,16 +79,16 @@ export const Skeleton: FC = () => {
 				</div>
 				<div className="grid sm:grid-cols-2 gap-4 items-center">
 					<KolInputRange
+						ref={rangeRef}
 						_label="Anzahl der Skeletons"
 						_hideLabel
 						_min={1}
-						_max={1000}
+						_max={10000}
+						_step={25}
 						_value={skeletonCount}
 						_on={{
-							onChange: (event: Event) => {
-								const target = event.target as HTMLKolInputRangeElement;
-								setSkeletonCount(Number(target._value));
-							},
+							onChange: handleRangeChange,
+							onBlur: handleRangeBlur,
 						}}
 					/>
 					<span className="text-sm text-gray-600 whitespace-nowrap">{skeletonCount} Skeletons</span>
