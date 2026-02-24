@@ -1,4 +1,5 @@
-import { createPropDefinition, SimpleProp } from './helpers/factory';
+import type { SimpleProp } from './helpers/factory';
+import { createPropDefinition } from './helpers/factory';
 
 const formatNameAsInitial = (name: string): string => {
 	if (name.length === 0) {

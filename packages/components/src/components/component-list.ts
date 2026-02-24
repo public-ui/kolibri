@@ -2,8 +2,7 @@ import { KolAbbr } from './abbr/shadow';
 import { KolAccordion } from './accordion/shadow';
 import { KolAlertWc } from './alert/component';
 import { KolAlert } from './alert/shadow';
-import { KolAvatarWc } from './avatar/component';
-import { KolAvatar } from './avatar/shadow';
+import { KolAvatar } from './avatar/component';
 import { KolBadge } from './badge/shadow';
 import { KolBreadcrumb } from './breadcrumb/shadow';
 import { KolButtonLink } from './button-link/shadow';
@@ -62,7 +61,6 @@ export const COMPONENTS = [
 	KolAlert,
 	KolAlertWc,
 	KolAvatar,
-	KolAvatarWc,
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,

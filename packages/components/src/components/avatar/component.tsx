@@ -4,7 +4,7 @@ import type { AvatarApi } from '../../internal/functional-components/avatar/api'
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
 import { AvatarController } from '../../internal/functional-components/avatar/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { ColorPair } from '../../schema';
+import type { ColorPair } from '../../schema';
 
 @Component({
 	tag: 'kol-avatar',
