@@ -247,7 +247,7 @@ export class KolTableStateful implements TableAPI {
 			objectObjectHandler(value, () => {
 				try {
 					value = parseJson<KoliBriTableHeaders>(value);
-				} catch (e) {
+				} catch {
 					// value behält den ursprünglichen Wert
 				}
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
@@ -352,7 +352,7 @@ export class KolTableStateful implements TableAPI {
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
 			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
-		} catch (e) {
+		} catch {
 			// value behält den ursprünglichen Wert
 		}
 

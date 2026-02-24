@@ -9,7 +9,7 @@ export default () => {
 			if (elm.shadowRoot instanceof ShadowRoot) {
 				setThemeStyle(elm, getThemeDetails(elm));
 			}
-		} catch (error) {
+		} catch {
 			/**
 			 * Try is needed for SSR.
 			 * - no HTMLElement is available

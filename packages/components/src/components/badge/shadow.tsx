@@ -128,7 +128,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 		objectObjectHandler(value, () => {
 			try {
 				value = parseJson<InternalButtonProps>(value as string);
-			} catch (e) {
+			} catch {
 				// value behält den ursprünglichen Wert
 			}
 			setState(this, '_smartButton', value);

@@ -72,7 +72,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.refInput?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInput?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {

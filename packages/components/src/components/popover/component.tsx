@@ -237,7 +237,7 @@ export class KolPopover implements PopoverAPI {
 				if (!isOpen) {
 					try {
 						this.popoverElement.showPopover();
-					} catch (e) {
+					} catch {
 						// Ignore DOMException if already open
 					}
 				}
@@ -245,7 +245,7 @@ export class KolPopover implements PopoverAPI {
 				if (isOpen) {
 					try {
 						this.popoverElement.hidePopover();
-					} catch (e) {
+					} catch {
 						// Ignore DOMException if already closed
 					}
 				}

@@ -34,7 +34,7 @@ function prototypeKoliBri<T>(name: string, cb: T) {
 				return cb;
 			},
 		});
-	} catch (e) {
+	} catch {
 		Log.debug(`KoliBri property ${name} is already bind.`);
 	}
 }
