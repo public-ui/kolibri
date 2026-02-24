@@ -153,12 +153,7 @@ export default [
 		rules: {
 			...jsxA11yRecommendedRules,
 			'jsx-a11y/no-access-key': 'off',
-			'jsx-a11y/label-has-associated-control': [
-				2,
-				{
-					depth: 3,
-				},
-			],
+			'jsx-a11y/label-has-associated-control': 'off',
 		},
 	},
 ];

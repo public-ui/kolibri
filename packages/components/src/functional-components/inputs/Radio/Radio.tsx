@@ -22,7 +22,6 @@ const RadioFc: FC<RadioProps> = ({ class: classNames, inputProps, ...other }) =>
 	};
 
 	return (
-		// eslint-disable-next-line jsx-a11y/label-has-associated-control
 		<label class={clsx('kol-input-radio', cssVariants, classNames)} {...other}>
 			<InputWrapperFc {...inputProps} />
 		</label>

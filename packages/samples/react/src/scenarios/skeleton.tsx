@@ -75,7 +75,7 @@ export const Skeleton: FC = () => {
 						_on={{
 							onChange: (event: Event) => {
 								const target = event.target as HTMLKolInputRangeElement;
-								setSkeletonCount(Number(target.value));
+								setSkeletonCount(Number(target._value));
 							},
 						}}
 					/>

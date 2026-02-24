@@ -29,7 +29,7 @@ export const validateToolbarItems = (component: Generic.Element.Component, value
 			}
 			try {
 				value = parseJson<ToolbarItemPropType[]>(value);
-			} catch (e) {
+			} catch {
 				// value keeps the original items
 			}
 			if (Array.isArray(value) && value.every((items: ToolbarItemPropType) => typeof items === 'object' && items !== null)) {
