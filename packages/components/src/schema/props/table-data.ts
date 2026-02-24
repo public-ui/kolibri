@@ -23,7 +23,7 @@ export const validateTableData = (component: Generic.Element.Component, value?: 
 			}
 			try {
 				value = parseJson<KoliBriTableDataType[]>(value);
-			} catch (e) {
+			} catch {
 				// value keeps the original data
 			}
 			if (Array.isArray(value) && value.every((data: KoliBriTableDataType) => typeof data === 'object' && data !== null)) {

@@ -31,7 +31,6 @@ const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default',
 	};
 
 	return (
-		// eslint-disable-next-line jsx-a11y/label-has-associated-control
 		<label class={clsx('kol-checkbox', cssVariants, classNames)} {...other}>
 			<IconWrapperFc label="" icons={icon} />
 			<InputWrapperFc {...inputProps} />

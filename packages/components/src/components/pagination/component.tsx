@@ -415,7 +415,7 @@ export class KolPaginationWc implements PaginationAPI {
 							if (typeof nextValue === 'string') {
 								try {
 									nextValue = parseJson<PaginationHasButton>(nextValue);
-								} catch (e) {
+								} catch {
 									nextState.delete('_hasButtons');
 								}
 							}

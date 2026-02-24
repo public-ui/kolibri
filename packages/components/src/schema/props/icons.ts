@@ -69,7 +69,7 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 	objectObjectHandler(value, () => {
 		try {
 			value = parseJson<KoliBriIconsProp>(value as string);
-		} catch (e) {
+		} catch {
 			// value behält den ursprünglichen Wert
 		}
 		watchValidator(

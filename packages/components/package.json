@@ -88,7 +88,7 @@
 		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
 		"prepack": "pnpm build && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/minify.js",
 		"pretest:e2e": "pnpm --filter @public-ui/icons build",
-		"unused": "knip"
+		"xunused": "knip"
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.5",

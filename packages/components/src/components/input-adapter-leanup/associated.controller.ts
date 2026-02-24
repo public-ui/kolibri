@@ -108,7 +108,7 @@ export class AssociatedInputController implements Watches {
 				} else {
 					throw new Error(`Invalid value type: ${typeof value}`);
 				}
-			} catch (e) {
+			} catch {
 				element?.removeAttribute(qualifiedName);
 			}
 		}

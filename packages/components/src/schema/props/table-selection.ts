@@ -18,7 +18,7 @@ export const validateTableSelection = (component: Generic.Element.Component, val
 	const parseSerializedValue = () => {
 		try {
 			return parseJson<KoliBriTableSelection>(value);
-		} catch (e) {
+		} catch {
 			return undefined;
 		}
 	};

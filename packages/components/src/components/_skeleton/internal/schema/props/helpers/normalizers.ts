@@ -4,10 +4,10 @@ export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
 		return value;
 	}
-	if (value !== null && value !== undefined) {
+	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
 		return String(value);
 	}
-	throw new Error(`Invalid string: ${value}`);
+	throw new Error(`Invalid string: ${value as string}`);
 }
 
 export function normalizeInteger(value?: unknown): number | never {
