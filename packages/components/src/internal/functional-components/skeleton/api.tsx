@@ -9,6 +9,7 @@ export interface SkeletonApi extends ComponentApi {
 	States: InternalOf<CountProp> & LabelProp & ShowProp;
 	Emitters: {
 		loaded: number;
+		rendered: void;
 	};
 	Methods: {
 		focus: () => void;
