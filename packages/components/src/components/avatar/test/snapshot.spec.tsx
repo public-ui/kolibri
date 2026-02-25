@@ -6,7 +6,7 @@ import { KolAvatar } from '../component';
 
 executeSnapshotTests<AvatarProps>(
 	KolAvatarTag,
-	[AvatarFC, KolAvatar],
+	[KolAvatar],
 	[
 		{ _label: 'Erika Maria Mustermann', _src: undefined, _color: undefined },
 		{ _label: 'Erika', _color: '#0000FF' },
