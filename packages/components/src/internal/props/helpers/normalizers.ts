@@ -1,4 +1,4 @@
-import { isObject } from '../../../../../../schema';
+import { isObject } from '../../../schema';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {

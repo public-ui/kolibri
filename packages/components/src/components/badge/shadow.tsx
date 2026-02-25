@@ -105,7 +105,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	private handleColorChange = (value: unknown) => {
 		const colorPair = handleColorChange(value);
 		this.bgColorStr = colorPair.backgroundColor;
-		this.colorStr = colorPair.foregroundColor as string;
+		this.colorStr = colorPair.foregroundColor;
 	};
 
 	@Watch('_icons')

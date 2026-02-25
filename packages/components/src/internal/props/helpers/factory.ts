@@ -1,4 +1,4 @@
-import { Log } from '../../../../../../schema';
+import { Log } from '../../../schema';
 
 /**
  * Definiert einen Prop-Typ mit internem und externem Typ.
