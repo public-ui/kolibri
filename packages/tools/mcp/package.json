@@ -66,7 +66,7 @@
 		"vercel:deploy:prod": "vercel --prod"
 	},
 	"dependencies": {
-		"@modelcontextprotocol/sdk": "1.27.0",
+		"@modelcontextprotocol/sdk": "1.27.1",
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
 		"fuse.js": "7.1.0",
@@ -74,7 +74,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "9.39.3",
-		"@modelcontextprotocol/inspector": "0.20.0",
+		"@modelcontextprotocol/inspector": "0.21.0",
 		"@types/express": "5.0.6",
 		"@types/node": "25.3.0",
 		"@typescript-eslint/eslint-plugin": "8.56.1",
