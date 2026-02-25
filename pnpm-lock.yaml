@@ -15,8 +15,8 @@ importers:
         specifier: 6.8.1
         version: 6.8.1
       npm-check-updates:
-        specifier: 19.4.1
-        version: 19.4.1
+        specifier: 19.5.0
+        version: 19.5.0
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
@@ -60,8 +60,8 @@ importers:
         specifier: workspace:*
         version: link:../../../components
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -93,8 +93,8 @@ importers:
         specifier: workspace:*
         version: link:../../../components
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -126,8 +126,8 @@ importers:
         specifier: workspace:*
         version: link:../../../components
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -205,8 +205,8 @@ importers:
         specifier: 18.3.7
         version: 18.3.7(@types/react@18.3.28)
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -308,8 +308,8 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       react:
         specifier: 19.2.4
         version: 19.2.4
@@ -329,8 +329,8 @@ importers:
         specifier: workspace:*
         version: link:../../components
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       solid-js:
         specifier: 1.9.11
         version: 1.9.11
@@ -350,8 +350,8 @@ importers:
         specifier: workspace:*
         version: link:../../components
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       svelte:
         specifier: 5.53.3
         version: 5.53.3
@@ -371,8 +371,8 @@ importers:
         specifier: workspace:*
         version: link:../../components
       minimatch:
-        specifier: 10.2.2
-        version: 10.2.2
+        specifier: 10.2.3
+        version: 10.2.3
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1364,8 +1364,8 @@ importers:
   packages/tools/mcp:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: 1.27.0
-        version: 1.27.0(zod@4.3.6)
+        specifier: 1.27.1
+        version: 1.27.1(zod@4.3.6)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -1383,8 +1383,8 @@ importers:
         specifier: 9.39.3
         version: 9.39.3
       '@modelcontextprotocol/inspector':
-        specifier: 0.20.0
-        version: 0.20.0(@preact/signals-core@1.13.0)(@swc/core@1.15.11)(@types/node@25.3.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(typescript@5.9.3)
+        specifier: 0.21.0
+        version: 0.21.0(@preact/signals-core@1.13.0)(@swc/core@1.15.11)(@types/node@25.3.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(typescript@5.9.3)
       '@types/express':
         specifier: 5.0.6
         version: 5.0.6
@@ -3645,20 +3645,20 @@ packages:
       react-dom:
         optional: true
 
-  '@modelcontextprotocol/inspector-cli@0.20.0':
-    resolution: {integrity: sha512-T5lbD4tPOPZHCElnPW26eZEnHapsCMEhRdiis/9RHjDdgZfuXk1lee1iPc4llt0UmymG3wrFBs5Ywyal8nFZ2Q==}
+  '@modelcontextprotocol/inspector-cli@0.21.0':
+    resolution: {integrity: sha512-QgkSBazPpVcSz1lnI+Y58Fnkjw9jnEkUr9dNkEbhjgX4XQB1KlfXYDa85lZViNqQp4N3r8tyWAWV3CYsR6koIQ==}
     hasBin: true
 
-  '@modelcontextprotocol/inspector-client@0.20.0':
-    resolution: {integrity: sha512-dxV9dj5SiIV0aoWNu/WscDXGsAHK9wJ9CtQZHDwy8dfhJQ4FKBvKxpEstt5K7KXawMV/sHRm4AGvm92h5FbOtw==}
+  '@modelcontextprotocol/inspector-client@0.21.0':
+    resolution: {integrity: sha512-dqREbK8lmpe/Dty6iI1Rif9C+RRCbWQg2wgSzpFhe9NfuLTgmgudhefQ1QsvYlJWsLJjaFYDaaQ59wBXs4rbDw==}
     hasBin: true
 
-  '@modelcontextprotocol/inspector-server@0.20.0':
-    resolution: {integrity: sha512-ZQnR3axv2s7qJfbo6wEvkD0ctveugJqgH1vBjAb5FdgJb5CIPkLOQkK5qS3lqxM5g0L/OO4ep82eFvnCz7qSSw==}
+  '@modelcontextprotocol/inspector-server@0.21.0':
+    resolution: {integrity: sha512-xgqh2A3TGHUHlOfmhMBTP5MMZhCK935FuXubrheRSve18UeFgfjcRYNYyAKVK9PAp9j/iBrbnL14VJUOwyyb8Q==}
     hasBin: true
 
-  '@modelcontextprotocol/inspector@0.20.0':
-    resolution: {integrity: sha512-GlCBFK1Vqe5xiLT5LfUCJb/yfHrCMXmO4rKOfsZ/jDcWYkwIZyUwPekK7aS8BsbscpcyNSSL2XV7qBypDTR6bw==}
+  '@modelcontextprotocol/inspector@0.21.0':
+    resolution: {integrity: sha512-Cu7AKh8aHuBhFQVEFWRvZCWCf0qc2X6KDaiSW/wqLjHlNB9kZP35cwY3I+q1xvow41OyL7zkr+bTV7w3YrFcXg==}
     engines: {node: '>=22.7.5'}
     hasBin: true
 
@@ -3672,8 +3672,8 @@ packages:
       '@cfworker/json-schema':
         optional: true
 
-  '@modelcontextprotocol/sdk@1.27.0':
-    resolution: {integrity: sha512-qOdO524oPMkUsOJTrsH9vz/HN3B5pKyW+9zIW51A9kDMVe7ON70drz1ouoyoyOcfzc+oxhkQ6jWmbyKnlWmYqA==}
+  '@modelcontextprotocol/sdk@1.27.1':
+    resolution: {integrity: sha512-sr6GbP+4edBwFndLbM60gf07z0FQ79gaExpnsjMGePXqFcSSb7t6iscpjk9DhFhwd+mTEQrzNafGP8/iGGFYaA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@cfworker/json-schema': ^4.1.1
@@ -10720,8 +10720,8 @@ packages:
   minimalistic-assert@1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
 
-  minimatch@10.2.2:
-    resolution: {integrity: sha512-+G4CpNBxa5MprY+04MbgOw1v7So6n5JY166pFi9KfYwT78fxScCeSNQSNzp6dpPSW2rONOps6Ocam1wFhCgoVw==}
+  minimatch@10.2.3:
+    resolution: {integrity: sha512-Rwi3pnapEqirPSbWbrZaa6N3nmqq4Xer/2XooiOKyV3q12ML06f7MOuc5DVH8ONZIFhwIYQ3yzPH4nt7iWHaTg==}
     engines: {node: 18 || 20 || >=22}
 
   minimatch@3.0.5:
@@ -11054,8 +11054,8 @@ packages:
     resolution: {integrity: sha512-JLSpbzh6UUXIEoqPsYBvVNVmyrjVZ1fzEFbqxKkTJQkWBO3xFzFT+KDnSKQWwOQNbuWRwt5LSD6HOTLGIWzfrw==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  npm-check-updates@19.4.1:
-    resolution: {integrity: sha512-g3s+khrneBo0iGx7xqu/cQUk0Qc1XAHEYDptPCyCFF447RdhiBd6yPRxB7GkesbUBHXeNfmqV3ArlwxcI8h56w==}
+  npm-check-updates@19.5.0:
+    resolution: {integrity: sha512-isVbxtTABSULTmWUvoMOmaw6PdtF6t5vz78sCDlfAtzgQge8fd1kExCxe4e61BQADp20Q0SivWb8s9Y0azDUVg==}
     engines: {node: '>=20.0.0', npm: '>=8.12.1'}
     hasBin: true
 
@@ -17550,8 +17550,8 @@ snapshots:
 
   '@mcp-ui/client@6.0.0(@preact/signals-core@1.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@modelcontextprotocol/ext-apps': 0.3.1(@modelcontextprotocol/sdk@1.27.0(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)
-      '@modelcontextprotocol/sdk': 1.27.0(zod@3.25.76)
+      '@modelcontextprotocol/ext-apps': 0.3.1(@modelcontextprotocol/sdk@1.27.1(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.27.1(zod@3.25.76)
       '@quilted/threads': 3.3.1(@preact/signals-core@1.13.0)
       '@r2wc/react-to-web-component': 2.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@remote-dom/core': 1.10.1(@preact/signals-core@1.13.0)
@@ -17565,9 +17565,9 @@ snapshots:
       - preact
       - supports-color
 
-  '@modelcontextprotocol/ext-apps@0.3.1(@modelcontextprotocol/sdk@1.27.0(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)':
+  '@modelcontextprotocol/ext-apps@0.3.1(@modelcontextprotocol/sdk@1.27.1(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.27.0(zod@4.3.6)
+      '@modelcontextprotocol/sdk': 1.27.1(zod@4.3.6)
       zod: 3.25.76
     optionalDependencies:
       '@oven/bun-darwin-aarch64': 1.3.9
@@ -17581,18 +17581,18 @@ snapshots:
       '@oven/bun-linux-x64-musl-baseline': 1.3.9
       '@oven/bun-windows-x64': 1.3.9
       '@oven/bun-windows-x64-baseline': 1.3.9
-      '@rollup/rollup-darwin-arm64': 4.57.1
-      '@rollup/rollup-darwin-x64': 4.57.1
-      '@rollup/rollup-linux-arm64-gnu': 4.57.1
-      '@rollup/rollup-linux-x64-gnu': 4.57.1
-      '@rollup/rollup-win32-arm64-msvc': 4.57.1
-      '@rollup/rollup-win32-x64-msvc': 4.57.1
+      '@rollup/rollup-darwin-arm64': 4.59.0
+      '@rollup/rollup-darwin-x64': 4.59.0
+      '@rollup/rollup-linux-arm64-gnu': 4.59.0
+      '@rollup/rollup-linux-x64-gnu': 4.59.0
+      '@rollup/rollup-win32-arm64-msvc': 4.59.0
+      '@rollup/rollup-win32-x64-msvc': 4.59.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@modelcontextprotocol/ext-apps@1.0.1(@modelcontextprotocol/sdk@1.27.0(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)':
+  '@modelcontextprotocol/ext-apps@1.0.1(@modelcontextprotocol/sdk@1.27.1(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.27.0(zod@4.3.6)
+      '@modelcontextprotocol/sdk': 1.27.1(zod@4.3.6)
       zod: 3.25.76
     optionalDependencies:
       '@oven/bun-darwin-aarch64': 1.3.9
@@ -17606,18 +17606,18 @@ snapshots:
       '@oven/bun-linux-x64-musl-baseline': 1.3.9
       '@oven/bun-windows-x64': 1.3.9
       '@oven/bun-windows-x64-baseline': 1.3.9
-      '@rollup/rollup-darwin-arm64': 4.57.1
-      '@rollup/rollup-darwin-x64': 4.57.1
-      '@rollup/rollup-linux-arm64-gnu': 4.57.1
-      '@rollup/rollup-linux-x64-gnu': 4.57.1
-      '@rollup/rollup-win32-arm64-msvc': 4.57.1
-      '@rollup/rollup-win32-x64-msvc': 4.57.1
+      '@rollup/rollup-darwin-arm64': 4.59.0
+      '@rollup/rollup-darwin-x64': 4.59.0
+      '@rollup/rollup-linux-arm64-gnu': 4.59.0
+      '@rollup/rollup-linux-x64-gnu': 4.59.0
+      '@rollup/rollup-win32-arm64-msvc': 4.59.0
+      '@rollup/rollup-win32-x64-msvc': 4.59.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@modelcontextprotocol/inspector-cli@0.20.0(zod@3.25.76)':
+  '@modelcontextprotocol/inspector-cli@0.21.0(zod@3.25.76)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.27.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.27.1(zod@3.25.76)
       commander: 13.1.0
       express: 5.2.1
       spawn-rx: 5.1.2
@@ -17626,11 +17626,11 @@ snapshots:
       - supports-color
       - zod
 
-  '@modelcontextprotocol/inspector-client@0.20.0(@preact/signals-core@1.13.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)':
+  '@modelcontextprotocol/inspector-client@0.21.0(@preact/signals-core@1.13.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)':
     dependencies:
       '@mcp-ui/client': 6.0.0(@preact/signals-core@1.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@modelcontextprotocol/ext-apps': 1.0.1(@modelcontextprotocol/sdk@1.27.0(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)
-      '@modelcontextprotocol/sdk': 1.27.0(zod@3.25.76)
+      '@modelcontextprotocol/ext-apps': 1.0.1(@modelcontextprotocol/sdk@1.27.1(zod@4.3.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.27.1(zod@3.25.76)
       '@radix-ui/react-checkbox': 1.3.3(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dialog': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-icons': 1.3.2(react@18.3.1)
@@ -17663,9 +17663,9 @@ snapshots:
       - preact
       - supports-color
 
-  '@modelcontextprotocol/inspector-server@0.20.0':
+  '@modelcontextprotocol/inspector-server@0.21.0':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.27.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.27.1(zod@3.25.76)
       cors: 2.8.5
       express: 5.2.1
       express-rate-limit: 8.2.1(express@5.2.1)
@@ -17680,12 +17680,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@modelcontextprotocol/inspector@0.20.0(@preact/signals-core@1.13.0)(@swc/core@1.15.11)(@types/node@25.3.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(typescript@5.9.3)':
+  '@modelcontextprotocol/inspector@0.21.0(@preact/signals-core@1.13.0)(@swc/core@1.15.11)(@types/node@25.3.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(typescript@5.9.3)':
     dependencies:
-      '@modelcontextprotocol/inspector-cli': 0.20.0(zod@3.25.76)
-      '@modelcontextprotocol/inspector-client': 0.20.0(@preact/signals-core@1.13.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)
-      '@modelcontextprotocol/inspector-server': 0.20.0
-      '@modelcontextprotocol/sdk': 1.27.0(zod@3.25.76)
+      '@modelcontextprotocol/inspector-cli': 0.21.0(zod@3.25.76)
+      '@modelcontextprotocol/inspector-client': 0.21.0(@preact/signals-core@1.13.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)
+      '@modelcontextprotocol/inspector-server': 0.21.0
+      '@modelcontextprotocol/sdk': 1.27.1(zod@3.25.76)
       concurrently: 9.2.1
       node-fetch: 3.3.2
       open: 10.2.0
@@ -17729,7 +17729,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@modelcontextprotocol/sdk@1.27.0(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@1.27.1(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.9(hono@4.12.2)
       ajv: 8.18.0
@@ -17751,7 +17751,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@modelcontextprotocol/sdk@1.27.0(zod@4.3.6)':
+  '@modelcontextprotocol/sdk@1.27.1(zod@4.3.6)':
     dependencies:
       '@hono/node-server': 1.19.9(hono@4.12.2)
       ajv: 8.18.0
@@ -17933,7 +17933,7 @@ snapshots:
       hosted-git-info: 9.0.0
       json-stringify-nice: 1.1.4
       lru-cache: 11.2.2
-      minimatch: 10.2.2
+      minimatch: 10.2.3
       nopt: 8.1.0
       npm-install-checks: 7.1.2
       npm-package-arg: 13.0.2
@@ -17997,7 +17997,7 @@ snapshots:
       '@npmcli/name-from-folder': 4.0.0
       '@npmcli/package-json': 7.0.4
       glob: 13.0.0
-      minimatch: 10.2.2
+      minimatch: 10.2.3
 
   '@npmcli/metavuln-calculator@9.0.3':
     dependencies:
@@ -19868,7 +19868,7 @@ snapshots:
       '@typescript-eslint/types': 8.56.1
       '@typescript-eslint/visitor-keys': 8.56.1
       debug: 4.4.3(supports-color@5.5.0)
-      minimatch: 10.2.2
+      minimatch: 10.2.3
       semver: 7.7.4
       tinyglobby: 0.2.15
       ts-api-utils: 2.4.0(typescript@5.9.3)
@@ -23483,20 +23483,20 @@ snapshots:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 4.1.1
-      minimatch: 10.2.2
+      minimatch: 10.2.3
       minipass: 7.1.2
       package-json-from-dist: 1.0.1
       path-scurry: 2.0.0
 
   glob@13.0.0:
     dependencies:
-      minimatch: 10.2.2
+      minimatch: 10.2.3
       minipass: 7.1.2
       path-scurry: 2.0.0
 
   glob@13.0.6:
     dependencies:
-      minimatch: 10.2.2
+      minimatch: 10.2.3
       minipass: 7.1.3
       path-scurry: 2.0.2
 
@@ -23860,7 +23860,7 @@ snapshots:
 
   ignore-walk@8.0.0:
     dependencies:
-      minimatch: 10.2.2
+      minimatch: 10.2.3
 
   ignore@5.3.2: {}
 
@@ -25647,7 +25647,7 @@ snapshots:
 
   minimalistic-assert@1.0.1: {}
 
-  minimatch@10.2.2:
+  minimatch@10.2.3:
     dependencies:
       brace-expansion: 5.0.3
 
@@ -25870,7 +25870,7 @@ snapshots:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.3
 
   mustache@4.2.0: {}
 
@@ -26007,7 +26007,7 @@ snapshots:
       chokidar: 3.6.0
       debug: 4.4.3(supports-color@5.5.0)
       ignore-by-default: 1.0.1
-      minimatch: 10.2.2
+      minimatch: 10.2.3
       pstree.remy: 1.1.8
       semver: 7.7.4
       simple-update-notifier: 2.0.0
@@ -26067,7 +26067,7 @@ snapshots:
     dependencies:
       npm-normalize-package-bin: 5.0.0
 
-  npm-check-updates@19.4.1: {}
+  npm-check-updates@19.5.0: {}
 
   npm-install-checks@7.1.2:
     dependencies:
