@@ -1,7 +1,7 @@
 {
 	"entry": ["src/index.js"],
 	"ignoreBinaries": [],
-	"ignoreDependencies": ["@public-ui/sample-react", "serve"],
+	"ignoreDependencies": ["@public-ui/sample-react", "http-server"],
 	"project": ["src/**/*.js"],
 	"rules": {
 		"classMembers": "warn"
