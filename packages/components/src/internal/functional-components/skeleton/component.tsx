@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../../../schema/bem-registry';
+import { bem } from '../../../schema/bem-registry';
 import { ClickButtonFC } from '../click-button/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { SkeletonApi } from './api';

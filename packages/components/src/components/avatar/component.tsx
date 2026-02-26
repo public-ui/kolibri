@@ -1,100 +1,72 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
-import { handleColorChange, validateColor, validateImageSource, validateLabel } from '../../schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { AvatarApi } from '../../internal/functional-components/avatar/api';
+import { AvatarFC } from '../../internal/functional-components/avatar/component';
+import { AvatarController } from '../../internal/functional-components/avatar/controller';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { ColorPair } from '../../schema';
 
-import { translate } from '../../i18n';
-import { formatLabelAsInitials } from './controller';
-
-import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType, PropColor, Stringified } from '../../schema';
-
-/**
- * @internal
- */
 @Component({
-	tag: 'kol-avatar-wc',
-	shadow: false,
+	tag: 'kol-avatar',
+	shadow: true,
+	styleUrls: {
+		default: './style.scss',
+	},
 })
-export class KolAvatarWc implements AvatarAPI {
-	private bgColorStr = '#d3d3d3';
-	private colorStr = '#000';
-
-	public render(): JSX.Element {
-		return (
-			<div
-				aria-label={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })}
-				class="kol-avatar"
-				role="img"
-				style={{
-					backgroundColor: this.bgColorStr,
-					color: this.colorStr,
-				}}
-			>
-				{this.state._src ? (
-					<img alt="" aria-hidden="true" class="kol-avatar__image" src={this.state._src} />
-				) : (
-					<span aria-hidden="true" class="kol-avatar__initials">
-						{formatLabelAsInitials(this.state._label.trim())}
-					</span>
-				)}
-			</div>
-		);
-	}
-
-	private handleColorChange = (value: unknown) => {
-		const colorPair = handleColorChange(value);
-		this.bgColorStr = colorPair.backgroundColor;
-		this.colorStr = colorPair.foregroundColor as string;
-	};
+export class KolAvatar implements WebComponentInterface<AvatarApi> {
+	private readonly ctrl = new AvatarController(this);
 
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
-	@Prop() public _color?: Stringified<PropColor> = '#d3d3d3';
+	@Prop()
+	public _color?: string | ColorPair;
 
-	/**
-	 * Sets the image `src` attribute to the given string.
-	 */
-	@Prop() public _src?: ImageSourcePropType;
+	@Watch('_color')
+	public watchColor(value?: string | ColorPair): void {
+		this.ctrl.watchColor(value);
+	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
-
-	@State() public state: AvatarStates = {
-		_src: '',
-		_label: '', // ⚠ required
-		_color: {
-			backgroundColor: '#d3d3d3',
-			foregroundColor: '#000',
-		},
-	};
-
-	@Watch('_color')
-	public validateColor(value?: Stringified<PropColor>) {
-		validateColor(this, value, {
-			defaultValue: '#d3d3d3',
-			hooks: {
-				beforePatch: this.handleColorChange,
-			},
-		});
-	}
-
-	@Watch('_src')
-	public validateSrc(value?: ImageSourcePropType): void {
-		validateImageSource(this, value);
-	}
+	@Prop()
+	public _label!: string;
 
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			required: true,
+	public watchLabel(value?: string): void {
+		this.ctrl.watchLabel(value);
+	}
+
+	/**
+	 * Sets the image `src` attribute to the given string.
+	 */
+	@Prop()
+	public _src?: string;
+
+	@Watch('_src')
+	public watchSrc(value?: string): void {
+		this.ctrl.watchSrc(value);
+	}
+
+	@State()
+	public initials: string = '';
+
+	public componentWillLoad(): void {
+		this.ctrl.componentWillLoad({
+			color: this._color,
+			label: this._label,
+			src: this._src,
 		});
 	}
 
-	public componentWillLoad(): void {
-		this.validateColor(this._color);
-		this.validateSrc(this._src);
-		this.validateLabel(this._label);
+	public render(): JSX.Element {
+		const { color, label, src } = this.ctrl.getProps();
+		const { initials } = this;
+		return (
+			<Host>
+				<AvatarFC color={color} label={label} src={src} initials={initials} />
+			</Host>
+		);
 	}
 }

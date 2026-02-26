@@ -2,11 +2,11 @@
 	"devDependencies": {
 		"lerna": "9.0.4",
 		"license-report": "6.8.1",
-		"npm-check-updates": "19.4.1",
+		"npm-check-updates": "19.5.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.3.0",
+		"stylelint": "17.4.0",
 		"stylelint-config-recommended-scss": "17.0.0",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "7.0.1",

@@ -1,30 +1,45 @@
 # Agent Instructions
 
-This directory contains the `kol` skeleton component blueprint. For
-architectural and design details, see [ARC42.md](./ARC42.md).
+This directory contains the `kol-skeleton` component blueprint — the reference implementation for new KoliBri web components.
 
-## Shadow DOM Strategy
+> **The [ARC42.md](./ARC42.md) is the authoritative specification.**
+> All architectural decisions, layer responsibilities, type contracts, coding patterns and design rationale are documented there.
+> Read it before making any changes to this blueprint or creating new components based on it.
 
-**IMPORTANT**: KoliBri web components **must always use Shadow DOM** (`shadow: true` in Stencil config).
+## Props-First Refactoring Workflow
 
-- All web components in this skeleton include `shadow: true` to ensure style isolation
-- This prevents CSS conflicts between component styles and host page styles
-- Components that historically should not use Shadow DOM should be implemented as **Functional Components instead** (not as web components with `shadow: false`)
-- Pure Functional Components offer the same decoupling benefits without Shadow DOM complexity
+**CRITICAL:** Always establish props before implementing controllers or renderers.
 
-## Guidelines for KI Agents
+When refactoring an existing component to match the Skeleton architecture:
 
-- All web components **must have `shadow: true`** in their Stencil component decorator
-- Controllers encapsulate state transitions and expose `getProps()` for rendering
-- Functional components are stateless and render based on the controller's props
-- Initialize the controller in `componentWillLoad` using the current `_count` and `_name`
-- Public props use a leading `_` (for example `_count`) and mirror to internal fields without the underscore
-- Watchers attach only to these underscored props
-- **Do not create web components with `shadow: false`** – use Functional Components instead for such cases
-- Props support different external and internal types via `Prop<K, TExternal, TInternal>` — use `SimpleProp<K, T>` when both are identical
-- `PropDefinition<TExternal, TInternal>` normalizes from external to internal type; `withValidPropValue` combines normalization and validation
-- States in `ComponentApi` should use `InternalOf<...>` to strip phantom keys when a Prop has different external/internal types
+1. **Props Inventory** — Collect all existing `@Prop()` declarations from the current component
+2. **Props Migration** — Create dedicated prop files under `src/internal/props/`:
+   - File per prop: `<prop-name>.ts` (e.g. `label.ts`, `href.ts`, `disabled.ts`)
+   - Use `Prop<K, TExternal, TInternal>` or `SimpleProp<K, T>` types
+   - Implement normalization and validation via `createPropDefinition<P>()`
+   - Export all props from `src/internal/props/index.ts`
+3. **API Definition** — Create or update `api.tsx` using the migrated prop types
+4. **Implementation** — Build controller, functional component, web component using the type-safe props
+5. **Tests** — Add snapshot and interaction tests alongside component files
 
-## Event Handler Convention
+**Why Props-First?**
 
-**The controller event-handler policy is detailed in [ARC42](./ARC42.md#controller-layer).** Refer there for the rationale, examples and preferred rendering pattern.
+- Establishes the complete API contract before any code is written
+- Ensures no properties are forgotten during migration
+- Provides type-safe interfaces to controller, tests, and web component from day one
+- Prevents architectural rework or type mismatches after implementation
+- Makes it clear which props are domain-specific vs. shared across components
+
+**State Management Reference:** See [ARC42 § Controller State Management](./ARC42.md#controller-state-management)
+for how to distinguish between normalized props (`setProp()`) and derived UI state (`setState()`).
+
+## Quick Reference
+
+- **Architecture & layers**: [ARC42 §4 – Solution Strategy](./ARC42.md#4-solution-strategy)
+- **Directory layout**: [ARC42 §1 – Blueprint Layout](./ARC42.md#blueprint-layout)
+- **Prop types & validation**: [ARC42 §4 – Schema Helper Layer](./ARC42.md#schema-helper-layer)
+- **Event handler convention**: [ARC42 §4 – Event Handler Policy](./ARC42.md#event-handler-policy)
+- **Controller constructor pattern**: [ARC42 §4 – Constructor Pattern](./ARC42.md#constructor-pattern)
+- **State management**: [ARC42 § Controller State Management](./ARC42.md#controller-state-management)
+- **Design decisions**: [ARC42 §9](./ARC42.md#9-design-decisions)
+- **Performance analysis**: [PERFORMANCE_ANALYSIS.md](./PERFORMANCE_ANALYSIS.md)

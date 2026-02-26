@@ -1,12 +1,11 @@
-import { KolAvatarTag } from '../../../core/component-names';
-import type { AvatarProps } from '../../../schema';
-import { executeSnapshotTests } from '../../../utils/testing';
-import { KolAvatarWc } from '../component';
-import { KolAvatar } from '../shadow';
+import { KolAvatarTag } from '../../core/component-names';
+import type { AvatarProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
+import { KolAvatar } from './component';
 
 executeSnapshotTests<AvatarProps>(
 	KolAvatarTag,
-	[KolAvatar, KolAvatarWc],
+	[KolAvatar],
 	[
 		{ _label: 'Erika Maria Mustermann', _src: undefined, _color: undefined },
 		{ _label: 'Erika', _color: '#0000FF' },
