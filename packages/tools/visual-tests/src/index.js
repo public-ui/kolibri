@@ -76,7 +76,7 @@ void (async () => {
 
 		if (process.env.KOLIBRI_CLEANUP === '0') {
 			console.log('Skipping cleanup up build folder.');
-			console.log(`You can serve this build with "npx serve ${buildPath}".`);
+			console.log(`You can serve this build with "npx http-server ${buildPath}".`);
 		} else {
 			console.log('Cleaning up build folder …');
 			fs.rmSync(buildPath, { recursive: true, force: true });
