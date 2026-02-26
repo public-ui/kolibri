@@ -35,7 +35,7 @@ export type PropDefinition<TInternal> = {
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
 	normalize: (value: unknown) => InternalPropValue<P> | never,
-	validate: (value: InternalPropValue<P>) => boolean,
+	validate: (value: InternalPropValue<P>) => boolean = () => true,
 ): PropDefinition<InternalPropValue<P>> {
 	return {
 		normalize,

@@ -1,6 +1,6 @@
-import { executeSnapshotTests } from '../../../../../utils/testing';
+import { executeSnapshotTests } from '../../../../utils/testing';
 
-import { KolClickButton } from '../component';
+import { KolClickButton } from './component';
 
 const KOL_CLICK_BUTTON_TAG = 'kol-click-button';
 

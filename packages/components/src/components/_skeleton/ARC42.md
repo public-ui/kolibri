@@ -7,9 +7,9 @@ The `kol-skeleton` component blueprint demonstrates how KoliBri web components c
 Representative code artifacts for each layer and their responsibilities:
 
 - [Web component](./web-components/skeleton/component.tsx) – defines the public API, owns lifecycle hooks and bridges DOM events to controller callbacks.
-- [Controller](./internal/functional-components/skeleton/controller.ts) – implements state transitions, validation orchestration and exposes render props.
-- [Renderer](./internal/functional-components/skeleton/component.tsx) – stateless view that renders solely based on the controller-provided props.
-- [Schema helpers](./internal/schema/props) – house prop types, normalisation and validation helpers shared across layers.
+- [Controller](../../internal/functional-components/skeleton/controller.ts) – implements state transitions, validation orchestration and exposes render props.
+- [Renderer](../../internal/functional-components/skeleton/component.tsx) – stateless view that renders solely based on the controller-provided props.
+- [Schema helpers](../../internal/props/) – house prop types, normalisation and validation helpers shared across layers.
 
 Primary goals:
 
@@ -20,25 +20,44 @@ Primary goals:
 
 ### Blueprint Layout
 
-The skeleton mirrors the structure recommended for production-ready components. Each folder holds a single responsibility to make the pipeline explicit:
+The skeleton mirrors the structure recommended for production-ready components. The web component definitions live inside `_skeleton/`, while reusable internals (controllers, functional components, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
 
 ```text
-_skeleton/
-├── web-components/
-│   └── skeleton/              # Custom element definition
-│       └── component.tsx      # Prop watchers and lifecycle management
-├── internal/
-│   ├── functional-components/
-│   │   ├── skeleton/          # Skeleton-specific logic
-│   │   │   ├── api.tsx        # Type definitions
-│   │   │   ├── component.tsx  # Stateless functional component
-│   │   │   └── controller.ts  # State transitions and validation
-│   │   ├── click-button/      # Reusable button behaviour
-│   │   ├── base-controller.ts # Shared controller logic
-│   │   └── generic-types.ts   # Interface contracts
-│   └── schema/
-│       └── props/             # Prop types, normalisation and validation
-└── ARC42.md                   # This document
+src/
+├── components/
+│   └── _skeleton/                     # Blueprint directory
+│       ├── web-components/
+│       │   ├── skeleton/              # Skeleton custom element
+│       │   │   ├── component.tsx      # Prop watchers and lifecycle management
+│       │   │   └── snapshot.spec.tsx  # Snapshot test (Jest) — co-located
+│       │   └── click-button/          # Click-button custom element
+│       │       ├── component.tsx
+│       │       ├── interaction.e2e.ts  # Interaction test (Playwright)
+│       │       └── snapshot.spec.tsx
+│       ├── AGENTS.md                  # Agent instructions for this blueprint
+│       ├── ARC42.md                   # This document
+│       └── PERFORMANCE_ANALYSIS.md    # Controller pattern performance analysis
+└── internal/                          # Shared internals (not inside _skeleton/)
+    ├── functional-components/
+    │   ├── skeleton/                  # Skeleton-specific logic
+    │   │   ├── api.tsx                # Type definitions
+    │   │   ├── component.tsx          # Stateless functional component
+    │   │   └── controller.ts          # State transitions and validation
+    │   ├── click-button/              # Reusable button behaviour
+    │   │   ├── api.tsx
+    │   │   ├── component.tsx
+    │   │   └── controller.ts
+    │   ├── base-controller.ts         # Shared controller logic
+    │   └── generic-types.ts           # Interface contracts
+    └── props/                         # Prop types, normalisation and validation
+        ├── helpers/
+        │   ├── factory.ts             # Prop, SimpleProp, PropDefinition, withValidPropValue
+        │   └── normalizers.ts         # normalizeString, normalizeInteger, etc.
+        ├── count.ts                   # CountProp
+        ├── label.ts                   # LabelProp
+        ├── name.ts                    # NameProp
+        ├── show.ts                    # ShowProp
+        └── index.ts                   # Re-exports
 ```
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
@@ -102,17 +121,56 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 ### Controller Layer
 
 - Encapsulates business rules, validation orchestration and derived state.
+- Extends `BaseController<Api>`, which receives the web component's reactive state object and initial prop defaults.
+- `BaseController` provides `setProp(key, value)` to store normalized props internally and `setState(key, value)` to write back to the web component's `@State` fields, triggering Stencil re-renders.
 - Implements `componentWillLoad` to bootstrap its internal state from the current prop snapshot.
 - Exposes watcher entry points (`watchCount`, `watchName`, …) that receive raw values, request normalisation/validation from the schema helpers and update internal state accordingly.
 - Provides render props via `getProps()` so the view layer operates on a single immutable snapshot.
 - Composes other controllers (e.g. the click button behaviour) to reuse established logic across components.
 
+#### Constructor Pattern
+
+Controllers that manage reactive UI state receive the web component instance itself as their `states` parameter. This enables `setState` to write back to the web component's `@State` fields directly:
+
+```ts
+// Web Component — passes itself as the states object
+private readonly ctrl = new SkeletonController(this);
+
+// Controller — BaseController stores the reference
+public constructor(states: SkeletonApi['States']) {
+  super(states, { count: 0, name: '' });
+}
+```
+
+Controllers without reactive state (like `ClickButtonController`) default to an empty object:
+
+```ts
+private readonly ctrl = new ClickButtonController();
+
+// Constructor with default
+public constructor(states: ClickButtonApi['States'] = {}) {
+  super(states, { label: '' });
+}
+```
+
 #### Event Handler Policy
 
-- **Controller methods stay as prototype methods** so they are allocated once by the JS engine and stay performant across hundreds of instances.
-- When a controller method is handed to JSX/TSX (for example the `handleClick` callback consumed by `SkeletonFC`) the renderer wraps it once in a short arrow (`<SkeletonFC handleClick={(event) => this.ctrl.handleClick(event)} />`) so no `.bind(this)` is needed in the render tree and the controller still executes with the correct context.
+Controller methods follow a clear convention based on their usage pattern:
 
-This keeps the controller code lean while keeping the renderer integration simple and aligned with the Skeleton blueprint.
+- **Callbacks, event handlers, and ref setters** are declared as **arrow class properties** (`handleClick = () => { … }`). This auto-binds them to the instance, so they can be safely passed as references without `.bind(this)` or wrapper arrows.
+- **Lifecycle methods, watchers, and public API methods** (`componentWillLoad`, `watchCount`, `focus`, `toggle`) remain **prototype methods** shared across all instances for memory efficiency.
+
+Because callbacks are already arrow properties, both of these render patterns are valid:
+
+```tsx
+// Pattern A: Pass arrow property directly (used in ClickButton)
+<ClickButtonFC handleClick={this.ctrl.handleClick} refButton={this.ctrl.setButtonRef} />
+
+// Pattern B: Wrap in arrow for explicit forwarding (used in Skeleton)
+<SkeletonFC handleClick={() => this.ctrl.handleClick()} refButton={(el) => this.ctrl.setButtonRef(el)} />
+```
+
+Both are functionally equivalent. Pattern A is more concise; Pattern B allows adding intermediate logic.
 
 ### Functional Component Layer
 
@@ -123,13 +181,14 @@ This keeps the controller code lean while keeping the renderer integration simpl
 ### Schema Helper Layer
 
 - Co-locates type definitions, normalisation and validation rules for every prop.
-- Provides `Prop<K, TExternal, TInternal>` to encode both external and internal types in a single generic.
+- Provides `Prop<K, TExternal, TInternal>` to encode both external and internal types in a single generic via phantom keys (`__input_${K}` carries the external type, `__propInternal__` carries the internal type).
 - Provides `SimpleProp<K, T>` shorthand when both types are identical.
-- `PropDefinition<TExternal, TInternal>` defines `normalize` (TExternal → TInternal) and `validate` (TInternal → boolean).
+- `PropDefinition<TInternal>` defines `normalize` (unknown → TInternal) and `validate` (TInternal → boolean). The normalize function accepts `unknown` because HTML attributes can arrive as any type.
+- `createPropDefinition<P>` is generic over the full `Prop<K, TExternal, TInternal>` type (e.g. `createPropDefinition<CountProp>(...)`). It infers `TInternal` via `InternalPropValue<P>`, so the normalize and validate signatures are automatically typed.
 - `withValidPropValue` combines normalization and validation into a single call, ensuring callbacks only receive type-safe internal values.
 - `InternalOf<P>` and `ExternalOf<P>` utility types extract the correct type for each architectural layer automatically.
 
-The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](./internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
+The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](../../internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
 
 ### Methods and Automatic Promise Wrapping
 
@@ -203,11 +262,11 @@ shorthand values (e.g. `_count="42"`), while the controller always works with th
 normalized internal type:
 
 ```ts
-// Prop definition (internal/schema/props/count.ts)
+// Prop definition (internal/props/count.ts)
 type CountProp = Prop<'count', number | string, number>;
 //                     └─ Key  └─ external      └─ internal
-const countProp = createPropDefinition<number | string, number>(
-	normalizeInteger, // (number | string | undefined) → number
+const countProp = createPropDefinition<CountProp>(
+	normalizeInteger, // (unknown) → number (throws on invalid input)
 	(v) => v >= 0, // validates the internal type
 );
 ```
@@ -234,7 +293,35 @@ public watchCount(value?: number | string): void {
 }
 ```
 
-See the [controller](./internal/functional-components/skeleton/controller.ts) for the complete validation logic.
+See the [controller](../../internal/functional-components/skeleton/controller.ts) for the complete validation logic.
+
+### Controller State Management
+
+Controllers manage state in two distinct ways:
+
+**Normalized Props** (via `setProp()`):
+
+- Stored as plain class fields after validation
+- Updated by watcher methods (`watchCount`, `watchName`, …)
+- Never trigger Stencil re-renders on their own
+- Retrieved via `getProps()` for rendering
+
+**Derived/Managed State** (via `setState()`):
+
+- Stored in web component `@State` fields
+- Used for computed or UI state (e.g., `ariaCurrent`, `show`, `label`)
+- Each `setState()` call triggers a Stencil re-render
+- Simplifies component logic by centralizing state transitions
+
+**Rule**: A prop watcher should call `setProp()` to store the normalized value. If the controller also derives or manages internal state from that prop, add a corresponding `setState()` call only for fields that require reactive updates. This minimizes re-renders while maintaining code clarity:
+
+```ts
+public watchLabel(value?: LabelPropType): void {
+  validateLabel(this.component, value);
+  this.setProp('label', value);  // Store normalized prop (no re-render)
+  this.setState('label', value); // Only if label is used as @State
+}
+```
 
 ### Controller Initialization
 
@@ -385,12 +472,23 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 9. **Host element without redundant class attribute**
    - _Alternative_: add component name as class attribute to `<Host>` (e.g. `<Host class="kol-skeleton">`).
    - _Reason_: the tag name alone (e.g. `<kol-skeleton>`) is sufficient for styling and component identification. Shadow DOM already provides style isolation. Redundant classes add noise and complicate selectors in theme files without additional benefit. The functional component is always wrapped inside the bare `<Host>` element.
+10. **Omit unused API fields in ComponentApi definitions**
+    - _Pattern_: All fields in `ComponentApi` are optional (`Props`, `States`, `Emitters`, `Methods`, `Callbacks`, `Refs`, `Listeners`). Only define the fields that the component actually uses. If a component has no events, omit `Emitters`. If it has no internal state, omit `States`. If it has no methods, omit `Methods`. This applies uniformly to every field — no exceptions.
+    - _Alternative_: define all fields explicitly, using empty records for unused ones (e.g. `States: Record<string, never>`).
+    - _Reason_: empty records add noise to the API definition and clutter the type contract. The generic type extraction logic in `generic-types.ts` safely handles missing fields by defaulting to empty records, so omitting them is both safe and preferred. A minimal API definition is easier to read, easier to maintain, and accurately conveys what the component actually does.
+11. **Test co-location — all tests live next to the component**
+    - _Pattern_: All test files are placed directly alongside `component.tsx` in the same directory — **not** in a separate `test/` subdirectory. Two test categories exist:
+      - **Snapshot tests** (`snapshot.spec.tsx`) — Jest-based DOM snapshot tests that render the component with various prop combinations via `executeSnapshotTests` and compare against stored snapshots (`__snapshots__/`). Snapshot files are likewise stored in the component directory.
+      - **Interaction tests** (`interaction.e2e.ts`) — Playwright-based end-to-end tests that verify user interactions (clicks, keyboard input, focus management, event emission) against the rendered component in a real browser.
+    - Both file names are **einheitlich** across all components — no component-specific prefixes.
+    - _Alternative_: group all tests into a dedicated `test/` subdirectory per component.
+    - _Reason_: co-located tests are easier to discover, eliminate unnecessary directory nesting, and keep related files visible side-by-side. This reduces cognitive overhead when navigating the codebase and aligns with common industry conventions.
 
 ## 10. Quality Requirements
 
 - Maintainability: isolated layers and type-safety reduce the cost of change.
 - Reliability: schema helpers validate every external value before it mutates state.
-- Testability: controllers and functional components can be unit tested in isolation.
+- Testability: controllers and functional components can be unit tested in isolation. Snapshot tests (Jest) verify DOM output; interaction tests (Playwright) verify user-facing behaviour.
 - Performance: **Optimized re-rendering strategy** - public props (with underscore) are normalized and validated, then assigned to internal fields (without underscore). This ensures only one re-render is triggered per prop change. State changes also trigger explicit re-rendering only when necessary, minimizing unnecessary render cycles. **Stencil's batching mechanism** automatically batches multiple prop or state changes that occur "simultaneously" into a single re-render, further optimizing performance even when multiple values change at once.
 - Accessibility: follow repository-wide a11y presets and avoid title attributes in favour of `KolTooltip`.
 - Security: avoid direct DOM injection; rely on typed props and controller validation to prevent XSS.
