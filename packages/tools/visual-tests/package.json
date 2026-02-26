@@ -34,7 +34,7 @@
 		"@axe-core/playwright": "4.11.1",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-html-reporter": "2.2.11",
-		"http-server": "^14.1.0",
+		"http-server": "14.1.0",
 		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
