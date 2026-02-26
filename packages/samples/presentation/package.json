@@ -34,7 +34,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "9.39.3",
-		"@types/node": "25.3.0",
+		"@types/node": "25.3.1",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"@typescript-eslint/eslint-plugin": "8.56.1",
@@ -52,7 +52,7 @@
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.3.0",
+		"stylelint": "17.4.0",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
 		"vite": "7.3.1"
