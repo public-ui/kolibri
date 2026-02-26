@@ -20,7 +20,7 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command: 'npx serve -p 3000',
+		command: 'npx http-server -p 3000',
 		cwd: 'public',
 		reuseExistingServer: false,
 		url: 'http://localhost:3000',

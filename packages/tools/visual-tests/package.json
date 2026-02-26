@@ -34,8 +34,8 @@
 		"@axe-core/playwright": "4.11.1",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-html-reporter": "2.2.11",
-		"portfinder": "1.0.38",
-		"serve": "14.2.5"
+		"http-server": "14.1.0",
+		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
 		"@babel/eslint-parser": "7.28.6",
