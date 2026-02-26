@@ -52,7 +52,7 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: `serve ${process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH} -p ${PORT}`,
+		command: `http-server ${process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH} -p ${PORT}`,
 		url: URL,
 		reuseExistingServer: false,
 	},
