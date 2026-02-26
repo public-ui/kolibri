@@ -480,7 +480,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: All test files are placed directly alongside `component.tsx` in the same directory — **not** in a separate `test/` subdirectory. Two test categories exist:
       - **Snapshot tests** (`snapshot.spec.tsx`) — Jest-based DOM snapshot tests that render the component with various prop combinations via `executeSnapshotTests` and compare against stored snapshots (`__snapshots__/`). Snapshot files are likewise stored in the component directory.
       - **Interaction tests** (`interaction.e2e.ts`) — Playwright-based end-to-end tests that verify user interactions (clicks, keyboard input, focus management, event emission) against the rendered component in a real browser.
-    - Both file names are **einheitlich** across all components — no component-specific prefixes.
+    - Both file names are **uniform** across all components — no component-specific prefixes.
     - _Alternative_: group all tests into a dedicated `test/` subdirectory per component.
     - _Reason_: co-located tests are easier to discover, eliminate unnecessary directory nesting, and keep related files visible side-by-side. This reduces cognitive overhead when navigating the codebase and aligns with common industry conventions.
 
