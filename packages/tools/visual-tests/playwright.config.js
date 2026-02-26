@@ -63,7 +63,7 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: `npx serve -p ${PORT}`,
+		command: `npx http-server -p ${PORT}`,
 		cwd: path.resolve(BUILD_PATH),
 		url: BASE_URL,
 		reuseExistingServer: false,
