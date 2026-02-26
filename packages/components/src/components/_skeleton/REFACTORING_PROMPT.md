@@ -80,7 +80,7 @@ Erstelle bzw. ersetze die Dateien im Komponentenverzeichnis gemäß der ARC42-Sc
    - `snapshot.spec.tsx` — Jest DOM-Snapshot-Tests (`executeSnapshotTests`)
    - `interaction.e2e.ts` — Playwright Interaction-Tests (Klick, Tastatur, Events)
 
-### 3. Dead Code eliminieren
+### 4. Dead Code eliminieren
 
 Nach dem Refactoring darf **kein veralteter Code** zurückbleiben:
 
@@ -88,7 +88,7 @@ Nach dem Refactoring darf **kein veralteter Code** zurückbleiben:
 - **Code entfernen**: unused Types, Imports, auskommentierter Code, deprecated Wrapper.
 - **Prüfen**: Keine Datei ohne Referenz, keine Barrel-Files.
 
-### 4. Validierung
+### 5. Validierung
 
 ```bash
 pnpm format
