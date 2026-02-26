@@ -30,6 +30,7 @@
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
+		"@stencil/core": "4.38.3",
 		"adopted-style-sheets": "1.1.9-rc.21",
 		"react": "19.2.4",
 		"react-dom": "19.2.4",
@@ -44,7 +45,6 @@
 	"devDependencies": {
 		"@eslint/js": "9.39.3",
 		"@playwright/test": "1.58.2",
-		"@stencil/core": "4.38.3",
 		"@types/node": "25.3.1",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
