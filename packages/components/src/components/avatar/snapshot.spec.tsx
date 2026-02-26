@@ -1,8 +1,7 @@
-import { KolAvatarTag } from '../../../core/component-names';
-import { AvatarFC } from '../../../internal/functional-components/avatar/component';
-import type { AvatarProps } from '../../../schema';
-import { executeSnapshotTests } from '../../../utils/testing';
-import { KolAvatar } from '../component';
+import { KolAvatarTag } from '../../core/component-names';
+import type { AvatarProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
+import { KolAvatar } from './component';
 
 executeSnapshotTests<AvatarProps>(
 	KolAvatarTag,

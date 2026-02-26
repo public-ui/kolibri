@@ -1,6 +1,6 @@
-import { executeSnapshotTests } from '../../../../../utils/testing';
+import { executeSnapshotTests } from '../../../../utils/testing';
 
-import { KolSkeleton } from '../component';
+import { KolSkeleton } from './component';
 
 const KOL_SKELETON_TAG = 'kol-skeleton';
 

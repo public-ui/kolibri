@@ -24,9 +24,14 @@ Annahmen:
 ## Pattern 1: `new` pro Web Component (Aktuell) ✅
 
 ```typescript
-// Web Component:
+// Web Component (without reactive state):
 export class KolClickButton {
-	private readonly ctrl = new ClickButtonController(); // ✅ 1× pro WC-Instanz
+	private readonly ctrl = new ClickButtonController(); // ✅ 1× pro WC-Instanz, default states
+}
+
+// Web Component (with reactive @State fields):
+export class KolSkeleton {
+	private readonly ctrl = new SkeletonController(this); // ✅ passes WC for setState() reactivity
 }
 ```
 
