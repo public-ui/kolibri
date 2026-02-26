@@ -1203,8 +1203,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       http-server:
-        specifier: ^14.1.0
-        version: 14.1.1
+        specifier: 14.1.0
+        version: 14.1.0
       knip:
         specifier: 5.85.0
         version: 5.85.0(@types/node@25.3.1)(typescript@5.9.3)
@@ -1440,8 +1440,8 @@ importers:
         specifier: 2.2.11
         version: 2.2.11(axe-core@4.11.1)
       http-server:
-        specifier: ^14.1.0
-        version: 14.1.1
+        specifier: 14.1.0
+        version: 14.1.0
       portfinder:
         specifier: 1.0.38
         version: 1.0.38
@@ -9290,8 +9290,8 @@ packages:
     resolution: {integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==}
     engines: {node: '>=8.0.0'}
 
-  http-server@14.1.1:
-    resolution: {integrity: sha512-+cbxadF40UXd9T01zUHgA+rlo2Bg1Srer4+B4NwIHdaGxAGGv59nYRnGGDJ9LBk7alpS0US+J+bLLdQOOkJq4A==}
+  http-server@14.1.0:
+    resolution: {integrity: sha512-5lYsIcZtf6pdR8tCtzAHTWrAveo4liUlJdWc7YafwK/maPgYHs+VNP6KpCClmUnSorJrARVMXqtT055zBv11Yg==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -23921,7 +23921,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-server@14.1.1:
+  http-server@14.1.0:
     dependencies:
       basic-auth: 2.0.1
       chalk: 4.1.2
