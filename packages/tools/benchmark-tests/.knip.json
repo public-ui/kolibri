@@ -1,6 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"ignore": ["public/{assets,components,theme}/**", "tests/hydration.webdriver.ts"],
+	"ignore": ["tests/hydration.webdriver.ts"],
 	"ignoreDependencies": [
 		"@public-ui/components",
 		"@public-ui/theme-default",
@@ -8,7 +8,7 @@
 		"@wdio/mocha-framework",
 		"@wdio/spec-reporter",
 		"chromedriver",
-		"serve"
+		"http-server"
 	],
 	"project": ["tests/**/*.ts"]
 }
