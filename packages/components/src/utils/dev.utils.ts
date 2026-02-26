@@ -18,7 +18,7 @@ const initMeta = (): void => {
 				setColorContrastAnalysis(content.includes('color-contrast-analysis=true'));
 			}
 		}
-	} catch (error) {
+	} catch {
 		// Ignore meta initialization errors in test/SSR environments
 	}
 };

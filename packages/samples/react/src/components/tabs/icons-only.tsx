@@ -6,6 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 const tabs = [
 	{
+		_hideLabel: true,
 		_icons: 'kolicon-check',
 		_label: 'First tab',
 		_on: {
@@ -15,15 +16,18 @@ const tabs = [
 		},
 	},
 	{
+		_hideLabel: true,
 		_icons: 'kolicon-link-external',
 		_label: 'Second Tab',
 	},
 	{
 		_disabled: true,
+		_hideLabel: true,
 		_icons: 'kolicon-house',
 		_label: 'Disabled Tab',
 	},
 	{
+		_hideLabel: true,
 		_icons: 'kolicon-eye',
 		_label: 'Last tab',
 	},

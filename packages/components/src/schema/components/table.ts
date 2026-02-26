@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
-import type { ButtonProps } from './button';
+import type { InternalButtonProps } from './button';
 import type { LinkProps } from './link';
 import type { KoliBriPaginationProps } from './pagination';
 
@@ -13,7 +13,7 @@ import type { KoliBriPaginationProps } from './pagination';
 export type ActionColumnPropType =
 	| ({
 			type: 'button';
-	  } & ButtonProps)
+	  } & InternalButtonProps)
 	| ({
 			type: 'link';
 	  } & LinkProps);

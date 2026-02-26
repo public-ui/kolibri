@@ -14,9 +14,7 @@ import { InputPasswordController } from '../input-password/controller';
 import type { Generic } from 'adopted-style-sheets';
 
 type RequiredProps = PropLabelWithExpertSlot;
-type OptionalProps = {
-	id: string;
-} & PropSuggestions;
+type OptionalProps = PropSuggestions;
 type InputTextEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputTextEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 

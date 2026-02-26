@@ -6,14 +6,16 @@ export type CustomSuggestionsOptionsGroupProps = JSXBase.HTMLAttributes<HTMLULis
 	blockSuggestionMouseOver: boolean;
 };
 
-const CustomSuggestionsOptionsGroupFc: FC<CustomSuggestionsOptionsGroupProps> = ({ blockSuggestionMouseOver, onKeyDown, style }, children) => {
+const CustomSuggestionsOptionsGroupFc: FC<CustomSuggestionsOptionsGroupProps> = ({ blockSuggestionMouseOver, onKeyDown, style, hidden }, children) => {
 	return (
 		<ul
 			role="listbox"
 			style={style}
 			class={clsx('kol-custom-suggestions-options-group', {
 				'kol-custom-suggestions-options-group--cursor-hidden': blockSuggestionMouseOver,
+				'kol-custom-suggestions-options-group--open': !hidden,
 			})}
+			hidden={hidden}
 			onKeyDown={onKeyDown}
 		>
 			{children}

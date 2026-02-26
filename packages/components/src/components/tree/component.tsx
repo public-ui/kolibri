@@ -157,7 +157,9 @@ export class KolTreeWc implements TreeAPI {
 					await currentTreeItem.collapse();
 				} else {
 					const parentIndex = openItems.findIndex((item) => item === currentTreeItem.parentElement);
-					parentIndex !== -1 && (await openItems[parentIndex]?.focus());
+					if (parentIndex !== -1) {
+						await openItems[parentIndex]?.focus();
+					}
 				}
 
 				break;

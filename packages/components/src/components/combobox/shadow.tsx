@@ -17,7 +17,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -67,7 +66,12 @@ export class KolCombobox implements ComboboxAPI {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.refInput?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInput?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private toggleListbox = () => {
@@ -268,11 +272,11 @@ export class KolCombobox implements ComboboxAPI {
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
+								_variant="ghost"
 								_disabled={isDisabled}
 								data-testid="combobox-delete"
-								class={clsx('kol-combobox__delete', {
-									'kol-combobox__delete--disabled': isDisabled,
-								})}
+								class="kol-combobox__delete"
+								hidden={isDisabled}
 								_on={{
 									onClick: () => {
 										this.clearSelection();
@@ -289,8 +293,12 @@ export class KolCombobox implements ComboboxAPI {
 							onClick={this.toggleListbox.bind(this)}
 						/>
 					</div>
-					{this._isOpen && !isDisabled && (
-						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+					{
+						<CustomSuggestionsOptionsGroupFc
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+							hidden={!this._isOpen || isDisabled}
+						>
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
@@ -326,7 +334,7 @@ export class KolCombobox implements ComboboxAPI {
 									/>
 								))}
 						</CustomSuggestionsOptionsGroupFc>
-					)}
+					}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -468,12 +476,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -590,11 +592,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_icons')
 	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_label')

@@ -1,6 +1,6 @@
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolSpanFc } from '../../functional-components';
-import type { BadgeAPI, BadgeStates, ButtonProps, FocusableElement, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
@@ -27,7 +27,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 		this.smartButtonRef = ref;
 	};
 
-	private renderSmartButton(props: ButtonProps): JSX.Element {
+	private renderSmartButton(props: InternalButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
 				ref={this.catchSmartButtonRef}
@@ -69,7 +69,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 				}}
 			>
 				<KolSpanFc class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
-				{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
+				{hasSmartButton && this.renderSmartButton(this.state._smartButton as InternalButtonProps)}
 			</span>
 		);
 	}
@@ -92,7 +92,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<ButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
 
 	@State() public state: BadgeStates = {
 		_color: {
@@ -105,7 +105,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	private handleColorChange = (value: unknown) => {
 		const colorPair = handleColorChange(value);
 		this.bgColorStr = colorPair.backgroundColor;
-		this.colorStr = colorPair.foregroundColor as string;
+		this.colorStr = colorPair.foregroundColor;
 	};
 
 	@Watch('_icons')
@@ -124,12 +124,11 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	}
 
 	@Watch('_smartButton')
-	public validateSmartButton(value?: ButtonProps | string): void {
+	public validateSmartButton(value?: InternalButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<ButtonProps>(value as string);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
+				value = parseJson<InternalButtonProps>(value as string);
+			} catch {
 				// value behält den ursprünglichen Wert
 			}
 			setState(this, '_smartButton', value);

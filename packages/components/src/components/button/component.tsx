@@ -6,22 +6,23 @@ import type {
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaSelectedPropType,
+	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
 	IconsPropType,
+	IdPropType,
 	InlinePropType,
-	InternalButtonAPI,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	mapBoolean2String,
@@ -37,7 +38,6 @@ import {
 	validateAriaSelected,
 	validateButtonCallbacks,
 	validateButtonType,
-	validateButtonVariant,
 	validateCustomClass,
 	validateDisabled,
 	validateHideLabel,
@@ -46,6 +46,7 @@ import {
 	validateLabelWithExpertSlot,
 	validateShortKey,
 	validateTooltipAlign,
+	validateVariantClassName,
 	watchString,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
@@ -66,7 +67,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements InternalButtonAPI, FocusableElement {
+export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 	private tooltipRef?: HTMLKolTooltipWcElement;
@@ -76,7 +77,12 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.buttonRef?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.buttonRef?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly hideTooltip = () => {
@@ -246,7 +252,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines the internal ID of the primary component element.
 	 * @internal
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
@@ -308,7 +314,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: ButtonStates = {
 		_icons: {},
@@ -369,7 +375,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_id')
-	public validateId(value?: string): void {
+	public validateId(value?: IdPropType): void {
 		watchString(this, '_id', value);
 	}
 
@@ -435,8 +441,8 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 	}
 
 	@Watch('_variant')
-	public validateButtonVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
+	public validateVariant(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
 	public componentWillLoad(): void {
@@ -461,7 +467,7 @@ export class KolButtonWc implements InternalButtonAPI, FocusableElement {
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
-		this.validateButtonVariant(this._variant);
+		this.validateVariant(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }

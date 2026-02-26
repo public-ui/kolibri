@@ -1,5 +1,9 @@
 # Security/Sicherheit
 
+## CVE Overview
+
+See [CVE_OVERVIEW.md](./CVE_OVERVIEW.md) for an automated overview of security vulnerabilities across all KoliBri versions.
+
 ## Report security issues (EN)
 
 If you believe you have found a security vulnerability in our project, we encourage you to let us know immediately. We will investigate all legitimate reports and do our best to fix the problem quickly.

@@ -1,0 +1,17 @@
+@use '~@public-ui/components/index' as *;
+@use '../mixins/kol-alert' as *;
+
+@layer kol-theme-component {
+	:host {
+		top: var(--kern-metric-space-large);
+		right: var(--kern-metric-space-large);
+		width: to-rem(440);
+		max-width: 100%;
+	}
+
+	@include kol-alert;
+
+	.kol-toast-item {
+		margin-top: var(--kern-metric-space-large);
+	}
+}

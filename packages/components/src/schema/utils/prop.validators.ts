@@ -228,8 +228,7 @@ export const watchJsonArrayString = <T>(
 			try {
 				try {
 					value = parseJson<T[]>(value);
-					// eslint-disable-next-line no-empty
-				} catch (e) {
+				} catch {
 					// value behält den ursprünglichen Wert
 				}
 				if (Array.isArray(value)) {
@@ -262,7 +261,7 @@ export const watchJsonArrayString = <T>(
 export const stringifyJson = (value: unknown): string => {
 	try {
 		return JSON.stringify(value).replace(/"/g, "'");
-	} catch (error) {
+	} catch {
 		Log.warn(['stringifyJson', value]);
 		Log.error(`↑ The JSON could not be converted to a string. A stringifiable JSON is expected.`);
 		throw new Error();
@@ -275,11 +274,11 @@ export const parseJson = <T>(value: unknown): T => {
 		try {
 			// "null", "true", "false", "0" works too
 			return JSON.parse(value);
-		} catch (error) {
+		} catch {
 			if (JSON_CHARS.test(value)) {
 				try {
 					return JSON.parse(value.replace(/'/g, '"'));
-				} catch (error) {
+				} catch {
 					Log.warn(['parseJson', value]);
 					Log.error(`↑ The JSON string could not be parsed. Make sure that single quotes in the text are escaped (&#8216;).`);
 				}

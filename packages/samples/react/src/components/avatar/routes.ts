@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { AvatarBasic } from './basic';
 
 export const AVATAR_ROUTES: Routes = {

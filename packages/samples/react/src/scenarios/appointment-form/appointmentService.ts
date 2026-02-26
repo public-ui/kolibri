@@ -1,4 +1,4 @@
-import { Option } from '@public-ui/components';
+import type { Option } from '@public-ui/components';
 
 const getRandomIntInclusive = (min: number, max: number) => {
 	min = Math.ceil(min);

@@ -1,8 +1,8 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
-import type { InternalButtonProps } from '../../schema';
+import type { OptionalButtonProps, RequiredButtonProps } from '../../schema';
 
-export type ButtonProps = Partial<InternalButtonProps> & {
+export type ButtonProps = Partial<RequiredButtonProps & OptionalButtonProps> & {
 	label: string;
 	class?: string;
 	onClick?: (event: MouseEvent) => void;

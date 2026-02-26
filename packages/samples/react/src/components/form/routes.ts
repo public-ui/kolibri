@@ -1,4 +1,4 @@
-import { Routes } from '../../shares/types';
+import type { Routes } from '../../shares/types';
 import { FormBasic } from './basic';
 import { FormErrorList } from './error-list';
 

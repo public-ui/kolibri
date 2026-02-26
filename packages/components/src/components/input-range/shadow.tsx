@@ -10,7 +10,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputRangeAPI,
 	InputRangeStates,
 	InputTypeOnDefault,
@@ -53,7 +52,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return Promise.resolve(this.refInputNumber?.focus());
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				this.refInputNumber?.focus();
+				resolve();
+			});
+		});
 	}
 
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
@@ -146,11 +150,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	private getGenericInputProps() {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { _suggestions, ...other } = this.state;
-
 		return {
-			state: { ...other, _suggestions: [] },
+			state: { ...this.state, _suggestions: [] },
 			...this.controller.onFacade,
 			onChange: this.onChange,
 			onInput: this.onInput,
@@ -260,12 +261,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
@@ -386,11 +381,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Watch('_icons')
 	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_label')

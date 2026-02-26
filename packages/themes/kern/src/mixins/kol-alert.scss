@@ -1,0 +1,170 @@
+@use '~@public-ui/components/index' as *;
+@use './typography' as *;
+
+@mixin kol-alert {
+	.kol-alert {
+		$root: &;
+		position: relative;
+		flex-direction: column;
+		--alert-background-color: var(--kern-color-layout-background-default);
+
+		&__icon {
+			#{$root}--type-info & {
+				color: var(--kern-color-feedback-info);
+
+				&::part(icon)::before {
+					content: '\e910';
+				}
+			}
+
+			#{$root}--type-error & {
+				color: var(--kern-color-feedback-danger);
+
+				&::part(icon)::before {
+					content: '\e919';
+				}
+			}
+
+			#{$root}--type-success & {
+				color: var(--kern-color-feedback-success);
+
+				&::part(icon)::before {
+					content: '\e906';
+				}
+			}
+
+			#{$root}--type-warning & {
+				color: var(--kern-color-feedback-warning);
+
+				&::part(icon)::before {
+					content: '\e903';
+				}
+			}
+		}
+
+		&--variant-card {
+			border-radius: var(--kern-metric-border-radius-default);
+			border: var(--kern-metric-border-width-default) solid transparent;
+
+			&#{$root}--type-default {
+				border-color: var(--kern-color-form-input-border);
+			}
+
+			&#{$root}--type-error {
+				border-color: var(--kern-color-feedback-danger);
+			}
+
+			&#{$root}--type-info {
+				border-color: var(--kern-color-feedback-info);
+			}
+
+			&#{$root}--type-success {
+				border-color: var(--kern-color-feedback-success);
+			}
+
+			&#{$root}--type-warning {
+				border-color: var(--kern-color-feedback-warning);
+			}
+
+			.kol-alert__closer {
+				top: var(--kern-metric-space-default);
+			}
+		}
+
+		&--variant-msg {
+			color: var(--alert-msg-text-color);
+		}
+
+		&--type-default {
+			--alert-accent-color: var(--kern-color-form-input-background);
+			--alert-msg-text-color: var(--kern-color-form-input-border);
+		}
+
+		&--type-info {
+			--alert-accent-color: var(--kern-color-feedback-info-background);
+			--alert-msg-text-color: var(--kern-color-feedback-info,);
+		}
+
+		&--type-error {
+			--alert-accent-color: var(--kern-color-feedback-danger-background);
+			--alert-msg-text-color: var(--kern-color-feedback-danger);
+		}
+
+		&--type-warning {
+			--alert-accent-color: var(--kern-color-feedback-warning-background);
+			--alert-msg-text-color: var(--kern-color-feedback-warning);
+		}
+
+		&--type-success {
+			--alert-accent-color: var(--kern-color-feedback-success-background);
+			--alert-msg-text-color: var(--kern-color-feedback-success);
+		}
+
+		&__content {
+			#{$root}--variant-card & {
+				background: var(--kern-color-layout-background-default, #fff);
+				display: flex;
+				padding: var(--kern-metric-space-default) var(--kern-metric-space-large) var(--kern-metric-space-default) var(--kern-metric-space-large);
+				gap: var(--kern-metric-space-small);
+				flex-direction: column;
+			}
+		}
+
+		&__container {
+			display: flex;
+			gap: to-rem(8);
+			align-items: center;
+
+			#{$root}--variant-card & {
+				background-color: var(--alert-accent-color);
+				padding: var(--kern-metric-space-default);
+			}
+
+			#{$root}--variant-msg & {
+				gap: to-rem(4);
+			}
+		}
+
+		&__container-content {
+			display: grid;
+			gap: calc(4rem / var(--kolibri-root-font-size));
+		}
+
+		&__closer {
+			border-radius: var(--kern-metric-border-radius-default);
+
+			&:hover {
+				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+			}
+
+			.kol-icon {
+				color: var(--kern-color-action-default);
+
+				font-size: to-rem(24);
+			}
+		}
+
+		&__heading {
+			@include kern-title;
+
+			&::after {
+				content: '\00A0'; // nbsp
+				white-space: pre; // ensure space renders
+			}
+
+			#{$root}--variant-card & {
+				padding: var(--kern-metric-space-small) 0;
+			}
+		}
+
+		&__icon {
+			#{$root}--variant-card & {
+				font-size: to-rem(40);
+			}
+
+			#{$root}--variant-msg & {
+				font-size: to-rem(20);
+			}
+		}
+	}
+}

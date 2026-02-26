@@ -16,7 +16,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 			} else {
 				el = null;
 			}
-		} catch (error) {
+		} catch {
 			/**
 			 * Try is needed for SSR.
 			 * - no HTMLElement is available
@@ -50,7 +50,7 @@ export const propagateResetEventToForm = (
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as FormProps;
 			if (typeof kolForm._on?.onReset === 'function') {
-				typeof kolForm._on?.onReset(event);
+				kolForm._on?.onReset(event);
 			}
 		}
 	}

@@ -39,7 +39,9 @@ const toVal = (mix: ClassValue): string => {
 				if (item) {
 					const y = toVal(item);
 					if (y) {
-						str && (str += ' ');
+						if (str) {
+							str += ' ';
+						}
 						str += y;
 					}
 				}
@@ -47,7 +49,9 @@ const toVal = (mix: ClassValue): string => {
 		} else {
 			for (const key in mix) {
 				if (mix[key]) {
-					str && (str += ' ');
+					if (str) {
+						str += ' ';
+					}
 					str += key;
 				}
 			}
@@ -63,7 +67,9 @@ const clsx = (...args: ClassValue[]): string => {
 		if (arg) {
 			const x = toVal(arg);
 			if (x) {
-				str && (str += ' ');
+				if (str) {
+					str += ' ';
+				}
 				str += x;
 			}
 		}

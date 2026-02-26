@@ -10,7 +10,6 @@ import type {
 	ButtonTypePropType,
 	FocusableElement,
 	IconsPropType,
-	IdPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
 	NamePropType,
@@ -18,6 +17,7 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 @Component({
@@ -63,7 +63,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_disabled={this._disabled}
 				_hideLabel={this._hideLabel}
 				_icons={this._icons}
-				_id={this._id}
 				_inline={this._inline}
 				_label={this._label}
 				_name={this._name}
@@ -73,6 +72,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_value={this._value}
+				_variant={this._variant}
 			>
 				<slot name="expert" slot="expert"></slot>
 			</KolButtonWcTag>
@@ -123,12 +123,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsPropType;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
@@ -182,4 +176,9 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 }

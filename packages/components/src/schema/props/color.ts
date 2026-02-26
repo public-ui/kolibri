@@ -5,20 +5,11 @@ import type { ColorContrast, WatchOptions } from '../utils';
 import { a11yHint, createContrastColorPair, Log, watchValidator } from '../utils';
 
 /**
- * Defines the colors for primary, secondary and neutral.
- */
-type CharacteristicColors = {
-	primary: string;
-	secondary: string;
-	neutral: string;
-};
-
-/**
  * Defines the backgroundColor and foregroundColor.
  */
 export type ColorPair = {
 	backgroundColor: string;
-	foregroundColor: Stringified<CharacteristicColors>;
+	foregroundColor: string;
 };
 
 export type PropColor = ColorPair;
@@ -35,7 +26,7 @@ function isColorObjectString(value: string): { type: typeOfColorType; value: Pro
 		try {
 			const parsed = JSON.parse(value) as unknown;
 			if (isValidColorPair(parsed as ColorPair)) return { type: 'ColorPair', value: parsed as ColorPair };
-		} catch (error) {
+		} catch {
 			return { type: null, value: null };
 		}
 	}
@@ -60,16 +51,7 @@ function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; 
 
 /* validate different color options */
 function isValidColorPair(value: ColorPair): boolean {
-	return !!(
-		typeof value === 'object' &&
-		value &&
-		typeof value.backgroundColor === 'string' &&
-		(typeof value.foregroundColor === 'string' ||
-			(value.foregroundColor &&
-				typeof value.foregroundColor.primary === 'string' &&
-				typeof value.foregroundColor.secondary === 'string' &&
-				typeof value.foregroundColor.neutral === 'string'))
-	);
+	return !!(typeof value === 'object' && value && typeof value.backgroundColor === 'string' && typeof value.foregroundColor === 'string');
 }
 
 function validatorFunction(value?: Stringified<PropColor>): boolean {
@@ -98,7 +80,6 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			const asColorPair = valueType.value as ColorPair;
 			let foreground = '';
 			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
-			else if (asColorPair.foregroundColor?.primary) foreground = asColorPair.foregroundColor.primary;
 			if (!foreground || typeof foreground !== 'string') foreground = '#fff';
 			colorContrast = createContrastColorPair({
 				background: asColorPair.backgroundColor,

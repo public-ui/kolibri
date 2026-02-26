@@ -117,7 +117,8 @@ export class KolNav implements NavAPI {
 	}
 
 	private entry(collapsible: boolean, hasChildren: boolean, entry: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean, ariaID: string): JSX.Element {
-		const icons = this.buildIconObject(collapsible && hasChildren, expanded, entry._icons?.toString());
+		const leftIcon = typeof entry._icons === 'string' ? entry._icons : typeof entry._icons?.left === 'string' ? entry._icons.left : undefined;
+		const icons = this.buildIconObject(collapsible && hasChildren, expanded, leftIcon);
 
 		return (
 			<div class="kol-nav__entry-wrapper">

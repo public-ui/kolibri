@@ -19,7 +19,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 	objectObjectHandler(value, () => {
 		try {
 			value = parseJson<MsgPropType>(value);
-		} catch (e) {
+		} catch {
 			// value keeps original value
 		}
 		watchValidator<Stringified<MsgPropType>>(
@@ -66,7 +66,7 @@ export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | unde
 	if (typeof msg === 'string') {
 		try {
 			return parseJson<MsgPropType>(msg);
-		} catch (e) {
+		} catch {
 			return { _description: msg, _type: 'error' };
 		}
 	}

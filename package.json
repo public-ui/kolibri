@@ -1,16 +1,16 @@
 {
 	"devDependencies": {
-		"lerna": "9.0.3",
+		"lerna": "9.0.4",
 		"license-report": "6.8.1",
-		"npm-check-updates": "19.3.1",
+		"npm-check-updates": "19.5.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "16.26.1",
-		"stylelint-config-recommended-scss": "16.0.2",
-		"stylelint-config-standard": "39.0.1",
+		"stylelint": "17.4.0",
+		"stylelint-config-recommended-scss": "17.0.0",
+		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "7.0.1",
-		"stylelint-scss": "6.14.0"
+		"stylelint-scss": "7.0.0"
 	},
 	"engines": {
 		"pnpm": "^10"
@@ -22,7 +22,7 @@
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm format:config && pnpm format:markdown && pnpm format:packages",
-		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/.eslintrc.*'",
+		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/eslint.config.{js,cjs,mjs}'",
 		"format:markdown": "prettier --write '**/*.md'",
 		"format:packages": "pnpm -r format -w",
 		"lint": "pnpm -r lint",
@@ -31,8 +31,8 @@
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/core,@unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @unocss/*",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @kern-ui/*,@stencil/core,@unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @kern-ui/*,@unocss/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",

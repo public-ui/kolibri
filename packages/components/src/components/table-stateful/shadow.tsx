@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
@@ -235,8 +234,7 @@ export class KolTableStateful implements TableAPI {
 			objectObjectHandler(value, () => {
 				try {
 					value = parseJson<KoliBriTableHeaders>(value);
-					// eslint-disable-next-line no-empty
-				} catch (e) {
+				} catch {
 					// value behält den ursprünglichen Wert
 				}
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
@@ -341,8 +339,7 @@ export class KolTableStateful implements TableAPI {
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
 			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
-			// eslint-disable-next-line no-empty
-		} catch (e) {
+		} catch {
 			// value behält den ursprünglichen Wert
 		}
 

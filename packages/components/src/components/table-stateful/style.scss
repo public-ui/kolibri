@@ -12,16 +12,4 @@
 	@include kol-popover-button-styles;
 	@include kol-table-stateless-styles;
 	@include kol-pagination-styles;
-
-	.kol-table-stateful {
-		&__pagination,
-		&__pagination-wrapper {
-			display: grid;
-			place-items: center;
-
-			@media (min-width: 1024px) {
-				grid-auto-flow: column;
-			}
-		}
-	}
 }

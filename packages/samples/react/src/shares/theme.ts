@@ -21,4 +21,8 @@ export const PUBLIC_THEMES: Theme[] = [
 		name: 'European Union (in progress)',
 		key: 'ecl-eu',
 	},
+	{
+		name: 'KERN-UX Standard (v2)',
+		key: 'kern-v2',
+	},
 ];
