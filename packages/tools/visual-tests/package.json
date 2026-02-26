@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.2.2",
-		"http-server": "^14.1.0",
+		"http-server": "14.1.0",
 		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
