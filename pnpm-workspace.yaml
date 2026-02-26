@@ -41,3 +41,6 @@ overrides:
   webpack@>=5.0.0-alpha.0 <5.94.0: '>=5.94.0'
   webpack@>=5.49.0 <5.104.0: '>=5.104.0'
   webpack@>=5.49.0 <=5.104.0: '>=5.104.1'
+
+patchedDependencies:
+  '@public-ui/stencil-react-output-target@0.6.0': patches/@public-ui__stencil-react-output-target@0.6.0.patch
