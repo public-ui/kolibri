@@ -157,11 +157,7 @@ export const TableHighlightRow: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Performance demo: {ROWS_COUNT} rows with action buttons defined once in the column header using the refactored approach. The factory function generates
-					actions for each row on demand, eliminating redundant data and improving maintainability.
-				</p>
-				<p>
-					Actions stay type-safe with <code>ActionColumnPropType</code> (ButtonProps or LinkProps), and no custom render functions are needed.
+					In this example, the row with the index specified in the input field is highlighted by rendering its content in bold. The <code>render</code> function of each column checks if the current row's ID matches the highlight index and applies the appropriate styling.
 				</p>
 			</SampleDescription>
 
