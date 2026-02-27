@@ -24,9 +24,13 @@ export * from './show';
 export * from './sizes';
 export * from './span-icons';
 export * from './src';
+<<<<<<< HEAD
 export * from './srcset';
 export * from './unit';
 export * from './value-number';
 export * from './value-number-clamped';
 export * from './variant-progress';
 export * from './variant-quote';
+=======
+export * from './variant-spin';
+>>>>>>> d641135ef3 (refactor(spin): migrate to skeleton blueprint architecture)
