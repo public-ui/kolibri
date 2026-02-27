@@ -59,20 +59,21 @@
 		&__cell {
 			border-color: var(--color-primary);
 			border-style: solid;
+			position: relative;
 			padding: to-rem(15) to-rem(16) to-rem(8) to-rem(8);
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
-			position: relative;
 
 			&::after {
-				content: '';
+				background-color: white;
 				display: block;
 				position: absolute;
-				background-color: white;
 				top: 0;
-				bottom: -2px;
 				right: 0;
+				bottom: -2px;
 				width: to-rem(8);
+
+				content: '';
 			}
 
 			&--header {
