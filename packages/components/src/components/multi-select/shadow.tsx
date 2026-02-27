@@ -6,7 +6,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -34,7 +33,6 @@ import type { InputStateWrapperProps } from '../../functional-component-wrappers
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
-import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import { translate } from '../../i18n';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { nonce } from '../../utils/dev.utils';
@@ -478,7 +476,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 
 						{hasSelections && !this.state._hideClearButton && (
 							<KolIconTag
-								_icons="codicon codicon-close"
+								_icons="kolicon-cross"
 								data-testid="multi-select-delete"
 								_label={this.translateDeleteSelection}
 								onClick={() => {
@@ -492,7 +490,14 @@ export class KolMultiSelect implements MultiSelectAPI {
 							/>
 						)}
 
-						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={isDisabled} tabIndex={isDisabled ? -1 : 0} />
+						<KolIconTag
+							_icons="kolicon-chevron-down"
+							_label=""
+							class={clsx('kol-custom-suggestions-toggle', {
+								'kol-custom-suggestions-toggle--disabled': isDisabled,
+							})}
+							onClick={this.toggleListbox.bind(this)}
+						/>
 					</div>
 
 					{this._isOpen && !isDisabled && (
@@ -509,6 +514,7 @@ export class KolMultiSelect implements MultiSelectAPI {
 									return (
 										<CustomSuggestionsOptionFc
 											index={index}
+											disabled={false}
 											option={option.label}
 											searchTerm={this._inputValue}
 											ref={(el) => {
@@ -740,12 +746,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
-	 * Defines the internal ID of the primary component element.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
@@ -864,11 +864,6 @@ export class KolMultiSelect implements MultiSelectAPI {
 	@Watch('_icons')
 	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: string): void {
-		this.controller.validateId(value);
 	}
 
 	@Watch('_label')
