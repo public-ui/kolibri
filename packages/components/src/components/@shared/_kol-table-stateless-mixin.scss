@@ -93,7 +93,7 @@
 			&--selection {
 				background-color: white;
 
-				position: sticky;
+				position: sticky !important;
 				left: 0;
 				z-index: 2;
 				width: var(--kol-table-selection-col-width, auto);
@@ -113,7 +113,7 @@
 			&--sticky-left,
 			&--sticky-right {
 				background-color: white;
-				position: sticky;
+				position: sticky !important;
 				z-index: 1;
 			}
 
