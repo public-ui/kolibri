@@ -146,11 +146,13 @@ export const TableHighlightRow: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				 <p>
-						This sample demonstrates how to programmatically highlight a specific row in a table. You can change the highlighted row by using the input field above the table.
+				<p>
+					This sample demonstrates how to programmatically highlight a specific row in a table. You can change the highlighted row by using the input field
+					above the table.
 				</p>
 				<p>
-						The highlighting is achieved by using a custom <code>render</code> function for each column, which checks if the current row's ID matches the selected highlight index and applies bold styling.
+					The highlighting is achieved by using a custom <code>render</code> function for each column, which checks if the current row's ID matches the selected
+					highlight index and applies bold styling.
 				</p>
 			</SampleDescription>
 
@@ -160,7 +162,7 @@ export const TableHighlightRow: FC = () => {
 					_label="Highlight Row Index"
 					_value={highlightIndex}
 					_on={{
-						onInput: (_, value) => setHighlightIndex(Number(value))
+						onInput: (_, value) => setHighlightIndex(Number(value)),
 					}}
 					_min={0}
 					_max={ROWS_COUNT - 1}
@@ -170,4 +172,3 @@ export const TableHighlightRow: FC = () => {
 		</>
 	);
 };
-
