@@ -1,8 +1,8 @@
-import type { Prop } from './helpers/factory';
+import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
-export type LoadingProp = Prop<'loading', string, 'eager' | 'lazy'>;
+export type LoadingProp = SimpleProp<'loading', 'eager' | 'lazy'>;
 export const loadingProp = createPropDefinition<LoadingProp>((v) => {
 	const s = normalizeString(v);
 	if (s === 'eager' || s === 'lazy') {

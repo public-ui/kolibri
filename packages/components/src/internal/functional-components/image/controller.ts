@@ -30,7 +30,7 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		});
 	}
 
-	public watchLoading(value?: string): void {
+	public watchLoading(value?: 'eager' | 'lazy'): void {
 		withValidPropValue<LoadingProp>(loadingProp, value, (v) => {
 			this.setProp('loading', v);
 		});

@@ -30,10 +30,10 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	 * Defines the loading mode for the image.
 	 */
 	@Prop()
-	public _loading?: string;
+	public _loading?: 'eager' | 'lazy';
 
 	@Watch('_loading')
-	public watchLoading(value?: string): void {
+	public watchLoading(value?: 'eager' | 'lazy'): void {
 		this.ctrl.watchLoading(value);
 	}
 
