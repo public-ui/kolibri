@@ -7,5 +7,5 @@ import type { ImageApi } from './api';
 export const ImageFC: FC<FunctionalComponentProps<ImageApi>> = (props) => {
 	const { alt, loading, sizes, src, srcset } = props;
 
-	return <img class="kol-image" alt={alt} loading={loading as 'eager' | 'lazy'} sizes={sizes || undefined} src={src} srcset={srcset || undefined} />;
+	return <img class="kol-image" alt={alt} loading={loading} sizes={sizes || undefined} src={src} srcset={srcset || undefined} />;
 };
