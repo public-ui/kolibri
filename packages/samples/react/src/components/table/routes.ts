@@ -4,6 +4,7 @@ import { TableActionColumnPerformance } from './action-columns-performance';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableDirectionAwareSort } from './direction-aware-sort';
+import { TableHighlightRow } from './highlight-row';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { InteractiveChildElements } from './interactive-child-elements';
 import { MultiSortTable } from './multi-sort';
@@ -32,6 +33,7 @@ export const TABLE_ROUTES: Routes = {
 		'horizontal-scrollbar': TableHorizontalScrollbar,
 		'interactive-child-elements': InteractiveChildElements,
 		'multi-sort': MultiSortTable,
+		'highlight-row': TableHighlightRow,
 		'non-hidable-columns': TableNonHidableColumns,
 		'pagination-position': PaginationPosition,
 		'predefined-settings': PredefinedSettings,
