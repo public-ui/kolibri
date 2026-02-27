@@ -50,7 +50,7 @@ export const PopoverButtonBasic: FC = () => {
 					right, bottom, left) using the <code>_popoverAlign</code> prop.
 				</p>
 			</SampleDescription>
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4 items-center">
 				<KolPopoverButton _label={'Actions'} _variant="primary" _icons={{ right: 'kolicon-chevron-down' }} ref={buttonRef}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>

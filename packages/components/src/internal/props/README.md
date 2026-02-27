@@ -31,13 +31,13 @@ type NameProp = SimpleProp<'name', string>;
 //                         └─ Key  └─ Both types
 ```
 
-### `PropDefinition<TExternal, TInternal>`
+### `PropDefinition<TInternal>`
 
-The normalization function receives the external type and returns the internal type:
+The normalization function receives `unknown` (since HTML attributes can be any type) and returns the internal type:
 
 ```typescript
-const countProp = createPropDefinition<number | string, number>(
-	normalizeInteger, // (value: number | string | undefined) → number
+const countProp = createPropDefinition<CountProp>(
+	normalizeInteger, // (value: unknown) → number (throws on invalid)
 	(v) => v >= 0, // (value: number) → boolean
 );
 ```

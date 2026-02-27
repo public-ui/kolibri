@@ -1,4 +1,4 @@
-import type { LabelProp } from '../../schema/props';
+import type { LabelProp } from '../../props';
 import type { ComponentApi } from '../generic-types';
 
 export interface ClickButtonApi extends ComponentApi {

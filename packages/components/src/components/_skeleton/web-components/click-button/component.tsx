@@ -1,9 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, Prop, Watch } from '@stencil/core';
-import type { ClickButtonApi } from '../../internal/functional-components/click-button/api';
-import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
-import { ClickButtonController } from '../../internal/functional-components/click-button/controller';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { ClickButtonApi } from '../../../../internal/functional-components/click-button/api';
+import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
+import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
+import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 
 @Component({
 	tag: 'kol-click-button',

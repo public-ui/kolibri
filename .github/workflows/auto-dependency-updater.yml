@@ -66,11 +66,10 @@ jobs:
           pnpm ncu:minor
           # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
           pnpm ncu:minor
-      # - name: Reinstall dependencies (prepare for fix)
-      #   run: pnpm i --no-frozen-lockfile
-      # - name: Try to fix audit issues
-      #   run: |
-      #     pnpm audit --audit-level high --fix --production
+      - name: Reinstall dependencies (prepare for fix)
+        run: pnpm i --no-frozen-lockfile
+      - name: Try to fix audit issues
+        run: pnpm audit --audit-level high --fix --production
       - name: Reinstall dependencies (final lock file)
         run: pnpm i --no-frozen-lockfile
       - name: Fix format
