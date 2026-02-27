@@ -1,4 +1,4 @@
-import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
+import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
 import { KolInputNumber, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
@@ -79,8 +79,29 @@ const DATA: DataRow[] = generateData(ROWS_COUNT);
 
 export const TableHighlightRow: FC = () => {
 	const [highlightIndex, setHighlightIndex] = React.useState(2); // Index of the row to highlight (0-based)
-	const HEADERS = React.useMemo(() => {
-		const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
+	const headers = React.useMemo<KoliBriTableHeaders>(() => {
+		const createRenderFn = (dataKey: keyof DataRow) => (el: HTMLElement, data: KoliBriTableDataType) => {
+			const rowData = data.data as DataRow;
+			if (rowData.id === highlightIndex + 1) {
+				el.innerHTML = `<strong>${String(rowData[dataKey])}</strong>`;
+			} else {
+				el.textContent = String(rowData[dataKey]);
+			}
+		};
+
+		const createCompareFn = (key: keyof DataRow) => (data0: unknown, data1: unknown) => {
+			const val0 = (data0 as DataRow)[key];
+			const val1 = (data1 as DataRow)[key];
+			if (typeof val0 === 'number' && typeof val1 === 'number') {
+				return val0 - val1;
+			}
+			if (typeof val0 === 'string' && typeof val1 === 'string') {
+				return val0.localeCompare(val1, 'de');
+			}
+			return 0;
+		};
+
+		return {
 			horizontal: [
 				[
 					{
@@ -88,47 +109,24 @@ export const TableHighlightRow: FC = () => {
 						label: 'ID',
 						textAlign: 'left',
 						width: 60,
-						compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as unknown as DataRow).id - (data1 as unknown as DataRow).id,
-						render: (el: HTMLElement, data: KoliBriTableDataType) => {
-							const rowData = data.data as unknown as DataRow;
-							if (rowData.id === highlightIndex + 1) {
-								el.innerHTML = `<b>${rowData.id}</b>`;
-							}else {
-								el.textContent = String(rowData.id);
-							}
-						},
+						compareFn: createCompareFn('id'),
+						render: createRenderFn('id'),
 						sortDirection: 'ASC',
 					},
 					{
 						key: 'name',
 						label: 'Name',
 						textAlign: 'left',
-						compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-							(data0 as unknown as DataRow).name.localeCompare((data1 as unknown as DataRow).name, 'de'),
-						render: (el: HTMLElement, data: KoliBriTableDataType) => {
-							const rowData = data.data as unknown as DataRow;
-							if (rowData.id === highlightIndex + 1) {
-								el.innerHTML = `<b>${rowData.name}</b>`;
-							}else {
-								el.textContent = rowData.name;
-							}
-						},
+						compareFn: createCompareFn('name'),
+						render: createRenderFn('name'),
 						sortDirection: 'ASC',
 					},
 					{
 						key: 'email',
 						label: 'E-Mail',
 						textAlign: 'left',
-						compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-							(data0 as unknown as DataRow).email.localeCompare((data1 as unknown as DataRow).email, 'de'),
-						render: (el: HTMLElement, data: KoliBriTableDataType) => {
-							const rowData = data.data as unknown as DataRow;
-							if (rowData.id === highlightIndex + 1) {
-								el.innerHTML = `<b>${rowData.email}</b>`;
-							}else {
-								el.textContent = rowData.email;
-							}
-						},
+						compareFn: createCompareFn('email'),
+						render: createRenderFn('email'),
 						sortDirection: 'ASC',
 					},
 					{
@@ -136,33 +134,29 @@ export const TableHighlightRow: FC = () => {
 						label: 'Status',
 						textAlign: 'center',
 						width: 100,
-						compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-							(data0 as unknown as DataRow).status.localeCompare((data1 as unknown as DataRow).status, 'de'),
-						render: (el: HTMLElement, data: KoliBriTableDataType) => {
-							const rowData = data.data as unknown as DataRow;
-							if (rowData.id === highlightIndex + 1) {
-								el.innerHTML = `<b>${rowData.status}</b>`;
-							}else {
-								el.textContent = rowData.status;
-							}
-						},
+						compareFn: createCompareFn('status'),
+						render: createRenderFn('status'),
 						sortDirection: 'ASC',
-					}
+					},
 				],
 			],
-		};
-		return HEADERS;
+		} satisfies KoliBriTableHeaders;
 	}, [highlightIndex]);
+
 	return (
 		<>
 			<SampleDescription>
+				 <p>
+						This sample demonstrates how to programmatically highlight a specific row in a table. You can change the highlighted row by using the input field above the table.
+				</p>
 				<p>
-					In this example, the row with the index specified in the input field is highlighted by rendering its content in bold. The <code>render</code> function of each column checks if the current row's ID matches the highlight index and applies the appropriate styling.
+						The highlighting is achieved by using a custom <code>render</code> function for each column, which checks if the current row's ID matches the selected highlight index and applies bold styling.
 				</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<section className="flex flex-col gap-4">
 				<KolInputNumber
+					className="self-start"
 					_label="Highlight Row Index"
 					_value={highlightIndex}
 					_on={{
@@ -171,7 +165,7 @@ export const TableHighlightRow: FC = () => {
 					_min={0}
 					_max={ROWS_COUNT - 1}
 				/>
-				<KolTableStateful _label="Benutzerverwaltung mit Hervorhebung" _headers={HEADERS} _data={DATA} className="block" />
+				<KolTableStateful _label="Benutzerverwaltung mit Hervorhebung" _headers={headers} _data={DATA} className="block" />
 			</section>
 		</>
 	);
