@@ -160,7 +160,7 @@ export const TableHighlightRow: FC = () => {
 					_label="Highlight Row Index"
 					_value={highlightIndex}
 					_on={{
-						onInput: (_, value) => setHighlightIndex(value as number)
+						onInput: (_, value) => setHighlightIndex(Number(value))
 					}}
 					_min={0}
 					_max={ROWS_COUNT - 1}
