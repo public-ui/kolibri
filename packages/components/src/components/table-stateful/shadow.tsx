@@ -20,6 +20,7 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
+	TableHighlightedRowsPropType,
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	TableStates,
@@ -36,6 +37,7 @@ import {
 	validatePaginationPosition,
 	validateTableData,
 	validateTableDataFoot,
+	validateTableHighlightedRows,
 	validateTableSelection,
 	validateTableStatefulCallbacks,
 	watchValidator,
@@ -94,6 +96,11 @@ export class KolTableStateful implements TableAPI {
 	 * Defines the horizontal and vertical table headers.
 	 */
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
+
+	/**
+	 * Defines the indices of the rows that should be highlighted.
+	 */
+	@Prop() public _highlightedRows?: TableHighlightedRowsPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -173,6 +180,11 @@ export class KolTableStateful implements TableAPI {
 	@Watch('_hasSettingsMenu')
 	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
 		validateHasSettingsMenu(this, value);
+	}
+
+	@Watch('_highlightedRows')
+	public validateHighlightedRows(value?: TableHighlightedRowsPropType): void {
+		validateTableHighlightedRows(this, value);
 	}
 
 	/**
@@ -379,6 +391,7 @@ export class KolTableStateful implements TableAPI {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
+		this.validateHighlightedRows(this._highlightedRows);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validatePagination(this._pagination);
@@ -565,6 +578,7 @@ export class KolTableStateful implements TableAPI {
 					ref={this.catchRef}
 					_data={displayedData}
 					_headerCells={headerCells}
+					_highlightedRows={this.state._highlightedRows}
 					_label={this.state._label}
 					_dataFoot={this.state._dataFoot}
 					_on={{

@@ -116,6 +116,10 @@
 			display: none;
 		}
 
+		&__row--highlighted {
+			font-weight: bold;
+		}
+
 		&__selection-label {
 			display: flex;
 			position: relative;

@@ -1,7 +1,8 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
+import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableHighlightedRows, PropTableSelection, StatefulPropTableCallbacks } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
+import type { TableHighlightedRowsPropType } from '../props/table-highlighted-rows';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 import type { LinkProps } from './link';
@@ -66,6 +67,7 @@ type OptionalProps = {
 	allowMultiSort: boolean;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 } & PropTableDataFoot &
+	PropTableHighlightedRows &
 	PropPaginationPosition &
 	PropTableSelection &
 	StatefulPropTableCallbacks &
@@ -81,6 +83,7 @@ type RequiredStates = {
 } & PropLabel &
 	PropPaginationPosition;
 type OptionalStates = {
+	highlightedRows: TableHighlightedRowsPropType;
 	sortDirection: KoliBriSortDirection;
 	selection: KoliBriTableSelection;
 } & StatefulPropTableCallbacks &

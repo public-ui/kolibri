@@ -21,6 +21,7 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableHighlightedRowsPropType,
 	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
@@ -33,6 +34,7 @@ import {
 	validateTableData,
 	validateTableDataFoot,
 	validateTableHeaderCells,
+	validateTableHighlightedRows,
 	validateTableSelection,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
@@ -99,6 +101,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _headerCells!: TableHeaderCellsPropType;
 
 	/**
+	 * Defines the indices of the rows that should be highlighted.
+	 */
+	@Prop() public _highlightedRows?: TableHighlightedRowsPropType;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: string;
@@ -147,6 +154,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		this.previousHeaderCells = this.state._headerCells;
+	}
+
+	@Watch('_highlightedRows')
+	public validateHighlightedRows(value?: TableHighlightedRowsPropType): void {
+		validateTableHighlightedRows(this, value);
 	}
 
 	@Watch('_label')
@@ -236,6 +248,10 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private getDataKey(data: KoliBriTableDataType) {
 		return this.dataToKeyMap.get(data);
+	}
+
+	private isRowHighlighted(rowIndex: number): boolean {
+		return Array.isArray(this.state._highlightedRows) && this.state._highlightedRows.includes(rowIndex);
 	}
 
 	/**
@@ -506,6 +522,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
+		this.validateHighlightedRows(this._highlightedRows);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
@@ -621,11 +638,14 @@ export class KolTableStateless implements TableStatelessAPI {
 			key = this.getDataKey(row[0].data) ?? key;
 		}
 
+		const isHighlighted = !isFooter && this.isRowHighlighted(rowIndex);
+
 		return (
 			<tr
 				class={clsx('kol-table__row', {
 					'kol-table__row--body': !isFooter,
 					'kol-table__row--footer': isFooter,
+					'kol-table__row--highlighted': isHighlighted,
 				})}
 				key={`row-${key}`}
 			>

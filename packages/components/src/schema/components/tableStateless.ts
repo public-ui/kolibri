@@ -1,12 +1,13 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, TableHeaderCells } from '../props';
+import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableHighlightedRows, PropTableSelection, TableHeaderCells } from '../props';
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
+import type { TableHighlightedRowsPropType } from '../props/table-highlighted-rows';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 
 type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
 
-type OptionalProps = PropTableCallbacks & PropTableDataFoot & PropTableSelection & PropHasSettingsMenu;
+type OptionalProps = PropTableCallbacks & PropTableDataFoot & PropTableHighlightedRows & PropTableSelection & PropHasSettingsMenu;
 
 type RequiredStates = {
 	headerCells: TableHeaderCells;
@@ -15,6 +16,7 @@ type RequiredStates = {
 
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];
+	highlightedRows: TableHighlightedRowsPropType;
 	selection: KoliBriTableSelection;
 } & PropHasSettingsMenu &
 	PropTableCallbacks;

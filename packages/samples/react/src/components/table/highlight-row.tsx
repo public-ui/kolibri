@@ -1,4 +1,4 @@
-import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableHeaders } from '@public-ui/components';
 import { KolInputNumber, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
@@ -77,71 +77,57 @@ const generateData = (count: number): DataRow[] => {
 
 const DATA: DataRow[] = generateData(ROWS_COUNT);
 
+const createCompareFn = (key: keyof DataRow) => (data0: unknown, data1: unknown) => {
+	const val0 = (data0 as DataRow)[key];
+	const val1 = (data1 as DataRow)[key];
+	if (typeof val0 === 'number' && typeof val1 === 'number') {
+		return val0 - val1;
+	}
+	if (typeof val0 === 'string' && typeof val1 === 'string') {
+		return val0.localeCompare(val1, 'de');
+	}
+	return 0;
+};
+
+const HEADERS: KoliBriTableHeaders = {
+	horizontal: [
+		[
+			{
+				key: 'id',
+				label: 'ID',
+				textAlign: 'left',
+				width: 60,
+				compareFn: createCompareFn('id'),
+				sortDirection: 'ASC',
+			},
+			{
+				key: 'name',
+				label: 'Name',
+				textAlign: 'left',
+				compareFn: createCompareFn('name'),
+				sortDirection: 'ASC',
+			},
+			{
+				key: 'email',
+				label: 'E-Mail',
+				textAlign: 'left',
+				compareFn: createCompareFn('email'),
+				sortDirection: 'ASC',
+			},
+			{
+				key: 'status',
+				label: 'Status',
+				textAlign: 'center',
+				width: 100,
+				compareFn: createCompareFn('status'),
+				sortDirection: 'ASC',
+			},
+		],
+	],
+};
+
 export const TableHighlightRow: FC = () => {
-	const [highlightIndex, setHighlightIndex] = React.useState(2); // Index of the row to highlight (0-based)
-	const headers = React.useMemo<KoliBriTableHeaders>(() => {
-		const createRenderFn = (dataKey: keyof DataRow) => (el: HTMLElement, data: KoliBriTableDataType) => {
-			const rowData = data.data as DataRow;
-			if (rowData.id === highlightIndex + 1) {
-				el.innerHTML = `<strong>${String(rowData[dataKey])}</strong>`;
-			} else {
-				el.textContent = String(rowData[dataKey]);
-			}
-		};
-
-		const createCompareFn = (key: keyof DataRow) => (data0: unknown, data1: unknown) => {
-			const val0 = (data0 as DataRow)[key];
-			const val1 = (data1 as DataRow)[key];
-			if (typeof val0 === 'number' && typeof val1 === 'number') {
-				return val0 - val1;
-			}
-			if (typeof val0 === 'string' && typeof val1 === 'string') {
-				return val0.localeCompare(val1, 'de');
-			}
-			return 0;
-		};
-
-		return {
-			horizontal: [
-				[
-					{
-						key: 'id',
-						label: 'ID',
-						textAlign: 'left',
-						width: 60,
-						compareFn: createCompareFn('id'),
-						render: createRenderFn('id'),
-						sortDirection: 'ASC',
-					},
-					{
-						key: 'name',
-						label: 'Name',
-						textAlign: 'left',
-						compareFn: createCompareFn('name'),
-						render: createRenderFn('name'),
-						sortDirection: 'ASC',
-					},
-					{
-						key: 'email',
-						label: 'E-Mail',
-						textAlign: 'left',
-						compareFn: createCompareFn('email'),
-						render: createRenderFn('email'),
-						sortDirection: 'ASC',
-					},
-					{
-						key: 'status',
-						label: 'Status',
-						textAlign: 'center',
-						width: 100,
-						compareFn: createCompareFn('status'),
-						render: createRenderFn('status'),
-						sortDirection: 'ASC',
-					},
-				],
-			],
-		} satisfies KoliBriTableHeaders;
-	}, [highlightIndex]);
+	const [highlightIndex, setHighlightIndex] = React.useState(2);
 
 	return (
 		<>
@@ -151,8 +137,8 @@ export const TableHighlightRow: FC = () => {
 					above the table.
 				</p>
 				<p>
-					The highlighting is achieved by using a custom <code>render</code> function for each column, which checks if the current row's ID matches the selected
-					highlight index and applies bold styling.
+					The highlighting is achieved by using the <code>_highlightedRows</code> property, which accepts an array of row indices to highlight with bold
+					styling.
 				</p>
 			</SampleDescription>
 
@@ -167,7 +153,13 @@ export const TableHighlightRow: FC = () => {
 					_min={0}
 					_max={ROWS_COUNT - 1}
 				/>
-				<KolTableStateful _label="Benutzerverwaltung mit Hervorhebung" _headers={headers} _data={DATA} className="block" />
+				<KolTableStateful
+					_label="Benutzerverwaltung mit Hervorhebung"
+					_headers={HEADERS}
+					_data={DATA}
+					_highlightedRows={[highlightIndex]}
+					className="block"
+				/>
 			</section>
 		</>
 	);
