@@ -3,40 +3,40 @@
 
 @layer kol-component {
 	.kol-quote {
-		$root: &;
 		display: inline;
 		margin: 0;
 		padding: 0;
+	}
 
-		&__cite {
-			&::before {
-				@at-root #{$root}--block & {
-					padding-right: 0.5em;
-				}
+	.kol-quote__cite {
+		&::before {
+			content: '—';
 
-				@at-root #{$root}--inline & {
-					padding: 0.5em;
-				}
-				content: '—';
+			.kol-quote--block & {
+				padding-right: 0.5em;
+			}
+
+			.kol-quote--inline & {
+				padding: 0.5em;
 			}
 		}
+	}
 
-		&__figcaption {
-			@at-root #{$root}--block & {
-				display: inline;
-				margin: 0;
-				padding: 0;
-			}
+	.kol-quote__figcaption {
+		.kol-quote--block & {
+			display: inline;
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	.kol-quote__blockquote {
+		&::before {
+			content: open-quote;
 		}
 
-		&__blockquote {
-			&::before {
-				content: open-quote;
-			}
-
-			&::after {
-				content: close-quote;
-			}
+		&::after {
+			content: close-quote;
 		}
 	}
 }
