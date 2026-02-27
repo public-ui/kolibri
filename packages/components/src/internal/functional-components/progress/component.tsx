@@ -65,6 +65,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 	const isPercentage = unit === '%';
 	const liveProgressValue = isPercentage ? `${Math.round((liveValue / max) * 100)}` : liveValue;
 	const displayValue = isPercentage ? Math.round((value / max) * 100) : value;
+	const valueColumnWidth = `${`${(isPercentage ? 100 : max) + 1}`.length}ch`;
 
 	return (
 		<div class="kol-progress">
@@ -84,7 +85,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 					</div>
 				)}
 				{variant === 'bar' && (
-					<div class="kol-progress__bar-value" style={{ width: `${`${(isPercentage ? 100 : max) + 1}`.length}ch` }}>
+					<div class="kol-progress__bar-value" style={{ width: valueColumnWidth }}>
 						{displayValue}
 					</div>
 				)}
