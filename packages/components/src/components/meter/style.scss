@@ -1,0 +1,64 @@
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+
+@layer kol-component {
+	.kol-meter {
+		&__bar {
+			display: grid;
+			column-gap: 0.05rem;
+			align-items: center;
+			grid-template-areas:
+				'LABEL LABEL LABEL'
+				'BAR VALUE UNIT';
+			grid-template-columns: 1fr auto;
+
+			&-label {
+				grid-column-end: 2;
+				grid-area: LABEL;
+			}
+
+			svg {
+				grid-area: BAR;
+			}
+
+			&-value {
+				grid-area: VALUE;
+				text-align: right;
+			}
+
+			&-unit {
+				grid-area: UNIT;
+			}
+
+			&-border {
+				fill: transparent;
+				stroke: black;
+			}
+
+			&-background {
+				fill: lightgray;
+				stroke: white;
+			}
+
+			&-fill {
+				stroke: transparent;
+
+				@media (prefers-reduced-motion: no-preference) {
+					transition: 250ms ease-in-out 50ms;
+				}
+
+				&--optimum {
+					fill: #2ea32e;
+				}
+
+				&--suboptimal {
+					fill: #c8a000;
+				}
+
+				&--critical {
+					fill: #c00;
+				}
+			}
+		}
+	}
+}
