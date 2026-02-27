@@ -153,13 +153,7 @@ export const TableHighlightRow: FC = () => {
 					_min={0}
 					_max={ROWS_COUNT - 1}
 				/>
-				<KolTableStateful
-					_label="Benutzerverwaltung mit Hervorhebung"
-					_headers={HEADERS}
-					_data={DATA}
-					_highlightedRows={[highlightIndex]}
-					className="block"
-				/>
+				<KolTableStateful _label="Benutzerverwaltung mit Hervorhebung" _headers={HEADERS} _data={DATA} _highlightedRows={[highlightIndex]} className="block" />
 			</section>
 		</>
 	);

@@ -1,6 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableHighlightedRows, PropTableSelection, StatefulPropTableCallbacks } from '../props';
+import type {
+	PropHasSettingsMenu,
+	PropLabel,
+	PropTableData,
+	PropTableDataFoot,
+	PropTableHighlightedRows,
+	PropTableSelection,
+	StatefulPropTableCallbacks,
+} from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { TableHighlightedRowsPropType } from '../props/table-highlighted-rows';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
