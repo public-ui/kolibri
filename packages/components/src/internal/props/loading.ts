@@ -2,11 +2,13 @@ import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
-export type LoadingProp = SimpleProp<'loading', 'eager' | 'lazy'>;
-export const loadingProp = createPropDefinition<LoadingProp>((v) => {
-	const s = normalizeString(v);
-	if (s === 'eager' || s === 'lazy') {
-		return s;
-	}
-	throw new Error(`Invalid loading value: ${s}`);
-});
+const LOADING_OPTIONS = ['eager', 'lazy'] as const;
+export type LoadingType = (typeof LOADING_OPTIONS)[number];
+export type LoadingProp = SimpleProp<'loading', LoadingType>;
+
+const LOADING_SET: ReadonlySet<string> = new Set(LOADING_OPTIONS);
+
+export const loadingProp = createPropDefinition<LoadingProp>(
+	(value: unknown) => normalizeString(value) as LoadingType,
+	(v) => LOADING_SET.has(v),
+);

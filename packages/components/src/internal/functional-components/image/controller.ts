@@ -1,4 +1,4 @@
-import type { AltProp, LoadingProp, SizesProp, SrcProp, SrcsetProp } from '../../props';
+import type { AltProp, LoadingProp, LoadingType, SizesProp, SrcProp, SrcsetProp } from '../../props';
 import { altProp, loadingProp, sizesProp, srcProp, srcsetProp, withValidPropValue } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
@@ -30,7 +30,7 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		});
 	}
 
-	public watchLoading(value?: 'eager' | 'lazy'): void {
+	public watchLoading(value?: LoadingType): void {
 		withValidPropValue<LoadingProp>(loadingProp, value, (v) => {
 			this.setProp('loading', v);
 		});

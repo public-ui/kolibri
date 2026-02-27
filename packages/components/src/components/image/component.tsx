@@ -4,6 +4,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
+import type { LoadingType } from '../../internal/props';
 
 @Component({
 	tag: 'kol-image',
@@ -30,10 +31,10 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	 * Defines the loading mode for the image.
 	 */
 	@Prop()
-	public _loading?: 'eager' | 'lazy';
+	public _loading?: LoadingType;
 
 	@Watch('_loading')
-	public watchLoading(value?: 'eager' | 'lazy'): void {
+	public watchLoading(value?: LoadingType): void {
 		this.ctrl.watchLoading(value);
 	}
 
