@@ -4,7 +4,6 @@ import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 export type VariantSpinProp = SimpleProp<'variant', SpinVariantPropType>;
-export const variantSpinProp = createPropDefinition<VariantSpinProp>(
-	normalizeString as (value: unknown) => SpinVariantPropType,
-	(v) => ['cycle', 'dot', 'none'].includes(v),
+export const variantSpinProp = createPropDefinition<VariantSpinProp>(normalizeString as (value: unknown) => SpinVariantPropType, (v) =>
+	['cycle', 'dot', 'none'].includes(v),
 );
