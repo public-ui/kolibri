@@ -19,5 +19,3 @@ packages:
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
 
-overrides:
-  rollup@>=4.0.0 <4.59.0: '>=4.59.0'
