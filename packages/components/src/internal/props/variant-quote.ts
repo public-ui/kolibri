@@ -1,9 +1,9 @@
-import type { Prop } from './helpers/factory';
+import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 export type QuoteVariantType = 'block' | 'inline';
-export type VariantQuoteProp = Prop<'variant', string, QuoteVariantType>;
+export type VariantQuoteProp = SimpleProp<'variant', QuoteVariantType>;
 
 const QUOTE_VARIANT_OPTIONS: ReadonlySet<string> = new Set<QuoteVariantType>(['block', 'inline']);
 
