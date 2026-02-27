@@ -251,7 +251,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private isRowHighlighted(rowIndex: number): boolean {
-		return Array.isArray(this.state._highlightedRows) && this.state._highlightedRows.includes(rowIndex);
+		const highlighted = this.state._highlightedRows;
+		return Array.isArray(highlighted) && highlighted.length > 0 && highlighted.includes(rowIndex);
 	}
 
 	/**
