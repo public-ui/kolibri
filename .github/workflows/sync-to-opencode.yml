@@ -22,6 +22,7 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ matrix.branch }}
+          fetch-depth: 0
 
       - name: Sync ${{ matrix.branch }} to OpenCoDE
         uses: public-ui/kolibri/.github/actions/opencode-sync@develop
