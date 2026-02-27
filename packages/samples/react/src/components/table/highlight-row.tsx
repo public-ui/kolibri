@@ -83,7 +83,10 @@ export const TableHighlightRow: FC = () => {
 		const createRenderFn = (dataKey: keyof DataRow) => (el: HTMLElement, data: KoliBriTableDataType) => {
 			const rowData = data.data as DataRow;
 			if (rowData.id === highlightIndex + 1) {
-				el.innerHTML = `<strong>${String(rowData[dataKey])}</strong>`;
+				el.textContent = '';
+				const strong = document.createElement('strong');
+				strong.textContent = String(rowData[dataKey]);
+				el.appendChild(strong);
 			} else {
 				el.textContent = String(rowData[dataKey]);
 			}
