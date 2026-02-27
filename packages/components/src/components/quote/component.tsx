@@ -4,6 +4,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
 import { QuoteController } from '../../internal/functional-components/quote/controller';
+import type { QuoteVariantType } from '../../internal/props/variant-quote';
 
 @Component({
 	tag: 'kol-quote',
@@ -52,10 +53,10 @@ export class KolQuote implements WebComponentInterface<QuoteApi> {
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop()
-	public _variant?: string = 'inline';
+	public _variant?: QuoteVariantType = 'inline';
 
 	@Watch('_variant')
-	public watchVariant(value?: string): void {
+	public watchVariant(value?: QuoteVariantType): void {
 		this.ctrl.watchVariant(value);
 	}
 
