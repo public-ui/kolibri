@@ -60,9 +60,21 @@
 			border-color: var(--color-primary);
 			border-style: solid;
 			position: relative;
-			padding: to-rem(15) to-rem(16) to-rem(8) to-rem(8);
+			padding: to-rem(16) to-rem(16) to-rem(8) to-rem(8);
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
+
+			&::before {
+				background-color: white;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: to-rem(8);
+
+				content: '';
+			}
 
 			&::after {
 				background-color: white;
