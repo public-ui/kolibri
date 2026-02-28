@@ -7,8 +7,8 @@ export const MeterOptimum: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				The _optimum prop indicates the preferred value. Combined with _low and _high, the browser uses it to determine whether the current value is in a
-				good, acceptable or bad zone – which affects the semantic coloring.
+				The _optimum prop indicates the preferred value. Combined with _low and _high, the browser uses it to determine whether the current value is in a good,
+				acceptable or bad zone – which affects the semantic coloring.
 			</p>
 		</SampleDescription>
 

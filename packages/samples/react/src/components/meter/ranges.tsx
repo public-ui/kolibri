@@ -7,8 +7,8 @@ export const MeterRanges: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				The _low and _high props divide the meter scale into three zones: low (below _low), medium (between _low and _high) and high (above _high). These
-				zones are used by the browser to apply semantic coloring.
+				The _low and _high props divide the meter scale into three zones: low (below _low), medium (between _low and _high) and high (above _high). These zones
+				are used by the browser to apply semantic coloring.
 			</p>
 		</SampleDescription>
 

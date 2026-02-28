@@ -7,8 +7,8 @@ export const MeterOrientation: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				The _orientation prop switches the meter bar between horizontal (default) and vertical. Vertical meters grow from bottom to top and are useful for
-				tank fill levels, signal strength or similar scalar indicators.
+				The _orientation prop switches the meter bar between horizontal (default) and vertical. Vertical meters grow from bottom to top and are useful for tank
+				fill levels, signal strength or similar scalar indicators.
 			</p>
 		</SampleDescription>
 
