@@ -24,7 +24,7 @@ export class KolSkipNav implements SkipNavAPI {
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
 							<li class="kol-skip-nav__list-item" key={index}>
-								<KolLinkWcTag {...link} ref={index === 0 ? (el) => (this.firstLinkRef = el) : undefined}></KolLinkWcTag>
+								<KolLinkWcTag {...link} ref={index === 0 ? (el: HTMLKolLinkWcElement | undefined) => (this.firstLinkRef = el) : undefined}></KolLinkWcTag>
 							</li>
 						);
 					})}

@@ -193,7 +193,7 @@ export class KolTreeWc implements TreeAPI {
 			}
 			case '*': {
 				const siblings = currentTreeItem.parentElement?.querySelectorAll(KolTreeItemTag);
-				siblings?.forEach((element) => {
+				siblings?.forEach((element: HTMLKolTreeItemElement) => {
 					void element.expand();
 				});
 				break;

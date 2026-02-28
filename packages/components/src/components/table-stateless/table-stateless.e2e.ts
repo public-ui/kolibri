@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableDataType, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
 const HEADERS: TableHeaderCellsPropType = {
@@ -18,7 +18,7 @@ test.describe('kol-table-stateless', () => {
 				/>`);
 		await page.locator('kol-table-stateless').evaluate((element: HTMLKolTableStatelessElement) => {
 			element._selection = {
-				label: (row) => `Selection for ${(row as Data).id}`,
+				label: (row: KoliBriTableDataType) => `Selection for ${(row as Data).id}`,
 				selectedKeys: [],
 			};
 		});
@@ -104,7 +104,7 @@ test.describe('kol-table-stateless', () => {
 					/>`);
 			await page.locator('kol-table-stateless').evaluate((element: HTMLKolTableStatelessElement) => {
 				element._selection = {
-					label: (row) => `Selection for ${(row as Data).id}`,
+					label: (row: KoliBriTableDataType) => `Selection for ${(row as Data).id}`,
 					selectedKeys: ['1003'],
 					disabledKeys: ['1002', '1003'],
 				} as KoliBriTableSelection;

@@ -1,9 +1,9 @@
-import type { LabelProp, MaxProp, MinProp, OrientationProp, UnitProp, ValueProp } from '../../props';
+import type { HighProp, LabelProp, LowProp, MaxProp, MinProp, OptimumProp, OrientationProp, UnitProp, ValueProp } from '../../props';
 import type { ComponentApi } from '../generic-types';
 
 export interface MeterApi extends ComponentApi {
 	Props: {
-		Optional: MinProp & OrientationProp & UnitProp;
+		Optional: HighProp & LowProp & MinProp & OptimumProp & OrientationProp & UnitProp;
 		Required: LabelProp & MaxProp & ValueProp;
 	};
 	States: {

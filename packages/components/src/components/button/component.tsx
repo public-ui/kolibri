@@ -176,7 +176,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 				</button>
 				{hideLabel && (
 					<KolTooltipWcTag
-						ref={(ref) => (this.tooltipRef = ref)}
+						ref={(ref: HTMLKolTooltipWcElement | undefined) => (this.tooltipRef = ref)}
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.

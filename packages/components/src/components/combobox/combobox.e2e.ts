@@ -56,7 +56,7 @@ test.describe(COMPONENT_NAME, () => {
 	test('should filter suggestions based on input', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input"></kol-combobox>`);
 		await page.evaluate(() => {
-			const combobox = document.querySelector('kol-combobox');
+			const combobox = document.querySelector('kol-combobox') as HTMLElement & { _suggestions: string[] } | null;
 			if (combobox) combobox._suggestions = ['North', 'South', 'West', 'East'];
 		});
 		const input = page.locator('input.kol-combobox__input');

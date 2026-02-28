@@ -168,7 +168,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_variant={this._variant}
 					data-testid="popover-button"
 					class="kol-popover-button__button"
-					ref={(element) => (this.refButton = element)}
+					ref={(element: HTMLKolButtonWcElement | undefined) => (this.refButton = element)}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>

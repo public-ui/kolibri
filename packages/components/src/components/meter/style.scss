@@ -48,16 +48,19 @@
 				}
 
 				&--optimum {
+					color: #2ea32e;
 					fill: #2ea32e;
 					color: #2ea32e;
 				}
 
 				&--suboptimal {
+					color: #c8a000;
 					fill: #c8a000;
 					color: #c8a000;
 				}
 
 				&--critical {
+					color: #c00;
 					fill: #c00;
 					color: #c00;
 				}
@@ -94,6 +97,53 @@
 					left: 0;
 					right: 0;
 					background: currentColor;
+
+					@media (prefers-reduced-motion: no-preference) {
+						transition: height 250ms ease-in-out 50ms;
+					}
+				}
+
+				&-value {
+					width: auto;
+					text-align: center;
+				}
+
+				&-unit {
+					text-align: center;
+				}
+			}
+		}
+
+		&--vertical {
+			display: inline-flex;
+
+			.kol-meter__bar {
+				display: flex;
+				min-height: 8rem;
+				row-gap: 0.25rem;
+				flex-direction: column;
+				align-items: center;
+
+				&-label {
+					text-align: center;
+				}
+
+				&-track {
+					background: lightgray;
+					border-radius: 0.375rem;
+					position: relative;
+					width: 0.75rem;
+					min-height: 0;
+					overflow: hidden;
+					flex: 1;
+				}
+
+				&-fill {
+					background: currentColor;
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					left: 0;
 
 					@media (prefers-reduced-motion: no-preference) {
 						transition: height 250ms ease-in-out 50ms;

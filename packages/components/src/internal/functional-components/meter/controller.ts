@@ -17,9 +17,12 @@ export class MeterController extends BaseController<MeterApi> implements Control
 
 	public constructor(states: MeterApi['States']) {
 		super(states, {
+			high: 0,
 			label: '',
+			low: 0,
 			max: 100,
 			min: 0,
+			optimum: 0,
 			orientation: 'horizontal',
 			unit: '%',
 			value: 0,

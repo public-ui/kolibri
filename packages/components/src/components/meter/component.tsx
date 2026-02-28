@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-import type { OrientationPropType } from '../../internal/props';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MeterApi } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
 import { MeterController } from '../../internal/functional-components/meter/controller';
+import type { OrientationPropType } from '../../internal/props';
 
 @Component({
 	tag: 'kol-meter',
@@ -142,7 +142,18 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 		const { liveValue } = this;
 		return (
 			<Host>
-				<MeterFC high={high} label={label} low={low} liveValue={liveValue} max={max} min={min} optimum={optimum} orientation={orientation} unit={unit} value={value} />
+				<MeterFC
+					high={high}
+					label={label}
+					low={low}
+					liveValue={liveValue}
+					max={max}
+					min={min}
+					optimum={optimum}
+					orientation={orientation}
+					unit={unit}
+					value={value}
+				/>
 			</Host>
 		);
 	}

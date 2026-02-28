@@ -9,7 +9,7 @@ test.describe('kol-popover', () => {
 
 		await expect(popoverElement).not.toBeVisible();
 		await popoverComponent.evaluate(() => {
-			const popover = document.querySelector('kol-popover-wc');
+			const popover = document.querySelector('kol-popover-wc') as HTMLElement & { _show: boolean } | null;
 
 			if (popover) {
 				popover._show = true;
@@ -18,7 +18,7 @@ test.describe('kol-popover', () => {
 		await expect(popoverElement).toBeVisible();
 
 		await page.evaluate(() => {
-			const popover = document.querySelector('kol-popover-wc');
+			const popover = document.querySelector('kol-popover-wc') as HTMLElement & { _show: boolean } | null;
 			if (popover) popover._show = false;
 		});
 		await expect(popoverElement).not.toBeVisible();

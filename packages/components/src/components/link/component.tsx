@@ -219,7 +219,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						 */
 						aria-hidden="true"
 						class="kol-link__tooltip"
-						ref={(ref) => (this.tooltipRef = ref)}
+						ref={(ref: HTMLKolTooltipWcElement | undefined) => (this.tooltipRef = ref)}
 						hidden={hasExpertSlot}
 						_badgeText={this.state._accessKey || this.state._shortKey}
 						_align={this.state._tooltipAlign}

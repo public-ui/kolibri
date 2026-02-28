@@ -28,7 +28,7 @@ test.describe('kol-table-stateful', () => {
 				/>`);
 			await page.locator('kol-table-stateful').evaluate((element: HTMLKolTableStatefulElement) => {
 				element._selection = {
-					label: (row) => `Selection for ${(row as Data).id}`,
+					label: (row: KoliBriTableDataType) => `Selection for ${(row as Data).id}`,
 					selectedKeys: [],
 				};
 			});

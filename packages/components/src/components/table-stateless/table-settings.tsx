@@ -127,7 +127,7 @@ export class KolTableSettings {
 
 		return (
 			<KolPopoverButtonWcTag
-				ref={(el) => (this.popoverRef = el)}
+				ref={(el: HTMLKolPopoverButtonWcElement | undefined) => (this.popoverRef = el)}
 				class="kol-table-settings"
 				_icons="kolicon-settings"
 				_label={this.translateTableSettings}
@@ -150,7 +150,7 @@ export class KolTableSettings {
 											_value={true}
 											_hideLabel
 											_disabled={column.hidable === false}
-											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key ?? '', value) }}
+											_on={{ onInput: (_: Event, value: unknown) => this.handleVisibilityChange(column.key ?? '', value) }}
 										/>
 										<span class="kol-table-settings__column-label">{column.label}</span>
 										<KolInputNumberTag
@@ -159,7 +159,7 @@ export class KolTableSettings {
 											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
 											_min={1}
 											_disabled={column.resizable === false}
-											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
+											_on={{ onInput: (_: Event, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
 										/>
 										<KolButtonWcTag
 											_icons="kolicon-chevron-up"
