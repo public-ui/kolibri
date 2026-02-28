@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolButtonLink } from '@public-ui/react-v19';
+import { KolButtonLink, KolImage } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -14,7 +14,12 @@ export const ButtonLinkImage: FC = () => (
 		<div className="grid gap-4">
 			<KolButtonLink _label="I am a link that is rendered as text" />
 			<KolButtonLink _label="">
-				<img alt="Presentation of the KoliBri theming" slot="expert" src="abgrenzung.jpg" width="300" />
+				<KolImage
+					_alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo"
+					_src="sample-image.png"
+					className="w-image"
+					slot="expert"
+				/>
 			</KolButtonLink>
 		</div>
 	</>
