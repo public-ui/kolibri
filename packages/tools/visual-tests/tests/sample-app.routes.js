@@ -723,6 +723,48 @@ ROUTES.set('popover-button/basic', {
 ROUTES.set('popover-button/inline', {
 	snapshot: {},
 });
+ROUTES.set('meter/basic', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('meter/unit', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('meter/min-max', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('meter/ranges', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('meter/optimum', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('meter/orientation', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('progress/basic', {
 	snapshot: {
 		zoom: {

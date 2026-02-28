@@ -67,5 +67,7 @@ export default {
 	'character-counter-current': '{{current}} characters',
 	'character-counter-current-of-max': '{{current}}/{{max}} characters',
 	'character-counter-current-of-max-aria': '{{current}} of {{max}} characters',
+	'live-value-bounded': '{{value}} of {{max}} {{unit}}',
+	'live-value': '{{value}} {{unit}}',
 	readonly: 'read-only',
 };

@@ -1,0 +1,134 @@
+import type { HighProp, LabelProp, LowProp, MaxProp, MinProp, OptimumProp, OrientationProp, UnitProp, ValueProp } from '../../props';
+import { highProp, labelProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp, valueProp, withValidPropValue } from '../../props';
+import { BaseController } from '../base-controller';
+import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { MeterApi } from './api';
+
+type MeterData = {
+	high: number | undefined;
+	low: number | undefined;
+	min: number;
+	optimum: number | undefined;
+};
+
+export class MeterController extends BaseController<MeterApi> implements ControllerInterface<MeterApi> {
+	private interval?: ReturnType<typeof setInterval>;
+	private meterData: MeterData = { high: undefined, low: undefined, min: 0, optimum: undefined };
+
+	public constructor(states: MeterApi['States']) {
+		super(states, {
+			high: 0,
+			label: '',
+			low: 0,
+			max: 100,
+			min: 0,
+			optimum: 0,
+			orientation: 'horizontal',
+			unit: '%',
+			value: 0,
+		});
+	}
+
+	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
+		const { high, label, low, max, min, optimum, orientation, unit, value } = props;
+		this.watchHigh(high);
+		this.watchLabel(label);
+		this.watchLow(low);
+		this.watchMax(max);
+		this.watchMin(min);
+		this.watchOptimum(optimum);
+		this.watchOrientation(orientation);
+		this.watchUnit(unit);
+		this.watchValue(value);
+
+		this.setState('liveValue', this.getProps().value);
+		this.startLiveValueInterval();
+	}
+
+	public destroy(): void {
+		if (this.interval) {
+			clearInterval(this.interval);
+			this.interval = undefined;
+		}
+	}
+
+	public getMeterData(): MeterData {
+		return this.meterData;
+	}
+
+	public watchHigh(value?: number): void {
+		if (value === undefined) {
+			this.meterData.high = undefined;
+		} else {
+			withValidPropValue<HighProp>(highProp, value, (v) => {
+				this.meterData.high = v;
+			});
+		}
+	}
+
+	public watchLabel(value?: string): void {
+		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+			this.setProp('label', v);
+		});
+	}
+
+	public watchLow(value?: number): void {
+		if (value === undefined) {
+			this.meterData.low = undefined;
+		} else {
+			withValidPropValue<LowProp>(lowProp, value, (v) => {
+				this.meterData.low = v;
+			});
+		}
+	}
+
+	public watchMax(value?: number): void {
+		withValidPropValue<MaxProp>(maxProp, value, (v) => {
+			this.setProp('max', v);
+		});
+	}
+
+	public watchMin(value?: number): void {
+		withValidPropValue<MinProp>(minProp, value, (v) => {
+			this.setProp('min', v);
+			this.meterData.min = v;
+		});
+	}
+
+	public watchOptimum(value?: number): void {
+		if (value === undefined) {
+			this.meterData.optimum = undefined;
+		} else {
+			withValidPropValue<OptimumProp>(optimumProp, value, (v) => {
+				this.meterData.optimum = v;
+			});
+		}
+	}
+
+	public watchOrientation(value?: string): void {
+		withValidPropValue<OrientationProp>(orientationProp, value, (v) => {
+			this.setProp('orientation', v);
+		});
+	}
+
+	public watchUnit(value?: string): void {
+		withValidPropValue<UnitProp>(unitProp, value, (v) => {
+			this.setProp('unit', v);
+		});
+	}
+
+	public watchValue(value?: number): void {
+		withValidPropValue<ValueProp>(valueProp, value, (v) => {
+			this.setProp('value', v);
+		});
+	}
+
+	private startLiveValueInterval(): void {
+		this.interval = setInterval(() => {
+			const { value } = this.getProps();
+			if (this.component.liveValue !== value) {
+				this.setState('liveValue', value);
+			}
+		}, 5000);
+	}
+}
