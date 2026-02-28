@@ -24,7 +24,7 @@ export const MeterOrientation: FC = () => (
 
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical" />
-				<div className="flex flex-row gap-8 items-end" style={{ height: '12rem' }}>
+				<div className="flex flex-row gap-8">
 					<KolMeter _label="Tank A" _max={100} _value={25} _orientation="vertical" />
 					<KolMeter _label="Tank B" _max={100} _value={60} _orientation="vertical" />
 					<KolMeter _label="Tank C" _max={100} _value={90} _orientation="vertical" />
@@ -33,7 +33,7 @@ export const MeterOrientation: FC = () => (
 
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical with ranges and optimum" />
-				<div className="flex flex-row gap-8 items-end" style={{ height: '12rem' }}>
+				<div className="flex flex-row gap-8">
 					<KolMeter _label="Low" _max={100} _value={10} _low={25} _high={75} _optimum={50} _orientation="vertical" />
 					<KolMeter _label="OK" _max={100} _value={50} _low={25} _high={75} _optimum={50} _orientation="vertical" />
 					<KolMeter _label="High" _max={100} _value={90} _low={25} _high={75} _optimum={50} _orientation="vertical" />

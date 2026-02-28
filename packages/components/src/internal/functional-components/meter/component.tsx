@@ -41,11 +41,6 @@ type MeterFCProps = FunctionalComponentProps<MeterApi> & {
 	optimum: number | undefined;
 };
 
-// ViewBox dimensions for the vertical SVG (fixed coordinate space)
-const VB_HEIGHT = 100;
-const VB_INNER_TOP = 3; // inside stroke offset
-const VB_INNER_BOTTOM = 97; // VB_HEIGHT - 3
-
 export const MeterFC: FC<MeterFCProps> = (props) => {
 	const { high, label, low, liveValue, max, min, optimum, orientation, unit, value } = props;
 
@@ -64,31 +59,15 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 		'kol-meter__bar-fill--critical': state === 'critical',
 	};
 
-	// Vertical: fill grows from bottom within the fixed viewBox coordinate space
-	const verticalFillHeight = Math.round((fillPercentage / 100) * (VB_INNER_BOTTOM - VB_INNER_TOP));
-	const verticalFillY = VB_INNER_BOTTOM - verticalFillHeight;
-
 	return (
 		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
 			<div aria-hidden="true" class="kol-meter__bar">
 				<div class="kol-meter__bar-label">{label}</div>
 
 				{isVertical ? (
-					<svg xmlns="http://www.w3.org/2000/svg" width="12" viewBox={`0 0 12 ${VB_HEIGHT}`} overflow="visible">
-						<rect class="kol-meter__bar-background" x="1" y="1" width="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" height={VB_HEIGHT - 2}></rect>
-						<rect class="kol-meter__bar-border" x="1" y="1" width="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="1" height={VB_HEIGHT - 2}></rect>
-						<rect
-							class={fillClass}
-							x="3"
-							y={verticalFillY}
-							width="7"
-							height={verticalFillHeight}
-							rx="3.5"
-							fill="currentColor"
-							stroke="currentColor"
-							stroke-width="3"
-						></rect>
-					</svg>
+					<div class="kol-meter__bar-track">
+						<div class={fillClass} style={{ height: `${fillPercentage}%` }}></div>
+					</div>
 				) : (
 					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" overflow="visible">
 						<rect class="kol-meter__bar-background" x="1" y="1" height="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100%"></rect>
