@@ -4,7 +4,6 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { MeterApi } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
 import { MeterController } from '../../internal/functional-components/meter/controller';
-import type { ProgressVariantType } from '../../internal/props';
 
 @Component({
 	tag: 'kol-meter',
@@ -20,7 +19,7 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: string;
+	public _label!: string;
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
@@ -108,9 +107,6 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	public unit: string = '%';
 
 	@State()
-	public variant: ProgressVariantType = 'bar';
-
-	@State()
 	public liveValue: number = 0;
 
 	public componentWillLoad(): void {
@@ -133,18 +129,7 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 		const { liveValue } = this;
 		return (
 			<Host>
-				<MeterFC
-					label={label}
-					max={max}
-					min={min}
-					unit={unit}
-					value={value}
-					variant="bar"
-					liveValue={liveValue}
-					low={low}
-					high={high}
-					optimum={optimum}
-				/>
+				<MeterFC label={label} max={max} min={min} unit={unit} value={value} liveValue={liveValue} low={low} high={high} optimum={optimum} />
 			</Host>
 		);
 	}

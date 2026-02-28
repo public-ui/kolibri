@@ -5,7 +5,7 @@ import type { PropLabel } from '../props';
 type RequiredProps = {
 	max: number;
 	value: number;
-};
+} & PropLabel;
 
 type OptionalProps = {
 	high: number;
@@ -13,7 +13,7 @@ type OptionalProps = {
 	min: number;
 	optimum: number;
 	unit: string;
-} & PropLabel;
+};
 
 type RequiredStates = RequiredProps & {
 	liveValue: number;
@@ -21,7 +21,7 @@ type RequiredStates = RequiredProps & {
 
 type OptionalStates = {
 	unit: string;
-} & PropLabel;
+};
 
 export type MeterProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type MeterStates = Generic.Element.Members<RequiredStates, OptionalStates>;

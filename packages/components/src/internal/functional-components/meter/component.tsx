@@ -54,7 +54,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 	return (
 		<div class="kol-meter">
 			<div aria-hidden="true" class="kol-meter__bar">
-				{label && <div class="kol-meter__bar-label">{label}</div>}
+				<div class="kol-meter__bar-label">{label}</div>
 				<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" overflow="visible">
 					<rect class="kol-meter__bar-background" x="1" y="1" height="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100%"></rect>
 					<rect class="kol-meter__bar-border" x="1" y="1" height="11" rx="5" fill="currentColor" stroke="currentColor" stroke-width="1" width="100%"></rect>

@@ -1,7 +1,7 @@
-import type { HighProp, LowProp, MinProp, OptimumProp } from '../../props';
-import { highProp, lowProp, minProp, optimumProp, withValidPropValue } from '../../props';
+import type { HighProp, LabelProp, LowProp, MaxProp, MinProp, OptimumProp, UnitProp, ValueProp } from '../../props';
+import { highProp, labelProp, lowProp, maxProp, minProp, optimumProp, unitProp, valueProp, withValidPropValue } from '../../props';
+import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
-import { ProgressController } from '../progress/controller';
 import type { MeterApi } from './api';
 
 type MeterData = {
@@ -11,30 +11,64 @@ type MeterData = {
 	optimum: number | undefined;
 };
 
-export class MeterController extends ProgressController implements ControllerInterface<MeterApi> {
+export class MeterController extends BaseController<MeterApi> implements ControllerInterface<MeterApi> {
+	private interval?: ReturnType<typeof setInterval>;
 	private meterData: MeterData = { min: 0, low: undefined, high: undefined, optimum: undefined };
 
 	public constructor(states: MeterApi['States']) {
-		super(states);
+		super(states, {
+			label: '',
+			max: 100,
+			min: 0,
+			unit: '%',
+			value: 0,
+		});
 	}
 
-	public override componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
-		super.componentWillLoad({
-			label: props.label,
-			max: props.max,
-			unit: props.unit,
-			value: props.value,
-			variant: 'bar',
-		});
-		this.watchMin(props.min);
+	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
+		const { label, max, min, unit, value } = props;
+		this.watchLabel(label);
+		this.watchMax(max);
+		this.watchMin(min);
+		this.watchUnit(unit);
+		this.watchValue(value);
 		this.watchLow(undefined);
 		this.watchHigh(undefined);
 		this.watchOptimum(undefined);
+
+		this.setState('liveValue', this.getProps().value);
+		this.startLiveValueInterval();
+	}
+
+	public watchLabel(value?: string): void {
+		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+			this.setProp('label', v);
+		});
+	}
+
+	public watchMax(value?: number): void {
+		withValidPropValue<MaxProp>(maxProp, value, (v) => {
+			this.setProp('max', v);
+		});
 	}
 
 	public watchMin(value?: number): void {
 		withValidPropValue<MinProp>(minProp, value, (v) => {
+			this.setProp('min', v);
 			this.meterData.min = v;
+		});
+	}
+
+	public watchUnit(value?: string): void {
+		withValidPropValue<UnitProp>(unitProp, value, (v) => {
+			this.setProp('unit', v);
+			this.setState('unit', v);
+		});
+	}
+
+	public watchValue(value?: number): void {
+		withValidPropValue<ValueProp>(valueProp, value, (v) => {
+			this.setProp('value', v);
 		});
 	}
 
@@ -65,6 +99,22 @@ export class MeterController extends ProgressController implements ControllerInt
 			withValidPropValue<OptimumProp>(optimumProp, value, (v) => {
 				this.meterData.optimum = v;
 			});
+		}
+	}
+
+	private startLiveValueInterval(): void {
+		this.interval = setInterval(() => {
+			const { value } = this.getProps();
+			if (this.component.liveValue !== value) {
+				this.setState('liveValue', value);
+			}
+		}, 5000);
+	}
+
+	public destroy(): void {
+		if (this.interval) {
+			clearInterval(this.interval);
+			this.interval = undefined;
 		}
 	}
 

@@ -1,13 +1,12 @@
-import type { LabelProp, MaxProp, MinProp, UnitProp, ValueProp, VariantProgressProp } from '../../props';
+import type { LabelProp, MaxProp, MinProp, UnitProp, ValueProp } from '../../props';
 import type { ComponentApi, InternalOf } from '../generic-types';
 
 export interface MeterApi extends ComponentApi {
 	Props: {
-		Optional: LabelProp & UnitProp & MinProp;
-		Required: MaxProp & ValueProp;
+		Optional: UnitProp & MinProp;
+		Required: LabelProp & MaxProp & ValueProp;
 	};
-	States: InternalOf<UnitProp> &
-		InternalOf<VariantProgressProp> & {
-			liveValue: number;
-		};
+	States: InternalOf<UnitProp> & {
+		liveValue: number;
+	};
 }
