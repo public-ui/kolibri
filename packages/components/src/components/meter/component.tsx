@@ -85,7 +85,7 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop()
-	public _unit!: string;
+	public _unit: string = '%';
 
 	@Watch('_unit')
 	public watchUnit(value?: string): void {
@@ -105,9 +105,6 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 
 	@State()
 	public liveValue: number = 0;
-
-	@State()
-	public unit: string = '%';
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({

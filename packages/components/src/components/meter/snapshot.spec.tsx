@@ -1,9 +1,8 @@
 import { KolMeterTag } from '../../core/component-names';
-import type { MeterProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolMeter } from './component';
 
-executeSnapshotTests<MeterProps>(
+executeSnapshotTests(
 	KolMeterTag,
 	[KolMeter],
 	[

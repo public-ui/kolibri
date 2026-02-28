@@ -100,7 +100,6 @@ export class MeterController extends BaseController<MeterApi> implements Control
 	public watchUnit(value?: string): void {
 		withValidPropValue<UnitProp>(unitProp, value, (v) => {
 			this.setProp('unit', v);
-			this.setState('unit', v);
 		});
 	}
 
