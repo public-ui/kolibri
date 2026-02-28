@@ -16,6 +16,17 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	private readonly ctrl = new MeterController(this);
 
 	/**
+	 * Defines the upper boundary of the high range.
+	 */
+	@Prop()
+	public _high?: number;
+
+	@Watch('_high')
+	public watchHigh(value?: number): void {
+		this.ctrl.watchHigh(value);
+	}
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
@@ -24,6 +35,17 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	@Watch('_label')
 	public watchLabel(value?: string): void {
 		this.ctrl.watchLabel(value);
+	}
+
+	/**
+	 * Defines the lower boundary of the low range.
+	 */
+	@Prop()
+	public _low?: number;
+
+	@Watch('_low')
+	public watchLow(value?: number): void {
+		this.ctrl.watchLow(value);
 	}
 
 	/**
@@ -46,28 +68,6 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	@Watch('_min')
 	public watchMin(value?: number): void {
 		this.ctrl.watchMin(value);
-	}
-
-	/**
-	 * Defines the lower boundary of the low range.
-	 */
-	@Prop()
-	public _low?: number;
-
-	@Watch('_low')
-	public watchLow(value?: number): void {
-		this.ctrl.watchLow(value);
-	}
-
-	/**
-	 * Defines the upper boundary of the high range.
-	 */
-	@Prop()
-	public _high?: number;
-
-	@Watch('_high')
-	public watchHigh(value?: number): void {
-		this.ctrl.watchHigh(value);
 	}
 
 	/**
@@ -104,10 +104,10 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	}
 
 	@State()
-	public unit: string = '%';
+	public liveValue: number = 0;
 
 	@State()
-	public liveValue: number = 0;
+	public unit: string = '%';
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
@@ -125,11 +125,11 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 
 	public render(): JSX.Element {
 		const { label, max, unit, value } = this.ctrl.getProps();
-		const { min, low, high, optimum } = this.ctrl.getMeterData();
+		const { high, low, min, optimum } = this.ctrl.getMeterData();
 		const { liveValue } = this;
 		return (
 			<Host>
-				<MeterFC label={label} max={max} min={min} unit={unit} value={value} liveValue={liveValue} low={low} high={high} optimum={optimum} />
+				<MeterFC high={high} label={label} low={low} liveValue={liveValue} max={max} min={min} optimum={optimum} unit={unit} value={value} />
 			</Host>
 		);
 	}

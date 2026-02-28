@@ -36,13 +36,13 @@ function getMeterState(value: number, min: number, max: number, low: number | un
 }
 
 type MeterFCProps = FunctionalComponentProps<MeterApi> & {
-	low: number | undefined;
 	high: number | undefined;
+	low: number | undefined;
 	optimum: number | undefined;
 };
 
 export const MeterFC: FC<MeterFCProps> = (props) => {
-	const { label, max, min, unit, value, liveValue, low, high, optimum } = props;
+	const { high, label, low, liveValue, max, min, optimum, unit, value } = props;
 
 	const isPercentage = unit === '%';
 	const displayValue = isPercentage ? Math.round(((value - min) / (max - min)) * 100) : value;
@@ -81,7 +81,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 				<div class="kol-meter__bar-unit">{unit}</div>
 			</div>
 
-			<meter class="visually-hidden" min={min} max={max} low={low} high={high} optimum={optimum} value={value}></meter>
+			<meter class="visually-hidden" high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{isPercentage ? `${liveMeterValue} %` : `${liveMeterValue} von ${max} ${unit}`}
 			</span>

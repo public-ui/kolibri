@@ -5,15 +5,15 @@ import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { MeterApi } from './api';
 
 type MeterData = {
-	min: number;
-	low: number | undefined;
 	high: number | undefined;
+	low: number | undefined;
+	min: number;
 	optimum: number | undefined;
 };
 
 export class MeterController extends BaseController<MeterApi> implements ControllerInterface<MeterApi> {
 	private interval?: ReturnType<typeof setInterval>;
-	private meterData: MeterData = { min: 0, low: undefined, high: undefined, optimum: undefined };
+	private meterData: MeterData = { high: undefined, low: undefined, min: 0, optimum: undefined };
 
 	public constructor(states: MeterApi['States']) {
 		super(states, {
@@ -27,23 +27,54 @@ export class MeterController extends BaseController<MeterApi> implements Control
 
 	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
 		const { label, max, min, unit, value } = props;
+		this.watchHigh(undefined);
 		this.watchLabel(label);
+		this.watchLow(undefined);
 		this.watchMax(max);
 		this.watchMin(min);
+		this.watchOptimum(undefined);
 		this.watchUnit(unit);
 		this.watchValue(value);
-		this.watchLow(undefined);
-		this.watchHigh(undefined);
-		this.watchOptimum(undefined);
 
 		this.setState('liveValue', this.getProps().value);
 		this.startLiveValueInterval();
+	}
+
+	public destroy(): void {
+		if (this.interval) {
+			clearInterval(this.interval);
+			this.interval = undefined;
+		}
+	}
+
+	public getMeterData(): MeterData {
+		return this.meterData;
+	}
+
+	public watchHigh(value?: number): void {
+		if (value === undefined) {
+			this.meterData.high = undefined;
+		} else {
+			withValidPropValue<HighProp>(highProp, value, (v) => {
+				this.meterData.high = v;
+			});
+		}
 	}
 
 	public watchLabel(value?: string): void {
 		withValidPropValue<LabelProp>(labelProp, value, (v) => {
 			this.setProp('label', v);
 		});
+	}
+
+	public watchLow(value?: number): void {
+		if (value === undefined) {
+			this.meterData.low = undefined;
+		} else {
+			withValidPropValue<LowProp>(lowProp, value, (v) => {
+				this.meterData.low = v;
+			});
+		}
 	}
 
 	public watchMax(value?: number): void {
@@ -59,6 +90,16 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		});
 	}
 
+	public watchOptimum(value?: number): void {
+		if (value === undefined) {
+			this.meterData.optimum = undefined;
+		} else {
+			withValidPropValue<OptimumProp>(optimumProp, value, (v) => {
+				this.meterData.optimum = v;
+			});
+		}
+	}
+
 	public watchUnit(value?: string): void {
 		withValidPropValue<UnitProp>(unitProp, value, (v) => {
 			this.setProp('unit', v);
@@ -72,36 +113,6 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		});
 	}
 
-	public watchLow(value?: number): void {
-		if (value === undefined) {
-			this.meterData.low = undefined;
-		} else {
-			withValidPropValue<LowProp>(lowProp, value, (v) => {
-				this.meterData.low = v;
-			});
-		}
-	}
-
-	public watchHigh(value?: number): void {
-		if (value === undefined) {
-			this.meterData.high = undefined;
-		} else {
-			withValidPropValue<HighProp>(highProp, value, (v) => {
-				this.meterData.high = v;
-			});
-		}
-	}
-
-	public watchOptimum(value?: number): void {
-		if (value === undefined) {
-			this.meterData.optimum = undefined;
-		} else {
-			withValidPropValue<OptimumProp>(optimumProp, value, (v) => {
-				this.meterData.optimum = v;
-			});
-		}
-	}
-
 	private startLiveValueInterval(): void {
 		this.interval = setInterval(() => {
 			const { value } = this.getProps();
@@ -109,16 +120,5 @@ export class MeterController extends BaseController<MeterApi> implements Control
 				this.setState('liveValue', value);
 			}
 		}, 5000);
-	}
-
-	public destroy(): void {
-		if (this.interval) {
-			clearInterval(this.interval);
-			this.interval = undefined;
-		}
-	}
-
-	public getMeterData(): MeterData {
-		return this.meterData;
 	}
 }
