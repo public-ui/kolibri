@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolLink } from '@public-ui/react-v19';
+import { KolImage, KolLink } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkImage: FC = () => (
@@ -13,7 +13,7 @@ export const LinkImage: FC = () => (
 		<div className="grid gap-4">
 			<KolLink _href="#/back-page" _label="I am a link that is rendered as text" />
 			<KolLink _href="#/back-page" _label="">
-				<img alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo" slot="expert" src="sample-image.png" width="300" />
+				<KolImage _alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo" _src="sample-image.png" slot="expert" style={{ width: '300px' }} />
 			</KolLink>
 		</div>
 	</>
