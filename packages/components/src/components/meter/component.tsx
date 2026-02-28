@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { OrientationPropType } from '../../internal/props';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MeterApi } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
@@ -82,6 +83,17 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	}
 
 	/**
+	 * Defines whether the meter bar is displayed horizontally or vertically.
+	 */
+	@Prop()
+	public _orientation: OrientationPropType = 'horizontal';
+
+	@Watch('_orientation')
+	public watchOrientation(value?: OrientationPropType): void {
+		this.ctrl.watchOrientation(value);
+	}
+
+	/**
 	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop()
@@ -111,6 +123,7 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 			label: this._label,
 			max: this._max,
 			min: this._min,
+			orientation: this._orientation,
 			unit: this._unit,
 			value: this._value,
 		});
@@ -124,12 +137,12 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 	}
 
 	public render(): JSX.Element {
-		const { label, max, unit, value } = this.ctrl.getProps();
+		const { label, max, orientation, unit, value } = this.ctrl.getProps();
 		const { high, low, min, optimum } = this.ctrl.getMeterData();
 		const { liveValue } = this;
 		return (
 			<Host>
-				<MeterFC high={high} label={label} low={low} liveValue={liveValue} max={max} min={min} optimum={optimum} unit={unit} value={value} />
+				<MeterFC high={high} label={label} low={low} liveValue={liveValue} max={max} min={min} optimum={optimum} orientation={orientation} unit={unit} value={value} />
 			</Host>
 		);
 	}

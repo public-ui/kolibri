@@ -12,6 +12,7 @@ export * from './max';
 export * from './min';
 export * from './name';
 export * from './optimum';
+export * from './orientation';
 export * from './quote';
 export * from './show';
 export * from './sizes';

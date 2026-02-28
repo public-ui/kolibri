@@ -60,5 +60,36 @@
 				}
 			}
 		}
+
+		&--vertical {
+			display: inline-flex;
+
+			.kol-meter__bar {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				row-gap: 0.25rem;
+				height: 100%;
+
+				&-label {
+					text-align: center;
+				}
+
+				svg {
+					flex: 1;
+					width: 12px;
+					min-height: 6rem;
+				}
+
+				&-value {
+					width: auto;
+					text-align: center;
+				}
+
+				&-unit {
+					text-align: center;
+				}
+			}
+		}
 	}
 }

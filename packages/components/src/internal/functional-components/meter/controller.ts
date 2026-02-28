@@ -1,5 +1,5 @@
-import type { HighProp, LabelProp, LowProp, MaxProp, MinProp, OptimumProp, UnitProp, ValueProp } from '../../props';
-import { highProp, labelProp, lowProp, maxProp, minProp, optimumProp, unitProp, valueProp, withValidPropValue } from '../../props';
+import type { HighProp, LabelProp, LowProp, MaxProp, MinProp, OptimumProp, OrientationProp, UnitProp, ValueProp } from '../../props';
+import { highProp, labelProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp, valueProp, withValidPropValue } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { MeterApi } from './api';
@@ -20,16 +20,18 @@ export class MeterController extends BaseController<MeterApi> implements Control
 			label: '',
 			max: 100,
 			min: 0,
+			orientation: 'horizontal',
 			unit: '%',
 			value: 0,
 		});
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
-		const { label, max, min, unit, value } = props;
+		const { label, max, min, orientation, unit, value } = props;
 		this.watchLabel(label);
 		this.watchMax(max);
 		this.watchMin(min);
+		this.watchOrientation(orientation);
 		this.watchUnit(unit);
 		this.watchValue(value);
 
@@ -95,6 +97,12 @@ export class MeterController extends BaseController<MeterApi> implements Control
 				this.meterData.optimum = v;
 			});
 		}
+	}
+
+	public watchOrientation(value?: string): void {
+		withValidPropValue<OrientationProp>(orientationProp, value, (v) => {
+			this.setProp('orientation', v);
+		});
 	}
 
 	public watchUnit(value?: string): void {
