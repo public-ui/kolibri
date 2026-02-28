@@ -4,6 +4,7 @@ import type { PropLabel } from '../props';
 
 type RequiredProps = {
 	max: number;
+	unit: string;
 	value: number;
 } & PropLabel;
 
@@ -12,7 +13,6 @@ type OptionalProps = {
 	low: number;
 	min: number;
 	optimum: number;
-	unit: string;
 };
 
 type RequiredStates = RequiredProps & {

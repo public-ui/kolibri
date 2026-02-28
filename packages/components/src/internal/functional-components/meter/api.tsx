@@ -3,8 +3,8 @@ import type { ComponentApi, InternalOf } from '../generic-types';
 
 export interface MeterApi extends ComponentApi {
 	Props: {
-		Optional: MinProp & UnitProp;
-		Required: LabelProp & MaxProp & ValueProp;
+		Optional: MinProp;
+		Required: LabelProp & MaxProp & UnitProp & ValueProp;
 	};
 	States: InternalOf<UnitProp> & {
 		liveValue: number;

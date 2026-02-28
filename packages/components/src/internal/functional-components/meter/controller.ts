@@ -27,12 +27,9 @@ export class MeterController extends BaseController<MeterApi> implements Control
 
 	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
 		const { label, max, min, unit, value } = props;
-		this.watchHigh(undefined);
 		this.watchLabel(label);
-		this.watchLow(undefined);
 		this.watchMax(max);
 		this.watchMin(min);
-		this.watchOptimum(undefined);
 		this.watchUnit(unit);
 		this.watchValue(value);
 
