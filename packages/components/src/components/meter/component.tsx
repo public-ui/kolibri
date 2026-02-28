@@ -120,9 +120,12 @@ export class KolMeter implements WebComponentInterface<MeterApi> {
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
+			high: this._high,
 			label: this._label,
+			low: this._low,
 			max: this._max,
 			min: this._min,
+			optimum: this._optimum,
 			orientation: this._orientation,
 			unit: this._unit,
 			value: this._value,

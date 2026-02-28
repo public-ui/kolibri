@@ -30,10 +30,13 @@ export class MeterController extends BaseController<MeterApi> implements Control
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {
-		const { label, max, min, orientation, unit, value } = props;
+		const { high, label, low, max, min, optimum, orientation, unit, value } = props;
+		this.watchHigh(high);
 		this.watchLabel(label);
+		this.watchLow(low);
 		this.watchMax(max);
 		this.watchMin(min);
+		this.watchOptimum(optimum);
 		this.watchOrientation(orientation);
 		this.watchUnit(unit);
 		this.watchValue(value);
