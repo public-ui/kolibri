@@ -14,7 +14,7 @@ export const ButtonLinkImage: FC = () => (
 		<div className="grid gap-4">
 			<KolButtonLink _label="I am a link that is rendered as text" />
 			<KolButtonLink _label="">
-				<img alt="Presentation of the KoliBri theming" slot="expert" src="abgrenzung.jpg" width="300" />
+				<img alt="Presentation of the KoliBri theming" slot="expert" src="abgrenzung.png" width="300" />
 			</KolButtonLink>
 		</div>
 	</>
