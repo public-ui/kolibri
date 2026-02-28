@@ -9,6 +9,10 @@ export const ImageBasic: FC = () => (
 			<p>KolImage renders an image. The sample shows an image with alternative text.</p>
 		</SampleDescription>
 
-		<KolImage _alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo" _src="sample-image.png" className="w-image" />
+		<KolImage
+			_alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo"
+			_src="sample-image.png"
+			className="w-image"
+		/>
 	</>
 );
