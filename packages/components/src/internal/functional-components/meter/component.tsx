@@ -102,16 +102,15 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					</svg>
 				)}
 
-				<div class="kol-meter__bar-value" style={isVertical ? {} : { width: valueColumnWidth }}>
-					{displayValue}
-				</div>
-				<div class="kol-meter__bar-unit">{unit}</div>
+				<span class="kol-meter__bar-value-unit" style={isVertical ? {} : { display: 'flex', width: valueColumnWidth }}>
+					<span class="kol-meter__bar-value">{displayValue}</span>
+					<span class="kol-meter__bar-unit">{unit}</span>
+				</span>
+				<meter class="visually-hidden" high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
+				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+					{liveValueText}
+				</span>
 			</div>
-
-			<meter class="visually-hidden" high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
-			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-				{liveValueText}
-			</span>
 		</div>
 	);
 };
