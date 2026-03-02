@@ -57,7 +57,7 @@ export class KolProgress implements WebComponentInterface<ProgressApi> {
 
 	@Watch('_value')
 	public watchValue(value?: number): void {
-		this.ctrl.watchValue(value);
+		this.ctrl.watchValue(value, this._max);
 	}
 
 	/**

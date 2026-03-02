@@ -22,7 +22,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchLabel(label);
 		this.watchMax(max);
 		this.watchUnit(unit);
-		this.watchValue(value);
+		this.watchValue(value, max);
 		this.watchVariant(variant);
 
 		this.setState('liveValue', this.getProps().value);
@@ -48,8 +48,15 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		});
 	}
 
-	public watchValue(value?: number): void {
+	public watchValue(value?: number, max?: number): void {
 		withValidPropValue<ValueProp>(valueProp, value, (v) => {
+			if (max && v > max) {
+				v = max;
+			}
+
+			if (v < 0) {
+				v = 0;
+			}
 			this.setProp('value', v);
 		});
 	}
