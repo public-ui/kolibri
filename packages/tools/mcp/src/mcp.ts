@@ -286,6 +286,29 @@ ${PACKAGE_DESCRIPTION ?? ''}
 		},
 	);
 
+	// Add version resource
+	server.registerResource(
+		'version',
+		new ResourceTemplate('kolibri://version', { list: undefined }),
+		{
+			title: 'KoliBri MCP Server Version',
+			description: 'Get the current version of the KoliBri MCP Server',
+		},
+		(uri) => {
+			log('resource', 'version accessed', { uri: uri.href });
+
+			return {
+				contents: [
+					{
+						uri: uri.href,
+						mimeType: 'application/json',
+						text: JSON.stringify({ name: PACKAGE_NAME, version: PACKAGE_VERSION }, null, 2),
+					},
+				],
+			};
+		},
+	);
+
 	// Add best practices resource
 	server.registerResource(
 		'best-practices',
