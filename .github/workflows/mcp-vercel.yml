@@ -3,7 +3,7 @@ name: Vercel MCP-Deploy
 on:
   push:
     branches:
-      - release/3
+      - develop
     paths:
       - '.github/workflows/mcp-vercel.yml'
       - 'packages/samples/react/**'
@@ -104,7 +104,7 @@ jobs:
 
       - name: Deploy to Vercel (production)
         id: deploy_prod
-        if: github.ref == 'refs/heads/release/3' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        if: github.ref == 'refs/heads/develop' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         working-directory: packages/tools/mcp
         run: |
           set -eo pipefail
