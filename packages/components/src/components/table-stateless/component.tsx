@@ -529,7 +529,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		return undefined;
-		//const cell = this.tableDivElement.querySelector('th[data-column-key="${index - 1}"]') as HTMLElement;
 	}
 
 	private getOffsetString(index: number | undefined, left?: boolean): string | undefined {

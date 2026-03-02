@@ -36,7 +36,7 @@
 
 		&__caption {
 			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
-			padding: to-rem(8) var(--a11y-min-size) to-rem(8) to-rem(8);
+			padding: to-rem(8) var(--a11y-min-size) to-rem(8) 0;
 		}
 
 		&__scroll-container {
@@ -106,6 +106,10 @@
 				.kol-button {
 					font-weight: 700;
 				}
+			}
+
+			&--selection {
+				width: to-rem(68); //padding + a11y-min-size
 			}
 
 			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
