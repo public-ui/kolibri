@@ -10,15 +10,8 @@
 		align-items: center;
 		grid-template-columns: 1fr;
 
-		&:has(> #{$root}__adornment--start:not(:empty)) {
-			grid-template-columns: auto 1fr;
-		}
-
-		&:has(> #{$root}__adornment--end:not(:empty)) {
-			grid-template-columns: 1fr auto;
-		}
-
-		&:has(> #{$root}__adornment--start:not(:empty)):has(> #{$root}__adornment--end:not(:empty)) {
+		&:has(> &__adornment--start) {
+			// soblad ein adornment gesetzt ist, sind beide im dom
 			grid-template-columns: auto 1fr auto;
 		}
 
