@@ -7,7 +7,7 @@
 		@media (prefers-reduced-motion) {
 			&__wrapper-animation,
 			&__wrapper {
-				transition-duration: 0s !important;
+transition: none !important;
 			}
 		}
 
