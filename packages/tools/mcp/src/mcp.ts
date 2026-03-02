@@ -69,6 +69,8 @@ const {
 	description?: string;
 };
 
+const VERSION_INFO_JSON = JSON.stringify({ name: PACKAGE_NAME, version: PACKAGE_VERSION }, null, 2);
+
 // Logging configuration
 const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOGGING === '1';
 
@@ -280,6 +282,29 @@ ${PACKAGE_DESCRIPTION ?? ''}
 						uri: uri.href,
 						mimeType: 'text/markdown',
 						text: infoText,
+					},
+				],
+			};
+		},
+	);
+
+	// Add version resource
+	server.registerResource(
+		'version',
+		new ResourceTemplate('kolibri://version', { list: undefined }),
+		{
+			title: 'KoliBri MCP Server Version',
+			description: 'Get the current version of the KoliBri MCP Server',
+		},
+		(uri) => {
+			log('resource', 'version accessed', { uri: uri.href });
+
+			return {
+				contents: [
+					{
+						uri: uri.href,
+						mimeType: 'application/json',
+						text: VERSION_INFO_JSON,
 					},
 				],
 			};
