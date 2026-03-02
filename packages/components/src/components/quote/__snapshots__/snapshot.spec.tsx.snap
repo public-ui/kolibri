@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-quote should render with _label="Caption" _href="https://example.com" _quote="Text of the Quote" _variant="block" 1`] = `
+exports[`kol-quote should render with _href="https://example.com" _label="Caption" _quote="Text of the Quote" _variant="block" 1`] = `
 <kol-quote>
   <template shadowrootmode="open">
     <figure class="kol-quote kol-quote--block">
@@ -20,7 +20,7 @@ exports[`kol-quote should render with _label="Caption" _href="https://example.co
 </kol-quote>
 `;
 
-exports[`kol-quote should render with _label="Caption" _href="https://example.com" _quote="Text of the Quote" _variant="inline" 1`] = `
+exports[`kol-quote should render with _href="https://example.com" _label="Caption" _quote="Text of the Quote" _variant="inline" 1`] = `
 <kol-quote>
   <template shadowrootmode="open">
     <figure class="kol-quote kol-quote--inline">
@@ -40,7 +40,7 @@ exports[`kol-quote should render with _label="Caption" _href="https://example.co
 </kol-quote>
 `;
 
-exports[`kol-quote should render with _label="Caption" _href="https://example.com" _quote="Text of the Quote" 1`] = `
+exports[`kol-quote should render with _href="https://example.com" _label="Caption" _quote="Text of the Quote" 1`] = `
 <kol-quote>
   <template shadowrootmode="open">
     <figure class="kol-quote kol-quote--inline">
