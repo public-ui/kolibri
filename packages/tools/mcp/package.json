@@ -75,9 +75,9 @@
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.4",
 		"@eslint/js": "9.39.3",
-		"@modelcontextprotocol/inspector": "0.21.0",
+		"@modelcontextprotocol/inspector": "0.21.1",
 		"@types/express": "5.0.6",
-		"@types/node": "24.10.15",
+		"@types/node": "24.11.0",
 		"@typescript-eslint/eslint-plugin": "8.56.1",
 		"@typescript-eslint/parser": "8.56.1",
 		"eslint": "9.39.3",
