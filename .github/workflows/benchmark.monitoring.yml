@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/actions/benchmark
 
       - name: Attest benchmark result
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: packages/tools/benchmark-tests/benchmark-result.json
 
