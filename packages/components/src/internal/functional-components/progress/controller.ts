@@ -49,14 +49,17 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchValue(value?: number, max?: number): void {
-		withValidPropValue<ValueProp>(valueProp, value, (v) => {
-			if (max && v > max) {
-				v = max;
+		if (typeof value === 'number') {
+			if (max && value > max) {
+				value = max;
 			}
 
-			if (v < 0) {
-				v = 0;
+			if (value < 0) {
+				value = 0;
 			}
+		}
+
+		withValidPropValue<ValueProp>(valueProp, value, (v) => {
 			this.setProp('value', v);
 		});
 	}

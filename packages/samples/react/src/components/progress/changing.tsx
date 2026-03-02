@@ -16,7 +16,7 @@ export const ProgressChanging: FC = () => {
 
 			<fieldset title="changing" className="flex flex-col gap-4">
 				<div className="flex gap-4">
-					<button onClick={() => setVal(0)}>set 0</button>
+					<button onClick={() => setVal(-2)}>set -2</button>
 					<button onClick={() => setVal(5)}>set 5</button>
 					<button onClick={() => setVal(13)}>set 13</button>
 				</div>
