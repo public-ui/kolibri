@@ -2,13 +2,24 @@
 
 @layer kol-theme-component {
 	@include input-core;
-	input[type='number'] {
-		-moz-appearance: textfield;
-	}
 
-	input[type='number']::-webkit-inner-spin-button,
-	input[type='number']::-webkit-outer-spin-button {
-		margin: 0;
-		-webkit-appearance: none;
+	.kol-input-number {
+		.kol-input-number__step-button {
+			color: var(--kern-color-action-default);
+			transition-duration: 0.3s;
+			transition-property: background-color, color;
+
+			&:focus {
+				outline: 0;
+			}
+
+			&:hover {
+				background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
+			}
+		}
+
+		.kol-input {
+			min-width: calc(3 * var(--a11y-min-size) + 8px); // at least 2 buttons + text with a11y min size + gaps
+		}
 	}
 }
