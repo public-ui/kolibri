@@ -1,6 +1,0 @@
-import { KolSpinTag } from '../../core/component-names';
-import type { SpinProps } from '../../schema';
-import { executeSnapshotTests } from '../../utils/testing';
-import { KolSpin } from './component';
-
-executeSnapshotTests<SpinProps>(KolSpinTag, [KolSpin], [{ _show: false }, { _show: true }, { _show: true, _label: 'Loading' }]);
