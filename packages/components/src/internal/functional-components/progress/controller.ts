@@ -66,7 +66,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 
 	private clampValue(value?: number): number | undefined {
 		if (typeof value === 'number') {
-			if (this.component.max && value > this.component.max) {
+			if (value > this.component.max) {
 				value = this.component.max;
 			}
 
