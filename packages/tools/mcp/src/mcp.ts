@@ -69,6 +69,8 @@ const {
 	description?: string;
 };
 
+const VERSION_INFO_JSON = JSON.stringify({ name: PACKAGE_NAME, version: PACKAGE_VERSION }, null, 2);
+
 // Logging configuration
 const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOGGING === '1';
 
@@ -302,7 +304,7 @@ ${PACKAGE_DESCRIPTION ?? ''}
 					{
 						uri: uri.href,
 						mimeType: 'application/json',
-						text: JSON.stringify({ name: PACKAGE_NAME, version: PACKAGE_VERSION }, null, 2),
+						text: VERSION_INFO_JSON,
 					},
 				],
 			};
