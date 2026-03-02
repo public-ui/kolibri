@@ -57,7 +57,7 @@ export class KolProgress implements WebComponentInterface<ProgressApi> {
 
 	@Watch('_value')
 	public watchValue(value?: number): void {
-		this.ctrl.watchValue(value, this._max);
+		this.ctrl.watchValue(value);
 	}
 
 	/**
@@ -79,6 +79,9 @@ export class KolProgress implements WebComponentInterface<ProgressApi> {
 
 	@State()
 	public liveValue: number = 0;
+
+	@State()
+	public max: number = this._max;
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({

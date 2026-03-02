@@ -7,6 +7,7 @@ import { SampleDescription } from '../SampleDescription';
 
 export const ProgressChanging: FC = () => {
 	const [val, setVal] = useState<number>(5);
+	const [max, setMax] = useState<number>(10);
 
 	return (
 		<>
@@ -19,10 +20,14 @@ export const ProgressChanging: FC = () => {
 					<button onClick={() => setVal(-2)}>set -2</button>
 					<button onClick={() => setVal(5)}>set 5</button>
 					<button onClick={() => setVal(13)}>set 13</button>
+
+					<button onClick={() => setMax(-1)}>change max to -1</button>
+					<button onClick={() => setMax(5)}>change max to 5</button>
+					<button onClick={() => setMax(10)}>change max to 10</button>
 				</div>
 
-				<KolProgress _label={`Showing ${val}`} _variant="bar" _max={10} _value={val}></KolProgress>
-				<KolProgress _label={`Showing ${val}`} _variant="cycle" _max={10} _value={val}></KolProgress>
+				<KolProgress _label={`Showing ${val} of ${max}`} _variant="bar" _max={max} _value={val}></KolProgress>
+				<KolProgress _variant="cycle" _max={max} _value={val}></KolProgress>
 			</fieldset>
 		</>
 	);

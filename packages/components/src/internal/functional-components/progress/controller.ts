@@ -22,10 +22,11 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchLabel(label);
 		this.watchMax(max);
 		this.watchUnit(unit);
-		this.watchValue(value, max);
+		this.watchValue(value);
 		this.watchVariant(variant);
 
 		this.setState('liveValue', this.getProps().value);
+		this.setState('max', this.getProps().max);
 		this.startLiveValueInterval();
 	}
 
@@ -38,7 +39,9 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public watchMax(value?: number): void {
 		withValidPropValue<MaxProp>(maxProp, value, (v) => {
 			this.setProp('max', v);
+			this.setState('max', v);
 		});
+		this.watchValue(this.component.liveValue);
 	}
 
 	public watchUnit(value?: string): void {
@@ -48,18 +51,8 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		});
 	}
 
-	public watchValue(value?: number, max?: number): void {
-		if (typeof value === 'number') {
-			if (max && value > max) {
-				value = max;
-			}
-
-			if (value < 0) {
-				value = 0;
-			}
-		}
-
-		withValidPropValue<ValueProp>(valueProp, value, (v) => {
+	public watchValue(value?: number): void {
+		withValidPropValue<ValueProp>(valueProp, this.clampValue(value), (v) => {
 			this.setProp('value', v);
 		});
 	}
@@ -69,6 +62,19 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			this.setProp('variant', v);
 			this.setState('variant', v);
 		});
+	}
+
+	private clampValue(value?: number): number | undefined {
+		if (typeof value === 'number') {
+			if (this.component.max && value > this.component.max) {
+				value = this.component.max;
+			}
+
+			if (value < 0) {
+				value = 0;
+			}
+		}
+		return value;
 	}
 
 	private startLiveValueInterval(): void {

@@ -9,5 +9,6 @@ export interface ProgressApi extends ComponentApi {
 	States: InternalOf<UnitProp> &
 		InternalOf<VariantProgressProp> & {
 			liveValue: number;
+			max: number;
 		};
 }
