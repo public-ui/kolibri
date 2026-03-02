@@ -127,18 +127,18 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
         <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
           <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
           <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
-          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(238.0952380952381% - 4px);"></rect>
+          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(100% - 4px);"></rect>
         </svg>
         <div class="kol-progress__bar-value" style="width: 3ch;">
-          238
+          100
         </div>
         <div class="kol-progress__bar-unit">
           %
         </div>
       </div>
-      <progress aria-busy="false" class="visually-hidden" max="42" value="100"></progress>
+      <progress aria-busy="false" class="visually-hidden" max="42" value="42"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        238 %
+        100 %
       </span>
     </div>
   </template>
