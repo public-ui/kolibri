@@ -72,6 +72,23 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-quote': {
+		elements: {
+			blockquote: {
+				modifiers: null;
+			};
+			cite: {
+				modifiers: null;
+			};
+			figcaption: {
+				modifiers: null;
+			};
+			quote: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'block' | 'inline'>;
+	};
 	'kol-skeleton': {
 		elements: {
 			container: {
@@ -132,6 +149,15 @@ const BEM: KoliBriComponentsBemSchema = {
 			icon: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-quote': {
+		elements: {
+			blockquote: { modifiers: null },
+			cite: { modifiers: null },
+			figcaption: { modifiers: null },
+			quote: { modifiers: null },
+		},
+		modifiers: new Set(['block', 'inline']),
 	},
 	'kol-skeleton': {
 		elements: {

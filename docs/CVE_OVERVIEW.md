@@ -9,7 +9,7 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   0 |   0 |   0 |   0 |
-| high     |   0 |   0 |   0 |   3 |
+| high     |   0 |   0 |   0 |   4 |
 | moderate |   0 |   0 |   0 |   0 |
 | low      |   0 |   0 |   0 |   0 |
 | info     |   0 |   0 |   0 |   0 |
@@ -17,11 +17,12 @@
 
 ### Vulnerabilities
 
-| Package     | Severity | CVE            | Affected Versions | Description                                                                       |
-| ----------- | -------- | -------------- | ----------------- | --------------------------------------------------------------------------------- |
-| lodash.pick | high     | CVE-2020-8203  | v1                | Prototype Pollution in lodash                                                     |
-| minimatch   | high     | CVE-2026-27903 | v1                | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
-| minimatch   | high     | CVE-2026-27904 | v1                | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
+| Package              | Severity | CVE                 | Affected Versions | Description                                                                       |
+| -------------------- | -------- | ------------------- | ----------------- | --------------------------------------------------------------------------------- |
+| lodash.pick          | high     | CVE-2020-8203       | v1                | Prototype Pollution in lodash                                                     |
+| minimatch            | high     | CVE-2026-27903      | v1                | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
+| minimatch            | high     | CVE-2026-27904      | v1                | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
+| serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v1                | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
 
 ## 2. All Dependencies
 
@@ -30,7 +31,7 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   3 |   3 |   3 |   1 |
-| high     |  14 |  14 |  21 |  15 |
+| high     |  14 |  15 |  22 |  17 |
 | moderate |   3 |   2 |  10 |   1 |
 | low      |   2 |   2 |   7 |   0 |
 | info     |   0 |   0 |   0 |   0 |
@@ -47,7 +48,8 @@
 | @angular/compiler    | high     | CVE-2025-66412      | v1                | Angular Stored XSS Vulnerability via SVG Animation, SVG URL and MathML Attribute  |
 | @angular/compiler    | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes               |
 | @angular/core        | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes               |
-| axios                | high     | CVE-2026-25639      | v4, v3, v2        | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig         |
+| @angular/core        | high     | CVE-2026-27970      | v1                | Angular i18n vulnerable to Cross-Site Scripting                                   |
+| axios                | high     | CVE-2026-25639      | v3, v2            | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig         |
 | braces               | high     | CVE-2024-4068       | v4, v3, v2, v1    | Uncontrolled resource consumption in braces                                       |
 | fast-xml-parser      | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                           |
 | fast-xml-parser      | high     | CVE-2026-26278      | v4, v3, v2        | fast-xml-parser affected by DoS through entity expansion in DOCTYPE (no expansio  |
@@ -58,6 +60,7 @@
 | qs                   | high     | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion   |
 | rollup               | high     | CVE-2026-27606      | v4, v3, v1        | Rollup 4 has Arbitrary File Write via Path Traversal                              |
 | semver               | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                         |
+| serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v4, v3, v2, v1    | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
 | tar                  | high     | CVE-2026-23950      | v1                | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on   |
 | tar                  | high     | CVE-2026-24842      | v1                | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave  |
 | tar                  | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins  |
