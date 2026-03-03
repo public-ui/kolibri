@@ -367,6 +367,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				.map((file) => file.name)
 				.join(', ');
 			this.controller.setFormAssociatedValue(files);
+			this.controller.onFacade.onChange(event, files);
+			this.controller.onFacade.onInput(event, false, files);
 		}
 	};
 	private onChange = (event: Event): void => {
