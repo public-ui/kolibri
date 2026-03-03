@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`alert slot 1`] = `
+<kol-alert>
+  <template shadowrootmode="open">
+    <kol-alert-wc>
+      <!---->
+      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
+        <div class="kol-alert__container">
+          <span class="visually-hidden">
+            kol-message
+          </span>
+          <kol-icon _icons="kolicon-alert-info" _label="" class="kol-alert__icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
+              alert with slot
+            </strong>
+            <span aria-describedby="heading" class="kol-alert__content">
+              <slot></slot>
+            </span>
+          </div>
+        </div>
+      </div>
+    </kol-alert-wc>
+  </template>
+  <div>
+    content of slot
+  </div>
+</kol-alert>
+`;
+
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
