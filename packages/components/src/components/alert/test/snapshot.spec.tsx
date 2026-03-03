@@ -29,17 +29,19 @@ executeSnapshotTests<AlertProps>(
 	[...buildByType('default'), ...buildByType('error'), ...buildByType('info'), ...buildByType('success'), ...buildByType('warning')],
 );
 
-test('alert slot', async () => {
-	const components = [KolAlert, KolAlertWc];
-	const page = await newSpecPage({
-		components,
-		template: () => (
-			<KolAlertTag _label="alert with slot">
-				<div>content of slot</div>
-			</KolAlertTag>
-		),
-	});
-	await page.waitForChanges();
+describe('KolAlert slot', () => {
+	test('should render content passed into the slot', async () => {
+		const components = [KolAlert, KolAlertWc];
+		const page = await newSpecPage({
+			components,
+			template: () => (
+				<KolAlertTag _label="alert with slot">
+					<div>content of slot</div>
+				</KolAlertTag>
+			),
+		});
+		await page.waitForChanges();
 
-	expect(page.root).toMatchSnapshot();
+		expect(page.root).toMatchSnapshot();
+	});
 });
