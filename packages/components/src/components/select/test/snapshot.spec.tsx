@@ -39,3 +39,9 @@ executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
 	_multiple: true,
 	_value: ['Divers', 'Frau'],
 });
+
+executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
+	_options: options,
+	_hideMsg: true,
+	_msg: { _type: 'error', _description: 'This is a combined error message' },
+});
