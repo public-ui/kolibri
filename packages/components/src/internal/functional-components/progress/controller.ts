@@ -26,6 +26,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchVariant(variant);
 
 		this.setState('liveValue', this.getProps().value);
+		this.setState('max', this.getProps().max);
 		this.startLiveValueInterval();
 	}
 
@@ -38,7 +39,9 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public watchMax(value?: number): void {
 		withValidPropValue<MaxProp>(maxProp, value, (v) => {
 			this.setProp('max', v);
+			this.setState('max', v);
 		});
+		this.watchValue(this.getProps().value);
 	}
 
 	public watchUnit(value?: string): void {
@@ -49,7 +52,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchValue(value?: number): void {
-		withValidPropValue<ValueProp>(valueProp, value, (v) => {
+		withValidPropValue<ValueProp>(valueProp, this.clampValue(value), (v) => {
 			this.setProp('value', v);
 		});
 	}
@@ -61,6 +64,20 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		});
 	}
 
+	private clampValue(value?: number): number | undefined {
+		if (typeof value === 'number') {
+			if (value > this.component.max) {
+				value = this.component.max;
+			}
+
+			if (value < 0) {
+				value = 0;
+			}
+		}
+		return value;
+	}
+
+	// a11y: says the value of the component every 5s
 	private startLiveValueInterval(): void {
 		this.interval = setInterval(() => {
 			const { value } = this.getProps();
