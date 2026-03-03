@@ -1,8 +1,11 @@
-@use '../@shared/input-text' as *;
+@use '../@shared/input-core' as *;
+
 @use '../mixins/to-rem' as *;
 @use '../mixins/form-field-order.textarea' as *;
+@use '../mixins/input-text.scss' as *;
 
 @layer kol-theme-component {
+	@include kol-input-text();
 	@include kol-form-field-order-textarea-theme;
 
 	.kol-textarea {
