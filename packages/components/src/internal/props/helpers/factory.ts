@@ -28,24 +28,49 @@ export type SimpleProp<K extends string, T> = Prop<K, T, T>;
 
 export type InternalPropValue<P extends Prop<string, unknown, unknown>> = NonNullable<P['__propInternal__']>;
 
-export type PropDefinition<TInternal, TDeps = Record<string, never>> = {
-	normalize: (value: unknown, deps: TDeps) => TInternal | never;
-	validate: (value: TInternal, deps: TDeps) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void, deps?: TDeps) => void;
+export type PropDefinition<TInternal> = {
+	normalize: (value: unknown) => TInternal | never;
+	validate: (value: TInternal) => boolean;
+	apply: (value: unknown, callback: (normalized: TInternal) => void) => void;
 };
 
-export function createPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = Record<string, never>>(
-	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
-	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
-): PropDefinition<InternalPropValue<P>, TDeps> {
+export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
+	normalize: (value: unknown) => InternalPropValue<P> | never,
+	validate: (value: InternalPropValue<P>) => boolean = () => true,
+): PropDefinition<InternalPropValue<P>> {
 	return {
 		normalize,
 		validate,
-		apply(value, callback, deps) {
+		apply(value, callback) {
 			try {
-				const dependencies = deps ?? ({} as TDeps);
-				const normalized = this.normalize(value, dependencies);
-				if (this.validate(normalized, dependencies)) {
+				const normalized = this.normalize(value);
+				if (this.validate(normalized)) {
+					callback(normalized);
+				}
+			} catch (e) {
+				Log.debug(e);
+			}
+		},
+	};
+}
+
+export type DependentPropDefinition<TInternal, TDeps> = {
+	normalize: (value: unknown, deps: TDeps) => TInternal | never;
+	validate: (value: TInternal, deps: TDeps) => boolean;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
+};
+
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = Record<string, never>>(
+	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
+	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
+): DependentPropDefinition<InternalPropValue<P>, TDeps> {
+	return {
+		normalize,
+		validate,
+		apply(value, callback, deps: TDeps) {
+			try {
+				const normalized = this.normalize(value, deps);
+				if (this.validate(normalized, deps)) {
 					callback(normalized);
 				}
 			} catch (e) {

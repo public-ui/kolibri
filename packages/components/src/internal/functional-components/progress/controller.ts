@@ -1,4 +1,4 @@
-import { labelProp, maxProp, clampedNumberValueProp, unitProp, variantProgressProp } from '../../props';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ProgressApi } from './api';
