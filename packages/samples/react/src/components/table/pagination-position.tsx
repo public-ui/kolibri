@@ -18,12 +18,12 @@ const HEADERS: KoliBriTableHeaders = {
 		],
 	],
 };
-const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
+const PAGINATION: KoliBriTablePaginationProps = { _page: 2, _hasButtons: { first: false, next: true, last: false, previous: true } };
 
 export const PaginationPosition: FC = () => (
 	<div className="w-full grid gap-14">
 		<SampleDescription>
-			<p>This sample shows KolTableStateful with different pagination positions.</p>
+			<p>This sample shows KolTableStateful with different pagination positions. All paginations hide the first and last buttons.</p>
 		</SampleDescription>
 
 		<section className="w-full flex flex-col gap-14">
