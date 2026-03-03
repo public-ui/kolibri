@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`alert slot 1`] = `
+exports[`KolAlert slot should render content passed into the slot 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
     <kol-alert-wc>
