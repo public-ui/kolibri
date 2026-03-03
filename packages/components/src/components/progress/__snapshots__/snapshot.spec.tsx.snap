@@ -479,3 +479,123 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
   </template>
 </kol-progress>
 `;
+
+exports[`kol-progress should render with _label="less than min" _variant="bar" _max=100 _value=-100 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div aria-hidden="true" class="kol-progress__bar">
+        <div class="kol-progress__bar-label">
+          less than min
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
+        </svg>
+        <div class="kol-progress__bar-value" style="width: 3ch;">
+          0
+        </div>
+        <div class="kol-progress__bar-unit">
+          %
+        </div>
+      </div>
+      <progress aria-busy="true" class="visually-hidden" max="100" value="0"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        0 %
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;
+
+exports[`kol-progress should render with _label="less than min" _variant="cycle" _max=100 _value=-100 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div aria-hidden="true" class="kol-progress__cycle">
+        <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="kol-progress__cycle-background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
+          <circle class="kol-progress__cycle-whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
+          <circle class="kol-progress__cycle-border" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="1"></circle>
+          <circle class="kol-progress__cycle-whitespace" cx="60" cy="60" fill="currentColor" r="51" stroke="currentColor" stroke-width="1"></circle>
+          <circle class="kol-progress__cycle-border" cx="60" cy="60" fill="currentColor" r="50" stroke="currentColor" stroke-width="1"></circle>
+          <circle class="kol-progress__cycle-progress" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-dasharray="0px 342px" stroke-linecap="round" stroke-width="6"></circle>
+        </svg>
+        <div class="kol-progress__cycle-text">
+          <div class="kol-progress__cycle-label">
+            less than min
+          </div>
+          <div class="kol-progress__cycle-value">
+            0 %
+          </div>
+        </div>
+      </div>
+      <progress aria-busy="true" class="visually-hidden" max="100" value="0"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        0 %
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;
+
+exports[`kol-progress should render with _label="more than max" _variant="bar" _max=100 _value=200 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div aria-hidden="true" class="kol-progress__bar">
+        <div class="kol-progress__bar-label">
+          more than max
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(100% - 4px);"></rect>
+        </svg>
+        <div class="kol-progress__bar-value" style="width: 3ch;">
+          100
+        </div>
+        <div class="kol-progress__bar-unit">
+          %
+        </div>
+      </div>
+      <progress aria-busy="false" class="visually-hidden" max="100" value="100"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        100 %
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;
+
+exports[`kol-progress should render with _label="more than max" _variant="cycle" _max=100 _value=200 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div aria-hidden="true" class="kol-progress__cycle">
+        <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="kol-progress__cycle-background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
+          <circle class="kol-progress__cycle-whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
+          <circle class="kol-progress__cycle-border" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="1"></circle>
+          <circle class="kol-progress__cycle-whitespace" cx="60" cy="60" fill="currentColor" r="51" stroke="currentColor" stroke-width="1"></circle>
+          <circle class="kol-progress__cycle-border" cx="60" cy="60" fill="currentColor" r="50" stroke="currentColor" stroke-width="1"></circle>
+          <circle class="kol-progress__cycle-progress" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-dasharray="342px 342px" stroke-linecap="round" stroke-width="6"></circle>
+        </svg>
+        <div class="kol-progress__cycle-text">
+          <div class="kol-progress__cycle-label">
+            more than max
+          </div>
+          <div class="kol-progress__cycle-value">
+            100 %
+          </div>
+        </div>
+      </div>
+      <progress aria-busy="false" class="visually-hidden" max="100" value="100"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        100 %
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;
