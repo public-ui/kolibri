@@ -1,5 +1,4 @@
-import type { ClampedNumberValueDeps, ClampedNumberValueProp, LabelProp, MaxProp, UnitProp, VariantProgressProp } from '../../props';
-import { labelProp, maxProp, clampedNumberValueProp, unitProp, variantProgressProp, withValidPropValue } from '../../props';
+import { labelProp, maxProp, clampedNumberValueProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ProgressApi } from './api';
@@ -31,13 +30,13 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+		labelProp.apply(value, (v) => {
 			this.setProp('label', v);
 		});
 	}
 
 	public watchMax(value?: number): void {
-		withValidPropValue<MaxProp>(maxProp, value, (v) => {
+		maxProp.apply(value, (v) => {
 			this.setProp('max', v);
 			this.setState('max', v);
 		});
@@ -45,15 +44,14 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchUnit(value?: string): void {
-		withValidPropValue<UnitProp>(unitProp, value, (v) => {
+		unitProp.apply(value, (v) => {
 			this.setProp('unit', v);
 			this.setState('unit', v);
 		});
 	}
 
 	public watchValue(value?: number): void {
-		withValidPropValue<ClampedNumberValueProp, ClampedNumberValueDeps>(
-			clampedNumberValueProp,
+		clampedNumberValueProp.apply(
 			value,
 			(v) => {
 				this.setProp('value', v);
@@ -63,7 +61,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchVariant(value?: string): void {
-		withValidPropValue<VariantProgressProp>(variantProgressProp, value, (v) => {
+		variantProgressProp.apply(value, (v) => {
 			this.setProp('variant', v);
 			this.setState('variant', v);
 		});

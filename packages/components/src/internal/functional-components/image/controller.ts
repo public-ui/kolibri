@@ -1,5 +1,5 @@
-import type { AltProp, LoadingProp, LoadingType, SizesProp, SrcProp, SrcsetProp } from '../../props';
-import { altProp, loadingProp, sizesProp, srcProp, srcsetProp, withValidPropValue } from '../../props';
+import type { LoadingType } from '../../props';
+import { altProp, loadingProp, sizesProp, srcProp, srcsetProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ImageApi } from './api';
@@ -25,31 +25,31 @@ export class ImageController extends BaseController<ImageApi> implements Control
 	}
 
 	public watchAlt(value?: string): void {
-		withValidPropValue<AltProp>(altProp, value, (v) => {
+		altProp.apply(value, (v) => {
 			this.setProp('alt', v);
 		});
 	}
 
 	public watchLoading(value?: LoadingType): void {
-		withValidPropValue<LoadingProp>(loadingProp, value, (v) => {
+		loadingProp.apply(value, (v) => {
 			this.setProp('loading', v);
 		});
 	}
 
 	public watchSizes(value?: string): void {
-		withValidPropValue<SizesProp>(sizesProp, value, (v) => {
+		sizesProp.apply(value, (v) => {
 			this.setProp('sizes', v);
 		});
 	}
 
 	public watchSrc(value?: string): void {
-		withValidPropValue<SrcProp>(srcProp, value, (v) => {
+		srcProp.apply(value, (v) => {
 			this.setProp('src', v);
 		});
 	}
 
 	public watchSrcset(value?: string): void {
-		withValidPropValue<SrcsetProp>(srcsetProp, value, (v) => {
+		srcsetProp.apply(value, (v) => {
 			this.setProp('srcset', v);
 		});
 	}
