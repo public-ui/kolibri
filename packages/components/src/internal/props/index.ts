@@ -14,6 +14,7 @@ export * from './sizes';
 export * from './src';
 export * from './srcset';
 export * from './unit';
-export * from './value';
+export * from './value-number';
+export * from './value-number-clamped';
 export * from './variant-progress';
 export * from './variant-quote';

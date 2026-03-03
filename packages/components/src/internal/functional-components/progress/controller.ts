@@ -1,5 +1,5 @@
-import type { LabelProp, MaxProp, UnitProp, ValueProp, VariantProgressProp } from '../../props';
-import { labelProp, maxProp, unitProp, valueProp, variantProgressProp, withValidPropValue } from '../../props';
+import type { ClampedNumberValueDeps, ClampedNumberValueProp, LabelProp, MaxProp, UnitProp, VariantProgressProp } from '../../props';
+import { labelProp, maxProp, clampedNumberValueProp, unitProp, variantProgressProp, withValidPropValue } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ProgressApi } from './api';
@@ -52,9 +52,14 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchValue(value?: number): void {
-		withValidPropValue<ValueProp>(valueProp, this.clampValue(value), (v) => {
-			this.setProp('value', v);
-		});
+		withValidPropValue<ClampedNumberValueProp, ClampedNumberValueDeps>(
+			clampedNumberValueProp,
+			value,
+			(v) => {
+				this.setProp('value', v);
+			},
+			{ min: 0, max: this.getProps().max },
+		);
 	}
 
 	public watchVariant(value?: string): void {
@@ -62,19 +67,6 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			this.setProp('variant', v);
 			this.setState('variant', v);
 		});
-	}
-
-	private clampValue(value?: number): number | undefined {
-		if (typeof value === 'number') {
-			if (value > this.component.max) {
-				value = this.component.max;
-			}
-
-			if (value < 0) {
-				value = 0;
-			}
-		}
-		return value;
 	}
 
 	// a11y: says the value of the component every 5s
