@@ -10,9 +10,13 @@ executeSnapshotTests<ProgressProps>(
 		{ _label: 'Label', _variant: 'bar', _max: 100, _value: 0 },
 		{ _label: 'Label', _variant: 'bar', _max: 100, _value: 42 },
 		{ _label: 'Label', _variant: 'bar', _max: 100, _value: 100 },
+		{ _label: 'more than max', _variant: 'bar', _max: 100, _value: 200 },
+		{ _label: 'less than min', _variant: 'bar', _max: 100, _value: -100 },
 		{ _label: 'Label', _variant: 'cycle', _max: 100, _value: 0 },
 		{ _label: 'Label', _variant: 'cycle', _max: 100, _value: 42 },
 		{ _label: 'Label', _variant: 'cycle', _max: 100, _value: 100 },
+		{ _label: 'more than max', _variant: 'cycle', _max: 100, _value: 200 },
+		{ _label: 'less than min', _variant: 'cycle', _max: 100, _value: -100 },
 
 		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 0 },
 		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 17 },
