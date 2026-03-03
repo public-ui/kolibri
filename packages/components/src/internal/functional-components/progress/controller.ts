@@ -41,7 +41,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			this.setProp('max', v);
 			this.setState('max', v);
 		});
-		this.watchValue(this.component.liveValue);
+		this.watchValue(this.getProps().value);
 	}
 
 	public watchUnit(value?: string): void {
@@ -77,6 +77,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		return value;
 	}
 
+	// a11y: says the value of the component every 5s
 	private startLiveValueInterval(): void {
 		this.interval = setInterval(() => {
 			const { value } = this.getProps();
