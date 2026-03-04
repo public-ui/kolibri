@@ -1,11 +1,11 @@
 {
 	"devDependencies": {
-		"@commitlint/cli": "20.4.2",
-		"@commitlint/config-conventional": "20.4.2",
+		"@commitlint/cli": "20.4.3",
+		"@commitlint/config-conventional": "20.4.3",
 		"husky": "9.1.7",
 		"lerna": "9.0.5",
-		"license-report": "6.8.1",
-		"lint-staged": "16.3.1",
+		"license-report": "6.8.2",
+		"lint-staged": "16.3.2",
 		"npm-check-updates": "19.6.3",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
