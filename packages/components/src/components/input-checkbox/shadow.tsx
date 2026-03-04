@@ -125,6 +125,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 					this.inputHasFocus = true;
 				},
 				onBlur: (event: Event) => {
+					if (this._disabled) {
+						return;
+					}
 					this.controller.onFacade.onBlur(event);
 					this.inputHasFocus = false;
 				},
@@ -389,7 +392,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private onInput = (event: Event): void => {
 		this._checked = !this._checked;
 		this._indeterminate = false;
-
 		const value = this.getModelValue();
 		this.controller.onFacade.onInput(event, false, value);
 		this.controller.setFormAssociatedCheckboxValue(value);
