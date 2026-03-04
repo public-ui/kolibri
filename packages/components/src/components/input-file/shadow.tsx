@@ -360,13 +360,19 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private onDrop = (event: DragEvent): void => {
 		event.preventDefault();
-		this.inputRef?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+		if (!this.inputRef) {
+			return;
+		}
+		this.inputRef.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
 		if (event.dataTransfer?.files.length) {
 			const files = event.dataTransfer.files;
+			this.inputRef.files = files;
 			this.filename = Array.from(files)
 				.map((file) => file.name)
 				.join(', ');
 			this.controller.setFormAssociatedValue(files);
+			this.controller.onFacade.onChange(event, files);
+			this.controller.onFacade.onInput(event, false, files);
 		}
 	};
 	private onChange = (event: Event): void => {

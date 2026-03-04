@@ -4,6 +4,12 @@ import React, { forwardRef } from 'react';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
+const handleOn = {
+	onClick: () => console.log('click'),
+	onChange: (event: Event, files: unknown) => console.log('onChange ', event, files),
+	onInput: (event: Event, files: unknown) => console.log('onInput', event, files),
+};
+
 export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.KolInputFile>(function InputFileCases(props, ref) {
 	return (
 		<div className="grid gap-4">
@@ -17,6 +23,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 						},
 					}}
 					_touched
+					_on={handleOn}
 				/>
 			</div>
 			<KolInputFile
@@ -24,7 +31,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 				_required
 				_hint={HINT_MSG}
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
-				_label="Upload file (Black background test)"
+				_label="Upload file (Error State)"
 				_icons={{
 					left: {
 						icon: 'kolicon-check',
