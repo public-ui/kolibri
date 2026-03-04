@@ -8,7 +8,7 @@ import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
 
-import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
+import type { KoliBriTableHeaders } from '@public-ui/components';
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -18,7 +18,6 @@ const HEADERS: KoliBriTableHeaders = {
 		],
 	],
 };
-const PAGINATION: KoliBriTablePaginationProps = { _page: 2, _hasButtons: { first: false, next: true, last: false, previous: true } };
 
 export const PaginationPosition: FC = () => (
 	<div className="w-full grid gap-14">
@@ -33,7 +32,15 @@ export const PaginationPosition: FC = () => (
 					_label="Sample table with pagination at the bottom"
 					_data={DATA}
 					_headers={HEADERS}
-					_pagination={PAGINATION}
+					_pagination={{
+						_page: 1,
+						_hasButtons: {
+							first: false,
+							next: true,
+							last: false,
+							previous: true,
+						},
+					}}
 					_paginationPosition="bottom"
 				></KolTableStateful>
 			</section>
@@ -43,7 +50,15 @@ export const PaginationPosition: FC = () => (
 					_label="Sample table with pagination at the top"
 					_data={DATA}
 					_headers={HEADERS}
-					_pagination={PAGINATION}
+					_pagination={{
+						_page: 2,
+						_hasButtons: {
+							first: true,
+							next: false,
+							last: true,
+							previous: false,
+						},
+					}}
 					_paginationPosition="top"
 				></KolTableStateful>
 			</section>
@@ -53,7 +68,15 @@ export const PaginationPosition: FC = () => (
 					_label="Sample table with pagination at both top and bottom"
 					_data={DATA}
 					_headers={HEADERS}
-					_pagination={PAGINATION}
+					_pagination={{
+						_page: 3,
+						_hasButtons: {
+							first: false,
+							next: false,
+							last: false,
+							previous: false,
+						},
+					}}
 					_paginationPosition="both"
 				></KolTableStateful>
 			</section>
