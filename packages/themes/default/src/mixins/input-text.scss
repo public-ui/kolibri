@@ -1,7 +1,6 @@
 @use '../mixins/to-rem' as *;
-@use './input-core' as *;
 
-@layer kol-theme-component {
+@mixin kol-input-text($clickable-classname: 'kol-input') {
 	.kol-input {
 		background-color: transparent;
 		height: to-rem(40);
@@ -32,19 +31,19 @@
 			}
 		}
 
-		&:has(&__adornment--start:not(:empty)) .kol-input {
+		&:has(&__adornment--start:not(:empty)) .#{$clickable-classname} {
 			padding-left: to-rem(48);
 		}
 
-		&:has(&__adornment--start &__smart-button + &__icon) .kol-input {
+		&:has(&__adornment--start &__smart-button + &__icon) .#{$clickable-classname} {
 			padding-left: to-rem(76);
 		}
 
-		&:has(&__adornment--end:not(:empty)) .kol-input {
+		&:has(&__adornment--end:not(:empty)) .#{$clickable-classname} {
 			padding-right: to-rem(48);
 		}
 
-		&:has(&__adornment--end &__icon + &__smart-button) .kol-input {
+		&:has(&__adornment--end &__icon + &__smart-button) .#{$clickable-classname} {
 			padding-right: to-rem(76);
 		}
 

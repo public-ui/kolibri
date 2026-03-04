@@ -61,6 +61,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 					_accessKey={this._accessKey}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
+					_hideMsg={this._hideMsg}
 					_hint={this._hint}
 					_icons={this._icons}
 					_label={this._label}

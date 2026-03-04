@@ -15,7 +15,6 @@ concurrency:
 
 jobs:
   build-and-check:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,17 +24,21 @@ jobs:
       - uses: ./.github/actions/pnpm-setup
       - name: Build
         run: pnpm -r build
+        continue-on-error: true
       - name: Format
         run: pnpm -r format
+        continue-on-error: true
       - name: Lint
         run: pnpm -r lint
+        continue-on-error: true
       - name: Unit Tests
         run: pnpm -r test:unit
+        continue-on-error: true
       - name: Unused
         run: pnpm -r unused
+        continue-on-error: true
 
   e2e-tests:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,17 +50,19 @@ jobs:
         run: npx playwright install --with-deps chromium firefox webkit
       - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
+        continue-on-error: true
       - name: React samples build dependencies
         run: pnpm --filter @public-ui/sample-react^... build
+        continue-on-error: true
       - name: E2E Test react samples
         run: pnpm --filter @public-ui/sample-react test:e2e
+        continue-on-error: true
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
           name: report-e2e
 
   visual-tests:
-    continue-on-error: true
     strategy:
       matrix:
         package: ['test-tag-name-transformer', 'theme-default']
@@ -72,8 +77,10 @@ jobs:
         run: npx playwright install --with-deps firefox
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
+        continue-on-error: true
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
+        continue-on-error: true
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:

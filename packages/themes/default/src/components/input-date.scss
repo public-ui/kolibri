@@ -1,6 +1,8 @@
-@use '../@shared/input-text' as *;
+@use '../@shared/input-core' as *;
+@use '../mixins/input-text.scss' as *;
 
 @layer kol-theme-component {
+	@include kol-input-text();
 	*::-webkit-calendar-picker-indicator {
 		outline-color: var(--color-primary-variant);
 		border-radius: var(--border-radius);
