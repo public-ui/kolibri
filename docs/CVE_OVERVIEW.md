@@ -31,8 +31,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   3 |   3 |   3 |   1 |
-| high     |  14 |  15 |  22 |  17 |
-| moderate |   3 |   2 |  10 |   1 |
+| high     |  14 |  15 |  21 |  17 |
+| moderate |   3 |   2 |  11 |   1 |
 | low      |   2 |   2 |   7 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -57,7 +57,6 @@
 | minimatch            | high     | CVE-2026-27903      | v4, v3, v2, v1    | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v4, v3, v2, v1    | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
 | minimatch            | high     | CVE-2026-26996      | v4, v3, v2        | minimatch has a ReDoS via repeated wildcards with non-matching literal in patter  |
-| qs                   | high     | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion   |
 | rollup               | high     | CVE-2026-27606      | v4, v3, v1        | Rollup 4 has Arbitrary File Write via Path Traversal                              |
 | semver               | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                         |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v4, v3, v2, v1    | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
@@ -71,6 +70,7 @@
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                     |
 | micromatch           | moderate | CVE-2024-4067       | v4, v3, v2, v1    | Regular Expression Denial of Service (ReDoS) in micromatch                        |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values            |
+| qs                   | moderate | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion   |
 | serialize-javascript | moderate | CVE-2024-11831      | v2                | Cross-site Scripting (XSS) in serialize-javascript                                |
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to   |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious  |
