@@ -1,7 +1,71 @@
+@use '~@public-ui/components/index' as *;
+@use '~@kern-ux/native/src/scss/core/utilities/mixins' as *;
+
 @use './input-core' as *;
-@use './kol-input-text' as *;
 
 @mixin input-core-text($clickable-classname: 'kol-input') {
 	@include input-core;
 	@include kol-input-text($clickable-classname);
+}
+
+@mixin kol-input-text($clickable-classname: 'kol-input') {
+	.kol-input {
+		padding: 0 var(--kern-metric-space-default);
+	}
+
+	.kol-input-container {
+		padding: 0;
+		gap: 0;
+		grid-template-columns: 1fr;
+
+		&__smart-button {
+			position: relative;
+			z-index: 2;
+		}
+
+		&__adornment {
+			position: absolute;
+
+			&--start {
+				left: 0;
+
+				.kol-input-container__icon {
+					padding-left: var(--kern-metric-space-default);
+				}
+			}
+
+			&--end {
+				right: 0;
+
+				.kol-input-container__icon {
+					padding-right: var(--kern-metric-space-small);
+				}
+			}
+
+			.kol-icon {
+				font-size: var(--kern-metric-dimension-default);
+			}
+		}
+
+		&:has(&__adornment--start:not(:empty)) .#{$clickable-classname} {
+			padding-left: to-rem(48);
+		}
+
+		&:has(&__adornment--start &__smart-button + &__icon) .#{$clickable-classname} {
+			padding-left: to-rem(76);
+		}
+
+		&:has(&__adornment--end:not(:empty)) .#{$clickable-classname} {
+			padding-right: to-rem(48);
+		}
+
+		&:has(&__adornment--end &__icon + &__smart-button) .#{$clickable-classname} {
+			padding-right: to-rem(76);
+		}
+
+		&__container {
+			position: relative;
+			z-index: 1;
+		}
+	}
 }
