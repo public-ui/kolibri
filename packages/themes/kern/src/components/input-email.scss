@@ -1,5 +1,5 @@
-@use '../mixins/input-core' as *;
+@use '../mixins/input-core-text' as *;
 
 @layer kol-theme-component {
-	@include input-core;
+	@include input-core-text;
 }

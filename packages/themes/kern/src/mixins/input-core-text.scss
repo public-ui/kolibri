@@ -1,0 +1,7 @@
+@use './input-core' as *;
+@use './kol-input-text' as *;
+
+@mixin input-core-text($clickable-classname: 'kol-input') {
+	@include input-core;
+	@include kol-input-text($clickable-classname);
+}

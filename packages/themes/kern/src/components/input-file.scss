@@ -8,7 +8,7 @@
 	}
 
 	.kol-input-container {
-		outline: var(--kern-metric-border-width-default) dashed var(--kern-color-form-input-border);
+		outline: var(--kern-metric-border-width-default) dashed var(--kol-input-border-color);
 		display: flex;
 		position: relative;
 		height: var(--kern-metric-dimension-5x-large);

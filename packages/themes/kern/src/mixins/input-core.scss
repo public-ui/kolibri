@@ -2,12 +2,10 @@
 @use './kol-alert' as *;
 @use './kol-form-field' as *;
 @use './kol-input' as *;
-@use './kol-input-container' as *;
 
 @mixin input-core {
 	@include badge-text-hint(var(--kern-color-layout-text-muted), var(--kern-color-layout-text-inverse));
 	@include kol-alert;
 	@include kol-form-field;
 	@include kol-input;
-	@include kol-input-container;
 }

@@ -3,22 +3,12 @@
 @layer kol-theme-component {
 	@include input-core;
 	.kol-input-container {
-		box-shadow: none;
 		padding: 0;
-		align-items: stretch;
 		border: 0;
-
-		--kol-input-range-border-color: var(--kern-color-form-input-border);
 
 		&:hover,
 		&:focus-within {
-			box-shadow: none;
-			padding: 0;
-		}
-
-		&--error {
-			background: var(--kern-color-feedback-danger-background);
-			--kol-input-range-border-color: var(--kern-color-feedback-danger);
+			box-shadow: none !important;
 		}
 
 		&__adornment {
@@ -44,11 +34,11 @@
 		}
 
 		&__input--range {
-			background-color: var(--kol-input-range-border-color);
+			background-color: var(--kol-input-border-color);
 			height: var(--kern-metric-border-width-default);
 			border: none;
 
-			&:hover {
+			&:not(:disabled):hover {
 				height: var(--kern-metric-border-width-bold);
 			}
 		}
@@ -57,11 +47,10 @@
 			background-color: transparent;
 			align-self: stretch;
 			border: none;
-			border-bottom: var(--kol-input-range-border-color) solid var(--kern-metric-border-width-default);
+			border-bottom: var(--kol-input-border-color) solid var(--kern-metric-border-width-default);
 
-			&:hover {
-				margin-top: calc(var(--kern-metric-border-width-bold) - var(--kern-metric-border-width-default));
-				border-width: var(--kern-metric-border-width-bold);
+			&:not(:disabled):hover {
+				box-shadow: 0 calc(-1 * var(--kern-metric-border-width-default)) 0 0 var(--kol-input-border-color) inset;
 			}
 		}
 	}
