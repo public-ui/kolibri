@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { KolButton, KolSelect } from '@public-ui/react-v19';
 
 import type { SelectOption } from '@public-ui/components';
 
 import './picklist.css';
+
+function useIsDesktop(breakpoint = 640): boolean {
+	const query = `(min-width: ${breakpoint}px)`;
+	const [matches, setMatches] = useState(() => typeof window !== 'undefined' && window.matchMedia(query).matches);
+	useEffect(() => {
+		const mq = window.matchMedia(query);
+		const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+		mq.addEventListener('change', handler);
+		return () => mq.removeEventListener('change', handler);
+	}, [query]);
+	return matches;
+}
 
 export type PicklistOption<T = string> = SelectOption<T>;
 
@@ -50,6 +62,11 @@ export function Picklist<T = string>({
 	disabled = false,
 	size = 8,
 }: PicklistProps<T>) {
+	const isDesktop = useIsDesktop();
+	const icons = isDesktop
+		? { addOne: 'kolicon-chevron-right', addAll: 'kolicon-chevrons-right', removeOne: 'kolicon-chevrons-left', removeAll: 'kolicon-chevron-left' }
+		: { addOne: 'kolicon-chevron-down', addAll: 'kolicon-chevrons-down', removeOne: 'kolicon-chevrons-up', removeAll: 'kolicon-chevron-up' };
+
 	const isControlled = controlledValue !== undefined;
 
 	const [internalValue, setInternalValue] = useState<T[]>(defaultValue ?? []);
@@ -112,7 +129,7 @@ export function Picklist<T = string>({
 			<div className="kol-picklist__actions" aria-label="Transfer actions">
 				<KolButton
 					_label="Add selected"
-					_icons="kolicon-chevron-right"
+					_icons={icons.addOne}
 					_hideLabel
 					_variant="primary"
 					_disabled={disabled || availableFocus.length === 0}
@@ -121,7 +138,7 @@ export function Picklist<T = string>({
 				/>
 				<KolButton
 					_label="Add all"
-					_icons="kolicon-chevrons-right"
+					_icons={icons.addAll}
 					_hideLabel
 					_variant="secondary"
 					_disabled={disabled || available.length === 0}
@@ -130,7 +147,7 @@ export function Picklist<T = string>({
 				/>
 				<KolButton
 					_label="Remove selected"
-					_icons="kolicon-chevrons-left"
+					_icons={icons.removeOne}
 					_hideLabel
 					_variant="secondary"
 					_disabled={disabled || selectedFocus.length === 0}
@@ -139,7 +156,7 @@ export function Picklist<T = string>({
 				/>
 				<KolButton
 					_label="Remove all"
-					_icons="kolicon-chevron-left"
+					_icons={icons.removeAll}
 					_hideLabel
 					_variant="tertiary"
 					_disabled={disabled || orderedSelected.length === 0}
