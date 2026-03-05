@@ -8,8 +8,8 @@ export const PicklistBasic: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				A picklist (dual listbox) lets users move items between an "Available" and a "Selected" list. This sample shows how to build this pattern using KolSelect
-				and KolButton.
+				A picklist (dual listbox / transfer list) lets users move items between an "Available" and a "Selected" list. The component is generic, supports
+				controlled and uncontrolled usage, and adapts its layout responsively.
 			</p>
 		</SampleDescription>
 

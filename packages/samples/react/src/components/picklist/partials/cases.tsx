@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import { KolButton, KolSelect } from '@public-ui/react-v19';
+import type { PicklistOption } from '../Picklist';
+import { Picklist } from '../Picklist';
 
-import type { SelectOption } from '@public-ui/components';
+// ── Sample data ──────────────────────────────────────────────────────────────
 
-const FRUITS: SelectOption<string>[] = [
+const FRUITS: PicklistOption<string>[] = [
 	{ label: 'Apple', value: 'apple' },
 	{ label: 'Banana', value: 'banana' },
 	{ label: 'Cherry', value: 'cherry' },
@@ -19,117 +20,76 @@ const FRUITS: SelectOption<string>[] = [
 	{ label: 'Orange', value: 'orange' },
 ];
 
-type PicklistProps = {
-	label?: string;
-	disabled?: boolean;
-};
+type Permission = { id: number; name: string };
 
-const Picklist = ({ label = 'Picklist', disabled = false }: PicklistProps) => {
-	const [available, setAvailable] = useState<SelectOption<string>[]>(FRUITS);
-	const [selected, setSelected] = useState<SelectOption<string>[]>([]);
-	const [availableSelection, setAvailableSelection] = useState<string[]>([]);
-	const [selectedSelection, setSelectedSelection] = useState<string[]>([]);
+const PERMISSIONS: PicklistOption<number>[] = [
+	{ label: 'Read', value: 1 },
+	{ label: 'Write', value: 2 },
+	{ label: 'Delete', value: 3 },
+	{ label: 'Admin', value: 4 },
+	{ label: 'Export', value: 5 },
+	{ label: 'Import', value: 6 },
+];
 
-	const moveToSelected = () => {
-		const toMove = available.filter((opt) => availableSelection.includes(opt.value as string));
-		setSelected((prev) => [...prev, ...toMove]);
-		setAvailable((prev) => prev.filter((opt) => !availableSelection.includes(opt.value as string)));
-		setAvailableSelection([]);
-	};
+// ── Example: basic (uncontrolled) ────────────────────────────────────────────
 
-	const moveAllToSelected = () => {
-		setSelected((prev) => [...prev, ...available]);
-		setAvailable([]);
-		setAvailableSelection([]);
-		setSelectedSelection([]);
-	};
+export const PicklistBasicCase = () => <Picklist options={FRUITS} />;
 
-	const moveToAvailable = () => {
-		const toMove = selected.filter((opt) => selectedSelection.includes(opt.value as string));
-		setAvailable((prev) => [...prev, ...toMove].sort((a, b) => (a.label as string).localeCompare(b.label as string)));
-		setSelected((prev) => prev.filter((opt) => !selectedSelection.includes(opt.value as string)));
-		setSelectedSelection([]);
-	};
+// ── Example: with pre-selected items ─────────────────────────────────────────
 
-	const moveAllToAvailable = () => {
-		setAvailable((prev) => [...prev, ...selected].sort((a, b) => (a.label as string).localeCompare(b.label as string)));
-		setSelected([]);
-		setAvailableSelection([]);
-		setSelectedSelection([]);
-	};
+export const PicklistPreselectedCase = () => (
+	<Picklist options={FRUITS} defaultValue={['banana', 'mango', 'kiwi']} availableLabel="Fruits" selectedLabel="Basket" />
+);
+
+// ── Example: disabled ─────────────────────────────────────────────────────────
+
+export const PicklistDisabledCase = () => (
+	<Picklist options={FRUITS} defaultValue={['apple', 'cherry']} disabled availableLabel="Fruits" selectedLabel="Basket" />
+);
+
+// ── Example: controlled (with external state) ─────────────────────────────────
+
+export const PicklistControlledCase = () => {
+	const [selected, setSelected] = useState<number[]>([2, 3]);
 
 	return (
-		<div>
-			<p className="font-bold mb-2">{label}</p>
-			<div className="flex gap-4 items-center">
-				<KolSelect
-					_label="Available"
-					_options={available}
-					_value={availableSelection}
-					_multiple
-					_disabled={disabled}
-					style={{ width: '200px' }}
-					_on={{
-						onChange: (_e, value) => setAvailableSelection(value as string[]),
-					}}
-				/>
-				<div className="flex flex-col gap-2">
-					<KolButton
-						_label="Add selected"
-						_icons="kolicon-chevron-right"
-						_hideLabel
-						_variant="primary"
-						_disabled={disabled || availableSelection.length === 0}
-						_on={{ onClick: moveToSelected }}
-						_tooltipAlign="top"
-					/>
-					<KolButton
-						_label="Add all"
-						_icons="kolicon-chevrons-right"
-						_hideLabel
-						_variant="secondary"
-						_disabled={disabled || available.length === 0}
-						_on={{ onClick: moveAllToSelected }}
-						_tooltipAlign="top"
-					/>
-					<KolButton
-						_label="Remove selected"
-						_icons="kolicon-chevron-left"
-						_hideLabel
-						_variant="secondary"
-						_disabled={disabled || selectedSelection.length === 0}
-						_on={{ onClick: moveToAvailable }}
-						_tooltipAlign="top"
-					/>
-					<KolButton
-						_label="Remove all"
-						_icons="kolicon-chevrons-left"
-						_hideLabel
-						_variant="tertiary"
-						_disabled={disabled || selected.length === 0}
-						_on={{ onClick: moveAllToAvailable }}
-						_tooltipAlign="top"
-					/>
-				</div>
-				<KolSelect
-					_label="Selected"
-					_options={selected}
-					_value={selectedSelection}
-					_multiple
-					_disabled={disabled}
-					style={{ width: '200px' }}
-					_on={{
-						onChange: (_e, value) => setSelectedSelection(value as string[]),
-					}}
-				/>
-			</div>
+		<div className="grid gap-4">
+			<Picklist<number>
+				options={PERMISSIONS}
+				value={selected}
+				onChange={setSelected}
+				availableLabel="Available permissions"
+				selectedLabel="Granted permissions"
+			/>
+			<p className="text-sm">
+				<strong>Granted permission IDs:</strong> {selected.length ? selected.join(', ') : '–'}
+			</p>
 		</div>
 	);
 };
 
+// ── All cases ─────────────────────────────────────────────────────────────────
+
 export const PicklistCases = () => (
 	<div className="grid gap-8">
-		<Picklist label="Basic picklist" />
-		<Picklist label="Disabled picklist" disabled />
+		<section>
+			<h2 className="text-base font-bold mb-2">Basic (uncontrolled)</h2>
+			<PicklistBasicCase />
+		</section>
+
+		<section>
+			<h2 className="text-base font-bold mb-2">With pre-selected items</h2>
+			<PicklistPreselectedCase />
+		</section>
+
+		<section>
+			<h2 className="text-base font-bold mb-2">Disabled</h2>
+			<PicklistDisabledCase />
+		</section>
+
+		<section>
+			<h2 className="text-base font-bold mb-2">Controlled (numeric values, with external state)</h2>
+			<PicklistControlledCase />
+		</section>
 	</div>
 );
