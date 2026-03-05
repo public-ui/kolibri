@@ -113,5 +113,9 @@
 				z-index: 1;
 			}
 		}
+
+		&--external-link {
+			flex-direction: row-reverse;
+		}
 	}
 }

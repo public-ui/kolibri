@@ -47,6 +47,10 @@
 			letter-spacing: var(--kern-metric-space-none);
 			border: 0;
 			font-style: normal;
+
+			&__read-only {
+				display: none;
+			}
 		}
 
 		&__msg {
