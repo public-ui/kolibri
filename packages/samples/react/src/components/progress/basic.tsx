@@ -23,6 +23,10 @@ export const ProgressBasic: FC = () => (
 				<KolProgress _label="12 Tasks to do" _variant="bar" _max={12} _value={5} _unit="tasks completed"></KolProgress>
 				<KolProgress _label="Max 150 kg" _variant="cycle" _max={150} _value={42} _unit="kg"></KolProgress>
 			</fieldset>
+			<fieldset title="Min & Max" className="flex flex-col gap-4">
+				<KolProgress _label="More than max" _variant="bar" _max={7} _value={14}></KolProgress>
+				<KolProgress _label="Less than min" _variant="bar" _max={7} _value={-7}></KolProgress>
+			</fieldset>
 		</div>
 	</>
 );

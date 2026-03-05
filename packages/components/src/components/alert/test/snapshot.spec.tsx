@@ -1,3 +1,6 @@
+import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { KolAlertTag } from '../../../core/component-names';
 import type { AlertProps, AlertType } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
@@ -25,3 +28,20 @@ executeSnapshotTests<AlertProps>(
 	[KolAlert, KolAlertWc],
 	[...buildByType('default'), ...buildByType('error'), ...buildByType('info'), ...buildByType('success'), ...buildByType('warning')],
 );
+
+describe('KolAlert slot', () => {
+	test('should render content passed into the slot', async () => {
+		const components = [KolAlert, KolAlertWc];
+		const page = await newSpecPage({
+			components,
+			template: () => (
+				<KolAlertTag _label="alert with slot">
+					<div>content of slot</div>
+				</KolAlertTag>
+			),
+		});
+		await page.waitForChanges();
+
+		expect(page.root).toMatchSnapshot();
+	});
+});

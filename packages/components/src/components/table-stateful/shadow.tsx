@@ -451,9 +451,9 @@ export class KolTableStateful implements TableAPI {
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
 				<div class="kol-table-stateful__pagination-wrapper">
 					<KolPaginationWcTag
-						class="test"
 						_boundaryCount={this.state._pagination._boundaryCount}
 						_customClass={this.state._pagination._customClass}
+						_hasButtons={this.state._pagination._hasButtons}
 						_on={this.handlePagination}
 						_page={this.state._pagination._page}
 						_pageSize={this.state._pagination._pageSize}
