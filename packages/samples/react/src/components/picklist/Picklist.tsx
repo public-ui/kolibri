@@ -63,9 +63,8 @@ export function Picklist<T = string>({
 	size = 8,
 }: PicklistProps<T>) {
 	const isDesktop = useIsDesktop();
-	const icons = isDesktop
-		? { addOne: 'kolicon-chevron-right', addAll: 'kolicon-chevron-double-right', removeOne: 'kolicon-chevron-double-left', removeAll: 'kolicon-chevron-left' }
-		: { addOne: 'kolicon-chevron-down', addAll: 'kolicon-chevrons-down', removeOne: 'kolicon-chevrons-up', removeAll: 'kolicon-chevron-up' };
+	const singleIcon = isDesktop ? 'kolicon-chevron-right' : 'kolicon-chevron-down';
+	const singleIconReverse = isDesktop ? 'kolicon-chevron-left' : 'kolicon-chevron-up';
 
 	const isControlled = controlledValue !== undefined;
 
@@ -129,7 +128,7 @@ export function Picklist<T = string>({
 			<div className="kol-picklist__actions" aria-label="Transfer actions">
 				<KolButton
 					_label="Add selected"
-					_icons={icons.addOne}
+					_icons={singleIcon}
 					_hideLabel
 					_variant="primary"
 					_disabled={disabled || availableFocus.length === 0}
@@ -137,8 +136,9 @@ export function Picklist<T = string>({
 					_tooltipAlign="top"
 				/>
 				<KolButton
+					className="kol-picklist__btn-rotate-down"
 					_label="Add all"
-					_icons={icons.addAll}
+					_icons="kolicon-chevron-double-right"
 					_hideLabel
 					_variant="secondary"
 					_disabled={disabled || available.length === 0}
@@ -146,8 +146,9 @@ export function Picklist<T = string>({
 					_tooltipAlign="top"
 				/>
 				<KolButton
+					className="kol-picklist__btn-rotate-up"
 					_label="Remove selected"
-					_icons={icons.removeOne}
+					_icons="kolicon-chevron-double-left"
 					_hideLabel
 					_variant="secondary"
 					_disabled={disabled || selectedFocus.length === 0}
@@ -156,7 +157,7 @@ export function Picklist<T = string>({
 				/>
 				<KolButton
 					_label="Remove all"
-					_icons={icons.removeAll}
+					_icons={singleIconReverse}
 					_hideLabel
 					_variant="tertiary"
 					_disabled={disabled || orderedSelected.length === 0}
