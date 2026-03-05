@@ -118,5 +118,15 @@ test.describe('kol-tabs', () => {
 			await createButton.click();
 			await expect(eventPromise).resolves.toBeUndefined();
 		});
+
+		test('after click only 1 tab has selected class', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			await kolTabs.getByLabel('Second Tab').click();
+			await expect(page.locator('.kol-tabs .selected')).toHaveCount(1);
+		});
 	});
 });
