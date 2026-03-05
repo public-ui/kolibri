@@ -158,6 +158,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onBlur(event: Event): void {
+		if (this.component._disabled) {
+			return;
+		}
 		this.component._touched = true;
 
 		// Event handling
