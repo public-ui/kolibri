@@ -64,7 +64,7 @@ export function Picklist<T = string>({
 }: PicklistProps<T>) {
 	const isDesktop = useIsDesktop();
 	const icons = isDesktop
-		? { addOne: 'kolicon-chevron-right', addAll: 'kolicon-chevrons-right', removeOne: 'kolicon-chevrons-left', removeAll: 'kolicon-chevron-left' }
+		? { addOne: 'kolicon-chevron-right', addAll: 'kolicon-chevron-double-right', removeOne: 'kolicon-chevron-double-left', removeAll: 'kolicon-chevron-left' }
 		: { addOne: 'kolicon-chevron-down', addAll: 'kolicon-chevrons-down', removeOne: 'kolicon-chevrons-up', removeAll: 'kolicon-chevron-up' };
 
 	const isControlled = controlledValue !== undefined;
