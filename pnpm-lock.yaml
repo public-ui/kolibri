@@ -788,6 +788,9 @@ importers:
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../tools/visual-tests
+      cpy-cli:
+        specifier: 6.0.0
+        version: 6.0.0
 
   packages/themes:
     devDependencies:
