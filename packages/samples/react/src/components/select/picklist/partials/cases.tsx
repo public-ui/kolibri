@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import type { PicklistOption } from '../Picklist';
-import { Picklist } from '../Picklist';
+import type { PicklistOption } from '../component';
+import { Picklist } from '../component';
 
 // ── Sample data ──────────────────────────────────────────────────────────────
 

@@ -2,9 +2,9 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { SampleDescription } from '../SampleDescription';
-import { PicklistCases } from './partials/cases';
+import { PicklistCases } from './picklist/partials/cases';
 
-export const PicklistBasic: FC = () => (
+export const SelectPicklist: FC = () => (
 	<>
 		<SampleDescription>
 			<p>

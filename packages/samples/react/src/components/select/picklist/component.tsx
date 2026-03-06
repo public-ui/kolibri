@@ -4,7 +4,7 @@ import { KolButton, KolSelect } from '@public-ui/react-v19';
 
 import type { SelectOption } from '@public-ui/components';
 
-import './picklist.css';
+import './style.css';
 
 function useIsDesktop(breakpoint = 640): boolean {
 	const query = `(min-width: ${breakpoint}px)`;
@@ -39,8 +39,7 @@ export type PicklistProps<T = string> = {
 	size?: number;
 };
 
-const byLabel = <T,>(a: PicklistOption<T>, b: PicklistOption<T>) =>
-	String(a.label).localeCompare(String(b.label));
+const byLabel = <T,>(a: PicklistOption<T>, b: PicklistOption<T>) => String(a.label).localeCompare(String(b.label));
 
 function partition<T>(options: PicklistOption<T>[], selectedValues: T[]): [PicklistOption<T>[], PicklistOption<T>[]] {
 	const selectedSet = new Set(selectedValues.map(String));
