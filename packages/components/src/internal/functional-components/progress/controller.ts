@@ -1,5 +1,4 @@
-import type { LabelProp, MaxProp, UnitProp, ValueProp, VariantProgressProp } from '../../props';
-import { labelProp, maxProp, unitProp, valueProp, variantProgressProp, withValidPropValue } from '../../props';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ProgressApi } from './api';
@@ -31,13 +30,13 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+		labelProp.apply(value, (v) => {
 			this.setProp('label', v);
 		});
 	}
 
 	public watchMax(value?: number): void {
-		withValidPropValue<MaxProp>(maxProp, value, (v) => {
+		maxProp.apply(value, (v) => {
 			this.setProp('max', v);
 			this.setState('max', v);
 		});
@@ -45,36 +44,27 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchUnit(value?: string): void {
-		withValidPropValue<UnitProp>(unitProp, value, (v) => {
+		unitProp.apply(value, (v) => {
 			this.setProp('unit', v);
 			this.setState('unit', v);
 		});
 	}
 
 	public watchValue(value?: number): void {
-		withValidPropValue<ValueProp>(valueProp, this.clampValue(value), (v) => {
-			this.setProp('value', v);
-		});
+		clampedNumberValueProp.apply(
+			value,
+			(v) => {
+				this.setProp('value', v);
+			},
+			{ min: 0, max: this.getProps().max },
+		);
 	}
 
 	public watchVariant(value?: string): void {
-		withValidPropValue<VariantProgressProp>(variantProgressProp, value, (v) => {
+		variantProgressProp.apply(value, (v) => {
 			this.setProp('variant', v);
 			this.setState('variant', v);
 		});
-	}
-
-	private clampValue(value?: number): number | undefined {
-		if (typeof value === 'number') {
-			if (value > this.component.max) {
-				value = this.component.max;
-			}
-
-			if (value < 0) {
-				value = 0;
-			}
-		}
-		return value;
 	}
 
 	// a11y: says the value of the component every 5s

@@ -1,7 +1,5 @@
 import type { ColorPair } from '../../../schema';
-import type { ColorProp, InitialsProp, LabelProp, SrcProp } from '../../props';
 import { colorProp, initialsProp, labelProp, srcProp } from '../../props';
-import { withValidPropValue } from '../../props/helpers/factory';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { AvatarApi } from './api';
@@ -23,22 +21,22 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 	}
 
 	public watchColor(value?: string | ColorPair): void {
-		withValidPropValue<ColorProp>(colorProp, value, (v) => {
+		colorProp.apply(value, (v) => {
 			this.setProp('color', v);
 		});
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+		labelProp.apply(value, (v) => {
 			this.setProp('label', v);
 		});
-		withValidPropValue<InitialsProp>(initialsProp, value, (v) => {
+		initialsProp.apply(value, (v) => {
 			this.setState('initials', v);
 		});
 	}
 
 	public watchSrc(value?: string): void {
-		withValidPropValue<SrcProp>(srcProp, value, (v) => {
+		srcProp.apply(value, (v) => {
 			this.setProp('src', v);
 		});
 	}
