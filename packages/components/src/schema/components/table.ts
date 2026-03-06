@@ -64,6 +64,7 @@ type RequiredProps = {
 	PropTableData;
 type OptionalProps = {
 	allowMultiSort: boolean;
+	fixedCols: [number, number];
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 } & PropTableDataFoot &
 	PropPaginationPosition &
@@ -73,6 +74,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	allowMultiSort: boolean;
+	fixedCols: [number, number];
 	data: KoliBriTableDataType[];
 	dataFoot: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;

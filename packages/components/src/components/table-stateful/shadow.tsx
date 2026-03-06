@@ -3,6 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
+	FixedColsPropType,
 	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
@@ -31,6 +32,7 @@ import {
 	parseJson,
 	setState,
 	validateAllowMultiSort,
+	validateFixedCols,
 	validateHasSettingsMenu,
 	validateLabel,
 	validatePaginationPosition,
@@ -91,6 +93,11 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
 
 	/**
+	 * Defines the fixed number of columns from start and end of the table
+	 */
+	@Prop() public _fixedCols?: FixedColsPropType;
+
+	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
@@ -124,6 +131,7 @@ export class KolTableStateful implements TableAPI {
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
+		_fixedCols: [0, 0],
 		_data: [],
 		_dataFoot: [],
 		_headers: {
@@ -163,6 +171,11 @@ export class KolTableStateful implements TableAPI {
 				setTimeout(this.updateSortedData);
 			},
 		});
+	}
+
+	@Watch('_fixedCols')
+	public validateFixedCols(value?: FixedColsPropType) {
+		validateFixedCols(this, value);
 	}
 
 	@Watch('_paginationPosition')
@@ -378,6 +391,7 @@ export class KolTableStateful implements TableAPI {
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
+		this.validateFixedCols(this._fixedCols);
 		this.validateHeaders(this._headers);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
@@ -564,6 +578,7 @@ export class KolTableStateful implements TableAPI {
 				<KolTableStatelessWcTag
 					ref={this.catchRef}
 					_data={displayedData}
+					_fixedCols={this._fixedCols}
 					_headerCells={headerCells}
 					_label={this.state._label}
 					_dataFoot={this.state._dataFoot}

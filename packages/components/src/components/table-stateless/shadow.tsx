@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 import { KolTableStatelessWcTag } from '../../core/component-names';
 import type {
+	FixedColsPropType,
 	HasSettingsMenuPropType,
 	TableCallbacksPropType,
 	TableDataFootPropType,
@@ -28,6 +29,11 @@ export class KolTableStateless implements TableStatelessProps {
 	 * Defines the data for the table footer.
 	 */
 	@Prop() public _dataFoot?: TableDataFootPropType;
+
+	/**
+	 * Defines the fixed number of columns from start and end of the table
+	 */
+	@Prop() public _fixedCols?: FixedColsPropType;
 
 	/**
 	 * Defines the horizontal and vertical table headers.
@@ -59,6 +65,7 @@ export class KolTableStateless implements TableStatelessProps {
 			<KolTableStatelessWcTag
 				_data={this._data}
 				_dataFoot={this._dataFoot}
+				_fixedCols={this._fixedCols}
 				_headerCells={this._headerCells}
 				_label={this._label}
 				_on={this._on}
