@@ -30,7 +30,7 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.41.2",
-		"@types/node": "24.11.0",
+		"@types/node": "24.11.2",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"adopted-style-sheets": "1.1.9-rc.21",
