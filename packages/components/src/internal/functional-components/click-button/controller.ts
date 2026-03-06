@@ -1,5 +1,4 @@
-import type { LabelProp } from '../../props';
-import { labelProp, withValidPropValue } from '../../props';
+import { labelProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ClickButtonApi } from './api';
@@ -19,7 +18,7 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+		labelProp.apply(value, (v) => {
 			this.setProp('label', v);
 		});
 	}

@@ -1,6 +1,5 @@
 import { Log } from '../../../schema';
-import type { CountProp, LabelProp, NameProp } from '../../props';
-import { countProp, labelProp, nameProp, withValidPropValue } from '../../props';
+import { countProp, labelProp, nameProp } from '../../props';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
@@ -31,20 +30,20 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 	}
 
 	public watchCount(value?: number | string): void {
-		withValidPropValue<CountProp>(countProp, value, (v) => {
+		countProp.apply(value, (v) => {
 			this.setProp('count', v);
 			this.setState('count', v);
 		});
 	}
 
 	public watchName(value?: string): void {
-		withValidPropValue<NameProp>(nameProp, value, (v) => {
+		nameProp.apply(value, (v) => {
 			this.setProp('name', v);
 		});
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
+		labelProp.apply(value, (v) => {
 			this.setState('label', v);
 			this.clickButtonCtrl.watchLabel(v);
 		});
