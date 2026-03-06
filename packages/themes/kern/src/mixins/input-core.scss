@@ -16,9 +16,10 @@
 	.kol-input {
 		color: var(--kern-color-layout-text-default);
 		background: transparent;
+		height: var(--kern-metric-dimension-x-large);
+
 		font-family: var(--kern-typography-font-family-default);
 		border: none;
-		height: var(--kern-metric-dimension-x-large);
 
 		&--readonly {
 			color: var(--color-black-70);
@@ -35,13 +36,13 @@
 	}
 
 	.kol-input-container {
-		position: relative;
 		background: var(--kern-color-form-input-background);
 		border-radius: var(--kern-metric-border-radius-small) var(--kern-metric-border-radius-small) 0 0;
+		position: relative;
+		padding: 0 var(--kern-metric-space-default);
+		gap: 0;
 		border: none;
 		border-bottom: var(--kol-input-border-width) solid var(--kol-input-border-color);
-		gap: 0;
-		padding: 0 var(--kern-metric-space-default);
 
 		--kol-input-border-color: var(--kern-color-form-input-border);
 		--kol-input-border-width: var(--kern-metric-border-width-default);
@@ -51,9 +52,9 @@
 		}
 
 		&:focus-within {
+			outline: var(--kern-metric-border-width-bold) solid var(--kol-input-border-color);
 			border-radius: var(--kern-metric-border-radius-small);
 			border-bottom-color: transparent;
-			outline: var(--kern-metric-border-width-bold) solid var(--kol-input-border-color);
 
 			&:hover {
 				box-shadow: none;
