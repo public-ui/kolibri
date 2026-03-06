@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-import { KolButton, KolSelect } from '@public-ui/react-v19';
+import { KolDialog, KolSelect, KolToolbar } from '@public-ui/react-v19';
 
-import type { SelectOption } from '@public-ui/components';
+import type { SelectOption, ToolbarItemsPropType } from '@public-ui/components';
 
 import './style.css';
-
-function useIsDesktop(breakpoint = 640): boolean {
-	const query = `(min-width: ${breakpoint}px)`;
-	const [matches, setMatches] = useState(() => typeof window !== 'undefined' && window.matchMedia(query).matches);
-	useEffect(() => {
-		const mq = window.matchMedia(query);
-		const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
-		mq.addEventListener('change', handler);
-		return () => mq.removeEventListener('change', handler);
-	}, [query]);
-	return matches;
-}
 
 export type PicklistOption<T = string> = SelectOption<T>;
 
@@ -61,20 +49,20 @@ export function Picklist<T = string>({
 	disabled = false,
 	size = 8,
 }: PicklistProps<T>) {
-	const isDesktop = useIsDesktop();
-	const singleIcon = isDesktop ? 'kolicon-chevron-right' : 'kolicon-chevron-down';
-	const singleIconReverse = isDesktop ? 'kolicon-chevron-left' : 'kolicon-chevron-up';
-
 	const isControlled = controlledValue !== undefined;
 
 	const [internalValue, setInternalValue] = useState<T[]>(defaultValue ?? []);
 	const selectedValues = isControlled ? controlledValue! : internalValue;
 
-	const [available, selectedOptions] = partition(options, selectedValues);
+	const [available] = partition(options, selectedValues);
 
 	// Items the user has highlighted (focused) within each list
 	const [availableFocus, setAvailableFocus] = useState<T[]>([]);
 	const [selectedFocus, setSelectedFocus] = useState<T[]>([]);
+
+	// Dialog hint state
+	const [dialogHint, setDialogHint] = useState<{ title: string; message: string } | null>(null);
+	const dialogRef = useRef<HTMLKolDialogElement>(null);
 
 	function commit(next: T[]) {
 		if (!isControlled) setInternalValue(next);
@@ -82,6 +70,14 @@ export function Picklist<T = string>({
 	}
 
 	const addSelected = () => {
+		if (availableFocus.length === 0) {
+			setDialogHint({
+				title: 'No items selected',
+				message: 'Please select items from the available list first.',
+			});
+			requestAnimationFrame(() => dialogRef.current?.openModal());
+			return;
+		}
 		const focusSet = new Set(availableFocus.map(String));
 		const toAdd = available.filter((o) => focusSet.has(String(o.value))).map((o) => o.value as T);
 		commit([...selectedValues, ...toAdd]);
@@ -89,18 +85,42 @@ export function Picklist<T = string>({
 	};
 
 	const addAll = () => {
+		if (available.length === 0) {
+			setDialogHint({
+				title: 'No items available',
+				message: 'All items have already been selected.',
+			});
+			requestAnimationFrame(() => dialogRef.current?.openModal());
+			return;
+		}
 		commit([...selectedValues, ...available.map((o) => o.value as T)]);
 		setAvailableFocus([]);
 		setSelectedFocus([]);
 	};
 
 	const removeSelected = () => {
+		if (selectedFocus.length === 0) {
+			setDialogHint({
+				title: 'No items selected',
+				message: 'Please select items from the selected list first.',
+			});
+			requestAnimationFrame(() => dialogRef.current?.openModal());
+			return;
+		}
 		const focusSet = new Set(selectedFocus.map(String));
 		commit(selectedValues.filter((v) => !focusSet.has(String(v))));
 		setSelectedFocus([]);
 	};
 
 	const removeAll = () => {
+		if (orderedSelected.length === 0) {
+			setDialogHint({
+				title: 'No items selected',
+				message: 'There are no items to remove.',
+			});
+			requestAnimationFrame(() => dialogRef.current?.openModal());
+			return;
+		}
 		commit([]);
 		setAvailableFocus([]);
 		setSelectedFocus([]);
@@ -108,6 +128,46 @@ export function Picklist<T = string>({
 
 	// Preserve the order in which items were added to the selected list
 	const orderedSelected = options.filter((o) => selectedValues.includes(o.value as T));
+
+	// Create toolbar items for transfer actions
+	const toolbarItems: ToolbarItemsPropType = [
+		{
+			type: 'button',
+			_label: 'Add selected',
+			_icons: 'kolicon-chevron-right',
+			_hideLabel: true,
+			_variant: 'primary',
+			_on: { onClick: addSelected },
+			_tooltipAlign: 'top',
+		},
+		{
+			type: 'button',
+			_label: 'Add all',
+			_icons: { left: { icon: 'kolicon-chevron-double-right' } },
+			_hideLabel: true,
+			_variant: 'secondary',
+			_on: { onClick: addAll },
+			_tooltipAlign: 'top',
+		},
+		{
+			type: 'button',
+			_label: 'Remove selected',
+			_icons: 'kolicon-chevron-left',
+			_hideLabel: true,
+			_variant: 'secondary',
+			_on: { onClick: removeSelected },
+			_tooltipAlign: 'top',
+		},
+		{
+			type: 'button',
+			_label: 'Remove all',
+			_icons: { left: { icon: 'kolicon-chevron-double-left' } },
+			_hideLabel: true,
+			_variant: 'tertiary',
+			_on: { onClick: removeAll },
+			_tooltipAlign: 'top',
+		},
+	];
 
 	return (
 		<div className="kol-picklist__layout">
@@ -124,44 +184,19 @@ export function Picklist<T = string>({
 				/>
 			</div>
 
-			<div className="kol-picklist__actions" aria-label="Transfer actions">
-				<KolButton
-					_label="Add selected"
-					_icons={singleIcon}
-					_hideLabel
-					_variant="primary"
-					_disabled={disabled || availableFocus.length === 0}
-					_on={{ onClick: addSelected }}
-					_tooltipAlign="top"
-				/>
-				<KolButton
-					_label="Add all"
-					_icons={{ left: { icon: 'kolicon-chevron-double-right', style: isDesktop ? {} : { transform: 'rotate(90deg)' } } }}
-					_hideLabel
-					_variant="secondary"
-					_disabled={disabled || available.length === 0}
-					_on={{ onClick: addAll }}
-					_tooltipAlign="top"
-				/>
-				<KolButton
-					_label="Remove selected"
-					_icons={singleIconReverse}
-					_hideLabel
-					_variant="secondary"
-					_disabled={disabled || selectedFocus.length === 0}
-					_on={{ onClick: removeSelected }}
-					_tooltipAlign="top"
-				/>
-				<KolButton
-					_label="Remove all"
-					_icons={{ left: { icon: 'kolicon-chevron-double-left', style: isDesktop ? {} : { transform: 'rotate(90deg)' } } }}
-					_hideLabel
-					_variant="tertiary"
-					_disabled={disabled || orderedSelected.length === 0}
-					_on={{ onClick: removeAll }}
-					_tooltipAlign="top"
-				/>
-			</div>
+			<KolToolbar _label="Transfer actions" _items={toolbarItems} _orientation="vertical" aria-label="Transfer actions" />
+
+			{dialogHint && (
+				<KolDialog
+					_label={dialogHint.title}
+					ref={dialogRef}
+					_on={{
+						onClose: () => setDialogHint(null),
+					}}
+				>
+					<p>{dialogHint.message}</p>
+				</KolDialog>
+			)}
 
 			<div className="kol-picklist__list">
 				<KolSelect

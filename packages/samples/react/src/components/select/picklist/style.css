@@ -1,36 +1,11 @@
 .kol-picklist__layout {
 	display: flex;
-	flex-direction: column;
-	gap: 0;
-	align-items: stretch;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .kol-picklist__list {
 	flex: 1 1 0;
 	min-width: 0;
-}
-
-.kol-picklist__actions {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	justify-content: center;
-	align-items: center;
-	padding: 0.5rem 0;
-}
-
-/* ≥ 640 px: switch to side-by-side layout */
-@media (min-width: 640px) {
-	.kol-picklist__layout {
-		flex-direction: row;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.kol-picklist__actions {
-		flex-direction: column;
-		flex-wrap: nowrap;
-		padding: 0;
-	}
 }
