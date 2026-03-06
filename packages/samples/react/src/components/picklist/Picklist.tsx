@@ -136,9 +136,8 @@ export function Picklist<T = string>({
 					_tooltipAlign="top"
 				/>
 				<KolButton
-					className="kol-picklist__btn-rotate-down"
 					_label="Add all"
-					_icons="kolicon-chevron-double-right"
+					_icons={{ left: { icon: 'kolicon-chevron-double-right', style: isDesktop ? {} : { transform: 'rotate(90deg)' } } }}
 					_hideLabel
 					_variant="secondary"
 					_disabled={disabled || available.length === 0}
@@ -146,9 +145,8 @@ export function Picklist<T = string>({
 					_tooltipAlign="top"
 				/>
 				<KolButton
-					className="kol-picklist__btn-rotate-up"
 					_label="Remove selected"
-					_icons="kolicon-chevron-double-left"
+					_icons={singleIconReverse}
 					_hideLabel
 					_variant="secondary"
 					_disabled={disabled || selectedFocus.length === 0}
@@ -157,7 +155,7 @@ export function Picklist<T = string>({
 				/>
 				<KolButton
 					_label="Remove all"
-					_icons={singleIconReverse}
+					_icons={{ left: { icon: 'kolicon-chevron-double-left', style: isDesktop ? {} : { transform: 'rotate(90deg)' } } }}
 					_hideLabel
 					_variant="tertiary"
 					_disabled={disabled || orderedSelected.length === 0}

@@ -34,14 +34,3 @@
 		padding: 0;
 	}
 }
-
-/* On mobile, rotate the double-arrow buttons to point down/up */
-@media (max-width: 639px) {
-	.kol-picklist__btn-rotate-down {
-		transform: rotate(90deg);
-	}
-
-	.kol-picklist__btn-rotate-up {
-		transform: rotate(-90deg);
-	}
-}
