@@ -672,6 +672,27 @@ importers:
       '@public-ui/themes':
         specifier: workspace:*
         version: link:../../themes
+      '@stencil/core':
+        specifier: 4.41.2
+        version: 4.41.2
+      '@types/node':
+        specifier: 24.11.0
+        version: 24.11.0
+      '@types/react':
+        specifier: 19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      '@unocss/preset-mini':
+        specifier: 66.5.10
+        version: 66.5.10
+      '@unocss/vite':
+        specifier: 66.5.10
+        version: 66.5.10(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.1))
+      '@vitejs/plugin-react-swc':
+        specifier: 4.2.3
+        version: 4.2.3(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.1))
       adopted-style-sheets:
         specifier: 1.1.9-rc.21
         version: 1.1.9-rc.21
@@ -696,6 +717,12 @@ importers:
       tslib:
         specifier: 2.8.1
         version: 2.8.1
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vite:
+        specifier: 7.3.1
+        version: 7.3.1(@types/node@24.11.0)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.1)
       world_countries_lists:
         specifier: 3.3.0
         version: 3.3.0
@@ -712,33 +739,12 @@ importers:
       '@playwright/test':
         specifier: 1.58.2
         version: 1.58.2
-      '@stencil/core':
-        specifier: 4.41.2
-        version: 4.41.2
-      '@types/node':
-        specifier: 24.11.0
-        version: 24.11.0
-      '@types/react':
-        specifier: 19.2.14
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: 19.2.3
-        version: 19.2.3(@types/react@19.2.14)
       '@typescript-eslint/eslint-plugin':
         specifier: 8.56.1
         version: 8.56.1(@typescript-eslint/parser@8.56.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@typescript-eslint/parser':
         specifier: 8.56.1
         version: 8.56.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      '@unocss/preset-mini':
-        specifier: 66.5.10
-        version: 66.5.10
-      '@unocss/vite':
-        specifier: 66.5.10
-        version: 66.5.10(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.1))
-      '@vitejs/plugin-react-swc':
-        specifier: 4.2.3
-        version: 4.2.3(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.1))
       cpy-cli:
         specifier: 6.0.0
         version: 6.0.0
@@ -769,12 +775,6 @@ importers:
       stylelint:
         specifier: 16.26.1
         version: 16.26.1(typescript@5.9.3)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
-      vite:
-        specifier: 7.3.1
-        version: 7.3.1(@types/node@24.11.0)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.1)
 
   packages/test-tag-name-transformer:
     devDependencies:
