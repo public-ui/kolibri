@@ -27,5 +27,9 @@
 		&:visited {
 			color: var(--color-visited);
 		}
+
+		&--small {
+			font-size: to-rem(12);
+		}
 	}
 }
