@@ -350,6 +350,113 @@ public componentWillLoad(props: ResolvedInputProps<SkeletonApi>): void {
 
 This ensures controllers receive the complete current state before any external prop changes occur.
 
+### Controller Cleanup Pattern
+
+Controllers that allocate resources (timers, subscriptions, external event listeners) must expose a `destroy()` method to release them. The web component calls `destroy()` from `disconnectedCallback()` to prevent memory leaks:
+
+```ts
+// Controller — manages an interval resource
+export class SkeletonController extends BaseController<SkeletonApi> {
+  private intervalId?: ReturnType<typeof setTimeout>;
+
+  private startLoadedEventInterval(): void {
+    this.intervalId = setInterval(() => { /* … */ }, 2000);
+  }
+
+  public destroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
+  }
+}
+```
+
+```ts
+// Web Component — wires up the cleanup lifecycle
+public disconnectedCallback(): void {
+  this.ctrl.destroy();
+}
+```
+
+> **Note:** `destroy()` is a controller-internal cleanup method. It does not belong to `ComponentApi.Methods` (which defines the public API exposed to consumers via `@Method()`), but is a direct controller call from the web component's `disconnectedCallback`. This distinction keeps the public component API clean while allowing the controller to manage its own resource lifecycle.
+
+### Global Event Listeners
+
+Components can register listeners on targets outside the component's Shadow DOM using the `{ target: 'window' }` option of the `@Listen` decorator. This is useful for global keyboard shortcuts (e.g. closing a component on Escape) where the event originates outside the component tree:
+
+```ts
+// Web Component — listens for keydown on the window (global shortcut)
+@Listen('keydown', { target: 'window' })
+public onKeydown(event: KeyboardEvent): void {
+  this.ctrl.onKeydown(event);
+}
+```
+
+Component-scoped listeners (without a target) handle events that originate inside the Shadow DOM:
+
+```ts
+// Web Component — listens for keydown inside the component
+@Listen('keydown')
+public handleKeyDown(event: KeyboardEvent): void {
+  if (event.key === 'Enter' || event.key === ' ') {
+    this.ctrl.handleClick();
+  }
+}
+```
+
+Both listeners delegate to the controller to keep business logic centralised. The controller method for global listeners follows the arrow-property convention so it can be passed as a reference without binding:
+
+```ts
+// Controller — arrow property for global keyboard handler
+public onKeydown = (event: KeyboardEvent): void => {
+  if (event.key === 'Escape') {
+    void this.toggle();
+  }
+};
+```
+
+### Periodic and Async Event Emission
+
+Some components need to emit `@Event()` emitters from within the controller (e.g. on a timer or after an async operation). Because controllers have no direct access to Stencil `@Event()` emitters, the web component wires them up via a **callback** in `componentWillLoad`:
+
+```ts
+// Web Component — registers an emit callback in componentWillLoad
+public componentWillLoad(): void {
+  this.ctrl.componentWillLoad({ count: this._count, name: this._name });
+
+  this.ctrl.setOnLoadedCallback((count: number) => {
+    this.loaded.emit(count);
+  });
+}
+```
+
+```ts
+// Controller — stores callback and invokes it when needed
+private onLoadedCallback?: (count: number) => void;
+
+public setOnLoadedCallback(callback: (count: number) => void): void {
+  this.onLoadedCallback = callback;
+}
+
+private emitLoaded(count: number): void {
+  this.onLoadedCallback?.(count);
+}
+```
+
+For one-time lifecycle events (e.g. "first render complete"), the web component emits directly from `componentDidLoad` using `requestAnimationFrame` to ensure the DOM is fully committed:
+
+```ts
+// Web Component — emits a one-time lifecycle event after first render
+public componentDidLoad(): void {
+  requestAnimationFrame(() => {
+    this.rendered.emit();
+  });
+}
+```
+
+This pattern keeps the controller free of Stencil-specific emitter types while allowing it to trigger events at arbitrary points in time.
+
 ## 5. Building Block View
 
 ```mermaid
@@ -442,6 +549,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                      |
 | **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                           |
 | **Watcher placement**            | Attach `@Watch` only to underscored public props (`_count`); internal state fields use `@State`.                                                                      |
+| **Controller Cleanup**           | Controllers that hold resources expose `destroy()`. The web component calls it from `disconnectedCallback()`. This is a direct controller call, not a `@Method()`.   |
+| **Global Listeners**             | `@Listen(event, { target: 'window' })` handles events outside the Shadow DOM (e.g. global keyboard shortcuts). Always delegate to the controller.                    |
+| **Async Event Emission**         | Controllers cannot hold Stencil emitters. Emit callbacks are wired by the web component in `componentWillLoad`. One-time lifecycle events emit directly from `componentDidLoad` via `requestAnimationFrame`. |
 
 ## 9. Design Decisions
 
@@ -476,7 +586,18 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: All fields in `ComponentApi` are optional (`Props`, `States`, `Emitters`, `Methods`, `Callbacks`, `Refs`, `Listeners`). Only define the fields that the component actually uses. If a component has no events, omit `Emitters`. If it has no internal state, omit `States`. If it has no methods, omit `Methods`. This applies uniformly to every field — no exceptions.
     - _Alternative_: define all fields explicitly, using empty records for unused ones (e.g. `States: Record<string, never>`).
     - _Reason_: empty records add noise to the API definition and clutter the type contract. The generic type extraction logic in `generic-types.ts` safely handles missing fields by defaulting to empty records, so omitting them is both safe and preferred. A minimal API definition is easier to read, easier to maintain, and accurately conveys what the component actually does.
-11. **Test co-location — all tests live next to the component**
+11. **Controller `destroy()` is not a `@Method()` — it is a direct internal call**
+    - _Alternative_: expose `destroy()` via `@Method()` so consumers can clean up manually.
+    - _Reason_: component consumers should never need to manually destroy a component; that is the web component's responsibility via `disconnectedCallback`. Keeping `destroy()` out of the public `@Method()` API prevents misuse and keeps the public surface minimal. It is an internal contract between the web component and its controller.
+12. **Callback wiring for controller-initiated event emission**
+    - _Pattern_: when a controller needs to emit a Stencil `@Event()` (e.g. from a timer), the web component registers an emit callback via a dedicated setter (`setOnLoadedCallback`) in `componentWillLoad`.
+    - _Alternative_: pass the `EventEmitter` instance directly into the controller constructor or `componentWillLoad`.
+    - _Reason_: `EventEmitter` is a Stencil-specific type. Keeping it out of controllers preserves their framework-agnostic testability. The callback approach passes a plain function that the controller can invoke without any Stencil dependency.
+13. **`requestAnimationFrame` for one-time lifecycle events (`componentDidLoad`)**
+    - _Pattern_: wrap one-time post-render event emissions in `requestAnimationFrame` inside `componentDidLoad`.
+    - _Alternative_: emit directly and synchronously in `componentDidLoad`.
+    - _Reason_: `componentDidLoad` fires when Stencil finishes rendering but before the browser has painted. `requestAnimationFrame` defers emission until after the first paint, so consumers that respond to the `rendered` event can safely measure or interact with the fully painted DOM.
+14. **Test co-location — all tests live next to the component**
     - _Pattern_: All test files are placed directly alongside `component.tsx` in the same directory — **not** in a separate `test/` subdirectory. Two test categories exist:
       - **Snapshot tests** (`snapshot.spec.tsx`) — Jest-based DOM snapshot tests that render the component with various prop combinations via `executeSnapshotTests` and compare against stored snapshots (`__snapshots__/`). Snapshot files are likewise stored in the component directory.
       - **Interaction tests** (`interaction.e2e.ts`) — Playwright-based end-to-end tests that verify user interactions (clicks, keyboard input, focus management, event emission) against the rendered component in a real browser.
