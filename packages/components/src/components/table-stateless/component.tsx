@@ -8,6 +8,7 @@ import { translate } from '../../i18n';
 import type {
 	ActionColumnHeaderCell,
 	AriaSort,
+	FixedColsPropType,
 	HasSettingsMenuPropType,
 	KoliBriTableCell,
 	KoliBriTableDataType,
@@ -27,6 +28,7 @@ import type {
 } from '../../schema';
 import {
 	setState,
+	validateFixedCols,
 	validateHasSettingsMenu,
 	validateLabel,
 	validateTableCallbacks,
@@ -74,6 +76,9 @@ export class KolTableStateless implements TableStatelessAPI {
 	private translateSort = translate('kol-sort');
 	private translateSortOrder = translate('kol-table-sort-order');
 
+	private maxCols: number = 0;
+	private fixedOffsets: number[] = [];
+
 	@State()
 	private tableDivElementHasScrollbar = false;
 
@@ -92,6 +97,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * Defines the data for the table footer.
 	 */
 	@Prop() public _dataFoot?: TableDataFootPropType;
+
+	/**
+	 * Defines the fixed number of columns from start and end of the table
+	 */
+	@Prop() public _fixedCols?: FixedColsPropType;
 
 	/**
 	 * Defines the horizontal and vertical table headers.
@@ -135,6 +145,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_dataFoot')
 	public validateDataFoot(value?: TableDataFootPropType) {
 		validateTableDataFoot(this, value);
+	}
+
+	@Watch('_fixedCols')
+	public validateFixedCols(value?: FixedColsPropType) {
+		validateFixedCols(this, value);
 	}
 
 	@Watch('_headerCells')
@@ -354,8 +369,9 @@ export class KolTableStateless implements TableStatelessAPI {
 	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];
+
+		this.maxCols = this.getNumberOfCols(headers.horizontal, data);
 		const primaryHeader = this.getPrimaryHeaders(headers);
-		const maxCols = this.getNumberOfCols(headers.horizontal, data);
 		let maxRows = this.getNumberOfRows(headers.vertical, data);
 		let startRow = 0;
 		if (isFoot) {
@@ -400,7 +416,22 @@ export class KolTableStateless implements TableStatelessAPI {
 					}
 				}
 			});
-			for (let j = 0; j < maxCols; j++) {
+			for (let j = 0; j < this.maxCols; j++) {
+				let fixed = this.isFixedCol(j);
+				if (fixed === 'left') {
+					if (this.getFixedOffset(j) === undefined) {
+						let offset = this.fixedOffsets[j - 1] ?? 0;
+						offset += sortedPrimaryHeader[j - 1]?.width ?? 0;
+						this.fixedOffsets[j] = offset;
+					}
+				}
+				if (fixed === 'right') {
+					if (this.getFixedOffset(j) === undefined) {
+						let offset = this.fixedOffsets[j + 1] ?? 0;
+						offset += sortedPrimaryHeader[j + 1]?.width ?? 0;
+						this.fixedOffsets[j] = offset;
+					}
+				}
 				if (this.horizontal === true) {
 					const row = isFoot && this.state._dataFoot ? this.state._dataFoot[i - startRow] : data[i];
 					if (
@@ -415,6 +446,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 						dataRow.push({
 							...sortedPrimaryHeader[j],
+							colIndex: j,
 							colSpan: undefined,
 							rowSpan: undefined,
 							data: row,
@@ -434,6 +466,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 						dataRow.push({
 							...sortedPrimaryHeader[i],
+							colIndex: j,
 							colSpan: undefined,
 							rowSpan: undefined,
 							data: data[j],
@@ -472,6 +505,38 @@ export class KolTableStateless implements TableStatelessAPI {
 			}
 		}
 		return dataField;
+	}
+
+	private isFixedCol(index: number | undefined): 'left' | 'right' | undefined {
+		if (!this._fixedCols || index === undefined) {
+			return undefined;
+		}
+		if (index < this._fixedCols[0]) {
+			return 'left';
+		}
+		if (index >= this.maxCols - this._fixedCols[1]) {
+			return 'right';
+		}
+	}
+
+	private getFixedOffset(index: number | undefined): number | undefined {
+		if (!this.tableDivElement || index === undefined) {
+			return undefined;
+		}
+
+		if (this.fixedOffsets[index] !== undefined) {
+			return this.fixedOffsets[index];
+		}
+
+		return undefined;
+	}
+
+	private getOffsetString(index: number | undefined, left?: boolean): string | undefined {
+		if (left && this._selection) {
+			return 'calc( var(--kol-table-selection-col-width) + ' + this.getFixedOffset(index) + 'px)';
+		}
+
+		return this.getFixedOffset(index) + 'px';
 	}
 
 	private handleSelectionChangeCallbackAndEvent(event: Event, payload: SelectionChangeEventPayload) {
@@ -664,6 +729,9 @@ export class KolTableStateless implements TableStatelessAPI {
 			// Check if this column is an action column
 			const actionColumn = this.getActionColumnHeader(colIndex);
 			const isActionColumn = Boolean(actionColumn && cell.data);
+			const fixed = this.isFixedCol(colIndex);
+			const offsetLeft = fixed === 'left' ? this.getOffsetString(cell.colIndex, true) : undefined;
+			const offsetRight = fixed === 'right' ? this.getOffsetString(cell.colIndex) : undefined;
 
 			return (
 				<td
@@ -672,6 +740,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
 						isActionColumn && 'kol-table__cell--actions',
+						fixed && `kol-table__cell--sticky-${fixed}`,
 					)}
 					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
 					aria-live={isNoEntriesHintCell ? 'polite' : undefined}
@@ -680,6 +749,8 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowSpan={cell.rowSpan}
 					style={{
 						textAlign: cell.textAlign,
+						left: offsetLeft,
+						right: offsetRight,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -973,15 +1044,24 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const sortOrder = typeof cell.sortOrder === 'number' && cell.sortOrder > 0 ? cell.sortOrder : undefined;
 		const sortDescription = this.getSortAriaDescription(sortOrder);
+		const width = cell.width !== undefined ? `${cell.width}px` : undefined;
+		const fixed = this.isFixedCol(colIndex);
+		const offsetLeft = fixed === 'left' ? this.getOffsetString(colIndex, true) : undefined;
+		const offsetRight = fixed === 'right' ? this.getOffsetString(colIndex) : undefined;
 
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={clsx('kol-table__cell kol-table__cell--header', cell.textAlign && `kol-table__cell--align-${cell.textAlign}`, `kol-table__cell--${ariaSort}`)}
+				class={clsx(
+					'kol-table__cell kol-table__cell--header',
+					`kol-table__cell--${ariaSort}`,
+					cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
+					fixed && `kol-table__cell--sticky-${fixed}`,
+				)}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
-				style={cell.width !== undefined ? { width: `${cell.width}px` } : undefined}
+				style={{ width: width, left: offsetLeft, right: offsetRight }}
 				aria-sort={ariaSort}
 				data-sort={canSort && cell.sortDirection ? `sort-${cell.sortDirection}` : undefined}
 			>
