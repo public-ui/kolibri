@@ -1,13 +1,111 @@
+@use '~@public-ui/components/index' as *;
+@use '~@kern-ux/native/src/scss/core/utilities/mixins' as *;
+
 @use './badge-text-hint' as *;
 @use './kol-alert' as *;
 @use './kol-form-field' as *;
-@use './kol-input' as *;
-@use './kol-input-container' as *;
 
 @mixin input-core {
 	@include badge-text-hint(var(--kern-color-layout-text-muted), var(--kern-color-layout-text-inverse));
 	@include kol-alert;
 	@include kol-form-field;
 	@include kol-input;
-	@include kol-input-container;
+}
+
+@mixin kol-input {
+	.kol-input {
+		color: var(--kern-color-layout-text-default);
+		background: transparent;
+		height: var(--kern-metric-dimension-x-large);
+
+		font-family: var(--kern-typography-font-family-default);
+		border: none;
+
+		&--readonly {
+			color: var(--color-black-70);
+		}
+
+		&:disabled {
+			opacity: 1;
+			color: var(--color-black-60);
+
+			&::placeholder {
+				color: var(--color-black-60);
+			}
+		}
+	}
+
+	.kol-input-container {
+		background: var(--kern-color-form-input-background);
+		border-radius: var(--kern-metric-border-radius-small) var(--kern-metric-border-radius-small) 0 0;
+		position: relative;
+		padding: 0 var(--kern-metric-space-default);
+		gap: 0;
+		border: none;
+		border-bottom: var(--kol-input-border-width) solid var(--kol-input-border-color);
+
+		--kol-input-border-color: var(--kern-color-form-input-border);
+		--kol-input-border-width: var(--kern-metric-border-width-default);
+
+		&:not(&--disabled):hover {
+			box-shadow: 0 calc(-1 * var(--kern-metric-border-width-default)) 0 0 var(--kol-input-border-color) inset;
+		}
+
+		&:focus-within {
+			outline: var(--kern-metric-border-width-bold) solid var(--kol-input-border-color);
+			border-radius: var(--kern-metric-border-radius-small);
+			border-bottom-color: transparent;
+
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		&:has(.kol-input--readonly) {
+			background: inherit;
+			--kol-input-border-color: var(--kern-color-layout-border);
+			--kol-input-border-width: var(--kern-metric-border-width-light);
+
+			.kol-input--readonly {
+				cursor: not-allowed;
+			}
+		}
+
+		&--disabled {
+			opacity: var(--kern-color-action-state-opacity-disabled);
+			cursor: not-allowed;
+		}
+
+		&--error {
+			--kol-input-border-color: var(--kern-color-feedback-danger);
+			background: var(--kern-color-feedback-danger-background);
+		}
+
+		&__smart-button {
+			.kol-button {
+				color: var(--kern-color-feedback-info,);
+
+				font-size: to-rem(24);
+				border-left: 1px solid var(--border-color);
+				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+				&:disabled {
+					opacity: var(--kern-color-action-state-opacity-disabled);
+				}
+
+				&:not(:disabled):hover {
+					background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+					border-radius: var(--kern-metric-border-radius-default);
+				}
+
+				&:focus {
+					color: var(--kern-color-layout-background-default);
+					background-color: var(--kern-color-form-input-border);
+					outline: var(--kern-color-form-input-border) solid 2px;
+					border: 1 solid var(--kern-color-form-input-border);
+					outline-offset: 2px;
+				}
+			}
+		}
+	}
 }

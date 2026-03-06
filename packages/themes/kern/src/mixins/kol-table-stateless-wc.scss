@@ -5,6 +5,7 @@
 @use './checkbox' as *;
 @use './radio' as *;
 @use './button' as *;
+@use './link' as *;
 @use './pagination' as *;
 
 @mixin kol-table-stateless-theme {
@@ -40,6 +41,10 @@
 			.kol-button {
 				font-size: var(--kern-typography-font-size-static-medium);
 				font-weight: var(--kern-typography-font-weight-semi-bold);
+
+				.kol-span__container {
+					gap: var(--kern-metric-space-x-small);
+				}
 			}
 		}
 
@@ -88,13 +93,19 @@
 								0 0 0 6px var(--kern-color-action-focus-border-outside);
 							border-radius: var(--kern-metric-border-radius-default);
 						}
-
-						.kol-icon {
-							font-size: var(--kern-metric-dimension-default);
-						}
 					}
 				}
 			}
+
+			&--selection {
+				width: to-rem(52);
+			}
+		}
+
+		&__cell-actions {
+			gap: to-rem(4);
+			@include button('kol-button');
+			@include kol-link('kol-link');
 		}
 
 		&:has(.kol-table__selection-input--radio) {
@@ -119,20 +130,6 @@
 
 			@include radio('kol-table__selection-input--radio');
 			@include checkbox('kol-table__selection');
-		}
-	}
-
-	.kol-table-stateful__pagination {
-		display: flex;
-		gap: var(--kern-metric-space-default);
-		justify-content: end;
-		grid-template-columns: 1fr max-content;
-	}
-
-	@media (max-width: 1024px) {
-		.kol-table-stateful__pagination {
-			flex-direction: column;
-			justify-items: center;
 		}
 	}
 }

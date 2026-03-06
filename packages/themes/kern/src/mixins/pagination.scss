@@ -1,10 +1,12 @@
 @use '~@public-ui/components/index' as *;
 @use './button' as *;
+@use './select' as *;
 
 @mixin pagination($block-classname) {
 	.#{$block-classname} {
 		display: flex;
 		@include button('kol-button');
+		@include kol-select();
 
 		&__button--selected .kol-button--normal:disabled {
 			--button-text-background-color: var(--kern-color-action-default);
@@ -17,6 +19,10 @@
 
 		&__separator {
 			color: var(--kern-color-action-default);
+		}
+
+		.kol-form-field {
+			align-items: center;
 		}
 	}
 }

@@ -38,14 +38,15 @@ export class KolToolbar implements ToolbarAPI {
 			key: index,
 			class: 'button normal kol-toolbar__item',
 			_tabIndex: tabIndex,
+			_variant: 'normal',
 		};
 		const catchRef = (el?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
 			if (el) this.indexToElement.set(index, el);
 		};
 		return element.type === 'link' ? (
-			<KolLinkWcTag {...element} {...props} ref={catchRef}></KolLinkWcTag>
+			<KolLinkWcTag {...props} {...element} ref={catchRef}></KolLinkWcTag>
 		) : (
-			<KolButtonWcTag {...element} {...props} ref={catchRef}></KolButtonWcTag>
+			<KolButtonWcTag {...props} {...element} ref={catchRef}></KolButtonWcTag>
 		);
 	};
 
