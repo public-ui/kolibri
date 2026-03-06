@@ -20,8 +20,6 @@ const FRUITS: PicklistOption<string>[] = [
 	{ label: 'Orange', value: 'orange' },
 ];
 
-type Permission = { id: number; name: string };
-
 const PERMISSIONS: PicklistOption<number>[] = [
 	{ label: 'Read', value: 1 },
 	{ label: 'Write', value: 2 },

@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
 
-import { KolDialog, KolSelect, KolToolbar } from '@public-ui/react-v19';
+import { KolButton, KolDialog, KolSelect, KolToolbar } from '@public-ui/react-v19';
 
-import type { SelectOption, ToolbarItemsPropType } from '@public-ui/components';
+import type { Option, StencilUnknown, ToolbarItemsPropType } from '@public-ui/components';
 
 import './style.css';
 
-export type PicklistOption<T = string> = SelectOption<T>;
+export type PicklistOption<T extends StencilUnknown = string> = Option<T>;
 
-export type PicklistProps<T = string> = {
+export type PicklistProps<T extends StencilUnknown = string> = {
 	/** All options that can be selected. */
 	options: PicklistOption<T>[];
 	/** Initially selected values (uncontrolled mode). Matching options start in the "Selected" list. */
@@ -24,12 +24,12 @@ export type PicklistProps<T = string> = {
 	/** Disables all interaction. */
 	disabled?: boolean;
 	/** Number of visible rows in each list box. */
-	size?: number;
+	rows?: number;
 };
 
-const byLabel = <T,>(a: PicklistOption<T>, b: PicklistOption<T>) => String(a.label).localeCompare(String(b.label));
+const byLabel = <T extends StencilUnknown>(a: PicklistOption<T>, b: PicklistOption<T>) => String(a.label).localeCompare(String(b.label));
 
-function partition<T>(options: PicklistOption<T>[], selectedValues: T[]): [PicklistOption<T>[], PicklistOption<T>[]] {
+function partition<T extends StencilUnknown>(options: PicklistOption<T>[], selectedValues: T[]): [PicklistOption<T>[], PicklistOption<T>[]] {
 	const selectedSet = new Set(selectedValues.map(String));
 	const available: PicklistOption<T>[] = [];
 	const selected: PicklistOption<T>[] = [];
@@ -39,7 +39,7 @@ function partition<T>(options: PicklistOption<T>[], selectedValues: T[]): [Pickl
 	return [available, selected];
 }
 
-export function Picklist<T = string>({
+export function Picklist<T extends StencilUnknown = string>({
 	options,
 	defaultValue,
 	value: controlledValue,
@@ -47,7 +47,7 @@ export function Picklist<T = string>({
 	availableLabel = 'Available',
 	selectedLabel = 'Selected',
 	disabled = false,
-	size = 8,
+	rows = 8,
 }: PicklistProps<T>) {
 	const isControlled = controlledValue !== undefined;
 
@@ -178,7 +178,7 @@ export function Picklist<T = string>({
 					_value={availableFocus as unknown as string[]}
 					_multiple
 					_disabled={disabled}
-					_size={size}
+					_rows={rows}
 					_on={{ onChange: (_e, val) => setAvailableFocus(val as T[]) }}
 					style={{ width: '100%' }}
 				/>
@@ -189,12 +189,14 @@ export function Picklist<T = string>({
 			{dialogHint && (
 				<KolDialog
 					_label={dialogHint.title}
+					_variant="card"
 					ref={dialogRef}
 					_on={{
 						onClose: () => setDialogHint(null),
 					}}
 				>
 					<p>{dialogHint.message}</p>
+					<KolButton _label="Close" _on={{ onClick: () => setDialogHint(null) }} />
 				</KolDialog>
 			)}
 
@@ -205,7 +207,7 @@ export function Picklist<T = string>({
 					_value={selectedFocus as unknown as string[]}
 					_multiple
 					_disabled={disabled}
-					_size={size}
+					_rows={rows}
 					_on={{ onChange: (_e, val) => setSelectedFocus(val as T[]) }}
 					style={{ width: '100%' }}
 				/>
