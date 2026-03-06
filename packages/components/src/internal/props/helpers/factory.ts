@@ -60,7 +60,7 @@ export type DependentPropDefinition<TInternal, TDeps> = {
 	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
 };
 
-export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = Record<string, never>>(
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps>(
 	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
 ): DependentPropDefinition<InternalPropValue<P>, TDeps> {
