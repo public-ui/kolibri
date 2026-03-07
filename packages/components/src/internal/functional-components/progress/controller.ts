@@ -21,8 +21,8 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchLabel(label);
 		this.watchUnit(unit);
 		this.watchVariant(variant);
-		this.watchValue(value);
 		this.watchMax(max);
+		this.watchValue(value);
 
 		this.setState('liveValue', this.getProps().value);
 		this.startLiveValueInterval();
