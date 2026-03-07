@@ -4,18 +4,6 @@ import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { QuoteApi } from './api';
 
 export class QuoteController extends BaseController<QuoteApi> implements ControllerInterface<QuoteApi> {
-	public constructor() {
-		super(
-			{},
-			{
-				href: '',
-				label: '',
-				quote: '',
-				variant: 'inline',
-			},
-		);
-	}
-
 	public componentWillLoad(props: ResolvedInputProps<QuoteApi>): void {
 		const { href, label, quote, variant } = props;
 		this.watchHref(href);
@@ -25,26 +13,42 @@ export class QuoteController extends BaseController<QuoteApi> implements Control
 	}
 
 	public watchHref(value?: string): void {
-		hrefProp.apply(value, (v) => {
-			this.setProp('href', v);
-		});
+		hrefProp.apply(
+			value,
+			(v) => {
+				this.setProp('href', v);
+			},
+			'',
+		);
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
-			this.setProp('label', v);
-		});
+		labelProp.apply(
+			value,
+			(v) => {
+				this.setProp('label', v);
+			},
+			'',
+		);
 	}
 
 	public watchQuote(value?: string): void {
-		quoteProp.apply(value, (v) => {
-			this.setProp('quote', v);
-		});
+		quoteProp.apply(
+			value,
+			(v) => {
+				this.setProp('quote', v);
+			},
+			'',
+		);
 	}
 
 	public watchVariant(value?: string): void {
-		variantQuoteProp.apply(value, (v) => {
-			this.setProp('variant', v);
-		});
+		variantQuoteProp.apply(
+			value,
+			(v) => {
+				this.setProp('variant', v);
+			},
+			'inline',
+		);
 	}
 }

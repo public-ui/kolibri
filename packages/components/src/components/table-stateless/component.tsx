@@ -43,6 +43,8 @@ import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
+const RESIZE_DEBOUNCE_DELAY = 150;
+
 /**
  * @internal
  */
@@ -78,9 +80,13 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private maxCols: number = 0;
 	private fixedOffsets: number[] = [];
+	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
 
 	@State()
 	private tableDivElementHasScrollbar = false;
+
+	@State()
+	private stickyColsDisabled = false;
 
 	/**
 	 * Store previous value to allow change detection by value-comparison
@@ -150,6 +156,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_fixedCols')
 	public validateFixedCols(value?: FixedColsPropType) {
 		validateFixedCols(this, value);
+		this.checkAndUpdateStickyState();
 	}
 
 	@Watch('_headerCells')
@@ -179,6 +186,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
+		this.checkAndUpdateStickyState();
 	}
 
 	@Listen('keydown')
@@ -208,9 +216,10 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public componentDidLoad() {
 		if (this.tableDivElement && ResizeObserver) {
-			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
+			this.tableDivElementResizeObserver = new ResizeObserver(this.handleResize.bind(this));
 			this.tableDivElementResizeObserver.observe(this.tableDivElement);
 		}
+		this.checkAndUpdateStickyState();
 	}
 
 	@Listen('changeheadercells')
@@ -226,12 +235,57 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public disconnectedCallback() {
 		this.tableDivElementResizeObserver?.disconnect();
+		clearTimeout(this.resizeDebounceTimeout);
+	}
+
+	private handleResize() {
+		this.checkDivElementScrollbar();
+		clearTimeout(this.resizeDebounceTimeout);
+		this.resizeDebounceTimeout = setTimeout(() => {
+			this.checkAndUpdateStickyState();
+		}, RESIZE_DEBOUNCE_DELAY);
 	}
 
 	private checkDivElementScrollbar() {
 		if (this.tableDivElement) {
 			this.tableDivElementHasScrollbar = this.tableDivElement.scrollWidth > this.tableDivElement.clientWidth;
 		}
+	}
+
+	private calculateFixedColsWidth(): number {
+		if (!this._fixedCols) return 0;
+		const primaryHeader = this.getPrimaryHeaders(this.state._headerCells);
+		let totalWidth = 0;
+
+		// Sum widths of left-fixed columns
+		for (let i = 0; i < this._fixedCols[0] && i < primaryHeader.length; i++) {
+			totalWidth += primaryHeader[i]?.width ?? 0;
+		}
+
+		// Sum widths of right-fixed columns
+		const startRight = this.maxCols - this._fixedCols[1];
+		for (let i = startRight; i < this.maxCols && i < primaryHeader.length; i++) {
+			totalWidth += primaryHeader[i]?.width ?? 0;
+		}
+
+		// The selection column is always position: sticky; left: 0 (CSS-hardcoded).
+		// Its width is CSS-computed and must be measured from the DOM.
+		if (this.state._selection) {
+			const selectionCell = this.tableDivElement?.querySelector<HTMLElement>('.kol-table__cell--selection');
+			totalWidth += selectionCell?.offsetWidth ?? 0;
+		}
+
+		return totalWidth;
+	}
+
+	private checkAndUpdateStickyState() {
+		if (!this.tableDivElement || !this._fixedCols) {
+			this.stickyColsDisabled = false;
+			return;
+		}
+		const containerWidth = this.tableDivElement.clientWidth;
+		const fixedColsWidth = this.calculateFixedColsWidth();
+		this.stickyColsDisabled = fixedColsWidth > 0 && fixedColsWidth >= containerWidth;
 	}
 
 	private updateDataToKeyMap(data: KoliBriTableDataType[]) {
@@ -508,7 +562,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private isFixedCol(index: number | undefined): 'left' | 'right' | undefined {
-		if (!this._fixedCols || index === undefined) {
+		if (!this._fixedCols || index === undefined || this.stickyColsDisabled) {
 			return undefined;
 		}
 		if (index < this._fixedCols[0]) {

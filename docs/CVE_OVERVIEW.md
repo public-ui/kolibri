@@ -9,7 +9,7 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   0 |   0 |   0 |   0 |
-| high     |   0 |   0 |   0 |   5 |
+| high     |   0 |   0 |   0 |   4 |
 | moderate |   0 |   0 |   0 |   0 |
 | low      |   0 |   0 |   0 |   0 |
 | info     |   0 |   0 |   0 |   0 |
@@ -19,7 +19,6 @@
 
 | Package              | Severity | CVE                 | Affected Versions | Description                                                                       |
 | -------------------- | -------- | ------------------- | ----------------- | --------------------------------------------------------------------------------- |
-| immutable            | high     | CVE-2026-29063      | v1                | Immutable is vulnerable to Prototype Pollution                                    |
 | lodash.pick          | high     | CVE-2020-8203       | v1                | Prototype Pollution in lodash                                                     |
 | minimatch            | high     | CVE-2026-27903      | v1                | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v1                | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
@@ -32,8 +31,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   3 |   3 |   3 |   1 |
-| high     |  18 |  18 |  27 |  22 |
-| moderate |   2 |   2 |  13 |   1 |
+| high     |  17 |  17 |  27 |  20 |
+| moderate |   1 |   2 |  13 |   1 |
 | low      |   3 |   3 |   8 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -53,10 +52,11 @@
 | @hono/node-server    | high     | CVE-2026-29087      | v2                | @hono/node-server has authorization bypass for protected static paths via encode  |
 | axios                | high     | CVE-2026-25639      | v3, v2            | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig         |
 | braces               | high     | CVE-2024-4068       | v4, v3, v2, v1    | Uncontrolled resource consumption in braces                                       |
+| express-rate-limit   | high     | CVE-2026-30827      | v2                | express-rate-limit: IPv4-mapped IPv6 addresses bypass per-client rate limiting o  |
 | fast-xml-parser      | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                           |
 | fast-xml-parser      | high     | CVE-2026-26278      | v4, v3, v2        | fast-xml-parser affected by DoS through entity expansion in DOCTYPE (no expansio  |
 | hono                 | high     | CVE-2026-29045      | v2                | Hono vulnerable to arbitrary file access via serveStatic vulnerability            |
-| immutable            | high     | CVE-2026-29063      | v2, v1            | Immutable is vulnerable to Prototype Pollution                                    |
+| immutable            | high     | CVE-2026-29063      | v2                | Immutable is vulnerable to Prototype Pollution                                    |
 | locutus              | high     | CVE-2026-29091      | v4, v3, v2, v1    | locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Co  |
 | lodash.pick          | high     | CVE-2020-8203       | v2, v1            | Prototype Pollution in lodash                                                     |
 | minimatch            | high     | CVE-2026-27903      | v4, v3, v2, v1    | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
@@ -71,7 +71,7 @@
 | tar                  | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins  |
 | tar                  | high     | CVE-2026-26960      | v4, v3, v1        | Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in no  |
 | tar                  | high     | CVE-2026-29786      | v4, v3, v2, v1    | tar has Hardlink Path Traversal via Drive-Relative Linkpath                       |
-| ajv                  | moderate | CVE-2025-69873      | v4, v3, v2        | ajv has ReDoS when using `$data` option                                           |
+| ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                           |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                            |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r  |
 | hono                 | moderate | CVE-2026-29086      | v2                | Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in  |
