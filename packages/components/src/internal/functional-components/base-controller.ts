@@ -22,8 +22,8 @@ export abstract class BaseController<Api extends ComponentApi> {
 		this.rawProps[key as string] = value;
 	}
 
-	protected getRawProp<K extends keyof ResolvedInputProps<Api>>(key: K): ResolvedInputProps<Api>[K] | undefined {
-		return this.rawProps[key as string] as ResolvedInputProps<Api>[K] | undefined;
+	protected getRawProps(): Partial<ResolvedInputProps<Api>> {
+		return this.rawProps as Partial<ResolvedInputProps<Api>>;
 	}
 
 	protected setState<K extends keyof InternalStates<Api>>(key: K, value: InternalStates<Api>[K]): void {
