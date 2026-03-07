@@ -5,6 +5,7 @@ import type { ProgressApi } from './api';
 
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
+	private rawValue?: number;
 
 	public constructor(states: ProgressApi['States']) {
 		super(states, {
@@ -37,7 +38,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public watchMax(value?: number): void {
 		maxProp.apply(value, (v) => {
 			this.setProp('max', v);
-			this.watchValue(this.getProps().value);
+			this.watchValue(this.rawValue);
 		});
 	}
 
@@ -48,6 +49,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchValue(value?: number): void {
+		this.rawValue = value;
 		clampedNumberValueProp.apply(
 			value,
 			(v) => {
