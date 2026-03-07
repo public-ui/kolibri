@@ -71,20 +71,11 @@ export class KolProgress implements WebComponentInterface<ProgressApi> {
 		this.ctrl.watchVariant(value);
 	}
 
-	@State()
-	public unit: string = '%';
-
-	@State()
-	public variant: ProgressVariantType = 'bar';
-
 	/**
 	 * A11y: Aria live value
 	 */
 	@State()
 	public liveValue: number = 0;
-
-	@State()
-	public max: number = this._max;
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({

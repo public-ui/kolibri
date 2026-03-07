@@ -25,7 +25,6 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchVariant(variant);
 
 		this.setState('liveValue', this.getProps().value);
-		this.setState('max', this.getProps().max);
 		this.startLiveValueInterval();
 	}
 
@@ -38,15 +37,16 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public watchMax(value?: number): void {
 		maxProp.apply(value, (v) => {
 			this.setProp('max', v);
-			this.setState('max', v);
 		});
-		this.watchValue(this.getProps().value);
+		const currentValue = this.getProps().value;
+		if (currentValue !== undefined) {
+			this.watchValue(currentValue);
+		}
 	}
 
 	public watchUnit(value?: string): void {
 		unitProp.apply(value, (v) => {
 			this.setProp('unit', v);
-			this.setState('unit', v);
 		});
 	}
 
@@ -63,7 +63,6 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public watchVariant(value?: string): void {
 		variantProgressProp.apply(value, (v) => {
 			this.setProp('variant', v);
-			this.setState('variant', v);
 		});
 	}
 

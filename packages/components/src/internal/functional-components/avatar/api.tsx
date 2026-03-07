@@ -1,4 +1,4 @@
-import type { ColorProp, InitialsProp, LabelProp, SrcProp } from '../../props';
+import type { ColorProp, LabelProp, SrcProp } from '../../props';
 import type { ComponentApi } from '../generic-types';
 
 export interface AvatarApi extends ComponentApi {
@@ -6,5 +6,7 @@ export interface AvatarApi extends ComponentApi {
 		Optional: SrcProp & ColorProp;
 		Required: LabelProp;
 	};
-	States: InitialsProp;
+	States: {
+		initials: string;
+	};
 }
