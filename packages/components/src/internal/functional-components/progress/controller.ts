@@ -19,10 +19,10 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
 		const { label, max, unit, value, variant } = props;
 		this.watchLabel(label);
-		this.watchMax(max);
 		this.watchUnit(unit);
-		this.watchValue(value);
 		this.watchVariant(variant);
+		this.watchValue(value);
+		this.watchMax(max);
 
 		this.setState('liveValue', this.getProps().value);
 		this.startLiveValueInterval();
