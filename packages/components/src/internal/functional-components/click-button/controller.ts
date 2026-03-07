@@ -6,21 +6,19 @@ import type { ClickButtonApi } from './api';
 export class ClickButtonController extends BaseController<ClickButtonApi> implements ControllerInterface<ClickButtonApi> {
 	private buttonRef?: HTMLButtonElement;
 
-	public constructor(states: ClickButtonApi['States'] = {}) {
-		super(states, {
-			label: '',
-		});
-	}
-
 	public componentWillLoad(props: ResolvedInputProps<ClickButtonApi>): void {
 		const { label } = props;
 		this.watchLabel(label);
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
-			this.setProp('label', v);
-		});
+		labelProp.apply(
+			value,
+			(v) => {
+				this.setProp('label', v);
+			},
+			'',
+		);
 	}
 
 	public handleClick = (): void => {
