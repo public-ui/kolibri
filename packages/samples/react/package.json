@@ -30,7 +30,7 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.41.2",
-		"@types/node": "24.11.2",
+		"@types/node": "24.12.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.5.10",
@@ -50,8 +50,8 @@
 		"zod": "4.3.6"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.4",
-		"@eslint/js": "9.39.3",
+		"@eslint/eslintrc": "3.3.5",
+		"@eslint/js": "9.39.4",
 		"@playwright/test": "1.58.2",
 		"@typescript-eslint/eslint-plugin": "8.56.1",
 		"@typescript-eslint/parser": "8.56.1",
