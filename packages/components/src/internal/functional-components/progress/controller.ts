@@ -38,10 +38,6 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		maxProp.apply(value, (v) => {
 			this.setProp('max', v);
 		});
-		const currentValue = this.getProps().value;
-		if (currentValue !== undefined) {
-			this.watchValue(currentValue);
-		}
 	}
 
 	public watchUnit(value?: string): void {
