@@ -19,5 +19,3 @@ packages:
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
 
-overrides:
-  immutable@>=5.0.0 <5.1.5: '>=5.1.5'
