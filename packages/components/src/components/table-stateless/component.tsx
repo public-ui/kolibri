@@ -43,6 +43,8 @@ import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
+const RESIZE_DEBOUNCE_DELAY = 150;
+
 /**
  * @internal
  */
@@ -241,7 +243,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		clearTimeout(this.resizeDebounceTimeout);
 		this.resizeDebounceTimeout = setTimeout(() => {
 			this.checkAndUpdateStickyState();
-		}, 150);
+		}, RESIZE_DEBOUNCE_DELAY);
 	}
 
 	private checkDivElementScrollbar() {
