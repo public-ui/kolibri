@@ -31,7 +31,7 @@ export type InternalPropValue<P extends Prop<string, unknown, unknown>> = NonNul
 export type PropDefinition<TInternal> = {
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void) => void;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, defaultValue: TInternal) => void;
 };
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
@@ -41,7 +41,13 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
 	return {
 		normalize,
 		validate,
-		apply(value, callback) {
+		apply(value, callback, defaultValue) {
+			if (value === undefined || value === null) {
+				if (defaultValue !== undefined) {
+					callback(defaultValue);
+				}
+				return;
+			}
 			try {
 				const normalized = this.normalize(value);
 				if (this.validate(normalized)) {
@@ -57,7 +63,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
 export type DependentPropDefinition<TInternal, TDeps> = {
 	normalize: (value: unknown, deps: TDeps) => TInternal | never;
 	validate: (value: TInternal, deps: TDeps) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps, defaultValue: TInternal) => void;
 };
 
 export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps>(
@@ -67,7 +73,13 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 	return {
 		normalize,
 		validate,
-		apply(value, callback, deps: TDeps) {
+		apply(value, callback, deps: TDeps, defaultValue) {
+			if (value === undefined || value === null) {
+				if (defaultValue !== undefined) {
+					callback(defaultValue);
+				}
+				return;
+			}
 			try {
 				const normalized = this.normalize(value, deps);
 				if (this.validate(normalized, deps)) {

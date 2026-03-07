@@ -1,5 +1,5 @@
 import { Log } from '../../../schema';
-import { countProp, labelProp, nameProp } from '../../props';
+import { countProp, nameProp } from '../../props';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
@@ -10,10 +10,7 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 	private intervalId?: ReturnType<typeof setTimeout>;
 
 	public constructor(states: SkeletonApi['States']) {
-		super(states, {
-			count: 0,
-			name: '',
-		});
+		super(states);
 
 		this.clickButtonCtrl = new ClickButtonController({});
 		this.startLoadedEventInterval();
@@ -23,30 +20,30 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 		const { count, name } = props;
 		this.watchCount(count);
 		this.watchName(name);
-		this.watchLabel(this.component.label);
 		this.clickButtonCtrl.componentWillLoad({
 			label: this.component.label,
 		});
 	}
 
 	public watchCount(value?: number | string): void {
-		countProp.apply(value, (v) => {
-			this.setProp('count', v);
-			this.setState('count', v);
-		});
+		countProp.apply(
+			value,
+			(v) => {
+				this.setProp('count', v);
+				this.setState('count', v);
+			},
+			0,
+		);
 	}
 
 	public watchName(value?: string): void {
-		nameProp.apply(value, (v) => {
-			this.setProp('name', v);
-		});
-	}
-
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
-			this.setState('label', v);
-			this.clickButtonCtrl.watchLabel(v);
-		});
+		nameProp.apply(
+			value,
+			(v) => {
+				this.setProp('name', v);
+			},
+			'',
+		);
 	}
 
 	public toggle(): void {

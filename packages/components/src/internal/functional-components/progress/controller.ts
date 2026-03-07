@@ -6,16 +6,6 @@ import type { ProgressApi } from './api';
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
 
-	public constructor(states: ProgressApi['States']) {
-		super(states, {
-			label: '',
-			max: 100,
-			unit: '%',
-			value: 0,
-			variant: 'bar',
-		});
-	}
-
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
 		const { label, max, unit, value, variant } = props;
 		this.watchLabel(label);
@@ -30,24 +20,42 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
-			this.setProp('label', v);
-		});
+		labelProp.apply(
+			value,
+			(v) => {
+				this.setProp('label', v);
+			},
+			'',
+		);
 	}
 
 	public watchMax(value?: number): void {
-		maxProp.apply(value, (v) => {
-			this.setProp('max', v);
-			this.setState('max', v);
-		});
-		this.watchValue(this.getProps().value);
+		maxProp.apply(
+			value,
+			(v) => {
+				this.setProp('max', v);
+				/**
+				 * ARCHITECTURE NOTE: Why ... we have a inner stable max prop.
+				 */
+				this.setState('max', v);
+			},
+			100,
+		);
+		const currentValue = this.getProps().value;
+		if (currentValue !== undefined) {
+			this.watchValue(currentValue);
+		}
 	}
 
 	public watchUnit(value?: string): void {
-		unitProp.apply(value, (v) => {
-			this.setProp('unit', v);
-			this.setState('unit', v);
-		});
+		unitProp.apply(
+			value,
+			(v) => {
+				this.setProp('unit', v);
+				this.setState('unit', v);
+			},
+			'%',
+		);
 	}
 
 	public watchValue(value?: number): void {
@@ -57,14 +65,19 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 				this.setProp('value', v);
 			},
 			{ min: 0, max: this.getProps().max },
+			0,
 		);
 	}
 
 	public watchVariant(value?: string): void {
-		variantProgressProp.apply(value, (v) => {
-			this.setProp('variant', v);
-			this.setState('variant', v);
-		});
+		variantProgressProp.apply(
+			value,
+			(v) => {
+				this.setProp('variant', v);
+				this.setState('variant', v);
+			},
+			'bar',
+		);
 	}
 
 	// a11y: says the value of the component every 5s
