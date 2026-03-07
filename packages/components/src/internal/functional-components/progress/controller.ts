@@ -15,7 +15,6 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchVariant(variant);
 
 		this.setState('liveValue', this.getProps().value);
-		this.setState('max', this.getProps().max);
 		this.startLiveValueInterval();
 	}
 
@@ -34,17 +33,10 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			value,
 			(v) => {
 				this.setProp('max', v);
-				/**
-				 * ARCHITECTURE NOTE: Why ... we have a inner stable max prop.
-				 */
-				this.setState('max', v);
+				this.watchValue(this.getRawProps().value);
 			},
 			100,
 		);
-		const currentValue = this.getProps().value;
-		if (currentValue !== undefined) {
-			this.watchValue(currentValue);
-		}
 	}
 
 	public watchUnit(value?: string): void {
@@ -52,13 +44,13 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			value,
 			(v) => {
 				this.setProp('unit', v);
-				this.setState('unit', v);
 			},
 			'%',
 		);
 	}
 
 	public watchValue(value?: number): void {
+		this.setRawProp('value', value);
 		clampedNumberValueProp.apply(
 			value,
 			(v) => {
@@ -74,7 +66,6 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			value,
 			(v) => {
 				this.setProp('variant', v);
-				this.setState('variant', v);
 			},
 			'bar',
 		);

@@ -30,17 +30,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	/**
-	 * Sets the count of the skeleton component.
-	 */
-	@Prop()
-	public _count?: number | string;
-
-	@Watch('_count')
-	public watchCount(value?: number | string): void {
-		this.ctrl.watchCount(value);
-	}
-
-	/**
 	 * Sets the name of the skeleton component.
 	 */
 	@Prop()
@@ -52,13 +41,13 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	@State()
+	public count: number = 0;
+
+	@State()
 	public label: string = 'Label';
 
 	@State()
 	public show: boolean = true;
-
-	@State()
-	public count: number = 0;
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
@@ -85,7 +74,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
-			count: this._count,
 			name: this._name,
 		});
 
@@ -106,8 +94,8 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	public render(): JSX.Element {
-		const { count, name } = this.ctrl.getProps();
-		const { label, show } = this;
+		const { name } = this.ctrl.getProps();
+		const { count, label, show } = this;
 		return (
 			<Host>
 				<SkeletonFC

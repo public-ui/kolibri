@@ -1,5 +1,5 @@
 import { Log } from '../../../schema';
-import { countProp, nameProp } from '../../props';
+import { nameProp } from '../../props';
 import { BaseController } from '../base-controller';
 import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
@@ -17,23 +17,11 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<SkeletonApi>): void {
-		const { count, name } = props;
-		this.watchCount(count);
+		const { name } = props;
 		this.watchName(name);
 		this.clickButtonCtrl.componentWillLoad({
 			label: this.component.label,
 		});
-	}
-
-	public watchCount(value?: number | string): void {
-		countProp.apply(
-			value,
-			(v) => {
-				this.setProp('count', v);
-				this.setState('count', v);
-			},
-			0,
-		);
 	}
 
 	public watchName(value?: string): void {
@@ -60,9 +48,8 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 
 	public handleClick = (): void => {
 		Log.debug('Button clicked, count should be increased');
-		const { count } = this.getProps();
+		const { count } = this.component;
 		const nextCount = count + 1;
-		this.setProp('count', nextCount);
 		this.setState('count', nextCount);
 	};
 
@@ -77,7 +64,7 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 	private startLoadedEventInterval(): void {
 		// Emit loaded event every 2 seconds with current count value
 		this.intervalId = setInterval(() => {
-			const { count } = this.getProps();
+			const { count } = this.component;
 			this.emitLoaded(count);
 		}, 2000);
 	}

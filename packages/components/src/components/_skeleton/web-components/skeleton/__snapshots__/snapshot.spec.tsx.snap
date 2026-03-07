@@ -1,13 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-skeleton should render with _count=0 _name="Ada Lovelace" 1`] = `
+exports[`kol-skeleton should render with _name="  " 1`] = `
 <kol-skeleton>
   <template shadowrootmode="open">
-    <div class="kol-skeleton kol-skeleton--has-name">
+    <div class="kol-skeleton">
       <div class="kol-skeleton__container">
-        <span class="kol-skeleton__name">
-          Ada Lovelace
-        </span>
         <div class="kol-skeleton__counter">
           Count: 0
         </div>
@@ -24,13 +21,16 @@ exports[`kol-skeleton should render with _count=0 _name="Ada Lovelace" 1`] = `
 </kol-skeleton>
 `;
 
-exports[`kol-skeleton should render with _count=5 _name="  " 1`] = `
+exports[`kol-skeleton should render with _name="Ada Lovelace" 1`] = `
 <kol-skeleton>
   <template shadowrootmode="open">
-    <div class="kol-skeleton">
+    <div class="kol-skeleton kol-skeleton--has-name">
       <div class="kol-skeleton__container">
+        <span class="kol-skeleton__name">
+          Ada Lovelace
+        </span>
         <div class="kol-skeleton__counter">
-          Count: 5
+          Count: 0
         </div>
       </div>
       <div class="kol-skeleton__actions">
