@@ -184,6 +184,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
+		this.checkAndUpdateStickyState();
 	}
 
 	@Listen('keydown')
@@ -263,6 +264,13 @@ export class KolTableStateless implements TableStatelessAPI {
 		const startRight = this.maxCols - this._fixedCols[1];
 		for (let i = startRight; i < this.maxCols && i < primaryHeader.length; i++) {
 			totalWidth += primaryHeader[i]?.width ?? 0;
+		}
+
+		// The selection column is always position: sticky; left: 0 (CSS-hardcoded).
+		// Its width is CSS-computed and must be measured from the DOM.
+		if (this.state._selection) {
+			const selectionCell = this.tableDivElement?.querySelector<HTMLElement>('.kol-table__cell--selection');
+			totalWidth += selectionCell?.offsetWidth ?? 0;
 		}
 
 		return totalWidth;
