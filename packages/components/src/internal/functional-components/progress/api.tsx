@@ -1,4 +1,4 @@
-import type { LabelProp, MaxProp, UnitProp, NumberValueProp, VariantProgressProp } from '../../props';
+import type { LabelProp, MaxProp, NumberValueProp, UnitProp, VariantProgressProp } from '../../props';
 import type { ComponentApi, InternalOf } from '../generic-types';
 
 export interface ProgressApi extends ComponentApi {

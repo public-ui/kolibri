@@ -51,12 +51,12 @@
 		"zod": "4.3.6"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.39.3",
+		"@eslint/js": "9.39.4",
 		"@playwright/test": "1.58.2",
 		"@typescript-eslint/eslint-plugin": "8.56.1",
 		"@typescript-eslint/parser": "8.56.1",
 		"cpy-cli": "6.0.0",
-		"eslint": "9.39.3",
+		"eslint": "9.39.4",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.0.1",
