@@ -1,8 +1,10 @@
-import type { ComponentApi, InternalOf, ResolvedProps, StrictFields } from './generic-types';
+import type { ComponentApi, InternalOf, ResolvedInputProps, ResolvedProps, StrictFields } from './generic-types';
 
 type InternalStates<Api extends ComponentApi> = InternalOf<NonNullable<Api['States']>>;
 
 export abstract class BaseController<Api extends ComponentApi> {
+	private readonly rawProps: Partial<Record<string, unknown>> = {};
+
 	public constructor(
 		protected readonly component: InternalStates<Api>,
 		private readonly props: StrictFields<ResolvedProps<Api>>,
@@ -14,6 +16,14 @@ export abstract class BaseController<Api extends ComponentApi> {
 
 	public getProps(): StrictFields<ResolvedProps<Api>> {
 		return this.props;
+	}
+
+	protected setRawProp<K extends keyof ResolvedInputProps<Api>>(key: K, value: ResolvedInputProps<Api>[K] | undefined): void {
+		this.rawProps[key as string] = value;
+	}
+
+	protected getRawProps(): Partial<ResolvedInputProps<Api>> {
+		return this.rawProps as Partial<ResolvedInputProps<Api>>;
 	}
 
 	protected setState<K extends keyof InternalStates<Api>>(key: K, value: InternalStates<Api>[K]): void {

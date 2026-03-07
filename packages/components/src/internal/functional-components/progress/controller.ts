@@ -37,11 +37,8 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	public watchMax(value?: number): void {
 		maxProp.apply(value, (v) => {
 			this.setProp('max', v);
+			this.watchValue(this.getRawProps().value);
 		});
-		const currentValue = this.getProps().value;
-		if (currentValue !== undefined) {
-			this.watchValue(currentValue);
-		}
 	}
 
 	public watchUnit(value?: string): void {
@@ -51,6 +48,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchValue(value?: number): void {
+		this.setRawProp('value', value);
 		clampedNumberValueProp.apply(
 			value,
 			(v) => {
