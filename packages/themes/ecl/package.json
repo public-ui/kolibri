@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-ecl",
-	"version": "4.1.1-rc.1",
+	"version": "4.1.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -65,11 +65,11 @@
 		"pretest:update": "pnpm build"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.4",
-		"@eslint/js": "9.39.3",
+		"@eslint/eslintrc": "3.3.5",
+		"@eslint/js": "9.39.4",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
-		"@rollup/plugin-commonjs": "29.0.1",
+		"@rollup/plugin-commonjs": "29.0.2",
 		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.3.0",
 		"@typescript-eslint/eslint-plugin": "8.56.1",
@@ -77,7 +77,7 @@
 		"autoprefixer": "10.4.27",
 		"cpy-cli": "6.0.0",
 		"cross-env": "10.1.0",
-		"eslint": "9.39.3",
+		"eslint": "9.39.4",
 		"nodemon": "3.1.14",
 		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.8",

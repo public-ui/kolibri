@@ -31,6 +31,7 @@ export type InternalPropValue<P extends Prop<string, unknown, unknown>> = NonNul
 export type PropDefinition<TInternal> = {
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, defaultValue: TInternal) => void;
 };
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
@@ -40,20 +41,53 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
 	return {
 		normalize,
 		validate,
+		apply(value, callback, defaultValue) {
+			if (value === undefined || value === null) {
+				if (defaultValue !== undefined) {
+					callback(defaultValue);
+				}
+				return;
+			}
+			try {
+				const normalized = this.normalize(value);
+				if (this.validate(normalized)) {
+					callback(normalized);
+				}
+			} catch (e) {
+				Log.debug(e);
+			}
+		},
 	};
 }
 
-export function withValidPropValue<P extends Prop<string, unknown, unknown>>(
-	propDef: PropDefinition<InternalPropValue<P>>,
-	value: unknown,
-	callback: (normalized: InternalPropValue<P>) => void,
-): void {
-	try {
-		const normalized = propDef.normalize(value);
-		if (propDef.validate(normalized)) {
-			callback(normalized);
-		}
-	} catch (e) {
-		Log.debug(e);
-	}
+export type DependentPropDefinition<TInternal, TDeps> = {
+	normalize: (value: unknown, deps: TDeps) => TInternal | never;
+	validate: (value: TInternal, deps: TDeps) => boolean;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps, defaultValue: TInternal) => void;
+};
+
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps>(
+	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
+	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
+): DependentPropDefinition<InternalPropValue<P>, TDeps> {
+	return {
+		normalize,
+		validate,
+		apply(value, callback, deps: TDeps, defaultValue) {
+			if (value === undefined || value === null) {
+				if (defaultValue !== undefined) {
+					callback(defaultValue);
+				}
+				return;
+			}
+			try {
+				const normalized = this.normalize(value, deps);
+				if (this.validate(normalized, deps)) {
+					callback(normalized);
+				}
+			} catch (e) {
+				Log.debug(e);
+			}
+		},
+	};
 }
