@@ -25,9 +25,7 @@ export const LinkVariant: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>
-					This sample shows KolButton with short key without functionality. The short key is purely visual. Its functionality needs to be developed separately.
-				</p>
+				<p>This sample shows the theme specific variants of KolLink.</p>
 			</SampleDescription>
 
 			<div className="grid gap-4">
