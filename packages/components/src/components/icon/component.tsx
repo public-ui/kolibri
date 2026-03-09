@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { IconApi } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
@@ -12,8 +13,8 @@ import { IconController } from '../../internal/functional-components/icon/contro
 	},
 	shadow: true,
 })
-export class KolIcon implements WebComponentInterface<IconApi> {
-	private readonly ctrl = new IconController(this);
+export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentInterface<IconApi> {
+	private readonly ctrl = new IconController();
 
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
@@ -45,10 +46,9 @@ export class KolIcon implements WebComponentInterface<IconApi> {
 	}
 
 	public render(): JSX.Element {
-		const { icons, label } = this.ctrl.getProps();
 		return (
 			<Host>
-				<IconFC icons={icons} label={label} />
+				<IconFC icons={this.ctrl.getRenderProp('icons')} label={this.ctrl.getRenderProp('label')} />
 			</Host>
 		);
 	}

@@ -1,19 +1,22 @@
 import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, SetStateFn } from '../generic-types';
 import type { ProgressApi } from './api';
 
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
 
-	public constructor(states: ProgressApi['States']) {
-		super(states, {
-			label: '',
-			max: 100,
-			unit: '%',
-			value: 0,
-			variant: 'bar',
-		});
+	public constructor(setState: SetStateFn<ProgressApi>) {
+		super(
+			{
+				label: '',
+				max: 100,
+				unit: '%',
+				value: 0,
+				variant: 'bar',
+			},
+			setState,
+		);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
@@ -24,7 +27,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchValue(value);
 		this.watchVariant(variant);
 
-		this.setState('liveValue', this.getProps().value);
+		this.setState('liveValue', this.getRenderProp('value'));
 		this.startLiveValueInterval();
 	}
 
@@ -32,7 +35,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		labelProp.apply(
 			value,
 			(v) => {
-				this.setProp('label', v);
+				this.setRenderProp('label', v);
 			},
 			this.getDefaultProp('label'),
 		);
@@ -42,8 +45,8 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		maxProp.apply(
 			value,
 			(v) => {
-				this.setProp('max', v);
-				this.watchValue(this.getRawProps().value);
+				this.setRenderProp('max', v);
+				this.watchValue(this.getRawProp('value'));
 			},
 			this.getDefaultProp('max'),
 		);
@@ -53,7 +56,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		unitProp.apply(
 			value,
 			(v) => {
-				this.setProp('unit', v);
+				this.setRenderProp('unit', v);
 			},
 			this.getDefaultProp('unit'),
 		);
@@ -64,9 +67,9 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		clampedNumberValueProp.apply(
 			value,
 			(v) => {
-				this.setProp('value', v);
+				this.setRenderProp('value', v);
 			},
-			{ min: 0, max: this.getProps().max },
+			{ min: 0, max: this.getRenderProp('max') },
 			this.getDefaultProp('value'),
 		);
 	}
@@ -75,7 +78,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		variantProgressProp.apply(
 			value,
 			(v) => {
-				this.setProp('variant', v);
+				this.setRenderProp('variant', v);
 			},
 			this.getDefaultProp('variant'),
 		);
@@ -84,10 +87,8 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	// a11y: says the value of the component every 5s
 	private startLiveValueInterval(): void {
 		this.interval = setInterval(() => {
-			const { value } = this.getProps();
-			if (this.component.liveValue !== value) {
-				this.setState('liveValue', value);
-			}
+			const value = this.getRenderProp('value');
+			this.setState('liveValue', value);
 		}, 5000);
 	}
 
