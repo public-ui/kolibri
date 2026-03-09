@@ -38,6 +38,17 @@ const normalizeInitials = (value: string): string => {
 };
 
 export class AvatarController extends BaseController<AvatarApi> implements ControllerInterface<AvatarApi> {
+	public constructor(states: AvatarApi['States']) {
+		super(states, {
+			color: {
+				backgroundColor: '#d3d3d3',
+				foregroundColor: '#3f3f3f',
+			},
+			label: '',
+			src: '',
+		});
+	}
+
 	public componentWillLoad(props: ResolvedInputProps<AvatarApi>): void {
 		const { color, label, src } = props;
 		this.watchColor(color);
@@ -51,10 +62,7 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 			(v) => {
 				this.setProp('color', v);
 			},
-			{
-				backgroundColor: '#d3d3d3',
-				foregroundColor: '#3f3f3f',
-			},
+			this.getDefaultProp('color'),
 		);
 	}
 
@@ -65,7 +73,7 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 				this.setProp('label', v);
 				this.setState('initials', normalizeInitials(v));
 			},
-			'',
+			this.getDefaultProp('label'),
 		);
 	}
 
@@ -75,7 +83,7 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 			(v) => {
 				this.setProp('src', v);
 			},
-			'',
+			this.getDefaultProp('src'),
 		);
 	}
 }

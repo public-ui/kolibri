@@ -49,7 +49,7 @@ export interface ComponentApi {
 	Methods?: Record<string, (...args: never[]) => unknown>;
 	Props?: PropsDefinition;
 	Refs?: Record<string, HTMLElement>;
-	States?: Record<string, unknown>;
+	States: Record<never, never>;
 }
 
 // ============================================================================

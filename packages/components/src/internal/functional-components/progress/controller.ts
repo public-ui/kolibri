@@ -6,6 +6,16 @@ import type { ProgressApi } from './api';
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
 
+	public constructor(states: ProgressApi['States']) {
+		super(states, {
+			label: '',
+			max: 100,
+			unit: '%',
+			value: 0,
+			variant: 'bar',
+		});
+	}
+
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
 		const { label, max, unit, value, variant } = props;
 		this.watchLabel(label);
@@ -24,7 +34,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			(v) => {
 				this.setProp('label', v);
 			},
-			'',
+			this.getDefaultProp('label'),
 		);
 	}
 
@@ -35,7 +45,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 				this.setProp('max', v);
 				this.watchValue(this.getRawProps().value);
 			},
-			100,
+			this.getDefaultProp('max'),
 		);
 	}
 
@@ -45,7 +55,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			(v) => {
 				this.setProp('unit', v);
 			},
-			'%',
+			this.getDefaultProp('unit'),
 		);
 	}
 
@@ -57,7 +67,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 				this.setProp('value', v);
 			},
 			{ min: 0, max: this.getProps().max },
-			0,
+			this.getDefaultProp('value'),
 		);
 	}
 
@@ -67,7 +77,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 			(v) => {
 				this.setProp('variant', v);
 			},
-			'bar',
+			this.getDefaultProp('variant'),
 		);
 	}
 

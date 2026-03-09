@@ -14,7 +14,7 @@ import type { LoadingType } from '../../internal/props';
 	shadow: true,
 })
 export class KolImage implements WebComponentInterface<ImageApi> {
-	private readonly ctrl = new ImageController();
+	private readonly ctrl = new ImageController(this);
 
 	/**
 	 * Sets the alternative text of the image.

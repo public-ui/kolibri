@@ -10,7 +10,9 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 	private intervalId?: ReturnType<typeof setTimeout>;
 
 	public constructor(states: SkeletonApi['States']) {
-		super(states);
+		super(states, {
+			name: '',
+		});
 
 		this.clickButtonCtrl = new ClickButtonController({});
 		this.startLoadedEventInterval();
@@ -30,7 +32,7 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 			(v) => {
 				this.setProp('name', v);
 			},
-			'',
+			this.getDefaultProp('name'),
 		);
 	}
 

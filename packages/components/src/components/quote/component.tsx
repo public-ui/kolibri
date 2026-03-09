@@ -14,7 +14,7 @@ import type { QuoteVariantType } from '../../internal/props/variant-quote';
 	shadow: true,
 })
 export class KolQuote implements WebComponentInterface<QuoteApi> {
-	private readonly ctrl = new QuoteController();
+	private readonly ctrl = new QuoteController(this);
 
 	/**
 	 * Sets the target URI of the link or citation source.

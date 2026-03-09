@@ -1,7 +1,10 @@
 @use '../components/@shared/mixins' as *;
 @use '../components/@shared/kol-button-mixin' as *;
+@use '../components/@shared/kol-icon-mixin' as *;
 
 @mixin kol-card {
+	@include kol-icon-styles();
+
 	.kol-card {
 		@include kol-button-styles('kol-button');
 

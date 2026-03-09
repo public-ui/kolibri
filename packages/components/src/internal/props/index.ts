@@ -3,6 +3,7 @@ export * from './color';
 export * from './count';
 export * from './helpers/factory';
 export * from './href';
+export * from './icons';
 export * from './label';
 export * from './loading';
 export * from './max';
