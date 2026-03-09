@@ -4,8 +4,8 @@ import type { ControllerInterface, ResolvedProps } from '../generic-types';
 import type { IconApi } from './api';
 
 export class IconController extends BaseController<IconApi> implements ControllerInterface<IconApi> {
-	public constructor(states: IconApi['States']) {
-		super(states, {
+	public constructor() {
+		super({
 			icons: 'kolicon-logo',
 			label: '',
 		});
@@ -21,7 +21,7 @@ export class IconController extends BaseController<IconApi> implements Controlle
 		iconsProp.apply(
 			value,
 			(v) => {
-				this.setProp('icons', v);
+				this.setRenderProp('icons', v);
 			},
 			this.getDefaultProp('icons'),
 		);
@@ -31,7 +31,7 @@ export class IconController extends BaseController<IconApi> implements Controlle
 		labelProp.apply(
 			value,
 			(v) => {
-				this.setProp('label', v);
+				this.setRenderProp('label', v);
 			},
 			this.getDefaultProp('label'),
 		);

@@ -1,6 +1,5 @@
 export * from './alt';
 export * from './color';
-export * from './count';
 export * from './helpers/factory';
 export * from './href';
 export * from './icons';

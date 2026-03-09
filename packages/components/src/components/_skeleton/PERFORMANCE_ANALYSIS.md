@@ -24,14 +24,16 @@ Annahmen:
 ## Pattern 1: `new` pro Web Component (Aktuell) ✅
 
 ```typescript
-// Web Component (without reactive state):
-export class KolClickButton {
-	private readonly ctrl = new ClickButtonController(); // ✅ 1× pro WC-Instanz, default states
+// Web Component (without controller-managed @State fields):
+// ClickButtonApi declares no States, so no setState callback is needed.
+export class KolClickButton extends BaseWebComponent<ClickButtonApi> {
+	private readonly ctrl = new ClickButtonController(); // ✅ 1× pro WC-Instanz, kein Argument nötig
 }
 
 // Web Component (with reactive @State fields):
-export class KolSkeleton {
-	private readonly ctrl = new SkeletonController(this); // ✅ passes WC for setState() reactivity
+// setState is pre-bound by BaseWebComponent and passed to the controller.
+export class KolSkeleton extends BaseWebComponent<SkeletonApi> {
+	private readonly ctrl = new SkeletonController(this.setState); // ✅ übergibt setState-Callback
 }
 ```
 

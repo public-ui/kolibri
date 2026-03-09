@@ -61,7 +61,7 @@ exports[`kol-badge should render with _label="Text" _icons="codicon codicon-home
     <span class="kol-badge" style="background-color: #000; color: #959595;">
       <span class="kol-badge__label kol-span">
         <span class="kol-span__container">
-          <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+          <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
           <span class="kol-span__label md">
             Text
           </span>
@@ -79,7 +79,7 @@ exports[`kol-badge should render with _label="Text" _icons="codicon codicon-home
     <span class="kol-badge" style="background-color: #000; color: #959595;">
       <span class="kol-badge__label kol-span">
         <span class="kol-span__container">
-          <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+          <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
           <span class="kol-span__label md">
             Text
           </span>
