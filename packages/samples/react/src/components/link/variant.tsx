@@ -8,7 +8,11 @@ export const LinkVariant: FC = () => {
 	const [data, setData] = useState<Array<string>>([]);
 
 	useEffect(() => {
-		fetch('/assets/inject-variants.json')
+		const theme = document.body.dataset.theme;
+		if (!theme) {
+			return;
+		}
+		fetch('/assets/inject-variants_' + theme + '.json')
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.hasOwnProperty('linkVariants')) {
@@ -28,13 +32,17 @@ export const LinkVariant: FC = () => {
 
 			<div className="grid gap-4">
 				<KolLink _href="#/back-page" _label="Normal link without a variant" />
-				{data.map((element) => {
-					return (
-						<div className="flex gap-4" key={element}>
-							<KolLink _href="#/back-page" _label={`Theme exclusive variant: ${element}`} _variant={element} />
-						</div>
-					);
-				})}
+				{data.length === 0 ? (
+					<p>This theme has no variants for this component.</p>
+				) : (
+					data.map((element) => {
+						return (
+							<div className="flex gap-4" key={element}>
+								<KolLink _href="#/back-page" _label={`Theme exclusive variant: ${element}`} _variant={element} />
+							</div>
+						);
+					})
+				)}
 			</div>
 		</>
 	);
