@@ -43,7 +43,7 @@ export const TableBig: FC = () => {
 		}
 
 		const rows = searchParams.get('rows');
-		if (rows) {
+		if (rows && +rows < 5000) {
 			setRows(+rows);
 		} else {
 			setSearchParams((searchParams) => {
@@ -53,10 +53,10 @@ export const TableBig: FC = () => {
 		}
 
 		const addCols = searchParams.get('addCols');
-		if (addCols) {
-			headers = defaultHeaders;
+		if (addCols && +addCols < 5000) {
+			headers = [...defaultHeaders];
 			for (let index = 0; index < +addCols; index++) {
-				headers.push({ label: 'rnd' + index, key: 'rnd' + index, textAlign: 'left', width: 100 });
+				headers.push({ label: 'label' + index, key: 'key' + index, textAlign: 'left', width: 100 });
 			}
 		} else {
 			setSearchParams((searchParams) => {
@@ -88,7 +88,7 @@ export const TableBig: FC = () => {
 				<ul>
 					<li>rows=400 - loads 400 rows</li>
 					<li>addCols=10 - adds 10 empty columns to the end</li>
-					<li>fixedCols=2.1 - makes the first two and last columns sticky</li>
+					<li>fixedCols=2.1 - makes the first two and the last column sticky</li>
 				</ul>
 			</SampleDescription>
 
