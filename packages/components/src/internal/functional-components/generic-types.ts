@@ -49,7 +49,7 @@ export interface ComponentApi {
 	Methods?: Record<string, (...args: never[]) => unknown>;
 	Props?: PropsDefinition;
 	Refs?: Record<string, HTMLElement>;
-	States?: Record<string, unknown>;
+	States: Record<never, never>;
 }
 
 // ============================================================================
@@ -95,6 +95,27 @@ type ExtractStates<T extends ComponentApi> = InternalOf<ApiField<T, 'States'>>;
 
 type InternalProps<T extends ComponentApi> = InternalOf<AllProps<T>>;
 type ExternalProps<T extends ComponentApi> = ExternalOf<AllProps<T>>;
+
+// ============================================================================
+// State Access Functions
+// ============================================================================
+
+/**
+ * Function signature for setting component state in a type-safe manner.
+ * Used by controllers to update reactive @State fields with generic type safety.
+ */
+export type SetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
+	key: K,
+	value: InternalOf<NonNullable<Api['States']>>[K],
+) => void;
+
+/**
+ * Function signature for reading component state in a type-safe manner.
+ * Used by controllers to access reactive @State fields with generic type safety.
+ */
+export type GetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
+	key: K,
+) => InternalOf<NonNullable<Api['States']>>[K];
 
 // ============================================================================
 // Method Promise Wrapping
@@ -186,7 +207,7 @@ type ControllerRefSetters<Refs> = {
 
 export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(props: ResolvedInputProps<T>): void;
-	getProps(): StrictFields<InternalProps<T>>;
+	getRenderProp<K extends keyof InternalProps<T>>(key: K): StrictFields<InternalProps<T>>[K];
 } & ComponentWatchers<ExternalProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &
 	ControllerListeners<ExtractListeners<T>> &

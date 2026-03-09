@@ -2,8 +2,10 @@
 @use '../../styles/global' as *;
 @use '../popover/style.scss' as *;
 @use '../tooltip/style.scss' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
 @layer kol-component {
+	@include kol-icon-styles();
 	.kol-split-button {
 		display: flex;
 		position: relative;

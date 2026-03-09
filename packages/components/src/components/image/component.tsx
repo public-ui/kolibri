@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
@@ -13,7 +14,7 @@ import type { LoadingType } from '../../internal/props';
 	},
 	shadow: true,
 })
-export class KolImage implements WebComponentInterface<ImageApi> {
+export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
 	private readonly ctrl = new ImageController();
 
 	/**
@@ -82,10 +83,15 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	}
 
 	public render(): JSX.Element {
-		const { alt, loading, sizes, src, srcset } = this.ctrl.getProps();
 		return (
 			<Host>
-				<ImageFC alt={alt} loading={loading} sizes={sizes} src={src} srcset={srcset} />
+				<ImageFC
+					alt={this.ctrl.getRenderProp('alt')}
+					loading={this.ctrl.getRenderProp('loading')}
+					sizes={this.ctrl.getRenderProp('sizes')}
+					src={this.ctrl.getRenderProp('src')}
+					srcset={this.ctrl.getRenderProp('srcset')}
+				/>
 			</Host>
 		);
 	}

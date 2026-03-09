@@ -4,6 +4,15 @@ import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { QuoteApi } from './api';
 
 export class QuoteController extends BaseController<QuoteApi> implements ControllerInterface<QuoteApi> {
+	public constructor() {
+		super({
+			href: '',
+			label: '',
+			quote: '',
+			variant: 'inline',
+		});
+	}
+
 	public componentWillLoad(props: ResolvedInputProps<QuoteApi>): void {
 		const { href, label, quote, variant } = props;
 		this.watchHref(href);
@@ -16,9 +25,9 @@ export class QuoteController extends BaseController<QuoteApi> implements Control
 		hrefProp.apply(
 			value,
 			(v) => {
-				this.setProp('href', v);
+				this.setRenderProp('href', v);
 			},
-			'',
+			this.getDefaultProp('href'),
 		);
 	}
 
@@ -26,9 +35,9 @@ export class QuoteController extends BaseController<QuoteApi> implements Control
 		labelProp.apply(
 			value,
 			(v) => {
-				this.setProp('label', v);
+				this.setRenderProp('label', v);
 			},
-			'',
+			this.getDefaultProp('label'),
 		);
 	}
 
@@ -36,9 +45,9 @@ export class QuoteController extends BaseController<QuoteApi> implements Control
 		quoteProp.apply(
 			value,
 			(v) => {
-				this.setProp('quote', v);
+				this.setRenderProp('quote', v);
 			},
-			'',
+			this.getDefaultProp('quote'),
 		);
 	}
 
@@ -46,9 +55,9 @@ export class QuoteController extends BaseController<QuoteApi> implements Control
 		variantQuoteProp.apply(
 			value,
 			(v) => {
-				this.setProp('variant', v);
+				this.setRenderProp('variant', v);
 			},
-			'inline',
+			this.getDefaultProp('variant'),
 		);
 	}
 }

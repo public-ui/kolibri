@@ -5,6 +5,16 @@ import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ImageApi } from './api';
 
 export class ImageController extends BaseController<ImageApi> implements ControllerInterface<ImageApi> {
+	public constructor() {
+		super({
+			alt: '',
+			loading: 'lazy',
+			sizes: '',
+			src: '',
+			srcset: '',
+		});
+	}
+
 	public componentWillLoad(props: ResolvedInputProps<ImageApi>): void {
 		const { alt, loading, sizes, src, srcset } = props;
 		this.watchAlt(alt);
@@ -18,9 +28,9 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		altProp.apply(
 			value,
 			(v) => {
-				this.setProp('alt', v);
+				this.setRenderProp('alt', v);
 			},
-			'',
+			this.getDefaultProp('alt'),
 		);
 	}
 
@@ -28,9 +38,9 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		loadingProp.apply(
 			value,
 			(v) => {
-				this.setProp('loading', v);
+				this.setRenderProp('loading', v);
 			},
-			'lazy',
+			this.getDefaultProp('loading'),
 		);
 	}
 
@@ -38,9 +48,9 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		sizesProp.apply(
 			value,
 			(v) => {
-				this.setProp('sizes', v);
+				this.setRenderProp('sizes', v);
 			},
-			'',
+			this.getDefaultProp('sizes'),
 		);
 	}
 
@@ -48,9 +58,9 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		srcProp.apply(
 			value,
 			(v) => {
-				this.setProp('src', v);
+				this.setRenderProp('src', v);
 			},
-			'',
+			this.getDefaultProp('src'),
 		);
 	}
 
@@ -58,9 +68,9 @@ export class ImageController extends BaseController<ImageApi> implements Control
 		srcsetProp.apply(
 			value,
 			(v) => {
-				this.setProp('srcset', v);
+				this.setRenderProp('srcset', v);
 			},
-			'',
+			this.getDefaultProp('srcset'),
 		);
 	}
 }

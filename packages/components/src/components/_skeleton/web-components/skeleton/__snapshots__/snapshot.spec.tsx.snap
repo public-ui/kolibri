@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-skeleton should render with _name="  " 1`] = `
+exports[`kol-skeleton should render with _name="" 1`] = `
 <kol-skeleton>
   <template shadowrootmode="open">
     <div class="kol-skeleton">

@@ -1,5 +1,5 @@
 @use '../mixins/to-rem' as *;
-@use '../mixins/alert-wc' as *;
+@use '../mixins/alert' as *;
 
 @mixin input-error {
 	padding-left: to-rem(16);
@@ -10,6 +10,6 @@
 	}
 
 	.kol-alert--type-error {
-		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+		@include kol-input-error-with-kol-alert-error(--color-danger);
 	}
 }

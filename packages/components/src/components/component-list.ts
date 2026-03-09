@@ -16,7 +16,7 @@ import { KolDialog } from './dialog/shadow';
 import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
 import { KolHeading } from './heading/shadow';
-import { KolIcon } from './icon/shadow';
+import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';
 import { KolInputCheckbox } from './input-checkbox/shadow';
 import { KolInputColor } from './input-color/shadow';

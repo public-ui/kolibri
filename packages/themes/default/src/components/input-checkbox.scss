@@ -1,11 +1,13 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
-@use '../mixins/alert-wc' as *;
+@use '../mixins/alert' as *;
 @use '../mixins/typography' as *;
 @use '../@shared/input-core' as *;
 @use '../mixins/field-control' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	:host {
 		--theme-visibility-delay: 0.5s;
 	}

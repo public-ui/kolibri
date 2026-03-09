@@ -1,0 +1,139 @@
+@use './to-rem' as *;
+@use './button' as *;
+
+@mixin kol-alert {
+	display: block;
+	width: 100%;
+}
+
+@mixin kol-input-error-with-kol-alert-error($color: null) {
+	color: var($color);
+
+	font-weight: 700;
+}
+
+@mixin kol-alert-theme {
+	.kol-alert {
+		@include kol-button('kol-button');
+
+		background-color: var(--color-light);
+
+		display: flex;
+		width: 100%;
+		overflow: unset;
+	}
+
+	.kol-alert--variant-msg {
+		align-items: start;
+	}
+
+	.kol-alert--variant-card {
+		filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
+		border-radius: var(--border-radius);
+		flex-direction: column;
+		border: var(--border-width) solid var(--alert-accent-color);
+	}
+
+	.kol-alert--type-default {
+		--alert-accent-color: var(--color-subtle);
+	}
+
+	.kol-alert--type-error {
+		--alert-accent-color: var(--color-danger);
+	}
+
+	.kol-alert--type-info {
+		--alert-accent-color: var(--color-primary);
+	}
+
+	.kol-alert--type-success {
+		--alert-accent-color: var(--color-success);
+	}
+
+	.kol-alert--type-warning {
+		--alert-accent-color: var(--color-warning);
+	}
+
+	.kol-alert__container {
+		display: flex;
+		gap: 0.5em;
+		place-items: center;
+
+		.kol-alert--variant-card & {
+			background-color: var(--alert-accent-color);
+			padding: to-rem(8) to-rem(16);
+		}
+	}
+
+	.kol-alert__container-content {
+		display: grid;
+		gap: to-rem(4);
+
+		.kol-alert--variant-card & {
+			width: 100%;
+			min-height: to-rem(20);
+		}
+	}
+
+	.kol-alert__closer {
+		place-self: center;
+
+		.kol-button {
+			border-radius: 50%; // visible on focus
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
+			cursor: pointer;
+
+			.kol-alert--variant-msg & {
+				--text-color: var(--alert-accent-color);
+			}
+
+			.kol-alert--variant-card & {
+				--text-color: var(--color-light);
+			}
+		}
+
+		.kol-icon {
+			font-size: to-rem(19.2);
+		}
+	}
+
+	.kol-alert__heading {
+		.kol-alert--variant-msg & {
+			color: var(--alert-accent-color);
+			padding-top: calc(--var-spacing / 2);
+		}
+
+		.kol-alert--variant-card & {
+			color: var(--color-light);
+			display: flex;
+			width: 100%;
+
+			font-size: to-rem(20);
+			line-height: 1;
+		}
+	}
+
+	.kol-alert__icon {
+		color: var(--color-light);
+		padding: 0;
+
+		.kol-alert--variant-msg & {
+			color: var(--alert-accent-color);
+			place-items: baseline;
+		}
+
+		.kol-alert--variant-card & {
+			margin-top: to-rem(-4);
+			justify-self: right;
+
+			font-size: to-rem(20);
+		}
+	}
+
+	.kol-alert__content {
+		.kol-alert--variant-card & {
+			padding: to-rem(16);
+		}
+	}
+}

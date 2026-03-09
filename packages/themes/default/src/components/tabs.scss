@@ -1,6 +1,8 @@
 @use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	.kol-tabs {
 		display: grid;
 		grid-template-columns: var(--grid-template-columns);

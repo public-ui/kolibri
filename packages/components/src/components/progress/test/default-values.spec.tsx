@@ -19,48 +19,42 @@ describe('kol-progress default values', () => {
 		expect(instance._value).toBe(50);
 
 		// Verify controlled values match the set props
-		let props = instance['ctrl'].getProps();
-		expect(props.variant).toBe('cycle');
-		expect(props.label).toBe('Test');
-		expect(props.max).toBe(100);
-		expect(props.unit).toBe('%'); // default unit
+		expect(instance['ctrl'].getRenderProp('variant')).toBe('cycle');
+		expect(instance['ctrl'].getRenderProp('label')).toBe('Test');
+		expect(instance['ctrl'].getRenderProp('max')).toBe(100);
+		expect(instance['ctrl'].getRenderProp('unit')).toBe('%'); // default unit
 
 		// Set variant to undefined - should apply default 'bar'
-		instance._variant = undefined;
+		page.root!.removeAttribute('_variant');
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.variant).toBe('bar');
+		expect(instance['ctrl'].getRenderProp('variant')).toBe('bar');
 
 		// Set it back to cycle
-		instance._variant = 'cycle';
+		page.root!.setAttribute('_variant', 'cycle');
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.variant).toBe('cycle');
+		expect(instance['ctrl'].getRenderProp('variant')).toBe('cycle');
 
 		// Set label to undefined - should apply default ''
-		instance._label = undefined;
+		page.root!.removeAttribute('_label');
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.label).toBe('');
+		expect(instance['ctrl'].getRenderProp('label')).toBe('');
 
 		// Set unit to undefined - should apply default '%'
-		instance._unit = undefined;
+		page.root!.removeAttribute('_unit');
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.unit).toBe('%');
+		expect(instance['ctrl'].getRenderProp('unit')).toBe('%');
 
 		// Set max and verify value constraints are reapplied
-		instance._max = 42;
-		instance._value = 100; // more than new max
+		page.root!.setAttribute('_max', '42');
+		page.root!.setAttribute('_value', '100'); // more than new max
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.max).toBe(42);
-		expect(props.value).toBe(42); // clamped to new max
+		expect(instance['ctrl'].getRenderProp('max')).toBe(42);
+		expect(instance['ctrl'].getRenderProp('value')).toBe(42); // clamped to new max
 	});
 
 	it('should restore cycle variant when set back from another variant', async () => {
@@ -70,23 +64,19 @@ describe('kol-progress default values', () => {
 		});
 
 		const instance = page.rootInstance as KolProgress;
-		let props = instance['ctrl'].getProps();
-
 		// Verify initial cycle variant
-		expect(props.variant).toBe('cycle');
+		expect(instance['ctrl'].getRenderProp('variant')).toBe('cycle');
 
 		// Change to bar variant
-		instance._variant = 'bar';
+		page.root!.setAttribute('_variant', 'bar');
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.variant).toBe('bar');
+		expect(instance['ctrl'].getRenderProp('variant')).toBe('bar');
 
 		// Set back by removing attribute (undefined)
-		instance._variant = undefined;
+		page.root!.removeAttribute('_variant');
 		await page.waitForChanges();
 
-		props = instance['ctrl'].getProps();
-		expect(props.variant).toBe('bar'); // defaults to 'bar' not 'cycle'
+		expect(instance['ctrl'].getRenderProp('variant')).toBe('bar'); // defaults to 'bar' not 'cycle'
 	});
 });
