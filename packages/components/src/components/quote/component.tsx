@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
@@ -13,8 +14,8 @@ import type { QuoteVariantType } from '../../internal/props/variant-quote';
 	},
 	shadow: true,
 })
-export class KolQuote implements WebComponentInterface<QuoteApi> {
-	private readonly ctrl = new QuoteController(this);
+export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponentInterface<QuoteApi> {
+	private readonly ctrl = new QuoteController();
 
 	/**
 	 * Sets the target URI of the link or citation source.
@@ -70,10 +71,14 @@ export class KolQuote implements WebComponentInterface<QuoteApi> {
 	}
 
 	public render(): JSX.Element {
-		const { href, label, quote, variant } = this.ctrl.getProps();
 		return (
 			<Host>
-				<QuoteFC href={href} label={label} quote={quote} variant={variant} />
+				<QuoteFC
+					href={this.ctrl.getRenderProp('href')}
+					label={this.ctrl.getRenderProp('label')}
+					quote={this.ctrl.getRenderProp('quote')}
+					variant={this.ctrl.getRenderProp('variant')}
+				/>
 			</Host>
 		);
 	}

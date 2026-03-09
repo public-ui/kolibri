@@ -1,7 +1,7 @@
 import type { ColorPair } from '../../../schema';
 import { colorProp, labelProp, srcProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, SetStateFn } from '../generic-types';
 import type { AvatarApi } from './api';
 
 /**
@@ -38,15 +38,18 @@ const normalizeInitials = (value: string): string => {
 };
 
 export class AvatarController extends BaseController<AvatarApi> implements ControllerInterface<AvatarApi> {
-	public constructor(states: AvatarApi['States']) {
-		super(states, {
-			color: {
-				backgroundColor: '#d3d3d3',
-				foregroundColor: '#3f3f3f',
+	public constructor(setState: SetStateFn<AvatarApi>) {
+		super(
+			{
+				color: {
+					backgroundColor: '#d3d3d3',
+					foregroundColor: '#3f3f3f',
+				},
+				label: '',
+				src: '',
 			},
-			label: '',
-			src: '',
-		});
+			setState,
+		);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<AvatarApi>): void {
@@ -60,7 +63,7 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 		colorProp.apply(
 			value,
 			(v) => {
-				this.setProp('color', v);
+				this.setRenderProp('color', v);
 			},
 			this.getDefaultProp('color'),
 		);
@@ -70,7 +73,7 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 		labelProp.apply(
 			value,
 			(v) => {
-				this.setProp('label', v);
+				this.setRenderProp('label', v);
 				this.setState('initials', normalizeInitials(v));
 			},
 			this.getDefaultProp('label'),
@@ -81,7 +84,7 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 		srcProp.apply(
 			value,
 			(v) => {
-				this.setProp('src', v);
+				this.setRenderProp('src', v);
 			},
 			this.getDefaultProp('src'),
 		);

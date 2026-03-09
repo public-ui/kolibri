@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
 import type { ClickButtonApi } from '../../../../internal/functional-components/click-button/api';
 import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
@@ -9,8 +10,8 @@ import type { WebComponentInterface } from '../../../../internal/functional-comp
 	tag: 'kol-click-button',
 	shadow: true,
 })
-export class KolClickButton implements WebComponentInterface<ClickButtonApi> {
-	private readonly ctrl = new ClickButtonController(this);
+export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements WebComponentInterface<ClickButtonApi> {
+	private readonly ctrl = new ClickButtonController();
 
 	/**
 	 * Sets the label of the click button component.
@@ -38,10 +39,9 @@ export class KolClickButton implements WebComponentInterface<ClickButtonApi> {
 	}
 
 	public render(): JSX.Element {
-		const { label } = this.ctrl.getProps();
 		return (
 			<Host>
-				<ClickButtonFC label={label} refButton={this.ctrl.setButtonRef} handleClick={this.ctrl.handleClick} />
+				<ClickButtonFC label={this.ctrl.getRenderProp('label')} refButton={this.ctrl.setButtonRef} handleClick={this.ctrl.handleClick} />
 			</Host>
 		);
 	}
