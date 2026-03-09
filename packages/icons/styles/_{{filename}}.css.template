@@ -10,8 +10,7 @@
 
 [class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
   font-family: '{{fontname}}';
-  font-size: inherit;
-  font-style:normal;
+  font-style: normal;
   font-weight: 400;
   line-height: 1em;
   -webkit-font-smoothing: antialiased;

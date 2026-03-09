@@ -1,8 +1,8 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import { IconFC } from '../../../internal/functional-components/icon/component';
 import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
 import clsx from '../../../utils/clsx';
-import KolIconFc, { type IconProps } from '../../Icon';
 import KolInputFc, { type InputProps } from '../Input';
 
 export type CheckboxProps = JSXBase.HTMLAttributes<HTMLLabelElement> & {
@@ -11,15 +11,8 @@ export type CheckboxProps = JSXBase.HTMLAttributes<HTMLLabelElement> & {
 	inputProps: InputProps;
 };
 
-const IconWrapperFc: FC<IconProps> = ({ class: classNames, ...other }) => {
-	return <KolIconFc class={clsx('kol-checkbox__icon', classNames)} {...other} />;
-};
-
-const InputWrapperFc: FC<InputProps> = ({ class: classNames, ...other }) => {
-	return <KolInputFc class={clsx('kol-checkbox__input', classNames)} {...other} type="checkbox" />;
-};
-
 const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default', icon, inputProps, ...other }) => {
+	const { class: inputClass, ...restInputProps } = inputProps;
 	const cssVariants = {
 		[`kol-checkbox--variant-${variant}`]: true,
 		[`kol-checkbox--checked`]: inputProps?.checked,
@@ -32,8 +25,8 @@ const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default',
 
 	return (
 		<label class={clsx('kol-checkbox', cssVariants, classNames)} {...other}>
-			<IconWrapperFc label="" icons={icon} />
-			<InputWrapperFc {...inputProps} />
+			<IconFC label="" icons={icon} class={clsx('kol-checkbox__icon')} />
+			<KolInputFc class={clsx('kol-checkbox__input', inputClass as string)} {...restInputProps} type="checkbox" />
 		</label>
 	);
 };

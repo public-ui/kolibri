@@ -1,7 +1,9 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	:host {
 		background-color: var(--color-mute);
 	}

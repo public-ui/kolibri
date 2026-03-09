@@ -1,13 +1,14 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import type { ButtonVariantPropType } from '../../schema';
 import KolButtonFc, { type ButtonProps } from '../Button';
-import KolIconFc, { type IconProps } from '../Icon';
 
-type IconType = Partial<Omit<IconProps, 'icons'>> & {
+type IconType = {
 	componentName: 'icon';
 	icon?: string;
 	class?: string;
-
+	label?: string;
+	style?: { [key: string]: string };
 	onClick?: (event: MouseEvent) => void;
 };
 
@@ -26,7 +27,7 @@ export type IconButtonProps = IconType | ButtonType;
 /**
  * `KolIconButtonFc` is a functional component that renders either a Button or an Icon based on the provided props.
  *
- * Depending on the value of the `componentName` prop, either a Button (`KolButtonFc`) or an Icon (`KolIconFc`) is rendered.
+ * Depending on the value of the `componentName` prop, either a Button (`KolButtonFc`) or an Icon (`IconFC`) is rendered.
  * Both components support optional `icon` props for displaying an icon and an optional `onClick` handler for user interactions.
  *
  * This component combines the flexibility of rendering either a button with an optional label or a simple icon, while ensuring that unnecessary props for the selected element are not passed.
@@ -50,7 +51,7 @@ export type IconButtonProps = IconType | ButtonType;
  */
 const KolIconButtonFc: FC<IconButtonProps> = (props) => {
 	const { componentName = 'button', label, icon, onClick, ...other } = props;
-	const Component = componentName === 'button' ? KolButtonFc : KolIconFc;
+	const Component = componentName === 'button' ? KolButtonFc : IconFC;
 
 	return <Component label={label || ''} hideLabel icons={`${icon}`} onClick={onClick} {...other} />;
 };

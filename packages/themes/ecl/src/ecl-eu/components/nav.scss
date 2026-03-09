@@ -45,11 +45,11 @@
 				margin: auto;
 			}
 
-			&--expanded .kol-icon::part(icon)::before {
+			&--expanded .kol-icon::before {
 				content: '\eab4';
 			}
 
-			&:not(&--expanded) .kol-icon::part(icon)::before {
+			&:not(&--expanded) .kol-icon::before {
 				content: '\eab6';
 			}
 		}

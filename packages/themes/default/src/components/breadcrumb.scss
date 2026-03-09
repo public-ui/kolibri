@@ -1,7 +1,9 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/link' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	@include kol-link('kol-link');
 
 	.kol-breadcrumb {
@@ -9,16 +11,9 @@
 			color: var(--color-subtle);
 		}
 
-		&__link {
-			&::part(icon) {
-				font-size: to-rem(20);
-			}
-		}
-
 		&__separator {
 			color: var(--color-subtle);
 
-			font-size: to-rem(12);
 			font-weight: 900;
 		}
 	}

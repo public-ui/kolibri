@@ -8,6 +8,7 @@
 @use '../../styles/kol-input-mixin' as *;
 @use '../@shared/mixins' as *;
 @use '../@shared/kol-button-mixin' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
 @layer kol-component {
 	@include kol-alert;
@@ -17,6 +18,7 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+	@include kol-icon-styles();
 
 	$option-height: to-rem(40);
 	$visible-options: var(--visible-options, 5);

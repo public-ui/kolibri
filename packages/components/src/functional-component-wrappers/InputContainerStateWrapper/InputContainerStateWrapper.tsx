@@ -19,6 +19,7 @@ import {
 import { isObject, isString } from 'lodash-es';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
+import { IconFC } from '../../internal/functional-components/icon/component';
 
 type InputState =
 	| TextareaStates
@@ -90,7 +91,13 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = (
 	}
 
 	if (leftIconProps) {
-		startAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(leftIconProps) ? leftIconProps : {})} />);
+		if (isObject(leftIconProps)) {
+			startAdornment.push(
+				<IconFC class="kol-input-container__icon" icons={leftIconProps.icon} label={leftIconProps.label ?? ''} style={leftIconProps.style} />,
+			);
+		} else {
+			startAdornment.push(<IconFC class="kol-input-container__icon" icons={leftIconProps} label="" />);
+		}
 	}
 
 	if (isObject(smartButton)) {
@@ -100,7 +107,13 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = (
 	}
 
 	if (rightIconProps) {
-		endAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(rightIconProps) ? rightIconProps : {})} />);
+		if (isObject(rightIconProps)) {
+			endAdornment.push(
+				<IconFC class="kol-input-container__icon" icons={rightIconProps.icon} label={rightIconProps.label ?? ''} style={rightIconProps.style} />,
+			);
+		} else {
+			endAdornment.push(<IconFC class="kol-input-container__icon" icons={rightIconProps} label="" />);
+		}
 	}
 
 	if (defaultEndAdornment) {

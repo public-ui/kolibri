@@ -1,7 +1,10 @@
 @use 'mixins' as *;
 @use '../tooltip/style' as *;
+@use 'kol-icon-mixin' as *;
 
 @mixin kol-button-styles($block-classname) {
+	@include kol-icon-styles();
+
 	:host {
 		//Needed for custom width
 		display: inline-block;

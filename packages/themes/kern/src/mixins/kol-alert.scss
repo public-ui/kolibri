@@ -12,7 +12,7 @@
 			#{$root}--type-info & {
 				color: var(--kern-color-feedback-info);
 
-				&::part(icon)::before {
+				&::before {
 					content: '\e910';
 				}
 			}
@@ -20,7 +20,7 @@
 			#{$root}--type-error & {
 				color: var(--kern-color-feedback-danger);
 
-				&::part(icon)::before {
+				&::before {
 					content: '\e919';
 				}
 			}
@@ -28,7 +28,7 @@
 			#{$root}--type-success & {
 				color: var(--kern-color-feedback-success);
 
-				&::part(icon)::before {
+				&::before {
 					content: '\e906';
 				}
 			}
@@ -36,7 +36,7 @@
 			#{$root}--type-warning & {
 				color: var(--kern-color-feedback-warning);
 
-				&::part(icon)::before {
+				&::before {
 					content: '\e903';
 				}
 			}
