@@ -18,7 +18,7 @@
 
 	.kol-table {
 		$root: &;
-		$selection-width: to-rem(62);
+		$selection-width: to-rem(68);
 		--kol-table-selection-col-width: #{$selection-width};
 
 		padding: to-rem(8);
@@ -64,7 +64,7 @@
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 
-			&::before {
+			&:not(&--header)::before {
 				background-color: white;
 				display: block;
 				position: absolute;
@@ -109,7 +109,7 @@
 			}
 
 			&--selection {
-				width: to-rem(68); //padding + a11y-min-size
+				width: #{$selection-width}; //padding + a11y-min-size
 			}
 
 			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
