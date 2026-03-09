@@ -12,7 +12,7 @@ export const LinkVariant: FC = () => {
 		if (!theme) {
 			return;
 		}
-		fetch('/assets/inject-variants_' + theme + '.json')
+		fetch('/assets/variants/inject-variants_' + theme + '.json')
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.hasOwnProperty('linkVariants')) {
@@ -32,7 +32,7 @@ export const LinkVariant: FC = () => {
 
 			<div className="grid gap-4">
 				<KolLink _href="#/back-page" _label="Normal link without a variant" />
-				{data.length === 0 ? (
+				{!Array.isArray(data) || data.length === 0 ? (
 					<p>This theme has no variants for this component.</p>
 				) : (
 					data.map((element) => {
