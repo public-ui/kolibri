@@ -34,11 +34,7 @@ export const LinkVariant: FC = () => {
 					<p>This theme has no variants for this component.</p>
 				) : (
 					data.map((element) => {
-						return (
-							<div className="flex gap-4" key={element}>
-								<KolLink _href="#/back-page" _label={`Theme exclusive variant: ${element}`} _variant={element} />
-							</div>
-						);
+						return <KolLink _href="#/back-page" _label={`Theme exclusive variant: ${element}`} _variant={element} key={element} />;
 					})
 				)}
 			</div>
