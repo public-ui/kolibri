@@ -2,6 +2,13 @@ import { KolIconTag } from '../../../core/component-names';
 import type { IconProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolIcon } from '../shadow';
+import { KolIcon } from '../component';
 
-executeSnapshotTests<IconProps>(KolIconTag, [KolIcon], [{ _label: 'Aria-Label', _icons: 'codicon codicon-home' }]);
+executeSnapshotTests<IconProps>(
+	KolIconTag,
+	[KolIcon],
+	[
+		{ _icons: 'kolicon-houses', _label: 'Home icon' },
+		{ _icons: 'fa-solid fa-user', _label: '' },
+	],
+);

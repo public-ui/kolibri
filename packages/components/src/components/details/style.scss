@@ -2,8 +2,10 @@
 @use '../../styles/global' as *;
 @use '../host-display-block' as *;
 @use '../../functional-components/Collapsible/collapsible' as *;
+@use '../@shared/kol-icon-mixin' as *;
 
 @layer kol-component {
+	@include kol-icon-styles();
 	.kol-details {
 		&__heading-button {
 			display: flex;
@@ -21,7 +23,7 @@
 		}
 
 		.collapsible--open &__heading-button {
-			.kol-icon::part(icon) {
+			.kol-icon {
 				transform: rotate(90deg);
 			}
 		}

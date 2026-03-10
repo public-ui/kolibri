@@ -2,9 +2,10 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolIconTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
 	ActionColumnHeaderCell,
 	AriaSort,
@@ -678,7 +679,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								'kol-table__selection-label--disabled': disabled,
 							})}
 						>
-							<KolIconTag class="kol-table__selection-icon" _icons={`kolicon ${selected ? 'kolicon-check' : ''}`} _label="" />
+							<IconFC class="kol-table__selection-icon" icons={`kolicon ${selected ? 'kolicon-check' : ''}`} label="" />
 							<input
 								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 								ref={(el) => el && this.checkboxRefs.push(el)}
@@ -987,7 +988,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					})}
 				>
 					<label class="kol-table__selection-label">
-						<KolIconTag class="kol-table__selection-icon" _icons={`kolicon ${indeterminate ? 'kolicon-minus' : isChecked ? 'kolicon-check' : ''}`} _label="" />
+						<IconFC class="kol-table__selection-icon" icons={`kolicon ${indeterminate ? 'kolicon-minus' : isChecked ? 'kolicon-check' : ''}`} label="" />
 						<input
 							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 							data-testid="selection-checkbox-all"
@@ -1123,7 +1124,6 @@ export class KolTableStateless implements TableStatelessAPI {
 					<span class="kol-table__sort">
 						<KolButtonWcTag
 							class="kol-table__sort-button"
-							exportparts="icon"
 							_icons={{ right: sortButtonIcon }}
 							_label={cell.label}
 							_ariaDescription={sortDescription}

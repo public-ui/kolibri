@@ -1,7 +1,9 @@
 @use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
+@use '../@shared/kol-link-mixin' as *;
 
 @layer kol-component {
+	@include kol-link-styles('kol-link');
 	.kol-skip-nav {
 		&__list {
 			display: grid;

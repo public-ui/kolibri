@@ -3,9 +3,8 @@ import type { JSXBase } from '@stencil/core/internal';
 import { isObject, isString } from 'lodash-es';
 import clsx from '../../utils/clsx';
 
+import { IconFC } from '../../internal/functional-components/icon/component';
 import { type BadgeTextPropType, type HideLabelPropType, type IconOrIconClass, type KoliBriIconsProp, type LabelWithExpertSlotPropType } from '../../schema';
-
-import IconHelper from './IconHelper';
 import SpanCoreHelper from './SpanCoreHelper';
 
 type IconType = IconOrIconClass | undefined | null;
@@ -36,17 +35,26 @@ const KolSpanFc: FC<SpanProps> = (props, children) => {
 		};
 	}
 
+	const renderIcon = (iconProps: IconType, positionClass: string) => {
+		if (!isObject(iconProps)) {
+			return null;
+		}
+		const { icon, label: iconLabel, style } = iconProps;
+
+		return <IconFC class={clsx('icon', positionClass)} label={iconLabel || ''} icons={icon} style={style} />;
+	};
+
 	return (
 		<span class={clsx('kol-span', { 'kol-span--hide-label': hideLabel }, classNames)} {...other}>
-			{isObject(topIconProps) && <IconHelper class="top" {...topIconProps} />}
+			{renderIcon(topIconProps, 'top')}
 			<span class="kol-span__container">
-				{isObject(leftIconProps) && <IconHelper class="left" {...leftIconProps} />}
+				{renderIcon(leftIconProps, 'left')}
 				<SpanCoreHelper label={label} hideLabel={hideLabel} allowMarkdown={allowMarkdown} badgeText={badgeText}>
 					{children}
 				</SpanCoreHelper>
-				{isObject(rightIconProps) && <IconHelper class="right" {...rightIconProps} />}
+				{renderIcon(rightIconProps, 'right')}
 			</span>
-			{isObject(bottomIconProps) && <IconHelper class="bottom" {...bottomIconProps} />}
+			{renderIcon(bottomIconProps, 'bottom')}
 		</span>
 	);
 };

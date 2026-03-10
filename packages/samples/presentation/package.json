@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.1.1",
+	"version": "4.1.2-rc.0",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -34,11 +34,11 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "9.39.4",
-		"@types/node": "25.3.5",
+		"@types/node": "25.4.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
-		"@typescript-eslint/eslint-plugin": "8.56.1",
-		"@typescript-eslint/parser": "8.56.1",
+		"@typescript-eslint/eslint-plugin": "8.57.0",
+		"@typescript-eslint/parser": "8.57.0",
 		"@unocss/preset-mini": "66.6.0",
 		"@unocss/vite": "66.6.0",
 		"@vitejs/plugin-react-swc": "4.2.3",
@@ -48,7 +48,7 @@
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.0.1",
 		"globals": "17.4.0",
-		"knip": "5.85.0",
+		"knip": "5.86.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",

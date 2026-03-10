@@ -1,6 +1,6 @@
 @use '../../mixins/to-rem' as *;
 
-@mixin kol-alert-wc($color: null) {
+@mixin kol-alert($color: null) {
 	color: var($color);
 	margin-left: calc(-1 * var(--spacing-2xs));
 

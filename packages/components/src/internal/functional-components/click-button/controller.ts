@@ -6,6 +6,12 @@ import type { ClickButtonApi } from './api';
 export class ClickButtonController extends BaseController<ClickButtonApi> implements ControllerInterface<ClickButtonApi> {
 	private buttonRef?: HTMLButtonElement;
 
+	public constructor() {
+		super({
+			label: '',
+		});
+	}
+
 	public componentWillLoad(props: ResolvedInputProps<ClickButtonApi>): void {
 		const { label } = props;
 		this.watchLabel(label);
@@ -15,9 +21,9 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 		labelProp.apply(
 			value,
 			(v) => {
-				this.setProp('label', v);
+				this.setRenderProp('label', v);
 			},
-			'',
+			this.getDefaultProp('label'),
 		);
 	}
 

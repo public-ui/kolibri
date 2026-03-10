@@ -64,7 +64,7 @@
 			.kol-icon {
 				margin-right: to-rem(12);
 
-				&::part(icon)::before {
+				&::before {
 					color: #0e47cb;
 
 					font-family: 'Font Awesome 6 Free';
@@ -93,12 +93,12 @@
 				border-start-start-radius: to-rem(8);
 			}
 
-			.kol-icon::part(icon)::before {
+			.kol-icon::before {
 				content: '\f077';
 			}
 		}
 
-		:not(.collapsible--open) &__heading-button .kol-button .kol-icon::part(icon)::before {
+		:not(.collapsible--open) &__heading-button .kol-button .kol-icon::before {
 			content: '\f078';
 		}
 	}

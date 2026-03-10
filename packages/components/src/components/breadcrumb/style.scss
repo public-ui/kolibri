@@ -11,7 +11,7 @@
 			display: flex;
 			margin: 0;
 			padding: 0;
-			gap: 0.5em;
+			gap: 0.5em; /* @deprecated: do not use gap, margin, padding and so on in basis styling */
 			flex-wrap: wrap;
 			place-items: center;
 			list-style: none;
