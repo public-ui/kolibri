@@ -15,6 +15,6 @@ export type PropCustomClass = {
 /* validator */
 export const validateCustomClass = (component: Generic.Element.Component, value?: CustomClassPropType): void => {
 	watchString(component, '_customClass', value, {
-		defaultValue: undefined,
+		defaultValue: '',
 	});
 };
