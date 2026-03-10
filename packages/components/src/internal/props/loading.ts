@@ -11,4 +11,5 @@ const LOADING_SET: ReadonlySet<string> = new Set(LOADING_OPTIONS);
 export const loadingProp = createPropDefinition<LoadingProp>(
 	(value: unknown) => normalizeString(value) as LoadingType,
 	(v) => LOADING_SET.has(v),
+	'lazy',
 );

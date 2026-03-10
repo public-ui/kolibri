@@ -1,7 +1,7 @@
 import type { ColorPair } from '../../../schema';
 import { colorProp, labelProp, srcProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { AvatarApi } from './api';
 
 /**
@@ -38,20 +38,6 @@ const normalizeInitials = (value: string): string => {
 };
 
 export class AvatarController extends BaseController<AvatarApi> implements ControllerInterface<AvatarApi> {
-	public constructor(setState: SetStateFn<AvatarApi>) {
-		super(
-			{
-				color: {
-					backgroundColor: '#d3d3d3',
-					foregroundColor: '#3f3f3f',
-				},
-				label: '',
-				src: '',
-			},
-			setState,
-		);
-	}
-
 	public componentWillLoad(props: ResolvedInputProps<AvatarApi>): void {
 		const { color, label, src } = props;
 		this.watchColor(color);
@@ -60,33 +46,21 @@ export class AvatarController extends BaseController<AvatarApi> implements Contr
 	}
 
 	public watchColor(value?: string | ColorPair): void {
-		colorProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('color', v);
-			},
-			this.getDefaultProp('color'),
-		);
+		colorProp.apply(value, (v) => {
+			this.setRenderProp('color', v);
+		});
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-				this.setState('initials', normalizeInitials(v));
-			},
-			this.getDefaultProp('label'),
-		);
+		labelProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
+			this.setState('initials', normalizeInitials(v));
+		});
 	}
 
 	public watchSrc(value?: string): void {
-		srcProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('src', v);
-			},
-			this.getDefaultProp('src'),
-		);
+		srcProp.apply(value, (v) => {
+			this.setRenderProp('src', v);
+		});
 	}
 }

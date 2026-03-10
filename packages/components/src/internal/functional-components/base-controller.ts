@@ -5,17 +5,10 @@ export abstract class BaseController<Api extends ComponentApi> {
 	private readonly renderProps: StrictFields<ResolvedProps<Api>>;
 
 	public constructor(
-		protected readonly defaultProps: StrictFields<ResolvedProps<Api>>,
 		protected readonly setState: SetStateFn<Api> = () => {},
 		protected readonly getState?: GetStateFn<Api>,
 	) {
-		this.renderProps = {
-			...defaultProps,
-		};
-	}
-
-	protected getDefaultProp<K extends keyof ResolvedProps<Api>>(key: K): NonNullable<ResolvedProps<Api>[K]> {
-		return this.defaultProps[key] as NonNullable<ResolvedProps<Api>[K]>;
+		this.renderProps = {} as StrictFields<ResolvedProps<Api>>;
 	}
 
 	protected setRawProp<K extends keyof ResolvedInputProps<Api>>(key: K, value: ResolvedInputProps<Api>[K] | undefined): void {

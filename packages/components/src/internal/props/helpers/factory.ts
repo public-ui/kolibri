@@ -29,22 +29,25 @@ export type SimpleProp<K extends string, T> = Prop<K, T, T>;
 export type InternalPropValue<P extends Prop<string, unknown, unknown>> = NonNullable<P['__propInternal__']>;
 
 export type PropDefinition<TInternal> = {
+	defaultValue?: TInternal;
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void, defaultValue: TInternal) => void;
+	apply: (value: unknown, callback: (normalized: TInternal) => void) => void;
 };
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
+	defaultValue?: InternalPropValue<P>,
 ): PropDefinition<InternalPropValue<P>> {
 	return {
+		defaultValue,
 		normalize,
 		validate,
-		apply(value, callback, defaultValue) {
+		apply(value, callback) {
 			if (value === undefined || value === null) {
-				if (defaultValue !== undefined) {
-					callback(defaultValue);
+				if (this.defaultValue !== undefined) {
+					callback(this.defaultValue);
 				}
 				return;
 			}
@@ -61,22 +64,25 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>>(
 }
 
 export type DependentPropDefinition<TInternal, TDeps> = {
+	defaultValue?: TInternal;
 	normalize: (value: unknown, deps: TDeps) => TInternal | never;
 	validate: (value: TInternal, deps: TDeps) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps, defaultValue: TInternal) => void;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
 };
 
 export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps>(
 	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
+	defaultValue?: InternalPropValue<P>,
 ): DependentPropDefinition<InternalPropValue<P>, TDeps> {
 	return {
+		defaultValue,
 		normalize,
 		validate,
-		apply(value, callback, deps: TDeps, defaultValue) {
+		apply(value, callback, deps: TDeps) {
 			if (value === undefined || value === null) {
-				if (defaultValue !== undefined) {
-					callback(defaultValue);
+				if (this.defaultValue !== undefined) {
+					callback(this.defaultValue);
 				}
 				return;
 			}

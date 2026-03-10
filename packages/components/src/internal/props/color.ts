@@ -40,4 +40,7 @@ function validator(value: ColorPair) {
 }
 
 export type ColorProp = Prop<'color', ColorPair | string, ColorPair>;
-export const colorProp = createPropDefinition<ColorProp>(normalizer, validator);
+export const colorProp = createPropDefinition<ColorProp>(normalizer, validator, {
+	backgroundColor: '#d3d3d3',
+	foregroundColor: '#3f3f3f',
+});
