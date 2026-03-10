@@ -15,4 +15,5 @@ export const variantProgressProp = createPropDefinition<VariantProgressProp>(
 		throw new Error(`Invalid progress variant: ${str}`);
 	},
 	() => true,
+	'bar',
 );

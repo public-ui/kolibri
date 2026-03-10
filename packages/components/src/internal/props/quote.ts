@@ -3,4 +3,4 @@ import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 export type QuoteProp = SimpleProp<'quote', string>;
-export const quoteProp = createPropDefinition<QuoteProp>(normalizeString, () => true);
+export const quoteProp = createPropDefinition<QuoteProp>(normalizeString, () => true, '');

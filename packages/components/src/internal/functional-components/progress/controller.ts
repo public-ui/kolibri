@@ -1,23 +1,10 @@
 import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
 import type { ProgressApi } from './api';
 
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
-
-	public constructor(setState: SetStateFn<ProgressApi>) {
-		super(
-			{
-				label: '',
-				max: 100,
-				unit: '%',
-				value: 0,
-				variant: 'bar',
-			},
-			setState,
-		);
-	}
 
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
 		const { label, max, unit, value, variant } = props;
@@ -32,34 +19,22 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-			},
-			this.getDefaultProp('label'),
-		);
+		labelProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
+		});
 	}
 
 	public watchMax(value?: number): void {
-		maxProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('max', v);
-				this.watchValue(this.getRawProp('value'));
-			},
-			this.getDefaultProp('max'),
-		);
+		maxProp.apply(value, (v) => {
+			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
+		});
 	}
 
 	public watchUnit(value?: string): void {
-		unitProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('unit', v);
-			},
-			this.getDefaultProp('unit'),
-		);
+		unitProp.apply(value, (v) => {
+			this.setRenderProp('unit', v);
+		});
 	}
 
 	public watchValue(value?: number): void {
@@ -70,18 +45,13 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 				this.setRenderProp('value', v);
 			},
 			{ min: 0, max: this.getRenderProp('max') },
-			this.getDefaultProp('value'),
 		);
 	}
 
 	public watchVariant(value?: string): void {
-		variantProgressProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('variant', v);
-			},
-			this.getDefaultProp('variant'),
-		);
+		variantProgressProp.apply(value, (v) => {
+			this.setRenderProp('variant', v);
+		});
 	}
 
 	// a11y: says the value of the component every 5s

@@ -4,13 +4,6 @@ import type { ControllerInterface, ResolvedProps } from '../generic-types';
 import type { IconApi } from './api';
 
 export class IconController extends BaseController<IconApi> implements ControllerInterface<IconApi> {
-	public constructor() {
-		super({
-			icons: 'kolicon-logo',
-			label: '',
-		});
-	}
-
 	public componentWillLoad(props: ResolvedProps<IconApi>): void {
 		const { icons, label } = props;
 		this.watchIcons(icons);
@@ -18,22 +11,14 @@ export class IconController extends BaseController<IconApi> implements Controlle
 	}
 
 	public watchIcons(value?: string): void {
-		iconsProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('icons', v);
-			},
-			this.getDefaultProp('icons'),
-		);
+		iconsProp.apply(value, (v) => {
+			this.setRenderProp('icons', v);
+		});
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-			},
-			this.getDefaultProp('label'),
-		);
+		labelProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
+		});
 	}
 }

@@ -3,4 +3,4 @@ import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 export type IconsProp = SimpleProp<'icons', string>;
-export const iconsProp = createPropDefinition<IconsProp>(normalizeString);
+export const iconsProp = createPropDefinition<IconsProp>(normalizeString, () => true, 'kolicon-logo');

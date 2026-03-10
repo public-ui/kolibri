@@ -11,4 +11,5 @@ const QUOTE_VARIANT_SET: ReadonlySet<string> = new Set(QUOTE_VARIANT_OPTIONS);
 export const variantQuoteProp = createPropDefinition<VariantQuoteProp>(
 	(value: unknown) => normalizeString(value) as QuoteVariantType,
 	(v) => QUOTE_VARIANT_SET.has(v),
+	'inline',
 );
