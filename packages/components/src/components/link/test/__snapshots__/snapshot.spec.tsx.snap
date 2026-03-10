@@ -8,7 +8,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
-            <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
             <span class="kol-span__label">
               Label
             </span>
@@ -32,7 +32,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
-            <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
             <span class="kol-span__label">
               Label
             </span>
@@ -56,7 +56,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
-            <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
             <span class="kol-span__label">
               Label
             </span>
@@ -80,7 +80,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
       <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label kol-link--inline" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span kol-span--hide-label">
           <span class="kol-span__container">
-            <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
             <span aria-hidden="true" class="kol-span__label" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
@@ -102,7 +102,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
-            <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
             <span class="kol-span__label">
               Label
             </span>
@@ -126,7 +126,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
       <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
-            <i aria-hidden="true" class="codicon codicon-home icon kol-icon kol-icon__icon left" role="presentation"></i>
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
             <span class="kol-span__label">
               Label
             </span>

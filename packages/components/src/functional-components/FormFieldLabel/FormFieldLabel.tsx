@@ -1,54 +1,21 @@
-import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
+import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { isString } from 'lodash-es';
 import { translate } from '../../i18n';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import { buildBadgeTextString } from '../../schema';
 import clsx from '../../utils/clsx';
-import InternalUnderlinedBadgeText from '../InternalUnderlinedBadgeText';
-
-type LabelProps = {
-	label?: string;
-	accessKey?: string;
-	shortKey?: string;
-	hasExpertSlot?: boolean;
-	showBadge?: boolean;
-};
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';
 	id: string;
+	label?: string;
+	accessKey?: string;
+	shortKey?: string;
+	hasExpertSlot?: boolean;
 	hideLabel?: boolean;
 	baseClassName?: string;
 	showBadge?: boolean;
 	readOnly?: boolean;
-} & LabelProps;
-
-const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label, showBadge = true }) => {
-	if (hasExpertSlot) {
-		return <slot name="expert"></slot>;
-	}
-
-	if (!label) {
-		return null;
-	}
-
-	const hasBadgeText = isString(accessKey) || isString(shortKey);
-
-	if (!showBadge || !hasBadgeText) {
-		return <span>{label}</span>;
-	}
-
-	const badgeText = buildBadgeTextString(accessKey, shortKey);
-
-	return (
-		<>
-			<InternalUnderlinedBadgeText badgeText={badgeText} label={label} />
-			&nbsp;
-			<kbd class="badge-text-hint" aria-hidden="true">
-				{badgeText}
-			</kbd>
-		</>
-	);
 };
 
 const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
@@ -67,6 +34,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 }) => {
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 	const translateReadOnly = translate('kol-readonly');
+	const badgeText = showBadge ? buildBadgeTextString(accessKey, shortKey) : undefined;
 
 	return (
 		<Component
@@ -76,16 +44,14 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}
 		>
-			{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-			<span class={clsx(`${baseClassName}__label-text`)}>
-				{/* INFO: label comes with any html tag or as plain text! */}
-				<LabelFc hasExpertSlot={hasExpertSlot} accessKey={accessKey} shortKey={shortKey} label={label} showBadge={showBadge} />
-				{readOnly ? (
-					<span class={clsx(`${baseClassName}__label__read-only`)} aria-hidden="true">
-						({translateReadOnly})
-					</span>
-				) : null}
-			</span>
+			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? 'N/A')} badgeText={badgeText}>
+				<slot name="expert"></slot>
+			</SpanFC>
+			{readOnly ? (
+				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
+					({translateReadOnly})
+				</span>
+			) : null}
 		</Component>
 	);
 };

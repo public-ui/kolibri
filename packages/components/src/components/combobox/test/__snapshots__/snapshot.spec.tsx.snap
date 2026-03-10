@@ -5,11 +5,18 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          Label
-          <kbd aria-hidden="true" class="badge-text-hint">
-            V
-          </kbd>
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              V
+            </kbd>
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
@@ -52,9 +59,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -98,9 +110,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--disabled">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -144,9 +161,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -193,9 +215,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -245,9 +272,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -295,9 +327,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -345,9 +382,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -391,9 +433,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -437,9 +484,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -483,11 +535,18 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          Label
-          <kbd aria-hidden="true" class="badge-text-hint">
-            S
-          </kbd>
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              S
+            </kbd>
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
@@ -530,9 +589,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--touched">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -576,9 +640,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>

@@ -114,6 +114,20 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-span': {
+		elements: {
+			container: {
+				modifiers: null;
+			};
+			icon: {
+				modifiers: Set<'bottom' | 'left' | 'right' | 'top'>;
+			};
+			label: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'has-badge' | 'hide-label'>;
+	};
 };
 
 /**
@@ -173,6 +187,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			label: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-span': {
+		elements: {
+			container: { modifiers: null },
+			icon: { modifiers: new Set(['bottom', 'left', 'right', 'top']) },
+			label: { modifiers: null },
+		},
+		modifiers: new Set(['has-badge', 'hide-label']),
 	},
 };
 

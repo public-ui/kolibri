@@ -4,7 +4,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
 import { getDocument, validateAlign, validateBadgeText, validateId, validateLabel } from '../../schema';
 
-import { KolSpanFc } from '../../functional-components';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
@@ -191,7 +191,7 @@ export class KolTooltipWc implements TooltipAPI {
 			<Host class="kol-tooltip">
 				<div class="kol-tooltip__floating" hidden={this.state._label.length === 0} ref={this.catchTooltipElement}>
 					<div class="kol-tooltip__arrow" ref={this.catchArrowElement} />
-					<KolSpanFc class="kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
+					<SpanFC class="kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
 				</div>
 			</Host>
 		);
