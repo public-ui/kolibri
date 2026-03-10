@@ -22,5 +22,3 @@ packages:
   - packages/tools/mcp
   - packages/tools/visual-tests
 
-overrides:
-  express-rate-limit@>=8.2.0 <8.2.2: '>=8.2.2'
