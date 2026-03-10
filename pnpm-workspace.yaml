@@ -18,7 +18,6 @@ packages:
   - packages/themes/itzbund
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
-
 overrides:
   '@tootallnate/once@<3.0.1': '>=3.0.1'
   diff@>=5.0.0 <5.2.2: '>=5.2.2'
