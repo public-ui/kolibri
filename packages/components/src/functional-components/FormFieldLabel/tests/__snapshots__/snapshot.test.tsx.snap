@@ -28,19 +28,12 @@ exports[`KolFormFieldLabelFc should render the correct component tag "legend"  1
 
 exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
 <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-  <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+  <span class="kol-form-field__label-text kol-span">
     <span class="kol-span__container">
       <span class="kol-span__label">
-        Test L
-        <u>
-          a
-        </u>
-        bel
+        Test Label
       </span>
       <span aria-hidden="true" class="kol-span__label" hidden=""></span>
-      <kbd aria-hidden="true" class="badge-text-hint">
-        A
-      </kbd>
     </span>
   </span>
 </label>
