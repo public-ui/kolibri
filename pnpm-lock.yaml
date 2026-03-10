@@ -581,9 +581,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
-      '@public-ui/themes':
+      '@public-ui/theme-default':
         specifier: workspace:*
-        version: link:../../themes
+        version: link:../../themes/default
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -636,6 +636,9 @@ importers:
       knip:
         specifier: 5.86.0
         version: 5.86.0(@types/node@25.4.0)(typescript@5.9.3)
+      npm-run-all2:
+        specifier: 8.0.4
+        version: 8.0.4
       postcss:
         specifier: 8.5.8
         version: 8.5.8
@@ -914,6 +917,9 @@ importers:
       nodemon:
         specifier: 3.1.14
         version: 3.1.14
+      npm-run-all2:
+        specifier: 8.0.4
+        version: 8.0.4
       postcss:
         specifier: 8.5.8
         version: 8.5.8
