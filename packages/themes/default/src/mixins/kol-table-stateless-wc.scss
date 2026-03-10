@@ -64,7 +64,7 @@
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 
-			&:not(&--header)::before {
+			&::before {
 				background-color: white;
 				display: block;
 				position: absolute;
@@ -91,7 +91,6 @@
 			&--header {
 				color: var(--color-light);
 				background-color: var(--color-primary);
-				padding-top: to-rem(8);
 
 				font-weight: normal;
 
@@ -119,6 +118,15 @@
 
 			&--sticky-right:nth-child(1 of .kol-table__cell--sticky-right) {
 				border-left: 2px solid black;
+			}
+		}
+
+		&__head-row:nth-child(1 of .kol-table__head-row) {
+			.kol-table__cell {
+				padding-top: to-rem(8);
+				&::before {
+					display: none;
+				}
 			}
 		}
 

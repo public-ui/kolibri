@@ -92,7 +92,7 @@ export const TableBig: FC = () => {
 				</ul>
 			</SampleDescription>
 
-			<KolHeading _level={2} _label="Sticky columns" />
+			<KolHeading _level={2} _label="Configurable table" />
 			<KolTableStateful
 				_label="Animal species overview"
 				_data={configurableData(rows)}
