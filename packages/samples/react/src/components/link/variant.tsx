@@ -11,6 +11,7 @@ export const LinkVariant: FC = () => {
 	useEffect(() => {
 		const theme = document.body.dataset.theme;
 		if (!theme) {
+			setLoading(false);
 			return;
 		}
 		fetch('/assets/variants/inject-variants_' + theme + '.json')
@@ -18,16 +19,17 @@ export const LinkVariant: FC = () => {
 				if (response.status === 404) {
 					// No variants file for this theme is an expected state.
 					setData([]);
-					return null;
+					return undefined;
 				}
 				if (!response.ok) {
 					console.info('Error fetching variants: HTTP ' + response.status);
-					return null;
+					return undefined;
 				}
 				return response.json();
 			})
 			.then((json) => {
 				if (!json) {
+					setData([]);
 					return;
 				}
 				const linkVariants = (json as { linkVariants?: unknown }).linkVariants;
@@ -37,10 +39,12 @@ export const LinkVariant: FC = () => {
 				} else {
 					setData([]);
 				}
-				setLoading(false);
 			})
 			.catch((error) => {
 				console.info('No theme variant file found or file could not be parsed', error);
+				setData([]);
+			})
+			.finally(() => {
 				setLoading(false);
 			});
 	}, []);
