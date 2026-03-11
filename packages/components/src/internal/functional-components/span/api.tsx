@@ -1,15 +1,11 @@
-import type { SimpleProp } from '../../../internal/props/helpers/factory';
-import type { BadgeTextPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType } from '../../../schema';
-import type { ComponentApi } from '../generic-types';
+import { allowMarkdownProp, badgeTextProp, hideLabelProp } from '../../../internal/props';
+import { labelProp } from '../../../internal/props/label';
+import { spanIconsProp } from '../../../internal/props/span-icons';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface SpanApi extends ComponentApi {
-	Props: {
-		Required: {
-			label: LabelWithExpertSlotPropType;
-		};
-		Optional: SimpleProp<'allowMarkdown', boolean> &
-			SimpleProp<'badgeText', BadgeTextPropType> &
-			SimpleProp<'hideLabel', HideLabelPropType> &
-			SimpleProp<'icons', KoliBriIconsProp>;
-	};
-}
+export const spanPropsConfig = {
+	required: [labelProp],
+	optional: [allowMarkdownProp, badgeTextProp, hideLabelProp, spanIconsProp],
+} as const satisfies PropsConfigShape;
+
+export type SpanApi = ApiFromConfig<typeof spanPropsConfig>;
