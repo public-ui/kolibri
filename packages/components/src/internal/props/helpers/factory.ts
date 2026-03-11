@@ -57,7 +57,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 	return {
 		propName,
 		getDefaultValue() {
-			return defaultValue;
+			return structuredClone(defaultValue);
 		},
 		normalize,
 		validate,
@@ -100,7 +100,7 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 	return {
 		propName,
 		getDefaultValue() {
-			return defaultValue;
+			return structuredClone(defaultValue);
 		},
 		normalize,
 		validate,
