@@ -1,16 +1,14 @@
-import type { LabelProp } from '../../props';
-import { labelProp, withValidPropValue } from '../../props';
+import { labelProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
 import type { ClickButtonApi } from './api';
+import { clickButtonPropsConfig } from './api';
 
 export class ClickButtonController extends BaseController<ClickButtonApi> implements ControllerInterface<ClickButtonApi> {
 	private buttonRef?: HTMLButtonElement;
 
-	public constructor(states: ClickButtonApi['States'] = {}) {
-		super(states, {
-			label: '',
-		});
+	public constructor(setState: SetStateFn<ClickButtonApi>, getState: GetStateFn<ClickButtonApi>) {
+		super(clickButtonPropsConfig, setState, getState);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<ClickButtonApi>): void {
@@ -19,8 +17,8 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
-			this.setProp('label', v);
+		labelProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
 		});
 	}
 

@@ -1,9 +1,11 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/kol-card' as *;
+@use '../mixins/icon' as *;
 
 $duration: 0.4s;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	@include kol-card($border-radius: 0);
 
 	.kol-drawer {

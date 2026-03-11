@@ -15,7 +15,7 @@
 
 		&.collapsible {
 			.kol-icon {
-				&::part(icon)::before {
+				&::before {
 					content: '\e925';
 				}
 			}
@@ -73,6 +73,7 @@
 	}
 
 	.kol-icon {
+		transform: rotate(90deg);
 		color: var(--kern-color-action-default, #1a3da5);
 
 		font-size: to-rem(24);
@@ -81,12 +82,10 @@
 			color: var(--kern-color-action-default, #1a3da5);
 		}
 
-		&::part(icon) {
-			transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
 
-			.collapsible--open & {
-				transform: rotate(180deg);
-			}
+		.collapsible--open & {
+			transform: rotate(180deg);
 		}
 	}
 

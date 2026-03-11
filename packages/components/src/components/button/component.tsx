@@ -52,7 +52,7 @@ import {
 import { validateTabIndex } from '../../schema/props/tab-index';
 
 import { KolTooltipWcTag } from '../../core/component-names';
-import { KolSpanFc } from '../../functional-components';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
@@ -163,15 +163,9 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<KolSpanFc
-						class="kol-button__text"
-						badgeText={badgeText}
-						icons={this.state._icons}
-						hideLabel={hideLabel}
-						label={hasExpertSlot ? '' : this.state._label}
-					>
+					<SpanFC class="kol-button__text" badgeText={badgeText} icons={this.state._icons} hideLabel={hideLabel} label={hasExpertSlot ? '' : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanFc>
+					</SpanFC>
 				</button>
 				{hideLabel && (
 					<KolTooltipWcTag

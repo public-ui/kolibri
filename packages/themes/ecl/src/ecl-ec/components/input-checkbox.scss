@@ -1,5 +1,5 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert-wc' as *;
+@use '../mixins/alert' as *;
 @use '../mixins/required' as *;
 
 @layer kol-theme-component {
@@ -13,10 +13,10 @@
 		}
 
 		&__msg {
-			@include kol-alert-wc;
+			@include kol-alert;
 
 			&.kol-alert--type-error {
-				@include kol-alert-wc(--color-red);
+				@include kol-alert(--color-red);
 			}
 		}
 	}

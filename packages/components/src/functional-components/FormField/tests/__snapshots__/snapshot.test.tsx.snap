@@ -3,9 +3,12 @@
 exports[`KolFormFieldFc should hide messages until touched 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -16,9 +19,12 @@ exports[`KolFormFieldFc should hide messages until touched 1`] = `
 exports[`KolFormFieldFc should render correctly 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -29,9 +35,12 @@ exports[`KolFormFieldFc should render correctly 1`] = `
 exports[`KolFormFieldFc should render correctly with div tag 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -42,9 +51,12 @@ exports[`KolFormFieldFc should render correctly with div tag 1`] = `
 exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
 <fieldset class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -55,9 +67,12 @@ exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
 exports[`KolFormFieldFc should render with custom children 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -70,9 +85,12 @@ exports[`KolFormFieldFc should render with custom children 1`] = `
 exports[`KolFormFieldFc should render with error message 1`] = `
 <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -82,7 +100,7 @@ exports[`KolFormFieldFc should render with error message 1`] = `
       <span class="visually-hidden">
         kol-error
       </span>
-      <kol-icon _icons="kolicon-alert-error" _label="" class="kol-alert__icon"></kol-icon>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
       <div class="kol-alert__container-content">
         <span class="kol-alert__content">
           Error message
@@ -96,9 +114,12 @@ exports[`KolFormFieldFc should render with error message 1`] = `
 exports[`KolFormFieldFc should render with hint 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -112,9 +133,12 @@ exports[`KolFormFieldFc should render with hint 1`] = `
 exports[`KolFormFieldFc should render with required props 1`] = `
 <div class="kol-form-field kol-form-field--required">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>
@@ -125,9 +149,12 @@ exports[`KolFormFieldFc should render with required props 1`] = `
 exports[`KolFormFieldFc should render with tooltip 1`] = `
 <div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
-    <span class="kol-form-field__label-text">
-      <span>
-        Test Label
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
       </span>
     </span>
   </label>

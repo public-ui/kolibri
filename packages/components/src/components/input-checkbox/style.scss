@@ -2,17 +2,23 @@
 @use '../../styles/kol-field-control-mixin' as *;
 @use '../../styles/kol-form-field-mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/kol-icon-mixin' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
 @layer kol-component {
 	@include kol-form-field;
 	@include kol-field-control;
+	@include kol-icon-styles();
 
 	$root: '.kol-checkbox';
 
 	.kol-form-field {
 		display: grid;
+
+		&__label-text {
+			display: ruby;
+		}
 	}
 
 	#{$root} {
@@ -49,15 +55,11 @@
 		justify-content: center;
 
 		.kol-icon {
-			display: flex;
+			display: none;
 			position: absolute;
 			inset: auto;
 			z-index: 1;
 			pointer-events: none;
-
-			&::part(icon) {
-				display: none;
-			}
 		}
 
 		.kol-input {
@@ -67,7 +69,7 @@
 
 		&#{$root}--checked,
 		&#{$root}--indeterminate {
-			.kol-icon::part(icon) {
+			.kol-icon {
 				display: block;
 			}
 		}

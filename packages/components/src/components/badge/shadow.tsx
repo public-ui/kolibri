@@ -1,5 +1,5 @@
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
-import { KolSpanFc } from '../../functional-components';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
@@ -68,7 +68,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 					color: this.colorStr,
 				}}
 			>
-				<KolSpanFc class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
+				<SpanFC class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
 				{hasSmartButton && this.renderSmartButton(this.state._smartButton as InternalButtonProps)}
 			</span>
 		);

@@ -1,6 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 
+import type { Prop } from '../props';
+
 // ============================================================================
 // Utility Types
 // ============================================================================
@@ -11,6 +13,8 @@ type Callback<T> = (value?: T) => void;
 export type StrictFields<T> = {
 	[K in keyof T]-?: NonNullable<T[K]>;
 };
+
+type UnionToIntersection<U> = (U extends unknown ? (arg: U) => void : never) extends (arg: infer I) => void ? I : never;
 
 // ============================================================================
 // Phantom Key Mapping (__input_* convention)
@@ -49,8 +53,52 @@ export interface ComponentApi {
 	Methods?: Record<string, (...args: never[]) => unknown>;
 	Props?: PropsDefinition;
 	Refs?: Record<string, HTMLElement>;
-	States?: Record<string, unknown>;
+	States: Record<never, never>;
 }
+
+// ============================================================================
+// Props Config (Single Source of Truth)
+// ============================================================================
+
+/** Any prop definition that carries a phantom Prop type, a propName and a getDefaultValue method. */
+type AnyPropDef = {
+	readonly __phantomProp__?: Prop<string, unknown, unknown>;
+	readonly propName: string;
+	getDefaultValue(): unknown;
+};
+
+/** Extracts the phantom Prop type from a PropDefinition or DependentPropDefinition. */
+type ExtractPhantomProp<D> = D extends { readonly __phantomProp__?: infer P extends Prop<string, unknown, unknown> } ? P : never;
+
+/** Merges an array of prop definitions into a single intersection of their phantom Prop types. */
+type MergePropsFromArray<A extends readonly AnyPropDef[]> = UnionToIntersection<ExtractPhantomProp<A[number]>>;
+
+/** Shape for a props config object with arrays of runtime prop definitions. */
+export type PropsConfigShape = {
+	optional?: readonly AnyPropDef[];
+	required?: readonly AnyPropDef[];
+};
+
+/**
+ * Derives a full ComponentApi type from a runtime props config and optional extra fields.
+ *
+ * Usage:
+ * ```ts
+ * const config = {
+ *   required: [maxProp, clampedNumberValueProp],
+ *   optional: [labelProp],
+ * } as const satisfies PropsConfigShape;
+ *
+ * type MyApi = ApiFromConfig<typeof config, { States: { liveValue: number } }>;
+ * ```
+ */
+export type ApiFromConfig<Config extends PropsConfigShape, Extra extends Partial<Omit<ComponentApi, 'Props'>> = Record<never, never>> = {
+	Props: {
+		Optional: Config['optional'] extends readonly AnyPropDef[] ? MergePropsFromArray<Config['optional']> : Record<never, never>;
+		Required: Config['required'] extends readonly AnyPropDef[] ? MergePropsFromArray<Config['required']> : Record<never, never>;
+	};
+	States: Extra extends { States: infer S extends Record<string, unknown> } ? S : Record<never, never>;
+} & Omit<Extra, 'Props' | 'States'>;
 
 // ============================================================================
 // Props Extraction
@@ -95,6 +143,27 @@ type ExtractStates<T extends ComponentApi> = InternalOf<ApiField<T, 'States'>>;
 
 type InternalProps<T extends ComponentApi> = InternalOf<AllProps<T>>;
 type ExternalProps<T extends ComponentApi> = ExternalOf<AllProps<T>>;
+
+// ============================================================================
+// State Access Functions
+// ============================================================================
+
+/**
+ * Function signature for setting component state in a type-safe manner.
+ * Used by controllers to update reactive @State fields with generic type safety.
+ */
+export type SetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
+	key: K,
+	value: InternalOf<NonNullable<Api['States']>>[K],
+) => void;
+
+/**
+ * Function signature for reading component state in a type-safe manner.
+ * Used by controllers to access reactive @State fields with generic type safety.
+ */
+export type GetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
+	key: K,
+) => InternalOf<NonNullable<Api['States']>>[K];
 
 // ============================================================================
 // Method Promise Wrapping
@@ -186,7 +255,7 @@ type ControllerRefSetters<Refs> = {
 
 export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(props: ResolvedInputProps<T>): void;
-	getProps(): StrictFields<InternalProps<T>>;
+	getRenderProp<K extends keyof InternalProps<T>>(key: K): StrictFields<InternalProps<T>>[K];
 } & ComponentWatchers<ExternalProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &
 	ControllerListeners<ExtractListeners<T>> &

@@ -3,6 +3,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { AvatarApi } from '../../internal/functional-components/avatar/api';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
 import { AvatarController } from '../../internal/functional-components/avatar/controller';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ColorPair } from '../../schema';
 
@@ -13,8 +14,8 @@ import type { ColorPair } from '../../schema';
 		default: './style.scss',
 	},
 })
-export class KolAvatar implements WebComponentInterface<AvatarApi> {
-	private readonly ctrl = new AvatarController(this);
+export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebComponentInterface<AvatarApi> {
+	private readonly ctrl = new AvatarController(this.setState, this.getState);
 
 	/**
 	 * Defines the backgroundColor and foregroundColor.
@@ -61,11 +62,14 @@ export class KolAvatar implements WebComponentInterface<AvatarApi> {
 	}
 
 	public render(): JSX.Element {
-		const { color, label, src } = this.ctrl.getProps();
-		const { initials } = this;
 		return (
 			<Host>
-				<AvatarFC color={color} label={label} src={src} initials={initials} />
+				<AvatarFC
+					color={this.ctrl.getRenderProp('color')}
+					label={this.ctrl.getRenderProp('label')}
+					src={this.ctrl.getRenderProp('src')}
+					initials={this.initials}
+				/>
 			</Host>
 		);
 	}

@@ -1,20 +1,14 @@
-import type { LabelProp, MaxProp, UnitProp, ValueProp, VariantProgressProp } from '../../props';
-import { labelProp, maxProp, unitProp, valueProp, variantProgressProp, withValidPropValue } from '../../props';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
 import type { ProgressApi } from './api';
+import { progressPropsConfig } from './api';
 
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
 
-	public constructor(states: ProgressApi['States']) {
-		super(states, {
-			label: '',
-			max: 100,
-			unit: '%',
-			value: 0,
-			variant: 'bar',
-		});
+	public constructor(setState: SetStateFn<ProgressApi>, getState: GetStateFn<ProgressApi>) {
+		super(progressPropsConfig, setState, getState);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
@@ -25,65 +19,51 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		this.watchValue(value);
 		this.watchVariant(variant);
 
-		this.setState('liveValue', this.getProps().value);
-		this.setState('max', this.getProps().max);
+		this.setState('liveValue', this.getRenderProp('value'));
 		this.startLiveValueInterval();
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelProp>(labelProp, value, (v) => {
-			this.setProp('label', v);
+		labelProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
 		});
 	}
 
 	public watchMax(value?: number): void {
-		withValidPropValue<MaxProp>(maxProp, value, (v) => {
-			this.setProp('max', v);
-			this.setState('max', v);
+		maxProp.apply(value, (v) => {
+			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
 		});
-		this.watchValue(this.getProps().value);
 	}
 
 	public watchUnit(value?: string): void {
-		withValidPropValue<UnitProp>(unitProp, value, (v) => {
-			this.setProp('unit', v);
-			this.setState('unit', v);
+		unitProp.apply(value, (v) => {
+			this.setRenderProp('unit', v);
 		});
 	}
 
 	public watchValue(value?: number): void {
-		withValidPropValue<ValueProp>(valueProp, this.clampValue(value), (v) => {
-			this.setProp('value', v);
-		});
+		this.setRawProp('value', value);
+		clampedNumberValueProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('value', v);
+			},
+			{ min: 0, max: this.getRenderProp('max') },
+		);
 	}
 
 	public watchVariant(value?: string): void {
-		withValidPropValue<VariantProgressProp>(variantProgressProp, value, (v) => {
-			this.setProp('variant', v);
-			this.setState('variant', v);
+		variantProgressProp.apply(value, (v) => {
+			this.setRenderProp('variant', v);
 		});
-	}
-
-	private clampValue(value?: number): number | undefined {
-		if (typeof value === 'number') {
-			if (value > this.component.max) {
-				value = this.component.max;
-			}
-
-			if (value < 0) {
-				value = 0;
-			}
-		}
-		return value;
 	}
 
 	// a11y: says the value of the component every 5s
 	private startLiveValueInterval(): void {
 		this.interval = setInterval(() => {
-			const { value } = this.getProps();
-			if (this.component.liveValue !== value) {
-				this.setState('liveValue', value);
-			}
+			const value = this.getRenderProp('value');
+			this.setState('liveValue', value);
 		}, 5000);
 	}
 

@@ -1,6 +1,8 @@
 @use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	.kol-tree-item {
 		$root: &;
 		--tree-item-indentation: #{to-rem(20)};
@@ -34,7 +36,7 @@
 			}
 		}
 
-		&__toggle-button:hover &__toggle-button-icon::part(icon) {
+		&__toggle-button:hover &__toggle-button-icon {
 			transform: scale(1.6);
 		}
 

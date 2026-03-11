@@ -51,9 +51,8 @@ src/
     │   └── generic-types.ts           # Interface contracts
     └── props/                         # Prop types, normalisation and validation
         ├── helpers/
-        │   ├── factory.ts             # Prop, SimpleProp, PropDefinition, withValidPropValue
+        │   ├── factory.ts             # Prop, SimpleProp, PropDefinition, apply()
         │   └── normalizers.ts         # normalizeString, normalizeInteger, etc.
-        ├── count.ts                   # CountProp
         ├── label.ts                   # LabelProp
         ├── name.ts                    # NameProp
         ├── show.ts                    # ShowProp
@@ -65,7 +64,7 @@ This modular layout is the backbone for the architectural patterns described in 
 ### Usage Example
 
 ```html
-<kol-skeleton _count="42" _name="Example"></kol-skeleton>
+<kol-skeleton _name="Example"></kol-skeleton>
 ```
 
 ## 2. Architecture Constraints
@@ -73,7 +72,7 @@ This modular layout is the backbone for the architectural patterns described in 
 - **Stencil** is used for authoring web components with **shadow: true** only (Shadow DOM enabled for style isolation).
 - Components without Shadow DOM (`shadow: false`) are implemented as **Functional Components** instead of web components to avoid style conflicts and reduce maintainability burden.
 - Components must compile to framework-agnostic Custom Elements.
-- Public API properties use an underscored naming convention (e.g. `_count`) to separate external inputs from internal state.
+- Public API properties use an underscored naming convention (e.g. `_name`) to separate external inputs from internal state.
 - Documentation and code follow the `KoliBri` casing and repository conventions.
 
 ## 3. Context and Scope
@@ -109,47 +108,74 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 
 ### Web Component Layer
 
-- Declares the public API using underscored props (e.g. `_count`).
+- Extends `BaseWebComponent<Api>`, which provides the type-safe `setState` arrow property pre-bound to the component instance. This property is passed to the controller constructor so the controller can trigger Stencil re-renders.
+- Declares the public API using underscored props (e.g. `_name`).
 - Hosts lifecycle hooks and ties DOM events to controller callbacks.
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`). Watchers normalise incoming values and forward them to the controller.
-- Normalised public props (from `@Watch` handlers) are stored in the controller and passed to the functional component via `getProps()` to minimize re-renders.
+- Normalised public props (from `@Watch` handlers) are stored in the controller and accessed via `getRenderProp(key)` to pass them to the functional component, minimizing re-renders.
 - Internal UI state managed by the controller (like `label`, `show`, `count` when they're derived or managed state) uses `@State` for reactivity — changes to these fields trigger re-renders.
-- Delegates rendering to the controller output via `controller.getProps()`.
+- Delegates rendering to the controller output via `controller.getRenderProp(key)`.
 - Renders the functional component always wrapped in a bare `<Host>` element without redundant class attributes (no `<Host class="kol-component-name">`). **All web components use shadow DOM (shadow: true) to ensure style isolation and prevent CSS conflicts** with host page styles. The shadow DOM handles styling isolation; the host tag name itself is sufficient for component identification.
 - **Components that should not use Shadow DOM are implemented as Functional Components instead** (not web components), avoiding complexity and ensuring clean style boundaries.
 
 ### Controller Layer
 
 - Encapsulates business rules, validation orchestration and derived state.
-- Extends `BaseController<Api>`, which receives the web component's reactive state object and initial prop defaults.
-- `BaseController` provides `setProp(key, value)` to store normalized props internally and `setState(key, value)` to write back to the web component's `@State` fields, triggering Stencil re-renders.
+- Extends `BaseController<Api>`, which receives a `PropsConfigShape` (runtime props configuration containing `required` and `optional` arrays of prop definitions), a `SetStateFn<Api>` and a `GetStateFn<Api>` callback. `BaseController` derives default render props automatically from the config.
+- `BaseController` provides `setRenderProp(key, value)` to store normalized props internally and exposes `setState` to write back to the web component's `@State` fields (triggering Stencil re-renders) and `getState` to read current `@State` values without holding a reference to the component instance.
 - Implements `componentWillLoad` to bootstrap its internal state from the current prop snapshot.
-- Exposes watcher entry points (`watchCount`, `watchName`, …) that receive raw values, request normalisation/validation from the schema helpers and update internal state accordingly.
-- Provides render props via `getProps()` so the view layer operates on a single immutable snapshot.
+- Exposes watcher entry points (e.g. `watchName`) that receive raw values, request normalisation/validation from the schema helpers and update internal state accordingly.
+- Provides render props via `getRenderProp(key)` so the view layer accesses individual values in a type-safe manner.
 - Composes other controllers (e.g. the click button behaviour) to reuse established logic across components.
 
 #### Constructor Pattern
 
-Controllers that manage reactive UI state receive the web component instance itself as their `states` parameter. This enables `setState` to write back to the web component's `@State` fields directly:
+All controllers receive `setState` and `getState` from the web component, regardless of whether their `Api` declares `States`.
+
+The web component passes both `this.setState` and `this.getState` so the controller can trigger Stencil re-renders and read back current state:
 
 ```ts
-// Web Component — passes itself as the states object
-private readonly ctrl = new SkeletonController(this);
+// Web Component — passes this.setState and this.getState to the controller
+export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
+  private readonly ctrl = new SkeletonController(this.setState, this.getState);
+}
 
-// Controller — BaseController stores the reference
-public constructor(states: SkeletonApi['States']) {
-  super(states, { count: 0, name: '' });
+// Controller — accepts and forwards setState and getState to BaseController
+public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
+  super(skeletonPropsConfig, setState, getState);
 }
 ```
 
-Controllers without reactive state (like `ClickButtonController`) default to an empty object:
+All controllers receive `setState` and `getState` regardless of whether their `Api` declares `States`. `BaseController` always requires both parameters. The `PropsConfigShape` passed to `super()` contains arrays of prop definitions from which `BaseController` derives the initial render props automatically via `buildDefaultPropsFromConfig()`.
+
+Composition inside other controllers forwards the same callbacks:
 
 ```ts
-private readonly ctrl = new ClickButtonController();
+// Skeleton controller — composes ClickButtonController, forwarding setState/getState
+this.clickButtonCtrl = new ClickButtonController(setState, getState);
+```
 
-// Constructor with default
-public constructor(states: ClickButtonApi['States'] = {}) {
-  super(states, { label: '' });
+#### State Reader (`getState`)
+
+`BaseController` requires a `getState: GetStateFn<Api>` parameter alongside `setState`. This lets the controller read back current `@State` values from the web component without holding a direct reference to the component instance.
+
+Both `setState` and `getState` are provided as pre-bound arrow properties by `BaseWebComponent`, ensuring type-safe access to reactive state:
+
+```ts
+// Controller — reading state back from the web component
+const currentCount = this.getState('count');
+this.setState('count', currentCount + 1);
+```
+
+The web component passes both `this.setState` and `this.getState`:
+
+```ts
+// Web Component — passes both setState and getState
+private readonly ctrl = new SkeletonController(this.setState, this.getState);
+
+// Controller — constructor declares both as required
+public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
+  super(skeletonPropsConfig, setState, getState);
 }
 ```
 
@@ -158,7 +184,7 @@ public constructor(states: ClickButtonApi['States'] = {}) {
 Controller methods follow a clear convention based on their usage pattern:
 
 - **Callbacks, event handlers, and ref setters** are declared as **arrow class properties** (`handleClick = () => { … }`). This auto-binds them to the instance, so they can be safely passed as references without `.bind(this)` or wrapper arrows.
-- **Lifecycle methods, watchers, and public API methods** (`componentWillLoad`, `watchCount`, `focus`, `toggle`) remain **prototype methods** shared across all instances for memory efficiency.
+- **Lifecycle methods, watchers, and public API methods** (`componentWillLoad`, `watchName`, `focus`, `toggle`) remain **prototype methods** shared across all instances for memory efficiency.
 
 Because callbacks are already arrow properties, both of these render patterns are valid:
 
@@ -180,13 +206,161 @@ Both are functionally equivalent. Pattern A is more concise; Pattern B allows ad
 
 ### Schema Helper Layer
 
-- Co-locates type definitions, normalisation and validation rules for every prop.
-- Provides `Prop<K, TExternal, TInternal>` to encode both external and internal types in a single generic via phantom keys (`__input_${K}` carries the external type, `__propInternal__` carries the internal type).
-- Provides `SimpleProp<K, T>` shorthand when both types are identical.
-- `PropDefinition<TInternal>` defines `normalize` (unknown → TInternal) and `validate` (TInternal → boolean). The normalize function accepts `unknown` because HTML attributes can arrive as any type.
-- `createPropDefinition<P>` is generic over the full `Prop<K, TExternal, TInternal>` type (e.g. `createPropDefinition<CountProp>(...)`). It infers `TInternal` via `InternalPropValue<P>`, so the normalize and validate signatures are automatically typed.
-- `withValidPropValue` combines normalization and validation into a single call, ensuring callbacks only receive type-safe internal values.
-- `InternalOf<P>` and `ExternalOf<P>` utility types extract the correct type for each architectural layer automatically.
+Web components receive dynamic values from HTML attributes, but internal rendering requires statically typed data. The schema helper layer bridges that gap through **graceful degradation**: attempt minimal type conversion, then validate, but never force invalid data into types.
+
+Design principles:
+
+- **Fail gracefully**: Invalid data is ignored rather than causing errors
+- **Minimal conversion**: Only obvious transformations (string numbers → numbers)
+- **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
+- **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
+
+#### Dual-Type Props
+
+Each prop can define an **external** (Web Component API) and an **internal** (Controller/FC) type. The external type may be more permissive to support shorthand values from HTML attributes, while the internal type is always the normalized form.
+
+`Prop<K, TExternal, TInternal>` encodes both external and internal types in a single generic via phantom keys (`__input_${K}` carries the external type, `__propInternal__` carries the internal type). `SimpleProp<K, T>` is a shorthand when both types are identical:
+
+```typescript
+// Different external and internal types:
+type ColorProp = Prop<'color', ColorPair | string, ColorPair>;
+//                     └─ Key  └─ Web Component     └─ Controller/FC
+
+// Same external and internal type (shorthand):
+type MaxProp = SimpleProp<'max', number>;
+//                        └─ Key └─ Both types
+```
+
+#### `PropDefinition<TInternal>`
+
+`PropDefinition<TInternal>` defines `normalize` (unknown → TInternal), `validate` (TInternal → boolean), `getDefaultValue()` (→ TInternal) and `apply(value, callback)`. The normalize function accepts `unknown` because HTML attributes can arrive as any type.
+
+`createPropDefinition<P>` is generic over the full `Prop<K, TExternal, TInternal>` type (e.g. `createPropDefinition<NameProp>(...)`). It infers `TInternal` via `InternalPropValue<P>`, so the normalize and validate signatures are automatically typed:
+
+```typescript
+// SimpleProp — same type in and out, with validation
+const maxProp = createPropDefinition<MaxProp>(
+	'max',
+	0, // default value
+	normalizeNumber, // (value: unknown) → number (throws on invalid)
+	(v) => v > 0, // (value: number) → boolean
+);
+
+// Dual-Type Prop — external string is normalized to ColorPair
+const colorProp = createPropDefinition<ColorProp>(
+	'color',
+	{ backgroundColor: '#d3d3d3', foregroundColor: '#3f3f3f' },
+	normalizer, // (value: unknown) → ColorPair (throws on invalid)
+	validator, // (value: ColorPair) → boolean
+);
+```
+
+Each `PropDefinition` provides an `apply(value, callback)` method that combines normalization, validation and fallback handling into a single call. If the value is `undefined` or `null`, the built-in default value is used. Otherwise, the value is normalized and validated before being passed to the callback — ensuring callbacks only receive type-safe internal values:
+
+```typescript
+maxProp.apply(value, (normalized) => {
+	// normalized is number, type-safe and validated (> 0)
+	this.setRenderProp('max', normalized);
+});
+```
+
+#### `DependentPropDefinition<TInternal, TDeps>`
+
+Some props require context from other props to normalize or validate correctly. `createDependentPropDefinition` extends the pattern with a `TDeps` parameter that is passed through to both `normalize` and `validate`:
+
+```typescript
+type ClampedNumberValueProp = SimpleProp<'value', number>;
+
+type ClampedNumberValueDeps = {
+	min: number;
+	max: number;
+};
+
+const clampedNumberValueProp = createDependentPropDefinition<ClampedNumberValueProp, ClampedNumberValueDeps>(
+	'value',
+	0,
+	(value, deps) => {
+		const normalized = normalizeNumber(value);
+		if (normalized < deps.min) return deps.min;
+		if (normalized > deps.max) return deps.max;
+		return normalized;
+	},
+	(v) => v >= 0,
+);
+```
+
+The `apply` method for dependent props takes the deps object as a third argument:
+
+```typescript
+clampedNumberValueProp.apply(
+	value,
+	(normalized) => {
+		this.setRenderProp('value', normalized);
+	},
+	{ min: 0, max: this.getRenderProp('max') },
+);
+```
+
+#### Type Extraction
+
+`InternalOf<P>` and `ExternalOf<P>` utility types extract the correct type for each architectural layer automatically:
+
+| Layer                      | Type Extractor | Example (`ColorProp`) |
+| -------------------------- | -------------- | --------------------- |
+| Web Component `@Prop`      | `ExternalOf`   | `ColorPair \| string` |
+| `@Watch` handler           | `ExternalOf`   | `ColorPair \| string` |
+| Controller `setRenderProp` | `InternalOf`   | `ColorPair`           |
+| Controller `getRenderProp` | `InternalOf`   | `ColorPair`           |
+| Functional Component       | `InternalOf`   | `ColorPair`           |
+
+#### Available Properties
+
+- **alt** – Alternative text (`string`)
+- **color** – Color values (accepts `ColorPair | string` externally, normalized to `ColorPair`)
+- **href** – URL references (`string`)
+- **icons** – Icon identifiers (`string`)
+- **label** – Text content (`string`, validated: 2–80 characters)
+- **loading** – Loading indicator type (`LoadingType`)
+- **max** – Maximum value (`number`, validated: > 0)
+- **name** – Identifiers (`string`)
+- **quote** – Quotation text (`string`)
+- **show** – Boolean visibility states (`boolean`)
+- **sizes** – Responsive sizes attribute (`string`)
+- **src** – Source URL (`string`)
+- **srcset** – Responsive image sources (`string`)
+- **unit** – Unit suffix (`string`)
+- **value** – Numeric value (`number`, validated: ≥ 0)
+- **value (clamped)** – Clamped numeric value with `DependentPropDefinition` (depends on `min`/`max`)
+- **variant-progress** – Progress variant type (`ProgressVariantType`)
+- **variant-quote** – Quote variant type (`QuoteVariantType`)
+
+### API Definition with `PropsConfigShape` and `ApiFromConfig`
+
+Component APIs are defined using a runtime props config object (`PropsConfigShape`) that groups prop definitions into `required` and `optional` arrays. The `ApiFromConfig<Config, Extra>` utility type derives the full `ComponentApi` type from this config:
+
+```ts
+// API definition (api.tsx)
+import { nameProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
+
+export const skeletonPropsConfig = {
+	required: [nameProp],
+} as const satisfies PropsConfigShape;
+
+export type SkeletonApi = ApiFromConfig<
+	typeof skeletonPropsConfig,
+	{
+		Callbacks: { click: () => void };
+		Emitters: { loaded: number; rendered: void };
+		Methods: { focus: () => void; toggle: () => void };
+		States: { count: number; label: string; show: boolean };
+	}
+>;
+```
+
+`ApiFromConfig` automatically merges the phantom prop types from the config arrays into the `Props.Required` and `Props.Optional` fields, making the props config the single source of truth for both runtime behaviour (normalization, validation, defaults) and compile-time types.
+
+The same `propsConfig` object is also passed to the `BaseController` constructor, which uses it to derive the initial render props via `buildDefaultPropsFromConfig()`.
 
 The contracts between layers are formalized through TypeScript interfaces defined in [`generic-types.ts`](../../internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs, enabling safe refactoring and reuse across the monorepo.
 
@@ -257,54 +431,48 @@ This strategy yields strong decoupling so that each layer can evolve independent
 ### Watcher Example
 
 Incoming props are normalised in dedicated watchers before reaching the controller.
-Props can define different external and internal types – the external type supports
-shorthand values (e.g. `_count="42"`), while the controller always works with the
-normalized internal type:
+When external and internal types are identical, `SimpleProp<K, T>` is used. For different
+types, `Prop<K, TExternal, TInternal>` encodes both (see `ColorProp` in `color.ts` for an example).
+The controller always works with the normalized internal type:
 
 ```ts
-// Prop definition (internal/props/count.ts)
-type CountProp = Prop<'count', number | string, number>;
-//                     └─ Key  └─ external      └─ internal
-const countProp = createPropDefinition<CountProp>(
-	normalizeInteger, // (unknown) → number (throws on invalid input)
-	(v) => v >= 0, // validates the internal type
-);
+// Prop definition (internal/props/name.ts)
+type NameProp = SimpleProp<'name', string>;
+const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 ```
 
 ```ts
 // Web Component (web-components/skeleton/component.tsx)
 @Prop()
-public _count?: number | string; // External type
+public _name!: string;
 
-@Watch('_count')
-public watchCount(value?: number | string): void {
-  this.ctrl.watchCount(value);
+@Watch('_name')
+public watchName(value?: string): void {
+  this.ctrl.watchName(value);
 }
 ```
 
 ```ts
 // Controller (internal/functional-components/skeleton/controller.ts)
-public watchCount(value?: number | string): void {
-  withValidPropValue(countProp, value, (v) => {
-    // v is number (internal type), guaranteed by normalize + validate
-    this.setProp('count', v);
-    this.setState('count', v);
+public watchName(value?: string): void {
+  nameProp.apply(value, (v) => {
+    this.setRenderProp('name', v);
   });
 }
 ```
 
-See the [controller](../../internal/functional-components/skeleton/controller.ts) for the complete validation logic.
+The `apply()` method uses the default value built into `nameProp` when the incoming value is `undefined` or `null`.
 
 ### Controller State Management
 
 Controllers manage state in two distinct ways:
 
-**Normalized Props** (via `setProp()`):
+**Normalized Props** (via `setRenderProp()`):
 
 - Stored as plain class fields after validation
-- Updated by watcher methods (`watchCount`, `watchName`, …)
+- Updated by watcher methods (e.g. `watchName`)
 - Never trigger Stencil re-renders on their own
-- Retrieved via `getProps()` for rendering
+- Retrieved via `getRenderProp(key)` for rendering
 
 **Derived/Managed State** (via `setState()`):
 
@@ -313,13 +481,14 @@ Controllers manage state in two distinct ways:
 - Each `setState()` call triggers a Stencil re-render
 - Simplifies component logic by centralizing state transitions
 
-**Rule**: A prop watcher should call `setProp()` to store the normalized value. If the controller also derives or manages internal state from that prop, add a corresponding `setState()` call only for fields that require reactive updates. This minimizes re-renders while maintaining code clarity:
+**Rule**: A prop watcher should call `setRenderProp()` to store the normalized value. If the controller also derives or manages internal state from that prop, add a corresponding `setState()` call only for fields that require reactive updates. This minimizes re-renders while maintaining code clarity:
 
 ```ts
-public watchLabel(value?: LabelPropType): void {
-  validateLabel(this.component, value);
-  this.setProp('label', value);  // Store normalized prop (no re-render)
-  this.setState('label', value); // Only if label is used as @State
+public watchName(value?: string): void {
+  nameProp.apply(value, (v) => {
+    this.setRenderProp('name', v);       // Store normalized prop (no re-render)
+    // this.setState('name', v);         // Add only if 'name' is also an @State field
+  });
 }
 ```
 
@@ -332,8 +501,12 @@ The `componentWillLoad` method receives `ResolvedInputProps`, which uses the **e
 // Web Component
 public componentWillLoad(): void {
   this.ctrl.componentWillLoad({
-    count: this._count, // number | string (external type)
-    name: this._name,   // string
+    name: this._name,
+  });
+
+  // Set up the callback for emitting loaded events
+  this.ctrl.setOnLoadedCallback((count: number) => {
+    this.loaded.emit(count);
   });
 }
 ```
@@ -341,10 +514,11 @@ public componentWillLoad(): void {
 ```ts
 // Controller
 public componentWillLoad(props: ResolvedInputProps<SkeletonApi>): void {
-  const { count, name } = props;
-  this.watchCount(count);  // normalizes to internal type
+  const { name } = props;
   this.watchName(name);
-  this.watchLabel(this.component.label);
+  this.clickButtonCtrl.componentWillLoad({
+    label: 'Click me',
+  });
 }
 ```
 
@@ -357,26 +531,23 @@ classDiagram
     direction LR
     class WebComponent {
         +componentWillLoad()
-        +watchCount()
+        +watchName()
         +render()
     }
     class SkeletonController {
         +componentWillLoad()
-        +watchCount()
         +watchName()
-        +getProps()
+        +getRenderProp(key)
     }
     class SkeletonFC {
         +render(props)
     }
     class SchemaHelpers {
-        +normalizeCount()
-        +validateCount()
-        +normalizeName()
-        +validateName()
+        +nameProp.apply()
+        +labelProp.apply()
     }
     class ClickButtonController {
-        +getProps()
+        +getRenderProp(key)
     }
     WebComponent ..> SkeletonController : delegates state
     WebComponent --> SkeletonFC : renders with props
@@ -405,17 +576,17 @@ sequenceDiagram
     participant CTRL as Controller
     participant FC as FunctionalComponent
     participant S as Schema
-    U->>WC: set attribute _count="5"
-    WC->>CTRL: watchCount(\"5\")
-    CTRL->>S: normalize(\"5\")
-    S-->>CTRL: 5 (number)
-    CTRL->>S: validate(5)
-    S-->>CTRL: true
-    CTRL->>WC: update count = 5
+    U->>WC: set attribute _name="Alice"
+    WC->>CTRL: watchName("Alice")
+    CTRL->>S: nameProp.apply("Alice", callback)
+    S->>S: normalize("Alice") → "Alice"
+    S->>S: validate("Alice") → true
+    S-->>CTRL: callback("Alice")
+    CTRL->>CTRL: setRenderProp('name', "Alice")
     WC->>FC: render(renderProps)
     FC-->>WC: markup
     WC-->>U: updated DOM
-    Note over S,CTRL: normalize converts TExternal to TInternal
+    Note over S,CTRL: apply() combines normalize + validate + callback
     Note over FC,WC: renderProps contain normalized/validated data or internal state
 ```
 
@@ -441,7 +612,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                             |
 | **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                      |
 | **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                           |
-| **Watcher placement**            | Attach `@Watch` only to underscored public props (`_count`); internal state fields use `@State`.                                                                      |
+| **Watcher placement**            | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                  |
 
 ## 9. Design Decisions
 
@@ -467,8 +638,8 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
    - _Alternative_: instantiate a single stateless controller and provide proxy functions in the web component layer for each business function so the web component instance can be passed into the controller rather than the other way round.
    - _Reason_: every business function would need such a proxy, creating significant boilerplate and reducing readability when implementing multiple components. The marginal benefit of reusing a single controller instance does not justify this complexity, so controllers remain stateful.
 8. **@State for managed UI state, plain fields for normalized props**
-   - _Pattern_: public props (\_count, \_name) are normalized by the controller and stored in plain fields within the controller. UI state that is managed but not exposed as props (like label, show) uses `@State` to trigger reactive re-renders.
-   - _Reason_: normalized props coming from external inputs do not need `@State` — they're held in the controller and passed to the functional component via `getProps()`. This avoids unnecessary re-rendering. Internal UI state (like visibility toggles) that the controller manages should use `@State` for reactivity. This strategy minimizes renders while maintaining clarity about which state is reactive.
+   - _Pattern_: public props (e.g. \_name) are normalized by the controller and stored in plain fields within the controller. UI state that is managed but not exposed as props (like count, label, show) uses `@State` to trigger reactive re-renders.
+   - _Reason_: normalized props coming from external inputs do not need `@State` — they're held in the controller and accessed via `getRenderProp(key)` to pass to the functional component. This avoids unnecessary re-rendering. Internal UI state (like visibility toggles) that the controller manages should use `@State` for reactivity. This strategy minimizes renders while maintaining clarity about which state is reactive.
 9. **Host element without redundant class attribute**
    - _Alternative_: add component name as class attribute to `<Host>` (e.g. `<Host class="kol-skeleton">`).
    - _Reason_: the tag name alone (e.g. `<kol-skeleton>`) is sufficient for styling and component identification. Shadow DOM already provides style isolation. Redundant classes add noise and complicate selectors in theme files without additional benefit. The functional component is always wrapped inside the bare `<Host>` element.
@@ -500,12 +671,12 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 12. Glossary
 
-| Term                     | Definition                                                                                                      |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                   |
-| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                        |
-| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                           |
-| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.   |
-| **Schema Helper**        | Utility providing `normalize` (TExternal → TInternal) and `validate` (TInternal → boolean) functions for props. |
-| **Stencil**              | Compiler for building framework-agnostic web components.                                                        |
-| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                        |
+| Term                     | Definition                                                                                                                                     |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                  |
+| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                                                       |
+| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                          |
+| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                  |
+| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props. |
+| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                       |
+| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                       |

@@ -5,18 +5,25 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          Label
-          <kbd aria-hidden="true" class="badge-text-hint">
-            V
-          </kbd>
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              V
+            </kbd>
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -24,7 +31,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -39,9 +46,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -49,7 +61,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -57,7 +69,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -72,9 +84,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -95,9 +112,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -105,7 +127,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -113,7 +135,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -131,9 +153,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -141,17 +168,17 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -166,9 +193,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -176,16 +208,16 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -200,9 +232,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -210,16 +247,16 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -234,9 +271,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -244,7 +286,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -252,7 +294,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -267,9 +309,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -277,7 +324,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -285,7 +332,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -300,13 +347,18 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--read-only kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
-          <span aria-hidden="true" class="kol-form-field__label__read-only">
-            (kol-readonly)
-          </span>
+        </span>
+        <span aria-hidden="true" class="kol-form-field__label__read-only">
+          (kol-readonly)
         </span>
       </label>
       <div class="kol-form-field__input">
@@ -326,18 +378,25 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          Label
-          <kbd aria-hidden="true" class="badge-text-hint">
-            S
-          </kbd>
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              S
+            </kbd>
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -345,7 +404,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -360,9 +419,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -370,7 +434,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -379,7 +443,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -394,18 +458,25 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          Label
-          <kbd aria-hidden="true" class="badge-text-hint">
-            V
-          </kbd>
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              V
+            </kbd>
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -418,7 +489,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -433,9 +504,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -443,7 +519,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -456,7 +532,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -471,9 +547,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -499,9 +580,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -509,7 +595,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -522,7 +608,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -540,9 +626,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -550,9 +641,9 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
@@ -563,9 +654,9 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </datalist>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -580,9 +671,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -590,9 +686,9 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
-            <kol-icon _icons="codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
@@ -604,7 +700,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -619,9 +715,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -629,7 +730,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -641,9 +742,9 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </datalist>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -658,9 +759,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -668,7 +774,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -681,7 +787,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -696,9 +802,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -706,7 +817,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -719,7 +830,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -734,13 +845,18 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--read-only kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
-          <span aria-hidden="true" class="kol-form-field__label__read-only">
-            (kol-readonly)
-          </span>
+        </span>
+        <span aria-hidden="true" class="kol-form-field__label__read-only">
+          (kol-readonly)
         </span>
       </label>
       <div class="kol-form-field__input">
@@ -765,18 +881,25 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          Label
-          <kbd aria-hidden="true" class="badge-text-hint">
-            S
-          </kbd>
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              S
+            </kbd>
+          </span>
         </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -789,7 +912,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -804,9 +927,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -814,7 +942,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -828,7 +956,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -843,9 +971,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -853,7 +986,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -866,7 +999,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -881,9 +1014,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -891,7 +1029,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -904,7 +1042,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -919,9 +1057,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -929,7 +1072,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -937,7 +1080,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>
@@ -952,9 +1095,14 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="kol-form-field__label-text">
-          <span>
-            Label
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
           </span>
         </span>
       </label>
@@ -962,7 +1110,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-down" data-testid="kol-input-number-step-down" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-minus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
             </button>
           </div>
           <div class="kol-input-container__container">
@@ -970,7 +1118,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
-              <kol-icon _icons="kolicon-plus" _label=""></kol-icon>
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
         </div>

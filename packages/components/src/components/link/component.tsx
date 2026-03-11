@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolTooltipWcTag } from '../../core/component-names';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -56,8 +57,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
-import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 
@@ -108,7 +109,6 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 			event.preventDefault();
 		} else {
 			if (typeof this.state._on?.onClick === 'function') {
-				event.preventDefault();
 				setEventTarget(event, this.anchorRef);
 				this.state._on?.onClick(event, this.state._href);
 			}
@@ -193,7 +193,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					role={this.state._role}
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
-					<KolSpanFc
+					<SpanFC
 						class="kol-link__text"
 						badgeText={this.state._accessKey || this.state._shortKey}
 						icons={this.state._icons}
@@ -201,12 +201,12 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						label={hasExpertSlot ? '' : this.state._label || this.state._href}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanFc>
+					</SpanFC>
 					{isExternal && (
-						<KolIconTag
+						<IconFC
 							class="kol-link__icon"
-							_label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							_icons={'kolicon-link-external'}
+							label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
+							icons={'kolicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
 					)}

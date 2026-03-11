@@ -22,7 +22,3 @@ packages:
   - packages/tools/mcp
   - packages/tools/visual-tests
 
-overrides:
-  '@hono/node-server@<1.19.10': '>=1.19.10'
-  immutable@>=5.0.0 <5.1.5: '>=5.1.5'
-  rollup@>=4.0.0 <4.59.0: '>=4.59.0'

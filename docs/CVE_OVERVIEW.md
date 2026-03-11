@@ -31,9 +31,9 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   3 |   3 |   3 |   1 |
-| high     |  14 |  15 |  21 |  17 |
-| moderate |   3 |   2 |  11 |   1 |
-| low      |   2 |   2 |   7 |   0 |
+| high     |  17 |  17 |  27 |  20 |
+| moderate |   1 |   2 |  13 |   1 |
+| low      |   3 |   3 |   8 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -49,24 +49,33 @@
 | @angular/compiler    | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes               |
 | @angular/core        | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes               |
 | @angular/core        | high     | CVE-2026-27970      | v1                | Angular i18n vulnerable to Cross-Site Scripting                                   |
+| @hono/node-server    | high     | CVE-2026-29087      | v2                | @hono/node-server has authorization bypass for protected static paths via encode  |
 | axios                | high     | CVE-2026-25639      | v3, v2            | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig         |
 | braces               | high     | CVE-2024-4068       | v4, v3, v2, v1    | Uncontrolled resource consumption in braces                                       |
+| express-rate-limit   | high     | CVE-2026-30827      | v2                | express-rate-limit: IPv4-mapped IPv6 addresses bypass per-client rate limiting o  |
 | fast-xml-parser      | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                           |
 | fast-xml-parser      | high     | CVE-2026-26278      | v4, v3, v2        | fast-xml-parser affected by DoS through entity expansion in DOCTYPE (no expansio  |
+| hono                 | high     | CVE-2026-29045      | v2                | Hono vulnerable to arbitrary file access via serveStatic vulnerability            |
+| immutable            | high     | CVE-2026-29063      | v2                | Immutable is vulnerable to Prototype Pollution                                    |
+| locutus              | high     | CVE-2026-29091      | v4, v3, v2, v1    | locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Co  |
 | lodash.pick          | high     | CVE-2020-8203       | v2, v1            | Prototype Pollution in lodash                                                     |
 | minimatch            | high     | CVE-2026-27903      | v4, v3, v2, v1    | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v4, v3, v2, v1    | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
 | minimatch            | high     | CVE-2026-26996      | v4, v3, v2        | minimatch has a ReDoS via repeated wildcards with non-matching literal in patter  |
-| rollup               | high     | CVE-2026-27606      | v4, v3, v1        | Rollup 4 has Arbitrary File Write via Path Traversal                              |
+| rollup               | high     | CVE-2026-27606      | v1                | Rollup 4 has Arbitrary File Write via Path Traversal                              |
 | semver               | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                         |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v4, v3, v2, v1    | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
+| svgo                 | high     | CVE-2026-29074      | v4, v3, v2, v1    | SVGO DoS through entity expansion in DOCTYPE (Billion Laughs)                     |
 | tar                  | high     | CVE-2026-23950      | v1                | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on   |
 | tar                  | high     | CVE-2026-24842      | v1                | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave  |
 | tar                  | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins  |
-| tar                  | high     | CVE-2026-26960      | v4, v3, v2, v1    | Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in no  |
-| ajv                  | moderate | CVE-2025-69873      | v4, v3, v2        | ajv has ReDoS when using `$data` option                                           |
+| tar                  | high     | CVE-2026-26960      | v4, v3, v1        | Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in no  |
+| tar                  | high     | CVE-2026-29786      | v4, v3, v2, v1    | tar has Hardlink Path Traversal via Drive-Relative Linkpath                       |
+| ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                           |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                            |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r  |
+| hono                 | moderate | CVE-2026-29086      | v2                | Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in  |
+| hono                 | moderate | CVE-2026-29085      | v2                | Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()            |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                     |
 | micromatch           | moderate | CVE-2024-4067       | v4, v3, v2, v1    | Regular Expression Denial of Service (ReDoS) in micromatch                        |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values            |
@@ -75,6 +84,7 @@
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to   |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious  |
 | webpack-dev-server   | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious  |
+| @tootallnate/once    | low      | CVE-2026-3449       | v4, v3, v2        | @tootallnate/once vulnerable to Incorrect Control Flow Scoping                    |
 | diff                 | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch         |
 | fast-xml-parser      | low      | CVE-2026-27942      | v4, v3, v2        | fast-xml-parser has stack overflow in XMLBuilder with preserveOrder               |
 | hono                 | low      | GHSA-gq3j-xvxp-8hrf | v2                | Hono added timing comparison hardening in basicAuth and bearerAuth                |

@@ -143,7 +143,6 @@ export const Skeleton: FC = () => {
 				{Array.from({ length: skeletonCount }, (_, idx) => (
 					<KolSkeleton
 						key={`skeleton-${generation}-${idx}`}
-						_count={initialCount}
 						_name={`Example ${idx}`}
 						onLoaded={idx === 0 ? handleLoaded : undefined}
 						onRendered={handleRendered}

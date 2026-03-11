@@ -1,0 +1,93 @@
+@use '../../mixins/to-rem' as *;
+
+@mixin kol-alert($color: null) {
+	color: var($color);
+	margin-left: calc(-1 * var(--spacing-2xs));
+
+	font-size: 0.875em;
+}
+
+@mixin kol-alert-theme {
+	.kol-alert {
+		$root: &;
+
+		&--variant-msg {
+			border: none;
+		}
+
+		&--variant-card {
+			border-style: solid;
+			padding-top: to-rem(24);
+			padding-bottom: to-rem(24);
+			border-width: 2px;
+			padding-inline-end: to-rem(8);
+			padding-inline-start: to-rem(24);
+		}
+
+		&--type-default {
+			--alert-accent-color: var(--color-grey);
+		}
+
+		&--type-error {
+			--alert-accent-color: var(--color-red);
+		}
+
+		&--type-info {
+			--alert-accent-color: var(--color-blue);
+		}
+
+		&--type-success {
+			--alert-accent-color: var(--color-green);
+		}
+
+		&--type-warning {
+			--alert-accent-color: var(--color-orange);
+		}
+
+		&__container {
+			background-color: var(--color-white);
+
+			@at-root #{$root}--variant-card & {
+				gap: to-rem(8);
+			}
+		}
+
+		&__container-content {
+			@at-root #{$root}--variant-msg & {
+				padding: var(--spacing-2xs);
+			}
+		}
+
+		&__closer {
+			.kol-button {
+				color: var(--alert-accent-color);
+			}
+
+			.kol-icon {
+				@at-root #{$root}--variant-card & {
+					font-size: to-rem(32);
+				}
+			}
+		}
+
+		&__icon {
+			color: var(--alert-accent-color);
+
+			@at-root #{$root}--variant-msg & {
+				margin: var(--spacing-2xs);
+
+				font-size: 1.5em;
+			}
+
+			@at-root #{$root}--variant-card & {
+				font-size: to-rem(32);
+			}
+		}
+
+		&__content {
+			@at-root #{$root}--variant-card & {
+				margin-left: to-rem(40);
+			}
+		}
+	}
+}

@@ -72,9 +72,9 @@ Bei Widersprüchen hat die ARC42.md Vorrang.
 Erstelle bzw. ersetze die Dateien im Komponentenverzeichnis gemäß der ARC42-Schichten:
 
 1. **API-Definition** (`api.tsx`) — Interface für die Komponente (nutzt Props-Typen aus Schritt 2)
-2. **Controller** — erweitert `BaseController`, nutzt normalisierte Props
+2. **Controller** — erweitert `BaseController`, nutzt normalisierte Props, empfängt `setState` und `getState` als Callbacks
 3. **Functional Component** — stateless Renderer
-4. **Web Component** — Stencil `@Component` mit Lifecycle, Watchers, Rendering
+4. **Web Component** — Stencil `@Component` mit Lifecycle, Watchers, Rendering; erweitert `BaseWebComponent<Api>` und übergibt `this.setState` und `this.getState` an den Controller
 5. **CSS/SCSS** — bestehende Styles beibehalten, bei Bedarf anpassen
 6. **Tests** — Testdateien **neben** `component.tsx` erstellen bzw. aktualisieren (kein `test/`-Unterordner, siehe ARC42 Design Decision 11):
    - `snapshot.spec.tsx` — Jest DOM-Snapshot-Tests (`executeSnapshotTests`)

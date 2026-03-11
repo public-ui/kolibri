@@ -1,0 +1,12 @@
+@use '../../../assets/kolicons/style' as *;
+
+@mixin kol-icon-styles() {
+	.kol-icon {
+		color: inherit;
+		display: inline-block;
+
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+	}
+}

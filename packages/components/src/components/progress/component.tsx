@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
@@ -13,8 +14,8 @@ import type { ProgressVariantType } from '../../internal/props';
 	},
 	shadow: true,
 })
-export class KolProgress implements WebComponentInterface<ProgressApi> {
-	private readonly ctrl = new ProgressController(this);
+export class KolProgress extends BaseWebComponent<ProgressApi> implements WebComponentInterface<ProgressApi> {
+	private readonly ctrl = new ProgressController(this.setState, this.getState);
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -71,20 +72,11 @@ export class KolProgress implements WebComponentInterface<ProgressApi> {
 		this.ctrl.watchVariant(value);
 	}
 
-	@State()
-	public unit: string = '%';
-
-	@State()
-	public variant: ProgressVariantType = 'bar';
-
 	/**
 	 * A11y: Aria live value
 	 */
 	@State()
 	public liveValue: number = 0;
-
-	@State()
-	public max: number = this._max;
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
@@ -101,11 +93,16 @@ export class KolProgress implements WebComponentInterface<ProgressApi> {
 	}
 
 	public render(): JSX.Element {
-		const { label, max, unit, value, variant } = this.ctrl.getProps();
-		const { liveValue } = this;
 		return (
 			<Host>
-				<ProgressFC label={label} max={max} unit={unit} value={value} variant={variant} liveValue={liveValue} />
+				<ProgressFC
+					label={this.ctrl.getRenderProp('label')}
+					max={this.ctrl.getRenderProp('max')}
+					unit={this.ctrl.getRenderProp('unit')}
+					value={this.ctrl.getRenderProp('value')}
+					variant={this.ctrl.getRenderProp('variant')}
+					liveValue={this.liveValue}
+				/>
 			</Host>
 		);
 	}

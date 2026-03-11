@@ -1,20 +1,14 @@
-import type { AltProp, LoadingProp, LoadingType, SizesProp, SrcProp, SrcsetProp } from '../../props';
-import { altProp, loadingProp, sizesProp, srcProp, srcsetProp, withValidPropValue } from '../../props';
+import type { LoadingType } from '../../props';
+import { altProp, loadingProp, sizesProp, srcProp, srcsetProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
 import type { ImageApi } from './api';
+import { imagePropsConfig } from './api';
 
 export class ImageController extends BaseController<ImageApi> implements ControllerInterface<ImageApi> {
-	public constructor(states: ImageApi['States'] = {}) {
-		super(states, {
-			alt: '',
-			loading: 'lazy',
-			sizes: '',
-			src: '',
-			srcset: '',
-		});
+	public constructor(setState: SetStateFn<ImageApi>, getState: GetStateFn<ImageApi>) {
+		super(imagePropsConfig, setState, getState);
 	}
-
 	public componentWillLoad(props: ResolvedInputProps<ImageApi>): void {
 		const { alt, loading, sizes, src, srcset } = props;
 		this.watchAlt(alt);
@@ -25,32 +19,32 @@ export class ImageController extends BaseController<ImageApi> implements Control
 	}
 
 	public watchAlt(value?: string): void {
-		withValidPropValue<AltProp>(altProp, value, (v) => {
-			this.setProp('alt', v);
+		altProp.apply(value, (v) => {
+			this.setRenderProp('alt', v);
 		});
 	}
 
 	public watchLoading(value?: LoadingType): void {
-		withValidPropValue<LoadingProp>(loadingProp, value, (v) => {
-			this.setProp('loading', v);
+		loadingProp.apply(value, (v) => {
+			this.setRenderProp('loading', v);
 		});
 	}
 
 	public watchSizes(value?: string): void {
-		withValidPropValue<SizesProp>(sizesProp, value, (v) => {
-			this.setProp('sizes', v);
+		sizesProp.apply(value, (v) => {
+			this.setRenderProp('sizes', v);
 		});
 	}
 
 	public watchSrc(value?: string): void {
-		withValidPropValue<SrcProp>(srcProp, value, (v) => {
-			this.setProp('src', v);
+		srcProp.apply(value, (v) => {
+			this.setRenderProp('src', v);
 		});
 	}
 
 	public watchSrcset(value?: string): void {
-		withValidPropValue<SrcsetProp>(srcsetProp, value, (v) => {
-			this.setProp('srcset', v);
+		srcsetProp.apply(value, (v) => {
+			this.setRenderProp('srcset', v);
 		});
 	}
 }

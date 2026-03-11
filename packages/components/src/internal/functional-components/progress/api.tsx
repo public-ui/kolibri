@@ -1,14 +1,9 @@
-import type { LabelProp, MaxProp, UnitProp, ValueProp, VariantProgressProp } from '../../props';
-import type { ComponentApi, InternalOf } from '../generic-types';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface ProgressApi extends ComponentApi {
-	Props: {
-		Optional: LabelProp & UnitProp & VariantProgressProp;
-		Required: MaxProp & ValueProp;
-	};
-	States: InternalOf<UnitProp> &
-		InternalOf<VariantProgressProp> & {
-			liveValue: number;
-			max: number;
-		};
-}
+export const progressPropsConfig = {
+	optional: [labelProp, unitProp, variantProgressProp],
+	required: [maxProp, clampedNumberValueProp],
+} as const satisfies PropsConfigShape;
+
+export type ProgressApi = ApiFromConfig<typeof progressPropsConfig, { States: { liveValue: number } }>;

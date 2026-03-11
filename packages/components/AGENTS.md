@@ -85,8 +85,8 @@ For detailed architectural guidance when creating new components, consult the co
 
 The blueprint demonstrates the recommended layered approach:
 
-- **Web component layer** – custom element definition, public API with underscored props (`_name`, `_count`), lifecycle management via `@Component`, `@Prop`, `@Watch` decorators.
-- **Controller layer** – encapsulates state transitions, validation orchestration, and exposes render props via `getProps()`.
+- **Web component layer** – custom element definition, public API with underscored props (`_name`), lifecycle management via `@Component`, `@Prop`, `@Watch` decorators.
+- **Controller layer** – encapsulates state transitions, validation orchestration, and exposes render props via `getRenderProp(key)`.
 - **Functional component layer** – stateless renderer that works exclusively with normalized, validated props.
 - **Schema helpers layer** – co-locates prop types, normalization and validation logic shared across components.
 
@@ -96,4 +96,4 @@ When implementing a new component:
 2. Replace domain-specific pieces (component name, props, controller logic) while preserving the architectural structure.
 3. Ensure controllers are initialized in `componentWillLoad()` with the current prop snapshot.
 4. Use watchers only on public (underscored) props to normalize and forward changes to the controller.
-5. Delegate rendering to the controller's `getProps()` method for a single, immutable render snapshot.
+5. Delegate rendering to the controller's `getRenderProp(key)` method for type-safe, single-value prop access.
