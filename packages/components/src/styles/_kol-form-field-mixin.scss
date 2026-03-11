@@ -11,6 +11,10 @@
 				cursor: pointer;
 			}
 
+			&-text {
+				display: ruby;
+			}
+
 			#{$root}--disabled & {
 				opacity: 0.5;
 			}

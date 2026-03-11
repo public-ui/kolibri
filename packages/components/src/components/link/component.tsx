@@ -57,8 +57,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
-import { KolSpanFc } from '../../functional-components';
 import { translate } from '../../i18n';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 
@@ -193,7 +193,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 					role={this.state._role}
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
-					<KolSpanFc
+					<SpanFC
 						class="kol-link__text"
 						badgeText={this.state._accessKey || this.state._shortKey}
 						icons={this.state._icons}
@@ -201,7 +201,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						label={hasExpertSlot ? '' : this.state._label || this.state._href}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanFc>
+					</SpanFC>
 					{isExternal && (
 						<IconFC
 							class="kol-link__icon"

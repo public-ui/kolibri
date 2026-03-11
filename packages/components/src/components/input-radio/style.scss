@@ -18,6 +18,10 @@
 
 		&__label {
 			display: contents;
+
+			&-text {
+				display: ruby;
+			}
 		}
 
 		&__input {
