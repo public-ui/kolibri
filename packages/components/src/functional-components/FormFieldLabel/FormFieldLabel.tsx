@@ -44,7 +44,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}
 		>
-			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? 'N/A')} badgeText={badgeText}>
+			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? '')} badgeText={badgeText}>
 				<slot name="expert"></slot>
 			</SpanFC>
 			{readOnly ? (
