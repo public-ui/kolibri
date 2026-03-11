@@ -672,6 +672,7 @@ ROUTES.set('link/target', {
 		skip: true,
 	},
 });
+ROUTES.set('link/link-variant', {});
 ROUTES.set('modal/basic?show-dialog=true', {
 	snapshot: {
 		viewportSize: {

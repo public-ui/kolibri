@@ -54,9 +54,9 @@
 		"lint:tsc": "tsc --noemit",
 		"prepare": "npm-run-all2 prepare:*",
 		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
-		"prepare:theme-default": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" assets --dot",
-		"prepare:theme-ecl": "cpy \"node_modules/@public-ui/theme-ecl/assets/**/*\" assets --dot",
-		"prepare:theme-kern": "cpy \"node_modules/@public-ui/theme-kern/assets/**/*\" assets --dot",
+		"prepare:theme-default": "cpy \"default/assets/**/*\" assets --dot",
+		"prepare:theme-ecl": "cpy \"ecl/assets/**/*\" assets --dot",
+		"prepare:theme-kern": "cpy \"kern/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test:update:all": "pnpm -r --workspace-concurrency=1 test:update"
 	},

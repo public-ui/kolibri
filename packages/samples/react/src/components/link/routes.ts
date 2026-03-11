@@ -8,6 +8,7 @@ import { LinkReactRouter } from './link-react-router';
 import { LinkHeadline } from './linked-headline';
 import { LinkShortKey } from './short-key';
 import { LinkTarget } from './target';
+import { LinkVariant } from './variant';
 
 export const LINK_ROUTES: Routes = {
 	link: {
@@ -20,5 +21,6 @@ export const LINK_ROUTES: Routes = {
 		'short-key': LinkShortKey,
 		'react-router': LinkReactRouter,
 		'linked-headline': LinkHeadline,
+		'link-variant': LinkVariant,
 	},
 };
