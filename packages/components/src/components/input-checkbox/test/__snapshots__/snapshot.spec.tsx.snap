@@ -7,7 +7,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -15,6 +15,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -320,7 +323,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -328,6 +331,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -419,7 +425,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -427,6 +433,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -732,7 +741,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -740,6 +749,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -825,7 +837,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -833,6 +845,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -1138,7 +1153,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -1146,6 +1161,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -1225,7 +1243,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -1233,6 +1251,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -1538,7 +1559,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -1546,6 +1567,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -1637,7 +1661,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -1645,6 +1669,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -1950,7 +1977,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -1958,6 +1985,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -2043,7 +2073,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -2051,6 +2081,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -2356,7 +2389,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -2364,6 +2397,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -2449,7 +2485,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -2457,6 +2493,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -2762,7 +2801,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -2770,6 +2809,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
@@ -2855,7 +2897,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -2863,6 +2905,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
               </span>
             </span>
           </label>
@@ -3168,7 +3213,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text kol-span">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
                   Label
@@ -3176,6 +3221,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 <span aria-hidden="true" class="kol-span__label" hidden="">
                   <slot name="expert"></slot>
                 </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
               </span>
             </span>
           </label>
