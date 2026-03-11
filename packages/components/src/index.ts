@@ -4,7 +4,7 @@ export { ToasterService } from './components/toaster/toaster';
 export { bootstrap, isInitialized, register } from './core/bootstrap';
 export * from './enums/bund';
 export * from './kolibri';
-export { KoliBri, KoliBriDevHelper } from './schema';
+export { EventValueOrEventCallback, KoliBri, KoliBriDevHelper } from './schema';
 export type {
 	FocusableElement,
 	KoliBriTableCell,
