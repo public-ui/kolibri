@@ -1,81 +1,265 @@
 # Neue Komponente erstellen
 
-> Schritt-für-Schritt-Anleitung, wie man eine neue Komponente im Teilmodul `components` erstellt.
+> Schritt-für-Schritt-Anleitung basierend auf dem [Skeleton Blueprint](../../packages/components/src/components/_skeleton/ARC42.md).
 
 ## Grundprinzipien
 
-Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
-
 - Auflistungen werden immer alphabetisch sortiert
-- Wiederverwendete Algorithmen (z.B. Property-Validatoren) werden in statische Funktionen ausgelagert (z.B. `packages/schema/src/validators/<prop-name>.ts`)
-- ...
+- Die [ARC42.md](../../packages/components/src/components/_skeleton/ARC42.md) ist die führende Architektur-Spezifikation — lies sie vollständig, bevor du eine neue Komponente erstellst
+- Alle Web Components verwenden `shadow: true` — Komponenten ohne Shadow DOM werden als Functional Components implementiert
+- Props leben in `src/internal/props/` mit eigenem `PropDefinition` pro Prop
+- Kein toter Code, keine Barrel-Files, keine `types.ts`
 
 ## Checkliste
 
-| Schritt | Kurzbeschreibung                                                                                                                         |
-| :-----: | ---------------------------------------------------------------------------------------------------------------------------------------- |
-|    0    | Projekt starten                                                                                                                          |
-|    1    | Name im Schema hinterlegen                                                                                                               |
-|    2    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit Shadow DOM<br>- styles.css<br>- types.ts |
-|    3    | API spezifizieren                                                                                                                        |
-|    4    | Klasse zur API implementieren<br>- Props<br>- State<br>- Watcher<br>- Initialer Hook<br>- Render-Methode                                 |
-|    5    | Styling anlegen                                                                                                                          |
-|    6    | Beispiele in `index.html` aufnehmen                                                                                                      |
-|    7    | readme.md vervollständigen                                                                                                               |
-|   ...   | ...                                                                                                                                      |
-|   ...   | Klasse in Komponenten-Liste für Tests aufnehmen (packages/components/src/components/component-list.ts)                                   |
-|   ...   | Alle autogeneierten Daten zur Komponente mit einchecken                                                                                  |
+| Schritt | Kurzbeschreibung                                                                |
+| :-----: | ------------------------------------------------------------------------------- |
+|    0    | Projekt starten                                                                 |
+|    1    | Tag-Name in Stencil-Konfiguration registrieren                                  |
+|    2    | Props erstellen oder vorhandene wiederverwenden (`src/internal/props/`)         |
+|    3    | API-Definition erstellen (`api.tsx`) mit `PropsConfigShape` und `ApiFromConfig` |
+|    4    | Controller implementieren (`controller.ts`) — erweitert `BaseController<Api>`   |
+|    5    | Functional Component erstellen (`component.tsx`) — stateless Renderer           |
+|    6    | Web Component erstellen (`component.tsx`) — erweitert `BaseWebComponent<Api>`   |
+|    7    | Tests co-lokalisiert neben `component.tsx` erstellen                            |
+|    8    | Beispiel in React-Sample-App anlegen                                            |
+|    9    | Validierung: `pnpm format && pnpm lint && pnpm test && pnpm -r build`           |
 
-## Schritt 0
+## Schritt 0 — Projekt starten
 
 Projekt starten, wie in [Contribution](../../CONTRIBUTING.md) beschrieben.
 
-## Schritt 1
+## Schritt 1 — Tag-Name registrieren
 
-Als erstes wird der **Name** der neuen Komponenten in der **Schema**-Datei (`packages/schema/tag-names.ts`) hinterlegt.
+Den Tag-Namen der neuen Komponente in `packages/components/stencil.config.ts` registrieren.
 
-## Schritt 2 - Verzeichnis anlegen
+## Schritt 2 — Props erstellen (Props-First!)
 
-Eine Vorlage ist unter `/docs/tutorials/new-component` zu finden. Ziel: `/packages/components/src/components/[component-name]`.
-Sofern eine Variante ohne Shadow DOM für andere Komponenten benötigt wird, ist die Komponente selbst, mit `shadow: false` anzulegen und diese Komponente in `shadow.tsx` einzubinden.
-Andernfalls ist die Komponente direkt mit `shadow: true` in `shadow.tsx` zu implementieren.
-Ziel: shadow.tsx existiert immer und liefert die Komponente mit Shadow DOM.
-Die `readme.md` wird automatisch bei `pnpm build` erzeugt, sollte sie bereits existieren wird der automatisch generierte Inhalt angehängt.
+**Bevor die Komponente implementiert wird, müssen alle Props definiert sein.**
 
-## Schritt 3 - API spezifizieren
+Pro Prop eine Datei unter `src/internal/props/`:
 
-Datei: `types.ts`;
-Inhalt: `RequiredProps`, `OptionalProps`, `RequiredStates`, `OptionalStates`, `States` und `ComponentApi`
+```typescript
+// src/internal/props/name.ts
+import type { SimpleProp } from './helpers/factory';
+import { createPropDefinition } from './helpers/factory';
+import { normalizeString } from './helpers/normalizers';
 
-## Schritt 4 - Klasse Implementieren
+export type NameProp = SimpleProp<'name', string>;
+export const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
+```
 
-Datei: `shadow.tsx` oder/und `component.tsx`;
-Inhalt:
+- `SimpleProp<K, T>` wenn externer und interner Typ identisch sind
+- `Prop<K, TExternal, TInternal>` wenn sich die Typen unterscheiden (z.B. `ColorProp`)
+- Export in `src/internal/props/index.ts` hinzufügen
+- Bestehende Props aus `index.ts` wiederverwenden, wenn möglich
 
-- `@Component` (außerhalb der Klasse),
-- `@Prop`: alphabetisch sortiert,
-- `@State`: Standardwerte werden hier gesetzt,
-- `@Watch`: werden bei Änderungen des Wertes aufgerufen, Validierung und Übernahme des Wertes in den State,
-- `public componentWillLoad()`: Initialer Hook, alle Validierungsmethoden hier aufrufen
-- `public render()`: Render-Methode, erstellt das HTML, das gerendert werden soll
+Details: [ARC42 §4 — Schema Helper Layer](../../packages/components/src/components/_skeleton/ARC42.md#schema-helper-layer)
 
-## Schritt 5 - Styling anlegen
+## Schritt 3 — API-Definition
 
-Datei: `styles.css`;
-Wichtig: `packages/components/src/components/README.md` beachten.
-Sofern Styling für mehrere Komponenten verwendet werden soll, Datei passend benennen und direkt unter `/packages/components/src/components/` erstellen und in styles.css importieren.
+Datei: `src/internal/functional-components/<component>/api.tsx`
 
-## Schritt 6 - Beispiel in index.html erstellen
+```typescript
+import { nameProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-Datei: `/packages/components/src/index.html`;
-Unter body > main > ol ein li mit dem Beispielcode erstellen.
-Aus dem Verzeichnis `/packages/components` kann mit `pnpm start` der dev-server gestartet werden.
-Andere li können vorrübergehend entfernt werden, dafür ist die `index.bak.html` da.
-Nach Beendigung der Entwicklung ist die `index.html` zurückzusetzen, abgesehen des neuen Beispiels, welches in die `index.bak.html` ebenfalls einzufügen ist.
+export const myComponentPropsConfig = {
+	required: [nameProp],
+	// optional: [showProp],
+} as const satisfies PropsConfigShape;
 
-## Schritt 7 - readme.md vervollständigen
+export type MyComponentApi = ApiFromConfig<
+	typeof myComponentPropsConfig,
+	{
+		// Nur definieren, was die Komponente tatsächlich nutzt:
+		// Callbacks: { click: () => void };
+		// Emitters: { change: string };
+		// Methods: { focus: () => void };
+		// States: { count: number };
+		// Refs: { button: HTMLButtonElement };
+		// Listeners: { keydown: KeyboardEvent };
+	}
+>;
+```
 
-Datei: `readme.md`;
-Die von `pnpm build` (in `/packages/components` ausgeführt) erzeugte `readme.md` mit sinnvollen Informationen vervollständigen.
+Details: [ARC42 §4 — API Definition with PropsConfigShape](../../packages/components/src/components/_skeleton/ARC42.md#api-definition-with-propsconfigshape-and-apifromconfig)
 
-... bitte fortsetzen.
+## Schritt 4 — Controller
+
+Datei: `src/internal/functional-components/<component>/controller.ts`
+
+```typescript
+import { nameProp } from '../../props';
+import { BaseController } from '../base-controller';
+import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { MyComponentApi } from './api';
+import { myComponentPropsConfig } from './api';
+
+export class MyComponentController extends BaseController<MyComponentApi> implements ControllerInterface<MyComponentApi> {
+	public constructor(setState: SetStateFn<MyComponentApi>, getState: GetStateFn<MyComponentApi>) {
+		super(myComponentPropsConfig, setState, getState);
+	}
+
+	public componentWillLoad(props: ResolvedInputProps<MyComponentApi>): void {
+		const { name } = props;
+		this.watchName(name);
+	}
+
+	public watchName(value?: string): void {
+		nameProp.apply(value, (v) => {
+			this.setRenderProp('name', v);
+		});
+	}
+}
+```
+
+- Event-Handler und Ref-Setter als **Arrow-Properties** (`handleClick = () => { … }`)
+- Lifecycle- und Watcher-Methoden als **Prototype-Methoden**
+- Details: [ARC42 §4 — Controller Layer](../../packages/components/src/components/_skeleton/ARC42.md#controller-layer)
+
+## Schritt 5 — Functional Component
+
+Datei: `src/internal/functional-components/<component>/component.tsx`
+
+```tsx
+import type { FunctionalComponent as FC } from '@stencil/core';
+import { h } from '@stencil/core';
+import { bem } from '../../../schema/bem-registry';
+import type { FunctionalComponentProps } from '../generic-types';
+import type { MyComponentApi } from './api';
+
+const myBem = bem.forBlock('kol-my-component');
+
+export const MyComponentFC: FC<FunctionalComponentProps<MyComponentApi>> = (props) => {
+	const { name } = props;
+	return (
+		<div class={myBem()}>
+			<span class={myBem('name')}>{name}</span>
+		</div>
+	);
+};
+```
+
+- Stateless, keine Seiteneffekte
+- Details: [ARC42 §4 — Functional Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#functional-component-layer)
+
+## Schritt 6 — Web Component
+
+Datei: `src/components/<component>/web-components/<component>/component.tsx`
+
+```tsx
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
+import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
+import type { MyComponentApi } from '../../../../internal/functional-components/my-component/api';
+import { MyComponentFC } from '../../../../internal/functional-components/my-component/component';
+import { MyComponentController } from '../../../../internal/functional-components/my-component/controller';
+
+@Component({
+	tag: 'kol-my-component',
+	shadow: true,
+})
+export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements WebComponentInterface<MyComponentApi> {
+	private readonly ctrl = new MyComponentController(this.setState, this.getState);
+
+	@Prop()
+	public _name!: string;
+
+	@Watch('_name')
+	public watchName(value?: string): void {
+		this.ctrl.watchName(value);
+	}
+
+	public componentWillLoad(): void {
+		this.ctrl.componentWillLoad({
+			name: this._name,
+		});
+	}
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<MyComponentFC name={this.ctrl.getRenderProp('name')} />
+			</Host>
+		);
+	}
+}
+```
+
+- Immer `shadow: true` und `<Host>` ohne Klassen-Attribut
+- `@Watch` nur auf unterstrichene Props
+- Details: [ARC42 §4 — Web Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#web-component-layer)
+
+## Schritt 7 — Tests
+
+Tests liegen **direkt neben** `component.tsx` — kein `test/`-Unterordner.
+
+**Snapshot-Test** (`snapshot.spec.tsx`):
+
+```tsx
+import { executeSnapshotTests } from '../../../../utils/testing';
+import { KolMyComponent } from './component';
+
+const TAG = 'kol-my-component';
+
+type Props = {
+	_name: string;
+};
+
+executeSnapshotTests<Props>(TAG, [KolMyComponent], [{ _name: 'Test' }, { _name: '' }]);
+```
+
+**Interaction-Test** (`interaction.e2e.ts`):
+
+```typescript
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
+
+test.describe('kol-my-component', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.setContent('<kol-my-component _name="Test"></kol-my-component>');
+	});
+
+	test('should render the name', async ({ page }) => {
+		await expect(page.locator('kol-my-component')).toBeVisible();
+	});
+});
+```
+
+Details: [ARC42 §9 — Design Decision 11](../../packages/components/src/components/_skeleton/ARC42.md#9-design-decisions)
+
+## Schritt 8 — Beispiel in React-Sample-App
+
+Datei: `packages/samples/react/src/scenarios/<component>.tsx`
+
+Anschließend die Route in `packages/samples/react/src/scenarios/routes.ts` registrieren.
+
+Zum Testen:
+
+```bash
+cd packages/samples/react
+pnpm start
+# Navigiere zu http://localhost:9191
+```
+
+## Schritt 9 — Validierung
+
+```bash
+pnpm format        # ~10 Sekunden
+pnpm lint          # ~1 Minute, NICHT abbrechen
+pnpm test          # ~2-3 Minuten, NICHT abbrechen
+pnpm -r build      # ~2 Minuten, NICHT abbrechen
+```
+
+Alle vier Befehle müssen fehlerfrei durchlaufen.
+
+## Referenz
+
+Die vollständige Referenzimplementierung findet sich im Skeleton Blueprint:
+
+- **Architektur**: [`_skeleton/ARC42.md`](../../packages/components/src/components/_skeleton/ARC42.md)
+- **Agent-Instruktionen**: [`_skeleton/AGENTS.md`](../../packages/components/src/components/_skeleton/AGENTS.md)
+- **Performance-Analyse**: [`_skeleton/PERFORMANCE_ANALYSIS.md`](../../packages/components/src/components/_skeleton/PERFORMANCE_ANALYSIS.md)
+- **Refactoring-Leitfaden**: [`_skeleton/REFACTORING_PROMPT.md`](../../packages/components/src/components/_skeleton/REFACTORING_PROMPT.md)

@@ -1,9 +1,9 @@
-import type { HrefProp, LabelProp, QuoteProp, VariantQuoteProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { hrefProp, labelProp, quoteProp, variantQuoteProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface QuoteApi extends ComponentApi {
-	Props: {
-		Optional: LabelProp & VariantQuoteProp;
-		Required: HrefProp & QuoteProp;
-	};
-}
+export const quotePropsConfig = {
+	optional: [labelProp, variantQuoteProp],
+	required: [hrefProp, quoteProp],
+} as const satisfies PropsConfigShape;
+
+export type QuoteApi = ApiFromConfig<typeof quotePropsConfig>;

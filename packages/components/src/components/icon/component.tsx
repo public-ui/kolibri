@@ -14,7 +14,7 @@ import { IconController } from '../../internal/functional-components/icon/contro
 	shadow: true,
 })
 export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentInterface<IconApi> {
-	private readonly ctrl = new IconController();
+	private readonly ctrl = new IconController(this.setState, this.getState);
 
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).

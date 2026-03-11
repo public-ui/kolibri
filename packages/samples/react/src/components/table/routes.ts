@@ -1,6 +1,7 @@
 import type { Routes } from '../../shares/types';
 import { TableActionColumns } from './action-columns';
 import { TableActionColumnPerformance } from './action-columns-performance';
+import { TableBig } from './big-table';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableDirectionAwareSort } from './direction-aware-sort';
@@ -54,5 +55,6 @@ export const TABLE_ROUTES: Routes = {
 		'sticky-header': TableStickyHeader,
 		'with-footer': TableWithFooter,
 		'with-pagination': TableWithPagination,
+		big: TableBig,
 	},
 };

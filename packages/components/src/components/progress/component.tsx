@@ -15,7 +15,7 @@ import type { ProgressVariantType } from '../../internal/props';
 	shadow: true,
 })
 export class KolProgress extends BaseWebComponent<ProgressApi> implements WebComponentInterface<ProgressApi> {
-	private readonly ctrl = new ProgressController(this.setState);
+	private readonly ctrl = new ProgressController(this.setState, this.getState);
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).

@@ -1,14 +1,12 @@
 import { iconsProp, labelProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedProps } from '../generic-types';
+import type { ControllerInterface, GetStateFn, ResolvedProps, SetStateFn } from '../generic-types';
 import type { IconApi } from './api';
+import { iconPropsConfig } from './api';
 
 export class IconController extends BaseController<IconApi> implements ControllerInterface<IconApi> {
-	public constructor() {
-		super({
-			icons: 'kolicon-logo',
-			label: '',
-		});
+	public constructor(setState: SetStateFn<IconApi>, getState: GetStateFn<IconApi>) {
+		super(iconPropsConfig, setState, getState);
 	}
 
 	public componentWillLoad(props: ResolvedProps<IconApi>): void {
@@ -18,22 +16,14 @@ export class IconController extends BaseController<IconApi> implements Controlle
 	}
 
 	public watchIcons(value?: string): void {
-		iconsProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('icons', v);
-			},
-			this.getDefaultProp('icons'),
-		);
+		iconsProp.apply(value, (v) => {
+			this.setRenderProp('icons', v);
+		});
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-			},
-			this.getDefaultProp('label'),
-		);
+		labelProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
+		});
 	}
 }

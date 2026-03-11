@@ -1,17 +1,21 @@
-import type { LabelProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { labelProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface ClickButtonApi extends ComponentApi {
-	Props: {
-		Required: LabelProp;
-	};
-	Callbacks: {
-		click: () => void;
-	};
-	Methods: {
-		focus: () => void;
-	};
-	Refs: {
-		button: HTMLButtonElement;
-	};
-}
+export const clickButtonPropsConfig = {
+	required: [labelProp],
+} as const satisfies PropsConfigShape;
+
+export type ClickButtonApi = ApiFromConfig<
+	typeof clickButtonPropsConfig,
+	{
+		Callbacks: {
+			click: () => void;
+		};
+		Methods: {
+			focus: () => void;
+		};
+		Refs: {
+			button: HTMLButtonElement;
+		};
+	}
+>;
