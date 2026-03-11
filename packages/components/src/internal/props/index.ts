@@ -1,6 +1,9 @@
+export * from './allow-markdown';
 export * from './alt';
+export * from './badge-text';
 export * from './color';
 export * from './helpers/factory';
+export * from './hide-label';
 export * from './href';
 export * from './icons';
 export * from './label';
@@ -10,6 +13,7 @@ export * from './name';
 export * from './quote';
 export * from './show';
 export * from './sizes';
+export * from './span-icons';
 export * from './src';
 export * from './srcset';
 export * from './unit';

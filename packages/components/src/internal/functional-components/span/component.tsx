@@ -72,13 +72,15 @@ function renderLabel(label: string, hideLabel: boolean, allowMarkdown: boolean |
 }
 
 export const SpanFC: FC<
-	Omit<FunctionalComponentProps<SpanApi>, 'badgeText' | 'hideLabel' | 'icons' | 'allowMarkdown'> & {
-		badgeText?: string | undefined;
-		hideLabel?: boolean | undefined;
-		icons?: KoliBriIconsProp | undefined;
-		allowMarkdown?: boolean | undefined;
+	Omit<FunctionalComponentProps<SpanApi>, 'allowMarkdown' | 'badgeText' | 'hideLabel' | 'icons'> & {
+		allowMarkdown?: boolean;
+		badgeText?: string;
+		hideLabel?: boolean;
+		icons?: KoliBriIconsProp;
 	}
-> = ({ class: classNames, label, hideLabel = false, badgeText, icons, allowMarkdown, ...htmlAttributes }, children) => {
+> = (props, children) => {
+	const { allowMarkdown, badgeText, class: classNames, hideLabel = false, icons, label, ...htmlAttributes } = props;
+
 	let top: NormalizedIcon = null;
 	let left: NormalizedIcon = null;
 	let right: NormalizedIcon = null;
