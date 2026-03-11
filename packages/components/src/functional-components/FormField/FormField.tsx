@@ -49,7 +49,6 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	renderNoHint?: boolean;
 	anotherChildren?: JSX.Element | JSX.Element[];
 	maxLength?: number;
-	showBadge?: boolean;
 
 	formFieldLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
@@ -91,7 +90,6 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		touched,
 		maxLength,
 		ariaDescribedBy,
-		showBadge,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -139,7 +137,6 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					accessKey={accessKey}
 					shortKey={shortKey}
 					readOnly={readOnly}
-					showBadge={showBadge}
 				/>
 			)}
 			<InputContainer {...formFieldInputProps}>

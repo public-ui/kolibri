@@ -43,7 +43,6 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		hideLabel: state._hideLabel,
 		hideMsg: state._hideMsg,
 		touched: state._touched,
-		showBadge: ('_accessKey' in state && Boolean(state._accessKey)) || ('_shortKey' in state && Boolean(state._shortKey)),
 	};
 
 	if ('_required' in state) {

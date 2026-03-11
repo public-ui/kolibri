@@ -14,7 +14,6 @@ type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLe
 	hasExpertSlot?: boolean;
 	hideLabel?: boolean;
 	baseClassName?: string;
-	showBadge?: boolean;
 	readOnly?: boolean;
 };
 
@@ -28,13 +27,12 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	label,
 	hideLabel,
 	hasExpertSlot,
-	showBadge = true,
 	readOnly,
 	...other
 }) => {
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 	const translateReadOnly = translate('kol-readonly');
-	const badgeText = showBadge === false ? undefined : buildBadgeTextString(accessKey, shortKey);
+	const badgeText = buildBadgeTextString(accessKey, shortKey);
 
 	return (
 		<Component
