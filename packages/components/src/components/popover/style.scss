@@ -20,6 +20,7 @@
 			position: absolute;
 			min-width: max-content;
 			min-height: max-content;
+			margin: 0; // popover tags get a default margin from the browser, which interferce with our alignment
 
 			&--visible {
 				animation: 0.3s ease-in forwards fadeInOpacity;
