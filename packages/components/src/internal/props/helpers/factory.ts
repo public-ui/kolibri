@@ -1,5 +1,13 @@
 import { Log } from '../../../schema';
 
+function safeStringify(value: unknown): string {
+	try {
+		return JSON.stringify(value);
+	} catch {
+		return '[unserializable]';
+	}
+}
+
 /**
  * Definiert einen Prop-Typ mit internem und externem Typ.
  *
@@ -66,7 +74,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 				if (this.validate(defaultValue)) {
 					callback(defaultValue);
 				} else {
-					throw new Error(`Default value ${JSON.stringify(defaultValue)} is invalid for prop definition '${propName}'.`);
+					throw new Error(`Default value ${safeStringify(defaultValue)} is invalid for prop definition '${propName}'.`);
 				}
 				return;
 			}
@@ -110,7 +118,7 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 					callback(defaultValue);
 				} else {
 					throw new Error(
-						`Default value ${JSON.stringify(defaultValue)} is invalid for prop definition '${propName}' with dependencies ${JSON.stringify(deps)}.`,
+						`Default value ${safeStringify(defaultValue)} is invalid for prop definition '${propName}' with dependencies ${safeStringify(deps)}.`,
 					);
 				}
 				return;
