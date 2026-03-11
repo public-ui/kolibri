@@ -1,9 +1,9 @@
-import type { AltProp, LoadingProp, SizesProp, SrcProp, SrcsetProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { altProp, loadingProp, sizesProp, srcProp, srcsetProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface ImageApi extends ComponentApi {
-	Props: {
-		Required: AltProp & SrcProp;
-		Optional: LoadingProp & SizesProp & SrcsetProp;
-	};
-}
+export const imagePropsConfig = {
+	optional: [loadingProp, sizesProp, srcsetProp],
+	required: [altProp, srcProp],
+} as const satisfies PropsConfigShape;
+
+export type ImageApi = ApiFromConfig<typeof imagePropsConfig>;

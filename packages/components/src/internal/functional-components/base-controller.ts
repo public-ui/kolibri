@@ -1,21 +1,23 @@
-import type { ComponentApi, GetStateFn, ResolvedInputProps, ResolvedProps, SetStateFn, StrictFields } from './generic-types';
+import type { ComponentApi, GetStateFn, PropsConfigShape, ResolvedInputProps, ResolvedProps, SetStateFn, StrictFields } from './generic-types';
+
+function buildDefaultPropsFromConfig(config: PropsConfigShape): Record<string, unknown> {
+	const defaults: Record<string, unknown> = {};
+	for (const def of [...(config.required ?? []), ...(config.optional ?? [])]) {
+		defaults[def.propName] = def.getDefaultValue();
+	}
+	return defaults;
+}
 
 export abstract class BaseController<Api extends ComponentApi> {
 	private readonly rawProps: Partial<Record<string, unknown>> = {};
 	private readonly renderProps: StrictFields<ResolvedProps<Api>>;
 
 	public constructor(
-		protected readonly defaultProps: StrictFields<ResolvedProps<Api>>,
-		protected readonly setState: SetStateFn<Api> = () => {},
-		protected readonly getState?: GetStateFn<Api>,
+		propsConfig: PropsConfigShape,
+		protected readonly setState: SetStateFn<Api>,
+		protected readonly getState: GetStateFn<Api>,
 	) {
-		this.renderProps = {
-			...defaultProps,
-		};
-	}
-
-	protected getDefaultProp<K extends keyof ResolvedProps<Api>>(key: K): NonNullable<ResolvedProps<Api>[K]> {
-		return this.defaultProps[key] as NonNullable<ResolvedProps<Api>[K]>;
+		this.renderProps = buildDefaultPropsFromConfig(propsConfig) as StrictFields<ResolvedProps<Api>>;
 	}
 
 	protected setRawProp<K extends keyof ResolvedInputProps<Api>>(key: K, value: ResolvedInputProps<Api>[K] | undefined): void {

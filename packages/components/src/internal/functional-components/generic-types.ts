@@ -1,6 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 
+import type { Prop } from '../props';
+
 // ============================================================================
 // Utility Types
 // ============================================================================
@@ -11,6 +13,8 @@ type Callback<T> = (value?: T) => void;
 export type StrictFields<T> = {
 	[K in keyof T]-?: NonNullable<T[K]>;
 };
+
+type UnionToIntersection<U> = (U extends unknown ? (arg: U) => void : never) extends (arg: infer I) => void ? I : never;
 
 // ============================================================================
 // Phantom Key Mapping (__input_* convention)
@@ -51,6 +55,50 @@ export interface ComponentApi {
 	Refs?: Record<string, HTMLElement>;
 	States: Record<never, never>;
 }
+
+// ============================================================================
+// Props Config (Single Source of Truth)
+// ============================================================================
+
+/** Any prop definition that carries a phantom Prop type, a propName and a getDefaultValue method. */
+type AnyPropDef = {
+	readonly __phantomProp__?: Prop<string, unknown, unknown>;
+	readonly propName: string;
+	getDefaultValue(): unknown;
+};
+
+/** Extracts the phantom Prop type from a PropDefinition or DependentPropDefinition. */
+type ExtractPhantomProp<D> = D extends { readonly __phantomProp__?: infer P extends Prop<string, unknown, unknown> } ? P : never;
+
+/** Merges an array of prop definitions into a single intersection of their phantom Prop types. */
+type MergePropsFromArray<A extends readonly AnyPropDef[]> = UnionToIntersection<ExtractPhantomProp<A[number]>>;
+
+/** Shape for a props config object with arrays of runtime prop definitions. */
+export type PropsConfigShape = {
+	optional?: readonly AnyPropDef[];
+	required?: readonly AnyPropDef[];
+};
+
+/**
+ * Derives a full ComponentApi type from a runtime props config and optional extra fields.
+ *
+ * Usage:
+ * ```ts
+ * const config = {
+ *   required: [maxProp, clampedNumberValueProp],
+ *   optional: [labelProp],
+ * } as const satisfies PropsConfigShape;
+ *
+ * type MyApi = ApiFromConfig<typeof config, { States: { liveValue: number } }>;
+ * ```
+ */
+export type ApiFromConfig<Config extends PropsConfigShape, Extra extends Partial<Omit<ComponentApi, 'Props'>> = Record<never, never>> = {
+	Props: {
+		Optional: Config['optional'] extends readonly AnyPropDef[] ? MergePropsFromArray<Config['optional']> : Record<never, never>;
+		Required: Config['required'] extends readonly AnyPropDef[] ? MergePropsFromArray<Config['required']> : Record<never, never>;
+	};
+	States: Extra extends { States: infer S extends Record<string, unknown> } ? S : Record<never, never>;
+} & Omit<Extra, 'Props' | 'States'>;
 
 // ============================================================================
 // Props Extraction

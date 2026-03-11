@@ -1,30 +1,34 @@
-import type { NameProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { nameProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface SkeletonApi extends ComponentApi {
-	Props: {
-		Required: NameProp;
-	};
-	States: {
-		count: number;
-		label: string;
-		show: boolean;
-	};
-	Emitters: {
-		loaded: number;
-		rendered: void;
-	};
-	Methods: {
-		focus: () => void;
-		toggle: () => void;
-	};
-	Listeners: {
-		keydown: KeyboardEvent;
-	};
-	Callbacks: {
-		click: () => void;
-	};
-	Refs: {
-		button: HTMLButtonElement;
-	};
-}
+export const skeletonPropsConfig = {
+	required: [nameProp],
+} as const satisfies PropsConfigShape;
+
+export type SkeletonApi = ApiFromConfig<
+	typeof skeletonPropsConfig,
+	{
+		Callbacks: {
+			click: () => void;
+		};
+		Emitters: {
+			loaded: number;
+			rendered: void;
+		};
+		Listeners: {
+			keydown: KeyboardEvent;
+		};
+		Methods: {
+			focus: () => void;
+			toggle: () => void;
+		};
+		Refs: {
+			button: HTMLButtonElement;
+		};
+		States: {
+			count: number;
+			label: string;
+			show: boolean;
+		};
+	}
+>;
