@@ -6,6 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 export const LinkVariant: FC = () => {
 	const [data, setData] = useState<Array<string>>([]);
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const theme = document.body.dataset.theme;
@@ -36,14 +37,19 @@ export const LinkVariant: FC = () => {
 				} else {
 					setData([]);
 				}
+				setLoading(false);
 			})
-			.catch((error) => console.info('No theme variant file found or file could not be parsed', error));
+			.catch((error) => {
+				console.info('No theme variant file found or file could not be parsed', error);
+				setLoading(false);
+			});
 	}, []);
 
 	return (
 		<>
 			<SampleDescription>
 				<p>This sample shows the theme specific variants of KolLink.</p>
+				<p className={loading ? 'loading' : 'hidden'}>Loading Data</p>
 			</SampleDescription>
 
 			<div className="grid gap-4">
