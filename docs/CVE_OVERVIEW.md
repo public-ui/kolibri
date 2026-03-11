@@ -31,8 +31,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   3 |   3 |   3 |   1 |
-| high     |  17 |  17 |  27 |  20 |
-| moderate |   1 |   2 |  13 |   1 |
+| high     |  18 |  18 |  28 |  21 |
+| moderate |   2 |   2 |  14 |   1 |
 | low      |   3 |   3 |   8 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -71,11 +71,14 @@
 | tar                  | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins  |
 | tar                  | high     | CVE-2026-26960      | v4, v3, v1        | Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in no  |
 | tar                  | high     | CVE-2026-29786      | v4, v3, v2, v1    | tar has Hardlink Path Traversal via Drive-Relative Linkpath                       |
+| tar                  | high     | CVE-2026-31802      | v4, v3, v2, v1    | node-tar Symlink Path Traversal via Drive-Relative Linkpath                       |
 | ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                           |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                            |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r  |
+| file-type            | moderate | CVE-2026-31808      | v4                | file-type affected by infinite loop in ASF parser on malformed input with zero-s  |
 | hono                 | moderate | CVE-2026-29086      | v2                | Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in  |
 | hono                 | moderate | CVE-2026-29085      | v2                | Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()            |
+| hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in  |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                     |
 | micromatch           | moderate | CVE-2024-4067       | v4, v3, v2, v1    | Regular Expression Denial of Service (ReDoS) in micromatch                        |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values            |
