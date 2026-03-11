@@ -1,7 +1,6 @@
-npm unpublish @public-ui/angular-v17@$1
-npm unpublish @public-ui/angular-v18@$1
 npm unpublish @public-ui/angular-v19@$1
 npm unpublish @public-ui/angular-v20@$1
+npm unpublish @public-ui/angular-v21@$1
 npm unpublish @public-ui/hydrate@$1
 npm unpublish @public-ui/kolibri-cli@$1
 npm unpublish @public-ui/mcp@$1

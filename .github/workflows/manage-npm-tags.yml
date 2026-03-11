@@ -55,6 +55,7 @@ jobs:
           - '@public-ui/svelte'
           - '@public-ui/theme-default'
           - '@public-ui/theme-ecl'
+          - '@public-ui/theme-kern'
           - '@public-ui/themes'
           - '@public-ui/visual-tests'
           - '@public-ui/vue'
