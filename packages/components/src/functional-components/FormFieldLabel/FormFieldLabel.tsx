@@ -34,7 +34,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 }) => {
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 	const translateReadOnly = translate('kol-readonly');
-	const badgeText = showBadge ? buildBadgeTextString(accessKey, shortKey) : undefined;
+	const badgeText = showBadge === false ? undefined : buildBadgeTextString(accessKey, shortKey);
 
 	return (
 		<Component
