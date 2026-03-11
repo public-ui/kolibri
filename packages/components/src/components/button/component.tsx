@@ -152,8 +152,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 						'kol-button--inline': this.state._inline === true,
 						'kol-button--standalone': this.state._inline === false,
 						'kol-button--hide-label': hideLabel,
-						[this.state._customClass as string]:
-							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
 					disabled={isDisabled}
 					id={this.state._id}
