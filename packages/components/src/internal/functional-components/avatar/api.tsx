@@ -1,12 +1,9 @@
-import type { ColorProp, LabelProp, SrcProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { colorProp, labelProp, srcProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface AvatarApi extends ComponentApi {
-	Props: {
-		Optional: SrcProp & ColorProp;
-		Required: LabelProp;
-	};
-	States: {
-		initials: string;
-	};
-}
+export const avatarPropsConfig = {
+	optional: [colorProp, srcProp],
+	required: [labelProp],
+} as const satisfies PropsConfigShape;
+
+export type AvatarApi = ApiFromConfig<typeof avatarPropsConfig, { States: { initials: string } }>;

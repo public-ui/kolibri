@@ -1,8 +1,8 @@
-import type { IconsProp, LabelProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { iconsProp, labelProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface IconApi extends ComponentApi {
-	Props: {
-		Required: IconsProp & LabelProp;
-	};
-}
+export const iconPropsConfig = {
+	required: [iconsProp, labelProp],
+} as const satisfies PropsConfigShape;
+
+export type IconApi = ApiFromConfig<typeof iconPropsConfig>;
