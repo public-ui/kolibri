@@ -90,6 +90,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	};
 
 	private readonly onClick = (event: MouseEvent) => {
+		event.stopPropagation();
+
 		if (this.state._hideLabel) {
 			void this.hideTooltip();
 		}
