@@ -7,8 +7,8 @@ describe('FormFieldTooltipFc', () => {
 		const label = 'Test Label';
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id="test-id" label={label} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_id')).toBe('test-id-label');
-		expect(page.root?.getAttribute('_label')).toBe(label);
+		expect(page.root?.querySelector('.kol-tooltip__content')?.getAttribute('id')).toBe('test-id-label');
+		expect(page.root?.querySelector('.kol-span__label:not([aria-hidden])')?.textContent).toBe(label);
 	});
 
 	it('should set the correct class names', async () => {
@@ -30,7 +30,7 @@ describe('FormFieldTooltipFc', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id="test-id" label="Test Label" badgeText={badgeText} />);
 
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_badgeText')).toBe(badgeText);
+		expect(page.root?.querySelector('kbd.badge-text-hint')?.textContent).toBe(badgeText);
 	});
 
 	it('should set the correct align property', async () => {
@@ -38,7 +38,7 @@ describe('FormFieldTooltipFc', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id="test-id" label="Test Label" align={align} />);
 
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_align')).toBe(align);
+		// align is used for JS positioning via the controller, reflected in snapshots
 	});
 
 	it('should set the correct id and label', async () => {
@@ -47,7 +47,7 @@ describe('FormFieldTooltipFc', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id={id} label={label} />);
 
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.getAttribute('_id')).toBe(`${id}-label`);
-		expect(page.root?.getAttribute('_label')).toBe(label);
+		expect(page.root?.querySelector('.kol-tooltip__content')?.getAttribute('id')).toBe(`${id}-label`);
+		expect(page.root?.querySelector('.kol-span__label:not([aria-hidden])')?.textContent).toBe(label);
 	});
 });

@@ -36,7 +36,6 @@ import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
 import { KolPopoverButton } from './popover-button/shadow';
-import { KolPopover } from './popover/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
@@ -48,7 +47,6 @@ import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
 import { KolToolbar } from './toolbar/shadow';
-import { KolTooltipWc } from './tooltip/component';
 import { KolTreeItemWc } from './tree-item/component';
 import { KolTreeItem } from './tree-item/shadow';
 import { KolTreeWc } from './tree/component';
@@ -93,7 +91,6 @@ export const COMPONENTS = [
 	KolModal,
 	KolNav,
 	KolPagination,
-	KolPopover,
 	KolProgress,
 	KolPopoverButton,
 	KolQuote,
@@ -106,7 +103,6 @@ export const COMPONENTS = [
 	KolTextarea,
 	KolToastContainer,
 	KolToolbar,
-	KolTooltipWc,
 	KolTree,
 	KolTreeItem,
 	KolTreeItemWc,

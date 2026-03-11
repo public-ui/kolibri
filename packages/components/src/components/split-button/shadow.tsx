@@ -18,8 +18,10 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { PopoverFC } from '../../internal/functional-components/popover/component';
+import { PopoverController } from '../../internal/functional-components/popover/controller';
 import clsx from '../../utils/clsx';
 
 /**
@@ -34,6 +36,7 @@ import clsx from '../../utils/clsx';
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;
+	private readonly popoverCtrl = new PopoverController();
 
 	private readonly catchPrimaryRef = (ref?: HTMLKolButtonWcElement) => {
 		this.primaryButtonWcRef = ref;
@@ -74,11 +77,14 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	};
 
 	private readonly toggleDropdown = () => {
-		this.state = { ...this.state, _show: !this.state._show };
+		const newShow = !this.state._show;
+		this.state = { ...this.state, _show: newShow };
+		this.popoverCtrl.setShow(newShow);
 	};
 
 	private readonly handleOnClose = () => {
 		this.state = { ...this.state, _show: false };
+		this.popoverCtrl.setShow(false);
 	};
 
 	public render(): JSX.Element {
@@ -121,11 +127,25 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_on={this.clickToggleHandler}
 					></KolButtonWcTag>
 				</div>
-				<KolPopoverWcTag _show={this.state._show} _on={{ onClose: this.handleOnClose }} _align="bottom">
-					<slot />
-				</KolPopoverWcTag>
+				<div
+					ref={(el) => {
+						if (el) this.popoverCtrl.setHostElement(el);
+					}}
+				>
+					<PopoverFC align="bottom" popoverRef={this.popoverCtrl.setPopoverElementRef} arrowRef={this.popoverCtrl.setArrowElementRef}>
+						<slot />
+					</PopoverFC>
+				</div>
 			</div>
 		);
+	}
+
+	public connectedCallback(): void {
+		this.popoverCtrl.setOnCallbacks({ onClose: this.handleOnClose });
+	}
+
+	public disconnectedCallback(): void {
+		this.popoverCtrl.destroy();
 	}
 
 	/**

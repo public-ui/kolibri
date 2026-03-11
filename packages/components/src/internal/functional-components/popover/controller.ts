@@ -1,15 +1,11 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { PopoverCallbacksPropType, PopoverCloseEvent } from '../../../schema';
+import type { AlignPropType, PopoverCallbacksPropType, PopoverCloseEvent } from '../../../schema';
 import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import { alignProp, showProp } from '../../props';
-import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
-import type { PopoverApi } from './api';
-import { popoverPropsConfig } from './api';
 
-export class PopoverController extends BaseController<PopoverApi> implements ControllerInterface<PopoverApi> {
+export class PopoverController {
+	private align: AlignPropType = 'top';
 	private popoverElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
@@ -18,37 +14,24 @@ export class PopoverController extends BaseController<PopoverApi> implements Con
 	private lastCloseEvent?: Event;
 	private onCallbacks?: PopoverCallbacksPropType;
 
-	public constructor(setState: SetStateFn<PopoverApi>, getState: GetStateFn<PopoverApi>) {
-		super(popoverPropsConfig, setState, getState);
-	}
-
-	public componentWillLoad(props: ResolvedInputProps<PopoverApi> & { on?: PopoverCallbacksPropType }): void {
-		const { align, show, on } = props;
-		this.watchAlign(align);
-		this.watchShow(show);
-		if (on !== undefined) {
-			this.onCallbacks = on;
-		}
-	}
-
-	public watchAlign(value?: string): void {
-		alignProp.apply(value, (v) => {
-			this.setRenderProp('align', v);
-		});
+	public setAlign(value: AlignPropType): void {
+		this.align = value;
 		void this.alignPopover();
 	}
 
-	public watchShow(value?: boolean): void {
-		showProp.apply(value, (v) => {
-			this.setRenderProp('show', v);
-			this.syncPopoverVisibility(v);
-		});
+	public setShow(value: boolean): void {
+		this.syncPopoverVisibility(value);
 	}
 
-	public watchOn(value?: PopoverCallbacksPropType): void {
-		if (typeof value === 'object' && value !== null) {
-			this.onCallbacks = value;
+	public setOnCallbacks(callbacks?: PopoverCallbacksPropType): void {
+		if (typeof callbacks === 'object' && callbacks !== null) {
+			this.onCallbacks = callbacks;
 		}
+	}
+
+	public setHostElement(element: HTMLElement | null): void {
+		this.hostElement = element;
+		this.triggerElement = element?.previousElementSibling as HTMLElement | null;
 	}
 
 	public setPopoverElementRef = (element?: HTMLDivElement): void => {
@@ -60,7 +43,6 @@ export class PopoverController extends BaseController<PopoverApi> implements Con
 		if (this.popoverElement) {
 			this.popoverElement.addEventListener('beforetoggle', this.handleBeforeToggle);
 			this.popoverElement.addEventListener('toggle', this.handleToggle);
-			this.syncPopoverVisibility(this.getRenderProp('show') ?? false);
 		}
 	};
 
@@ -68,18 +50,13 @@ export class PopoverController extends BaseController<PopoverApi> implements Con
 		this.arrowElement = element;
 	};
 
-	public setHostElement(element: HTMLElement | null): void {
-		this.hostElement = element;
-		this.triggerElement = element?.previousElementSibling as HTMLElement | null;
-	}
-
 	private alignPopover = async (): Promise<void> => {
 		if (!this.popoverElement) {
 			return;
 		}
 		if (this.triggerElement) {
 			await alignFloatingElements({
-				align: this.getRenderProp('align'),
+				align: this.align,
 				referenceElement: this.triggerElement,
 				arrowElement: this.arrowElement,
 				floatingElement: this.popoverElement,
@@ -98,8 +75,7 @@ export class PopoverController extends BaseController<PopoverApi> implements Con
 		const toggleEvent = event as ToggleEvent;
 		const isOpen = toggleEvent.newState === 'open';
 
-		this.setState('show', isOpen);
-		this.setState('visible', isOpen);
+		this.popoverElement?.classList.toggle('kol-popover__content--visible', isOpen);
 
 		if (isOpen) {
 			this.cleanupAutoUpdate?.();
@@ -127,11 +103,6 @@ export class PopoverController extends BaseController<PopoverApi> implements Con
 			if (this.hostElement) {
 				dispatchDomEvent(this.hostElement, KolEvent.close);
 			}
-		}
-
-		const currentShow = this.getRenderProp('show') ?? false;
-		if (currentShow !== isOpen) {
-			this.setRenderProp('show', isOpen);
 		}
 	};
 
@@ -184,11 +155,19 @@ export class PopoverController extends BaseController<PopoverApi> implements Con
 			const isOpen = this.popoverElement.matches(':popover-open');
 			if (show) {
 				if (!isOpen) {
-					this.popoverElement.showPopover();
+					try {
+						this.popoverElement.showPopover();
+					} catch {
+						// Ignore DOMException if already open
+					}
 				}
 			} else {
 				if (isOpen) {
-					this.popoverElement.hidePopover();
+					try {
+						this.popoverElement.hidePopover();
+					} catch {
+						// Ignore DOMException if already closed
+					}
 				}
 			}
 		};

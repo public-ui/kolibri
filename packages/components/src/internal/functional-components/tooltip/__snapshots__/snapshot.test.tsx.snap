@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","align":"bottom"} 1`] = `
+<div align="bottom" class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","align":"left"} 1`] = `
+<div align="left" class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","align":"right"} 1`] = `
+<div align="right" class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","align":"top"} 1`] = `
+<div align="top" class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","badgeText":"A"} 1`] = `
+<div class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-span--has-badge kol-tooltip__content">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip l
+          <u>
+            a
+          </u>
+          bel
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+        <kbd aria-hidden="true" class="badge-text-hint">
+          A
+        </kbd>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","id":"tooltip-id","badgeText":"A","align":"bottom"} 1`] = `
+<div align="bottom" class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-span--has-badge kol-tooltip__content" id="tooltip-id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip l
+          <u>
+            a
+          </u>
+          bel
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+        <kbd aria-hidden="true" class="badge-text-hint">
+          A
+        </kbd>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label","id":"tooltip-id"} 1`] = `
+<div class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="tooltip-id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TooltipFC renders correctly with props: {"label":"Tooltip label"} 1`] = `
+<div class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Tooltip label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
+`;

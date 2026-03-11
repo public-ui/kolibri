@@ -1,48 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormFieldTooltipFc should render correctly 1`] = `
-<kol-tooltip-wc
-  _id="test-id-label"
-  _label="Test Label"
-  aria-hidden="true"
-  class="kol-form-field__tooltip"
-/>
+<div aria-hidden="true" class="kol-form-field__tooltip kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="test-id-label">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
 `;
 
 exports[`FormFieldTooltipFc should set the correct align property 1`] = `
-<kol-tooltip-wc
-  _align="left"
-  _id="test-id-label"
-  _label="Test Label"
-  aria-hidden="true"
-  class="kol-form-field__tooltip"
-/>
+<div align="left" aria-hidden="true" class="kol-form-field__tooltip kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="test-id-label">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
 `;
 
 exports[`FormFieldTooltipFc should set the correct badgeText 1`] = `
-<kol-tooltip-wc
-  _badgetext="Badge Text"
-  _id="test-id-label"
-  _label="Test Label"
-  aria-hidden="true"
-  class="kol-form-field__tooltip"
-/>
+<div aria-hidden="true" class="kol-form-field__tooltip kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-span--has-badge kol-tooltip__content" id="test-id-label">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+        <kbd aria-hidden="true" class="badge-text-hint">
+          Badge Text
+        </kbd>
+      </span>
+    </span>
+  </div>
+</div>
 `;
 
 exports[`FormFieldTooltipFc should set the correct class names 1`] = `
-<kol-tooltip-wc
-  _id="test-id-label"
-  _label="Test Label"
-  aria-hidden="true"
-  class="kol-form-field__tooltip custom-class"
-/>
+<div aria-hidden="true" class="custom-class kol-form-field__tooltip kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="test-id-label">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
 `;
 
 exports[`FormFieldTooltipFc should set the correct id and label 1`] = `
-<kol-tooltip-wc
-  _id="test-id-label"
-  _label="Test Label"
-  aria-hidden="true"
-  class="kol-form-field__tooltip"
-/>
+<div aria-hidden="true" class="kol-form-field__tooltip kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="test-id-label">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</div>
 `;

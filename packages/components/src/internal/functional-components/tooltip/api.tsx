@@ -6,11 +6,4 @@ export const tooltipPropsConfig = {
 	optional: [alignProp, badgeTextProp],
 } as const satisfies PropsConfigShape;
 
-export type TooltipApi = ApiFromConfig<
-	typeof tooltipPropsConfig,
-	{
-		States: { id: string };
-		Methods: { hideTooltip: () => void };
-		Refs: { tooltipElement: HTMLDivElement; arrowElement: HTMLDivElement };
-	}
->;
+export type TooltipApi = ApiFromConfig<typeof tooltipPropsConfig>;

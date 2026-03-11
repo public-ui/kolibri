@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-import { KolTooltipWcTag } from '../../core/component-names';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type { AbbrAPI, AbbrStates, LabelPropType } from '../../schema';
 import { validateLabel } from '../../schema';
 
@@ -15,6 +16,8 @@ import { validateLabel } from '../../schema';
 	shadow: true,
 })
 export class KolAbbr implements AbbrAPI {
+	private readonly tooltipCtrl = new TooltipController();
+
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-abbr">
@@ -22,9 +25,22 @@ export class KolAbbr implements AbbrAPI {
 				<abbr tabIndex={this.state._label ? 0 : undefined}>
 					<slot />
 				</abbr>
-				{this.state._label ? <KolTooltipWcTag aria-hidden="true" _label={this.state._label}></KolTooltipWcTag> : null}
+				{this.state._label ? (
+					<TooltipFC
+						aria-hidden="true"
+						label={this.state._label}
+						id={this.tooltipCtrl.id}
+						containerRef={this.tooltipCtrl.setContainerRef}
+						tooltipRef={this.tooltipCtrl.setTooltipElementRef}
+						arrowRef={this.tooltipCtrl.setArrowElementRef}
+					/>
+				) : null}
 			</Host>
 		);
+	}
+
+	public disconnectedCallback(): void {
+		this.tooltipCtrl.destroy();
 	}
 
 	/**

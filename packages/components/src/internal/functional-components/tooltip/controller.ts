@@ -1,16 +1,15 @@
 import { autoUpdate } from '@floating-ui/dom';
+import type { AlignPropType } from '../../../schema';
 import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { nonce } from '../../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../../utils/tooltip-open-tracking';
-import { alignProp, badgeTextProp, labelProp } from '../../props';
-import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
-import type { TooltipApi } from './api';
-import { tooltipPropsConfig } from './api';
 
-export class TooltipController extends BaseController<TooltipApi> implements ControllerInterface<TooltipApi> {
+export class TooltipController {
+	public readonly id: string;
+
+	private align: AlignPropType = 'top';
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
 	private previousSibling?: Element | null;
@@ -21,55 +20,36 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 	private isHiddenForCurrentVisit = false;
 	private overFocusTimeout?: ReturnType<typeof setTimeout>;
 
-	public constructor(setState: SetStateFn<TooltipApi>, getState: GetStateFn<TooltipApi>) {
-		super(tooltipPropsConfig, setState, getState);
-		setState('id', `id-${nonce()}`);
+	public constructor(id?: string) {
+		this.id = id ?? `id-${nonce()}`;
 	}
 
-	public componentWillLoad(props: ResolvedInputProps<TooltipApi> & { id?: string }): void {
-		const { label, align, badgeText, id } = props;
-		this.watchLabel(label);
-		this.watchAlign(align);
-		this.watchBadgeText(badgeText);
-		this.watchId(id);
+	public setAlign(value: AlignPropType): void {
+		this.align = value;
+		void this.alignTooltip();
 	}
 
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-		});
-	}
-
-	public watchAlign(value?: string): void {
-		alignProp.apply(value, (v) => {
-			this.setRenderProp('align', v);
-		});
-	}
-
-	public watchBadgeText(value?: string): void {
-		badgeTextProp.apply(value, (v) => {
-			this.setRenderProp('badgeText', v);
-		});
-	}
-
-	public watchId(value?: string): void {
-		if (value !== undefined && value.length > 0) {
-			this.setState('id', value);
+	public setContainerRef = (el?: HTMLDivElement | null): void => {
+		if (!el) {
+			this.destroy();
+			return;
 		}
-	}
+		this.setPreviousSibling(el.previousElementSibling);
+		this.parentElement = el.parentElement;
+	};
 
-	public setTooltipElementRef = (element?: HTMLDivElement): void => {
-		this.tooltipElement = element;
+	public setTooltipElementRef = (el?: HTMLDivElement): void => {
+		this.tooltipElement = el;
 		if (this.tooltipElement) {
 			this.addTooltipListeners(this.tooltipElement);
 		}
 	};
 
-	public setArrowElementRef = (element?: HTMLDivElement): void => {
-		this.arrowElement = element;
+	public setArrowElementRef = (el?: HTMLDivElement): void => {
+		this.arrowElement = el;
 	};
 
-	public setPreviousSibling(element?: Element | null): void {
+	private setPreviousSibling(element?: Element | null): void {
 		if (this.previousSibling) {
 			this.removeListeners(this.previousSibling);
 		}
@@ -77,10 +57,6 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 		if (this.previousSibling) {
 			this.addListeners(this.previousSibling);
 		}
-	}
-
-	public setParentElement(element?: Element | null): void {
-		this.parentElement = element;
 	}
 
 	public hideTooltip(): void {
@@ -114,7 +90,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 	private async alignTooltip(): Promise<void> {
 		if (this.tooltipElement && this.previousSibling) {
 			await alignFloatingElements({
-				align: this.getRenderProp('align'),
+				align: this.align,
 				referenceElement: this.previousSibling,
 				arrowElement: this.arrowElement,
 				floatingElement: this.tooltipElement,
@@ -149,7 +125,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 		}
 	};
 
-	public showOrHideTooltip = (): void => {
+	private showOrHideTooltip = (): void => {
 		clearTimeout(this.overFocusTimeout);
 		this.overFocusTimeout = setTimeout(() => {
 			if (this.hasMouseIn || this.hasFocusIn) {
@@ -160,7 +136,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 		}, 300);
 	};
 
-	public handleMouseEnter = (): void => {
+	private handleMouseEnter = (): void => {
 		const isNewVisit = this.isNewVisit();
 		this.hasMouseIn = true;
 		if (isNewVisit) {
@@ -169,13 +145,13 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 		this.showOrHideTooltip();
 	};
 
-	public handleMouseLeave = (): void => {
+	private handleMouseLeave = (): void => {
 		this.hasMouseIn = false;
 		this.resetHideFlag();
 		this.showOrHideTooltip();
 	};
 
-	public handleFocusIn = (): void => {
+	private handleFocusIn = (): void => {
 		const isNewVisit = this.isNewVisit();
 		this.hasFocusIn = true;
 		if (isNewVisit) {
@@ -184,7 +160,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 		this.showOrHideTooltip();
 	};
 
-	public handleFocusOut = (): void => {
+	private handleFocusOut = (): void => {
 		this.hasFocusIn = false;
 		this.resetHideFlag();
 		this.showOrHideTooltip();
@@ -207,8 +183,6 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 	private addTooltipListeners(el: Element): void {
 		el.addEventListener('mouseenter', this.handleMouseEnter);
 		el.addEventListener('mouseleave', this.handleMouseLeave);
-		el.addEventListener('focusin', this.handleFocusIn);
-		el.addEventListener('focusout', this.handleFocusOut);
 	}
 
 	public destroy(): void {
@@ -216,11 +190,14 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 			this.removeListeners(this.previousSibling);
 		}
 		if (this.tooltipElement) {
-			this.removeListeners(this.tooltipElement);
+			this.tooltipElement.removeEventListener('mouseenter', this.handleMouseEnter);
+			this.tooltipElement.removeEventListener('mouseleave', this.handleMouseLeave);
 		}
 		if (this.cleanupAutoPositioning) {
 			this.cleanupAutoPositioning();
+			this.cleanupAutoPositioning = undefined;
 		}
 		clearTimeout(this.overFocusTimeout);
+		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
 	}
 }

@@ -51,8 +51,9 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 
-import { KolTooltipWcTag } from '../../core/component-names';
 import { SpanFC } from '../../internal/functional-components/span/component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
@@ -70,7 +71,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
-	private tooltipRef?: HTMLKolTooltipWcElement;
+	private readonly tooltipCtrl = new TooltipController();
 
 	/**
 	 * Sets focus on the internal element.
@@ -86,7 +87,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	}
 
 	private readonly hideTooltip = () => {
-		void this.tooltipRef?.hideTooltip();
+		this.tooltipCtrl.hideTooltip();
 	};
 
 	private readonly onClick = (event: MouseEvent) => {
@@ -170,8 +171,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					</SpanFC>
 				</button>
 				{hideLabel && (
-					<KolTooltipWcTag
-						ref={(ref) => (this.tooltipRef = ref)}
+					<TooltipFC
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -179,10 +179,14 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 						aria-hidden="true"
 						hidden={hasExpertSlot}
 						class="kol-button__tooltip"
-						_badgeText={badgeText}
-						_align={this.state._tooltipAlign}
-						_label={typeof this.state._label === 'string' ? this.state._label : ''}
-					></KolTooltipWcTag>
+						badgeText={badgeText}
+						align={this.state._tooltipAlign}
+						label={typeof this.state._label === 'string' ? this.state._label : ''}
+						id={this.tooltipCtrl.id}
+						containerRef={this.tooltipCtrl.setContainerRef}
+						tooltipRef={this.tooltipCtrl.setTooltipElementRef}
+						arrowRef={this.tooltipCtrl.setArrowElementRef}
+					/>
 				)}
 			</Host>
 		);
@@ -464,5 +468,9 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.validateValue(this._value);
 		this.validateVariant(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
+	}
+
+	public disconnectedCallback(): void {
+		this.tooltipCtrl.destroy();
 	}
 }

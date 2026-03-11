@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopoverFC renders correctly with props: {"align":"bottom"} 1`] = `
+<div class="kol-popover">
+  <div class="kol-popover__content" popover="auto">
+    <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+  </div>
+</div>
+`;
+
+exports[`PopoverFC renders correctly with props: {"align":"left"} 1`] = `
+<div class="kol-popover">
+  <div class="kol-popover__content" popover="auto">
+    <div class="kol-popover__arrow kol-popover__arrow--left"></div>
+  </div>
+</div>
+`;
+
+exports[`PopoverFC renders correctly with props: {"align":"right"} 1`] = `
+<div class="kol-popover">
+  <div class="kol-popover__content" popover="auto">
+    <div class="kol-popover__arrow kol-popover__arrow--right"></div>
+  </div>
+</div>
+`;
+
+exports[`PopoverFC renders correctly with props: {"align":"top"} 1`] = `
+<div class="kol-popover">
+  <div class="kol-popover__content" popover="auto">
+    <div class="kol-popover__arrow kol-popover__arrow--top"></div>
+  </div>
+</div>
+`;
+
+exports[`PopoverFC renders correctly with props: {} 1`] = `
+<div class="kol-popover">
+  <div class="kol-popover__content" popover="auto">
+    <div class="kol-popover__arrow kol-popover__arrow--top"></div>
+  </div>
+</div>
+`;

@@ -2,10 +2,12 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type {
 	ActionColumnHeaderCell,
 	AriaSort,
@@ -75,6 +77,16 @@ export class KolTableStateless implements TableStatelessAPI {
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
 	private checkboxRefs: HTMLInputElement[] = [];
+	private tooltipControllers = new Map<string, TooltipController>();
+
+	private getTooltipCtrl(id: string): TooltipController {
+		let ctrl = this.tooltipControllers.get(id);
+		if (!ctrl) {
+			ctrl = new TooltipController(id);
+			this.tooltipControllers.set(id, ctrl);
+		}
+		return ctrl;
+	}
 
 	private translateSort = translate('kol-sort');
 	private translateSortOrder = translate('kol-table-sort-order');
@@ -237,6 +249,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	public disconnectedCallback() {
 		this.tableDivElementResizeObserver?.disconnect();
 		clearTimeout(this.resizeDebounceTimeout);
+		this.tooltipControllers.forEach((ctrl) => ctrl.destroy());
+		this.tooltipControllers.clear();
 	}
 
 	private handleResize() {
@@ -708,13 +722,21 @@ export class KolTableStateless implements TableStatelessAPI {
 							/>
 						</label>
 					)}
-					<KolTooltipWcTag
-						aria-hidden="true"
-						class="kol-table__selection-input-tooltip"
-						_align="right"
-						_id={`${keyProperty}-label`}
-						_label={label}
-					></KolTooltipWcTag>
+					{(() => {
+						const ctrl = this.getTooltipCtrl(`${keyProperty}-label`);
+						return (
+							<TooltipFC
+								aria-hidden="true"
+								class="kol-table__selection-input-tooltip"
+								align="right"
+								id={ctrl.id}
+								label={label}
+								containerRef={ctrl.setContainerRef}
+								tooltipRef={ctrl.setTooltipElementRef}
+								arrowRef={ctrl.setArrowElementRef}
+							/>
+						);
+					})()}
 				</div>
 			</td>
 		);
@@ -1003,13 +1025,21 @@ export class KolTableStateless implements TableStatelessAPI {
 							}}
 						/>
 					</label>
-					<KolTooltipWcTag
-						aria-hidden="true"
-						class="kol-table__selection-input-tooltip"
-						_align="right"
-						_id={`${translationKey}-label`}
-						_label={label}
-					></KolTooltipWcTag>
+					{(() => {
+						const ctrl = this.getTooltipCtrl(`${translationKey}-label`);
+						return (
+							<TooltipFC
+								aria-hidden="true"
+								class="kol-table__selection-input-tooltip"
+								align="right"
+								id={ctrl.id}
+								label={label}
+								containerRef={ctrl.setContainerRef}
+								tooltipRef={ctrl.setTooltipElementRef}
+								arrowRef={ctrl.setArrowElementRef}
+							/>
+						);
+					})()}
 				</div>
 			</th>
 		);
