@@ -28,7 +28,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	label,
 	hideLabel,
 	hasExpertSlot,
-	showBadge,
+	showBadge = true,
 	readOnly,
 	...other
 }) => {
