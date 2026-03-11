@@ -31,7 +31,7 @@ When refactoring an existing component to match the Skeleton architecture:
 - Makes it clear which props are domain-specific vs. shared across components
 
 **State Management Reference:** See [ARC42 § Controller State Management](./ARC42.md#controller-state-management)
-for how to distinguish between normalized props (`setProp()`) and derived UI state (`setState()`).
+for how to distinguish between normalized props (`setRenderProp()`) and derived UI state (`setState()`).
 
 ## Quick Reference
 

@@ -24,16 +24,16 @@ Annahmen:
 ## Pattern 1: `new` pro Web Component (Aktuell) ✅
 
 ```typescript
-// Web Component (without controller-managed @State fields):
-// ClickButtonApi declares no States, so no setState callback is needed.
+// Web Component:
+// All controllers receive setState and getState from BaseWebComponent.
 export class KolClickButton extends BaseWebComponent<ClickButtonApi> {
-	private readonly ctrl = new ClickButtonController(); // ✅ 1× pro WC-Instanz, kein Argument nötig
+	private readonly ctrl = new ClickButtonController(this.setState, this.getState); // ✅ 1× pro WC-Instanz
 }
 
 // Web Component (with reactive @State fields):
-// setState is pre-bound by BaseWebComponent and passed to the controller.
+// setState and getState are pre-bound by BaseWebComponent and passed to the controller.
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> {
-	private readonly ctrl = new SkeletonController(this.setState); // ✅ übergibt setState-Callback
+	private readonly ctrl = new SkeletonController(this.setState, this.getState); // ✅ übergibt setState/getState-Callbacks
 }
 ```
 
@@ -367,13 +367,13 @@ const LABEL_CACHE = new Map<string, LabelPropType>();
 
 public watchLabel(value?: LabelPropType): void {
   if (LABEL_CACHE.has(value!)) {
-    this.setProp('label', LABEL_CACHE.get(value!)!);
+    this.setRenderProp('label', LABEL_CACHE.get(value!)!);
     return;
   }
   // Teuer Validierung
   const normalized = labelProp.normalize(value);
   LABEL_CACHE.set(value!, normalized);
-  this.setProp('label', normalized);
+  this.setRenderProp('label', normalized);
 }
 ```
 
