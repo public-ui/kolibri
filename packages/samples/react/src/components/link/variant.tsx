@@ -13,13 +13,31 @@ export const LinkVariant: FC = () => {
 			return;
 		}
 		fetch('/assets/variants/inject-variants_' + theme + '.json')
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.hasOwnProperty('linkVariants')) {
-					setData(data.linkVariants);
+			.then((response) => {
+				if (response.status === 404) {
+					// No variants file for this theme is an expected state.
+					setData([]);
+					return null;
+				}
+				if (!response.ok) {
+					console.info('Error fetching variants: HTTP ' + response.status);
+					return null;
+				}
+				return response.json();
+			})
+			.then((json) => {
+				if (!json) {
+					return;
+				}
+				const linkVariants = (json as { linkVariants?: unknown }).linkVariants;
+				if (Array.isArray(linkVariants)) {
+					const variants = linkVariants.filter((item): item is string => typeof item === 'string');
+					setData(variants);
+				} else {
+					setData([]);
 				}
 			})
-			.catch((error) => console.error('Error fetching data:', error));
+			.catch((error) => console.info('No theme variant file found or file could not be parsed', error));
 	}, []);
 
 	return (
