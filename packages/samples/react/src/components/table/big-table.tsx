@@ -43,8 +43,10 @@ export const TableBig: FC = () => {
 		}
 
 		const rows = searchParams.get('rows');
-		if (rows && +rows < 5000) {
-			setRows(+rows);
+		if (rows) {
+			if (+rows < 5000) {
+				setRows(+rows);
+			}
 		} else {
 			setSearchParams((searchParams) => {
 				searchParams.append('rows', '50');
@@ -53,10 +55,12 @@ export const TableBig: FC = () => {
 		}
 
 		const addCols = searchParams.get('addCols');
-		if (addCols && +addCols < 5000) {
-			headers = [...defaultHeaders];
-			for (let index = 0; index < +addCols; index++) {
-				headers.push({ label: 'label' + index, key: 'key' + index, textAlign: 'left', width: 100 });
+		if (addCols) {
+			if (+addCols < 5000) {
+				headers = [...defaultHeaders];
+				for (let index = 0; index < +addCols; index++) {
+					headers.push({ label: 'label' + index, key: 'key' + index, textAlign: 'left', width: 100 });
+				}
 			}
 		} else {
 			setSearchParams((searchParams) => {
