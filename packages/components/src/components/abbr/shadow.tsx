@@ -29,6 +29,8 @@ export class KolAbbr implements AbbrAPI {
 					<TooltipFC
 						aria-hidden="true"
 						label={this.state._label}
+						badgeText=""
+						align="bottom"
 						id={this.tooltipCtrl.id}
 						containerRef={this.tooltipCtrl.setContainerRef}
 						tooltipRef={this.tooltipCtrl.setTooltipElementRef}

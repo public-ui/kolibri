@@ -221,9 +221,9 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						aria-hidden="true"
 						hidden={hasExpertSlot}
 						class="kol-link__tooltip"
-						badgeText={this.state._accessKey || this.state._shortKey}
-						align={this.state._tooltipAlign}
-						label={typeof (this.state._label || this.state._href) === 'string' ? ((this.state._label || this.state._href) as string) : ''}
+						badgeText={this.state._accessKey || this.state._shortKey || ''}
+						align={this.state._tooltipAlign || 'bottom'}
+						label={typeof (this.state._label || this.state._href) === 'string' ? this.state._label || this.state._href : ''}
 						id={this.tooltipCtrl.id}
 						containerRef={this.tooltipCtrl.setContainerRef}
 						tooltipRef={this.tooltipCtrl.setTooltipElementRef}

@@ -729,6 +729,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								aria-hidden="true"
 								class="kol-table__selection-input-tooltip"
 								align="right"
+								badgeText=""
 								id={ctrl.id}
 								label={label}
 								containerRef={ctrl.setContainerRef}
@@ -1032,6 +1033,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								aria-hidden="true"
 								class="kol-table__selection-input-tooltip"
 								align="right"
+								badgeText=""
 								id={ctrl.id}
 								label={label}
 								containerRef={ctrl.setContainerRef}

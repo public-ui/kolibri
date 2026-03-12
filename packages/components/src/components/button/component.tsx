@@ -179,8 +179,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 						aria-hidden="true"
 						hidden={hasExpertSlot}
 						class="kol-button__tooltip"
-						badgeText={badgeText}
-						align={this.state._tooltipAlign}
+						badgeText={badgeText || ''}
+						align={this.state._tooltipAlign || 'bottom'}
 						label={typeof this.state._label === 'string' ? this.state._label : ''}
 						id={this.tooltipCtrl.id}
 						containerRef={this.tooltipCtrl.setContainerRef}
