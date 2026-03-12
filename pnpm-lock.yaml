@@ -878,6 +878,12 @@ importers:
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../tools/visual-tests
+      cpy-cli:
+        specifier: 7.0.0
+        version: 7.0.0
+      cross-env:
+        specifier: 10.1.0
+        version: 10.1.0
 
   packages/themes:
     devDependencies:
@@ -7327,8 +7333,17 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
+  cpy-cli@7.0.0:
+    resolution: {integrity: sha512-uGCdhIxGfZcPXidCuT8w1jBknVXFx0un7NLjzqBZcdnkIWtLUnWMPk5TC37ceoVjwASLSNsRtTXXNTuFIyE2ng==}
+    engines: {node: '>=20'}
+    hasBin: true
+
   cpy@12.0.1:
     resolution: {integrity: sha512-hCnNla4AB27lUncMuO7KFjge0u0C5R74iKMBOajKOMB9ONGXcIek314ZTpxg16BuNYRTjPz7UW3tPXgJVLxUww==}
+    engines: {node: '>=20'}
+
+  cpy@13.2.1:
+    resolution: {integrity: sha512-/H2B3WW9gccZJKjKoDZsIrDU3MkkHlxgheT82hUbInC5fEdi4+54zyYpFueZT9pLfr5ObrtgN4MsYYrmTmHzeg==}
     engines: {node: '>=20'}
 
   crc-32@1.2.2:
@@ -11107,6 +11122,10 @@ packages:
 
   p-map@7.0.3:
     resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
+    engines: {node: '>=18'}
+
+  p-map@7.0.4:
+    resolution: {integrity: sha512-tkAQEw8ysMzmkhgw8k+1U/iPhWNhykKnSk4Rd5zLoPJCuJaGRPo6YposrZgaxHKzDHdDWWZvE/Sk7hsL2X/CpQ==}
     engines: {node: '>=18'}
 
   p-pipe@3.1.0:
@@ -21303,6 +21322,12 @@ snapshots:
       cpy: 12.0.1
       meow: 13.2.0
 
+  cpy-cli@7.0.0:
+    dependencies:
+      cpy: 13.2.1
+      globby: 16.1.0
+      meow: 14.0.0
+
   cpy@12.0.1:
     dependencies:
       copy-file: 11.1.0
@@ -21311,6 +21336,15 @@ snapshots:
       micromatch: 4.0.8
       p-filter: 4.1.0
       p-map: 7.0.3
+
+  cpy@13.2.1:
+    dependencies:
+      copy-file: 11.1.0
+      globby: 16.1.0
+      junk: 4.0.1
+      micromatch: 4.0.8
+      p-filter: 4.1.0
+      p-map: 7.0.4
 
   crc-32@1.2.2: {}
 
@@ -26177,7 +26211,7 @@ snapshots:
 
   p-filter@4.1.0:
     dependencies:
-      p-map: 7.0.3
+      p-map: 7.0.4
 
   p-finally@1.0.0: {}
 
@@ -26220,6 +26254,8 @@ snapshots:
       aggregate-error: 3.1.0
 
   p-map@7.0.3: {}
+
+  p-map@7.0.4: {}
 
   p-pipe@3.1.0: {}
 
