@@ -15,6 +15,7 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
+		"prebuild": "pnpm prepare",
 		"prepare": "npm-run-all2 prepare:*",
 		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prepare:themes": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
