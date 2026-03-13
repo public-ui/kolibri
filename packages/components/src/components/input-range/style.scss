@@ -1,8 +1,8 @@
 @use '../../styles/global' as *;
-@use '../../styles/kol-alert-mixin' as *;
-@use '../../styles/kol-form-field-mixin' as *;
-@use '../../styles/kol-input-container-mixin' as *;
-@use '../../styles/kol-input-mixin' as *;
+@use '../../styles/alert.mixin' as *;
+@use '../../styles/form-field.mixin' as *;
+@use '../../styles/input-container.mixin' as *;
+@use '../../styles/input.mixin' as *;
 @use '../@shared/mixins' as *;
 
 @layer kol-component {

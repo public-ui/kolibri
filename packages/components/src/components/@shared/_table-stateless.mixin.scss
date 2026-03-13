@@ -1,10 +1,10 @@
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
-@use './kol-table-settings-mixin' as *;
+@use './table-settings.mixin' as *;
 @use './mixins' as *;
-@use './kol-button-mixin' as *;
-@use './kol-link-mixin' as *;
-@use './kol-icon-mixin' as *;
+@use './button.mixin' as *;
+@use './link.mixin' as *;
+@use './icon.mixin' as *;
 
 @mixin kol-table-stateless-styles {
 	@include kol-table-settings-styles;

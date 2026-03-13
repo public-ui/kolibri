@@ -1,10 +1,10 @@
 @use '../../styles/global' as *;
-@use '../../styles/kol-alert-mixin' as *;
-@use '../@shared/kol-button-mixin' as *;
-@use '../@shared/kol-popover-button-mixin' as *;
-@use '../@shared/kol-table-stateless-mixin' as *;
+@use '../../styles/alert.mixin' as *;
+@use '../@shared/button.mixin' as *;
+@use '../@shared/popover-button.mixin' as *;
+@use '../@shared/table-stateless.mixin' as *;
 @use '../@shared/mixins' as *;
-@use '../@shared/kol-pagination-mixin' as *;
+@use '../@shared/pagination.mixin' as *;
 
 @layer kol-component {
 	@include kol-alert;

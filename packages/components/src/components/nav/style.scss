@@ -1,7 +1,7 @@
 @use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 @use '../tooltip/style.scss' as *;
-@use '../@shared/kol-icon-mixin' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
 	@include kol-icon-styles();

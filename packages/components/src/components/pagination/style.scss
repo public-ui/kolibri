@@ -1,7 +1,7 @@
 @use '../@shared/mixins' as *;
 @use '../../styles/global' as *;
 @use '../tooltip/style.scss' as *;
-@use '../@shared/kol-pagination-mixin' as *;
+@use '../@shared/pagination.mixin' as *;
 
 @layer kol-component {
 	@include kol-pagination-styles;

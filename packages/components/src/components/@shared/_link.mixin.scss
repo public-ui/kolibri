@@ -1,6 +1,6 @@
 @use 'mixins' as *;
 @use '../tooltip/style' as *;
-@use 'kol-icon-mixin' as *;
+@use 'icon.mixin' as *;
 
 @mixin kol-link-styles($block-classname) {
 	@include kol-icon-styles();

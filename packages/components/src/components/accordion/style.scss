@@ -1,7 +1,7 @@
 @use '../../styles/global' as *;
 @use '../host-display-block' as *;
 @use '../../functional-components/Collapsible/collapsible' as *;
-@use '../@shared/kol-icon-mixin' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
 	@include kol-icon-styles();

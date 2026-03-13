@@ -1,8 +1,8 @@
 @use '../../styles/global' as *;
-@use '../../styles/kol-field-control-mixin' as *;
-@use '../../styles/kol-form-field-mixin' as *;
+@use '../../styles/field-control.mixin' as *;
+@use '../../styles/form-field.mixin' as *;
 @use '../@shared/mixins' as *;
-@use '../@shared/kol-icon-mixin' as *;
+@use '../@shared/icon.mixin' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
