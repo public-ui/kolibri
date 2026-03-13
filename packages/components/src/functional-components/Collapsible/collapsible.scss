@@ -22,6 +22,7 @@
 			transform: translateZ(0);
 			display: grid;
 			grid-template-rows: 0fr;
+			grid-template-columns: 100%;
 			transition: grid-template-rows 0.3s;
 		}
 
