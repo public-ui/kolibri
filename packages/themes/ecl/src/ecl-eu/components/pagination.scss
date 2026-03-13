@@ -1,5 +1,5 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/pagination-mixin' as *;
+@use '../mixins/pagination.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-pagination-styles;

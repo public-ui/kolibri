@@ -1,11 +1,9 @@
-@use '../mixins/alert' as *;
-@use '../mixins/form-field' as *;
-@use '../mixins/form-field-order' as *;
-@use '../mixins/input' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/form-field.mixin' as *;
+@use '../mixins/form-field-order.mixin' as *;
+@use '../mixins/input.mixin' as *;
 
-@layer kol-theme-component {
-	@include kol-alert-theme;
-	@include kol-form-field-theme;
-	@include kol-form-field-order-theme;
-	@include kol-input-theme;
-}
+@include kol-alert-theme;
+@include kol-form-field-theme;
+@include kol-form-field-order-theme;
+@include kol-input-theme;

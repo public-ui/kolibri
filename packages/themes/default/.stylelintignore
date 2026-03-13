@@ -1,4 +1,4 @@
-src/assets/
+assets/
 
 **/*.md
 **/*.mustache
@@ -8,3 +8,4 @@ src/assets/
 **/*.ts
 **/*.tsx
 **/*.twig
+**/*.json

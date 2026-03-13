@@ -1,7 +1,7 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
-@use '../mixins/typography' as *;
-@use '../mixins/required' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/typography.mixin' as *;
+@use '../mixins/required.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
@@ -95,7 +95,7 @@
 			}
 		}
 
-		&#{&}--error {
+		&--error {
 			border: 2px solid var(--color-red);
 
 			&:before {

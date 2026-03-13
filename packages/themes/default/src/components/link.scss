@@ -1,5 +1,5 @@
-@use '../mixins/link' as *;
-@use '../mixins/icon' as *;
+@use '../mixins/link.mixin' as *;
+@use '../mixins/icon.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;

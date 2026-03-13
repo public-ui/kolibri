@@ -2,8 +2,6 @@
 
 @layer kol-theme-component {
 	.kol-nav {
-		$root: &;
-
 		&__navigation {
 			background-color: var(--color-blue);
 		}
@@ -24,8 +22,7 @@
 			border-style: solid;
 			border-width: 0;
 
-			&:not(:first-child),
-			#{$root}__list--nested & {
+			&:not(:first-child) {
 				border-top-width: to-rem(2);
 			}
 		}
@@ -52,7 +49,6 @@
 
 		&__toggle-button {
 			.kol-button {
-				$root: &;
 				outline: none;
 
 				text-decoration: none;
@@ -96,13 +92,19 @@
 					font-weight: var(--font-weight-bold);
 					line-height: 1.2;
 					text-decoration: none !important;
-
-					@at-root #{$root}--ghost:focus & {
-						outline-offset: -2px;
-					}
 				}
 			}
 		}
+	}
+
+	/* Nested list styling */
+	.kol-nav__list--nested .kol-nav__list-item {
+		border-top-width: to-rem(2);
+	}
+
+	/* Bold button ghost focus styling */
+	.kol-nav__toggle-button .kol-button--ghost:focus .kol-button__text {
+		outline-offset: -2px;
 	}
 
 	.kol-link {
@@ -119,14 +121,14 @@
 		justify-items: start;
 
 		font-size: to-rem(18);
+	}
 
-		:is(.kol-button, .kol-link):focus-within & {
-			border-color: var(--color-white);
-		}
+	:is(.kol-button, .kol-link):focus-within .kol-span {
+		border-color: var(--color-white);
+	}
 
-		:is(.kol-button, .kol-link):focus-within &,
-		:is(.kol-button, .kol-link):hover & {
-			text-decoration: underline;
-		}
+	:is(.kol-button, .kol-link):focus-within .kol-span,
+	:is(.kol-button, .kol-link):hover .kol-span {
+		text-decoration: underline;
 	}
 }

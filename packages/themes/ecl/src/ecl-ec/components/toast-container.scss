@@ -1,5 +1,5 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
+@use '../mixins/alert.mixin' as *;
 
 @layer kol-theme-component {
 	:host {

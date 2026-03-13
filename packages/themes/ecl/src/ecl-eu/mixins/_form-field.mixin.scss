@@ -1,0 +1,36 @@
+@use './required.mixin' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../../mixins/to-rem' as *;
+
+@mixin kol-form-field-theme {
+	.kol-form-field {
+		color: var(--color-grey);
+		gap: var(--spacing-xs);
+
+		&__label {
+			font-weight: var(--font-weight-bold);
+
+			&-text::after {
+				@include kol-required-info;
+			}
+		}
+
+		&__hint {
+			font-size: to-rem(14);
+		}
+
+		&__msg {
+			@include kol-alert;
+
+			&.kol-alert--type-error {
+				@include kol-alert(--color-red);
+			}
+		}
+
+		&__counter {
+			&--exceeded {
+				color: var(--color-red);
+			}
+		}
+	}
+}

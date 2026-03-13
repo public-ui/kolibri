@@ -1,0 +1,12 @@
+@mixin kol-link($block-classname: 'kol-link') {
+	.kol-link {
+		color: var(--color-blue);
+
+		line-height: 1.2;
+		appearance: none;
+
+		&:hover {
+			color: var(--color-blue-130);
+		}
+	}
+}

@@ -1,44 +1,123 @@
 @use '../../assets/material-symbols-subset/variables' as *;
 
 [class*=' kolicon-'] {
-	$codIconToMaterial: (
-		kolicon-plus: '\e926',
-		kolicon-minus: $icon-remove,
-		kolicon-chevron-down: $icon-arrow-down,
-		kolicon-chevron-left: $icon-chevron-left,
-		kolicon-chevron-right: $icon-chevron-right,
-		kolicon-chevron-up: $icon-arrow-up,
+	font-family: material-symbols-subset;
 
-		kolicon-eye-closed: $icon-visibility-off,
-		kolicon-eye: $icon-visibility,
-		kolicon-house: $icon-home,
-		kolicon-link-external: $icon-open-in-new,
-		kolicon-version: $icon-view-timeline,
+	/* Icon mappings */
+	&.kolicon-plus {
+		&::before {
+			content: '\e926';
+		}
+	}
+	&.kolicon-minus {
+		&::before {
+			content: $icon-remove;
+		}
+	}
+	&.kolicon-chevron-down {
+		&::before {
+			content: $icon-arrow-down;
+		}
+	}
+	&.kolicon-chevron-left {
+		&::before {
+			content: $icon-chevron-left;
+		}
+	}
+	&.kolicon-chevron-right {
+		&::before {
+			content: $icon-chevron-right;
+		}
+	}
+	&.kolicon-chevron-up {
+		&::before {
+			content: $icon-arrow-up;
+		}
+	}
 
-		kolicon-alert-warning: $icon-warning,
-		kolicon-alert-error: $icon-danger,
-		kolicon-alert-success: $icon-success,
-		kolicon-alert-info: $icon-info,
+	&.kolicon-eye-closed {
+		&::before {
+			content: $icon-visibility-off;
+		}
+	}
+	&.kolicon-eye {
+		&::before {
+			content: $icon-visibility;
+		}
+	}
+	&.kolicon-house {
+		&::before {
+			content: $icon-home;
+		}
+	}
+	&.kolicon-link-external {
+		&::before {
+			content: $icon-open-in-new;
+		}
+	}
+	&.kolicon-version {
+		&::before {
+			content: $icon-view-timeline;
+		}
+	}
 
-		kolicon-check: $icon-check,
+	&.kolicon-alert-warning {
+		&::before {
+			content: $icon-warning;
+		}
+	}
+	&.kolicon-alert-error {
+		&::before {
+			content: $icon-danger;
+		}
+	}
+	&.kolicon-alert-success {
+		&::before {
+			content: $icon-success;
+		}
+	}
+	&.kolicon-alert-info {
+		&::before {
+			content: $icon-info;
+		}
+	}
 
-		kolicon-cross: $icon-close,
-		kolicon-chevron-double-left: $icon-keyboard-double-arrow-left,
-		kolicon-chevron-double-right: $icon-keyboard-double-arrow-right,
+	&.kolicon-check {
+		&::before {
+			content: $icon-check;
+		}
+	}
 
-		kolicon-cogwheel: $icon-settings,
-		kolicon-settings: $icon-settings,
+	&.kolicon-cross {
+		&::before {
+			content: $icon-close;
+		}
+	}
+	&.kolicon-chevron-double-left {
+		&::before {
+			content: $icon-keyboard-double-arrow-left;
+		}
+	}
+	&.kolicon-chevron-double-right {
+		&::before {
+			content: $icon-keyboard-double-arrow-right;
+		}
+	}
 
-		kolicon-up: $icon-drive-folder-upload,
-	);
+	&.kolicon-cogwheel {
+		&::before {
+			content: $icon-settings;
+		}
+	}
+	&.kolicon-settings {
+		&::before {
+			content: $icon-settings;
+		}
+	}
 
-	@each $class, $icon in $codIconToMaterial {
-		&.#{$class} {
-			font-family: material-symbols-subset;
-
-			&::before {
-				content: $icon;
-			}
+	&.kolicon-up {
+		&::before {
+			content: $icon-drive-folder-upload;
 		}
 	}
 }

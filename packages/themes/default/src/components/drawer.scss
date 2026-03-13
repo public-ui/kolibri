@@ -1,6 +1,6 @@
-@use '../mixins/to-rem' as *;
-@use '../mixins/kol-card' as *;
-@use '../mixins/icon' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use '../mixins/card.mixin' as *;
+@use '../mixins/icon.mixin' as *;
 
 $duration: 0.4s;
 

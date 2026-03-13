@@ -1,0 +1,135 @@
+@use '~@public-ui/components/index' as *;
+@use './table-settings.mixin' as *;
+@use './alert.mixin' as *;
+@use './typography.mixin' as *;
+@use './checkbox.mixin' as *;
+@use './radio.mixin' as *;
+@use './button.mixin' as *;
+@use './link.mixin' as *;
+@use './pagination.mixin' as *;
+
+@mixin kol-table-stateless-theme {
+	@include kol-table-settings-theme;
+	@include kol-alert;
+	@include pagination;
+
+	:host {
+		display: flex;
+		gap: var(--kern-metric-space-default);
+		flex-direction: column;
+	}
+
+	.kol-table {
+		line-height: 1.25;
+		word-break: break-word;
+
+		&__head,
+		&__cell {
+			box-shadow: inset 0 -1px 0 0 var(--kern-color-layout-border);
+			padding: calc(var(--kern-metric-baseline-body-default-padding-top) + var(--kern-metric-space-small)) var(--kern-metric-space-x-small)
+				calc(var(--kern-metric-baseline-body-default-padding-bottom) + var(--kern-metric-space-small)) var(--kern-metric-space-x-small);
+
+			&--numeric {
+				text-align: right;
+			}
+		}
+
+		th {
+			font-size: var(--kern-typography-font-size-static-medium);
+			font-weight: var(--kern-typography-font-weight-semi-bold);
+
+			.kol-button {
+				font-size: var(--kern-typography-font-size-static-medium);
+				font-weight: var(--kern-typography-font-weight-semi-bold);
+
+				.kol-span__container {
+					gap: var(--kern-metric-space-x-small);
+				}
+			}
+		}
+
+		&__footer {
+			box-shadow: inset 0 1px 0 0 var(--kern-color-layout-border);
+
+			.kol-table__cell {
+				font-weight: var(--kern-typography-font-weight-semi-bold);
+			}
+		}
+
+		&__table {
+			width: 100%;
+			border-spacing: 0;
+		}
+
+		&__caption {
+			display: table-caption;
+			@include kern-title();
+			padding-right: calc(var(--a11y-min-size) + var(--kern-metric-space-small));
+		}
+
+		&__cell {
+			&--subtext {
+				font-size: to-rem(14.4);
+				font-weight: 400;
+			}
+
+			&--header {
+				transition:
+					background-color 80ms cubic-bezier(0.65, 0, 0.35, 1),
+					box-shadow 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+				&[data-sort]:not([data-sort='NOS']) {
+					.kol-button {
+						cursor: pointer;
+
+						&:hover {
+							background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
+						}
+
+						&:focus-within {
+							box-shadow:
+								0 0 0 2px var(--kern-color-action-on-default),
+								0 0 0 4px var(--kern-color-action-focus-border-inside),
+								0 0 0 6px var(--kern-color-action-focus-border-outside);
+							border-radius: var(--kern-metric-border-radius-default);
+						}
+					}
+				}
+			}
+
+			&--selection {
+				width: to-rem(52);
+			}
+		}
+
+		&__cell-actions {
+			gap: to-rem(4);
+			@include button('kol-button');
+			@include kol-link('kol-link');
+		}
+
+		&:has(.kol-table__selection-input--radio) {
+			--kol-input-radio-color: var(--kern-color-form-input-border);
+			--kol-input-radio-background-color: transparent;
+			--border-width: var(--kern-metric-border-width-default);
+			@include radio('kol-table__selection-input--radio');
+		}
+
+		&:not(:has(.kol-table__selection-input--radio)) {
+			@include checkbox('kol-table__selection');
+		}
+	}
+
+	@supports not selector(:has(*)) {
+		.kol-table {
+			.kol-table__selection-input--radio {
+				--kol-input-radio-color: var(--kern-color-form-input-border);
+				--kol-input-radio-background-color: transparent;
+				--border-width: var(--kern-metric-border-width-default);
+			}
+
+			@include radio('kol-table__selection-input--radio');
+			@include checkbox('kol-table__selection');
+		}
+	}
+}

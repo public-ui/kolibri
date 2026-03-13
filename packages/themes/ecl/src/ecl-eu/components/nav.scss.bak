@@ -1,0 +1,137 @@
+@use '../../mixins/to-rem' as *;
+
+@layer kol-theme-component {
+	.kol-nav {
+		&__navigation {
+			background-color: var(--color-blue);
+		}
+
+		&__list {
+			display: flex;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			&--vertical {
+				flex-direction: column;
+			}
+		}
+
+		&__list-item {
+			border-color: var(--color-blue-75);
+			border-style: solid;
+			border-width: 0;
+
+			&:not(:first-child) {
+				border-top-width: to-rem(2);
+			}
+		}
+
+		&__entry-wrapper {
+			display: flex;
+		}
+
+		&__entry {
+			flex-grow: 1;
+		}
+
+		&__expand-button {
+			.kol-button {
+				background-color: var(--color-blue-130);
+				height: 100%;
+				margin: auto;
+			}
+
+			&--expanded .kol-icon::before {
+				content: '\eab4';
+			}
+
+			&:not(&--expanded) .kol-icon::before {
+				content: '\eab6';
+			}
+		}
+
+		&__toggle-button {
+			.kol-button {
+				--kolibri-spacing: #{to-rem(4)};
+				--text-focus-outline-color: var(--color-white);
+				border-radius: 4px;
+
+				text-decoration: none;
+
+				appearance: none;
+
+				&--ghost {
+					--text-color: #0e47cb;
+					--text-focus-outline-color: #0e47cb;
+
+					&:hover {
+						--text-color: #0e47cb;
+					}
+				}
+
+				&:focus {
+					outline: none;
+				}
+
+				&__text {
+					color: var(--text-color);
+
+					background-color: var(--text-background-color);
+					border-radius: 4px;
+					min-width: to-rem(44);
+					min-height: to-rem(44);
+					margin: 0;
+					padding: to-rem(12);
+
+					font:
+						normal normal 400 to-rem(16) / to-rem(20) arial,
+						sans-serif;
+					font-weight: 400;
+					line-height: 1.2;
+					text-decoration: none !important;
+
+					&:active,
+					&:hover {
+						box-shadow:
+							0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
+							0 0 to-rem(10) rgb(9 49 142 / 4%),
+							0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
+							0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
+					}
+
+					@at-root #{$root}--hide-label & {
+						.kol-span__label {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.kol-link {
+		text-decoration: none;
+	}
+
+	.kol-span {
+		color: var(--color-white);
+		border-color: transparent;
+		border-style: solid;
+		height: 100%;
+		padding: to-rem(16);
+		border-width: 2px;
+		justify-items: start;
+
+		font-size: to-rem(18);
+
+		:is(.kol-button, .kol-link):focus-within & {
+			border-color: var(--color-white);
+		}
+
+		:is(.kol-button, .kol-link):focus-within &,
+		:is(.kol-button, .kol-link):hover & {
+			text-decoration: underline;
+		}
+	}
+}

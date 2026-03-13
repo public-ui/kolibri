@@ -1,0 +1,21 @@
+@mixin kol-form-field-order-textarea-theme {
+	.kol-form-field__msg {
+		order: 1;
+	}
+
+	.kol-form-field__label {
+		order: 2;
+	}
+
+	.kol-form-field__input {
+		order: 3;
+	}
+
+	.kol-form-field__counter {
+		order: 4;
+	}
+
+	.kol-form-field__hint {
+		order: 5;
+	}
+}
