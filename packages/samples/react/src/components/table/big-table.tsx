@@ -56,7 +56,7 @@ export const TableBig: FC = () => {
 
 		const addCols = searchParams.get('addCols');
 		if (addCols) {
-			if (+addCols < 5000) {
+			if (+addCols < 200) {
 				const h = [...defaultHeaders];
 				for (let index = 0; index < +addCols; index++) {
 					h.push({ label: 'label' + index, key: 'key' + index, textAlign: 'left', width: 100 });
