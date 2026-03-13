@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolAccordion, KolCombobox } from '@public-ui/react-v19';
+import { KolAccordion } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -16,7 +16,7 @@ export const AccordionBasic: FC = () => (
 
 		<div className="grid gap-4">
 			<KolAccordion _label="Heading Accordion Tab 1 (open)" _open>
-				<KolCombobox _label="Combobox in Accordion" _suggestions="['Herr','Frau','Firma']" />
+				Contents Accordion Tab 1
 			</KolAccordion>
 			<KolAccordion _label="Heading Accordion Tab 2">Contents Accordion Tab 2</KolAccordion>
 			<KolAccordion _label="Heading Accordion Tab 3 (deactivated)" _disabled>
