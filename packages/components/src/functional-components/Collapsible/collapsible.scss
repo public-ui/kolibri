@@ -22,7 +22,7 @@
 			transform: translateZ(0);
 			display: grid;
 			grid-template-rows: 0fr;
-			grid-template-columns: 100%;
+			grid-template-columns: minmax(0, 1fr);
 			transition: grid-template-rows 0.3s;
 		}
 
