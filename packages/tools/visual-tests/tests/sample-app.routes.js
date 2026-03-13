@@ -45,6 +45,9 @@ ROUTES.set('accordion/headlines', {
 		},
 	},
 });
+ROUTES.set('accordion/components', {
+	snapshot: {},
+});
 ROUTES.set('alert/basic', {
 	snapshot: {
 		zoom: {
