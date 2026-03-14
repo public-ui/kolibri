@@ -1,5 +1,5 @@
 @use '../@shared/mixins' as *;
-@use '../@shared/kol-icon-mixin' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
 	@include kol-icon-styles();

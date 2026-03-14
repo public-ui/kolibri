@@ -1,6 +1,6 @@
-@use '../../styles/global' as *;
-@use '../@shared/kol-button-mixin' as *;
-@use '../@shared/kol-popover-button-mixin' as *;
+@use '../@shared/global' as *;
+@use '../@shared/button.mixin' as *;
+@use '../@shared/popover-button.mixin' as *;
 @use '../tooltip/style' as *;
 
 @layer kol-component {

@@ -1,14 +1,14 @@
-@use '../../styles/global' as *;
-@use '../../styles/kol-alert-mixin' as *;
-@use '../../styles/kol-custom-suggestions-option' as *;
-@use '../../styles/kol-custom-suggestions-options-group' as *;
-@use '../../styles/kol-custom-suggestions-toggle' as *;
-@use '../../styles/kol-form-field-mixin' as *;
-@use '../../styles/kol-input-container-mixin' as *;
-@use '../../styles/kol-input-mixin' as *;
+@use '../@shared/global' as *;
+@use '../@shared/alert.mixin' as *;
+@use '../@shared/custom-suggestions-option' as *;
+@use '../@shared/custom-suggestions-options-group' as *;
+@use '../@shared/custom-suggestions-toggle' as *;
+@use '../@shared/form-field.mixin' as *;
+@use '../@shared/input-container.mixin' as *;
+@use '../@shared/input.mixin' as *;
 @use '../@shared/mixins' as *;
-@use '../@shared/kol-button-mixin' as *;
-@use '../@shared/kol-icon-mixin' as *;
+@use '../@shared/button.mixin' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
 	@include kol-alert;

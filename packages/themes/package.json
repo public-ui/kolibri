@@ -50,7 +50,6 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
-		"lint:stylelint": "pnpm -r lint:stylelint",
 		"lint:tsc": "tsc --noemit",
 		"prepare": "npm-run-all2 prepare:*",
 		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
