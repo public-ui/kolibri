@@ -1,4 +1,4 @@
-@use '../components/@shared/mixins' as *;
+@use 'mixins' as *;
 
 @mixin kol-custom-suggestions-options-group {
 	.kol-custom-suggestions-options-group {

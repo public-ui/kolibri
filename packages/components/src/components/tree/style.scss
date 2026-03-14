@@ -1,5 +1,5 @@
 @use '../@shared/mixins' as *;
-@use '../../styles/global' as *;
+@use '../@shared/global' as *;
 
 @layer kol-component {
 	.kol-tree {

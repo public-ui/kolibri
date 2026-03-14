@@ -1,9 +1,9 @@
-@use '../../styles/global' as *;
-@use '../../styles/kol-alert-mixin' as *;
-@use '../../styles/kol-form-field-mixin' as *;
-@use '../../styles/kol-input-container-mixin' as *;
-@use '../../styles/kol-input-mixin' as *;
-@use '../@shared/mixins' as *;
+@use 'global' as *;
+@use 'alert.mixin' as *;
+@use 'form-field.mixin' as *;
+@use 'input-container.mixin' as *;
+@use 'input.mixin' as *;
+@use 'mixins' as *;
 
 @mixin kol-select {
 	@include kol-alert;
