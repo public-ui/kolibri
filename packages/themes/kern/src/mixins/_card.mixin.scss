@@ -1,10 +1,10 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/button' as *;
+@use '../mixins/button.mixin' as *;
 
-@mixin card($block-classname) {
+@mixin card {
 	@include button('kol-button');
 
-	.#{$block-classname} {
+	.kol-card {
 		background: var(--kern-color-layout-background-default);
 		box-shadow: var(--kol-card-box-shadow);
 		border-radius: var(--kol-card-border-radius);

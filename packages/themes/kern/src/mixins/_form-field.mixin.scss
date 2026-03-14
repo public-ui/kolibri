@@ -10,23 +10,10 @@
 
 		font-family: var(--kern-typography-font-family-default);
 
-		$root: &;
-
-		&--read-only,
-		&--disabled {
-			@at-root & #{$root}__label {
-				opacity: 1;
-				cursor: not-allowed;
-			}
-		}
-
-		&--error {
-			padding-left: var(--kern-metric-space-default);
-			border-left: var(--kern-metric-border-width-bold) solid var(--kern-color-feedback-danger);
-		}
-
-		&__input {
-			order: 3;
+		&--read-only &__label,
+		&--disabled &__label {
+			opacity: 1;
+			cursor: not-allowed;
 		}
 
 		&__label {

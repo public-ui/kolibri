@@ -1,9 +1,9 @@
 @use '~@public-ui/components/index' as *;
-@use './button' as *;
-@use './select' as *;
+@use './button.mixin' as *;
+@use './select.mixin' as *;
 
-@mixin pagination($block-classname) {
-	.#{$block-classname} {
+@mixin pagination {
+	.kol-pagination {
 		display: flex;
 		@include button('kol-button');
 		@include kol-select();

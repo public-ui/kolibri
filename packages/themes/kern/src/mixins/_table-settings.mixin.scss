@@ -1,6 +1,6 @@
 @use '~@public-ui/components/index' as *;
-@use './button' as *;
-@use './focus-outline' as *;
+@use './button.mixin' as *;
+@use './focus-outline.mixin' as *;
 
 @mixin kol-table-settings-theme {
 	.kol-table-settings {

@@ -2,11 +2,13 @@
 @use '~@kern-ux/native/src/scss/core/utilities/mixins' as *;
 
 @mixin kol-link($block-classname) {
-	.#{$block-classname} {
+	.kol-link,
+	.kol-button,
+	.kol-tree-item__text,
+	.kol-tree-item__toggle-button {
 		@include normalize;
 		@include body-default;
 
-		$root: &;
 		color: var(--kern-color-action-default);
 		display: inline-flex;
 		align-items: flex-start;
@@ -48,8 +50,8 @@
 				}
 			}
 
-			@at-root & #{$root}__text,
-				.kol-span__label {
+			.kol-link__text,
+			.kol-span__label {
 				text-decoration: none;
 			}
 		}
@@ -104,8 +106,8 @@
 			&:focus-visible {
 				box-shadow:
 					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
-					// TODO: Variable mit Design überprüfen
-					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px var(--kern-color-action-focus-border-inside),
+					/* TODO: Variable mit Design überprüfen */ var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px
+						var(--kern-color-action-focus-border-inside),
 					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
 				outline-color: transparent;
 				border-radius: var(--kern-metric-border-radius-small, 0.125rem);

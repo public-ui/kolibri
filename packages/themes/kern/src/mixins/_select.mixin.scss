@@ -1,5 +1,5 @@
 @use '~@public-ui/components/index' as *;
-@use './input-core' as *;
+@use './input-core.mixin' as *;
 
 @mixin kol-select {
 	@include input-core;
@@ -67,7 +67,6 @@
 	}
 
 	.kol-input-container {
-		$root: &;
 		height: auto;
 		min-height: var(--kern-metric-dimension-x-large);
 		padding: 0;

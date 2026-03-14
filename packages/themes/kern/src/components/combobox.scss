@@ -1,12 +1,12 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/kol-alert' as *;
-@use '../mixins/form-field-order' as *;
-@use '../mixins/typography' as *;
-@use '../mixins/custom-suggestions-option' as *;
-@use '../mixins/custom-suggestions-options-group' as *;
-@use '../mixins/custom-suggestions-toggle' as *;
-@use '../mixins/listbox-common' as *;
-@use '../mixins/input-core' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/form-field-order.mixin' as *;
+@use '../mixins/typography.mixin' as *;
+@use '../mixins/custom-suggestions-option.mixin' as *;
+@use '../mixins/custom-suggestions-options-group.mixin' as *;
+@use '../mixins/custom-suggestions-toggle.mixin' as *;
+@use '../mixins/listbox-common.mixin' as *;
+@use '../mixins/input-core.mixin' as *;
 
 @layer kol-theme-component {
 	$option-height: to-rem(40);
@@ -16,5 +16,5 @@
 	@include kol-custom-suggestions-option-theme($option-height);
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;
-	@include listbox-common(kol-combobox);
+	@include listbox-common;
 }

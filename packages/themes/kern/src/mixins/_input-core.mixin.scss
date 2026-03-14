@@ -1,9 +1,9 @@
 @use '~@public-ui/components/index' as *;
 @use '~@kern-ux/native/src/scss/core/utilities/mixins' as *;
 
-@use './badge-text-hint' as *;
-@use './kol-alert' as *;
-@use './kol-form-field' as *;
+@use './badge-text-hint.mixin' as *;
+@use './alert.mixin' as *;
+@use './form-field.mixin' as *;
 
 @mixin input-core {
 	@include badge-text-hint(var(--kern-color-layout-text-muted), var(--kern-color-layout-text-inverse));

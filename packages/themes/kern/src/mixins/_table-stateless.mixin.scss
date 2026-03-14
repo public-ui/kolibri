@@ -1,17 +1,17 @@
 @use '~@public-ui/components/index' as *;
-@use './kol-table-settings-wc' as *;
-@use './kol-alert' as *;
-@use './typography' as *;
-@use './checkbox' as *;
-@use './radio' as *;
-@use './button' as *;
-@use './link' as *;
-@use './pagination' as *;
+@use './table-settings.mixin' as *;
+@use './alert.mixin' as *;
+@use './typography.mixin' as *;
+@use './checkbox.mixin' as *;
+@use './radio.mixin' as *;
+@use './button.mixin' as *;
+@use './link.mixin' as *;
+@use './pagination.mixin' as *;
 
 @mixin kol-table-stateless-theme {
 	@include kol-table-settings-theme;
 	@include kol-alert;
-	@include pagination('kol-pagination');
+	@include pagination;
 
 	:host {
 		display: flex;

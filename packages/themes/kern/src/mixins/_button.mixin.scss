@@ -1,9 +1,10 @@
 @use '~@public-ui/components/index' as *;
-@use './focus-outline' as *;
-@use './badge-text-hint' as *;
+@use './focus-outline.mixin' as *;
+@use './badge-text-hint.mixin' as *;
 
-@mixin button($block-classname) {
-	.#{$block-classname} {
+@mixin button($block-classname: 'kol-button') {
+	.kol-button,
+	.kol-link {
 		--button-min-size: var(--kern-metric-dimension-x-large);
 		--button-padding: var(--kern-metric-space-small) var(--kern-metric-space-default);
 
@@ -34,7 +35,6 @@
 			min-width: var(--button-min-size);
 			min-height: var(--button-min-size);
 			padding: var(--button-padding);
-			border-width: var(--kern-metric-border-width-light);
 			border-width: var(--kern-metric-border-width-light);
 		}
 
@@ -67,7 +67,7 @@
 			}
 		}
 
-		// Not specified in Kern!
+		/* Not specified in Kern! */
 		&--danger {
 			--button-text-background-color-default: var(--kern-color-feedback-danger);
 			--button-text-background-color: var(--button-text-background-color-default);
@@ -95,15 +95,11 @@
 		@include badge-text-hint(var(--button-text-color), var(--button-text-background-color-default));
 	}
 
-	@include normalButton('#{$block-classname}--secondary');
-	@include normalButton('#{$block-classname}--normal');
-
-	@include ghostButton('#{$block-classname}--tertiary');
-	@include ghostButton('#{$block-classname}--ghost');
-}
-
-@mixin normalButton($block-classname) {
-	.#{$block-classname} {
+	/* Normal button variants */
+	.kol-button--secondary,
+	.kol-link--secondary,
+	.kol-button--normal,
+	.kol-link--normal {
 		--button-text-background-color-default: var(--kern-neutral-000);
 		--button-text-background-color: var(--button-text-background-color-default);
 		--button-text-border-color: var(--kern-color-action-default);
@@ -115,6 +111,44 @@
 
 		&:not([disabled]):active {
 			--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
+		}
+	}
+
+	/* Ghost button variants */
+	.kol-button--tertiary,
+	.kol-link--tertiary,
+	.kol-button--ghost,
+	.kol-link--ghost {
+		--button-text-background-color: transparent;
+		--button-text-border-color: transparent;
+		--button-text-color: var(--kern-color-action-default);
+		--button-badge-color: var(--kern-neutral-000);
+		text-decoration-color: var(--kern-color-action-default);
+
+		&:not([disabled]):hover {
+			--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
+		}
+
+		&:not([disabled]):active {
+			--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
+		}
+
+		@supports selector(:has(*)) {
+			&:not(:has(.kol-icon)) {
+				text-decoration-line: underline;
+
+				&:not([disabled]):hover {
+					text-decoration-thickness: var(--kern-3, 3px);
+				}
+			}
+		}
+
+		@supports not selector(:has(*)) {
+			text-decoration-line: underline;
+
+			&:not([disabled]):hover {
+				text-decoration-thickness: var(--kern-3, 3px);
+			}
 		}
 	}
 }

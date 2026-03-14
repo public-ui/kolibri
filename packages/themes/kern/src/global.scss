@@ -1,22 +1,22 @@
-// @use '~@kern-ux/native/src/scss/core/tokens/_index';
+/* @use '~@kern-ux/native/src/scss/core/tokens/_index'; */
 @use '~@public-ui/components/index' as *;
 @use './global/icons' as *;
 @use './kern/tokens/index';
-@use './mixins/badge-text-hint' as *;
+@use './mixins/badge-text-hint.mixin' as *;
 
 @layer kol-theme-global {
-	// Properties
+	/* Properties */
 	:host {
 		--font-family: var(--kern-typography-font-family-default, sans-serif);
 	}
 
-	// Font
+	/* Font */
 	:host {
 		font-family: var(--font-family);
 		font-size: to-rem(16);
 	}
 
-	// Hint
+	/* Hint */
 	@include badge-text-hint(var(--kern-color-layout-text-muted), var(--kern-color-layout-text-inverse));
 
 	// Tooltip

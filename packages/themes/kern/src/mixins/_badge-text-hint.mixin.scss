@@ -5,8 +5,9 @@
 		border-radius: var(--kern-metric-border-radius-default);
 		padding: 0 0.3em;
 
-		.kol-span & {
-			// kol-span is a flex-element without white space between elements
+		.kol-span &,
+		.kol-span .kol-span & {
+			/* kol-span is a flex-element without white space between elements */
 			margin-left: 0.25em;
 		}
 	}
