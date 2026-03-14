@@ -66,9 +66,9 @@
 	},
 	"devDependencies": {
 		"@angular/common": "21.2.2",
-		"@angular/compiler": "21.2.2",
+		"@angular/compiler": "21.2.4",
 		"@angular/compiler-cli": "21.2.2",
-		"@angular/core": "21.2.2",
+		"@angular/core": "21.2.4",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.4",
 		"rimraf": "6.1.3",
