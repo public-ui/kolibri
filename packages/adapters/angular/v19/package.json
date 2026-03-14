@@ -66,9 +66,9 @@
 	},
 	"devDependencies": {
 		"@angular/common": "19.2.19",
-		"@angular/compiler": "19.2.19",
+		"@angular/compiler": "21.2.4",
 		"@angular/compiler-cli": "19.2.19",
-		"@angular/core": "19.2.19",
+		"@angular/core": "19.2.20",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.4",
 		"rimraf": "6.1.3",
