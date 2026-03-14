@@ -1,15 +1,15 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/kol-alert' as *;
-@use '../mixins/field-control' as *;
-@use '../mixins/form-field-order' as *;
-@use '../mixins/radio' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/field-control.mixin' as *;
+@use '../mixins/form-field-order.mixin' as *;
+@use '../mixins/radio.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert;
 	@include kol-field-control-theme;
 	@include kol-form-field-order-theme;
 	@include kol-form-field;
-	@include radio('kol-input');
+	@include radio;
 
 	.kol-form-field {
 		gap: var(--kern-metric-space-small);

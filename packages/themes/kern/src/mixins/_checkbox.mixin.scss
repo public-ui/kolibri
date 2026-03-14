@@ -1,7 +1,7 @@
 @use '~@public-ui/components/index' as *;
-@use './focus-outline' as *;
+@use './focus-outline.mixin' as *;
 
-@mixin checkbox($block-classname) {
+@mixin checkbox($block-classname: 'kol-checkbox') {
 	.#{$block-classname} {
 		&__input,
 		&-input {

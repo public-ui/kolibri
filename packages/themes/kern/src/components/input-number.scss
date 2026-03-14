@@ -1,4 +1,4 @@
-@use '../mixins/input-core-text' as *;
+@use '../mixins/input-core-text.mixin' as *;
 
 @layer kol-theme-component {
 	@include input-core-text;
@@ -19,7 +19,7 @@
 		}
 
 		.kol-input {
-			min-width: calc(3 * var(--a11y-min-size) + 8px); // at least 2 buttons + text with a11y min size + gaps
+			min-width: calc(3 * var(--a11y-min-size) + 8px); /* at least 2 buttons + text with a11y min size + gaps */
 		}
 	}
 }

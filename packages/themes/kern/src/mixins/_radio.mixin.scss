@@ -1,7 +1,7 @@
 @use '~@public-ui/components/index' as *;
 
-@mixin radio($block-classname) {
-	.#{$block-classname} {
+@mixin radio($block-classname: 'kol-input') {
+	.#{$block-classname}[type='radio'] {
 		color: var(--kol-input-radio-color);
 		background: var(--kol-input-radio-background-color);
 		border-radius: 100%;
@@ -33,13 +33,13 @@
 			border: 0;
 			outline-offset: 0;
 		}
+	}
 
-		&--disabled {
-			opacity: var(--kern-color-action-state-opacity-disabled);
-		}
+	.#{$block-classname}--disabled[type='radio'] {
+		opacity: var(--kern-color-action-state-opacity-disabled);
+	}
 
-		&-radio {
-			justify-content: flex-start;
-		}
+	.kol-input-radio {
+		justify-content: flex-start;
 	}
 }

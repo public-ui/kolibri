@@ -1,5 +1,5 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/kol-table-stateless-wc' as *;
+@use '../mixins/table-stateless.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-table-stateless-theme;

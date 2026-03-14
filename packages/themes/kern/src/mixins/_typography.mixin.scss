@@ -36,7 +36,7 @@
 	line-height: var(--kern-typography-line-height-static-medium, 24px);
 }
 
-// TBD: h5 & h6 gibt es bei KernUX nicht, das ist ein Vorschlag damit die Styles nicht leer bleiben und noch als headline erkennbar sind
+/* TODO: h5 & h6 gibt es bei KernUX nicht, das ist ein Vorschlag damit die Styles nicht leer bleiben und noch als headline erkennbar sind */
 @mixin kol-typography-h5 {
 	padding: var(--kern-metric-baseline-heading-small-padding-top, 6px) var(--kern-metric-space-none, 0)
 		var(--kern-metric-baseline-heading-small-padding-bottom, 2px) var(--kern-metric-space-none, 0);
