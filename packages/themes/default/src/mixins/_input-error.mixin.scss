@@ -1,5 +1,5 @@
-@use '../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use '../mixins/alert.mixin' as *;
 
 @mixin input-error {
 	padding-left: to-rem(16);

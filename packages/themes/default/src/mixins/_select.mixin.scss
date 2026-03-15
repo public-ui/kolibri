@@ -1,5 +1,5 @@
 @use '../@shared/input-core' as *;
-@use '../mixins/to-rem' as *;
+@use '../mixins/to-rem.mixin' as *;
 
 @mixin kol-select {
 	.kol-select {
@@ -59,7 +59,7 @@
 		}
 
 		.kol-select {
-			// we use a transparent border to push the content inward, because padding does not move the select arrow icon inwards
+			/* we use a transparent border to push the content inward, because padding does not move the select arrow icon inwards */
 			border-left: to-rem(10) solid transparent;
 			border-right: to-rem(10) solid transparent;
 		}

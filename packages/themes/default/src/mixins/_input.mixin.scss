@@ -1,15 +1,13 @@
-@use '../mixins/to-rem' as *;
-@use './focus-outline' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use './focus-outline.mixin' as *;
 
 @mixin kol-input-theme {
 	.kol-input-container {
-		$root: &;
-
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
 		border-style: solid;
 		border-radius: var(--border-radius);
-		//space for focus outline
+		/* space for focus outline */
 		margin-top: to-rem(2);
 		padding: 0 to-rem(8);
 		border-width: 2px;
@@ -49,7 +47,7 @@
 			border-width: 1px;
 			border-bottom: 2px solid var(--color-subtle);
 
-			#{$root}__container {
+			.kol-input-container__container {
 				padding-top: 1px;
 			}
 		}

@@ -1,5 +1,5 @@
-@use './to-rem' as *;
-@use './button' as *;
+@use './to-rem.mixin' as *;
+@use './button.mixin' as *;
 
 @mixin kol-card($border-radius: var(--border-radius)) {
 	.kol-card {

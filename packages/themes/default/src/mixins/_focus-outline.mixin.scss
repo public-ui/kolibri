@@ -1,4 +1,4 @@
-@use '../mixins/to-rem' as *;
+@use '../mixins/to-rem.mixin' as *;
 
 @mixin focus-outline {
 	outline: var(--color-primary-variant) solid to-rem(3);

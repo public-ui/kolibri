@@ -1,6 +1,6 @@
-@use '../mixins/to-rem' as *;
-@use './alert' as *;
-@use './typography' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use './alert.mixin' as *;
+@use './typography.mixin' as *;
 
 @mixin kol-form-field-theme {
 	.kol-form-field {

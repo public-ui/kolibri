@@ -1,12 +1,12 @@
 @use '../@shared/input-core' as *;
-@use '../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
-@use '../mixins/button' as *;
-@use '../mixins/custom-suggestions-option' as *;
-@use '../mixins/custom-suggestions-options-group' as *;
-@use '../mixins/custom-suggestions-toggle' as *;
-@use '../mixins/input-text.scss' as *;
-@use '../mixins/icon' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/button.mixin' as *;
+@use '../mixins/custom-suggestions-option.mixin' as *;
+@use '../mixins/custom-suggestions-options-group.mixin' as *;
+@use '../mixins/custom-suggestions-toggle.mixin' as *;
+@use '../mixins/input-text.mixin' as *;
+@use '../mixins/icon.mixin' as *;
 
 $option-height: to-rem(40);
 $visible-options: 5;

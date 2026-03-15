@@ -1,6 +1,6 @@
-@use '../mixins/to-rem' as *;
-@use '../mixins/focus-outline' as *;
-@use '../mixins/icon' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use '../mixins/focus-outline.mixin' as *;
+@use '../mixins/icon.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;

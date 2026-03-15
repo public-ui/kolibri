@@ -16,7 +16,7 @@
 	.fa-regular,
 	.fab,
 	.fa-brands {
-		// display: var(--fa-display, inline-block);
+		/* display: var(--fa-display, inline-block); */
 
 		font-variant: normal;
 		line-height: 1;
@@ -8405,7 +8405,6 @@ readers do not read off random characters that represent icons */
 
 		white-space: nowrap;
 	}
-	:root,
 	:host {
 		--fa-font-brands: normal 400 1em/1 'Font Awesome 6 Brands';
 	}
@@ -10309,7 +10308,6 @@ readers do not read off random characters that represent icons */
 	.fa-zhihu:before {
 		content: '\f63f';
 	}
-	:root,
 	:host {
 		--fa-font-regular: normal 400 1em/1 'Font Awesome 6 Free';
 	}
@@ -10329,7 +10327,6 @@ readers do not read off random characters that represent icons */
 		font-family: 'Font Awesome 6 Free';
 		font-weight: 400;
 	}
-	:root,
 	:host {
 		--fa-font-solid: normal 900 1em/1 'Font Awesome 6 Free';
 	}

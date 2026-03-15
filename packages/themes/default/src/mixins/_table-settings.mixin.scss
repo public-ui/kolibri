@@ -1,6 +1,6 @@
-@use '../mixins/to-rem' as *;
-@use './button' as *;
-@use './focus-outline' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use './button.mixin' as *;
+@use './focus-outline.mixin' as *;
 
 @mixin kol-table-settings-theme {
 	.kol-table-settings {
@@ -9,7 +9,7 @@
 
 		&__content {
 			padding: to-rem(24);
-			@include kol-button('kol-button'); // use buttons styles only in the content, not for the popover button
+			@include kol-button('kol-button'); /* use buttons styles only in the content, not for the popover button */
 		}
 
 		&__error-message {

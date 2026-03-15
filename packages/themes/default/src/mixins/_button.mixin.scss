@@ -1,5 +1,5 @@
-@use './focus-outline' as *;
-@use './to-rem' as *;
+@use './focus-outline.mixin' as *;
+@use './to-rem.mixin' as *;
 
 @mixin kol-button($block-classname) {
 	:host {

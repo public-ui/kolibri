@@ -1,3 +1,17 @@
 {
-	"extends": ["../../../.stylelintrc.json"]
+	"extends": ["../../../.stylelintrc.json"],
+	"plugins": [
+		"../stylelint-rules/require-component-layer",
+		"../stylelint-rules/require-global-layer",
+		"../stylelint-rules/no-layer-in-utility-files",
+		"../stylelint-rules/layer-name-convention",
+		"../stylelint-rules/no-root-selector"
+	],
+	"rules": {
+		"kolibri/require-component-layer": true,
+		"kolibri/require-global-layer": true,
+		"kolibri/no-layer-in-non-component-files": true,
+		"kolibri/layer-name-convention": true,
+		"kolibri/no-root-selector": true
+	}
 }

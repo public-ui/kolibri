@@ -1,9 +1,9 @@
-@use './to-rem' as *;
-@use './kol-table-settings-wc' as *;
-@use './alert' as *;
-@use './pagination-mixin' as *;
-@use './button' as *;
-@use './link' as *;
+@use './to-rem.mixin' as *;
+@use './table-settings.mixin' as *;
+@use './alert.mixin' as *;
+@use './pagination.mixin' as *;
+@use './button.mixin' as *;
+@use './link.mixin' as *;
 
 @mixin kol-table-stateless-theme {
 	@include kol-table-settings-theme;

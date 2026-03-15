@@ -1,6 +1,6 @@
 @use '../@shared/input-core' as *;
-@use '../mixins/to-rem' as *;
-@use '../mixins/icon' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use '../mixins/icon.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;

@@ -1,6 +1,6 @@
-@use '../mixins/to-rem' as *;
-@use './focus-outline' as *;
-@use './select' as *;
+@use '../mixins/to-rem.mixin' as *;
+@use './focus-outline.mixin' as *;
+@use './select.mixin' as *;
 
 @mixin kol-pagination-styles {
 	.kol-table-stateful {
