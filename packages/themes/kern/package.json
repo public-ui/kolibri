@@ -81,6 +81,7 @@
 		"rollup": "4.59.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.98.0",
+		"@public-ui/stylelint-rules": "workspace:*",
 		"stylelint": "17.4.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"

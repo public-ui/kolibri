@@ -1,7 +1,6 @@
-const stylelint = require('stylelint');
-const path = require('path');
+import stylelint from 'stylelint';
 
-const ruleName = 'kolibri/layer-restrictions-themes';
+const ruleName = 'kolibri/theme-allowed-layer-names';
 const messages = stylelint.utils.ruleMessages(ruleName, {
 	rejected: (layerName, filePath) =>
 		`Layer "${layerName}" is not allowed in themes package. Only kol-theme-global and kol-theme-component are allowed: ${filePath}`,
@@ -12,11 +11,6 @@ const meta = {
 	fixable: false,
 };
 
-/**
- * Custom stylelint rule to restrict @layer declarations in themes packages:
- * - Only allows kol-theme-global and kol-theme-component layers
- * - Applies only to files in packages/themes directory
- */
 const ruleFunction = (primaryOption) => {
 	return (root, result) => {
 		if (!primaryOption) return;
@@ -24,20 +18,13 @@ const ruleFunction = (primaryOption) => {
 		const filePath = result.root.source.input.from;
 		if (!filePath) return;
 
-		// Normalize path separators for cross-platform compatibility
 		const normalizedPath = filePath.replace(/\\/g, '/');
-
-		// Only apply rule to files in packages/themes
-		if (!normalizedPath.includes('/packages/themes/')) {
-			return;
-		}
+		if (!normalizedPath.includes('/packages/themes/')) return;
 
 		const allowedLayers = ['kol-theme-global', 'kol-theme-component'];
 
-		// Check for @layer at-rules
 		root.walkAtRules('layer', (atRule) => {
 			const layerNames = atRule.params.split(',').map((name) => name.trim());
-
 			layerNames.forEach((layerName) => {
 				if (!allowedLayers.includes(layerName)) {
 					stylelint.utils.report({
@@ -56,4 +43,4 @@ ruleFunction.ruleName = ruleName;
 ruleFunction.messages = messages;
 ruleFunction.meta = meta;
 
-module.exports = stylelint.createPlugin(ruleName, ruleFunction);
+export default stylelint.createPlugin(ruleName, ruleFunction);

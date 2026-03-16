@@ -1,0 +1,24 @@
+{
+	"name": "@public-ui/stylelint-rules",
+	"version": "4.1.2-rc.1",
+	"description": "Custom Stylelint rules for the KoliBri component library",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {
+		"test": "mocha 'src/**/*.test.js'",
+		"test:unit": "mocha 'src/**/*.test.js'"
+	},
+	"peerDependencies": {
+		"stylelint": ">=16"
+	},
+	"devDependencies": {
+		"mocha": "11.1.0",
+		"postcss-scss": "4.0.9",
+		"stylelint": "17.4.0",
+		"stylelint-config-recommended-scss": "17.0.0",
+		"stylelint-config-standard": "40.0.0"
+	}
+}
