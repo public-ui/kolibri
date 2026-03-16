@@ -6,6 +6,10 @@ import { ERROR_MSG } from '../../../shares/constants';
 
 import type { Components } from '@public-ui/components';
 export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components.KolInputNumber>(function InputNumberCases(props, ref) {
+	const handleOn = {
+		onBlur: (event: Event) => console.log(event),
+	};
+
 	return (
 		<div className="grid gap-4">
 			<div className="black-background">
@@ -35,7 +39,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 			<KolInputNumber {...props} _readOnly _value={123} _label="Number input (Readonly)" />
 			<KolInputNumber {...props} _disabled _value={123} _label="Number input (Disabled)" />
 			<KolInputNumber {...props} _label="With access key" _accessKey="c" />
-			<KolInputNumber {...props} _label="With short key" _shortKey="s" />
+			<KolInputNumber {...props} _label="With short key" _shortKey="s" _on={handleOn} />
 		</div>
 	);
 });
