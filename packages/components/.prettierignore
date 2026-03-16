@@ -1,6 +1,3 @@
-src/assets/*.css
-src/assets/@leanup
-src/assets/codicons
-src/components.d.ts
-*.bak
-*.sass
+/assets/**
+/node_modules/**
+/src/components.d.ts

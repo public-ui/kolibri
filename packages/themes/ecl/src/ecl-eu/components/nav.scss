@@ -2,8 +2,6 @@
 
 @layer kol-theme-component {
 	.kol-nav {
-		$root: &;
-
 		&__navigation {
 			background-color: var(--color-blue);
 		}
@@ -24,8 +22,7 @@
 			border-style: solid;
 			border-width: 0;
 
-			&:not(:first-child),
-			#{$root}__list--nested & {
+			&:not(:first-child) {
 				border-top-width: to-rem(2);
 			}
 		}
@@ -56,7 +53,6 @@
 
 		&__toggle-button {
 			.kol-button {
-				$root: &;
 				--kolibri-spacing: #{to-rem(4)};
 				--text-focus-outline-color: var(--color-white);
 				border-radius: 4px;
@@ -103,17 +99,6 @@
 							0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
 							0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 					}
-
-					@at-root #{$root}:focus-visible & {
-						outline: var(--text-focus-outline-color) solid to-rem(2);
-						outline-offset: -4px;
-					}
-
-					@at-root #{$root}--hide-label & {
-						.kol-span__label {
-							display: none;
-						}
-					}
 				}
 			}
 		}
@@ -133,14 +118,14 @@
 		justify-items: start;
 
 		font-size: to-rem(18);
+	}
 
-		:is(.kol-button, .kol-link):focus-within & {
-			border-color: var(--color-white);
-		}
+	:is(.kol-button, .kol-link):focus-within .kol-span {
+		border-color: var(--color-white);
+	}
 
-		:is(.kol-button, .kol-link):focus-within &,
-		:is(.kol-button, .kol-link):hover & {
-			text-decoration: underline;
-		}
+	:is(.kol-button, .kol-link):focus-within .kol-span,
+	:is(.kol-button, .kol-link):hover .kol-span {
+		text-decoration: underline;
 	}
 }

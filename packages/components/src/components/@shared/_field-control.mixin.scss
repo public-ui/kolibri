@@ -1,6 +1,5 @@
 @mixin kol-field-control {
 	.kol-field-control {
-		$base: &;
 		display: grid;
 
 		min-height: var(--a11y-min-size);

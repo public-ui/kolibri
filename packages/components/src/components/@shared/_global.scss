@@ -40,10 +40,8 @@
 	}
 
 	.kol-span {
-		$spanRoot: &;
-
 		&__label {
-			@at-root #{$spanRoot} &--hide-label & {
+			.kol-span--hide-label & {
 				display: none;
 			}
 		}

@@ -1,6 +1,5 @@
 @mixin kol-input-container {
 	.kol-input-container {
-		$root: &;
 		background-color: transparent;
 		display: grid;
 		width: 100%;

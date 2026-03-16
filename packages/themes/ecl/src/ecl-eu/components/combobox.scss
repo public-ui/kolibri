@@ -1,8 +1,8 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
-@use '../mixins/custom-suggestions-option' as *;
-@use '../mixins/custom-suggestions-options-group' as *;
-@use '../mixins/custom-suggestions-toggle' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/custom-suggestions-option.mixin' as *;
+@use '../mixins/custom-suggestions-options-group.mixin' as *;
+@use '../mixins/custom-suggestions-toggle.mixin' as *;
 @use '../@shared/input-text' as *;
 
 $option-height: to-rem(40);

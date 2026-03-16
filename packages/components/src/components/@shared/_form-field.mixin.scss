@@ -2,12 +2,10 @@
 
 @mixin kol-form-field {
 	.kol-form-field {
-		$root: &;
-
 		display: grid;
 
 		&__label {
-			#{$root}:not(#{$root}--disabled) & {
+			.kol-form-field:not(.kol-form-field--disabled) & {
 				cursor: pointer;
 			}
 
@@ -15,20 +13,20 @@
 				display: ruby;
 			}
 
-			#{$root}--disabled & {
+			.kol-form-field--disabled & {
 				opacity: 0.5;
 			}
 		}
 
 		&--required {
-			#{$root}__label-text:not(:has(> [name]))::after,
-			#{$root}__tooltip .span-label::after {
+			.kol-form-field__label-text:not(:has(> [name]))::after,
+			.kol-form-field__tooltip .span-label::after {
 				content: '*' / '';
 			}
 		}
 
 		&__hint {
-			#{$root}--disabled & {
+			.kol-form-field--disabled & {
 				opacity: 0.5;
 			}
 		}

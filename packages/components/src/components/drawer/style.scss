@@ -7,8 +7,6 @@
 	@include kol-card;
 
 	.kol-drawer {
-		$root: &;
-
 		&__dialog {
 			padding: 0;
 			border: none;
@@ -24,7 +22,7 @@
 				max-width: 100vw;
 				height: 100vh;
 
-				#{$root}__content {
+				.kol-drawer__content {
 					height: 100%;
 				}
 			}
@@ -43,7 +41,7 @@
 				width: 100vw;
 				max-height: 100vh;
 
-				#{$root}__content {
+				.kol-drawer__content {
 					width: 100%;
 				}
 			}

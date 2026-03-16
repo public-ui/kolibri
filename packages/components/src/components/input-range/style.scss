@@ -20,8 +20,6 @@
 		}
 
 		&__input {
-			$input: &;
-
 			&--number {
 				width: var(--kolibri-input-range--input-number--width);
 			}
@@ -41,9 +39,6 @@
 				border: 1px solid #000;
 
 				&::-webkit-slider-thumb {
-					@at-root #{$input}:not(:disabled)#{&} {
-						cursor: pointer;
-					}
 					background-color: #000;
 					border-radius: 20px;
 					width: to-rem(20);
@@ -56,9 +51,6 @@
 				}
 
 				&::-moz-range-thumb {
-					@at-root #{$input}:not(:disabled)#{&} {
-						cursor: pointer;
-					}
 					background-color: #000;
 					border-radius: 20px;
 					width: to-rem(20);
@@ -66,6 +58,14 @@
 					-moz-appearance: none;
 				}
 			}
+		}
+
+		&--range:not(:disabled)::-webkit-slider-thumb {
+			cursor: pointer;
+		}
+
+		&--range:not(:disabled)::-moz-range-thumb {
+			cursor: pointer;
 		}
 	}
 }

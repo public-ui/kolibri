@@ -1,5 +1,5 @@
 @use '../@shared/input-text' as *;
-@use '../mixins/button' as *;
+@use '../mixins/button.mixin' as *;
 @use '../../mixins/to-rem' as *;
 
 @layer kol-theme-component {

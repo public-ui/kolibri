@@ -2,68 +2,66 @@
 
 /* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
 
-@layer kol-component {
-	.collapsible {
-		@media (prefers-reduced-motion) {
-			&__wrapper-animation,
-			&__wrapper {
-				transition: none !important;
-			}
-		}
-
-		/* @see https://github.com/public-ui/kolibri/issues/5952 */
-		@media print {
-			:not(.collapsible--open) &__wrapper-animation {
-				display: none;
-			}
-		}
+.collapsible {
+	@media (prefers-reduced-motion) {
+		&__wrapper-animation,
 		&__wrapper {
-			/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
-			transform: translateZ(0);
-			display: grid;
-			grid-template-rows: 0fr;
-			transition: grid-template-rows 0.3s;
-		}
-
-		&__wrapper-animation {
-			opacity: 0;
-			transform: scaleY(0);
-			transform-origin: top;
-			min-height: 0;
-
-			/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
-			visibility: hidden;
-
-			transition:
-				transform 0.3s,
-				opacity 0.3s,
-				visibility 0.3s;
-		}
-
-		&--open &__wrapper {
-			grid-template-rows: 1fr;
-		}
-
-		&--open &__wrapper-animation {
-			opacity: 1;
-			transform: scaleY(1);
-
-			visibility: visible;
-		}
-
-		/*
-        * Inside a button, the caption text is always centered.
-        * So we have to align the text to the left.
-        */
-		&__heading-button button {
-			.kol-span {
-				align-items: flex-start;
-			}
+			transition: none !important;
 		}
 	}
 
-	.collapsible--open:focus-within {
-		position: relative;
-		z-index: 100;
+	/* @see https://github.com/public-ui/kolibri/issues/5952 */
+	@media print {
+		:not(.collapsible--open) &__wrapper-animation {
+			display: none;
+		}
 	}
+	&__wrapper {
+		/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
+		transform: translateZ(0);
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s;
+	}
+
+	&__wrapper-animation {
+		opacity: 0;
+		transform: scaleY(0);
+		transform-origin: top;
+		min-height: 0;
+
+		/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
+		visibility: hidden;
+
+		transition:
+			transform 0.3s,
+			opacity 0.3s,
+			visibility 0.3s;
+	}
+
+	&--open &__wrapper {
+		grid-template-rows: 1fr;
+	}
+
+	&--open &__wrapper-animation {
+		opacity: 1;
+		transform: scaleY(1);
+
+		visibility: visible;
+	}
+
+	/*
+    * Inside a button, the caption text is always centered.
+    * So we have to align the text to the left.
+    */
+	&__heading-button button {
+		.kol-span {
+			align-items: flex-start;
+		}
+	}
+}
+
+.collapsible--open:focus-within {
+	position: relative;
+	z-index: 100;
 }

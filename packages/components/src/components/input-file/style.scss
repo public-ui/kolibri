@@ -36,8 +36,6 @@
 	}
 
 	.kol-input-container {
-		$root: &;
-
 		&__container {
 			display: flex;
 			overflow: hidden;
@@ -52,7 +50,7 @@
 			text-overflow: ellipsis;
 		}
 
-		&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
+		&:has(> .kol-input-container__adornment--start):has(> .kol-input-container__adornment--end) {
 			grid-template-columns: auto 1fr;
 		}
 	}

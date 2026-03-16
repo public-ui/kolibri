@@ -6,13 +6,11 @@
 @layer kol-component {
 	@include kol-icon-styles();
 	.kol-nav {
-		$root: &;
-
 		display: grid;
 		place-items: center;
 
 		&__navigation {
-			#{$root}:not(#{$root}--is-compact) & {
+			.kol-nav:not(.kol-nav--is-compact) & {
 				width: 100%;
 			}
 

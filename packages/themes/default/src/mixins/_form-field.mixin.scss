@@ -1,0 +1,46 @@
+@use '../mixins/to-rem.mixin' as *;
+@use './alert.mixin' as *;
+@use './typography.mixin' as *;
+
+@mixin kol-form-field-theme {
+	.kol-form-field {
+		$root: &;
+
+		gap: to-rem(4);
+
+		&--error:not(&--hide-msg) {
+			padding-left: to-rem(16);
+			border-left: 3px solid var(--color-danger);
+
+			.kol-form-field__msg {
+				&.kol-alert--type-error {
+					@include kol-input-error-with-kol-alert-error(--color-danger);
+				}
+			}
+		}
+
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+
+		&__hint {
+			@include kol-typography-hint;
+		}
+
+		&__counter {
+			&--exceeded {
+				color: var(--color-danger);
+			}
+		}
+	}
+}

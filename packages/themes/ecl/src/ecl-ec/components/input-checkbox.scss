@@ -1,6 +1,6 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
-@use '../mixins/required' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/required.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
@@ -22,16 +22,8 @@
 	}
 
 	.kol-field-control {
-		$root: &;
-
 		&__label {
-			@at-root #{$root}--label-align-left & {
-				padding-right: to-rem(8);
-			}
-
-			@at-root #{$root}--label-align-right & {
-				padding-left: to-rem(8);
-			}
+			/* Variant-specific label alignment below */
 		}
 
 		&__label {
@@ -174,5 +166,14 @@
 			outline-style: solid;
 			outline-width: 2px;
 		}
+	}
+
+	/* Label alignment variants for field-control */
+	.kol-field-control--label-align-left .kol-field-control__label {
+		padding-right: to-rem(8);
+	}
+
+	.kol-field-control--label-align-right .kol-field-control__label {
+		padding-left: to-rem(8);
 	}
 }

@@ -11,8 +11,6 @@
 	@include kol-icon-styles();
 
 	.kol-table {
-		$root: &;
-
 		--kol-table-selection-col-width: var(--a11y-min-size);
 
 		display: block;
@@ -20,7 +18,7 @@
 		max-width: 100%;
 
 		&__scroll-container {
-			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
+			.kol-table:has(.kol-table__focus-element:focus) & {
 				/* @see https://remysharp.com/til/css/focus-ring-default-styles */
 				outline: 5px auto Highlight;
 				outline: 5px auto -webkit-focus-ring-color;

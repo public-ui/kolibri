@@ -1,8 +1,8 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
-@use '../mixins/form-field-order' as *;
-@use '../mixins/form-field' as *;
-@use '../mixins/input-container' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/form-field-order.mixin' as *;
+@use '../mixins/form-field.mixin' as *;
+@use '../mixins/input-container.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
