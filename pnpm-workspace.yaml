@@ -17,5 +17,3 @@ packages:
   - packages/tools/mcp
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
-overrides:
-  hono@<4.12.7: '>=4.12.7'
