@@ -7,6 +7,7 @@ const PORT = parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '', 10);
 const BASE_URL = `http://localhost:${PORT}`;
 
 const CWD = process.env.KOLIBRI_CWD ?? '';
+const HTML_REPORT_DIR = 'playwright-report';
 const TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_TIMEOUT || '15000', 10);
 const EXPECT_TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT || '5000', 10);
 const BUILD_PATH = process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH ?? '';
@@ -41,7 +42,7 @@ export default defineConfig({
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: 'line',
+	reporter: [['line'], ['html', { open: 'never', outputFolder: path.join(CWD, HTML_REPORT_DIR) }]],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
