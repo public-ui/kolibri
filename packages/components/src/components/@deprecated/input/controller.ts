@@ -158,6 +158,8 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onBlur(event: Event): void {
+		event.stopPropagation();
+
 		if (this.component._disabled) {
 			return;
 		}
@@ -177,6 +179,8 @@ export class InputController extends ControlledInputController implements Watche
 	 * @param value - Optional value. Taken from event if not defined.
 	 */
 	protected onChange(event: Event, value?: StencilUnknown): void {
+		event.stopPropagation();
+
 		if (typeof value === 'undefined') {
 			value = (event.target as HTMLInputElement).value;
 		}
@@ -208,6 +212,8 @@ export class InputController extends ControlledInputController implements Watche
 	 * @param value - Optional value. Taken from event if not defined.
 	 */
 	protected onInput(event: Event, shouldSetFormAssociatedValue = true, value?: StencilUnknown): void {
+		event.stopPropagation();
+
 		if (typeof value === 'undefined') {
 			value = (event.target as HTMLInputElement).value;
 		}
@@ -227,6 +233,8 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onClick(event: Event): void {
+		event.stopPropagation();
+
 		// Event handling
 		this.emitEvent(KolEvent.click);
 
@@ -237,6 +245,8 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onFocus(event: Event): void {
+		event.stopPropagation();
+
 		// Event handling
 		this.emitEvent(KolEvent.focus);
 
@@ -247,6 +257,8 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onKeyDown(event: KeyboardEvent): void {
+		event.stopPropagation();
+
 		// Event handling
 		this.emitEvent(KolEvent.keydown);
 

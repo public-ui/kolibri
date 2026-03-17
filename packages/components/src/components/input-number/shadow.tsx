@@ -148,11 +148,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				this.inputHasFocus = true;
 			},
 			onBlur: (event: FocusEvent) => {
-				const nextFocusElem = event.relatedTarget as HTMLElement;
-				if (!nextFocusElem || !nextFocusElem.classList.contains('kol-input-number__step-button')) {
-					this.controller.onFacade.onBlur(event);
-					this.inputHasFocus = false;
-				}
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
 			},
 		};
 	}
