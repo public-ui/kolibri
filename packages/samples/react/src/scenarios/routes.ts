@@ -1,4 +1,5 @@
 import type { Routes } from '../shares/types';
+import { AccordionComponentContent } from './accordionComponentContent';
 import { ButtonShortkeyTable } from './button-shortkey-table';
 import { ChangeTabindex } from './change-tabindex';
 import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
@@ -37,6 +38,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'toolbar-item-order': ToolbarItemOrder,
 		'tooltip-positioning': TooltipPositioning,
+		'accordion-components': AccordionComponentContent,
 		'z-index': ZIndexScenario,
 		'performance-test': PerformanceTest,
 		skeleton: Skeleton,

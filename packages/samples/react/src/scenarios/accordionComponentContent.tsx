@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { KolAccordion, KolCombobox, KolTableStateful } from '@public-ui/react-v19';
-import { SampleDescription } from '../SampleDescription';
+import { SampleDescription } from '../components/SampleDescription';
 
 import type { FC } from 'react';
 
