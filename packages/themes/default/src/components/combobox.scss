@@ -25,5 +25,9 @@ $visible-options: 5;
 			width: 100%;
 			align-items: center;
 		}
+
+		&-toggle:focus {
+			outline: 0;
+		}
 	}
 }
