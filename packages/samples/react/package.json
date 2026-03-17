@@ -35,7 +35,7 @@
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.5.10",
 		"@unocss/vite": "66.5.10",
-		"@vitejs/plugin-react-swc": "4.2.3",
+		"@vitejs/plugin-react-swc": "4.3.0",
 		"adopted-style-sheets": "1.1.9-rc.21",
 		"cpy-cli": "6.0.0",
 		"formik": "2.4.9",
@@ -52,13 +52,13 @@
 		"yup": "1.7.1"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "8.57.0",
-		"@typescript-eslint/parser": "8.57.0",
+		"@typescript-eslint/eslint-plugin": "8.57.1",
+		"@typescript-eslint/parser": "8.57.1",
 		"eslint": "8.57.1",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "4.6.2",
-		"knip": "5.86.0",
+		"knip": "5.87.0",
 		"prettier": "3.8.1",
 		"stylelint": "16.26.1"
 	},
