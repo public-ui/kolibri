@@ -45,9 +45,6 @@ ROUTES.set('accordion/headlines', {
 		},
 	},
 });
-ROUTES.set('accordion/components', {
-	snapshot: {},
-});
 ROUTES.set('alert/basic', {
 	snapshot: {
 		zoom: {
@@ -1138,6 +1135,13 @@ ROUTES.set('version/basic', {
 ROUTES.set('version/context', {
 	snapshot: {
 		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/accordion-components', {
+	snapshot: {
 		zoom: {
 			skip: true,
 		},
