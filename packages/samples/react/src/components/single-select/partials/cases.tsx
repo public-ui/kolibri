@@ -7,6 +7,7 @@ import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import type { Components, Option, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
 import { LONG_OPTIONS } from '../../../shares/longOptions';
+import { logKoliBriCallbackEvent, logKoliBriNativeEvent } from '../../../shares/utils';
 
 export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 	return (
@@ -18,12 +19,19 @@ export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
 				_value={'de'}
 				_on={{
-					onBlur: console.log,
-					onInput: console.log,
-					onChange: console.log,
-					onClick: console.log,
-					onFocus: console.log,
+					onBlur: logKoliBriCallbackEvent,
+					onChange: logKoliBriCallbackEvent,
+					onClick: logKoliBriCallbackEvent,
+					onFocus: logKoliBriCallbackEvent,
+					onInput: logKoliBriCallbackEvent,
+					onKeyDown: logKoliBriCallbackEvent,
 				}}
+				onBlur={logKoliBriNativeEvent}
+				onChange={logKoliBriNativeEvent}
+				onClick={logKoliBriNativeEvent}
+				onFocus={logKoliBriNativeEvent}
+				onInput={logKoliBriNativeEvent}
+				onKeyDown={logKoliBriNativeEvent}
 			/>
 			<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _disabled />
 			<KolSingleSelect

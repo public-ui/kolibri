@@ -5,15 +5,32 @@ import { KolInputNumber } from '@public-ui/react-v19';
 import { ERROR_MSG } from '../../../shares/constants';
 
 import type { Components } from '@public-ui/components';
+import { logKoliBriCallbackEvent, logKoliBriNativeEvent } from '../../../shares/utils';
 export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components.KolInputNumber>(function InputNumberCases(props, ref) {
-	const handleOn = {
-		onBlur: (event: Event) => console.log(event),
-	};
-
 	return (
 		<div className="grid gap-4">
 			<div className="black-background">
-				<KolInputNumber {...props} _required _touched _value={123} _label="Number input (Black background test)" />{' '}
+				<KolInputNumber
+					{...props}
+					_required
+					_touched
+					_value={123}
+					_label="Number input (Black background test)"
+					_on={{
+						onBlur: logKoliBriCallbackEvent,
+						onChange: logKoliBriCallbackEvent,
+						onClick: logKoliBriCallbackEvent,
+						onFocus: logKoliBriCallbackEvent,
+						onInput: logKoliBriCallbackEvent,
+						onKeyDown: logKoliBriCallbackEvent,
+					}}
+					onBlur={logKoliBriNativeEvent}
+					onChange={logKoliBriNativeEvent}
+					onClick={logKoliBriNativeEvent}
+					onFocus={logKoliBriNativeEvent}
+					onInput={logKoliBriNativeEvent}
+					onKeyDown={logKoliBriNativeEvent}
+				/>
 			</div>
 			<KolInputNumber
 				{...props}
@@ -39,7 +56,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 			<KolInputNumber {...props} _readOnly _value={123} _label="Number input (Readonly)" />
 			<KolInputNumber {...props} _disabled _value={123} _label="Number input (Disabled)" />
 			<KolInputNumber {...props} _label="With access key" _accessKey="c" />
-			<KolInputNumber {...props} _label="With short key" _shortKey="s" _on={handleOn} />
+			<KolInputNumber {...props} _label="With short key" _shortKey="s" />
 		</div>
 	);
 });
