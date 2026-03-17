@@ -1,0 +1,31 @@
+name: Visual Tests Report Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+          persist-credentials: true
+
+      - name: Remove PR report directory
+        run: |
+          PR_DIR="pr-${{ github.event.pull_request.number }}"
+          if [ -d "$PR_DIR" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git rm -rf "$PR_DIR"
+            git commit -m "chore: remove visual test report for PR #${{ github.event.pull_request.number }}"
+            git push
+          else
+            echo "No report directory found for PR #${{ github.event.pull_request.number }}, skipping."
+          fi
