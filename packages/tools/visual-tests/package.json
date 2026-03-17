@@ -36,9 +36,9 @@
 	"devDependencies": {
 		"@babel/eslint-parser": "7.28.6",
 		"@babel/plugin-syntax-import-attributes": "7.28.6",
-		"@babel/preset-env": "7.29.0",
+		"@babel/preset-env": "7.29.2",
 		"eslint": "8.57.1",
-		"knip": "5.86.0",
+		"knip": "5.87.0",
 		"prettier": "3.8.1"
 	},
 	"files": [

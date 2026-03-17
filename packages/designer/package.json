@@ -54,7 +54,7 @@
 		"chromedriver": "129.0.4",
 		"cpy-cli": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
-		"nightwatch-axe-verbose": "2.4.0",
+		"nightwatch-axe-verbose": "2.5.1",
 		"npm-run-all": "4.1.5",
 		"react-dev-utils": "12.0.1",
 		"rimraf": "6.1.3",
