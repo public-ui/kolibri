@@ -8,7 +8,9 @@
 	.kol-nav {
 		padding: var(--kern-metric-space-small);
 
-		--kol-nav-list-item-padding: 0 var(--kern-metric-space-small);
+		--kol-nav-list-item-padding: var(--kern-metric-space-small);
+
+		--kol-nav-item-padding-left: 0;
 
 		.kol-button,
 		.kol-link {
@@ -16,7 +18,9 @@
 			width: 100%;
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
-			padding: var(--kol-nav-list-item-padding);
+			padding: 0;
+			padding-right: var(--kol-nav-list-item-padding);
+			padding-left: to-rem(var(--kol-nav-item-padding-left));
 			align-items: center;
 
 			&:hover {
@@ -31,19 +35,18 @@
 		&__list {
 			gap: var(--kern-metric-space-small);
 
+			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
+			--kol-nav-nested-padding-left: calc(var(--kol-nav-item-padding-left) + 8);
+
+			&-item {
+				--kol-nav-item-padding-left: calc(var(--kol-nav-nested-padding-left) + 8);
+			}
+
 			&--horizontal {
 				column-gap: var(--kern-metric-space-small);
 			}
 
-			&--vertical {
-				.kol-nav__list--nested {
-					padding-left: var(--kern-metric-space-default);
-				}
-			}
-
 			&-item {
-				background: var(--kern-color-layout-background-hued);
-
 				&--active > .kol-nav__entry-wrapper {
 					.kol-button,
 					.kol-link {
@@ -51,12 +54,20 @@
 					}
 				}
 			}
+
+			&--nested {
+				margin-top: var(--kern-metric-space-small);
+			}
 		}
 
 		&__toggle-button {
 			.kol-button {
 				padding: 0 to-rem(10);
 			}
+		}
+
+		&__entry-wrapper {
+			background: var(--kern-color-layout-background-hued);
 		}
 	}
 }
