@@ -1,121 +1,141 @@
 @use '../../assets/material-symbols-subset/variables' as *;
 
 [class*=' kolicon-'] {
-	font-family: material-symbols-subset;
-
 	/* Icon mappings */
 	&.kolicon-plus {
+		font-family: material-symbols-subset;
 		&::before {
 			content: '\e926';
 		}
 	}
 	&.kolicon-minus {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-remove;
 		}
 	}
 	&.kolicon-chevron-down {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-arrow-down;
 		}
 	}
 	&.kolicon-chevron-left {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-chevron-left;
 		}
 	}
 	&.kolicon-chevron-right {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-chevron-right;
 		}
 	}
 	&.kolicon-chevron-up {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-arrow-up;
 		}
 	}
 
 	&.kolicon-eye-closed {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-visibility-off;
 		}
 	}
 	&.kolicon-eye {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-visibility;
 		}
 	}
 	&.kolicon-house {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-home;
 		}
 	}
 	&.kolicon-link-external {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-open-in-new;
 		}
 	}
 	&.kolicon-version {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-view-timeline;
 		}
 	}
 
 	&.kolicon-alert-warning {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-warning;
 		}
 	}
 	&.kolicon-alert-error {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-danger;
 		}
 	}
 	&.kolicon-alert-success {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-success;
 		}
 	}
 	&.kolicon-alert-info {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-info;
 		}
 	}
 
 	&.kolicon-check {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-check;
 		}
 	}
 
 	&.kolicon-cross {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-close;
 		}
 	}
 	&.kolicon-chevron-double-left {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-keyboard-double-arrow-left;
 		}
 	}
 	&.kolicon-chevron-double-right {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-keyboard-double-arrow-right;
 		}
 	}
 
 	&.kolicon-cogwheel {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-settings;
 		}
 	}
 	&.kolicon-settings {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-settings;
 		}
 	}
 
 	&.kolicon-up {
+		font-family: material-symbols-subset;
 		&::before {
 			content: $icon-drive-folder-upload;
 		}

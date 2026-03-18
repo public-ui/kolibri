@@ -3,8 +3,7 @@
 @use './badge-text-hint.mixin' as *;
 
 @mixin button($block-classname: 'kol-button') {
-	.kol-button,
-	.kol-link {
+	.#{$block-classname} {
 		--button-min-size: var(--kern-metric-dimension-x-large);
 		--button-padding: var(--kern-metric-space-small) var(--kern-metric-space-default);
 

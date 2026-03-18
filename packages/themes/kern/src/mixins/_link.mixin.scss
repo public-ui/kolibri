@@ -1,11 +1,8 @@
 @use '~@public-ui/components/index' as *;
 @use '~@kern-ux/native/src/scss/core/utilities/mixins' as *;
 
-@mixin kol-link($block-classname) {
-	.kol-link,
-	.kol-button,
-	.kol-tree-item__text,
-	.kol-tree-item__toggle-button {
+@mixin kol-link($block-classname: 'kol-link') {
+	.#{$block-classname} {
 		@include normalize;
 		@include body-default;
 

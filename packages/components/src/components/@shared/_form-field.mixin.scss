@@ -12,7 +12,9 @@
 			}
 
 			&-text {
-				display: ruby;
+				flex-flow: row;
+				align-items: flex-start;
+				justify-content: flex-start;
 			}
 
 			#{$root}--disabled & {
