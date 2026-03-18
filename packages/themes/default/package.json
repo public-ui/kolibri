@@ -62,6 +62,7 @@
 		"@eslint/eslintrc": "3.3.5",
 		"@eslint/js": "9.39.4",
 		"@public-ui/components": "workspace:*",
+		"@public-ui/stylelint-rules": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
 		"@rollup/plugin-commonjs": "29.0.2",
 		"@rollup/plugin-node-resolve": "16.0.3",
@@ -80,7 +81,6 @@
 		"rollup": "4.59.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.98.0",
-		"@public-ui/stylelint-rules": "workspace:*",
 		"stylelint": "17.4.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
