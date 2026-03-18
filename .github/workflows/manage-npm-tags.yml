@@ -56,7 +56,7 @@ jobs:
           - '@public-ui/theme-default'
           - '@public-ui/theme-ecl'
           - '@public-ui/theme-kern'
-          - '@public-ui/theme-styland'
+          - '@public-ui/stylelint-rules'
           - '@public-ui/themes'
           - '@public-ui/visual-tests'
           - '@public-ui/vue'
