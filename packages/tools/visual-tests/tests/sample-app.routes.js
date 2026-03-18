@@ -1143,7 +1143,7 @@ ROUTES.set('version/context', {
 ROUTES.set('scenarios/accordion-components', {
 	snapshot: {
 		zoom: {
-			skip: true,
+			skip: false,
 		},
 	},
 });
