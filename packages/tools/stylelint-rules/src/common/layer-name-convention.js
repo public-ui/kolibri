@@ -1,7 +1,7 @@
 import path from 'path';
 import stylelint from 'stylelint';
 
-const ruleName = 'kolibri/layer-name-convention';
+const ruleName = 'kolibri/common-layer-name-convention';
 const messages = stylelint.utils.ruleMessages(ruleName, {
 	wrongLayerName: (layerName, filePath) => `Layer name "${layerName}" should use the convention 'kol-theme-global' or 'kol-theme-component': ${filePath}`,
 });

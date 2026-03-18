@@ -1,18 +1,11 @@
 {
 	"extends": ["../../../.stylelintrc.json"],
-	"plugins": [
-		"../stylelint-rules/require-component-layer",
-		"../stylelint-rules/require-global-layer",
-		"../stylelint-rules/no-layer-in-utility-files",
-		"../stylelint-rules/layer-name-convention",
-		"../stylelint-rules/no-root-selector"
-	],
 	"ignoreFiles": ["src/kern/**/*"],
 	"rules": {
-		"kolibri/require-component-layer": true,
-		"kolibri/require-global-layer": true,
-		"kolibri/no-layer-in-non-component-files": true,
-		"kolibri/layer-name-convention": true,
-		"kolibri/no-root-selector": true
+		"kolibri/common-layer-name-convention": true,
+		"kolibri/common-no-layer-in-reuse-files": true,
+		"kolibri/common-no-root-selector": true,
+		"kolibri/common-require-component-layer": [true, { "layerName": "kol-theme-component", "pathPattern": "/src/components/" }],
+		"kolibri/theme-require-global-layer": true
 	}
 }

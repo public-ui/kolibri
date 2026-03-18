@@ -431,6 +431,9 @@ importers:
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.38.3)
+      '@public-ui/stylelint-rules':
+        specifier: workspace:*
+        version: link:../tools/stylelint-rules
       '@revolist/svelte-output-target':
         specifier: 0.0.7
         version: 0.0.7(@stencil/core@4.38.3)
@@ -959,6 +962,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
+      '@public-ui/stylelint-rules':
+        specifier: workspace:*
+        version: link:../../tools/stylelint-rules
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -1034,6 +1040,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
+      '@public-ui/stylelint-rules':
+        specifier: workspace:*
+        version: link:../../tools/stylelint-rules
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -1112,6 +1121,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
+      '@public-ui/stylelint-rules':
+        specifier: workspace:*
+        version: link:../../tools/stylelint-rules
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -1439,6 +1451,36 @@ importers:
       unbuild:
         specifier: 3.6.1
         version: 3.6.1(sass@1.98.0)(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3))
+
+  packages/tools/stylelint-rules:
+    devDependencies:
+      '@eslint/js':
+        specifier: 9.39.4
+        version: 9.39.4
+      eslint:
+        specifier: 9.39.4
+        version: 9.39.4(jiti@2.6.1)
+      globals:
+        specifier: 17.4.0
+        version: 17.4.0
+      knip:
+        specifier: 5.86.0
+        version: 5.86.0(@types/node@25.4.0)(typescript@5.9.3)
+      mocha:
+        specifier: 11.7.5
+        version: 11.7.5
+      postcss-scss:
+        specifier: 4.0.9
+        version: 4.0.9(postcss@8.5.8)
+      prettier:
+        specifier: 3.8.1
+        version: 3.8.1
+      prettier-plugin-organize-imports:
+        specifier: 4.3.0
+        version: 4.3.0(prettier@3.8.1)(typescript@5.9.3)
+      stylelint:
+        specifier: 17.4.0
+        version: 17.4.0(typescript@5.9.3)
 
   packages/tools/visual-tests:
     dependencies:
@@ -8485,9 +8527,6 @@ packages:
   flat@5.0.2:
     resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
     hasBin: true
-
-  flatted@3.3.3:
-    resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
   flatted@3.3.4:
     resolution: {integrity: sha512-3+mMldrTAPdta5kjX2G2J7iX4zxtnwpdA8Tr2ZSjkyPSanvbZAcy6flmtnXbEybHrDcU9641lxrMfFuUxVz9vA==}
@@ -22831,12 +22870,10 @@ snapshots:
   flat-cache@6.1.20:
     dependencies:
       cacheable: 2.3.2
-      flatted: 3.3.3
+      flatted: 3.3.4
       hookified: 1.15.1
 
   flat@5.0.2: {}
-
-  flatted@3.3.3: {}
 
   flatted@3.3.4: {}
 
@@ -23096,7 +23133,7 @@ snapshots:
       foreground-child: 3.3.1
       jackspeak: 3.4.3
       minimatch: 9.0.6
-      minipass: 7.1.2
+      minipass: 7.1.3
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
@@ -26335,7 +26372,7 @@ snapshots:
   path-scurry@1.11.1:
     dependencies:
       lru-cache: 10.4.3
-      minipass: 7.1.2
+      minipass: 7.1.3
 
   path-scurry@2.0.0:
     dependencies:
