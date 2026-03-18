@@ -1,0 +1,72 @@
+name: Manage NPM Deprecation
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        description: 'Action to perform'
+        required: true
+        options:
+          - add
+          - remove
+      version:
+        type: string
+        description: 'Version range to deprecate (e.g. 2.3.0 or * for all versions)'
+        required: true
+      message:
+        type: string
+        description: 'Deprecation message (only required for "add")'
+        required: false
+        default: 'Dieses Paket wird nicht mehr als Teil von KoliBri gepflegt. Bitte installiere es direkt als externes Theming-Paket.'
+
+permissions:
+  contents: read
+
+jobs:
+  deprecate-styland:
+    name: ${{ github.event.inputs.action }} deprecation for @public-ui/theme-styland@${{ github.event.inputs.version }}
+    if: github.repository == 'public-ui/kolibri'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate inputs
+        if: github.event.inputs.action == 'add' && github.event.inputs.message == ''
+        run: |
+          echo "❌ Error: Message is required when adding a deprecation"
+          exit 1
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Add deprecation for @public-ui/theme-styland
+        if: github.event.inputs.action == 'add'
+        run: npm deprecate @public-ui/theme-styland@${{ github.event.inputs.version }} "${{ github.event.inputs.message }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
+
+      - name: Remove deprecation for @public-ui/theme-styland
+        if: github.event.inputs.action == 'remove'
+        run: npm deprecate @public-ui/theme-styland@${{ github.event.inputs.version }} ""
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
+
+  summary:
+    if: github.repository == 'public-ui/kolibri'
+    needs: deprecate-styland
+    runs-on: ubuntu-latest
+    steps:
+      - name: Summary
+        run: |
+          echo "## NPM Deprecation Management Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Package:** \`@public-ui/theme-styland\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Action:** ${{ github.event.inputs.action }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event.inputs.action }}" == "add" ]; then
+            echo "**Message:** ${{ github.event.inputs.message }}" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Deprecation status updated successfully." >> $GITHUB_STEP_SUMMARY

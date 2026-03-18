@@ -17,5 +17,6 @@ npm unpublish @public-ui/sample-react@$1
 npm unpublish @public-ui/theme-default@$1
 npm unpublish @public-ui/theme-ecl@$1
 npm unpublish @public-ui/theme-kern@$1
+npm unpublish @public-ui/theme-styland@$1
 npm unpublish @public-ui/themes@$1
 npm unpublish @public-ui/visual-tests@$1
