@@ -1,8 +1,8 @@
 @use '~@public-ui/components/index' as *;
 @use '../mixins/alert.mixin' as *;
 @use '../mixins/field-control.mixin' as *;
-@use '../mixins/form-field-order.mixin' as *;
 @use '../mixins/radio.mixin' as *;
+@use '../mixins/form-field.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert;
@@ -23,6 +23,9 @@
 		&--error {
 			--kol-input-radio-color: var(--kern-color-feedback-danger);
 			--kol-input-radio-background-color: var(--kern-color-feedback-danger-background);
+
+			border-left: var(--kern-metric-border-width-bold) solid var(--kol-input-radio-color);
+			padding-left: var(--kern-metric-space-default);
 		}
 
 		&__input {
