@@ -1,8 +1,8 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/card' as *;
+@use '../mixins/card.mixin' as *;
 
 @layer kol-theme-component {
-	@include card('kol-card');
+	@include card;
 
 	.kol-drawer__wrapper {
 		--kol-card-box-shadow: 0 to-rem(24) to-rem(60) rgb(0, 0, 0, 0.3), 0 to-rem(8) to-rem(16) 0 rgb(0, 0, 0, 0.1);

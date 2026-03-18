@@ -1,0 +1,38 @@
+@use 'global' as *;
+@use 'alert.mixin' as *;
+@use 'form-field.mixin' as *;
+@use 'input-container.mixin' as *;
+@use 'input.mixin' as *;
+@use 'mixins' as *;
+
+@mixin kol-select {
+	@include kol-alert;
+	@include kol-form-field;
+	@include kol-input-container;
+
+	.kol-select {
+		background-color: transparent;
+		width: 100%;
+
+		&:not(:disabled) {
+			cursor: pointer;
+		}
+
+		&:not([multiple], [size]) {
+			height: 2.75em;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&__option:checked::before {
+			content: '✓ ';
+		}
+
+		/* needed hack for vertical alignment */
+		&[multiple] option {
+			padding: calc((var(--a11y-min-size) - to-rem(16)) / 2) 0.5em;
+		}
+	}
+}

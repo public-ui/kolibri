@@ -1,0 +1,36 @@
+@use 'mixins' as *;
+
+@mixin kol-form-field {
+	.kol-form-field {
+		$root: &;
+
+		display: grid;
+
+		&__label {
+			#{$root}:not(#{$root}--disabled) & {
+				cursor: pointer;
+			}
+
+			&-text {
+				display: ruby;
+			}
+
+			#{$root}--disabled & {
+				opacity: 0.5;
+			}
+		}
+
+		&--required {
+			#{$root}__label-text:not(:has(> [name]))::after,
+			#{$root}__tooltip .span-label::after {
+				content: '*' / '';
+			}
+		}
+
+		&__hint {
+			#{$root}--disabled & {
+				opacity: 0.5;
+			}
+		}
+	}
+}

@@ -1,3 +1,10 @@
 {
-	"extends": ["../../../.stylelintrc.json"]
+	"extends": ["../../../.stylelintrc.json"],
+	"rules": {
+		"kolibri/common-layer-name-convention": true,
+		"kolibri/common-no-layer-in-reuse-files": true,
+		"kolibri/common-no-root-selector": false,
+		"kolibri/common-require-component-layer": [true, { "layerName": "kol-theme-component", "pathPattern": "/src/components/" }],
+		"kolibri/theme-require-global-layer": true
+	}
 }

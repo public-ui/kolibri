@@ -1,0 +1,14 @@
+@use 'mixins' as *;
+
+@mixin kol-input {
+	.kol-input {
+		background-color: transparent;
+		width: 100%;
+		// min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
