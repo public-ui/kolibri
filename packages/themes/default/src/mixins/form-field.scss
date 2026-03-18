@@ -19,6 +19,10 @@
 			}
 		}
 
+		&__label-text {
+			gap: 0;
+		}
+
 		&--required & {
 			&__label-text {
 				&::after {
