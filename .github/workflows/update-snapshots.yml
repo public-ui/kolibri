@@ -84,11 +84,21 @@ jobs:
         run: git status
 
       - name: Stage snapshot changes
-        run: find packages \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -print | xargs --no-run-if-empty git add --
+        run: |
+          # find does not follow symlinks by default, avoiding "beyond a symbolic link" git errors.
+          # test-tag-name-transformer is excluded because its snapshots/ folder is listed in its .gitignore.
+          find packages \( -path '*/node_modules' -o -path '*/test-tag-name-transformer' \) -prune \
+            -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -print \
+            | xargs --no-run-if-empty git add --
+
+      - name: Display git status (after git add)
+        run: git status
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update all snapshots
+          # Disable internal git add so that only the files staged above are committed.
+          file_pattern: ''
           commit_user_name: '${{ steps.app-token.outputs.app-slug }}[bot]'
           commit_user_email: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
