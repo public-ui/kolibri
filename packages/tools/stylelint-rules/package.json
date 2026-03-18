@@ -1,0 +1,32 @@
+{
+	"name": "@public-ui/stylelint-rules",
+	"version": "4.1.2-rc.1",
+	"description": "Custom Stylelint rules for the KoliBri component library and their themes.",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {
+		"format": "prettier --check src",
+		"lint": "pnpm lint:eslint",
+		"lint:eslint": "eslint src",
+		"test": "mocha 'src/**/*.test.js'",
+		"test:unit": "mocha 'src/**/*.test.js'",
+		"unused": "knip"
+	},
+	"devDependencies": {
+		"@eslint/js": "9.39.4",
+		"eslint": "9.39.4",
+		"globals": "17.4.0",
+		"knip": "5.86.0",
+		"mocha": "11.7.5",
+		"postcss-scss": "4.0.9",
+		"prettier": "3.8.1",
+		"prettier-plugin-organize-imports": "4.3.0",
+		"stylelint": "17.4.0"
+	},
+	"peerDependencies": {
+		"stylelint": ">=17"
+	}
+}

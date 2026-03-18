@@ -20,5 +20,5 @@ packages:
   - packages/tools/kolibri-cli
   - packages/tools/hydrate-server
   - packages/tools/mcp
+  - packages/tools/stylelint-rules
   - packages/tools/visual-tests
-
