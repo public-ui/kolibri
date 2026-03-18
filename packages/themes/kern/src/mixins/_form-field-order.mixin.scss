@@ -1,25 +1,5 @@
 @use '~@public-ui/components/index' as *;
 
-@mixin kol-form-field-order-theme {
-	.kol-form-field {
-		&__label {
-			order: 1;
-		}
-
-		&__input {
-			order: 2;
-		}
-
-		&__msg {
-			order: 3;
-		}
-
-		&__hint {
-			order: 4;
-		}
-	}
-}
-
 @mixin kol-form-field {
 	.kol-form-field {
 		color: var(--color-dark-blue-100);

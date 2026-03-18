@@ -8,7 +8,6 @@
 @layer kol-theme-component {
 	@include kol-alert;
 	@include kol-field-control-theme;
-	@include kol-form-field-order-theme;
 	@include kol-form-field;
 
 	@include checkbox;

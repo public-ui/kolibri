@@ -24,7 +24,6 @@
 			padding: 0;
 			padding: var(--kern-metric-baseline-label-default-padding-top) var(--kern-metric-space-none) var(--kern-metric-baseline-label-default-padding-bottom)
 				var(--kern-metric-space-none);
-			order: 1;
 			vertical-align: baseline;
 
 			font-size: 100%;
@@ -53,7 +52,6 @@
 			color: var(--kern-color-layout-text-muted, #404565);
 			padding: var(--kern-metric-baseline-body-default-padding-top) var(--kern-metric-space-none) var(--kern-metric-baseline-body-default-padding-bottom)
 				var(--kern-metric-space-none);
-			order: 2;
 
 			font-size: var(--kern-typography-font-size-static-medium);
 			font-weight: var(--kern-typography-font-weight-regular);
