@@ -15,7 +15,7 @@ jobs:
   visual-tests-snapshots:
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-default', 'theme-ecl']
+        package: ['test-tag-name-transformer', 'theme-default', 'theme-ecl', 'theme-kern']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout base branch
