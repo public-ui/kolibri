@@ -23,9 +23,9 @@
 		&--error {
 			--kol-input-radio-color: var(--kern-color-feedback-danger);
 			--kol-input-radio-background-color: var(--kern-color-feedback-danger-background);
+			padding-left: var(--kern-metric-space-default);
 
 			border-left: var(--kern-metric-border-width-bold) solid var(--kol-input-radio-color);
-			padding-left: var(--kern-metric-space-default);
 		}
 
 		&__input {

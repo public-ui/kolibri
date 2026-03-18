@@ -4,8 +4,8 @@
 	.#{$block-classname}[type='radio'] {
 		color: var(--kol-input-radio-color);
 		background: var(--kol-input-radio-background-color);
-		border-radius: 100%;
 		border-color: var(--kol-input-radio-color);
+		border-radius: 100%;
 		display: flex;
 		width: var(--kern-metric-dimension-large);
 		height: var(--kern-metric-dimension-large);
