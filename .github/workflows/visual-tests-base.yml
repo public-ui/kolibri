@@ -7,11 +7,15 @@ concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
   cancel-in-progress: true
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   visual-tests-snapshots:
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-default', 'theme-ecl']
+        package: ['test-tag-name-transformer', 'theme-default', 'theme-ecl', 'theme-kern']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout base branch
@@ -88,3 +92,53 @@ jobs:
           name: base-snapshots-${{ matrix.package }}
           path: /tmp/snapshots/${{ matrix.package }}
           if-no-files-found: ignore
+
+      - name: Determine report path
+        id: report-path
+        if: always() && github.event.pull_request.head.repo.fork == false
+        run: |
+          PACKAGE="${{ matrix.package }}"
+          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
+            REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
+          else
+            THEME_DIR="${PACKAGE#theme-}"
+            REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
+          fi
+          echo "path=${REPORT_DIR}" >> $GITHUB_OUTPUT
+          if [ -d "${REPORT_DIR}" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy report to GitHub Pages
+        if: always() && github.event.pull_request.head.repo.fork == false && steps.report-path.outputs.exists == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ${{ steps.report-path.outputs.path }}
+          target-folder: pr-${{ github.event.pull_request.number }}/${{ matrix.package }}
+          branch: gh-pages
+          clean: false
+
+      - name: Find existing PR comment
+        if: always() && github.event.pull_request.head.repo.fork == false
+        uses: peter-evans/find-comment@v4
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '<!-- visual-test-report-${{ matrix.package }} -->'
+
+      - name: Post PR comment with report link
+        if: always() && github.event.pull_request.head.repo.fork == false
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          edit-mode: replace
+          body: |
+            <!-- visual-test-report-${{ matrix.package }} -->
+            ## Visual Test Report — `${{ matrix.package }}`
+            [Open Playwright Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/${{ matrix.package }}/)
+
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

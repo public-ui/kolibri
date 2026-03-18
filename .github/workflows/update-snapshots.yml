@@ -83,10 +83,12 @@ jobs:
       - name: Display git status (after test-update)
         run: git status
 
+      - name: Stage snapshot changes
+        run: find packages \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -print | xargs --no-run-if-empty git add --
+
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update all snapshots
-          file_pattern: 'packages/**/__snapshots__/** packages/**/snapshots/**'
           commit_user_name: '${{ steps.app-token.outputs.app-slug }}[bot]'
           commit_user_email: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'

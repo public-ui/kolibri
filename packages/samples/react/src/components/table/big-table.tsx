@@ -25,17 +25,17 @@ const defaultHeaders: KoliBriTableHeaderCellWithLogic[] = [
 	{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 300 },
 ];
 
-var headers: KoliBriTableHeaderCellWithLogic[] = defaultHeaders;
-
-const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
-	horizontal: [headers],
-};
-
 export const TableBig: FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [rows, setRows] = useState<number>(50);
 	const [fixedCols, setFixedCols] = useState<[number, number]>([0, 0]);
 	var loaded = false;
+
+	const [headers, setHeaders] = useState<KoliBriTableHeaderCellWithLogic[]>(defaultHeaders);
+
+	const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
+		horizontal: [headers],
+	};
 
 	function defineTable() {
 		if (loaded) {
@@ -43,8 +43,10 @@ export const TableBig: FC = () => {
 		}
 
 		const rows = searchParams.get('rows');
-		if (rows && +rows < 5000) {
-			setRows(+rows);
+		if (rows) {
+			if (+rows < 5000) {
+				setRows(+rows);
+			}
 		} else {
 			setSearchParams((searchParams) => {
 				searchParams.append('rows', '50');
@@ -53,10 +55,13 @@ export const TableBig: FC = () => {
 		}
 
 		const addCols = searchParams.get('addCols');
-		if (addCols && +addCols < 5000) {
-			headers = [...defaultHeaders];
-			for (let index = 0; index < +addCols; index++) {
-				headers.push({ label: 'label' + index, key: 'key' + index, textAlign: 'left', width: 100 });
+		if (addCols) {
+			if (+addCols < 200) {
+				const h = [...defaultHeaders];
+				for (let index = 0; index < +addCols; index++) {
+					h.push({ label: 'label' + index, key: 'key' + index, textAlign: 'left', width: 100 });
+				}
+				setHeaders(h);
 			}
 		} else {
 			setSearchParams((searchParams) => {

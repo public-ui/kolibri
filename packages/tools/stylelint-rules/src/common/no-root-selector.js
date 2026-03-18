@@ -1,6 +1,6 @@
 import stylelint from 'stylelint';
 
-const ruleName = 'kolibri/no-root-selector';
+const ruleName = 'kolibri/common-no-root-selector';
 const messages = stylelint.utils.ruleMessages(ruleName, {
 	rejected: (filePath) => `":root" selector is not allowed in theme files. Use ":host" for web component encapsulation instead: ${filePath}`,
 });
