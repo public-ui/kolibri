@@ -84,9 +84,7 @@ jobs:
         run: git status
 
       - name: Stage snapshot changes
-        run: |
-          shopt -s globstar
-          git add packages/**/__snapshots__/** packages/**/snapshots/**
+        run: find packages \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -print | xargs --no-run-if-empty git add --
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v7
