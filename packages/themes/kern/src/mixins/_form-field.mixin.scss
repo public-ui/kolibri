@@ -82,5 +82,10 @@
 				}
 			}
 		}
+
+		&--error {
+			border-left: var(--kern-metric-border-width-bold) solid var(--kern-color-feedback-danger);
+			padding-left: var(--kern-metric-space-default);
+		}
 	}
 }
