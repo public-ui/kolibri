@@ -249,10 +249,6 @@ export class KolCombobox implements ComboboxAPI {
 			name: this.state._name,
 			required: this.state._required,
 			...this.controller.onFacade,
-			onFocus: () => {},
-			onBlur: (event) => {
-				event.stopImmediatePropagation();
-			},
 			onChange: this.onChange.bind(this),
 			onInput: this.onInput.bind(this),
 			placeholder: this.state._placeholder,
@@ -283,17 +279,9 @@ export class KolCombobox implements ComboboxAPI {
 									onFocus: () => {
 										this.clearButtonFocused = true;
 									},
-									onBlur: (event) => {
-										console.log('der bubblet?');
+									onBlur: () => {
 										this.clearButtonFocused = false;
-										event.stopImmediatePropagation();
 									},
-								}}
-								onBlur={(event) => {
-									console.log('der bubbelt auch?');
-
-									this.clearButtonFocused = false;
-									event.stopImmediatePropagation();
 								}}
 							/>
 						)}
@@ -398,8 +386,7 @@ export class KolCombobox implements ComboboxAPI {
 			case 'NumpadEnter': {
 				if (this.clearButtonFocused) {
 					this.clearSelection();
-				}
-				if (this._isOpen) {
+				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this._isOpen = false;
 					}
