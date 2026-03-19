@@ -10,11 +10,87 @@ on:
         type: boolean
 
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
   cancel-in-progress: true
 
 jobs:
-  update-snapshots:
+  update:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: components
+            path: packages/components
+            type: unit
+          - name: hydrate-server
+            path: packages/tools/hydrate-server
+            type: unit
+          - name: hydrate
+            path: packages/adapters/hydrate
+            type: unit
+          - name: theme-default
+            path: packages/themes/default
+            type: e2e
+          - name: theme-kern
+            path: packages/themes/kern
+            type: e2e
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+          persist-credentials: false
+
+      - uses: ./.github/actions/pnpm-setup
+
+      - name: Install Playwright browsers
+        if: matrix.type == 'e2e'
+        run: npx playwright install --with-deps firefox
+
+      - name: Build
+        run: pnpm --filter @public-ui/sample-react^... build
+
+      - name: Purge existing snapshots
+        if: inputs.delete_snapshots == true
+        run: |
+          if [ "${{ matrix.type }}" = "e2e" ]; then
+            find ${{ matrix.path }} -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs --no-run-if-empty rm -f
+          else
+            find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f
+          fi
+
+      - name: Run snapshot update
+        run: pnpm --filter @public-ui/${{ matrix.name }} test:update:${{ matrix.type }}
+
+      - name: Git status after generating snapshots
+        run: git status
+
+      - name: Package snapshot changes
+        run: |
+          if [ "${{ inputs.delete_snapshots }}" = "true" ]; then
+            # All snapshots were purged and regenerated from scratch – capture every file on disk,
+            # including those whose content is identical to HEAD (git diff would miss those).
+            find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -type f -print \
+              | tar cf snapshots.tar -T - 2>/dev/null || tar cf snapshots.tar --files-from /dev/null
+          else
+            # Only capture files that actually changed (efficient for normal updates).
+            {
+              git diff --name-only --diff-filter=d HEAD -- ${{ matrix.path }}
+              git ls-files --others --exclude-standard -- ${{ matrix.path }}
+            } | grep -E '(__snapshots__|snapshots)/' | tar cf snapshots.tar -T - 2>/dev/null || tar cf snapshots.tar --files-from /dev/null
+          fi
+
+      - name: Upload snapshot artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshots-${{ matrix.name }}
+          path: snapshots.tar
+          if-no-files-found: ignore
+          retention-days: 1
+
+  push:
+    needs: update
     runs-on: ubuntu-latest
     steps:
       - uses: actions/create-github-app-token@v3
@@ -34,64 +110,38 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
           token: ${{ steps.app-token.outputs.token }}
-
-      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
-      - name: Install Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        id: pnpm-install
-        with:
-          version: 10
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v5
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store
-
-      - name: Install
-        run: pnpm i --no-frozen-lockfile
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
-
-      - name: Build
-        run: pnpm --filter @public-ui/sample-react^... build
-
       - name: Purge existing snapshots (optional)
         if: inputs.delete_snapshots == true
-        run: find packages -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs rm # Remove any existing snapshots, except those in node_modules
+        run: |
+          find packages -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs --no-run-if-empty rm -f
+          find packages \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f
 
-      - name: Display git status (before test-update)
-        run: git status
+      - name: Download snapshot artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: snapshots-*
+          path: snapshot-artifacts
 
-      - name: Run snapshot updates
-        run: pnpm test:update
-
-      - name: Display git status (after test-update)
-        run: git status
+      - name: Apply snapshot updates
+        run: |
+          for dir in snapshot-artifacts/snapshots-*/; do
+            if [ -f "${dir}snapshots.tar" ]; then
+              tar xf "${dir}snapshots.tar"
+            fi
+          done
+          rm -rf snapshot-artifacts
 
       - name: Stage snapshot changes
         run: |
-          # find does not follow symlinks by default, avoiding "beyond a symbolic link" git errors.
-          # test-tag-name-transformer is excluded because its snapshots/ folder is listed in its .gitignore.
-          find packages \( -path '*/node_modules' -o -path '*/test-tag-name-transformer' \) -prune \
-            -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -print \
+          # Stage updated/new snapshot files (skip gitignored paths)
+          find packages \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -type f -print \
+            | (git check-ignore --stdin --non-matching --verbose || test $? = 1) \
+            | { grep '^::' || true; } | cut -f2 \
             | xargs --no-run-if-empty git add --
+          # Also stage deletions (e.g. snapshots for removed tests)
+          { git diff --name-only --diff-filter=D HEAD || true; } | grep -E '(__snapshots__|snapshots)/' | xargs --no-run-if-empty git add --
 
-      - name: Display git status (after git add)
+      - name: Git status after staging
         run: git status
 
       - name: Commit and push changes
