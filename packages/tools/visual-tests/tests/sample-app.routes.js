@@ -1140,6 +1140,17 @@ ROUTES.set('version/context', {
 		},
 	},
 });
+ROUTES.set('scenarios/accordion-components', {
+	snapshot: {
+		viewportSize: {
+			width: 200,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/static-form', {
 	axe: {
 		skipFailures: true,

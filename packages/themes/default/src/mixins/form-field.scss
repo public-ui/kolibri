@@ -19,6 +19,14 @@
 			}
 		}
 
+		&__label {
+			display: flex;
+
+			&-text {
+				gap: 0;
+			}
+		}
+
 		&--required & {
 			&__label-text {
 				&::after {

@@ -1,14 +1,14 @@
 @use '~@public-ui/components/index' as *;
 @use '../mixins/alert.mixin' as *;
 @use '../mixins/field-control.mixin' as *;
-@use '../mixins/form-field-order.mixin' as *;
 @use '../mixins/focus-outline.mixin' as *;
 @use '../mixins/checkbox.mixin' as *;
+
+@use '../mixins/form-field.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert;
 	@include kol-field-control-theme;
-	@include kol-form-field-order-theme;
 	@include kol-form-field;
 
 	@include checkbox;
