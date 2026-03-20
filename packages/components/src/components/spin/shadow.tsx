@@ -24,6 +24,11 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	}
 }
 
+/**
+ * The **Spin** component informs users about loading or processing operations being performed by the system. Progress can be communicated through a repeated animation.
+ *
+ * @slot expert - Custom content displayed when the variant is set to `none`.
+ */
 @Component({
 	tag: 'kol-spin',
 	styleUrls: {

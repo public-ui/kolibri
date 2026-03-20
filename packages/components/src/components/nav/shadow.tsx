@@ -56,6 +56,10 @@ const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryPr
 	return (entryProps as LinkProps)._href === undefined && typeof (entryProps as ButtonWithChildrenProps)._on?.onClick === 'function';
 };
 
+/**
+ * The **Nav** component renders a group of related links or navigation elements that perform an action or display content when clicked.
+ * It provides a highly configurable vertical or horizontal navigation bar that can represent multiple levels and vary in width.
+ */
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {

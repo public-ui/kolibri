@@ -38,6 +38,8 @@ import type { InputCheckboxVariantPropType } from '../../schema/props/variant-in
 import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
+ * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
+ *
  * @slot expert - Checkbox description.
  */
 @Component({

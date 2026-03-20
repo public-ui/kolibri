@@ -6,6 +6,9 @@ import { ClickButtonFC } from '../../../../internal/functional-components/click-
 import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-click-button',
 	shadow: true,

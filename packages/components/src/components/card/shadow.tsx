@@ -5,7 +5,13 @@ import type { CardProps, HeadingLevel, KoliBriCardEventCallbacks, LabelPropType 
 import { KolCardWcTag } from '../../core/component-names';
 
 /**
- * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
+ * The **Card** component is ideal for visually highlighting individual sections of your website. It allows you to structure your content very easily.
+ *
+ * The **Card** component consists of a **_title area_** and a **_content area_**.
+ *
+ * The **title area** is displayed in a larger font. The **content area** is visually separated from the title area by a horizontal dividing line and is rendered in the default font.
+ *
+ * @slot - Allows arbitrary HTML to be inserted into the content area of the card.
  */
 @Component({
 	tag: 'kol-card',

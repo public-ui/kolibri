@@ -9,6 +9,9 @@ import type { JSX } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
 
+/**
+ * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.
+ */
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {

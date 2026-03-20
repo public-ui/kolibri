@@ -50,7 +50,9 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 };
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Textarea** component provides a larger input field for content. Unlike InputText, it also allows extensive content to be entered, including line breaks.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-textarea',

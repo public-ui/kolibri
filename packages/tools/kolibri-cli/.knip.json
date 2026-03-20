@@ -1,7 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"ignoreDependencies": ["@public-ui/components", "loglevel"],
-	"ignore": ["src/migrate/runner/tasks/common/Scss*.ts"],
 	"project": ["src/**/*.ts"],
 	"entry": ["test/**/*.ts"],
 	"rules": {

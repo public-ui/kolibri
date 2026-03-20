@@ -7,6 +7,9 @@ import { ProgressFC } from '../../internal/functional-components/progress/compon
 import { ProgressController } from '../../internal/functional-components/progress/controller';
 import type { ProgressVariantType } from '../../internal/props';
 
+/**
+ * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.
+ */
 @Component({
 	tag: 'kol-progress',
 	styleUrls: {
