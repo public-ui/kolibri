@@ -25,8 +25,11 @@ featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer n
 featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 /**
+ * The **Accordion** component is a collapsible menu. Clicking the header area — consisting of an icon and a heading — expands the content to reveal additional information. It is an interactive navigation element designed to present extensive content in a space-saving manner.
  *
- * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
+ * Accordions are used whenever content associated with a thematic heading needs to be shown or hidden. They allow more detailed information for a heading than would normally be practical, leaving it to the users to decide whether to view that information.
+ *
+ * @slot - Allows arbitrary HTML to be inserted into the content area of the accordion.
  */
 @Component({
 	tag: 'kol-accordion',

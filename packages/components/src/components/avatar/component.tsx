@@ -7,6 +7,9 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ColorPair } from '../../schema';
 
+/**
+ * The **Avatar** component displays either a small image of the user or their initials if no image is available.
+ */
 @Component({
 	tag: 'kol-avatar',
 	shadow: true,

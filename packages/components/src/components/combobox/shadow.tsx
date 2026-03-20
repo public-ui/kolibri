@@ -37,7 +37,7 @@ import { nonce } from '../../utils/dev.utils';
 import { ComboboxController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-combobox',

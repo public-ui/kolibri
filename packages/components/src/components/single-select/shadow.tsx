@@ -40,7 +40,9 @@ import { nonce } from '../../utils/dev.utils';
 import { SingleSelectController } from './controller';
 
 /**
- * @slot - The input field label.
+ * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-single-select',

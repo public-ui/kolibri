@@ -29,7 +29,9 @@ import { nonce } from '../../utils/dev.utils';
 import { InputColorController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Color** input type creates a selection field for defining any color. The color can be entered in hexadecimal, RGB, or HSL notation. It is possible to select a color via a picker or by entering exact color values.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-color',

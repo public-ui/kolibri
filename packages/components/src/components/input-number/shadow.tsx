@@ -37,7 +37,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Number** input type creates an input field for numeric values. Use the `_min`, `_max`, and `_step` properties to restrict the accepted value range.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-number',

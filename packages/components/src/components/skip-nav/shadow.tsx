@@ -7,6 +7,10 @@ import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
+
+/**
+ * The **SkipNav** component renders a hidden navigation that allows keyboard and assistive technology users to skip repetitive navigation sections and jump directly to the main content. It only becomes visible when reached via the Tab key.
+ */
 @Component({
 	tag: 'kol-skip-nav',
 	styleUrls: {

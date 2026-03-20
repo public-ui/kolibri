@@ -55,6 +55,9 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	maximumFractionDigits: 0,
 });
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-pagination-wc',
 	shadow: false,

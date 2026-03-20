@@ -63,21 +63,18 @@ const TAGS = [
 ];
 const EXCLUDE_TAGS = [
 	'kol-alert-wc',
-	'kol-all',
-	'kol-avatar-wc',
-	'kol-button-link-text-switch',
 	'kol-button-wc',
-	'kol-color',
-	'kol-counter',
+	'kol-card-wc',
+	'kol-click-button',
 	'kol-dialog-wc',
-	'kol-heading-wc',
-	'kol-input',
 	'kol-link-wc',
-	'kol-popover-wc',
-	'kol-span-wc',
+	'kol-pagination-wc',
+	'kol-popover-button-wc',
+	'kol-select-wc',
 	'kol-table-settings-wc',
 	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
+	'kol-tree-wc',
 ];
 const BUNDLES: {
 	components: string[];

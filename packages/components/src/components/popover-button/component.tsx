@@ -25,6 +25,7 @@ import { alignFloatingElements } from '../../utils/align-floating-elements';
 import clsx from '../../utils/clsx';
 
 /**
+ * @internal
  * @slot - The popover content.
  */
 @Component({

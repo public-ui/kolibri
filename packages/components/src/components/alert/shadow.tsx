@@ -4,7 +4,9 @@ import { KolAlertWcTag } from '../../core/component-names';
 import type { AlertProps, AlertStates, AlertTypePropType, AlertVariantPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 
 /**
- * @slot - Der Inhalt der Meldung.
+ * The **Alert** component provides visual feedback to users. It consists of a color-coded container, a heading, content text, and an icon. The icon used and the color scheme depend on the `_type` of the alert.
+ *
+ * @slot - The content of the notification.
  */
 @Component({
 	tag: 'kol-alert',
