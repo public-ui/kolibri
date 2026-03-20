@@ -23,5 +23,13 @@
 			flex: 1 1 auto;
 			text-align: left;
 		}
+
+		.kol-popover {
+			z-index: 1;
+
+			&__arrow {
+				display: none;
+			}
+		}
 	}
 }
