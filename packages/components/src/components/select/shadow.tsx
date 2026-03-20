@@ -21,7 +21,7 @@ import type {
 import { KolSelectWcTag } from '../../core/component-names';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-select',

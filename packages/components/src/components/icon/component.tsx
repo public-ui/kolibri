@@ -6,6 +6,9 @@ import type { IconApi } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { IconController } from '../../internal/functional-components/icon/controller';
 
+/**
+ * The **Icon** component allows icons from included icon fonts to be displayed at any position.
+ */
 @Component({
 	tag: 'kol-icon',
 	styleUrls: {

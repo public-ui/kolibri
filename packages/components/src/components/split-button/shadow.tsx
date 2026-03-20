@@ -23,7 +23,10 @@ import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
 
 /**
- * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
+ * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
+ * a main action, while the secondary button opens a context menu (`Popover`) that contains additional actions.
+ *
+ * @slot - Allows arbitrary HTML to be inserted into the dropdown.
  */
 @Component({
 	tag: 'kol-split-button',

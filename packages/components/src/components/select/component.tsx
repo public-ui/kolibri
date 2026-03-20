@@ -34,7 +34,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * @internal
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-select-wc',

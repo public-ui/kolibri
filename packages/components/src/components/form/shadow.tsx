@@ -10,7 +10,9 @@ import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stri
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
- * @slot - Inhalt der Form.
+ * The **Form** component is used to wrap all input fields, correctly position the required-fields hint text, and forward the `submit` and `reset` events.
+ *
+ * @slot - The content of the form.
  */
 @Component({
 	tag: 'kol-form',

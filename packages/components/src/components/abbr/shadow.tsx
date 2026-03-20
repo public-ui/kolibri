@@ -5,6 +5,9 @@ import type { AbbrAPI, AbbrStates, LabelPropType } from '../../schema';
 import { validateLabel } from '../../schema';
 
 /**
+ * The **Abbr** component implements the HTML tag `abbr` with an accessible tooltip.
+ * The tooltip for the description is displayed and read aloud when the **Abbr** component is focused or hovered.
+ *
  * @slot - The abbreviation (short form).
  */
 @Component({

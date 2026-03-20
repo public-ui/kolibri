@@ -12,6 +12,7 @@ const TRANSITION_TIMEOUT = 300;
 
 /**
  * @deprecated Will be removed in the next major version. For more information, please refer to: https://github.com/public-ui/kolibri/issues/8372
+ * @internal
  */
 @Component({
 	tag: 'kol-toast-container',

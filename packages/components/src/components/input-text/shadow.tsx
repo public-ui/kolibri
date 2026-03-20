@@ -40,7 +40,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-text',

@@ -10,6 +10,10 @@ import { KolButtonWcTag } from '../../core/component-names';
 import clsx from '../../utils/clsx';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
+/**
+ * The **Badge** component allows you to visually highlight specific information.
+ * In addition to specifying the background color and automatically calculating the text color, it also supports adding an icon and/or a different font style.
+ */
 @Component({
 	tag: 'kol-badge',
 	styleUrls: {

@@ -35,7 +35,9 @@ import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../funct
 import type { OrientationPropType } from '../../schema/props/orientation';
 
 /**
- * @slot - Die Legende/Überschrift der Radiobuttons.
+ * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.
+ *
+ * @slot - The legend/heading of the radio buttons.
  */
 @Component({
 	tag: 'kol-input-radio',

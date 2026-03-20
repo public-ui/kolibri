@@ -20,6 +20,11 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
+/**
+ * The **LinkButton** component is semantically a link but has the appearance of a button. All relevant properties of the Link component are adopted and extended with the design-defining properties of a button.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
+ */
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {

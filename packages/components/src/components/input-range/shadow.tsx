@@ -33,7 +33,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRangeController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabeelements.
+ * The **Range** input type creates a slider control for selecting a numeric value within a defined range. Use the `_min`, `_max`, and `_step` properties to configure the range and step size.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-range',
