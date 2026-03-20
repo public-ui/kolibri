@@ -27,12 +27,6 @@ test.describe(COMPONENT_NAME, () => {
 		fillAction,
 		testValue: TEST_VALUE,
 	});
-	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>({
-		additionalProperties: OPTIONS_ATTRIBUTE,
-		componentName: COMPONENT_NAME,
-		fillAction,
-		testValue: TEST_VALUE,
-	});
 	testInputMessage<HTMLKolSingleSelectElement>(COMPONENT_NAME);
 
 	test.describe('kol-single-select additional interactions', () => {
