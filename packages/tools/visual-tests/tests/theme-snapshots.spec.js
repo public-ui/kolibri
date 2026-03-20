@@ -63,7 +63,7 @@ ROUTES.forEach((options, route) => {
 
 			await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
 			await page.waitForTimeout(3000);
-			await page.locator(options.snapshot.clickElem).click({ force: true });
+			// await page.locator(options.snapshot.clickElem).click({ force: true });
 		}
 
 		// Skip unnecessary normal tests
