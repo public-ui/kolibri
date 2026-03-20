@@ -34,7 +34,9 @@ import { nonce } from '../../utils/dev.utils';
 import { InputFileController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **File** input type creates an input field for file uploads. One or multiple files can be selected and submitted with a form.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-file',

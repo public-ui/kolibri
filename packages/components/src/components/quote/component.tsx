@@ -7,6 +7,9 @@ import { QuoteFC } from '../../internal/functional-components/quote/component';
 import { QuoteController } from '../../internal/functional-components/quote/controller';
 import type { QuoteVariantType } from '../../internal/props/variant-quote';
 
+/**
+ * The **Quote** component has two variants: a short inline (`inline`) and an indented block (`block`) variant. Both variants include a link to the source of the quote.
+ */
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {

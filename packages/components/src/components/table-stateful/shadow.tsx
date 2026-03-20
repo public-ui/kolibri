@@ -56,6 +56,9 @@ type SortData = {
 	direction: KoliBriSortDirection;
 };
 
+/**
+ * The **Table** component is primarily used for the clear presentation of data sets. It is designed to automatically determine all data-dependent values and render the table accordingly. This includes optional features such as column sorting and pagination.
+ */
 @Component({
 	tag: 'kol-table-stateful',
 	styleUrls: {

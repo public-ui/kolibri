@@ -7,7 +7,15 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
 /**
- * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
+ * The **Details** component allows additional information to be initially shown with a short introductory text,
+ * which is only fully expanded after the user clicks on an arrow icon.
+ *
+ * By default, the **Details** component is displayed as a single-line layout element consisting of an arrow icon
+ * followed by a short introductory text. The actual content is revealed below after clicking the header area. The arrow icon
+ * changes its orientation from **_right_** to **_down_**.
+ * The component can also be closed again to hide the content.
+ *
+ * @slot - The content displayed in the detail description.
  */
 @Component({
 	tag: 'kol-details',

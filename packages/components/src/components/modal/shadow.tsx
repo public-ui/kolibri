@@ -5,6 +5,8 @@ import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType } from '..
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 
 /**
+ * The **Modal** component has been superseded by `kol-dialog`, which provides improved accessibility and conforms to the HTML dialog specification. It is still available in version 2 for backwards compatibility.
+ *
  * @deprecated Use `kol-dialog` instead.
  * @slot - The modal's contents.
  */

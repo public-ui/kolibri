@@ -34,6 +34,9 @@ import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
+/**
+ * The **Tabs** component is used to organize related content on the same page and navigate between them. Tabs ensure that large amounts of content can be more easily organized for users.
+ */
 @Component({
 	tag: 'kol-tabs',
 	styleUrls: {

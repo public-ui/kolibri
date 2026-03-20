@@ -6,8 +6,9 @@ import { validateLabelWithExpertSlot, watchString } from '../../schema';
 import { watchHeadingLevel } from './validation';
 
 /**
+ * The **Heading** component can be used wherever a heading needs to be displayed. By using the different sizes, content can be clearly structured and pages can be presented effectively and with variety. It separates styling from semantics and enables flexibility.
  *
- * @slot - Inhalt der Überschrift.
+ * @slot - The heading content.
  */
 @Component({
 	tag: 'kol-heading',

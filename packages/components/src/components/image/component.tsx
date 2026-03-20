@@ -7,6 +7,9 @@ import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
 
+/**
+ * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
+ */
 @Component({
 	tag: 'kol-image',
 	styleUrls: {

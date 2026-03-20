@@ -38,7 +38,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { InputDateController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-date',

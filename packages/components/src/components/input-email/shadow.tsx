@@ -38,7 +38,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { InputEmailController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Email** input type creates an input field for email addresses. It supports built-in format validation, multiple addresses via the `_multiple` property, and auto-complete suggestions.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-email',

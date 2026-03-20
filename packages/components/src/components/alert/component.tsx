@@ -17,7 +17,7 @@ import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * @internal
- * @slot - Der Inhalt der Meldung.
+ * @slot - The content of the notification.
  */
 @Component({
 	tag: 'kol-alert-wc',

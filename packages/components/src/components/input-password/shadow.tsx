@@ -40,7 +40,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { InputPasswordController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-password',

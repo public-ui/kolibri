@@ -7,6 +7,9 @@ import { validateActive, validateHref, validateLabel, validateOpen } from '../..
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: `kol-tree-item-wc`,
 	shadow: false,
