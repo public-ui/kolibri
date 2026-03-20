@@ -55,6 +55,7 @@
 		"serve": "sh serve.sh DEFAULT",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
+		"test:e2e:debug": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --ui theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest:update:e2e": "pnpm build"
 	},
