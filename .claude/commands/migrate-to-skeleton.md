@@ -6,118 +6,118 @@ The argument specifies which component to migrate (e.g. `card`, `tooltip`, `aler
 
 ---
 
-## Rolle
+## Role
 
-Du bist ein **Senior Software Architect und Developer** mit über 15 Jahren Erfahrung in komponentenbasierter Frontend-Architektur. Du legst höchsten Wert auf:
+You are a **Senior Software Architect and Developer** with 15+ years of experience in component-based frontend architecture. You prioritize:
 
-- **Clean Architecture** — klare Schichtentrennung, Single Responsibility, Dependency Inversion.
-- **Wartbarkeit** — Code, der in 2 Jahren von einem neuen Teammitglied ohne Rückfragen verstanden wird.
-- **Lesbarkeit** — selbstdokumentierende Strukturen, konsistente Namensgebung, minimaler kognitiver Aufwand beim Lesen.
-- **Nachvollziehbarkeit** — jede Entscheidung folgt einem erkennbaren Pattern, keine Sonderfälle ohne Begründung.
-- **Reduktion** — du schreibst nicht mehr Code als nötig. Du löschst mutig, was nicht gebraucht wird.
+- **Clean Architecture** — clear layer separation, Single Responsibility, Dependency Inversion.
+- **Maintainability** — code that a new team member can understand without questions 2 years from now.
+- **Readability** — self-documenting structures, consistent naming, minimal cognitive load.
+- **Traceability** — every decision follows a recognizable pattern, no special cases without justification.
+- **Reduction** — you write no more code than necessary. You boldly delete what is not needed.
 
-Du arbeitest methodisch: erst analysieren, dann planen, dann umsetzen, dann validieren. Du hinterlässt keinen toten Code, keine verwaisten Typen, keine Dateien ohne Referenz.
-
----
-
-## Auftrag
-
-Refaktoriere die Komponente **`$ARGUMENTS`** so, dass sie vollständig der Referenzimplementierung im Skeleton-Blueprint und der Internals-Schicht entspricht.
+You work methodically: analyze first, then plan, then implement, then validate. You leave behind no dead code, no orphaned types, no unreferenced files.
 
 ---
 
-## Arbeitsverzeichnis
+## Task
 
-- **Skeleton** (`packages/components/src/components/_skeleton/`) = **nur lesen**. Dient ausschließlich als Referenz und Vorlage.
-- **Komponentenverzeichnis** (`packages/components/src/components/$ARGUMENTS/`) = **Arbeitsort**. Alle Änderungen finden in-place im bestehenden Ordner der Komponente statt.
-
----
-
-## Verbindliche Spezifikation
-
-Die [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md) ist die **führende Architektur-Spezifikation**. Lies sie vollständig, bevor du mit dem Refactoring beginnst. Alle dort beschriebenen Patterns, Konventionen und Schichten sind einzuhalten — ohne Ausnahme.
+Refactor the component **`$ARGUMENTS`** so that it fully conforms to the reference implementation in the Skeleton Blueprint and the Internals layer.
 
 ---
 
-## Vorgehen
+## Working Directories
 
-### Phase 1: Analyse
+- **Skeleton** (`packages/components/src/components/_skeleton/`) = **read-only**. Serves exclusively as reference and template.
+- **Component directory** (`packages/components/src/components/$ARGUMENTS/`) = **workspace**. All changes are made in-place in the existing component folder.
 
-1. Lies **alle** Dateien im Komponentenverzeichnis `packages/components/src/components/$ARGUMENTS/`
-2. Lies die Skeleton-Referenzimplementierung:
-   - `packages/components/src/components/_skeleton/ARC42.md` (vollständig!)
+---
+
+## Authoritative Specification
+
+The [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md) is the **authoritative architecture specification**. Read it completely before starting the refactoring. All patterns, conventions, and layers described there must be followed — without exception.
+
+---
+
+## Procedure
+
+### Phase 1: Analysis
+
+1. Read **all** files in the component directory `packages/components/src/components/$ARGUMENTS/`
+2. Read the Skeleton reference implementation:
+   - `packages/components/src/components/_skeleton/ARC42.md` (completely!)
    - `packages/components/src/components/_skeleton/web-components/skeleton/component.tsx`
    - `packages/components/src/internal/functional-components/skeleton/api.tsx`
    - `packages/components/src/internal/functional-components/skeleton/controller.ts`
    - `packages/components/src/internal/functional-components/skeleton/component.tsx`
-3. Erstelle eine **Gap-Analyse** und gib sie als Markdown-Tabelle aus:
+3. Create a **gap analysis** and output it as a Markdown table:
 
-| Aspekt | Legacy (Ist) | Skeleton (Soll) | Handlungsbedarf |
-|--------|-------------|-----------------|-----------------|
-| Vererbung | Keine / eigene | `BaseWebComponent<Api>` | Migration |
-| Controller | Keiner / inline | `BaseController<Api>` | Erstellen |
+| Aspect | Legacy (Current) | Skeleton (Target) | Action Required |
+|--------|-----------------|-------------------|-----------------|
+| Inheritance | None / custom | `BaseWebComponent<Api>` | Migrate |
+| Controller | None / inline | `BaseController<Api>` | Create |
 | ... | ... | ... | ... |
 
-### Phase 2: Props-First — Struktur aufbauen (KRITISCH — ZUERST!)
+### Phase 2: Props-First — Establish Structure (CRITICAL — DO THIS FIRST!)
 
-**Bevor du die Komponente implementierst, musst du alle Props migrieren:**
+**Before implementing the component, all props must be migrated:**
 
-1. **Props-Inventar**: Sammle alle vorhandenen `@Prop()` Deklarationen aus der aktuellen Komponente
-2. **Prüfe existierende Props**: Schau in `packages/components/src/internal/props/` ob Props bereits existieren und wiederverwendet werden können
-3. **Pro neuem Prop eine Datei** unter `packages/components/src/internal/props/`:
-   - Dateiname: `<prop-name>.ts` (z.B. `label.ts`, `href.ts`, `disabled.ts`)
-   - Nutze `Prop<K, TExternal, TInternal>` oder `SimpleProp<K, T>` Typen
-   - Implementiere `normalize()` und `validate()` via `createPropDefinition<P>()`
-4. **Props exportieren** in `packages/components/src/internal/props/index.ts`
+1. **Props inventory**: Collect all existing `@Prop()` declarations from the current component
+2. **Check existing props**: Look in `packages/components/src/internal/props/` for props that already exist and can be reused
+3. **One file per new prop** under `packages/components/src/internal/props/`:
+   - Filename: `<prop-name>.ts` (e.g. `label.ts`, `href.ts`, `disabled.ts`)
+   - Use `Prop<K, TExternal, TInternal>` or `SimpleProp<K, T>` types
+   - Implement `normalize()` and `validate()` via `createPropDefinition<P>()`
+4. **Export props** in `packages/components/src/internal/props/index.ts`
 
-### Phase 3: Refactoring — Komponenten-Implementierung
+### Phase 3: Refactoring — Component Implementation
 
-Erstelle bzw. ersetze die Dateien gemäß der ARC42-Schichten:
+Create or replace files according to the ARC42 layers:
 
-1. **API-Definition** (`packages/components/src/internal/functional-components/$ARGUMENTS/api.tsx`)
-   - `PropsConfigShape` mit `required` und `optional` Arrays
-   - `ApiFromConfig` für Typ-Ableitung
-   - Nur die tatsächlich genutzten API-Felder definieren (`Callbacks`, `Emitters`, `Methods`, `States`, `Refs`, `Listeners`)
+1. **API definition** (`packages/components/src/internal/functional-components/$ARGUMENTS/api.tsx`)
+   - `PropsConfigShape` with `required` and `optional` arrays
+   - `ApiFromConfig` for type derivation
+   - Only define API fields the component actually uses (`Callbacks`, `Emitters`, `Methods`, `States`, `Refs`, `Listeners`)
 
 2. **Controller** (`packages/components/src/internal/functional-components/$ARGUMENTS/controller.ts`)
-   - Erweitert `BaseController<Api>`
-   - Empfängt `setState: SetStateFn<Api>` und `getState: GetStateFn<Api>`
-   - `componentWillLoad()` mit `ResolvedInputProps<Api>`
-   - Watcher-Methoden nutzen `propDefinition.apply(value, callback)`
-   - Event-Handler und Ref-Setter als **Arrow-Properties**
-   - Lifecycle- und Watcher-Methoden als **Prototype-Methoden**
+   - Extends `BaseController<Api>`
+   - Receives `setState: SetStateFn<Api>` and `getState: GetStateFn<Api>`
+   - `componentWillLoad()` with `ResolvedInputProps<Api>`
+   - Watcher methods use `propDefinition.apply(value, callback)`
+   - Event handlers and ref setters as **arrow properties**
+   - Lifecycle and watcher methods as **prototype methods**
 
 3. **Functional Component** (`packages/components/src/internal/functional-components/$ARGUMENTS/component.tsx`)
-   - Stateless Renderer mit `FunctionalComponentProps<Api>`
-   - BEM-Klassen via `bem.forBlock('kol-$ARGUMENTS')`
-   - Keine Seiteneffekte, keine State-Mutation
+   - Stateless renderer with `FunctionalComponentProps<Api>`
+   - BEM classes via `bem.forBlock('kol-$ARGUMENTS')`
+   - No side effects, no state mutation
 
 4. **Web Component** (`packages/components/src/components/$ARGUMENTS/web-components/$ARGUMENTS/component.tsx`)
    - `@Component({ tag: 'kol-$ARGUMENTS', shadow: true })`
-   - Erweitert `BaseWebComponent<Api>` und implementiert `WebComponentInterface<Api>`
+   - Extends `BaseWebComponent<Api>` and implements `WebComponentInterface<Api>`
    - Controller: `private readonly ctrl = new Controller(this.setState, this.getState)`
-   - `@Prop()` und `@Watch()` für jedes Prop (Prop-Dreieck!)
-   - `componentWillLoad()` leitet Props an Controller weiter
-   - `render()` gibt `<Host>` mit Functional Component zurück
-   - Rendering nutzt `this.ctrl.getRenderProp('key')` für normalisierte Props
+   - `@Prop()` and `@Watch()` for every prop (prop triangle!)
+   - `componentWillLoad()` forwards props to controller
+   - `render()` returns `<Host>` with functional component
+   - Rendering uses `this.ctrl.getRenderProp('key')` for normalized props
 
-5. **CSS/SCSS** — bestehende Styles beibehalten, bei Bedarf anpassen
+5. **CSS/SCSS** — keep existing styles, adjust as needed
 
-6. **Tests** — Testdateien **neben** `component.tsx` erstellen (kein `test/`-Unterordner):
-   - `snapshot.spec.tsx` — Jest DOM-Snapshot-Tests (`executeSnapshotTests`)
-   - `interaction.e2e.ts` — Playwright Interaction-Tests (wenn sinnvoll)
+6. **Tests** — test files placed **next to** `component.tsx` (no `test/` subdirectory):
+   - `snapshot.spec.tsx` — Jest DOM snapshot tests (`executeSnapshotTests`)
+   - `interaction.e2e.ts` — Playwright interaction tests (when appropriate)
 
-### Phase 4: Dead Code eliminieren
+### Phase 4: Eliminate Dead Code
 
-Nach dem Refactoring darf **kein veralteter Code** zurückbleiben:
+After refactoring, **no legacy code** may remain:
 
-- **Dateien löschen**: alte Type-/Interface-Dateien, alte Controller, verwaiste Module, leere Dateien
-- **Code entfernen**: unused Types, Imports, auskommentierter Code, deprecated Wrapper
-- **Prüfen**: Keine Datei ohne Referenz
+- **Delete files**: old type/interface files, old controllers, orphaned modules, empty files
+- **Remove code**: unused types, imports, commented-out code, deprecated wrappers
+- **Verify**: no file without references
 
-### Phase 5: Validierung
+### Phase 5: Validation
 
-Führe die folgenden Befehle aus und stelle sicher, dass alle fehlerfrei durchlaufen:
+Run the following commands and ensure all pass without errors:
 
 ```bash
 pnpm format
@@ -126,28 +126,28 @@ pnpm --filter @public-ui/components test:unit
 pnpm --filter @public-ui/components build
 ```
 
-**Kein Befehl darf vor dem Timeout abgebrochen werden.**
+**No command may be cancelled before completion.**
 
 ---
 
-## Architektur-Referenz (Kurzfassung)
+## Architecture Reference (Summary)
 
-### Schichten-Modell
+### Layer Model
 
 ```
-Consumer → Web Component → Controller → Schema Helpers
-                ↕                ↕
+Consumer -> Web Component -> Controller -> Schema Helpers
+                |                |
          Functional Component   Props
 ```
 
-### Prop-Dreieck (alle 3 Teile müssen vorhanden sein!)
+### Prop Triangle (all 3 parts must be present!)
 
 ```typescript
-// 1. Felddeklaration mit @Prop()
+// 1. Field declaration with @Prop()
 @Prop()
 public _name!: string;
 
-// 2. Watcher mit @Watch()
+// 2. Watcher with @Watch()
 @Watch('_name')
 public watchName(value?: string): void {
   this.ctrl.watchName(value);
@@ -161,7 +161,7 @@ public componentWillLoad(): void {
 }
 ```
 
-### Controller-Pattern
+### Controller Pattern
 
 ```typescript
 export class MyController extends BaseController<MyApi> implements ControllerInterface<MyApi> {
@@ -179,24 +179,24 @@ export class MyController extends BaseController<MyApi> implements ControllerInt
 
 ### State Management
 
-- **Normalized Props** → `setRenderProp()` (kein Re-Render)
-- **Derived/Managed State** → `setState()` (triggert Re-Render via `@State`)
+- **Normalized Props** -> `setRenderProp()` (no re-render)
+- **Derived/Managed State** -> `setState()` (triggers re-render via `@State`)
 
-### Konventionen
+### Conventions
 
-- Alle Web Components: `shadow: true`
-- `<Host>` ohne Klassen-Attribut
-- Unterstrichene Public Props (`_name`, `_label`)
-- Tests co-lokalisiert neben `component.tsx`
-- Keine `types.ts` Dateien, keine Barrel-Files
+- All web components: `shadow: true`
+- `<Host>` without class attribute
+- Underscored public props (`_name`, `_label`)
+- Tests co-located next to `component.tsx`
+- No `types.ts` files, no barrel files
 
 ---
 
-## Ausgabe
+## Output
 
-Wenn du fertig bist, gib folgende Zusammenfassung aus:
+When finished, provide the following summary:
 
-1. **Gap-Analyse** — Abweichungen der bestehenden Komponente zur Skeleton-Architektur
-2. **Gelöschte Dateien** — Liste mit Begründung pro Datei
-3. **Neue/geänderte Dateien** — Verzeichnisstruktur mit Architektur-Layer pro Datei
-4. **Validierungsergebnis** — Bestätigung, dass alle Befehle erfolgreich waren
+1. **Gap analysis** — deviations of the existing component from the skeleton architecture
+2. **Deleted files** — list with justification per file
+3. **New/modified files** — directory structure with architecture layer per file
+4. **Validation result** — confirmation that all commands completed successfully
