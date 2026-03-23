@@ -19,7 +19,7 @@
 		"@eslint/js": "9.39.4",
 		"eslint": "9.39.4",
 		"globals": "17.4.0",
-		"knip": "5.87.0",
+		"knip": "5.88.1",
 		"mocha": "11.7.5",
 		"postcss-scss": "4.0.9",
 		"prettier": "3.8.1",
