@@ -30,6 +30,7 @@ import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
+import quoteCss from './components/quote.scss';
 import selectCss from './components/select.scss';
 import singleSelect from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
@@ -77,6 +78,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-PAGINATION': paginationCss,
 	'KOL-POPOVER-BUTTON': popoverButtonCss,
 	'KOL-PROGRESS': progressCss,
+	'KOL-QUOTE': quoteCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
 	'KOL-SKIP-NAV': skipNavCss,
