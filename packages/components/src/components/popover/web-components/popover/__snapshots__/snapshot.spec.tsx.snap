@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-popover should render with _align="bottom" 1`] = `
+<kol-popover>
+  <template shadowrootmode="open">
+    <div class="kol-popover__content" popover="auto">
+      <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+      <slot></slot>
+    </div>
+  </template>
+</kol-popover>
+`;
+
+exports[`kol-popover should render with _align="left" 1`] = `
+<kol-popover>
+  <template shadowrootmode="open">
+    <div class="kol-popover__content" popover="auto">
+      <div class="kol-popover__arrow kol-popover__arrow--left"></div>
+      <slot></slot>
+    </div>
+  </template>
+</kol-popover>
+`;
+
+exports[`kol-popover should render with _align="right" 1`] = `
+<kol-popover>
+  <template shadowrootmode="open">
+    <div class="kol-popover__content" popover="auto">
+      <div class="kol-popover__arrow kol-popover__arrow--right"></div>
+      <slot></slot>
+    </div>
+  </template>
+</kol-popover>
+`;
+
+exports[`kol-popover should render with _align="top" 1`] = `
+<kol-popover>
+  <template shadowrootmode="open">
+    <div class="kol-popover__content" popover="auto">
+      <div class="kol-popover__arrow kol-popover__arrow--top"></div>
+      <slot></slot>
+    </div>
+  </template>
+</kol-popover>
+`;

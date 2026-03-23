@@ -9,9 +9,9 @@ exports[`kol-split-button should render with _label="Label" _disabled=true 1`] =
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _disabled="" _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -26,9 +26,9 @@ exports[`kol-split-button should render with _label="Label" _hideLabel=true 1`] 
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -43,9 +43,9 @@ exports[`kol-split-button should render with _label="Label" _icons="codicon codi
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -60,9 +60,9 @@ exports[`kol-split-button should render with _label="Label" _name="Name" 1`] = `
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -77,9 +77,9 @@ exports[`kol-split-button should render with _label="Label" _variant="danger" 1`
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -94,9 +94,9 @@ exports[`kol-split-button should render with _label="Label" _variant="ghost" 1`]
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -111,9 +111,9 @@ exports[`kol-split-button should render with _label="Label" _variant="normal" 1`
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -128,9 +128,9 @@ exports[`kol-split-button should render with _label="Label" _variant="primary" 1
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -145,9 +145,9 @@ exports[`kol-split-button should render with _label="Label" _variant="secondary"
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>
@@ -162,9 +162,9 @@ exports[`kol-split-button should render with _label="Label" 1`] = `
         <div class="kol-split-button__horizontal-line"></div>
         <kol-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" class="kol-split-button__secondary-button"></kol-button-wc>
       </div>
-      <kol-popover-wc _align="bottom">
+      <kol-popover _align="bottom">
         <slot></slot>
-      </kol-popover-wc>
+      </kol-popover>
     </div>
   </template>
 </kol-split-button>

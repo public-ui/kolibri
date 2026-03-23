@@ -10,34 +10,34 @@
 			opacity: 1;
 		}
 	}
-	.kol-popover {
+	:host {
 		position: absolute;
 		height: 0;
+	}
 
-		&__content {
-			opacity: 0;
-			background-color: #fff;
-			position: absolute;
-			min-width: max-content;
-			min-height: max-content;
-			margin: 0; // popover tags get a default margin from the browser, which interferes with our alignment
+	.kol-popover__content {
+		opacity: 0;
+		background-color: #fff;
+		position: absolute;
+		min-width: max-content;
+		min-height: max-content;
+		margin: 0; // popover tags get a default margin from the browser, which interferes with our alignment
 
-			&--visible {
-				animation: 0.3s ease-in forwards fadeInOpacity;
-			}
-
-			&--disappear {
-				animation: 0.3s ease-in backwards fadeInOpacity;
-			}
+		&--visible {
+			animation: 0.3s ease-in forwards fadeInOpacity;
 		}
 
-		&__arrow {
-			rotate: 0.125turn;
-			background-color: inherit;
-			position: absolute;
-			z-index: -1;
-			width: var(--font-size);
-			height: var(--font-size);
+		&--disappear {
+			animation: 0.3s ease-in backwards fadeInOpacity;
 		}
+	}
+
+	.kol-popover__arrow {
+		rotate: 0.125turn;
+		background-color: inherit;
+		position: absolute;
+		z-index: -1;
+		width: var(--font-size);
+		height: var(--font-size);
 	}
 }

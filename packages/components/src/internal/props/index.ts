@@ -1,3 +1,4 @@
+export * from './align';
 export * from './allow-markdown';
 export * from './alt';
 export * from './badge-text';
@@ -10,6 +11,7 @@ export * from './label';
 export * from './loading';
 export * from './max';
 export * from './name';
+export * from './popover-callbacks';
 export * from './quote';
 export * from './show';
 export * from './sizes';
