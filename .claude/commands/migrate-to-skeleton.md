@@ -189,6 +189,8 @@ export class MyController extends BaseController<MyApi> implements ControllerInt
 - Underscored public props (`_name`, `_label`)
 - Tests co-located next to `component.tsx`
 - No `types.ts` files, no barrel files
+- **ARIA IDs via `nonce()`**: Any `id` referenced by `aria-controls`, `aria-labelledby`, `aria-describedby` or `aria-owns` must be unique per instance — declare as `private readonly myId = \`prefix-${nonce()}\`` using `nonce()` from `utils/dev.utils`
+- **Kein `data-testid`**: Tests verwenden BEM-Klassen als Selektoren (`page.locator('.kol-component__element')`), niemals `data-testid`-Attribute im Komponenten-Markup
 
 ---
 
