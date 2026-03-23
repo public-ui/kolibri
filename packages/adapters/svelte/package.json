@@ -51,13 +51,13 @@
 		"@babel/types": "7.29.0",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.4",
-		"svelte": "5.54.0",
+		"svelte": "5.54.1",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"svelte": "^5.54.0"
+		"svelte": "^5.54.1"
 	},
 	"sideEffects": false,
 	"type": "module",

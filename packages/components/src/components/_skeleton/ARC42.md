@@ -198,6 +198,61 @@ Because callbacks are already arrow properties, both of these render patterns ar
 
 Both are functionally equivalent. Pattern A is more concise; Pattern B allows adding intermediate logic.
 
+#### ⚠️ Memory Leak Warning: Never use `.bind(this)` with `addEventListener`/`removeEventListener`
+
+Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks:
+
+❌ **Memory Leak — DO NOT DO THIS:**
+```tsx
+private handleToggle(event: Event) { /* ... */ }
+
+componentDidRender() {
+  this.element?.addEventListener('toggle', this.handleToggle.bind(this));  // NEW function instance
+}
+
+disconnectedCallback() {
+  this.element?.removeEventListener('toggle', this.handleToggle.bind(this));  // DIFFERENT function instance
+  // removeEventListener silently fails — listener is never removed, accumulates on every re-render
+}
+```
+
+✅ **Correct — Arrow Function Property (already bound):**
+```tsx
+private handleToggle = (event: Event) => { /* ... */ }  // Arrow property — this is bound here
+
+componentDidRender() {
+  this.element?.addEventListener('toggle', this.handleToggle);  // Same reference every time
+}
+
+disconnectedCallback() {
+  this.element?.removeEventListener('toggle', this.handleToggle);  // Properly removed
+}
+```
+
+✅ **Alternative — Ref Callback Pattern (Popover example):**
+Use a ref callback to clean up old listeners **before** adding new ones:
+
+```tsx
+private catchElement = (element?: HTMLElement): void => {
+  if (this.element) {
+    this.element.removeEventListener('toggle', this.handleToggle);  // Remove from old element
+  }
+  this.element = element;
+
+  if (this.element) {
+    this.element.addEventListener('toggle', this.handleToggle);  // Add to new element
+  }
+};
+```
+
+**Why this matters:**
+- `.bind(this)` creates a new function on each call — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match
+- When references don't match, `removeEventListener` silently fails
+- Listeners accumulate over time, slowing down event handling and creating garbage collection barriers
+- Real-world impact: PopoverButton had this bug and was fixed by converting methods to arrow properties
+
+**See:** `src/components/popover/component.tsx` (correct ref-callback pattern) for a reference implementation.
+
 ### Functional Component Layer
 
 - Is a pure renderer that receives props, callbacks, emitters and refs from the controller.
