@@ -75,7 +75,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
-	private handleBeforeToggle(event: Event) {
+	private handleBeforeToggle = (event: Event) => {
 		if ((event as ToggleEvent).newState === 'closed') {
 			this.justClosed = true;
 
@@ -91,7 +91,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 				this.refPopover.style.visibility = 'hidden';
 			}
 		}
-	}
+	};
 
 	private alignPopover() {
 		if (this.refPopover && this.refButton) {
@@ -103,7 +103,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
-	private handleToggle(event: Event) {
+	private handleToggle = (event: Event) => {
 		this.popoverOpen = (event as ToggleEvent).newState === 'open';
 
 		if (this.popoverOpen) {
@@ -116,7 +116,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 			this.cleanupAutoPositioning();
 			this.cleanupAutoPositioning = undefined;
 		}
-	}
+	};
 
 	private handleButtonClick() {
 		// If the popover was just closed by native behavior, do nothing (and let it stay closed).
@@ -126,13 +126,13 @@ export class KolPopoverButton implements PopoverButtonProps {
 	}
 
 	public componentDidRender() {
-		this.refPopover?.addEventListener('toggle', this.handleToggle.bind(this));
-		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		this.refPopover?.addEventListener('toggle', this.handleToggle);
+		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle);
 	}
 
 	public disconnectedCallback() {
-		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
-		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		this.refPopover?.removeEventListener('toggle', this.handleToggle);
+		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle);
 		this.cleanupAutoPositioning?.();
 	}
 
