@@ -1,3 +1,4 @@
+export * from './align';
 export * from './allow-markdown';
 export * from './alt';
 export * from './badge-text';

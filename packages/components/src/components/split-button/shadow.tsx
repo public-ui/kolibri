@@ -18,8 +18,9 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { PopoverFC } from '../../internal/functional-components/popover/component';
 import clsx from '../../utils/clsx';
 
 /**
@@ -124,9 +125,17 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_on={this.clickToggleHandler}
 					></KolButtonWcTag>
 				</div>
-				<KolPopoverWcTag _show={this.state._show} _on={{ onClose: this.handleOnClose }} _align="bottom">
+
+				<PopoverFC
+					align="bottom"
+					show={this.state._show}
+					visible={this.state._show}
+					refPopoverElement={() => {}}
+					refArrowElement={() => {}}
+					class="kol-split-button__popover"
+				>
 					<slot />
-				</KolPopoverWcTag>
+				</PopoverFC>
 			</div>
 		);
 	}

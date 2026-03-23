@@ -1,7 +1,7 @@
-import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
+import { PopoverFC } from '../../internal/functional-components/popover/component';
 import type {
 	AccessKeyPropType,
 	AriaDescriptionPropType,
@@ -21,7 +21,6 @@ import type {
 } from '../../schema';
 import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
-import { alignFloatingElements } from '../../utils/align-floating-elements';
 import clsx from '../../utils/clsx';
 
 /**
@@ -36,7 +35,8 @@ import clsx from '../../utils/clsx';
 export class KolPopoverButton implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
-	private cleanupAutoPositioning?: () => void;
+	private handleToggleBound = this.handleToggle.bind(this);
+	private handleBeforeToggleBound = this.handleBeforeToggle.bind(this);
 	private on: ButtonCallbacksPropType<StencilUnknown> = {
 		onClick: this.handleButtonClick.bind(this),
 	};
@@ -83,39 +83,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 				// Reset the flag after the event loop tick.
 				this.justClosed = false;
 			}, 10); // timeout of 0 should be sufficient but doesn't work in Safari Mobile (needs further investigation).
-		} else {
-			if (this.refPopover) {
-				/**
-				 * Avoid "flicker" by hiding the element until the position is set in the `toggle` event handler. `alignFloatingElements` is responsible for setting the visibility back to 'visible'.
-				 */
-				this.refPopover.style.visibility = 'hidden';
-			}
-		}
-	}
-
-	private alignPopover() {
-		if (this.refPopover && this.refButton) {
-			void alignFloatingElements({
-				align: this.state._popoverAlign,
-				floatingElement: this.refPopover,
-				referenceElement: this.refButton,
-			});
 		}
 	}
 
 	private handleToggle(event: Event) {
 		this.popoverOpen = (event as ToggleEvent).newState === 'open';
-
-		if (this.popoverOpen) {
-			if (this.refPopover && this.refButton) {
-				this.cleanupAutoPositioning = autoUpdate(this.refButton, this.refPopover, () => {
-					this.alignPopover();
-				});
-			}
-		} else if (this.cleanupAutoPositioning) {
-			this.cleanupAutoPositioning();
-			this.cleanupAutoPositioning = undefined;
-		}
 	}
 
 	private handleButtonClick() {
@@ -125,15 +97,22 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
+	private handleEscape = (event: KeyboardEvent) => {
+		if (event.key === 'Escape') {
+			this.refPopover?.hidePopover();
+		}
+	};
+
 	public componentDidRender() {
-		this.refPopover?.addEventListener('toggle', this.handleToggle.bind(this));
-		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
+		this.refPopover?.addEventListener('toggle', this.handleToggleBound);
+		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggleBound);
+		this.refPopover?.addEventListener('keydown', this.handleEscape);
 	}
 
 	public disconnectedCallback() {
-		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
-		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
-		this.cleanupAutoPositioning?.();
+		this.refPopover?.removeEventListener('toggle', this.handleToggleBound);
+		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggleBound);
+		this.refPopover?.removeEventListener('keydown', this.handleEscape);
 	}
 
 	public render(): JSX.Element {
@@ -174,9 +153,17 @@ export class KolPopoverButton implements PopoverButtonProps {
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>
 
-				<div ref={(element) => (this.refPopover = element)} data-testid="popover-content" popover="auto" id="popover" class="kol-popover-button__popover">
+				<PopoverFC
+					align={this.state._popoverAlign || 'bottom'}
+					show={this.popoverOpen}
+					refPopoverElement={(el) => (this.refPopover = el)}
+					refArrowElement={() => {}}
+					data-testid="popover-content"
+					id="popover"
+					class="kol-popover-button__popover"
+				>
 					<slot />
-				</div>
+				</PopoverFC>
 			</div>
 		);
 	}

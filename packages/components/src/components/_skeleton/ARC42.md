@@ -72,8 +72,21 @@ This modular layout is the backbone for the architectural patterns described in 
 - **Stencil** is used for authoring web components with **shadow: true** only (Shadow DOM enabled for style isolation).
 - Components without Shadow DOM (`shadow: false`) are implemented as **Functional Components** instead of web components to avoid style conflicts and reduce maintainability burden.
 - Components must compile to framework-agnostic Custom Elements.
-- Public API properties use an underscored naming convention (e.g. `_name`) to separate external inputs from internal state.
+- **Public API properties (Web Component Props/Attributes) use an underscored naming convention** (e.g. `_name`) to separate external inputs from internal state. This convention applies **only at the Web Component boundary** (Props in `@Prop()` decorators). Internally, controller state, render props, and functional component parameters do **not** use underscore prefixes — they use clear, self-describing names (`visible`, `count`, `label`). The underscore signals "this is a managed property exposed to HTML consumers," not "this is internal."
 - Documentation and code follow the `KoliBri` casing and repository conventions.
+
+### Naming Conventions Across Layers
+
+The underscore naming convention is **scoped to the Web Component public API boundary**. Here's how naming changes across layers:
+
+| Layer                                   | Example                             | Purpose                                                            |
+| --------------------------------------- | ----------------------------------- | ------------------------------------------------------------------ |
+| **Web Component (Public API)**          | `_name`, `_visible`, `_label`       | Signals managed properties exposed to HTML consumers via `@Prop()` |
+| **Controller (Internal State)**         | `name`, `visible`, `label`, `count` | Clear, self-describing state names — no underscore prefix needed   |
+| **Functional Component (Render Props)** | `visible`, `align`, `count`         | Parameters passed from controller — no underscore prefix           |
+| **Schema Helpers**                      | `nameProp`, `visibleProp`           | Prop definitions for validation and normalization                  |
+
+**Rule of thumb**: Use underscore (`_`) **only** where consumers interact with the component via HTML (Web Component `@Prop()` decorators). Everywhere else — controllers, state, derived values, render props — use natural, descriptive names.
 
 ## 3. Context and Scope
 
@@ -85,7 +98,7 @@ The skeleton lives inside `packages/components` and does not depend on runtime f
 - **Encapsulation**: Components maintain consistent appearance regardless of host environment
 - **Maintainability**: Clear boundaries prevent unintended style interactions
 
-Components that historically did not use Shadow DOM (`shadow: false`) are being migrated to **Functional Components** instead, which can be composed into other components without Shadow DOM overhead while maintaining clean architectural separation.
+**Shadow DOM is mandatory for all KoliBri Web Components.** Components with `shadow: false` (historically suffixed `-wc`) are considered legacy and will be fully replaced and removed. The migration target is the Skeleton Pattern: each such component is rewritten as a proper Shadow DOM Web Component paired with a Functional Component for internal composition. No new `shadow: false` components will be introduced. The `-wc` variants are not a supported architecture going forward.
 
 ```mermaid
 flowchart LR

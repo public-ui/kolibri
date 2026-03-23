@@ -6,16 +6,16 @@ Wenn Props über `PropsConfigShape` + `ApiFromConfig` in `api.tsx` definiert wer
 
 Das **Prop-Dreieck** besteht aus drei Teilen — nur einer davon ist type-erzwungen:
 
-| Teil | Type-erzwungen? | Was passiert bei Fehlen |
-|------|----------------|------------------------|
-| Felddeklaration `_name!: string` | **Ja** — via `ComponentProps<T>` in `WebComponentInterface` | compile error |
-| `@Prop()` Decorator | **Nein** | kein Attribut-Binding, silent runtime bug |
-| `@Watch('_name')` Decorator | **Nein** (`watchName()` Methode wird erzwungen, aber nicht der Decorator) | Stencil ruft Methode nie auf, silent runtime bug |
-| Forwarding in `componentWillLoad()` | **Nein** | Prop-Wert kommt nie im Controller an |
+| Teil                                | Type-erzwungen?                                                           | Was passiert bei Fehlen                          |
+| ----------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------ |
+| Felddeklaration `_name!: string`    | **Ja** — via `ComponentProps<T>` in `WebComponentInterface`               | compile error                                    |
+| `@Prop()` Decorator                 | **Nein**                                                                  | kein Attribut-Binding, silent runtime bug        |
+| `@Watch('_name')` Decorator         | **Nein** (`watchName()` Methode wird erzwungen, aber nicht der Decorator) | Stencil ruft Methode nie auf, silent runtime bug |
+| Forwarding in `componentWillLoad()` | **Nein**                                                                  | Prop-Wert kommt nie im Controller an             |
 
 ## Aktueller Stand
 
-`implements WebComponentInterface<SkeletonApi>` ist korrekt und schon vorhanden — es deckt alles ab, was TypeScript abdecken *kann*. Die Lücke ist Stencil-spezifisch: Stencil-Decorators sind reine Metadaten und für das TypeScript-Typsystem unsichtbar.
+`implements WebComponentInterface<SkeletonApi>` ist korrekt und schon vorhanden — es deckt alles ab, was TypeScript abdecken _kann_. Die Lücke ist Stencil-spezifisch: Stencil-Decorators sind reine Metadaten und für das TypeScript-Typsystem unsichtbar.
 
 ## Lösungsoptionen
 
