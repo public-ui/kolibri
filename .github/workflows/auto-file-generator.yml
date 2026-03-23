@@ -15,7 +15,7 @@ jobs:
           persist-credentials: false
           ref: 'release/1.7'
 
-      # - uses: pnpm/action-setup@v4
+      # - uses: pnpm/action-setup@v5
       #   with:
       #     run_install: false
       #     version: 10
@@ -30,7 +30,7 @@ jobs:
         with:
           # cache: pnpm
           node-version: 20
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         name: Install pnpm
         id: pnpm-install
         with:
