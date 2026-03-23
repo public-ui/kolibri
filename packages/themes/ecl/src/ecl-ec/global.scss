@@ -72,11 +72,13 @@
 		--ecl-color-accent-80: #bfb2ff;
 		--ecl-color-accent-60: #d1ccff;
 		--ecl-color-accent-40: #fafaff;
+
 		--ecl-font-family-default: arial, sans-serif;
-		--ecl--font-size: #{to-rem(16)};
-		--ecl--font-weight: 400;
-		--ecl--font-weight-bold: 600;
+		--ecl-font-size: #{to-rem(16)};
+		--ecl-font-weight: 400;
+		--ecl-font-weight-bold: 600;
 		--line-height-regular: 1.5;
+
 		--ecl-spacing-2xs: #{to-rem(4)};
 		--ecl-spacing-xs: #{to-rem(8)};
 		--ecl-spacing-s: #{to-rem(12)};
@@ -122,8 +124,11 @@
 	}
 
 	:host {
-		font-family: var(--font-family);
-		font-size: var(--font-size);
+		font-family: var(--ecl-font-family-default);
+		font-weight: var(--ecl-font-weight);
+		color: vaar(--ecl-color-dark);
+		font-size: var(--ecl-font-size-m);
+		line-height: var(--ecl-line-height-m);
 	}
 
 	a,

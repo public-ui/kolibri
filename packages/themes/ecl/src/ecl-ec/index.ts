@@ -11,6 +11,7 @@ import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
+import iconCss from './components/icon.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -58,6 +59,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
+	'KOL-ICON': iconCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-DATE': inputDateCss,
