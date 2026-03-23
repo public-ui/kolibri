@@ -38,7 +38,7 @@ jobs:
         with:
           # cache: pnpm
           node-version: 22
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         id: pnpm-install
         with:
           version: 10
