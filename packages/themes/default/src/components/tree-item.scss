@@ -14,9 +14,9 @@
 
 			.kol-link {
 				color: var(--color-text);
-				text-align: left;
 				padding-right: to-rem(8);
 				padding-left: max(calc(var(--indentation) * var(--level)));
+				text-align: left;
 			}
 
 			&:hover,
