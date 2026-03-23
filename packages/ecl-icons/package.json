@@ -1,0 +1,29 @@
+{
+	"name": "@public-ui/ecl-icons",
+	"private": true,
+	"type": "module",
+	"devDependencies": {
+		"oslllo-svg-fixer": "6.0.1",
+		"rimraf": "6.1.3",
+		"serve": "14.2.6",
+		"svgtofont": "6.5.1"
+	},
+	"scripts": {
+		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
+		"delete-unused": "rimraf ../themes/ecl/assets/ecl-icons/react && rimraf ../themes/ecl/assets/ecl-icons/vue && rimraf ../themes/ecl/assets/ecl-icons/ecl-icons.symbol.svg && rimraf ../themes/ecl/assets/ecl-icons/style.less && rimraf ../themes/ecl/assets/ecl-icons/style.module.less && rimraf ../themes/ecl/assets/ecl-icons/style.scss && rimraf ../themes/ecl/assets/ecl-icons/style.styl",
+		"build": "pnpm svg-fixer && svgtofont --sources ./svg-fixed --output ../themes/ecl/assets/ecl-icons/ && pnpm delete-unused",
+		"prebuild": "rimraf ../themes/ecl/assets/ecl-icons && rimraf ./svg-fixed && mkdir svg-fixed",
+		"start": "serve"
+	},
+	"svgtofont": {
+		"classNamePrefix": "ecl-icons",
+		"css": {
+			"fileName": "style"
+		},
+		"styleTemplates": "./styles",
+		"fontName": "ecl-icons",
+		"svgicons2svgfont": {
+			"fontHeight": 10000
+		}
+	}
+}
