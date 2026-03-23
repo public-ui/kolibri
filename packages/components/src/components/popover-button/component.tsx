@@ -47,6 +47,14 @@ export class KolPopoverButton implements PopoverButtonProps {
 		this.popoverElement = element;
 		this.popoverCtrl.setPopoverElementRef(element);
 	};
+
+	private setButtonElementRef = (element?: HTMLKolButtonWcElement): void => {
+		this.refButton = element;
+		if (element) {
+			this.popoverCtrl.setTriggerElement(element);
+		}
+	};
+
 	private on: ButtonCallbacksPropType<StencilUnknown> = {
 		onClick: () => {
 			this.popoverCtrl.setShow(!this.popoverOpen);
@@ -119,7 +127,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_type={this._type}
 					_value={this._value}
 					_variant={this._variant}
-					ref={(element) => (this.refButton = element)}
+					ref={this.setButtonElementRef}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>
@@ -234,6 +242,9 @@ export class KolPopoverButton implements PopoverButtonProps {
 	@Watch('_popoverAlign')
 	public validatePopoverAlign(value?: PopoverAlignPropType): void {
 		validatePopoverAlign(this, value);
+		if (value) {
+			this.popoverCtrl.setAlign(value);
+		}
 	}
 
 	public componentWillLoad() {
@@ -246,6 +257,10 @@ export class KolPopoverButton implements PopoverButtonProps {
 		// Register the toggle listener once the popover element is available.
 		if (this.popoverElement) {
 			this.popoverElement.addEventListener('toggle', this.handleToggle);
+		}
+		// Ensure align value is synced with controller
+		if (this.state._popoverAlign) {
+			this.popoverCtrl.setAlign(this.state._popoverAlign);
 		}
 	}
 
