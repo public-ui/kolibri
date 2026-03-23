@@ -83,7 +83,7 @@
 		"eslint": "9.39.4",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-json": "3.1.0",
-		"knip": "5.87.0",
+		"knip": "5.88.1",
 		"nodemon": "3.1.14",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
