@@ -31,23 +31,23 @@ test.describe('kol-table-settings', () => {
 
 	test.describe('Basic Settings Popover Tests', () => {
 		test('it opens the settings popover when clicking the settings button', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
-			const popover = page.getByTestId('popover-content');
+			const popover = page.locator('.kol-table-settings__content');
 			await expect(popover).toBeVisible();
 		});
 
 		test('it closes the popover when clicking the cancel button', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
-			const cancelButton = page.getByTestId('table-settings-cancel');
+			const cancelButton = page.locator('.kol-table-settings__actions').locator('button').first();
 			await cancelButton.click();
-			const popover = page.getByTestId('popover-content');
+			const popover = page.locator('.kol-table-settings__content');
 			await expect(popover).not.toBeVisible();
 		});
 
 		test('it persists settings after closing and reopening the popover', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
 			// Hide the name column
@@ -55,7 +55,7 @@ test.describe('kol-table-settings', () => {
 			await nameCheckbox.click();
 
 			// Apply changes
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			// Reopen settings
@@ -67,7 +67,7 @@ test.describe('kol-table-settings', () => {
 
 		test('it emits an DOM event when settings change', async ({ page }) => {
 			const tableStateless = page.locator('kol-table-stateless');
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
 			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
@@ -79,7 +79,7 @@ test.describe('kol-table-settings', () => {
 			});
 
 			// Apply changes
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			await expect(eventPromise).resolves.toEqual([
@@ -94,21 +94,21 @@ test.describe('kol-table-settings', () => {
 
 	test.describe('Column Visibility Management', () => {
 		test('it lists all columns in the settings', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			const columnLabels = page.locator('.kol-table-settings__column > span');
+			const columnLabels = page.locator('.kol-table-settings__column-label');
 			await expect(columnLabels).toHaveText(['ID', 'Name', 'Age']);
 		});
 
 		test('it toggles visibility of individual columns', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
 			const nameCheckbox = page.getByRole('checkbox', { name: 'Name' });
 			await nameCheckbox.click();
 
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			// Verify name column is hidden in the table
@@ -117,7 +117,7 @@ test.describe('kol-table-settings', () => {
 		});
 
 		test('it shows error message when all columns are hidden', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
 			// Hide all columns
@@ -126,7 +126,7 @@ test.describe('kol-table-settings', () => {
 				await checkbox.click();
 			}
 
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			const errorMessage = page.locator('kol-table-settings-wc kol-alert-wc');
@@ -134,7 +134,7 @@ test.describe('kol-table-settings', () => {
 		});
 
 		test('it removes error message when at least one column is visible', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
 			// Hide all columns
@@ -143,7 +143,7 @@ test.describe('kol-table-settings', () => {
 				await checkbox.click();
 			}
 
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			// Show one column
@@ -157,13 +157,13 @@ test.describe('kol-table-settings', () => {
 
 	test.describe('Column Width Management', () => {
 		test('it accepts valid width values', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
 			const idWidthInput = page.getByRole('spinbutton', { name: 'ID' });
 			await idWidthInput.fill('50');
 
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			// Verify width is applied
@@ -174,30 +174,31 @@ test.describe('kol-table-settings', () => {
 
 	test.describe('Column Order Management', () => {
 		test('it disables up button for first column', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			const firstUpButton = page.getByTestId('table-settings-move-up').first().locator('button');
+			const firstUpButton = page.locator('[data-testid="table-settings-move-up"]').first().locator('button');
 			await expect(firstUpButton).toBeDisabled();
 		});
 
 		test('it disables down button for last column', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			const lastDownButton = page.getByTestId('table-settings-move-down').last().locator('button');
+			const lastDownButton = page.locator('[data-testid="table-settings-move-down"]').last().locator('button');
 			await expect(lastDownButton).toBeDisabled();
 		});
 
 		test('it moves a column up', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			// Move name column up
-			const nameUpButton = page.getByTestId('table-settings-move-up').filter({ hasText: 'Name' });
+			// Move name column up - find the button in the Name column row
+			const nameRow = page.locator('.kol-table-settings__column').filter({ hasText: 'Name' });
+			const nameUpButton = nameRow.locator('[data-testid="table-settings-move-up"]').locator('button');
 			await nameUpButton.click();
 
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			// Verify column order in table
@@ -207,14 +208,15 @@ test.describe('kol-table-settings', () => {
 		});
 
 		test('it moves a column down', async ({ page }) => {
-			const settingsButton = page.getByTestId('popover-button').locator('button');
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			// Move ID column down
-			const idDownButton = page.getByTestId('table-settings-move-down').filter({ hasText: 'ID' });
+			// Move ID column down - find the button in the ID column row
+			const idRow = page.locator('.kol-table-settings__column').filter({ hasText: 'ID' });
+			const idDownButton = idRow.locator('[data-testid="table-settings-move-down"]').locator('button');
 			await idDownButton.click();
 
-			const applyButton = page.getByTestId('table-settings-apply');
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
 			// Verify column order in table

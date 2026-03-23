@@ -31,7 +31,6 @@ export * from './link-button';
 export * from './modal';
 export * from './nav';
 export * from './pagination';
-export * from './popover';
 export * from './popover-button';
 export * from './progress';
 export * from './quote';

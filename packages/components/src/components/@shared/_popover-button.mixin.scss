@@ -1,5 +1,15 @@
 @use 'mixins' as *;
 
+@keyframes kol-popover-fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
 @mixin kol-popover-button-styles {
 	.kol-popover-button {
 		&__popover {
@@ -10,6 +20,12 @@
 
 		&--inline &__button {
 			display: inline;
+		}
+	}
+
+	.kol-popover {
+		&--visible {
+			animation: 0.3s ease-in forwards kol-popover-fade-in;
 		}
 	}
 }

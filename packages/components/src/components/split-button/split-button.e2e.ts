@@ -7,7 +7,7 @@ test.describe('kol-split-button', () => {
 		const splitButton = page.locator('kol-split-button ');
 
 		const secondaryButton = splitButton.locator('.kol-split-button__secondary-button');
-		const popover = splitButton.locator('kol-popover-wc .kol-popover__content');
+		const popover = splitButton.locator('.kol-popover');
 
 		await expect(popover).not.toBeVisible();
 		await secondaryButton.click();
