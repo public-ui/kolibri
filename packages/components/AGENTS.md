@@ -40,6 +40,8 @@ Use the `condition && <Element />` pattern to render JSX elements only when a co
 
 Avoid using `hidden={condition}` unless the element should always be present in the DOM but visually hidden.
 
+For detailed guidance on event handler patterns and memory leak prevention, see [`src/components/_skeleton/ARC42.md`](../components/_skeleton/ARC42.md#event-handler-policy).
+
 ### Language texts
 
 All UI texts must be stored in `src/locales/en.ts` and `src/locales/de.ts`.
@@ -79,21 +81,6 @@ The `align` prop controls the orientation of the component itself. When aligning
 
 ### Architecture and Component Structure
 
-For detailed architectural guidance when creating new components, consult the comprehensive blueprint:
-
-[`src/components/_skeleton/ARC42.md`](src/components/_skeleton/ARC42.md)
-
-The blueprint demonstrates the recommended layered approach:
-
-- **Web component layer** – custom element definition, public API with underscored props (`_name`), lifecycle management via `@Component`, `@Prop`, `@Watch` decorators.
-- **Controller layer** – encapsulates state transitions, validation orchestration, and exposes render props via `getRenderProp(key)`.
-- **Functional component layer** – stateless renderer that works exclusively with normalized, validated props.
-- **Schema helpers layer** – co-locates prop types, normalization and validation logic shared across components.
-
-When implementing a new component:
-
-1. Copy the `_skeleton` directory as your starting template.
-2. Replace domain-specific pieces (component name, props, controller logic) while preserving the architectural structure.
-3. Ensure controllers are initialized in `componentWillLoad()` with the current prop snapshot.
-4. Use watchers only on public (underscored) props to normalize and forward changes to the controller.
-5. Delegate rendering to the controller's `getRenderProp(key)` method for type-safe, single-value prop access.
+> **The [`src/components/_skeleton/ARC42.md`](src/components/_skeleton/ARC42.md) is the authoritative architectural specification.**
+> All layer responsibilities, type contracts, coding patterns, implementation steps and design rationale are documented there.
+> Consult it before creating new components or refactoring existing ones.
