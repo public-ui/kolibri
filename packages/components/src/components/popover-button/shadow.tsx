@@ -20,7 +20,11 @@ import type {
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
 
 /**
- * @slot - The popover content.
+ * A button that toggles the visibility of a popover overlay containing arbitrary content.
+ * The popover uses the native HTML Popover API for lightweight, non-modal overlays.
+ *
+ * @slot - The popover content (displayed when the button is clicked).
+ * @slot expert - Custom label content for the button (when `_label` is `false`).
  */
 @Component({
 	tag: 'kol-popover-button',

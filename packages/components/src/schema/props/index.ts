@@ -66,7 +66,6 @@ export * from './pagination-position';
 export * from './pattern';
 export * from './placeholder';
 export * from './popover-align';
-export * from './popover-callbacks';
 export * from './quote';
 export * from './read-only';
 export * from './required';
