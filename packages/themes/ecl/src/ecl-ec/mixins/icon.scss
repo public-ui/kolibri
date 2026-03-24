@@ -14,18 +14,21 @@
 		}
 		&.kolicon-chevron-down {
 			font-family: ecl-icons;
+			transform: rotate(180deg);
 			&::before {
 				content: '\ea11';
 			}
 		}
 		&.kolicon-chevron-left {
 			font-family: ecl-icons;
+			transform: rotate(-90deg);
 			&::before {
 				content: '\ea11';
 			}
 		}
 		&.kolicon-chevron-right {
 			font-family: ecl-icons;
+			transform: rotate(90deg);
 			&::before {
 				content: '\ea11';
 			}
@@ -38,104 +41,134 @@
 		}
 
 		&.kolicon-eye-closed {
-			font-family: ecl-icons;
-			&::before {
-				content: '\ea11';
-			}
+			// no equivalent
 		}
 		&.kolicon-eye {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea1f';
 			}
 		}
 		&.kolicon-house {
-			font-family: ecl-icons;
-			&::before {
-				content: '\ea11';
-			}
+			// no equivalent
 		}
+
 		&.kolicon-link-external {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea1e';
 			}
 		}
-		&.kolicon-version {
+
+		&.kolicon-link {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea08';
 			}
+		}
+
+		&.kolicon-plus {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea46';
+			}
+		}
+
+		&.kolicon-minus {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea38';
+			}
+		}
+
+		&.kolicon-version {
+			// no equivalent
 		}
 
 		&.kolicon-alert-warning {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea5b';
 			}
 		}
 		&.kolicon-alert-error {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea1a';
 			}
 		}
 		&.kolicon-alert-success {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea09';
 			}
 		}
 		&.kolicon-alert-info {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea5b';
+				content: '\ea2d';
 			}
 		}
 
 		&.kolicon-check {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea0a';
 			}
 		}
 
 		&.kolicon-cross {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea0f';
 			}
 		}
 		&.kolicon-chevron-double-left {
-			font-family: ecl-icons;
-			&::before {
-				content: '\ea11';
-			}
+			// no equivalent
 		}
 		&.kolicon-chevron-double-right {
-			font-family: ecl-icons;
-			&::before {
-				content: '\ea11';
-			}
+			// no equivalent
 		}
 
 		&.kolicon-cogwheel {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea4c';
 			}
 		}
 		&.kolicon-settings {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea4c';
+			}
+		}
+
+		&.kolicon-sort-asc {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea50';
+			}
+		}
+
+		&.kolicon-sort-desc {
+			font-family: ecl-icons;
+			transform: rotate(180deg);
+			&::before {
+				content: '\ea50';
+			}
+		}
+
+		&.kolicon-sort-neutral {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea51';
 			}
 		}
 
 		&.kolicon-up {
 			font-family: ecl-icons;
 			&::before {
-				content: '\ea11';
+				content: '\ea58';
 			}
 		}
 	}
