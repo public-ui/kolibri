@@ -12,7 +12,6 @@ import type {
 	CustomClassPropType,
 	DisabledPropType,
 	DownloadPropType,
-	FocusableElement,
 	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
@@ -53,6 +52,7 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
+import { propagateFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
@@ -69,7 +69,7 @@ import clsx from '../../utils/clsx';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements InternalLinkAPI, FocusableElement {
+export class KolLinkWc implements InternalLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	private anchorRef?: HTMLAnchorElement;
@@ -90,14 +90,8 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return await new Promise<void>((resolve) => {
-			const ref = this.anchorRef!;
-			requestAnimationFrame(() => {
-				ref?.focus();
-				resolve();
-			});
-		});
+	public async focus(host: HTMLElement): Promise<void> {
+		await propagateFocus(host, this.anchorRef);
 	}
 
 	private readonly onClick = (event: Event) => {

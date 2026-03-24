@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 
 import type {
 	FocusableElement,
@@ -31,6 +31,7 @@ import { KolSelectWcTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolSelect implements SelectProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolSelectElement;
 	private selectWcRef?: HTMLKolSelectWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolSelectWcElement) => {
@@ -49,8 +50,8 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.selectWcRef?.focus());
+	public async focus(): Promise<void> {
+		await this.selectWcRef?.focus(this.host as HTMLElement);
 	}
 
 	public render(): JSX.Element {

@@ -36,6 +36,7 @@ import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { nonce } from '../../utils/dev.utils';
+import { propagateFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputPasswordController } from './controller';
 
@@ -76,12 +77,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		await propagateFocus(this.host, this.inputRef);
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {

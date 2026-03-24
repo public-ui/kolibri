@@ -27,6 +27,7 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
+import { propagateFocus } from '../../utils/element-focus';
 import { InputCheckboxController } from './controller';
 
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
@@ -75,12 +76,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		await propagateFocus(this.host, this.inputRef);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {

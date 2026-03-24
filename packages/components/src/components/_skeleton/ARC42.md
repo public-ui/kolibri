@@ -203,6 +203,7 @@ Both are functionally equivalent. Pattern A is more concise; Pattern B allows ad
 Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks:
 
 ❌ **Memory Leak — DO NOT DO THIS:**
+
 ```tsx
 private handleToggle(event: Event) { /* ... */ }
 
@@ -217,6 +218,7 @@ disconnectedCallback() {
 ```
 
 ✅ **Correct — Arrow Function Property (already bound):**
+
 ```tsx
 private handleToggle = (event: Event) => { /* ... */ }  // Arrow property — this is bound here
 
@@ -246,6 +248,7 @@ private catchElement = (element?: HTMLElement): void => {
 ```
 
 **Why this matters:**
+
 - `.bind(this)` creates a new function on each call — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match
 - When references don't match, `removeEventListener` silently fails
 - Listeners accumulate over time, slowing down event handling and creating garbage collection barriers

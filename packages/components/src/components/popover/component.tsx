@@ -16,7 +16,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	tag: 'kol-popover-wc',
 	shadow: false,
 })
-export class KolPopover implements PopoverAPI {
+export class KolPopoverWc implements PopoverAPI {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;

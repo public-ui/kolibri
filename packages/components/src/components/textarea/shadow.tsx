@@ -34,6 +34,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { propagateFocus } from '../../utils/element-focus';
 import { TextareaController } from './controller';
 
 /**
@@ -83,12 +84,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.textareaRef?.focus();
-				resolve();
-			});
-		});
+		await propagateFocus(this.host, this.textareaRef);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {

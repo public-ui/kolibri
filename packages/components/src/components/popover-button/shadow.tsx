@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -7,6 +7,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
@@ -28,7 +29,8 @@ import type { PopoverButtonProps } from '../../schema/components/popover-button'
 	},
 	shadow: true,
 })
-export class KolPopoverButton implements PopoverButtonProps {
+export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
+	@Element() private readonly host!: HTMLKolPopoverButtonElement;
 	private ref?: HTMLKolPopoverButtonWcElement;
 
 	/**
@@ -57,8 +59,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.ref?.focus());
+	public async focus(): Promise<void> {
+		await this.ref?.focus(this.host);
 	}
 
 	public render(): JSX.Element {

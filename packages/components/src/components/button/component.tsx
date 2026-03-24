@@ -12,7 +12,6 @@ import type {
 	ButtonTypePropType,
 	CustomClassPropType,
 	DisabledPropType,
-	FocusableElement,
 	HideLabelPropType,
 	IconsPropType,
 	IdPropType,
@@ -56,6 +55,7 @@ import { SpanFC } from '../../internal/functional-components/span/component';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
+import { propagateFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -67,7 +67,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI, FocusableElement {
+export class KolButtonWc implements ButtonAPI {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 	private tooltipRef?: HTMLKolTooltipWcElement;
@@ -76,13 +76,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.buttonRef?.focus();
-				resolve();
-			});
-		});
+	public async focus(host: HTMLElement): Promise<void> {
+		await propagateFocus(host, this.buttonRef);
 	}
 
 	private readonly hideTooltip = () => {
@@ -118,14 +113,14 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		}
 
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
+			dispatchDomEvent(this.host as HTMLElement, KolEvent.click, this.state._value);
 		}
 	};
 
 	private readonly onMouseDown = (event: MouseEvent) => {
 		this.state?._on?.onMouseDown?.(event);
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.mousedown);
+			dispatchDomEvent(this.host as HTMLElement, KolEvent.mousedown);
 		}
 	};
 
@@ -320,7 +315,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	};
 
 	public constructor() {
-		this.controller = new AssociatedInputController(this, 'button', this.host);
+		this.controller = new AssociatedInputController(this, 'button', this.host as HTMLElement);
 	}
 
 	@Watch('_accessKey')

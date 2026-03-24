@@ -1,6 +1,6 @@
 import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -33,7 +33,9 @@ import clsx from '../../utils/clsx';
 	shadow: false,
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
-export class KolPopoverButton implements PopoverButtonProps {
+export class KolPopoverButtonWc implements PopoverButtonProps {
+	@Element() host!: HTMLElement;
+
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
 	private cleanupAutoPositioning?: () => void;
@@ -70,8 +72,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.refButton?.focus());
+	public async focus(host: HTMLElement): Promise<void> {
+		await this.refButton?.focus(host);
 	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */

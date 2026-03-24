@@ -31,6 +31,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
+import { propagateFocus } from '../../utils/element-focus';
 import { InputFileController } from './controller';
 
 /**
@@ -70,12 +71,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		await propagateFocus(this.host, this.inputRef);
 	}
 
 	/**

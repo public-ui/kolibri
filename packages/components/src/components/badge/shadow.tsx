@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
@@ -22,6 +22,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	shadow: true,
 })
 export class KolBadge implements BadgeAPI, FocusableElement {
+	@Element() private readonly host!: HTMLKolBadgeElement;
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -56,7 +57,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return Promise.resolve(this.smartButtonRef?.focus());
+		return this.smartButtonRef?.focus(this.host);
 	}
 
 	public render(): JSX.Element {

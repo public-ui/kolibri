@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -29,6 +29,7 @@ import type {
 	shadow: true,
 })
 export class KolLink implements LinkProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolLinkElement;
 	private linkWcRef?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
@@ -39,8 +40,8 @@ export class KolLink implements LinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.linkWcRef?.focus());
+	public async focus(): Promise<void> {
+		await this.linkWcRef?.focus(this.host as HTMLElement);
 	}
 
 	public render(): JSX.Element {

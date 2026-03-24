@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State } from '@stencil/core';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -36,6 +36,7 @@ import clsx from '../../utils/clsx';
 	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
+	@Element() private readonly host?: HTMLKolSplitButtonElement;
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly catchPrimaryRef = (ref?: HTMLKolButtonWcElement) => {
@@ -55,8 +56,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.primaryButtonWcRef?.focus());
+	public async focus(): Promise<void> {
+		await this.primaryButtonWcRef?.focus(this.host as HTMLElement);
 	}
 
 	private readonly clickButtonHandler = {

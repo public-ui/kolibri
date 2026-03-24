@@ -61,7 +61,7 @@ export class KolForm implements FormAPI {
 
 	private readonly setBlockElement = (el?: HTMLElement) => (this.errorListBlock = el);
 
-	private readonly setFirstLinkElement = (el?: HTMLElement) => (this.errorListFirstLink = el);
+	private readonly setFirstLinkElement = (el?: HTMLKolLinkWcElement) => (this.errorListFirstLink = el as HTMLElement);
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (

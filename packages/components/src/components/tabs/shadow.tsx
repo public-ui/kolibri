@@ -1,8 +1,9 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
+	FocusableElement,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -44,11 +45,12 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs implements TabsAPI {
+export class KolTabs implements TabsAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
 	private currentFocusIndex: number | undefined;
+	private currentTabButtonRef?: HTMLKolButtonWcElement;
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset + step;
@@ -155,6 +157,20 @@ export class KolTabs implements TabsAPI {
 		onMouseDown: this.onMouseDown,
 	};
 
+	/**
+	 * Sets focus on the current tab button.
+	 */
+	@Method()
+	public async focus(): Promise<void> {
+		await this.currentTabButtonRef?.focus(this.host as HTMLElement);
+	}
+
+	private readonly catchTabButtonRef = (ref?: HTMLKolButtonWcElement) => {
+		if (ref) {
+			this.currentTabButtonRef = ref;
+		}
+	};
+
 	private renderButtonGroup() {
 		return (
 			// Rule is disabled, because KolButtonWc is focusable.
@@ -162,6 +178,7 @@ export class KolTabs implements TabsAPI {
 			<div aria-label={this.state._label} class="kol-tabs__button-group" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
+						ref={this.state._selected === index ? this.catchTabButtonRef : undefined}
 						_disabled={button._disabled}
 						_icons={button._icons}
 						_hideLabel={button._hideLabel}
