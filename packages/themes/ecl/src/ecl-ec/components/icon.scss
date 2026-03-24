@@ -1,6 +1,6 @@
 @use '../mixins/icon' as *;
 
-@import url('./assets/ecl-icons/style.css');
+@use '../../../assets/ecl-icons/style.css';
 
 @layer kol-theme-component {
 	@include icons();
