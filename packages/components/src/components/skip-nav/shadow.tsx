@@ -43,7 +43,9 @@ export class KolSkipNav implements SkipNavAPI {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		await this.firstLinkRef?.focus(this.host as HTMLElement);
+		if (this.host) {
+			await this.firstLinkRef?.focus(this.host);
+		}
 	}
 
 	/**

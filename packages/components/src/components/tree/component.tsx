@@ -13,7 +13,7 @@ import { validateLabel } from '../../schema';
 	shadow: false,
 })
 export class KolTreeWc implements TreeAPI {
-	@Element() host!: HTMLElement;
+	@Element() private readonly host?: HTMLKolTreeWcElement;
 
 	@State() public state: TreeStates = {
 		_label: '',
@@ -74,7 +74,7 @@ export class KolTreeWc implements TreeAPI {
 	}
 
 	private getTopLevelTreeItems(): HTMLKolTreeItemElement[] {
-		return (this.host.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem);
+		return (this.host?.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem);
 	}
 
 	private handleTreeChange(): void {
@@ -212,7 +212,7 @@ export class KolTreeWc implements TreeAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	private async ensureActiveItemVisibility() {
 		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
-			const rootNodes = (this.host.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem) ?? [];
+			const rootNodes = (this.host?.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem) ?? [];
 			for (const rootNode of rootNodes) {
 				if (rootNode._active) {
 					return rootNode;

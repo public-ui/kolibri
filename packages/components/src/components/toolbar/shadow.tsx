@@ -16,7 +16,7 @@ import { validateOrientation } from '../../schema/props/orientation';
 	shadow: true,
 })
 export class KolToolbar implements ToolbarAPI {
-	@Element() host!: HTMLElement;
+	@Element() private readonly host?: HTMLElement;
 
 	@State() public state: ToolbarStates = {
 		_label: '',
@@ -135,7 +135,9 @@ export class KolToolbar implements ToolbarAPI {
 
 		this.currentIndex = nextIndex;
 		const item = this.getCurrentToolbarItem(nextIndex);
-		void item?.focus(item as HTMLElement);
+		if (this.host) {
+			void item?.focus(this.host);
+		}
 	}
 
 	/**

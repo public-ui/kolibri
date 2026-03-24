@@ -22,7 +22,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	shadow: true,
 })
 export class KolBadge implements BadgeAPI, FocusableElement {
-	@Element() private readonly host!: HTMLKolBadgeElement;
+	@Element() private readonly host?: HTMLKolBadgeElement;
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -57,7 +57,9 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return this.smartButtonRef?.focus(this.host);
+		if (this.host) {
+			return this.smartButtonRef?.focus(this.host);
+		}
 	}
 
 	public render(): JSX.Element {

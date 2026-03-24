@@ -34,7 +34,7 @@ import type { PopoverButtonProps } from '../../schema/components/popover-button'
 	shadow: true,
 })
 export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
-	@Element() private readonly host!: HTMLKolPopoverButtonElement;
+	@Element() private readonly host?: HTMLKolPopoverButtonElement;
 	private ref?: HTMLKolPopoverButtonWcElement;
 
 	/**
@@ -64,7 +64,9 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		await this.ref?.focus(this.host);
+		if (this.host) {
+			await this.ref?.focus(this.host);
+		}
 	}
 
 	public render(): JSX.Element {

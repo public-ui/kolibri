@@ -162,7 +162,9 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		await this.currentTabButtonRef?.focus(this.host as HTMLElement);
+		if (this.host) {
+			await this.currentTabButtonRef?.focus(this.host);
+		}
 	}
 
 	private readonly catchTabButtonRef = (ref?: HTMLKolButtonWcElement) => {
@@ -220,7 +222,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 		return (
 			<div
 				ref={(el) => {
-					this.tabPanelsElement = el as HTMLElement;
+					this.tabPanelsElement = el;
 				}}
 				class={clsx('kol-tabs', `kol-tabs--align-${this.state._align}`)}
 			>

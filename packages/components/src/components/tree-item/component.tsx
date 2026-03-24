@@ -15,11 +15,12 @@ import { nonce } from '../../utils/dev.utils';
 	shadow: false,
 })
 export class KolTreeItemWc implements TreeItemAPI {
+	@Element() private readonly host?: HTMLKolTreeItemWcElement;
+
 	private linkElement?: HTMLKolLinkWcElement;
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
-	@Element() host!: HTMLElement;
 
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
@@ -127,7 +128,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private determineTreeItemDepth() {
 		let level = 0;
-		let traverseItem: HTMLElement | null = (this.host.parentNode as unknown as ShadowRoot).host.parentNode as HTMLElement;
+		let traverseItem: HTMLElement | null = (this.host?.parentNode as unknown as ShadowRoot)?.host.parentNode as HTMLElement;
 		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== KolTreeTag && traverseItem !== document.body) {
 			traverseItem = traverseItem.parentElement;
 			level += 1;
@@ -142,7 +143,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private checkForChildren() {
 		this.state = {
 			...this.state,
-			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements?.().length),
+			_hasChildren: Boolean(this.host?.querySelector('slot')?.assignedElements?.().length),
 		};
 	}
 
@@ -150,12 +151,16 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 * Focuses the link element.
 	 */
 	@Method() async focus() {
-		return Promise.resolve(this.linkElement?.focus(this.linkElement as HTMLElement));
+		if (this.host) {
+			return Promise.resolve(this.linkElement?.focus(this.host));
+		}
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.linkElement?.focus(this.linkElement as HTMLElement);
+		if (this.host) {
+			await this.linkElement?.focus(this.host);
+		}
 		await this.expand();
 	}
 
@@ -175,7 +180,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private async handleCollapseClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.linkElement?.focus(this.linkElement as HTMLElement);
+		if (this.host) {
+			await this.linkElement?.focus(this.host);
+		}
 		await this.collapse();
 	}
 

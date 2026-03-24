@@ -1,6 +1,6 @@
 import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -34,8 +34,6 @@ import clsx from '../../utils/clsx';
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
 export class KolPopoverButtonWc implements PopoverButtonProps {
-	@Element() host!: HTMLElement;
-
 	private refButton?: HTMLKolButtonWcElement;
 	private refPopover?: HTMLDivElement;
 	private cleanupAutoPositioning?: () => void;

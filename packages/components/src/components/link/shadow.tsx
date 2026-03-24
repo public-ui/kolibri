@@ -41,7 +41,9 @@ export class KolLink implements LinkProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		await this.linkWcRef?.focus(this.host as HTMLElement);
+		if (this.host) {
+			await this.linkWcRef?.focus(this.host);
+		}
 	}
 
 	public render(): JSX.Element {
