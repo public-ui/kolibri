@@ -101,7 +101,7 @@
 	.kol-alert__heading {
 		.kol-alert--variant-msg & {
 			color: var(--alert-accent-color);
-			padding-top: calc(--var-spacing / 2);
+			padding-top: calc(var(--spacing) / 2);
 		}
 
 		.kol-alert--variant-card & {
