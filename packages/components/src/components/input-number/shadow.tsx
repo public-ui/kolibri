@@ -33,6 +33,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
 
@@ -70,12 +71,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		await delegateFocus(this.host, this.inputRef);
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {
