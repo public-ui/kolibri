@@ -1,6 +1,9 @@
 @use '../../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @mixin button($block-classname) {
+	@include icons();
+
 	.#{$block-classname} {
 		--button-border-width: 2px;
 		--button-focus-outline-color: var(--ecl-color-dark);
