@@ -45,7 +45,7 @@
 			}
 
 			.kol-button:focus-visible {
-				outline: none;
+				@include focus-outline;
 			}
 		}
 		&:has(:focus-visible) {
