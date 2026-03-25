@@ -1,6 +1,6 @@
 @use '../../mixins/to-rem' as *;
 
-@mixin kol-button($block-classname) {
+@mixin button($block-classname) {
 	.#{$block-classname} {
 		--button-border-width: 2px;
 		--button-focus-outline-color: var(--ecl-color-dark);

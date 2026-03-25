@@ -26,6 +26,6 @@
 			border-top: 1px solid var(--color-blue);
 		}
 
-		@include kol-button('kol-button');
+		@include button('kol-button');
 	}
 }
