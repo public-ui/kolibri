@@ -5,8 +5,8 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 
-	.kol-input-range__input:focus {
-		outline-width: 0;
+	.kol-input-range__input:focus-visible {
+		outline: var(--color-primary-variant) solid to-rem(2);
 	}
 
 	.kol-input-container {
