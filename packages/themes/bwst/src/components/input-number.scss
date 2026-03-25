@@ -1,4 +1,5 @@
 @use '../@shared/input-core' as *;
+@use '../mixins/focus-outline' as *;
 @use '../mixins/input-text.scss' as *;
 @use '../mixins/icon' as *;
 
@@ -13,8 +14,8 @@
 			transition-duration: 0.3s;
 			transition-property: background-color, color;
 
-			&:focus {
-				outline: 0;
+			&:focus-visible {
+				@include focus-outline;
 			}
 
 			&:hover {
