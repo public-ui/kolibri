@@ -14,7 +14,7 @@ export const IconAllKolicons: FC = () => {
 			.then((data) => {
 				setIcons(data);
 			});
-	});
+	}, []);
 
 	return (
 		<>
