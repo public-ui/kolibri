@@ -91,22 +91,7 @@
 		}
 
 		&--ghost {
-			--button-background-color: transparent;
-			--button-border-color: transparent;
-			--button-border-width: 1px;
-			--button-text-color: var(--ecl-color-primary);
-
-			&:focus {
-				--button-focus-outline-color: var(--ecl-color-primary);
-				--button-focus-outline-offset: 0;
-				--button-focus-outline-width: 2px;
-			}
-
-			&:not(:disabled):hover {
-				--button-background-color: var(--ecl-color-primary-20);
-				--button-border-color: var(--ecl-color-dark-80);
-				--button-text-color: var(--ecl-color-dark);
-			}
+			@include ghost-button();
 		}
 
 		&__text {
@@ -124,5 +109,24 @@
 			font-weight: var(--font-weight-bold);
 			line-height: 1.2;
 		}
+	}
+}
+
+@mixin ghost-button() {
+	--button-background-color: transparent;
+	--button-border-color: transparent;
+	--button-border-width: 1px;
+	--button-text-color: var(--ecl-color-primary);
+
+	&:focus {
+		--button-focus-outline-color: var(--ecl-color-primary);
+		--button-focus-outline-offset: 0;
+		--button-focus-outline-width: 2px;
+	}
+
+	&:not(:disabled):hover {
+		--button-background-color: var(--ecl-color-primary-20);
+		--button-border-color: var(--ecl-color-dark-80);
+		--button-text-color: var(--ecl-color-dark);
 	}
 }

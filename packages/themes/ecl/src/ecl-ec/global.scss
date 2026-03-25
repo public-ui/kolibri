@@ -73,6 +73,8 @@
 		--ecl-color-accent-60: #d1ccff;
 		--ecl-color-accent-40: #fafaff;
 
+		--ecl-color-stroke: color-mix(in srgb, var(--ecl-color-primary) 50%, transparent);
+
 		--ecl-font-family-default: arial, sans-serif;
 		--ecl-font-size: #{to-rem(16)};
 		--ecl-font-weight: 400;
