@@ -6,8 +6,8 @@
 		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
 		"format": "prettier --check src",
 		"prebuild": "npm-run-all2 prebuild:*",
-		"prebuild:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
-		"prebuild:theme-default": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" src/assets --dot",
+		"prebuild:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
+		"prebuild:themes": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"prepare": "pnpm prebuild",
 		"start": "ng serve",
 		"unused": "knip"
