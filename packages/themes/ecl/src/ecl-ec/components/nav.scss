@@ -1,132 +1,125 @@
 @use '../../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
+	@include icons;
+	:host {
+		background-color: var(--color-mute);
+	}
+
 	.kol-nav {
+		--kol-nav-item-padding-left: -24;
+		--kol-nav-item-padding-right: 8;
+
 		$root: &;
 
-		&__navigation {
-			background-color: var(--color-blue);
-		}
-
 		&__list {
-			display: flex;
-			margin: 0;
-			padding: 0;
 			list-style: none;
+			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
+			--kol-nav-nested-padding-left: calc(var(--kol-nav-item-padding-left) + 12);
 
-			&--vertical {
-				flex-direction: column;
-			}
-		}
-
-		&__list-item {
-			border-color: var(--color-blue-75);
-			border-style: solid;
-			border-width: 0;
-
-			&:not(:first-child),
-			#{$root}__list--nested & {
-				border-top-width: to-rem(2);
+			&-item {
+				--kol-nav-item-padding-left: calc(var(--kol-nav-nested-padding-left) + 12);
 			}
 		}
 
 		&__entry {
-			flex-grow: 1;
+			&--link {
+				display: flex;
+			}
+
+			.kol-link,
+			.kol-button {
+				display: flex;
+				min-height: var(--a11y-min-size);
+				padding-right: to-rem(var(--kol-nav-item-padding-right));
+				padding-left: to-rem(16);
+				align-items: center;
+
+				text-decoration: none;
+
+				&:focus-visible {
+				}
+
+				.kol-span__icon--right {
+					transform: rotate(180deg);
+					&::before {
+						content: '\ea11';
+					}
+				}
+
+				#{$root}__list-item--active > #{$root}__entry-wrapper & {
+					font-weight: bold;
+				}
+			}
 		}
 
-		&__expand-button {
+		&__list-item--expanded {
+			background-color: var(--ecl-color-neutral-60);
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				width: 4px;
+				background-color: var(--ecl-color-primary);
+			}
+
+			& > .kol-nav__entry-wrapper .kol-span__icon--right {
+				transform: rotate(0);
+			}
+		}
+
+		&__list--nested {
+			.kol-link,
 			.kol-button {
-				background-color: var(--color-blue-130);
-				height: 100%;
-				margin: auto;
+				padding-left: to-rem(var(--kol-nav-item-padding-left));
+
+				.kol-span {
+					&__container {
+						display: grid;
+						justify-content: flex-start;
+						grid-template-areas: 'expander deco label';
+						grid-template-columns: 24px min-content 1fr;
+						gap: 0;
+					}
+
+					&__icon--left {
+						grid-area: deco;
+						margin-right: to-rem(8);
+					}
+
+					&__icon--right {
+						grid-area: expander;
+						width: to-rem(16);
+						margin-right: to-rem(8);
+						transform: rotate(90deg);
+
+						&::before {
+							content: '\ea50';
+						}
+					}
+
+					&__label {
+						grid-area: label;
+					}
+				}
 			}
 
-			&--expanded .kol-icon::before {
-				content: '\eab4';
-			}
-
-			&:not(&--expanded) .kol-icon::before {
-				content: '\eab6';
+			.kol-nav__list-item--expanded > .kol-nav__entry-wrapper .kol-span__icon--right {
+				transform: rotate(180deg);
 			}
 		}
 
 		&__toggle-button {
+			@include button('kol-button');
 			.kol-button {
-				$root: &;
-				outline: none;
-
-				text-decoration: none;
-				appearance: none;
-
-				&:focus {
-					outline: var(--text-focus-outline-color) solid to-rem(2);
-					outline-offset: -4px;
-				}
-
-				--text-focus-outline-color: var(--color-black);
-
-				&--ghost {
-					--text-background-color: transparent;
-					--text-border-color: transparent;
-					--text-color: var(--color-blue);
-
-					&:focus {
-						--text-focus-outline-color: var(--color-blue);
-					}
-
-					&:hover {
-						--text-background-color: unset;
-						--text-border-color: transparent;
-						--text-color: var(--color-blue-130);
-					}
-				}
-
-				&__text {
-					color: var(--text-color) !important;
-					background-color: var(--text-background-color);
-					border-color: var(--text-border-color);
-					border-style: solid;
-					border-radius: 0;
-					min-width: to-rem(44);
-					min-height: to-rem(44);
-					margin: 0;
-					padding: 0.25em 0.75em;
-					border-width: 2px;
-
-					font-weight: var(--font-weight-bold);
-					line-height: 1.2;
-					text-decoration: none !important;
-
-					@at-root #{$root}--ghost:focus & {
-						outline-offset: -2px;
-					}
-				}
+				@include ghost-button;
 			}
-		}
-	}
-
-	.kol-link {
-		text-decoration: none;
-	}
-
-	.kol-span {
-		color: var(--color-white);
-		border-color: transparent;
-		border-style: solid;
-		height: 100%;
-		padding: to-rem(16);
-		border-width: 2px;
-		justify-items: start;
-
-		font-size: to-rem(18);
-
-		:is(.kol-button, .kol-link):focus-within & {
-			border-color: var(--color-white);
-		}
-
-		:is(.kol-button, .kol-link):focus-within &,
-		:is(.kol-button, .kol-link):hover & {
-			text-decoration: underline;
 		}
 	}
 }
