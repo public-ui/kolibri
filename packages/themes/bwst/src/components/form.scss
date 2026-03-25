@@ -1,0 +1,20 @@
+@use '../mixins/alert' as *;
+@use '../mixins/indented-text' as *;
+@use '../mixins/link' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-link('kol-link');
+	@include kol-alert-theme;
+
+	.kol-form {
+		&__link {
+			display: inline-block;
+		}
+
+		&__mandatory-fields-hint {
+			@include indented-text;
+		}
+	}
+}

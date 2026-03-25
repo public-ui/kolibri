@@ -1,0 +1,29 @@
+@use '../@shared/input-core' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/alert' as *;
+@use '../mixins/button' as *;
+@use '../mixins/custom-suggestions-option' as *;
+@use '../mixins/custom-suggestions-options-group' as *;
+@use '../mixins/custom-suggestions-toggle' as *;
+@use '../mixins/input-text.scss' as *;
+@use '../mixins/icon' as *;
+
+$option-height: to-rem(40);
+$visible-options: 5;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-input-text('kol-combobox__group');
+	@include kol-button('kol-button');
+	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
+	@include kol-custom-suggestions-toggle-theme;
+
+	.kol-combobox {
+		&__group {
+			display: inline-flex;
+			width: 100%;
+			align-items: center;
+		}
+	}
+}

@@ -1,0 +1,78 @@
+@use '../mixins/button' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-split-button {
+		border-color: var(--color-primary);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		border-width: var(--border-width);
+
+		&__button .kol-button {
+			// Temp-Fix Hover-effect on Button clipping border
+			.kol-span {
+				border-bottom-left-radius: var(--border-radius);
+				border-top-left-radius: var(--border-radius);
+			}
+		}
+
+		&__horizontal-line {
+			background-color: var(--color-primary);
+			border-radius: 2px;
+			width: to-rem(1);
+		}
+
+		&__secondary-button {
+			height: 100%;
+
+			.kol-span {
+				border-bottom-right-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
+			}
+		}
+
+		.kol-span {
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
+			padding: to-rem(8) to-rem(14);
+
+			font-weight: 700;
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+		}
+
+		.kol-popover__content {
+			background-color: #fff;
+		}
+
+		@include kol-button('kol-button');
+
+		&__button {
+			.kol-button__text {
+				border-bottom-right-radius: 0;
+				border-top-right-radius: 0;
+			}
+		}
+
+		&__secondary-button {
+			.kol-button__text {
+				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
+			}
+		}
+
+		.kol-button {
+			height: 100%;
+
+			&__text {
+				height: 100%;
+				border: none;
+			}
+		}
+	}
+}
