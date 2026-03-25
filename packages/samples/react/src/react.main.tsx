@@ -40,7 +40,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [DEFAULT, ECL_EC, ECL_EU, KERN_V2, BWSt] as Theme[];
+	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2] as Theme[];
 };
 
 void (async () => {
