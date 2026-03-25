@@ -155,7 +155,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 			const parent = element.closest(KolTreeTag);
 			if (parent) {
 				// Found kol-tree (shadow wrapper), now find kol-tree-wc in its shadow DOM
-				const treeWc = (parent as HTMLKolTreeElement).shadowRoot?.querySelector('kol-tree-wc');
+				const treeWc = parent.shadowRoot?.querySelector('kol-tree-wc');
 				if (treeWc) {
 					return treeWc as HTMLKolTreeWcElement & { invalidateOpenItemsCache(): void };
 				}
@@ -177,7 +177,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	@Method() async focus() {
 		if (this.host && this.linkElement) {
 			const root = this.host.getRootNode();
-			const shadowHost = root instanceof ShadowRoot ? (root.host as HTMLElement) : undefined;
+			const shadowHost = root instanceof ShadowRoot && root.host instanceof HTMLElement ? root.host : undefined;
 			return Promise.resolve(this.linkElement.focus(shadowHost ?? this.host));
 		}
 	}
