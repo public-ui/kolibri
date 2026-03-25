@@ -194,11 +194,11 @@ Toasts are unsolicited interruptions. `role="alert"` literally interrupts the ru
 
 Every measure that makes a toast genuinely accessible transforms it into a different component:
 
-| Measure | Result |
-|---|---|
-| No auto-dismiss | → Persistent inline alert |
-| Focus moved into the toast | → Non-modal dialog |
-| Notification history | → Notification panel / landmark region |
+| Measure                                  | Result                                        |
+| ---------------------------------------- | --------------------------------------------- |
+| No auto-dismiss                          | → Persistent inline alert                     |
+| Focus moved into the toast               | → Non-modal dialog                            |
+| Notification history                     | → Notification panel / landmark region        |
 | Plain text only, no interactive elements | → ARIA live region (no longer a visual toast) |
 
 > "If a notification contains an interactive element, it should not be a live region. And it should also not be a toast."
@@ -221,13 +221,13 @@ The structural accessibility problems remain unresolved:
 
 #### How leading design systems decide
 
-| Design system | Decision |
-|---|---|
-| **GOV.UK Design System** | No toast — Notification Banner (persistent) instead |
-| **U.S. Web Design System** | No toast — Alert + Site Alert instead |
-| **GitHub Primer** | Toast officially banned after moderated usability tests with disabled users: "The tests showed significant problems that cannot be addressed with a sprinkling of ARIA." |
-| **Adobe Spectrum** | Toast with strict constraints: min. 5 s timeout, pause on hover/focus, F6 landmark navigation |
-| **Carbon (IBM) v11** | Split into non-interactive (`role="status"`) and interactive (`role="alertdialog"` with full focus management) |
+| Design system              | Decision                                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **GOV.UK Design System**   | No toast — Notification Banner (persistent) instead                                                                                                                      |
+| **U.S. Web Design System** | No toast — Alert + Site Alert instead                                                                                                                                    |
+| **GitHub Primer**          | Toast officially banned after moderated usability tests with disabled users: "The tests showed significant problems that cannot be addressed with a sprinkling of ARIA." |
+| **Adobe Spectrum**         | Toast with strict constraints: min. 5 s timeout, pause on hover/focus, F6 landmark navigation                                                                            |
+| **Carbon (IBM) v11**       | Split into non-interactive (`role="status"`) and interactive (`role="alertdialog"` with full focus management)                                                           |
 
 #### References
 

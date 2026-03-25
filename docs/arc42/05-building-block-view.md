@@ -14,38 +14,38 @@ graph TB
         Samples[Samples Package<br/>Example Applications]
         Icons[Icons Package<br/>Icon Definitions]
     end
-    
+
     Components -->|styled by| Themes
     Components -->|generate| Adapters
     Components -->|demonstrated in| Samples
     Components -->|use| Icons
-    
+
     Adapters -->|used in| Samples
     Themes -->|used in| Samples
-    
+
     Tools -->|migrate| Components
     Tools -->|test| Themes
 ```
 
 ### Contained Building Blocks
 
-| Building Block | Responsibility |
-|----------------|----------------|
-| **Components** | Core web component library, provides atomic, accessible HTML components |
-| **Themes** | Visual styling packages, separate presentation from logic |
-| **Adapters** | Framework-specific wrappers (React, Angular, Vue, etc.) for native integration |
-| **Tools** | Development and migration utilities (CLI, visual testing) |
-| **Samples** | Example applications demonstrating component usage |
-| **Icons** | Icon font definitions and assets |
+| Building Block | Responsibility                                                                 |
+| -------------- | ------------------------------------------------------------------------------ |
+| **Components** | Core web component library, provides atomic, accessible HTML components        |
+| **Themes**     | Visual styling packages, separate presentation from logic                      |
+| **Adapters**   | Framework-specific wrappers (React, Angular, Vue, etc.) for native integration |
+| **Tools**      | Development and migration utilities (CLI, visual testing)                      |
+| **Samples**    | Example applications demonstrating component usage                             |
+| **Icons**      | Icon font definitions and assets                                               |
 
 ### Important Interfaces
 
-| Interface | Description |
-|-----------|-------------|
-| `@public-ui/components` | Main component library export |
-| `@public-ui/theme-*` | Theme packages (default, ecl, etc.) |
-| `@public-ui/react`, `@public-ui/angular-*`, `@public-ui/vue` | Framework adapters |
-| Theme registration API | `register(theme, defineCustomElements)` |
+| Interface                                                    | Description                             |
+| ------------------------------------------------------------ | --------------------------------------- |
+| `@public-ui/components`                                      | Main component library export           |
+| `@public-ui/theme-*`                                         | Theme packages (default, ecl, etc.)     |
+| `@public-ui/react`, `@public-ui/angular-*`, `@public-ui/vue` | Framework adapters                      |
+| Theme registration API                                       | `register(theme, defineCustomElements)` |
 
 ## 5.2 Components Package (Level 2)
 
@@ -57,20 +57,20 @@ graph TB
         Styles[Basis Styles<br/>Layout CSS/SASS]
         Assets[Assets<br/>Generated Files]
         OutputTargets[Output Targets<br/>Adapter Generation]
-        
+
         ComponentDefs -->|uses| Schema
         ComponentDefs -->|styled by| Styles
         ComponentDefs -->|generates| Assets
         ComponentDefs -->|compiled via| OutputTargets
     end
-    
+
     subgraph Core Concepts
         A11y[Accessibility Layer]
         Composition[Composition Logic]
         Events[Event System]
         Props[Property API]
     end
-    
+
     ComponentDefs -->|implements| A11y
     ComponentDefs -->|uses| Composition
     ComponentDefs -->|emits| Events
@@ -124,14 +124,14 @@ components/
 
 ### Key Components
 
-| Component | Purpose | Complexity |
-|-----------|---------|------------|
-| `KolButton` | Accessible button with icon and label support | Medium |
-| `KolInputText` | Text input with validation and error handling | High |
-| `KolTable` | Accessible data table with sorting and pagination | High |
-| `KolModal` | Accessible modal dialog with focus management | High |
-| `KolIcon` | Icon display from icon fonts | Low |
-| `KolLink` | Accessible link with icon support | Low |
+| Component      | Purpose                                           | Complexity |
+| -------------- | ------------------------------------------------- | ---------- |
+| `KolButton`    | Accessible button with icon and label support     | Medium     |
+| `KolInputText` | Text input with validation and error handling     | High       |
+| `KolTable`     | Accessible data table with sorting and pagination | High       |
+| `KolModal`     | Accessible modal dialog with focus management     | High       |
+| `KolIcon`      | Icon display from icon fonts                      | Low        |
+| `KolLink`      | Accessible link with icon support                 | Low        |
 
 ## 5.3 Themes Package (Level 2)
 
@@ -141,20 +141,20 @@ graph TB
         DefaultTheme[Default Theme<br/>Main Theme]
         ECLTheme[ECL Theme<br/>EU Commission]
         ThemeAssets[Theme Assets<br/>Fonts, Icons]
-        
+
         subgraph Theme Structure
             GlobalStyles[Global Theme Styles]
             ComponentStyles[Component Theme Styles]
             Tokens[Design Tokens]
             Variables[SASS Variables]
         end
-        
+
         DefaultTheme -->|contains| GlobalStyles
         DefaultTheme -->|contains| ComponentStyles
         DefaultTheme -->|uses| Tokens
         DefaultTheme -->|uses| Variables
         DefaultTheme -->|includes| ThemeAssets
-        
+
         ECLTheme -->|contains| GlobalStyles
         ECLTheme -->|contains| ComponentStyles
         ECLTheme -->|uses| Tokens
@@ -224,7 +224,7 @@ graph TB
         Vaadin[Vaadin Adapter]
         Hydrate[Hydrate/SSR]
     end
-    
+
     subgraph Stencil Output Targets
         ReactOutput[React Output Target]
         AngularOutput[Angular Output Target]
@@ -232,7 +232,7 @@ graph TB
         SolidOutput[Solid Output Target]
         SvelteOutput[Svelte Output Target]
     end
-    
+
     ReactOutput -->|generates| React
     ReactOutput -->|generates| ReactV19
     ReactOutput -->|generates| ReactStandalone
@@ -258,15 +258,15 @@ All adapters are **automatically generated** by Stencil output targets. Manual e
 
 ### Framework Support
 
-| Framework | Package(s) | Purpose |
-|-----------|-----------|---------|
-| **React** | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone` | React 18, 19, and standalone builds |
-| **Angular** | `@public-ui/angular-v19`, `@public-ui/angular-v20`, `@public-ui/angular-v21` | Angular versions 19, 20, 21 |
-| **Vue** | `@public-ui/vue` | Vue.js integration |
-| **Solid** | `@public-ui/solid` | SolidJS integration |
-| **Svelte** | `@public-ui/svelte` | Svelte integration |
-| **Preact** | `@public-ui/preact` | Preact integration |
-| **Vaadin** | `@public-ui/vaadin` | Vaadin Flow (Java) integration |
+| Framework   | Package(s)                                                                   | Purpose                             |
+| ----------- | ---------------------------------------------------------------------------- | ----------------------------------- |
+| **React**   | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone`    | React 18, 19, and standalone builds |
+| **Angular** | `@public-ui/angular-v19`, `@public-ui/angular-v20`, `@public-ui/angular-v21` | Angular versions 19, 20, 21         |
+| **Vue**     | `@public-ui/vue`                                                             | Vue.js integration                  |
+| **Solid**   | `@public-ui/solid`                                                           | SolidJS integration                 |
+| **Svelte**  | `@public-ui/svelte`                                                          | Svelte integration                  |
+| **Preact**  | `@public-ui/preact`                                                          | Preact integration                  |
+| **Vaadin**  | `@public-ui/vaadin`                                                          | Vaadin Flow (Java) integration      |
 
 ## 5.5 Tools Package (Level 2)
 
@@ -277,7 +277,7 @@ graph TB
         VisualTests[Visual Tests<br/>Regression Testing]
         MCP[MCP Server<br/>Model Context Protocol]
     end
-    
+
     CLI -->|migrates| Components
     VisualTests -->|tests| Themes
     MCP -->|provides context| AITools
@@ -306,13 +306,13 @@ graph TB
 
 ### External Dependencies
 
-| Package | Purpose | Used By |
-|---------|---------|---------|
-| `@stencil/core` | Web component compiler | Components |
-| `adopted-style-sheets` | Style sheet adoption polyfill | Components, Themes |
-| `@floating-ui/dom` | Positioning engine | Components (tooltips, dropdowns) |
-| `markdown-it` | Markdown rendering | Components (rich text) |
-| `wcag-contrast` | Contrast ratio validation | Components (color validation) |
+| Package                | Purpose                       | Used By                          |
+| ---------------------- | ----------------------------- | -------------------------------- |
+| `@stencil/core`        | Web component compiler        | Components                       |
+| `adopted-style-sheets` | Style sheet adoption polyfill | Components, Themes               |
+| `@floating-ui/dom`     | Positioning engine            | Components (tooltips, dropdowns) |
+| `markdown-it`          | Markdown rendering            | Components (rich text)           |
+| `wcag-contrast`        | Contrast ratio validation     | Components (color validation)    |
 
 ### Internal Dependencies
 
