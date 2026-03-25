@@ -1,21 +1,21 @@
-# Public UI - Default-Theme
+# Public UI - BWSt-Theme
 
-[![npm](https://img.shields.io/npm/v/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/components)
-[![license](https://img.shields.io/npm/l/@public-ui/theme-default)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
-[![downloads](https://img.shields.io/npm/dt/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/theme-default)
+[![npm](https://img.shields.io/npm/v/@public-ui/theme-bwst)](https://www.npmjs.com/package/@public-ui/theme-bwst)
+[![license](https://img.shields.io/npm/l/@public-ui/theme-bwst)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/theme-bwst)](https://www.npmjs.com/package/@public-ui/theme-bwst)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
-[![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-default)](https://bundlephobia.com/result?p=@public-ui/theme-default)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-bwst)](https://bundlephobia.com/result?p=@public-ui/theme-bwst)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-This is the default theme for the [Public UI web component library](https://public-ui.github.io). You can customize this theme by using `css variables` or by creating a new theme.
+This is the BWSt theme for the [Public UI web component library](https://public-ui.github.io). You can customize this theme by using `css variables` or by creating a new theme.
 
 ## Integration in React
 
 ```tsx
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { BWSt } from '@public-ui/theme-default';
+import { BWSt } from '@public-ui/theme-bwst';
 
 register(BWSt, defineCustomElements).then(() => {
 	ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -63,7 +63,7 @@ Import and register the theme:
 ```js
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { BWSt } from '@public-ui/theme-default';
+import { BWSt } from '@public-ui/theme-bwst';
 
 register(BWSt, defineCustomElements);
 ```
