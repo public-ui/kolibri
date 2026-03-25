@@ -202,15 +202,14 @@ export class KolTreeWc implements TreeAPI {
 	}
 
 	@Listen('focusout')
-	public async handleFocusOut(event: FocusEvent) {
+	public handleFocusOut(event: FocusEvent) {
 		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
 			/* Tree lost focus */
-			await this.ensureActiveItemVisibility();
+			this.ensureActiveItemVisibility();
 		}
 	}
 
-	// eslint-disable-next-line @typescript-eslint/require-await
-	private async ensureActiveItemVisibility() {
+	private ensureActiveItemVisibility() {
 		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
 			const rootNodes = (this.host?.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem) ?? [];
 			for (const rootNode of rootNodes) {
