@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -41,6 +41,7 @@ import type {
 	shadow: true,
 })
 export class KolButtonLink implements ButtonLinkProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
@@ -60,8 +61,10 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.buttonWcRef?.focus());
+	public async focus(): Promise<void> {
+		if (this.host) {
+			await this.buttonWcRef?.focus(this.host);
+		}
 	}
 
 	public render(): JSX.Element {

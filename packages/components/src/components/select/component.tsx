@@ -4,7 +4,6 @@ import clsx from '../../utils/clsx';
 
 import type {
 	DisabledPropType,
-	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -30,6 +29,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
@@ -41,7 +41,7 @@ import { SelectController } from './controller';
 	tag: 'kol-select-wc',
 	shadow: false,
 })
-export class KolSelectWc implements SelectAPI, FocusableElement {
+export class KolSelectWc implements SelectAPI {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	private selectRef?: HTMLSelectElement;
 
@@ -66,13 +66,8 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.selectRef?.focus();
-				resolve();
-			});
-		});
+	public async focus(host: HTMLElement): Promise<void> {
+		await delegateFocus(host, this.selectRef);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -249,7 +244,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new SelectController(this, 'select', this.host);
+		this.controller = new SelectController(this, 'select', this.host as HTMLElement);
 	}
 
 	private showAsAlert(): boolean {

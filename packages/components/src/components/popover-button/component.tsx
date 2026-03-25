@@ -37,7 +37,7 @@ import { nonce } from '../../utils/dev.utils';
 	shadow: false,
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
-export class KolPopoverButton implements PopoverButtonProps {
+export class KolPopoverButtonWc implements PopoverButtonProps {
 	private refButton?: HTMLKolButtonWcElement;
 	private readonly popoverCtrl = new PopoverController();
 	private popoverElement?: HTMLDivElement;
@@ -51,7 +51,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 	private setButtonElementRef = (element?: HTMLKolButtonWcElement): void => {
 		this.refButton = element;
 		if (element) {
-			this.popoverCtrl.setTriggerElement(element);
+			this.popoverCtrl.setTriggerElement(element as HTMLElement);
 		}
 	};
 
@@ -90,8 +90,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.refButton?.focus());
+	public async focus(host: HTMLElement): Promise<void> {
+		await this.refButton?.focus(host);
 	}
 
 	private handleToggle = (event: Event): void => {

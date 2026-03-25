@@ -34,6 +34,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputEmailController } from './controller';
 
@@ -71,12 +72,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		await delegateFocus(this.host, this.inputRef);
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
