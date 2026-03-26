@@ -44,7 +44,7 @@ export class KolSkipNav implements SkipNavAPI {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => Promise.resolve(this.firstLinkRef?.focus?.()));
+		return delegateFocus(this.host!, () => setFocus(this.firstLinkRef!);
 	}
 
 	/**

@@ -14,7 +14,7 @@ import type {
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -54,7 +54,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => Promise.resolve(this.buttonWcRef?.focus?.()));
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
 	}
 
 	private handleOnClick = (event: MouseEvent) => {

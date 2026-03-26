@@ -40,7 +40,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => Promise.resolve(this.buttonWcRef?.focus?.()));
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!);
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;

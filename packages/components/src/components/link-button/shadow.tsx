@@ -46,7 +46,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => Promise.resolve(this.linkWcRef?.focus?.()));
+		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!);
 	}
 
 	public render(): JSX.Element {
