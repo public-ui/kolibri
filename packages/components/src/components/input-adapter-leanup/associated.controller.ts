@@ -93,7 +93,7 @@ export class AssociatedInputController implements Watches {
 		while (host?.shadowRoot === null && host !== document.body) {
 			host = host?.parentNode as HTMLElement;
 			if ((host as unknown as ShadowRoot).host) {
-				host = (host as unknown as ShadowRoot).host as HTMLElement;
+				host = (host as unknown as ShadowRoot).host;
 			}
 		}
 		return host;
