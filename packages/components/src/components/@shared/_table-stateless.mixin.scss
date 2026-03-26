@@ -36,7 +36,6 @@
 
 		&__caption {
 			min-height: var(--a11y-min-size); // align with configuration button
-			padding-right: var(--a11y-min-size);
 			text-align: start;
 		}
 
@@ -48,7 +47,6 @@
 
 		&__sort {
 			display: inline-flex;
-			gap: 0.25rem;
 			align-items: center;
 		}
 

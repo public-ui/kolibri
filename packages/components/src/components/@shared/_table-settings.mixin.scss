@@ -19,13 +19,11 @@
 
 		&__columns-container {
 			max-height: to-rem(200);
-			margin-top: to-rem(16);
 			overflow: auto;
 		}
 
 		&__columns {
 			display: grid;
-			gap: to-rem(8);
 			align-items: center;
 			grid-auto-rows: min-content;
 			grid-template-columns: min-content minmax(max-content, 1fr) to-rem(140) auto auto;

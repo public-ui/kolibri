@@ -25,5 +25,10 @@ $visible-options: 5;
 			width: 100%;
 			align-items: center;
 		}
+
+		&__delete {
+			margin-top: -2px;
+			margin-bottom: -2px;
+		}
 	}
 }

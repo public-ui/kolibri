@@ -2,47 +2,55 @@
 
 @layer kol-theme-component {
 	.kol-progress {
-		&__bar-border {
-			display: none;
+		&__bar {
+			&-border {
+				display: none;
+			}
+
+			&-progress {
+				fill: var(--kern-color-feedback-loader);
+				rx: 0;
+				ry: 0;
+			}
+
+			&-background {
+				fill: var(--kern-color-feedback-loader-background);
+				rx: 0;
+				ry: 0;
+				stroke: var(--kern-color-layout-background-default);
+			}
+
+			&-value {
+				margin-left: to-rem(8);
+			}
 		}
 
-		&__bar-progress {
-			fill: var(--kern-color-feedback-loader);
-			rx: 0;
-			ry: 0;
-		}
+		&__cycle {
+			&-background {
+				fill: transparent;
+			}
 
-		&__bar-background {
-			fill: var(--kern-color-feedback-loader-background);
-			rx: 0;
-			ry: 0;
-			stroke: var(--kern-color-layout-background-default);
-		}
+			&-border {
+				display: none;
+			}
 
-		&__cycle-background {
-			fill: transparent;
-		}
+			&-background {
+				fill: transparent;
+				stroke: var(--kern-color-feedback-loader-background);
+			}
 
-		&__cycle-border {
-			display: none;
-		}
+			&-whitespace {
+				fill: transparent;
+				stroke: var(--kern-color-feedback-loader-background);
+				stroke-width: to-rem(1);
+			}
 
-		&__cycle-background {
-			fill: transparent;
-			stroke: var(--kern-color-feedback-loader-background);
-		}
-
-		&__cycle-whitespace {
-			fill: transparent;
-			stroke: var(--kern-color-feedback-loader-background);
-			stroke-width: to-rem(1);
-		}
-
-		&__cycle-progress {
-			fill: transparent;
-			stroke: var(--kern-color-feedback-loader);
-			stroke-linecap: butt;
-			stroke-width: to-rem(8);
+			&-progress {
+				fill: transparent;
+				stroke: var(--kern-color-feedback-loader);
+				stroke-linecap: butt;
+				stroke-width: to-rem(8);
+			}
 		}
 	}
 }
