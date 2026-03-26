@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
-import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
+import type { FocusableElement, LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
 
 /**
@@ -12,7 +12,7 @@ import { validateLabel } from '../../schema';
 	tag: 'kol-tree-wc',
 	shadow: false,
 })
-export class KolTreeWc implements TreeAPI {
+export class KolTreeWc implements TreeAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTreeWcElement;
 
 	@State() public state: TreeStates = {

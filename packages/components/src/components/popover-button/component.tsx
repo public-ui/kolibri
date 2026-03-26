@@ -10,6 +10,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
@@ -38,7 +39,7 @@ import { setFocus } from '../../utils/element-focus';
 	shadow: false,
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
-export class KolPopoverButtonWc implements PopoverButtonProps {
+export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement {
 	private refButton?: HTMLKolButtonWcElement;
 	private readonly popoverCtrl = new PopoverController();
 	private popoverElement?: HTMLDivElement;

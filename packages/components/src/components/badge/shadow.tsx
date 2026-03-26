@@ -8,7 +8,7 @@ import { nonce } from '../../utils/dev.utils';
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import clsx from '../../utils/clsx';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 /**
@@ -58,7 +58,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!);
+		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!));
 	}
 
 	public render(): JSX.Element {

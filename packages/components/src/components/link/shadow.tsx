@@ -20,7 +20,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 @Component({
 	tag: 'kol-link',
@@ -42,7 +42,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!);
+		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
 	}
 
 	public render(): JSX.Element {

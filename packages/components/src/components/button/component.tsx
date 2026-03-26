@@ -12,6 +12,7 @@ import type {
 	ButtonTypePropType,
 	CustomClassPropType,
 	DisabledPropType,
+	FocusableElement,
 	HideLabelPropType,
 	IconsPropType,
 	IdPropType,
@@ -67,7 +68,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI {
+export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 	private tooltipRef?: HTMLKolTooltipWcElement;
