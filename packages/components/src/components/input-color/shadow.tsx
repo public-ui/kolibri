@@ -26,7 +26,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputColorController } from './controller';
 
 /**
@@ -97,7 +97,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, async () => this.refInputText?.focus?.());
+		return delegateFocus(this.host!, () => setFocus(this.refInputText!));
 	}
 
 	private get hasSuggestions(): boolean {

@@ -29,7 +29,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRangeController } from './controller';
 
@@ -55,7 +55,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, async () => this.refInputNumber?.focus?.());
+		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
 	}
 
 	private readonly setInputNumberRef = (element: HTMLInputElement | null) => {

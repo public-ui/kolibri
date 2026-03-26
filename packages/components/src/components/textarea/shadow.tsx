@@ -34,7 +34,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { TextareaController } from './controller';
 
 /**
@@ -84,7 +84,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, async () => this.textareaRef?.focus?.());
+		return delegateFocus(this.host!, () => setFocus(this.textareaRef!));
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {

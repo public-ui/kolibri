@@ -35,7 +35,7 @@ import type {
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { ComboboxController } from './controller';
 
 /**
@@ -69,7 +69,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, async () => this.refInput?.focus?.());
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
 	private toggleListbox = () => {

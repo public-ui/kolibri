@@ -80,12 +80,12 @@ export class KolButtonWc implements ButtonAPI {
 		return setFocus(this.buttonRef!);
 	}
 
-	private readonly setButtonRef = (ref: HTMLButtonElement | null) => {
-		this.buttonRef = ref || undefined;
+	private readonly setButtonRef = (ref?: HTMLButtonElement) => {
+		this.buttonRef = ref;
 	};
 
-	private readonly setTooltipRef = (ref: HTMLKolTooltipWcElement | null) => {
-		this.tooltipRef = ref || undefined;
+	private readonly setTooltipRef = (ref?: HTMLKolTooltipWcElement) => {
+		this.tooltipRef = ref;
 	};
 
 	private readonly hideTooltip = () => {

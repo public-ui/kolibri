@@ -78,12 +78,12 @@ export class KolLinkWc implements InternalLinkAPI {
 
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
-	private readonly setAnchorRef = (ref: HTMLAnchorElement | null) => {
-		this.anchorRef = ref || undefined;
+	private readonly setAnchorRef = (ref?: HTMLAnchorElement) => {
+		this.anchorRef = ref;
 	};
 
-	private readonly setTooltipRef = (ref: HTMLKolTooltipWcElement | null) => {
-		this.tooltipRef = ref || undefined;
+	private readonly setTooltipRef = (ref?: HTMLKolTooltipWcElement) => {
+		this.tooltipRef = ref;
 	};
 
 	private readonly hideTooltip = () => {

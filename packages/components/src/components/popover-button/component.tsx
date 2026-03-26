@@ -44,12 +44,12 @@ export class KolPopoverButtonWc implements PopoverButtonProps {
 	private popoverElement?: HTMLDivElement;
 	private readonly popoverId = `popover-${nonce()}`;
 
-	private setPopoverElementRef = (element?: HTMLDivElement): void => {
+	private readonly setPopoverElementRef = (element?: HTMLDivElement) => {
 		this.popoverElement = element;
 		this.popoverCtrl.setPopoverElementRef(element);
 	};
 
-	private setButtonElementRef = (element?: HTMLKolButtonWcElement): void => {
+	private readonly setButtonElementRef = (element?: HTMLKolButtonWcElement) => {
 		this.refButton = element;
 		if (element) {
 			this.popoverCtrl.setTriggerElement(element as HTMLElement);

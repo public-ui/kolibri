@@ -38,7 +38,7 @@ import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { SingleSelectController } from './controller';
 
 /**
@@ -77,7 +77,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, async () => this.refInput?.focus?.());
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
 	private readonly setRefInput = (ref: HTMLInputElement | null) => {
