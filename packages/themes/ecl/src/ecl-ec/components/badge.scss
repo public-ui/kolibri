@@ -1,10 +1,30 @@
 @use '../../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	.kol-badge {
-		padding: calc(to-rem(8) - to-rem(1)) calc(to-rem(12) - to-rem(1));
+	@include icons;
 
-		font: normal normal var(--font-weight) 1em var(--font-family);
-		text-transform: uppercase;
+	.kol-badge {
+		padding: var(--ecl-spacing-2xs) var(--ecl-spacing-s);
+		border-radius: 12px;
+		font-size: var(--ecl-font-size-s);
+
+		&__smart-button {
+			--a11y-min-size: 26px;
+			margin-top: -2px;
+			margin-bottom: -2px;
+			margin-left: var(--ecl-spacing-2xs);
+
+			.kol-button {
+				.kol-icon::before {
+					content: '\ea0e';
+				}
+
+				&:hover {
+					background-color: var(--ecl-color-primary);
+					color: var(--ecl-color-white);
+				}
+			}
+		}
 	}
 }
