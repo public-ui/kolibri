@@ -4,6 +4,7 @@ import clsx from '../../utils/clsx';
 
 import type {
 	DisabledPropType,
+	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -41,7 +42,7 @@ import { SelectController } from './controller';
 	tag: 'kol-select-wc',
 	shadow: false,
 })
-export class KolSelectWc implements SelectAPI {
+export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	private selectRef?: HTMLSelectElement;
 

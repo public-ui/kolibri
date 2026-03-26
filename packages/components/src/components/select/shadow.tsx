@@ -19,7 +19,7 @@ import type {
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * @slot - The label of the input field.
@@ -52,7 +52,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!);
+		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!));
 	}
 
 	public render(): JSX.Element {

@@ -12,6 +12,7 @@ import type {
 	CustomClassPropType,
 	DisabledPropType,
 	DownloadPropType,
+	FocusableElement,
 	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
@@ -52,8 +53,8 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { setFocus } from '../../utils/element-focus';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
@@ -69,7 +70,7 @@ import clsx from '../../utils/clsx';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements InternalLinkAPI {
+export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	private anchorRef?: HTMLAnchorElement;

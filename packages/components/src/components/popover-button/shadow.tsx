@@ -18,7 +18,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * A button that toggles the visibility of a popover overlay containing arbitrary content.
@@ -65,7 +65,7 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.ref!);
+		return delegateFocus(this.host!, () => setFocus(this.ref!));
 	}
 
 	public render(): JSX.Element {

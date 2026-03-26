@@ -8,6 +8,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
@@ -21,7 +22,7 @@ import type {
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -36,7 +37,7 @@ import { delegateFocus } from '../../utils/element-focus';
 	},
 	shadow: true,
 })
-export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
+export class KolSplitButton implements SplitButtonProps, FocusableElement /*, SplitButtonAPI*/ {
 	@Element() private readonly host?: HTMLKolSplitButtonElement;
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
@@ -63,7 +64,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!);
+		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
 	}
 
 	private readonly clickButtonHandler = {

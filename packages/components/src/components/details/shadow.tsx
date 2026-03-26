@@ -3,7 +3,7 @@ import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-compon
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -40,7 +40,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!);
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;

@@ -3,7 +3,7 @@ import { Component, Element, h, Method, Prop } from '@stencil/core';
 
 import { KolTreeWcTag } from '../../core/component-names';
 import type { FocusableElement, LabelPropType, TreeProps } from '../../schema';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 @Component({
 	tag: 'kol-tree',
@@ -30,7 +30,7 @@ export class KolTree implements TreeProps, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.treeWcRef!);
+		return delegateFocus(this.host!, () => setFocus(this.treeWcRef!));
 	}
 
 	public render(): JSX.Element {

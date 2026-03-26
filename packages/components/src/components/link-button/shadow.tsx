@@ -19,7 +19,7 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **LinkButton** component is semantically a link but has the appearance of a button. All relevant properties of the Link component are adopted and extended with the design-defining properties of a button.
@@ -46,7 +46,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!);
+		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
 	}
 
 	public render(): JSX.Element {
