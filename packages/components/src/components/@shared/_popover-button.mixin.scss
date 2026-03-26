@@ -12,4 +12,13 @@
 			display: inline;
 		}
 	}
+
+	.kol-popover {
+		opacity: 0;
+		transition: 0.2s ease-out opacity;
+	}
+
+	.kol-popover-button--open + .kol-popover {
+		opacity: 1;
+	}
 }

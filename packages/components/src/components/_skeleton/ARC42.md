@@ -203,6 +203,7 @@ Both are functionally equivalent. Pattern A is more concise; Pattern B allows ad
 Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks:
 
 ❌ **Memory Leak — DO NOT DO THIS:**
+
 ```tsx
 private handleToggle(event: Event) { /* ... */ }
 
@@ -217,6 +218,7 @@ disconnectedCallback() {
 ```
 
 ✅ **Correct — Arrow Function Property (already bound):**
+
 ```tsx
 private handleToggle = (event: Event) => { /* ... */ }  // Arrow property — this is bound here
 
@@ -246,6 +248,7 @@ private catchElement = (element?: HTMLElement): void => {
 ```
 
 **Why this matters:**
+
 - `.bind(this)` creates a new function on each call — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match
 - When references don't match, `removeEventListener` silently fails
 - Listeners accumulate over time, slowing down event handling and creating garbage collection barriers
@@ -656,18 +659,19 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 8. Cross-cutting Concepts
 
-| Concept                          | Description                                                                                                                                                           |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Composition over inheritance** | Controllers compose behaviour (e.g. `ClickButtonController`) rather than relying on inheritance.                                                                      |
-| **Declarative rendering**        | Functional components are pure and stateless.                                                                                                                         |
-| **Decoupling**                   | Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.                                             |
-| **Event-driven communication**   | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                |
-| **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized. |
-| **Shadow DOM First**             | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                    |
-| **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                             |
-| **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                      |
-| **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                           |
-| **Watcher placement**            | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                  |
+| Concept                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Composition over inheritance** | Controllers compose behaviour (e.g. `ClickButtonController`) rather than relying on inheritance.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Declarative rendering**        | Functional components are pure and stateless.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Decoupling**                   | Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Event-driven communication**   | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized.                                                                                                                                                                                                                                                                                                                                                    |
+| **Shadow DOM First**             | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                                                                                                                                                                                                                                                                                                                                                                       |
+| **ARIA ID Uniqueness via nonce** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance. Use `private readonly someId = \`prefix-${nonce()}\``with`nonce()`from`utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
+| **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Watcher placement**            | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ## 9. Design Decisions
 
@@ -702,7 +706,15 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: All fields in `ComponentApi` are optional (`Props`, `States`, `Emitters`, `Methods`, `Callbacks`, `Refs`, `Listeners`). Only define the fields that the component actually uses. If a component has no events, omit `Emitters`. If it has no internal state, omit `States`. If it has no methods, omit `Methods`. This applies uniformly to every field — no exceptions.
     - _Alternative_: define all fields explicitly, using empty records for unused ones (e.g. `States: Record<string, never>`).
     - _Reason_: empty records add noise to the API definition and clutter the type contract. The generic type extraction logic in `generic-types.ts` safely handles missing fields by defaulting to empty records, so omitting them is both safe and preferred. A minimal API definition is easier to read, easier to maintain, and accurately conveys what the component actually does.
-11. **Test co-location — all tests live next to the component**
+11. **ARIA ID uniqueness via `nonce()`**
+    - _Pattern_: Any `id` attribute that is referenced by an ARIA relation attribute (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) must be unique per component instance. Declare it as a private readonly field: `private readonly popoverId = \`popover-${nonce()}\``. Use `nonce()`from`utils/dev.utils`(returns a random hex string in production,`'nonce'` in test mode for stable snapshots).
+    - _Alternative_: Use a hardcoded static string like `id="popover"`.
+    - _Reason_: Shadow DOM scopes IDs per shadow root boundary, so a hardcoded ID is safe as long as only one instance of the WC exists within that shadow root. However, a parent component may render multiple instances of an internal WC (e.g. `kol-popover-button-wc`) within the same shadow root — at which point IDs collide and `aria-controls` points to the wrong element. `nonce()` is cheap and eliminates this category of bug entirely. It also covers direct light-DOM usage of internal (`shadow: false`) components.
+12. **No `data-testid` — use BEM class selectors in tests**
+    - _Pattern_: Do not add `data-testid` attributes to component markup. Tests select elements via their BEM class names using `page.locator('.kol-component__element')`. For nested interactive elements, chain locators: `page.locator('.kol-component button')`.
+    - _Alternative_: Add `data-testid="..."` attributes to markup and use `getByTestId()` in tests.
+    - _Reason_: `data-testid` is production markup with no semantic value. BEM class names are already present, stable, and semantically tied to the component structure. Using them as test selectors keeps the component markup clean and avoids leaking test concerns into production output.
+13. **Test co-location — all tests live next to the component**
     - _Pattern_: All test files are placed directly alongside `component.tsx` in the same directory — **not** in a separate `test/` subdirectory. Two test categories exist:
       - **Snapshot tests** (`snapshot.spec.tsx`) — Jest-based DOM snapshot tests that render the component with various prop combinations via `executeSnapshotTests` and compare against stored snapshots (`__snapshots__/`). Snapshot files are likewise stored in the component directory.
       - **Interaction tests** (`interaction.e2e.ts`) — Playwright-based end-to-end tests that verify user interactions (clicks, keyboard input, focus management, event emission) against the rendered component in a real browser.

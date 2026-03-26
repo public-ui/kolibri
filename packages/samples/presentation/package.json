@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.1.2-rc.2",
+	"version": "4.1.2-rc.3",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -15,10 +15,10 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
-		"prebuild": "pnpm prepare",
-		"prepare": "npm-run-all2 prepare:*",
-		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"prepare:themes": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
+		"prebuild": "npm-run-all2 prebuild:*",
+		"prebuild:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
+		"prebuild:themes": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
+		"prepare": "pnpm prebuild",
 		"serve": "vite",
 		"start": "vite --open",
 		"unused": "knip"
@@ -31,15 +31,15 @@
 		"adopted-style-sheets": "1.1.9-rc.21",
 		"react": "19.2.4",
 		"react-dom": "19.2.4",
-		"react-router-dom": "7.13.1"
+		"react-router-dom": "7.13.2"
 	},
 	"devDependencies": {
 		"@eslint/js": "9.39.4",
 		"@types/node": "25.5.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
-		"@typescript-eslint/eslint-plugin": "8.57.1",
-		"@typescript-eslint/parser": "8.57.1",
+		"@typescript-eslint/eslint-plugin": "8.57.2",
+		"@typescript-eslint/parser": "8.57.2",
 		"@unocss/preset-mini": "66.6.7",
 		"@unocss/vite": "66.6.7",
 		"@vitejs/plugin-react-swc": "4.3.0",

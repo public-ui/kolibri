@@ -55,7 +55,7 @@ export const PopoverButtonBasic: FC = () => {
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolPopoverButton>
 				<KolPopoverButton _label="Help" _icons="kolicon-alert-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
-					<div className="w-sm p-2 border border-solid border-gray">
+					<div className="w-sm p-2 border border-solid border-gray bg-white">
 						<KolHeading _label="Help Information" _level={0}></KolHeading>
 						<p>
 							<u>Lorem ipsum dolor sit amet</u>, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!

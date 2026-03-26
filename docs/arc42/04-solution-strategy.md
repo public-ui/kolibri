@@ -4,15 +4,15 @@ This section presents the fundamental approach and key decisions that shape Publ
 
 ## 4.1 Technology Decisions
 
-| Decision | Rationale | Consequences |
-|----------|-----------|--------------|
-| **Web Components** | Framework-agnostic, standards-based, native browser support | Works with any framework, long-term stability, but requires polyfills for older browsers |
-| **Stencil.js** | Best-in-class web component compiler, generates framework adapters, excellent DX | Ties build process to Stencil, but provides tremendous value in code generation |
-| **Shadow DOM** | True style encapsulation, prevents CSS conflicts | Components are isolated but can't be styled from outside (by design) |
-| **TypeScript** | Type safety, better IDE support, catches errors early | Requires compilation step, but dramatically improves code quality |
-| **pnpm Workspace** | Efficient dependency management, fast installs, strict dependencies | More complex setup than npm, but better for monorepos |
-| **Adopted Style Sheets** | Efficient theme switching, style composition | Requires modern browser support, but enables powerful theming |
-| **SASS** | Variables, mixins, powerful theme authoring | Compilation required, but provides essential features for complex themes |
+| Decision                 | Rationale                                                                        | Consequences                                                                             |
+| ------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Web Components**       | Framework-agnostic, standards-based, native browser support                      | Works with any framework, long-term stability, but requires polyfills for older browsers |
+| **Stencil.js**           | Best-in-class web component compiler, generates framework adapters, excellent DX | Ties build process to Stencil, but provides tremendous value in code generation          |
+| **Shadow DOM**           | True style encapsulation, prevents CSS conflicts                                 | Components are isolated but can't be styled from outside (by design)                     |
+| **TypeScript**           | Type safety, better IDE support, catches errors early                            | Requires compilation step, but dramatically improves code quality                        |
+| **pnpm Workspace**       | Efficient dependency management, fast installs, strict dependencies              | More complex setup than npm, but better for monorepos                                    |
+| **Adopted Style Sheets** | Efficient theme switching, style composition                                     | Requires modern browser support, but enables powerful theming                            |
+| **SASS**                 | Variables, mixins, powerful theme authoring                                      | Compilation required, but provides essential features for complex themes                 |
 
 ## 4.2 Top-level Decomposition
 

@@ -4,15 +4,15 @@ Dieser Abschnitt präsentiert den grundlegenden Ansatz und die wichtigsten Entsc
 
 ## 4.1 Technologieentscheidungen
 
-| Entscheidung | Begründung | Konsequenzen |
-|----------|-----------|--------------|
-| **Web Components** | Framework-agnostisch, standardbasiert, native Browser-Unterstützung | Funktioniert mit jedem Framework, langfristige Stabilität, benötigt aber Polyfills für ältere Browser |
-| **Stencil.js** | Bester Web-Component-Compiler, generiert Framework-Adapter, exzellente DX | Bindet Build-Prozess an Stencil, bietet aber enormen Mehrwert bei der Codegenerierung |
-| **Shadow DOM** | Echte Style-Kapselung, verhindert CSS-Konflikte | Komponenten sind isoliert, können aber nicht von außen gestylt werden (by Design) |
-| **TypeScript** | Typsicherheit, bessere IDE-Unterstützung, erkennt Fehler früh | Erfordert Kompilierungsschritt, verbessert aber die Codequalität dramatisch |
-| **pnpm Workspace** | Effizientes Abhängigkeitsmanagement, schnelle Installationen, strikte Abhängigkeiten | Komplexeres Setup als npm, aber besser für Monorepos |
-| **Adopted Style Sheets** | Effizienter Theme-Wechsel, Style-Komposition | Erfordert moderne Browser-Unterstützung, ermöglicht aber mächtiges Theming |
-| **SASS** | Variablen, Mixins, mächtige Theme-Erstellung | Kompilierung erforderlich, bietet aber essenzielle Features für komplexe Themes |
+| Entscheidung             | Begründung                                                                           | Konsequenzen                                                                                          |
+| ------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| **Web Components**       | Framework-agnostisch, standardbasiert, native Browser-Unterstützung                  | Funktioniert mit jedem Framework, langfristige Stabilität, benötigt aber Polyfills für ältere Browser |
+| **Stencil.js**           | Bester Web-Component-Compiler, generiert Framework-Adapter, exzellente DX            | Bindet Build-Prozess an Stencil, bietet aber enormen Mehrwert bei der Codegenerierung                 |
+| **Shadow DOM**           | Echte Style-Kapselung, verhindert CSS-Konflikte                                      | Komponenten sind isoliert, können aber nicht von außen gestylt werden (by Design)                     |
+| **TypeScript**           | Typsicherheit, bessere IDE-Unterstützung, erkennt Fehler früh                        | Erfordert Kompilierungsschritt, verbessert aber die Codequalität dramatisch                           |
+| **pnpm Workspace**       | Effizientes Abhängigkeitsmanagement, schnelle Installationen, strikte Abhängigkeiten | Komplexeres Setup als npm, aber besser für Monorepos                                                  |
+| **Adopted Style Sheets** | Effizienter Theme-Wechsel, Style-Komposition                                         | Erfordert moderne Browser-Unterstützung, ermöglicht aber mächtiges Theming                            |
+| **SASS**                 | Variablen, Mixins, mächtige Theme-Erstellung                                         | Kompilierung erforderlich, bietet aber essenzielle Features für komplexe Themes                       |
 
 ## 4.2 Top-Level-Zerlegung
 

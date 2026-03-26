@@ -488,32 +488,32 @@ This section identifies and assesses potential risks to the Public UI - KoliBri 
 
 ### Assumptions
 
-| Assumption | Impact if Wrong | Verification |
-|-----------|----------------|--------------|
-| Web Components remain supported | Project foundation at risk | Monitor W3C standards |
-| Stencil continues development | Build system at risk | Monitor Stencil releases |
-| npm remains primary distribution | Distribution disruption | Package registry alternatives |
-| Modern browsers maintain compatibility | Breaking changes needed | Monitor browser releases |
-| Community continues to grow | Project sustainability | Track GitHub metrics |
+| Assumption                             | Impact if Wrong            | Verification                  |
+| -------------------------------------- | -------------------------- | ----------------------------- |
+| Web Components remain supported        | Project foundation at risk | Monitor W3C standards         |
+| Stencil continues development          | Build system at risk       | Monitor Stencil releases      |
+| npm remains primary distribution       | Distribution disruption    | Package registry alternatives |
+| Modern browsers maintain compatibility | Breaking changes needed    | Monitor browser releases      |
+| Community continues to grow            | Project sustainability     | Track GitHub metrics          |
 
 ### Critical Dependencies
 
-| Dependency | Purpose | Risk Mitigation |
-|-----------|---------|-----------------|
-| **Stencil.js** | Component compilation | Active monitoring, fork plan |
-| **TypeScript** | Type system | Well-maintained by Microsoft |
-| **pnpm** | Package management | Could switch to npm if needed |
-| **GitHub Actions** | CI/CD | Alternative CI platforms available |
-| **npm Registry** | Distribution | Multiple registry options |
-| **@floating-ui/dom** | Positioning logic | Could implement alternative |
-| **adopted-style-sheets** | Theming polyfill | Could fork if needed |
+| Dependency               | Purpose               | Risk Mitigation                    |
+| ------------------------ | --------------------- | ---------------------------------- |
+| **Stencil.js**           | Component compilation | Active monitoring, fork plan       |
+| **TypeScript**           | Type system           | Well-maintained by Microsoft       |
+| **pnpm**                 | Package management    | Could switch to npm if needed      |
+| **GitHub Actions**       | CI/CD                 | Alternative CI platforms available |
+| **npm Registry**         | Distribution          | Multiple registry options          |
+| **@floating-ui/dom**     | Positioning logic     | Could implement alternative        |
+| **adopted-style-sheets** | Theming polyfill      | Could fork if needed               |
 
 ### External Standards
 
-| Standard | Impact | Monitoring |
-|----------|--------|-----------|
-| **WCAG** | Accessibility compliance | W3C WAI working group |
-| **BITV** | German accessibility law | Government updates |
-| **W3C Web Components** | Core technology | W3C WICG |
-| **ES Standards** | JavaScript features | TC39 proposals |
-| **CSS Standards** | Styling capabilities | W3C CSS WG |
+| Standard               | Impact                   | Monitoring            |
+| ---------------------- | ------------------------ | --------------------- |
+| **WCAG**               | Accessibility compliance | W3C WAI working group |
+| **BITV**               | German accessibility law | Government updates    |
+| **W3C Web Components** | Core technology          | W3C WICG              |
+| **ES Standards**       | JavaScript features      | TC39 proposals        |
+| **CSS Standards**      | Styling capabilities     | W3C CSS WG            |

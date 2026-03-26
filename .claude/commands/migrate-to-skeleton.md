@@ -52,11 +52,11 @@ The [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md) is the *
    - `packages/components/src/internal/functional-components/skeleton/component.tsx`
 3. Create a **gap analysis** and output it as a Markdown table:
 
-| Aspect | Legacy (Current) | Skeleton (Target) | Action Required |
-|--------|-----------------|-------------------|-----------------|
-| Inheritance | None / custom | `BaseWebComponent<Api>` | Migrate |
-| Controller | None / inline | `BaseController<Api>` | Create |
-| ... | ... | ... | ... |
+| Aspect      | Legacy (Current) | Skeleton (Target)       | Action Required |
+| ----------- | ---------------- | ----------------------- | --------------- |
+| Inheritance | None / custom    | `BaseWebComponent<Api>` | Migrate         |
+| Controller  | None / inline    | `BaseController<Api>`   | Create          |
+| ...         | ...              | ...                     | ...             |
 
 ### Phase 2: Props-First — Establish Structure (CRITICAL — DO THIS FIRST!)
 
@@ -165,15 +165,15 @@ public componentWillLoad(): void {
 
 ```typescript
 export class MyController extends BaseController<MyApi> implements ControllerInterface<MyApi> {
-  public constructor(setState: SetStateFn<MyApi>, getState: GetStateFn<MyApi>) {
-    super(myPropsConfig, setState, getState);
-  }
+	public constructor(setState: SetStateFn<MyApi>, getState: GetStateFn<MyApi>) {
+		super(myPropsConfig, setState, getState);
+	}
 
-  public watchName(value?: string): void {
-    nameProp.apply(value, (v) => {
-      this.setRenderProp('name', v);
-    });
-  }
+	public watchName(value?: string): void {
+		nameProp.apply(value, (v) => {
+			this.setRenderProp('name', v);
+		});
+	}
 }
 ```
 
@@ -189,7 +189,7 @@ export class MyController extends BaseController<MyApi> implements ControllerInt
 - Underscored public props (`_name`, `_label`)
 - Tests co-located next to `component.tsx`
 - No `types.ts` files, no barrel files
-- **ARIA IDs via `nonce()`**: Any `id` referenced by `aria-controls`, `aria-labelledby`, `aria-describedby` or `aria-owns` must be unique per instance — declare as `private readonly myId = \`prefix-${nonce()}\`` using `nonce()` from `utils/dev.utils`
+- **ARIA IDs via `nonce()`**: Any `id` referenced by `aria-controls`, `aria-labelledby`, `aria-describedby` or `aria-owns` must be unique per instance — declare as `private readonly myId = \`prefix-${nonce()}\``using`nonce()`from`utils/dev.utils`
 - **Kein `data-testid`**: Tests verwenden BEM-Klassen als Selektoren (`page.locator('.kol-component__element')`), niemals `data-testid`-Attribute im Komponenten-Markup
 
 ---

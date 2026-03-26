@@ -1,11 +1,13 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/global' as *;
-@use '../popover/style.scss' as *;
 @use '../tooltip/style.scss' as *;
 @use '../@shared/icon.mixin' as *;
+@use '../@shared/popover-button.mixin' as *;
 
 @layer kol-component {
 	@include kol-icon-styles();
+	@include kol-popover-button-styles;
+
 	.kol-split-button {
 		display: flex;
 		position: relative;
@@ -20,14 +22,6 @@
 			min-width: 0;
 			flex: 1 1 auto;
 			text-align: left;
-		}
-
-		.kol-popover {
-			z-index: 1;
-
-			&__arrow {
-				display: none;
-			}
 		}
 	}
 }
