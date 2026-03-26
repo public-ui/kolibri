@@ -77,6 +77,10 @@ export class KolTreeWc implements TreeAPI, FocusableElement {
 
 	public disconnectedCallback(): void {
 		this.observer?.disconnect();
+		if (this.rafHandle !== undefined) {
+			cancelAnimationFrame(this.rafHandle);
+			this.rafHandle = undefined;
+		}
 	}
 
 	private observeChildListMutations() {
