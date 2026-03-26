@@ -176,16 +176,14 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Method() async focus() {
 		if (this.host && this.linkElement) {
-			const root = this.host.getRootNode();
-			const shadowHost = root instanceof ShadowRoot && root.host instanceof HTMLElement ? root.host : undefined;
-			return Promise.resolve(this.linkElement.focus(shadowHost ?? this.host));
+			return Promise.resolve(this.linkElement.focus());
 		}
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
 		if (this.host && this.linkElement) {
-			await this.linkElement.focus(this.host);
+			await this.linkElement.focus();
 		}
 		await this.expand();
 	}
@@ -209,7 +207,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private async handleCollapseClick(event: MouseEvent) {
 		event.preventDefault();
 		if (this.host && this.linkElement) {
-			await this.linkElement.focus(this.host);
+			await this.linkElement.focus();
 		}
 		await this.collapse();
 	}

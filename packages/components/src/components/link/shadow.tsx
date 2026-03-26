@@ -33,8 +33,8 @@ export class KolLink implements LinkProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkElement;
 	private linkWcRef?: HTMLKolLinkWcElement;
 
-	private readonly setLinkWcRef = (ref: HTMLKolLinkWcElement | null) => {
-		this.linkWcRef = ref || undefined;
+	private readonly setLinkWcRef = (ref?: HTMLKolLinkWcElement) => {
+		this.linkWcRef = ref;
 	};
 
 	/**

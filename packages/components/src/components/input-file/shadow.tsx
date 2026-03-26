@@ -53,8 +53,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
 	private readonly translateFilenameText = translate('kol-filename-text');
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	/**

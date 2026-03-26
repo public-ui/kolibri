@@ -45,8 +45,8 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly setButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
-		this.buttonWcRef = ref || undefined;
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
+		this.buttonWcRef = ref;
 	};
 
 	/**

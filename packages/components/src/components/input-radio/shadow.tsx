@@ -52,11 +52,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private inputRefs = new Map<number, HTMLInputElement>();
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
-	private readonly setInputRefByIndex = (index: number) => (ref: HTMLInputElement | null) => {
+	private readonly setInputRefByIndex = (index: number) => (ref?: HTMLInputElement) => {
 		if (ref) {
 			this.inputRefs.set(index, ref);
 		} else {
@@ -155,7 +155,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			state: this.state,
 			inputProps: {
 				id: id,
-				ref: (ref: HTMLInputElement | null) => {
+				ref: (ref?: HTMLInputElement) => {
 					this.setInputRefByIndex(index)(ref);
 					if (selected) {
 						this.setInputRef(ref);

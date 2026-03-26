@@ -66,8 +66,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	private textareaRef?: HTMLTextAreaElement;
 
-	private readonly setTextareaRef = (ref: HTMLTextAreaElement | null) => {
-		this.textareaRef = ref || undefined;
+	private readonly setTextareaRef = (ref?: HTMLTextAreaElement) => {
+		this.textareaRef = ref;
 	};
 
 	/**

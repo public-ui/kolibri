@@ -90,8 +90,8 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			}
 		}
 	};
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.refInput = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.refInput = ref;
 	};
 
 	private selectOption(option: string) {

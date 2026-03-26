@@ -166,8 +166,8 @@ export class KolTabs implements TabsAPI, FocusableElement {
 		return delegateFocus(this.host!, () => Promise.resolve(this.currentTabButtonRef?.focus?.()));
 	}
 
-	private readonly setCurrentTabButtonRef = (ref: HTMLKolButtonWcElement | null) => {
-		this.currentTabButtonRef = ref || undefined;
+	private readonly setCurrentTabButtonRef = (ref?: HTMLKolButtonWcElement) => {
+		this.currentTabButtonRef = ref;
 	};
 
 	private renderButtonGroup() {

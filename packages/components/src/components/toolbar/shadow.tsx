@@ -149,7 +149,7 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 		this.currentIndex = nextIndex;
 		const item = this.getCurrentToolbarItem(nextIndex);
 		if (this.host) {
-			void item?.focus(this.host);
+			void item?.focus();
 		}
 	}
 

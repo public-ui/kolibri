@@ -56,8 +56,8 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 		void this.ref?.showPopover();
 	}
 
-	private readonly setRef = (ref: HTMLKolPopoverButtonWcElement | null) => {
-		this.ref = ref || undefined;
+	private readonly setRef = (ref?: HTMLKolPopoverButtonWcElement) => {
+		this.ref = ref;
 	};
 
 	/**

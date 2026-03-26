@@ -29,8 +29,8 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	private readonly id = nonce();
 	private smartButtonRef?: HTMLKolButtonWcElement;
 
-	private readonly setSmartButtonRef = (ref: HTMLKolButtonWcElement | null) => {
-		this.smartButtonRef = ref || undefined;
+	private readonly setSmartButtonRef = (ref?: HTMLKolButtonWcElement) => {
+		this.smartButtonRef = ref;
 	};
 
 	private renderSmartButton(props: InternalButtonProps): JSX.Element {

@@ -54,8 +54,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	private getModelValue(): StencilUnknown {

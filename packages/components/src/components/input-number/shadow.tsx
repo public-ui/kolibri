@@ -53,8 +53,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	/**

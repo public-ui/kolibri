@@ -16,8 +16,8 @@ export class KolTree implements TreeProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolTreeElement;
 	private treeWcRef?: HTMLKolTreeWcElement;
 
-	private readonly setTreeWcRef = (ref: HTMLKolTreeWcElement | null) => {
-		this.treeWcRef = ref || undefined;
+	private readonly setTreeWcRef = (ref?: HTMLKolTreeWcElement) => {
+		this.treeWcRef = ref;
 	};
 
 	/**
