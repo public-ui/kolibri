@@ -43,7 +43,7 @@ test.describe(COMPONENT_NAME, () => {
 		expect(isFocused).toBe(true);
 	});
 
-	test(`should delegate focus to internal input when clicking on host element (delegatesFocus)`, async ({ page }) => {
+	test(`should focus internal input when clicking on host element`, async ({ page }) => {
 		await page.setContent(`<button>Before</button><kol-input-checkbox _label="Checkbox"></kol-input-checkbox><button>After</button>`);
 
 		const component = page.locator(COMPONENT_NAME);
@@ -58,7 +58,7 @@ test.describe(COMPONENT_NAME, () => {
 		expect(isFocused).toBe(true);
 	});
 
-	test(`should allow Tab navigation to reach internal input (delegatesFocus)`, async ({ page }) => {
+	test(`should allow Tab navigation to reach internal input`, async ({ page }) => {
 		await page.setContent(`<button>Before</button><kol-input-checkbox _label="Checkbox"></kol-input-checkbox><button>After</button>`);
 
 		const beforeButton = page.locator('button').first();
@@ -72,7 +72,7 @@ test.describe(COMPONENT_NAME, () => {
 		await page.keyboard.press('Tab');
 		await page.waitForChanges();
 
-		// Verify the internal input has focus (delegatesFocus should make host focusable)
+		// Verify the internal input has focus
 		const isFocused = await input.evaluate((el) => el === document.activeElement || (el.getRootNode() as ShadowRoot | Document).activeElement === el);
 		expect(isFocused).toBe(true);
 	});
