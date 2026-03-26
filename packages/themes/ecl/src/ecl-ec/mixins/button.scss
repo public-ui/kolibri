@@ -109,8 +109,11 @@
 			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
 			border-width: var(--button-border-width);
 
-			font-weight: var(--font-weight-bold);
 			line-height: 1.2;
+
+			&.kol-span--hide-label {
+				padding: var(--ecl-spacing-xs);
+			}
 		}
 	}
 }

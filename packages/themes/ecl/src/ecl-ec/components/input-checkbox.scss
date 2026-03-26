@@ -3,7 +3,7 @@
 @use '../mixins/required' as *;
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
+	@include alert;
 
 	.kol-form-field {
 		color: var(--color-grey);

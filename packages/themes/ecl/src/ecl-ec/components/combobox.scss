@@ -9,7 +9,7 @@ $option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
+	@include alert;
 	@include kol-custom-suggestions-option-theme($option-height);
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;

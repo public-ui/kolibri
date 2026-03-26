@@ -4,7 +4,7 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-alert-theme;
+	@include alert;
 
 	.kol-form {
 		width: 100%;

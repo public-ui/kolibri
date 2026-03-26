@@ -4,7 +4,7 @@
 @use '../mixins/required' as *;
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
+	@include alert;
 
 	/**
 	 * normalizes the layout of form elements.

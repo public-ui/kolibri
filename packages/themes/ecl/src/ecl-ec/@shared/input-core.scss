@@ -5,7 +5,7 @@
 @use '../mixins/input-container' as *;
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
+	@include alert;
 	@include kol-form-field-order-theme;
 	@include kol-form-field-theme;
 	@include kol-input-container-theme;

@@ -3,7 +3,7 @@
 @use './pagination-mixin' as *;
 
 @mixin kol-table-stateless-wc {
-	@include kol-alert-theme;
+	@include alert;
 	@include kol-pagination-styles;
 
 	:host {
