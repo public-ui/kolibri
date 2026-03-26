@@ -244,7 +244,7 @@ export class KolSelectWc implements SelectAPI {
 	@State() private inputHasFocus = false;
 
 	public constructor() {
-		this.controller = new SelectController(this, 'select', this.host as HTMLElement);
+		this.controller = new SelectController(this, 'select', this.host);
 	}
 
 	private showAsAlert(): boolean {

@@ -55,8 +55,8 @@ import { SpanFC } from '../../internal/functional-components/span/component';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { setFocus } from '../../utils/element-focus';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
@@ -121,14 +121,14 @@ export class KolButtonWc implements ButtonAPI {
 		}
 
 		if (this.host) {
-			dispatchDomEvent(this.host as HTMLElement, KolEvent.click, this.state._value);
+			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
 		}
 	};
 
 	private readonly onMouseDown = (event: MouseEvent) => {
 		this.state?._on?.onMouseDown?.(event);
 		if (this.host) {
-			dispatchDomEvent(this.host as HTMLElement, KolEvent.mousedown);
+			dispatchDomEvent(this.host, KolEvent.mousedown);
 		}
 	};
 
@@ -323,7 +323,7 @@ export class KolButtonWc implements ButtonAPI {
 	};
 
 	public constructor() {
-		this.controller = new AssociatedInputController(this, 'button', this.host as HTMLElement);
+		this.controller = new AssociatedInputController(this, 'button', this.host);
 	}
 
 	@Watch('_accessKey')
