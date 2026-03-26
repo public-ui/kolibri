@@ -14,7 +14,7 @@ sequenceDiagram
     participant Loader as Component Loader
     participant Browser as Browser
     participant Component as Web Component
-    
+
     App->>Register: register(theme, defineCustomElements)
     Register->>Theme: Load theme stylesheets
     Theme-->>Register: Adopted style sheets
@@ -23,9 +23,9 @@ sequenceDiagram
     Browser-->>Loader: Custom elements registered
     Loader-->>Register: Registration complete
     Register-->>App: Components ready
-    
+
     Note over Browser,Component: User adds component to DOM
-    
+
     Browser->>Component: connectedCallback()
     Component->>Component: Apply adopted style sheets
     Component->>Component: Initialize shadow DOM
@@ -73,23 +73,23 @@ sequenceDiagram
     participant Shadow as Shadow DOM
     participant Theme as Adopted Styles
     participant Props as Component Props
-    
+
     User->>Browser: Add <kol-component> to DOM
     Browser->>Component: connectedCallback()
     Component->>Shadow: attachShadow({mode: 'open'})
     Shadow-->>Component: Shadow root created
-    
+
     Component->>Theme: adoptStyleSheets()
     Theme-->>Component: Styles applied
-    
+
     Component->>Props: Initialize props with defaults
     Props-->>Component: Props ready
-    
+
     Component->>Component: componentWillLoad()
     Component->>Component: render()
     Component->>Shadow: Update shadow DOM with JSX
     Shadow-->>Browser: Component rendered
-    
+
     User->>Component: Update prop value
     Component->>Props: Validate new value
     Props-->>Component: Validation passed
@@ -127,19 +127,19 @@ sequenceDiagram
     participant EventSystem as Event System
     participant App as Application
     participant Framework as Framework Adapter
-    
+
     User->>Component: Click button
     Component->>Component: handleClick()
     Component->>EventSystem: Emit CustomEvent('click')
     EventSystem->>Framework: Catch event
     Framework->>App: Call onClick handler
     App->>App: Execute business logic
-    
+
     opt Update component
         App->>Component: Update props
         Component->>Component: Re-render
     end
-    
+
     Component-->>User: Visual feedback (ripple, focus)
 ```
 
@@ -170,18 +170,18 @@ sequenceDiagram
     participant Components as All Components
     participant Styles as Style Sheets
     participant Browser as Browser
-    
+
     App->>Manager: switchTheme(newTheme)
     Manager->>Styles: Load new theme CSS
     Styles-->>Manager: Theme CSS loaded
-    
+
     loop For each component
         Manager->>Components: Update adopted style sheets
         Components->>Browser: Replace style sheets
         Browser->>Browser: Re-render with new styles
         Browser-->>Components: Styles applied
     end
-    
+
     Manager-->>App: Theme switch complete
 ```
 
@@ -217,10 +217,10 @@ sequenceDiagram
     participant Validator as Validation Logic
     participant ErrorMsg as Error Message
     participant Form as Form Context
-    
+
     User->>Input: Enter value
     Input->>Validator: Validate input
-    
+
     alt Valid input
         Validator-->>Input: Validation passed
         Input->>ErrorMsg: Clear error message
@@ -232,12 +232,12 @@ sequenceDiagram
         Input->>Form: Update form state (invalid)
         Input->>Input: Update visual state (error)
     end
-    
+
     Input-->>User: Visual feedback
-    
+
     User->>Form: Submit form
     Form->>Form: Check all inputs
-    
+
     alt All valid
         Form->>Form: Process form data
     else Has errors
@@ -276,18 +276,18 @@ sequenceDiagram
     participant Browser as Browser
     participant Bundle as Component Bundle
     participant Component as KolComponent
-    
+
     App->>Browser: Add <kol-table> to DOM
     Browser->>Loader: Unknown element detected
     Loader->>Bundle: Load table.js bundle
-    
+
     alt First use
         Bundle-->>Loader: Download component code
         Loader->>Browser: Define custom element
     else Already loaded
         Bundle-->>Loader: Component in cache
     end
-    
+
     Browser->>Component: Create component instance
     Component->>Component: Initialize and render
     Component-->>Browser: Component ready
@@ -324,7 +324,7 @@ sequenceDiagram
     participant Component as KolComponent
     participant ARIA as ARIA Attributes
     participant Keyboard as Keyboard Handler
-    
+
     User->>AT: Navigate with keyboard
     AT->>Browser: Query accessibility tree
     Browser->>Component: Read ARIA attributes
@@ -332,7 +332,7 @@ sequenceDiagram
     ARIA-->>Browser: Accessibility info
     Browser-->>AT: Announce component
     AT-->>User: "Button, Submit, press Enter to activate"
-    
+
     User->>Keyboard: Press Enter
     Keyboard->>Component: Keyboard event
     Component->>Component: Handle key press
