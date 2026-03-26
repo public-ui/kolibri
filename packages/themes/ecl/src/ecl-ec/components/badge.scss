@@ -5,8 +5,9 @@
 	@include icons;
 
 	.kol-badge {
-		padding: var(--ecl-spacing-2xs) var(--ecl-spacing-s);
 		border-radius: 12px;
+		padding: var(--ecl-spacing-2xs) var(--ecl-spacing-s);
+
 		font-size: var(--ecl-font-size-s);
 
 		&__smart-button {
@@ -21,8 +22,8 @@
 				}
 
 				&:hover {
-					background-color: var(--ecl-color-primary);
 					color: var(--ecl-color-white);
+					background-color: var(--ecl-color-primary);
 				}
 			}
 		}

@@ -39,9 +39,6 @@
 
 				text-decoration: none;
 
-				&:focus-visible {
-				}
-
 				.kol-span__icon--right {
 					transform: rotate(180deg);
 					&::before {
@@ -60,13 +57,14 @@
 			position: relative;
 
 			&::before {
-				content: '';
+				background-color: var(--ecl-color-primary);
 				position: absolute;
 				top: 0;
-				left: 0;
 				bottom: 0;
+				left: 0;
 				width: 4px;
-				background-color: var(--ecl-color-primary);
+
+				content: '';
 			}
 
 			& > .kol-nav__entry-wrapper .kol-span__icon--right {
@@ -82,22 +80,22 @@
 				.kol-span {
 					&__container {
 						display: grid;
+						gap: 0;
 						justify-content: flex-start;
 						grid-template-areas: 'expander deco label';
 						grid-template-columns: 24px min-content 1fr;
-						gap: 0;
 					}
 
 					&__icon--left {
-						grid-area: deco;
 						margin-right: to-rem(8);
+						grid-area: deco;
 					}
 
 					&__icon--right {
-						grid-area: expander;
+						transform: rotate(90deg);
 						width: to-rem(16);
 						margin-right: to-rem(8);
-						transform: rotate(90deg);
+						grid-area: expander;
 
 						&::before {
 							content: '\ea50';

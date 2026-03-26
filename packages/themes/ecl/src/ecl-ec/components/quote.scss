@@ -2,21 +2,23 @@
 
 @layer kol-theme-component {
 	.kol-quote--block {
-		display: block;
-		border-inline-start: 4px solid var(--ecl-color-primary);
-		border-radius: 2px;
 		box-shadow: var(--ecl-shadow-1);
+		border-radius: 2px;
+		display: block;
 		padding: var(--ecl-spacing-3xl);
+		border-inline-start: 4px solid var(--ecl-color-primary);
 
 		.kol-quote__blockquote {
 			margin: 0;
+
 			font-size: var(--ecl-font-size-l);
 		}
 
 		.kol-quote__cite {
 			display: inline-block;
-			font-weight: 700;
 			margin-top: var(--ecl-spacing-m);
+
+			font-weight: 700;
 
 			&::before {
 				display: none;

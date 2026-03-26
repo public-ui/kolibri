@@ -102,12 +102,12 @@
 			background-color: var(--button-background-color);
 			border-color: var(--button-border-color);
 			border-style: solid;
-			border-width: var(--button-border-width);
 
 			border-radius: 2px;
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
+			border-width: var(--button-border-width);
 
 			font-weight: var(--font-weight-bold);
 			line-height: 1.2;

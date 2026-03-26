@@ -22,7 +22,7 @@
 				}
 
 				.kol-icon {
-					font-family: 'ecl-icons';
+					font-family: ecl-icons;
 					&::before {
 						content: '\ea46';
 					}
@@ -32,7 +32,7 @@
 					padding-bottom: var(--ecl-spacing-l);
 
 					.kol-icon {
-						font-family: 'ecl-icons';
+						font-family: ecl-icons;
 						&::before {
 							content: '\ea38';
 						}
@@ -41,8 +41,8 @@
 			}
 
 			.kol-span__container {
-				flex-direction: row-reverse;
 				width: 100%;
+				flex-direction: row-reverse;
 				justify-content: space-between;
 			}
 		}

@@ -7,9 +7,9 @@
 
 		background-color: var(--ecl-color-white);
 		box-shadow: var(--ecl-shadow-1);
+		border-radius: 0 0 2px 2px;
 		border: 1px solid var(--ecl-color-stroke);
 		border-bottom: 4px solid var(--ecl-color-primary);
-		border-radius: 0 0 2px 2px;
 
 		&__header {
 			display: block;

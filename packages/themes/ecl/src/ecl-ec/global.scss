@@ -42,17 +42,17 @@
 		--ecl-color-dark-100: #26324b;
 		--ecl-color-dark-80: #546fa6;
 		--ecl-color-dark-60: #9ac;
-		--ecl-color-dark-06-o: rgba(38, 50, 75, 0.06);
-		--ecl-color-dark-05-o: rgba(38, 50, 75, 0.05);
+		--ecl-color-dark-06-o: rgb(38, 50, 75, 0.06);
+		--ecl-color-dark-05-o: rgb(38, 50, 75, 0.05);
 		--ecl-color-info: var(--ecl-color-primary-100);
 		--ecl-color-success: #24a148;
 		--ecl-color-error: #da1e28;
 		--ecl-color-warning: #f39811;
 		--ecl-color-background: #fcfcfc;
 		--ecl-color-branding: #004494;
-		--ecl-color-stroke: color-mix(in srgb, var(--c-p) 50%, transparent);
-		--ecl-color-overlay-light: color-mix(in srgb, var(--c-d) 70%, transparent);
-		--ecl-color-overlay-dark: color-mix(in srgb, var(--c-d) 90%, transparent);
+		--ecl-color-stroke: color-mix(in srgb, var(--ecl-color-primary) 50%, transparent);
+		--ecl-color-overlay-light: color-mix(in srgb, var(--ecl-color-dark) 70%, transparent);
+		--ecl-color-overlay-dark: color-mix(in srgb, var(--ecl-color-dark) 90%, transparent);
 		--ecl-color-white: #fff;
 		--ecl-color-neutral: var(--ecl-color-neutral-100);
 		--ecl-color-neutral-180: #6c85d1;
@@ -72,8 +72,6 @@
 		--ecl-color-accent-80: #bfb2ff;
 		--ecl-color-accent-60: #d1ccff;
 		--ecl-color-accent-40: #fafaff;
-
-		--ecl-color-stroke: color-mix(in srgb, var(--ecl-color-primary) 50%, transparent);
 
 		--ecl-font-family-default: arial, sans-serif;
 		--ecl-font-size: #{to-rem(16)};
@@ -126,10 +124,11 @@
 	}
 
 	:host {
-		font-family: var(--ecl-font-family-default);
-		font-weight: var(--ecl-font-weight);
 		color: var(--ecl-color-dark);
+
+		font-family: var(--ecl-font-family-default);
 		font-size: var(--ecl-font-size-m);
+		font-weight: var(--ecl-font-weight);
 		line-height: var(--ecl-line-height-m);
 	}
 

@@ -13,22 +13,25 @@
 			}
 		}
 		&.kolicon-chevron-down {
-			font-family: ecl-icons;
 			transform: rotate(180deg);
+
+			font-family: ecl-icons;
 			&::before {
 				content: '\ea11';
 			}
 		}
 		&.kolicon-chevron-left {
-			font-family: ecl-icons;
 			transform: rotate(-90deg);
+
+			font-family: ecl-icons;
 			&::before {
 				content: '\ea11';
 			}
 		}
 		&.kolicon-chevron-right {
-			font-family: ecl-icons;
 			transform: rotate(90deg);
+
+			font-family: ecl-icons;
 			&::before {
 				content: '\ea11';
 			}
@@ -151,8 +154,9 @@
 		}
 
 		&.kolicon-sort-desc {
-			font-family: ecl-icons;
 			transform: rotate(180deg);
+
+			font-family: ecl-icons;
 			&::before {
 				content: '\ea50';
 			}
