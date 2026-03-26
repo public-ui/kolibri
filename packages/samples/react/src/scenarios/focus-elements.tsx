@@ -38,7 +38,8 @@ import { SampleDescription } from '../components/SampleDescription';
 
 const getFocusElements = () => {
 	// Blocklist: Components excluded from focus testing (breadcrumb, dialog, drawer, form, modal, nav, pagination)
-	// These components have special behaviors (navigation, popovers, modals, forms, pagination) that conflict with automated focus tests.
+	// These components have special behaviors (navigation, modals, forms, pagination) that conflict with automated focus tests.
+	// Note: popover-based components (e.g. popoverButton, splitButton) are included since their primary button element is focusable.
 	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();
 	focusElements.set('accordion', (_, ref) => <KolAccordion className="w-full" _label="Accordion here" ref={ref} />);
 	focusElements.set('badge', (_, ref) => (
