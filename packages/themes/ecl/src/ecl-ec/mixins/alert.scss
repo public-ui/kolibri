@@ -13,7 +13,6 @@
 	.kol-alert {
 		@include icons();
 		@include button('kol-button');
-		$root: &;
 
 		&--variant-msg {
 			.kol-alert__icon {
@@ -32,6 +31,10 @@
 			.kol-alert__icon {
 				font-size: to-rem(32);
 				margin-right: var(--ecl-spacing-xs);
+			}
+
+			.kol-alert__content {
+				margin-left: to-rem(40);
 			}
 		}
 
@@ -72,12 +75,6 @@
 				.kol-icon {
 					font-size: to-rem(24);
 				}
-			}
-		}
-
-		&__content {
-			@at-root #{$root}--variant-card & {
-				margin-left: to-rem(40);
 			}
 		}
 	}
