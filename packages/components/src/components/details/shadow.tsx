@@ -31,8 +31,8 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	private readonly nonce = nonce();
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly setButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
-		this.buttonWcRef = ref || undefined;
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
+		this.buttonWcRef = ref;
 	};
 
 	/**

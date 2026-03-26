@@ -59,8 +59,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	/**

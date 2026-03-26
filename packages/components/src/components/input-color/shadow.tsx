@@ -46,11 +46,11 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private refInputText?: HTMLInputElement;
 	private refInputColor?: HTMLInputElement;
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.refInputText = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.refInputText = ref;
 	};
-	private readonly setColorRef = (ref: HTMLInputElement | null) => {
-		this.refInputColor = ref || undefined;
+	private readonly setColorRef = (ref?: HTMLInputElement) => {
+		this.refInputColor = ref;
 	};
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);

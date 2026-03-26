@@ -54,8 +54,8 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputEmailElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	/**

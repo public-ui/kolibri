@@ -57,8 +57,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private oldValue?: string;
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	private readonly onBlur = (event: FocusEvent) => {

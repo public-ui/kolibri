@@ -56,8 +56,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	@State() private _initialValueType: 'Date' | 'String' | null = null;
 
-	private readonly setInputRef = (ref: HTMLInputElement | null) => {
-		this.inputRef = ref || undefined;
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
 	};
 
 	/**

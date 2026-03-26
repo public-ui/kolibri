@@ -35,8 +35,8 @@ export class KolSelect implements SelectProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectElement;
 	private selectWcRef?: HTMLKolSelectWcElement;
 
-	private readonly setSelectWcRef = (ref: HTMLKolSelectWcElement | null) => {
-		this.selectWcRef = ref || undefined;
+	private readonly setSelectWcRef = (ref?: HTMLKolSelectWcElement) => {
+		this.selectWcRef = ref;
 	};
 
 	/**

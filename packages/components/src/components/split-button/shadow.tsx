@@ -41,12 +41,12 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
 
-	private readonly setPrimaryButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
-		this.primaryButtonWcRef = ref || undefined;
+	private readonly setPrimaryButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
+		this.primaryButtonWcRef = ref;
 	};
 
-	private readonly setPopoverButtonRef = (ref: HTMLKolPopoverButtonWcElement | null) => {
-		this.popoverButtonRef = ref || undefined;
+	private readonly setPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
+		this.popoverButtonRef = ref;
 	};
 
 	/**

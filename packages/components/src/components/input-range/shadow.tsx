@@ -58,7 +58,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
 	}
 
-	private readonly setInputNumberRef = (element: HTMLInputElement | null) => {
+	private readonly setInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
 			if (!this._value && this.refInputNumber?.value) {
@@ -67,7 +67,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		}
 	};
 
-	private readonly setInputRangeRef = (element: HTMLInputElement | null) => {
+	private readonly setInputRangeRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputRange = element;
 		}
