@@ -47,14 +47,30 @@ export async function delegateFocus(host: HTMLElement, callback: () => Promise<v
 		await callback();
 	} catch {
 		throw new Error(
-			`The interactive element inside the KoliBri web compontent could not be focused. Try calling the focus method on the web component after a short delay again.`,
+			`The interactive element inside the KoliBri web component could not be focused. Try calling the focus method on the web component after a short delay again.`,
 		);
 	}
 }
 
 /**
+ * Checks whether the given element is currently the active element.
+ * Handles elements inside a Shadow DOM by querying the shadow root's `activeElement`
+ * instead of `document.activeElement`, which only reflects the shadow host in that case.
+ *
+ * @param element - The element to check
+ */
+function isActiveElement(element: HTMLElement): boolean {
+	const root = element.getRootNode();
+	if (root instanceof ShadowRoot) {
+		return root.activeElement === element;
+	}
+	return document.activeElement === element;
+}
+
+/**
  * Attempts to focus the given element on each animation frame until
- * `document.activeElement` matches it or the maximum number of attempts is reached.
+ * it becomes the active element or the maximum number of attempts is reached.
+ * Uses {@link isActiveElement} to correctly detect focus inside Shadow DOM.
  *
  * @param element - The element to focus
  * @see MAX_FOCUS_ATTEMPTS
@@ -67,5 +83,5 @@ export async function setFocus(element: HTMLElement): Promise<void> {
 		}
 		await new Promise((r) => requestAnimationFrame(r));
 		attempts++;
-	} while (document.activeElement !== element && attempts < MAX_FOCUS_ATTEMPTS);
+	} while (!isActiveElement(element) && attempts < MAX_FOCUS_ATTEMPTS);
 }
