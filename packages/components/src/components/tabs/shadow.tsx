@@ -32,6 +32,7 @@ import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
 import clsx from '../../utils/clsx';
+import { delegateFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -162,15 +163,11 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.currentTabButtonRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.currentTabButtonRef?.focus?.());
 	}
 
-	private readonly catchTabButtonRef = (ref?: HTMLKolButtonWcElement) => {
-		if (ref) {
-			this.currentTabButtonRef = ref;
-		}
+	private readonly setCurrentTabButtonRef = (ref: HTMLKolButtonWcElement | null) => {
+		this.currentTabButtonRef = ref || undefined;
 	};
 
 	private renderButtonGroup() {
@@ -180,7 +177,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 			<div aria-label={this.state._label} class="kol-tabs__button-group" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
-						ref={this.state._selected === index ? this.catchTabButtonRef : undefined}
+						ref={this.state._selected === index ? this.setCurrentTabButtonRef : undefined}
 						_disabled={button._disabled}
 						_icons={button._icons}
 						_hideLabel={button._hideLabel}

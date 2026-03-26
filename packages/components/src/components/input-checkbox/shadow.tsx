@@ -54,8 +54,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	private getModelValue(): StencilUnknown {
@@ -76,7 +76,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -113,7 +113,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				class: clsx({
 					'visually-hidden': this.state._variant === 'button',
 				}),
-				ref: this.catchRef,
+				ref: this.setInputRef,
 				...this.controller.onFacade,
 				onInput: this.onInput,
 				onChange: this.onChange,

@@ -2,6 +2,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
 import { validateLabel } from '../../schema';
 
+import { delegateFocus } from '../../utils/element-focus';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
@@ -43,9 +44,7 @@ export class KolSkipNav implements SkipNavAPI {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.firstLinkRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.firstLinkRef?.focus?.());
 	}
 
 	/**

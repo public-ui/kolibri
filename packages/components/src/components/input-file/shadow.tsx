@@ -53,8 +53,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
 	private readonly translateFilenameText = translate('kol-filename-text');
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	/**
@@ -71,7 +71,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	/**
@@ -100,7 +100,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'file',
 			accept: this.state._accept,

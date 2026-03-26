@@ -14,6 +14,7 @@ import type {
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -44,8 +45,8 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	private readonly nonce = nonce();
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
+	private readonly setButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
+		this.buttonWcRef = ref || undefined;
 	};
 
 	/**
@@ -53,9 +54,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.buttonWcRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.buttonWcRef?.focus?.());
 	}
 
 	private handleOnClick = (event: MouseEvent) => {
@@ -89,7 +88,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
 			HeadingButtonProps: {
-				ref: this.catchRef,
+				ref: this.setButtonWcRef,
 				class: `${rootClass}__heading-button`,
 			},
 			ContentProps: {

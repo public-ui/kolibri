@@ -21,6 +21,7 @@ import type {
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
+import { delegateFocus } from '../../utils/element-focus';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -40,12 +41,12 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
 
-	private readonly catchPrimaryRef = (ref?: HTMLKolButtonWcElement) => {
-		this.primaryButtonWcRef = ref;
+	private readonly setPrimaryButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
+		this.primaryButtonWcRef = ref || undefined;
 	};
 
-	private readonly catchPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
-		this.popoverButtonRef = ref;
+	private readonly setPopoverButtonRef = (ref: HTMLKolPopoverButtonWcElement | null) => {
+		this.popoverButtonRef = ref || undefined;
 	};
 
 	/**
@@ -62,9 +63,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.primaryButtonWcRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.primaryButtonWcRef?.focus?.());
 	}
 
 	private readonly clickButtonHandler = {
@@ -87,7 +86,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 							[this._variant as string]: this._variant !== 'custom',
 							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 						})}
-						ref={this.catchPrimaryRef}
+						ref={this.setPrimaryButtonWcRef}
 						_accessKey={this._accessKey}
 						_ariaControls={this._ariaControls}
 						_ariaDescription={this._ariaDescription}
@@ -110,7 +109,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 					<div class="kol-split-button__horizontal-line"></div>
 					<KolPopoverButtonWcTag
 						class="kol-split-button__secondary-button"
-						ref={this.catchPopoverButtonRef}
+						ref={this.setPopoverButtonRef}
 						_disabled={this._disabled}
 						_hideLabel
 						_icons="kolicon-chevron-down"

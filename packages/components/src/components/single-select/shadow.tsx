@@ -77,11 +77,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.refInput);
+		return delegateFocus(this.host!, async () => this.refInput?.focus?.());
 	}
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.refInput = ref;
+	private readonly setRefInput = (ref: HTMLInputElement | null) => {
+		this.refInput = ref || undefined;
 	};
 
 	private toggleListbox = (event: Event) => {
@@ -308,7 +308,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			disabled: isDisabled,
 			name: this.state._name,
 			placeholder: this.state._placeholder,
-			ref: this.catchRef,
+			ref: this.setRefInput,
 			required: this.state._required,
 			role: 'combobox',
 			state: this.state,

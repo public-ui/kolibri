@@ -19,6 +19,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { delegateFocus } from '../../utils/element-focus';
 
 /**
  * The **Button** component is used to present users with action options and arrange them in a clear hierarchy. It helps users find the most important actions on a page or within a viewport and allows them to execute those actions. The button label clearly indicates which action will be triggered. Buttons allow users to confirm a change, complete steps in a task, or make decisions.
@@ -36,8 +37,8 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
+	private readonly setButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
+		this.buttonWcRef = ref || undefined;
 	};
 
 	/**
@@ -54,15 +55,13 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.buttonWcRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.buttonWcRef?.focus?.());
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchRef}
+				ref={this.setButtonWcRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}

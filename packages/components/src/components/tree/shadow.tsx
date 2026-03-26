@@ -16,6 +16,10 @@ export class KolTree implements TreeProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolTreeElement;
 	private treeWcRef?: HTMLKolTreeWcElement;
 
+	private readonly setTreeWcRef = (ref: HTMLKolTreeWcElement | null) => {
+		this.treeWcRef = ref || undefined;
+	};
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -26,16 +30,12 @@ export class KolTree implements TreeProps, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.treeWcRef);
+		return delegateFocus(this.host!, async () => this.treeWcRef?.focus?.());
 	}
-
-	private readonly catchTreeRef = (ref?: HTMLKolTreeWcElement) => {
-		this.treeWcRef = ref;
-	};
 
 	public render(): JSX.Element {
 		return (
-			<KolTreeWcTag _label={this._label} ref={this.catchTreeRef}>
+			<KolTreeWcTag _label={this._label} ref={this.setTreeWcRef}>
 				<slot />
 			</KolTreeWcTag>
 		);

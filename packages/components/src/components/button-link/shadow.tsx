@@ -19,6 +19,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { delegateFocus } from '../../utils/element-focus';
 
 /**
  * The **ButtonLink** component is semantically a button but has the appearance of a link. All relevant properties of the Button component are adopted and extended with the design-defining properties of a link.
@@ -44,8 +45,8 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
+	private readonly setButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
+		this.buttonWcRef = ref || undefined;
 	};
 
 	/**
@@ -62,15 +63,13 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.buttonWcRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.buttonWcRef?.focus?.());
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchRef}
+				ref={this.setButtonWcRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}

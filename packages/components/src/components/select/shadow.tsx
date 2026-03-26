@@ -19,6 +19,7 @@ import type {
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
+import { delegateFocus } from '../../utils/element-focus';
 
 /**
  * @slot - The label of the input field.
@@ -34,8 +35,8 @@ export class KolSelect implements SelectProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectElement;
 	private selectWcRef?: HTMLKolSelectWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolSelectWcElement) => {
-		this.selectWcRef = ref;
+	private readonly setSelectWcRef = (ref: HTMLKolSelectWcElement | null) => {
+		this.selectWcRef = ref || undefined;
 	};
 
 	/**
@@ -51,16 +52,14 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			await this.selectWcRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.selectWcRef?.focus?.());
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-select">
 				<KolSelectWcTag
-					ref={this.catchRef}
+					ref={this.setSelectWcRef}
 					_accessKey={this._accessKey}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
