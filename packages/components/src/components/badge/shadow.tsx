@@ -8,6 +8,7 @@ import { nonce } from '../../utils/dev.utils';
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import clsx from '../../utils/clsx';
+import { delegateFocus } from '../../utils/element-focus';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 /**
@@ -28,14 +29,14 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	private readonly id = nonce();
 	private smartButtonRef?: HTMLKolButtonWcElement;
 
-	private readonly catchSmartButtonRef = (ref?: HTMLKolButtonWcElement) => {
-		this.smartButtonRef = ref;
+	private readonly setSmartButtonRef = (ref: HTMLKolButtonWcElement | null) => {
+		this.smartButtonRef = ref || undefined;
 	};
 
 	private renderSmartButton(props: InternalButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchSmartButtonRef}
+				ref={this.setSmartButtonRef}
 				class="kol-badge__smart-button"
 				_ariaControls={this.id}
 				_ariaDescription={props._ariaDescription}
@@ -57,9 +58,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		if (this.host) {
-			return this.smartButtonRef?.focus(this.host);
-		}
+		return delegateFocus(this.host!, async () => this.smartButtonRef?.focus?.());
 	}
 
 	public render(): JSX.Element {

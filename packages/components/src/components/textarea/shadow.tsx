@@ -66,8 +66,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	private textareaRef?: HTMLTextAreaElement;
 
-	private readonly catchRef = (ref?: HTMLTextAreaElement) => {
-		this.textareaRef = ref;
+	private readonly setTextareaRef = (ref: HTMLTextAreaElement | null) => {
+		this.textareaRef = ref || undefined;
 	};
 
 	/**
@@ -84,7 +84,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.textareaRef);
+		return delegateFocus(this.host!, async () => this.textareaRef?.focus?.());
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -103,7 +103,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setTextareaRef,
 			state: this.state,
 			style: {
 				resize: this.state._resize,

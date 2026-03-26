@@ -52,8 +52,8 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
-import { delegateFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { setFocus } from '../../utils/element-focus';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
@@ -78,8 +78,12 @@ export class KolLinkWc implements InternalLinkAPI {
 
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
-	private readonly catchRef = (ref?: HTMLAnchorElement) => {
-		this.anchorRef = ref;
+	private readonly setAnchorRef = (ref: HTMLAnchorElement | null) => {
+		this.anchorRef = ref || undefined;
+	};
+
+	private readonly setTooltipRef = (ref: HTMLKolTooltipWcElement | null) => {
+		this.tooltipRef = ref || undefined;
 	};
 
 	private readonly hideTooltip = () => {
@@ -90,8 +94,8 @@ export class KolLinkWc implements InternalLinkAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(host: HTMLElement): Promise<void> {
-		await delegateFocus(host, this.anchorRef);
+	public async focus(): Promise<void> {
+		return setFocus(this.anchorRef!);
 	}
 
 	private readonly onClick = (event: Event) => {
@@ -155,7 +159,7 @@ export class KolLinkWc implements InternalLinkAPI {
 		return (
 			<Host>
 				<a
-					ref={this.catchRef}
+					ref={this.setAnchorRef}
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
@@ -213,7 +217,7 @@ export class KolLinkWc implements InternalLinkAPI {
 						 */
 						aria-hidden="true"
 						class="kol-link__tooltip"
-						ref={(ref) => (this.tooltipRef = ref)}
+						ref={this.setTooltipRef}
 						hidden={hasExpertSlot}
 						_badgeText={this.state._accessKey || this.state._shortKey}
 						_align={this.state._tooltipAlign}

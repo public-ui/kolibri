@@ -53,8 +53,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	/**
@@ -71,7 +71,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {
@@ -134,7 +134,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'number',
 			...this.controller.onFacade,

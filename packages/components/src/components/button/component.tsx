@@ -55,8 +55,8 @@ import { SpanFC } from '../../internal/functional-components/span/component';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
-import { delegateFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { setFocus } from '../../utils/element-focus';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
@@ -76,9 +76,17 @@ export class KolButtonWc implements ButtonAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(host: HTMLElement): Promise<void> {
-		await delegateFocus(host, this.buttonRef);
+	public async focus(): Promise<void> {
+		return setFocus(this.buttonRef!);
 	}
+
+	private readonly setButtonRef = (ref: HTMLButtonElement | null) => {
+		this.buttonRef = ref || undefined;
+	};
+
+	private readonly setTooltipRef = (ref: HTMLKolTooltipWcElement | null) => {
+		this.tooltipRef = ref || undefined;
+	};
 
 	private readonly hideTooltip = () => {
 		void this.tooltipRef?.hideTooltip();
@@ -134,7 +142,7 @@ export class KolButtonWc implements ButtonAPI {
 		return (
 			<Host>
 				<button
-					ref={(ref) => (this.buttonRef = ref)}
+					ref={this.setButtonRef}
 					accessKey={this.state._accessKey}
 					aria-controls={this.state._ariaControls}
 					aria-description={ariaDescription || undefined}
@@ -166,7 +174,7 @@ export class KolButtonWc implements ButtonAPI {
 				</button>
 				{hideLabel && (
 					<KolTooltipWcTag
-						ref={(ref) => (this.tooltipRef = ref)}
+						ref={this.setTooltipRef}
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.

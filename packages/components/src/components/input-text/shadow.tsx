@@ -57,8 +57,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private oldValue?: string;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	private readonly onBlur = (event: FocusEvent) => {
@@ -111,7 +111,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	/**
@@ -177,7 +177,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,

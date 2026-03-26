@@ -29,7 +29,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
@@ -45,8 +45,8 @@ export class KolSelectWc implements SelectAPI {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	private selectRef?: HTMLSelectElement;
 
-	private readonly catchRef = (ref?: HTMLSelectElement) => {
-		this.selectRef = ref;
+	private readonly setSelectRef = (ref: HTMLSelectElement | null) => {
+		this.selectRef = ref || undefined;
 	};
 
 	/**
@@ -66,8 +66,8 @@ export class KolSelectWc implements SelectAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(host: HTMLElement): Promise<void> {
-		await delegateFocus(host, this.selectRef);
+	public async focus(): Promise<void> {
+		return setFocus(this.selectRef!);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -84,7 +84,7 @@ export class KolSelectWc implements SelectAPI {
 
 	private getSelectProps(): SelectStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setSelectRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),

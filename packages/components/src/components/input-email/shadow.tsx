@@ -54,8 +54,8 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputEmailElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	/**
@@ -72,7 +72,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -107,7 +107,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'email',
 			ariaDescribedBy,

@@ -46,11 +46,11 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private refInputText?: HTMLInputElement;
 	private refInputColor?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.refInputText = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.refInputText = ref || undefined;
 	};
-	private readonly catchColorRef = (ref?: HTMLInputElement) => {
-		this.refInputColor = ref;
+	private readonly setColorRef = (ref: HTMLInputElement | null) => {
+		this.refInputColor = ref || undefined;
 	};
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
@@ -97,7 +97,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.refInputText);
+		return delegateFocus(this.host!, async () => this.refInputText?.focus?.());
 	}
 
 	private get hasSuggestions(): boolean {
@@ -116,7 +116,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private getInputColorProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
-			ref: this.catchColorRef,
+			ref: this.setColorRef,
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
@@ -129,7 +129,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private getInputTextProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			type: 'text',
 			name: this.state._name ? `${this.state._name}-text` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,

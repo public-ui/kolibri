@@ -24,6 +24,7 @@ import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { setFocus } from '../../utils/element-focus';
 
 /**
  * @internal
@@ -90,8 +91,8 @@ export class KolPopoverButtonWc implements PopoverButtonProps {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(host: HTMLElement): Promise<void> {
-		await this.refButton?.focus(host);
+	public async focus(): Promise<void> {
+		return setFocus(this.refButton!);
 	}
 
 	private handleToggle = (event: Event): void => {

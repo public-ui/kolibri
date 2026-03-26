@@ -59,8 +59,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	/**
@@ -77,7 +77,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -112,7 +112,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			type: this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,

@@ -69,7 +69,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.refInput);
+		return delegateFocus(this.host!, async () => this.refInput?.focus?.());
 	}
 
 	private toggleListbox = () => {
@@ -90,8 +90,8 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			}
 		}
 	};
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.refInput = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.refInput = ref || undefined;
 	};
 
 	private selectOption(option: string) {
@@ -221,7 +221,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		const isDisabled = this.state._disabled === true;
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			class: 'kol-combobox__input',
 			type: 'text',

@@ -55,10 +55,10 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.refInputNumber);
+		return delegateFocus(this.host!, async () => this.refInputNumber?.focus?.());
 	}
 
-	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
+	private readonly setInputNumberRef = (element: HTMLInputElement | null) => {
 		if (element) {
 			this.refInputNumber = element;
 			if (!this._value && this.refInputNumber?.value) {
@@ -67,7 +67,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		}
 	};
 
-	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
+	private readonly setInputRangeRef = (element: HTMLInputElement | null) => {
 		if (element) {
 			this.refInputRange = element;
 		}
@@ -177,7 +177,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			tabIndex: -1,
 			id: undefined,
 			'aria-hidden': 'true',
-			ref: this.catchInputRangeRef,
+			ref: this.setInputRangeRef,
 		};
 	}
 
@@ -187,7 +187,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			name: this.state._name ? `${this.state._name}-number` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			type: 'number',
-			ref: this.catchInputNumberRef,
+			ref: this.setInputNumberRef,
 			onKeyDown: this.onKeyDown,
 		};
 	}

@@ -56,8 +56,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	@State() private _initialValueType: 'Date' | 'String' | null = null;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+	private readonly setInputRef = (ref: HTMLInputElement | null) => {
+		this.inputRef = ref || undefined;
 	};
 
 	/**
@@ -74,7 +74,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		await delegateFocus(this.host, this.inputRef);
+		return delegateFocus(this.host!, async () => this.inputRef?.focus?.());
 	}
 
 	/**
@@ -170,7 +170,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
