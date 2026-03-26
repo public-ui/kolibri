@@ -37,8 +37,8 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly setButtonWcRef = (ref: HTMLKolButtonWcElement | null) => {
-		this.buttonWcRef = ref || undefined;
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
+		this.buttonWcRef = ref;
 	};
 
 	/**
@@ -55,7 +55,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, async () => this.buttonWcRef?.focus?.());
+		return delegateFocus(this.host!, () => Promise.resolve(this.buttonWcRef?.focus?.()));
 	}
 
 	public render(): JSX.Element {

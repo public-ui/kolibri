@@ -24,7 +24,7 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRadioController } from './controller';
 
@@ -78,7 +78,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, async () => this.getFocusableInput()?.focus?.());
+		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput()!));
 	}
 
 	private getFocusableInput(): HTMLInputElement | undefined {

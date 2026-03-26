@@ -45,8 +45,8 @@ export class KolSelectWc implements SelectAPI {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	private selectRef?: HTMLSelectElement;
 
-	private readonly setSelectRef = (ref: HTMLSelectElement | null) => {
-		this.selectRef = ref || undefined;
+	private readonly setSelectRef = (ref?: HTMLSelectElement) => {
+		this.selectRef = ref;
 	};
 
 	/**

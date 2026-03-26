@@ -63,7 +63,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, async () => this.primaryButtonWcRef?.focus?.());
+		return delegateFocus(this.host!, () => Promise.resolve(this.primaryButtonWcRef?.focus?.()));
 	}
 
 	private readonly clickButtonHandler = {
