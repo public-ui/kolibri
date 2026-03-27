@@ -12,16 +12,16 @@ Public UI - KoliBri folgt den **WCAG 2.2 Level AAA** Standards und **BITV**-Anfo
 
 ### Implementierungsstrategie
 
-| Aspekt | Implementierung | Verifizierung |
-|--------|---------------|--------------|
-| **Tastaturnavigation** | Alle interaktiven Elemente über Tastatur zugänglich (Tab, Enter, Space, Pfeiltasten, Escape) | Manuelle Tastaturtests, automatisierte Tests |
-| **Screenreader-Unterstützung** | Korrekte ARIA-Rollen, Labels und States | Screenreader-Tests (JAWS, NVDA, VoiceOver) |
-| **Farbkontrast** | Minimum 4,5:1 für Text, 3:1 für UI-Komponenten | wcag-contrast-Bibliotheksvalidierung |
-| **Touch-Targets** | Minimum 44x44px für interaktive Elemente | Eingebaut in Komponenten-CSS, automatisierte Tests |
-| **Fokus-Management** | Sichtbare Fokus-Indikatoren, Fokus-Einfangung in Modals | Visuelle Inspektion, automatisierte Tests |
-| **Semantisches HTML** | Verwendung korrekter HTML-Elemente (button, input, nav, etc.) | HTML-Validierung, manuelle Überprüfung |
-| **Alternativtexte** | Bilder und Icons haben Textalternativen | Manuelle Überprüfung, automatisierte Checks |
-| **Formular-Labels** | Alle Formularfelder haben zugeordnete Labels | Automatisierte Barrierefreiheits-Tests |
+| Aspekt                         | Implementierung                                                                              | Verifizierung                                      |
+| ------------------------------ | -------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **Tastaturnavigation**         | Alle interaktiven Elemente über Tastatur zugänglich (Tab, Enter, Space, Pfeiltasten, Escape) | Manuelle Tastaturtests, automatisierte Tests       |
+| **Screenreader-Unterstützung** | Korrekte ARIA-Rollen, Labels und States                                                      | Screenreader-Tests (JAWS, NVDA, VoiceOver)         |
+| **Farbkontrast**               | Minimum 4,5:1 für Text, 3:1 für UI-Komponenten                                               | wcag-contrast-Bibliotheksvalidierung               |
+| **Touch-Targets**              | Minimum 44x44px für interaktive Elemente                                                     | Eingebaut in Komponenten-CSS, automatisierte Tests |
+| **Fokus-Management**           | Sichtbare Fokus-Indikatoren, Fokus-Einfangung in Modals                                      | Visuelle Inspektion, automatisierte Tests          |
+| **Semantisches HTML**          | Verwendung korrekter HTML-Elemente (button, input, nav, etc.)                                | HTML-Validierung, manuelle Überprüfung             |
+| **Alternativtexte**            | Bilder und Icons haben Textalternativen                                                      | Manuelle Überprüfung, automatisierte Checks        |
+| **Formular-Labels**            | Alle Formularfelder haben zugeordnete Labels                                                 | Automatisierte Barrierefreiheits-Tests             |
 
 ### Barrierefreiheits-Test-Pyramide
 
@@ -100,13 +100,13 @@ await register(DEFAULT, defineCustomElements, {
 
 ### Sicherheitsprinzipien
 
-| Prinzip | Implementierung |
-|-----------|---------------|
+| Prinzip                      | Implementierung                                            |
+| ---------------------------- | ---------------------------------------------------------- |
 | **Keine XSS-Schwachstellen** | Alle Nutzereingaben bereinigt, Shadow DOM bietet Isolation |
-| **Content Security Policy** | Komponenten funktionieren mit strikter CSP |
-| **Abhängigkeitssicherheit** | Regelmäßige Sicherheits-Scans, automatisierte Updates |
-| **Sichere Standards** | Komponenten standardmäßig sicher konfiguriert |
-| **SLSA Provenance** | Build Level 3 Attestierungen für veröffentlichte Pakete |
+| **Content Security Policy**  | Komponenten funktionieren mit strikter CSP                 |
+| **Abhängigkeitssicherheit**  | Regelmäßige Sicherheits-Scans, automatisierte Updates      |
+| **Sichere Standards**        | Komponenten standardmäßig sicher konfiguriert              |
+| **SLSA Provenance**          | Build Level 3 Attestierungen für veröffentlichte Pakete    |
 
 ### Sicherheitsmaßnahmen
 
@@ -142,13 +142,13 @@ await register(DEFAULT, defineCustomElements, {
 
 ### Performance-Prinzipien
 
-| Prinzip | Implementierung |
-|-----------|---------------|
-| **Kleine Bundle-Größe** | Tree-shakeable Exports, Lazy Loading |
-| **Schnelles Rendering** | Shadow DOM, Virtual DOM Diffing |
-| **Effizientes Styling** | Adopted Style Sheets, CSS Containment |
+| Prinzip                     | Implementierung                        |
+| --------------------------- | -------------------------------------- |
+| **Kleine Bundle-Größe**     | Tree-shakeable Exports, Lazy Loading   |
+| **Schnelles Rendering**     | Shadow DOM, Virtual DOM Diffing        |
+| **Effizientes Styling**     | Adopted Style Sheets, CSS Containment  |
 | **Minimale Abhängigkeiten** | Nur essenzielle Runtime-Abhängigkeiten |
-| **Optimales Laden** | Code-Splitting, Lazy Component Loading |
+| **Optimales Laden**         | Code-Splitting, Lazy Component Loading |
 
 ### Performance-Optimierungstechniken
 
@@ -243,13 +243,13 @@ graph TB
 
 ### Fehlerbehandlungs-Strategie
 
-| Fehlertyp | Behandlungsansatz |
-|-----------|-------------------|
-| **Ungültige Props** | TypeScript-Validierung, Runtime-Warnungen, Fallback auf Defaults |
-| **Fehlende Abhängigkeiten** | Klare Fehlermeldungen, Dokumentationslinks |
-| **Browser-Unterstützung** | Feature-Detection, Graceful Degradation, Fehlermeldungen |
-| **Theme-Fehler** | Fallback auf Barrierefreiheits-Baseline, Konsolen-Warnungen |
-| **Runtime-Fehler** | Try-Catch-Blöcke, Error Boundaries (in Frameworks), nutzerfreundliche Nachrichten |
+| Fehlertyp                   | Behandlungsansatz                                                                 |
+| --------------------------- | --------------------------------------------------------------------------------- |
+| **Ungültige Props**         | TypeScript-Validierung, Runtime-Warnungen, Fallback auf Defaults                  |
+| **Fehlende Abhängigkeiten** | Klare Fehlermeldungen, Dokumentationslinks                                        |
+| **Browser-Unterstützung**   | Feature-Detection, Graceful Degradation, Fehlermeldungen                          |
+| **Theme-Fehler**            | Fallback auf Barrierefreiheits-Baseline, Konsolen-Warnungen                       |
+| **Runtime-Fehler**          | Try-Catch-Blöcke, Error Boundaries (in Frameworks), nutzerfreundliche Nachrichten |
 
 ### Fehler-Kommunikation
 
@@ -324,20 +324,20 @@ graph TB
 
 ### Qualitätsdurchsetzung
 
-| Aspekt | Tool | Durchsetzung |
-|--------|------|------------|
-| **Formatierung** | Prettier | Pre-Commit-Hook, CI-Check |
-| **Linting** | ESLint, Stylelint | CI-Check, keine Inline-Deaktivierung |
-| **Typsicherheit** | TypeScript | Kompilierungsschritt, Strict-Modus |
-| **Testing** | Jest, Playwright | CI-Check, Coverage-Anforderungen |
-| **Sicherheit** | CodeQL, Dependabot | Automatisiertes Scanning |
-| **Code-Review** | GitHub PR Reviews | Erforderlich vor Merge |
+| Aspekt            | Tool               | Durchsetzung                         |
+| ----------------- | ------------------ | ------------------------------------ |
+| **Formatierung**  | Prettier           | Pre-Commit-Hook, CI-Check            |
+| **Linting**       | ESLint, Stylelint  | CI-Check, keine Inline-Deaktivierung |
+| **Typsicherheit** | TypeScript         | Kompilierungsschritt, Strict-Modus   |
+| **Testing**       | Jest, Playwright   | CI-Check, Coverage-Anforderungen     |
+| **Sicherheit**    | CodeQL, Dependabot | Automatisiertes Scanning             |
+| **Code-Review**   | GitHub PR Reviews  | Erforderlich vor Merge               |
 
 ### Code-Konventionen
 
 1. **Benennungskonventionen**
    - Komponenten: PascalCase mit "Kol"-Präfix (KolButton)
-   - Properties: camelCase, mit Unterstrich präfixiert (_label)
+   - Properties: camelCase, mit Unterstrich präfixiert (\_label)
    - CSS-Klassen: BEM-Methodologie
    - Dateien: kebab-case
 
@@ -365,11 +365,11 @@ KoliBri folgt strikt SemVer 2.0:
 
 ### Kompatibilitäts-Strategie
 
-| Versionstyp | Support-Dauer | Zweck |
-|-------------|-----------------|---------|
-| **LTS** | 3 Jahre | Langzeitunterstützung für Unternehmen |
-| **STS** | 15 Monate | Kurzzeitunterstützung für schnelle Innovation |
-| **Development** | Bis zur nächsten Freigabe | Neueste Features und Verbesserungen |
+| Versionstyp     | Support-Dauer             | Zweck                                         |
+| --------------- | ------------------------- | --------------------------------------------- |
+| **LTS**         | 3 Jahre                   | Langzeitunterstützung für Unternehmen         |
+| **STS**         | 15 Monate                 | Kurzzeitunterstützung für schnelle Innovation |
+| **Development** | Bis zur nächsten Freigabe | Neueste Features und Verbesserungen           |
 
 ### Breaking-Change-Management
 

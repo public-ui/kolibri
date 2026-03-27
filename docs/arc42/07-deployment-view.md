@@ -10,40 +10,40 @@ graph TB
         Dev[Developer Workstation]
         Git[Git Repository<br/>GitHub]
     end
-    
+
     subgraph CI/CD
         Actions[GitHub Actions]
         Tests[Test Runners]
         Build[Build Pipeline]
         Security[Security Scanners<br/>CodeQL]
     end
-    
+
     subgraph Distribution
         NPM[npm Registry]
         CDN1[unpkg.com]
         CDN2[jsDelivr]
     end
-    
+
     subgraph Deployment
         StaticSite[Static Sites]
         SPA[Single Page Apps]
         SSR[Server-Side Rendered Apps]
     end
-    
+
     Dev -->|push code| Git
     Git -->|trigger| Actions
     Actions -->|run| Tests
     Actions -->|run| Build
     Actions -->|run| Security
     Actions -->|publish| NPM
-    
+
     NPM -->|mirror| CDN1
     NPM -->|mirror| CDN2
-    
+
     NPM -->|install| StaticSite
     NPM -->|install| SPA
     NPM -->|install| SSR
-    
+
     CDN1 -->|load| StaticSite
     CDN2 -->|load| StaticSite
 ```
@@ -52,14 +52,14 @@ graph TB
 
 ### Developer Workstation Requirements
 
-| Component | Requirement | Purpose |
-|-----------|------------|---------|
-| **Operating System** | Windows 10+, macOS 11+, or Linux | Platform-independent development |
-| **Node.js** | Version 22.x (required) | Runtime for build tools |
-| **pnpm** | Version 10.x | Package manager |
-| **Git** | Version 2.30+ | Version control |
-| **IDE** | VS Code (recommended) | Code editing with TypeScript support |
-| **Browser** | Chrome/Edge (for testing) | Development and testing |
+| Component            | Requirement                      | Purpose                              |
+| -------------------- | -------------------------------- | ------------------------------------ |
+| **Operating System** | Windows 10+, macOS 11+, or Linux | Platform-independent development     |
+| **Node.js**          | Version 22.x (required)          | Runtime for build tools              |
+| **pnpm**             | Version 10.x                     | Package manager                      |
+| **Git**              | Version 2.30+                    | Version control                      |
+| **IDE**              | VS Code (recommended)            | Code editing with TypeScript support |
+| **Browser**          | Chrome/Edge (for testing)        | Development and testing              |
 
 ### Local Setup
 
@@ -87,10 +87,10 @@ pnpm start
 
 ### Development Ports
 
-| Port | Service | URL |
-|------|---------|-----|
-| 9191 | React sample app | http://localhost:9191 |
-| 4200 | Angular sample app | http://localhost:4200 |
+| Port     | Service            | URL                   |
+| -------- | ------------------ | --------------------- |
+| 9191     | React sample app   | http://localhost:9191 |
+| 4200     | Angular sample app | http://localhost:4200 |
 | Variable | Stencil dev server | http://localhost:3333 |
 
 ## 7.3 CI/CD Pipeline
@@ -101,36 +101,36 @@ graph LR
         PR[Pull Request] -->|trigger| CI
         Push[Push to main] -->|trigger| CI
         Tag[Tag creation] -->|trigger| Publish
-        
+
         CI[CI Workflow]
         Publish[Publish Workflow]
         Snapshots[Update Snapshots]
-        
+
         CI -->|on success| Merge
         Merge[Merge to main]
         Merge -->|trigger| Tag
         Tag -->|trigger| Publish
     end
-    
+
     subgraph CI Steps
         Install[Install Dependencies]
         Build[Build All Packages]
         Lint[Lint Code]
         Test[Run Tests]
         Security[Security Scans]
-        
+
         Install --> Build
         Build --> Lint
         Lint --> Test
         Test --> Security
     end
-    
+
     subgraph Publish Steps
         VerifyBuild[Verify Build]
         Pack[Pack Packages]
         Provenance[Generate Provenance]
         NPMPublish[Publish to npm]
-        
+
         VerifyBuild --> Pack
         Pack --> Provenance
         Provenance --> NPMPublish
@@ -139,12 +139,12 @@ graph LR
 
 ### GitHub Actions Workflows
 
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
-| **ci.yml** | Push, Pull Request | Run tests, linting, builds |
-| **publish.yml** | Tag creation | Publish packages to npm with provenance |
-| **update-snapshots.yml** | Manual trigger | Update visual regression test snapshots |
-| **codeql.yml** | Push, Pull Request, Schedule | Security scanning with CodeQL |
+| Workflow                 | Trigger                      | Purpose                                 |
+| ------------------------ | ---------------------------- | --------------------------------------- |
+| **ci.yml**               | Push, Pull Request           | Run tests, linting, builds              |
+| **publish.yml**          | Tag creation                 | Publish packages to npm with provenance |
+| **update-snapshots.yml** | Manual trigger               | Update visual regression test snapshots |
+| **codeql.yml**           | Push, Pull Request, Schedule | Security scanning with CodeQL           |
 
 ### CI Quality Gates
 
@@ -174,16 +174,16 @@ graph TB
         VueAdapter["@public-ui/vue"]
         CLI["@public-ui/kolibri-cli"]
     end
-    
+
     subgraph "npm Registry"
         Registry[npm Registry]
     end
-    
+
     subgraph CDN
         unpkg[unpkg.com]
         jsDelivr[jsDelivr.net]
     end
-    
+
     Core --> Registry
     DefaultTheme --> Registry
     ECLTheme --> Registry
@@ -191,7 +191,7 @@ graph TB
     AngularAdapter --> Registry
     VueAdapter --> Registry
     CLI --> Registry
-    
+
     Registry -->|mirror| unpkg
     Registry -->|mirror| jsDelivr
 ```
@@ -359,24 +359,24 @@ graph TB
         Browser[Web Browser]
         AT[Assistive Technology]
     end
-    
+
     subgraph "CDN Tier"
         CDN[Content Delivery Network]
     end
-    
+
     subgraph "Application Tier"
         AppServer[Application Server - Node.js/Static]
         API[Backend API - optional]
     end
-    
+
     subgraph "Data Tier"
         DB[Database - optional]
     end
-    
+
     Browser -->|HTTPS| CDN
     Browser -->|HTTPS| AppServer
     AT -->|Accessibility API| Browser
-    
+
     CDN -->|fallback| AppServer
     AppServer -->|HTTP/REST| API
     API -->|query| DB

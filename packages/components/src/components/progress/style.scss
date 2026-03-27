@@ -5,7 +5,6 @@
 	.kol-progress {
 		&__bar {
 			display: grid;
-			column-gap: 0.05rem;
 			align-items: center;
 			grid-template-areas:
 				'LABEL LABEL LABEL'

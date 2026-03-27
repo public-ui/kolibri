@@ -48,12 +48,12 @@ graph TB
 
 **Qualitätsziel:** Vollständige Barrierefreiheit für Screenreader-Nutzer
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Nutzer mit Screenreader navigiert Anwendung |
-| **Umgebung** | Produktions-Webanwendung, JAWS/NVDA/VoiceOver |
+| Aspekt       | Details                                                               |
+| ------------ | --------------------------------------------------------------------- |
+| **Stimulus** | Nutzer mit Screenreader navigiert Anwendung                           |
+| **Umgebung** | Produktions-Webanwendung, JAWS/NVDA/VoiceOver                         |
 | **Reaktion** | Alle Komponenten kündigen korrekt an, Tastaturnavigation funktioniert |
-| **Messung** | 100% der interaktiven Komponenten über Screenreader zugänglich |
+| **Messung**  | 100% der interaktiven Komponenten über Screenreader zugänglich        |
 
 **Akzeptanzkriterien:**
 
@@ -66,12 +66,12 @@ graph TB
 
 **Qualitätsziel:** Vollständiger Tastaturzugriff auf alle Funktionalität
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Nutzer navigiert Anwendung nur mit Tastatur |
-| **Umgebung** | Jeder moderne Browser |
+| Aspekt       | Details                                               |
+| ------------ | ----------------------------------------------------- |
+| **Stimulus** | Nutzer navigiert Anwendung nur mit Tastatur           |
+| **Umgebung** | Jeder moderne Browser                                 |
 | **Reaktion** | Alle interaktiven Elemente zugänglich, Fokus sichtbar |
-| **Messung** | 100% der Features mit Tastatur allein nutzbar |
+| **Messung**  | 100% der Features mit Tastatur allein nutzbar         |
 
 **Akzeptanzkriterien:**
 
@@ -85,12 +85,12 @@ graph TB
 
 **Qualitätsziel:** Ausreichender Kontrast für Lesbarkeit
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Nutzer mit Sehschwäche betrachtet Komponenten |
-| **Umgebung** | Jeder Browser, Standard-Theme |
+| Aspekt       | Details                                                   |
+| ------------ | --------------------------------------------------------- |
+| **Stimulus** | Nutzer mit Sehschwäche betrachtet Komponenten             |
+| **Umgebung** | Jeder Browser, Standard-Theme                             |
 | **Reaktion** | Alle Texte und UI-Elemente erfüllen Kontrastanforderungen |
-| **Messung** | 100% der Elemente erfüllen WCAG AA Kontrastverhältnisse |
+| **Messung**  | 100% der Elemente erfüllen WCAG AA Kontrastverhältnisse   |
 
 **Akzeptanzkriterien:**
 
@@ -106,12 +106,12 @@ graph TB
 
 **Qualitätsziel:** Schneller initialer Seitenladevorgang
 
-| Aspekt | Details |
-|--------|---------|
+| Aspekt       | Details                                |
+| ------------ | -------------------------------------- |
 | **Stimulus** | Nutzer öffnet Anwendung zum ersten Mal |
 | **Umgebung** | 4G Mobilverbindung, Mittelklasse-Gerät |
 | **Reaktion** | Seite lädt und wird schnell interaktiv |
-| **Messung** | Time to Interactive < 3,8 Sekunden |
+| **Messung**  | Time to Interactive < 3,8 Sekunden     |
 
 **Akzeptanzkriterien:**
 
@@ -123,12 +123,12 @@ graph TB
 
 **Qualitätsziel:** Lazy-Loading-Effizienz
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Nutzer begegnet neuem Komponententyp |
-| **Umgebung** | Anwendung bereits geladen |
+| Aspekt       | Details                                    |
+| ------------ | ------------------------------------------ |
+| **Stimulus** | Nutzer begegnet neuem Komponententyp       |
+| **Umgebung** | Anwendung bereits geladen                  |
 | **Reaktion** | Komponente lädt ohne merkliche Verzögerung |
-| **Messung** | Komponente erscheint innerhalb von 200ms |
+| **Messung**  | Komponente erscheint innerhalb von 200ms   |
 
 **Akzeptanzkriterien:**
 
@@ -141,12 +141,12 @@ graph TB
 
 **Qualitätsziel:** Sofortige Theme-Änderungen
 
-| Aspekt | Details |
-|--------|---------|
+| Aspekt       | Details                                           |
+| ------------ | ------------------------------------------------- |
 | **Stimulus** | Nutzer wechselt Theme (Dark Mode, hoher Kontrast) |
-| **Umgebung** | Anwendung mit mehreren gerenderten Komponenten |
-| **Reaktion** | Theme ändert sich sofort über alle Komponenten |
-| **Messung** | Visuelle Änderung innerhalb von 16ms (ein Frame) |
+| **Umgebung** | Anwendung mit mehreren gerenderten Komponenten    |
+| **Reaktion** | Theme ändert sich sofort über alle Komponenten    |
+| **Messung**  | Visuelle Änderung innerhalb von 16ms (ein Frame)  |
 
 **Akzeptanzkriterien:**
 
@@ -161,12 +161,12 @@ graph TB
 
 **Qualitätsziel:** Einfaches Hinzufügen neuer Komponenten
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Entwickler fügt neue Komponente zur Bibliothek hinzu |
-| **Umgebung** | Entwicklungsumgebung, frisches Checkout |
+| Aspekt       | Details                                                 |
+| ------------ | ------------------------------------------------------- |
+| **Stimulus** | Entwickler fügt neue Komponente zur Bibliothek hinzu    |
+| **Umgebung** | Entwicklungsumgebung, frisches Checkout                 |
 | **Reaktion** | Komponente funktioniert mit allen Themes und Frameworks |
-| **Messung** | Neue Komponente integriert in < 8 Stunden |
+| **Messung**  | Neue Komponente integriert in < 8 Stunden               |
 
 **Akzeptanzkriterien:**
 
@@ -180,12 +180,12 @@ graph TB
 
 **Qualitätsziel:** Schnelle und sichere Bugfixes
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Bug in Produktions-Komponente gemeldet |
-| **Umgebung** | Komponente mit existierenden Tests |
+| Aspekt       | Details                                     |
+| ------------ | ------------------------------------------- |
+| **Stimulus** | Bug in Produktions-Komponente gemeldet      |
+| **Umgebung** | Komponente mit existierenden Tests          |
 | **Reaktion** | Bug behoben ohne andere Features zu brechen |
-| **Messung** | Fix und Verifizierung in < 4 Stunden |
+| **Messung**  | Fix und Verifizierung in < 4 Stunden        |
 
 **Akzeptanzkriterien:**
 
@@ -199,12 +199,12 @@ graph TB
 
 **Qualitätsziel:** Reibungslose Versions-Upgrades
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Anwendung muss von v3 auf v4 upgraden |
-| **Umgebung** | Große Anwendung mit vielen Komponenten |
+| Aspekt       | Details                                                  |
+| ------------ | -------------------------------------------------------- |
+| **Stimulus** | Anwendung muss von v3 auf v4 upgraden                    |
+| **Umgebung** | Große Anwendung mit vielen Komponenten                   |
 | **Reaktion** | Upgrade mit minimalen manuellen Änderungen abgeschlossen |
-| **Messung** | 90% der Änderungen via Migrations-Tool automatisiert |
+| **Messung**  | 90% der Änderungen via Migrations-Tool automatisiert     |
 
 **Akzeptanzkriterien:**
 
@@ -220,12 +220,12 @@ graph TB
 
 **Qualitätsziel:** Einfach für neue Entwickler
 
-| Aspekt | Details |
-|--------|---------|
+| Aspekt       | Details                                      |
+| ------------ | -------------------------------------------- |
 | **Stimulus** | Neuer Entwickler integriert erste Komponente |
-| **Umgebung** | React/Angular/Vue-Anwendung |
-| **Reaktion** | Komponente funktioniert ohne Probleme |
-| **Messung** | Funktionierende Integration in < 15 Minuten |
+| **Umgebung** | React/Angular/Vue-Anwendung                  |
+| **Reaktion** | Komponente funktioniert ohne Probleme        |
+| **Messung**  | Funktionierende Integration in < 15 Minuten  |
 
 **Akzeptanzkriterien:**
 
@@ -239,12 +239,12 @@ graph TB
 
 **Qualitätsziel:** Einfaches Debugging
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Komponente rendert nicht wie erwartet |
-| **Umgebung** | Browser-Dev-Tools |
+| Aspekt       | Details                                     |
+| ------------ | ------------------------------------------- |
+| **Stimulus** | Komponente rendert nicht wie erwartet       |
+| **Umgebung** | Browser-Dev-Tools                           |
 | **Reaktion** | Entwickler identifiziert und behebt Problem |
-| **Messung** | Problem identifiziert in < 10 Minuten |
+| **Messung**  | Problem identifiziert in < 10 Minuten       |
 
 **Akzeptanzkriterien:**
 
@@ -258,12 +258,12 @@ graph TB
 
 **Qualitätsziel:** Einfache Theme-Anpassung
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Designer möchte Markenfarben anwenden |
-| **Umgebung** | SASS/CSS-Kenntnisse, Design-System |
+| Aspekt       | Details                                           |
+| ------------ | ------------------------------------------------- |
+| **Stimulus** | Designer möchte Markenfarben anwenden             |
+| **Umgebung** | SASS/CSS-Kenntnisse, Design-System                |
 | **Reaktion** | Benutzerdefiniertes Theme erstellt und angewendet |
-| **Messung** | Basis-Theme in < 2 Stunden |
+| **Messung**  | Basis-Theme in < 2 Stunden                        |
 
 **Akzeptanzkriterien:**
 
@@ -279,12 +279,12 @@ graph TB
 
 **Qualitätsziel:** Funktioniert mit jedem großen Framework
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Entwickler verwendet Komponente in React/Angular/Vue |
-| **Umgebung** | Neueste Framework-Version |
-| **Reaktion** | Komponente funktioniert natürlich im Framework |
-| **Messung** | 100% der Features funktionieren in allen unterstützten Frameworks |
+| Aspekt       | Details                                                           |
+| ------------ | ----------------------------------------------------------------- |
+| **Stimulus** | Entwickler verwendet Komponente in React/Angular/Vue              |
+| **Umgebung** | Neueste Framework-Version                                         |
+| **Reaktion** | Komponente funktioniert natürlich im Framework                    |
+| **Messung**  | 100% der Features funktionieren in allen unterstützten Frameworks |
 
 **Akzeptanzkriterien:**
 
@@ -298,12 +298,12 @@ graph TB
 
 **Qualitätsziel:** Funktioniert in allen modernen Browsern
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Nutzer öffnet Anwendung im Browser |
+| Aspekt       | Details                                             |
+| ------------ | --------------------------------------------------- |
+| **Stimulus** | Nutzer öffnet Anwendung im Browser                  |
 | **Umgebung** | Chrome, Firefox, Safari, Edge (neueste 2 Versionen) |
-| **Reaktion** | Komponenten rendern und funktionieren korrekt |
-| **Messung** | 100% Feature-Parität über Browser hinweg |
+| **Reaktion** | Komponenten rendern und funktionieren korrekt       |
+| **Messung**  | 100% Feature-Parität über Browser hinweg            |
 
 **Akzeptanzkriterien:**
 
@@ -317,12 +317,12 @@ graph TB
 
 **Qualitätsziel:** Reibungslose Upgrades zwischen Versionen
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Anwendung verwendet ältere Komponentenversion |
-| **Umgebung** | Produktions-Anwendung |
+| Aspekt       | Details                                               |
+| ------------ | ----------------------------------------------------- |
+| **Stimulus** | Anwendung verwendet ältere Komponentenversion         |
+| **Umgebung** | Produktions-Anwendung                                 |
 | **Reaktion** | Kann ohne Breaking Changes upgraden (innerhalb Major) |
-| **Messung** | Null Breaking Changes in Minor/Patch-Versionen |
+| **Messung**  | Null Breaking Changes in Minor/Patch-Versionen        |
 
 **Akzeptanzkriterien:**
 
@@ -338,12 +338,12 @@ graph TB
 
 **Qualitätsziel:** Cross-Site-Scripting verhindern
 
-| Aspekt | Details |
-|--------|---------|
+| Aspekt       | Details                                        |
+| ------------ | ---------------------------------------------- |
 | **Stimulus** | Anwendung übergibt Nutzereingabe an Komponente |
-| **Umgebung** | Komponente mit Textinhalt |
-| **Reaktion** | Bösartige Scripts werden nicht ausgeführt |
-| **Messung** | Null XSS-Schwachstellen |
+| **Umgebung** | Komponente mit Textinhalt                      |
+| **Reaktion** | Bösartige Scripts werden nicht ausgeführt      |
+| **Messung**  | Null XSS-Schwachstellen                        |
 
 **Akzeptanzkriterien:**
 
@@ -357,12 +357,12 @@ graph TB
 
 **Qualitätsziel:** Keine verwundbaren Abhängigkeiten
 
-| Aspekt | Details |
-|--------|---------|
-| **Stimulus** | Sicherheitsschwachstelle in Abhängigkeit offengelegt |
-| **Umgebung** | Produktions-Anwendung |
-| **Reaktion** | Schwachstelle schnell gepatcht |
-| **Messung** | Kritische Schwachstellen innerhalb von 24 Stunden behoben |
+| Aspekt       | Details                                                   |
+| ------------ | --------------------------------------------------------- |
+| **Stimulus** | Sicherheitsschwachstelle in Abhängigkeit offengelegt      |
+| **Umgebung** | Produktions-Anwendung                                     |
+| **Reaktion** | Schwachstelle schnell gepatcht                            |
+| **Messung**  | Kritische Schwachstellen innerhalb von 24 Stunden behoben |
 
 **Akzeptanzkriterien:**
 
@@ -376,12 +376,12 @@ graph TB
 
 **Qualitätsziel:** Verifizierbare Build-Provenance
 
-| Aspekt | Details |
-|--------|---------|
+| Aspekt       | Details                               |
+| ------------ | ------------------------------------- |
 | **Stimulus** | Organisation auditiert Abhängigkeiten |
-| **Umgebung** | Veröffentlichte npm-Pakete |
-| **Reaktion** | Build-Provenance verifizierbar |
-| **Messung** | SLSA Build Level 3 Konformität |
+| **Umgebung** | Veröffentlichte npm-Pakete            |
+| **Reaktion** | Build-Provenance verifizierbar        |
+| **Messung**  | SLSA Build Level 3 Konformität        |
 
 **Akzeptanzkriterien:**
 
@@ -393,29 +393,29 @@ graph TB
 
 ## 10.3 Qualitätsmetriken
 
-| Qualitätsattribut | Metrik | Ziel | Messmethode |
-|-------------------|--------|--------|-------------------|
-| **Barrierefreiheit** | WCAG 2.1 AA Konformität | 100% | Manuelles Testing + axe-core |
-| **Barrierefreiheit** | Tastaturnavigation | 100% | Manuelles Testing |
-| **Performance** | Time to Interactive | < 3,8s | WebPageTest |
-| **Performance** | Bundle-Größe | < 50KB pro Komponente | Bundlephobia-Analyse |
-| **Wartbarkeit** | Test-Abdeckung | > 80% | Jest-Coverage-Report |
-| **Wartbarkeit** | Code-Duplizierung | < 5% | SonarQube/manuelle Überprüfung |
-| **Sicherheit** | Schwachstellen | 0 kritisch/hoch | Dependabot, CodeQL |
-| **Benutzbarkeit** | Zeit bis zur ersten Komponente | < 15 min | Nutzer-Testing |
-| **Kompatibilität** | Browser-Unterstützung | Neueste 2 Versionen | Automatisiertes Testing |
-| **Qualität** | Linting-Fehler | 0 | ESLint, Stylelint |
-| **Qualität** | Typ-Fehler | 0 | TypeScript-Compiler |
+| Qualitätsattribut    | Metrik                         | Ziel                  | Messmethode                    |
+| -------------------- | ------------------------------ | --------------------- | ------------------------------ |
+| **Barrierefreiheit** | WCAG 2.1 AA Konformität        | 100%                  | Manuelles Testing + axe-core   |
+| **Barrierefreiheit** | Tastaturnavigation             | 100%                  | Manuelles Testing              |
+| **Performance**      | Time to Interactive            | < 3,8s                | WebPageTest                    |
+| **Performance**      | Bundle-Größe                   | < 50KB pro Komponente | Bundlephobia-Analyse           |
+| **Wartbarkeit**      | Test-Abdeckung                 | > 80%                 | Jest-Coverage-Report           |
+| **Wartbarkeit**      | Code-Duplizierung              | < 5%                  | SonarQube/manuelle Überprüfung |
+| **Sicherheit**       | Schwachstellen                 | 0 kritisch/hoch       | Dependabot, CodeQL             |
+| **Benutzbarkeit**    | Zeit bis zur ersten Komponente | < 15 min              | Nutzer-Testing                 |
+| **Kompatibilität**   | Browser-Unterstützung          | Neueste 2 Versionen   | Automatisiertes Testing        |
+| **Qualität**         | Linting-Fehler                 | 0                     | ESLint, Stylelint              |
+| **Qualität**         | Typ-Fehler                     | 0                     | TypeScript-Compiler            |
 
 ## 10.4 Qualitätssicherungs-Methoden
 
-| Methode | Zweck | Frequenz | Verantwortlich |
-|--------|---------|-----------|-------------|
-| **Automatisierte Tests** | Regressionen abfangen | Jeder Commit | CI/CD |
-| **Code-Review** | Qualität sicherstellen | Jeder PR | Team-Mitglieder |
-| **Barrierefreiheits-Audit** | WCAG-Konformität | Jede Komponente | A11y-Spezialisten |
-| **Performance-Testing** | Performance überwachen | Wöchentlich | Automatisierte Tests |
-| **Sicherheits-Scanning** | Schwachstellen finden | Jeder Commit | CodeQL, Dependabot |
-| **Nutzer-Testing** | Benutzbarkeit validieren | Vor Major-Releases | UX-Team |
-| **Visual Regression** | Visuelle Änderungen erkennen | Jede Theme-Änderung | Visual Tests |
-| **Manuelle Tests** | Exploratives Testing | Vor Releases | QA-Team |
+| Methode                     | Zweck                        | Frequenz            | Verantwortlich       |
+| --------------------------- | ---------------------------- | ------------------- | -------------------- |
+| **Automatisierte Tests**    | Regressionen abfangen        | Jeder Commit        | CI/CD                |
+| **Code-Review**             | Qualität sicherstellen       | Jeder PR            | Team-Mitglieder      |
+| **Barrierefreiheits-Audit** | WCAG-Konformität             | Jede Komponente     | A11y-Spezialisten    |
+| **Performance-Testing**     | Performance überwachen       | Wöchentlich         | Automatisierte Tests |
+| **Sicherheits-Scanning**    | Schwachstellen finden        | Jeder Commit        | CodeQL, Dependabot   |
+| **Nutzer-Testing**          | Benutzbarkeit validieren     | Vor Major-Releases  | UX-Team              |
+| **Visual Regression**       | Visuelle Änderungen erkennen | Jede Theme-Änderung | Visual Tests         |
+| **Manuelle Tests**          | Exploratives Testing         | Vor Releases        | QA-Team              |

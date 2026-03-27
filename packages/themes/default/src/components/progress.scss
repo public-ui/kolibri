@@ -2,8 +2,14 @@
 
 @layer kol-theme-component {
 	.kol-progress {
-		&__bar-progress {
-			fill: var(--color-primary-variant);
+		&__bar {
+			&-value {
+				margin-left: to-rem(8);
+			}
+
+			&-progress {
+				fill: var(--color-primary-variant);
+			}
 		}
 
 		&__cycle-background {
