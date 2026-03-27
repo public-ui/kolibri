@@ -6,7 +6,7 @@
 		"lerna": "9.0.7",
 		"license-report": "6.8.2",
 		"lint-staged": "16.4.0",
-		"npm-check-updates": "19.6.5",
+		"npm-check-updates": "19.6.6",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.1",
 		"stylelint": "16.26.1",
