@@ -1,12 +1,13 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
-import type { LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
+import type { FocusableElement, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -15,8 +16,8 @@ import { validateOrientation } from '../../schema/props/orientation';
 	},
 	shadow: true,
 })
-export class KolToolbar implements ToolbarAPI {
-	@Element() host!: HTMLElement;
+export class KolToolbar implements ToolbarAPI, FocusableElement {
+	@Element() private readonly host?: HTMLElement;
 
 	@State() public state: ToolbarStates = {
 		_label: '',
@@ -26,6 +27,18 @@ export class KolToolbar implements ToolbarAPI {
 	@State() private currentIndex: number = 0;
 
 	private indexToElement = new Map<number, HTMLKolLinkWcElement | HTMLKolButtonWcElement>();
+
+	/**
+	 * Sets focus on the currently active toolbar item.
+	 */
+	@Method()
+	public async focus(): Promise<void> {
+		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
+		if (firstEnabledItem) {
+			return delegateFocus(this.host!, () => setFocus(firstEnabledItem));
+		}
+	}
+
 	private normalizeItem(item: ToolbarItemPropType): ToolbarItemPropType {
 		const { _icons, _disabled, ...rest } = item;
 		return { ...rest, _icons, _disabled };
@@ -134,7 +147,10 @@ export class KolToolbar implements ToolbarAPI {
 		if (this.state._items?.[nextIndex]?._disabled) return;
 
 		this.currentIndex = nextIndex;
-		void this.getCurrentToolbarItem(nextIndex)?.focus();
+		const item = this.getCurrentToolbarItem(nextIndex);
+		if (this.host) {
+			void item?.focus();
+		}
 	}
 
 	/**

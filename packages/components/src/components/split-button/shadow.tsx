@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State } from '@stencil/core';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -8,6 +8,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
@@ -21,6 +22,7 @@ import type {
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -35,15 +37,16 @@ import clsx from '../../utils/clsx';
 	},
 	shadow: true,
 })
-export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
+export class KolSplitButton implements SplitButtonProps, FocusableElement /*, SplitButtonAPI*/ {
+	@Element() private readonly host?: HTMLKolSplitButtonElement;
 	private primaryButtonWcRef?: HTMLKolButtonWcElement;
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
 
-	private readonly catchPrimaryRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setPrimaryButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
 		this.primaryButtonWcRef = ref;
 	};
 
-	private readonly catchPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
+	private readonly setPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.popoverButtonRef = ref;
 	};
 
@@ -60,8 +63,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.primaryButtonWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
 	}
 
 	private readonly clickButtonHandler = {
@@ -84,7 +87,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 							[this._variant as string]: this._variant !== 'custom',
 							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 						})}
-						ref={this.catchPrimaryRef}
+						ref={this.setPrimaryButtonWcRef}
 						_accessKey={this._accessKey}
 						_ariaControls={this._ariaControls}
 						_ariaDescription={this._ariaDescription}
@@ -107,7 +110,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 					<div class="kol-split-button__horizontal-line"></div>
 					<KolPopoverButtonWcTag
 						class="kol-split-button__secondary-button"
-						ref={this.catchPopoverButtonRef}
+						ref={this.setPopoverButtonRef}
 						_disabled={this._disabled}
 						_hideLabel
 						_icons="kolicon-chevron-down"

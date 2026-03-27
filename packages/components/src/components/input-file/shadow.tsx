@@ -31,6 +31,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputFileController } from './controller';
 
 /**
@@ -52,7 +53,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
 	private readonly translateFilenameText = translate('kol-filename-text');
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -70,12 +71,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -104,7 +100,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'file',
 			accept: this.state._accept,

@@ -1208,6 +1208,17 @@ ROUTES.set('scenarios/focus-elements?component=accordion', {
 		},
 	},
 });
+ROUTES.set('scenarios/focus-elements?component=badge', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/focus-elements?component=button', {
 	snapshot: {
 		viewportSize: {
@@ -1429,7 +1440,73 @@ ROUTES.set('scenarios/focus-elements?component=singleSelect', {
 		skip: true,
 	},
 });
+ROUTES.set('scenarios/focus-elements?component=popoverButton', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=skipNav', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=splitButton', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=tabs', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/focus-elements?component=textarea', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=toolbar', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=tree', {
 	snapshot: {
 		viewportSize: {
 			width: 300,

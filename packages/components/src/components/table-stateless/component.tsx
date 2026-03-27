@@ -53,7 +53,7 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 	tag: 'kol-table-stateless-wc',
 	shadow: false,
 })
-export class KolTableStateless implements TableStatelessAPI {
+export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
 	private readonly translateNoEntries = translate('kol-no-entries');

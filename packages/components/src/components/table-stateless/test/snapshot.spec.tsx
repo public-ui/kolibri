@@ -2,11 +2,11 @@ import { KolTableStatelessWcTag } from '../../../core/component-names';
 import type { TableStatelessProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolTableStateless } from '../component';
+import { KolTableStatelessWc } from '../component';
 
 executeSnapshotTests<TableStatelessProps>(
 	KolTableStatelessWcTag,
-	[KolTableStateless],
+	[KolTableStatelessWc],
 	[
 		{
 			_label: 'Table with horizontal and vertical headers',

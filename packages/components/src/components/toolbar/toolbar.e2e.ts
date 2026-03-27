@@ -98,4 +98,38 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(firstBtn).toBeFocused();
 		await expect(secondBtn).not.toBeFocused();
 	});
+
+	test('focus() method sets focus on the currently active toolbar item', async ({ page }) => {
+		await page.setContent(`<kol-toolbar _label="Toolbar Focus Method"></kol-toolbar>`);
+		const tb = page.locator('kol-toolbar');
+		await expect(tb).toHaveClass(/hydrated/);
+
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			el._items = [
+				{ type: 'button', _label: 'First', _disabled: false },
+				{ type: 'button', _label: 'Second', _disabled: false },
+				{ type: 'button', _label: 'Third', _disabled: false },
+			];
+		});
+		await page.waitForChanges();
+
+		const btnWcs = tb.locator('kol-button-wc');
+		await expect(btnWcs).toHaveCount(3);
+
+		const firstInnerBtn = innerButtonOf(btnWcs.first());
+		const secondInnerBtn = innerButtonOf(btnWcs.nth(1));
+
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			void el.focus();
+		});
+
+		await expect(firstInnerBtn).toBeFocused();
+
+		await page.keyboard.press('ArrowRight');
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			void el.focus();
+		});
+
+		await expect(secondInnerBtn).toBeFocused();
+	});
 });
