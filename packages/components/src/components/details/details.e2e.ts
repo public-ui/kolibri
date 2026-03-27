@@ -50,8 +50,7 @@ test.describe('kol-details', () => {
 			// Initially content is hidden
 			await expect(contentLocator).toHaveClass(/hidden/);
 
-			await page.waitForChanges();
-			await kolDetails.evaluate((element: HTMLElement) => element.click());
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
 			await page.waitForChanges();
 
 			// After click, content should be visible
@@ -64,8 +63,7 @@ test.describe('kol-details', () => {
 			const kolDetails = page.locator('kol-details');
 
 			// Open details
-			await page.waitForChanges();
-			await kolDetails.evaluate((element: HTMLElement) => element.click());
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
 			await page.waitForChanges();
 
 			const isOpen = await kolDetails.evaluate((element: HTMLElement) => {
@@ -76,7 +74,7 @@ test.describe('kol-details', () => {
 
 			// Close details
 			await page.waitForChanges();
-			await kolDetails.evaluate((element: HTMLElement) => element.click());
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
 			await page.waitForChanges();
 
 			const isClosed = await kolDetails.evaluate((element: HTMLElement) => {

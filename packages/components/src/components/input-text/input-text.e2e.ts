@@ -50,9 +50,7 @@ test.describe('kol-input-text', () => {
 				});
 			});
 			await page.waitForChanges();
-
-			await page.waitForChanges();
-			await kolInput.evaluate((el: HTMLElement) => el.click());
+			await kolInput.evaluate(async (el: HTMLKolInputTextElement) => await el.click());
 			await page.waitForChanges();
 			await expect(focusPromise).resolves.toBe(true);
 		});

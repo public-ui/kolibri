@@ -83,12 +83,14 @@ test.describe('kol-popover-button', () => {
 			// Focus and press Enter
 			await button.focus();
 			await page.keyboard.press('Enter');
+			await page.waitForChanges();
 
 			// Should be visible after Enter
 			await expect(popover).toBeVisible();
 
 			// Press Enter again to close
 			await page.keyboard.press('Enter');
+			await page.waitForChanges();
 			await expect(popover).not.toBeVisible();
 		});
 
