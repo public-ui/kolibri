@@ -68,6 +68,24 @@
 		}
 
 		&--normal {
+			--button-background-color: var(--ecl-color-white);
+			--button-text-color: var(--ecl-color-dark);
+			--button-border-color: transparent;
+			--button-border-width: 1px;
+
+			&:focus {
+				--button-focus-outline-color: var(--ecl-color-primary);
+				--button-focus-outline-offset: 0;
+				--button-focus-outline-width: 2px;
+			}
+
+			&:not(:disabled):hover {
+				--button-background-color: var(--ecl-color-primary-20);
+				--button-border-color: var(--ecl-color-dark-80);
+			}
+		}
+
+		&--call-to-action {
 			--button-background-color: var(--ecl-color-secondary);
 			--button-border-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
