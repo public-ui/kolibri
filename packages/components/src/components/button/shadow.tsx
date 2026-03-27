@@ -20,6 +20,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { delegateClick, setClick } from '../../utils/element-click';
 
 /**
  * The **Button** component is used to present users with action options and arrange them in a clear hierarchy. It helps users find the most important actions on a page or within a viewport and allows them to execute those actions. The button label clearly indicates which action will be triggered. Buttons allow users to confirm a change, complete steps in a task, or make decisions.
@@ -56,6 +57,14 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
 	}
 
 	public render(): JSX.Element {
