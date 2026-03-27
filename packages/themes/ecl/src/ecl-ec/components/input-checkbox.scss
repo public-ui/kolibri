@@ -1,6 +1,7 @@
 @use '../../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
 @use '../mixins/required' as *;
+@use '../mixins/checkbox' as *;
 
 @layer kol-theme-component {
 	@include alert;
@@ -41,39 +42,12 @@
 		}
 	}
 
+	.kol-input-checkbox__field-control--variant-default {
+		@include checkbox('kol-checkbox');
+	}
+
 	.kol-checkbox {
 		.kol-input {
-			color: var(--color-grey);
-			background-color: var(--color-white);
-			border-color: var(--color-grey-75);
-			border-style: solid;
-			border-width: 2px;
-
-			line-height: 1.5;
-
-			&:focus {
-				outline-color: var(--color-blue);
-				outline-style: solid;
-				outline-width: 2px;
-				outline-offset: 2px;
-			}
-
-			&:checked {
-				background-color: var(--color-blue);
-				border-color: var(--color-blue);
-			}
-
-			&:not(:disabled):hover {
-				border-color: var(--color-blue);
-			}
-
-			&:checked {
-				&:not(:disabled):hover {
-					background-color: var(--color-blue-130);
-					border-color: var(--color-blue-130);
-				}
-			}
-
 			&--error {
 				border-color: var(--color-red);
 
@@ -93,15 +67,6 @@
 					}
 				}
 			}
-		}
-	}
-
-	.kol-checkbox--variant-default {
-		width: unset;
-		min-width: unset;
-
-		&.kol-checkbox--checked .kol-icon {
-			color: var(--color-white);
 		}
 	}
 

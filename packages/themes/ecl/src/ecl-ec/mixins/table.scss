@@ -3,6 +3,8 @@
 @use './icon' as *;
 @use './pagination' as *;
 @use './table-settings' as *;
+@use './button' as *;
+@use './checkbox' as *;
 
 @mixin table {
 	@include alert;
@@ -76,6 +78,12 @@
 			}
 		}
 
+		&__cell-actions {
+			gap: to-rem(4);
+			@include button('kol-button');
+			//	@include link('kol-link');
+		}
+
 		&__selection {
 			display: flex;
 			gap: 0.5em;
@@ -83,52 +91,38 @@
 			grid-template-columns: 1fr auto;
 		}
 
+		&:has(.kol-table__selection-input--checkbox) {
+			@include checkbox('kol-table__selection');
+		}
+
 		&__selection-input {
-			&:focus {
-				outline-color: var(--color-blue);
-				outline-style: solid;
-				outline-width: 2px;
-				border-color: var(--color-blue);
-				outline-offset: 2px;
-			}
-
-			// CHECKBOX
-			&--checkbox {
-				border-color: var(--color-grey-75);
-
-				&:checked {
-					background-color: var(--color-blue);
-					border-color: var(--color-blue);
-				}
-			}
-
 			// RADIO
 			&--radio {
-				border-color: var(--color-grey-75);
+				border-color: var(--ecl-color-dark-80);
 				display: block;
 
 				&:not(:disabled):hover {
-					border-color: var(--color-blue);
+					border-color: var(--ecl-color-primary);
 				}
 
 				&:checked {
-					border-color: var(--color-blue);
+					border-color: var(--ecl-color-primary);
 					border-width: 7px;
 
 					&:before {
-						background-color: var(--color-white);
+						background-color: var(--ecl-color-white);
 					}
 				}
 			}
 		}
 
 		&__selection-icon {
-			color: var(--color-white);
+			color: var(--ecl-color-white);
 		}
 
 		.kol-icon:hover ~ &__selection-input--checkbox:not(:disabled),
 		&__selection-input--checkbox:not(:disabled):hover {
-			border-color: var(--color-blue);
+			border-color: var(--ecl-color-primary);
 		}
 	}
 }

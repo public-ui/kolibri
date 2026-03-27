@@ -1,0 +1,42 @@
+@use '../../mixins/to-rem' as *;
+@use './icon' as *;
+
+@mixin checkbox($block-classname) {
+	.#{$block-classname} {
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		justify-content: center;
+
+		&:focus-within::before,
+		&:hover:not(&--disabled)::before {
+			content: '';
+			position: absolute;
+
+			background-color: var(--ecl-color-primary-20);
+			border-radius: 100%;
+			width: to-rem(38);
+			height: to-rem(38);
+		}
+
+		&__icon {
+			@include icon;
+			color: var(--ecl-color-white);
+		}
+
+		input {
+			position: relative;
+			border-color: var(--ecl-color-dark-80);
+			border-radius: 2px;
+
+			&:checked,
+			&:indeterminate {
+				background-color: var(--ecl-color-primary);
+				border-color: var(--ecl-color-primary);
+			}
+
+			&:focus {
+				outline: transparent;
+			}
+		}
+	}
+}
