@@ -34,6 +34,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { TextareaController } from './controller';
 
 /**
@@ -65,7 +66,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	private textareaRef?: HTMLTextAreaElement;
 
-	private readonly catchRef = (ref?: HTMLTextAreaElement) => {
+	private readonly setTextareaRef = (ref?: HTMLTextAreaElement) => {
 		this.textareaRef = ref;
 	};
 
@@ -83,12 +84,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.textareaRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.textareaRef!));
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -107,7 +103,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setTextareaRef,
 			state: this.state,
 			style: {
 				resize: this.state._resize,

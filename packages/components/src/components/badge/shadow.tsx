@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
@@ -8,6 +8,7 @@ import { nonce } from '../../utils/dev.utils';
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import clsx from '../../utils/clsx';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 /**
@@ -22,19 +23,20 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	shadow: true,
 })
 export class KolBadge implements BadgeAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolBadgeElement;
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
 	private smartButtonRef?: HTMLKolButtonWcElement;
 
-	private readonly catchSmartButtonRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setSmartButtonRef = (ref?: HTMLKolButtonWcElement) => {
 		this.smartButtonRef = ref;
 	};
 
 	private renderSmartButton(props: InternalButtonProps): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchSmartButtonRef}
+				ref={this.setSmartButtonRef}
 				class="kol-badge__smart-button"
 				_ariaControls={this.id}
 				_ariaDescription={props._ariaDescription}
@@ -56,7 +58,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return Promise.resolve(this.smartButtonRef?.focus());
+		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!));
 	}
 
 	public render(): JSX.Element {

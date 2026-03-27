@@ -24,6 +24,7 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRadioController } from './controller';
 
@@ -51,11 +52,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private inputRefs = new Map<number, HTMLInputElement>();
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
-	private readonly catchInputRef = (index: number) => (ref?: HTMLInputElement) => {
+	private readonly setInputRefByIndex = (index: number) => (ref?: HTMLInputElement) => {
 		if (ref) {
 			this.inputRefs.set(index, ref);
 		} else {
@@ -77,12 +78,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.getFocusableInput()?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput()!));
 	}
 
 	private getFocusableInput(): HTMLInputElement | undefined {
@@ -160,9 +156,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			inputProps: {
 				id: id,
 				ref: (ref?: HTMLInputElement) => {
-					this.catchInputRef(index)(ref);
+					this.setInputRefByIndex(index)(ref);
 					if (selected) {
-						this.catchRef(ref);
+						this.setInputRef(ref);
 					}
 				},
 				'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,

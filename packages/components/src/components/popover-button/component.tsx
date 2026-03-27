@@ -10,6 +10,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
@@ -24,6 +25,7 @@ import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { setFocus } from '../../utils/element-focus';
 
 /**
  * @internal
@@ -37,21 +39,21 @@ import { nonce } from '../../utils/dev.utils';
 	shadow: false,
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
-export class KolPopoverButton implements PopoverButtonProps {
+export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement {
 	private refButton?: HTMLKolButtonWcElement;
 	private readonly popoverCtrl = new PopoverController();
 	private popoverElement?: HTMLDivElement;
 	private readonly popoverId = `popover-${nonce()}`;
 
-	private setPopoverElementRef = (element?: HTMLDivElement): void => {
+	private readonly setPopoverElementRef = (element?: HTMLDivElement) => {
 		this.popoverElement = element;
 		this.popoverCtrl.setPopoverElementRef(element);
 	};
 
-	private setButtonElementRef = (element?: HTMLKolButtonWcElement): void => {
+	private readonly setButtonElementRef = (element?: HTMLKolButtonWcElement) => {
 		this.refButton = element;
 		if (element) {
-			this.popoverCtrl.setTriggerElement(element);
+			this.popoverCtrl.setTriggerElement(element as HTMLElement);
 		}
 	};
 
@@ -90,8 +92,8 @@ export class KolPopoverButton implements PopoverButtonProps {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.refButton?.focus());
+	public async focus(): Promise<void> {
+		return setFocus(this.refButton!);
 	}
 
 	private handleToggle = (event: Event): void => {

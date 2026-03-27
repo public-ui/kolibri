@@ -29,7 +29,7 @@ export class KolAlertWc implements AlertAPI {
 	private readonly close = () => {
 		this._on?.onClose?.(new Event('Close'));
 		if (this.host) {
-			dispatchDomEvent(this.host as HTMLElement, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	};
 

@@ -15,7 +15,7 @@ import { KolDialogWc } from './dialog/component';
 import { KolDialog } from './dialog/shadow';
 import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
-import { KolHeading } from './heading/shadow';
+import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';
 import { KolInputCheckbox } from './input-checkbox/shadow';

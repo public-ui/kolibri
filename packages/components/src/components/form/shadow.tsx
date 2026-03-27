@@ -22,7 +22,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolForm implements FormAPI {
-	@Element() private readonly host?: HTMLKolTextareaElement;
+	@Element() private readonly host?: HTMLKolFormElement;
 	errorListBlock?: HTMLElement;
 	errorListFirstLink?: HTMLElement;
 	private readonly translateErrorListMessage = translate('kol-error-list-message');
@@ -61,7 +61,7 @@ export class KolForm implements FormAPI {
 
 	private readonly setBlockElement = (el?: HTMLElement) => (this.errorListBlock = el);
 
-	private readonly setFirstLinkElement = (el?: HTMLElement) => (this.errorListFirstLink = el);
+	private readonly setFirstLinkElement = (el?: HTMLKolLinkWcElement) => (this.errorListFirstLink = el as HTMLElement);
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (

@@ -1,7 +1,8 @@
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
-import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import type { FocusableElement, LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
 import { validateLabel } from '../../schema';
 
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
@@ -18,7 +19,8 @@ import { KolLinkWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements SkipNavAPI {
+export class KolSkipNav implements SkipNavAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolSkipNavElement;
 	private firstLinkRef?: HTMLKolLinkWcElement;
 
 	public render(): JSX.Element {
@@ -41,8 +43,8 @@ export class KolSkipNav implements SkipNavAPI {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.firstLinkRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.firstLinkRef!));
 	}
 
 	/**
