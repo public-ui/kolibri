@@ -3,4 +3,4 @@ import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 export type LabelWithExpertSlotProp = SimpleProp<'label', string>;
-export const labelWithExpertSlotProp = createPropDefinition<LabelWithExpertSlotProp>(normalizeString, () => true);
+export const labelWithExpertSlotProp = createPropDefinition<LabelWithExpertSlotProp>('label', '', normalizeString);
