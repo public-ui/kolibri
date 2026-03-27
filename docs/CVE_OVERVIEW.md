@@ -9,8 +9,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   0 |   0 |   0 |   0 |
-| high     |   0 |   0 |   0 |   4 |
-| moderate |   0 |   0 |   0 |   0 |
+| high     |   0 |   1 |   1 |   5 |
+| moderate |   0 |   1 |   1 |   2 |
 | low      |   0 |   0 |   0 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -22,7 +22,10 @@
 | lodash.pick          | high     | CVE-2020-8203       | v1                | Prototype Pollution in lodash                                                     |
 | minimatch            | high     | CVE-2026-27903      | v1                | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v1                | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
+| picomatch            | high     | CVE-2026-33671      | v3, v2, v1        | Picomatch has a ReDoS vulnerability via extglob quantifiers                       |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v1                | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
+| picomatch            | moderate | CVE-2026-33672      | v3, v2, v1        | Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Mat  |
+| yaml                 | moderate | CVE-2026-33532      | v1                | yaml is vulnerable to Stack Overflow via deeply nested YAML collections           |
 
 ## 2. All Dependencies
 
@@ -31,8 +34,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   4 |   4 |   4 |   2 |
-| high     |  28 |  25 |  36 |  23 |
-| moderate |   8 |   8 |  20 |   1 |
+| high     |  28 |  26 |  38 |  24 |
+| moderate |  12 |  13 |  22 |   5 |
 | low      |   3 |   3 |   8 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -68,6 +71,11 @@
 | minimatch            | high     | CVE-2026-27903      | v4, v3, v2, v1    | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v4, v3, v2, v1    | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
 | minimatch            | high     | CVE-2026-26996      | v4, v3, v2        | minimatch has a ReDoS via repeated wildcards with non-matching literal in patter  |
+| node-forge           | high     | CVE-2026-33891      | v2                | Forge has Denial of Service via Infinite Loop in BigInteger.modInverse() with Ze  |
+| node-forge           | high     | CVE-2026-33896      | v2                | Forge has a basicConstraints bypass in its certificate chain verification (RFC 5  |
+| node-forge           | high     | CVE-2026-33895      | v2                | Forge has signature forgery in Ed25519 due to missing S > L check                 |
+| node-forge           | high     | CVE-2026-33894      | v2                | Forge has signature forgery in RSA-PKCS due to ASN.1 extra field                  |
+| picomatch            | high     | CVE-2026-33671      | v3, v2, v1        | Picomatch has a ReDoS vulnerability via extglob quantifiers                       |
 | rollup               | high     | CVE-2026-27606      | v1                | Rollup 4 has Arbitrary File Write via Path Traversal                              |
 | semver               | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                         |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v4, v3, v2, v1    | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
@@ -83,24 +91,29 @@
 | undici               | high     | CVE-2026-1526       | v4, v3, v2        | Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompre  |
 | undici               | high     | CVE-2026-2229       | v4, v3, v2        | Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_win  |
 | ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                           |
+| brace-expansion      | moderate | CVE-2026-33750      | v4, v3, v2        | brace-expansion: Zero-step sequence causes process hang and memory exhaustion     |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                            |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r  |
 | fast-xml-parser      | moderate | CVE-2026-33349      | v4, v3, v2        | Entity Expansion Limits Bypassed When Set to Zero Due to JavaScript Falsy Evalua  |
 | file-type            | moderate | CVE-2026-31808      | v4                | file-type affected by infinite loop in ASF parser on malformed input with zero-s  |
+| handlebars           | moderate | CVE-2026-33916      | v4, v3, v2, v1    | Handlebars.js has Prototype Pollution Leading to XSS through Partial Template In  |
 | hono                 | moderate | CVE-2026-29086      | v2                | Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in  |
 | hono                 | moderate | CVE-2026-29085      | v2                | Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()            |
 | hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in  |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                     |
 | micromatch           | moderate | CVE-2024-4067       | v4, v3, v2, v1    | Regular Expression Denial of Service (ReDoS) in micromatch                        |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values            |
+| picomatch            | moderate | CVE-2026-33672      | v3, v2, v1        | Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Mat  |
 | qs                   | moderate | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion   |
 | serialize-javascript | moderate | CVE-2024-11831      | v2                | Cross-site Scripting (XSS) in serialize-javascript                                |
+| smol-toml            | moderate | GHSA-v3rj-xjv7-4jmq | v4, v3, v2, v1    | smol-toml: Denial of Service via TOML documents containing thousands of consecut  |
 | undici               | moderate | CVE-2026-1525       | v4, v3, v2        | Undici has an HTTP Request/Response Smuggling issue                               |
 | undici               | moderate | CVE-2026-1527       | v4, v3, v2        | Undici has CRLF Injection in undici via `upgrade` option                          |
-| undici               | moderate | CVE-2026-2581       | v4, v3, v2        | Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response  |
+| undici               | moderate | CVE-2026-2581       | v4, v3            | Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response  |
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to   |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious  |
 | webpack-dev-server   | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious  |
+| yaml                 | moderate | CVE-2026-33532      | v4, v3, v2, v1    | yaml is vulnerable to Stack Overflow via deeply nested YAML collections           |
 | @tootallnate/once    | low      | CVE-2026-3449       | v4, v3, v2        | @tootallnate/once vulnerable to Incorrect Control Flow Scoping                    |
 | diff                 | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch         |
 | fast-xml-parser      | low      | CVE-2026-27942      | v4, v3, v2        | fast-xml-parser has stack overflow in XMLBuilder with preserveOrder               |
