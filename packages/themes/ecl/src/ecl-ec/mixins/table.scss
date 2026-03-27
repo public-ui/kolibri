@@ -1,0 +1,117 @@
+@use '../../mixins/to-rem' as *;
+@use './alert' as *;
+@use './icon' as *;
+@use './pagination' as *;
+
+@mixin table {
+	@include alert;
+	@include icon;
+	@include pagination;
+
+	.kol-table {
+		&__table {
+			border: 1px solid var(--ecl-color-neutral-60);
+			border-spacing: 0;
+		}
+
+		&__row &__cell {
+			border-top: 1px solid var(--ecl-color-neutral-60);
+		}
+
+		&__head-row:not(:first-child) &__cell {
+			border-top: 1px solid var(--ecl-color-neutral-160);
+		}
+
+		&__cell {
+			padding: var(--ecl-spacing-m);
+
+			&:not(:last-child) {
+				border-right: 1px solid var(--ecl-color-neutral-60);
+			}
+
+			&--header {
+				background-color: var(--ecl-color-neutral);
+
+				.kol-button {
+					font-weight: 700;
+				}
+			}
+
+			.kol-table__head-row &--header:not(:last-child) {
+				border-right-color: var(--ecl-color-neutral-160);
+			}
+
+			.kol-table__row--body &--header {
+				border-right: 2px solid var(--ecl-color-neutral-160);
+			}
+
+			.kol-table__row--body:not(:first-child) &--header {
+				border-top-color: var(--ecl-color-neutral-160);
+			}
+		}
+
+		&__focus-element {
+			&:focus {
+				outline-color: var(--ecl-color-primary);
+				outline-style: solid;
+				outline-width: 2px;
+				outline-offset: 2px;
+			}
+		}
+
+		&__selection {
+			display: flex;
+			gap: 0.5em;
+			align-items: center;
+			grid-template-columns: 1fr auto;
+		}
+
+		&__selection-input {
+			&:focus {
+				outline-color: var(--color-blue);
+				outline-style: solid;
+				outline-width: 2px;
+				border-color: var(--color-blue);
+				outline-offset: 2px;
+			}
+
+			// CHECKBOX
+			&--checkbox {
+				border-color: var(--color-grey-75);
+
+				&:checked {
+					background-color: var(--color-blue);
+					border-color: var(--color-blue);
+				}
+			}
+
+			// RADIO
+			&--radio {
+				border-color: var(--color-grey-75);
+				display: block;
+
+				&:not(:disabled):hover {
+					border-color: var(--color-blue);
+				}
+
+				&:checked {
+					border-color: var(--color-blue);
+					border-width: 7px;
+
+					&:before {
+						background-color: var(--color-white);
+					}
+				}
+			}
+		}
+
+		&__selection-icon {
+			color: var(--color-white);
+		}
+
+		.kol-icon:hover ~ &__selection-input--checkbox:not(:disabled),
+		&__selection-input--checkbox:not(:disabled):hover {
+			border-color: var(--color-blue);
+		}
+	}
+}

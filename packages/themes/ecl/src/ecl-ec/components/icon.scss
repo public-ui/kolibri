@@ -3,5 +3,5 @@
 @use '../../../assets/ecl-icons/style.css';
 
 @layer kol-theme-component {
-	@include icons();
+	@include icon();
 }

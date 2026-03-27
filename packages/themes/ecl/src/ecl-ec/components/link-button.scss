@@ -3,5 +3,5 @@
 
 @layer kol-theme-component {
 	@include button('kol-link');
-	@include icons();
+	@include icon();
 }

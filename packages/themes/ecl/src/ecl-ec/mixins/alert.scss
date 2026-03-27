@@ -11,7 +11,7 @@
 
 @mixin alert {
 	.kol-alert {
-		@include icons();
+		@include icon();
 		@include button('kol-button');
 
 		&--variant-msg {

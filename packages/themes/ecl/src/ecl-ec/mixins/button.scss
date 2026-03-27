@@ -2,7 +2,7 @@
 @use '../mixins/icon' as *;
 
 @mixin button($block-classname) {
-	@include icons();
+	@include icon();
 
 	.#{$block-classname} {
 		--button-border-width: 2px;

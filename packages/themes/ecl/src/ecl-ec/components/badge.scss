@@ -2,7 +2,7 @@
 @use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include icons;
+	@include icon;
 
 	.kol-badge {
 		border-radius: 12px;

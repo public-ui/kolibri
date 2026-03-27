@@ -1,6 +1,6 @@
 @use '../../mixins/to-rem' as *;
 
-@mixin kol-pagination-styles {
+@mixin pagination {
 	.kol-table-stateful {
 		&__pagination,
 		&__pagination-wrapper {
