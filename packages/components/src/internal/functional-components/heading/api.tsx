@@ -1,9 +1,9 @@
-import type { LabelWithExpertSlotProp, LevelProp, SecondaryHeadlineProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface HeadingApi extends ComponentApi {
-	Props: {
-		Optional: LevelProp & SecondaryHeadlineProp;
-		Required: LabelWithExpertSlotProp;
-	};
-}
+export const headingPropsConfig = {
+	optional: [levelProp, secondaryHeadlineProp],
+	required: [labelWithExpertSlotProp],
+} as const satisfies PropsConfigShape;
+
+export type HeadingApi = ApiFromConfig<typeof headingPropsConfig>;

@@ -77,6 +77,22 @@ exports[`kol-heading should render with _label="Headline" _level=6 1`] = `
 </kol-heading>
 `;
 
+exports[`kol-heading should render with _label="Headline" _secondaryHeadline="Subheadline" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <hgroup class="kol-heading-group">
+      <strong class="kol-headline kol-headline--group kol-headline--primary kol-headline--strong">
+        Headline
+        <slot name="expert" slot="expert"></slot>
+      </strong>
+      <p class="kol-headline kol-headline--group kol-headline--secondary">
+        Subheadline
+      </p>
+    </hgroup>
+  </template>
+</kol-heading>
+`;
+
 exports[`kol-heading should render with _label="Headline" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">

@@ -1,16 +1,12 @@
-import type { HeadingLevel, LabelWithExpertSlotProp, LevelProp, SecondaryHeadlineProp } from '../../props';
-import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp, withValidPropValue } from '../../props';
+import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps } from '../generic-types';
+import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
 import type { HeadingApi } from './api';
+import { headingPropsConfig } from './api';
 
 export class HeadingController extends BaseController<HeadingApi> implements ControllerInterface<HeadingApi> {
-	public constructor(states: HeadingApi['States'] = {}) {
-		super(states, {
-			label: '',
-			level: 0 as HeadingLevel,
-			secondaryHeadline: '',
-		});
+	public constructor(setState: SetStateFn<HeadingApi>, getState: GetStateFn<HeadingApi>) {
+		super(headingPropsConfig, setState, getState);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<HeadingApi>): void {
@@ -21,20 +17,20 @@ export class HeadingController extends BaseController<HeadingApi> implements Con
 	}
 
 	public watchLabel(value?: string): void {
-		withValidPropValue<LabelWithExpertSlotProp>(labelWithExpertSlotProp, value, (v) => {
-			this.setProp('label', v);
+		labelWithExpertSlotProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
 		});
 	}
 
-	public watchLevel(value?: HeadingLevel): void {
-		withValidPropValue<LevelProp>(levelProp, value, (v) => {
-			this.setProp('level', v);
+	public watchLevel(value?: number): void {
+		levelProp.apply(value, (v) => {
+			this.setRenderProp('level', v);
 		});
 	}
 
 	public watchSecondaryHeadline(value?: string): void {
-		withValidPropValue<SecondaryHeadlineProp>(secondaryHeadlineProp, value, (v) => {
-			this.setProp('secondaryHeadline', v);
+		secondaryHeadlineProp.apply(value, (v) => {
+			this.setRenderProp('secondaryHeadline', v);
 		});
 	}
 }

@@ -7,5 +7,9 @@ import { KolHeading } from './component';
 executeSnapshotTests<HeadingProps>(
 	KolHeadingTag,
 	[KolHeading],
-	[{ _label: 'Headline' }, ...[0, 1, 2, 3, 4, 5, 6].map((_level) => ({ _label: 'Headline', _level }) as HeadingProps)],
+	[
+		{ _label: 'Headline' },
+		{ _label: 'Headline', _secondaryHeadline: 'Subheadline' },
+		...[0, 1, 2, 3, 4, 5, 6].map((_level) => ({ _label: 'Headline', _level }) as HeadingProps),
+	],
 );

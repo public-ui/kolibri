@@ -7,6 +7,8 @@ export type HeadingLevel = (typeof headingLevelOptions)[number];
 
 export type LevelProp = SimpleProp<'level', HeadingLevel>;
 export const levelProp = createPropDefinition<LevelProp>(
+	'level',
+	0,
 	(value) => normalizeInteger(value) as HeadingLevel,
 	(v) => headingLevelOptions.includes(v),
 );
