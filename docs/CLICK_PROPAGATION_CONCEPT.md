@@ -244,6 +244,35 @@ Beides ist kombinierbar und sinnvoll:
 - Inneres Element klicken -> Aktion wird ebenfalls einmal ausgefuehrt.
 - `_on.onClick` und DOM-Event werden jeweils genau einmal beobachtet.
 
+#### TypeScript-Typisierung in E2E Tests
+
+Bei DOM-Zugriffen in E2E-Tests muss zwischen KoliBri Web Components und nativen HTML-Elementen unterschieden werden, da der `click()`-Aufruf auf KoliBri-Komponenten **asynchron** ist (im Gegensatz zum synchronen nativen `click()`):
+
+- **KoliBri Web Components** erhalten den spezifischen KoliBri-Elementtyp, z. B. `HTMLKolButtonElement`, `HTMLKolLinkElement`, `HTMLKolInputTextElement`. Nur so steht die typisierte `async click()`-Methode der Komponente zur Verfuegung.
+- **Native HTML-Elemente** erhalten den entsprechenden Standard-Typ, z. B. `HTMLButtonElement`, `HTMLAnchorElement`, `HTMLInputElement`.
+
+Beispiel:
+
+```typescript
+// KoliBri Web Component: click() ist async und muss awaited werden
+const kolButton = document.querySelector('kol-button') as HTMLKolButtonElement;
+await kolButton.click();
+
+// Natives HTML-Element: click() ist synchron
+const nativeButton = document.querySelector('button') as HTMLButtonElement;
+nativeButton.click();
+```
+
+**Falsch** (kein await, falscher Typ):
+
+```typescript
+// Fehler: Element.click() ist synchron und nicht die KoliBri-Delegation
+const kolButton = document.querySelector('kol-button') as HTMLElement;
+kolButton.click(); // loest keinen delegierten Klick aus
+```
+
+**Regel**: Immer `await` verwenden, wenn `click()` auf einer KoliBri Web Component aufgerufen wird. Das Weglassen von `await` fuehrt dazu, dass der Klick vor abgeschlossener Theme-Bereitschaft und Delegation ausgefuehrt werden koennte oder der Test zu frueh weiterlaeuft.
+
 ## Zusammenfassung
 
 Analog zu Focus sollte Click als echte Delegation von Host nach innen modelliert werden.
