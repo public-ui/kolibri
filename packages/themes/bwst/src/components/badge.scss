@@ -1,0 +1,47 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-badge {
+		border-radius: var(--border-radius);
+		display: inline-flex;
+		font-style: normal;
+
+		&--has-smart-button {
+			align-items: center;
+		}
+
+		&__smart-button {
+			.kol-button {
+				color: inherit;
+				padding: to-rem(3.2);
+				border-bottom-right-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
+
+				&:hover {
+					color: var(--color-light);
+					background-color: var(--color-primary-variant);
+				}
+
+				&__text {
+					padding: to-rem(4) to-rem(12);
+					align-items: center;
+					font-style: normal;
+				}
+			}
+		}
+
+		&__label {
+			padding: to-rem(4) to-rem(12);
+			gap: to-rem(8);
+			align-items: center;
+			font-style: normal;
+
+			.kol-span__container {
+				display: flex;
+				gap: to-rem(4);
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+@use '../mixins/to-rem' as *;
+
+@mixin kol-custom-suggestions-toggle-theme {
+	.kol-custom-suggestions-toggle {
+		display: grid;
+		height: to-rem(40);
+		min-height: 0;
+		padding-right: to-rem(8);
+		padding-left: to-rem(8);
+		place-items: center;
+
+		&:focus {
+			outline: 0;
+		}
+	}
+}

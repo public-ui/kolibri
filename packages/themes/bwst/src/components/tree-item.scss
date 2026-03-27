@@ -1,0 +1,47 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-tree-item {
+		$root: &;
+		--tree-item-indentation: #{to-rem(20)};
+
+		&__link {
+			display: block;
+			border: 1px solid transparent;
+
+			.kol-link {
+				color: var(--color-text);
+				text-align: left;
+			}
+
+			&:hover,
+			&:focus-within {
+				background-color: var(--color-primary-variant);
+				border: 1px solid var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+					outline-offset: 0;
+				}
+			}
+
+			&--active {
+				background-color: var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+				}
+			}
+		}
+
+		&__toggle-button:hover &__toggle-button-icon {
+			transform: scale(1.6);
+		}
+
+		&__text {
+			text-decoration: none;
+		}
+	}
+}

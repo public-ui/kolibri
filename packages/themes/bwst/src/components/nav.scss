@@ -1,0 +1,132 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	:host {
+		background-color: var(--color-mute);
+	}
+
+	.kol-nav {
+		--kol-nav-item-padding-left: 0;
+		--kol-nav-item-padding-right: 16;
+
+		$root: &;
+
+		&__list {
+			list-style: none;
+			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
+			--kol-nav-nested-padding-left: calc(var(--kol-nav-item-padding-left) + 8);
+
+			&-item {
+				--kol-nav-item-padding-left: calc(var(--kol-nav-nested-padding-left) + 8);
+			}
+		}
+
+		&__entry {
+			&--link {
+				display: flex;
+			}
+
+			.kol-link,
+			.kol-button {
+				color: var(--color-primary);
+				display: flex;
+				min-height: var(--a11y-min-size);
+				padding-right: to-rem(var(--kol-nav-item-padding-right));
+				padding-left: to-rem(8);
+				gap: to-rem(8);
+				align-items: center;
+
+				text-decoration: none;
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				#{$root}__list & {
+					padding-left: to-rem(var(--kol-nav-item-padding-left));
+					border-left: 2px solid transparent;
+				}
+
+				#{$root}__list-item--active > #{$root}__entry-wrapper & {
+					border-left-color: var(--color-primary);
+				}
+
+				#{$root}__list-item--active > #{$root}__entry-wrapper & {
+					font-weight: bold;
+				}
+
+				&:hover .kol-span__label {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		&__toggle-button {
+			.kol-button {
+				margin-bottom: to-rem(5);
+
+				$root: &;
+
+				&:focus {
+					outline: none;
+				}
+
+				&:not([disabled]):hover {
+					--text-background-color: var(--color-primary-variant);
+					--text-border-color: var(--color-primary-variant);
+					--text-color: var(--color-light);
+				}
+
+				--text-background-color: var(--color-light);
+				--text-border-color: var(--color-light);
+				--text-color: var(--color-primary);
+				--text-box-shadow: none;
+
+				&__text {
+					color: var(--text-color);
+					background-color: var(--text-background-color);
+					border-radius: var(--border-radius);
+					min-width: var(--a11y-min-size);
+					min-height: var(--a11y-min-size);
+
+					transition-duration: 0.5s;
+					transition-property: background-color, color, border-color;
+
+					.kol-span__container {
+						justify-content: center;
+					}
+
+					&:hover {
+						color: var(--text-color);
+						background-color: var(--text-background-color);
+						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+						border-color: var(--text-border-color);
+					}
+
+					@at-root #{$root}--hide-label & {
+						width: unset;
+						padding: to-rem(12.8);
+
+						.kol-span__label {
+							display: none;
+						}
+					}
+
+					@at-root #{$root}:focus {
+						@include focus-outline;
+					}
+
+					@at-root #{$root}:disabled:hover & {
+						color: var(--text-color);
+						background-color: var(--text-background-color);
+						box-shadow: none;
+						border-color: var(--text-border-color);
+					}
+				}
+			}
+		}
+	}
+}

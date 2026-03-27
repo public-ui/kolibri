@@ -1,0 +1,28 @@
+@use '../mixins/to-rem' as *;
+
+@mixin kol-field-control-theme {
+	.kol-field-control {
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+		.kol-span.kol-field-control__label-text {
+			flex-flow: row;
+
+			font-weight: normal;
+		}
+	}
+
+	/**{
+    font-weight: normal;
+  }*/
+}

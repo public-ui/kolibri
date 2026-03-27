@@ -29,6 +29,9 @@ jobs:
           - name: hydrate
             path: packages/adapters/hydrate
             type: unit
+          - name: theme-bwst
+            path: packages/themes/bwst
+            type: e2e
           - name: theme-default
             path: packages/themes/default
             type: e2e
