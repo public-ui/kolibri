@@ -35,7 +35,7 @@ test.describe('kol-button', () => {
 		['click', 'mousedown'].forEach((event) => {
 			test(`should emit ${event} when internal button emits ${event}`, async ({ page }) => {
 				await page.setContent('<kol-button _label="Button"></kol-button>');
-				const eventPromise = page.locator('kol-button').evaluate(async (element, event) => {
+				const eventPromise = page.locator('kol-button').evaluate(async (element: HTMLElement, event: string) => {
 					return new Promise((resolve) => {
 						element.addEventListener(event, resolve);
 					});
@@ -52,10 +52,11 @@ test.describe('kol-button', () => {
 			await page.setContent('<kol-button _label="Click me"></kol-button>');
 			const kolButton = page.locator('kol-button');
 
-			const callbackPromise = kolButton.evaluate((element) => {
+			const callbackPromise = kolButton.evaluate((element: HTMLElement) => {
 				return new Promise<number>((resolve) => {
 					let clickCount = 0;
-					element._on = {
+					const buttonElement = element as HTMLElement & { _on?: { onClick?: () => void } };
+					buttonElement._on = {
 						onClick: () => {
 							clickCount++;
 							resolve(clickCount);
@@ -65,7 +66,7 @@ test.describe('kol-button', () => {
 			});
 			await page.waitForChanges();
 
-			await kolButton.evaluate((el) => el.click());
+			await kolButton.evaluate((el: HTMLElement) => el.click());
 			await expect(callbackPromise).resolves.toBe(1);
 		});
 
@@ -73,25 +74,19 @@ test.describe('kol-button', () => {
 			await page.setContent('<kol-button _label="Click me"></kol-button>');
 			const kolButton = page.locator('kol-button');
 
-			const clickCountPromise = kolButton.evaluate((element) => {
-				return new Promise<number>((resolve) => {
-					let clickCount = 0;
-					element._on = {
-						onClick: () => {
-							clickCount++;
-						},
-					};
-					(window as any).clickCount = 0;
-					element._on.onClick = () => {
-						(window as any).clickCount++;
-					};
-					resolve(0);
-				});
+			await kolButton.evaluate((element: HTMLElement) => {
+				(window as unknown as Record<string, number>).clickCount = 0;
+				const buttonElement = element as HTMLElement & { _on?: { onClick?: () => void } };
+				buttonElement._on = {
+					onClick: () => {
+						(window as unknown as Record<string, number>).clickCount++;
+					},
+				};
 			});
 			await page.waitForChanges();
 
 			await kolButton.click();
-			const finalCount = await page.evaluate(() => (window as any).clickCount);
+			const finalCount = await page.evaluate(() => (window as unknown as Record<string, number>).clickCount);
 			expect(finalCount).toBe(1);
 		});
 	});

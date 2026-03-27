@@ -21,10 +21,11 @@ test.describe('kol-split-button', () => {
 			await page.setContent('<kol-split-button _label="Primary Action">Dropdown contents</kol-split-button>');
 			const kolSplitButton = page.locator('kol-split-button');
 
-			const callbackPromise = kolSplitButton.evaluate((element) => {
+			const callbackPromise = kolSplitButton.evaluate((element: HTMLElement) => {
 				return new Promise<number>((resolve) => {
 					let clickCount = 0;
-					element._on = {
+					const splitButtonElement = element as HTMLElement & { _on?: { onClick?: () => void } };
+					splitButtonElement._on = {
 						onClick: () => {
 							clickCount++;
 							resolve(clickCount);
@@ -34,7 +35,7 @@ test.describe('kol-split-button', () => {
 			});
 			await page.waitForChanges();
 
-			await kolSplitButton.evaluate((el) => el.click());
+			await kolSplitButton.evaluate((el: HTMLElement) => el.click());
 			await expect(callbackPromise).resolves.toBe(1);
 		});
 
@@ -42,18 +43,19 @@ test.describe('kol-split-button', () => {
 			await page.setContent('<kol-split-button _label="Primary Action">Dropdown contents</kol-split-button>');
 			const kolSplitButton = page.locator('kol-split-button');
 
-			await kolSplitButton.evaluate((element) => {
-				(window as any).actionType = null;
-				element._on = {
+			await kolSplitButton.evaluate((element: HTMLElement) => {
+				(window as unknown as Record<string, string | null>).actionType = null;
+				const splitButtonElement = element as HTMLElement & { _on?: { onClick?: () => void } };
+				splitButtonElement._on = {
 					onClick: () => {
-						(window as any).actionType = 'primary';
+						(window as unknown as Record<string, string | null>).actionType = 'primary';
 					},
 				};
 			});
 			await page.waitForChanges();
 
-			await kolSplitButton.evaluate((el) => el.click());
-			const action = await page.evaluate(() => (window as any).actionType);
+			await kolSplitButton.evaluate((el: HTMLElement) => el.click());
+			const action = await page.evaluate(() => (window as unknown as Record<string, string | null>).actionType);
 			expect(action).toBe('primary');
 		});
 	});

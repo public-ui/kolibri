@@ -37,9 +37,9 @@ test.describe('kol-input-text', () => {
 			await page.setContent('<kol-input-text _label="Test Input" _type="text"></kol-input-text>');
 			const kolInput = page.locator('kol-input-text');
 
-			const focusPromise = kolInput.evaluate((element) => {
+			const focusPromise = kolInput.evaluate((element: HTMLElement) => {
 				return new Promise<boolean>((resolve) => {
-					const input = element.shadowRoot?.querySelector('input');
+					const input = (element as unknown as { shadowRoot: ShadowRoot | null }).shadowRoot?.querySelector('input');
 					if (input) {
 						input.addEventListener('focus', () => {
 							resolve(true);
@@ -51,7 +51,7 @@ test.describe('kol-input-text', () => {
 			});
 			await page.waitForChanges();
 
-			await kolInput.evaluate((el) => el.click());
+			await kolInput.evaluate((el: HTMLElement) => el.click());
 			await expect(focusPromise).resolves.toBe(true);
 		});
 

@@ -138,9 +138,10 @@ test.describe('kol-tabs', () => {
 			</kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
 
-			const callbackPromise = kolTabs.evaluate((element) => {
+			const callbackPromise = kolTabs.evaluate((element: HTMLElement) => {
 				return new Promise<number>((resolve) => {
-					element._on = {
+					const tabsElement = element as HTMLElement & { _on?: { onSelect?: (event: Event, tabIndex: number) => void } };
+					tabsElement._on = {
 						onSelect: (_event: Event, tabIndex: number) => {
 							resolve(tabIndex);
 						},
@@ -150,7 +151,7 @@ test.describe('kol-tabs', () => {
 			await page.waitForChanges();
 
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
-			await secondTab.evaluate((el) => (el as any).click());
+			await secondTab.evaluate((el: HTMLElement) => el.click());
 			await expect(callbackPromise).resolves.toBe(1);
 		});
 
@@ -161,11 +162,12 @@ test.describe('kol-tabs', () => {
 			</kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
 
-			await kolTabs.evaluate((element) => {
-				(window as any).switchCount = 0;
-				element._on = {
+			await kolTabs.evaluate((element: HTMLElement) => {
+				(window as unknown as Record<string, number>).switchCount = 0;
+				const tabsElement = element as HTMLElement & { _on?: { onSelect?: () => void } };
+				tabsElement._on = {
 					onSelect: () => {
-						(window as any).switchCount++;
+						(window as unknown as Record<string, number>).switchCount++;
 					},
 				};
 			});
@@ -174,7 +176,7 @@ test.describe('kol-tabs', () => {
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
 			await secondTab.click();
 
-			const finalCount = await page.evaluate(() => (window as any).switchCount);
+			const finalCount = await page.evaluate(() => (window as unknown as Record<string, number>).switchCount);
 			expect(finalCount).toBe(1);
 		});
 	});

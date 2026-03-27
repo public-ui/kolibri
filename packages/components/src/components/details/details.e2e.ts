@@ -50,11 +50,11 @@ test.describe('kol-details', () => {
 			// Initially content is hidden
 			await expect(contentLocator).toHaveClass(/hidden/);
 
-			await kolDetails.evaluate((element) => element.click());
+			await kolDetails.evaluate((element: HTMLElement) => element.click());
 			await page.waitForChanges();
 
 			// After click, content should be visible
-			const hasHiddenClass = await contentLocator.evaluate((el) => el.classList.contains('hidden'));
+			const hasHiddenClass = await contentLocator.evaluate((el: HTMLElement) => el.classList.contains('hidden'));
 			expect(hasHiddenClass).toBe(false);
 		});
 
@@ -63,20 +63,22 @@ test.describe('kol-details', () => {
 			const kolDetails = page.locator('kol-details');
 
 			// Open details
-			await kolDetails.evaluate((element) => element.click());
+			await kolDetails.evaluate((element: HTMLElement) => element.click());
 			await page.waitForChanges();
 
-			const isOpen = await kolDetails.evaluate((element) => {
-				return element._open;
+			const isOpen = await kolDetails.evaluate((element: HTMLElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return detailsElement._open;
 			});
 			expect(isOpen).toBe(true);
 
 			// Close details
-			await kolDetails.evaluate((element) => element.click());
+			await kolDetails.evaluate((element: HTMLElement) => element.click());
 			await page.waitForChanges();
 
-			const isClosed = await kolDetails.evaluate((element) => {
-				return element._open;
+			const isClosed = await kolDetails.evaluate((element: HTMLElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return detailsElement._open;
 			});
 			expect(isClosed).toBe(false);
 		});
