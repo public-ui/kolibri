@@ -25,6 +25,7 @@ import type {
 
 import { nonce } from '../../utils/dev.utils';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRadioController } from './controller';
 
@@ -79,6 +80,14 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Method()
 	public async focus() {
 		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput()!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	private getFocusableInput(): HTMLInputElement | undefined {

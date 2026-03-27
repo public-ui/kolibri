@@ -56,6 +56,7 @@ import { SpanFC } from '../../internal/functional-components/span/component';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
+import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -79,6 +80,14 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return setFocus(this.buttonRef!);
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return setClick(this.buttonRef!);
 	}
 
 	private readonly setButtonRef = (ref?: HTMLButtonElement) => {

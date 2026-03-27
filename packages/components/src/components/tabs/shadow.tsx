@@ -32,6 +32,7 @@ import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
 import clsx from '../../utils/clsx';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
@@ -164,6 +165,14 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.currentTabButtonRef!));
+	}
+
+	/**
+	 * Triggers a click on the currently selected tab.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.currentTabButtonRef!));
 	}
 
 	private readonly setCurrentTabButtonRef = (ref?: HTMLKolButtonWcElement) => {

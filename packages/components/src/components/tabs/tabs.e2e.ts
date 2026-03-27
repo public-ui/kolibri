@@ -129,4 +129,53 @@ test.describe('kol-tabs', () => {
 		await kolTabs.getByRole('tab', { name: 'Second Tab' }).click();
 		await expect(page.locator('.kol-tabs .selected')).toHaveCount(1);
 	});
+
+	test.describe('click() method', () => {
+		test('should select tab when click() method is called on a tab', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+
+			const callbackPromise = kolTabs.evaluate((element) => {
+				return new Promise<number>((resolve) => {
+					element._on = {
+						onSelect: (_event: Event, tabIndex: number) => {
+							resolve(tabIndex);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			await secondTab.evaluate((el) => (el as any).click());
+			await expect(callbackPromise).resolves.toBe(1);
+		});
+
+		test('should not trigger double tab switch on multiple clicks', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+
+			await kolTabs.evaluate((element) => {
+				(window as any).switchCount = 0;
+				element._on = {
+					onSelect: () => {
+						(window as any).switchCount++;
+					},
+				};
+			});
+			await page.waitForChanges();
+
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			await secondTab.click();
+
+			const finalCount = await page.evaluate(() => (window as any).switchCount);
+			expect(finalCount).toBe(1);
+		});
+	});
 });

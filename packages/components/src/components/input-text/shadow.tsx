@@ -37,6 +37,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
@@ -112,6 +113,14 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Method()
 	public async focus() {
 		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	/**

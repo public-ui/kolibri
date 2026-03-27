@@ -7,6 +7,7 @@ import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 @Component({
@@ -36,6 +37,17 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
 			return delegateFocus(this.host!, () => setFocus(firstEnabledItem));
+		}
+	}
+
+	/**
+	 * Triggers a click on the currently active toolbar item.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		const currentItem = this.indexToElement.get(this.currentIndex);
+		if (currentItem) {
+			return delegateClick(this.host!, async () => setClick(currentItem));
 		}
 	}
 

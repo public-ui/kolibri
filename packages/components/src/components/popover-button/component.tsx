@@ -24,6 +24,7 @@ import type {
 import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import clsx from '../../utils/clsx';
+import { setClick } from '../../utils/element-click';
 import { nonce } from '../../utils/dev.utils';
 import { setFocus } from '../../utils/element-focus';
 
@@ -94,6 +95,14 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	@Method()
 	public async focus(): Promise<void> {
 		return setFocus(this.refButton!);
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return setClick(this.refButton!);
 	}
 
 	private handleToggle = (event: Event): void => {

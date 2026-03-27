@@ -32,6 +32,7 @@ import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../funct
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { InputFileController } from './controller';
 
 /**
@@ -72,6 +73,14 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Method()
 	public async focus() {
 		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	/**

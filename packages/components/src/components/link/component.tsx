@@ -53,6 +53,7 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
+import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -97,6 +98,14 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return setFocus(this.anchorRef!);
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return setClick(this.anchorRef!);
 	}
 
 	private readonly onClick = (event: Event) => {

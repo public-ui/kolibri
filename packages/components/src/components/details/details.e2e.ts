@@ -39,4 +39,46 @@ test.describe('kol-details', () => {
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 	});
+
+	test.describe('click() method', () => {
+		test('should open details when click() method is called', async ({ page }) => {
+			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
+			const kolDetails = page.locator('kol-details');
+
+			const contentLocator = page.locator('kol-details .kol-details__wrapper');
+
+			// Initially content is hidden
+			await expect(contentLocator).toHaveClass(/hidden/);
+
+			await kolDetails.evaluate((element) => element.click());
+			await page.waitForChanges();
+
+			// After click, content should be visible
+			const hasHiddenClass = await contentLocator.evaluate((el) => el.classList.contains('hidden'));
+			expect(hasHiddenClass).toBe(false);
+		});
+
+		test('should toggle details when click() method is called multiple times', async ({ page }) => {
+			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
+			const kolDetails = page.locator('kol-details');
+
+			// Open details
+			await kolDetails.evaluate((element) => element.click());
+			await page.waitForChanges();
+
+			const isOpen = await kolDetails.evaluate((element) => {
+				return element._open;
+			});
+			expect(isOpen).toBe(true);
+
+			// Close details
+			await kolDetails.evaluate((element) => element.click());
+			await page.waitForChanges();
+
+			const isClosed = await kolDetails.evaluate((element) => {
+				return element._open;
+			});
+			expect(isClosed).toBe(false);
+		});
+	});
 });

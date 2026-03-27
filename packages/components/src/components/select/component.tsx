@@ -30,6 +30,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
@@ -69,6 +70,14 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return setFocus(this.selectRef!);
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return setClick(this.selectRef!);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {

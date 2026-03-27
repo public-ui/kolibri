@@ -23,6 +23,7 @@ import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-name
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { delegateClick, setClick } from '../../utils/element-click';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -65,6 +66,14 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.primaryButtonWcRef!));
 	}
 
 	private readonly clickButtonHandler = {

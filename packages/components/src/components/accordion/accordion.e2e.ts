@@ -62,4 +62,29 @@ test.describe('kol-accordion', () => {
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 	});
+
+	test.describe('click() method', () => {
+		test('should expand accordion when click() method is called', async ({ page }) => {
+			await page.setContent('<kol-accordion _label="Accordion Label">Accordion contents</kol-accordion>');
+			const kolAccordion = page.locator('kol-accordion');
+
+			await kolAccordion.evaluate((element) => element.click());
+			await page.waitForChanges();
+
+			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
+		});
+
+		test('should toggle accordion state when click() method is called multiple times', async ({ page }) => {
+			await page.setContent('<kol-accordion _label="Accordion Label">Accordion contents</kol-accordion>');
+			const kolAccordion = page.locator('kol-accordion');
+
+			await kolAccordion.evaluate((element) => element.click());
+			await page.waitForChanges();
+			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
+
+			await kolAccordion.evaluate((element) => element.click());
+			await page.waitForChanges();
+			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
+		});
+	});
 });
