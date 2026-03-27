@@ -45,17 +45,22 @@ test.describe('kol-details', () => {
 			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
 			const kolDetails = page.locator('kol-details');
 
-			const contentLocator = page.locator('kol-details .kol-details__wrapper');
-
-			// Initially content is hidden
-			await expect(contentLocator).toHaveClass(/hidden/);
+			// Initially details should be closed
+			const isClosedBefore = await kolDetails.evaluate((element: HTMLKolDetailsElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return !detailsElement._open;
+			});
+			expect(isClosedBefore).toBe(true);
 
 			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
 			await page.waitForChanges();
 
-			// After click, content should be visible
-			const hasHiddenClass = await contentLocator.evaluate((el: HTMLElement) => el.classList.contains('hidden'));
-			expect(hasHiddenClass).toBe(false);
+			// After click, details should be open
+			const isOpenAfter = await kolDetails.evaluate((element: HTMLKolDetailsElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return detailsElement._open;
+			});
+			expect(isOpenAfter).toBe(true);
 		});
 
 		test('should toggle details when click() method is called multiple times', async ({ page }) => {
