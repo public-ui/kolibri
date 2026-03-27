@@ -35,7 +35,7 @@ runs:
     - name: Scan repository with Trivy
       id: trivy
       if: ${{ inputs.enable-trivy == 'true' }}
-      uses: aquasecurity/trivy-action@0.28.0
+      uses: aquasecurity/trivy-action@0.35.0
       with:
         scan-type: 'fs'
         scan-ref: '.'
