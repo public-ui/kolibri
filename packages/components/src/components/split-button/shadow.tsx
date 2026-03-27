@@ -22,8 +22,8 @@ import type {
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for

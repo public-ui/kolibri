@@ -27,8 +27,8 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputCheckboxController } from './controller';
 
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
