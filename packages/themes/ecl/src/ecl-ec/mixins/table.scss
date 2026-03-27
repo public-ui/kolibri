@@ -2,13 +2,24 @@
 @use './alert' as *;
 @use './icon' as *;
 @use './pagination' as *;
+@use './table-settings' as *;
 
 @mixin table {
 	@include alert;
 	@include icon;
 	@include pagination;
+	@include table-settings;
 
 	.kol-table {
+		&__caption {
+			caption-side: bottom;
+			color: var(--ecl-color-dark-80);
+			font-size: var(--ecl-font-size-s);
+			line-height: var(--ecl-line-height-s);
+			margin-top: var(--ecl-spacing-xs);
+			min-height: 0;
+		}
+
 		&__table {
 			border: 1px solid var(--ecl-color-neutral-60);
 			border-spacing: 0;
@@ -32,8 +43,23 @@
 			&--header {
 				background-color: var(--ecl-color-neutral);
 
+				&:has(.kol-button) {
+					padding: 0;
+				}
+
+				.kol-table__sort {
+					display: flex;
+					height: 100%;
+					align-items: stretch;
+
+					&-button {
+						flex: 1 0 100%;
+					}
+				}
+
 				.kol-button {
 					font-weight: 700;
+					padding: var(--ecl-spacing-m);
 				}
 			}
 
@@ -47,15 +73,6 @@
 
 			.kol-table__row--body:not(:first-child) &--header {
 				border-top-color: var(--ecl-color-neutral-160);
-			}
-		}
-
-		&__focus-element {
-			&:focus {
-				outline-color: var(--ecl-color-primary);
-				outline-style: solid;
-				outline-width: 2px;
-				outline-offset: 2px;
 			}
 		}
 
