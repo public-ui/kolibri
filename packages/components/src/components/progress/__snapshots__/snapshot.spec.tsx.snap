@@ -22,7 +22,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        0 von 42 kg
+        kol-live-value-bounded
       </span>
     </div>
   </template>
@@ -51,7 +51,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        0 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -80,7 +80,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        40 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -109,7 +109,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="21"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        21 von 42 kg
+        kol-live-value-bounded
       </span>
     </div>
   </template>
@@ -138,7 +138,11 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
       </div>
       <progress aria-busy="false" class="visually-hidden" max="42" value="42"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+<<<<<<< Updated upstream
         100 %
+=======
+        kol-live-value
+>>>>>>> Stashed changes
       </span>
     </div>
   </template>
@@ -167,7 +171,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
       </div>
       <progress aria-busy="true" class="visually-hidden" max="100" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        0 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -196,7 +200,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
       </div>
       <progress aria-busy="true" class="visually-hidden" max="100" value="42"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        42 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -225,7 +229,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
       </div>
       <progress aria-busy="false" class="visually-hidden" max="100" value="100"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        100 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -256,7 +260,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        0 von 42 kg
+        kol-live-value-bounded
       </span>
     </div>
   </template>
@@ -287,7 +291,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        0 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -318,7 +322,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        40 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -349,7 +353,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
       </div>
       <progress aria-busy="true" class="visually-hidden" max="42" value="21"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        21 von 42 kg
+        kol-live-value-bounded
       </span>
     </div>
   </template>
@@ -380,7 +384,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
       </div>
       <progress aria-busy="false" class="visually-hidden" max="42" value="42"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        100 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -411,7 +415,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
       </div>
       <progress aria-busy="true" class="visually-hidden" max="100" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        0 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -442,7 +446,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
       </div>
       <progress aria-busy="true" class="visually-hidden" max="100" value="42"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        42 %
+        kol-live-value
       </span>
     </div>
   </template>
@@ -473,7 +477,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
       </div>
       <progress aria-busy="false" class="visually-hidden" max="100" value="100"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-        100 %
+        kol-live-value
       </span>
     </div>
   </template>

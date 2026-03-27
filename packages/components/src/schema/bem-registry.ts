@@ -72,6 +72,41 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-meter': {
+		elements: {
+			bar: {
+				modifiers: null;
+			};
+			'bar-label': {
+				modifiers: null;
+			};
+			'bar-state': {
+				modifiers: Set<'optimum' | 'suboptimal' | 'critical'>;
+			};
+			'bar-track': {
+				modifiers: null;
+			};
+			'bar-fill': {
+				modifiers: Set<'optimum' | 'suboptimal' | 'critical'>;
+			};
+			'bar-background': {
+				modifiers: null;
+			};
+			'bar-border': {
+				modifiers: null;
+			};
+			'value-unit': {
+				modifiers: null;
+			};
+			value: {
+				modifiers: null;
+			};
+			unit: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'vertical'>;
+	};
 	'kol-quote': {
 		elements: {
 			blockquote: {
@@ -163,6 +198,21 @@ const BEM: KoliBriComponentsBemSchema = {
 			icon: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-meter': {
+		elements: {
+			bar: { modifiers: null },
+			'bar-background': { modifiers: null },
+			'bar-border': { modifiers: null },
+			'bar-fill': { modifiers: new Set(['critical', 'optimum', 'suboptimal']) },
+			'bar-label': { modifiers: null },
+			'bar-state': { modifiers: new Set(['critical', 'optimum', 'suboptimal']) },
+			'bar-track': { modifiers: null },
+			unit: { modifiers: null },
+			value: { modifiers: null },
+			'value-unit': { modifiers: null },
+		},
+		modifiers: new Set(['vertical']),
 	},
 	'kol-quote': {
 		elements: {

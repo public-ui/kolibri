@@ -32,6 +32,7 @@ import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/shadow';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
+import { KolMeter } from './meter/component';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
@@ -89,6 +90,7 @@ export const COMPONENTS = [
 	KolLink,
 	KolLinkButton,
 	KolLinkWc,
+	KolMeter,
 	KolModal,
 	KolNav,
 	KolPagination,
