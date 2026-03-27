@@ -7,6 +7,11 @@
 	@include kol-link('kol-link');
 
 	.kol-breadcrumb {
+		&__list,
+		&__list-element {
+			gap: to-rem(8);
+		}
+
 		&__list-element-span {
 			color: var(--color-subtle);
 		}

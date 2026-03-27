@@ -3,25 +3,12 @@
 @use '../host-display-block' as *;
 @use '../@shared/collapsible.mixin' as *;
 @use '../@shared/icon.mixin' as *;
+@use '../@shared/button.mixin' as *;
 
 @layer kol-component {
+	@include kol-button-styles('kol-button');
 	@include kol-icon-styles();
 	.kol-details {
-		&__heading-button {
-			display: flex;
-
-			.kol-button {
-				min-height: auto;
-
-				.kol-span {
-					&__label {
-						border-bottom-color: grey;
-						border-bottom-style: solid;
-					}
-				}
-			}
-		}
-
 		.collapsible--open &__heading-button {
 			.kol-icon {
 				transform: rotate(90deg);

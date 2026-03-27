@@ -3,9 +3,10 @@
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
+
 	.kol-tree-item {
 		$root: &;
-		--tree-item-indentation: #{to-rem(20)};
+		--indentation: #{to-rem(16)};
 
 		&__link {
 			display: block;
@@ -13,6 +14,8 @@
 
 			.kol-link {
 				color: var(--color-text);
+				padding-right: to-rem(8);
+				padding-left: max(calc(var(--indentation) * var(--level)));
 				text-align: left;
 			}
 

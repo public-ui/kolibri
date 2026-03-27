@@ -15,6 +15,12 @@
 	.kol-pagination {
 		@include kol-select();
 
+		gap: to-rem(16);
+
+		&__navigation-list {
+			gap: to-rem(8);
+		}
+
 		.kol-button {
 			&:focus .kol-button__text {
 				@include focus-outline;
