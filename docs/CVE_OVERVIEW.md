@@ -9,8 +9,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   0 |   0 |   0 |   0 |
-| high     |   0 |   1 |   1 |   5 |
-| moderate |   0 |   1 |   1 |   2 |
+| high     |   0 |   0 |   0 |   4 |
+| moderate |   0 |   0 |   0 |   1 |
 | low      |   0 |   0 |   0 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -22,10 +22,8 @@
 | lodash.pick          | high     | CVE-2020-8203       | v1                | Prototype Pollution in lodash                                                     |
 | minimatch            | high     | CVE-2026-27903      | v1                | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v1                | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
-| picomatch            | high     | CVE-2026-33671      | v3, v2, v1        | Picomatch has a ReDoS vulnerability via extglob quantifiers                       |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v1                | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
-| picomatch            | moderate | CVE-2026-33672      | v3, v2, v1        | Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Mat  |
-| yaml                 | moderate | CVE-2026-33532      | v1                | yaml is vulnerable to Stack Overflow via deeply nested YAML collections           |
+| serialize-javascript | moderate | CVE-2026-34043      | v1                | Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like  |
 
 ## 2. All Dependencies
 
@@ -33,9 +31,9 @@
 
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
-| critical |   4 |   4 |   4 |   2 |
-| high     |  28 |  26 |  38 |  24 |
-| moderate |  12 |  13 |  22 |   5 |
+| critical |   5 |   5 |   5 |   3 |
+| high     |  33 |  30 |  43 |  27 |
+| moderate |  16 |  16 |  26 |   6 |
 | low      |   3 |   3 |   8 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -46,6 +44,7 @@
 | -------------------- | -------- | ------------------- | ----------------- | --------------------------------------------------------------------------------- |
 | basic-ftp            | critical | CVE-2026-27699      | v4, v3, v2        | Basic FTP has Path Traversal Vulnerability in its downloadToDir() method          |
 | fast-xml-parser      | critical | CVE-2026-25896      | v4, v3, v2        | fast-xml-parser has an entity encoding bypass via regex injection in DOCTYPE ent  |
+| handlebars           | critical | CVE-2026-33937      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion                     |
 | locutus              | critical | CVE-2026-25521      | v4, v3, v2, v1    | locutus is vulnerable to Prototype Pollution                                      |
 | locutus              | critical | CVE-2026-32304      | v4, v3, v2, v1    | Locutus vulnerable to RCE via unsanitized input in create_function()              |
 | @angular/common      | high     | CVE-2025-66035      | v1                | Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angula  |
@@ -64,6 +63,10 @@
 | fast-xml-parser      | high     | CVE-2026-33036      | v4, v3, v2        | fast-xml-parser affected by numeric entity expansion bypassing all entity expans  |
 | flatted              | high     | CVE-2026-32141      | v4, v3, v2        | flatted vulnerable to unbounded recursion DoS in parse() revive phase             |
 | flatted              | high     | CVE-2026-33228      | v4, v3, v2        | Prototype Pollution via parse() in NodeJS flatted                                 |
+| handlebars           | high     | CVE-2026-33941      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names an  |
+| handlebars           | high     | CVE-2026-33940      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion when passing an ob  |
+| handlebars           | high     | CVE-2026-33939      | v4, v3, v2, v1    | Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template C  |
+| handlebars           | high     | CVE-2026-33938      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @part  |
 | hono                 | high     | CVE-2026-29045      | v2                | Hono vulnerable to arbitrary file access via serveStatic vulnerability            |
 | immutable            | high     | CVE-2026-29063      | v2                | Immutable is vulnerable to Prototype Pollution                                    |
 | locutus              | high     | CVE-2026-29091      | v4, v3, v2, v1    | locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Co  |
@@ -71,11 +74,12 @@
 | minimatch            | high     | CVE-2026-27903      | v4, v3, v2, v1    | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja  |
 | minimatch            | high     | CVE-2026-27904      | v4, v3, v2, v1    | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
 | minimatch            | high     | CVE-2026-26996      | v4, v3, v2        | minimatch has a ReDoS via repeated wildcards with non-matching literal in patter  |
-| node-forge           | high     | CVE-2026-33891      | v2                | Forge has Denial of Service via Infinite Loop in BigInteger.modInverse() with Ze  |
 | node-forge           | high     | CVE-2026-33896      | v2                | Forge has a basicConstraints bypass in its certificate chain verification (RFC 5  |
 | node-forge           | high     | CVE-2026-33895      | v2                | Forge has signature forgery in Ed25519 due to missing S > L check                 |
 | node-forge           | high     | CVE-2026-33894      | v2                | Forge has signature forgery in RSA-PKCS due to ASN.1 extra field                  |
-| picomatch            | high     | CVE-2026-33671      | v3, v2, v1        | Picomatch has a ReDoS vulnerability via extglob quantifiers                       |
+| node-forge           | high     | CVE-2026-33891      | v2                | Forge has Denial of Service via Infinite Loop in BigInteger.modInverse() with Ze  |
+| path-to-regexp       | high     | CVE-2026-4867       | v4, v3, v2        | path-to-regexp vulnerable to Regular Expression Denial of Service via multiple r  |
+| path-to-regexp       | high     | CVE-2026-4926       | v2                | path-to-regexp vulnerable to Denial of Service via sequential optional groups     |
 | rollup               | high     | CVE-2026-27606      | v1                | Rollup 4 has Arbitrary File Write via Path Traversal                              |
 | semver               | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                         |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v4, v3, v2, v1    | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
@@ -101,10 +105,12 @@
 | hono                 | moderate | CVE-2026-29085      | v2                | Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()            |
 | hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in  |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                     |
+| locutus              | moderate | CVE-2026-33993      | v4, v3, v2, v1    | Locutus has Prototype Pollution via **proto** Key Injection in unserialize()      |
 | micromatch           | moderate | CVE-2024-4067       | v4, v3, v2, v1    | Regular Expression Denial of Service (ReDoS) in micromatch                        |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values            |
-| picomatch            | moderate | CVE-2026-33672      | v3, v2, v1        | Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Mat  |
+| path-to-regexp       | moderate | CVE-2026-4923       | v2                | path-to-regexp vulnerable to Regular Expression Denial of Service via multiple w  |
 | qs                   | moderate | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion   |
+| serialize-javascript | moderate | CVE-2026-34043      | v4, v3, v2, v1    | Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like  |
 | serialize-javascript | moderate | CVE-2024-11831      | v2                | Cross-site Scripting (XSS) in serialize-javascript                                |
 | smol-toml            | moderate | GHSA-v3rj-xjv7-4jmq | v4, v3, v2, v1    | smol-toml: Denial of Service via TOML documents containing thousands of consecut  |
 | undici               | moderate | CVE-2026-1525       | v4, v3, v2        | Undici has an HTTP Request/Response Smuggling issue                               |
