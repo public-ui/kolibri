@@ -13,66 +13,68 @@ The BWSt theme shows **strong accessibility fundamentals** with consistent focus
 
 **Overall Status:** 🟢 **PASS with minor recommendations**
 
-| Metric | Result |
-|--------|--------|
-| Color Contrast Violations | 0 / 32 tested |
-| Focus Indicator Coverage | 95% (missing `:focus-visible` in 1 component) |
-| ARIA-Semantic CSS Classes | Good (no issues found) |
-| Focus Ring Visibility | ✅ Excellent |
-| Critical Blockers | None |
+| Metric                    | Result                                        |
+| ------------------------- | --------------------------------------------- |
+| Color Contrast Violations | 0 / 32 tested                                 |
+| Focus Indicator Coverage  | 95% (missing `:focus-visible` in 1 component) |
+| ARIA-Semantic CSS Classes | Good (no issues found)                        |
+| Focus Ring Visibility     | ✅ Excellent                                  |
+| Critical Blockers         | None                                          |
 
 ---
 
 ## 1. COLOR CONTRAST ANALYSIS
 
 ### WCAG 2.1 Level AA Requirements
+
 - **Normal text (≥14px):** Minimum 4.5:1 contrast ratio
 - **Large text (≥18px or bold ≥14px):** Minimum 3:1 contrast ratio
 
 ### Test Results: All Components ✅
 
-| Component | Text Color | Background | Ratio | WCAG AA | Notes |
-|-----------|-----------|------------|-------|---------|-------|
-| **Buttons** | | | | | |
-| Button Primary | #ffffff | #156570 | **6.71:1** | ✅ PASS | 1.63x above minimum |
-| Button Primary (Hover) | #ffffff | #207a8b | **4.98:1** | ✅ PASS | Above minimum |
-| Button Secondary | #156570 | #ccebf7 | **5.37:1** | ✅ PASS | Good light bg option |
-| Button Tertiary | #156570 | #ffffff | **6.71:1** | ✅ PASS | Same as primary text |
-| Button Normal | #202020 | #ffffff | **16.29:1** | ✅ PASS | Highest contrast |
-| Button Danger | #ffffff | #ca0101 | **5.97:1** | ✅ PASS | Good error distinction |
-| Button Ghost | #156570 | #ffffff | **6.71:1** | ✅ PASS | Primary color on white |
-| **Forms** | | | | | |
-| Input Label | #202020 | #ffffff | **16.29:1** | ✅ PASS | Excellent |
-| Input Placeholder | #576164 | #ffffff | **6.37:1** | ✅ PASS | Above minimum |
-| Input Focus Ring (outline) | #207a8b | #ffffff | **4.98:1** | ✅ PASS | Visible outline |
-| Input Error Border | #ca0101 | #ffffff | **5.97:1** | ✅ PASS | Error clear |
-| **Alerts** | | | | | |
-| Alert Default (text/border) | #576164 | #ffffff | **6.37:1** | ✅ PASS | Subtle but readable |
-| Alert Error (text/border) | #ca0101 | #ffffff | **5.97:1** | ✅ PASS | Good distinction |
-| Alert Info (text/border) | #156570 | #ffffff | **6.71:1** | ✅ PASS | Primary color |
-| Alert Success (text/border) | #005c45 | #ffffff | **8.03:1** | ✅ PASS | Excellent |
-| Alert Warning (text/border) | #c44931 | #ffffff | **4.83:1** | ✅ PASS | Just above minimum |
-| Alert Card Error (header) | #ffffff | #ca0101 | **5.97:1** | ✅ PASS | White on error |
-| Alert Card Info (header) | #ffffff | #156570 | **6.71:1** | ✅ PASS | White on primary |
-| Alert Card Success (header) | #ffffff | #005c45 | **8.03:1** | ✅ PASS | White on success |
-| Alert Card Warning (header) | #ffffff | #c44931 | **4.83:1** | ✅ PASS | White on warning |
-| Alert Card Default (header) | #ffffff | #576164 | **6.37:1** | ✅ PASS | White on subtle |
-| **Links** | | | | | |
-| Link (default) | #156570 | #ffffff | **6.71:1** | ✅ PASS | Primary color |
-| Link (visited) | #551a8b | #ffffff | **11.01:1** | ✅ PASS | Excellent distinction |
-| Link (focus outline) | #207a8b | #ffffff | **4.98:1** | ✅ PASS | Focus ring visible |
-| **Tables** | | | | | |
-| Table Header Text | #202020 | #ffffff | **16.29:1** | ✅ PASS | Bold headers |
-| Table Row (alternate) | #202020 | #f2f3f4 | **14.67:1** | ✅ PASS | Excellent on muted bg |
-| Table Sort Badge | #156570 | #ffffff | **6.71:1** | ✅ PASS | Primary on white |
-| **Pagination** | | | | | |
-| Pagination Button (default) | #156570 | #ffffff | **6.71:1** | ✅ PASS | Primary color |
-| Pagination Button (hover) | #ffffff | #207a8b | **4.98:1** | ✅ PASS | Hover state good |
-| Pagination Button (selected) | #ffffff | #156570 | **6.71:1** | ✅ PASS | Selected state clear |
-| **Badges** | | | | | |
-| Badge Text Hint | #202020 | #bec5c9 | **9.33:1** | ✅ PASS | Excellent |
+| Component                    | Text Color | Background | Ratio       | WCAG AA | Notes                  |
+| ---------------------------- | ---------- | ---------- | ----------- | ------- | ---------------------- |
+| **Buttons**                  |            |            |             |         |                        |
+| Button Primary               | #ffffff    | #156570    | **6.71:1**  | ✅ PASS | 1.63x above minimum    |
+| Button Primary (Hover)       | #ffffff    | #207a8b    | **4.98:1**  | ✅ PASS | Above minimum          |
+| Button Secondary             | #156570    | #ccebf7    | **5.37:1**  | ✅ PASS | Good light bg option   |
+| Button Tertiary              | #156570    | #ffffff    | **6.71:1**  | ✅ PASS | Same as primary text   |
+| Button Normal                | #202020    | #ffffff    | **16.29:1** | ✅ PASS | Highest contrast       |
+| Button Danger                | #ffffff    | #ca0101    | **5.97:1**  | ✅ PASS | Good error distinction |
+| Button Ghost                 | #156570    | #ffffff    | **6.71:1**  | ✅ PASS | Primary color on white |
+| **Forms**                    |            |            |             |         |                        |
+| Input Label                  | #202020    | #ffffff    | **16.29:1** | ✅ PASS | Excellent              |
+| Input Placeholder            | #576164    | #ffffff    | **6.37:1**  | ✅ PASS | Above minimum          |
+| Input Focus Ring (outline)   | #207a8b    | #ffffff    | **4.98:1**  | ✅ PASS | Visible outline        |
+| Input Error Border           | #ca0101    | #ffffff    | **5.97:1**  | ✅ PASS | Error clear            |
+| **Alerts**                   |            |            |             |         |                        |
+| Alert Default (text/border)  | #576164    | #ffffff    | **6.37:1**  | ✅ PASS | Subtle but readable    |
+| Alert Error (text/border)    | #ca0101    | #ffffff    | **5.97:1**  | ✅ PASS | Good distinction       |
+| Alert Info (text/border)     | #156570    | #ffffff    | **6.71:1**  | ✅ PASS | Primary color          |
+| Alert Success (text/border)  | #005c45    | #ffffff    | **8.03:1**  | ✅ PASS | Excellent              |
+| Alert Warning (text/border)  | #c44931    | #ffffff    | **4.83:1**  | ✅ PASS | Just above minimum     |
+| Alert Card Error (header)    | #ffffff    | #ca0101    | **5.97:1**  | ✅ PASS | White on error         |
+| Alert Card Info (header)     | #ffffff    | #156570    | **6.71:1**  | ✅ PASS | White on primary       |
+| Alert Card Success (header)  | #ffffff    | #005c45    | **8.03:1**  | ✅ PASS | White on success       |
+| Alert Card Warning (header)  | #ffffff    | #c44931    | **4.83:1**  | ✅ PASS | White on warning       |
+| Alert Card Default (header)  | #ffffff    | #576164    | **6.37:1**  | ✅ PASS | White on subtle        |
+| **Links**                    |            |            |             |         |                        |
+| Link (default)               | #156570    | #ffffff    | **6.71:1**  | ✅ PASS | Primary color          |
+| Link (visited)               | #551a8b    | #ffffff    | **11.01:1** | ✅ PASS | Excellent distinction  |
+| Link (focus outline)         | #207a8b    | #ffffff    | **4.98:1**  | ✅ PASS | Focus ring visible     |
+| **Tables**                   |            |            |             |         |                        |
+| Table Header Text            | #202020    | #ffffff    | **16.29:1** | ✅ PASS | Bold headers           |
+| Table Row (alternate)        | #202020    | #f2f3f4    | **14.67:1** | ✅ PASS | Excellent on muted bg  |
+| Table Sort Badge             | #156570    | #ffffff    | **6.71:1**  | ✅ PASS | Primary on white       |
+| **Pagination**               |            |            |             |         |                        |
+| Pagination Button (default)  | #156570    | #ffffff    | **6.71:1**  | ✅ PASS | Primary color          |
+| Pagination Button (hover)    | #ffffff    | #207a8b    | **4.98:1**  | ✅ PASS | Hover state good       |
+| Pagination Button (selected) | #ffffff    | #156570    | **6.71:1**  | ✅ PASS | Selected state clear   |
+| **Badges**                   |            |            |             |         |                        |
+| Badge Text Hint              | #202020    | #bec5c9    | **9.33:1**  | ✅ PASS | Excellent              |
 
 ### Summary
+
 - **Total color combinations tested:** 32
 - **Violations (< 4.5:1):** 0 ✅
 - **Warnings (3:1 - 4.5:1):** 0 ✅
@@ -87,6 +89,7 @@ The BWSt theme shows **strong accessibility fundamentals** with consistent focus
 ### Global Focus Handling
 
 #### ✅ global.scss (Lines 43-64)
+
 **Status:** EXCELLENT
 
 ```scss
@@ -94,15 +97,16 @@ The BWSt theme shows **strong accessibility fundamentals** with consistent focus
 .kol-input:not(.checkbox, .radio) .input:focus-within,
 .kol-input:is(.checkbox, .radio) input:focus,
 summary:focus {
-  outline-color: var(--color-primary-variant);  // #207a8b
-  outline-style: solid;
-  outline-width: 3px;
-  outline-offset: 2px;
-  transition: outline-offset 0.2s linear;
+	outline-color: var(--color-primary-variant); // #207a8b
+	outline-style: solid;
+	outline-width: 3px;
+	outline-offset: 2px;
+	transition: outline-offset 0.2s linear;
 }
 ```
 
 **Findings:**
+
 - ✅ Global focus handler for all `[tabindex]` elements
 - ✅ Outline color: `#207a8b` (4.98:1 contrast on white)
 - ✅ Outline width: 3px (clearly visible)
@@ -124,23 +128,25 @@ summary:focus {
 ```scss
 // Line 20-22: Removes default outline
 &:focus {
-  outline: none;
+	outline: none;
 }
 
 // Line 107-110: Replaces with :focus-visible
 @at-root #{$root}:focus-visible {
-  @include focus-outline;
-  position: relative;
+	@include focus-outline;
+	position: relative;
 }
 ```
 
 **Status:** 🟢 **GOOD**
+
 - ✅ Uses `:focus-visible` (modern keyboard nav detection)
 - ✅ Applies `focus-outline` mixin (uses #207a8b, 3px solid)
 - ✅ Adds `position: relative` to prevent outline clipping
 - ✅ Removes `outline: none` hidden behavior
 
 **Accessibility Profile:**
+
 - Mouse users: No visible focus (intentional via `:focus`)
 - Keyboard users: Visible focus via `:focus-visible` ✅
 - Compliance: WCAG 2.4.7 satisfied
@@ -154,37 +160,40 @@ summary:focus {
 ```scss
 // Line 10-17: Removes outline but provides fallback
 &:focus {
-  outline: none;
+	outline: none;
 
-  .#{$block-classname}__text {
-    outline: var(--border-width) solid;
-    border-radius: var(--border-radius);
-    position: relative;
-  }
+	.#{$block-classname}__text {
+		outline: var(--border-width) solid;
+		border-radius: var(--border-radius);
+		position: relative;
+	}
 }
 ```
 
 **Status:** 🟡 **PARTIAL** - Needs improvement
 
 **Issues:**
+
 - ⚠️ No `:focus-visible` pseudo-class used
 - ⚠️ Outline color not explicitly set (inherits default)
 - ⚠️ Outline width only 1px (`--border-width`) - may be thin
 
 **What works:**
+
 - ✅ Outline is restored (not completely hidden)
 - ✅ Position relative prevents clipping
 - ✅ Border-radius applied
 
 **Recommendation:**
+
 ```scss
 &:focus-visible {
-  .#{$block-classname}__text {
-    outline: var(--color-primary-variant) solid 2px;
-    border-radius: var(--border-radius);
-    outline-offset: 2px;
-    position: relative;
-  }
+	.#{$block-classname}__text {
+		outline: var(--color-primary-variant) solid 2px;
+		border-radius: var(--border-radius);
+		outline-offset: 2px;
+		position: relative;
+	}
 }
 ```
 
@@ -197,24 +206,26 @@ summary:focus {
 ```scss
 // Line 41-42: Focus handling for container
 &:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
-  @include focus-outline;
+	@include focus-outline;
 }
 
 // Line 65-68: Error state focus
 &--error {
-  &:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
-    outline-color: var(--color-danger);
-  }
+	&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
+		outline-color: var(--color-danger);
+	}
 }
 ```
 
 **Status:** 🟢 **GOOD**
+
 - ✅ Uses `:has()` pseudo-class to detect child focus
 - ✅ Applies `focus-outline` mixin (solid 2px outline)
 - ✅ Error state changes outline to `#ca0101` (danger color)
 - ✅ Contrast on white: 5.97:1 ✅
 
 **Accessibility Profile:**
+
 - All input types get visible focus indicator
 - Error states visually distinct
 - Meets WCAG 2.4.7
@@ -227,12 +238,13 @@ summary:focus {
 
 ```scss
 &:focus:not(:disabled) {
-  color: var(--color-light);
-  background-color: var(--color-primary-variant);  // #207a8b
+	color: var(--color-light);
+	background-color: var(--color-primary-variant); // #207a8b
 }
 ```
 
 **Status:** 🟢 **GOOD**
+
 - ✅ Focus changes background color (visible change)
 - ✅ Contrast: 4.98:1 ✅
 - ✅ Text color inverted for visibility
@@ -248,20 +260,21 @@ summary:focus {
 ```scss
 // Line 56: Removes outline
 &__focus-element {
-  outline: none;
+	outline: none;
 }
 
 // Line 46-52: Parent gets focus indicator instead
 @at-root #{$root}:has(#{$root}__focus-element:focus) & {
-  outline-color: var(--color-primary-variant);
-  outline-style: solid;
-  outline-width: 3px;
-  outline-offset: 2px;
-  transition: outline-offset 0.2s linear;
+	outline-color: var(--color-primary-variant);
+	outline-style: solid;
+	outline-width: 3px;
+	outline-offset: 2px;
+	transition: outline-offset 0.2s linear;
 }
 ```
 
 **Status:** 🟢 **GOOD** (Creative solution)
+
 - ✅ Removes outline from internal element (to prevent multiple boxes)
 - ✅ Parent scroll container gets focus indicator instead
 - ✅ Outline visible and styled (3px solid #207a8b)
@@ -277,11 +290,12 @@ summary:focus {
 
 ```scss
 &:focus .kol-button__text {
-  @include focus-outline;
+	@include focus-outline;
 }
 ```
 
 **Status:** 🟢 **GOOD**
+
 - ✅ Uses `focus-outline` mixin
 - ✅ Applies to button text child element
 - ✅ Outline visible (2px solid #207a8b)
@@ -294,21 +308,22 @@ summary:focus {
 
 ```scss
 @mixin focus-outline {
-  outline: var(--color-primary-variant) solid to-rem(2);  // #207a8b, 2px
-  border-radius: var(--border-radius);
-  outline-offset: var(--kol-focus-outline-offset, 2px);
-  transition: 200ms outline-offset linear;
+	outline: var(--color-primary-variant) solid to-rem(2); // #207a8b, 2px
+	border-radius: var(--border-radius);
+	outline-offset: var(--kol-focus-outline-offset, 2px);
+	transition: 200ms outline-offset linear;
 }
 
 @mixin switch-outline {
-  outline-color: var(--color-primary);
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: var(--kol-focus-outline-offset, 2px);
+	outline-color: var(--color-primary);
+	outline-style: solid;
+	outline-width: 2px;
+	outline-offset: var(--kol-focus-outline-offset, 2px);
 }
 ```
 
 **Status:** 🟢 **EXCELLENT**
+
 - ✅ Uses CSS custom properties (colors)
 - ✅ Solid outline style (not dashed/dotted)
 - ✅ 2px width (clearly visible)
@@ -321,15 +336,15 @@ summary:focus {
 
 ### Focus Styles Summary Table
 
-| Component | Focus Method | Color | Width | Visible | Status |
-|-----------|--------------|-------|-------|---------|--------|
-| Global [tabindex] | outline | #207a8b | 3px | ✅ Yes | ✅ GOOD |
-| Button | :focus-visible → outline | #207a8b | 3px | ✅ Yes | ✅ GOOD |
-| Link | :focus → outline | inherit | 1px | ⚠️ Thin | 🟡 NEEDS IMPROVEMENT |
-| Input | :has() → outline | #207a8b (or #ca0101) | 2px | ✅ Yes | ✅ GOOD |
-| Select | :focus → bg change | #207a8b bg | N/A | ✅ Yes | ✅ GOOD |
-| Table | :has(:focus) → outline | #207a8b | 3px | ✅ Yes | ✅ GOOD |
-| Pagination | :focus → outline | #207a8b | 2px | ✅ Yes | ✅ GOOD |
+| Component         | Focus Method             | Color                | Width | Visible | Status               |
+| ----------------- | ------------------------ | -------------------- | ----- | ------- | -------------------- |
+| Global [tabindex] | outline                  | #207a8b              | 3px   | ✅ Yes  | ✅ GOOD              |
+| Button            | :focus-visible → outline | #207a8b              | 3px   | ✅ Yes  | ✅ GOOD              |
+| Link              | :focus → outline         | inherit              | 1px   | ⚠️ Thin | 🟡 NEEDS IMPROVEMENT |
+| Input             | :has() → outline         | #207a8b (or #ca0101) | 2px   | ✅ Yes  | ✅ GOOD              |
+| Select            | :focus → bg change       | #207a8b bg           | N/A   | ✅ Yes  | ✅ GOOD              |
+| Table             | :has(:focus) → outline   | #207a8b              | 3px   | ✅ Yes  | ✅ GOOD              |
+| Pagination        | :focus → outline         | #207a8b              | 2px   | ✅ Yes  | ✅ GOOD              |
 
 ---
 
@@ -338,6 +353,7 @@ summary:focus {
 **Overall Status:** 🟢 **GOOD with minor improvements**
 
 ✅ **Strengths:**
+
 1. Comprehensive global focus handling for all `[tabindex]` elements
 2. Most components use visible focus indicators (outline or color change)
 3. Focus outline mixin is consistent and well-styled
@@ -345,6 +361,7 @@ summary:focus {
 5. Outline-offset prevents focus rings from being hidden
 
 🟡 **Areas for Improvement:**
+
 1. **Link component lacks `:focus-visible`** — Should use modern keyboard detection
 2. **Link outline only 1px** — Should be 2-3px like other components
 3. **Inconsistent `:focus-visible` adoption** — Only buttons use it; consider adding to links
@@ -354,6 +371,7 @@ summary:focus {
 ## 3. ARIA & SEMANTIC CSS CHECK
 
 ### Scope
+
 This audit analyzes CSS classes for accessibility intent. ARIA roles are defined in Stencil component templates, not SCSS.
 
 ### CSS Class Analysis
@@ -363,28 +381,44 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 **File:** `alert.scss`
 
 ```scss
-.kol-alert--variant-msg { /* message variant */ }
-.kol-alert--variant-card { /* card variant */ }
-.kol-alert--type-default { --alert-accent-color: var(--color-subtle); }
-.kol-alert--type-error { --alert-accent-color: var(--color-danger); }
-.kol-alert--type-info { --alert-accent-color: var(--color-primary); }
-.kol-alert--type-success { --alert-accent-color: var(--color-success); }
-.kol-alert--type-warning { --alert-accent-color: var(--color-warning); }
+.kol-alert--variant-msg {
+	/* message variant */
+}
+.kol-alert--variant-card {
+	/* card variant */
+}
+.kol-alert--type-default {
+	--alert-accent-color: var(--color-subtle);
+}
+.kol-alert--type-error {
+	--alert-accent-color: var(--color-danger);
+}
+.kol-alert--type-info {
+	--alert-accent-color: var(--color-primary);
+}
+.kol-alert--type-success {
+	--alert-accent-color: var(--color-success);
+}
+.kol-alert--type-warning {
+	--alert-accent-color: var(--color-warning);
+}
 ```
 
 **Status:** ✅ **GOOD**
 
 **Findings:**
-- ✅ Clear semantic class naming (--variant-*, --type-*)
+
+- ✅ Clear semantic class naming (--variant-_, --type-_)
 - ✅ No conflicting ARIA classes
 - ✅ Color scheme supports semantic meaning (error = danger color, success = green, etc.)
 - ⚠️ **Implementation note:** These CSS classes should correspond to Stencil components with `role="alert"` or `role="status"`
 
 **Recommendation for Stencil Implementation:**
+
 ```html
 <!-- Alert error should include: -->
 <kol-alert variant="card" type="error" role="alert">
-  <!-- content -->
+	<!-- content -->
 </kol-alert>
 ```
 
@@ -395,23 +429,29 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 **File:** `form-field.scss`
 
 ```scss
-.kol-form-field--error { border-left: 3px solid var(--color-danger); }
-.kol-form-field--error:not(&--hide-msg) { padding-left: to-rem(16); }
-.kol-form-field__counter--exceeded { color: var(--color-danger); }
+.kol-form-field--error {
+	border-left: 3px solid var(--color-danger);
+}
+.kol-form-field--error:not(&--hide-msg) {
+	padding-left: to-rem(16);
+}
+.kol-form-field__counter--exceeded {
+	color: var(--color-danger);
+}
 ```
 
 **Status:** ✅ **GOOD**
+
 - ✅ Clear error state indication (border + color)
-- ✅ No aria-* CSS classes needed (handled by template)
+- ✅ No aria-\* CSS classes needed (handled by template)
 - ✅ Visual feedback supports semantic HTML
 
 **Recommendation for Stencil Implementation:**
+
 ```html
 <!-- Error states should use aria-invalid: -->
-<input aria-invalid="true" aria-describedby="error-msg">
-<div id="error-msg" role="alert" class="kol-form-field--error">
-  Error message
-</div>
+<input aria-invalid="true" aria-describedby="error-msg" />
+<div id="error-msg" role="alert" class="kol-form-field--error">Error message</div>
 ```
 
 ---
@@ -421,11 +461,16 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 **File:** `input.scss`
 
 ```scss
-.kol-input-container--disabled { background-color: var(--color-mute); }
-.kol-input-container--error { outline-color: var(--color-danger); }
+.kol-input-container--disabled {
+	background-color: var(--color-mute);
+}
+.kol-input-container--error {
+	outline-color: var(--color-danger);
+}
 ```
 
 **Status:** ✅ **GOOD**
+
 - ✅ Disabled state visually distinct (muted background)
 - ✅ Error state uses danger color
 
@@ -437,18 +482,23 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ```scss
 .kol-selection-input {
-  --kol-selection-input-main-color: var(--color-primary);
-  --kol-selection-input-off-color: var(--color-subtle);
-  --kol-selection-input-focus-color: var(--color-primary-variant);
-  --kol-selection-input-hover-color: rgb(8, 35, 48, 0.24);
-  --kol-selection-input-icon-color: var(--color-light);
+	--kol-selection-input-main-color: var(--color-primary);
+	--kol-selection-input-off-color: var(--color-subtle);
+	--kol-selection-input-focus-color: var(--color-primary-variant);
+	--kol-selection-input-hover-color: rgb(8, 35, 48, 0.24);
+	--kol-selection-input-icon-color: var(--color-light);
 }
 
-.kol-selection-input--checkbox { /* custom checkbox */ }
-.kol-selection-input--radio { /* custom radio */ }
+.kol-selection-input--checkbox {
+	/* custom checkbox */
+}
+.kol-selection-input--radio {
+	/* custom radio */
+}
 ```
 
 **Status:** ✅ **GOOD**
+
 - ✅ Clear checked/unchecked states (main-color vs off-color)
 - ✅ Focus state distinct (primary-variant)
 - ✅ Hover state visible (shadow + border change)
@@ -462,16 +512,17 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 **Status:** 🟢 **GOOD** (CSS level)
 
-| Item | Finding | Status |
-|------|---------|--------|
-| Color-coded semantic types (error, warning, success) | ✅ Present and distinct | ✅ GOOD |
-| ARIA-specific CSS classes | ✅ None found (correct) | ✅ GOOD |
-| Semantic BEM class naming | ✅ Clear patterns | ✅ GOOD |
-| Disabled state styling | ✅ Visually distinct | ✅ GOOD |
-| Error state styling | ✅ Uses danger color + visual cues | ✅ GOOD |
-| Custom controls (checkbox/radio) | ✅ Good visual styling | ⚠️ Needs native input backing |
+| Item                                                 | Finding                            | Status                        |
+| ---------------------------------------------------- | ---------------------------------- | ----------------------------- |
+| Color-coded semantic types (error, warning, success) | ✅ Present and distinct            | ✅ GOOD                       |
+| ARIA-specific CSS classes                            | ✅ None found (correct)            | ✅ GOOD                       |
+| Semantic BEM class naming                            | ✅ Clear patterns                  | ✅ GOOD                       |
+| Disabled state styling                               | ✅ Visually distinct               | ✅ GOOD                       |
+| Error state styling                                  | ✅ Uses danger color + visual cues | ✅ GOOD                       |
+| Custom controls (checkbox/radio)                     | ✅ Good visual styling             | ⚠️ Needs native input backing |
 
 **Critical Implementation Notes:**
+
 1. ✅ CSS provides good visual structure for semantic roles
 2. ⚠️ Stencil components must map CSS classes to proper ARIA roles (`role="alert"`, `role="status"`, etc.)
 3. ⚠️ Custom form controls must have hidden native HTML inputs for keyboard nav
@@ -483,15 +534,15 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ### Buttons (button.scss)
 
-| Aspect | Finding | Status | Details |
-|--------|---------|--------|---------|
-| **Background/Color Contrast** | ✅ All variants meet 4.5:1 | ✅ PASS | Primary: 6.71:1, Danger: 5.97:1, etc. |
-| **Text Color on Primary** | ✅ #fff on #156570 = 6.71:1 | ✅ PASS | Well above minimum |
-| **Text Color on Hover** | ✅ #fff on #207a8b = 4.98:1 | ✅ PASS | Still meets WCAG AA |
-| **Danger Button** | ✅ #fff on #ca0101 = 5.97:1 | ✅ PASS | Good visual distinction |
-| **Focus Indicator** | ✅ :focus-visible with 3px outline | ✅ PASS | Keyboard nav clear |
-| **Disabled State** | ✅ No explicit disabled styling in SCSS | ⚠️ REVIEW | Verify in Stencil component |
-| **Size/Target Area** | Defined in HTML (not CSS) | ⚠️ CHECK | Verify min 44x44px touch target |
+| Aspect                        | Finding                                 | Status    | Details                               |
+| ----------------------------- | --------------------------------------- | --------- | ------------------------------------- |
+| **Background/Color Contrast** | ✅ All variants meet 4.5:1              | ✅ PASS   | Primary: 6.71:1, Danger: 5.97:1, etc. |
+| **Text Color on Primary**     | ✅ #fff on #156570 = 6.71:1             | ✅ PASS   | Well above minimum                    |
+| **Text Color on Hover**       | ✅ #fff on #207a8b = 4.98:1             | ✅ PASS   | Still meets WCAG AA                   |
+| **Danger Button**             | ✅ #fff on #ca0101 = 5.97:1             | ✅ PASS   | Good visual distinction               |
+| **Focus Indicator**           | ✅ :focus-visible with 3px outline      | ✅ PASS   | Keyboard nav clear                    |
+| **Disabled State**            | ✅ No explicit disabled styling in SCSS | ⚠️ REVIEW | Verify in Stencil component           |
+| **Size/Target Area**          | Defined in HTML (not CSS)               | ⚠️ CHECK  | Verify min 44x44px touch target       |
 
 **Summary:** 🟢 **EXCELLENT button contrast and focus styling**
 
@@ -499,15 +550,15 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ### Form Inputs (input.scss, input-text.scss)
 
-| Aspect | Finding | Status | Details |
-|--------|---------|--------|---------|
-| **Label Color** | ✅ #202020 on #ffffff = 16.29:1 | ✅ PASS | Excellent |
-| **Placeholder Contrast** | ✅ #576164 on #ffffff = 6.37:1 | ✅ PASS | Above minimum |
-| **Border Color** | ✅ #576164 (subtle) visible | ✅ PASS | Clear boundary |
-| **Focus Indicator** | ✅ 2px solid outline (#207a8b) | ✅ PASS | Uses focus-outline mixin |
-| **Error State Focus** | ✅ outline-color: var(--color-danger) | ✅ PASS | Error color distinct |
-| **Readonly Border** | ✅ 2px solid #576164 (subtle) | ✅ PASS | Visual distinction |
-| **Disabled Background** | ✅ #f2f3f4 (mute) | ✅ PASS | Clearly disabled |
+| Aspect                   | Finding                               | Status  | Details                  |
+| ------------------------ | ------------------------------------- | ------- | ------------------------ |
+| **Label Color**          | ✅ #202020 on #ffffff = 16.29:1       | ✅ PASS | Excellent                |
+| **Placeholder Contrast** | ✅ #576164 on #ffffff = 6.37:1        | ✅ PASS | Above minimum            |
+| **Border Color**         | ✅ #576164 (subtle) visible           | ✅ PASS | Clear boundary           |
+| **Focus Indicator**      | ✅ 2px solid outline (#207a8b)        | ✅ PASS | Uses focus-outline mixin |
+| **Error State Focus**    | ✅ outline-color: var(--color-danger) | ✅ PASS | Error color distinct     |
+| **Readonly Border**      | ✅ 2px solid #576164 (subtle)         | ✅ PASS | Visual distinction       |
+| **Disabled Background**  | ✅ #f2f3f4 (mute)                     | ✅ PASS | Clearly disabled         |
 
 **Summary:** 🟢 **STRONG input accessibility**
 
@@ -517,15 +568,15 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ### Alerts (alert.scss)
 
-| Aspect | Finding | Status | Details |
-|--------|---------|--------|---------|
-| **Default Type** | ✅ #576164 border on #ffffff = 6.37:1 | ✅ PASS | Subtle but readable |
-| **Error Type** | ✅ #ca0101 border on #ffffff = 5.97:1 | ✅ PASS | Clear distinction |
-| **Success Type** | ✅ #005c45 border on #ffffff = 8.03:1 | ✅ PASS | Excellent contrast |
-| **Warning Type** | ✅ #c44931 border on #ffffff = 4.83:1 | ✅ PASS | Just meets minimum |
-| **Card Variant Header** | ✅ #ffffff text on all accent colors | ✅ PASS | All pass WCAG AA (4.5:1+) |
-| **Variant Distinction** | ✅ Message (border) vs Card (colored header) | ✅ PASS | Clear visual patterns |
-| **Icon Visibility** | ✅ #ffffff on colored backgrounds | ✅ PASS | Good contrast for icons |
+| Aspect                  | Finding                                      | Status  | Details                   |
+| ----------------------- | -------------------------------------------- | ------- | ------------------------- |
+| **Default Type**        | ✅ #576164 border on #ffffff = 6.37:1        | ✅ PASS | Subtle but readable       |
+| **Error Type**          | ✅ #ca0101 border on #ffffff = 5.97:1        | ✅ PASS | Clear distinction         |
+| **Success Type**        | ✅ #005c45 border on #ffffff = 8.03:1        | ✅ PASS | Excellent contrast        |
+| **Warning Type**        | ✅ #c44931 border on #ffffff = 4.83:1        | ✅ PASS | Just meets minimum        |
+| **Card Variant Header** | ✅ #ffffff text on all accent colors         | ✅ PASS | All pass WCAG AA (4.5:1+) |
+| **Variant Distinction** | ✅ Message (border) vs Card (colored header) | ✅ PASS | Clear visual patterns     |
+| **Icon Visibility**     | ✅ #ffffff on colored backgrounds            | ✅ PASS | Good contrast for icons   |
 
 **Summary:** 🟢 **EXCELLENT alert contrast and type distinction**
 
@@ -535,21 +586,22 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ### Tables (kol-table-stateless-wc.scss)
 
-| Aspect | Finding | Status | Details |
-|--------|---------|--------|---------|
-| **Header Text** | ✅ #202020 on #ffffff = 16.29:1 | ✅ PASS | Bold headers, excellent |
-| **Header Background** | ✅ #ffffff (light) | ✅ PASS | Clear table structure |
-| **Row Striping** | ✅ Alternate #f2f3f4 (mute) | ✅ PASS | 14.67:1 contrast |
-| **Row Stripes + Text** | ✅ #202020 on #f2f3f4 = 14.67:1 | ✅ PASS | Excellent readability |
-| **Sort Order Badge** | ✅ #156570 on #ffffff = 6.71:1 | ✅ PASS | Primary color |
-| **Focus Indicator** | ✅ 3px solid outline on scroll container | ✅ PASS | Clear for keyboard nav |
-| **Sticky Column Border** | ✅ 2px solid black | ✅ PASS | Distinct but check with data |
-| **Selection Inputs** | ✅ Primary color (#156570) vs subtle (#576164) | ✅ PASS | Clear checked state |
-| **Header Selection** | ✅ Color switching in header (white/primary) | ✅ PASS | Inverted for visibility |
+| Aspect                   | Finding                                        | Status  | Details                      |
+| ------------------------ | ---------------------------------------------- | ------- | ---------------------------- |
+| **Header Text**          | ✅ #202020 on #ffffff = 16.29:1                | ✅ PASS | Bold headers, excellent      |
+| **Header Background**    | ✅ #ffffff (light)                             | ✅ PASS | Clear table structure        |
+| **Row Striping**         | ✅ Alternate #f2f3f4 (mute)                    | ✅ PASS | 14.67:1 contrast             |
+| **Row Stripes + Text**   | ✅ #202020 on #f2f3f4 = 14.67:1                | ✅ PASS | Excellent readability        |
+| **Sort Order Badge**     | ✅ #156570 on #ffffff = 6.71:1                 | ✅ PASS | Primary color                |
+| **Focus Indicator**      | ✅ 3px solid outline on scroll container       | ✅ PASS | Clear for keyboard nav       |
+| **Sticky Column Border** | ✅ 2px solid black                             | ✅ PASS | Distinct but check with data |
+| **Selection Inputs**     | ✅ Primary color (#156570) vs subtle (#576164) | ✅ PASS | Clear checked state          |
+| **Header Selection**     | ✅ Color switching in header (white/primary)   | ✅ PASS | Inverted for visibility      |
 
 **Summary:** 🟢 **GOOD table contrast and navigation**
 
 **Recommendations:**
+
 - Verify table `<caption>` is semantically present in Stencil component
 - Ensure `<th>` has proper `scope` attribute (CSS doesn't control this)
 - Check sticky columns don't hide important content for screen readers
@@ -558,31 +610,33 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ### Navigation/Links (link.scss)
 
-| Aspect | Finding | Status | Details |
-|--------|---------|--------|---------|
-| **Link Color** | ✅ #156570 on #ffffff = 6.71:1 | ✅ PASS | Primary color |
-| **Visited Color** | ✅ #551a8b on #ffffff = 11.01:1 | ✅ PASS | Excellent distinction |
-| **Underline on Hover** | ✅ text-decoration-thickness: 0.25em | ✅ PASS | Clear text decoration |
-| **Focus Outline** | 🟡 1px outline, no explicit color | 🟡 WARN | Thin; no :focus-visible |
-| **Focus Styling** | outline + border-radius applied | ⚠️ PARTIAL | Missing :focus-visible |
-| **Disabled State** | Not visible in CSS | ⚠️ CHECK | Verify in Stencil |
+| Aspect                 | Finding                              | Status     | Details                 |
+| ---------------------- | ------------------------------------ | ---------- | ----------------------- |
+| **Link Color**         | ✅ #156570 on #ffffff = 6.71:1       | ✅ PASS    | Primary color           |
+| **Visited Color**      | ✅ #551a8b on #ffffff = 11.01:1      | ✅ PASS    | Excellent distinction   |
+| **Underline on Hover** | ✅ text-decoration-thickness: 0.25em | ✅ PASS    | Clear text decoration   |
+| **Focus Outline**      | 🟡 1px outline, no explicit color    | 🟡 WARN    | Thin; no :focus-visible |
+| **Focus Styling**      | outline + border-radius applied      | ⚠️ PARTIAL | Missing :focus-visible  |
+| **Disabled State**     | Not visible in CSS                   | ⚠️ CHECK   | Verify in Stencil       |
 
 **Summary:** 🟡 **GOOD but needs :focus-visible improvement**
 
 **Issues:**
+
 1. Link focus outline is **only 1px wide** (should be 2-3px)
 2. Link doesn't use `:focus-visible` pseudo-class
 3. Outline color not explicitly set (defaults to user agent)
 
 **Recommendation:**
+
 ```scss
 &:focus-visible {
-  .#{$block-classname}__text {
-    outline: var(--color-primary-variant) solid 2px;
-    outline-offset: 2px;
-    border-radius: var(--border-radius);
-    position: relative;
-  }
+	.#{$block-classname}__text {
+		outline: var(--color-primary-variant) solid 2px;
+		outline-offset: 2px;
+		border-radius: var(--border-radius);
+		position: relative;
+	}
 }
 ```
 
@@ -590,12 +644,12 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ### Select Dropdowns (select.scss)
 
-| Aspect | Finding | Status | Details |
-|--------|---------|--------|---------|
-| **Active/Focused Option** | ✅ #ffffff on #207a8b = 4.98:1 | ✅ PASS | Meets WCAG AA |
-| **Option Styling** | ✅ Border-radius, margin applied | ✅ PASS | Good visual clarity |
-| **Hover State** | ✅ Same color as focus | ✅ PASS | Consistent |
-| **Height** | 40px (standard) | ✅ PASS | Adequate touch target |
+| Aspect                    | Finding                          | Status  | Details               |
+| ------------------------- | -------------------------------- | ------- | --------------------- |
+| **Active/Focused Option** | ✅ #ffffff on #207a8b = 4.98:1   | ✅ PASS | Meets WCAG AA         |
+| **Option Styling**        | ✅ Border-radius, margin applied | ✅ PASS | Good visual clarity   |
+| **Hover State**           | ✅ Same color as focus           | ✅ PASS | Consistent            |
+| **Height**                | 40px (standard)                  | ✅ PASS | Adequate touch target |
 
 **Summary:** 🟢 **GOOD select contrast**
 
@@ -605,11 +659,11 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 **File:** `focus-outline.scss`
 
-| Variable | Value | Status | Usage |
-|----------|-------|--------|-------|
-| --color-primary-variant | #207a8b | ✅ PASS | Primary outline color (4.98:1 on white) |
-| --kol-focus-outline-offset | 2px (default) | ✅ PASS | Prevents outline overlap |
-| Border radius | var(--border-radius) | ✅ PASS | Matches component radius |
+| Variable                   | Value                | Status  | Usage                                   |
+| -------------------------- | -------------------- | ------- | --------------------------------------- |
+| --color-primary-variant    | #207a8b              | ✅ PASS | Primary outline color (4.98:1 on white) |
+| --kol-focus-outline-offset | 2px (default)        | ✅ PASS | Prevents outline overlap                |
+| Border radius              | var(--border-radius) | ✅ PASS | Matches component radius                |
 
 **Summary:** 🟢 **Focus outline system is well-designed**
 
@@ -661,14 +715,14 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ## 6. WCAG 2.1 LEVEL AA COMPLIANCE CHECKLIST
 
-| Criterion | Finding | Status |
-|-----------|---------|--------|
-| **1.4.3 Contrast (Minimum)** | All colors meet 4.5:1 | ✅ PASS |
-| **1.4.11 Non-text Contrast** | Borders, focus rings, UI components all contrast well | ✅ PASS |
-| **2.4.7 Focus Visible** | Global outline + component-specific focus | ✅ PASS* |
-| **2.4.3 Focus Order** | CSS doesn't define tabindex; HTML structure needed | ✅ CHECK** |
-| **3.2.4 Consistent Identification** | Color semantics consistent | ✅ PASS |
-| **4.1.2 Name, Role, State** | CSS provides visual feedback for states | ✅ PASS*** |
+| Criterion                           | Finding                                               | Status        |
+| ----------------------------------- | ----------------------------------------------------- | ------------- |
+| **1.4.3 Contrast (Minimum)**        | All colors meet 4.5:1                                 | ✅ PASS       |
+| **1.4.11 Non-text Contrast**        | Borders, focus rings, UI components all contrast well | ✅ PASS       |
+| **2.4.7 Focus Visible**             | Global outline + component-specific focus             | ✅ PASS\*     |
+| **2.4.3 Focus Order**               | CSS doesn't define tabindex; HTML structure needed    | ✅ CHECK\*\*  |
+| **3.2.4 Consistent Identification** | Color semantics consistent                            | ✅ PASS       |
+| **4.1.2 Name, Role, State**         | CSS provides visual feedback for states               | ✅ PASS\*\*\* |
 
 **\* = Minor improvement needed for link component**
 **\*\* = Verify in Stencil template HTML**
@@ -684,38 +738,38 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 ```scss
 @mixin kol-link($block-classname) {
-  .#{$block-classname} {
-    color: var(--color-primary);
-    font-weight: 400;
-    font-style: normal;
+	.#{$block-classname} {
+		color: var(--color-primary);
+		font-weight: 400;
+		font-style: normal;
 
-    // Remove default focus outline
-    &:focus {
-      outline: none;
-    }
+		// Remove default focus outline
+		&:focus {
+			outline: none;
+		}
 
-    // Add keyboard-only focus indicator
-    &:focus-visible {
-      .#{$block-classname}__text {
-        outline: var(--color-primary-variant) solid 2px;
-        outline-offset: 2px;
-        border-radius: var(--border-radius);
-        position: relative;
-      }
-    }
+		// Add keyboard-only focus indicator
+		&:focus-visible {
+			.#{$block-classname}__text {
+				outline: var(--color-primary-variant) solid 2px;
+				outline-offset: 2px;
+				border-radius: var(--border-radius);
+				position: relative;
+			}
+		}
 
-    // Hover/Focus decoration (existing, unchanged)
-    &:focus:not([aria-disabled], [disabled]),
-    &:hover:not([aria-disabled], [disabled]) {
-      .kol-span__label {
-        text-decoration-thickness: 0.25em;
-      }
-    }
+		// Hover/Focus decoration (existing, unchanged)
+		&:focus:not([aria-disabled], [disabled]),
+		&:hover:not([aria-disabled], [disabled]) {
+			.kol-span__label {
+				text-decoration-thickness: 0.25em;
+			}
+		}
 
-    &:visited {
-      color: var(--color-visited);
-    }
-  }
+		&:visited {
+			color: var(--color-visited);
+		}
+	}
 }
 ```
 
@@ -728,16 +782,18 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 **Action:** Consider creating a focus guideline document for consistency
 
 **Current Status:**
+
 - ✅ Buttons: Use `:focus-visible`
 - 🟡 Links: Don't use `:focus-visible`
 - ✅ Inputs: Use `:has()` as equivalent
 - ✅ Pagination: Uses focus-outline mixin
 
 **Recommendation:** Document that interactive components should use:
+
 ```scss
 &:focus-visible {
-  @include focus-outline;
-  position: relative; // prevent clipping
+	@include focus-outline;
+	position: relative; // prevent clipping
 }
 ```
 
@@ -780,18 +836,18 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 ```scss
 // In a new file: tokens-a11y.scss
 :host {
-  // Contrast tokens (verified WCAG AA)
-  --a11y-text-on-light: var(--color-text);           // 16.29:1
-  --a11y-text-on-mute: var(--color-text);            // 14.67:1
-  --a11y-text-on-white: var(--color-text);           // 16.29:1
-  --a11y-primary-on-white: var(--color-primary);     // 6.71:1
-  --a11y-danger-on-white: var(--color-danger);       // 5.97:1
-  --a11y-success-on-white: var(--color-success);     // 8.03:1
+	// Contrast tokens (verified WCAG AA)
+	--a11y-text-on-light: var(--color-text); // 16.29:1
+	--a11y-text-on-mute: var(--color-text); // 14.67:1
+	--a11y-text-on-white: var(--color-text); // 16.29:1
+	--a11y-primary-on-white: var(--color-primary); // 6.71:1
+	--a11y-danger-on-white: var(--color-danger); // 5.97:1
+	--a11y-success-on-white: var(--color-success); // 8.03:1
 
-  // Focus tokens
-  --a11y-focus-outline-color: var(--color-primary-variant); // 4.98:1
-  --a11y-focus-outline-width: 2px;
-  --a11y-focus-outline-offset: 2px;
+	// Focus tokens
+	--a11y-focus-outline-color: var(--color-primary-variant); // 4.98:1
+	--a11y-focus-outline-width: 2px;
+	--a11y-focus-outline-offset: 2px;
 }
 ```
 
@@ -802,6 +858,7 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 ### Priority 5: Testing & Validation
 
 **Recommended Tools:**
+
 - [ ] **Axe DevTools** — Browser extension for automated a11y scanning
 - [ ] **WAVE** (webaim.org) — Visual feedback on contrast and ARIA
 - [ ] **Lighthouse** — Automated accessibility audit
@@ -809,6 +866,7 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 - [ ] **Screen Reader Testing** — NVDA (Windows), JAWS, VoiceOver (Mac)
 
 **Test Scenarios:**
+
 1. Tab through all buttons — verify focus outline appears
 2. Tab through links — verify focus is visible on keyboard nav
 3. Fill form with errors — verify error colors and outlines are visible
@@ -823,13 +881,13 @@ This audit analyzes CSS classes for accessibility intent. ARIA roles are defined
 
 **Status:** 🟢 **PASS - WCAG 2.1 Level AA**
 
-| Category | Score | Notes |
-|----------|-------|-------|
-| Color Contrast | ✅ 32/32 PASS | Zero violations; most 2x+ minimum |
-| Keyboard Navigation | 🟡 95% | Link component needs `:focus-visible` |
-| Focus Indicators | ✅ EXCELLENT | Consistent, visible, well-designed |
-| Semantic Structure | ✅ GOOD | Clear color coding for types; CSS well-organized |
-| Critical Issues | 🟢 NONE | No blocking accessibility problems |
+| Category            | Score         | Notes                                            |
+| ------------------- | ------------- | ------------------------------------------------ |
+| Color Contrast      | ✅ 32/32 PASS | Zero violations; most 2x+ minimum                |
+| Keyboard Navigation | 🟡 95%        | Link component needs `:focus-visible`            |
+| Focus Indicators    | ✅ EXCELLENT  | Consistent, visible, well-designed               |
+| Semantic Structure  | ✅ GOOD       | Clear color coding for types; CSS well-organized |
+| Critical Issues     | 🟢 NONE       | No blocking accessibility problems               |
 
 ### Compliance Statement
 
@@ -872,20 +930,20 @@ packages/themes/bwst/src/
 
 ## Appendix B: Color Palette Reference
 
-| Color Name | Hex Value | Usage | Luminance |
-|------------|-----------|-------|-----------|
-| Primary | #156570 | Buttons, links, accents | 0.1065 |
-| Primary Variant | #207a8b | Hover states, focus outline | 0.1378 |
-| Secondary | #ccebf7 | Button secondary background | 0.8189 |
-| Danger | #ca0101 | Error states, alerts | 0.0364 |
-| Warning | #c44931 | Warning alerts | 0.1168 |
-| Success | #005c45 | Success alerts | 0.0751 |
-| Subtle | #576164 | Borders, disabled states | 0.1673 |
-| Light | #ffffff | Default background | 1.0000 |
-| Text | #202020 | Default text | 0.0102 |
-| Mute | #f2f3f4 | Secondary background | 0.9635 |
-| Mute Variant | #bec5c9 | Borders, badges | 0.5817 |
-| Visited | #551a8b | Visited links | 0.0705 |
+| Color Name      | Hex Value | Usage                       | Luminance |
+| --------------- | --------- | --------------------------- | --------- |
+| Primary         | #156570   | Buttons, links, accents     | 0.1065    |
+| Primary Variant | #207a8b   | Hover states, focus outline | 0.1378    |
+| Secondary       | #ccebf7   | Button secondary background | 0.8189    |
+| Danger          | #ca0101   | Error states, alerts        | 0.0364    |
+| Warning         | #c44931   | Warning alerts              | 0.1168    |
+| Success         | #005c45   | Success alerts              | 0.0751    |
+| Subtle          | #576164   | Borders, disabled states    | 0.1673    |
+| Light           | #ffffff   | Default background          | 1.0000    |
+| Text            | #202020   | Default text                | 0.0102    |
+| Mute            | #f2f3f4   | Secondary background        | 0.9635    |
+| Mute Variant    | #bec5c9   | Borders, badges             | 0.5817    |
+| Visited         | #551a8b   | Visited links               | 0.0705    |
 
 ---
 
