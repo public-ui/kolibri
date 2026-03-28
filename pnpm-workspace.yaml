@@ -18,6 +18,4 @@ packages:
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
 overrides:
-  picomatch@<2.3.2: '>=2.3.2'
-  picomatch@>=4.0.0 <4.0.4: '>=4.0.4'
-  yaml@>=2.0.0 <2.8.3: '>=2.8.3'
+  path-to-regexp@>=8.0.0 <8.4.0: '>=8.4.0'
