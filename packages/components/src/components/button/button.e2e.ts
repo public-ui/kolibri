@@ -35,7 +35,7 @@ test.describe('kol-button', () => {
 		['click', 'mousedown'].forEach((event) => {
 			test(`should emit ${event} when internal button emits ${event}`, async ({ page }) => {
 				await page.setContent('<kol-button _label="Button"></kol-button>');
-				const eventPromise = page.locator('kol-button').evaluate(async (element: HTMLElement, event: string) => {
+				const eventPromise = page.locator('kol-button').evaluate(async (element, event) => {
 					return new Promise((resolve) => {
 						element.addEventListener(event, resolve);
 					});
