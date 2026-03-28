@@ -138,9 +138,9 @@ test.describe('kol-tabs', () => {
 			</kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
 
-			const callbackPromise = kolTabs.evaluate((element: HTMLElement) => {
+			const callbackPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<number>((resolve) => {
-					const tabsElement = element as HTMLElement & { _on?: { onSelect?: (event: Event, tabIndex: number) => void } };
+					const tabsElement = element as HTMLKolTabsElement & { _on?: { onSelect?: (event: Event, tabIndex: number) => void } };
 					tabsElement._on = {
 						onSelect: (_event: Event, tabIndex: number) => {
 							resolve(tabIndex);
@@ -151,6 +151,7 @@ test.describe('kol-tabs', () => {
 			await page.waitForChanges();
 
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+		// Note: We click on the inner <button> element because kol-tabs does not expose a click() @Method
 			await secondTab.evaluate((el: HTMLElement) => el.click());
 			await expect(callbackPromise).resolves.toBe(1);
 		});
@@ -162,9 +163,9 @@ test.describe('kol-tabs', () => {
 			</kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
 
-			await kolTabs.evaluate((element: HTMLElement) => {
+			await kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				(window as unknown as Record<string, number>).switchCount = 0;
-				const tabsElement = element as HTMLElement & { _on?: { onSelect?: () => void } };
+				const tabsElement = element as HTMLKolTabsElement & { _on?: { onSelect?: () => void } };
 				tabsElement._on = {
 					onSelect: () => {
 						(window as unknown as Record<string, number>).switchCount++;
@@ -174,6 +175,7 @@ test.describe('kol-tabs', () => {
 			await page.waitForChanges();
 
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+		// Note: We click on the inner <button> element because kol-tabs does not expose a click() @Method
 			await secondTab.click();
 
 			const finalCount = await page.evaluate(() => (window as unknown as Record<string, number>).switchCount);

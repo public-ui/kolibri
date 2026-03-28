@@ -68,7 +68,7 @@ test.describe('kol-accordion', () => {
 			await page.setContent('<kol-accordion _label="Accordion Label">Accordion contents</kol-accordion>');
 			const kolAccordion = page.locator('kol-accordion');
 
-			await kolAccordion.evaluate((element: HTMLElement) => element.click());
+			await kolAccordion.evaluate(async (element: HTMLKolAccordionElement) => await element.click());
 			await page.waitForChanges();
 
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
@@ -78,11 +78,11 @@ test.describe('kol-accordion', () => {
 			await page.setContent('<kol-accordion _label="Accordion Label">Accordion contents</kol-accordion>');
 			const kolAccordion = page.locator('kol-accordion');
 
-			await kolAccordion.evaluate((element: HTMLElement) => element.click());
+			await kolAccordion.evaluate(async (element: HTMLKolAccordionElement) => await element.click());
 			await page.waitForChanges();
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
 
-			await kolAccordion.evaluate((element: HTMLElement) => element.click());
+			await kolAccordion.evaluate(async (element: HTMLKolAccordionElement) => await element.click());
 			await page.waitForChanges();
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
