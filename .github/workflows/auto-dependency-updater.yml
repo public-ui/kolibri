@@ -49,18 +49,22 @@ jobs:
           version: 10
           run_install: false
       - name: Install
-        run: pnpm i --no-frozen-lockfile --ignore-scripts
+        run: pnpm i --ignore-scripts --no-frozen-lockfile
       - name: Update dependencies (minor)
         run: |
           pnpm ncu:minor
           # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
           pnpm ncu:minor
+      - name: Clear pnpm store
+        run: pnpm store prune
       - name: Reinstall dependencies (prepare for fix)
-        run: pnpm i --no-frozen-lockfile --ignore-scripts
+        run: pnpm i --ignore-scripts --no-frozen-lockfile
       - name: Try to fix audit issues
         run: pnpm audit --audit-level high --fix --production
+      - name: Clear pnpm store
+        run: pnpm store prune
       - name: Reinstall dependencies (final lock file)
-        run: pnpm i --no-frozen-lockfile --ignore-scripts
+        run: pnpm i --ignore-scripts --no-frozen-lockfile
       - name: Fix format
         run: pnpm format -w
 
