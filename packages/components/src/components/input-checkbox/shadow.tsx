@@ -27,6 +27,7 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputCheckboxController } from './controller';
 
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
@@ -38,6 +39,8 @@ import type { InputCheckboxVariantPropType } from '../../schema/props/variant-in
 import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
+ * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
+ *
  * @slot expert - Checkbox description.
  */
 @Component({
@@ -51,7 +54,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -73,12 +76,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -115,11 +113,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				class: clsx({
 					'visually-hidden': this.state._variant === 'button',
 				}),
-				ref: this.catchRef,
+				ref: this.setInputRef,
 				...this.controller.onFacade,
 				onInput: this.onInput,
 				onChange: this.onChange,
-				onKeyDown: this.onKeyDown.bind(this),
+				onKeyDown: this.onKeyDown,
 				onFocus: (event: Event) => {
 					this.controller.onFacade.onFocus(event);
 					this.inputHasFocus = true;

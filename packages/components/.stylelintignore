@@ -1,4 +1,5 @@
 src/assets/
+_collapsible.mixin.scss
 
 **/*.md
 **/*.mustache

@@ -29,7 +29,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 	});
 
 	test('it should show disabled checkbox for non-hidable columns', async ({ page }) => {
-		const settingsButton = page.getByTestId('popover-button').locator('button');
+		const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 		await settingsButton.click();
 
 		// Check that the ID column (hidable: false) has a disabled checkbox
@@ -55,7 +55,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 	});
 
 	test('it should ensure at least one column is visible including non-hidable columns', async ({ page }) => {
-		const settingsButton = page.getByTestId('popover-button').locator('button');
+		const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 		await settingsButton.click();
 
 		// Hide all hidable columns (Name and Age) - ID checkbox should be disabled
@@ -66,7 +66,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 		await ageCheckbox.click();
 
 		// Try to apply settings - should succeed because ID column (non-hidable) is still visible
-		const applyButton = page.getByTestId('table-settings-apply');
+		const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 		await applyButton.click();
 
 		// Should not show error message since ID column is always visible
@@ -80,7 +80,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 	});
 
 	test('it should not allow clicking disabled checkbox for non-hidable columns', async ({ page }) => {
-		const settingsButton = page.getByTestId('popover-button').locator('button');
+		const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 		await settingsButton.click();
 
 		// Try to click the disabled ID checkbox

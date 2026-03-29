@@ -12,16 +12,16 @@ Public UI - KoliBri follows the **WCAG 2.2 Level AAA** standards and **BITV** re
 
 ### Implementation Strategy
 
-| Aspect | Implementation | Verification |
-|--------|---------------|--------------|
-| **Keyboard Navigation** | All interactive elements accessible via keyboard (Tab, Enter, Space, Arrow keys, Escape) | Manual keyboard testing, automated tests |
-| **Screen Reader Support** | Proper ARIA roles, labels, and states | Screen reader testing (JAWS, NVDA, VoiceOver) |
-| **Color Contrast** | Minimum 4.5:1 for text, 3:1 for UI components | wcag-contrast library validation |
-| **Touch Targets** | Minimum 44x44px for interactive elements | Built into component CSS, automated tests |
-| **Focus Management** | Visible focus indicators, focus trapping in modals | Visual inspection, automated tests |
-| **Semantic HTML** | Use correct HTML elements (button, input, nav, etc.) | HTML validation, manual review |
-| **Alternative Text** | Images and icons have text alternatives | Manual review, automated checks |
-| **Form Labels** | All form fields have associated labels | Automated accessibility tests |
+| Aspect                    | Implementation                                                                           | Verification                                  |
+| ------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **Keyboard Navigation**   | All interactive elements accessible via keyboard (Tab, Enter, Space, Arrow keys, Escape) | Manual keyboard testing, automated tests      |
+| **Screen Reader Support** | Proper ARIA roles, labels, and states                                                    | Screen reader testing (JAWS, NVDA, VoiceOver) |
+| **Color Contrast**        | Minimum 4.5:1 for text, 3:1 for UI components                                            | wcag-contrast library validation              |
+| **Touch Targets**         | Minimum 44x44px for interactive elements                                                 | Built into component CSS, automated tests     |
+| **Focus Management**      | Visible focus indicators, focus trapping in modals                                       | Visual inspection, automated tests            |
+| **Semantic HTML**         | Use correct HTML elements (button, input, nav, etc.)                                     | HTML validation, manual review                |
+| **Alternative Text**      | Images and icons have text alternatives                                                  | Manual review, automated checks               |
+| **Form Labels**           | All form fields have associated labels                                                   | Automated accessibility tests                 |
 
 ### Accessibility Testing Pyramid
 
@@ -30,7 +30,7 @@ graph TB
     Manual[Manual Testing<br/>Screen readers, keyboard]
     E2E[E2E Tests<br/>Playwright + axe-core]
     Unit[Unit Tests<br/>ARIA attribute checks]
-    
+
     Manual -->|validates| E2E
     E2E -->|validates| Unit
 ```
@@ -100,13 +100,13 @@ await register(DEFAULT, defineCustomElements, {
 
 ### Security Principles
 
-| Principle | Implementation |
-|-----------|---------------|
-| **No XSS Vulnerabilities** | All user input sanitized, Shadow DOM provides isolation |
-| **Content Security Policy** | Components work with strict CSP |
-| **Dependency Security** | Regular security scans, automated updates |
-| **Secure Defaults** | Components configured securely by default |
-| **SLSA Provenance** | Build Level 3 attestations for published packages |
+| Principle                   | Implementation                                          |
+| --------------------------- | ------------------------------------------------------- |
+| **No XSS Vulnerabilities**  | All user input sanitized, Shadow DOM provides isolation |
+| **Content Security Policy** | Components work with strict CSP                         |
+| **Dependency Security**     | Regular security scans, automated updates               |
+| **Secure Defaults**         | Components configured securely by default               |
+| **SLSA Provenance**         | Build Level 3 attestations for published packages       |
 
 ### Security Measures
 
@@ -142,13 +142,13 @@ await register(DEFAULT, defineCustomElements, {
 
 ### Performance Principles
 
-| Principle | Implementation |
-|-----------|---------------|
-| **Small Bundle Size** | Tree-shakeable exports, lazy loading |
-| **Fast Rendering** | Shadow DOM, virtual DOM diffing |
-| **Efficient Styling** | Adopted style sheets, CSS containment |
-| **Minimal Dependencies** | Only essential runtime dependencies |
-| **Optimal Loading** | Code splitting, lazy component loading |
+| Principle                | Implementation                         |
+| ------------------------ | -------------------------------------- |
+| **Small Bundle Size**    | Tree-shakeable exports, lazy loading   |
+| **Fast Rendering**       | Shadow DOM, virtual DOM diffing        |
+| **Efficient Styling**    | Adopted style sheets, CSS containment  |
+| **Minimal Dependencies** | Only essential runtime dependencies    |
+| **Optimal Loading**      | Code splitting, lazy component loading |
 
 ### Performance Optimization Techniques
 
@@ -191,7 +191,7 @@ graph TB
     Unit[Unit Tests<br/>Jest]
     Lint[Linting<br/>ESLint, Stylelint]
     Type[Type Checking<br/>TypeScript]
-    
+
     Type --> Lint
     Lint --> Unit
     Unit --> Visual
@@ -243,13 +243,13 @@ graph TB
 
 ### Error Handling Strategy
 
-| Error Type | Handling Approach |
-|-----------|-------------------|
-| **Invalid Props** | TypeScript validation, runtime warnings, fallback to defaults |
-| **Missing Dependencies** | Clear error messages, documentation links |
-| **Browser Support** | Feature detection, graceful degradation, error messages |
-| **Theme Errors** | Fallback to accessibility baseline, console warnings |
-| **Runtime Errors** | Try-catch blocks, error boundaries (in frameworks), user-friendly messages |
+| Error Type               | Handling Approach                                                          |
+| ------------------------ | -------------------------------------------------------------------------- |
+| **Invalid Props**        | TypeScript validation, runtime warnings, fallback to defaults              |
+| **Missing Dependencies** | Clear error messages, documentation links                                  |
+| **Browser Support**      | Feature detection, graceful degradation, error messages                    |
+| **Theme Errors**         | Fallback to accessibility baseline, console warnings                       |
+| **Runtime Errors**       | Try-catch blocks, error boundaries (in frameworks), user-friendly messages |
 
 ### Error Communication
 
@@ -279,11 +279,11 @@ graph TB
     Code -->|contains| Comments[Inline Comments]
     Samples[Sample Applications] -->|demonstrates| Usage[Usage Examples]
     Guides[Written Guides] -->|explains| Concepts[Concepts]
-    
+
     API --> Website[Documentation Website]
     Usage --> Website
     Concepts --> Website
-    
+
     Website -->|consumed by| Developers[Developers]
 ```
 
@@ -324,20 +324,20 @@ graph TB
 
 ### Quality Enforcement
 
-| Aspect | Tool | Enforcement |
-|--------|------|------------|
-| **Formatting** | Prettier | Pre-commit hook, CI check |
-| **Linting** | ESLint, Stylelint | CI check, no inline disabling |
-| **Type Safety** | TypeScript | Compilation step, strict mode |
-| **Testing** | Jest, Playwright | CI check, coverage requirements |
-| **Security** | CodeQL, Dependabot | Automated scanning |
-| **Code Review** | GitHub PR reviews | Required before merge |
+| Aspect          | Tool               | Enforcement                     |
+| --------------- | ------------------ | ------------------------------- |
+| **Formatting**  | Prettier           | Pre-commit hook, CI check       |
+| **Linting**     | ESLint, Stylelint  | CI check, no inline disabling   |
+| **Type Safety** | TypeScript         | Compilation step, strict mode   |
+| **Testing**     | Jest, Playwright   | CI check, coverage requirements |
+| **Security**    | CodeQL, Dependabot | Automated scanning              |
+| **Code Review** | GitHub PR reviews  | Required before merge           |
 
 ### Code Conventions
 
 1. **Naming Conventions**
    - Components: PascalCase with "Kol" prefix (KolButton)
-   - Properties: camelCase, prefixed with underscore (_label)
+   - Properties: camelCase, prefixed with underscore (\_label)
    - CSS classes: BEM methodology
    - Files: kebab-case
 
@@ -365,11 +365,11 @@ KoliBri strictly follows SemVer 2.0:
 
 ### Compatibility Strategy
 
-| Version Type | Support Duration | Purpose |
-|-------------|-----------------|---------|
-| **LTS** | 3 years | Long-term support for enterprises |
-| **STS** | 15 months | Short-term support for rapid innovation |
-| **Development** | Until next release | Latest features and improvements |
+| Version Type    | Support Duration   | Purpose                                 |
+| --------------- | ------------------ | --------------------------------------- |
+| **LTS**         | 3 years            | Long-term support for enterprises       |
+| **STS**         | 15 months          | Short-term support for rapid innovation |
+| **Development** | Until next release | Latest features and improvements        |
 
 ### Breaking Change Management
 

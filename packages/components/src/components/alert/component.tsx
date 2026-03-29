@@ -17,7 +17,7 @@ import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * @internal
- * @slot - Der Inhalt der Meldung.
+ * @slot - The content of the notification.
  */
 @Component({
 	tag: 'kol-alert-wc',
@@ -29,7 +29,7 @@ export class KolAlertWc implements AlertAPI {
 	private readonly close = () => {
 		this._on?.onClose?.(new Event('Close'));
 		if (this.host) {
-			dispatchDomEvent(this.host as HTMLElement, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	};
 

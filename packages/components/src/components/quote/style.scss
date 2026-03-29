@@ -1,5 +1,5 @@
 @use '../@shared/mixins' as *;
-@use '../../styles/global' as *;
+@use '../@shared/global' as *;
 
 @layer kol-component {
 	.kol-quote {
@@ -11,14 +11,6 @@
 	.kol-quote__cite {
 		&::before {
 			content: '—';
-
-			.kol-quote--block & {
-				padding-right: 0.5em;
-			}
-
-			.kol-quote--inline & {
-				padding: 0.5em;
-			}
 		}
 	}
 

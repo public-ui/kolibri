@@ -672,6 +672,7 @@ ROUTES.set('link/target', {
 		skip: true,
 	},
 });
+ROUTES.set('link/link-variant', {});
 ROUTES.set('modal/basic?show-dialog=true', {
 	snapshot: {
 		viewportSize: {
@@ -1139,6 +1140,17 @@ ROUTES.set('version/context', {
 		},
 	},
 });
+ROUTES.set('scenarios/accordion-components', {
+	snapshot: {
+		viewportSize: {
+			width: 200,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/static-form', {
 	axe: {
 		skipFailures: true,
@@ -1186,6 +1198,17 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 
 /* Focus tests */
 ROUTES.set('scenarios/focus-elements?component=accordion', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=badge', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
@@ -1417,7 +1440,73 @@ ROUTES.set('scenarios/focus-elements?component=singleSelect', {
 		skip: true,
 	},
 });
+ROUTES.set('scenarios/focus-elements?component=popoverButton', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=skipNav', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=splitButton', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=tabs', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/focus-elements?component=textarea', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=toolbar', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=tree', {
 	snapshot: {
 		viewportSize: {
 			width: 300,

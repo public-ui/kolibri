@@ -1,6 +1,8 @@
 @use '../@shared/mixins' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
+	@include kol-icon-styles();
 	.kol-tooltip {
 		display: contents;
 

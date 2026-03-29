@@ -44,7 +44,7 @@ const LoadingOverlayFC: FC<{
 };
 
 export const TableStatelessAsync: FC = () => {
-	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 3000));
+	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
 	const loadData = (action: 'sort' | 'paginate') => {
 		setLoading(true);
 		setCurrentAction(action);

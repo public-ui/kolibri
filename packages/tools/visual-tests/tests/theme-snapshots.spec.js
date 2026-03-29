@@ -30,6 +30,7 @@ ROUTES.forEach((options, route) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`);
 		await page.waitForLoadState('networkidle');
+		await page.waitForSelector('.loading', { state: 'hidden' });
 		await page.addStyleTag({
 			content: `
 				* {

@@ -1,0 +1,24 @@
+@use 'mixins' as *;
+
+@mixin kol-popover-button-styles {
+	.kol-popover-button {
+		&__popover {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+
+		&--inline &__button {
+			display: inline;
+		}
+	}
+
+	.kol-popover {
+		opacity: 0;
+		transition: 0.2s ease-out opacity;
+	}
+
+	.kol-popover-button--open + .kol-popover {
+		opacity: 1;
+	}
+}

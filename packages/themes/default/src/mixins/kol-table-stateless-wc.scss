@@ -1,6 +1,6 @@
 @use './to-rem' as *;
 @use './kol-table-settings-wc' as *;
-@use './alert-wc' as *;
+@use './alert' as *;
 @use './pagination-mixin' as *;
 @use './button' as *;
 @use './link' as *;
@@ -18,7 +18,7 @@
 
 	.kol-table {
 		$root: &;
-		$selection-width: to-rem(62);
+		$selection-width: to-rem(68);
 		--kol-table-selection-col-width: #{$selection-width};
 
 		padding: to-rem(8);
@@ -109,7 +109,7 @@
 			}
 
 			&--selection {
-				width: to-rem(68); //padding + a11y-min-size
+				width: #{$selection-width}; //padding + a11y-min-size
 			}
 
 			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
@@ -118,6 +118,15 @@
 
 			&--sticky-right:nth-child(1 of .kol-table__cell--sticky-right) {
 				border-left: 2px solid black;
+			}
+		}
+
+		&__head-row:nth-child(1 of .kol-table__head-row) {
+			.kol-table__cell {
+				padding-top: to-rem(8);
+				&::before {
+					display: none;
+				}
 			}
 		}
 

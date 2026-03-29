@@ -1,0 +1,28 @@
+@use '../mixins/to-rem' as *;
+
+@mixin kol-custom-suggestions-option-theme($option-height) {
+	.kol-custom-suggestions-option {
+		display: flex;
+		min-height: $option-height;
+		padding: to-rem(10) to-rem(12);
+		align-items: center;
+
+		line-height: 1;
+
+		&[aria-selected] {
+			color: var(--color-primary-variant);
+		}
+
+		&:not(&--disabled):focus {
+			color: var(--color-light);
+			background-color: var(--color-primary-variant);
+			outline: 0;
+		}
+
+		&--disabled:focus,
+		&--disabled:focus * {
+			outline: 0;
+			cursor: not-allowed;
+		}
+	}
+}

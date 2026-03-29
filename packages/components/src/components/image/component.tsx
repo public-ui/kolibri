@@ -1,11 +1,15 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
 
+/**
+ * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
+ */
 @Component({
 	tag: 'kol-image',
 	styleUrls: {
@@ -13,8 +17,8 @@ import type { LoadingType } from '../../internal/props';
 	},
 	shadow: true,
 })
-export class KolImage implements WebComponentInterface<ImageApi> {
-	private readonly ctrl = new ImageController();
+export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
+	private readonly ctrl = new ImageController(this.setState, this.getState);
 
 	/**
 	 * Sets the alternative text of the image.
@@ -82,10 +86,15 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	}
 
 	public render(): JSX.Element {
-		const { alt, loading, sizes, src, srcset } = this.ctrl.getProps();
 		return (
 			<Host>
-				<ImageFC alt={alt} loading={loading} sizes={sizes} src={src} srcset={srcset} />
+				<ImageFC
+					alt={this.ctrl.getRenderProp('alt')}
+					loading={this.ctrl.getRenderProp('loading')}
+					sizes={this.ctrl.getRenderProp('sizes')}
+					src={this.ctrl.getRenderProp('src')}
+					srcset={this.ctrl.getRenderProp('srcset')}
+				/>
 			</Host>
 		);
 	}

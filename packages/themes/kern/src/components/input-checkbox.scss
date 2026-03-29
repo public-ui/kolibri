@@ -1,17 +1,17 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/kol-alert' as *;
-@use '../mixins/field-control' as *;
-@use '../mixins/form-field-order' as *;
-@use '../mixins/focus-outline' as *;
-@use '../mixins/checkbox.scss' as *;
+@use '../mixins/alert.mixin' as *;
+@use '../mixins/field-control.mixin' as *;
+@use '../mixins/focus-outline.mixin' as *;
+@use '../mixins/checkbox.mixin' as *;
+
+@use '../mixins/form-field.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-alert;
 	@include kol-field-control-theme;
-	@include kol-form-field-order-theme;
 	@include kol-form-field;
 
-	@include checkbox('kol-checkbox');
+	@include checkbox;
 
 	.kol-input-checkbox--label-align-right {
 		padding-right: var(--kern-metric-space-default);

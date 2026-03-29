@@ -3,11 +3,20 @@ import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-compon
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
 /**
- * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
+ * The **Details** component allows additional information to be initially shown with a short introductory text,
+ * which is only fully expanded after the user clicks on an arrow icon.
+ *
+ * By default, the **Details** component is displayed as a single-line layout element consisting of an arrow icon
+ * followed by a short introductory text. The actual content is revealed below after clicking the header area. The arrow icon
+ * changes its orientation from **_right_** to **_down_**.
+ * The component can also be closed again to hide the content.
+ *
+ * @slot - The content displayed in the detail description.
  */
 @Component({
 	tag: 'kol-details',
@@ -22,7 +31,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	private readonly nonce = nonce();
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
 
@@ -30,8 +39,8 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.buttonWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
@@ -71,7 +80,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
 			HeadingButtonProps: {
-				ref: this.catchRef,
+				ref: this.setButtonWcRef,
 				class: `${rootClass}__heading-button`,
 				_icons: 'kolicon-chevron-right',
 			},

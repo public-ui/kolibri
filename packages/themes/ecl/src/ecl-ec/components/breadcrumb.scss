@@ -10,16 +10,11 @@
 			sans-serif;
 		font-weight: var(--font-weight-bold);
 
-		&__icon {
-			&::part(icon separator)::before {
-				color: var(--color-blue);
-			}
-
-			&[exportparts*='separator'] {
-				padding: 0;
-				margin-inline-end: to-rem(8);
-				margin-inline-start: to-rem(8);
-			}
+		&__icon[exportparts*='separator']::before {
+			color: var(--color-blue);
+			padding: 0;
+			margin-inline-end: to-rem(8);
+			margin-inline-start: to-rem(8);
 		}
 
 		&__list-element {

@@ -52,14 +52,14 @@ graph TB
 
 ### Entwickler-Workstation-Anforderungen
 
-| Komponente | Anforderung | Zweck |
-|-----------|------------|---------|
-| **Betriebssystem** | Windows 10+, macOS 11+ oder Linux | Plattformunabhängige Entwicklung |
-| **Node.js** | Version 22.x (erforderlich) | Runtime für Build-Tools |
-| **pnpm** | Version 10.x | Paketmanager |
-| **Git** | Version 2.30+ | Versionskontrolle |
-| **IDE** | VS Code (empfohlen) | Code-Bearbeitung mit TypeScript-Unterstützung |
-| **Browser** | Chrome/Edge (zum Testen) | Entwicklung und Testing |
+| Komponente         | Anforderung                       | Zweck                                         |
+| ------------------ | --------------------------------- | --------------------------------------------- |
+| **Betriebssystem** | Windows 10+, macOS 11+ oder Linux | Plattformunabhängige Entwicklung              |
+| **Node.js**        | Version 22.x (erforderlich)       | Runtime für Build-Tools                       |
+| **pnpm**           | Version 10.x                      | Paketmanager                                  |
+| **Git**            | Version 2.30+                     | Versionskontrolle                             |
+| **IDE**            | VS Code (empfohlen)               | Code-Bearbeitung mit TypeScript-Unterstützung |
+| **Browser**        | Chrome/Edge (zum Testen)          | Entwicklung und Testing                       |
 
 ### Lokales Setup
 
@@ -87,11 +87,11 @@ pnpm start
 
 ### Entwicklungs-Ports
 
-| Port | Dienst | URL |
-|------|---------|-----|
-| 9191 | React-Beispiel-App | http://localhost:9191 |
-| 4200 | Angular-Beispiel-App | http://localhost:4200 |
-| Variabel | Stencil-Dev-Server | http://localhost:3333 |
+| Port     | Dienst               | URL                   |
+| -------- | -------------------- | --------------------- |
+| 9191     | React-Beispiel-App   | http://localhost:9191 |
+| 4200     | Angular-Beispiel-App | http://localhost:4200 |
+| Variabel | Stencil-Dev-Server   | http://localhost:3333 |
 
 ## 7.3 CI/CD-Pipeline
 
@@ -139,12 +139,12 @@ graph LR
 
 ### GitHub Actions Workflows
 
-| Workflow | Trigger | Zweck |
-|----------|---------|---------|
-| **ci.yml** | Push, Pull Request | Tests, Linting, Builds ausführen |
-| **publish.yml** | Tag-Erstellung | Pakete zu npm mit Provenance veröffentlichen |
-| **update-snapshots.yml** | Manueller Trigger | Visual Regression Test Snapshots aktualisieren |
-| **codeql.yml** | Push, Pull Request, Schedule | Sicherheits-Scanning mit CodeQL |
+| Workflow                 | Trigger                      | Zweck                                          |
+| ------------------------ | ---------------------------- | ---------------------------------------------- |
+| **ci.yml**               | Push, Pull Request           | Tests, Linting, Builds ausführen               |
+| **publish.yml**          | Tag-Erstellung               | Pakete zu npm mit Provenance veröffentlichen   |
+| **update-snapshots.yml** | Manueller Trigger            | Visual Regression Test Snapshots aktualisieren |
+| **codeql.yml**           | Push, Pull Request, Schedule | Sicherheits-Scanning mit CodeQL                |
 
 ### CI Quality Gates
 

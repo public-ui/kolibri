@@ -1,5 +1,5 @@
 @use '~@public-ui/components/index' as *;
-@use '../mixins/input-core' as *;
+@use '../mixins/input-core.mixin' as *;
 
 @layer kol-theme-component {
 	@include input-core;
@@ -8,7 +8,7 @@
 	}
 
 	.kol-input-container {
-		outline: var(--kern-metric-border-width-default) dashed var(--kern-color-form-input-border);
+		outline: var(--kern-metric-border-width-default) dashed var(--kol-input-border-color);
 		display: flex;
 		position: relative;
 		height: var(--kern-metric-dimension-5x-large);
@@ -91,7 +91,6 @@
 				display: flex;
 				padding: 0 to-rem(12);
 				overflow: hidden;
-				order: 1;
 				flex-grow: 1;
 
 				font-size: to-rem(16);

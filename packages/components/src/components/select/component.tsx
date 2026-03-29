@@ -30,11 +30,13 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * @internal
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-select-wc',
@@ -44,7 +46,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	private selectRef?: HTMLSelectElement;
 
-	private readonly catchRef = (ref?: HTMLSelectElement) => {
+	private readonly setSelectRef = (ref?: HTMLSelectElement) => {
 		this.selectRef = ref;
 	};
 
@@ -65,13 +67,8 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.selectRef?.focus();
-				resolve();
-			});
-		});
+	public async focus(): Promise<void> {
+		return setFocus(this.selectRef!);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -88,7 +85,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 
 	private getSelectProps(): SelectStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setSelectRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),

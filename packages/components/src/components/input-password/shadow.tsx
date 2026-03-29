@@ -36,11 +36,14 @@ import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputPasswordController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-password',
@@ -56,7 +59,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -74,12 +77,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -114,7 +112,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			type: this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,

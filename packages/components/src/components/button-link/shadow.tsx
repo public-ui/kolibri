@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -19,7 +19,21 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
+/**
+ * The **ButtonLink** component is semantically a button but has the appearance of a link. All relevant properties of the Button component are adopted and extended with the design-defining properties of a link.
+ *
+ * A button can be disabled, therefore the **ButtonLink** also has the `_disabled` property. How this is styled visually is determined by the UX designer.
+ *
+ * Instead of using `_href` as with a regular link, the **ButtonLink**'s behavior is controlled via a click callback using the `_on` property.
+ *
+ * A link has the `target` property which optionally opens the link in a new window/tab. This behavior is not yet implemented.
+ *
+ * Since a link, unlike a button, is not offered in multiple variants (`primary`, `secondary`, etc.), the `_customClass` and `_variant` properties are not available.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
+ */
 @Component({
 	tag: 'kol-button-link',
 	styleUrls: {
@@ -28,9 +42,10 @@ import type {
 	shadow: true,
 })
 export class KolButtonLink implements ButtonLinkProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
 
@@ -47,14 +62,14 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.buttonWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchRef}
+				ref={this.setButtonWcRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}

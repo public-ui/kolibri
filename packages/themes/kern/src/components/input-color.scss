@@ -1,5 +1,8 @@
-@use '../mixins/input-core' as *;
+@use '../mixins/input-core.mixin' as *;
 
 @layer kol-theme-component {
 	@include input-core;
+	.kol-input-color__inputs-wrapper {
+		gap: 0;
+	}
 }

@@ -1,7 +1,7 @@
-@use '../mixins/card' as *;
+@use '../mixins/card.mixin' as *;
 
 @layer kol-theme-component {
-	@include card('kol-card');
+	@include card;
 
 	.kol-card {
 		--kol-card-border-radius: var(--kern-metric-border-radius-default);

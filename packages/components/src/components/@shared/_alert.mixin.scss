@@ -1,0 +1,25 @@
+@use 'mixins' as *;
+@use '../host-display-block' as *;
+@use '../tooltip/style' as *;
+@use 'button.mixin' as *;
+
+@mixin kol-alert {
+	.kol-alert {
+		@include kol-button-styles('kol-button');
+		display: grid;
+
+		&__container {
+			display: flex;
+			place-items: center;
+		}
+
+		&__container-content {
+			flex-grow: 1;
+		}
+
+		&__closer {
+			/* Visible with forced colors */
+			outline: transparent solid to-rem(1);
+		}
+	}
+}

@@ -1,0 +1,43 @@
+@use 'mixins' as *;
+@use './select.mixin' as *;
+@use './icon.mixin' as *;
+
+@mixin kol-pagination-styles {
+	@include kol-select;
+	@include kol-icon-styles();
+
+	.kol-pagination {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		container: paging / inline-size;
+
+		&__navigation-list {
+			display: inline-flex;
+			margin: 0;
+			padding: 0;
+			flex-wrap: wrap;
+			align-items: center;
+			list-style: none;
+		}
+
+		&__separator:before {
+			content: '•••';
+		}
+
+		&__page-size-select .kol-form-field-select {
+			align-items: center;
+			grid-template-columns: 1fr max-content;
+		}
+
+		&:has(&__button--first) {
+			@container paging (width < 600px) {
+				li:has(.kol-pagination__button--numbers),
+				li:has(.kol-pagination__separator) {
+					display: none;
+				}
+			}
+		}
+	}
+}

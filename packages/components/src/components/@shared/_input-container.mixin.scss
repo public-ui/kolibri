@@ -1,0 +1,33 @@
+@mixin kol-input-container {
+	.kol-input-container {
+		$root: &;
+		background-color: transparent;
+		display: grid;
+		width: 100%;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+
+		align-items: center;
+		grid-template-columns: 1fr;
+
+		&:has(> &__adornment--start) {
+			// soblad ein adornment gesetzt ist, sind beide im dom
+			grid-template-columns: auto 1fr auto;
+		}
+
+		&__container {
+			position: relative;
+		}
+
+		&__adornment {
+			display: flex;
+			align-items: center;
+
+			.kol-icon {
+				display: grid;
+				min-height: var(--a11y-min-size);
+				place-items: center;
+			}
+		}
+	}
+}

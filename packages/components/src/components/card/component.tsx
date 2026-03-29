@@ -12,7 +12,8 @@ import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
- * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
+ * @internal
+ * @slot - Allows arbitrary HTML to be inserted into the content area of the card.
  */
 @Component({
 	tag: 'kol-card-wc',

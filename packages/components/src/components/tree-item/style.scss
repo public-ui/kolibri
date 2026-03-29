@@ -1,26 +1,20 @@
 @use '../@shared/mixins' as *;
-@use '../../styles/global' as *;
+@use '../@shared/global' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
-	$base-horizontal-padding: to-rem(8);
+	@include kol-icon-styles();
 
 	.kol-tree-item {
-		--indentation: var(--tree-item-indentation, #{to-rem(10)}); // Set `--tree-item-indentation` in themes to control padding
 		$root: &;
 
 		&__link {
 			.kol-link {
 				display: inline-flex;
 				min-height: var(--a11y-min-size);
-				padding-right: to-rem(6);
-				padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
 				align-items: center;
 
 				text-decoration: none;
-			}
-
-			&--first-level .kol-link {
-				padding-left: to-rem(6);
 			}
 		}
 

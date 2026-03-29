@@ -1,0 +1,220 @@
+@use '../host-display-block' as *;
+@use '../tooltip/style' as *;
+@use './table-settings.mixin' as *;
+@use 'mixins' as *;
+@use './button.mixin' as *;
+@use './link.mixin' as *;
+@use './icon.mixin' as *;
+
+@mixin kol-table-stateless-styles {
+	@include kol-table-settings-styles;
+	@include kol-icon-styles();
+
+	.kol-table {
+		$root: &;
+
+		--kol-table-selection-col-width: var(--a11y-min-size);
+
+		display: block;
+		position: relative;
+		max-width: 100%;
+
+		&__scroll-container {
+			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
+				/* @see https://remysharp.com/til/css/focus-ring-default-styles */
+				outline: 5px auto Highlight;
+				outline: 5px auto -webkit-focus-ring-color;
+				outline-offset: 2px;
+			}
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
+
+		&__table {
+			table-layout: fixed;
+		}
+
+		&__caption {
+			min-height: var(--a11y-min-size); // align with configuration button
+			text-align: start;
+		}
+
+		&__sort-button {
+			.kol-button {
+				color: inherit;
+			}
+		}
+
+		&__sort {
+			display: inline-flex;
+			align-items: center;
+		}
+
+		&__sort-order {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		// headings in table body default to text-align left, unless defined otherwise.
+		&__body {
+			text-align: left;
+
+			.kol-button__text {
+				justify-items: start;
+			}
+		}
+
+		&__cell {
+			&--align-left {
+				text-align: left;
+
+				.kol-button__text {
+					align-items: start;
+				}
+			}
+
+			&--align-center {
+				text-align: center;
+
+				& .kol-button__text {
+					align-items: center;
+				}
+			}
+
+			&--align-right {
+				text-align: right;
+
+				.kol-button__text {
+					align-items: end;
+				}
+			}
+
+			&--selection {
+				background-color: white;
+
+				position: sticky !important;
+				left: 0;
+				z-index: 2;
+				width: var(--kol-table-selection-col-width, auto);
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
+
+				white-space: nowrap;
+			}
+
+			&--actions {
+				white-space: nowrap;
+
+				@include kol-button-styles('kol-button');
+				@include kol-link-styles('kol-link');
+			}
+
+			&--sticky-left,
+			&--sticky-right {
+				background-color: white;
+				position: sticky !important;
+				z-index: 1;
+			}
+
+			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
+				border-right: 2px solid black;
+			}
+
+			&--sticky-right:nth-child(1 of .kol-table__cell--sticky-left) {
+				border-left: 2px solid black;
+			}
+		}
+
+		&__cell-actions {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__spacer {
+			display: none;
+		}
+
+		&__selection {
+			position: relative;
+
+			&-label {
+				display: flex;
+				position: relative;
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+			}
+
+			&--disabled {
+				cursor: not-allowed;
+			}
+
+			&-icon {
+				display: block;
+				position: absolute;
+				inset: auto;
+				z-index: 1;
+			}
+
+			&-input {
+				border-style: solid;
+				margin: 0;
+				appearance: none;
+				cursor: pointer;
+
+				&:disabled {
+					cursor: not-allowed;
+				}
+
+				&:before {
+					content: '';
+				}
+
+				&--checkbox {
+					background-color: rgb(255, 255, 255);
+					display: flex;
+					position: relative;
+					min-width: calc(var(--a11y-min-size) / 2);
+					min-height: calc(var(--a11y-min-size) / 2);
+					border-width: 2px;
+					align-items: center;
+					justify-content: center;
+
+					line-height: 1.5;
+				}
+
+				&--radio {
+					border-radius: 100%;
+					display: flex;
+					width: 1.5em;
+					min-width: 1.5em;
+					height: 1.5em;
+					min-height: 1.5em;
+					padding: 0;
+					border-width: 2px;
+
+					&:before {
+						border-radius: 100%;
+						width: calc(1.5em / 2);
+						height: calc(1.5em / 2);
+						margin: auto;
+					}
+
+					&:checked:before {
+						background-color: #000;
+
+						@media (forced-colors: active) {
+							/* Give it a visible background in forced colors mode */
+							background-color: selectedItem !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

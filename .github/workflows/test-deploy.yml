@@ -31,9 +31,9 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         id: pnpm-install
         with:
           version: 10
@@ -52,12 +52,12 @@ jobs:
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
 
       - name: Build
-        run: pnpm --filter @public-ui/sample-react... build
+        run: pnpm --filter @public-ui/presentation... build
 
-      - name: Attest sample react build
+      - name: Attest presentation build
         uses: actions/attest-build-provenance@v4
         with:
-          subject-path: packages/samples/react/dist
+          subject-path: packages/samples/presentation/dist
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
@@ -66,4 +66,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --no-build --filter=@public-ui/sample-react -d packages/samples/react/dist --alias="$GITHUB_REF_NAME" # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`
+          args: deploy --no-build --filter=@public-ui/presentation -d packages/samples/presentation/dist --alias="$GITHUB_REF_NAME" # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`

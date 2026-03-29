@@ -2,6 +2,7 @@ import type { FocusableElement } from '@public-ui/components';
 import {
 	KolAccordion,
 	KolAlert,
+	KolBadge,
 	KolButton,
 	KolButtonLink,
 	KolCombobox,
@@ -19,17 +20,44 @@ import {
 	KolInputText,
 	KolLink,
 	KolLinkButton,
+	KolPopoverButton,
 	KolSelect,
 	KolSingleSelect,
+	KolSkipNav,
+	KolSplitButton,
+	KolTabs,
 	KolTextarea,
+	KolToolbar,
+	KolTree,
+	KolTreeItem,
 } from '@public-ui/react-v19';
 import type { FC, ForwardRefRenderFunction } from 'react';
-import React, { forwardRef, useLayoutEffect, useMemo, useRef } from 'react';
+import React, { forwardRef, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SampleDescription } from '../components/SampleDescription';
 
 const getFocusElements = () => {
+	// Blocklist: Components excluded from focus testing (breadcrumb, dialog, drawer, form, modal, nav, pagination)
+	// These components have special behaviors (navigation, modals, forms, pagination) that conflict with automated focus tests.
+	// Note: popover-based components (e.g. popoverButton, splitButton) are included since their primary button element is focusable.
 	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();
+	focusElements.set('accordion', (_, ref) => <KolAccordion className="w-full" _label="Accordion here" ref={ref} />);
+	focusElements.set('badge', (_, ref) => (
+		<KolBadge
+			className="w-full"
+			_label="Badge with button"
+			_smartButton={{ _label: 'Action', _icons: 'kolicon-house', _on: { onClick: () => {} } }}
+			ref={ref}
+		/>
+	));
+	focusElements.set('button', (_, ref) => <KolButton _label="Button here" ref={ref} />);
+	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref} />);
+	focusElements.set('combobox', (_, ref) => <KolCombobox className="w-full" _label="KolCombobox here" _suggestions={[]} ref={ref} />);
+	focusElements.set('details', (_, ref) => (
+		<KolDetails className="w-full" _label="Details here" ref={ref}>
+			detailed details
+		</KolDetails>
+	));
 	focusElements.set('inputCheckbox', (_, ref) => <KolInputCheckbox className="w-full" _name="checkbox" _label="Checkbox" ref={ref} />);
 	focusElements.set('inputColor', (_, ref) => <KolInputColor className="w-full" _name="color" _label="Color" ref={ref} />);
 	focusElements.set('inputDate', (_, ref) => <KolInputDate className="w-full" _name="date" _label="Date" ref={ref} />);
@@ -53,6 +81,13 @@ const getFocusElements = () => {
 	));
 	focusElements.set('inputRange', (_, ref) => <KolInputRange className="w-full" _name="range" _label="Range" ref={ref} />);
 	focusElements.set('inputText', (_, ref) => <KolInputText className="w-full" _name="text" _label="Text" ref={ref} />);
+	focusElements.set('link', (_, ref) => <KolLink className="w-full" _label="Link here" _href="#" ref={ref} />);
+	focusElements.set('linkButton', (_, ref) => (
+		<div>
+			<KolLinkButton _label="LinkButton here" _href="#" ref={ref} />
+		</div>
+	));
+	focusElements.set('popoverButton', (_, ref) => <KolPopoverButton _label="PopoverButton here" ref={ref} />);
 	focusElements.set('select', (_, ref) => (
 		<KolSelect
 			className="w-full"
@@ -91,25 +126,45 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
+	focusElements.set('skipNav', (_, ref) => (
+		<KolSkipNav
+			_label="SkipNav"
+			_links={[
+				{
+					_label: 'Skip to main content',
+					_href: '#main',
+				},
+			]}
+			ref={ref}
+		/>
+	));
+	focusElements.set('splitButton', (_, ref) => <KolSplitButton _label="SplitButton here" ref={ref} />);
+	focusElements.set('tabs', (_, ref) => (
+		<KolTabs className="w-full" _label="Tabs here" _tabs={[{ _label: 'Tab 1' }, { _label: 'Tab 2' }, { _label: 'Tab 3' }]} ref={ref}>
+			Tab content
+		</KolTabs>
+	));
 	focusElements.set('textarea', (_, ref) => <KolTextarea className="w-full" _name="textarea" _label="Textarea" _rows={5} ref={ref} />);
-	focusElements.set('accordion', (_, ref) => <KolAccordion className="w-full" _label="Accordion here" ref={ref} />);
-	focusElements.set('button', (_, ref) => (
-		<div>
-			<KolButton _label="Button here" ref={ref} />
-		</div>
+	focusElements.set('toolbar', (_, ref) => (
+		<KolToolbar
+			className="w-full"
+			_label="Toolbar here"
+			_items={[
+				{ type: 'button', _label: 'Action 1' },
+				{ type: 'button', _label: 'Action 2' },
+			]}
+			ref={ref}
+		/>
 	));
-	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref} />);
-	focusElements.set('combobox', (_, ref) => <KolCombobox className="w-full" _label="KolCombobox here" _suggestions={[]} ref={ref} />);
-	focusElements.set('details', (_, ref) => (
-		<KolDetails className="w-full" _label="Details here" ref={ref}>
-			detailed details
-		</KolDetails>
-	));
-	focusElements.set('link', (_, ref) => <KolLink className="w-full" _label="Link here" _href="#" ref={ref} />);
-	focusElements.set('linkButton', (_, ref) => (
-		<div>
-			<KolLinkButton _label="LinkButton here" _href="#" ref={ref} />
-		</div>
+	focusElements.set('tree', (_, ref) => (
+		<KolTree className="w-full" _label="Tree here" ref={ref}>
+			<KolTreeItem _label="1 Home" _href="#" />
+			<KolTreeItem _label="2 Products" _href="#" _open>
+				<KolTreeItem _label="2.1 Electronics" _href="#" />
+				<KolTreeItem _label="2.2 Furniture" _href="#" />
+			</KolTreeItem>
+			<KolTreeItem _label="3 Services" _href="#" />
+		</KolTree>
 	));
 
 	return focusElements;
@@ -150,26 +205,34 @@ const Fallback = (props: FallbackProps) => {
 };
 
 export const FocusElements: FC = () => {
-	const ref = useRef<FocusableElement>(null);
 	const focusElements = useMemo(() => getFocusElements(), []);
 	const [searchParams] = useSearchParams();
 	const componentName = searchParams.get('component');
 
-	useLayoutEffect(() => {
-		setTimeout(() => {
-			// Timeout not strictly necessary but prevents a layout glitch in snapshots with Playwright.
-			void ref.current?.focus();
-		}, 500);
-	}, [ref]);
+	const Component = componentName ? focusElements.get(componentName) : undefined;
+
+	// Memoize the Element component type to prevent unnecessary unmount/remount on re-renders.
+	const Element = useMemo(() => (Component ? forwardRef(Component) : null), [Component]);
+
+	// Callback ref fires whenever a component instance mounts, ensuring focus is set on each mount.
+	const focusRef = useCallback(
+		(instance: FocusableElement | null) => {
+			if (instance) {
+				void instance.focus();
+			}
+		},
+		[componentName],
+	);
 
 	if (componentName) {
-		const Component = focusElements.get(componentName);
-		if (!Component) {
+		if (!Element) {
 			return <Fallback invalidComponent />;
 		}
-		const Element = forwardRef(Component);
-
-		return <Element ref={ref} />;
+		return (
+			<div>
+				<Element ref={focusRef} />
+			</div>
+		);
 	} else {
 		return <Fallback />;
 	}

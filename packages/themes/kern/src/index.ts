@@ -9,6 +9,7 @@ import buttonCss from './components/button.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
+import dialogCss from './components/dialog.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
@@ -24,11 +25,11 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
-import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
+import quoteCss from './components/quote.scss';
 import selectCss from './components/select.scss';
 import singleSelect from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
@@ -56,6 +57,7 @@ export const KERN_V2 = KoliBri.createTheme('kern-v2', {
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': ComboboxCss,
 	'KOL-DETAILS': detailsCss,
+	'KOL-DIALOG': dialogCss,
 	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
@@ -71,11 +73,11 @@ export const KERN_V2 = KoliBri.createTheme('kern-v2', {
 	'KOL-INPUT-TEXT': inputTextCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
-	'KOL-MODAL': modalCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-POPOVER-BUTTON': popoverButtonCss,
 	'KOL-PROGRESS': progressCss,
+	'KOL-QUOTE': quoteCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
 	'KOL-SKIP-NAV': skipNavCss,

@@ -146,6 +146,97 @@ This is a limitation in Firefox’s ARIA implementation. Until it is resolved, a
 
 ### Toaster
 
-Toasts are rendered in a container that's appended as first element of `<body>` and elevated using a high `z-index`.
+> **Deprecated** — The `kol-toast-container` component and `ToasterService` are deprecated and will be removed in the next major version. See [#8372](https://github.com/public-ui/kolibri/issues/8372) and [#9110](https://github.com/public-ui/kolibri/issues/9110). Use [`kol-alert`](./packages/components/src/components/alert) for inline notifications and [`kol-dialog`](./packages/components/src/components/dialog) for interactive messages instead.
 
-When using [modal dialogs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) these are rendered above toasts on the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer). Hence, toast messages are always blocked by modal dialogs. We recommend completely avoiding toasts in modals and giving feedback within the modal directly.
+#### Why toast notifications are fundamentally inaccessible
+
+The international accessibility community broadly agrees: the classic toast pattern — auto-dismissing, corner-positioned notifications — cannot be made fully WCAG-conformant without removing the traits that define it. The following issues are structural and cannot be resolved through ARIA attributes, focus management, or the Popover API alone.
+
+#### SC 2.2.1 – Timing Adjustable (Level A) — critical
+
+Auto-dismissing toasts set a time limit on content perception. WCAG requires users to be able to turn off, adjust, or extend time limits. A toast only avoids violating SC 2.2.1 if the same information is simultaneously available elsewhere (e.g. a new email visible in the inbox). When the toast is the sole information source and disappears automatically, it violates SC 2.2.1 at **Level A** — the lowest conformance threshold.
+
+The W3C WCAG Working Group clarified this in [issue #1814](https://github.com/w3c/wcag/issues/1814).
+
+#### SC 4.1.3 – Status Messages (Level AA)
+
+Toasts must be announced via ARIA live regions without moving focus. In practice:
+
+- The live region container must exist in the DOM **before** content is inserted. If container and content are injected simultaneously, most screen readers ignore the announcement.
+- **JAWS** does not re-announce identical messages — inserting the same text twice results in silence for the second occurrence.
+- **NVDA** may drop `polite` announcements under load.
+- **VoiceOver (iOS)** historically only handled `assertive` live regions reliably.
+
+#### SC 2.1.1 – Keyboard (Level A)
+
+Interactive elements inside toasts (close button, "Undo" links) must be keyboard-accessible — in a race against the auto-dismiss timer. For users who type slowly or rely on switch access or voice control, this race cannot be won.
+
+#### SC 2.4.3 – Focus Order (Level A)
+
+Toast elements appended to the end of the DOM are barely reachable by keyboard users before they disappear automatically.
+
+#### SC 1.3.2 – Meaningful Sequence (Level A)
+
+Toast markup at the beginning or end of the DOM has no logical relationship to the element that triggered it. The document order does not match the visual or semantic order.
+
+#### SC 1.4.4 / 1.4.10 – Resize Text / Reflow (Level AA)
+
+Enlarged text can cause toasts to overflow or cover content. Toasts that appear outside the visible viewport at 400% zoom are effectively invisible to users relying on screen magnification.
+
+#### SC 2.2.4 – Interruptions (Level AAA)
+
+Toasts are unsolicited interruptions. `role="alert"` literally interrupts the running screen reader output regardless of what the user is currently reading.
+
+#### The toast paradox
+
+> "You can improve the accessibility of toasts by removing the traits that make them toasts."
+> — Adam Silver, [Can you make toast messages accessible?](https://adamsilver.io/blog/can-you-make-toast-messages-accessible/)
+
+Every measure that makes a toast genuinely accessible transforms it into a different component:
+
+| Measure                                  | Result                                        |
+| ---------------------------------------- | --------------------------------------------- |
+| No auto-dismiss                          | → Persistent inline alert                     |
+| Focus moved into the toast               | → Non-modal dialog                            |
+| Notification history                     | → Notification panel / landmark region        |
+| Plain text only, no interactive elements | → ARIA live region (no longer a visual toast) |
+
+> "If a notification contains an interactive element, it should not be a live region. And it should also not be a toast."
+> — Sara Soueidan, [Accessible Notifications with ARIA Live Regions](https://www.sarasoueidan.com/blog/accessible-notifications-with-aria-live-regions-part-2/)
+
+#### Why the Popover API does not solve the structural problems
+
+An exploratory implementation using the native Popover API (`popover="manual"`) was developed on branch `claude/toast-popover-dialog-6ahi8`. It improves the technical infrastructure:
+
+- ✅ No more z-index conflicts — each toast is independently promoted to the browser Top Layer
+- ✅ Focus is returned to the triggering element when a toast is closed by the user
+- ✅ Auto-fired toasts (where the user never focused into the toast) do not disrupt existing focus
+
+The structural accessibility problems remain unresolved:
+
+- ❌ SC 2.2.1 — auto-dismiss timing
+- ❌ SC 4.1.3 — ARIA live region inconsistencies across browser/screen reader combinations
+- ❌ SC 2.1.1 — keyboard race condition against the timer
+- ❌ Visibility under screen magnification
+
+#### How leading design systems decide
+
+| Design system              | Decision                                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **GOV.UK Design System**   | No toast — Notification Banner (persistent) instead                                                                                                                      |
+| **U.S. Web Design System** | No toast — Alert + Site Alert instead                                                                                                                                    |
+| **GitHub Primer**          | Toast officially banned after moderated usability tests with disabled users: "The tests showed significant problems that cannot be addressed with a sprinkling of ARIA." |
+| **Adobe Spectrum**         | Toast with strict constraints: min. 5 s timeout, pause on hover/focus, F6 landmark navigation                                                                            |
+| **Carbon (IBM) v11**       | Split into non-interactive (`role="status"`) and interactive (`role="alertdialog"` with full focus management)                                                           |
+
+#### References
+
+- [Adrian Roselli — Defining Toast Messages](https://adrianroselli.com/2020/01/defining-toast-messages.html) — analysis of ~50 implementations, none passed a full WCAG audit
+- [Scott O'Hara — A Toast to Accessibility](https://www.scottohara.me/blog/2019/07/08/a-toast-to-a11y-toasts.html)
+- [Sara Soueidan — Accessible Notifications with ARIA Live Regions (Part 2)](https://www.sarasoueidan.com/blog/accessible-notifications-with-aria-live-regions-part-2/)
+- [Adam Silver — Can you make toast messages accessible?](https://adamsilver.io/blog/can-you-make-toast-messages-accessible/)
+- [GitHub Primer — Accessible Notifications and Messages](https://primer.style/accessibility/patterns/accessible-notifications-and-messages/)
+- [TetraLogical — Why are my live regions not working?](https://tetralogical.com/blog/2024/05/01/why-are-my-live-regions-not-working/)
+- [W3C WCAG Understanding 2.2.1 — Timing Adjustable](https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html)
+- [W3C WCAG Working Group Issue #1814](https://github.com/w3c/wcag/issues/1814)
+- [Carbon Design System — Notification Pattern](https://carbondesignsystem.com/patterns/notification-pattern/)

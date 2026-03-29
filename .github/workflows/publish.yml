@@ -43,7 +43,7 @@ jobs:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: app-token
         with:
           app-id: ${{ secrets.APP_ID }}
@@ -62,11 +62,11 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         id: pnpm-install
         with:
           version: 10
@@ -205,12 +205,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
-      # - name: Build and publish theme kern
-      #   run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-      #   working-directory: packages/themes/kern
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-      #     NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme kern
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/kern
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme bwst
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/bwst
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes
@@ -232,7 +238,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://npm.pkg.github.com
 
       - name: Publish sample react

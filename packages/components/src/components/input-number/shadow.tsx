@@ -31,13 +31,16 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { KolIconFc } from '../../functional-components';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Number** input type creates an input field for numeric values. Use the `_min`, `_max`, and `_step` properties to restrict the accepted value range.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-number',
@@ -50,7 +53,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -68,12 +71,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {
@@ -136,7 +134,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'number',
 			...this.controller.onFacade,
@@ -176,7 +174,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="kolicon-plus" label="" />
+				<IconFC icons="kolicon-plus" label="" />
 			</button>
 		);
 	}
@@ -203,7 +201,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
-				<KolIconFc icons="kolicon-minus" label="" />
+				<IconFC icons="kolicon-minus" label="" />
 			</button>
 		);
 	}

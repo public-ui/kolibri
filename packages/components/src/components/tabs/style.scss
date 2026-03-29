@@ -1,9 +1,11 @@
 @use '../@shared/mixins' as *;
-@use '../../styles/global' as *;
+@use '../@shared/global' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style.scss' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
+	@include kol-icon-styles();
 	.kol-tabs {
 		display: var(--display);
 		grid-template-columns: var(--grid-template-columns);

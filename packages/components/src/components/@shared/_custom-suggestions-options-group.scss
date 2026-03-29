@@ -1,0 +1,21 @@
+@use 'mixins' as *;
+
+@mixin kol-custom-suggestions-options-group {
+	.kol-custom-suggestions-options-group {
+		background-color: white;
+		display: block;
+		position: absolute;
+		z-index: 2;
+		max-height: to-rem(250);
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		list-style-type: none;
+	}
+
+	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
+	.kol-input-container:has(.kol-custom-suggestions-options-group--open) {
+		z-index: 10;
+	}
+}

@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -9,10 +9,12 @@ import KolInputStateWrapperFc from '../../functional-component-wrappers/InputSta
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
+	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -33,10 +35,11 @@ import type {
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { ComboboxController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-combobox',
@@ -45,8 +48,8 @@ import { ComboboxController } from './controller';
 	},
 	shadow: true,
 })
-export class KolCombobox implements ComboboxAPI {
-	@Element() private readonly host?: HTMLElement;
+export class KolCombobox implements ComboboxAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolComboboxElement;
 	private refInput?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
@@ -66,12 +69,7 @@ export class KolCombobox implements ComboboxAPI {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInput?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
 	private toggleListbox = () => {
@@ -92,7 +90,7 @@ export class KolCombobox implements ComboboxAPI {
 			}
 		}
 	};
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
 	};
 
@@ -223,7 +221,7 @@ export class KolCombobox implements ComboboxAPI {
 		const isDisabled = this.state._disabled === true;
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			class: 'kol-combobox__input',
 			type: 'text',
@@ -284,9 +282,9 @@ export class KolCombobox implements ComboboxAPI {
 								}}
 							/>
 						)}
-						<KolIconTag
-							_icons="kolicon-chevron-down"
-							_label=""
+						<IconFC
+							icons="kolicon-chevron-down"
+							label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,
 							})}

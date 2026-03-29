@@ -1,0 +1,35 @@
+@use '~@public-ui/components/index' as *;
+
+@mixin kol-field-control-theme {
+	.kol-field-control {
+		&__hint {
+			color: var(--color-black-70);
+
+			font-size: to-rem(14.4);
+		}
+
+		&__label-text {
+			color: var(--kern-color-layout-text-default);
+			flex-flow: row;
+
+			font-size: var(--kern-typography-font-size-static-medium);
+			font-weight: var(--kern-typography-font-weight-medium);
+			line-height: var(--kern-typography-line-height-static-medium);
+			letter-spacing: var(--kern-metric-space-none);
+		}
+
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+	}
+}

@@ -29,11 +29,14 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRangeController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabeelements.
+ * The **Range** input type creates a slider control for selecting a numeric value within a defined range. Use the `_min`, `_max`, and `_step` properties to configure the range and step size.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-range',
@@ -52,15 +55,10 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInputNumber?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
 	}
 
-	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
+	private readonly setInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
 			if (!this._value && this.refInputNumber?.value) {
@@ -69,7 +67,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		}
 	};
 
-	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
+	private readonly setInputRangeRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputRange = element;
 		}
@@ -179,7 +177,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			tabIndex: -1,
 			id: undefined,
 			'aria-hidden': 'true',
-			ref: this.catchInputRangeRef,
+			ref: this.setInputRangeRef,
 		};
 	}
 
@@ -189,7 +187,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			name: this.state._name ? `${this.state._name}-number` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			type: 'number',
-			ref: this.catchInputNumberRef,
+			ref: this.setInputNumberRef,
 			onKeyDown: this.onKeyDown,
 		};
 	}

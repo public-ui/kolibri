@@ -1,0 +1,34 @@
+@use '~@public-ui/components/index' as *;
+@use './button.mixin' as *;
+@use './select.mixin' as *;
+
+@mixin pagination {
+	.kol-pagination {
+		@include button('kol-button');
+		@include kol-select();
+
+		display: flex;
+		gap: to-rem(16);
+
+		&__navigation-list {
+			gap: to-rem(8);
+		}
+
+		&__button--selected .kol-button--normal:disabled {
+			--button-text-background-color: var(--kern-color-action-default);
+			--button-text-border-color: var(--kern-color-action-default);
+			--button-text-color: var(--kern-color-action-on-default);
+			--button-badge-color: var(--button-text-background-color);
+
+			opacity: 1;
+		}
+
+		&__separator {
+			color: var(--kern-color-action-default);
+		}
+
+		.kol-form-field {
+			align-items: center;
+		}
+	}
+}

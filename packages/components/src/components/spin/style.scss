@@ -1,5 +1,5 @@
 @use '../@shared/mixins' as *;
-@use '../../styles/global' as *;
+@use '../@shared/global' as *;
 @use './cycle' as *;
 @use './dot' as *;
 
@@ -8,7 +8,6 @@
 		&__spinner {
 			display: block;
 			position: relative;
-			padding: to-rem(2);
 		}
 	}
 }

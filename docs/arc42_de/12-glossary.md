@@ -221,48 +221,48 @@ Offizielle Spezifikation vom W3C. KoliBri auf Webstandards für Langlebigkeit ge
 
 ## Abkürzungen
 
-| Abkürzung | Vollständiger Begriff |
-|--------------|-----------|
-| A11y | Accessibility (Barrierefreiheit) |
-| API | Application Programming Interface |
-| ARIA | Accessible Rich Internet Applications |
-| BEM | Block Element Modifier |
-| BITV | Barrierefreie-Informationstechnik-Verordnung |
-| CDN | Content Delivery Network |
-| CI/CD | Continuous Integration / Continuous Deployment |
-| CJS | CommonJS |
-| CLI | Command Line Interface |
-| CSP | Content Security Policy |
-| CSS | Cascading Style Sheets |
-| DOM | Document Object Model |
-| DX | Developer Experience |
-| E2E | End-to-End |
-| ES | ECMAScript |
-| ESM | ES Modules |
-| EUPL | European Union Public License |
-| HTML | HyperText Markup Language |
-| i18n | Internationalization (Internationalisierung) |
-| IDE | Integrated Development Environment |
-| ITZBund | Informationstechnikzentrum Bund |
-| JSX | JavaScript XML |
-| LTS | Long-Term Support |
-| MCP | Model Context Protocol |
-| npm | Node Package Manager |
-| OIDC | OpenID Connect |
-| pnpm | Performant npm |
-| PR | Pull Request |
-| RTL | Right-to-Left |
-| SASS | Syntactically Awesome Style Sheets |
-| SemVer | Semantic Versioning |
-| SLSA | Supply-chain Levels for Software Artifacts |
-| SPA | Single Page Application |
-| SSR | Server-Side Rendering |
-| STS | Short-Term Support |
-| UI | User Interface |
-| UX | User Experience |
-| W3C | World Wide Web Consortium |
-| WCAG | Web Content Accessibility Guidelines |
-| XSS | Cross-Site Scripting |
+| Abkürzung | Vollständiger Begriff                          |
+| --------- | ---------------------------------------------- |
+| A11y      | Accessibility (Barrierefreiheit)               |
+| API       | Application Programming Interface              |
+| ARIA      | Accessible Rich Internet Applications          |
+| BEM       | Block Element Modifier                         |
+| BITV      | Barrierefreie-Informationstechnik-Verordnung   |
+| CDN       | Content Delivery Network                       |
+| CI/CD     | Continuous Integration / Continuous Deployment |
+| CJS       | CommonJS                                       |
+| CLI       | Command Line Interface                         |
+| CSP       | Content Security Policy                        |
+| CSS       | Cascading Style Sheets                         |
+| DOM       | Document Object Model                          |
+| DX        | Developer Experience                           |
+| E2E       | End-to-End                                     |
+| ES        | ECMAScript                                     |
+| ESM       | ES Modules                                     |
+| EUPL      | European Union Public License                  |
+| HTML      | HyperText Markup Language                      |
+| i18n      | Internationalization (Internationalisierung)   |
+| IDE       | Integrated Development Environment             |
+| ITZBund   | Informationstechnikzentrum Bund                |
+| JSX       | JavaScript XML                                 |
+| LTS       | Long-Term Support                              |
+| MCP       | Model Context Protocol                         |
+| npm       | Node Package Manager                           |
+| OIDC      | OpenID Connect                                 |
+| pnpm      | Performant npm                                 |
+| PR        | Pull Request                                   |
+| RTL       | Right-to-Left                                  |
+| SASS      | Syntactically Awesome Style Sheets             |
+| SemVer    | Semantic Versioning                            |
+| SLSA      | Supply-chain Levels for Software Artifacts     |
+| SPA       | Single Page Application                        |
+| SSR       | Server-Side Rendering                          |
+| STS       | Short-Term Support                             |
+| UI        | User Interface                                 |
+| UX        | User Experience                                |
+| W3C       | World Wide Web Consortium                      |
+| WCAG      | Web Content Accessibility Guidelines           |
+| XSS       | Cross-Site Scripting                           |
 
 ## Komponentenbenennung
 
@@ -286,25 +286,25 @@ Komponenten-Properties sind mit Unterstrich präfixiert, um Konflikte mit native
 
 ## Dateiendungen
 
-| Endung | Zweck |
-|-----------|---------|
-| `.tsx` | TypeScript mit JSX (Komponenten-Dateien) |
-| `.ts` | TypeScript (Utilities, Typen) |
-| `.scss` | SASS-Stylesheet |
-| `.css` | CSS-Stylesheet |
-| `.spec.ts` | Unit-Test-Datei |
-| `.e2e.ts` | E2E-Test-Datei |
-| `.md` | Markdown-Dokumentation |
+| Endung     | Zweck                                    |
+| ---------- | ---------------------------------------- |
+| `.tsx`     | TypeScript mit JSX (Komponenten-Dateien) |
+| `.ts`      | TypeScript (Utilities, Typen)            |
+| `.scss`    | SASS-Stylesheet                          |
+| `.css`     | CSS-Stylesheet                           |
+| `.spec.ts` | Unit-Test-Datei                          |
+| `.e2e.ts`  | E2E-Test-Datei                           |
+| `.md`      | Markdown-Dokumentation                   |
 
 ## Paket-Scopes
 
-| Scope | Zweck |
-|-------|---------|
-| `@public-ui/components` | Kern-Komponenten-Bibliothek |
-| `@public-ui/theme-*` | Theme-Pakete |
-| `@public-ui/react` | React-Adapter |
-| `@public-ui/angular-*` | Angular-Adapter |
-| `@public-ui/vue` | Vue-Adapter |
-| `@public-ui/solid` | Solid-Adapter |
-| `@public-ui/svelte` | Svelte-Adapter |
-| `@public-ui/kolibri-cli` | Migrations-CLI-Tool |
+| Scope                    | Zweck                       |
+| ------------------------ | --------------------------- |
+| `@public-ui/components`  | Kern-Komponenten-Bibliothek |
+| `@public-ui/theme-*`     | Theme-Pakete                |
+| `@public-ui/react`       | React-Adapter               |
+| `@public-ui/angular-*`   | Angular-Adapter             |
+| `@public-ui/vue`         | Vue-Adapter                 |
+| `@public-ui/solid`       | Solid-Adapter               |
+| `@public-ui/svelte`      | Svelte-Adapter              |
+| `@public-ui/kolibri-cli` | Migrations-CLI-Tool         |

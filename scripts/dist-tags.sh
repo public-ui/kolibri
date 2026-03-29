@@ -14,8 +14,10 @@ npm dist-tag $1 @public-ui/svelte@$2 $3
 npm dist-tag $1 @public-ui/vue@$2 $3
 npm dist-tag $1 @public-ui/components@$2 $3
 npm dist-tag $1 @public-ui/sample-react@$2 $3
+npm dist-tag $1 @public-ui/theme-bwst@$2 $3
 npm dist-tag $1 @public-ui/theme-default@$2 $3
 npm dist-tag $1 @public-ui/theme-ecl@$2 $3
 npm dist-tag $1 @public-ui/theme-kern@$2 $3
+npm dist-tag $1 @public-ui/stylelint-rules@$2 $3
 npm dist-tag $1 @public-ui/themes@$2 $3
 npm dist-tag $1 @public-ui/visual-tests@$2 $3

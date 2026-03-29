@@ -26,7 +26,7 @@ export const PerformanceTest: FC = () => {
 			case 'checkbox':
 				return <KolInputCheckbox key={idx} _label={`Checkbox #${idx}`} />;
 			case 'skeleton':
-				return <KolSkeleton key={idx} _count={3} _name={`skeleton-${idx}`} />;
+				return <KolSkeleton key={idx} _name={`skeleton-${idx}`} />;
 			default:
 				return null;
 		}

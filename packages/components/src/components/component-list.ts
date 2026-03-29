@@ -15,8 +15,8 @@ import { KolDialogWc } from './dialog/component';
 import { KolDialog } from './dialog/shadow';
 import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
-import { KolHeading } from './heading/shadow';
-import { KolIcon } from './icon/shadow';
+import { KolHeading } from './heading/component';
+import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';
 import { KolInputCheckbox } from './input-checkbox/shadow';
 import { KolInputColor } from './input-color/shadow';
@@ -36,7 +36,6 @@ import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
 import { KolPopoverButton } from './popover-button/shadow';
-import { KolPopover } from './popover/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
@@ -93,7 +92,6 @@ export const COMPONENTS = [
 	KolModal,
 	KolNav,
 	KolPagination,
-	KolPopover,
 	KolProgress,
 	KolPopoverButton,
 	KolQuote,

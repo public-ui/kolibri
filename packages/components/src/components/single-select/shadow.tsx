@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	DisabledPropType,
+	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -24,7 +25,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { KolButtonWcTag, KolIconTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -33,13 +34,17 @@ import KolInputStateWrapperFc from '../../functional-component-wrappers/InputSta
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { SingleSelectController } from './controller';
 
 /**
- * @slot - The input field label.
+ * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-single-select',
@@ -48,8 +53,8 @@ import { SingleSelectController } from './controller';
 	},
 	shadow: true,
 })
-export class KolSingleSelect implements SingleSelectAPI {
-	@Element() private readonly host?: HTMLElement;
+export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
@@ -72,15 +77,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInput?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setRefInput = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
 	};
 
@@ -308,7 +308,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			disabled: isDisabled,
 			name: this.state._name,
 			placeholder: this.state._placeholder,
-			ref: this.catchRef,
+			ref: this.setRefInput,
 			required: this.state._required,
 			role: 'combobox',
 			state: this.state,
@@ -356,9 +356,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 							/>
 						)}
 
-						<KolIconTag
-							_icons="kolicon-chevron-down"
-							_label=""
+						<IconFC
+							icons="kolicon-chevron-down"
+							label=""
 							class={clsx('kol-custom-suggestions-toggle', {
 								'kol-custom-suggestions-toggle--disabled': isDisabled,
 							})}
@@ -572,7 +572,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames (e.g. `icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
 

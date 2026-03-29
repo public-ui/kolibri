@@ -55,6 +55,9 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	maximumFractionDigits: 0,
 });
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-pagination-wc',
 	shadow: false,
@@ -128,7 +131,6 @@ export class KolPaginationWc implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="kol-pagination__button kol-pagination__button--first"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
 									_icons={leftDoubleArrowIcon}
@@ -143,7 +145,6 @@ export class KolPaginationWc implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="kol-pagination__button kol-pagination__button--previous"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
 									_icons={leftSingleArrow}
@@ -159,7 +160,6 @@ export class KolPaginationWc implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="kol-pagination__button kol-pagination__button--next"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
 									_icons={rightSingleArrowIcon}
@@ -174,7 +174,6 @@ export class KolPaginationWc implements PaginationAPI {
 							<li>
 								<KolButtonWcTag
 									class="kol-pagination__button kol-pagination__button--last"
-									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
 									_icons={rightDoubleArrowIcon}

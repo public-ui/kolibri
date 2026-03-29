@@ -1,11 +1,10 @@
 @use '../@shared/mixins' as *;
-@use '../../styles/global' as *;
+@use '../@shared/global' as *;
 
 @layer kol-component {
 	.kol-progress {
 		&__bar {
 			display: grid;
-			column-gap: 0.05rem;
 			align-items: center;
 			grid-template-areas:
 				'LABEL LABEL LABEL'

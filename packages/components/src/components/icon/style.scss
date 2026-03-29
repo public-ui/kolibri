@@ -1,14 +1,5 @@
-@use '../@shared/mixins' as *;
-@use '../../../assets/kolicons/style' as *;
+@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
-	/* :host implicitly inherits font-size, see below */
-	:host {
-		color: inherit;
-		display: contents;
-
-		font-size: inherit;
-		font-weight: inherit;
-		line-height: inherit;
-	}
+	@include kol-icon-styles();
 }

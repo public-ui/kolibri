@@ -488,32 +488,32 @@ Dieser Abschnitt identifiziert und bewertet potenzielle Risiken für das Public 
 
 ### Annahmen
 
-| Annahme | Auswirkung wenn falsch | Verifizierung |
-|-----------|----------------|--------------|
-| Web Components bleiben unterstützt | Projekt-Fundament gefährdet | W3C-Standards überwachen |
-| Stencil setzt Entwicklung fort | Build-System gefährdet | Stencil-Releases überwachen |
-| npm bleibt primäre Distribution | Distributions-Unterbrechung | Paket-Registry-Alternativen |
-| Moderne Browser halten Kompatibilität | Breaking Changes benötigt | Browser-Releases überwachen |
-| Community wächst weiter | Projekt-Nachhaltigkeit | GitHub-Metriken verfolgen |
+| Annahme                               | Auswirkung wenn falsch      | Verifizierung               |
+| ------------------------------------- | --------------------------- | --------------------------- |
+| Web Components bleiben unterstützt    | Projekt-Fundament gefährdet | W3C-Standards überwachen    |
+| Stencil setzt Entwicklung fort        | Build-System gefährdet      | Stencil-Releases überwachen |
+| npm bleibt primäre Distribution       | Distributions-Unterbrechung | Paket-Registry-Alternativen |
+| Moderne Browser halten Kompatibilität | Breaking Changes benötigt   | Browser-Releases überwachen |
+| Community wächst weiter               | Projekt-Nachhaltigkeit      | GitHub-Metriken verfolgen   |
 
 ### Kritische Abhängigkeiten
 
-| Abhängigkeit | Zweck | Risiko-Mitigierung |
-|-----------|---------|-----------------|
-| **Stencil.js** | Komponenten-Kompilierung | Aktives Monitoring, Fork-Plan |
-| **TypeScript** | Typsystem | Gut gewartet von Microsoft |
-| **pnpm** | Paketmanagement | Könnte bei Bedarf zu npm wechseln |
-| **GitHub Actions** | CI/CD | Alternative CI-Plattformen verfügbar |
-| **npm Registry** | Distribution | Mehrere Registry-Optionen |
-| **@floating-ui/dom** | Positionierungslogik | Könnte Alternative implementieren |
-| **adopted-style-sheets** | Theming-Polyfill | Könnte bei Bedarf forken |
+| Abhängigkeit             | Zweck                    | Risiko-Mitigierung                   |
+| ------------------------ | ------------------------ | ------------------------------------ |
+| **Stencil.js**           | Komponenten-Kompilierung | Aktives Monitoring, Fork-Plan        |
+| **TypeScript**           | Typsystem                | Gut gewartet von Microsoft           |
+| **pnpm**                 | Paketmanagement          | Könnte bei Bedarf zu npm wechseln    |
+| **GitHub Actions**       | CI/CD                    | Alternative CI-Plattformen verfügbar |
+| **npm Registry**         | Distribution             | Mehrere Registry-Optionen            |
+| **@floating-ui/dom**     | Positionierungslogik     | Könnte Alternative implementieren    |
+| **adopted-style-sheets** | Theming-Polyfill         | Könnte bei Bedarf forken             |
 
 ### Externe Standards
 
-| Standard | Auswirkung | Monitoring |
-|----------|--------|-----------|
-| **WCAG** | Barrierefreiheits-Konformität | W3C WAI Arbeitsgruppe |
-| **BITV** | Deutsches Barrierefreiheitsgesetz | Regierungs-Updates |
-| **W3C Web Components** | Kern-Technologie | W3C WICG |
-| **ES Standards** | JavaScript-Features | TC39-Proposals |
-| **CSS Standards** | Styling-Fähigkeiten | W3C CSS WG |
+| Standard               | Auswirkung                        | Monitoring            |
+| ---------------------- | --------------------------------- | --------------------- |
+| **WCAG**               | Barrierefreiheits-Konformität     | W3C WAI Arbeitsgruppe |
+| **BITV**               | Deutsches Barrierefreiheitsgesetz | Regierungs-Updates    |
+| **W3C Web Components** | Kern-Technologie                  | W3C WICG              |
+| **ES Standards**       | JavaScript-Features               | TC39-Proposals        |
+| **CSS Standards**      | Styling-Fähigkeiten               | W3C CSS WG            |

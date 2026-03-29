@@ -1,5 +1,6 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
@@ -10,8 +11,8 @@ import { Log } from '../../../../schema';
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
-	private readonly ctrl = new SkeletonController(this);
+export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
+	private readonly ctrl = new SkeletonController(this.setState, this.getState);
 
 	/**
 	 * Focuses the interactive element of the component.
@@ -30,17 +31,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	/**
-	 * Sets the count of the skeleton component.
-	 */
-	@Prop()
-	public _count?: number | string;
-
-	@Watch('_count')
-	public watchCount(value?: number | string): void {
-		this.ctrl.watchCount(value);
-	}
-
-	/**
 	 * Sets the name of the skeleton component.
 	 */
 	@Prop()
@@ -52,13 +42,13 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	@State()
+	public count: number = 0;
+
+	@State()
 	public label: string = 'Label';
 
 	@State()
 	public show: boolean = true;
-
-	@State()
-	public count: number = 0;
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
@@ -85,7 +75,6 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
-			count: this._count,
 			name: this._name,
 		});
 
@@ -106,18 +95,16 @@ export class KolSkeleton implements WebComponentInterface<SkeletonApi> {
 	}
 
 	public render(): JSX.Element {
-		const { count, name } = this.ctrl.getProps();
-		const { label, show } = this;
 		return (
 			<Host>
 				<SkeletonFC
-					count={count}
-					label={label}
-					name={name}
+					count={this.count}
+					label={this.label}
+					name={this.ctrl.getRenderProp('name')}
 					handleClick={() => this.ctrl.handleClick()}
 					onLoaded={this.loaded}
 					onRendered={this.rendered}
-					show={show}
+					show={this.show}
 					refButton={(element) => this.ctrl.setButtonRef(element)}
 				/>
 			</Host>

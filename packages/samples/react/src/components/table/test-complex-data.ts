@@ -275,3 +275,14 @@ export const COMPLEX_DATA: ComplexData[] = Array.from({ length: 200 }, (_, index
 		...species,
 	};
 });
+
+export function configurableData(size: number): ComplexData[] {
+	return Array.from({ length: size }, (_, index) => {
+		const species = SPECIES[index % SPECIES.length];
+
+		return {
+			id: index + 1,
+			...species,
+		};
+	});
+}

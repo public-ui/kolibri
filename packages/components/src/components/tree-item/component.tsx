@@ -1,21 +1,26 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolIconTag, KolLinkWcTag, KolTreeTag } from '../../core/component-names';
+import { KolLinkWcTag, KolTreeTag } from '../../core/component-names';
+import { IconFC } from '../../internal/functional-components/icon/component';
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: `kol-tree-item-wc`,
 	shadow: false,
 })
 export class KolTreeItemWc implements TreeItemAPI {
+	@Element() private readonly host?: HTMLKolTreeItemWcElement;
+
 	private linkElement?: HTMLKolLinkWcElement;
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
-	@Element() host!: HTMLElement;
 
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
@@ -47,10 +52,10 @@ export class KolTreeItemWc implements TreeItemAPI {
 									class="kol-tree-item__toggle-button"
 									onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}
 								>
-									<KolIconTag
+									<IconFC
 										class="kol-tree-item__toggle-button-icon"
-										_icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
-										_label={'' /* Label deliberately left empty */}
+										icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
+										label={'' /* Label deliberately left empty */}
 									/>
 								</span>
 							) : (
@@ -123,7 +128,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private determineTreeItemDepth() {
 		let level = 0;
-		let traverseItem: HTMLElement | null = (this.host.parentNode as unknown as ShadowRoot).host.parentNode as HTMLElement;
+		let traverseItem: HTMLElement | null = (this.host?.parentNode as unknown as ShadowRoot)?.host.parentNode as HTMLElement;
 		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== KolTreeTag && traverseItem !== document.body) {
 			traverseItem = traverseItem.parentElement;
 			level += 1;
@@ -138,20 +143,48 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private checkForChildren() {
 		this.state = {
 			...this.state,
-			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements?.().length),
+			_hasChildren: Boolean(this.host?.querySelector('slot')?.assignedElements?.().length),
 		};
+	}
+
+	private getTreeParent(): (HTMLKolTreeWcElement & { invalidateOpenItemsCache(): void }) | undefined {
+		// Traverse up through shadow boundaries manually
+		let element: Element | null | undefined = this.host;
+		while (element) {
+			// Try closest in current DOM tree
+			const parent = element.closest(KolTreeTag);
+			if (parent) {
+				// Found kol-tree (shadow wrapper), now find kol-tree-wc in its shadow DOM
+				const treeWc = parent.shadowRoot?.querySelector('kol-tree-wc');
+				if (treeWc) {
+					return treeWc as HTMLKolTreeWcElement & { invalidateOpenItemsCache(): void };
+				}
+				return undefined;
+			}
+			// Cross shadow boundary: go to shadow host, then to its parent
+			const shadowHost: Element | undefined = (element.getRootNode() as ShadowRoot)?.host;
+			if (!shadowHost || shadowHost === document.body) {
+				break;
+			}
+			element = shadowHost.parentElement;
+		}
+		return undefined;
 	}
 
 	/**
 	 * Focuses the link element.
 	 */
 	@Method() async focus() {
-		return Promise.resolve(this.linkElement?.focus());
+		if (this.host && this.linkElement) {
+			return Promise.resolve(this.linkElement.focus());
+		}
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.linkElement?.focus();
+		if (this.host && this.linkElement) {
+			await this.linkElement.focus();
+		}
 		await this.expand();
 	}
 
@@ -166,12 +199,16 @@ export class KolTreeItemWc implements TreeItemAPI {
 				...this.state,
 				_open: true,
 			};
+			// Invalidate the tree's cache of open items
+			void this.getTreeParent()?.invalidateOpenItemsCache?.();
 		}
 	}
 
 	private async handleCollapseClick(event: MouseEvent) {
 		event.preventDefault();
-		await this.linkElement?.focus();
+		if (this.host && this.linkElement) {
+			await this.linkElement.focus();
+		}
 		await this.collapse();
 	}
 
@@ -186,6 +223,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 				...this.state,
 				_open: false,
 			};
+			// Invalidate the tree's cache of open items
+			void this.getTreeParent()?.invalidateOpenItemsCache?.();
 		}
 	}
 

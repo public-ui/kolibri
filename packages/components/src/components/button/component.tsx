@@ -52,10 +52,11 @@ import {
 import { validateTabIndex } from '../../schema/props/tab-index';
 
 import { KolTooltipWcTag } from '../../core/component-names';
-import { KolSpanFc } from '../../functional-components';
+import { SpanFC } from '../../internal/functional-components/span/component';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
+import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -76,20 +77,25 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.buttonRef?.focus();
-				resolve();
-			});
-		});
+	public async focus(): Promise<void> {
+		return setFocus(this.buttonRef!);
 	}
+
+	private readonly setButtonRef = (ref?: HTMLButtonElement) => {
+		this.buttonRef = ref;
+	};
+
+	private readonly setTooltipRef = (ref?: HTMLKolTooltipWcElement) => {
+		this.tooltipRef = ref;
+	};
 
 	private readonly hideTooltip = () => {
 		void this.tooltipRef?.hideTooltip();
 	};
 
 	private readonly onClick = (event: MouseEvent) => {
+		event.stopPropagation();
+
 		if (this.state._hideLabel) {
 			void this.hideTooltip();
 		}
@@ -137,7 +143,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		return (
 			<Host>
 				<button
-					ref={(ref) => (this.buttonRef = ref)}
+					ref={this.setButtonRef}
 					accessKey={this.state._accessKey}
 					aria-controls={this.state._ariaControls}
 					aria-description={ariaDescription || undefined}
@@ -152,8 +158,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 						'kol-button--inline': this.state._inline === true,
 						'kol-button--standalone': this.state._inline === false,
 						'kol-button--hide-label': hideLabel,
-						[this.state._customClass as string]:
-							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
 					disabled={isDisabled}
 					id={this.state._id}
@@ -164,19 +169,13 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<KolSpanFc
-						class="kol-button__text"
-						badgeText={badgeText}
-						icons={this.state._icons}
-						hideLabel={hideLabel}
-						label={hasExpertSlot ? '' : this.state._label}
-					>
+					<SpanFC class="kol-button__text" badgeText={badgeText} icons={this.state._icons} hideLabel={hideLabel} label={hasExpertSlot ? '' : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanFc>
+					</SpanFC>
 				</button>
 				{hideLabel && (
 					<KolTooltipWcTag
-						ref={(ref) => (this.tooltipRef = ref)}
+						ref={this.setTooltipRef}
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.

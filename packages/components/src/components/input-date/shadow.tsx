@@ -34,11 +34,14 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputDateController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-date',
@@ -53,7 +56,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	@State() private _initialValueType: 'Date' | 'String' | null = null;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -71,12 +74,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -172,7 +170,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,

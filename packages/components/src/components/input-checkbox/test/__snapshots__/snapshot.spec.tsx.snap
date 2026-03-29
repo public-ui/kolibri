@@ -7,16 +7,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -34,15 +41,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -60,15 +72,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--disabled kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -86,15 +103,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -115,15 +137,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -141,15 +168,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -167,15 +199,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -193,15 +230,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -219,15 +261,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -245,15 +292,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -271,16 +323,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -298,15 +357,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -324,15 +388,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -351,16 +420,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -378,14 +454,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -404,14 +485,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--disabled kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -430,14 +516,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -459,14 +550,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -485,14 +581,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -511,14 +612,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -537,14 +643,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -563,14 +674,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -589,14 +705,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -615,16 +736,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -642,14 +770,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--touched kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -668,14 +801,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -694,16 +832,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -721,14 +866,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -747,14 +897,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--disabled kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -773,14 +928,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -802,14 +962,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -828,14 +993,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -854,14 +1024,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -880,14 +1055,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -906,14 +1086,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -932,14 +1117,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -958,16 +1148,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -985,14 +1182,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--touched kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1011,14 +1213,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-cross" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1036,16 +1243,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1063,15 +1277,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1089,15 +1308,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1115,15 +1339,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1144,15 +1373,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1170,15 +1404,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1196,15 +1435,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1222,15 +1466,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1248,15 +1497,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1274,15 +1528,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1300,16 +1559,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1327,15 +1593,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1353,15 +1624,20 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
@@ -1380,16 +1656,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -1407,14 +1690,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1433,14 +1721,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1459,14 +1752,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1488,14 +1786,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1514,14 +1817,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1540,14 +1848,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1566,14 +1879,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1592,14 +1910,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1618,14 +1941,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1644,16 +1972,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -1671,14 +2006,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1697,14 +2037,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1723,16 +2068,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -1750,14 +2102,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1776,14 +2133,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1802,14 +2164,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1831,14 +2198,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1857,14 +2229,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1883,14 +2260,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1909,14 +2291,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1935,14 +2322,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1961,14 +2353,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -1987,16 +2384,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -2014,14 +2418,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--touched kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2040,14 +2449,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2066,16 +2480,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -2093,14 +2514,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2119,14 +2545,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2145,14 +2576,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2174,14 +2610,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2200,14 +2641,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2226,14 +2672,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2252,14 +2703,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2278,14 +2734,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2304,14 +2765,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2330,16 +2796,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -2357,14 +2830,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--touched kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2383,14 +2861,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
-              <kol-icon _icons="kolicon-check" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2409,16 +2892,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                V
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -2436,14 +2926,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2462,14 +2957,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--disabled kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2488,14 +2988,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2517,14 +3022,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2543,14 +3053,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2569,14 +3084,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2595,14 +3115,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--indeterminate kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input aria-describedby="id-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2621,14 +3146,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2647,14 +3177,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2673,16 +3208,23 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              Label
-              <kbd aria-hidden="true" class="badge-text-hint">
-                S
-              </kbd>
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
             </span>
           </label>
         </div>
@@ -2700,14 +3242,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--touched kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>
@@ -2726,14 +3273,19 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
-              <kol-icon _icons="kolicon-minus" _label="" class="kol-checkbox__icon"></kol-icon>
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
-            <span class="kol-field-control__label-text">
-              <span>
-                Label
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert"></slot>
+                </span>
               </span>
             </span>
           </label>

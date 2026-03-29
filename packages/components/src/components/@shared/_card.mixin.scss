@@ -1,0 +1,38 @@
+@use 'mixins' as *;
+@use 'button.mixin' as *;
+@use 'icon.mixin' as *;
+
+@mixin kol-card {
+	@include kol-icon-styles();
+
+	.kol-card {
+		@include kol-button-styles('kol-button');
+
+		/* Visible with forced colors  */
+		outline: transparent solid to-rem(1);
+
+		display: grid;
+		height: 100%;
+		overflow: visible;
+
+		grid-template-areas:
+			'header  close'
+			'content content';
+		grid-template-columns: 1fr min-content;
+		grid-template-rows: min-content 1fr;
+
+		&__header {
+			align-self: start;
+			grid-area: header;
+		}
+
+		&__content {
+			align-self: stretch;
+			grid-area: content;
+		}
+
+		&__close-button {
+			grid-area: close;
+		}
+	}
+}

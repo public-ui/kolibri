@@ -24,14 +24,16 @@ Annahmen:
 ## Pattern 1: `new` pro Web Component (Aktuell) ✅
 
 ```typescript
-// Web Component (without reactive state):
-export class KolClickButton {
-	private readonly ctrl = new ClickButtonController(); // ✅ 1× pro WC-Instanz, default states
+// Web Component:
+// All controllers receive setState and getState from BaseWebComponent.
+export class KolClickButton extends BaseWebComponent<ClickButtonApi> {
+	private readonly ctrl = new ClickButtonController(this.setState, this.getState); // ✅ 1× pro WC-Instanz
 }
 
 // Web Component (with reactive @State fields):
-export class KolSkeleton {
-	private readonly ctrl = new SkeletonController(this); // ✅ passes WC for setState() reactivity
+// setState and getState are pre-bound by BaseWebComponent and passed to the controller.
+export class KolSkeleton extends BaseWebComponent<SkeletonApi> {
+	private readonly ctrl = new SkeletonController(this.setState, this.getState); // ✅ übergibt setState/getState-Callbacks
 }
 ```
 
@@ -365,13 +367,13 @@ const LABEL_CACHE = new Map<string, LabelPropType>();
 
 public watchLabel(value?: LabelPropType): void {
   if (LABEL_CACHE.has(value!)) {
-    this.setProp('label', LABEL_CACHE.get(value!)!);
+    this.setRenderProp('label', LABEL_CACHE.get(value!)!);
     return;
   }
   // Teuer Validierung
   const normalized = labelProp.normalize(value);
   LABEL_CACHE.set(value!, normalized);
-  this.setProp('label', normalized);
+  this.setRenderProp('label', normalized);
 }
 ```
 

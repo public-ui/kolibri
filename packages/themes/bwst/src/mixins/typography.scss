@@ -1,0 +1,32 @@
+@use '../mixins/to-rem' as *;
+
+@mixin kol-typography-body {
+	font-size: to-rem(16);
+	line-height: 1.5;
+}
+
+@mixin kol-typography-h1 {
+	font-size: to-rem(24);
+	line-height: 1.667;
+}
+
+@mixin kol-typography-h2 {
+	font-size: to-rem(20);
+	line-height: 1.4;
+}
+
+@mixin kol-typography-h3 {
+	font-size: to-rem(18);
+	line-height: 1.333;
+}
+
+@mixin kol-typography-accordion {
+	font-size: to-rem(18);
+	font-weight: 700;
+	line-height: 1.1;
+}
+
+@mixin kol-typography-hint {
+	font-size: to-rem(14.4);
+	font-style: italic;
+}

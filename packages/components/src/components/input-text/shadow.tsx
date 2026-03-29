@@ -36,11 +36,14 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
 /**
- * @slot - Die Beschriftung des Eingabefeldes.
+ * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
+ *
+ * @slot - The label of the input field.
  */
 @Component({
 	tag: 'kol-input-text',
@@ -54,7 +57,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private oldValue?: string;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -108,12 +111,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -179,7 +177,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,

@@ -36,14 +36,14 @@ jobs:
           ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Run security scans
         uses: public-ui/kolibri/.github/actions/security-scan@develop

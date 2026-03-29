@@ -1,5 +1,5 @@
 @use '../mixins/to-rem' as *;
-@use './alert-wc' as *;
+@use './alert' as *;
 @use './typography' as *;
 
 @mixin kol-form-field-theme {
@@ -14,8 +14,16 @@
 
 			.kol-form-field__msg {
 				&.kol-alert--type-error {
-					@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+					@include kol-input-error-with-kol-alert-error(--color-danger);
 				}
+			}
+		}
+
+		&__label {
+			display: flex;
+
+			&-text {
+				gap: 0;
 			}
 		}
 

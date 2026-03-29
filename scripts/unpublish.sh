@@ -1,7 +1,6 @@
-npm unpublish @public-ui/angular-v17@$1
-npm unpublish @public-ui/angular-v18@$1
 npm unpublish @public-ui/angular-v19@$1
 npm unpublish @public-ui/angular-v20@$1
+npm unpublish @public-ui/angular-v21@$1
 npm unpublish @public-ui/hydrate@$1
 npm unpublish @public-ui/kolibri-cli@$1
 npm unpublish @public-ui/mcp@$1
@@ -15,8 +14,10 @@ npm unpublish @public-ui/svelte@$1
 npm unpublish @public-ui/vue@$1
 npm unpublish @public-ui/components@$1
 npm unpublish @public-ui/sample-react@$1
+npm unpublish @public-ui/theme-bwst@$1
 npm unpublish @public-ui/theme-default@$1
 npm unpublish @public-ui/theme-ecl@$1
 npm unpublish @public-ui/theme-kern@$1
+npm unpublish @public-ui/stylelint-rules@$1
 npm unpublish @public-ui/themes@$1
 npm unpublish @public-ui/visual-tests@$1

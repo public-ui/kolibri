@@ -6,8 +6,12 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolIconTag, KolLinkWcTag } from '../../core/component-names';
+import { KolLinkWcTag } from '../../core/component-names';
+import { IconFC } from '../../internal/functional-components/icon/component';
 
+/**
+ * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.
+ */
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {
@@ -23,7 +27,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 				{index === lastIndex ? (
 					<span class="kol-breadcrumb__list-element-span" aria-current="page">
 						{link._hideLabel ? (
-							<KolIconTag class="kol-breadcrumb__icon" _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'} />
+							<IconFC class="kol-breadcrumb__icon" label={link._label} icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'} />
 						) : (
 							<>{link._label}</>
 						)}
@@ -31,7 +35,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 				) : (
 					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
 				)}
-				{index !== lastIndex && <KolIconTag class="kol-breadcrumb__separator" _label="" _icons="kolicon-chevron-right" />}
+				{index !== lastIndex && <IconFC class="kol-breadcrumb__separator" label="" icons="kolicon-chevron-right" />}
 			</li>
 		);
 	};
@@ -42,7 +46,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 				<ul class="kol-breadcrumb__list">
 					{this.state._links.length === 0 && (
 						<li>
-							<KolIconTag class="kol-breadcrumb_icon" _label="" _icons="kolicon-house" />…
+							<IconFC class="kol-breadcrumb_icon" label="" icons="kolicon-house" />…
 						</li>
 					)}
 					{this.state._links.map(this.renderLink)}

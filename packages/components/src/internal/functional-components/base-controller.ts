@@ -1,22 +1,38 @@
-import type { ComponentApi, InternalOf, ResolvedProps, StrictFields } from './generic-types';
+import type { ComponentApi, GetStateFn, PropsConfigShape, ResolvedInputProps, ResolvedProps, SetStateFn, StrictFields } from './generic-types';
 
-type InternalStates<Api extends ComponentApi> = InternalOf<NonNullable<Api['States']>>;
+function buildDefaultPropsFromConfig(config: PropsConfigShape): Record<string, unknown> {
+	const defaults: Record<string, unknown> = {};
+	for (const def of [...(config.required ?? []), ...(config.optional ?? [])]) {
+		defaults[def.propName] = def.getDefaultValue();
+	}
+	return defaults;
+}
 
 export abstract class BaseController<Api extends ComponentApi> {
+	private readonly rawProps: Partial<Record<string, unknown>> = {};
+	private readonly renderProps: StrictFields<ResolvedProps<Api>>;
+
 	public constructor(
-		protected readonly component: InternalStates<Api>,
-		private readonly props: StrictFields<ResolvedProps<Api>>,
-	) {}
-
-	protected setProp<K extends keyof ResolvedProps<Api>>(key: K, value: StrictFields<ResolvedProps<Api>>[K]): void {
-		this.props[key] = value;
+		propsConfig: PropsConfigShape,
+		protected readonly setState: SetStateFn<Api>,
+		protected readonly getState: GetStateFn<Api>,
+	) {
+		this.renderProps = buildDefaultPropsFromConfig(propsConfig) as StrictFields<ResolvedProps<Api>>;
 	}
 
-	public getProps(): StrictFields<ResolvedProps<Api>> {
-		return this.props;
+	protected setRawProp<K extends keyof ResolvedInputProps<Api>>(key: K, value: ResolvedInputProps<Api>[K] | undefined): void {
+		this.rawProps[key as string] = value;
 	}
 
-	protected setState<K extends keyof InternalStates<Api>>(key: K, value: InternalStates<Api>[K]): void {
-		(this.component as Record<string, unknown>)[key as string] = value;
+	protected getRawProp<K extends keyof ResolvedInputProps<Api>>(key: K): ResolvedInputProps<Api>[K] | undefined {
+		return this.rawProps[key as string] as ResolvedInputProps<Api>[K] | undefined;
+	}
+
+	protected setRenderProp<K extends keyof ResolvedProps<Api>>(key: K, value: StrictFields<ResolvedProps<Api>>[K]): void {
+		this.renderProps[key] = value;
+	}
+
+	public getRenderProp<K extends keyof ResolvedProps<Api>>(key: K): StrictFields<ResolvedProps<Api>>[K] {
+		return this.renderProps[key];
 	}
 }

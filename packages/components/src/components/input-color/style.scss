@@ -1,8 +1,8 @@
-@use '../../styles/global' as *;
-@use '../../styles/kol-alert-mixin' as *;
-@use '../../styles/kol-form-field-mixin' as *;
-@use '../../styles/kol-input-container-mixin' as *;
-@use '../../styles/kol-input-mixin' as *;
+@use '../@shared/global' as *;
+@use '../@shared/alert.mixin' as *;
+@use '../@shared/form-field.mixin' as *;
+@use '../@shared/input-container.mixin' as *;
+@use '../@shared/input.mixin' as *;
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
@@ -23,7 +23,6 @@
 
 		&__inputs-wrapper {
 			display: flex;
-			gap: to-rem(6) !important;
 			flex-direction: row;
 			align-items: center;
 		}

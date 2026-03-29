@@ -14,6 +14,7 @@ import type {
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -25,8 +26,11 @@ featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer n
 featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 /**
+ * The **Accordion** component is a collapsible menu. Clicking the header area — consisting of an icon and a heading — expands the content to reveal additional information. It is an interactive navigation element designed to present extensive content in a space-saving manner.
  *
- * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
+ * Accordions are used whenever content associated with a thematic heading needs to be shown or hidden. They allow more detailed information for a heading than would normally be practical, leaving it to the users to decide whether to view that information.
+ *
+ * @slot - Allows arbitrary HTML to be inserted into the content area of the accordion.
  */
 @Component({
 	tag: 'kol-accordion',
@@ -41,7 +45,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	private readonly nonce = nonce();
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
 
@@ -49,8 +53,8 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.buttonWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
 	}
 
 	private handleOnClick = (event: MouseEvent) => {
@@ -84,7 +88,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
 			HeadingButtonProps: {
-				ref: this.catchRef,
+				ref: this.setButtonWcRef,
 				class: `${rootClass}__heading-button`,
 			},
 			ContentProps: {
