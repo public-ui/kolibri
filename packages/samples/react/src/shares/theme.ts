@@ -10,8 +10,12 @@ export const UNSTYLED_THEME: Theme = {
 
 export const PUBLIC_THEMES: Theme[] = [
 	{
-		name: 'Default (Tested)',
+		name: 'Default',
 		key: 'default',
+	},
+	{
+		name: 'BWSt',
+		key: 'bwst',
 	},
 	{
 		name: 'European Commission (in progress)',

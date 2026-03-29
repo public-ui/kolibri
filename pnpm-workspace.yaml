@@ -12,6 +12,7 @@ packages:
   - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
+  - packages/themes/bwst
   - packages/themes/default
   - packages/themes/ecl
   - packages/themes/kern
@@ -22,3 +23,5 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
+overrides:
+  path-to-regexp@>=8.0.0 <8.4.0: '>=8.4.0'

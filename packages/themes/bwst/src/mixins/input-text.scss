@@ -1,0 +1,55 @@
+@use '../mixins/to-rem' as *;
+
+@mixin kol-input-text($clickable-classname: 'kol-input') {
+	.kol-input {
+		background-color: transparent;
+		height: to-rem(40);
+		padding: 0 to-rem(10);
+		border: none;
+
+		&::placeholder {
+			color: var(--color-subtle);
+		}
+	}
+
+	.kol-input-container {
+		position: relative;
+		padding: 0;
+		gap: 0;
+		grid-template-columns: auto max-content min-content;
+
+		&__adornment {
+			position: absolute;
+			top: to-rem(-2);
+
+			&--start {
+				left: 0;
+			}
+
+			&--end {
+				right: 0;
+			}
+		}
+
+		&:has(&__adornment--start:not(:empty)) .#{$clickable-classname} {
+			padding-left: to-rem(48);
+		}
+
+		&:has(&__adornment--start &__smart-button + &__icon) .#{$clickable-classname} {
+			padding-left: to-rem(76);
+		}
+
+		&:has(&__adornment--end:not(:empty)) .#{$clickable-classname} {
+			padding-right: to-rem(48);
+		}
+
+		&:has(&__adornment--end &__icon + &__smart-button) .#{$clickable-classname} {
+			padding-right: to-rem(76);
+		}
+
+		&__container {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
