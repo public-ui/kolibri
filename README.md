@@ -53,6 +53,10 @@ gantt
 
 ```
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/public-ui-kolibri).
+
 ## Installation
 
 Install the packages with [pnpm](https://pnpm.io):
