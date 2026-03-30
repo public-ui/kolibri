@@ -144,7 +144,7 @@
 		"stylelint": "17.6.0",
 		"terser": "5.46.1",
 		"twig": "1.17.1",
-		"typescript": "5.9.3"
+		"typescript": "6.0.2"
 	},
 	"peerDependencies": {
 		"adopted-style-sheets": "1.1.9-rc.21"

@@ -74,7 +74,7 @@
 		"mocha": "11.7.5",
 		"prettier": "3.8.1",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"typescript": "5.9.3",
+		"typescript": "6.0.2",
 		"unbuild": "3.6.1"
 	}
 }

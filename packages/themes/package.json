@@ -80,7 +80,7 @@
 		"rollup": "4.60.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.98.0",
-		"typescript": "5.9.3"
+		"typescript": "6.0.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"
