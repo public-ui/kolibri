@@ -60,7 +60,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-default', 'theme-kern']
+        package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-kern']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -78,6 +78,25 @@ jobs:
         if: failure()
         with:
           name: report-${{ matrix.package }}
+
+  # lighthouse:
+  #   continue-on-error: true
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v6
+  #       with:
+  #         persist-credentials: false
+  #     - uses: ./.github/actions/pnpm-setup
+  #     - name: Build dependencies
+  #       run: pnpm --filter @public-ui/sample-react^... build
+  #     - name: Lighthouse CI
+  #       run: pnpm --filter @public-ui/sample-react lighthouse
+  #     - uses: actions/upload-artifact@v4
+  #       if: always()
+  #       with:
+  #         name: lighthouse-report
+  #         path: packages/samples/react/.lighthouseci/
 
   check-results:
     runs-on: ubuntu-latest

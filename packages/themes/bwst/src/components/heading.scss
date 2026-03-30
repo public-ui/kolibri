@@ -1,0 +1,33 @@
+@use '../mixins/typography' as *;
+
+@layer kol-theme-component {
+	.kol-headline {
+		&--h1 {
+			@include kol-typography-h1;
+		}
+
+		&--h2 {
+			@include kol-typography-h2;
+		}
+
+		&--h3 {
+			@include kol-typography-h3;
+		}
+
+		&--h1,
+		&--h2,
+		&--h3,
+		&--h4,
+		&--h5,
+		&--h6 {
+			color: inherit;
+			font-style: normal;
+		}
+
+		&--h1,
+		&--h2,
+		&--h3 {
+			font-weight: 700;
+		}
+	}
+}

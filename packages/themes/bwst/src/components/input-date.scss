@@ -1,0 +1,12 @@
+@use '../@shared/input-core' as *;
+@use '../mixins/input-text.scss' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-input-text();
+	*::-webkit-calendar-picker-indicator {
+		outline-color: var(--color-primary-variant);
+		border-radius: var(--border-radius);
+	}
+}

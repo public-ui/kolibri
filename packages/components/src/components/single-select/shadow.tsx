@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	DisabledPropType,
+	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -37,6 +38,7 @@ import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { SingleSelectController } from './controller';
 
 /**
@@ -51,8 +53,8 @@ import { SingleSelectController } from './controller';
 	},
 	shadow: true,
 })
-export class KolSingleSelect implements SingleSelectAPI {
-	@Element() private readonly host?: HTMLElement;
+export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
@@ -75,15 +77,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInput?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setRefInput = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
 	};
 
@@ -311,7 +308,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			disabled: isDisabled,
 			name: this.state._name,
 			placeholder: this.state._placeholder,
-			ref: this.catchRef,
+			ref: this.setRefInput,
 			required: this.state._required,
 			role: 'combobox',
 			state: this.state,

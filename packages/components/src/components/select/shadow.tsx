@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 
 import type {
 	FocusableElement,
@@ -19,6 +19,7 @@ import type {
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * @slot - The label of the input field.
@@ -31,9 +32,10 @@ import { KolSelectWcTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolSelect implements SelectProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolSelectElement;
 	private selectWcRef?: HTMLKolSelectWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolSelectWcElement) => {
+	private readonly setSelectWcRef = (ref?: HTMLKolSelectWcElement) => {
 		this.selectWcRef = ref;
 	};
 
@@ -49,15 +51,15 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.selectWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-select">
 				<KolSelectWcTag
-					ref={this.catchRef}
+					ref={this.setSelectWcRef}
 					_accessKey={this._accessKey}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}

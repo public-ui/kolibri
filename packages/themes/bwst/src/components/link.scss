@@ -1,0 +1,11 @@
+@use '../mixins/link' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-link('kol-link');
+
+	.kol-link {
+		line-height: 1;
+	}
+}

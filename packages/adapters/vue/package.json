@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "4.1.2-rc.3",
+	"version": "4.1.2-rc.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -53,11 +53,11 @@
 		"minimatch": "10.2.4",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1",
-		"vue": "3.5.30"
+		"vue": "3.5.31"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"vue": "^3.5.30"
+		"vue": "^3.5.31"
 	},
 	"sideEffects": false,
 	"type": "module",

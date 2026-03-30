@@ -1,0 +1,15 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/alert' as *;
+
+@mixin input-error {
+	padding-left: to-rem(16);
+	border-left: 3px solid var(--color-danger);
+
+	.input:focus-within {
+		outline-color: var(--color-danger);
+	}
+
+	.kol-alert--type-error {
+		@include kol-input-error-with-kol-alert-error(--color-danger);
+	}
+}

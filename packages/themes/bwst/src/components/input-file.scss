@@ -1,0 +1,41 @@
+@use '../@shared/input-core' as *;
+@use '../mixins/input-text.scss' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/button' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-input-text('kol-input-container__container');
+	@include kol-button('kol-button');
+
+	.kol-input-container {
+		padding: 0;
+		padding-left: to-rem(8);
+		gap: initial;
+
+		&__filename {
+			color: var(--color-subtle);
+		}
+
+		&--is-dragover {
+			border-color: var(--color-primary);
+		}
+	}
+
+	.kol-button {
+		min-height: to-rem(40);
+		&__text {
+			white-space: nowrap;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: calc(var(--border-radius) - 2px);
+			border-top-left-radius: 0;
+			border-top-right-radius: calc(var(--border-radius) - 2px);
+		}
+	}
+
+	.kol-input {
+		background-color: transparent;
+		padding-top: calc(0.5em + to-rem(2));
+	}
+}

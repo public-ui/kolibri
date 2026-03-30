@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -19,6 +19,7 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **LinkButton** component is semantically a link but has the appearance of a button. All relevant properties of the Link component are adopted and extended with the design-defining properties of a button.
@@ -33,9 +34,10 @@ import type {
 	shadow: true,
 })
 export class KolLinkButton implements LinkButtonProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolLinkButtonElement;
 	private linkWcRef?: HTMLKolLinkWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
+	private readonly setLinkWcRef = (ref?: HTMLKolLinkWcElement) => {
 		this.linkWcRef = ref;
 	};
 
@@ -43,14 +45,14 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.linkWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolLinkWcTag
-				ref={this.catchRef}
+				ref={this.setLinkWcRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
 				_ariaControls={this._ariaControls}

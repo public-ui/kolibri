@@ -5,7 +5,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { bootstrap, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
+import { BWSt, DEFAULT, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
 
 import { App } from './App';
 
@@ -40,7 +40,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [DEFAULT, ECL_EC, ECL_EU, KERN_V2] as Theme[];
+	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2] as Theme[];
 };
 
 void (async () => {

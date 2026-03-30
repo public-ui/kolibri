@@ -13,6 +13,7 @@ packages:
   - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
+  - packages/themes/bwst
   - packages/themes/default
   - packages/themes/ecl
   - packages/themes/kern

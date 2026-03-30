@@ -1,0 +1,138 @@
+@use './focus-outline' as *;
+@use './to-rem' as *;
+
+@mixin kol-button($block-classname) {
+	:host {
+		--theme-visibility-delay: 0.5s;
+	}
+
+	.#{$block-classname} {
+		$root: &;
+
+		&__text {
+			border-style: solid;
+			border-radius: var(--border-radius);
+			border-width: var(--border-width);
+
+			font-weight: 200;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&--primary {
+			--text-background-color: var(--color-primary);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-light);
+		}
+
+		&--secondary {
+			--text-background-color: var(--color-secondary);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-primary);
+		}
+
+		&--tertiary {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-primary);
+			--text-color: var(--color-primary);
+		}
+
+		&--normal {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-text);
+			--text-color: var(--color-text);
+		}
+
+		&--danger {
+			--text-background-color: var(--color-danger);
+			--text-border-color: var(--color-danger);
+			--text-color: var(--color-light);
+		}
+
+		&--ghost {
+			@include kol-button-ghost();
+		}
+
+		&--primary,
+		&--secondary,
+		&--tertiary,
+		&--normal,
+		&--danger,
+		&--ghost {
+			&:not([disabled], [aria-disabled='true']):hover {
+				--text-background-color: var(--color-primary-variant);
+				--text-border-color: var(--color-primary-variant);
+				--text-color: var(--color-light);
+
+				position: relative;
+				//@include focus-outline;
+			}
+		}
+
+		&--danger {
+			&:not([disabled], [aria-disabled='true']):hover {
+				--text-background-color: var(--color-danger);
+				--text-border-color: var(--color-danger);
+				outline-color: var(--color-danger);
+			}
+		}
+
+		&__text {
+			color: var(--text-color);
+			background-color: var(--text-background-color);
+			border-color: var(--text-border-color);
+
+			padding: to-rem(8) to-rem(14);
+
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+
+			&:hover {
+				color: var(--text-color);
+				background-color: var(--text-background-color);
+				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				border-color: var(--text-border-color);
+			}
+
+			@at-root #{$root}--hide-label & {
+				padding: to-rem(12);
+
+				.kol-span__label {
+					display: none;
+				}
+			}
+
+			@at-root #{$root}:focus-visible {
+				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
+
+			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
+				color: var(--text-color);
+				background-color: var(--text-background-color);
+				box-shadow: none;
+				border-color: var(--text-border-color);
+			}
+		}
+	}
+
+	.kol-close-button .#{$block-classname}--normal {
+		@include kol-button-ghost();
+		--kol-focus-outline-offset: -2px;
+	}
+
+	.kol-button--hide-label {
+		.kol-button__text {
+			padding: 0;
+		}
+	}
+}
+
+@mixin kol-button-ghost {
+	--text-background-color: transparent;
+	--text-border-color: transparent;
+	--text-color: var(--color-primary);
+	--text-box-shadow: none;
+}
