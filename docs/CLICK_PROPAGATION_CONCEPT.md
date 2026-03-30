@@ -60,7 +60,7 @@ Variante B: Shadow -> HTML5-Element direkt
 
 1. Host-initiierter Klick wird nach innen delegiert, statt nur als Event nach aussen gebubbelt.
 2. Delegation fordert vor der Propagation immer `data-themed` am Host.
-3. Reentrancy-Schutz verhindert Endlosschleifen durch intern erneut entstehende Click-Events.
+3. (Geplant) Ein Reentrancy-Schutz soll Endlosschleifen durch intern erneut entstehende Click-Events verhindern; die aktuellen Hilfsfunktionen `delegateClick`/`setClick` enthalten diesen Schutz noch nicht.
 4. Nur primaere Interaktionselemente sind Delegationsziele.
 
 ### Warum `data-themed` auch für Click zwingend ist

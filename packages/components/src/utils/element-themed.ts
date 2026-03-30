@@ -10,28 +10,32 @@ const MAX_TIMEOUT_DURATION = 5000;
  */
 function waitForThemed(host: HTMLElement): Promise<void> {
 	return new Promise<void>((resolve, reject) => {
-		if (host.hasAttribute('data-themed')) {
-			resolve();
-			return;
-		}
-
+		let timeoutId: ReturnType<typeof setTimeout> | undefined;
 		const observer = new MutationObserver(() => {
 			if (host.hasAttribute('data-themed')) {
-				clearTimeout(timeoutId);
+				if (timeoutId) {
+					clearTimeout(timeoutId);
+				}
 				observer.disconnect();
 				resolve();
 			}
 		});
 
-		const timeoutId = setTimeout(() => {
-			observer.disconnect();
-			reject(new Error('Timeout waiting for data-themed attribute'));
-		}, MAX_TIMEOUT_DURATION);
-
 		observer.observe(host, {
 			attributes: true,
 			attributeFilter: ['data-themed'],
 		});
+
+		if (host.hasAttribute('data-themed')) {
+			observer.disconnect();
+			resolve();
+			return;
+		}
+
+		timeoutId = setTimeout(() => {
+			observer.disconnect();
+			reject(new Error('Timeout waiting for data-themed attribute'));
+		}, MAX_TIMEOUT_DURATION);
 	});
 }
 

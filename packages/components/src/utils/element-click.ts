@@ -37,9 +37,9 @@ function isElementVisible(element: HTMLElement): boolean {
 }
 
 /**
- * Attempts to click the given element on each animation frame until
- * it is visible or the maximum number of attempts is reached.
- * Uses {@link isElementVisible} to verify the element is visible before and after clicking.
+ * Attempts to click the given element immediately and then again on each animation frame until
+ * it becomes visible or the maximum number of attempts is reached.
+ * Uses {@link isElementVisible} in the loop condition to decide whether another retry is needed.
  *
  * @param element - The element to click
  * @see MAX_CLICK_ATTEMPTS

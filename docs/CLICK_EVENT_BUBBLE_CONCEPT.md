@@ -1,4 +1,4 @@
-# Click Propagation Concept
+# Click Event Bubble/Emission Concept
 
 Beschreibt, wie Click-Events durch die KoliBri-Komponentenschichten propagiert werden: HTML5-Element → Light DOM WC → Host-Element (als Custom Event).
 
