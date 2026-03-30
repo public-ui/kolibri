@@ -8,7 +8,7 @@ KoliBri Web Components verwenden Shadow DOM für Style-Isolation. Da der Browser
 
 Die zentrale Herausforderung: Bevor der Focus gesetzt werden kann, müssen die Adopted Style Sheets geladen und angewendet sein. Ohne diese Absicherung kann es zu Race Conditions kommen — der Focus wird auf ein Element gesetzt, das noch nicht vollständig gerendert ist.
 
-Technisch kann ein frueher `focus()` im Browser teilweise trotzdem funktionieren. Das ist jedoch nicht authentisch zum realen Nutzerverhalten: Interaktion soll erst auf final sichtbaren und stabil gerenderten Controls stattfinden. Fuer Tests bedeutet das: Kein Focus auf potenziell noch unsichtbare oder semantisch unvollstaendige Elemente. Deshalb wird `data-themed` als verbindliche Readiness-Bedingung verwendet.
+Technisch kann ein früher `focus()` im Browser teilweise trotzdem funktionieren. Das ist jedoch nicht authentisch zum realen Nutzerverhalten: Interaktion soll erst auf final sichtbaren und stabil gerenderten Controls stattfinden. Für Tests bedeutet das: Kein Focus auf potenziell noch unsichtbare oder semantisch unvollständige Elemente. Deshalb wird `data-themed` als verbindliche Readiness-Bedingung verwendet.
 
 ## Architektur
 
