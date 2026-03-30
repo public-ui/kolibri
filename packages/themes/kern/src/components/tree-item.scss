@@ -7,6 +7,8 @@
 		gap: var(--kern-metric-space-small);
 		flex-direction: column;
 
+		--indentation: #{to-rem(16)};
+
 		@include kol-link('kol-tree-item__text');
 
 		&__link {
@@ -28,6 +30,7 @@
 			.kol-link {
 				width: 100%;
 				padding-right: 0;
+				padding-left: max(calc(var(--indentation) * var(--level)));
 
 				&:focus {
 					outline-color: var(--kern-color-action-focus-background);

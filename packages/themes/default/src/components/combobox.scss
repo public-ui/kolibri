@@ -29,5 +29,10 @@ $visible-options: 5;
 		&-toggle:focus {
 			outline: 0;
 		}
+
+		&__delete {
+			margin-top: -2px;
+			margin-bottom: -2px;
+		}
 	}
 }

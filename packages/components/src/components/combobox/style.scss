@@ -24,10 +24,6 @@
 	.kol-combobox {
 		&__delete {
 			@include kol-button-styles('kol-button');
-			.kol-button {
-				margin-top: -2px;
-				margin-bottom: -2px;
-			}
 		}
 
 		&-toggle {

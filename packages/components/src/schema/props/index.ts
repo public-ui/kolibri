@@ -1,3 +1,4 @@
+export { headingLevelOptions, type HeadingLevel } from '../../internal/props/level';
 export * from './accept';
 export * from './access-key';
 export * from './accordion-callbacks';
@@ -49,7 +50,6 @@ export * from './indeterminate';
 export * from './inline';
 export * from './label';
 export * from './label-align';
-export * from './level';
 export * from './link-on-callbacks';
 export * from './link-target';
 export * from './loading';

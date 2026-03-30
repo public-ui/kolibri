@@ -14,6 +14,7 @@ import type {
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
+	FocusableElement,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -34,6 +35,7 @@ import type {
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { ComboboxController } from './controller';
 
 /**
@@ -46,8 +48,8 @@ import { ComboboxController } from './controller';
 	},
 	shadow: true,
 })
-export class KolCombobox implements ComboboxAPI {
-	@Element() private readonly host?: HTMLElement;
+export class KolCombobox implements ComboboxAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolComboboxElement;
 	private refInput?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
@@ -68,12 +70,7 @@ export class KolCombobox implements ComboboxAPI {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInput?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
 	private toggleListbox = () => {
@@ -94,7 +91,7 @@ export class KolCombobox implements ComboboxAPI {
 			}
 		}
 	};
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
 	};
 
@@ -226,7 +223,7 @@ export class KolCombobox implements ComboboxAPI {
 		const isDisabled = this.state._disabled === true;
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			class: 'kol-combobox__input',
 			type: 'text',

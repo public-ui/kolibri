@@ -4,9 +4,15 @@
 
 @mixin pagination {
 	.kol-pagination {
-		display: flex;
 		@include button('kol-button');
 		@include kol-select();
+
+		display: flex;
+		gap: to-rem(16);
+
+		&__navigation-list {
+			gap: to-rem(8);
+		}
 
 		&__button--selected .kol-button--normal:disabled {
 			--button-text-background-color: var(--kern-color-action-default);

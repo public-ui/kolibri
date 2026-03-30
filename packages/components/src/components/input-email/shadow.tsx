@@ -34,6 +34,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputEmailController } from './controller';
 
@@ -53,7 +54,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputEmailElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -71,12 +72,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -111,7 +107,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'email',
 			ariaDescribedBy,

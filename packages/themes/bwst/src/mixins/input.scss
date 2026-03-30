@@ -1,0 +1,71 @@
+@use '../mixins/to-rem' as *;
+@use './focus-outline' as *;
+
+@mixin kol-input-theme {
+	.kol-input-container {
+		$root: &;
+
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		//space for focus outline
+		margin-top: to-rem(2);
+		padding: 0 to-rem(8);
+		border-width: 1px;
+		column-gap: to-rem(6);
+		align-items: stretch;
+
+		&__adornment {
+			min-width: to-rem(8);
+
+			&--start > .kol-icon:first-child {
+				margin-left: to-rem(16);
+			}
+
+			&--end > .kol-icon:last-child {
+				margin-right: to-rem(16);
+			}
+		}
+
+		&--disabled {
+			color: var(--color-text);
+			background-color: var(--color-mute);
+			cursor: not-allowed;
+		}
+
+		&:not(&--disabled, &:has(.kol-input--readonly)):hover {
+			border-color: var(--color-primary);
+		}
+
+		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
+			@include focus-outline;
+		}
+
+		&:has(.kol-input--readonly),
+		&:has(.kol-textarea--readonly),
+		&--disabled {
+			border-color: var(--color-mute-variant);
+			border-width: 1px;
+			border-bottom: 2px solid var(--color-subtle);
+
+			#{$root}__container {
+				padding-top: 1px;
+			}
+		}
+
+		&__smart-button {
+			position: relative;
+			z-index: 2;
+			.kol-button:focus {
+				@include focus-outline;
+			}
+		}
+
+		&--error {
+			&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
+				outline-color: var(--color-danger);
+			}
+		}
+	}
+}

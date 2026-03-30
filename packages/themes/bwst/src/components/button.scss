@@ -1,0 +1,8 @@
+@use '../mixins/button' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-button('kol-button');
+}
