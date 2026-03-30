@@ -133,7 +133,7 @@ const MAX_TIMEOUT_DURATION = 5000;
 
 ### Interface
 
-Alle klickbaren Komponenten implementieren das `ClickableElement`-Interface:
+Alle klickbaren Komponenten implementieren das `ClickableElement`-Interface aus `packages/components/src/utils/element-click.ts`:
 
 ```typescript
 export interface ClickableElement {
@@ -156,14 +156,13 @@ Damit erzwingen wir API-Homogenitaet analog zum HTML-Standard.
 
 ### Regel 1: Shadow Component (`shadow: true`)
 
-Der Host enthaelt einen gezielten Click-Listener und delegiert nach innen:
+Der Host delegiert nach innen via `delegateClick`:
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
 export class KolButton implements ClickableElement {
 	@Element() private readonly host?: HTMLKolButtonElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
-	private isInternalClickDelegation = false;
 
 	@Method()
 	public async click(): Promise<void> {
@@ -174,7 +173,7 @@ export class KolButton implements ClickableElement {
 
 Hinweis:
 
-- Der Guard `isInternalClickDelegation` ist Pflicht, damit der intern ausgeloeste Klick nicht erneut am Host delegiert wird.
+- `delegateClick` wartet zwingend auf `data-themed` vor der Klick-Delegation, um konsistentes visuelles Feedback zu sichern.
 
 ### Regel 2: Light DOM Component (`shadow: false`)
 

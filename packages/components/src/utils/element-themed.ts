@@ -10,6 +10,11 @@ const MAX_TIMEOUT_DURATION = 5000;
  */
 function waitForThemed(host: HTMLElement): Promise<void> {
 	return new Promise<void>((resolve, reject) => {
+		if (host.hasAttribute('data-themed')) {
+			resolve();
+			return;
+		}
+
 		const observer = new MutationObserver(() => {
 			if (host.hasAttribute('data-themed')) {
 				clearTimeout(timeoutId);
@@ -30,4 +35,4 @@ function waitForThemed(host: HTMLElement): Promise<void> {
 	});
 }
 
-export { waitForThemed, MAX_TIMEOUT_DURATION };
+export { MAX_TIMEOUT_DURATION, waitForThemed };
