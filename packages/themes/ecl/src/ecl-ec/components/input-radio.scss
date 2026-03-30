@@ -7,16 +7,6 @@
 	@include alert;
 
 	/**
-	 * normalizes the layout of form elements.
-	*/
-	.kol-form-field {
-		margin: 0;
-		padding: 0;
-		flex-wrap: wrap;
-		border: 0;
-	}
-
-	/**
 	 * order the layout of form elements.
 	*/
 	.kol-form-field {
@@ -42,7 +32,6 @@
 		gap: to-rem(8);
 		flex-wrap: wrap;
 		align-items: flex-start;
-		border: 0;
 
 		&__label {
 			color: var(--color-grey);
@@ -76,23 +65,26 @@
 	}
 
 	.kol-input {
-		&:before {
-			display: none;
-		}
+		background-color: var(--ecl-color-white);
+		border-color: var(--ecl-color-dark-80);
 
 		&:checked {
-			border-color: var(--color-blue);
-			border-width: 7px;
-		}
+			border-color: var(--ecl-color-primary);
 
-		&:focus {
-			outline-color: var(--color-blue);
-		}
-
-		&:not(:disabled) {
-			&:hover {
-				border-color: var(--color-blue);
+			&:before {
+				background-color: var(--ecl-color-primary);
 			}
+		}
+
+		&:not(:disabled):hover::before,
+		&:focus::before {
+			background-color: var(--ecl-color-primary-20);
+			border-radius: 50%;
+			content: '';
+			display: block;
+			position: absolute;
+			inset: 0;
+			z-index: -1;
 		}
 
 		&#{&}--error {

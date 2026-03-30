@@ -5,6 +5,7 @@
 @use './table-settings' as *;
 @use './button' as *;
 @use './checkbox' as *;
+@use './radio' as *;
 
 @mixin table {
 	@include alert;
@@ -95,34 +96,8 @@
 			@include checkbox('kol-table__selection');
 		}
 
-		&__selection-input {
-			// RADIO
-			&--radio {
-				border-color: var(--ecl-color-dark-80);
-				display: block;
-
-				&:not(:disabled):hover {
-					border-color: var(--ecl-color-primary);
-				}
-
-				&:checked {
-					border-color: var(--ecl-color-primary);
-					border-width: 7px;
-
-					&:before {
-						background-color: var(--ecl-color-white);
-					}
-				}
-			}
-		}
-
-		&__selection-icon {
-			color: var(--ecl-color-white);
-		}
-
-		.kol-icon:hover ~ &__selection-input--checkbox:not(:disabled),
-		&__selection-input--checkbox:not(:disabled):hover {
-			border-color: var(--ecl-color-primary);
+		&:has(.kol-table__selection-input--radio) {
+			@include radio('kol-table__selection');
 		}
 	}
 }

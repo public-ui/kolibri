@@ -8,7 +8,7 @@
 		justify-content: center;
 
 		&:focus-within::before,
-		&:hover:not(&--disabled)::before {
+		&:hover:not(:has(input:disabled))::before {
 			content: '';
 			position: absolute;
 
@@ -18,7 +18,7 @@
 			height: to-rem(38);
 		}
 
-		&__icon {
+		.#{$block-classname}-icon {
 			@include icon;
 			color: var(--ecl-color-white);
 		}

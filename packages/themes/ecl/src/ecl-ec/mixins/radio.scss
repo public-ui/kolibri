@@ -1,0 +1,29 @@
+@use '../../mixins/to-rem' as *;
+@use './icon' as *;
+
+@mixin radio($block-classname) {
+	.#{$block-classname} {
+		input {
+			background-color: var(--ecl-color-white);
+			border-color: var(--ecl-color-dark-80);
+
+			&:checked {
+				border-color: var(--ecl-color-primary);
+
+				&:before {
+					background-color: var(--ecl-color-primary);
+				}
+			}
+		}
+
+		&:not(:has(input:disabled)):hover:before {
+			background-color: var(--ecl-color-primary-20);
+			border-radius: 50%;
+			content: '';
+			display: block;
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+		}
+	}
+}

@@ -7,8 +7,6 @@
 	@include alert;
 
 	.kol-form-field {
-		color: var(--color-grey);
-
 		&__hint {
 			font-size: to-rem(14);
 		}
