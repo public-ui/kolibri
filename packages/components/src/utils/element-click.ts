@@ -25,12 +25,15 @@ export async function delegateClick(host: HTMLElement, callback: () => Promise<v
 
 /**
  * Checks whether the given element is currently visible and activated.
- * Basic implementation that checks element existence.
+ * Uses getBoundingClientRect to reliably detect visibility for all positioning types,
+ * including position: fixed, which returns null for offsetParent despite being visible.
  *
  * @param element - The element to check
  */
 function isClickActivationObserved(element: HTMLElement): boolean {
-	return element && element.offsetParent !== null;
+	if (!element) return false;
+	const rect = element.getBoundingClientRect();
+	return rect.width > 0 && rect.height > 0;
 }
 
 /**
