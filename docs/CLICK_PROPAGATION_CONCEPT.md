@@ -4,10 +4,10 @@ Beschreibt ein analoges Delegationskonzept zu Focus: Ein Klick auf den KoliBri-H
 
 ## Status
 
-Dieses Dokument beschreibt ein Soll-Konzept (Designvorschlag), nicht den aktuellen Ist-Zustand.
+Dieses Dokument beschreibt das Click-Delegationskonzept sowie noch geplante Erweiterungen; Teile sind bereits implementiert, weitere folgen sukzessive.
 
-- Ist: Click-Handling findet heute primar in den inneren WC-/HTML-Elementen statt.
-- Soll: Der Host soll wie bei `focus()` eine zentrale Delegate-Strategie fuer `click` bereitstellen.
+- Ist: Fuer Komponenten mit `delegateClick/setClick` und `@Method() click()` ist die Click-Delegation vom Host auf das primaere Innenelement bereits umgesetzt.
+- Soll: Fuer alle (noch nicht migrierten) interaktiven Host-Elemente soll wie bei `focus()` eine zentrale Delegate-Strategie fuer `click` bereitgestellt werden.
 
 ## Ziel
 
