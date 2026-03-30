@@ -151,8 +151,13 @@ test.describe('kol-tabs', () => {
 			await page.waitForChanges();
 
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
-			// Note: We click on the inner <button> element to trigger the tab selection
-			await secondTab.evaluate((el: HTMLElement) => el.click());
+			// Call the component's async click() method to trigger tab selection
+			await secondTab.evaluate((el: HTMLElement) => {
+				const tabElement = el as HTMLElement & { click: () => Promise<void> };
+				if (typeof tabElement.click === 'function') {
+					return tabElement.click();
+				}
+			});
 			await expect(callbackPromise).resolves.toBe(1);
 		});
 

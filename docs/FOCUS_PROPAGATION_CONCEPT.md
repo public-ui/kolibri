@@ -94,7 +94,7 @@ export async function delegateFocus(host: HTMLElement, callback: () => Promise<v
 3. Ruft dann den `callback` auf, der den eigentlichen Focus setzt
 4. Bei Fehler (Timeout oder Focus-Fehler): wirft einen benutzerfreundlichen Fehler
 
-Die Wartephase ist nicht nur technisch motiviert, sondern auch eine Qualitaetsgrenze: Sie verhindert, dass Focus-Interaktionen in Tests oder in schneller Initialisierung auf UI-Zustaenden stattfinden, die ein Nutzer so noch nicht sieht.
+Die Wartephase ist nicht nur technisch motiviert, sondern auch eine Qualitätsgrenze: Sie verhindert, dass Focus-Interaktionen in Tests oder in schneller Initialisierung auf UI-Zuständen stattfinden, die ein Nutzer so noch nicht sieht.
 
 ### `setFocus(element)`
 

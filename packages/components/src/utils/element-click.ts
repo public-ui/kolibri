@@ -24,13 +24,13 @@ export async function delegateClick(host: HTMLElement, callback: () => Promise<v
 }
 
 /**
- * Checks whether the given element is currently visible and activated.
+ * Checks whether the given element is currently visible.
  * Uses getBoundingClientRect to reliably detect visibility for all positioning types,
  * including position: fixed, which returns null for offsetParent despite being visible.
  *
  * @param element - The element to check
  */
-function isClickActivationObserved(element: HTMLElement): boolean {
+function isElementVisible(element: HTMLElement): boolean {
 	if (!element) return false;
 	const rect = element.getBoundingClientRect();
 	return rect.width > 0 && rect.height > 0;
@@ -38,8 +38,8 @@ function isClickActivationObserved(element: HTMLElement): boolean {
 
 /**
  * Attempts to click the given element on each animation frame until
- * it is activated or the maximum number of attempts is reached.
- * Uses {@link isClickActivationObserved} to verify the click activation.
+ * it is visible or the maximum number of attempts is reached.
+ * Uses {@link isElementVisible} to verify the element is visible before and after clicking.
  *
  * @param element - The element to click
  * @see MAX_CLICK_ATTEMPTS
@@ -52,7 +52,7 @@ export async function setClick(element: HTMLElement): Promise<void> {
 		}
 		await new Promise((r) => requestAnimationFrame(r));
 		attempts++;
-	} while (!isClickActivationObserved(element) && attempts < MAX_CLICK_ATTEMPTS);
+	} while (!isElementVisible(element) && attempts < MAX_CLICK_ATTEMPTS);
 }
 
 /**

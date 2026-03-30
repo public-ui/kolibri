@@ -6,8 +6,8 @@ Beschreibt ein analoges Delegationskonzept zu Focus: Ein Klick auf den KoliBri-H
 
 Dieses Dokument beschreibt das Click-Delegationskonzept sowie noch geplante Erweiterungen; Teile sind bereits implementiert, weitere folgen sukzessive.
 
-- Ist: Fuer Komponenten mit `delegateClick/setClick` und `@Method() click()` ist die Click-Delegation vom Host auf das primaere Innenelement bereits umgesetzt.
-- Soll: Fuer alle (noch nicht migrierten) interaktiven Host-Elemente soll wie bei `focus()` eine zentrale Delegate-Strategie fuer `click` bereitgestellt werden.
+- Ist: Für Komponenten mit `delegateClick/setClick` und `@Method() click()` ist die Click-Delegation vom Host auf das primäre Innenelement bereits umgesetzt.
+- Soll: Für alle (noch nicht migrierten) interaktiven Host-Elemente soll wie bei `focus()` eine zentrale Delegate-Strategie für `click` bereitgestellt werden.
 
 ## Ziel
 
@@ -38,7 +38,7 @@ Variante A: Shadow -> Light DOM WC -> HTML5-Element
                           ↓
 ┌─────────────────────────────────────────────────────────┐
 │ HTML5 Element: <button>                                 │
-│ tatsaechlich aktiviert (native click action)            │
+│ tatsächlich aktiviert (native click action)            │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -63,7 +63,7 @@ Variante B: Shadow -> HTML5-Element direkt
 3. Reentrancy-Schutz verhindert Endlosschleifen durch intern erneut entstehende Click-Events.
 4. Nur primaere Interaktionselemente sind Delegationsziele.
 
-### Warum `data-themed` auch fuer Click zwingend ist
+### Warum `data-themed` auch für Click zwingend ist
 
 Technisch kann ein `element.click()` oft auch schon vor abgeschlossener Theme-Anwendung funktionieren.
 Das waere aber aus UX- und Test-Sicht nicht authentisch:
@@ -80,7 +80,7 @@ Datei (neu): `packages/components/src/utils/element-click.ts`
 
 ### `delegateClick(host, callback)`
 
-Verantwortlich fuer Shadow Components (`shadow: true`). Wartet zwingend auf Theme-Readiness und fuehrt dann die eigentliche Klick-Aktion aus.
+Verantwortlich für Shadow Components (`shadow: true`). Wartet zwingend auf Theme-Readiness und führt dann die eigentliche Klick-Aktion aus.
 
 ```typescript
 export async function delegateClick(host: HTMLElement, callback: () => Promise<void>): Promise<void> {
@@ -91,7 +91,7 @@ export async function delegateClick(host: HTMLElement, callback: () => Promise<v
 		await callback();
 	} catch {
 		throw new Error(
-			'The interactive element inside the KoliBri web component could not be clicked. Try calling the click behavior on the web component after a short delay again.',
+			'The interactive element inside the KoliBri web component could not be clicked. Try calling the click method on the web component after a short delay again.',
 		);
 	}
 }
@@ -110,13 +110,13 @@ export async function setClick(element: HTMLElement): Promise<void> {
 		}
 		await new Promise((r) => requestAnimationFrame(r));
 		attempts++;
-	} while (!isClickActivationObserved(element) && attempts < MAX_CLICK_ATTEMPTS);
+	} while (!isElementVisible(element) && attempts < MAX_CLICK_ATTEMPTS);
 }
 ```
 
-### `isClickActivationObserved(element)`
+### `isElementVisible(element)`
 
-Prueft, ob die beabsichtigte Aktivierung stattgefunden hat. Die konkrete Heuristik ist komponentenspezifisch und kann optional bleiben. Mindestanforderung: keine Exception und keine Endlosschleife.
+Prueft, ob das Element sichtbar ist (Groesse > 0). Dies stellt sicher, dass das Element vor dem Klick vorhanden und sichtbar ist.
 
 ### `waitForThemed(host)`
 
@@ -141,7 +141,7 @@ export interface ClickableElement {
 }
 ```
 
-### API-Kontrakt fuer alle Web Components
+### API-Kontrakt für alle Web Components
 
 In allen klickbaren Web Components gilt derselbe oeffentliche Methodenvertrag:
 

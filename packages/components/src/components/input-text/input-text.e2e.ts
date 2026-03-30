@@ -39,19 +39,31 @@ test.describe('kol-input-text', () => {
 
 			await page.waitForChanges();
 			// Execute click() method - should not timeout or throw
-			const clickResult = await kolInput.evaluate(async (el: HTMLKolInputTextElement) => {
-				await el.click();
-				return 'success';
+			const clickResult = await kolInput.evaluate((el: HTMLKolInputTextElement) => {
+				interface ClickableElement {
+					click?: () => void | Promise<void>;
+				}
+				const element = el as ClickableElement;
+				if (typeof element.click === 'function') {
+					const result = element.click();
+					// Return the result if it's a Promise, otherwise return success
+					return result instanceof Promise ? result.then(() => 'success') : 'success';
+				}
+				return 'error';
 			});
 			expect(clickResult).toBe('success');
 
 			await page.waitForChanges();
 
-			// Verify input element exists and is properly configured
-			const inputExists = await kolInput.evaluate((element: HTMLKolInputTextElement) => {
-				return element.shadowRoot?.querySelector('input') !== null;
+			// Verify input element exists and has received focus
+			const { inputExists, inputFocused } = await kolInput.evaluate((element: HTMLKolInputTextElement) => {
+				const input = element.shadowRoot?.querySelector('input');
+				const exists = input !== null;
+				const focused = !!input && element.shadowRoot?.activeElement === input;
+				return { inputExists: exists, inputFocused: focused };
 			});
 			expect(inputExists).toBe(true);
+			expect(inputFocused).toBe(true);
 		});
 
 		test('should focus input when host is clicked directly', async ({ page }) => {
