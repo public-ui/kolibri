@@ -151,7 +151,7 @@ test.describe('kol-tabs', () => {
 			await page.waitForChanges();
 
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
-		// Note: We click on the inner <button> element because kol-tabs does not expose a click() @Method
+			// Note: We click on the inner <button> element to trigger the tab selection
 			await secondTab.evaluate((el: HTMLElement) => el.click());
 			await expect(callbackPromise).resolves.toBe(1);
 		});
@@ -175,7 +175,7 @@ test.describe('kol-tabs', () => {
 			await page.waitForChanges();
 
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
-		// Note: We click on the inner <button> element because kol-tabs does not expose a click() @Method
+			// Trigger tab selection via Locator.click() on the tab element
 			await secondTab.click();
 
 			const finalCount = await page.evaluate(() => (window as unknown as Record<string, number>).switchCount);
