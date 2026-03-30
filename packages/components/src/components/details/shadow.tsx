@@ -3,6 +3,7 @@ import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-compon
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
@@ -41,6 +42,14 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	}
+
+	/**
+	 * Triggers a click on the summary/toggle button.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;

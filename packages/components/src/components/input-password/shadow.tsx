@@ -36,6 +36,7 @@ import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputPasswordController } from './controller';
@@ -78,6 +79,14 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Method()
 	public async focus() {
 		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {

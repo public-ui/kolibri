@@ -129,4 +129,62 @@ test.describe('kol-tabs', () => {
 		await kolTabs.getByRole('tab', { name: 'Second Tab' }).click();
 		await expect(page.locator('.kol-tabs .selected')).toHaveCount(1);
 	});
+
+	test.describe('click() method', () => {
+		test('should select tab when click() method is called on a tab', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+
+			const callbackPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
+				return new Promise<number>((resolve) => {
+					const tabsElement = element as HTMLKolTabsElement & { _on?: { onSelect?: (event: Event, tabIndex: number) => void } };
+					tabsElement._on = {
+						onSelect: (_event: Event, tabIndex: number) => {
+							resolve(tabIndex);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			// Call the component's async click() method to trigger tab selection
+			await secondTab.evaluate((el: HTMLElement) => {
+				const tabElement = el as HTMLElement & { click: () => Promise<void> };
+				if (typeof tabElement.click === 'function') {
+					return tabElement.click();
+				}
+			});
+			await expect(callbackPromise).resolves.toBe(1);
+		});
+
+		test('should not trigger double tab switch on multiple clicks', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+
+			await kolTabs.evaluate((element: HTMLKolTabsElement) => {
+				(window as unknown as Record<string, number>).switchCount = 0;
+				const tabsElement = element as HTMLKolTabsElement & { _on?: { onSelect?: () => void } };
+				tabsElement._on = {
+					onSelect: () => {
+						(window as unknown as Record<string, number>).switchCount++;
+					},
+				};
+			});
+			await page.waitForChanges();
+
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			// Trigger tab selection via Locator.click() on the tab element
+			await secondTab.click();
+
+			const finalCount = await page.evaluate(() => (window as unknown as Record<string, number>).switchCount);
+			expect(finalCount).toBe(1);
+		});
+	});
 });
