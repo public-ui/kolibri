@@ -25,6 +25,7 @@ Thumbs.db
 # Other
 /.husky/
 /.reports/
+/.lighthouseci/
 .env
 .eslintcache
 /dist/
