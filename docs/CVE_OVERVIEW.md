@@ -34,7 +34,7 @@
 | critical |   5 |   5 |   5 |   3 |
 | high     |  33 |  30 |  43 |  27 |
 | moderate |  16 |  16 |  26 |   6 |
-| low      |   3 |   3 |   8 |   0 |
+| low      |   4 |   3 |   8 |   0 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -125,5 +125,6 @@
 | fast-xml-parser      | low      | CVE-2026-27942      | v4, v3, v2        | fast-xml-parser has stack overflow in XMLBuilder with preserveOrder               |
 | hono                 | low      | GHSA-gq3j-xvxp-8hrf | v2                | Hono added timing comparison hardening in basicAuth and bearerAuth                |
 | qs                   | low      | CVE-2026-2391       | v2                | qs's arrayLimit bypass in comma parsing allows denial of service                  |
+| tmp                  | low      | CVE-2025-54798      | v4                | tmp allows arbitrary temporary file / directory write via symbolic link `dir` pa  |
 | webpack              | low      | CVE-2025-68458      | v2                | webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to  |
 | webpack              | low      | CVE-2025-68157      | v2                | webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + c  |
