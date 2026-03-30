@@ -8,13 +8,15 @@
   url('{{cssPath}}{{fontname}}.svg?t={{timestamp}}#{{fontname}}') format('svg'); /* iOS 4.1- */
 }
 
-[class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
-  font-family: '{{fontname}}';
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer kol-component {
+  [class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
+    font-family: '{{fontname}}';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-{{cssString}}
+  {{cssString}}
+}
