@@ -17,8 +17,6 @@ export const executeSnapshotTests = <Props extends Record<string, unknown>>(Comp
 	describe(ComponentName, () => {
 		const testTable: [string, Props][] = propVariants.map((props) => [propsToLabel(props), props]);
 
-		jest.useFakeTimers();
-
 		it.each(testTable)('should render with %s', async (_, props) => {
 			const page = await newSpecPage({
 				components,
