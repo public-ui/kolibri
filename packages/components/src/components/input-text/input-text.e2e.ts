@@ -31,4 +31,60 @@ test.describe('kol-input-text', () => {
 	});
 	testInputCharacterLimit(COMPONENT_NAME);
 	testInputMessage<HTMLKolInputTextElement>(COMPONENT_NAME);
+
+	test.describe('click() method', () => {
+		test('should focus input when click() method is called', async ({ page }) => {
+			await page.setContent('<kol-input-text _label="Test Input" _type="text"></kol-input-text>');
+			const kolInput = page.locator('kol-input-text');
+
+			await page.waitForChanges();
+
+			// Register focus listener before calling click() to avoid race condition
+			const focusPromise = kolInput.evaluate((el: HTMLKolInputTextElement) => {
+				return new Promise<boolean>((resolve) => {
+					const input = el.shadowRoot?.querySelector('input');
+					if (input) {
+						input.addEventListener('focus', () => resolve(true), { once: true });
+					} else {
+						resolve(false);
+					}
+				});
+			});
+
+			// Execute click() method via component API
+			await kolInput.evaluate((el: HTMLKolInputTextElement) => {
+				interface ClickableElement {
+					click?: () => void | Promise<void>;
+				}
+				const element = el as ClickableElement;
+				if (typeof element.click === 'function') {
+					return element.click();
+				}
+			});
+
+			await expect(focusPromise).resolves.toBe(true);
+		});
+
+		test('should focus input when host is clicked directly', async ({ page }) => {
+			await page.setContent('<kol-input-text _label="Test Input" _type="text"></kol-input-text>');
+			const kolInput = page.locator('kol-input-text');
+
+			const focusPromise = kolInput.evaluate((element) => {
+				return new Promise<boolean>((resolve) => {
+					const input = element.shadowRoot?.querySelector('input');
+					if (input) {
+						input.addEventListener('focus', () => {
+							resolve(true);
+						});
+					} else {
+						resolve(false);
+					}
+				});
+			});
+			await page.waitForChanges();
+
+			await kolInput.click();
+			await expect(focusPromise).resolves.toBe(true);
+		});
+	});
 });

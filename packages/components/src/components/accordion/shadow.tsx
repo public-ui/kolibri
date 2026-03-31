@@ -14,6 +14,7 @@ import type {
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
@@ -55,6 +56,14 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	}
+
+	/**
+	 * Triggers a click on the trigger button of the first section.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
 	}
 
 	private handleOnClick = (event: MouseEvent) => {

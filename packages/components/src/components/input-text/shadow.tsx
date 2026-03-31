@@ -115,6 +115,14 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	/**
+	 * Focuses the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateFocus(this.host!, async () => setFocus(this.inputRef!));
+	}
+
+	/**
 	 * Get selection start of internal element.
 	 */
 	@Method()

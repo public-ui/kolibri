@@ -18,6 +18,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
@@ -59,6 +60,14 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	private readonly setRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.ref = ref;
 	};
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.ref!));
+	}
 
 	/**
 	 * Sets focus on the internal element.

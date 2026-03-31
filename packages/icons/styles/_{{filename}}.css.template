@@ -9,6 +9,7 @@
     url('{{cssPath}}{{fontname}}.svg?t={{timestamp}}#{{fontname}}') format('svg'); /* iOS 4.1- */
   }
 
+@layer kol-component {
   [class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
     font-family: '{{fontname}}';
     font-style: normal;

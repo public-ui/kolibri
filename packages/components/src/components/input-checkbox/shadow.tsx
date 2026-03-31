@@ -27,6 +27,7 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputCheckboxController } from './controller';
 
@@ -77,6 +78,14 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Method()
 	public async focus() {
 		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {

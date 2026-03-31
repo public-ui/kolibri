@@ -22,6 +22,8 @@ export enum KeyEnum {
 	'page-selected',
 	'page-per-site',
 	'logo-description',
+	'live-value-bounded',
+	'live-value',
 	'open-link-in-tab',
 	'kolibri-logo',
 }
