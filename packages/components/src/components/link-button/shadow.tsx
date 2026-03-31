@@ -19,6 +19,7 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
@@ -47,6 +48,14 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.linkWcRef!));
 	}
 
 	public render(): JSX.Element {

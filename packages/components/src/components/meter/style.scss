@@ -1,0 +1,127 @@
+@use '../@shared/mixins' as *;
+@use '../@shared/global' as *;
+
+@layer kol-component {
+	.kol-meter {
+		&__bar {
+			display: grid;
+			column-gap: to-rem(0.8);
+			align-items: center;
+			grid-template-areas:
+				'LABEL LABEL LABEL'
+				'BAR VALUE UNIT';
+			grid-template-columns: 1fr auto;
+
+			&-label {
+				grid-column-end: 2;
+				grid-area: LABEL;
+			}
+
+			svg {
+				grid-area: BAR;
+			}
+
+			&-border {
+				fill: transparent;
+				stroke: black;
+			}
+
+			&-background {
+				fill: lightgray;
+				stroke: white;
+			}
+
+			&-fill {
+				stroke: transparent;
+
+				@media (prefers-reduced-motion: no-preference) {
+					transition: 250ms ease-in-out 50ms;
+				}
+
+				&--optimum {
+					color: #2ea32e;
+					color: #2ea32e;
+					fill: #2ea32e;
+				}
+
+				&--suboptimal {
+					color: #c8a000;
+					color: #c8a000;
+					fill: #c8a000;
+				}
+
+				&--critical {
+					color: #c00;
+					color: #c00;
+					fill: #c00;
+				}
+			}
+		}
+
+		&__value-unit {
+			display: contents;
+		}
+
+		&__value {
+			grid-area: VALUE;
+			text-align: right;
+		}
+
+		&__unit {
+			grid-area: UNIT;
+		}
+
+		&--vertical {
+			display: inline-flex;
+
+			.kol-meter__bar {
+				display: flex;
+				min-height: var(--kol-meter-height, to-rem(128));
+				row-gap: to-rem(4);
+				flex-direction: column;
+				align-items: center;
+
+				&-label {
+					text-align: center;
+				}
+
+				&-track {
+					background: lightgray;
+					outline: to-rem(1) solid black;
+					border-radius: to-rem(6);
+					position: relative;
+					width: to-rem(12);
+					min-height: 0;
+					overflow: hidden;
+					flex: 1;
+				}
+
+				&-fill {
+					background: currentColor;
+					border-radius: to-rem(3);
+					position: absolute;
+					right: to-rem(3);
+					bottom: to-rem(3);
+					left: to-rem(3);
+
+					@media (prefers-reduced-motion: no-preference) {
+						transition: height 250ms ease-in-out 50ms;
+					}
+				}
+			}
+
+			.kol-meter__value-unit {
+				display: contents;
+			}
+
+			.kol-meter__value {
+				width: auto;
+				text-align: center;
+			}
+
+			.kol-meter__unit {
+				text-align: center;
+			}
+		}
+	}
+}

@@ -28,7 +28,9 @@ test.describe('kol-pagination', () => {
 						};
 					});
 				}, callbackName);
+				await page.waitForChanges();
 				await page.getByRole('button', { name: '2' }).click();
+				await page.waitForChanges();
 
 				await expect(callbackPromise).resolves.toBe(2);
 			});
@@ -46,6 +48,7 @@ test.describe('kol-pagination', () => {
 			}, Callback);
 			await page.waitForChanges();
 			await page.locator('select').selectOption('-1'); // choose second option (20)
+			await page.waitForChanges();
 
 			await expect(callbackPromise).resolves.toBe(20);
 		});
@@ -61,7 +64,9 @@ test.describe('kol-pagination', () => {
 						});
 					});
 				}, eventName);
+				await page.waitForChanges();
 				await page.getByRole('button', { name: '2' }).click();
+				await page.waitForChanges();
 
 				await expect(eventPromise).resolves.toBe(2);
 			});
@@ -77,6 +82,7 @@ test.describe('kol-pagination', () => {
 			});
 			await page.waitForChanges();
 			await page.locator('select').selectOption('-1'); // choose second option (20)
+			await page.waitForChanges();
 
 			await expect(eventPromise).resolves.toBe(20);
 		});
