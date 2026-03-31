@@ -14,6 +14,7 @@ export type {
 	KoliBriTableSelection,
 	Optgroup,
 	Option,
+	RadioOption,
 	SelectOption,
 	Toast,
 	ToasterOptions,
