@@ -31,13 +31,13 @@ export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
 				<Fragment>
 					<span class={`kol-spin__spinner kol-spin__spinner--${variant}`}>{renderSpinVariant(variant)}</span>
 					<span aria-busy="true" class="visually-hidden" role="alert">
-						{label ?? handleGetTranslateActionRunning()}
+						{label || handleGetTranslateActionRunning()}
 					</span>
 				</Fragment>
 			) : (
 				showToggled && (
 					<span aria-busy="false" class="visually-hidden" role="alert">
-						{label ?? handleGetTranslateActionDone()}
+						{label || handleGetTranslateActionDone()}
 					</span>
 				)
 			)}

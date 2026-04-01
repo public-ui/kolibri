@@ -31,7 +31,9 @@ exports[`kol-spin should render with _show=true 1`] = `
       <span class="kol-spin__spinner-element kol-spin__spinner-element--3"></span>
       <span class="kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
     </span>
-    <span aria-busy="true" class="visually-hidden" role="alert"></span>
+    <span aria-busy="true" class="visually-hidden" role="alert">
+      kol-action-running
+    </span>
   </template>
 </kol-spin>
 `;
