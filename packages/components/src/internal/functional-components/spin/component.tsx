@@ -1,13 +1,10 @@
-import type { FunctionalComponent as FC, JSX } from '@stencil/core';
+import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import type { SpinVariantPropType } from '../../../schema';
-import clsx from '../../../utils/clsx';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { SpinApi } from './api';
 
-function renderSpin(variant: SpinVariantPropType): JSX.Element {
+function renderSpinVariant(variant: string): unknown {
 	switch (variant) {
 		case 'cycle':
 			return <span class="kol-spin__loader"></span>;
@@ -26,26 +23,24 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 }
 
 export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
-	const { label, show, showToggled, variant } = props;
-	const translateActionRunning = translate('kol-action-running');
-	const translateActionDone = translate('kol-action-done');
+	const { show, label, variant, showToggled, handleGetTranslateActionRunning, handleGetTranslateActionDone } = props;
 
 	return (
-		<div class="kol-spin">
+		<Fragment>
 			{show ? (
 				<Fragment>
-					<span class={clsx('kol-spin__spinner', `kol-spin__spinner--${variant}`)}>{renderSpin(variant)}</span>
+					<span class={`kol-spin__spinner kol-spin__spinner--${variant}`}>{renderSpinVariant(variant)}</span>
 					<span aria-busy="true" class="visually-hidden" role="alert">
-						{label || translateActionRunning}
+						{label ?? handleGetTranslateActionRunning()}
 					</span>
 				</Fragment>
 			) : (
 				showToggled && (
 					<span aria-busy="false" class="visually-hidden" role="alert">
-						{label || translateActionDone}
+						{label ?? handleGetTranslateActionDone()}
 					</span>
 				)
 			)}
-		</div>
+		</Fragment>
 	);
 };

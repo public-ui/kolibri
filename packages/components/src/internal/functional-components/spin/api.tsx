@@ -1,11 +1,19 @@
-import type { LabelProp, ShowProp, VariantSpinProp } from '../../props';
-import type { ComponentApi } from '../generic-types';
+import { labelProp, showProp, variantSpinProp } from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-export interface SpinApi extends ComponentApi {
-	Props: {
-		Optional: ShowProp & LabelProp & VariantSpinProp;
-	};
-	States: {
-		showToggled: boolean;
-	};
-}
+export const spinPropsConfig = {
+	optional: [labelProp, showProp, variantSpinProp],
+} as const satisfies PropsConfigShape;
+
+export type SpinApi = ApiFromConfig<
+	typeof spinPropsConfig,
+	{
+		States: {
+			showToggled: boolean;
+		};
+		Callbacks: {
+			getTranslateActionRunning: () => string;
+			getTranslateActionDone: () => string;
+		};
+	}
+>;

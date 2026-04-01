@@ -9,7 +9,7 @@ exports[`kol-spin should render with _show=false 1`] = `
 `;
 
 exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
-<kol-spin _show="" class="kol-spin">
+<kol-spin class="kol-spin">
   <template shadowrootmode="open">
     <div class="kol-spin">
       <span class="kol-spin__spinner kol-spin__spinner--dot">
@@ -27,7 +27,7 @@ exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
 `;
 
 exports[`kol-spin should render with _show=true 1`] = `
-<kol-spin _show="" class="kol-spin">
+<kol-spin class="kol-spin">
   <template shadowrootmode="open">
     <div class="kol-spin">
       <span class="kol-spin__spinner kol-spin__spinner--dot">
