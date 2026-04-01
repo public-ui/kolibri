@@ -1,4 +1,3 @@
-@layer kol-component {
   @font-face {
     font-family: "{{fontname}}";
     src: url('{{cssPath}}{{fontname}}.eot?t={{timestamp}}'); /* IE9*/
