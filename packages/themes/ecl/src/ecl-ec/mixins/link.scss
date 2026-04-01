@@ -10,5 +10,11 @@
 		&:hover {
 			color: var(--ecl-color-primary-140);
 		}
+
+		&:focus {
+			border-radius: 1px;
+			outline: 2px solid var(--ecl-color-primary);
+			outline-offset: 2px;
+		}
 	}
 }
