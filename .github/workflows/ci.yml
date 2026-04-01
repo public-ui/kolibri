@@ -17,15 +17,12 @@ jobs:
   build-and-check:
     continue-on-error: true
     runs-on: ubuntu-latest
-    outputs:
-      energy: ${{ steps.eco-ci-final.outputs.energy-total }}
-      carbon: ${{ steps.eco-ci-final.outputs.carbon-total }}
-      power: ${{ steps.eco-ci-final.outputs.power-avg }}
     steps:
       - name: 🌱 Start Energy Measurement
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
           task: start-measurement
+          json-output: true
           send-data: true
         continue-on-error: true
 
@@ -78,26 +75,48 @@ jobs:
       - name: Unused
         run: pnpm -r unused
 
-      - name: 🌱 Final Energy Measurement
-        id: eco-ci-final
+      - name: 🌱 Display Energy Results
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
-          task: final-measurement
+          task: display-results
+          pr-comment: true
           send-data: true
+        continue-on-error: true
+
+      - name: 📊 Save energy data
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir -p /tmp/energy-export
+          if [ -f /tmp/eco-ci/lap-data.json ]; then
+            ENERGY=$(jq '[.steps[].energy_joules | tonumber] | add // 0' /tmp/eco-ci/lap-data.json 2>/dev/null || echo "0")
+            POWER=$(jq '[.steps[].power_avg_watts | tonumber] | add / length // 0' /tmp/eco-ci/lap-data.json 2>/dev/null || echo "0")
+          else
+            ENERGY="0"
+            POWER="0"
+          fi
+          cat > /tmp/energy-export/build-and-check.json <<EJSON
+          {"job": "build-and-check", "energy_joules": "$ENERGY", "power_avg_watts": "$POWER"}
+          EJSON
+
+      - name: Upload energy data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: energy-build-and-check
+          path: /tmp/energy-export/
+          retention-days: 1
         continue-on-error: true
 
   e2e-tests:
     continue-on-error: true
     runs-on: ubuntu-latest
-    outputs:
-      energy: ${{ steps.eco-ci-final.outputs.energy-total }}
-      carbon: ${{ steps.eco-ci-final.outputs.carbon-total }}
-      power: ${{ steps.eco-ci-final.outputs.power-avg }}
     steps:
       - name: 🌱 Start Energy Measurement
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
           task: start-measurement
+          json-output: true
           send-data: true
         continue-on-error: true
 
@@ -139,12 +158,37 @@ jobs:
           label: 'e2e-react-samples'
         continue-on-error: true
 
-      - name: 🌱 Final Energy Measurement
-        id: eco-ci-final
+      - name: 🌱 Display Energy Results
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
-          task: final-measurement
+          task: display-results
+          pr-comment: true
           send-data: true
+        continue-on-error: true
+
+      - name: 📊 Save energy data
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir -p /tmp/energy-export
+          if [ -f /tmp/eco-ci/lap-data.json ]; then
+            ENERGY=$(jq '[.steps[].energy_joules | tonumber] | add // 0' /tmp/eco-ci/lap-data.json 2>/dev/null || echo "0")
+            POWER=$(jq '[.steps[].power_avg_watts | tonumber] | add / length // 0' /tmp/eco-ci/lap-data.json 2>/dev/null || echo "0")
+          else
+            ENERGY="0"
+            POWER="0"
+          fi
+          cat > /tmp/energy-export/e2e-tests.json <<EJSON
+          {"job": "e2e-tests", "energy_joules": "$ENERGY", "power_avg_watts": "$POWER"}
+          EJSON
+
+      - name: Upload energy data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: energy-e2e-tests
+          path: /tmp/energy-export/
+          retention-days: 1
         continue-on-error: true
 
       - uses: ./.github/actions/upload-reports
@@ -163,6 +207,7 @@ jobs:
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
           task: start-measurement
+          json-output: true
           send-data: true
         continue-on-error: true
 
@@ -201,26 +246,28 @@ jobs:
           label: 'visual-tests-${{ matrix.package }}'
         continue-on-error: true
 
-      - name: 🌱 Final Energy Measurement
-        id: eco-ci-final
+      - name: 🌱 Display Energy Results
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
-          task: final-measurement
+          task: display-results
+          pr-comment: true
           send-data: true
         continue-on-error: true
 
-      - name: Save energy data
+      - name: 📊 Save energy data
         if: always()
         continue-on-error: true
         run: |
-          mkdir -p /tmp/energy-data
-          cat > "/tmp/energy-data/${{ matrix.package }}.json" <<EJSON
-          {
-            "package": "${{ matrix.package }}",
-            "energy": "${{ steps.eco-ci-final.outputs.energy-total }}",
-            "carbon": "${{ steps.eco-ci-final.outputs.carbon-total }}",
-            "power": "${{ steps.eco-ci-final.outputs.power-avg }}"
-          }
+          mkdir -p /tmp/energy-export
+          if [ -f /tmp/eco-ci/lap-data.json ]; then
+            ENERGY=$(jq '[.steps[].energy_joules | tonumber] | add // 0' /tmp/eco-ci/lap-data.json 2>/dev/null || echo "0")
+            POWER=$(jq '[.steps[].power_avg_watts | tonumber] | add / length // 0' /tmp/eco-ci/lap-data.json 2>/dev/null || echo "0")
+          else
+            ENERGY="0"
+            POWER="0"
+          fi
+          cat > /tmp/energy-export/visual-${{ matrix.package }}.json <<EJSON
+          {"job": "visual-tests (${{ matrix.package }})", "energy_joules": "$ENERGY", "power_avg_watts": "$POWER"}
           EJSON
 
       - name: Upload energy data
@@ -228,7 +275,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: energy-visual-${{ matrix.package }}
-          path: /tmp/energy-data/
+          path: /tmp/energy-export/
           retention-days: 1
         continue-on-error: true
 
@@ -264,101 +311,61 @@ jobs:
       pull-requests: write
     continue-on-error: true
     steps:
-      - name: Download visual-tests energy data
+      - name: Download all energy data
         uses: actions/download-artifact@v4
         with:
-          pattern: energy-visual-*
+          pattern: energy-*
           path: /tmp/energy-data
           merge-multiple: true
         continue-on-error: true
 
       - name: Build energy report
-        id: report
         run: |
-          # Collect build-and-check data
-          BUILD_ENERGY="${{ needs.build-and-check.outputs.energy }}"
-          BUILD_CARBON="${{ needs.build-and-check.outputs.carbon }}"
-          BUILD_POWER="${{ needs.build-and-check.outputs.power }}"
-
-          # Collect e2e-tests data
-          E2E_ENERGY="${{ needs.e2e-tests.outputs.energy }}"
-          E2E_CARBON="${{ needs.e2e-tests.outputs.carbon }}"
-          E2E_POWER="${{ needs.e2e-tests.outputs.power }}"
-
-          # Start building the report
           {
             echo "## 🌱 Green Software – Energy Report"
             echo ""
-            echo "Energieverbrauch der CI-Pipeline, gemessen mit [Eco CI](https://github.com/green-coding-solutions/eco-ci-energy-estimation)."
+            echo "Energieverbrauch der CI-Pipeline pro Job, gemessen mit [Eco CI](https://github.com/green-coding-solutions/eco-ci-energy-estimation)."
             echo ""
-            echo "### Übersicht"
-            echo ""
-            echo "| Job | Energie (J) | CO₂ (gCO₂eq) | Leistung ⌀ (W) |"
-            echo "|-----|------------|---------------|----------------|"
-            echo "| **build-and-check** | ${BUILD_ENERGY:-n/a} | ${BUILD_CARBON:-n/a} | ${BUILD_POWER:-n/a} |"
-            echo "| **e2e-tests** | ${E2E_ENERGY:-n/a} | ${E2E_CARBON:-n/a} | ${E2E_POWER:-n/a} |"
+            echo "| Job | Energie (J) | Leistung ⌀ (W) |"
+            echo "|-----|------------|----------------|"
 
-            # Parse visual-tests artifacts
-            VISUAL_TOTAL_ENERGY=0
-            VISUAL_TOTAL_CARBON=0
+            TOTAL_ENERGY=0
+
             if ls /tmp/energy-data/*.json 1>/dev/null 2>&1; then
-              for f in /tmp/energy-data/*.json; do
-                PKG=$(jq -r '.package' "$f" 2>/dev/null || echo "unknown")
-                VE=$(jq -r '.energy' "$f" 2>/dev/null || echo "")
-                VC=$(jq -r '.carbon' "$f" 2>/dev/null || echo "")
-                VP=$(jq -r '.power' "$f" 2>/dev/null || echo "")
-                echo "| visual-tests ($PKG) | ${VE:-n/a} | ${VC:-n/a} | ${VP:-n/a} |"
-                if [ -n "$VE" ] && [ "$VE" != "n/a" ] && [ "$VE" != "" ]; then
-                  VISUAL_TOTAL_ENERGY=$(echo "$VISUAL_TOTAL_ENERGY + $VE" | bc -l 2>/dev/null || echo "$VISUAL_TOTAL_ENERGY")
-                fi
-                if [ -n "$VC" ] && [ "$VC" != "n/a" ] && [ "$VC" != "" ]; then
-                  VISUAL_TOTAL_CARBON=$(echo "$VISUAL_TOTAL_CARBON + $VC" | bc -l 2>/dev/null || echo "$VISUAL_TOTAL_CARBON")
-                fi
+              for f in $(ls /tmp/energy-data/*.json | sort); do
+                JOB=$(jq -r '.job' "$f" 2>/dev/null || echo "unknown")
+                ENERGY=$(jq -r '.energy_joules' "$f" 2>/dev/null || echo "0")
+                POWER=$(jq -r '.power_avg_watts' "$f" 2>/dev/null || echo "0")
+                # Round to 2 decimal places
+                ENERGY_FMT=$(printf "%.2f" "$ENERGY" 2>/dev/null || echo "$ENERGY")
+                POWER_FMT=$(printf "%.2f" "$POWER" 2>/dev/null || echo "$POWER")
+                echo "| $JOB | $ENERGY_FMT | $POWER_FMT |"
+                TOTAL_ENERGY=$(echo "$TOTAL_ENERGY + $ENERGY" | bc -l 2>/dev/null || echo "$TOTAL_ENERGY")
               done
             else
-              echo "| **visual-tests** | n/a | n/a | n/a |"
+              echo "| _(keine Daten verfügbar)_ | – | – |"
             fi
 
+            TOTAL_FMT=$(printf "%.2f" "$TOTAL_ENERGY" 2>/dev/null || echo "$TOTAL_ENERGY")
             echo ""
-
-            # Calculate total
-            TOTAL_ENERGY=0
-            TOTAL_CARBON=0
-            for val in "$BUILD_ENERGY" "$E2E_ENERGY"; do
-              if [ -n "$val" ]; then
-                TOTAL_ENERGY=$(echo "$TOTAL_ENERGY + $val" | bc -l 2>/dev/null || echo "$TOTAL_ENERGY")
-              fi
-            done
-            TOTAL_ENERGY=$(echo "$TOTAL_ENERGY + $VISUAL_TOTAL_ENERGY" | bc -l 2>/dev/null || echo "$TOTAL_ENERGY")
-
-            for val in "$BUILD_CARBON" "$E2E_CARBON"; do
-              if [ -n "$val" ]; then
-                TOTAL_CARBON=$(echo "$TOTAL_CARBON + $val" | bc -l 2>/dev/null || echo "$TOTAL_CARBON")
-              fi
-            done
-            TOTAL_CARBON=$(echo "$TOTAL_CARBON + $VISUAL_TOTAL_CARBON" | bc -l 2>/dev/null || echo "$TOTAL_CARBON")
-
-            echo "### Gesamt"
-            echo ""
-            echo "| Metrik | Wert |"
-            echo "|--------|------|"
-            echo "| **Gesamtenergie** | ${TOTAL_ENERGY} J |"
-            echo "| **Gesamt-CO₂** | ${TOTAL_CARBON} gCO₂eq |"
+            echo "**Gesamtenergie: ${TOTAL_FMT} J**"
             echo ""
 
             # Budget check
             BUDGET=500
-            if [ -n "$BUILD_ENERGY" ]; then
-              OVER=$(echo "$BUILD_ENERGY > $BUDGET" | bc -l 2>/dev/null || echo "0")
-              if [ "$OVER" = "1" ]; then
-                echo "⚠️ **Energie-Budget-Warnung:** build-and-check verbraucht ${BUILD_ENERGY}J (Schwellwert: ${BUDGET}J)"
-                echo ""
-              fi
+            OVER=$(echo "$TOTAL_ENERGY > $BUDGET" | bc -l 2>/dev/null || echo "0")
+            if [ "$OVER" = "1" ]; then
+              echo "> ⚠️ **Energie-Budget-Warnung:** Gesamtverbrauch ${TOTAL_FMT}J überschreitet den Schwellwert von ${BUDGET}J"
+              echo ""
             fi
 
-            echo "<sub>Gemessen mit <a href=\"https://github.com/green-coding-solutions/eco-ci-energy-estimation\">Eco CI Energy Estimation</a> · Daten auf <a href=\"https://metrics.green-coding.io\">Green Metrics Tool</a></sub>"
+            echo "---"
+            echo "<sub>Gemessen mit <a href=\"https://github.com/green-coding-solutions/eco-ci-energy-estimation\">Eco CI</a> · Details pro Job im jeweiligen Step Summary</sub>"
+            echo ""
+            echo "<!-- eco-ci-energy-report -->"
           } > /tmp/energy-report.md
 
+          echo "--- Generated Report ---"
           cat /tmp/energy-report.md
 
       - name: Find existing comment
@@ -367,7 +374,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
-          body-includes: '🌱 Green Software – Energy Report'
+          body-includes: '<!-- eco-ci-energy-report -->'
 
       - name: Post or update PR comment
         uses: peter-evans/create-or-update-comment@v5
