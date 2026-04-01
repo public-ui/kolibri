@@ -162,6 +162,7 @@ type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'has-badge' | 'hide-label'>;
+	};
 	'kol-spin': {
 		elements: {
 			spinner: {
@@ -258,6 +259,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			label: { modifiers: null },
 		},
 		modifiers: new Set(['has-badge', 'hide-label']),
+	},
 	'kol-spin': {
 		elements: {
 			loader: { modifiers: null },
