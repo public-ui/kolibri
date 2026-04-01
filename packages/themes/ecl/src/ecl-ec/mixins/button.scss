@@ -129,6 +129,10 @@
 
 			line-height: 1.2;
 
+			.kol-span__label {
+				word-break: keep-all;
+			}
+
 			&.kol-span--hide-label {
 				padding: var(--ecl-spacing-xs);
 			}
