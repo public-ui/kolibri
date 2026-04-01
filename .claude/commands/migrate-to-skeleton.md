@@ -81,7 +81,8 @@ Create or replace files according to the ARC42 layers:
 
 2. **Controller** (`packages/components/src/internal/functional-components/$ARGUMENTS/controller.ts`)
    - Extends `BaseController<Api>`
-   - Receives `setState: SetStateFn<Api>` and `getState: GetStateFn<Api>`
+   - Constructor takes `stateAccess: StateAccess<Api>` — bundled object with `setState` and `getState`
+   - Internally destructures `stateAccess` into protected fields: `protected readonly setState` and `protected readonly getState`
    - `componentWillLoad()` with `ResolvedInputProps<Api>`
    - Watcher methods use `propDefinition.apply(value, callback)`
    - Event handlers and ref setters as **arrow properties**
@@ -95,7 +96,8 @@ Create or replace files according to the ARC42 layers:
 4. **Web Component** (`packages/components/src/components/$ARGUMENTS/component.tsx`)
    - `@Component({ tag: 'kol-$ARGUMENTS', shadow: true })`
    - Extends `BaseWebComponent<Api>` and implements `WebComponentInterface<Api>`
-   - Controller: `private readonly ctrl = new Controller(this.setState, this.getState)`
+   - Inherits `protected readonly stateAccess: StateAccess<Api>` from `BaseWebComponent`
+   - Controller: `private readonly ctrl = new Controller(this.stateAccess)` — pass bundled state access object
    - `@Prop()` and `@Watch()` for every prop (prop triangle!)
    - `componentWillLoad()` forwards props to controller
    - `render()` returns `<Host>` with functional component
@@ -185,17 +187,55 @@ Declare `@State()` only for values that actually trigger re-renders. Remove any 
 ### ❌ 4. Event handler defined inline in a lifecycle method
 
 ```typescript
+<<<<<<< HEAD
 ❌ componentWillLoad(): void { el.addEventListener('click', () => { ... }); }
    // new function reference each cycle → listener accumulates, never removed
+=======
+export class MyController extends BaseController<MyApi> implements ControllerInterface<MyApi> {
+	public constructor(stateAccess: StateAccess<MyApi>) {
+		super(stateAccess, myPropsConfig);
+		// BaseController constructor destructures stateAccess into:
+		// - this.setState = stateAccess.setState (protected)
+		// - this.getState = stateAccess.getState (protected)
+	}
+>>>>>>> 6b6a915560 (refactor: remove FormFieldTooltip component and related tests)
 
 ✅ public handleClick = (): void => { ... };   // arrow property in controller
    componentDidLoad(): void { el.addEventListener('click', this.handleClick); }
 ```
 
+<<<<<<< HEAD
 ### ❌ 5. Inline prop types instead of `src/internal/props/`
+=======
+#### Receiving StateAccess from Web Component
+
+New web components pass `this.stateAccess`:
+
+```typescript
+export class KolMyComponent extends BaseWebComponent<MyApi> {
+	private readonly ctrl = new MyController(this.stateAccess);
+	//                                       ^^^^^^^^^^^^^^^^
+	//                                       Bundled setState + getState
+}
+```
+
+Legacy components or non-class callers pass a sentinel:
+
+```typescript
+// Via static (class-based legacy)
+private readonly ctrl = new MyController(BaseWebComponent.withoutState);
+
+// Via export (functional / context-less)
+import { noopStateAccess } from '../../internal/functional-components/base-web-component';
+const ctrl = new MyController(noopStateAccess);
+```
+
+### State Management
+>>>>>>> 6b6a915560 (refactor: remove FormFieldTooltip component and related tests)
 
 Props defined inline in a component cannot be reused and lead to inconsistent normalisation. Always create a dedicated file under `packages/components/src/internal/props/`.
 
+<<<<<<< HEAD
 ### ❌ 6. `@Prop({ reflect: true })` omitted where needed
 
 If the attribute value must be readable via `el.getAttribute('_name')` (e.g. for CSS attribute selectors or testing), add `reflect: true`. When in doubt, follow the existing props as reference.
@@ -220,6 +260,74 @@ Verify all points before opening a pull request:
 - [ ] **No JSDoc types** — only TypeScript signatures; JSDoc only for Stencil decorators
 - [ ] **Tests co-located** — `snapshot.spec.tsx` (and optionally `interaction.e2e.ts`) next to `component.tsx`
 - [ ] **All commands green** — `pnpm format`, `pnpm lint`, `pnpm --filter @public-ui/components test:unit` ✓
+=======
+### State Access Pattern — Unified Architecture
+
+All controllers operate through a **unified `StateAccess<Api>` interface**, not separate `setState`/`getState` parameters:
+
+```typescript
+export interface StateAccess<Api extends ComponentApi> {
+	setState: SetStateFn<Api>;
+	getState: GetStateFn<Api>;
+}
+```
+
+#### New Components (Preferred)
+
+New web components extend `BaseWebComponent<Api>` and inherit `stateAccess`:
+
+```typescript
+// Web Component
+export class KolMyComponent extends BaseWebComponent<MyApi> implements WebComponentInterface<MyApi> {
+	private readonly ctrl = new MyController(this.stateAccess);
+	// this.stateAccess contains setState/getState backed by @State decorator
+}
+
+// Controller
+export class MyController extends BaseController<MyApi> {
+	public constructor(stateAccess: StateAccess<MyApi>) {
+		super(stateAccess, myPropsConfig);
+		// BaseController destructures stateAccess into:
+		// - this.setState (protected)
+		// - this.getState (protected)
+	}
+}
+```
+
+#### Legacy Components (Backwards Compatible)
+
+Old web components that **do not** extend `BaseWebComponent` can still instantiate controllers:
+
+- **Via static sentinel `BaseWebComponent.withoutState`** (for class-based legacy components):
+
+  ```typescript
+  export class KolLegacyComponent {
+  	private readonly ctrl = new MyController(BaseWebComponent.withoutState);
+  	// Access via static: BaseWebComponent.withoutState
+  }
+  ```
+
+- **Via exported `noopStateAccess`** (for functional components or controllers created outside a web component):
+
+  ```typescript
+  import { noopStateAccess } from '../../internal/functional-components/base-web-component';
+
+  const tooltipCtrl = new TooltipController(noopStateAccess);
+  ```
+
+**Both variants provide silent no-op state access** — calling `setState`/`getState` on a component without `@State` decorator simply reads/writes properties on the instance, which triggers no Stencil re-render. This is **safe and intentional** for controllers that only use `setRenderProp()` / `getRenderProp()`.
+
+### Conventions
+
+- All web components: `shadow: true`
+- `<Host>` without class attribute
+- Underscored public props (`_name`, `_label`)
+- Tests co-located next to `component.tsx`
+- No `types.ts` files, no barrel files
+- **ARIA IDs via `nonce()`**: Any `id` referenced by `aria-controls`, `aria-labelledby`, `aria-describedby` or `aria-owns` must be unique per instance — declare as `private readonly myId = \`prefix-${nonce()}\``using`nonce()`from`utils/dev.utils`
+- **Kein `data-testid`**: Tests verwenden BEM-Klassen als Selektoren (`page.locator('.kol-component__element')`), niemals `data-testid`-Attribute im Komponenten-Markup
+- **StateAccess parameter**: Controllers always receive `StateAccess<Api>` bundled object, never separate `setState`/`getState` parameters
+>>>>>>> 6b6a915560 (refactor: remove FormFieldTooltip component and related tests)
 
 ---
 

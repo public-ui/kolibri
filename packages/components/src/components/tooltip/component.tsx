@@ -1,201 +1,23 @@
-import { autoUpdate } from '@floating-ui/dom';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
-import { getDocument, validateAlign, validateBadgeText, validateId, validateLabel } from '../../schema';
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
+import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType } from '../../schema';
 
-import { SpanFC } from '../../internal/functional-components/span/component';
-import { alignFloatingElements } from '../../utils/align-floating-elements';
-import { nonce } from '../../utils/dev.utils';
-import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { tooltipClosed, tooltipOpened } from '../../utils/tooltip-open-tracking';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 
 /**
+ * @deprecated The tooltip component is deprecated and will be removed in the next major release
  * @internal
  */
 @Component({
 	tag: 'kol-tooltip-wc',
 	shadow: false,
 })
-export class KolTooltipWc implements TooltipAPI {
+export class KolTooltipWc {
 	@Element() private readonly host?: HTMLKolTooltipWcElement;
 
-	private arrowElement?: HTMLDivElement;
-	private previousSibling?: Element | null;
-	private parentElement?: Element | null;
-	private tooltipElement?: HTMLDivElement;
-	private hasFocusIn = false;
-	private hasMouseIn = false;
-
-	/**
-	 * Prevents the tooltip from showing during the current interaction session.
-	 * An "interaction session" (visit) is active while the user hovers over or focuses the trigger element.
-	 *
-	 * Behavior:
-	 * - Set to true when hideTooltip() is called (e.g., via Escape key, click, or programmatically)
-	 * - Remains true for the entire session, even if interaction type changes (e.g., from click to hover)
-	 * - Reset to false when the session ends (user leaves the element completely)
-	 * - Tooltip will show again on the next session unless manually hidden again
-	 */
-	private isHiddenForCurrentVisit = false;
-
-	private cleanupAutoPositioning?: () => void;
-
-	/**
-	 * Checks if a new interaction session is starting (no prior hover or focus active).
-	 */
-	private isNewVisit(): boolean {
-		return !this.hasMouseIn && !this.hasFocusIn;
-	}
-
-	/**
-	 * Resets the hide flag when the interaction session ends.
-	 */
-	private resetHideFlag = (): void => {
-		if (this.isNewVisit()) {
-			this.isHiddenForCurrentVisit = false;
-		}
-	};
-
-	private async alignTooltip(): Promise<void> {
-		if (this.tooltipElement && this.previousSibling) {
-			await alignFloatingElements({
-				align: this._align,
-				referenceElement: this.previousSibling,
-				arrowElement: this.arrowElement,
-				floatingElement: this.tooltipElement,
-			});
-		}
-	}
-
-	private showTooltip = (): void => {
-		if (this.isHiddenForCurrentVisit) {
-			return;
-		}
-		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
-			showOverlay(this.tooltipElement);
-			tooltipOpened();
-			this.tooltipElement.classList.remove('hide');
-			this.tooltipElement.classList.add('show');
-			this.tooltipElement.style.setProperty('display', 'block');
-			this.parentElement?.classList.add('hastooltip');
-			getDocument().addEventListener('keyup', this.hideTooltipByEscape, {
-				once: true,
-			});
-
-			const target = this.previousSibling;
-			const tooltipEl = this.tooltipElement;
-			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, () => {
-				void this.alignTooltip();
-			});
-		}
-	};
-
-	/**
-	 * Hides the tooltip.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async hideTooltip() {
-		this.isHiddenForCurrentVisit = true;
-
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			hideOverlay(this.tooltipElement);
-			tooltipClosed();
-			this.tooltipElement.classList.remove('show');
-			this.tooltipElement.classList.add('hide');
-			this.parentElement?.classList.remove('hastooltip');
-
-			if (this.cleanupAutoPositioning) {
-				this.cleanupAutoPositioning();
-				this.cleanupAutoPositioning = undefined;
-			}
-		}
-		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
-	}
-
-	private hideTooltipByEscape = (event: KeyboardEvent): void => {
-		if (event.key === 'Escape') {
-			void this.hideTooltip();
-		}
-	};
-
-	private handleMouseEnter() {
-		const isNewVisit = this.isNewVisit();
-		this.hasMouseIn = true;
-		if (isNewVisit) {
-			this.isHiddenForCurrentVisit = false;
-		}
-		this.showOrHideTooltip();
-	}
-
-	private handleMouseLeave() {
-		this.hasMouseIn = false;
-		this.resetHideFlag();
-		this.showOrHideTooltip();
-	}
-
-	private handleFocusIn() {
-		const isNewVisit = this.isNewVisit();
-		this.hasFocusIn = true;
-		if (isNewVisit) {
-			this.isHiddenForCurrentVisit = false;
-		}
-		this.showOrHideTooltip();
-	}
-
-	private handleFocusOut() {
-		this.hasFocusIn = false;
-		this.resetHideFlag();
-		this.showOrHideTooltip();
-	}
-
-	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
-		el.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
-		el.addEventListener('focusin', this.handleFocusIn.bind(this));
-		el.addEventListener('focusout', this.handleFocusOut.bind(this));
-	};
-
-	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
-		el.removeEventListener('mouseleave', this.handleMouseLeave.bind(this));
-		el.removeEventListener('focusin', this.handleFocusIn.bind(this));
-		el.removeEventListener('focusout', this.handleFocusOut.bind(this));
-	};
-
-	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
-		if (last) {
-			this.removeListeners(last);
-		}
-		if (next) {
-			/**
-			 * This makes the next element to the last element for the next resync cycle.
-			 */
-			if (replacePreviousSibling) {
-				this.previousSibling = next;
-			}
-			this.addListeners(next);
-		}
-	};
-
-	private catchTooltipElement = (el?: HTMLDivElement): void => {
-		this.tooltipElement = el;
-	};
-	private catchArrowElement = (element?: HTMLDivElement): void => {
-		this.arrowElement = element;
-	};
-
-	public render(): JSX.Element {
-		return (
-			<Host class="kol-tooltip">
-				<div class="kol-tooltip__floating" hidden={this.state._label.length === 0} ref={this.catchTooltipElement}>
-					<div class="kol-tooltip__arrow" ref={this.catchArrowElement} />
-					<SpanFC class="kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
-				</div>
-			</Host>
-		);
-	}
+	private controller = new TooltipController(BaseWebComponent.withoutState);
 
 	/**
 	 * Defines the elements badge text.
@@ -209,6 +31,7 @@ export class KolTooltipWc implements TooltipAPI {
 
 	/**
 	 * Defines the internal ID of the primary component element.
+	 * @deprecated Will be removed in next major release. The ID is now generated internally and cannot be set via props.
 	 * @internal
 	 */
 	@Prop() public _id?: IdPropType;
@@ -218,82 +41,62 @@ export class KolTooltipWc implements TooltipAPI {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: TooltipStates = {
-		_align: 'top',
-		_id: `id-${nonce()}`,
-		_label: '', // ⚠ required
-	};
-
-	@Watch('_badgeText')
-	public validateBadgeText(value?: BadgeTextPropType): void {
-		validateBadgeText(this, value);
-	}
-
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
-		validateAlign(this, value);
+		this.controller?.watchAlign(value);
 	}
 
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {
-		validateId(this, value);
+		this.controller?.watchId(value);
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			required: true,
-		});
-	}
-
-	private overFocusTimeout?: ReturnType<typeof setTimeout>;
-
-	private showOrHideTooltip = (): void => {
-		clearTimeout(this.overFocusTimeout);
-		this.overFocusTimeout = setTimeout(() => {
-			if (this.hasMouseIn || this.hasFocusIn) {
-				this.showTooltip();
-			} else {
-				void this.hideTooltip();
-			}
-			// Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
-		}, 300);
-	};
-
-	public componentWillLoad(): void {
-		this.validateBadgeText(this._badgeText);
-		this.validateAlign(this._align);
-		this.validateId(this._id);
-		this.validateLabel(this._label);
-	}
-
-	private handleEventListeners(): void {
-		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling, true);
-		this.resyncListeners(this.tooltipElement, this.tooltipElement);
-	}
-
-	public connectedCallback(): void {
-		this.previousSibling = this.host?.previousElementSibling;
-		this.parentElement = this.host?.parentElement;
-	}
-
-	public componentDidRender(): void {
-		this.handleEventListeners();
+		this.controller?.watchLabel(value);
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (componentDidLoad)
+	 * Hides the tooltip.
 	 */
+	@Method()
+	public hideTooltip(): Promise<void> {
+		return Promise.resolve(this.controller?.hideTooltip());
+	}
+
+	public componentWillLoad(): void {
+		this.controller.componentWillLoad({
+			label: this._label,
+			align: this._align,
+			badgeText: this._badgeText,
+			id: this._id,
+		});
+	}
+
+	public connectedCallback(): void {
+		this.controller?.initContext((this.host?.previousElementSibling ?? undefined) as HTMLElement | undefined);
+	}
+
+	public componentDidRender(): void {
+		if (this.host) {
+			this.controller?.handleEventListeners(this.host as HTMLElement);
+		}
+	}
+
 	public disconnectedCallback(): void {
-		if (this.previousSibling /* SSR instanceof HTMLElement */) {
-			this.removeListeners(this.previousSibling);
-			this.previousSibling = undefined;
-		}
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			this.removeListeners(this.tooltipElement);
-		}
-		if (this.cleanupAutoPositioning) {
-			this.cleanupAutoPositioning();
-		}
+		this.controller?.destroy();
+	}
+
+	public render(): JSX.Element {
+		return (
+			<Host class="kol-tooltip-wc">
+				<TooltipFC
+					label={this.controller.getRenderProp('label')}
+					badgeText={this._badgeText}
+					id={this.controller.getRenderProp('id')}
+					refFloating={(el?: HTMLDivElement) => this.controller?.setTooltipElementRef(el as HTMLElement)}
+				/>
+			</Host>
+		);
 	}
 }

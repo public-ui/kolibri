@@ -19,8 +19,8 @@ import type { HeadingLevel, LabelWithExpertSlotPropType } from '../../schema';
 	},
 	shadow: true,
 })
-export class KolHeading extends BaseWebComponent<HeadingApi> implements WebComponentInterface<HeadingApi> {
-	private readonly ctrl: HeadingController = new HeadingController(this.setState, this.getState);
+export class KolHeading implements WebComponentInterface<HeadingApi> {
+	private readonly ctrl = new HeadingController(BaseWebComponent.withoutState);
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

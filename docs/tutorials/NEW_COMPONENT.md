@@ -98,7 +98,7 @@ import { myComponentPropsConfig } from './api';
 
 export class MyComponentController extends BaseController<MyComponentApi> implements ControllerInterface<MyComponentApi> {
 	public constructor(setState: SetStateFn<MyComponentApi>, getState: GetStateFn<MyComponentApi>) {
-		super(myComponentPropsConfig, setState, getState);
+		super(setState, getState, myComponentPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<MyComponentApi>): void {

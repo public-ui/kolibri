@@ -1,30 +1,42 @@
-import type { ComponentApi, GetStateFn, InternalOf, SetStateFn } from './generic-types';
+import type { ComponentApi, InternalOf, StateAccess } from './generic-types';
 
 /**
- * Base class for web components that provides a type-safe setState method.
- * Subclasses pass `this.setState` to their controller constructors, ensuring
- * that all state writes are validated against Api['States'] at compile time.
+ * Throws when a stateless controller accidentally attempts to read or write state.
+ * Used as the implementation behind {@link BaseWebComponent.withoutState}.
+ */
+function throwNoStateAccess(): never {
+	throw new Error('This controller does not use component state.');
+}
+
+/**
+ * Base class for web components that provides type-safe state access.
+ * Subclasses pass `this.stateAccess` to their controller constructors, ensuring
+ * that all state reads and writes are validated against Api['States'] at compile time.
  */
 export abstract class BaseWebComponent<Api extends ComponentApi> {
 	/**
-	 * Sets a reactive @State field with type safety.
-	 * The key must be a valid state field name defined in Api['States'],
-	 * and the value must match its declared type.
-	 * Each call triggers a Stencil re-render.
+	 * Frozen sentinel for controllers that do not need component state.
+	 * Both `setState` and `getState` throw if called, catching accidental
+	 * state access at runtime.
+	 *
+	 * Pass this to the controller constructor in web components whose
+	 * controller only uses render props (no `@State` fields).
 	 */
-	public setState: SetStateFn<Api> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
-		key: K,
-		value: InternalOf<NonNullable<Api['States']>>[K],
-	): void => {
-		(this as Record<string, unknown>)[key as string] = value;
-	};
+	public static readonly withoutState: StateAccess<never> = Object.freeze({
+		setState: throwNoStateAccess,
+		getState: throwNoStateAccess,
+	});
 
 	/**
-	 * Reads a reactive @State field with type safety.
-	 * The key must be a valid state field name defined in Api['States'],
-	 * and it returns the current value with the correct type.
+	 * Bundled state access for passing to controllers.
+	 * Writes trigger a Stencil re-render via the @State decorator on the subclass.
 	 */
-	public getState: GetStateFn<Api> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(key: K): InternalOf<NonNullable<Api['States']>>[K] => {
-		return (this as Record<string, unknown>)[key as string] as InternalOf<NonNullable<Api['States']>>[K];
+	protected readonly stateAccess: StateAccess<Api> = {
+		setState: <K extends keyof InternalOf<NonNullable<Api['States']>>>(key: K, value: InternalOf<NonNullable<Api['States']>>[K]): void => {
+			(this as Record<string, unknown>)[key as string] = value;
+		},
+		getState: <K extends keyof InternalOf<NonNullable<Api['States']>>>(key: K): InternalOf<NonNullable<Api['States']>>[K] => {
+			return (this as Record<string, unknown>)[key as string] as InternalOf<NonNullable<Api['States']>>[K];
+		},
 	};
 }

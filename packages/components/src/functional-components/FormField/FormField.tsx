@@ -1,7 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { AlignPropType, MaxLengthBehaviorPropType, MsgPropType, Stringified } from '../../schema';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
+import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
@@ -9,7 +12,28 @@ import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldLabelFc from '../FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
-import KolFormFieldTooltipFc from '../FormFieldTooltip';
+
+const formFieldTooltipControllerById = new Map<string, TooltipController>();
+
+const getFormFieldTooltipController = (id: string): TooltipController => {
+	const tooltipController = formFieldTooltipControllerById.get(id);
+	if (tooltipController) {
+		return tooltipController;
+	}
+
+	const nextTooltipController = new TooltipController(BaseWebComponent.withoutState);
+	nextTooltipController.componentWillLoad({ label: '' });
+	formFieldTooltipControllerById.set(id, nextTooltipController);
+	return nextTooltipController;
+};
+
+const destroyFormFieldTooltipController = (id: string): void => {
+	const tooltipController = formFieldTooltipControllerById.get(id);
+	if (tooltipController) {
+		tooltipController.destroy();
+		formFieldTooltipControllerById.delete(id);
+	}
+};
 
 function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	if (msg?.type) {
@@ -33,7 +57,6 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	alert?: boolean;
 	disabled?: boolean;
 	msg?: Stringified<MsgPropType>;
-	tooltipAlign?: AlignPropType;
 	hint?: string;
 	label: string;
 	hideLabel?: boolean;
@@ -50,6 +73,9 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	anotherChildren?: JSX.Element | JSX.Element[];
 	maxLength?: number;
 	showBadge?: boolean;
+	tooltipAlign?: TooltipAlignPropType;
+	tooltipFloatingRef?: (el?: HTMLDivElement) => void;
+	tooltipArrowRef?: (el?: HTMLDivElement) => void;
 
 	formFieldLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
@@ -85,13 +111,14 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		hint,
 		accessKey,
 		shortKey,
-		tooltipAlign,
 		counter,
 		readOnly,
 		touched,
 		maxLength,
 		ariaDescribedBy,
 		showBadge,
+		tooltipAlign,
+		tooltipFloatingRef,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -107,6 +134,25 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
+	const tooltipController = useTooltipInsteadOfLabel ? getFormFieldTooltipController(id) : undefined;
+
+	if (tooltipController) {
+		tooltipController.watchAlign(tooltipAlign);
+		tooltipController.watchBadgeText(badgeText || '');
+		tooltipController.watchId(`${id}-label`);
+		tooltipController.watchLabel(label);
+	} else {
+		destroyFormFieldTooltipController(id);
+	}
+
+	const forwardedInputRef = formFieldInputProps?.ref as ((el?: HTMLDivElement) => void) | undefined;
+	const setInputContainerRef = (el?: HTMLDivElement): void => {
+		forwardedInputRef?.(el);
+		if (tooltipController && el) {
+			tooltipController.initContext(el);
+			tooltipController.syncListeners(undefined, el, true);
+		}
+	};
 
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),
@@ -142,10 +188,23 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					showBadge={showBadge}
 				/>
 			)}
-			<InputContainer {...formFieldInputProps}>
+			<InputContainer {...formFieldInputProps} ref={setInputContainerRef}>
 				{children}
 				{useTooltipInsteadOfLabel && hideLabel === true && (
-					<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} align={tooltipAlign} badgeText={badgeText} />
+					<div class={clsx('kol-form-field__tooltip', formFieldTooltipProps?.class)}>
+						<TooltipFC
+							badgeText={badgeText || ''}
+							label={label}
+							align={tooltipAlign}
+							id={`${id}-label`}
+							refFloating={
+								tooltipFloatingRef ??
+								((el?: HTMLDivElement) => {
+									tooltipController?.setTooltipElementRef(el);
+								})
+							}
+						/>
+					</div>
 				)}
 			</InputContainer>
 			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
