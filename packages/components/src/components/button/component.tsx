@@ -98,6 +98,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	private readonly onClick = (event: MouseEvent) => {
 		event.stopPropagation();
+		this.tooltipCtrl.hideTooltip();
 
 		if (this.state._type === 'submit') {
 			propagateSubmitEventToForm({

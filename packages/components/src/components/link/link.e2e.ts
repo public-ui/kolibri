@@ -39,4 +39,32 @@ test.describe('kol-link', () => {
 			await expect(eventPromise).resolves.toBeUndefined();
 		});
 	});
+
+	test('should hide tooltip after click until link is left and focused again', async ({ page }) => {
+		await page.setContent('<kol-link _href="#target" _label="Tooltip Link" _hide-label="true"></kol-link>');
+		const link = page.locator('a');
+		const tooltip = page.locator('.kol-link__tooltip .kol-tooltip__floating');
+
+		await link.focus();
+		await expect
+			.poll(async () => {
+				return await tooltip.evaluate((el) => el.classList.contains('show'));
+			})
+			.toBe(true);
+
+		await link.click();
+		await expect
+			.poll(async () => {
+				return await tooltip.evaluate((el) => el.classList.contains('hide'));
+			})
+			.toBe(true);
+
+		await page.locator('body').focus();
+		await link.focus();
+		await expect
+			.poll(async () => {
+				return await tooltip.evaluate((el) => el.classList.contains('show'));
+			})
+			.toBe(true);
+	});
 });

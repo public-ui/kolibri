@@ -103,6 +103,8 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	private readonly onClick = (event: Event) => {
+		this.tooltipCtrl.hideTooltip();
+
 		if (this.state._disabled === true) {
 			event.preventDefault();
 		} else {
