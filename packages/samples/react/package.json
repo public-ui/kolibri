@@ -25,7 +25,7 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@playwright/test": "1.58.2",
+		"@playwright/test": "1.59.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
