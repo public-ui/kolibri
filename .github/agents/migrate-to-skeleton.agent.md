@@ -40,7 +40,7 @@ Refactor the component **`$ARGUMENTS`** so that it fully conforms to the referen
 
 ## Authoritative Specification
 
-The [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md) is the **authoritative architecture specification**. Read it completely before starting the refactoring. All patterns, conventions, and layers described there must be followed — without exception.
+The [`ARC42.md`](/packages/components/src/components/_skeleton/ARC42.md) is the **authoritative architecture specification**. Read it completely before starting the refactoring. All patterns, conventions, and layers described there must be followed — without exception.
 
 ---
 
@@ -86,9 +86,9 @@ Create or replace files according to the ARC42 layers:
 
 2. **Controller** (`packages/components/src/internal/functional-components/$ARGUMENTS/controller.ts`)
    - Extends `BaseController<Api>`
-   - Constructor receives `states: Api['States']` and passes defaults to `super(states, { ... })`
+   - Constructor receives `setState: SetStateFn<Api>` and `getState: GetStateFn<Api>` and passes them to `super(propsConfig, setState, getState)`
    - `componentWillLoad()` with `ResolvedInputProps<Api>`
-   - Watcher methods use `withValidPropValue(propDef, value, callback)`
+   - Watcher methods call the corresponding prop definition's `apply(...)` and then update render props via `setRenderProp(...)`
    - Event handlers and ref setters as **arrow properties**
    - Lifecycle and watcher methods as **prototype methods**
 
@@ -100,12 +100,12 @@ Create or replace files according to the ARC42 layers:
 4. **Web Component** (`packages/components/src/components/$ARGUMENTS/component.tsx`)
    - `@Component({ tag: 'kol-$ARGUMENTS', shadow: true })`
    - Implements `WebComponentInterface<Api>`
-   - Controller: `private readonly ctrl = new Controller(this)`
+   - Controller: `private readonly ctrl = new $ARGUMENTSController(this.setState, this.getState)`
    - `@Prop()` and `@Watch()` for every prop (prop triangle!)
    - `@State()` for every field declared in `Api['States']`
    - `componentWillLoad()` forwards props to controller
    - `render()` returns `<Host>` with functional component
-   - Rendering uses `this.ctrl.getProps()` for normalized props and `this.<state>` for managed state
+   - Rendering uses `this.ctrl.getRenderProp(key)` for normalized props and `this.<state>` for managed state
 
 5. **CSS/SCSS** — keep existing styles, adjust as needed
 
@@ -138,7 +138,7 @@ pnpm --filter @public-ui/components build
 
 ## Architecture Reference
 
-> All patterns are authoritatively defined in [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md). The items below are quick reminders only — consult ARC42 for full detail.
+> All patterns are authoritatively defined in [`ARC42.md`](/packages/components/src/components/_skeleton/ARC42.md). The items below are quick reminders only — consult ARC42 for full detail.
 
 ### Layer Model
 
@@ -149,7 +149,7 @@ Functional Component (stateless renderer)
 ```
 
 - **Web Component**: owns `@Prop`, `@Watch`, `@State`, `@Event`, `@Method`, `@Listen` decorators. Delegates all logic to controller.
-- **Controller**: extends `BaseController<Api>`. Manages validation, state transitions, exposes `getProps()`.
+- **Controller**: extends `BaseController<Api>`. Manages validation, state transitions, exposes `getRenderProp()`.
 - **Functional Component**: pure renderer, receives `FunctionalComponentProps<Api>`.
 - **Schema Helpers** (`src/internal/props/`): prop types, normalization, validation.
 
@@ -180,34 +180,38 @@ public componentWillLoad(): void {
 
 ```typescript
 export class MyController extends BaseController<MyApi> implements ControllerInterface<MyApi> {
-  public constructor(states: MyApi['States']) {
-    super(states, { /* default values for all props */ });
-  }
+	public constructor(setState: SetStateFn<MyApi>, getState: GetStateFn<MyApi>) {
+		super(myPropsConfig, setState, getState);
+	}
 
-  public componentWillLoad(props: ResolvedInputProps<MyApi>): void {
-    const { myProp } = props;
-    this.watchMyProp(myProp);
-  }
+	public componentWillLoad(props: ResolvedInputProps<MyApi>): void {
+		const { myProp } = props;
+		this.watchMyProp(myProp);
+	}
 
-  // Prototype method — watcher
-  public watchMyProp(value?: string): void {
-    withValidPropValue<MyPropType>(myPropDef, value, (v) => {
-      this.setProp('myProp', v);
-      // this.setState('myProp', v);  // only if @State is needed
-    });
-  }
+	// Prototype method — watcher
+	public watchMyProp(value?: string): void {
+		myPropDef.apply(value, (v) => {
+			this.setRenderProp('myProp', v);
+			// this.setState('myProp', v);  // only if @State is needed
+		});
+	}
 
-  // Arrow property — event handler
-  public handleClick = (): void => { /* ... */ };
+	// Arrow property — event handler
+	public handleClick = (): void => {
+		/* ... */
+	};
 
-  // Arrow property — ref setter
-  public setButtonRef = (element?: HTMLButtonElement): void => { /* ... */ };
+	// Arrow property — ref setter
+	public setButtonRef = (element?: HTMLButtonElement): void => {
+		/* ... */
+	};
 }
 ```
 
 ### State Management
 
-- **Normalized Props** via `setProp()`: stored in controller, no re-render. Retrieved via `getProps()`.
+- **Normalized Props** via `setRenderProp()`: stored in controller, no re-render. Retrieved via `getRenderProp(key)`.
 - **Managed State** via `setState()`: writes to web component `@State` fields, triggers re-render.
 
 ### API Definition
@@ -217,13 +221,13 @@ import type { ComponentApi, InternalOf } from '../generic-types';
 import type { MyProp, LabelProp } from '../../props';
 
 export interface MyApi extends ComponentApi {
-  Props: {
-    Optional: MyProp;
-    Required: LabelProp;
-  };
-  States: InternalOf<MyProp> & LabelProp;
-  // Only include fields the component actually uses:
-  // Callbacks, Emitters, Methods, Refs, Listeners
+	Props: {
+		Optional: MyProp;
+		Required: LabelProp;
+	};
+	States: InternalOf<MyProp> & LabelProp;
+	// Only include fields the component actually uses:
+	// Callbacks, Emitters, Methods, Refs, Listeners
 }
 ```
 
@@ -237,8 +241,10 @@ import { createPropDefinition } from './helpers/factory';
 export type MyProp = SimpleProp<'myProp', string>;
 
 export const myPropDef = createPropDefinition<MyProp>(
-  (value: unknown) => String(value ?? ''),
-  (v) => v.length > 0,
+	'myProp',
+	'',
+	(value: unknown) => String(value ?? ''),
+	(v) => v.length > 0,
 );
 ```
 
@@ -319,7 +325,7 @@ Remove `@param {string}` and `@returns {void}` JSDoc tags — TypeScript signatu
 Verify all points before opening a pull request:
 
 - [ ] **Prop Triangle** — every `@Prop()` has a `@Watch()` and is forwarded in `componentWillLoad()`
-- [ ] **Controller** — extends `BaseController<Api>`, receives `states` in constructor
+- [ ] **Controller** — extends `BaseController<Api>`, receives `setState`/`getState` in constructor
 - [ ] **FC stateless** — no `@State`, no side effects
 - [ ] **API definition** — `Props` with `Required`/`Optional` + `ComponentApi` interface present in `api.tsx`
 - [ ] **Props files** — all props in `src/internal/props/` with `normalize` + `validate`
