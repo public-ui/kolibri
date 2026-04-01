@@ -92,7 +92,7 @@ Create or replace files according to the ARC42 layers:
    - BEM classes via `bem.forBlock('kol-$ARGUMENTS')`
    - No side effects, no state mutation
 
-4. **Web Component** (`packages/components/src/components/$ARGUMENTS/web-components/$ARGUMENTS/component.tsx`)
+4. **Web Component** (`packages/components/src/components/$ARGUMENTS/component.tsx`)
    - `@Component({ tag: 'kol-$ARGUMENTS', shadow: true })`
    - Extends `BaseWebComponent<Api>` and implements `WebComponentInterface<Api>`
    - Controller: `private readonly ctrl = new Controller(this.setState, this.getState)`
@@ -130,67 +130,93 @@ pnpm --filter @public-ui/components build
 
 ---
 
-## Architecture Reference (Summary)
+## Architecture Reference
 
-### Layer Model
+> All patterns are authoritatively defined in [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md). The items below are quick reminders only — consult ARC42 for full detail.
+
+- **Layer model, Prop Triangle, Controller pattern, State management** → ARC42 Sections 4–5
+- **Normalized Props** → `setRenderProp()` (no re-render); **Managed State** → `setState()` + `@State` (triggers re-render)
+- Arrow properties for event handlers / ref setters; prototype methods for lifecycle and watchers (see ARC42 Section 4.2)
+- **ARIA IDs**: any `id` used in `aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns` must be unique per instance → `private readonly myId = \`prefix-${nonce()}\``from`utils/dev.utils`
+
+### Expected file structure after migration
 
 ```
-Consumer -> Web Component -> Controller -> Schema Helpers
-                |                |
-         Functional Component   Props
+packages/components/src/
+├── components/
+│   └── $ARGUMENTS/
+│       ├── component.tsx            ← @Component { tag: 'kol-$ARGUMENTS' }
+│       └── style.scss
+└── internal/
+    ├── functional-components/
+    │   └── $ARGUMENTS/
+    │       ├── api.tsx              ← PropsConfigShape + ApiFromConfig
+    │       ├── controller.ts        ← State, validation, event handlers
+    │       └── component.tsx        ← Stateless renderer (FC)
+    └── props/
+        ├── <new-prop>.ts            ← one file per new prop
+        └── index.ts                 ← re-exports
 ```
 
-### Prop Triangle (all 3 parts must be present!)
+---
+
+## Common Pitfalls
+
+Actively check for these mistakes during implementation. Each one has caused real regressions.
+
+### ❌ 1. Missing part of the Prop Triangle
+
+Every `@Prop()` requires all three parts: declaration, `@Watch()`, and `componentWillLoad()` init. A prop without a watcher will not update at runtime.
+
+### ❌ 2. `<Host>` with a class attribute
 
 ```typescript
-// 1. Field declaration with @Prop()
-@Prop()
-public _name!: string;
-
-// 2. Watcher with @Watch()
-@Watch('_name')
-public watchName(value?: string): void {
-  this.ctrl.watchName(value);
-}
-
-// 3. Forwarding in componentWillLoad()
-public componentWillLoad(): void {
-  this.ctrl.componentWillLoad({
-    name: this._name,
-  });
-}
+❌ <Host class="kol-$ARGUMENTS">   // redundant — Shadow DOM isolates; tag name is the identifier
+✅ <Host>
 ```
 
-### Controller Pattern
+### ❌ 3. Unused `@State()` fields
+
+Declare `@State()` only for values that actually trigger re-renders. Remove any field that is never mutated or read.
+
+### ❌ 4. Event handler defined inline in a lifecycle method
 
 ```typescript
-export class MyController extends BaseController<MyApi> implements ControllerInterface<MyApi> {
-	public constructor(setState: SetStateFn<MyApi>, getState: GetStateFn<MyApi>) {
-		super(myPropsConfig, setState, getState);
-	}
+❌ componentWillLoad(): void { el.addEventListener('click', () => { ... }); }
+   // new function reference each cycle → listener accumulates, never removed
 
-	public watchName(value?: string): void {
-		nameProp.apply(value, (v) => {
-			this.setRenderProp('name', v);
-		});
-	}
-}
+✅ public handleClick = (): void => { ... };   // arrow property in controller
+   componentDidLoad(): void { el.addEventListener('click', this.handleClick); }
 ```
 
-### State Management
+### ❌ 5. Inline prop types instead of `src/internal/props/`
 
-- **Normalized Props** -> `setRenderProp()` (no re-render)
-- **Derived/Managed State** -> `setState()` (triggers re-render via `@State`)
+Props defined inline in a component cannot be reused and lead to inconsistent normalisation. Always create a dedicated file under `packages/components/src/internal/props/`.
 
-### Conventions
+### ❌ 6. `@Prop({ reflect: true })` omitted where needed
 
-- All web components: `shadow: true`
-- `<Host>` without class attribute
-- Underscored public props (`_name`, `_label`)
-- Tests co-located next to `component.tsx`
-- No `types.ts` files, no barrel files
-- **ARIA IDs via `nonce()`**: Any `id` referenced by `aria-controls`, `aria-labelledby`, `aria-describedby` or `aria-owns` must be unique per instance — declare as `private readonly myId = \`prefix-${nonce()}\``using`nonce()`from`utils/dev.utils`
-- **Kein `data-testid`**: Tests verwenden BEM-Klassen als Selektoren (`page.locator('.kol-component__element')`), niemals `data-testid`-Attribute im Komponenten-Markup
+If the attribute value must be readable via `el.getAttribute('_name')` (e.g. for CSS attribute selectors or testing), add `reflect: true`. When in doubt, follow the existing props as reference.
+
+### ❌ 7. JSDoc type annotations in TypeScript
+
+Remove `@param {string}` and `@returns {void}` JSDoc tags — TypeScript signatures are the source of truth. Keep JSDoc only for Stencil-specific decorators (`@Prop`, `@Event`, `@Method`) where the tooling reads it.
+
+---
+
+## Pre-Review Checklist
+
+Verify all points before opening a pull request:
+
+- [ ] **Prop Triangle** — every `@Prop()` has a `@Watch()` and is forwarded in `componentWillLoad()`
+- [ ] **Controller** — extends `BaseController<Api>`, receives `setState`/`getState` in constructor
+- [ ] **FC stateless** — no `@State`, no side effects
+- [ ] **API definition** — `PropsConfigShape` + `ApiFromConfig` present in `api.tsx`
+- [ ] **Props files** — all props in `src/internal/props/` with `normalize` + `validate`
+- [ ] **Bare `<Host>`** — no redundant `class="kol-..."` on `<Host>`
+- [ ] **No dead code** — no unused imports, types, or commented-out blocks
+- [ ] **No JSDoc types** — only TypeScript signatures; JSDoc only for Stencil decorators
+- [ ] **Tests co-located** — `snapshot.spec.tsx` (and optionally `interaction.e2e.ts`) next to `component.tsx`
+- [ ] **All commands green** — `pnpm format`, `pnpm lint`, `pnpm --filter @public-ui/components test:unit` ✓
 
 ---
 
@@ -201,4 +227,5 @@ When finished, provide the following summary:
 1. **Gap analysis** — deviations of the existing component from the skeleton architecture
 2. **Deleted files** — list with justification per file
 3. **New/modified files** — directory structure with architecture layer per file
-4. **Validation result** — confirmation that all commands completed successfully
+4. **Pre-review checklist** — completed checklist confirming all points above
+5. **Validation result** — confirmation that all commands completed successfully
