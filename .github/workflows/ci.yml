@@ -79,7 +79,6 @@ jobs:
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
           task: display-results
-          pr-comment: true
           send-data: true
         continue-on-error: true
 
@@ -162,7 +161,6 @@ jobs:
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
           task: display-results
-          pr-comment: true
           send-data: true
         continue-on-error: true
 
@@ -250,7 +248,6 @@ jobs:
         uses: green-coding-solutions/eco-ci-energy-estimation@v5
         with:
           task: display-results
-          pr-comment: true
           send-data: true
         continue-on-error: true
 
