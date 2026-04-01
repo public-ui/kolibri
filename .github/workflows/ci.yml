@@ -18,39 +18,162 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
+      - name: 🌱 Start Energy Measurement
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: start-measurement
+          send-data: true
+        continue-on-error: true
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
           persist-credentials: false
+
+      - name: 📊 Checkpoint - Checkout
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'checkout'
+        continue-on-error: true
+
       - uses: ./.github/actions/pnpm-setup
+
+      - name: 📊 Checkpoint - Setup & Install
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'setup-and-install'
+        continue-on-error: true
+
       - name: Build
         run: pnpm -r build
+
+      - name: 📊 Checkpoint - Build
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'build'
+        continue-on-error: true
+
       - name: Format
         run: pnpm -r format
       - name: Lint
         run: pnpm -r lint
+
       - name: Unit Tests
         run: pnpm -r test:unit
+
+      - name: 📊 Checkpoint - Unit Tests
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'unit-tests'
+        continue-on-error: true
+
       - name: Unused
         run: pnpm -r unused
+
+      - name: 🌱 Final Energy Measurement
+        id: eco-ci-final
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: final-measurement
+          send-data: true
+        continue-on-error: true
+
+      - name: 📊 Energy Report
+        if: always()
+        continue-on-error: true
+        run: |
+          echo "## 🌱 Energy Report – build-and-check" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Metric | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Total Energy | ${{ steps.eco-ci-final.outputs.energy-total }} J |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Total CO₂ | ${{ steps.eco-ci-final.outputs.carbon-total }} gCO₂eq |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Power (avg) | ${{ steps.eco-ci-final.outputs.power-avg }} W |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          ENERGY="${{ steps.eco-ci-final.outputs.energy-total }}"
+          if [ -n "$ENERGY" ]; then
+            OVER=$(echo "$ENERGY > 500" | bc -l 2>/dev/null || echo "0")
+            if [ "$OVER" = "1" ]; then
+              echo "⚠️ **Energy budget warning:** ${ENERGY}J exceeds 500J threshold" >> "$GITHUB_STEP_SUMMARY"
+              echo "::warning::Energy consumption ${ENERGY}J exceeds warning threshold of 500J"
+            else
+              echo "✅ Energy consumption within 500J budget" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          fi
 
   e2e-tests:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
+      - name: 🌱 Start Energy Measurement
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: start-measurement
+          send-data: true
+        continue-on-error: true
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: 📊 Checkpoint - Setup & Browsers
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'setup-and-browsers'
+        continue-on-error: true
+
       - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
+
+      - name: 📊 Checkpoint - E2E Components
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'e2e-components'
+        continue-on-error: true
+
       - name: React samples build dependencies
         run: pnpm --filter @public-ui/sample-react^... build
       - name: E2E Test react samples
         run: pnpm --filter @public-ui/sample-react test:e2e
+
+      - name: 📊 Checkpoint - E2E React Samples
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'e2e-react-samples'
+        continue-on-error: true
+
+      - name: 🌱 Final Energy Measurement
+        id: eco-ci-final
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: final-measurement
+          send-data: true
+        continue-on-error: true
+
+      - name: 📊 Energy Report
+        if: always()
+        continue-on-error: true
+        run: |
+          echo "## 🌱 Energy Report – e2e-tests" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Metric | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Total Energy | ${{ steps.eco-ci-final.outputs.energy-total }} J |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Total CO₂ | ${{ steps.eco-ci-final.outputs.carbon-total }} gCO₂eq |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Power (avg) | ${{ steps.eco-ci-final.outputs.power-avg }} W |" >> "$GITHUB_STEP_SUMMARY"
+
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
@@ -63,6 +186,13 @@ jobs:
         package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-kern']
     runs-on: ubuntu-latest
     steps:
+      - name: 🌱 Start Energy Measurement
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: start-measurement
+          send-data: true
+        continue-on-error: true
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
@@ -70,10 +200,54 @@ jobs:
       - uses: ./.github/actions/pnpm-setup
       - name: Install Playwright browsers
         run: npx playwright install --with-deps firefox
+
+      - name: 📊 Checkpoint - Setup & Browsers
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'setup-and-browsers'
+        continue-on-error: true
+
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
+
+      - name: 📊 Checkpoint - Build
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'build'
+        continue-on-error: true
+
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
+
+      - name: 📊 Checkpoint - Visual Tests
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: get-measurement
+          label: 'visual-tests-${{ matrix.package }}'
+        continue-on-error: true
+
+      - name: 🌱 Final Energy Measurement
+        id: eco-ci-final
+        uses: green-coding-solutions/eco-ci-energy-estimation@v5
+        with:
+          task: final-measurement
+          send-data: true
+        continue-on-error: true
+
+      - name: 📊 Energy Report
+        if: always()
+        continue-on-error: true
+        run: |
+          echo "## 🌱 Energy Report – visual-tests (${{ matrix.package }})" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Metric | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Total Energy | ${{ steps.eco-ci-final.outputs.energy-total }} J |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Total CO₂ | ${{ steps.eco-ci-final.outputs.carbon-total }} gCO₂eq |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Power (avg) | ${{ steps.eco-ci-final.outputs.power-avg }} W |" >> "$GITHUB_STEP_SUMMARY"
+
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
