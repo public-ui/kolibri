@@ -30,3 +30,4 @@ export * from './value-number';
 export * from './value-number-clamped';
 export * from './variant-progress';
 export * from './variant-quote';
+export * from './variant-spin';
