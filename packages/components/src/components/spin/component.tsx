@@ -63,7 +63,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-spin">
+			<Host>
 				<SpinFC
 					show={this.ctrl.getRenderProp('show')}
 					label={this.ctrl.getRenderProp('label')}
