@@ -170,9 +170,12 @@ Every `@Prop()` requires all three parts: declaration, `@Watch()`, and `componen
 
 ### ❌ 2. `<Host>` with a class attribute
 
+`<Host>` must not have a class attribute. Shadow DOM isolation means the tag name itself is the selector — no class needed.
+
 ```typescript
-❌ <Host class="kol-$ARGUMENTS">   // redundant — Shadow DOM isolates; tag name is the identifier
-✅ <Host>
+<Host>
+  <MyFC ... />
+</Host>
 ```
 
 ### ❌ 3. Unused `@State()` fields
