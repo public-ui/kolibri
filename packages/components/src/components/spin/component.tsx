@@ -15,7 +15,7 @@ import type { SpinVariantType } from '../../internal/props/variant-spin';
 	shadow: true,
 })
 export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentInterface<SpinApi> {
-	private readonly ctrl = new SpinController(this.setState, this.getState);
+	private readonly ctrl = new SpinController(this.stateAccess);
 
 	/**
 	 * Makes the element show up.

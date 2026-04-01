@@ -12,7 +12,7 @@ import { Log } from '../../../../schema';
 	shadow: true,
 })
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
-	private readonly ctrl = new SkeletonController(this.setState, this.getState);
+	private readonly ctrl = new SkeletonController(this.stateAccess);
 
 	/**
 	 * Focuses the interactive element of the component.

@@ -1,13 +1,13 @@
 import type { LoadingType } from '../../props';
 import { altProp, loadingProp, sizesProp, srcProp, srcsetProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { ImageApi } from './api';
 import { imagePropsConfig } from './api';
 
 export class ImageController extends BaseController<ImageApi> implements ControllerInterface<ImageApi> {
-	public constructor(setState: SetStateFn<ImageApi>, getState: GetStateFn<ImageApi>) {
-		super(imagePropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<ImageApi>) {
+		super(stateAccess, imagePropsConfig);
 	}
 	public componentWillLoad(props: ResolvedInputProps<ImageApi>): void {
 		const { alt, loading, sizes, src, srcset } = props;
