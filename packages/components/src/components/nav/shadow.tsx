@@ -23,7 +23,7 @@ import {
 	validateLabel,
 } from '../../schema';
 
-import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
@@ -127,7 +127,7 @@ export class KolNav implements NavAPI {
 		return (
 			<div class="kol-nav__entry-wrapper">
 				{entryIsLink(entry) ? (
-					<KolLinkWcTag
+					<KolLinkTag
 						class={clsx('kol-nav__entry kol-nav__entry--link', {
 							'kol-nav__entry--collapsible': collapsible,
 						})}

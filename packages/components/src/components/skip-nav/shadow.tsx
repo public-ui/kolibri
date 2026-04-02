@@ -7,7 +7,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 
 /**
  * The **SkipNav** component renders a hidden navigation that allows keyboard and assistive technology users to skip repetitive navigation sections and jump directly to the main content. It only becomes visible when reached via the Tab key.
@@ -21,7 +21,7 @@ import { KolLinkWcTag } from '../../core/component-names';
 })
 export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSkipNavElement;
-	private firstLinkRef?: HTMLKolLinkWcElement;
+	private firstLinkRef?: HTMLKolLinkElement;
 
 	public render(): JSX.Element {
 		return (
@@ -30,7 +30,7 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
 							<li class="kol-skip-nav__list-item" key={index}>
-								<KolLinkWcTag {...link} ref={index === 0 ? (el) => (this.firstLinkRef = el) : undefined}></KolLinkWcTag>
+								<KolLinkTag {...link} ref={index === 0 ? (el) => (this.firstLinkRef = el) : undefined}></KolLinkTag>
 							</li>
 						);
 					})}

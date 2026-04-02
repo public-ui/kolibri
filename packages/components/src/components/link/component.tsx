@@ -18,13 +18,18 @@ import type {
 } from '../../schema';
 
 /**
- * @internal
+ * The **Link** component renders an anchor element with accessible label, icon and tooltip support.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
-	tag: 'kol-link-wc',
-	shadow: false,
+	tag: 'kol-link',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi>, FocusableElement {
+export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi>, FocusableElement {
 	@Element() private readonly host?: HTMLElement;
 
 	private readonly ctrl = new LinkController(this.stateAccess);

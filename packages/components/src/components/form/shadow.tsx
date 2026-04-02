@@ -4,7 +4,7 @@ import { validateErrorList, watchBoolean, watchString } from '../../schema';
 
 import { translate } from '../../i18n';
 
-import { KolLinkWcTag } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -70,7 +70,7 @@ export class KolForm implements FormAPI {
 					<ul>
 						{errorList?.map((error, index) => (
 							<li key={index}>
-								<KolLinkWcTag
+								<KolLinkTag
 									class="kol-form__link"
 									_href=""
 									_label={error.message}

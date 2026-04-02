@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -36,9 +36,9 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 })
 export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
-	private linkWcRef?: HTMLKolLinkWcElement;
+	private linkWcRef?: HTMLKolLinkElement;
 
-	private readonly setLinkWcRef = (ref?: HTMLKolLinkWcElement) => {
+	private readonly setLinkWcRef = (ref?: HTMLKolLinkElement) => {
 		this.linkWcRef = ref;
 	};
 
@@ -60,7 +60,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 
 	public render(): JSX.Element {
 		return (
-			<KolLinkWcTag
+			<KolLinkTag
 				ref={this.setLinkWcRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
@@ -80,7 +80,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 				_variant={this._variant}
 			>
 				<slot name="expert" slot="expert"></slot>
-			</KolLinkWcTag>
+			</KolLinkTag>
 		);
 	}
 

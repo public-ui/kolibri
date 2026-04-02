@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkTag } from '../../core/component-names';
 import type { FocusableElement, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
@@ -69,7 +69,7 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 			if (el) this.indexToElement.set(index, el);
 		};
 		return element.type === 'link' ? (
-			<KolLinkWcTag {...props} {...element} ref={catchRef}></KolLinkWcTag>
+			<KolLinkTag {...props} {...element} ref={catchRef}></KolLinkTag>
 		) : (
 			<KolButtonWcTag {...props} {...element} ref={catchRef}></KolButtonWcTag>
 		);
