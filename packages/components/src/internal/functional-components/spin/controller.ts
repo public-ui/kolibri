@@ -1,7 +1,7 @@
 import { translate } from '../../../i18n';
 import { labelProp, showProp, variantSpinProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { SpinApi } from './api';
 import { spinPropsConfig } from './api';
 
@@ -9,8 +9,8 @@ export class SpinController extends BaseController<SpinApi> implements Controlle
 	private readonly translateActionRunning: string = translate('kol-action-running');
 	private readonly translateActionDone: string = translate('kol-action-done');
 
-	public constructor(setState: SetStateFn<SpinApi>, getState: GetStateFn<SpinApi>) {
-		super(spinPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<SpinApi>) {
+		super(stateAccess, spinPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<SpinApi>): void {
