@@ -76,7 +76,7 @@
 		--ecl-font-family-default: arial, sans-serif;
 		--ecl-font-size: #{to-rem(16)};
 		--ecl-font-weight: 400;
-		--ecl-font-weight-bold: 600;
+		--ecl-font-weight-bold: 700;
 		--line-height-regular: 1.5;
 
 		--ecl-spacing-2xs: #{to-rem(4)};
@@ -145,13 +145,6 @@
 	h6 {
 		margin: 0;
 		padding: 0;
-
-		font-weight: var(--font-weight-bold);
-		line-height: var(--line-height-heading);
-	}
-
-	p {
-		font-weight: var(--font-weight);
 	}
 
 	.kol-span,

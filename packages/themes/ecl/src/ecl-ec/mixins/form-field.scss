@@ -4,12 +4,7 @@
 
 @mixin kol-form-field-theme {
 	.kol-form-field {
-		color: var(--color-grey);
-		gap: var(--spacing-xs);
-
 		&__label {
-			font-weight: var(--font-weight-bold);
-
 			&-text::after {
 				@include kol-required-info;
 			}
