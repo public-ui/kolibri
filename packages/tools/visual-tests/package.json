@@ -40,13 +40,13 @@
 		"@babel/eslint-parser": "7.28.6",
 		"@babel/plugin-syntax-import-attributes": "7.28.6",
 		"@babel/preset-env": "7.29.2",
-		"@playwright/test": "1.59.0",
+		"@playwright/test": "1.59.1",
 		"eslint": "8.57.1",
 		"knip": "5.88.1",
 		"prettier": "3.8.1"
 	},
 	"peerDependencies": {
-		"@playwright/test": "1.59.0"
+		"@playwright/test": "1.59.1"
 	},
 	"files": [
 		"playwright.config.js",
