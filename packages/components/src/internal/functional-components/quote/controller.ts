@@ -1,12 +1,12 @@
 import { hrefProp, labelProp, quoteProp, variantQuoteProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { QuoteApi } from './api';
 import { quotePropsConfig } from './api';
 
 export class QuoteController extends BaseController<QuoteApi> implements ControllerInterface<QuoteApi> {
-	public constructor(setState: SetStateFn<QuoteApi>, getState: GetStateFn<QuoteApi>) {
-		super(quotePropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<QuoteApi>) {
+		super(stateAccess, quotePropsConfig);
 	}
 	public componentWillLoad(props: ResolvedInputProps<QuoteApi>): void {
 		const { href, label, quote, variant } = props;

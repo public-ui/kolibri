@@ -1,6 +1,6 @@
 import { highProp, labelProp, lowProp, maxProp, minProp, numberValueProp, optimumProp, orientationProp, unitProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { MeterApi } from './api';
 import { meterPropsConfig } from './api';
 
@@ -14,8 +14,8 @@ export class MeterController extends BaseController<MeterApi> implements Control
 	private interval?: ReturnType<typeof setInterval>;
 	private meterData: MeterData = { high: undefined, low: undefined, optimum: undefined };
 
-	public constructor(setState: SetStateFn<MeterApi>, getState: GetStateFn<MeterApi>) {
-		super(meterPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<MeterApi>) {
+		super(stateAccess, meterPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<MeterApi>): void {

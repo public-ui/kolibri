@@ -51,8 +51,10 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 
-import { KolTooltipWcTag } from '../../core/component-names';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { SpanFC } from '../../internal/functional-components/span/component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
@@ -72,7 +74,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
-	private tooltipRef?: HTMLKolTooltipWcElement;
+	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
 
 	/**
 	 * Sets focus on the internal element.
@@ -94,20 +96,9 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.buttonRef = ref;
 	};
 
-	private readonly setTooltipRef = (ref?: HTMLKolTooltipWcElement) => {
-		this.tooltipRef = ref;
-	};
-
-	private readonly hideTooltip = () => {
-		void this.tooltipRef?.hideTooltip();
-	};
-
 	private readonly onClick = (event: MouseEvent) => {
 		event.stopPropagation();
-
-		if (this.state._hideLabel) {
-			void this.hideTooltip();
-		}
+		this.tooltipCtrl.hideTooltip();
 
 		if (this.state._type === 'submit') {
 			propagateSubmitEventToForm({
@@ -159,7 +150,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
 					aria-keyshortcuts={this.state._shortKey}
-					aria-label={hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-label={hideLabel && typeof this.state._label === 'string' && this.state._label.length > 0 ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
 						'kol-button--disabled': isDisabled,
@@ -182,20 +173,15 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 						<slot name="expert" slot="expert"></slot>
 					</SpanFC>
 				</button>
-				{hideLabel && (
-					<KolTooltipWcTag
-						ref={this.setTooltipRef}
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						hidden={hasExpertSlot}
-						class="kol-button__tooltip"
-						_badgeText={badgeText}
-						_align={this.state._tooltipAlign}
-						_label={typeof this.state._label === 'string' ? this.state._label : ''}
-					></KolTooltipWcTag>
+				{hideLabel && typeof this.state._label === 'string' && this.state._label.length > 0 && (
+					<div class="kol-button__tooltip">
+						<TooltipFC
+							badgeText={badgeText || ''}
+							label={this.state._label}
+							id={this.tooltipCtrl.getRenderProp('id')}
+							refFloating={this.tooltipCtrl.setTooltipElementRef}
+						/>
+					</div>
 				)}
 			</Host>
 		);
@@ -399,6 +385,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		validateLabelWithExpertSlot(this, value, {
 			required: true,
 		});
+		this.tooltipCtrl.watchLabel(typeof value === 'string' ? value : undefined);
 	}
 
 	@Watch('_name')
@@ -435,6 +422,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this, value);
+		this.tooltipCtrl.watchAlign(value);
 	}
 
 	@Watch('_type')
@@ -477,5 +465,19 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.validateValue(this._value);
 		this.validateVariant(this._variant);
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
+		this.tooltipCtrl.componentWillLoad({
+			label: typeof this.state._label === 'string' ? this.state._label : '',
+			align: this._tooltipAlign,
+		});
+	}
+
+	public componentDidRender(): void {
+		if (this.buttonRef) {
+			this.tooltipCtrl.syncListeners(undefined, this.buttonRef, true);
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.tooltipCtrl.destroy();
 	}
 }

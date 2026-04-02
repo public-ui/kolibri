@@ -8,6 +8,7 @@ export * from './hide-label';
 export * from './high';
 export * from './href';
 export * from './icons';
+export * from './id';
 export * from './label';
 export * from './label-with-expert-slot';
 export * from './level';

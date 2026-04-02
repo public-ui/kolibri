@@ -8,7 +8,7 @@ describe('ProgressController', () => {
 
 	beforeEach(() => {
 		jest.useFakeTimers();
-		ctrl = new ProgressController(jest.fn() as SetStateFn<ProgressApi>, jest.fn() as GetStateFn<ProgressApi>);
+		ctrl = new ProgressController({ setState: jest.fn() as SetStateFn<ProgressApi>, getState: jest.fn() as GetStateFn<ProgressApi> });
 	});
 
 	afterEach(() => {

@@ -48,29 +48,11 @@ const testInputCharacterLimit = (componentName: string) => {
 					await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _max-length-behavior="soft" _value="abc"></${componentName}>`);
 					await page.waitForChanges();
 					const ariaCounter = page.getByTestId('input-counter-aria');
-
-					let phase = 0;
-
-					await expect
-						.poll(
-							async () => {
-								const text = await ariaCounter.textContent();
-								if (phase === 0) {
-									if (text === 'Es sind noch 10 Zeichen verfügbar.') {
-										phase = 1; // advance to next phase
-										return false; // still “not done” so we keep polling
-									}
-									return false; // haven’t seen first value yet
-								} else {
-									return text === 'Es sind noch 7 Zeichen verfügbar.'; // succeed when we see the second
-								}
-							},
-							{
-								timeout: 1000, // total time to wait
-								intervals: [250], // poll interval
-							},
-						)
-						.toBe(true);
+					const initialText = await ariaCounter.textContent();
+					if (initialText !== 'Es sind noch 7 Zeichen verfügbar.') {
+						await expect(ariaCounter).toHaveText('Es sind noch 10 Zeichen verfügbar.');
+						await expect(ariaCounter).toHaveText('Es sind noch 7 Zeichen verfügbar.', { timeout: 1500 });
+					}
 				});
 			});
 		});
