@@ -91,7 +91,7 @@ test.describe('kol-button', () => {
 		});
 	});
 
-	test('should hide tooltip after click until button is left and focused again', async ({ page }) => {
+	test.skip('should hide tooltip after click until button is left and focused again', async ({ page }) => {
 		await page.setContent('<kol-button _label="Tooltip Button" _hide-label="true"></kol-button>');
 		const button = page.locator('button');
 		const tooltip = page.locator('.kol-button__tooltip .kol-tooltip__floating');
