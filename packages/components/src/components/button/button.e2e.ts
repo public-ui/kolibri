@@ -95,27 +95,37 @@ test.describe('kol-button', () => {
 		await page.setContent('<kol-button _label="Tooltip Button" _hide-label="true"></kol-button>');
 		const button = page.locator('button');
 		const tooltip = page.locator('.kol-button__tooltip .kol-tooltip__floating');
+		const tooltipStateTimeout = 3000;
 
 		await button.focus();
 		await expect
-			.poll(async () => {
-				return await tooltip.evaluate((el) => el.classList.contains('show'));
-			})
+			.poll(
+				async () => {
+					return await tooltip.evaluate((el) => el.classList.contains('show'));
+				},
+				{ timeout: tooltipStateTimeout },
+			)
 			.toBe(true);
 
 		await button.click();
 		await expect
-			.poll(async () => {
-				return await tooltip.evaluate((el) => el.classList.contains('hide'));
-			})
+			.poll(
+				async () => {
+					return await tooltip.evaluate((el) => el.classList.contains('hide'));
+				},
+				{ timeout: tooltipStateTimeout },
+			)
 			.toBe(true);
 
 		await page.locator('body').focus();
 		await button.focus();
 		await expect
-			.poll(async () => {
-				return await tooltip.evaluate((el) => el.classList.contains('show'));
-			})
+			.poll(
+				async () => {
+					return await tooltip.evaluate((el) => el.classList.contains('show'));
+				},
+				{ timeout: tooltipStateTimeout },
+			)
 			.toBe(true);
 	});
 });
