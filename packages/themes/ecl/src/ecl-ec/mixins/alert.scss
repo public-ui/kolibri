@@ -2,23 +2,27 @@
 @use './icon' as *;
 @use './button' as *;
 
-@mixin kol-alert($color: null) {
-	color: var($color);
-	margin-left: calc(-1 * var(--ecl-spacing-2xs));
-
-	font-size: 0.875em;
-}
-
 @mixin alert {
 	.kol-alert {
 		@include icon();
 		@include button('kol-button');
 
 		&--variant-msg {
-			.kol-alert__icon {
-				margin: var(--ecl-spacing-2xs);
+			color: var(--alert-accent-color);
 
-				font-size: 1.5em;
+			.kol-alert__icon {
+				margin-right: var(--ecl-spacing-2xs);
+				font-size: to-rem(20);
+				line-height: to-rem(20);
+			}
+
+			.kol-alert__container {
+				line-height: var(--ecl-line-height-s);
+			}
+
+			.kol-alert__content {
+				font-size: var(--ecl-font-size-s);
+				line-height: var(--ecl-line-height-s);
 			}
 		}
 

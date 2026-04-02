@@ -1,31 +1,43 @@
-@use './required' as *;
 @use '../../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
 
-@mixin kol-form-field-theme {
+@mixin form-field {
 	.kol-form-field {
+		gap: var(--ecl-spacing-xs);
+
 		&__label {
+			order: 1;
+
 			&-text::after {
-				@include kol-required-info;
+				color: var(--ecl-color-error);
+				font-size: var(--ecl-font-size-s);
+				line-height: var(--ecl-font-size-s);
+				margin-left: var(--ecl-spacing-2xs);
+				vertical-align: text-bottom;
+			}
+
+			&__read-only {
+				display: none;
 			}
 		}
 
 		&__hint {
-			font-size: to-rem(14);
+			order: 2;
+			font-size: var(--ecl-font-size-s);
+			line-height: var(--ecl-font-size-s);
+			margin-top: to-rem(-4);
 		}
 
 		&__msg {
-			@include kol-alert;
-
-			&.kol-alert--type-error {
-				@include kol-alert(--color-red);
-			}
+			order: 4;
 		}
 
-		&__counter {
-			&--exceeded {
-				color: var(--color-red);
-			}
+		&__input {
+			order: 3;
+		}
+
+		&__counter--exceeded {
+			color: var(--ecl-color-error);
 		}
 	}
 }

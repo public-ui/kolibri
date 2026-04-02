@@ -129,8 +129,14 @@
 
 			line-height: 1.2;
 
-			.kol-span__label {
-				word-break: keep-all;
+			.kol-span {
+				&__container {
+					gap: to-rem(8);
+				}
+
+				&__label {
+					word-break: keep-all;
+				}
 			}
 
 			&.kol-span--hide-label {

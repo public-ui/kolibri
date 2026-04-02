@@ -1,6 +1,5 @@
 @use '../../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
-@use '../mixins/required' as *;
 @use '../mixins/checkbox' as *;
 
 @layer kol-theme-component {
@@ -9,14 +8,6 @@
 	.kol-form-field {
 		&__hint {
 			font-size: to-rem(14);
-		}
-
-		&__msg {
-			@include kol-alert;
-
-			&.kol-alert--type-error {
-				@include kol-alert(--color-red);
-			}
 		}
 	}
 
@@ -30,12 +21,6 @@
 
 			@at-root #{$root}--label-align-right & {
 				padding-left: to-rem(8);
-			}
-		}
-
-		&__label {
-			&-text::after {
-				@include kol-required-info;
 			}
 		}
 	}

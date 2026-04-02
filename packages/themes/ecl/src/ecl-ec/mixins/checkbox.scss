@@ -18,6 +18,7 @@
 			height: to-rem(38);
 		}
 
+		.#{$block-classname}__icon,
 		.#{$block-classname}-icon {
 			@include icon;
 			color: var(--ecl-color-white);

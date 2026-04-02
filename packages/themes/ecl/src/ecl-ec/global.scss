@@ -147,17 +147,6 @@
 		padding: 0;
 	}
 
-	.kol-span,
-	.kol-span__container {
-		gap: 0.5em;
-	}
-
-	.required label span::after,
-	.required legend span::after {
-		color: var(--color-red);
-		padding-left: 0.25em;
-	}
-
 	.badge-text-hint {
 		border-radius: 3px;
 		padding: 0 0.3em;

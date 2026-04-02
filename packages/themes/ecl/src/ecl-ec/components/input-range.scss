@@ -1,1 +1,52 @@
-@use '../@shared/input-core' as *;
+@use '../mixins/input-container' as *;
+@use '../../mixins/to-rem' as *;
+
+@layer kol-theme-component {
+	@include input-container;
+
+	.kol-input-container {
+		border-width: 0;
+
+		&:has(.kol-input:focus) {
+			outline-width: 0;
+
+			::-webkit-slider-thumb {
+				outline: 8px solid var(--ecl-color-primary-20);
+				outline-offset: 0;
+			}
+		}
+	}
+
+	.kol-input-range {
+		&__inputs-wrapper {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		&__input--number {
+			text-align: left;
+			border: 0;
+			font-weight: bold;
+		}
+
+		&__input--range {
+			height: to-rem(4);
+			width: 100%;
+			padding: 0;
+			background-color: var(--ecl-color-neutral);
+			border-width: 0;
+			margin: to-rem(20) 0 to-rem(10);
+
+			&::-webkit-slider-thumb {
+				background-color: var(--ecl-color-primary);
+				width: to-rem(16);
+				height: to-rem(16);
+
+				&:hover {
+					outline: 4px solid var(--ecl-color-primary);
+					outline-offset: -1px;
+				}
+			}
+		}
+	}
+}
