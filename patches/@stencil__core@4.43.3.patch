@@ -1,0 +1,66 @@
+diff --git a/internal/client/index.js b/internal/client/index.js
+index 7ca390bac49adb05a259deb1b1ad524e02f2de23..83204375bf8951efa3f886681bf6ce7b2e4f0073 100644
+--- a/internal/client/index.js
++++ b/internal/client/index.js
+@@ -3125,7 +3125,7 @@ render() {
+             }
+           }
+           nodeToRelocate && typeof slotRefNode["s-rf"] === "function" && slotRefNode["s-rf"](slotRefNode);
+-        } else if (nodeToRelocate.nodeType === 1 /* ElementNode */) {
++        } else if (nodeToRelocate.nodeType === 1 /* ElementNode */ && !nodeToRelocate.slot && nodeToRelocate.tagName !== "SLOT") {
+           nodeToRelocate.hidden = true;
+         }
+       }
+@@ -3143,7 +3143,7 @@ render() {
+         if (isInitialLoad && childNode["s-ih"] == null) {
+           childNode["s-ih"] = (_e = childNode.hidden) != null ? _e : false;
+         }
+-        if (childNode.nodeType === 1 /* ElementNode */) {
++        if (childNode.nodeType === 1 /* ElementNode */ && !childNode.slot && childNode.tagName !== "SLOT") {
+           childNode.hidden = true;
+         } else if (childNode.nodeType === 3 /* TextNode */ && !!childNode.nodeValue.trim()) {
+           const textCommentNode = win.document.createComment("s-nt-" + childNode.nodeValue);
+diff --git a/internal/hydrate/index.js b/internal/hydrate/index.js
+index 8b5e4910c5e8a343fb44e03c543a80c410e29986..bf5fd6103af6b5bfe0e5ae8711227d8d6400714e 100644
+--- a/internal/hydrate/index.js
++++ b/internal/hydrate/index.js
+@@ -3129,7 +3129,7 @@ render() {
+             }
+           }
+           nodeToRelocate && typeof slotRefNode["s-rf"] === "function" && slotRefNode["s-rf"](slotRefNode);
+-        } else if (nodeToRelocate.nodeType === 1 /* ElementNode */) {
++        } else if (nodeToRelocate.nodeType === 1 /* ElementNode */ && !nodeToRelocate.slot && nodeToRelocate.tagName !== "SLOT") {
+           nodeToRelocate.hidden = true;
+         }
+       }
+@@ -3147,7 +3147,7 @@ render() {
+         if (isInitialLoad && childNode["s-ih"] == null) {
+           childNode["s-ih"] = (_e = childNode.hidden) != null ? _e : false;
+         }
+-        if (childNode.nodeType === 1 /* ElementNode */) {
++        if (childNode.nodeType === 1 /* ElementNode */ && !childNode.slot && childNode.tagName !== "SLOT") {
+           childNode.hidden = true;
+         } else if (childNode.nodeType === 3 /* TextNode */ && !!childNode.nodeValue.trim()) {
+           const textCommentNode = win.document.createComment("s-nt-" + childNode.nodeValue);
+diff --git a/internal/testing/index.js b/internal/testing/index.js
+index df1dad628aaefebdc84dc2ed9521cac717c37a4d..b6b40aa54842577c2460646b0cd36f6c1b5ab8c7 100644
+--- a/internal/testing/index.js
++++ b/internal/testing/index.js
+@@ -5116,7 +5116,7 @@ render() {
+             }
+           }
+           nodeToRelocate && typeof slotRefNode["s-rf"] === "function" && slotRefNode["s-rf"](slotRefNode);
+-        } else if (nodeToRelocate.nodeType === 1 /* ElementNode */) {
++        } else if (nodeToRelocate.nodeType === 1 /* ElementNode */ && !nodeToRelocate.slot && nodeToRelocate.tagName !== "SLOT") {
+           nodeToRelocate.hidden = true;
+         }
+       }
+@@ -5134,7 +5134,7 @@ render() {
+         if (isInitialLoad && childNode["s-ih"] == null) {
+           childNode["s-ih"] = (_e = childNode.hidden) != null ? _e : false;
+         }
+-        if (childNode.nodeType === 1 /* ElementNode */) {
++        if (childNode.nodeType === 1 /* ElementNode */ && !childNode.slot && childNode.tagName !== "SLOT") {
+           childNode.hidden = true;
+         } else if (childNode.nodeType === 3 /* TextNode */ && !!childNode.nodeValue.trim()) {
+           const textCommentNode = win.document.createComment("s-nt-" + childNode.nodeValue);

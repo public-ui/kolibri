@@ -19,7 +19,7 @@ function extractBodyContent(html) {
 function normalizeShadowDOMStyles(html) {
 	// Replace entire <style>...</style> blocks inside shadow roots with a placeholder
 	// This prevents CSS order/hash differences from causing snapshot failures
-	return html.replace(/<style>[\s\S]*?<\/style>/g, '<style>/* CSS normalized */</style>');
+	return html.replace(/<style[^>]*>[\s\S]*?<\/style>/g, '<style>/* CSS normalized */</style>');
 }
 
 /**
@@ -37,8 +37,9 @@ function normalizeComponentHTML(html) {
 	normalized = normalized.replace(/\bid="[^"]*nonce[^"]*"/gi, 'id="[id]"');
 	normalized = normalized.replace(/\bid-[a-z0-9-]*nonce[a-z0-9-]*/gi, '[id]');
 
-	// 3. Normalize htmlfor attributes
-	normalized = normalized.replace(/\bhtmlfor="[^"]*"/gi, 'htmlfor="[id]"');
+	// 3. Normalize htmlfor/for attributes on labels
+	normalized = normalized.replace(/\bhtmlfor="[^"]*"/gi, 'for="[id]"');
+	normalized = normalized.replace(/\bfor="[^"]*nonce[^"]*"/gi, 'for="[id]"');
 
 	// 4. Normalize aria-controls (often references dynamic IDs)
 	normalized = normalized.replace(/\baria-controls="[^"]*"/gi, 'aria-controls="[id]"');
