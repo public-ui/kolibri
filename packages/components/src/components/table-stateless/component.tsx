@@ -41,6 +41,7 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
+import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -56,6 +57,8 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 })
 export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
+	private internals?: HostInternals;
 
 	private readonly translateNoEntries = translate('kol-no-entries');
 
@@ -95,6 +98,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 */
 	@State()
 	private previousHeaderCells?: TableHeaderCellsPropType;
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public ariaLabelledby?: string;
 
 	/**
 	 * Defines the primary table data.
@@ -139,6 +147,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@Watch('_hasSettingsMenu')
 	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
 		validateHasSettingsMenu(this, value);
+	}
+
+	@Watch('ariaLabelledby')
+	protected handleAriaLabelledBy(value?: string): void {
+		handleAriaLabelledBy(this.host, this.internals, value);
 	}
 
 	@Watch('_data')
@@ -624,6 +637,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.internals = attachInternalsWithAria(this.host, this.ariaLabelledby);
+
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
@@ -1184,6 +1199,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
+		const showCaption = this.internals?.ariaLabelledByElements?.length === 0;
+
 		return (
 			<div class="kol-table">
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
@@ -1193,19 +1210,36 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				 */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
-					class="kol-table__scroll-container"
+					class="kol-table__scroll-container kol-table__focus-element"
 					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
 				>
 					<table
+						aria-labelledby={showCaption ? 'caption' : this.ariaLabelledby}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
-							{this.state._label}
-						</caption>
+						{/*
+						 * The following element allows the table to receive focus without providing redundant content to screen readers.
+						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
+						 * prevent screen readers from just reading "blank".
+						 */}
+						<div
+							class="kol-table__focus-element"
+							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+							tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}
+						>
+							&nbsp;
+						</div>
+
+						{showCaption && (
+							<>
+								<caption class="kol-table__caption" id="caption">
+									{this.state._label}
+								</caption>
+							</>
+						)}
 
 						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">

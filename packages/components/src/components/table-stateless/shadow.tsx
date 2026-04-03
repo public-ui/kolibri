@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Element, h, Prop, Watch } from '@stencil/core';
 import { KolTableStatelessWcTag } from '../../core/component-names';
 import type {
 	FixedColsPropType,
@@ -11,6 +11,7 @@ import type {
 	TableSelectionPropType,
 	TableStatelessProps,
 } from '../../schema';
+import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -20,6 +21,20 @@ import type {
 	shadow: true,
 })
 export class KolTableStateless implements TableStatelessProps {
+	@Element() private readonly host?: HTMLKolTableStatelessElement;
+
+	private internals?: HostInternals;
+
+	/**
+	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 */
+	@Prop() public _ariaLabelledby?: string;
+
+	@Watch('_ariaLabelledby')
+	protected handleAriaLabelledBy(value?: string): void {
+		handleAriaLabelledBy(this.host, this.internals, value);
+	}
+
 	/**
 	 * Defines the primary table data.
 	 */
@@ -60,9 +75,15 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
+	public componentWillLoad(): void {
+		this.internals = attachInternalsWithAria(this.host, this._ariaLabelledby);
+	}
+
 	public render(): JSX.Element {
+		const hasExternalCaption = this.internals?.ariaLabelledByElements?.length;
 		return (
 			<KolTableStatelessWcTag
+				ariaLabelledby={hasExternalCaption ? this._ariaLabelledby : undefined}
 				_data={this._data}
 				_dataFoot={this._dataFoot}
 				_fixedCols={this._fixedCols}

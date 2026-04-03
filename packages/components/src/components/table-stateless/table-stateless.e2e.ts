@@ -217,4 +217,32 @@ test.describe('kol-table-stateless', () => {
 			await expect(callbackPromise).resolves.toEqual([DATA[0].id]);
 		});
 	});
+
+	test('supports external caption via aria-labelledby', async ({ page }) => {
+		await page.setContent(
+			`<span id="external-caption">Caption</span><kol-table-stateless aria-labelledby="external-caption" _label="" _header-cells='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateless>`,
+		);
+		await page.waitForChanges();
+		const table = page.locator('kol-table-stateless table');
+		await expect(table.locator('caption')).toHaveCount(0);
+		const supportsInternals = await page.evaluate(() => {
+			return 'ElementInternals' in window && 'ariaLabelledByElements' in (ElementInternals.prototype as unknown as Record<string, unknown>);
+		});
+
+		if (supportsInternals) {
+			await expect(table).not.toHaveAttribute('aria-labelledby');
+		} else {
+			await expect(table).toHaveAttribute('aria-labelledby', 'external-caption');
+		}
+	});
+
+	test('renders internal caption when external target is missing', async ({ page }) => {
+		await page.setContent(
+			`<kol-table-stateless aria-labelledby="missing" _label="Internal" _header-cells='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateless>`,
+		);
+		await page.waitForChanges();
+		const table = page.locator('kol-table-stateless table');
+		await expect(table).not.toHaveAttribute('aria-labelledby');
+		await expect(table.locator('caption')).toHaveText('Internal');
+	});
 });
