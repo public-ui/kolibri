@@ -27,6 +27,11 @@ export class KolTableStateless implements TableStatelessProps {
 
 	/**
 	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 *
+	 * ⚠️ LIMITATION: Due to Shadow DOM encapsulation, aria-labelledby references to elements
+	 * outside the shadow boundary may not be resolved by assistive technologies. For reliable
+	 * table labeling, use the `_label` prop instead. This property is kept for future compatibility
+	 * when cross-root ARIA references are standardized.
 	 */
 	@Prop() public _ariaLabelledby?: string;
 

@@ -27,11 +27,9 @@ export const TableExternalCaption: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Demonstrates how to label a table using an external heading via <code>_ariaLabelledby</code>. The referenced{' '}
-				<code>&lt;h2&gt;</code> lives outside the component's Shadow DOM. KoliBri resolves the element reference
-				programmatically via <code>ElementInternals.ariaLabelledByElements</code>, which crosses the Shadow DOM boundary
-				— unlike a plain <code>aria-labelledby</code> attribute, which is scoped to the same tree and would not work
-				here.
+				Demonstrates how to label a table using an external heading via <code>_ariaLabelledby</code>. The referenced <code>&lt;h2&gt;</code> lives outside the
+				component's Shadow DOM. KoliBri resolves the element reference programmatically via <code>ElementInternals.ariaLabelledByElements</code>, which crosses
+				the Shadow DOM boundary — unlike a plain <code>aria-labelledby</code> attribute, which is scoped to the same tree and would not work here.
 			</p>
 		</SampleDescription>
 
@@ -40,8 +38,7 @@ export const TableExternalCaption: FC = () => (
 			<div>
 				<h2>1. Internal caption (default)</h2>
 				<p>
-					No <code>_ariaLabelledby</code> set — the table renders an internal <code>&lt;caption&gt;</code> from{' '}
-					<code>_label</code>.
+					No <code>_ariaLabelledby</code> set — the table renders an internal <code>&lt;caption&gt;</code> from <code>_label</code>.
 				</p>
 				<div className="flex flex-col gap-4">
 					<div>
@@ -65,8 +62,7 @@ export const TableExternalCaption: FC = () => (
 			<div>
 				<h2 id="caption-ext">2. External caption via _ariaLabelledby</h2>
 				<p>
-					The <code>&lt;h2&gt;</code> above serves as the accessible label. No <code>&lt;caption&gt;</code> is rendered
-					inside the table.
+					The <code>&lt;h2&gt;</code> above serves as the accessible label. No <code>&lt;caption&gt;</code> is rendered inside the table.
 				</p>
 				<div className="flex flex-col gap-4">
 					<div>
@@ -90,9 +86,8 @@ export const TableExternalCaption: FC = () => (
 			<div>
 				<h2 id="caption-ext-bad">3. ⚠ Broken: aria-labelledby directly on host + role="table"</h2>
 				<p>
-					Setting <code>aria-labelledby</code> (without <code>_</code>) directly on the host element causes the browser
-					to expose the Custom Element itself as a <em>table</em> group to screen readers — bypassing the internal
-					semantic structure. Navigation into cells no longer works correctly.
+					Setting <code>aria-labelledby</code> (without <code>_</code>) directly on the host element causes the browser to expose the Custom Element itself as a{' '}
+					<em>table</em> group to screen readers — bypassing the internal semantic structure. Navigation into cells no longer works correctly.
 				</p>
 				<div className="flex flex-col gap-4">
 					<div>

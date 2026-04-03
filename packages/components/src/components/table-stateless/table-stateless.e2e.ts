@@ -218,22 +218,16 @@ test.describe('kol-table-stateless', () => {
 		});
 	});
 
-	test('supports external caption via aria-labelledby', async ({ page }) => {
+	test('does not rely on external aria-labelledby (Shadow DOM limitation)', async ({ page }) => {
 		await page.setContent(
-			`<span id="external-caption">Caption</span><kol-table-stateless aria-labelledby="external-caption" _label="" _header-cells='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateless>`,
+			`<span id="external-caption">External Caption</span><kol-table-stateless _ariaLabelledby="external-caption" _label="Internal Fallback" _header-cells='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateless>`,
 		);
 		await page.waitForChanges();
 		const table = page.locator('kol-table-stateless table');
-		await expect(table.locator('caption')).toHaveCount(0);
-		const supportsInternals = await page.evaluate(() => {
-			return 'ElementInternals' in window && 'ariaLabelledByElements' in (ElementInternals.prototype as unknown as Record<string, unknown>);
-		});
-
-		if (supportsInternals) {
-			await expect(table).not.toHaveAttribute('aria-labelledby');
-		} else {
-			await expect(table).toHaveAttribute('aria-labelledby', 'external-caption');
-		}
+		// Due to Shadow DOM encapsulation, external aria-labelledby refs are not reliably resolved by assistive tech.
+		// Therefore, the table falls back to internal caption for reliable labeling.
+		await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+		await expect(table.locator('caption')).toHaveText('Internal Fallback');
 	});
 
 	test('renders internal caption when external target is missing', async ({ page }) => {

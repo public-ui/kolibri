@@ -101,6 +101,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	/**
 	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 *
+	 * ⚠️ LIMITATION: Due to Shadow DOM encapsulation, external aria-labelledby references may not
+	 * be resolved by assistive technologies. When not set, the table uses an internal caption
+	 * with the `_label` prop for reliable labeling.
+	 *
+	 * @internal This is managed by shadow.tsx — use `_ariaLabelledby` on the public component instead.
 	 */
 	@Prop() public ariaLabelledby?: string;
 
@@ -1199,7 +1205,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
-		const showCaption = this.internals?.ariaLabelledByElements?.length === 0;
+		const showInternalCaption = !this.ariaLabelledby;
 
 		return (
 			<div class="kol-table">
@@ -1214,7 +1220,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
 				>
 					<table
-						aria-labelledby={showCaption ? 'caption' : this.ariaLabelledby}
+						aria-labelledby={showInternalCaption ? 'caption' : this.ariaLabelledby}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),
@@ -1233,7 +1239,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 							&nbsp;
 						</div>
 
-						{showCaption && (
+						{showInternalCaption && (
 							<>
 								<caption class="kol-table__caption" id="caption">
 									{this.state._label}
