@@ -104,6 +104,32 @@ export const TableExternalCaption: FC = () => (
 					</div>
 				</div>
 			</div>
+
+			<hr aria-hidden="true" className="border-0" />
+
+			{/* Variant 4: baseline — native table with aria-labelledby */}
+			<div>
+				<h2 id="caption-native">4. Baseline: Native HTML &lt;table&gt; with aria-labelledby (no Shadow DOM)</h2>
+				<p>
+					This is a native HTML table (not a Web Component) with <code>aria-labelledby</code> referencing an external <code>&lt;h2&gt;</code>. No Shadow DOM, no caption.
+					This demonstrates that screenreaders <strong>natively support</strong> this pattern when there are no Shadow DOM boundaries. Use this as a reference to verify
+					that the browser and screenreader stack correctly resolves aria-labelledby references.
+				</p>
+				<table aria-labelledby="caption-native">
+					<thead>
+						<tr>
+							<th>City</th>
+							<th>Country</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Berlin</td>
+							<td>Germany</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</section>
 	</>
 );
