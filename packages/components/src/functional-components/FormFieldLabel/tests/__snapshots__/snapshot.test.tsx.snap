@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolFormFieldLabelFc should render the correct component tag "label"  1`] = `
-<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+<label class="kol-form-field__label" for="test-id" id="test-id-label">
   <span class="kol-form-field__label-text kol-span">
     <span class="kol-span__container">
       <span class="kol-span__label">
@@ -27,7 +27,7 @@ exports[`KolFormFieldLabelFc should render the correct component tag "legend"  1
 `;
 
 exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
-<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+<label class="kol-form-field__label" for="test-id" id="test-id-label">
   <span class="kol-form-field__label-text kol-span kol-span--has-badge">
     <span class="kol-span__container">
       <span class="kol-span__label">
@@ -47,7 +47,7 @@ exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
 `;
 
 exports[`KolFormFieldLabelFc should render with expert slot 1`] = `
-<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+<label class="kol-form-field__label" for="test-id" id="test-id-label">
   <span class="kol-form-field__label-text kol-span">
     <span class="kol-span__container">
       <span class="kol-span__label"></span>
@@ -57,7 +57,7 @@ exports[`KolFormFieldLabelFc should render with expert slot 1`] = `
 `;
 
 exports[`KolFormFieldLabelFc should render with label 1`] = `
-<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+<label class="kol-form-field__label" for="test-id" id="test-id-label">
   <span class="kol-form-field__label-text kol-span">
     <span class="kol-span__container">
       <span class="kol-span__label">
