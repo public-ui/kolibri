@@ -1,6 +1,9 @@
 name: Security Scan
 
 on:
+  schedule:
+    # 6-hourly: 0:00, 6:00, 12:00, 18:00 UTC
+    - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:
     inputs:
       enable_audit:
@@ -19,14 +22,55 @@ on:
         description: 'Install dependencies'
         type: boolean
         default: false
+      scan_all_branches:
+        description: 'Scan all branches (develop, release/3, release/2)'
+        type: boolean
+        default: false
 
 concurrency:
   group: ${{ format('workflow-{0}-{1}', github.workflow, github.ref) }}
   cancel-in-progress: true
 
 jobs:
+  # Check if there are recent commits to warrant scanning
+  check-activity:
+    name: Check branch activity
+    runs-on: ubuntu-latest
+    outputs:
+      should-scan: ${{ steps.activity.outputs.should-scan }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Check last commit age
+        id: activity
+        run: |
+          LAST_COMMIT=$(git log -1 --format=%ct)
+          CURRENT=$(date +%s)
+          DIFF=$((CURRENT - LAST_COMMIT))
+          HOURS=$((DIFF / 3600))
+
+          # For scheduled runs: only scan if commit is < 7 hours old
+          # For manual runs: always scan
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "should-scan=true" >> $GITHUB_OUTPUT
+          elif [[ $HOURS -lt 7 ]]; then
+            echo "should-scan=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-scan=false" >> $GITHUB_OUTPUT
+            echo "⏭️  Skipping scan: no commits in last 7 hours (last commit was ${HOURS}h ago)"
+          fi
+
+  # Manual/targeted scan (single branch)
   targeted-scan:
     name: Security Scan
+    needs: check-activity
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'schedule' && needs.check-activity.outputs.should-scan == 'true')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -52,3 +96,38 @@ jobs:
           enable-trivy: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_trivy || 'true' }}
           enable-clamav: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_clamav || 'true' }}
           install-deps: ${{ github.event_name == 'workflow_dispatch' && inputs.install_deps || 'false' }}
+
+  # Scheduled scan across multiple branches (only for scheduled runs)
+  scheduled-scan:
+    name: Scheduled Security Scan (${{ matrix.branch }})
+    needs: check-activity
+    if: |
+      github.event_name == 'schedule' &&
+      needs.check-activity.outputs.should-scan == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: ['develop', 'release/3', 'release/2']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ matrix.branch }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Run security scans
+        uses: public-ui/kolibri/.github/actions/security-scan@develop
+        with:
+          install-deps: 'true'

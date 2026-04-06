@@ -2,6 +2,13 @@ name: Visual Tests Snapshot Comparison
 
 on:
   pull_request:
+    paths:
+      - 'packages/components/**'
+      - 'packages/themes/**'
+      - 'packages/samples/react/**'
+      - '.github/workflows/visual-tests-base.yml'
+      - '.github/actions/pnpm-setup/**'
+      - '.github/actions/upload-reports/**'
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
