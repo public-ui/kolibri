@@ -4,23 +4,4 @@
 @layer kol-theme-component {
 	@include button('kol-button');
 	@include button('kol-link');
-
-	.kol-toolbar {
-		background-color: var(--color-grey-5);
-		border-color: var(--color-grey-25);
-		border-style: solid;
-		padding: var(--spacing-s);
-		border-width: 1px;
-	}
-
-	.kol-link {
-		--text-background-color: var(--color-yellow);
-		--text-border-color: var(--color-yellow);
-		--text-color: var(--color-black);
-
-		&:hover {
-			--text-background-color: var(--color-yellow-120);
-			--text-border-color: var(--color-yellow-120);
-		}
-	}
 }

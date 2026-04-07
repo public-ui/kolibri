@@ -4,10 +4,6 @@
 
 @layer kol-theme-component {
 	@include icon;
-	:host {
-		background-color: var(--color-mute);
-	}
-
 	.kol-nav {
 		--kol-nav-item-padding-left: -24;
 		--kol-nav-item-padding-right: 8;

@@ -17,41 +17,14 @@ $visible-options: 5;
 
 	.kol-single-select {
 		&__group {
-			color: var(--color-grey);
 			display: inline-flex;
 			width: 100%;
-			min-height: var(--a11y-min-size);
-			padding: to-rem(1) 0.5em;
-			order: 4;
 			align-items: center;
-			text-align: left;
 		}
 
-		&__input {
-			position: relative;
-			width: calc(100% - to-rem(40));
-			flex-grow: 1;
-			border: none;
-
-			&::placeholder {
-				color: var(--color-grey-50);
-			}
-
-			&:first-child {
-				padding-left: var(--spacing);
-			}
-
-			&:last-child {
-				padding-right: var(--spacing);
-			}
-
-			&:not(.disabled) &:hover {
-				border-color: var(--color-blue);
-			}
-
-			&:focus {
-				border: none;
-			}
+		&__delete {
+			margin-top: -2px;
+			margin-bottom: -2px;
 		}
 	}
 }
