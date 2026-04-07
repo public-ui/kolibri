@@ -59,7 +59,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"preact": ">=10.29.0"
+		"preact": ">=10.29.1"
 	},
 	"sideEffects": false,
 	"type": "module",
