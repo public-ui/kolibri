@@ -135,14 +135,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		return event;
 	}
 
-	private getFirstEnabledOption(): Option<string> | undefined {
-		if (!Array.isArray(this._options)) {
-			return undefined;
-		}
-
-		return this._options.find((option) => !option.disabled) as Option<string> | undefined;
-	}
-
 	private clearSelection() {
 		this.isClearing = true;
 
@@ -150,14 +142,27 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 
-		const fallbackOption = this.getFirstEnabledOption();
-		if (!fallbackOption) {
-			this.isClearing = false;
-			return;
+		this._focusedOptionIndex = -1;
+		this._inputValue = '';
+		this._filteredOptions = [...this.state._options];
+
+		if (this._value !== null) {
+			this._value = null;
+
+			const inputEvent = this.createEventWithTarget('input', {
+				name: this.state._name ?? '',
+				value: null,
+			});
+			const changeEvent = this.createEventWithTarget('change', {
+				name: this.state._name ?? '',
+				value: null,
+			});
+
+			this.controller.onFacade.onInput(inputEvent, false, null);
+			this.controller.onFacade.onChange(changeEvent, null);
+			this.controller.setFormAssociatedValue(this._value);
 		}
 
-		this._focusedOptionIndex = -1;
-		this.selectOption(fallbackOption);
 		this.isClearing = false;
 	}
 
@@ -775,19 +780,10 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 
-		const fallbackOption = this.getFirstEnabledOption();
-		if (fallbackOption) {
-			this._inputValue = String(fallbackOption.label);
-			if (this._value !== fallbackOption.value) {
-				this._value = fallbackOption.value;
-				this.controller.setFormAssociatedValue(fallbackOption.value);
-			}
-		} else {
-			this._inputValue = '';
-			if (this._value !== null) {
-				this._value = null;
-				this.controller.setFormAssociatedValue(null);
-			}
+		this._inputValue = '';
+		if (this._value !== null) {
+			this._value = null;
+			this.controller.setFormAssociatedValue(null);
 		}
 	}
 
