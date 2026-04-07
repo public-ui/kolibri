@@ -17,3 +17,5 @@ packages:
   - packages/tools/mcp
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
+overrides:
+  defu@<=6.1.4: '>=6.1.5'
