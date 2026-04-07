@@ -782,6 +782,12 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 				this._value = fallbackOption.value;
 				this.controller.setFormAssociatedValue(fallbackOption.value);
 			}
+		} else {
+			this._inputValue = '';
+			if (this._value !== null) {
+				this._value = null;
+				this.controller.setFormAssociatedValue(null);
+			}
 		}
 	}
 
