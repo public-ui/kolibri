@@ -6,22 +6,19 @@
 	@include alert;
 
 	.kol-form-field {
+		--kol-checkbox-color: var(--ecl-color-primary);
+
+		&__input {
+			order: 2;
+		}
+
 		&__hint {
+			order: 1;
 			font-size: to-rem(14);
 		}
-	}
 
-	.kol-field-control {
-		$root: &;
-
-		&__label {
-			@at-root #{$root}--label-align-left & {
-				padding-right: to-rem(8);
-			}
-
-			@at-root #{$root}--label-align-right & {
-				padding-left: to-rem(8);
-			}
+		&__msg {
+			order: 3;
 		}
 	}
 
@@ -29,73 +26,47 @@
 		@include checkbox('kol-checkbox');
 	}
 
-	.kol-checkbox {
-		.kol-input {
-			&--error {
-				border-color: var(--color-red);
+	.kol-field-control {
+		&--label-align-left &__label {
+			padding-right: to-rem(8);
+		}
 
-				&:checked {
-					background-color: var(--color-red);
-					border-color: var(--color-red);
-				}
+		&--label-align-right &__label {
+			padding-left: to-rem(8);
+		}
 
-				&:not(:disabled):hover {
-					border-color: var(--color-red);
-				}
-
-				&:checked {
-					&:not(:disabled):hover {
-						background-color: var(--color-red-120);
-						border-color: var(--color-red-120);
-					}
-				}
-			}
+		&--error {
+			--kol-checkbox-color: var(--ecl-color-error);
 		}
 	}
 
 	.kol-checkbox--variant-switch {
-		.kol-icon {
-			color: var(--color-white);
-		}
-
 		.kol-input {
-			display: block;
+			border-radius: 16px;
+			border-color: var(--kol-checkbox-color);
 
 			&::before {
-				background-color: var(--color-grey-75);
+				border-radius: 50%;
+				background-color: var(--ecl-color-white);
 			}
 		}
 
-		&.kol-checkbox--checked .kol-icon {
-			color: #000;
-			background-color: var(--color-white);
+		.kol-icon {
+			color: var(--kol-checkbox-color);
+		}
+
+		&.kol-checkbox--checked {
+			.kol-input::before {
+				background-color: var(--kol-checkbox-color);
+			}
+			.kol-icon {
+				color: var(--ecl-color-white);
+			}
 		}
 
 		&:hover {
-			.kol-input:not(:disabled)::before {
-				background-color: var(--color-blue);
-			}
-		}
-
-		&.kol-checkbox--error {
-			.kol-icon {
-				color: var(--color-white);
-				background-color: var(--color-red);
-			}
-
-			.kol-input::before {
-				background-color: var(--color-red);
-			}
-
-			&.kol-checkbox--checked .kol-icon {
-				color: #000;
-				background-color: var(--color-white);
-			}
-
-			&:hover {
-				.kol-input:not(:disabled)::before {
-					background-color: var(--color-red);
-				}
+			.kol-input:not(:disabled) {
+				outline: var(--ecl-color-primary-20) 8px solid;
 			}
 		}
 	}
@@ -103,22 +74,8 @@
 	.kol-input-checkbox--variant-button {
 		gap: var(--spacing-xs) 0;
 
-		& .kol-form-field {
-			&__input {
-				order: 1;
-			}
-
-			&__hint {
-				order: 2;
-			}
-
-			&__msg {
-				order: 3;
-			}
-		}
-
 		&:focus-within {
-			outline-color: var(--color-blue-130);
+			outline-color: var(--ecl-color-primary-130);
 			outline-style: solid;
 			outline-width: 2px;
 		}

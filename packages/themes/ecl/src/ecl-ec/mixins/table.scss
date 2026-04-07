@@ -93,6 +93,8 @@
 		}
 
 		&:has(.kol-table__selection-input--checkbox) {
+			--kol-checkbox-color: var(--ecl-color-primary);
+
 			@include checkbox('kol-table__selection');
 		}
 

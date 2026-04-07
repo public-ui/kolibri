@@ -26,13 +26,13 @@
 
 		input {
 			position: relative;
-			border-color: var(--ecl-color-dark-80);
+			border-color: var(--kol-checkbox-color);
 			border-radius: 2px;
 
 			&:checked,
 			&:indeterminate {
-				background-color: var(--ecl-color-primary);
-				border-color: var(--ecl-color-primary);
+				background-color: var(--kol-checkbox-color);
+				border-color: var(--kol-checkbox-color);
 			}
 
 			&:focus {
