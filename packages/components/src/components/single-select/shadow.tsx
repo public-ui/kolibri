@@ -141,11 +141,10 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private clearSelection() {
-		this.isClearing = true;
-
 		if (this.state._disabled) {
 			return;
 		}
+		this.isClearing = true;
 
 		this._focusedOptionIndex = -1;
 		this._inputValue = '';
@@ -786,6 +785,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 
 		this._inputValue = '';
+		this._filteredOptions = [...this.state._options];
 		if (this._value !== null) {
 			this._value = null;
 			this.controller.setFormAssociatedValue(null);
