@@ -6,7 +6,17 @@ exports[`kol-abbr should render with _label="Text" 1`] = `
     <abbr tabindex="0">
       <slot></slot>
     </abbr>
-    <kol-tooltip-wc _label="Text" aria-hidden="true"></kol-tooltip-wc>
+    <div class="kol-tooltip__floating">
+      <div class="kol-tooltip__arrow"></div>
+      <span class="kol-span kol-tooltip__content">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Text
+          </span>
+          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+        </span>
+      </span>
+    </div>
   </template>
 </kol-abbr>
 `;

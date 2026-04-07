@@ -1,8 +1,16 @@
-> [English version](./README.en.md)
-
 # KERN UX-Standard Theme für KoliBri
 
-Ein benutzerdefiniertes Theme für die barrierefreie Komponentenbibliothek [KoliBri](https://github.com/public-ui/kolibri), dass das KERN-UX Design System implementiert.
+[![npm](https://img.shields.io/npm/v/@public-ui/theme-kern)](https://www.npmjs.com/package/@public-ui/theme-kern)
+[![license](https://img.shields.io/npm/l/@public-ui/theme-kern)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/theme-kern)](https://www.npmjs.com/package/@public-ui/theme-kern)
+[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-kern)](https://bundlephobia.com/result?p=@public-ui/theme-kern)
+![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+
+> [English version](https://github.com/public-ui/kolibri/blob/develop/packages/themes/kern/README.en.md)
+
+Ein benutzerdefiniertes Theme für die barrierefreie Komponentenbibliothek [KoliBri](https://github.com/public-ui/kolibri), das das KERN-UX Design System implementiert.
 
 ## Warum KoliBri für KERN verwenden?
 
@@ -27,7 +35,7 @@ KERN nutzt KoliBri, weil die Komponenten "headless" sind. Das heißt: Die Barrie
 ## Installation
 
 ```bash
-npm install @kern-ux-public-ui/theme-kolibri @public-ui/components
+npm install @public-ui/theme-kern @public-ui/components
 ```
 
 ### Assets kopieren
@@ -45,8 +53,8 @@ Erstellen Sie dann npm-Scripts in Ihrer `package.json`:
 	"scripts": {
 		"postinstall": "npm run copy-assets",
 		"copy-assets": "npm run copy-kern-assets && npm run copy-kolibri-assets",
-		"copy-kern-assets": "cpy 'node_modules/@kern-ux-public-ui/theme-kolibri/assets/**' 'public/assets/theme' --parents",
-		"copy-kolibri-assets": "cpy 'node_modules/@public-ui/components/assets/**' 'public/assets/theme' --parents"
+		"copy-kern-assets": "cpy 'node_modules/@public-ui/theme-kern/assets/**' 'assets/theme' --parents",
+		"copy-kolibri-assets": "cpy 'node_modules/@public-ui/components/assets/**' 'assets/theme' --parents"
 	}
 }
 ```
@@ -55,7 +63,7 @@ Erstellen Sie dann npm-Scripts in Ihrer `package.json`:
 
 ```gitignore
 # Theme Assets (werden automatisch kopiert)
-public/assets/theme/
+assets/theme/
 ```
 
 ### Assets einbinden
@@ -73,11 +81,8 @@ Nach dem Kopieren der Assets müssen diese in Ihrer Anwendung eingebunden werden
 		<title>KERN UX Theme Demo</title>
 
 		<!-- KERN Theme Assets -->
-		<link rel="stylesheet" href="/assets/theme/material-symbols-subset/style.css" />
-		<link rel="stylesheet" href="/assets/theme/fira-sans-v17-latin/style.css" />
-
-		<!-- KoliBri Assets (falls benötigt) -->
-		<link rel="stylesheet" href="/assets/theme/codicon.css" />
+		<link rel="stylesheet" href="assets/theme/material-symbols-subset/style.css" />
+		<link rel="stylesheet" href="assets/theme/fira-sans-v17-latin/style.css" />
 	</head>
 	<body>
 		<!-- Ihre KoliBri-Komponenten -->
@@ -89,18 +94,15 @@ Nach dem Kopieren der Assets müssen diese in Ihrer Anwendung eingebunden werden
 
 ```scss
 // In Ihrer main.scss oder styles.scss
-@import url('/assets/theme/material-symbols-subset/style.css');
-@import url('/assets/theme/fira-sans-v17-latin/style.css');
-
-// KoliBri Assets (falls benötigt)
-@import url('/assets/theme/codicon.css');
+@import url('./assets/theme/material-symbols-subset/style.css');
+@import url('./assets/theme/fira-sans-v17-latin/style.css');
 ```
 
 ## Verwendung
 
 ```typescript
 import { register } from '@public-ui/components';
-import { KERN_V2 } from '@kern-ux-public-ui/theme-kolibri';
+import { KERN_V2 } from '@public-ui/theme-kern';
 import { defineCustomElements } from '@public-ui/components/loader';
 
 register(KERN_V2, defineCustomElements)
@@ -139,11 +141,11 @@ Nach der Installation können Sie die KoliBri-Komponenten mit dem KERN-Theme dir
 	<body>
 		<kol-button _label="KERN Button"></kol-button>
 		<kol-input-text _label="Name" _placeholder="Ihr Name"></kol-input-text>
-		<kol-card _headline="KERN Card"> Inhalt der Karte mit KERN Styling </kol-card>
+		<kol-card _label="KERN Card"> Inhalt der Karte mit KERN Styling </kol-card>
 
 		<script type="module">
 			import { register } from '@public-ui/components';
-			import { KERN_V2 } from '@kern-ux-public-ui/theme-kolibri';
+			import { KERN_V2 } from '@public-ui/theme-kern';
 			import { defineCustomElements } from '@public-ui/components/loader';
 
 			register(KERN_V2, defineCustomElements)

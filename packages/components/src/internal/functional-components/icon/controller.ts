@@ -1,12 +1,12 @@
 import { iconsProp, labelProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedProps, StateAccess } from '../generic-types';
 import type { IconApi } from './api';
 import { iconPropsConfig } from './api';
 
 export class IconController extends BaseController<IconApi> implements ControllerInterface<IconApi> {
-	public constructor(setState: SetStateFn<IconApi>, getState: GetStateFn<IconApi>) {
-		super(iconPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<IconApi>) {
+		super(stateAccess, iconPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedProps<IconApi>): void {

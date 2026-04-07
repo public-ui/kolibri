@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-spin should render with _show=false 1`] = `
-<kol-spin class="kol-spin">
+<kol-spin>
   <template shadowrootmode="open"></template>
 </kol-spin>
 `;
 
 exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
-<kol-spin _show="" class="kol-spin">
+<kol-spin>
   <template shadowrootmode="open">
     <span class="kol-spin__spinner kol-spin__spinner--dot">
       <span class="kol-spin__spinner-element kol-spin__spinner-element--1"></span>
@@ -23,7 +23,7 @@ exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
 `;
 
 exports[`kol-spin should render with _show=true 1`] = `
-<kol-spin _show="" class="kol-spin">
+<kol-spin>
   <template shadowrootmode="open">
     <span class="kol-spin__spinner kol-spin__spinner--dot">
       <span class="kol-spin__spinner-element kol-spin__spinner-element--1"></span>

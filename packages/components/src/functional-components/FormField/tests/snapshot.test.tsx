@@ -50,7 +50,7 @@ describe('KolFormFieldFc', () => {
 	});
 
 	it('should render with tooltip', async () => {
-		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" tooltipAlign="right" />);
+		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" />);
 		expect(page.root).toMatchSnapshot();
 	});
 

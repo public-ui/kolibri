@@ -42,7 +42,7 @@ import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
-import { KolSpin } from './spin/shadow';
+import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';

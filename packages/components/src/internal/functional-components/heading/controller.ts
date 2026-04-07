@@ -1,12 +1,12 @@
 import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { HeadingApi } from './api';
 import { headingPropsConfig } from './api';
 
 export class HeadingController extends BaseController<HeadingApi> implements ControllerInterface<HeadingApi> {
-	public constructor(setState: SetStateFn<HeadingApi>, getState: GetStateFn<HeadingApi>) {
-		super(headingPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<HeadingApi>) {
+		super(stateAccess, headingPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<HeadingApi>): void {

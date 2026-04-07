@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.1.2-rc.6",
+	"version": "4.1.2",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -38,8 +38,8 @@
 		"@types/node": "25.5.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
-		"@typescript-eslint/eslint-plugin": "8.57.2",
-		"@typescript-eslint/parser": "8.57.2",
+		"@typescript-eslint/eslint-plugin": "8.58.0",
+		"@typescript-eslint/parser": "8.58.0",
 		"@unocss/preset-mini": "66.6.7",
 		"@unocss/vite": "66.6.7",
 		"@vitejs/plugin-react-swc": "4.3.0",

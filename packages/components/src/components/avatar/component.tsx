@@ -18,7 +18,7 @@ import type { ColorPair } from '../../schema';
 	},
 })
 export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebComponentInterface<AvatarApi> {
-	private readonly ctrl = new AvatarController(this.setState, this.getState);
+	private readonly ctrl = new AvatarController(this.stateAccess);
 
 	/**
 	 * Defines the backgroundColor and foregroundColor.

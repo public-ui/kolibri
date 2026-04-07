@@ -1,14 +1,14 @@
 import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { ProgressApi } from './api';
 import { progressPropsConfig } from './api';
 
 export class ProgressController extends BaseController<ProgressApi> implements ControllerInterface<ProgressApi> {
 	private interval?: ReturnType<typeof setInterval>;
 
-	public constructor(setState: SetStateFn<ProgressApi>, getState: GetStateFn<ProgressApi>) {
-		super(progressPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<ProgressApi>) {
+		super(stateAccess, progressPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<ProgressApi>): void {
