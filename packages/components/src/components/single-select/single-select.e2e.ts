@@ -103,6 +103,19 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 		});
 
+		test('should open option list again after clearing', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+
+			await page.getByTestId('single-select-delete').click({ force: true });
+			await input.click();
+
+			await expect(page.getByRole('listbox')).toBeVisible();
+			await expect(page.getByRole('listbox').getByText('North')).toBeVisible();
+		});
+
 		test('should select first enabled option on blur after clearing', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
