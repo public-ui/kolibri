@@ -22,11 +22,8 @@
 			}
 		}
 
-		&--required {
-			#{$root}__label-text:not(:has(> [name]))::after,
-			#{$root}__tooltip .span-label::after {
-				content: '*' / '';
-			}
+		&--required .kol-span__label::after {
+			content: '*' / '';
 		}
 
 		&__hint {
