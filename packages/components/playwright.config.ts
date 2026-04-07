@@ -1,5 +1,5 @@
-import { devices, expect } from '@playwright/test';
-import { createConfig, matchers } from '@stencil/playwright';
+import { defineConfig, devices, expect } from '@playwright/test';
+import { matchers } from '@stencil/playwright';
 
 expect.extend(matchers);
 
@@ -7,7 +7,7 @@ const TEST_PORT = '3333';
 const TEST_URL = `http://localhost:${TEST_PORT}`;
 
 /* See https://playwright.dev/docs/test-configuration */
-export default createConfig({
+export default defineConfig({
 	testMatch: /.*\.e2e\.ts$/,
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,

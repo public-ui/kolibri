@@ -9,7 +9,7 @@ test.describe('kol-button', () => {
 	});
 
 	test.describe('Callbacks', () => {
-		['onClick', 'onMouseDown'].forEach((callbackName) => {
+		['onClick', 'onKeyDown', 'onMouseDown'].forEach((callbackName) => {
 			test(`should call ${callbackName} callback when internal button emits`, async ({ page }) => {
 				await page.setContent('<kol-button _label="Button"></kol-button>');
 				const kolButton = page.locator('kol-button');
@@ -25,14 +25,18 @@ test.describe('kol-button', () => {
 				}, callbackName);
 				await page.waitForChanges();
 
-				await page.locator('button').click();
+				if (callbackName === 'onKeyDown') {
+					await page.locator('button').press('Enter');
+				} else {
+					await page.locator('button').click();
+				}
 				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
 	});
 
 	test.describe('DOM events', () => {
-		['click', 'mousedown'].forEach((event) => {
+		['click', 'keydown', 'mousedown'].forEach((event) => {
 			test(`should emit ${event} when internal button emits ${event}`, async ({ page }) => {
 				await page.setContent('<kol-button _label="Button"></kol-button>');
 				const eventPromise = page.locator('kol-button').evaluate(async (element, event) => {
@@ -41,7 +45,12 @@ test.describe('kol-button', () => {
 					});
 				}, event);
 				await page.waitForChanges();
-				await page.locator('button').dispatchEvent(event);
+
+				if (event === 'keydown') {
+					await page.locator('button').press('Enter');
+				} else {
+					await page.locator('button').dispatchEvent(event);
+				}
 				await expect(eventPromise).resolves.toBeTruthy();
 			});
 		});
