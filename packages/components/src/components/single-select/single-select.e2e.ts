@@ -116,7 +116,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByRole('listbox').getByText('North')).toBeVisible();
 		});
 
-		test('should select first enabled option on blur after clearing', async ({ page }) => {
+		test('should keep free text on first blur after clearing', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -126,8 +126,8 @@ test.describe(COMPONENT_NAME, () => {
 			await input.fill('Ö');
 			await page.click('html', { position: { x: 0, y: 0 } });
 
-			await expect(input).toHaveValue('North');
-			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+			await expect(input).toHaveValue('Ö');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {

@@ -62,6 +62,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	private oldValue?: StencilUnknown;
 	// so onBlur doesn't close the panel if clear button is pressed
 	private isClearing = false;
+	private skipNextBlurFallbackSelection = false;
 
 	/**
 	 * Returns the current value.
@@ -111,7 +112,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen && this._value === null) {
+		} else if (!this._isOpen && this._value === null && !this.skipNextBlurFallbackSelection) {
 			const firstEnabledOption = this.state._options?.find((option) => !option.disabled) as Option<string> | undefined;
 			if (firstEnabledOption) {
 				this.selectOption(firstEnabledOption);
@@ -120,6 +121,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
+		this.skipNextBlurFallbackSelection = false;
 		if (event instanceof FocusEvent && event.view === window && !this.isClearing) {
 			this._isOpen = false;
 		}
@@ -148,6 +150,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 		this.isClearing = true;
+		this.skipNextBlurFallbackSelection = true;
 
 		this._focusedOptionIndex = -1;
 		this._inputValue = '';
