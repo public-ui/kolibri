@@ -103,7 +103,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 		});
 
-		test('should allow free typing after clearing the selected option', async ({ page }) => {
+		test('should select first enabled option on blur after clearing', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -111,9 +111,10 @@ test.describe(COMPONENT_NAME, () => {
 
 			await page.getByTestId('single-select-delete').click({ force: true });
 			await input.fill('Ö');
+			await page.click('html', { position: { x: 0, y: 0 } });
 
-			await expect(input).toHaveValue('Ö');
-			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+			await expect(input).toHaveValue('North');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {

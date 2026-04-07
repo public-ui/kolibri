@@ -108,6 +108,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
+		} else if (!this._isOpen && this._value === null) {
+			const firstEnabledOption = this.state._options?.find((option) => !option.disabled) as Option<string> | undefined;
+			if (firstEnabledOption) {
+				this.selectOption(firstEnabledOption);
+			}
 		} else if (!this._isOpen && this._value) {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
