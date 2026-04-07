@@ -32,8 +32,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   5 |   5 |   5 |   3 |
-| high     |  33 |  30 |  43 |  27 |
-| moderate |  16 |  17 |  27 |   7 |
+| high     |  35 |  33 |  45 |  29 |
+| moderate |  18 |  19 |  28 |   8 |
 | low      |   4 |   4 |   9 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -71,6 +71,7 @@
 | hono                 | high     | CVE-2026-29045      | v2                | Hono vulnerable to arbitrary file access via serveStatic vulnerability             |
 | immutable            | high     | CVE-2026-29063      | v2                | Immutable is vulnerable to Prototype Pollution                                     |
 | locutus              | high     | CVE-2026-29091      | v4, v3, v2, v1    | locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Co   |
+| lodash               | high     | CVE-2026-4800       | v4, v3            | lodash vulnerable to Code Injection via `_.template` imports key names             |
 | lodash.pick          | high     | CVE-2020-8203       | v2, v1            | Prototype Pollution in lodash                                                      |
 | minimatch            | high     | CVE-2026-27903      | v4, v3, v2, v1    | minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adja   |
 | minimatch            | high     | CVE-2026-27904      | v4, v3, v2, v1    | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu  |
@@ -84,7 +85,7 @@
 | rollup               | high     | CVE-2026-27606      | v1                | Rollup 4 has Arbitrary File Write via Path Traversal                               |
 | semver               | high     | CVE-2022-25883      | v2                | semver vulnerable to Regular Expression Denial of Service                          |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v4, v3, v2, v1    | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to   |
-| socket.io-parser     | high     | CVE-2026-33151      | v4, v3, v2        | socket.io allows an unbounded number of binary attachments                         |
+| socket.io-parser     | high     | CVE-2026-33151      | v3, v2            | socket.io allows an unbounded number of binary attachments                         |
 | svgo                 | high     | CVE-2026-29074      | v4, v3, v2, v1    | SVGO DoS through entity expansion in DOCTYPE (Billion Laughs)                      |
 | tar                  | high     | CVE-2026-24842      | v1                | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave   |
 | tar                  | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins   |
@@ -95,6 +96,8 @@
 | undici               | high     | CVE-2026-1528       | v4, v3, v2        | Undici: Malicious WebSocket 64-bit length overflows parser and crashes the clien   |
 | undici               | high     | CVE-2026-1526       | v4, v3, v2        | Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompre   |
 | undici               | high     | CVE-2026-2229       | v4, v3, v2        | Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_win   |
+| vite                 | high     | GHSA-v2wj-q39q-566r | v4, v3, v2, v1    | Vite: `server.fs.deny` bypassed with queries                                       |
+| vite                 | high     | CVE-2026-39363      | v4, v3, v2, v1    | Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket               |
 | ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                            |
 | brace-expansion      | moderate | CVE-2026-33750      | v4, v3, v2        | brace-expansion: Zero-step sequence causes process hang and memory exhaustion      |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                             |
@@ -108,6 +111,7 @@
 | hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in   |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                      |
 | locutus              | moderate | CVE-2026-33993      | v4, v3, v2, v1    | Locutus has Prototype Pollution via **proto** Key Injection in unserialize()       |
+| lodash               | moderate | CVE-2026-2950       | v4, v3            | lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and    |
 | micromatch           | moderate | CVE-2024-4067       | v3, v2, v1        | Regular Expression Denial of Service (ReDoS) in micromatch                         |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values             |
 | path-to-regexp       | moderate | CVE-2026-4923       | v2                | path-to-regexp vulnerable to Regular Expression Denial of Service via multiple w   |
@@ -118,6 +122,7 @@
 | undici               | moderate | CVE-2026-1525       | v4, v3, v2        | Undici has an HTTP Request/Response Smuggling issue                                |
 | undici               | moderate | CVE-2026-1527       | v4, v3, v2        | Undici has CRLF Injection in undici via `upgrade` option                           |
 | undici               | moderate | CVE-2026-2581       | v4, v3            | Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response   |
+| vite                 | moderate | GHSA-4w7w-66w2-5vf9 | v4, v3, v2, v1    | Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling                |
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to    |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
 | webpack-dev-server   | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
