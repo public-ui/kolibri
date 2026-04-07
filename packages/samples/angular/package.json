@@ -34,7 +34,7 @@
 		"@tailwindcss/postcss": "4.2.2",
 		"adopted-style-sheets": "1.1.9-rc.21",
 		"cpy-cli": "6.0.0",
-		"hono": "4.12.9",
+		"hono": "4.12.12",
 		"karma-jasmine": "5.1.0",
 		"karma-chrome-launcher": "3.2.0",
 		"karma-jasmine-html-reporter": "2.2.0",
