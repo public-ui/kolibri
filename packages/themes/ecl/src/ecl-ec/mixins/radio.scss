@@ -3,27 +3,27 @@
 
 @mixin radio($block-classname) {
 	.#{$block-classname} {
+		.kol-input-radio {
+			width: to-rem(24);
+			min-width: 0;
+		}
+
 		input {
+			position: relative;
 			background-color: var(--ecl-color-white);
-			border-color: var(--ecl-color-dark-80);
+			border-color: var(--kol-radio-color);
+			border-width: 1px;
 
-			&:checked {
-				border-color: var(--ecl-color-primary);
-
-				&:before {
-					background-color: var(--ecl-color-primary);
-				}
+			&:checked::before {
+				inset: to-rem(4);
+				background-color: var(--kol-radio-color);
 			}
 		}
 
-		&:not(:has(input:disabled)):hover:before {
-			background-color: var(--ecl-color-primary-20);
-			border-radius: 50%;
-			content: '';
-			display: block;
-			position: absolute;
-			inset: 0;
-			z-index: -1;
+		&:not(:has(input:disabled)):hover {
+			input {
+				outline: var(--ecl-color-primary-20) 8px solid;
+			}
 		}
 	}
 }

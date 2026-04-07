@@ -1,49 +1,38 @@
 @use '../../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
 @use '../mixins/typography' as *;
+@use '../mixins/radio' as *;
 
 @layer kol-theme-component {
 	@include alert;
+	@include radio('kol-field-control');
 
-	/**
-	 * order the layout of form elements.
-	*/
 	.kol-form-field {
+		--kol-radio-color: var(--ecl-color-primary);
+		gap: to-rem(8);
+		flex-wrap: wrap;
+		align-items: flex-start;
+		border: 0;
+		margin: 0;
+		padding: 0;
+
 		&__label {
 			order: 1;
 		}
 
 		&__input {
-			order: 2;
+			order: 3;
+			gap: to-rem(8);
+			align-items: flex-start;
 		}
 
 		&__msg {
-			order: 3;
-		}
-
-		&__hint {
 			order: 4;
 		}
-	}
-
-	.kol-form-field {
-		padding: 0 to-rem(14) to-rem(10) to-rem(14);
-		gap: to-rem(8);
-		flex-wrap: wrap;
-		align-items: flex-start;
-
-		&__label {
-			color: var(--color-grey);
-
-			font-weight: var(--font-weight-bold);
-		}
 
 		&__hint {
+			order: 2;
 			@include kol-typography-hint;
-		}
-
-		&__input {
-			gap: to-rem(8);
 		}
 	}
 
@@ -51,46 +40,7 @@
 		gap: to-rem(8);
 	}
 
-	.kol-input {
-		background-color: var(--ecl-color-white);
-		border-color: var(--ecl-color-dark-80);
-
-		&:checked {
-			border-color: var(--ecl-color-primary);
-
-			&:before {
-				background-color: var(--ecl-color-primary);
-			}
-		}
-
-		&:not(:disabled):hover::before,
-		&:focus::before {
-			background-color: var(--ecl-color-primary-20);
-			border-radius: 50%;
-			content: '';
-			display: block;
-			position: absolute;
-			inset: 0;
-			z-index: -1;
-		}
-
-		&#{&}--error {
-			border: 2px solid var(--color-red);
-
-			&:before {
-				display: none;
-			}
-
-			&:checked {
-				border-color: var(--color-red);
-				border-width: 7px;
-			}
-
-			&:not(:disabled) {
-				&:hover {
-					border-color: var(--color-red-1xx);
-				}
-			}
-		}
+	.kol-input--error {
+		--kol-radio-color: var(--ecl-color-error);
 	}
 }

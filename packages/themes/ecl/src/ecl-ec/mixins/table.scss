@@ -97,6 +97,8 @@
 		}
 
 		&:has(.kol-table__selection-input--radio) {
+			--kol-radio-color: var(--ecl-color-primary);
+
 			@include radio('kol-table__selection');
 		}
 	}
