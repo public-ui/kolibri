@@ -29,6 +29,21 @@ KoliBri setzt auf ein mehrschichtiges Theming mit klaren Verantwortlichkeiten:
 
 Dieses System ermöglicht es, ein Corporate Design konsistent umzusetzen und dennoch flexibel zu bleiben.
 
+### Layer-Disziplin statt „wildes CSS“
+
+Styles sollten immer im **zuständigen Layer** landen und nicht quer über mehrere Ebenen verteilt werden:
+
+| Layer            | Zuständigkeit                             | Typische Inhalte                                       | Nicht hier platzieren                                    |
+| ---------------- | ----------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------- |
+| A11y-Preset      | Barrierefreiheits-Baseline                | Mindestgrößen, lesbare Standardfarben, Textregeln      | Branding-Farben oder komponentenspezifische Optik        |
+| Basis-Global     | Technische Grundregeln aller Komponenten  | `box-sizing`, Basis-Layout ohne Margins/Paddings       | Theme-Farben, visuelle Markenanpassungen                 |
+| Basis-Komponente | Strukturelles Layout je Komponente        | interne Layout-Logik, Zustandsstruktur                 | Corporate-Design-spezifische Farben oder Schatten        |
+| Theme-Global     | Globale Design-Tokens eines Themes        | Schriftfamilie, Farbvariablen, globale Theme-Parameter | komponentenspezifische Sonderfälle                       |
+| Theme-Komponente | Optik einer konkreten Komponente im Theme | Farben, Rahmen, Schatten, Abstände im Theme-Kontext    | generische Basis-Regeln, die für alle Komponenten gelten |
+
+**Faustregel:** Wenn du überlegst „wohin mit dieser Regel?“, entscheide zuerst nach **Verantwortung**, dann nach Selektor.
+So bleibt das Styling nachvollziehbar, wartbar und konfliktarm.
+
 > **Hinweis:** CSS-Custom-Properties sind global und durchdringen auch den Shadow DOM.
 > Verwende sie nur für öffentliche Design-Tokens und statte sie mit einem eindeutigen Prefix aus.
 > Für interne Berechnungen und Zwischenergebnisse setze stattdessen auf SASS-Variablen,
