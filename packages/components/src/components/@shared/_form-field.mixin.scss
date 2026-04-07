@@ -22,8 +22,11 @@
 			}
 		}
 
-		&--required .kol-span__label::after {
-			content: '*' / '';
+		&--required {
+			#{$root}__label-text:not(:has(> [name]))::after,
+			.kol-tooltip__content .kol-span__label::after {
+				content: '*' / '';
+			}
 		}
 
 		&__hint {
