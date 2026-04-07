@@ -94,13 +94,25 @@ test.describe(COMPONENT_NAME, () => {
 
 			await expect(input).toHaveValue(TEST_LABEL);
 			await page.waitForChanges();
-			await page.waitForTimeout(500);
 
 			const clearButton = page.getByTestId('single-select-delete');
-			await expect(clearButton).toHaveCount(1);
+			await expect(clearButton).toBeVisible();
 			await clearButton.click({ force: true });
 
 			await expect(input).toHaveValue('');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+		});
+
+		test('should allow free typing after clearing the selected option', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+
+			await page.getByTestId('single-select-delete').click({ force: true });
+			await input.fill('Ö');
+
+			await expect(input).toHaveValue('Ö');
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 		});
 
