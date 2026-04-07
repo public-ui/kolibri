@@ -7,6 +7,7 @@ import type { Generic } from 'adopted-style-sheets';
 /* types */
 export type ButtonCallbacksPropType<T> = {
 	[Callback.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
+	[Callback.onKeyDown]?: EventValueOrEventCallback<KeyboardEvent, T>;
 	[Callback.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
@@ -23,7 +24,7 @@ export const validateButtonCallbacks = (component: Generic.Element.Component, va
 		component,
 		`_on`,
 		(value) => typeof value === 'object' && value !== null,
-		new Set(['ButtonCallbacksPropType {Events.onClick, Events.onMouseDown}']),
+		new Set(['ButtonCallbacksPropType {Events.onClick, Events.onKeyDown, Events.onMouseDown}']),
 		value,
 	);
 };
