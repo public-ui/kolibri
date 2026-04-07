@@ -135,6 +135,14 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		return event;
 	}
 
+	private getFirstEnabledOption(): Option<string> | undefined {
+		if (!Array.isArray(this._options)) {
+			return undefined;
+		}
+
+		return this._options.find((option) => !option.disabled) as Option<string> | undefined;
+	}
+
 	private clearSelection() {
 		this.isClearing = true;
 
@@ -142,24 +150,14 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 
-		const emptyValue = null;
+		const fallbackOption = this.getFirstEnabledOption();
+		if (!fallbackOption) {
+			this.isClearing = false;
+			return;
+		}
+
 		this._focusedOptionIndex = -1;
-		this._value = emptyValue;
-		this._inputValue = '';
-		this._filteredOptions = [...this.state._options];
-
-		const inputEvent = this.createEventWithTarget('input', {
-			name: this.state._name as string,
-			value: emptyValue,
-		});
-		const changeEvent = this.createEventWithTarget('change', {
-			name: this.state._name as string,
-			value: emptyValue,
-		});
-
-		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
-		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
-
+		this.selectOption(fallbackOption);
 		this.isClearing = false;
 	}
 
@@ -767,9 +765,23 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private updateInputValue(value?: StencilUnknown) {
-		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => option.value === value);
-			this._inputValue = matchedOption ? String(matchedOption.label) : '';
+		if (!Array.isArray(this._options)) {
+			return;
+		}
+
+		const matchedOption = this._options.find((option) => option.value === value && !option.disabled);
+		if (matchedOption) {
+			this._inputValue = String(matchedOption.label);
+			return;
+		}
+
+		const fallbackOption = this.getFirstEnabledOption();
+		if (fallbackOption) {
+			this._inputValue = String(fallbackOption.label);
+			if (this._value !== fallbackOption.value) {
+				this._value = fallbackOption.value;
+				this.controller.setFormAssociatedValue(fallbackOption.value);
+			}
 		}
 	}
 

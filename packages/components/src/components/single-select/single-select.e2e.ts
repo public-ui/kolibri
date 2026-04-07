@@ -85,7 +85,7 @@ test.describe(COMPONENT_NAME, () => {
 			expect(value).toBe('W');
 		});
 
-		test('should clear the selection when clear button is clicked', async ({ page }) => {
+		test('should keep an option selected when clear button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -100,7 +100,8 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(clearButton).toHaveCount(1);
 			await clearButton.click({ force: true });
 
-			await expect(input).toHaveValue('');
+			await expect(input).toHaveValue('North');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
