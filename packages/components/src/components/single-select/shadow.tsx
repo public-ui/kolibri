@@ -13,7 +13,6 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
-	PlaceholderPropType,
 	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
@@ -44,6 +43,12 @@ import { SingleSelectController } from './controller';
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
+ * Internal value fallback logic:
+ * - If `_value` is `undefined` or not present in `_options`, the first choosable option is selected automatically.
+ * - If `_options` change and the currently selected option no longer exists (or is disabled), the value switches to the first choosable option.
+ * - After clicking the clear button, the input stays empty and the value remains `null` until either an option is selected or the web component loses focus.
+ * - Outside that clear-button interaction window, the value is only `null` if there are no options or no choosable options.
+ *
  * @slot - The label of the input field.
  */
 @Component({
@@ -62,6 +67,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	private oldValue?: StencilUnknown;
 	// so onBlur doesn't close the panel if clear button is pressed
 	private isClearing = false;
+	private isSelectionCleared = false;
+	private isInteractingInsideComponent = false;
 	private skipNextBlurFallbackSelection = false;
 
 	/**
@@ -121,14 +128,15 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 		this.skipNextBlurFallbackSelection = false;
 
-		// Fallback: wenn nach allen checks value noch null ist, erste option wählen
-		if (this._value === null) {
+		// Fallback: wenn nach allen checks value noch null ist und der gesamte Component-Fokus verloren wurde, erste Option wählen
+		if (!this._isOpen && this._value === null) {
 			const firstEnabledOption = this.state._options?.find((option) => !option.disabled) as Option<string> | undefined;
 			if (firstEnabledOption) {
 				this.selectOption(firstEnabledOption);
 			}
 		}
 
+		this.isSelectionCleared = false;
 		this._isOpen = false;
 	}
 
@@ -155,6 +163,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 		this.isClearing = true;
+		this.isSelectionCleared = true;
 		this.skipNextBlurFallbackSelection = true;
 
 		this._focusedOptionIndex = -1;
@@ -182,6 +191,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private selectOption(option: Option<string>) {
+		this.isSelectionCleared = false;
 		if (option.value === this._value) {
 			this._inputValue = option.label as string;
 			this._filteredOptions = [...this.state._options];
@@ -325,7 +335,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			class: 'kol-single-select__input',
 			disabled: isDisabled,
 			name: this.state._name,
-			placeholder: this.state._placeholder,
 			ref: this.setRefInput,
 			required: this.state._required,
 			role: 'combobox',
@@ -456,7 +465,16 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	@Listen('focusout')
-	public handleFocusOut(): void {
+	public handleFocusOut(event: FocusEvent): void {
+		if (this.isInteractingInsideComponent) {
+			return;
+		}
+
+		const nextFocusedElement = event.relatedTarget as HTMLElement | null;
+		if (nextFocusedElement && this.host?.contains(nextFocusedElement)) {
+			return;
+		}
+
 		setTimeout(() => {
 			// Keine onBlur wenn Fokus zu einer Option wechselt oder irgendwo noch im Host ist
 			if (!this.host?.contains(document.activeElement)) {
@@ -464,6 +482,19 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			}
 		});
 	}
+
+	@Listen('mousedown')
+	public handleMouseDown(event: MouseEvent): void {
+		if (!this.host?.contains(event.target as Node)) {
+			return;
+		}
+
+		this.isInteractingInsideComponent = true;
+		setTimeout(() => {
+			this.isInteractingInsideComponent = false;
+		});
+	}
+
 	@Listen('blur')
 	public handleWindowBlur(): void {
 		// Nur schließen wenn wirklich der ganze Component Fokus verliert
@@ -574,11 +605,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
-
-	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: string;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -694,11 +720,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
-	@Watch('_placeholder')
-	public validatePlaceholder(value?: PlaceholderPropType): void {
-		this.controller.validatePlaceholder(value);
-	}
-
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
@@ -802,10 +823,29 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		if (!Array.isArray(this._options)) {
 			return;
 		}
+		if (this.isSelectionCleared && value === null) {
+			this._inputValue = '';
+			this._filteredOptions = [...this.state._options];
+			this.controller.setFormAssociatedValue(null);
+			return;
+		}
 
 		const matchedOption = this._options.find((option) => option.value === value && !option.disabled);
 		if (matchedOption) {
 			this._inputValue = String(matchedOption.label);
+			this._filteredOptions = [...this.state._options];
+			this.controller.setFormAssociatedValue(matchedOption.value);
+			return;
+		}
+
+		const firstEnabledOption = this._options.find((option) => !option.disabled);
+		if (firstEnabledOption) {
+			this._inputValue = String(firstEnabledOption.label);
+			this._filteredOptions = [...this.state._options];
+			if (this._value !== firstEnabledOption.value) {
+				this._value = firstEnabledOption.value;
+			}
+			this.controller.setFormAssociatedValue(firstEnabledOption.value);
 			return;
 		}
 
@@ -813,8 +853,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this._filteredOptions = [...this.state._options];
 		if (this._value !== null) {
 			this._value = null;
-			this.controller.setFormAssociatedValue(null);
 		}
+		this.controller.setFormAssociatedValue(null);
 	}
 
 	public componentWillLoad(): void {

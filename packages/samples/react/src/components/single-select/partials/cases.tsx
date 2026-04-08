@@ -33,12 +33,11 @@ export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 				_rows={3}
 				_touched
 				_label="Label"
-				_placeholder="Placeholder"
 				_required
 			/>
 			<KolSingleSelect {...props} _label="With access key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _accessKey="c" />
 			<KolSingleSelect {...props} _label="With short key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _shortKey="s" />
-			<KolSingleSelect {...props} _label="With long labels" _options={LONG_OPTIONS as Option<StencilUnknown>[]} _placeholder="Placeholder" />
+			<KolSingleSelect {...props} _label="With long labels" _options={LONG_OPTIONS as Option<StencilUnknown>[]} />
 			<KolSingleSelect
 				{...props}
 				_label="With hidden clear button"
