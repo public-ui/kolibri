@@ -68,6 +68,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	// so onBlur doesn't close the panel if clear button is pressed
 	private isClearing = false;
 	private isSelectionCleared = false;
+	private isInteractingInsideComponent = false;
 	private skipNextBlurFallbackSelection = false;
 
 	/**
@@ -465,6 +466,10 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent): void {
+		if (this.isInteractingInsideComponent) {
+			return;
+		}
+
 		const nextFocusedElement = event.relatedTarget as HTMLElement | null;
 		if (nextFocusedElement && this.host?.contains(nextFocusedElement)) {
 			return;
@@ -477,6 +482,19 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			}
 		});
 	}
+
+	@Listen('mousedown')
+	public handleMouseDown(event: MouseEvent): void {
+		if (!this.host?.contains(event.target as Node)) {
+			return;
+		}
+
+		this.isInteractingInsideComponent = true;
+		setTimeout(() => {
+			this.isInteractingInsideComponent = false;
+		});
+	}
+
 	@Listen('blur')
 	public handleWindowBlur(): void {
 		// Nur schließen wenn wirklich der ganze Component Fokus verliert
