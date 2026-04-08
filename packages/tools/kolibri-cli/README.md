@@ -48,7 +48,7 @@ kolibri --help
 |  .'   /  ,---.  |  | `--' |  |) /_  ,--.--. `--'
 |  .   '  | .-. | |  | ,--. |  .-.  \ |  .--' ,--.
 |  |\   \ | '-' | |  | |  | |  '--' / |  |    |  |
-`--' `--´  `---´  `--' `--' `------´  `--'    `--'
+`--' `--'  `---'  `--' `--' `------'  `--'    `--'
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
 
 Usage: kolibri [options] [command]

@@ -16,7 +16,7 @@ const banner = gradient(['red', 'green'], { interpolation: 'hsv', hsvSpin: 'long
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
-\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
+\`--' \`--'  \`---'  \`--' \`--' \`------'  \`--'    \`--'
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${versionOfPublicUiKoliBriCli}
 `,
 );
