@@ -3,9 +3,6 @@ import { matchers } from '@stencil/playwright';
 
 expect.extend(matchers);
 
-const TEST_PORT = '3333';
-const TEST_URL = `http://localhost:${TEST_PORT}`;
-
 /* See https://playwright.dev/docs/test-configuration */
 export default defineConfig({
 	testMatch: /.*\.e2e\.ts$/,
@@ -29,15 +26,8 @@ export default defineConfig({
 		// },
 	],
 	use: {
-		baseURL: TEST_URL,
 		timezoneId: 'Europe/Berlin',
 		screenshot: 'only-on-failure',
 		trace: 'retain-on-failure',
-	},
-	webServer: {
-		url: TEST_URL,
-		reuseExistingServer: false,
-		/* The builtin Stencil server sometimes fails to serve some assets which leads to intermittent test failures. Use a more stable server (without watcher) for CI: */
-		...(process.env.CI ? { command: `stencil build --dev && mv dist/kolibri dist/build && npx serve dist -p ${TEST_PORT} -L` } : {}),
 	},
 });
