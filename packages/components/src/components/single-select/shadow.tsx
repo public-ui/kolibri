@@ -13,7 +13,6 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
-	PlaceholderPropType,
 	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
@@ -25,7 +24,6 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -57,12 +55,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
-	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
-	// so onBlur doesn't close the panel if clear button is pressed
-	private isClearing = false;
-	private skipNextBlurFallbackSelection = false;
 
 	/**
 	 * Returns the current value.
@@ -110,7 +104,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen && this._value === null && !this.skipNextBlurFallbackSelection) {
+		} else if (!this._isOpen && this._value === null) {
 			const firstEnabledOption = this.state._options?.find((option) => !option.disabled) as Option<string> | undefined;
 			if (firstEnabledOption) {
 				this.selectOption(firstEnabledOption);
@@ -119,7 +113,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
 			this._filteredOptions = [...this.state._options];
 		}
-		this.skipNextBlurFallbackSelection = false;
 
 		// Fallback: wenn nach allen checks value noch null ist, erste option wählen
 		if (this._value === null) {
@@ -148,37 +141,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			});
 		}
 		return event;
-	}
-
-	private clearSelection() {
-		if (this.state._disabled) {
-			return;
-		}
-		this.isClearing = true;
-		this.skipNextBlurFallbackSelection = true;
-
-		this._focusedOptionIndex = -1;
-		this._inputValue = '';
-		this._filteredOptions = [...this.state._options];
-
-		if (this._value !== null) {
-			this._value = null;
-
-			const inputEvent = this.createEventWithTarget('input', {
-				name: this.state._name ?? '',
-				value: null,
-			});
-			const changeEvent = this.createEventWithTarget('change', {
-				name: this.state._name ?? '',
-				value: null,
-			});
-
-			this.controller.onFacade.onInput(inputEvent, false, null);
-			this.controller.onFacade.onChange(changeEvent, null);
-			this.controller.setFormAssociatedValue(this._value);
-		}
-
-		this.isClearing = false;
 	}
 
 	private selectOption(option: Option<string>) {
@@ -325,7 +287,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			class: 'kol-single-select__input',
 			disabled: isDisabled,
 			name: this.state._name,
-			placeholder: this.state._placeholder,
 			ref: this.setRefInput,
 			required: this.state._required,
 			role: 'combobox',
@@ -354,32 +315,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-
-						{this._inputValue && this.state._hasClearButton && (
-							<KolButtonWcTag
-								_icons="kolicon-cross"
-								_label={this.translateDeleteSelection}
-								_hideLabel
-								_variant="ghost"
-								_disabled={isDisabled}
-								class="kol-single-select__delete"
-								hidden={isDisabled}
-								_on={{
-									onClick: (event: MouseEvent) => {
-										event.preventDefault();
-										this.clearSelection();
-										this.refInput?.focus();
-									},
-									onKeyDown: (event: KeyboardEvent) => {
-										if (event.key === 'Enter' || event.key === ' ' || event.key === 'Delete' || event.key === 'Backspace') {
-											event.preventDefault();
-											this.clearSelection();
-											this.refInput?.focus();
-										}
-									},
-								}}
-							/>
-						)}
 
 						<IconFC
 							icons="kolicon-chevron-down"
@@ -469,7 +404,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		// Nur schließen wenn wirklich der ganze Component Fokus verliert
 		// (nicht wenn nur vom Input zu Options wechselt)
 		setTimeout(() => {
-			if (!this.host?.contains(document.activeElement) && !this.isClearing) {
+			if (!this.host?.contains(document.activeElement)) {
 				this._isOpen = false;
 			}
 		});
@@ -576,11 +511,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: string;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -667,11 +597,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
 	/**
-	 * Shows the clear button if enabled.
-	 */
-	@Prop() public _hasClearButton?: boolean = true;
-
-	/**
 	 * Maximum number of visible rows of the element.
 	 */
 	@Prop() public _rows?: RowsPropType;
@@ -681,7 +606,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
-		_hasClearButton: true,
 	};
 
 	@State() private inputHasFocus = false;
@@ -692,11 +616,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	private showAsAlert(): boolean {
 		return Boolean(this.state._touched) && !this.inputHasFocus;
-	}
-
-	@Watch('_placeholder')
-	public validatePlaceholder(value?: PlaceholderPropType): void {
-		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_accessKey')
@@ -781,11 +700,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this.controller.validateValue(value);
 		this.oldValue = value;
 		this.updateInputValue(value);
-	}
-
-	@Watch('_hasClearButton')
-	public validateHasClearButton(value?: boolean): void {
-		this.controller.validateHasClearButton(value);
 	}
 
 	@Watch('_rows')

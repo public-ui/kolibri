@@ -25,9 +25,7 @@ type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	placeholder: string;
 	value: StencilUnknown;
-	hasClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
@@ -48,8 +46,6 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	on: InputTypeOnDefault;
-	placeholder: string;
-	hasClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
