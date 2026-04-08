@@ -206,7 +206,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 	}
 
-	private setFilteredOptionsByQuery(query: string) {
+	private setFilteredOptionsByQuery(query: string | undefined) {
+		if (!query) {
+			return;
+		}
+
 		if (query?.trim() === '') {
 			this._filteredOptions = [...this.state._options];
 		} else if (Array.isArray(this.state._options) && this.state._options.length > 0 && query.length > 0) {
@@ -721,7 +725,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
-		this.updateInputValue(this._value);
+		this.setFilteredOptionsByQuery(this._inputValue);
 	}
 
 	@Watch('_required')
