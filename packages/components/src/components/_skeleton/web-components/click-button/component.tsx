@@ -14,7 +14,7 @@ import type { WebComponentInterface } from '../../../../internal/functional-comp
 	shadow: true,
 })
 export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements WebComponentInterface<ClickButtonApi> {
-	private readonly ctrl = new ClickButtonController(this.setState, this.getState);
+	private readonly ctrl = new ClickButtonController(this.stateAccess);
 
 	/**
 	 * Sets the label of the click button component.

@@ -22,6 +22,7 @@ import type {
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
@@ -65,6 +66,14 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	@Method()
 	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.primaryButtonWcRef!));
 	}
 
 	private readonly clickButtonHandler = {

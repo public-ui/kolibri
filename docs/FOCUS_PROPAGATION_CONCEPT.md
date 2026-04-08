@@ -8,6 +8,8 @@ KoliBri Web Components verwenden Shadow DOM für Style-Isolation. Da der Browser
 
 Die zentrale Herausforderung: Bevor der Focus gesetzt werden kann, müssen die Adopted Style Sheets geladen und angewendet sein. Ohne diese Absicherung kann es zu Race Conditions kommen — der Focus wird auf ein Element gesetzt, das noch nicht vollständig gerendert ist.
 
+Technisch kann ein früher `focus()` im Browser teilweise trotzdem funktionieren. Das ist jedoch nicht authentisch zum realen Nutzerverhalten: Interaktion soll erst auf final sichtbaren und stabil gerenderten Controls stattfinden. Für Tests bedeutet das: Kein Focus auf potenziell noch unsichtbare oder semantisch unvollständige Elemente. Deshalb wird `data-themed` als verbindliche Readiness-Bedingung verwendet.
+
 ## Architektur
 
 ### Zwei Varianten der Focus-Delegation
@@ -91,6 +93,8 @@ export async function delegateFocus(host: HTMLElement, callback: () => Promise<v
 2. Falls nicht: wartet über `waitForThemed()` (MutationObserver) bis maximal 5 Sekunden
 3. Ruft dann den `callback` auf, der den eigentlichen Focus setzt
 4. Bei Fehler (Timeout oder Focus-Fehler): wirft einen benutzerfreundlichen Fehler
+
+Die Wartephase ist nicht nur technisch motiviert, sondern auch eine Qualitätsgrenze: Sie verhindert, dass Focus-Interaktionen in Tests oder in schneller Initialisierung auf UI-Zuständen stattfinden, die ein Nutzer so noch nicht sieht.
 
 ### `setFocus(element)`
 
@@ -234,7 +238,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	@Method()
-	public async focus() {
+	public async focus(): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 }

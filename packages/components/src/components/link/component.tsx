@@ -1,7 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { KolTooltipWcTag } from '../../core/component-names';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -53,6 +55,7 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
+import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -74,21 +77,13 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	private anchorRef?: HTMLAnchorElement;
-	private tooltipRef?: HTMLKolTooltipWcElement;
+	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
 	private readonly setAnchorRef = (ref?: HTMLAnchorElement) => {
 		this.anchorRef = ref;
-	};
-
-	private readonly setTooltipRef = (ref?: HTMLKolTooltipWcElement) => {
-		this.tooltipRef = ref;
-	};
-
-	private readonly hideTooltip = () => {
-		void this.tooltipRef?.hideTooltip();
 	};
 
 	/**
@@ -99,10 +94,16 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		return setFocus(this.anchorRef!);
 	}
 
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return setClick(this.anchorRef!);
+	}
+
 	private readonly onClick = (event: Event) => {
-		if (this.state._hideLabel) {
-			this.hideTooltip();
-		}
+		this.tooltipCtrl.hideTooltip();
 
 		if (this.state._disabled === true) {
 			event.preventDefault();
@@ -210,20 +211,15 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 						/>
 					)}
 				</a>
-				{this.state._hideLabel === true && (
-					<KolTooltipWcTag
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						class="kol-link__tooltip"
-						ref={this.setTooltipRef}
-						hidden={hasExpertSlot}
-						_badgeText={this.state._accessKey || this.state._shortKey}
-						_align={this.state._tooltipAlign}
-						_label={this.state._label || this.state._href}
-					></KolTooltipWcTag>
+				{this.state._hideLabel === true && !hasExpertSlot && (
+					<div class="kol-link__tooltip">
+						<TooltipFC
+							badgeText={this.state._accessKey || this.state._shortKey || ''}
+							label={typeof this.state._label === 'string' ? this.state._label : typeof this.state._href === 'string' ? this.state._href : ''}
+							id={this.tooltipCtrl.getRenderProp('id')}
+							refFloating={this.tooltipCtrl.setTooltipElementRef}
+						/>
+					</div>
 				)}
 			</Host>
 		);
@@ -417,6 +413,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value);
+		this.tooltipCtrl.watchLabel(typeof value === 'string' ? value : undefined);
 	}
 
 	@Watch('_on')
@@ -448,6 +445,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this, value);
+		this.tooltipCtrl.watchAlign(value);
 	}
 
 	@Watch('_variant')
@@ -481,11 +479,22 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
+		this.tooltipCtrl.componentWillLoad({
+			label: typeof this.state._label === 'string' ? this.state._label : typeof this.state._href === 'string' ? this.state._href : '',
+			align: this._tooltipAlign,
+		});
+	}
+
+	public componentDidRender(): void {
+		if (this.anchorRef) {
+			this.tooltipCtrl.syncListeners(undefined, this.anchorRef, true);
+		}
 	}
 
 	public disconnectedCallback(): void {
 		if (this.unsubscribeOnLocationChange) {
 			this.unsubscribeOnLocationChange();
 		}
+		this.tooltipCtrl.destroy();
 	}
 }

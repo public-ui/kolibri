@@ -39,4 +39,54 @@ test.describe('kol-details', () => {
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 	});
+
+	test.describe('click() method', () => {
+		test('should open details when click() method is called', async ({ page }) => {
+			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
+			const kolDetails = page.locator('kol-details');
+
+			// Initially details should be closed
+			const isClosedBefore = await kolDetails.evaluate((element: HTMLKolDetailsElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return !detailsElement._open;
+			});
+			expect(isClosedBefore).toBe(true);
+
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
+			await page.waitForChanges();
+
+			// After click, details should be open
+			const isOpenAfter = await kolDetails.evaluate((element: HTMLKolDetailsElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return detailsElement._open;
+			});
+			expect(isOpenAfter).toBe(true);
+		});
+
+		test('should toggle details when click() method is called multiple times', async ({ page }) => {
+			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
+			const kolDetails = page.locator('kol-details');
+
+			// Open details
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
+			await page.waitForChanges();
+
+			const isOpen = await kolDetails.evaluate((element: HTMLElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return detailsElement._open;
+			});
+			expect(isOpen).toBe(true);
+
+			// Close details
+			await page.waitForChanges();
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.click());
+			await page.waitForChanges();
+
+			const isClosed = await kolDetails.evaluate((element: HTMLElement) => {
+				const detailsElement = element as HTMLElement & { _open?: boolean };
+				return detailsElement._open;
+			});
+			expect(isClosed).toBe(false);
+		});
+	});
 });

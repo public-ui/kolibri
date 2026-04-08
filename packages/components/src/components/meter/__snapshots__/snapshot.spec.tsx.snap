@@ -1,0 +1,571 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=0 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            0
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="1" min="0" value="0"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=0.5 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(50% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            50
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="1" min="0" value="0.5"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=1 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(100% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            100
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="1" min="0" value="1"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=42 _value=21 _unit="kg" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(50% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 2ch;">
+            21
+          </span>
+          <span class="kol-meter__unit">
+            kg
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="42" min="0" value="21"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value-bounded
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=0 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            0
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="100" min="0" value="0"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 _high=75 _optimum=10 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--optimum">
+            – kol-meter-state-optimum
+          </span>
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(10% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            10
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="10" value="10"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-optimum
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 _high=75 _optimum=50 _orientation="vertical" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter kol-meter--vertical">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--suboptimal">
+            – kol-meter-state-suboptimal
+          </span>
+        </div>
+        <div class="kol-meter__bar-track">
+          <div class="kol-meter__bar-fill kol-meter__bar-fill--suboptimal" style="height: calc((100% - 6px) * 0.1);"></div>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value">
+            10
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="50" value="10"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-suboptimal
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 _high=75 _optimum=50 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--suboptimal">
+            – kol-meter-state-suboptimal
+          </span>
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--suboptimal" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(10% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            10
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="50" value="10"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-suboptimal
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=25 _orientation="vertical" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter kol-meter--vertical">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <div class="kol-meter__bar-track">
+          <div class="kol-meter__bar-fill kol-meter__bar-fill--optimum" style="height: calc((100% - 6px) * 0.25);"></div>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value">
+            25
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="100" min="0" value="25"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=30 _low=25 _high=75 _optimum=50 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--optimum">
+            – kol-meter-state-optimum
+          </span>
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(30% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            30
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="50" value="30"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-optimum
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=42 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(42% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            42
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="100" min="0" value="42"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=50 _low=25 _high=75 _optimum=50 _orientation="vertical" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter kol-meter--vertical">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--optimum">
+            – kol-meter-state-optimum
+          </span>
+        </div>
+        <div class="kol-meter__bar-track">
+          <div class="kol-meter__bar-fill kol-meter__bar-fill--optimum" style="height: calc((100% - 6px) * 0.5);"></div>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value">
+            50
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="50" value="50"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-optimum
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=60 _orientation="vertical" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter kol-meter--vertical">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <div class="kol-meter__bar-track">
+          <div class="kol-meter__bar-fill kol-meter__bar-fill--optimum" style="height: calc((100% - 6px) * 0.6);"></div>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value">
+            60
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="100" min="0" value="60"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 _high=75 _optimum=50 _orientation="vertical" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter kol-meter--vertical">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--suboptimal">
+            – kol-meter-state-suboptimal
+          </span>
+        </div>
+        <div class="kol-meter__bar-track">
+          <div class="kol-meter__bar-fill kol-meter__bar-fill--suboptimal" style="height: calc((100% - 6px) * 0.9);"></div>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value">
+            90
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="50" value="90"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-suboptimal
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 _high=75 _optimum=50 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--suboptimal">
+            – kol-meter-state-suboptimal
+          </span>
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--suboptimal" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(90% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            90
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="50" value="90"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-suboptimal
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 _high=75 _optimum=90 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+          <span class="kol-meter__bar-state kol-meter__bar-state--optimum">
+            – kol-meter-state-optimum
+          </span>
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(90% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            90
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" high="75" low="25" max="100" min="0" optimum="90" value="90"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value – kol-meter-state-optimum
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=90 _orientation="vertical" 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter kol-meter--vertical">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <div class="kol-meter__bar-track">
+          <div class="kol-meter__bar-fill kol-meter__bar-fill--optimum" style="height: calc((100% - 6px) * 0.9);"></div>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value">
+            90
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="100" min="0" value="90"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;
+
+exports[`kol-meter should render with _label="Label" _max=100 _value=100 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div aria-hidden="true" class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          Label
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-meter__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-meter__bar-fill kol-meter__bar-fill--optimum" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(100% - 4px);"></rect>
+        </svg>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="width: 3ch;">
+            100
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+      <meter aria-label="Label" class="visually-hidden" max="100" min="0" value="100"></meter>
+      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-meter>
+`;

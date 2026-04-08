@@ -12,18 +12,18 @@
 
 ## Checkliste
 
-| Schritt | Kurzbeschreibung                                                                |
-| :-----: | ------------------------------------------------------------------------------- |
-|    0    | Projekt starten                                                                 |
-|    1    | Tag-Name in Stencil-Konfiguration registrieren                                  |
-|    2    | Props erstellen oder vorhandene wiederverwenden (`src/internal/props/`)         |
-|    3    | API-Definition erstellen (`api.tsx`) mit `PropsConfigShape` und `ApiFromConfig` |
-|    4    | Controller implementieren (`controller.ts`) — erweitert `BaseController<Api>`   |
-|    5    | Functional Component erstellen (`component.tsx`) — stateless Renderer           |
-|    6    | Web Component erstellen (`component.tsx`) — erweitert `BaseWebComponent<Api>`   |
-|    7    | Tests co-lokalisiert neben `component.tsx` erstellen                            |
-|    8    | Beispiel in React-Sample-App anlegen                                            |
-|    9    | Validierung: `pnpm format && pnpm lint && pnpm test && pnpm -r build`           |
+| Schritt | Kurzbeschreibung                                                                         |
+| :-----: | ---------------------------------------------------------------------------------------- |
+|    0    | Projekt starten                                                                          |
+|    1    | Tag-Name in Stencil-Konfiguration registrieren                                           |
+|    2    | Props erstellen oder vorhandene wiederverwenden (`src/internal/props/`)                  |
+|    3    | API-Definition erstellen (`api.tsx`) mit `PropsConfigShape` und `ApiFromConfig`          |
+|    4    | Controller implementieren (`controller.ts`) — erweitert `BaseController<Api>`            |
+|    5    | Functional Component erstellen (`component.tsx`) — stateless Renderer                    |
+|    6    | Web Component erstellen (`component.tsx`) — erweitert `BaseWebComponent<Api>`            |
+|    7    | Tests co-lokalisiert neben `component.tsx` erstellen                                     |
+|    8    | Beispiel in React-Sample-App anlegen                                                     |
+|    9    | Validierung: `pnpm format && pnpm lint && pnpm --filter @public-ui/components test:unit` |
 
 ## Schritt 0 — Projekt starten
 
@@ -92,13 +92,13 @@ Datei: `src/internal/functional-components/<component>/controller.ts`
 ```typescript
 import { nameProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { MyComponentApi } from './api';
 import { myComponentPropsConfig } from './api';
 
 export class MyComponentController extends BaseController<MyComponentApi> implements ControllerInterface<MyComponentApi> {
-	public constructor(setState: SetStateFn<MyComponentApi>, getState: GetStateFn<MyComponentApi>) {
-		super(myComponentPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<MyComponentApi>) {
+		super(stateAccess, myComponentPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<MyComponentApi>): void {
@@ -146,7 +146,7 @@ export const MyComponentFC: FC<FunctionalComponentProps<MyComponentApi>> = (prop
 
 ## Schritt 6 — Web Component
 
-Datei: `src/components/<component>/web-components/<component>/component.tsx`
+Datei: `src/components/<component>/component.tsx`
 
 ```tsx
 import type { JSX } from '@stencil/core';
@@ -162,7 +162,7 @@ import { MyComponentController } from '../../../../internal/functional-component
 	shadow: true,
 })
 export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements WebComponentInterface<MyComponentApi> {
-	private readonly ctrl = new MyComponentController(this.setState, this.getState);
+	private readonly ctrl = new MyComponentController(this.stateAccess);
 
 	@Prop()
 	public _name!: string;
@@ -191,6 +191,12 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 - Immer `shadow: true` und `<Host>` ohne Klassen-Attribut
 - `@Watch` nur auf unterstrichene Props
 - Details: [ARC42 §4 — Web Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#web-component-layer)
+
+Wenn ein Controller garantiert kein `@State` benötigt, verwende den Sentinel:
+
+```typescript
+private readonly ctrl = new MyComponentController(BaseWebComponent.stateLess);
+```
 
 ## Schritt 7 — Tests
 
@@ -249,11 +255,10 @@ pnpm start
 ```bash
 pnpm format        # ~10 Sekunden
 pnpm lint          # ~1 Minute, NICHT abbrechen
-pnpm test          # ~2-3 Minuten, NICHT abbrechen
-pnpm -r build      # ~2 Minuten, NICHT abbrechen
+pnpm --filter @public-ui/components test:unit # ~2-3 Minuten, NICHT abbrechen
 ```
 
-Alle vier Befehle müssen fehlerfrei durchlaufen.
+Alle drei Befehle müssen fehlerfrei durchlaufen.
 
 ## Referenz
 

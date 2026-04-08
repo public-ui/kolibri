@@ -1,0 +1,6 @@
+@mixin kol-abbr-styles() {
+	:host > abbr {
+		text-decoration: underline dashed;
+		cursor: help;
+	}
+}

@@ -45,7 +45,7 @@ test.describe('kol-popover-button', () => {
 			</kol-popover-button>
 		`);
 		const button = page.locator('.kol-popover-button button');
-		const tooltip = page.locator('kol-tooltip-wc');
+		const tooltip = page.locator('.kol-tooltip__floating');
 
 		await button.hover();
 		await expect(tooltip).toBeVisible();
@@ -83,12 +83,14 @@ test.describe('kol-popover-button', () => {
 			// Focus and press Enter
 			await button.focus();
 			await page.keyboard.press('Enter');
+			await page.waitForChanges();
 
 			// Should be visible after Enter
 			await expect(popover).toBeVisible();
 
 			// Press Enter again to close
 			await page.keyboard.press('Enter');
+			await page.waitForChanges();
 			await expect(popover).not.toBeVisible();
 		});
 

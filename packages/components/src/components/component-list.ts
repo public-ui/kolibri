@@ -32,6 +32,7 @@ import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/shadow';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
+import { KolMeter } from './meter/component';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
@@ -41,7 +42,7 @@ import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
-import { KolSpin } from './spin/shadow';
+import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
@@ -89,6 +90,7 @@ export const COMPONENTS = [
 	KolLink,
 	KolLinkButton,
 	KolLinkWc,
+	KolMeter,
 	KolModal,
 	KolNav,
 	KolPagination,
