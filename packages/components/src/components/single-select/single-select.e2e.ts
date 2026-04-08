@@ -85,6 +85,72 @@ test.describe(COMPONENT_NAME, () => {
 			expect(value).toBe('W');
 		});
 
+		test('should clear the selection when clear button is clicked', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+
+			await expect(input).toHaveValue(TEST_LABEL);
+			await page.waitForChanges();
+
+			const clearButton = page.getByTestId('single-select-delete');
+			await expect(clearButton).toBeVisible();
+			await clearButton.click({ force: true });
+
+			await expect(input).toHaveValue('');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+		});
+
+		test('should open option list again after clearing', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+
+			await page.getByTestId('single-select-delete').click({ force: true });
+			await input.click();
+
+			await expect(page.getByRole('listbox')).toBeVisible();
+			await expect(page.getByRole('listbox').getByText('North')).toBeVisible();
+		});
+
+		test('should keep free text on first blur after clearing', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+
+			await page.getByTestId('single-select-delete').click({ force: true });
+			await input.fill('Ö');
+			await page.click('html', { position: { x: 0, y: 0 } });
+
+			await expect(input).toHaveValue('Ö');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+		});
+
+		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
+			// Use setContent like other tests to ensure proper setup
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+
+			// Set _hasClearButton to false after component is loaded
+			await page.evaluate(() => {
+				const el = document.querySelector('kol-single-select') as HTMLElement & { _hasClearButton: boolean };
+				el._hasClearButton = false;
+			});
+
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+
+			// Select a value to potentially trigger clear button
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+			await expect(input).toHaveValue(TEST_LABEL);
+
+			const clearButton = page.getByTestId('single-select-delete');
+			await expect(clearButton).not.toBeVisible();
+		});
+
 		test('should select option with SPACE key', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');

@@ -8,7 +8,7 @@ import type {
 	StencilUnknown,
 	W3CInputValue,
 } from '../../schema';
-import { validateOptions, validateRequired, watchNumber, watchValidator } from '../../schema';
+import { validateOptions, validateRequired, watchBoolean, watchNumber, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -55,6 +55,10 @@ export class SingleSelectController extends InputIconController implements Singl
 		watchValidator(this.component, '_value', (v) => v !== undefined, new Set([`StencilUnknown`]), value);
 	}
 
+	public validateHasClearButton(value?: boolean): void {
+		watchBoolean(this.component, '_hasClearButton', value);
+	}
+
 	public validateRows(value?: number): void {
 		watchNumber(this.component, '_rows', value);
 	}
@@ -64,6 +68,7 @@ export class SingleSelectController extends InputIconController implements Singl
 		this.validateOptions(this.component._options);
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
+		this.validateHasClearButton(this.component._hasClearButton);
 		this.validateRows(this.component._rows);
 	}
 }
