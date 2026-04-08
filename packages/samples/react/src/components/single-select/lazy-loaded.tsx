@@ -44,7 +44,7 @@ export const SingleSelectLazyLoaded: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This combobox loads its list of countries 5 seconds after the first input of the user to simulate a call to the server.</p>
+				<p>This single select loads its list of countries 5 seconds after the first input of the user to simulate a call to the server.</p>
 			</SampleDescription>
 
 			<section className="w-full relative p-3">

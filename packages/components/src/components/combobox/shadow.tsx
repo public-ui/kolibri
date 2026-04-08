@@ -156,7 +156,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	}
 
 	private setFilteredSuggestionsByQuery(query: string | undefined) {
-		if (!query) {
+		if (query === undefined) {
 			return;
 		}
 

@@ -207,7 +207,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private setFilteredOptionsByQuery(query: string | undefined) {
-		if (!query) {
+		if (query === undefined) {
 			return;
 		}
 
@@ -725,7 +725,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
-		this.setFilteredOptionsByQuery(this._inputValue);
+		if (this._isOpen) {
+			this.setFilteredOptionsByQuery(this._inputValue);
+		} else {
+			this.updateInputValue(this._value);
+		}
 	}
 
 	@Watch('_required')
