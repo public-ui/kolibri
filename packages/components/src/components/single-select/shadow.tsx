@@ -46,7 +46,7 @@ import { SingleSelectController } from './controller';
  * Internal value fallback logic:
  * - If `_value` is `undefined` or not present in `_options`, the first choosable option is selected automatically.
  * - If `_options` change and the currently selected option no longer exists (or is disabled), the value switches to the first choosable option.
- * - After clicking the clear button, the input stays empty and the value remains `null` until either an option is selected or the input loses focus.
+ * - After clicking the clear button, the input stays empty and the value remains `null` until either an option is selected or the web component loses focus.
  * - Outside that clear-button interaction window, the value is only `null` if there are no options or no choosable options.
  *
  * @slot - The label of the input field.
@@ -464,7 +464,12 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	@Listen('focusout')
-	public handleFocusOut(): void {
+	public handleFocusOut(event: FocusEvent): void {
+		const nextFocusedElement = event.relatedTarget as HTMLElement | null;
+		if (nextFocusedElement && this.host?.contains(nextFocusedElement)) {
+			return;
+		}
+
 		setTimeout(() => {
 			// Keine onBlur wenn Fokus zu einer Option wechselt oder irgendwo noch im Host ist
 			if (!this.host?.contains(document.activeElement)) {

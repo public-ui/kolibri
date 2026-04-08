@@ -149,6 +149,19 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByRole('listbox').getByText('North')).toBeVisible();
 		});
 
+		test('should keep null value while focus remains inside the component after clearing', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+
+			await page.getByTestId('single-select-delete').click({ force: true });
+			await input.click();
+			await page.keyboard.press('ArrowDown');
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+		});
+
 		test('should restore first choosable option on blur after clearing and entering free text', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
