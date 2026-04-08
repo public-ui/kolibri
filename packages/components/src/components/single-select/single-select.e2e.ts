@@ -36,6 +36,39 @@ test.describe(COMPONENT_NAME, () => {
 	testInputMessage<HTMLKolSingleSelectElement>(COMPONENT_NAME);
 
 	test.describe('kol-single-select additional interactions', () => {
+		test('should select the first choosable option if no _value is provided initially', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+		});
+
+		test('should switch to first choosable option when current value disappears from _options', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _value="E" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'E');
+
+			await page.locator('kol-single-select').evaluate((element) => {
+				(element as HTMLKolSingleSelectElement)._options = [
+					{ label: 'North', value: 'N' },
+					{ disabled: true, label: 'South', value: 'S' },
+				];
+			});
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+		});
+
+		test('should switch to first choosable option when _value is set to undefined', async ({ page }) => {
+			await page.setContent(`<kol-single-select _label="Input" _value="E" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'E');
+
+			await page.locator('kol-single-select').evaluate((element) => {
+				(element as HTMLKolSingleSelectElement)._value = undefined;
+			});
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+		});
+
 		test('should open listbox on button click and close on ESC', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
@@ -116,7 +149,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByRole('listbox').getByText('North')).toBeVisible();
 		});
 
-		test('should keep free text on first blur after clearing', async ({ page }) => {
+		test('should restore first choosable option on blur after clearing and entering free text', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -126,8 +159,7 @@ test.describe(COMPONENT_NAME, () => {
 			await input.fill('Ö');
 			await page.click('html', { position: { x: 0, y: 0 } });
 
-			await expect(input).toHaveValue('Ö');
-			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {

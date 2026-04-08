@@ -43,6 +43,11 @@ import { SingleSelectController } from './controller';
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
+ * Internal value fallback logic:
+ * - If `_value` is `undefined` or not present in `_options`, the first choosable option is selected automatically.
+ * - If `_options` change and the currently selected option no longer exists (or is disabled), the value switches to the first choosable option.
+ * - The value is only `null` if there are no options or no choosable options.
+ *
  * @slot - The label of the input field.
  */
 @Component({
@@ -794,6 +799,19 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		const matchedOption = this._options.find((option) => option.value === value && !option.disabled);
 		if (matchedOption) {
 			this._inputValue = String(matchedOption.label);
+			this._filteredOptions = [...this.state._options];
+			this.controller.setFormAssociatedValue(matchedOption.value);
+			return;
+		}
+
+		const firstEnabledOption = this._options.find((option) => !option.disabled);
+		if (firstEnabledOption) {
+			this._inputValue = String(firstEnabledOption.label);
+			this._filteredOptions = [...this.state._options];
+			if (this._value !== firstEnabledOption.value) {
+				this._value = firstEnabledOption.value;
+			}
+			this.controller.setFormAssociatedValue(firstEnabledOption.value);
 			return;
 		}
 
@@ -801,8 +819,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this._filteredOptions = [...this.state._options];
 		if (this._value !== null) {
 			this._value = null;
-			this.controller.setFormAssociatedValue(null);
 		}
+		this.controller.setFormAssociatedValue(null);
 	}
 
 	public componentWillLoad(): void {
