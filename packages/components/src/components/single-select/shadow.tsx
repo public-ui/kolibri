@@ -127,8 +127,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 		this.skipNextBlurFallbackSelection = false;
 
-		// Fallback: wenn nach allen checks value noch null ist, erste option wählen
-		if (this._value === null) {
+		// Fallback: wenn nach allen checks value noch null ist und der gesamte Component-Fokus verloren wurde, erste Option wählen
+		if (!this._isOpen && this._value === null) {
 			const firstEnabledOption = this.state._options?.find((option) => !option.disabled) as Option<string> | undefined;
 			if (firstEnabledOption) {
 				this.selectOption(firstEnabledOption);
