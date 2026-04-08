@@ -133,7 +133,7 @@ test.describe(COMPONENT_NAME, () => {
 			await clearButton.click({ force: true });
 
 			await expect(input).toHaveValue('');
-			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 		});
 
 		test('should open option list again after clearing', async ({ page }) => {
@@ -157,6 +157,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			await page.getByTestId('single-select-delete').click({ force: true });
 			await input.fill('Ö');
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 			await page.click('html', { position: { x: 0, y: 0 } });
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
