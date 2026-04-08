@@ -46,7 +46,8 @@ import { SingleSelectController } from './controller';
  * Internal value fallback logic:
  * - If `_value` is `undefined` or not present in `_options`, the first choosable option is selected automatically.
  * - If `_options` change and the currently selected option no longer exists (or is disabled), the value switches to the first choosable option.
- * - The value is only `null` if there are no options or no choosable options.
+ * - After clicking the clear button, the input stays empty and the value remains `null` until either an option is selected or the input loses focus.
+ * - Outside that clear-button interaction window, the value is only `null` if there are no options or no choosable options.
  *
  * @slot - The label of the input field.
  */
@@ -66,6 +67,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	private oldValue?: StencilUnknown;
 	// so onBlur doesn't close the panel if clear button is pressed
 	private isClearing = false;
+	private isSelectionCleared = false;
 	private skipNextBlurFallbackSelection = false;
 
 	/**
@@ -133,6 +135,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			}
 		}
 
+		this.isSelectionCleared = false;
 		this._isOpen = false;
 	}
 
@@ -159,6 +162,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 		this.isClearing = true;
+		this.isSelectionCleared = true;
 		this.skipNextBlurFallbackSelection = true;
 
 		this._focusedOptionIndex = -1;
@@ -186,6 +190,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private selectOption(option: Option<string>) {
+		this.isSelectionCleared = false;
 		if (option.value === this._value) {
 			this._inputValue = option.label as string;
 			this._filteredOptions = [...this.state._options];
@@ -793,6 +798,12 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	private updateInputValue(value?: StencilUnknown) {
 		if (!Array.isArray(this._options)) {
+			return;
+		}
+		if (this.isSelectionCleared && value === null) {
+			this._inputValue = '';
+			this._filteredOptions = [...this.state._options];
+			this.controller.setFormAssociatedValue(null);
 			return;
 		}
 
