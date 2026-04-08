@@ -162,13 +162,14 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
 		});
 
-		test('should keep null value when opening the option list after clearing', async ({ page }) => {
+		test('should keep null value when input is focused and toggle opens the option list', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 
 			await page.getByTestId('single-select-delete').click({ force: true });
+			await expect(input).toBeFocused();
 			await page.locator('.kol-custom-suggestions-toggle').click();
 
 			await expect(page.getByRole('listbox')).toBeVisible();
