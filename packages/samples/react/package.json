@@ -40,8 +40,8 @@
 		"cpy-cli": "6.0.0",
 		"formik": "2.4.9",
 		"npm-run-all2": "8.0.4",
-		"react": "19.2.4",
-		"react-dom": "19.2.4",
+		"react": "19.2.5",
+		"react-dom": "19.2.5",
 		"react-number-format": "5.4.5",
 		"react-router": "7.14.0",
 		"react-router-dom": "7.14.0",
@@ -52,8 +52,8 @@
 		"yup": "1.7.1"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "8.58.0",
-		"@typescript-eslint/parser": "8.58.0",
+		"@typescript-eslint/eslint-plugin": "8.58.1",
+		"@typescript-eslint/parser": "8.58.1",
 		"eslint": "8.57.1",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
