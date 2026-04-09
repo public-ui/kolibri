@@ -21,15 +21,27 @@ jobs:
       - name: Validate target branch
         id: validate
         run: |
-          TARGET_BRANCH='${{ inputs.target_branch }}'
+          RAW_TARGET_BRANCH='${{ inputs.target_branch }}'
+          TARGET_BRANCH="${RAW_TARGET_BRANCH#refs/heads/}"
+          TARGET_BRANCH="${TARGET_BRANCH#origin/}"
 
           if [ -z "$TARGET_BRANCH" ]; then
             echo 'The workflow requires a target branch.' >&2
             exit 1
           fi
 
-          if printf '%s' "$TARGET_BRANCH" | grep -q '[[:space:][:cntrl:]]'; then
-            echo "Branch '$TARGET_BRANCH' contains whitespace or control characters." >&2
+          if [ "${TARGET_BRANCH#refs/}" != "$TARGET_BRANCH" ]; then
+            echo "Use a branch name instead of a ref: '$RAW_TARGET_BRANCH'." >&2
+            exit 1
+          fi
+
+          if ! LC_ALL=C printf '%s' "$TARGET_BRANCH" | grep -Eq '^[ -~]+$'; then
+            echo "Branch '$TARGET_BRANCH' must only contain printable ASCII characters." >&2
+            exit 1
+          fi
+
+          if ! git check-ref-format --branch "$TARGET_BRANCH" >/dev/null 2>&1; then
+            echo "Branch '$TARGET_BRANCH' is not a valid branch name." >&2
             exit 1
           fi
 
