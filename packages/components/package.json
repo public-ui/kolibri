@@ -108,7 +108,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "12.8.2",
 		"mustache": "4.2.0",
-		"postcss": "8.5.8",
+		"postcss": "8.5.9",
 		"postcss-sorting": "8.0.2",
 		"prettier": "3.8.1",
 		"pug": "3.0.4",
