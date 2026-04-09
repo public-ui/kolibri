@@ -24,3 +24,5 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
+overrides:
+  '@hono/node-server@<1.19.13': '>=1.19.13'
