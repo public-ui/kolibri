@@ -14,7 +14,7 @@ export const SpinBasic: FC = () => (
 		<section className="grid gap-4">
 			<KolSpin _show />
 
-			<KolSpin _show style={{ '--kol-spin-color': 'green', '--kol-spin-size': '80' }} />
+			<KolSpin _show style={{ '--kol-spin-color': 'green', '--kol-spin-size': '40' }} />
 		</section>
 	</>
 );

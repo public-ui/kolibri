@@ -40,48 +40,49 @@
 	.kol-spin {
 		&__spinner {
 			--kol-spin-border-width: calc(var(--kol-spin-size, 13) / 10);
-			&--dot {
+
+			&-dot {
 				width: to-rem(calc((var(--kol-spin-size, 13) * 3) + 2));
 				height: to-rem(calc(var(--kol-spin-size, 13) + (var(--kol-spin-border-width) * 2)));
 			}
-		}
 
-		&__spinner-element {
-			border-radius: 50%;
-			position: absolute;
-			top: 1;
-			width: to-rem(var(--kol-spin-size, 13));
-			height: to-rem(var(--kol-spin-size, 13));
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: to-rem(var(--kol-spin-border-width)) solid #fff;
+			&-element {
+				border-radius: 50%;
+				position: absolute;
+				top: 1px;
+				width: to-rem(var(--kol-spin-size, 13));
+				height: to-rem(var(--kol-spin-size, 13));
+				animation-timing-function: cubic-bezier(0, 1, 1, 0);
+				border: to-rem(var(--kol-spin-border-width)) solid #fff;
 
-			&--1 {
-				background-color: var(--kol-spin-color, #000);
-				left: to-rem(var(--kol-spin-border-width));
-				z-index: 0;
-				animation: 1s infinite spin1;
-			}
+				&--1 {
+					background-color: var(--kol-spin-color, #000);
+					left: to-rem(var(--kol-spin-border-width));
+					z-index: 0;
+					animation: 1s infinite spin1;
+				}
 
-			&--2 {
-				background-color: var(--kol-spin-color, #000);
-				left: to-rem(var(--kol-spin-border-width));
-				z-index: 1;
-				animation: 1s infinite spin2;
-			}
+				&--2 {
+					background-color: var(--kol-spin-color, #000);
+					left: to-rem(var(--kol-spin-border-width));
+					z-index: 1;
+					animation: 1s infinite spin2;
+				}
 
-			&--3 {
-				background-color: var(--kol-spin-color, #000);
-				left: to-rem(calc(var(--kol-spin-size, 13) + var(--kol-spin-border-width)));
-				z-index: 1;
-				animation: 1s infinite spin2;
-			}
+				&--3 {
+					background-color: var(--kol-spin-color, #000);
+					left: to-rem(calc(var(--kol-spin-size, 13) + var(--kol-spin-border-width)));
+					z-index: 1;
+					animation: 1s infinite spin2;
+				}
 
-			&--neutral {
-				background-color: var(--kol-spin-color, #000);
-				opacity: 0.6;
-				left: to-rem(calc((var(--kol-spin-size, 13) * 2) + var(--kol-spin-border-width)));
-				z-index: 0;
-				animation: 1s infinite spin3;
+				&--neutral {
+					background-color: var(--kol-spin-color, #000);
+					opacity: 0.6;
+					left: to-rem(calc((var(--kol-spin-size, 13) * 2) + var(--kol-spin-border-width)));
+					z-index: 0;
+					animation: 1s infinite spin3;
+				}
 			}
 		}
 	}
