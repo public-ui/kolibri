@@ -8,9 +8,13 @@ import { SampleDescription } from '../SampleDescription';
 export const SpinCycle: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample shows the KolSpin variant &quot;cycle&quot;.</p>
+			<p>This sample shows the KolSpin variant &quot;cycle&quot; and that you can change its color and size.</p>
 		</SampleDescription>
 
-		<KolSpin _show _variant="cycle" />
+		<section className="grid gap-4">
+			<KolSpin _show _variant="cycle" />
+
+			<KolSpin _show _variant="cycle" style={{ '--kol-spin-color': 'green', '--kol-spin-size': '80' }} />
+		</section>
 	</>
 );
