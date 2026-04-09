@@ -9,14 +9,14 @@
 		}
 
 		input {
-			position: relative;
 			background-color: var(--ecl-color-white);
 			border-color: var(--kol-radio-color);
+			position: relative;
 			border-width: 1px;
 
 			&:checked::before {
-				inset: to-rem(4);
 				background-color: var(--kol-radio-color);
+				inset: to-rem(4);
 			}
 		}
 

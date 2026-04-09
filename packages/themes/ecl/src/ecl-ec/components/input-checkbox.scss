@@ -14,6 +14,7 @@
 
 		&__hint {
 			order: 1;
+
 			font-size: to-rem(14);
 		}
 
@@ -42,12 +43,12 @@
 
 	.kol-checkbox--variant-switch {
 		.kol-input {
-			border-radius: 16px;
 			border-color: var(--kol-checkbox-color);
+			border-radius: 16px;
 
 			&::before {
-				border-radius: 50%;
 				background-color: var(--ecl-color-white);
+				border-radius: 50%;
 			}
 		}
 

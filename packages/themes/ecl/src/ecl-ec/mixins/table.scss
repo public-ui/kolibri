@@ -15,12 +15,13 @@
 
 	.kol-table {
 		&__caption {
-			caption-side: bottom;
 			color: var(--ecl-color-dark-80);
+			min-height: 0;
+			margin-top: var(--ecl-spacing-xs);
+
 			font-size: var(--ecl-font-size-s);
 			line-height: var(--ecl-line-height-s);
-			margin-top: var(--ecl-spacing-xs);
-			min-height: 0;
+			caption-side: bottom;
 		}
 
 		&__table {
@@ -61,8 +62,9 @@
 				}
 
 				.kol-button {
-					font-weight: 700;
 					padding: var(--ecl-spacing-m);
+
+					font-weight: 700;
 				}
 			}
 

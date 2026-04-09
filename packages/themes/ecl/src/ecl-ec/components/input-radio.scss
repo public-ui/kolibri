@@ -9,20 +9,20 @@
 
 	.kol-form-field {
 		--kol-radio-color: var(--ecl-color-primary);
+		margin: 0;
+		padding: 0;
 		gap: to-rem(8);
 		flex-wrap: wrap;
 		align-items: flex-start;
 		border: 0;
-		margin: 0;
-		padding: 0;
 
 		&__label {
 			order: 1;
 		}
 
 		&__input {
-			order: 3;
 			gap: to-rem(8);
+			order: 3;
 			align-items: flex-start;
 		}
 

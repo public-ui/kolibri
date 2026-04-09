@@ -9,8 +9,8 @@
 	@include icon();
 
 	.kol-input-container {
-		align-items: center;
 		background-color: var(--ecl-color-white);
+		align-items: center;
 		border: 1px solid var(--ecl-color-dark-80);
 
 		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {

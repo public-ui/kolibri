@@ -12,8 +12,8 @@
 		}
 
 		&:focus {
-			border-radius: 1px;
 			outline: 2px solid var(--ecl-color-primary);
+			border-radius: 1px;
 			outline-offset: 2px;
 		}
 	}

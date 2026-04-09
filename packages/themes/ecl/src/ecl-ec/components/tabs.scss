@@ -7,8 +7,8 @@
 		}
 
 		.kol-button {
-			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
 			margin-bottom: -2px;
+			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
 			border: none;
 			border-bottom: solid 2px transparent;
 
@@ -17,13 +17,14 @@
 			}
 
 			&:focus {
-				border-radius: 1px;
 				outline: 2px solid var(--ecl-color-primary);
+				border-radius: 1px;
 				outline-offset: -2px;
 			}
 
 			&.selected {
 				border-bottom-color: var(--ecl-color-primary);
+
 				font-weight: var(--ecl-font-weight-bold);
 			}
 		}

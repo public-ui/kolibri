@@ -10,10 +10,11 @@
 
 			&-text::after {
 				color: var(--ecl-color-error);
-				font-size: var(--ecl-font-size-s);
-				line-height: var(--ecl-font-size-s);
 				margin-left: var(--ecl-spacing-2xs);
 				vertical-align: text-bottom;
+
+				font-size: var(--ecl-font-size-s);
+				line-height: var(--ecl-font-size-s);
 			}
 
 			&__read-only {
@@ -22,10 +23,11 @@
 		}
 
 		&__hint {
+			margin-top: to-rem(-4);
 			order: 2;
+
 			font-size: var(--ecl-font-size-s);
 			line-height: var(--ecl-font-size-s);
-			margin-top: to-rem(-4);
 		}
 
 		&__msg {

@@ -12,6 +12,7 @@
 
 			.kol-alert__icon {
 				margin-right: var(--ecl-spacing-2xs);
+
 				font-size: to-rem(20);
 				line-height: to-rem(20);
 			}
@@ -27,14 +28,15 @@
 		}
 
 		&--variant-card {
+			background-color: var(--ecl-color-neutral-20);
+			padding: var(--ecl-spacing-m) var(--ecl-spacing-m) var(--ecl-spacing-m) var(--ecl-spacing-s);
 			border: solid 1px var(--ecl-color-neutral);
 			border-inline-start: 4px solid var(--alert-accent-color);
-			padding: var(--ecl-spacing-m) var(--ecl-spacing-m) var(--ecl-spacing-m) var(--ecl-spacing-s);
-			background-color: var(--ecl-color-neutral-20);
 
 			.kol-alert__icon {
-				font-size: to-rem(32);
 				margin-right: var(--ecl-spacing-xs);
+
+				font-size: to-rem(32);
 			}
 
 			.kol-alert__content {

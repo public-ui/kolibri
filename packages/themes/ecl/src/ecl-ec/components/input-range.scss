@@ -24,18 +24,18 @@
 		}
 
 		&__input--number {
-			text-align: left;
-			border: 0;
 			font-weight: bold;
+			border: 0;
+			text-align: left;
 		}
 
 		&__input--range {
-			height: to-rem(4);
-			width: 100%;
-			padding: 0;
 			background-color: var(--ecl-color-neutral);
-			border-width: 0;
+			width: 100%;
+			height: to-rem(4);
 			margin: to-rem(20) 0 to-rem(10);
+			padding: 0;
+			border-width: 0;
 
 			&::-webkit-slider-thumb {
 				background-color: var(--ecl-color-primary);

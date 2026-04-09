@@ -8,21 +8,41 @@
 @mixin kol-typography-h1 {
 	font-size: var(--ecl-font-size-3xl);
 	line-height: var(--ecl-line-height-3xl);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-4xl);
+		line-height: var(--ecl-line-height-4xl);
+	}
 }
 
 @mixin kol-typography-h2 {
 	font-size: var(--ecl-font-size-2xl);
 	line-height: var(--ecl-line-height-2xl);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-3xl);
+		line-height: var(--ecl-line-height-3xl);
+	}
 }
 
 @mixin kol-typography-h3 {
 	font-size: var(--ecl-font-size-xl);
 	line-height: var(--ecl-line-height-xl);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-2xl);
+		line-height: var(--ecl-line-height-2xl);
+	}
 }
 
 @mixin kol-typography-h4 {
 	font-size: var(--ecl-font-size-l);
 	line-height: var(--ecl-line-height-l);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-xl);
+		line-height: var(--ecl-line-height-xl);
+	}
 }
 
 @mixin kol-typography-h5 {
@@ -32,33 +52,11 @@
 
 @mixin kol-typography-h6 {
 	font-size: var(--ecl-font-size-m);
-	line-height: var(--ecl-line-height-m);
 	font-weight: var(--ecl-font-weight-bold);
+	line-height: var(--ecl-line-height-m);
 }
 
 @mixin kol-typography-hint {
 	font-size: var(--ecl-font-size-s);
 	line-height: var(--ecl-line-height-s);
-}
-
-@media (min-width: 768px) {
-	@mixin kol-typography-h1 {
-		font-size: var(--ecl-font-size-4xl);
-		line-height: var(--ecl-line-height-4xl);
-	}
-
-	@mixin kol-typography-h2 {
-		font-size: var(--ecl-font-size-3xl);
-		line-height: var(--ecl-line-height-3xl);
-	}
-
-	@mixin kol-typography-h3 {
-		font-size: var(--ecl-font-size-2xl);
-		line-height: var(--ecl-line-height-2xl);
-	}
-
-	@mixin kol-typography-h4 {
-		font-size: var(--ecl-font-size-xl);
-		line-height: var(--ecl-line-height-xl);
-	}
 }

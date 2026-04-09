@@ -9,13 +9,14 @@
 
 		&:focus-within::before,
 		&:hover:not(:has(input:disabled))::before {
-			content: '';
-			position: absolute;
 
 			background-color: var(--ecl-color-primary-20);
 			border-radius: 100%;
+			position: absolute;
 			width: to-rem(38);
 			height: to-rem(38);
+
+			content: '';
 		}
 
 		.#{$block-classname}__icon,
@@ -25,9 +26,9 @@
 		}
 
 		input {
-			position: relative;
 			border-color: var(--kol-checkbox-color);
 			border-radius: 2px;
+			position: relative;
 
 			&:checked,
 			&:indeterminate {

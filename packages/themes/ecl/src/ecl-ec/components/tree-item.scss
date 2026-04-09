@@ -10,8 +10,8 @@
 		}
 
 		&__link {
-			position: relative;
 			display: block;
+			position: relative;
 
 			&:hover,
 			&:focus-within {
@@ -19,13 +19,14 @@
 			}
 
 			&--active::before {
-				content: '';
+				background-color: var(--ecl-color-primary);
 				position: absolute;
 				top: 0;
 				bottom: 0;
 				left: 0;
 				width: to-rem(4);
-				background-color: var(--ecl-color-primary);
+
+				content: '';
 			}
 
 			.kol-link {
