@@ -24,4 +24,4 @@ packages:
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
 overrides:
-  defu@<=6.1.4: '>=6.1.5'
+  '@hono/node-server@<1.19.13': '>=1.19.13'
