@@ -179,6 +179,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
+					// native number buttons also throw the change event on every click
+					this.controller.onFacade.onChange(event, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
@@ -206,6 +208,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
+					// native number buttons also throw the change event on every click
+					this.controller.onFacade.onChange(event, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
