@@ -77,8 +77,8 @@
 				}
 
 				&--neutral {
-					background-color: var(--kol-spin-color, #000);
 					opacity: 0.6;
+					background-color: var(--kol-spin-color, #000);
 					left: to-rem(calc((var(--kol-spin-size, 13) * 2) + var(--kol-spin-border-width)));
 					z-index: 0;
 					animation: 1s infinite spin3;
