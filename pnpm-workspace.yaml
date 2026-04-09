@@ -18,5 +18,3 @@ packages:
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
-overrides:
-  defu@<=6.1.4: '>=6.1.5'
