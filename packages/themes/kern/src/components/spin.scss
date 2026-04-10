@@ -2,6 +2,10 @@
 
 @layer kol-theme-component {
 	.kol-spin {
+		&__spinner--cycle {
+			--kol-spin-size: 96;
+		}
+
 		&__loader {
 			animation: rotation 1.5s linear infinite;
 
@@ -12,29 +16,13 @@
 				border-radius: 50%;
 				display: inline-block;
 				box-sizing: border-box;
-				width: to-rem(96);
-				height: to-rem(96);
 				border-width: 10px;
 				animation-duration: 1.5s;
 			}
 		}
 
 		&__spinner-element {
-			&--1 {
-				background-color: var(--kern-color-feedback-loader);
-			}
-
-			&--2 {
-				background-color: var(--kern-color-feedback-loader);
-			}
-
-			&--3 {
-				background-color: var(--kern-color-feedback-loader);
-			}
-
-			&--neutral {
-				background-color: var(--kern-color-feedback-loader-background);
-			}
+			--kol-spin-color: var(--kern-color-feedback-loader);
 		}
 	}
 
