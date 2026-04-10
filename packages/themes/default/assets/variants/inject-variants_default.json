@@ -1,0 +1,15 @@
+{
+	"iconVariants": [
+		"fa-solid fa-house",
+        "fa-solid fa-circle-user",
+        "fa-solid fa-truck",
+        "fa-solid fa-city",
+        "fa-solid fa-heart",
+        "fa-solid fa-thumbs-up",
+        "fa-brands fa-github"
+	],
+	"iconVariantsInput": [
+		"icon icon-danger",
+		"icon icon-content-copy"
+	]
+}
