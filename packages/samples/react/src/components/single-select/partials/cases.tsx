@@ -112,13 +112,6 @@ export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 					] as Option<StencilUnknown>[]
 				}
 				_value={'be'}
-				_on={{
-					onBlur: console.log,
-					onInput: console.log,
-					onChange: console.log,
-					onClick: console.log,
-					onFocus: console.log,
-				}}
 			/>
 		</div>
 	);
