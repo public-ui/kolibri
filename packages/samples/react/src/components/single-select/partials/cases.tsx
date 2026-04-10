@@ -11,20 +11,7 @@ import { LONG_OPTIONS } from '../../../shares/longOptions';
 export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 	return (
 		<div className="grid gap-4">
-			<KolSingleSelect
-				{...props}
-				_hint={HINT_MSG}
-				_label="Label"
-				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
-				_value={'de'}
-				_on={{
-					onBlur: console.log,
-					onInput: console.log,
-					onChange: console.log,
-					onClick: console.log,
-					onFocus: console.log,
-				}}
-			/>
+			<KolSingleSelect {...props} _hint={HINT_MSG} _label="Label" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} />
 			<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _disabled />
 			<KolSingleSelect
 				{...props}
@@ -125,13 +112,6 @@ export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 					] as Option<StencilUnknown>[]
 				}
 				_value={'be'}
-				_on={{
-					onBlur: console.log,
-					onInput: console.log,
-					onChange: console.log,
-					onClick: console.log,
-					onFocus: console.log,
-				}}
 			/>
 		</div>
 	);

@@ -154,9 +154,13 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 				break;
 		}
 
-		if (currentIndex === nextIndex) return;
+		if (currentIndex === nextIndex) {
+			return;
+		}
 
-		if (this.state._items?.[nextIndex]?._disabled) return;
+		if (this.state._items?.[nextIndex]?._disabled) {
+			return;
+		}
 
 		this.currentIndex = nextIndex;
 		const item = this.getCurrentToolbarItem(nextIndex);
@@ -168,8 +172,8 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	/**
 	 * Resets the tabIndexes of the toolbar to default.
 	 */
-	@Listen('blur', { capture: true })
-	public handleBlur(event: FocusEvent) {
+	@Listen('focusout', { capture: true })
+	public handleFocusout(event: FocusEvent) {
 		if (event.target === this.host) this.setFirstEnabledItemIndex();
 	}
 
