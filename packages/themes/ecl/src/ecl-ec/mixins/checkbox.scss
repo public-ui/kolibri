@@ -9,7 +9,6 @@
 
 		&:focus-within::before,
 		&:hover:not(:has(input:disabled))::before {
-
 			background-color: var(--ecl-color-primary-20);
 			border-radius: 100%;
 			position: absolute;
