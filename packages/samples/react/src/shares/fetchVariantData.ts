@@ -12,7 +12,6 @@ export async function fetchVariantData(theme: string, variant: string): Promise<
 			return response.json();
 		})
 		.then((json) => {
-			console.log(json);
 			if (!json) {
 				return [];
 			}
