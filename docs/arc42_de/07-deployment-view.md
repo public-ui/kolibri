@@ -143,6 +143,7 @@ graph LR
 | ------------------------ | ---------------------------- | ---------------------------------------------- |
 | **ci.yml**               | Push, Pull Request           | Tests, Linting, Builds ausführen               |
 | **publish.yml**          | Tag-Erstellung               | Pakete zu npm mit Provenance veröffentlichen   |
+| **update-pnpm-lock.yml** | Manueller Trigger            | `pnpm-lock.yaml` für einen Branch erneuern     |
 | **update-snapshots.yml** | Manueller Trigger            | Visual Regression Test Snapshots aktualisieren |
 | **codeql.yml**           | Push, Pull Request, Schedule | Sicherheits-Scanning mit CodeQL                |
 

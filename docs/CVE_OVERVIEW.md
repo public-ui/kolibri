@@ -32,8 +32,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   5 |   5 |   5 |   3 |
-| high     |  35 |  33 |  45 |  29 |
-| moderate |  18 |  19 |  28 |   8 |
+| high     |  33 |  31 |  43 |  29 |
+| moderate |  17 |  19 |  34 |   8 |
 | low      |   4 |   4 |   9 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -96,9 +96,11 @@
 | undici               | high     | CVE-2026-1528       | v4, v3, v2        | Undici: Malicious WebSocket 64-bit length overflows parser and crashes the clien   |
 | undici               | high     | CVE-2026-1526       | v4, v3, v2        | Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompre   |
 | undici               | high     | CVE-2026-2229       | v4, v3, v2        | Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_win   |
-| vite                 | high     | GHSA-v2wj-q39q-566r | v4, v3, v2, v1    | Vite: `server.fs.deny` bypassed with queries                                       |
-| vite                 | high     | CVE-2026-39363      | v4, v3, v2, v1    | Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket               |
+| vite                 | high     | CVE-2026-39364      | v1                | Vite: `server.fs.deny` bypassed with queries                                       |
+| vite                 | high     | CVE-2026-39363      | v1                | Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket               |
+| @hono/node-server    | moderate | CVE-2026-39406      | v2                | @hono/node-server: Middleware bypass via repeated slashes in serveStatic           |
 | ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                            |
+| axios                | moderate | CVE-2026-39865      | v3, v2            | Axios HTTP/2 Session Cleanup State Corruption Vulnerability                        |
 | brace-expansion      | moderate | CVE-2026-33750      | v4, v3, v2        | brace-expansion: Zero-step sequence causes process hang and memory exhaustion      |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                             |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r   |
@@ -109,6 +111,11 @@
 | hono                 | moderate | CVE-2026-29086      | v2                | Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in   |
 | hono                 | moderate | CVE-2026-29085      | v2                | Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()             |
 | hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in   |
+| hono                 | moderate | GHSA-26pp-8wgv-hjvm | v2                | Hono missing validation of cookie name on write path in setCookie()                |
+| hono                 | moderate | CVE-2026-39410      | v2                | Hono: Non-breaking space prefix bypass in cookie name handling in getCookie()      |
+| hono                 | moderate | CVE-2026-39409      | v2                | Hono has incorrect IP matching in ipRestriction() for IPv4-mapped IPv6 addresses   |
+| hono                 | moderate | CVE-2026-39408      | v2                | Hono: Path traversal in toSSG() allows writing files outside the output director   |
+| hono                 | moderate | CVE-2026-39407      | v2                | Hono: Middleware bypass via repeated slashes in serveStatic                        |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                      |
 | locutus              | moderate | CVE-2026-33993      | v4, v3, v2, v1    | Locutus has Prototype Pollution via **proto** Key Injection in unserialize()       |
 | lodash               | moderate | CVE-2026-2950       | v4, v3            | lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and    |
@@ -122,7 +129,7 @@
 | undici               | moderate | CVE-2026-1525       | v4, v3, v2        | Undici has an HTTP Request/Response Smuggling issue                                |
 | undici               | moderate | CVE-2026-1527       | v4, v3, v2        | Undici has CRLF Injection in undici via `upgrade` option                           |
 | undici               | moderate | CVE-2026-2581       | v4, v3            | Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response   |
-| vite                 | moderate | GHSA-4w7w-66w2-5vf9 | v4, v3, v2, v1    | Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling                |
+| vite                 | moderate | CVE-2026-39365      | v1                | Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling                |
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to    |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
 | webpack-dev-server   | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
