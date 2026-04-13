@@ -8,7 +8,7 @@
 	.kol-badge {
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
-		display: inline-flex;
+		display: flex;
 		place-items: center;
 
 		.kol-badge__smart-button {
