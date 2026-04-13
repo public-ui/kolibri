@@ -5,7 +5,6 @@
 	@include kol-icon-theme;
 	.kol-badge {
 		border-radius: var(--border-radius);
-		display: inline-flex;
 		font-style: normal;
 
 		&--has-smart-button {

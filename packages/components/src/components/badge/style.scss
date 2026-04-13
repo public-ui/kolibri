@@ -9,7 +9,8 @@
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
 		display: flex;
-		place-items: center;
+		align-items: center;
+		justify-content: space-between;
 
 		.kol-badge__smart-button {
 			.button {
