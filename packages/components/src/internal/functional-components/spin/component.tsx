@@ -7,16 +7,36 @@ import type { SpinApi } from './api';
 function renderSpinVariant(variant: string): unknown {
 	switch (variant) {
 		case 'cycle':
-			return <span class="kol-spin__loader"></span>;
+			return <span class={`kol-spin__loader kol-spin__spinner--${variant}__element`}></span>;
 		case 'none':
 			return <slot name="expert"></slot>;
 		default:
 			return (
 				<>
-					<span class="kol-spin__spinner-element kol-spin__spinner-element--1"></span>
-					<span class="kol-spin__spinner-element kol-spin__spinner-element--2"></span>
-					<span class="kol-spin__spinner-element kol-spin__spinner-element--3"></span>
-					<span class="kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
+					<span
+						class={`kol-spin__spinner-element 
+							kol-spin__spinner-element--1 
+							kol-spin__spinner--${variant}__element 
+							kol-spin__spinner--${variant}__element--1`}
+					></span>
+					<span
+						class={`kol-spin__spinner-element 
+							kol-spin__spinner-element--2 
+							kol-spin__spinner--${variant}__element 
+							kol-spin__spinner--${variant}__element--2`}
+					></span>
+					<span
+						class={`kol-spin__spinner-element 
+							kol-spin__spinner-element--3 
+							kol-spin__spinner--${variant}__element 
+							kol-spin__spinner--${variant}__element--3`}
+					></span>
+					<span
+						class={`kol-spin__spinner-element 
+							kol-spin__spinner-element--neutral 
+							kol-spin__spinner--${variant}__element 
+							kol-spin__spinner--${variant}__element--4`}
+					></span>
 				</>
 			);
 	}
