@@ -1,6 +1,7 @@
 import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { logKoliBriCallbackEvent, logKoliBriNativeEvent } from '../../shares/utils';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextBasic: FC = () => (
@@ -10,7 +11,24 @@ export const InputTextBasic: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolInputText _label="Name" _value="Anderson-Clark" />
+			<KolInputText
+				_label="Name"
+				_value="Anderson-Clark"
+				_on={{
+					onBlur: logKoliBriCallbackEvent,
+					onChange: logKoliBriCallbackEvent,
+					onClick: logKoliBriCallbackEvent,
+					onFocus: logKoliBriCallbackEvent,
+					onInput: logKoliBriCallbackEvent,
+					onKeyDown: logKoliBriCallbackEvent,
+				}}
+				onBlur={logKoliBriNativeEvent}
+				onChange={logKoliBriNativeEvent}
+				onClick={logKoliBriNativeEvent}
+				onFocus={logKoliBriNativeEvent}
+				onInput={logKoliBriNativeEvent}
+				onKeyDown={logKoliBriNativeEvent}
+			/>
 			<KolInputText _label="Name" _required _msg={{ _type: 'error', _description: 'Please enter your name' }} _touched />
 			<KolInputText _label="Name" _required _hint="Enter your surname" />
 			<KolInputText _label="Name" _value="Anderson-Clark" _disabled />

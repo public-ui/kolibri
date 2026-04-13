@@ -60,8 +60,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
-	// so onBlur doesn't close the panel if clear button is pressed
-	private isClearing = false;
+	private clearButtonFocused = false;
 
 	/**
 	 * Returns the current value.
@@ -104,16 +103,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 	};
 
-	private onBlur(event: FocusEvent) {
+	private onBlur() {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
+
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen && this._value) {
-			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
+		} else if (this._value) {
 			this._filteredOptions = [...this.state._options];
-		}
-		if (event instanceof FocusEvent && event.view === window && !this.isClearing) {
-			this._isOpen = false;
 		}
 	}
 
@@ -136,8 +132,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private clearSelection() {
-		this.isClearing = true;
-
 		if (this.state._disabled) {
 			return;
 		}
@@ -160,7 +154,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
 		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 
-		this.isClearing = false;
+		this.refInput?.focus();
+		this._isOpen = true;
 	}
 
 	private selectOption(option: Option<string>) {
@@ -318,13 +313,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			onChange: this.onChange.bind(this),
 			onClick: this.onClick.bind(this),
 			onInput: this.onInput.bind(this),
-			onFocus: (event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
+			onBlur: () => {
+				this.onBlur();
 			},
 		};
 	}
@@ -351,6 +341,12 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 									onClick: () => {
 										this.clearSelection();
 										this.refInput?.focus();
+									},
+									onFocus: () => {
+										this.clearButtonFocused = true;
+									},
+									onBlur: () => {
+										this.clearButtonFocused = false;
 									},
 								}}
 							/>
@@ -430,19 +426,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		);
 	}
 
-	@Listen('focusout')
-	public handleFocusOut(event: FocusEvent) {
-		setTimeout(() => {
-			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur(event);
-			}
-		});
-	}
-	@Listen('blur')
-	public handleWindowBlur(event: FocusEvent) {
-		this.onBlur(event);
-	}
-
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
@@ -485,7 +468,9 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			case ' ':
 			case 'Enter':
 			case 'NumpadEnter': {
-				if (this._isOpen) {
+				if (this.clearButtonFocused) {
+					this.clearSelection();
+				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this.refInput?.focus();
 						handleEvent(false);
@@ -764,6 +749,28 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Listen('mousemove')
 	public handleMouseEvent() {
 		this.blockSuggestionMouseOver = false;
+	}
+
+	@Listen('focusin')
+	public handleFocusIn(event: FocusEvent) {
+		setTimeout(() => {
+			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			}
+		});
+	}
+
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
+		this.onBlur();
+		setTimeout(() => {
+			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+				this._isOpen = false;
+			}
+		});
 	}
 
 	private updateInputValue(value?: StencilUnknown) {

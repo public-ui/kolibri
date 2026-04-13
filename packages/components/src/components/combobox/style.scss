@@ -25,15 +25,11 @@
 		&__delete {
 			@include kol-button-styles('kol-button');
 		}
-	}
 
-	.kol-custom-suggestions-toggle {
-		&:not(&--disabled) {
-			cursor: pointer;
-		}
-
-		&--disabled {
-			opacity: 0.5;
+		&-toggle {
+			min-height: 0;
+			flex: 0;
+			align-self: stretch;
 		}
 	}
 }
