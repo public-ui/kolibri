@@ -38,6 +38,9 @@ jobs:
           - name: theme-kern
             path: packages/themes/kern
             type: e2e
+          - name: theme-ecl
+            path: packages/themes/ecl
+            type: e2e
     steps:
       - name: Checkout branch
         uses: actions/checkout@v6
