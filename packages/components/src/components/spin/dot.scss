@@ -45,13 +45,13 @@
 			height: to-rem(calc(var(--kol-spin-size, 13) + (var(--kol-spin-border-width) * 2)));
 
 			&__element {
+				background-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
 				border-radius: 50%;
 				position: absolute;
 				top: 1px;
 				width: to-rem(var(--kol-spin-size, 13));
 				height: to-rem(var(--kol-spin-size, 13));
 				animation-timing-function: cubic-bezier(0, 1, 1, 0);
-				background-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
 				border: to-rem(var(--kol-spin-border-width)) solid #fff;
 
 				&--1 {
