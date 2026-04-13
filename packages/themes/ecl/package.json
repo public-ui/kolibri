@@ -62,9 +62,9 @@
 		"test": "npm-run-all2 test:*",
 		"test:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
-		"test:update": "npm-run-all2 test:update:*",
-		"test:update:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
-		"test:update:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
+		"test:update:e2e": "npm-run-all2 test:update:*",
+		"test:update:e2e:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
+		"test:update:e2e:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest:update": "pnpm build"
 	},
