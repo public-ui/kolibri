@@ -75,6 +75,12 @@
 			}
 		}
 
+		&--disabled & {
+			&__label {
+				opacity: 0.5;
+			}
+		}
+
 		&--error {
 			padding-left: var(--kern-metric-space-default);
 			border-left: var(--kern-metric-border-width-bold) solid var(--kern-color-feedback-danger);
