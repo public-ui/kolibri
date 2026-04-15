@@ -788,6 +788,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 			return (
 				<td
+					// nonce() is needed so every cell has a unique key after a state change and gets rerenderd
 					key={`cell-${key}-${nonce()}`}
 					class={clsx(
 						'kol-table__cell kol-table__cell--body',
@@ -805,18 +806,15 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						left: offsetLeft,
 						right: offsetRight,
 					}}
+					ref={
+						hasCustomRender
+							? (el) => {
+									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
+								}
+							: undefined
+					}
 				>
-					{hasCustomRender ? (
-						<div
-							ref={(el) => {
-								this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
-							}}
-						/>
-					) : isActionColumn && actionColumn && cell.data ? (
-						this.renderActionItems(actionColumn, cell.data, key)
-					) : (
-						cell.label
-					)}
+					{isActionColumn && actionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : !hasCustomRender ? cell.label : ''}
 				</td>
 			);
 		}
