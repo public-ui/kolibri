@@ -229,11 +229,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
 		setState(this, '_headerCells', updatedHeaderCells);
 
-		// versuch rerender zu erzwingen...
-		// const resetData = [...this._data] as KoliBriTableDataType[];
-		// this._data = resetData;
-		// forceUpdate(this);
-
 		// Call the onChangeHeaderCells callback if provided
 		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
 			this.state._on[Callback.onChangeHeaderCells](event, updatedHeaderCells);
@@ -793,7 +788,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 			return (
 				<td
-					key={`cell-${key}`}
+					key={`cell-${key}-${nonce()}`}
 					class={clsx(
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
@@ -811,10 +806,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						right: offsetRight,
 					}}
 				>
-					{/* 
-						Ich hätte ja gerne, dass das Obere funktioniert, aber das räumt beim verschieben den inhalt des Divs nicht weg...
-						Der untere Ansatz funktioniert aber damit haben wir immer ein zusätzliches meist leeres div
-						Ideen?
 					{hasCustomRender ? (
 						<div
 							ref={(el) => {
@@ -825,20 +816,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						this.renderActionItems(actionColumn, cell.data, key)
 					) : (
 						cell.label
-					)} */}
-
-					<div
-						ref={
-							hasCustomRender
-								? (el) => {
-										this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
-									}
-								: (el) => {
-										if (el) el.textContent = '';
-									}
-						}
-					/>
-					{isActionColumn && actionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : !hasCustomRender ? cell.label : ''}
+					)}
 				</td>
 			);
 		}
