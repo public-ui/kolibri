@@ -229,6 +229,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
 		setState(this, '_headerCells', updatedHeaderCells);
 
+		// versuch rerender zu erzwingen...
+		// const resetData = [...this._data] as KoliBriTableDataType[];
+		// this._data = resetData;
+		// forceUpdate(this);
+
 		// Call the onChangeHeaderCells callback if provided
 		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
 			this.state._on[Callback.onChangeHeaderCells](event, updatedHeaderCells);
@@ -784,6 +789,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			const fixed = this.isFixedCol(colIndex);
 			const offsetLeft = fixed === 'left' ? this.getOffsetString(cell.colIndex, true) : undefined;
 			const offsetRight = fixed === 'right' ? this.getOffsetString(cell.colIndex) : undefined;
+			const hasCustomRender = typeof cell.render === 'function';
 
 			return (
 				<td
@@ -804,19 +810,35 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						left: offsetLeft,
 						right: offsetRight,
 					}}
-					ref={
-						typeof cell.render === 'function'
-							? (el) => {
-									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
-								}
-							: undefined
-					}
 				>
-					{isActionColumn && actionColumn && cell.data
-						? this.renderActionItems(actionColumn, cell.data, key)
-						: typeof cell.render !== 'function'
-							? cell.label
-							: ''}
+					{/* 
+						Ich hätte ja gerne, dass das Obere funktioniert, aber das räumt beim verschieben den inhalt des Divs nicht weg...
+						Der untere Ansatz funktioniert aber damit haben wir immer ein zusätzliches meist leeres div
+						Ideen?
+					{hasCustomRender ? (
+						<div
+							ref={(el) => {
+								this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
+							}}
+						/>
+					) : isActionColumn && actionColumn && cell.data ? (
+						this.renderActionItems(actionColumn, cell.data, key)
+					) : (
+						cell.label
+					)} */}
+
+					<div
+						ref={
+							hasCustomRender
+								? (el) => {
+										this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
+									}
+								: (el) => {
+										if (el) el.textContent = '';
+									}
+						}
+					/>
+					{isActionColumn && actionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : !hasCustomRender ? cell.label : ''}
 				</td>
 			);
 		}

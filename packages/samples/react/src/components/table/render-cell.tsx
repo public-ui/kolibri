@@ -97,6 +97,7 @@ const HEADERS: KoliBriTableHeaders = {
 			},
 			{
 				label: 'Action (react)',
+				key: 'action',
 				width: 200,
 
 				/* Example 4: Render function using React */
@@ -127,6 +128,6 @@ export const TableRenderCell: FC = () => (
 			<p>This sample shows KolTableStateful using React render functions for the cell contents.</p>
 		</SampleDescription>
 
-		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
+		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" _hasSettingsMenu />
 	</>
 );
