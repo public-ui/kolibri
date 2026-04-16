@@ -84,6 +84,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private fixedOffsets: number[] = [];
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
 
+	private settingsChangedCounter = 0;
+
 	@State()
 	private tableDivElementHasScrollbar = false;
 
@@ -228,6 +230,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public handleSettingsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
 		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
 		setState(this, '_headerCells', updatedHeaderCells);
+		this.settingsChangedCounter++;
 
 		// Call the onChangeHeaderCells callback if provided
 		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
@@ -788,8 +791,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 			return (
 				<td
-					// nonce() is needed so every cell has a unique key after a state change and gets rerenderd
-					key={`cell-${key}-${nonce()}`}
+					// settingsChangedCounter is needed so every cell has a unique key after a settings change and gets rerenderd
+					key={`cell-${key}-${this.settingsChangedCounter}`}
 					class={clsx(
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
