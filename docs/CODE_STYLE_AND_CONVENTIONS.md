@@ -80,10 +80,10 @@ When writing stylesheets, always follow the order: **Block, Elements, Modifiers*
 }
 ```
 
-When you need to combine modifiers, there are two approaches.  
+When you need to combine modifiers, please us CSS properties.  
 In the following example, we wan't a different styling for the _Close-Button-Element_ when the component itself has the _card_-Modifier:
 
-Approach 1 - Use CSS Custom Properties (✨ Preferred):
+CSS Custom Properties (✨ Preferred):
 
 ```scss
 .kol-mycomponent {
@@ -99,7 +99,8 @@ Approach 1 - Use CSS Custom Properties (✨ Preferred):
 }
 ```
 
-Approach 2 - Combine selectors:
+Avoid - @root to combine selectors:
+Negative example (⛔️ Avoid!):
 
 ```scss
 .kol-mycomponent {
