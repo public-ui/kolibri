@@ -30,9 +30,10 @@
 			content: '✓ ';
 		}
 
-		/* needed hack for vertical alignment */
 		&[multiple] option {
-			padding: calc((var(--a11y-min-size) - to-rem(16)) / 2) 0.5em;
+			min-height: var(--a11y-min-size);
+			display: flex;
+			align-items: center;
 		}
 	}
 }
