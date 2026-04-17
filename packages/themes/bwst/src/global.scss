@@ -3,11 +3,10 @@
 @layer kol-theme-global {
 	:host {
 		--border-radius: var(--kolibri-border-radius, #{to-rem(4)});
-		//--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
 		--font-family: var(--kolibri-font-family, 'Noto Sans Regular', Arial, helvetica, sans-serif);
 		--font-size: var(--kolibri-font-size, #{to-rem(16)});
 		--spacing: var(--kolibri-spacing, #{to-rem(4)});
-		--border-width: var(--kolibri-border-width, 1px);
+		--border-width: var(--kolibri-border-width, 2px);
 		--color-primary: var(--kolibri-color-primary, #156570);
 		--color-primary-variant: var(--kolibri-color-primary-variant, #207a8b);
 		--color-secondary: var(--kolibri-color-secondary, #ccebf7);
@@ -40,7 +39,7 @@
 		padding: 0;
 	}
 
-	*[tabindex]:not([role='tabpanel']):focus,
+	*[tabindex]:not([role='tabpanel']):not([tabindex='-1']):focus,
 	.kol-input:not(.checkbox, .radio) .input:focus-within,
 	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {

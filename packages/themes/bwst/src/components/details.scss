@@ -48,9 +48,6 @@
 				@include focus-outline;
 			}
 		}
-		&:has(:focus-visible) {
-			@include focus-outline;
-		}
 
 		.collapsible__heading {
 			border-top: 1px solid var(--color-mute-variant);

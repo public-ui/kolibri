@@ -28,7 +28,7 @@
 	}
 
 	.kol-alert--variant-card {
-		filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
+		filter: drop-shadow(0 to-rem(2) to-rem(4) rgba(8, 35, 48, 0.24));
 		border-radius: var(--border-radius);
 		flex-direction: column;
 		border: var(--border-width) solid var(--alert-accent-color);

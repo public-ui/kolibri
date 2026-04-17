@@ -8,10 +8,12 @@
 		font-style: normal;
 
 		&:focus {
+			// Outline für Fokus wurde entfernt, ein focus-visible ist aber trotzdem für Tastatursteuerung berücksichtigt
 			outline: none;
 
 			.#{$block-classname}__text {
 				outline: var(--border-width) solid;
+				outline-offset: to-rem(0.05);
 				border-radius: var(--border-radius);
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}

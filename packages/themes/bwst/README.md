@@ -84,7 +84,7 @@ To adjust the design tokens, create a simple stylesheet that overrides the desir
 
 ## Design Tokens
 
-The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components.
+The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components. For a comprehensive reference of all tokens including their usage context, see [DESIGN_TOKENS.md](./DESIGN_TOKENS.md).
 
 | Token                     | Default value                                                                | Meaning                      |
 | ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
