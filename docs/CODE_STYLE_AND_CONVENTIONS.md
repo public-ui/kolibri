@@ -6,11 +6,11 @@
 
 - every component has a style.scss with its basic definitions
   - component styles have to be wrapped in `@layer kol-component`
-  - styles.scss is importet in its corresponding shadow.tsx
+  - styles.scss is imported in its corresponding shadow.tsx
 - components that are part of other components have their styles in the @shared folder
   - here no layer is used, just plain `@mixin componentName`
-  - in this cases the component file (e.g. alert/style.scss) just includes the mixin (e.g. \_alert.scss)
-  - every component has to `@include` the styles of every containing component (e.g. icon has to be included in buttons, paging, etc.)
+  - in these cases the component file (e.g. alert/style.scss) just includes the mixin (e.g. \_alert.scss)
+  - every component has to include the styles of every component it contains (e.g. icon has to be included in buttons, paging, etc.)
 - the following styles are prohibited in the component package:
   - margin
   - padding
@@ -26,8 +26,8 @@
   - all styles are imported in /src/components/index.ts
 - components that are part of other components have their styles in the @shared folder
   - here no layer is used, just plain `@mixin componentName`
-  - in this cases the component file (e.g. alert.scss) just includes the mixin (e.g. \_alert.scss)
-  - every component has to @include the styles of every containing component (e.g. icon has to be included in buttons, paging, etc.)
+  - in these cases the component file (e.g. alert.scss) just includes the mixin (e.g. \_alert.scss)
+  - every component has to include the styles of every component it contains (e.g. icon has to be included in buttons, paging, etc.)
 - all styles are allowed
 
 ## Units
@@ -42,7 +42,7 @@
 When defining `rem` values within KoliBri, always use the provided Sass function:
 
 ```
-@import '@shared/mixins';
+@use '@shared/mixins' as *;
 font-size: to-rem(16);
 ```
 
@@ -80,8 +80,8 @@ When writing stylesheets, always follow the order: **Block, Elements, Modifiers*
 }
 ```
 
-When you need to combine modifiers, please us CSS properties.  
-In the following example, we wan't a different styling for the _Close-Button-Element_ when the component itself has the _card_-Modifier:
+When you need to combine modifiers, please use CSS properties.  
+In the following example, we want a different styling for the _Close-Button-Element_ when the component itself has the _card_-Modifier:
 
 CSS Custom Properties (✨ Preferred):
 
@@ -99,7 +99,7 @@ CSS Custom Properties (✨ Preferred):
 }
 ```
 
-Avoid - @root to combine selectors:
+Avoid - @at-root to combine selectors:
 Negative example (⛔️ Avoid!):
 
 ```scss
