@@ -52,24 +52,24 @@
 			width: to-rem(12.8);
 			height: to-rem(12.8);
 			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: to-rem(0.16) solid #fff;
+			border: to-rem(0.16) solid white;
 
 			&--1 {
-				background-color: #000;
+				background-color: black;
 				left: to-rem(0.16);
 				z-index: 0;
 				animation: 1s infinite spin1;
 			}
 
 			&--2 {
-				background-color: #000;
+				background-color: black;
 				left: to-rem(0.16);
 				z-index: 1;
 				animation: 1s infinite spin2;
 			}
 
 			&--3 {
-				background-color: #000;
+				background-color: black;
 				left: to-rem(17.6);
 				z-index: 1;
 				animation: 1s infinite spin2;

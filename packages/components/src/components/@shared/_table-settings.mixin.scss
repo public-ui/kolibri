@@ -2,19 +2,19 @@
 
 @mixin kol-table-settings-styles {
 	.kol-table-settings {
-		background: #fff;
+		background: white;
 		position: absolute;
 		top: 0;
 		right: 0;
 		z-index: 1;
 
 		.kol-popover-button__popover {
-			background: #fff;
+			background: white;
 			box-shadow:
 				0 10px 15px -3px rgb(0 0 0 / 0.1),
 				0 4px 6px -2px rgb(0 0 0 / 0.05);
 			border-radius: to-rem(8);
-			border: 1px solid #d1d5db;
+			border: 1px solid black;
 		}
 
 		&__columns-container {

@@ -3,6 +3,10 @@
 
 @layer kol-component {
 	.kol-meter {
+		--kol-meter-color-optimum: #2ea32e;
+		--kol-meter-color-suboptimal: #c8a000;
+		--kol-meter-color-critical: #c00;
+
 		&__bar {
 			display: grid;
 			column-gap: to-rem(0.8);
@@ -27,7 +31,7 @@
 			}
 
 			&-background {
-				fill: lightgray;
+				fill: white;
 				stroke: white;
 			}
 
@@ -39,21 +43,18 @@
 				}
 
 				&--optimum {
-					color: #2ea32e;
-					color: #2ea32e;
-					fill: #2ea32e;
+					color: var(--kol-meter-color-optimum);
+					fill: var(--kol-meter-color-optimum);
 				}
 
 				&--suboptimal {
-					color: #c8a000;
-					color: #c8a000;
-					fill: #c8a000;
+					color: var(--kol-meter-color-suboptimal);
+					fill: var(--kol-meter-color-suboptimal);
 				}
 
 				&--critical {
-					color: #c00;
-					color: #c00;
-					fill: #c00;
+					color: var(--kol-meter-color-critical);
+					fill: var(--kol-meter-color-critical);
 				}
 			}
 		}
@@ -86,7 +87,7 @@
 				}
 
 				&-track {
-					background: lightgray;
+					background: white;
 					outline: to-rem(1) solid black;
 					border-radius: to-rem(6);
 					position: relative;
