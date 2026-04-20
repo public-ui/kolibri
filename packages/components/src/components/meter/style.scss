@@ -53,13 +53,17 @@
 
 				&-track {
 					min-height: to-rem(var(--vertical-height));
-					width: to-rem(var(--vertical-height));
 					min-width: 0;
 					align-items: center;
+					position: relative;
 				}
 
 				meter {
 					transform: rotate(-90deg);
+					width: to-rem(var(--vertical-height));
+					position: absolute;
+					bottom: 0;
+					transform-origin: left bottom;
 				}
 			}
 		}
