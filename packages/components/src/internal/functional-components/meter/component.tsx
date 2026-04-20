@@ -64,7 +64,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 
 	return (
 		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
-			<div aria-hidden="true" class="kol-meter__bar">
+			<div class="kol-meter__bar">
 				<div class="kol-meter__bar-label">
 					{label}
 					{hasStateClassification && (
