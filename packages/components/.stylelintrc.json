@@ -14,10 +14,10 @@
 				"strict": false
 			}
 		],
-		"property-disallowed-list": ["gap", "row-gap", "column-gap"],
+		"property-disallowed-list": ["/gap/"],
 		"declaration-property-value-allowed-list": {
-			"margin": ["0", "auto"],
-			"padding": ["0"]
+			"/margin/": ["0", "auto"],
+			"/padding/": ["0"]
 		}
 	}
 }
