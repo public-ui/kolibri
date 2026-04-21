@@ -25,6 +25,7 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
+import meterCss from './components/meter.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
@@ -73,6 +74,7 @@ export const KERN_V2 = KoliBri.createTheme('kern-v2', {
 	'KOL-INPUT-TEXT': inputTextCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
+	'KOL-METER': meterCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-POPOVER-BUTTON': popoverButtonCss,

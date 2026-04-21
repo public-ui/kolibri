@@ -7,10 +7,10 @@
 		--color-suboptimal: var(--kol-meter-color-suboptimal, #c8a000);
 		--color-critical: var(--kol-meter-color-critical, #c00);
 		--vertical-height: var(--kol-meter-vertical-height, 128);
+		--horizontal-height: var(--kol-meter-horizontal-height, 12);
 
 		&__bar {
 			display: grid;
-			column-gap: to-rem(0.8);
 			align-items: center;
 			grid-template-areas:
 				'label label'
@@ -71,7 +71,7 @@
 		/* Base meter styling */
 		meter {
 			width: 100%;
-			height: to-rem(12);
+			height: to-rem(var(--horizontal-height));
 			/* Remove default appearance in some browsers */
 			-webkit-appearance: none;
 			-moz-appearance: none;
@@ -81,37 +81,29 @@
 		/* Chrome, Safari, Edge (WebKit/Blink) */
 		meter::-webkit-meter-bar {
 			background: white;
-			border-radius: 6px;
-			height: to-rem(12);
-			padding: 3px;
+			height: to-rem(var(--horizontal-height));
 			border: 1px solid black;
 		}
 		meter::-webkit-meter-optimum-value {
 			background: var(--color-optimal);
-			border-radius: 3px;
 		}
 		meter::-webkit-meter-suboptimum-value {
 			background: var(--color-suboptimal);
-			border-radius: 3px;
 		}
 		meter::-webkit-meter-even-less-good-value {
 			background: var(--color-critical);
-			border-radius: 3px;
 		}
 
 		/* Firefox */
 		@supports (selector(::-moz-meter-bar)) {
 			meter {
 				background: white;
-				border-radius: 6px;
-				padding: 3px;
 				border: 1px solid black;
 			}
 		}
 
 		meter::-moz-meter-bar {
 			background: var(--color-optimal);
-			border-radius: 3px;
 		}
 		meter:-moz-meter-sub-optimum::-moz-meter-bar {
 			background: var(--color-suboptimal);
