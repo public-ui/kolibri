@@ -113,7 +113,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_value')
 	public watchValue(value?: number): void {
-		this.ctrl.watchValue(value);
+		this.ctrl.watchValue(value, this._min, this._max);
 	}
 
 	@State()

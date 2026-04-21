@@ -27,7 +27,7 @@ export const MeterMinMax: FC = () => (
 				<div className="flex flex-col gap-4">
 					<KolMeter _label="pH value" _min={0} _max={14} _value={7} _unit="pH" />
 					<KolMeter _label="Temperature range" _min={-20} _max={40} _value={-10} _unit="°C" />
-					<KolMeter _label="Temperature range" _min={-20} _max={40} _value={20} _unit="°C" />
+					<KolMeter _label="Temperature range" _min={-20} _max={40} _value={-15} _unit="°C" />
 				</div>
 			</section>
 		</div>
