@@ -5,12 +5,12 @@ import { KolSpin } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
-export const SpinCycle: FC = () => (
+export const SpinVariables: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample shows the KolSpin variant &quot;cycle&quot; and that you can change its color and size.</p>
+			<p>You can change the color and size of the spinners with CSS properties.</p>
 		</SampleDescription>
 
-		<KolSpin _show _variant="cycle" />
+		<KolSpin _show style={{ '--kol-spin-color': 'green', '--kol-spin-size': '80' }} />
 	</>
 );
