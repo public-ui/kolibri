@@ -13,6 +13,7 @@
 		/* Chrome, Safari, Edge (WebKit/Blink) */
 		meter::-webkit-meter-bar {
 			border-radius: 6px;
+			padding: to-rem(2);
 		}
 		meter::-webkit-meter-optimum-value,
 		meter::-webkit-meter-suboptimum-value,
@@ -24,6 +25,7 @@
 		@supports (selector(::-moz-meter-bar)) {
 			meter {
 				border-radius: 6px;
+				padding: to-rem(2);
 			}
 		}
 
