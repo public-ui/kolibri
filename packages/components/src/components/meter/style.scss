@@ -24,8 +24,8 @@
 
 			&-track {
 				display: flex;
-				grid-area: bar;
 				min-width: 100%;
+				grid-area: bar;
 			}
 		}
 
@@ -38,12 +38,12 @@
 
 			.kol-meter__bar {
 				min-height: 100%;
+				align-items: end;
+				justify-items: center;
 				grid-template-areas:
 					'label'
 					'bar'
 					'value';
-				justify-items: center;
-				align-items: end;
 				grid-template-columns: 1fr;
 				grid-template-rows: min-content 1fr min-content;
 
@@ -52,18 +52,18 @@
 				}
 
 				&-track {
-					min-height: to-rem(var(--vertical-height));
-					min-width: 0;
-					align-items: center;
 					position: relative;
+					min-width: 0;
+					min-height: to-rem(var(--vertical-height));
+					align-items: center;
 				}
 
 				meter {
 					transform: rotate(-90deg);
-					width: to-rem(var(--vertical-height));
+					transform-origin: left bottom;
 					position: absolute;
 					bottom: 0;
-					transform-origin: left bottom;
+					width: to-rem(var(--vertical-height));
 				}
 			}
 		}
@@ -82,9 +82,9 @@
 		meter::-webkit-meter-bar {
 			background: white;
 			border-radius: 6px;
-			border: 1px solid black;
-			padding: 3px;
 			height: to-rem(12);
+			padding: 3px;
+			border: 1px solid black;
 		}
 		meter::-webkit-meter-optimum-value {
 			background: var(--color-optimal);
@@ -104,14 +104,14 @@
 			meter {
 				background: white;
 				border-radius: 6px;
-				border: 1px solid black;
 				padding: 3px;
+				border: 1px solid black;
 			}
 		}
 
 		meter::-moz-meter-bar {
-			border-radius: 3px;
 			background: var(--color-optimal);
+			border-radius: 3px;
 		}
 		meter:-moz-meter-sub-optimum::-moz-meter-bar {
 			background: var(--color-suboptimal);
