@@ -16,21 +16,4 @@
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;
 	@include listbox-common;
-
-	.kol-single-select {
-		&__delete {
-			color: var(--kern-color-action-default);
-			display: flex;
-			width: var(--a11y-min-size);
-			height: var(--a11y-min-size);
-			align-items: center;
-			justify-content: center;
-
-			font-size: var(--kern-metric-dimension-default);
-
-			&:not(:disabled):hover {
-				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
-			}
-		}
-	}
 }
