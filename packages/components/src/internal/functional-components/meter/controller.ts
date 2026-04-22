@@ -1,4 +1,4 @@
-import { clampedNumberValueProp, highProp, labelProp, lowProp, maxProp, minProp, numberValueProp, optimumProp, orientationProp, unitProp } from '../../props';
+import { clampedNumberValueProp, highProp, labelProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { MeterApi } from './api';
@@ -74,12 +74,14 @@ export class MeterController extends BaseController<MeterApi> implements Control
 	public watchMax(value?: number): void {
 		maxProp.apply(value, (v) => {
 			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
 		});
 	}
 
 	public watchMin(value?: number): void {
 		minProp.apply(value, (v) => {
 			this.setRenderProp('min', v);
+			this.watchValue(this.getRawProp('value'));
 		});
 	}
 
@@ -105,25 +107,15 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		});
 	}
 
-	public watchValue(value?: number, min?: number, max?: number): void {
-		console.log(min, max);
-
-		if (min && max) {
-			clampedNumberValueProp.apply(
-				value,
-				(v) => {
-					this.setRenderProp('value', v);
-				},
-				{
-					min: min,
-					max: max,
-				},
-			);
-		} else {
-			numberValueProp.apply(value, (v) => {
+	public watchValue(value?: number): void {
+		this.setRawProp('value', value);
+		clampedNumberValueProp.apply(
+			value,
+			(v) => {
 				this.setRenderProp('value', v);
-			});
-		}
+			},
+			{ min: this.getRenderProp('min'), max: this.getRenderProp('max') },
+		);
 	}
 
 	private startLiveValueInterval(): void {

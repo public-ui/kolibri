@@ -52,9 +52,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	/**
 	 * Defines the maximum value of the element.
+	 * Default like native component.
 	 */
 	@Prop()
-	public _max!: number;
+	public _max: number = 1;
 
 	@Watch('_max')
 	public watchMax(value?: number): void {
@@ -63,9 +64,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	/**
 	 * Defines the minimum value of the element.
+	 * Default like native component.
 	 */
 	@Prop()
-	public _min?: number;
+	public _min: number = 0;
 
 	@Watch('_min')
 	public watchMin(value?: number): void {
@@ -113,7 +115,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_value')
 	public watchValue(value?: number): void {
-		this.ctrl.watchValue(value, this._min, this._max);
+		this.ctrl.watchValue(value);
 	}
 
 	@State()
