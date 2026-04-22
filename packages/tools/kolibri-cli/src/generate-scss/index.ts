@@ -13,6 +13,8 @@ interface GenerateScssOptions {
  * @param {Command} program The program object to register the command
  */
 export default function (program: Command): void {
+	const bemRegistry = BEM as Record<string, unknown>;
+
 	program
 		.command('generate-scss')
 		.description('Generate SCSS files with BEM selectors for KoliBri components (experimental).')
@@ -35,7 +37,7 @@ export default function (program: Command): void {
 			try {
 				// Generate SCSS for each requested component
 				for (const component of components) {
-					const componentKey = `kol-${component}` as keyof typeof BEM;
+					const componentKey = `kol-${component}`;
 
 					// Filter out skeleton and click-button
 					if (component === 'skeleton' || component === 'click-button') {
@@ -43,8 +45,9 @@ export default function (program: Command): void {
 						continue;
 					}
 
-					if (!BEM[componentKey]) {
-						const availableComponents = Object.keys(BEM)
+					const componentDefinition = bemRegistry[componentKey];
+					if (typeof componentDefinition !== 'object' || componentDefinition === null) {
+						const availableComponents = Object.keys(bemRegistry)
 							.filter((key) => !key.includes('skeleton') && !key.includes('click-button'))
 							.join(', ');
 						console.warn(`⚠️  Component '${component}' not found in BEM registry. Available: ${availableComponents}`);
@@ -54,7 +57,7 @@ export default function (program: Command): void {
 					// Generate SCSS with fixed kol-theme-component layer
 					generateBemScssFile(
 						{
-							[componentKey]: BEM[componentKey],
+							[componentKey]: componentDefinition,
 						},
 						component,
 						{ layer: 'kol-theme-component' },
