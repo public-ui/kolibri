@@ -8,6 +8,40 @@ interface GenerateScssOptions {
 	output: string;
 }
 
+interface BemModifierDefinition {
+	modifiers: Set<string> | null;
+}
+
+interface BemBlockDefinition extends BemModifierDefinition {
+	elements?: Record<string, BemModifierDefinition>;
+}
+
+const isBemModifierDefinition = (value: unknown): value is BemModifierDefinition => {
+	if (typeof value !== 'object' || value === null) {
+		return false;
+	}
+
+	const { modifiers } = value as { modifiers?: unknown };
+	return modifiers === null || modifiers instanceof Set;
+};
+
+const isBemBlockDefinition = (value: unknown): value is BemBlockDefinition => {
+	if (!isBemModifierDefinition(value)) {
+		return false;
+	}
+
+	const { elements } = value as { elements?: unknown };
+	if (elements === undefined) {
+		return true;
+	}
+
+	if (typeof elements !== 'object' || elements === null) {
+		return false;
+	}
+
+	return Object.values(elements).every(isBemModifierDefinition);
+};
+
 /**
  * This function is used to register the scss generator command.
  * @param {Command} program The program object to register the command
@@ -46,7 +80,7 @@ export default function (program: Command): void {
 					}
 
 					const componentDefinition = bemRegistry[componentKey];
-					if (typeof componentDefinition !== 'object' || componentDefinition === null) {
+					if (!isBemBlockDefinition(componentDefinition)) {
 						const availableComponents = Object.keys(bemRegistry)
 							.filter((key) => !key.includes('skeleton') && !key.includes('click-button'))
 							.map((key) => key.replace(/^kol-/, ''))
