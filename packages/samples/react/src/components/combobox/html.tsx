@@ -12,6 +12,7 @@ export const ComboboxHtml: FC = () => {
 			</SampleDescription>
 
 			<KolCombobox
+				id="combobox-test-click-me"
 				_label="With string array in html"
 				_suggestions="['Herr','Frau','Firma']"
 				_value="Herr"
