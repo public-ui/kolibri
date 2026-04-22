@@ -49,6 +49,8 @@ export default function (program: Command): void {
 					if (typeof componentDefinition !== 'object' || componentDefinition === null) {
 						const availableComponents = Object.keys(bemRegistry)
 							.filter((key) => !key.includes('skeleton') && !key.includes('click-button'))
+							.map((key) => key.replace(/^kol-/, ''))
+							.sort()
 							.join(', ');
 						console.warn(`⚠️  Component '${component}' not found in BEM registry. Available: ${availableComponents}`);
 						continue;
