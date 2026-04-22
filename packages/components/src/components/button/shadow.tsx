@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -19,6 +19,8 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **Button** component is used to present users with action options and arrange them in a clear hierarchy. It helps users find the most important actions on a page or within a viewport and allows them to execute those actions. The button label clearly indicates which action will be triggered. Buttons allow users to confirm a change, complete steps in a task, or make decisions.
@@ -33,9 +35,10 @@ import type {
 	shadow: true,
 })
 export class KolButton implements ButtonProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolButtonElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
 
@@ -52,14 +55,22 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.buttonWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchRef}
+				ref={this.setButtonWcRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}

@@ -2,10 +2,11 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import type {
 	ActionColumnHeaderCell,
 	AriaSort,
@@ -53,7 +54,7 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 	tag: 'kol-table-stateless-wc',
 	shadow: false,
 })
-export class KolTableStateless implements TableStatelessAPI {
+export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
 	private readonly translateNoEntries = translate('kol-no-entries');
@@ -708,13 +709,9 @@ export class KolTableStateless implements TableStatelessAPI {
 							/>
 						</label>
 					)}
-					<KolTooltipWcTag
-						aria-hidden="true"
-						class="kol-table__selection-input-tooltip"
-						_align="right"
-						_id={`${keyProperty}-label`}
-						_label={label}
-					></KolTooltipWcTag>
+					<div class="kol-table__selection-input-tooltip">
+						<TooltipFC label={label} badgeText="" id={`${keyProperty}-label`} refFloating={() => {}} />
+					</div>
 				</div>
 			</td>
 		);
@@ -1003,13 +1000,9 @@ export class KolTableStateless implements TableStatelessAPI {
 							}}
 						/>
 					</label>
-					<KolTooltipWcTag
-						aria-hidden="true"
-						class="kol-table__selection-input-tooltip"
-						_align="right"
-						_id={`${translationKey}-label`}
-						_label={label}
-					></KolTooltipWcTag>
+					<div class="kol-table__selection-input-tooltip">
+						<TooltipFC label={label} badgeText="" id={`${translationKey}-label`} refFloating={() => {}} />
+					</div>
 				</div>
 			</th>
 		);

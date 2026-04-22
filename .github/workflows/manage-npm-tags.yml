@@ -56,7 +56,7 @@ jobs:
           - '@public-ui/theme-default'
           - '@public-ui/theme-ecl'
           - '@public-ui/theme-kern'
-          - '@public-ui/stylelint-rules'
+          # - '@public-ui/stylelint-rules'
           - '@public-ui/themes'
           - '@public-ui/visual-tests'
           - '@public-ui/vue'
@@ -70,7 +70,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
 
       - name: ${{ github.event.inputs.action }} tag "${{ github.event.inputs.tag }}" for ${{ matrix.package }}

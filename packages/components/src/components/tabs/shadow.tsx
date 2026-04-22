@@ -1,8 +1,9 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
+	FocusableElement,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -31,6 +32,8 @@ import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
 import clsx from '../../utils/clsx';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -44,11 +47,12 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs implements TabsAPI {
+export class KolTabs implements TabsAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
 	private currentFocusIndex: number | undefined;
+	private currentTabButtonRef?: HTMLKolButtonWcElement;
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset + step;
@@ -155,6 +159,26 @@ export class KolTabs implements TabsAPI {
 		onMouseDown: this.onMouseDown,
 	};
 
+	/**
+	 * Sets focus on the current tab button.
+	 */
+	@Method()
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.currentTabButtonRef!));
+	}
+
+	/**
+	 * Triggers a click on the currently selected tab.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.currentTabButtonRef!));
+	}
+
+	private readonly setCurrentTabButtonRef = (ref?: HTMLKolButtonWcElement) => {
+		this.currentTabButtonRef = ref;
+	};
+
 	private renderButtonGroup() {
 		return (
 			// Rule is disabled, because KolButtonWc is focusable.
@@ -162,6 +186,7 @@ export class KolTabs implements TabsAPI {
 			<div aria-label={this.state._label} class="kol-tabs__button-group" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
+						ref={this.state._selected === index ? this.setCurrentTabButtonRef : undefined}
 						_disabled={button._disabled}
 						_icons={button._icons}
 						_hideLabel={button._hideLabel}
@@ -203,7 +228,7 @@ export class KolTabs implements TabsAPI {
 		return (
 			<div
 				ref={(el) => {
-					this.tabPanelsElement = el as HTMLElement;
+					this.tabPanelsElement = el;
 				}}
 				class={clsx('kol-tabs', `kol-tabs--align-${this.state._align}`)}
 			>

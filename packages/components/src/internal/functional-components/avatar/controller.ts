@@ -1,7 +1,7 @@
 import type { ColorPair } from '../../../schema';
 import { colorProp, labelProp, srcProp } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { AvatarApi } from './api';
 import { avatarPropsConfig } from './api';
 
@@ -39,8 +39,8 @@ const normalizeInitials = (value: string): string => {
 };
 
 export class AvatarController extends BaseController<AvatarApi> implements ControllerInterface<AvatarApi> {
-	public constructor(setState: SetStateFn<AvatarApi>, getState: GetStateFn<AvatarApi>) {
-		super(avatarPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<AvatarApi>) {
+		super(stateAccess, avatarPropsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<AvatarApi>): void {

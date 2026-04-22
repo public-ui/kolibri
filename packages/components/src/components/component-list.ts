@@ -15,7 +15,7 @@ import { KolDialogWc } from './dialog/component';
 import { KolDialog } from './dialog/shadow';
 import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
-import { KolHeading } from './heading/shadow';
+import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';
 import { KolInputCheckbox } from './input-checkbox/shadow';
@@ -32,17 +32,17 @@ import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/shadow';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
+import { KolMeter } from './meter/component';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
 import { KolPopoverButton } from './popover-button/shadow';
-import { KolPopover } from './popover/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
-import { KolSpin } from './spin/shadow';
+import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
@@ -90,10 +90,10 @@ export const COMPONENTS = [
 	KolLink,
 	KolLinkButton,
 	KolLinkWc,
+	KolMeter,
 	KolModal,
 	KolNav,
 	KolPagination,
-	KolPopover,
 	KolProgress,
 	KolPopoverButton,
 	KolQuote,

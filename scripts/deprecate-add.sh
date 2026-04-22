@@ -14,6 +14,7 @@ npm deprecate @public-ui/svelte@$1 "Wir empfehlen die Verwendung einer neueren V
 npm deprecate @public-ui/vue@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/components@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/sample-react@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
+npm deprecate @public-ui/theme-bwst@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/theme-default@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/theme-ecl@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/theme-kern@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."

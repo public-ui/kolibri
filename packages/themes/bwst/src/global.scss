@@ -1,0 +1,111 @@
+@use 'mixins/to-rem' as *;
+
+@layer kol-theme-global {
+	:host {
+		--border-radius: var(--kolibri-border-radius, #{to-rem(4)});
+		//--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
+		--font-family: var(--kolibri-font-family, 'Noto Sans Regular', Arial, helvetica, sans-serif);
+		--font-size: var(--kolibri-font-size, #{to-rem(16)});
+		--spacing: var(--kolibri-spacing, #{to-rem(4)});
+		--border-width: var(--kolibri-border-width, 1px);
+		--color-primary: var(--kolibri-color-primary, #156570);
+		--color-primary-variant: var(--kolibri-color-primary-variant, #207a8b);
+		--color-secondary: var(--kolibri-color-secondary, #ccebf7);
+		--color-danger: var(--kolibri-color-danger, #ca0101);
+		--color-warning: var(--kolibri-color-warning, #c44931);
+		--color-success: var(--kolibri-color-success, #005c45);
+		--color-subtle: var(--kolibri-color-subtle, #576164);
+		--color-light: var(--kolibri-color-light, #ffffff);
+		--color-text: var(--kolibri-color-text, #202020);
+		--color-mute: var(--kolibri-color-mute, #f2f3f4);
+		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+		--color-visited: var(
+			--kolibri-color-visited,
+			#551a8b
+		); // Html defined standard value https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+	}
+
+	:host {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		padding: 0;
+	}
+
+	*[tabindex]:not([role='tabpanel']):focus,
+	.kol-input:not(.checkbox, .radio) .input:focus-within,
+	.kol-input:is(.checkbox, .radio) input:focus,
+	summary:focus {
+		outline-color: var(--color-primary-variant);
+		outline-style: solid;
+		outline-width: to-rem(3);
+		outline-offset: to-rem(2);
+		transition: outline-offset 0.2s linear;
+	}
+
+	*[tabindex][role='tabpanel'] {
+		position: relative;
+		top: -4px;
+	}
+
+	*[tabindex][role='tabpanel']:focus {
+		outline-color: var(--color-primary-variant);
+		outline-style: solid;
+		outline-width: to-rem(3);
+		outline-offset: 0;
+	}
+
+	.kol-headline {
+		font-weight: 700;
+	}
+
+	.kol-tooltip {
+		&__floating {
+			border-radius: var(--border-radius);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__arrow {
+			background-color: var(--color-light);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__content {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			padding: to-rem(8) to-rem(12);
+
+			line-height: 1.5;
+		}
+	}
+
+	.kol-span,
+	.kol-span__container {
+		gap: to-rem(8);
+	}
+
+	.badge-text-hint {
+		color: var(--color-text);
+		background-color: var(--color-mute-variant);
+		border-radius: 3px;
+		padding: 0 0.3em;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

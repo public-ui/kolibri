@@ -9,7 +9,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 	return (
 		<div className="grid gap-4">
 			<div className="black-background">
-				<KolInputNumber {...props} _required _touched _value={123} _label="Number input (Black background test)" />{' '}
+				<KolInputNumber {...props} _required _touched _value={123} _label="Number input (Black background test)" />
 			</div>
 			<KolInputNumber
 				{...props}

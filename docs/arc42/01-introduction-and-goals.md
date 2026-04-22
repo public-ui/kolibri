@@ -17,13 +17,13 @@ This section introduces Public UI - KoliBri (KoliBri), outlining its core missio
 
 ## 1.2 Quality Goals
 
-| Priority | Quality Goal | Motivation |
-|----------|-------------|------------|
-| 1 | **Accessibility** | Core mission - every component must be accessible to all users regardless of disabilities |
-| 2 | **Standard Compliance** | Build on W3C standards ensures longevity and interoperability |
-| 3 | **Usability** | Components should be intuitive for developers and end-users |
-| 4 | **Maintainability** | Clean architecture enables long-term evolution and community contributions |
-| 5 | **Performance** | Fast loading and rendering for optimal user experience |
+| Priority | Quality Goal            | Motivation                                                                                |
+| -------- | ----------------------- | ----------------------------------------------------------------------------------------- |
+| 1        | **Accessibility**       | Core mission - every component must be accessible to all users regardless of disabilities |
+| 2        | **Standard Compliance** | Build on W3C standards ensures longevity and interoperability                             |
+| 3        | **Usability**           | Components should be intuitive for developers and end-users                               |
+| 4        | **Maintainability**     | Clean architecture enables long-term evolution and community contributions                |
+| 5        | **Performance**         | Fast loading and rendering for optimal user experience                                    |
 
 ### Quality Scenarios
 
@@ -34,22 +34,24 @@ This section introduces Public UI - KoliBri (KoliBri), outlining its core missio
 
 ## 1.3 Stakeholders
 
-| Role/Name | Expectations | Contact |
-|-----------|-------------|---------|
-| **End Users** | Accessible, usable web interfaces that work with assistive technologies | - |
-| **Developers** | Easy-to-use, well-documented components that integrate with their tech stack | - |
-| **Designers** | Flexible theming system that supports their design systems | - |
-| **ITZBund** | Sustainable open-source project that meets public sector requirements | kolibri@itzbund.de |
-| **Public Sector Organizations** | BITV-compliant components for government websites and applications | - |
-| **Open Source Community** | Transparent development, contribution opportunities, and reusable components | GitHub Issues/PRs |
-| **Accessibility Advocates** | Reference implementation of WCAG standards in web components | - |
+| Role/Name                       | Expectations                                                                 | Contact            |
+| ------------------------------- | ---------------------------------------------------------------------------- | ------------------ |
+| **End Users**                   | Accessible, usable web interfaces that work with assistive technologies      | -                  |
+| **Developers**                  | Easy-to-use, well-documented components that integrate with their tech stack | -                  |
+| **Designers**                   | Flexible theming system that supports their design systems                   | -                  |
+| **ITZBund**                     | Sustainable open-source project that meets public sector requirements        | kolibri@itzbund.de |
+| **Public Sector Organizations** | BITV-compliant components for government websites and applications           | -                  |
+| **Open Source Community**       | Transparent development, contribution opportunities, and reusable components | GitHub Issues/PRs  |
+| **Accessibility Advocates**     | Reference implementation of WCAG standards in web components                 | -                  |
 
 ## 1.4 Vision and Mission
 
 ### Vision
+
 > Together we make **HTML** accessible using **reusable web components** to ensure **usability** and **accessibility**.
 
 ### Mission
+
 The HTML web standard is openly specified to be long-lasting and robust, but this often results in compositions that are not easily accessible, semantic, or valid. KoliBri provides:
 
 - **Framework-agnostic components** based on W3C web standards

@@ -1,0 +1,16 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/kol-card' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-card;
+
+	.kol-dialog,
+	.kol-modal {
+		&__card {
+			box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+			border-radius: var(--border-radius);
+		}
+	}
+}

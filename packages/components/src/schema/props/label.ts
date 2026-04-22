@@ -5,12 +5,6 @@ import { watchValidator } from '../utils';
 import { a11yHint, uiUxHint } from '../utils/a11y.tipps';
 
 /**
- * Defines the heading level options.
- */
-export const headingLevelOptions = [0, 1, 2, 3, 4, 5, 6] as const;
-export type HeadingLevel = (typeof headingLevelOptions)[number];
-
-/**
  * This is a regular expression that matches all readable characters.
  *
  * Interesting: https://stackoverflow.com/questions/150033/regular-expression-to-match-non-english-characters

@@ -1,0 +1,31 @@
+@use './to-rem' as *;
+
+@mixin kol-link($block-classname) {
+	.#{$block-classname} {
+		color: var(--color-primary);
+
+		font-weight: 400;
+		font-style: normal;
+
+		&:focus {
+			outline: none;
+
+			.#{$block-classname}__text {
+				outline: var(--border-width) solid;
+				border-radius: var(--border-radius);
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
+		}
+
+		&:focus:not([aria-disabled], [disabled]),
+		&:hover:not([aria-disabled], [disabled]) {
+			.kol-span__label {
+				text-decoration-thickness: 0.25em;
+			}
+		}
+
+		&:visited {
+			color: var(--color-visited);
+		}
+	}
+}

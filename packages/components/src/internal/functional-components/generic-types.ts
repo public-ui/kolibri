@@ -165,6 +165,17 @@ export type GetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<N
 	key: K,
 ) => InternalOf<NonNullable<Api['States']>>[K];
 
+/**
+ * Bundles setState and getState as a single unit.
+ * Controllers receive this as their state access mechanism — either a real
+ * implementation from a web component or `BaseController.stateLess` for
+ * controllers that manage state purely via render props.
+ */
+export type StateAccess<Api extends ComponentApi> = {
+	setState: SetStateFn<Api>;
+	getState: GetStateFn<Api>;
+};
+
 // ============================================================================
 // Method Promise Wrapping
 // ============================================================================

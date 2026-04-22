@@ -1,0 +1,24 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/link' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-link('kol-link');
+
+	.kol-breadcrumb {
+		&__list-element-span {
+			color: var(--color-subtle);
+		}
+
+		&__separator {
+			color: var(--color-subtle);
+
+			font-weight: 900;
+		}
+	}
+
+	.kol-link {
+		line-height: 1;
+	}
+}

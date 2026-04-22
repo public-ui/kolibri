@@ -1,0 +1,18 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/alert' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-alert-theme;
+
+	:host {
+		top: to-rem(16);
+		right: to-rem(16);
+		width: to-rem(440);
+	}
+
+	.kol-toast-item {
+		margin-top: to-rem(16);
+	}
+}

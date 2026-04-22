@@ -72,6 +72,41 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-meter': {
+		elements: {
+			bar: {
+				modifiers: null;
+			};
+			'bar-label': {
+				modifiers: null;
+			};
+			'bar-state': {
+				modifiers: Set<'optimum' | 'suboptimal' | 'critical'>;
+			};
+			'bar-track': {
+				modifiers: null;
+			};
+			'bar-fill': {
+				modifiers: Set<'optimum' | 'suboptimal' | 'critical'>;
+			};
+			'bar-background': {
+				modifiers: null;
+			};
+			'bar-border': {
+				modifiers: null;
+			};
+			'value-unit': {
+				modifiers: null;
+			};
+			value: {
+				modifiers: null;
+			};
+			unit: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'vertical'>;
+	};
 	'kol-quote': {
 		elements: {
 			blockquote: {
@@ -128,6 +163,20 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'has-badge' | 'hide-label'>;
 	};
+	'kol-spin': {
+		elements: {
+			spinner: {
+				modifiers: Set<'cycle' | 'dot' | 'none'>;
+			};
+			'spinner-element': {
+				modifiers: Set<'1' | '2' | '3' | 'neutral'>;
+			};
+			loader: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 };
 
 /**
@@ -164,6 +213,21 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-meter': {
+		elements: {
+			bar: { modifiers: null },
+			'bar-background': { modifiers: null },
+			'bar-border': { modifiers: null },
+			'bar-fill': { modifiers: new Set(['critical', 'optimum', 'suboptimal']) },
+			'bar-label': { modifiers: null },
+			'bar-state': { modifiers: new Set(['critical', 'optimum', 'suboptimal']) },
+			'bar-track': { modifiers: null },
+			unit: { modifiers: null },
+			value: { modifiers: null },
+			'value-unit': { modifiers: null },
+		},
+		modifiers: new Set(['vertical']),
+	},
 	'kol-quote': {
 		elements: {
 			blockquote: { modifiers: null },
@@ -195,6 +259,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			label: { modifiers: null },
 		},
 		modifiers: new Set(['has-badge', 'hide-label']),
+	},
+	'kol-spin': {
+		elements: {
+			loader: { modifiers: null },
+			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
+			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
+		},
+		modifiers: null,
 	},
 };
 

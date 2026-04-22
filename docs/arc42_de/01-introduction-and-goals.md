@@ -17,13 +17,13 @@ Dieser Abschnitt führt Public UI - KoliBri (KoliBri) ein und beschreibt dessen 
 
 ## 1.2 Qualitätsziele
 
-| Priorität | Qualitätsziel | Motivation |
-|----------|-------------|------------|
-| 1 | **Barrierefreiheit** | Kernauftrag - jede Komponente muss für alle Nutzer unabhängig von Behinderungen zugänglich sein |
-| 2 | **Standardkonformität** | Aufbau auf W3C-Standards gewährleistet Langlebigkeit und Interoperabilität |
-| 3 | **Benutzbarkeit** | Komponenten sollten für Entwickler und Endnutzer intuitiv sein |
-| 4 | **Wartbarkeit** | Saubere Architektur ermöglicht langfristige Entwicklung und Community-Beiträge |
-| 5 | **Performance** | Schnelles Laden und Rendern für optimale Benutzererfahrung |
+| Priorität | Qualitätsziel           | Motivation                                                                                      |
+| --------- | ----------------------- | ----------------------------------------------------------------------------------------------- |
+| 1         | **Barrierefreiheit**    | Kernauftrag - jede Komponente muss für alle Nutzer unabhängig von Behinderungen zugänglich sein |
+| 2         | **Standardkonformität** | Aufbau auf W3C-Standards gewährleistet Langlebigkeit und Interoperabilität                      |
+| 3         | **Benutzbarkeit**       | Komponenten sollten für Entwickler und Endnutzer intuitiv sein                                  |
+| 4         | **Wartbarkeit**         | Saubere Architektur ermöglicht langfristige Entwicklung und Community-Beiträge                  |
+| 5         | **Performance**         | Schnelles Laden und Rendern für optimale Benutzererfahrung                                      |
 
 ### Qualitätsszenarien
 
@@ -34,22 +34,24 @@ Dieser Abschnitt führt Public UI - KoliBri (KoliBri) ein und beschreibt dessen 
 
 ## 1.3 Stakeholder
 
-| Rolle/Name | Erwartungen | Kontakt |
-|-----------|-------------|---------|
-| **Endnutzer** | Barrierefreie, nutzbare Web-Oberflächen, die mit assistiven Technologien funktionieren | - |
-| **Entwickler** | Einfach zu verwendende, gut dokumentierte Komponenten, die sich in ihren Tech-Stack integrieren | - |
-| **Designer** | Flexibles Theming-System, das ihre Designsysteme unterstützt | - |
-| **ITZBund** | Nachhaltiges Open-Source-Projekt, das die Anforderungen des öffentlichen Sektors erfüllt | kolibri@itzbund.de |
-| **Organisationen des öffentlichen Sektors** | BITV-konforme Komponenten für Behördenwebsites und -anwendungen | - |
-| **Open-Source-Community** | Transparente Entwicklung, Beitragsmöglichkeiten und wiederverwendbare Komponenten | GitHub Issues/PRs |
-| **Barrierefreiheits-Befürworter** | Referenzimplementierung von WCAG-Standards in Web Components | - |
+| Rolle/Name                                  | Erwartungen                                                                                     | Kontakt            |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------ |
+| **Endnutzer**                               | Barrierefreie, nutzbare Web-Oberflächen, die mit assistiven Technologien funktionieren          | -                  |
+| **Entwickler**                              | Einfach zu verwendende, gut dokumentierte Komponenten, die sich in ihren Tech-Stack integrieren | -                  |
+| **Designer**                                | Flexibles Theming-System, das ihre Designsysteme unterstützt                                    | -                  |
+| **ITZBund**                                 | Nachhaltiges Open-Source-Projekt, das die Anforderungen des öffentlichen Sektors erfüllt        | kolibri@itzbund.de |
+| **Organisationen des öffentlichen Sektors** | BITV-konforme Komponenten für Behördenwebsites und -anwendungen                                 | -                  |
+| **Open-Source-Community**                   | Transparente Entwicklung, Beitragsmöglichkeiten und wiederverwendbare Komponenten               | GitHub Issues/PRs  |
+| **Barrierefreiheits-Befürworter**           | Referenzimplementierung von WCAG-Standards in Web Components                                    | -                  |
 
 ## 1.4 Vision und Mission
 
 ### Vision
+
 > Gemeinsam machen wir **HTML** barrierefrei, indem wir **wiederverwendbare Web-Komponenten** verwenden, um **Benutzbarkeit** und **Barrierefreiheit** zu gewährleisten.
 
 ### Mission
+
 Der HTML-Webstandard ist offen spezifiziert, um langlebig und robust zu sein, aber dies führt oft zu Kompositionen, die nicht einfach barrierefrei, semantisch oder valide sind. KoliBri bietet:
 
 - **Framework-agnostische Komponenten** basierend auf W3C-Webstandards

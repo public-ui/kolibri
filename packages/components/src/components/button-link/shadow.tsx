@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -19,6 +19,8 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **ButtonLink** component is semantically a button but has the appearance of a link. All relevant properties of the Button component are adopted and extended with the design-defining properties of a link.
@@ -41,9 +43,10 @@ import type {
 	shadow: true,
 })
 export class KolButtonLink implements ButtonLinkProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
-	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
+	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
 
@@ -60,14 +63,22 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.buttonWcRef?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
-				ref={this.catchRef}
+				ref={this.setButtonWcRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}

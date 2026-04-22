@@ -26,6 +26,8 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputColorController } from './controller';
 
 /**
@@ -45,10 +47,10 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private refInputText?: HTMLInputElement;
 	private refInputColor?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.refInputText = ref;
 	};
-	private readonly catchColorRef = (ref?: HTMLInputElement) => {
+	private readonly setColorRef = (ref?: HTMLInputElement) => {
 		this.refInputColor = ref;
 	};
 	private readonly onBlur = (event: FocusEvent) => {
@@ -96,12 +98,15 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInputText?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInputText!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.refInputText!));
 	}
 
 	private get hasSuggestions(): boolean {
@@ -120,7 +125,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private getInputColorProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
-			ref: this.catchColorRef,
+			ref: this.setColorRef,
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
@@ -133,7 +138,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private getInputTextProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			type: 'text',
 			name: this.state._name ? `${this.state._name}-text` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,

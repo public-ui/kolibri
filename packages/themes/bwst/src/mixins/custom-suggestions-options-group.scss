@@ -1,0 +1,14 @@
+@use '../mixins/to-rem' as *;
+
+@mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
+	.kol-custom-suggestions-options-group {
+		border-color: var(--color-subtle);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		right: 0;
+		left: 0;
+		z-index: 5;
+		max-height: calc($option-height * $visible-options + to-rem(2));
+		border-width: 1px;
+	}
+}

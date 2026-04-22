@@ -29,23 +29,23 @@ graph TB
 
 ### Enthaltene Bausteine
 
-| Baustein | Verantwortlichkeit |
-|----------------|----------------|
+| Baustein       | Verantwortlichkeit                                                                   |
+| -------------- | ------------------------------------------------------------------------------------ |
 | **Components** | Kern-Web-Component-Bibliothek, stellt atomare, barrierefreie HTML-Komponenten bereit |
-| **Themes** | Visuelle Styling-Pakete, trennen Präsentation von Logik |
-| **Adapters** | Framework-spezifische Wrapper (React, Angular, Vue, etc.) für native Integration |
-| **Tools** | Entwicklungs- und Migrations-Utilities (CLI, Visual Testing) |
-| **Samples** | Beispielanwendungen, die die Komponentennutzung demonstrieren |
-| **Icons** | Icon-Font-Definitionen und Assets |
+| **Themes**     | Visuelle Styling-Pakete, trennen Präsentation von Logik                              |
+| **Adapters**   | Framework-spezifische Wrapper (React, Angular, Vue, etc.) für native Integration     |
+| **Tools**      | Entwicklungs- und Migrations-Utilities (CLI, Visual Testing)                         |
+| **Samples**    | Beispielanwendungen, die die Komponentennutzung demonstrieren                        |
+| **Icons**      | Icon-Font-Definitionen und Assets                                                    |
 
 ### Wichtige Schnittstellen
 
-| Schnittstelle | Beschreibung |
-|-----------|-------------|
-| `@public-ui/components` | Hauptexport der Komponentenbibliothek |
-| `@public-ui/theme-*` | Theme-Pakete (default, ecl, etc.) |
-| `@public-ui/react`, `@public-ui/angular-*`, `@public-ui/vue` | Framework-Adapter |
-| Theme-Registrierungs-API | `register(theme, defineCustomElements)` |
+| Schnittstelle                                                | Beschreibung                            |
+| ------------------------------------------------------------ | --------------------------------------- |
+| `@public-ui/components`                                      | Hauptexport der Komponentenbibliothek   |
+| `@public-ui/theme-*`                                         | Theme-Pakete (default, ecl, etc.)       |
+| `@public-ui/react`, `@public-ui/angular-*`, `@public-ui/vue` | Framework-Adapter                       |
+| Theme-Registrierungs-API                                     | `register(theme, defineCustomElements)` |
 
 ## 5.2 Components-Paket (Ebene 2)
 
@@ -124,14 +124,14 @@ components/
 
 ### Schlüsselkomponenten
 
-| Komponente | Zweck | Komplexität |
-|-----------|---------|------------|
-| `KolButton` | Barrierefreier Button mit Icon- und Label-Unterstützung | Mittel |
-| `KolInputText` | Texteingabe mit Validierung und Fehlerbehandlung | Hoch |
-| `KolTable` | Barrierefreie Datentabelle mit Sortierung und Paginierung | Hoch |
-| `KolModal` | Barrierefreier Modal-Dialog mit Fokus-Management | Hoch |
-| `KolIcon` | Icon-Anzeige aus Icon-Fonts | Niedrig |
-| `KolLink` | Barrierefreier Link mit Icon-Unterstützung | Niedrig |
+| Komponente     | Zweck                                                     | Komplexität |
+| -------------- | --------------------------------------------------------- | ----------- |
+| `KolButton`    | Barrierefreier Button mit Icon- und Label-Unterstützung   | Mittel      |
+| `KolInputText` | Texteingabe mit Validierung und Fehlerbehandlung          | Hoch        |
+| `KolTable`     | Barrierefreie Datentabelle mit Sortierung und Paginierung | Hoch        |
+| `KolModal`     | Barrierefreier Modal-Dialog mit Fokus-Management          | Hoch        |
+| `KolIcon`      | Icon-Anzeige aus Icon-Fonts                               | Niedrig     |
+| `KolLink`      | Barrierefreier Link mit Icon-Unterstützung                | Niedrig     |
 
 ## 5.3 Themes-Paket (Ebene 2)
 
@@ -258,15 +258,15 @@ Alle Adapter werden **automatisch generiert** von Stencil Output Targets. Manuel
 
 ### Framework-Unterstützung
 
-| Framework | Paket(e) | Zweck |
-|-----------|-----------|---------|
-| **React** | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone` | React 18, 19 und Standalone-Builds |
-| **Angular** | `@public-ui/angular-v19`, `@public-ui/angular-v20`, `@public-ui/angular-v21` | Angular-Versionen 19, 20, 21 |
-| **Vue** | `@public-ui/vue` | Vue.js-Integration |
-| **Solid** | `@public-ui/solid` | SolidJS-Integration |
-| **Svelte** | `@public-ui/svelte` | Svelte-Integration |
-| **Preact** | `@public-ui/preact` | Preact-Integration |
-| **Vaadin** | `@public-ui/vaadin` | Vaadin Flow (Java) Integration |
+| Framework   | Paket(e)                                                                     | Zweck                              |
+| ----------- | ---------------------------------------------------------------------------- | ---------------------------------- |
+| **React**   | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone`    | React 18, 19 und Standalone-Builds |
+| **Angular** | `@public-ui/angular-v19`, `@public-ui/angular-v20`, `@public-ui/angular-v21` | Angular-Versionen 19, 20, 21       |
+| **Vue**     | `@public-ui/vue`                                                             | Vue.js-Integration                 |
+| **Solid**   | `@public-ui/solid`                                                           | SolidJS-Integration                |
+| **Svelte**  | `@public-ui/svelte`                                                          | Svelte-Integration                 |
+| **Preact**  | `@public-ui/preact`                                                          | Preact-Integration                 |
+| **Vaadin**  | `@public-ui/vaadin`                                                          | Vaadin Flow (Java) Integration     |
 
 ## 5.5 Tools-Paket (Ebene 2)
 
@@ -306,13 +306,13 @@ graph TB
 
 ### Externe Abhängigkeiten
 
-| Paket | Zweck | Verwendet von |
-|---------|---------|---------|
-| `@stencil/core` | Web-Component-Compiler | Components |
-| `adopted-style-sheets` | Style-Sheet-Adoptions-Polyfill | Components, Themes |
-| `@floating-ui/dom` | Positionierungs-Engine | Components (Tooltips, Dropdowns) |
-| `markdown-it` | Markdown-Rendering | Components (Rich Text) |
-| `wcag-contrast` | Kontrastverhältnis-Validierung | Components (Farbvalidierung) |
+| Paket                  | Zweck                          | Verwendet von                    |
+| ---------------------- | ------------------------------ | -------------------------------- |
+| `@stencil/core`        | Web-Component-Compiler         | Components                       |
+| `adopted-style-sheets` | Style-Sheet-Adoptions-Polyfill | Components, Themes               |
+| `@floating-ui/dom`     | Positionierungs-Engine         | Components (Tooltips, Dropdowns) |
+| `markdown-it`          | Markdown-Rendering             | Components (Rich Text)           |
+| `wcag-contrast`        | Kontrastverhältnis-Validierung | Components (Farbvalidierung)     |
 
 ### Interne Abhängigkeiten
 

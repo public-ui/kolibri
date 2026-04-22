@@ -29,6 +29,7 @@ import { INPUT_TEXT_ROUTES } from '../components/input-text/routes';
 import { KOLIBRI_ROUTES } from '../components/kolibri/routes';
 import { LINK_BUTTON_ROUTES } from '../components/link-button/routes';
 import { LINK_ROUTES } from '../components/link/routes';
+import { METER_ROUTES } from '../components/meter/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
 import { PAGINATION_ROUTES } from '../components/pagination/routes';
@@ -82,6 +83,7 @@ export const ROUTES: Routes = {
 	...KOLIBRI_ROUTES,
 	...LINK_BUTTON_ROUTES,
 	...LINK_ROUTES,
+	...METER_ROUTES,
 	...MODAL_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,

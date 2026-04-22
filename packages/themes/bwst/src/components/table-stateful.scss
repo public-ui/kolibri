@@ -1,0 +1,16 @@
+@use '../mixins/kol-table-stateless-wc' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-table-stateless-theme;
+
+	.kol-table-stateful {
+		.kol-pagination {
+			@media (min-width: 1024px) {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+}

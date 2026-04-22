@@ -1,5 +1,6 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
+import { translate } from '../../../i18n';
 
 import type { ProgressVariantType } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -67,6 +68,10 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 	const displayValue = isPercentage ? Math.round((value / max) * 100) : value;
 	const valueColumnWidth = `${`${(isPercentage ? 100 : max) + 1}`.length}ch`;
 
+	const liveValueText = isPercentage
+		? translate('kol-live-value', { placeholders: { value: String(liveProgressValue), unit } })
+		: translate('kol-live-value-bounded', { placeholders: { value: String(liveProgressValue), max: String(max), unit } });
+
 	return (
 		<div class="kol-progress">
 			<div
@@ -95,7 +100,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			{/* https://css-tricks.com/html5-progress-element/ */}
 			<progress class="visually-hidden" aria-busy={value < max ? 'true' : 'false'} max={max} value={value}></progress>
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-				{isPercentage ? `${liveProgressValue} %` : `${liveProgressValue} von ${max} ${unit}`}
+				{liveValueText}
 			</span>
 		</div>
 	);

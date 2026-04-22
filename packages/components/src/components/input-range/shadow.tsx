@@ -29,6 +29,8 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRangeController } from './controller';
 
@@ -54,15 +56,18 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.refInputNumber?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
 	}
 
-	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.refInputNumber!));
+	}
+
+	private readonly setInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
 			if (!this._value && this.refInputNumber?.value) {
@@ -71,7 +76,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		}
 	};
 
-	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
+	private readonly setInputRangeRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputRange = element;
 		}
@@ -181,7 +186,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			tabIndex: -1,
 			id: undefined,
 			'aria-hidden': 'true',
-			ref: this.catchInputRangeRef,
+			ref: this.setInputRangeRef,
 		};
 	}
 
@@ -191,7 +196,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			name: this.state._name ? `${this.state._name}-number` : undefined,
 			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			type: 'number',
-			ref: this.catchInputNumberRef,
+			ref: this.setInputNumberRef,
 			onKeyDown: this.onKeyDown,
 		};
 	}

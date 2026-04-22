@@ -1,8 +1,9 @@
 import { Log } from '../../../schema';
 import { nameProp } from '../../props';
 import { BaseController } from '../base-controller';
+import { BaseWebComponent } from '../base-web-component';
 import { ClickButtonController } from '../click-button/controller';
-import type { ControllerInterface, GetStateFn, ResolvedInputProps, SetStateFn } from '../generic-types';
+import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { SkeletonApi } from './api';
 import { skeletonPropsConfig } from './api';
 
@@ -10,10 +11,10 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 	private readonly clickButtonCtrl: ClickButtonController;
 	private intervalId?: ReturnType<typeof setTimeout>;
 
-	public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
-		super(skeletonPropsConfig, setState, getState);
+	public constructor(stateAccess: StateAccess<SkeletonApi>) {
+		super(stateAccess, skeletonPropsConfig);
 
-		this.clickButtonCtrl = new ClickButtonController(setState, getState);
+		this.clickButtonCtrl = new ClickButtonController(BaseWebComponent.stateLess);
 		this.startLoadedEventInterval();
 	}
 

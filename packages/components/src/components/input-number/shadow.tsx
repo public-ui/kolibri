@@ -33,6 +33,8 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { nonce } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
 
@@ -52,7 +54,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
 	private inputRef?: HTMLInputElement;
 
-	private readonly catchRef = (ref?: HTMLInputElement) => {
+	private readonly setInputRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
@@ -70,12 +72,15 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return new Promise<void>((resolve) => {
-			requestAnimationFrame(() => {
-				this.inputRef?.focus();
-				resolve();
-			});
-		});
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	private setInitialValueType(value?: number | NumberString | null) {
@@ -138,20 +143,28 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.setInputRef,
 			state: this.state,
 			type: 'number',
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onChange: this.onChange,
 			onKeyDown: this.onKeyDown,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
+			onFocus: (event: FocusEvent) => {
+				const prevFocusElem = event.relatedTarget as HTMLElement;
+				const isStepButton = prevFocusElem?.classList.contains('kol-input-number__step-button');
+				if (!isStepButton) {
+					this.controller.onFacade.onFocus(event);
+					this.inputHasFocus = true;
+				}
 			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
+			onBlur: (event: FocusEvent) => {
+				const nextFocusElem = event.relatedTarget as HTMLElement;
+				const isStepButton = nextFocusElem?.classList.contains('kol-input-number__step-button');
+				if (!isStepButton) {
+					this.controller.onFacade.onBlur(event);
+					this.inputHasFocus = false;
+				}
 			},
 		};
 	}
@@ -174,6 +187,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
+					// native number buttons also throw the change event on every click
+					this.controller.onFacade.onChange(event, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
@@ -201,6 +216,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
+					// native number buttons also throw the change event on every click
+					this.controller.onFacade.onChange(event, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}

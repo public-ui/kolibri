@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
@@ -7,6 +7,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
@@ -17,9 +18,15 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
- * @slot - The popover content.
+ * A button that toggles the visibility of a popover overlay containing arbitrary content.
+ * The popover uses the native HTML Popover API for lightweight, non-modal overlays.
+ *
+ * @slot - The popover content (displayed when the button is clicked).
+ * @slot expert - Custom label content for the button (when `_label` is `false`).
  */
 @Component({
 	tag: 'kol-popover-button',
@@ -28,7 +35,8 @@ import type { PopoverButtonProps } from '../../schema/components/popover-button'
 	},
 	shadow: true,
 })
-export class KolPopoverButton implements PopoverButtonProps {
+export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
+	@Element() private readonly host?: HTMLKolPopoverButtonElement;
 	private ref?: HTMLKolPopoverButtonWcElement;
 
 	/**
@@ -49,22 +57,30 @@ export class KolPopoverButton implements PopoverButtonProps {
 		void this.ref?.showPopover();
 	}
 
-	private catchRef = (ref?: HTMLKolPopoverButtonWcElement) => {
+	private readonly setRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.ref = ref;
 	};
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.ref!));
+	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return Promise.resolve(this.ref?.focus());
+	public async focus(): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.ref!));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<KolPopoverButtonWcTag
-				ref={this.catchRef}
+				ref={this.setRef}
 				_accessKey={this._accessKey}
 				_ariaDescription={this._ariaDescription}
 				_customClass={this._customClass}
