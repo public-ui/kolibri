@@ -45,5 +45,5 @@ export const clampedNumberValueProp = createDependentPropDefinition<ClampedNumbe
 		}
 		return normalized;
 	},
-	(v) => !!v,
+(v) => v !== undefined && v !== null,
 );
