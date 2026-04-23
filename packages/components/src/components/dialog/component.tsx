@@ -1,13 +1,14 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolCardWcTag } from '../../core/component-names';
-import type { DialogAPI, DialogStates, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import type { DialogAPI, DialogStates, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
 import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
+import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -80,7 +81,7 @@ export class KolDialogWc implements DialogAPI {
 			>
 				{this.state._variant === 'blank' && <slot />}
 				{this.state._variant === 'card' && (
-					<KolCardWcTag _label={this.state._label} _hasCloser _on={this.on}>
+					<KolCardWcTag _label={this.state._label} _hasCloser _on={this.on} _level={this._level}>
 						<slot />
 					</KolCardWcTag>
 				)}
@@ -92,6 +93,11 @@ export class KolDialogWc implements DialogAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
+
+	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
 
 	/**
 	 * Defines the modal callback functions.
@@ -118,6 +124,11 @@ export class KolDialogWc implements DialogAPI {
 		validateLabel(this, value, {
 			required: true,
 		});
+	}
+
+	@Watch('_level')
+	public validateLevel(value?: HeadingLevel): void {
+		watchHeadingLevel(this, value);
 	}
 
 	@Watch('_on')
