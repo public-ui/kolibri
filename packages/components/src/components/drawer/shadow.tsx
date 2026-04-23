@@ -1,11 +1,21 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { KolCardWcTag } from '../../core/component-names';
-import type { AlignPropType, DrawerAPI, DrawerStates, HasCloserPropType, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import type {
+	AlignPropType,
+	DrawerAPI,
+	DrawerStates,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriModalEventCallbacks,
+	LabelPropType,
+	OpenPropType,
+} from '../../schema';
 import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
+import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * @slot - The Content of drawer.
@@ -64,6 +74,7 @@ export class KolDrawer implements DrawerAPI {
 					'kol-drawer__wrapper--is-closing': this.state._open === false,
 				})}
 				_label={this.state._label}
+				_level={this._level}
 				_hasCloser={this.state._hasCloser}
 				_on={{
 					onClose: () => {
@@ -116,6 +127,11 @@ export class KolDrawer implements DrawerAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
+
+	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
@@ -131,6 +147,11 @@ export class KolDrawer implements DrawerAPI {
 		validateLabel(this, value, {
 			required: true,
 		});
+	}
+
+	@Watch('_level')
+	public validateLevel(value?: HeadingLevel): void {
+		watchHeadingLevel(this, value);
 	}
 
 	@Watch('_align')

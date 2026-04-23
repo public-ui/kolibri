@@ -44,6 +44,7 @@ export const DrawerBasic: FC = () => {
 				<KolDrawer
 					ref={drawerElement}
 					_label="I am a drawer"
+					_level={2}
 					_align={align}
 					_hasCloser={hasCloser}
 					_on={{ onClose: () => console.log('Drawer onClose triggered!') }}

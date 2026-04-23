@@ -1,7 +1,9 @@
 @use '~@public-ui/components/index' as *;
 @use '../mixins/card.mixin' as *;
+@use '../mixins/_headline' as *;
 
 @layer kol-theme-component {
+	@include headline;
 	@include card;
 
 	.kol-drawer__wrapper {
