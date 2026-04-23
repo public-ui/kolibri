@@ -19,7 +19,7 @@ exports[`kol-dialog should render with _label="Dialog as Card" _variant="card" _
     <kol-dialog-wc>
       <!---->
       <dialog aria-label="Dialog as Card" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
-        <kol-card-wc _hascloser="" _label="Dialog as Card">
+        <kol-card-wc _hascloser="" _label="Dialog as Card" _level="0">
           <slot></slot>
         </kol-card-wc>
       </dialog>
@@ -47,7 +47,7 @@ exports[`kol-modal should render with _label="Dialog as Card" _variant="card" _w
     <kol-dialog-wc>
       <!---->
       <dialog aria-label="Dialog as Card" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
-        <kol-card-wc _hascloser="" _label="Dialog as Card">
+        <kol-card-wc _hascloser="" _label="Dialog as Card" _level="0">
           <slot></slot>
         </kol-card-wc>
       </dialog>
