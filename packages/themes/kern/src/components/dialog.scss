@@ -1,9 +1,12 @@
 @use '~@public-ui/components/index' as *;
 @use '../mixins/card.mixin' as *;
 @use '../mixins/typography.mixin' as *;
+@use '../mixins/_headline' as *;
 
 @layer kol-theme-component {
+	@include headline;
 	@include card;
+
 	.kol-dialog {
 		&__card {
 			--kol-card-border-radius: var(--kern-metric-border-radius-large);
@@ -14,10 +17,6 @@
 			&::backdrop {
 				background-color: rgb(0, 0, 0, 0.3);
 			}
-		}
-
-		.kol-card__header {
-			@include kol-typography-h3();
 		}
 	}
 }
