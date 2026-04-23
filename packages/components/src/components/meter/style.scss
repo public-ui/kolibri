@@ -33,6 +33,11 @@
 			grid-area: value;
 		}
 
+		&:not(&--vertical) &__value {
+			display: inline-block;
+			text-align: right;
+		}
+
 		&--vertical {
 			min-height: 100%;
 

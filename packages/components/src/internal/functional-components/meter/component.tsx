@@ -62,6 +62,8 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 		: translate('kol-live-value-bounded', { placeholders: { value: String(liveMeterValue), max: String(max), unit } });
 	const liveValueWithState = hasStateClassification ? `${liveValueText} – ${stateLabel}` : liveValueText;
 
+	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
+
 	return (
 		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
 			<div class="kol-meter__bar">
@@ -79,7 +81,9 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					<meter aria-label={label} high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
 				</div>
 				<span class="kol-meter__value-unit">
-					<span class="kol-meter__value">{displayValue}</span>
+					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
+						{displayValue}
+					</span>
 					<span class="kol-meter__unit">{unit}</span>
 				</span>
 			</div>
