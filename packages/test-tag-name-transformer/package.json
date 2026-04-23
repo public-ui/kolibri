@@ -3,7 +3,8 @@
 	"private": true,
 	"scripts": {
 		"prepare": "cpy \"../themes/default/snapshots\" ./ --dot",
-		"test": "cross-env THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test"
+		"test": "cross-env THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test theme-snapshots.spec.js --grep \"snapshot for handout/basic\"",
+		"test-update": "cross-env THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test theme-snapshots.spec.js --grep \"snapshot for handout/basic\" --update-snapshots"
 	},
 	"devDependencies": {
 		"@public-ui/themes": "workspace:*",

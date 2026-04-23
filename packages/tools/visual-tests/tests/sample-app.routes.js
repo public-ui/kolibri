@@ -1,5 +1,14 @@
 export const ROUTES = new Map();
 
+ROUTES.set('handout/basic', {
+	snapshot: {
+		skip: true,
+		zoom: {
+			skip: true,
+		},
+	},
+});
+
 /**
  * Actually we support the following options:
  *
