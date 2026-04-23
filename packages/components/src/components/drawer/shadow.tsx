@@ -229,6 +229,7 @@ export class KolDrawer implements DrawerAPI {
 
 	public componentWillLoad() {
 		this.validateLabel(this._label);
+		this.validateLevel(this._level);
 		this.validateOpen(this._open);
 		this.validateAlign(this._align);
 		this.validateHasCloser(this._hasCloser);

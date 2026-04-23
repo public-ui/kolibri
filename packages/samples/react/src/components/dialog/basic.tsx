@@ -53,7 +53,7 @@ export const DialogBasic: FC = () => {
 
 				<div>
 					<KolButton _label="Open card dialog" _on={onOpenCardDialog} />
-					<KolDialog ref={cardRef} _label="Card dialog" _variant="card" _width="30%" _level="2">
+					<KolDialog ref={cardRef} _label="Card dialog" _variant="card" _width="30%" _level={2}>
 						<p className="mt-0">This variant wraps content inside a KolCard.</p>
 					</KolDialog>
 				</div>

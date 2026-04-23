@@ -154,6 +154,7 @@ export class KolDialogWc implements DialogAPI {
 
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
+		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 		this.validateVariant(this._variant);
