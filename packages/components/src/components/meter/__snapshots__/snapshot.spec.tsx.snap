@@ -12,7 +12,7 @@ exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=0 1`] 
           <meter aria-label="Label" max="1" min="0" value="0"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 1ch;">
             0
           </span>
           <span class="kol-meter__unit">
@@ -40,7 +40,7 @@ exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=0.5 1`
           <meter aria-label="Label" max="1" min="0" value="0.5"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 1ch;">
             50
           </span>
           <span class="kol-meter__unit">
@@ -68,7 +68,7 @@ exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=1 1`] 
           <meter aria-label="Label" max="1" min="0" value="1"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 1ch;">
             100
           </span>
           <span class="kol-meter__unit">
@@ -96,7 +96,7 @@ exports[`kol-meter should render with _label="Label" _max=42 _value=21 _unit="kg
           <meter aria-label="Label" max="42" min="0" value="21"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 2ch;">
             21
           </span>
           <span class="kol-meter__unit">
@@ -124,7 +124,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=0 1`] = `
           <meter aria-label="Label" max="100" min="0" value="0"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             0
           </span>
           <span class="kol-meter__unit">
@@ -155,7 +155,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="10" value="10"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             10
           </span>
           <span class="kol-meter__unit">
@@ -186,7 +186,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="50" value="10"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             10
           </span>
           <span class="kol-meter__unit">
@@ -217,7 +217,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="50" value="10"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             10
           </span>
           <span class="kol-meter__unit">
@@ -245,7 +245,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=25 _orienta
           <meter aria-label="Label" max="100" min="0" value="25"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             25
           </span>
           <span class="kol-meter__unit">
@@ -276,7 +276,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=30 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="50" value="30"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             30
           </span>
           <span class="kol-meter__unit">
@@ -304,7 +304,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=42 1`] = `
           <meter aria-label="Label" max="100" min="0" value="42"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             42
           </span>
           <span class="kol-meter__unit">
@@ -335,7 +335,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=50 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="50" value="50"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             50
           </span>
           <span class="kol-meter__unit">
@@ -363,7 +363,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=60 _orienta
           <meter aria-label="Label" max="100" min="0" value="60"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             60
           </span>
           <span class="kol-meter__unit">
@@ -394,7 +394,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="50" value="90"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             90
           </span>
           <span class="kol-meter__unit">
@@ -425,7 +425,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="50" value="90"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             90
           </span>
           <span class="kol-meter__unit">
@@ -456,7 +456,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 
           <meter aria-label="Label" high="75" low="25" max="100" min="0" optimum="90" value="90"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             90
           </span>
           <span class="kol-meter__unit">
@@ -484,7 +484,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _orienta
           <meter aria-label="Label" max="100" min="0" value="90"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             90
           </span>
           <span class="kol-meter__unit">
@@ -512,7 +512,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=100 1`] = `
           <meter aria-label="Label" max="100" min="0" value="100"></meter>
         </div>
         <span class="kol-meter__value-unit">
-          <span class="kol-meter__value">
+          <span class="kol-meter__value" style="min-width: 3ch;">
             100
           </span>
           <span class="kol-meter__unit">
