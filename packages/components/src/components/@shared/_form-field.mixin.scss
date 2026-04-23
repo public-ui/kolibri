@@ -24,7 +24,7 @@
 
 		&--required {
 			#{$root}__label-text:not(:has(> [name]))::after,
-			#{$root}__tooltip .span-label::after {
+			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}
 		}
