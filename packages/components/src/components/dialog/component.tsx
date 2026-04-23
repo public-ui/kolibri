@@ -62,7 +62,7 @@ export class KolDialogWc implements DialogAPI {
 	public render(): JSX.Element {
 		return (
 			<dialog
-				aria-label={this.state._label}
+				aria-label={this.state._variant === 'blank' ? this.state._label : undefined}
 				class={clsx('kol-dialog', 'kol-modal', {
 					'kol-dialog__blank': this.state._variant === 'blank',
 					'kol-dialog__card': this.state._variant === 'card',
