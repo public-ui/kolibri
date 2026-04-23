@@ -87,7 +87,7 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-drawer">
-				<dialog aria-label={this.state._label} class="kol-drawer__dialog" onCancel={handleCancelOverlay} ref={this.getRef}>
+				<dialog class="kol-drawer__dialog" onCancel={handleCancelOverlay} ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
