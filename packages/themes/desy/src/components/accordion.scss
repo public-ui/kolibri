@@ -1,0 +1,113 @@
+@use '../functions/to-rem' as *;
+@use '../breakpoints' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include icon;
+
+	.kol-accordion {
+		$root: &;
+
+		background: var(--color-white-100);
+		border-radius: 6px;
+		border: 1px solid var(--color-dark-blue-40);
+		font-family: var(--font-family);
+
+		&__content {
+			border-bottom-left-radius: 2px;
+			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
+			color: var(--color-dark-blue-100);
+			line-height: 1.5;
+			padding: to-rem(8) to-rem(20) to-rem(24);
+
+			@media (min-width: $breakpoint-sm) {
+				padding: to-rem(8) to-rem(32) to-rem(24);
+			}
+		}
+
+		.kol-button {
+			color: var(--color-dark-blue-100);
+			font-size: to-rem(16);
+			line-height: 1.5;
+			padding: to-rem(16) to-rem(20);
+			position: relative;
+			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+			@media (min-width: $breakpoint-sm) {
+				padding: to-rem(16) to-rem(32);
+			}
+
+			&:not(:disabled):hover,
+			&:not(:disabled):active {
+				&::before {
+					border-left: 4px solid var(--color-blue-100);
+					border-radius: 6px 0 0 6px;
+					bottom: 0;
+					content: '';
+					display: block;
+					left: -1px;
+					position: absolute;
+					top: 0;
+				}
+			}
+
+			&:not(:disabled):hover {
+				background: var(--color-blue-20);
+			}
+
+			&:not(:disabled):active {
+				background: var(--color-blue-30);
+			}
+
+			&:focus-visible {
+				background: var(--color-blue-20);
+				@include focus-outline;
+			}
+
+			&:disabled {
+				color: var(--color-black-60);
+				opacity: 1;
+			}
+		}
+
+		&.collapsible--open .kol-button {
+			border-top-left-radius: 2px;
+			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
+			font-weight: 700;
+			padding-top: to-rem(24);
+		}
+
+		.kol-span__container {
+			flex-direction: row-reverse;
+			gap: to-rem(8);
+			justify-content: space-between;
+			width: 100%;
+		}
+	}
+
+	.kol-icon {
+		color: var(--color-blue-100);
+		font-size: to-rem(22);
+		transform: rotate(90deg);
+		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+
+		.collapsible--open & {
+			transform: rotate(180deg);
+		}
+	}
+
+	.collapsible--disabled {
+		.kol-icon {
+			color: var(--color-black-60);
+		}
+
+		.collapsible__content {
+			color: var(--color-black-70);
+		}
+	}
+
+	.kol-headline {
+		margin: 0;
+	}
+}

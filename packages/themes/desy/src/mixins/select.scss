@@ -1,0 +1,87 @@
+@use '../@shared/input-core' as *;
+@use '../functions/to-rem' as *;
+
+@mixin select {
+	.kol-select {
+		appearance: none; // hide the native "arrow icon"
+		background: var(--color-white-100);
+		border: none;
+		color: var(--color-dark-blue-100);
+		line-height: 1.5;
+
+		&:not([multiple]) {
+			padding-left: to-rem(7);
+			padding-right: calc(var(--a11y-min-size) + #{to-rem(7)});
+		}
+
+		&:not([multiple], [size]) {
+			height: to-rem(40);
+		}
+
+		&:disabled {
+			opacity: 1;
+			color: var(--color-black-60);
+		}
+
+		&__option {
+			&:active:not(:disabled),
+			&:checked:not(:disabled),
+			&:focus:not(:disabled),
+			&:hover:not(:disabled) {
+				background-color: var(--color-blue-100);
+				color: var(--color-white-100);
+			}
+		}
+	}
+
+	.kol-input-container {
+		$root: &;
+		padding-top: 1px; // create space for the box-shadow
+		padding-bottom: 1px;
+
+		&:not(:has(select[multiple])) {
+			padding-left: 1px;
+			padding-right: 1px;
+		}
+
+		&:not(&--error):focus-within {
+			--border-color: var(--color-dark-blue-100);
+		}
+
+		&__container:not(:has(select[multiple])) {
+			&::after {
+				align-items: center;
+				border-radius: 0 2px 2px 0;
+				bottom: -1px;
+				color: var(--color-blue-100);
+				content: var(--big-chevron-down);
+				display: flex;
+				font-family: desy-icons;
+				font-size: to-rem(24);
+				justify-content: center;
+				pointer-events: none;
+				position: absolute;
+				right: -1px;
+				top: -1px;
+				transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
+				width: var(--a11y-min-size);
+
+				@at-root #{$root}:not(#{$root}--disabled):hover & {
+					background: var(--color-blue-100-06);
+				}
+
+				@at-root #{$root}:not(#{$root}--disabled):focus-within & {
+					background: var(--color-dark-blue-100-06);
+				}
+
+				@at-root #{$root}--disabled & {
+					color: var(--color-black-60);
+				}
+			}
+		}
+
+		&__adornment {
+			height: to-rem(40);
+		}
+	}
+}

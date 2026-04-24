@@ -1,0 +1,32 @@
+@use './focus-outline' as *;
+@use '../functions/to-rem' as *;
+
+@mixin checkbox-states {
+	&:not(:disabled, :checked, :indeterminate):hover {
+		box-shadow: inset 0 0 0 1px var(--kol-checkbox-main-color);
+
+		&::before {
+			background-color: var(--color-blue-100-06);
+		}
+	}
+
+	&:not(:disabled):checked:hover,
+	&:not(:disabled):indeterminate:hover,
+	&:checked:focus,
+	&:indeterminate:focus {
+		border-color: var(--color-dark-blue-100);
+
+		&::before {
+			background-color: var(--color-black-100-12);
+		}
+	}
+
+	&:focus {
+		@include focus-outline;
+	}
+
+	&:disabled {
+		opacity: 1;
+		--kol-checkbox-main-color: var(--color-black-60);
+	}
+}

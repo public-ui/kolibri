@@ -55,6 +55,7 @@
 		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"prepare:theme-bwst": "cpy \"bwst/assets/**/*\" assets --dot",
 		"prepare:theme-default": "cpy \"default/assets/**/*\" assets --dot",
+		"prepare:theme-desy": "cpy \"desy/assets/**/*\" assets --dot",
 		"prepare:theme-ecl": "cpy \"ecl/assets/**/*\" assets --dot",
 		"prepare:theme-kern": "cpy \"kern/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",

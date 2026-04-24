@@ -1,0 +1,81 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/card' as *;
+
+$duration: 0.4s;
+
+@layer kol-theme-component {
+	@include card();
+
+	.kol-drawer {
+		&__wrapper {
+			&--left {
+				animation: slideInLeft $duration forwards;
+
+				&.kol-drawer__wrapper--is-closing {
+					animation: slideOutLeft $duration forwards;
+				}
+			}
+
+			&--right {
+				animation: slideInRight $duration forwards;
+
+				&.kol-drawer__wrapper--is-closing {
+					animation: slideOutRight $duration forwards;
+				}
+			}
+
+			&--top {
+				animation: slideInTop $duration forwards;
+
+				&.kol-drawer__wrapper--is-closing {
+					animation: slideOutTop $duration forwards;
+				}
+			}
+
+			&--bottom {
+				animation: slideInBottom $duration forwards;
+
+				&.kol-drawer__wrapper--is-closing {
+					animation: slideOutBottom $duration forwards;
+				}
+			}
+
+			.kol-card {
+				display: grid;
+				background-color: var(--color-white-100);
+
+				&__close-button .kol-button {
+					outline-offset: to-rem(-2);
+				}
+			}
+		}
+
+		&__dialog::backdrop {
+			background-color: var(--color-black-100-30);
+		}
+	}
+}
+
+@mixin slideAnimation($name, $from, $to) {
+	@keyframes #{$name} {
+		from {
+			transform: #{$from};
+		}
+
+		to {
+			transform: #{$to};
+		}
+	}
+}
+
+@include slideAnimation('slideInLeft', 'translateX(-100%)', 'translateX(0)');
+@include slideAnimation('slideOutLeft', 'translateX(0)', 'translateX(-100%)');
+
+@include slideAnimation('slideInRight', 'translateX(100%)', 'translateX(0)');
+@include slideAnimation('slideOutRight', 'translateX(0)', 'translateX(100%)');
+
+@include slideAnimation('slideInTop', 'translateY(-100%)', 'translateY(0)');
+@include slideAnimation('slideOutTop', 'translateY(0)', 'translateY(-100%)');
+
+@include slideAnimation('slideInBottom', 'translateY(100%)', 'translateY(0)');
+@include slideAnimation('slideOutBottom', 'translateY(0)', 'translateY(100%)');
