@@ -162,12 +162,13 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			return;
 		}
 
-		if (query.trim() === '') {
+		const normalizedQuery = query.trim().toLowerCase();
+		if (normalizedQuery === '') {
 			this._filteredSuggestions = [...this.state._suggestions];
 		} else {
 			this._filteredSuggestions = Array.isArray(this.state._suggestions)
 				? this.state._suggestions.filter((option: W3CInputValue) => {
-						return (option as string).toLowerCase().includes(query.trim().toLowerCase());
+						return (option as string).toLowerCase().includes(normalizedQuery);
 					})
 				: this._filteredSuggestions;
 

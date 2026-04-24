@@ -166,7 +166,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 
 		this.refInput?.focus();
-		this._isOpen = true;
+		this._isOpen = false;
 	}
 
 	private selectOption(option: Option<string>) {
@@ -329,7 +329,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			onClick: this.onClick.bind(this),
 			onInput: this.onInput.bind(this),
 			onBlur: () => {
-				this.onBlur();
+				// handled by handleFocusOut
 			},
 		};
 	}
@@ -774,9 +774,9 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent) {
-		this.onBlur();
 		setTimeout(() => {
 			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
+				this.onBlur();
 				if (this._value === null) {
 					const firstEnabledOption = this.state._options?.find((option) => !option.disabled) as Option<string> | undefined;
 					if (firstEnabledOption) {
