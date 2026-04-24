@@ -111,7 +111,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host, () => setFocus(this.inputRef!));
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -119,7 +119,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateFocus(this.host, async () => setFocus(this.inputRef!));
+		return delegateFocus(this.host!, async () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -172,7 +172,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-input-text', this.state._type, {
+			class: clsx('kol-input-text', this.state._type as string, {
 				'has-value': this.state._hasValue,
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),

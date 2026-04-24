@@ -71,7 +71,7 @@ dialogTags.forEach((tag) => {
 					});
 				});
 
-				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).openModal());
+				await dialogElement.evaluate(async (element) => (element as HTMLKolDialogElement).openModal());
 				await page.keyboard.press('Escape');
 
 				await expect(callbackPromise).resolves.toBeUndefined();

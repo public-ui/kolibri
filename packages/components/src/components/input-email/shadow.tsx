@@ -73,7 +73,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host, () => setFocus(this.inputRef!));
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -81,7 +81,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host, async () => setClick(this.inputRef!));
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {

@@ -13,6 +13,7 @@ import {
 	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
+	type MsgPropType,
 } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 
@@ -66,7 +67,7 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 	if ('_checked' in state) props.checked = state._checked;
 	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
 	if ('_touched' in state) props.touched = state._touched;
-	if ('_msg' in state) props.msg = state._msg;
+	if ('_msg' in state) props.msg = state._msg as MsgPropType;
 	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
 	if ('_suggestions' in state && !customSuggestions) {

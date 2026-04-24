@@ -122,7 +122,7 @@ export class InputController extends ControlledInputController implements Watche
 	public validateSmartButton(value?: InternalButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<InternalButtonProps>(value);
+				value = parseJson<InternalButtonProps>(value as string);
 			} catch {
 				// value behält den ursprünglichen Wert
 			}

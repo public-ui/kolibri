@@ -76,7 +76,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host, () => setFocus(this.refInput!));
+		return delegateFocus(this.host!, () => setFocus(this.refInput!));
 	}
 
 	private readonly setRefInput = (ref?: HTMLInputElement) => {

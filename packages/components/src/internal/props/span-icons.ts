@@ -34,7 +34,7 @@ function normalizeSpanIcons(value: unknown): KoliBriIconsProp | never {
 	}
 	// If it's an object, normalize it
 	if (typeof value === 'object') {
-		return normalizeObject(value);
+		return normalizeObject(value) as KoliBriIconsProp;
 	}
 	throw new Error(`Invalid icons: ${typeof value}`);
 }
@@ -48,4 +48,4 @@ function validateSpanIcons(value: KoliBriIconsProp): boolean {
 	return typeof value === 'object' && value !== null;
 }
 
-export const spanIconsProp = createPropDefinition<SpanIconsProp>('icons', {}, normalizeSpanIcons, validateSpanIcons);
+export const spanIconsProp = createPropDefinition<SpanIconsProp>('icons', {} as KoliBriIconsProp, normalizeSpanIcons, validateSpanIcons);

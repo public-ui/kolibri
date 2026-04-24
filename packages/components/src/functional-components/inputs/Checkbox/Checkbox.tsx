@@ -26,7 +26,7 @@ const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default',
 	return (
 		<label class={clsx('kol-checkbox', cssVariants, classNames)} {...other}>
 			<IconFC label="" icons={icon} class={clsx('kol-checkbox__icon')} />
-			<KolInputFc class={clsx('kol-checkbox__input', inputClass)} {...restInputProps} type="checkbox" />
+			<KolInputFc class={clsx('kol-checkbox__input', inputClass as string)} {...restInputProps} type="checkbox" />
 		</label>
 	);
 };

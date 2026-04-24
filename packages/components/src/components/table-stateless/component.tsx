@@ -17,6 +17,7 @@ import type {
 	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
+	KoliBriTableRender,
 	LabelPropType,
 	SelectionChangeEventPayload,
 	TableCallbacksPropType,
@@ -806,7 +807,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-									this.cellRender(cell, el);
+									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
 								}
 							: undefined
 					}
@@ -858,7 +859,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		return this.state._data.filter((item) => {
 			const v = this.state._selection?.disabledKeys;
 			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return !arr.some((k) => String(k) === String(item[keyPropertyName]));
+			return !arr.some((k) => String(k) === String(item[keyPropertyName] as KoliBriTableSelectionKey));
 		});
 	}
 

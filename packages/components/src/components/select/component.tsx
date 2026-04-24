@@ -381,9 +381,9 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 
 	private onChange(event: Event): void {
 		if (this._multiple) {
-			this.controller.onFacade.onChange(event, this._value);
+			this.controller.onFacade.onChange(event, this._value as StencilUnknown[]);
 		} else {
-			this.controller.onFacade.onChange(event, this._value);
+			this.controller.onFacade.onChange(event, this._value as StencilUnknown);
 		}
 	}
 }

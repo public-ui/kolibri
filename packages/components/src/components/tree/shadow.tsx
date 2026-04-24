@@ -30,7 +30,7 @@ export class KolTree implements TreeProps, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host, () => setFocus(this.treeWcRef));
+		return delegateFocus(this.host!, () => setFocus(this.treeWcRef!));
 	}
 
 	public render(): JSX.Element {

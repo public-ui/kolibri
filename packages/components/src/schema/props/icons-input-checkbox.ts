@@ -44,7 +44,7 @@ export const validateIconsInputCheckbox = (component: Generic.Element.Component,
 				isString((value as Record<string, unknown>).indeterminate, 1) ||
 				isString((value as Record<string, unknown>).unchecked, 1)),
 		new Set(['InputCheckboxIcons']),
-		value,
+		value as unknown,
 		{
 			hooks: {
 				beforePatch: (nextValue: unknown, nextState: Map<string, unknown>, component: Generic.Element.Component) => {

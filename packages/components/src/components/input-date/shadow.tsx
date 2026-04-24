@@ -75,7 +75,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host, () => setFocus(this.inputRef!));
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
 	}
 
 	/**
@@ -83,7 +83,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host, async () => setClick(this.inputRef!));
+		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
 	/**
@@ -169,7 +169,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-input-date', this.state._type, {
+			class: clsx('kol-input-date', this.state._type as string, {
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,

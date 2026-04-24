@@ -56,7 +56,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host, () => setFocus(this.buttonWcRef));
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
 	}
 
 	/**
@@ -64,7 +64,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host, async () => setClick(this.buttonWcRef));
+		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
 	}
 
 	public render(): JSX.Element {

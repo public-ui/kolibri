@@ -85,7 +85,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host, () => setFocus(this.textareaRef!));
+		return delegateFocus(this.host!, () => setFocus(this.textareaRef!));
 	}
 
 	/**
@@ -93,7 +93,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host, async () => setClick(this.textareaRef!));
+		return delegateClick(this.host!, async () => setClick(this.textareaRef!));
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {

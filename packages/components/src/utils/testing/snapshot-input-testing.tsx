@@ -11,7 +11,7 @@ export function executeInputSnapshotTests<Props extends Record<string, unknown>>
 		_name: 'field',
 		_placeholder: 'Hier steht ein Platzhaltertext',
 
-		...(extendedProps || {}),
+		...(extendedProps || ({} as Props)),
 	};
 
 	const propVariants: Props[] = [

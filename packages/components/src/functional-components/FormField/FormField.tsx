@@ -145,7 +145,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		destroyFormFieldTooltipController(id);
 	}
 
-	const forwardedInputRef = formFieldInputProps?.ref;
+	const forwardedInputRef = formFieldInputProps?.ref as ((el?: HTMLDivElement) => void) | undefined;
 	const setInputContainerRef = (el?: HTMLDivElement): void => {
 		forwardedInputRef?.(el);
 		if (tooltipController && el) {

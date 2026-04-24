@@ -42,7 +42,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host, () => setFocus(this.linkWcRef));
+		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
 	}
 
 	public render(): JSX.Element {

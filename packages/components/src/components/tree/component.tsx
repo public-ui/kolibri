@@ -138,12 +138,12 @@ export class KolTreeWc implements TreeAPI, FocusableElement {
 		}
 
 		const areAllParentsOpen = async (element: HTMLKolTreeItemElement): Promise<boolean> => {
-			let parent = element.parentElement;
+			let parent = element.parentElement as HTMLKolTreeItemElement | null;
 			while (parent && KolTreeWc.isTreeItem(parent)) {
 				if (!(await parent.isOpen())) {
 					return false;
 				}
-				parent = parent.parentElement;
+				parent = parent.parentElement as HTMLKolTreeItemElement | null;
 			}
 			return true;
 		};
@@ -199,7 +199,7 @@ export class KolTreeWc implements TreeAPI, FocusableElement {
 				if (await currentTreeItem.isOpen()) {
 					await currentTreeItem.collapse();
 				} else {
-					const parentItem = currentTreeItem.parentElement;
+					const parentItem = currentTreeItem.parentElement as HTMLKolTreeItemElement | null;
 					const parentIndex = parentItem ? openItems.indexOf(parentItem) : -1;
 					if (parentIndex !== -1) {
 						await openItems[parentIndex]?.focus();

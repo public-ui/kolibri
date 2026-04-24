@@ -40,7 +40,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 				return false;
 			},
 			new Set(['MsgPropType', 'string']),
-			value,
+			value as Stringified<MsgPropType>,
 		);
 	});
 };

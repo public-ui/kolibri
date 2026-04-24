@@ -44,7 +44,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 */
 	@Method()
 	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
-		return (await this.selectWcRef?.getValue()) as StencilUnknown[] | StencilUnknown;
+		return this.selectWcRef?.getValue();
 	}
 
 	/**
@@ -52,7 +52,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host, () => setFocus(this.selectWcRef));
+		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!));
 	}
 
 	public render(): JSX.Element {
