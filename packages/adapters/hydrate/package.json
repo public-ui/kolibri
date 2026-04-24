@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate",
-	"version": "4.1.3-rc.0",
+	"version": "4.1.4-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -60,7 +60,7 @@
 		"cross-env": "10.1.0",
 		"mocha": "11.7.5",
 		"mocha-snapshots": "4.2.0",
-		"prettier": "3.8.1",
+		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rimraf": "6.1.3"
 	},
