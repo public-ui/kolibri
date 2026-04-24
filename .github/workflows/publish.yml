@@ -58,7 +58,7 @@ jobs:
           registry-url: '${{env.npmjs-registry}}'
           scope: '${{env.scope}}'
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         id: pnpm-install
         with:
           version: 10
