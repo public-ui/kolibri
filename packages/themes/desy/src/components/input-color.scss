@@ -3,7 +3,7 @@
 @use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include kol-icon-theme;
+	@include icon;
 	.kol-input-color {
 		&__inputs-wrapper {
 			height: 100%;
