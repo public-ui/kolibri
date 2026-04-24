@@ -43,11 +43,10 @@ import { SingleSelectController } from './controller';
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
- * Internal value fallback logic:
- * - If `_value` is `undefined` or not present in `_options`, the first choosable option is selected automatically.
- * - If `_options` change and the currently selected option no longer exists (or is disabled), the value switches to the first choosable option.
+ * Value fallback logic:
+ * - When the component loses focus (blur) with no value set, the first choosable option is selected automatically.
+ * - If `_value` is not present in `_options` (e.g. after options change), the value is cleared to `null` and the first option is selected on blur.
  * - After clicking the clear button, the input stays empty and the value remains `null` until either an option is selected or the web component loses focus.
- * - Outside that clear-button interaction window, the value is only `null` if there are no options or no choosable options.
  *
  * @slot - The label of the input field.
  */
@@ -810,22 +809,14 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			return;
 		}
 
-		const firstEnabledOption = this._options.find((option) => !option.disabled);
-		if (firstEnabledOption) {
-			this._inputValue = String(firstEnabledOption.label);
-			this._filteredOptions = [...this.state._options];
-			if (this._value !== firstEnabledOption.value) {
-				this._value = firstEnabledOption.value;
-			}
-			this.controller.setFormAssociatedValue(firstEnabledOption.value);
-			return;
-		}
-
+		// No matching option: clear display and nullify stale value
 		this._inputValue = '';
 		this._filteredOptions = [...this.state._options];
 		if (this._value !== null) {
 			this._value = null;
 		}
+		this.controller.setFormAssociatedValue(null);
+	}
 		this.controller.setFormAssociatedValue(null);
 	}
 
