@@ -94,7 +94,7 @@ export class KolTooltipWc {
 					label={this.controller.getRenderProp('label')}
 					badgeText={this._badgeText}
 					id={this.controller.getRenderProp('id')}
-					refFloating={(el?: HTMLDivElement) => this.controller?.setTooltipElementRef(el as HTMLElement)}
+					refFloating={(el?: HTMLDivElement) => this.controller?.setTooltipElementRef(el)}
 				/>
 			</Host>
 		);

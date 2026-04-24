@@ -14,13 +14,10 @@ executeSnapshotTests<InternalButtonProps>(
 		{ _label: 'Label', _disabled: false },
 		{ _label: 'Label', _disabled: true },
 
-		...['primary', 'secondary', 'normal', 'danger', 'ghost'].map(
-			(_variant) =>
-				({
-					_label: 'Label',
-					_variant,
-				}) as InternalButtonProps,
-		),
+		...['primary', 'secondary', 'normal', 'danger', 'ghost'].map((_variant) => ({
+			_label: 'Label',
+			_variant,
+		})),
 
 		{ _label: 'Label', _value: 'Hello' },
 

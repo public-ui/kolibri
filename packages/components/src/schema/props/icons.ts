@@ -26,7 +26,7 @@ export type PropHorizontalIcons = {
 
 const mapCustomIcon = (state: KoliBriIconsState, alignment: AlignPropType, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
-		state[alignment] = icon as KoliBriCustomIcon;
+		state[alignment] = icon;
 	} else if (isString(icon, 1)) {
 		state[alignment] = {
 			icon: icon as AnyIconFontClass,
@@ -68,7 +68,7 @@ export const isIcon = (value?: unknown): boolean =>
 export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType, options: WatchOptions = {}): void => {
 	objectObjectHandler(value, () => {
 		try {
-			value = parseJson<KoliBriIconsProp>(value as string);
+			value = parseJson<KoliBriIconsProp>(value);
 		} catch {
 			// value behält den ursprünglichen Wert
 		}

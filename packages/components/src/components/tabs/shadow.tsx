@@ -164,7 +164,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.currentTabButtonRef!));
+		return delegateFocus(this.host, () => setFocus(this.currentTabButtonRef));
 	}
 
 	/**
@@ -172,7 +172,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.currentTabButtonRef!));
+		return delegateClick(this.host, async () => setClick(this.currentTabButtonRef));
 	}
 
 	private readonly setCurrentTabButtonRef = (ref?: HTMLKolButtonWcElement) => {

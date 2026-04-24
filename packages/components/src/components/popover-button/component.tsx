@@ -94,7 +94,7 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return setFocus(this.refButton!);
+		return setFocus(this.refButton);
 	}
 
 	/**
@@ -102,7 +102,7 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return setClick(this.refButton!);
+		return setClick(this.refButton);
 	}
 
 	private handleToggle = (event: Event): void => {

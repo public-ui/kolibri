@@ -58,7 +58,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!));
+		return delegateFocus(this.host, () => setFocus(this.smartButtonRef));
 	}
 
 	public render(): JSX.Element {
@@ -133,7 +133,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	public validateSmartButton(value?: InternalButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<InternalButtonProps>(value as string);
+				value = parseJson<InternalButtonProps>(value);
 			} catch {
 				// value behält den ursprünglichen Wert
 			}

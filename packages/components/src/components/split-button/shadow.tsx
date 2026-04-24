@@ -65,7 +65,7 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
+		return delegateFocus(this.host, () => setFocus(this.primaryButtonWcRef));
 	}
 
 	/**
@@ -73,7 +73,7 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.primaryButtonWcRef!));
+		return delegateClick(this.host, async () => setClick(this.primaryButtonWcRef));
 	}
 
 	private readonly clickButtonHandler = {

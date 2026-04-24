@@ -2,7 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolCheckboxFc, { type CheckboxProps } from '../../functional-components/inputs/Checkbox';
 import { type InputProps } from '../../functional-components/inputs/Input';
 
-import { type InputCheckboxStates, type MsgPropType } from '../../schema';
+import { type InputCheckboxStates } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 
 export type CheckboxStateWrapperProps = Omit<CheckboxProps, 'inputProps'> & {
@@ -29,7 +29,7 @@ function getCheckboxProps(state: InputCheckboxStates, inputProps: Partial<InputP
 	if ('_checked' in state) props.checked = state._checked;
 	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
 	if ('_touched' in state) props.touched = state._touched;
-	if ('_msg' in state) props.msg = state._msg as MsgPropType;
+	if ('_msg' in state) props.msg = state._msg;
 	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
 	return { ...props, ...inputProps };

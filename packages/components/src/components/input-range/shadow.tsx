@@ -56,7 +56,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
+		return delegateFocus(this.host, () => setFocus(this.refInputNumber!));
 	}
 
 	/**
@@ -64,7 +64,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.refInputNumber!));
+		return delegateClick(this.host, async () => setClick(this.refInputNumber!));
 	}
 
 	private readonly setInputNumberRef = (element?: HTMLInputElement) => {

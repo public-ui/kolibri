@@ -34,7 +34,7 @@ export class KolForm implements FormAPI {
 		event.preventDefault();
 
 		if (typeof this.state._on?.onSubmit === 'function') {
-			this.state._on?.onSubmit(event as SubmitEvent);
+			this.state._on?.onSubmit(event);
 		}
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.submit);

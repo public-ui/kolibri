@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
-import type { GetStateFn, SetStateFn } from '../generic-types';
+import type { GetStateFn } from '../generic-types';
 import type { ProgressApi } from './api';
 import { ProgressController } from './controller';
 
@@ -8,7 +8,7 @@ describe('ProgressController', () => {
 
 	beforeEach(() => {
 		jest.useFakeTimers();
-		ctrl = new ProgressController({ setState: jest.fn() as SetStateFn<ProgressApi>, getState: jest.fn() as GetStateFn<ProgressApi> });
+		ctrl = new ProgressController({ setState: jest.fn(), getState: jest.fn() as GetStateFn<ProgressApi> });
 	});
 
 	afterEach(() => {

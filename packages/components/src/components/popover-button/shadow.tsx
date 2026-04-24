@@ -66,7 +66,7 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.ref!));
+		return delegateClick(this.host, async () => setClick(this.ref));
 	}
 
 	/**
@@ -74,7 +74,7 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.ref!));
+		return delegateFocus(this.host, () => setFocus(this.ref));
 	}
 
 	public render(): JSX.Element {

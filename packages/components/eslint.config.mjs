@@ -67,6 +67,13 @@ export default [
 			'@typescript-eslint/consistent-type-imports': 'warn',
 
 			/**
+			 * These rules produce excessive noise from generated custom element types
+			 * and HTML templates in TSX files resolving to "error typed" values.
+			 */
+			'@typescript-eslint/no-unsafe-call': 'warn',
+			'@typescript-eslint/no-unsafe-argument': 'warn',
+
+			/**
 			 * This rule is disabled because it is not possible to use the
 			 * `no-unsafe-assignment` rule without breaking the build.
 			 */

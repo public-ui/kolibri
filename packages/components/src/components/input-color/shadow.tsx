@@ -98,7 +98,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInputText!));
+		return delegateFocus(this.host, () => setFocus(this.refInputText!));
 	}
 
 	/**
@@ -106,7 +106,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.refInputText!));
+		return delegateClick(this.host, async () => setClick(this.refInputText!));
 	}
 
 	private get hasSuggestions(): boolean {

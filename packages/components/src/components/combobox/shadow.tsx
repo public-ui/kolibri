@@ -71,7 +71,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInput!));
+		return delegateFocus(this.host, () => setFocus(this.refInput!));
 	}
 
 	/**
@@ -79,7 +79,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.refInput!));
+		return delegateClick(this.host, async () => setClick(this.refInput!));
 	}
 
 	private toggleListbox = () => {
@@ -453,7 +453,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	@Listen('click')
 	handleWindowClick(event: MouseEvent) {
-		if (this.host !== undefined && !this.host.contains(event.target as Node)) {
+		if (this.host !== undefined && !this.host.contains(event.target)) {
 			this._isOpen = false;
 		}
 	}
@@ -715,6 +715,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		this.controller.onFacade.onChange(event);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(this.state._value as unknown as string);
+		this.controller.setFormAssociatedValue(this.state._value);
 	}
 }

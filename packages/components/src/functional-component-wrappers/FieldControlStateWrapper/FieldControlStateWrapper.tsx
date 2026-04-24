@@ -10,7 +10,6 @@ import {
 	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
-	type MsgPropType,
 	type SelectStates,
 } from '../../schema';
 
@@ -34,7 +33,7 @@ function getFieldControlProps(state: InputState): FieldControlProps {
 	const props: FieldControlProps = {
 		id: state._id,
 		disabled: state._disabled,
-		msg: state._msg as MsgPropType,
+		msg: state._msg,
 		hint: state._hint,
 		label: state._label,
 		hideLabel: state._hideLabel,
