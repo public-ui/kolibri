@@ -44,7 +44,7 @@ import { SingleSelectController } from './controller';
 	},
 })
 export class KolSingleSelect implements SingleSelectAPI {
-	@Element() private readonly host?: HTMLKolSingleSelectElement;
+	@Element() private readonly host?: HTMLElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private oldValue?: StencilUnknown;
@@ -307,6 +307,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									ref={this.catchRef}
 									class="single-select__input"
 									data-testid="single-select-input"
+									id={this.state._id}
 									type="text"
 									aria-autocomplete="both"
 									aria-controls="listbox"
