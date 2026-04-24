@@ -4,14 +4,12 @@
 	.kol-tree {
 		&__treeview-navigation {
 			border-radius: var(--border-radius);
-			border: 2px solid transparent;
+			border: to-rem(2) solid transparent;
 		}
 
 		&:focus-within {
-			outline: 0;
-
-			ul {
-				border: 2px solid var(--color-primary);
+			.kol-tree__treeview-navigation {
+				border-color: var(--color-primary);
 			}
 		}
 	}
