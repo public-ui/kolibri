@@ -817,8 +817,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 		this.controller.setFormAssociatedValue(null);
 	}
-		this.controller.setFormAssociatedValue(null);
-	}
 
 	public componentWillLoad(): void {
 		this.refOptions = [];
