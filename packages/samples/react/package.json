@@ -52,8 +52,8 @@
 		"yup": "1.7.1"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "8.59.0",
-		"@typescript-eslint/parser": "8.59.0",
+		"@typescript-eslint/eslint-plugin": "8.58.0",
+		"@typescript-eslint/parser": "8.58.0",
 		"eslint": "8.57.1",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
