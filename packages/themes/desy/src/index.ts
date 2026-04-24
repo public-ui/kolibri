@@ -41,8 +41,8 @@ import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
-import treeCss from './components/tree.scss';
 import treeItemCss from './components/tree-item.scss';
+import treeCss from './components/tree.scss';
 import globalCss from './global.scss';
 
 export const DesyV11 = KoliBri.createTheme('desy-v11', {
