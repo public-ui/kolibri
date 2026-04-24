@@ -2,25 +2,17 @@
 
 @layer kol-theme-component {
 	.kol-spin {
+
+
 		&__spinner {
 			--kol-theme-spin-color: var(--color-primary-variant);
 
+			&-element {
+				background-color: var(--color-primary);
+			}
+
 			&--cycle {
 				--kol-spin-size: 96;
-
-				&__element {
-					animation: rotation 1.5s linear infinite;
-
-					&:before {
-						border-color: var(--color-secondary) var(--color-primary-variant) var(--color-primary-variant) var(--color-primary-variant);
-						border-style: solid;
-						border-radius: 50%;
-						display: inline-block;
-						box-sizing: border-box;
-						border-width: 10px;
-						animation-duration: 1.5s;
-					}
-				}
 			}
 		}
 
@@ -33,5 +25,35 @@
 				transform: rotate(360deg);
 			}
 		}
+
+		@keyframes prixClipFix {
+			0% {
+				border-color: var(--color-primary);
+				clip-path: polygon(50% 50%, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px);
+			}
+
+			25% {
+				border-color: var(--color-primary-variant);
+				clip-path: polygon(50% 50%, 0px 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px);
+			}
+
+			50% {
+				border-color: var(--color-primary);
+				clip-path: polygon(50% 50%, 0px 0px, 100% 0px, 100% 100%, 100% 100%, 100% 100%);
+			}
+
+			75% {
+				border-color: var(--color-primary-variant);
+				clip-path: polygon(50% 50%, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 100%);
+			}
+
+			100% {
+				border-color: var(--color-primary);
+				clip-path: polygon(50% 50%, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 0px);
+			}
+		}
+
 	}
+
 }
+
