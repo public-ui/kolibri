@@ -122,7 +122,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 		return {
 			ref: this.setInputRef,
-			type: (this._variant === 'visibility-toggle' && this._passwordVisible) ? 'text' : 'password',
+			type: this._variant === 'visibility-toggle' && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,
