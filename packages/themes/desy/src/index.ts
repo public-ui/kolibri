@@ -1,4 +1,5 @@
 import { KoliBri } from '@public-ui/components';
+import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
 import badgeCss from './components/badge.scss';
@@ -14,6 +15,7 @@ import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
 import iconCss from './components/icon.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
+import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
 import inputEmailCss from './components/input-email.scss';
 import inputFileCss from './components/input-file.scss';
@@ -26,7 +28,8 @@ import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
-import popoverCss from './components/popover-button.scss';
+import popoverButtonCss from './components/popover-button.scss';
+import progressCss from './components/progress.scss';
 import quoteCss from './components/quote.scss';
 import selectCss from './components/select.scss';
 import singleSelect from './components/single-select.scss';
@@ -38,11 +41,13 @@ import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
+import treeCss from './components/tree.scss';
 import treeItemCss from './components/tree-item.scss';
 import globalCss from './global.scss';
 
 export const DesyV11 = KoliBri.createTheme('desy-v11', {
 	GLOBAL: globalCss,
+	'KOL-ABBR': abbrCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
 	'KOL-BADGE': badgeCss,
@@ -58,6 +63,7 @@ export const DesyV11 = KoliBri.createTheme('desy-v11', {
 	'KOL-HEADING': headingCss,
 	'KOL-ICON': iconCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
+	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-DATE': inputDateCss,
 	'KOL-INPUT-EMAIL': inputEmailCss,
 	'KOL-INPUT-FILE': inputFileCss,
@@ -70,7 +76,8 @@ export const DesyV11 = KoliBri.createTheme('desy-v11', {
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
-	'KOL-POPOVER-BUTTON': popoverCss,
+	'KOL-POPOVER-BUTTON': popoverButtonCss,
+	'KOL-PROGRESS': progressCss,
 	'KOL-QUOTE': quoteCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
@@ -82,5 +89,6 @@ export const DesyV11 = KoliBri.createTheme('desy-v11', {
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
 	'KOL-TOOLBAR': toolbarCss,
+	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });
