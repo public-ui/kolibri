@@ -30,15 +30,15 @@ ROUTES.forEach((options, route) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`);
 		await page.waitForLoadState('networkidle');
-		await page.waitForSelector('.loading', { state: 'hidden' });
-		await page.addStyleTag({
-			content: `
-				* {
-					transition: none !important;
-					animation: none !important;
-				}
-			`,
-		});
+		// await page.waitForSelector('.loading', { state: 'hidden' });
+		// await page.addStyleTag({
+		// 	content: `
+		// 		* {
+		// 			transition: none !important;
+		// 			animation: none !important;
+		// 		}
+		// 	`,
+		// });
 		if (options?.snapshot?.viewportSize) {
 			await page.setViewportSize(options?.snapshot?.viewportSize);
 		}
@@ -56,6 +56,16 @@ ROUTES.forEach((options, route) => {
 			...options?.snapshot?.options,
 		};
 
+		if (options?.snapshot?.clickElem) {
+			var element = page.locator(options?.snapshot?.clickElem);
+			var box = await element.boundingBox();
+			console.log(box);
+
+			await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+			await page.waitForTimeout(3000);
+			// await page.locator(options.snapshot.clickElem).click({ force: true });
+		}
+
 		// Skip unnecessary normal tests
 		if (options?.snapshot?.skip !== true) {
 			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
@@ -70,6 +80,7 @@ ROUTES.forEach((options, route) => {
 				// document.body.style.transformOrigin = 'top left';
 				// document.body.style.width = '25vw';
 			});
+
 			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
 				...SNAPSHOT_OPTIONS,
 				...options?.snapshot?.zoom?.options,
