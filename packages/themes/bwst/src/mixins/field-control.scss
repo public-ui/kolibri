@@ -20,6 +20,12 @@
 
 			font-weight: normal;
 		}
+
+		&--disabled & {
+			&__label {
+				opacity: 0.5;
+			}
+		}
 	}
 
 	/**{

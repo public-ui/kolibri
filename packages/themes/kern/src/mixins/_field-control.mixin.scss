@@ -31,5 +31,11 @@
 				}
 			}
 		}
+
+		&--disabled & {
+			&__label {
+				opacity: var(--action-state-opacity-disabled, 0.4);
+			}
+		}
 	}
 }

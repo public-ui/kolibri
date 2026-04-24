@@ -16,22 +16,12 @@
 				align-items: flex-start;
 				justify-content: flex-start;
 			}
-
-			#{$root}--disabled & {
-				opacity: 0.5;
-			}
 		}
 
 		&--required {
 			#{$root}__label-text:not(:has(> [name]))::after,
 			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
-			}
-		}
-
-		&__hint {
-			#{$root}--disabled & {
-				opacity: 0.5;
 			}
 		}
 	}
