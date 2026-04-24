@@ -41,7 +41,7 @@ import toolbarCss from './components/toolbar.scss';
 import treeItemCss from './components/tree-item.scss';
 import globalCss from './global.scss';
 
-export const DeSyV10 = KoliBri.createTheme('desy-v10', {
+export const DesyV11 = KoliBri.createTheme('desy-v11', {
 	GLOBAL: globalCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
