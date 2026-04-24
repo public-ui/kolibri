@@ -9,6 +9,8 @@ export type ButtonCallbacksPropType<T> = {
 	[Callback.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
 	[Callback.onKeyDown]?: EventValueOrEventCallback<KeyboardEvent, T>;
 	[Callback.onMouseDown]?: EventCallback<MouseEvent>;
+	[Callback.onFocus]?: EventCallback<FocusEvent>;
+	[Callback.onBlur]?: EventCallback<FocusEvent>;
 };
 
 /**
@@ -24,7 +26,7 @@ export const validateButtonCallbacks = (component: Generic.Element.Component, va
 		component,
 		`_on`,
 		(value) => typeof value === 'object' && value !== null,
-		new Set(['ButtonCallbacksPropType {Events.onClick, Events.onKeyDown, Events.onMouseDown}']),
+		new Set(['ButtonCallbacksPropType {Events.onClick, Events.onMouseDown, Events.onFocus, Events.onBlur}']),
 		value,
 	);
 };

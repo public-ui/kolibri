@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
+import { testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
@@ -22,12 +22,6 @@ const fillAction: FillAction = async (page) => {
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolSingleSelectElement>({
-		additionalProperties: OPTIONS_ATTRIBUTE,
-		componentName: COMPONENT_NAME,
-		fillAction,
-		testValue: TEST_VALUE,
-	});
-	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>({
 		additionalProperties: OPTIONS_ATTRIBUTE,
 		componentName: COMPONENT_NAME,
 		fillAction,

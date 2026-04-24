@@ -60,7 +60,6 @@
 	[aria-disabled='true']:focus,
 	[disabled],
 	[disabled]:focus {
-		opacity: 0.5;
 		outline: none;
 		cursor: not-allowed;
 	}
