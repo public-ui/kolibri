@@ -263,7 +263,7 @@ test.describe(COMPONENT_NAME, () => {
 				const el = element as HTMLElement & { _changeCount: number };
 				el._changeCount = 0;
 
-				(element as HTMLKolSelectElement)._on = {
+				(element as HTMLKolSingleSelectElement)._on = {
 					onChange: () => {
 						el._changeCount++;
 					},
