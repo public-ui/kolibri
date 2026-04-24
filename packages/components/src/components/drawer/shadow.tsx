@@ -74,7 +74,7 @@ export class KolDrawer implements DrawerAPI {
 					'kol-drawer__wrapper--is-closing': this.state._open === false,
 				})}
 				_label={this.state._label}
-				_level={this._level}
+				_level={this.state._level}
 				_hasCloser={this.state._hasCloser}
 				_on={{
 					onClose: () => {

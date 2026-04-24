@@ -81,7 +81,7 @@ export class KolDialogWc implements DialogAPI {
 			>
 				{this.state._variant === 'blank' && <slot />}
 				{this.state._variant === 'card' && (
-					<KolCardWcTag _label={this.state._label} _hasCloser _on={this.on} _level={this._level}>
+					<KolCardWcTag _label={this.state._label} _hasCloser _on={this.on} _level={this.state._level}>
 						<slot />
 					</KolCardWcTag>
 				)}
