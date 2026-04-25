@@ -30,6 +30,7 @@ export default defineConfig({
 		sourcemap: true,
 	},
 	server: {
+		allowedHosts: true,
 		port: 9191,
 		fs: {
 			allow: [
