@@ -712,7 +712,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
 		// Check if current value is still valid in the new options
-		if (this._value !== null) {
+		if (this._value !== null && Array.isArray(this.state._options)) {
 			const valueExists = this.state._options.some((option) => option.value === this._value && !option.disabled);
 			if (!valueExists) {
 				this._value = null;
