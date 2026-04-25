@@ -1,6 +1,6 @@
-# Public UI - Default-Theme
+# Public UI – Default Theme
 
-[![npm](https://img.shields.io/npm/v/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/components)
+[![npm](https://img.shields.io/npm/v/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/theme-default)
 [![license](https://img.shields.io/npm/l/@public-ui/theme-default)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/theme-default)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
@@ -8,9 +8,15 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-default)](https://bundlephobia.com/result?p=@public-ui/theme-default)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-This is the default theme for the [Public UI web component library](https://public-ui.github.io). You can customize this theme by using `css variables` or by creating a new theme.
+The Default Theme is the standard theme of the [Public UI Web Component Library](https://public-ui.github.io) and can be customized using CSS Custom Properties (Design Tokens).
 
-## Integration in React
+## Installation & Integration
+
+```bash
+npm install @public-ui/components @public-ui/theme-default
+```
+
+**React-Beispiel:**
 
 ```tsx
 import { register } from '@public-ui/components';
@@ -18,7 +24,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 register(DEFAULT, defineCustomElements).then(() => {
-	ReactDOM.createRoot(document.getElementById('root')!).render(
+	ReactDOM.createRoot(document.getElementById('root')).render(
 		<React.StrictMode>
 			<App />
 		</React.StrictMode>,
@@ -26,65 +32,67 @@ register(DEFAULT, defineCustomElements).then(() => {
 });
 ```
 
-## Full documentation
+For more details: [Getting started](https://public-ui.github.io/docs/get-started/first-steps)
 
-👉 [https://public-ui.github.io](https://public-ui.github.io)
+## Contributing to the Theme
 
-## Usage
+Want to improve or customize the Default Theme? Here’s how:
 
-The default theme is token based and works with minimal adjustments. It already contains all necessary styling and can
-be customized with design tokens using _CSS Custom Properties_.
+1. **Install pnpm**
+   - [pnpm](https://pnpm.io/) is required for development. Install pnpm globally if you don’t have it yet:
 
-### Variables
+     ```bash
+     npm install -g pnpm
+     ```
 
-| Variable                          | Default value                                    | Meaning                                |
-| --------------------------------- | ------------------------------------------------ | -------------------------------------- |
-| `--kolibri-border-radius`         | `5px`                                            | Border radius for rounded elements     |
-| `--kolibri-font-family`           | `Verdana, Arial, Calibri, Helvetica, sans-serif` | Default font family                    |
-| `--kolibri-font-size`             | `16px`                                           | Base font size                         |
-| `--kolibri-spacing`               | `0.25rem`                                        | Base spacing between elements          |
-| `--kolibri-border-width`          | `1px`                                            | Border width                           |
-| `--kolibri-color-primary`         | `#004b76`                                        | Primary color                          |
-| `--kolibri-color-primary-variant` | `#0077b6`                                        | Alternative primary color              |
-| `--kolibri-color-secondary`       | `#ccebf7`                                        | Secondary color                        |
-| `--kolibri-color-danger`          | `#c0003c`                                        | Color for errors and dangerous actions |
-| `--kolibri-color-warning`         | `#c44931`                                        | Warning color                          |
-| `--kolibri-color-success`         | `#005c45`                                        | Success color                          |
-| `--kolibri-color-subtle`          | `#576164`                                        | Subtle accent color for borders        |
-| `--kolibri-color-light`           | `#ffffff`                                        | Light background color                 |
-| `--kolibri-color-text`            | `#202020`                                        | Text color                             |
-| `--kolibri-color-mute`            | `#f2f3f4`                                        | Color for disabled elements            |
-| `--kolibri-color-mute-variant`    | `#bec5c9`                                        | Alternate disabled color               |
+2. **Fork the repository**
+   - Click [Fork](https://github.com/public-ui/kolibri) on GitHub to create your own fork.
 
-### Usage
+3. **Local setup**
+   - Clone your fork:
 
-Import and register the theme:
+     ```bash
+     git clone https://github.com/<YOUR_GITHUB_USER>/kolibri.git
+     cd kolibri/lib/packages/themes/default
+     ```
 
-```js
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT } from '@public-ui/theme-default';
+   - Install dependencies in the monorepo root:
 
-register(DEFAULT, defineCustomElements);
-```
+     ```bash
+     pnpm i
+     pnpm build
+     ```
 
-For more details and options see [Getting started](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).
+4. **Start development**
+   - Switch to the theme directory and start the watch mode:
 
-To adjust the design tokens, create a simple stylesheet that overrides the desired custom properties. You do not need to set every property—only those you want to change. Example:
+     ```bash
+     cd kolibri/lib/packages/themes/default
+     pnpm start
+     ```
 
-```css
-:root {
-	--kolibri-border-radius: 3px;
-	--kolibri-font-size: 18px;
-	--kolibri-spacing: 0.3rem;
-	--kolibri-color-primary: #cc006e;
-	--kolibri-color-primary-variant: #ff64b9;
-}
-```
+   - Edit the files in `src/` as needed.
+
+5. **Commit & Pull Request**
+   - Commit your changes and push them to your fork:
+
+     ```bash
+     git add .
+     git commit -m "feat(theme-default): <your change>"
+     git push origin <your-branch>
+     ```
+
+   - Create a Pull Request at <https://github.com/public-ui/kolibri/compare>
+
+**Notes:**
+
+- Please follow the [Contributing Guidelines](../../../CONTRIBUTING.md).
+- Always run `pnpm format` and `pnpm lint` before committing.
+- For larger changes, feel free to open an [issue](https://github.com/public-ui/kolibri/issues/new) first.
 
 ## Design Tokens
 
-The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components.
+The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components. You can override them via CSS:
 
 | Token                     | Default value                                                                | Meaning                      |
 | ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
@@ -104,3 +112,21 @@ The following tokens are defined in `src/global.scss` and serve as the base for 
 | `--color-text`            | `var(--kolibri-color-text, #202020)`                                         | Standard text color          |
 | `--color-mute`            | `var(--kolibri-color-mute, #f2f3f4)`                                         | Muted color                  |
 | `--color-mute-variant`    | `var(--kolibri-color-mute-variant, #bec5c9)`                                 | Alternate muted color        |
+
+To adjust the design tokens, create a stylesheet that overrides the desired custom properties. Example:
+
+```css
+:root {
+	--kolibri-border-radius: 3px;
+	--kolibri-font-size: 18px;
+	--kolibri-spacing: 0.3rem;
+	--kolibri-color-primary: #cc006e;
+	--kolibri-color-primary-variant: #ff64b9;
+}
+```
+
+## More Information
+
+- [Documentation](https://public-ui.github.io)
+- [Issues](https://github.com/public-ui/kolibri/issues)
+- [Pull Requests](https://github.com/public-ui/kolibri/pulls)

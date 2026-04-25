@@ -1,3 +1,5 @@
+# (keine Änderung, nur Formatierung falls nötig)
+
 # Public UI – Desy Theme
 
 [![npm](https://img.shields.io/npm/v/@public-ui/theme-desy)](https://www.npmjs.com/package/@public-ui/theme-desy)
@@ -15,7 +17,7 @@ Das [**Zoll Design System** (Desy)](https://desy.zoll-portal.de/) ist der öffen
 ## Installation & Integration
 
 ```bash
-pnpm add @public-ui/components @public-ui/theme-desy
+npm install @public-ui/components @public-ui/theme-desy
 ```
 
 **React-Beispiel:**
@@ -40,41 +42,48 @@ Weitere Details: [Getting started](https://public-ui.github.io/docs/get-started/
 
 Du möchtest das Desy-Theme verbessern oder anpassen? So gehst du vor:
 
-1. **Repository forken**
+1. **pnpm installieren**
+   - [pnpm](https://pnpm.io/) wird für die Entwicklung benötigt. Installiere pnpm global, falls noch nicht vorhanden:
+
+     ```bash
+     npm install -g pnpm
+     ```
+
+2. **Repository forken**
    - Klicke auf [Fork](https://github.com/public-ui/kolibri) auf GitHub und erstelle deinen eigenen Fork.
 
-2. **Lokales Setup**
+3. **Lokales Setup**
    - Klone deinen Fork:
 
      ```bash
-        git clone https://github.com/<DEIN_GITHUB_USER>/kolibri.git
-        cd kolibri/lib/packages/themes/desy
+     git clone https://github.com/<DEIN_GITHUB_USER>/kolibri.git
+     cd kolibri/lib/packages/themes/desy
      ```
 
    - Installiere die Abhängigkeiten im Monorepo-Hauptverzeichnis:
 
      ```bash
-      pnpm i
-      pnpm build
+     pnpm i
+     pnpm build
      ```
 
-3. **Entwicklung starten**
+4. **Entwicklung starten**
    - Wechsle ins Theme-Verzeichnis und starte den Watch-Modus:
 
      ```bash
-      cd kolibri/lib/packages/themes/desy
-      pnpm start
+     cd kolibri/lib/packages/themes/desy
+     pnpm start
      ```
 
    - Passe die Dateien in `src/` nach deinen Wünschen an.
 
-4. **Commit & Pull Request**
+5. **Commit & Pull Request**
    - Committe deine Änderungen und pushe sie in deinen Fork:
 
      ```bash
-      git add .
-      git commit -m "feat(theme-desy): <deine Änderung>"
-      git push origin <dein-branch>
+     git add .
+     git commit -m "feat(theme-desy): <deine Änderung>"
+     git push origin <dein-branch>
      ```
 
    - Erstelle einen Pull Request auf <https://github.com/public-ui/kolibri/compare>
