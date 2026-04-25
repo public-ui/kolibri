@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
+import { testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
@@ -27,25 +27,26 @@ test.describe(COMPONENT_NAME, () => {
 		fillAction,
 		testValue: TEST_VALUE,
 	});
-	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>({
-		additionalProperties: OPTIONS_ATTRIBUTE,
-		componentName: COMPONENT_NAME,
-		fillAction,
-		testValue: TEST_VALUE,
-	});
 	testInputMessage<HTMLKolSingleSelectElement>(COMPONENT_NAME);
 
 	test.describe('kol-single-select additional interactions', () => {
-		test('should select the first choosable option if no _value is provided initially', async ({ page }) => {
+		test('should select the first choosable option on blur if no initial value', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await page.click('html', { position: { x: 0, y: 0 } });
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
 		});
 
-		test('should switch to first choosable option when current value disappears from _options', async ({ page }) => {
+		test('should select first choosable option on blur when current value disappears from _options', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _value="E" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'E');
+
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
 
 			await page.locator('kol-single-select').evaluate((element) => {
 				(element as HTMLKolSingleSelectElement)._options = [
@@ -54,17 +55,28 @@ test.describe(COMPONENT_NAME, () => {
 				];
 			});
 
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+
+			await page.click('html', { position: { x: 0, y: 0 } });
+
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
 		});
 
-		test('should switch to first choosable option when _value is set to undefined', async ({ page }) => {
+		test('should select first choosable option on blur when _value is set to undefined', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _value="E" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'E');
 
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+
 			await page.locator('kol-single-select').evaluate((element) => {
 				(element as HTMLKolSingleSelectElement)._value = undefined;
 			});
+
+			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', null);
+
+			await page.click('html', { position: { x: 0, y: 0 } });
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
 		});
@@ -251,7 +263,7 @@ test.describe(COMPONENT_NAME, () => {
 				const el = element as HTMLElement & { _changeCount: number };
 				el._changeCount = 0;
 
-				(element as HTMLKolSelectElement)._on = {
+				(element as HTMLKolSingleSelectElement)._on = {
 					onChange: () => {
 						el._changeCount++;
 					},

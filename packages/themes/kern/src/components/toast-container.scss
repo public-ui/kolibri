@@ -6,7 +6,6 @@
 		top: var(--kern-metric-space-large);
 		right: var(--kern-metric-space-large);
 		width: to-rem(440);
-		max-width: 100%;
 	}
 
 	@include kol-alert;

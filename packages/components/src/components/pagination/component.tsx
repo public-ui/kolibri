@@ -82,7 +82,8 @@ export class KolPaginationWc implements PaginationAPI {
 	}
 
 	private getPageEnd(): string {
-		return this.state._page * this.state._pageSize + '';
+		const highest = this.state._page * this.state._pageSize;
+		return Math.min(this.state._max, highest).toString();
 	}
 
 	public render(): JSX.Element {
