@@ -4,10 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  follow-redirects@<=1.15.11: '>=1.16.0'
-  protobufjs@<7.5.5: '>=7.5.5'
-
 importers:
 
   .:
@@ -641,8 +637,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       hono:
-        specifier: 4.12.14
-        version: 4.12.14
+        specifier: 4.12.15
+        version: 4.12.15
       jasmine-core:
         specifier: 6.2.0
         version: 6.2.0
@@ -9638,8 +9634,8 @@ packages:
   hermes-parser@0.25.1:
     resolution: {integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==}
 
-  hono@4.12.14:
-    resolution: {integrity: sha512-am5zfg3yu6sqn5yjKBNqhnTX7Cv+m00ox+7jbaKkrLMRJ4rAdldd1xPd/JzbBWspqaQv6RSTrgFN95EsfhC+7w==}
+  hono@4.12.15:
+    resolution: {integrity: sha512-qM0jDhFEaCBb4TxoW7f53Qrpv9RBiayUHo0S52JudprkhvpjIrGoU1mnnr29Fvd1U335ZFPZQY1wlkqgfGXyLg==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -12796,8 +12792,8 @@ packages:
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
 
-  protobufjs@8.0.1:
-    resolution: {integrity: sha512-NWWCCscLjs+cOKF/s/XVNFRW7Yih0fdH+9brffR5NZCy8k42yRdl5KlWKMVXuI1vfCoy4o1z80XR/W/QUb3V3w==}
+  protobufjs@7.5.5:
+    resolution: {integrity: sha512-3wY1AxV+VBNW8Yypfd1yQY9pXnqTAN+KwQxL8iYm3/BjKYMNg4i0owhEe26PWDOMaIrzeeF98Lqd5NGz4omiIg==}
     engines: {node: '>=12.0.0'}
 
   protocols@2.0.2:
@@ -17234,15 +17230,15 @@ snapshots:
     dependencies:
       lodash.camelcase: 4.3.0
       long: 5.3.2
-      protobufjs: 8.0.1
+      protobufjs: 7.5.5
       yargs: 17.7.2
 
   '@harperfast/extended-iterable@1.0.3':
     optional: true
 
-  '@hono/node-server@1.19.13(hono@4.12.14)':
+  '@hono/node-server@1.19.13(hono@4.12.15)':
     dependencies:
-      hono: 4.12.14
+      hono: 4.12.15
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.73.1(react@19.2.5))':
     dependencies:
@@ -18304,7 +18300,7 @@ snapshots:
 
   '@modelcontextprotocol/sdk@1.26.0(zod@4.3.6)':
     dependencies:
-      '@hono/node-server': 1.19.13(hono@4.12.14)
+      '@hono/node-server': 1.19.13(hono@4.12.15)
       ajv: 8.18.0
       ajv-formats: 3.0.1(ajv@8.18.0)
       content-type: 1.0.5
@@ -18314,7 +18310,7 @@ snapshots:
       eventsource-parser: 3.0.5
       express: 5.2.1
       express-rate-limit: 8.3.0(express@5.2.1)
-      hono: 4.12.14
+      hono: 4.12.15
       jose: 6.1.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.0
@@ -18326,7 +18322,7 @@ snapshots:
 
   '@modelcontextprotocol/sdk@1.29.0(zod@3.25.76)':
     dependencies:
-      '@hono/node-server': 1.19.13(hono@4.12.14)
+      '@hono/node-server': 1.19.13(hono@4.12.15)
       ajv: 8.18.0
       ajv-formats: 3.0.1(ajv@8.18.0)
       content-type: 1.0.5
@@ -18336,7 +18332,7 @@ snapshots:
       eventsource-parser: 3.0.5
       express: 5.2.1
       express-rate-limit: 8.3.0(express@5.2.1)
-      hono: 4.12.14
+      hono: 4.12.15
       jose: 6.1.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.0
@@ -18348,7 +18344,7 @@ snapshots:
 
   '@modelcontextprotocol/sdk@1.29.0(zod@4.3.6)':
     dependencies:
-      '@hono/node-server': 1.19.13(hono@4.12.14)
+      '@hono/node-server': 1.19.13(hono@4.12.15)
       ajv: 8.18.0
       ajv-formats: 3.0.1(ajv@8.18.0)
       content-type: 1.0.5
@@ -18358,7 +18354,7 @@ snapshots:
       eventsource-parser: 3.0.5
       express: 5.2.1
       express-rate-limit: 8.3.0(express@5.2.1)
-      hono: 4.12.14
+      hono: 4.12.15
       jose: 6.1.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.0
@@ -24435,7 +24431,7 @@ snapshots:
     dependencies:
       hermes-estree: 0.25.1
 
-  hono@4.12.14: {}
+  hono@4.12.15: {}
 
   hookable@5.5.3: {}
 
@@ -28360,7 +28356,7 @@ snapshots:
       object-assign: 4.1.1
       react-is: 16.13.1
 
-  protobufjs@8.0.1:
+  protobufjs@7.5.5:
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/base64': 1.1.2
