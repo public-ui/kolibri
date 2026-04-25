@@ -1,4 +1,4 @@
-# Public UI - Desy-Theme
+# Public UI – Desy Theme
 
 [![npm](https://img.shields.io/npm/v/@public-ui/theme-desy)](https://www.npmjs.com/package/@public-ui/theme-desy)
 [![license](https://img.shields.io/npm/l/@public-ui/theme-desy)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
@@ -8,101 +8,80 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-desy)](https://bundlephobia.com/result?p=@public-ui/theme-desy)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-This is the Desy theme for the [Public UI web component library](https://public-ui.github.io). You can customize this theme by using `css variables` or by creating a new theme.
+Das Desy Theme erweitert die [Public UI Web Component Library](https://public-ui.github.io) um ein individuelles Design. Anpassungen sind über CSS Custom Properties (Design Tokens) möglich.
 
-Link: https://desy.zoll-portal.de/
+**Live: https://desy.zoll-portal.de/**
 
-## Integration in React
+---
 
+## Installation & Integration
+
+```bash
+pnpm add @public-ui/theme-desy
+```
+
+**React-Beispiel:**
 ```tsx
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { Desy } from '@public-ui/theme-desy';
 
 register(Desy, defineCustomElements).then(() => {
-	ReactDOM.createRoot(document.getElementById('root')!).render(
-		<React.StrictMode>
-			<App />
-		</React.StrictMode>,
-	);
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 });
 ```
 
-## Full documentation
+Weitere Details: [Getting started](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt)
 
-👉 [https://public-ui.github.io](https://public-ui.github.io)
+---
 
-## Usage
+## Design Tokens & Anpassung
 
-The default theme is token based and works with minimal adjustments. It already contains all necessary styling and can
-be customized with design tokens using _CSS Custom Properties_.
-
-### Variables
-
-| Variable                          | Default value                                    | Meaning                                |
-| --------------------------------- | ------------------------------------------------ | -------------------------------------- |
-| `--kolibri-border-radius`         | `5px`                                            | Border radius for rounded elements     |
-| `--kolibri-font-family`           | `Verdana, Arial, Calibri, Helvetica, sans-serif` | Default font family                    |
-| `--kolibri-font-size`             | `16px`                                           | Base font size                         |
-| `--kolibri-spacing`               | `0.25rem`                                        | Base spacing between elements          |
-| `--kolibri-border-width`          | `1px`                                            | Border width                           |
-| `--kolibri-color-primary`         | `#004b76`                                        | Primary color                          |
-| `--kolibri-color-primary-variant` | `#0077b6`                                        | Alternative primary color              |
-| `--kolibri-color-secondary`       | `#ccebf7`                                        | Secondary color                        |
-| `--kolibri-color-danger`          | `#c0003c`                                        | Color for errors and dangerous actions |
-| `--kolibri-color-warning`         | `#c44931`                                        | Warning color                          |
-| `--kolibri-color-success`         | `#005c45`                                        | Success color                          |
-| `--kolibri-color-subtle`          | `#576164`                                        | Subtle accent color for borders        |
-| `--kolibri-color-light`           | `#ffffff`                                        | Light background color                 |
-| `--kolibri-color-text`            | `#202020`                                        | Text color                             |
-| `--kolibri-color-mute`            | `#f2f3f4`                                        | Color for disabled elements            |
-| `--kolibri-color-mute-variant`    | `#bec5c9`                                        | Alternate disabled color               |
-
-### Usage
-
-Import and register the theme:
-
-```js
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { Desy } from '@public-ui/theme-desy';
-
-register(Desy, defineCustomElements);
-```
-
-For more details and options see [Getting started](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).
-
-To adjust the design tokens, create a simple stylesheet that overrides the desired custom properties. You do not need to set every property—only those you want to change. Example:
+Das Theme basiert auf Design Tokens, die sich per CSS überschreiben lassen. Nur die zu ändernden Werte müssen gesetzt werden:
 
 ```css
 :root {
-	--kolibri-border-radius: 3px;
-	--kolibri-font-size: 18px;
-	--kolibri-spacing: 0.3rem;
-	--kolibri-color-primary: #cc006e;
-	--kolibri-color-primary-variant: #ff64b9;
+  --kolibri-border-radius: 3px;
+  --kolibri-font-size: 18px;
+  --kolibri-spacing: 0.3rem;
+  --kolibri-color-primary: #cc006e;
+  --kolibri-color-primary-variant: #ff64b9;
 }
 ```
 
-## Design Tokens
+**Wichtige Tokens:**
 
-The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components.
+| Variable                       | Default                                    | Bedeutung                      |
+| ------------------------------ | ------------------------------------------ | ------------------------------ |
+| --kolibri-border-radius        | 5px                                        | Border-Radius                  |
+| --kolibri-font-family          | Verdana, Arial, Calibri, Helvetica, sans-serif | Standardschriftart         |
+| --kolibri-font-size            | 16px                                       | Basis-Schriftgröße             |
+| --kolibri-spacing              | 0.25rem                                    | Grundabstand                   |
+| --kolibri-border-width         | 1px                                        | Rahmenbreite                   |
+| --kolibri-color-primary        | #004b76                                    | Primärfarbe                    |
+| --kolibri-color-primary-variant| #0077b6                                    | Alternative Primärfarbe        |
+| --kolibri-color-secondary      | #ccebf7                                    | Sekundärfarbe                  |
+| --kolibri-color-danger         | #c0003c                                    | Fehler-/Warnfarbe              |
+| --kolibri-color-warning        | #c44931                                    | Warnfarbe                      |
+| --kolibri-color-success        | #005c45                                    | Erfolgsfarbe                   |
+| --kolibri-color-subtle         | #576164                                    | Dezente Akzentfarbe            |
+| --kolibri-color-light          | #ffffff                                    | Helle Hintergrundfarbe         |
+| --kolibri-color-text           | #202020                                    | Textfarbe                      |
+| --kolibri-color-mute           | #f2f3f4                                    | Farbe für deaktivierte Elemente|
+| --kolibri-color-mute-variant   | #bec5c9                                    | Alternative deaktivierte Farbe |
 
-| Token                     | Default value                                                                | Meaning                      |
-| ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
-| `--border-radius`         | `var(--kolibri-border-radius, 5px)`                                          | Default border radius        |
-| `--font-family`           | `var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif)` | Default font                 |
-| `--font-size`             | `var(--kolibri-font-size, #{to-rem(16)})`                                    | Base font size               |
-| `--spacing`               | `var(--kolibri-spacing, #{to-rem(4)})`                                       | Standard spacing             |
-| `--border-width`          | `var(--kolibri-border-width, 1px)`                                           | Border width                 |
-| `--color-primary`         | `var(--kolibri-color-primary, #004b76)`                                      | Primary accent color         |
-| `--color-primary-variant` | `var(--kolibri-color-primary-variant, #0077b6)`                              | Variant of the primary color |
-| `--color-secondary`       | `var(--kolibri-color-secondary, #ccebf7)`                                    | Secondary color              |
-| `--color-danger`          | `var(--kolibri-color-danger, #b4003c)`                                       | Error color                  |
-| `--color-warning`         | `var(--kolibri-color-warning, #c44931)`                                      | Warning color                |
-| `--color-success`         | `var(--kolibri-color-success, #005c45)`                                      | Success color                |
-| `--color-subtle`          | `var(--kolibri-color-subtle, #576164)`                                       | Subtle lines and borders     |
-| `--color-light`           | `var(--kolibri-color-light, #ffffff)`                                        | Light surface color          |
-| `--color-text`            | `var(--kolibri-color-text, #202020)`                                         | Standard text color          |
-| `--color-mute`            | `var(--kolibri-color-mute, #f2f3f4)`                                         | Muted color                  |
-| `--color-mute-variant`    | `var(--kolibri-color-mute-variant, #bec5c9)`                                 | Alternate muted color        |
+Alle verfügbaren Tokens finden sich in `src/global.scss`.
+
+---
+
+## Weitere Informationen
+
+- [Dokumentation](https://public-ui.github.io)
+- [Issues](https://github.com/public-ui/kolibri/issues)
+- [Pull Requests](https://github.com/public-ui/kolibri/pulls)
+
+---
