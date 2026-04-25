@@ -1,0 +1,92 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@mixin kol-link($block-classname) {
+	@include icon;
+
+	.#{$block-classname} {
+		$root: &;
+		font-style: var(--font-family);
+		font-weight: 400;
+		font-size: to-rem(16);
+		transition: color var(--transition);
+		line-height: 1.25;
+		color: var(--color-blue-100);
+		transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
+		text-decoration-line: none;
+
+		&:visited {
+			color: var(--color-blue-100);
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		.kol-span {
+			&__container {
+				gap: to-rem(8);
+			}
+		}
+
+		.kol-icon {
+			font-size: to-rem(24);
+		}
+
+		&:has(.kol-icon) .kol-span__label {
+			text-decoration: none;
+		}
+
+		&:not([aria-disabled='true']):is(:focus, :hover, :active) {
+			color: var(--color-dark-blue-100);
+
+			.kol-span__label {
+				text-decoration: underline;
+			}
+		}
+
+		&--secondary {
+			color: var(--color-dark-blue-100);
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+
+			&:focus {
+				border-radius: var(--radius-s);
+				outline: var(--outline-width) solid var(--color-dark-blue-100);
+				outline-offset: var(--outline-offset);
+			}
+		}
+
+		&--tertiary {
+			color: var(--color-black-70);
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+
+			&:focus {
+				border-radius: var(--radius-s);
+				outline: var(--outline-width) solid var(--color-black-70);
+				outline-offset: var(--outline-offset);
+			}
+		}
+
+		&--small {
+			font-size: to-rem(14);
+			line-height: 1.25;
+			color: var(--color-black-70);
+		}
+
+		&__text {
+			@at-root #{$root}:focus & {
+				border-radius: var(--radius-s);
+				outline: 2px solid var(--color-dark-blue-100);
+				outline-offset: 4px;
+			}
+		}
+	}
+}

@@ -15,6 +15,7 @@ packages:
   - packages/test-tag-name-transformer
   - packages/themes/bwst
   - packages/themes/default
+  - packages/themes/desy
   - packages/themes/ecl
   - packages/themes/kern
   - packages/themes
@@ -25,4 +26,5 @@ packages:
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
 overrides:
-  '@hono/node-server@<1.19.13': '>=1.19.13'
+  follow-redirects@<=1.15.11: '>=1.16.0'
+  protobufjs@<7.5.5: '>=7.5.5'

@@ -46,4 +46,13 @@
 	blockquote {
 		margin: var(--kern-metric-space-small) var(--kern-metric-space-large);
 	}
+
+	.disabled label,
+	.disabled:focus-within label,
+	[aria-disabled='true'],
+	[aria-disabled='true']:focus,
+	[disabled],
+	[disabled]:focus {
+		opacity: var(--action-state-opacity-disabled, 0.4);
+	}
 }

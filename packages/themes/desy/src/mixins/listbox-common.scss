@@ -1,0 +1,42 @@
+@use '../functions/to-rem' as *;
+
+// Shared styles for combobox and single-select
+@mixin listbox-common($block-classname) {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.#{$block-classname} {
+		&__group {
+			display: inline-flex;
+			align-items: center;
+			width: 100%;
+		}
+
+		&__input {
+			flex-grow: 1;
+			border: none;
+			padding: 0;
+			position: relative;
+		}
+
+		.kol-input-container {
+			padding-right: 0;
+		}
+
+		&__delete .kol-button {
+			min-width: to-rem(38);
+			min-height: to-rem(40);
+
+			&:hover {
+				background-color: var(--color-blue-100-06);
+			}
+
+			&:focus {
+				background: var(--color-dark-blue-100-06);
+				outline-offset: 2px;
+				outline: var(--color-dark-blue-100) solid 2px;
+			}
+		}
+	}
+}

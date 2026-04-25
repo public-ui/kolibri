@@ -1,0 +1,19 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/kol-alert' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/custom-suggestions-option' as *;
+@use '../mixins/custom-suggestions-options-group' as *;
+@use '../mixins/custom-suggestions-toggle' as *;
+@use '../mixins/listbox-common' as *;
+@use '../@shared/input-core' as *;
+
+$option-height: to-rem(40);
+$visible-options: 5;
+
+@layer kol-theme-component {
+	@include kol-alert;
+	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
+	@include kol-custom-suggestions-toggle-theme;
+	@include listbox-common(kol-combobox);
+}
