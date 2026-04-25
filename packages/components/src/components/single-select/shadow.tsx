@@ -441,8 +441,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		);
 	}
 
-
-
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {

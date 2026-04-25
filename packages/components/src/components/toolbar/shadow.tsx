@@ -8,7 +8,7 @@ import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { delegateFocus } from '../../utils/element-focus';
 
 @Component({
 	tag: 'kol-toolbar',
