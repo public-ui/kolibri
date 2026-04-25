@@ -31,7 +31,7 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@axe-core/playwright": "4.11.1",
+		"@axe-core/playwright": "4.11.2",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-html-reporter": "2.2.11",
 		"http-server": "14.1.1",
@@ -46,7 +46,7 @@
 		"@playwright/test": "1.59.1",
 		"eslint": "9.39.4",
 		"knip": "5.88.1",
-		"prettier": "3.8.1",
+		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0"
 	},
 	"peerDependencies": {
