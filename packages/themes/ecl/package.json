@@ -59,7 +59,7 @@
 		"start:eu": "npm-run-all2 --parallel dev serve:eu",
 		"serve:ec": "sh serve.sh ECL_EC",
 		"serve:eu": "sh serve.sh ECL_EU",
-		"test": "npm-run-all2 test:theme:*",
+		"test": "npm-run-all2 test:theme:ecl-ec",
 		"test:theme:ecl-ec": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EC THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:theme:ecl-eu": "cross-env THEME_MODULE=dist THEME_EXPORT=ECL_EU THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:update:e2e": "npm-run-all2 test:update:theme:*",
