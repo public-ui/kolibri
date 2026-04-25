@@ -8,80 +8,85 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-desy)](https://bundlephobia.com/result?p=@public-ui/theme-desy)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
-Das Desy Theme erweitert die [Public UI Web Component Library](https://public-ui.github.io) um ein individuelles Design. Anpassungen sind über CSS Custom Properties (Design Tokens) möglich.
+Das [**Zoll Design System** (Desy)](https://desy.zoll-portal.de/) ist der öffentliche Styleguide der [Generalzolldirektion](https://www.zoll.de/) (Zoll). Dieses Paket stellt zum Styleguide passende Theme für die [Public UI Web Component Library](https://public-ui.github.io) versioniert bereit.
 
-**Live: https://desy.zoll-portal.de/**
-
----
+> **Hinweis:** Das Design System wird permanent weiterentwickelt und dieses Theme wird in regelmäßigen Abständen auf eine vereinbarte neuerere Version aktualisiert. Es kann daher vorkommen, dass das Theme nicht immer 100% mit der aktuellsten Version des Design Systems übereinstimmt. Aktuell ist das Theme auf die [Version 11](https://desy.zoll-portal.de/changelog/) des Design Systems abgestimmt.
 
 ## Installation & Integration
 
 ```bash
-pnpm add @public-ui/theme-desy
+pnpm add @public-ui/components @public-ui/theme-desy
 ```
 
 **React-Beispiel:**
+
 ```tsx
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { Desy } from '@public-ui/theme-desy';
+import { DesyV11 } from '@public-ui/theme-desy';
 
-register(Desy, defineCustomElements).then(() => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
+register(DesyV11, defineCustomElements).then(() => {
+	ReactDOM.createRoot(document.getElementById('root')).render(
+		<React.StrictMode>
+			<KolButton _label="Klick mich!" />
+		</React.StrictMode>,
+	);
 });
 ```
 
 Weitere Details: [Getting started](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt)
 
----
+## Beitrag zum Theme (Contribution)
 
-## Design Tokens & Anpassung
+Du möchtest das Desy-Theme verbessern oder anpassen? So gehst du vor:
 
-Das Theme basiert auf Design Tokens, die sich per CSS überschreiben lassen. Nur die zu ändernden Werte müssen gesetzt werden:
+1. **Repository forken**
+   - Klicke auf [Fork](https://github.com/public-ui/kolibri) auf GitHub und erstelle deinen eigenen Fork.
 
-```css
-:root {
-  --kolibri-border-radius: 3px;
-  --kolibri-font-size: 18px;
-  --kolibri-spacing: 0.3rem;
-  --kolibri-color-primary: #cc006e;
-  --kolibri-color-primary-variant: #ff64b9;
-}
-```
+2. **Lokales Setup**
+   - Klone deinen Fork:
 
-**Wichtige Tokens:**
+     ```bash
+        git clone https://github.com/<DEIN_GITHUB_USER>/kolibri.git
+        cd kolibri/lib/packages/themes/desy
+     ```
 
-| Variable                       | Default                                    | Bedeutung                      |
-| ------------------------------ | ------------------------------------------ | ------------------------------ |
-| --kolibri-border-radius        | 5px                                        | Border-Radius                  |
-| --kolibri-font-family          | Verdana, Arial, Calibri, Helvetica, sans-serif | Standardschriftart         |
-| --kolibri-font-size            | 16px                                       | Basis-Schriftgröße             |
-| --kolibri-spacing              | 0.25rem                                    | Grundabstand                   |
-| --kolibri-border-width         | 1px                                        | Rahmenbreite                   |
-| --kolibri-color-primary        | #004b76                                    | Primärfarbe                    |
-| --kolibri-color-primary-variant| #0077b6                                    | Alternative Primärfarbe        |
-| --kolibri-color-secondary      | #ccebf7                                    | Sekundärfarbe                  |
-| --kolibri-color-danger         | #c0003c                                    | Fehler-/Warnfarbe              |
-| --kolibri-color-warning        | #c44931                                    | Warnfarbe                      |
-| --kolibri-color-success        | #005c45                                    | Erfolgsfarbe                   |
-| --kolibri-color-subtle         | #576164                                    | Dezente Akzentfarbe            |
-| --kolibri-color-light          | #ffffff                                    | Helle Hintergrundfarbe         |
-| --kolibri-color-text           | #202020                                    | Textfarbe                      |
-| --kolibri-color-mute           | #f2f3f4                                    | Farbe für deaktivierte Elemente|
-| --kolibri-color-mute-variant   | #bec5c9                                    | Alternative deaktivierte Farbe |
+   - Installiere die Abhängigkeiten im Monorepo-Hauptverzeichnis:
 
-Alle verfügbaren Tokens finden sich in `src/global.scss`.
+     ```bash
+      pnpm i
+      pnpm build
+     ```
 
----
+3. **Entwicklung starten**
+   - Wechsle ins Theme-Verzeichnis und starte den Watch-Modus:
+
+     ```bash
+      cd kolibri/lib/packages/themes/desy
+      pnpm start
+     ```
+
+   - Passe die Dateien in `src/` nach deinen Wünschen an.
+
+4. **Commit & Pull Request**
+   - Committe deine Änderungen und pushe sie in deinen Fork:
+
+     ```bash
+      git add .
+      git commit -m "feat(theme-desy): <deine Änderung>"
+      git push origin <dein-branch>
+     ```
+
+   - Erstelle einen Pull Request auf <https://github.com/public-ui/kolibri/compare>
+
+**Hinweise:**
+
+- Bitte halte dich an die [Contributing Guidelines](../../../CONTRIBUTING.md).
+- Vor dem Commit immer `pnpm format` und `pnpm lint` ausführen.
+- Für größere Änderungen gerne vorab ein [Issue](https://github.com/public-ui/kolibri/issues/new) eröffnen.
 
 ## Weitere Informationen
 
 - [Dokumentation](https://public-ui.github.io)
 - [Issues](https://github.com/public-ui/kolibri/issues)
 - [Pull Requests](https://github.com/public-ui/kolibri/pulls)
-
----
