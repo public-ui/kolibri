@@ -8,7 +8,7 @@ import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus } from '../../utils/element-focus';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -36,9 +36,7 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	public async focus(): Promise<void> {
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
-			return delegateFocus(this.host!, async () => {
-				await (firstEnabledItem as any).focus?.();
-			});
+			return delegateFocus(this.host!, () => setFocus(firstEnabledItem));
 		}
 	}
 
