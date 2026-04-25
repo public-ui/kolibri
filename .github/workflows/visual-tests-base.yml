@@ -33,7 +33,7 @@ jobs:
         run: pnpm --filter @public-ui/sample-react^... build
 
       - name: Generate base snapshots
-        run: pnpm --filter=@public-ui/${{ matrix.package }} test-update
+        run: pnpm --filter=@public-ui/${{ matrix.package }} test:update:e2e
 
       - name: Store base snapshots
         run: |
