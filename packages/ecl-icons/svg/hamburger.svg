@@ -1,0 +1,10 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path d="M42 12H6V15H42V12Z" fill-rule="evenodd" />
+<path d="M42 33H6V36H42V33Z" fill-rule="evenodd" />
+<path d="M6 22.5H42V25.5H6V22.5Z" fill-rule="evenodd" />
+</svg>

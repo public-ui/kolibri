@@ -1,0 +1,15 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path d="M21 15H18V33H21V15Z" fill-rule="evenodd" />
+<path d="M27 15H30V33H27V15Z" fill-rule="evenodd" />
+<path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M24 3C12.39 3 3 12.39 3 24C3 35.61 12.39 45 24 45C35.61 45 45 35.61 45 24C45 12.39 35.61 3 24 3ZM24 6C33.93 6 42 14.07 42 24C42 33.93 33.93 42 24 42C14.07 42 6 33.93 6 24C6 14.07 14.07 6 24 6Z"
+    fill-rule="evenodd"
+  />
+</svg>

@@ -10,7 +10,7 @@
 	}
 
 	.kol-toast-item {
-		@include kol-alert-theme;
+		@include alert;
 		background-color: #fff;
 		display: block;
 		margin-top: to-rem(16);

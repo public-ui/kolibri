@@ -549,6 +549,21 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
+  packages/ecl-icons:
+    devDependencies:
+      oslllo-svg-fixer:
+        specifier: 6.0.1
+        version: 6.0.1(encoding@0.1.13)
+      rimraf:
+        specifier: 6.1.3
+        version: 6.1.3
+      serve:
+        specifier: 14.2.6
+        version: 14.2.6
+      svgtofont:
+        specifier: 6.5.1
+        version: 6.5.1(chokidar@3.6.0)
+
   packages/icons:
     devDependencies:
       http-server:
@@ -556,7 +571,7 @@ importers:
         version: 14.1.1
       oslllo-svg-fixer:
         specifier: 6.0.1
-        version: 6.0.1
+        version: 6.0.1(encoding@0.1.13)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -6693,6 +6708,9 @@ packages:
     resolution: {integrity: sha512-/HcYgtUSiJiot/XWGLOlGxPYUG65+/31V8oqk17vZLW1xlCoR4PampyePljOxY2n8/3jz9+tIFzICsyGujJZoA==}
     engines: {node: '>=18.12.0'}
 
+  '@zeit/schemas@2.36.0':
+    resolution: {integrity: sha512-7kjMwcChYEzMKjeex9ZFXkt1AyNov9R5HZtjBKVsmVpw7pa7ZtlCGvCBC2vnnXctaYN+aRI61HjIqeetZW5ROg==}
+
   '@zip.js/zip.js@2.8.11':
     resolution: {integrity: sha512-0fztsk/0ryJ+2PPr9EyXS5/Co7OK8q3zY/xOoozEWaUsL5x+C0cyZ4YyMuUffOO2Dx/rAdq4JMPqW0VUtm+vzA==}
     engines: {bun: '>=0.7.0', deno: '>=1.0.0', node: '>=18.0.0'}
@@ -6816,6 +6834,9 @@ packages:
     resolution: {integrity: sha512-Rf7xmeuIo7nb6S4mp4abW2faW8DauZyE2faBIKFaUfP3wnpOvNSbiI5AwVhqBNj0jPgBWEvhyCu0sLjN2q77Rg==}
     engines: {node: '>= 14.0.0'}
 
+  ansi-align@3.0.1:
+    resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
+
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
     engines: {node: '>=6'}
@@ -6881,6 +6902,9 @@ packages:
 
   aproba@2.0.0:
     resolution: {integrity: sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ==}
+
+  arch@2.2.0:
+    resolution: {integrity: sha512-Of/R0wqp83cgHozfIYLbBMnej79U/SVGOOyuB3VVFv1NRM/PSFMK12x9KVtiYzJqmnU5WR2qp0Z5rHb7sWGnFQ==}
 
   archiver-utils@5.0.2:
     resolution: {integrity: sha512-wuLJMmIBQYCsGZgYLTy5FIB2pF6Lfb6cXMSF8Qywwk3t20zWnAi7zLcQFdKQmIB8wyZpY5ER38x08GbwtR2cLA==}
@@ -7218,6 +7242,10 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
+  boxen@7.0.0:
+    resolution: {integrity: sha512-j//dBVuyacJbvW+tvZ9HuH03fZ46QcaKvvhZickZqtB271DxJ7SNRSNxrV/dZX0085m7hISRZWbzWlJvx/rHSg==}
+    engines: {node: '>=14.16'}
+
   brace-expansion@1.1.12:
     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
 
@@ -7349,6 +7377,10 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
+  camelcase@7.0.1:
+    resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
+    engines: {node: '>=14.16'}
+
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
@@ -7365,6 +7397,10 @@ packages:
     resolution: {integrity: sha512-NUPRluOfOiTKBKvWPtSD4PhFvWCqOi0BGStNWs57X9js7XGTprSmFoz5F0tWhR4WPjNeR9jXqdC7/UpSJTnlRg==}
     engines: {node: '>=18'}
 
+  chalk-template@0.4.0:
+    resolution: {integrity: sha512-/ghrgmhfY8RaSdeo43hNXxpoHAtxdbskUHjPpfqUWGttFgycUhYPGx3YZBCnUCvOa7Doivn1IZec3DEGFoMgLg==}
+    engines: {node: '>=12'}
+
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
     engines: {node: '>=4'}
@@ -7376,6 +7412,10 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
+
+  chalk@5.0.1:
+    resolution: {integrity: sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   chalk@5.6.2:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
@@ -7474,6 +7514,10 @@ packages:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
 
+  cli-boxes@3.0.0:
+    resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
+    engines: {node: '>=10'}
+
   cli-cursor@2.1.0:
     resolution: {integrity: sha512-8lgKz8LmCRYZZQDpRyT2m5rKJ08TnU4tR9FFFW2rxpxR1FzWi4PQ/NfyODchAatHaUgnSPVcx/R5w6NuTBzFiw==}
     engines: {node: '>=4'}
@@ -7512,6 +7556,10 @@ packages:
   cli-width@4.1.0:
     resolution: {integrity: sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ==}
     engines: {node: '>= 12'}
+
+  clipboardy@3.0.0:
+    resolution: {integrity: sha512-Su+uU5sr1jkUy1sGRpLKjKrvEOVXgSgiSInwa/qeID6aJ07yh+5NWc3h2QfjHjBnfX4LhtFcuAWKUsJ3r+fjbg==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   cliui@6.0.0:
     resolution: {integrity: sha512-t6wbgtoCXvAzst7QgXxJYqPt0usEfbgQdftEPbLL/cvv6HPE5VgvqCuAIDR0NgU52ds6rFwqrgakNLrHEjCbrQ==}
@@ -8835,9 +8883,6 @@ packages:
   fast-querystring@1.1.2:
     resolution: {integrity: sha512-g6KuKWmFXc0fID8WWH0jit4g0AGBoJhCkJMb1RmbsSEUNvQ+ZC8D6CUZ+GtF8nMzSPXnhiePyyqqipzNNEnHjg==}
 
-  fast-uri@3.0.6:
-    resolution: {integrity: sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==}
-
   fast-uri@3.1.0:
     resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
 
@@ -9819,6 +9864,10 @@ packages:
   is-plain-object@5.0.0:
     resolution: {integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==}
     engines: {node: '>=0.10.0'}
+
+  is-port-reachable@4.0.0:
+    resolution: {integrity: sha512-9UoipoxYmSk6Xy7QFgRv2HDyaysmgSG75TFQs6S+3pDM7ZhKTF/bskZV+0UlABHzKjNVhPjYCLfeZUEg1wXxig==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   is-potential-custom-element-name@1.0.1:
     resolution: {integrity: sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==}
@@ -11075,10 +11124,6 @@ packages:
     resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
     engines: {node: '>=8'}
 
-  minipass@7.1.2:
-    resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
   minipass@7.1.3:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -11783,10 +11828,6 @@ packages:
   path-scurry@1.11.1:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
-
-  path-scurry@2.0.0:
-    resolution: {integrity: sha512-ypGJsmGtdXUOeM5u93TyeIEfEhM6s+ljAhrk5vAvSx8uyY/02OvrZnA0YNGUrPXfpJMgI1ODd3nwz8Npx4O4cg==}
-    engines: {node: 20 || >=22}
 
   path-scurry@2.0.2:
     resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
@@ -12907,6 +12948,13 @@ packages:
     resolution: {integrity: sha512-0ghuzq67LI9bLXpOX/ISfve/Mq33a4aFRzoQYhnnok1JOFpmE/A2TBGkNVenOGEeSBCjIiWcc6MVOG5HEQv0sA==}
     engines: {node: '>=4'}
 
+  registry-auth-token@3.3.2:
+    resolution: {integrity: sha512-JL39c60XlzCVgNrO+qq68FoNb56w/m7JYvGR2jT5iR1xBrUA3Mfx5Twk5rqTThPmQKMWydGmq8oFtDlxfrmxnQ==}
+
+  registry-url@3.1.0:
+    resolution: {integrity: sha512-ZbgR5aZEdf4UKZVBPYIgaglBmSF2Hi94s2PcIHhRGFjKYu+chjJdYfHn4rt3hB6eCKLJ8giVIIfgMa1ehDfZKA==}
+    engines: {node: '>=0.10.0'}
+
   regjsgen@0.8.0:
     resolution: {integrity: sha512-RvwtGe3d7LvWiDQXeQw8p5asZUmfU1G/l6WbUXeHta7Y2PEIvBTwH6E2EfmYUK8pxcxEdEmaomqyp0vZZ7C+3Q==}
 
@@ -13404,9 +13452,6 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  sax@1.4.1:
-    resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
-
   sax@1.5.0:
     resolution: {integrity: sha512-21IYA3Q5cQf089Z6tgaUTr7lDAyzoTPx5HRtbhsME8Udispad8dC/+sziTNugOEx54ilvatQ9YCzl4KQLPcRHA==}
     engines: {node: '>=11.0.0'}
@@ -13497,6 +13542,9 @@ packages:
   serve-handler@6.1.6:
     resolution: {integrity: sha512-x5RL9Y2p5+Sh3D38Fh9i/iQ5ZK+e4xuXRd/pGbM4D13tgo/MGwbttUk8emytcr1YYzBYs+apnUngBDFYfpjPuQ==}
 
+  serve-handler@6.1.7:
+    resolution: {integrity: sha512-CinAq1xWb0vR3twAv9evEU8cNWkXCb9kd5ePAHUKJBkOsUpR1wt/CvGdeca7vqumL1U5cSaeVQ6zZMxiJ3yWsg==}
+
   serve-index@1.9.1:
     resolution: {integrity: sha512-pXHfKNP4qujrtteMrSBb0rc8HJ9Ms/GrXwcUtUtD5s4ewDJI8bT3Cz2zTVRMKtri49pLx2e0Ya8ziP5Ya2pZZw==}
     engines: {node: '>= 0.8.0'}
@@ -13508,6 +13556,11 @@ packages:
   serve-static@2.2.0:
     resolution: {integrity: sha512-61g9pCh0Vnh7IutZjtLGGpTA355+OPn2TyDv/6ivP2h/AdAVX9azsoxmg2/M6nZeQZNYBEwIcsne1mJd9oQItQ==}
     engines: {node: '>= 18'}
+
+  serve@14.2.6:
+    resolution: {integrity: sha512-QEjUSA+sD4Rotm1znR8s50YqA3kYpRGPmtd5GlFxbaL9n/FdUNbqMhxClqdditSk0LlZyA/dhud6XNRTOC9x2Q==}
+    engines: {node: '>= 14'}
+    hasBin: true
 
   set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
@@ -14075,11 +14128,6 @@ packages:
     resolution: {integrity: sha512-ChjMH33/KetonMTAtpYdgUFr0tbz69Fp2v7zWxQfYZX4g5ZN2nOBXm1R2xyA+lMIKrLKIoKAwFj93jE/avX9cQ==}
     engines: {node: '>=18'}
 
-  tar@7.5.7:
-    resolution: {integrity: sha512-fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==}
-    engines: {node: '>=18'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-
   tcp-port-used@1.0.2:
     resolution: {integrity: sha512-l7ar8lLUD3XS1V2lfoJlCBaeoaWo/2xfYt81hM7VlvR4RrMVFqfmzfhLVk40hAb368uitje5gPtBRL1m/DGvLA==}
 
@@ -14366,6 +14414,10 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
+  type-fest@2.19.0:
+    resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
+    engines: {node: '>=12.20'}
+
   type-fest@3.13.1:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
@@ -14569,6 +14621,9 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  update-check@1.5.4:
+    resolution: {integrity: sha512-5YHsflzHP4t1G+8WGPlvKbJEbAJGCgw+Em+dGR1KmBUbr1J36SJBqlHLjR7oob7sco5hWHGQVcr9B2poIVDDTQ==}
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -14932,6 +14987,10 @@ packages:
 
   wide-align@1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
+
+  widest-line@4.0.1:
+    resolution: {integrity: sha512-o0cyEG0e8GPzT4iGHphIOh0cJOV8fivsXxddQasHPHfoZf1ZexrfeA21w2NaEN1RHE+fXlfISmOE8R9N3u3Qig==}
+    engines: {node: '>=12'}
 
   wildcard@2.0.1:
     resolution: {integrity: sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==}
@@ -17502,13 +17561,13 @@ snapshots:
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
-  '@jimp/bmp@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/bmp@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       bmp-js: 0.1.0
 
-  '@jimp/core@0.22.12':
+  '@jimp/core@0.22.12(encoding@0.1.13)':
     dependencies:
       '@jimp/utils': 0.22.12
       any-base: 1.1.0
@@ -17521,197 +17580,197 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jimp/custom@0.22.12':
+  '@jimp/custom@0.22.12(encoding@0.1.13)':
     dependencies:
-      '@jimp/core': 0.22.12
+      '@jimp/core': 0.22.12(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
-  '@jimp/gif@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/gif@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       gifwrap: 0.10.1
       omggif: 1.0.10
 
-  '@jimp/jpeg@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/jpeg@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       jpeg-js: 0.4.4
 
-  '@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-circle@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-circle@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       tinycolor2: 1.6.0
 
-  '@jimp/plugin-contain@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))':
+  '@jimp/plugin-contain@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-cover@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))':
+  '@jimp/plugin-cover@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-displace@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-displace@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-dither@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-dither@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-fisheye@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-fisheye@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-flip@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))':
+  '@jimp/plugin-flip@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-gaussian@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-gaussian@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-invert@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-invert@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-mask@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-mask@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-normalize@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-normalize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-print@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-print@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
       load-bmfont: 1.4.2
     transitivePeerDependencies:
       - debug
 
-  '@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-shadow@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-shadow@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-threshold@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-threshold@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugins@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugins@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-circle': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-contain': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))
-      '@jimp/plugin-cover': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))
-      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-displace': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-dither': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-fisheye': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-flip': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))
-      '@jimp/plugin-gaussian': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-invert': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-mask': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-normalize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-print': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-shadow': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-threshold': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-circle': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-contain': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))
+      '@jimp/plugin-cover': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))
+      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-displace': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-dither': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-fisheye': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-flip': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))
+      '@jimp/plugin-gaussian': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-invert': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-mask': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-normalize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-print': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-shadow': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-threshold': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       timm: 1.7.1
     transitivePeerDependencies:
       - debug
 
-  '@jimp/png@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/png@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       pngjs: 6.0.0
 
-  '@jimp/tiff@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/tiff@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       utif2: 4.1.0
 
-  '@jimp/types@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/types@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/bmp': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/custom': 0.22.12
-      '@jimp/gif': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/jpeg': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/png': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/tiff': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/bmp': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/gif': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/jpeg': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/png': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/tiff': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       timm: 1.7.1
 
   '@jimp/utils@0.22.12':
@@ -20742,6 +20801,8 @@ snapshots:
       js-yaml: 3.14.2
       tslib: 2.8.1
 
+  '@zeit/schemas@2.36.0': {}
+
   '@zip.js/zip.js@2.8.11': {}
 
   '@zkochan/js-yaml@0.0.7':
@@ -20847,7 +20908,7 @@ snapshots:
   ajv@8.18.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.0.6
+      fast-uri: 3.1.0
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -20867,6 +20928,10 @@ snapshots:
       '@algolia/requester-browser-xhr': 5.48.1
       '@algolia/requester-fetch': 5.48.1
       '@algolia/requester-node-http': 5.48.1
+
+  ansi-align@3.0.1:
+    dependencies:
+      string-width: 4.2.3
 
   ansi-colors@4.1.3: {}
 
@@ -20912,6 +20977,8 @@ snapshots:
       picomatch: 2.3.2
 
   aproba@2.0.0: {}
+
+  arch@2.2.0: {}
 
   archiver-utils@5.0.2:
     dependencies:
@@ -21370,6 +21437,17 @@ snapshots:
 
   boolbase@1.0.0: {}
 
+  boxen@7.0.0:
+    dependencies:
+      ansi-align: 3.0.1
+      camelcase: 7.0.1
+      chalk: 5.6.2
+      cli-boxes: 3.0.0
+      string-width: 5.1.2
+      type-fest: 2.19.0
+      widest-line: 4.0.1
+      wrap-ansi: 8.1.0
+
   brace-expansion@1.1.12:
     dependencies:
       balanced-match: 1.0.2
@@ -21524,6 +21602,8 @@ snapshots:
 
   camelcase@6.3.0: {}
 
+  camelcase@7.0.1: {}
+
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.28.1
@@ -21543,6 +21623,10 @@ snapshots:
 
   chai@6.2.2: {}
 
+  chalk-template@0.4.0:
+    dependencies:
+      chalk: 4.1.2
+
   chalk@2.4.2:
     dependencies:
       ansi-styles: 3.2.1
@@ -21558,6 +21642,8 @@ snapshots:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+
+  chalk@5.0.1: {}
 
   chalk@5.6.2: {}
 
@@ -21695,6 +21781,8 @@ snapshots:
 
   clean-stack@2.2.0: {}
 
+  cli-boxes@3.0.0: {}
+
   cli-cursor@2.1.0:
     dependencies:
       restore-cursor: 2.0.0
@@ -21725,6 +21813,12 @@ snapshots:
   cli-width@2.2.1: {}
 
   cli-width@4.1.0: {}
+
+  clipboardy@3.0.0:
+    dependencies:
+      arch: 2.2.0
+      execa: 5.1.1
+      is-wsl: 2.2.0
 
   cliui@6.0.0:
     dependencies:
@@ -23444,8 +23538,6 @@ snapshots:
     dependencies:
       fast-decode-uri-component: 1.0.1
 
-  fast-uri@3.0.6: {}
-
   fast-uri@3.1.0: {}
 
   fast-xml-parser@5.2.5:
@@ -23872,9 +23964,9 @@ snapshots:
       foreground-child: 3.3.1
       jackspeak: 4.1.1
       minimatch: 10.2.5
-      minipass: 7.1.2
+      minipass: 7.1.3
       package-json-from-dist: 1.0.1
-      path-scurry: 2.0.0
+      path-scurry: 2.0.2
 
   glob@13.0.6:
     dependencies:
@@ -24510,6 +24602,8 @@ snapshots:
       isobject: 3.0.1
 
   is-plain-object@5.0.0: {}
+
+  is-port-reachable@4.0.0: {}
 
   is-potential-custom-element-name@1.0.1: {}
 
@@ -25367,11 +25461,11 @@ snapshots:
       - ts-node
     optional: true
 
-  jimp@0.22.12:
+  jimp@0.22.12(encoding@0.1.13):
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugins': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/types': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugins': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/types': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       regenerator-runtime: 0.13.11
     transitivePeerDependencies:
       - debug
@@ -26369,8 +26463,6 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  minipass@7.1.2: {}
-
   minipass@7.1.3: {}
 
   minizlib@3.1.0:
@@ -26583,7 +26675,7 @@ snapshots:
       nopt: 8.1.0
       proc-log: 5.0.0
       semver: 7.7.4
-      tar: 7.5.7
+      tar: 7.5.11
       tinyglobby: 0.2.15
       which: 5.0.0
     transitivePeerDependencies:
@@ -26987,20 +27079,20 @@ snapshots:
 
   os-tmpdir@1.0.2: {}
 
-  oslllo-potrace@3.0.0:
+  oslllo-potrace@3.0.0(encoding@0.1.13):
     dependencies:
-      jimp: 0.22.12
+      jimp: 0.22.12(encoding@0.1.13)
     transitivePeerDependencies:
       - debug
       - encoding
 
-  oslllo-svg-fixer@6.0.1:
+  oslllo-svg-fixer@6.0.1(encoding@0.1.13):
     dependencies:
       ansi-colors: 4.1.3
       cli-progress: 3.12.0
       fast-glob: 3.3.3
-      oslllo-potrace: 3.0.0
-      oslllo-svg2: 3.0.0
+      oslllo-potrace: 3.0.0(encoding@0.1.13)
+      oslllo-svg2: 3.0.0(encoding@0.1.13)
       oslllo-validator: 3.1.0
       piscina: 4.9.2
       yargs: 16.2.0
@@ -27008,11 +27100,11 @@ snapshots:
       - debug
       - encoding
 
-  oslllo-svg2@3.0.0:
+  oslllo-svg2@3.0.0(encoding@0.1.13):
     dependencies:
       '@resvg/resvg-js': 2.6.2
       domino: 2.1.6
-      jimp: 0.22.12
+      jimp: 0.22.12(encoding@0.1.13)
       oslllo-validator: 3.1.0
     transitivePeerDependencies:
       - debug
@@ -27302,11 +27394,6 @@ snapshots:
   path-scurry@1.11.1:
     dependencies:
       lru-cache: 10.4.3
-      minipass: 7.1.3
-
-  path-scurry@2.0.0:
-    dependencies:
-      lru-cache: 11.2.2
       minipass: 7.1.3
 
   path-scurry@2.0.2:
@@ -28436,6 +28523,15 @@ snapshots:
       unicode-match-property-ecmascript: 2.0.0
       unicode-match-property-value-ecmascript: 2.2.1
 
+  registry-auth-token@3.3.2:
+    dependencies:
+      rc: 1.2.8
+      safe-buffer: 5.2.1
+
+  registry-url@3.1.0:
+    dependencies:
+      rc: 1.2.8
+
   regjsgen@0.8.0: {}
 
   regjsparser@0.13.0:
@@ -28935,8 +29031,6 @@ snapshots:
       '@parcel/watcher': 2.5.1
     optional: true
 
-  sax@1.4.1: {}
-
   sax@1.5.0: {}
 
   saxes@6.0.0:
@@ -29044,6 +29138,16 @@ snapshots:
       path-to-regexp: 3.3.0
       range-parser: 1.2.0
 
+  serve-handler@6.1.7:
+    dependencies:
+      bytes: 3.0.0
+      content-disposition: 0.5.2
+      mime-types: 2.1.18
+      minimatch: 3.1.5
+      path-is-inside: 1.0.2
+      path-to-regexp: 3.3.0
+      range-parser: 1.2.0
+
   serve-index@1.9.1:
     dependencies:
       accepts: 1.3.8
@@ -29071,6 +29175,22 @@ snapshots:
       escape-html: 1.0.3
       parseurl: 1.3.3
       send: 1.2.0
+    transitivePeerDependencies:
+      - supports-color
+
+  serve@14.2.6:
+    dependencies:
+      '@zeit/schemas': 2.36.0
+      ajv: 8.18.0
+      arg: 5.0.2
+      boxen: 7.0.0
+      chalk: 5.0.1
+      chalk-template: 0.4.0
+      clipboardy: 3.0.0
+      compression: 1.8.1
+      is-port-reachable: 4.0.0
+      serve-handler: 6.1.7
+      update-check: 1.5.4
     transitivePeerDependencies:
       - supports-color
 
@@ -29737,7 +29857,7 @@ snapshots:
       commander: 12.1.0
       debug: 4.4.3(supports-color@5.5.0)
       glob: 11.1.0
-      sax: 1.4.1
+      sax: 1.5.0
       svg-pathdata: 7.2.0
       transformation-matrix: 3.1.0
       yerror: 8.0.0
@@ -29882,14 +30002,6 @@ snapshots:
       streamx: 2.22.1
 
   tar@7.5.11:
-    dependencies:
-      '@isaacs/fs-minipass': 4.0.1
-      chownr: 3.0.0
-      minipass: 7.1.3
-      minizlib: 3.1.0
-      yallist: 5.0.0
-
-  tar@7.5.7:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
@@ -30178,6 +30290,8 @@ snapshots:
 
   type-fest@0.8.1: {}
 
+  type-fest@2.19.0: {}
+
   type-fest@3.13.1: {}
 
   type-fest@4.26.0: {}
@@ -30415,6 +30529,11 @@ snapshots:
       browserslist: 4.28.1
       escalade: 3.2.0
       picocolors: 1.1.1
+
+  update-check@1.5.4:
+    dependencies:
+      registry-auth-token: 3.3.2
+      registry-url: 3.1.0
 
   uri-js@4.4.1:
     dependencies:
@@ -30897,6 +31016,10 @@ snapshots:
   wide-align@1.1.5:
     dependencies:
       string-width: 4.2.3
+
+  widest-line@4.0.1:
+    dependencies:
+      string-width: 5.1.2
 
   wildcard@2.0.1: {}
 

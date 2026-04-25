@@ -2,25 +2,13 @@
 @use '../mixins/link' as *;
 
 @layer kol-theme-component {
-	@include kol-link('kol-link');
+	@include link('kol-link');
 
 	.kol-breadcrumb {
-		font:
-			normal normal 400 to-rem(14) / to-rem(16) arial,
-			sans-serif;
-		font-weight: var(--font-weight-bold);
-
-		&__icon[exportparts*='separator']::before {
-			color: var(--color-blue);
-			padding: 0;
-			margin-inline-end: to-rem(8);
-			margin-inline-start: to-rem(8);
-		}
-
-		&__list-element {
-			&:last-child {
-				color: var(--color-grey-75);
-			}
+		&__separator {
+			color: var(--ecl-color-primary);
+			margin-inline-end: var(--ecl-spacing-m);
+			margin-inline-start: var(--ecl-spacing-m);
 		}
 	}
 }
