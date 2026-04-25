@@ -1,0 +1,32 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/link' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	$vertical-padding: to-rem(6);
+
+	@include kol-link('kol-link');
+	@include icon;
+
+	.kol-breadcrumb {
+		font-family: var(--font-family);
+		font-size: to-rem(16);
+		line-height: 1.25;
+
+		&__list-element-span {
+			padding: $vertical-padding 0;
+		}
+
+		.kol-span__label {
+			text-decoration: none;
+		}
+
+		&__separator {
+			font-size: to-rem(24);
+			color: var(--color-blue-100);
+			padding: 0 to-rem(8);
+
+			--kol-icon-alternative: var(--small-chevron-right);
+		}
+	}
+}

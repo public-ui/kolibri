@@ -1,0 +1,26 @@
+@use '../functions/to-rem' as *;
+
+@layer kol-theme-global {
+	.kol-tooltip {
+		&__floating {
+			border-radius: var(--radius-l);
+			border: var(--border-width-s) solid var(--color-blue-100);
+		}
+
+		&__arrow {
+			background-color: var(--color-white-100);
+			border: var(--border-width-s) solid var(--color-blue-100);
+		}
+
+		&__content {
+			background-color: var(--color-white-100);
+			border-radius: var(--radius-l);
+			color: var(--color-dark-blue-100);
+			font-family: var(--font-family);
+			font-size: to-rem(16);
+			line-height: 1.55;
+			max-width: to-rem(400);
+			padding: to-rem(24);
+		}
+	}
+}

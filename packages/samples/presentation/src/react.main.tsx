@@ -96,6 +96,10 @@ void (async () => {
 								name: 'KERN-UX Standard (v2)',
 								key: 'kern-v2',
 							},
+							{
+								name: 'Zoll Design System',
+								key: 'desy-v11',
+							},
 						]}
 					/>
 				</Router>

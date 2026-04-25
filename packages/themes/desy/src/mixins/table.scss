@@ -1,0 +1,133 @@
+@use '../functions/to-rem' as *;
+@use './table-settings' as *;
+@use './kol-alert' as *;
+@use './focus-outline' as *;
+@use './input-checkbox' as *;
+@use './input-radio' as *;
+@use './checkbox-states' as *;
+@use './pagination' as *;
+
+@mixin table {
+	@include table-settings;
+	@include kol-alert;
+	@include pagination;
+
+	.kol-table {
+		--kol-table-line-color: var(--color-dark-blue-40);
+		--kol-table-faded-bg-color: var(--color-dark-blue-20);
+
+		font-family: var(--font-family);
+		line-height: 1.25;
+		word-break: break-word;
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding: to-rem(8);
+
+		&__table {
+			border: 1px solid var(--kol-table-line-color);
+			border-radius: 6px;
+			border-bottom-width: 0;
+			width: 100%;
+			border-spacing: 0;
+		}
+
+		&__caption {
+			padding: to-rem(8);
+			min-height: calc(var(--a11y-min-size) + 2px);
+			font-size: to-rem(14.4);
+			font-weight: 400;
+			color: #6c6c6c;
+		}
+
+		&__head-row {
+			font-weight: 700;
+			background-color: var(--kol-table-faded-bg-color);
+		}
+
+		&__cell {
+			padding: to-rem(16);
+			font-size: to-rem(16);
+			color: var(--color-dark-blue-100);
+			font-weight: 400;
+			border-bottom: 1px solid var(--kol-table-line-color);
+
+			&--subtext {
+				font-size: to-rem(14.4);
+				font-weight: 400;
+				color: var(--color-black-70);
+			}
+
+			&--header {
+				font-weight: 700;
+				transition: box-shadow 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+				&[data-sort] {
+					padding: 0;
+
+					.kol-button {
+						--text-background-color: transparent;
+
+						&__text {
+							padding: to-rem(16);
+						}
+					}
+
+					&:hover {
+						box-shadow: inset 0 -3px 0 var(--color-blue-100);
+					}
+
+					&[data-sort='sort-ASC'],
+					&[data-sort='sort-DESC'] {
+						box-shadow: inset 0 -3px 0 var(--color-blue-100);
+					}
+				}
+			}
+
+			&--selection {
+				width: to-rem(44);
+			}
+		}
+
+		&__sort {
+			display: flex;
+			gap: 0;
+
+			&-button {
+				flex: 1;
+			}
+		}
+
+		&__spacer-line {
+			display: none;
+		}
+
+		&__footer {
+			background-color: var(--kol-table-faded-bg-color);
+		}
+
+		&__row--body {
+			border-top: 1px solid var(--kol-table-line-color);
+		}
+
+		.kol-span__container {
+			gap: to-rem(8);
+		}
+
+		&__selection-input {
+			&--checkbox {
+				--kol-checkbox-main-color: var(--color-blue-100);
+				@include kol-input-checkbox;
+				@include checkbox-states;
+			}
+
+			&--radio {
+				--kol-radio-main-color: var(--color-blue-100);
+				@include kol-input-radio;
+			}
+		}
+
+		&__selection-icon {
+			display: none;
+		}
+	}
+}

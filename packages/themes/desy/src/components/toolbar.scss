@@ -1,0 +1,37 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/button' as *;
+
+@layer kol-theme-component {
+	@include button('kol-button');
+	@include button('kol-link');
+
+	.kol-toolbar {
+		padding: to-rem(4) 0;
+		gap: to-rem(4);
+		background-color: var(--color-white-100);
+		border: 1px solid var(--color-blue-100);
+		border-radius: 3px;
+
+		.kol-link,
+		.kol-button {
+			min-height: var(--a11y-min-size);
+
+			&__text {
+				border: 0;
+			}
+		}
+
+		&:focus-within {
+			outline-offset: 0;
+			outline-color: var(--color-blue-100);
+		}
+	}
+
+	.kol-toolbar--orientation-vertical {
+		padding: to-rem(4) 0;
+	}
+
+	.kol-toolbar--orientation-horizontal {
+		padding: 0;
+	}
+}

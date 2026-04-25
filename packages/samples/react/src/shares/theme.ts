@@ -29,4 +29,8 @@ export const PUBLIC_THEMES: Theme[] = [
 		name: 'KERN-UX Standard (v2)',
 		key: 'kern-v2',
 	},
+	{
+		name: 'Zoll Design System',
+		key: 'desy-v11',
+	},
 ];

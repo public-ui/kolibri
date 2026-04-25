@@ -1,0 +1,49 @@
+@use '../mixins/link' as *;
+@use '../functions/to-rem' as *;
+
+@layer kol-theme-component {
+	@include kol-link('kol-link');
+	@include kol-link('kol-button');
+
+	.kol-nav {
+		--kol-nav-item-padding-left: -16;
+
+		&__list {
+			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
+			--kol-nav-nested-padding-left: calc(var(--kol-nav-item-padding-left) + 8);
+
+			&-item {
+				--kol-nav-item-padding-left: calc(var(--kol-nav-nested-padding-left) + 8);
+			}
+		}
+		&__navigation {
+			padding-bottom: to-rem(8);
+		}
+
+		&__entry {
+			.kol-button,
+			.kol-link {
+				display: block;
+				height: to-rem(49);
+				border-bottom: 1px solid var(--color-dark-blue-100-16);
+
+				&__text {
+					display: block;
+					padding: to-rem(16) 0 to-rem(8) to-rem(var(--kol-nav-item-padding-left));
+				}
+
+				&:hover {
+					border-bottom-color: var(--color-blue-100);
+					box-shadow: inset 0 -1px 0 var(--color-blue-100);
+				}
+
+				&:hover,
+				&:focus {
+					.kol-span__label {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}

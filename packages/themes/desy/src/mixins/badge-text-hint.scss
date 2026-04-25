@@ -1,0 +1,13 @@
+@mixin badge-text-hint {
+	.badge-text-hint {
+		background-color: var(--color-dark-blue-100-09);
+		border-radius: var(--radius-m);
+		color: var(--color-dark-blue-100);
+		padding: 0 0.3em;
+
+		.kol-span & {
+			// kol-span is a flex-element without white space between elements
+			margin-left: 0.25em;
+		}
+	}
+}

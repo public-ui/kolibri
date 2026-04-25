@@ -35,6 +35,9 @@ jobs:
           - name: theme-default
             path: packages/themes/default
             type: e2e
+          - name: theme-desy
+            path: packages/themes/desy
+            type: e2e
           - name: theme-kern
             path: packages/themes/kern
             type: e2e
