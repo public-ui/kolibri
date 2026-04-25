@@ -349,6 +349,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 								_variant="ghost"
 								_disabled={isDisabled}
 								class="kol-single-select__delete"
+								data-testid="single-select-delete"
 								hidden={isDisabled}
 								_on={{
 									onClick: (event: MouseEvent) => {
@@ -712,6 +713,15 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
+		// Check if current value is still valid in the new options
+		if (this._value !== null && Array.isArray(value)) {
+			const valueExists = value.some((option) => option.value === this._value);
+			if (!valueExists) {
+				this._value = null;
+				this._inputValue = '';
+				this.controller.setFormAssociatedValue(null);
+			}
+		}
 		if (this._isOpen) {
 			this.setFilteredOptionsByQuery(this._inputValue);
 		} else {
@@ -794,6 +804,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		if (!Array.isArray(this._options)) {
 			return;
 		}
+
+		// Normalize undefined to null
+		if (value === undefined) {
+			value = null;
+			this._value = null;
+		}
+
 		if (this.isSelectionCleared && value === null) {
 			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];

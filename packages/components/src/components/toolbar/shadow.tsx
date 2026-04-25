@@ -36,7 +36,9 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	public async focus(): Promise<void> {
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
-			return delegateFocus(this.host!, () => setFocus(firstEnabledItem));
+			return delegateFocus(this.host!, async () => {
+				await (firstEnabledItem as any).focus?.();
+			});
 		}
 	}
 
