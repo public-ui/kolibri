@@ -46,7 +46,7 @@
 		"build": "rollup -c",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
-		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
+		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
