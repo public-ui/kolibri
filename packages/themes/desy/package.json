@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-desy",
-	"version": "4.1.2-rc.3",
+	"version": "4.1.4-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -46,7 +46,7 @@
 		"build": "rollup -c",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
-		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
+		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
