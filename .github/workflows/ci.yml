@@ -60,7 +60,17 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-kern', 'theme-ecl']
+        include:
+          - package: 'test-tag-name-transformer'
+            test-cmd: 'pnpm --filter=@public-ui/test-tag-name-transformer test'
+          - package: 'theme-bwst'
+            test-cmd: 'pnpm --filter=@public-ui/theme-bwst test'
+          - package: 'theme-default'
+            test-cmd: 'pnpm --filter=@public-ui/theme-default test'
+          - package: 'theme-kern'
+            test-cmd: 'pnpm --filter=@public-ui/theme-kern test'
+          - package: 'theme-ecl'
+            test-cmd: 'pnpm --filter=@public-ui/theme-ecl test:theme:ecl-ec'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -73,7 +83,7 @@ jobs:
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
       - name: Visual Tests
-        run: pnpm --filter=@public-ui/${{ matrix.package }} test
+        run: ${{ matrix.test-cmd }}
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
