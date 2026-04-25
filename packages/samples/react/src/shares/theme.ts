@@ -18,7 +18,7 @@ export const PUBLIC_THEMES: Theme[] = [
 		key: 'bwst',
 	},
 	{
-		name: 'European Commission (in progress)',
+		name: 'European Commission',
 		key: 'ecl-ec',
 	},
 	{
