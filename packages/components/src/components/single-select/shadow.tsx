@@ -711,9 +711,20 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
-		this.updateInputValue(this._value);
+		// When a selected value is no longer in the updated options, clear it.
+		// Use state._options which is guaranteed to be a parsed array after the controller call.
+		if (this._value !== null && Array.isArray(this.state._options)) {
+			const valueStillValid = this.state._options.some((option) => option.value === this._value && !option.disabled);
+			if (!valueStillValid) {
+				this._value = null;
+				this._inputValue = '';
+				this.controller.setFormAssociatedValue(null);
+			}
+		}
 		if (this._isOpen) {
 			this.setFilteredOptionsByQuery(this._inputValue);
+		} else {
+			this.updateInputValue(this._value);
 		}
 	}
 
