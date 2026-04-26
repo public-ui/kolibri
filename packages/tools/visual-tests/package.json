@@ -39,7 +39,7 @@
 		"@babel/preset-env": "7.29.2",
 		"eslint": "8.57.1",
 		"knip": "5.88.1",
-		"prettier": "3.8.1"
+		"prettier": "3.8.3"
 	},
 	"files": [
 		"playwright.config.js",
