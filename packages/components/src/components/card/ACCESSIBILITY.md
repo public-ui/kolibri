@@ -1,6 +1,7 @@
 # Card Component - Accessibility Documentation
 
 ## Overview
+
 The `kol-card` component uses semantic HTML5 `<article>` markup to provide proper accessibility for screen reader users and follow WCAG 2.2 Level AA standards.
 
 ## Semantic Markup
@@ -15,12 +16,15 @@ The card uses `<article>` as its container element because:
 4. **WCAG 2.2 compliance** - Meets accessibility guidelines for semantic structure
 
 ### Previous Approach (Deprecated)
+
 Previously, the card used:
+
 ```html
-<div role="group" aria-labelledby="...">
+<div role="group" aria-labelledby="..."></div>
 ```
 
 This was problematic because:
+
 - ❌ `role="group"` is not prominently announced by screen readers
 - ❌ `aria-labelledby` is often ignored with `role="group"`
 - ❌ Users don't understand the semantic relationship
@@ -29,30 +33,29 @@ This was problematic because:
 ## HTML Structure
 
 ### Single Card
+
 ```html
-<kol-card-wc _label="Card Title">
-  Content goes here
-</kol-card-wc>
+<kol-card-wc _label="Card Title"> Content goes here </kol-card-wc>
 ```
 
 Renders as:
+
 ```html
 <article aria-labelledby="nonce-id">
-  <h2 id="nonce-id">Card Title</h2>
-  <div class="kol-card__content">
-    Content goes here
-  </div>
+	<h2 id="nonce-id">Card Title</h2>
+	<div class="kol-card__content">Content goes here</div>
 </article>
 ```
 
 ### Multiple Cards (Recommended)
+
 When displaying multiple cards, wrap them in a list to provide semantic grouping:
 
 ```html
 <ul>
-  <li><kol-card-wc _label="Card 1">Content 1</kol-card-wc></li>
-  <li><kol-card-wc _label="Card 2">Content 2</kol-card-wc></li>
-  <li><kol-card-wc _label="Card 3">Content 3</kol-card-wc></li>
+	<li><kol-card-wc _label="Card 1">Content 1</kol-card-wc></li>
+	<li><kol-card-wc _label="Card 2">Content 2</kol-card-wc></li>
+	<li><kol-card-wc _label="Card 3">Content 3</kol-card-wc></li>
 </ul>
 ```
 
@@ -60,31 +63,35 @@ When displaying multiple cards, wrap them in a list to provide semantic grouping
 
 ## Accessibility Features
 
-| Feature | Implementation |
-|---------|-----------------|
-| **Semantic Container** | `<article>` element |
-| **Labeling** | `aria-labelledby` linking to heading |
-| **Heading** | Proper heading level (`<h1>`–`<h6>`) |
-| **Close Button** | Optional `_hasCloser` prop with accessible button |
-| **Source Order** | Content in logical reading order |
+| Feature                | Implementation                                    |
+| ---------------------- | ------------------------------------------------- |
+| **Semantic Container** | `<article>` element                               |
+| **Labeling**           | `aria-labelledby` linking to heading              |
+| **Heading**            | Proper heading level (`<h1>`–`<h6>`)              |
+| **Close Button**       | Optional `_hasCloser` prop with accessible button |
+| **Source Order**       | Content in logical reading order                  |
 
 ## Screen Reader Experience
 
 ### When navigating by landmarks:
+
 - Single cards don't create extra landmarks (avoids clutter)
 - Users understand each card as distinct content
 
 ### When navigating by headings:
+
 - Card title is properly announced with heading level
 - Users can jump between cards using heading navigation
 
 ### When navigating by regions:
+
 - Each card is a region labeled by its title
 - Users understand the boundaries of each card's content
 
 ## Best Practices
 
 ✅ **DO:**
+
 - Use `<ul>` or `<ol>` to group multiple cards
 - Use proper heading hierarchy (especially in card title)
 - Keep card content logically structured
@@ -92,6 +99,7 @@ When displaying multiple cards, wrap them in a list to provide semantic grouping
 - Use `_hasCloser` only when cards can be dismissed
 
 ❌ **DON'T:**
+
 - Wrap entire cards in clickable elements (creates overly long link text)
 - Use decorative images without proper alt text
 - Nest interactive elements inside the card title
@@ -100,6 +108,7 @@ When displaying multiple cards, wrap them in a list to provide semantic grouping
 ## Interactive Cards
 
 When a card needs to be clickable as a whole:
+
 - Don't wrap the entire card in a `<a>` or `<button>` (makes link text too long)
 - Instead, make specific interactive elements (links/buttons) clickable
 - Use CSS to expand the clickable area if needed
@@ -107,6 +116,7 @@ When a card needs to be clickable as a whole:
 ## Testing
 
 The component is tested for:
+
 - Proper semantic rendering
 - Correct heading structure
 - Accessible close button functionality
