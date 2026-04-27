@@ -5,15 +5,16 @@
 		margin: 0 0 to-rem(12) 0;
 
 		&__hint {
-			font-size: to-rem(14.4);
 			color: var(--color-black-70);
+
+			font-size: to-rem(14.4);
 		}
 
 		&--disabled .kol-input-radio {
 			&__input {
-				border-color: var(--color-black-60);
-				background-color: var(--color-black-10);
 				opacity: 0.5;
+				background-color: var(--color-black-10);
+				border-color: var(--color-black-60);
 				cursor: not-allowed;
 			}
 		}

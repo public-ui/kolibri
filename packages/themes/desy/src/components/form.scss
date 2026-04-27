@@ -15,11 +15,11 @@
 	.kol-alert {
 		&__content {
 			ul {
-				margin: 0;
 				color: var(--color-rot);
 				display: flex;
-				flex-direction: column;
+				margin: 0;
 				gap: 8px;
+				flex-direction: column;
 				list-style-type: decimal;
 
 				.kol-link {
@@ -32,14 +32,15 @@
 					}
 
 					&::before {
-						content: '\f309';
 						color: var(--color-rot);
 						display: inline-block;
+						margin-right: to-rem(4);
+						padding: 0 to-rem(3);
+
+						content: '\f309';
 						font-family: 'Font Awesome 6 Free';
 						font-size: to-rem(11);
 						font-weight: 900;
-						margin-right: to-rem(4);
-						padding: 0 to-rem(3);
 					}
 				}
 			}

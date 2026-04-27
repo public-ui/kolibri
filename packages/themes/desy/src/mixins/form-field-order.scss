@@ -22,10 +22,11 @@
 
 @mixin kol-form-field {
 	.kol-form-field {
+		color: var(--color-dark-blue-100);
+
 		font-family: var(--font-family);
 		font-size: to-rem(16);
 		line-height: 1.25;
-		color: var(--color-dark-blue-100);
 
 		&--disabled {
 			.kol-form-field__input {
@@ -34,8 +35,9 @@
 		}
 
 		&__label {
-			font-weight: 700;
 			margin-bottom: to-rem(12);
+
+			font-weight: 700;
 
 			&-legend {
 				margin-bottom: to-rem(12);
@@ -44,8 +46,8 @@
 
 		&__input {
 			display: flex;
-			flex-direction: column;
 			gap: to-rem(12);
+			flex-direction: column;
 
 			&--orientation-horizontal {
 				flex-direction: row;
@@ -62,8 +64,9 @@
 		}
 
 		&__hint {
-			font-size: to-rem(14.4);
 			color: var(--color-black-70);
+
+			font-size: to-rem(14.4);
 		}
 	}
 }

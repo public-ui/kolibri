@@ -18,10 +18,10 @@
 			}
 
 			@media (min-width: $breakpoint-md) {
+				width: max-content;
+				margin-left: auto;
 				grid-column: 1;
 				grid-row: 1;
-				margin-left: auto;
-				width: max-content;
 			}
 		}
 
@@ -51,8 +51,8 @@
 
 	.kol-button {
 		&__text {
-			border: none;
 			min-width: unset !important; // override style from button mixin
+			border: none;
 		}
 	}
 }

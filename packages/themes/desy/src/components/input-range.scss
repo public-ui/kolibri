@@ -20,10 +20,10 @@
 				--track-border-width: 2px;
 				--track-border-color: var(--color-dark-blue-100);
 				--track-bg-color: var(--color-blue-100-06);
-
-				border-width: 0;
 				box-shadow: none;
 				outline-width: 0;
+
+				border-width: 0;
 			}
 
 			&:focus-within {
@@ -34,13 +34,13 @@
 
 		&__input--range {
 			background-color: var(--track-bg-color);
-			border: solid var(--track-border-width) var(--track-border-color);
 			border-radius: 3px;
+			border: solid var(--track-border-width) var(--track-border-color);
 
 			&::-webkit-slider-thumb {
 				background-color: var(--color-white-100);
-				border: 1px solid var(--color-blue-100);
 				outline: solid var(--thumb-outline-width) var(--color-dark-blue-100);
+				border: 1px solid var(--color-blue-100);
 				outline-offset: 2px;
 			}
 

@@ -63,8 +63,8 @@
 		}
 
 		&__adornment--end &__smart-button + &__icon {
-			border-left: 1px solid var(--border-color);
 			padding-left: to-rem(7);
+			border-left: 1px solid var(--border-color);
 		}
 
 		&__container {

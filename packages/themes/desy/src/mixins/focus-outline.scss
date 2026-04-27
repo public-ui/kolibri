@@ -1,7 +1,7 @@
 @use '../functions/to-rem' as *;
 
 @mixin focus-outline {
+	outline: var(--color-dark-blue-100) solid var(--border-width-m);
 	border-radius: var(--radius-m);
 	outline-offset: 2px;
-	outline: var(--color-dark-blue-100) solid var(--border-width-m);
 }

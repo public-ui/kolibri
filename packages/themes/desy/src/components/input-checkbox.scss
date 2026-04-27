@@ -37,8 +37,8 @@
 		}
 
 		.kol-field-control {
-			margin: 0;
 			min-height: unset;
+			margin: 0;
 			gap: to-rem(16);
 
 			&__input,
@@ -48,10 +48,10 @@
 			}
 
 			.kol-checkbox {
-				height: unset;
 				width: unset;
-				min-height: 0;
 				min-width: 0;
+				height: unset;
+				min-height: 0;
 			}
 
 			&--error {
@@ -78,40 +78,42 @@
 
 			.kol-input {
 				background-color: var(--color-white-100);
-				border-radius: to-rem(10);
-				border: 1px solid var(--kol-checkbox-main-color);
-				display: block;
-				position: relative;
-				height: to-rem(18);
-				width: to-rem(30);
-				min-width: 0;
 				/* Visible with forced colors  */
 				outline: transparent solid to-rem(1);
+				border-radius: to-rem(10);
+				display: block;
+				position: relative;
+				width: to-rem(30);
+				min-width: 0;
+				height: to-rem(18);
+				border: 1px solid var(--kol-checkbox-main-color);
 
 				&:focus {
 					border-radius: to-rem(10);
 				}
 
 				&::before {
-					content: '';
-					inset: 0;
 					background-color: transparent;
+					border-radius: to-rem(10);
 					position: absolute;
+					inset: 0;
 					width: auto;
 					height: auto;
-					border-radius: to-rem(10);
+
+					content: '';
 				}
 
 				&::after {
-					content: '';
+					background-color: var(--color-white-100);
+					border-radius: 50%;
+					position: absolute;
+					top: -1px;
+					left: -1px;
 					width: to-rem(16);
 					height: to-rem(16);
-					left: -1px;
-					top: -1px;
-					border-radius: 50%;
-					background-color: var(--color-white-100);
+
+					content: '';
 					border: 1px solid var(--kol-checkbox-main-color);
-					position: absolute;
 				}
 
 				&:checked {

@@ -602,9 +602,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
-      '@public-ui/theme-default':
+      '@public-ui/themes':
         specifier: workspace:*
-        version: link:../../themes/default
+        version: link:../../themes
       rxjs:
         specifier: 7.8.2
         version: 7.8.2

@@ -5,27 +5,28 @@
 	@include icon;
 
 	.kol-badge {
-		font-family: var(--font-family);
+		border-radius: 60rem;
 		display: inline-flex;
-		font-style: normal;
-		font-size: to-rem(12);
-		font-weight: 700;
+		padding: to-rem(2) to-rem(4) 0 to-rem(4);
 		align-items: center;
 		justify-content: center;
+
+		font-family: var(--font-family);
+		font-size: to-rem(12);
+		font-weight: 700;
 		line-height: 1;
-		border-radius: 60rem;
-		padding: to-rem(2) to-rem(4) 0 to-rem(4);
+		font-style: normal;
 
 		&--has-smart-button {
 			align-items: center;
 		}
 
 		&__label {
+			color: var(--color-white-100);
+			padding: to-rem(4) to-rem(8);
+			gap: to-rem(8);
 			align-items: center;
 			font-style: normal;
-			gap: to-rem(8);
-			padding: to-rem(4) to-rem(8);
-			color: var(--color-white-100);
 
 			.kol-span__container {
 				display: flex;

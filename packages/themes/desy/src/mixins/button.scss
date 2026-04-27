@@ -107,26 +107,28 @@
 		}
 
 		&__text {
+			color: var(--text-color);
 			background-color: var(--text-background-color);
 			border-color: var(--text-border-color);
-			border-radius: var(--radius-m);
 			border-style: solid;
-			border-width: var(--text-border-width, var(--border-width-m));
-			color: var(--text-color);
-			font-weight: 700;
-			min-height: to-rem(36);
+			border-radius: var(--radius-m);
 			position: relative;
+			min-height: to-rem(36);
+			border-width: var(--text-border-width, var(--border-width-m));
+
+			font-weight: 700;
 			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
 			&::before {
-				content: '';
 				position: absolute;
 				inset: 0;
+
+				content: '';
 			}
 
 			&.kol-span--hide-label {
-				padding: to-rem(4) to-rem(4);
 				width: auto;
+				padding: to-rem(4) to-rem(4);
 			}
 
 			&:not(.kol-span--hide-label) {
@@ -147,8 +149,8 @@
 		}
 
 		.kol-span__container {
-			gap: to-rem(8);
 			position: relative;
+			gap: to-rem(8);
 		}
 
 		.kol-icon {
@@ -156,16 +158,16 @@
 		}
 
 		.badge-text-hint {
+			color: var(--color-dark-blue-100);
 			background-color: var(--color-dark-blue-100-09);
 			border-radius: var(--radius-m);
-			color: var(--color-dark-blue-100);
 			padding: 0 0.3em;
 		}
 
 		&--inline,
 		&--inline .kol-span {
-			min-height: 0;
 			min-width: 0;
+			min-height: 0;
 
 			.kol-icon {
 				font-size: inherit;

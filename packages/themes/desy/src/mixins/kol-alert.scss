@@ -8,23 +8,24 @@
 		$root: &;
 
 		--alert-msg-text-color: var(--alert-accent-color);
+		color: var(--color-dark-blue-100);
+		background: var(--alert-background-color, #fdfefe);
+		display: flex;
+		position: relative;
+		flex-wrap: wrap;
 
 		align-items: center;
-		background: var(--alert-background-color, #fdfefe);
-		color: var(--color-dark-blue-100);
-		display: flex;
-		flex-wrap: wrap;
+
 		font-family: var(--font-family);
 		line-height: 1.25;
-		position: relative;
 
 		&--variant-card {
-			border-radius: var(--radius-l);
-			border: var(--border-width-s) solid var(--alert-accent-color);
-			display: block;
-			padding: to-rem(16) to-rem(56) to-rem(16) to-rem(50);
 			box-shadow: inset to-rem(7) 0 0 var(--alert-accent-color);
+			border-radius: var(--radius-l);
+			display: block;
 			max-width: to-rem(480);
+			padding: to-rem(16) to-rem(56) to-rem(16) to-rem(50);
+			border: var(--border-width-s) solid var(--alert-accent-color);
 
 			#{$root}__content {
 				display: inline;
@@ -33,8 +34,9 @@
 
 			#{$root}__closer {
 				position: absolute;
-				right: to-rem(4);
 				top: to-rem(4);
+				right: to-rem(4);
+
 				font-size: to-rem(24);
 			}
 		}
@@ -44,11 +46,12 @@
 
 			#{$root}__closer {
 				position: absolute;
-				right: 0;
 				top: 0;
-				font-size: to-rem(16);
+				right: 0;
 				width: to-rem(20);
 				height: to-rem(20);
+
+				font-size: to-rem(16);
 
 				.kol-button {
 					min-width: to-rem(20);
@@ -104,8 +107,8 @@
 
 			#{$root}--variant-card & {
 				display: inline-flex;
-				gap: to-rem(8);
 				margin-left: to-rem(-34);
+				gap: to-rem(8);
 				vertical-align: middle;
 			}
 
@@ -116,9 +119,9 @@
 		}
 
 		&__container-content {
-			align-items: center;
 			display: flex;
 			flex-wrap: wrap;
+			align-items: center;
 		}
 
 		&__heading {
@@ -133,13 +136,14 @@
 		&__icon {
 			color: var(--alert-accent-color);
 
+			font-family: desy-icons;
+
 			#{$root}--variant-card & {
 				font-size: to-rem(24);
 			}
 
 			#{$root}--variant-msg & {
 				font-size: to-rem(16);
-				font-family: desy-icons;
 
 				&::before {
 					content: var(--kol-icon-alternative);

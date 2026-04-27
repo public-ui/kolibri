@@ -41,8 +41,8 @@ $duration: 0.4s;
 			}
 
 			.kol-card {
-				display: grid;
 				background-color: var(--color-white-100);
+				display: grid;
 
 				&__close-button .kol-button {
 					outline-offset: to-rem(-2);
@@ -68,14 +68,16 @@ $duration: 0.4s;
 	}
 }
 
-@include slideAnimation('slideInLeft', 'translateX(-100%)', 'translateX(0)');
-@include slideAnimation('slideOutLeft', 'translateX(0)', 'translateX(-100%)');
+@layer kol-theme-component {
+	@include slideAnimation('slideInLeft', 'translateX(-100%)', 'translateX(0)');
+	@include slideAnimation('slideOutLeft', 'translateX(0)', 'translateX(-100%)');
 
-@include slideAnimation('slideInRight', 'translateX(100%)', 'translateX(0)');
-@include slideAnimation('slideOutRight', 'translateX(0)', 'translateX(100%)');
+	@include slideAnimation('slideInRight', 'translateX(100%)', 'translateX(0)');
+	@include slideAnimation('slideOutRight', 'translateX(0)', 'translateX(100%)');
 
-@include slideAnimation('slideInTop', 'translateY(-100%)', 'translateY(0)');
-@include slideAnimation('slideOutTop', 'translateY(0)', 'translateY(-100%)');
+	@include slideAnimation('slideInTop', 'translateY(-100%)', 'translateY(0)');
+	@include slideAnimation('slideOutTop', 'translateY(0)', 'translateY(-100%)');
 
-@include slideAnimation('slideInBottom', 'translateY(100%)', 'translateY(0)');
-@include slideAnimation('slideOutBottom', 'translateY(0)', 'translateY(100%)');
+	@include slideAnimation('slideInBottom', 'translateY(100%)', 'translateY(0)');
+	@include slideAnimation('slideOutBottom', 'translateY(0)', 'translateY(100%)');
+}

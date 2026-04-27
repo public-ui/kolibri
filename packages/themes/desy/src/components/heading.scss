@@ -3,9 +3,10 @@
 
 @layer kol-theme-component {
 	.kol-headline {
+		margin: 0;
+
 		font-family: var(--font-family);
 		line-height: 1.25;
-		margin: 0;
 
 		&--h1 {
 			@include kol-typography-h1;

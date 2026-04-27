@@ -81,11 +81,11 @@ void (async () => {
 								key: 'default',
 							},
 							{
-								name: 'BWSt',
+								name: 'BWSt (v4)',
 								key: 'bwst',
 							},
 							{
-								name: 'European Commission',
+								name: 'European Commission (v4)',
 								key: 'ecl-ec',
 							},
 							{
@@ -97,7 +97,7 @@ void (async () => {
 								key: 'kern-v2',
 							},
 							{
-								name: 'Zoll Design System',
+								name: 'Zoll Design System (v11)',
 								key: 'desy-v11',
 							},
 						]}

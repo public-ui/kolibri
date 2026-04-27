@@ -6,10 +6,10 @@
 		@include card;
 
 		&__card {
-			border-radius: 4px;
 			box-shadow:
 				0 to-rem(24) to-rem(60) rgb(0, 0, 0, 0.3),
 				0 to-rem(8) to-rem(16) 0 rgb(0, 0, 0, 0.1);
+			border-radius: 4px;
 
 			&::backdrop {
 				background-color: rgb(0, 0, 0, 0.3);

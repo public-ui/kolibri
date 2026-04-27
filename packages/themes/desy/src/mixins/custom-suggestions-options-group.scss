@@ -2,17 +2,17 @@
 
 @mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
 	.kol-custom-suggestions-options-group {
-		border-radius: 3px;
-		border: 1px solid var(--border-color);
-		left: to-rem(-8);
-		margin-top: to-rem(4);
-		max-height: calc($option-height * $visible-options + to-rem(2));
-		overflow-x: hidden;
-		overflow-y: auto;
-		padding: to-rem(4) 0;
-		right: to-rem(-1);
 		box-shadow:
 			0 4px 8px rgb(0, 0, 0, 0.1),
 			0 1px 2px rgb(0, 0, 0, 0.1);
+		border-radius: 3px;
+		right: to-rem(-1);
+		left: to-rem(-8);
+		max-height: calc($option-height * $visible-options + to-rem(2));
+		margin-top: to-rem(4);
+		padding: to-rem(4) 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		border: 1px solid var(--border-color);
 	}
 }
