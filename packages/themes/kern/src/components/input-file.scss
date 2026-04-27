@@ -4,7 +4,7 @@
 @layer kol-theme-component {
 	@include input-core;
 	.kol-input {
-		opacity: 0 !important;
+		opacity: 0;
 	}
 
 	.kol-input-container {

@@ -1,5 +1,5 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"ignoreDependencies": ["@public-ui/angular-v21", "@public-ui/components", "@public-ui/theme-default", "@tailwindcss/postcss", "adopted-style-sheets", "hono"],
+	"ignoreDependencies": ["@public-ui/angular-v21", "@public-ui/components", "@public-ui/themes", "@tailwindcss/postcss", "adopted-style-sheets", "hono"],
 	"project": ["src/**/*.{js,ts}"]
 }

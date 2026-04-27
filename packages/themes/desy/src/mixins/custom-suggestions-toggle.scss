@@ -1,0 +1,27 @@
+@use '../functions/to-rem' as *;
+
+@mixin kol-custom-suggestions-toggle-theme {
+	.kol-custom-suggestions-toggle {
+		color: var(--border-color);
+		display: grid;
+		min-height: to-rem(40);
+		flex: 0 0 var(--a11y-min-size);
+		place-items: center;
+
+		font-size: to-rem(24);
+		border-left: 1px solid var(--border-color);
+		transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+		&:focus {
+			outline: 0;
+		}
+
+		.kol-input-container--error &:not(:disabled) {
+			color: var(--color-blue-100);
+		}
+
+		&:not(:disabled):hover {
+			background: var(--color-blue-100-06);
+		}
+	}
+}

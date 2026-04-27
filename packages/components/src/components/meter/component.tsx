@@ -18,7 +18,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	private readonly ctrl = new MeterController(this.stateAccess);
 
 	/**
-	 * Defines the upper boundary of the high range.
+	 * From this value to the max value is the high range of the meter. Below this value is the middle range.
 	 */
 	@Prop()
 	public _high?: number;
@@ -40,7 +40,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	}
 
 	/**
-	 * Defines the lower boundary of the low range.
+	 * From this value to the min value is the low range of the meter. Above this value is the middle range.
 	 */
 	@Prop()
 	public _low?: number;
@@ -52,9 +52,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	/**
 	 * Defines the maximum value of the element.
+	 * Default like native component.
 	 */
 	@Prop()
-	public _max!: number;
+	public _max: number = 1;
 
 	@Watch('_max')
 	public watchMax(value?: number): void {
@@ -63,9 +64,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	/**
 	 * Defines the minimum value of the element.
+	 * Default like native component.
 	 */
 	@Prop()
-	public _min?: number;
+	public _min: number = 0;
 
 	@Watch('_min')
 	public watchMin(value?: number): void {
@@ -73,7 +75,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	}
 
 	/**
-	 * Defines the optimal value of the element.
+	 * Indicates the optimal range of the element.
+	 * If this lies in the high range, the high range will be optimum, the middle range will be suboptimum and the low range will be critical.
+	 * If this lies in the low range, the low range will be optimum, the middle range will be suboptimum and the high range will be critical.
+	 * If this lies in the middle range, both low and high range will be suboptimum and nothing will be critical.
 	 */
 	@Prop()
 	public _optimum?: number;
@@ -95,7 +100,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	}
 
 	/**
-	 * Defines the unit of the step values (not shown).
+	 * Defines the unit of the value.
 	 */
 	@Prop()
 	public _unit: string = '%';
@@ -106,7 +111,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	}
 
 	/**
-	 * Defines the value of the element.
+	 * Defines the value of the element. Is capped between min and max.
 	 */
 	@Prop()
 	public _value!: number;

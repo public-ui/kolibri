@@ -1,17 +1,22 @@
-@use '../@shared/input-text' as *;
+@use '../mixins/input-container' as *;
 @use '../../mixins/to-rem' as *;
 
-.kol-input-color {
-	&__inputs-wrapper {
-		gap: to-rem(16);
-	}
+@layer kol-theme-component {
+	@include input-container;
 
-	&__input {
-		&--text,
-		&--color {
-			background-color: var(--color-white);
-			min-height: calc(var(--a11y-min-size) - to-rem(8));
-			border: 1px solid var(--color-blue);
+	.kol-input-color {
+		&__inputs-wrapper {
+			height: 100%;
+			gap: to-rem(4);
+		}
+
+		&__input {
+			&--text,
+			&--color {
+				background-color: var(--ecl-color-white);
+				min-height: calc(var(--a11y-min-size) - to-rem(8));
+				border: 0;
+			}
 		}
 	}
 }

@@ -14,6 +14,20 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 /**
  * @internal
  * @slot - Allows arbitrary HTML to be inserted into the content area of the card.
+ *
+ * ## Accessibility
+ * The card uses semantic `<article>` markup with `aria-labelledby` to properly label the content region.
+ * When displaying multiple cards, wrap them in a `<ul>` or `<ol>` to group them semantically.
+ *
+ * @example
+ * // Single card
+ * <kol-card-wc _label="Card Title">Content here</kol-card-wc>
+ *
+ * // Multiple cards (recommended)
+ * <ul>
+ *   <li><kol-card-wc _label="Card 1">Content 1</kol-card-wc></li>
+ *   <li><kol-card-wc _label="Card 2">Content 2</kol-card-wc></li>
+ * </ul>
  */
 @Component({
 	tag: 'kol-card-wc',
@@ -40,12 +54,7 @@ export class KolCardWc implements CardAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				{/*
-					Using a <div> with role="group" instead of <section> prevents assistive technologies
-					from turning each card with a heading into a landmark region. This avoids cluttering
-					page navigation when many cards are present.
-				*/}
-				<div aria-labelledby={this.nonce} class="kol-card" role="group">
+				<article aria-labelledby={this.nonce} class="kol-card">
 					<KolHeadingFc class="kol-card__header" id={this.nonce} level={this.state._level}>
 						{this.state._label}
 					</KolHeadingFc>
@@ -67,7 +76,7 @@ export class KolCardWc implements CardAPI {
 							_tooltipAlign="left"
 						/>
 					)}
-				</div>
+				</article>
 			</Host>
 		);
 	}

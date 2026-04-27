@@ -35,16 +35,16 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      - name: Build
-        run: pnpm -r build
       - name: Format
         run: pnpm -r format
+      - name: Unused
+        run: pnpm -r unused
+      - name: Build
+        run: pnpm -r build
       - name: Lint
         run: pnpm -r lint
       - name: Unit Tests
         run: pnpm -r test:unit
-      - name: Unused
-        run: pnpm -r unused
 
   e2e-tests:
     continue-on-error: true
@@ -79,7 +79,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-kern']
+        package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

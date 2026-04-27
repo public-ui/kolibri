@@ -1,0 +1,19 @@
+@use '../mixins/button' as *;
+
+@layer kol-theme-component {
+	@include button('kol-button');
+
+	.kol-popover-button {
+		&--inline {
+			margin: 0 to-rem(4);
+
+			.kol-button__text {
+				padding: 0;
+			}
+		}
+
+		&__popover {
+			overflow: visible;
+		}
+	}
+}

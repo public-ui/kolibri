@@ -1,0 +1,36 @@
+@use '../functions/to-rem' as *;
+
+@mixin kol-field-control-theme {
+	.kol-field-control {
+		margin: 0 0 to-rem(12) 0;
+
+		&__hint {
+			color: var(--color-black-70);
+
+			font-size: to-rem(14.4);
+		}
+
+		&--disabled .kol-input-radio {
+			&__input {
+				opacity: 0.5;
+				background-color: var(--color-black-10);
+				border-color: var(--color-black-60);
+				cursor: not-allowed;
+			}
+		}
+
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+	}
+}

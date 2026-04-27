@@ -42,6 +42,8 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
 	const icon = open ? 'kolicon-chevron-down' : 'kolicon-chevron-right';
 
+	const headingId = `${id}-heading`;
+
 	return (
 		<div
 			id={id}
@@ -60,6 +62,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 					class={clsx('collapsible__heading-button', HeadingButtonProps?.class)}
 					ref={HeadingButtonProps?.ref}
 					slot="expert"
+					id={headingId}
 					_ariaControls={`${id}-control`}
 					_ariaExpanded={open}
 					_disabled={disabled}
@@ -70,7 +73,13 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			</KolHeadingFc>
 			<div class={clsx('collapsible__wrapper', ContentProps?.wrapperClass)}>
 				<div class={clsx('collapsible__wrapper-animation', ContentProps?.animationClass)}>
-					<div aria-hidden={open === false ? 'true' : undefined} class={clsx('collapsible__content', ContentProps?.class)} id={`${id}-control`}>
+					<div
+						aria-hidden={open === false ? 'true' : undefined}
+						aria-labelledby={headingId}
+						role="region"
+						class={clsx('collapsible__content', ContentProps?.class)}
+						id={`${id}-control`}
+					>
 						{children}
 					</div>
 				</div>

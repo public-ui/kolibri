@@ -1,50 +1,31 @@
 @use '../../mixins/to-rem' as *;
 
 @layer kol-theme-component {
-	:host {
-		--kolibri-spacing: #{to-rem(4)};
-	}
-
 	.kol-tabs {
 		&__button-group {
-			margin-bottom: to-rem(-1);
-			border-bottom: 1px solid var(--color-grey-25);
+			border-bottom: 2px solid var(--ecl-color-neutral-60);
 		}
 
 		.kol-button {
-			margin-bottom: to-rem(-1);
+			margin-bottom: -2px;
+			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
 			border: none;
+			border-bottom: solid 2px transparent;
 
 			&:hover:not(:disabled) {
-				.kol-span {
-					color: var(--color-blue-130);
-				}
+				border-bottom-color: var(--ecl-color-dark-80);
 			}
 
 			&:focus {
-				.kol-span {
-					outline: var(--color-blue-130) solid to-rem(2);
-				}
+				outline: 2px solid var(--ecl-color-primary);
+				border-radius: 1px;
+				outline-offset: -2px;
 			}
 
 			&.selected {
-				.kol-span {
-					color: var(--color-blue);
-					box-shadow: 0 -3px var(--color-blue);
-					border-color: var(--color-grey-25);
-					border-style: solid;
-					border-top-color: var(--color-blue);
-					border-bottom-color: white;
-					border-width: 1px;
+				border-bottom-color: var(--ecl-color-primary);
 
-					font-weight: var(--font-weight-bold);
-				}
-			}
-
-			.kol-span {
-				min-width: var(--a11y-min-size);
-				min-height: var(--a11y-min-size);
-				padding: to-rem(8);
+				font-weight: var(--ecl-font-weight-bold);
 			}
 		}
 	}

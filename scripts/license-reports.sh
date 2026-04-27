@@ -14,6 +14,7 @@ npx license-report --output=html --package=packages/icons/package.json >> licens
 npx license-report --output=html --package=packages/samples/react/package.json >> license-reports/sample-react.html
 npx license-report --output=html --package=packages/themes/bwst/package.json >> license-reports/theme-bwst.html
 npx license-report --output=html --package=packages/themes/default/package.json >> license-reports/theme-default.html
+npx license-report --output=html --package=packages/themes/desy/package.json >> license-reports/theme-desy.html
 npx license-report --output=html --package=packages/themes/ecl/package.json >> license-reports/theme-ecl.html
 npx license-report --output=html --package=packages/themes/kern/package.json >> license-reports/theme-kern.html
 npx license-report --output=html --package=packages/themes/package.json >> license-reports/themes.html

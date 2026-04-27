@@ -150,13 +150,21 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 			onInput: this.onInput,
 			onChange: this.onChange,
 			onKeyDown: this.onKeyDown,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
+			onFocus: (event: FocusEvent) => {
+				const prevFocusElem = event.relatedTarget as HTMLElement;
+				const isStepButton = prevFocusElem?.classList.contains('kol-input-number__step-button');
+				if (!isStepButton) {
+					this.controller.onFacade.onFocus(event);
+					this.inputHasFocus = true;
+				}
 			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
+			onBlur: (event: FocusEvent) => {
+				const nextFocusElem = event.relatedTarget as HTMLElement;
+				const isStepButton = nextFocusElem?.classList.contains('kol-input-number__step-button');
+				if (!isStepButton) {
+					this.controller.onFacade.onBlur(event);
+					this.inputHasFocus = false;
+				}
 			},
 		};
 	}
@@ -179,6 +187,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
+					// native number buttons also throw the change event on every click
+					this.controller.onFacade.onChange(event, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
@@ -206,6 +216,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
+					// native number buttons also throw the change event on every click
+					this.controller.onFacade.onChange(event, this._value);
 					this.inputRef?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}

@@ -1,35 +1,35 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/indented-text' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
+	@include button('kol-button');
 	.kol-details {
+		--detail-icon-rotate: rotate(180deg);
+
 		&__heading-button {
-			&:focus-within {
-				cursor: pointer;
-			}
-
 			.kol-button {
-				.kol-span__label {
-					border-bottom-color: #000;
+				width: max-content;
+
+				@include ghost-button;
+
+				.kol-span__container {
+					flex-direction: row-reverse;
 				}
-			}
 
-			.kol-icon {
-				font-size: to-rem(19.2);
-			}
-
-			.kol-span__container {
-				display: flex;
-				gap: 0;
-				text-align: left;
+				.kol-span__icon--left {
+					transform: var(--detail-icon-rotate);
+					transition: transform 0.3s ease-in-out;
+				}
 			}
 		}
 
+		&.collapsible--open {
+			--detail-icon-rotate: rotate(0);
+		}
+
 		&__content {
-			&.indented-text {
-				@include indented-text;
-				margin: 0;
-			}
+			margin-top: var(--ecl-spacing-s);
+			padding-inline-start: var(--ecl-spacing-m);
 		}
 	}
 }
