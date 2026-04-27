@@ -3,6 +3,7 @@
 @mixin kol-input {
 	.kol-input {
 		color: var(--color-dark-blue-100);
+
 		font-weight: 400;
 		border: none;
 
@@ -11,8 +12,8 @@
 		}
 
 		&:disabled {
-			color: var(--color-black-60);
 			opacity: 1;
+			color: var(--color-black-60);
 
 			&::placeholder {
 				color: var(--color-black-60);

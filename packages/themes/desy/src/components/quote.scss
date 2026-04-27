@@ -2,12 +2,12 @@
 
 @layer kol-theme-component {
 	.kol-quote {
-		border-radius: var(--radius-l);
-		border: var(--border-width-s) solid var(--color-blue-30);
-		display: flex;
-		flex-direction: column;
-		padding: to-rem(16) to-rem(20);
 		box-shadow: inset to-rem(7) 0 0 var(--color-blue-30);
+		border-radius: var(--radius-l);
+		display: flex;
+		padding: to-rem(16) to-rem(20);
+		flex-direction: column;
+		border: var(--border-width-s) solid var(--color-blue-30);
 
 		&__blockquote {
 			margin: 0;
@@ -20,8 +20,8 @@
 		}
 
 		&__cite {
-			font-style: normal;
 			font-size: to-rem(14.4);
+			font-style: normal;
 		}
 	}
 }

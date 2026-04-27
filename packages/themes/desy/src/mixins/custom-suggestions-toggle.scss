@@ -2,14 +2,15 @@
 
 @mixin kol-custom-suggestions-toggle-theme {
 	.kol-custom-suggestions-toggle {
-		display: grid;
-		place-items: center;
-		border-left: 1px solid var(--border-color);
-		font-size: to-rem(24);
 		color: var(--border-color);
-		transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
-		flex: 0 0 var(--a11y-min-size);
+		display: grid;
 		min-height: to-rem(40);
+		flex: 0 0 var(--a11y-min-size);
+		place-items: center;
+
+		font-size: to-rem(24);
+		border-left: 1px solid var(--border-color);
+		transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
 		&:focus {
 			outline: 0;

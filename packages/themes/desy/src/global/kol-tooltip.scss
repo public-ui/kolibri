@@ -13,14 +13,15 @@
 		}
 
 		&__content {
+			color: var(--color-dark-blue-100);
 			background-color: var(--color-white-100);
 			border-radius: var(--radius-l);
-			color: var(--color-dark-blue-100);
+			max-width: to-rem(400);
+			padding: to-rem(24);
+
 			font-family: var(--font-family);
 			font-size: to-rem(16);
 			line-height: 1.55;
-			max-width: to-rem(400);
-			padding: to-rem(24);
 		}
 	}
 }

@@ -6,16 +6,17 @@
 
 		&__label {
 			color: var(--color-dark-blue-100);
-			line-height: 1.25;
+
 			font-weight: 700;
+			line-height: 1.25;
 
 			@at-root #{$root}--read-only & {
 				color: var(--color-black-70);
 			}
 
 			@at-root #{$root}--disabled & {
-				color: var(--color-black-60);
 				opacity: 1;
+				color: var(--color-black-60);
 			}
 
 			&__read-only {
@@ -29,18 +30,20 @@
 
 		&__hint {
 			color: var(--color-black-70);
+			margin-top: to-rem(4);
+
 			font-size: to-rem(14.4);
 			font-weight: 400;
 			line-height: 1.25;
-			margin-top: to-rem(4);
 		}
 
 		&__counter {
 			color: var(--color-black-70);
+			margin-top: to-rem(4);
+
 			font-size: to-rem(14.4);
 			font-weight: 400;
 			line-height: 1.25;
-			margin-top: to-rem(4);
 		}
 
 		&--required & {

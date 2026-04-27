@@ -3,21 +3,22 @@
 
 @layer kol-theme-component {
 	.kol-textarea {
-		background: transparent;
-		border: none;
 		color: var(--color-dark-blue-100);
+		background: transparent;
 		display: block;
-		font-weight: 400;
 		min-height: to-rem(88);
 		padding: to-rem(7) 0;
+
+		font-weight: 400;
+		border: none;
 
 		&--readonly {
 			color: var(--color-black-70);
 		}
 
 		&:disabled {
-			color: var(--color-black-60);
 			opacity: 1;
+			color: var(--color-black-60);
 
 			&::placeholder {
 				color: var(--color-black-60);

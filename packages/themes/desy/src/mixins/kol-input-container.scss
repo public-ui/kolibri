@@ -7,16 +7,16 @@
 	.kol-input-container {
 		--a11y-min-size: #{to-rem(40)};
 
+		border-radius: 3px;
+
 		min-height: 0;
+		margin-top: to-rem(4);
+		padding: 0 to-rem(7);
+		border: 1px solid var(--border-color);
+		transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 		$root: &;
 
 		--border-color: var(--color-blue-100);
-
-		border-radius: 3px;
-		border: 1px solid var(--border-color);
-		margin-top: to-rem(4);
-		padding: 0 to-rem(7);
-		transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
 		&:has(&__smart-button) {
 			padding-right: 0;
@@ -41,9 +41,9 @@
 		}
 
 		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus, .kol-select:focus-visible) {
+			outline: var(--color-dark-blue-100) solid 2px;
 			border: 1px solid var(--border-color);
 			outline-offset: 2px;
-			outline: var(--color-dark-blue-100) solid 2px;
 		}
 
 		&__smart-button {
@@ -54,10 +54,11 @@
 
 			.kol-button {
 				color: var(--color-blue-100);
-				font-size: to-rem(24);
-				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 				min-width: to-rem(38);
 				min-height: to-rem(40);
+
+				font-size: to-rem(24);
+				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
 				&:disabled {
 					display: none;
@@ -68,10 +69,10 @@
 				}
 
 				&:focus {
-					border-radius: 3px;
 					background: var(--color-dark-blue-100-06);
-					outline-offset: 2px;
 					outline: var(--color-dark-blue-100) solid 2px;
+					border-radius: 3px;
+					outline-offset: 2px;
 				}
 			}
 		}

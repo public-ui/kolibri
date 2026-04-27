@@ -4,8 +4,8 @@
 
 @mixin table-settings {
 	.kol-table-settings {
-		right: to-rem(8);
 		top: to-rem(8);
+		right: to-rem(8);
 
 		&__content {
 			padding: to-rem(24);
@@ -22,12 +22,12 @@
 		}
 
 		&__actions {
-			border-top: 0.0625em solid #b7bec4;
 			display: flex;
-			gap: to-rem(8);
-			justify-content: flex-end;
 			margin-top: to-rem(16);
 			padding-top: to-rem(16);
+			gap: to-rem(8);
+			justify-content: flex-end;
+			border-top: 0.0625em solid #b7bec4;
 		}
 	}
 

@@ -15,46 +15,50 @@
 	.kol-table {
 		--kol-table-line-color: var(--color-dark-blue-40);
 		--kol-table-faded-bg-color: var(--color-dark-blue-20);
+		padding: to-rem(8);
+		overflow-x: auto;
+		overflow-y: hidden;
 
 		font-family: var(--font-family);
 		line-height: 1.25;
 		word-break: break-word;
-		overflow-x: auto;
-		overflow-y: hidden;
-		padding: to-rem(8);
 
 		&__table {
-			border: 1px solid var(--kol-table-line-color);
 			border-radius: 6px;
-			border-bottom-width: 0;
 			width: 100%;
+			border-bottom-width: 0;
+			border: 1px solid var(--kol-table-line-color);
 			border-spacing: 0;
 		}
 
 		&__caption {
-			padding: to-rem(8);
+			color: #6c6c6c;
 			min-height: calc(var(--a11y-min-size) + 2px);
+			padding: to-rem(8);
+
 			font-size: to-rem(14.4);
 			font-weight: 400;
-			color: #6c6c6c;
 		}
 
 		&__head-row {
-			font-weight: 700;
 			background-color: var(--kol-table-faded-bg-color);
+
+			font-weight: 700;
 		}
 
 		&__cell {
-			padding: to-rem(16);
-			font-size: to-rem(16);
 			color: var(--color-dark-blue-100);
+			padding: to-rem(16);
+
+			font-size: to-rem(16);
 			font-weight: 400;
 			border-bottom: 1px solid var(--kol-table-line-color);
 
 			&--subtext {
+				color: var(--color-black-70);
+
 				font-size: to-rem(14.4);
 				font-weight: 400;
-				color: var(--color-black-70);
 			}
 
 			&--header {

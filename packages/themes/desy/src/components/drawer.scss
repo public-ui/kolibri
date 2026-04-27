@@ -41,8 +41,8 @@ $duration: 0.4s;
 			}
 
 			.kol-card {
-				display: grid;
 				background-color: var(--color-white-100);
+				display: grid;
 
 				&__close-button .kol-button {
 					outline-offset: to-rem(-2);

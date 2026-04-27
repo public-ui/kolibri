@@ -9,15 +9,15 @@
 	.#{$block-classname} {
 		&__group {
 			display: inline-flex;
-			align-items: center;
 			width: 100%;
+			align-items: center;
 		}
 
 		&__input {
+			position: relative;
+			padding: 0;
 			flex-grow: 1;
 			border: none;
-			padding: 0;
-			position: relative;
 		}
 
 		.kol-input-container {
@@ -34,8 +34,8 @@
 
 			&:focus {
 				background: var(--color-dark-blue-100-06);
-				outline-offset: 2px;
 				outline: var(--color-dark-blue-100) solid 2px;
+				outline-offset: 2px;
 			}
 		}
 	}

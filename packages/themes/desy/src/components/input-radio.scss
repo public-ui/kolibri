@@ -14,12 +14,12 @@
 	.kol-form-field {
 		--a11y-min-size: to-rem(24);
 		--kol-radio-main-color: var(--color-blue-100);
-
-		border: 0;
+		padding: 0;
 		gap: to-rem(16);
 		flex-wrap: wrap;
 		align-items: flex-start;
-		padding: 0;
+
+		border: 0;
 
 		&__input {
 			gap: to-rem(12);

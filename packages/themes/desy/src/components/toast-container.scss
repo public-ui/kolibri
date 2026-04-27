@@ -12,8 +12,8 @@
 	@include kol-alert;
 
 	.kol-toast-item {
-		display: block;
 		background-color: #fff;
+		display: block;
 		margin-top: to-rem(16);
 	}
 }

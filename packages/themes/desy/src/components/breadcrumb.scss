@@ -22,9 +22,10 @@
 		}
 
 		&__separator {
-			font-size: to-rem(24);
 			color: var(--color-blue-100);
 			padding: 0 to-rem(8);
+
+			font-size: to-rem(24);
 
 			--kol-icon-alternative: var(--small-chevron-right);
 		}
