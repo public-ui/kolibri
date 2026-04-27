@@ -307,6 +307,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									ref={this.catchRef}
 									class="single-select__input"
 									data-testid="single-select-input"
+									id={this.state._id}
 									type="text"
 									aria-autocomplete="both"
 									aria-controls="listbox"
