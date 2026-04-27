@@ -44,7 +44,7 @@ import { SingleSelectController } from './controller';
 	},
 })
 export class KolSingleSelect implements SingleSelectAPI {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private oldValue?: StencilUnknown;
