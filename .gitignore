@@ -11,3 +11,5 @@ node_modules/
 *.tgz
 
 node-compile-cache/
+
+.claude/settings.local.json
