@@ -166,13 +166,16 @@ jobs:
     outputs:
       has-new-commits: ${{ steps.check.outputs.has-new-commits }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 2
       - id: check
         run: |
-          COMMIT_COUNT=$(git rev-list --count HEAD@{1}..HEAD 2>/dev/null || echo "1")
-          [[ $COMMIT_COUNT -gt 0 ]] && \
+          LAST_COMMIT=$(git log -1 --format=%ct)
+          CURRENT=$(date +%s)
+          DIFF=$((CURRENT - LAST_COMMIT))
+          HOURS=$((DIFF / 3600))
+          [[ $HOURS -lt 1 ]] && \
             echo "has-new-commits=true" >> $GITHUB_OUTPUT || \
             echo "has-new-commits=false" >> $GITHUB_OUTPUT
 
@@ -200,7 +203,7 @@ jobs:
     outputs:
       should-scan: ${{ steps.activity.outputs.should-scan }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - id: activity
         run: |
           LAST_COMMIT=$(git log -1 --format=%ct)
@@ -260,12 +263,12 @@ on:
 
 **Änderung**: 
 ```yaml
-- uses: actions/setup-node@v6
+- uses: actions/setup-node@v4
   with:
-    node-version: 24
+    node-version: 22
     cache: 'pnpm'  # <-- Add this
 
-- uses: pnpm/action-setup@v5
+- uses: pnpm/action-setup@v4
   with:
     version: 10
     run_install: true  # Let action handle install
@@ -281,7 +284,7 @@ on:
 **Änderung**: Add Playwright browser cache:
 ```yaml
 - name: Cache Playwright browsers
-  uses: actions/cache@v5
+  uses: actions/cache@v4
   with:
     path: ~/.cache/ms-playwright
     key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
