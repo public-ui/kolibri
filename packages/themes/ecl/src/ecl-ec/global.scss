@@ -152,7 +152,12 @@
 		padding: 0 0.3em;
 	}
 
-	.disabled label, .disabled:focus-within label, [aria-disabled="true"], [aria-disabled="true"]:focus, [disabled], [disabled]:focus {
+	.disabled label,
+	.disabled:focus-within label,
+	[aria-disabled='true'],
+	[aria-disabled='true']:focus,
+	[disabled],
+	[disabled]:focus {
 		opacity: 0.5;
 	}
 }
