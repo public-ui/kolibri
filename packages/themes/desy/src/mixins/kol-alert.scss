@@ -136,12 +136,13 @@
 		&__icon {
 			color: var(--alert-accent-color);
 
+			font-family: desy-icons;
+
 			#{$root}--variant-card & {
 				font-size: to-rem(24);
 			}
 
 			#{$root}--variant-msg & {
-				font-family: desy-icons;
 				font-size: to-rem(16);
 
 				&::before {

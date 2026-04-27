@@ -6,6 +6,7 @@
 
 	.kol-input-container {
 		--a11y-min-size: #{to-rem(40)};
+		--border-color: var(--color-blue-100);
 
 		border-radius: 3px;
 
@@ -15,8 +16,6 @@
 		border: 1px solid var(--border-color);
 		transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 		$root: &;
-
-		--border-color: var(--color-blue-100);
 
 		&:has(&__smart-button) {
 			padding-right: 0;
