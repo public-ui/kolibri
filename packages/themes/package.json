@@ -52,7 +52,7 @@
 		"lint:eslint": "eslint src",
 		"lint:tsc": "tsc --noemit",
 		"prebuild": "pnpm prepare:theme-ecl-icons",
-		"prepare": "npm-run-all2 prepare:components prepare:theme-bwst prepare:theme-default prepare:theme-ecl-icons prepare:theme-ecl prepare:theme-kern",
+		"prepare": "npm-run-all2 prepare:components prepare:theme-bwst prepare:theme-default prepare:theme-desy prepare:theme-ecl-icons prepare:theme-ecl prepare:theme-kern",
 		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"prepare:theme-bwst": "cpy \"bwst/assets/**/*\" assets --dot",
 		"prepare:theme-default": "cpy \"default/assets/**/*\" assets --dot",
