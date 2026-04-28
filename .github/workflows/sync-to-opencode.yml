@@ -13,7 +13,7 @@ jobs:
     outputs:
       has-new-commits: ${{ steps.check.outputs.has-new-commits }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 2
@@ -21,10 +21,13 @@ jobs:
       - name: Check for new commits
         id: check
         run: |
-          COMMIT_COUNT=$(git rev-list --count HEAD@{1}..HEAD 2>/dev/null || echo "1")
-          if [[ $COMMIT_COUNT -gt 0 ]]; then
+          LAST_COMMIT=$(git log -1 --format=%ct)
+          CURRENT=$(date +%s)
+          DIFF=$((CURRENT - LAST_COMMIT))
+          HOURS=$((DIFF / 3600))
+          if [[ $HOURS -lt 1 ]]; then
             echo "has-new-commits=true" >> $GITHUB_OUTPUT
-            echo "✅ Found $COMMIT_COUNT new commit(s)"
+            echo "✅ New commit(s) within last hour"
           else
             echo "has-new-commits=false" >> $GITHUB_OUTPUT
             echo "⏭️  No new commits, skipping sync"
@@ -45,7 +48,7 @@ jobs:
           - release/2
           - release/3
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
           ref: ${{ matrix.branch }}

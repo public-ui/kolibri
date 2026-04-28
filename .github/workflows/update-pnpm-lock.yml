@@ -61,21 +61,21 @@ jobs:
       changed: ${{ steps.detect.outputs.changed }}
     steps:
       - name: Checkout target branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: ${{ needs.validate-branch.outputs.target_branch }}
           persist-credentials: false
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v4
         with:
           version: 10
           run_install: false
 
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: pnpm
 
       - name: Refresh pnpm lock file
@@ -120,7 +120,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Checkout target branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: ${{ needs.validate-branch.outputs.target_branch }}
           token: ${{ steps.app-token.outputs.token }}
