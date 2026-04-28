@@ -3,10 +3,10 @@
 ## Context
 
 **Problem**: Das Kolibri-Repository hat 22 GitHub-Workflows mit erheblichen Redundanzen und fehlenden Bedingungslogiken. Dies führt zu:
-- ~300-400 unnötigen Workflow-Ausführungen pro Jahr
-- ~100-150 verschwendeten Maschinenminuten pro Monat (~2-2,5 Stunden/Woche)
-- Unnötiger Energieverbrauch und CO2-Fußabdruck
-- Erhöhter Wartungsaufwand durch duplizierte Logik
+- ~28.000 verschwendeten Machine-Minuten pro Jahr (~468 Stunden)
+- sync-to-opencode allein: ~4.080 Min/Monat unnötige Laufzeit (17×/Tag × 4 Branches)
+- security-scan: ~2.880 Min/Monat auch ohne neue Commits (4×/Tag × 3 Branches)
+- Erhöhter Wartungsaufwand durch duplizierte Logik (3 Benchmark-Workflows, 2 Deploy-Workflows)
 
 **Ziel**: Alle Workflows optimieren, damit Jobs nur noch laufen, wenn sie wirklich notwendig sind. Fokus auf maximale Effizienz und Nachhaltigkeit bei vollständiger Beibehaltung der Qualitätssicherung.
 
@@ -54,13 +54,12 @@
 
 | Problem | Impact | Details |
 |---------|--------|---------|
-| **sync-to-opencode läuft ohne Bedingung** | KRITISCH | 16 Runs/Tag, ohne zu prüfen ob Commits vorhanden sind = ~300 unnötige Runs/Jahr |
-| **3 Benchmark-Workflows (90% Duplikation)** | HOCH | Identische Jobs mit gleicher Logik, nur unterschiedliche Namen = ~20 Min/Woche Wartung |
-| **2 Security-Scan Workflows (90% Duplikation)** | HOCH | security-scan.yml + security-scan-schedule.yml = ~210 redundante Runs/Jahr |
-| **2 Netlify Deploy-Workflows (90% Code-Duplikation)** | MITTEL | draft-deploy.yml + test-deploy.yml = ~30 Min/Woche Wartung |
-| **visual-tests läuft auf jedem PR** | MITTEL | Auch wenn nur Docs/Config geändert wurden = ~30-40% unnötige Runs |
-| **security-scan-schedule ohne Activity-Check** | MITTEL | Läuft alle 6h auch wenn keine neuen Commits = ~4-6 Std/Woche Machine-Time |
-| **auto-dependency-updater ohne Cache** | NIEDRIG | ~3-5 Min zusätzliche Zeit pro Run |
+| **sync-to-opencode läuft ohne Bedingung** | KRITISCH | 17 Runs/Tag × 4 Branches = 4.080 Min/Monat, davon ~75% ohne neue Commits |
+| **security-scan ohne Activity-Check** | KRITISCH | 4×/Tag × 3 Branches = 2.880 Min/Monat auch ohne neue Commits |
+| **3 Benchmark-Workflows (90% Duplikation)** | HOCH | Identische Jobs, nur unterschiedliche Namen → Wartungsaufwand |
+| **2 Netlify Deploy-Workflows (90% Code-Duplikation)** | MITTEL | draft-deploy.yml + test-deploy.yml = identische Build/Deploy-Logik |
+| **visual-tests läuft auf jedem PR** | MITTEL | Auch bei Docs/Config-only Changes = ~25% unnötige Runs × 900 Min/Monat |
+| **auto-dependency-updater ohne Cache** | NIEDRIG | 120 Job-Runs/Monat × ~3 Min unnötige Install-Zeit = 360 Min/Monat |
 
 ---
 
@@ -166,7 +165,7 @@ jobs:
     outputs:
       has-new-commits: ${{ steps.check.outputs.has-new-commits }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 2
       - id: check
@@ -175,7 +174,7 @@ jobs:
           CURRENT=$(date +%s)
           DIFF=$((CURRENT - LAST_COMMIT))
           HOURS=$((DIFF / 3600))
-          [[ $HOURS -lt 1 ]] && \
+          [[ $HOURS -lt 2 ]] && \
             echo "has-new-commits=true" >> $GITHUB_OUTPUT || \
             echo "has-new-commits=false" >> $GITHUB_OUTPUT
 
@@ -186,8 +185,8 @@ jobs:
 ```
 
 **Benefit**: 
-- Sparen ~8-10 Stunden/Woche Machine-Time
-- Reduziert ~300 Runs/Jahr
+- Spart ~945 Min/Monat (~15.8 Std/Monat) Machine-Time
+- ~118 unnötige Matrix-Jobs/Monat entfallen
 - Nur echte Syncs bei echten Commits
 
 #### 2.2 security-scan-schedule.yml - Activity Check
@@ -203,7 +202,7 @@ jobs:
     outputs:
       should-scan: ${{ steps.activity.outputs.should-scan }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - id: activity
         run: |
           LAST_COMMIT=$(git log -1 --format=%ct)
@@ -221,9 +220,9 @@ jobs:
 ```
 
 **Benefit**: 
-- Sparen ~4-6 Stunden/Woche Machine-Time
-- Intelligente Ausführung nur bei echtem Bedarf
-- Reduziert ~80 Runs/Jahr
+- Spart ~660 Min/Monat (~11 Std/Monat) Machine-Time
+- Intelligente Ausführung nur bei echtem Bedarf (7h-Fenster)
+- targeted-scan läuft ausschließlich manuell (kein Schedule-Doppellauf)
 
 #### 2.3 visual-tests-base.yml - Path Filtering
 **Datei**: `.github/workflows/visual-tests-base.yml`
@@ -263,12 +262,12 @@ on:
 
 **Änderung**: 
 ```yaml
-- uses: actions/setup-node@v4
+- uses: actions/setup-node@v6
   with:
     node-version: 22
     cache: 'pnpm'  # <-- Add this
 
-- uses: pnpm/action-setup@v4
+- uses: pnpm/action-setup@v6
   with:
     version: 10
     run_install: true  # Let action handle install
@@ -284,7 +283,7 @@ on:
 **Änderung**: Add Playwright browser cache:
 ```yaml
 - name: Cache Playwright browsers
-  uses: actions/cache@v4
+  uses: actions/cache@v5
   with:
     path: ~/.cache/ms-playwright
     key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -324,19 +323,27 @@ on:
 
 ## Expected Impact
 
+| Optimierung | Machine Min/Monat gespart | Std/Monat |
+|-------------|--------------------------|-----------|
+| **sync-to-opencode** check-commits (2h-Fenster) | ~945 Min | ~15.8 Std |
+| **security-scan** activity-check (7h-Fenster) | ~660 Min | ~11.0 Std |
+| **auto-dependency-updater** pnpm cache | ~360 Min | ~6.0 Std |
+| **visual-tests** paths filter (~25% weniger Runs) | ~225 Min | ~3.8 Std |
+| **CI** Playwright cache (e2e + visual) | ~150 Min | ~2.5 Std |
+| **Benchmark** Playwright cache | ~16 Min | ~0.3 Std |
+| **Gesamt** | **~2.340 Min/Monat** | **~39 Std/Monat** |
+
 | Metrik | Vorher | Nachher | Ersparnis |
 |--------|--------|---------|-----------|
-| **Monatliche Workflow-Runs** | ~1200 | ~800 | **33%** |
-| **Machine Minutes/Monat** | ~180 | ~70 | **61%** |
-| **Workflows (Maintenance)** | 22 | 19 | **13%** |
-| **Code-Duplikation** | High | Low | **40%** |
-| **Energie/CO2-Footprint** | 100% | 39% | **61%** |
+| **Machine Minutes/Monat** | ~7.860 | ~5.520 | **~30%** |
+| **Workflows (Dateien)** | 22 | 21 | **-1 netto** |
+| **Code-Duplikation** (Deploy-Workflows) | 100% | ~10% | **-90%** |
 
 **Geschätzte Jahreseinsparung**:
-- ~400 Workflow-Runs
-- ~1300 Machine Minutes (~21.7 Stunden)
-- ~$12-18 GitHub Actions Kosten
-- CO2-Footprint proportional reduziert (~270kg CO2/Jahr bei US-Strommix)
+- ~28.080 Machine-Minuten/Jahr (~468 Stunden/Jahr)
+- Haupttreiber: sync-to-opencode (~11.340 Min/Jahr) und security-scan (~7.920 Min/Jahr)
+- Bei privaten Repos (GitHub-hosted, Linux): ~$3.74/Min × 468 Std = **~$224/Jahr**
+- Für public Repos (kostenlos): Ersparnis in Serverauslastung und schnellerer Feedback-Zeit
 
 ---
 
