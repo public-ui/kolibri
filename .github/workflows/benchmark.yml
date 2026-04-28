@@ -66,6 +66,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-
 
+      - name: Validate pr-number for pr-check mode
+        if: inputs.mode == 'pr-check' && inputs.pr-number == ''
+        run: |
+          echo "::error::pr-number is required when mode is 'pr-check'"
+          exit 1
+
       - name: Install and execute benchmark
         uses: ./.github/actions/benchmark
 

@@ -8,8 +8,6 @@ on:
       - 'LICENSE'
       - '.github/ISSUE_TEMPLATE/**'
       - '.github/PULL_REQUEST_TEMPLATE/**'
-      - 'WORKFLOW_OPTIMIZATION_PLAN.md'
-      - 'OPTIMIZATION_SUMMARY.md'
   push:
     branches:
       - 'develop'

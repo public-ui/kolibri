@@ -60,13 +60,11 @@ jobs:
             echo "⏭️  Skipping scan: no commits in last 7 hours (last commit was ${HOURS}h ago)"
           fi
 
-  # Manual/targeted scan (single branch)
+  # Manual/targeted scan (single branch, manual dispatch only)
   targeted-scan:
     name: Security Scan
     needs: check-activity
-    if: |
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'schedule' && needs.check-activity.outputs.should-scan == 'true')
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

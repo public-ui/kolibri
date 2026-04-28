@@ -25,7 +25,7 @@ jobs:
           CURRENT=$(date +%s)
           DIFF=$((CURRENT - LAST_COMMIT))
           HOURS=$((DIFF / 3600))
-          if [[ $HOURS -lt 1 ]]; then
+          if [[ $HOURS -lt 2 ]]; then
             echo "has-new-commits=true" >> $GITHUB_OUTPUT
             echo "✅ New commit(s) within last hour"
           else
