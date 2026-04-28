@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate-server",
-	"version": "3.1.5-rc.1",
+	"version": "3.1.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
