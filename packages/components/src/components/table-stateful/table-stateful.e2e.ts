@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { KoliBriTableDataType, KoliBriTableHeaders, TableHeaderCells } from '../../schema';
 
@@ -19,6 +19,14 @@ const HEADERS: TableHeaderCells = {
 const SORTABLE_DATA = [{ id: '3' }, { id: '1' }, { id: '2' }];
 
 type Data = (typeof DATA)[0];
+
+const getFirstRenderedCellText = async (page: Page): Promise<string> => {
+	return page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
+		const statelessTable = el.shadowRoot?.querySelector('kol-table-stateless-wc');
+		const firstCell = statelessTable?.shadowRoot?.querySelector('tbody tr td');
+		return firstCell?.textContent?.trim() || '';
+	});
+};
 
 test.describe('kol-table-stateful', () => {
 	test.describe('kol-table-stateful (string ids)', () => {
@@ -109,39 +117,28 @@ test.describe('kol-table-stateful', () => {
 				};
 				el._headers = headers as unknown as string;
 			});
-
-			// Wait for the initial sort to be applied
-			await page.waitForTimeout(50);
+			await page.waitForChanges();
 
 			// Verify initial ASC sort: first row should be '1'
-			const firstRowBeforeReset = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				return (el as unknown as { state: { _sortedData: KoliBriTableDataType[] } }).state._sortedData[0].id;
-			});
+			const firstRowBeforeReset = await getFirstRenderedCellText(page);
 			expect(firstRowBeforeReset).toBe('1');
 
-			// Change sort to DESC by calling handleSort internally
-			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				const headers = (el as unknown as { state: { _headers: KoliBriTableHeaders } }).state._headers;
-				const cell = headers.horizontal?.[0]?.[0];
-				if (cell) {
-					(el as unknown as { changeCellSort: (cell: unknown) => void }).changeCellSort(cell);
-					(el as unknown as { changeCellSort: (cell: unknown) => void }).changeCellSort(cell);
-				}
-			});
+			// Toggle sorting by clicking the visible header sort button (ASC -> DESC)
+			const idSortButton = page.locator('kol-table-stateful').getByRole('button', { name: 'ID' });
+			await idSortButton.click();
+			await idSortButton.click();
+			await page.waitForChanges();
 
 			// Verify DESC sort: first row should be '3'
-			const firstRowAfterDescSort = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				return (el as unknown as { state: { _sortedData: KoliBriTableDataType[] } }).state._sortedData[0].id;
-			});
+			const firstRowAfterDescSort = await getFirstRenderedCellText(page);
 			expect(firstRowAfterDescSort).toBe('3');
 
 			// Reset sort
 			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.resetSort());
+			await page.waitForChanges();
 
 			// Verify the sort is back to ASC: first row should be '1'
-			const firstRowAfterReset = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				return (el as unknown as { state: { _sortedData: KoliBriTableDataType[] } }).state._sortedData[0].id;
-			});
+			const firstRowAfterReset = await getFirstRenderedCellText(page);
 			expect(firstRowAfterReset).toBe('1');
 		});
 
@@ -166,29 +163,22 @@ test.describe('kol-table-stateful', () => {
 				};
 				el._headers = headers as unknown as string;
 			});
+			await page.waitForChanges();
 
 			// Trigger an ASC sort on the id column
-			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				const headers = (el as unknown as { state: { _headers: KoliBriTableHeaders } }).state._headers;
-				const cell = headers.horizontal?.[0]?.[0];
-				if (cell) {
-					(el as unknown as { changeCellSort: (cell: unknown) => void }).changeCellSort(cell);
-				}
-			});
+			await page.locator('kol-table-stateful').getByRole('button', { name: 'ID' }).click();
+			await page.waitForChanges();
 
 			// Verify ASC sort applied: first row should be '1'
-			const firstRowAfterSort = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				return (el as unknown as { state: { _sortedData: KoliBriTableDataType[] } }).state._sortedData[0].id;
-			});
+			const firstRowAfterSort = await getFirstRenderedCellText(page);
 			expect(firstRowAfterSort).toBe('1');
 
 			// Reset sort
 			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.resetSort());
+			await page.waitForChanges();
 
 			// Verify the sort is cleared: first row should be back to original order '3'
-			const firstRowAfterReset = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
-				return (el as unknown as { state: { _sortedData: KoliBriTableDataType[] } }).state._sortedData[0].id;
-			});
+			const firstRowAfterReset = await getFirstRenderedCellText(page);
 			expect(firstRowAfterReset).toBe('3');
 		});
 	});
