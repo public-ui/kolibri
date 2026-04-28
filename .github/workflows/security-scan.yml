@@ -22,10 +22,6 @@ on:
         description: 'Install dependencies'
         type: boolean
         default: false
-      scan_all_branches:
-        description: 'Scan all branches (develop, release/3, release/2)'
-        type: boolean
-        default: false
 
 concurrency:
   group: ${{ format('workflow-{0}-{1}', github.workflow, github.ref) }}

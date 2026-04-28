@@ -70,6 +70,7 @@ jobs:
         uses: ./.github/actions/benchmark
 
       - name: Remove husky
+        if: inputs.mode != 'pr-check'
         run: rm -rf .husky
         shell: bash
 

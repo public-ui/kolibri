@@ -12,11 +12,6 @@ on:
         type: string
         required: false
         default: ''
-      skip-fork-check:
-        description: 'Skip the fork check (for internal deployments only)'
-        type: boolean
-        required: false
-        default: false
 
 permissions:
   attestations: write

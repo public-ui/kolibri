@@ -6,6 +6,7 @@ on:
       - 'packages/components/**'
       - 'packages/themes/**'
       - 'packages/samples/react/**'
+      - 'packages/test-tag-name-transformer/**'
       - '.github/workflows/visual-tests-base.yml'
       - '.github/actions/pnpm-setup/**'
       - '.github/actions/upload-reports/**'
