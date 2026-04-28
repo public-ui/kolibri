@@ -30,7 +30,7 @@ jobs:
     env:
       version: ${{ matrix.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: ${{ matrix.base }}
           persist-credentials: false
@@ -39,11 +39,11 @@ jobs:
           if grep -q '^overrides:' pnpm-workspace.yaml; then
             sed -i '/^overrides:/,$ d' pnpm-workspace.yaml
           fi
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           cache: 'pnpm'
           node-version: 24
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         id: pnpm-install
         with:
           version: 10
