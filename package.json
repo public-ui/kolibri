@@ -6,7 +6,7 @@
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.9.0",
+		"stylelint": "17.9.1",
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
