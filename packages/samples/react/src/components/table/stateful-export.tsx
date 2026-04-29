@@ -47,7 +47,7 @@ const sanitizeFileName = (value: string): string => {
 const exportRows: ExportRow[] = DATA.map((row) => ({ Date: DATE_FORMATTER.format(row.date), Order: row.order }));
 
 const exportSpreadsheet = async (format: 'ods' | 'xlsx', mimeType: string, rows: ExportRow[], fileName: string): Promise<void> => {
-	const XLSX = await import('@e965/xlsx');
+	const XLSX = await import('xlsx');
 	const workbook = XLSX.utils.book_new();
 	const worksheet = XLSX.utils.json_to_sheet(rows);
 	XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Export');
