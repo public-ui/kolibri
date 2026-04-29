@@ -26,48 +26,48 @@ export const StaticForm: FC = () => {
 
 	// Options for Select/Radio components
 	const GENDER_OPTIONS = [
-		{ label: 'Männlich', value: 'male' },
-		{ label: 'Weiblich', value: 'female' },
-		{ label: 'Divers', value: 'diverse' },
-		{ label: 'Keine Angabe', value: 'none' },
+		{ label: 'Male', value: 'male' },
+		{ label: 'Female', value: 'female' },
+		{ label: 'Diverse', value: 'diverse' },
+		{ label: 'Prefer not to say', value: 'none' },
 	];
 
 	const LANGUAGE_OPTIONS = [
-		{ label: 'Deutsch', value: 'de' },
-		{ label: 'Englisch', value: 'en' },
-		{ label: 'Französisch', value: 'fr' },
-		{ label: 'Spanisch', value: 'es' },
+		{ label: 'German', value: 'de' },
+		{ label: 'English', value: 'en' },
+		{ label: 'French', value: 'fr' },
+		{ label: 'Spanish', value: 'es' },
 	];
 
 	const INTEREST_OPTIONS = [
-		{ label: 'Technologie', value: 'tech' },
-		{ label: 'Sport', value: 'sports' },
-		{ label: 'Kultur', value: 'culture' },
-		{ label: 'Wissenschaft', value: 'science' },
-		{ label: 'Reisen', value: 'travel' },
-		{ label: 'Kochen', value: 'cooking' },
+		{ label: 'Technology', value: 'tech' },
+		{ label: 'Sports', value: 'sports' },
+		{ label: 'Culture', value: 'culture' },
+		{ label: 'Science', value: 'science' },
+		{ label: 'Travel', value: 'travel' },
+		{ label: 'Cooking', value: 'cooking' },
 	];
 
 	return (
 		<>
 			<SampleDescription>
-				<p>Dieses Beispiel zeigt ein praxisnahes Benutzerregistrierungsformular mit KoliBri-Komponenten.</p>
+				<p>This example demonstrates a practical user registration form using KoliBri components.</p>
 				<ol>
 					<li>
-						Aktivieren Sie den <code>experimental mode</code>:{' '}
+						Enable the <code>experimental mode</code>:{' '}
 						<code className="bg-gray-200"><meta name="kolibri" content="dev-mode=false;experimental-mode=true;" /></code>
 					</li>
 					<li>
-						Verwenden Sie ein natives <code>form</code>-Element:{' '}
+						Use a native <code>form</code> element:{' '}
 						<code className="bg-gray-200"><form method="GET">...</form></code>
 					</li>
 					<li>
-						Jedes Eingabefeld benötigt ein <code>name</code>-Attribut:{' '}
-						<code className="bg-gray-200"><KolInputText _name="vorname" _label="Vorname" /></code>
+						Each input field requires a <code>name</code> attribute:{' '}
+						<code className="bg-gray-200"><KolInputText _name="firstname" _label="First name" /></code>
 					</li>
 					<li>
-						Ein Button muss den Typ <code>submit</code> haben:{' '}
-						<code className="bg-gray-200"><KolButton _label="Registrieren" _type="submit" _variant="primary" /></code>
+						One button must have the type <code>submit</code>:{' '}
+						<code className="bg-gray-200"><KolButton _label="Register" _type="submit" _variant="primary" /></code>
 					</li>
 				</ol>
 			</SampleDescription>
@@ -75,7 +75,7 @@ export const StaticForm: FC = () => {
 			<section className="w-full flex flex-col">
 				{searchParams.size > 0 && (
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Übermittelte Daten" />
+						<KolHeading _level={2} _label="Submitted data" />
 						<pre className="text-base">
 							<code>{JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}</code>
 						</pre>
@@ -83,154 +83,154 @@ export const StaticForm: FC = () => {
 				)}
 
 				<form className="grid gap-6" method="get" noValidate>
-					{/* Persönliche Daten */}
+					{/* Personal Information */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Persönliche Daten" />
+						<KolHeading _level={2} _label="Personal Information" />
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<KolInputText _name="vorname" _label="Vorname" _required _hint="Pflichtfeld" />
-							<KolInputText _name="nachname" _label="Nachname" _required _hint="Pflichtfeld" />
+							<KolInputText _name="firstname" _label="First name" _required _hint="Required field" />
+							<KolInputText _name="lastname" _label="Last name" _required _hint="Required field" />
 						</div>
-						<KolInputDate _name="geburtsdatum" _label="Geburtsdatum" _required _hint="Pflichtfeld" />
+						<KolInputDate _name="birthdate" _label="Date of birth" _required _hint="Required field" />
 						<KolInputRadio
-							_name="geschlecht"
-							_label="Geschlecht"
+							_name="gender"
+							_label="Gender"
 							_options={GENDER_OPTIONS}
 							_orientation="horizontal"
 						/>
 					</div>
 
-					{/* Kontaktdaten */}
+					{/* Contact Information */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Kontaktdaten" />
-						<KolInputEmail _name="email" _label="E-Mail-Adresse" _required _hint="Pflichtfeld" _type="email" />
-						<KolInputText _name="telefon" _label="Telefonnummer" _type="tel" />
+						<KolHeading _level={2} _label="Contact Information" />
+						<KolInputEmail _name="email" _label="Email address" _required _hint="Required field" _type="email" />
+						<KolInputText _name="phone" _label="Phone number" _type="tel" />
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<KolInputText _name="strasse" _label="Straße und Hausnummer" />
-							<KolInputText _name="plz" _label="PLZ" />
+							<KolInputText _name="street" _label="Street and house number" />
+							<KolInputText _name="zip" _label="ZIP code" />
 						</div>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<KolInputText _name="ort" _label="Ort" />
+							<KolInputText _name="city" _label="City" />
 							<KolSelect
-								_name="land"
-								_label="Land"
+								_name="country"
+								_label="Country"
 								_options={COUNTRY_OPTIONS}
 								_required
 							/>
 						</div>
 					</div>
 
-					{/* Präferenzen */}
+					{/* Preferences */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Ihre Präferenzen" />
-						<KolInputCheckbox _name="newsletter" _label="Ich möchte den Newsletter abonnieren" />
+						<KolHeading _level={2} _label="Your Preferences" />
+						<KolInputCheckbox _name="newsletter" _label="I want to subscribe to the newsletter" />
 						<KolSelect
-							_name="sprache"
-							_label="Bevorzugte Sprache"
+							_name="language"
+							_label="Preferred language"
 							_options={LANGUAGE_OPTIONS}
 							_required
 						/>
 						<KolSelect
-							_name="interessen"
-							_label="Ihre Interessen (Mehrfachauswahl)"
+							_name="interests"
+							_label="Your interests (multiple selection)"
 							_options={INTEREST_OPTIONS}
 							_multiple
 							_rows={3}
 						/>
 						<KolInputRange
-							_name="benachrichtigungen"
-							_label="Häufigkeit von Benachrichtigungen"
+							_name="notifications"
+							_label="Notification frequency"
 							_min={0}
 							_max={10}
 							_value={3}
 							_step={1}
 							_list={[
-								{ label: 'Nie', value: 0 },
-								{ label: 'Selten', value: 3 },
-								{ label: 'Oft', value: 7 },
-								{ label: 'Immer', value: 10 },
+								{ label: 'Never', value: 0 },
+								{ label: 'Rarely', value: 3 },
+								{ label: 'Often', value: 7 },
+								{ label: 'Always', value: 10 },
 							]}
 						/>
 					</div>
 
-					{/* Zugangsdaten */}
+					{/* Account Credentials */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Zugangsdaten" />
-						<KolInputText _name="benutzername" _label="Benutzername" _required _hint="Pflichtfeld" />
+						<KolHeading _level={2} _label="Account Credentials" />
+						<KolInputText _name="username" _label="Username" _required _hint="Required field" />
 						<KolInputPassword
-							_name="passwort"
-							_label="Passwort"
+							_name="password"
+							_label="Password"
 							_required
-							_hint="Mindestens 8 Zeichen"
+							_hint="Minimum 8 characters"
 							_pattern=".{8,}"
 						/>
 						<KolInputPassword
-							_name="passwort_wiederholung"
-							_label="Passwort wiederholen"
+							_name="password_confirmation"
+							_label="Confirm password"
 							_required
-							_hint="Passwort bestätigen"
+							_hint="Confirm your password"
 							_pattern=".{8,}"
 						/>
 					</div>
 
-					{/* AGB & Datenschutz */}
+					{/* Legal */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Rechtliches" />
+						<KolHeading _level={2} _label="Legal" />
 						<KolInputCheckbox
-							_name="agb"
-							_label="Ich akzeptiere die Allgemeinen Geschäftsbedingungen"
+							_name="terms"
+							_label="I accept the terms and conditions"
 							_required
-							_error="Sie müssen die AGB akzeptieren"
+							_error="You must accept the terms and conditions"
 						/>
 						<KolInputCheckbox
-							_name="datenschutz"
-							_label="Ich bin mit der Verarbeitung meiner Daten gemäß der Datenschutzerklärung einverstanden"
+							_name="privacy"
+							_label="I agree to the processing of my data according to the privacy policy"
 							_required
-							_error="Sie müssen der Datenverarbeitung zustimmen"
+							_error="You must agree to data processing"
 						/>
 						<KolInputCheckbox
-							_name="werbung"
-							_label="Ich bin damit einverstanden, Werbung per E-Mail zu erhalten"
+							_name="marketing"
+							_label="I agree to receive marketing emails"
 						/>
 					</div>
 
 					{/* Avatar Upload */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Profilbild" />
+						<KolHeading _level={2} _label="Profile Picture" />
 						<KolInputFile
 							_name="avatar"
-							_label="Profilbild hochladen"
+							_label="Upload profile picture"
 							_accept="image/*"
-							_hint="Maximal 2MB"
+							_hint="Maximum 2MB"
 						/>
 					</div>
 
-					{/* Farbpräferenz */}
+					{/* Theme Settings */}
 					<div className="grid gap-4">
-						<KolHeading _level={2} _label="Design-Einstellungen" />
+						<KolHeading _level={2} _label="Design Settings" />
 						<KolInputColor
 							_name="theme_color"
-							_label="Wählen Sie Ihre bevorzugte Theme-Farbe"
+							_label="Choose your preferred theme color"
 							_value="#3f51b5"
 						/>
 					</div>
 
-					{/* Kommentare */}
+					{/* Comments */}
 					<div className="grid gap-4">
 						<KolTextarea
-							_name="kommentare"
-							_label="Weitere Kommentare oder Anmerkungen"
+							_name="comments"
+							_label="Additional comments or notes"
 							_rows={5}
-							_placeholder="Hier können Sie uns weitere Informationen mitteilen..."
+							_placeholder="You can provide additional information here..."
 						/>
 					</div>
 
 					{/* Buttons */}
 					<div className="flex flex-wrap gap-4">
-						<KolButton _label="Registrieren" _type="submit" _variant="primary" _icons="codicon codicon-check" />
-						<KolButton _label="Zurücksetzen" _type="reset" _variant="secondary" _icons="codicon codicon-trash" />
+						<KolButton _label="Register" _type="submit" _variant="primary" _icons="codicon codicon-check" />
+						<KolButton _label="Reset" _type="reset" _variant="secondary" _icons="codicon codicon-trash" />
 					</div>
 
-					{/* Hidden Input für erzwungene Übermittlung */}
+					{/* Hidden Input to force submission */}
 					<input type="hidden" value={crypto.randomUUID()} name="random" />
 				</form>
 			</section>
