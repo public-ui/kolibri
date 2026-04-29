@@ -1,9 +1,8 @@
 import type { FC } from 'react';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { KolButton, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import Papa from 'papaparse';
-import * as XLSX from 'xlsx';
 
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
@@ -45,16 +44,26 @@ const sanitizeFileName = (value: string): string => {
 	return sanitized.length > 0 ? sanitized : 'table-export';
 };
 
+const exportRows: ExportRow[] = DATA.map((row) => ({ Date: DATE_FORMATTER.format(row.date), Order: row.order }));
+
+const exportSpreadsheet = async (format: 'ods' | 'xlsx', mimeType: string, rows: ExportRow[], fileName: string): Promise<void> => {
+	const XLSX = await import('xlsx');
+	const workbook = XLSX.utils.book_new();
+	const worksheet = XLSX.utils.json_to_sheet(rows);
+	XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Export');
+	const output = XLSX.write(workbook, { bookType: format, type: 'array' });
+	const blob = new Blob([output], { type: mimeType });
+	triggerBlobDownload(blob, `${fileName}.${format}`);
+};
+
 export const TableStatefulExport: FC = () => {
 	const [filename, setFilename] = useState('table-export');
-
-	const exportRows = useMemo<ExportRow[]>(() => DATA.map((row) => ({ Date: DATE_FORMATTER.format(row.date), Order: row.order })), []);
 
 	const handleFileName = useCallback((_event: Event, value: unknown): void => {
 		setFilename(String(value ?? ''));
 	}, []);
 
-	const safeFileName = useMemo(() => sanitizeFileName(filename), [filename]);
+	const safeFileName = sanitizeFileName(filename);
 
 	const handleCsvExport = useCallback(() => {
 		const csvString = Papa.unparse(exportRows, {
@@ -63,29 +72,15 @@ export const TableStatefulExport: FC = () => {
 		});
 		const csvBlob = new Blob(['\uFEFF', csvString], { type: 'text/csv;charset=utf-8;header=present' });
 		triggerBlobDownload(csvBlob, `${safeFileName}.csv`);
-	}, [exportRows, safeFileName]);
+	}, [safeFileName]);
 
-	const handleOdsExport = useCallback(() => {
-		const workbook = XLSX.utils.book_new();
-		const worksheet = XLSX.utils.json_to_sheet(exportRows);
-		XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Export');
-		const odsBuffer = XLSX.write(workbook, { bookType: 'ods', type: 'array' });
-		const odsBlob = new Blob([odsBuffer], {
-			type: 'application/vnd.oasis.opendocument.spreadsheet',
-		});
-		triggerBlobDownload(odsBlob, `${safeFileName}.ods`);
-	}, [exportRows, safeFileName]);
+	const handleOdsExport = useCallback(async () => {
+		await exportSpreadsheet('ods', 'application/vnd.oasis.opendocument.spreadsheet', exportRows, safeFileName);
+	}, [safeFileName]);
 
-	const handleExcelExport = useCallback(() => {
-		const workbook = XLSX.utils.book_new();
-		const worksheet = XLSX.utils.json_to_sheet(exportRows);
-		XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Export');
-		const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-		const excelBlob = new Blob([excelBuffer], {
-			type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-		});
-		triggerBlobDownload(excelBlob, `${safeFileName}.xlsx`);
-	}, [exportRows, safeFileName]);
+	const handleExcelExport = useCallback(async () => {
+		await exportSpreadsheet('xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', exportRows, safeFileName);
+	}, [safeFileName]);
 
 	return (
 		<>
@@ -96,7 +91,7 @@ export const TableStatefulExport: FC = () => {
 				<KolInputText
 					_label="Export file name"
 					_value={filename}
-					_hint="The entered value is used for CSV and XLSX export."
+					_hint="The entered value is used for ODS, CSV and XLSX export."
 					_on={{
 						onInput: handleFileName,
 					}}
