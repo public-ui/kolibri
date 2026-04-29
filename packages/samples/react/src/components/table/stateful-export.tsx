@@ -21,7 +21,7 @@ const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ label: 'Order', key: 'order', width: 160 },
-			{ label: 'Date', key: 'date', width: 160, render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as unknown as Data).date) },
+			{ label: 'Date', key: 'date', width: 160, render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date) },
 		],
 	],
 };
@@ -50,10 +50,8 @@ export const TableStatefulExport: FC = () => {
 
 	const exportRows = useMemo<ExportRow[]>(() => DATA.map((row) => ({ Date: DATE_FORMATTER.format(row.date), Order: row.order })), []);
 
-	const handleFileName = useCallback((event: Event, value: unknown): void => {
-		if (event.target) {
-			setFilename(typeof value === 'string' ? value : String(value ?? ''));
-		}
+	const handleFileName = useCallback((_event: Event, value: unknown): void => {
+		setFilename(String(value ?? ''));
 	}, []);
 
 	const safeFileName = useMemo(() => sanitizeFileName(filename), [filename]);
@@ -87,7 +85,6 @@ export const TableStatefulExport: FC = () => {
 					_value={filename}
 					_hint="The entered value is used for CSV and XLSX export."
 					_on={{
-						onChange: handleFileName,
 						onInput: handleFileName,
 					}}
 				/>
