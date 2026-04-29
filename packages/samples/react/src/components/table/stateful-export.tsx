@@ -63,6 +63,17 @@ export const TableStatefulExport: FC = () => {
 		triggerBlobDownload(csvBlob, `${safeFileName}.csv`);
 	}, [exportRows, safeFileName]);
 
+	const handleOdsExport = useCallback(() => {
+		const workbook = XLSX.utils.book_new();
+		const worksheet = XLSX.utils.json_to_sheet(exportRows);
+		XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Export');
+		const odsBuffer = XLSX.write(workbook, { bookType: 'ods', type: 'array' });
+		const odsBlob = new Blob([odsBuffer], {
+			type: 'application/vnd.oasis.opendocument.spreadsheet',
+		});
+		triggerBlobDownload(odsBlob, `${safeFileName}.ods`);
+	}, [exportRows, safeFileName]);
+
 	const handleExcelExport = useCallback(() => {
 		const workbook = XLSX.utils.book_new();
 		const worksheet = XLSX.utils.json_to_sheet(exportRows);
@@ -77,7 +88,7 @@ export const TableStatefulExport: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows CSV and Excel export for KolTableStateful data, using browser Blob downloads and a configurable file name.</p>
+				<p>This sample shows ODS, CSV and Excel export for KolTableStateful data, using browser Blob downloads and a configurable file name.</p>
 			</SampleDescription>
 			<div className="grid gap-4">
 				<KolInputText
@@ -89,6 +100,7 @@ export const TableStatefulExport: FC = () => {
 					}}
 				/>
 				<div className="flex gap-4">
+					<KolButton _label="Export ODS" _on={{ onClick: handleOdsExport }} />
 					<KolButton _label="Export CSV" _on={{ onClick: handleCsvExport }} />
 					<KolButton _label="Export Excel" _on={{ onClick: handleExcelExport }} />
 				</div>
