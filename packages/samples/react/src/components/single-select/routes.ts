@@ -1,12 +1,12 @@
 import type { Routes } from '../../shares/types';
 import { SingleSelectBasic } from './basic';
+import { SingleSelectOnInputOnChange } from './get-value';
 import { SingleSelectLazyLoaded } from './lazy-loaded';
-import { SingleSelectOnInputOnChange } from './on-input-on-change';
 
 export const SINGLE_SELECT_ROUTES: Routes = {
 	'single-select': {
-		'on-input-on-change': SingleSelectOnInputOnChange,
 		basic: SingleSelectBasic,
+		'get-value': SingleSelectOnInputOnChange,
 		'lazy-loaded': SingleSelectLazyLoaded,
 	},
 };
