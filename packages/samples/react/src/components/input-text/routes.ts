@@ -5,6 +5,7 @@ import { InputTextBasic } from './basic';
 import { InputTextCounter } from './counter';
 import { InputTextDisabled } from './disabled';
 import { InputTextExpertSlot } from './expert-slot';
+import { InputTextOnInputOnChange } from './get-value';
 import { InputTextHideLabel } from './hide-label';
 import { InputTextHideMsg } from './hide-msg';
 import { InputTextMessageTypes } from './message-types';
@@ -18,6 +19,7 @@ import { InputTextFormatterDemo } from './text-formatter';
 export const INPUT_TEXT_ROUTES: Routes = {
 	'input-text': {
 		basic: InputTextBasic,
+		'get-value': InputTextOnInputOnChange,
 		'message-types': InputTextMessageTypes,
 		placeholder: InputTextPlaceholder,
 		disabled: InputTextDisabled,
