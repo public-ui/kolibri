@@ -59,7 +59,8 @@ export const TableStatefulExport: FC = () => {
 	const safeFileName = useMemo(() => sanitizeFileName(filename), [filename]);
 
 	const handleCsvExport = useCallback(() => {
-		const csvString = Papa.unparse(exportRows, { delimiter: ',', newline: '\r\n' });
+		const csvBody = Papa.unparse(exportRows, { delimiter: ';', newline: '\r\n' });
+		const csvString = `sep=;\r\n${csvBody}`;
 		const csvBlob = new Blob(['\uFEFF', csvString], { type: 'text/csv;charset=utf-8;' });
 		triggerBlobDownload(csvBlob, `${safeFileName}.csv`);
 	}, [exportRows, safeFileName]);
