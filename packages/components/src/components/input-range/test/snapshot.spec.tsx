@@ -18,3 +18,17 @@ executeInputSnapshotTests<InputRangeProps>(KolInputRangeTag, [KolInputRange], {
 	_step: 1,
 	_suggestions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 });
+
+executeInputSnapshotTests<InputRangeProps>(KolInputRangeTag, [KolInputRange], {
+	_value: 50,
+	_min: 0,
+	_max: 100,
+	_step: 25,
+	_list: [
+		{ value: 0, label: '0%' },
+		{ value: 25, label: '25%' },
+		{ value: 50, label: '50%' },
+		{ value: 75, label: '75%' },
+		{ value: 100, label: '100%' },
+	],
+});

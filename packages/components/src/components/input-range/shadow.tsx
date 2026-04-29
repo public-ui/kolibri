@@ -11,6 +11,8 @@ import type {
 	HintPropType,
 	IconsHorizontalPropType,
 	InputRangeAPI,
+	InputRangeListItemType,
+	InputRangeListPropType,
 	InputRangeStates,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
@@ -177,11 +179,15 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 	}
 
+	private get hasRangeList(): boolean {
+		return Array.isArray(this.state._list) && this.state._list.length > 0;
+	}
+
 	private getInputRangeProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
 			name: this.state._name ? `${this.state._name}-range` : undefined,
-			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			list: this.hasRangeList ? `${this.state._id}-range-list` : this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			type: 'range',
 			tabIndex: -1,
 			id: undefined,
@@ -222,6 +228,13 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 						<KolInputStateWrapperFc class="kol-input-range__input kol-input-range__input--range" {...this.getInputRangeProps()} />
 						<KolInputStateWrapperFc class="kol-input-range__input kol-input-range__input--number" {...this.getInputNumberProps()} />
 					</div>
+					{this.hasRangeList && (
+						<datalist id={`${this.state._id}-range-list`}>
+							{(this.state._list as InputRangeListItemType[]).map((item) => (
+								<option label={item.label} value={item.value} />
+							))}
+						</datalist>
+					)}
 					{this.hasSuggestions && <KolSuggestionsFc id={this.state._id} suggestions={this.state._suggestions} />}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
@@ -273,6 +286,12 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the list of labeled tick marks for the range slider. Each item must have a `value` (number) and an optional `label` (string).
+	 * The labels are displayed natively by the browser as tick marks with labels on the range slider.
+	 */
+	@Prop() public _list?: InputRangeListPropType;
 
 	/**
 	 * Defines the maximum value of the element.
@@ -393,6 +412,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_list')
+	public validateList(value?: InputRangeListPropType): void {
+		this.controller.validateList(value);
 	}
 
 	@Watch('_max')

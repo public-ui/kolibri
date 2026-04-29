@@ -1,5 +1,13 @@
-import type { AutoCompletePropType, InputRangeProps, InputRangeWatches, NumberString, SuggestionsPropType } from '../../schema';
-import { validateSuggestions } from '../../schema';
+import type {
+	AutoCompletePropType,
+	InputRangeListItemType,
+	InputRangeListPropType,
+	InputRangeProps,
+	InputRangeWatches,
+	NumberString,
+	SuggestionsPropType,
+} from '../../schema';
+import { validateSuggestions, watchJsonArrayString } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -16,6 +24,16 @@ export class InputRangeController extends InputIconController implements InputRa
 
 	public validateAutoComplete(value?: AutoCompletePropType): void {
 		validateAutoComplete(this.component, value);
+	}
+
+	public validateList(value?: InputRangeListPropType): void {
+		watchJsonArrayString(
+			this.component,
+			'_list',
+			(item: InputRangeListItemType) =>
+				typeof item === 'object' && item !== null && ('value' in item ? typeof item.value === 'number' || typeof item.value === 'string' : true),
+			value,
+		);
 	}
 
 	public validateMax(value?: number | NumberString): void {
@@ -43,6 +61,7 @@ export class InputRangeController extends InputIconController implements InputRa
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
+		this.validateList(this.component._list);
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
 		this.validateStep(this.component._step);

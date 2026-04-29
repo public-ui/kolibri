@@ -1007,3 +1007,520 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
   </template>
 </kol-input-range>
 `;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _accessKey="V" 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              V
+            </kbd>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input accesskey="V" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _alert=true 1`] = `
+<kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _disabled=true 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--disabled kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--disabled">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-range__input kol-input-range__input--range" disabled="" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-range__input kol-input-range__input--number" disabled="" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _hint="Hint" 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-describedby="id-nonce-hint" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+      <span class="kol-form-field__hint" id="id-nonce-hint">
+        Hint
+      </span>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start">
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start">
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-describedby="id-nonce-error" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input aria-describedby="id-nonce-error" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _readOnly=true 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _shortKey="S" 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              S
+            </kbd>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] _touched=true 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--touched kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=50 _min=0 _max=100 _step=25 _list=[{"value":0,"label":"0%"},{"value":25,"label":"25%"},{"value":50,"label":"50%"},{"value":75,"label":"75%"},{"value":100,"label":"100%"}] 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="50">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(3ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="id-nonce-range-list" max="100" min="0" name="field-range" step="25" tabindex="-1" type="range" value="50">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="id-nonce" max="100" min="0" name="field-number" step="25" type="number" value="50">
+            </div>
+            <datalist id="id-nonce-range-list">
+              <option label="0%" value="0"></option>
+              <option label="25%" value="25"></option>
+              <option label="50%" value="50"></option>
+              <option label="75%" value="75"></option>
+              <option label="100%" value="100"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;

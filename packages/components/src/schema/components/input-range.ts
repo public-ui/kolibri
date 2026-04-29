@@ -20,8 +20,16 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
+export type InputRangeListItemType = {
+	label?: string;
+	value: number | string;
+};
+
+export type InputRangeListPropType = Stringified<InputRangeListItemType[]>;
+
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
+	list: InputRangeListPropType;
 	max: number | NumberString;
 	min: number | NumberString;
 	msg: Stringified<MsgPropType>;
@@ -47,6 +55,7 @@ type RequiredStates = {
 	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
+	list: InputRangeListItemType[];
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;
