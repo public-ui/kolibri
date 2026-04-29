@@ -34,7 +34,15 @@ const triggerBlobDownload = (blob: Blob, fileName: string): void => {
 	document.body.append(anchor);
 	anchor.click();
 	anchor.remove();
-	URL.revokeObjectURL(downloadUrl);
+	setTimeout(() => URL.revokeObjectURL(downloadUrl), 0);
+};
+
+const sanitizeFileName = (value: string): string => {
+	const sanitized = value
+		.trim()
+		.replace(/[<>:"/\\|?*\u0000-\u001F]/g, '-')
+		.replace(/\.+$/, '');
+	return sanitized.length > 0 ? sanitized : 'table-export';
 };
 
 export const TableStatefulExport: FC = () => {
@@ -48,10 +56,7 @@ export const TableStatefulExport: FC = () => {
 		}
 	}, []);
 
-	const safeFileName = useMemo(() => {
-		const trimmed = filename.trim();
-		return trimmed.length > 0 ? trimmed : 'table-export';
-	}, [filename]);
+	const safeFileName = useMemo(() => sanitizeFileName(filename), [filename]);
 
 	const handleCsvExport = useCallback(() => {
 		const csvString = Papa.unparse(exportRows, { delimiter: ',', newline: '\r\n' });
