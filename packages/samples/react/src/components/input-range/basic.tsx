@@ -1,9 +1,7 @@
-import { KolInputRange } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 
 import { FormWrap } from '../FormWrap';
-import { InputEventValueDemo } from '../InputEventValueDemo';
 import { SampleDescription } from '../SampleDescription';
 import { InputRangeVariants } from './partials/variants';
 
@@ -15,8 +13,6 @@ export const InputRangeBasic: FC = () => (
 				all variations and states.
 			</p>
 		</SampleDescription>
-
-		<InputEventValueDemo label="KolInputRange" renderInput={(handlers) => <KolInputRange _label="Range" _on={handlers} />} />
 
 		<FormWrap RefComponent={InputRangeVariants} showButtons={false} />
 	</>

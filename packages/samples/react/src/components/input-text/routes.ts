@@ -8,6 +8,7 @@ import { InputTextExpertSlot } from './expert-slot';
 import { InputTextHideLabel } from './hide-label';
 import { InputTextHideMsg } from './hide-msg';
 import { InputTextMessageTypes } from './message-types';
+import { InputTextOnInputOnChange } from './on-input-on-change';
 import { InputTextPattern } from './pattern';
 import { InputTextPlaceholder } from './placeholder';
 import { InputTextReadonly } from './readonly';
@@ -17,6 +18,7 @@ import { InputTextFormatterDemo } from './text-formatter';
 
 export const INPUT_TEXT_ROUTES: Routes = {
 	'input-text': {
+		'on-input-on-change': InputTextOnInputOnChange,
 		basic: InputTextBasic,
 		'message-types': InputTextMessageTypes,
 		placeholder: InputTextPlaceholder,

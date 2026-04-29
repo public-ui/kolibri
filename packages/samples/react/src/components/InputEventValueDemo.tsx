@@ -1,4 +1,3 @@
-import { KolCard } from '@public-ui/react-v19';
 import type { FC, ReactNode } from 'react';
 import React, { useMemo, useState } from 'react';
 
@@ -29,18 +28,16 @@ export const InputEventValueDemo: FC<Props> = ({ label, renderInput }) => {
 	);
 
 	return (
-		<KolCard _label={`Event callback demo: ${label}`} className="block mb-6">
-			<div className="grid gap-4 p-4">
-				{renderInput(handlers)}
-				<div className="grid gap-2">
-					<p>
-						<strong>onInput value:</strong> <code>{JSON.stringify(inputValue)}</code>
-					</p>
-					<p>
-						<strong>onChange value:</strong> <code>{JSON.stringify(changeValue)}</code>
-					</p>
-				</div>
+		<section className="grid gap-4 mb-6" aria-label={`Event callback demo: ${label}`}>
+			{renderInput(handlers)}
+			<div className="grid gap-2">
+				<p>
+					<strong>onInput value:</strong> <code>{JSON.stringify(inputValue)}</code>
+				</p>
+				<p>
+					<strong>onChange value:</strong> <code>{JSON.stringify(changeValue)}</code>
+				</p>
 			</div>
-		</KolCard>
+		</section>
 	);
 };

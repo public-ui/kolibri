@@ -2,7 +2,6 @@ import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { logKoliBriCallbackEvent, logKoliBriNativeEvent } from '../../shares/utils';
-import { InputEventValueDemo } from '../InputEventValueDemo';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextBasic: FC = () => (
@@ -10,8 +9,6 @@ export const InputTextBasic: FC = () => (
 		<SampleDescription>
 			<p>This story showcases the most important InputText variants: default, required, validation error, disabled, read-only, and with icons.</p>
 		</SampleDescription>
-
-		<InputEventValueDemo label="KolInputText" renderInput={(handlers) => <KolInputText _label="Name" _on={handlers} />} />
 
 		<div className="grid gap-4">
 			<KolInputText
