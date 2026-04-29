@@ -13,8 +13,8 @@ type Props = {
 };
 
 export const InputEventValueDemo: FC<Props> = ({ label, renderInput }) => {
-	const [changeValue, setChangeValue] = useState<unknown>('');
-	const [inputValue, setInputValue] = useState<unknown>('');
+	const [changeValue, setChangeValue] = useState<unknown>(null);
+	const [inputValue, setInputValue] = useState<unknown>(null);
 
 	const handlers = useMemo<EventHandlers>(
 		() => ({
