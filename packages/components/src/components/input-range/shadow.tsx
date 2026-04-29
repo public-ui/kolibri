@@ -231,7 +231,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 					{this.hasRangeList && (
 						<datalist id={`${this.state._id}-range-list`}>
 							{(this.state._list as InputRangeListItemType[]).map((item) => (
-								<option label={item.label} value={item.value} />
+								<option key={item.value} label={item.label} value={item.value} />
 							))}
 						</datalist>
 					)}

@@ -31,7 +31,7 @@ export class InputRangeController extends InputIconController implements InputRa
 			this.component,
 			'_list',
 			(item: InputRangeListItemType) =>
-				typeof item === 'object' && item !== null && ('value' in item ? typeof item.value === 'number' || typeof item.value === 'string' : true),
+				typeof item === 'object' && item !== null && 'value' in item && (typeof item.value === 'number' || typeof item.value === 'string'),
 			value,
 		);
 	}
