@@ -51,7 +51,6 @@
 		"typescript": "5.9.3",
 		"vite": "7.3.2",
 		"world_countries_lists": "3.3.0",
-		"xlsx": "0.18.5",
 		"zod": "4.3.6"
 	},
 	"devDependencies": {
