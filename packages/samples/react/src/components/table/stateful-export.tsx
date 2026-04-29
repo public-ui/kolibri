@@ -46,14 +46,14 @@ const sanitizeFileName = (value: string): string => {
 
 const exportRows: ExportRow[] = DATA.map((row) => ({ Date: DATE_FORMATTER.format(row.date), Order: row.order }));
 
-const exportSpreadsheet = async (format: 'ods' | 'xlsx', mimeType: string, rows: ExportRow[], fileName: string): Promise<void> => {
+const exportSpreadsheet = async (rows: ExportRow[], fileName: string): Promise<void> => {
 	const XLSX = await import('xlsx');
 	const workbook = XLSX.utils.book_new();
 	const worksheet = XLSX.utils.json_to_sheet(rows);
 	XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Export');
-	const output = XLSX.write(workbook, { bookType: format, type: 'array' });
-	const blob = new Blob([output], { type: mimeType });
-	triggerBlobDownload(blob, `${fileName}.${format}`);
+	const output = XLSX.write(workbook, { bookType: 'ods', type: 'array' });
+	const blob = new Blob([output], { type: 'application/vnd.oasis.opendocument.spreadsheet' });
+	triggerBlobDownload(blob, `${fileName}.ods`);
 };
 
 export const TableStatefulExport: FC = () => {
@@ -67,7 +67,7 @@ export const TableStatefulExport: FC = () => {
 
 	const handleCsvExport = useCallback(() => {
 		const csvString = Papa.unparse(exportRows, {
-			delimiter: ',',
+			delimiter: ';',
 			newline: '\r\n',
 		});
 		const csvBlob = new Blob(['\uFEFF', csvString], { type: 'text/csv;charset=utf-8;header=present' });
@@ -75,23 +75,19 @@ export const TableStatefulExport: FC = () => {
 	}, [safeFileName]);
 
 	const handleOdsExport = useCallback(async () => {
-		await exportSpreadsheet('ods', 'application/vnd.oasis.opendocument.spreadsheet', exportRows, safeFileName);
-	}, [safeFileName]);
-
-	const handleExcelExport = useCallback(async () => {
-		await exportSpreadsheet('xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', exportRows, safeFileName);
+		await exportSpreadsheet(exportRows, safeFileName);
 	}, [safeFileName]);
 
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows ODS, CSV and Excel export for KolTableStateful data, using browser Blob downloads and a configurable file name.</p>
+				<p>This sample shows ODS and CSV export for KolTableStateful data, using browser Blob downloads and a configurable file name.</p>
 			</SampleDescription>
 			<div className="grid gap-4">
 				<KolInputText
 					_label="Export file name"
 					_value={filename}
-					_hint="The entered value is used for ODS, CSV and XLSX export."
+					_hint="The entered value is used for ODS and CSV export."
 					_on={{
 						onInput: handleFileName,
 					}}
@@ -99,7 +95,6 @@ export const TableStatefulExport: FC = () => {
 				<div className="flex gap-4">
 					<KolButton _label="Export ODS" _on={{ onClick: handleOdsExport }} />
 					<KolButton _label="Export CSV" _on={{ onClick: handleCsvExport }} />
-					<KolButton _label="Export Excel" _on={{ onClick: handleExcelExport }} />
 				</div>
 				<KolTableStateful _label="Table with export actions" _data={DATA} _headers={HEADERS} className="block" />
 			</div>
