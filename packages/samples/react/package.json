@@ -33,7 +33,7 @@
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.38.3",
 		"@types/node": "25.6.0",
-		"@types/papaparse": "5.3.16",
+		"@types/papaparse": "5.5.2",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.6.8",
@@ -51,7 +51,7 @@
 		"typescript": "5.9.3",
 		"vite": "7.3.2",
 		"world_countries_lists": "3.3.0",
-		"zod": "4.3.6"
+		"zod": "4.4.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "9.39.4",
