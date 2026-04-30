@@ -47,7 +47,7 @@
 		"typescript": "5.9.3",
 		"vite": "7.3.2",
 		"world_countries_lists": "3.3.0",
-		"zod": "4.3.6"
+		"zod": "4.4.1"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.5",
