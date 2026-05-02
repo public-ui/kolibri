@@ -77,16 +77,16 @@ export class KolPaginationWc implements PaginationAPI {
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
-	private getPageStart(): string {
-		return ((this.state._page - 1) * this.state._pageSize + 1).toString();
+	private getPageStart(): number {
+		return (this.state._page - 1) * this.state._pageSize + 1;
 	}
 
-	private getPageEnd(): string {
+	private getPageEnd(): number {
 		const highest = this.state._page * this.state._pageSize;
 		if (this.state._max < highest) {
-			return this.state._max.toString();
+			return this.state._max;
 		}
-		return highest.toString();
+		return highest;
 	}
 
 	public render(): JSX.Element {
@@ -123,9 +123,9 @@ export class KolPaginationWc implements PaginationAPI {
 				<span role="status" aria-live="polite" class="kol-pagination__entries">
 					{translate('kol-table-visible-range', {
 						placeholders: {
-							start: this.getPageStart(),
-							end: this.getPageEnd(),
-							total: this.state._max.toString(),
+							start: NUMBER_FORMATTER.format(this.getPageStart()),
+							end: NUMBER_FORMATTER.format(this.getPageEnd()),
+							total: NUMBER_FORMATTER.format(this.state._max),
 						},
 					})}
 				</span>
