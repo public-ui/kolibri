@@ -66,25 +66,24 @@ jobs:
 
       - name: Netlify Deploy (Preview)
         if: inputs.environment == 'preview'
+        uses: netlify/actions/cli@master
         id: netlify-preview
-        run: |
-          output=$(npx --yes netlify-cli deploy --no-build -d packages/samples/presentation/dist --json)
-          echo "NETLIFY_URL=$(echo "$output" | jq -r '.deploy_url')" >> $GITHUB_OUTPUT
-          echo "NETLIFY_LOGS_URL=$(echo "$output" | jq -r '.logs')" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --no-build --filter=@public-ui/presentation -d packages/samples/presentation/dist
 
       - name: Netlify Deploy (Production)
         if: inputs.environment == 'production'
+        uses: netlify/actions/cli@master
         id: netlify-production
-        run: |
-          output=$(npx --yes netlify-cli deploy --no-build -d packages/samples/presentation/dist --prod --alias="${{ inputs.alias }}" --json)
-          echo "NETLIFY_URL=$(echo "$output" | jq -r '.deploy_url')" >> $GITHUB_OUTPUT
-          echo "NETLIFY_LOGS_URL=$(echo "$output" | jq -r '.logs')" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+          NETLIFY_ALIAS: ${{ inputs.alias }}
+        with:
+          args: deploy --no-build --filter=@public-ui/presentation -d packages/samples/presentation/dist --alias="$NETLIFY_ALIAS"
 
       - name: Find comment (Preview only)
         if: inputs.environment == 'preview'
