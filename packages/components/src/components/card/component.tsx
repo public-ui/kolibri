@@ -35,7 +35,6 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 })
 export class KolCardWc implements CardAPI {
 	@Element() private readonly host?: HTMLKolCardElement;
-	private readonly nonce = nonce();
 	private readonly translateClose = translate('kol-close');
 
 	private readonly close = () => {
@@ -54,8 +53,13 @@ export class KolCardWc implements CardAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<article aria-labelledby={this.nonce} class="kol-card">
-					<KolHeadingFc class="kol-card__header" id={this.nonce} level={this.state._level}>
+				{/*
+					Using a semantic <article> container with aria-labelledby provides proper
+					accessibility for a self-contained card. When many cards appear together,
+					wrap them in a list (<ul> / <ol>) to preserve clean page navigation.
+				*/}
+				<article aria-labelledby={this._headingId} class="kol-card">
+					<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
 						{this.state._label}
 					</KolHeadingFc>
 					<div class="kol-card__content">
@@ -82,15 +86,16 @@ export class KolCardWc implements CardAPI {
 	}
 
 	/**
-	 * Defines the event callback functions for the component.
-	 */
-	@Prop() public _on?: KoliBriCardEventCallbacks;
-
-	/**
 	 * Defines whether the element can be closed.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
+
+	/**
+	 * Defines the ID of the heading element. If not provided, an internal ID will be generated.
+	 * @internal
+	 */
+	@Prop() public _headingId?: string = nonce();
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -102,21 +107,17 @@ export class KolCardWc implements CardAPI {
 	 */
 	@Prop() public _level?: HeadingLevel = 0;
 
+	/**
+	 * Defines the event callback functions for the component.
+	 */
+	@Prop() public _on?: KoliBriCardEventCallbacks;
+
 	@State() public state: CardStates = {
 		_label: '', // ⚠ required
 	};
 
 	private validateOnValue = (value: unknown): boolean =>
 		typeof value === 'object' && value !== null && typeof (value as KoliBriCardEventCallbacks).onClose === 'function';
-
-	@Watch('_on')
-	public validateOn(value?: KoliBriCardEventCallbacks): void {
-		if (this.validateOnValue(value)) {
-			setState<KoliBriCardEventCallbacks>(this, '_on', {
-				onClose: (value as KoliBriAlertEventCallbacks).onClose,
-			});
-		}
-	}
 
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: HasCloserPropType): void {
@@ -133,6 +134,15 @@ export class KolCardWc implements CardAPI {
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
+	}
+
+	@Watch('_on')
+	public validateOn(value?: KoliBriCardEventCallbacks): void {
+		if (this.validateOnValue(value)) {
+			setState<KoliBriCardEventCallbacks>(this, '_on', {
+				onClose: (value as KoliBriAlertEventCallbacks).onClose,
+			});
+		}
 	}
 
 	public componentWillLoad(): void {
