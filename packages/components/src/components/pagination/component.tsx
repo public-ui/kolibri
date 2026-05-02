@@ -78,7 +78,7 @@ export class KolPaginationWc implements PaginationAPI {
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
 	private getPageStart(): number {
-		return (this.state._page - 1) * this.state._pageSize + 1;
+		return Math.max(0, (this.state._page - 1) * this.state._pageSize + 1);
 	}
 
 	private getPageEnd(): number {
