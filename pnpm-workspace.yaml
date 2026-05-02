@@ -8,12 +8,14 @@ packages:
   - packages/adapters/vue
   - packages/components
   - packages/icons
+  - packages/ecl-icons
   - packages/samples/angular
   - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
   - packages/themes/bwst
   - packages/themes/default
+  - packages/themes/desy
   - packages/themes/ecl
   - packages/themes/kern
   - packages/themes
@@ -23,5 +25,3 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
-overrides:
-  '@hono/node-server@<1.19.13': '>=1.19.13'

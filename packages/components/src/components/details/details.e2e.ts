@@ -40,6 +40,25 @@ test.describe('kol-details', () => {
 		});
 	});
 
+	test.describe('Aria attributes', () => {
+		test('should have proper aria attributes', async ({ page }) => {
+			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
+			const button = page.getByRole('button');
+			const content = page.locator('.collapsible__content');
+
+			await expect(button).toHaveAttribute('aria-expanded', 'false');
+			await expect(button).toHaveAttribute('aria-controls', /^.*-control$/);
+			await expect(content).toHaveAttribute('role', 'region');
+			await expect(content).toHaveAttribute('aria-labelledby', /^.*-heading$/);
+			await expect(content).toHaveAttribute('aria-hidden', 'true');
+
+			await button.click();
+
+			await expect(button).toHaveAttribute('aria-expanded', 'true');
+			await expect(content).not.toHaveAttribute('aria-hidden');
+		});
+	});
+
 	test.describe('click() method', () => {
 		test('should open details when click() method is called', async ({ page }) => {
 			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');

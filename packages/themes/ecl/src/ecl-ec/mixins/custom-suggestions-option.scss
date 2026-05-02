@@ -10,12 +10,11 @@
 		line-height: 1.2;
 
 		&[aria-selected] {
-			color: var(--color-blue);
+			background-color: var(--ecl-color-neutral-80);
 		}
 
 		&:focus {
-			color: white;
-			background-color: var(--color-blue);
+			background-color: var(--ecl-color-neutral-60);
 			outline: 0;
 		}
 	}

@@ -95,4 +95,13 @@
 			transform: rotate(360deg);
 		}
 	}
+
+	.disabled label,
+	.disabled:focus-within label,
+	[aria-disabled='true'],
+	[aria-disabled='true']:focus,
+	[disabled],
+	[disabled]:focus {
+		opacity: 0.5;
+	}
 }

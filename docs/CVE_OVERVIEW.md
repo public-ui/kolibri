@@ -32,8 +32,8 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   5 |   5 |   5 |   3 |
-| high     |  33 |  31 |  43 |  29 |
-| moderate |  17 |  19 |  34 |   8 |
+| high     |  36 |  33 |  45 |  29 |
+| moderate |  22 |  23 |  39 |   8 |
 | low      |   4 |   4 |   9 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
@@ -55,8 +55,14 @@
 | @angular/core        | high     | CVE-2026-27970      | v1                | Angular i18n vulnerable to Cross-Site Scripting                                    |
 | @angular/core        | high     | CVE-2026-32635      | v1                | Angular vulnerable to XSS in i18n attribute bindings                               |
 | @hono/node-server    | high     | CVE-2026-29087      | v2                | @hono/node-server has authorization bypass for protected static paths via encode   |
+| @xmldom/xmldom       | high     | CVE-2026-41673      | v4                | xmldom: Uncontrolled recursion in XML serialization leads to DoS                   |
+| @xmldom/xmldom       | high     | CVE-2026-41674      | v4                | xmldom has XML injection through unvalidated DocumentType serialization            |
+| @xmldom/xmldom       | high     | CVE-2026-41675      | v4                | xmldom has XML node injection through unvalidated processing instruction seriali   |
+| @xmldom/xmldom       | high     | CVE-2026-41672      | v4                | xmldom has XML node injection through unvalidated comment serialization            |
 | @xmldom/xmldom       | high     | CVE-2026-34601      | v4                | xmldom: XML injection via unsafe CDATA serialization allows attacker-controlled    |
 | axios                | high     | CVE-2026-25639      | v3, v2            | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig          |
+| basic-ftp            | high     | GHSA-6v7q-wjvx-w8wg | v4, v3, v2        | basic-ftp: Incomplete CRLF Injection Protection Allows Arbitrary FTP Command Exe   |
+| basic-ftp            | high     | CVE-2026-41324      | v4, v3, v2        | basic-ftp vulnerable to denial of service via unbounded memory consumption in Cl   |
 | braces               | high     | CVE-2024-4068       | v3, v2, v1        | Uncontrolled resource consumption in braces                                        |
 | express-rate-limit   | high     | CVE-2026-30827      | v2                | express-rate-limit: IPv4-mapped IPv6 addresses bypass per-client rate limiting o   |
 | fast-xml-parser      | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                            |
@@ -89,9 +95,9 @@
 | svgo                 | high     | CVE-2026-29074      | v4, v3, v2, v1    | SVGO DoS through entity expansion in DOCTYPE (Billion Laughs)                      |
 | tar                  | high     | CVE-2026-24842      | v1                | node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Trave   |
 | tar                  | high     | CVE-2026-23745      | v1                | node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Ins   |
-| tar                  | high     | CVE-2026-26960      | v4, v1            | Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in no   |
-| tar                  | high     | CVE-2026-29786      | v4, v1            | tar has Hardlink Path Traversal via Drive-Relative Linkpath                        |
-| tar                  | high     | CVE-2026-31802      | v4, v1            | node-tar Symlink Path Traversal via Drive-Relative Linkpath                        |
+| tar                  | high     | CVE-2026-26960      | v1                | Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in no   |
+| tar                  | high     | CVE-2026-29786      | v1                | tar has Hardlink Path Traversal via Drive-Relative Linkpath                        |
+| tar                  | high     | CVE-2026-31802      | v1                | node-tar Symlink Path Traversal via Drive-Relative Linkpath                        |
 | tar                  | high     | CVE-2026-23950      | v1                | Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on    |
 | undici               | high     | CVE-2026-1528       | v4, v3, v2        | Undici: Malicious WebSocket 64-bit length overflows parser and crashes the clien   |
 | undici               | high     | CVE-2026-1526       | v4, v3, v2        | Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompre   |
@@ -100,11 +106,13 @@
 | vite                 | high     | CVE-2026-39363      | v1                | Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket               |
 | @hono/node-server    | moderate | CVE-2026-39406      | v2                | @hono/node-server: Middleware bypass via repeated slashes in serveStatic           |
 | ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                            |
-| axios                | moderate | CVE-2026-39865      | v3, v2            | Axios HTTP/2 Session Cleanup State Corruption Vulnerability                        |
+| axios                | moderate | CVE-2025-62718      | v4, v3, v2        | Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF              |
+| axios                | moderate | CVE-2026-40175      | v4, v3, v2        | Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain      |
 | brace-expansion      | moderate | CVE-2026-33750      | v4, v3, v2        | brace-expansion: Zero-step sequence causes process hang and memory exhaustion      |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                             |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r   |
 | fast-xml-parser      | moderate | CVE-2026-33349      | v4, v3, v2        | Entity Expansion Limits Bypassed When Set to Zero Due to JavaScript Falsy Evalua   |
+| fast-xml-parser      | moderate | CVE-2026-41650      | v4, v3, v2        | fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimi   |
 | file-type            | moderate | CVE-2026-31808      | v4                | file-type affected by infinite loop in ASF parser on malformed input with zero-s   |
 | handlebars           | moderate | CVE-2026-33916      | v4, v3, v2, v1    | Handlebars.js has Prototype Pollution Leading to XSS through Partial Template In   |
 | handlebars           | moderate | GHSA-7rx3-28cr-v5wh | v4, v3, v2, v1    | Handlebars.js has a Prototype Method Access Control Gap via Missing \_\_lookupSett |
@@ -113,15 +121,17 @@
 | hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in   |
 | hono                 | moderate | GHSA-26pp-8wgv-hjvm | v2                | Hono missing validation of cookie name on write path in setCookie()                |
 | hono                 | moderate | CVE-2026-39410      | v2                | Hono: Non-breaking space prefix bypass in cookie name handling in getCookie()      |
-| hono                 | moderate | CVE-2026-39409      | v2                | Hono has incorrect IP matching in ipRestriction() for IPv4-mapped IPv6 addresses   |
 | hono                 | moderate | CVE-2026-39408      | v2                | Hono: Path traversal in toSSG() allows writing files outside the output director   |
 | hono                 | moderate | CVE-2026-39407      | v2                | Hono: Middleware bypass via repeated slashes in serveStatic                        |
+| hono                 | moderate | GHSA-458j-xx4x-4375 | v2                | hono Improperly Handles JSX Attribute Names Allows HTML Injection in hono/jsx SS   |
+| hono                 | moderate | CVE-2026-39409      | v2                | Hono has incorrect IP matching in ipRestriction() for IPv4-mapped IPv6 addresses   |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                      |
 | locutus              | moderate | CVE-2026-33993      | v4, v3, v2, v1    | Locutus has Prototype Pollution via **proto** Key Injection in unserialize()       |
 | lodash               | moderate | CVE-2026-2950       | v4, v3            | lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and    |
 | micromatch           | moderate | CVE-2024-4067       | v3, v2, v1        | Regular Expression Denial of Service (ReDoS) in micromatch                         |
 | nanoid               | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values             |
 | path-to-regexp       | moderate | CVE-2026-4923       | v2                | path-to-regexp vulnerable to Regular Expression Denial of Service via multiple w   |
+| postcss              | moderate | CVE-2026-41305      | v4, v3, v2        | PostCSS has XSS via Unescaped </style> in its CSS Stringify Output                 |
 | qs                   | moderate | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion    |
 | serialize-javascript | moderate | CVE-2026-34043      | v4, v3, v2, v1    | Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like   |
 | serialize-javascript | moderate | CVE-2024-11831      | v2                | Cross-site Scripting (XSS) in serialize-javascript                                 |
@@ -129,6 +139,7 @@
 | undici               | moderate | CVE-2026-1525       | v4, v3, v2        | Undici has an HTTP Request/Response Smuggling issue                                |
 | undici               | moderate | CVE-2026-1527       | v4, v3, v2        | Undici has CRLF Injection in undici via `upgrade` option                           |
 | undici               | moderate | CVE-2026-2581       | v4, v3            | Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response   |
+| uuid                 | moderate | GHSA-w5hq-g745-h8pq | v4, v3, v2        | uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided                 |
 | vite                 | moderate | CVE-2026-39365      | v1                | Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling                |
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to    |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
