@@ -712,10 +712,6 @@ ROUTES.set('pagination/basic', {
 });
 ROUTES.set('pagination/button-visibility', {
 	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 1200,
-		},
 		zoom: {
 			skip: true,
 		},
@@ -723,10 +719,6 @@ ROUTES.set('pagination/button-visibility', {
 });
 ROUTES.set('pagination/sibling-boundary', {
 	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 1400,
-		},
 		zoom: {
 			skip: true,
 		},
