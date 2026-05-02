@@ -14,6 +14,7 @@ function getGitCommitHash(): string | null {
 }
 
 export default defineConfig({
+	base: './',
 	plugins: [react(), UnoCSS()],
 	resolve: {
 		dedupe: ['react', 'react-dom'],
