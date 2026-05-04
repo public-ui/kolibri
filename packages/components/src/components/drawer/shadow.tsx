@@ -73,18 +73,19 @@ export class KolDrawer implements DrawerAPI {
 	 * Closes the drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	async close() {
+	close(): Promise<void> {
 		this.state = {
 			...this.state,
 			_open: false,
 		};
 		const wrapper = this.dialogWrapperElement;
-		if (!wrapper) return;
-		const computedStyle = window.getComputedStyle(wrapper);
-		if (computedStyle.animationName === 'none') {
+		if (!wrapper) {
+			return Promise.resolve();
+		}
+		if (window.getComputedStyle(wrapper).animationName === 'none') {
 			this.handleCloseDialog();
 		}
+		return Promise.resolve();
 	}
 
 	private getWrapperRef = (el: HTMLKolCardWcElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardWcElement);
