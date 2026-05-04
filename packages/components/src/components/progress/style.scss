@@ -3,6 +3,8 @@
 
 @layer kol-component {
 	.kol-progress {
+		--color-bar: var(--kol-progress-color-bar, #0075ff);
+
 		&__bar {
 			display: grid;
 			align-items: center;
@@ -35,12 +37,12 @@
 			}
 
 			&-background {
-				fill: lightgray;
+				fill: white;
 				stroke: white;
 			}
 
 			&-progress {
-				fill: #0075ff;
+				fill: var(--color-bar);
 				stroke: transparent;
 
 				@media (prefers-reduced-motion: no-preference) {
@@ -75,7 +77,7 @@
 
 			&-background {
 				fill: transparent;
-				stroke: lightgray;
+				stroke: white;
 			}
 
 			&-border {
@@ -92,7 +94,7 @@
 				transform: rotate(-90deg);
 				transform-origin: 50% 50%;
 				fill: transparent;
-				stroke: #0075ff;
+				stroke: var(--color-bar);
 
 				@media (prefers-reduced-motion: no-preference) {
 					transition: 250ms ease-in-out 50ms;

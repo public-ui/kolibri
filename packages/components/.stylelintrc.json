@@ -16,8 +16,11 @@
 		],
 		"property-disallowed-list": ["/gap/"],
 		"declaration-property-value-allowed-list": {
+			"/color/": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/", "selectedItem"],
+			"fill": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"],
 			"/margin/": ["0", "auto"],
-			"/padding/": ["0"]
+			"/padding/": ["0"],
+			"stroke": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"]
 		}
 	}
 }
