@@ -206,28 +206,28 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private handleClose() {
+	private readonly handleClose = () => {
 		void (async () => {
 			await this.close();
 			this.handleCloseDialog();
 		})();
-	}
+	};
 
-	private handleAnimationEnd(e: Event): void {
+	private readonly handleAnimationEnd = (e: Event): void => {
 		const animationEvent = e as AnimationEvent;
 		if (animationEvent.animationName.includes('slideOut')) {
 			this.handleCloseDialog();
 		}
-	}
+	};
 
 	public componentDidLoad(): void {
-		this.dialogElement?.addEventListener('animationend', this.handleAnimationEnd.bind(this));
-		this.dialogElement?.addEventListener('close', this.handleClose.bind(this));
+		this.dialogElement?.addEventListener('animationend', this.handleAnimationEnd);
+		this.dialogElement?.addEventListener('close', this.handleClose);
 	}
 
 	public disconnectedCallback(): void {
-		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd.bind(this));
-		this.dialogElement?.removeEventListener('close', this.handleClose.bind(this));
+		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd);
+		this.dialogElement?.removeEventListener('close', this.handleClose);
 	}
 
 	public componentWillLoad() {
