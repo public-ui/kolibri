@@ -43,42 +43,42 @@ export class KolDialogWc implements DialogAPI {
 	 * Opens the dialog. Pass false to open as a non-modal (modeless) dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	async show(modal: boolean = true) {
+	show(modal: boolean = true): Promise<void> {
 		if (this.refDialog?.open) {
-			return;
+			return Promise.resolve();
 		}
 		this.isModal = modal;
-		if (modal) {
-			this.refDialog?.showModal();
-		} else {
-			this.refDialog?.show();
-		}
+		return Promise.resolve(modal ? this.refDialog?.showModal() : this.refDialog?.show());
 	}
 
 	/**
 	 * Opens the dialog as a modal.
-	 * @deprecated Use show(true) instead.
 	 */
 	@Method()
-	async openModal() {
-		await this.show(true);
+	showModal(): Promise<void> {
+		return this.show(true);
+	}
+
+	/**
+	 * Opens the dialog as a modal.
+	 * @deprecated Use showModal() instead.
+	 */
+	@Method()
+	openModal(): Promise<void> {
+		return this.showModal();
 	}
 
 	/**
 	 * Closes the modal dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeModal() {
+	public closeModal(): Promise<void> {
 		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
-		this.refDialog?.close?.();
+		return Promise.resolve(this.refDialog?.close?.());
 	}
 
 	private readonly on = {
-		onClose: async () => {
-			await this.closeModal();
-		},
+		onClose: () => this.closeModal(),
 	};
 
 	public render(): JSX.Element {
