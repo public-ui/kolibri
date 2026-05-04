@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HeadingLevel, PropLabel } from '../props';
+import type { HeadingLevel, PropLabel, PropModal } from '../props';
 import type { PropDialogVariant } from '../props/variant/dialog';
 import type { KoliBriModalEventCallbacks } from '../types';
 
@@ -9,14 +9,16 @@ type OptionalProps = {
 	on: KoliBriModalEventCallbacks;
 	width: string;
 	level?: HeadingLevel;
-} & PropDialogVariant;
+} & PropDialogVariant &
+	PropModal;
 type RequiredStates = {
 	width: string;
 } & PropLabel;
 type OptionalStates = {
 	level?: HeadingLevel;
 	on: KoliBriModalEventCallbacks;
-} & PropDialogVariant;
+} & PropDialogVariant &
+	PropModal;
 
 export type DialogProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type DialogStates = Generic.Element.Members<RequiredStates, OptionalStates>;

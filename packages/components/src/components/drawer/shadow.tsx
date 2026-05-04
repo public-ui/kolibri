@@ -9,9 +9,10 @@ import type {
 	HeadingLevel,
 	KoliBriModalEventCallbacks,
 	LabelPropType,
+	ModalPropType,
 	OpenPropType,
 } from '../../schema';
-import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
+import { setState, validateAlign, validateHasCloser, validateLabel, validateModal, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -44,7 +45,11 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		this.dialogElement?.showModal();
+		if (this.state._modal !== false) {
+			this.dialogElement?.showModal();
+		} else {
+			this.dialogElement?.show();
+		}
 	}
 
 	/**
@@ -101,7 +106,13 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-drawer">
-				<dialog aria-labelledby={this.cardHeadingId} class="kol-drawer__dialog" onCancel={handleCancelOverlay} ref={this.getRef}>
+				<dialog
+					aria-labelledby={this.cardHeadingId}
+					aria-modal={this.state._modal !== false ? 'true' : 'false'}
+					class="kol-drawer__dialog"
+					onCancel={handleCancelOverlay}
+					ref={this.getRef}
+				>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
@@ -139,10 +150,16 @@ export class KolDrawer implements DrawerAPI {
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
+	/**
+	 * Controls if a drawer is a modal. Set to false for non-modal (modeless) drawers.
+	 */
+	@Prop() public _modal?: ModalPropType = true;
+
 	@State() public state: DrawerStates = {
 		_label: '', // ⚠ required
 		_open: false,
 		_align: 'left',
+		_modal: true,
 	};
 
 	@Watch('_label')
@@ -198,6 +215,11 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
+	@Watch('_modal')
+	public validateModalProp(value?: ModalPropType): void {
+		validateModal(this, value);
+	}
+
 	private handleCloseDialog() {
 		this.dialogElement?.close();
 		this._on?.onClose?.();
@@ -237,5 +259,6 @@ export class KolDrawer implements DrawerAPI {
 		this.validateOpen(this._open);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
+		this.validateModalProp(this._modal);
 	}
 }

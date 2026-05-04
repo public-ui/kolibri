@@ -1,8 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolCardWcTag } from '../../core/component-names';
-import type { DialogAPI, DialogStates, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
-import { setState, validateLabel, validateWidth } from '../../schema';
+import type { DialogAPI, DialogStates, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType, ModalPropType } from '../../schema';
+import { setState, validateLabel, validateModal, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
 import clsx from '../../utils/clsx';
@@ -43,7 +43,11 @@ export class KolDialogWc implements DialogAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async openModal() {
-		this.refDialog?.showModal();
+		if (this.state._modal !== false) {
+			this.refDialog?.showModal();
+		} else {
+			this.refDialog?.show();
+		}
 	}
 
 	/**
@@ -67,6 +71,7 @@ export class KolDialogWc implements DialogAPI {
 			<dialog
 				aria-label={this.state._variant === 'blank' ? this.state._label : undefined}
 				aria-labelledby={this.state._variant === 'card' ? this.cardHeadingId : undefined}
+				aria-modal={this.state._modal !== false ? 'true' : 'false'}
 				class={clsx('kol-dialog', 'kol-modal', {
 					'kol-dialog__blank': this.state._variant === 'blank',
 					'kol-dialog__card': this.state._variant === 'card',
@@ -117,9 +122,15 @@ export class KolDialogWc implements DialogAPI {
 	 */
 	@Prop() public _variant?: ModalVariantPropType = 'blank';
 
+	/**
+	 * Controls if a dialog is a modal. Set to false for non-modal (modeless) dialogs.
+	 */
+	@Prop() public _modal?: ModalPropType = true;
+
 	@State() public state: DialogStates = {
 		_label: '', // ⚠ required
 		_width: '100%',
+		_modal: true,
 	};
 
 	@Watch('_label')
@@ -155,11 +166,17 @@ export class KolDialogWc implements DialogAPI {
 		validateModalVariant(this, value);
 	}
 
+	@Watch('_modal')
+	public validateModalProp(value?: ModalPropType): void {
+		validateModal(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 		this.validateVariant(this._variant);
+		this.validateModalProp(this._modal);
 	}
 }
