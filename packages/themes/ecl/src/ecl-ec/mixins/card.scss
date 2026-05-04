@@ -1,0 +1,39 @@
+@use '../../mixins/to-rem' as *;
+@use './button' as *;
+
+@mixin card($block-classname: kol-card) {
+	.#{$block-classname} {
+		@include button('kol-button');
+
+		background-color: var(--ecl-color-white);
+		box-shadow: var(--ecl-shadow-1);
+		border-radius: 0 0 2px 2px;
+		border: 1px solid var(--ecl-color-stroke);
+		border-bottom: 4px solid var(--ecl-color-primary);
+
+		&__header {
+			display: block;
+			padding: var(--ecl-spacing-xl) var(--ecl-spacing-m) var(--ecl-spacing-s) var(--ecl-spacing-xl);
+
+			font-size: var(--ecl-font-size-l);
+			font-weight: 400;
+			line-height: var(--ecl-line-height-l);
+		}
+
+		&__content {
+			padding: 0 var(--ecl-spacing-xl) var(--ecl-spacing-xl);
+
+			& ::slotted(p:first-child) {
+				margin-top: 0;
+			}
+
+			& ::slotted(p:last-child) {
+				margin-bottom: 0;
+			}
+		}
+
+		&__close-button .kol-button {
+			@include ghost-button();
+		}
+	}
+}

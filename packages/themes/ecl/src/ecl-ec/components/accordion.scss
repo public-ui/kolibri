@@ -2,55 +2,53 @@
 
 @layer kol-theme-component {
 	.kol-accordion {
-		background-color: var(--color-grey-5);
-		border-color: var(--color-grey-25);
-		border-style: solid;
-		border-width: 1px;
+		border-top: var(--ecl-color-neutral) solid 1px;
 
-		&:focus-within {
-			outline: 2px solid var(--color-blue);
+		&:focus-visible {
+			outline: 2px solid var(--ecl-color-primary);
 			outline-offset: -2px;
 		}
 
 		&__heading-button {
 			.kol-button {
-				display: flex;
-				width: 100%;
-				padding: 0 var(--spacing-m);
-				place-items: center;
+				padding: var(--ecl-spacing-xl);
 
-				line-height: 1.2;
-				text-align: left;
-
-				&__text {
-					color: var(--color-grey);
-					width: 100%;
-					padding: to-rem(12) 0;
-
-					font-weight: var(--font-weight-bold);
-					border: none;
-				}
-
-				&:focus,
 				&:hover {
-					background-color: var(--color-grey-25);
+					background-color: var(--ecl-color-neutral-60);
 				}
 
 				&:focus {
 					outline: none;
 				}
+
+				.kol-icon {
+					font-family: ecl-icons;
+					&::before {
+						content: '\ea46';
+					}
+				}
+
+				&[aria-expanded='true'] {
+					padding-bottom: var(--ecl-spacing-l);
+
+					.kol-icon {
+						font-family: ecl-icons;
+						&::before {
+							content: '\ea38';
+						}
+					}
+				}
 			}
 
-			.kol-icon {
-				margin-top: to-rem(12);
-				margin-bottom: to-rem(12);
-				margin-inline-end: to-rem(16);
-				margin-inline-start: 0;
+			.kol-span__container {
+				width: 100%;
+				flex-direction: row-reverse;
+				justify-content: space-between;
 			}
 		}
 
 		&__content {
-			padding: var(--spacing-s) var(--spacing-m);
+			padding: 0 var(--ecl-spacing-xl) var(--ecl-spacing-xl);
 		}
 	}
 }

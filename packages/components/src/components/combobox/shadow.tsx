@@ -157,7 +157,11 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		}
 	}
 
-	private setFilteredSuggestionsByQuery(query: string) {
+	private setFilteredSuggestionsByQuery(query: string | undefined) {
+		if (query === undefined) {
+			return;
+		}
+
 		if (query.trim() === '') {
 			this._filteredSuggestions = [...this.state._suggestions];
 		} else {
@@ -640,6 +644,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		this.controller.validateSuggestions(value);
 		this._filteredSuggestions = value;
+		this.setFilteredSuggestionsByQuery(this._value);
 	}
 
 	@Watch('_hasClearButton')

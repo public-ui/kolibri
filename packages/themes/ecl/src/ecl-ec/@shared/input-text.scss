@@ -1,6 +1,0 @@
-@use './input-core' as *;
-@use '../mixins/input-text' as *;
-
-@layer kol-theme-component {
-	@include kol-input-text-theme;
-}

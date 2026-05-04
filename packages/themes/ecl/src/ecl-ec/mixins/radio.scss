@@ -1,0 +1,29 @@
+@use '../../mixins/to-rem' as *;
+@use './icon' as *;
+
+@mixin radio($block-classname) {
+	.#{$block-classname} {
+		.kol-input-radio {
+			width: to-rem(24);
+			min-width: 0;
+		}
+
+		input {
+			background-color: var(--ecl-color-white);
+			border-color: var(--kol-radio-color);
+			position: relative;
+			border-width: 1px;
+
+			&:checked::before {
+				background-color: var(--kol-radio-color);
+				inset: to-rem(4);
+			}
+		}
+
+		&:not(:has(input:disabled)):hover {
+			input {
+				outline: var(--ecl-color-primary-20) 8px solid;
+			}
+		}
+	}
+}

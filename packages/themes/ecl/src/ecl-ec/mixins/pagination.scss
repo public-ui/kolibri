@@ -1,0 +1,18 @@
+@use '../../mixins/to-rem' as *;
+@use './button' as *;
+
+@mixin pagination {
+	.kol-pagination {
+		@include button('kol-button');
+
+		gap: var(--ecl-spacing-m);
+
+		&__navigation {
+			gap: var(--ecl-spacing-m);
+		}
+
+		.kol-button {
+			@include ghost-button;
+		}
+	}
+}

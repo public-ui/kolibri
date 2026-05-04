@@ -2,11 +2,13 @@
 @use '../@shared/field-control.mixin' as *;
 @use '../@shared/form-field.mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/alert.mixin' as *;
 @use '../@shared/icon.mixin' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
 @layer kol-component {
+	@include kol-alert;
 	@include kol-form-field;
 	@include kol-field-control;
 	@include kol-icon-styles();

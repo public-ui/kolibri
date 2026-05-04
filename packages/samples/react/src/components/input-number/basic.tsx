@@ -14,6 +14,7 @@ export const InputNumberBasic: FC = () => (
 				emphasize validation rules, supporting examples without form validation, and refrains from additional validation through native HTML element validation.
 			</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputNumberVariants} showButtons={false} />
 	</>
 );

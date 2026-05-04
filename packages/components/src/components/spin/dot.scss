@@ -17,7 +17,7 @@
 		}
 
 		100% {
-			transform: translate(to-rem(16), 0);
+			transform: translate(to-rem(var(--kol-spin-size, 13)), 0);
 		}
 	}
 
@@ -38,48 +38,46 @@
 		}
 	}
 	.kol-spin {
-		&__spinner {
-			&--dot {
-				width: to-rem(48);
-				height: to-rem(16);
-			}
-		}
+		&__spinner--dot {
+			--kol-spin-border-width: calc(var(--kol-spin-size, 13) / 10);
 
-		&__spinner-element {
-			border-radius: 50%;
-			position: absolute;
-			top: to-rem(0.16);
-			width: to-rem(12.8);
-			height: to-rem(12.8);
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: to-rem(0.16) solid white;
+			width: to-rem(calc((var(--kol-spin-size, 13) * 3) + 2));
+			height: to-rem(calc(var(--kol-spin-size, 13) + (var(--kol-spin-border-width) * 2)));
 
-			&--1 {
-				background-color: black;
-				left: to-rem(0.16);
-				z-index: 0;
-				animation: 1s infinite spin1;
-			}
+			&__element {
+				background-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
+				border-radius: 50%;
+				position: absolute;
+				top: 1px;
+				width: to-rem(var(--kol-spin-size, 13));
+				height: to-rem(var(--kol-spin-size, 13));
+				animation-timing-function: cubic-bezier(0, 1, 1, 0);
+				border: to-rem(var(--kol-spin-border-width)) solid white;
 
-			&--2 {
-				background-color: black;
-				left: to-rem(0.16);
-				z-index: 1;
-				animation: 1s infinite spin2;
-			}
+				&--1 {
+					left: to-rem(var(--kol-spin-border-width));
+					z-index: 0;
+					animation: 1s infinite spin1;
+				}
 
-			&--3 {
-				background-color: black;
-				left: to-rem(17.6);
-				z-index: 1;
-				animation: 1s infinite spin2;
-			}
+				&--2 {
+					left: to-rem(var(--kol-spin-border-width));
+					z-index: 1;
+					animation: 1s infinite spin2;
+				}
 
-			&--neutral {
-				background-color: #666;
-				left: to-rem(33.6);
-				z-index: 0;
-				animation: 1s infinite spin3;
+				&--3 {
+					left: to-rem(calc(var(--kol-spin-size, 13) + var(--kol-spin-border-width)));
+					z-index: 1;
+					animation: 1s infinite spin2;
+				}
+
+				&--4 {
+					opacity: 0.6;
+					left: to-rem(calc((var(--kol-spin-size, 13) * 2) + var(--kol-spin-border-width)));
+					z-index: 0;
+					animation: 1s infinite spin3;
+				}
 			}
 		}
 	}

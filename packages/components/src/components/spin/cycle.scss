@@ -2,72 +2,73 @@
 
 @layer kol-component {
 	@keyframes rotate {
-		100% {
-			transform: rotate(360deg);
+		to {
+			transform: rotate(1turn);
 		}
 	}
 
-	@keyframes prixClipFix {
+	@keyframes growingCircle {
 		0% {
+			opacity: 0.5;
 			border-color: white;
 			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
 		}
 
 		25% {
-			border-color: #666;
+			opacity: 0.75;
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
 		}
 
 		50% {
-			border-color: black;
+			opacity: 1;
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, black));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
 		}
 
 		75% {
-			border-color: black;
+			opacity: 1;
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, black));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
 		}
 
 		100% {
-			border-color: black;
+			opacity: 0.1;
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, black));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
 		}
 	}
 
-	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
-	@media (prefers-reduced-motion) {
-		.kol-spin__loader {
-			animation-duration: 4s !important;
-
-			&::before {
-				animation-duration: 6s !important;
-			}
-		}
-	}
 	.kol-spin {
-		&__spinner {
-			&--cycle {
-				width: to-rem(48);
-				height: to-rem(48);
-			}
-		}
+		&__spinner--cycle {
+			width: to-rem(var(--kol-spin-size, 48));
+			height: to-rem(var(--kol-spin-size, 48));
 
-		&__loader {
-			border-radius: 50%;
-			display: block;
-			position: relative;
-			width: 100%;
-			height: 100%;
-			animation: 2s linear infinite rotate;
-
-			&::before {
+			&__element {
 				border-radius: 50%;
-				position: absolute;
-				inset: 0;
+				display: block;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				animation: 2s linear infinite rotate;
 
-				content: '';
-				animation: 3s linear infinite prixClipFix;
-				border: 5px solid #333;
+				@media (prefers-reduced-motion) {
+					animation-duration: 4s !important;
+				}
+
+				&::before {
+					border-radius: 50%;
+					position: absolute;
+					inset: 0;
+
+					content: '';
+					animation: 3s linear infinite growingCircle;
+					border: 5px solid var(--kol-spin-color, var(--kol-theme-spin-color, #333));
+
+					@media (prefers-reduced-motion) {
+						animation-duration: 6s !important;
+					}
+				}
 			}
 		}
 	}

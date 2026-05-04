@@ -1,6 +1,6 @@
-import { expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableDataType, TableHeaderCells } from '../../schema';
+import type { KoliBriTableDataType, KoliBriTableHeaders, TableHeaderCells } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];
@@ -16,7 +16,11 @@ const HEADERS: TableHeaderCells = {
 	],
 };
 
+const SORTABLE_DATA = [{ id: '3' }, { id: '1' }, { id: '2' }];
+
 type Data = (typeof DATA)[0];
+
+const getFirstBodyCell = (page: Page) => page.locator('kol-table-stateful').locator('tbody td.kol-table__cell--body').first();
 
 test.describe('kol-table-stateful', () => {
 	test.describe('kol-table-stateful (string ids)', () => {
@@ -81,6 +85,90 @@ test.describe('kol-table-stateful', () => {
 			});
 			const got = await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.getSelection());
 			expect(got).toEqual([{ id: 1002 }]);
+		});
+	});
+
+	test.describe('resetSort()', () => {
+		test('resets manual sort back to the default sort defined in headers', async ({ page }) => {
+			await page.setContent(`<kol-table-stateful
+					_label="Table Stateful"
+					_data='${JSON.stringify(SORTABLE_DATA)}'
+				/>`);
+
+			// Set headers with a compareFn via evaluate (functions cannot be serialized to JSON)
+			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
+				const headers: KoliBriTableHeaders = {
+					horizontal: [
+						[
+							{
+								key: 'id',
+								label: 'ID',
+								sortDirection: 'ASC',
+								compareFn: (a, b) => String(a.id).localeCompare(String(b.id)),
+							},
+						],
+					],
+				};
+				el._headers = headers as unknown as string;
+			});
+			await page.waitForChanges();
+
+			// Verify initial ASC sort: first row should be '1'
+			await expect(getFirstBodyCell(page)).toHaveText('1');
+
+			// Toggle sorting by clicking the visible header sort button (ASC -> DESC)
+			const idSortButton = page.locator('kol-table-stateful').getByRole('button', { name: 'ID' });
+			await idSortButton.click();
+			await idSortButton.click();
+			await page.waitForChanges();
+
+			// Verify DESC sort: first row should be '3'
+			await expect(getFirstBodyCell(page)).toHaveText('3');
+
+			// Reset sort
+			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.resetSort());
+			await page.waitForChanges();
+
+			// Verify the sort is back to ASC: first row should be '1'
+			await expect(getFirstBodyCell(page)).toHaveText('1');
+		});
+
+		test('clears manual sort when no default sort is defined in headers', async ({ page }) => {
+			await page.setContent(`<kol-table-stateful
+					_label="Table Stateful"
+					_data='${JSON.stringify(SORTABLE_DATA)}'
+				/>`);
+
+			// Set headers without initial sortDirection via evaluate
+			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
+				const headers: KoliBriTableHeaders = {
+					horizontal: [
+						[
+							{
+								key: 'id',
+								label: 'ID',
+								compareFn: (a, b) => String(a.id).localeCompare(String(b.id)),
+							},
+						],
+					],
+				};
+				el._headers = headers as unknown as string;
+			});
+			await page.waitForChanges();
+
+			// Trigger an ASC sort on the id column
+			await page.locator('kol-table-stateful').getByRole('button', { name: 'ID' }).click();
+			await page.waitForChanges();
+
+			// Verify ASC sort applied: first row should be '1'
+			await expect(getFirstBodyCell(page)).toHaveText('1');
+
+			// Reset sort
+			await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => el.resetSort());
+			await page.waitForChanges();
+
+			// Verify the sort is cleared: first row should be back to original order '3'
+			await expect(getFirstBodyCell(page)).toHaveText('3');
 		});
 	});
 });
