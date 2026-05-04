@@ -13,6 +13,7 @@
 	.kol-select {
 		background-color: transparent;
 		width: 100%;
+		padding: 0; // for firefox
 
 		&:not(:disabled) {
 			cursor: pointer;
