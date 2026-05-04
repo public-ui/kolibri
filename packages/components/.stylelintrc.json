@@ -15,7 +15,7 @@
 			}
 		],
 		"declaration-property-value-allowed-list": {
-			"/color/": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"],
+			"/color/": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/", "selectedItem"],
 			"fill": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"],
 			"stroke": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"]
 		}
