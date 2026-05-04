@@ -93,6 +93,7 @@ describe('CLI interface', function () {
 				'--remove-mode',
 				'delete',
 				'--test-tasks',
+				'--no-format',
 			]);
 
 			(childProc as any).exec = execOrig;
