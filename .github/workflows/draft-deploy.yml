@@ -1,17 +1,13 @@
-name: Deploy to Netlify (Reusable)
+name: Netlify Draft-Deploy
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        description: 'Deployment environment (preview or production)'
-        type: string
-        required: true
-      alias:
-        description: 'Netlify alias for production deployments'
-        type: string
-        required: false
-        default: ''
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  cancel-in-progress: true
 
 permissions:
   attestations: write
@@ -22,6 +18,8 @@ permissions:
 
 jobs:
   deploy:
+    # Skip this job when the base clone URL may be different from the head clone URL.
+    if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -33,26 +31,22 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-
       - name: Install pnpm
         uses: pnpm/action-setup@v6
         id: pnpm-install
         with:
           version: 10
-
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
       - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
+            ${{ runner.os }}-pnpm-store
       - name: Install
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
 
@@ -64,29 +58,16 @@ jobs:
         with:
           subject-path: packages/samples/presentation/dist
 
-      - name: Netlify Deploy (Preview)
-        if: inputs.environment == 'preview'
+      - name: Netlify Deploy
         uses: netlify/actions/cli@master
-        id: netlify-preview
+        id: netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
           args: deploy --no-build --filter=@public-ui/presentation -d packages/samples/presentation/dist
 
-      - name: Netlify Deploy (Production)
-        if: inputs.environment == 'production'
-        uses: netlify/actions/cli@master
-        id: netlify-production
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
-          NETLIFY_ALIAS: ${{ inputs.alias }}
-        with:
-          args: deploy --no-build --filter=@public-ui/presentation -d packages/samples/presentation/dist --alias="$NETLIFY_ALIAS"
-
-      - name: Find comment (Preview only)
-        if: inputs.environment == 'preview'
+      - name: Find comment
         uses: peter-evans/find-comment@v4
         id: fc
         with:
@@ -94,14 +75,13 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: Netlify Draft Deployment
 
-      - name: Create or update comment (Preview)
-        if: inputs.environment == 'preview'
+      - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Netlify Draft Deployment
-            URL: ${{ steps.netlify-preview.outputs.NETLIFY_URL }}
-            Logs: ${{ steps.netlify-preview.outputs.NETLIFY_LOGS_URL }}
+            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}
+            Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
           edit-mode: replace
