@@ -14,16 +14,8 @@ name: 'CodeQL'
 on:
   push:
     branches: ['develop', 'release/*']
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
-      - 'LICENSE'
   pull_request:
     branches: ['develop', 'release/*']
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
-      - 'LICENSE'
   schedule:
     - cron: '23 1 * * 6'
 

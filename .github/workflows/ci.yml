@@ -2,21 +2,11 @@ name: CI-Pipeline
 
 on:
   pull_request:
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
-      - 'LICENSE'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/PULL_REQUEST_TEMPLATE/**'
   push:
     branches:
       - 'develop'
       - 'main'
       - 'release/*'
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
-      - 'LICENSE'
   workflow_dispatch:
 
 concurrency:
@@ -53,13 +43,6 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      - name: Cache Playwright browsers
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
       - name: E2E Test components
@@ -85,13 +68,6 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      - name: Cache Playwright browsers
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
       - name: Install Playwright browsers
         run: npx playwright install --with-deps firefox
       - name: Build

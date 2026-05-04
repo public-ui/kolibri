@@ -6,38 +6,8 @@ on:
     - cron: '0 4-20 * * *' # stündlich 04–20 UTC (~06–22 Uhr Berlin)
 
 jobs:
-  check-commits:
-    name: Check for new commits
-    if: github.repository == 'public-ui/kolibri'
-    runs-on: ubuntu-latest
-    outputs:
-      has-new-commits: ${{ steps.check.outputs.has-new-commits }}
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-          fetch-depth: 2
-
-      - name: Check for new commits
-        id: check
-        run: |
-          LAST_COMMIT=$(git log -1 --format=%ct)
-          CURRENT=$(date +%s)
-          DIFF=$((CURRENT - LAST_COMMIT))
-          HOURS=$((DIFF / 3600))
-          if [[ $HOURS -lt 2 ]]; then
-            echo "has-new-commits=true" >> $GITHUB_OUTPUT
-            echo "✅ New commit(s) within last hour"
-          else
-            echo "has-new-commits=false" >> $GITHUB_OUTPUT
-            echo "⏭️  No new commits, skipping sync"
-          fi
-
   sync:
-    needs: check-commits
-    if: |
-      github.repository == 'public-ui/kolibri' &&
-      (github.event_name == 'workflow_dispatch' || needs.check-commits.outputs.has-new-commits == 'true')
+    if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

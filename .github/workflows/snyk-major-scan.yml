@@ -10,41 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check-activity:
-    name: Check for recent commits
-    if: github.ref == 'refs/heads/develop'
-    runs-on: ubuntu-latest
-    outputs:
-      should-scan: ${{ steps.activity.outputs.should-scan }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-
-      - name: Check last commit age
-        id: activity
-        run: |
-          LAST_COMMIT=$(git log -1 --format=%ct)
-          CURRENT=$(date +%s)
-          DIFF=$((CURRENT - LAST_COMMIT))
-          HOURS=$((DIFF / 3600))
-
-          # For scheduled runs: only scan if commit is < 25 hours old (daily scan buffer)
-          # For manual runs: always scan
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "should-scan=true" >> $GITHUB_OUTPUT
-          elif [[ $HOURS -lt 25 ]]; then
-            echo "should-scan=true" >> $GITHUB_OUTPUT
-            echo "✅ Found recent commits (last commit was ${HOURS}h ago)"
-          else
-            echo "should-scan=false" >> $GITHUB_OUTPUT
-            echo "⏭️  Skipping scan: no commits in last 25 hours (last commit was ${HOURS}h ago)"
-          fi
-
   snyk-major-scan:
-    needs: check-activity
-    if: needs.check-activity.outputs.should-scan == 'true'
+    if: github.ref == 'refs/heads/develop'
     name: Snyk Major Scan (v${{ matrix.major }})
     runs-on: ubuntu-latest
     strategy:
