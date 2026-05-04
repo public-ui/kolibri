@@ -44,7 +44,9 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		this.dialogElement?.showModal();
+		if (typeof this.dialogElement?.showModal === 'function') {
+			this.dialogElement.showModal();
+		}
 	}
 
 	/**
@@ -199,7 +201,9 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	private handleCloseDialog() {
-		this.dialogElement?.close();
+		if (typeof this.dialogElement?.close === 'function') {
+			this.dialogElement.close();
+		}
 		this._on?.onClose?.();
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
