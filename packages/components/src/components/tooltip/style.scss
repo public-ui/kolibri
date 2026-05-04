@@ -37,8 +37,8 @@
 
 		&__arrow {
 			transform: rotate(45deg);
-			color: #000;
-			background-color: #fff;
+			color: black;
+			background-color: white;
 			position: absolute;
 			z-index: 999;
 			width: to-rem(10);
@@ -46,8 +46,8 @@
 		}
 
 		&__content {
-			color: #000;
-			background-color: #fff;
+			color: black;
+			background-color: white;
 			position: relative;
 			z-index: 1000;
 		}
