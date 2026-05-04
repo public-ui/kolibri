@@ -1,0 +1,20 @@
+@use '../mixins/table' as *;
+
+@layer kol-theme-component {
+	@include table;
+
+	.kol-table-stateful {
+		&__pagination {
+			font-family: var(--font-family);
+			line-height: var(--line-height);
+			word-break: break-word;
+		}
+
+		.kol-pagination {
+			@media (min-width: 1024px) {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+}

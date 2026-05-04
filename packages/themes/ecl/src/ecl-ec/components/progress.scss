@@ -3,15 +3,27 @@
 @layer kol-theme-component {
 	.kol-progress {
 		&__bar-progress {
-			fill: var(--color-blue-130);
+			fill: var(--ecl-color-primary);
+		}
+
+		&__bar-background {
+			fill: var(--ecl-color-neutral);
+		}
+
+		&__bar-border {
+			stroke: transparent;
 		}
 
 		&__cycle-background {
-			stroke: var(--color-grey-25);
+			stroke: var(--ecl-color-neutral);
 		}
 
 		&__cycle-progress {
-			stroke: var(--color-blue-130);
+			stroke: var(--ecl-color-primary);
+		}
+
+		&__cycle-border {
+			stroke: transparent;
 		}
 	}
 }

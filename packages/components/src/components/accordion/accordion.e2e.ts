@@ -18,6 +18,22 @@ test.describe('kol-accordion', () => {
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
 		});
 
+		test('should have proper aria attributes', async ({ page }) => {
+			const button = page.getByRole('button');
+			const content = page.locator('.collapsible__content');
+
+			await expect(button).toHaveAttribute('aria-expanded', 'false');
+			await expect(button).toHaveAttribute('aria-controls', /^.*-control$/);
+			await expect(content).toHaveAttribute('role', 'region');
+			await expect(content).toHaveAttribute('aria-labelledby', /^.*-heading$/);
+			await expect(content).toHaveAttribute('aria-hidden', 'true');
+
+			await button.click();
+
+			await expect(button).toHaveAttribute('aria-expanded', 'true');
+			await expect(content).not.toHaveAttribute('aria-hidden');
+		});
+
 		test('should hide the accordion content after the title has been clicked again', async ({ page }) => {
 			await page.getByRole('button', { name: 'Accordion label' }).click();
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');

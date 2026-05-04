@@ -1,0 +1,58 @@
+@use '../breakpoints' as *;
+@use './button' as *;
+@use './select' as *;
+@use '../functions/to-rem' as *;
+
+@mixin pagination() {
+	@include button('kol-button');
+	@include select();
+
+	.kol-pagination {
+		&__separator {
+			color: var(--color-dark-blue-100);
+		}
+
+		&__page-size-select {
+			@media (max-width: $breakpoint-md) {
+				grid-row: 1;
+			}
+
+			@media (min-width: $breakpoint-md) {
+				width: max-content;
+				margin-left: auto;
+				grid-column: 1;
+				grid-row: 1;
+			}
+		}
+
+		.kol-form-field-select {
+			gap: to-rem(10);
+
+			.kol-input-container {
+				--border-color: transparent;
+				margin-top: 0;
+
+				.kol-select {
+					color: var(--color-blue-100);
+				}
+
+				&:hover {
+					.kol-select {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.kol-form-field__label {
+				font-weight: 400;
+			}
+		}
+	}
+
+	.kol-button {
+		&__text {
+			min-width: unset !important; // override style from button mixin
+			border: none;
+		}
+	}
+}

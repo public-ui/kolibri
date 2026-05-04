@@ -16,6 +16,7 @@ npm unpublish @public-ui/components@$1
 npm unpublish @public-ui/sample-react@$1
 npm unpublish @public-ui/theme-bwst@$1
 npm unpublish @public-ui/theme-default@$1
+npm unpublish @public-ui/theme-desy@$1
 npm unpublish @public-ui/theme-ecl@$1
 npm unpublish @public-ui/theme-kern@$1
 npm unpublish @public-ui/stylelint-rules@$1

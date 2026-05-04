@@ -1,0 +1,41 @@
+@use '../functions/to-rem' as *;
+
+@mixin kol-typography-h1 {
+	font-size: to-rem(28);
+}
+
+@mixin kol-typography-h1-md {
+	font-size: to-rem(33.184);
+}
+
+@mixin kol-typography-h2 {
+	font-size: to-rem(24.3);
+}
+
+@mixin kol-typography-h2-md {
+	font-size: to-rem(27.648);
+}
+
+@mixin kol-typography-h3 {
+	font-size: to-rem(21.2);
+}
+
+@mixin kol-typography-h3-md {
+	font-size: to-rem(23.04);
+}
+
+@mixin kol-typography-h4 {
+	font-size: to-rem(18.4);
+}
+
+@mixin kol-typography-h4-md {
+	font-size: to-rem(19.2);
+}
+
+@mixin kol-typography-h5 {
+	font-size: to-rem(16);
+}
+
+@mixin kol-typography-h6 {
+	font-size: to-rem(14.4);
+}

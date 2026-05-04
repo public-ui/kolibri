@@ -1,0 +1,19 @@
+@use '../mixins/link' as *;
+@use '../functions/to-rem' as *;
+
+@layer kol-theme-component {
+	@include kol-link('kol-button');
+
+	.kol-popover__content {
+		border: 0;
+	}
+
+	.kol-split-button {
+		&__root {
+			gap: to-rem(8);
+		}
+		&__secondary-button .kol-button {
+			min-width: 0;
+		}
+	}
+}

@@ -10,12 +10,6 @@
 
 		font-family: var(--kern-typography-font-family-default);
 
-		&--read-only &__label,
-		&--disabled &__label {
-			opacity: 1;
-			cursor: not-allowed;
-		}
-
 		&__label {
 			color: var(--kern-color-layout-text-default);
 
@@ -78,6 +72,12 @@
 				.span-label::after {
 					padding-left: 0.125em;
 				}
+			}
+		}
+
+		&--disabled & {
+			&__label {
+				opacity: var(--action-state-opacity-disabled, 0.4);
 			}
 		}
 

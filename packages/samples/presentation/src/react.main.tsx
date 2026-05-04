@@ -4,7 +4,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { bootstrap } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { BWSt, DEFAULT, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
+import { BWSt, DEFAULT, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
 
 import { App } from '@public-ui/sample-react';
 
@@ -25,7 +25,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2] as Theme[];
+	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2, DesyV11] as Theme[];
 };
 
 void (async () => {
@@ -81,11 +81,11 @@ void (async () => {
 								key: 'default',
 							},
 							{
-								name: 'BWSt',
+								name: 'BWSt (v4)',
 								key: 'bwst',
 							},
 							{
-								name: 'European Commission (in progress)',
+								name: 'European Commission (v4)',
 								key: 'ecl-ec',
 							},
 							{
@@ -95,6 +95,10 @@ void (async () => {
 							{
 								name: 'KERN-UX Standard (v2)',
 								key: 'kern-v2',
+							},
+							{
+								name: 'Zoll Design System (v11)',
+								key: 'desy-v11',
 							},
 						]}
 					/>

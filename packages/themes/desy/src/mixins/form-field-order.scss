@@ -1,0 +1,72 @@
+@use '../functions/to-rem' as *;
+
+@mixin kol-form-field-order-theme {
+	.kol-form-field {
+		&__label {
+			order: 1;
+		}
+
+		&__input {
+			order: 2;
+		}
+
+		&__msg {
+			order: 3;
+		}
+
+		&__hint {
+			order: 4;
+		}
+	}
+}
+
+@mixin kol-form-field {
+	.kol-form-field {
+		color: var(--color-dark-blue-100);
+
+		font-family: var(--font-family);
+		font-size: to-rem(16);
+		line-height: 1.25;
+
+		&--disabled {
+			.kol-form-field__input {
+				outline: none;
+			}
+		}
+
+		&__label {
+			margin-bottom: to-rem(12);
+
+			font-weight: 700;
+
+			&-legend {
+				margin-bottom: to-rem(12);
+			}
+		}
+
+		&__input {
+			display: flex;
+			gap: to-rem(12);
+			flex-direction: column;
+
+			&--orientation-horizontal {
+				flex-direction: row;
+				flex-wrap: wrap;
+				align-items: flex-start;
+			}
+		}
+
+		&__msg {
+			.kol-alert__icon {
+				font-size: to-rem(16);
+				line-height: 1;
+			}
+		}
+
+		&__hint {
+			color: var(--color-black-70);
+
+			font-size: to-rem(14.4);
+		}
+	}
+}

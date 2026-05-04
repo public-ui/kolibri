@@ -1,36 +1,62 @@
 @use '../../mixins/to-rem' as *;
 
 @mixin kol-typography-body {
-	font-size: to-rem(16);
-	line-height: 1.5;
+	font-size: var(--ecl-font-size-m);
+	line-height: var(--ecl-line-height-m);
 }
 
 @mixin kol-typography-h1 {
-	font-size: to-rem(32);
-	line-height: 1.25;
+	font-size: var(--ecl-font-size-3xl);
+	line-height: var(--ecl-line-height-3xl);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-4xl);
+		line-height: var(--ecl-line-height-4xl);
+	}
 }
 
 @mixin kol-typography-h2 {
-	font-size: to-rem(28);
-	line-height: 1.143;
+	font-size: var(--ecl-font-size-2xl);
+	line-height: var(--ecl-line-height-2xl);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-3xl);
+		line-height: var(--ecl-line-height-3xl);
+	}
 }
 
 @mixin kol-typography-h3 {
-	font-size: to-rem(24);
-	line-height: 1.1667;
+	font-size: var(--ecl-font-size-xl);
+	line-height: var(--ecl-line-height-xl);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-2xl);
+		line-height: var(--ecl-line-height-2xl);
+	}
 }
 
 @mixin kol-typography-h4 {
-	font-size: to-rem(20);
-	line-height: 1.4;
+	font-size: var(--ecl-font-size-l);
+	line-height: var(--ecl-line-height-l);
+
+	@media (min-width: 768px) {
+		font-size: var(--ecl-font-size-xl);
+		line-height: var(--ecl-line-height-xl);
+	}
 }
 
 @mixin kol-typography-h5 {
-	font-size: to-rem(16);
-	line-height: 1.5;
+	font-size: var(--ecl-font-size-l);
+	line-height: var(--ecl-line-height-l);
+}
+
+@mixin kol-typography-h6 {
+	font-size: var(--ecl-font-size-m);
+	font-weight: var(--ecl-font-weight-bold);
+	line-height: var(--ecl-line-height-m);
 }
 
 @mixin kol-typography-hint {
-	font-size: to-rem(14.4);
-	font-style: italic;
+	font-size: var(--ecl-font-size-s);
+	line-height: var(--ecl-line-height-s);
 }

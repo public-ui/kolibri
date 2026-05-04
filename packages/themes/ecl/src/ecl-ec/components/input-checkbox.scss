@@ -1,153 +1,73 @@
 @use '../../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
-@use '../mixins/required' as *;
+@use '../mixins/checkbox' as *;
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
+	@include alert;
 
 	.kol-form-field {
-		color: var(--color-grey);
+		--kol-checkbox-color: var(--ecl-color-primary);
+
+		&__input {
+			order: 2;
+		}
 
 		&__hint {
+			order: 1;
+
 			font-size: to-rem(14);
 		}
 
 		&__msg {
-			@include kol-alert;
-
-			&.kol-alert--type-error {
-				@include kol-alert(--color-red);
-			}
+			order: 3;
 		}
+	}
+
+	.kol-input-checkbox__field-control--variant-default {
+		@include checkbox('kol-checkbox');
 	}
 
 	.kol-field-control {
-		$root: &;
-
-		&__label {
-			@at-root #{$root}--label-align-left & {
-				padding-right: to-rem(8);
-			}
-
-			@at-root #{$root}--label-align-right & {
-				padding-left: to-rem(8);
-			}
+		&--label-align-left &__label {
+			padding-right: to-rem(8);
 		}
 
-		&__label {
-			&-text::after {
-				@include kol-required-info;
-			}
+		&--label-align-right &__label {
+			padding-left: to-rem(8);
 		}
-	}
 
-	.kol-checkbox {
-		.kol-input {
-			color: var(--color-grey);
-			background-color: var(--color-white);
-			border-color: var(--color-grey-75);
-			border-style: solid;
-			border-width: 2px;
-
-			line-height: 1.5;
-
-			&:focus {
-				outline-color: var(--color-blue);
-				outline-style: solid;
-				outline-width: 2px;
-				outline-offset: 2px;
-			}
-
-			&:checked {
-				background-color: var(--color-blue);
-				border-color: var(--color-blue);
-			}
-
-			&:not(:disabled):hover {
-				border-color: var(--color-blue);
-			}
-
-			&:checked {
-				&:not(:disabled):hover {
-					background-color: var(--color-blue-130);
-					border-color: var(--color-blue-130);
-				}
-			}
-
-			&--error {
-				border-color: var(--color-red);
-
-				&:checked {
-					background-color: var(--color-red);
-					border-color: var(--color-red);
-				}
-
-				&:not(:disabled):hover {
-					border-color: var(--color-red);
-				}
-
-				&:checked {
-					&:not(:disabled):hover {
-						background-color: var(--color-red-120);
-						border-color: var(--color-red-120);
-					}
-				}
-			}
-		}
-	}
-
-	.kol-checkbox--variant-default {
-		width: unset;
-		min-width: unset;
-
-		&.kol-checkbox--checked .kol-icon {
-			color: var(--color-white);
+		&--error {
+			--kol-checkbox-color: var(--ecl-color-error);
 		}
 	}
 
 	.kol-checkbox--variant-switch {
-		.kol-icon {
-			color: var(--color-white);
-		}
-
 		.kol-input {
-			display: block;
+			border-color: var(--kol-checkbox-color);
+			border-radius: 16px;
 
 			&::before {
-				background-color: var(--color-grey-75);
+				background-color: var(--ecl-color-white);
+				border-radius: 50%;
 			}
 		}
 
-		&.kol-checkbox--checked .kol-icon {
-			color: #000;
-			background-color: var(--color-white);
+		.kol-icon {
+			color: var(--kol-checkbox-color);
+		}
+
+		&.kol-checkbox--checked {
+			.kol-input::before {
+				background-color: var(--kol-checkbox-color);
+			}
+			.kol-icon {
+				color: var(--ecl-color-white);
+			}
 		}
 
 		&:hover {
-			.kol-input:not(:disabled)::before {
-				background-color: var(--color-blue);
-			}
-		}
-
-		&.kol-checkbox--error {
-			.kol-icon {
-				color: var(--color-white);
-				background-color: var(--color-red);
-			}
-
-			.kol-input::before {
-				background-color: var(--color-red);
-			}
-
-			&.kol-checkbox--checked .kol-icon {
-				color: #000;
-				background-color: var(--color-white);
-			}
-
-			&:hover {
-				.kol-input:not(:disabled)::before {
-					background-color: var(--color-red);
-				}
+			.kol-input:not(:disabled) {
+				outline: var(--ecl-color-primary-20) 8px solid;
 			}
 		}
 	}
@@ -155,22 +75,8 @@
 	.kol-input-checkbox--variant-button {
 		gap: var(--spacing-xs) 0;
 
-		& .kol-form-field {
-			&__input {
-				order: 1;
-			}
-
-			&__hint {
-				order: 2;
-			}
-
-			&__msg {
-				order: 3;
-			}
-		}
-
 		&:focus-within {
-			outline-color: var(--color-blue-130);
+			outline-color: var(--ecl-color-primary-130);
 			outline-style: solid;
 			outline-width: 2px;
 		}

@@ -66,7 +66,7 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         id: pnpm-install
         with:
           version: 10
@@ -193,9 +193,21 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme bwst
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/bwst
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme default
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes/default
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme desy
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/desy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
@@ -208,12 +220,6 @@ jobs:
       - name: Build and publish theme kern
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes/kern
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme bwst
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-        working-directory: packages/themes/bwst
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true

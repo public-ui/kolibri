@@ -33,6 +33,7 @@ export default defineConfig({
 		sourcemap: true,
 	},
 	server: {
+		allowedHosts: true,
 		port: parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '9191', 10),
 		fs: {
 			allow: [
