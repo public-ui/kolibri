@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-dialog should render with _label="Blank Dialog" _variant="blank" _width="80%" 1`] = `
+<kol-dialog>
+  <template shadowrootmode="open">
+    <kol-dialog-wc>
+      <!---->
+      <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
+        <slot></slot>
+      </dialog>
+    </kol-dialog-wc>
+  </template>
+</kol-dialog>
+`;
+
+exports[`kol-dialog should render with _label="Dialog as Card" _variant="card" _width="80%" 1`] = `
+<kol-dialog>
+  <template shadowrootmode="open">
+    <kol-dialog-wc>
+      <!---->
+      <dialog aria-labelledby="nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+        <kol-card-wc _hascloser="" _headingid="nonce" _label="Dialog as Card" _level="0">
+          <slot></slot>
+        </kol-card-wc>
+      </dialog>
+    </kol-dialog-wc>
+  </template>
+</kol-dialog>
+`;
+
+exports[`kol-modal should render with _label="Blank Dialog" _variant="blank" _width="80%" 1`] = `
+<kol-modal>
+  <template shadowrootmode="open">
+    <kol-dialog-wc>
+      <!---->
+      <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
+        <slot></slot>
+      </dialog>
+    </kol-dialog-wc>
+  </template>
+</kol-modal>
+`;
+
+exports[`kol-modal should render with _label="Dialog as Card" _variant="card" _width="80%" 1`] = `
+<kol-modal>
+  <template shadowrootmode="open">
+    <kol-dialog-wc>
+      <!---->
+      <dialog aria-labelledby="nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+        <kol-card-wc _hascloser="" _headingid="nonce" _label="Dialog as Card" _level="0">
+          <slot></slot>
+        </kol-card-wc>
+      </dialog>
+    </kol-dialog-wc>
+  </template>
+</kol-modal>
+`;
