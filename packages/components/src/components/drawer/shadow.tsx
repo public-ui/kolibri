@@ -42,6 +42,9 @@ export class KolDrawer implements DrawerAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async show(modal: boolean = true) {
+		if (this.dialogElement?.open) {
+			return;
+		}
 		this.isModal = modal;
 		this.state = {
 			...this.state,

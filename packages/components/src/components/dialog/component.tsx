@@ -45,6 +45,9 @@ export class KolDialogWc implements DialogAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async show(modal: boolean = true) {
+		if (this.refDialog?.open) {
+			return;
+		}
 		this.isModal = modal;
 		if (modal) {
 			this.refDialog?.showModal();
