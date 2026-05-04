@@ -67,6 +67,8 @@ describe('CLI interface', function () {
 			const childProc = require('child_process');
 			const execOrig = childProc.exec;
 			(childProc as any).exec = (_: string, cb: (err: null, out: string) => void) => cb(null, '');
+			const execFileSyncOrig = childProc.execFileSync;
+			(childProc as any).execFileSync = () => '';
 
 			let runCalled = false;
 			const runOrig = TaskRunner.prototype.run;
@@ -96,6 +98,7 @@ describe('CLI interface', function () {
 			]);
 
 			(childProc as any).exec = execOrig;
+			(childProc as any).execFileSync = execFileSyncOrig;
 			TaskRunner.prototype.run = runOrig;
 			TaskRunner.prototype.getStatus = getStatusOrig;
 			TaskRunner.prototype.getPendingMinVersion = getPendingOrig;

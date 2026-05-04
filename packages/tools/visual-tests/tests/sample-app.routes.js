@@ -710,6 +710,20 @@ ROUTES.set('pagination/basic', {
 		},
 	},
 });
+ROUTES.set('pagination/button-visibility', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('pagination/sibling-boundary', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('popover-button/basic', {
 	snapshot: {
 		zoom: {
