@@ -61,12 +61,12 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	/**
-	 * Opens the drawer as a modal.
-	 * @deprecated Use showModal() instead.
+	 * Opens the drawer.
+	 * @deprecated Use show() or showModal() instead.
 	 */
 	@Method()
 	open(): Promise<void> {
-		return this.showModal();
+		return this.show(false);
 	}
 
 	/**
