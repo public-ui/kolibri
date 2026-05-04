@@ -9,10 +9,9 @@ import type {
 	HeadingLevel,
 	KoliBriModalEventCallbacks,
 	LabelPropType,
-	ModalPropType,
 	OpenPropType,
 } from '../../schema';
-import { setState, validateAlign, validateHasCloser, validateLabel, validateModal, validateOpen } from '../../schema';
+import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -35,21 +34,33 @@ export class KolDrawer implements DrawerAPI {
 	private dialogWrapperElement?: HTMLKolCardWcElement;
 	private readonly cardHeadingId = nonce();
 
+	@State() private isModal: boolean = true;
+
 	/**
-	 * Opens the drawer.
+	 * Opens the drawer. Pass false to open as a non-modal (modeless) drawer.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	async open() {
+	async show(modal: boolean = true) {
+		this.isModal = modal;
 		this.state = {
 			...this.state,
 			_open: true,
 		};
-		if (this.state._modal !== false) {
+		if (modal) {
 			this.dialogElement?.showModal();
 		} else {
 			this.dialogElement?.show();
 		}
+	}
+
+	/**
+	 * Opens the drawer as a modal.
+	 * @deprecated Use show(true) instead.
+	 */
+	@Method()
+	async open() {
+		await this.show(true);
 	}
 
 	/**
@@ -108,7 +119,7 @@ export class KolDrawer implements DrawerAPI {
 			<Host class="kol-drawer">
 				<dialog
 					aria-labelledby={this.cardHeadingId}
-					aria-modal={this.state._modal !== false ? 'true' : 'false'}
+					aria-modal={this.isModal ? 'true' : 'false'}
 					class="kol-drawer__dialog"
 					onCancel={handleCancelOverlay}
 					ref={this.getRef}
@@ -150,16 +161,10 @@ export class KolDrawer implements DrawerAPI {
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
-	/**
-	 * Controls if a drawer is a modal. Set to false for non-modal (modeless) drawers.
-	 */
-	@Prop() public _modal?: ModalPropType = true;
-
 	@State() public state: DrawerStates = {
 		_label: '', // ⚠ required
 		_open: false,
 		_align: 'left',
-		_modal: true,
 	};
 
 	@Watch('_label')
@@ -215,11 +220,6 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	@Watch('_modal')
-	public validateModalProp(value?: ModalPropType): void {
-		validateModal(this, value);
-	}
-
 	private handleCloseDialog() {
 		this.dialogElement?.close();
 		this._on?.onClose?.();
@@ -259,6 +259,5 @@ export class KolDrawer implements DrawerAPI {
 		this.validateOpen(this._open);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
-		this.validateModalProp(this._modal);
 	}
 }
