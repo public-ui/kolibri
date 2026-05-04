@@ -52,7 +52,7 @@
 				width: to-rem(var(--kol-spin-size, 13));
 				height: to-rem(var(--kol-spin-size, 13));
 				animation-timing-function: cubic-bezier(0, 1, 1, 0);
-				border: to-rem(var(--kol-spin-border-width)) solid #fff;
+				border: to-rem(var(--kol-spin-border-width)) solid white;
 
 				&--1 {
 					left: to-rem(var(--kol-spin-border-width));

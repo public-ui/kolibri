@@ -1,7 +1,7 @@
 {
 	"extends": ["../../.stylelintrc.json"],
 	"rules": {
-		"kolibri/common-component-css-must-be-in-layer": false,
+		"kolibri/common-component-css-must-be-in-layer": true,
 		"kolibri/component-allowed-layer-names": true,
 		"kolibri/theme-allowed-layer-names": true,
 		"kolibri/common-no-at-root": false,
@@ -13,6 +13,11 @@
 				"pathPattern": "/packages/components/src/components/",
 				"strict": false
 			}
-		]
+		],
+		"declaration-property-value-allowed-list": {
+			"/color/": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/", "selectedItem"],
+			"fill": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"],
+			"stroke": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"]
+		}
 	}
 }

@@ -10,7 +10,7 @@
 	@keyframes growingCircle {
 		0% {
 			opacity: 0.5;
-			border-color: #fff;
+			border-color: white;
 			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
 		}
 
@@ -22,19 +22,19 @@
 
 		50% {
 			opacity: 1;
-			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, black));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
 		}
 
 		75% {
 			opacity: 1;
-			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, black));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
 		}
 
 		100% {
 			opacity: 0.1;
-			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color, black));
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
 		}
 	}
