@@ -71,9 +71,9 @@
 | flatted              | high     | CVE-2026-32141      | v4, v3, v2        | flatted vulnerable to unbounded recursion DoS in parse() revive phase              |
 | flatted              | high     | CVE-2026-33228      | v4, v3, v2        | Prototype Pollution via parse() in NodeJS flatted                                  |
 | handlebars           | high     | CVE-2026-33938      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @part   |
-| handlebars           | high     | CVE-2026-33941      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names an   |
 | handlebars           | high     | CVE-2026-33940      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion when passing an ob   |
 | handlebars           | high     | CVE-2026-33939      | v4, v3, v2, v1    | Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template C   |
+| handlebars           | high     | CVE-2026-33941      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names an   |
 | hono                 | high     | CVE-2026-29045      | v2                | Hono vulnerable to arbitrary file access via serveStatic vulnerability             |
 | immutable            | high     | CVE-2026-29063      | v2                | Immutable is vulnerable to Prototype Pollution                                     |
 | locutus              | high     | CVE-2026-29091      | v4, v3, v2, v1    | locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Co   |
