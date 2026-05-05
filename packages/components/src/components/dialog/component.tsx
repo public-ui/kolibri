@@ -90,10 +90,6 @@ export class KolDialogWc implements DialogAPI {
 		return this.close();
 	}
 
-	private readonly on = {
-		onClose: () => this.close(),
-	};
-
 	public render(): JSX.Element {
 		return (
 			<dialog
@@ -117,7 +113,7 @@ export class KolDialogWc implements DialogAPI {
 			>
 				{this.state._variant === 'blank' && <slot />}
 				{this.state._variant === 'card' && (
-					<KolCardWcTag _hasCloser _headingId={this.cardHeadingId} _label={this.state._label} _level={this._level} _on={this.on}>
+					<KolCardWcTag _hasCloser _headingId={this.cardHeadingId} _label={this.state._label} _level={this._level} _on={{ onClose: () => void this.close() }}>
 						<slot />
 					</KolCardWcTag>
 				)}
