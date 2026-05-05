@@ -8,16 +8,16 @@
 			}
 
 			&-progress {
-				fill: var(--color-primary-variant);
+				fill: var(--color-blue-100);
 			}
 		}
 
 		&__cycle-background {
-			stroke: var(--color-mute-variant);
+			stroke: var(--color-blue-100);
 		}
 
 		&__cycle-progress {
-			stroke: var(--color-primary-variant);
+			stroke: var(--color-blue-100);
 		}
 	}
 }
