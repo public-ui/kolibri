@@ -55,8 +55,7 @@ export class KolDialogWc implements DialogAPI {
 	 * Opens the dialog as a modal.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async showModal(): Promise<void> {
+	public showModal(): Promise<void> {
 		return this.show(true);
 	}
 
@@ -65,8 +64,7 @@ export class KolDialogWc implements DialogAPI {
 	 * @deprecated Use showModal() instead.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async openModal(): Promise<void> {
+	public openModal(): Promise<void> {
 		return this.showModal();
 	}
 
@@ -85,8 +83,7 @@ export class KolDialogWc implements DialogAPI {
 	 * @deprecated Use close() instead.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeModal(): Promise<void> {
+	public closeModal(): Promise<void> {
 		return this.close();
 	}
 

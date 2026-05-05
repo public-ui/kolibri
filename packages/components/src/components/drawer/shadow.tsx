@@ -56,8 +56,7 @@ export class KolDrawer implements DrawerAPI {
 	 * Opens the drawer as a modal.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async showModal(): Promise<void> {
+	public showModal(): Promise<void> {
 		return this.show(true);
 	}
 
@@ -66,8 +65,7 @@ export class KolDrawer implements DrawerAPI {
 	 * @deprecated Use show() or showModal() instead.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async open(): Promise<void> {
+	public open(): Promise<void> {
 		return this.show(false);
 	}
 
