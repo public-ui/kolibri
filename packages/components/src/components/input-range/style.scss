@@ -27,7 +27,7 @@
 			}
 
 			&--range {
-				background-color: white;
+				background-color: #d3d3d3;
 				display: inline-block;
 				/* Design-Hack - related with flex-grow */
 				width: 0;
@@ -38,13 +38,13 @@
 
 				line-height: 1.5;
 				appearance: none;
-				border: 1px solid black;
+				border: 1px solid #000;
 
 				&::-webkit-slider-thumb {
 					@at-root #{$input}:not(:disabled)#{&} {
 						cursor: pointer;
 					}
-					background-color: black;
+					background-color: #000;
 					border-radius: 20px;
 					width: to-rem(20);
 					height: to-rem(20);
@@ -59,7 +59,7 @@
 					@at-root #{$input}:not(:disabled)#{&} {
 						cursor: pointer;
 					}
-					background-color: black;
+					background-color: #000;
 					border-radius: 20px;
 					width: to-rem(20);
 					height: to-rem(20);
