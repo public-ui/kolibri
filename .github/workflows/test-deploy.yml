@@ -14,9 +14,15 @@ concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
   cancel-in-progress: true
 
+permissions:
+  attestations: write
+  contents: read
+  id-token: write
+
 jobs:
   deploy:
     uses: ./.github/workflows/deploy-netlify.yml
+    secrets: inherit
     with:
       environment: production
       alias: ${{ github.ref_name }}
