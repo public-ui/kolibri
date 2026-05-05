@@ -230,7 +230,9 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	private handleCloseDialog() {
-		this.dialogElement?.close();
+		if (typeof this.dialogElement?.close === 'function') {
+			this.dialogElement.close();
+		}
 		this._on?.onClose?.();
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);

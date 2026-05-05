@@ -14,7 +14,11 @@ function getGitCommitHash(): string | null {
 }
 
 export default defineConfig({
+	base: './',
 	plugins: [react(), UnoCSS()],
+	resolve: {
+		dedupe: ['react', 'react-dom'],
+	},
 	define: {
 		'process.env.THEME_MODULE': JSON.stringify(process.env.THEME_MODULE || ''),
 		'process.env.THEME_EXPORT': JSON.stringify(process.env.THEME_EXPORT || ''),
@@ -30,6 +34,7 @@ export default defineConfig({
 		sourcemap: true,
 	},
 	server: {
+		allowedHosts: true,
 		port: parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '9191', 10),
 		fs: {
 			allow: [
