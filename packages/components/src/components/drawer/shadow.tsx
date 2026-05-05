@@ -40,7 +40,6 @@ export class KolDrawer implements DrawerAPI {
 	 * Opens the drawer. Pass false to open as a non-modal (modeless) drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
 	public async show(modal: boolean = true): Promise<void> {
 		if (this.dialogElement?.open) {
 			return Promise.resolve();
@@ -74,7 +73,6 @@ export class KolDrawer implements DrawerAPI {
 	 * Closes the drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
 	public async close(): Promise<void> {
 		this.state = {
 			...this.state,
