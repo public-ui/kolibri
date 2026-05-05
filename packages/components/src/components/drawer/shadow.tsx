@@ -33,8 +33,6 @@ export class KolDrawer implements DrawerAPI {
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLKolCardWcElement;
 	private readonly cardHeadingId = nonce();
-	private readonly boundHandleAnimationEnd = this.handleAnimationEnd.bind(this);
-	private readonly boundHandleClose = this.handleClose.bind(this);
 
 	@State() private isModal: boolean = true;
 
@@ -251,18 +249,14 @@ export class KolDrawer implements DrawerAPI {
 		}
 	};
 
-	public connectedCallback(): void {
-		this.dialogElement?.addEventListener('animationend', this.boundHandleAnimationEnd);
-		this.dialogElement?.addEventListener('close', this.boundHandleClose);
-	}
-
 	public componentDidLoad(): void {
-		this.connectedCallback();
+		this.dialogElement?.addEventListener('animationend', this.handleAnimationEnd);
+		this.dialogElement?.addEventListener('close', this.handleClose);
 	}
 
 	public disconnectedCallback(): void {
-		this.dialogElement?.removeEventListener('animationend', this.boundHandleAnimationEnd);
-		this.dialogElement?.removeEventListener('close', this.boundHandleClose);
+		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd);
+		this.dialogElement?.removeEventListener('close', this.handleClose);
 	}
 
 	public componentWillLoad() {
