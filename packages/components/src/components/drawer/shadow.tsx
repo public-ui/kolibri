@@ -88,6 +88,8 @@ export class KolDrawer implements DrawerAPI {
 		return Promise.resolve();
 	}
 
+	private readonly _cardOn = { onClose: () => void this.close() };
+
 	private getWrapperRef = (el: HTMLKolCardWcElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardWcElement);
 	private renderDialogContent() {
 		const align = this.state._align as string;
@@ -102,11 +104,7 @@ export class KolDrawer implements DrawerAPI {
 				_headingId={this.cardHeadingId}
 				_label={this.state._label}
 				_level={this._level}
-				_on={{
-					onClose: () => {
-						void this.close();
-					},
-				}}
+				_on={this._cardOn}
 			>
 				<div class="kol-drawer__content">
 					<slot />

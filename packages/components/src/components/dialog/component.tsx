@@ -28,6 +28,8 @@ export class KolDialogWc implements DialogAPI {
 
 	@State() private isModal: boolean = true;
 
+	private readonly _cardOn = { onClose: () => void this.close() };
+
 	public disconnectedCallback(): void {
 		void this.close();
 	}
@@ -110,7 +112,7 @@ export class KolDialogWc implements DialogAPI {
 			>
 				{this.state._variant === 'blank' && <slot />}
 				{this.state._variant === 'card' && (
-					<KolCardWcTag _hasCloser _headingId={this.cardHeadingId} _label={this.state._label} _level={this._level} _on={{ onClose: () => void this.close() }}>
+					<KolCardWcTag _hasCloser _headingId={this.cardHeadingId} _label={this.state._label} _level={this._level} _on={this._cardOn}>
 						<slot />
 					</KolCardWcTag>
 				)}
