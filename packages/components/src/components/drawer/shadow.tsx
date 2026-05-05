@@ -40,6 +40,7 @@ export class KolDrawer implements DrawerAPI {
 	 * Opens the drawer. Pass true to open as a modal drawer.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async show(modal: boolean = false): Promise<void> {
 		if (this.dialogElement?.open) {
 			return;
@@ -49,7 +50,11 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		modal ? this.dialogElement?.showModal?.() : this.dialogElement?.show?.();
+		if (modal) {
+			this.dialogElement?.showModal?.();
+		} else {
+			this.dialogElement?.show?.();
+		}
 	}
 
 	/**
@@ -73,6 +78,7 @@ export class KolDrawer implements DrawerAPI {
 	 * Closes the drawer.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async close(): Promise<void> {
 		this.state = {
 			...this.state,

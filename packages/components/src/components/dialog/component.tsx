@@ -51,7 +51,11 @@ export class KolDialogWc implements DialogAPI {
 			return;
 		}
 		this.isModal = modal;
-		modal ? this.refDialog?.showModal?.() : this.refDialog?.show?.();
+		if (modal) {
+			this.refDialog?.showModal?.();
+		} else {
+			this.refDialog?.show?.();
+		}
 	}
 
 	/**
