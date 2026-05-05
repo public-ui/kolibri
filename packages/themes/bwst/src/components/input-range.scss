@@ -32,6 +32,8 @@
 			height: to-rem(8);
 			padding: 0;
 			border-width: 0;
+			background: lightgray;
+
 			&::-webkit-slider-thumb {
 				background: var(--color-primary-variant);
 				-webkit-appearance: none;
