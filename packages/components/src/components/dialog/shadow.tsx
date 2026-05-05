@@ -26,32 +26,36 @@ export class KolDialog implements DialogProps {
 	 * @deprecated Use showModal() instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async openModal(): Promise<void> {
-		await this.showModal();
+		return this.showModal();
 	}
 
 	/**
 	 * Opens the dialog as a modal.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async showModal(): Promise<void> {
-		await this.dialogRef?.showModal();
+		return this.dialogRef?.showModal();
 	}
 
 	/**
 	 * Opens the dialog. Pass false to open as a non-modal (modeless) dialog.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async show(modal: boolean = true): Promise<void> {
-		await this.dialogRef?.show(modal);
+		return this.dialogRef?.show(modal);
 	}
 
 	/**
 	 * Closes the dialog.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async close(): Promise<void> {
-		await this.dialogRef?.close();
+		return this.dialogRef?.close();
 	}
 
 	/**
@@ -59,8 +63,9 @@ export class KolDialog implements DialogProps {
 	 * @deprecated Use close() instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal(): Promise<void> {
-		await this.close();
+		return this.close();
 	}
 
 	public render(): JSX.Element {
