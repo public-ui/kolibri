@@ -208,7 +208,7 @@ export class KolDrawer implements DrawerAPI {
 
 	private async openOrCloseBasedOnState() {
 		if (this.state._open) {
-			await this.show();
+			await this.show(this.isModal);
 		} else {
 			await this.close();
 		}
