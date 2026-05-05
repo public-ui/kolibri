@@ -26,8 +26,12 @@ export class KolDialogWc implements DialogAPI {
 	private refDialog?: HTMLDialogElement;
 	private readonly cardHeadingId = nonce();
 
+	@State() private isModal: boolean = true;
+
+	private readonly _cardOn = { onClose: () => void this.close() };
+
 	public disconnectedCallback(): void {
-		void this.closeModal();
+		void this.close();
 	}
 
 	private handleNativeCloseEvent() {
@@ -38,35 +42,59 @@ export class KolDialogWc implements DialogAPI {
 	}
 
 	/**
-	 * Opens the modal dialog.
+	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	async openModal() {
-		this.refDialog?.showModal();
+	public async show(modal: boolean = false): Promise<void> {
+		if (this.refDialog?.open) {
+			return Promise.resolve();
+		}
+		this.isModal = modal;
+		return Promise.resolve(modal ? this.refDialog?.showModal() : this.refDialog?.show());
 	}
 
 	/**
-	 * Closes the modal dialog.
+	 * Opens the dialog as a modal.
+	 */
+	@Method()
+	public showModal(): Promise<void> {
+		return this.show(true);
+	}
+
+	/**
+	 * Opens the dialog as a modal.
+	 * @deprecated Use showModal() instead.
+	 */
+	@Method()
+	public openModal(): Promise<void> {
+		return this.showModal();
+	}
+
+	/**
+	 * Closes the dialog.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeModal() {
+	public async close(): Promise<void> {
 		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
-		this.refDialog?.close?.();
+		return Promise.resolve(this.refDialog?.close?.());
 	}
 
-	private readonly on = {
-		onClose: async () => {
-			await this.closeModal();
-		},
-	};
+	/**
+	 * Closes the dialog.
+	 * @deprecated Use close() instead.
+	 */
+	@Method()
+	public closeModal(): Promise<void> {
+		return this.close();
+	}
 
 	public render(): JSX.Element {
 		return (
 			<dialog
 				aria-label={this.state._variant === 'blank' ? this.state._label : undefined}
 				aria-labelledby={this.state._variant === 'card' ? this.cardHeadingId : undefined}
+				aria-modal={this.isModal ? 'true' : 'false'}
 				class={clsx('kol-dialog', 'kol-modal', {
 					'kol-dialog__blank': this.state._variant === 'blank',
 					'kol-dialog__card': this.state._variant === 'card',
@@ -84,7 +112,7 @@ export class KolDialogWc implements DialogAPI {
 			>
 				{this.state._variant === 'blank' && <slot />}
 				{this.state._variant === 'card' && (
-					<KolCardWcTag _hasCloser _headingId={this.cardHeadingId} _label={this.state._label} _level={this._level} _on={this.on}>
+					<KolCardWcTag _hasCloser _headingId={this.cardHeadingId} _label={this.state._label} _level={this._level} _on={this._cardOn}>
 						<slot />
 					</KolCardWcTag>
 				)}
