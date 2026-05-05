@@ -40,10 +40,10 @@ export class KolDialogWc implements DialogAPI {
 	}
 
 	/**
-	 * Opens the dialog. Pass false to open as a non-modal (modeless) dialog.
+	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
-	public async show(modal: boolean = true): Promise<void> {
+	public async show(modal: boolean = false): Promise<void> {
 		if (this.refDialog?.open) {
 			return Promise.resolve();
 		}

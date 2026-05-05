@@ -37,10 +37,10 @@ export class KolDrawer implements DrawerAPI {
 	@State() private isModal: boolean = true;
 
 	/**
-	 * Opens the drawer. Pass false to open as a non-modal (modeless) drawer.
+	 * Opens the drawer. Pass true to open as a modal drawer.
 	 */
 	@Method()
-	public async show(modal: boolean = true): Promise<void> {
+	public async show(modal: boolean = false): Promise<void> {
 		if (this.dialogElement?.open) {
 			return Promise.resolve();
 		}

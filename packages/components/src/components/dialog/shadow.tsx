@@ -41,11 +41,11 @@ export class KolDialog implements DialogProps {
 	}
 
 	/**
-	 * Opens the dialog. Pass false to open as a non-modal (modeless) dialog.
+	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = true): Promise<void> {
+	public async show(modal: boolean = false): Promise<void> {
 		return this.dialogRef?.show(modal);
 	}
 
