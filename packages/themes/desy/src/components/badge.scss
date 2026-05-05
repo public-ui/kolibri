@@ -22,7 +22,6 @@
 		}
 
 		&__label {
-			color: var(--color-white-100);
 			padding: to-rem(4) to-rem(8);
 			gap: to-rem(8);
 			align-items: center;
@@ -31,12 +30,6 @@
 			.kol-span__container {
 				display: flex;
 				gap: to-rem(4);
-			}
-		}
-
-		&__smart-button {
-			.kol-button {
-				color: var(--color-white-100);
 			}
 		}
 	}
