@@ -226,6 +226,11 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
+	public connectedCallback(): void {
+		this.dialogElement?.addEventListener('animationend', this.boundHandleAnimationEnd);
+		this.dialogElement?.addEventListener('close', this.boundHandleClose);
+	}
+
 	public componentDidLoad(): void {
 		this.dialogElement?.addEventListener('animationend', this.boundHandleAnimationEnd);
 		this.dialogElement?.addEventListener('close', this.boundHandleClose);
