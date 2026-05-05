@@ -176,7 +176,7 @@
 				}
 
 				&--checkbox {
-					background-color: white;
+					background-color: rgb(255, 255, 255);
 					display: flex;
 					position: relative;
 					min-width: calc(var(--a11y-min-size) / 2);
@@ -206,7 +206,7 @@
 					}
 
 					&:checked:before {
-						background-color: black;
+						background-color: #000;
 
 						@media (forced-colors: active) {
 							/* Give it a visible background in forced colors mode */
