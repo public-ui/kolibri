@@ -34,7 +34,7 @@
 		}
 
 		.kol-input {
-			background-color: white;
+			background-color: #fff;
 			border-style: solid;
 			margin: 0;
 			border-width: 2px;
@@ -91,7 +91,7 @@
 			height: 1.7em;
 
 			&::before {
-				background-color: black;
+				background-color: #000;
 				position: absolute;
 				top: calc(0.25em - to-rem(2));
 				left: calc(0.25em - to-rem(2));
@@ -111,7 +111,7 @@
 
 		.kol-icon {
 			transform: translate(0, -50%);
-			color: black;
+			color: #000;
 			display: flex;
 			position: absolute;
 			top: 50%;
