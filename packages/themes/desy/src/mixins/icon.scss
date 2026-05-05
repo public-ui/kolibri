@@ -63,22 +63,23 @@
  *--------------------------------------------------------------------------------------------*/
 
 	@font-face {
-		font-family: 'codicon';
+		font-family: codicon;
 		font-display: block;
 		src: url('/assets/codicons/codicon.ttf?be64b7213e352cd7f91ef58198e71237') format('truetype');
 	}
 
 	.codicon[class*='codicon-'] {
-		font: normal normal normal 16px/1 codicon;
 		display: inline-block;
+
+		font: normal normal normal 16px/1 codicon;
 		text-decoration: none;
-		text-rendering: auto;
-		text-align: center;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		user-select: none;
+		text-align: center;
+		text-rendering: auto;
 		-webkit-user-select: none;
 		-ms-user-select: none;
+		user-select: none;
 	}
 
 	/*---------------------
