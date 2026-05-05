@@ -49,7 +49,7 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		return Promise.resolve(modal ? this.dialogElement?.showModal() : this.dialogElement?.show());
+		return Promise.resolve(modal ? this.dialogElement?.showModal?.() : this.dialogElement?.show?.());
 	}
 
 	/**
