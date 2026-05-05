@@ -29,7 +29,7 @@ export class KolDialogWc implements DialogAPI {
 	@State() private isModal: boolean = true;
 
 	public disconnectedCallback(): void {
-		void this.closeModal();
+		void this.close();
 	}
 
 	private handleNativeCloseEvent() {
@@ -69,16 +69,26 @@ export class KolDialogWc implements DialogAPI {
 	}
 
 	/**
-	 * Closes the modal dialog.
+	 * Closes the dialog.
 	 */
 	@Method()
-	public async closeModal(): Promise<void> {
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async close(): Promise<void> {
 		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
 		return Promise.resolve(this.refDialog?.close?.());
 	}
 
+	/**
+	 * Closes the dialog.
+	 * @deprecated Use close() instead.
+	 */
+	@Method()
+	public async closeModal(): Promise<void> {
+		await this.close();
+	}
+
 	private readonly on = {
-		onClose: () => this.closeModal(),
+		onClose: () => this.close(),
 	};
 
 	public render(): JSX.Element {

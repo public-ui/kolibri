@@ -23,18 +23,44 @@ export class KolDialog implements DialogProps {
 
 	/**
 	 * Opens the dialog.
+	 * @deprecated Use showModal() instead.
 	 */
 	@Method()
-	public async openModal() {
-		await this.dialogRef?.openModal();
+	public async openModal(): Promise<void> {
+		await this.showModal();
+	}
+
+	/**
+	 * Opens the dialog as a modal.
+	 */
+	@Method()
+	public async showModal(): Promise<void> {
+		await this.dialogRef?.showModal();
+	}
+
+	/**
+	 * Opens the dialog. Pass false to open as a non-modal (modeless) dialog.
+	 */
+	@Method()
+	public async show(modal: boolean = true): Promise<void> {
+		await this.dialogRef?.show(modal);
 	}
 
 	/**
 	 * Closes the dialog.
 	 */
 	@Method()
-	public async closeModal() {
-		await this.dialogRef?.closeModal();
+	public async close(): Promise<void> {
+		await this.dialogRef?.close();
+	}
+
+	/**
+	 * Closes the dialog.
+	 * @deprecated Use close() instead.
+	 */
+	@Method()
+	public async closeModal(): Promise<void> {
+		await this.close();
 	}
 
 	public render(): JSX.Element {
