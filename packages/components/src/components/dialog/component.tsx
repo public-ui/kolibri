@@ -45,12 +45,13 @@ export class KolDialogWc implements DialogAPI {
 	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async show(modal: boolean = false): Promise<void> {
 		if (this.refDialog?.open) {
-			return Promise.resolve();
+			return;
 		}
 		this.isModal = modal;
-		return Promise.resolve(modal ? this.refDialog?.showModal() : this.refDialog?.show());
+		modal ? this.refDialog?.showModal?.() : this.refDialog?.show?.();
 	}
 
 	/**
@@ -77,7 +78,7 @@ export class KolDialogWc implements DialogAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async close(): Promise<void> {
 		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
-		return Promise.resolve(this.refDialog?.close?.());
+		this.refDialog?.close?.();
 	}
 
 	/**

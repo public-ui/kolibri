@@ -42,14 +42,14 @@ export class KolDrawer implements DrawerAPI {
 	@Method()
 	public async show(modal: boolean = false): Promise<void> {
 		if (this.dialogElement?.open) {
-			return Promise.resolve();
+			return;
 		}
 		this.isModal = modal;
 		this.state = {
 			...this.state,
 			_open: true,
 		};
-		return Promise.resolve(modal ? this.dialogElement?.showModal?.() : this.dialogElement?.show?.());
+		modal ? this.dialogElement?.showModal?.() : this.dialogElement?.show?.();
 	}
 
 	/**
@@ -80,12 +80,11 @@ export class KolDrawer implements DrawerAPI {
 		};
 		const wrapper = this.dialogWrapperElement;
 		if (!wrapper) {
-			return Promise.resolve();
+			return;
 		}
 		if (window.getComputedStyle(wrapper).animationName === 'none') {
-			this.handleCloseDialog();
+			this.dialogElement?.close?.();
 		}
-		return Promise.resolve();
 	}
 
 	private readonly _cardOn = { onClose: () => void this.close() };
@@ -226,9 +225,6 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	private handleCloseDialog() {
-		if (typeof this.dialogElement?.close === 'function') {
-			this.dialogElement.close();
-		}
 		this._on?.onClose?.();
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
@@ -245,7 +241,7 @@ export class KolDrawer implements DrawerAPI {
 	private readonly handleAnimationEnd = (e: Event): void => {
 		const animationEvent = e as AnimationEvent;
 		if (animationEvent.animationName.includes('slideOut')) {
-			this.handleCloseDialog();
+			this.dialogElement?.close?.();
 		}
 	};
 
