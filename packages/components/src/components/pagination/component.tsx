@@ -92,30 +92,29 @@ export class KolPaginationWc implements PaginationAPI {
 	public render(): JSX.Element {
 		let ellipsis = false;
 		const count = this.getCount();
-		const pageButtons = Array.from({ length: count }, (_, i) => i + 1)
-			.map((page: number) => {
-				if (
-					page <= this.state._boundaryCount ||
-					page > count - this.state._boundaryCount ||
-					(page >= this.state._page - this.state._siblingCount && page <= this.state._page + this.state._siblingCount)
-				) {
-					ellipsis = true;
-					if (this.state._page === page) {
-						return this.getSelectedPageButton(page);
-					} else {
-						return this.getUnselectedPageButton(page);
-					}
-				} else if (ellipsis === true) {
-					ellipsis = false;
-					return (
-						<li key={nonce()}>
-							<span class="kol-pagination__separator" aria-hidden="true"></span>
-						</li>
-					);
+		const pageButtons = Array.from({ length: count }, (_, i) => i + 1).map((page: number) => {
+			if (
+				page <= this.state._boundaryCount ||
+				page > count - this.state._boundaryCount ||
+				(page >= this.state._page - this.state._siblingCount && page <= this.state._page + this.state._siblingCount)
+			) {
+				ellipsis = true;
+				if (this.state._page === page) {
+					return this.getSelectedPageButton(page);
 				} else {
-					return null;
+					return this.getUnselectedPageButton(page);
 				}
-			});
+			} else if (ellipsis === true) {
+				ellipsis = false;
+				return (
+					<li key={nonce()}>
+						<span class="kol-pagination__separator" aria-hidden="true"></span>
+					</li>
+				);
+			} else {
+				return null;
+			}
+		});
 
 		return (
 			<Host class="kol-pagination">
