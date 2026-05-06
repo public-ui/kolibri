@@ -46,7 +46,7 @@
 		"angular"
 	],
 	"scripts": {
-		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
+		"clean": "pnpm -w run clean",
 		"build:cjs": "tsc -m commonjs --outDir cjs",
 		"build:clean": "rimraf cjs esm types umd",
 		"build:esm": "tsc -m esnext --outDir esm",
