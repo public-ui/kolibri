@@ -32,9 +32,9 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   5 |   5 |   5 |   3 |
-| high     |  36 |  33 |  45 |  29 |
-| moderate |  22 |  23 |  39 |   8 |
-| low      |   4 |   4 |   9 |   1 |
+| high     |  32 |  34 |  49 |  29 |
+| moderate |  26 |  27 |  46 |   8 |
+| low      |   5 |   5 |  10 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -55,12 +55,11 @@
 | @angular/core        | high     | CVE-2026-27970      | v1                | Angular i18n vulnerable to Cross-Site Scripting                                    |
 | @angular/core        | high     | CVE-2026-32635      | v1                | Angular vulnerable to XSS in i18n attribute bindings                               |
 | @hono/node-server    | high     | CVE-2026-29087      | v2                | @hono/node-server has authorization bypass for protected static paths via encode   |
-| @xmldom/xmldom       | high     | CVE-2026-41673      | v4                | xmldom: Uncontrolled recursion in XML serialization leads to DoS                   |
-| @xmldom/xmldom       | high     | CVE-2026-41674      | v4                | xmldom has XML injection through unvalidated DocumentType serialization            |
-| @xmldom/xmldom       | high     | CVE-2026-41675      | v4                | xmldom has XML node injection through unvalidated processing instruction seriali   |
-| @xmldom/xmldom       | high     | CVE-2026-41672      | v4                | xmldom has XML node injection through unvalidated comment serialization            |
-| @xmldom/xmldom       | high     | CVE-2026-34601      | v4                | xmldom: XML injection via unsafe CDATA serialization allows attacker-controlled    |
 | axios                | high     | CVE-2026-25639      | v3, v2            | Axios is Vulnerable to Denial of Service via **proto** Key in mergeConfig          |
+| axios                | high     | CVE-2026-42043      | v4, v3, v2        | Axios: Incomplete Fix for CVE-2025-62718 — NO_PROXY Protection Bypassed via RFC    |
+| axios                | high     | CVE-2026-42264      | v4, v3, v2        | Axios has prototype pollution read-side gadgets in HTTP adapter that allow crede   |
+| axios                | high     | CVE-2026-42033      | v4, v3, v2        | Axios: Prototype Pollution Gadgets - Response Tampering, Data Exfiltration, and    |
+| axios                | high     | CVE-2026-42035      | v4, v3, v2        | Axios: Header Injection via Prototype Pollution                                    |
 | basic-ftp            | high     | GHSA-6v7q-wjvx-w8wg | v4, v3, v2        | basic-ftp: Incomplete CRLF Injection Protection Allows Arbitrary FTP Command Exe   |
 | basic-ftp            | high     | CVE-2026-41324      | v4, v3, v2        | basic-ftp vulnerable to denial of service via unbounded memory consumption in Cl   |
 | braces               | high     | CVE-2024-4068       | v3, v2, v1        | Uncontrolled resource consumption in braces                                        |
@@ -108,6 +107,14 @@
 | ajv                  | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                            |
 | axios                | moderate | CVE-2025-62718      | v4, v3, v2        | Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF              |
 | axios                | moderate | CVE-2026-40175      | v4, v3, v2        | Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain      |
+| axios                | moderate | CVE-2026-42041      | v4, v3, v2        | Axios: Authentication Bypass via Prototype Pollution Gadget in `validateStatus`    |
+| axios                | moderate | CVE-2026-42044      | v4, v3, v2        | Axios: Invisible JSON Response Tampering via Prototype Pollution Gadget in `pars   |
+| axios                | moderate | CVE-2026-42037      | v4, v3, v2        | Axios: CRLF Injection in multipart/form-data body via unsanitized blob.type in f   |
+| axios                | moderate | CVE-2026-42038      | v4, v3, v2        | Axios: no_proxy bypass via IP alias allows SSRF                                    |
+| axios                | moderate | CVE-2026-42039      | v4, v3, v2        | Axios: unbounded recursion in toFormData causes DoS via deeply nested request da   |
+| axios                | moderate | CVE-2026-42034      | v4, v3, v2        | Axios' HTTP adapter-streamed uploads bypass maxBodyLength when maxRedirects: 0     |
+| axios                | moderate | CVE-2026-42036      | v4, v3, v2        | Axios: HTTP adapter streamed responses bypass maxContentLength                     |
+| axios                | moderate | CVE-2026-42042      | v4, v3, v2        | Axios: XSRF Token Cross-Origin Leakage via Prototype Pollution Gadget in `withXS   |
 | brace-expansion      | moderate | CVE-2026-33750      | v4, v3, v2        | brace-expansion: Zero-step sequence causes process hang and memory exhaustion      |
 | ejs                  | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                             |
 | esbuild              | moderate | GHSA-67mh-4wv8-2f99 | v2                | esbuild enables any website to send any requests to the development server and r   |
@@ -138,14 +145,13 @@
 | smol-toml            | moderate | GHSA-v3rj-xjv7-4jmq | v4, v3, v2, v1    | smol-toml: Denial of Service via TOML documents containing thousands of consecut   |
 | undici               | moderate | CVE-2026-1525       | v4, v3, v2        | Undici has an HTTP Request/Response Smuggling issue                                |
 | undici               | moderate | CVE-2026-1527       | v4, v3, v2        | Undici has CRLF Injection in undici via `upgrade` option                           |
-| undici               | moderate | CVE-2026-2581       | v4, v3            | Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response   |
-| uuid                 | moderate | GHSA-w5hq-g745-h8pq | v4, v3, v2        | uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided                 |
 | vite                 | moderate | CVE-2026-39365      | v1                | Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling                |
 | webpack              | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to    |
 | webpack-dev-server   | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
 | webpack-dev-server   | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
 | yaml                 | moderate | CVE-2026-33532      | v4, v3, v2, v1    | yaml is vulnerable to Stack Overflow via deeply nested YAML collections            |
 | @tootallnate/once    | low      | CVE-2026-3449       | v3, v2            | @tootallnate/once vulnerable to Incorrect Control Flow Scoping                     |
+| axios                | low      | CVE-2026-42040      | v4, v3, v2        | Axios: Null Byte Injection via Reverse-Encoding in AxiosURLSearchParams            |
 | diff                 | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch          |
 | fast-xml-parser      | low      | CVE-2026-27942      | v4, v3, v2        | fast-xml-parser has stack overflow in XMLBuilder with preserveOrder                |
 | handlebars           | low      | GHSA-442j-39wm-28r2 | v4, v3, v2, v1    | Handlebars.js has a Property Access Validation Bypass in container.lookup          |
