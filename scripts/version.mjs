@@ -56,6 +56,11 @@ function bumpVersion(current, increment, preid) {
 					parts[parts.length - 1] = String(lastNum + 1);
 					return `${releaseStr}-${parts.join('.')}`;
 				}
+				// non-numeric prerelease suffix (e.g. 1.0.0-beta): stay on same release, add numeric suffix
+				if (preid && parts[0] !== preid) {
+					return `${releaseStr}-${preid}.0`;
+				}
+				return `${releaseStr}-${preStr}.0`;
 			}
 			const base = `${major}.${minor}.${patch + 1}`;
 			return preid ? `${base}-${preid}.0` : `${base}-0`;
@@ -110,11 +115,14 @@ for (const pkg of publicPkgs) {
 
 execSync('pnpm install --lockfile-only', { cwd: ROOT, stdio: 'inherit' });
 
+// Run the project's custom version lifecycle script (updates publiccode.yml etc.)
+execSync('pnpm run version --if-present', { cwd: ROOT, stdio: 'inherit' });
+
 // --- git commit + tag ---
 
 const run = (cmd) => execSync(cmd, { cwd: ROOT, stdio: 'inherit' });
 
-run('git add -A');
+run('git add -u');
 run(`git commit -m "chore: release ${newVersion}"`);
 run(`git tag "${newVersion}"`);
 
