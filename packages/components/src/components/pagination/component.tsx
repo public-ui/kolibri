@@ -92,8 +92,7 @@ export class KolPaginationWc implements PaginationAPI {
 	public render(): JSX.Element {
 		let ellipsis = false;
 		const count = this.getCount();
-		const pageButtons = Array.from(Array(count).keys())
-			.map((index: number) => index + 1)
+		const pageButtons = Array.from({ length: count }, (_, i) => i + 1)
 			.map((page: number) => {
 				if (
 					page <= this.state._boundaryCount ||
