@@ -1,0 +1,14 @@
+@use './global/properties';
+@use './global/kol-tooltip';
+@use './global/hint';
+
+@layer kol-theme-global {
+	:host {
+		--font-family: 'BundesSans Web', Verdana, sans-serif;
+		--font-family-serif: 'BundesSerif Web', var(--font-family);
+	}
+
+	:host {
+		font-family: var(--font-family);
+	}
+}

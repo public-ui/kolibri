@@ -3,30 +3,19 @@
 
 @layer kol-theme-component {
 	.kol-split-button {
-		border-color: var(--color-blue);
-		border-style: solid;
-		border-radius: 0;
-		border-width: 2px;
+		@include button('kol-button');
 
-		.kol-popover__content {
-			background-color: transparent;
-			border: 0;
+		.kol-button--standalone {
+			--button-border-color: var(--ecl-color-dark);
 		}
 
-		.kol-button .kol-span {
-			min-width: var(--a11y-min-size);
-			min-height: var(--a11y-min-size);
-			margin: 0;
-			padding: 0.25em 0.75em;
-
-			font-weight: var(--font-weight-bold);
+		&__button .kol-button__text {
+			border-radius: 2px 0 0 2px;
+			border-right-width: 0;
 		}
 
-		&__horizontal-line {
-			border: 0;
-			border-top: 1px solid var(--color-blue);
+		&__secondary-button .kol-button__text {
+			border-radius: 0 2px 2px 0;
 		}
-
-		@include kol-button('kol-button');
 	}
 }

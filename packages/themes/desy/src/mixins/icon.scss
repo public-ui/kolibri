@@ -1,0 +1,55 @@
+@use '../../assets/desy-icons/style.css';
+
+@mixin icon() {
+	[class*=' kolicon-'] {
+		$koliconToDesy: (
+			kolicon-plus: '\ea02',
+
+			kolicon-chevron-down: '\ea1d',
+			kolicon-chevron-left: '\ea1f',
+			kolicon-chevron-right: '\ea21',
+			kolicon-chevron-up: '\ea27',
+			kolicon-chevron-double-left: '\ea26',
+			kolicon-chevron-double-right: '\ea1e',
+
+			kolicon-eye-closed: '\ea4b',
+			kolicon-eye: '\ea77',
+			kolicon-house: '\ea4e',
+			kolicon-link-external: '\ea59',
+			kolicon-link: '\ea0d',
+
+			kolicon-alert-error: '\ea3b',
+			kolicon-alert-success: '\ea1a',
+			kolicon-alert-info: '\ea52',
+			kolicon-alert-warning: '\ea04',
+
+			kolicon-check: '\ea1c',
+
+			kolicon-cross: '\ea2a',
+
+			kolicon-cogwheel: '\ea75',
+			kolicon-settings: '\ea75',
+
+			kolicon-up: '\ea88',
+
+			kolicon-sort-asc: '\ea25',
+			kolicon-sort-desc: '\ea22',
+			kolicon-sort-neutral: '\ea85',
+		);
+
+		@each $class, $icon in $koliconToDesy {
+			&.#{$class} {
+				font-family: desy-icons;
+
+				&::before {
+					content: var(--kol-icon-alternative, $icon);
+				}
+			}
+		}
+	}
+
+	.kol-icon {
+		font-weight: 400;
+		line-height: 1em;
+	}
+}

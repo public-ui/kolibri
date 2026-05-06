@@ -2,7 +2,7 @@
 
 @layer kol-theme-component {
 	.kol-tree-item {
-		$root: &;
+		--indentation: #{to-rem(16)};
 
 		&__children {
 			display: flex;
@@ -11,41 +11,28 @@
 
 		&__link {
 			display: block;
-			border: 2px solid transparent;
+			position: relative;
 
 			&:hover,
 			&:focus-within {
-				background-color: var(--color-sky);
-				border: 2px solid var(--color-yellow-120);
-
-				.kol-link {
-					color: var(--color-black);
-				}
+				background-color: var(--ecl-color-neutral-60);
 			}
 
-			&--active {
-				background-color: var(--color-yellow);
+			&--active::before {
+				background-color: var(--ecl-color-primary);
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				width: to-rem(4);
 
-				font-weight: 700;
-
-				.kol-link {
-					color: var(--color-black);
-					background-color: var(--color-yellow);
-				}
+				content: '';
 			}
 
 			.kol-link {
-				color: var(--color-black);
-				text-align: left;
-
-				&:focus {
-					color: var(--color-black);
-				}
+				padding-right: to-rem(8);
+				padding-left: max(calc(var(--indentation) * var(--level)));
 			}
-		}
-
-		&__toggle-button:hover &__toggle-button-icon {
-			transform: scale(1.3);
 		}
 
 		&__text {

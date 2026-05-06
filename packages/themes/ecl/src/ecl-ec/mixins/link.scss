@@ -1,12 +1,20 @@
-@mixin kol-link($block-classname) {
+@mixin link($block-classname) {
 	.#{$block-classname} {
-		color: var(--color-blue);
+		color: var(--ecl-color-primary);
 
-		line-height: 1.2;
-		appearance: none;
+		.kol-span__label {
+			text-decoration-thickness: from-font;
+			text-underline-offset: clamp(3px, 0.245em, 10px);
+		}
 
 		&:hover {
-			color: var(--color-blue-130);
+			color: var(--ecl-color-primary-140);
+		}
+
+		&:focus {
+			outline: 2px solid var(--ecl-color-primary);
+			border-radius: 1px;
+			outline-offset: 2px;
 		}
 	}
 }

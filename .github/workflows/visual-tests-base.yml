@@ -2,6 +2,14 @@ name: Visual Tests Snapshot Comparison
 
 on:
   pull_request:
+    paths:
+      - 'packages/components/**'
+      - 'packages/themes/**'
+      - 'packages/samples/react/**'
+      - 'packages/test-tag-name-transformer/**'
+      - '.github/workflows/visual-tests-base.yml'
+      - '.github/actions/pnpm-setup/**'
+      - '.github/actions/upload-reports/**'
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
@@ -15,7 +23,7 @@ jobs:
   visual-tests-snapshots:
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-default', 'theme-ecl', 'theme-kern']
+        package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst', 'theme-ecl', 'theme-desy', 'theme-kern']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout base branch
@@ -33,7 +41,7 @@ jobs:
         run: pnpm --filter @public-ui/sample-react^... build
 
       - name: Generate base snapshots
-        run: pnpm --filter=@public-ui/${{ matrix.package }} test-update
+        run: pnpm --filter=@public-ui/${{ matrix.package }} test:update:e2e
 
       - name: Store base snapshots
         run: |

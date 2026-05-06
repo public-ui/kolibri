@@ -1,0 +1,12 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path d="M25.5 3.06006H22.5V45.0601H25.5V3.06006Z" fill-rule="evenodd" />
+<path d="M16.5 15.0601H13.5V33.0601H16.5V15.0601Z" fill-rule="evenodd" />
+<path d="M4.5 9.06006H7.5V39.0601H4.5V9.06006Z" fill-rule="evenodd" />
+<path d="M40.5 33.03H43.5V15.03H40.5V33.03Z" fill-rule="evenodd" />
+<path d="M34.5 39.03H31.5V9.03003H34.5V39.03Z" fill-rule="evenodd" />
+</svg>

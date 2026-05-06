@@ -1,0 +1,142 @@
+@use '../mixins/kol-alert' as *;
+@use '../functions/to-rem' as *;
+@use '../mixins/field-control' as *;
+@use '../mixins/form-field-order' as *;
+@use '../mixins/input-checkbox' as *;
+@use '../mixins/checkbox-states' as *;
+
+@layer kol-theme-component {
+	@include kol-alert;
+	@include kol-field-control-theme;
+	@include kol-form-field-order-theme;
+	@include kol-form-field;
+
+	.kol-form-field {
+		--kol-checkbox-main-color: var(--color-blue-100);
+
+		&__msg {
+			margin-top: to-rem(12);
+		}
+
+		&__hint {
+			margin-top: to-rem(4);
+		}
+
+		&__input {
+			gap: 0;
+		}
+	}
+
+	.kol-input-checkbox {
+		.kol-input {
+			order: 1;
+		}
+
+		.kol-checkbox--disabled {
+			opacity: 1;
+		}
+
+		.kol-field-control {
+			min-height: unset;
+			margin: 0;
+			gap: to-rem(16);
+
+			&__input,
+			&__label {
+				min-height: unset;
+				align-self: flex-start;
+			}
+
+			.kol-checkbox {
+				width: unset;
+				min-width: 0;
+				height: unset;
+				min-height: 0;
+			}
+
+			&--error {
+				--kol-checkbox-main-color: var(--color-red-100);
+			}
+		}
+
+		&--variant-default {
+			.kol-checkbox {
+				.kol-input {
+					@include kol-input-checkbox;
+				}
+
+				.kol-icon {
+					display: none;
+				}
+			}
+		}
+
+		&--variant-switch {
+			.kol-icon {
+				display: none;
+			}
+
+			.kol-input {
+				background-color: var(--color-white-100);
+				/* Visible with forced colors  */
+				outline: transparent solid to-rem(1);
+				border-radius: to-rem(10);
+				display: block;
+				position: relative;
+				width: to-rem(30);
+				min-width: 0;
+				height: to-rem(18);
+				border: 1px solid var(--kol-checkbox-main-color);
+
+				&:focus {
+					border-radius: to-rem(10);
+				}
+
+				&::before {
+					background-color: transparent;
+					border-radius: to-rem(10);
+					position: absolute;
+					inset: 0;
+					width: auto;
+					height: auto;
+
+					content: '';
+				}
+
+				&::after {
+					background-color: var(--color-white-100);
+					border-radius: 50%;
+					position: absolute;
+					top: -1px;
+					left: -1px;
+					width: to-rem(16);
+					height: to-rem(16);
+
+					content: '';
+					border: 1px solid var(--kol-checkbox-main-color);
+				}
+
+				&:checked {
+					background-color: var(--kol-checkbox-main-color);
+				}
+
+				&:checked::after {
+					transform: translateX(1em);
+				}
+
+				&:indeterminate::after {
+					transform: translateX(0.4em);
+				}
+
+				&:checked::before,
+				&:indeterminate::before {
+					transform: translateX(0);
+				}
+			}
+		}
+	}
+
+	.kol-input {
+		@include checkbox-states;
+	}
+}

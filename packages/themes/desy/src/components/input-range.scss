@@ -1,0 +1,56 @@
+@use '../@shared/input-core' as *;
+@use '../functions/to-rem' as *;
+
+@layer kol-theme-component {
+	.kol-input-range {
+		--track-border-width: 1px;
+		--track-border-color: var(--color-blue-100);
+		--track-bg-color: var(--color-white-100);
+		--thumb-outline-width: 0;
+
+		&__inputs-wrapper {
+			gap: 1em;
+		}
+
+		.kol-input-container {
+			border-width: 0;
+
+			&:not(:disabled):hover,
+			&:focus-within {
+				--track-border-width: 2px;
+				--track-border-color: var(--color-dark-blue-100);
+				--track-bg-color: var(--color-blue-100-06);
+				box-shadow: none;
+				outline-width: 0;
+
+				border-width: 0;
+			}
+
+			&:focus-within {
+				--thumb-outline-width: 1px;
+				--track-bg-color: var(--color-blue-100-09);
+			}
+		}
+
+		&__input--range {
+			background-color: var(--track-bg-color);
+			border-radius: 3px;
+			border: solid var(--track-border-width) var(--track-border-color);
+
+			&::-webkit-slider-thumb {
+				background-color: var(--color-white-100);
+				outline: solid var(--thumb-outline-width) var(--color-dark-blue-100);
+				border: 1px solid var(--color-blue-100);
+				outline-offset: 2px;
+			}
+
+			&.kol-input--disabled {
+				border-color: var(--color-black-60);
+
+				&::-webkit-slider-thumb {
+					border-color: var(--color-black-60);
+				}
+			}
+		}
+	}
+}
