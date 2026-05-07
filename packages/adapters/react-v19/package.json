@@ -59,8 +59,8 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": "^19.2.5",
-		"react-dom": "^19.2.5"
+		"react": "^19",
+		"react-dom": "^19"
 	},
 	"sideEffects": false,
 	"type": "module",

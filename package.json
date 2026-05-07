@@ -1,6 +1,6 @@
 {
+	"version": "4.1.4",
 	"devDependencies": {
-		"lerna": "9.0.7",
 		"license-report": "6.8.2",
 		"npm-check-updates": "19.6.6",
 		"npm-run-all2": "8.0.4",
