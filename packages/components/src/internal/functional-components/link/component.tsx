@@ -41,6 +41,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		tooltipId,
 		refTooltipFloating,
 		refAnchor,
+		class: hostClass,
 	} = props;
 
 	const isExternal = typeof target === 'string' && target.length > 0 && target !== '_self';
@@ -64,7 +65,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				accessKey={accessKey || undefined}
 				aria-current={ariaCurrent || undefined}
 				aria-controls={ariaControls || undefined}
-				aria-description={ariaDescription.trim() || undefined}
+				aria-description={ariaDescription?.trim() || undefined}
 				aria-disabled={disabled ? 'true' : undefined}
 				aria-expanded={ariaExpanded || undefined}
 				aria-owns={ariaOwns || undefined}
@@ -78,6 +79,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 					'kol-link--inline': inline,
 					'kol-link--standalone': !inline,
 					[customClass]: variant === 'custom' && customClass !== '',
+					[hostClass as string]: !!hostClass,
 				})}
 				onClick={onAnchorClick}
 				role={role || undefined}

@@ -1,7 +1,9 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolLinkTag, KolTreeTag } from '../../core/component-names';
+import { KolTreeTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { createLinkStateAccess, LinkController } from '../../internal/functional-components/link/controller';
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
@@ -17,7 +19,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 export class KolTreeItemWc implements TreeItemAPI {
 	@Element() private readonly host?: HTMLKolTreeItemWcElement;
 
-	private linkElement?: HTMLKolLinkElement;
+	@State() private ariaCurrent: string = '';
+	private readonly linkCtrl = new LinkController(createLinkStateAccess(() => (this.ariaCurrent = this.linkCtrl.getAriaCurrent())));
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
@@ -32,18 +35,37 @@ export class KolTreeItemWc implements TreeItemAPI {
 						'--level': `${this.level}`,
 					}}
 				>
-					<KolLinkTag
+					<LinkFC
 						class={clsx('kol-tree-item__link', {
 							'kol-tree-item__link--first-level': this.level === 0,
 							'kol-tree-item__link--active': _active,
 						})}
-						_href={_href}
-						_label=""
-						_role="treeitem"
-						_tabIndex={_active ? 0 : -1}
-						_ariaExpanded={_hasChildren ? _open : undefined}
-						_ariaOwns={_hasChildren ? this.groupId : undefined}
-						ref={(element?: HTMLKolLinkElement) => (this.linkElement = element!)}
+						accessKey={this.linkCtrl.getRenderProp('accessKey')}
+						ariaControls={this.linkCtrl.getRenderProp('ariaControls')}
+						ariaCurrent={this.ariaCurrent}
+						ariaCurrentValue={this.linkCtrl.getRenderProp('ariaCurrentValue')}
+						ariaDescription={this.linkCtrl.getRenderProp('ariaDescription')}
+						ariaExpanded={_hasChildren ? (_open ? 'true' : 'false') : ''}
+						ariaOwns={_hasChildren ? this.groupId : ''}
+						customClass={this.linkCtrl.getRenderProp('customClass')}
+						disabled={this.linkCtrl.getRenderProp('disabled')}
+						download={this.linkCtrl.getRenderProp('download')}
+						hideLabel={this.linkCtrl.getRenderProp('hideLabel')}
+						href={_href}
+						icons={this.linkCtrl.getRenderProp('icons')}
+						inline={this.linkCtrl.getRenderProp('inline')}
+						label=""
+						on={this.linkCtrl.getRenderProp('on')}
+						role="treeitem"
+						shortKey={this.linkCtrl.getRenderProp('shortKey')}
+						tabIndex={_active ? 0 : -1}
+						target={this.linkCtrl.getRenderProp('target')}
+						tooltipAlign={this.linkCtrl.getRenderProp('tooltipAlign')}
+						variant={this.linkCtrl.getRenderProp('variant')}
+						onAnchorClick={this.linkCtrl.handleAnchorClick}
+						tooltipId={this.linkCtrl.getTooltipId()}
+						refTooltipFloating={this.linkCtrl.setTooltipRef}
+						refAnchor={(el) => this.linkCtrl.setAnchorRef(el)}
 					>
 						<span class="kol-tree-item__link-inner" slot="expert">
 							{_hasChildren ? (
@@ -63,7 +85,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 							)}
 							<span class="kol-tree-item__text">{_label}</span>
 						</span>
-					</KolLinkTag>
+					</LinkFC>
 					<ul class="kol-tree-item__children" hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
 						<slot />
 					</ul>
@@ -114,6 +136,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	@Watch('_href') validateHref(value?: HrefPropType): void {
 		validateHref(this, value);
+		this.linkCtrl.watchHref(value);
 	}
 
 	public componentWillLoad(): void {
@@ -121,9 +144,14 @@ export class KolTreeItemWc implements TreeItemAPI {
 		this.validateLabel(this._label);
 		this.validateOpen(this._open);
 		this.validateHref(this._href);
+		this.linkCtrl.componentWillLoad({ href: this._href });
 
 		this.checkForChildren();
 		this.determineTreeItemDepth();
+	}
+
+	public disconnectedCallback(): void {
+		this.linkCtrl.destroy();
 	}
 
 	private determineTreeItemDepth() {
@@ -175,16 +203,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 * Focuses the link element.
 	 */
 	@Method() async focus() {
-		if (this.host && this.linkElement) {
-			return Promise.resolve(this.linkElement.focus());
-		}
+		const anchor = this.linkCtrl.getAnchorRef();
+		if (anchor) return anchor.focus();
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		if (this.host && this.linkElement) {
-			await this.linkElement.focus();
-		}
+		this.linkCtrl.getAnchorRef()?.focus();
 		await this.expand();
 	}
 
@@ -206,9 +231,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private async handleCollapseClick(event: MouseEvent) {
 		event.preventDefault();
-		if (this.host && this.linkElement) {
-			await this.linkElement.focus();
-		}
+		this.linkCtrl.getAnchorRef()?.focus();
 		await this.collapse();
 	}
 

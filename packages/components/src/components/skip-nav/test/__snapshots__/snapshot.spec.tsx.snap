@@ -6,13 +6,46 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
     <nav aria-label="Label" class="kol-skip-nav">
       <ul class="kol-skip-nav__list">
         <li class="kol-skip-nav__list-item">
-          <kol-link-wc _href="https://example.com" _label="Zum Anfang"></kol-link-wc>
+          <a class="kol-link kol-link--inline" href="https://example.com">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Zum Anfang
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </a>
         </li>
         <li class="kol-skip-nav__list-item">
-          <kol-link-wc _href="https://example.com" _label="Zum Formular"></kol-link-wc>
+          <a class="kol-link kol-link--inline" href="https://example.com">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Zum Formular
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </a>
         </li>
         <li class="kol-skip-nav__list-item">
-          <kol-link-wc _href="https://example.com" _label="Zum Ende"></kol-link-wc>
+          <a class="kol-link kol-link--inline" href="https://example.com">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Zum Ende
+                </span>
+                <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </a>
         </li>
       </ul>
     </nav>

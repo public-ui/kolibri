@@ -4,8 +4,9 @@ import { validateErrorList, watchBoolean, watchString } from '../../schema';
 
 import { translate } from '../../i18n';
 
-import { KolLinkTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { createLinkStateAccess, LinkController } from '../../internal/functional-components/link/controller';
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -28,6 +29,10 @@ export class KolForm implements FormAPI {
 	private readonly translateErrorListMessage = translate('kol-error-list-message');
 	private readonly translateErrorList = translate('kol-error-list');
 	private readonly translateFormDescription = translate('kol-form-description');
+
+	@State() private _tick = 0;
+	private readonly forceRender = () => this._tick++;
+	private errorLinkCtrls: LinkController[] = [];
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
@@ -61,24 +66,65 @@ export class KolForm implements FormAPI {
 
 	private readonly setBlockElement = (el?: HTMLElement) => (this.errorListBlock = el);
 
-	private readonly setFirstLinkElement = (el?: HTMLKolLinkElement) => (this.errorListFirstLink = el as HTMLElement);
+	private syncErrorLinkControllers(errorList?: ErrorListPropType[]): void {
+		this.errorLinkCtrls.forEach((c) => c.destroy());
+		this.errorLinkCtrls = (errorList ?? []).map((error) => {
+			const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+			ctrl.componentWillLoad({
+				href: '',
+				label: error.message,
+				on: { onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector)) : error.selector },
+			});
+			return ctrl;
+		});
+	}
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
 			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
 				<nav aria-label={this.translateErrorList}>
 					<ul>
-						{errorList?.map((error, index) => (
-							<li key={index}>
-								<KolLinkTag
-									class="kol-form__link"
-									_href=""
-									_label={error.message}
-									_on={{ onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector)) : error.selector }}
-									ref={index === 0 ? this.setFirstLinkElement : undefined}
-								/>
-							</li>
-						))}
+						{errorList?.map((error, index) => {
+							const ctrl = this.errorLinkCtrls[index];
+							return (
+								<li key={index}>
+									{ctrl && (
+										<LinkFC
+											class="kol-form__link"
+											accessKey={ctrl.getRenderProp('accessKey')}
+											ariaControls={ctrl.getRenderProp('ariaControls')}
+											ariaCurrent={ctrl.getAriaCurrent()}
+											ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
+											ariaDescription={ctrl.getRenderProp('ariaDescription')}
+											ariaExpanded={ctrl.getRenderProp('ariaExpanded')}
+											ariaOwns={ctrl.getRenderProp('ariaOwns')}
+											customClass={ctrl.getRenderProp('customClass')}
+											disabled={ctrl.getRenderProp('disabled')}
+											download={ctrl.getRenderProp('download')}
+											hideLabel={ctrl.getRenderProp('hideLabel')}
+											href={ctrl.getRenderProp('href')}
+											icons={ctrl.getRenderProp('icons')}
+											inline={ctrl.getRenderProp('inline')}
+											label={ctrl.getRenderProp('label')}
+											on={ctrl.getRenderProp('on')}
+											role={ctrl.getRenderProp('role')}
+											shortKey={ctrl.getRenderProp('shortKey')}
+											tabIndex={ctrl.getRenderProp('tabIndex')}
+											target={ctrl.getRenderProp('target')}
+											tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
+											variant={ctrl.getRenderProp('variant')}
+											onAnchorClick={ctrl.handleAnchorClick}
+											tooltipId={ctrl.getTooltipId()}
+											refTooltipFloating={ctrl.setTooltipRef}
+											refAnchor={(el) => {
+												ctrl.setAnchorRef(el);
+												if (index === 0) this.errorListFirstLink = el ?? undefined;
+											}}
+										/>
+									)}
+								</li>
+							);
+						})}
 					</ul>
 				</nav>
 			</KolAlertFc>
@@ -119,7 +165,7 @@ export class KolForm implements FormAPI {
 			block: 'start',
 		});
 		setTimeout(() => {
-			this.errorListFirstLink?.querySelector('a')?.focus();
+			this.errorListFirstLink?.focus();
 		}, 250);
 	}
 
@@ -171,11 +217,17 @@ export class KolForm implements FormAPI {
 	@Watch('_errorList')
 	public validateErrorList(value?: ErrorListPropType[]): void {
 		validateErrorList(this, value);
+		this.syncErrorLinkControllers(value);
 	}
 
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
+	}
+
+	public disconnectedCallback(): void {
+		this.errorLinkCtrls.forEach((c) => c.destroy());
+		this.errorLinkCtrls = [];
 	}
 }
