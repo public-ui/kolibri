@@ -64,7 +64,7 @@
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"react": "19.2.4",
-		"react-dom": "19.2.5",
+		"react-dom": "19.2.6",
 		"react-hook-form": "7.63.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
@@ -72,8 +72,8 @@
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
-		"react": "^19",
-		"react-hook-form": "^7"
+		"react": "19.x",
+		"react-hook-form": "7.x"
 	},
 	"sideEffects": false,
 	"type": "module",

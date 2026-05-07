@@ -56,7 +56,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"solid-js": ">=1.9.12"
+		"solid-js": "1.x"
 	},
 	"sideEffects": false,
 	"type": "module",
