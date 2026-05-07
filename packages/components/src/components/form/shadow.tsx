@@ -84,7 +84,7 @@ export class KolForm implements FormAPI {
 			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
 				<nav aria-label={this.translateErrorList}>
 					<ul>
-						{errorList?.map((error, index) => {
+						{errorList?.map((_error, index) => {
 							const ctrl = this.errorLinkCtrls[index];
 							return (
 								<li key={index}>
