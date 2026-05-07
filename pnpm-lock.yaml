@@ -174,7 +174,7 @@ importers:
         specifier: workspace:*
         version: link:../react
       preact:
-        specifier: '>=10.29.1'
+        specifier: 10.x
         version: 10.29.1
     devDependencies:
       '@public-ui/components':
@@ -274,11 +274,11 @@ importers:
         specifier: workspace:*
         version: link:../../components
       react:
-        specifier: '>=16.14.0'
-        version: 19.1.1
+        specifier: 16.x || 17.x || 18.x
+        version: 18.3.1
       react-dom:
-        specifier: '>=16.14.0'
-        version: 19.1.1(react@19.1.1)
+        specifier: 16.x || 17.x || 18.x
+        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@public-ui/react':
         specifier: workspace:*

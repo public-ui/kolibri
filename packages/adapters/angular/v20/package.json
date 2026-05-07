@@ -76,7 +76,7 @@
 		"zone.js": "0.15.1"
 	},
 	"peerDependencies": {
-		"@angular/core": "^20.3.20",
+		"@angular/core": "20.x",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [

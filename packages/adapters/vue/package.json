@@ -57,7 +57,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"vue": "^3.5.34"
+		"vue": "3.x"
 	},
 	"sideEffects": false,
 	"type": "module",
