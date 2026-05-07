@@ -102,7 +102,13 @@ jobs:
         run: pnpm lint
       - name: Run unit tests
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: pnpm -r test:unit
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.['test:unit'] ? 0 : 1)"; then
+            pnpm test:unit
+          else
+            echo "No root test:unit script found; running workspace package unit tests recursively."
+            pnpm -r test:unit
+          fi
       - name: Run e2e tests
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
