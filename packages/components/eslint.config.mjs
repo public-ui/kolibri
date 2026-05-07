@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import stencilPlugin from '@stencil-community/eslint-plugin';
 import tseslintPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import boundariesPlugin from 'eslint-plugin-boundaries';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import kolibriPlugin from '../../eslint-rules/index.js';
 
@@ -125,13 +126,64 @@ export default [
 		},
 	},
 
-	// Barrel import rule – scoped to skeleton blueprint only
+	// Skeleton blueprint import rules
 	{
-		files: ['src/internals/**/*.ts', 'src/internals/**/*.tsx', 'src/components/avatar/*.tsx'],
+		files: [
+			'src/components/_skeleton/web-components/**/*.ts',
+			'src/components/_skeleton/web-components/**/*.tsx',
+			'src/internal/functional-components/click-button/**/*.ts',
+			'src/internal/functional-components/click-button/**/*.tsx',
+			'src/internal/functional-components/skeleton/**/*.ts',
+			'src/internal/functional-components/skeleton/**/*.tsx',
+		],
 		plugins: {
+			boundaries: boundariesPlugin,
 			kolibri: kolibriPlugin,
 		},
+		settings: {
+			'import/resolver': {
+				node: {
+					extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				},
+			},
+			'boundaries/elements': [
+				{ type: 'skeleton-web-components', pattern: 'src/components/_skeleton/web-components', mode: 'folder' },
+				{
+					type: 'skeleton-functional-components',
+					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
+					mode: 'folder',
+				},
+				{ type: 'internal-functional-components', pattern: 'src/internal/functional-components', mode: 'folder' },
+				{ type: 'internal-props', pattern: 'src/internal/props', mode: 'folder' },
+				{ type: 'schema', pattern: 'src/schema', mode: 'folder' },
+				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
+			],
+		},
 		rules: {
+			/**
+			 * Skeleton blueprint layers may only import files from their explicitly
+			 * allowed target directories.
+			 */
+			'boundaries/dependencies': [
+				'error',
+				{
+					default: 'disallow',
+					checkUnknownLocals: true,
+					rules: [
+						{
+							from: { type: 'skeleton-web-components' },
+							allow: {
+								to: { type: ['skeleton-web-components', 'skeleton-functional-components', 'internal-functional-components', 'schema', 'testing-utils'] },
+							},
+						},
+						{
+							from: { type: 'skeleton-functional-components' },
+							allow: { to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema'] } },
+						},
+					],
+				},
+			],
+
 			/**
 			 * Props must be imported via barrel files (index.ts), not directly.
 			 */
