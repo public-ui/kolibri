@@ -102,7 +102,7 @@ jobs:
         run: pnpm lint
       - name: Run unit tests
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: pnpm test:unit
+        run: pnpm -r test:unit
       - name: Run e2e tests
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
