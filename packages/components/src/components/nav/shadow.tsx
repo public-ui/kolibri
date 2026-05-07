@@ -164,38 +164,38 @@ export class KolNav implements NavAPI {
 			<div class="kol-nav__entry-wrapper">
 				{entryIsLink(entry) ? (
 					(() => {
-						const ctrl = this.navLinkCtrls.get(entry);
+						const ctrl = this.navLinkCtrls.get(entry)!;
 						return (
 							<LinkFC
 								class={clsx('kol-nav__entry kol-nav__entry--link', {
 									'kol-nav__entry--collapsible': collapsible,
 								})}
-								href={entry._href}
-								label={entry._label}
+								href={ctrl.getRenderProp('href')}
+								label={ctrl.getRenderProp('label')}
 								icons={icons}
-								hideLabel={this.state._hideLabel}
-								target={entry._target}
-								download={entry._download}
-								on={entry._on}
-								inline={entry._inline}
-								disabled={entry._disabled}
-								role={entry._role}
-								tabIndex={entry._tabIndex}
-								accessKey={entry._accessKey}
-								shortKey={entry._shortKey}
-								tooltipAlign={entry._tooltipAlign}
-								ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
-								ariaCurrentValue={entry._ariaCurrentValue}
-								ariaDescription={entry._ariaDescription}
-								ariaExpanded={collapsible && hasChildren ? (expanded ? 'true' : 'false') : undefined}
-								ariaOwns={entry._ariaOwns}
-								customClass={entry._customClass}
-								variant={entry._variant}
-								ariaCurrent={ctrl?.getAriaCurrent() ?? ''}
-								onAnchorClick={ctrl?.handleAnchorClick ?? (() => {})}
-								tooltipId={ctrl?.getTooltipId() ?? ''}
-								refTooltipFloating={ctrl?.setTooltipRef}
-								refAnchor={ctrl?.setAnchorRef}
+								hideLabel={ctrl.getRenderProp('hideLabel')}
+								target={ctrl.getRenderProp('target')}
+								download={ctrl.getRenderProp('download')}
+								on={ctrl.getRenderProp('on')}
+								inline={ctrl.getRenderProp('inline')}
+								disabled={ctrl.getRenderProp('disabled')}
+								role={ctrl.getRenderProp('role')}
+								tabIndex={ctrl.getRenderProp('tabIndex')}
+								accessKey={ctrl.getRenderProp('accessKey')}
+								shortKey={ctrl.getRenderProp('shortKey')}
+								tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
+								ariaControls={collapsible && hasChildren && expanded ? ariaID : ctrl.getRenderProp('ariaControls')}
+								ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
+								ariaDescription={ctrl.getRenderProp('ariaDescription')}
+								ariaExpanded={collapsible && hasChildren ? String(expanded) : ctrl.getRenderProp('ariaExpanded')}
+								ariaOwns={ctrl.getRenderProp('ariaOwns')}
+								customClass={ctrl.getRenderProp('customClass')}
+								variant={ctrl.getRenderProp('variant')}
+								ariaCurrent={ctrl.getAriaCurrent()}
+								onAnchorClick={ctrl.handleAnchorClick}
+								tooltipId={ctrl.getTooltipId()}
+								refTooltipFloating={ctrl.setTooltipRef}
+								refAnchor={ctrl.setAnchorRef}
 							/>
 						);
 					})()

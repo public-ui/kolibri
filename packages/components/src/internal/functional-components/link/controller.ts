@@ -1,6 +1,8 @@
 import type { UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
 import { onLocationChange } from '../../../components/link/ariaCurrentService';
 import { setEventTarget } from '../../../schema';
+import type { AlignPropType } from '../../../schema/props/align';
+import type { KoliBriIconsProp } from '../../../schema/types/icons';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -303,7 +305,7 @@ export function initLinkControllerFromProps(ctrl: LinkController, props: { _href
 	ctrl.componentWillLoad({
 		href: props['_href'],
 		label: props['_label'] as string | false | undefined,
-		icons: props['_icons'],
+		icons: props['_icons'] as KoliBriIconsProp | undefined,
 		target: props['_target'] as string | undefined,
 		download: props['_download'] as string | undefined,
 		on: props['_on'] as Record<string, unknown> | undefined,
@@ -314,7 +316,7 @@ export function initLinkControllerFromProps(ctrl: LinkController, props: { _href
 		tabIndex: props['_tabIndex'] as number | undefined,
 		accessKey: props['_accessKey'] as string | undefined,
 		shortKey: props['_shortKey'] as string | undefined,
-		tooltipAlign: props['_tooltipAlign'] as string | undefined,
+		tooltipAlign: props['_tooltipAlign'] as AlignPropType | undefined,
 		ariaControls: props['_ariaControls'] as string | undefined,
 		ariaCurrentValue: props['_ariaCurrentValue'] as string | undefined,
 		ariaDescription: props['_ariaDescription'] as string | undefined,

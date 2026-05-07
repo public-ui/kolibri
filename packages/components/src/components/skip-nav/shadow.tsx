@@ -30,7 +30,7 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 		return (
 			<nav class="kol-skip-nav" aria-label={this.state._label}>
 				<ul class="kol-skip-nav__list">
-					{this.state._links.map((link: LinkProps, index: number) => {
+					{this.state._links.map((_link: LinkProps, index: number) => {
 						const ctrl = this.linkCtrls[index];
 						return (
 							<li class="kol-skip-nav__list-item" key={index}>
