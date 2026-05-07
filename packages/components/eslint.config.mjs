@@ -128,17 +128,9 @@ export default [
 
 	// Skeleton blueprint import rules
 	{
-		files: [
-			'src/components/_skeleton/web-components/**/*.ts',
-			'src/components/_skeleton/web-components/**/*.tsx',
-			'src/internal/functional-components/click-button/**/*.ts',
-			'src/internal/functional-components/click-button/**/*.tsx',
-			'src/internal/functional-components/skeleton/**/*.ts',
-			'src/internal/functional-components/skeleton/**/*.tsx',
-		],
+		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
-			kolibri: kolibriPlugin,
 		},
 		settings: {
 			'import/resolver': {
@@ -183,7 +175,16 @@ export default [
 					],
 				},
 			],
+		},
+	},
 
+	// Barrel import rule – keep the existing non-Skeleton scope separate from the Skeleton boundary rules.
+	{
+		files: ['src/internals/**/*.{ts,tsx}', 'src/components/avatar/*.tsx'],
+		plugins: {
+			kolibri: kolibriPlugin,
+		},
+		rules: {
 			/**
 			 * Props must be imported via barrel files (index.ts), not directly.
 			 */
