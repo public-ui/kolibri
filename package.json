@@ -35,7 +35,6 @@
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @kern-ux/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
-		"release": "node scripts/version.mjs",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test:update",
