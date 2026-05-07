@@ -59,8 +59,8 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": ">=16.14.0 <19",
-		"react-dom": ">=16.14.0 <19"
+		"react": "16.x || 17.x || 18.x",
+		"react-dom": "16.x || 17.x || 18.x"
 	},
 	"sideEffects": false,
 	"type": "module",
