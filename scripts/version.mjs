@@ -10,11 +10,10 @@
  * --no-push: skip `git push` after committing (used for dev-tag releases)
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync, writeFileSync, globSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -85,10 +84,27 @@ if (!increment) {
 
 // --- find workspace packages ---
 
-const pkgs = JSON.parse(execSync('pnpm ls --recursive --json --depth 0', { cwd: ROOT }).toString());
+/**
+ * Reads pnpm-workspace.yaml and returns all non-private workspace packages
+ * directly from the file system, without requiring an installed node_modules.
+ */
+function getWorkspacePackages() {
+	const workspaceYaml = readFileSync(join(ROOT, 'pnpm-workspace.yaml'), 'utf8');
+	const patterns = [...workspaceYaml.matchAll(/^\s+-\s+(.+)$/gm)].map((m) => m[1].trim());
+	const packages = [];
+	for (const pattern of patterns) {
+		const pkgJsonPaths = globSync(join(ROOT, pattern, 'package.json'));
+		for (const pkgJsonPath of pkgJsonPaths) {
+			const pkgJson = JSON.parse(readFileSync(pkgJsonPath, 'utf8'));
+			if (pkgJson.name && !pkgJson.private) {
+				packages.push({ name: pkgJson.name, version: pkgJson.version, path: dirname(pkgJsonPath) });
+			}
+		}
+	}
+	return packages;
+}
 
-// Skip the root (no name) and private packages
-const publicPkgs = pkgs.filter((p) => p.name && !p.private);
+const publicPkgs = getWorkspacePackages();
 
 if (publicPkgs.length === 0) {
 	console.error('No public workspace packages found.');
@@ -96,7 +112,13 @@ if (publicPkgs.length === 0) {
 }
 
 // All public packages must share the same version (fixed versioning)
-const currentVersion = publicPkgs[0].version;
+const versions = new Set(publicPkgs.map((p) => p.version));
+if (versions.size > 1) {
+	console.error(`Inconsistent package versions detected: ${[...versions].join(', ')}`);
+	console.error('Fix the version drift manually before running this script.');
+	process.exit(1);
+}
+const currentVersion = [...versions][0];
 const newVersion = bumpVersion(currentVersion, increment, preid || undefined);
 
 console.log(`Bumping ${currentVersion} → ${newVersion} across ${publicPkgs.length} packages`);
@@ -127,8 +149,7 @@ run(`git commit -m "chore: release ${newVersion}"`);
 run(`git tag "${newVersion}"`);
 
 if (!noPush) {
-	run('git push');
-	run(`git push origin "${newVersion}"`);
+	run('git push --follow-tags');
 }
 
 console.log(`\nDone! Version ${newVersion} committed and tagged.`);
