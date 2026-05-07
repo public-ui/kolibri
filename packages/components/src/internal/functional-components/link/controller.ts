@@ -322,5 +322,7 @@ export function initLinkControllerFromProps(ctrl: LinkController, props: { _href
 		ariaDescription: props['_ariaDescription'] as string | undefined,
 		ariaExpanded: props['_ariaExpanded'] as boolean | undefined,
 		ariaOwns: props['_ariaOwns'] as string | undefined,
+		customClass: props['_customClass'] as string | undefined,
+		variant: props['_variant'] as string | undefined,
 	});
 }

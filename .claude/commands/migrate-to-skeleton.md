@@ -229,7 +229,7 @@ public render(): JSX.Element {
 
 If the legacy code used a KoliBri WC inside `render()` and that WC encapsulates controller behaviour (event handlers, ref management, normalization), migrate that behaviour into the controller of the component you are refactoring. See [ARC42 §9 #14](../../packages/components/src/components/_skeleton/ARC42.md#9-design-decisions) for the rationale.
 
-### 4. Event Listener Leaks
+### 5. Event Listener Leaks
 
 Do not register inline listeners with new function references in lifecycle hooks.
 Use stable arrow-property handlers.
