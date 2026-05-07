@@ -25,3 +25,5 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
+overrides:
+  ip-address@<=10.1.0: '>=10.1.1'
