@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkTag, KolTableSettingsWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
@@ -843,7 +843,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _variant={buttonProps._variant} />;
 					} else if (action.type === 'link') {
 						const { ...linkProps } = action;
-						return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
+						return <KolLinkTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
 					}
 					return null;
 				})}

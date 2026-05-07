@@ -1,500 +1,317 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { IconFC } from '../../internal/functional-components/icon/component';
-import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import { TooltipController } from '../../internal/functional-components/tooltip/controller';
+import type { LinkApi } from '../../internal/functional-components/link/api';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { LinkController } from '../../internal/functional-components/link/controller';
 import type {
-	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
-	AriaDescriptionPropType,
-	AriaExpandedPropType,
-	AriaOwnsPropType,
-	CustomClassPropType,
-	DisabledPropType,
-	DownloadPropType,
-	FocusableElement,
-	HideLabelPropType,
-	HrefPropType,
-	InlinePropType,
-	InternalLinkAPI,
 	KoliBriIconsProp,
-	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
-	LinkStates,
 	LinkTargetPropType,
-	ShortKeyPropType,
-	Stringified,
 	TooltipAlignPropType,
-	VariantClassNamePropType,
 } from '../../schema';
-import {
-	devHint,
-	setEventTarget,
-	showExpertSlot,
-	validateAccessKey,
-	validateAlternativeButtonLinkRole,
-	validateAriaControls,
-	validateAriaCurrentValue,
-	validateAriaDescription,
-	validateAriaExpanded,
-	validateAriaOwns,
-	validateCustomClass,
-	validateDisabled,
-	validateDownload,
-	validateHideLabel,
-	validateHref,
-	validateIcons,
-	validateInline,
-	validateLabelWithExpertSlot,
-	validateLinkCallbacks,
-	validateLinkTarget,
-	validateShortKey,
-	validateTooltipAlign,
-	validateVariantClassName,
-} from '../../schema';
-import { validateTabIndex } from '../../schema/props/tab-index';
+import { setEventTarget } from '../../schema';
 import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { onLocationChange } from './ariaCurrentService';
 
-import { translate } from '../../i18n';
-import { SpanFC } from '../../internal/functional-components/span/component';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import clsx from '../../utils/clsx';
-
-/**
- * @internal
- */
 @Component({
-	tag: 'kol-link-wc',
-	shadow: false,
+	tag: 'kol-link',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolLinkWc implements InternalLinkAPI, FocusableElement {
+export class KolLink extends BaseWebComponent<LinkApi> {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
-	private anchorRef?: HTMLAnchorElement;
-	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
-	private unsubscribeOnLocationChange?: UnsubscribeFunction;
-
-	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
-
-	private readonly setAnchorRef = (ref?: HTMLAnchorElement) => {
-		this.anchorRef = ref;
-	};
+	private readonly ctrl = new LinkController(this.stateAccess);
 
 	/**
-	 * Sets focus on the internal element.
+	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return setFocus(this.anchorRef!);
+		const anchor = this.ctrl.getAnchorRef();
+		if (anchor) return setFocus(anchor);
 	}
 
 	/**
-	 * Clicks the primary interactive element inside this component.
+	 * Clicks the internal anchor element.
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return setClick(this.anchorRef!);
+		const anchor = this.ctrl.getAnchorRef();
+		if (anchor) return setClick(anchor);
 	}
 
-	private readonly onClick = (event: Event) => {
-		this.tooltipCtrl.hideTooltip();
+	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
+		this.ctrl.hideTooltip();
 
-		if (this.state._disabled === true) {
+		if (this.ctrl.getRenderProp('disabled')) {
 			event.preventDefault();
-		} else {
-			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.anchorRef);
-				this.state._on?.onClick(event, this.state._href);
-			}
-			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.click, this.state._href);
-			}
+			return;
 		}
-	};
 
-	private readonly getRenderValues = () => {
-		/**
-		 * DX
-		 * Das möchte ich ungern für HTML machen, sondern nur für Barrierefreiheitsthemen.
-		 */
-		// if (typeof this.state._href === 'string' && this.state._href.length > 0) {
-		//   console.error('Setz den URL.');
-		//   throw new Error('Setz den URL.');
-		// }
+		const href = this.ctrl.getRenderProp('href');
+		const on = this.ctrl.getRenderProp('on');
 
-		// switch (this.state._target) {
-		//   case '_blank':
-		//   case '_self':
-		//     break;
-		//   default:
-		//     console.error('Fehlerhaftes Target.');
-		//     throw new Error('Fehlerhaftes Target.');
-		// }
-
-		// ROBUSTHEIT durch Validierung
-		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
-
-		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
-			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
-			rel: isExternal ? 'noopener' : undefined,
-			download: typeof this.state._download === 'string' ? this.state._download : undefined,
-		};
-
-		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
+		if (typeof on.onClick === 'function') {
+			setEventTarget(event, this.ctrl.getAnchorRef() as HTMLElement | undefined);
+			on.onClick(event, href);
 		}
-		return { isExternal, tagAttrs };
+
+		if (this.host) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+			dispatchDomEvent(this.host, KolEvent.click, href);
+		}
 	};
 
 	public render(): JSX.Element {
-		const { isExternal, tagAttrs } = this.getRenderValues();
-		const hasExpertSlot = showExpertSlot(this.state._label);
-		const ariaDescription = this.state._ariaDescription?.trim();
-
 		return (
 			<Host>
-				<a
-					ref={this.setAnchorRef}
-					{...tagAttrs}
-					accessKey={this.state._accessKey}
-					aria-current={this.state._ariaCurrent}
-					aria-controls={this.state._ariaControls}
-					aria-description={ariaDescription || undefined}
-					aria-disabled={this.state._disabled ? 'true' : undefined}
-					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
-					aria-owns={this.state._ariaOwns}
-					aria-label={
-						this.state._hideLabel && typeof this.state._label === 'string'
-							? `${this.state._label}${isExternal ? ` (${this.translateOpenLinkInTab})` : ''}`
-							: undefined
-					}
-					aria-keyshortcuts={this.state._shortKey}
-					class={clsx('kol-link', {
-						'kol-link--disabled': this.state._disabled === true,
-						'kol-link--external-link': isExternal,
-						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._variant as string}`]: this.state._variant !== undefined,
-						'kol-link--inline': this.state._inline === true,
-						'kol-link--standalone': this.state._inline === false,
-						[this.state._customClass as string]:
-							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-					})}
-					{...this.state._on}
-					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
-					onClick={this.onClick}
-					onKeyPress={this.onClick}
-					role={this.state._role}
-					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
+				<LinkFC
+					accessKey={this.ctrl.getRenderProp('accessKey')}
+					ariaControls={this.ctrl.getRenderProp('ariaControls')}
+					ariaCurrent={this.ariaCurrent}
+					ariaCurrentValue={this.ctrl.getRenderProp('ariaCurrentValue')}
+					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
+					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
+					ariaOwns={this.ctrl.getRenderProp('ariaOwns')}
+					customClass={this.ctrl.getRenderProp('customClass')}
+					disabled={this.ctrl.getRenderProp('disabled')}
+					download={this.ctrl.getRenderProp('download')}
+					hideLabel={this.ctrl.getRenderProp('hideLabel')}
+					href={this.ctrl.getRenderProp('href')}
+					icons={this.ctrl.getRenderProp('icons')}
+					inline={this.ctrl.getRenderProp('inline')}
+					label={this.ctrl.getRenderProp('label')}
+					on={this.ctrl.getRenderProp('on')}
+					role={this.ctrl.getRenderProp('role')}
+					shortKey={this.ctrl.getRenderProp('shortKey')}
+					tabIndex={this.ctrl.getRenderProp('tabIndex')}
+					target={this.ctrl.getRenderProp('target')}
+					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
+					variant={this.ctrl.getRenderProp('variant')}
+					onAnchorClick={this.handleAnchorClick}
+					tooltipId={this.ctrl.getTooltipId()}
+					refTooltipFloating={this.ctrl.setTooltipRef}
+					refAnchor={(el) => this.ctrl.setAnchorRef(el)}
 				>
-					<SpanFC
-						class="kol-link__text"
-						badgeText={this.state._accessKey || this.state._shortKey}
-						icons={this.state._icons}
-						hideLabel={this.state._hideLabel}
-						label={hasExpertSlot ? '' : this.state._label || this.state._href}
-					>
-						<slot name="expert" slot="expert"></slot>
-					</SpanFC>
-					{isExternal && (
-						<IconFC
-							class="kol-link__icon"
-							label={this.state._hideLabel ? '' : this.translateOpenLinkInTab}
-							icons={'kolicon-link-external'}
-							aria-hidden={this.state._hideLabel}
-						/>
-					)}
-				</a>
-				{this.state._hideLabel === true && !hasExpertSlot && (
-					<div class="kol-link__tooltip">
-						<TooltipFC
-							badgeText={this.state._accessKey || this.state._shortKey || ''}
-							label={typeof this.state._label === 'string' ? this.state._label : typeof this.state._href === 'string' ? this.state._href : ''}
-							id={this.tooltipCtrl.getRenderProp('id')}
-							refFloating={this.tooltipCtrl.setTooltipElementRef}
-						/>
-					</div>
-				)}
+					<slot name="expert" slot="expert"></slot>
+				</LinkFC>
 			</Host>
 		);
 	}
 
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	// ── Props ──────────────────────────────────────────────────────────────
 
-	/**
-	 * Defines the value for the aria-current attribute.
-	 */
-	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+	/** Defines the key combination that can be used to trigger or focus the component's interactive element. */
+	@Prop() public _accessKey?: string;
 
-	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 */
+	/** Defines which elements are controlled by this component. */
 	@Prop() public _ariaControls?: string;
 
-	/**
-	 * Defines the value for the aria-description attribute.
-	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	/** Defines the value for the aria-current attribute. */
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
-	/**
-	 * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
-	 * @TODO: Change type to `AriaExpandedPropType` after Stencil#4663 has been resolved.
-	 */
+	/** Defines the value for the aria-description attribute. */
+	@Prop() public _ariaDescription?: string;
+
+	/** Marks this element as open/expanded, or that the connected element is open/expanded. */
 	@Prop() public _ariaExpanded?: boolean;
 
-	/**
-	 * Defines the contextual relationship between a parent and its child elements.
-	 */
-	@Prop() public _ariaOwns?: AriaOwnsPropType;
+	/** Defines the contextual relationship between a parent and its child elements. */
+	@Prop() public _ariaOwns?: string;
 
-	/**
-	 * Defines the custom class attribute if _variant="custom" is set.
-	 */
-	@Prop() public _customClass?: CustomClassPropType;
+	/** Defines the custom class attribute if _variant="custom" is set. */
+	@Prop() public _customClass?: string;
 
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 */
+	/** Makes the element not focusable and ignore all events. */
 	@Prop() public _disabled?: boolean = false;
 
-	/**
-	 * Tells the browser that the link contains a file. Optionally sets the filename.
-	 */
-	@Prop() public _download?: DownloadPropType;
+	/** Tells the browser that the link contains a file. Optionally sets the filename. */
+	@Prop() public _download?: string;
 
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
+	/** Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. */
 	@Prop() public _hideLabel?: boolean = false;
 
-	/**
-	 * Sets the target URI of the link or citation source.
-	 */
-	@Prop() public _href!: HrefPropType;
+	/** Sets the target URI of the link or citation source. */
+	@Prop() public _href!: string;
 
-	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
-	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	/** Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`). */
+	@Prop() public _icons?: KoliBriIconsProp | string;
 
-	/**
-	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
-	 */
-	@Prop() public _inline?: InlinePropType = true;
+	/** Defines whether the component is displayed inline without enforcing a minimum size of 44px. */
+	@Prop() public _inline?: boolean = true;
 
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
+	/** Defines the visible or semantic label of the component. Set to `false` to enable the expert slot. */
+	@Prop() public _label?: string | false;
 
-	/**
-	 * Defines the callback functions for links.
-	 */
+	/** Defines the callback functions for links. */
 	@Prop() public _on?: LinkOnCallbacksPropType;
 
-	/**
-	 * Defines the role of the components primary element.
-	 */
+	/** Defines the role of the components primary element. */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	/** Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud. */
+	@Prop() public _shortKey?: string;
 
-	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-	 */
+	/** Defines which tab-index the primary element of the component has. */
 	@Prop() public _tabIndex?: number;
 
-	/**
-	 * Defines where to open the link.
-	 */
+	/** Defines where to open the link. */
 	@Prop() public _target?: LinkTargetPropType;
 
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
+	/** Defines where to show the Tooltip preferably: top, right, bottom or left. */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
-	/**
-	 * Defines which button variant should be used for presentation.
-	 * @internal
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	/** Defines which variant should be used for presentation. */
+	@Prop() public _variant?: string;
 
-	@State() public state: LinkStates = {
-		_ariaCurrentValue: 'page',
-		_href: '', // ⚠ required
-		_icons: {},
-	};
+	// ── State ─────────────────────────────────────────────────────────────
+
+	/** Empty string means aria-current is not set. */
+	@State() public ariaCurrent: string = '';
+
+	// ── Watchers ──────────────────────────────────────────────────────────
 
 	@Watch('_accessKey')
-	public validateAccessKey(value?: AccessKeyPropType): void {
-		validateAccessKey(this, value);
-		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	@Watch('_ariaCurrentValue')
-	public validateAriaCurrentValue(value?: AriaCurrentValuePropType): void {
-		validateAriaCurrentValue(this, value);
+	public watchAccessKey(value?: string): void {
+		this.ctrl.watchAccessKey(value);
 	}
 
 	@Watch('_ariaControls')
-	public validateAriaControls(value?: string): void {
-		validateAriaControls(this, value);
+	public watchAriaControls(value?: string): void {
+		this.ctrl.watchAriaControls(value);
+	}
+
+	@Watch('_ariaCurrentValue')
+	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		this.ctrl.watchAriaCurrentValue(value);
 	}
 
 	@Watch('_ariaDescription')
-	public validateAriaDescription(value?: AriaDescriptionPropType): void {
-		validateAriaDescription(this, value);
+	public watchAriaDescription(value?: string): void {
+		this.ctrl.watchAriaDescription(value);
 	}
 
 	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: AriaExpandedPropType): void {
-		validateAriaExpanded(this, value);
+	public watchAriaExpanded(value?: boolean): void {
+		this.ctrl.watchAriaExpanded(value);
 	}
 
 	@Watch('_ariaOwns')
-	public validateAriaOwns(value?: AriaOwnsPropType): void {
-		validateAriaOwns(this, value);
+	public watchAriaOwns(value?: string): void {
+		this.ctrl.watchAriaOwns(value);
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: CustomClassPropType): void {
-		validateCustomClass(this, value);
+	public watchCustomClass(value?: string): void {
+		this.ctrl.watchCustomClass(value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: DisabledPropType): void {
-		validateDisabled(this, value);
+	public watchDisabled(value?: boolean): void {
+		this.ctrl.watchDisabled(value);
 	}
 
 	@Watch('_download')
-	public validateDownload(value?: DownloadPropType): void {
-		validateDownload(this, value);
+	public watchDownload(value?: string): void {
+		this.ctrl.watchDownload(value);
 	}
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: HideLabelPropType): void {
-		validateHideLabel(this, value);
+	public watchHideLabel(value?: boolean): void {
+		this.ctrl.watchHideLabel(value);
 	}
 
 	@Watch('_href')
-	public validateHref(value?: string): void {
-		validateHref(this, value, {
-			required: true,
-		});
+	public watchHref(value?: string): void {
+		this.ctrl.watchHref(value);
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: KoliBriIconsProp): void {
-		validateIcons(this, value);
+	public watchIcons(value?: KoliBriIconsProp | string): void {
+		this.ctrl.watchIcons(value);
 	}
 
 	@Watch('_inline')
-	public validateInline(value?: InlinePropType): void {
-		validateInline(this, value, {
-			defaultValue: true,
-		});
+	public watchInline(value?: boolean): void {
+		this.ctrl.watchInline(value);
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
-		this.tooltipCtrl.watchLabel(typeof value === 'string' ? value : undefined);
+	public watchLabel(value?: string | false): void {
+		this.ctrl.watchLabel(value);
 	}
 
 	@Watch('_on')
-	public validateOn(value?: LinkOnCallbacksPropType): void {
-		validateLinkCallbacks(this, value);
+	public watchOn(value?: LinkOnCallbacksPropType): void {
+		this.ctrl.watchOn(value);
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
-		validateAlternativeButtonLinkRole(this, value);
+	public watchRole(value?: string): void {
+		this.ctrl.watchRole(value);
 	}
 
 	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		validateShortKey(this, value);
-		validateAccessAndShortKey(this._accessKey, value);
+	public watchShortKey(value?: string): void {
+		this.ctrl.watchShortKey(value);
 	}
 
 	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		validateTabIndex(this, value);
+	public watchTabIndex(value?: number): void {
+		this.ctrl.watchTabIndex(value);
 	}
 
 	@Watch('_target')
-	public validateTarget(value?: LinkTargetPropType): void {
-		validateLinkTarget(this, value);
+	public watchTarget(value?: LinkTargetPropType): void {
+		this.ctrl.watchTarget(value);
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignPropType): void {
-		validateTooltipAlign(this, value);
-		this.tooltipCtrl.watchAlign(value);
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.ctrl.watchTooltipAlign(value);
 	}
 
 	@Watch('_variant')
-	public validateVariantClassName(value?: VariantClassNamePropType): void {
-		validateVariantClassName(this, value);
+	public watchVariant(value?: string): void {
+		this.ctrl.watchVariant(value);
 	}
+
+	// ── Lifecycle ─────────────────────────────────────────────────────────
 
 	public componentWillLoad(): void {
-		this.validateAccessKey(this._accessKey);
-		this.validateAriaCurrentValue(this._ariaCurrentValue);
-		this.validateAriaControls(this._ariaControls);
-		this.validateAriaDescription(this._ariaDescription);
-		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaOwns(this._ariaOwns);
-		this.validateCustomClass(this._customClass);
-		this.validateDisabled(this._disabled);
-		this.validateDownload(this._download);
-		this.validateHideLabel(this._hideLabel);
-		this.validateHref(this._href);
-		this.validateIcons(this._icons);
-		this.validateInline(this._inline);
-		this.validateLabel(this._label);
-		this.validateOn(this._on);
-		this.validateRole(this._role);
-		this.validateShortKey(this._shortKey);
-		this.validateTabIndex(this._tabIndex);
-		this.validateTarget(this._target);
-		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateVariantClassName(this._variant);
-		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
+		this.ctrl.componentWillLoad({
+			href: this._href,
+			accessKey: this._accessKey,
+			ariaControls: this._ariaControls,
+			ariaCurrentValue: this._ariaCurrentValue,
+			ariaDescription: this._ariaDescription,
+			ariaExpanded: this._ariaExpanded,
+			ariaOwns: this._ariaOwns,
+			customClass: this._customClass,
+			disabled: this._disabled,
+			download: this._download,
+			hideLabel: this._hideLabel,
+			icons: this._icons,
+			inline: this._inline,
+			label: this._label,
+			on: this._on,
+			role: this._role,
+			shortKey: this._shortKey,
+			tabIndex: this._tabIndex,
+			target: this._target,
+			tooltipAlign: this._tooltipAlign,
+			variant: this._variant,
 		});
-		validateAccessAndShortKey(this._accessKey, this._shortKey);
-		this.tooltipCtrl.componentWillLoad({
-			label: typeof this.state._label === 'string' ? this.state._label : typeof this.state._href === 'string' ? this.state._href : '',
-			align: this._tooltipAlign,
-		});
-	}
-
-	public componentDidRender(): void {
-		if (this.anchorRef) {
-			this.tooltipCtrl.syncListeners(undefined, this.anchorRef, true);
-		}
 	}
 
 	public disconnectedCallback(): void {
-		if (this.unsubscribeOnLocationChange) {
-			this.unsubscribeOnLocationChange();
-		}
-		this.tooltipCtrl.destroy();
+		this.ctrl.destroy();
 	}
 }

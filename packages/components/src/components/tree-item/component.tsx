@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolLinkWcTag, KolTreeTag } from '../../core/component-names';
+import { KolLinkTag, KolTreeTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
@@ -17,7 +17,7 @@ import { nonce } from '../../utils/dev.utils';
 export class KolTreeItemWc implements TreeItemAPI {
 	@Element() private readonly host?: HTMLKolTreeItemWcElement;
 
-	private linkElement?: HTMLKolLinkWcElement;
+	private linkElement?: HTMLKolLinkElement;
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
@@ -32,7 +32,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						'--level': `${this.level}`,
 					}}
 				>
-					<KolLinkWcTag
+					<KolLinkTag
 						class={clsx('kol-tree-item__link', {
 							'kol-tree-item__link--first-level': this.level === 0,
 							'kol-tree-item__link--active': _active,
@@ -43,7 +43,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_tabIndex={_active ? 0 : -1}
 						_ariaExpanded={_hasChildren ? _open : undefined}
 						_ariaOwns={_hasChildren ? this.groupId : undefined}
-						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
+						ref={(element?: HTMLKolLinkElement) => (this.linkElement = element!)}
 					>
 						<span class="kol-tree-item__link-inner" slot="expert">
 							{_hasChildren ? (
@@ -63,7 +63,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 							)}
 							<span class="kol-tree-item__text">{_label}</span>
 						</span>
-					</KolLinkWcTag>
+					</KolLinkTag>
 					<ul class="kol-tree-item__children" hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
 						<slot />
 					</ul>

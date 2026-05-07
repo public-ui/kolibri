@@ -6,7 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
 
 /**
@@ -33,7 +33,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 						)}
 					</span>
 				) : (
-					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
+					<KolLinkTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkTag>
 				)}
 				{index !== lastIndex && <IconFC class="kol-breadcrumb__separator" label="" icons="kolicon-chevron-right" />}
 			</li>
