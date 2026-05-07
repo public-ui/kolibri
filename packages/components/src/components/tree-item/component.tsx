@@ -202,9 +202,11 @@ export class KolTreeItemWc implements TreeItemAPI {
 	/**
 	 * Focuses the link element.
 	 */
-	@Method() async focus() {
+	@Method()
+	public async focus(): Promise<void> {
 		const anchor = this.linkCtrl.getAnchorRef();
-		if (anchor) return anchor.focus();
+		if (anchor) anchor.focus();
+		return Promise.resolve();
 	}
 
 	private async handleExpandClick(event: MouseEvent) {

@@ -278,7 +278,7 @@ export class LinkController extends BaseController<LinkApi> {
 	 * Updated automatically by the `onLocationChange` subscription set up in `componentWillLoad`.
 	 */
 	public getAriaCurrent(): string {
-		return this.getState('ariaCurrent') as string;
+		return this.getState('ariaCurrent');
 	}
 
 	private resolveTooltipLabel(): string {
@@ -301,7 +301,7 @@ export class LinkController extends BaseController<LinkApi> {
  */
 export function initLinkControllerFromProps(ctrl: LinkController, props: { _href: string } & Partial<Record<string, unknown>>): void {
 	ctrl.componentWillLoad({
-		href: props['_href'] as string,
+		href: props['_href'],
 		label: props['_label'] as string | false | undefined,
 		icons: props['_icons'],
 		target: props['_target'] as string | undefined,
