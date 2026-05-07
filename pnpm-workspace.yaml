@@ -17,3 +17,6 @@ packages:
   - packages/tools/mcp
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
+overrides:
+  hono@<4.12.16: '>=4.12.16'
+  ip-address@<=10.1.0: '>=10.1.1'
