@@ -1,4 +1,5 @@
 {
+	"version": "4.1.4",
 	"devDependencies": {
 		"license-report": "6.8.2",
 		"npm-check-updates": "19.6.6",

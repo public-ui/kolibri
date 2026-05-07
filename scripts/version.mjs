@@ -17,59 +17,9 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
-// --- semver bump (no external deps) ---
-
-function bumpVersion(current, increment, preid) {
-	const dashIdx = current.indexOf('-');
-	const releaseStr = dashIdx >= 0 ? current.slice(0, dashIdx) : current;
-	const preStr = dashIdx >= 0 ? current.slice(dashIdx + 1) : null;
-	const [major, minor, patch] = releaseStr.split('.').map(Number);
-
-	switch (increment) {
-		case 'major':
-			return `${major + 1}.0.0`;
-		case 'minor':
-			return `${major}.${minor + 1}.0`;
-		case 'patch':
-			return `${major}.${minor}.${patch + 1}`;
-		case 'premajor': {
-			const base = `${major + 1}.0.0`;
-			return preid ? `${base}-${preid}.0` : `${base}-0`;
-		}
-		case 'preminor': {
-			const base = `${major}.${minor + 1}.0`;
-			return preid ? `${base}-${preid}.0` : `${base}-0`;
-		}
-		case 'prepatch': {
-			const base = `${major}.${minor}.${patch + 1}`;
-			return preid ? `${base}-${preid}.0` : `${base}-0`;
-		}
-		case 'prerelease': {
-			if (preStr) {
-				const parts = preStr.split('.');
-				const lastNum = parseInt(parts[parts.length - 1], 10);
-				if (!isNaN(lastNum)) {
-					if (preid && parts[0] !== preid) {
-						return `${releaseStr}-${preid}.0`;
-					}
-					parts[parts.length - 1] = String(lastNum + 1);
-					return `${releaseStr}-${parts.join('.')}`;
-				}
-				// non-numeric prerelease suffix (e.g. 1.0.0-beta): stay on same release, add numeric suffix
-				if (preid && parts[0] !== preid) {
-					return `${releaseStr}-${preid}.0`;
-				}
-				return `${releaseStr}-${preStr}.0`;
-			}
-			const base = `${major}.${minor}.${patch + 1}`;
-			return preid ? `${base}-${preid}.0` : `${base}-0`;
-		}
-		default:
-			throw new Error(`Unknown increment: "${increment}". Valid: major, minor, patch, premajor, preminor, prepatch, prerelease`);
-	}
-}
-
 // --- parse args ---
+
+const VALID_INCREMENTS = new Set(['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease']);
 
 const args = process.argv.slice(2);
 const increment = args.find((a) => !a.startsWith('-'));
@@ -79,6 +29,11 @@ const noPush = args.includes('--no-push');
 
 if (!increment) {
 	console.error('Usage: node scripts/version.mjs <increment> [--preid=<label>] [--no-push]');
+	process.exit(1);
+}
+
+if (!VALID_INCREMENTS.has(increment)) {
+	console.error(`Invalid increment: "${increment}". Valid: ${[...VALID_INCREMENTS].join(', ')}`);
 	process.exit(1);
 }
 
@@ -111,17 +66,24 @@ if (publicPkgs.length === 0) {
 	process.exit(1);
 }
 
-// All public packages must share the same version (fixed versioning)
-const versions = new Set(publicPkgs.map((p) => p.version));
-if (versions.size > 1) {
-	console.error(`Inconsistent package versions detected: ${[...versions].join(', ')}`);
+// All public packages must match the root version (fixed versioning, root is SSOT)
+const rootVersion = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version;
+const drifted = publicPkgs.filter((p) => p.version !== rootVersion);
+if (drifted.length > 0) {
+	console.error(`Package version drift detected (root is ${rootVersion}):`);
+	for (const p of drifted) console.error(`  ${p.name}: ${p.version}`);
 	console.error('Fix the version drift manually before running this script.');
 	process.exit(1);
 }
-const currentVersion = [...versions][0];
-const newVersion = bumpVersion(currentVersion, increment, preid || undefined);
 
-console.log(`Bumping ${currentVersion} → ${newVersion} across ${publicPkgs.length} packages`);
+// Bump the root version via pnpm's built-in semver (triggers the `version` lifecycle which
+// updates publiccode.yml). The lifecycle runs after the version is written to package.json.
+const versionArgs = ['version', increment, '--no-git-tag-version'];
+if (preid) versionArgs.push(`--preid=${preid}`);
+execSync(`pnpm ${versionArgs.join(' ')}`, { cwd: ROOT, stdio: 'inherit' });
+
+const newVersion = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version;
+console.log(`Bumped ${rootVersion} → ${newVersion} across ${publicPkgs.length} packages`);
 
 // --- update package.json files ---
 
@@ -136,9 +98,6 @@ for (const pkg of publicPkgs) {
 // --- update lockfile ---
 
 execSync('pnpm install --lockfile-only', { cwd: ROOT, stdio: 'inherit' });
-
-// Run the project's custom version lifecycle script (updates publiccode.yml etc.)
-execSync('pnpm run version --if-present', { cwd: ROOT, stdio: 'inherit' });
 
 // --- git commit + tag ---
 
