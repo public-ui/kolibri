@@ -93,30 +93,24 @@ jobs:
         run: pnpm audit --audit-level high --production
       - name: Run build
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: pnpm build
+        run: pnpm -r build
       - name: Run format
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: pnpm format
       - name: Run lint
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: pnpm lint
+        run: pnpm -r lint
       - name: Run unit tests
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: |
-          if node -e "process.exit(require('./package.json').scripts?.['test:unit'] ? 0 : 1)"; then
-            pnpm test:unit
-          else
-            echo "No root test:unit script found; running workspace package unit tests recursively."
-            pnpm -r test:unit
-          fi
+        run: pnpm -r test:unit
       - name: Run e2e tests
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
           npx playwright install chromium
-          pnpm test:e2e
+          pnpm -r test:e2e
       - name: Run unused
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: pnpm unused
+        run: pnpm -r unused
 
       - name: Update dependencies (major)
         run: pnpm ncu:major
