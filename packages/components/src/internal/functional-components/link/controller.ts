@@ -1,5 +1,6 @@
 import type { UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
 import { onLocationChange } from '../../../components/link/ariaCurrentService';
+import { setEventTarget } from '../../../schema';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -24,18 +25,55 @@ import {
 	variantProp,
 } from '../../props';
 import { BaseController } from '../base-controller';
-import { BaseWebComponent } from '../base-web-component';
 import type { ResolvedInputProps, StateAccess } from '../generic-types';
 import { TooltipController } from '../tooltip/controller';
 import type { LinkApi } from './api';
 import { linkPropsConfig } from './api';
 
+/**
+ * Creates a closure-based StateAccess for LinkApi that stores `ariaCurrent`
+ * without requiring a Stencil @State field. Suitable for controllers that are
+ * composed inside array-rendering web components.
+ *
+ * @param forceRender - Optional callback invoked whenever `ariaCurrent` changes.
+ *   Pass `() => this._tick++` (where `_tick` is a `@State` field) to trigger
+ *   a Stencil re-render when the active location changes.
+ */
+export function createLinkStateAccess(forceRender?: () => void): StateAccess<LinkApi> {
+	const store: Record<string, unknown> = { ariaCurrent: '' };
+	return {
+		setState: (key, value) => {
+			store[key as string] = value;
+			forceRender?.();
+		},
+		getState: (key) => store[key as string] as never,
+	};
+}
+
 export class LinkController extends BaseController<LinkApi> {
-	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
+	private readonly tooltipCtrl = new TooltipController({ setState: () => {}, getState: () => undefined as never });
 	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	public readonly setTooltipRef = this.tooltipCtrl.setTooltipElementRef;
+
+	/**
+	 * Handles an anchor click: hides the tooltip, prevents default when disabled,
+	 * and calls `on.onClick` when defined. Does not dispatch a KolEvent — that
+	 * responsibility belongs to the enclosing web component if needed.
+	 */
+	public readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
+		this.hideTooltip();
+		if (this.getRenderProp('disabled')) {
+			event.preventDefault();
+			return;
+		}
+		const on = this.getRenderProp('on');
+		if (typeof on.onClick === 'function') {
+			setEventTarget(event, this.anchorRef as HTMLElement | undefined);
+			on.onClick(event, this.getRenderProp('href'));
+		}
+	};
 
 	public constructor(stateAccess: StateAccess<LinkApi>) {
 		super(stateAccess, linkPropsConfig);
@@ -235,10 +273,52 @@ export class LinkController extends BaseController<LinkApi> {
 		this.tooltipCtrl.destroy();
 	}
 
+	/**
+	 * Returns the current computed `aria-current` value for this link.
+	 * Updated automatically by the `onLocationChange` subscription set up in `componentWillLoad`.
+	 */
+	public getAriaCurrent(): string {
+		return this.getState('ariaCurrent') as string;
+	}
+
 	private resolveTooltipLabel(): string {
 		const label = this.getRenderProp('label');
 		const href = this.getRenderProp('href');
 		if (typeof label === 'string' && label.length > 0) return label;
 		return href;
 	}
+}
+
+/**
+ * Initialises a `LinkController` from the external underscored `LinkProps` format.
+ *
+ * Calling this is equivalent to calling `ctrl.componentWillLoad()` with all available props
+ * mapped from the underscore-prefixed external API to the camelCase internal controller API.
+ * This includes subscribing to `onLocationChange` so `ariaCurrent` updates automatically.
+ *
+ * @param ctrl  - An already-constructed `LinkController`.
+ * @param props - A partial `LinkProps` object (all `_`-prefixed). `_href` is required.
+ */
+export function initLinkControllerFromProps(ctrl: LinkController, props: { _href: string } & Partial<Record<string, unknown>>): void {
+	ctrl.componentWillLoad({
+		href: props['_href'] as string,
+		label: props['_label'] as string | false | undefined,
+		icons: props['_icons'],
+		target: props['_target'] as string | undefined,
+		download: props['_download'] as string | undefined,
+		on: props['_on'] as Record<string, unknown> | undefined,
+		inline: props['_inline'] as boolean | undefined,
+		disabled: props['_disabled'] as boolean | undefined,
+		hideLabel: props['_hideLabel'] as boolean | undefined,
+		role: props['_role'] as string | undefined,
+		tabIndex: props['_tabIndex'] as number | undefined,
+		accessKey: props['_accessKey'] as string | undefined,
+		shortKey: props['_shortKey'] as string | undefined,
+		tooltipAlign: props['_tooltipAlign'] as string | undefined,
+		ariaControls: props['_ariaControls'] as string | undefined,
+		ariaCurrentValue: props['_ariaCurrentValue'] as string | undefined,
+		ariaDescription: props['_ariaDescription'] as string | undefined,
+		ariaExpanded: props['_ariaExpanded'] as boolean | undefined,
+		ariaOwns: props['_ariaOwns'] as string | undefined,
+	});
 }

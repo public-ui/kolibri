@@ -7,7 +7,8 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkTag } from '../../core/component-names';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
 
 /**
  * The **SkipNav** component renders a hidden navigation that allows keyboard and assistive technology users to skip repetitive navigation sections and jump directly to the main content. It only becomes visible when reached via the Tab key.
@@ -21,16 +22,49 @@ import { KolLinkTag } from '../../core/component-names';
 })
 export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSkipNavElement;
-	private firstLinkRef?: HTMLKolLinkElement;
+
+	@State() private _tick = 0;
+	private readonly forceRender = () => this._tick++;
+	private linkCtrls: LinkController[] = [];
 
 	public render(): JSX.Element {
 		return (
 			<nav class="kol-skip-nav" aria-label={this.state._label}>
 				<ul class="kol-skip-nav__list">
 					{this.state._links.map((link: LinkProps, index: number) => {
+						const ctrl = this.linkCtrls[index];
 						return (
 							<li class="kol-skip-nav__list-item" key={index}>
-								<KolLinkTag {...link} ref={index === 0 ? (el) => (this.firstLinkRef = el) : undefined}></KolLinkTag>
+								{ctrl && (
+									<LinkFC
+										accessKey={ctrl.getRenderProp('accessKey')}
+										ariaControls={ctrl.getRenderProp('ariaControls')}
+										ariaCurrent={ctrl.getAriaCurrent()}
+										ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
+										ariaDescription={ctrl.getRenderProp('ariaDescription')}
+										ariaExpanded={ctrl.getRenderProp('ariaExpanded')}
+										ariaOwns={ctrl.getRenderProp('ariaOwns')}
+										customClass={ctrl.getRenderProp('customClass')}
+										disabled={ctrl.getRenderProp('disabled')}
+										download={ctrl.getRenderProp('download')}
+										hideLabel={ctrl.getRenderProp('hideLabel')}
+										href={ctrl.getRenderProp('href')}
+										icons={ctrl.getRenderProp('icons')}
+										inline={ctrl.getRenderProp('inline')}
+										label={ctrl.getRenderProp('label')}
+										on={ctrl.getRenderProp('on')}
+										role={ctrl.getRenderProp('role')}
+										shortKey={ctrl.getRenderProp('shortKey')}
+										tabIndex={ctrl.getRenderProp('tabIndex')}
+										target={ctrl.getRenderProp('target')}
+										tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
+										variant={ctrl.getRenderProp('variant')}
+										onAnchorClick={ctrl.handleAnchorClick}
+										tooltipId={ctrl.getTooltipId()}
+										refTooltipFloating={ctrl.setTooltipRef}
+										refAnchor={(el) => ctrl.setAnchorRef(el)}
+									/>
+								)}
 							</li>
 						);
 					})}
@@ -44,7 +78,8 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	 */
 	@Method()
 	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.firstLinkRef!));
+		const anchor = this.linkCtrls[0]?.getAnchorRef();
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
 	}
 
 	/**
@@ -76,6 +111,16 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolSkipNav', this, value);
+		this.syncLinkControllers();
+	}
+
+	private syncLinkControllers(): void {
+		this.linkCtrls.forEach((c) => c.destroy());
+		this.linkCtrls = this.state._links.map((link) => {
+			const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+			initLinkControllerFromProps(ctrl, link as { _href: string } & Partial<Record<string, unknown>>);
+			return ctrl;
+		});
 	}
 
 	public componentWillLoad(): void {
@@ -85,5 +130,7 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 
 	public disconnectedCallback(): void {
 		removeNavLabel(this.state._label);
+		this.linkCtrls.forEach((c) => c.destroy());
+		this.linkCtrls = [];
 	}
 }
