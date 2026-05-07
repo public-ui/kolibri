@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkTag } from '../../core/component-names';
 import type { FocusableElement, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
@@ -27,7 +27,7 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 
 	@State() private currentIndex: number = 0;
 
-	private indexToElement = new Map<number, HTMLKolLinkWcElement | HTMLKolButtonWcElement>();
+	private indexToElement = new Map<number, HTMLKolLinkElement | HTMLKolButtonWcElement>();
 
 	/**
 	 * Sets focus on the currently active toolbar item.
@@ -65,11 +65,11 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 			_tabIndex: tabIndex,
 			_variant: 'normal',
 		};
-		const catchRef = (el?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
+		const catchRef = (el?: HTMLKolLinkElement | HTMLKolButtonWcElement) => {
 			if (el) this.indexToElement.set(index, el);
 		};
 		return element.type === 'link' ? (
-			<KolLinkWcTag {...props} {...element} ref={catchRef}></KolLinkWcTag>
+			<KolLinkTag {...props} {...element} ref={catchRef}></KolLinkTag>
 		) : (
 			<KolButtonWcTag {...props} {...element} ref={catchRef}></KolButtonWcTag>
 		);
@@ -120,7 +120,7 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	 *
 	 * @returns An array of HTMLElements representing the toolbar items.
 	 */
-	private getCurrentToolbarItem(index?: number): HTMLKolLinkWcElement | HTMLKolButtonWcElement | undefined {
+	private getCurrentToolbarItem(index?: number): HTMLKolLinkElement | HTMLKolButtonWcElement | undefined {
 		return typeof index === 'number' ? this.indexToElement.get(index) : undefined;
 	}
 

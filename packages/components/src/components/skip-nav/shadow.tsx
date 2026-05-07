@@ -6,7 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
@@ -21,7 +21,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 })
 export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolSkipNavElement;
-	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLKolLinkElement>();
 
 	public render(): JSX.Element {
 		return (
@@ -30,7 +30,7 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
 							<li class="kol-skip-nav__list-item" key={index}>
-								<KolLinkWcTag {...link} ref={index === 0 ? this.ctaRef : undefined}></KolLinkWcTag>
+								<KolLinkTag {...link} ref={index === 0 ? this.ctaRef : undefined}></KolLinkTag>
 							</li>
 						);
 					})}
