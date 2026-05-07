@@ -54,15 +54,15 @@
 		"@types/normalize-package-data": "2.4.4",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
-		"react": "19.2.5",
-		"react-dom": "19.2.5",
+		"react": "19.2.6",
+		"react-dom": "19.2.6",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": ">=19.2.5",
-		"react-dom": ">=19.2.5"
+		"react": ">=19.2.6",
+		"react-dom": ">=19.2.6"
 	},
 	"sideEffects": false,
 	"type": "module",
