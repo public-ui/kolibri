@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 
 import { KolButton, KolIcon, KolInputText } from '@public-ui/react-v19';
 
@@ -7,25 +7,10 @@ import { fetchVariantData } from '../../shares/fetchVariantData';
 import { SampleDescription } from '../SampleDescription';
 
 export const IconFont: FC = () => {
-	const [iconVariants, setIconVariants] = useState<Array<string>>([]);
-	const [iconVariantsButton, setIconVariantsButton] = useState<Array<string>>([]);
-	const [iconVariantsInput, setIconVariantsInput] = useState<Array<string>>([]);
-
-	useEffect(() => {
-		const theme = document.body.dataset.theme;
-		if (!theme) {
-			return;
-		}
-		fetchVariantData(theme, 'iconVariants').then((response: string[]) => {
-			setIconVariants(response);
-		});
-		fetchVariantData(theme, 'iconVariantsButton').then((response: string[]) => {
-			setIconVariantsButton(response);
-		});
-		fetchVariantData(theme, 'iconVariantsInput').then((response: string[]) => {
-			setIconVariantsInput(response);
-		});
-	}, []);
+	const theme = document.body.dataset.theme;
+	const iconVariants = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariants') : []), [theme]);
+	const iconVariantsButton = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsButton') : []), [theme]);
+	const iconVariantsInput = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsInput') : []), [theme]);
 
 	return (
 		<>

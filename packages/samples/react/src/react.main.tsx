@@ -8,6 +8,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { BWSt, DEFAULT, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
 
 import { App } from './App';
+import { sampleAppDataService } from './shares/sampleAppDataService';
 
 import type { Generic } from 'adopted-style-sheets';
 
@@ -44,6 +45,8 @@ const getThemes = async () => {
 };
 
 void (async () => {
+	const sampleAppDataInitialization = sampleAppDataService.initialize();
+
 	try {
 		await bootstrap(
 			await getThemes(),
@@ -128,6 +131,8 @@ void (async () => {
 	// 		append: true,
 	// 	},
 	// );
+
+	await sampleAppDataInitialization;
 
 	const htmlDivElement = document.querySelector('div#app');
 	if (htmlDivElement instanceof HTMLDivElement) {
