@@ -1,6 +1,9 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop } from '@stencil/core';
-import { KolLinkTag } from '../../core/component-names';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { LinkApi } from '../../internal/functional-components/link/api';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { LinkController } from '../../internal/functional-components/link/controller';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -9,17 +12,18 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DownloadPropType,
-	FocusableElement,
 	HrefPropType,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
-	LinkButtonProps,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { setEventTarget } from '../../schema';
+import { setClick } from '../../utils/element-click';
+import { setFocus } from '../../utils/element-focus';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **LinkButton** component is semantically a link but has the appearance of a button. All relevant properties of the Link component are adopted and extended with the design-defining properties of a button.
@@ -33,49 +37,203 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolLinkButton implements LinkButtonProps, FocusableElement {
-	@Element() protected readonly host?: HTMLKolLinkButtonElement;
-	protected readonly ctaRef = createCtaRef<HTMLKolLinkElement>();
+export class KolLinkButton extends BaseWebComponent<LinkApi> {
+	@Element() private readonly host?: HTMLKolLinkButtonElement;
+
+	private readonly ctrl = new LinkController(this.stateAccess);
+
+	@State() private ariaCurrent: string = '';
 
 	/**
-	 * Sets focus on the internal element.
+	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
-	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(): Promise<void> {
+		const anchor = this.ctrl.getAnchorRef();
+		if (anchor) return setFocus(anchor);
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		const anchor = this.ctrl.getAnchorRef();
+		if (anchor) return setClick(anchor);
+	}
+
+	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
+		this.ctrl.hideTooltip();
+
+		if (this.ctrl.getRenderProp('disabled')) {
+			event.preventDefault();
+			return;
+		}
+
+		const href = this.ctrl.getRenderProp('href');
+		const on = this.ctrl.getRenderProp('on');
+
+		if (typeof on.onClick === 'function') {
+			setEventTarget(event, this.ctrl.getAnchorRef() as HTMLElement | undefined);
+			on.onClick(event, href);
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, href);
+		}
+	};
 
 	public render(): JSX.Element {
 		return (
-			<KolLinkTag
-				ref={this.ctaRef}
-				_accessKey={this._accessKey}
-				_ariaCurrentValue={this._ariaCurrentValue}
-				_ariaControls={this._ariaControls}
-				_ariaDescription={this._ariaDescription}
-				_customClass={this._customClass}
-				_disabled={this._disabled}
-				_download={this._download}
-				_hideLabel={this._hideLabel}
-				_href={this._href}
-				_icons={this._icons}
-				_label={this._label}
-				_on={this._on}
-				_shortKey={this._shortKey}
-				_target={this._target}
-				_tooltipAlign={this._tooltipAlign}
-				_variant={this._variant}
-			>
-				<slot name="expert" slot="expert"></slot>
-			</KolLinkTag>
+			<Host>
+				<LinkFC
+					accessKey={this.ctrl.getRenderProp('accessKey')}
+					ariaControls={this.ctrl.getRenderProp('ariaControls')}
+					ariaCurrent={this.ariaCurrent}
+					ariaCurrentValue={this.ctrl.getRenderProp('ariaCurrentValue')}
+					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
+					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
+					ariaOwns={this.ctrl.getRenderProp('ariaOwns')}
+					customClass={this.ctrl.getRenderProp('customClass')}
+					disabled={this.ctrl.getRenderProp('disabled')}
+					download={this.ctrl.getRenderProp('download')}
+					hideLabel={this.ctrl.getRenderProp('hideLabel')}
+					href={this.ctrl.getRenderProp('href')}
+					icons={this.ctrl.getRenderProp('icons')}
+					inline={this.ctrl.getRenderProp('inline')}
+					label={this.ctrl.getRenderProp('label')}
+					on={this.ctrl.getRenderProp('on')}
+					role={this.ctrl.getRenderProp('role')}
+					shortKey={this.ctrl.getRenderProp('shortKey')}
+					tabIndex={this.ctrl.getRenderProp('tabIndex')}
+					target={this.ctrl.getRenderProp('target')}
+					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
+					variant={this.ctrl.getRenderProp('variant')}
+					onAnchorClick={this.handleAnchorClick}
+					tooltipId={this.ctrl.getTooltipId()}
+					refTooltipFloating={this.ctrl.setTooltipRef}
+					refAnchor={(el) => this.ctrl.setAnchorRef(el)}
+				>
+					<slot name="expert" slot="expert"></slot>
+				</LinkFC>
+			</Host>
 		);
 	}
+
+	public componentWillLoad(): void {
+		this.ctrl.componentWillLoad({
+			href: this._href,
+			accessKey: this._accessKey,
+			ariaControls: this._ariaControls,
+			ariaCurrentValue: this._ariaCurrentValue,
+			ariaDescription: this._ariaDescription,
+			customClass: this._customClass,
+			disabled: this._disabled,
+			download: this._download,
+			hideLabel: this._hideLabel,
+			icons: this._icons,
+			label: this._label,
+			on: this._on,
+			role: this._role,
+			shortKey: this._shortKey,
+			target: this._target,
+			tooltipAlign: this._tooltipAlign,
+			variant: this._variant,
+		});
+	}
+
+	public disconnectedCallback(): void {
+		this.ctrl.destroy();
+	}
+
+	// ── Watchers ──────────────────────────────────────────────────────────
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		this.ctrl.watchAccessKey(value);
+	}
+
+	@Watch('_ariaControls')
+	public watchAriaControls(value?: string): void {
+		this.ctrl.watchAriaControls(value);
+	}
+
+	@Watch('_ariaCurrentValue')
+	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		this.ctrl.watchAriaCurrentValue(value);
+	}
+
+	@Watch('_ariaDescription')
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
+		this.ctrl.watchAriaDescription(value);
+	}
+
+	@Watch('_customClass')
+	public watchCustomClass(value?: CustomClassPropType): void {
+		this.ctrl.watchCustomClass(value);
+	}
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.ctrl.watchDisabled(value);
+	}
+
+	@Watch('_download')
+	public watchDownload(value?: DownloadPropType): void {
+		this.ctrl.watchDownload(value);
+	}
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.ctrl.watchHideLabel(value);
+	}
+
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		this.ctrl.watchHref(value);
+	}
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsPropType): void {
+		this.ctrl.watchIcons(value);
+	}
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.ctrl.watchLabel(value);
+	}
+
+	@Watch('_on')
+	public watchOn(value?: LinkOnCallbacksPropType): void {
+		this.ctrl.watchOn(value);
+	}
+
+	@Watch('_role')
+	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
+		this.ctrl.watchRole(value);
+	}
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.ctrl.watchShortKey(value);
+	}
+
+	@Watch('_target')
+	public watchTarget(value?: LinkTargetPropType): void {
+		this.ctrl.watchTarget(value);
+	}
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.ctrl.watchTooltipAlign(value);
+	}
+
+	@Watch('_variant')
+	public watchVariant(value?: ButtonVariantPropType): void {
+		this.ctrl.watchVariant(value);
+	}
+
+	// ── Props ──────────────────────────────────────────────────────────────
 
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
