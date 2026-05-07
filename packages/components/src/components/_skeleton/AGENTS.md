@@ -41,5 +41,6 @@ for how to distinguish between normalized props (`setRenderProp()`) and derived 
 - **Event handler convention**: [ARC42 §4 – Event Handler Policy](./ARC42.md#event-handler-policy)
 - **Controller constructor pattern**: [ARC42 §4 – Constructor Pattern](./ARC42.md#constructor-pattern)
 - **State management**: [ARC42 § Controller State Management](./ARC42.md#controller-state-management)
+- **FC-First Composition rule**: [ARC42 §9 #14](./ARC42.md#9-design-decisions) — `render()` must only use FCs, never other KoliBri WC tags
 - **Design decisions**: [ARC42 §9](./ARC42.md#9-design-decisions)
 - **Performance analysis**: [PERFORMANCE_ANALYSIS.md](./PERFORMANCE_ANALYSIS.md)

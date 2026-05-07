@@ -7,6 +7,7 @@
 - Auflistungen werden immer alphabetisch sortiert
 - Die [ARC42.md](../../packages/components/src/components/_skeleton/ARC42.md) ist die führende Architektur-Spezifikation — lies sie vollständig, bevor du eine neue Komponente erstellst
 - Alle Web Components verwenden `shadow: true` — Komponenten ohne Shadow DOM werden als Functional Components implementiert
+- **`render()`-Methoden dürfen ausschließlich Functional Components verwenden** — niemals KoliBri Web Component Tags (z. B. `<kol-link>`, `<kol-button>`). Benötigte Logik einer anderen Komponente gehört in den Controller der eigenen Komponente
 - Props leben in `src/internal/props/` mit eigenem `PropDefinition` pro Prop
 - Kein toter Code, keine Barrel-Files, keine `types.ts`
 
@@ -190,6 +191,7 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 
 - Immer `shadow: true` und `<Host>` ohne Klassen-Attribut
 - `@Watch` nur auf unterstrichene Props
+- **`render()` nutzt ausschließlich Functional Components** — keine KoliBri WC Tags. Soll Verhalten einer anderen Komponente genutzt werden (z. B. Link-Logik), deren Controller direkt einbinden und im eigenen Controller nachbauen
 - Details: [ARC42 §4 — Web Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#web-component-layer)
 
 Wenn ein Controller garantiert kein `@State` benötigt, verwende den Sentinel:
