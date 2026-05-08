@@ -8,7 +8,7 @@ const getDefaultThemes = (): Theme[] => [UNSTYLED_THEME, ...PUBLIC_THEMES];
 
 export const getThemeVariantDataKey = (theme: string): string => `theme-variant-data:${theme}`;
 
-const getThemeVariantDataUrl = (theme: string): string => `/assets/variants/inject-variants_${theme}.json`;
+const getThemeVariantDataUrl = (theme: string): string => `assets/variants/inject-variants_${theme}.json`;
 
 const getSampleAppDataRequests = (themes: Theme[] = getDefaultThemes()): Map<string, string> => {
 	return new Map<string, string>(themes.map(({ key }) => [getThemeVariantDataKey(key), getThemeVariantDataUrl(key)]));
