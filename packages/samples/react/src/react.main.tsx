@@ -3,9 +3,10 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { bootstrap, KoliBriDevHelper } from '@public-ui/components';
+import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { BWSt, DEFAULT, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
+import { setCustomThemes } from './shares/store';
 
 import { App } from './App';
 import { sampleAppDataService } from './shares/sampleAppDataService';
@@ -117,6 +118,12 @@ void (async () => {
 		console.warn('Theme registration failed:', error);
 	}
 
+	/* In visual regression testing mode, derive the theme key from the actually registered
+	   default theme name so it matches the inject-variants JSON file exactly. */
+	const defaultThemeName = process.env.THEME_MODULE ? getDefaultThemeName() : null;
+	const customThemes = defaultThemeName ? [{ key: defaultThemeName, name: defaultThemeName }] : undefined;
+	setCustomThemes(customThemes);
+
 	/**
 	 * You should patch the theme after the components and your default theme are registered.
 	 **
@@ -140,7 +147,7 @@ void (async () => {
 		root.render(
 			<StrictMode>
 				<Router>
-					<App />
+					<App customThemes={customThemes} />
 				</Router>
 			</StrictMode>,
 		);

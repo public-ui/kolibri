@@ -1,3 +1,4 @@
+export { getDefaultThemeName } from 'adopted-style-sheets';
 export * from './components.d';
 export { setCurrentLocation } from './components/link/ariaCurrentService';
 export { ToasterService } from './components/toaster/toaster';

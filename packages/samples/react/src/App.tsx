@@ -17,6 +17,7 @@ import { PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import type { Option } from '@public-ui/components';
+
 import type { Theme } from './shares/theme';
 
 setStorage(localStorage);

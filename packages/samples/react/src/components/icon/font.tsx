@@ -1,13 +1,16 @@
 import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { KolButton, KolIcon, KolInputText } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { fetchVariantData } from '../../shares/fetchVariantData';
+import { getCustomThemes } from '../../shares/store';
 import { SampleDescription } from '../SampleDescription';
 
 export const IconFont: FC = () => {
-	const theme = document.body.dataset.theme;
+	const [searchParams] = useSearchParams();
+	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
 	const iconVariants = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariants') : []), [theme]);
 	const iconVariantsButton = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsButton') : []), [theme]);
 	const iconVariantsInput = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsInput') : []), [theme]);

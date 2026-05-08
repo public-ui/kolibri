@@ -483,8 +483,8 @@ importers:
         specifier: 8.58.2
         version: 8.58.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       autoprefixer:
         specifier: 10.5.0
         version: 10.5.0(postcss@8.5.14)
@@ -637,8 +637,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       cpy-cli:
         specifier: 6.0.0
         version: 6.0.0
@@ -697,8 +697,8 @@ importers:
         specifier: workspace:*
         version: link:../../themes
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -821,8 +821,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(vite@7.3.3(@types/node@25.6.2)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.32.0)(sass-embedded@1.99.0)(sass@1.99.0)(terser@5.47.1)(tsx@4.21.0)(yaml@2.8.3))
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       papaparse:
         specifier: 5.5.3
         version: 5.5.3
@@ -6725,8 +6725,8 @@ packages:
     resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
     engines: {node: '>=8.9'}
 
-  adopted-style-sheets@1.1.9-rc.21:
-    resolution: {integrity: sha512-hPLoCi6ZkVtg0BnP3LMYvmMRU0d2SvMJDemWoX8olbDtbIeqCbXcXm2/kqYrukOyjHYXooRKdRr65MzWqUeNUA==}
+  adopted-style-sheets@1.1.9-rc.22:
+    resolution: {integrity: sha512-dWR5cKLub6mqvBe5r0TSNVGGjuETHHmqDX/cpkTf5JBOU7TDearwzu8YYgY4I6axeovboKLxAWkQiiHR6Dv0Cg==}
 
   agent-base@7.1.4:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
@@ -20096,7 +20096,7 @@ snapshots:
       loader-utils: 2.0.4
       regex-parser: 2.3.1
 
-  adopted-style-sheets@1.1.9-rc.21:
+  adopted-style-sheets@1.1.9-rc.22:
     dependencies:
       loglevel: 1.9.2
 

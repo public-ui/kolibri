@@ -1,12 +1,16 @@
-import type { FC } from 'react';
 import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { KolLink } from '@public-ui/react-v19';
 import { fetchVariantData } from '../../shares/fetchVariantData';
+import { getCustomThemes } from '../../shares/store';
 import { SampleDescription } from '../SampleDescription';
 
+import type { FC } from 'react';
+
 export const LinkVariant: FC = () => {
-	const theme = document.body.dataset.theme;
+	const [searchParams] = useSearchParams();
+	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
 	const data = useMemo(() => (theme ? fetchVariantData(theme, 'linkVariants') : []), [theme]);
 
 	return (
