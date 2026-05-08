@@ -2,6 +2,7 @@ name: CI-Pipeline
 
 on:
   pull_request:
+    types: [opened, ready_for_review, reopened, synchronize]
     paths-ignore:
       - '*.md'
       - 'docs/**'
@@ -74,6 +75,7 @@ jobs:
           name: report-e2e
 
   visual-tests:
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
     continue-on-error: true
     strategy:
       matrix:
