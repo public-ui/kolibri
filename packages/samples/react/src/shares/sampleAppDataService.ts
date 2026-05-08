@@ -1,16 +1,14 @@
+import { PUBLIC_THEMES, UNSTYLED_THEME } from './theme';
+
 type JsonData = Record<string, unknown>;
 
 export const getThemeVariantDataKey = (theme: string): string => `theme-variant-data:${theme}`;
 
-const sampleAppDataRequests = new Map<string, string>([
-	[getThemeVariantDataKey('bwst'), '/assets/variants/inject-variants_bwst.json'],
-	[getThemeVariantDataKey('default'), '/assets/variants/inject-variants_default.json'],
-	[getThemeVariantDataKey('desy-v11'), '/assets/variants/inject-variants_desy-v11.json'],
-	[getThemeVariantDataKey('ecl-ec'), '/assets/variants/inject-variants_ecl-ec.json'],
-	[getThemeVariantDataKey('ecl-eu'), '/assets/variants/inject-variants_ecl-eu.json'],
-	[getThemeVariantDataKey('kern-v2'), '/assets/variants/inject-variants_kern-v2.json'],
-	[getThemeVariantDataKey('unstyled'), '/assets/variants/inject-variants_unstyled.json'],
-]);
+const getThemeVariantDataUrl = (theme: string): string => `/assets/variants/inject-variants_${theme}.json`;
+
+const sampleAppDataRequests = new Map<string, string>(
+	[UNSTYLED_THEME, ...PUBLIC_THEMES].map(({ key }) => [getThemeVariantDataKey(key), getThemeVariantDataUrl(key)]),
+);
 
 const values = new Map<string, JsonData>();
 
@@ -24,7 +22,7 @@ const fetchJsonData = async (key: string, url: string): Promise<void> => {
 			return;
 		}
 		if (!response.ok) {
-			console.info('Error fetching sample app data: HTTP ' + response.status);
+			console.warn('Error fetching sample app data: HTTP ' + response.status);
 			return;
 		}
 		const json = (await response.json()) as unknown;
@@ -32,7 +30,7 @@ const fetchJsonData = async (key: string, url: string): Promise<void> => {
 			values.set(key, json as JsonData);
 		}
 	} catch (error) {
-		console.info('Sample app data file could not be loaded or parsed', error);
+		console.warn('Sample app data file could not be loaded or parsed', error);
 	}
 };
 
