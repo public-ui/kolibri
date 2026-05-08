@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v19",
-	"version": "4.1.4",
+	"version": "4.1.5-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -46,7 +46,6 @@
 		"angular"
 	],
 	"scripts": {
-		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build:cjs": "tsc -m commonjs --outDir cjs",
 		"build:clean": "rimraf cjs esm types umd",
 		"build:esm": "tsc -m esnext --outDir esm",
@@ -77,7 +76,7 @@
 		"zone.js": "0.15.1"
 	},
 	"peerDependencies": {
-		"@angular/core": "^19.2.21",
+		"@angular/core": "19.x",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [
