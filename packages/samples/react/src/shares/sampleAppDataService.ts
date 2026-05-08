@@ -1,18 +1,22 @@
 import { PUBLIC_THEMES, UNSTYLED_THEME } from './theme';
 
+import type { Theme } from './theme';
+
 type JsonData = Record<string, unknown>;
+
+const getDefaultThemes = (): Theme[] => [UNSTYLED_THEME, ...PUBLIC_THEMES];
 
 export const getThemeVariantDataKey = (theme: string): string => `theme-variant-data:${theme}`;
 
 const getThemeVariantDataUrl = (theme: string): string => `/assets/variants/inject-variants_${theme}.json`;
 
-const sampleAppDataRequests = new Map<string, string>(
-	[UNSTYLED_THEME, ...PUBLIC_THEMES].map(({ key }) => [getThemeVariantDataKey(key), getThemeVariantDataUrl(key)]),
-);
+const getSampleAppDataRequests = (themes: Theme[] = getDefaultThemes()): Map<string, string> => {
+	return new Map<string, string>(themes.map(({ key }) => [getThemeVariantDataKey(key), getThemeVariantDataUrl(key)]));
+};
 
 const values = new Map<string, JsonData>();
-
-let initializePromise: Promise<void> | undefined;
+const loadPromises = new Map<string, Promise<void>>();
+const loadedKeys = new Set<string>();
 
 const fetchJsonData = async (key: string, url: string): Promise<void> => {
 	try {
@@ -34,10 +38,21 @@ const fetchJsonData = async (key: string, url: string): Promise<void> => {
 	}
 };
 
+const getLoadPromise = (key: string, url: string): Promise<void> => {
+	let loadPromise = loadPromises.get(key);
+	if (!loadPromise) {
+		loadPromise = fetchJsonData(key, url).then(() => {
+			loadedKeys.add(key);
+		});
+		loadPromises.set(key, loadPromise);
+	}
+	return loadPromise;
+};
+
 export const sampleAppDataService = {
 	getValue: <T = JsonData>(key: string): T | undefined => values.get(key) as T | undefined,
-	initialize: async (): Promise<void> => {
-		initializePromise ??= Promise.all(Array.from(sampleAppDataRequests, ([key, url]) => fetchJsonData(key, url))).then(() => undefined);
-		return initializePromise;
+	initialize: async (themes?: Theme[]): Promise<void> => {
+		await Promise.all(Array.from(getSampleAppDataRequests(themes), ([key, url]) => getLoadPromise(key, url)));
 	},
+	isInitialized: (themes?: Theme[]): boolean => Array.from(getSampleAppDataRequests(themes).keys()).every((key) => loadedKeys.has(key)),
 };
