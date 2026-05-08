@@ -31,10 +31,10 @@
 
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
-| critical |   5 |   5 |   5 |   3 |
-| high     |  32 |  34 |  49 |  29 |
-| moderate |  26 |  27 |  46 |   8 |
-| low      |   5 |   5 |  10 |   1 |
+| critical |   4 |   5 |   5 |   3 |
+| high     |  28 |  35 |  50 |  29 |
+| moderate |  24 |  27 |  49 |   8 |
+| low      |   4 |   5 |  10 |   1 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -44,7 +44,7 @@
 | -------------------- | -------- | ------------------- | ----------------- | ---------------------------------------------------------------------------------- |
 | basic-ftp            | critical | CVE-2026-27699      | v4, v3, v2        | Basic FTP has Path Traversal Vulnerability in its downloadToDir() method           |
 | fast-xml-parser      | critical | CVE-2026-25896      | v4, v3, v2        | fast-xml-parser has an entity encoding bypass via regex injection in DOCTYPE ent   |
-| handlebars           | critical | CVE-2026-33937      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion                      |
+| handlebars           | critical | CVE-2026-33937      | v3, v2, v1        | Handlebars.js has JavaScript Injection via AST Type Confusion                      |
 | locutus              | critical | CVE-2026-25521      | v4, v3, v2, v1    | locutus is vulnerable to Prototype Pollution                                       |
 | locutus              | critical | CVE-2026-32304      | v4, v3, v2, v1    | Locutus vulnerable to RCE via unsanitized input in create_function()               |
 | @angular/common      | high     | CVE-2025-66035      | v1                | Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angula   |
@@ -62,6 +62,7 @@
 | axios                | high     | CVE-2026-42035      | v4, v3, v2        | Axios: Header Injection via Prototype Pollution                                    |
 | basic-ftp            | high     | GHSA-6v7q-wjvx-w8wg | v4, v3, v2        | basic-ftp: Incomplete CRLF Injection Protection Allows Arbitrary FTP Command Exe   |
 | basic-ftp            | high     | CVE-2026-41324      | v4, v3, v2        | basic-ftp vulnerable to denial of service via unbounded memory consumption in Cl   |
+| basic-ftp            | high     | CVE-2026-44240      | v4, v3, v2        | basic-ftp allows a malicious FTP server to cause client-side denial of service v   |
 | braces               | high     | CVE-2024-4068       | v3, v2, v1        | Uncontrolled resource consumption in braces                                        |
 | express-rate-limit   | high     | CVE-2026-30827      | v2                | express-rate-limit: IPv4-mapped IPv6 addresses bypass per-client rate limiting o   |
 | fast-xml-parser      | high     | CVE-2026-25128      | v4, v3, v2        | fast-xml-parser has RangeError DoS Numeric Entities Bug                            |
@@ -69,10 +70,10 @@
 | fast-xml-parser      | high     | CVE-2026-33036      | v4, v3, v2        | fast-xml-parser affected by numeric entity expansion bypassing all entity expans   |
 | flatted              | high     | CVE-2026-32141      | v4, v3, v2        | flatted vulnerable to unbounded recursion DoS in parse() revive phase              |
 | flatted              | high     | CVE-2026-33228      | v4, v3, v2        | Prototype Pollution via parse() in NodeJS flatted                                  |
-| handlebars           | high     | CVE-2026-33938      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @part   |
-| handlebars           | high     | CVE-2026-33940      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection via AST Type Confusion when passing an ob   |
-| handlebars           | high     | CVE-2026-33939      | v4, v3, v2, v1    | Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template C   |
-| handlebars           | high     | CVE-2026-33941      | v4, v3, v2, v1    | Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names an   |
+| handlebars           | high     | CVE-2026-33938      | v3, v2, v1        | Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @part   |
+| handlebars           | high     | CVE-2026-33940      | v3, v2, v1        | Handlebars.js has JavaScript Injection via AST Type Confusion when passing an ob   |
+| handlebars           | high     | CVE-2026-33939      | v3, v2, v1        | Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template C   |
+| handlebars           | high     | CVE-2026-33941      | v3, v2, v1        | Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names an   |
 | hono                 | high     | CVE-2026-29045      | v2                | Hono vulnerable to arbitrary file access via serveStatic vulnerability             |
 | immutable            | high     | CVE-2026-29063      | v2                | Immutable is vulnerable to Prototype Pollution                                     |
 | locutus              | high     | CVE-2026-29091      | v4, v3, v2, v1    | locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Co   |
@@ -121,8 +122,8 @@
 | fast-xml-parser      | moderate | CVE-2026-33349      | v4, v3, v2        | Entity Expansion Limits Bypassed When Set to Zero Due to JavaScript Falsy Evalua   |
 | fast-xml-parser      | moderate | CVE-2026-41650      | v4, v3, v2        | fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimi   |
 | file-type            | moderate | CVE-2026-31808      | v4                | file-type affected by infinite loop in ASF parser on malformed input with zero-s   |
-| handlebars           | moderate | CVE-2026-33916      | v4, v3, v2, v1    | Handlebars.js has Prototype Pollution Leading to XSS through Partial Template In   |
-| handlebars           | moderate | GHSA-7rx3-28cr-v5wh | v4, v3, v2, v1    | Handlebars.js has a Prototype Method Access Control Gap via Missing \_\_lookupSett |
+| handlebars           | moderate | CVE-2026-33916      | v3, v2, v1        | Handlebars.js has Prototype Pollution Leading to XSS through Partial Template In   |
+| handlebars           | moderate | GHSA-7rx3-28cr-v5wh | v3, v2, v1        | Handlebars.js has a Prototype Method Access Control Gap via Missing \_\_lookupSett |
 | hono                 | moderate | CVE-2026-29086      | v2                | Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in   |
 | hono                 | moderate | CVE-2026-29085      | v2                | Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()             |
 | hono                 | moderate | GHSA-v8w9-8mx6-g223 | v2                | Hono vulnerable to Prototype Pollution possible through **proto** key allowed in   |
@@ -132,6 +133,9 @@
 | hono                 | moderate | CVE-2026-39407      | v2                | Hono: Middleware bypass via repeated slashes in serveStatic                        |
 | hono                 | moderate | GHSA-458j-xx4x-4375 | v2                | hono Improperly Handles JSX Attribute Names Allows HTML Injection in hono/jsx SS   |
 | hono                 | moderate | CVE-2026-39409      | v2                | Hono has incorrect IP matching in ipRestriction() for IPv4-mapped IPv6 addresses   |
+| hono                 | moderate | CVE-2026-44456      | v2                | Hono: bodyLimit() can be bypassed for chunked / unknown-length requests            |
+| hono                 | moderate | CVE-2026-44455      | v2                | hono/jsx has Unvalidated JSX Tag Names that May Allow HTML Injection               |
+| ip-address           | moderate | CVE-2026-42338      | v2                | ip-address has XSS in Address6 HTML-emitting methods                               |
 | js-yaml              | moderate | CVE-2025-64718      | v2                | js-yaml has prototype pollution in merge (<<)                                      |
 | locutus              | moderate | CVE-2026-33993      | v4, v3, v2, v1    | Locutus has Prototype Pollution via **proto** Key Injection in unserialize()       |
 | lodash               | moderate | CVE-2026-2950       | v4, v3            | lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and    |
@@ -154,7 +158,7 @@
 | axios                | low      | CVE-2026-42040      | v4, v3, v2        | Axios: Null Byte Injection via Reverse-Encoding in AxiosURLSearchParams            |
 | diff                 | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch          |
 | fast-xml-parser      | low      | CVE-2026-27942      | v4, v3, v2        | fast-xml-parser has stack overflow in XMLBuilder with preserveOrder                |
-| handlebars           | low      | GHSA-442j-39wm-28r2 | v4, v3, v2, v1    | Handlebars.js has a Property Access Validation Bypass in container.lookup          |
+| handlebars           | low      | GHSA-442j-39wm-28r2 | v3, v2, v1        | Handlebars.js has a Property Access Validation Bypass in container.lookup          |
 | hono                 | low      | GHSA-gq3j-xvxp-8hrf | v2                | Hono added timing comparison hardening in basicAuth and bearerAuth                 |
 | qs                   | low      | CVE-2026-2391       | v2                | qs's arrayLimit bypass in comma parsing allows denial of service                   |
 | tmp                  | low      | CVE-2025-54798      | v4                | tmp allows arbitrary temporary file / directory write via symbolic link `dir` pa   |
