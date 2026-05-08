@@ -49,7 +49,7 @@
 		"@eslint/eslintrc": "3.3.5",
 		"@eslint/js": "9.39.4",
 		"@public-ui/components": "workspace:*",
-		"@types/node": "24.12.2",
+		"@types/node": "24.12.3",
 		"@types/semver": "7.7.1",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",

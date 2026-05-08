@@ -58,7 +58,7 @@
 	},
 	"dependencies": {
 		"@grpc/grpc-js": "1.14.3",
-		"@grpc/proto-loader": "0.8.0",
+		"@grpc/proto-loader": "0.8.1",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "14.0.3",
 		"fastify": "5.8.5"
