@@ -36,7 +36,7 @@
 		"@unocss/preset-mini": "66.5.10",
 		"@unocss/vite": "66.5.10",
 		"@vitejs/plugin-react-swc": "4.3.0",
-		"adopted-style-sheets": "1.1.9-rc.21",
+		"adopted-style-sheets": "1.1.9-rc.22",
 		"cpy-cli": "6.0.0",
 		"formik": "2.4.9",
 		"npm-run-all2": "8.0.4",
