@@ -4,7 +4,8 @@ import { normalizeString } from './helpers/normalizers';
 
 const ARIA_CURRENT_VALUE_OPTIONS = ['date', 'location', 'page', 'step', 'time', 'true', 'false'] as const;
 
-export type AriaCurrentValueProp = SimpleProp<'ariaCurrentValue', string>;
+export type AriaCurrentValuePropType = (typeof ARIA_CURRENT_VALUE_OPTIONS)[number];
+export type AriaCurrentValueProp = SimpleProp<'ariaCurrentValue', AriaCurrentValuePropType>;
 export const ariaCurrentValueProp = createPropDefinition<AriaCurrentValueProp>(
 	'ariaCurrentValue',
 	'page',
@@ -12,7 +13,7 @@ export const ariaCurrentValueProp = createPropDefinition<AriaCurrentValueProp>(
 		if (value === undefined || value === null || value === '') return 'page';
 		const str = normalizeString(value);
 		if ((ARIA_CURRENT_VALUE_OPTIONS as readonly string[]).includes(str)) {
-			return str;
+			return str as AriaCurrentValuePropType;
 		}
 		throw new Error(`Invalid ariaCurrentValue: ${str}`);
 	},
