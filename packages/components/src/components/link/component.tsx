@@ -12,7 +12,6 @@ import type {
 	LinkTargetPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setEventTarget } from '../../schema';
 import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -48,23 +47,9 @@ export class KolLink extends BaseWebComponent<LinkApi> {
 	}
 
 	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
-		this.ctrl.hideTooltip();
+		const { href, shouldDispatchKolEvent } = this.ctrl.handleAnchorClick(event);
 
-		if (this.ctrl.getRenderProp('disabled')) {
-			event.preventDefault();
-			return;
-		}
-
-		const href = this.ctrl.getRenderProp('href');
-		const on = this.ctrl.getRenderProp('on');
-
-		if (typeof on.onClick === 'function') {
-			setEventTarget(event, this.ctrl.getAnchorRef() as HTMLElement | undefined);
-			on.onClick(event, href);
-		}
-
-		if (this.host) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		if (shouldDispatchKolEvent && this.host) {
 			dispatchDomEvent(this.host, KolEvent.click, href);
 		}
 	};
