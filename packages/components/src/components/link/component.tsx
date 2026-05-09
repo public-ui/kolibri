@@ -64,7 +64,6 @@ export class KolLink extends BaseWebComponent<LinkApi> {
 		}
 
 		if (this.host) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 			dispatchDomEvent(this.host, KolEvent.click, href);
 		}
 	};
