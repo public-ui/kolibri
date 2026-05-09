@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { LinkController } from '../../internal/functional-components/link/controller';
@@ -23,7 +24,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseWebComponent<LinkApi> {
+export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	private readonly ctrl = new LinkController(this.stateAccess);

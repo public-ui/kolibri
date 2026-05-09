@@ -3,6 +3,7 @@ import { getCurrentLocation, onLocationChange } from '../../../components/link/a
 import { setEventTarget } from '../../../schema';
 import type { AlignPropType } from '../../../schema/props/align';
 import type { KoliBriIconsProp } from '../../../schema/types/icons';
+import type { AriaCurrentValuePropType } from '../../props';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -335,7 +336,7 @@ export function initLinkControllerFromProps(ctrl: LinkController, props: { _href
 		shortKey: props['_shortKey'] as string | undefined,
 		tooltipAlign: props['_tooltipAlign'] as AlignPropType | undefined,
 		ariaControls: props['_ariaControls'] as string | undefined,
-		ariaCurrentValue: props['_ariaCurrentValue'] as string | undefined,
+		ariaCurrentValue: props['_ariaCurrentValue'] as AriaCurrentValuePropType | undefined,
 		ariaDescription: props['_ariaDescription'] as string | undefined,
 		ariaExpanded: props['_ariaExpanded'] as boolean | undefined,
 		ariaOwns: props['_ariaOwns'] as string | undefined,
