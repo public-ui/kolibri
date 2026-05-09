@@ -11,6 +11,8 @@ export const setCurrentLocation = (location: string) => {
 	});
 };
 
+export const getCurrentLocation = (): string | undefined => currentLocation;
+
 export const onLocationChange = (callback: LocationChangeCallback, eager = true): UnsubscribeFunction => {
 	if (eager && typeof currentLocation === 'string') {
 		callback(currentLocation);

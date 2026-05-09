@@ -1,5 +1,5 @@
 import type { UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
-import { onLocationChange } from '../../../components/link/ariaCurrentService';
+import { getCurrentLocation, onLocationChange } from '../../../components/link/ariaCurrentService';
 import { setEventTarget } from '../../../schema';
 import type { AlignPropType } from '../../../schema/props/align';
 import type { KoliBriIconsProp } from '../../../schema/types/icons';
@@ -120,15 +120,14 @@ export class LinkController extends BaseController<LinkApi> {
 		});
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			const href = this.getRenderProp('href');
-			const ariaCurrentValue = this.getRenderProp('ariaCurrentValue');
-			this.setState('ariaCurrent', location === href ? ariaCurrentValue : '');
+			this.syncAriaCurrent(location);
 		});
 	}
 
 	public watchHref(value?: string): void {
 		hrefProp.apply(value, (v) => {
 			this.setRenderProp('href', v);
+			this.syncAriaCurrent();
 		});
 	}
 
@@ -147,6 +146,7 @@ export class LinkController extends BaseController<LinkApi> {
 	public watchAriaCurrentValue(value?: string): void {
 		ariaCurrentValueProp.apply(value, (v) => {
 			this.setRenderProp('ariaCurrentValue', v);
+			this.syncAriaCurrent();
 		});
 	}
 
@@ -291,6 +291,12 @@ export class LinkController extends BaseController<LinkApi> {
 	 */
 	public getAriaCurrent(): string {
 		return this.getState('ariaCurrent');
+	}
+
+	private syncAriaCurrent(location = getCurrentLocation()): void {
+		const href = this.getRenderProp('href');
+		const ariaCurrentValue = this.getRenderProp('ariaCurrentValue');
+		this.setState('ariaCurrent', location === href ? ariaCurrentValue : '');
 	}
 
 	private resolveTooltipLabel(): string {
