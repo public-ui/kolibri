@@ -52,6 +52,11 @@ export function createLinkStateAccess(forceRender?: () => void): StateAccess<Lin
 	};
 }
 
+export type LinkClickHandlingResult = {
+	href: string;
+	shouldDispatchKolEvent: boolean;
+};
+
 export class LinkController extends BaseController<LinkApi> {
 	private readonly tooltipCtrl = new TooltipController({ setState: () => {}, getState: () => undefined as never });
 	private anchorRef?: HTMLAnchorElement;
@@ -61,20 +66,25 @@ export class LinkController extends BaseController<LinkApi> {
 
 	/**
 	 * Handles an anchor click: hides the tooltip, prevents default when disabled,
-	 * and calls `on.onClick` when defined. Does not dispatch a KolEvent — that
-	 * responsibility belongs to the enclosing web component if needed.
+	 * calls `on.onClick` when defined, and returns whether the enclosing web
+	 * component should dispatch its `KolEvent.click` event.
 	 */
-	public readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
+	public readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): LinkClickHandlingResult => {
 		this.hideTooltip();
+		const href = this.getRenderProp('href');
+
 		if (this.getRenderProp('disabled')) {
 			event.preventDefault();
-			return;
+			return { href, shouldDispatchKolEvent: false };
 		}
+
 		const on = this.getRenderProp('on');
 		if (typeof on.onClick === 'function') {
 			setEventTarget(event, this.anchorRef as HTMLElement | undefined);
-			on.onClick(event, this.getRenderProp('href'));
+			on.onClick(event, href);
 		}
+
+		return { href, shouldDispatchKolEvent: event.defaultPrevented === false };
 	};
 
 	public constructor(stateAccess: StateAccess<LinkApi>) {
