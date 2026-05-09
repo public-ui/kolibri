@@ -16,10 +16,10 @@
 		"unused": "knip"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.39.4",
-		"eslint": "9.39.4",
+		"@eslint/js": "10.0.1",
+		"eslint": "10.3.0",
 		"globals": "17.6.0",
-		"knip": "5.88.1",
+		"knip": "6.12.1",
 		"mocha": "11.7.5",
 		"postcss-scss": "4.0.9",
 		"prettier": "3.8.3",
