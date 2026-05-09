@@ -296,7 +296,8 @@ export class LinkController extends BaseController<LinkApi> {
 	private syncAriaCurrent(location = getCurrentLocation()): void {
 		const href = this.getRenderProp('href');
 		const ariaCurrentValue = this.getRenderProp('ariaCurrentValue');
-		this.setState('ariaCurrent', location === href ? ariaCurrentValue : '');
+		const isCurrent = typeof location === 'string' && location === href;
+		this.setState('ariaCurrent', isCurrent ? ariaCurrentValue : '');
 	}
 
 	private resolveTooltipLabel(): string {
