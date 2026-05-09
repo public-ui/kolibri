@@ -78,7 +78,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.7.6",
-		"adopted-style-sheets": "1.1.9-rc.21",
+		"adopted-style-sheets": "1.1.9-rc.22",
 		"boxen": "8.0.1",
 		"chalk": "5.6.2",
 		"clsx": "2.1.1",
@@ -138,7 +138,7 @@
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.9-rc.21"
+		"adopted-style-sheets": "1.1.9-rc.22"
 	},
 	"files": [
 		"assets",
