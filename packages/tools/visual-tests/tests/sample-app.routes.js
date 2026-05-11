@@ -296,7 +296,7 @@ ROUTES.set('heading/paragraph', {
 		},
 	},
 });
-ROUTES.set('icon/font-awesome', {
+ROUTES.set('icon/font', {
 	snapshot: {
 		viewportSize: {
 			width: 250,
