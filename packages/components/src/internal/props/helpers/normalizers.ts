@@ -5,7 +5,7 @@ export function normalizeString(value?: unknown): string | never {
 		return value;
 	}
 	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
-		return String(value);
+		return (value as number | boolean | bigint).toString();
 	}
 	throw new Error(`Invalid string: ${value as string}`);
 }

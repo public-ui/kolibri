@@ -29,14 +29,18 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 			watchValidator(
 				component,
 				'_headerCells',
-				(value): boolean =>
-					typeof value === 'object' &&
-					value !== null &&
-					(value.horizontal === undefined ||
-						(Array.isArray(value.horizontal) && value.horizontal.find((headerRow) => !Array.isArray(headerRow)) === undefined)) &&
-					(value.vertical === undefined || (Array.isArray(value.vertical) && value.vertical.find((headerCol) => !Array.isArray(headerCol)) === undefined)) &&
-					[...(value.horizontal ?? []), ...(value.vertical ?? [])].flat().every((cell) => cell.width === undefined || typeof cell.width === 'number') &&
-					true,
+				(value): boolean => {
+					if (typeof value !== 'object' || value === null) return false;
+					const v = value as TableHeaderCells;
+					return (
+						(v.horizontal === undefined ||
+							(Array.isArray(v.horizontal) && v.horizontal.find((headerRow) => !Array.isArray(headerRow)) === undefined)) &&
+						(v.vertical === undefined || (Array.isArray(v.vertical) && v.vertical.find((headerCol) => !Array.isArray(headerCol)) === undefined)) &&
+						([...(v.horizontal ?? []), ...(v.vertical ?? [])] as KoliBriTableHeaderCell[][])
+							.flat()
+							.every((cell) => cell.width === undefined || typeof cell.width === 'number')
+					);
+				},
 				new Set(['TableHeaderCellsPropType']),
 				value,
 			);

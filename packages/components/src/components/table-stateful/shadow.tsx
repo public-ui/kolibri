@@ -505,7 +505,11 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private handleSort({ key }: SortEventPayload) {
-		const headerCell = [...(this.state._headers.horizontal || []).flat(), ...(this.state._headers.vertical || []).flat()].find((cell) => cell.key === key);
+		const allHeaders: KoliBriTableHeaderCellWithLogic[] = [
+			...((this.state._headers.horizontal ?? []) as KoliBriTableHeaderCellWithLogic[][]).flat(),
+			...((this.state._headers.vertical ?? []) as KoliBriTableHeaderCellWithLogic[][]).flat(),
+		];
+		const headerCell = allHeaders.find((cell) => cell.key === key);
 		if (headerCell) {
 			this.changeCellSort(headerCell);
 		}

@@ -66,10 +66,11 @@ const patchState = (component: Generic.Element.Component): void => {
 	 * werden.
 	 */
 	if ((component.nextState as Map<string, unknown>)?.size > 0) {
-		component.state = {
-			...component.state,
-			...Object.fromEntries(component.nextState as Map<string, unknown>),
-		};
+		const nextEntries: Record<string, unknown> = {};
+		(component.nextState as Map<string, unknown>).forEach((val, key) => {
+			nextEntries[key] = val;
+		});
+		component.state = { ...(component.state as Record<string, unknown>), ...nextEntries };
 		delete component.nextState;
 
 		component.nextHooks?.forEach((hooks, key) => {

@@ -1,3 +1,5 @@
+import { Buffer } from 'node:buffer';
+
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents } from '../../e2e';
