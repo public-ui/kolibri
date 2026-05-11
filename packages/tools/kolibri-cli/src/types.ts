@@ -4,7 +4,6 @@ export type FileExtension = (typeof FILE_EXTENSIONS)[number];
 export const COMPONENT_FILE_EXTENSIONS: FileExtension[] = ['jsx', 'tsx', 'vue'];
 export const CUSTOM_ELEMENT_FILE_EXTENSIONS: FileExtension[] = ['html', 'xhtml', 'jsx', 'tsx', 'vue'];
 export const MARKUP_EXTENSIONS: FileExtension[] = COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS);
-export const SCSS_FILE_EXTENSIONS: FileExtension[] = ['css', 'sass', 'scss'];
 
 export const WEB_TAG_REGEX = /\b<kol-[a-z-]+/i;
 export const REACT_TAG_REGEX = /\b<Kol[A-Z][A-Za-z]*/;

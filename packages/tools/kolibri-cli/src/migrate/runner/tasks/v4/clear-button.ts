@@ -4,7 +4,7 @@ import { MARKUP_EXTENSIONS } from '../../../../types';
 import { filterFilesByExt, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask } from '../../abstract-task';
 
-export class RenameClearButtonPropTask extends AbstractTask {
+class RenameClearButtonPropTask extends AbstractTask {
 	private constructor(identifier: string, versionRange: string) {
 		super(identifier, 'Rename _hide-clear-button to _has-clear-button', MARKUP_EXTENSIONS, versionRange);
 	}

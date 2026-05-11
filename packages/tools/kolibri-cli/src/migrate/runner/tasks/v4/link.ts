@@ -72,6 +72,6 @@ class MapVariantStandaloneToInlineTask extends AbstractTask {
 	}
 }
 
-export const MapButtonLinkVariantStandaloneToInlineTask: AbstractTask = MapVariantStandaloneToInlineTask.getInstance('kol-button-link', '^4');
-export const MapLinkVariantStandaloneToInlineTask: AbstractTask = MapVariantStandaloneToInlineTask.getInstance('kol-link', '^4');
-export const MapVariantStandaloneToInlineTasks: AbstractTask[] = [MapButtonLinkVariantStandaloneToInlineTask, MapLinkVariantStandaloneToInlineTask];
+const mapButtonLinkVariantStandaloneToInlineTask: AbstractTask = MapVariantStandaloneToInlineTask.getInstance('kol-button-link', '^4');
+const mapLinkVariantStandaloneToInlineTask: AbstractTask = MapVariantStandaloneToInlineTask.getInstance('kol-link', '^4');
+export const MapVariantStandaloneToInlineTasks: AbstractTask[] = [mapButtonLinkVariantStandaloneToInlineTask, mapLinkVariantStandaloneToInlineTask];

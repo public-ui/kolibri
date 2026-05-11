@@ -38,7 +38,6 @@
 		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.28.6",
 		"@eslint/js": "10.0.1",
 		"@playwright/test": "1.59.1",
 		"eslint": "10.3.0",

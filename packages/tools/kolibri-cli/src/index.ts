@@ -20,7 +20,6 @@ const banner = gradient(['red', 'green'], { interpolation: 'hsv', hsvSpin: 'long
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${versionOfPublicUiKoliBriCli}
 `,
 );
-console.log(banner);
 
 const program = new Command();
 
@@ -31,4 +30,7 @@ generateScss(program);
 info(program);
 migrate(program);
 
-void program.parseAsync();
+if (require.main === module) {
+	console.log(banner);
+	void program.parseAsync();
+}

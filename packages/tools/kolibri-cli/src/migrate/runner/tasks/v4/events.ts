@@ -25,7 +25,7 @@ const EVENT_REPLACEMENTS: Record<string, string> = {
 	kolToggle: 'toggle',
 };
 
-export class RenameKolEventNamesTask extends AbstractTask {
+class RenameKolEventNamesTask extends AbstractTask {
 	private constructor(versionRange: string) {
 		super('rename-kol-events', 'Rename kol* DOM events to their native names', [...FILE_EXTENSIONS], versionRange);
 	}
