@@ -12,6 +12,7 @@ const fillAction: FillAction = async (page) => {
 	await page.locator('input').setInputFiles({
 		name: 'file.txt',
 		mimeType: 'text/plain',
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 		buffer: Buffer.from('this is test'),
 	});
 };
