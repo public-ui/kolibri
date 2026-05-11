@@ -6,6 +6,7 @@ import type {
 	AdjustHeightPropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HasCounterPropType,
 	HideLabelPropType,
 	HideMsgPropType,
@@ -84,8 +85,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.textareaRef!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.textareaRef!, options));
 	}
 
 	/**

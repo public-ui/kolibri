@@ -11,6 +11,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
@@ -55,8 +56,8 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!, options));
 	}
 
 	/**

@@ -6,6 +6,7 @@ import type {
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -55,8 +56,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!, options));
 	}
 
 	/**

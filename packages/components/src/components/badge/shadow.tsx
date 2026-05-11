@@ -1,6 +1,16 @@
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { SpanFC } from '../../internal/functional-components/span/component';
-import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import type {
+	BadgeAPI,
+	BadgeStates,
+	FocusableElement,
+	FocusFunctionOptions,
+	InternalButtonProps,
+	KoliBriIconsProp,
+	LabelPropType,
+	PropColor,
+	Stringified,
+} from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
@@ -57,8 +67,8 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!));
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!, options));
 	}
 
 	public render(): JSX.Element {

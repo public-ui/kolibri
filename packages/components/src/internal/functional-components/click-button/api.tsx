@@ -1,3 +1,4 @@
+import type { FocusFunctionOptions } from '../../../schema';
 import { labelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -12,7 +13,7 @@ export type ClickButtonApi = ApiFromConfig<
 			click: () => void;
 		};
 		Methods: {
-			focus: () => void;
+			focus: (options?: FocusFunctionOptions) => void;
 		};
 		Refs: {
 			button: HTMLButtonElement;

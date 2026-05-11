@@ -4,6 +4,7 @@ import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -163,8 +164,8 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 * Sets focus on the current tab button.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.currentTabButtonRef!));
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.currentTabButtonRef!, options));
 	}
 
 	/**

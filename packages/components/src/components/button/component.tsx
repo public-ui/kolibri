@@ -13,6 +13,7 @@ import type {
 	CustomClassPropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HideLabelPropType,
 	IconsPropType,
 	IdPropType,
@@ -80,8 +81,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.buttonRef!);
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return setFocus(this.buttonRef!, options);
 	}
 
 	/**

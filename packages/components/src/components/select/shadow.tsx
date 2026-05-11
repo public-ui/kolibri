@@ -3,6 +3,7 @@ import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 
 import type {
 	FocusableElement,
+	FocusFunctionOptions,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
@@ -51,8 +52,8 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!));
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!, options));
 	}
 
 	public render(): JSX.Element {

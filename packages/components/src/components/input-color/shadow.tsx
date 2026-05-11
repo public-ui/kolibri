@@ -4,6 +4,7 @@ import type {
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -97,8 +98,8 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInputText!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.refInputText!, options));
 	}
 
 	/**

@@ -3,6 +3,7 @@ import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@sten
 import type {
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -75,8 +76,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInput!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.refInput!, options));
 	}
 
 	private readonly setRefInput = (ref?: HTMLInputElement) => {

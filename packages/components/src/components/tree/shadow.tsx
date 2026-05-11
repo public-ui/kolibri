@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop } from '@stencil/core';
 
 import { KolTreeWcTag } from '../../core/component-names';
-import type { FocusableElement, LabelPropType, TreeProps } from '../../schema';
+import type { FocusableElement, FocusFunctionOptions, LabelPropType, TreeProps } from '../../schema';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 @Component({
@@ -29,8 +29,8 @@ export class KolTree implements TreeProps, FocusableElement {
 	 * Sets focus on the first focusable tree item.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.treeWcRef!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.treeWcRef!, options));
 	}
 
 	public render(): JSX.Element {

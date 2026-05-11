@@ -15,6 +15,7 @@ import type {
 	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
@@ -90,8 +91,8 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.anchorRef!);
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return setFocus(this.anchorRef!, options);
 	}
 
 	/**

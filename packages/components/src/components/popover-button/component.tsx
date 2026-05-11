@@ -11,6 +11,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
@@ -93,8 +94,8 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.refButton!);
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return setFocus(this.refButton!, options);
 	}
 
 	/**

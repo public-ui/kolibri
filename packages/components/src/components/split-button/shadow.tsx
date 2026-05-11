@@ -9,6 +9,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
@@ -64,8 +65,8 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!, options));
 	}
 
 	/**

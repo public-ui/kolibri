@@ -6,6 +6,7 @@ import type {
 	CheckedPropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -76,8 +77,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!, options));
 	}
 
 	/**

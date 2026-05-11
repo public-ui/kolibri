@@ -6,6 +6,7 @@ import type {
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusFunctionOptions,
 	HasCounterPropType,
 	HideLabelPropType,
 	HideMsgPropType,
@@ -72,8 +73,8 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
+	public async focus(options?: FocusFunctionOptions) {
+		return delegateFocus(this.host!, () => setFocus(this.inputRef!, options));
 	}
 
 	/**

@@ -1,6 +1,15 @@
 import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
-import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
+import type {
+	DetailsAPI,
+	DetailsCallbacksPropType,
+	DetailsStates,
+	DisabledPropType,
+	FocusableElement,
+	FocusFunctionOptions,
+	HeadingLevel,
+	LabelPropType,
+} from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
@@ -40,8 +49,8 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
+	public async focus(options?: FocusFunctionOptions): Promise<void> {
+		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!, options));
 	}
 
 	/**
