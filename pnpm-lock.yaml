@@ -16,6 +16,8 @@ overrides:
   dompurify@>=3.1.3 <=3.3.1: '>=3.3.2'
   ejs@<3.1.10: '>=3.1.10'
   esbuild@<=0.24.2: '>=0.25.0'
+  fast-uri@<=3.1.0: '>=3.1.1'
+  fast-uri@<=3.1.1: '>=3.1.2'
   ip-address@<=10.1.0: '>=10.1.1'
   js-yaml@>=4.0.0 <4.1.1: '>=4.1.1'
   minimatch@<3.1.3: '>=3.1.3'
@@ -360,8 +362,8 @@ importers:
         specifier: workspace:*
         version: link:../schema
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       i18next:
         specifier: 23.16.8
         version: 23.16.8
@@ -521,8 +523,8 @@ importers:
         specifier: 7.18.0
         version: 7.18.0(eslint@8.57.1)(typescript@5.9.3)
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -588,8 +590,8 @@ importers:
         specifier: 0.58.9
         version: 0.58.9(rollup@4.59.0)(webpack@5.104.1)
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       ajv:
         specifier: 8.20.0
         version: 8.20.0
@@ -654,8 +656,8 @@ importers:
         specifier: 0.58.9
         version: 0.58.9(rollup@4.59.0)(webpack@5.104.1)
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
       ajv:
         specifier: 8.20.0
         version: 8.20.0
@@ -715,8 +717,8 @@ importers:
   packages/schema:
     dependencies:
       adopted-style-sheets:
-        specifier: 1.1.9-rc.21
-        version: 1.1.9-rc.21
+        specifier: 1.1.9-rc.22
+        version: 1.1.9-rc.22
     devDependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: 7.18.0
@@ -877,8 +879,8 @@ importers:
         specifier: 3.8.3
         version: 3.8.3
       semver:
-        specifier: 7.7.4
-        version: 7.7.4
+        specifier: 7.8.0
+        version: 7.8.0
     devDependencies:
       '@public-ui/components':
         specifier: workspace:*
@@ -4108,8 +4110,8 @@ packages:
     resolution: {integrity: sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==}
     engines: {node: '>= 10.0.0'}
 
-  adopted-style-sheets@1.1.9-rc.21:
-    resolution: {integrity: sha512-hPLoCi6ZkVtg0BnP3LMYvmMRU0d2SvMJDemWoX8olbDtbIeqCbXcXm2/kqYrukOyjHYXooRKdRr65MzWqUeNUA==}
+  adopted-style-sheets@1.1.9-rc.22:
+    resolution: {integrity: sha512-dWR5cKLub6mqvBe5r0TSNVGGjuETHHmqDX/cpkTf5JBOU7TDearwzu8YYgY4I6axeovboKLxAWkQiiHR6Dv0Cg==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -6005,8 +6007,8 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
-  fast-uri@3.0.6:
-    resolution: {integrity: sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==}
+  fast-uri@3.1.2:
+    resolution: {integrity: sha512-rVjf7ArG3LTk+FS6Yw81V1DLuZl1bRbNrev6Tmd/9RaroeeRRJhAt7jg/6YFxbvAQXUCavSoZhPPj6oOx+5KjQ==}
 
   fastest-levenshtein@1.0.16:
     resolution: {integrity: sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==}
@@ -6974,8 +6976,8 @@ packages:
     resolution: {integrity: sha512-5KoIu2Ngpyek75jXodFvnafB6DJgr3u8uuK0LEZJjrU19DrMD3EVERaR8sjz8CCGgpZvxPl9SuE1GMVPFHx1mw==}
     engines: {node: '>= 0.4'}
 
-  is-network-error@1.3.1:
-    resolution: {integrity: sha512-6QCxa49rQbmUWLfk0nuGqzql9U8uaV2H6279bRErPBHe/109hCzsLUBUHfbEtvLIHBd6hyXbgedBSHevm43Edw==}
+  is-network-error@1.3.2:
+    resolution: {integrity: sha512-PhBY86zaxNZUuWP6h13Vu5oFe0XY6/UlKzQnYFELzGVHygP3MxmvTfYSG7GN3aIab/iWudSMgjSnG9Dq+nHrgA==}
     engines: {node: '>=16'}
 
   is-number-object@1.1.1:
@@ -10221,6 +10223,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.8.0:
+    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   send@0.19.0:
     resolution: {integrity: sha512-dW41u5VfLXu8SJh5bwRmyYUbAoSB3c9uQh6L8h/KtsFREPWpbX1lrljJo186Jc4nmci/sGUZ9a0a0J2zgfq2hw==}
     engines: {node: '>= 0.8.0'}
@@ -13448,7 +13455,7 @@ snapshots:
   '@commitlint/is-ignored@19.8.1':
     dependencies:
       '@commitlint/types': 19.8.1
-      semver: 7.7.4
+      semver: 7.8.0
 
   '@commitlint/lint@19.8.1':
     dependencies:
@@ -14299,7 +14306,7 @@ snapshots:
       read-cmd-shim: 4.0.0
       resolve-from: 5.0.0
       rimraf: 4.4.1
-      semver: 7.7.4
+      semver: 7.8.0
       set-blocking: 2.0.0
       signal-exit: 3.0.7
       slash: 3.0.0
@@ -14414,7 +14421,7 @@ snapshots:
       promise-all-reject-late: 1.0.1
       promise-call-limit: 3.0.2
       read-package-json-fast: 3.0.2
-      semver: 7.7.4
+      semver: 7.8.0
       ssri: 10.0.6
       treeverse: 3.0.0
       walk-up-path: 3.0.1
@@ -14424,7 +14431,7 @@ snapshots:
 
   '@npmcli/fs@3.1.1':
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.0
 
   '@npmcli/git@5.0.8':
     dependencies:
@@ -14435,7 +14442,7 @@ snapshots:
       proc-log: 4.2.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.7.4
+      semver: 7.8.0
       which: 4.0.0
     transitivePeerDependencies:
       - bluebird
@@ -14458,7 +14465,7 @@ snapshots:
       json-parse-even-better-errors: 3.0.2
       pacote: 18.0.6
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -14475,7 +14482,7 @@ snapshots:
       json-parse-even-better-errors: 3.0.2
       normalize-package-data: 6.0.2
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - bluebird
 
@@ -14508,7 +14515,7 @@ snapshots:
       ignore: 5.3.2
       minimatch: 10.2.2
       nx: 20.8.4(@swc/core@1.13.5)
-      semver: 7.7.4
+      semver: 7.8.0
       tmp: 0.2.5
       tslib: 2.8.1
       yargs-parser: 21.1.1
@@ -14696,7 +14703,7 @@ snapshots:
       '@opentelemetry/instrumentation': 0.57.2(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.28.0
       forwarded-parse: 2.1.2
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - supports-color
 
@@ -14821,7 +14828,7 @@ snapshots:
       '@types/shimmer': 1.2.0
       import-in-the-middle: 1.14.2
       require-in-the-middle: 7.5.2
-      semver: 7.7.4
+      semver: 7.8.0
       shimmer: 1.2.1
     transitivePeerDependencies:
       - supports-color
@@ -15108,7 +15115,7 @@ snapshots:
       extract-zip: 2.0.1
       progress: 2.0.3
       proxy-agent: 6.5.0
-      semver: 7.7.4
+      semver: 7.8.0
       tar-fs: 3.1.1
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -15808,7 +15815,7 @@ snapshots:
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-      semver: 7.7.4
+      semver: 7.8.0
       ts-api-utils: 1.4.3(typescript@5.9.3)
     optionalDependencies:
       typescript: 5.9.3
@@ -15920,7 +15927,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 10.2.2
-      semver: 7.7.4
+      semver: 7.8.0
       ts-api-utils: 1.4.3(typescript@5.9.3)
     optionalDependencies:
       typescript: 5.9.3
@@ -15935,7 +15942,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.9
-      semver: 7.7.4
+      semver: 7.8.0
       ts-api-utils: 1.4.3(typescript@5.9.3)
     optionalDependencies:
       typescript: 5.9.3
@@ -15951,7 +15958,7 @@ snapshots:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.9.3)
       eslint: 8.57.0
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -16248,7 +16255,7 @@ snapshots:
 
   address@1.2.2: {}
 
-  adopted-style-sheets@1.1.9-rc.21:
+  adopted-style-sheets@1.1.9-rc.22:
     dependencies:
       loglevel: 1.9.2
 
@@ -16293,7 +16300,7 @@ snapshots:
   ajv@8.20.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.0.6
+      fast-uri: 3.1.2
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -17302,7 +17309,7 @@ snapshots:
       handlebars: 4.7.8
       json-stringify-safe: 5.0.1
       meow: 8.1.2
-      semver: 7.7.4
+      semver: 7.8.0
       split: 1.0.1
 
   conventional-commits-filter@3.0.0:
@@ -17465,7 +17472,7 @@ snapshots:
       postcss-modules-scope: 3.2.1(postcss@8.5.14)
       postcss-modules-values: 4.0.0(postcss@8.5.14)
       postcss-value-parser: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
     optionalDependencies:
       webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.27.2)(webpack-cli@4.10.0)
 
@@ -18543,7 +18550,7 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-uri@3.0.6: {}
+  fast-uri@3.1.2: {}
 
   fastest-levenshtein@1.0.16: {}
 
@@ -18699,7 +18706,7 @@ snapshots:
       memfs: 3.5.3
       minimatch: 10.2.2
       schema-utils: 2.7.0
-      semver: 7.7.4
+      semver: 7.8.0
       tapable: 1.1.3
       typescript: 5.9.3
       webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.27.2)(webpack-cli@4.10.0)
@@ -18939,7 +18946,7 @@ snapshots:
   git-semver-tags@5.0.1:
     dependencies:
       meow: 8.1.2
-      semver: 7.7.4
+      semver: 7.8.0
 
   git-up@7.0.0:
     dependencies:
@@ -19439,7 +19446,7 @@ snapshots:
       npm-package-arg: 11.0.2
       promzard: 1.0.2
       read: 3.0.1
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 5.0.1
     transitivePeerDependencies:
@@ -19618,7 +19625,7 @@ snapshots:
 
   is-negative-zero@2.0.3: {}
 
-  is-network-error@1.3.1: {}
+  is-network-error@1.3.2: {}
 
   is-number-object@1.1.1:
     dependencies:
@@ -20129,7 +20136,7 @@ snapshots:
       jest-resolve: 26.6.2
       natural-compare: 1.4.0
       pretty-format: 26.6.2
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - supports-color
 
@@ -20499,7 +20506,7 @@ snapshots:
       read-cmd-shim: 4.0.0
       resolve-from: 5.0.0
       rimraf: 4.4.1
-      semver: 7.7.4
+      semver: 7.8.0
       set-blocking: 2.0.0
       signal-exit: 3.0.7
       slash: 3.0.0
@@ -20584,7 +20591,7 @@ snapshots:
       npm-package-arg: 11.0.2
       npm-registry-fetch: 17.1.0
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
       sigstore: 2.3.1
       ssri: 10.0.6
     transitivePeerDependencies:
@@ -20599,7 +20606,7 @@ snapshots:
       got: 14.6.6
       ini: 6.0.0
       rc: 1.2.8
-      semver: 7.7.4
+      semver: 7.8.0
       tablemark: 4.1.0
       text-table: 0.2.0
       visit-values: 2.0.0
@@ -20937,7 +20944,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.0
 
   make-error@1.3.6: {}
 
@@ -21198,7 +21205,7 @@ snapshots:
       pkg-types: 1.3.1
       postcss: 8.5.14
       postcss-nested: 6.2.0(postcss@8.5.14)
-      semver: 7.7.4
+      semver: 7.8.0
       tinyglobby: 0.2.15
     optionalDependencies:
       sass: 1.97.3
@@ -21382,7 +21389,7 @@ snapshots:
       open: 8.4.0
       ora: 5.4.1
       selenium-webdriver: 4.6.1
-      semver: 7.7.4
+      semver: 7.8.0
       stacktrace-parser: 0.1.10
       strip-ansi: 6.0.1
       untildify: 4.0.0
@@ -21425,7 +21432,7 @@ snapshots:
       open: 8.4.0
       ora: 5.4.1
       selenium-webdriver: 4.6.1
-      semver: 7.7.4
+      semver: 7.8.0
       stacktrace-parser: 0.1.10
       strip-ansi: 6.0.1
       untildify: 4.0.0
@@ -21465,7 +21472,7 @@ snapshots:
       make-fetch-happen: 13.0.1
       nopt: 7.2.1
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
       tar: 6.2.1
       which: 4.0.0
     transitivePeerDependencies:
@@ -21479,7 +21486,7 @@ snapshots:
     dependencies:
       growly: 1.3.0
       is-wsl: 2.2.0
-      semver: 7.7.4
+      semver: 7.8.0
       shellwords: 0.1.1
       uuid: 8.3.2
       which: 2.0.2
@@ -21521,13 +21528,13 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-license: 3.0.4
 
   normalize-path@2.1.1:
@@ -21548,7 +21555,7 @@ snapshots:
 
   npm-install-checks@6.3.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.0
 
   npm-normalize-package-bin@3.0.1: {}
 
@@ -21556,7 +21563,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.8.0
       validate-npm-package-name: 5.0.1
 
   npm-packlist@8.0.2:
@@ -21568,7 +21575,7 @@ snapshots:
       npm-install-checks: 6.3.0
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 11.0.2
-      semver: 7.7.4
+      semver: 7.8.0
 
   npm-registry-fetch@17.1.0:
     dependencies:
@@ -21640,7 +21647,7 @@ snapshots:
       open: 8.4.2
       ora: 5.3.0
       resolve.exports: 2.0.3
-      semver: 7.7.4
+      semver: 7.8.0
       string-width: 4.2.3
       tar-stream: 2.2.0
       tmp: 0.2.5
@@ -21930,7 +21937,7 @@ snapshots:
   p-retry@6.2.1:
     dependencies:
       '@types/retry': 0.12.2
-      is-network-error: 1.3.1
+      is-network-error: 1.3.2
       retry: 0.13.1
 
   p-timeout@3.2.0:
@@ -22259,7 +22266,7 @@ snapshots:
       cosmiconfig: 7.1.0
       klona: 2.0.6
       postcss: 8.5.14
-      semver: 7.7.4
+      semver: 7.8.0
       webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.27.2)(webpack-cli@4.10.0)
 
   postcss-merge-longhand@5.1.7(postcss@8.5.14):
@@ -23521,6 +23528,8 @@ snapshots:
 
   semver@7.7.4: {}
 
+  semver@7.8.0: {}
+
   send@0.19.0:
     dependencies:
       debug: 2.6.9
@@ -23677,7 +23686,7 @@ snapshots:
 
   simple-update-notifier@2.0.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.0
 
   sinon@13.0.2:
     dependencies:
