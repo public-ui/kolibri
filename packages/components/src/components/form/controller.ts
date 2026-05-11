@@ -26,8 +26,10 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 		}
 		if (getExperimentalMode()) {
 			Log.debug(el);
-			devHint(`↑ Search form element finished.`);
 		}
+	}
+	if (getExperimentalMode()) {
+		devHint(`↑ Search form element finished.`);
 	}
 	return el;
 };
