@@ -30,6 +30,7 @@ generateScss(program);
 info(program);
 migrate(program);
 
+// eslint-disable-next-line no-undef
 if (require.main === module) {
 	console.log(banner);
 	void program.parseAsync();
