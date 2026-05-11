@@ -8,8 +8,7 @@ export function normalizeString(value?: unknown): string | never {
 		return String(value);
 	}
 	if (typeof value === 'bigint') {
-		const v: bigint = value;
-		return v.toString();
+		return String(value);
 	}
 	throw new Error(`Invalid string: ${value as string}`);
 }

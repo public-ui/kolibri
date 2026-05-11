@@ -12,7 +12,7 @@ const fillAction: FillAction = async (page) => {
 	await page.locator('input').setInputFiles({
 		name: 'file.txt',
 		mimeType: 'text/plain',
-		buffer: new TextEncoder().encode('this is test'),
+		buffer: Buffer.from('this is test'),
 	});
 };
 

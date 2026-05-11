@@ -44,7 +44,7 @@ export const setRuntimeMode = (mode: Mode): void => {
 const getInitialMode = (): Mode => {
 	try {
 		// Try to get NODE_ENV, but handle cases where process is not available
-		const nodeEnv = typeof process !== 'undefined' && process.env ? process.env['NODE_ENV'] : undefined;
+		const nodeEnv: string | undefined = typeof process !== 'undefined' && process.env ? process.env['NODE_ENV'] : undefined;
 		if (nodeEnv && MODES.includes(nodeEnv as Mode)) {
 			return nodeEnv as Mode;
 		}
