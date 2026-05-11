@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
@@ -10,12 +10,14 @@ import { Sidebar } from './components/Sidebar';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
+import { sampleAppDataService } from './shares/sampleAppDataService';
 import { getTheme, getThemeName, setRegisteredThemes, setStorage, setTheme } from './shares/store';
 import { PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import type { Option } from '@public-ui/components';
+
 import type { Theme } from './shares/theme';
 
 setStorage(localStorage);
@@ -35,6 +37,24 @@ export const App: FC<Props> = ({ customThemes }) => {
 		return allThemes;
 	}, [customThemes]);
 	const theme: string = searchParams.get('theme') ?? getTheme();
+	const [isSampleAppDataInitialized, setIsSampleAppDataInitialized] = useState(() => sampleAppDataService.isInitialized(themes));
+
+	useEffect(() => {
+		let isActive = true;
+		if (sampleAppDataService.isInitialized(themes)) {
+			setIsSampleAppDataInitialized(true);
+			return;
+		}
+		setIsSampleAppDataInitialized(false);
+		void sampleAppDataService.initialize(themes).then(() => {
+			if (isActive) {
+				setIsSampleAppDataInitialized(true);
+			}
+		});
+		return () => {
+			isActive = false;
+		};
+	}, [themes]);
 
 	const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
 		let list: string[] = [];
@@ -130,6 +150,16 @@ export const App: FC<Props> = ({ customThemes }) => {
 		setSearchParams({ theme: theme as string });
 		window.location.reload();
 	};
+
+	if (!isSampleAppDataInitialized) {
+		return (
+			<HideMenusContext.Provider value={hideMenus}>
+				<main className="flex flex-col items-stretch p-4" id="route-container">
+					<p>Loading data</p>
+				</main>
+			</HideMenusContext.Provider>
+		);
+	}
 
 	return (
 		<HideMenusContext.Provider value={hideMenus}>
