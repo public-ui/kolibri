@@ -1,15 +1,11 @@
-import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const js = require('@eslint/js');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const react = require('eslint-plugin-react');
+const reactHooks = require('eslint-plugin-react-hooks');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default [
+module.exports = [
 	{
 		ignores: ['**/assets/**', '**/complex-form/**', 'dist/**', 'node_modules/**'],
 	},
@@ -52,7 +48,7 @@ export default [
 		},
 		settings: {
 			react: {
-				version: 'detect',
+				version: '19.2.6',
 			},
 		},
 	},

@@ -32,7 +32,8 @@ export const bootstrap = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	koliBriOptions?: KoliBriOptions,
 ): Promise<void[]> => {
-	const nodeEnv = typeof process !== 'undefined' && process.env ? (process.env.NODE_ENV as Mode) : undefined;
+	const nodeProcess = (globalThis as unknown as Record<string, unknown>)['process'] as { env?: Record<string, string | undefined> } | undefined;
+	const nodeEnv = nodeProcess?.env?.['NODE_ENV'] as Mode | undefined;
 	setRuntimeMode(koliBriOptions?.environment || nodeEnv || 'production');
 
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);

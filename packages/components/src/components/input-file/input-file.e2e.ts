@@ -9,11 +9,12 @@ import { Callback } from '../../schema/enums';
 const COMPONENT_NAME = 'kol-input-file';
 const TEST_VALUE: [] = [];
 const fillAction: FillAction = async (page) => {
+	// Buffer is a Node.js global in the test environment; access via globalThis to avoid TS2580
+	const buffer = (globalThis as unknown as { Buffer: { from(s: string): unknown } }).Buffer.from('this is test') as Buffer;
 	await page.locator('input').setInputFiles({
 		name: 'file.txt',
 		mimeType: 'text/plain',
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-		buffer: Buffer.from('this is test'),
+		buffer,
 	});
 };
 
