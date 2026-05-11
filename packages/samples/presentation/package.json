@@ -28,7 +28,7 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/sample-react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
-		"adopted-style-sheets": "1.1.9-rc.21",
+		"adopted-style-sheets": "1.1.9-rc.22",
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
 		"react-router-dom": "7.15.0"
