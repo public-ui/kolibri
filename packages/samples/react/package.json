@@ -39,7 +39,7 @@
 		"@unocss/preset-mini": "66.6.8",
 		"@unocss/vite": "66.6.8",
 		"@vitejs/plugin-react-swc": "4.3.0",
-		"adopted-style-sheets": "1.1.9-rc.21",
+		"adopted-style-sheets": "1.1.9-rc.22",
 		"papaparse": "5.5.3",
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
