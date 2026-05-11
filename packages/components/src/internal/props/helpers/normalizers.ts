@@ -4,10 +4,7 @@ export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
 		return value;
 	}
-	if (typeof value === 'number' || typeof value === 'boolean') {
-		return String(value);
-	}
-	if (typeof value === 'bigint') {
+	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
 		return String(value);
 	}
 	throw new Error(`Invalid string: ${value as string}`);

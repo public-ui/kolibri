@@ -43,7 +43,7 @@ export const setRuntimeMode = (mode: Mode): void => {
 // Safer mode detection that handles browser environments better
 const getInitialMode = (): Mode => {
 	try {
-		const nodeProcess = (globalThis as Record<string, unknown>)['process'] as { env?: Record<string, string | undefined> } | undefined;
+		const nodeProcess = (globalThis as unknown as Record<string, unknown>)['process'] as { env?: Record<string, string | undefined> } | undefined;
 		const nodeEnv = nodeProcess?.env?.['NODE_ENV'];
 		if (nodeEnv && MODES.includes(nodeEnv as Mode)) {
 			return nodeEnv as Mode;
