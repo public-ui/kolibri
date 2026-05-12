@@ -58,6 +58,14 @@
 				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-active));
 			}
 		}
+
+		&[multiple] &__option {
+			padding: 0 to-rem(8);
+
+			&::before {
+				margin-right: to-rem(8);
+			}
+		}
 	}
 
 	.kol-form-field {
