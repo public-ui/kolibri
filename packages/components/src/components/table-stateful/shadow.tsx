@@ -41,7 +41,6 @@ import {
 	validateTableDataFoot,
 	validateTableSelection,
 	validateTableStatefulCallbacks,
-	validateVariantClassName,
 	watchValidator,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
@@ -329,11 +328,6 @@ export class KolTableStateful implements TableAPI {
 	@Watch('_on')
 	public validateOn(value?: TableStatefulCallbacksPropType): void {
 		validateTableStatefulCallbacks(this, value);
-	}
-
-	@Watch('_variant')
-	public validateVariantClassName(value?: VariantClassNamePropType): void {
-		validateVariantClassName(this, value);
 	}
 
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
