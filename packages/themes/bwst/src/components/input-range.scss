@@ -28,10 +28,12 @@
 		}
 
 		&__input--range {
+			background: lightgray;
 			border-radius: var(--border-radius);
 			height: to-rem(8);
 			padding: 0;
 			border-width: 0;
+
 			&::-webkit-slider-thumb {
 				background: var(--color-primary-variant);
 				-webkit-appearance: none;

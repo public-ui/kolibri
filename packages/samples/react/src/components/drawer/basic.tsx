@@ -18,7 +18,7 @@ export const DrawerBasic: FC = () => {
 
 	useEffect(() => {
 		if (defaultAlign) {
-			drawerElement.current?.open();
+			drawerElement.current?.showModal();
 		}
 	}, [defaultAlign]);
 	return (
@@ -56,7 +56,7 @@ export const DrawerBasic: FC = () => {
 						<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
 					</div>
 				</KolDrawer>
-				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
+				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.showModal() }} />
 			</div>
 		</>
 	);
