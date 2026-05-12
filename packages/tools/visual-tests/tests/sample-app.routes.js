@@ -1061,6 +1061,7 @@ ROUTES.set('table/variant', {
 	snapshot: {
 		viewportSize: {
 			width: 1000,
+			height: 0,
 		},
 		zoom: {
 			skip: true,
