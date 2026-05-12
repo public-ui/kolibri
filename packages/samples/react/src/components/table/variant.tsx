@@ -53,7 +53,7 @@ export const TableVariant: FC = () => {
 									},
 								}}
 								_paginationPosition="bottom"
-								_variant="element"
+								_variant={element}
 							></KolTableStateful>
 						);
 					})
