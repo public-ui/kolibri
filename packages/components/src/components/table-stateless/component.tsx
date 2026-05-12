@@ -27,6 +27,7 @@ import type {
 	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	setState,
@@ -38,6 +39,7 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
+	validateVariantClassName,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
@@ -134,6 +136,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@Prop() public _selection?: TableSelectionPropType;
 
 	/**
+	 * Defines which variant should be used for presentation.
+	 * @internal
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	/**
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
@@ -191,6 +199,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
 		this.checkAndUpdateStickyState();
+	}
+
+	@Watch('_variant')
+	public validateVariantClassName(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
 	@Listen('keydown')
@@ -634,6 +647,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
+		this.validateVariantClassName(this._variant);
 	}
 
 	/**
@@ -1186,7 +1200,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
 		return (
-			<div class="kol-table">
+			<div
+				class={clsx('kol-table', {
+					[`kol-table--${this.state._variant as string}`]: this.state._variant !== undefined,
+				})}
+			>
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the

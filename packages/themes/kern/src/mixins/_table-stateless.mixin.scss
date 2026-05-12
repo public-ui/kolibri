@@ -26,6 +26,8 @@
 		&__head,
 		&__cell {
 			box-shadow: inset 0 -1px 0 0 var(--kern-color-layout-border);
+			font-size: var(--kern-typography-font-size-static-medium);
+			line-height: var(--kern-typography-line-height-static-medium);
 			padding: calc(var(--kern-metric-baseline-body-default-padding-top) + var(--kern-metric-space-small)) var(--kern-metric-space-x-small)
 				calc(var(--kern-metric-baseline-body-default-padding-bottom) + var(--kern-metric-space-small)) var(--kern-metric-space-x-small);
 
@@ -117,6 +119,27 @@
 
 		&:not(:has(.kol-table__selection-input--radio)) {
 			@include checkbox('kol-table__selection');
+		}
+
+		&--striped &__row:nth-child(2n + 1) &__cell {
+			background-color: var(--kern-color-layout-background-hued);
+		}
+
+		&--small &__cell {
+			font-size: var(--kern-typography-font-size-static-small);
+			line-height: var(--kern-typography-line-height-static-medium);
+			padding: calc(var(--kern-metric-baseline-body-small-padding-top) + var(--kern-metric-space-small))
+				calc(var(--kern-metric-space-none) + var(--kern-metric-space-x-small))
+				calc(var(--kern-metric-baseline-body-small-padding-bottom) + var(--kern-metric-space-small))
+				calc(var(--kern-metric-space-none) + var(--kern-metric-space-x-small));
+		}
+
+		&--small &__caption {
+			padding: var(--kern-metric-baseline-heading-small-padding-top) var(--kern-metric-space-none) var(--kern-metric-baseline-heading-small-padding-bottom)
+				var(--kern-metric-space-none);
+			font-size: var(--kern-typography-font-size-static-medium);
+			font-weight: var(--kern-typography-font-weight-semi-bold);
+			line-height: var(--kern-typography-line-height-static-medium);
 		}
 	}
 

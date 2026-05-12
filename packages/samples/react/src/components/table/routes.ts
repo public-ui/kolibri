@@ -27,6 +27,7 @@ import { TableStatelessWithSettingsMenu } from './stateless-with-settings-menu';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
 import { TableStickyCol } from './sticky-col';
 import { TableStickyHeader } from './sticky-header';
+import { TableVariant } from './variant';
 import { TableWithFooter } from './with-footer';
 import { TableWithPagination } from './with-pagination';
 
@@ -62,5 +63,6 @@ export const TABLE_ROUTES: Routes = {
 		'with-pagination': TableWithPagination,
 		big: TableBig,
 		'action-and-render': TableActionAndRenderColumns,
+		variant: TableVariant,
 	},
 };
