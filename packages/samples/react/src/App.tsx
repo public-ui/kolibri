@@ -96,7 +96,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 												</div>
 												<hr aria-hidden="true" />
 											</div>
-										))}
+									))}
 								</div>
 							}
 						/>,
