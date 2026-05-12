@@ -21,6 +21,45 @@ test.describe('kol-drawer', () => {
 
 			await expect(callbackPromise).resolves.toBeUndefined();
 		});
+
+		test(`should call 'onToggle' callback when drawer is opened`, async ({ page }) => {
+			await page.setContent('<kol-drawer _label="Details">Drawer content</kol-drawer>');
+			const kolDrawer = page.locator('kol-drawer');
+
+			const callbackPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
+				return new Promise((resolve) => {
+					element._on = {
+						onToggle: (value?: boolean) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+			await kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
+				element._open = true;
+			});
+			await expect(callbackPromise).resolves.toBe(true);
+		});
+
+		test(`should call 'onToggle' callback when drawer is closed`, async ({ page }) => {
+			await page.setContent('<kol-drawer _label="Details" _open>Drawer content</kol-drawer>');
+			const kolDrawer = page.locator('kol-drawer');
+
+			const callbackPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
+				return new Promise((resolve) => {
+					element._on = {
+						onToggle: (value?: boolean) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			await page.keyboard.press('Escape');
+			await expect(callbackPromise).resolves.toBe(false);
+		});
 	});
 
 	test.describe('_open property', () => {

@@ -55,6 +55,10 @@ export class KolDrawer implements DrawerAPI {
 		} else {
 			this.dialogElement?.show?.();
 		}
+		this._on?.onToggle?.(true);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.toggle);
+		}
 	}
 
 	/**
@@ -232,8 +236,10 @@ export class KolDrawer implements DrawerAPI {
 
 	private handleCloseDialog() {
 		this._on?.onClose?.();
+		this._on?.onToggle?.(false);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	}
 
