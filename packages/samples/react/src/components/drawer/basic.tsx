@@ -46,7 +46,7 @@ export const DrawerBasic: FC = () => {
 					_label="I am a drawer"
 					_align={align}
 					_hasCloser={hasCloser}
-					_on={{ onClose: () => console.log('Drawer onClose triggered!') }}
+					_on={{ onClose: () => console.log('Drawer onClose triggered!'), onToggle: (open) => console.log('Drawer onToggle triggered!', open) }}
 				>
 					<div className={align === 'left' || align === 'right' ? 'drawer-content-vertical' : ''}>
 						<p className="mt-0">
