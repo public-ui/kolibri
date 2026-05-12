@@ -87,15 +87,15 @@ export const App: FC<Props> = ({ customThemes }) => {
 							element={
 								<div className="d-grid gap-4">
 									{themes.map((theme) => (
-											<div className="d-grid gap-2" key={theme.key}>
-												<div className="mt-4">
-													<strong>{theme.name}</strong>
-												</div>
-												<div className="my-2">
-													<ThisRoute />
-												</div>
-												<hr aria-hidden="true" />
+										<div className="d-grid gap-2" key={theme.key}>
+											<div className="mt-4">
+												<strong>{theme.name}</strong>
 											</div>
+											<div className="my-2">
+												<ThisRoute />
+											</div>
+											<hr aria-hidden="true" />
+										</div>
 									))}
 								</div>
 							}
