@@ -24,6 +24,7 @@ import type {
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	TableStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	devHint,
@@ -131,6 +132,11 @@ export class KolTableStateful implements TableAPI {
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -609,6 +615,7 @@ export class KolTableStateful implements TableAPI {
 					}}
 					_selection={this.state._selection}
 					_hasSettingsMenu={this.state._hasSettingsMenu}
+					_variant={this._variant}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
