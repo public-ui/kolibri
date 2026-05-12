@@ -1057,6 +1057,16 @@ ROUTES.set('table/sticky-cols', {
 		},
 	},
 });
+ROUTES.set('table/variant', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('tabs/basic', {
 	snapshot: {
 		zoom: {
