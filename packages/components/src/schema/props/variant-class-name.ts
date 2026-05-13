@@ -8,10 +8,8 @@ export type PropVariantClassName = {
 	variant: VariantClassNamePropType;
 };
 
-const isSafeClassName = (value: unknown) => {
-	var re = new RegExp('^[a-zA-Z][a-zA-Z0-9_-]{3,60}$');
-	return typeof value === 'string' && re.test(value);
-};
+const SAFE_CLASS_NAME_RE = /^[a-zA-Z][a-zA-Z0-9_-]{3,60}$/;
+const isSafeClassName = (value: unknown) => typeof value === 'string' && SAFE_CLASS_NAME_RE.test(value);
 
 export const validateVariantClassName = (component: Generic.Element.Component, value?: VariantClassNamePropType): void => {
 	watchValidator(component, '_variant', isSafeClassName, new Set(['^[a-zA-Z][a-zA-Z0-9_-]{3,60}$']), value);
