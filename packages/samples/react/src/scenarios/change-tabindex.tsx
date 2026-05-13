@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/tabindex-no-positive */
-
 import type { Option, StencilUnknown } from '@public-ui/components';
 import {
 	KolButton,
