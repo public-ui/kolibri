@@ -2,7 +2,7 @@ import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@st
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import { createUniqeId } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -29,7 +29,7 @@ import { watchHeadingLevel } from '../heading/validation';
 export class KolDetails implements DetailsAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 
-	private readonly id = createUniqeId('details');
+	private readonly id = createUniqueId('details');
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {

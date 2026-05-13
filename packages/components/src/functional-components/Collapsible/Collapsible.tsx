@@ -4,7 +4,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { KolButtonWcTag } from '../../core/component-names';
 import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createRelatedUniqeId } from '../../utils/dev.utils';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolHeadingFc from '../Heading';
 
 type ClassType =
@@ -43,8 +43,8 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
 	const icon = open ? 'kolicon-chevron-down' : 'kolicon-chevron-right';
 
-	const headingId = createRelatedUniqeId(id, 'heading');
-	const controlId = createRelatedUniqeId(id, 'control');
+	const headingId = createRelatedUniqueId(id, 'heading');
+	const controlId = createRelatedUniqueId(id, 'control');
 
 	return (
 		<div

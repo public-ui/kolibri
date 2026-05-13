@@ -3,7 +3,7 @@ import { SpanFC } from '../../internal/functional-components/span/component';
 import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
-import { createUniqeId } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
@@ -26,7 +26,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolBadgeElement;
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
-	private readonly id = createUniqeId('badge-label');
+	private readonly id = createUniqueId('badge-label');
 	private smartButtonRef?: HTMLKolButtonWcElement;
 
 	private readonly setSmartButtonRef = (ref?: HTMLKolButtonWcElement) => {

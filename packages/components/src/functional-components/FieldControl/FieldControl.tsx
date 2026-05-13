@@ -14,7 +14,7 @@ import {
 	type Stringified,
 } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createRelatedUniqeId } from '../../utils/dev.utils';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFieldControlHintFc from '../FormFieldHint';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 
@@ -110,7 +110,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 	const hasExpertSlot = showExpertSlot(label);
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
-	const labelId = createRelatedUniqeId(id, 'label');
+	const labelId = createRelatedUniqueId(id, 'label');
 	const tooltipController = useTooltipInsteadOfLabel ? getFieldControlTooltipController(id) : undefined;
 
 	if (tooltipController) {

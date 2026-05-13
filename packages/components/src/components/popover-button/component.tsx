@@ -24,7 +24,7 @@ import type {
 import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import clsx from '../../utils/clsx';
-import { createUniqeId } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { setClick } from '../../utils/element-click';
 import { setFocus } from '../../utils/element-focus';
 
@@ -44,7 +44,7 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	private refButton?: HTMLKolButtonWcElement;
 	private readonly popoverCtrl = new PopoverController();
 	private popoverElement?: HTMLDivElement;
-	private readonly popoverId = createUniqeId('popover');
+	private readonly popoverId = createUniqueId('popover');
 
 	private readonly setPopoverElementRef = (element?: HTMLDivElement) => {
 		this.popoverElement = element;

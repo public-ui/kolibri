@@ -13,7 +13,7 @@ import type {
 } from '../../schema';
 import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createUniqeId } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 import { watchHeadingLevel } from '../heading/validation';
@@ -32,7 +32,7 @@ export class KolDrawer implements DrawerAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLKolCardWcElement;
-	private readonly cardHeadingId = createUniqeId('drawer-heading');
+	private readonly cardHeadingId = createUniqueId('drawer-heading');
 
 	@State() private isModal: boolean = true;
 

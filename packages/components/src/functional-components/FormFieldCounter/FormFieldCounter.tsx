@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../i18n';
 import type { MaxLengthBehaviorPropType } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createRelatedUniqeId } from '../../utils/dev.utils';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	currentLength: number;
@@ -54,7 +54,7 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			<span class={clsx(counterClasses)} aria-hidden="true" data-testid="input-counter">
 				{visualText}
 			</span>
-			<span id={createRelatedUniqeId(id || '', 'counter')} aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
+			<span id={createRelatedUniqueId(id || '', 'counter')} aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
 				{ariaText}
 			</span>
 		</>

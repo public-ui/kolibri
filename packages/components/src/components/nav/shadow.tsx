@@ -27,7 +27,7 @@ import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createRelatedUniqeId, createUniqeId } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
 
@@ -68,9 +68,9 @@ const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryPr
 	shadow: true,
 })
 export class KolNav implements NavAPI {
-	private readonly navId = createUniqeId('kol-nav');
+	private readonly navId = createUniqueId('kol-nav');
 
-	private readonly listId = createRelatedUniqeId(this.navId, 'list');
+	private readonly listId = createRelatedUniqueId(this.navId, 'list');
 
 	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
@@ -165,7 +165,7 @@ export class KolNav implements NavAPI {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const expanded = Boolean(link._children && this.state._expandedChildren.includes(link._children));
-		const ariaID = createRelatedUniqeId(ariaIDparent, `${deep}-${index}`);
+		const ariaID = createRelatedUniqueId(ariaIDparent, `${deep}-${index}`);
 		return (
 			<li
 				class={clsx('kol-nav__list-item', {

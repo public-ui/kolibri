@@ -7,7 +7,7 @@ import { TooltipController } from '../../internal/functional-components/tooltip/
 import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createRelatedUniqeId } from '../../utils/dev.utils';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
 import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
@@ -135,7 +135,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
-	const labelId = createRelatedUniqeId(id, 'label');
+	const labelId = createRelatedUniqueId(id, 'label');
 	const tooltipController = useTooltipInsteadOfLabel ? getFormFieldTooltipController(id) : undefined;
 
 	if (tooltipController) {
