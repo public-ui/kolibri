@@ -2,7 +2,7 @@
 
 @mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
 	.kol-custom-suggestions-options-group {
-		border-color: var(--color-blue);
+		border-color: var(--ecl-color-primary);
 		border-style: solid;
 		width: 100%;
 		max-height: calc($option-height * $visible-options + to-rem(2));

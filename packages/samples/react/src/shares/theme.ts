@@ -14,11 +14,11 @@ export const PUBLIC_THEMES: Theme[] = [
 		key: 'default',
 	},
 	{
-		name: 'BWSt',
+		name: 'BWSt (v4)',
 		key: 'bwst',
 	},
 	{
-		name: 'European Commission (in progress)',
+		name: 'European Commission (v4)',
 		key: 'ecl-ec',
 	},
 	{
@@ -28,5 +28,9 @@ export const PUBLIC_THEMES: Theme[] = [
 	{
 		name: 'KERN-UX Standard (v2)',
 		key: 'kern-v2',
+	},
+	{
+		name: 'Zoll Design System (v11)',
+		key: 'desy-v11',
 	},
 ];

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "4.1.4-rc.1",
+	"version": "4.1.5-rc.0",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -32,24 +32,26 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.38.3",
-		"@types/node": "25.6.0",
+		"@types/node": "25.6.2",
+		"@types/papaparse": "5.5.2",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.6.8",
 		"@unocss/vite": "66.6.8",
 		"@vitejs/plugin-react-swc": "4.3.0",
-		"adopted-style-sheets": "1.1.9-rc.21",
-		"react": "19.2.5",
-		"react-dom": "19.2.5",
-		"react-hook-form": "7.73.1",
+		"adopted-style-sheets": "1.1.9-rc.22",
+		"papaparse": "5.5.3",
+		"react": "19.2.6",
+		"react-dom": "19.2.6",
+		"react-hook-form": "7.75.0",
 		"react-number-format": "5.4.5",
-		"react-router": "7.14.2",
-		"react-router-dom": "7.14.2",
+		"react-router": "7.15.0",
+		"react-router-dom": "7.15.0",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "7.3.2",
+		"vite": "7.3.3",
 		"world_countries_lists": "3.3.0",
-		"zod": "4.3.6"
+		"zod": "4.4.3"
 	},
 	"devDependencies": {
 		"@eslint/js": "9.39.4",
@@ -67,7 +69,7 @@
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.9.0"
+		"stylelint": "17.11.0"
 	},
 	"files": [
 		"dist",

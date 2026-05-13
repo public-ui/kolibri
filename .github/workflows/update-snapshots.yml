@@ -2,12 +2,6 @@ name: 03 - Update Snapshots
 
 on:
   workflow_dispatch:
-    inputs:
-      delete_snapshots:
-        description: 'Delete existing snapshots before update?'
-        required: false
-        default: false
-        type: boolean
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.ref }}'
@@ -35,8 +29,14 @@ jobs:
           - name: theme-default
             path: packages/themes/default
             type: e2e
+          - name: theme-desy
+            path: packages/themes/desy
+            type: e2e
           - name: theme-kern
             path: packages/themes/kern
+            type: e2e
+          - name: theme-ecl
+            path: packages/themes/ecl
             type: e2e
     steps:
       - name: Checkout branch
@@ -55,7 +55,6 @@ jobs:
         run: pnpm --filter @public-ui/sample-react^... build
 
       - name: Purge existing snapshots
-        if: inputs.delete_snapshots == true
         run: |
           if [ "${{ matrix.type }}" = "e2e" ]; then
             find ${{ matrix.path }} -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs --no-run-if-empty rm -f
@@ -71,18 +70,10 @@ jobs:
 
       - name: Package snapshot changes
         run: |
-          if [ "${{ inputs.delete_snapshots }}" = "true" ]; then
-            # All snapshots were purged and regenerated from scratch – capture every file on disk,
-            # including those whose content is identical to HEAD (git diff would miss those).
-            find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -type f -print \
-              | tar cf snapshots.tar -T - 2>/dev/null || tar cf snapshots.tar --files-from /dev/null
-          else
-            # Only capture files that actually changed (efficient for normal updates).
-            {
-              git diff --name-only --diff-filter=d HEAD -- ${{ matrix.path }}
-              git ls-files --others --exclude-standard -- ${{ matrix.path }}
-            } | grep -E '(__snapshots__|snapshots)/' | tar cf snapshots.tar -T - 2>/dev/null || tar cf snapshots.tar --files-from /dev/null
-          fi
+          # All snapshots were purged and regenerated from scratch – capture every file on disk,
+          # including those whose content is identical to HEAD (git diff would miss those).
+          find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -type f -print \
+            | tar cf snapshots.tar -T - 2>/dev/null || tar cf snapshots.tar --files-from /dev/null
 
       - name: Upload snapshot artifacts
         uses: actions/upload-artifact@v7
@@ -113,8 +104,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
           token: ${{ steps.app-token.outputs.token }}
-      - name: Purge existing snapshots (optional)
-        if: inputs.delete_snapshots == true
+      - name: Purge existing snapshots
         run: |
           find packages -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs --no-run-if-empty rm -f
           find packages \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f

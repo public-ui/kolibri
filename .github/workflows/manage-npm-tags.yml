@@ -54,6 +54,7 @@ jobs:
           - '@public-ui/solid'
           - '@public-ui/svelte'
           - '@public-ui/theme-default'
+          - '@public-ui/theme-desy'
           - '@public-ui/theme-ecl'
           - '@public-ui/theme-kern'
           # - '@public-ui/stylelint-rules'

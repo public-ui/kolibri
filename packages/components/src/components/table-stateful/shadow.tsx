@@ -24,6 +24,7 @@ import type {
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	TableStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	devHint,
@@ -132,6 +133,11 @@ export class KolTableStateful implements TableAPI {
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
 		_fixedCols: [0, 0],
@@ -234,6 +240,39 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	private initializeSortFromHeaders(headers: KoliBriTableHeaders): boolean {
+		let hasSortedCells = false;
+		const applySort = (cells: KoliBriTableHeaderCellWithLogic[]) => {
+			this.sortData = [];
+			cells.forEach((cell) => {
+				if (cell.type !== undefined && cell.type !== 'default') {
+					return;
+				}
+
+				if (typeof cell.compareFn === 'function' && !cell.key) {
+					devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
+					return;
+				}
+				const key = cell.key;
+				if (!key) {
+					return;
+				}
+				const sortDirection = cell.sortDirection;
+				if (sortDirection === 'ASC' || sortDirection === 'DESC') {
+					if (typeof cell.compareFn === 'function') {
+						if (this.state._allowMultiSort || this.sortData.length === 0) {
+							this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
+						}
+						hasSortedCells = true;
+					}
+				}
+			});
+		};
+		headers.horizontal?.forEach(applySort);
+		headers.vertical?.forEach(applySort);
+		return hasSortedCells;
+	}
+
 	@Watch('_headers')
 	public validateHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		/**
@@ -256,40 +295,11 @@ export class KolTableStateful implements TableAPI {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
-							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
-								let hasSortedCells = false;
-								this.sortData = [];
-								headers.forEach((cell) => {
-									if (cell.type !== undefined && cell.type !== 'default') {
-										return;
-									}
-
-									if (typeof cell.compareFn === 'function' && !cell.key) {
-										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
-										return;
-									}
-									const key = cell.key;
-									if (!key) {
-										return;
-									}
-									const sortDirection = cell.sortDirection;
-									if (sortDirection === 'ASC' || sortDirection === 'DESC') {
-										if (typeof cell.compareFn === 'function') {
-											if (this.state._allowMultiSort || this.sortData.length === 0) {
-												this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
-											}
-											hasSortedCells = true;
-										}
-									}
-								});
-								if (hasSortedCells) {
-									setTimeout(() => this.updateSortedData());
-								}
-							};
-
 							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
-							headers.horizontal?.forEach(applySort);
-							headers.vertical?.forEach(applySort);
+							const hasSortedCells = this.initializeSortFromHeaders(headers);
+							if (hasSortedCells) {
+								setTimeout(() => this.updateSortedData());
+							}
 
 							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
 								this.disableSort = true;
@@ -548,6 +558,16 @@ export class KolTableStateful implements TableAPI {
 		return this.getSelectedData(selectedKeys);
 	}
 
+	/**
+	 * Resets the sort state to the default values defined in the `_headers` prop.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async resetSort(): Promise<void> {
+		this.initializeSortFromHeaders(this.state._headers);
+		this.updateSortedData();
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -595,6 +615,7 @@ export class KolTableStateful implements TableAPI {
 					}}
 					_selection={this.state._selection}
 					_hasSettingsMenu={this.state._hasSettingsMenu}
+					_variant={this._variant}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>

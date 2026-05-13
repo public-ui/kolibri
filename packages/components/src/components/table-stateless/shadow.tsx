@@ -10,6 +10,7 @@ import type {
 	TableHeaderCellsPropType,
 	TableSelectionPropType,
 	TableStatelessProps,
+	VariantClassNamePropType,
 } from '../../schema';
 
 @Component({
@@ -60,6 +61,11 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	public render(): JSX.Element {
 		return (
 			<KolTableStatelessWcTag
@@ -71,6 +77,7 @@ export class KolTableStateless implements TableStatelessProps {
 				_on={this._on}
 				_selection={this._selection}
 				_hasSettingsMenu={this._hasSettingsMenu}
+				_variant={this._variant}
 			/>
 		);
 	}

@@ -16,6 +16,8 @@ import { PredefinedSettings } from './predefined-settings';
 import { TableRenderCell } from './render-cell';
 import { TableSettingsColumnOptions } from './settings-column-options';
 import { TableSortData } from './sort-data';
+import { TableStatefulExport } from './stateful-export';
+import { TableStatefulResetSort } from './stateful-reset-sort';
 import { TableStatefulWithSelection } from './stateful-with-selection';
 import { TableStatefulWithSingleSelection } from './stateful-with-single-selection';
 import { TableStateless } from './stateless';
@@ -25,6 +27,7 @@ import { TableStatelessWithSettingsMenu } from './stateless-with-settings-menu';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
 import { TableStickyCol } from './sticky-col';
 import { TableStickyHeader } from './sticky-header';
+import { TableVariant } from './variant';
 import { TableWithFooter } from './with-footer';
 import { TableWithPagination } from './with-pagination';
 
@@ -45,6 +48,8 @@ export const TABLE_ROUTES: Routes = {
 		'settings-column-options': TableSettingsColumnOptions,
 		'sort-data': TableSortData,
 		'direction-aware-sort': TableDirectionAwareSort,
+		'stateful-export': TableStatefulExport,
+		'stateful-reset-sort': TableStatefulResetSort,
 		'stateful-with-selection': TableStatefulWithSelection,
 		'stateless-with-settings-menu': TableStatelessWithSettingsMenu,
 		'stateful-with-single-selection': TableStatefulWithSingleSelection,
@@ -58,5 +63,6 @@ export const TABLE_ROUTES: Routes = {
 		'with-pagination': TableWithPagination,
 		big: TableBig,
 		'action-and-render': TableActionAndRenderColumns,
+		variant: TableVariant,
 	},
 };

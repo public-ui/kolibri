@@ -1,11 +1,22 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { KolCardWcTag } from '../../core/component-names';
-import type { AlignPropType, DrawerAPI, DrawerStates, HasCloserPropType, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import type {
+	AlignPropType,
+	DrawerAPI,
+	DrawerStates,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriModalEventCallbacks,
+	LabelPropType,
+	OpenPropType,
+} from '../../schema';
 import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
+import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
+import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * @slot - The Content of drawer.
@@ -21,18 +32,50 @@ export class KolDrawer implements DrawerAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLKolCardWcElement;
+	private readonly cardHeadingId = nonce();
+
+	@State() private isModal: boolean = true;
 
 	/**
-	 * Opens the drawer.
+	 * Opens the drawer. Pass true to open as a modal drawer.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	async open() {
+	public async show(modal: boolean = false): Promise<void> {
+		if (this.dialogElement?.open) {
+			return;
+		}
+		this.isModal = modal;
 		this.state = {
 			...this.state,
 			_open: true,
 		};
-		this.dialogElement?.showModal();
+		if (modal) {
+			this.dialogElement?.showModal?.();
+		} else {
+			this.dialogElement?.show?.();
+		}
+		this._on?.onToggle?.(true);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.toggle);
+		}
+	}
+
+	/**
+	 * Opens the drawer as a modal.
+	 */
+	@Method()
+	public showModal(): Promise<void> {
+		return this.show(true);
+	}
+
+	/**
+	 * Opens the drawer.
+	 * @deprecated Use show() or showModal() instead.
+	 */
+	@Method()
+	public open(): Promise<void> {
+		return this.show(false);
 	}
 
 	/**
@@ -40,18 +83,21 @@ export class KolDrawer implements DrawerAPI {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	async close() {
+	public async close(): Promise<void> {
 		this.state = {
 			...this.state,
 			_open: false,
 		};
 		const wrapper = this.dialogWrapperElement;
-		if (!wrapper) return;
-		const computedStyle = window.getComputedStyle(wrapper);
-		if (computedStyle.animationName === 'none') {
-			this.handleCloseDialog();
+		if (!wrapper) {
+			return;
+		}
+		if (window.getComputedStyle(wrapper).animationName === 'none') {
+			this.dialogElement?.close?.();
 		}
 	}
+
+	private readonly _cardOn = { onClose: () => void this.close() };
 
 	private getWrapperRef = (el: HTMLKolCardWcElement | undefined) => (this.dialogWrapperElement = el as HTMLKolCardWcElement);
 	private renderDialogContent() {
@@ -63,13 +109,11 @@ export class KolDrawer implements DrawerAPI {
 					'kol-drawer__wrapper--open': this.state._open,
 					'kol-drawer__wrapper--is-closing': this.state._open === false,
 				})}
-				_label={this.state._label}
 				_hasCloser={this.state._hasCloser}
-				_on={{
-					onClose: () => {
-						void this.close();
-					},
-				}}
+				_headingId={this.cardHeadingId}
+				_label={this.state._label}
+				_level={this._level}
+				_on={this._cardOn}
 			>
 				<div class="kol-drawer__content">
 					<slot />
@@ -87,7 +131,13 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-drawer">
-				<dialog aria-label={this.state._label} class="kol-drawer__dialog" onCancel={handleCancelOverlay} ref={this.getRef}>
+				<dialog
+					aria-labelledby={this.cardHeadingId}
+					aria-modal={this.isModal ? 'true' : 'false'}
+					class="kol-drawer__dialog"
+					onCancel={handleCancelOverlay}
+					ref={this.getRef}
+				>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
@@ -114,6 +164,11 @@ export class KolDrawer implements DrawerAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
+
+	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
 
 	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
@@ -143,6 +198,11 @@ export class KolDrawer implements DrawerAPI {
 		validateHasCloser(this, value);
 	}
 
+	@Watch('_level')
+	public validateLevel(value?: HeadingLevel): void {
+		watchHeadingLevel(this, value);
+	}
+
 	@Watch('_open')
 	public validateOpen(value?: OpenPropType) {
 		if (typeof value === 'boolean') {
@@ -157,7 +217,7 @@ export class KolDrawer implements DrawerAPI {
 
 	private async openOrCloseBasedOnState() {
 		if (this.state._open) {
-			await this.open();
+			await this.show(this.isModal);
 		} else {
 			await this.close();
 		}
@@ -175,42 +235,44 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	private handleCloseDialog() {
-		this.dialogElement?.close();
 		this._on?.onClose?.();
+		this._on?.onToggle?.(false);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	}
 
-	private handleClose() {
+	private readonly handleClose = () => {
 		void (async () => {
 			await this.close();
 			this.handleCloseDialog();
 		})();
-	}
+	};
 
-	private handleAnimationEnd(e: Event): void {
+	private readonly handleAnimationEnd = (e: Event): void => {
 		const animationEvent = e as AnimationEvent;
 		if (animationEvent.animationName.includes('slideOut')) {
-			this.handleCloseDialog();
+			this.dialogElement?.close?.();
 		}
-	}
+	};
 
 	public componentDidLoad(): void {
-		this.dialogElement?.addEventListener('animationend', this.handleAnimationEnd.bind(this));
-		this.dialogElement?.addEventListener('close', this.handleClose.bind(this));
+		this.dialogElement?.addEventListener('animationend', this.handleAnimationEnd);
+		this.dialogElement?.addEventListener('close', this.handleClose);
 	}
 
 	public disconnectedCallback(): void {
-		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd.bind(this));
-		this.dialogElement?.removeEventListener('close', this.handleClose.bind(this));
+		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd);
+		this.dialogElement?.removeEventListener('close', this.handleClose);
 	}
 
 	public componentWillLoad() {
-		this.validateLabel(this._label);
-		this.validateOpen(this._open);
 		this.validateAlign(this._align);
 		this.validateHasCloser(this._hasCloser);
+		this.validateLabel(this._label);
+		this.validateOpen(this._open);
+		this.validateLevel(this._level);
 		this.validateOn(this._on);
 	}
 }

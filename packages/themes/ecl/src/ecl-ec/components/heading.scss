@@ -24,7 +24,7 @@
 		}
 
 		&--h6 {
-			color: rgb(234, 0, 255);
+			@include kol-typography-h6;
 		}
 	}
 }
