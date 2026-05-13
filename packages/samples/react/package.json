@@ -32,7 +32,7 @@
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.38.3",
-		"@types/node": "25.6.2",
+		"@types/node": "25.7.0",
 		"@types/papaparse": "5.5.2",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
@@ -56,7 +56,7 @@
 	"devDependencies": {
 		"@eslint/js": "9.39.4",
 		"@lhci/cli": "0.15.1",
-		"@playwright/test": "1.59.1",
+		"@playwright/test": "1.60.0",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
 		"cpy-cli": "6.0.0",

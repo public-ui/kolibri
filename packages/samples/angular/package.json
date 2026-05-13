@@ -31,7 +31,7 @@
 		"@angular/cli": "21.2.10",
 		"@angular/compiler-cli": "21.2.12",
 		"@types/jasmine": "6.0.0",
-		"@tailwindcss/postcss": "4.2.4",
+		"@tailwindcss/postcss": "4.3.0",
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"cpy-cli": "6.0.0",
 		"hono": "4.12.18",
