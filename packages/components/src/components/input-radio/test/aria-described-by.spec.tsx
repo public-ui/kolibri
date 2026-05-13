@@ -21,6 +21,6 @@ describe('kol-input-radio aria-describedby', () => {
 
 		const fieldset = page.root?.shadowRoot?.querySelector('fieldset');
 
-		expect(fieldset?.getAttribute('aria-describedby')).toBe('id-nonce-hint');
+		expect(fieldset?.getAttribute('aria-describedby')).toBe('input-radio-nonce-hint');
 	});
 });

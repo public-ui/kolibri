@@ -32,7 +32,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqeId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -370,7 +370,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@State() public state: InputNumberStates = {
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqeId('input-number'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};

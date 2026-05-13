@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqeId } from '../../utils/dev.utils';
 
 import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
@@ -44,7 +44,7 @@ export class KolToastContainer implements ToasterAPI {
 				variant: 'card',
 			},
 			status: 'adding',
-			id: `toast-${nonce()}`,
+			id: createUniqeId('toast'),
 		};
 		this.state = {
 			...this.state,

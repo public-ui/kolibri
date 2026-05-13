@@ -8,7 +8,7 @@ import { watchHeadingLevel } from '../heading/validation';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqeId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -95,7 +95,7 @@ export class KolCardWc implements CardAPI {
 	 * Defines the ID of the heading element. If not provided, an internal ID will be generated.
 	 * @internal
 	 */
-	@Prop() public _headingId?: string = nonce();
+	@Prop() public _headingId?: string = createUniqeId('card-heading');
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).

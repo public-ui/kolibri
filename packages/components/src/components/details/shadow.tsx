@@ -2,7 +2,7 @@ import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@st
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqeId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -29,7 +29,7 @@ import { watchHeadingLevel } from '../heading/validation';
 export class KolDetails implements DetailsAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 
-	private readonly nonce = nonce();
+	private readonly id = createUniqeId('details');
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
@@ -80,7 +80,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		const rootClass = 'kol-details';
 
 		const props: CollapsibleProps = {
-			id: this.nonce,
+			id: this.id,
 			label: _label,
 			open: _open,
 			disabled: _disabled,

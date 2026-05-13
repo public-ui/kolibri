@@ -23,7 +23,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
+import { createUniqeId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -292,7 +292,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	@State() public state: InputRadioStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqeId('input-radio'),
 		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',

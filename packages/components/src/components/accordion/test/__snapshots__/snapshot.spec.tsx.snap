@@ -3,13 +3,13 @@
 exports[`kol-accordion should render with _label="Überschrift" _level=3 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
-    <div class="collapsible kol-accordion" id="nonce">
+    <div class="collapsible kol-accordion" id="accordion-nonce">
       <h3 class="collapsible__heading kol-accordion__heading kol-headline kol-headline--h3 kol-headline--single">
-        <kol-button-wc _ariacontrols="nonce-control" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="nonce-heading" slot="expert"></kol-button-wc>
+        <kol-button-wc _ariacontrols="accordion-nonce-control" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-nonce-heading" slot="expert"></kol-button-wc>
       </h3>
       <div class="collapsible__wrapper kol-accordion__wrapper">
         <div class="collapsible__wrapper-animation kol-accordion__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="nonce-heading" class="collapsible__content kol-accordion__content" id="nonce-control" role="region">
+          <div aria-hidden="true" aria-labelledby="accordion-nonce-heading" class="collapsible__content kol-accordion__content" id="accordion-nonce-control" role="region">
             <slot></slot>
           </div>
         </div>
@@ -22,13 +22,13 @@ exports[`kol-accordion should render with _label="Überschrift" _level=3 1`] = `
 exports[`kol-accordion should render with _label="Überschrift" _open=false _disabled=false 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
-    <div class="collapsible kol-accordion" id="nonce">
+    <div class="collapsible kol-accordion" id="accordion-nonce">
       <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
-        <kol-button-wc _ariacontrols="nonce-control" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="nonce-heading" slot="expert"></kol-button-wc>
+        <kol-button-wc _ariacontrols="accordion-nonce-control" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-nonce-heading" slot="expert"></kol-button-wc>
       </strong>
       <div class="collapsible__wrapper kol-accordion__wrapper">
         <div class="collapsible__wrapper-animation kol-accordion__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="nonce-heading" class="collapsible__content kol-accordion__content" id="nonce-control" role="region">
+          <div aria-hidden="true" aria-labelledby="accordion-nonce-heading" class="collapsible__content kol-accordion__content" id="accordion-nonce-control" role="region">
             <slot></slot>
           </div>
         </div>
@@ -41,13 +41,13 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
 exports[`kol-accordion should render with _label="Überschrift" _open=false _disabled=true 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
-    <div class="collapsible collapsible--disabled kol-accordion" id="nonce">
+    <div class="collapsible collapsible--disabled kol-accordion" id="accordion-nonce">
       <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
-        <kol-button-wc _ariacontrols="nonce-control" _disabled="" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="nonce-heading" slot="expert"></kol-button-wc>
+        <kol-button-wc _ariacontrols="accordion-nonce-control" _disabled="" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-nonce-heading" slot="expert"></kol-button-wc>
       </strong>
       <div class="collapsible__wrapper kol-accordion__wrapper">
         <div class="collapsible__wrapper-animation kol-accordion__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="nonce-heading" class="collapsible__content kol-accordion__content" id="nonce-control" role="region">
+          <div aria-hidden="true" aria-labelledby="accordion-nonce-heading" class="collapsible__content kol-accordion__content" id="accordion-nonce-control" role="region">
             <slot></slot>
           </div>
         </div>
@@ -60,13 +60,13 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
 exports[`kol-accordion should render with _label="Überschrift" _open=true _disabled=false 1`] = `
 <kol-accordion _open="">
   <template shadowrootmode="open">
-    <div class="collapsible collapsible--open kol-accordion" id="nonce">
+    <div class="collapsible collapsible--open kol-accordion" id="accordion-nonce">
       <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
-        <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _icons="kolicon-chevron-down" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="nonce-heading" slot="expert"></kol-button-wc>
+        <kol-button-wc _ariacontrols="accordion-nonce-control" _ariaexpanded="" _icons="kolicon-chevron-down" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-nonce-heading" slot="expert"></kol-button-wc>
       </strong>
       <div class="collapsible__wrapper kol-accordion__wrapper">
         <div class="collapsible__wrapper-animation kol-accordion__wrapper-animation">
-          <div aria-labelledby="nonce-heading" class="collapsible__content kol-accordion__content" id="nonce-control" role="region">
+          <div aria-labelledby="accordion-nonce-heading" class="collapsible__content kol-accordion__content" id="accordion-nonce-control" role="region">
             <slot></slot>
           </div>
         </div>
@@ -79,13 +79,13 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
 exports[`kol-accordion should render with _label="Überschrift" _open=true _disabled=true 1`] = `
 <kol-accordion _open="">
   <template shadowrootmode="open">
-    <div class="collapsible collapsible--disabled collapsible--open kol-accordion" id="nonce">
+    <div class="collapsible collapsible--disabled collapsible--open kol-accordion" id="accordion-nonce">
       <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
-        <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _disabled="" _icons="kolicon-chevron-down" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="nonce-heading" slot="expert"></kol-button-wc>
+        <kol-button-wc _ariacontrols="accordion-nonce-control" _ariaexpanded="" _disabled="" _icons="kolicon-chevron-down" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-nonce-heading" slot="expert"></kol-button-wc>
       </strong>
       <div class="collapsible__wrapper kol-accordion__wrapper">
         <div class="collapsible__wrapper-animation kol-accordion__wrapper-animation">
-          <div aria-labelledby="nonce-heading" class="collapsible__content kol-accordion__content" id="nonce-control" role="region">
+          <div aria-labelledby="accordion-nonce-heading" class="collapsible__content kol-accordion__content" id="accordion-nonce-control" role="region">
             <slot></slot>
           </div>
         </div>
@@ -98,13 +98,13 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
 exports[`kol-accordion should render with _label="Überschrift" 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
-    <div class="collapsible kol-accordion" id="nonce">
+    <div class="collapsible kol-accordion" id="accordion-nonce">
       <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
-        <kol-button-wc _ariacontrols="nonce-control" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="nonce-heading" slot="expert"></kol-button-wc>
+        <kol-button-wc _ariacontrols="accordion-nonce-control" _icons="kolicon-chevron-right" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-nonce-heading" slot="expert"></kol-button-wc>
       </strong>
       <div class="collapsible__wrapper kol-accordion__wrapper">
         <div class="collapsible__wrapper-animation kol-accordion__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="nonce-heading" class="collapsible__content kol-accordion__content" id="nonce-control" role="region">
+          <div aria-hidden="true" aria-labelledby="accordion-nonce-heading" class="collapsible__content kol-accordion__content" id="accordion-nonce-control" role="region">
             <slot></slot>
           </div>
         </div>

@@ -27,7 +27,7 @@ import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqeId } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
 
@@ -68,7 +68,7 @@ const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryPr
 	shadow: true,
 })
 export class KolNav implements NavAPI {
-	private readonly navId = 'kol-nav-' + nonce();
+	private readonly navId = createUniqeId('kol-nav');
 
 	private readonly listId = this.navId + '-list';
 

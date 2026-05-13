@@ -79,3 +79,5 @@ if (isTestMode()) {
 }
 
 export { nonce };
+
+export const createUniqeId = (id: string): string => `${id}-${nonce()}`;
