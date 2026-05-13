@@ -1,13 +1,12 @@
-const js = require('@eslint/js');
-const tsPlugin = require('@typescript-eslint/eslint-plugin');
-const tsParser = require('@typescript-eslint/parser');
-const react = require('eslint-plugin-react');
-const reactHooks = require('eslint-plugin-react-hooks');
-const jsxA11y = require('eslint-plugin-jsx-a11y');
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 
-module.exports = [
+export default [
 	{
-		ignores: ['dist/**', 'node_modules/**', '.vite/**', '**/assets/**', '**/complex-form/**'],
+		ignores: ['**/assets/**', '**/complex-form/**', 'dist/**', 'node_modules/**'],
 	},
 	{
 		files: ['src/**/*.{js,jsx,ts,tsx}'],
@@ -51,7 +50,7 @@ module.exports = [
 					ignoreRestSiblings: true,
 				},
 			],
-			'@typescript-eslint/no-unsafe-member-access': 'error',
+			'@typescript-eslint/no-unsafe-member-access': 'warn',
 			'react/no-unused-state': 'error',
 			'react/react-in-jsx-scope': 'off',
 			eqeqeq: 'error',

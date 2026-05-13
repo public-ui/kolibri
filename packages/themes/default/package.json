@@ -60,7 +60,6 @@
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.5",
-		"@eslint/js": "10.0.1",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/stylelint-rules": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
@@ -72,7 +71,7 @@
 		"autoprefixer": "10.5.0",
 		"cpy-cli": "7.0.0",
 		"cross-env": "10.1.0",
-		"eslint": "9.17.0",
+		"eslint": "9.39.4",
 		"nodemon": "3.1.14",
 		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.14",

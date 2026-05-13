@@ -1,10 +1,7 @@
-const js = require('@eslint/js');
-const tsPlugin = require('@typescript-eslint/eslint-plugin');
-const tsParser = require('@typescript-eslint/parser');
-const { dirname } = require('path');
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 
-
-module.exports = [
+export default [
 	{
 		ignores: ['dist/**', 'node_modules/**'],
 	},
@@ -15,7 +12,7 @@ module.exports = [
 			parserOptions: {
 				project: 'tsconfig.json',
 				sourceType: 'module',
-				tsconfigRootDir: __dirname,
+				tsconfigRootDir: import.meta.dirname,
 			},
 		},
 		plugins: {

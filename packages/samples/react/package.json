@@ -2,6 +2,7 @@
 	"name": "@public-ui/sample-react",
 	"version": "4.1.5-rc.0",
 	"description": "This app contains samples for the KoliBri/Public UI",
+	"type": "module",
 	"license": "EUPL-1.2",
 	"repository": {
 		"type": "git",
@@ -54,13 +55,12 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@eslint/js": "10.0.1",
 		"@lhci/cli": "0.15.1",
 		"@playwright/test": "1.59.1",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
 		"cpy-cli": "7.0.0",
-		"eslint": "9.17.0",
+		"eslint": "9.39.4",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.1.1",

@@ -34,7 +34,6 @@
 		"react-router-dom": "7.15.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "10.0.1",
 		"@types/node": "25.6.2",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
@@ -44,7 +43,7 @@
 		"@unocss/vite": "66.6.8",
 		"@vitejs/plugin-react-swc": "4.3.0",
 		"cpy-cli": "7.0.0",
-		"eslint": "9.17.0",
+		"eslint": "9.39.4",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.1.1",
