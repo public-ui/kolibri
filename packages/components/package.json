@@ -68,6 +68,7 @@
 		"wcag"
 	],
 	"scripts": {
+		"assets:kolicons": "pnpm --filter @public-ui/icons build",
 		"build": "pnpm build:light",
 		"build:light": "mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
 		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src assets/kolicons",
@@ -85,9 +86,9 @@
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postinstall": "node ./postinstall.js",
-		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
+		"prebuild:light": "pnpm clear && pnpm assets:kolicons",
 		"prepack": "pnpm build && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/minify.js",
-		"pretest:e2e": "pnpm --filter @public-ui/icons build",
+		"pretest:e2e": "pnpm assets:kolicons",
 		"xunused": "knip"
 	},
 	"dependencies": {
