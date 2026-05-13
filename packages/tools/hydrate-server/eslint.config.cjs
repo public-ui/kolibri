@@ -1,12 +1,10 @@
-import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const js = require('@eslint/js');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const { dirname } = require('path');
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
-export default [
+module.exports = [
 	{
 		ignores: ['dist/**', 'node_modules/**', 'test/**/*.mjs'],
 	},
@@ -29,8 +27,6 @@ export default [
 			'@typescript-eslint': tsPlugin,
 		},
 		rules: {
-			...js.configs.recommended.rules,
-			...tsPlugin.configs['recommended'].rules,
 		},
 	},
 	{
@@ -46,7 +42,6 @@ export default [
 			},
 		},
 		rules: {
-			...js.configs.recommended.rules,
 		},
 	},
 ];

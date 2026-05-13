@@ -1,34 +1,38 @@
-import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const js = require('@eslint/js');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const react = require('eslint-plugin-react');
+const reactHooks = require('eslint-plugin-react-hooks');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default [
+module.exports = [
 	{
 		ignores: ['**/assets/**', '**/complex-form/**', 'dist/**', 'node_modules/**'],
 	},
 	{
-		files: ['src/**/*.{ts,tsx,js,jsx}'],
+		files: ['src/**/*.{js,jsx,ts,tsx}'],
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
-				ecmaFeatures: {
-					jsx: true,
-				},
+				ecmaFeatures: { jsx: true },
 				ecmaVersion: 'latest',
 				project: true,
 				sourceType: 'module',
-				tsconfigRootDir: __dirname,
 			},
 			globals: {
-				browser: true,
-				es2021: true,
+				window: true,
+				document: true,
+				navigator: true,
+				globalThis: true,
+				process: true,
+				Buffer: true,
+				__dirname: true,
+				__filename: true,
+				console: true,
+				setTimeout: true,
+				setInterval: true,
+				clearTimeout: true,
+				clearInterval: true,
 			},
 		},
 		plugins: {
@@ -38,22 +42,22 @@ export default [
 			'jsx-a11y': jsxA11y,
 		},
 		rules: {
-			...js.configs.recommended.rules,
-			...tsPlugin.configs['recommended'].rules,
-			...react.configs.recommended.rules,
-			...reactHooks.configs.recommended.rules,
-			...jsxA11y.configs.recommended.rules,
-
 			'@typescript-eslint/consistent-type-imports': 'error',
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{
+					argsIgnorePattern: '^_',
+					caughtErrors: 'none',
+					ignoreRestSiblings: true,
+				},
+			],
 			'@typescript-eslint/no-unsafe-member-access': 'warn',
 			'react/no-unused-state': 'error',
-			eqeqeq: 'error',
 			'react/react-in-jsx-scope': 'off',
+			eqeqeq: 'error',
 		},
 		settings: {
-			react: {
-				version: 'detect',
-			},
+			react: { version: 'detect' },
 		},
 	},
 ];

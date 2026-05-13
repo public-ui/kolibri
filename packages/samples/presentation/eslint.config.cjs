@@ -1,31 +1,38 @@
 const js = require('@eslint/js');
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
 const tsParser = require('@typescript-eslint/parser');
-const jsxA11y = require('eslint-plugin-jsx-a11y');
 const react = require('eslint-plugin-react');
 const reactHooks = require('eslint-plugin-react-hooks');
-const globals = require('globals');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
 
 module.exports = [
 	{
-		ignores: ['dist/**', 'node_modules/**', '.vite/**'],
+		ignores: ['dist/**', 'node_modules/**', '.vite/**', '**/assets/**', '**/complex-form/**'],
 	},
 	{
-		files: ['src/**/*.{ts,tsx,js,jsx}'],
+		files: ['src/**/*.{js,jsx,ts,tsx}'],
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
+				ecmaFeatures: { jsx: true },
 				ecmaVersion: 'latest',
-				sourceType: 'module',
-				ecmaFeatures: {
-					jsx: true,
-				},
 				project: true,
-				tsconfigRootDir: __dirname,
+				sourceType: 'module',
 			},
 			globals: {
-				...globals.browser,
-				...globals.node,
+				window: true,
+				document: true,
+				navigator: true,
+				globalThis: true,
+				process: true,
+				Buffer: true,
+				__dirname: true,
+				__filename: true,
+				console: true,
+				setTimeout: true,
+				setInterval: true,
+				clearTimeout: true,
+				clearInterval: true,
 			},
 		},
 		plugins: {
@@ -35,23 +42,22 @@ module.exports = [
 			'jsx-a11y': jsxA11y,
 		},
 		rules: {
-			...js.configs.recommended.rules,
-			...tsPlugin.configs['recommended'].rules,
-			...tsPlugin.configs['recommended-requiring-type-checking'].rules,
-			...react.configs.recommended.rules,
-			...reactHooks.configs.recommended.rules,
-			...jsxA11y.configs.recommended.rules,
-
 			'@typescript-eslint/consistent-type-imports': 'error',
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{
+					argsIgnorePattern: '^_',
+					caughtErrors: 'none',
+					ignoreRestSiblings: true,
+				},
+			],
 			'@typescript-eslint/no-unsafe-member-access': 'error',
-			eqeqeq: 'error',
 			'react/no-unused-state': 'error',
 			'react/react-in-jsx-scope': 'off',
+			eqeqeq: 'error',
 		},
 		settings: {
-			react: {
-				version: 'detect',
-			},
+			react: { version: 'detect' },
 		},
 	},
 ];

@@ -1,4 +1,4 @@
-import { SuggestionsPropType } from '@public-ui/components';
+import type { SuggestionsPropType } from '@public-ui/components';
 import { KolCombobox, KolSpin } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';

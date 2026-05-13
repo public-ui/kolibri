@@ -26,7 +26,7 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "3.10.0",
+		"@hookform/resolvers": "5.2.2",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
@@ -54,18 +54,18 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.39.4",
+		"@eslint/js": "10.0.1",
 		"@lhci/cli": "0.15.1",
 		"@playwright/test": "1.59.1",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
-		"cpy-cli": "6.0.0",
-		"eslint": "9.39.4",
+		"cpy-cli": "7.0.0",
+		"eslint": "9.17.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.1.1",
 		"http-server": "14.1.1",
-		"knip": "5.88.1",
+		"knip": "6.12.1",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",

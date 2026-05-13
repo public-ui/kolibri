@@ -42,7 +42,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
 	const icon = open ? 'kolicon-chevron-down' : 'kolicon-chevron-right';
 
-	const headingId = `${id}-heading`;
+	const headingId = `heading-${id}`;
 
 	return (
 		<div
@@ -63,7 +63,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 					ref={HeadingButtonProps?.ref}
 					slot="expert"
 					id={headingId}
-					_ariaControls={`${id}-control`}
+					_ariaControls={`control-${id}`}
 					_ariaExpanded={open}
 					_disabled={disabled}
 					_icons={HeadingButtonProps?._icons || `${icon}`}

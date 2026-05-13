@@ -2,7 +2,7 @@
 	"version": "4.1.5-rc.0",
 	"devDependencies": {
 		"license-report": "6.8.2",
-		"npm-check-updates": "19.6.6",
+		"npm-check-updates": "22.1.1",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",

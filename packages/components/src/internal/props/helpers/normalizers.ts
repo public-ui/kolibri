@@ -5,9 +5,9 @@ export function normalizeString(value?: unknown): string | never {
 		return value;
 	}
 	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
-		return String(value);
+		return `${value}`;
 	}
-	throw new Error(`Invalid string: ${value as string}`);
+	throw new Error(`Invalid string value: ${value as string}`);
 }
 
 export function normalizeInteger(value?: unknown): number | never {
