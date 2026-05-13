@@ -14,6 +14,7 @@ import {
 	type Stringified,
 } from '../../schema';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqeId } from '../../utils/dev.utils';
 import KolFieldControlHintFc from '../FormFieldHint';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 
@@ -109,12 +110,13 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 	const hasExpertSlot = showExpertSlot(label);
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
+	const labelId = createRelatedUniqeId(id, 'label');
 	const tooltipController = useTooltipInsteadOfLabel ? getFieldControlTooltipController(id) : undefined;
 
 	if (tooltipController) {
 		tooltipController.watchAlign(tooltipAlign);
 		tooltipController.watchBadgeText(badgeText || '');
-		tooltipController.watchId(`${id}-label`);
+		tooltipController.watchId(labelId);
 		tooltipController.watchLabel(label);
 	} else {
 		destroyFieldControlTooltipController(id);
@@ -140,7 +142,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 						badgeText={badgeText || ''}
 						label={label}
 						align={tooltipAlign}
-						id={`${id}-label`}
+						id={labelId}
 						refFloating={
 							tooltipFloatingRef ??
 							((el?: HTMLDivElement) => {

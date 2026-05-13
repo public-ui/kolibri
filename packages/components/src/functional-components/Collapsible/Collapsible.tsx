@@ -4,6 +4,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { KolButtonWcTag } from '../../core/component-names';
 import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqeId } from '../../utils/dev.utils';
 import KolHeadingFc from '../Heading';
 
 type ClassType =
@@ -42,7 +43,8 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
 	const icon = open ? 'kolicon-chevron-down' : 'kolicon-chevron-right';
 
-	const headingId = `${id}-heading`;
+	const headingId = createRelatedUniqeId(id, 'heading');
+	const controlId = createRelatedUniqeId(id, 'control');
 
 	return (
 		<div
@@ -63,7 +65,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 					ref={HeadingButtonProps?.ref}
 					slot="expert"
 					id={headingId}
-					_ariaControls={`${id}-control`}
+					_ariaControls={controlId}
 					_ariaExpanded={open}
 					_disabled={disabled}
 					_icons={HeadingButtonProps?._icons || `${icon}`}
@@ -78,7 +80,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 						aria-labelledby={headingId}
 						role="region"
 						class={clsx('collapsible__content', ContentProps?.class)}
-						id={`${id}-control`}
+						id={controlId}
 					>
 						{children}
 					</div>

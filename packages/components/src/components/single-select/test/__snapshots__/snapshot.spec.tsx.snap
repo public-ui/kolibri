@@ -4,7 +4,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -55,7 +55,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _alert="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -103,7 +103,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -151,7 +151,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -167,7 +167,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="single-select-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="single-select-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" role="listbox" style="--visible-options: 5;">
@@ -190,7 +190,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
           </div>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="single-select-nonce-hint">
+      <span class="kol-form-field__hint" id="single-select-hint-nonce">
         Hint
       </span>
     </div>
@@ -202,7 +202,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -256,7 +256,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -308,7 +308,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -360,7 +360,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -376,7 +376,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="single-select-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="single-select-error-nonce" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" role="listbox" style="--visible-options: 5;">
@@ -408,7 +408,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -424,7 +424,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="single-select-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="single-select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" role="listbox" style="--visible-options: 5;">
@@ -456,7 +456,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _readonly="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -504,7 +504,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -555,7 +555,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -603,7 +603,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-nonce-label">
+      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">

@@ -14,6 +14,6 @@ describe('kol-textarea aria-describedby', () => {
 		const textarea = page.root?.shadowRoot?.querySelector('textarea');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		expect(textarea?.getAttribute('aria-describedby')).toBe('textarea-nonce-hint');
+		expect(textarea?.getAttribute('aria-describedby')).toBe('textarea-hint-nonce');
 	});
 });

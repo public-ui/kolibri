@@ -1,6 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqeId } from '../../utils/dev.utils';
 
 type FormFieldHintProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	hint?: string;
@@ -13,7 +14,7 @@ const KolFormFieldHintFc: FC<FormFieldHintProps> = ({ id, class: classNames, hin
 	}
 
 	return (
-		<span class={clsx(`${baseClassName}__hint`, classNames)} id={`${id}-hint`} {...other}>
+		<span class={clsx(`${baseClassName}__hint`, classNames)} id={createRelatedUniqeId(id || '', 'hint')} {...other}>
 			{hint}
 		</span>
 	);

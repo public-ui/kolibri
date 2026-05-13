@@ -6,7 +6,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -40,7 +40,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -71,7 +71,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--disabled kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -102,7 +102,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -117,12 +117,12 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -136,7 +136,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -167,7 +167,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -198,7 +198,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -229,7 +229,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -244,7 +244,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
@@ -260,7 +260,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -275,7 +275,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
@@ -291,7 +291,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -322,7 +322,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -356,7 +356,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--touched kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -387,7 +387,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -424,7 +424,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -458,7 +458,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -489,7 +489,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -517,10 +517,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -534,7 +534,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </label>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -554,7 +554,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -585,7 +585,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -616,7 +616,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -644,10 +644,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -675,10 +675,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-button">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -709,7 +709,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -740,7 +740,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -774,7 +774,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -805,7 +805,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -836,7 +836,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -870,7 +870,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -901,7 +901,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -929,10 +929,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -946,7 +946,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </label>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -966,7 +966,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -997,7 +997,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1028,7 +1028,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1056,10 +1056,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-switch">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1087,10 +1087,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-switch">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1121,7 +1121,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1152,7 +1152,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1186,7 +1186,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1217,7 +1217,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1242,7 +1242,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1276,7 +1276,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1307,7 +1307,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--disabled kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1338,7 +1338,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1353,12 +1353,12 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -1372,7 +1372,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1403,7 +1403,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1434,7 +1434,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1465,7 +1465,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--error kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1480,7 +1480,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
@@ -1496,7 +1496,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1511,7 +1511,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
         </div>
@@ -1527,7 +1527,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1558,7 +1558,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1592,7 +1592,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1623,7 +1623,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1660,7 +1660,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1694,7 +1694,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1725,7 +1725,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1753,10 +1753,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1770,7 +1770,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </label>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -1790,7 +1790,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1821,7 +1821,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1852,7 +1852,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1880,10 +1880,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1911,10 +1911,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1945,7 +1945,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1976,7 +1976,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2010,7 +2010,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2041,7 +2041,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2072,7 +2072,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2106,7 +2106,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2137,7 +2137,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2165,10 +2165,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2182,7 +2182,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </label>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -2202,7 +2202,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2233,7 +2233,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2264,7 +2264,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2292,10 +2292,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2323,10 +2323,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2357,7 +2357,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2388,7 +2388,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2422,7 +2422,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2453,7 +2453,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2484,7 +2484,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2518,7 +2518,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2549,7 +2549,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2577,10 +2577,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2594,7 +2594,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </label>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -2614,7 +2614,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2645,7 +2645,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2676,7 +2676,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2704,10 +2704,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-switch">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2735,10 +2735,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2769,7 +2769,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2800,7 +2800,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2834,7 +2834,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2865,7 +2865,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2896,7 +2896,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2930,7 +2930,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2961,7 +2961,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled" disabled="" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2989,10 +2989,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3006,7 +3006,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </label>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-checkbox-nonce-hint">
+      <span class="kol-form-field__hint" id="input-checkbox-hint-nonce">
         Hint
       </span>
     </div>
@@ -3026,7 +3026,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3057,7 +3057,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3088,7 +3088,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3116,10 +3116,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--error kol-checkbox--indeterminate kol-checkbox--touched kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-error" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-error-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3147,10 +3147,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
-              <input aria-describedby="input-checkbox-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
+              <input aria-describedby="input-checkbox-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3181,7 +3181,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3212,7 +3212,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span kol-span--has-badge">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3246,7 +3246,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3277,7 +3277,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-nonce-label">
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">

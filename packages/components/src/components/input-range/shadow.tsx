@@ -28,7 +28,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
-import { createUniqeId } from '../../utils/dev.utils';
+import { createRelatedUniqeId, createUniqeId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -181,7 +181,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return {
 			...this.getGenericInputProps(),
 			name: this.state._name ? `${this.state._name}-range` : undefined,
-			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			list: this.hasSuggestions ? createRelatedUniqeId(this.state._id, 'list') : undefined,
 			type: 'range',
 			tabIndex: -1,
 			id: undefined,
@@ -194,7 +194,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return {
 			...this.getGenericInputProps(),
 			name: this.state._name ? `${this.state._name}-number` : undefined,
-			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			list: this.hasSuggestions ? createRelatedUniqeId(this.state._id, 'list') : undefined,
 			type: 'number',
 			ref: this.setInputNumberRef,
 			onKeyDown: this.onKeyDown,

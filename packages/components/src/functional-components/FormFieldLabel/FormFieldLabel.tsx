@@ -4,6 +4,7 @@ import { translate } from '../../i18n';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import { buildBadgeTextString } from '../../schema';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqeId } from '../../utils/dev.utils';
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';
@@ -40,7 +41,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 		<Component
 			{...other}
 			class={clsx(`${baseClassName}__label`, classNames)}
-			id={!useTooltipInsteadOfLabel ? `${id}-label` : undefined}
+			id={!useTooltipInsteadOfLabel ? createRelatedUniqeId(id, 'label') : undefined}
 			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}
 		>

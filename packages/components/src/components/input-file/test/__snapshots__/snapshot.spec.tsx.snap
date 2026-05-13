@@ -4,7 +4,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -39,7 +39,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -71,7 +71,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-form-field--disabled kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -103,7 +103,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -121,12 +121,12 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <span class="kol-input-container__filename">
               kol-filename-text
             </span>
-            <input aria-describedby="input-file-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
+            <input aria-describedby="input-file-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
             <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="input-file-nonce-hint">
+      <span class="kol-form-field__hint" id="input-file-hint-nonce">
         Hint
       </span>
     </div>
@@ -138,7 +138,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -176,7 +176,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -212,7 +212,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -248,7 +248,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -266,7 +266,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <span class="kol-input-container__filename">
               kol-filename-text
             </span>
-            <input aria-describedby="input-file-nonce-error" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
+            <input aria-describedby="input-file-error-nonce" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
             <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
@@ -280,7 +280,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -298,7 +298,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <span class="kol-input-container__filename">
               kol-filename-text
             </span>
-            <input aria-describedby="input-file-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
+            <input aria-describedby="input-file-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
             <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
@@ -312,7 +312,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext" _readonly="">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -344,7 +344,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -379,7 +379,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -415,7 +415,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-form-field--touched kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -447,7 +447,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">
-      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-nonce-label">
+      <label class="kol-form-field__label" htmlfor="input-file-nonce" id="input-file-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">

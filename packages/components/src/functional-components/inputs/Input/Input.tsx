@@ -2,6 +2,7 @@ import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import clsx from '../../../utils/clsx';
+import { createRelatedUniqeId } from '../../../utils/dev.utils';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 
@@ -33,7 +34,7 @@ const InputFc: FC<InputProps> = (props) => {
 		disabled: disabled,
 		readonly: readonly,
 		type: 'text',
-		list: suggestions ? `${other.id}-list` : undefined,
+		list: suggestions && typeof other.id === 'string' ? createRelatedUniqeId(other.id, 'list') : undefined,
 		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
 	};
