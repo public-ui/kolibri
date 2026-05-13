@@ -46,7 +46,7 @@
 		"@unocss/webpack": "0.58.9",
 		"adopted-style-sheets": "1.1.9-rc.21",
 		"ajv": "8.20.0",
-		"cpy-cli": "6.0.0",
+		"cpy-cli": "7.0.0",
 		"cross-env": "10.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"monaco-editor-webpack-plugin": "7.1.1",
