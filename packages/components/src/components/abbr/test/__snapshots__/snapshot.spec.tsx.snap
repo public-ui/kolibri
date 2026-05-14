@@ -3,7 +3,7 @@
 exports[`kol-abbr should render with _label="Text" 1`] = `
 <kol-abbr class="kol-abbr">
   <template shadowrootmode="open">
-    <abbr tabindex="0">
+    <abbr>
       <slot></slot>
     </abbr>
     <div class="kol-tooltip__floating">

@@ -31,8 +31,7 @@ export class KolAbbr implements AbbrAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-abbr">
-				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-				<abbr ref={this.setAbbrRef} tabIndex={this.state._label ? 0 : undefined}>
+				<abbr ref={this.setAbbrRef}>
 					<slot />
 				</abbr>
 				{this.state._label ? (
