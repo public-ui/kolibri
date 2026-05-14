@@ -29,6 +29,9 @@ export function showOverlay(overlay: HTMLElement): void {
  * @param overlay Get the overlay element reference
  */
 export function hideOverlay(overlay: HTMLElement): void {
+	const wasLast = [...VISIBLE_OVERLAYS].at(-1) === overlay;
 	VISIBLE_OVERLAYS.delete(overlay);
-	[...VISIBLE_OVERLAYS].at(-1)?.style.setProperty('z-index', '1000');
+	if (wasLast && VISIBLE_OVERLAYS.size > 0) {
+		[...VISIBLE_OVERLAYS].at(-1)?.style.setProperty('z-index', '1000');
+	}
 }
