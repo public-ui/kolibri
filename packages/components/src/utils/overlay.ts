@@ -15,8 +15,13 @@ const VISIBLE_OVERLAYS: Set<HTMLElement> = new Set();
  * @param overlay Get the overlay element reference
  */
 export function showOverlay(overlay: HTMLElement): void {
-	// Only the current last overlay needs to be demoted — all others are already at 999.
-	[...VISIBLE_OVERLAYS].at(-1)?.style.setProperty('z-index', '999');
+	// Ensure the overlay is at the end of the set to maintain the invariant:
+	// all overlays have z-index 999 except the last one (z-index 1000).
+	const last = [...VISIBLE_OVERLAYS].at(-1);
+	if (last && last !== overlay) {
+		last.style.setProperty('z-index', '999');
+	}
+	VISIBLE_OVERLAYS.delete(overlay);
 	VISIBLE_OVERLAYS.add(overlay);
 	overlay.style.setProperty('z-index', '1000');
 }
@@ -29,9 +34,7 @@ export function showOverlay(overlay: HTMLElement): void {
  * @param overlay Get the overlay element reference
  */
 export function hideOverlay(overlay: HTMLElement): void {
-	const wasLast = [...VISIBLE_OVERLAYS].at(-1) === overlay;
-	VISIBLE_OVERLAYS.delete(overlay);
-	if (wasLast && VISIBLE_OVERLAYS.size > 0) {
+	if (VISIBLE_OVERLAYS.delete(overlay) && VISIBLE_OVERLAYS.size > 0) {
 		[...VISIBLE_OVERLAYS].at(-1)?.style.setProperty('z-index', '1000');
 	}
 }
