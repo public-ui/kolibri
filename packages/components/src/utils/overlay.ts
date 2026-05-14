@@ -18,12 +18,14 @@ export function showOverlay(overlay: HTMLElement): void {
 	// Ensure the overlay is at the end of the set to maintain the invariant:
 	// all overlays have z-index 999 except the last one (z-index 1000).
 	const last = [...VISIBLE_OVERLAYS].at(-1);
-	if (last && last !== overlay) {
-		last.style.setProperty('z-index', '999');
+	if (last !== overlay) {
+		if (last) {
+			last.style.setProperty('z-index', '999');
+		}
+		VISIBLE_OVERLAYS.delete(overlay);
+		VISIBLE_OVERLAYS.add(overlay);
+		overlay.style.setProperty('z-index', '1000');
 	}
-	VISIBLE_OVERLAYS.delete(overlay);
-	VISIBLE_OVERLAYS.add(overlay);
-	overlay.style.setProperty('z-index', '1000');
 }
 
 /**
@@ -34,7 +36,8 @@ export function showOverlay(overlay: HTMLElement): void {
  * @param overlay Get the overlay element reference
  */
 export function hideOverlay(overlay: HTMLElement): void {
-	if (VISIBLE_OVERLAYS.delete(overlay) && VISIBLE_OVERLAYS.size > 0) {
-		[...VISIBLE_OVERLAYS].at(-1)?.style.setProperty('z-index', '1000');
+	const overlays = [...VISIBLE_OVERLAYS];
+	if (VISIBLE_OVERLAYS.delete(overlay) && overlays.at(-1) === overlay && overlays.length > 1) {
+		overlays.at(-2)?.style.setProperty('z-index', '1000');
 	}
 }
