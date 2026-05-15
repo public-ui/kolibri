@@ -38,9 +38,7 @@ export class KolDialogWc implements DialogAPI {
 		handleCancelOverlay(event);
 		if (event.defaultPrevented) return;
 
-		if (this.state._on?.onCancel?.() === false) {
-			event.preventDefault();
-		}
+		this.state._on?.onCancel?.(event);
 
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.cancel);

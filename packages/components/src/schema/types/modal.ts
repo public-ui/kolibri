@@ -1,5 +1,5 @@
 export type KoliBriModalEventCallbacks = {
-	onCancel?: () => boolean | void;
+	onCancel?: (event: Event) => void;
 	onClose?: () => void;
 	onToggle?: (open: boolean) => void;
 };

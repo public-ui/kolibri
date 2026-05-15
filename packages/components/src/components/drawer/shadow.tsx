@@ -241,9 +241,7 @@ export class KolDrawer implements DrawerAPI {
 		handleCancelOverlay(event);
 		if (event.defaultPrevented) return;
 
-		if (this._on?.onCancel?.() === false) {
-			event.preventDefault();
-		}
+		this._on?.onCancel?.(event);
 
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.cancel);
