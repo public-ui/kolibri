@@ -34,6 +34,19 @@ export class KolDialogWc implements DialogAPI {
 		void this.close();
 	}
 
+	private handleCancelEvent(event: Event): void {
+		handleCancelOverlay(event);
+		if (event.defaultPrevented) return;
+
+		if (this.state._on?.onCancel?.() === false) {
+			event.preventDefault();
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.cancel);
+		}
+	}
+
 	private handleNativeCloseEvent() {
 		this.state._on?.onClose?.();
 		if (this.host) {
@@ -106,7 +119,7 @@ export class KolDialogWc implements DialogAPI {
 					'kol-modal__blank': this.state._variant === 'blank',
 					'kol-modal__card': this.state._variant === 'card',
 				})}
-				onCancel={handleCancelOverlay}
+				onCancel={this.handleCancelEvent.bind(this)}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;
@@ -171,6 +184,9 @@ export class KolDialogWc implements DialogAPI {
 	public validateOn(value?: KoliBriDialogEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
 			const callbacks: KoliBriDialogEventCallbacks = {};
+			if (typeof value.onCancel === 'function') {
+				callbacks.onCancel = value.onCancel;
+			}
 			if (typeof value.onClose === 'function' || value.onClose === true) {
 				callbacks.onClose = value.onClose;
 			}

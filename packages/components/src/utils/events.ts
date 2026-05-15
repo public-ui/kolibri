@@ -1,5 +1,6 @@
 enum KolEvent {
 	blur = 'blur',
+	cancel = 'cancel',
 	change = 'change',
 	changeHeaderCells = 'changeheadercells',
 	changePage = 'changepage',
