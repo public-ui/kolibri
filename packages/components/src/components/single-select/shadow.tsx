@@ -108,7 +108,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 		if (matchingOption) {
 			this.selectOption(matchingOption as Option<string>);
-		} else if (this._value) {
+		} else if (this._value !== null && this._value !== undefined) {
 			this._filteredOptions = [...this.state._options];
 		}
 	}
@@ -709,7 +709,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Watch('_options')
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
-		this._filteredOptions = value;
+		this._filteredOptions = [...this.state._options];
 		if (this._isOpen) {
 			this.setFilteredOptionsByQuery(this._inputValue);
 		} else {
@@ -782,10 +782,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private updateInputValue(value?: StencilUnknown) {
-		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => option.value === value);
-			this._inputValue = matchedOption ? String(matchedOption.label) : '';
-		}
+		const matchedOption = this.state._options.find((option) => option.value === value);
+		this._inputValue = matchedOption ? String(matchedOption.label) : '';
 	}
 
 	public componentWillLoad(): void {
