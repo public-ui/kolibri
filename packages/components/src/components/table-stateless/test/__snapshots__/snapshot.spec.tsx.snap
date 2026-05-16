@@ -291,6 +291,37 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
 </kol-table-stateless-wc>
 `;
 
+exports[`kol-table-stateless-wc should render with _label="Table without data and hidden column shows correct colspan" _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left","width":180},{"key":"header2","label":"Header 2","visible":false,"width":120}]],"vertical":[]} _data=[] 1`] = `
+<kol-table-stateless-wc>
+  <div class="kol-table">
+    <div class="kol-table__scroll-container">
+      <table class="kol-table__table" style="min-width: 180px;">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
+          Table without data and hidden column shows correct colspan
+        </caption>
+        <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="col" style="width: 180px;">
+              Header 1
+            </th>
+          </tr>
+          <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="2"></td>
+          </tr>
+        </thead>
+        <tbody class="kol-table__body">
+          <tr class="kol-table__row kol-table__row--body">
+            <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
+              kol-no-entries
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</kol-table-stateless-wc>
+`;
+
 exports[`kol-table-stateless-wc should render with _label="Table without data shows empty hint" _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left","width":180}]],"vertical":[]} _data=[] 1`] = `
 <kol-table-stateless-wc>
   <div class="kol-table">

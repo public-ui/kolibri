@@ -554,7 +554,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			let rowspan = 0;
 			if (Array.isArray(headers.horizontal) && headers.horizontal.length > 0) {
 				headers.horizontal[0].forEach((col) => {
-					colspan += col.colSpan || 1;
+					if (col.visible !== false) colspan += col.colSpan || 1;
 				});
 			}
 
