@@ -1,3 +1,5 @@
+← [7. Deployment View](07-deployment-view.md)
+
 # 8. Cross-cutting Concepts
 
 This section covers architectural principles and patterns that span multiple components and layers of the system. These cross-cutting concerns—accessibility, internationalization, security, performance, and testing—apply consistently throughout Public UI - KoliBri and form the foundation of its design philosophy.
@@ -420,3 +422,5 @@ Each package produces:
 - **Next**: Pre-release versions for testing
 - **LTS**: Long-term support versions
 - **Legacy**: Older versions (security fixes only)
+
+→ [9. Architecture Decisions](09-architecture-decisions.md)

@@ -1,3 +1,5 @@
+← [3. System Scope and Context](03-system-scope-and-context.md)
+
 # 4. Solution Strategy
 
 This section presents the fundamental approach and key decisions that shape Public UI - KoliBri's architecture. It describes the chosen technologies, architectural patterns, and strategies for achieving the project's quality goals while addressing its core requirements.
@@ -185,3 +187,5 @@ register(DEFAULT, defineCustomElements);
 - Multiple themes can coexist in one application
 - Theme updates don't require component rebuilds
 - Design system flexibility
+
+→ [5. Building Block View](05-building-block-view.md)

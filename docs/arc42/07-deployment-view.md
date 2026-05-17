@@ -1,3 +1,5 @@
+← [6. Runtime View](06-runtime-view.md)
+
 # 7. Deployment View
 
 This section describes the infrastructure and deployment scenarios for Public UI - KoliBri. It covers development environments, CI/CD pipelines, package distribution strategies, and various application deployment patterns that consumers can use when integrating KoliBri components into their projects.
@@ -427,3 +429,5 @@ Key metrics tracked:
 - **Package Size**: Individual package sizes
 - **Download Stats**: npm download counts
 - **Issue Resolution Time**: Time to close issues/PRs
+
+→ [8. Cross-cutting Concepts](08-cross-cutting-concepts.md)

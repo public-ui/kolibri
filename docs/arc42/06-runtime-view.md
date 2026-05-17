@@ -1,3 +1,5 @@
+← [5. Building Block View](05-building-block-view.md)
+
 # 6. Runtime View
 
 This section illustrates the dynamic behavior of Public UI - KoliBri through key runtime scenarios. Using sequence diagrams and detailed descriptions, it shows how components interact during common operations such as initialization, rendering, event handling, and theme switching.
@@ -368,3 +370,5 @@ sequenceDiagram
 - Semantic HTML structure
 - Error message associations
 - Live regions for dynamic content
+
+→ [7. Deployment View](07-deployment-view.md)

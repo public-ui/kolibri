@@ -1,3 +1,5 @@
+← [2. Randbedingungen](02-architecture-constraints.md)
+
 # 3. Kontextabgrenzung
 
 Dieser Abschnitt definiert die Grenzen von Public UI - KoliBri, indem er identifiziert, was innerhalb und außerhalb des Systems liegt. Er klärt die Beziehungen zu externen Systemen, Nutzern und Abhängigkeiten und bietet sowohl geschäftliche als auch technische Perspektiven auf die Systemumgebung.
@@ -150,3 +152,5 @@ graph TB
 | **Slots**                 | Shadow DOM Slots              | Inhaltsprojektion in Komponenten                             |
 | **CSS Parts**             | ::part() Pseudo-Element       | Externes Styling von Komponenten-Interna (begrenzte Nutzung) |
 | **ARIA-Attribute**        | HTML-Attribute                | Barrierefreiheitsinformationen für assistive Technologien    |
+
+→ [4. Lösungsstrategie](04-solution-strategy.md)

@@ -1,3 +1,5 @@
+← [9. Architekturentscheidungen](09-architecture-decisions.md)
+
 # 10. Qualitätsanforderungen
 
 Dieser Abschnitt definiert die konkreten Qualitätsziele für Public UI - KoliBri durch messbare Szenarien und Akzeptanzkriterien. Er übersetzt die abstrakten Qualitätsziele aus Abschnitt 1 in spezifische, testbare Anforderungen, die Entwicklungs- und Validierungsbemühungen leiten.
@@ -419,3 +421,5 @@ graph TB
 | **Nutzer-Testing**          | Benutzbarkeit validieren     | Vor Major-Releases  | UX-Team              |
 | **Visual Regression**       | Visuelle Änderungen erkennen | Jede Theme-Änderung | Visual Tests         |
 | **Manuelle Tests**          | Exploratives Testing         | Vor Releases        | QA-Team              |
+
+→ [11. Risiken und technische Schulden](11-risks-and-technical-debt.md)

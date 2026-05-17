@@ -1,3 +1,5 @@
+← [11. Risks and Technical Debt](11-risks-and-technical-debt.md)
+
 # 12. Glossary
 
 This glossary provides definitions for key terms, concepts, and abbreviations used throughout the Public UI - KoliBri architecture documentation. It serves as a reference to ensure consistent understanding across all stakeholders.

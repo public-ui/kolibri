@@ -1,3 +1,5 @@
+← [7. Verteilungssicht](07-deployment-view.md)
+
 # 8. Querschnittliche Konzepte
 
 Dieser Abschnitt behandelt architektonische Prinzipien und Muster, die mehrere Komponenten und Schichten des Systems überspannen. Diese querschnittlichen Belange – Barrierefreiheit, Internationalisierung, Sicherheit, Performance und Testing – gelten durchgängig in Public UI - KoliBri und bilden die Grundlage seiner Designphilosophie.
@@ -420,3 +422,5 @@ Jedes Paket produziert:
 - **Next**: Pre-Release-Versionen zum Testen
 - **LTS**: Langzeitunterstützungs-Versionen
 - **Legacy**: Ältere Versionen (nur Sicherheitsfixes)
+
+→ [9. Architekturentscheidungen](09-architecture-decisions.md)

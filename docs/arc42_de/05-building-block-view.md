@@ -1,3 +1,5 @@
+← [4. Lösungsstrategie](04-solution-strategy.md)
+
 # 5. Bausteinsicht
 
 Dieser Abschnitt zerlegt Public UI - KoliBri in seine wichtigsten strukturellen Elemente und zeigt, wie Pakete, Komponenten und Module organisiert sind und wie sie interagieren. Er bietet zunehmend detailliertere Ansichten der statischen Struktur des Systems, von High-Level-Paketen bis hinunter zur individuellen Komponentenorganisation.
@@ -334,3 +336,5 @@ Tools (Visual Tests) → Themes
 4. **Adapters** - Generiert durch Components-Build
 5. **Samples** - Hängt von Components, Themes, Adapters ab
 6. **Tools** - Meist unabhängig
+
+→ [6. Laufzeitsicht](06-runtime-view.md)

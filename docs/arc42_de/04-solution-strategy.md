@@ -1,3 +1,5 @@
+← [3. Kontextabgrenzung](03-system-scope-and-context.md)
+
 # 4. Lösungsstrategie
 
 Dieser Abschnitt präsentiert den grundlegenden Ansatz und die wichtigsten Entscheidungen, die die Architektur von Public UI - KoliBri prägen. Er beschreibt die gewählten Technologien, Architekturmuster und Strategien zur Erreichung der Qualitätsziele des Projekts bei gleichzeitiger Erfüllung der Kernanforderungen.
@@ -185,3 +187,5 @@ register(DEFAULT, defineCustomElements);
 - Mehrere Themes können in einer Anwendung koexistieren
 - Theme-Updates erfordern keine Komponenten-Rebuilds
 - Flexibilität des Design-Systems
+
+→ [5. Bausteinsicht](05-building-block-view.md)
