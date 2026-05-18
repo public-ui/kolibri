@@ -53,7 +53,7 @@ void (async () => {
 			await getThemes(),
 			() => {
 				// @see https://github.com/ionic-team/stencil/issues/2847
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
 				defineCustomElements(window, {
 					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				} as any);

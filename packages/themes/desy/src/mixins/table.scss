@@ -6,6 +6,8 @@
 @use './input-radio' as *;
 @use './checkbox-states' as *;
 @use './pagination' as *;
+@use './button' as *;
+@use './link' as *;
 
 @mixin table {
 	@include table-settings;
@@ -90,6 +92,12 @@
 			&--selection {
 				width: to-rem(44);
 			}
+		}
+
+		&__cell-actions {
+			gap: to-rem(4);
+			@include button('kol-button');
+			@include kol-link('kol-link');
 		}
 
 		&__sort {

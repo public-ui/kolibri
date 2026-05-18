@@ -33,7 +33,6 @@ void (async () => {
 		await bootstrap(
 			await getThemes(),
 			() => {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 				defineCustomElements(window);
 			},
 			{

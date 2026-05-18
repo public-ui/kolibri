@@ -1,8 +1,8 @@
 {
-	"version": "4.1.5-rc.0",
+	"version": "4.1.5-rc.2",
 	"devDependencies": {
 		"license-report": "6.8.2",
-		"npm-check-updates": "19.6.6",
+		"npm-check-updates": "22.2.0",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
@@ -10,7 +10,7 @@
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
-		"stylelint-scss": "7.0.0"
+		"stylelint-scss": "7.1.1"
 	},
 	"engines": {
 		"pnpm": "^10"
