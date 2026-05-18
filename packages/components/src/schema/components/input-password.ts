@@ -22,6 +22,7 @@ import type {
 	PropTouched,
 } from '../props';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
+import { PropVisibilityToggle } from '../props/visibility-toggle';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 
@@ -49,7 +50,8 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVisibilityToggle;
 
 type RequiredStates = {
 	currentLength: number;
@@ -80,7 +82,8 @@ type OptionalStates = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVisibilityToggle;
 
 export type InputPasswordProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputPasswordStates = Generic.Element.Members<RequiredStates, OptionalStates>;
