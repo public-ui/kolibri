@@ -86,6 +86,7 @@ jobs:
           commit-message: 'chore: update dependencies and lock file'
           title: 'chore(${{ env.version }}): update dependencies and lock file'
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
+          draft: true
           delete-branch: true
 
       - name: Run audit
