@@ -7,12 +7,20 @@ import type {
 	PlaceholderPropType,
 	ReadOnlyPropType,
 	RequiredPropType,
+	VariantClassNamePropType,
 } from '../../schema';
-import { validateHasCounter, validateMaxLength, validatePattern, validatePlaceholder, validateReadOnly, validateRequired, watchString } from '../../schema';
+import {
+	validateHasCounter,
+	validateMaxLength,
+	validatePattern,
+	validatePlaceholder,
+	validateReadOnly,
+	validateRequired,
+	validateVariantClassName,
+	watchString,
+} from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
-import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
-import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
 import { validateVisibilityToggle, VisibilityTogglePropType } from '../../schema/props/visibility-toggle';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -78,8 +86,8 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
-	public validateVariant(value?: PasswordVariantPropType): void {
-		validatePasswordVariant(this.component, value);
+	public validateVariant(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this.component, value);
 	}
 
 	public validateVisibilityToggle(value?: VisibilityTogglePropType): void {

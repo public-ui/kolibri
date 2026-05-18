@@ -30,6 +30,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -352,6 +353,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputTextStates = {
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
@@ -502,6 +508,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {

@@ -4,7 +4,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import { TooltipController } from '../../internal/functional-components/tooltip/controller';
-import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../schema';
+import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
@@ -76,6 +76,7 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	tooltipAlign?: TooltipAlignPropType;
 	tooltipFloatingRef?: (el?: HTMLDivElement) => void;
 	tooltipArrowRef?: (el?: HTMLDivElement) => void;
+	variant?: VariantClassNamePropType;
 
 	formFieldLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
@@ -119,6 +120,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		showBadge,
 		tooltipAlign,
 		tooltipFloatingRef,
+		variant,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -162,6 +164,13 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		['kol-form-field--read-only']: Boolean(readOnly),
 		['kol-form-field--hidden-msg']: Boolean(hideMsg),
 	};
+
+	if (variant) {
+		stateCssClasses = {
+			...stateCssClasses,
+			[`kol-form-field--${variant}`]: true,
+		};
+	}
 
 	if (showMsg) {
 		const msgType = getMsgType(msg);

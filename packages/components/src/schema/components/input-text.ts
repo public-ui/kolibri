@@ -23,6 +23,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { InternalButtonProps } from './button';
@@ -53,7 +54,8 @@ type OptionalProps = {
 	PropSpellCheck &
 	PropSuggestions &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	currentLength: number;
@@ -85,7 +87,8 @@ type OptionalStates = {
 	PropRequired &
 	PropShortKey &
 	PropSpellCheck &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputTextProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputTextStates = Generic.Element.Members<RequiredStates, OptionalStates>;
