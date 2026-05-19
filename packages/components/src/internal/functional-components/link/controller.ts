@@ -1,9 +1,9 @@
 import type { UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
 import { getCurrentLocation, onLocationChange } from '../../../components/link/ariaCurrentService';
 import { setEventTarget } from '../../../schema';
-import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import type { AlignPropType } from '../../../schema/props/align';
 import type { KoliBriIconsProp } from '../../../schema/types/icons';
+import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import type { AriaCurrentValuePropType } from '../../props';
 import {
 	accessKeyProp,
