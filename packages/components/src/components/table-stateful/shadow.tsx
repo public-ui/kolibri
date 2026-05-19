@@ -473,7 +473,7 @@ export class KolTableStateful implements TableAPI {
 						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 						_siblingCount={this.state._pagination._siblingCount}
 						_tooltipAlign="bottom"
-						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_max={this.state._pagination._max || this.state._data.length}
 						_label={label}
 					></KolPaginationWcTag>
 				</div>
@@ -511,7 +511,20 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private handleSort({ key }: SortEventPayload) {
-		const headerCell = [...(this.state._headers.horizontal || []).flat(), ...(this.state._headers.vertical || []).flat()].find((cell) => cell.key === key);
+		const horizontalHeaders = this.state._headers.horizontal ?? [];
+		const verticalHeaders = this.state._headers.vertical ?? [];
+		const allHeaders: KoliBriTableHeaderCellWithLogic[] = [];
+		for (const row of horizontalHeaders) {
+			if (Array.isArray(row)) {
+				allHeaders.push(...row);
+			}
+		}
+		for (const row of verticalHeaders) {
+			if (Array.isArray(row)) {
+				allHeaders.push(...row);
+			}
+		}
+		const headerCell = allHeaders.find((cell) => cell.key === key);
 		if (headerCell) {
 			this.changeCellSort(headerCell);
 		}

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "4.1.5-rc.0",
+	"version": "4.1.5-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -68,6 +68,7 @@
 		"wcag"
 	],
 	"scripts": {
+		"assets:kolicons": "pnpm --filter @public-ui/icons build",
 		"build": "pnpm build:light",
 		"build:light": "mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
 		"clear": "rimraf -g dist doc www ../adapters/angular/v19/src ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src assets/kolicons",
@@ -85,9 +86,9 @@
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postinstall": "node ./postinstall.js",
-		"prebuild:light": "pnpm clear && pnpm pretest:e2e",
+		"prebuild:light": "pnpm clear && pnpm assets:kolicons",
 		"prepack": "pnpm build && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/minify.js",
-		"pretest:e2e": "pnpm --filter @public-ui/icons build",
+		"pretest:e2e": "pnpm assets:kolicons",
 		"xunused": "knip"
 	},
 	"dependencies": {
@@ -103,7 +104,7 @@
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.5",
 		"@eslint/js": "9.39.4",
-		"@playwright/test": "1.59.1",
+		"@playwright/test": "1.60.0",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
@@ -128,17 +129,17 @@
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"autoprefixer": "10.5.0",
 		"cross-env": "10.1.0",
-		"cssnano": "7.1.9",
+		"cssnano": "8.0.1",
 		"eslint": "9.39.4",
 		"eslint-plugin-boundaries": "6.0.2",
 		"eslint-plugin-import": "2.32.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"jest": "29.7.0",
-		"jest-cli": "^29.7.0",
-		"knip": "5.88.1",
+		"jest-cli": "29.7.0",
+		"knip": "6.13.1",
 		"mustache": "4.2.0",
 		"postcss": "8.5.14",
-		"postcss-sorting": "9.1.0",
+		"postcss-sorting": "10.0.0",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"pug": "3.0.4",
@@ -146,7 +147,7 @@
 		"stencil-awesome-test": "1.0.6",
 		"stylelint": "17.11.0",
 		"terser": "5.47.1",
-		"twig": "1.17.1",
+		"twig": "3.0.0",
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
