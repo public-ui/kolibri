@@ -1,3 +1,5 @@
+← [10. Quality Requirements](10-quality-requirements.md)
+
 # 11. Risks and Technical Debt
 
 This section identifies and assesses potential risks to the Public UI - KoliBri project, along with current technical debt items. Understanding these factors helps prioritize mitigation efforts and plan for sustainable long-term development.
@@ -517,3 +519,5 @@ This section identifies and assesses potential risks to the Public UI - KoliBri 
 | **W3C Web Components** | Core technology          | W3C WICG              |
 | **ES Standards**       | JavaScript features      | TC39 proposals        |
 | **CSS Standards**      | Styling capabilities     | W3C CSS WG            |
+
+→ [12. Glossary](12-glossary.md)

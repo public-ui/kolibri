@@ -1,3 +1,5 @@
+← [6. Laufzeitsicht](06-runtime-view.md)
+
 # 7. Verteilungssicht
 
 Dieser Abschnitt beschreibt die Infrastruktur und Verteilungsszenarien für Public UI - KoliBri. Er umfasst Entwicklungsumgebungen, CI/CD-Pipelines, Paketverteilungsstrategien und verschiedene Anwendungs-Verteilungsmuster, die Konsumenten bei der Integration von KoliBri-Komponenten in ihre Projekte verwenden können.
@@ -427,3 +429,5 @@ Wichtige verfolgte Metriken:
 - **Paketgröße**: Individuelle Paketgrößen
 - **Download-Statistiken**: npm-Download-Zahlen
 - **Issue-Auflösungszeit**: Zeit bis zum Schließen von Issues/PRs
+
+→ [8. Querschnittliche Konzepte](08-cross-cutting-concepts.md)

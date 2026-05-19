@@ -1,3 +1,5 @@
+← [1. Einführung und Ziele](01-introduction-and-goals.md)
+
 # 2. Randbedingungen
 
 Dieser Abschnitt dokumentiert die technischen, organisatorischen und rechtlichen Grenzen, innerhalb derer Public UI - KoliBri operieren muss. Diese Randbedingungen prägen architektonische Entscheidungen und leiten Implementierungsentscheidungen während des gesamten Projekts.
@@ -67,3 +69,5 @@ Dieser Abschnitt dokumentiert die technischen, organisatorischen und rechtlichen
 | **Paket-Registry**          | npm als primärer Verteilungskanal                                       |
 | **Sicherheits-Scanning**    | CodeQL und Abhängigkeits-Scanning erforderlich                          |
 | **Provenance**              | SLSA Build Level 3 für veröffentlichte Pakete                           |
+
+→ [3. Kontextabgrenzung](03-system-scope-and-context.md)

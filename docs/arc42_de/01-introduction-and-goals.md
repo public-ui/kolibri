@@ -59,3 +59,5 @@ Der HTML-Webstandard ist offen spezifiziert, um langlebig und robust zu sein, ab
 - **Multi-Theming-fähige Präsentationsschicht** ohne technische Kopplung oder Datenübertragung
 - **Wiederverwendbare Lösung** für statische Websites und dynamische Webanwendungen
 - **Open-Source-Fundament** ermöglicht breite Akzeptanz und Community-Zusammenarbeit
+
+→ [2. Randbedingungen](02-architecture-constraints.md)

@@ -407,6 +407,41 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
   - These also perform implicit builds, so explicit pre-build is unnecessary.
 
+## GitHub Operations in Remote Sessions
+
+When running Claude Code via the web, desktop app, or GitHub Actions, the `gh` CLI is **not available**. Use the GitHub MCP tools (`mcp__github__*`) for all GitHub interactions:
+
+- List/search issues → `mcp__github__list_issues`, `mcp__github__search_issues`
+- Read issue details → `mcp__github__issue_read`
+- Create PR → `mcp__github__create_pull_request`
+- Search PRs → `mcp__github__search_pull_requests`
+- Post comments → `mcp__github__add_issue_comment`
+
+Do not fall back to `curl` or `gh` commands; MCP tools are the canonical approach in this environment.
+
+## Committing and Pushing
+
+```bash
+# Stage only the files you changed
+git add <file1> <file2>
+
+# Commit with a conventional message
+git commit -m "fix: <description> (#<issue-number>)"
+
+# Push and set upstream in one step
+git push -u origin <branch-name>
+```
+
+The push output will contain the GitHub URL to open a PR. Use `mcp__github__create_pull_request` to create it programmatically.
+
+### When node_modules are not installed
+
+In remote execution containers, `node_modules` is often absent. If this is the case:
+
+- Skip `pnpm format`, `pnpm lint`, and `pnpm test`
+- Note in the PR body: _"Local checks skipped (no node_modules in container); CI will run formatting, lint, and tests."_
+- Do **not** block the PR – CI covers these gates
+
 ## Pull Request Guidelines
 
 - PR titles should be meaningful as they appear in the release notes.

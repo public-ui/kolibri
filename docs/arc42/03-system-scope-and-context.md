@@ -1,3 +1,5 @@
+← [2. Architecture Constraints](02-architecture-constraints.md)
+
 # 3. System Scope and Context
 
 This section defines the boundaries of Public UI - KoliBri by identifying what is inside and outside the system. It clarifies the relationships with external systems, users, and dependencies, providing both business and technical perspectives on the system's environment.
@@ -150,3 +152,5 @@ graph TB
 | **Slots**                 | Shadow DOM slots              | Content projection into components                    |
 | **CSS Parts**             | ::part() pseudo-element       | External styling of component internals (limited use) |
 | **ARIA Attributes**       | HTML attributes               | Accessibility information for assistive technologies  |
+
+→ [4. Solution Strategy](04-solution-strategy.md)

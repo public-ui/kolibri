@@ -1,3 +1,5 @@
+← [11. Risiken und technische Schulden](11-risks-and-technical-debt.md)
+
 # 12. Glossar
 
 Dieses Glossar bietet Definitionen für Schlüsselbegriffe, Konzepte und Abkürzungen, die in der Public UI - KoliBri Architekturdokumentation verwendet werden. Es dient als Referenz, um ein konsistentes Verständnis über alle Stakeholder hinweg sicherzustellen.

@@ -1,3 +1,5 @@
+← [1. Introduction and Goals](01-introduction-and-goals.md)
+
 # 2. Architecture Constraints
 
 This section documents the technical, organizational, and legal boundaries within which Public UI - KoliBri must operate. These constraints shape architectural decisions and guide implementation choices throughout the project.
@@ -67,3 +69,5 @@ This section documents the technical, organizational, and legal boundaries withi
 | **Package Registry**      | npm as primary distribution channel                          |
 | **Security Scanning**     | CodeQL and dependency scanning required                      |
 | **Provenance**            | SLSA Build Level 3 for published packages                    |
+
+→ [3. System Scope and Context](03-system-scope-and-context.md)

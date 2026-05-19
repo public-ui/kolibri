@@ -1,3 +1,5 @@
+← [9. Architecture Decisions](09-architecture-decisions.md)
+
 # 10. Quality Requirements
 
 This section defines the concrete quality goals for Public UI - KoliBri through measurable scenarios and acceptance criteria. It translates the abstract quality objectives from Section 1 into specific, testable requirements that guide development and validation efforts.
@@ -419,3 +421,5 @@ graph TB
 | **User Testing**        | Validate usability    | Before major releases | UX team            |
 | **Visual Regression**   | Detect visual changes | Every theme change    | Visual tests       |
 | **Manual Testing**      | Exploratory testing   | Before releases       | QA team            |
+
+→ [11. Risks and Technical Debt](11-risks-and-technical-debt.md)

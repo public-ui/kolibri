@@ -59,3 +59,5 @@ The HTML web standard is openly specified to be long-lasting and robust, but thi
 - **Multi-theming capable presentation layer** without technical coupling or data transfer
 - **Reusable solution** for static websites and dynamic web applications
 - **Open source foundation** enabling wide adoption and community collaboration
+
+→ [2. Architecture Constraints](02-architecture-constraints.md)

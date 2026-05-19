@@ -1,3 +1,5 @@
+← [10. Qualitätsanforderungen](10-quality-requirements.md)
+
 # 11. Risiken und technische Schulden
 
 Dieser Abschnitt identifiziert und bewertet potenzielle Risiken für das Public UI - KoliBri Projekt zusammen mit aktuellen technischen Schulden. Das Verständnis dieser Faktoren hilft, Mitigierungsbemühungen zu priorisieren und nachhaltige langfristige Entwicklung zu planen.
@@ -517,3 +519,5 @@ Dieser Abschnitt identifiziert und bewertet potenzielle Risiken für das Public 
 | **W3C Web Components** | Kern-Technologie                  | W3C WICG              |
 | **ES Standards**       | JavaScript-Features               | TC39-Proposals        |
 | **CSS Standards**      | Styling-Fähigkeiten               | W3C CSS WG            |
+
+→ [12. Glossar](12-glossary.md)

@@ -1,3 +1,5 @@
+← [5. Bausteinsicht](05-building-block-view.md)
+
 # 6. Laufzeitsicht
 
 Dieser Abschnitt veranschaulicht das dynamische Verhalten von Public UI - KoliBri durch wichtige Laufzeitszenarien. Mithilfe von Sequenzdiagrammen und detaillierten Beschreibungen zeigt er, wie Komponenten während gängiger Operationen wie Initialisierung, Rendering, Event-Handling und Theme-Wechsel interagieren.
@@ -368,3 +370,5 @@ sequenceDiagram
 - Semantische HTML-Struktur
 - Fehlermeldungs-Assoziationen
 - Live-Regions für dynamische Inhalte
+
+→ [7. Verteilungssicht](07-deployment-view.md)

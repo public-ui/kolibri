@@ -123,12 +123,12 @@ executeSnapshotTests<TableStatelessProps>(
 			_data: [],
 		},
 		{
-			_label: 'Table without data and hidden column shows correct colspan',
+			_label: 'Table without data with hidden column shows correct colspan',
 			_headerCells: {
 				horizontal: [
 					[
 						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 180 },
-						{ key: 'header2', label: 'Header 2', visible: false, width: 120 },
+						{ key: 'header2', label: 'Header 2', textAlign: 'left', width: 180, visible: false },
 					],
 				],
 				vertical: [],

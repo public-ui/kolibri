@@ -1,3 +1,5 @@
+← [8. Querschnittliche Konzepte](08-cross-cutting-concepts.md)
+
 # 9. Architekturentscheidungen
 
 Dieser Abschnitt dokumentiert die bedeutenden Architekturentscheidungen, die während der Entwicklung von Public UI - KoliBri getroffen wurden. Jeder Architecture Decision Record (ADR) erfasst den Kontext, die Entscheidung und die Konsequenzen wichtiger Entscheidungen und bietet Transparenz und Begründung für zukünftige Wartende und Beitragende.
@@ -466,3 +468,5 @@ SSR-Unterstützung für Web Components ist komplex. Aktueller Hydrate-Adapter is
 4. Einschränkungen und Workarounds dokumentieren
 
 **Entscheidungszeitlinie:** In kommenden vierteljährlichen Planungssitzungen zu überprüfen
+
+→ [10. Qualitätsanforderungen](10-quality-requirements.md)
