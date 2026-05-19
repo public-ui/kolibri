@@ -337,7 +337,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data wi
             </th>
           </tr>
           <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="2"></td>
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="1"></td>
           </tr>
         </thead>
         <tbody class="kol-table__body">
