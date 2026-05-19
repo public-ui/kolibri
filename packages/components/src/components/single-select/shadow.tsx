@@ -621,7 +621,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
+	@Prop({ mutable: true }) public _value: StencilUnknown = null;
 
 	/**
 	 * Shows the clear button if enabled.
