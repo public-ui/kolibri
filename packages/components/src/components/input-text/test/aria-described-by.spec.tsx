@@ -14,6 +14,6 @@ describe('kol-input-text aria-describedby', () => {
 		const input = page.root?.shadowRoot?.querySelector('input');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		expect(input?.getAttribute('aria-describedby')).toBe('input-text-hint-nonce');
+		expect(input?.getAttribute('aria-describedby')).toBe('input-text-hint--nonce');
 	});
 });

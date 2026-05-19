@@ -24,7 +24,7 @@ exports[`kol-badge should render with _label="Badge fallback" _smartButton={"_ar
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge kol-badge--has-smart-button" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span" id="badge-label-nonce">
+      <span class="kol-badge__label kol-span" id="badge-label--nonce">
         <span class="kol-span__container">
           <span class="kol-span__label md">
             Badge fallback
@@ -32,7 +32,7 @@ exports[`kol-badge should render with _label="Badge fallback" _smartButton={"_ar
           <span aria-hidden="true" class="kol-span__label" hidden=""></span>
         </span>
       </span>
-      <kol-button-wc _ariacontrols="badge-label-nonce" _ariadescription="Badge label" _hidelabel="" _label="Remove" class="kol-badge__smart-button"></kol-button-wc>
+      <kol-button-wc _ariacontrols="badge-label--nonce" _ariadescription="Badge label" _hidelabel="" _label="Remove" class="kol-badge__smart-button"></kol-button-wc>
     </span>
   </template>
 </kol-badge>

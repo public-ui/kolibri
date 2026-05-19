@@ -80,21 +80,16 @@ if (isTestMode()) {
 
 export { nonce };
 
-const uniqueIds = new Set<string>();
+const NONCE_SEPARATOR = '--';
 
-export const createUniqueId = (prefix: string): string => {
-	const uniqueId = `${prefix}-${nonce()}`;
-	uniqueIds.add(uniqueId);
-	return uniqueId;
-};
+export const createUniqueId = (prefix: string): string => `${prefix}${NONCE_SEPARATOR}${nonce()}`;
 
 export const createRelatedUniqueId = (baseId: string, suffix: string): string => {
-	if (!uniqueIds.has(baseId)) {
+	const separatorIndex = baseId.lastIndexOf(NONCE_SEPARATOR);
+	if (separatorIndex === -1) {
 		return `${baseId}-${suffix}`;
 	}
-
-	const separatorIndex = baseId.lastIndexOf('-');
-	const uniqueId = `${baseId.slice(0, separatorIndex)}-${suffix}-${baseId.slice(separatorIndex + 1)}`;
-	uniqueIds.add(uniqueId);
-	return uniqueId;
+	const prefixPart = baseId.slice(0, separatorIndex);
+	const noncePart = baseId.slice(separatorIndex + NONCE_SEPARATOR.length);
+	return `${prefixPart}-${suffix}${NONCE_SEPARATOR}${noncePart}`;
 };

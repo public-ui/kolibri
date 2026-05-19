@@ -95,7 +95,7 @@ describe('KolNav nested navigation landmarks', () => {
 		// There should be only one nav element with an id
 		const nav = page.root!.shadowRoot!.querySelector('nav');
 		expect(nav).not.toBeNull();
-		expect(nav!.id).toBe('kol-nav-nonce');
+		expect(nav!.id).toBe('kol-nav--nonce');
 
 		// There should be multiple ul elements with unique ids for expanded lists
 		const ulElements = Array.from(page.root!.shadowRoot!.querySelectorAll('ul[id^="kol-nav-list"]'));

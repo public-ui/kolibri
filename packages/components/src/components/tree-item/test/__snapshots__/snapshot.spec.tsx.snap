@@ -14,7 +14,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
             </span>
           </span>
         </kol-link-wc>
-        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <ul class="kol-tree-item__children" hidden="" id="tree-group--nonce" role="group">
           <slot></slot>
         </ul>
       </li>
@@ -37,7 +37,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
             </span>
           </span>
         </kol-link-wc>
-        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <ul class="kol-tree-item__children" hidden="" id="tree-group--nonce" role="group">
           <slot></slot>
         </ul>
       </li>
@@ -60,7 +60,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
             </span>
           </span>
         </kol-link-wc>
-        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <ul class="kol-tree-item__children" hidden="" id="tree-group--nonce" role="group">
           <slot></slot>
         </ul>
       </li>
@@ -83,7 +83,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
             </span>
           </span>
         </kol-link-wc>
-        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <ul class="kol-tree-item__children" hidden="" id="tree-group--nonce" role="group">
           <slot></slot>
         </ul>
       </li>
@@ -106,7 +106,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
             </span>
           </span>
         </kol-link-wc>
-        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <ul class="kol-tree-item__children" hidden="" id="tree-group--nonce" role="group">
           <slot></slot>
         </ul>
       </li>
