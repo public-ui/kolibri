@@ -20,6 +20,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -266,6 +267,11 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Prop() public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputColorStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -366,6 +372,11 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentDidLoad(): void {

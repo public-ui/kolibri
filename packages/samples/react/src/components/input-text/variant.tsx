@@ -1,4 +1,4 @@
-import { KolInputPassword, KolInputText } from '@public-ui/react-v19';
+import { KolInputColor, KolInputPassword, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
@@ -27,6 +27,7 @@ export const InputVariant: FC = () => {
 								<p>Variante: {element}</p>
 								<KolInputText _label="Input Text" _hint="Enter your surname" _variant={element} />
 								<KolInputPassword _label="Input Passwort" _variant={element} />
+								<KolInputColor _label="Input Color" _variant={element} />
 							</div>
 						);
 					})
