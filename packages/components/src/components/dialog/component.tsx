@@ -185,7 +185,7 @@ export class KolDialogWc implements DialogAPI {
 			if (typeof value.onCancel === 'function') {
 				callbacks.onCancel = value.onCancel;
 			}
-			if (typeof value.onClose === 'function' || value.onClose === true) {
+			if (typeof value.onClose === 'function') {
 				callbacks.onClose = value.onClose;
 			}
 			setState<KoliBriDialogEventCallbacks>(this, '_on', callbacks);
