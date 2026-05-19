@@ -34,16 +34,16 @@ export class KolDialogWc implements DialogAPI {
 		void this.close();
 	}
 
-	private handleCancelEvent(event: Event): void {
+	private handleCancelEvent = (event: Event): void => {
 		handleCancelOverlay(event);
 		if (event.defaultPrevented) return;
 
 		this.state._on?.onCancel?.(event);
 
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.cancel);
+		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
+			event.preventDefault();
 		}
-	}
+	};
 
 	private handleNativeCloseEvent() {
 		this.state._on?.onClose?.();
@@ -117,7 +117,7 @@ export class KolDialogWc implements DialogAPI {
 					'kol-modal__blank': this.state._variant === 'blank',
 					'kol-modal__card': this.state._variant === 'card',
 				})}
-				onCancel={this.handleCancelEvent.bind(this)}
+				onCancel={this.handleCancelEvent}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;

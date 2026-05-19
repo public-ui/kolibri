@@ -135,7 +135,7 @@ export class KolDrawer implements DrawerAPI {
 					aria-labelledby={this.cardHeadingId}
 					aria-modal={this.isModal ? 'true' : 'false'}
 					class="kol-drawer__dialog"
-					onCancel={this.handleCancelEvent.bind(this)}
+					onCancel={this.handleCancelEvent}
 					ref={this.getRef}
 				>
 					{this.renderDialogContent()}
@@ -237,16 +237,16 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private handleCancelEvent(event: Event): void {
+	private handleCancelEvent = (event: Event): void => {
 		handleCancelOverlay(event);
 		if (event.defaultPrevented) return;
 
-		this._on?.onCancel?.(event);
+		this.state._on?.onCancel?.(event);
 
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.cancel);
+		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
+			event.preventDefault();
 		}
-	}
+	};
 
 	private handleCloseDialog() {
 		this._on?.onClose?.();
