@@ -87,10 +87,10 @@
 		"postcss": "8.5.14",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"rollup": "4.60.3",
+		"rollup": "4.60.4",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.99.0",
-		"stylelint": "17.11.0",
+		"stylelint": "17.11.1",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
