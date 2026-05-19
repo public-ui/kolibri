@@ -107,7 +107,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
 		if (matchingOption) {
-			this.selectOption(matchingOption as Option<StencilUnknown>);
+			this.selectOption(matchingOption);
 		} else if (this._value !== null && this._value !== undefined) {
 			this._filteredOptions = [...(this.state._options ?? [])];
 		}
@@ -261,7 +261,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	private selectFocusedOption(): boolean {
 		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
-			this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<StencilUnknown>);
+			this.selectOption(this._filteredOptions[this._focusedOptionIndex]);
 			return true;
 		}
 		return false;
@@ -381,13 +381,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 										ref={(el) => {
 											if (el) this.refOptions[index] = el;
 										}}
-										selected={this._value === (option as Option<StencilUnknown>).value}
+										selected={this._value === option.value}
 										disabled={option.disabled ? true : false}
 										onClick={(event: Event) => {
 											if (option.disabled) {
 												return;
 											}
-											this.selectOption(option as Option<StencilUnknown>);
+											this.selectOption(option);
 											this.refInput?.focus();
 											this.toggleListbox(event);
 											this._isOpen = false;
@@ -409,7 +409,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 												return;
 											}
 											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option as Option<StencilUnknown>);
+												this.selectOption(option);
 												this.refInput?.focus();
 												this.toggleListbox(e);
 												e.preventDefault();

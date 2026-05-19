@@ -21,8 +21,8 @@ describe('kol-single-select boolean option values (#9122)', () => {
 		});
 
 		const instance = page.rootInstance as KolSingleSelect;
-		expect(Array.isArray(instance._filteredOptions)).toBe(true);
-		expect(instance._filteredOptions).toHaveLength(2);
+		expect(Array.isArray(instance['_filteredOptions'])).toBe(true);
+		expect(instance['_filteredOptions']).toHaveLength(2);
 	});
 
 	it('sets _inputValue to the matching label when _value is false', async () => {
@@ -42,7 +42,7 @@ describe('kol-single-select boolean option values (#9122)', () => {
 		});
 
 		const instance = page.rootInstance as KolSingleSelect;
-		expect(Array.isArray(instance._filteredOptions)).toBe(true);
-		expect(instance._filteredOptions).toHaveLength(booleanOptions.length);
+		expect(Array.isArray(instance['_filteredOptions'])).toBe(true);
+		expect(instance['_filteredOptions']).toHaveLength(booleanOptions.length);
 	});
 });
