@@ -27,6 +27,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
 
@@ -330,6 +331,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputDateStates = {
 		_hasValue: false,
 		_hideMsg: false,
@@ -469,6 +475,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			// Don't switch type when value was reset to null
 			this.setInitialValueType(value);
 		}
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {
