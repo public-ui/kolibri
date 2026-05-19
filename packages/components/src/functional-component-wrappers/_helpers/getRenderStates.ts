@@ -1,4 +1,5 @@
 import { getMsgType, type MsgPropType, type Stringified, type TouchedPropType } from '../../schema';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -29,18 +30,18 @@ export const getRenderStates = (state: {
 
 	const ariaDescribedBy: string[] = [];
 	if (hasMessage && !state._hideMsg) {
-		ariaDescribedBy.push(`${state._id}-msg`);
+		ariaDescribedBy.push(createRelatedUniqueId(state._id, 'msg'));
 	}
 	if (hasHint === true) {
-		ariaDescribedBy.push(`${state._id}-hint`);
+		ariaDescribedBy.push(createRelatedUniqueId(state._id, 'hint'));
 	}
 
 	if (state._hasCounter) {
-		ariaDescribedBy.push(`${state._id}-counter`);
+		ariaDescribedBy.push(createRelatedUniqueId(state._id, 'counter'));
 	}
 
 	if (hasError === true) {
-		ariaDescribedBy.push(`${state._id}-error`);
+		ariaDescribedBy.push(createRelatedUniqueId(state._id, 'error'));
 	}
 	return { hasError, hasHint, ariaDescribedBy };
 };

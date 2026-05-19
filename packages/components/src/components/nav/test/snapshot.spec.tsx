@@ -98,24 +98,24 @@ describe('KolNav nested navigation landmarks', () => {
 		expect(nav!.id).toBe('kol-nav-nonce');
 
 		// There should be multiple ul elements with unique ids for expanded lists
-		const ulElements = Array.from(page.root!.shadowRoot!.querySelectorAll('ul[id^="kol-nav-nonce-list"]'));
+		const ulElements = Array.from(page.root!.shadowRoot!.querySelectorAll('ul[id^="kol-nav-list"]'));
 		expect(ulElements.length).toBeGreaterThan(1);
 		ulElements.forEach((ul) => {
-			expect(ul.id.startsWith('kol-nav-nonce-list')).toBe(true);
+			expect(ul.id.startsWith('kol-nav-list')).toBe(true);
 		});
 
-		// Check the IDs of submenu ul elements (all ul with id starting with kol-nav-nonce-list)
-		const submenuUls = Array.from(page.root!.shadowRoot!.querySelectorAll('ul[id^="kol-nav-nonce-list"]'));
+		// Check the IDs of submenu ul elements (all ul with id starting with kol-nav-list)
+		const submenuUls = Array.from(page.root!.shadowRoot!.querySelectorAll('ul[id^="kol-nav-list"]'));
 		expect(submenuUls.length).toBeGreaterThan(0);
 		submenuUls.forEach((ul) => {
-			expect(ul.id).toMatch(/^kol-nav-nonce-list/);
+			expect(ul.id).toMatch(/^kol-nav-list/);
 		});
 
 		// Each toggle should have _ariacontrols pointing to a ul id
 		const toggles = Array.from(page.root!.shadowRoot!.querySelectorAll('.kol-nav__entry--link[_ariacontrols]'));
 		toggles.forEach((toggle) => {
 			const controls = toggle.getAttribute('_ariacontrols');
-			expect(controls).toMatch(/^kol-nav-nonce-list/);
+			expect(controls).toMatch(/^kol-nav-list/);
 			// The referenced ul should exist
 			expect(page.root!.shadowRoot!.querySelector(`ul#${controls}`)).not.toBeNull();
 		});

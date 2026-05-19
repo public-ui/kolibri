@@ -35,7 +35,7 @@ import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../funct
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -311,7 +311,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-password'),
 		_label: '', // ⚠ required
 		_variant: 'default',
 	};

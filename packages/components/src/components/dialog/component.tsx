@@ -6,7 +6,7 @@ import { setState, validateLabel, validateWidth } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { validateModalVariant } from '../../schema/props/variant/modal';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 import { watchHeadingLevel } from '../heading/validation';
@@ -24,7 +24,7 @@ import { watchHeadingLevel } from '../heading/validation';
 export class KolDialogWc implements DialogAPI {
 	@Element() private readonly host?: HTMLKolDialogWcElement;
 	private refDialog?: HTMLDialogElement;
-	private readonly cardHeadingId = nonce();
+	private readonly cardHeadingId = createUniqueId('dialog-heading');
 
 	@State() private isModal: boolean = true;
 

@@ -23,7 +23,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -195,7 +195,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
-		const customId = `${this.state._id}-${index}`;
+		const customId = createRelatedUniqueId(this.state._id, String(index));
 		const selected = this.state._value === option.value;
 
 		return (
@@ -292,7 +292,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	@State() public state: InputRadioStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-radio'),
 		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',

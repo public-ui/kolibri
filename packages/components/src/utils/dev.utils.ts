@@ -79,3 +79,22 @@ if (isTestMode()) {
 }
 
 export { nonce };
+
+const uniqueIds = new Set<string>();
+
+export const createUniqueId = (prefix: string): string => {
+	const uniqueId = `${prefix}-${nonce()}`;
+	uniqueIds.add(uniqueId);
+	return uniqueId;
+};
+
+export const createRelatedUniqueId = (baseId: string, suffix: string): string => {
+	if (!uniqueIds.has(baseId)) {
+		return `${baseId}-${suffix}`;
+	}
+
+	const separatorIndex = baseId.lastIndexOf('-');
+	const uniqueId = `${baseId.slice(0, separatorIndex)}-${suffix}-${baseId.slice(separatorIndex + 1)}`;
+	uniqueIds.add(uniqueId);
+	return uniqueId;
+};

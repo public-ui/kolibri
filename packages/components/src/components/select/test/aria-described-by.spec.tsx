@@ -25,6 +25,6 @@ describe('kol-select aria-describedby', () => {
 		const select = selectWc?.querySelector('select');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		expect(select?.getAttribute('aria-describedby')).toBe('id-nonce-hint');
+		expect(select?.getAttribute('aria-describedby')).toBe('select-hint-nonce');
 	});
 });
