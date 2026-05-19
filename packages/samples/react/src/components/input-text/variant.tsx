@@ -1,4 +1,4 @@
-import { KolInputColor, KolInputDate, KolInputEmail, KolInputPassword, KolInputText } from '@public-ui/react-v19';
+import { KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputPassword, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
@@ -23,13 +23,14 @@ export const InputVariant: FC = () => {
 				) : (
 					inputVariants.map((element) => {
 						return (
-							<div>
-								<p>Variante: {element}</p>
+							<div className="grid gap-4 p-8">
+								<h2>Variante: {element}</h2>
 								<KolInputText _label="Input Text" _hint="Enter your surname" _variant={element} />
 								<KolInputPassword _label="Input Passwort" _variant={element} />
 								<KolInputColor _label="Input Color" _variant={element} />
 								<KolInputDate _label="Input Date" _variant={element} />
 								<KolInputEmail _label="Input Date" _variant={element} />
+								<KolInputFile _label="Input Date" _variant={element} />
 							</div>
 						);
 					})

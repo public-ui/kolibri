@@ -20,7 +20,6 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 import type { InternalButtonProps } from './button';
@@ -46,8 +45,7 @@ type OptionalProps = {
 	PropReadOnly &
 	PropRequired &
 	PropSuggestions &
-	PropTouched &
-	PropVariantClassName;
+	PropTouched;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -77,8 +75,7 @@ type OptionalStates = {
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
-	PropTouched &
-	PropVariantClassName;
+	PropTouched;
 
 export type InputDateProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputDateStates = Generic.Element.Members<RequiredStates, OptionalStates>;

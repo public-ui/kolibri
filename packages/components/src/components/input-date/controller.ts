@@ -8,9 +8,8 @@ import type {
 	ReadOnlyPropType,
 	RequiredPropType,
 	SuggestionsPropType,
-	VariantClassNamePropType,
 } from '../../schema';
-import { setState, validateReadOnly, validateRequired, validateSuggestions, validateVariantClassName, watchValidator } from '../../schema';
+import { setState, validateReadOnly, validateRequired, validateSuggestions, watchValidator } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { type InputDateTypePropType, validateTypeInputDate } from '../../schema/props/type-input-date';
 
@@ -203,10 +202,6 @@ export class InputDateController extends InputIconController implements InputDat
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
-	public validateVariant(value?: VariantClassNamePropType): void {
-		validateVariantClassName(this.component, value);
-	}
-
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
@@ -220,6 +215,5 @@ export class InputDateController extends InputIconController implements InputDat
 		this.validateStep(this.component._step);
 		this.validateType(this.component._type);
 		this.validateValue(this.component._value);
-		this.validateVariant(this.component._variant);
 	}
 }

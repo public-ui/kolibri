@@ -1,5 +1,5 @@
-import type { AutoCompletePropType, InputColorProps, InputColorWatches, SuggestionsPropType, VariantClassNamePropType } from '../../schema';
-import { validateSuggestions, validateVariantClassName, watchString } from '../../schema';
+import type { AutoCompletePropType, InputColorProps, InputColorWatches, SuggestionsPropType } from '../../schema';
+import { validateSuggestions, watchString } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -26,15 +26,10 @@ export class InputColorController extends InputIconController implements InputCo
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
-	public validateVariant(value?: VariantClassNamePropType): void {
-		validateVariantClassName(this.component, value);
-	}
-
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
 		this.validateSuggestions(this.component._suggestions);
 		this.validateValue(this.component._value);
-		this.validateVariant(this.component._variant);
 	}
 }
