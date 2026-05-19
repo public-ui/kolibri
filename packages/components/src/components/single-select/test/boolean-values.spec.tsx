@@ -21,9 +21,7 @@ describe('kol-single-select boolean option values (#9122)', () => {
 		});
 
 		const instance = page.rootInstance as KolSingleSelect;
-		// @ts-expect-error testing internal state
 		expect(Array.isArray(instance['_filteredOptions'])).toBe(true);
-		// @ts-expect-error testing internal state
 		expect(instance['_filteredOptions']).toHaveLength(2);
 	});
 
@@ -34,14 +32,12 @@ describe('kol-single-select boolean option values (#9122)', () => {
 		});
 
 		const instance = page.rootInstance as KolSingleSelect;
-		// @ts-expect-error testing internal state
 		expect(instance._filteredOptions).toHaveLength(2);
 
 		const extended = [...stringOptions, { label: 'Option C', value: 'c' }];
 		page.root!._options = JSON.stringify(extended) as never;
 		await page.waitForChanges();
 
-		// @ts-expect-error testing internal state
 		expect(instance._filteredOptions).toHaveLength(3);
 	});
 
@@ -52,7 +48,6 @@ describe('kol-single-select boolean option values (#9122)', () => {
 		});
 
 		const instance = page.rootInstance as KolSingleSelect;
-		// @ts-expect-error testing internal state
 		expect(instance['_inputValue']).toBe('False');
 	});
 
@@ -65,17 +60,13 @@ describe('kol-single-select boolean option values (#9122)', () => {
 		const instance = page.rootInstance as KolSingleSelect;
 
 		// Simulate a partial filter state (as if the user typed something)
-		// @ts-expect-error testing internal state
 		instance['_inputValue'] = 'Tru';
-		// @ts-expect-error testing internal state
 		instance['_filteredOptions'] = [booleanOptions[1]]; // only "True" visible
 
 		// Trigger blur — must restore full list because _value is false (valid selection)
-		// @ts-expect-error accessing private method for internal state testing
 		instance['onBlur']();
 		await page.waitForChanges();
 
-		// @ts-expect-error testing internal state
 		expect(instance._filteredOptions).toHaveLength(booleanOptions.length);
 	});
 });
