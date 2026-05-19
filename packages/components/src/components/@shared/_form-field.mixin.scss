@@ -7,6 +7,8 @@
 		display: grid;
 
 		&__label {
+			grid-area: 'label';
+
 			#{$root}:not(#{$root}--disabled) & {
 				cursor: pointer;
 			}
@@ -23,6 +25,22 @@
 			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}
+		}
+
+		&__input {
+			grid-area: 'input';
+		}
+
+		&__msg {
+			grid-area: 'msg';
+		}
+
+		&__hint {
+			grid-area: 'hint';
+		}
+
+		&__counter {
+			grid-area: 'counter';
 		}
 	}
 }

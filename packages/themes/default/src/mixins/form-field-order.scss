@@ -1,21 +1,10 @@
 @mixin kol-form-field-order-theme {
 	.kol-form-field {
-		$root: &;
+		grid-template-areas: 'msg' 'label' 'input' 'counter' 'hint';
 
-		@at-root #{$root}__msg {
-			order: 1;
-		}
-
-		@at-root #{$root}__label {
-			order: 2;
-		}
-
-		@at-root #{$root}__input {
-			order: 3;
-		}
-
-		@at-root #{$root}__hint {
-			order: 4;
+		&--left {
+			grid-template-areas: 'label msg' 'label input' 'label counter' 'label hint';
+			grid-template-columns: 200px 1fr;
 		}
 	}
 }
