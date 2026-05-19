@@ -1,4 +1,4 @@
-import { KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputPassword, KolInputText } from '@public-ui/react-v19';
+import { KolInputColor, KolInputDate, KolInputEmail, KolInputFile, KolInputNumber, KolInputPassword, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
@@ -29,8 +29,9 @@ export const InputVariant: FC = () => {
 								<KolInputPassword _label="Input Passwort" _variant={element} />
 								<KolInputColor _label="Input Color" _variant={element} />
 								<KolInputDate _label="Input Date" _variant={element} />
-								<KolInputEmail _label="Input Date" _variant={element} />
-								<KolInputFile _label="Input Date" _variant={element} />
+								<KolInputEmail _label="Input Email" _variant={element} />
+								<KolInputFile _label="Input File" _variant={element} />
+								<KolInputNumber _label="Input Number" _variant={element} />
 							</div>
 						);
 					})
