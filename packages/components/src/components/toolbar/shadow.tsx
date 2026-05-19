@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { LinkFC } from '../../internal/functional-components/link/component';
@@ -73,12 +73,8 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 		};
 
 		if (element.type === 'link') {
-			let ctrl = this.toolbarLinkCtrls.get(index);
-			if (!ctrl) {
-				ctrl = new LinkController(createLinkStateAccess(this.forceRender));
-				initLinkControllerFromProps(ctrl, element as { _href: string } & Partial<Record<string, unknown>>);
-				this.toolbarLinkCtrls.set(index, ctrl);
-			}
+			const ctrl = this.toolbarLinkCtrls.get(index);
+			if (!ctrl) return <></>;
 			const linkCtrl = ctrl;
 			return (
 				<LinkFC
@@ -155,6 +151,13 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 		this.indexToElement.clear();
 		for (const ctrl of this.toolbarLinkCtrls.values()) ctrl.destroy();
 		this.toolbarLinkCtrls.clear();
+		this.state._items.forEach((item, index) => {
+			if (item.type === 'link') {
+				const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+				initLinkControllerFromProps(ctrl, item as { _href: string } & Partial<Record<string, unknown>>);
+				this.toolbarLinkCtrls.set(index, ctrl);
+			}
+		});
 		this.setFirstEnabledItemIndex();
 	}
 

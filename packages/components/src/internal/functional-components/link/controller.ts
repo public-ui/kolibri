@@ -1,6 +1,7 @@
 import type { UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
 import { getCurrentLocation, onLocationChange } from '../../../components/link/ariaCurrentService';
 import { setEventTarget } from '../../../schema';
+import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import type { AlignPropType } from '../../../schema/props/align';
 import type { KoliBriIconsProp } from '../../../schema/types/icons';
 import type { AriaCurrentValuePropType } from '../../props';
@@ -135,6 +136,7 @@ export class LinkController extends BaseController<LinkApi> {
 	public watchAccessKey(value?: string): void {
 		accessKeyProp.apply(value, (v) => {
 			this.setRenderProp('accessKey', v);
+			validateAccessAndShortKey(v || undefined, this.getRenderProp('shortKey') || undefined);
 		});
 	}
 
@@ -227,6 +229,7 @@ export class LinkController extends BaseController<LinkApi> {
 	public watchShortKey(value?: string): void {
 		shortKeyProp.apply(value, (v) => {
 			this.setRenderProp('shortKey', v);
+			validateAccessAndShortKey(this.getRenderProp('accessKey') || undefined, v || undefined);
 		});
 	}
 
