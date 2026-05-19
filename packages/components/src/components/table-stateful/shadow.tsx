@@ -473,7 +473,7 @@ export class KolTableStateful implements TableAPI {
 						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 						_siblingCount={this.state._pagination._siblingCount}
 						_tooltipAlign="bottom"
-						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_max={this.state._pagination._max || this.state._data.length}
 						_label={label}
 					></KolPaginationWcTag>
 				</div>
