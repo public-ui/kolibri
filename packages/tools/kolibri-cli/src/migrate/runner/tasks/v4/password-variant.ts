@@ -7,7 +7,7 @@ const RenameVariantPropTask: AbstractTask = RenamePropertyNameTask.getInstance('
 
 const UpdateVisibilityToggleValueTrue: AbstractTask = UpdatePropertyValueTask.getInstance(
 	'kol-input-password',
-	'_visibilityToggle',
+	'_visibility-toggle',
 	'visibility-toggle',
 	'true',
 	'^4',
@@ -16,7 +16,7 @@ const UpdateVisibilityToggleValueTrue: AbstractTask = UpdatePropertyValueTask.ge
 
 const UpdateVisibilityToggleValueFalse: AbstractTask = UpdatePropertyValueTask.getInstance(
 	'kol-input-password',
-	'_visibilityToggle',
+	'_visibility-toggle',
 	'default',
 	'false',
 	'^4',
