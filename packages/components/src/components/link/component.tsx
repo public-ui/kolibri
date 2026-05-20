@@ -85,9 +85,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 					tooltipId={this.ctrl.getTooltipId()}
 					refTooltipFloating={this.ctrl.setTooltipRef}
 					refAnchor={(el) => this.ctrl.setAnchorRef(el)}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</LinkFC>
+				/>
 			</Host>
 		);
 	}

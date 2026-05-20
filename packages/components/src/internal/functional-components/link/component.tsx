@@ -60,7 +60,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				ref={refAnchor}
 				href={resolvedHref}
 				target={target || undefined}
-				rel={isExternal ? 'noopener' : undefined}
+				rel={isExternal ? 'noopener noreferrer' : undefined}
 				download={download || undefined}
 				accessKey={accessKey || undefined}
 				aria-current={ariaCurrent || undefined}

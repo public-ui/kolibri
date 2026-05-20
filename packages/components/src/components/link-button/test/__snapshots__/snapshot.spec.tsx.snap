@@ -3,7 +3,7 @@
 exports[`kol-link-button should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="bottom" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener" target="self">
+    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener noreferrer" target="self">
       <span class="kol-link__text kol-span">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -11,9 +11,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             Label
           </span>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
@@ -26,7 +24,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
 exports[`kol-link-button should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="left" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener" target="self">
+    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener noreferrer" target="self">
       <span class="kol-link__text kol-span">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -34,9 +32,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             Label
           </span>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
@@ -49,7 +45,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
 exports[`kol-link-button should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="right" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener" target="self">
+    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener noreferrer" target="self">
       <span class="kol-link__text kol-span">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -57,9 +53,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             Label
           </span>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
@@ -72,14 +66,12 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
 exports[`kol-link-button should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" _hideLabel=true 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label kol-link--inline kol-link--normal" href="https://example.com" rel="noopener" target="self">
+    <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label kol-link--inline kol-link--normal" href="https://example.com" rel="noopener noreferrer" target="self">
       <span class="kol-link__text kol-span kol-span--hide-label">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
@@ -105,7 +97,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
 exports[`kol-link-button should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener" target="self">
+    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener noreferrer" target="self">
       <span class="kol-link__text kol-span">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -113,9 +105,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             Label
           </span>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
@@ -128,7 +118,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
 exports[`kol-link-button should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener" target="self">
+    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" href="https://example.com" rel="noopener noreferrer" target="self">
       <span class="kol-link__text kol-span">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -136,9 +126,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             Label
           </span>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
@@ -151,16 +139,14 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
 exports[`kol-link-button should render with _label="Label" _href="" _download="download-file.zip" _target="blank" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
-    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">
+    <a class="kol-link kol-link--external-link kol-link--inline kol-link--normal" download="download-file.zip" href="javascript:void(0);" rel="noopener noreferrer" target="blank">
       <span class="kol-link__text kol-span">
         <span class="kol-span__container">
           <span class="kol-span__label">
             Label
           </span>
           <span aria-hidden="true" class="kol-span__label" hidden="">
-            <slot name="expert" slot="expert">
-              <slot name="expert" slot="expert"></slot>
-            </slot>
+            <slot name="expert" slot="expert"></slot>
           </span>
         </span>
       </span>
