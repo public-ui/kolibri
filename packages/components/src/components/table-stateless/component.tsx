@@ -1167,13 +1167,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
 		const verticalHeaderColpan = this.state._headerCells.vertical?.length || 0;
-		const colspan = cellDefs?.[0]?.reduce((acc, row) => {
-			if ((row as KoliBriTableHeaderCell).visible === false) {
-				return acc;
-			}
+		const colspan =
+			cellDefs?.[0]?.reduce((acc, row) => {
+				if ((row as KoliBriTableHeaderCell).visible === false) {
+					return acc;
+				}
 
-			return acc + (row.colSpan || 1);
-		}, 0) ?? 0;
+				return acc + (row.colSpan || 1);
+			}, 0) ?? 0;
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
