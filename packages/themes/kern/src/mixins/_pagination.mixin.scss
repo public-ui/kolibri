@@ -14,11 +14,8 @@
 			gap: to-rem(8);
 		}
 
-		&__button--selected .kol-button--normal:disabled {
-			--button-text-background-color: var(--kern-color-action-default);
-			--button-text-border-color: var(--kern-color-action-default);
-			--button-text-color: var(--kern-color-action-on-default);
-			--button-badge-color: var(--button-text-background-color);
+		&__button--selected .kol-button {
+			@include primaryButton();
 		}
 
 		&__separator {
