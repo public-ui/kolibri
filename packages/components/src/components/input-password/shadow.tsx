@@ -123,7 +123,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 		return {
 			ref: this.setInputRef,
-type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
+			type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,
@@ -141,7 +141,7 @@ type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggl
 	}
 
 	private getShowPasswordButton(): VNode | null {
-if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
+		if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
 			return (
 				<KolIconButtonFc
 					componentName="button"
