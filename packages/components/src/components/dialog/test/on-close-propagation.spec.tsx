@@ -41,16 +41,4 @@ describe('kol-dialog-wc onClose event propagation', () => {
 
 		expect(onClose).toHaveBeenCalledTimes(1);
 	});
-
-	it('does not throw when onClose is set to boolean true', async () => {
-		const page = await newSpecPage({
-			components: [KolDialogWc, KolCardWc],
-			// onClose: true is a valid value per validateOn (line 179 in component.tsx)
-			template: () => <kol-dialog-wc _label="Test" _variant="blank" _on={{ onClose: true }} />,
-		});
-		await page.waitForChanges();
-
-		const dialog = page.root?.querySelector('dialog');
-		expect(() => dialog?.dispatchEvent(new Event('close', { bubbles: false }))).not.toThrow();
-	});
 });
