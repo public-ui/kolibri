@@ -11,6 +11,7 @@ import {
 	KolInputText,
 	KolSelect,
 	KolSingleSelect,
+	KolTextarea,
 } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
@@ -38,7 +39,14 @@ export const InputVariant: FC = () => {
 						return (
 							<div key={element} className="grid gap-4 p-8">
 								<h2>Variante: {element}</h2>
-								<KolInputText _label="Input Text" _hint="Enter your surname" _variant={element} />
+								<KolInputText
+									_label="Input Text"
+									_hint="Enter your surname"
+									_variant={element}
+									_msg={{ _type: 'error', _description: 'Error message' }}
+									_touched
+									_hasCounter
+								/>
 								<KolInputPassword _label="Input Passwort" _variant={element} />
 								<KolInputColor _label="Input Color" _variant={element} />
 								<KolInputDate _label="Input Date" _variant={element} />
@@ -72,6 +80,7 @@ export const InputVariant: FC = () => {
 									]}
 									_variant={element}
 								/>
+								<KolTextarea _label="Textarea" _variant={element} />
 							</div>
 						);
 					})

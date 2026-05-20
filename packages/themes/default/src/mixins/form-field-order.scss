@@ -3,7 +3,7 @@
 		grid-template-areas: 'msg' 'label' 'input' 'counter' 'hint';
 
 		&--left {
-			grid-template-areas: 'label msg' 'label input' 'label counter' 'label hint';
+			grid-template-areas: '. msg' 'label input' '. counter' '. hint';
 			grid-template-columns: 200px 1fr;
 		}
 	}
