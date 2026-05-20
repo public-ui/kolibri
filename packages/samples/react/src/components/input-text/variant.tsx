@@ -6,6 +6,7 @@ import {
 	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,
+	KolInputRadio,
 	KolInputRange,
 	KolInputText,
 	KolSelect,
@@ -63,6 +64,14 @@ export const InputVariant: FC = () => {
 									_variant={element}
 								/>
 								<KolCombobox _label="Combobox" _suggestions="['Herr','Frau','Firma']" _variant={element} />
+								<KolInputRadio
+									_label="Radio Group"
+									_options={[
+										{ label: 'Field 1', value: 1 },
+										{ label: 'Field 2', value: 2 },
+									]}
+									_variant={element}
+								/>
 							</div>
 						);
 					})
