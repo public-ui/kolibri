@@ -52,7 +52,9 @@ export class KolDialogWc implements DialogAPI {
 		if (event.target !== this.refDialog) {
 			return;
 		}
-		this.state._on?.onClose?.();
+		if (typeof this.state._on?.onClose === 'function') {
+			this.state._on.onClose();
+		}
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
 		}
