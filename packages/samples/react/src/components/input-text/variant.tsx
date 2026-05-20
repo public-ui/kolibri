@@ -1,4 +1,5 @@
 import {
+	KolCombobox,
 	KolInputColor,
 	KolInputDate,
 	KolInputEmail,
@@ -61,6 +62,7 @@ export const InputVariant: FC = () => {
 									]}
 									_variant={element}
 								/>
+								<KolCombobox _label="Combobox" _suggestions="['Herr','Frau','Firma']" _variant={element} />
 							</div>
 						);
 					})

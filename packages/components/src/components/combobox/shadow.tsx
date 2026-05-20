@@ -30,6 +30,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 	W3CInputValue,
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
@@ -559,6 +560,11 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
 		_hasClearButton: true,
@@ -671,6 +677,11 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.controller.setFormAssociatedValue(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {
