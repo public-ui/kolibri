@@ -39,6 +39,7 @@ export class KolDialogWc implements DialogAPI {
 		if (event.defaultPrevented) return;
 
 		this.state._on?.onCancel?.(event);
+		if (event.defaultPrevented) return;
 
 		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
 			event.preventDefault();

@@ -233,6 +233,9 @@ export class KolDrawer implements DrawerAPI {
 			if (typeof value.onClose === 'function') {
 				callbacks.onClose = value.onClose;
 			}
+			if (typeof value.onToggle === 'function') {
+				callbacks.onToggle = value.onToggle;
+			}
 			setState<KoliBriModalEventCallbacks>(this, '_on', callbacks);
 		}
 	}
@@ -242,6 +245,7 @@ export class KolDrawer implements DrawerAPI {
 		if (event.defaultPrevented) return;
 
 		this.state._on?.onCancel?.(event);
+		if (event.defaultPrevented) return;
 
 		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
 			event.preventDefault();
