@@ -4,7 +4,7 @@ import os from 'os';
 import path from 'path';
 import { RemoveVariantPropTask } from '../src/migrate/runner/tasks/v4/password-variant';
 
-describe('MapVariantStandaloneToInlineTask', () => {
+describe('RefactorInputPasswordVariantToVisibilityToggle', () => {
 	it('maps kol-input-password variant visibility-toggle to visibilityToggle=true flag in component files', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const tsxPath = path.join(tmpDir, 'component.tsx');
