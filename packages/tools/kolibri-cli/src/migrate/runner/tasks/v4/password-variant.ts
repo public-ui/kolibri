@@ -23,14 +23,14 @@ const UpdateVisibilityToggleValueFalse: AbstractTask = UpdatePropertyValueTask.g
 	[RenameVariantPropTask],
 );
 
-const RemoveIdPropTasks: AbstractTask = RemovePropertyNameTask.getInstance('kol-input-password', '_variant', '^4', [
+export const RemoveVariantPropTask: AbstractTask = RemovePropertyNameTask.getInstance('kol-input-password', '_variant', '^4', [
 	UpdateVisibilityToggleValueTrue,
 	UpdateVisibilityToggleValueFalse,
 ]);
 
-export const RenamePasswordVariantToVisibilityToggle: AbstractTask[] = [
+export const RenamePasswordVariantToVisibilityToggleTasks: AbstractTask[] = [
 	RenameVariantPropTask,
 	UpdateVisibilityToggleValueTrue,
 	UpdateVisibilityToggleValueFalse,
-	RemoveIdPropTasks,
+	RemoveVariantPropTask,
 ];
