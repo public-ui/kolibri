@@ -46,7 +46,12 @@ export class KolDialogWc implements DialogAPI {
 		}
 	};
 
-	private handleNativeCloseEvent() {
+	private handleNativeCloseEvent(event: Event) {
+		// Ignore close events that bubble up from child components (e.g. KolAlert).
+		// Only react when the dialog element itself is the event origin.
+		if (event.target !== this.refDialog) {
+			return;
+		}
 		this.state._on?.onClose?.();
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
