@@ -25,6 +25,20 @@
 			}
 		}
 
+		.kol-button {
+			@include ghostButton();
+
+			&__text {
+				min-width: unset !important; // override style from button mixin
+			}
+		}
+
+		&__button {
+			&--selected .kol-button {
+				@include primaryButton();
+			}
+		}
+
 		.kol-form-field-select {
 			gap: to-rem(10);
 
@@ -46,13 +60,6 @@
 			.kol-form-field__label {
 				font-weight: 400;
 			}
-		}
-	}
-
-	.kol-button {
-		&__text {
-			min-width: unset !important; // override style from button mixin
-			border: none;
 		}
 	}
 }
