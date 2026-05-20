@@ -14,9 +14,12 @@ describe('kol-dialog-wc onClose event propagation', () => {
 		});
 		await page.waitForChanges();
 
-		// Dispatch a 'close' event from a child element (simulates KolAlert closer).
+		// The child must be inside the <dialog> so the event actually bubbles through it,
+		// accurately simulating a KolAlert closer click inside an open dialog.
+		const dialog = page.root?.querySelector('dialog');
+		expect(dialog).not.toBeNull();
 		const child = document.createElement('div');
-		page.root?.appendChild(child);
+		dialog!.appendChild(child);
 		child.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true, cancelable: true }));
 
 		expect(onClose).not.toHaveBeenCalled();
@@ -31,9 +34,10 @@ describe('kol-dialog-wc onClose event propagation', () => {
 		});
 		await page.waitForChanges();
 
-		// Dispatch a 'close' event from the dialog element itself (simulates native dialog close).
+		// Assert dialog is present so a missing element causes an explicit failure.
 		const dialog = page.root?.querySelector('dialog');
-		dialog?.dispatchEvent(new Event('close', { bubbles: false }));
+		expect(dialog).not.toBeNull();
+		dialog!.dispatchEvent(new Event('close', { bubbles: false }));
 
 		expect(onClose).toHaveBeenCalledTimes(1);
 	});
