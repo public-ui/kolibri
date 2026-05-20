@@ -17,6 +17,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 
@@ -37,7 +38,8 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -59,7 +61,8 @@ type OptionalStates = {
 	PropRequired &
 	PropMsg &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type ComboboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type ComboboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
