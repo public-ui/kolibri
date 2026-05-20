@@ -1173,7 +1173,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			}
 
 			return acc + (row.colSpan || 1);
-		}, 0);
+		}, 0) ?? 0;
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
