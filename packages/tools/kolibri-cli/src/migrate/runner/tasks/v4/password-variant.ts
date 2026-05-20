@@ -3,7 +3,7 @@ import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 import { RenamePropertyNameTask } from '../common/RenamePropertyNameTask';
 import { UpdatePropertyValueTask } from '../common/UpdatePropertyValueTask';
 
-const RenameVariantPropTask: AbstractTask = RenamePropertyNameTask.getInstance('kol-input-password', '_variant', '_visibilityToggle', '^4');
+const RenameVariantPropTask: AbstractTask = RenamePropertyNameTask.getInstance('kol-input-password', '_variant', '_visibility-toggle', '^4');
 
 const UpdateVisibilityToggleValueTrue: AbstractTask = UpdatePropertyValueTask.getInstance(
 	'kol-input-password',
