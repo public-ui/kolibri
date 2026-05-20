@@ -135,5 +135,13 @@ executeSnapshotTests<TableStatelessProps>(
 			},
 			_data: [],
 		},
+		{
+			_label: 'Table without data with merged header shows spacer colspan greater than 1',
+			_headerCells: {
+				horizontal: [[{ label: 'Merged Header', colSpan: 2 }]],
+				vertical: [],
+			},
+			_data: [],
+		},
 	],
 );
