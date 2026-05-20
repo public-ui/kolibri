@@ -24,6 +24,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -241,6 +242,11 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: SelectStates = {
 		_hasValue: false,
 		_hideMsg: false,
@@ -354,6 +360,11 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {
