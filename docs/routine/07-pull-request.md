@@ -15,6 +15,7 @@ Erstelle den PR über das GitHub MCP-Tool `mcp__github__create_pull_request` (ke
 PR-Titel: `fix: <kurze Beschreibung> (#<issue-nummer>)`
 
 PR-Body muss enthalten:
+
 - `Closes #<issue-nummer>`
 - Kurze Beschreibung was geändert wurde und warum
 - Falls Checks übersprungen wurden: Hinweis, dass CI die Prüfung übernimmt

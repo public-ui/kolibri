@@ -10,6 +10,7 @@ Hole alle offenen Issues (keine PRs). Filtere heraus:
 - Reine Diskussionen ohne konkreten Umsetzungsauftrag
 
 Bevorzuge bei mehreren Kandidaten:
+
 1. Bug-Reports mit reproduzierbaren Schritten
 2. Issues mit vielen Reaktionen
 3. Älteste Issues zuerst
