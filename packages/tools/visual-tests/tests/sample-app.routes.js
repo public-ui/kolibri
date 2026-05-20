@@ -634,6 +634,17 @@ ROUTES.set('input-text/background?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-text/variant?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('kolibri/basic', {
 	snapshot: {
 		skip: true,
