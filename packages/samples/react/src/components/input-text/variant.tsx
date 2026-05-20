@@ -8,6 +8,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSelect,
+	KolSingleSelect,
 } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
@@ -47,6 +48,14 @@ export const InputVariant: FC = () => {
 									_label="Select"
 									_options={[
 										{ label: 'Please select…', value: '' },
+										{ label: 'One', value: 'one' },
+										{ label: 'Two', value: 'two' },
+									]}
+									_variant={element}
+								/>
+								<KolSingleSelect
+									_label="Single Select"
+									_options={[
 										{ label: 'One', value: 'one' },
 										{ label: 'Two', value: 'two' },
 									]}

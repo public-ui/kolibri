@@ -23,6 +23,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { KolButtonWcTag } from '../../core/component-names';
@@ -633,6 +634,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Prop() public _rows?: RowsPropType;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: SingleSelectStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -752,6 +758,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Watch('_rows')
 	public validateRows(value?: number): void {
 		this.controller.validateRows(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	@Listen('mousemove')
