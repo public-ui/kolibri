@@ -23,7 +23,7 @@ export const InputVariant: FC = () => {
 				) : (
 					inputVariants.map((element) => {
 						return (
-							<div className="grid gap-4 p-8">
+							<div key={element} className="grid gap-4 p-8">
 								<h2>Variante: {element}</h2>
 								<KolInputText _label="Input Text" _hint="Enter your surname" _variant={element} />
 								<KolInputPassword _label="Input Passwort" _variant={element} />

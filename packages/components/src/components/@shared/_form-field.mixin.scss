@@ -7,7 +7,7 @@
 		display: grid;
 
 		&__label {
-			grid-area: 'label';
+			grid-area: label;
 
 			#{$root}:not(#{$root}--disabled) & {
 				cursor: pointer;
@@ -28,19 +28,19 @@
 		}
 
 		&__input {
-			grid-area: 'input';
+			grid-area: input;
 		}
 
 		&__msg {
-			grid-area: 'msg';
+			grid-area: msg;
 		}
 
 		&__hint {
-			grid-area: 'hint';
+			grid-area: hint;
 		}
 
 		&__counter {
-			grid-area: 'counter';
+			grid-area: counter;
 		}
 	}
 }
