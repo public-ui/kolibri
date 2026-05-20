@@ -19,7 +19,7 @@
 				background-color: var(--color-sky);
 				border: 2px solid var(--color-blue);
 
-				.kol-link {
+				&.kol-link {
 					color: var(--color-black);
 				}
 			}
@@ -27,13 +27,13 @@
 			&--active {
 				background-color: var(--color-yellow);
 
-				.kol-link {
+				&.kol-link {
 					color: var(--color-black);
 					background-color: var(--color-yellow);
 				}
 			}
 
-			.kol-link {
+			&.kol-link {
 				color: var(--color-black);
 				text-align: left;
 

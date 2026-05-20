@@ -29,8 +29,8 @@
 				display: flex;
 			}
 
-			.kol-link,
-			.kol-button {
+			&.kol-link,
+			&.kol-button {
 				color: var(--color-primary);
 				display: flex;
 				min-height: var(--a11y-min-size);

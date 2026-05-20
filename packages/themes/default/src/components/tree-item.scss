@@ -12,7 +12,7 @@
 			display: block;
 			border: 1px solid transparent;
 
-			.kol-link {
+			&.kol-link {
 				color: var(--color-text);
 				padding-right: to-rem(8);
 				padding-left: max(calc(var(--indentation) * var(--level)));
@@ -24,7 +24,7 @@
 				background-color: var(--color-primary-variant);
 				border: 1px solid var(--color-primary);
 
-				.kol-link {
+				&.kol-link {
 					color: var(--color-light);
 					outline-offset: 0;
 				}
@@ -33,7 +33,7 @@
 			&--active {
 				background-color: var(--color-primary);
 
-				.kol-link {
+				&.kol-link {
 					color: var(--color-light);
 				}
 			}
