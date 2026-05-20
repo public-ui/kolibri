@@ -135,7 +135,7 @@ export class KolDrawer implements DrawerAPI {
 					aria-labelledby={this.cardHeadingId}
 					aria-modal={this.isModal ? 'true' : 'false'}
 					class="kol-drawer__dialog"
-					onCancel={handleCancelOverlay}
+					onCancel={this.handleCancelEvent}
 					ref={this.getRef}
 				>
 					{this.renderDialogContent()}
@@ -227,12 +227,30 @@ export class KolDrawer implements DrawerAPI {
 	public validateOn(value?: KoliBriModalEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
 			const callbacks: KoliBriModalEventCallbacks = {};
+			if (typeof value.onCancel === 'function') {
+				callbacks.onCancel = value.onCancel;
+			}
 			if (typeof value.onClose === 'function') {
 				callbacks.onClose = value.onClose;
+			}
+			if (typeof value.onToggle === 'function') {
+				callbacks.onToggle = value.onToggle;
 			}
 			setState<KoliBriModalEventCallbacks>(this, '_on', callbacks);
 		}
 	}
+
+	private handleCancelEvent = (event: Event): void => {
+		handleCancelOverlay(event);
+		if (event.defaultPrevented) return;
+
+		this.state._on?.onCancel?.(event);
+		if (event.defaultPrevented) return;
+
+		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
+			event.preventDefault();
+		}
+	};
 
 	private handleCloseDialog() {
 		this._on?.onClose?.();
