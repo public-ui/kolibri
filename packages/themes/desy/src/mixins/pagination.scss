@@ -8,8 +8,18 @@
 	@include select();
 
 	.kol-pagination {
+		gap: to-rem(12);
+
+		&__navigation-list {
+			gap: to-rem(4);
+		}
+
 		&__separator {
 			color: var(--color-dark-blue-100);
+
+			&::before {
+				content: '...';
+			}
 		}
 
 		&__page-size-select {
@@ -30,17 +40,18 @@
 
 			&__text {
 				min-width: unset !important; // override style from button mixin
+				font-weight: 400;
 			}
 		}
 
 		&__button {
 			&--selected .kol-button {
-				@include primaryButton();
+				--text-color: var(--color-black);
 			}
 		}
 
 		.kol-form-field-select {
-			gap: to-rem(10);
+			gap: to-rem(8);
 
 			.kol-input-container {
 				--border-color: transparent;
