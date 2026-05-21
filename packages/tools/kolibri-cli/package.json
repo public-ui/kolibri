@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "4.1.5-rc.1",
+	"version": "4.1.5-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -47,7 +47,7 @@
 	"devDependencies": {
 		"@eslint/js": "9.39.4",
 		"@public-ui/components": "workspace:*",
-		"@types/node": "25.7.0",
+		"@types/node": "25.9.0",
 		"@types/semver": "7.7.1",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
@@ -55,7 +55,7 @@
 		"eslint": "9.39.4",
 		"eslint-plugin-html": "8.1.4",
 		"eslint-plugin-jsx-a11y": "6.10.2",
-		"knip": "6.13.1",
+		"knip": "6.14.1",
 		"mocha": "11.7.5",
 		"nodemon": "3.1.14",
 		"ts-node": "10.9.2",
