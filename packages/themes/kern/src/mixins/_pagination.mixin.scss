@@ -16,6 +16,7 @@
 
 		&__button--selected .kol-button {
 			@include primaryButton();
+			opacity: 0.4;
 		}
 
 		&__separator {
