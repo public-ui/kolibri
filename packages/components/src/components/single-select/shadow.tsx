@@ -407,17 +407,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 												this.focusOption(index);
 											}
 										}}
-										onKeyDown={(e) => {
-											if (option.disabled) {
-												return;
-											}
-											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option as Option<string>);
-												this.refInput?.focus();
-												this.toggleListbox(e);
-												e.preventDefault();
-											}
-										}}
 									/>
 								))
 							) : (
