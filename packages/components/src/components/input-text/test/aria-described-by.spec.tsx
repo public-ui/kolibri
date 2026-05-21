@@ -27,8 +27,9 @@ describe('kol-input-text aria-describedby', () => {
 		const input = page.root?.shadowRoot?.querySelector('input');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		const ariaDescribedBy = input?.getAttribute('aria-describedby') ?? '';
-		expect(ariaDescribedBy).toContain('id-nonce-msg');
-		expect(ariaDescribedBy).toContain('id-nonce-counter');
+		const ids = (input?.getAttribute('aria-describedby') ?? '').split(' ');
+		expect(ids).toContain('id-nonce-msg');
+		expect(ids).toContain('id-nonce-counter');
+		expect(ids).toContain('id-nonce-character-limit-hint');
 	});
 });
