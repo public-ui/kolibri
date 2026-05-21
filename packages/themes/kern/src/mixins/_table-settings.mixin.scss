@@ -7,7 +7,7 @@
 		background: var(--kern-color-layout-background-default);
 		@include button('kol-button');
 
-		.kol-popover-button__button .kol_button {
+		.kol-popover-button__button .kol-button {
 			@include ghostButton();
 		}
 
