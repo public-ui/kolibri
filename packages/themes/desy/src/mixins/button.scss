@@ -178,9 +178,9 @@
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover,
-	&:focus {
-		--text-background-color: var(--color-blue-100-06);
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-blue-100-06);
 	}
 }
 
@@ -193,8 +193,8 @@
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover,
-	&:focus {
-		--text-background-color: var(--color-blue-100-06);
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-blue-100-06);
 	}
 }
