@@ -81,7 +81,6 @@ test.describe(COMPONENT_NAME, () => {
 		await page.setContent(`<kol-input-checkbox _label="Checkbox"></kol-input-checkbox>`);
 
 		const component = page.locator(COMPONENT_NAME);
-		const input = page.locator('input');
 
 		// Focus the checkbox
 		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
