@@ -4,9 +4,46 @@
 
 @mixin kol-form-field-theme {
 	.kol-form-field {
-		$root: &;
+		--form-field-grid-column-1: 1;
+		--form-field-grid-column-2: 1;
 
 		gap: to-rem(4);
+
+		&__msg {
+			order: 1;
+			grid-column: var(--form-field-grid-column-2);
+		}
+
+		&__label {
+			order: 2;
+			grid-column: var(--form-field-grid-column-1);
+			display: flex;
+
+			&-text {
+				gap: 0;
+			}
+		}
+
+		&__input {
+			order: 3;
+			grid-column: var(--form-field-grid-column-2);
+		}
+
+		&__counter {
+			order: 4;
+			grid-column: var(--form-field-grid-column-2);
+
+			&--exceeded {
+				color: var(--color-danger);
+			}
+		}
+
+		&__hint {
+			order: 5;
+			grid-column: var(--form-field-grid-column-2);
+
+			@include kol-typography-hint;
+		}
 
 		&--error:not(&--hide-msg) {
 			padding-left: to-rem(16);
@@ -16,14 +53,6 @@
 				&.kol-alert--type-error {
 					@include kol-input-error-with-kol-alert-error(--color-danger);
 				}
-			}
-		}
-
-		&__label {
-			display: flex;
-
-			&-text {
-				gap: 0;
 			}
 		}
 
@@ -48,14 +77,9 @@
 			}
 		}
 
-		&__hint {
-			@include kol-typography-hint;
-		}
-
-		&__counter {
-			&--exceeded {
-				color: var(--color-danger);
-			}
+		&--left {
+			--form-field-grid-column-2: 2;
+			grid-template-columns: 200px 1fr;
 		}
 	}
 }

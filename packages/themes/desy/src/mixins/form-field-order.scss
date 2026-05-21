@@ -2,8 +2,6 @@
 
 @mixin kol-form-field {
 	.kol-form-field {
-		grid-template-areas: 'label' 'input' 'counter' 'msg' 'hint';
-
 		color: var(--color-dark-blue-100);
 
 		font-family: var(--font-family);
