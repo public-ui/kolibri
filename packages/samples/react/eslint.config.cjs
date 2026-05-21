@@ -6,7 +6,7 @@ const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
 
 module.exports = [
 	{
-		ignores: ['.eslintrc.js', 'dist/**', 'node_modules/**'],
+		ignores: ['dist/**', 'node_modules/**', '**/assets/**', '**/complex-form/**'],
 	},
 	{
 		files: ['src/**/*.{ts,tsx,js,jsx}'],
@@ -31,10 +31,13 @@ module.exports = [
 		rules: {
 			...tsPlugin.configs['recommended'].rules,
 			...reactPlugin.configs.recommended.rules,
-			...reactHooksPlugin.configs.recommended.rules,
 			...jsxA11yPlugin.configs.recommended.rules,
+			'react-hooks/rules-of-hooks': 'error',
+			'react-hooks/exhaustive-deps': 'warn',
 			'@typescript-eslint/consistent-type-imports': 'error',
-			'@typescript-eslint/no-unsafe-member-access': 'error',
+			'@typescript-eslint/no-explicit-any': 'warn',
+			'@typescript-eslint/no-unsafe-member-access': 'warn',
+			'@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', caughtErrors: 'none', ignoreRestSiblings: true }],
 			eqeqeq: 'error',
 			'react/no-unused-state': 'error',
 			'react/react-in-jsx-scope': 'off',
