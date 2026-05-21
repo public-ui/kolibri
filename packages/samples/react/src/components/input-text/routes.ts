@@ -9,6 +9,7 @@ import { InputTextOnInputOnChange } from './get-value';
 import { InputTextHideLabel } from './hide-label';
 import { InputTextHideMsg } from './hide-msg';
 import { InputTextMessageTypes } from './message-types';
+import { InputTextMsgAndCounter } from './msg-and-counter';
 import { InputTextPattern } from './pattern';
 import { InputTextPlaceholder } from './placeholder';
 import { InputTextReadonly } from './readonly';
@@ -25,6 +26,7 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		disabled: InputTextDisabled,
 		readonly: InputTextReadonly,
 		counter: InputTextCounter,
+		'msg-and-counter': InputTextMsgAndCounter,
 		'access-short-key': InputTextAccessShortKey,
 		'hide-label': InputTextHideLabel,
 		'hide-msg': InputTextHideMsg,

@@ -16,4 +16,26 @@ describe('kol-input-text aria-describedby', () => {
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
 		expect(input?.getAttribute('aria-describedby')).toBe('id-nonce-hint');
 	});
+
+	it('includes both msg and counter IDs in aria-describedby when _msg and _hasCounter are both set (#9073)', async () => {
+		const page = await newSpecPage({
+			components: [KolInputText],
+			template: () => (
+				<kol-input-text
+					_label="Label"
+					_msg={{ _description: 'Warnung', _type: 'warning' }}
+					_hasCounter={true}
+					_maxLength={10}
+				/>
+			),
+		});
+
+		const formField = page.root?.shadowRoot?.querySelector('.kol-form-field');
+		const input = page.root?.shadowRoot?.querySelector('input');
+
+		expect(formField?.getAttribute('aria-describedby')).toBeNull();
+		const ariaDescribedBy = input?.getAttribute('aria-describedby') ?? '';
+		expect(ariaDescribedBy).toContain('id-nonce-msg');
+		expect(ariaDescribedBy).toContain('id-nonce-counter');
+	});
 });
