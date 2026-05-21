@@ -15,9 +15,9 @@
 		}
 
 		&__label {
+			display: flex;
 			order: 2;
 			grid-column: var(--form-field-grid-column-1);
-			display: flex;
 
 			&-text {
 				gap: 0;
