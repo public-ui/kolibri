@@ -20,7 +20,7 @@ describe('kol-input-text aria-describedby', () => {
 	it('includes both msg and counter IDs in aria-describedby when _msg and _hasCounter are both set (#9073)', async () => {
 		const page = await newSpecPage({
 			components: [KolInputText],
-			template: () => <kol-input-text _label="Label" _msg={{ _description: 'Warnung', _type: 'warning' }} _hasCounter={true} _maxLength={10} />,
+			template: () => <kol-input-text _label="Label" _msg={{ _description: 'Warnung', _type: 'warning' }} _hasCounter={true} _maxLength={10} _touched={true} />,
 		});
 
 		const formField = page.root?.shadowRoot?.querySelector('.kol-form-field');
@@ -31,5 +31,7 @@ describe('kol-input-text aria-describedby', () => {
 		expect(ids).toContain('id-nonce-msg');
 		expect(ids).toContain('id-nonce-counter');
 		expect(ids).toContain('id-nonce-character-limit-hint');
+		expect(page.root?.shadowRoot?.querySelector('#id-nonce-msg')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('#id-nonce-counter')).not.toBeNull();
 	});
 });
