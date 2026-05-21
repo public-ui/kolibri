@@ -37,6 +37,10 @@
 				gap: var(--spacing) calc(var(--spacing) * 2);
 			}
 		}
+
+		&__msg {
+			order: 4;
+		}
 	}
 
 	.kol-field-control {
