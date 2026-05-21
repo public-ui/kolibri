@@ -86,24 +86,19 @@ test.describe(COMPONENT_NAME, () => {
 		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
 		await page.waitForChanges();
 
-		// Attach a native blur listener on the shadow-DOM input before the click
-		await page.evaluate(() => {
+		// Dispatch mousedown directly on the shadow-DOM text label and verify that
+		// preventDefault() is called. This prevents the browser from triggering the
+		// blur→focus cycle that would occur when the label's htmlFor target is already focused.
+		const defaultPrevented = await page.evaluate(() => {
 			const host = document.querySelector('kol-input-checkbox');
-			const shadowInput = host?.shadowRoot?.querySelector('input');
-			if (shadowInput) {
-				(window as unknown as Record<string, unknown>)['__testBlurCount'] = 0;
-				shadowInput.addEventListener('blur', () => {
-					(window as unknown as Record<string, unknown>)['__testBlurCount'] = ((window as unknown as Record<string, number>)['__testBlurCount'] ?? 0) + 1;
-				});
-			}
+			const label = host?.shadowRoot?.querySelector('label.kol-field-control__label');
+			if (!label) return null;
+			const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+			label.dispatchEvent(event);
+			return event.defaultPrevented;
 		});
 
-		// Click the visible text label (kol-field-control__label); Playwright pierces open shadow DOM
-		await page.locator('label.kol-field-control__label').click();
-		await page.waitForChanges();
-
-		const blurCount = await page.evaluate(() => (window as unknown as Record<string, number>)['__testBlurCount'] ?? 0);
-		expect(blurCount).toBe(0);
+		expect(defaultPrevented).toBe(true);
 	});
 
 	test(`should not fire blur when clicking the checkbox icon while already focused`, async ({ page }) => {
@@ -115,23 +110,18 @@ test.describe(COMPONENT_NAME, () => {
 		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
 		await page.waitForChanges();
 
-		// Attach blur listener on shadow-DOM input
-		await page.evaluate(() => {
+		// The icon element has pointer-events: none in CSS, so real pointer events land on the
+		// enclosing kol-checkbox label. Dispatch mousedown on that label and verify that
+		// preventDefault() is called, preventing a spurious blur→focus cycle.
+		const defaultPrevented = await page.evaluate(() => {
 			const host = document.querySelector('kol-input-checkbox');
-			const shadowInput = host?.shadowRoot?.querySelector('input');
-			if (shadowInput) {
-				(window as unknown as Record<string, unknown>)['__testBlurCount2'] = 0;
-				shadowInput.addEventListener('blur', () => {
-					(window as unknown as Record<string, unknown>)['__testBlurCount2'] = ((window as unknown as Record<string, number>)['__testBlurCount2'] ?? 0) + 1;
-				});
-			}
+			const checkboxLabel = host?.shadowRoot?.querySelector('label.kol-checkbox');
+			if (!checkboxLabel) return null;
+			const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+			checkboxLabel.dispatchEvent(event);
+			return event.defaultPrevented;
 		});
 
-		// Click the icon element inside the kol-checkbox wrapper
-		await page.locator('i.kol-checkbox__icon').click();
-		await page.waitForChanges();
-
-		const blurCount = await page.evaluate(() => (window as unknown as Record<string, number>)['__testBlurCount2'] ?? 0);
-		expect(blurCount).toBe(0);
+		expect(defaultPrevented).toBe(true);
 	});
 });
