@@ -111,6 +111,15 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				[`kol-input-checkbox__field-control--variant-${this.state._variant || 'default'}`]: true,
 			}),
 			state: this.state,
+			// Prevent blur/focus cycling when clicking the visible text label while
+			// the checkbox is already focused (Shadow DOM htmlFor-label quirk).
+			fieldControlLabelProps: {
+				onMouseDown: (e: Event) => {
+					if (this.inputHasFocus) {
+						e.preventDefault();
+					}
+				},
+			},
 		};
 	}
 
@@ -118,8 +127,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return {
 			state: this.state,
 			icon: this.getIcon(),
-			// Prevent the blur/focus cycle that occurs when clicking the label text or icon
-			// while the checkbox is already focused (Shadow DOM label-click quirk).
+			// Prevent blur/focus cycling when clicking the icon area while the checkbox
+			// is already focused. Text-label clicks are handled via fieldControlLabelProps.
 			onMouseDown: (e: Event) => {
 				if (this.inputHasFocus && !(e.target instanceof HTMLInputElement)) {
 					e.preventDefault();

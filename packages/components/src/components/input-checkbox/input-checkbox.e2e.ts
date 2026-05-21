@@ -76,4 +76,63 @@ test.describe(COMPONENT_NAME, () => {
 		const isFocused = await input.evaluate((el) => el === document.activeElement || (el.getRootNode() as ShadowRoot | Document).activeElement === el);
 		expect(isFocused).toBe(true);
 	});
+
+	test(`should not fire blur when clicking label text while checkbox is already focused`, async ({ page }) => {
+		await page.setContent(`<kol-input-checkbox _label="Checkbox"></kol-input-checkbox>`);
+
+		const component = page.locator(COMPONENT_NAME);
+		const input = page.locator('input');
+
+		// Focus the checkbox
+		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
+		await page.waitForChanges();
+
+		// Attach a native blur listener on the shadow-DOM input before the click
+		await page.evaluate(() => {
+			const host = document.querySelector('kol-input-checkbox');
+			const shadowInput = host?.shadowRoot?.querySelector('input');
+			if (shadowInput) {
+				(window as unknown as Record<string, unknown>)['__testBlurCount'] = 0;
+				shadowInput.addEventListener('blur', () => {
+					(window as unknown as Record<string, unknown>)['__testBlurCount'] = ((window as unknown as Record<string, number>)['__testBlurCount'] ?? 0) + 1;
+				});
+			}
+		});
+
+		// Click the visible text label (kol-field-control__label); Playwright pierces open shadow DOM
+		await page.locator('label.kol-field-control__label').click();
+		await page.waitForChanges();
+
+		const blurCount = await page.evaluate(() => (window as unknown as Record<string, number>)['__testBlurCount'] ?? 0);
+		expect(blurCount).toBe(0);
+	});
+
+	test(`should not fire blur when clicking the checkbox icon while already focused`, async ({ page }) => {
+		await page.setContent(`<kol-input-checkbox _label="Checkbox"></kol-input-checkbox>`);
+
+		const component = page.locator(COMPONENT_NAME);
+
+		// Focus the checkbox
+		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
+		await page.waitForChanges();
+
+		// Attach blur listener on shadow-DOM input
+		await page.evaluate(() => {
+			const host = document.querySelector('kol-input-checkbox');
+			const shadowInput = host?.shadowRoot?.querySelector('input');
+			if (shadowInput) {
+				(window as unknown as Record<string, unknown>)['__testBlurCount2'] = 0;
+				shadowInput.addEventListener('blur', () => {
+					(window as unknown as Record<string, unknown>)['__testBlurCount2'] = ((window as unknown as Record<string, number>)['__testBlurCount2'] ?? 0) + 1;
+				});
+			}
+		});
+
+		// Click the icon element inside the kol-checkbox wrapper
+		await page.locator('i.kol-checkbox__icon').click();
+		await page.waitForChanges();
+
+		const blurCount = await page.evaluate(() => (window as unknown as Record<string, number>)['__testBlurCount2'] ?? 0);
+		expect(blurCount).toBe(0);
+	});
 });
