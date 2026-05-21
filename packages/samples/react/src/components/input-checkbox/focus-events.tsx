@@ -14,9 +14,8 @@ export const InputCheckboxFocusEvents: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Clicking the label text while the checkbox is already focused must <strong>not</strong> fire a spurious{' '}
-					<code>onBlur</code>. To verify the fix: focus the checkbox (Tab or first click), then click its label
-					text again — the event log should show only <code>onChange</code>, <strong>not</strong>{' '}
+					Clicking the label text while the checkbox is already focused must <strong>not</strong> fire a spurious <code>onBlur</code>. To verify the fix: focus
+					the checkbox (Tab or first click), then click its label text again — the event log should show only <code>onChange</code>, <strong>not</strong>{' '}
 					<code>onBlur</code> followed by <code>onFocus</code>.
 				</p>
 			</SampleDescription>

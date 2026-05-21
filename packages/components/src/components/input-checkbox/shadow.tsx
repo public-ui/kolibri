@@ -121,7 +121,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 			// Prevent the blur/focus cycle that occurs when clicking the label text or icon
 			// while the checkbox is already focused (Shadow DOM label-click quirk).
 			onMouseDown: (e: Event) => {
-				if (this.inputHasFocus && (e.target as HTMLElement).tagName.toUpperCase() !== 'INPUT') {
+				if (this.inputHasFocus && !(e.target instanceof HTMLInputElement)) {
 					e.preventDefault();
 				}
 			},
