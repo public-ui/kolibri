@@ -4,6 +4,8 @@
 	.kol-form-field {
 		$root: &;
 
+		grid-template-areas: 'label' 'input' 'counter' 'msg' 'hint';
+
 		&__label {
 			color: var(--color-dark-blue-100);
 

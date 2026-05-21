@@ -1,27 +1,9 @@
 @use '../functions/to-rem' as *;
 
-@mixin kol-form-field-order-theme {
-	.kol-form-field {
-		&__label {
-			order: 1;
-		}
-
-		&__input {
-			order: 2;
-		}
-
-		&__msg {
-			order: 3;
-		}
-
-		&__hint {
-			order: 4;
-		}
-	}
-}
-
 @mixin kol-form-field {
 	.kol-form-field {
+		grid-template-areas: 'label' 'input' 'counter' 'msg' 'hint';
+
 		color: var(--color-dark-blue-100);
 
 		font-family: var(--font-family);
