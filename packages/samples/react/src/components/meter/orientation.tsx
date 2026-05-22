@@ -14,20 +14,11 @@ export const MeterOrientation: FC = () => (
 
 		<div className="grid gap-8">
 			<section className="grid gap-4">
-				<KolHeading _level={2} _label="Horizontal (default)" />
-				<div className="flex flex-col gap-4">
-					<KolMeter _label="Storage" _max={100} _value={25} />
-					<KolMeter _label="Storage" _max={100} _value={60} />
-					<KolMeter _label="Storage" _max={100} _value={90} />
-				</div>
-			</section>
-
-			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical" />
 				<div className="flex flex-row gap-8 items-end">
-					<KolMeter style={{ '--kol-meter-vertical-height': '100' }} _label="Tank A" _max={100} _value={25} _orientation="vertical" />
-					<KolMeter style={{ '--kol-meter-vertical-height': '150' }} _label="Tank B" _max={100} _value={60} _orientation="vertical" />
-					<KolMeter style={{ '--kol-meter-vertical-height': '200' }} _label="Tank C" _max={100} _value={90} _orientation="vertical" />
+					<KolMeter style={{ '--kol-meter-vertical-height': '100' }} _label="Tank 100l" _max={100} _value={50} _orientation="vertical" _unit="l" />
+					<KolMeter style={{ '--kol-meter-vertical-height': '150' }} _label="Tank 150l" _max={150} _value={50} _orientation="vertical" _unit="l" />
+					<KolMeter style={{ '--kol-meter-vertical-height': '200' }} _label="Tank 200l" _max={200} _value={150} _orientation="vertical" _unit="l" />
 				</div>
 			</section>
 
