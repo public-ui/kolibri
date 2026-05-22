@@ -71,7 +71,7 @@
 					padding: 0;
 
 					.kol-button {
-						--text-background-color: transparent;
+						@include ghostButton();
 
 						&__text {
 							padding: to-rem(16);
