@@ -27,18 +27,18 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "5.2.2",
+		"@hookform/resolvers": "5.4.0",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.38.3",
-		"@types/node": "25.9.0",
+		"@types/node": "25.9.1",
 		"@types/papaparse": "5.5.2",
-		"@types/react": "19.2.14",
+		"@types/react": "19.2.15",
 		"@types/react-dom": "19.2.3",
-		"@unocss/preset-mini": "66.6.8",
-		"@unocss/vite": "66.6.8",
+		"@unocss/preset-mini": "66.7.0",
+		"@unocss/vite": "66.7.0",
 		"@vitejs/plugin-react-swc": "4.3.1",
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"papaparse": "5.5.3",
@@ -69,7 +69,7 @@
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.11.1"
+		"stylelint": "17.12.0"
 	},
 	"files": [
 		"dist",
