@@ -13,9 +13,9 @@ export const MeterBasic: FC = () => (
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Basic" />
 				<div className="flex flex-col gap-4">
-					<KolMeter _label="Storage used" _value={0.5} />
-					<KolMeter _label="Storage used" _max={100} _value={75} _unit="kg" />
-					<KolMeter _label="Storage used" _max={100} _min={-100} _value={-50} _unit="°C" />
+					<KolMeter _label="Progress" _value={0.5} />
+					<KolMeter _label="Weight" _max={100} _value={75} _unit="kg" />
+					<KolMeter _label="Temperature" _min={-100} _max={100} _value={-50} _unit="°C" />
 				</div>
 			</section>
 		</div>
