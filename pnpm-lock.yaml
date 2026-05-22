@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@evilmartians/lefthook':
+        specifier: 2.1.8
+        version: 2.1.8
       license-report:
         specifier: 6.8.2
         version: 6.8.2
@@ -550,7 +553,7 @@ importers:
     devDependencies:
       oslllo-svg-fixer:
         specifier: 6.0.1
-        version: 6.0.1
+        version: 6.0.1(encoding@0.1.13)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -568,7 +571,7 @@ importers:
         version: 14.1.1
       oslllo-svg-fixer:
         specifier: 6.0.1
-        version: 6.0.1
+        version: 6.0.1(encoding@0.1.13)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -3430,6 +3433,12 @@ packages:
   '@eslint/plugin-kit@0.4.1':
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@evilmartians/lefthook@2.1.8':
+    resolution: {integrity: sha512-1hzdKBlPhy7SQWQOEMzt15VZ4xKNZGdOECbEhbAQc9B83vtn9Kx6ez5ciq/83RDyMSd1poAeXD0MibEowVenJw==}
+    cpu: [x64, arm64, ia32]
+    os: [darwin, linux, win32]
+    hasBin: true
 
   '@fastify/ajv-compiler@4.0.5':
     resolution: {integrity: sha512-KoWKW+MhvfTRWL4qrhUwAAZoaChluo0m0vbiJlGMt2GXvL4LVPQEjt8kSpHI3IBq5Rez8fg+XeH3cneztq+C7A==}
@@ -14881,6 +14890,7 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -17311,6 +17321,8 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
+  '@evilmartians/lefthook@2.1.8': {}
+
   '@fastify/ajv-compiler@4.0.5':
     dependencies:
       ajv: 8.18.0
@@ -17952,13 +17964,13 @@ snapshots:
       chalk: 4.1.2
     optional: true
 
-  '@jimp/bmp@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/bmp@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       bmp-js: 0.1.0
 
-  '@jimp/core@0.22.12':
+  '@jimp/core@0.22.12(encoding@0.1.13)':
     dependencies:
       '@jimp/utils': 0.22.12
       any-base: 1.1.0
@@ -17971,197 +17983,197 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@jimp/custom@0.22.12':
+  '@jimp/custom@0.22.12(encoding@0.1.13)':
     dependencies:
-      '@jimp/core': 0.22.12
+      '@jimp/core': 0.22.12(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
-  '@jimp/gif@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/gif@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       gifwrap: 0.10.1
       omggif: 1.0.10
 
-  '@jimp/jpeg@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/jpeg@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       jpeg-js: 0.4.4
 
-  '@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-circle@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-circle@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       tinycolor2: 1.6.0
 
-  '@jimp/plugin-contain@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))':
+  '@jimp/plugin-contain@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-cover@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))':
+  '@jimp/plugin-cover@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-displace@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-displace@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-dither@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-dither@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-fisheye@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-fisheye@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-flip@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))':
+  '@jimp/plugin-flip@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-gaussian@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-gaussian@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-invert@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-invert@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-mask@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-mask@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-normalize@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-normalize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-print@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-print@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
       load-bmfont: 1.4.2
     transitivePeerDependencies:
       - debug
 
-  '@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-shadow@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-shadow@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugin-threshold@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))':
+  '@jimp/plugin-threshold@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/utils': 0.22.12
 
-  '@jimp/plugins@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/plugins@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-circle': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-contain': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))
-      '@jimp/plugin-cover': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))
-      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-displace': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-dither': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-fisheye': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-flip': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12)))
-      '@jimp/plugin-gaussian': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-invert': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-mask': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-normalize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-print': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-shadow': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
-      '@jimp/plugin-threshold': 0.22.12(@jimp/custom@0.22.12)(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugin-blit': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-blur': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-circle': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-color': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-contain': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))
+      '@jimp/plugin-cover': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-scale@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))
+      '@jimp/plugin-crop': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-displace': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-dither': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-fisheye': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-flip': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-rotate@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))))
+      '@jimp/plugin-gaussian': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-invert': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-mask': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-normalize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-print': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-resize': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/plugin-rotate': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blit@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-crop@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-scale': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-shadow': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-blur@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
+      '@jimp/plugin-threshold': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))(@jimp/plugin-color@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))(@jimp/plugin-resize@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13)))
       timm: 1.7.1
     transitivePeerDependencies:
       - debug
 
-  '@jimp/png@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/png@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       '@jimp/utils': 0.22.12
       pngjs: 6.0.0
 
-  '@jimp/tiff@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/tiff@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/custom': 0.22.12
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
       utif2: 4.1.0
 
-  '@jimp/types@0.22.12(@jimp/custom@0.22.12)':
+  '@jimp/types@0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))':
     dependencies:
-      '@jimp/bmp': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/custom': 0.22.12
-      '@jimp/gif': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/jpeg': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/png': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/tiff': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/bmp': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/gif': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/jpeg': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/png': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/tiff': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       timm: 1.7.1
 
   '@jimp/utils@0.22.12':
@@ -25912,11 +25924,11 @@ snapshots:
       - ts-node
     optional: true
 
-  jimp@0.22.12:
+  jimp@0.22.12(encoding@0.1.13):
     dependencies:
-      '@jimp/custom': 0.22.12
-      '@jimp/plugins': 0.22.12(@jimp/custom@0.22.12)
-      '@jimp/types': 0.22.12(@jimp/custom@0.22.12)
+      '@jimp/custom': 0.22.12(encoding@0.1.13)
+      '@jimp/plugins': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+      '@jimp/types': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       regenerator-runtime: 0.13.11
     transitivePeerDependencies:
       - debug
@@ -27231,20 +27243,20 @@ snapshots:
 
   os-tmpdir@1.0.2: {}
 
-  oslllo-potrace@3.0.0:
+  oslllo-potrace@3.0.0(encoding@0.1.13):
     dependencies:
-      jimp: 0.22.12
+      jimp: 0.22.12(encoding@0.1.13)
     transitivePeerDependencies:
       - debug
       - encoding
 
-  oslllo-svg-fixer@6.0.1:
+  oslllo-svg-fixer@6.0.1(encoding@0.1.13):
     dependencies:
       ansi-colors: 4.1.3
       cli-progress: 3.12.0
       fast-glob: 3.3.3
-      oslllo-potrace: 3.0.0
-      oslllo-svg2: 3.0.0
+      oslllo-potrace: 3.0.0(encoding@0.1.13)
+      oslllo-svg2: 3.0.0(encoding@0.1.13)
       oslllo-validator: 3.1.0
       piscina: 4.9.2
       yargs: 16.2.0
@@ -27252,11 +27264,11 @@ snapshots:
       - debug
       - encoding
 
-  oslllo-svg2@3.0.0:
+  oslllo-svg2@3.0.0(encoding@0.1.13):
     dependencies:
       '@resvg/resvg-js': 2.6.2
       domino: 2.1.6
-      jimp: 0.22.12
+      jimp: 0.22.12(encoding@0.1.13)
       oslllo-validator: 3.1.0
     transitivePeerDependencies:
       - debug
