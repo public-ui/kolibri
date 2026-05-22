@@ -57,7 +57,7 @@
 		"test:update:unit": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
-		"@grpc/grpc-js": "1.14.3",
+		"@grpc/grpc-js": "1.14.4",
 		"@grpc/proto-loader": "0.8.1",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "14.0.3",
