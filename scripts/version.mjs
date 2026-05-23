@@ -105,7 +105,7 @@ const run = (cmd) => execSync(cmd, { cwd: ROOT, stdio: 'inherit' });
 
 run('git add -u');
 run(`git commit -m "chore: release ${newVersion}"`);
-run(`git tag "${newVersion}"`);
+run(`git tag -a "${newVersion}" -m "chore: release ${newVersion}"`);
 
 if (!noPush) {
 	run('git push --follow-tags');
