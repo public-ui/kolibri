@@ -8,8 +8,18 @@
 	@include select();
 
 	.kol-pagination {
+		gap: to-rem(12);
+
+		&__navigation-list {
+			gap: to-rem(4);
+		}
+
 		&__separator {
 			color: var(--color-dark-blue-100);
+
+			&::before {
+				content: '...';
+			}
 		}
 
 		&__page-size-select {
@@ -25,8 +35,24 @@
 			}
 		}
 
+		.kol-button {
+			@include ghostButton();
+
+			&__text {
+				min-width: unset !important; // override style from button mixin
+
+				font-weight: 400;
+			}
+		}
+
+		&__button {
+			&--selected .kol-button {
+				--text-color: var(--color-black);
+			}
+		}
+
 		.kol-form-field-select {
-			gap: to-rem(10);
+			gap: to-rem(8);
 
 			.kol-input-container {
 				--border-color: transparent;
@@ -46,13 +72,6 @@
 			.kol-form-field__label {
 				font-weight: 400;
 			}
-		}
-	}
-
-	.kol-button {
-		&__text {
-			min-width: unset !important; // override style from button mixin
-			border: none;
 		}
 	}
 }

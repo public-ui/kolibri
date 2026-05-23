@@ -7,6 +7,10 @@
 		top: to-rem(8);
 		right: to-rem(8);
 
+		.kol-popover-button .kol-button {
+			@include ghostButton();
+		}
+
 		&__content {
 			padding: to-rem(24);
 			@include button('kol-button');
@@ -29,9 +33,5 @@
 			justify-content: flex-end;
 			border-top: 0.0625em solid #b7bec4;
 		}
-	}
-
-	.kol-button:focus {
-		@include focus-outline;
 	}
 }

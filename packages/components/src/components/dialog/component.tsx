@@ -34,8 +34,27 @@ export class KolDialogWc implements DialogAPI {
 		void this.close();
 	}
 
-	private handleNativeCloseEvent() {
-		this.state._on?.onClose?.();
+	private handleCancelEvent = (event: Event): void => {
+		handleCancelOverlay(event);
+		if (event.defaultPrevented) return;
+
+		this.state._on?.onCancel?.(event);
+		if (event.defaultPrevented) return;
+
+		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
+			event.preventDefault();
+		}
+	};
+
+	private handleNativeCloseEvent(event: Event) {
+		// Ignore close events that bubble up from child components (e.g. KolAlert).
+		// Only react when the dialog element itself is the event origin.
+		if (event.target !== this.refDialog) {
+			return;
+		}
+		if (typeof this.state._on?.onClose === 'function') {
+			this.state._on.onClose();
+		}
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
 		}
@@ -106,7 +125,7 @@ export class KolDialogWc implements DialogAPI {
 					'kol-modal__blank': this.state._variant === 'blank',
 					'kol-modal__card': this.state._variant === 'card',
 				})}
-				onCancel={handleCancelOverlay}
+				onCancel={this.handleCancelEvent}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 				ref={(el) => {
 					this.refDialog = el;
@@ -171,7 +190,10 @@ export class KolDialogWc implements DialogAPI {
 	public validateOn(value?: KoliBriDialogEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
 			const callbacks: KoliBriDialogEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
+			if (typeof value.onCancel === 'function') {
+				callbacks.onCancel = value.onCancel;
+			}
+			if (typeof value.onClose === 'function') {
 				callbacks.onClose = value.onClose;
 			}
 			setState<KoliBriDialogEventCallbacks>(this, '_on', callbacks);

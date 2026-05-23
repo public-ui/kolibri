@@ -35,6 +35,17 @@ export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 			/>
 			<KolSingleSelect
 				{...props}
+				_label="Boolean option values (Issue #9122)"
+				_options={
+					[
+						{ label: 'False', value: false },
+						{ label: 'True', value: true },
+					] as Option<StencilUnknown>[]
+				}
+				_value={false}
+			/>
+			<KolSingleSelect
+				{...props}
 				_hint={HINT_MSG}
 				_label="With disabled options"
 				_options={
