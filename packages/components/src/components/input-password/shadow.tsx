@@ -123,6 +123,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 		return {
 			ref: this.setInputRef,
+			// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
 			type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
@@ -141,6 +142,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getShowPasswordButton(): VNode | null {
+		// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
 		if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
 			return (
 				<KolIconButtonFc
