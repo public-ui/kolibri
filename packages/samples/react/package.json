@@ -31,7 +31,7 @@
 		"@public-ui/themes": "workspace:*",
 		"@stencil/core": "4.41.2",
 		"@types/node": "24.12.4",
-		"@types/react": "19.2.14",
+		"@types/react": "19.2.15",
 		"@types/react-dom": "19.2.3",
 		"@unocss/preset-mini": "66.5.10",
 		"@unocss/vite": "66.5.10",
