@@ -10,6 +10,7 @@
 		&__group {
 			display: inline-flex;
 			width: 100%;
+			min-height: to-rem(40);
 			align-items: center;
 		}
 

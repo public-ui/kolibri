@@ -11,7 +11,6 @@ export default [
 			globals: globals.node,
 		},
 		rules: {
-			...js.configs.recommended.rules,
 			eqeqeq: 'error',
 		},
 	},

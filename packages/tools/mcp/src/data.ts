@@ -141,6 +141,7 @@ function loadSampleData(): { entries: SampleEntry[]; metadata: SampleIndexMetada
 			`Failed to load sample index from shared/sample-index.json. ` +
 				`Please run 'pnpm generate-index' to create the index file. ` +
 				`Error: ${error instanceof Error ? error.message : String(error)}`,
+			{ cause: error },
 		);
 	}
 }

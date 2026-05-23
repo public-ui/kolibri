@@ -550,13 +550,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			dataField.push(dataRow);
 		}
 		if (data.length === 0) {
-			let colspan = 0;
+			let colspan = this.getVisibleColSpan(headers.horizontal?.[0]);
 			let rowspan = 0;
-			if (Array.isArray(headers.horizontal) && headers.horizontal.length > 0) {
-				headers.horizontal[0].forEach((col) => {
-					colspan += col.colSpan || 1;
-				});
-			}
 
 			if (Array.isArray(headers.vertical) && headers.vertical.length > 0) {
 				colspan -= headers.vertical.length;
@@ -577,6 +572,18 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			}
 		}
 		return dataField;
+	}
+
+	private getVisibleColSpan(cells?: Array<KoliBriTableCell | KoliBriTableHeaderCell>): number {
+		return (
+			cells?.reduce((acc, cell) => {
+				if ('visible' in cell && cell.visible === false) {
+					return acc;
+				}
+
+				return acc + (cell.colSpan || 1);
+			}, 0) ?? 0
+		);
 	}
 
 	private isFixedCol(index: number | undefined): 'left' | 'right' | undefined {
@@ -1167,7 +1174,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
 		const verticalHeaderColpan = this.state._headerCells.vertical?.length || 0;
-		const colspan = cellDefs?.[0]?.reduce((acc, row) => acc + (row.colSpan || 1), 0);
+		const colspan = this.getVisibleColSpan(cellDefs?.[0]);
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (

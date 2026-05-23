@@ -20,49 +20,12 @@
 		}
 
 		&--primary {
-			--text-background-color: var(--color-blue-100);
-			--text-border-color: var(--color-blue-100);
-			--text-border-width: var(--border-width-m);
-			--text-color: var(--color-white-100);
-
-			&:disabled {
-				--text-background-color: var(--color-black-60);
-				--text-border-color: var(--color-black-60);
-			}
-
-			&:not([disabled]):hover,
-			&:focus {
-				.#{$block-classname}__text::before {
-					background-color: var(--color-black-100-12);
-				}
-			}
-
-			&:active {
-				.#{$block-classname}__text::before {
-					background-color: var(--color-black-100-24);
-				}
-			}
+			@include primaryButton();
 		}
 
 		&--secondary,
 		&--normal {
-			--text-background-color: var(--color-white-100);
-			--text-border-color: var(--color-blue-100);
-			--text-border-width: var(--border-width-m);
-			--text-color: var(--color-blue-100);
-
-			&:disabled {
-				--text-background-color: var(--color-white-100);
-				--text-border-color: var(--color-black-60);
-				--text-color: var(--color-black-60);
-			}
-
-			&:not([disabled]):hover,
-			&:focus {
-				.#{$block-classname}__text::before {
-					background-color: var(--color-blue-100-06);
-				}
-			}
+			@include secondaryButton();
 		}
 
 		&--danger {
@@ -86,20 +49,7 @@
 
 		&--tertiary,
 		&--ghost {
-			--text-background-color: transparent;
-			--text-border-width: var(--border-width-none);
-			--text-color: var(--color-blue-100);
-
-			&:disabled {
-				--text-color: var(--color-black-60);
-			}
-
-			&:not([disabled]):hover,
-			&:focus {
-				.#{$block-classname}__text::before {
-					background-color: var(--color-blue-100-06);
-				}
-			}
+			@include ghostButton();
 		}
 
 		&:disabled {
@@ -192,5 +142,59 @@
 				background-color: var(--color-dark-blue-100-09);
 			}
 		}
+	}
+}
+
+@mixin primaryButton() {
+	--text-background-color: var(--color-blue-100);
+	--text-border-color: var(--color-blue-100);
+	--text-border-width: var(--border-width-m);
+	--text-color: var(--color-white-100);
+
+	&:disabled {
+		--text-background-color: var(--color-black-60);
+		--text-border-color: var(--color-black-60);
+	}
+
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-black-100-12);
+	}
+
+	&:active .kol-span::before {
+		background-color: var(--color-black-100-24);
+	}
+}
+
+@mixin secondaryButton() {
+	--text-background-color: var(--color-white-100);
+	--text-border-color: var(--color-blue-100);
+	--text-border-width: var(--border-width-m);
+	--text-color: var(--color-blue-100);
+
+	&:disabled {
+		--text-background-color: var(--color-white-100);
+		--text-border-color: var(--color-black-60);
+		--text-color: var(--color-black-60);
+	}
+
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-blue-100-06);
+	}
+}
+
+@mixin ghostButton() {
+	--text-background-color: transparent;
+	--text-border-width: var(--border-width-none);
+	--text-color: var(--color-blue-100);
+
+	&:disabled {
+		--text-color: var(--color-black-60);
+	}
+
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-blue-100-06);
 	}
 }

@@ -296,9 +296,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		return {
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
 			'aria-autocomplete': 'both',
-			'aria-controls': 'listbox',
+			'aria-controls': this.state._id + '-listbox',
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
+			'aria-expanded': this._isOpen ? 'true' : 'false',
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
+			'aria-labelledby': this.state._id + '-label',
 			'aria-keyshortcuts': this.state._shortKey,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
@@ -371,6 +373,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
 							hidden={!this._isOpen || isDisabled}
+							id={this.state._id + '-listbox'}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
@@ -402,17 +405,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 											if (!option.disabled) {
 												this._focusedOptionIndex = index;
 												this.focusOption(index);
-											}
-										}}
-										onKeyDown={(e) => {
-											if (option.disabled) {
-												return;
-											}
-											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option as Option<string>);
-												this.refInput?.focus();
-												this.toggleListbox(e);
-												e.preventDefault();
 											}
 										}}
 									/>

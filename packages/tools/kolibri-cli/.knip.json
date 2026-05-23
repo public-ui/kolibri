@@ -2,8 +2,5 @@
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"ignoreDependencies": ["@public-ui/components", "loglevel"],
 	"project": ["src/**/*.ts"],
-	"entry": ["test/**/*.ts"],
-	"rules": {
-		"classMembers": "warn"
-	}
+	"entry": ["test/**/*.ts"]
 }

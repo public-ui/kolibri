@@ -368,7 +368,6 @@ export class KolPaginationWc implements PaginationAPI {
 					class="kol-pagination__button kol-pagination__button--selected selected"
 					_ariaDescription={ariaDescription}
 					_customClass={this.state._customClass}
-					_disabled={true}
 					_label={pageText}
 				></KolButtonWcTag>
 			</li>

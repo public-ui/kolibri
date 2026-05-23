@@ -1,10 +1,10 @@
-import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 
 export default [
 	{
@@ -24,9 +24,6 @@ export default [
 			'@typescript-eslint': tsPlugin,
 		},
 		rules: {
-			...js.configs.recommended.rules,
-			...tsPlugin.configs['recommended'].rules,
-			...tsPlugin.configs['recommended-requiring-type-checking'].rules,
 			'@typescript-eslint/no-namespace': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'warn',
 			'@typescript-eslint/no-unsafe-call': 'warn',
