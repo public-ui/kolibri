@@ -14,7 +14,7 @@ describe('kol-input-text aria-describedby', () => {
 		const input = page.root?.shadowRoot?.querySelector('input');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
-		expect(input?.getAttribute('aria-describedby')).toBe('id-nonce-hint');
+		expect(input?.getAttribute('aria-describedby')).toBe('input-text-hint-nonce');
 	});
 
 	it('includes both msg and counter IDs in aria-describedby when _msg and _hasCounter are both set (#9073)', async () => {
@@ -28,10 +28,10 @@ describe('kol-input-text aria-describedby', () => {
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
 		const ids = (input?.getAttribute('aria-describedby') ?? '').split(' ');
-		expect(ids).toContain('id-nonce-msg');
-		expect(ids).toContain('id-nonce-counter');
-		expect(ids).toContain('id-nonce-character-limit-hint');
-		expect(page.root?.shadowRoot?.querySelector('#id-nonce-msg')).not.toBeNull();
-		expect(page.root?.shadowRoot?.querySelector('#id-nonce-counter')).not.toBeNull();
+		expect(ids).toContain('input-text-msg-nonce');
+		expect(ids).toContain('input-text-counter-nonce');
+		expect(ids).toContain('input-text-character-limit-hint-nonce');
+		expect(page.root?.shadowRoot?.querySelector('#input-text-msg-nonce')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('#input-text-counter-nonce')).not.toBeNull();
 	});
 });
