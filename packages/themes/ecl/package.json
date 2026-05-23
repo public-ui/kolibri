@@ -54,7 +54,6 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
 		"prebuild": "pnpm assets:all",
-		"prepare": "pnpm assets:all",
 		"start:ec": "npm-run-all2 --parallel dev serve:ec",
 		"start:eu": "npm-run-all2 --parallel dev serve:eu",
 		"serve:ec": "sh serve.sh ECL_EC",
