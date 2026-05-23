@@ -47,9 +47,9 @@ test.describe('kol-details', () => {
 			const content = page.locator('.collapsible__content');
 
 			await expect(button).toHaveAttribute('aria-expanded', 'false');
-			await expect(button).toHaveAttribute('aria-controls', /^.*-control$/);
+			await expect(button).toHaveAttribute('aria-controls', /-control-/);
 			await expect(content).toHaveAttribute('role', 'region');
-			await expect(content).toHaveAttribute('aria-labelledby', /^.*-heading$/);
+			await expect(content).toHaveAttribute('aria-labelledby', /-heading-/);
 			await expect(content).toHaveAttribute('aria-hidden', 'true');
 
 			await button.click();

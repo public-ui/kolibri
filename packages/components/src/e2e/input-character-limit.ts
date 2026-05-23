@@ -62,7 +62,7 @@ const testInputCharacterLimit = (componentName: string) => {
 				await page.setContent(`<${componentName} _label="Input"  _max-length="10" _max-length-behavior="soft" _value="abc"></${componentName}>`);
 				await page.waitForChanges();
 				const inputElement = page.locator('input,textarea');
-				const hintElement = page.locator('[id$="-character-limit-hint"]');
+				const hintElement = page.locator('[id*="character-limit-hint"]');
 
 				await expect(hintElement).toBeAttached();
 				await expect(hintElement).toHaveText('Es können bis zu 10 Zeichen eingegeben werden.');
@@ -74,7 +74,7 @@ const testInputCharacterLimit = (componentName: string) => {
 				await page.setContent(`<${componentName} _label="Input"  _max-length="10" _value="abc"></${componentName}>`);
 				await page.waitForChanges();
 				const inputElement = page.locator('input,textarea');
-				const hintElement = page.locator('[id$="-character-limit-hint"]');
+				const hintElement = page.locator('[id*="character-limit-hint"]');
 
 				await expect(hintElement).toBeAttached();
 				await expect(hintElement).toHaveText('Es können bis zu 10 Zeichen eingegeben werden.');
@@ -85,7 +85,7 @@ const testInputCharacterLimit = (componentName: string) => {
 			test('Should not render character limit hint when no maxLength is set', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input"  _has-counter _value="abc"></${componentName}>`);
 				await page.waitForChanges();
-				const hintElement = page.locator('[id$="-character-limit-hint"]');
+				const hintElement = page.locator('[id*="character-limit-hint"]');
 				await expect(hintElement).not.toBeAttached();
 			});
 		});
