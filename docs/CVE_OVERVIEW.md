@@ -24,8 +24,8 @@
 | minimatch            | high     | CVE-2026-27904      | v1                | minimatch ReDoS: nested \*() extglobs generate catastrophically backtracking regu |
 | serialize-javascript | high     | GHSA-5c6j-r48x-rmvq | v1                | Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.to  |
 | brace-expansion      | moderate | CVE-2026-45149      | v1                | brace-expansion: Large numeric range defeats documented `max` DoS protection      |
+| qs                   | moderate | CVE-2026-8723       | v1                | qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/u  |
 | serialize-javascript | moderate | CVE-2026-34043      | v1                | Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like  |
-| ws                   | moderate | CVE-2026-45736      | v1                | ws: Uninitialized memory disclosure                                               |
 
 ## 2. All Dependencies
 
@@ -34,9 +34,9 @@
 | Severity |  v4 |  v3 |  v2 |  v1 |
 | -------- | --: | --: | --: | --: |
 | critical |   0 |   5 |   5 |   3 |
-| high     |   3 |  35 |  53 |  30 |
-| moderate |  11 |  30 |  54 |  10 |
-| low      |   2 |   5 |  11 |   1 |
+| high     |   1 |  35 |  53 |  30 |
+| moderate |   6 |  31 |  54 |  10 |
+| low      |   2 |   5 |  10 |   2 |
 | info     |   0 |   0 |   0 |   0 |
 | unknown  |   0 |   0 |   0 |   0 |
 
@@ -56,7 +56,7 @@
 | @angular/core                            | high     | CVE-2026-22610      | v1                | Angular has XSS Vulnerability via Unsanitized SVG Script Attributes                |
 | @angular/core                            | high     | CVE-2026-27970      | v1                | Angular i18n vulnerable to Cross-Site Scripting                                    |
 | @angular/core                            | high     | CVE-2026-32635      | v1                | Angular vulnerable to XSS in i18n attribute bindings                               |
-| @babel/plugin-transform-modules-systemjs | high     | CVE-2026-44728      | v4, v2, v1        | @babel/plugin-transform-modules-systemjs generates arbitrary code when compiling   |
+| @babel/plugin-transform-modules-systemjs | high     | CVE-2026-44728      | v2, v1            | @babel/plugin-transform-modules-systemjs generates arbitrary code when compiling   |
 | @hono/node-server                        | high     | CVE-2026-29087      | v2                | @hono/node-server has authorization bypass for protected static paths via encode   |
 | axios                                    | high     | CVE-2026-42043      | v3, v2            | Axios: Incomplete Fix for CVE-2025-62718 — NO_PROXY Protection Bypassed via RFC    |
 | axios                                    | high     | CVE-2026-42033      | v3, v2            | Axios: Prototype Pollution Gadgets - Response Tampering, Data Exfiltration, and    |
@@ -67,7 +67,6 @@
 | basic-ftp                                | high     | CVE-2026-41324      | v3, v2            | basic-ftp vulnerable to denial of service via unbounded memory consumption in Cl   |
 | basic-ftp                                | high     | CVE-2026-44240      | v3, v2            | basic-ftp allows a malicious FTP server to cause client-side denial of service v   |
 | braces                                   | high     | CVE-2024-4068       | v3, v2, v1        | Uncontrolled resource consumption in braces                                        |
-| devalue                                  | high     | CVE-2026-42570      | v4                | Svelte devalue: DoS via sparse array deserialization                               |
 | express-rate-limit                       | high     | CVE-2026-30827      | v2                | express-rate-limit: IPv4-mapped IPv6 addresses bypass per-client rate limiting o   |
 | fast-uri                                 | high     | CVE-2026-6321       | v2                | fast-uri vulnerable to path traversal via percent-encoded dot segments             |
 | fast-uri                                 | high     | CVE-2026-6322       | v2                | fast-uri vulnerable to host confusion via percent-encoded authority delimiters     |
@@ -113,7 +112,6 @@
 | @hono/node-server                        | moderate | CVE-2026-39406      | v2                | @hono/node-server: Middleware bypass via repeated slashes in serveStatic           |
 | ajv                                      | moderate | CVE-2025-69873      | v3, v2            | ajv has ReDoS when using `$data` option                                            |
 | axios                                    | moderate | CVE-2025-62718      | v3, v2            | Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF              |
-| axios                                    | moderate | CVE-2026-40175      | v3, v2            | Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain      |
 | axios                                    | moderate | CVE-2026-42041      | v3, v2            | Axios: Authentication Bypass via Prototype Pollution Gadget in `validateStatus`    |
 | axios                                    | moderate | CVE-2026-42044      | v3, v2            | Axios: Invisible JSON Response Tampering via Prototype Pollution Gadget in `pars   |
 | axios                                    | moderate | CVE-2026-42037      | v3, v2            | Axios: CRLF Injection in multipart/form-data body via unsanitized blob.type in f   |
@@ -122,6 +120,7 @@
 | axios                                    | moderate | CVE-2026-42034      | v3, v2            | Axios' HTTP adapter-streamed uploads bypass maxBodyLength when maxRedirects: 0     |
 | axios                                    | moderate | CVE-2026-42036      | v3, v2            | Axios: HTTP adapter streamed responses bypass maxContentLength                     |
 | axios                                    | moderate | CVE-2026-42042      | v3, v2            | Axios: XSRF Token Cross-Origin Leakage via Prototype Pollution Gadget in `withXS   |
+| axios                                    | moderate | CVE-2026-40175      | v3, v2            | Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain      |
 | brace-expansion                          | moderate | CVE-2026-45149      | v3, v2, v1        | brace-expansion: Large numeric range defeats documented `max` DoS protection       |
 | brace-expansion                          | moderate | CVE-2026-33750      | v3, v2            | brace-expansion: Zero-step sequence causes process hang and memory exhaustion      |
 | ejs                                      | moderate | CVE-2024-33883      | v2                | ejs lacks certain pollution protection                                             |
@@ -152,31 +151,27 @@
 | nanoid                                   | moderate | CVE-2024-55565      | v2                | Predictable results in nanoid generation when given non-integer values             |
 | path-to-regexp                           | moderate | CVE-2026-4923       | v2                | path-to-regexp vulnerable to Regular Expression Denial of Service via multiple w   |
 | postcss                                  | moderate | CVE-2026-41305      | v4, v3, v2        | PostCSS has XSS via Unescaped </style> in its CSS Stringify Output                 |
-| qs                                       | moderate | CVE-2025-15284      | v2                | qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion    |
+| qs                                       | moderate | CVE-2026-8723       | v1                | qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/u   |
 | serialize-javascript                     | moderate | CVE-2026-34043      | v4, v3, v2, v1    | Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like   |
 | serialize-javascript                     | moderate | CVE-2024-11831      | v2                | Cross-site Scripting (XSS) in serialize-javascript                                 |
 | smol-toml                                | moderate | GHSA-v3rj-xjv7-4jmq | v3, v2, v1        | smol-toml: Denial of Service via TOML documents containing thousands of consecut   |
-| svelte                                   | moderate | CVE-2026-42599      | v4                | Svelte SSR vulnerable to cross-site scripting via spread attributes                |
-| svelte                                   | moderate | GHSA-f3cj-j4f6-wq85 | v4                | Svelte: SSR XSS via Insecure Promise Serialization in hydratable                   |
-| svelte                                   | moderate | CVE-2026-42573      | v4                | Svelte Vulnerable to XSS via DOM Clobbering of Internal Framework State            |
-| svelte                                   | moderate | CVE-2026-42567      | v4                | Svelte: ReDoS in `<svelte:element>` Tag Validation                                 |
 | undici                                   | moderate | CVE-2026-1525       | v3, v2            | Undici has an HTTP Request/Response Smuggling issue                                |
 | undici                                   | moderate | CVE-2026-1527       | v3, v2            | Undici has CRLF Injection in undici via `upgrade` option                           |
+| uuid                                     | moderate | CVE-2026-41907      | v4, v3, v2        | uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided                 |
 | vite                                     | moderate | CVE-2026-39365      | v1                | Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling                |
 | webpack                                  | moderate | CVE-2024-43788      | v2                | Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to    |
 | webpack-dev-server                       | moderate | CVE-2025-30360      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
 | webpack-dev-server                       | moderate | CVE-2025-30359      | v2                | webpack-dev-server users' source code may be stolen when they access a malicious   |
 | webpack-dev-server                       | moderate | CVE-2026-6402       | v4, v3, v2        | webpack-dev-server vulnerable to cross-origin source code exposure on non-HTTPS    |
-| ws                                       | moderate | CVE-2026-45736      | v4, v3, v2, v1    | ws: Uninitialized memory disclosure                                                |
-| yaml                                     | moderate | CVE-2026-33532      | v4, v3, v2, v1    | yaml is vulnerable to Stack Overflow via deeply nested YAML collections            |
-| @tootallnate/once                        | low      | CVE-2026-3449       | v3, v2            | @tootallnate/once vulnerable to Incorrect Control Flow Scoping                     |
+| ws                                       | moderate | CVE-2026-45736      | v3, v2            | ws: Uninitialized memory disclosure                                                |
+| yaml                                     | moderate | CVE-2026-33532      | v3, v2, v1        | yaml is vulnerable to Stack Overflow via deeply nested YAML collections            |
+| @tootallnate/once                        | low      | CVE-2026-3449       | v3, v2, v1        | @tootallnate/once vulnerable to Incorrect Control Flow Scoping                     |
 | axios                                    | low      | CVE-2026-42040      | v3, v2            | Axios: Null Byte Injection via Reverse-Encoding in AxiosURLSearchParams            |
 | diff                                     | low      | CVE-2026-24001      | v4, v3, v2        | jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch          |
 | fast-xml-parser                          | low      | CVE-2026-27942      | v3, v2            | fast-xml-parser has stack overflow in XMLBuilder with preserveOrder                |
 | handlebars                               | low      | GHSA-442j-39wm-28r2 | v3, v2, v1        | Handlebars.js has a Property Access Validation Bypass in container.lookup          |
 | hono                                     | low      | GHSA-gq3j-xvxp-8hrf | v2                | Hono added timing comparison hardening in basicAuth and bearerAuth                 |
 | hono                                     | low      | CVE-2026-44459      | v2                | Hono has improper validation of NumericDate claims (exp, nbf, iat) in JWT verify   |
-| qs                                       | low      | CVE-2026-2391       | v2                | qs's arrayLimit bypass in comma parsing allows denial of service                   |
 | tmp                                      | low      | CVE-2025-54798      | v4                | tmp allows arbitrary temporary file / directory write via symbolic link `dir` pa   |
 | webpack                                  | low      | CVE-2025-68458      | v2                | webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to   |
 | webpack                                  | low      | CVE-2025-68157      | v2                | webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + c   |
