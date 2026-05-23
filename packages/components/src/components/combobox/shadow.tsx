@@ -34,7 +34,7 @@ import type {
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { ComboboxController } from './controller';
@@ -563,7 +563,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		_hasValue: false,
 		_hasClearButton: true,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('combobox'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_value: '',

@@ -26,7 +26,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputCheckboxController } from './controller';
@@ -294,7 +294,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 			indeterminate: 'kolicon-minus',
 			unchecked: 'kolicon-cross',
 		},
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-checkbox'),
 		_indeterminate: false,
 		_label: '', // ⚠ required
 		_value: true,

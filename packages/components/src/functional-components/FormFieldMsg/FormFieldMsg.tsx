@@ -1,6 +1,7 @@
 import { type FunctionalComponent, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 
 import { type AlertPropType, type IdPropType, type MsgPropType, normalizeMsg, type Stringified } from '../../schema';
 import KolAlertFc from '../Alert';
@@ -16,7 +17,7 @@ const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, id
 
 	return (
 		<KolAlertFc
-			id={`${id}-msg`}
+			id={createRelatedUniqueId(id, 'msg')}
 			alert={message?._alert ?? alert}
 			hasCloser={false}
 			level={0}

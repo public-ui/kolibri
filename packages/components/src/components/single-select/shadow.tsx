@@ -37,7 +37,7 @@ import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { SingleSelectController } from './controller';
 
@@ -627,7 +627,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	@State() public state: SingleSelectStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('single-select'),
 		_label: '', // ⚠ required
 		_options: [],
 		_hasClearButton: true,

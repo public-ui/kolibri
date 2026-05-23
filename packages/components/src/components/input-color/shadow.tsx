@@ -25,7 +25,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { nonce } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputColorController } from './controller';
@@ -128,7 +128,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 			ref: this.setColorRef,
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
-			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
 			id: undefined,
 			'aria-hidden': 'true',
 			tabIndex: -1,
@@ -141,7 +141,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 			ref: this.setInputRef,
 			type: 'text',
 			name: this.state._name ? `${this.state._name}-text` : undefined,
-			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
 			onInput: this.onTextInput,
 		};
 	}
@@ -268,7 +268,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 	@State() public state: InputColorStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-color'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};
