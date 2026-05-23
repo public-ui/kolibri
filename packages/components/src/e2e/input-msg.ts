@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { MsgPropType, Stringified } from '../schema';
+import { setContentWithRetry } from './utils/setContentWithRetry';
 
 const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>; _touched?: boolean } & HTMLElement>(componentName: string) => {
 	test.describe('Input messages', () => {
@@ -26,11 +27,10 @@ const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>;
 		});
 
 		test('should display and hide message based on _msg value', async ({ page }) => {
-			await page.setContent(`<${componentName}
-					_label="Input"
-					_msg="{'_description': 'An error message', '_type': 'error'}"
-					_touched
-				></${componentName}>`);
+			await setContentWithRetry(
+				page,
+				`<${componentName} _label="Input" _msg="{'_description': 'An error message', '_type': 'error'}" _touched></${componentName}>`,
+			);
 			const alert = page.getByTestId('alert');
 
 			await expect(alert).toBeVisible();
