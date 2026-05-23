@@ -18,3 +18,5 @@ packages:
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
+overrides:
+  qs@>=6.11.1 <=6.15.1: '>=6.15.2'
