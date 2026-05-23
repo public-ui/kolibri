@@ -26,6 +26,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VisibilityTogglePropType,
 } from '../../schema';
 import { devHint } from '../../schema';
 
@@ -122,7 +123,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 		return {
 			ref: this.setInputRef,
-			type: this._variant === 'visibility-toggle' && this._passwordVisible ? 'text' : 'password',
+			// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
+			type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,
@@ -140,25 +142,26 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getShowPasswordButton(): VNode | null {
-		if (this._variant !== 'visibility-toggle') {
-			return null;
+		// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
+		if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
+			return (
+				<KolIconButtonFc
+					componentName="button"
+					class="kol-input-password__password-toggle-button kol-input-container__smart-button"
+					data-testid="kol-input-password-toggle-button"
+					label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
+					buttonVariant="ghost"
+					onClick={(): void => {
+						this._passwordVisible = !this._passwordVisible;
+						this.inputRef?.focus();
+					}}
+					icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
+					disabled={this._disabled}
+				/>
+			);
 		}
 
-		return (
-			<KolIconButtonFc
-				componentName="button"
-				class="kol-input-password__password-toggle-button kol-input-container__smart-button"
-				data-testid="kol-input-password-toggle-button"
-				label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
-				buttonVariant="ghost"
-				onClick={(): void => {
-					this._passwordVisible = !this._passwordVisible;
-					this.inputRef?.focus();
-				}}
-				icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
-				disabled={this._disabled}
-			/>
-		);
+		return null;
 	}
 
 	public render(): JSX.Element {
@@ -306,6 +309,11 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 */
 	@Prop() public _variant?: PasswordVariantPropType = 'default';
 
+	/**
+	 * Activates the show password button
+	 */
+	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
+
 	@State() public state: InputPasswordStates = {
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
@@ -314,6 +322,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		_id: createUniqueId('input-password'),
 		_label: '', // ⚠ required
 		_variant: 'default',
+		_visibilityToggle: false,
 	};
 	@State() private _passwordVisible: boolean = false;
 	@State() private inputHasFocus = false;
@@ -446,6 +455,11 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_visibilityToggle')
+	public validateVisibilityToggle(value?: boolean): void {
+		this.controller.validateVisibilityToggle(value);
 	}
 
 	public componentWillLoad(): void {

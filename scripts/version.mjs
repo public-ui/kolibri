@@ -10,9 +10,9 @@
  * --no-push: skip `git push` after committing (used for dev-tag releases)
  */
 
-import { readFileSync, writeFileSync, globSync } from 'node:fs';
-import { join, dirname } from 'node:path';
 import { execSync } from 'node:child_process';
+import { globSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
