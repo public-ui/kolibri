@@ -108,7 +108,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "12.8.2",
 		"mustache": "4.2.0",
-		"postcss": "8.5.14",
+		"postcss": "8.5.15",
 		"postcss-sorting": "8.0.2",
 		"prettier": "3.8.3",
 		"pug": "3.0.4",
@@ -118,7 +118,7 @@
 		"rimraf": "6.1.3",
 		"rxjs": "7.8.2",
 		"stencil-awesome-test": "1.0.6",
-		"terser": "5.47.1",
+		"terser": "5.48.0",
 		"twig": "1.17.1",
 		"typescript": "5.9.3",
 		"wcag-contrast": "3.0.0"
