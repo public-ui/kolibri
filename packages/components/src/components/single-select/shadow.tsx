@@ -107,9 +107,9 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
 		if (matchingOption) {
-			this.selectOption(matchingOption as Option<string>);
-		} else if (this._value) {
-			this._filteredOptions = [...this.state._options];
+			this.selectOption(matchingOption);
+		} else if (this._value !== null && this._value !== undefined) {
+			this._filteredOptions = [...(this.state._options ?? [])];
 		}
 	}
 
@@ -158,7 +158,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this._isOpen = true;
 	}
 
-	private selectOption(option: Option<string>) {
+	private selectOption(option: Option<StencilUnknown>) {
 		if (option.value === this._value) {
 			this._inputValue = option.label as string;
 			this._filteredOptions = [...this.state._options];
@@ -261,7 +261,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	private selectFocusedOption(): boolean {
 		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
-			this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+			this.selectOption(this._filteredOptions[this._focusedOptionIndex]);
 			return true;
 		}
 		return false;
@@ -384,13 +384,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 										ref={(el) => {
 											if (el) this.refOptions[index] = el;
 										}}
-										selected={this._value === (option as Option<string>).value}
+										selected={this._value === option.value}
 										disabled={option.disabled ? true : false}
 										onClick={(event: Event) => {
 											if (option.disabled) {
 												return;
 											}
-											this.selectOption(option as Option<string>);
+											this.selectOption(option);
 											this.refInput?.focus();
 											this.toggleListbox(event);
 											this._isOpen = false;
@@ -405,6 +405,17 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 											if (!option.disabled) {
 												this._focusedOptionIndex = index;
 												this.focusOption(index);
+											}
+										}}
+										onKeyDown={(e) => {
+											if (option.disabled) {
+												return;
+											}
+											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+												this.selectOption(option);
+												this.refInput?.focus();
+												this.toggleListbox(e);
+												e.preventDefault();
 											}
 										}}
 									/>
@@ -613,7 +624,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
+	@Prop({ mutable: true }) public _value: StencilUnknown = null;
 
 	/**
 	 * Shows the clear button if enabled.
@@ -701,7 +712,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Watch('_options')
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
-		this._filteredOptions = value;
+		this._filteredOptions = [...(this.state._options ?? [])];
 		if (this._isOpen) {
 			this.setFilteredOptionsByQuery(this._inputValue);
 		} else {
@@ -774,10 +785,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private updateInputValue(value?: StencilUnknown) {
-		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => option.value === value);
-			this._inputValue = matchedOption ? String(matchedOption.label) : '';
-		}
+		const matchedOption = this.state._options?.find((option) => option.value === value);
+		this._inputValue = matchedOption ? String(matchedOption.label) : '';
 	}
 
 	public componentWillLoad(): void {
