@@ -1,6 +1,7 @@
 import { KolTableStateful, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import '../../@shared/demo-table-wc';
 import { SampleDescription } from '../SampleDescription';
 
 const TABLE_DATA = [{ city: 'Berlin', country: 'Germany' }];
@@ -73,6 +74,20 @@ export const AriaLabelledby: FC = () => (
 							Cities of the world
 						</h4>
 						<KolTableStateful _ariaLabelledby="label-stateful-table" _data={TABLE_DATA} _headers={TABLE_HEADERS} _label="fallback label" />
+					</div>
+
+					<div>
+						<h3 className="font-semibold">🔬 Native Web Component (ElementInternals.ariaLabelledByElements)</h3>
+						<p className="text-sm text-gray-600 mb-2">
+							Two plain Custom Elements without framework mirror the Stencil architecture. <code>demo-outer-table</code> (shadow: open) resolves the IDREF and
+							sets <code>ElementInternals.ariaLabelledByElements</code>. <code>demo-inner-table</code> (no shadow, lives in the outer shadow root) gets an
+							auto-assigned <code>id</code>; the inner <code>&lt;table&gt;</code> references it via <code>aria-labelledby</code> — a plain IDREF valid within
+							the same shadow tree. Expected: screen reader announces the table with the heading text.
+						</p>
+						<h4 id="label-native-wc-table" className="text-base">
+							Cities of the world
+						</h4>
+						{React.createElement('demo-outer-table', { 'aria-labelledby': 'label-native-wc-table' })}
 					</div>
 				</div>
 			</section>
